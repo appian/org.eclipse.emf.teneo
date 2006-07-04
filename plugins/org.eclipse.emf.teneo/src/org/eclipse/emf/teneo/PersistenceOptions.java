@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class PersistenceOptions {
 
@@ -58,13 +58,15 @@ public class PersistenceOptions {
 			.toLowerCase();
 
 	/** Set cascade all (incl. orphan delete) on containment relation */
-	public static final String SET_CASCADE_ALL_ON_CONTAINMENT = new String(BASE_NAME + ".SetCascadeAllOnContainment").toLowerCase();
+	public static final String SET_CASCADE_ALL_ON_CONTAINMENT = new String(BASE_NAME + ".SetCascadeAllOnContainment")
+			.toLowerCase();
 
 	/**
 	 * Can be used to control if the entity ann. should be added automatically to the model elements or that the default
 	 * annotator should work according to the ejb3 spec.
 	 */
-	public static final String SET_ENTITY_AUTOMATICALLY = new String(BASE_NAME + ".SetEntityAutomatically").toLowerCase();
+	public static final String SET_ENTITY_AUTOMATICALLY = new String(BASE_NAME + ".SetEntityAutomatically")
+			.toLowerCase();
 
 	/**
 	 * Can be used to control if implementation classes should be used for entity names and target entities or that
@@ -97,13 +99,15 @@ public class PersistenceOptions {
 	public static final String MAXIMUM_SQL_NAME_LENGTH = new String(BASE_NAME + ".MaximumSqlNameLength").toLowerCase();
 
 	/** Option to specify that for non-contained one-to-many always a join table is used, default is false */
-	public static final String JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS = 
-		new String(BASE_NAME + ".JoinTableForNonContainedAssociations").toLowerCase();
-	
-	/** The option which determines the casing of columns and table names, lowercase will result in lowercase letters, 
-	 * uppercase in uppercase, none will just work as it did until now */
+	public static final String JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS = new String(BASE_NAME
+			+ ".JoinTableForNonContainedAssociations").toLowerCase();
+
+	/**
+	 * The option which determines the casing of columns and table names, lowercase will result in lowercase letters,
+	 * uppercase in uppercase, none will just work as it did until now
+	 */
 	public static final String SQL_CASE_STRATEGY = new String(BASE_NAME + ".NamingStrategy").toLowerCase();
-	
+
 	/**
 	 * The wrapped Properties instance.
 	 */
@@ -150,7 +154,8 @@ public class PersistenceOptions {
 
 	/** Returns the value of the UseJoinTableForNonContainedAssociations option, default is false */
 	public boolean isJoinTableForNonContainedAssociations() {
-		return Boolean.valueOf(properties.getProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "false")).booleanValue();
+		return Boolean.valueOf(properties.getProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "false"))
+				.booleanValue();
 	}
 
 	/** Returns the value of the UseMappingFile option, default is false */

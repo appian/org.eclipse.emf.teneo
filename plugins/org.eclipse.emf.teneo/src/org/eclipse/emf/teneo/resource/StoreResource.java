@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.1 2006/07/04 21:04:05 mtaal Exp $
+ * $Id: StoreResource.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -56,7 +56,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -73,19 +73,21 @@ public abstract class StoreResource extends ResourceImpl {
 	protected ArrayList removedEObjects = new ArrayList();
 
 	/**
-	 * The list of objects loaded from the backend. objects which have been removed are still part of this list. This is to prevent
-	 * them from being added to the newEObjects list.
+	 * The list of objects loaded from the backend. objects which have been removed are still part of this list. This is
+	 * to prevent them from being added to the newEObjects list.
 	 */
 	protected ArrayList loadedEObjects = new ArrayList();
 
 	/**
-	 * The list of new objects new EObjects are never part of the loadedEObjects, when a newEObject is removed it is just removed from
-	 * this list and not added to the removed EObjects. new eobjects are never part of the modifiedEObjects list.
+	 * The list of new objects new EObjects are never part of the loadedEObjects, when a newEObject is removed it is
+	 * just removed from this list and not added to the removed EObjects. new eobjects are never part of the
+	 * modifiedEObjects list.
 	 */
 	protected ArrayList newEObjects = new ArrayList();
 
 	/**
-	 * The list of changed objects, this contains the loadedEObjects which have changed new EObjects are never part of this list
+	 * The list of changed objects, this contains the loadedEObjects which have changed new EObjects are never part of
+	 * this list
 	 */
 	protected ArrayList modifiedEObjects = new ArrayList();
 
@@ -93,8 +95,8 @@ public abstract class StoreResource extends ResourceImpl {
 	protected boolean isLoading = false;
 
 	/**
-	 * Apparently the super EMF resource classes have a different idea of loaded During the unload action they again start loading from
-	 * the db, this should be prevented.
+	 * Apparently the super EMF resource classes have a different idea of loaded During the unload action they again
+	 * start loading from the db, this should be prevented.
 	 */
 	protected boolean isUnLoading = false;
 
@@ -102,8 +104,8 @@ public abstract class StoreResource extends ResourceImpl {
 	protected String[] topClassNames;
 
 	/**
-	 * The list of queries if they are defined for this resource. If not set (length is 0) then the resource will as default behavior
-	 * read the topclasses of the database.
+	 * The list of queries if they are defined for this resource. If not set (length is 0) then the resource will as
+	 * default behavior read the topclasses of the database.
 	 */
 	private String[] definedQueries = new String[0];
 
@@ -143,7 +145,8 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/**
-	 * Returns the current array of defined queries. Note if there are no definedQueries then an array of length 0 is returned.
+	 * Returns the current array of defined queries. Note if there are no definedQueries then an array of length 0 is
+	 * returned.
 	 */
 	public String[] getDefinedQueries() {
 		return definedQueries;
@@ -175,7 +178,8 @@ public abstract class StoreResource extends ResourceImpl {
 	protected HashMap decodeQueryString(String qryStr) {
 		final HashMap result = new HashMap();
 
-		if (qryStr == null) return result;
+		if (qryStr == null)
+			return result;
 
 		final String[] qryParts = qryStr.split("&");
 		for (int i = 0; i < qryParts.length; i++) {
@@ -190,8 +194,8 @@ public abstract class StoreResource extends ResourceImpl {
 	// ------------------------------ Subclass methods ---------------------------------
 
 	/**
-	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length zero then no refering EObjects
-	 * where found.
+	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length zero then no
+	 * refering EObjects where found.
 	 */
 	public abstract Object[] getCrossReferencers(EObject referedTo);
 
@@ -220,8 +224,10 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** Loads the resource */
 	public void load(Map options) {
-		if (isUnLoading) return;
-		if (isLoaded()) return;
+		if (isUnLoading)
+			return;
+		if (isLoaded())
+			return;
 
 		isLoading = true;
 		try {
@@ -277,8 +283,8 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/**
-	 * Clears different lists to start with an empty resource again. Note that the super.dounload is not called because that clears the
-	 * list resulting in all kinds of undesirable inverseremoves and database actions.
+	 * Clears different lists to start with an empty resource again. Note that the super.dounload is not called because
+	 * that clears the list resulting in all kinds of undesirable inverseremoves and database actions.
 	 */
 	protected void doUnload() {
 		isUnLoading = true;
@@ -296,7 +302,8 @@ public abstract class StoreResource extends ResourceImpl {
 		final ArrayList newOrChangedObjects = new ArrayList(newEObjects);
 		newOrChangedObjects.addAll(modifiedEObjects);
 
-		log.debug("Validating contents of resource " + uri + " approx. " + newOrChangedObjects.size() + " will be checked");
+		log.debug("Validating contents of resource " + uri + " approx. " + newOrChangedObjects.size()
+				+ " will be checked");
 
 		final ArrayList diags = new ArrayList();
 		for (int i = 0; i < newOrChangedObjects.size(); i++) {
@@ -306,10 +313,12 @@ public abstract class StoreResource extends ResourceImpl {
 			assert (obj.eResource() == this);
 			EContainerRepairControl.setEResourceToAlLContent((InternalEObject) obj, this);
 
-			if (newOrChangedObjects.contains(obj.eContainer())) continue; // they will be checked as part of their container
+			if (newOrChangedObjects.contains(obj.eContainer()))
+				continue; // they will be checked as part of their container
 
 			final org.eclipse.emf.common.util.Diagnostic diag = validateObject((EObject) newOrChangedObjects.get(i));
-			if (diag != null) diags.add(diag);
+			if (diag != null)
+				diags.add(diag);
 		}
 		log.debug("Found " + diags.size() + " errors ");
 		if (diags.size() > 0) {
@@ -357,13 +366,14 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/**
-	 * Keeps track of changed objects, CHECK: currently if a tree of objects has been added to this resource and afterwards a child in
-	 * the tree is changed then the child is added to the modifiedEObjects list while its containing parent is part of the
-	 * addedEObjects list. This should maybe be prevented here but this can come at some cost as it means that the complete container
-	 * path has to be loaded for each modification.
+	 * Keeps track of changed objects, CHECK: currently if a tree of objects has been added to this resource and
+	 * afterwards a child in the tree is changed then the child is added to the modifiedEObjects list while its
+	 * containing parent is part of the addedEObjects list. This should maybe be prevented here but this can come at
+	 * some cost as it means that the complete container path has to be loaded for each modification.
 	 */
 	public void modifiedEObject(EObject eObject) {
-		// if (addedEObjects.contains(eObject)) return; // see remark above, if childs are added to the modified list then childs also
+		// if (addedEObjects.contains(eObject)) return; // see remark above, if childs are added to the modified list
+		// then childs also
 
 		if (loadedEObjects.contains(eObject) && !modifiedEObjects.contains(eObject)) {
 			assert (!newEObjects.contains(eObject));
@@ -377,16 +387,16 @@ public abstract class StoreResource extends ResourceImpl {
 			if (removedEObjects.contains(eObject)) {
 				// special case an eobject was removed from the resource but is readded during load of an elist
 				// the remove will be done at save
-				return; 
+				return;
 			}
-			//assert (!removedEObjects.contains(eObject));
+			// assert (!removedEObjects.contains(eObject));
 			assert (!loadedEObjects.contains(eObject));
 			loadedEObjects.add(eObject);
 		} else {
-			//assert (!removedEObjects.contains(eObject));
+			// assert (!removedEObjects.contains(eObject));
 			assert (!newEObjects.contains(eObject));
 			if (removedEObjects.remove(eObject)) {
-				modifiedEObjects.add(eObject); 
+				modifiedEObjects.add(eObject);
 			} else {
 				newEObjects.add(eObject);
 			}
@@ -425,14 +435,15 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/**
-	 * Attached the object to this resource, This object will be stored at the next save action. Also handles the specific id
-	 * generation used for different resource impl.
+	 * Attached the object to this resource, This object will be stored at the next save action. Also handles the
+	 * specific id generation used for different resource impl.
 	 */
 	protected void attachedHelper(EObject eObject) {
 		// a bit strange as an object can only be contained once but this can happen if someone
 		// adds an object to a resource directly and then later add this same object as a child
 		// to a container
-		if (newEObjects.contains(eObject) || loadedEObjects.contains(eObject)) return;
+		if (newEObjects.contains(eObject) || loadedEObjects.contains(eObject))
+			return;
 
 		addedEObject(eObject);
 
@@ -447,18 +458,18 @@ public abstract class StoreResource extends ResourceImpl {
 				map.put(id, eObject);
 			}
 		}
-		
+
 		if (eObject instanceof InternalEObject && eObject.eResource() == null) {
-			StoreUtil.setEResource((InternalEObject)eObject, this);
+			StoreUtil.setEResource((InternalEObject) eObject, this);
 		}
-			
+
 		// now also attach all ereferences with single values
 		for (Iterator it = eObject.eClass().getEAllReferences().iterator(); it.hasNext();) {
-			final EReference eref = (EReference)it.next();
+			final EReference eref = (EReference) it.next();
 			if (!eref.isMany() && eObject.eGet(eref) != null) { // the ismanies are handled differently
-				final Resource res = ((EObject)eObject.eGet(eref)).eResource();
+				final Resource res = ((EObject) eObject.eGet(eref)).eResource();
 				if (res == null) { // attach it to this resource because it has no other
-					attached((EObject)eObject.eGet(eref));
+					attached((EObject) eObject.eGet(eref));
 				}
 			}
 		}
@@ -529,7 +540,8 @@ public abstract class StoreResource extends ResourceImpl {
 		}
 
 		if (eNotificationRequired()) {
-			Notification notification = new NotificationImpl(Notification.SET, oldIsTrackingModification, isTrackingModification) {
+			Notification notification = new NotificationImpl(Notification.SET, oldIsTrackingModification,
+					isTrackingModification) {
 				public Object getNotifier() {
 					return StoreResource.this;
 				}
@@ -543,13 +555,14 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/**
-	 * Always returns a non-resolving iterator because resolving is defined on model level and the resource should adhere to that
+	 * Always returns a non-resolving iterator because resolving is defined on model level and the resource should
+	 * adhere to that
 	 */
 	private TreeIterator getNonResolvingAllContents() {
 		return new AbstractTreeIterator(this, false) {
 			public Iterator getChildren(Object object) {
-				return object == StoreResource.this ? ((ContentsEList) getContents()).basicIterator() : getNonResolvingContent(
-						(EObject) object).basicIterator();
+				return object == StoreResource.this ? ((ContentsEList) getContents()).basicIterator()
+						: getNonResolvingContent((EObject) object).basicIterator();
 			}
 		};
 	}
@@ -598,7 +611,8 @@ public abstract class StoreResource extends ResourceImpl {
 
 							if (feature.isMany()) {
 								Object value = eObject.eGet(feature, resolve());
-								if (value instanceof PersistableDelegateList && !((PersistableDelegateList) value).isLoaded()) {
+								if (value instanceof PersistableDelegateList
+										&& !((PersistableDelegateList) value).isLoaded()) {
 									continue;
 								}
 							}
@@ -607,7 +621,8 @@ public abstract class StoreResource extends ResourceImpl {
 								Object value = eObject.eGet(feature, resolve());
 								isHandlingFeatureMap = FeatureMapUtil.isFeatureMap(feature);
 								if (isHandlingFeatureMap || feature.isMany()) {
-									values = resolve() ? ((List) value).listIterator() : ((InternalEList) value).basicListIterator();
+									values = resolve() ? ((List) value).listIterator() : ((InternalEList) value)
+											.basicListIterator();
 									if (scanNext(values)) {
 										preparedResult = values.next();
 										if (isHandlingFeatureMap) {

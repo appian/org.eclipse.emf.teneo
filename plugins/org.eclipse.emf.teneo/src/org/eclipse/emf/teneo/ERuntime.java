@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ERuntime.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: ERuntime.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,11 +38,11 @@ import org.eclipse.emf.teneo.util.StoreUtil;
 /**
  * The ERuntime contains references to EPackages which are persistable, i.e. are persisted.
  * 
- * It is used to compute information related to concrete class - eclass mapping, interface to concrete class, references for cross
- * reference computation, contained computations.
+ * It is used to compute information related to concrete class - eclass mapping, interface to concrete class, references
+ * for cross reference computation, contained computations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class ERuntime {
@@ -96,7 +96,8 @@ public class ERuntime {
 	}
 
 	/**
-	 * Computes which classes are contained and which are non-contained. Method must be called after the computeReferers method!
+	 * Computes which classes are contained and which are non-contained. Method must be called after the computeReferers
+	 * method!
 	 */
 	private void computeContainedClasses() {
 
@@ -112,20 +113,24 @@ public class ERuntime {
 			final Iterator it = epack.getEClassifiers().iterator();
 			while (it.hasNext()) {
 				final EClassifier eclassifier = (EClassifier) it.next();
-				if (!(eclassifier instanceof EClass)) continue;
+				if (!(eclassifier instanceof EClass))
+					continue;
 
 				final EClass eclass = (EClass) eclassifier;
 
 				// bit ugly compare on name, but document root should be ignored
 				// otherwise everything is contained
-				if (eclass.getName().compareTo(DOCUMENT_ROOT_NAME) == 0) continue;
+				if (eclass.getName().compareTo(DOCUMENT_ROOT_NAME) == 0)
+					continue;
 
 				final Iterator erefs = eclass.getEReferences().iterator();
 				while (erefs.hasNext()) {
 					final EReference eref = (EReference) erefs.next();
-					if (!eref.isContainment()) continue;
+					if (!eref.isContainment())
+						continue;
 					final Class toClass = eref.getEType().getInstanceClass();
-					if (!containedClasses.contains(toClass)) containedClasses.add(toClass);
+					if (!containedClasses.contains(toClass))
+						containedClasses.add(toClass);
 				}
 			}
 		}
@@ -135,7 +140,8 @@ public class ERuntime {
 		while (it.hasNext()) {
 			final Class clazz = (Class) it.next();
 
-			if (containedClasses.contains(clazz)) continue; // already determined so continue
+			if (containedClasses.contains(clazz))
+				continue; // already determined so continue
 
 			if (isSelfOrSuperContained(clazz, containedClasses)) {
 				containedClasses.add(clazz);
@@ -151,15 +157,17 @@ public class ERuntime {
 	}
 
 	/**
-	 * Walks through a interface inheritance structure and determines if a superclass is contained if so then the class is added to the
-	 * containedclasses
+	 * Walks through a interface inheritance structure and determines if a superclass is contained if so then the class
+	 * is added to the containedclasses
 	 */
 	private boolean isSelfOrSuperContained(Class checkClass, ArrayList containedClasses) {
 		assert (checkClass.isInterface());
-		if (containedClasses.contains(checkClass)) return true;
+		if (containedClasses.contains(checkClass))
+			return true;
 		final Class[] interfaces = checkClass.getInterfaces();
 		for (int i = 0; i < interfaces.length; i++) {
-			if (isSelfOrSuperContained(interfaces[i], containedClasses)) return true;
+			if (isSelfOrSuperContained(interfaces[i], containedClasses))
+				return true;
 		}
 		return false;
 	}
@@ -180,14 +188,15 @@ public class ERuntime {
 	}
 
 	/**
-	 * Retains only the root parent class in a list, so if an entry in the list as a parent in the same list then the child is deleted
-	 * from the list
+	 * Retains only the root parent class in a list, so if an entry in the list as a parent in the same list then the
+	 * child is deleted from the list
 	 */
 	private void cleanList(ArrayList list) {
 		final ArrayList toRemove = new ArrayList();
 		for (int i = 0; i < list.size(); i++) {
 			final Class clazz = (Class) list.get(i);
-			if (clazz == null) continue;
+			if (clazz == null)
+				continue;
 			final Class[] supers = clazz.getInterfaces();
 			for (int j = 0; j < supers.length; j++) {
 				if (list.contains(supers[j])) {
@@ -220,7 +229,8 @@ public class ERuntime {
 			while (it.hasNext()) {
 				final EClassifier eclassifier = (EClassifier) it.next();
 
-				if (!(eclassifier instanceof EClass)) continue;
+				if (!(eclassifier instanceof EClass))
+					continue;
 
 				final Object instance = getPersistableInstance(eclassifier);
 				if (instance != null) {
@@ -244,7 +254,8 @@ public class ERuntime {
 	private void addAbstractSupers(Class clazz) {
 
 		// clazz is null or not an eobject
-		if (clazz == null || !EObject.class.isAssignableFrom(clazz)) return;
+		if (clazz == null || !EObject.class.isAssignableFrom(clazz))
+			return;
 
 		// if already been here then go on for the superclasses
 		if (concreteToEClass.get(clazz) != null) {
@@ -264,13 +275,15 @@ public class ERuntime {
 	}
 
 	/**
-	 * Returns a persistable instance of an eclassifier, if the eclassifier is not persistable/instantiable then null is returned.
+	 * Returns a persistable instance of an eclassifier, if the eclassifier is not persistable/instantiable then null is
+	 * returned.
 	 */
 	private Object getPersistableInstance(EClassifier eclassifier) {
 		final EClass eclazz = (EClass) eclassifier;
 
 		// abstract instance classes are added later
-		if (eclazz.isAbstract() || eclazz.isInterface()) return null;
+		if (eclazz.isAbstract() || eclazz.isInterface())
+			return null;
 
 		// Check if the class is persistable
 		try {
@@ -296,8 +309,10 @@ public class ERuntime {
 
 	/** Convenience method to easily determine which packages should be ignored */
 	private static boolean ignorePackage(EPackage epack) {
-		if (epack instanceof XMLTypePackageImpl) return true; // ignore this
-		if (epack instanceof EcorePackageImpl) return true; // ignore this
+		if (epack instanceof XMLTypePackageImpl)
+			return true; // ignore this
+		if (epack instanceof EcorePackageImpl)
+			return true; // ignore this
 		return false;
 	}
 
@@ -329,13 +344,14 @@ public class ERuntime {
 	 */
 	public EStructuralFeature getStructuralFeature(Class clazz, String FieldName) {
 		final EClass eclass = getEClass(clazz);
-		if (eclass == null) return null;
+		if (eclass == null)
+			return null;
 		return StoreUtil.getEStructuralFeature(eclass, FieldName);
 	}
 
 	/**
-	 * Returns the list of EMF interfaces which are contained. Only the topmost interface in a class hierarchy is returned. This can be
-	 * used to automatically create the econtainer field mappings.
+	 * Returns the list of EMF interfaces which are contained. Only the topmost interface in a class hierarchy is
+	 * returned. This can be used to automatically create the econtainer field mappings.
 	 * 
 	 * Note that multiple classes in one inheritance structure can be present.
 	 */

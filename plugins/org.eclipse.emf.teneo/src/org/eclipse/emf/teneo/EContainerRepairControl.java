@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EContainerRepairControl.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: EContainerRepairControl.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -31,21 +31,22 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 
 /**
- * Supports the repair of the eContainer and resource setting of child objects when an object is loaded from the backing store.
+ * Supports the repair of the eContainer and resource setting of child objects when an object is loaded from the backing
+ * store.
  * 
- * Repair of the eContainer is required in two distinct cases: 1) 1:1 relation: in this case the repair is implemented in the caching
- * mechanism. This was the correct location because in jpox an object is added to the level 1 cache just after it is retrieved from the
- * db and before it is passed on to the requesting application. 2) 1:n relation: in this case the EListWrapper knows that a containment
- * relation is being loaded and calls the equivalent methods here.
+ * Repair of the eContainer is required in two distinct cases: 1) 1:1 relation: in this case the repair is implemented
+ * in the caching mechanism. This was the correct location because in jpox an object is added to the level 1 cache just
+ * after it is retrieved from the db and before it is passed on to the requesting application. 2) 1:n relation: in this
+ * case the EListWrapper knows that a containment relation is being loaded and calls the equivalent methods here.
  * 
- * Note that both cases need to take into account two-way relatiofns. For two-way relations the featureid of the opposing ereferencing
- * is used. For one-way relations emf apparently works with negative featureid's.
+ * Note that both cases need to take into account two-way relatiofns. For two-way relations the featureid of the
+ * opposing ereferencing is used. For one-way relations emf apparently works with negative featureid's.
  * 
- * This class also supports caching so that the system can quickly determine if for a certain class eContainers need to be set in child
- * objects.
+ * This class also supports caching so that the system can quickly determine if for a certain class eContainers need to
+ * be set in child objects.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class EContainerRepairControl {
@@ -59,8 +60,8 @@ public class EContainerRepairControl {
 	private static final Hashtable repair = new Hashtable();
 
 	/**
-	 * Recursively sets the resource of the object and all its referenced objects, only if the object has a resource which is not set
-	 * and does not have a container.
+	 * Recursively sets the resource of the object and all its referenced objects, only if the object has a resource
+	 * which is not set and does not have a container.
 	 */
 	public static void setEResourceToAlLContent(InternalEObject start, Resource res) {
 		for (Iterator it = start.eClass().getEAllStructuralFeatures().iterator(); it.hasNext();) {
@@ -69,7 +70,8 @@ public class EContainerRepairControl {
 				final EReference eref = (EReference) estruct;
 				if (eref.isMany()) {
 					final EList list = (EList) start.eGet(eref);
-					if (list == null) continue;
+					if (list == null)
+						continue;
 					for (int i = 0; i < list.size(); i++) {
 						final InternalEObject child = (InternalEObject) list.get(i);
 						if (child.eResource() == null) // no container
@@ -90,7 +92,8 @@ public class EContainerRepairControl {
 	/** Sets the resource on an object or if it has a container on its container */
 	private static void setResource(InternalEObject eobj, ArrayList objs, Resource.Internal res) {
 		// been here go away
-		if (objs.contains(eobj)) return;
+		if (objs.contains(eobj))
+			return;
 
 		// set the resource here or at the container
 		if (eobj.eResource() == null) {
@@ -109,13 +112,16 @@ public class EContainerRepairControl {
 			log.debug("Repairing container relations of children of: " + owner.getClass().getName());
 		}
 
-		if (!(owner instanceof InternalEObject)) return;
+		if (!(owner instanceof InternalEObject))
+			return;
 
-		if (norepairRequired.get(owner.getClass()) != null) return;
+		if (norepairRequired.get(owner.getClass()) != null)
+			return;
 
 		ArrayList repairList = (ArrayList) repair.get(owner.getClass());
 
-		if (repairList == null) repairList = buildRepairList((InternalEObject) owner);
+		if (repairList == null)
+			repairList = buildRepairList((InternalEObject) owner);
 
 		if (log.isDebugEnabled() && repairList.size() > 0) {
 			log.debug("Repairing container relations of children of: " + owner.getClass().getName());
@@ -133,8 +139,9 @@ public class EContainerRepairControl {
 	}
 
 	/**
-	 * Convenience method to just set the container directly for an object, this method does not cascade down. The featureid is the id
-	 * of the feature of the owner which contains the child. The feature id is corrected in the method.
+	 * Convenience method to just set the container directly for an object, this method does not cascade down. The
+	 * featureid is the id of the feature of the owner which contains the child. The feature id is corrected in the
+	 * method.
 	 */
 	public static void setContainer(InternalEObject owner, InternalEObject child, EStructuralFeature estruct) {
 		final int featureID;
@@ -147,8 +154,8 @@ public class EContainerRepairControl {
 	}
 
 	/**
-	 * Method to repair the eContainer of the child object of this object. Note the featureid is internally translated to an econtainer
-	 * id, nl. subtract from EOPPOSITE_FEATURE_BASE
+	 * Method to repair the eContainer of the child object of this object. Note the featureid is internally translated
+	 * to an econtainer id, nl. subtract from EOPPOSITE_FEATURE_BASE
 	 */
 	public static void repair(Object owner, Object child, EStructuralFeature estruct) {
 		final int correctedFeatureID;
@@ -158,14 +165,18 @@ public class EContainerRepairControl {
 			correctedFeatureID = InternalEObject.EOPPOSITE_FEATURE_BASE - estruct.getFeatureID();
 		}
 
-		if (!(owner instanceof InternalEObject)) return;
-		if (!(child instanceof InternalEObject)) return;
+		if (!(owner instanceof InternalEObject))
+			return;
+		if (!(child instanceof InternalEObject))
+			return;
 
-		if (norepairRequired.get(owner.getClass()) != null) return;
+		if (norepairRequired.get(owner.getClass()) != null)
+			return;
 
 		ArrayList repairList = (ArrayList) repair.get(owner.getClass());
 
-		if (repairList == null) repairList = buildRepairList((InternalEObject) owner);
+		if (repairList == null)
+			repairList = buildRepairList((InternalEObject) owner);
 
 		if (log.isDebugEnabled() && repairList.size() > 0) {
 			log.debug("Repairing container relations of children of: " + owner.getClass().getName());
@@ -233,7 +244,8 @@ public class EContainerRepairControl {
 		void repair(InternalEObject owner) {
 			// The container repair of a list is done through the repair(owner, child) method,
 			// directly in the elist.doLoadFromStore method
-			if (container.isMany()) return;
+			if (container.isMany())
+				return;
 
 			final Object containedObject = owner.eGet(container);
 			if (containedObject == null) // not set
@@ -247,17 +259,21 @@ public class EContainerRepairControl {
 			/*
 			 * if (containedObject instanceof JPOXEList) { if (((JPOXEList)containedObject).getOwner() == owner) return;
 			 * 
-			 * throw new StoreJPOXEmfException("Owner of containerobject is different from passed owner, " + "this should have been
-			 * solved in the elist" + containedObject.getClass() + "/" + owner.getClass().getName() + "/" + container.getName()); }
+			 * throw new StoreJPOXEmfException("Owner of containerobject is different from passed owner, " + "this
+			 * should have been solved in the elist" + containedObject.getClass() + "/" + owner.getClass().getName() +
+			 * "/" + container.getName()); }
 			 */
 
-			if (!(containedObject instanceof InternalEObject)) return;
+			if (!(containedObject instanceof InternalEObject))
+				return;
 
 			final InternalEObject containedEObject = (InternalEObject) containedObject;
-			if (containedEObject.eContainer() == owner) return; // already set?
+			if (containedEObject.eContainer() == owner)
+				return; // already set?
 
 			if (log.isDebugEnabled()) {
-				log.debug("Set container of child " + containedObject.getClass().getName() + " containerfield " + container.getName());
+				log.debug("Set container of child " + containedObject.getClass().getName() + " containerfield "
+						+ container.getName());
 			}
 
 			// and set it
@@ -265,9 +281,10 @@ public class EContainerRepairControl {
 
 			// also repair the resource if applicable!
 			/*
-			 * if (containedObject instanceof InternalEObject) { final InternalEObject eobj = (InternalEObject)containedObject; if
-			 * (eobj.eResource() != owner.eResource()) { log.debug("Set resource of eobj " + eobj.getClass().getName() + " to resource " +
-			 * owner.eResource().getURI()); eobj.eSetResource((Resource.Internal)owner.eResource(), null); } }
+			 * if (containedObject instanceof InternalEObject) { final InternalEObject eobj =
+			 * (InternalEObject)containedObject; if (eobj.eResource() != owner.eResource()) { log.debug("Set resource of
+			 * eobj " + eobj.getClass().getName() + " to resource " + owner.eResource().getURI());
+			 * eobj.eSetResource((Resource.Internal)owner.eResource(), null); } }
 			 */
 
 			// and also do its children
@@ -280,10 +297,12 @@ public class EContainerRepairControl {
 				return; // not handled by this container
 			}
 
-			if (child.eContainer() == owner) return; // already set?
+			if (child.eContainer() == owner)
+				return; // already set?
 
 			if (log.isDebugEnabled()) {
-				log.debug("Set container of child " + child.getClass().getName() + " containerfield " + container.getName());
+				log.debug("Set container of child " + child.getClass().getName() + " containerfield "
+						+ container.getName());
 			}
 
 			// and set it
@@ -291,15 +310,11 @@ public class EContainerRepairControl {
 
 			// also repair the resource if applicable!
 			/*
-			if (child instanceof InternalEObject) { 
-				final InternalEObject eobj = (InternalEObject)child; 
-				Object ores = owner.eResource();
-				Object eres = eobj.eResource();
-				if (eobj.eResource() != owner.eResource()) { 
-					log.debug("Set resource of eobj " + eobj.getClass().getName() + " to resource " + owner.eResource().getURI()); 
-					eobj.eSetResource((Resource.Internal)owner.eResource(), null); 
-				} 
-			}*/
+			 * if (child instanceof InternalEObject) { final InternalEObject eobj = (InternalEObject)child; Object ores =
+			 * owner.eResource(); Object eres = eobj.eResource(); if (eobj.eResource() != owner.eResource()) {
+			 * log.debug("Set resource of eobj " + eobj.getClass().getName() + " to resource " +
+			 * owner.eResource().getURI()); eobj.eSetResource((Resource.Internal)owner.eResource(), null); } }
+			 */
 
 			EContainerRepairControl.repair(child);
 		}

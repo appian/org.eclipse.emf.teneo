@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.1 2006/07/04 21:04:05 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -31,11 +31,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.DelegatingEcoreEList;
 
 /**
- * A persistable elist which can be used by different or mappers. This persistable elist works around the idea that the persisted list
- * (e.g. PersistentList in Hibernate) is the delegate for this elist.
+ * A persistable elist which can be used by different or mappers. This persistable elist works around the idea that the
+ * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public abstract class PersistableEList extends DelegatingEcoreEList implements PersistableDelegateList {
@@ -75,8 +75,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements P
 			delegate = list;
 		}
 
-		logString = "EList of type: " + this.getClass().getName() + " of member " + estructuralFeature.getName() + " owned by "
-				+ owner.getClass().getName() + " with delegate list " + delegate.getClass().getName();
+		logString = "EList of type: " + this.getClass().getName() + " of member " + estructuralFeature.getName()
+				+ " owned by " + owner.getClass().getName() + " with delegate list " + delegate.getClass().getName();
 
 		log.debug("Created persistable list " + logString);
 	}
@@ -103,7 +103,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements P
 	public boolean isUnique() {
 		return estructuralFeature.isUnique();
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -143,11 +143,13 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements P
 
 	/** Performs the load action if not yet oaded and sends out the load notification. */
 	protected void load() {
-		if (isLoaded()) return;
+		if (isLoaded())
+			return;
 
 		// When we are loading we should not be reloaded!
 		// this can happen in the jpox elist impl. when detaching
-		if (isLoading) return;
+		if (isLoading)
+			return;
 
 		isLoading = true;
 		log.debug("Loading " + getLogString());
@@ -164,7 +166,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements P
 	 * @see org.eclipse.emf.ecore.util.EcoreEList#isNotificationRequired()
 	 */
 	protected boolean isNotificationRequired() {
-		if (!isLoaded() || isLoading()) return false; // not yet loaded so no notifications, prevents infinite looping
+		if (!isLoaded() || isLoading())
+			return false; // not yet loaded so no notifications, prevents infinite looping
 		return super.isNotificationRequired();
 	}
 

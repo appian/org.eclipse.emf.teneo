@@ -12,34 +12,33 @@
  *
  * </copyright>
  *
- * $Id: Document.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: Document.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
 
 import java.util.Date;
 
-
 /**
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class Document {
 
 	/** The doctype */
 	private String docType = "";
-	
+
 	/** Root element */
 	private Element root = null;
-	
+
 	/** Set the docType */
 	public void setDocType(String docType) {
 		this.docType = docType;
 	}
-	
+
 	/** Set the root */
 	public Element setRoot(Element root) {
 		this.root = root;
@@ -50,7 +49,7 @@ public class Document {
 	public Element getRoot() {
 		return root;
 	}
-	
+
 	/** Emit ourselve as a XML string */
 	public String emitXML() {
 		final StringBuffer result = new StringBuffer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");

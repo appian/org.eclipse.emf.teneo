@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: FeatureMapEntry.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: FeatureMapEntry.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Is used to replace the EMF feature map entry with an entry which can be handled by the or layer.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public abstract class FeatureMapEntry implements FeatureMap.Entry {
@@ -45,31 +45,35 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 	private static final Hashtable cacheEntryClass = new Hashtable();
 
 	/**
-	 * Method to get from a class and field name to the name of the generated Group class. This method also tries the interfaces of a
-	 * class (and the superinterfaces etc.). The result is cached to get the results faster the next time.
+	 * Method to get from a class and field name to the name of the generated Group class. This method also tries the
+	 * interfaces of a class (and the superinterfaces etc.). The result is cached to get the results faster the next
+	 * time.
 	 */
 	public static Class getEntryClass(Class clazz, String fieldName) {
 		return getEntryClass(clazz, fieldName, clazz.getName() + fieldName);
 	}
 
 	/**
-	 * Returns the entry class on the basis of the interfaces of the passed class, this is used for hibernate which will have
-	 * featuremap entries generated on interface level instead of impl. level public static Class getEntryClassFromInterface(Class
-	 * clazz, String fieldName) { // try the interfaces for (int i = 0; i < clazz.getInterfaces().length; i++) { final Class
-	 * elementClass = getEntryClass(clazz.getInterfaces()[i], fieldName); if (elementClass != null) return elementClass; } throw new
-	 * StoreException("No FeatureMapEntry class found for class/field: " + clazz.getName() + "/" + fieldName); }
+	 * Returns the entry class on the basis of the interfaces of the passed class, this is used for hibernate which will
+	 * have featuremap entries generated on interface level instead of impl. level public static Class
+	 * getEntryClassFromInterface(Class clazz, String fieldName) { // try the interfaces for (int i = 0; i <
+	 * clazz.getInterfaces().length; i++) { final Class elementClass = getEntryClass(clazz.getInterfaces()[i],
+	 * fieldName); if (elementClass != null) return elementClass; } throw new StoreException("No FeatureMapEntry class
+	 * found for class/field: " + clazz.getName() + "/" + fieldName); }
 	 */
 
 	/**
-	 * Method to get from a class and field name to the name of the generated Group class. This method also tries the interfaces of a
-	 * class (and the superinterfaces etc.). The result is cached to get the results faster the next time.
+	 * Method to get from a class and field name to the name of the generated Group class. This method also tries the
+	 * interfaces of a class (and the superinterfaces etc.). The result is cached to get the results faster the next
+	 * time.
 	 */
 	private static Class getEntryClass(Class clazz, String fieldName, String originalName) {
 		String className = clazz.getName() + fieldName;
 
 		// first try the cache
 		Class elementClass = (Class) cacheEntryClass.get(className);
-		if (elementClass != null) return elementClass;
+		if (elementClass != null)
+			return elementClass;
 
 		try {
 			elementClass = ClassLoaderResolver.classForName(className);
@@ -95,7 +99,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 				if (clazz.isInterface()) {
 					for (int i = 0; i < clazz.getInterfaces().length; i++) {
 						elementClass = getEntryClass(clazz.getInterfaces()[i], fieldName, originalName);
-						if (elementClass != null) break;
+						if (elementClass != null)
+							break;
 					}
 				} else // try the superclass
 				{
@@ -105,8 +110,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 				}
 
 				if (elementClass == null && !clazz.isInterface()) {
-					throw new StoreException("Class can not be found, the following names were tried: 1) " + origName + ", and 2) "
-							+ className);
+					throw new StoreException("Class can not be found, the following names were tried: 1) " + origName
+							+ ", and 2) " + className);
 				}
 			}
 		}
@@ -128,7 +133,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 
 				// return the entry if it is not yet set, in this case it does not yet belong to a
 				// featuremap and can be used. This happens with a featuremap which has already been replaced.
-				if (!fmEntry.isFeatureMapSet() || fmEntry.belongsToFeatureMap(owningMap)) return fmEntry;
+				if (!fmEntry.isFeatureMapSet() || fmEntry.belongsToFeatureMap(owningMap))
+					return fmEntry;
 			}
 			FeatureMapEntry entry = (FeatureMapEntry) replaceByType.newInstance();
 			entry.setEntry((FeatureMap.Entry) obj);
@@ -185,8 +191,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 	private boolean initialized = false;
 
 	/**
-	 * The featuremap to which we are connected. Is used to determine if entries have been added to another featuremap. This happens in
-	 * copy actions.
+	 * The featuremap to which we are connected. Is used to determine if entries have been added to another featuremap.
+	 * This happens in copy actions.
 	 */
 	private FeatureMap.Internal owningMap;
 
@@ -249,7 +255,10 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 	/** Needs to be implemented by the subclass, returns the database id of the structural feature */
 	protected abstract String getStructuralFeatureDBID();
 
-	/** Is called by the super class to notify the subclass that it needs to set its fields based on the structural feature */
+	/**
+	 * Is called by the super class to notify the subclass that it needs to set its fields based on the structural
+	 * feature
+	 */
 	protected abstract void initializeSpecificImplementation();
 
 	/** Method which needs to be called by the subclass to set the superclass members */
@@ -263,14 +272,16 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 
 	/** Returns structural feature */
 	public EStructuralFeature getEStructuralFeature() {
-		if (!initialized) initialize();
+		if (!initialized)
+			initialize();
 
 		return eStructuralFeature;
 	}
 
 	/** Returns the value */
 	public Object getValue() {
-		if (!initialized) initialize();
+		if (!initialized)
+			initialize();
 
 		return value;
 	}
@@ -286,18 +297,21 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 	}
 
 	/**
-	 * Checks if a certain feature has a certain name or that its group (if present) has this name, in which case it is also set to
-	 * true.
+	 * Checks if a certain feature has a certain name or that its group (if present) has this name, in which case it is
+	 * also set to true.
 	 */
 	protected boolean featureForField(String name) {
-		if (eStructuralFeature.getName().compareTo(name) == 0) return true;
+		if (eStructuralFeature.getName().compareTo(name) == 0)
+			return true;
 
 		// check the group feature
 		final EStructuralFeature groupFeature = ExtendedMetaData.INSTANCE.getGroup(eStructuralFeature);
-		if (groupFeature != null && groupFeature.getName().compareTo(name) == 0) return true;
+		if (groupFeature != null && groupFeature.getName().compareTo(name) == 0)
+			return true;
 
 		final EStructuralFeature affiliatedFeature = ExtendedMetaData.INSTANCE.getAffiliation(eStructuralFeature);
-		if (affiliatedFeature != null && affiliatedFeature.getName().compareTo(name) == 0) return true;
+		if (affiliatedFeature != null && affiliatedFeature.getName().compareTo(name) == 0)
+			return true;
 		return false;
 	}
 
@@ -305,7 +319,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 	 * Sets the container property of the value if the value is an EObject and the feature is a containment feature.
 	 */
 	public void setContainer(InternalEObject owner) {
-		if (!initialized) initialize();
+		if (!initialized)
+			initialize();
 
 		if (value != null && value instanceof InternalEObject && eStructuralFeature instanceof EReference
 				&& ((EReference) eStructuralFeature).isContainment()) {
@@ -315,7 +330,8 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 
 	/** Code copied from FeatureMapUtil.EntryImpl */
 	public boolean equals(Object that) {
-		if (!initialized) initialize();
+		if (!initialized)
+			initialize();
 
 		if (this == that) {
 			return true;
@@ -331,9 +347,10 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 	/** Code copied from FeatureMapUtil.EntryImpl */
 	public int hashCode() {
 		/*
-		 * Used to create a hashcode which maps all instances of one class to the same hashcode Is required because the normal hashcode
-		 * method (see commented out part below) resulted in null-pointer exceptions in hibernate because the content of the entry was
-		 * used for determining the hashcode while the object was not initialized from the db
+		 * Used to create a hashcode which maps all instances of one class to the same hashcode Is required because the
+		 * normal hashcode method (see commented out part below) resulted in null-pointer exceptions in hibernate
+		 * because the content of the entry was used for determining the hashcode while the object was not initialized
+		 * from the db
 		 */
 		return this.getClass().hashCode();
 		/*
@@ -345,11 +362,13 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry {
 
 	/** Code copied from FeatureMapUtil.EntryImpl */
 	public String toString() {
-		if (!initialized) initialize();
+		if (!initialized)
+			initialize();
 
 		String prefix = eStructuralFeature.getEContainingClass().getEPackage().getNsPrefix();
 		eStructuralFeature.getName();
-		return (prefix != null && prefix.length() != 0 ? prefix + ":" + eStructuralFeature.getName() : eStructuralFeature.getName())
+		return (prefix != null && prefix.length() != 0 ? prefix + ":" + eStructuralFeature.getName()
+				: eStructuralFeature.getName())
 				+ "=" + value;
 	}
 }

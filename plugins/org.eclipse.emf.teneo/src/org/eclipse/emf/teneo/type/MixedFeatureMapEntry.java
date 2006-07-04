@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: MixedFeatureMapEntry.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: MixedFeatureMapEntry.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.Constants;
 
 /**
- * Is a specific EMF feature map for handling mixed content. Mixed content is content which consists of normal nodes and other content.
- * The other content supported here is text, cdata and comment.
+ * Is a specific EMF feature map for handling mixed content. Mixed content is content which consists of normal nodes and
+ * other content. The other content supported here is text, cdata and comment.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public abstract class MixedFeatureMapEntry extends FeatureMapEntry {
@@ -55,9 +55,12 @@ public abstract class MixedFeatureMapEntry extends FeatureMapEntry {
 
 	/** Gets a structuralfeature on the basis of the passed id */
 	protected EStructuralFeature retrieveStructuralFeature(String dbid) {
-		if (TEXT_FEATURE_DBID.compareTo(dbid) == 0) return Constants.TEXT;
-		if (CDATA_FEATURE_DBID.compareTo(dbid) == 0) return Constants.CDATA;
-		if (COMMENT_FEATURE_DBID.compareTo(dbid) == 0) return Constants.COMMENT;
+		if (TEXT_FEATURE_DBID.compareTo(dbid) == 0)
+			return Constants.TEXT;
+		if (CDATA_FEATURE_DBID.compareTo(dbid) == 0)
+			return Constants.CDATA;
+		if (COMMENT_FEATURE_DBID.compareTo(dbid) == 0)
+			return Constants.COMMENT;
 
 		return super.retrieveStructuralFeature(dbid);
 	}
@@ -65,6 +68,7 @@ public abstract class MixedFeatureMapEntry extends FeatureMapEntry {
 	/** Returns true if the feature is a TEXT, CDATA or COMMENT */
 	protected boolean isMixedFeature() {
 		final EStructuralFeature structuralFeature = getEStructuralFeature();
-		return structuralFeature == Constants.TEXT || structuralFeature == Constants.CDATA || structuralFeature == Constants.COMMENT;
+		return structuralFeature == Constants.TEXT || structuralFeature == Constants.CDATA
+				|| structuralFeature == Constants.COMMENT;
 	}
 }

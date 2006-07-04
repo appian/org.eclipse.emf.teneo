@@ -12,27 +12,26 @@
  *
  * </copyright>
  *
- * $Id: Node.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: Node.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
-
 
 /**
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public abstract class Node {
-	
+
 	/** The element name */
 	private String name;
-	
+
 	/** The content, only text is supported */
 	private String text = "";
-	
+
 	/**
 	 * @return the name
 	 */
@@ -41,7 +40,8 @@ public abstract class Node {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -55,7 +55,8 @@ public abstract class Node {
 	}
 
 	/**
-	 * @param text the text to set
+	 * @param text
+	 *            the text to set
 	 */
 	public void setText(String text) {
 		this.text = text;

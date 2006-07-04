@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableFeatureMap.java,v 1.1 2006/07/04 21:04:05 mtaal Exp $
+ * $Id: PersistableFeatureMap.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -36,14 +36,15 @@ import org.eclipse.emf.teneo.type.FeatureMapEntry;
 import org.eclipse.emf.teneo.util.AssertUtil;
 
 /**
- * A persistable elist which can be used by different or mappers. This persistable elist works around the idea that the persisted list
- * (e.g. PersistentList in Hibernate) is the delegate for this elist.
+ * A persistable elist which can be used by different or mappers. This persistable elist works around the idea that the
+ * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
- * Note the delegate**() methods are overridden to force a load before anything else happens with the delegated list. The addUnique.
- * addSet methods are overridden to ensure that the featuremap entries of the right type are passed to the persistent store.
+ * Note the delegate**() methods are overridden to force a load before anything else happens with the delegated list.
+ * The addUnique. addSet methods are overridden to ensure that the featuremap entries of the right type are passed to
+ * the persistent store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public abstract class PersistableFeatureMap extends DelegatingFeatureMap implements PersistableDelegateList {
@@ -84,8 +85,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 			isLoaded = list.size() > 0;
 		}
 
-		logString = "FeatureMap of member " + getEStructuralFeature().getName() + " owned by " + owner.getClass().getName()
-				+ " with delegate list " + delegate.getClass().getName();
+		logString = "FeatureMap of member " + getEStructuralFeature().getName() + " owned by "
+				+ owner.getClass().getName() + " with delegate list " + delegate.getClass().getName();
 
 		log.debug("Created persistable featuremap " + logString);
 	}
@@ -107,7 +108,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 		}
 
 		final FeatureMap.Entry emfEntry = (FeatureMap.Entry) entry;
-		return (FeatureMapEntry) FeatureMapEntry.createEntry(emfEntry.getEStructuralFeature(), emfEntry.getValue(), elementType, this);
+		return (FeatureMapEntry) FeatureMapEntry.createEntry(emfEntry.getEStructuralFeature(), emfEntry.getValue(),
+				elementType, this);
 	}
 
 	/** Convenience to replace all */
@@ -144,7 +146,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 
 	/** Replace the delegating list */
 	public void replaceDelegate(List newDelegate) {
-		AssertUtil.assertTrue("This featuremap " + logString + " already wraps an or specific featuremap", !isPersistencyWrapped());
+		AssertUtil.assertTrue("This featuremap " + logString + " already wraps an or specific featuremap",
+				!isPersistencyWrapped());
 
 		delegate = newDelegate;
 		isLoaded = false;
@@ -157,11 +160,13 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 
 	/** Performs the load action if not yet loaded and sends out the load notification */
 	protected void load() {
-		if (isLoaded) return;
+		if (isLoaded)
+			return;
 
 		// When we are loading we should not be reloaded!
 		// this can happen in the jpox fm impl. when detaching
-		if (isLoading) return;
+		if (isLoading)
+			return;
 
 		isLoading = true;
 		doLoad();
@@ -176,7 +181,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * @see org.eclipse.emf.ecore.util.EcoreEList#isNotificationRequired()
 	 */
 	protected boolean isNotificationRequired() {
-		if (!isLoaded() || isLoading()) return false; // not yet loaded so no notifications, prevents infinite looping
+		if (!isLoaded() || isLoading())
+			return false; // not yet loaded so no notifications, prevents infinite looping
 		return super.isNotificationRequired();
 	}
 
@@ -204,14 +210,16 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	/** Override the didadd to enable opposite setting */
 	protected void didAdd(int index, Object obj) {
 		final NotificationChain nc = inverseAdd(obj, null);
-		if (nc != null && isNotificationRequired()) nc.dispatch();
+		if (nc != null && isNotificationRequired())
+			nc.dispatch();
 		super.didAdd(index, obj);
 	}
 
 	/** Override the didremove to enable opposite setting */
 	protected void didRemove(int index, Object obj) {
 		final NotificationChain nc = inverseRemove(obj, null);
-		if (nc != null && isNotificationRequired()) nc.dispatch();
+		if (nc != null && isNotificationRequired())
+			nc.dispatch();
 		super.didRemove(index, obj);
 	}
 

@@ -12,21 +12,20 @@
  *
  * </copyright>
  *
- * $Id: SQLCaseStrategy.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: SQLCaseStrategy.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
-
 
 /**
  * Implementor of the sql case strategy.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public interface SQLCaseStrategy {
-	
+
 	/** Converts the name to the correct sql case strategy */
 	public String convert(String name);
 }

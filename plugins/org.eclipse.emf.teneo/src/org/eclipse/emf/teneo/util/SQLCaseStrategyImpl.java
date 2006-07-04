@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: SQLCaseStrategyImpl.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: SQLCaseStrategyImpl.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -22,12 +22,11 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.StoreException;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 
-
 /**
  * Contains number of default implementations of the sql case strategy, nl. lower, upper and none
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class SQLCaseStrategyImpl {
@@ -50,17 +49,19 @@ public class SQLCaseStrategyImpl {
 				log.debug("Creating " + LowerCase.class.getName() + " as case strategy");
 				return new None();
 			}
-			
-			return (SQLCaseStrategy)ClassLoaderResolver.classForName(option).newInstance();
+
+			return (SQLCaseStrategy) ClassLoaderResolver.classForName(option).newInstance();
 		} catch (Exception e) {
 			throw new StoreException("Could not instantiate: " + option, e);
 		}
 	}
-	
+
 	/** Lower case */
 	public static class LowerCase implements SQLCaseStrategy {
-		
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see org.eclipse.emf.teneo.util.SQLCaseStrategy#convert(java.lang.String)
 		 */
 		public String convert(String name) {
@@ -73,8 +74,10 @@ public class SQLCaseStrategyImpl {
 
 	/** Upper case */
 	public static class UpperCase implements SQLCaseStrategy {
-		
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see org.eclipse.emf.teneo.util.SQLCaseStrategy#convert(java.lang.String)
 		 */
 		public String convert(String name) {
@@ -84,12 +87,13 @@ public class SQLCaseStrategyImpl {
 			return name.toUpperCase();
 		}
 	}
-	
 
 	/** Does no conversion */
 	public static class None implements SQLCaseStrategy {
-		
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see org.eclipse.emf.teneo.util.SQLCaseStrategy#convert(java.lang.String)
 		 */
 		public String convert(String name) {

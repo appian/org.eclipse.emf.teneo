@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: AssertUtil.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: AssertUtil.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * Contains utility methods for assertions
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class AssertUtil {
@@ -36,32 +36,37 @@ public class AssertUtil {
 
 	/** Same resource check */
 	public static void assertResource(EObject obj1, EObject obj2) {
-		if (obj1.eResource() == null && ((EObject) obj2).eResource() == null) return;
+		if (obj1.eResource() == null && ((EObject) obj2).eResource() == null)
+			return;
 		if (obj1.eResource() != ((EObject) obj2).eResource()) {
-			throw new AssertionError("The resources are different: " + obj1.getClass().getName() + "/" + obj2.getClass().getName());
+			throw new AssertionError("The resources are different: " + obj1.getClass().getName() + "/"
+					+ obj2.getClass().getName());
 		}
 	}
 
 	/** Checks for correct container relations */
 	public static void assertContainer(EObject parent, EObject child) {
 		if (parent != child.eContainer()) {
-			throw new AssertionError("The child's container is incorrect! parent/child: " + parent.getClass().getName() + "/"
-					+ child.getClass().getName());
+			throw new AssertionError("The child's container is incorrect! parent/child: " + parent.getClass().getName()
+					+ "/" + child.getClass().getName());
 		}
 	}
 
 	/** Asserts that the passed entry is null */
 	public static void assertIsNull(Object obj) {
 		if (obj != null) {
-			throw new AssertionError("Passed object: " + obj.getClass().getName() + " is not null while this was expected");
+			throw new AssertionError("Passed object: " + obj.getClass().getName()
+					+ " is not null while this was expected");
 		}
 	}
 
 	/** Checks if the passed object is of the class specified, null values are ignored */
 	public static void assertInstanceOf(Object obj, Class expClass) {
-		if (obj == null) return;
+		if (obj == null)
+			return;
 		if (!(expClass.isAssignableFrom(obj.getClass()))) {
-			throw new AssertionError("Expected class: " + expClass.getName() + " but object has class: " + obj.getClass().getName());
+			throw new AssertionError("Expected class: " + expClass.getName() + " but object has class: "
+					+ obj.getClass().getName());
 		}
 	}
 
@@ -71,7 +76,8 @@ public class AssertUtil {
 			throw new AssertionError("Checking instanceof but object is null, expecting class: " + expClass.getName());
 		}
 		if (!(expClass.isAssignableFrom(obj.getClass()))) {
-			throw new AssertionError("Expected class: " + expClass.getName() + " but object has class: " + obj.getClass().getName());
+			throw new AssertionError("Expected class: " + expClass.getName() + " but object has class: "
+					+ obj.getClass().getName());
 		}
 	}
 

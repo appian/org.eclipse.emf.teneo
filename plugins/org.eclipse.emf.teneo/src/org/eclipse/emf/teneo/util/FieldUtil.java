@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: FieldUtil.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: FieldUtil.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class FieldUtil {
@@ -38,18 +38,21 @@ public class FieldUtil {
 		try {
 			field.set(obj, value);
 		} catch (IllegalAccessException e) {
-			throw new StoreException("IllegalAccessException " + obj.getClass().getName() + " field; " + field.getName());
+			throw new StoreException("IllegalAccessException " + obj.getClass().getName() + " field; "
+					+ field.getName());
 		}
 	}
 
 	/**
-	 * Returns a field using a certain name, walks up the class hierarchy to find the field, will make the field accessible also. Is a
-	 * bit rough because it does a case insensitive search. Note if the field is not found an exception is thrown.
+	 * Returns a field using a certain name, walks up the class hierarchy to find the field, will make the field
+	 * accessible also. Is a bit rough because it does a case insensitive search. Note if the field is not found an
+	 * exception is thrown.
 	 */
 	public static Field getField(Class clazz, String fieldName) {
 		Field field = (Field) fieldCache.get(clazz.getName() + "." + fieldName);
 
-		if (field != null) return field;
+		if (field != null)
+			return field;
 
 		try {
 			field = getFieldInternal(clazz, fieldName);

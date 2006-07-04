@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Element.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: Element.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
@@ -25,38 +25,38 @@ import java.util.List;
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class Element extends Node {
-	
+
 	/** The children */
 	private List children = new ArrayList();
-	
+
 	/** The attributes */
 	private List attributes = new ArrayList();
-	
+
 	/** The parent element */
 	private Element parent = null;
-	
+
 	/** Method to add attribute */
 	public Element addAttribute(String name, String text) {
 		// check if already present
 		for (Iterator it = attributes.iterator(); it.hasNext();) {
-			final Attribute attr = (Attribute)it.next();
+			final Attribute attr = (Attribute) it.next();
 			if (attr.getName().compareTo(name) == 0) {
 				attr.setText(text);
 				return this;
 			}
 		}
-		
+
 		final Attribute attr = new Attribute();
 		attr.setName(name);
 		attr.setText(text);
 		attributes.add(attr);
 		return this;
 	}
-	
+
 	/** Method to add Element */
 	public Element addElement(String name) {
 		final Element element = new Element();
@@ -67,45 +67,47 @@ public class Element extends Node {
 	}
 
 	/**
-	 * @param text the text to set
+	 * @param text
+	 *            the text to set
 	 */
 	public void addText(String text) {
 		setText(getText() + text);
 	}
-	
+
 	/** Add */
 	public Element add(Element element) {
 		children.add(element);
 		element.setParent(this);
 		return element;
 	}
-	
+
 	/** Add */
 	public Element add(int index, Element element) {
 		children.add(index, element);
 		element.setParent(this);
 		return element;
 	}
-	
+
 	/** Find a child element */
 	public Element element(String name) {
 		for (Iterator it = children.iterator(); it.hasNext();) {
-			final Element elem = (Element)it.next();
-			if (elem.getName().compareTo(name) == 0) return elem;
- 		}
+			final Element elem = (Element) it.next();
+			if (elem.getName().compareTo(name) == 0)
+				return elem;
+		}
 		return null;
 	}
 
 	/** The indexof */
 	public int indexOf(Element element) {
-		return children.indexOf(element); 
+		return children.indexOf(element);
 	}
-	
+
 	/** The remove */
 	public boolean remove(Element element) {
 		return children.remove(element);
 	}
-	
+
 	/**
 	 * @return the parent
 	 */
@@ -114,12 +116,13 @@ public class Element extends Node {
 	}
 
 	/**
-	 * @param parent the parent to set
+	 * @param parent
+	 *            the parent to set
 	 */
 	public void setParent(Element parent) {
 		this.parent = parent;
 	}
-	
+
 	/** Emit ourselves */
 	String emitXML() {
 		final StringBuffer result = new StringBuffer("\n");
@@ -127,11 +130,11 @@ public class Element extends Node {
 		for (int i = 0; i < level; i++) {
 			result.append("\t");
 		}
-		
+
 		result.append("<" + getName());
 		for (int i = 0; i < attributes.size(); i++) {
 			result.append(" ");
-			final Attribute attr = (Attribute)attributes.get(i);
+			final Attribute attr = (Attribute) attributes.get(i);
 			result.append(attr.emitXML());
 		}
 		if (children.size() == 0 && getText().length() == 0) {
@@ -144,9 +147,9 @@ public class Element extends Node {
 			result.append("</" + getName() + ">");
 			return result.toString();
 		}
-		
+
 		for (int i = 0; i < children.size(); i++) {
-			final Element element = (Element)children.get(i);
+			final Element element = (Element) children.get(i);
 			result.append(element.emitXML());
 		}
 		result.append("\n");
@@ -156,7 +159,7 @@ public class Element extends Node {
 		result.append("</" + getName() + ">");
 		return result.toString();
 	}
-	
+
 	/* Return the level */
 	int getLevel() {
 		if (getParent() != null) {
@@ -164,7 +167,7 @@ public class Element extends Node {
 		}
 		return 0;
 	}
-	
+
 	/** Clone */
 	public Object clone() {
 		final Element element = new Element();

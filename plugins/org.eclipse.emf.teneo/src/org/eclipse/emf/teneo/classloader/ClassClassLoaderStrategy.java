@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassClassLoaderStrategy.java,v 1.1 2006/07/04 21:04:05 mtaal Exp $
+ * $Id: ClassClassLoaderStrategy.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.classloader;
@@ -24,7 +24,7 @@ import org.apache.commons.logging.LogFactory;
  * Just returns the passed class loader.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class ClassClassLoaderStrategy implements ClassLoaderStrategy {
@@ -61,8 +61,8 @@ public class ClassClassLoaderStrategy implements ClassLoaderStrategy {
 	/**
 	 * Based on examples in http://www.javaworld.com/javaworld/javaqa/2003-06/01-qa-0606-load-p2.html
 	 * 
-	 * A helper class to get the call context. It subclasses SecurityManager to make getClassContext() accessible. An instance of
-	 * CallerResolver only needs to be created, not installed as an actual security manager.
+	 * A helper class to get the call context. It subclasses SecurityManager to make getClassContext() accessible. An
+	 * instance of CallerResolver only needs to be created, not installed as an actual security manager.
 	 */
 	private static final class CallerResolver extends SecurityManager {
 		protected Class[] getClassContext() {

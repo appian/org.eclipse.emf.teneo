@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.1 2006/07/04 21:04:04 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -51,7 +51,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class StoreUtil {
@@ -73,7 +73,7 @@ public class StoreUtil {
 
 	/** The nsprefix, eclass separator */
 	private static final String NSPREFIX_ECLASS_SEPARATOR = ".";
-	
+
 	/** Returns the name of the entity used for this feature map entry */
 	public static String getEntityName(EStructuralFeature feature) {
 		assert (FeatureMapUtil.isFeatureMap(feature));
@@ -82,7 +82,8 @@ public class StoreUtil {
 
 	/** Returns a loggable string for a efeature */
 	public static String toString(EStructuralFeature efeature) {
-		if (efeature == null) return "NULL"; // possibly throw error
+		if (efeature == null)
+			return "NULL"; // possibly throw error
 		return efeature.getEContainingClass().getName() + "/" + efeature.getName();
 	}
 
@@ -90,7 +91,7 @@ public class StoreUtil {
 	public static String getEClassURI(EClass eclass, String qualify) {
 		if (qualify == null || qualify.compareTo(PersistenceOptions.QUALIFY_ENTITY_NAME_NO) == 0) {
 			return eclass.getName();
-		} else if (qualify.compareTo(PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX) == 0){ 
+		} else if (qualify.compareTo(PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX) == 0) {
 			return eclass.getEPackage().getNsPrefix() + "." + eclass.getName();
 		}
 		throw new StoreException("Qualify type " + qualify + " unknown");
@@ -101,7 +102,8 @@ public class StoreUtil {
 	 */
 	public static EStructuralFeature getEStructuralFeature(String eclassURI, String featureName, EPackage[] epackages) {
 		EClass eclass = getEClassFromURI(eclassURI, epackages);
-		if (eclass == null) return null;
+		if (eclass == null)
+			return null;
 		return eclass.getEStructuralFeature(featureName);
 	}
 
@@ -113,7 +115,7 @@ public class StoreUtil {
 			nsPrefix = theEClassURI.substring(0, eClassName.indexOf(NSPREFIX_ECLASS_SEPARATOR));
 			eClassName = theEClassURI.substring(1 + eClassName.indexOf(NSPREFIX_ECLASS_SEPARATOR));
 		}
-		
+
 		ArrayList eclasses = new ArrayList();
 		for (int i = 0; i < epackages.length; i++) {
 			EPackage epack = epackages[i];
@@ -125,7 +127,7 @@ public class StoreUtil {
 				eclasses.add(eclassifier);
 			}
 		}
-		
+
 		if (eclasses.size() == 1) {
 			return (EClass) eclasses.get(0);
 		} else if (eclasses.size() == 0) {
@@ -143,21 +145,24 @@ public class StoreUtil {
 		/*
 		 * int lastIndex = eclassURI.lastIndexOf(PATH_SEPARATOR);
 		 * 
-		 * if (lastIndex == -1) { throw new StoreAnnotationsException("The uri: " + eclassURI + " has an illegal format, it can not
-		 * parsed to an eclass."); }
+		 * if (lastIndex == -1) { throw new StoreAnnotationsException("The uri: " + eclassURI + " has an illegal format,
+		 * it can not parsed to an eclass."); }
 		 * 
-		 * final String nsuri = eclassURI.substring(0, lastIndex); final String name = eclassURI.substring(lastIndex + 1);
+		 * final String nsuri = eclassURI.substring(0, lastIndex); final String name = eclassURI.substring(lastIndex +
+		 * 1);
 		 * 
 		 * final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(nsuri); if (epack == null) { throw new
 		 * StoreAnnotationsException("No package found for the nsuri: " + nsuri + " using the eclassURI " + eclassURI); }
 		 * 
-		 * final EClass eclass = (EClass)epack.getEClassifier(name); if (eclass == null) { throw new StoreAnnotationsException("The
-		 * nsuri " + nsuri + " and eclassname: " + name + " does not resolve to an EClass"); } return eclass;
+		 * final EClass eclass = (EClass)epack.getEClassifier(name); if (eclass == null) { throw new
+		 * StoreAnnotationsException("The nsuri " + nsuri + " and eclassname: " + name + " does not resolve to an
+		 * EClass"); } return eclass;
 		 */
 	}
 
 	/** Sends out a notification of an elist load */
-	public static void dispatchEListLoadNotification(final EObject notifier, final EList elist, final EStructuralFeature feature) {
+	public static void dispatchEListLoadNotification(final EObject notifier, final EList elist,
+			final EStructuralFeature feature) {
 		notifier.eNotify(new NotificationImpl(Constants.ELIST_LOAD_NOTIFICATION, null, elist) {
 			public Object getNotifier() {
 				return notifier;
@@ -186,14 +191,16 @@ public class StoreUtil {
 	/** Returns true if the passed feature is a wildcard feature */
 	public static boolean isWildCard(EStructuralFeature feature) {
 		EAnnotation eAnnotation = feature.getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData");
-		if (eAnnotation == null) return false;
+		if (eAnnotation == null)
+			return false;
 		return eAnnotation.getDetails().get("kind") != null
 				&& ((String) eAnnotation.getDetails().get("kind")).compareTo("elementWildcard") == 0;
 		/*
 		 * // todo optimise this with a cache final EAnnotation eannotation =
-		 * feature.getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData"); if (eannotation != null) { final String kind =
-		 * (String)eannotation.getDetails().get("kind"); final String wildcards = (String)eannotation.getDetails().get("wildcards"); if
-		 * (wildcards != null && kind != null && "elementWildcard".compareTo(kind) == 0) { return true; } } return false;
+		 * feature.getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData"); if (eannotation != null) {
+		 * final String kind = (String)eannotation.getDetails().get("kind"); final String wildcards =
+		 * (String)eannotation.getDetails().get("wildcards"); if (wildcards != null && kind != null &&
+		 * "elementWildcard".compareTo(kind) == 0) { return true; } } return false;
 		 */
 	}
 
@@ -211,11 +218,12 @@ public class StoreUtil {
 	}
 
 	/**
-	 * Sets the eresource by walking up the containment structure and finding the highest parent. There the resource is set.If the
-	 * resource is already correct nothing is done.
+	 * Sets the eresource by walking up the containment structure and finding the highest parent. There the resource is
+	 * set.If the resource is already correct nothing is done.
 	 */
 	public static void setEResource(InternalEObject eobj, Resource.Internal resource) {
-		if (eobj.eResource() == resource) return;
+		if (eobj.eResource() == resource)
+			return;
 
 		InternalEObject currentEObject = eobj;
 
@@ -234,8 +242,9 @@ public class StoreUtil {
 		int beforeLastIndex = strid.lastIndexOf(PATH_SEPARATOR, lastIndex - 1);
 
 		if (lastIndex == -1 || beforeLastIndex == -1) {
-			throw new StoreException("The database id stored for a structuralfeature used in a featuremap entry is invalid, dbid: "
-					+ strid);
+			throw new StoreException(
+					"The database id stored for a structuralfeature used in a featuremap entry is invalid, dbid: "
+							+ strid);
 		}
 
 		final String nsuri = strid.substring(0, beforeLastIndex);
@@ -249,7 +258,8 @@ public class StoreUtil {
 
 		final EClass eclass = (EClass) epack.getEClassifier(eclassName);
 		if (eclass == null) {
-			throw new StoreException("The dbid " + strid + " and eclassname: " + eclassName + " does not resolve to an eclass");
+			throw new StoreException("The dbid " + strid + " and eclassname: " + eclassName
+					+ " does not resolve to an eclass");
 		}
 
 		final EStructuralFeature structFeature = eclass.getEStructuralFeature(featureName);
@@ -288,7 +298,8 @@ public class StoreUtil {
 
 		final EDataType edatatype = (EDataType) epack.getEClassifier(name);
 		if (edatatype == null) {
-			throw new StoreException("The dbid " + strid + " and eclassname: " + name + " does not resolve to an EDataType");
+			throw new StoreException("The dbid " + strid + " and eclassname: " + name
+					+ " does not resolve to an EDataType");
 		}
 		return edatatype;
 	}
@@ -333,7 +344,8 @@ public class StoreUtil {
 			}
 		}
 
-		if (reserve != null) return reserve;
+		if (reserve != null)
+			return reserve;
 
 		throw new StoreException("The fieldname " + fieldName + " is not present as a ereference type in the class: "
 				+ eclass.getName());
@@ -346,7 +358,8 @@ public class StoreUtil {
 		final ArrayList manyRefs = new ArrayList();
 		for (Iterator it = emfObj.eClass().getEAllStructuralFeatures().iterator(); it.hasNext();) {
 			final EStructuralFeature estruct = (EStructuralFeature) it.next();
-			if (estruct instanceof EReference && (((EReference) estruct).isMany() || isGroupFeature(estruct) || isWildCard(estruct))) {
+			if (estruct instanceof EReference
+					&& (((EReference) estruct).isMany() || isGroupFeature(estruct) || isWildCard(estruct))) {
 				manyRefs.add(estruct);
 			}
 		}
@@ -357,7 +370,8 @@ public class StoreUtil {
 	public static boolean isGroupFeature(EStructuralFeature estruct) {
 		final EAnnotation annotation = estruct.getEAnnotation(ANNOTATION_SOURCE);
 
-		if (annotation == null) return false;
+		if (annotation == null)
+			return false;
 
 		final EMap map = annotation.getDetails();
 		final Iterator keys = map.keySet().iterator();
@@ -375,7 +389,8 @@ public class StoreUtil {
 	public static String getGroupName(EStructuralFeature estruct) {
 		final EAnnotation annotation = estruct.getEAnnotation(ANNOTATION_SOURCE);
 
-		if (annotation == null) return null;
+		if (annotation == null)
+			return null;
 
 		boolean isGroup = false;
 		String name = null;
@@ -411,10 +426,10 @@ public class StoreUtil {
 		 * 
 		 * if (annotation == null) return false;
 		 * 
-		 * final EMap map = annotation.getDetails(); final Iterator keys = map.keySet().iterator(); while (keys.hasNext()) { final
-		 * String key = (String)keys.next(); final String value = (String)map.get(key);
-		 *  // for a choice the groupName in the group element starts with # for substitution it // doesn't therefore the endsWith if
-		 * ("group".compareTo(key) == 0 && value != null && groupName.endsWith(value)) { return true; } }
+		 * final EMap map = annotation.getDetails(); final Iterator keys = map.keySet().iterator(); while
+		 * (keys.hasNext()) { final String key = (String)keys.next(); final String value = (String)map.get(key); // for
+		 * a choice the groupName in the group element starts with # for substitution it // doesn't therefore the
+		 * endsWith if ("group".compareTo(key) == 0 && value != null && groupName.endsWith(value)) { return true; } }
 		 * 
 		 * return false;
 		 */
@@ -431,9 +446,9 @@ public class StoreUtil {
 		 * 
 		 * if (annotation == null) return false;
 		 * 
-		 * final EMap map = annotation.getDetails(); final Iterator keys = map.keySet().iterator(); while (keys.hasNext()) { final
-		 * String key = (String)keys.next(); final String value = (String)map.get(key); if ("group".compareTo(key) == 0 && value !=
-		 * null) return true; }
+		 * final EMap map = annotation.getDetails(); final Iterator keys = map.keySet().iterator(); while
+		 * (keys.hasNext()) { final String key = (String)keys.next(); final String value = (String)map.get(key); if
+		 * ("group".compareTo(key) == 0 && value != null) return true; }
 		 * 
 		 * return false;
 		 */
@@ -472,7 +487,8 @@ public class StoreUtil {
 		try {
 			field.set(obj, value);
 		} catch (IllegalAccessException e) {
-			throw new StoreException("IllegalAccessException " + obj.getClass().getName() + " field; " + field.getName());
+			throw new StoreException("IllegalAccessException " + obj.getClass().getName() + " field; "
+					+ field.getName());
 		}
 	}
 
@@ -524,11 +540,13 @@ public class StoreUtil {
 
 	/** Take care of one class */
 	private static void buildPackagePathFromClassName(String path, ArrayList newPackagePathList) {
-		if (newPackagePathList.contains(path + PATH_SEPARATOR)) return;
+		if (newPackagePathList.contains(path + PATH_SEPARATOR))
+			return;
 		newPackagePathList.add(path + PATH_SEPARATOR);
 
 		final int sepIndex = path.lastIndexOf(PATH_SEPARATOR);
-		if (sepIndex == -1) return;
+		if (sepIndex == -1)
+			return;
 		buildPackagePathFromClassName(path.substring(0, sepIndex), newPackagePathList);
 	}
 }
