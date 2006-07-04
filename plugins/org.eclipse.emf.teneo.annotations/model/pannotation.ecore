@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pannotation"
+    nsURI="http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation" nsPrefix="org.elver.annotation">
+  <eAnnotations source="http://www.eclipse.org/emf/2004/EmfaticAnnotationMap">
+    <details key="Target" value="http://annotation.elver.org/internal/Target"/>
+    <details key="Unsupported" value="http://annotation.elver.org/internal/Unsupported"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="PAnnotation" interface="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="CompatibleEModelElementType AnnotationIsSupported"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eModelElement" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeOverride" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Collection">
+      <details key="name" value="AttributeOverrides"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="column" lowerBound="1"
+        eType="#//Column" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeOverrides" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" upperBound="-1"
+        eType="#//AttributeOverride" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssociationOverride" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Collection">
+      <details key="name" value="AssociationOverrides"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" lowerBound="1"
+        upperBound="-1" eType="#//JoinColumn" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssociationOverrides" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" upperBound="-1"
+        eType="#//AssociationOverride" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Basic" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="AllowedElementType"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fetch" eType="#//FetchType"
+        defaultValueLiteral="EAGER"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Column" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Collection">
+      <details key="name" value="Columns"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="ScalePrecisionForNumeric LengthForString"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nullable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="insertable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="updatable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="table" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="255" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="precision" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Columns" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" upperBound="-1"
+        eType="#//Column" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ColumnResult" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DiscriminatorColumn" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="DTYPE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorType" eType="#//DiscriminatorType"
+        defaultValueLiteral="STRING"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="31" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DiscriminatorValue" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NoAbstract"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Embeddable" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NoInterface"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Embedded" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EReference"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="EmbedByValue"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EmbeddedId" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EReference"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="EmbedByValue"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NoInterface NoReservedName"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityListener" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityResult" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="entityClass" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
+        eType="#//FieldResult" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorColumn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Enumerated" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="AllowedElementType"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//EnumType"
+        defaultValueLiteral="ORDINAL"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExcludeDefaultListeners" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExcludeSuperclassListeners" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FieldResult" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="column" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FlushMode" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EOperation"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//FlushModeType"
+        defaultValueLiteral="AUTO"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneratedValue" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EAttribute"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" eType="#//GenerationType"
+        defaultValueLiteral="AUTO"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Id" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="AllowedElementType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdBag" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="increment"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="long"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdClass" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Inheritance" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" eType="#//InheritanceType"
+        defaultValueLiteral="SINGLE_TABLE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JoinColumn" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EReference"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Collection">
+      <details key="name" value="JoinColumns"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referencedColumnName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nullable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="insertable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="updatable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="table" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JoinColumns" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EReference"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" upperBound="-1"
+        eType="#//JoinColumn" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JoinTable" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="catalog" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schema" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" upperBound="-1"
+        eType="#//JoinColumn" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inverseJoinColumns" upperBound="-1"
+        eType="#//JoinColumn" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uniqueConstraints" upperBound="-1"
+        eType="#//UniqueConstraint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Lob" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="AllowedType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ManyToMany" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EReference"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="IsManyValued"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetEntity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascade" upperBound="-1"
+        eType="#//CascadeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fetch" eType="#//FetchType"
+        defaultValueLiteral="LAZY"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ManyToOne" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EReference"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="IsNotManyValued"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetEntity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascade" upperBound="-1"
+        eType="#//CascadeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fetch" eType="#//FetchType"
+        defaultValueLiteral="EAGER"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapKey" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MappedSuperclass" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NoInterface"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedNativeQueries" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EPackage"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//NamedNativeQuery" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedNativeQuery" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EPackage"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="query" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hints" upperBound="-1"
+        eType="#//QueryHint" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultSetMapping" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedQueries" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EPackage"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//NamedQuery" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedQuery" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EPackage"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="query" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hints" upperBound="-1"
+        eType="#//QueryHint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneToMany" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="IsManyValued"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetEntity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascade" upperBound="-1"
+        eType="#//CascadeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fetch" eType="#//FetchType"
+        defaultValueLiteral="LAZY"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneToOne" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EReference"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="IsNotManyValued"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetEntity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascade" upperBound="-1"
+        eType="#//CascadeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fetch" eType="#//FetchType"
+        defaultValueLiteral="EAGER"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderBy" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EReference"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="WellFormedOrder IsManyValued"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PersistenceContext" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EStructuralFeature"/>
+      <details key="2" value="EOperation"/>
+      <details key="3" value="EAnnotation"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unitName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//PersistenceContextType"
+        defaultValueLiteral="TRANSACTION"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PersistenceContexts" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EStructuralFeature"/>
+      <details key="2" value="EOperation"/>
+      <details key="3" value="EParameter"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//PersistenceContext" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PersistenceUnit" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EStructuralFeature"/>
+      <details key="2" value="EOperation"/>
+      <details key="3" value="EAnnotation"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unitName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PersistenceUnits" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//PersistenceUnit" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PostLoad" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EOperation"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PostPersist" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EOperation"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PostRemove" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="2" value="EOperation"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PostUpdate" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EOperation"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrePersist" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EOperation"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PreRemove" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EOperation"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PreUpdate" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EOperation"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrimaryKeyJoinColumn" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EReference"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Collection">
+      <details key="name" value="PrimaryKeyJoinColumns"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referencedColumnName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrimaryKeyJoinColumns" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" upperBound="-1"
+        eType="#//PrimaryKeyJoinColumn" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QueryHint" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SecondaryTable" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eAnnotations source="http://annotation.elver.org/internal/Collection">
+      <details key="name" value="SecondaryTables"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="catalog" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schema" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pkJoinColumns" upperBound="-1"
+        eType="#//PrimaryKeyJoinColumn" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uniqueConstraints" upperBound="-1"
+        eType="#//UniqueConstraint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SecondaryTables" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" upperBound="-1"
+        eType="#//SecondaryTable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceGenerator" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EStructuralFeature"/>
+      <details key="2" value="EPackage"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allocationSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="50"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SqlResultSetMapping" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EOperation"/>
+      <details key="2" value="EPackage"/>
+    </eAnnotations>
+    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entities" upperBound="-1"
+        eType="#//EntityResult" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
+        eType="#//ColumnResult" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Table" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="catalog" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schema" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uniqueConstraints" upperBound="-1"
+        eType="#//UniqueConstraint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TableGenerator" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EStructuralFeature"/>
+      <details key="2" value="EPackage"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="table" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="catalog" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schema" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pkColumnName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueColumnName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pkColumnValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allocationSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="50"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uniqueConstraints" upperBound="-1"
+        eType="#//UniqueConstraint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Temporal" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="AllowedElementType"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//TemporalType"
+        defaultValueLiteral="TIMESTAMP"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EAttribute"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transient" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EModelElement"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UniqueConstraint" eSuperTypes="#//PAnnotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnNames" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Version" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="AllowedElementType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CascadeType">
+    <eLiterals name="ALL"/>
+    <eLiterals name="PERSIST" value="1"/>
+    <eLiterals name="MERGE" value="2"/>
+    <eLiterals name="REMOVE" value="3"/>
+    <eLiterals name="REFRESH" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DiscriminatorType">
+    <eLiterals name="STRING"/>
+    <eLiterals name="CHAR" value="1"/>
+    <eLiterals name="INTEGER" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumType">
+    <eLiterals name="ORDINAL"/>
+    <eLiterals name="STRING" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FetchType">
+    <eLiterals name="LAZY"/>
+    <eLiterals name="EAGER" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FlushModeType">
+    <eLiterals name="AUTO"/>
+    <eLiterals name="COMMIT" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GenerationType">
+    <eLiterals name="TABLE"/>
+    <eLiterals name="SEQUENCE" value="1"/>
+    <eLiterals name="IDENTITY" value="2"/>
+    <eLiterals name="AUTO" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="InheritanceType">
+    <eLiterals name="SINGLE_TABLE"/>
+    <eLiterals name="TABLE_PER_CLASS" value="1"/>
+    <eLiterals name="JOINED" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PersistenceContextType">
+    <eLiterals name="TRANSACTION"/>
+    <eLiterals name="EXTENDED" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TemporalType">
+    <eLiterals name="DATE"/>
+    <eLiterals name="TIME" value="1"/>
+    <eLiterals name="TIMESTAMP" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Indexed" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Unique" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+</ecore:EPackage>
