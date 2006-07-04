@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Table.java,v 1.1 2006/07/04 21:37:00 mtaal Exp $
+ * $Id: Table.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -10,37 +10,36 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Table</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getCatalog <em>Catalog</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getSchema <em>Schema</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getUniqueConstraints <em>Unique Constraints</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getCatalog <em>Catalog</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getSchema <em>Schema</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getUniqueConstraints <em>Unique Constraints</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTable()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EClass'"
  * @generated
  */
-public interface Table extends PAnnotation {
+public interface Table extends PAnnotation{
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	String copyright = "Copyright 2004-2006, Elver.org (http://www.eclipse.org/emf/teneo).\nLicensed under the Apache License, Version 2.0 (the \"License\");\n\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\nhttp://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.";
+	String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTable_Name()
@@ -50,24 +49,22 @@ public interface Table extends PAnnotation {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getName <em>Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Catalog</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Catalog</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Catalog</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Catalog</em>' attribute.
 	 * @see #setCatalog(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTable_Catalog()
@@ -77,24 +74,22 @@ public interface Table extends PAnnotation {
 	String getCatalog();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getCatalog <em>Catalog</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Catalog</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getCatalog <em>Catalog</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Catalog</em>' attribute.
 	 * @see #getCatalog()
 	 * @generated
 	 */
 	void setCatalog(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Schema</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Schema</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Schema</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Schema</em>' attribute.
 	 * @see #setSchema(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTable_Schema()
@@ -104,25 +99,23 @@ public interface Table extends PAnnotation {
 	String getSchema();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getSchema <em>Schema</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Schema</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Table#getSchema <em>Schema</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Schema</em>' attribute.
 	 * @see #getSchema()
 	 * @generated
 	 */
 	void setSchema(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Unique Constraints</b></em>' containment reference list. The list contents
-	 * are of type {@link org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Unique Constraints</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Unique Constraints</em>' containment reference list isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Unique Constraints</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTable_UniqueConstraints()
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint" containment="true"

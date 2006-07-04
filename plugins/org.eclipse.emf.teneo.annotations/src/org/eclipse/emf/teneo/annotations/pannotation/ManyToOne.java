@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToOne.java,v 1.1 2006/07/04 21:37:00 mtaal Exp $
+ * $Id: ManyToOne.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -27,13 +27,12 @@ import org.eclipse.emf.common.util.EList;
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='IsNotManyValued'"
  * @generated
  */
-public interface ManyToOne extends PAnnotation {
+public interface ManyToOne extends PAnnotation{
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	String copyright = "Copyright 2004-2006, Elver.org (http://www.eclipse.org/emf/teneo).\nLicensed under the Apache License, Version 2.0 (the \"License\");\n\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\nhttp://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.";
+	String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
 
 	/**
 	 * Returns the value of the '<em><b>Fetch</b></em>' attribute. The default value is <code>"EAGER"</code>.
@@ -55,11 +54,9 @@ public interface ManyToOne extends PAnnotation {
 	FetchType getFetch();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToOne#getFetch <em>Fetch</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Fetch</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToOne#getFetch <em>Fetch</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fetch</em>' attribute.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
 	 * @see #getFetch()
 	 * @generated
@@ -67,14 +64,14 @@ public interface ManyToOne extends PAnnotation {
 	void setFetch(FetchType value);
 
 	/**
-	 * Returns the value of the '<em><b>Optional</b></em>' attribute. The default value is <code>"true"</code>.
+	 * Returns the value of the '<em><b>Optional</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Optional</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Optional</em>' attribute.
 	 * @see #setOptional(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getManyToOne_Optional()
@@ -84,24 +81,22 @@ public interface ManyToOne extends PAnnotation {
 	boolean isOptional();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToOne#isOptional <em>Optional</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Optional</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToOne#isOptional <em>Optional</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Optional</em>' attribute.
 	 * @see #isOptional()
 	 * @generated
 	 */
 	void setOptional(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Target Entity</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Target Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target Entity</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Target Entity</em>' attribute.
 	 * @see #setTargetEntity(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getManyToOne_TargetEntity()
@@ -111,26 +106,24 @@ public interface ManyToOne extends PAnnotation {
 	String getTargetEntity();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToOne#getTargetEntity <em>Target Entity</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Target Entity</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToOne#getTargetEntity <em>Target Entity</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target Entity</em>' attribute.
 	 * @see #getTargetEntity()
 	 * @generated
 	 */
 	void setTargetEntity(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Cascade</b></em>' attribute list. The list contents are of type
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}. The literals are from the enumeration
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Cascade</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}.
+	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cascade</em>' attribute list isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Cascade</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.CascadeType
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getManyToOne_Cascade()

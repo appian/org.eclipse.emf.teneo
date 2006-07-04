@@ -23,11 +23,10 @@ import org.apache.commons.logging.LogFactory;
  * Is thrown in the org.eclipse.emf.teneo.annotations package. Takes care of logging the cause.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
-*/
+ * @version $Revision: 1.2 $
+ */
 
-public class StoreAnnotationsException extends RuntimeException 
-{	
+public class StoreAnnotationsException extends RuntimeException {
 	/**
 	 * Serial id
 	 */
@@ -36,10 +35,9 @@ public class StoreAnnotationsException extends RuntimeException
 	/**
 	 * The constructor, logs the exception also
 	 */
-	public StoreAnnotationsException(String msg, Throwable cause)
-	{
+	public StoreAnnotationsException(String msg, Throwable cause) {
 		super(msg, cause);
-		
+
 		// and log it, note the logger is recreated to automatically
 		// log for subclasses.
 		final Log log = LogFactory.getLog(this.getClass());
@@ -49,10 +47,9 @@ public class StoreAnnotationsException extends RuntimeException
 	/**
 	 * The constructor, logs the exception also
 	 */
-	public StoreAnnotationsException(String msg)
-	{
+	public StoreAnnotationsException(String msg) {
 		super(msg);
-		
+
 		// and log it, note the logger is recreated to automatically
 		// log for subclasses.
 		final Log log = LogFactory.getLog(this.getClass());

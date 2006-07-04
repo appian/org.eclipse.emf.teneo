@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EntityResult.java,v 1.1 2006/07/04 21:37:00 mtaal Exp $
+ * $Id: EntityResult.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -25,22 +25,21 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface EntityResult extends PAnnotation {
+public interface EntityResult extends PAnnotation{
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	String copyright = "Copyright 2004-2006, Elver.org (http://www.eclipse.org/emf/teneo).\nLicensed under the Apache License, Version 2.0 (the \"License\");\n\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\nhttp://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.";
+	String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
 
 	/**
-	 * Returns the value of the '<em><b>Entity Class</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Entity Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Entity Class</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Entity Class</em>' attribute.
 	 * @see #setEntityClass(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getEntityResult_EntityClass()
@@ -50,25 +49,23 @@ public interface EntityResult extends PAnnotation {
 	String getEntityClass();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.EntityResult#getEntityClass <em>Entity Class</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Entity Class</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.EntityResult#getEntityClass <em>Entity Class</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Entity Class</em>' attribute.
 	 * @see #getEntityClass()
 	 * @generated
 	 */
 	void setEntityClass(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Fields</b></em>' containment reference list. The list contents are of type
-	 * {@link org.eclipse.emf.teneo.annotations.pannotation.FieldResult}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Fields</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.FieldResult}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Fields</em>' containment reference list isn't clear, there really should be more
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Fields</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getEntityResult_Fields()
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.FieldResult" containment="true"
@@ -77,13 +74,13 @@ public interface EntityResult extends PAnnotation {
 	EList getFields();
 
 	/**
-	 * Returns the value of the '<em><b>Discriminator Column</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Discriminator Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Discriminator Column</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Discriminator Column</em>' attribute.
 	 * @see #setDiscriminatorColumn(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getEntityResult_DiscriminatorColumn()
@@ -93,11 +90,9 @@ public interface EntityResult extends PAnnotation {
 	String getDiscriminatorColumn();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.EntityResult#getDiscriminatorColumn <em>Discriminator Column</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Discriminator Column</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.EntityResult#getDiscriminatorColumn <em>Discriminator Column</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Discriminator Column</em>' attribute.
 	 * @see #getDiscriminatorColumn()
 	 * @generated
 	 */

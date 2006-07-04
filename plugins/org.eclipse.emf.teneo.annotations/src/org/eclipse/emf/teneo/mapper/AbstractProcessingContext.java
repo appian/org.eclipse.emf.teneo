@@ -41,39 +41,40 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
-*/
+ * @version $Revision: 1.2 $
+ */
 
 public class AbstractProcessingContext {
 
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(AbstractProcessingContext.class);
-	
+
 	/** The current list of overrides */
 	private Map currentOverrides = new HashMap();
 
 	/** Pushes the current overrides on the stack, to be popped later, this is to handle nested components */
 	private Stack overrideStack = new Stack();
 
-	/** Pushes the current embedding feature on the stack, to be popped later, this is to handle nested components and automatic renaming
-	 * of props
+	/**
+	 * Pushes the current embedding feature on the stack, to be popped later, this is to handle nested components and
+	 * automatic renaming of props
 	 */
 	private Stack embeddingFeatureStack = new Stack();
 
 	/** Add attribute overrides, happens for each mapped superclass and each embedded component */
 	public void addOverrides(AttributeOverrides aos) {
 		if (aos != null) {
-			for (Iterator i = aos.getValue().iterator(); i.hasNext(); ) {
+			for (Iterator i = aos.getValue().iterator(); i.hasNext();) {
 				AttributeOverride override = (AttributeOverride) i.next();
 				currentOverrides.put(override.getName(), override.getColumn());
 			}
 		}
 	}
-	
+
 	/** Add association overrides, for each mapped subclass */
 	public void addOverrides(AssociationOverrides overrides) {
 		if (overrides != null) {
-			for (Iterator it = overrides.getValue().iterator(); it.hasNext(); ) {
+			for (Iterator it = overrides.getValue().iterator(); it.hasNext();) {
 				AssociationOverride override = (AssociationOverride) it.next();
 				currentOverrides.put(override.getName(), override.getJoinColumns());
 			}
@@ -84,10 +85,10 @@ public class AbstractProcessingContext {
 	public void pushOverrideOnStack() {
 		overrideStack.push(new HashMap(currentOverrides));
 	}
-	
+
 	/** Pop the current overrides on the stack */
 	public void popOverrideStack() {
-		currentOverrides = (HashMap)overrideStack.pop();
+		currentOverrides = (HashMap) overrideStack.pop();
 	}
 
 	/** Pushes the current embedding feature on the stack */
@@ -99,32 +100,33 @@ public class AbstractProcessingContext {
 	public void popEmbeddingFeature() {
 		embeddingFeatureStack.pop();
 	}
-	
+
 	/** Peeks for the current embedding feature */
 	public PAnnotatedEReference getEmbeddingFeature() {
-		if (embeddingFeatureStack.isEmpty()) return null;
-		return (PAnnotatedEReference)embeddingFeatureStack.peek();
+		if (embeddingFeatureStack.isEmpty())
+			return null;
+		return (PAnnotatedEReference) embeddingFeatureStack.peek();
 	}
-	
+
 	/** Clear the override is done before an entity is processed */
 	public void clearOverrides() {
 		currentOverrides.clear();
 	}
-	
+
 	/** Return the overridden column for the passed attribute */
 	public Column getOverride(PAnnotatedEAttribute paAttribute) {
 		return (Column) currentOverrides.get(paAttribute.getAnnotatedEStructuralFeature().getName());
 	}
-	
+
 	/** Return the overridden JoinColumns for this reference */
 	public List getOverride(PAnnotatedEReference paReference) {
 		return (List) currentOverrides.get(paReference.getAnnotatedEReference().getName());
 	}
-	
-	/** 
-	 * Returns the flattened list of all features of the supertypes for which the features should be added to the mapping of the
-	 * passed eclass. This is required to (more-or-less) support multiple inheritance scenarios. In the case of 
-	 * multiple inheritance the first supertype is the 'real' mapped supertype, the other types are treated as 
+
+	/**
+	 * Returns the flattened list of all features of the supertypes for which the features should be added to the
+	 * mapping of the passed eclass. This is required to (more-or-less) support multiple inheritance scenarios. In the
+	 * case of multiple inheritance the first supertype is the 'real' mapped supertype, the other types are treated as
 	 * mappedsuperclasses.
 	 */
 	public List getMultipleInheritedFeatures(PAnnotatedEClass aClass) {
@@ -132,24 +134,24 @@ public class AbstractProcessingContext {
 		final List mappedFeatures = new ArrayList(aClass.getAnnotatedEClass().getEAllStructuralFeatures());
 		// remove all first inherited features
 		mappedFeatures.removeAll(getFirstInheritedFeatures(aClass.getAnnotatedEClass(), new ArrayList()));
-		
+
 		// then remove all id features, these can not be used
 		final ArrayList toReturn = new ArrayList();
 		for (Iterator it = mappedFeatures.iterator(); it.hasNext();) {
-			final EStructuralFeature esf = (EStructuralFeature)it.next();
+			final EStructuralFeature esf = (EStructuralFeature) it.next();
 			final PAnnotatedEStructuralFeature pef = aClass.getPaModel().getPAnnotated(esf);
-			if (!(pef instanceof PAnnotatedEAttribute) || ((PAnnotatedEAttribute)pef).getId() == null) {
+			if (!(pef instanceof PAnnotatedEAttribute) || ((PAnnotatedEAttribute) pef).getId() == null) {
 				toReturn.add(pef);
 			}
 		}
 		return toReturn;
 	}
-	
+
 	/** Returns the list of all features which are in the first inheritance structure */
 	private List getFirstInheritedFeatures(EClass eClass, List features) {
 		features.addAll(eClass.getEStructuralFeatures());
 		if (eClass.getESuperTypes().size() > 0) {
-			 return getFirstInheritedFeatures((EClass)eClass.getESuperTypes().get(0), features);
+			return getFirstInheritedFeatures((EClass) eClass.getESuperTypes().get(0), features);
 		}
 		return features;
 	}

@@ -2,51 +2,50 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Column.java,v 1.1 2006/07/04 21:37:01 mtaal Exp $
+ * $Id: Column.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Column</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isUnique <em>Unique</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isNullable <em>Nullable</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isInsertable <em>Insertable</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isUpdatable <em>Updatable</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getColumnDefinition <em>Column Definition</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getTable <em>Table</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getLength <em>Length</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getPrecision <em>Precision</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getScale <em>Scale</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isUnique <em>Unique</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isNullable <em>Nullable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isInsertable <em>Insertable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isUpdatable <em>Updatable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getColumnDefinition <em>Column Definition</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getTable <em>Table</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getLength <em>Length</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getPrecision <em>Precision</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getScale <em>Scale</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  *        annotation="http://annotation.elver.org/internal/Collection name='Columns'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ScalePrecisionForNumeric LengthForString'"
  * @generated
  */
-public interface Column extends PAnnotation {
+public interface Column extends PAnnotation{
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	String copyright = "Copyright 2004-2006, Elver.org (http://www.eclipse.org/emf/teneo).\nLicensed under the Apache License, Version 2.0 (the \"License\");\n\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\nhttp://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.";
+	String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn_Name()
@@ -56,25 +55,23 @@ public interface Column extends PAnnotation {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getName <em>Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Length</b></em>' attribute. The default value is <code>"255"</code>.
+	 * Returns the value of the '<em><b>Length</b></em>' attribute.
+	 * The default value is <code>"255"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Length</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Length</em>' attribute.
 	 * @see #isSetLength()
 	 * @see #unsetLength()
@@ -86,11 +83,9 @@ public interface Column extends PAnnotation {
 	int getLength();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getLength <em>Length</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Length</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getLength <em>Length</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Length</em>' attribute.
 	 * @see #isSetLength()
 	 * @see #unsetLength()
 	 * @see #getLength()
@@ -99,9 +94,8 @@ public interface Column extends PAnnotation {
 	void setLength(int value);
 
 	/**
-	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getLength <em>Length</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getLength <em>Length</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isSetLength()
 	 * @see #getLength()
 	 * @see #setLength(int)
@@ -110,9 +104,8 @@ public interface Column extends PAnnotation {
 	void unsetLength();
 
 	/**
-	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getLength <em>Length</em>}'
-	 * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getLength <em>Length</em>}' attribute is set.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Length</em>' attribute is set.
 	 * @see #unsetLength()
 	 * @see #getLength()
@@ -141,11 +134,9 @@ public interface Column extends PAnnotation {
 	int getScale();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getScale <em>Scale</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Scale</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getScale <em>Scale</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Scale</em>' attribute.
 	 * @see #isSetScale()
 	 * @see #unsetScale()
 	 * @see #getScale()
@@ -154,9 +145,8 @@ public interface Column extends PAnnotation {
 	void setScale(int value);
 
 	/**
-	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getScale <em>Scale</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getScale <em>Scale</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isSetScale()
 	 * @see #getScale()
 	 * @see #setScale(int)
@@ -165,9 +155,8 @@ public interface Column extends PAnnotation {
 	void unsetScale();
 
 	/**
-	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getScale <em>Scale</em>}'
-	 * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getScale <em>Scale</em>}' attribute is set.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Scale</em>' attribute is set.
 	 * @see #unsetScale()
 	 * @see #getScale()
@@ -177,14 +166,14 @@ public interface Column extends PAnnotation {
 	boolean isSetScale();
 
 	/**
-	 * Returns the value of the '<em><b>Unique</b></em>' attribute. The default value is <code>"false"</code>.
+	 * Returns the value of the '<em><b>Unique</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Unique</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Unique</em>' attribute.
 	 * @see #setUnique(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn_Unique()
@@ -194,25 +183,23 @@ public interface Column extends PAnnotation {
 	boolean isUnique();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isUnique <em>Unique</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Unique</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isUnique <em>Unique</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unique</em>' attribute.
 	 * @see #isUnique()
 	 * @generated
 	 */
 	void setUnique(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Precision</b></em>' attribute. The default value is <code>"0"</code>.
+	 * Returns the value of the '<em><b>Precision</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Precision</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Precision</em>' attribute.
 	 * @see #isSetPrecision()
 	 * @see #unsetPrecision()
@@ -224,11 +211,9 @@ public interface Column extends PAnnotation {
 	int getPrecision();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getPrecision <em>Precision</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Precision</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getPrecision <em>Precision</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Precision</em>' attribute.
 	 * @see #isSetPrecision()
 	 * @see #unsetPrecision()
 	 * @see #getPrecision()
@@ -237,9 +222,8 @@ public interface Column extends PAnnotation {
 	void setPrecision(int value);
 
 	/**
-	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getPrecision <em>Precision</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getPrecision <em>Precision</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isSetPrecision()
 	 * @see #getPrecision()
 	 * @see #setPrecision(int)
@@ -248,9 +232,8 @@ public interface Column extends PAnnotation {
 	void unsetPrecision();
 
 	/**
-	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getPrecision <em>Precision</em>}'
-	 * attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getPrecision <em>Precision</em>}' attribute is set.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Precision</em>' attribute is set.
 	 * @see #unsetPrecision()
 	 * @see #getPrecision()
@@ -260,14 +243,14 @@ public interface Column extends PAnnotation {
 	boolean isSetPrecision();
 
 	/**
-	 * Returns the value of the '<em><b>Nullable</b></em>' attribute. The default value is <code>"true"</code>.
+	 * Returns the value of the '<em><b>Nullable</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Nullable</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Nullable</em>' attribute.
 	 * @see #setNullable(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn_Nullable()
@@ -277,25 +260,23 @@ public interface Column extends PAnnotation {
 	boolean isNullable();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isNullable <em>Nullable</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Nullable</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isNullable <em>Nullable</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Nullable</em>' attribute.
 	 * @see #isNullable()
 	 * @generated
 	 */
 	void setNullable(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Insertable</b></em>' attribute. The default value is <code>"true"</code>.
+	 * Returns the value of the '<em><b>Insertable</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Insertable</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Insertable</em>' attribute.
 	 * @see #setInsertable(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn_Insertable()
@@ -305,25 +286,23 @@ public interface Column extends PAnnotation {
 	boolean isInsertable();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isInsertable <em>Insertable</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Insertable</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isInsertable <em>Insertable</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Insertable</em>' attribute.
 	 * @see #isInsertable()
 	 * @generated
 	 */
 	void setInsertable(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Updatable</b></em>' attribute. The default value is <code>"true"</code>.
+	 * Returns the value of the '<em><b>Updatable</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Updatable</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Updatable</em>' attribute.
 	 * @see #setUpdatable(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn_Updatable()
@@ -333,24 +312,22 @@ public interface Column extends PAnnotation {
 	boolean isUpdatable();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isUpdatable <em>Updatable</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Updatable</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isUpdatable <em>Updatable</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Updatable</em>' attribute.
 	 * @see #isUpdatable()
 	 * @generated
 	 */
 	void setUpdatable(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Column Definition</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Column Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Column Definition</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Column Definition</em>' attribute.
 	 * @see #setColumnDefinition(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn_ColumnDefinition()
@@ -360,24 +337,22 @@ public interface Column extends PAnnotation {
 	String getColumnDefinition();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getColumnDefinition <em>Column Definition</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Column Definition</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getColumnDefinition <em>Column Definition</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Column Definition</em>' attribute.
 	 * @see #getColumnDefinition()
 	 * @generated
 	 */
 	void setColumnDefinition(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Table</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Table</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Table</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Table</em>' attribute.
 	 * @see #setTable(String)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn_Table()
@@ -387,11 +362,9 @@ public interface Column extends PAnnotation {
 	String getTable();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getTable <em>Table</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Table</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getTable <em>Table</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Table</em>' attribute.
 	 * @see #getTable()
 	 * @generated
 	 */
