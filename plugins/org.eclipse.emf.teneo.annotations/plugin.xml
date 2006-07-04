@@ -5,24 +5,12 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.1 2006/07/04 21:56:30 mtaal Exp $
+ $Id: plugin.xml,v 1.2 2006/07/04 22:06:38 mtaal Exp $
 -->
 
 <plugin>
 
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.eclipse.org/emf/teneo/elver/2005/pamodel" 
-       class = "org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage"
-       genModel = "model/annotations.genmodel" /> 
-  </extension>
 
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation" 
-       class = "org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage"
-       genModel = "model/annotations.genmodel" /> 
-  </extension>
 
 </plugin>
 
