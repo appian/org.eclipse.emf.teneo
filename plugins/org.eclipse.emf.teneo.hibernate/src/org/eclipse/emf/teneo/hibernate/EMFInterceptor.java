@@ -1,0 +1,57 @@
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Martin Taal
+ * </copyright>
+ *
+ * $Id: EMFInterceptor.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ */
+
+package org.eclipse.emf.teneo.hibernate;
+
+import java.util.Properties;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.util.StoreUtil;
+import org.hibernate.EmptyInterceptor;
+
+/**
+ * Intercepts the getEntityName call to return the EClass name as the entity name.
+ * 
+ * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
+ * @version $Revision: 1.1 $
+ */
+
+public class EMFInterceptor extends EmptyInterceptor {
+
+	/** The qualify property used to compute the eclassname */
+	private final String qualify;
+	
+	/** Constructor */
+	public EMFInterceptor(Properties props) {
+		qualify = props.getProperty(PersistenceOptions.QUALIFY_ENTITY_NAME);
+	}
+	
+	/**
+	 * Is overridden to return the eclass uri as the entity name.
+	 * 
+	 * @see org.hibernate.EmptyInterceptor#getEntityName(java.lang.Object)
+	 */
+	public String getEntityName(Object object) {
+		if (object instanceof EObject) {
+			// TODO handle featuremap
+			EObject eobj = (EObject) object;
+			return StoreUtil.getEClassURI(eobj.eClass(), qualify);
+		}
+		
+		return super.getEntityName(object);
+	}
+}

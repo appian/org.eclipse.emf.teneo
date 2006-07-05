@@ -1,0 +1,140 @@
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Martin Taal
+ * </copyright>
+ *
+ * $Id: EAttributePropertyHandler.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ */
+
+package org.eclipse.emf.teneo.hibernate.mapping.property;
+
+import java.lang.reflect.Method;
+import java.util.Map;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.util.AssertUtil;
+import org.eclipse.emf.teneo.util.StoreUtil;
+import org.hibernate.HibernateException;
+import org.hibernate.PropertyNotFoundException;
+import org.hibernate.engine.SessionFactoryImplementor;
+import org.hibernate.engine.SessionImplementor;
+import org.hibernate.property.Getter;
+import org.hibernate.property.PropertyAccessor;
+import org.hibernate.property.Setter;
+
+/**
+ * Is a getter and setter for EMF eattribute which uses eGet and eSet.Handles many==false properties.
+ * 
+ * This class implements both the getter, setter and propertyaccessor interfaces. When the getGetter and getSetter
+ * methods are called it returns itself.
+ * 
+ * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
+ * @version $Revision: 1.1 $
+ */
+
+public class EAttributePropertyHandler implements Getter, Setter, PropertyAccessor {
+	/** The logger */
+	private static Log log = LogFactory.getLog(EAttributePropertyHandler.class);
+
+	/** The field name for which this elist getter operates */
+	protected final EAttribute eAttribute;
+
+	/** Constructor */
+	public EAttributePropertyHandler(EAttribute eAttribute) {
+		this.eAttribute = eAttribute;
+		AssertUtil.assertTrue(eAttribute.getName() + " is a many feature which is not handled by this accessor ",
+				!eAttribute.isMany());
+		log.debug("Created getter/setter for " + StoreUtil.toString(eAttribute));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
+	 */
+	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+		return this;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
+	 */
+	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+		return this;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#get(java.lang.Object)
+	 */
+	public Object get(Object owner) throws HibernateException {
+		return ((EObject) owner).eGet(eAttribute);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
+	 *      org.hibernate.engine.SessionImplementor)
+	 */
+	public Object getForInsert(Object arg0, Map arg1, SessionImplementor arg2) throws HibernateException {
+		return get(arg0);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#getMethod()
+	 */
+	public Method getMethod() {
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#getMethodName()
+	 */
+	public String getMethodName() {
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#getReturnType()
+	 */
+	public Class getReturnType() {
+		return eAttribute.getEType().getInstanceClass();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
+	 *      org.hibernate.engine.SessionFactoryImplementor)
+	 */
+	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
+		if (value == null)
+			return; // do not set
+		final Object curValue = get(target);
+		if (curValue != null && curValue.equals(value))
+			return; // do not set if not changed
+		EObject eobj = (EObject) target;
+		eobj.eSet(eAttribute, value);
+	}
+}
