@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.elver.org/samples/emf/hibernate/usertype"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:this="http://www.elver.org/samples/emf/hibernate/usertype">
+	
+	<xsd:simpleType name="Name" ecore:instanceClass="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name">
+				<xsd:annotation>
+					<xsd:appinfo source="http://hibernate.elver.org/Type" ecore:key="type">org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType</xsd:appinfo>
+					<xsd:appinfo source="http://hibernate.elver.org/Columns" ecore:key="value">c1 c2</xsd:appinfo>
+					<xsd:appinfo source="http://ejb.elver.org/Column/c1" ecore:key="name">first_name</xsd:appinfo>
+					<xsd:appinfo source="http://ejb.elver.org/Column/c2" ecore:key="name">last_name</xsd:appinfo>
+				</xsd:annotation>
+		<xsd:restriction/>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="Person">
+		<xsd:sequence>
+			<xsd:element name="name" type="this:Name">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>	
+
+</xsd:schema>
