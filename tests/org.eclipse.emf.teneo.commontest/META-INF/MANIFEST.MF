@@ -6,7 +6,7 @@ Bundle-Version: 0.7.5.qualifier
 Bundle-Vendor: $Plugin.providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.teneo.samples,
+ org.eclipse.emf.teneo.samples;visibility:=reexport,
  org.junit,
  org.eclipse.emf.teneo.libraries,
  org.eclipse.emf.teneo,
@@ -20,3 +20,13 @@ Bundle-ClassPath: lib/jtds-1.1.jar,
  lib/mysql-connector-java-3.1.10-bin.jar,
  lib/postgresql-8.1-404.jdbc3.jar,
  lib/tools.jar
+Export-Package: org.eclipse.emf.teneo.test,
+ org.eclipse.emf.teneo.test.conf,
+ org.eclipse.emf.teneo.test.emf.annotations,
+ org.eclipse.emf.teneo.test.emf.detach,
+ org.eclipse.emf.teneo.test.emf.elist,
+ org.eclipse.emf.teneo.test.emf.relation,
+ org.eclipse.emf.teneo.test.emf.sample,
+ org.eclipse.emf.teneo.test.emf.schemaconstructs,
+ org.eclipse.emf.teneo.test.issues,
+ org.eclipse.emf.teneo.test.stores
