@@ -27,13 +27,13 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * The jpox store factory
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class JPOXTestStoreFactory extends AbstractTestStoreFactory {
 
 	/** Creates the actual specific test store */
-	protected TestStore createStoreInstance(TestDatabaseAdapter adapter, EPackage[] epackages, String mappingFileLocation,
-			Properties props, InheritanceType inheritanceType) {
+	protected TestStore createStoreInstance(TestDatabaseAdapter adapter, EPackage[] epackages,
+			String mappingFileLocation, Properties props, InheritanceType inheritanceType) {
 		return new JPOXTestStore(adapter, epackages, null, props, inheritanceType);
 	}
 }

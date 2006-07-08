@@ -22,7 +22,7 @@ import junit.framework.TestSuite;
  * Runs all jpox generates of the mapping files tests.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AllGenerateTests {
 

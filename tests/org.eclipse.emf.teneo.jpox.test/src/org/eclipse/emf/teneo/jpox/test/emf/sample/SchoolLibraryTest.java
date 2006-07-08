@@ -25,14 +25,15 @@ import org.eclipse.emf.teneo.test.emf.sample.SchoolLibraryAction;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class SchoolLibraryTest extends AbstractActionTest {
 
 	final static SchoolLibraryAction testAction = new SchoolLibraryAction() {
 		/** Returns one test query */
 		protected String getQuery1() {
-			return "query1=SELECT FROM " + WriterImpl.class.getName() + "&query2=SELECT FROM " + BookImpl.class.getName();
+			return "query1=SELECT FROM " + WriterImpl.class.getName() + "&query2=SELECT FROM "
+					+ BookImpl.class.getName();
 		}
 
 		/** Returns one test query */
@@ -42,7 +43,8 @@ public class SchoolLibraryTest extends AbstractActionTest {
 
 		/** Returns one test query */
 		protected String getQuery3() {
-			return "query1=SELECT FROM " + WriterImpl.class.getName() + "&query2=SELECT FROM " + BookImpl.class.getName();
+			return "query1=SELECT FROM " + WriterImpl.class.getName() + "&query2=SELECT FROM "
+					+ BookImpl.class.getName();
 		}
 
 		/** Container present */

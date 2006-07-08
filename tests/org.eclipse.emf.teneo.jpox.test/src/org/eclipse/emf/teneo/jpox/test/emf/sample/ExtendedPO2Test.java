@@ -24,7 +24,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ExtendedPO2Test extends AbstractActionTest {
 

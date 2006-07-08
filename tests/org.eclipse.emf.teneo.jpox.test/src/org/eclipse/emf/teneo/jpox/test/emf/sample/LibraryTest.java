@@ -24,14 +24,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryTest extends AbstractActionTest {
 
 	final static LibraryAction testAction = new LibraryAction() {
 		protected void checkContainerAfterLibraryRetrieve(TestStore store, Writer writ) {
-			assertTrue("Container of writer is not yet set now, because of lazy loading of container relations",
-					writ.eContainer() == null);
+			assertTrue("Container of writer is not yet set now, because of lazy loading of container relations", writ
+					.eContainer() == null);
 		};
 
 		protected void checkContainerAfterWriterRetrieve(TestStore store, Writer writ) {

@@ -31,15 +31,15 @@ import org.eclipse.emf.teneo.test.issues.SimplenmAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", JPOXTestbed.instance()
-				.getConfigurations());
+		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", JPOXTestbed
+				.instance().getConfigurations());
 
-	//	suite.addTestSuite(MzDataAction.class);
+		// suite.addTestSuite(MzDataAction.class);
 		suite.addTestSuite(InheritanceAction.class);
 
 		suite.addTestSuite(BagDuplicateAction.class);

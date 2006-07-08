@@ -56,7 +56,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -117,7 +117,7 @@ public class JPOXTestStore extends AbstractTestStore {
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_URL_PROPERTY, adapter.getDbUrl());
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, adapter.getDbUser());
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, adapter.getDbPwd());
-		//properties.setProperty(PMFConfiguration.JDO_MAPPING_CATALOG_PROPERTY, adapter.getDbName());
+		// properties.setProperty(PMFConfiguration.JDO_MAPPING_CATALOG_PROPERTY, adapter.getDbName());
 
 		if (inheritanceType.getValue() == InheritanceType.JOINED) {
 			properties.setProperty(PMFConfiguration.DEFAULT_INHERITANCE_STRATEGY_PROPERTY, "JPOX");
@@ -186,7 +186,8 @@ public class JPOXTestStore extends AbstractTestStore {
 
 	/** Rollback transaction */
 	public void rollbackTransaction() {
-		if (tx.isActive()) tx.rollback();
+		if (tx.isActive())
+			tx.rollback();
 		refresh();
 	}
 
@@ -243,21 +244,24 @@ public class JPOXTestStore extends AbstractTestStore {
 				pm.deletePersistent(l.get(i));
 			}
 			commitTransaction();
-			TestCase.assertTrue("The objects of class: " + clazz.getName() + " was deleted while this should not be possible",
-					shouldSucceed);
+			TestCase.assertTrue("The objects of class: " + clazz.getName()
+					+ " was deleted while this should not be possible", shouldSucceed);
 		} catch (Exception e) {
 			// e.printStackTrace(System.err);
-			TestCase.assertTrue("The objects of class: " + clazz.getName() + " was not deleted while this should be possible",
-					!shouldSucceed);
-			if (tx.isActive()) rollbackTransaction();
+			TestCase.assertTrue("The objects of class: " + clazz.getName()
+					+ " was not deleted while this should be possible", !shouldSucceed);
+			if (tx.isActive())
+				rollbackTransaction();
 		}
 	}
 
 	/** Return an object of a certain class, there should only be one in the databases */
 	public Object getObject(Class clazz) {
 		List l = getObjects(clazz); // replace class is called in getObjects
-		TestCase.assertTrue("There are " + l.size() + " object(s) of this class in the datastore, 1 was expected, class: "
-				+ clazz.getName(), l.size() == 1);
+		TestCase
+				.assertTrue("There are " + l.size()
+						+ " object(s) of this class in the datastore, 1 was expected, class: " + clazz.getName(), l
+						.size() == 1);
 		return l.get(0);
 	}
 
@@ -312,7 +316,7 @@ public class JPOXTestStore extends AbstractTestStore {
 			pm.close();
 		}
 
-		//JpoxHelper.INSTANCE.closeAll();
+		// JpoxHelper.INSTANCE.closeAll();
 
 		if (!donotDrop) {
 			dropDatabase();
@@ -352,8 +356,10 @@ public class JPOXTestStore extends AbstractTestStore {
 
 	/** Replaces a passed EMF Interface by its concrete class */
 	private Class replaceClass(Class interfaze) {
-		if (!interfaze.isInterface()) return interfaze;
-		if (!EObject.class.isAssignableFrom(interfaze)) return interfaze;
+		if (!interfaze.isInterface())
+			return interfaze;
+		if (!EObject.class.isAssignableFrom(interfaze))
+			return interfaze;
 
 		return JpoxHelper.INSTANCE.getInstanceClass(interfaze);
 	}
@@ -380,8 +386,8 @@ public class JPOXTestStore extends AbstractTestStore {
 	/** Check inheritance strategy */
 	public boolean isInheritanceStrategy(String name, InheritanceType strategy) {
 		final Class clazz = clr.classForName(name);
-		final ClassMetaData cmd = ((PersistenceManagerFactoryImpl) pmf).getPMFContext().getMetaDataManager().getMetaDataForClass(
-				clazz, clr);
+		final ClassMetaData cmd = ((PersistenceManagerFactoryImpl) pmf).getPMFContext().getMetaDataManager()
+				.getMetaDataForClass(clazz, clr);
 		if (strategy.equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
 			return cmd.getInheritanceMetaData().getStrategyValue() == InheritanceStrategy.SUPERCLASS_TABLE;
 		}

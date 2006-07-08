@@ -32,14 +32,13 @@ import org.eclipse.emf.teneo.test.issues.SimplenmAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AllGenerateTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for issues", JPOXTestbed.instance().getConfigurations());
 
-		
 		suite.addTest(new JPOXGenerateTest(InheritanceAction.class));
 
 		suite.addTest(new JPOXGenerateTest(BagDuplicateAction.class));
