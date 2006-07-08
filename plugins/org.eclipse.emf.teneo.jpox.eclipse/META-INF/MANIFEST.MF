@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Plugin.name
+Bundle-SymbolicName: org.eclipse.emf.teneo.jpox.eclipse; singleton:=true
+Bundle-Version: 0.7.5.qualifier
+Bundle-Vendor: %Plugin.providerName
+Bundle-Localization: plugin
+Eclipse-LazyStart: true
+Require-Bundle: org.eclipse.emf.teneo.eclipse,
+ org.eclipse.ui,
+ org.eclipse.emf.teneo.annotations,
+ org.eclipse.emf.teneo,
+ org.eclipse.emf.teneo.jpox,
+ org.eclipse.emf.common
+Bundle-Activator: org.eclipse.emf.teneo.eclipse.StorePlugin
