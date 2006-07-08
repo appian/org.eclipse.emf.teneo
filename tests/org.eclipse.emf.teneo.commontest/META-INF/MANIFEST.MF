@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: $Plugin.name
+Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.commontest
 Bundle-Version: 0.7.5.qualifier
-Bundle-Vendor: $Plugin.providerName
+Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.teneo.samples;visibility:=reexport,
