@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Plugin.name
+Bundle-SymbolicName: org.eclipse.emf.teneo.hibernate.eclipse; singleton:=true
+Bundle-Version: 0.7.5.qualifier
+Bundle-Vendor: %Plugin.providerName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime;visibility:=reexport,
+ org.eclipse.ui.ide,
+ org.eclipse.emf.common,
+ org.eclipse.core.resources;visibility:=reexport,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.launching,
+ org.eclipse.debug.core,
+ org.eclipse.emf.teneo,
+ org.eclipse.emf.teneo.annotations,
+ org.eclipse.emf.teneo.hibernate,
+ org.eclipse.emf.teneo.eclipse
+Eclipse-AutoStart: true
+Eclipse-LazyStart: true

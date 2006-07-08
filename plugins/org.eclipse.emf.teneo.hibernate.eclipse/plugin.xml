@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.eclipse.emf.teneo.hibernate.eclipse.contribution0"
+            nameFilter="*.ecore"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="teneo"
+               path="additions"
+               id="org.eclipse.emf.teneo.eclipse.teneomenu">
+            <separator
+                  name="group2">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.emf.teneo.hibernate.eclipse.GenerateHBMAction"
+               enablesFor="+"
+               id="org.eclipse.emf.teneo.hibernate.eclipse.generatehbm"
+               label="Generate EMF - Hibernate OR Mapping (joined)"
+               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group0"
+               tooltip="Select to generate a hibernate.hbm.xml file from the ecore model(s). Uses joined-subclass inheritance mapping strategy.">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.eclipse.emf.teneo.hibernate.eclipse.contribution1"
+            nameFilter="*.ecore"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="teneo"
+               path="additions"
+               id="org.eclipse.emf.teneo.eclipse.teneomenu">
+            <separator
+                  name="group2">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.emf.teneo.hibernate.eclipse.GenerateHBMActionSuperClass"
+               enablesFor="+"
+               id="org.eclipse.emf.teneo.hibernate.eclipse.generatehbmsuperclass"
+               label="Generate EMF - Hibernate OR Mapping (super-class)"
+               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group0"
+               tooltip="Select to generate a hibernate.hbm.xml file from the ecore model(s). Uses superclass-table inheritance mapping strategy.">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.eclipse.emf.teneo.hibernate.eclipse.contribution2"
+            nameFilter="*.ehb"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="teneo"
+               path="additions"
+               id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu">
+            <separator
+                  name="group2">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.emf.teneo.hibernate.eclipse.OpenResource"
+               enablesFor="1"
+               id="org.eclipse.emf.teneo.hibernate.eclipse.openResource"
+               label="Open Resource"
+               menubarPath="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu/group2"
+               tooltip="Opens a resource using the specified editor">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.eclipse.emf.teneo.hibernate.eclipse.contribution3"
+            nameFilter="*.ehb"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
+               label="teneo"
+               path="additions">
+            <separator name="group4"/>
+         </menu>
+         <action
+               class="org.eclipse.emf.teneo.hibernate.eclipse.ImportXMI"
+               enablesFor="1"
+               id="org.eclipse.emf.teneo.hibernate.eclipse.importXMI"
+               label="Import from XMI"
+               menubarPath="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu/group4"
+               tooltip="Imports an XMI file into a datastore"/>
+      </objectContribution>
+      <objectContribution
+            id="org.eclipse.emf.teneo.hibernate.eclipse.contribution4"
+            nameFilter="*.ehb"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
+               label="teneo"
+               path="additions">
+            <separator name="group4"/>
+         </menu>
+         <action
+               class="org.eclipse.emf.teneo.hibernate.eclipse.ExportXMI"
+               enablesFor="1"
+               id="org.eclipse.emf.teneo.hibernate.eclipse.exportXMI"
+               label="Export to XMI"
+               menubarPath="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu/group4"
+               tooltip="Exports a complete datastore to xmi"/>
+      </objectContribution>
+      <objectContribution
+            id="org.eclipse.emf.teneo.hibernate.eclipse.contribution5"
+            nameFilter="*.ehb"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
+               label="teneo"
+               path="additions">
+            <separator name="group3"/>
+         </menu>
+         <action
+               class="org.eclipse.emf.teneo.hibernate.eclipse.ImportXML"
+               enablesFor="1"
+               id="org.eclipse.emf.teneo.hibernate.eclipse.importXML"
+               label="Import from XML"
+               menubarPath="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu/group3"
+               tooltip="Imports an XML file into a datastore"/>
+      </objectContribution>
+      <objectContribution
+            id="org.eclipse.emf.teneo.hibernate.eclipse.contribution6"
+            nameFilter="*.ehb"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
+               label="teneo"
+               path="additions">
+            <separator name="group3"/>
+         </menu>
+         <action
+               class="org.eclipse.emf.teneo.hibernate.eclipse.ExportXML"
+               enablesFor="1"
+               id="org.eclipse.emf.teneo.hibernate.eclipse.exportXML"
+               label="Export to XML"
+               menubarPath="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu/group3"
+               tooltip="Exports a complete datastore to xml"/>
+      </objectContribution>
+   </extension>
+</plugin>
