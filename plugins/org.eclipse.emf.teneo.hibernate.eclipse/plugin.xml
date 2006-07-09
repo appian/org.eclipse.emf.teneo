@@ -9,7 +9,7 @@
             nameFilter="*.ecore"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               label="teneo"
+               label="Teneo"
                path="additions"
                id="org.eclipse.emf.teneo.eclipse.teneomenu">
             <separator
@@ -30,7 +30,7 @@
             nameFilter="*.ecore"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               label="teneo"
+               label="Teneo"
                path="additions"
                id="org.eclipse.emf.teneo.eclipse.teneomenu">
             <separator
@@ -51,7 +51,7 @@
             nameFilter="*.ehb"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               label="teneo"
+               label="Teneo"
                path="additions"
                id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu">
             <separator
@@ -73,7 +73,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <menu
                id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
-               label="teneo"
+               label="Teneo"
                path="additions">
             <separator name="group4"/>
          </menu>
@@ -91,7 +91,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <menu
                id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
-               label="teneo"
+               label="Teneo"
                path="additions">
             <separator name="group4"/>
          </menu>
@@ -109,7 +109,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <menu
                id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
-               label="teneo"
+               label="Teneo"
                path="additions">
             <separator name="group3"/>
          </menu>
@@ -127,7 +127,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <menu
                id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
-               label="teneo"
+               label="Teneo"
                path="additions">
             <separator name="group3"/>
          </menu>
