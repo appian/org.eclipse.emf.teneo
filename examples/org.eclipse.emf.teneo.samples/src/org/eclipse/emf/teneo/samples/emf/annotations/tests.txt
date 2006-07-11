@@ -1,0 +1,116 @@
+
+9.1.1 Table  (S)
+org.eclipse.emf.teneo.samples.emf.annotations.column:
+
+9.1.2 Secondary Table (NS)
+
+9.1.3 SecondaryTables (NS)
+
+9.1.4 UniqueConstraint (S)
+org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints
+
+9.1.5 Column (S)
+org.eclipse.emf.teneo.samples.emf.annotations.column:
+	Tests column annotation for the following attributes: name, unique, insertable, updatable, length, nullable, precision, scale
+
+9.1.6 JoinColumn (NS)
+org.eclipse.emf.teneo.samples.emf.annotations.compositeid
+	As part of a JoinColumns annotation
+
+9.1.7 JoinColumns (NS)
+org.eclipse.emf.teneo.samples.emf.annotations.compositeid
+
+9.1.8 Id Annotation (S)
+org.eclipse.emf.teneo.samples.emf.annotations.id
+
+9.1.9 GeneratedValue (S)
+org.eclipse.emf.teneo.samples.emf.annotations.id
+
+9.1.10 AttributeOverride (S)
+org.eclipse.emf.teneo.samples.emf.annotations.embedded
+org.eclipse.emf.teneo.samples.emf.annotations.attributesoverrides
+
+9.1.11 AttributeOverrides (S)
+org.eclipse.emf.teneo.samples.emf.annotations.embedded
+org.eclipse.emf.teneo.samples.emf.annotations.attributesoverrides
+
+9.1.12 EmbeddedId (NS)
+
+9.1.13 IdClass (S)
+org.eclipse.emf.teneo.samples.emf.annotations.compositeid
+
+9.1.14 Transient (S)
+org.eclipse.emf.teneo.samples.emf.annotations.basic
+
+9.1.15 Version (S)
+org.eclipse.emf.teneo.samples.emf.annotations.basic
+
+9.1.16 Basic (S)
+org.eclipse.emf.teneo.samples.emf.annotations.basic
+
+9.1.17 Lob (NS)
+
+9.1.18 Temporal (S)
+// no testcase because jpox/hibernate do not have explicit temporal mappings
+
+9.1.19 Enumerated (S)
+
+9.1.20 ManyToOne (S)
+org.eclipse.emf.teneo.samples.annotations.toone
+
+9.1.21 OneToOne (S)
+org.eclipse.emf.teneo.samples.annotations.toone
+
+9.1.22 OneToMany (S)
+org.eclipse.emf.teneo.samples.annotations.lazy: test fetch (EAGER), mapped-by, cascade and targetEntity
+
+9.1.23 JoinTable (S), not JoinColumn(s) icm with onetomany and manytomany
+org.eclipse.emf.teneo.samples.annotations.manytomany
+
+9.1.24 ManyToMany (S)
+org.eclipse.emf.teneo.samples.annotations.manytomany
+org.eclipse.emf.teneo.samples.annotations.manytomanyhb
+note: inversejoincolumns are automatically generated
+
+9.1.25 MapKey (NS)
+
+9.1.26 OrderBy (S)
+org.eclipse.emf.teneo.samples.emf.annotations.compositeid
+
+9.1.27 Inheritance (S)
+SINGLE_TABLE and JOINED
+org.eclipse.emf.teneo.samples.annotations.inheritancemapping
+
+9.1.28 DiscriminatorColumn (S)
+org.eclipse.emf.teneo.samples.annotations.inheritancemapping
+
+9.1.29 DiscriminatorValue (S)
+org.eclipse.emf.teneo.samples.annotations.inheritancemapping
+
+9.1.30 PrimaryKeyJoinColumn (NS)
+
+9.1.31 PrimaryKeyJoinColumns (NS)
+
+9.1.32 Embeddable (S)
+org.eclipse.emf.teneo.samples.emf.annotations.embedded
+
+9.1.33 Embedded (S)
+org.eclipse.emf.teneo.samples.emf.annotations.embedded
+
+9.1.34 MappedSuperclass (S)
+org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass
+
+9.1.35 SequenceGenerator (S)
+org.eclipse.emf.teneo.samples.annotations.id
+
+9.1.36 TableGenerator (NS)
+
+Custom annotations (called facets for now), annotation source http://facet.elver.org/List
+unique: defines for a list if its content is unique (no duplicates) 
+	-> tested by org.eclipse.emf.teneo.samples.emf.annotations.duplicates
+indexed: if true then this is a list, if false then it shows set behavior. (not supported by jpox)
+	-> tested by org.eclipse.emf.teneo.samples.emf.annotations.set
+
+Catalog and Schema annotation on class level is transferred correctly but disabled because did not work with mysql
+
+Fetch (one to many): is tested with LazyLibraryAction

@@ -1,0 +1,373 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Known issues (updated 21 April 2006)</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_selected_1.1')" id="menu_selected_1.1Title" class="menutitle">Home</div>
+<div id="menu_selected_1.1" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">Known Issues</div>
+</div>
+<div class="menuitem">
+<a href="../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_features.html">EJB3</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/custom_annotations.html">Custom</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/svn.html">Subversion</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Known issues (updated 21 April 2006)</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+		
+<p>This page describes known issues (and possible work arounds) and gives an estimate on when they will be solved.</p>
+		
+<p>Open issue(s):</p>
+		
+<ul>
+		
+<li>
+<strong>Objects are not loaded in the resource, or the resource is empty:</strong> The standard behavior of a Hibernate resource is to only read types which have no container in the model. All other EObjects can 
+		be reached from these top-entities. However, this means that even if an EObject instance does not have a container but <em>can be</em> contained according to the model then
+		it will still not be loaded in the resource. A common model is a an object which contains itself, for example a folder-like
+		model. <strong>Workaround</strong>: to workaround this issue you should load the resource using specific queries, see customizing load behavior <a href="hibernateresources.html">here</a>.</li>
+		
+</ul>
+		
+<p>The following issues have been solved in the 0.7.0 release:</p>
+		
+<ul>
+		
+<li>Enumerated types are not supported as primarykey/id fields. This will be solved in the next release. 
+		<strong>Is solved with the remark that the EnumeratedType should be Seriliazable.</strong>
+</li>
+		
+<li>Enumerated type fields can not be nullable, they must be set as required. This will be solved in the next release.</li>
+		
+<li>Java Annotations to Ecore, mapping file error: When starting the runtime the following error
+	message is displayed (using the Library example):<em>Association references unmapped class: Book</em>.
+ The issue is related to the fact that the model is generated from annotated java. Currently Elver uses the annotations in the source code to resolve java types. The java sources generated from the uml/xml schema have fully quallified names in the type attribute of the model tag:
+	<pre class="code">
+     * @model type="org.eclipse.example.library.Writer"
+     * @generated
+     */
+    EList getWriters();
+	</pre>
+
+<p>
+While in the case the java annotations are the input the emf tutorial tells you to do this:</p>
+
+<pre class="code">
+  /**
+   * @model type="Writer" containment="true"
+   */
+  List getWriters();
+</pre>
+
+<p>Elver should automatically resolve the Writer to a org.eclipse.example.library.Writer interface but does not do this. 
+As a workaround you should specify the fully qualified class name in the type annotation.</p>
+	
+</li>
+		
+</ul>
+		
+<p></p>
+
+		
+<p>The following issues have been solved in the 3.2 release:</p>
+		
+<ul>
+		
+<li>After an elist/featuremap is loaded a notification is sent out. 
+		See <a href="hibernate_details.html#EList%2FFeaturemap+load+notification">here</a> for more information.
+		Apparently this notification results in exceptions and double entries in rich client tree viewers.
+		See the posts on the mailing list for this: <a class="external" href="http://comments.gmane.org/gmane.comp.java.emf.persistency/139">post 1</a>, 
+		<a class="external" href="http://comments.gmane.org/gmane.comp.java.emf.persistency/144">post 2</a>. As a workaround you should 'catch' the notification
+		in the notifychanged of the EObjects ItemProvider. This will be solved in the next release
+		or the function will be disabled until it is more stable.
+		<strong>Load notification on EList load has been disabled.</strong>
+</li>
+		
+</ul>
+		
+<p>The following issues have been solved in the 3.1 release:</p>
+		
+<ul>
+			
+<li>On the mailinglist (see <a class="external" href="http://comments.gmane.org/gmane.comp.java.emf.persistency/95">here</a>) 
+				it was reported that when saving a HibernateResource the 
+			error 'session already closed' occurs. This issue is not present (anymore) in the
+			current development version so is solved with the next release on 
+				24 Oct.</li>
+			
+<li>In some cases a session will not be disconnected with ELists
+			in combination with HibernateResource. This results in errors in the
+			resource unload action and open transactions (is solved in 3.1).</li>
+			
+<li>In case of a deeper inheritance structure the econtainer
+			fields/columns are not correctly set in the relational tables. This results in
+			low-level sql errors, incorrect type for getInt().... or something similar
+			 (is solved in 3.1).</li>
+			
+<li>The toString method of an EList loads the elist, in Hibernate
+			this results in concurrent modification errors in logging code. The decision is
+			made that toString is not 'important' enough to load a elist 
+			(is solved in 3.1).</li>
+			
+<li>multiple inheritance of an EObject from two EMF interfaces does
+				not work correctly. An example is the GlobalAddress in the ExtendedPO example.
+				The GlobalAddress inherits from both the Address and the GlobalLocation interfaces.
+				Hibernate does not allow the definition of multiple 'parent' interfaces. 
+				<em>From the 3.1 release the mapping logic has changed so that only implementation
+				classes are present in the mapping file. This effectively solves this issue.</em>
+				 
+</li>
+		
+</ul>
+		
+<p>
+			Previous issues have been solved or a workaround or description is
+			displayed on the <a href="troubleshooting.html">troubleshooting</a> page.
+		</p>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

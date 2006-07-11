@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="compositeid"
+    nsURI="http:///org/elver/samples/emf/annotations/jc.ecore" nsPrefix="org.eclipse.emf.teneo.samples.emf.annotations.joincolumns">
+  <eClassifiers xsi:type="ecore:EClass" name="Parent" eSuperTypes="#//Person">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Child">
+      <eAnnotations source="http://annotation.elver.org/JoinColumns">
+        <details key="value" value="jc1 jc2"/>
+      </eAnnotations>
+      <eAnnotations source="http://annotation.elver.org/JoinColumn/jc1">
+        <details key="name" value="myParentFirstName"/>
+        <details key="referencedColumnName" value="firstName"/>
+      </eAnnotations>
+      <eAnnotations source="http://annotation.elver.org/JoinColumn/jc2">
+        <details key="name" value="myParentLastName"/>
+        <details key="referencedColumnName" value="lastName"/>
+      </eAnnotations>
+      <eAnnotations source="http://annotation.elver.org/OrderBy">
+        <details key="value" value="firstName"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Child" eSuperTypes="#//Person"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Person">
+    <eAnnotations source="http://annotation.elver.org/IdClass">
+      <details key="value" value="org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="firstName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://annotation.elver.org/Id"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://annotation.elver.org/Id"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

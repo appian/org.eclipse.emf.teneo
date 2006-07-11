@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="AnyType" importerID="org.eclipse.xsd.ecore.importer">
+  <foreignModel>AnyType.xsd</foreignModel>
+  <genPackages prefix="Anytype" basePackage="org.eclipse.emf.teneo.samples.emf.schemaconstructs"
+      resource="XML" disposableProviderFactory="true" ecorePackage="anytype.ecore#/">
+    <genClasses ecoreClass="anytype.ecore#//A">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute anytype.ecore#//A/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute anytype.ecore#//A/doub"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute anytype.ecore#//A/lon"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference anytype.ecore#//A/myB"/>
+    </genClasses>
+    <genClasses ecoreClass="anytype.ecore#//B">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute anytype.ecore#//B/name"/>
+    </genClasses>
+    <genClasses ecoreClass="anytype.ecore#//TestAny">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute anytype.ecore#//TestAny/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference anytype.ecore#//TestAny/singleAnyType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference anytype.ecore#//TestAny/multiAnyType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute anytype.ecore#//TestAny/myAny"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute anytype.ecore#//TestAny/any"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

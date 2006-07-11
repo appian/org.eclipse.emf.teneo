@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/annotations/toone"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/annotations/toone"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    
+  	<xsd:complexType name="Person">
+	    	<xsd:sequence>
+	  		<xsd:element name="address" type="xsd:IDREF" ecore:reference="this:Address" minOccurs="0">
+			 	<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/ManyToOne" ecore:key="fetch">EAGER</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/ManyToOne" ecore:key="cascade">MERGE PERSIST REFRESH</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/ManyToOne" ecore:key="targetEntity">Address</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/ManyToOne" ecore:key="optional">true</xsd:appinfo>
+			    </xsd:annotation>
+			</xsd:element>
+	  		<xsd:element name="head" type="xsd:IDREF" ecore:reference="this:Head" minOccurs="0" ecore:opposite="person">
+			 	<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="fetch">EAGER</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="cascade">ALL</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="targetEntity">Head</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="optional">true</xsd:appinfo>
+			    </xsd:annotation>
+			</xsd:element>
+    		</xsd:sequence>
+  	</xsd:complexType>
+
+  	<xsd:complexType name="Address">
+	    	<xsd:sequence>
+	  		<xsd:element name="city" type="xsd:string"/>
+    		</xsd:sequence>
+  	</xsd:complexType>
+
+  	<xsd:complexType name="Head">
+	    	<xsd:sequence>
+	  		<xsd:element name="hairColor" type="xsd:string"/>
+			<xsd:element name="person" type="xsd:IDREF" ecore:reference="this:Person" ecore:opposite="head">
+			 	<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="fetch">EAGER</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="cascade">MERGE PERSIST REFRESH</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="targetEntity">Person</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="optional">false</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="mappedBy">head</xsd:appinfo>
+			    </xsd:annotation>
+			</xsd:element>
+    		</xsd:sequence>
+  	</xsd:complexType>
+ </xsd:schema>

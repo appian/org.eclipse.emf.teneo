@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/annotations/id"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:lib="http://www.eclipse.org/emf/teneo/samples/emf/annotations/id"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:annotation>
+		<xsd:appinfo source="http://ejb.elver.org/SequenceGenerator" ecore:key="name">GENERATOR</xsd:appinfo>
+		<xsd:appinfo source="http://ejb.elver.org/SequenceGenerator" ecore:key="sequenceName">mySequenceName</xsd:appinfo>
+	</xsd:annotation>
+
+  <xsd:complexType name="SimpleID">
+    <xsd:sequence>
+      <xsd:element name="autoID" type="xsd:long">
+	 	<xsd:annotation>
+			<xsd:appinfo source="http://ejb.elver.org/Id">true</xsd:appinfo>
+			<xsd:appinfo source="http://ejb.elver.org/GeneratedValue">true</xsd:appinfo>
+			<xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="name">AUTOD</xsd:appinfo>
+			<xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="nullable">false</xsd:appinfo>
+	    </xsd:annotation>
+	  </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TableID">
+    <xsd:sequence>
+      <xsd:element name="myid" type="xsd:long">
+	 	<xsd:annotation>
+			<xsd:appinfo source="http://ejb.elver.org/Id">true</xsd:appinfo>
+			<xsd:appinfo source="http://ejb.elver.org/GeneratedValue" ecore:key="strategy">TABLE</xsd:appinfo>
+	    </xsd:annotation>
+	  </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IdentityID">
+    <xsd:sequence>
+      <xsd:element name="myid" type="xsd:long">
+	 	<xsd:annotation>
+			<xsd:appinfo source="http://ejb.elver.org/Id">true</xsd:appinfo>
+			<xsd:appinfo source="http://ejb.elver.org/GeneratedValue" ecore:key="strategy">IDENTITY</xsd:appinfo>
+	    </xsd:annotation>
+	  </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+ </xsd:schema>

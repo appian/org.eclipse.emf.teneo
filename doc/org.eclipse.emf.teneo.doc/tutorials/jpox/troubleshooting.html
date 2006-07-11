@@ -1,0 +1,590 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Troubleshooting</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><td><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></td><th><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></th><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_1.html">Generate OR Mapping File</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpox_details.html">JPOX Details</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpoxresources.html">EMF/JPOX Resources</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/resource_utility.html">Resource Utility</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/ejb3_features.html">Supported Ann.</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/ejb3_format.html">EAnn. Format</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/ejb3_examples.html">EAnn. Examples</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/features_details.html">XML Schema Features</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/substitution.html">Substitution Group</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/anytype.html">xsd:any/xsd:anyType</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/schema_list.html">XML Schema Examples</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.7')" id="menu_selected_1.7Title" class="menutitle">Support</div>
+<div id="menu_selected_1.7" class="selectedmenuitemgroup">
+<div class="menupage">
+<div class="menupagetitle">Troubleshooting</div>
+</div>
+<div class="menuitem">
+<a href="../jpox/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/svn.html">Subversion</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Troubleshooting</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#JPOX+Configuration+and+Use+Details">JPOX Configuration and Use Details</a>
+</li>
+<li>
+<a href="#ormapper">Troubleshooting the OR Mapper and Resource Utilities</a>
+</li>
+<li>
+<a href="#enhancermapper">Troubleshooting the JPOX Enhancer</a>
+<ul class="minitoc">
+<li>
+<a href="#JPOX+Plugin+installation">JPOX Plugin installation</a>
+</li>
+<li>
+<a href="#Classpath+error">Classpath error</a>
+</li>
+<li>
+<a href="#Incorrect+package.jdo">Incorrect package.jdo</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#runtime">Troubleshooting the Runtime layer</a>
+</li>
+<li>
+<a href="#Common+issues">Common issues</a>
+<ul class="minitoc">
+<li>
+<a href="#Derby+database+and+cascading+deletes">Derby database and cascading deletes</a>
+</li>
+<li>
+<a href="#Created+new+model+through+new+model+wizard%3A+diagnostic+error">Created new model through new model wizard: diagnostic error</a>
+</li>
+<li>
+<a href="#OR+Mapper%3A+java.lang.NoSuchMethodError%3A+org.eclipse.emf.common.util.AbstractEnumerator">OR Mapper: java.lang.NoSuchMethodError: org.eclipse.emf.common.util.AbstractEnumerator</a>
+</li>
+<li>
+<a href="#java.lang.NoClassDefFoundError+when+initializing+runtime+layer+%281%29">java.lang.NoClassDefFoundError when initializing runtime layer (1)</a>
+</li>
+<li>
+<a href="#java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer+%282%29">java.lang.NoClassDefFoundError when starting/initializing runtime layer (2)</a>
+</li>
+<li>
+<a href="#Exception+in+thread+%22main%22+java.lang.NoClassDefFoundError%3A+org%2Felver%2Fstore%2Fjpox%2Fmapper%2FGenerateJDO">Exception in thread "main" java.lang.NoClassDefFoundError: org/elver/store/jpox/mapper/GenerateJDO</a>
+</li>
+<li>
+<a href="#Build+path+contains+duplicate+entries">Build path contains duplicate entries</a>
+</li>
+<li>
+<a href="#The+resource+is+empty+in+the+generated+editor">The resource is empty in the generated editor</a>
+</li>
+<li>
+<a href="#Different+versions+of+jar+files+in+JPOX+Enhancer+plugin+classpath+and+versions+in+org.elver.store.jpox.runtime">Different versions of jar files in JPOX Enhancer plugin classpath and versions in org.elver.store.jpox.runtime</a>
+</li>
+<li>
+<a href="#Update+manager+does+not+find+the+upgrade+of+the+EMF+-+JDO+plugin">Update manager does not find the upgrade of the EMF - JDO plugin</a>
+</li>
+<li>
+<a href="#The+EMF+generated+editor+does+not+start+and+the+error+log+gives+a+sql+error+%27Missing+column....%27">The EMF generated editor does not start and the error log gives a sql error 'Missing column....'</a>
+</li>
+<li>
+<a href="#Elver+does+not+see+my+changes+in+the+ecore+model">Elver does not see my changes in the ecore model</a>
+</li>
+</ul>
+</li>
+</ul>
+		
+<p>
+<em>For troubleshooting please also visit the <strong><a href="knownissues.html">Known Issues</a></strong> page.</em>
+</p>
+		
+<a name="N10017"></a><a name="JPOX+Configuration+and+Use+Details"></a>
+<div class="h3">
+<h3>JPOX Configuration and Use Details</h3>
+			
+			
+<p>The following <a href="jpox_details.html">page</a> discusses a number of details related to the 
+			configuration and use of the EMF/JPOX layer. This can possibly explain unexpected behavior.</p>
+		
+</div>
+		
+<a name="N10025"></a><a name="ormapper"></a>
+<div class="h3">
+<h3>Troubleshooting the OR Mapper and Resource Utilities</h3>
+			
+			
+<p>If an error popup is shown or no popup box appears after the OR Mapper plugin is finished then an application
+			error has occured within the OR Mapper/Resource utility.</p>
+			
+<p>The OR Mapper menu option only works if the ecore file is located in the same Java Project as the generated
+			EPackage sources.</p>
+			
+<p>When the console shows this exception: <em>Exception in thread "main" java.lang.NoClassDefFoundError: org/elver/store/jpox/mapper/GenerateJDO</em>
+			then you have not added the org.elver.store.jpox.runtime to the dependencies of the model plugin.</p>
+			
+<p>
+			To analyze what the problem is first view the error log. The error log
+			can be opened through: <em>Window &gt; Show View &gt; Error Log</em>. See below for an example
+			of an error in the OR Mapper (created on purpose for this example). By doubleclicking on the lines in
+			the error log you can get more information.
+			</p>
+			
+<p>
+<img alt="View on the error log for plugins" src="images/plugin_error.jpg"></p>
+			
+<p></p>
+			
+<p>When you see the exception java.lang.NoSuchMethodError: org.eclipse.emf.common.util.AbstractEnumerator then 
+			you need to upgrade to EMF 2.2</p>
+			
+<p>More information is present in the log file generated by the Elver plugins. The log 
+			file can be found in the .metadata/.plugins/org.elver.store.jpox.eclipse or .metadata/.plugins/org.elver.store.eclipse subdirectory in the Eclipse workspace directory (note
+			the dots before metadata and plugins).</p>
+			
+<p>
+<img alt="Path to the logfile" src="images/log_file.jpg"></p>
+			
+<p></p>
+			
+<p></p>
+			
+<p>The or mapping can also be generated programmatically this can give more insight in the issues, see <a href="jpoxdatastore.html#Programmatic+generation+of+package.jdo">here</a>.</p>
+			
+<p>When mailing a question regarding these type of errors please also post the logfile.
+			Logfiles are automatically copied to a backup if 250kb has been reached, only one backup file is maintained.</p>
+		
+</div>
+		
+<a name="N1005E"></a><a name="enhancermapper"></a>
+<div class="h3">
+<h3>Troubleshooting the JPOX Enhancer</h3>
+			
+			
+<p>Problems in the JPOX enhancer are often related to the installation of the JPOX plugin, e.g. an incorrect classpath setting in the preferences or
+				an invalid package.jdo file. The JPOX Enhancer will write debug and log messages to the console in Eclipse.
+				if this does not happen please check the log4j settings.
+			</p>
+			
+<a name="N10067"></a><a name="JPOX+Plugin+installation"></a>
+<div class="h4">
+<h4>JPOX Plugin installation</h4>
+<p>If you do not see a specific JPOX submenu when right clicking on a Java package, then the JPOX plugin
+			is not installed. To check what is wrong look in the workspace/.metadata/.log file, where workspace 
+			is your workspace directory.
+			</p>
+</div>
+			
+<a name="N10071"></a><a name="Classpath+error"></a>
+<div class="h4">
+<h4>Classpath error</h4>
+<p>A classpath error will be made visible like the image below. This particular error 
+				can be solved by adding the required jars to the classpath of the JPOX Enhancer 
+				(in this case the JPOX Core jar, see <a href="installation.html">installation instructions)</a>.
+			</p>
+<p>
+<img alt="Error message no class found" src="images/enhancer_error_no_class.jpg"></p>
+</div>
+			
+<a name="N10084"></a><a name="Incorrect+package.jdo"></a>
+<div class="h4">
+<h4>Incorrect package.jdo</h4>
+<p>The JPOX Enhancer will notify you if there is an error in the package.jdo. 
+				The error message shown by the JPOX Enhancer in the console
+				does not look very alarming (no red blinking text). See the image below. 
+			</p>
+<p>
+<img alt="Error message in the console" src="images/error_jdo.jpg"></p>
+<p>The main symptom of an error condition is that the enhancement ends with
+			the statement <em>Initialising 0 JDO Files</em>. A few lines above that in the 
+			console you will see 2 lines with the error message. 
+			</p>
+<p>If you post a question about an error in the enhancer to the mailing list then please also post the content of the console and
+				the package.jdo file</p>
+</div>
+		
+</div>
+		
+<a name="N1009D"></a><a name="runtime"></a>
+<div class="h3">
+<h3>Troubleshooting the Runtime layer</h3>
+			
+			
+<p>The runtime layer uses commons-logging for logging. Please set the log level to debug to get the most information.</p>
+			
+<p>If you use the runtime layer within a plugin then log messages will not appear in the console. In this 
+				case check the error log view (<em>Window &gt; Show View &gt; Error Log</em>) or let the log messages be
+				written to a file.
+			</p>
+			
+<p>
+<em>As an extra debug enabling you can add the following line in the EMF editor plugin:</em>
+</p>
+			
+<pre class="code">
+org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
+			</pre>
+			
+<p>This will result in much more debugging information in the console.</p>
+		
+</div>
+		
+<a name="N100B8"></a><a name="Common+issues"></a>
+<div class="h3">
+<h3>Common issues</h3>
+			
+			
+<a name="N100BE"></a><a name="Derby+database+and+cascading+deletes"></a>
+<div class="h4">
+<h4>Derby database and cascading deletes</h4>
+<p>
+			Elver will specify foreign keys with cascade delete in the mapping file if required 
+		by the model (for example with containment). However Derby does not support cascading deletes and will
+		throw an error in the initialisation phase. The only solution is to manually delete the cascade delete
+		foreign key tags in the package.jdo. Elver does not know at mapping file generation time which database
+		is used and can therefore not know if cascade deletes are supported or not.
+			</p>
+</div>
+			
+<a name="N100C7"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
+<div class="h4">
+<h4>Created new model through new model wizard: diagnostic error</h4>
+<p>The generated EMF model wizard allows invalid documents. When going through the 
+			wizard you need to select a type to create as the first document in the resource. The 
+			EMF model wizard creates an empty (all members are null) instance of this type and adds
+				 it to the JPOX resource. Before the JPOX resource is 
+			saved it checks if the content of the resource is valid. When nullable-constraints
+				are violated a StoreValidationException (with Diagnostics) is thrown.</p>
+<p>To solve this you should make your model more relaxed (make elements nullable) or
+				add a small amount of code, which sets the non-nullable fields, to the model wizard. An example of this last solution
+				is illustrated in the Library Tutorial. 
+			</p>
+</div>
+			
+<a name="N100D3"></a><a name="OR+Mapper%3A+java.lang.NoSuchMethodError%3A+org.eclipse.emf.common.util.AbstractEnumerator"></a>
+<div class="h4">
+<h4>OR Mapper: java.lang.NoSuchMethodError: org.eclipse.emf.common.util.AbstractEnumerator</h4>
+<p>When you run the or mapper and no popup box is shown then view the error log. If the error log shows the 
+			stacktrace below then you need to upgrade to EMF 2.2</p>
+<pre class="code">
+java.lang.NoSuchMethodError: org.eclipse.emf.common.util.AbstractEnumerator.&lt;init&gt;(ILjava/lang/String;Ljava/lang/String;)V
+at org.elver.store.annotations.pannotation.InheritanceType.&lt;init&gt;(InheritanceType.java:182)
+at org.elver.store.annotations.pannotation.InheritanceType.&lt;clinit&gt;(InheritanceType.java:85)
+at org.elver.store.jpox.eclipse.popup.actions.GenerateJDOActionSuperTable.run(GenerateJDOActionSuperTable.java:42)
+at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
+			</pre>
+</div>
+			
+<a name="N100E0"></a><a name="java.lang.NoClassDefFoundError+when+initializing+runtime+layer+%281%29"></a>
+<div class="h4">
+<h4>java.lang.NoClassDefFoundError when initializing runtime layer (1)</h4>
+<p>This error occurs when the runtime layer is initialized. It occurs because your 
+			application (and ecore libraries) are not present in the classpath of the runtime layer.
+			To solve this issue add the following line to the Manifest.MF of your EMF model project:
+			</p>
+<p>Eclipse-RegisterBuddy: org.elver.store.jpox.runtime</p>
+<p>See also the <a href="installation.html">installation</a> page</p>
+</div>
+			
+<a name="N100F4"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer+%282%29"></a>
+<div class="h4">
+<h4>java.lang.NoClassDefFoundError when starting/initializing runtime layer (2)</h4>
+<p>When your model is divided over different projects/plugins then the registerbuddy setting has to 
+				be set in the project with the 'widest' classpath (the project with a classpath containing the other plugins).
+				For example if you have the following two emf projects:</p>
+<ul>
+<li>Core</li>
+<li>Specific (which uses/imports Core)</li>
+</ul>
+<p>Then the registerbuddy should only be in the META-INF of the 'Specific' project. This is required 
+				otherwise Jpox will not see the 'Specific' project. Setting register-buddy in both 'Core' and 'Specific' 
+				will also result in classpath errors in Jpox.</p>
+</div>
+			
+<a name="N10107"></a><a name="Exception+in+thread+%22main%22+java.lang.NoClassDefFoundError%3A+org%2Felver%2Fstore%2Fjpox%2Fmapper%2FGenerateJDO"></a>
+<div class="h4">
+<h4>Exception in thread "main" java.lang.NoClassDefFoundError: org/elver/store/jpox/mapper/GenerateJDO</h4>
+<p>You have not added the org.elver.store.jpox.runtime to the dependencies of the model plugin. Add the 
+				org.elver.store.jpox.runtime plugin to the dependencies of the model project and set the register buddy setting
+				in the Manifest file.</p>
+</div>
+			
+<a name="N10111"></a><a name="Build+path+contains+duplicate+entries"></a>
+<div class="h4">
+<h4>Build path contains duplicate entries</h4>
+<p>It is possible that you get a message in the Problems view: build path
+				contains duplicate entry: ..... This occurs when JPOX support was enabled
+			for the project before the org.elver.store.jpox.runtime was added to the dependency tab of the plugin.xml
+			of the EMF model project.
+			To resolve this, choose 'Remove JPOX Support' in the JPOX menu and then choose 'Add JPOX Support' again.
+			The JPOX Libraries node in the project build path should disappear. The JPOX Libraries node is not
+			necessary because the org.elver.store.jpox.runtime already provides all the required libraries.</p>
+</div>
+			
+<a name="N1011B"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
+<div class="h4">
+<h4>The resource is empty in the generated editor</h4>
+<p>The JPOX resources will only load EMF objects which have been enhanced. To ensure that
+				the EMF classes are enhanced make sure that 'Enable Auto Enhancement' is checked in the 
+				JPOX submenu. The JPOX submenu is displayed when you right click on the EMF model project.</p>
+<p>See also the <a href="knownissues.html">Know Issues</a>.</p>
+</div>
+			
+<a name="N1012C"></a><a name="Different+versions+of+jar+files+in+JPOX+Enhancer+plugin+classpath+and+versions+in+org.elver.store.jpox.runtime"></a>
+<div class="h4">
+<h4>Different versions of jar files in JPOX Enhancer plugin classpath and versions in org.elver.store.jpox.runtime</h4>
+<p>After updating the org.elver.store.jpox.runtime plugin it is important to let the jar files
+				in the JPOX classpath (see <a href="installation.html">JPOX Eclipse Plugin installation</a>) point to the 
+				jar files in the latest version of the org.elver.store.jpox.store.runtime plugin.</p>
+</div>
+			
+<a name="N1013A"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+-+JDO+plugin"></a>
+<div class="h4">
+<h4>Update manager does not find the upgrade of the EMF - JDO plugin</h4>
+<p>Please see the <a href="upgrading.html">upgrade page</a> for more information.</p>
+</div>
+			
+<a name="N10147"></a><a name="The+EMF+generated+editor+does+not+start+and+the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
+<div class="h4">
+<h4>The EMF generated editor does not start and the error log gives a sql error 'Missing column....'</h4>
+<p>This can occur if your model has changed or you just upgraded the OR Mapper plugin, 
+			see the <a href="upgrading.html">upgrade page</a> for more information.</p>
+</div>
+			
+<a name="N10154"></a><a name="Elver+does+not+see+my+changes+in+the+ecore+model"></a>
+<div class="h4">
+<h4>Elver does not see my changes in the ecore model</h4>
+<p>Elver uses the runtime version of the ecore model. The runtime version is present as java code in the 
+				generated EPackage implementation class. This runtime ecore can differ from the ecore file when the 
+				model code is not regenerated after a change in the ecore file. So to let Elver use the changes in the ecore
+				file the model code needs to be regenerated.</p>
+</div>
+		
+</div>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

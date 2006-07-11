@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Hibernate Helper: utility methods</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><td><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></td><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../contributors.html">Contributors</a>
+</div>
+<div class="menuitem">
+<a href="../links.html">Links</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">About</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../goal.html">Project Goal</a>
+</div>
+<div class="menuitem">
+<a href="../elver.html">The Elver</a>
+</div>
+<div class="menuitem">
+<a href="../license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Services</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../services/index.html">Springsite.com</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Home</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_1.html">Generate OR Mapping File</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">Library Editor tutorial</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Details</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpox_details.html">JPOX Details</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpoxresources.html">EMF/JPOX Resources</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/resource_utility.html">Resource Utility</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Annotations (EJB3)</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/ejb3_features.html">Supported Ann.</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/ejb3_format.html">EAnn. Format</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/ejb3_examples.html">EAnn. Examples</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.9')" id="menu_1.9Title" class="menutitle">XML Schema</div>
+<div id="menu_1.9" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/features_details.html">XML Schema Features</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/substitution.html">Substitution Group</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/anytype.html">xsd:any/xsd:anyType</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/schema_list.html">XML Schema Examples</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.10')" id="menu_1.10Title" class="menutitle">Support</div>
+<div id="menu_1.10" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.11')" id="menu_1.11Title" class="menutitle">Developer</div>
+<div id="menu_1.11" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/svn.html">Subversion</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/testcases.html">Test cases</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.12')" id="menu_1.12Title" class="menutitle">Home</div>
+<div id="menu_1.12" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.13')" id="menu_1.13Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.13" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.14')" id="menu_1.14Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.14" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.15')" id="menu_1.15Title" class="menutitle">Details</div>
+<div id="menu_1.15" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.16')" id="menu_1.16Title" class="menutitle">Annotations</div>
+<div id="menu_1.16" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_features.html">EJB3</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/custom_annotations.html">Custom</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.17')" id="menu_1.17Title" class="menutitle">XML Schema</div>
+<div id="menu_1.17" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.18')" id="menu_1.18Title" class="menutitle">Support</div>
+<div id="menu_1.18" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.19')" id="menu_1.19Title" class="menutitle">Developer</div>
+<div id="menu_1.19" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/svn.html">Subversion</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Hibernate Helper: utility methods</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#CrossReference">Retrieving cross referencers</a>
+</li>
+</ul>
+		
+<p>This page describes utility functions which are available in the 
+		Hibernate runtime plugin.</p>
+		
+<a name="N10011"></a><a name="CrossReference"></a>
+<div class="h3">
+<h3>Retrieving cross referencers</h3>
+			
+		
+<p>The HibernateHelper class offers a method for retrieving EObjects which
+			refer to a specified EObject:</p>
+		
+<pre class="code">
+HibernateHelper.INSTANCE.getCrossReferencers(name, session, eobject);
+		</pre>
+		
+<p>The first parameter is the name of the SessionFactory registered using the
+			HibernateHelper.</p>
+		
+<p>The second parameter is a session object. The caller of this method
+		should ensure that a transaction has been started before calling getCrossReferencers.</p>
+		
+<p>The third parameter is the EObject for which the referencers are to be retrieved.</p>
+		
+<p>The method returns an array of EObjects which refer to the passed eobject. If 
+			no referencer is found then an array with length zero is returned.</p>
+		
+</div>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

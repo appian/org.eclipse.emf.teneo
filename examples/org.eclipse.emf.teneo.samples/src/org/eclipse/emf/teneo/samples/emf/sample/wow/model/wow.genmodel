@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Wow" importerID="org.eclipse.emf.importer.ecore">
+  <foreignModel>wow.ecore</foreignModel>
+  <genPackages prefix="Model" disposableProviderFactory="true" ecorePackage="wow.ecore#/0">
+    <nestedGenPackages prefix="Org" disposableProviderFactory="true" ecorePackage="wow.ecore#/0/org">
+      <nestedGenPackages prefix="W3" disposableProviderFactory="true" ecorePackage="wow.ecore#/0/org/w3">
+        <nestedGenPackages prefix="Www" disposableProviderFactory="true" ecorePackage="wow.ecore#/0/org/w3/www">
+          <nestedGenPackages prefix="_2002" disposableProviderFactory="true" ecorePackage="wow.ecore#/0/org/w3/www/_2002">
+            <nestedGenPackages prefix="_07" disposableProviderFactory="true" ecorePackage="wow.ecore#/0/org/w3/www/_2002/_07">
+              <nestedGenPackages prefix="Owl" disposableProviderFactory="true" ecorePackage="wow.ecore#/0/org/w3/www/_2002/_07/owl">
+                <genClasses ecoreClass="wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing">
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcCreator"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcDescription"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcRelation"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcSubject"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcPublisher"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcLanguage"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcDate"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcType"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcContributor"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcSource"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dctermsModified"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcIdentifier"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dctermsIsReferencedBy"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dctermsVersion"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcCoverage"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dctermsIsRequiredBy"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcTitle"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcRights"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dctermsIssued"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/dcFormat"/>
+                  <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/w3/www/_2002/_07/owl/Thing/rdfID"/>
+                </genClasses>
+              </nestedGenPackages>
+            </nestedGenPackages>
+          </nestedGenPackages>
+        </nestedGenPackages>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="Walkonweb" disposableProviderFactory="true" ecorePackage="wow.ecore#/0/org/walkonweb">
+        <nestedGenPackages prefix="Www" disposableProviderFactory="true" ecorePackage="wow.ecore#/0/org/walkonweb/www">
+          <nestedGenPackages prefix="Ontology" disposableProviderFactory="true" ecorePackage="wow.ecore#/0/org/walkonweb/www/ontology">
+            <nestedGenPackages prefix="Wow_ontology_owl" disposableProviderFactory="true"
+                ecorePackage="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl">
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WorkflowType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Distanceable">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Distanceable/Distance"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LineTimetable">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LineTimetable/DepartureOn"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LineTimetable/AdditionalPTInfo"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LineTimetable/ArrivalOn"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LineTimetable/PTLine"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ConnectionNavigation">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ConnectionNavigation/ToPath"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ConnectionNavigation/FromPath"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LinkToOtherInfo"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path/StartPoint"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path/RoadConditionProperties"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path/WaymarkSignpostQuality"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path/SoilType"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path/WaymarkSignpostType"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path/EndPoint"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path/WaymarkSignpostDate"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LinkToSOS"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkVariantType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LinkToRecentInfo"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Action"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpImageable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpImageable/gpImage"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/DangerousAnimals"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Instructionable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Instructionable/Instruction"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable/Name"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/RatingValueable">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/RatingValueable/RatingValue"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkDifficulty">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkDifficulty/DifficultyTimeIndication"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Insects"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable/Image"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LinkToExternalWalk"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Link"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Annotation"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LineWalkFeature">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LineWalkFeature/LinearReferenceStart"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LineWalkFeature/LinearReferenceEnd"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkDifficultyType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/DifficultPoint"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfRelativeXYDirectionRelativeZDirectionCompassDirection"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NavTextable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NavTextable/navText"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Weather"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfClockDirectionCompassDirection"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Health"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/URIable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/URIable/URI"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PointWalkFeature">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PointWalkFeature/LinearReferenceDistance"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PracticalInformationType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Creatorable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Creatorable/Creator"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ShortDescriptionable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ShortDescriptionable/ShortDescription"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/DangerousPassage"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NarrativeType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/LegalNotice"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpTextable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpTextable/gpText"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Durationable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Durationable/Duration"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable/Text"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NLInstruction">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NLInstruction/TextReverse"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Narrative">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Narrative/NarrativeType"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Narrative/NarrativeSection"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PhoneNumberable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PhoneNumberable/PhoneNumber"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Node">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Node/ConnectionNavigation"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Instruction">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Instruction/NlInstruction"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Instruction/Position"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/MediaObject"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/GeographicFeatureable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/GeographicFeatureable/GeographicFeature"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Commercial"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Duration">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Duration/DurationValue"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Duration/DurationReverseValue"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfObjectOfInterestNarrativeSection"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Orientation">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Orientation/OrientationSpatialRelation"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Orientation/OrientationDirection"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Location"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest/ValidOn"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest/LocatedAt"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest/DescribedBy"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Viewpoint"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/RoadCondition">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/RoadCondition/RoadConditionType"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/RoadCondition/RoadConditionTime"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/SpatialRelationable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/SpatialRelationable/SpatialRelation"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/DangerWarning"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PetModality"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkTypeable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkTypeable/WalkType"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NodeName">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NodeName/Node"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NodeName/Label"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walkable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walkable/Walk"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Market">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Market/MarketDate"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/ObjectOfInterest"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/AccessibleToWheelchairs"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/NeededEquipment"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/GPSReceptionQuality"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/Workflow"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/Difficulty"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/MinAltitude"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/BestWalkingDirection"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/WalkVariantType"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/Annotation"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/AccessibleToBabyCarriages"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/VariantOf"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/BestStartingPoint"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/GSMCoverageQuality"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/MaxAltitude"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/OtherWalkingDirection"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/BestTimeToGo"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/Path"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/WalkFeature"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/WiFiCoverageQuality"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk/OtherStartingPoint"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ExternalIDable">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ExternalIDable/ExternalID"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfDestinationOrientationContinuationMovementPublicTransportStarting"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Destination">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Destination/DestinationSpatialRelation"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpNameable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpNameable/gpName"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PracticalInformation">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PracticalInformation/PracticalInformationType"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkFeature">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkFeature/Reversible"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkFeature/LinearReferenceFeature"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkFeature/ReferencedBy"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NavNameable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NavNameable/navName"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ChangeMovement">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ChangeMovement/ChangeDirection"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PublicTransportType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POIType">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POIType/VatgiType"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PublicTransport">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PublicTransport/Timetable"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/PublicTransport/PublicTransportType"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Altitudeable">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Altitudeable/Altitude"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Starting">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Starting/StartingSpatialRelation"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/OpeningHours"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/Address"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/FaxNumber"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/EntranceFee"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/PoiType"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/Location"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/Longitude"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/WebSite"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/Latitude"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/Description"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/POI/Source"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NoAccess"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NarrativeSection"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Allergies"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ContinuationMovement">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/ContinuationMovement/ContinuationDirection"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NegativeDirections">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NegativeDirections/NegativeDirection"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NegativeDirections/NegativeDirectionsSpatialRelation"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/CategoryOfInterest"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Movement">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Movement/MovementSpatialRelation"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NavImageable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/NavImageable/navImage"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/Rating"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/CumulativeAltitudeDifferenceable">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/CumulativeAltitudeDifferenceable/CumulativeAltitudeDifference"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkingSkillsType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/DifficultyTypeable">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_ontology_owl/DifficultyTypeable/DifficultyType"/>
+              </genClasses>
+            </nestedGenPackages>
+            <nestedGenPackages prefix="Wow_generalpurpose_owl" disposableProviderFactory="true"
+                ecorePackage="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl">
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeOfDay"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/EquipmentType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/SoilType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/NormalCondition"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/ClimbingGear"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Lighting"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Quality"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Unpaved"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Shoes"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/BadCondition"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/EatDrink"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Clothing"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Season"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/DayOfWeek"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Viewing"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Color"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Skis"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Period">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Period/gpToDate"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Period/gpFromDate"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Paved"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Date">
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Date/gpDate"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Address">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Address/gpHouseNumber"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Address/gpZipCode"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Address/gpMailBox"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Address/gpSettlementName"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Address/gpCountry"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Address/gpCityName"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Address/gpStreetName"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Address/gpBuildingName"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/RoadConditionType"/>
+            </nestedGenPackages>
+            <nestedGenPackages prefix="Wow_navigation_owl" disposableProviderFactory="true"
+                ecorePackage="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl">
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/MovementSpatialRelation"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/SignpostType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/ClockDirection"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/Direction">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/Direction/navReverseDirection"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/RelativeXYDirection"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/CompassDirection"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/StaticSpatialRelation"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/WaymarkType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/WaymarkSignpostType"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/SpatialRelation">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/SpatialRelation/navReverseSpatialRelation"/>
+              </genClasses>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_navigation_owl/RelativeZDirection"/>
+            </nestedGenPackages>
+            <nestedGenPackages prefix="Wow_geo_owl" disposableProviderFactory="true"
+                ecorePackage="wow.ecore#/0/org/walkonweb/www/ontology/wow_geo_owl">
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_geo_owl/GeographicFeature"/>
+              <genClasses ecoreClass="wow.ecore#/0/org/walkonweb/www/ontology/wow_geo_owl/TopographicFeature">
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_geo_owl/TopographicFeature/geoName"/>
+                <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference wow.ecore#/0/org/walkonweb/www/ontology/wow_geo_owl/TopographicFeature/geoSource"/>
+                <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/0/org/walkonweb/www/ontology/wow_geo_owl/TopographicFeature/geoID"/>
+              </genClasses>
+            </nestedGenPackages>
+          </nestedGenPackages>
+        </nestedGenPackages>
+      </nestedGenPackages>
+    </nestedGenPackages>
+  </genPackages>
+  <genPackages prefix="Runtime" resource="XML" disposableProviderFactory="true" ecorePackage="wow.ecore#/1">
+    <genClasses ecoreClass="wow.ecore#/1/LString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/1/LString/string"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wow.ecore#/1/LString/language"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

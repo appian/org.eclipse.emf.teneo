@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/annotations/associationoverride"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/annotations/associationoverride">
+	
+	<xsd:complexType name="Address">
+		<xsd:sequence>
+			<xsd:element name="street" type="xsd:string"/>
+			<xsd:element name="postalCode" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Person">
+		<xsd:annotation>
+			<xsd:appinfo source="http://annotation.elver.org/MappedSuperclass">true</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:long">
+				<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/Id">true</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="name" type="xsd:string"/>
+			<xsd:element name="address" type="this:Address">
+				<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/ManyToOne"/>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Student">
+		<!-- Leave the Address foreign key column as-is. ("address_id") -->
+		<xsd:complexContent>
+			<xsd:extension base="this:Person">
+				<xsd:sequence>
+					<xsd:element name="faculty" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+		<xsd:complexType name="Employee">
+		<xsd:annotation>
+			<!-- Override the Address foreign key column. ("employee_address_id") -->
+			<xsd:appinfo source="http://annotation.elver.org/AssociationOverride" ecore:key="name">address</xsd:appinfo>
+			<xsd:appinfo source="http://annotation.elver.org/AssociationOverride" ecore:key="joinColumns">c1</xsd:appinfo>
+			<xsd:appinfo source="http://annotation.elver.org/JoinColumn/c1" ecore:key="name">employee_address_id</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="this:Person">
+				<xsd:sequence>
+					<xsd:element name="department" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+</xsd:schema>

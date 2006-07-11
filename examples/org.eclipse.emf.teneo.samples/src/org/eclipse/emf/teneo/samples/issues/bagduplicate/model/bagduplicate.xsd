@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+	xmlns:lib="http://www.eclipse.org/emf/teneo/samples/issues/bagduplicate" 
+	xmlns:this="http://www.eclipse.org/emf/teneo/samples/issues/bagduplicate" 
+	targetNamespace="http://www.eclipse.org/emf/teneo/samples/issues/bagduplicate">
+	
+	<complexType name="Person">
+		<sequence>
+			<element name="Name" type="ID"/>
+			<element ecore:reference="this:Person" minOccurs="0" name="father" type="xsd:IDREF"/>
+			<element ecore:reference="this:Person" minOccurs="0" name="mother" type="xsd:IDREF"/>
+			<element ecore:reference="this:Person" maxOccurs="unbounded" minOccurs="0" name="children" type="xsd:IDREF">
+			 	<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/Unique" ecore:key="value">false</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/Indexed" ecore:key="value">false</xsd:appinfo>
+			    </xsd:annotation>
+			</element>
+		</sequence>
+	</complexType>
+</schema>

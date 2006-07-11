@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/annotations/uniqueconstraints"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/annotations/uniqueconstraints"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    
+    <!-- Test unique constraint on table -->
+
+	
+  <xsd:complexType name="Item">
+    <xsd:annotation>
+		<xsd:appinfo source="http://annotation.elver.org/Table" ecore:key="name">MYITEMTABLE</xsd:appinfo>
+		<xsd:appinfo source="http://annotation.elver.org/Table" ecore:key="uniqueConstraints">u1</xsd:appinfo>
+		<xsd:appinfo source="http://annotation.elver.org/UniqueConstraint/u1" ecore:key="columnNames">MYSTR MYINT</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+			<xsd:appinfo source="http://annotation.elver.org/Column" ecore:key="name">MYSTR</xsd:appinfo>
+	    </xsd:annotation>
+	 </xsd:element>
+      <xsd:element name="age" type="xsd:int">
+        <xsd:annotation>
+			<xsd:appinfo source="http://annotation.elver.org/Column" ecore:key="name">MYINT</xsd:appinfo>
+	    </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+ </xsd:schema>

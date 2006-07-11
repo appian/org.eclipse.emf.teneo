@@ -1,0 +1,451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>xsd:any and xsd:anyType</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><td><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></td><th><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></th><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_1.html">Generate OR Mapping File</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpox_details.html">JPOX Details</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpoxresources.html">EMF/JPOX Resources</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/resource_utility.html">Resource Utility</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/ejb3_features.html">Supported Ann.</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/ejb3_format.html">EAnn. Format</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/ejb3_examples.html">EAnn. Examples</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.6')" id="menu_selected_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_selected_1.6" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../jpox/features_details.html">XML Schema Features</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/substitution.html">Substitution Group</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">xsd:any/xsd:anyType</div>
+</div>
+<div class="menuitem">
+<a href="../jpox/schema_list.html">XML Schema Examples</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/svn.html">Subversion</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>xsd:any and xsd:anyType</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#Element+with+xsd%3AanyType">Element with xsd:anyType</a>
+<ul class="minitoc">
+<li>
+<a href="#Element+with+type+xsd%3AanyType+and+maxOccurs%3D%221%22">Element with type xsd:anyType and maxOccurs="1"</a>
+</li>
+<li>
+<a href="#Element+with+type+xsd%3AanyType+and+maxOccurs%3D%22unbounded%22">Element with type xsd:anyType and maxOccurs="unbounded"</a>
+</li>
+<li>
+<a href="#Setting+a+primitive+value+in+an+xsd%3AanyType+member">Setting a primitive value in an xsd:anyType member</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#xsd%3Aany+Element">xsd:any Element</a>
+</li>
+<li>
+<a href="#Benefits%2FConsequences+of+this+approach">Benefits/Consequences of this approach</a>
+</li>
+</ul>
+		
+<p>This page explains how xsd:any and xsd:anyType elements are stored in a relational store. 
+		This is provided as background information as this is normally hidden for the application developer.
+		</p>
+		
+<a name="N10011"></a><a name="Element+with+xsd%3AanyType"></a>
+<div class="h3">
+<h3>Element with xsd:anyType</h3>
+		
+<a name="N10016"></a><a name="Element+with+type+xsd%3AanyType+and+maxOccurs%3D%221%22"></a>
+<div class="h4">
+<h4>Element with type xsd:anyType and maxOccurs="1"</h4>
+<p>The following xml schema defines an element with type xsd:anyType and maxOccurs="1":</p>
+<pre class="code">
+&lt;xsd:element name="singleAnyType" type="xsd:anyType"/&gt;				
+			</pre>
+<p>This xml schema will result in getters/setters of the following (truncated form):</p>
+<pre class="code">
+/**
+ * ......
+ * @model containment="true" resolveProxies="false" required="true"
+ *        extendedMetaData="kind='element' name='singleAnyType'"
+ * @generated
+ */
+EObject getSingleAnyType();
+
+/**
+ * ......
+ * @generated
+ */
+void setSingleAnyType(EObject value);
+		</pre>
+<p>As is visible the EObject type is used as the member type. When storing any EObject in the database Elver
+				persistency will use two columns (both varchar). The first columns is used to store the datatype if the 
+				EObject if it is a primitive type. The second column either stores the String representation of a 
+				primitive value or the unique object id as defined by JPOX.
+			</p>
+</div>
+		
+<a name="N1002E"></a><a name="Element+with+type+xsd%3AanyType+and+maxOccurs%3D%22unbounded%22"></a>
+<div class="h4">
+<h4>Element with type xsd:anyType and maxOccurs="unbounded"</h4>
+<p>The following xml schema defines an element with type xsd:anyType and maxOccurs="unbounded":</p>
+<pre class="code">
+&lt;xsd:element name="multiAnyType" type="xsd:anyType" maxOccurs="unbounded"/&gt;				
+			</pre>
+<p>This xml schema will result in a getter of the following (truncated form):</p>
+<pre class="code">
+/**
+ * ..............
+ * @model type="org.eclipse.emf.ecore.EObject" containment="true" resolveProxies="false" required="true"
+ *        extendedMetaData="kind='element' name='multiAnyType'"
+ * @generated
+ */
+EList getMultiAnyType();
+	</pre>
+<p>As is visible the member is an EList which can contain EObject types. The maxOccurs="unbounded" anytype is 
+			mapped as a collection with an embedded PersistenceCapable type: org.elver.store.jpox.emf.mapping.AnyTypeEObject.</p>
+<pre class="code">
+&lt;field name="multiAnyType" persistence-modifier="persistent" embedded="true" delete-action="restrict"&gt;
+	&lt;collection element-type="org.elver.store.jpox.emf.mapping.AnyTypeEObject"&gt;
+		&lt;extension vendor-name="jpox" key="cache-lazy-loading" value="true"/&gt;
+	&lt;/collection&gt;
+	&lt;join&gt;
+		&lt;column name="TESTANY_MULTIANYTYPE_ID" allows-null="true"/&gt;
+	&lt;/join&gt;
+	&lt;order/&gt;
+	&lt;element&gt;
+		&lt;embedded&gt;
+			&lt;field name="classifier"&gt;
+				&lt;column name="CLASSIFIER"/&gt;
+			&lt;/field&gt;
+			&lt;field name="value"&gt;
+				&lt;column name="VALUE"/&gt;
+			&lt;/field&gt;
+		&lt;/embedded&gt;
+	&lt;/element&gt;
+&lt;/field&gt;
+				</pre>
+<p>This mapping will result
+				in a separate table which has a number of columns: 1) reference to the owner table, 
+				2) index field to keep track of the order, 3) is used to store the datatype if the 
+				EObject is a primitive type, and 4) either stores the String representation of a 
+				primitive value or the unique object id as defined by JPOX.
+			</p>
+</div>
+		
+<a name="N1004D"></a><a name="Setting+a+primitive+value+in+an+xsd%3AanyType+member"></a>
+<div class="h4">
+<h4>Setting a primitive value in an xsd:anyType member</h4>
+<p>It is possible to set a primitive value in an xsd:anyType member.
+				Elver persistency assumes that primitive values are set using an EObject which implements 
+				org.eclipse.emf.ecore.xml.type.SimpleAnyType. An example of such an object is:
+				org.eclipse.emf.ecore.xml.type.impl.SimpleAnyTypeImpl.
+				When a primitive type is retrieved from the relational store then 
+				the system will encapsulate the primitive value in a 
+				org.elver.store.jpox.emf.JPOXSimpleAnyTypeImpl object.
+			</p>
+</div>
+		
+</div>
+		
+<a name="N10058"></a><a name="xsd%3Aany+Element"></a>
+<div class="h3">
+<h3>xsd:any Element</h3>
+			
+<p>The following xml schema defines a xsd:any element:</p>
+			
+<pre class="code">
+&lt;xsd:any maxOccurs="unbounded" namespace="##other"/&gt;
+			</pre>
+			
+<p>This xml schema will result in getter of the following (truncated form):</p>
+			
+<pre class="code">
+/**
+ * ..........
+ * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" required="true" many="true"
+ *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':4' processing='strict'"
+ * @generated
+ */
+FeatureMap getAny();
+	</pre>
+			
+<p>The xsd:any type is translated into a FeatureMap which allows different features to be added.
+				The implementation of the xsd:any FeatureMap is different from the <a href="featuremap.html">derived feature</a>.
+				In case of xsd:any the system can not determine which types can be stored in this element. Instead the 
+				system will store all objects in a separate table. This table will have four columns:
+				 1) reference to the owner table, 
+				2) index field to keep track of the order, 3) is used to store the datatype if the 
+				EObject is a primitive type, and 4) either stores the String representation of a 
+				primitive value or the unique object id as defined by JPOX.
+			</p>
+			
+<p>Note:</p>
+			
+<ul>
+				
+<li>The persistency solution ignores the namespace XML Schema attribute of the xsd:any
+				element. It is assumed that the EMF layer will handle this attribute.</li>
+				
+<li>It is possible to set maxOccurs="1" or maxOccurs="unbounded" on the xsd:any
+				element. For the java implementation and the persistency solution this makes no difference.
+				In both cases a FeatureMap with a separate table is used. The EMF layer will check that
+				no more than maxOccurs entries are stored in the FeatureMap.</li>
+			
+</ul>
+		
+</div>
+		
+				
+<a name="N1007F"></a><a name="Benefits%2FConsequences+of+this+approach"></a>
+<div class="h3">
+<h3>Benefits/Consequences of this approach</h3>
+			
+			
+<p>The chosen approach has a number of benefits/consequences:</p>
+			
+<ul>
+				
+<li>The extensions to persist xsd:any/xsd:anyType are completely hidden for the application developer.
+				He/She can use the standard EMF apis.</li>
+				
+<li>Support for containment (including cascading delete)</li>
+				
+<li>No support for JDOQL querying on content of xsd:any fields.</li>
+				
+<li>No constraint checking when an eobject referenced from an xsd:any is deleted.</li>
+			
+</ul>
+		
+</div>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

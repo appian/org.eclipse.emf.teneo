@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="id"
+    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/id" nsPrefix="id">
+  <eAnnotations source="http://ejb.elver.org/SequenceGenerator">
+    <details key="name" value="GENERATOR"/>
+    <details key="sequenceName" value="mySequenceName"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentityID">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="IdentityID"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="myid" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
+      <eAnnotations source="http://ejb.elver.org/Id">
+        <details key="appinfo" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://ejb.elver.org/GeneratedValue">
+        <details key="strategy" value="IDENTITY"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="myid"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleID">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="SimpleID"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoID" unique="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
+        unsettable="true">
+      <eAnnotations source="http://ejb.elver.org/Id">
+        <details key="appinfo" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://ejb.elver.org/GeneratedValue">
+        <details key="appinfo" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://ejb.elver.org/Column">
+        <details key="name" value="AUTOD"/>
+        <details key="nullable" value="false"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="autoID"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TableID">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="TableID"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="myid" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
+      <eAnnotations source="http://ejb.elver.org/Id">
+        <details key="appinfo" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://ejb.elver.org/GeneratedValue">
+        <details key="strategy" value="TABLE"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="myid"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

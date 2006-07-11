@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Inventory" importerID="org.eclipse.emf.importer.ecore">
+  <foreignModel>inventory.ecore</foreignModel>
+  <genPackages prefix="Inventory" basePackage="org.eclipse.emf.teneo.samples.emf.sample" disposableProviderFactory="true"
+      ecorePackage="inventory.ecore#/">
+    <genClasses ecoreClass="inventory.ecore#//PType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inventory.ecore#//PType/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inventory.ecore#//PType/name"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference inventory.ecore#//PType/base"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference inventory.ecore#//PType/subTypes"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference inventory.ecore#//PType/subNOTypes"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference inventory.ecore#//PType/infoReferences"/>
+    </genClasses>
+    <genClasses ecoreClass="inventory.ecore#//PDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inventory.ecore#//PDeclaration/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inventory.ecore#//PDeclaration/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

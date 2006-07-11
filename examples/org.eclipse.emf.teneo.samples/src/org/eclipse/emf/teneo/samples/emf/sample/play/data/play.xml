@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Bryan (Bryan) -->
+<play:PlayType xmlns:play="http://www.eclipse.org/emf/teneo/samples/emf/sample/play">
+	<play:title>A Midsummer Night's Dream</play:title>
+	<play:fm>
+		<play:p>Text placed in the public domain by Moby Lexical Tools, 1992.</play:p>
+		<play:p>SGML markup by Jon Bosak, 1992-1994.</play:p>
+		<play:p>XML version by Jon Bosak, 1996-1998.</play:p>
+		<play:p>Altered slightly by Bryan Dollery, 2003, for inclusion in an article on XML parsing in Java. Published in DevX (www.devx.com) in February 2003</play:p>
+		<play:p>This work may be freely copied and distributed worldwide.</play:p>
+	</play:fm>
+	<play:personae>
+		<play:title>Dramatis Personae</play:title>
+		<play:persona>THESEUS, Duke of Athens.</play:persona>
+	</play:personae>
+	<play:sceneDescription>SCENE  Athens, and a wood near it.</play:sceneDescription>
+	<play:playSubTitle>A MIDSUMMER NIGHT'S DREAM</play:playSubTitle>
+	<play:act index="1" title="I">
+		<play:scene index="1" title="SCENE I.  Athens. The palace of THESEUS.">
+			<play:stageDirections>Enter THESEUS, HIPPOLYTA, PHILOSTRATE, and Attendants</play:stageDirections>
+			<play:speech>
+				<play:speaker>THESEUS</play:speaker>
+				<play:line>Now, fair Hippolyta, our nuptial hour</play:line>
+			</play:speech>
+			<play:stageDirections>Exeunt</play:stageDirections>
+		</play:scene>
+	</play:act>
+</play:PlayType>

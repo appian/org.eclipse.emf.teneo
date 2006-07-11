@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+	xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<complexType name="SimpleType">
+		<sequence>
+			<element default="c1" name="Code" type="string"/>
+			<element name="boo" type="boolean"/>
+			<element name="byt" type="byte"/>
+			<element name="doubl" type="double"/>
+			<element name="float" type="float"/>
+			<element name="inte" type="int"/>
+			<element name="lon" type="long"/>
+			<element name="shor" type="short"/>
+			<element name="enu" type="this:SimpleEnum"/>
+			<element name="dat" type="this:Date"/>
+			<element name="limitedstring" type="this:LimitedString"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="SimpleTypeObject">
+		<sequence>
+			<element default="c1" name="Code" type="string"/>
+			<element name="boo" type="boolean" nillable="true"/>
+			<element name="byt" type="byte" nillable="true"/>
+			<element name="doubl" type="double" nillable="true"/>
+			<element name="float" type="float" nillable="true"/>
+			<element name="inte" type="int" nillable="true"/>
+			<element name="lon" type="long" nillable="true"/>
+			<element name="shor" type="short" nillable="true"/>
+			<element name="enu" type="this:SimpleEnum" nillable="true">
+			 	<annotation>
+					<appinfo source="http://annotation.elver.org/Enumerated" ecore:key="value">STRING</appinfo>
+			    </annotation>
+			</element>
+			<element name="dat" type="this:Date" nillable="true"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="SimpleList">
+		<sequence>
+			<element default="c1" name="Code" type="string"/>
+			<element name="boo" type="boolean" maxOccurs="unbounded"/>
+			<element name="byt" type="this:Byte" maxOccurs="unbounded"/>
+			<element name="doubl" type="this:Double" maxOccurs="unbounded"/>
+			<element name="floa" type="this:Float" maxOccurs="unbounded"/>
+			<element name="inte" type="this:Int" maxOccurs="unbounded"/>
+			<element name="long" type="this:Long" maxOccurs="unbounded">
+			 	<annotation>
+					<appinfo source="http://annotation.elver.org/JoinTable" ecore:key="name">longNum</appinfo>
+			    </annotation>
+			</element>
+			<element name="shor" type="short" maxOccurs="unbounded"/>
+		<!--	<element name="enu" type="this:SimpleEnum" maxOccurs="unbounded"/>-->
+			<element name="dat" type="this:Date" maxOccurs="unbounded"/>
+			<element name="limitedstring" type="this:LimitedString" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="LimitedString">
+	  <restriction base="string">
+	    <length value="10"/>
+	  </restriction>
+	</simpleType>
+	
+	<simpleType name="SimpleEnum">
+    	<restriction base="xsd:NCName">
+      		<enumeration value="Enum1"/>
+      		<enumeration value="Enum2"/>
+    	</restriction>
+  	</simpleType>
+
+  	<simpleType ecore:instanceClass="java.lang.Double" name="Double">
+   		<restriction base="double"/>
+ 	</simpleType>
+
+  	<simpleType ecore:instanceClass="java.lang.Float" name="Float">
+   		<restriction base="float"/>
+ 	</simpleType>
+
+  	<simpleType ecore:instanceClass="java.lang.Long" name="Long">
+   		<restriction base="long"/>
+ 	</simpleType>
+
+  	<simpleType ecore:instanceClass="java.lang.Integer" name="Int">
+   		<restriction base="int"/>
+ 	</simpleType>
+
+  	<simpleType ecore:instanceClass="java.lang.Byte" name="Byte">
+   		<restriction base="byte"/>
+ 	</simpleType>
+
+  	<simpleType ecore:instanceClass="java.lang.Boolean" name="Bool">
+   		<restriction base="boolean"/>
+ 	</simpleType>
+  	
+  	<simpleType ecore:instanceClass="java.util.Date" name="Date">
+   		<restriction base="dateTime"/>
+ 	</simpleType>
+ 	
+ 	<!-- duration is not (yet) supported
+	<xsd:simpleType name="myDuration">
+    	<xsd:restriction base="xsd:duration">
+      		<xsd:minInclusive value="P1D"/>
+      		<xsd:maxInclusive value="P7D"/>
+    	</xsd:restriction>
+  	</xsd:simpleType> 
+  	-->
+</schema>

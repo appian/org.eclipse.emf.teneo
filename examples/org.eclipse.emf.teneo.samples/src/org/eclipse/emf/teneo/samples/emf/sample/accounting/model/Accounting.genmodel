@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Accounting" importerID="org.eclipse.xsd.ecore.importer">
+  <foreignModel>Accounting.xsd</foreignModel>
+  <genPackages prefix="Accounting" basePackage="org.eclipse.emf.teneo.samples.emf.sample" resource="XML"
+      disposableProviderFactory="true" ecorePackage="accounting.ecore#/">
+    <genDataTypes ecoreDataType="accounting.ecore#//Date"/>
+    <genClasses ecoreClass="accounting.ecore#//Account">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//Account/name"/>
+    </genClasses>
+    <genClasses ecoreClass="accounting.ecore#//AccountGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//AccountGroup/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference accounting.ecore#//AccountGroup/account"/>
+    </genClasses>
+    <genClasses ecoreClass="accounting.ecore#//Accounting">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//Accounting/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference accounting.ecore#//Accounting/accountGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference accounting.ecore#//Accounting/vat"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference accounting.ecore#//Accounting/vatAccount"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference accounting.ecore#//Accounting/report"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference accounting.ecore#//Accounting/journalGroup"/>
+    </genClasses>
+    <genClasses ecoreClass="accounting.ecore#//BalanceAccount">
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference accounting.ecore#//BalanceAccount/report"/>
+    </genClasses>
+    <genClasses ecoreClass="accounting.ecore#//JournalGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//JournalGroup/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference accounting.ecore#//JournalGroup/journalGroups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference accounting.ecore#//JournalGroup/journalStatements"/>
+    </genClasses>
+    <genClasses ecoreClass="accounting.ecore#//JournalStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//JournalStatement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//JournalStatement/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//JournalStatement/amount"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference accounting.ecore#//JournalStatement/debitAccount"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference accounting.ecore#//JournalStatement/creditAccount"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference accounting.ecore#//JournalStatement/vat"/>
+    </genClasses>
+    <genClasses ecoreClass="accounting.ecore#//PLAccount"/>
+    <genClasses ecoreClass="accounting.ecore#//Report">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//Report/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference accounting.ecore#//Report/debitReportGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference accounting.ecore#//Report/creditReportGroup"/>
+    </genClasses>
+    <genClasses ecoreClass="accounting.ecore#//ReportGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//ReportGroup/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference accounting.ecore#//ReportGroup/reportGroup"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference accounting.ecore#//ReportGroup/account"/>
+    </genClasses>
+    <genClasses ecoreClass="accounting.ecore#//Vat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//Vat/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute accounting.ecore#//Vat/rate"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

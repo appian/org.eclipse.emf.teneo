@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="attributeoverrides"
+    nsURI="http:///org/elver/samples/emf/annotations/attributeoverrides.ecore" nsPrefix="org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides">
+  <eClassifiers xsi:type="ecore:EClass" name="Person">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Test MappedSuperclass annotation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bornIn" lowerBound="1"
+        eType="#//City">
+      <eAnnotations source="http://annotation.elver.org/Embedded"/>
+      <eAnnotations source="http://annotation.elver.org/AttributeOverride">
+        <details key="name" value="name"/>
+        <details key="column" value="c1"/>
+      </eAnnotations>
+      <eAnnotations source="http://annotation.elver.org/Column/c1">
+        <details key="name" value="bornNameColumn"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="livesIn" lowerBound="1"
+        eType="#//City">
+      <eAnnotations source="http://annotation.elver.org/Embedded"/>
+      <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+        <details key="value" value="a1 a2"/>
+      </eAnnotations>
+      <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+        <details key="name" value="name"/>
+        <details key="column" value="c1"/>
+      </eAnnotations>
+      <eAnnotations source="http://annotation.elver.org/Column/c1">
+        <details key="name" value="nameColumn"/>
+      </eAnnotations>
+      <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+        <details key="name" value="country"/>
+        <details key="column" value="c2"/>
+      </eAnnotations>
+      <eAnnotations source="http://annotation.elver.org/Column/c2">
+        <details key="name" value="countryColumn"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="City">
+    <eAnnotations source="http://annotation.elver.org/Embeddable"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="country" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

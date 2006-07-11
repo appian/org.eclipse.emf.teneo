@@ -1,0 +1,2717 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <ecore:EPackage name="model" nsURI="http://wow.semantic.model">
+    <eAnnotations source="source_ontologies">
+      <details key="1" value="http://www.walkonweb.org/ontology/wow-ontology.owl"/>
+      <details key="2" value="http://www.walkonweb.org/ontology/wow-navigation.owl"/>
+      <details key="3" value="http://www.walkonweb.org/ontology/wow-geo.owl"/>
+      <details key="4" value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl"/>
+    </eAnnotations>
+    <eSubpackages name="org" nsURI="http://wow.semantic.model/org">
+      <eSubpackages name="w3" nsURI="http://wow.semantic.model/org/w3">
+        <eSubpackages name="www" nsURI="http://wow.semantic.model/org/w3/www">
+          <eSubpackages name="_2002" nsURI="http://wow.semantic.model/org/w3/www/_2002">
+            <eSubpackages name="_07" nsURI="http://wow.semantic.model/org/w3/www/_2002/_07">
+              <eSubpackages name="owl" nsURI="http://wow.semantic.model/org/w3/www/_2002/_07/owl"
+                  nsPrefix="owl">
+                <eClassifiers xsi:type="ecore:EClass" name="Thing">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.w3.org/2002/07/owl#Thing"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Ontology describing building blocks for creating navigation instructions."/>
+                  </eAnnotations>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcCreator"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/creator"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="An entity primarily responsible for making the content \n\t\tof the resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Creator"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcDescription"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/description"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="An account of the content of the resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Description"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcRelation"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/relation"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="A reference to a related resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Relation"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcSubject"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/subject"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="The topic of the content of the resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Subject and Keywords"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcPublisher"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/publisher"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="An entity responsible for making the resource available"/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Publisher"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcLanguage"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/language"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="A language of the intellectual content of the resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Language"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcDate" upperBound="-1"
+                      eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/date"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="A date associated with an event in the life cycle of the\n\t\tresource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Date"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcType" upperBound="-1"
+                      eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/type"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="The nature or genre of the content of the resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Resource Type"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcContributor"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/contributor"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="An entity responsible for making contributions to the\n\t\tcontent of the resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Contributor"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcSource"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/source"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="A reference to a resource from which the present resource\n\t\tis derived."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Source"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dctermsModified"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/terms/modified"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcIdentifier"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/identifier"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="An unambiguous reference to the resource within a given context."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Resource Identifier"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dctermsIsReferencedBy"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/terms/isReferencedBy"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dctermsVersion"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/terms/hasVersion"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcCoverage"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/coverage"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="The extent or scope of the content of the resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Coverage"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dctermsIsRequiredBy"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/terms/isRequiredBy"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcTitle"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/title"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="A name given to the resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Title"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcRights"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/rights"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="Information about rights held in and over the resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Rights Management"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dctermsIssued"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/terms/issued"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="dcFormat"
+                      upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                    <eAnnotations source="sourceURI">
+                      <details value="http://purl.org/dc/elements/1.1/format"/>
+                    </eAnnotations>
+                    <eAnnotations source="comments">
+                      <details key="en-US" value="The physical or digital manifestation of the resource."/>
+                    </eAnnotations>
+                    <eAnnotations source="labels">
+                      <details key="en-US" value="Format"/>
+                    </eAnnotations>
+                  </eStructuralFeatures>
+                  <eStructuralFeatures xsi:type="ecore:EAttribute" name="rdfID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+                </eClassifiers>
+              </eSubpackages>
+            </eSubpackages>
+          </eSubpackages>
+        </eSubpackages>
+      </eSubpackages>
+      <eSubpackages name="walkonweb" nsURI="http://wow.semantic.model/org/walkonweb">
+        <eSubpackages name="www" nsURI="http://wow.semantic.model/org/walkonweb/www">
+          <eSubpackages name="ontology" nsURI="http://wow.semantic.model/org/walkonweb/www/ontology">
+            <eSubpackages name="wow_ontology_owl" nsURI="http://wow.semantic.model/org/walkonweb/www/ontology/wow_ontology_owl"
+                nsPrefix="">
+              <eClassifiers xsi:type="ecore:EClass" name="WorkflowType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#WorkflowType"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Information about the authoring workflow, for example the status of the walk in the system."/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Distanceable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="Distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#distance"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Distance of this item measured in metres."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="LineTimetable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#LineTimetable"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Class reused from IM@GINE-IT project. Indicates one line in a timetable for public transport. Courtesy of IM@GINE-IT consortium."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="DepartureOn"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#departureOn"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="AdditionalPTInfo"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="AdditionalPTInfo_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="AdditionalPTInfo_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#additionalPTInfo"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="possibly destination, check counters and gate for airplanes, track for train, dock for ships, etc"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="ArrivalOn"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#arrivalOn"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="PTLine" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="PTLine_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="PTLine_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#PTLine"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="bus number, flight number, metro line number"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="WalkType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#WalkType"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Type of the walk, referring to the means of transport to which the walk is primarily aimed or for which it is designed."/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="ConnectionNavigation" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Instructionable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#ConnectionNavigation"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Describes the navigation instructions that are applicable for the connection of two Paths in a certain walking direction."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="ToPath" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#toPath"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="FromPath" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#fromPath"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="LinkToOtherInfo" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/URIable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/PhoneNumberable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Link">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#LinkToOtherInfo"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Path" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Distanceable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Durationable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Instructionable #/0/org/walkonweb/www/ontology/wow_ontology_owl/CumulativeAltitudeDifferenceable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Path"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="The route that connects two successive  nodes of a walk. A Path is the smallest subdivision of a walk."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="StartPoint"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Node">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#startPoint"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Starting point of a segment."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="RoadConditionProperties"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/RoadCondition">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#roadConditionProperties"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Specific conditions of the road on which the route segment goes.\nMultiple because road condition might change during the year, e.g. good condition in summer and icy in winter."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="WaymarkSignpostQuality"
+                    eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Quality">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#waymarkSignpostQuality"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Quality (also quantity) of the waymarking / signposting."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="SoilType" upperBound="-1"
+                    eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/SoilType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#soilType"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Type of soil that "/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="WaymarkSignpostType"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_navigation_owl/WaymarkSignpostType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#waymarkSignpostType"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Type of waymark / signpost that is visible in this route or route segment. Multiple because one section or route can have different maymarking and/or signposting. In case the waymarking/signposting is identical throughout the entire route, only add this to route and not to any segment: segments will take over the route waymarking if no specific segment waymarking is given."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="EndPoint" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Node">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#endPoint"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="End point of a segment."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="WaymarkSignpostDate"
+                    upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#waymarkSignpostDate"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Date when waymarking/signposting has been checked and updated. Multiple to indicate all moments when it has been checked (so that last date checked can be inferred from that automatically)."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="LinkToSOS" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/PhoneNumberable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Link">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#LinkToSOS"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="SOS numbers etc"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="WalkVariantType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#WalkVariantType"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="LinkToRecentInfo" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/URIable #/0/org/walkonweb/www/ontology/wow_ontology_owl/PhoneNumberable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Link">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#LinkToRecentInfo"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/GeographicFeatureable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Instruction">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Action"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="fr" value="Actions que le randonneur doit prendre pour arriver \u00E0 la destination en partant du lieu actuel.\nOrdre normal:\n1. Orientation\n2. D\u00E9part\n3. Mouvement\n4. Destination"/>
+                  <details key="nl" value="Acties die de wandelaar moet ondernemen om de bestemming te bereiken, vertrekkend vanaf de huidige locatie.\nNormale volgorde: \n1 Orientatie\n2 Start\n3 Beweging\n4 Bestemming"/>
+                  <details key="en" value="Actions that the hiker has to take in order to reach the destination from the current location. \nNormal order: \n1 Orientation\n2 Starting\n3 Moving\n4 Destination"/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="nl" value="Actie"/>
+                  <details key="en" value="Action"/>
+                  <details key="fr" value="Action"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="GpImageable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpImage" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpImage_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpImage_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#image"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="DangerousAnimals" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/DangerWarning">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#DangerousAnimals"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Instructionable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Instruction"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Instruction">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#instruction"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="NOTE: additional restriction: only one ElementNavigationDirection of a specific type can exist for one RouteSegment, RouteReferencePoint or ConnectionNavigationDirections. If more exist"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Nameable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Name" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="Name_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="Name_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#name"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Name shown to the author\nMultiple because of languages"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="RatingValueable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="RatingValue"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#ratingValue"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Rating for this person."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="WalkDifficulty" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/DifficultyTypeable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#WalkDifficulty"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="DifficultyTimeIndication"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#difficultyTimeIndication"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Indication of the time period(s) when this difficulty type is applicable."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Insects" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Health">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Insects"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Imageable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Image" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="Image_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="Image_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#image"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="LinkToExternalWalk" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Distanceable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Durationable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Link">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#LinkToExternalWalk"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Link"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Annotation" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Creatorable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Annotation"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Types of annotation"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="LineWalkFeature" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkFeature">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#LineWalkFeature"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Feature applicable to a longer part of a route.\nFor example: when a narrative describes a nature reserve area through which the route passes, a LineWalkFeature will be created that streches along the route from the point where the route enters the nature reserve until the point where it exits the reserve. "/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="LinearReferenceStart"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#linearReferenceStart"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="LinearReferenceEnd"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#linearReferenceEnd"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="WalkDifficultyType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#WalkDifficultyType"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Levels of difficulty for a walk."/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="DifficultPoint" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/DangerWarning">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#DifficultPoint"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="UnionOfRelativeXYDirectionRelativeZDirectionCompassDirection"
+                  eSuperTypes="#/0/org/walkonweb/www/ontology/wow_navigation_owl/Direction"/>
+              <eClassifiers xsi:type="ecore:EClass" name="NavTextable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="navText" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="navText_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="navText_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#text"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Text shown to the end user\nMultiple because of languages"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Weather" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Health">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Weather"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="UnionOfClockDirectionCompassDirection"
+                  eSuperTypes="#/0/org/walkonweb/www/ontology/wow_navigation_owl/Direction"/>
+              <eClassifiers xsi:type="ecore:EClass" name="Health" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/PracticalInformationType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Health"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Notices about situations that might harm the hiker's health."/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="URIable" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="URI" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="URI_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="URI_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#URI"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="PointWalkFeature" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkFeature">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#PointWalkFeature"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Feature only applicable to a single point on the route."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="LinearReferenceDistance"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#linearReferenceDistance"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="PracticalInformationType"
+                  eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#PracticalInformationType"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Creatorable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Creator" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="Creator_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="Creator_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#creator"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Creator of this item. Refers to user's login name."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="ShortDescriptionable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="ShortDescription"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="ShortDescription_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="ShortDescription_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#shortDescription"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="DangerousPassage" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/DangerWarning">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#DangerousPassage"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="NarrativeType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#NarrativeType"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="LegalNotice" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/PracticalInformationType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#LegalNotice"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="GpTextable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpText" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpText_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpText_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#text"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Text shown to the end user\nMultiple because of languages"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Durationable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Duration" upperBound="-1"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Duration">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#duration"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Duration needed for a hiker to walk this item. Imagine a hiker with a average physical condition and walking skills for measuring the duration. For other hikers a weighing factor will be applied to this duration. A duration is relative to the WalkType."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Textable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Text" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="Text_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="Text_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#text"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Text shown to the end user\nMultiple because of languages"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="NLInstruction" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#NLInstruction"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Free text version of the navigation instructions, describing how the hiker has to proceed on this small part of the route. A NLInstruction is always directly linked to one Instruction and it can be derived from it. After automatically deriving it, an author can change it into a more readable form."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="TextReverse"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="TextReverse_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="TextReverse_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#textReverse"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Text containing the navigation instructions in the reverse walking direction (opposite to the direction described by hasText and by the referring Instructions)"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Narrative" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest #/0/org/walkonweb/www/ontology/wow_ontology_owl/Annotation">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Narrative"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Free text describing an interesting issue related to the walk, like stories about nature, culture or history, a description about how to navigate to the walk, weather information, health tips and local events."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="NarrativeType"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/NarrativeType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#narrativeType"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="NarrativeSection"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/NarrativeSection">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#narrativeSection"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="PhoneNumberable" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="PhoneNumber"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="PhoneNumber_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="PhoneNumber_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#phoneNumber"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Altitudeable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Node"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="A point connecting two Paths. Glossary (=RoutReferencePoint): \u201CA geographic point location that is salient in the landscape, where the hiker needs to change direction or where the hiker might be uncertain on how to proceed\u201D. "/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="ConnectionNavigation"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/ConnectionNavigation">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#connectionNavigation"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Instruction" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walkable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Instruction"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="en" value="Singular navigation instruction given for one specific route element. Can be linked from a Path or Node (through ConnectionNavigation): from those, several Instructions can be given in a specific order, to give the hiker a set of instructions on how to proceed."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="NlInstruction"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/NLInstruction">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#nlInstruction"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Natural language text explaining this Instruction in a human authored way."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="Position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#position"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Indicates the (unique) position of an Instruction for one Path or Node. "/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="MediaObject" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/URIable #/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest #/0/org/walkonweb/www/ontology/wow_ontology_owl/Annotation">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#MediaObject"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="pictures and rendered 3D map views "/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="GeographicFeatureable" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Instruction">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="GeographicFeature"
+                    eType="#/0/org/walkonweb/www/ontology/wow_geo_owl/GeographicFeature">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#geographicFeature"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Geographic feature to which a reference is made from a navigation action."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Commercial" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/PracticalInformationType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Commercial"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Duration" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkTypeable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Duration"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Duration needed for a hiker to walk this item. Imagine a hiker with a average physical condition and walking skills for measuring the duration. For other hikers a weighing factor will be applied to this duration. A duration is relative to the WalkType and can be different for the two walking directions."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="DurationValue"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#durationValue"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Duration in the normal direction"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="DurationReverseValue"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#durationReverseValue"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Duration in the reverse direction"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="UnionOfObjectOfInterestNarrativeSection"
+                  eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing"/>
+              <eClassifiers xsi:type="ecore:EClass" name="Orientation" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfDestinationOrientationContinuationMovementPublicTransportStarting #/0/org/walkonweb/www/ontology/wow_ontology_owl/Action">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Orientation"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="fr" value="Action d'orientation que l'on doit faire avant on peut commencer le mouvement vers la destination. Pour donner des instructions concernant l'orientation on peut r\u00E9f\u00E9rer \u00E0 un object g\u00E9ographique et/ou une direction de compas. A ce moment-ci on n'a pas encore commenc\u00E9 \u00E0 bouger."/>
+                  <details key="en" value="Orientation action that one has to perform in order to be able to start the movement towards the destination. For giving instructions on the orientation a geographic feature can be given and/or a compass direction. At this moment one has not started moving yet."/>
+                  <details key="nl" value="Ori\u00EBntatie-actie die men moet doen alvorens men kan beginnen te bewegen richting bestemming. Voor de instructie kan zowel een kompasrichting gebruikt worden als een geografisch object als referentie."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="en" value="Orientation"/>
+                  <details key="fr" value="Orientation"/>
+                  <details key="nl" value="Ori\u00EBntatie"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="OrientationSpatialRelation"
+                    eType="#/0/org/walkonweb/www/ontology/wow_navigation_owl/MovementSpatialRelation">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#orientationSpatialRelation"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="OrientationDirection"
+                    eType="#/0/org/walkonweb/www/ontology/wow_navigation_owl/CompassDirection">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#orientationDirection"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Compass direction to which the hiker has to face in order to be able to start the movement towards the destination."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Location" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Instruction">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Location"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="fr" value="Description du lieu actuel d'o\u00F9 la navigation commence, continue ou finit."/>
+                  <details key="en" value="Describes the current location from which the navigation continues, starts or end."/>
+                  <details key="nl" value="Beschrijft de huidige locatie vanuit dewelke de navigatie start, voortgaat of eindigt."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="nl" value="Locatie"/>
+                  <details key="fr" value="Lieu"/>
+                  <details key="en" value="Location"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="ObjectOfInterest" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfObjectOfInterestNarrativeSection #/0/org/walkonweb/www/ontology/wow_ontology_owl/SpatialRelationable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#ObjectOfInterest"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Anything that might be of interest to the hiker. This can be the representation of a  geographic feature existing on the terrain or a media/text object existing in the system. An object of interest can be linked to a walk feature or be \&quot;freestanding\&quot; (not connected to a location on the walk). In the latter case the property isLocatedAt is used, in the former case hasSpatialExtent and hasSpatialRelation are used."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="ValidOn" upperBound="-1"
+                    eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#validOn"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Time indication on which the given information is valid."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="LocatedAt"
+                    eType="#/0/org/walkonweb/www/ontology/wow_geo_owl/GeographicFeature">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#locatedAt"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Property used to indicate a location for Objects of interest that are linked to the entire walk and not to a specific walk feature."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="DescribedBy"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#describedBy"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Object of interest that describes this object in more detail."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Viewpoint" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Viewpoint"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="RoadCondition" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#RoadCondition"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="RoadConditionType"
+                    eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/RoadConditionType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#roadConditionType"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="RoadConditionTime"
+                    eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#roadConditionTime"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="SpatialRelationable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="SpatialRelation"
+                    eType="#/0/org/walkonweb/www/ontology/wow_navigation_owl/SpatialRelation">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#spatialRelation"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Spatial relation of an ObjectOfInterest or NarrativeSection with the referenced WalkFeature (regarded from the perspective of the WalkFeature, i.e. the hiker who does the walk)."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="DangerWarning" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/PracticalInformationType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#DangerWarning"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Notices about situations that might be life-threathening."/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="PetModality" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/LegalNotice">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#PetModality"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Forbidden or restricted access for pets"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="WalkTypeable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="WalkType" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#walkType"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="NodeName" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Walkable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#NodeName"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Name/label of a node for a certain Walk"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Node" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Node">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#node"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Label" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="Label_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="Label_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#label"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Walkable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Walk" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#walk"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Market" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Commercial">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Market"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="MarketDate"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#marketDate"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Walk" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Distanceable #/0/org/walkonweb/www/ontology/wow_ontology_owl/ShortDescriptionable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Creatorable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Durationable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/CumulativeAltitudeDifferenceable #/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkTypeable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Walk"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="An artifact, produced by hiking organisation or other creator, that specifies a suggested route for a hike. A walk may, but need not, be specifically signposted on the ground. Walks are the primary products offered or sold by the WalkOnWeb system. Wordnet binding: \&quot;walk\&quot; - a path set aside for walking. In the WalkOnWeb publishing system his means that we look at a walk as the main product offered to the end user: a \u201Cwalk\u201D contains all information related to a walking route that the hiker needs and can be printed on paper or exported to a mobile device.  "/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="ObjectOfInterest"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#objectOfInterest"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="AccessibleToWheelchairs"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#accessibleToWheelchairs"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Indicates if (and at which moments in time) this walk is accessible to wheel chairs. Multiple because this can be time based."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="NeededEquipment"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/EquipmentType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#neededEquipment"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Equipment needed to do this walk. Multiple because different equipment might be needed at different moments in time."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="GPSReceptionQuality"
+                    eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Quality">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#GPSReceptionQuality"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Workflow" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/WorkflowType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#workflow"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Difficulty"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkDifficulty">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#difficulty"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Overall difficulty level of a walk or walk section."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="MinAltitude"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#minAltitude"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Minimum altitude thoughout the route. Measured in metres. "/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="BestWalkingDirection"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfClockDirectionCompassDirection">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#bestWalkingDirection"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Best direction in which the route can be taken, relative to BestStartingPoint."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="WalkVariantType"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkVariantType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#walkVariantType"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Annotation"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Annotation">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#annotation"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Annotations to a Walk. This can be used for the feedback from a hiker to an author about a certain walk."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="AccessibleToBabyCarriages"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#accessibleToBabyCarriages"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Indicates if (and at which moments in time) this walk is accessible to baby carriages or strollers."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="VariantOf"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Walk">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#variantOf"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="BestStartingPoint"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Node">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#bestStartingPoint"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Reference to the best point from which the walk can be started. Should be combined with hasBestWalkingDirection."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="GSMCoverageQuality"
+                    eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Quality">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#GSMCoverageQuality"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="MaxAltitude"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#maxAltitude"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Maximum altitude thoughout the route. Measured in metres. "/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="OtherWalkingDirection"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfClockDirectionCompassDirection">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#otherWalkingDirection"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="BestTimeToGo"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#bestTimeToGo"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Indication of the optimal time(s) to do the walk."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Path" upperBound="-1"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#path"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="WalkFeature"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkFeature">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#walkFeature"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="WiFiCoverageQuality"
+                    eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Quality">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#WiFiCoverageQuality"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="OtherStartingPoint"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Node">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#otherStartingPoint"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="ExternalIDable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="ExternalID"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#externalID"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="UnionOfDestinationOrientationContinuationMovementPublicTransportStarting"
+                  eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Instruction"/>
+              <eClassifiers xsi:type="ecore:EClass" name="Destination" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfDestinationOrientationContinuationMovementPublicTransportStarting #/0/org/walkonweb/www/ontology/wow_ontology_owl/Action">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Destination"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="fr" value="Description du fin du mouvement, par example r\u00E9f\u00E9rence \u00E0 un objet g\u00E9ographique que l'on doit passer avant d'arriver \u00E0 la destination. On n'a pas encore arriv\u00E9 \u00E0 la destination au moment de cette instruction."/>
+                  <details key="en" value="Description of the end of the movement, for example pointing to a geographic feature that we have to pass before reaching the final destination. At this moment one has not finished moving yet."/>
+                  <details key="nl" value="Beschrijving van het einde van de beweging, bv verwijzend naar een geografisch object dat men moet passeren voor de bestemming bereikt wordt. Op het moment van deze instructie heeft men de bestemming nog niet bereikt."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="en" value="Destination"/>
+                  <details key="fr" value="Destination"/>
+                  <details key="nl" value="Bestemming"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="DestinationSpatialRelation"
+                    eType="#/0/org/walkonweb/www/ontology/wow_navigation_owl/SpatialRelation">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#destinationSpatialRelation"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Spatial relation from the current location to the referenced geographic feature that we have to pass before reaching the final destination."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="GpNameable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpName" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpName_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpName_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#name"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Name shown to the author\nMultiple because of languages"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="PracticalInformation" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#PracticalInformation"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Similar to POI\u2019s and narratives, but this is any kind of practical information that can be linked to a walk feature and that can not be categorised in an other layer. Examples include health tips or warnings, seasonal differences, links, pet modality and regulations. "/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="PracticalInformationType"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/PracticalInformationType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#practicalInformationType"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="WalkFeature" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#WalkFeature"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="\u201Cfeatures along the walk\u201D: places on a walk (either points or lines) where a certain event occurs, like a nice view or passage by a POI, or where a certain feature is applicable, like practical information. "/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="Reversible"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#reversible"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="LinearReferenceFeature"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Path">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#linearReferenceFeature"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Route of the walk for which this is a WalkFeature. The WalkFeature is located on the route using linear referencing."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="ReferencedBy"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfObjectOfInterestNarrativeSection">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#referencedBy"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Objects of interest and/or narrative sections that have a reference to this walk feature."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="NavNameable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="navName" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="navName_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="navName_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#name"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Name shown to the author\nMultiple because of languages"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="ChangeMovement" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Movement">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#ChangeMovement"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="nl" value="Beweging die een richtsverandering inhoudt."/>
+                  <details key="fr" value="Mouvement que comprend un change de direction."/>
+                  <details key="en" value="Movement that requires a change of direction."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="en" value="Change movement"/>
+                  <details key="fr" value="Mouvement de change"/>
+                  <details key="nl" value="Veranderingsbeweging"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="ChangeDirection"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfRelativeXYDirectionRelativeZDirectionCompassDirection">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#changeDirection"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Direction to which the hiker should turn when he has to change the path."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="PublicTransportType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#PublicTransportType"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="POIType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#POIType"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Element name(s) used in VATGI (lowest level) for this POI type"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="VatgiType"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="VatgiType_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="VatgiType_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#vatgiType"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="PublicTransport" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfDestinationOrientationContinuationMovementPublicTransportStarting #/0/org/walkonweb/www/ontology/wow_ontology_owl/Instruction">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#PublicTransport"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="fr" value="Transport public que l'on doit prendre comme partie du route."/>
+                  <details key="nl" value="Openbaar vervoer dat men moet nemen als onderdeel van de route."/>
+                  <details key="en" value="Public transportation that has to be taken as part of the route."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="fr" value="Transport public"/>
+                  <details key="nl" value="Openbaar vervoer"/>
+                  <details key="en" value="Public transport"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Timetable"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/LineTimetable">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#timetable"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="PublicTransportType"
+                    eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/PublicTransportType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#publicTransportType"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Altitudeable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="Altitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#altitude"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Measured in meters above sea level."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Starting" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfDestinationOrientationContinuationMovementPublicTransportStarting #/0/org/walkonweb/www/ontology/wow_ontology_owl/Action">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Starting"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="fr" value="Description du d\u00E9part du mouvement, par example un object g\u00E9ographique que l'on doit passer avant que les instructions suivantes sont valable. A ce moment-ci le mouvement n'a pas encore commenc\u00E9."/>
+                  <details key="nl" value="Beschrijving van de start van de beweging, bv een geografisch object dat men moet passeren vooraleer de volgende instructies van toepassing zijn. Op dit moment is de beweging nog niet begonnen."/>
+                  <details key="en" value="Description of the start of the movement, for example pointing to a geographic feature that we have to pass before the next instructions are applicable. At this moment the hiker has not started moving yet."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="en" value="Starting"/>
+                  <details key="nl" value="Start"/>
+                  <details key="fr" value="D\u00E9part"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="StartingSpatialRelation"
+                    eType="#/0/org/walkonweb/www/ontology/wow_navigation_owl/StaticSpatialRelation">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#startingSpatialRelation"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Spatial relation that the start of the movement has with the linked geographic feature."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="POI" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/ShortDescriptionable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Altitudeable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/RatingValueable #/0/org/walkonweb/www/ontology/wow_ontology_owl/PhoneNumberable #/0/org/walkonweb/www/ontology/wow_ontology_owl/ExternalIDable #/0/org/walkonweb/www/ontology/wow_ontology_owl/ObjectOfInterest">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#POI"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Point of interest: an interesting place to visit; a key characteristic of a POI is that it is bound to a location on earth (this can be a point or an area)."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="OpeningHours"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="OpeningHours_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="OpeningHours_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#openingHours"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Address" eType="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/Address">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#address"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="FaxNumber"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="FaxNumber_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="FaxNumber_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#faxNumber"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="EntranceFee"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="EntranceFee_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="EntranceFee_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#entranceFee"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="PoiType" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/POIType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#poiType"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Location" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="Location_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="Location_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#location"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Location name or description"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="Longitude"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#longitude"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="WebSite" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="WebSite_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="WebSite_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#webSite"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="Latitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#latitude"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Description"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="Description_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="Description_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#description"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="Source" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="Source_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="Source_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#source"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="NoAccess" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/LegalNotice">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#NoAccess"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Forbidden or restricted access for hikers"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="NarrativeSection" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfObjectOfInterestNarrativeSection #/0/org/walkonweb/www/ontology/wow_ontology_owl/SpatialRelationable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/walkonweb/www/ontology/wow_ontology_owl/ExternalIDable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#NarrativeSection"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Small information units that together compose a narrative. Each NarrativeSection is referenced on the route by a WalkFeature. \nA NarrativeSection is a XHTML fragment that resides in a separate file or datastore and is referenced using its ID. As ID the :NAME will be used (this is unique)."/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Allergies" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Health">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Allergies"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="ContinuationMovement" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfDestinationOrientationContinuationMovementPublicTransportStarting #/0/org/walkonweb/www/ontology/wow_ontology_owl/Movement">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#ContinuationMovement"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="it" value="Beweging die geen richtsverandering inhoudt."/>
+                  <details key="fr" value="Mouvement que ne comprend pas de change de direction."/>
+                  <details key="en" value="Movement that does not require a change of direction."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="nl" value="Voortzettingsbeweging"/>
+                  <details key="fr" value="Mouvement de continuation"/>
+                  <details key="en" value="Continuation movement"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="ContinuationDirection"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfRelativeXYDirectionRelativeZDirectionCompassDirection">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#continuationDirection"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Direction in which the hiker should turn when he can continue the path."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="NegativeDirections" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/GeographicFeatureable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Instruction">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#NegativeDirections"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="nl" value="Richting die men NIET moet nemen om de bestemming te bereiken. Bv ga niet links in straat X."/>
+                  <details key="" value="Direction que l'on ne doit PAS prendre afin d'arriver \u00E0 la destination. Par example: n'aller pas \u00E0 gauche dans la rue X."/>
+                  <details key="en" value="Direction that one should NOT take in order to reach the destination. E.g. do not go left into street X."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="en" value="Negative directions"/>
+                  <details key="nl" value="Negatieve instructie"/>
+                  <details key="fr" value="Instructions n\u00E9gatives"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="NegativeDirection"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfRelativeXYDirectionRelativeZDirectionCompassDirection">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#negativeDirection"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="NegativeDirectionsSpatialRelation"
+                    eType="#/0/org/walkonweb/www/ontology/wow_navigation_owl/SpatialRelation">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#negativeDirectionsSpatialRelation"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Spatial relation from the current location to the referenced geographic feature that expresses a direction that the hiker should NOT take in order to reach the destination. "/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="CategoryOfInterest" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#CategoryOfInterest"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Category of interest indicates the main focus of the walk, e.g. type of landscape or topic (nature, culture,...)."/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Movement" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Action">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Movement"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Mouvement que l'on doit faire afin d'arriver \u00E0 la destination en partant du point de d\u00E9part."/>
+                  <details key="nl" value="Beweging die men moet doen om de bestemming te bereiken vanaf het startpunt."/>
+                  <details key="en" value="Movement that one has to do in order to reach the destination from the starting point."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="fr" value="Mouvement"/>
+                  <details key="nl" value="Beweging"/>
+                  <details key="en" value="Movement"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="MovementSpatialRelation"
+                    eType="#/0/org/walkonweb/www/ontology/wow_navigation_owl/SpatialRelation">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#movementSpatialRelation"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Spatial relation from the current location to the referenced geographic feature that expresses the movement that the hiker has to do in order to reach the destination from the starting point. "/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="NavImageable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="navImage" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="navImage_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="navImage_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#image"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Rating" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/RatingValueable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Annotation">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#Rating"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Rating (score) given by a hiker for a specific walk. Ratings between 0 and 5 are possible."/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="CumulativeAltitudeDifferenceable"
+                  eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="CumulativeAltitudeDifference"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#cumulativeAltitudeDifference"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Cumulative altitude difference that the hiker has to surmount (uphill). Measured in metres."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="WalkingSkillsType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/Nameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Textable #/0/org/walkonweb/www/ontology/wow_ontology_owl/Imageable #/0/org/walkonweb/www/ontology/wow_ontology_owl/DifficultyTypeable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#WalkingSkillsType"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="DifficultyTypeable" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eStructuralFeatures xsi:type="ecore:EReference" name="DifficultyType"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_ontology_owl/WalkDifficultyType">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-ontology.owl#difficultyType"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+            </eSubpackages>
+            <eSubpackages name="wow_generalpurpose_owl" nsURI="http://wow.semantic.model/org/walkonweb/www/ontology/wow_generalpurpose_owl"
+                nsPrefix="GP">
+              <eClassifiers xsi:type="ecore:EClass" name="TimeIndication" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpNameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpTextable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpImageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#TimeIndication"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="TimeOfDay" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#TimeOfDay"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="EquipmentType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpNameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpTextable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpImageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#EquipmentType"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="SoilType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpNameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpTextable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpImageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#SoilType"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Type of soil, i.e. the material that covers the ground in a durable way. Things like snow and ice are only durable if they cover the ground for the entire year. If this is not the case, the \&quot;real\&quot; soil should be selected, but"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="NormalCondition" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/RoadConditionType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#NormalCondition"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="ClimbingGear" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/EquipmentType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#ClimbingGear"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Lighting" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/EquipmentType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Lighting"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Quality" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpNameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpTextable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpImageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Quality"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Unpaved" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/SoilType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Unpaved"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Shoes" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/EquipmentType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Shoes"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="BadCondition" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/RoadConditionType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#BadCondition"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Types of road condition that make a road badly accessible."/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="EatDrink" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/EquipmentType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#EatDrink"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Clothing" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/EquipmentType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Clothing"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Season" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Season"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="DayOfWeek" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#DayOfWeek"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Viewing" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/EquipmentType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Viewing"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Color" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpNameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpTextable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpImageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Color"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Skis" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/EquipmentType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Skis"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Period" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Period"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="gpToDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#toDate"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Ending date of a period."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="gpFromDate"
+                    eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#fromDate"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Starting date of a period."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Paved" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/SoilType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Paved"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Date" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_generalpurpose_owl/TimeIndication">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Date"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="gpDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#date"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Address" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#Address"/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpHouseNumber"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpHouseNumber_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpHouseNumber_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#houseNumber"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpZipCode"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpZipCode_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpZipCode_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#zipCode"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpMailBox"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpMailBox_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpMailBox_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#mailBox"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpSettlementName"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpSettlementName_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpSettlementName_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#settlementName"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpCountry"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpCountry_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpCountry_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#country"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpCityName"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpCityName_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpCityName_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#cityName"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpStreetName"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpStreetName_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpStreetName_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#streetName"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="gpBuildingName"
+                    upperBound="-1" eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="gpBuildingName_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="gpBuildingName_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#buildingName"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="RoadConditionType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/GpNameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpTextable #/0/org/walkonweb/www/ontology/wow_ontology_owl/GpImageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-generalpurpose.owl#RoadConditionType"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Types of road condition that can have impact on the accessibility of a road."/>
+                </eAnnotations>
+              </eClassifiers>
+            </eSubpackages>
+            <eSubpackages name="wow_navigation_owl" nsURI="http://wow.semantic.model/org/walkonweb/www/ontology/wow_navigation_owl"
+                nsPrefix="NAV">
+              <eClassifiers xsi:type="ecore:EClass" name="MovementSpatialRelation"
+                  eSuperTypes="#/0/org/walkonweb/www/ontology/wow_navigation_owl/SpatialRelation">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#MovementSpatialRelation"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="en" value="Spatial relation that is only valid when the subject of the relation (e.g. the hiker) is moving."/>
+                  <details key="nl" value="Ruimtelijke relatie die enkel van toepassing is als het onderwerp van de relatie (bv de wandelaar) zich voortbeweegt."/>
+                  <details key="fr" value="Relation spatiale qui est seulement applicable quand le sujet de la relation (par example le randonneur) bouge."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="fr" value="Relation spatiale de mouvement"/>
+                  <details key="en" value="Movement spatial relation"/>
+                  <details key="nl" value="Ruimtelijke relatie in beweging"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="SignpostType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_navigation_owl/WaymarkSignpostType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#SignpostType"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="fr" value="Poteau indicateur qui indique quelle direction on doit prendre. Il s'agit d'un objet artificiel dans le paysage."/>
+                  <details key="en" value="Sign indicating in what direction one should proceed. A signpost is a sign on a new object that has been placed in the landscape."/>
+                  <details key="nl" value="Wegwijzer die aangeeft in welke richting men verder moet. Het gaat om een nieuw object dat in het landschap is geplaatst zoals een pijl, paal, paddenstoel, enz."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="en" value="Signpost type"/>
+                  <details key="nl" value="Type wegwijzer"/>
+                  <details key="fr" value="Type de poteau indicateur"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="ClockDirection" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfClockDirectionCompassDirection #/0/org/walkonweb/www/ontology/wow_navigation_owl/Direction">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#ClockDirection"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="en" value="Direction expression following the pointers of a clock."/>
+                  <details key="nl" value="Richting volgens de wijzers van de klok."/>
+                  <details key="fr" value="Direction exprim\u00E9e dans le sens des aiguilles d'une montre."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="en" value="Clock direction"/>
+                  <details key="fr" value="Direction d'une montre"/>
+                  <details key="nl" value="Klokrichting"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="Direction" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/NavTextable #/0/org/walkonweb/www/ontology/wow_ontology_owl/NavNameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/NavImageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#Direction"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Expression of a certain direction in which someone can move or look."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="navReverseDirection"
+                    upperBound="-1" eType="#/0/org/walkonweb/www/ontology/wow_navigation_owl/Direction">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#reverseDirection"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="RelativeXYDirection" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfRelativeXYDirectionRelativeZDirectionCompassDirection #/0/org/walkonweb/www/ontology/wow_navigation_owl/Direction">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#RelativeXYDirection"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="en" value="Direction expression relative to the current position and following the horizontal X-Y axes (seeing the earth surface as a flat area)."/>
+                  <details key="fr" value="Direction exprim\u00E9 relativement au lieu actuel par les axes X et Y (la surface de la terre est vue comme \u00EAtre plat)."/>
+                  <details key="nl" value="Richting uitgedrukt relatief tov de huidige positie, volgens de horizontale X-Y assen (waarbij de aarde wordt gezien als een vlak oppervlak)."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="nl" value="Relatieve richting horizontaal"/>
+                  <details key="en" value="Relative horizontal direction"/>
+                  <details key="fr" value="Direction horizontale relative"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="CompassDirection" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfRelativeXYDirectionRelativeZDirectionCompassDirection #/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfClockDirectionCompassDirection #/0/org/walkonweb/www/ontology/wow_navigation_owl/Direction">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#CompassDirection"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="en" value="Direction expression following the points on a compass."/>
+                  <details key="nl" value="Richting uitgedrukt volgens een kompas."/>
+                  <details key="fr" value="Direction exprim\u00E9e dans le sens d'un compas."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="en" value="Compass direction"/>
+                  <details key="nl" value="Kompasrichting"/>
+                  <details key="fr" value="Direction de compas"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="StaticSpatialRelation" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_navigation_owl/SpatialRelation">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#StaticSpatialRelation"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="en" value="Spatial relation that is always valid, also when the subject of the relation (e.g. the hiker) is not moving."/>
+                  <details key="nl" value="Ruimtelijke relatie die altijd van toepassing is, ook als het onderwerp van de relatie (bv de wandelaar) zich niet voortbeweegt."/>
+                  <details key="fr" value="Relation spatiale qui est toujours valide, aussi quand le sujet de la relation (par example, le randonneur) ne bouge pas."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="nl" value="Ruimelijke relatie bij stilstand"/>
+                  <details key="fr" value="Relation spatiale statique"/>
+                  <details key="en" value="Static spatial relation"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="WaymarkType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_navigation_owl/WaymarkSignpostType">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#WaymarkType"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="nl" value="Wegmarkering die aangeeft in welke richting men verder moet. Het gaat om een teken dat op een bestaand object in het landschap is geplaatst (bv een streep verf op een boom)."/>
+                  <details key="fr" value="Balisage qui indique quelle direction on doit prendre. Il s'agit d'un signe qui \u00E0 \u00E9t\u00E9 plac\u00E9 sur un objet existant dans le paysage (par example, un trait de painture sur un arbre)."/>
+                  <details key="en" value="Mark indicating in what direction one should proceed. A waymark is a sign put on an existing object in the landscape (e.g. painted stripe on a tree)."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="en" value="Waymark type"/>
+                  <details key="nl" value="Type wegmarkering"/>
+                  <details key="fr" value="Type de balisage"/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="WaymarkSignpostType" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/NavTextable #/0/org/walkonweb/www/ontology/wow_ontology_owl/NavNameable #/0/org/walkonweb/www/ontology/wow_ontology_owl/NavImageable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#WaymarkSignpostType"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Types of waymarking and signposting."/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="SpatialRelation" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/NavTextable #/0/org/walkonweb/www/ontology/wow_ontology_owl/NavNameable #/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#SpatialRelation"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="Spatial relations between geographic objects."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="navReverseSpatialRelation"
+                    eType="#/0/org/walkonweb/www/ontology/wow_navigation_owl/SpatialRelation">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#reverseSpatialRelation"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Reverse relationship that can be applied when the route is walked in the opposite direction. If no reverse relationship is given the relationship is regarded as not reversible."/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="RelativeZDirection" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_ontology_owl/UnionOfRelativeXYDirectionRelativeZDirectionCompassDirection #/0/org/walkonweb/www/ontology/wow_navigation_owl/Direction">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-navigation.owl#RelativeZDirection"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="nl" value="Richting uitgedrukt relatief tov de huidige positie, volgens de verticale Z-as (hoogte boven het aardoppervlak)."/>
+                  <details key="fr" value="Direction exprim\u00E9 relativement au lieu actuel par l'axe Z (altitude en dessus de la surface de la terre)."/>
+                  <details key="en" value="Direction expression relative to the current position and following the Z axis (altitude above the earth surface)."/>
+                </eAnnotations>
+                <eAnnotations source="labels">
+                  <details key="en" value="Relative vertical direction"/>
+                  <details key="fr" value="Direction verticale relative"/>
+                  <details key="nl" value="Relatieve richting vertikaal"/>
+                </eAnnotations>
+              </eClassifiers>
+            </eSubpackages>
+            <eSubpackages name="wow_geo_owl" nsURI="http://wow.semantic.model/org/walkonweb/www/ontology/wow_geo_owl"
+                nsPrefix="geo">
+              <eClassifiers xsi:type="ecore:EClass" name="GeographicFeature" eSuperTypes="#/0/org/w3/www/_2002/_07/owl/Thing">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-geo.owl#GeographicFeature"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="A GeographicFeature is \u201Ca feature associated with a location relative to the Earth\u201D (glossary). "/>
+                </eAnnotations>
+              </eClassifiers>
+              <eClassifiers xsi:type="ecore:EClass" name="TopographicFeature" eSuperTypes="#/0/org/walkonweb/www/ontology/wow_geo_owl/GeographicFeature">
+                <eAnnotations source="sourceURI">
+                  <details value="http://www.walkonweb.org/ontology/wow-geo.owl#TopographicFeature"/>
+                </eAnnotations>
+                <eAnnotations source="comments">
+                  <details key="" value="A place on earth that is depicted on a topographic map."/>
+                </eAnnotations>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="geoName" upperBound="-1"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="geoName_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="geoName_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-geo.owl#name"/>
+                  </eAnnotations>
+                  <eAnnotations source="comments">
+                    <details key="" value="Name shown to the author\nMultiple because of languages"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EReference" name="geoSource"
+                    eType="#/1/LString">
+                  <eAnnotations source="http://annotation.elver.org/Embedded">
+                    <details key="appinfo" value="true"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
+                    <details key="name" value="string"/>
+                    <details key="column" value="c1"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c1">
+                    <details key="name" value="geoSource_string"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
+                    <details key="name" value="language"/>
+                    <details key="column" value="c2"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/Column/c2">
+                    <details key="name" value="geoSource_language"/>
+                  </eAnnotations>
+                  <eAnnotations source="http://annotation.elver.org/AttributeOverrides">
+                    <details key="value" value="a1 a2"/>
+                  </eAnnotations>
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-geo.owl#source"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+                <eStructuralFeatures xsi:type="ecore:EAttribute" name="geoID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+                  <eAnnotations source="sourceURI">
+                    <details value="http://www.walkonweb.org/ontology/wow-geo.owl#ID"/>
+                  </eAnnotations>
+                </eStructuralFeatures>
+              </eClassifiers>
+            </eSubpackages>
+          </eSubpackages>
+        </eSubpackages>
+      </eSubpackages>
+    </eSubpackages>
+  </ecore:EPackage>
+  <ecore:EPackage name="runtime" nsURI="http://walkOnWeb.semantic.runtime/" nsPrefix="srt">
+    <eClassifiers xsi:type="ecore:EClass" name="LString" instanceClassName="runtime.LString">
+      <eAnnotations source="http://annotation.elver.org/Embeddable">
+        <details key="appinfo" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="LString"/>
+        <details key="kind" value="elementOnly"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="string" unique="false"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+        <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+          <details key="kind" value="element"/>
+          <details key="name" value="string"/>
+        </eAnnotations>
+        <eAnnotations source="http://annotation.elver.org/Column">
+          <details key="nullable" value="true"/>
+          <details key="length" value="1024"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" unique="false"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+        <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+          <details key="kind" value="element"/>
+          <details key="name" value="language"/>
+        </eAnnotations>
+        <eAnnotations source="http://annotation.elver.org/Column">
+          <details key="length" value="2"/>
+          <details key="nullable" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </ecore:EPackage>
+</xmi:XMI>

@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Teneo Tutorial Code
+Bundle-SymbolicName: org.eclipse.emf.teneo.tutorial
+Bundle-Version: 0.7.5.qualifier
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.eclipse.emf.teneo,
+ org.eclipse.emf.teneo.annotations,
+ org.eclipse.emf.teneo.hibernate,
+ org.eclipse.emf.teneo.jpox
+Import-Package: javax.jdo,
+ javax.jdo.spi,
+ javax.persistence,
+ javax.persistence.spi,
+ org.hibernate,
+ org.hibernate.cfg,
+ org.hibernate.dialect,
+ org.hibernate.ejb,
+ org.hibernate.tool.hbm2ddl,
+ org.jpox

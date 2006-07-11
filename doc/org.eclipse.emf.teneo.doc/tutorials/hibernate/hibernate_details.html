@@ -1,0 +1,490 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>EMF - Hibernate Integration Details</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.4')" id="menu_selected_1.4Title" class="menutitle">Details</div>
+<div id="menu_selected_1.4" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/options.html">Options</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">EMF - Hibernate Details</div>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_features.html">EJB3</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/custom_annotations.html">Custom</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/svn.html">Subversion</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>EMF - Hibernate Integration Details</em>
+</h2>
+</div>
+<div class="abstract">Discusses a number of specific implementation and use details of the EMF - Hibernate integration.</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#Classloader">Classloader</a>
+</li>
+<li>
+<a href="#Requirements+on+EObjects%3A+InternalEObject">Requirements on EObjects: InternalEObject</a>
+</li>
+<li>
+<a href="#Relational+Validation+and+EObject+persistency">Relational Validation and EObject persistency</a>
+</li>
+<li>
+<a href="#Automatic+creation+of+tables%2FDatabase+Schema">Automatic creation of tables/Database Schema</a>
+</li>
+<li>
+<a href="#orgeneration">Manual Generation of OR Mapping</a>
+</li>
+<li>
+<a href="#escaping">Escaping of table and column names</a>
+</li>
+<li>
+<a href="#Lazy+loading%2Ffetching%2C+Proxy">Lazy loading/fetching, Proxy</a>
+</li>
+<li>
+<a href="#cutpaste">Move an EObject between EContainers or support cut and paste in the EMF editor</a>
+</li>
+<li>
+<a href="#Validation">Validation</a>
+</li>
+<li>
+<a href="#Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider">Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</a>
+</li>
+</ul>
+		
+<a name="N10011"></a><a name="Classloader"></a>
+<div class="h3">
+<h3>Classloader</h3>
+			
+<p>Elver performs explicit classloading in specific locations. It is possible to set the classloader which is being
+			user by Elver. This can be done through the org.elver.store.ClassLoaderResolver class. In this class you can 
+			register a org.elver.store.classloader.ClassLoaderStrategy. The registered ClassLoaderStrategy is used by 
+			Elver to explicitly load classes.</p>
+		
+</div>
+		
+<a name="N1001A"></a><a name="Requirements+on+EObjects%3A+InternalEObject"></a>
+<div class="h3">
+<h3>Requirements on EObjects: InternalEObject</h3>
+		
+<p>The EMF Hibernate persistency layer only requires that the persisted objects implement
+			the org.eclipse.emf.ecore.InternalEObject interface.</p>
+		
+</div>
+		
+<a name="N10023"></a><a name="Relational+Validation+and+EObject+persistency"></a>
+<div class="h3">
+<h3>Relational Validation and EObject persistency</h3>
+			
+			
+<p>When an object is made persistent by session.save() then at 
+				that moment also constraints, such as nullable fields, are checked. So when
+				calling the session.save method the passed EObject should be valid.</p>
+		
+</div>
+		
+<a name="N1002D"></a><a name="Automatic+creation+of+tables%2FDatabase+Schema"></a>
+<div class="h3">
+<h3>Automatic creation of tables/Database Schema</h3>
+		
+<p>The EMF Hibernate persistency layer will automatically update the database schema 
+		when a new SessionFactory is registered. The Hibernate class org.hibernate.tool.hbm2ddl.SchemaUpdate class is used for
+		this purpose.</p>
+		
+<p>An <a href="hbdatastore.html#options">option</a> can be used to control if the database schema should be updated when a new HbDataStore
+		is created.</p>
+		
+</div>
+		
+<a name="N1003D"></a><a name="orgeneration"></a>
+<div class="h3">
+<h3>Manual Generation of OR Mapping</h3>
+		
+<p>Standard Elver will automatically map the model to Hibernate when a datastore is initialized. However, it can sometimes make sense to manually
+		adapt the mapping or use a specific mapping file. For this purpose Elver also allows you to manually generate the mapping file. To do this right
+		click on one or more .ecore files and choose the relevant option in the Elver submenu.</p>
+		
+<p> 
+</p>
+		
+<div align="center">
+<img class="figure" alt="Manual generation of hibernate or mapping" src="images/ormapping_menu.jpg"></div>
+		
+<p>The hibernate.hbm.xml is created in the folder of the selected .ecore file. To direct Elver to use this mapping file you 
+		need to do the following:</p>
+		
+<ol>
+<li>Copy the hibernate.hbm.xml to the generated EPackage source tree and let it be copied to the output directory/destination when building.</li>
+		
+<li>Pass the following option: PersistenceOptions.USE_MAPPING_FILE with the value "true" to the HbDataStore.</li>
+		
+</ol>
+		
+<p>
+<strong>Note:</strong> the generation of the hibernate.hbm.xml will only work if the org.elver.store.hibernate.runtime plugin has been added to the 
+		dependencies of the projects of the selected .ecore files.</p>
+		
+</div>
+		
+<a name="N1005D"></a><a name="escaping"></a>
+<div class="h3">
+<h3>Escaping of table and column names</h3>
+		
+<p>Elver will escape table and column names of primitive types. Escaping is done by surrounding the name with backtics (`).</p>
+		
+<p>Note that:</p>
+		
+<ul>
+			
+<li>Join table names are not escaped: Hibernate will in some cases automatically create a table to store the contents of a collection,
+			for example the contents of a list with primitive types. Hibernate will not automatically escape this name. To escape such a join table you 
+			need to add a JoinTable annotation with an escaped name or a non-keyword name.</li>
+			
+<li>Elver will not escape column names of manually specified Column annotations</li>
+		
+</ul>
+		
+</div>
+		
+<a name="N10072"></a><a name="Lazy+loading%2Ffetching%2C+Proxy"></a>
+<div class="h3">
+<h3>Lazy loading/fetching, Proxy</h3>
+			
+<p>The Hibernate integration does not make use of the Hibernate Proxy.</p>
+			
+<p>Primitive features and single refererences are eagerly loaded. ELists are 
+		lazily loaded. In the future probably also single-references will be lazily loaded.</p>
+		
+</div>
+		
+<a name="N1007E"></a><a name="cutpaste"></a>
+<div class="h3">
+<h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
+			
+			
+<p>In the standard approach it is not possible to move an EObject from one containment relation to another containment relation. A move
+			between containment relations corresponds to a cut and paste in the EMF editor. The reason is that Elver will 
+			specify an orphan-delete cascade for a containment relation. This has a consequence that Hibernate will throw 
+			an exception (deleted object would be re-saved by cascade (remove deleted object from associations) when you move an EObject from its container to another container. 
+			See <a class="external" href="http://opensource.atlassian.com/projects/hibernate/browse/HHH-785">here</a> for a description.</p>
+			
+<p>
+<em>Solution:</em> as a solution you can prevent the orphan-delete from being set as the cascade style, by specifying 
+			an annotation on the relevant EReference features or by setting the global runtime property PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT
+			to false (see <a href="options.html">here</a>). As an example of the first approach:</p>
+			
+<pre class="code">
+&lt;xsd:element maxOccurs="unbounded" minOccurs="0" name="writers" type="lib:Writer"&gt;
+	&lt;xsd:annotation&gt;
+		&lt;xsd:appinfo source="http://ejb.elver.org/OneToMany" 
+			ecore:key="cascade"&gt;MERGE PERSIST REFRESH REMOVE&lt;/xsd:appinfo&gt;
+	&lt;/xsd:annotation&gt;
+&lt;/xsd:element&gt;
+			</pre>
+			
+<p>This annotation means that cascading deletes are still enforced but a child (the Writer) can exist without its
+			parent (the Library).</p>
+			
+<p>When this annotation is used in the context of a Hibernate Resource then when an EObject is removed from 
+			its container then it will also be removed from the resource and from the database. However, when you set this 
+			annotation and not work with Hibernate Resources then the removed EObject is not removed from the database and will 
+			be present without a container!</p>
+		
+</div>
+		
+<a name="N1009F"></a><a name="Validation"></a>
+<div class="h3">
+<h3>Validation</h3>
+			
+			
+<p>When storing and retrieving EMF objects from a Hibernate store it is not required to work with a 
+			EMF type Resource. However the standard EMF validator checks if every EObject is
+			present in an EMF resource and that all referenced EObjects are in the same resource. So, if 
+			this standard validator is used unnecessary errors are thrown.
+			</p>
+			
+<p>To prevent this situation you can register your own validator which does not perform this resource check. 
+				See the example here below.
+			</p>
+			
+<p>
+			Validators are registered using a call to put method of the EValidator.Registry.INSTANCE object.
+			</p>
+			
+<pre class="code">			
+public class MyValidator extends EObjectValidator
+{
+	/** 
+	* Overrides the method from the superclass to prevent this check because it
+ 	* is not required in the context of a hibernate store. Note that this assumes that 
+ 	* an object and its references are all stored in the same hibernate database. 
+ 	*/
+	public boolean validate_EveryReferenceIsContained(EObject eObject, DiagnosticChain diagnostics, Map context) 
+	{
+		return true;
+	}
+}
+			</pre>
+		
+</div>
+		
+<a name="N100B3"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
+<div class="h3">
+<h3>Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</h3>
+			
+<p>Default cacheprovider has been set to org.hibernate.cache.HashtableCacheProvider because of ehcache issues which occur when using
+			ehcache with the default values.</p>
+			
+<p>Encountered error message was: 
+			<em>Attempt to restart an already started EhCacheProvider. Use sessionFactory.close()  between repeated calls to buildSessionFactory. Consider using net.sf.ehcache.hibernate.SingletonEhCacheProvider. Error from  ehcache was: Cannot parseConfiguration CacheManager. Attempt to create a new instance of CacheManager using the diskStorePath "/tmp" which is already used by an existing CacheManager. The source of the configuration was classpath.</em>
+			
+</p>
+			
+<p>The HashtableCacheProvider is not for production use. You can override this default setting by setting the hibernate.cache.provider_class property with the cache provider class you want to use.
+			</p>
+		
+</div>
+		
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

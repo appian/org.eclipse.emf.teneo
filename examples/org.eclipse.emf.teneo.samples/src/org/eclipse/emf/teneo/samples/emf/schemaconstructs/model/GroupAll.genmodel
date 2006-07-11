@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="GroupAll" importerID="org.eclipse.xsd.ecore.importer">
+  <foreignModel>GroupAll.xsd</foreignModel>
+  <genPackages prefix="Groupall" basePackage="org.eclipse.emf.teneo.samples.emf.schemaconstructs"
+      resource="XML" disposableProviderFactory="true" ecorePackage="groupall.ecore#/">
+    <genClasses ecoreClass="groupall.ecore#//Address">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute groupall.ecore#//Address/group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//Address/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//Address/longName"/>
+    </genClasses>
+    <genClasses ecoreClass="groupall.ecore#//AddressGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//AddressGroup/groupName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference groupall.ecore#//AddressGroup/shipTo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference groupall.ecore#//AddressGroup/billTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//AddressGroup/simpleAddress"/>
+    </genClasses>
+    <genClasses ecoreClass="groupall.ecore#//AddressList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//AddressList/groupName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute groupall.ecore#//AddressList/addrs"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference groupall.ecore#//AddressList/shipTo"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference groupall.ecore#//AddressList/billTo"/>
+    </genClasses>
+    <genClasses ecoreClass="groupall.ecore#//DocumentRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute groupall.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference groupall.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference groupall.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference groupall.ecore#//DocumentRoot/simpleAll"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference groupall.ecore#//DocumentRoot/simpleAllMap"/>
+    </genClasses>
+    <genClasses ecoreClass="groupall.ecore#//SimpleAllMapType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute groupall.ecore#//SimpleAllMapType/allMap"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//SimpleAllMapType/aaa"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//SimpleAllMapType/bbb"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//SimpleAllMapType/ccc"/>
+    </genClasses>
+    <genClasses ecoreClass="groupall.ecore#//SimpleAllType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//SimpleAllType/aaa"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//SimpleAllType/bbb"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute groupall.ecore#//SimpleAllType/ccc"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

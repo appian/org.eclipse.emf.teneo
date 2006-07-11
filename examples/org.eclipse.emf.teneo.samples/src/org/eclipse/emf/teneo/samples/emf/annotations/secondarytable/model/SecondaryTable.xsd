@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/annotations/secondarytable"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:lib="http://www.eclipse.org/emf/teneo/samples/emf/annotations/secondarytable"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:complexType name="Printer">
+ 	<xsd:annotation>
+		<xsd:appinfo source="http://annotation.elver.org/SecondaryTable" ecore:key="name">THETONER</xsd:appinfo>
+		<xsd:appinfo source="http://annotation.elver.org/PrimaryKeyJoinColumn" ecore:key="name">PRINTER_ID</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="make" type="xsd:string"/>
+      <xsd:element name="model" type="xsd:string"/>
+      <xsd:element name="tonerMake" type="xsd:string">
+	 	<xsd:annotation>
+			<xsd:appinfo source="http://annotation.elver.org/Column" ecore:key="table">THETONER</xsd:appinfo>
+	    </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tonerModel" type="xsd:string">
+	 	<xsd:annotation>
+			<xsd:appinfo source="http://annotation.elver.org/Column" ecore:key="table">THETONER</xsd:appinfo>
+	    </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+ </xsd:schema>

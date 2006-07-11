@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+	xmlns:lib="http://www.eclipse.org/emf/teneo/samples/issues/resource" 
+	xmlns:this="http://www.eclipse.org/emf/teneo/samples/issues/resource" 
+	targetNamespace="http://www.eclipse.org/emf/teneo/samples/issues/resource">
+	
+	<complexType name="Person">
+		<sequence>
+			<element name="name" type="ID"/>
+			<element ecore:reference="this:Head" minOccurs="0" name="head" type="xsd:IDREF"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="Head">
+		<sequence>
+			<element name="hair" type="ID"/>
+		</sequence>
+	</complexType>
+</schema>

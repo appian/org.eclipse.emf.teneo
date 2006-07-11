@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/list"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/list">
+
+	<!-- Tests:
+	- List
+	-->	
+
+	<xsd:simpleType name="State">
+		<xsd:restriction base="xsd:string">
+    		<xsd:maxLength value="12"/>
+	  	</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="StateList">
+  		<xsd:list itemType="this:State"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="StringList">
+  		<xsd:list itemType="xsd:string"/>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="SixStatesList">
+  		<xsd:restriction base="this:StateList">
+    		<xsd:length value="6"/>
+  		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="zipCode">
+		<xsd:restriction base='xsd:string'>
+			<xsd:maxLength value='6'/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="CountryStates" ecore:name="statesByCountry">
+		<xsd:sequence>
+			<xsd:element name="Country" type="xsd:string"/>
+			<xsd:element name="index" type="xsd:int"/>
+			<xsd:element name="AllStates" type="this:StateList"/>
+			<xsd:element name="SixImportantStates" type="this:SixStatesList"/>
+		</xsd:sequence>
+	</xsd:complexType>
+ </xsd:schema>

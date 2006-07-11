@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/groupall"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/groupall">
+
+	<!-- Example derived from xsd schema primer -->
+	
+	<!-- Tests:
+	- Group
+	- All
+	- Repeating sequence, group
+	-->
+
+	<xsd:group name="shipAndBill">
+  		<xsd:sequence>
+    		<xsd:element name="shipTo" type="this:Address"/>
+    		<xsd:element name="billTo" type="this:Address"/>
+  		</xsd:sequence>
+	</xsd:group>
+	  
+ 	<xsd:complexType name="Address">
+ 		<xsd:sequence maxOccurs="unbounded">
+      		<xsd:element name="name" type="xsd:string"/>
+      		<xsd:element name="longName" type="xsd:string"/>
+    	</xsd:sequence>
+  	</xsd:complexType>
+	
+	<!-- Nested choice and xsd:group --> 
+	<xsd:complexType name="AddressGroup">
+		<xsd:sequence>
+      		<xsd:element name="name" ecore:name="groupName" type="xsd:string"/>
+    		<xsd:choice>
+      			<xsd:group ref="this:shipAndBill"/>
+      			<xsd:element name="simpleAddress" type="xsd:string"/>
+    		</xsd:choice>
+  		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- test multi-occurence group with ecore:name -->	
+	<xsd:complexType name="AddressList">
+		<xsd:sequence>
+      		<xsd:element name="name" ecore:name="groupName" type="xsd:string"/>
+   			<xsd:group ref="this:shipAndBill" ecore:name="addrs" maxOccurs="unbounded"/>
+  		</xsd:sequence>
+	</xsd:complexType>
+	
+  	<xsd:element name="simpleAll">
+    	<xsd:complexType>
+      		<xsd:all >
+        		<xsd:element name="aaa" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        		<xsd:element name="bbb" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        		<xsd:element name="ccc" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      		</xsd:all>
+    	</xsd:complexType>
+  	</xsd:element>
+	
+  	<xsd:element name="simpleAllMap">
+    	<xsd:complexType>
+      		<xsd:all ecore:featureMap="allMap">
+        		<xsd:element name="aaa" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        		<xsd:element name="bbb" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        		<xsd:element name="ccc" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      		</xsd:all>
+    	</xsd:complexType>
+  	</xsd:element>
+</xsd:schema>

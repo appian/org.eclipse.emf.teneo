@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/annotations/embedded"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/annotations/embedded"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    
+  	<xsd:complexType name="Embedder">
+	    	<xsd:sequence>
+	  		<xsd:element name="firstEmbedded" type="this:Embeddable">
+			 	<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/Embedded">true</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverride" ecore:key="name">myString</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverride" ecore:key="column">c1</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/Column/c1" ecore:key="name">columnString3</xsd:appinfo>
+			    </xsd:annotation>
+			</xsd:element>
+	  		<xsd:element name="secondEmbedded" type="this:Embeddable">
+			 	<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/Embedded">true</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverrides" ecore:key="value">a1 a2</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverride/a1" ecore:key="name">myString</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverride/a1" ecore:key="column">c1</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/Column/c1" ecore:key="name">columnString1</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverride/a2" ecore:key="name">myInteger</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverride/a2" ecore:key="column">c2</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/Column/c2" ecore:key="name">columnInteger1</xsd:appinfo>
+			    </xsd:annotation>
+			</xsd:element>
+	  		<xsd:element name="thirdEmbedded" type="this:Embeddable">
+			 	<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/Embedded">true</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverrides" ecore:key="value">a1 a2</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverride/a1" ecore:key="name">myString</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverride/a1" ecore:key="column">c1</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/Column/c1" ecore:key="name">columnString2</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverride/a2" ecore:key="name">myInteger</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/AttributeOverride/a2" ecore:key="column">c2</xsd:appinfo>
+					<xsd:appinfo source="http://annotation.elver.org/Column/c2" ecore:key="name">columnInteger2</xsd:appinfo>
+			    </xsd:annotation>
+			</xsd:element>
+	  		<xsd:element name="fourthEmbedded" type="this:Embeddable" maxOccurs="unbounded">
+			 	<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/Embedded">true</xsd:appinfo>
+			    </xsd:annotation>
+			</xsd:element>
+	  		<xsd:element name="fifthEmbedded" type="this:Embeddable">
+			 	<xsd:annotation>
+					<xsd:appinfo source="http://annotation.elver.org/Embedded">true</xsd:appinfo>
+			    </xsd:annotation>
+			</xsd:element>
+    		</xsd:sequence>
+  	</xsd:complexType>
+
+  	<xsd:complexType name="Embeddable">
+	 	<xsd:annotation>
+			<xsd:appinfo source="http://annotation.elver.org/Embeddable">true</xsd:appinfo>
+	    </xsd:annotation>
+    	<xsd:sequence>
+      		<xsd:element name="myString" type="xsd:string"/>
+      		<xsd:element name="myInteger" type="xsd:int"/>
+    	</xsd:sequence>
+  	</xsd:complexType>
+  	
+ </xsd:schema>

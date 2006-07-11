@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Embedded" importerID="org.eclipse.xsd.ecore.importer">
+  <foreignModel>embedded.xsd</foreignModel>
+  <genPackages prefix="Embedded" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
+      disposableProviderFactory="true" ecorePackage="embedded.ecore#/">
+    <genClasses ecoreClass="embedded.ecore#//Embeddable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//Embeddable/myString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//Embeddable/myInteger"/>
+    </genClasses>
+    <genClasses ecoreClass="embedded.ecore#//Embedder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/firstEmbedded"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/secondEmbedded"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/thirdEmbedded"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/fourthEmbedded"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/fifthEmbedded"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

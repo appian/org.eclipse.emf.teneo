@@ -1,0 +1,430 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Hibernate EMF Resources</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.4')" id="menu_selected_1.4Title" class="menutitle">Details</div>
+<div id="menu_selected_1.4" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">EMF Hibernate Resources</div>
+</div>
+<div class="menuitem">
+<a href="../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_features.html">EJB3</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/custom_annotations.html">Custom</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/svn.html">Subversion</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Hibernate EMF Resources</em>
+</h2>
+</div>
+<div class="abstract">The EMF Hibernate integration also contains a Resource implementation for
+		integration with the EMF Editing Domain. The resource implementation
+		extends the org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl to enable easy importing 
+		and exporting of XML to/from the relational store.
+    </div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#Resource+URI">Resource URI</a>
+</li>
+<li>
+<a href="#Hibernate+Resource+and+session%2Ftransaction+specifics">Hibernate Resource and session/transaction specifics</a>
+</li>
+<li>
+<a href="#Validation">Validation</a>
+</li>
+<li>
+<a href="#Standard+load+behavior%3A+Top+level+types">Standard load behavior: Top level types</a>
+</li>
+<li>
+<a href="#Customizing+load+behavior">Customizing load behavior</a>
+<ul class="minitoc">
+<li>
+<a href="#Extend+the+resource+implementation+in+java">Extend the resource implementation in java</a>
+</li>
+<li>
+<a href="#Set+specific+queries+to+load+the+resource">Set specific queries to load the resource</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#Other+aspects">Other aspects</a>
+<ul class="minitoc">
+<li>
+<a href="#Resource+use+after+Hibernate+exception">Resource use after Hibernate exception</a>
+</li>
+<li>
+<a href="#Closing+a+resource">Closing a resource</a>
+</li>
+</ul>
+</li>
+</ul>
+	 
+<p></p>
+    
+<a name="N10015"></a><a name="Resource+URI"></a>
+<div class="h3">
+<h3>Resource URI</h3>
+      
+      
+<p>The Hibernate EMFResource is registered using different extensions/protocols:</p>
+	  
+<ul>
+	  
+<li>Protocol: initiallly the Hibernate EMF Resource (factory) will be registered for the protocol hibernate</li>
+	  
+<li>Extension: when a new HbDataStore is created and registered then the registration name 
+		  of the HbDataStore is used to register the Hibernate EMF Resource (factory) for that extension. 
+		</li>
+	  
+</ul>
+	  
+<p>When the hibernate protocol is used to retrieve a Resource then the resource 
+		  needs to know how to reach a data store.  This is done by passing the registration name
+	  of a HbDataStore to the resource with the org.elver.store.Resource.DS_NAME_PARAM parameter. 
+	  </p>
+	  
+<p>An example of a URI which returns a Hibernate resource: <em>hibernate://dsname=library</em>.</p>
+	
+</div>
+    
+<a name="N10031"></a><a name="Hibernate+Resource+and+session%2Ftransaction+specifics"></a>
+<div class="h3">
+<h3>Hibernate Resource and session/transaction specifics</h3>
+      
+      
+<p>The Hibernate Resource opens a session when it is loaded for the first time.
+		 A transaction is started when the load starts and committed at the end of the load.
+		  This session is disconnected at the end of the load action.</p>
+		
+<p>The save action will reconnect the session, begin a transaction, do an update of
+		  the datastore and then commit and disconnect.</p>
+		 
+<p>In one of the next releases a new resource implementation will be added which will create a new session
+		 for each load and save action.</p>
+	
+</div>
+    
+<a name="N10041"></a><a name="Validation"></a>
+<div class="h3">
+<h3>Validation</h3>
+      
+      
+<p>The Hibernate Resource automatically validates its content (the EObjects) when the
+		  resource is saved. This validation makes use of the EMF validation framework throug calls to
+		  the Diagnostician.INSTANCE.validate method. Validation fails when a ERROR level Diagnostic is
+		  encountered. In this case the resource save method will throw a org.elver.store.StoreValidationException. 
+		  This exception has a method to retrieve all Diagnostics.</p>
+	
+</div>
+		
+<a name="N1004B"></a><a name="Standard+load+behavior%3A+Top+level+types"></a>
+<div class="h3">
+<h3>Standard load behavior: Top level types</h3>
+	  		
+      
+<p>When a Hibernate EMF resource is loaded then only the so called top-level types are directly present in 
+		  the resource contents. Top-level types are types which are not used as the 
+		  the child in a containment relation. The assumption is that all contained types can be reached
+	  from a top-level type.</p>
+	  
+<p>See also the <a href="knownissues.html">Known Issues</a>.</p>
+	  
+</div>
+	 
+<a name="N1005C"></a><a name="Customizing+load+behavior"></a>
+<div class="h3">
+<h3>Customizing load behavior</h3>
+	 
+<p>It is possible to customize what the resource actually loads from the database.</p>
+		 
+<a name="N10064"></a><a name="Extend+the+resource+implementation+in+java"></a>
+<div class="h4">
+<h4>Extend the resource implementation in java</h4>
+<p>It is possible to customize the load behavior by overriding the loadFromStore method
+				in the HibernateResource. This method gets a PersistenceManager and should return a list of 
+				objects read from the Hibernate datastore.
+			</p>
+</div>
+		 
+<a name="N1006D"></a><a name="Set+specific+queries+to+load+the+resource"></a>
+<div class="h4">
+<h4>Set specific queries to load the resource</h4>
+<p>There are two ways to pass specific queries to the HibernateResource. The first method
+				is using uri parameters:</p>
+<p>
+<em>hibernate://?dsname=mystore&amp;query1=FROM Writer</em>
+</p>
+<p>You can pass multiple queries by using parameter names which start with query, for
+			 example query1, query2 etc.</p>
+<p>The other way to pass queries to the resource are to specify them in the 
+			 .ehb file (see resource utility <a href="resource_utility.html">here</a>). An
+			 example (commented out) of this can be found in the ehb file <a href="samples/library.ehb">here</a>.</p>
+</div>
+	 
+</div>
+    
+<a name="N10089"></a><a name="Other+aspects"></a>
+<div class="h3">
+<h3>Other aspects</h3>
+      
+		
+<a name="N1008F"></a><a name="Resource+use+after+Hibernate+exception"></a>
+<div class="h4">
+<h4>Resource use after Hibernate exception</h4>
+<p>When a Hibernate error/exception occurs when working with a Hibernate resource it can not
+		be used anymore and should be unloaded (closed).</p>
+<p>In a future resource implementation this issue will be solved.</p>
+</div>
+		
+<a name="N1009B"></a><a name="Closing+a+resource"></a>
+<div class="h4">
+<h4>Closing a resource</h4>
+<p>The Hibernate EMF resource can be closed by calling the unload method. 
+		  This method will close the disconnected session.</p>
+</div>
+	
+</div>
+  
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

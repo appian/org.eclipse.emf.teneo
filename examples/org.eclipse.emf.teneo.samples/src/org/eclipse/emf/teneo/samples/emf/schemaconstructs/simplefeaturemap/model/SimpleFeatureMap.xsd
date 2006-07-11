@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simplefeaturemap"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simplefeaturemap">
+
+  	<xsd:complexType name="Supplier">
+  		<xsd:sequence>
+  			<xsd:element name="name" type="xsd:string"/>
+  			<xsd:choice maxOccurs="unbounded" ecore:name="orders">
+  				<xsd:element name="preferredOrders" type="PurchaseOrder"/>
+  				<xsd:element name="standardOrders" type="PurchaseOrder"/>
+  				<xsd:element name="hardCopyOrderReference" type="xsd:string"/>
+  				<xsd:element name="hardCopyOrderNumber" type="xsd:long"/>
+  			</xsd:choice>
+  		</xsd:sequence>
+  	</xsd:complexType>
+
+	<xsd:complexType name="PurchaseOrder">
+		<xsd:sequence>
+  			<xsd:element name="name" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+ </xsd:schema>

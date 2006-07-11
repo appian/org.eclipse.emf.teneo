@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="SchemaPrimerPO" importerID="org.eclipse.xsd.ecore.importer">
+  <foreignModel>SchemaPrimerPO.xsd</foreignModel>
+  <genPackages prefix="Schemaprimerpo" basePackage="org.eclipse.emf.teneo.samples.emf.sample"
+      resource="XML" disposableProviderFactory="true" ecorePackage="schemaprimerpo.ecore#/">
+    <genDataTypes ecoreDataType="schemaprimerpo.ecore#//QuantityType"/>
+    <genDataTypes ecoreDataType="schemaprimerpo.ecore#//SKU"/>
+    <genClasses ecoreClass="schemaprimerpo.ecore#//DocumentRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference schemaprimerpo.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference schemaprimerpo.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//DocumentRoot/comment"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference schemaprimerpo.ecore#//DocumentRoot/order"/>
+    </genClasses>
+    <genClasses ecoreClass="schemaprimerpo.ecore#//Item">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//Item/productName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//Item/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//Item/uSPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//Item/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//Item/shipDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//Item/partNum"/>
+    </genClasses>
+    <genClasses ecoreClass="schemaprimerpo.ecore#//PurchaseOrder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference schemaprimerpo.ecore#//PurchaseOrder/shipTo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference schemaprimerpo.ecore#//PurchaseOrder/billTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//PurchaseOrder/comment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference schemaprimerpo.ecore#//PurchaseOrder/items"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//PurchaseOrder/orderDate"/>
+    </genClasses>
+    <genClasses ecoreClass="schemaprimerpo.ecore#//USAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//USAddress/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//USAddress/street"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//USAddress/city"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//USAddress/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//USAddress/zip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute schemaprimerpo.ecore#//USAddress/country"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

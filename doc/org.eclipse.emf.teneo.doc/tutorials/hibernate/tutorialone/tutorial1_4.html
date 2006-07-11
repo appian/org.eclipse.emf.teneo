@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../../skin/tigris.css";
+          @import "../../skin/quirks.css";
+          @import "../../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../../">
+<script type="text/javascript" src="../../skin/tigris.js"></script><script src="../../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Step 4: Example Queries</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../../index.html">Home</a></td><th><a class="base-selected" href="../../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.2')" id="menu_selected_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_selected_1.2" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">Query EMF Objects</div>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/ejb3_features.html">EJB3</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/custom_annotations.html">Custom</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/svn.html">Subversion</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Step 4: Example Queries</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#Query+all+books">Query all books</a>
+</li>
+<li>
+<a href="#Parameterized+query">Parameterized query</a>
+</li>
+<li>
+<a href="#Count+query">Count query</a>
+</li>
+<li>
+<a href="#Next+Step">Next Step</a>
+</li>
+</ul>
+		
+<p>In this part we show Hibernate HSQL queries to retrieve information from the database back-end.</p>
+		
+<p>(HQL is Hibernate's query language. It uses concepts similar to SQL.)</p>
+		
+		
+<a name="N10014"></a><a name="Query+all+books"></a>
+<div class="h3">
+<h3>Query all books</h3>
+		
+		
+<pre class="code">
+final Session session = sessionFactory.openSession();
+session.beginTransaction();
+
+// Retrieve all Books and display their titles.
+Query query = session.createQuery("FROM Book");
+List books = query.list();
+for (Iterator it = books.iterator(); it.hasNext();) {
+	Book book = (Book) it.next();
+	System.out.println(book.getTitle());
+}</pre>
+			
+</div>
+		
+		
+<a name="N1001F"></a><a name="Parameterized+query"></a>
+<div class="h3">
+<h3>Parameterized query</h3>
+		
+		
+<pre class="code">
+// Retrieve George Orwell's book. 
+query = session.createQuery("SELECT book FROM Book book, Writer writ WHERE "
+		+ " book.title='1984' AND book.author=writ AND writ.name='G. Orwell'");
+books = query.list();
+
+// Show some results
+System.out.println("There are " + books.size() + " in the Library."); // should be 1
+System.out.println(books.get(0).getClass().getName());
+Book book = (Book) books.get(0);
+System.out.println(book.getTitle()); // should be 1984
+System.out.println(book.getAuthor().getName()); // should be G. Orwell</pre>
+		
+</div>
+		
+		
+<a name="N1002A"></a><a name="Count+query"></a>
+<div class="h3">
+<h3>Count query</h3>
+		
+		
+<pre class="code">
+// Count the number of books in the library
+query = session.createQuery("SELECT count(allbooks) FROM Library lib LEFT JOIN lib.books AS allbooks "
+		+ " WHERE lib.name='My Library'");
+int count = ((Number) query.uniqueResult()).intValue();
+// there should be 2 books
+System.out.println("There are " + count + " books in the library");</pre>
+			
+</div>
+		
+	
+<a name="N10035"></a><a name="Next+Step"></a>
+<div class="h3">
+<h3>Next Step</h3>
+		
+		
+<p>The final step of this tutorial discusses the use of the EMF Resource concept.</p>
+		
+<p>
+<a href="tutorial1_5.html">Click here</a> to go to the next step.</p>
+	
+</div>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

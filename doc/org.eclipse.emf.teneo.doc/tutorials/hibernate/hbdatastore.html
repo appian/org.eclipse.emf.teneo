@@ -1,0 +1,372 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>HbDataStore, HbContext and Runtime Options</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.4')" id="menu_selected_1.4Title" class="menutitle">Details</div>
+<div id="menu_selected_1.4" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">HbDataStore</div>
+</div>
+<div class="menuitem">
+<a href="../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_features.html">EJB3</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/custom_annotations.html">Custom</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/svn.html">Subversion</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>HbDataStore, HbContext and Runtime Options</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#HbDataStore">The HbDataStore</a>
+</li>
+<li>
+<a href="#hbcontext">HbContext replaces ConfigurationFactory</a>
+</li>
+<li>
+<a href="#overriding">Overriding the HbDataStore</a>
+</li>
+<li>
+<a href="#options">Runtime Options</a>
+</li>
+<li>
+<a href="#Getting+the+Hibernate+Mapping+XML">Getting the Hibernate Mapping XML</a>
+</li>
+</ul>
+		
+<p>This page describes the functionality of the HbDataStore and describes how different parts of the Elver runtime
+		can be overridden by supplying your own specific implementation</p>
+		
+<a name="N10011"></a><a name="HbDataStore"></a>
+<div class="h3">
+<h3>The HbDataStore</h3>
+			
+			
+<p>The HbDataStore object controls the persistence of a set of EPackage in a specific relational database. The HbDataStore
+				contains a SessionFactory and is responsible for creating and updating the database schema.</p>
+			
+<p>To create and initialize a HbDataStore, follow these steps:</p>
+			
+<ol>
+				
+<li>Create and register the HbDataStore using HbHelper.INSTANCE.createRegisterDataStore().</li>
+				
+<li>Configure the EPackages to be handled by this DataStore using HbDataStore.setEPackages().</li>
+				
+<li>Configure Hibernate properties for accessing the database. (Described
+					<a href="tutorialone/tutorial1_2.html#Hibernate+database+configuration"> here</a>.)</li>
+				
+<li>Call initialize() to build the Hibernate mapping and create the tables in the database.</li>
+			
+</ol>
+			
+<p>You can then obtain the Hibernate SessionFactory using HbDataStore.getSessionFactory().</p>
+			
+<p>The HbDataStore can also be used to import and export xml and xmi through the importDataStore and exportDataStore
+				methods.</p>
+			
+<p>The HbDataStore has a specific method to retrieve all referers to a passed EObject: getCrossReferencers.</p>
+		
+</div>
+		
+<a name="N1003A"></a><a name="hbcontext"></a>
+<div class="h3">
+<h3>HbContext replaces ConfigurationFactory</h3>
+			
+			
+<p>In the 0.3.* release of Elver the Hibernate Configuration could be changed/created using a ConfigurationFactory. 
+			The ConfigurationFactory has been replaced by the org.elver.store.hibernate.HbContext in the 0.7.0 release. 
+			The HbContext is set in the HbDataStore using the setHbContext method, as a default the HbContextImpl is used.
+			The HbContext returns default implementations for Accessors, class names of Tuplizers and contains a method
+			to create the Hibernate Configuration. You can extend HbContextImpl to override only specific methods.</p> 
+		
+</div>
+		
+<a name="N10044"></a><a name="overriding"></a>
+<div class="h3">
+<h3>Overriding the HbDataStore</h3>
+			
+			
+<p>In this release it is possible to override the HbDataStore with your own implementation. Next to the 
+			specific implementation of the HbDataStore you also need to register a HbDataStoreFactory which creates this
+			specific HbDataStore, the HbDataStoreFactory is registered through the HbHelper.setHbDataStoreFactory method.
+			</p>
+		
+</div>
+		
+<a name="N1004E"></a><a name="options"></a>
+<div class="h3">
+<h3>Runtime Options</h3>
+			
+			
+<p>Options are passed to the HbDataStore using a Properties object which is set using the HbDataStore.setPersistenceProperties method.</p>
+			
+<p>The available options are all present in the <em>org.elver.store.PersistenceOptions</em> class. See the <a href="options.html">options</a>
+			page for a complete overview.</p>
+		
+</div>
+		
+<a name="N10062"></a><a name="Getting+the+Hibernate+Mapping+XML"></a>
+<div class="h3">
+<h3>Getting the Hibernate Mapping XML</h3>
+			
+<p>There are two methods to get to the hibernate mapping xml programmatically.</p>
+			
+<p>The mapping xml which has been generated by Elver automatically (if no hibernate.hbm.xml file was specified explicitly)
+			can be retrieved using the method: getMappingXML on the HbDataStore.</p>
+			
+<p>The method HbHelper.INSTANCE.generateMapping(....) can be used to programmatically generate the mapping file.</p>
+			
+<p>You can save the generated mapping xml to a file and then use that file. See the persistence option to tell Elver to
+			use the mapping file, <a href="options.html">here</a>.</p>
+			
+<p>The third method to get the hibernate mapping xml is by right clicking on an ecore file and select the appropriate
+			Elver submenu option, see <a href="http://www.elver.org/hibernate/hibernate_details.html#orgeneration">here</a>. The
+			disadvantage of this method is that it does not allow you to pass your own menu options.</p>
+		
+</div>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/relation/relationntom" 
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+	xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/relation/relationntom" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<!-- Types to test 1:n relations with variants, required, non-required, one-way and two-way -->
+	<complexType name="Main">
+		<sequence>
+			<element default="c1" name="Name" type="string"/>
+
+			<element name="multinr" type="xsd:IDREF" ecore:reference="this:MultiNR" minOccurs="0" maxOccurs="unbounded" ecore:opposite="main"/>
+			<element name="multirn" type="xsd:IDREF" ecore:reference="this:MultiRN" maxOccurs="unbounded" ecore:opposite="main"/>
+			<element name="multinn" type="xsd:IDREF" ecore:reference="this:MultiNN" minOccurs="0" maxOccurs="unbounded" ecore:opposite="main"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="MultiNR">
+		<sequence>
+			<element name="Name" type="string"/>
+	      	<element name="main" type="anyURI" ecore:reference="this:Main" ecore:opposite="multinr" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="MultiRN">
+		<sequence>
+			<element name="Name" type="string"/>
+	      	<element name="main" type="anyURI" ecore:reference="this:Main" ecore:opposite="multirn" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="MultiNN">
+		<sequence>
+			<element name="Name" type="string"/>
+	      	<element name="main" type="anyURI" ecore:reference="this:Main" ecore:opposite="multinn" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

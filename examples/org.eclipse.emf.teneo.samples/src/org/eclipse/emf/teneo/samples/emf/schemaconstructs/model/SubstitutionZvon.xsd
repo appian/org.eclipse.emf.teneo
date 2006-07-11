@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/substitutionzvon"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/substitutionzvon">
+
+  <xsd:element name="root">
+    <xsd:complexType>
+      <xsd:sequence minOccurs="1">
+        <xsd:element ref="myAbstract"/>
+        <xsd:element ref="myComplexAbstract"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="myAbstract" type="AAA" abstract="true"/>
+
+  <xsd:simpleType name="AAA">
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="1"/>
+      <xsd:maxInclusive value="9"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:element name="odd" substitutionGroup="myAbstract">
+    <xsd:simpleType>
+      <xsd:restriction base="AAA">
+        <xsd:enumeration value="1"/>
+        <xsd:enumeration value="3"/>
+        <xsd:enumeration value="5"/>
+        <xsd:enumeration value="7"/>
+        <xsd:enumeration value="9"/>
+      </xsd:restriction>
+    </xsd:simpleType>
+  </xsd:element>
+  
+  <xsd:element name="even" substitutionGroup="myAbstract">
+    <xsd:simpleType>
+      <xsd:restriction base="AAA">
+        <xsd:enumeration value="2"/>
+        <xsd:enumeration value="4"/>
+        <xsd:enumeration value="6"/>
+        <xsd:enumeration value="8"/>
+      </xsd:restriction>
+    </xsd:simpleType>
+  </xsd:element>
+
+  <xsd:element name="myComplexAbstract" type="complexAAA" abstract="true"/>
+
+  <xsd:complexType name="complexAAA">
+  	<xsd:sequence>
+  		<xsd:element name="value" type="xsd:long"/>
+  	</xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="complexOdd" substitutionGroup="myComplexAbstract">
+	  <xsd:complexType>
+	  	<xsd:complexContent>
+	  		<xsd:restriction base="complexAAA">
+			  	<xsd:sequence>
+			  		<xsd:element name="value">
+			  			<xsd:simpleType>
+						    <xsd:restriction base="xsd:long">
+						        <xsd:enumeration value="1"/>
+						        <xsd:enumeration value="3"/>
+						        <xsd:enumeration value="5"/>
+						        <xsd:enumeration value="7"/>
+						        <xsd:enumeration value="9"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	  </xsd:complexType>
+  </xsd:element>
+  	
+  <xsd:element name="complexEven" substitutionGroup="myComplexAbstract">
+	  <xsd:complexType>
+	  	<xsd:complexContent>
+	  		<xsd:restriction base="complexAAA">
+			  	<xsd:sequence>
+			  		<xsd:element name="value">
+			  			<xsd:simpleType>
+						    <xsd:restriction base="xsd:long">
+						        <xsd:enumeration value="2"/>
+						        <xsd:enumeration value="4"/>
+						        <xsd:enumeration value="6"/>
+						        <xsd:enumeration value="8"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	  </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
