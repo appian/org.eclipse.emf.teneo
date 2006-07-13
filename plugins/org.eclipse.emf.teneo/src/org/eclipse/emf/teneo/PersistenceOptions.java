@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.3 2006/07/13 09:03:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -32,11 +32,11 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class PersistenceOptions {
 
-	public static final String DEFAULT_CLASSPATH_FILENAME = "/elver-persistence.properties";
+	public static final String DEFAULT_CLASSPATH_FILENAME = "/teneo-persistence.properties";
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(PersistenceOptions.class);
