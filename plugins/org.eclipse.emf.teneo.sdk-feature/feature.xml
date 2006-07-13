@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.teneo.sdk"
+      label="%featureName"
+      version="0.7.5.qualifier"
+      provider-name="%providerName"
+      image="eclipse_update_120.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://download.eclipse.org/technology/emft/updates/"/>
+      <discovery label="%updateSiteName" url="http://download.eclipse.org/technology/emft/updates/"/>
+   </url>
+
+   <includes
+         id="org.eclipse.emf.teneo.source"
+         version="0.0.0"/>
+
+</feature>
