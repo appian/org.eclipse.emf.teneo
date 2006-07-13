@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jardesc>
+    <jar path="/home/mtaal/mydata/dev/workspaces/elverspace/org.eclipse.emf.teneo.jpox/lib/org.eclipse.emf.teneo.jpox.enhanced.jar"/>
+    <options overwrite="false" compress="true" exportErrors="false" exportWarnings="true" saveDescription="true" descriptionLocation="/org.eclipse.emf.teneo.jpox.enhanced/enhanced_jar.jardesc" useSourceFolders="false" buildIfNeeded="true" includeDirectoryEntries="false" storeRefactorings="false"/>
+    <storedRefactorings structuralOnly="false" deprecationInfo="true"/>
+    <selectedProjects/>
+    <manifest manifestVersion="1.0" usesManifest="true" reuseManifest="false" saveManifest="false" generateManifest="true" manifestLocation="/org.elver.store.jpox/manifest.mf">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportOutputFolder="false" exportJavaFiles="true">
+        <javaElement handleIdentifier="=org.eclipse.emf.teneo.jpox.enhanced/src"/>
+        <file path="/org.eclipse.emf.teneo.jpox.enhanced/epl-v10.html"/>
+        <file path="/org.eclipse.emf.teneo.jpox.enhanced/copyright.txt"/>
+        <file path="/org.eclipse.emf.teneo.jpox.enhanced/eclipse32.png"/>
+        <file path="/org.eclipse.emf.teneo.jpox.enhanced/license.html"/>
+    </selectedElements>
+</jardesc>
