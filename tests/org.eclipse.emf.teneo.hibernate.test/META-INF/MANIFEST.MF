@@ -25,4 +25,3 @@ Export-Package: org.eclipse.emf.teneo.hibernate.test,
  org.eclipse.emf.teneo.samples.emf.hibernate.usertype,
  org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl,
  org.eclipse.emf.teneo.samples.emf.hibernate.usertype.util
-Bundle-ClassPath: .

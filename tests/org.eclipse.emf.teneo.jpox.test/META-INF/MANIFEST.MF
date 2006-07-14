@@ -14,4 +14,3 @@ Require-Bundle: org.junit,
  org.eclipse.emf.teneo.commontest,
  org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo
-Bundle-ClassPath: .

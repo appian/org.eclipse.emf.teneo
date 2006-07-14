@@ -7,4 +7,3 @@ Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
 Require-Bundle: org.junit,
  org.eclipse.emf.teneo.hibernate.test
-Bundle-ClassPath: .
