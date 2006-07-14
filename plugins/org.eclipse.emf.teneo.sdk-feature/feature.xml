@@ -20,7 +20,7 @@
    </url>
 
    <includes
-         id="org.eclipse.emf.teneo.source"
+         id="org.eclipse.emf.teneo_feature"
          version="0.0.0"/>
 
 </feature>
