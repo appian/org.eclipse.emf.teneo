@@ -292,3 +292,4 @@ Export-Package: org.eclipse.emf.teneo.samples,
  org.eclipse.emf.teneo.samples.issues.topclasses.impl,
  org.eclipse.emf.teneo.samples.issues.topclasses.model,
  org.eclipse.emf.teneo.samples.issues.topclasses.util
+Bundle-ClassPath: .

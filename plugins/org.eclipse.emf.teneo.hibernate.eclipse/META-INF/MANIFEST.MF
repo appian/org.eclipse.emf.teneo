@@ -20,3 +20,4 @@ Require-Bundle: org.eclipse.ui,
 Eclipse-AutoStart: true
 Eclipse-LazyStart: true
 Bundle-Activator: org.eclipse.emf.teneo.eclipse.StorePlugin
+Bundle-ClassPath: .

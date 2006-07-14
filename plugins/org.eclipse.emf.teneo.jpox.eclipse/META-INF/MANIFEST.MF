@@ -13,3 +13,4 @@ Require-Bundle: org.eclipse.emf.teneo.eclipse,
  org.eclipse.emf.teneo.jpox,
  org.eclipse.emf.common
 Bundle-Activator: org.eclipse.emf.teneo.eclipse.StorePlugin
+Bundle-ClassPath: .
