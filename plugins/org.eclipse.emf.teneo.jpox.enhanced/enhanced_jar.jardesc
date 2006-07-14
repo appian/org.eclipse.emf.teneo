@@ -4,7 +4,7 @@
     <options overwrite="false" compress="true" exportErrors="false" exportWarnings="true" saveDescription="true" descriptionLocation="/org.eclipse.emf.teneo.jpox.enhanced/enhanced_jar.jardesc" useSourceFolders="false" buildIfNeeded="true" includeDirectoryEntries="false" storeRefactorings="false"/>
     <storedRefactorings structuralOnly="false" deprecationInfo="true"/>
     <selectedProjects/>
-    <manifest manifestVersion="1.0" usesManifest="true" reuseManifest="false" saveManifest="false" generateManifest="true" manifestLocation="/org.elver.store.jpox/manifest.mf">
+    <manifest manifestVersion="1.0" usesManifest="true" reuseManifest="false" saveManifest="false" generateManifest="true" manifestLocation="/org.eclipse.emf.teneo.jpox/manifest.mf">
         <sealing sealJar="false">
             <packagesToSeal/>
             <packagesToUnSeal/>
