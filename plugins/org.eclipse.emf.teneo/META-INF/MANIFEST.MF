@@ -17,4 +17,3 @@ Export-Package: org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.simpledom,
  org.eclipse.emf.teneo.type,
  org.eclipse.emf.teneo.util
-Bundle-ClassPath: .
