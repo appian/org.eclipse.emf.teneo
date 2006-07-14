@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.emf.teneo_feature"
+      id="org.eclipse.emf.teneo-feature"
       label="%featureName"
       version="0.7.5.qualifier"
       provider-name="%featureProvider">
@@ -78,7 +78,6 @@ http://www.eclipse.org/legal/epl-v10.html
          id="org.eclipse.emf.teneo.libraries"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="true"/>
+         version="0.0.0"/>
 
 </feature>
