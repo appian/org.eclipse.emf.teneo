@@ -22,14 +22,14 @@ import org.eclipse.emf.teneo.test.emf.sample.CatalogAction;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class CatalogTest extends AbstractActionTest {
 
 	static final CatalogAction testAction = new CatalogAction() {
 
 		protected String getQueryText() {
-			return "SELECT FROM org.elver.samples.emf.sample.catalog.impl.ProductTypeImpl WHERE remark.contains(rem) && rem.value == \"remarka\" VARIABLES org.elver.samples.emf.sample.catalog.impl.StringTypeImpl rem";
+			return "SELECT FROM org.eclipse.emf.teneo.samples.emf.sample.catalog.impl.ProductTypeImpl WHERE remark.contains(rem) && rem.value == \"remarka\" VARIABLES org.eclipse.emf.teneo.samples.emf.sample.catalog.impl.StringTypeImpl rem";
 		}
 	};
 

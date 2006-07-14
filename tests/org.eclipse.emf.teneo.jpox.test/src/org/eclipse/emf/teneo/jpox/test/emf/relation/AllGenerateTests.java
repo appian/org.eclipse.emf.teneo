@@ -29,12 +29,12 @@ import org.eclipse.emf.teneo.test.emf.relation.RelationntomAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AllGenerateTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.elver.samples.emf.detach", JPOXTestbed.instance()
+		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.samples.emf.detach", JPOXTestbed.instance()
 				.getConfigurations());
 
 		suite.addTest(new JPOXGenerateTest(Relation1to1Action.class));

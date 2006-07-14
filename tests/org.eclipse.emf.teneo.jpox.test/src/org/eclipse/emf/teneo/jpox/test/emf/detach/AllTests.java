@@ -26,12 +26,12 @@ import org.eclipse.emf.teneo.test.emf.detach.DetachEListAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.elver.samples.emf.detach", JPOXTestbed.instance()
+		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.samples.emf.detach", JPOXTestbed.instance()
 				.getConfigurations());
 
 		suite.addTestSuite(DetachEListAction.class);
