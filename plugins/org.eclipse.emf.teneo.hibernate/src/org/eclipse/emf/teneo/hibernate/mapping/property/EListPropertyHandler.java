@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListPropertyHandler.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: EListPropertyHandler.java,v 1.2 2006/07/17 22:11:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -52,7 +52,7 @@ import org.hibernate.property.Setter;
  * methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -117,7 +117,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 				try {
 					javaField.set(owner, pelist);
 				} catch (Exception e) {
-					throw new HbStoreException("The field + " + javaField.getName() + " can not be set using object "
+					throw new HbStoreException("The field " + javaField.getName() + " can not be set using object "
 							+ pelist.getClass().getName() + " on target " + owner.getClass().getName(), e);
 				}
 			}

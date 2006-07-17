@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -104,7 +104,7 @@ public class HibernateTestbed extends Testbed {
 
 	/** Write the mapping file for debugging purposes */
 	private void writeMappingToFile(File mappingFile, String mappingXML) throws IOException {
-		if (true) {
+		if (false) {
 			log.debug("Disabled writing of hibernate.hbm.xml file for tests on the vserver");
 			return;
 		}
