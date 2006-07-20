@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.2 2006/07/12 15:50:55 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.3 2006/07/20 12:27:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -83,7 +83,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class HbDataStore {
@@ -146,8 +146,8 @@ public class HbDataStore {
 		// check a few things
 		if (getEPackages() == null)
 			throw new HbStoreException("EPackages are not set");
-		//if (getName() == null)
-		//	throw new HbStoreException("Name is not set");
+		// if (getName() == null)
+		// throw new HbStoreException("Name is not set");
 
 		log.debug(">>>>> Creating HB Configuration");
 		hbConfiguration = getHbContext().createConfiguration();
@@ -285,6 +285,10 @@ public class HbDataStore {
 
 	/** Adds a econtainer mapping to the class mapping */
 	protected void addContainerMappings() {
+		if (new PersistenceOptions(getPersistenceProperties()).isDisableEContainerMapping()) {
+			log.debug("EContainer mapping disabled.");
+			return;
+		}
 		for (Iterator pcs = getConfiguration().getClassMappings(); pcs.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 

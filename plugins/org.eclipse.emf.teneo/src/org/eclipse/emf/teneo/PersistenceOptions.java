@@ -12,13 +12,18 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.3 2006/07/13 09:03:32 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.4 2006/07/20 12:27:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -32,11 +37,17 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class PersistenceOptions {
 
 	public static final String DEFAULT_CLASSPATH_FILENAME = "/teneo-persistence.properties";
+
+	private static final String RUNTIME_PREFIX = "teneo.runtime.";
+
+	private static final String MAPPING_PREFIX = "teneo.mapping.";
+
+	private static final String NAMING_PREFIX = "teneo.naming.";
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(PersistenceOptions.class);
@@ -48,18 +59,16 @@ public class PersistenceOptions {
 	public static final String OPTIMISTIC = new String(BASE_NAME + ".Optimistic").toLowerCase();
 
 	/** Inheritance mapping */
-	public static final String INHERITANCE_MAPPING = new String(BASE_NAME + ".InheritanceMapping").toLowerCase();
+	public static final String INHERITANCE_MAPPING = MAPPING_PREFIX + "inheritance";
 
 	/** Can be set to force an update of the schema when the application starts */
-	public static final String UPDATE_SCHEMA = new String(BASE_NAME + ".UpdateSchema").toLowerCase();
+	public static final String UPDATE_SCHEMA = RUNTIME_PREFIX + "update_schema";
 
 	/** Force all containment relations to be eagerly loaded or not */
-	public static final String FETCH_CONTAINMENT_EAGERLY = new String(BASE_NAME + ".FetchContainmentEagerly")
-			.toLowerCase();
+	public static final String FETCH_CONTAINMENT_EAGERLY = MAPPING_PREFIX + "fetch_containment_eagerly";
 
 	/** Set cascade all (incl. orphan delete) on containment relation */
-	public static final String SET_CASCADE_ALL_ON_CONTAINMENT = new String(BASE_NAME + ".SetCascadeAllOnContainment")
-			.toLowerCase();
+	public static final String SET_CASCADE_ALL_ON_CONTAINMENT = MAPPING_PREFIX + "cascade_all_on_containment";
 
 	/**
 	 * Can be used to control if the entity ann. should be added automatically to the model elements or that the default
@@ -72,11 +81,10 @@ public class PersistenceOptions {
 	 * Can be used to control if implementation classes should be used for entity names and target entities or that
 	 * eclass names are used.
 	 */
-	public static final String USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME = new String(BASE_NAME
-			+ ".UseImplementationClassesAsEntityName").toLowerCase();
+	public static final String USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME = NAMING_PREFIX + "java_class_entity_names";
 
 	/** Qualify the entity name */
-	public static final String QUALIFY_ENTITY_NAME = new String(BASE_NAME + ".QualifyEntityName").toLowerCase();
+	public static final String QUALIFY_ENTITY_NAME = NAMING_PREFIX + "qualify_entity_name";
 
 	/** With the values */
 	public static final String QUALIFY_ENTITY_NAME_NO = "no";
@@ -84,19 +92,24 @@ public class PersistenceOptions {
 	public static final String QUALIFY_ENTITY_NAME_NSPREFIX = "nsprefix";
 
 	/** Use static hibernate mapping file */
-	public static final String USE_MAPPING_FILE = new String(BASE_NAME + ".UseMappingFile").toLowerCase();
+	public static final String USE_MAPPING_FILE = MAPPING_PREFIX + "hibernate_mapping_file";
 
 	/** Name of version column, default value is e_version */
-	public static final String VERSION_COLUMN_NAME = new String(BASE_NAME + ".VersionColumnName").toLowerCase();
+	public static final String VERSION_COLUMN_NAME = NAMING_PREFIX + "version_column";
 
 	/** Name of id column, default value is id */
-	public static final String ID_COLUMN_NAME = new String(BASE_NAME + ".IdColumnName").toLowerCase();
+	public static final String ID_COLUMN_NAME = NAMING_PREFIX + "default_id_column";
 
 	/**
 	 * Truncate the column name if the length is larger than this property. In case of concatenating property names for
 	 * foreign keys
 	 */
 	public static final String MAXIMUM_SQL_NAME_LENGTH = new String(BASE_NAME + ".MaximumSqlNameLength").toLowerCase();
+
+	/**
+	 * Disable EContainer mapping.
+	 */
+	public static final String DISABLE_ECONTAINER_MAPPING = MAPPING_PREFIX + "disable_econtainer";
 
 	/** Option to specify that for non-contained one-to-many always a join table is used, default is false */
 	public static final String JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS = new String(BASE_NAME
@@ -106,7 +119,7 @@ public class PersistenceOptions {
 	 * The option which determines the casing of columns and table names, lowercase will result in lowercase letters,
 	 * uppercase in uppercase, none will just work as it did until now
 	 */
-	public static final String SQL_CASE_STRATEGY = new String(BASE_NAME + ".NamingStrategy").toLowerCase();
+	public static final String SQL_CASE_STRATEGY = NAMING_PREFIX + "strategy";
 
 	/**
 	 * The wrapped Properties instance.
@@ -135,7 +148,7 @@ public class PersistenceOptions {
 		try {
 			in = this.getClass().getResourceAsStream(DEFAULT_CLASSPATH_FILENAME);
 			if (in != null) {
-				log.debug("Loading persistence options from classpath \"/elver-properties\".");
+				log.debug("Loading persistence options from classpath \"/teneo-properties\".");
 				properties.load(in);
 			}
 		} catch (IOException e) {
@@ -224,6 +237,10 @@ public class PersistenceOptions {
 		return properties.getProperty(QUALIFY_ENTITY_NAME, QUALIFY_ENTITY_NAME_NO);
 	}
 
+	public boolean isDisableEContainerMapping() {
+		return Boolean.valueOf(properties.getProperty(DISABLE_ECONTAINER_MAPPING, "false")).booleanValue();
+	}
+
 	/** Return the max. sql name length, or -1 if not set or illegal */
 	public int getMaximumSqlNameLength() {
 		final String colLength = properties.getProperty(MAXIMUM_SQL_NAME_LENGTH, "-1");
@@ -234,6 +251,29 @@ public class PersistenceOptions {
 					+ " value is ignored");
 			return -1;
 		}
+	}
+
+	/**
+	 * Returns an array of all String constants.
+	 * 
+	 * @return
+	 */
+	public static String[] propertyNames() {
+		List<String> names = new ArrayList();
+		Field[] fields = PersistenceOptions.class.getFields();
+		for (Field field : fields) {
+			try {
+				if ((field.getModifiers() & Modifier.STATIC) > 0 & field.getType().equals(String.class)) {
+					final String value = (String) field.get(null);
+					if (value.startsWith("teneo.")) {
+						names.add(value);
+					}
+				}
+			} catch (IllegalAccessException e) {
+			}
+		}
+		Collections.sort(names);
+		return names.toArray(new String[names.size()]);
 	}
 
 	// TODO: Add remaining accessor wrappers.
