@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.2 2006/07/20 06:53:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryAction extends AbstractTestAction {
 	/**
@@ -120,7 +120,8 @@ public class LibraryAction extends AbstractTestAction {
 
 			Library lib = (Library) store.getCrossReferencers(writ, true)[0];
 			checkContainerAfterLibraryRetrieve(store, writ);
-
+			checkDetachCopy(store, writ);
+			
 			// now set the container of the writer
 			assertTrue("The container of the writer should be set!", store.setContainer(writ));
 
@@ -153,6 +154,9 @@ public class LibraryAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 	}
+	
+	// check detachcopy for jpox
+	protected void checkDetachCopy(TestStore store, Writer writ) { }
 
 	protected void checkContainerAfterLibraryRetrieve(TestStore store, final Writer writ) {
 		// TODO specialize for Hibernate/JPOX, was:
