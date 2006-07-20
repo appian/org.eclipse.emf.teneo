@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.1 2006/07/08 22:04:29 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.2 2006/07/20 06:49:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.elist;
@@ -27,12 +27,16 @@ import javax.jdo.spi.PersistenceCapable;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.common.util.DelegatingEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
+import org.eclipse.emf.ecore.util.DelegatingEcoreEList;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.jpox.emf.JpoxStoreException;
 import org.eclipse.emf.teneo.jpox.emf.JpoxUtil;
@@ -65,7 +69,7 @@ import org.jpox.util.ClassUtils;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/08 22:04:29 $
+ * @version $Revision: 1.2 $ $Date: 2006/07/20 06:49:58 $
  */
 
 public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList, JPOXEList {
@@ -268,7 +272,22 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 				}
 			}
 		}
-		return detached;
+		
+		// create a delegating ecorelist, this ensures that all the feature characteristics
+		// are supported
+		final EStructuralFeature feature = getEStructuralFeature();
+		final InternalEObject myOwner = (InternalEObject)getOwner();
+		final EList elist = new DelegatingEcoreEList(myOwner) {
+			protected List delegateList() {
+				return detached;
+			}
+			
+			public EStructuralFeature getEStructuralFeature() {
+				return feature; 
+			}
+		};
+
+		return elist;
 	}
 
 	/** Detach self, means nullify all references to jdo */

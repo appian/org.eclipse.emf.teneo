@@ -37,13 +37,15 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 				.getConfigurations());
+
+		suite.addTestSuite(LibraryTest.class);
 
 		suite.addTestSuite(CatalogTest.class);
 
@@ -54,7 +56,6 @@ public class AllTests {
 		suite.addTestSuite(CatalogResourceAction.class);
 		suite.addTestSuite(ProductAction.class);
 		suite.addTestSuite(SunBooksAction.class);
-		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(LibraryGlobalEagerAction.class);
 		suite.addTestSuite(LibraryNonResolvingAction.class);
 		suite.addTestSuite(LibraryValidateResourceAction.class);
@@ -64,7 +65,6 @@ public class AllTests {
 		suite.addTestSuite(ExtendedPO2Test.class);
 		suite.addTestSuite(PlayAction.class);
 		suite.addTestSuite(LibraryResourceAction.class);
-
 		return suite;
 	}
 

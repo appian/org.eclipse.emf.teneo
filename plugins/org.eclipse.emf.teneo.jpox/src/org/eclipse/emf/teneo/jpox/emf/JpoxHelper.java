@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxHelper.java,v 1.1 2006/07/08 22:04:29 mtaal Exp $
+ * $Id: JpoxHelper.java,v 1.2 2006/07/20 06:49:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf;
 
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -50,7 +51,7 @@ import org.jpox.TypeManager;
  * Is the main entry point for 'outside' users to create persistence manager factories and register EMF Data Stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class JpoxHelper {
 	/** The logger */
@@ -96,6 +97,8 @@ public class JpoxHelper {
 			log.info("Registering XMLDurationMapping at the jpox manager for handling EObjects/AnyType");
 		}
 		ClassLoaderResolver clr = new JDOClassLoaderResolver();
+		TypeManager.getTypeManager().addType(List.class.getName(), EListMapping.class.getName(),
+				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
 		TypeManager.getTypeManager().addType(EList.class.getName(), EListMapping.class.getName(),
 				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
 		TypeManager.getTypeManager().addType(FeatureMap.class.getName(), FeatureMapMapping.class.getName(),
