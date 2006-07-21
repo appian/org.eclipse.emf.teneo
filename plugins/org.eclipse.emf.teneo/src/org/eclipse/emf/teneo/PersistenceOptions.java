@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.4 2006/07/20 12:27:20 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.5 2006/07/21 11:14:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class PersistenceOptions {
 
@@ -259,10 +259,11 @@ public class PersistenceOptions {
 	 * @return
 	 */
 	public static String[] propertyNames() {
-		List<String> names = new ArrayList();
+		List names = new ArrayList();
 		Field[] fields = PersistenceOptions.class.getFields();
-		for (Field field : fields) {
+		for (int i = 0; i < fields.length; i++) {
 			try {
+				final Field field = fields[i]; 
 				if ((field.getModifiers() & Modifier.STATIC) > 0 & field.getType().equals(String.class)) {
 					final String value = (String) field.get(null);
 					if (value.startsWith("teneo.")) {
@@ -273,7 +274,7 @@ public class PersistenceOptions {
 			}
 		}
 		Collections.sort(names);
-		return names.toArray(new String[names.size()]);
+		return (String[])names.toArray(new String[names.size()]);
 	}
 
 	// TODO: Add remaining accessor wrappers.
