@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritanceType.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: InheritanceType.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -156,16 +156,6 @@ public final class InheritanceType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private InheritanceType(int value, String name) {
-		super(value, name);
-	}
-
-	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> Method changed to be compliant with emf 2.1 <!--
-	 * end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	private InheritanceType(int value, String name, String literal) {
 		super(value, name);
 	}
 

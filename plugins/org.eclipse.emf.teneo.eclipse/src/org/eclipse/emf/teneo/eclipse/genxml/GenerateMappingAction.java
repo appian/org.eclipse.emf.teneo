@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenerateMappingAction.java,v 1.1 2006/07/08 15:02:37 mtaal Exp $
+ * $Id: GenerateMappingAction.java,v 1.2 2006/07/22 13:09:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.eclipse.genxml;
@@ -33,6 +33,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -40,7 +41,7 @@ import org.eclipse.ui.IWorkbenchPart;
  * Is superclass for different generate descriptor file subclasses.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public abstract class GenerateMappingAction implements IObjectActionDelegate {

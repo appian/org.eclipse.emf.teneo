@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: RunGenerateJob.java,v 1.1 2006/07/08 15:02:37 mtaal Exp $
+ * $Id: RunGenerateJob.java,v 1.2 2006/07/22 13:09:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.eclipse.genxml;
@@ -43,7 +43,6 @@ import org.eclipse.jdt.internal.core.PackageFragment;
 import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 import org.eclipse.jdt.launching.IRuntimeClasspathEntry;
 import org.eclipse.jdt.launching.JavaRuntime;
-import org.eclipse.emf.teneo.StoreException;
 
 /**
  * Generate a mapping file in a separate java program to use the classpath of the selected projects.

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdentifierUtil.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: IdentifierUtil.java,v 1.2 2006/07/22 13:09:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
@@ -21,8 +21,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Hashtable;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
@@ -37,12 +35,12 @@ import org.hibernate.type.Type;
  * uses the underlying hibernate identifier. This allows more flexibility than the EMF identifier.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class IdentifierUtil {
 	/** The logger */
-	private static Log log = LogFactory.getLog(IdentifierUtil.class);
+//	private static Log log = LogFactory.getLog(IdentifierUtil.class);
 
 	/** Separator used in encoding the class name and value */
 	private static final String ENCODING_SEPARATOR = ";";

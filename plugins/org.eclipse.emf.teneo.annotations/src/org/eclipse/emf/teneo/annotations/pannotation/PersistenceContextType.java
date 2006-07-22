@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersistenceContextType.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PersistenceContextType.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -132,15 +132,4 @@ public final class PersistenceContextType extends AbstractEnumerator {
 	private PersistenceContextType(int value, String name) {
 		super(value, name);
 	}
-
-	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> Changed to be compliant with EMF 2.1 <!--
-	 * end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	private PersistenceContextType(int value, String name, String literal) {
-		super(value, name);
-	}
-
 } // PersistenceContextType

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeature.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeature.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -17,7 +17,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.Type;
 import org.eclipse.emf.teneo.annotations.pannotation.Unique;
 
 /**

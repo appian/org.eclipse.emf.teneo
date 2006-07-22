@@ -11,15 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.2 2006/07/22 13:09:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
 
 import java.io.Serializable;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
@@ -45,21 +43,21 @@ import org.hibernate.tuple.Instantiator;
  * same behavior for the getVersion methods. Also a specific object instantiator is used to make use of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
 
 	/** The logger */
-	private static Log log = LogFactory.getLog(EMFTuplizer.class);
+//	private static Log log = LogFactory.getLog(EMFTuplizer.class);
 
 	/** The entitymetamodel for which this is all done */
-	private final EntityMetamodel theEntityMetamodel;
+//	private final EntityMetamodel theEntityMetamodel;
 
 	/** Constructor */
 	public EMFTuplizer(EntityMetamodel entityMetamodel, PersistentClass mappedEntity) {
 		super(entityMetamodel, mappedEntity);
-		theEntityMetamodel = entityMetamodel;
+		//theEntityMetamodel = entityMetamodel;
 	}
 
 	/**

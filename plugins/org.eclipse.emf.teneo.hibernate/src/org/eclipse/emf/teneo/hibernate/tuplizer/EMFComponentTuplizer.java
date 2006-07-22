@@ -11,15 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFComponentTuplizer.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: EMFComponentTuplizer.java,v 1.2 2006/07/22 13:09:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
 
 import java.lang.reflect.Method;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
@@ -38,13 +36,13 @@ import org.hibernate.tuple.Instantiator;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 
 	/** The logger */
-	private static Log log = LogFactory.getLog(EMFComponentTuplizer.class);
+//	private static Log log = LogFactory.getLog(EMFComponentTuplizer.class);
 
 	/** Constructor */
 	public EMFComponentTuplizer(Component component) {

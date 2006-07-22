@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerUserType.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: EContainerUserType.java,v 1.2 2006/07/22 13:09:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -27,7 +27,6 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import org.dom4j.Node;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
@@ -55,7 +54,7 @@ import org.hibernate.usertype.CompositeUserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/05 22:29:31 $
+ * @version $Revision: 1.2 $ $Date: 2006/07/22 13:09:55 $
  */
 
 public class EContainerUserType extends AbstractType implements CompositeUserType, AssociationType {
@@ -331,7 +330,7 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 			st.setNull(index, Types.VARCHAR);
 			st.setNull(index + 1, Types.VARCHAR);
 		} else {
-			EObject eobj = (EObject) value;
+			//EObject eobj = (EObject) value;
 			final String ename = session.bestGuessEntityName(value);
 			st.setString(index, ename);
 			st.setString(index + 1, createIDString(getIdentifierType(ename, session), getID(ename, value, session)));
