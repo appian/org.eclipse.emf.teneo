@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.eclipse.emf.teneo
 Bundle-Version: 0.7.5.qualifier
 Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
+Eclipse-BuddyPolicy: dependent
 Require-Bundle: org.eclipse.emf.common,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,

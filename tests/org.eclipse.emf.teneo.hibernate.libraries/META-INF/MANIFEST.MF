@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Teneo Hibernate Test Libraries Plug-in
 Bundle-SymbolicName: org.eclipse.emf.teneo.hibernate.libraries
 Bundle-Version: 0.7.5.qualifier
+Eclipse-BuddyPolicy: dependent
 Bundle-ClassPath: ant-antlr-1.6.5.jar,
  antlr-2.7.6.jar,
  asm.jar,

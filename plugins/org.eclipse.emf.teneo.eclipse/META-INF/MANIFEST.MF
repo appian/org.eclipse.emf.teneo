@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.eclipse.emf.teneo.eclipse; singleton:=true
 Bundle-Version: 0.7.5.qualifier
 Bundle-Activator: org.eclipse.emf.teneo.eclipse.StorePlugin
 Bundle-Localization: plugin
+Eclipse-BuddyPolicy: dependent
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.ui.ide,

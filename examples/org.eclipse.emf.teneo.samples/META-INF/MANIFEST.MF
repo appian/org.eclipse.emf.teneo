@@ -12,6 +12,7 @@ Require-Bundle: org.eclipse.emf.common,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport
 Eclipse-LazyStart: true
+Eclipse-BuddyPolicy: dependent
 Bundle-Vendor: %Plugin.providerName
 Export-Package: org.eclipse.emf.teneo.samples,
  org.eclipse.emf.teneo.samples.emf.annotations,
