@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: StoreTestException.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: StoreTestException.java,v 1.2 2006/07/22 09:42:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -26,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
  * added value.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/04 22:12:17 $
+ * @version $Revision: 1.2 $ $Date: 2006/07/22 09:42:56 $
  */
 
 public class StoreTestException extends RuntimeException {
@@ -44,6 +44,11 @@ public class StoreTestException extends RuntimeException {
 	public StoreTestException(String msg, Throwable cause) {
 		super(msg, cause);
 
+		System.out.println(msg);
+		System.err.println(msg);
+		cause.printStackTrace(System.err);
+		cause.printStackTrace(System.out);
+		
 		// and log it
 		log.error(msg, cause);
 	}
@@ -53,6 +58,9 @@ public class StoreTestException extends RuntimeException {
 	 */
 	public StoreTestException(String msg) {
 		super(msg);
+
+		System.out.println(msg);
+		System.err.println(msg);
 
 		// and log it
 		log.error(msg, this);
