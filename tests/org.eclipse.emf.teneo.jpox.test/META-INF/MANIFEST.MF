@@ -14,4 +14,13 @@ Require-Bundle: org.junit;bundle-version="[3.8.0,4.0.0)",
  org.eclipse.emf.teneo.commontest,
  org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo
-Export-Package: org.eclipse.emf.teneo.jpox.test
+Export-Package: org.eclipse.emf.teneo.jpox.test,
+ org.eclipse.emf.teneo.jpox.test.emf.annotations,
+ org.eclipse.emf.teneo.jpox.test.emf.detach,
+ org.eclipse.emf.teneo.jpox.test.emf.elist,
+ org.eclipse.emf.teneo.jpox.test.emf.relation,
+ org.eclipse.emf.teneo.jpox.test.emf.sample,
+ org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs,
+ org.eclipse.emf.teneo.jpox.test.generate,
+ org.eclipse.emf.teneo.jpox.test.issues,
+ org.eclipse.emf.teneo.jpox.test.stores
