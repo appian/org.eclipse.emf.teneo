@@ -11,28 +11,27 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAttrsAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: EcoreAttrsAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
 
 import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.EcoreattrsFactory;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.EcoreattrsPackage;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.Element;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.Feature;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.Mixed;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.NameList;
-import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.eclipse.emf.teneo.type.MixedFeatureMapEntry;
 
 /**
  * Tests number of ecore attributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class EcoreAttrsAction extends AbstractTestAction 
 {

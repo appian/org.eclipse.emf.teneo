@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToManyAction.java,v 1.1 2006/07/04 22:12:14 mtaal Exp $
+ * $Id: ManyToManyAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -19,12 +19,12 @@ package org.eclipse.emf.teneo.test.emf.annotations;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Cntr;
 import org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Lft;
 import org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Rght;
-import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ManyToManyAction extends AbstractTestAction {
 	/** How many test objects are created */

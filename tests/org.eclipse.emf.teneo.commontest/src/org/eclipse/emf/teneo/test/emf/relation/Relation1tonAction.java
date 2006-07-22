@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Relation1tonAction.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: Relation1tonAction.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.relation;
@@ -29,14 +29,6 @@ import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoCR;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoNN;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoNR;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.MainImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.OneCNImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.OneCRImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.OneNNImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.OneNRImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.TwoCNImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.TwoCRImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.TwoNNImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.TwoNRImpl;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -44,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests many different kinds of 1:n relations
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class Relation1tonAction extends AbstractTestAction {
 	/** value used to create multiple entries in a list */

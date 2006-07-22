@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MixedAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: MixedAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -24,25 +24,22 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.LetterBodyType;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.MixedFactory;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.MixedPackage;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.SalutationType;
-import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.eclipse.emf.teneo.type.MixedFeatureMapEntry;
 
 /**
  * Tests for the mixed construction.  
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class MixedAction extends AbstractTestAction 
 {
@@ -68,7 +65,6 @@ public class MixedAction extends AbstractTestAction
 		
 		// test a simple type
         final MixedFactory factory = MixedFactory.eINSTANCE;
-        LetterBodyType let = null;
     	{
 	        store.beginTransaction();
 	        
@@ -76,7 +72,6 @@ public class MixedAction extends AbstractTestAction
 	        for (int i = 0; i < maxCnt; i++)
 	        {
 		        LetterBodyType letter = factory.createLetterBodyType();
-		        let = letter;
 		        SalutationType salutation = factory.createSalutationType();
 		        salutation.getMixed().add(Constants.TEXT, i + "Dear mr.");
 		        salutation.setName( i + " Taal");

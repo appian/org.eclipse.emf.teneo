@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestStoreFactory.java,v 1.1 2006/07/04 22:12:14 mtaal Exp $
+ * $Id: AbstractTestStoreFactory.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -22,10 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.samples.SamplesSource;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.test.AbstractTest;
 import org.eclipse.emf.teneo.test.conf.TestConfiguration;
@@ -35,12 +32,12 @@ import org.eclipse.emf.teneo.test.conf.TestConfiguration;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public abstract class AbstractTestStoreFactory {
 
 	/** The logger */
-	private static Log log = LogFactory.getLog(AbstractTestStoreFactory.class);
+//	private static Log log = LogFactory.getLog(AbstractTestStoreFactory.class);
 
 	// TODO make insesitive to user.dir
 	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "run";

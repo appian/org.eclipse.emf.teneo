@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BookAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: BookAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -25,10 +25,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
 */
 public class BookAction extends AbstractTestAction 
 {
@@ -119,6 +119,7 @@ public class BookAction extends AbstractTestAction
 	    			conn = store.getConnection();
 	    			stmt = conn.createStatement();
 		    		ResultSet rs = stmt.executeQuery("SELECT * FROM MYBOOKTABLE WHERE TITEL='' AND GEWICHT IS NULL");
+		    		assertTrue(rs != null); //dummy to get rid of warning
 	    		} catch (SQLException s) {
 	    			throw new StoreTestException("SQL Exception", s);
 	    		} finally {

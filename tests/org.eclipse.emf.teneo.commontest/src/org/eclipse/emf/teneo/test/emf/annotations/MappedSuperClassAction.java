@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappedSuperClassAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: MappedSuperClassAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
 */
 public class MappedSuperClassAction extends AbstractTestAction 
 {
@@ -86,6 +86,7 @@ public class MappedSuperClassAction extends AbstractTestAction
 	    			Statement stmt = conn.createStatement();
 	    			// the following should not fail for all inheritance strategies
 	    			ResultSet rs = stmt.executeQuery("SELECT * FROM document");
+	    			assertTrue(rs != null); // dummy test to get rid of warning
 	    			fail("The DOCUMENT table should not exist as it is a mapped superclass");
 	    		} catch (SQLException s) {
 	    			// this is correct
@@ -107,6 +108,7 @@ public class MappedSuperClassAction extends AbstractTestAction
 	    			Statement stmt = conn.createStatement();
 	    			// the following should not fail for all inheritance strategies
 	    			ResultSet rs = stmt.executeQuery("SELECT * FROM parentdocument");
+	    			assertTrue(rs != null); // dummy to get rid of warning
 	    			fail("The PARENTDOCUMENT table should not exist as it is a mapped superclass");
 	    		} catch (SQLException s) {
 	    			// this is correct

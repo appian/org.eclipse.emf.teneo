@@ -11,12 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LobAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: LobAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
-import java.util.List;
 import java.util.Random;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.lob.LobFactory;

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: Testbed.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: Testbed.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public abstract class Testbed {
 	/** The logger */
@@ -177,7 +177,7 @@ public abstract class Testbed {
 			collectSourceFiles(sourceFiles, dirs[i]);
 	}
 
-	/** Deletes the current binary files */
+	/** Deletes the current binary files
 	private void deleteFiles(File directory) {
 		File[] files = directory.listFiles();
 		for (int i = 0; i < files.length; i++) {
@@ -187,6 +187,7 @@ public abstract class Testbed {
 			if (files[i].getName().endsWith(".class") || files[i].getName().endsWith(".jdo")) files[i].delete();
 		}
 	}
+	*/
 
 	/** Get the current configuration, for which the current test is run */
 	public TestConfiguration getActiveConfiguration() {

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SecondarytableHibernateAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: SecondarytableHibernateAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -23,10 +23,10 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.Person;
 import org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernateFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernatePackage;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;

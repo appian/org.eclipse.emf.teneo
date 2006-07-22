@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryGlobalEagerAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: LibraryGlobalEagerAction.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -23,15 +23,15 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
+import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
-import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
-import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests setting of eager loading of containment at global level
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class LibraryGlobalEagerAction extends AbstractTestAction 
 {

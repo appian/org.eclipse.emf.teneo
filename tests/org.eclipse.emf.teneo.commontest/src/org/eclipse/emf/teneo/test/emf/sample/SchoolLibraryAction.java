@@ -11,13 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SchoolLibraryAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: SchoolLibraryAction.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -45,7 +44,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the schoollibrary example which has some more inheritance structures.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class SchoolLibraryAction extends AbstractTestAction {
 

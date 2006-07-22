@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TransientAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: TransientAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test transient eclass
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
 */
 public class TransientAction extends AbstractTestAction 
 {
@@ -67,6 +67,7 @@ public class TransientAction extends AbstractTestAction
 	    		store.beginTransaction();
 	    		try {
 		    		List list = store.getObjects(Head.class);
+		    		assertTrue(list != null);// dummy to get rid of warning
 	    			store.commitTransaction();
 	    			fail("head is not mapped!");
 	    		} catch (Throwable t) {

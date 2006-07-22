@@ -11,21 +11,17 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.2 2006/07/20 06:53:02 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.3 2006/07/22 10:16:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
-import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -33,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibraryAction extends AbstractTestAction {
 	/**
@@ -84,7 +80,7 @@ public class LibraryAction extends AbstractTestAction {
 			Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1).get(0);
 			assertTrue(((Writer) lib.getWriters().get(0)).getName().compareTo("JRR Tolkien") == 0);
 
-			final Object[] eobjs = store.getCrossReferencers((EObject)lib.getWriters().get(0), false);
+//			final Object[] eobjs = store.getCrossReferencers((EObject)lib.getWriters().get(0), false);
 			
 			// these two books should be the same as this book is the first in the writers collection
 			// and in the library collection
@@ -185,39 +181,39 @@ public class LibraryAction extends AbstractTestAction {
 		return true;
 	}
 
-	/** Small adapter test */
-	private class WriterAdapter extends AdapterImpl {
-		/** Counts the number of changes */
-		private int countNotifications = 0;
-
-		/**
-		 * Returns <code>false</code>
-		 * 
-		 * @param type
-		 *            the type.
-		 * @return <code>false</code>
-		 */
-		public boolean isAdapterForType(Object type) {
-			return type instanceof Writer;
-		}
-
-		/**
-		 * Does nothing; clients may override so that it does something.
-		 */
-		public void notifyChanged(Notification msg) {
-			assertTrue("The new value is of type: " + msg.getNewValue().getClass().getName(),
-					listValueOfCorrectType(msg.getNewValue()));
-
-			// must be a load event
-			assertTrue("Eventtype is not load notification but: " + msg.getEventType(),
-					msg.getEventType() == Constants.ELIST_LOAD_NOTIFICATION);
-
-			countNotifications++;
-		}
-
-		/** Returns the number of notifications */
-		public int getCountNotifications() {
-			return countNotifications;
-		}
-	}
+//	/** Small adapter test
+//	private class WriterAdapter extends AdapterImpl {
+//		/** Counts the number of changes */
+//		private int countNotifications = 0;
+//
+//		/**
+//		 * Returns <code>false</code>
+//		 * 
+//		 * @param type
+//		 *            the type.
+//		 * @return <code>false</code>
+//		 */
+//		public boolean isAdapterForType(Object type) {
+//			return type instanceof Writer;
+//		}
+//
+//		/**
+//		 * Does nothing; clients may override so that it does something.
+//		 */
+//		public void notifyChanged(Notification msg) {
+//			assertTrue("The new value is of type: " + msg.getNewValue().getClass().getName(),
+//					listValueOfCorrectType(msg.getNewValue()));
+//
+//			// must be a load event
+//			assertTrue("Eventtype is not load notification but: " + msg.getEventType(),
+//					msg.getEventType() == Constants.ELIST_LOAD_NOTIFICATION);
+//
+//			countNotifications++;
+//		}
+//
+//		/** Returns the number of notifications */
+//		public int getCountNotifications() {
+//			return countNotifications;
+//		}
+//	}
 }

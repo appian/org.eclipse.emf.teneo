@@ -11,12 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: RestrictionAction.java,v 1.1 2006/07/04 22:12:16 mtaal Exp $
+ * $Id: RestrictionAction.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
 
-import org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.RestrictionFactory;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.RestrictionPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -25,7 +24,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests for the mixed construction.  
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class RestrictionAction extends AbstractTestAction 
 {
@@ -48,7 +47,7 @@ public class RestrictionAction extends AbstractTestAction
 	public void doAction(TestStore store)
 	{
 		// test a simple type
-        final RestrictionFactory factory = RestrictionFactory.eINSTANCE;
+        //final RestrictionFactory factory = RestrictionFactory.eINSTANCE;
     	{
     		{
 		        store.beginTransaction();

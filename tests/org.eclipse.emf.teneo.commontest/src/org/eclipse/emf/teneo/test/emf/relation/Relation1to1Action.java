@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Relation1to1Action.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: Relation1to1Action.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.relation;
@@ -26,14 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.NotContainedChild
 import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.NotContainedChildRTNR;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.Relation1to1Factory;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.Relation1to1Package;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.ContainedChildNRImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.ContainedChildRImpl;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.MainImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildNRImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildNRTImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildNRTNRImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildRImpl;
-import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildRTNRImpl;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -41,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests many different kinds of 1:1 relations
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class Relation1to1Action extends AbstractTestAction 
 {

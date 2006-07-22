@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SubstitutionAction.java,v 1.1 2006/07/04 22:12:16 mtaal Exp $
+ * $Id: SubstitutionAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests for the substitution construction.  
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class SubstitutionAction extends AbstractTestAction 
 {
@@ -54,12 +54,10 @@ public class SubstitutionAction extends AbstractTestAction
         final SubstitutionFactory factory = SubstitutionFactory.eINSTANCE;
         final SubstitutionPackage pack = SubstitutionPackage.eINSTANCE;
     	{
-    		NumberType compl = null;
     		// odd complex number
     		{
 		        store.beginTransaction();
 		        NumberType complex1 = factory.createNumberType();
-		        compl = complex1;
 		        complex1.getMySimpleAbstractGroup().add(pack.getDocumentRoot_Odd(), new BigInteger("3"));
 		        OddComplexNumberType odd = factory.createOddComplexNumberType();
 		        odd.setUnit("pcs");

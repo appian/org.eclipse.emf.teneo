@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InheritanceAnnotationAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: InheritanceAnnotationAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Iterator;
 
+import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Address;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ContentList;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.DistrictUKAddress;
@@ -38,7 +39,6 @@ import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.Dis
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InternationalPriceImpl;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.UKAddressImpl;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.USAddressImpl;
-import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations to direct the inheritance mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class InheritanceAnnotationAction extends AbstractTestAction 
 {
