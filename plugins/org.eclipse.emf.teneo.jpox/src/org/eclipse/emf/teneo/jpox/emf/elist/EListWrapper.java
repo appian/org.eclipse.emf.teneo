@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.2 2006/07/20 06:49:58 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.3 2006/07/22 13:04:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.elist;
@@ -27,7 +27,6 @@ import javax.jdo.spi.PersistenceCapable;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.common.util.DelegatingEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -69,7 +68,7 @@ import org.jpox.util.ClassUtils;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/07/20 06:49:58 $
+ * @version $Revision: 1.3 $ $Date: 2006/07/22 13:04:20 $
  */
 
 public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList, JPOXEList {
@@ -710,7 +709,6 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 		if (containmentList) // check if this is now handled correctly by
 		// jpox
 		{
-			PersistenceCapable pc = (PersistenceCapable) getEObject();
 			if (!isOwnerDetached()) {
 				// check which part of the list is persistencecapable!
 				// only that part should be deleted

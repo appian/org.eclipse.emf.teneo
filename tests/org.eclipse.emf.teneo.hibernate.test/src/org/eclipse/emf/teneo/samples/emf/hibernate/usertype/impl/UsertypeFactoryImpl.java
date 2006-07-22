@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeFactoryImpl.java,v 1.1 2006/07/06 05:10:39 mtaal Exp $
+ * $Id: UsertypeFactoryImpl.java,v 1.2 2006/07/22 13:04:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -10,15 +10,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-
-import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.*;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypeFactory;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
 
 /**
  * <!-- begin-user-doc -->

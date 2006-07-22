@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapWrapper.java,v 1.1 2006/07/08 22:04:29 mtaal Exp $
+ * $Id: FeatureMapWrapper.java,v 1.2 2006/07/22 13:04:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.elist;
@@ -65,7 +65,7 @@ import org.jpox.util.ClassUtils;
  * to use the backingstore as the delegate because the list can be detached.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/08 22:04:29 $
+ * @version $Revision: 1.2 $ $Date: 2006/07/22 13:04:20 $
  */
 
 public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Queryable, SCOList, JPOXEList {
@@ -683,7 +683,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 				final EStructuralFeature feature = entry.getEStructuralFeature();
 				final Object value = entry.getValue();
 
-				final Object obj = jdoDelegate.remove(index);
+				jdoDelegate.remove(index);
 
 				deleteDependent(feature, value);
 			}
@@ -711,7 +711,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 				final Object value = entry.getValue();
 
 				// first delete the entry itself
-				PersistenceCapable pc = (PersistenceCapable) owner;
+				// PersistenceCapable pc = (PersistenceCapable) owner;
 				// pc.jdoGetPersistenceManager().deletePersistent(entry);
 				jdoDelegate.remove(entry);
 

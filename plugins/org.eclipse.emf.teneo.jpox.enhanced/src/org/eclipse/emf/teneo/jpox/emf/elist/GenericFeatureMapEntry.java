@@ -11,13 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenericFeatureMapEntry.java,v 1.1 2006/07/13 09:05:47 mtaal Exp $
+ * $Id: GenericFeatureMapEntry.java,v 1.2 2006/07/22 13:04:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.elist;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -28,12 +26,12 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Concrete implementation of generic feature map entry.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class GenericFeatureMapEntry extends FeatureMapEntry {
 	/** The logger */
-	private static Log log = LogFactory.getLog(GenericFeatureMapEntry.class);
+//	private static Log log = LogFactory.getLog(GenericFeatureMapEntry.class);
 
 	/** Field contains the path identifying the store feature */
 	private String featurePath;

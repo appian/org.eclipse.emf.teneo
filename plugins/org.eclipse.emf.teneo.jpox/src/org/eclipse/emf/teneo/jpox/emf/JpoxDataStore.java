@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.1 2006/07/08 22:04:29 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.2 2006/07/22 13:04:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf;
@@ -83,7 +83,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/08 22:04:29 $
+ * @version $Revision: 1.2 $ $Date: 2006/07/22 13:04:20 $
  */
 
 public class JpoxDataStore {
@@ -808,9 +808,6 @@ public class JpoxDataStore {
 		/** The from class */
 		private final Class fromClass;
 
-		/** Points to class */
-		private final Class toClass;
-
 		/** And the ereference used to point */
 		private final String name;
 
@@ -830,7 +827,7 @@ public class JpoxDataStore {
 		public ReferenceTo(Class theFromClass, Class theToClass, String propName, String featureName,
 				boolean myIsContainer, boolean myIsMany, boolean isFeatureMapEntryField) {
 			fromClass = theFromClass;
-			toClass = theToClass;
+//			toClass = theToClass;
 			name = propName;
 			isContainer = myIsContainer;
 			isMany = myIsMany;
