@@ -23,8 +23,8 @@ public final class SamplesSource {
 		File file = new File(SamplesSource.class.getResource( '/' + SamplesSource.class.getName().replace( '.', '/' ) + ".class" ).getFile());
 		
 		// now go up 5 directories:
-		//	 SamplesSource 		samples elver				org				bin		
-		file = file.getParentFile().getParentFile().getParentFile().getParentFile();
+		//	 SamplesSource 		samples teneo 	emf	eclipse 				org				bin		
+		file = file.getParentFile().getParentFile().getParentFile().getParentFile().getParentFile().getParentFile();
 		
 		// now go down again to the package
 		String path = name.replace( '.', File.separatorChar );

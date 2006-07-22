@@ -2,20 +2,22 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CatalogFactoryImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: CatalogFactoryImpl.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.teneo.samples.emf.sample.catalog.*;
+import org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogFactory;
+import org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage;
+import org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogType;
+import org.eclipse.emf.teneo.samples.emf.sample.catalog.PriceType;
+import org.eclipse.emf.teneo.samples.emf.sample.catalog.ProductType;
+import org.eclipse.emf.teneo.samples.emf.sample.catalog.StringType;
+import org.eclipse.emf.teneo.samples.emf.sample.catalog.SupplierType;
 
 /**
  * <!-- begin-user-doc -->

@@ -2,20 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductFactoryImpl.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: ProductFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.teneo.samples.emf.sample.product.*;
+import org.eclipse.emf.teneo.samples.emf.sample.product.ProductFactory;
+import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
+import org.eclipse.emf.teneo.samples.emf.sample.product.ProductType;
+import org.eclipse.emf.teneo.samples.emf.sample.product.SupplierType;
 
 /**
  * <!-- begin-user-doc -->

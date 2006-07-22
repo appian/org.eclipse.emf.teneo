@@ -2,20 +2,26 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1tonFactoryImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: Relation1tonFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.*;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Main;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCN;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCR;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneNN;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneNR;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Relation1tonFactory;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Relation1tonPackage;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoCN;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoCR;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoNN;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoNR;
 
 /**
  * <!-- begin-user-doc -->

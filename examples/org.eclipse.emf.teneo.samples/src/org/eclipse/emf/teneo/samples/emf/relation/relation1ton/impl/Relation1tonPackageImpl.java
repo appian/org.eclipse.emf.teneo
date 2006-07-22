@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1tonPackageImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: Relation1tonPackageImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl;
 
@@ -10,13 +10,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-
-import org.eclipse.emf.ecore.xml.type.impl.XMLTypePackageImpl;
-
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Main;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCN;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCR;

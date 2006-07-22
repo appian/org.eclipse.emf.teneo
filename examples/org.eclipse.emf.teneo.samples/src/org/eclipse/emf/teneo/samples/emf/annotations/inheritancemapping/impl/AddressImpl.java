@@ -2,18 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.1 2006/07/11 16:57:00 mtaal Exp $
+ * $Id: AddressImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Address;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage;
 

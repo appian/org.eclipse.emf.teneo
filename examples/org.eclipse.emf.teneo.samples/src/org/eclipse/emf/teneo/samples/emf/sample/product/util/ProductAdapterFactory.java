@@ -2,18 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductAdapterFactory.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: ProductAdapterFactory.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.teneo.samples.emf.sample.product.*;
+import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
+import org.eclipse.emf.teneo.samples.emf.sample.product.ProductType;
+import org.eclipse.emf.teneo.samples.emf.sample.product.SupplierType;
 
 /**
  * <!-- begin-user-doc -->

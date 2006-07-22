@@ -20,8 +20,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Properties;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
@@ -40,7 +38,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class JPOXTestbed extends Testbed {
 
@@ -55,7 +53,7 @@ public class JPOXTestbed extends Testbed {
 	}
 
 	/** The logger */
-	private static Log log = LogFactory.getLog(JPOXTestbed.class);
+//	private static Log log = LogFactory.getLog(JPOXTestbed.class);
 
 	/**
 	 * The directory in which the mapping files are generated TODO make insesitive to user.dir

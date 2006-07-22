@@ -2,18 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PrimerpoResourceFactoryImpl.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: PrimerpoResourceFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.util;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
-
 import org.eclipse.emf.ecore.xmi.XMLResource;
-
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 
 /**

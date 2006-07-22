@@ -2,19 +2,15 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InventoryFactoryImpl.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: InventoryFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.inv.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.samples.emf.sample.inv.*;
-
 import org.eclipse.emf.teneo.samples.emf.sample.inv.InventoryFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.inv.InventoryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.inv.PDeclaration;

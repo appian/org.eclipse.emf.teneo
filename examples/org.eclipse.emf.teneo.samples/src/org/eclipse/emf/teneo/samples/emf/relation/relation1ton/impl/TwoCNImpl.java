@@ -2,22 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TwoCNImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: TwoCNImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Main;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Relation1tonPackage;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoCN;

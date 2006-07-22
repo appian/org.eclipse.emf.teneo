@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesFactoryImpl.java,v 1.1 2006/07/11 16:57:02 mtaal Exp $
+ * $Id: SimpletypesFactoryImpl.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -11,17 +11,17 @@ import java.util.Date;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-
-import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.*;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleTypeObject;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesFactory;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage;
 
 /**
  * <!-- begin-user-doc -->

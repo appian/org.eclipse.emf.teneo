@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NmsetPackageImpl.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: NmsetPackageImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.nmset.impl;
 
@@ -10,13 +10,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-
-import org.eclipse.emf.ecore.xml.type.impl.XMLTypePackageImpl;
-
 import org.eclipse.emf.teneo.samples.emf.annotations.nmset.MyItem;
 import org.eclipse.emf.teneo.samples.emf.annotations.nmset.NmsetFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.nmset.NmsetPackage;

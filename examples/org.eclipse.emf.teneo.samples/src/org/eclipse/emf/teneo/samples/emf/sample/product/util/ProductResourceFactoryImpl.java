@@ -2,21 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductResourceFactoryImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: ProductResourceFactoryImpl.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.util;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
-
-import org.eclipse.emf.ecore.util.ExtendedMetaData;
-
 import org.eclipse.emf.ecore.xmi.XMLResource;
-
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 
 /**
  * <!-- begin-user-doc -->

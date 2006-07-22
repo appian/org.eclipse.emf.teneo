@@ -2,16 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductXMLProcessor.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: ProductXMLProcessor.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.util;
 
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
-
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
 
 /**

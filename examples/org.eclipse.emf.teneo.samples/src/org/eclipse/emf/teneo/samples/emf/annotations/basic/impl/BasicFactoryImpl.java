@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BasicFactoryImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: BasicFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.basic.impl;
 
@@ -11,8 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.samples.emf.annotations.basic.*;
-
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.Basic;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicPackage;

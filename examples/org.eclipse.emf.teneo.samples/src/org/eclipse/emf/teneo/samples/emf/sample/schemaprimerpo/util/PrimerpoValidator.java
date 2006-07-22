@@ -2,24 +2,23 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PrimerpoValidator.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: PrimerpoValidator.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.util;
 
 import java.math.BigInteger;
-
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.EObjectValidator;
-
 import org.eclipse.emf.ecore.xml.type.util.XMLTypeUtil;
 import org.eclipse.emf.ecore.xml.type.util.XMLTypeValidator;
-
-import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.*;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.DocumentRoot;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PurchaseOrder;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.USAddress;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,7 +52,7 @@ public class PrimerpoValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 0;
+//	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 0;
 
 	/**
 	 * The cached base package validator.

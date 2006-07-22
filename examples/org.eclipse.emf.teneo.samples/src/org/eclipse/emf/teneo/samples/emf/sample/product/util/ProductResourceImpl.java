@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductResourceImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: ProductResourceImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.util;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 /**

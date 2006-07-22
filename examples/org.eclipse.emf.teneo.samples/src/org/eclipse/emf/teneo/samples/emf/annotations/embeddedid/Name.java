@@ -2,13 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Name.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: Name.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embeddedid;
 
 import java.io.Serializable;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

@@ -2,21 +2,25 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingFactoryImpl.java,v 1.1 2006/07/11 16:57:00 mtaal Exp $
+ * $Id: InheritancemappingFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.*;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ContentList;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.DistrictUKAddress;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingFactory;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InternationalPrice;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Price;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddress;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USAddress;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState;
 
 /**
  * <!-- begin-user-doc -->
