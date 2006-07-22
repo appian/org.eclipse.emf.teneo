@@ -17,14 +17,13 @@
 package org.eclipse.emf.teneo.hibernate.test.stores.adapters;
 
 import org.eclipse.emf.teneo.test.stores.BaseTestDatabaseAdapter;
-import org.hibernate.dialect.MySQLDialect;
 import org.hibernate.dialect.MySQLInnoDBDialect;
 
 /**
  * Overridden to add the hibernate database dialect.
  * 
  * @author <a href="mailto:marchign@fastmail.fm">Davide Marchignoli</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
 */
 
 public class HibernateMysqlDBAdapter extends BaseTestDatabaseAdapter implements HibernateTestDBAdapter
