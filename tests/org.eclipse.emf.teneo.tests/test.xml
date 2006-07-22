@@ -14,7 +14,7 @@
  *
  * </copyright>
  *
- * $Id: test.xml,v 1.4 2006/07/22 12:55:06 mtaal Exp $
+ * $Id: test.xml,v 1.5 2006/07/22 13:22:04 mtaal Exp $
  */
 -->
 
@@ -58,17 +58,19 @@
       <property name="plugin-name" value="${plugin-name}"/>
       <property name="classname" value="org.eclipse.emf.teneo.tests.AllTests"/>
     </ant>
-    
-  	<echo message="About to run jpox-test"/>    
-    <ant target="jpox-test" depends="jpox-enhance" antfile="${library-file}" dir="${eclipse-home}">
-      <property name="data-dir" value="${emft-folder}"/>
-      <property name="plugin-name" value="${plugin-name}"/>
-      <property name="classname" value="org.eclipse.emf.teneo.jpox.test.AllTests"/>
-    </ant>
+
+  	<echo message="About to run jpox-enhance"/>    
     <ant target="jpox-enhance" antfile="${library-file}" dir="${eclipse-home}">
       <property name="data-dir" value="${emft-folder}"/>
       <property name="plugin-name" value="${plugin-name}"/>
       <property name="classname" value="org.eclipse.emf.teneo.jpox.test.AllGenerateTests"/>
+    </ant>
+    
+  	<echo message="About to run jpox-test"/>    
+    <ant target="jpox-test" antfile="${library-file}" dir="${eclipse-home}">
+      <property name="data-dir" value="${emft-folder}"/>
+      <property name="plugin-name" value="${plugin-name}"/>
+      <property name="classname" value="org.eclipse.emf.teneo.jpox.test.AllTests"/>
     </ant>
   </target>
 
