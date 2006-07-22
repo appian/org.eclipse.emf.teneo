@@ -22,7 +22,7 @@ import junit.framework.TestSuite;
  * Runs all tests.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AllTests {
 
@@ -37,23 +37,21 @@ public class AllTests {
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.issues.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.test.AllTests.suite());
 
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.annotations.AllGenerateTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.detach.AllGenerateTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.elist.AllGenerateTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.relation.AllGenerateTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.sample.AllGenerateTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs.AllGenerateTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.issues.AllGenerateTests.suite());
-
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.annotations.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.detach.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.elist.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.relation.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.sample.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.issues.AllTests.suite());
-
-		
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.annotations.AllGenerateTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.detach.AllGenerateTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.elist.AllGenerateTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.relation.AllGenerateTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.sample.AllGenerateTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs.AllGenerateTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.issues.AllGenerateTests.suite());
+//
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.annotations.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.detach.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.elist.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.relation.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.sample.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.issues.AllTests.suite());
 		
 		return suite;
 	}
