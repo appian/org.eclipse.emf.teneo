@@ -14,7 +14,7 @@
  *
  * </copyright>
  *
- * $Id: test.xml,v 1.1 2006/07/11 17:12:55 mtaal Exp $
+ * $Id: test.xml,v 1.2 2006/07/22 14:22:55 mtaal Exp $
  */
 -->
 
@@ -27,7 +27,7 @@
   <property name="plugin-name" value="org.eclipse.emf.teneo.jpox.test"/>
   <property name="library-file" value="${eclipse-home}/plugins/org.eclipse.test/library.xml"/>
 
-  <!-- This target holds all initialization code that needs to be done for -->
+  <!-- This target holds all inorg.eclipse.emf.teneo.tests.AllTestsitialization code that needs to be done for -->
   <!-- all tests that are to be run. Initialization for individual tests -->
   <!-- should be done within the body of the suite target. -->
   <target name="init">
@@ -65,7 +65,7 @@
   	<echo message="eclipse-home = ${eclipse-home}"/>
   	<echo message="data-dir = ${emft-folder}"/>
   	<echo message="plugin-name = ${plugin-name}"/>
-  	<echo message="classname = org.eclipse.emf.teneo.hibernate.test.AllTests"/>
+  	<echo message="classname = org.eclipse.emf.teneo.hibernate.jpox.test.AllTests"/>
   	<echo message="vmargs = ${core.test.vmargs}"/> 
 	
     <ant target="core-test" antfile="${library-file}" dir="${eclipse-home}" >
