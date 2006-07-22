@@ -15,33 +15,21 @@
  */
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
-import org.eclipse.emf.teneo.hibernate.HbConstants;
-import org.eclipse.emf.teneo.hibernate.HbDataStore;
-import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.emf.annotations.JoinColumnsAction;
-import org.eclipse.emf.teneo.test.emf.sample.AccountingAction;
-import org.eclipse.emf.teneo.test.emf.sample.PlayImExportAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests import export
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class JoinColumnsTest extends AbstractActionTest {
 
