@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.4 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.5 2006/07/23 20:09:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -38,7 +38,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class JPOXTestbed extends Testbed {
 
@@ -81,7 +81,7 @@ public class JPOXTestbed extends Testbed {
 	public TestStore createStore(AbstractTest testCase) {
 		try {
 			File mappingFile = getMappingFile(testCase, getActiveConfiguration());
-			copyMappingToClassesDir(testCase, mappingFile, getActiveConfiguration().isOptimistic());
+			//copyMappingToClassesDir(testCase, mappingFile, getActiveConfiguration().isOptimistic());
 
 			final TestStore store = storeFactory.get(getDbName(testCase, getActiveConfiguration()), testCase
 					.getEPackages(), mappingFile, getActiveConfiguration(), testCase.getExtraConfigurationProperties());
@@ -148,14 +148,14 @@ public class JPOXTestbed extends Testbed {
 		// will not the package.JPOX
 		// for superclass A because it will always search for package.jdo
 		try {
-			File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
-			JPOXEnhancer.main(new String[] { destination.getAbsolutePath() });
+			//File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
+			JPOXEnhancer.main(new String[] { mappingFile.getAbsolutePath() });
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while enhancing", e);
 		}
 	}
 
-	/** Copies the mapping file to the bin directory */
+	/** Copies the mapping file to the bin directory
 	private File copyMappingToClassesDir(AbstractTest test, File mappingFile, boolean optimistic) {
 		try {
 			final File destination;
@@ -181,4 +181,5 @@ public class JPOXTestbed extends Testbed {
 			throw new StoreTestException("Exception while enhancing", e);
 		}
 	}
+	*/
 }
