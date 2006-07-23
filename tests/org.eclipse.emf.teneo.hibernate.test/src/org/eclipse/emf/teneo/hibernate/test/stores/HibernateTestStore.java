@@ -1,18 +1,19 @@
-/*
- *	Copyright 2005-2006, Elver.org (http://www.elver.org).
+/**
+ * <copyright>
  *
- *	Licensed under the Apache License, Version 2.0 (the "License");
- *	you may not use this file except in compliance with the License.
- *	You may obtain a copy of the License at
+ * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
- *		http://www.apache.org/licenses/LICENSE-2.0
+ * Contributors:
+ *   Martin Taal
+ * </copyright>
  *
- *	Unless required by applicable law or agreed to in writing, software
- *	distributed under the License is distributed on an "AS IS" BASIS,
- *	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *	See the License for the specific language governing permissions and
- *	limitations under the License.
+ * $Id: HibernateTestStore.java,v 1.3 2006/07/23 19:20:57 mtaal Exp $
  */
+
 package org.eclipse.emf.teneo.hibernate.test.stores;
 
 import java.sql.Connection;
@@ -53,7 +54,7 @@ import org.hibernate.persister.entity.SingleTableEntityPersister;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
