@@ -20,7 +20,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Properties;
 
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.jpox.emf.JpoxHelper;
@@ -38,7 +37,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class JPOXTestbed extends Testbed {
 
@@ -63,9 +62,6 @@ public class JPOXTestbed extends Testbed {
 	/** The factory responsible for creating a store */
 	private JPOXTestStoreFactory storeFactory;
 
-	/** is compile required */
-	private boolean isCompileRequired = false;
-
 	/** Constructor */
 	private JPOXTestbed() {
 		storeFactory = new JPOXTestStoreFactory();
@@ -73,7 +69,6 @@ public class JPOXTestbed extends Testbed {
 
 	/** Generate the mapping file for the test case */
 	public void doMapping(AbstractTest testCase) {
-		isCompileRequired = true;
 		File mappingFile = getMappingFile(testCase, getActiveConfiguration());
 		generateMappingFile(testCase, mappingFile, getActiveConfiguration().isOptimistic(), getActiveConfiguration()
 				.getMappingStrategy());
@@ -98,15 +93,6 @@ public class JPOXTestbed extends Testbed {
 		} catch (FileNotFoundException e) {
 			throw new StoreTestException("Exception while getting hbm file", e);
 		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.teneo.test.conf.Testbed#isCompileRequired(org.eclipse.emf.ecore.EPackage[])
-	 */
-	protected boolean isCompileRequired(EPackage[] epackages) {
-		return isCompileRequired;
 	}
 
 	/**
@@ -149,18 +135,6 @@ public class JPOXTestbed extends Testbed {
 			options.put(PersistenceOptions.INHERITANCE_MAPPING, inheritanceType.getName());
 			fileWriter.write(JpoxHelper.INSTANCE.generateMapping(test.getEPackages(), options));
 			fileWriter.close();
-
-			// Compile the sources again because feature map entries may have
-			// generated new files
-			if (isCompileRequired(test.getEPackages())) {
-				EPackage[] epackages = test.getEPackages();
-				String[] sourceLocations = new String[epackages.length];
-				for (int i = 0; i < epackages.length; i++) {
-					sourceLocations[i] = SamplesSource.getSourceDirectory(epackages[i]).getAbsolutePath();
-				}
-
-				doCompile(sourceLocations);
-			}
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while creating package.jdo file", e);
 		}

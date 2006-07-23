@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: Testbed.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
+ * $Id: Testbed.java,v 1.3 2006/07/23 18:43:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public abstract class Testbed {
 	/** The logger */
@@ -138,27 +138,6 @@ public abstract class Testbed {
 		for (int i = 0; i < usedEPackages.length; i++)
 			sourceLocations[i] = SamplesSource.getSourceDirectory(usedEPackages[i]).getAbsolutePath();
 		return sourceLocations;
-	}
-
-	/** Check if a compile is required, only true in case of featuremaps */
-	protected boolean isCompileRequired(EPackage[] epackages) {
-		if (epackages == null) return false; // can happen in case of non-emf test
-		for (int i = 0; i < epackages.length; i++) {
-			final EPackage epackage = epackages[i];
-			final Iterator eclassifiers = epackage.getEClassifiers().iterator();
-			while (eclassifiers.hasNext()) {
-				final EClassifier eclassifier = (EClassifier) eclassifiers.next();
-				if (eclassifier instanceof EClass) {
-					final EClass eclass = (EClass) eclassifier;
-					final Iterator estructs = eclass.getEStructuralFeatures().iterator();
-					while (estructs.hasNext()) {
-						final EStructuralFeature estruct = (EStructuralFeature) estructs.next();
-						if (FeatureMapUtil.isFeatureMap(estruct)) return true;
-					}
-				}
-			}
-		}
-		return false;
 	}
 
 	/** Collects source files from a certain sourcedirectory and further */
