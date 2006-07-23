@@ -14,7 +14,7 @@
  *
  * </copyright>
  *
- * $Id: test.xml,v 1.5 2006/07/23 10:32:51 mtaal Exp $
+ * $Id: test.xml,v 1.6 2006/07/23 10:55:44 mtaal Exp $
  */
 -->
 
@@ -24,7 +24,7 @@
   <property name="eclipse-home" value="${basedir}\..\.."/>
 
   <!-- sets the properties plugin-name, and library-file -->
-  <property name="plugin-name" value="org.eclipse.emf.teneo.hierbate.test"/>
+  <property name="plugin-name" value="org.eclipse.emf.teneo.hibernate.test"/>
   <property name="library-file" value="${eclipse-home}/plugins/org.eclipse.test/library.xml"/>
 
   <!-- This target holds all initialization code that needs to be done for -->
