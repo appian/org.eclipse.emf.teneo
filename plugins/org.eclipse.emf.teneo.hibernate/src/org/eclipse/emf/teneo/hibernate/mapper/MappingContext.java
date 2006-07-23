@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: MappingContext.java,v 1.2 2006/07/23 23:49:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -88,7 +88,7 @@ public class MappingContext extends AbstractProcessingContext {
 	private String versionColumnName = HbMapperConstants.PROPERTY_VERSION;
 
 	/** Id column name */
-	private String idColumnName = HbMapperConstants.PROPERTY_ID;
+	private String syntheticIdPropertyName = HbMapperConstants.PROPERTY_ID_SYNTHETIC;
 
 	/** Maximum column name */
 	private int maximumSqlNameLength = -1;
@@ -113,8 +113,8 @@ public class MappingContext extends AbstractProcessingContext {
 		if (po.getVersionColumnName() != null) {
 			versionColumnName = po.getVersionColumnName();
 		}
-		if (po.getIdColumnName() != null) {
-			idColumnName = po.getIdColumnName();
+		if (po.getSyntheticIdPropertyName() != null) {
+			syntheticIdPropertyName = po.getSyntheticIdPropertyName();
 		}
 		maximumSqlNameLength = po.getMaximumSqlNameLength();
 		sqlCaseStrategy = po.getSQLCaseStrategy();
@@ -335,16 +335,16 @@ public class MappingContext extends AbstractProcessingContext {
 	/**
 	 * @return the idColumnName
 	 */
-	public String getIdColumnName() {
-		return idColumnName;
+	public String getSyntheticIdPropertyName() {
+		return syntheticIdPropertyName;
 	}
 
 	/**
 	 * @param idColumnName
 	 *            the idColumnName to set
 	 */
-	public void setIdColumnName(String idColumnName) {
-		this.idColumnName = idColumnName;
+	public void setSyntheticIdPropertyName(String syntheticIdPropertyName) {
+		this.syntheticIdPropertyName = syntheticIdPropertyName;
 	}
 
 	/**

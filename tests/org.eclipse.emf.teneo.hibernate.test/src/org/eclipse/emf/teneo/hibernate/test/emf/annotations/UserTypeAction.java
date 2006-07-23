@@ -8,10 +8,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   Martin Taal
+ *   L.M. Fridael
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.2 2006/07/23 19:20:57 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.3 2006/07/23 23:50:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -29,6 +29,12 @@ import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
+/**
+ * Test
+ * 
+ * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
+ * @version $Revision: 1.3 $
+ */
 public class UserTypeAction extends AbstractTestAction {
 
 	private static final Name NAME = new Name("Pietje", "Puk");

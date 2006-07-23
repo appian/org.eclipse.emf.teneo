@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.5 2006/07/21 11:14:14 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.6 2006/07/23 23:49:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class PersistenceOptions {
 
@@ -96,6 +96,9 @@ public class PersistenceOptions {
 
 	/** Name of version column, default value is e_version */
 	public static final String VERSION_COLUMN_NAME = NAMING_PREFIX + "version_column";
+
+	/** Name of the synthetic id property, default value is e_id */
+	public static final String SYNTHETIC_ID_PROPERTY_NAME = NAMING_PREFIX + "synthetic_id_property";
 
 	/** Name of id column, default value is id */
 	public static final String ID_COLUMN_NAME = NAMING_PREFIX + "default_id_column";
@@ -230,6 +233,11 @@ public class PersistenceOptions {
 	/** Returns the value of the id column option, returns null if not set */
 	public String getIdColumnName() {
 		return properties.getProperty(ID_COLUMN_NAME);
+	}
+
+	/** Returns the value of the synthetic id property name, returns null if not set */
+	public String getSyntheticIdPropertyName() {
+		return properties.getProperty(SYNTHETIC_ID_PROPERTY_NAME);
 	}
 
 	/** Returns the qualify entity names option, returns QUALIFY_ENTITY_NAME_NO ("no") */

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: IdMapper.java,v 1.2 2006/07/23 23:49:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,6 +24,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
@@ -34,6 +35,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.processing.IdProcessor;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
+import org.eclipse.emf.teneo.hibernate.HbConstants;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -88,9 +90,10 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 			throw new ProcessingException("Syntheticid should only be called if there is no id element");
 		}
 
-		final Element idElement = DocumentHelper.createElement(mc.getIdColumnName());
+		final Element idElement = DocumentHelper.createElement("id");
 		entityElement.add(0, idElement);
-		idElement.addAttribute("type", "long").addElement("generator").addAttribute("class", "native");
+		idElement.addAttribute("type", "long").
+			addAttribute("name", mc.getSyntheticIdPropertyName()).addElement("generator").addAttribute("class", "native");
 		return idElement;
 	}
 

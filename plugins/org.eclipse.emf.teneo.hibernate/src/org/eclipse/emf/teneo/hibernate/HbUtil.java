@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: HbUtil.java,v 1.2 2006/07/23 23:49:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.cfg.Environment;
 import org.hibernate.mapping.MetaAttribute;
@@ -35,12 +36,13 @@ import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
 import org.hibernate.property.EmbeddedPropertyAccessor;
 import org.hibernate.property.PropertyAccessor;
+import org.hibernate.tuple.IdentifierProperty;
 
 /**
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class HbUtil {
 
@@ -52,7 +54,12 @@ public class HbUtil {
 		final String versionColumn = ds.getPersistenceProperties().getProperty(PersistenceOptions.VERSION_COLUMN_NAME) != null ? 
 				ds.getPersistenceProperties().getProperty(PersistenceOptions.VERSION_COLUMN_NAME) :
 					HbMapperConstants.PROPERTY_VERSION;
-		if (mappedProperty.getName().compareToIgnoreCase(versionColumn) == 0) {
+		final String idColumn = ds.getPersistenceProperties().getProperty(PersistenceOptions.SYNTHETIC_ID_PROPERTY_NAME) != null ? 
+				ds.getPersistenceProperties().getProperty(PersistenceOptions.SYNTHETIC_ID_PROPERTY_NAME) :
+					HbMapperConstants.PROPERTY_ID_SYNTHETIC;
+		if (mappedProperty.getName().compareToIgnoreCase(idColumn) == 0) {
+			return new IdentifierPropertyHandler();			
+		} else if (mappedProperty.getName().compareToIgnoreCase(versionColumn) == 0) {
 			return ds.getHbContext().createVersionAccessor();
 		} else if (mappedProperty.getName().compareToIgnoreCase("_identifierMapper") == 0) { // name is used by hb
 			return new EmbeddedPropertyAccessor(); // new DummyPropertyHandler();

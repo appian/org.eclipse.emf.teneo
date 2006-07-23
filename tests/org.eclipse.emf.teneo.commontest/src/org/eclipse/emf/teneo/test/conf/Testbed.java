@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: Testbed.java,v 1.3 2006/07/23 18:43:13 mtaal Exp $
+ * $Id: Testbed.java,v 1.4 2006/07/23 23:49:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -21,15 +21,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.samples.SamplesSource;
 import org.eclipse.emf.teneo.test.AbstractTest;
 import org.eclipse.emf.teneo.test.StoreTestException;
@@ -43,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public abstract class Testbed {
 	/** The logger */

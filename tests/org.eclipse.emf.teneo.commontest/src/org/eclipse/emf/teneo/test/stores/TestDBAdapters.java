@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TestDBAdapters.java,v 1.2 2006/07/22 10:21:24 mtaal Exp $
+ * $Id: TestDBAdapters.java,v 1.3 2006/07/23 23:49:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.Utils;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class TestDBAdapters {
 
@@ -48,7 +48,6 @@ public class TestDBAdapters {
 
 	/** Add db adapter */
 	public void addDBAdapter(String name, Properties initProps) {
-		System.err.println("Adding db adapter " + name);
 		String dbAdapterClassName = initProps.getProperty("dbadapter");
 		BaseTestDatabaseAdapter testAdapter = null;
 		if (dbAdapterClassName == null) {
