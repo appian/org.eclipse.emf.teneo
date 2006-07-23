@@ -1,3 +1,19 @@
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Martin Taal
+ * </copyright>
+ *
+ * $Id: SamplesSource.java,v 1.3 2006/07/23 19:28:53 mtaal Exp $
+ */
+
 package org.eclipse.emf.teneo.samples;
 
 import java.io.File;
@@ -5,7 +21,13 @@ import java.io.FileNotFoundException;
 
 import org.eclipse.emf.ecore.EPackage;
 
-
+/**
+ * Utility method for different kinds of class and source file related actions. 
+ * Is in this package for convenience.
+ * 
+ * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
+ * @version $Revision: 1.3 $
+ */
 public final class SamplesSource {
 	
 	private static final String SOURCE_REL_PATH = "../src";

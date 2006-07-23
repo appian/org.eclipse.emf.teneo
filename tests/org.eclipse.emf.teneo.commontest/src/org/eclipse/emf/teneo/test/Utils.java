@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Utils.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: Utils.java,v 1.2 2006/07/23 19:28:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -23,6 +23,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -34,7 +35,7 @@ import org.eclipse.emf.teneo.samples.SamplesSource;
  * Contains utility methods for testing.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/04 22:12:17 $
+ * @version $Revision: 1.2 $ $Date: 2006/07/23 19:28:55 $
  */
 
 public class Utils {
@@ -158,5 +159,15 @@ public class Utils {
 		}
 		in.close();
 		out.close();
+	}
+	
+	/** Returns the output location of the passed class, only supports directories (no jars!) */
+	public static File getClassParentDirectory(Class cls) {
+		final ClassLoader clsl = cls.getClassLoader();
+		final String clsFile = cls.getName ().replace ('.', '/').concat (".class");
+		final URL url = clsl != null ? clsl.getResource(clsFile) :
+			ClassLoader.getSystemResource(clsFile);
+		final File file = new File(url.getFile());
+		return file.getParentFile();
 	}
 }
