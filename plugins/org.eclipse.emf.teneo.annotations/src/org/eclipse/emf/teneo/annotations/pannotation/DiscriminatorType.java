@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorType.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
+ * $Id: DiscriminatorType.java,v 1.4 2006/07/26 12:43:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -78,7 +78,7 @@ public final class DiscriminatorType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final DiscriminatorType STRING_LITERAL = new DiscriminatorType(STRING, "STRING");
+	public static final DiscriminatorType STRING_LITERAL = new DiscriminatorType(STRING, "STRING", "STRING");
 
 	/**
 	 * The '<em><b>CHAR</b></em>' literal object.
@@ -87,7 +87,7 @@ public final class DiscriminatorType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final DiscriminatorType CHAR_LITERAL = new DiscriminatorType(CHAR, "CHAR");
+	public static final DiscriminatorType CHAR_LITERAL = new DiscriminatorType(CHAR, "CHAR", "CHAR");
 
 	/**
 	 * The '<em><b>INTEGER</b></em>' literal object.
@@ -96,7 +96,7 @@ public final class DiscriminatorType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final DiscriminatorType INTEGER_LITERAL = new DiscriminatorType(INTEGER, "INTEGER");
+	public static final DiscriminatorType INTEGER_LITERAL = new DiscriminatorType(INTEGER, "INTEGER", "INTEGER");
 
 	/**
 	 * An array of all the '<em><b>Discriminator Type</b></em>' enumerators.
@@ -120,15 +120,15 @@ public final class DiscriminatorType extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Discriminator Type</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Discriminator Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static DiscriminatorType get(String name) {
+	public static DiscriminatorType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			DiscriminatorType result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -136,7 +136,23 @@ public final class DiscriminatorType extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Discriminator Type</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Discriminator Type</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static DiscriminatorType getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			DiscriminatorType result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Discriminator Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -152,10 +168,12 @@ public final class DiscriminatorType extends AbstractEnumerator {
 
 	/**
 	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private DiscriminatorType(int value, String name) {
-		super(value, name);
+	private DiscriminatorType(int value, String name, String literal) {
+		super(value, name, literal);
 	}
+
 } // DiscriminatorType

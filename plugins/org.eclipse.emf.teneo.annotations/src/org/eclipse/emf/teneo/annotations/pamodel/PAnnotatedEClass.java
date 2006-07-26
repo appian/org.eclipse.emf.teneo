@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.3 2006/07/26 12:43:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -16,13 +16,9 @@ import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
-import org.eclipse.emf.teneo.annotations.pannotation.EntityListener;
-import org.eclipse.emf.teneo.annotations.pannotation.ExcludeDefaultListeners;
-import org.eclipse.emf.teneo.annotations.pannotation.ExcludeSuperclassListeners;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
-import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
@@ -44,14 +40,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getDiscriminatorColumn <em>Discriminator Column</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getDiscriminatorValue <em>Discriminator Value</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEmbeddable <em>Embeddable</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExcludeDefaultListeners <em>Exclude Default Listeners</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExcludeSuperclassListeners <em>Exclude Superclass Listeners</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getMappedSuperclass <em>Mapped Superclass</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEntityListener <em>Entity Listener</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getIdClass <em>Id Class</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getInheritance <em>Inheritance</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getJoinColumn <em>Join Column</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSecondaryTables <em>Secondary Tables</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSequenceGenerator <em>Sequence Generator</em>}</li>
@@ -65,7 +57,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='SameEFeatures EPackageCommutes ProperPrimaryKey EntityOrEmbeddableOrMappedSuper\tOverriddenAreDefined ProperInheritance ProperDiscriminator SingleTableForSingleStrategy ProperPKJoin'"
  * @generated
  */
-public interface PAnnotatedEClass extends PAnnotatedEModelElement{
+public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -86,6 +78,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement{
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_PaEPackage()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEClasses
 	 * @model opposite="paEClasses"
+	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	PAnnotatedEPackage getPaEPackage();
@@ -111,6 +104,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement{
 	 * @see #setAnnotatedEClass(EClass)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_AnnotatedEClass()
 	 * @model required="true"
+	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EClass getAnnotatedEClass();
@@ -138,6 +132,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement{
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_PaEStructuralFeatures()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getPaEClass
 	 * @model type="org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature" opposite="paEClass" containment="true"
+	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EList getPaEStructuralFeatures();
@@ -246,58 +241,6 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement{
 	void setEmbeddable(Embeddable value);
 
 	/**
-	 * Returns the value of the '<em><b>Exclude Default Listeners</b></em>' containment reference. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Exclude Default Listeners</em>' containment reference isn't clear, there really
-	 * should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Exclude Default Listeners</em>' containment reference.
-	 * @see #setExcludeDefaultListeners(ExcludeDefaultListeners)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_ExcludeDefaultListeners()
-	 * @model containment="true"
-	 * @generated
-	 */
-	ExcludeDefaultListeners getExcludeDefaultListeners();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExcludeDefaultListeners <em>Exclude Default Listeners</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exclude Default Listeners</em>' containment reference.
-	 * @see #getExcludeDefaultListeners()
-	 * @generated
-	 */
-	void setExcludeDefaultListeners(ExcludeDefaultListeners value);
-
-	/**
-	 * Returns the value of the '<em><b>Exclude Superclass Listeners</b></em>' containment reference. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Exclude Superclass Listeners</em>' containment reference isn't clear, there really
-	 * should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Exclude Superclass Listeners</em>' containment reference.
-	 * @see #setExcludeSuperclassListeners(ExcludeSuperclassListeners)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_ExcludeSuperclassListeners()
-	 * @model containment="true"
-	 * @generated
-	 */
-	ExcludeSuperclassListeners getExcludeSuperclassListeners();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExcludeSuperclassListeners <em>Exclude Superclass Listeners</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exclude Superclass Listeners</em>' containment reference.
-	 * @see #getExcludeSuperclassListeners()
-	 * @generated
-	 */
-	void setExcludeSuperclassListeners(ExcludeSuperclassListeners value);
-
-	/**
 	 * Returns the value of the '<em><b>Mapped Superclass</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -334,6 +277,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement{
 	 * @see #setEntity(Entity)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_Entity()
 	 * @model containment="true"
+	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	Entity getEntity();
@@ -346,31 +290,6 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement{
 	 * @generated
 	 */
 	void setEntity(Entity value);
-
-	/**
-	 * Returns the value of the '<em><b>Entity Listener</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Entity Listener</em>' containment reference isn't clear, there really should be
-	 * more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Entity Listener</em>' containment reference.
-	 * @see #setEntityListener(EntityListener)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_EntityListener()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EntityListener getEntityListener();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEntityListener <em>Entity Listener</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Entity Listener</em>' containment reference.
-	 * @see #getEntityListener()
-	 * @generated
-	 */
-	void setEntityListener(EntityListener value);
 
 	/**
 	 * Returns the value of the '<em><b>Id Class</b></em>' containment reference.
@@ -421,31 +340,6 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement{
 	 * @generated
 	 */
 	void setInheritance(Inheritance value);
-
-	/**
-	 * Returns the value of the '<em><b>Join Column</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Join Column</em>' containment reference isn't clear, there really should be more
-	 * of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Join Column</em>' containment reference.
-	 * @see #setJoinColumn(JoinColumn)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_JoinColumn()
-	 * @model containment="true"
-	 * @generated
-	 */
-	JoinColumn getJoinColumn();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getJoinColumn <em>Join Column</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Join Column</em>' containment reference.
-	 * @see #getJoinColumn()
-	 * @generated
-	 */
-	void setJoinColumn(JoinColumn value);
 
 	/**
 	 * Returns the value of the '<em><b>Primary Key Join Columns</b></em>' containment reference. <!--

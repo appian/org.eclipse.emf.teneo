@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEAttribute.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PAnnotatedEAttribute.java,v 1.3 2006/07/26 12:43:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NotAnnotatedAsBasic GeneratedOnId DefinedGenerator IdOnEntityOrMappedSuper'"
  * @generated
  */
-public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature{
+public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -58,6 +58,7 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature{
 	 * @see #setAnnotatedEAttribute(EAttribute)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEAttribute_AnnotatedEAttribute()
 	 * @model required="true"
+	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EAttribute getAnnotatedEAttribute();

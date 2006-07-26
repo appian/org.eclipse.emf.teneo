@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.2 2006/07/04 21:56:30 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -16,7 +16,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -34,20 +33,15 @@ import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
-import org.eclipse.emf.teneo.annotations.pannotation.EntityListener;
-import org.eclipse.emf.teneo.annotations.pannotation.ExcludeDefaultListeners;
-import org.eclipse.emf.teneo.annotations.pannotation.ExcludeSuperclassListeners;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
-import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,14 +57,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.Transient;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getDiscriminatorColumn <em>Discriminator Column</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getDiscriminatorValue <em>Discriminator Value</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getEmbeddable <em>Embeddable</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getExcludeDefaultListeners <em>Exclude Default Listeners</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getExcludeSuperclassListeners <em>Exclude Superclass Listeners</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getMappedSuperclass <em>Mapped Superclass</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getEntityListener <em>Entity Listener</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getIdClass <em>Id Class</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getInheritance <em>Inheritance</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getJoinColumn <em>Join Column</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getSecondaryTables <em>Secondary Tables</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getSequenceGenerator <em>Sequence Generator</em>}</li>
@@ -151,26 +141,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	protected Embeddable embeddable = null;
 
 	/**
-	 * The cached value of the '{@link #getExcludeDefaultListeners() <em>Exclude Default Listeners</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeDefaultListeners()
-	 * @generated
-	 * @ordered
-	 */
-	protected ExcludeDefaultListeners excludeDefaultListeners = null;
-
-	/**
-	 * The cached value of the '{@link #getExcludeSuperclassListeners() <em>Exclude Superclass Listeners</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeSuperclassListeners()
-	 * @generated
-	 * @ordered
-	 */
-	protected ExcludeSuperclassListeners excludeSuperclassListeners = null;
-
-	/**
 	 * The cached value of the '{@link #getMappedSuperclass() <em>Mapped Superclass</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -191,16 +161,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	protected Entity entity = null;
 
 	/**
-	 * The cached value of the '{@link #getEntityListener() <em>Entity Listener</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEntityListener()
-	 * @generated
-	 * @ordered
-	 */
-	protected EntityListener entityListener = null;
-
-	/**
 	 * The cached value of the '{@link #getIdClass() <em>Id Class</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -219,16 +179,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @ordered
 	 */
 	protected Inheritance inheritance = null;
-
-	/**
-	 * The cached value of the '{@link #getJoinColumn() <em>Join Column</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJoinColumn()
-	 * @generated
-	 * @ordered
-	 */
-	protected JoinColumn joinColumn = null;
 
 	/**
 	 * The cached value of the '{@link #getPrimaryKeyJoinColumns() <em>Primary Key Join Columns</em>}' containment reference.
@@ -305,7 +255,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return PamodelPackage.eINSTANCE.getPAnnotatedEClass();
+		return PamodelPackage.Literals.PANNOTATED_ECLASS;
 	}
 
 	/**
@@ -315,7 +265,17 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	public PAnnotatedEPackage getPaEPackage() {
 		if (eContainerFeatureID != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE) return null;
-		return (PAnnotatedEPackage)eContainer;
+		return (PAnnotatedEPackage)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPaEPackage(PAnnotatedEPackage newPaEPackage, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newPaEPackage, PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE, msgs);
+		return msgs;
 	}
 
 	/**
@@ -324,15 +284,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 */
 	public void setPaEPackage(PAnnotatedEPackage newPaEPackage) {
-		if (newPaEPackage != eContainer || (eContainerFeatureID != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE && newPaEPackage != null)) {
+		if (newPaEPackage != eInternalContainer() || (eContainerFeatureID != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE && newPaEPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newPaEPackage))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newPaEPackage != null)
 				msgs = ((InternalEObject)newPaEPackage).eInverseAdd(this, PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES, PAnnotatedEPackage.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newPaEPackage, PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE, msgs);
+			msgs = basicSetPaEPackage(newPaEPackage, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -346,8 +306,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	public EClass getAnnotatedEClass() {
 		if (annotatedEClass != null && annotatedEClass.eIsProxy()) {
-			EClass oldAnnotatedEClass = annotatedEClass;
-			annotatedEClass = (EClass)eResolveProxy((InternalEObject)annotatedEClass);
+			InternalEObject oldAnnotatedEClass = (InternalEObject)annotatedEClass;
+			annotatedEClass = (EClass)eResolveProxy(oldAnnotatedEClass);
 			if (annotatedEClass != oldAnnotatedEClass) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ECLASS, oldAnnotatedEClass, annotatedEClass));
@@ -576,92 +536,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExcludeDefaultListeners getExcludeDefaultListeners() {
-		return excludeDefaultListeners;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetExcludeDefaultListeners(ExcludeDefaultListeners newExcludeDefaultListeners, NotificationChain msgs) {
-		ExcludeDefaultListeners oldExcludeDefaultListeners = excludeDefaultListeners;
-		excludeDefaultListeners = newExcludeDefaultListeners;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_DEFAULT_LISTENERS, oldExcludeDefaultListeners, newExcludeDefaultListeners);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExcludeDefaultListeners(ExcludeDefaultListeners newExcludeDefaultListeners) {
-		if (newExcludeDefaultListeners != excludeDefaultListeners) {
-			NotificationChain msgs = null;
-			if (excludeDefaultListeners != null)
-				msgs = ((InternalEObject)excludeDefaultListeners).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_DEFAULT_LISTENERS, null, msgs);
-			if (newExcludeDefaultListeners != null)
-				msgs = ((InternalEObject)newExcludeDefaultListeners).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_DEFAULT_LISTENERS, null, msgs);
-			msgs = basicSetExcludeDefaultListeners(newExcludeDefaultListeners, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_DEFAULT_LISTENERS, newExcludeDefaultListeners, newExcludeDefaultListeners));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ExcludeSuperclassListeners getExcludeSuperclassListeners() {
-		return excludeSuperclassListeners;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetExcludeSuperclassListeners(ExcludeSuperclassListeners newExcludeSuperclassListeners, NotificationChain msgs) {
-		ExcludeSuperclassListeners oldExcludeSuperclassListeners = excludeSuperclassListeners;
-		excludeSuperclassListeners = newExcludeSuperclassListeners;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_SUPERCLASS_LISTENERS, oldExcludeSuperclassListeners, newExcludeSuperclassListeners);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExcludeSuperclassListeners(ExcludeSuperclassListeners newExcludeSuperclassListeners) {
-		if (newExcludeSuperclassListeners != excludeSuperclassListeners) {
-			NotificationChain msgs = null;
-			if (excludeSuperclassListeners != null)
-				msgs = ((InternalEObject)excludeSuperclassListeners).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_SUPERCLASS_LISTENERS, null, msgs);
-			if (newExcludeSuperclassListeners != null)
-				msgs = ((InternalEObject)newExcludeSuperclassListeners).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_SUPERCLASS_LISTENERS, null, msgs);
-			msgs = basicSetExcludeSuperclassListeners(newExcludeSuperclassListeners, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_SUPERCLASS_LISTENERS, newExcludeSuperclassListeners, newExcludeSuperclassListeners));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public MappedSuperclass getMappedSuperclass() {
 		return mappedSuperclass;
 	}
@@ -748,49 +622,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EntityListener getEntityListener() {
-		return entityListener;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetEntityListener(EntityListener newEntityListener, NotificationChain msgs) {
-		EntityListener oldEntityListener = entityListener;
-		entityListener = newEntityListener;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__ENTITY_LISTENER, oldEntityListener, newEntityListener);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEntityListener(EntityListener newEntityListener) {
-		if (newEntityListener != entityListener) {
-			NotificationChain msgs = null;
-			if (entityListener != null)
-				msgs = ((InternalEObject)entityListener).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__ENTITY_LISTENER, null, msgs);
-			if (newEntityListener != null)
-				msgs = ((InternalEObject)newEntityListener).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__ENTITY_LISTENER, null, msgs);
-			msgs = basicSetEntityListener(newEntityListener, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__ENTITY_LISTENER, newEntityListener, newEntityListener));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public IdClass getIdClass() {
 		return idClass;
 	}
@@ -870,49 +701,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__INHERITANCE, newInheritance, newInheritance));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JoinColumn getJoinColumn() {
-		return joinColumn;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetJoinColumn(JoinColumn newJoinColumn, NotificationChain msgs) {
-		JoinColumn oldJoinColumn = joinColumn;
-		joinColumn = newJoinColumn;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__JOIN_COLUMN, oldJoinColumn, newJoinColumn);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setJoinColumn(JoinColumn newJoinColumn) {
-		if (newJoinColumn != joinColumn) {
-			NotificationChain msgs = null;
-			if (joinColumn != null)
-				msgs = ((InternalEObject)joinColumn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__JOIN_COLUMN, null, msgs);
-			if (newJoinColumn != null)
-				msgs = ((InternalEObject)newJoinColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__JOIN_COLUMN, null, msgs);
-			msgs = basicSetJoinColumn(newJoinColumn, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__JOIN_COLUMN, newJoinColumn, newJoinColumn));
 	}
 
 	/**
@@ -1178,22 +966,16 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
-					return ((InternalEList)getPaEStructuralFeatures()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetPaEPackage((PAnnotatedEPackage)otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
+				return ((InternalEList)getPaEStructuralFeatures()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -1201,56 +983,42 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PamodelPackage.PANNOTATED_ECLASS__TRANSIENT:
-					return basicSetTransient(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
-					return eBasicSetContainer(null, PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
-					return ((InternalEList)getPaEStructuralFeatures()).basicRemove(otherEnd, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES:
-					return basicSetAttributeOverrides(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN:
-					return basicSetDiscriminatorColumn(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE:
-					return basicSetDiscriminatorValue(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE:
-					return basicSetEmbeddable(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_DEFAULT_LISTENERS:
-					return basicSetExcludeDefaultListeners(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_SUPERCLASS_LISTENERS:
-					return basicSetExcludeSuperclassListeners(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS:
-					return basicSetMappedSuperclass(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__ENTITY:
-					return basicSetEntity(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__ENTITY_LISTENER:
-					return basicSetEntityListener(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__ID_CLASS:
-					return basicSetIdClass(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__INHERITANCE:
-					return basicSetInheritance(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__JOIN_COLUMN:
-					return basicSetJoinColumn(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
-					return basicSetPrimaryKeyJoinColumns(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
-					return basicSetSecondaryTables(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR:
-					return basicSetSequenceGenerator(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__TABLE:
-					return basicSetTable(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR:
-					return basicSetTableGenerator(null, msgs);
-				case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
-					return basicSetAssociationOverrides(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
+				return basicSetPaEPackage(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
+				return ((InternalEList)getPaEStructuralFeatures()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES:
+				return basicSetAttributeOverrides(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN:
+				return basicSetDiscriminatorColumn(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE:
+				return basicSetDiscriminatorValue(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE:
+				return basicSetEmbeddable(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS:
+				return basicSetMappedSuperclass(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__ENTITY:
+				return basicSetEntity(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__ID_CLASS:
+				return basicSetIdClass(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__INHERITANCE:
+				return basicSetInheritance(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
+				return basicSetPrimaryKeyJoinColumns(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
+				return basicSetSecondaryTables(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR:
+				return basicSetSequenceGenerator(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
+				return basicSetTable(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR:
+				return basicSetTableGenerator(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
+				return basicSetAssociationOverrides(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -1258,16 +1026,12 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
-					return eContainer.eInverseRemove(this, PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES, PAnnotatedEPackage.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
+				return eInternalContainer().eInverseRemove(this, PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES, PAnnotatedEPackage.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -1275,13 +1039,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ELEMENT:
-				if (resolve) return getAnnotatedElement();
-				return basicGetAnnotatedElement();
-			case PamodelPackage.PANNOTATED_ECLASS__TRANSIENT:
-				return getTransient();
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
 				return getPaEPackage();
 			case PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ECLASS:
@@ -1297,22 +1056,14 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return getDiscriminatorValue();
 			case PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE:
 				return getEmbeddable();
-			case PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_DEFAULT_LISTENERS:
-				return getExcludeDefaultListeners();
-			case PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_SUPERCLASS_LISTENERS:
-				return getExcludeSuperclassListeners();
 			case PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS:
 				return getMappedSuperclass();
 			case PamodelPackage.PANNOTATED_ECLASS__ENTITY:
 				return getEntity();
-			case PamodelPackage.PANNOTATED_ECLASS__ENTITY_LISTENER:
-				return getEntityListener();
 			case PamodelPackage.PANNOTATED_ECLASS__ID_CLASS:
 				return getIdClass();
 			case PamodelPackage.PANNOTATED_ECLASS__INHERITANCE:
 				return getInheritance();
-			case PamodelPackage.PANNOTATED_ECLASS__JOIN_COLUMN:
-				return getJoinColumn();
 			case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
 				return getPrimaryKeyJoinColumns();
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
@@ -1326,7 +1077,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
 				return getAssociationOverrides();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -1334,14 +1085,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ELEMENT:
-				setAnnotatedElement((ENamedElement)newValue);
-				return;
-			case PamodelPackage.PANNOTATED_ECLASS__TRANSIENT:
-				setTransient((Transient)newValue);
-				return;
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
 				setPaEPackage((PAnnotatedEPackage)newValue);
 				return;
@@ -1364,29 +1109,17 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE:
 				setEmbeddable((Embeddable)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_DEFAULT_LISTENERS:
-				setExcludeDefaultListeners((ExcludeDefaultListeners)newValue);
-				return;
-			case PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_SUPERCLASS_LISTENERS:
-				setExcludeSuperclassListeners((ExcludeSuperclassListeners)newValue);
-				return;
 			case PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS:
 				setMappedSuperclass((MappedSuperclass)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ENTITY:
 				setEntity((Entity)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_ECLASS__ENTITY_LISTENER:
-				setEntityListener((EntityListener)newValue);
-				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ID_CLASS:
 				setIdClass((IdClass)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__INHERITANCE:
 				setInheritance((Inheritance)newValue);
-				return;
-			case PamodelPackage.PANNOTATED_ECLASS__JOIN_COLUMN:
-				setJoinColumn((JoinColumn)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
 				setPrimaryKeyJoinColumns((PrimaryKeyJoinColumns)newValue);
@@ -1407,7 +1140,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				setAssociationOverrides((AssociationOverrides)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -1415,14 +1148,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ELEMENT:
-				setAnnotatedElement((ENamedElement)null);
-				return;
-			case PamodelPackage.PANNOTATED_ECLASS__TRANSIENT:
-				setTransient((Transient)null);
-				return;
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
 				setPaEPackage((PAnnotatedEPackage)null);
 				return;
@@ -1444,29 +1171,17 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE:
 				setEmbeddable((Embeddable)null);
 				return;
-			case PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_DEFAULT_LISTENERS:
-				setExcludeDefaultListeners((ExcludeDefaultListeners)null);
-				return;
-			case PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_SUPERCLASS_LISTENERS:
-				setExcludeSuperclassListeners((ExcludeSuperclassListeners)null);
-				return;
 			case PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS:
 				setMappedSuperclass((MappedSuperclass)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ENTITY:
 				setEntity((Entity)null);
 				return;
-			case PamodelPackage.PANNOTATED_ECLASS__ENTITY_LISTENER:
-				setEntityListener((EntityListener)null);
-				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ID_CLASS:
 				setIdClass((IdClass)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__INHERITANCE:
 				setInheritance((Inheritance)null);
-				return;
-			case PamodelPackage.PANNOTATED_ECLASS__JOIN_COLUMN:
-				setJoinColumn((JoinColumn)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
 				setPrimaryKeyJoinColumns((PrimaryKeyJoinColumns)null);
@@ -1487,7 +1202,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				setAssociationOverrides((AssociationOverrides)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -1495,12 +1210,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ELEMENT:
-				return basicGetAnnotatedElement() != null;
-			case PamodelPackage.PANNOTATED_ECLASS__TRANSIENT:
-				return transient_ != null;
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
 				return getPaEPackage() != null;
 			case PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ECLASS:
@@ -1515,22 +1226,14 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return discriminatorValue != null;
 			case PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE:
 				return embeddable != null;
-			case PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_DEFAULT_LISTENERS:
-				return excludeDefaultListeners != null;
-			case PamodelPackage.PANNOTATED_ECLASS__EXCLUDE_SUPERCLASS_LISTENERS:
-				return excludeSuperclassListeners != null;
 			case PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS:
 				return mappedSuperclass != null;
 			case PamodelPackage.PANNOTATED_ECLASS__ENTITY:
 				return entity != null;
-			case PamodelPackage.PANNOTATED_ECLASS__ENTITY_LISTENER:
-				return entityListener != null;
 			case PamodelPackage.PANNOTATED_ECLASS__ID_CLASS:
 				return idClass != null;
 			case PamodelPackage.PANNOTATED_ECLASS__INHERITANCE:
 				return inheritance != null;
-			case PamodelPackage.PANNOTATED_ECLASS__JOIN_COLUMN:
-				return joinColumn != null;
 			case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
 				return primaryKeyJoinColumns != null;
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
@@ -1544,7 +1247,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
 				return associationOverrides != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/** 

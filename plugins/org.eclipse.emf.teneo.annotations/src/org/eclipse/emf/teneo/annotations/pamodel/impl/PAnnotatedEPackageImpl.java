@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackageImpl.java,v 1.2 2006/07/04 21:56:30 mtaal Exp $
+ * $Id: PAnnotatedEPackageImpl.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -26,7 +25,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,7 +106,7 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return PamodelPackage.eINSTANCE.getPAnnotatedEPackage();
+		return PamodelPackage.Literals.PANNOTATED_EPACKAGE;
 	}
 
 	/**
@@ -118,7 +116,17 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 */
 	public PAnnotatedModel getPaModel() {
 		if (eContainerFeatureID != PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL) return null;
-		return (PAnnotatedModel)eContainer;
+		return (PAnnotatedModel)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPaModel(PAnnotatedModel newPaModel, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newPaModel, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL, msgs);
+		return msgs;
 	}
 
 	/**
@@ -127,15 +135,15 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * @generated
 	 */
 	public void setPaModel(PAnnotatedModel newPaModel) {
-		if (newPaModel != eContainer || (eContainerFeatureID != PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL && newPaModel != null)) {
+		if (newPaModel != eInternalContainer() || (eContainerFeatureID != PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL && newPaModel != null)) {
 			if (EcoreUtil.isAncestor(this, newPaModel))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newPaModel != null)
 				msgs = ((InternalEObject)newPaModel).eInverseAdd(this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PAnnotatedModel.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newPaModel, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL, msgs);
+			msgs = basicSetPaModel(newPaModel, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -149,8 +157,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 */
 	public EPackage getAnnotatedEPackage() {
 		if (annotatedEPackage != null && annotatedEPackage.eIsProxy()) {
-			EPackage oldAnnotatedEPackage = annotatedEPackage;
-			annotatedEPackage = (EPackage)eResolveProxy((InternalEObject)annotatedEPackage);
+			InternalEObject oldAnnotatedEPackage = (InternalEObject)annotatedEPackage;
+			annotatedEPackage = (EPackage)eResolveProxy(oldAnnotatedEPackage);
 			if (annotatedEPackage != oldAnnotatedEPackage) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE, oldAnnotatedEPackage, annotatedEPackage));
@@ -293,22 +301,16 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL, msgs);
-				case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
-					return ((InternalEList)getPaEClasses()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetPaModel((PAnnotatedModel)otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
+				return ((InternalEList)getPaEClasses()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -316,24 +318,18 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PamodelPackage.PANNOTATED_EPACKAGE__TRANSIENT:
-					return basicSetTransient(null, msgs);
-				case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
-					return eBasicSetContainer(null, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL, msgs);
-				case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
-					return ((InternalEList)getPaEClasses()).basicRemove(otherEnd, msgs);
-				case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR:
-					return basicSetSequenceGenerator(null, msgs);
-				case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR:
-					return basicSetTableGenerator(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
+				return basicSetPaModel(null, msgs);
+			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
+				return ((InternalEList)getPaEClasses()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR:
+				return basicSetSequenceGenerator(null, msgs);
+			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR:
+				return basicSetTableGenerator(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -341,16 +337,12 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
-					return eContainer.eInverseRemove(this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PAnnotatedModel.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
+				return eInternalContainer().eInverseRemove(this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PAnnotatedModel.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -358,13 +350,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_ELEMENT:
-				if (resolve) return getAnnotatedElement();
-				return basicGetAnnotatedElement();
-			case PamodelPackage.PANNOTATED_EPACKAGE__TRANSIENT:
-				return getTransient();
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
 				return getPaModel();
 			case PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE:
@@ -377,7 +364,7 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR:
 				return getTableGenerator();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -385,14 +372,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_ELEMENT:
-				setAnnotatedElement((ENamedElement)newValue);
-				return;
-			case PamodelPackage.PANNOTATED_EPACKAGE__TRANSIENT:
-				setTransient((Transient)newValue);
-				return;
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
 				setPaModel((PAnnotatedModel)newValue);
 				return;
@@ -410,7 +391,7 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 				setTableGenerator((TableGenerator)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -418,14 +399,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_ELEMENT:
-				setAnnotatedElement((ENamedElement)null);
-				return;
-			case PamodelPackage.PANNOTATED_EPACKAGE__TRANSIENT:
-				setTransient((Transient)null);
-				return;
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
 				setPaModel((PAnnotatedModel)null);
 				return;
@@ -442,7 +417,7 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 				setTableGenerator((TableGenerator)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -450,12 +425,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_ELEMENT:
-				return basicGetAnnotatedElement() != null;
-			case PamodelPackage.PANNOTATED_EPACKAGE__TRANSIENT:
-				return transient_ != null;
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
 				return getPaModel() != null;
 			case PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE:
@@ -467,7 +438,7 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR:
 				return tableGenerator != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 } //PAnnotatedEPackageImpl

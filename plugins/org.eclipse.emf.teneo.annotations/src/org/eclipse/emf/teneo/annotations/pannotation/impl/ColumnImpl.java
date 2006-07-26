@@ -2,14 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnImpl.java,v 1.2 2006/07/04 21:56:29 mtaal Exp $
+ * $Id: ColumnImpl.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -299,7 +298,7 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return PannotationPackage.eINSTANCE.getColumn();
+		return PannotationPackage.Literals.COLUMN;
 	}
 
 	/**
@@ -309,8 +308,8 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	 */
 	public EModelElement getEModelElement() {
 		if (eModelElement != null && eModelElement.eIsProxy()) {
-			EModelElement oldEModelElement = eModelElement;
-			eModelElement = (EModelElement)eResolveProxy((InternalEObject)eModelElement);
+			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
+			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.COLUMN__EMODEL_ELEMENT, oldEModelElement, eModelElement));
@@ -458,8 +457,8 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PannotationPackage.COLUMN__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
@@ -484,7 +483,7 @@ public class ColumnImpl extends EObjectImpl implements Column {
 			case PannotationPackage.COLUMN__SCALE:
 				return new Integer(getScale());
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -492,8 +491,8 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PannotationPackage.COLUMN__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
@@ -528,7 +527,7 @@ public class ColumnImpl extends EObjectImpl implements Column {
 				setScale(((Integer)newValue).intValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -536,8 +535,8 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PannotationPackage.COLUMN__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
@@ -572,7 +571,7 @@ public class ColumnImpl extends EObjectImpl implements Column {
 				unsetScale();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -580,8 +579,8 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PannotationPackage.COLUMN__EMODEL_ELEMENT:
 				return eModelElement != null;
 			case PannotationPackage.COLUMN__NAME:
@@ -605,7 +604,7 @@ public class ColumnImpl extends EObjectImpl implements Column {
 			case PannotationPackage.COLUMN__SCALE:
 				return isSetScale();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**

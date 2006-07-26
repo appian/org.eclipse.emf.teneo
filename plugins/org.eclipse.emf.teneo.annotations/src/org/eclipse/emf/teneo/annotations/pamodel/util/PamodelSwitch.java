@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelSwitch.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
+ * $Id: PamodelSwitch.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 

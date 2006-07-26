@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeature.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeature.java,v 1.4 2006/07/26 12:43:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Unique;
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='EClassCommutes TransientNotAnnotated'"
  * @generated
  */
-public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement{
+public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -67,6 +67,7 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement{
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_PaEClass()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPaEStructuralFeatures
 	 * @model opposite="paEStructuralFeatures"
+	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	PAnnotatedEClass getPaEClass();
@@ -92,6 +93,7 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement{
 	 * @see #setAnnotatedEStructuralFeature(EStructuralFeature)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature()
 	 * @model required="true" volatile="true" derived="true"
+	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EStructuralFeature getAnnotatedEStructuralFeature();

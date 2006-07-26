@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -30,28 +30,27 @@ import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
+import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.ColumnResult;
 import org.eclipse.emf.teneo.annotations.pannotation.Columns;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
-import org.eclipse.emf.teneo.annotations.pannotation.EntityListener;
-import org.eclipse.emf.teneo.annotations.pannotation.EntityResult;
+import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
-import org.eclipse.emf.teneo.annotations.pannotation.ExcludeDefaultListeners;
-import org.eclipse.emf.teneo.annotations.pannotation.ExcludeSuperclassListeners;
-import org.eclipse.emf.teneo.annotations.pannotation.FieldResult;
-import org.eclipse.emf.teneo.annotations.pannotation.FlushMode;
+import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
+import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
+import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
@@ -60,37 +59,21 @@ import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedNativeQueries;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedNativeQuery;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedQueries;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedQuery;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.Parameter;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceContext;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceContexts;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceUnit;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceUnits;
-import org.eclipse.emf.teneo.annotations.pannotation.PostLoad;
-import org.eclipse.emf.teneo.annotations.pannotation.PostPersist;
-import org.eclipse.emf.teneo.annotations.pannotation.PostRemove;
-import org.eclipse.emf.teneo.annotations.pannotation.PostUpdate;
-import org.eclipse.emf.teneo.annotations.pannotation.PrePersist;
-import org.eclipse.emf.teneo.annotations.pannotation.PreRemove;
-import org.eclipse.emf.teneo.annotations.pannotation.PreUpdate;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
-import org.eclipse.emf.teneo.annotations.pannotation.QueryHint;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.SqlResultSetMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
+import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 import org.eclipse.emf.teneo.annotations.pannotation.Type;
 import org.eclipse.emf.teneo.annotations.pannotation.Unique;
@@ -196,8 +179,6 @@ public class PannotationValidator extends EObjectValidator {
 				return validateColumn((Column)value, diagnostics, context);
 			case PannotationPackage.COLUMNS:
 				return validateColumns((Columns)value, diagnostics, context);
-			case PannotationPackage.COLUMN_RESULT:
-				return validateColumnResult((ColumnResult)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_COLUMN:
 				return validateDiscriminatorColumn((DiscriminatorColumn)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_VALUE:
@@ -210,20 +191,8 @@ public class PannotationValidator extends EObjectValidator {
 				return validateEmbeddedId((EmbeddedId)value, diagnostics, context);
 			case PannotationPackage.ENTITY:
 				return validateEntity((Entity)value, diagnostics, context);
-			case PannotationPackage.ENTITY_LISTENER:
-				return validateEntityListener((EntityListener)value, diagnostics, context);
-			case PannotationPackage.ENTITY_RESULT:
-				return validateEntityResult((EntityResult)value, diagnostics, context);
 			case PannotationPackage.ENUMERATED:
 				return validateEnumerated((Enumerated)value, diagnostics, context);
-			case PannotationPackage.EXCLUDE_DEFAULT_LISTENERS:
-				return validateExcludeDefaultListeners((ExcludeDefaultListeners)value, diagnostics, context);
-			case PannotationPackage.EXCLUDE_SUPERCLASS_LISTENERS:
-				return validateExcludeSuperclassListeners((ExcludeSuperclassListeners)value, diagnostics, context);
-			case PannotationPackage.FIELD_RESULT:
-				return validateFieldResult((FieldResult)value, diagnostics, context);
-			case PannotationPackage.FLUSH_MODE:
-				return validateFlushMode((FlushMode)value, diagnostics, context);
 			case PannotationPackage.GENERATED_VALUE:
 				return validateGeneratedValue((GeneratedValue)value, diagnostics, context);
 			case PannotationPackage.ID:
@@ -250,14 +219,6 @@ public class PannotationValidator extends EObjectValidator {
 				return validateMapKey((MapKey)value, diagnostics, context);
 			case PannotationPackage.MAPPED_SUPERCLASS:
 				return validateMappedSuperclass((MappedSuperclass)value, diagnostics, context);
-			case PannotationPackage.NAMED_NATIVE_QUERIES:
-				return validateNamedNativeQueries((NamedNativeQueries)value, diagnostics, context);
-			case PannotationPackage.NAMED_NATIVE_QUERY:
-				return validateNamedNativeQuery((NamedNativeQuery)value, diagnostics, context);
-			case PannotationPackage.NAMED_QUERIES:
-				return validateNamedQueries((NamedQueries)value, diagnostics, context);
-			case PannotationPackage.NAMED_QUERY:
-				return validateNamedQuery((NamedQuery)value, diagnostics, context);
 			case PannotationPackage.ONE_TO_MANY:
 				return validateOneToMany((OneToMany)value, diagnostics, context);
 			case PannotationPackage.ONE_TO_ONE:
@@ -266,42 +227,16 @@ public class PannotationValidator extends EObjectValidator {
 				return validateOrderBy((OrderBy)value, diagnostics, context);
 			case PannotationPackage.PARAMETER:
 				return validateParameter((Parameter)value, diagnostics, context);
-			case PannotationPackage.PERSISTENCE_CONTEXT:
-				return validatePersistenceContext((PersistenceContext)value, diagnostics, context);
-			case PannotationPackage.PERSISTENCE_CONTEXTS:
-				return validatePersistenceContexts((PersistenceContexts)value, diagnostics, context);
-			case PannotationPackage.PERSISTENCE_UNIT:
-				return validatePersistenceUnit((PersistenceUnit)value, diagnostics, context);
-			case PannotationPackage.PERSISTENCE_UNITS:
-				return validatePersistenceUnits((PersistenceUnits)value, diagnostics, context);
-			case PannotationPackage.POST_LOAD:
-				return validatePostLoad((PostLoad)value, diagnostics, context);
-			case PannotationPackage.POST_PERSIST:
-				return validatePostPersist((PostPersist)value, diagnostics, context);
-			case PannotationPackage.POST_REMOVE:
-				return validatePostRemove((PostRemove)value, diagnostics, context);
-			case PannotationPackage.POST_UPDATE:
-				return validatePostUpdate((PostUpdate)value, diagnostics, context);
-			case PannotationPackage.PRE_PERSIST:
-				return validatePrePersist((PrePersist)value, diagnostics, context);
-			case PannotationPackage.PRE_REMOVE:
-				return validatePreRemove((PreRemove)value, diagnostics, context);
-			case PannotationPackage.PRE_UPDATE:
-				return validatePreUpdate((PreUpdate)value, diagnostics, context);
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN:
 				return validatePrimaryKeyJoinColumn((PrimaryKeyJoinColumn)value, diagnostics, context);
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMNS:
 				return validatePrimaryKeyJoinColumns((PrimaryKeyJoinColumns)value, diagnostics, context);
-			case PannotationPackage.QUERY_HINT:
-				return validateQueryHint((QueryHint)value, diagnostics, context);
 			case PannotationPackage.SECONDARY_TABLE:
 				return validateSecondaryTable((SecondaryTable)value, diagnostics, context);
 			case PannotationPackage.SECONDARY_TABLES:
 				return validateSecondaryTables((SecondaryTables)value, diagnostics, context);
 			case PannotationPackage.SEQUENCE_GENERATOR:
 				return validateSequenceGenerator((SequenceGenerator)value, diagnostics, context);
-			case PannotationPackage.SQL_RESULT_SET_MAPPING:
-				return validateSqlResultSetMapping((SqlResultSetMapping)value, diagnostics, context);
 			case PannotationPackage.TABLE:
 				return validateTable((Table)value, diagnostics, context);
 			case PannotationPackage.TABLE_GENERATOR:
@@ -321,23 +256,19 @@ public class PannotationValidator extends EObjectValidator {
 			case PannotationPackage.UNIQUE:
 				return validateUnique((Unique)value, diagnostics, context);
 			case PannotationPackage.CASCADE_TYPE:
-				return validateCascadeType((Object)value, diagnostics, context);
+				return validateCascadeType((CascadeType)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_TYPE:
-				return validateDiscriminatorType((Object)value, diagnostics, context);
+				return validateDiscriminatorType((DiscriminatorType)value, diagnostics, context);
 			case PannotationPackage.ENUM_TYPE:
-				return validateEnumType((Object)value, diagnostics, context);
+				return validateEnumType((EnumType)value, diagnostics, context);
 			case PannotationPackage.FETCH_TYPE:
-				return validateFetchType((Object)value, diagnostics, context);
-			case PannotationPackage.FLUSH_MODE_TYPE:
-				return validateFlushModeType((Object)value, diagnostics, context);
+				return validateFetchType((FetchType)value, diagnostics, context);
 			case PannotationPackage.GENERATION_TYPE:
-				return validateGenerationType((Object)value, diagnostics, context);
+				return validateGenerationType((GenerationType)value, diagnostics, context);
 			case PannotationPackage.INHERITANCE_TYPE:
-				return validateInheritanceType((Object)value, diagnostics, context);
-			case PannotationPackage.PERSISTENCE_CONTEXT_TYPE:
-				return validatePersistenceContextType((Object)value, diagnostics, context);
+				return validateInheritanceType((InheritanceType)value, diagnostics, context);
 			case PannotationPackage.TEMPORAL_TYPE:
-				return validateTemporalType((Object)value, diagnostics, context);
+				return validateTemporalType((TemporalType)value, diagnostics, context);
 			default: 
 				return true;
 		}
@@ -550,21 +481,6 @@ public class PannotationValidator extends EObjectValidator {
 			return false;
 		}
 		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateColumnResult(ColumnResult columnResult, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(columnResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(columnResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(columnResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(columnResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(columnResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(columnResult, diagnostics, context);
-		return result;
 	}
 
 	/**
@@ -819,36 +735,6 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEntityListener(EntityListener entityListener, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(entityListener, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(entityListener, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(entityListener, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(entityListener, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(entityListener, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(entityListener, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateEntityResult(EntityResult entityResult, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(entityResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(entityResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(entityResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(entityResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(entityResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(entityResult, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateEnumerated(Enumerated enumerated, DiagnosticChain diagnostics, Map context) {
 		boolean result = validate_EveryMultiplicityConforms(enumerated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(enumerated, diagnostics, context);
@@ -883,66 +769,6 @@ public class PannotationValidator extends EObjectValidator {
 			return false;
 		}
 		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateExcludeDefaultListeners(ExcludeDefaultListeners excludeDefaultListeners, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(excludeDefaultListeners, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(excludeDefaultListeners, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(excludeDefaultListeners, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(excludeDefaultListeners, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(excludeDefaultListeners, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(excludeDefaultListeners, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateExcludeSuperclassListeners(ExcludeSuperclassListeners excludeSuperclassListeners, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(excludeSuperclassListeners, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(excludeSuperclassListeners, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(excludeSuperclassListeners, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(excludeSuperclassListeners, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(excludeSuperclassListeners, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(excludeSuperclassListeners, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateFieldResult(FieldResult fieldResult, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(fieldResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(fieldResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(fieldResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(fieldResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(fieldResult, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(fieldResult, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateFlushMode(FlushMode flushMode, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(flushMode, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(flushMode, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(flushMode, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(flushMode, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(flushMode, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(flushMode, diagnostics, context);
-		return result;
 	}
 
 	/**
@@ -1276,66 +1102,6 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNamedNativeQueries(NamedNativeQueries namedNativeQueries, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(namedNativeQueries, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(namedNativeQueries, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(namedNativeQueries, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(namedNativeQueries, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(namedNativeQueries, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(namedNativeQueries, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNamedNativeQuery(NamedNativeQuery namedNativeQuery, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(namedNativeQuery, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(namedNativeQuery, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(namedNativeQuery, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(namedNativeQuery, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(namedNativeQuery, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(namedNativeQuery, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNamedQueries(NamedQueries namedQueries, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(namedQueries, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(namedQueries, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(namedQueries, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(namedQueries, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(namedQueries, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(namedQueries, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNamedQuery(NamedQuery namedQuery, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(namedQuery, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(namedQuery, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(namedQuery, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(namedQuery, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(namedQuery, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(namedQuery, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateOneToMany(OneToMany oneToMany, DiagnosticChain diagnostics, Map context) {
 		boolean result = validate_EveryMultiplicityConforms(oneToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(oneToMany, diagnostics, context);
@@ -1486,171 +1252,6 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePersistenceContext(PersistenceContext persistenceContext, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(persistenceContext, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(persistenceContext, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(persistenceContext, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(persistenceContext, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(persistenceContext, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(persistenceContext, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePersistenceContexts(PersistenceContexts persistenceContexts, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(persistenceContexts, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(persistenceContexts, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(persistenceContexts, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(persistenceContexts, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(persistenceContexts, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(persistenceContexts, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePersistenceUnit(PersistenceUnit persistenceUnit, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(persistenceUnit, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(persistenceUnit, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(persistenceUnit, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(persistenceUnit, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(persistenceUnit, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(persistenceUnit, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePersistenceUnits(PersistenceUnits persistenceUnits, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(persistenceUnits, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(persistenceUnits, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(persistenceUnits, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(persistenceUnits, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(persistenceUnits, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(persistenceUnits, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePostLoad(PostLoad postLoad, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(postLoad, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(postLoad, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(postLoad, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(postLoad, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(postLoad, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(postLoad, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePostPersist(PostPersist postPersist, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(postPersist, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(postPersist, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(postPersist, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(postPersist, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(postPersist, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(postPersist, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePostRemove(PostRemove postRemove, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(postRemove, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(postRemove, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(postRemove, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(postRemove, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(postRemove, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(postRemove, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePostUpdate(PostUpdate postUpdate, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(postUpdate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(postUpdate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(postUpdate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(postUpdate, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(postUpdate, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(postUpdate, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePrePersist(PrePersist prePersist, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(prePersist, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(prePersist, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(prePersist, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(prePersist, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(prePersist, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(prePersist, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePreRemove(PreRemove preRemove, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(preRemove, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(preRemove, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(preRemove, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(preRemove, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(preRemove, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(preRemove, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePreUpdate(PreUpdate preUpdate, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(preUpdate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(preUpdate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(preUpdate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(preUpdate, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(preUpdate, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(preUpdate, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validatePrimaryKeyJoinColumn(PrimaryKeyJoinColumn primaryKeyJoinColumn, DiagnosticChain diagnostics, Map context) {
 		boolean result = validate_EveryMultiplicityConforms(primaryKeyJoinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(primaryKeyJoinColumn, diagnostics, context);
@@ -1673,21 +1274,6 @@ public class PannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(primaryKeyJoinColumns, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(primaryKeyJoinColumns, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(primaryKeyJoinColumns, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateQueryHint(QueryHint queryHint, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(queryHint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(queryHint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(queryHint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(queryHint, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(queryHint, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(queryHint, diagnostics, context);
 		return result;
 	}
 
@@ -1733,21 +1319,6 @@ public class PannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(sequenceGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(sequenceGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(sequenceGenerator, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSqlResultSetMapping(SqlResultSetMapping sqlResultSetMapping, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(sqlResultSetMapping, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(sqlResultSetMapping, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(sqlResultSetMapping, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(sqlResultSetMapping, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(sqlResultSetMapping, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(sqlResultSetMapping, diagnostics, context);
 		return result;
 	}
 
@@ -1930,7 +1501,7 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCascadeType(Object cascadeType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateCascadeType(CascadeType cascadeType, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -1939,7 +1510,7 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDiscriminatorType(Object discriminatorType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateDiscriminatorType(DiscriminatorType discriminatorType, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -1948,7 +1519,7 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEnumType(Object enumType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateEnumType(EnumType enumType, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -1957,7 +1528,7 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFetchType(Object fetchType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateFetchType(FetchType fetchType, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -1966,7 +1537,7 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFlushModeType(Object flushModeType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateGenerationType(GenerationType generationType, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -1975,7 +1546,7 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateGenerationType(Object generationType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateInheritanceType(InheritanceType inheritanceType, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -1984,25 +1555,7 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInheritanceType(Object inheritanceType, DiagnosticChain diagnostics, Map context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePersistenceContextType(Object persistenceContextType, DiagnosticChain diagnostics, Map context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTemporalType(Object temporalType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateTemporalType(TemporalType temporalType, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 

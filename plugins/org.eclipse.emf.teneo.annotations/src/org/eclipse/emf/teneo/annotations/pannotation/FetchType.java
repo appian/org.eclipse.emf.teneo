@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FetchType.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
+ * $Id: FetchType.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -63,7 +63,7 @@ public final class FetchType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final FetchType LAZY_LITERAL = new FetchType(LAZY, "LAZY");
+	public static final FetchType LAZY_LITERAL = new FetchType(LAZY, "LAZY", "LAZY");
 
 	/**
 	 * The '<em><b>EAGER</b></em>' literal object.
@@ -72,7 +72,7 @@ public final class FetchType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final FetchType EAGER_LITERAL = new FetchType(EAGER, "EAGER");
+	public static final FetchType EAGER_LITERAL = new FetchType(EAGER, "EAGER", "EAGER");
 
 	/**
 	 * An array of all the '<em><b>Fetch Type</b></em>' enumerators.
@@ -94,15 +94,15 @@ public final class FetchType extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Fetch Type</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Fetch Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 */
-	public static FetchType get(String name) {
+	public static FetchType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			FetchType result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -110,7 +110,23 @@ public final class FetchType extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Fetch Type</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Fetch Type</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static FetchType getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			FetchType result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Fetch Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
@@ -125,10 +141,12 @@ public final class FetchType extends AbstractEnumerator {
 
 	/**
 	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private FetchType(int value, String name) {
-		super(value, name);
+	private FetchType(int value, String name, String literal) {
+		super(value, name, literal);
 	}
+
 } // FetchType

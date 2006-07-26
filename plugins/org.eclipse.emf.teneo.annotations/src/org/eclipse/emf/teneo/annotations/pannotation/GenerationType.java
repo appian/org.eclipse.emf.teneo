@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GenerationType.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
+ * $Id: GenerationType.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -93,7 +93,7 @@ public final class GenerationType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final GenerationType TABLE_LITERAL = new GenerationType(TABLE, "TABLE");
+	public static final GenerationType TABLE_LITERAL = new GenerationType(TABLE, "TABLE", "TABLE");
 
 	/**
 	 * The '<em><b>SEQUENCE</b></em>' literal object.
@@ -102,7 +102,7 @@ public final class GenerationType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final GenerationType SEQUENCE_LITERAL = new GenerationType(SEQUENCE, "SEQUENCE");
+	public static final GenerationType SEQUENCE_LITERAL = new GenerationType(SEQUENCE, "SEQUENCE", "SEQUENCE");
 
 	/**
 	 * The '<em><b>IDENTITY</b></em>' literal object.
@@ -111,7 +111,7 @@ public final class GenerationType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final GenerationType IDENTITY_LITERAL = new GenerationType(IDENTITY, "IDENTITY");
+	public static final GenerationType IDENTITY_LITERAL = new GenerationType(IDENTITY, "IDENTITY", "IDENTITY");
 
 	/**
 	 * The '<em><b>AUTO</b></em>' literal object.
@@ -120,7 +120,7 @@ public final class GenerationType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final GenerationType AUTO_LITERAL = new GenerationType(AUTO, "AUTO");
+	public static final GenerationType AUTO_LITERAL = new GenerationType(AUTO, "AUTO", "AUTO");
 
 	/**
 	 * An array of all the '<em><b>Generation Type</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc
@@ -145,15 +145,15 @@ public final class GenerationType extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Generation Type</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Generation Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 */
-	public static GenerationType get(String name) {
+	public static GenerationType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			GenerationType result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -161,7 +161,23 @@ public final class GenerationType extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Generation Type</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Generation Type</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static GenerationType getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			GenerationType result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Generation Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
@@ -178,10 +194,12 @@ public final class GenerationType extends AbstractEnumerator {
 
 	/**
 	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private GenerationType(int value, String name) {
-		super(value, name);
+	private GenerationType(int value, String name, String literal) {
+		super(value, name, literal);
 	}
+
 } // GenerationType

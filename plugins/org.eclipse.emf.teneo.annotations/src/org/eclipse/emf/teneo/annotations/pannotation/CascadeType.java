@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadeType.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
+ * $Id: CascadeType.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -108,7 +108,7 @@ public final class CascadeType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final CascadeType ALL_LITERAL = new CascadeType(ALL, "ALL");
+	public static final CascadeType ALL_LITERAL = new CascadeType(ALL, "ALL", "ALL");
 
 	/**
 	 * The '<em><b>PERSIST</b></em>' literal object.
@@ -117,7 +117,7 @@ public final class CascadeType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final CascadeType PERSIST_LITERAL = new CascadeType(PERSIST, "PERSIST");
+	public static final CascadeType PERSIST_LITERAL = new CascadeType(PERSIST, "PERSIST", "PERSIST");
 
 	/**
 	 * The '<em><b>MERGE</b></em>' literal object.
@@ -126,7 +126,7 @@ public final class CascadeType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final CascadeType MERGE_LITERAL = new CascadeType(MERGE, "MERGE");
+	public static final CascadeType MERGE_LITERAL = new CascadeType(MERGE, "MERGE", "MERGE");
 
 	/**
 	 * The '<em><b>REMOVE</b></em>' literal object.
@@ -135,7 +135,7 @@ public final class CascadeType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final CascadeType REMOVE_LITERAL = new CascadeType(REMOVE, "REMOVE");
+	public static final CascadeType REMOVE_LITERAL = new CascadeType(REMOVE, "REMOVE", "REMOVE");
 
 	/**
 	 * The '<em><b>REFRESH</b></em>' literal object.
@@ -144,7 +144,7 @@ public final class CascadeType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final CascadeType REFRESH_LITERAL = new CascadeType(REFRESH, "REFRESH");
+	public static final CascadeType REFRESH_LITERAL = new CascadeType(REFRESH, "REFRESH", "REFRESH");
 
 	/**
 	 * An array of all the '<em><b>Cascade Type</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc
@@ -170,15 +170,15 @@ public final class CascadeType extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Cascade Type</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Cascade Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 */
-	public static CascadeType get(String name) {
+	public static CascadeType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			CascadeType result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -186,7 +186,23 @@ public final class CascadeType extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Cascade Type</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Cascade Type</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static CascadeType getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			CascadeType result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Cascade Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
@@ -204,10 +220,12 @@ public final class CascadeType extends AbstractEnumerator {
 
 	/**
 	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private CascadeType(int value, String name) {
-		super(value, name);
+	private CascadeType(int value, String name, String literal) {
+		super(value, name, literal);
 	}
+
 } // CascadeType

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritanceType.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
+ * $Id: InheritanceType.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -78,7 +78,7 @@ public final class InheritanceType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InheritanceType SINGLE_TABLE_LITERAL = new InheritanceType(SINGLE_TABLE, "SINGLE_TABLE");
+	public static final InheritanceType SINGLE_TABLE_LITERAL = new InheritanceType(SINGLE_TABLE, "SINGLE_TABLE", "SINGLE_TABLE");
 
 	/**
 	 * The '<em><b>TABLE PER CLASS</b></em>' literal object.
@@ -87,7 +87,7 @@ public final class InheritanceType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InheritanceType TABLE_PER_CLASS_LITERAL = new InheritanceType(TABLE_PER_CLASS, "TABLE_PER_CLASS");
+	public static final InheritanceType TABLE_PER_CLASS_LITERAL = new InheritanceType(TABLE_PER_CLASS, "TABLE_PER_CLASS", "TABLE_PER_CLASS");
 
 	/**
 	 * The '<em><b>JOINED</b></em>' literal object.
@@ -96,7 +96,7 @@ public final class InheritanceType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final InheritanceType JOINED_LITERAL = new InheritanceType(JOINED, "JOINED");
+	public static final InheritanceType JOINED_LITERAL = new InheritanceType(JOINED, "JOINED", "JOINED");
 
 	/**
 	 * An array of all the '<em><b>Inheritance Type</b></em>' enumerators.
@@ -120,15 +120,15 @@ public final class InheritanceType extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Inheritance Type</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Inheritance Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 */
-	public static InheritanceType get(String name) {
+	public static InheritanceType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			InheritanceType result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -136,7 +136,23 @@ public final class InheritanceType extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Inheritance Type</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Inheritance Type</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static InheritanceType getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			InheritanceType result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Inheritance Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -152,11 +168,12 @@ public final class InheritanceType extends AbstractEnumerator {
 
 	/**
 	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private InheritanceType(int value, String name) {
-		super(value, name);
+	private InheritanceType(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } // InheritanceType

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactory.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PannotationFactory.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage
  * @generated
  */
-public interface PannotationFactory extends EFactory{
+public interface PannotationFactory extends EFactory {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -26,7 +26,7 @@ public interface PannotationFactory extends EFactory{
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	PannotationFactory eINSTANCE = new org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationFactoryImpl();
+	PannotationFactory eINSTANCE = org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Attribute Override</em>'.
@@ -59,14 +59,6 @@ public interface PannotationFactory extends EFactory{
 	 * @generated
 	 */
 	Column createColumn();
-
-	/**
-	 * Returns a new object of class '<em>Column Result</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Column Result</em>'.
-	 * @generated
-	 */
-	ColumnResult createColumnResult();
 
 	/**
 	 * Returns a new object of class '<em>Discriminator Column</em>'.
@@ -131,56 +123,6 @@ public interface PannotationFactory extends EFactory{
 	 * @generated
 	 */
 	Entity createEntity();
-
-	/**
-	 * Returns a new object of class '<em>Entity Listener</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Listener</em>'.
-	 * @generated
-	 */
-	EntityListener createEntityListener();
-
-	/**
-	 * Returns a new object of class '<em>Entity Result</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Result</em>'.
-	 * @generated
-	 */
-	EntityResult createEntityResult();
-
-	/**
-	 * Returns a new object of class '<em>Exclude Default Listeners</em>'. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @return a new object of class '<em>Exclude Default Listeners</em>'.
-	 * @generated
-	 */
-	ExcludeDefaultListeners createExcludeDefaultListeners();
-
-	/**
-	 * Returns a new object of class '<em>Exclude Superclass Listeners</em>'.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @return a new object of class '<em>Exclude Superclass Listeners</em>'.
-	 * @generated
-	 */
-	ExcludeSuperclassListeners createExcludeSuperclassListeners();
-
-	/**
-	 * Returns a new object of class '<em>Field Result</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Field Result</em>'.
-	 * @generated
-	 */
-	FieldResult createFieldResult();
-
-	/**
-	 * Returns a new object of class '<em>Flush Mode</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Flush Mode</em>'.
-	 * @generated
-	 */
-	FlushMode createFlushMode();
 
 	/**
 	 * Returns a new object of class '<em>Generated Value</em>'.
@@ -271,38 +213,6 @@ public interface PannotationFactory extends EFactory{
 	MapKey createMapKey();
 
 	/**
-	 * Returns a new object of class '<em>Named Native Queries</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Named Native Queries</em>'.
-	 * @generated
-	 */
-	NamedNativeQueries createNamedNativeQueries();
-
-	/**
-	 * Returns a new object of class '<em>Named Native Query</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Named Native Query</em>'.
-	 * @generated
-	 */
-	NamedNativeQuery createNamedNativeQuery();
-
-	/**
-	 * Returns a new object of class '<em>Named Queries</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Named Queries</em>'.
-	 * @generated
-	 */
-	NamedQueries createNamedQueries();
-
-	/**
-	 * Returns a new object of class '<em>Named Query</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Named Query</em>'.
-	 * @generated
-	 */
-	NamedQuery createNamedQuery();
-
-	/**
 	 * Returns a new object of class '<em>One To Many</em>'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>One To Many</em>'.
@@ -327,94 +237,6 @@ public interface PannotationFactory extends EFactory{
 	OrderBy createOrderBy();
 
 	/**
-	 * Returns a new object of class '<em>Persistence Context</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Persistence Context</em>'.
-	 * @generated
-	 */
-	PersistenceContext createPersistenceContext();
-
-	/**
-	 * Returns a new object of class '<em>Persistence Contexts</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Persistence Contexts</em>'.
-	 * @generated
-	 */
-	PersistenceContexts createPersistenceContexts();
-
-	/**
-	 * Returns a new object of class '<em>Persistence Unit</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Persistence Unit</em>'.
-	 * @generated
-	 */
-	PersistenceUnit createPersistenceUnit();
-
-	/**
-	 * Returns a new object of class '<em>Persistence Units</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Persistence Units</em>'.
-	 * @generated
-	 */
-	PersistenceUnits createPersistenceUnits();
-
-	/**
-	 * Returns a new object of class '<em>Post Load</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Post Load</em>'.
-	 * @generated
-	 */
-	PostLoad createPostLoad();
-
-	/**
-	 * Returns a new object of class '<em>Post Persist</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Post Persist</em>'.
-	 * @generated
-	 */
-	PostPersist createPostPersist();
-
-	/**
-	 * Returns a new object of class '<em>Post Remove</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Post Remove</em>'.
-	 * @generated
-	 */
-	PostRemove createPostRemove();
-
-	/**
-	 * Returns a new object of class '<em>Post Update</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Post Update</em>'.
-	 * @generated
-	 */
-	PostUpdate createPostUpdate();
-
-	/**
-	 * Returns a new object of class '<em>Pre Persist</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pre Persist</em>'.
-	 * @generated
-	 */
-	PrePersist createPrePersist();
-
-	/**
-	 * Returns a new object of class '<em>Pre Remove</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pre Remove</em>'.
-	 * @generated
-	 */
-	PreRemove createPreRemove();
-
-	/**
-	 * Returns a new object of class '<em>Pre Update</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pre Update</em>'.
-	 * @generated
-	 */
-	PreUpdate createPreUpdate();
-
-	/**
 	 * Returns a new object of class '<em>Primary Key Join Column</em>'. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
@@ -431,14 +253,6 @@ public interface PannotationFactory extends EFactory{
 	 * @generated
 	 */
 	PrimaryKeyJoinColumns createPrimaryKeyJoinColumns();
-
-	/**
-	 * Returns a new object of class '<em>Query Hint</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Query Hint</em>'.
-	 * @generated
-	 */
-	QueryHint createQueryHint();
 
 	/**
 	 * Returns a new object of class '<em>Secondary Table</em>'.
@@ -463,15 +277,6 @@ public interface PannotationFactory extends EFactory{
 	 * @generated
 	 */
 	SequenceGenerator createSequenceGenerator();
-
-	/**
-	 * Returns a new object of class '<em>Sql Result Set Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @return a new object of class '<em>Sql Result Set Mapping</em>'.
-	 * @generated
-	 */
-	SqlResultSetMapping createSqlResultSetMapping();
 
 	/**
 	 * Returns a new object of class '<em>Table</em>'.

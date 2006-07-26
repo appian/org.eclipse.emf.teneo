@@ -2,14 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedIdImpl.java,v 1.2 2006/07/04 21:56:29 mtaal Exp $
+ * $Id: EmbeddedIdImpl.java,v 1.3 2006/07/26 12:43:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -62,7 +61,7 @@ public class EmbeddedIdImpl extends EObjectImpl implements EmbeddedId {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return PannotationPackage.eINSTANCE.getEmbeddedId();
+		return PannotationPackage.Literals.EMBEDDED_ID;
 	}
 
 	/**
@@ -72,8 +71,8 @@ public class EmbeddedIdImpl extends EObjectImpl implements EmbeddedId {
 	 */
 	public EModelElement getEModelElement() {
 		if (eModelElement != null && eModelElement.eIsProxy()) {
-			EModelElement oldEModelElement = eModelElement;
-			eModelElement = (EModelElement)eResolveProxy((InternalEObject)eModelElement);
+			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
+			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.EMBEDDED_ID__EMODEL_ELEMENT, oldEModelElement, eModelElement));
@@ -108,13 +107,13 @@ public class EmbeddedIdImpl extends EObjectImpl implements EmbeddedId {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PannotationPackage.EMBEDDED_ID__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -122,13 +121,13 @@ public class EmbeddedIdImpl extends EObjectImpl implements EmbeddedId {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PannotationPackage.EMBEDDED_ID__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -136,13 +135,13 @@ public class EmbeddedIdImpl extends EObjectImpl implements EmbeddedId {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PannotationPackage.EMBEDDED_ID__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -150,12 +149,12 @@ public class EmbeddedIdImpl extends EObjectImpl implements EmbeddedId {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PannotationPackage.EMBEDDED_ID__EMODEL_ELEMENT:
 				return eModelElement != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 } //EmbeddedIdImpl

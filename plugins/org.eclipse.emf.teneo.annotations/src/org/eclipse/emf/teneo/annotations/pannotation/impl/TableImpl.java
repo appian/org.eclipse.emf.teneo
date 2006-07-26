@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableImpl.java,v 1.2 2006/07/04 21:56:29 mtaal Exp $
+ * $Id: TableImpl.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -13,7 +13,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -143,7 +142,7 @@ public class TableImpl extends EObjectImpl implements Table {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return PannotationPackage.eINSTANCE.getTable();
+		return PannotationPackage.Literals.TABLE;
 	}
 
 	/**
@@ -153,8 +152,8 @@ public class TableImpl extends EObjectImpl implements Table {
 	 */
 	public EModelElement getEModelElement() {
 		if (eModelElement != null && eModelElement.eIsProxy()) {
-			EModelElement oldEModelElement = eModelElement;
-			eModelElement = (EModelElement)eResolveProxy((InternalEObject)eModelElement);
+			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
+			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.TABLE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
@@ -264,16 +263,12 @@ public class TableImpl extends EObjectImpl implements Table {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
-					return ((InternalEList)getUniqueConstraints()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
+				return ((InternalEList)getUniqueConstraints()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -281,8 +276,8 @@ public class TableImpl extends EObjectImpl implements Table {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PannotationPackage.TABLE__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
@@ -295,7 +290,7 @@ public class TableImpl extends EObjectImpl implements Table {
 			case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
 				return getUniqueConstraints();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -303,8 +298,8 @@ public class TableImpl extends EObjectImpl implements Table {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PannotationPackage.TABLE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
@@ -322,7 +317,7 @@ public class TableImpl extends EObjectImpl implements Table {
 				getUniqueConstraints().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -330,8 +325,8 @@ public class TableImpl extends EObjectImpl implements Table {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PannotationPackage.TABLE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
@@ -348,7 +343,7 @@ public class TableImpl extends EObjectImpl implements Table {
 				getUniqueConstraints().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -356,8 +351,8 @@ public class TableImpl extends EObjectImpl implements Table {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PannotationPackage.TABLE__EMODEL_ELEMENT:
 				return eModelElement != null;
 			case PannotationPackage.TABLE__NAME:
@@ -369,7 +364,7 @@ public class TableImpl extends EObjectImpl implements Table {
 			case PannotationPackage.TABLE__UNIQUE_CONSTRAINTS:
 				return uniqueConstraints != null && !uniqueConstraints.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**

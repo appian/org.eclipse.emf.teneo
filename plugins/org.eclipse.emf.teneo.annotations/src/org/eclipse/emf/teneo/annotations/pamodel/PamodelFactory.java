@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelFactory.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PamodelFactory.java,v 1.3 2006/07/26 12:43:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage
  * @generated
  */
-public interface PamodelFactory extends EFactory{
+public interface PamodelFactory extends EFactory {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -26,7 +26,7 @@ public interface PamodelFactory extends EFactory{
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	PamodelFactory eINSTANCE = new org.eclipse.emf.teneo.annotations.pamodel.impl.PamodelFactoryImpl();
+	PamodelFactory eINSTANCE = org.eclipse.emf.teneo.annotations.pamodel.impl.PamodelFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>PAnnotated Model</em>'.

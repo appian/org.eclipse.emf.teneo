@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationAdapterFactory.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
+ * $Id: PannotationAdapterFactory.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -16,7 +16,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.ColumnResult;
 import org.eclipse.emf.teneo.annotations.pannotation.Columns;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
@@ -24,13 +23,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
-import org.eclipse.emf.teneo.annotations.pannotation.EntityListener;
-import org.eclipse.emf.teneo.annotations.pannotation.EntityResult;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
-import org.eclipse.emf.teneo.annotations.pannotation.ExcludeDefaultListeners;
-import org.eclipse.emf.teneo.annotations.pannotation.ExcludeSuperclassListeners;
-import org.eclipse.emf.teneo.annotations.pannotation.FieldResult;
-import org.eclipse.emf.teneo.annotations.pannotation.FlushMode;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
@@ -45,34 +38,17 @@ import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedNativeQueries;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedNativeQuery;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedQueries;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedQuery;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.Parameter;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceContext;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceContexts;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceUnit;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceUnits;
-import org.eclipse.emf.teneo.annotations.pannotation.PostLoad;
-import org.eclipse.emf.teneo.annotations.pannotation.PostPersist;
-import org.eclipse.emf.teneo.annotations.pannotation.PostRemove;
-import org.eclipse.emf.teneo.annotations.pannotation.PostUpdate;
-import org.eclipse.emf.teneo.annotations.pannotation.PrePersist;
-import org.eclipse.emf.teneo.annotations.pannotation.PreRemove;
-import org.eclipse.emf.teneo.annotations.pannotation.PreUpdate;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
-import org.eclipse.emf.teneo.annotations.pannotation.QueryHint;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.SqlResultSetMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
@@ -168,9 +144,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseColumns(Columns object) {
 				return createColumnsAdapter();
 			}
-			public Object caseColumnResult(ColumnResult object) {
-				return createColumnResultAdapter();
-			}
 			public Object caseDiscriminatorColumn(DiscriminatorColumn object) {
 				return createDiscriminatorColumnAdapter();
 			}
@@ -189,26 +162,8 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseEntity(Entity object) {
 				return createEntityAdapter();
 			}
-			public Object caseEntityListener(EntityListener object) {
-				return createEntityListenerAdapter();
-			}
-			public Object caseEntityResult(EntityResult object) {
-				return createEntityResultAdapter();
-			}
 			public Object caseEnumerated(Enumerated object) {
 				return createEnumeratedAdapter();
-			}
-			public Object caseExcludeDefaultListeners(ExcludeDefaultListeners object) {
-				return createExcludeDefaultListenersAdapter();
-			}
-			public Object caseExcludeSuperclassListeners(ExcludeSuperclassListeners object) {
-				return createExcludeSuperclassListenersAdapter();
-			}
-			public Object caseFieldResult(FieldResult object) {
-				return createFieldResultAdapter();
-			}
-			public Object caseFlushMode(FlushMode object) {
-				return createFlushModeAdapter();
 			}
 			public Object caseGeneratedValue(GeneratedValue object) {
 				return createGeneratedValueAdapter();
@@ -249,18 +204,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseMappedSuperclass(MappedSuperclass object) {
 				return createMappedSuperclassAdapter();
 			}
-			public Object caseNamedNativeQueries(NamedNativeQueries object) {
-				return createNamedNativeQueriesAdapter();
-			}
-			public Object caseNamedNativeQuery(NamedNativeQuery object) {
-				return createNamedNativeQueryAdapter();
-			}
-			public Object caseNamedQueries(NamedQueries object) {
-				return createNamedQueriesAdapter();
-			}
-			public Object caseNamedQuery(NamedQuery object) {
-				return createNamedQueryAdapter();
-			}
 			public Object caseOneToMany(OneToMany object) {
 				return createOneToManyAdapter();
 			}
@@ -273,47 +216,11 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseParameter(Parameter object) {
 				return createParameterAdapter();
 			}
-			public Object casePersistenceContext(PersistenceContext object) {
-				return createPersistenceContextAdapter();
-			}
-			public Object casePersistenceContexts(PersistenceContexts object) {
-				return createPersistenceContextsAdapter();
-			}
-			public Object casePersistenceUnit(PersistenceUnit object) {
-				return createPersistenceUnitAdapter();
-			}
-			public Object casePersistenceUnits(PersistenceUnits object) {
-				return createPersistenceUnitsAdapter();
-			}
-			public Object casePostLoad(PostLoad object) {
-				return createPostLoadAdapter();
-			}
-			public Object casePostPersist(PostPersist object) {
-				return createPostPersistAdapter();
-			}
-			public Object casePostRemove(PostRemove object) {
-				return createPostRemoveAdapter();
-			}
-			public Object casePostUpdate(PostUpdate object) {
-				return createPostUpdateAdapter();
-			}
-			public Object casePrePersist(PrePersist object) {
-				return createPrePersistAdapter();
-			}
-			public Object casePreRemove(PreRemove object) {
-				return createPreRemoveAdapter();
-			}
-			public Object casePreUpdate(PreUpdate object) {
-				return createPreUpdateAdapter();
-			}
 			public Object casePrimaryKeyJoinColumn(PrimaryKeyJoinColumn object) {
 				return createPrimaryKeyJoinColumnAdapter();
 			}
 			public Object casePrimaryKeyJoinColumns(PrimaryKeyJoinColumns object) {
 				return createPrimaryKeyJoinColumnsAdapter();
-			}
-			public Object caseQueryHint(QueryHint object) {
-				return createQueryHintAdapter();
 			}
 			public Object caseSecondaryTable(SecondaryTable object) {
 				return createSecondaryTableAdapter();
@@ -323,9 +230,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseSequenceGenerator(SequenceGenerator object) {
 				return createSequenceGeneratorAdapter();
-			}
-			public Object caseSqlResultSetMapping(SqlResultSetMapping object) {
-				return createSqlResultSetMappingAdapter();
 			}
 			public Object caseTable(Table object) {
 				return createTableAdapter();
@@ -443,20 +347,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.ColumnResult <em>Column Result</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.ColumnResult
-	 * @generated
-	 */
-	public Adapter createColumnResultAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn <em>Discriminator Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -565,90 +455,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEntityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.EntityListener <em>Entity Listener</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.EntityListener
-	 * @generated
-	 */
-	public Adapter createEntityListenerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.EntityResult <em>Entity Result</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.EntityResult
-	 * @generated
-	 */
-	public Adapter createEntityResultAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.ExcludeDefaultListeners <em>Exclude Default Listeners</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.ExcludeDefaultListeners
-	 * @generated
-	 */
-	public Adapter createExcludeDefaultListenersAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.ExcludeSuperclassListeners <em>Exclude Superclass Listeners</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.ExcludeSuperclassListeners
-	 * @generated
-	 */
-	public Adapter createExcludeSuperclassListenersAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.FieldResult <em>Field Result</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.FieldResult
-	 * @generated
-	 */
-	public Adapter createFieldResultAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.FlushMode <em>Flush Mode</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.FlushMode
-	 * @generated
-	 */
-	public Adapter createFlushModeAdapter() {
 		return null;
 	}
 
@@ -807,62 +613,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.NamedNativeQueries <em>Named Native Queries</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.NamedNativeQueries
-	 * @generated
-	 */
-	public Adapter createNamedNativeQueriesAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.NamedNativeQuery <em>Named Native Query</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.NamedNativeQuery
-	 * @generated
-	 */
-	public Adapter createNamedNativeQueryAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.NamedQueries <em>Named Queries</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.NamedQueries
-	 * @generated
-	 */
-	public Adapter createNamedQueriesAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.NamedQuery <em>Named Query</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.NamedQuery
-	 * @generated
-	 */
-	public Adapter createNamedQueryAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToMany <em>One To Many</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -905,160 +655,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PersistenceContext <em>Persistence Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PersistenceContext
-	 * @generated
-	 */
-	public Adapter createPersistenceContextAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PersistenceContexts <em>Persistence Contexts</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PersistenceContexts
-	 * @generated
-	 */
-	public Adapter createPersistenceContextsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PersistenceUnit <em>Persistence Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PersistenceUnit
-	 * @generated
-	 */
-	public Adapter createPersistenceUnitAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PersistenceUnits <em>Persistence Units</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PersistenceUnits
-	 * @generated
-	 */
-	public Adapter createPersistenceUnitsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PostLoad <em>Post Load</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PostLoad
-	 * @generated
-	 */
-	public Adapter createPostLoadAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PostPersist <em>Post Persist</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PostPersist
-	 * @generated
-	 */
-	public Adapter createPostPersistAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PostRemove <em>Post Remove</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PostRemove
-	 * @generated
-	 */
-	public Adapter createPostRemoveAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PostUpdate <em>Post Update</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PostUpdate
-	 * @generated
-	 */
-	public Adapter createPostUpdateAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PrePersist <em>Pre Persist</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PrePersist
-	 * @generated
-	 */
-	public Adapter createPrePersistAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PreRemove <em>Pre Remove</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PreRemove
-	 * @generated
-	 */
-	public Adapter createPreRemoveAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PreUpdate <em>Pre Update</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PreUpdate
-	 * @generated
-	 */
-	public Adapter createPreUpdateAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn <em>Primary Key Join Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1083,20 +679,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPrimaryKeyJoinColumnsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.QueryHint <em>Query Hint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.QueryHint
-	 * @generated
-	 */
-	public Adapter createQueryHintAdapter() {
 		return null;
 	}
 
@@ -1139,20 +721,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSequenceGeneratorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.SqlResultSetMapping <em>Sql Result Set Mapping</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.SqlResultSetMapping
-	 * @generated
-	 */
-	public Adapter createSqlResultSetMappingAdapter() {
 		return null;
 	}
 

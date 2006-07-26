@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReference.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PAnnotatedEReference.java,v 1.3 2006/07/26 12:43:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NotAnnotatedAsEmbed AssociationAgreeWithReference AssociationWellFormed'"
  * @generated
  */
-public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature{
+public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -58,6 +58,7 @@ public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature{
 	 * @see #setAnnotatedEReference(EReference)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_AnnotatedEReference()
 	 * @model required="true"
+	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EReference getAnnotatedEReference();

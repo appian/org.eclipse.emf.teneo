@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PrimaryKeyJoinColumns.java,v 1.2 2006/07/04 21:56:29 mtaal Exp $
+ * $Id: PrimaryKeyJoinColumns.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -21,9 +21,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getPrimaryKeyJoinColumns()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EClass'"
+ *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
  * @generated
  */
-public interface PrimaryKeyJoinColumns extends PAnnotation{
+public interface PrimaryKeyJoinColumns extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

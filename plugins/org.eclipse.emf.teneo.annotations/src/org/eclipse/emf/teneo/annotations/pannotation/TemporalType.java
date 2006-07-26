@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TemporalType.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: TemporalType.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -78,7 +78,7 @@ public final class TemporalType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final TemporalType DATE_LITERAL = new TemporalType(DATE, "DATE");
+	public static final TemporalType DATE_LITERAL = new TemporalType(DATE, "DATE", "DATE");
 
 	/**
 	 * The '<em><b>TIME</b></em>' literal object.
@@ -87,7 +87,7 @@ public final class TemporalType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final TemporalType TIME_LITERAL = new TemporalType(TIME, "TIME");
+	public static final TemporalType TIME_LITERAL = new TemporalType(TIME, "TIME", "TIME");
 
 	/**
 	 * The '<em><b>TIMESTAMP</b></em>' literal object.
@@ -96,7 +96,7 @@ public final class TemporalType extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final TemporalType TIMESTAMP_LITERAL = new TemporalType(TIMESTAMP, "TIMESTAMP");
+	public static final TemporalType TIMESTAMP_LITERAL = new TemporalType(TIMESTAMP, "TIMESTAMP", "TIMESTAMP");
 
 	/**
 	 * An array of all the '<em><b>Temporal Type</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc
@@ -120,15 +120,15 @@ public final class TemporalType extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Temporal Type</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Temporal Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 */
-	public static TemporalType get(String name) {
+	public static TemporalType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			TemporalType result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -136,7 +136,23 @@ public final class TemporalType extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Temporal Type</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Temporal Type</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static TemporalType getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			TemporalType result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Temporal Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
@@ -152,11 +168,12 @@ public final class TemporalType extends AbstractEnumerator {
 
 	/**
 	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private TemporalType(int value, String name) {
-		super(value, name);
+	private TemporalType(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } // TemporalType

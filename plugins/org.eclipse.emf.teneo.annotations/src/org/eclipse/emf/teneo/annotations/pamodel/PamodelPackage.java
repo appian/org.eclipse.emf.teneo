@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.3 2006/07/26 12:43:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EReference;
  * @model kind="package"
  * @generated
  */
-public interface PamodelPackage extends EPackage{
+public interface PamodelPackage extends EPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -86,7 +86,7 @@ public interface PamodelPackage extends EPackage{
 	int PANNOTATED_EMODEL_ELEMENT__TRANSIENT = 1;
 
 	/**
-	 * The number of structural features of the the '<em>PAnnotated EModel Element</em>' class.
+	 * The number of structural features of the '<em>PAnnotated EModel Element</em>' class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * @generated
@@ -113,7 +113,7 @@ public interface PamodelPackage extends EPackage{
 	int PANNOTATED_MODEL__PA_EPACKAGES = 0;
 
 	/**
-	 * The number of structural features of the the '<em>PAnnotated Model</em>' class.
+	 * The number of structural features of the '<em>PAnnotated Model</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
@@ -194,7 +194,7 @@ public interface PamodelPackage extends EPackage{
 	int PANNOTATED_EPACKAGE__TABLE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the the '<em>PAnnotated EPackage</em>' class.
+	 * The number of structural features of the '<em>PAnnotated EPackage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -293,31 +293,13 @@ public interface PamodelPackage extends EPackage{
 	int PANNOTATED_ECLASS__EMBEDDABLE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Exclude Default Listeners</b></em>' containment reference. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ECLASS__EXCLUDE_DEFAULT_LISTENERS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Exclude Superclass Listeners</b></em>' containment reference. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ECLASS__EXCLUDE_SUPERCLASS_LISTENERS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 8;
-
-	/**
 	 * The feature id for the '<em><b>Mapped Superclass</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS__MAPPED_SUPERCLASS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 9;
+	int PANNOTATED_ECLASS__MAPPED_SUPERCLASS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Entity</b></em>' containment reference.
@@ -326,16 +308,7 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS__ENTITY = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 10;
-
-	/**
-	 * The feature id for the '<em><b>Entity Listener</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ECLASS__ENTITY_LISTENER = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 11;
+	int PANNOTATED_ECLASS__ENTITY = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Id Class</b></em>' containment reference.
@@ -344,7 +317,7 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS__ID_CLASS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 12;
+	int PANNOTATED_ECLASS__ID_CLASS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Inheritance</b></em>' containment reference.
@@ -353,16 +326,7 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS__INHERITANCE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 13;
-
-	/**
-	 * The feature id for the '<em><b>Join Column</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ECLASS__JOIN_COLUMN = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 14;
+	int PANNOTATED_ECLASS__INHERITANCE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Primary Key Join Columns</b></em>' containment reference.
@@ -371,7 +335,7 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 15;
+	int PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Secondary Tables</b></em>' containment reference.
@@ -380,7 +344,7 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS__SECONDARY_TABLES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 16;
+	int PANNOTATED_ECLASS__SECONDARY_TABLES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Sequence Generator</b></em>' containment reference.
@@ -389,7 +353,7 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS__SEQUENCE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 17;
+	int PANNOTATED_ECLASS__SEQUENCE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Table</b></em>' containment reference.
@@ -398,7 +362,7 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS__TABLE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 18;
+	int PANNOTATED_ECLASS__TABLE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
@@ -407,7 +371,7 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS__TABLE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 19;
+	int PANNOTATED_ECLASS__TABLE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Association Overrides</b></em>' containment reference.
@@ -416,16 +380,16 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 20;
+	int PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
-	 * The number of structural features of the the '<em>PAnnotated EClass</em>' class.
+	 * The number of structural features of the '<em>PAnnotated EClass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 21;
+	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl <em>PAnnotated EStructural Feature</em>}' class.
@@ -787,7 +751,7 @@ public interface PamodelPackage extends EPackage{
 	int PANNOTATED_EATTRIBUTE__TYPE = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
 
 	/**
-	 * The number of structural features of the the '<em>PAnnotated EAttribute</em>' class.
+	 * The number of structural features of the '<em>PAnnotated EAttribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1012,7 +976,7 @@ public interface PamodelPackage extends EPackage{
 	int PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
 
 	/**
-	 * The number of structural features of the the '<em>PAnnotated EReference</em>' class.
+	 * The number of structural features of the '<em>PAnnotated EReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1207,26 +1171,6 @@ public interface PamodelPackage extends EPackage{
 	EReference getPAnnotatedEClass_Embeddable();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExcludeDefaultListeners <em>Exclude Default Listeners</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Exclude Default Listeners</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExcludeDefaultListeners()
-	 * @see #getPAnnotatedEClass()
-	 * @generated
-	 */
-	EReference getPAnnotatedEClass_ExcludeDefaultListeners();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExcludeSuperclassListeners <em>Exclude Superclass Listeners</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Exclude Superclass Listeners</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExcludeSuperclassListeners()
-	 * @see #getPAnnotatedEClass()
-	 * @generated
-	 */
-	EReference getPAnnotatedEClass_ExcludeSuperclassListeners();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getMappedSuperclass <em>Mapped Superclass</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Mapped Superclass</em>'.
@@ -1247,16 +1191,6 @@ public interface PamodelPackage extends EPackage{
 	EReference getPAnnotatedEClass_Entity();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEntityListener <em>Entity Listener</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Entity Listener</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEntityListener()
-	 * @see #getPAnnotatedEClass()
-	 * @generated
-	 */
-	EReference getPAnnotatedEClass_EntityListener();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getIdClass <em>Id Class</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Id Class</em>'.
@@ -1275,16 +1209,6 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 */
 	EReference getPAnnotatedEClass_Inheritance();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getJoinColumn <em>Join Column</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Join Column</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getJoinColumn()
-	 * @see #getPAnnotatedEClass()
-	 * @generated
-	 */
-	EReference getPAnnotatedEClass_JoinColumn();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}'.
@@ -1680,6 +1604,531 @@ public interface PamodelPackage extends EPackage{
 	 * @generated
 	 */
 	PamodelFactory getPamodelFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals  {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEModelElementImpl <em>PAnnotated EModel Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEModelElementImpl
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PamodelPackageImpl#getPAnnotatedEModelElement()
+		 * @generated
+		 */
+		EClass PANNOTATED_EMODEL_ELEMENT = eINSTANCE.getPAnnotatedEModelElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotated Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT = eINSTANCE.getPAnnotatedEModelElement_AnnotatedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Transient</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EMODEL_ELEMENT__TRANSIENT = eINSTANCE.getPAnnotatedEModelElement_Transient();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedModelImpl <em>PAnnotated Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedModelImpl
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PamodelPackageImpl#getPAnnotatedModel()
+		 * @generated
+		 */
+		EClass PANNOTATED_MODEL = eINSTANCE.getPAnnotatedModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Pa EPackages</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_MODEL__PA_EPACKAGES = eINSTANCE.getPAnnotatedModel_PaEPackages();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl <em>PAnnotated EPackage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PamodelPackageImpl#getPAnnotatedEPackage()
+		 * @generated
+		 */
+		EClass PANNOTATED_EPACKAGE = eINSTANCE.getPAnnotatedEPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Pa Model</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EPACKAGE__PA_MODEL = eINSTANCE.getPAnnotatedEPackage_PaModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotated EPackage</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE = eINSTANCE.getPAnnotatedEPackage_AnnotatedEPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Pa EClasses</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EPACKAGE__PA_ECLASSES = eINSTANCE.getPAnnotatedEPackage_PaEClasses();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Generator</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR = eINSTANCE.getPAnnotatedEPackage_SequenceGenerator();
+
+		/**
+		 * The meta object literal for the '<em><b>Table Generator</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EPACKAGE__TABLE_GENERATOR = eINSTANCE.getPAnnotatedEPackage_TableGenerator();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl <em>PAnnotated EClass</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PamodelPackageImpl#getPAnnotatedEClass()
+		 * @generated
+		 */
+		EClass PANNOTATED_ECLASS = eINSTANCE.getPAnnotatedEClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Pa EPackage</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__PA_EPACKAGE = eINSTANCE.getPAnnotatedEClass_PaEPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotated EClass</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__ANNOTATED_ECLASS = eINSTANCE.getPAnnotatedEClass_AnnotatedEClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Pa EStructural Features</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES = eINSTANCE.getPAnnotatedEClass_PaEStructuralFeatures();
+
+		/**
+		 * The meta object literal for the '<em><b>Attribute Overrides</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES = eINSTANCE.getPAnnotatedEClass_AttributeOverrides();
+
+		/**
+		 * The meta object literal for the '<em><b>Discriminator Column</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN = eINSTANCE.getPAnnotatedEClass_DiscriminatorColumn();
+
+		/**
+		 * The meta object literal for the '<em><b>Discriminator Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__DISCRIMINATOR_VALUE = eINSTANCE.getPAnnotatedEClass_DiscriminatorValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Embeddable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__EMBEDDABLE = eINSTANCE.getPAnnotatedEClass_Embeddable();
+
+		/**
+		 * The meta object literal for the '<em><b>Mapped Superclass</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__MAPPED_SUPERCLASS = eINSTANCE.getPAnnotatedEClass_MappedSuperclass();
+
+		/**
+		 * The meta object literal for the '<em><b>Entity</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__ENTITY = eINSTANCE.getPAnnotatedEClass_Entity();
+
+		/**
+		 * The meta object literal for the '<em><b>Id Class</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__ID_CLASS = eINSTANCE.getPAnnotatedEClass_IdClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Inheritance</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__INHERITANCE = eINSTANCE.getPAnnotatedEClass_Inheritance();
+
+		/**
+		 * The meta object literal for the '<em><b>Primary Key Join Columns</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS = eINSTANCE.getPAnnotatedEClass_PrimaryKeyJoinColumns();
+
+		/**
+		 * The meta object literal for the '<em><b>Secondary Tables</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__SECONDARY_TABLES = eINSTANCE.getPAnnotatedEClass_SecondaryTables();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Generator</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__SEQUENCE_GENERATOR = eINSTANCE.getPAnnotatedEClass_SequenceGenerator();
+
+		/**
+		 * The meta object literal for the '<em><b>Table</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__TABLE = eINSTANCE.getPAnnotatedEClass_Table();
+
+		/**
+		 * The meta object literal for the '<em><b>Table Generator</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__TABLE_GENERATOR = eINSTANCE.getPAnnotatedEClass_TableGenerator();
+
+		/**
+		 * The meta object literal for the '<em><b>Association Overrides</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES = eINSTANCE.getPAnnotatedEClass_AssociationOverrides();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl <em>PAnnotated EStructural Feature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PamodelPackageImpl#getPAnnotatedEStructuralFeature()
+		 * @generated
+		 */
+		EClass PANNOTATED_ESTRUCTURAL_FEATURE = eINSTANCE.getPAnnotatedEStructuralFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Pa EClass</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS = eINSTANCE.getPAnnotatedEStructuralFeature_PaEClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotated EStructural Feature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE = eINSTANCE.getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Attribute Overrides</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES = eINSTANCE.getPAnnotatedEStructuralFeature_AttributeOverrides();
+
+		/**
+		 * The meta object literal for the '<em><b>Columns</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS = eINSTANCE.getPAnnotatedEStructuralFeature_Columns();
+
+		/**
+		 * The meta object literal for the '<em><b>Join Table</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_TABLE = eINSTANCE.getPAnnotatedEStructuralFeature_JoinTable();
+
+		/**
+		 * The meta object literal for the '<em><b>One To Many</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__ONE_TO_MANY = eINSTANCE.getPAnnotatedEStructuralFeature_OneToMany();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Generator</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__SEQUENCE_GENERATOR = eINSTANCE.getPAnnotatedEStructuralFeature_SequenceGenerator();
+
+		/**
+		 * The meta object literal for the '<em><b>Table Generator</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR = eINSTANCE.getPAnnotatedEStructuralFeature_TableGenerator();
+
+		/**
+		 * The meta object literal for the '<em><b>Join Columns</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS = eINSTANCE.getPAnnotatedEStructuralFeature_JoinColumns();
+
+		/**
+		 * The meta object literal for the '<em><b>Id Bag</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG = eINSTANCE.getPAnnotatedEStructuralFeature_IdBag();
+
+		/**
+		 * The meta object literal for the '<em><b>Indexed</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__INDEXED = eINSTANCE.getPAnnotatedEStructuralFeature_Indexed();
+
+		/**
+		 * The meta object literal for the '<em><b>Unique</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE = eINSTANCE.getPAnnotatedEStructuralFeature_Unique();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PamodelPackageImpl#getPAnnotatedEAttribute()
+		 * @generated
+		 */
+		EClass PANNOTATED_EATTRIBUTE = eINSTANCE.getPAnnotatedEAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotated EAttribute</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EATTRIBUTE__ANNOTATED_EATTRIBUTE = eINSTANCE.getPAnnotatedEAttribute_AnnotatedEAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Basic</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EATTRIBUTE__BASIC = eINSTANCE.getPAnnotatedEAttribute_Basic();
+
+		/**
+		 * The meta object literal for the '<em><b>Enumerated</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EATTRIBUTE__ENUMERATED = eINSTANCE.getPAnnotatedEAttribute_Enumerated();
+
+		/**
+		 * The meta object literal for the '<em><b>Generated Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EATTRIBUTE__GENERATED_VALUE = eINSTANCE.getPAnnotatedEAttribute_GeneratedValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EATTRIBUTE__ID = eINSTANCE.getPAnnotatedEAttribute_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Lob</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EATTRIBUTE__LOB = eINSTANCE.getPAnnotatedEAttribute_Lob();
+
+		/**
+		 * The meta object literal for the '<em><b>Temporal</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EATTRIBUTE__TEMPORAL = eINSTANCE.getPAnnotatedEAttribute_Temporal();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EATTRIBUTE__VERSION = eINSTANCE.getPAnnotatedEAttribute_Version();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EATTRIBUTE__TYPE = eINSTANCE.getPAnnotatedEAttribute_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl <em>PAnnotated EReference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl
+		 * @see org.eclipse.emf.teneo.annotations.pamodel.impl.PamodelPackageImpl#getPAnnotatedEReference()
+		 * @generated
+		 */
+		EClass PANNOTATED_EREFERENCE = eINSTANCE.getPAnnotatedEReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotated EReference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE = eINSTANCE.getPAnnotatedEReference_AnnotatedEReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Embedded</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__EMBEDDED = eINSTANCE.getPAnnotatedEReference_Embedded();
+
+		/**
+		 * The meta object literal for the '<em><b>Embedded Id</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__EMBEDDED_ID = eINSTANCE.getPAnnotatedEReference_EmbeddedId();
+
+		/**
+		 * The meta object literal for the '<em><b>Many To Many</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__MANY_TO_MANY = eINSTANCE.getPAnnotatedEReference_ManyToMany();
+
+		/**
+		 * The meta object literal for the '<em><b>Many To One</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__MANY_TO_ONE = eINSTANCE.getPAnnotatedEReference_ManyToOne();
+
+		/**
+		 * The meta object literal for the '<em><b>Map Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__MAP_KEY = eINSTANCE.getPAnnotatedEReference_MapKey();
+
+		/**
+		 * The meta object literal for the '<em><b>One To One</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__ONE_TO_ONE = eINSTANCE.getPAnnotatedEReference_OneToOne();
+
+		/**
+		 * The meta object literal for the '<em><b>Order By</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__ORDER_BY = eINSTANCE.getPAnnotatedEReference_OrderBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Primary Key Join Column</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN = eINSTANCE.getPAnnotatedEReference_PrimaryKeyJoinColumn();
+
+	}
 
 	/**
 	 * @return Returns the EReference in paElementEClass that has pAnnotationEClass as reference type.

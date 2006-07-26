@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationSwitch.java,v 1.3 2006/07/22 13:10:04 mtaal Exp $
+ * $Id: PannotationSwitch.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -16,7 +16,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.ColumnResult;
 import org.eclipse.emf.teneo.annotations.pannotation.Columns;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
@@ -24,13 +23,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
-import org.eclipse.emf.teneo.annotations.pannotation.EntityListener;
-import org.eclipse.emf.teneo.annotations.pannotation.EntityResult;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
-import org.eclipse.emf.teneo.annotations.pannotation.ExcludeDefaultListeners;
-import org.eclipse.emf.teneo.annotations.pannotation.ExcludeSuperclassListeners;
-import org.eclipse.emf.teneo.annotations.pannotation.FieldResult;
-import org.eclipse.emf.teneo.annotations.pannotation.FlushMode;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
@@ -45,34 +38,17 @@ import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedNativeQueries;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedNativeQuery;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedQueries;
-import org.eclipse.emf.teneo.annotations.pannotation.NamedQuery;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.Parameter;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceContext;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceContexts;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceUnit;
-import org.eclipse.emf.teneo.annotations.pannotation.PersistenceUnits;
-import org.eclipse.emf.teneo.annotations.pannotation.PostLoad;
-import org.eclipse.emf.teneo.annotations.pannotation.PostPersist;
-import org.eclipse.emf.teneo.annotations.pannotation.PostRemove;
-import org.eclipse.emf.teneo.annotations.pannotation.PostUpdate;
-import org.eclipse.emf.teneo.annotations.pannotation.PrePersist;
-import org.eclipse.emf.teneo.annotations.pannotation.PreRemove;
-import org.eclipse.emf.teneo.annotations.pannotation.PreUpdate;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
-import org.eclipse.emf.teneo.annotations.pannotation.QueryHint;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.SqlResultSetMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
@@ -218,13 +194,6 @@ public class PannotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PannotationPackage.COLUMN_RESULT: {
-				ColumnResult columnResult = (ColumnResult)theEObject;
-				Object result = caseColumnResult(columnResult);
-				if (result == null) result = casePAnnotation(columnResult);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PannotationPackage.DISCRIMINATOR_COLUMN: {
 				DiscriminatorColumn discriminatorColumn = (DiscriminatorColumn)theEObject;
 				Object result = caseDiscriminatorColumn(discriminatorColumn);
@@ -267,52 +236,10 @@ public class PannotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PannotationPackage.ENTITY_LISTENER: {
-				EntityListener entityListener = (EntityListener)theEObject;
-				Object result = caseEntityListener(entityListener);
-				if (result == null) result = casePAnnotation(entityListener);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.ENTITY_RESULT: {
-				EntityResult entityResult = (EntityResult)theEObject;
-				Object result = caseEntityResult(entityResult);
-				if (result == null) result = casePAnnotation(entityResult);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PannotationPackage.ENUMERATED: {
 				Enumerated enumerated = (Enumerated)theEObject;
 				Object result = caseEnumerated(enumerated);
 				if (result == null) result = casePAnnotation(enumerated);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.EXCLUDE_DEFAULT_LISTENERS: {
-				ExcludeDefaultListeners excludeDefaultListeners = (ExcludeDefaultListeners)theEObject;
-				Object result = caseExcludeDefaultListeners(excludeDefaultListeners);
-				if (result == null) result = casePAnnotation(excludeDefaultListeners);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.EXCLUDE_SUPERCLASS_LISTENERS: {
-				ExcludeSuperclassListeners excludeSuperclassListeners = (ExcludeSuperclassListeners)theEObject;
-				Object result = caseExcludeSuperclassListeners(excludeSuperclassListeners);
-				if (result == null) result = casePAnnotation(excludeSuperclassListeners);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.FIELD_RESULT: {
-				FieldResult fieldResult = (FieldResult)theEObject;
-				Object result = caseFieldResult(fieldResult);
-				if (result == null) result = casePAnnotation(fieldResult);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.FLUSH_MODE: {
-				FlushMode flushMode = (FlushMode)theEObject;
-				Object result = caseFlushMode(flushMode);
-				if (result == null) result = casePAnnotation(flushMode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -407,34 +334,6 @@ public class PannotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PannotationPackage.NAMED_NATIVE_QUERIES: {
-				NamedNativeQueries namedNativeQueries = (NamedNativeQueries)theEObject;
-				Object result = caseNamedNativeQueries(namedNativeQueries);
-				if (result == null) result = casePAnnotation(namedNativeQueries);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.NAMED_NATIVE_QUERY: {
-				NamedNativeQuery namedNativeQuery = (NamedNativeQuery)theEObject;
-				Object result = caseNamedNativeQuery(namedNativeQuery);
-				if (result == null) result = casePAnnotation(namedNativeQuery);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.NAMED_QUERIES: {
-				NamedQueries namedQueries = (NamedQueries)theEObject;
-				Object result = caseNamedQueries(namedQueries);
-				if (result == null) result = casePAnnotation(namedQueries);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.NAMED_QUERY: {
-				NamedQuery namedQuery = (NamedQuery)theEObject;
-				Object result = caseNamedQuery(namedQuery);
-				if (result == null) result = casePAnnotation(namedQuery);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PannotationPackage.ONE_TO_MANY: {
 				OneToMany oneToMany = (OneToMany)theEObject;
 				Object result = caseOneToMany(oneToMany);
@@ -462,83 +361,6 @@ public class PannotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PannotationPackage.PERSISTENCE_CONTEXT: {
-				PersistenceContext persistenceContext = (PersistenceContext)theEObject;
-				Object result = casePersistenceContext(persistenceContext);
-				if (result == null) result = casePAnnotation(persistenceContext);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.PERSISTENCE_CONTEXTS: {
-				PersistenceContexts persistenceContexts = (PersistenceContexts)theEObject;
-				Object result = casePersistenceContexts(persistenceContexts);
-				if (result == null) result = casePAnnotation(persistenceContexts);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.PERSISTENCE_UNIT: {
-				PersistenceUnit persistenceUnit = (PersistenceUnit)theEObject;
-				Object result = casePersistenceUnit(persistenceUnit);
-				if (result == null) result = casePAnnotation(persistenceUnit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.PERSISTENCE_UNITS: {
-				PersistenceUnits persistenceUnits = (PersistenceUnits)theEObject;
-				Object result = casePersistenceUnits(persistenceUnits);
-				if (result == null) result = casePAnnotation(persistenceUnits);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.POST_LOAD: {
-				PostLoad postLoad = (PostLoad)theEObject;
-				Object result = casePostLoad(postLoad);
-				if (result == null) result = casePAnnotation(postLoad);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.POST_PERSIST: {
-				PostPersist postPersist = (PostPersist)theEObject;
-				Object result = casePostPersist(postPersist);
-				if (result == null) result = casePAnnotation(postPersist);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.POST_REMOVE: {
-				PostRemove postRemove = (PostRemove)theEObject;
-				Object result = casePostRemove(postRemove);
-				if (result == null) result = casePAnnotation(postRemove);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.POST_UPDATE: {
-				PostUpdate postUpdate = (PostUpdate)theEObject;
-				Object result = casePostUpdate(postUpdate);
-				if (result == null) result = casePAnnotation(postUpdate);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.PRE_PERSIST: {
-				PrePersist prePersist = (PrePersist)theEObject;
-				Object result = casePrePersist(prePersist);
-				if (result == null) result = casePAnnotation(prePersist);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.PRE_REMOVE: {
-				PreRemove preRemove = (PreRemove)theEObject;
-				Object result = casePreRemove(preRemove);
-				if (result == null) result = casePAnnotation(preRemove);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.PRE_UPDATE: {
-				PreUpdate preUpdate = (PreUpdate)theEObject;
-				Object result = casePreUpdate(preUpdate);
-				if (result == null) result = casePAnnotation(preUpdate);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN: {
 				PrimaryKeyJoinColumn primaryKeyJoinColumn = (PrimaryKeyJoinColumn)theEObject;
 				Object result = casePrimaryKeyJoinColumn(primaryKeyJoinColumn);
@@ -550,13 +372,6 @@ public class PannotationSwitch {
 				PrimaryKeyJoinColumns primaryKeyJoinColumns = (PrimaryKeyJoinColumns)theEObject;
 				Object result = casePrimaryKeyJoinColumns(primaryKeyJoinColumns);
 				if (result == null) result = casePAnnotation(primaryKeyJoinColumns);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.QUERY_HINT: {
-				QueryHint queryHint = (QueryHint)theEObject;
-				Object result = caseQueryHint(queryHint);
-				if (result == null) result = casePAnnotation(queryHint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -578,13 +393,6 @@ public class PannotationSwitch {
 				SequenceGenerator sequenceGenerator = (SequenceGenerator)theEObject;
 				Object result = caseSequenceGenerator(sequenceGenerator);
 				if (result == null) result = casePAnnotation(sequenceGenerator);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.SQL_RESULT_SET_MAPPING: {
-				SqlResultSetMapping sqlResultSetMapping = (SqlResultSetMapping)theEObject;
-				Object result = caseSqlResultSetMapping(sqlResultSetMapping);
-				if (result == null) result = casePAnnotation(sqlResultSetMapping);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -731,21 +539,6 @@ public class PannotationSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Column Result</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Column Result</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseColumnResult(ColumnResult object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpretting the object as an instance of '<em>Discriminator Column</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -862,96 +655,6 @@ public class PannotationSwitch {
 	 * @generated
 	 */
 	public Object caseEntity(Entity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Entity Listener</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Entity Listener</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseEntityListener(EntityListener object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Entity Result</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Entity Result</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseEntityResult(EntityResult object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Exclude Default Listeners</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Exclude Default Listeners</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseExcludeDefaultListeners(ExcludeDefaultListeners object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Exclude Superclass Listeners</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Exclude Superclass Listeners</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseExcludeSuperclassListeners(ExcludeSuperclassListeners object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Field Result</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Field Result</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseFieldResult(FieldResult object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Flush Mode</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Flush Mode</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseFlushMode(FlushMode object) {
 		return null;
 	}
 
@@ -1121,66 +824,6 @@ public class PannotationSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Named Native Queries</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Named Native Queries</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseNamedNativeQueries(NamedNativeQueries object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Named Native Query</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Named Native Query</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseNamedNativeQuery(NamedNativeQuery object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Named Queries</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Named Queries</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseNamedQueries(NamedQueries object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Named Query</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Named Query</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseNamedQuery(NamedQuery object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpretting the object as an instance of '<em>One To Many</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1226,171 +869,6 @@ public class PannotationSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Persistence Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Persistence Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePersistenceContext(PersistenceContext object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Persistence Contexts</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Persistence Contexts</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePersistenceContexts(PersistenceContexts object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Persistence Unit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Persistence Unit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePersistenceUnit(PersistenceUnit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Persistence Units</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Persistence Units</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePersistenceUnits(PersistenceUnits object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Post Load</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Post Load</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePostLoad(PostLoad object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Post Persist</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Post Persist</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePostPersist(PostPersist object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Post Remove</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Post Remove</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePostRemove(PostRemove object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Post Update</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Post Update</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePostUpdate(PostUpdate object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Pre Persist</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Pre Persist</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePrePersist(PrePersist object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Pre Remove</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Pre Remove</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePreRemove(PreRemove object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Pre Update</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Pre Update</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePreUpdate(PreUpdate object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpretting the object as an instance of '<em>Primary Key Join Column</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1417,21 +895,6 @@ public class PannotationSwitch {
 	 * @generated
 	 */
 	public Object casePrimaryKeyJoinColumns(PrimaryKeyJoinColumns object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Query Hint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Query Hint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseQueryHint(QueryHint object) {
 		return null;
 	}
 
@@ -1477,21 +940,6 @@ public class PannotationSwitch {
 	 * @generated
 	 */
 	public Object caseSequenceGenerator(SequenceGenerator object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Sql Result Set Mapping</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Sql Result Set Mapping</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseSqlResultSetMapping(SqlResultSetMapping object) {
 		return null;
 	}
 

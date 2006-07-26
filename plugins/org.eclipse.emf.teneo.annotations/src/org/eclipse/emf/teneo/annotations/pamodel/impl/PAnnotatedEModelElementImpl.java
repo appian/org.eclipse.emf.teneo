@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEModelElementImpl.java,v 1.2 2006/07/04 21:56:30 mtaal Exp $
+ * $Id: PAnnotatedEModelElementImpl.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -14,7 +14,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -70,7 +69,7 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return PamodelPackage.eINSTANCE.getPAnnotatedEModelElement();
+		return PamodelPackage.Literals.PANNOTATED_EMODEL_ELEMENT;
 	}
 
 	/**
@@ -80,7 +79,7 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 */
 	public ENamedElement getAnnotatedElement() {
 		ENamedElement annotatedElement = basicGetAnnotatedElement();
-		return annotatedElement == null ? null : (ENamedElement)eResolveProxy((InternalEObject)annotatedElement);
+		return annotatedElement != null && annotatedElement.eIsProxy() ? (ENamedElement)eResolveProxy((InternalEObject)annotatedElement) : annotatedElement;
 	}
 
 	/**
@@ -145,16 +144,12 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT:
-					return basicSetTransient(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT:
+				return basicSetTransient(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -162,15 +157,15 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
 				if (resolve) return getAnnotatedElement();
 				return basicGetAnnotatedElement();
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT:
 				return getTransient();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -178,8 +173,8 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
 				setAnnotatedElement((ENamedElement)newValue);
 				return;
@@ -187,7 +182,7 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 				setTransient((Transient)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -195,8 +190,8 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
 				setAnnotatedElement((ENamedElement)null);
 				return;
@@ -204,7 +199,7 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 				setTransient((Transient)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -212,14 +207,14 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
 				return basicGetAnnotatedElement() != null;
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT:
 				return transient_ != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**

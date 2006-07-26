@@ -2,14 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdBagImpl.java,v 1.2 2006/07/04 21:56:29 mtaal Exp $
+ * $Id: IdBagImpl.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -104,7 +103,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return PannotationPackage.eINSTANCE.getIdBag();
+		return PannotationPackage.Literals.ID_BAG;
 	}
 
 	/**
@@ -114,8 +113,8 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 */
 	public EModelElement getEModelElement() {
 		if (eModelElement != null && eModelElement.eIsProxy()) {
-			EModelElement oldEModelElement = eModelElement;
-			eModelElement = (EModelElement)eResolveProxy((InternalEObject)eModelElement);
+			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
+			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
@@ -192,8 +191,8 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PannotationPackage.ID_BAG__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
@@ -202,7 +201,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 			case PannotationPackage.ID_BAG__TYPE:
 				return getType();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -210,8 +209,8 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PannotationPackage.ID_BAG__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
@@ -222,7 +221,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 				setType((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -230,8 +229,8 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PannotationPackage.ID_BAG__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
@@ -242,7 +241,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 				setType(TYPE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -250,8 +249,8 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PannotationPackage.ID_BAG__EMODEL_ELEMENT:
 				return eModelElement != null;
 			case PannotationPackage.ID_BAG__GENERATOR:
@@ -259,7 +258,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 			case PannotationPackage.ID_BAG__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
