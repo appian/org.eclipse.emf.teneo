@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+ 
+ 	Licensed under the Apache License, Version 2.0 (the "License");
+ 	you may not use this file except in compliance with the License.
+ 	You may obtain a copy of the License at
+ 
+ 		http://www.apache.org/licenses/LICENSE-2.0
+ 
+ 	Unless required by applicable law or agreed to in writing, software
+ 	distributed under the License is distributed on an "AS IS" BASIS,
+ 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ 	See the License for the specific language governing permissions and
+ 	limitations under the License.
+-->
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document> 
+  <header> 
+    <title>Download and Install</title> 
+    <notice>Describes the steps to install hibernate and the hibernate emf integration.</notice>
+    <abstract>The installation consists of the steps listed below.</abstract> 
+  </header> 
+  <body> 
+	  <section id="emf">
+      <title>EMF Installation</title>
+     	<p>EMF can be installed in Eclipse using the Eclipse update manager. 
+			 See <a href="http://eclipse.org/emf/docs.php?doc=docs/UsingUpdateManager/UsingUpdateManager.html">here</a> for more information.
+			 It is best to install the EMF SDK 2.2.* which contains the complete bundle with emf, xsd and sdo. 
+		</p>
+	 </section>
+    <section>
+     	<title>EMF - Hibernate Persistency Plugin Installation</title>
+		<p> The EMF Persistency plugin can be downloaded from the elver.org update site. 
+			To configure this update site in Eclipse go to: <em>Help &gt; Software Updates &gt; Find and Install</em>. Select
+			'Search for new features to install' and click next.
+		</p>
+		<p> At this window create a new update site by clicking
+			on 'New Remote Site'. Enter any name you want, as a url enter: <em>http://update.elver.org/store</em>, 
+			and press ok. 
+			</p>
+		<p>Select the newly created update site and press finish. When the update site contents are shown, select the 
+			EMF Hibernate Persistency (followed by version information) Feature.</p>
+		<p>The feature consists of a number of plugins: org.elver.store.annotations (responsible for the EJB3-like annotations),
+			org.elver.store and org.elver.store.eclipse (contains the OR Mapper ui and the Resource Utility) and the 
+			org.elver.store.hibernate.runtime plugin containing all runtime jars.</p>
+	</section>
+	 <section>
+		 <title>Hibernate Libraries</title>
+		 <p>The org.elver.store.hibernate.runtime contains a subset of the Hibernate libraries. These have been used to run the 
+			tests. For the remaining Hibernate runtime libraries please 
+			visit: <a href="http://www.hibernate.org">the hibernate website</a>.</p>
+	 </section>
+	<section id="emfjpoxruntime">
+     	<title>Install the EMF - Hibernate Runtime plugin</title>
+		<p>The installed runtime plugin (org.elver.store.hibernate.runtime) can be used in two ways: 
+			1) in an EMF model plugin, 2) in a non-plugin project. </p>
+			<p></p><p>
+			<img src="images/plugin_dependency_reexport.gif" alt="Setting plugin dependency"/>
+			</p>
+		<section>
+			<title>Using the runtime plugin in an EMF model plugin</title>
+			<p>To install the runtime plugin in an EMF model plugin go through the following steps (in this order):</p>
+			<ol>
+				<li>In the plugin.xml, dependency tab, of the EMF model plugin project add a dependency to 
+				the org.elver.store.hibernate.runtime plugin. Enable this plugin for export (reexport dependency).</li>
+				<li>Add the following line to the Manifest.MF of the EMF model plugin project 
+					(see <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why):
+					<p>Eclipse-RegisterBuddy: org.elver.store.hibernate.runtime</p>
+				</li>
+				<li>Add a JDBC driver to the EMF editor (or the model) plugin project. If only added to the 
+				EMF model project ensure that the EMF editor project has access to the jdbc driver.</li>
+			</ol>
+			<p></p>
+			<p>
+			<img src="images/registerbuddy.jpg" alt="Setting register buddy"/>
+			</p>
+			<p><strong>From here please follow either the <a href="quick_tutorial.html">Quick Start</a> or 
+				<a href="tutorialone/tutorial1_intro.html">the Library Tutorial</a>.</strong></p>
+		</section>
+		<section>
+			<title>Installing the runtime layer in a non-plugin EMF project</title>
+			<p>In case of a non-plugin project all the jar-files present in the following plugins should be in the classpath:</p>
+			<ul>
+				<li>org.elver.store</li>
+				<li>org.elver.store.annotations</li>
+				<li>	org.elver.store.hibernate.runtime</li>
+			</ul>
+			<p>In addition a jdbc driver should be added to the classpath.</p>
+		</section>
+	</section>
+  </body> 
+</document>

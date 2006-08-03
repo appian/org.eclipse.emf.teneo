@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>FeatureMap/Mixed content support</title> 
+		<abstract>Discusses how FeatureMaps are supported in the persistency solution</abstract>
+	</header> 
+	<body>
+		<p>EMF uses Feature Maps in a number of situations, for example to implement XML Schema repeating 
+		model groups or to implement derived features. The Elver persistency layer supports 
+		Feature Maps and generates the required JDO mappings. Elver FeatureMap support is hidden 
+		for the developer. The information here is mainly intended to help understand
+		the created mappings and relational tables.</p>
+		<p>See <a href="http://www.eclipse.org/emf/docs/overviews/FeatureMap.pdf">here</a> for
+			a description on how EMF uses FeatureMaps to implement derived
+		features. This page uses a similar example.</p>
+		<section>
+			<title>FeatureMap for derived features</title>
+				<section>
+					<title>Example Model</title>
+					<p>This section illustrates how a FeatureMap for a derived feature is mapped and
+						persisted. The model is defined below using an XML Schema.
+					</p>
+				<source><![CDATA[
+<xsd:complexType name="Supplier">
+	<xsd:sequence>
+		<xsd:element name="name" type="xsd:string"/>
+  			<xsd:choice maxOccurs="unbounded" ecore:name="orders">
+  				<xsd:element name="preferredOrders" type="PurchaseOrder"/>
+  				<xsd:element name="standardOrders" type="PurchaseOrder"/>
+  				<xsd:element name="hardCopyOrderReference" type="xsd:string"/>
+  				<xsd:element name="hardCopyOrderNumber" type="xsd:long"/>
+	  		</xsd:choice>
+  	</xsd:sequence>
+</xsd:complexType>
+			]]></source>
+					<p>The xsd:choice with maxOccurs="unbounded" results in a FeatureMap EAttribute with
+						name orders. In the generated java code this will result in an extra member (named orders)
+						and accessor methods. </p>
+					<p>There are 4 derived features. The first two are references to PurchaseOrder, the last two
+						are primitive/simple type derived features. </p>
+				</section>
+				<section>
+					<title>Generated Code by EMF</title>
+					<p>EMF will generate the relevant methods to access the derived features. Derived features
+					will not have java members but will refer to accessor of the FeatureMap EAttribute. For example
+					the following code shows how the getPreferredOrders uses the getOrders accessor.</p>
+					<source>
+public EList getPreferredOrders() {
+	return ((FeatureMap)getOrders()).list(SimplefeaturemapPackage.eINSTANCE.getSupplier_PreferredOrders());
+}
+				</source>
+				</section>
+				<section>
+					<title>Mapping to a relational store</title>
+					<p>A FeatureMap is actually an EList with FeatureMap.Entry objects as elements. 
+						A FeatureMap.Entry has two members: 1) a StructuralFeature which defines what type of entry it is, 
+						and 2) the actual value.</p>
+					<p>For the relational mapping this same structure is 
+						used. Elver maps a featuremap as a collection with an embedded type. The embedded type is the 
+						org.elver.store.jpox.emf.elist.GenericFeatureMapEntry which implements FeatureMap.Entry.
+						Each FeatureMap EAttribute is mapped separately and the entries of one FeatureMap EAttribute are 
+						persisted in a separate join table (see the jpox website for embedded collections here <a href="http://www.jpox.org/docs/1_1/embedded.html#Collection">here</a>).
+					</p>
+					<p>The mapping for the orders property is as follows:</p>
+				<source><![CDATA[
+<field name="orders" persistence-modifier="persistent">
+	<collection element-type="org.elver.store.jpox.emf.elist.GenericFeatureMapEntry">
+		<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+	</collection>
+	<join/>
+	<element>
+		<embedded>
+		<field name="featurePath"/>
+		<field name="localAnyValue" embedded="true">
+			<extension vendor-name="jpox" key="implementation-classes" value="long"/>
+			<extension vendor-name="elver.org" key="estructuralfeatures" value="hardCopyOrderNumber"/>
+		</field>
+		<field name="localReferenceValue" embedded="true">
+			<extension vendor-name="jpox" key="implementation-classes" 
+				value="org.elver.store.jpox.emf.mapping.AnyTypeEObject"/>
+			<extension vendor-name="elver.org" key="estructuralfeatures" value=""/>
+			<foreign-key delete-action="restrict" update-action="cascade"/>
+		</field>
+		<field name="localContainmentReferenceValue" dependent="true">
+			<foreign-key delete-action="cascade" update-action="cascade"/>
+			<extension vendor-name="jpox" key="implementation-classes" 
+				value="org.elver.samples.emf.schemaconstructs.simplefeaturemap.impl.PurchaseOrderImpl"/>
+			<extension vendor-name="elver.org" key="estructuralfeatures" value="preferredOrders"/>
+		</field>
+		</embedded>
+	</element>
+</field>
+			]]></source>
+					<p>The orders property is mapped as a collection with embedded elements. The org.elver.store.jpox.emf.elist.GenericFeatureMapEntry
+					has four properties:</p>
+					<ul>
+					<li>featurePath: unique identification of the feature of that entry</li>
+					<li>localAnyValue: stores primitive types (serialized), the allowed types are specified using the extension tag.</li>
+					<li>localReferenceValue: stores a non-containment reference value, the allowed types are specified using the extension tag.</li>
+					<li>localContainmentReferenceValue: stores a containment reference value, the allowed types are specified using the extension tag.</li>
+					</ul>
+					<p>The above field mappings also have an extension with vendor-name is elver.org, this extension is used to identify the
+					EStructuralFeatures which are allowed in the specific field.</p>
+					<p>For different FeatureMap EAttributes the embedded type is the same (always the GenericFeatureMapEntry) but the extension tags will
+					differ based on the allowed types of the FeatureMap.</p>
+			<p>This persistency mapping is hidden for the developer. A FeatureMap which is read from a persistent store will contain
+			entries which implement the FeatureMap.Entry interface.</p>
+			</section>
+				<section>
+					<title>Using FeatureMaps</title>
+					<p>The persisted FeatureMaps can be used in exactly the same way as 'standard' Feature Maps
+						(See <a href="http://www.eclipse.org/emf/docs/overviews/FeatureMap.pdf">here</a>).
+						As an example of this see the code below to create a supplier and set the orders feature.</p>
+					<source>
+PurchaseOrder pref1 = factory.createPurchaseOrder();
+pref1.setName("preferred1");
+PurchaseOrder stand1 = factory.createPurchaseOrder();
+stand1.setName("standard1");
+PurchaseOrder stand2 = factory.createPurchaseOrder();
+stand2.setName("standard2");
+
+Supplier supplier = factory.createSupplier();
+supplier.setName("supplier");
+supplier.getOrders().add(SimplefeaturemapPackage.eINSTANCE.getSupplier_StandardOrders(), stand1);
+supplier.getOrders().add(SimplefeaturemapPackage.eINSTANCE.getSupplier_PreferredOrders(), pref1);
+supplier.getOrders().add(SimplefeaturemapPackage.eINSTANCE.getSupplier_HardCopyOrderReference(), "ref1");
+supplier.getOrders().add(SimplefeaturemapPackage.eINSTANCE.getSupplier_HardCopyOrderNumber(), new Long(1002));
+supplier.getOrders().add(SimplefeaturemapPackage.eINSTANCE.getSupplier_StandardOrders(), stand2);
+		</source>
+					<p>The source code below shows how this information can be retrieved using the
+						derived feature accessors. As is illustrated the persistency extensions are
+						not visible to the developer:</p>
+					<source>
+EList standardList = supplier.getStandardOrders(); // returns the list of standard orders, there are 2
+EList preferredList = supplier.getPreferredOrders(); // returns the list of preferred orders, there is 1
+EList numberList = supplier.getHardCopyOrderNumber();  // returns the list of hard copy numbers
+EList referenceList = supplier.getHardCopyOrderReference(); // returns the list hard copy references
+	        
+// Will display java.lang.Long
+System.err.println(numberList.get(0).getClass().getName());
+
+// Will display preferred1
+System.err.println(((PurchaseOrder)preferredList.get(0)).getName());
+		        
+// Retrieve directly through the main featuremap member, 
+// this is the same purchaseorder as in the previous step
+FeatureMap.Entry entry = (FeatureMap.Entry)supplier.getOrders().get(1);
+PurchaseOrder referencePO = (PurchaseOrder)entry.getValue();
+// this will also display preferred1
+System.err.println(referencePO.getName());
+	</source>
+		</section>
+	</section>
+	<section>
+			<title>FeatureMap for Mixed content</title>
+			<p>XML Schema allows text data to be mixed with XML nodes, this is called Mixed content. An 
+				example is the xml document below (copied from the 
+				<a href="http://www.w3.org/TR/xmlschema-0/#mixedContent">XML Schema Primer</a>). In this
+			XML document text (such as 'Dear Mr.') is mixed with XML nodes (such as &lt;name&gt;Robert Smith&lt;/name&gt;).</p>
+			<source><![CDATA[
+<letterBody>
+Dear Mr.<name>Robert Smith</name>.
+Your order of <quantity>1</quantity> <productName>Baby
+Monitor</productName> shipped from our warehouse on
+<shipDate>1999-05-21</shipDate>. ....
+</letterBody>	
+			]]></source>
+			<p>The support for mixed content is described in section 3.4 in the 
+				<a href="http://www.eclipse.org/emf/docs/overviews/XMLSchemaToEcoreMapping.pdf">XML Schema to Ecore Mapping</a>.
+			In short EMF generates a FeatureMap EAttribute with the name mixed for each complexType with mixed="true".
+				All elements of the complexType are part of this FeatureMap. 
+			</p>
+			<p>For example the xsd below represents the xml document above. For this XML Schema, EMF will generate
+				a java class with name LetterBody. This class has a FeatureMap member mixed. For the four elements
+				no java members are generated but only accessor methods which use the mixed FeatureMap.</p>
+			<source><![CDATA[
+<xsd:element name="letterBody">
+  <xsd:complexType mixed="true">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"/>
+      <xsd:element name="quantity" type="xsd:positiveInteger"/>
+      <xsd:element name="productName" type="xsd:string"/>
+      <xsd:element name="shipDate" type="xsd:date" minOccurs="0"/>
+      <!-- etc. -->
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+			]]></source>
+			<p>Mixed content is mapped to a relational store in a similar way as the FeatureMap above. The difference with 
+			the standard FeatureMap mapping is that a different embedded type is used (org.elver.store.jpox.emf.elist.AnyFeatureMapEntry)
+			which stores all content in one field (anyValue, see below):</p>
+			<source><![CDATA[
+<class name="org.elver.samples.emf.schemaconstructs.mixed.impl.SalutationTypeImpl" 
+	requires-extent="true" persistence-modifier="persistence-capable" detachable="true" 
+	table="SALUTATIONTYPE" identity-type="datastore">
+  <implements name="org.elver.samples.emf.schemaconstructs.mixed.SalutationType"/>
+  <implements name="org.eclipse.emf.ecore.EObject"/>
+  <implements name="org.eclipse.emf.common.notify.Notifier"/>
+  <inheritance strategy="new-table">
+    <discriminator column="DTYPE" strategy="value-map" value="SalutationType"/>
+  </inheritance>
+  <field name="mixed" persistence-modifier="persistent">
+    <collection element-type="org.elver.store.jpox.emf.elist.AnyFeatureMapEntry"/>
+    <join/>
+    <element>
+      <embedded>
+        <field name="featurePath">
+          <column name="FEATUREPATH"/>
+        </field>
+        <field name="anyValue">
+          <column name="ANYVALUE"/>
+        </field>
+      </embedded>
+    </element>
+  </field>
+</class>
+			]]></source>
+			<p><em>The current implementation has as main limitation that with mixed content no referential integrity is enforced.
+			This will be improved in a future release.</em></p>
+		</section>
+		<section>
+			<title>Benefits of this approach</title>
+			<p>The chosen approach has a number of benefits:</p>
+			<ul>
+				<li>Hidden implementation: The extensions to persist FeatureMaps are completely hidden for the application developer.
+				He/She can use the standard EMF apis.</li>
+				<li>No unnecessary columns: a (nullable) column is only created for the types which
+				can be present in a FeatureMap.Entry.</li>
+				<li>Advanced querying possible: foreign keys are created in the entry table for references 
+					to other classes (tables). This means that it is possible to join tables using advanced
+					SQL or JDOQL queries.</li>
+				<li>Features such as cascading deletes (containment) or delete restrictions work directly and without
+				any further extra specifications.</li>
+			</ul>
+		</section>
+	</body>
+</document>

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.2 2006/07/23 23:49:22 mtaal Exp $
+ * $Id: HbUtil.java,v 1.3 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -26,23 +26,22 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.cfg.Environment;
+import org.hibernate.mapping.Collection;
 import org.hibernate.mapping.MetaAttribute;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
 import org.hibernate.property.EmbeddedPropertyAccessor;
 import org.hibernate.property.PropertyAccessor;
-import org.hibernate.tuple.IdentifierProperty;
 
 /**
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HbUtil {
 
@@ -51,15 +50,12 @@ public class HbUtil {
 
 	/** Returns the correct accessor on the basis of the type of property */
 	public static PropertyAccessor getPropertyAccessor(Property mappedProperty, HbDataStore ds, String entityName) {
-		final String versionColumn = ds.getPersistenceProperties().getProperty(PersistenceOptions.VERSION_COLUMN_NAME) != null ? 
-				ds.getPersistenceProperties().getProperty(PersistenceOptions.VERSION_COLUMN_NAME) :
-					HbMapperConstants.PROPERTY_VERSION;
-		final String idColumn = ds.getPersistenceProperties().getProperty(PersistenceOptions.SYNTHETIC_ID_PROPERTY_NAME) != null ? 
-				ds.getPersistenceProperties().getProperty(PersistenceOptions.SYNTHETIC_ID_PROPERTY_NAME) :
-					HbMapperConstants.PROPERTY_ID_SYNTHETIC;
-		if (mappedProperty.getName().compareToIgnoreCase(idColumn) == 0) {
+		final String versionPropName = ds.getPersistenceOptions().getVersionColumnName();
+		final String idPropName = ds.getPersistenceOptions().getIdColumnName();
+		
+		if (mappedProperty.getName().compareToIgnoreCase(idPropName) == 0) {
 			return new IdentifierPropertyHandler();			
-		} else if (mappedProperty.getName().compareToIgnoreCase(versionColumn) == 0) {
+		} else if (mappedProperty.getName().compareToIgnoreCase(versionPropName) == 0) {
 			return ds.getHbContext().createVersionAccessor();
 		} else if (mappedProperty.getName().compareToIgnoreCase("_identifierMapper") == 0) { // name is used by hb
 			return new EmbeddedPropertyAccessor(); // new DummyPropertyHandler();
@@ -77,19 +73,23 @@ public class HbUtil {
 
 		log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + entityName + "/" + efeature.getName());
 
+		// check extra lazy
+		final boolean extraLazy = mappedProperty.getValue() instanceof Collection &&
+			((Collection)mappedProperty.getValue()).isExtraLazy();
+		
 		if (FeatureMapUtil.isFeatureMap(efeature)) {
 			return ds.getHbContext().createFeatureMapPropertyAccessor(efeature);
 		} else if (efeature instanceof EReference) {
 			final EReference eref = (EReference) efeature;
 			if (eref.isMany()) {
-				return ds.getHbContext().createEListAccessor(efeature);
+				return ds.getHbContext().createEListAccessor(efeature, extraLazy);
 			} else {
 				return ds.getHbContext().createEReferenceAccessor(eref);
 			}
 		} else {
 			final EAttribute eattr = (EAttribute) efeature;
 			if (eattr.isMany()) {
-				return ds.getHbContext().createEListAccessor(efeature);
+				return ds.getHbContext().createEListAccessor(efeature, extraLazy);
 			} else {
 				return ds.getHbContext().createEAttributeAccessor(eattr);
 			}

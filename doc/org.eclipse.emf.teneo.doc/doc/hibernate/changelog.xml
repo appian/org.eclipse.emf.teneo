@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Changelog</title> 
+	</header> 
+	<body>
+		<p>Gives an overview of changes in different releases over time</p>
+		<p></p>
+		<p>
+		<strong>Release: 0.7.5 ALPHA - 27 Augustus 2006</strong>
+		</p>
+		<ul>
+			<li>Changed default column names for version and synthetic id to e_version and e_id. These names should be valid for most databases and prevent nameclashes.
+			You can be backward compatible by setting the names back to the old values using the relevant options, (see <a href="options.html">here</a>).</li>
+		</ul>
+		<p></p>
+		<p>
+		<strong>Release: 0.7.2 ALPHA - 7 June 2006</strong>
+		</p>
+		<ul>
+			<li><strong>Changed source of annotations</strong>: ejb3 annotation now use ejb.elver.org, Elver specific annotation now use
+			annotation.elver.org, Hibernate specific annotations now use hibernate.elver.org. 
+			For backward compatibility all ejb annotations can also still be used together with 
+			annotation.elver.org.</li>
+			<li><strong>The hibernate jar files have been moved to a separate plugin: org.elver.store.hibernate.libraries</strong>. This plugin contains the 
+			Hibernate 3.2 version. If you want to use a different Hibernate version then please replace the hibernate jars in this plugin (in the 
+			installation directory of Eclipse). In a later release this will possibly be made easier.</li>
+			<li><strong>All table and column names are now in lowercase.</strong> The casing can be controlled with an option
+			(see <a href="options.html">here</a>).</li>
+			<li>EJB/Persistence annotations can be set on the EDataType, see <a href="ejb3_features.html#edatatype">here</a>.</li>
+			<li>Cleaned up the interface for setting properties. The HbDataStore.setHibernateProperties can 
+			be used to set Hibernate specific properties, the HbDataStore.setPersistenceProperties can be used to set Elver specific 
+			persistence properties.</li>
+			<li>The interface for getting the session has been changed, instead of getSession you need to call getSessionFactory().openSession() on the 
+			HbDataStore.</li>
+			<li>Added different runtime properties (see <a href="options.html">here</a>), for example to handle column/table names which are too long.</li>
+			<li>Multi level mapped super classes in the inheritance tree were not supported, this has been fixed now.</li>
+			<li>Solved a bug related to mapping of non-indexed (bag) relations, this issue occurs when a type has a reference to itself.</li>
+			<li>Solved a bug in handling of enumerates (String enumerates were stored as int)</li>
+			<li>Unique attribute on eattributes is now used to generate a unique constraint</li>
+			<li>Solved a bug related to handling of non-unique, non-indexed, one-to-many relations</li>
+			<li>Added modest support for multiple inheritance (see <a href="inheritance.html#Multiple+Inheritance+Support">here</a>)</li>
+			<li>Added/changed support for the following annotations:
+				<ul>
+				<li>Added secondary table(s), embedded id and lob, (see <a href="ejb3_features.html">here</a>)</li>
+			<li>Added idbag (see <a href="custom_annotations.html#IdBag+Annotation">here</a>)</li>
+			<li>Added type annotation on EDataType to support UserType (see <a href="custom_annotations.html#type">here</a>)</li>
+			<li>Added columns (multiple) annotation (see <a href="custom_annotations.html#type">here</a>)</li>
+			<li>Added transient annotation on EClass level (see <a href="ejb3_features.html#transient">here</a>).</li>
+			<li>Changed the format of the Elver specific Indexed and Unique annotation (see <a href="hibernate_relations.html">here</a>)</li>
+			</ul></li>
+			<li>Testcases are now also run using MS Sql Server 2000/2005.</li>
+			<li><strong>Default cacheprovider has been set to org.hibernate.cache.HashtableCacheProvider</strong>, because of ehcache issues which occur when using
+			ehcache with the default values (and hibernate 3.2), see <a href="hibernate_details.html#Default+cacheprovider+has+been+set+to+org.hibernate.cache.HashtableCacheProvider">here</a>. You can override this default setting by setting the hibernate.cache.provider_class property with the cache provider class you want to use.
+			</li>
+		</ul>
+		<p></p>
+		<p>
+		<strong>Release: 0.7.1 ALPHA - 8 May 2006</strong>
+		</p>
+		<ul>
+			<li>EList (or multiplicity unbounded) is supported for Dynamic EMF persistency.</li>
+			<li>Added support for Qualifying EClass names (based on an option) (see <a href="options.html">here</a>).</li> 
+			<li>Added Eclipse menu option to generate hibernate mapping file, the mapping file can be used instead of automatic mapping (see <a href="hibernate_details.html#orgeneration">here</a>).</li>
+			<li>Solved a mapping bug which occurs when an id and column annotation are combined, thanks to Douglas Bitting for analysing and reporting this issue.</li>
+			<li>Added support for PrimaryKeyJoinColumn for Hibernate, PrimaryKeyJoinColumn is translated to a one-to-one with constrained="true".</li>
+			<li>Added automatic escaping of table names and column names of primitive types, join table names are not automatically escaped. This should be done manually 
+			by adding a JoinTable annotation (see <a href="hibernate_details.html#escaping">here</a>).</li>
+			<li>JoinColumns were not supported correctly, has been fixed, thanks to Douglas Bitting for providing the patch.</li>
+			<li>Added option to control the name of the automatically created version and id columns (see <a href="options.html">here</a>).</li>
+			<li>Added support for xsd:list</li>
+		</ul>
+		<p></p>
+		<p>
+		<strong>Release: 0.7.0 ALPHA - 21 April 2006</strong>
+		</p>
+		<p>This release is a major rewrite compared to the previous release. This release is not backward compatible, 
+		mapping logic as well as interfaces have changed. An overview of the changes/new features:</p>
+		<ul>
+			<li>OR Mapping is now done on the basis of the ecore model (EPackages), source code is not parsed anymore, 
+			see <a href="overview.html">the overview</a>.</li>
+			<li>Automatic runtime creation of mapping, no intermediate hibernate.hbm.xml required anymore.</li>
+			<li>Support for ejb3 like annotations such as mapped superclass, composite id, UniqueConstraint etc. see 
+			<a href="ejb3_features.html">here</a>.</li>
+			<li>Support for dynamic emf (with limitations though), see <a href="dynamic.html">here</a>.</li>
+			<li>No extra ESet columns: before for each primitive type efeature an additional ESet column was created. 
+			From this release this is not done anymore.</li>
+			<li>Added support for different class loader strategies, see <a href="hibernate_details.html">here</a>.</li>
+			<li>Solved issues related to nullability of enum fields and using enums in primary keys.</li>
+			<li>Added option to control if the database schema is updated at startup, see <a href="options.html">here</a>.</li>
+			<li>Added new sections to the website: an overview, related to ejb3, options, dynamic EMF, etc.</li>
+			<li>Upgraded to EMF 2.2 and Hibernate 3.1.3.</li>
+			<li>Added eager loading of containment relations, is controlled by annotation, default 
+			behavior is lazy and not eager</li>
+			<li>Tracking modification on a resource does now work with lazy loading. Before setting
+			tracking modification to true (or add an adapter) ment that the whole resource was loaded,
+			this is now not required anymore.</li>
+			<li>Cut and paste in a the editor is now supported by setting the Cascade annotation, see
+			<a href="hibernate_details.html#cutpaste">here</a>.</li>
+			<li>Main things which have been changed since the 0.3.* release:
+			<ul>
+			<li>HQL queries should now use EClass names and EFeature names instead of java class names/members. See the tutorials 
+			on this website.</li>
+			<li>Cleaned up the HibernateHelper interface, renamed HibernateHelper to HbHelper, introduced concept of a HbDataStore,
+			see <a href="hbdatastore.html">here</a>.</li>
+			<li>Replaced the Configuration Factory with a different more flexible approach, see <a href="hbdatastore.html">here</a>.</li>
+			<li>FeatureMap support without generating additional source files, see <a href="featuremap.html">here</a>.</li>
+			<li>The options which can be passed to the mapper and Elver runtime have been restructured, see 
+			<a href="hbdatastore.html#options">here</a>.</li>
+			<li>The previous annotations for inheritance mapping, indexed or unique have changed. see 
+			<a href="inheritance.html">here</a> and <a href="hibernate_relations.html">here</a>.</li>
+			<li>Added option to set all containment lists to eager loading, see <a href="hbdatastore.html#options">here</a>.</li>
+			</ul></li>
+		</ul>
+		<p></p>
+		<p>
+		<strong>Release: 0.3.2 ALPHA - 15 November 2005</strong>
+		</p>
+		<ul>
+			<li>New webpage which describes different topics related to mapping of 
+		associations/relations, see <a href="hibernate_relations.html">here</a>.</li>
+			<li>Added support for non-indexed relations in the database. EMF only supports
+		indexed relations, however indexing of a relation is often not required and gives a performance
+		penalty. It is now possible to specify with annotations that specific relations should
+		not be indexed, see <a href="hibernate_relations.html#Mapping+non-indexed+relations">here</a>.</li>
+			<li>The non-indexed annotations can be used for nm relations also, this allows 
+			non-indexed nm relations to be persisted using one join table. See 
+			<a href="hibernate_relations.html#Mapping+non-indexed+nm+relations">here</a>.
+			</li>
+			<li>Annotations can be used to force a join table also for 1:n relations, see 
+			<a href="hibernate_relations.html#Support+duplicates%2C+Force+a+join+table+for+1%3An+relations">here</a>.
+			</li>
+			<li>Embedded types are now supported by tagging the embedded types with an annotation, 
+			see <a href="hibernate_relations.html#Embedded+components">here</a>.</li>
+			<li>It can now be specified, using an annotation, that a member is an 
+		identifier for which Hibernate (or the database) must generate unique values, 
+			see <a href="hibernate_details.html#Identifier+fields">here</a>.</li>
+			<li>Upgraded to qdox 1.6, now also jdk1.5 constructions are supported when 
+			generating hibernate mapping file.</li>
+			<li>Solved an issue related to null-pointer exceptions when abstract types 
+refered to eachother.</li>
+			<li>Solved an issue which is related to types with interface="true" this issue
+resulted in missing model fields in the mapping file.</li>
+		</ul>
+		<p></p>
+		<p>
+		<strong>Release: 0.3.1 ALPHA - 24 October 2005</strong>
+		</p>
+		<ul>
+			<li>Now both table-per-classhierarchy and table-per-subclass 
+				inheritance mapping is supported. These two
+			inheritance mapping strategies are present in the elver submenu in the Eclipse plugin. 
+				See <a href="inheritance.html">here</a> for more information.</li>
+			<li>It is now possible to control the inheritance mapping separately for each class hierarchy
+			by adding specific annotations in the model, see <a href="inheritance.html">here</a> for more 
+			information.</li>
+			<li>The mapping logic has been changed, now only implementation classes are present
+			in the mapping file, interfaces are supported through Hibernate implicit polymorphism. 
+			See <a href="hibernate_details.html#Why+Elver+explicitly+maps+implementation+classes+and+implicitly+maps+interfaces">here</a>
+				 for more information on why this approach is chosen.</li>
+			<li>XML Schema substitution group support has been added.</li>
+			<li>It is now possible to register a HibernateConfigurationFactory, this allows the 
+			customization of the creation of SessionFactories and other Hibernate configuration settings. 
+			See <a href="hibernate_details.html#Configuration+Factory+or+add+your+own+Hibernate+Even+Listeners+%28and+other+customizations%29">here</a> for more information.</li>
+			<li>A new createRegisterSessionFactory method has been made available. This method just 
+			expects a property bag, this allows more flexible configuration of the SessionFactory
+			(for example to specify a datasource instead of connection information).</li>
+			<li>The container field in the database has been changed from a binary field
+			to a varchar field. See <a href="hibernate_details.html#Storing+container+relation">here</a> for more
+			information.</li>
+			<li>Upgraded to the latest Hibernate release: 3.1rc2.</li>
+			<li>Notifications are now dispatched when an elist/featuremap is loaded (see 
+				<a href="hibernate_details.html#EList%2FFeaturemap+load+notification">here</a>), Hibernate now uses
+				the property setters (with notifications) to set retrieved values from the 
+				db in the EMF object, a future release will
+			add an option to disable notifications during load time.</li>
+			<li>Resource TrackingModification is not automatically enabled anymore at load time, the client should
+			do this explicitly. The reason for this is that tracking modification is an expensive operation
+			because it walks the complete containment tree.</li>
+			<li>The OR Mapping file generator will now also specify the tablename. The tablename
+			is based on the classname of the persisted entity.</li>
+			<li>Solved the following issues:
+			<ul>
+			<li>In some cases a session was not disconnected with ELists
+			in combination with HibernateResource.</li>
+			<li>In case of a deeper inheritance structure the econtainer
+			fields/columns were not correctly defined in tables. This resulted in
+			low-level sql errors (incorrect type for getInt().... or something similar).</li>
+			<li>The toString method of an EList loaded the elist, in Hibernate
+			this resulted in concurrent modification errors in logging code. The decision is
+			made that toString is not 'important' enough to load a elist.</li>
+			</ul></li>
+			<li>Source code is distributed together with the jar files.</li>
+		</ul>
+		<p></p>
+		<p>
+		<strong>Release: 0.3.0 ALPHA - 10 October 2005</strong>
+		</p>
+		<ul>
+			<li>Solved issue: for many-to-many combined with subclassing: an incorrect 
+			not-null attribute was placed in the many-to-many tag.</li>
+			<li>Added support for a number of additional XML Schema constructions: 
+				<a href="featuremap.html#FeatureMap+for+Mixed+content">mixed</a>,
+			restriction, extension, etc. Many XML Schema constructions are now supported,
+			see <a href="features_details.html">here</a>.</li>
+			<li>Added getCrossReferencer function. This allows you to retrieve (from the 
+				database) all objects which refer to a specific eobject. This function can 
+				for example be
+				used to check (and report) all delete constraints before an 
+				object is deleted, see <a href="hibernate_helper.html">here</a>.</li>
+			<li>Upgraded to Hibernate3.1rc1, for this release it is required to upgrade
+				to the Hibernate3.1rc1 release, the Hibernate libraries are all present in
+				the org.elver.store.hibernate.runtime plugin. Note that in rc1 the 
+				methods session.reconnect/disconnect have been deprecated.</li>
+			<li>Restructured the Tutorial &amp; Information part of the website.</li>
+		</ul>
+		<p></p>
+		<p>
+		<strong>Release: 0.2.2 ALPHA - 30 September 2005</strong>
+		</p>
+		<ul>
+			<li>Support for many-to-many (mn) relations has been added, is still very alpha
+			but can be tried (see <a href="hibernate_details.html#Mapping+many-to-many+%28nm%29+relations">here</a> for more information).</li>
+			<li>Solved a bug related to showing incorrect top level objects in a resource. 
+		This was visible in the EMF editor because contained objects were displayed in the
+		top of the editor. Credits to Pawel Sabina for identifying this issue and helping
+		to solve it.</li>
+			<li>It is now possible
+		to select multiple packages when generating the hibernate.hbm.xml. Only one
+		hibernate.hbm.xml file will be generated with all the mappings, this file is placed
+		in the first selected package. Selecting multiple packages is only required
+		if there are relations between classes of these packages. Note that this feature has not been tested
+		thoroughly.</li>
+			<li>Customize the load behavior of HibernateResource (see <a href="hibernateresources.html">here</a>):
+		<ul> 
+		<li>The implementation of the 
+		HibernateResource has been changed so that the load behavior can easily be overridden by subclassing.</li>
+		<li>The load behavior of the HibernateResource can also be controlled by 
+			passing queries in the url or in the ehb file.</li>			
+		</ul>
+		</li>
+			<li>Added possibility of XMI import and export to the resource utility. XMI 
+		is more powerful than the XML export/import because XMI 
+		supports multiple root objects when exporting/importing.
+		 See <a href="resource_utility.html">here</a>.</li>
+		</ul>
+		<p></p>
+		<p>
+		<strong>Release: 0.2.1 ALPHA - 28 September 2005</strong>
+		</p>
+		<ul>
+			<li>FeatureMap support has been added, see <a href="featuremap.html">here</a>
+			 for more information.</li>
+			<li>Container relation is now also stored in the child in the relation. This
+		means that the eContainer and eContainerFeatureID is set in the EObject also when
+		the EObject is read directly from the database.
+			</li>
+			<li>The resource utility has been improved. Now it is possible to validate the contents 
+		by explicitly selecting the validate option.</li>
+			<li>The plugin structure has been improved, more functions have been moved to 
+			a generic plugin (org.elver.store).</li>
+		</ul>
+		<p></p>
+		<p>
+		<strong>Release: 0.2.0.1 ALPHA - 19 September 2005</strong>
+		</p>
+		<ul>
+			<li>Solved a very visible bug which resulted in an error in the editor. This error had the 
+				following symptoms, only part of the data is persisted and the following 
+				message is displayed in the console: <em>not-null property references a null or transient value</em>.
+			</li>
+			<li>Updated the website on various locations</li>
+			<li>Solved an issue which resulted in class not found exceptions in the 
+			runtime enhancement by cglib when starting eclipse with an open EMF editor</li>
+		</ul>
+		<p>To make use of the above changes the hibernate.hbm.xml has to be regenerated.</p>
+		<p></p>
+		<p><strong>First Release: 0.2.0 ALPHA was on 15 September 2005</strong></p>
+	</body>
+</document>

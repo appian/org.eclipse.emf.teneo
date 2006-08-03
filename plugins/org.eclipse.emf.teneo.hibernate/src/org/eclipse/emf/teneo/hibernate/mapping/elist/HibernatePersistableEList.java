@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.2 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HibernatePersistableEList extends PersistableEList {
@@ -69,7 +69,7 @@ public class HibernatePersistableEList extends PersistableEList {
 		return super.isLoaded();
 	}
 
-	/** Do the actual load can be overridden, called from the subclass */
+	/** Do the actual load can be overridden */
 	protected synchronized void doLoad() {
 		AssertUtil.assertTrue("EList " + logString, !isLoaded());
 

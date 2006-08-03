@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:09 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Step 1: Environment Setup</title> 
+		<abstract>The first step in the tutorial is to setup the environment</abstract>
+	</header> 
+	<body>
+		<section>
+			<title>Add runtime plugin to dependencies of plugin.xml</title>
+			<p>To enable the runtime layer the org.elver.store.hibernate.runtime plugin needs to be added to the
+				plugin dependencies of the plugin.xml (see image below).</p>
+			<p>In addition the following <em>Eclipse-RegisterBuddy: org.elver.store.hibernate.runtime</em>, 
+				needs to be added to the MANIFEST.MF of the Library model project 
+				(see <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why).</p>
+			<p>In addition your database JDBC driver should be added to classpath of the plugin and possible the packages
+				of the jdbc driver have to be made visible to other plugins.</p>
+			<p>
+			<img src="../images/plugin_dependency_reexport.gif" alt="Setting dependency of plugin.xml"/>
+			</p>
+		</section>
+		<section>
+			<title>Create Empty Database</title>
+			<p>The runtime layer will automatically create tables and foreign constraints. However it will not
+			automatically create a database. For this tutorial you need to manually create an empty
+				database in your database server, the database should have the name: <em>library</em>.</p>
+		</section>
+		<section>
+			<title>Add Logging</title>
+			<p>To view the log messages of Hibernate and Elver you have to set the log4j properties. A
+			simple sample log4j.properties file can be downloaded <a href="../samples/log4j.properties">here</a>.
+			The log4j.properties file has to be placed directly in the src folder of the library model project.</p>
+			<p></p>
+			<p>Please click <a href="tutorial1_2.html">here</a> to go to the next step to create a library object and store it.</p>
+		</section>
+	</body>
+</document>

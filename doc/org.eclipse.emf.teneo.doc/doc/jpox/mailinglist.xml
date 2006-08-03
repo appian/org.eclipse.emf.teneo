@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Elver Store Mailinglist</title> 
+	</header> 
+	<body>
+		<section id="maillist">
+			<title>Mailing List</title>
+		<p>
+			Support is provided through a mailinglist. You can subscribe to this
+			mailinglist by sending an email to: <em><a href="mailto:emf-store-subscribe@elver.org">Subscribe</a></em>.
+			Unsubscribing is done through the following link: <em><a href="mailto:emf-store-subscribe@elver.org">Unsubscribe</a></em>.
+			The traffic on the mailinglist is probably pretty low.</p>
+		<p>The mailing list is used for the EMF - JDO as well as the EMF - Hibernate integration.</p>
+		<p>
+			The mail archive can be viewed 
+			<a href="http://blog.gmane.org/gmane.comp.java.emf.persistency">here (web)</a> or 
+			<a href="nntp://news.gmane.org/gmane.comp.java.emf.persistency">here (news, nntp)</a>.
+		</p>
+		</section>
+		<section id="wedo">
+			<title>How we can help you</title>
+		<p>
+			We will do our best to answer your questions as promptly as possible. 
+			We can help you in the best way if you include the following information:
+		</p>
+			<ul>
+				<li>The genmodel file</li>
+				<li>The package.jdo</li>
+				<li>The stack trace</li>
+				<li>The log file (see <a href="troubleshooting.html">here</a> on where to find it)</li>
+				<li>The version of Elver Store, Eclipse, EMF, jdk, and database</li>
+			</ul>
+		</section>
+	</body>
+</document>

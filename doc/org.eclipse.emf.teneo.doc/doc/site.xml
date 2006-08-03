@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	Forrest Site Definition.
+
+	@author <a href="pvdhoef@elver.org">Peter van de Hoef</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+-->
+
+<site label="Elver" href="" xmlns="http://apache.org/forrest/linkmap/1.0">
+
+	<!-- The home tab -->
+	<home label="Home" tab="home">
+		<home label="Introduction" href="index.html" tab="home"/>
+		<links label="Contributors" href="contributors.html" description="Contributors of Elver"/>		
+		<links label="Links" href="links.html" description="Number of relevant links"/>		
+	</home>
+	<about label="About" tab="home">
+<!--		<history label="History" href="history.html" description="The history of the Elver project"/>-->
+		<philosophy label="Project Goal" href="goal.html" description="The goal of the Elver project" tab="home"/>
+		<elver label="The Elver" href="elver.html" description="The Elver, an interesting animal" tab="home"/>
+		<license label="License" href="license.html" description="The License" tab="home"/>
+	</about>
+
+	<services label="Services" tab="services" href="services/">
+		<home label="Springsite.com" href="index.html" tab="services"/>
+	</services>
+	
+	<!-- JPOX -->
+	<jpoxhome label="Home" tab="jpox" href="jpox/">
+		<home label="Introduction" href="index.html"/>
+		<status label="Features" href="features.html" description="Describes the features of the EMF-JPOX integration"/>
+		<status label="Status" href="status.html" description="Describes the status and which EMF features are supported"/>
+		<overview label="Overview" href="overview.html" description="Overview of the steps and components to get to a running EMF - JPOX integration"/>
+		<status label="Changelog" href="changelog.html" description="Overview of the changes in different releases over time"/>
+		<install label="Download &amp; Install" href="installation.html" description="Downloading and Installing the EMF - JPOX integration components"/>
+		<ki label="Known Issues" href="knownissues.html"/>
+		<quick label="Quick Start" href="quick_tutorial.html" description="Short tutorial"/>
+		<license label="License" href="license.html" description="The License"/>
+	</jpoxhome>
+	<multi-page label="Library Tutorial" href="jpox/tutorial1/" tab="jpox">
+        	<intro label="Introduction" href="tutorial1_intro.html"/>
+        	<step1 label="Generate OR Mapping File" href="tutorial1_1.html"/>
+        	<step2 label="Create and Store EMF Object" href="tutorial1_2.html"/>
+        	<step3 label="Retrieve EMF Objects" href="tutorial1_3.html"/>
+        	<step4 label="Query EMF Objects" href="tutorial1_4.html"/>
+        	<step4 label="Using EMF/JPOX Resources" href="tutorial1_5.html"/>
+  	</multi-page>
+	<multi-page label="Library Editor tutorial" href="jpox/tutorial2/" tab="jpox">
+        	<intro label="Introduction" href="tutorial2_intro.html"/>
+        	<step1 label="Initialize the Library Editor" href="tutorial2_1.html"/>
+        	<step2 label="Run the Library Editor" href="tutorial2_2.html"/>
+  	</multi-page>
+	<schema label="Details" href="jpox/" tab="jpox">
+		<config label="Inheritance Mapping" href="inheritance.html" description="Discusses which inheritance mapping strategies are supported"/>
+		<jpoxconfig label="JPOX Details" href="jpox_details.html" description="Describes the configuration of jpox by the integration layer"/>
+		<jpoxresource label="EMF/JPOX Resources" href="jpoxresources.html" description="Description of different resource implementations"/>
+		<resource label="Resource Utility" href="resource_utility.html" description="Description of the resource utility"/>
+		<util label="JpoxDataStore" href="jpoxdatastore.html" description="Description of the JpoxDataStore concept"/>
+	</schema>
+	<schema label="Annotations (EJB3)"  href="jpox/" tab="jpox">
+		<featuremap label="Supported Ann." href="ejb3_features.html" description="Lists the supported EJB3 annotations"/>		
+		<featuremap label="EAnn. Format" href="ejb3_format.html" description="Describes the format of EJB3 annotations"/>		
+		<featuremap label="EAnn. Examples" href="ejb3_examples.html" description="A number of examples of EJB3 annotations"/>		
+	</schema>
+	<schema label="XML Schema" href="jpox/" tab="jpox">
+		<featuresconfig label="XML Schema Features" href="features_details.html" description="Gives a detailed listing of supported XML Schema features"/>
+		<featuremap label="Feature Map/Mixed Content" href="featuremap.html" description="Discusses how feature maps are supported"/>		
+		<sub label="Substitution Group" href="substitution.html" description="Discusses how SubstitutionGroups are supported"/>		
+		<anytype label="xsd:any/xsd:anyType" href="anytype.html" description="Discusses how xsd:any and xsd:anyType are supported"/>		
+		<!--<datetime label="XML Schema Date/Time types" href="xmlschema_types.html" description="Discusses handling of XML Schema dateTime, gYear, gMonth, etc. types"/>-->
+		<xmlschema label="XML Schema Examples" href="schema_list.html" description="List of xml schemas used as test cases"/>
+	</schema>
+	<support label="Support" tab="jpox" href="jpox/">
+		<trouble label="Troubleshooting" href="troubleshooting.html" description="Describes how to troubleshoot any problems you may encounter"/>
+		<trouble label="Upgrading" href="upgrading.html" description="Describes issues related to upgrading plugins"/>
+		<mailinglist label="Mailinglist" href="mailinglist.html" description="Our mailing list to get support"/>
+		<jpox label="EMF/JPOX Support" href="emfjpoxsupport.html" description="Support for emf and jpox related questions"/>
+	</support>
+	<developer label="Developer" tab="jpox" href="jpox/">
+		<svn label="Subversion" href="svn.html" description="Our subversion structure and projects"/>
+		<test label="Test cases" href="testcases.html" description="Describes how to get the test cases up-and-running"/>
+	</developer>
+
+	<!-- Hibernate -->
+	<homehib label="Home" tab="hibernate"  href="hibernate/">
+		<home label="Introduction" href="index.html"/>
+		<status label="Status" href="status.html"/>
+		<features label="Features" href="features.html"/>
+		<overview label="Overview" href="overview.html"/>
+		<status label="Changelog" href="changelog.html" description="Overview of the changes in different releases over time"/>
+		<install label="Download &amp; Install" href="installation.html" description="Downloading and Installing the EMF - Hibernate integration components"/>
+		<ki label="Known Issues" href="knownissues.html"/>
+		<quick label="Quick Start" href="quick_tutorial.html" description="Short tutorial"/>
+		<license label="License" href="license.html" description="The License"/>
+	</homehib>
+		<multi-page label="Library Tutorial" href="hibernate/tutorialone/" tab="hibernate">
+	        	<intro label="Introduction" href="tutorial1_intro.html"/>
+	        	<step1 label="Setup Environment" href="tutorial1_1.html"/>
+	        	<step2 label="Create and Store EMF Object" href="tutorial1_2.html"/>
+	        	<step3 label="Retrieve EMF Objects" href="tutorial1_3.html"/>
+	        	<step4 label="Query EMF Objects" href="tutorial1_4.html"/>
+	        	<step4 label="Using EMF/JPOX Resources" href="tutorial1_5.html"/>
+      	</multi-page>
+		<multi-page label="Library Editor Tutorial" href="hibernate/tutorialtwo/" tab="hibernate">
+	        	<intro label="Introduction" href="tutorial2_intro.html"/>
+	        	<step1 label="Initialize the Library Editor" href="tutorial2_1.html"/>
+	        	<step2 label="Run the Library Editor" href="tutorial2_2.html"/>
+      	</multi-page>
+		<schema label="Details"  href="hibernate/" tab="hibernate">
+			<config label="Dynamic EMF Tutorial" href="dynamic.html" description="Example of how Dynamic EMF is supported"/>
+			<config label="Inheritance Mapping" href="inheritance.html" description="Discusses which inheritance mapping strategies are supported"/>
+			<config label="Modeling Associations" href="hibernate_relations.html" description="Describes topics related to modeling of 1:n and n:m relations"/>
+			<config label="HbDataStore" href="hbdatastore.html" description="Describes the HbDataStore functionality and how to override Elver behavior"/>
+			<options label="Options" href="options.html" description="Describes persistency options"/>
+			<config label="EMF - Hibernate Details" href="hibernate_details.html" description="Describes the configuration of hibernate by the integration layer"/>
+			<resource label="EMF Hibernate Resources" href="hibernateresources.html" description="Description of the hibernate resource implementation"/>
+			<resource label="Resource Utility" href="resource_utility.html" description="Description of the resource utility"/>
+		</schema>
+		<schema label="Annotations"  href="hibernate/" tab="hibernate">
+			<featuremap label="Format" href="ejb3_format.html" description="Describes the format of EJB3 annotations"/>		
+			<featuremap label="Examples" href="ejb3_examples.html" description="A number of examples of EJB3 annotations"/>		
+			<featuremap label="EJB3" href="ejb3_features.html" description="Supported EJB3 annotations"/>
+			<featuremap label="Custom" href="custom_annotations.html" description="Custom Hibernate-specific annotations"/>
+		</schema>
+		<schema label="XML Schema"  href="hibernate/" tab="hibernate">
+			<featuresconfig label="XML Schema Support" href="features_details.html" description="Gives a detailed listing of supported XML Schema features"/>
+			<xmlschema label="XML Schema Examples" href="schema_list.html" description="List of xml schemas used as test cases"/>
+			<featuremap label="Feature Map/Mixed Content" href="featuremap.html" description="Discusses how feature maps are supported"/>		
+		</schema>
+	<support label="Support" tab="hibernate" href="hibernate/">
+		<trouble label="Troubleshooting" href="troubleshooting.html" description="Describes how to troubleshoot any problems you may encounter"/>
+		<trouble label="Upgrading" href="upgrading.html" description="Describes issues related to upgrading plugins"/>
+		<mailinglist label="Mailinglist" href="mailinglist.html" description="Our mailing list to get support"/>
+		<jpox label="EMF/Hibernate Support" href="emfhibsupport.html" description="Support for emf and hibernate related questions"/>
+	</support> 
+	<developer label="Developer" tab="hibernate" href="hibernate/">
+		<svn label="Subversion" href="svn.html" description="Our subversion structure and projects"/>
+		<test label="Test cases" href="testcases.html" description="Describes how to get the test cases up-and-running"/>
+	</developer>
+</site>

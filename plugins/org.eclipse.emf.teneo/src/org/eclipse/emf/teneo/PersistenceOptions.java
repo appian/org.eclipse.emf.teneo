@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.6 2006/07/23 23:49:18 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.7 2006/08/03 09:57:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -23,6 +23,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -37,7 +38,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class PersistenceOptions {
 
@@ -97,10 +98,7 @@ public class PersistenceOptions {
 	/** Name of version column, default value is e_version */
 	public static final String VERSION_COLUMN_NAME = NAMING_PREFIX + "version_column";
 
-	/** Name of the synthetic id property, default value is e_id */
-	public static final String SYNTHETIC_ID_PROPERTY_NAME = NAMING_PREFIX + "synthetic_id_property";
-
-	/** Name of id column, default value is id */
+	/** Name of id column, default value is e_id */
 	public static final String ID_COLUMN_NAME = NAMING_PREFIX + "default_id_column";
 
 	/**
@@ -124,6 +122,25 @@ public class PersistenceOptions {
 	 */
 	public static final String SQL_CASE_STRATEGY = NAMING_PREFIX + "strategy";
 
+	/** Returns the default properties used in the system */
+	public static Properties getDefaultProperties() {
+		final Properties props = new Properties();
+		props.setProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "false");
+		props.setProperty(USE_MAPPING_FILE, "false");
+		props.setProperty(SET_CASCADE_ALL_ON_CONTAINMENT, "true");
+		props.setProperty(OPTIMISTIC, "true");
+		props.setProperty(UPDATE_SCHEMA, "true");
+		props.setProperty(FETCH_CONTAINMENT_EAGERLY, "false");
+		props.setProperty(USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME, "false");
+		props.setProperty(SET_ENTITY_AUTOMATICALLY, "true");
+		props.setProperty(VERSION_COLUMN_NAME, "e_version");
+		props.setProperty(SQL_CASE_STRATEGY, "lowercase");
+		props.setProperty(ID_COLUMN_NAME, "e_id");
+		props.setProperty(DISABLE_ECONTAINER_MAPPING, "false");
+		props.setProperty(MAXIMUM_SQL_NAME_LENGTH, "-1");
+		return props;
+	}
+
 	/**
 	 * The wrapped Properties instance.
 	 */
@@ -133,12 +150,13 @@ public class PersistenceOptions {
 	 * Construct a new instance using Properties.
 	 */
 	public PersistenceOptions(Properties properties) {
-		// can be null if not set in datastore
-		if (properties == null) {
-			this.properties = new Properties();
-		} else {
-			this.properties = properties;
+		this.properties = getDefaultProperties();
+		
+		if (properties != null) {
+			this.properties.putAll(properties);
 		}
+		
+		logProperties();
 	}
 
 	/**
@@ -146,13 +164,15 @@ public class PersistenceOptions {
 	 * classpath.
 	 */
 	public PersistenceOptions() {
-		properties = new Properties();
+		this.properties = getDefaultProperties();
+
+		final Properties props = new Properties();
 		InputStream in = null;
 		try {
 			in = this.getClass().getResourceAsStream(DEFAULT_CLASSPATH_FILENAME);
 			if (in != null) {
 				log.debug("Loading persistence options from classpath \"/teneo-properties\".");
-				properties.load(in);
+				props.load(in);
 			}
 		} catch (IOException e) {
 			throw new RuntimeException("Error loading \"" + DEFAULT_CLASSPATH_FILENAME + "\" from classpath:"
@@ -166,53 +186,60 @@ public class PersistenceOptions {
 				// Ignore.
 			}
 		}
+		this.properties.putAll(props);
+		
+		logProperties();
 	}
 
+	/** Dump the props */
+	public void logProperties() {
+		log.debug("Properties of PersistenceOptions:");
+		for (Iterator it = properties.keySet().iterator(); it.hasNext();) {
+			final String key = (String) it.next();
+			log.debug(key + ": " + properties.getProperty(key));
+		}
+	}
+	
 	/** Returns the value of the UseJoinTableForNonContainedAssociations option, default is false */
 	public boolean isJoinTableForNonContainedAssociations() {
-		return Boolean.valueOf(properties.getProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "false"))
+		return Boolean.valueOf(properties.getProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS))
 				.booleanValue();
 	}
 
 	/** Returns the value of the UseMappingFile option, default is false */
 	public boolean isUseMappingFile() {
-		return Boolean.valueOf(properties.getProperty(USE_MAPPING_FILE, "false")).booleanValue();
+		return Boolean.valueOf(properties.getProperty(USE_MAPPING_FILE)).booleanValue();
 	}
 
 	/** Returns the value of the orphan delete on containment, default is true */
 	public boolean isSetCascadeAllOnContainment() {
-		return Boolean.valueOf(properties.getProperty(SET_CASCADE_ALL_ON_CONTAINMENT, "true")).booleanValue();
+		return Boolean.valueOf(properties.getProperty(SET_CASCADE_ALL_ON_CONTAINMENT)).booleanValue();
 	}
 
 	/** Returns the value of the Optimistic option, default is true */
 	public boolean isUseOptimisticLocking() {
-		return Boolean.valueOf(properties.getProperty(OPTIMISTIC, "true")).booleanValue();
+		return Boolean.valueOf(properties.getProperty(OPTIMISTIC)).booleanValue();
 	}
 
 	/** Returns the value of the UpdateSchema option, default is true */
 	public boolean isUpdateSchema() {
-		return Boolean.valueOf(properties.getProperty(UPDATE_SCHEMA, "true")).booleanValue();
+		return Boolean.valueOf(properties.getProperty(UPDATE_SCHEMA)).booleanValue();
 	}
 
 	/** Returns the value of the fetch containment eagerly, default is false */
 	public boolean isFetchContainmentEagerly() {
-		return Boolean.valueOf(properties.getProperty(FETCH_CONTAINMENT_EAGERLY, "false")).booleanValue();
+		return Boolean.valueOf(properties.getProperty(FETCH_CONTAINMENT_EAGERLY)).booleanValue();
 	}
 
 	/** Returns value of the use impl. classname as entity, default is false */
 	public boolean isUseImplementationClassAsEntityName() {
-		return Boolean.valueOf(properties.getProperty(USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME, "false"))
+		return Boolean.valueOf(properties.getProperty(USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME))
 				.booleanValue();
 	}
 
 	/** Is set entity automatically, default is true */
 	public boolean isSetEntityAutomatically() {
-		return Boolean.valueOf(properties.getProperty(SET_ENTITY_AUTOMATICALLY, "true")).booleanValue();
-	}
-
-	/** Returns the boolean value of the passed option, false if the option is not set */
-	public boolean isTrue(String option) {
-		return Boolean.valueOf(properties.getProperty(option, "false")).booleanValue();
+		return Boolean.valueOf(properties.getProperty(SET_ENTITY_AUTOMATICALLY)).booleanValue();
 	}
 
 	/** Returns the inheritance mapping strategy, can be null */
@@ -227,17 +254,12 @@ public class PersistenceOptions {
 
 	/** Returns the value of the naming strategy, default is lower case */
 	public SQLCaseStrategy getSQLCaseStrategy() {
-		return SQLCaseStrategyImpl.createSQLCaseStrategy(properties.getProperty(SQL_CASE_STRATEGY, "lowercase"));
+		return SQLCaseStrategyImpl.createSQLCaseStrategy(properties.getProperty(SQL_CASE_STRATEGY));
 	}
 
 	/** Returns the value of the id column option, returns null if not set */
 	public String getIdColumnName() {
 		return properties.getProperty(ID_COLUMN_NAME);
-	}
-
-	/** Returns the value of the synthetic id property name, returns null if not set */
-	public String getSyntheticIdPropertyName() {
-		return properties.getProperty(SYNTHETIC_ID_PROPERTY_NAME);
 	}
 
 	/** Returns the qualify entity names option, returns QUALIFY_ENTITY_NAME_NO ("no") */
@@ -246,12 +268,12 @@ public class PersistenceOptions {
 	}
 
 	public boolean isDisableEContainerMapping() {
-		return Boolean.valueOf(properties.getProperty(DISABLE_ECONTAINER_MAPPING, "false")).booleanValue();
+		return Boolean.valueOf(properties.getProperty(DISABLE_ECONTAINER_MAPPING)).booleanValue();
 	}
 
 	/** Return the max. sql name length, or -1 if not set or illegal */
 	public int getMaximumSqlNameLength() {
-		final String colLength = properties.getProperty(MAXIMUM_SQL_NAME_LENGTH, "-1");
+		final String colLength = properties.getProperty(MAXIMUM_SQL_NAME_LENGTH);
 		try {
 			return Integer.parseInt(colLength);
 		} catch (NumberFormatException e) {

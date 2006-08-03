@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListPropertyHandler.java,v 1.2 2006/07/17 22:11:31 mtaal Exp $
+ * $Id: EListPropertyHandler.java,v 1.3 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.impl.EcoreAccess;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEList;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEList;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
@@ -52,7 +53,7 @@ import org.hibernate.property.Setter;
  * methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -62,8 +63,12 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	/** The EStructuralFeature of this accessor */
 	protected final EStructuralFeature eFeature;
 
+	/** Extra lazy behavior! */
+	private final boolean extraLazy;
+	
 	/** Constructor */
-	public EListPropertyHandler(EStructuralFeature eFeature) {
+	public EListPropertyHandler(EStructuralFeature eFeature, boolean extraLazy) {
+		this.extraLazy = extraLazy;
 		this.eFeature = eFeature;
 		log.debug("Created getter/setter for " + StoreUtil.toString(eFeature));
 		AssertUtil.assertTrue("Many must be true but this isn't the case for " + StoreUtil.toString(eFeature), eFeature
@@ -214,6 +219,9 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 
 	/** Create method can be overridden */
 	protected EList createPersistableList(InternalEObject target, EStructuralFeature estruct, List list) {
+		if (true || extraLazy) {
+			return new HbExtraLazyPersistableEList(target, estruct, list);
+		}
 		return new HibernatePersistableEList(target, estruct, list);
 	}
 }

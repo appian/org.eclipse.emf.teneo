@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:09 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Step 3: Retrieve and add EMF Objects</title> 
+	</header> 
+	<body>
+		
+		<p>In this part of the tutorial we retrieve the Library from the database back-end and perform some checks on and additions to the existing data.</p>
+		
+		<section>
+			<title>Retrieve Library Object</title>
+			<p>Obtain the Library we created in the previous step from the database:</p>
+		<source>
+final Session session = sessionFactory.openSession();
+session.beginTransaction();
+
+// Retrieve the Library and its child objects.
+// Note that you must use the EClass name in the query.
+Query query = session.createQuery("FROM Library");			
+List libraries = query.list();
+Library library = (Library) libraries.get(0);</source>
+	</section>
+			<p><em>As noted in the source, you must use the EClass name in the query. (In most cases it's identical to the Java class name, however.)</em></p>
+		
+	<section>
+		<title>Perform some checks</title>
+		<p>Now that we have a Library object, we obtain a few of its child objects and verify that we have the correct information.</p>
+		<source>
+// Obtain the Writer and Book
+Writer writer = (Writer) library.getWriters().get(0);
+System.out.println(writer.getName());
+Book book = (Book) library.getBooks().get(0);
+System.out.println(book.getTitle());
+
+// Verify that the eContainer and references are set correctly. 
+assert (book.eContainer() == library);
+assert (writer.getBooks().get(0) == book);</source>
+		<p>As expected, the objects retrieved from the database store comply to the ECore API. (EObject.eClass(), EObject.eContainer(), etc.)</p>
+	</section>
+		
+	<section>
+		<title>Add a new Book and Writer</title>
+		<p>Now we add a new Book and Writer to the library:</p>
+		<source>
+// Add a new Writer and Book
+Writer georgeOrwell = LibraryFactory.eINSTANCE.createWriter();
+georgeOrwell.setName("G. Orwell");
+
+// Create a new Book and set the Writer and Library.
+Book georgesBook = LibraryFactory.eINSTANCE.createBook();
+georgesBook.setPages(250);
+georgesBook.setTitle("1984");
+georgesBook.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+georgesBook.setAuthor(georgeOrwell);
+
+library.getBooks().add(georgesBook);
+library.getWriters().add(georgeOrwell);
+
+// Commit.
+session.getTransaction().commit();
+session.close();</source>
+	</section>	
+		
+			<section>
+		<title>Next Step</title>
+		<p>The next step of the tutorial shows some Hibernate HQL queries that retrieve EMF objects from the database.</p>
+		<p><a href="tutorial1_4.html">Click here</a> to go to the next step.</p>
+	</section>	
+
+	</body>
+</document>

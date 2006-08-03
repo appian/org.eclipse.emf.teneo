@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Elver History</title> 
+	</header> 
+	<body>
+		<p>The Elver project originates from the company <a href="http://www.springsite.com/en">Springsite</a>. The 
+			first focus of Springsite was to facilitate the developer and increase his/her 
+		effectiveness when developing software.</p>
+		
+		<p>
+		To achieve this a XML application framework was developed. The main feature 
+		of this framework is its ability to model using xml schemas. Based on the xml schema model the framework
+		generates java source code and data maintenance (web) views. These views automatically (with zero coding) 
+		support complex xml schema structures such as multi-occurence choices with recursive types. 
+		This makes it possible to define a model in XML Schema and have a working information management system without coding.
+		Only the business functions had to be hand-coded to finish the solution. 
+		</p>
+		<p>
+		Over time we noticed that it was, for a small company like ours, difficult to keep up with the 
+		developments taking place in the open source space. In addition we wanted to re-develop our framework from
+		scratch.
+		</p>
+		<p>
+		We decided to organize and do this re-development in a different way and started the Elver project.
+		Our aim with the Elver project is to achieve a broader use of our technology, have more contact
+			with other developers and increase the quality of our work.
+		</p>
+		<p>Please continue reading <a href="goal.html">here</a>
+		for the main goal of the Elver project.</p>
+	</body>
+</document>

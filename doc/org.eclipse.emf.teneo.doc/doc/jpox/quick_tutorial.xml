@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Quick Start</title> 
+	</header> 
+	<body>
+		<p>
+			This quick start describes in very short steps how to setup, initialize and use the runtime layer.
+			It does not go as far as the Library Tutorial but gives a quick idea on how to get up-and running.
+		</p>
+		<p>
+			It is assumed that you have done one of the EMF Library tutorials (see 
+			<a href="http://eclipse.org/emf/docs.php?doc=tutorials/xlibmod/xlibmod.html">here</a> or 
+			 <a href="http://eclipse.org/emf/docs.php?doc=tutorials/clibmod/clibmod.html">here</a>)
+		</p>
+		<p>The quick start consists of the following steps:</p>
+			<ol>
+				<li>Set Library model plugin dependency:
+				<ul>
+					<li>Add the EMF persistency runtime plugin (org.elver.store.jpox.runtime) to the plugin dependencies of the Library (model) project</li>
+					<li>Add <em>Eclipse-RegisterBuddy: org.elver.store.jpox.runtime</em> to the Manifest.MF of
+					the Library model project (see <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why).</li>
+				</ul>
+				</li>
+					<li>Enable JPOX: Right click on the Library project and select the menu JPOX and select 'Add JPOX Support' and check
+					'Enable Auto Enhancement'.</li>
+				<li>Generate JDO file: right click on the ecore file (normally called library.ecore) 
+				top package (org.eclipse.example.library) and in
+				the Elver menu choose one of the <em>Generate EMF - JDO/JPOX OR Mapping (...)</em> option. 
+				A package.jdo file should be created next to the ecore file. <em>It is possible that you need to refresh the 
+				folder to see the created package.jdo.</em></li>
+				<li>Copy the package.jdo to a location in the source tree, if you have automatic build enabled then JPOX 
+				should now enhance the classes automatically (after the build).</li>
+				<li>Create a database (with the name mylibrary) in your database server</li>
+				<li>Create a new class in the org.eclipse.example.library with a static main method</li>
+				<li>Initialize the runtime layer, add the following to the main method. <em>Replace the 
+				database connection information here with your own information:</em>
+<source>
+String pmfName = "MyPMF"; // the name of the JpoxDataStore
+    	
+// db connection info, replace with your own database connection information
+Properties properties = new Properties();
+properties.setProperty(PMFConfiguration.JDO_DATASTORE_DRIVERNAME_PROPERTY, "com.mysql.jdbc.Driver");
+properties.setProperty(PMFConfiguration.JDO_DATASTORE_URL_PROPERTY, "jdbc:mysql://127.0.0.1:3306/mylibrary");
+properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, "root");
+properties.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, "root");
+
+// create the data store  
+JpoxDataStore jpoxDataStore = JpoxHelper.INSTANCE.createRegisterDataStore(pmfName);
+jpoxDataStore.setProperties(properties);
+jpoxDataStore.setEPackages(new EPackage[]{LibraryPackage.eINSTANCE});
+jpoxDataStore.initialize();
+					</source>
+					</li>
+				<li>Create a persistence manager and factory
+	<source>
+// Now create a persistence manager and a transaction
+PersistenceManager pm = jpoxDataStore.getPersistenceManager();
+Transaction tx = pm.currentTransaction(); 
+    	</source></li>
+			<li>Begin a transaction, create a library and make it persistent
+	<source>
+// start a transaction, create a library and make it persistent
+tx.begin();
+Library lib = LibraryFactory.eINSTANCE.createLibrary();
+lib.setName("My Library");
+pm.makePersistent(lib);
+	</source></li>
+			<li>Create a writer and book, add to the library and commit
+		<source>
+// create a writer
+Writer writer = LibraryFactory.eINSTANCE.createWriter();
+writer.setName("JRR Tolkien");
+   
+// and one of his books
+Book book = LibraryFactory.eINSTANCE.createBook();
+book.setAuthor(writer);
+book.setPages(305);
+book.setTitle("The Hobbit");
+book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+
+// add the writer/book to the library. The writer and book are automatically
+// made persistent because they are added to the library which was already
+// made persistent
+lib.getWriters().add(writer);
+lib.getBooks().add(book);
+    
+// at commit the objects will be present in the database
+tx.commit();
+pm.close();
+		</source></li>
+			</ol>
+	</body>
+</document>

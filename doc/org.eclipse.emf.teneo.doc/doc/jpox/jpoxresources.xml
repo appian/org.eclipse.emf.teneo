@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+ 
+ 	Licensed under the Apache License, Version 2.0 (the "License");
+ 	you may not use this file except in compliance with the License.
+ 	You may obtain a copy of the License at
+ 
+ 		http://www.apache.org/licenses/LICENSE-2.0
+ 
+ 	Unless required by applicable law or agreed to in writing, software
+ 	distributed under the License is distributed on an "AS IS" BASIS,
+ 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ 	See the License for the specific language governing permissions and
+ 	limitations under the License.
+-->
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document> 
+  <header> 
+    <title>JPOX EMF Resources</title> 
+    <notice>Describes the use of emf resource implemenations for jpox</notice>
+    <abstract>From the 0.7.0 release the EMF-JPOX integration offers one type of resource: JPOXResourceDAO. It 
+    		extends the org.eclipse.emf.ecore.resource.impl.ResourceImpl.
+    </abstract> 
+  </header> 
+  <body>
+	 <p></p>
+    <section>
+      <title>Resource URI</title>
+      <p>The integration layer automatically registers the JPOX resource for the 
+		  protocol: jpox and jpoxdao. <em>The jpoxdao protocol is deprecated and present because of backwards compatibility.</em></p>
+		 <p>From the 0.7.0 the EMF-JPOX integration offers one type of resource: JPOXResourceDAO. The previous JPOXResource is no 
+		 longer used. The jpox protocol will from now return a JPOXResourceDAO instance.</p>
+	  <p>The JPOX resource needs to know how to reach a data store. This is done by passing the name
+	  of a JpoxDataStore to the resource with the JPOXResourceDAO.DS_NAME_PARAM parameter. The name of the 
+	  JpoxDataStore is the name used when creating/registering a JpoxDataStore
+	  using the JpoxHelper.INSTANCE object.
+	  </p>
+	  <p>An example of a URI which returns a JPOX resource: <em>jpox://dsname=MyPMF</em>.</p>
+	</section>
+    <section>
+      <title>JPOX (DAO) Resource</title>
+      <p>The JPOX DAO Resource (org.elver.store.jpox.resource.JPOXResourceDAO) starts and completes a 
+		  transaction in the load action and reopens and commits a transaction for the save action.
+		This behavior has the following consequences:</p>
+		<ul>
+		  <li>A transaction is only open during the time of the load or save action and not in between.</li>
+		  <li>After saving the resource the saved objects can still be used by the application, so no refresh
+			  is required. </li>
+		  <li>ELists are lazily loaded, primitive type fields and single EReferences are 
+			  loaded when the resource is loaded. </li>
+		</ul>
+	</section>
+      <section>
+      <title>Validation</title>
+      <p>The JPOX Resource automatically validates its content (the EObjects) when the
+		  resource is saved. This validation makes use of the EMF validation framework through calls to
+		  the Diagnostician.INSTANCE.validate method. Validation fails when a ERROR level Diagnostic is
+		  encountered. In this case the resource save method will throw an org.elver.store.StoreValidationException. 
+		  This exception has a method to retrieve all Diagnostics.</p>
+	</section>
+		<section>
+	  		<title>Standard load behavior: Top level types</title>
+      <p>When a EMF/JPOX resource is loaded (without using the query customizations) then only the so called top-level types are directly present in 
+		  the resource contents. Top-level types are types which are not used as the 
+		  the child in a containment relation. The assumption is that all contained types can be reached
+	  from a top-level type.</p>
+	  <p>See also the <a href="knownissues.html">Known Issues</a>.</p>
+	  </section>
+	 <section><title>Customizing load behavior</title>
+	 <p>It is possible to customize what the resource actually loads from the database.</p>
+		 <section><title>Extend the resource implementation with a Java subclass</title>
+			<p>It is possible to customize the load behavior by overriding the loadFromStore method
+				in JPOXResourceDAO. This method gets a PersistenceManager and should return a list of  
+				objects read from the JDO/JPOX datastore.
+			</p>
+		 </section>
+		 <section><title>Set specific queries to load the resource</title>
+			<p>There are two ways to pass specific queries to the JPOXResourceDAO. The first method
+				is using uri parameters:</p>
+			 <p><em>jpox://?dsname=mystore&amp;query1=SELECT FROM org.eclipse.example.library.impl.WriterImpl</em></p>
+			 <p>Two things are important here: 1) for JDO the query should fully qualified classnames to the concrete
+			 implementation classes, 2) you can pass multiple queries by using parameter names which start with query, for
+			 example query1, query2 etc.</p>
+			 <p>The other way to pass queries to the resource are to specify them in the 
+			 .ejdo file (see resource utility <a href="resource_utility.html">here</a>). An
+			 example (commented out) of this can be found in the ejdo file <a href="download/library.ejdo">here</a>.</p>
+		 </section>
+	 </section>
+		<section>
+	  		<title>Closing a resource</title>
+      <p>The EMF/JPOX resource can be closed by calling the unload method. This method will close the 
+		  used Persistence Manager.</p>
+	  </section>
+		  
+  </body> 
+</document>

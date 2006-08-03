@@ -11,12 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInterceptor.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: EMFInterceptor.java,v 1.2 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
-
-import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.PersistenceOptions;
@@ -27,7 +25,7 @@ import org.hibernate.EmptyInterceptor;
  * Intercepts the getEntityName call to return the EClass name as the entity name.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class EMFInterceptor extends EmptyInterceptor {
@@ -36,8 +34,8 @@ public class EMFInterceptor extends EmptyInterceptor {
 	private final String qualify;
 	
 	/** Constructor */
-	public EMFInterceptor(Properties props) {
-		qualify = props.getProperty(PersistenceOptions.QUALIFY_ENTITY_NAME);
+	public EMFInterceptor(PersistenceOptions po) {
+		qualify = po.getQualifyEntityName();
 	}
 	
 	/**

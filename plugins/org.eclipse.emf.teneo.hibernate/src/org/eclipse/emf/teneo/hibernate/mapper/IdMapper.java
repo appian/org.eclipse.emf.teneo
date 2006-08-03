@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.3 2006/07/27 12:48:34 mtaal Exp $
+ * $Id: IdMapper.java,v 1.4 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -91,7 +91,14 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 		final Element idElement = DocumentHelper.createElement("id");
 		entityElement.add(0, idElement);
 		idElement.addAttribute("type", "long").
-			addAttribute("name", mc.getSyntheticIdPropertyName()).addElement("generator").addAttribute("class", "native");
+			// NOTE: the name is also set so that the property name can be 
+			// used later to identify an id prop, 
+			// TODO: improve this
+			addAttribute("name", mc.getIdColumnName()).
+			addAttribute("column", mc.getIdColumnName()).
+			addElement("generator").
+			addAttribute("class", "native");
+		
 		return idElement;
 	}
 

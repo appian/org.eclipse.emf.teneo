@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.2 2006/07/23 23:49:22 mtaal Exp $
+ * $Id: MappingContext.java,v 1.3 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -85,10 +85,10 @@ public class MappingContext extends AbstractProcessingContext {
 	private String qualifyEntityNames = null;
 
 	/** Version column name */
-	private String versionColumnName = HbMapperConstants.PROPERTY_VERSION;
+	private String versionColumnName = null;
 
-	/** Id column name */
-	private String syntheticIdPropertyName = HbMapperConstants.PROPERTY_ID_SYNTHETIC;
+	/** ID column name */
+	private String idColumnName = null;
 
 	/** Maximum column name */
 	private int maximumSqlNameLength = -1;
@@ -110,12 +110,8 @@ public class MappingContext extends AbstractProcessingContext {
 	/** Set relevant properties */
 	void setMappingProperties(PersistenceOptions po) {
 		qualifyEntityNames = po.getQualifyEntityName();
-		if (po.getVersionColumnName() != null) {
-			versionColumnName = po.getVersionColumnName();
-		}
-		if (po.getSyntheticIdPropertyName() != null) {
-			syntheticIdPropertyName = po.getSyntheticIdPropertyName();
-		}
+		versionColumnName = po.getVersionColumnName();
+		idColumnName = po.getIdColumnName();
 		maximumSqlNameLength = po.getMaximumSqlNameLength();
 		sqlCaseStrategy = po.getSQLCaseStrategy();
 	}
@@ -333,21 +329,6 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/**
-	 * @return the idColumnName
-	 */
-	public String getSyntheticIdPropertyName() {
-		return syntheticIdPropertyName;
-	}
-
-	/**
-	 * @param idColumnName
-	 *            the idColumnName to set
-	 */
-	public void setSyntheticIdPropertyName(String syntheticIdPropertyName) {
-		this.syntheticIdPropertyName = syntheticIdPropertyName;
-	}
-
-	/**
 	 * @return the maximumColumnNameLength
 	 */
 	public int getMaximumColumnNameLength() {
@@ -386,5 +367,12 @@ public class MappingContext extends AbstractProcessingContext {
 		}
 
 		return "`" + sqlCaseStrategy.convert(name) + "`";
+	}
+
+	/**
+	 * @return the idColumnName
+	 */
+	public String getIdColumnName() {
+		return idColumnName;
 	}
 }

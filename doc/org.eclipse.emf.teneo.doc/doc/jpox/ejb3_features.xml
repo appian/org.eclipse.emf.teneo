@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Detailed Listing of Supported EJB3 Annotation Features</title> 
+	</header> 
+	<body>
+		<section id="featuresejb3">
+			<title>Supported EJB3 Annotation Features</title>
+			<p>The goal is to support all EJB3 annotations. The EJB3 specification can be downloaded from
+			the jsr-220 download page: <a href="http://jcp.org/aboutJava/communityprocess/pfd/jsr220/index.html">here</a>.
+		In the listing below the numbers refer to the sections of chapter 9 in the EJB3 persistence specification
+		document: ejb-3_0-pfd-spec-persistence.pdf.</p>
+			<p>The annotations listed below are supported in the current release. Supported means that there are test cases which show
+		that the EJB3 annotation is supported and correctly translated in an or-mapping and that the annotation is
+		supported when persisting and retrieving objects.</p>
+			<p>Supported by the current release:</p>
+				<ul>
+				<li>9.1.1 Table Annotation</li>
+				<li>9.1.4: UniqueConstraint Annotation</li>
+				<li>9.1.5: Column Annotation</li>
+				<li>9.1.8: Id Annotation</li>
+				<li>9.1.9: GeneratedValue Annotation</li>
+				<li>9.1.10: AttributeOverride Annotation</li>
+				<li>9.1.11: AttributeOverrides Annotation</li>
+				<li>9.1.13: IdClass Annotation</li>
+				<li>9.1.14: Transient Annotation</li>
+				<li>9.1.16: Basic Annotation</li>
+				<li>9.1.17: Lob Annotation (no special support required lob or byte array are automatically handled by JPOX)</li>
+				<li>9.1.18: Temporal Annotation (no special support required handled automatically by JPOX)</li>
+				<li>9.1.19: Enumerated Annotation</li>
+				<li>9.1.20: ManyToOne Annotation</li>
+				<li>9.1.21: OneToOne Annotation</li>
+				<li>9.1.22: OneToMany Annotation</li>
+				<li>9.1.23: JoinTable Annotation</li>
+				<li>9.1.24: ManyToMany Annotation</li>
+				<li>9.1.27: Inheritance Annotation</li>
+				<li>9.1.28: DiscriminatorColumn Annotation</li>
+				<li>9.1.29: Discriminator Annotation</li>
+				<li>9.1.34: MappedSuperclass Annotation</li>
+				<li>9.1.35: SequenceGenerator Annotation</li>
+				<li>9.1.36: TableGenerator Annotation</li>
+				</ul>
+				<p>The following annotations are expected to work but have not been tested:</p>				
+				<ul>
+				<li>9.1.15: Version Annotation</li>
+				</ul>
+				<p>The following annotations are not (yet) supported:</p>
+				<ul>
+				<li>9.1.2: SecondaryTable Annotation</li>
+				<li>9.1.3: SecondaryTables Annotation</li>
+				<li>9.1.6: JoinColumn Annotation</li>
+				<li>9.1.7: JoinColumns Annotation</li>
+				<li>9.1.12: EmbeddedId Annotation</li>
+				<li>9.1.25: MapKey Annotation</li>
+				<li>9.1.30: PrimaryKeyJoinColumn Annotation</li>
+				<li>9.1.31: PrimaryKeyJoinColumns Annotation</li>
+				</ul>
+				<p>The following annotations are not supported because of JPOX:</p>
+				<ul>
+				<li>9.1.26: OrderBy Annotation</li>
+				<li>9.1.32: Embeddable Annotation</li>
+				<li>9.1.33: Embedded Annotation, because of a jpox issue see <a href="http://www.jpox.org/servlet/jira/browse/CORE-2567">here</a></li>
+				</ul>
+		</section>
+		<section>
+			<title>Annotation notes</title>
+			<section id="edatatype"><title>Annotations on EDataType</title>
+			<p>Every ejb3 annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
+			Setting annotations on an EDataType has as advantage that the annotation is used in every location in which the EDataType is
+			used. For example the column length annotation can be defined on EDataType level and is then automatically added to 
+			each EAttribute which uses this EDataType. The annotations on EAttribute level take precedence so if both the EAttribute 
+			and the EDataType have the same annotation then the annotation on the EAttribute is used.</p>
+			</section>
+		</section>
+	</body>
+</document>

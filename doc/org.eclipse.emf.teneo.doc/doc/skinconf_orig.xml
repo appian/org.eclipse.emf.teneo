@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	Forrest Skin Configuration. This file contains details
+	which will be used to configure the chosen Forrest skin.
+
+	@author <a href="pvdhoef@elver.org">Peter van de Hoef</a>
+	@version $Revision: 1.1 $
+-->
+
+<!DOCTYPE skinconfig PUBLIC
+	"-//APACHE//DTD Skin Configuration V0.7-1//EN"
+	"http://forrest.apache.org/dtd/skinconfig-v07-1.dtd">
+
+<!-- Project logo is the only mandatory element of the skinconfig document. -->
+
+<skinconfig>
+
+	<!-- 
+		To enable lucene search add provider="lucene" (default is google).
+		Add box-location="alt" to move the search box to an alternate location
+		(if the skin supports it) and box-location="all" to show it in all
+		available locations on the page.  Remove the <search> element to show
+		no search box. @domain will enable sitesearch for the specific domain with google.
+		In other words google will search the @domain for the query string.
+	-->
+	<search name="elver" domain="www.elver.org" provider="google"/>
+
+	<!-- Disable the print link? If enabled, invalid HTML 4.0.1 -->
+	<disable-print-link>true</disable-print-link>  
+
+	<!-- Disable the PDF link? -->
+	<disable-pdf-link>false</disable-pdf-link>
+
+	<!-- Disable the POD link? -->
+	<disable-pod-link>true</disable-pod-link>
+
+	<!-- Disable the Text link? FIXME: NOT YET IMPLEMENETED. -->
+	<disable-txt-link>true</disable-txt-link>
+
+	<!--
+		Disable the xml source link?
+		The xml source link makes it possible to access the xml rendition
+		of the source from the html page, and to have it generated statically.
+		This can be used to enable other sites and services to reuse the
+		xml format for their uses. Keep this disabled if you don't want other
+		sites to easily reuse your pages.
+	-->
+	<disable-xml-link>false</disable-xml-link>
+
+	<!-- Disable navigation icons on all external links? -->
+	<disable-external-link-image>false</disable-external-link-image>
+
+	<!--
+		Disable w3c compliance links? 
+		Use e.g. align="center" to move the compliance links logos to 
+		an alternate location default is left. (if the skin supports it)
+	-->
+	<disable-compliance-links>true</disable-compliance-links>
+
+	<!-- Render mailto: links unrecognisable by spam harvesters? -->
+	<obfuscate-mail-links>true</obfuscate-mail-links>
+	<obfuscate-mail-value>.at.</obfuscate-mail-value>
+
+	<!-- Disable the javascript facility to change the font size -->
+	<disable-font-script>true</disable-font-script>
+
+	<!-- Project logo is the only mandatory element of the skinconfig document.-->
+	<project-name>Elver</project-name>
+	<project-description>The Elver Project</project-description>
+	<project-url>http://www.elver.org/</project-url>
+	<project-logo>images/empty.gif</project-logo>
+
+	<!--Optional group logo, default skin: renders it at the top-left corner  -->
+		<group-name>Elver Store</group-name> 
+		<group-description>Elver Store</group-description>
+		<group-url>http://www.elver.org</group-url>
+	<group-logo>images/ELV.gif</group-logo>
+
+	<!-- Optional host logo, default skin: renders it at the bottom-left corner -->
+	<!--
+		<host-url></host-url>
+		<host-logo></host-logo>
+	-->
+
+	<!-- Relative url of a favicon file, normally favicon.ico -->
+	<favicon-url></favicon-url>
+
+	<!-- The following are used to construct a copyright statement -->
+	<year>2006</year>
+	<vendor>The Elver Project</vendor>
+	<!-- The optional copyright-link URL will be used as a link in the copyright statement -->
+	<copyright-link>license.html</copyright-link>
+
+	<!--
+		Some skins use this to form a 'breadcrumb trail' of links. Use location="alt" to move the trail 
+		to an alternate location (if the skin supports it).
+		Omit the location attribute to display the trail in the default location.
+		Use location="none" to not display the trail (if the skin supports it).
+		For some skins just set the attributes to blank.
+	-->
+		<trail location="none">
+			<link1 name="" href=""/>
+			<link2 name="" href=""/>
+			<link3 name="" href=""/>
+			<!--
+			<link1 name="myGroup" href="http://www.apache.org/"/>
+			<link2 name="myProject" href="http://forrest.apache.org/"/>
+			<link3 name="" href=""/>
+			-->
+		</trail>
+
+	<!--
+		Configure the TOC, i.e. the Table of Contents.
+		@max-depth: how many "section" levels need to be included in the generated Table of Contents (TOC). 
+		@min-sections: Minimum required to create a TOC.
+		@location: ("page","menu","page,menu", "none") Where to show the TOC.
+	-->
+	<toc max-depth="2" min-sections="1" location="page"/>
+
+	<!-- Heading types can be clean|underlined|boxed  -->
+	<headings type="clean"/>
+  
+	<!--
+		The optional feedback element will be used to construct a feedback link in 
+		the footer with the page pathname appended: <a href="@href">{@to}</a>
+	-->
+	<feedback to="webmaster@elver.org" href="mailto:webmaster@elver.org?subject=Feedback on " >
+		Send feedback about the website to:
+	</feedback>
+
+	<!--
+		Extra-css - here you can define custom css-elements that are
+		a. overriding the fallback elements or 
+		b. adding the css definition from new elements that you may have used in your documentation.
+	-->
+	<extra-css>
+.code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 90%;
+}
+	</extra-css>
+
+	<!--
+		The 'colors' section should be present for some skins to work properly.
+	-->
+	<colors>
+	</colors>
+
+	<!-- Settings specific to PDF output. -->
+	<pdf>
+		<!-- 
+			Supported page sizes are a0, a1, a2, a3, a4, a5, executive, 
+			folio, legal, ledger, letter, quarto, tabloid (default letter).
+			Supported page orientations are portrait, landscape (default portrait).
+			Supported text alignments are left, right, justify (default left).
+		-->
+		<page size="a4" orientation="portrait" text-align="left"/>
+		
+		<!--
+			Margins can be specified for top, bottom, inner, and outer edges. 
+			If double-sided="false", the inner edge is always left and the outer is always right. 
+			If double-sided="true", the inner edge will be left on odd pages, right on even pages,
+			the outer edge vice versa.
+		-->
+		<margins double-sided="false">
+			<top>1in</top>
+			<bottom>1in</bottom>
+			<inner>1.25in</inner>
+			<outer>1in</outer>
+		</margins>
+		
+		<!--
+			Print the URL text next to all links going outside the file
+		-->
+		<show-external-urls>false</show-external-urls>
+		
+		<!--
+			Disable the copyright footer on each page of the PDF.
+			A footer is composed for each page. By default, a "credit" with role=pdf
+			will be used, as explained below. Otherwise a copyright statement
+			will be generated. This latter can be disabled.
+		-->
+		<disable-copyright-footer>false</disable-copyright-footer>
+	</pdf>
+
+</skinconfig>

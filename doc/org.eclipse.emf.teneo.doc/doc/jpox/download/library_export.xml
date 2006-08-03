@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library:Library xmlns:library="http://www.example.eclipse.org/Library" name="My Library">
+  <writers name="G. Orwell" books="/0/@books.0"/>
+  <writers name="JRR Tolkien" books="/0/@books.1 /0/@books.2"/>
+  <books title="1985" pages="350" category="ScienceFiction" author="/0/@writers.0"/>
+  <books title="Fellowship of the Rings" pages="356" category="ScienceFiction" author="/0/@writers.1"/>
+  <books title="The Hobbit" pages="352" category="ScienceFiction" author="/0/@writers.1"/>
+</library:Library>

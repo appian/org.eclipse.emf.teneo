@@ -11,16 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbContext.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: HbContext.java,v 1.2 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
-import java.util.Properties;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.hibernate.Interceptor;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.property.PropertyAccessor;
@@ -30,7 +29,7 @@ import org.hibernate.property.PropertyAccessor;
  * layer. This class can be overridden to instantiate your own tuplizers, accessors etc.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public interface HbContext {
 
@@ -44,7 +43,7 @@ public interface HbContext {
 	public abstract Class getFeatureMapEntryTuplizer(Configuration hbConfiguration);
 
 	/** Return the Interceptor class used */
-	public abstract Interceptor createInterceptor(Configuration hbConfiguration, Properties props);
+	public abstract Interceptor createInterceptor(Configuration hbConfiguration, PersistenceOptions po);
 
 	/** Return the accessor used to acces the string repr. of the feature in the featuremapentry */
 	public abstract PropertyAccessor createFeatureMapEntryFeatureURIAccessor();
@@ -65,7 +64,7 @@ public interface HbContext {
 	public abstract PropertyAccessor createFeatureMapPropertyAccessor(EStructuralFeature eFeature);
 
 	/** Return the elist accessor */
-	public abstract PropertyAccessor createEListAccessor(EStructuralFeature eFeature);
+	public abstract PropertyAccessor createEListAccessor(EStructuralFeature eFeature, boolean extraLazy);
 
 	/** Return the EReference accessor */
 	public abstract PropertyAccessor createEReferenceAccessor(EReference eReference);

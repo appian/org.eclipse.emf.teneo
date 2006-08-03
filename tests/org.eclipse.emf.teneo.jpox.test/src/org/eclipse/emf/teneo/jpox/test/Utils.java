@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Utils.java,v 1.2 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: Utils.java,v 1.3 2006/08/03 09:58:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.test.StoreTestException;
  * Contains utility methods for testing.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/07/23 19:28:58 $
+ * @version $Revision: 1.3 $ $Date: 2006/08/03 09:58:22 $
  */
 
 public class Utils {
@@ -159,20 +159,5 @@ public class Utils {
 					+ " within test directory does not exist. Tried path: " + file.getAbsolutePath());
 		}
 		return file.getAbsolutePath();
-	}
-
-	/** Copies a file */
-	public static void copyFile(File src, File dst) throws IOException {
-		InputStream in = new FileInputStream(src);
-		OutputStream out = new FileOutputStream(dst);
-
-		// Transfer bytes from in to out
-		byte[] buf = new byte[1024];
-		int len;
-		while ((len = in.read(buf)) > 0) {
-			out.write(buf, 0, len);
-		}
-		in.close();
-		out.close();
 	}
 }

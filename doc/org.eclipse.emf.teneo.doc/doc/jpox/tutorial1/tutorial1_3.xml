@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:09 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Step 3: Retrieve and add EMF Objects</title> 
+	</header> 
+	<body>
+		<p>In this step the library is retrieved from the backend and a few checks are done on the 
+			retrieved EMF objects. In addition a new book and writer are added to the library.</p>
+		<section>
+			<title>Retrieve Library EMF Object</title>
+		<p>In this part of the tutorial the library object is retrieved.</p>
+		<source>
+// at this point the database contains one library, one book and one writer
+// Reopen the transaction and query for the library objects
+pm = jpoxDataStore.getPersistenceManager();
+tx = pm.currentTransaction(); 
+tx.begin();
+	
+// NOTE: for querying you require the concrete implementation instead of the
+// interface!
+// retrieve all LibraryImpl classes and subclasses.
+Extent e = pm.getExtent(LibraryImpl.class, true);
+Query q = pm.newQuery(e);
+
+// there is only one library
+Collection c = (Collection)q.execute();
+lib = (Library)c.iterator().next();
+</source>
+	</section>
+	<section>
+		<title>Do some checks</title>
+		<p>The library object has been retrieved now a few checks are done to ensure that the correct
+			information was retrieved.</p>
+		<source>
+// read the writer and book
+writer = (Writer)lib.getWriters().get(0);
+System.out.println(writer.getName());
+book = (Book)lib.getBooks().get(0);
+System.out.println(book.getTitle());
+
+// show that the container is set
+System.out.println(book.eContainer() == lib);
+System.out.println(writer.getBooks().get(0) == book);
+	</source>
+	</section>	
+	<section>
+		<title>Add a new book and writer</title>
+		<p>Here a new book and writer are added to the library.</p>
+		<source>
+// Now add a new writer and book
+Writer george = LibraryFactory.eINSTANCE.createWriter();
+george.setName("G. Orwell");
+
+// create a new book and set the writer and library
+Book georgesBook = LibraryFactory.eINSTANCE.createBook();
+georgesBook.setPages(250);
+georgesBook.setTitle("1984");
+georgesBook.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+georgesBook.setAuthor(george);
+
+lib.getBooks().add(georgesBook);
+lib.getWriters().add(george);
+
+// and close of
+tx.commit();
+pm.close();
+	</source>
+	</section>	
+			<section>
+		<title>Next Step</title>
+		<p>The final step in the tutorial shows some JDO queries to retrieve EMF objects from the library.
+			</p>
+		<p>Please click <a href="tutorial1_4.html">here</a> to go to the next step.</p>
+	</section>	
+
+	</body>
+</document>

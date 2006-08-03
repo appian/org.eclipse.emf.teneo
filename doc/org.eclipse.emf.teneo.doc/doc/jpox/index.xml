@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title></title> 
+	</header> 
+	<body>
+		<section>
+			<title>EMF Persistency Solution using JDO/JPOX</title>
+				<p>The EMF - JPOX integration supports
+				all EMF and JDO 2.0/JPOX features. EMF objects can be persisted in most major relational databases and retrieved using an EMF resource approach or 
+					advanced JDOQL queries.
+				</p>
+			<p><strong>Current version: 0.7.2 ALPHA (last updated on 7 June 2006) for Eclipse 3.2*/EMF 2.2*/JPOX 1.1rc1 and jdk 1.4 and later,
+			<a href="status.html">Status</a>, <a href="features.html">Features</a>, <a href="changelog.html">Change Log</a></strong></p>
+			<p><em>The mapping logic has been completely rewritten in this version, please read the <a href="changelog.html">Change Log</a>.</em></p>
+			<p><strong>Releases are not guaranteed to be backward compatible. Before upgrading first read the <a href="changelog.html">Change Log</a> and
+			<a href="upgrading.html">Upgrading</a> pages.</strong></p>
+			<p><em>For troubleshooting please visit the <strong><a href="knownissues.html">Known Issues</a></strong> 
+				and <strong><a href="troubleshooting.html">Troubleshooting</a></strong> pages.</em></p>
+			<p>*This release should also work for <strong>Eclipse 3.1/EMF 2.1</strong>, however only limited testing has been done.</p>
+		</section>
+		<section>
+			<title>JPOX</title>
+			<p>The EMF - JDO/JPOX integration is a layer over the JPOX 1.1.0 (JDO 2.0) product. JPOX is the reference
+				implementation for JDO 2.0. The jpox website has excellent documentation.
+		Please visit JPOX at <a href="http://www.jpox.org">http://www.jpox.org</a>.
+		</p>
+		<p>
+			<a href="http://www.jpox.org"><img src="images/jpox_logo_small.gif" alt="JPOX Logo"/></a>
+		</p>
+		</section>
+		<section>
+			<title>EMF</title>
+			<p>The <a href="http://www.eclipse.org">Eclipse Modeling Framwork (EMF)</a> is a modeling and 
+				code generation framework which generates source code from different sources: an UML diagram or 
+		a XML Schema. For more information see <a href="http://www.eclipse.org/emf">here</a>.
+		</p>
+		</section>
+	</body>
+</document>

@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+ 
+ 	Licensed under the Apache License, Version 2.0 (the "License");
+ 	you may not use this file except in compliance with the License.
+ 	You may obtain a copy of the License at
+ 
+ 		http://www.apache.org/licenses/LICENSE-2.0
+ 
+ 	Unless required by applicable law or agreed to in writing, software
+ 	distributed under the License is distributed on an "AS IS" BASIS,
+ 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ 	See the License for the specific language governing permissions and
+ 	limitations under the License.
+-->
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document> 
+  <header> 
+    <title>Hibernate EMF Resources</title> 
+    <notice>Describes the use of an EMF resource implemenation for Hibernate</notice>
+    <abstract>The EMF Hibernate integration also contains a Resource implementation for
+		integration with the EMF Editing Domain. The resource implementation
+		extends the org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl to enable easy importing 
+		and exporting of XML to/from the relational store.
+    </abstract> 
+  </header> 
+  <body>
+	 <p></p>
+    <section>
+      <title>Resource URI</title>
+      <p>The Hibernate EMFResource is registered using different extensions/protocols:</p>
+	  <ul>
+	  <li>Protocol: the Hibernate EMF Resource (factory) will be registered for the protocols hibernate and ehb</li>
+	  <li>Extension: the Hibernate EMF Resource (factory) will be registered for the extensions hibernate and ehb</li>
+	  </ul>
+	  <p>When the hibernate protocol is used to retrieve a Resource then the resource 
+		  needs to know how to reach a data store.  This is done by passing the registration name
+	  of a HbDataStore to the resource with the org.elver.store.Resource.DS_NAME_PARAM parameter. 
+	  </p>
+	  <p>An example of a URI which returns a Hibernate resource: <em>hibernate://dsname=library</em>.</p>
+	</section>
+    <section>
+      <title>Hibernate Resource and session/transaction specifics</title>
+      <p>The Hibernate Resource opens a session when it is loaded for the first time.
+		 A transaction is started when the load starts and committed at the end of the load.
+		  This session is disconnected at the end of the load action.</p>
+		<p>The save action will reconnect the session, begin a transaction, do an update of
+		  the datastore and then commit and disconnect.</p>
+		 <p>In one of the next releases a new resource implementation will be added which will create a new session
+		 for each load and save action.</p>
+	</section>
+    <section>
+      <title>Validation</title>
+      <p>The Hibernate Resource automatically validates its content (the EObjects) when the
+		  resource is saved. This validation makes use of the EMF validation framework throug calls to
+		  the Diagnostician.INSTANCE.validate method. Validation fails when a ERROR level Diagnostic is
+		  encountered. In this case the resource save method will throw a org.elver.store.StoreValidationException. 
+		  This exception has a method to retrieve all Diagnostics.</p>
+	</section>
+		<section>
+	  		<title>Standard load behavior: Top level types</title>
+      <p>When a Hibernate EMF resource is loaded then only the so called top-level types are directly present in 
+		  the resource contents. Top-level types are types which are not used as the 
+		  the child in a containment relation. The assumption is that all contained types can be reached
+	  from a top-level type.</p>
+	  <p>See also the <a href="knownissues.html">Known Issues</a>.</p>
+	  </section>
+	 <section><title>Customizing load behavior</title>
+	 <p>It is possible to customize what the resource actually loads from the database.</p>
+		 <section><title>Extend the resource implementation in java</title>
+			<p>It is possible to customize the load behavior by overriding the loadFromStore method
+				in the HibernateResource. This method gets a PersistenceManager and should return a list of 
+				objects read from the Hibernate datastore.
+			</p>
+		 </section>
+		 <section><title>Set specific queries to load the resource</title>
+			<p>There are two ways to pass specific queries to the HibernateResource. The first method
+				is using uri parameters:</p>
+			 <p><em>hibernate://?dsname=mystore&amp;query1=FROM Writer</em></p>
+			 <p>You can pass multiple queries by using parameter names which start with query, for
+			 example query1, query2 etc.</p>
+			 <p>The other way to pass queries to the resource are to specify them in the 
+			 .ehb file (see resource utility <a href="resource_utility.html">here</a>). An
+			 example (commented out) of this can be found in the ehb file <a href="samples/library.ehb">here</a>.</p>
+		 </section>
+	 </section>
+    <section>
+      <title>Other aspects</title>
+		<section><title>Resource use after Hibernate exception</title>
+		<p>When a Hibernate error/exception occurs when working with a Hibernate resource it can not
+		be used anymore and should be unloaded (closed).</p>
+		<p>In a future resource implementation this issue will be solved.</p>
+		</section>
+		<section>
+	  		<title>Closing a resource</title>
+      <p>The Hibernate EMF resource can be closed by calling the unload method. 
+		  This method will close the disconnected session.</p>
+	  </section>
+	</section>
+  </body> 
+</document>

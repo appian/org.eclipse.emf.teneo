@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Known issues (updated 21 April 2006)</title> 
+	</header> 
+	<body>
+		<p>This page describes known issues (and possible work arounds) and gives an estimate on when they will be solved.</p>
+		<p>Current open issue(s):</p>
+		<ul>
+		<li><strong>Objects are not loaded in the resource, or the resource is empty:</strong> The standard behavior of a Jpox resource is to only read types which have no container in the model. All other EObjects can 
+		be reached from these top-entities. However, this means that even if an EObject instance does not have a container but 
+		<em>can be</em> contained according to the model then
+		it will still not be loaded in the resource. A common model is a an object which contains itself, for example a folder-like
+		model. <strong>Workaround</strong>: to workaround this issue you should load the resource using specific queries, see customizing load behavior <a href="jpoxresources.html">here</a>.</li>
+		</ul>
+		<p>The following issue has been solved in the 0.7.1 release:</p>
+		<ul>
+		<li>Generated package.jdo not visible: after choosing the Elver menu option to generate a package.jdo the folder is not refreshed so
+		the generated package.jdo file is not visible. Will be solved in the next release.</li>
+		</ul>
+		<p>The following issue has been solved in the 0.7.0 release:</p>
+		<ul>
+		<li>Java Annotations to Ecore, mapping file error: When starting the runtime the following error
+	message is displayed (using the Library example):<em>Association references unmapped class: Book</em>.
+ The issue is related to the fact that the model is generated from annotated java. Currently Elver uses the annotations in the source code to resolve java types. The java sources generated from the uml/xml schema have fully quallified names in the type attribute of the model tag:
+	<source>
+     * @model type="org.eclipse.example.library.Writer"
+     * @generated
+     */
+    EList getWriters();
+	</source>
+<p>
+While in the case the java annotations are the input the emf tutorial tells you to do this:</p>
+<source>
+  /**
+   * @model type="Writer" containment="true"
+   */
+  List getWriters();
+</source>
+<p>Elver should automatically resolve the Writer to a org.eclipse.example.library.Writer interface but does not do this. 
+As a workaround you should specify the fully qualified class name in the type annotation.</p>
+	</li>
+		</ul>
+
+		<p>The following issues have been solved in the 0.6.5 release:</p>
+		<ul>
+		<li><strong>Load notification on EList load has been disabled.</strong>. After an elist/featuremap is loaded a notification is sent out. 
+		See <a href="jpox_details.html#EList%2FFeaturemap+load+notification">here</a> for more information.
+		Apparently this notification results in exceptions and double entries in rich client tree viewers.
+		See the posts on the mailing list for this: <a href="http://comments.gmane.org/gmane.comp.java.emf.persistency/139">post 1</a>, 
+		<a href="http://comments.gmane.org/gmane.comp.java.emf.persistency/144">post 2</a>. As a workaround you should 'catch' the notification
+		in the notifychanged of the EObjects ItemProvider. This will be solved in the next release
+		or the function will be disabled until it is more stable.</li>
+		</ul>
+		<p>
+			Previous issues have been solved or a workaround or description is
+			displayed on the <a href="troubleshooting.html">troubleshooting</a> page.
+		</p>
+	</body>
+</document>

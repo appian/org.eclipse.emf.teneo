@@ -11,16 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbContextImpl.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: HbContextImpl.java,v 1.2 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
-import java.util.Properties;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerAccessor;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerFeatureIDAccessor;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.FeatureMapEntryTuplizer;
@@ -42,7 +41,7 @@ import org.hibernate.property.PropertyAccessor;
  * layer. This class can be overridden to instantiate your own tuplizers, accessors etc.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class HbContextImpl implements HbContext {
 
@@ -78,8 +77,8 @@ public class HbContextImpl implements HbContext {
 	 * 
 	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createInterceptor(org.hibernate.cfg.Configuration)
 	 */
-	public Interceptor createInterceptor(Configuration hbConfiguration, Properties props) {
-		return new EMFInterceptor(props);
+	public Interceptor createInterceptor(Configuration hbConfiguration, PersistenceOptions po) {
+		return new EMFInterceptor(po);
 	}
 
 	/*
@@ -141,8 +140,8 @@ public class HbContextImpl implements HbContext {
 	 * 
 	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEListAccessor(org.eclipse.emf.ecore.EStructuralFeature)
 	 */
-	public PropertyAccessor createEListAccessor(EStructuralFeature eFeature) {
-		return new EListPropertyHandler(eFeature);
+	public PropertyAccessor createEListAccessor(EStructuralFeature eFeature, boolean extraLazy) {
+		return new EListPropertyHandler(eFeature, extraLazy);
 	}
 
 	/*

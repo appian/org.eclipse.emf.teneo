@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:09 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Step 2: Create and store EMF Objects</title> 
+	</header> 
+	<body>
+		<p>For this tutorial create a <a href="Tutorial1.java">Tutorial1.java</a> class in the 
+			org.eclipse.example.library package. 
+		The class should have a static main method.</p>
+		<section>
+			<title>Initialize runtime layer</title>
+		<p>The runtime OR Mapping layer is initialized with a few statements. Add the following statements to 
+			the main method of the new class. Please note that you have to fill in your own database connection
+			information:</p>
+		<source>
+// set the database connection info, PMFConfiguration is org.jpox.PMFConfiguration
+Properties properties = new Properties();
+properties.setProperty(PMFConfiguration.JDO_DATASTORE_DRIVERNAME_PROPERTY, "com.mysql.jdbc.Driver");
+properties.setProperty(PMFConfiguration.JDO_DATASTORE_URL_PROPERTY, "jdbc:mysql://127.0.0.1:3306/mylibrary");
+properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, "root");
+properties.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, "root");
+  
+// create/register the JpoxDataStore, set the db props and the epackages to persist, initialize creates
+// the database
+String pmfName = "MyPMF"; // the name of the JpoxDataStore
+JpoxDataStore jpoxDataStore = JpoxHelper.INSTANCE.createRegisterDataStore(pmfName);
+jpoxDataStore.setProperties(properties);
+jpoxDataStore.setEPackages(new EPackage[]{LibraryPackage.eINSTANCE});
+jpoxDataStore.initialize();
+		</source>
+		<p>The call to the JpoxHelper instance creates a JpoxDataStore and registers it, at that point no initialization takes place.
+		First the db connection info has to be passed and the to-be-persisted EPackages have to be set. The initialize method
+		will create/update the database schema. After this the PersistenceManagerFactory and a 
+		PersistenceManager can be retrieved from the JpoxDataStore.</p>
+		<p>For your information: the PersistenceManagerFactory is a JDO 2.0 object which acts like
+		a kind of connection factory, a PersistenceManager roughly corresponds to a connection.</p>
+		</section>
+		<section>
+			<title>Create a PersistenceManager and Library</title>
+			<p>Now create a PersistenceManager and a transaction. All persistence related
+			actions have to be done in the context of a transaction. </p>
+			<source>
+// Now create a persistence manager and a transaction
+PersistenceManager pm = jpoxDataStore.getPersistenceManager();
+Transaction tx = pm.currentTransaction(); 
+    	</source>
+			<p>Begin a transaction, create a library and make it persistent</p>
+	<source>
+// start a transaction, create a library and make it persistent
+tx.begin();
+Library lib = LibraryFactory.eINSTANCE.createLibrary();
+lib.setName("My Library");
+pm.makePersistent(lib);
+	</source>
+	</section>
+	<section>
+		<title>Add a writer and book to the library and commit</title>
+		<p>Next a book and writer are created and added to the library. At the commit these are also persisted because 
+		the library refers to the book and writer.</p>
+		<source>
+// create a writer
+Writer writer = LibraryFactory.eINSTANCE.createWriter();
+writer.setName("JRR Tolkien");
+   
+// and one of his books
+Book book = LibraryFactory.eINSTANCE.createBook();
+book.setAuthor(writer);
+book.setPages(305);
+book.setTitle("The Hobbit");
+book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+
+// add the writer/book to the library. The writer and book are automatically
+// made persistent because they are added to the library which is already
+// made persistent
+lib.getWriters().add(writer);
+lib.getBooks().add(book);
+    
+// at commit the objects will be present in the database
+tx.commit();
+pm.close(); // empty the cache
+		</source>
+	</section>
+	<section>
+		<title>Next Step</title>
+		<p>In the next step of this tutorial the above library is retrieved again from the relational store using a JDOQL query
+			 and a book and writer are added to the library.</p>
+		<p>Please click <a href="tutorial1_3.html">here</a> to go to the next step.</p>
+	</section>	
+	</body>
+</document>

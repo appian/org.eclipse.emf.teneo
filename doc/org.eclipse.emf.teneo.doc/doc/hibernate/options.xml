@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Options to control OR Mapping and Runtime behavior</title> 
+	</header> 
+	<body>
+		<p>The options described here are all present in the <em>org.elver.store.PersistenceOptions</em> class. The constant names used 
+		in this page all refer to this class.</p>
+		<p>Options are passed to the HbDataStore using a Properties object which is set using the HbDataStore.setPersistenceProperties method.</p>
+		<p>Boolean options can have the lower case String values: "false" or "true".</p>
+		<ul>
+		<li><strong>PersistenceOptions.OPTIMISTIC</strong>: if this property is "false" then no version properties are added to the 
+		mapping of EClasses. Default is "true".</li>
+		<li>	<strong>PersistenceOptions.INHERITANCE_MAPPING</strong>: the default inheritance mapping strategy to use, this can be
+		JOINED or SINGLE_TABLE, see <a href="inheritance.html">here</a> for more information. Default is SINGLE_TABLE.</li>
+		<li>	<strong>PersistenceOptions.UPDATE_SCHEMA</strong>: if set to "false" then the database schema is not updated 
+		when initializing a HbDataStore. This improves startup times. Default is "true".</li>
+		<li>	<strong>PersistenceOptions.FETCH_CONTAINMENT_EAGERLY</strong>: if set to "true" will set the fetch strategy of all
+		containment references to EAGER. This means that containment relations are completely read in memory. Default is "false".</li>
+		<li>	<strong>PersistenceOptions.SET_ENTITY_AUTOMATICALLY</strong>: if set to "false" then only EClasses which have an
+		Entity annotation will be mapped. Default is "true", this means that all EClasses are mapped to the persistent store.</li>
+		<li><strong>PersistenceOptions.QUALIFY_ENTITY_NAME</strong>: if set to PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX then
+		all EClass names (used as entityname) will be qualified with the nsprefix of the EPackage. The nsprefix is prepended to the
+		EClass name with a dot as a separator, for example: library.Writer. Note that all HQL queries should then use the 
+		qualified EClass names.</li>
+		<li><strong>PersistenceOptions.USE_MAPPING_FILE</strong>: if set to "true" then Elver will not do an automatic mapping of the
+		ecore model to Hibernate but instead search for a hibernate.hbm.xml in the classpath of the EMF generated java classes.</li>
+		<li><strong>PersistenceOptions.VERSION_COLUMN_NAME</strong>: can be used to set the version column name which is used
+		to store the version of an object in case of optimistic locking. Default the version column name is e_version, however not all
+		databases support _ in the name.</li>
+		<li><strong>PersistenceOptions.ID_COLUMN_NAME</strong>: can be used to set the id column name which is used
+		to store the id of an object. The id column is only added automatically if the model does not define a primary key for the
+		type. Default the id column name is e_id, however not all databases support _ in the name.</li>
+		<li><strong>PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT</strong>: as a default Elver will set a cascade style ALL on a 
+		containment relation. This also enables dependent or orphan delete behavior. However it makes more difficult to support cut/paste
+		operations using resources (see <a href="hibernate_details.html#cutpaste">here</a>). This option can be used to control the dependent or
+		orphan delete behavior on a containment relation. If set to false then all cascade styles are set with  
+		dependent/orphan-delete disabled. If set to true (the default) then all cascade styles are set including orphan-delete/dependent.
+		</li>
+		<li><strong>PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH</strong>: can be used to control the column and table name length. This is especially
+		relevant in case the default annotation process creates foreign key columns or your property names are too long. 
+		Foreign key column names are created by concatenating the name of the (e)class and the propertyname. The resulting name can be to long for certain databases. 
+		By setting this option the system will truncate column names to this length. If the column/table name has a suffix (separated by a _) then the 
+		system will truncate the part before the suffix.</li>
+		<li><strong>PersistenceOptions.SQL_CASE_STRATEGY</strong>: controls if the table and column names are uppercased, lowercased or 
+		no specific casing is done. The value lowercase will force lower case for all table/column name, the value 
+		uppercase will force uppercase for all table/column names, none wil do not casing. It is also possible to set this
+		option to the classname of a class implementing the org.elver.store.util.SQLCaseStrategy interface.</li>
+		</ul>
+	</body>
+</document>

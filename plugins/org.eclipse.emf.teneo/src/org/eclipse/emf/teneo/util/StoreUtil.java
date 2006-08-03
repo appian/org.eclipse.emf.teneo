@@ -12,12 +12,16 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.3 2006/08/03 09:57:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
@@ -51,7 +55,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class StoreUtil {
@@ -498,7 +502,11 @@ public class StoreUtil {
 		log.debug(">>>> Building or descriptor file List");
 
 		if (additionalLocation != null) {
-			result.add(additionalLocation + File.separator + fileName);
+			if (additionalLocation.endsWith(fileName)) {
+				result.add(additionalLocation);
+			} else {
+				result.add(additionalLocation + File.separator + fileName);
+			}
 		}
 
 		final String[] packagelist = buildPackagelist();
@@ -548,5 +556,25 @@ public class StoreUtil {
 		if (sepIndex == -1)
 			return;
 		buildPackagePathFromClassName(path.substring(0, sepIndex), newPackagePathList);
+	}
+
+	/** Copies a file */
+	public static void copyFile(File src, File dst) {
+		try {
+			InputStream in = new FileInputStream(src);
+			OutputStream out = new FileOutputStream(dst);
+	
+			// Transfer bytes from in to out
+			byte[] buf = new byte[1024];
+			int len;
+			while ((len = in.read(buf)) > 0) {
+				out.write(buf, 0, len);
+			}
+			in.close();
+			out.close();
+		} catch (Exception e) {
+			throw new StoreException("Exception while copying from/to " + src.getAbsolutePath() 
+					+ "/" + dst.getAbsolutePath(), e);
+		}
 	}
 }

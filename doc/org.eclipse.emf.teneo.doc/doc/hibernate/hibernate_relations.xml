@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>EMF - Hibernate Model Relations/Assocations</title> 
+		<abstract>Discusses specifics around modeling associations</abstract>
+	</header> 
+	<body>
+		<p><strong>The annotations described here have been changed, from the 0.3.* to the 0.7.0 release, 
+		to an EJB3-like format.</strong></p>
+	
+		<section><title>Mapping indexed 1:n relations</title>
+		<p>This is the default for an EMF association. Indexed 1:n relations are mapped using the Hibernate 
+		list tag. This results in an additional column in the database to keep track of the order in the list.</p>
+		</section>		
+		<section><title>Mapping non-indexed relations</title>
+		<p>EMF only supports indexed 1:n and n:m relations. However many times the indexing of
+		relations is not relevant for the model and the index gives a performance penalty when
+		updating the relation in the database. By using annotations in the model it is 
+		possible to specify for a model element that it should not be indexed in the database.
+		</p>
+		<p>As an example see the the following xml schema model:</p>
+				<source><![CDATA[
+<xsd:element name="containedItem" type="this:ContainedItem" maxOccurs="unbounded">
+	<xsd:annotation>
+		<xsd:appinfo source="http://annotation.elver.org/Indexed" ecore:key="value">false</xsd:appinfo>
+	</xsd:annotation>
+</xsd:element>]]></source>
+		<p>In this example it is specified that the item member (an elist) should not be indexed.
+		For EMF and java the relations will be represented as an elist, however the order of the 
+		elements in the list is not saved in the database.</p>
+		<p>By adding the indexed annotation the system can identify that this relation should not
+		be ordered/indexed in the database. This means that no index column is added to the relevant tables.
+		<em>This also means that the order of a list when it is saved is not guaranteed to be the same
+		as the order when the list is retrieved.</em>.</p>
+		<p>The above annotation can also be added in UML. Please use the same values for the 
+			source and the key.</p>
+		<p><em>The indexed annotation does not exist in the EJB3 spec and is an Elver extension. Extension
+		annotations use the source: http://annotation.elver.org.</em></p>
+		</section>		
+		<section><title>Mapping indexed many-to-many (nm) relations</title>
+		<p>A normal approach to model a nm relation in a database is to use a join table which 
+		contains foreign keys to both sides of the nm relation. EMF many-to-many relations have the additional
+		special feature that they are indexed. So the join table should also contain the index for both sides
+		of the nm relation. However Hibernate can not handle indexed collections on both sides of the nm relation.</p>
+			<p>Therefore to enable support for nm relations in Hibernate two join tables are created, one for each
+				side of the relation. Although this is less efficient it at least makes it possible to model nm relations.</p>
+			<p>As an example consider the relation between books and authors. One author can write multiple books and
+			a book can have multiple authors. To support this model 4 tables are created: Author to store authors, Book
+			to store Books, AuthorBook to store the elist with books in the author object and BookAuthor to 
+			store the elist with authors in the book object.</p>
+		</section>		
+		<section><title>Mapping non-indexed nm relations</title>
+		<p>Non-indexed relations can be persisted using 1 join table. To specify that a nm relation
+		is non-indexed both sides of the relation should have the indexed is false annotation. If 
+		Elver encounters a non-indexed nm relations then only 1 join table will be used.</p>
+		</section>		
+		<section><title>Force a join table for 1:n relations</title>
+		<p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
+		parent) in the child table/object. The disadvantage of this approach is that duplicates 
+		are not supported. To support duplicates in an elist a join table is required. To signal to 
+		Elver, that a join table should be used, the annotation as in this example can be used:</p>
+				<source><![CDATA[
+<xsd:element name="joinedItem" type="xsd:anyURI" ecore:reference="this:Item" maxOccurs="unbounded">
+	<xsd:annotation>
+		<xsd:appinfo source="http://annotation.elver.org/Unique" ecore:key="value">false</xsd:appinfo>
+	</xsd:annotation>
+</xsd:element>
+			]]></source>
+		<p>Based on this annotations Elver will generate a join table for this model. Note that 
+		this annotation can be combined with the indexed annotation.</p>
+		<p><em>The unique annotation does not exist in the EJB3 spec and is an Elver extension. Extension
+		annotations use the source: http://annotation.elver.org.</em></p>
+		</section>		
+		<section><title>Embedded components</title>
+		<p>Elver supports relations in which the child should be embedded in the parent table. 
+		Embedding is defined on type level using an annotation:
+		</p>
+				<source><![CDATA[
+<xsd:element name="firstEmbedded" type="this:Embeddable">
+	<xsd:annotation>
+		<xsd:appinfo source="http://ejb.elver.org/Embedded">true</xsd:appinfo>
+	</xsd:annotation>
+</xsd:element>
+			]]></source>
+		<p>By adding the Embedded is true annotation to a type this type will always be embedded in
+its parent table. The column names for an embedded type are not made unique. To prevent column name clashes
+you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only embedded component types with primitive properties 
+	have been tested, embedded components with associations to other types may work but this has not been tested</em>.</p>
+		</section>		
+		<section>
+			<title>Storing container relation</title>
+			<p>From the 0.2.1 release the system will also store the relation from a eobject to its container.
+				This relation is stored in three fields in the database table:</p>
+			<ul>
+				<li>ECONTAINER_CLASS: stores the type of the container eobject</li>
+				<li>ECONTAINER: stores the database identification of the container eobject (as a varchar),</li>
+				<li>ECONTAINER_FEATUREID: stores the id of the container feature which holds the eobject</li>
+			</ul> 
+			<p>These fields are not present as properties in the hibernate.hbm.xml file. 
+			These fields are added at startup because at that moment it is possible to determine
+			which classes are contained in other classes.</p>
+			<p>For normal single column identifiers the system will use the 
+				Hibernate toString and fromStringValue methods of the org.hibernate.type.NullableType class.</p>
+			<p><em>
+				In case the identifier type is not a subclass of the hibernate NullableType (for example
+				in case of a composite-id) then the system
+				will set the ECONTAINER field differently. In this case the ECONTAINER field
+				will contain the classname of the identifier object, a separator (a ;) and the
+				value of the identifier object as a String. The String value of the identifier
+				object is obtained by calling toString(). When reading the ECONTAINER field 
+				the system will use a
+			constructor with a single String parameter. So the identifier class must have 
+			a constructor with a single String argument. In addition the toString method and this 
+			constructor must correctly translate to/from a String.</em></p>
+			<p>These fields do not enforce referential integrity constraints, these are 
+				enforced by the relation from the container to the contained eobject.</p>
+			<p>The container is eagerly loaded, so when a child object is loaded its container
+			is also loaded. Note that the collections in the container are lazily loaded. It was required
+			to eagerly load the container because the EMF editors access this value.</p>
+			<p>The relation to the container is stored separately from any 1:n relation which is stored
+				from the container to the contained object. This is required because one eobject type can be contained 
+				by multiple other eobject types which are not known when the hibernate.hbm.xml is generated. 
+			</p>
+		</section>
+	</body>
+</document>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Status</title> 
+	</header> 
+	<body>
+		<section id="version">
+			<title>Version</title>
+			<p>The current version is 0.7.2 (ALPHA). For changes since the first 0.5.0 release see <a href="changelog.html">here</a>.</p>
+			<p>The 
+			integration should be tested further to assure that it is applicable to many different environments. Currently this release supports
+			the features listed <a href="features.html">here</a>, these features pass the <a href="testcases.html">testcases</a>.</p>
+		</section>
+		<section id="Todo">
+			<title>Todo</title>
+			<p>The following topics will be implemented in the near future:</p>
+			<ol>
+				<li>Extend EJB3 annotations support</li>
+				<li>User defined collections/types (which extend the current EMF collections)</li>
+				<li>Automatic validation of persisted EMF objects at commit</li>
+				<li>Support for dynamically added EAttributes/EClasses</li>
+				<li>More tests...</li>
+			</ol>
+			<p>The following topics will be covered later:</p>
+			<ol>
+				<li>Allow and retain manual changes in generated jdo files</li>
+				<li>Align the JDO/JPOX and Hibernate generated database schemas, facilitating switching or layer</li>
+				<li>More tests, For example on the area of jdo queries, different hierarchy mappings and performance</li>
+			</ol>
+		</section>
+		<section>
+			<title>Next Steps</title>
+			<p>Integrating EMF with other tools such as:</p>
+			<ul>
+				<li>Other OR layers such as <a href="http://www.versant.com/">Versant</a></li>
+				<li>XML databases (such as <a href="http://exist.sourceforge.net/">Exist</a>)</li>
+				<li>Frameworks such as the <a href="http://www.jcp.org/en/jsr/detail?id=170">Java Content Repository</a></li>
+			</ul>
+		</section>			
+	</body>
+</document>

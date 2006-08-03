@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbMapperConstants.java,v 1.2 2006/07/23 23:49:22 mtaal Exp $
+ * $Id: HbMapperConstants.java,v 1.3 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -21,7 +21,7 @@ package org.eclipse.emf.teneo.hibernate.mapper;
  * Constants used by the hibernate mapper
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HbMapperConstants {
 	/** Name used for the feature property in the featuremap entry */
@@ -35,12 +35,6 @@ public class HbMapperConstants {
 
 	/** Name used for the text property in a mixed featuremap entry */
 	public static final String PROPERTY_MIXED_CDATA = "fme_mixed_cdata";
-
-	/** Name used for the version property */
-	public static final String PROPERTY_VERSION = "e_version";
-
-	/** Name used for the id property */
-	public static final String PROPERTY_ID_SYNTHETIC = "e_id";
 
 	/** Name used for the eclass meta data */
 	public static final String ECLASS_META = "eclass";

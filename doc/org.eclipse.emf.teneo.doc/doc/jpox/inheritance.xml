@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Inheritance Mapping</title> 
+		<abstract>Discusses the supported inheritance mapping strategies</abstract>
+	</header> 
+	<body>
+		<section><title>Supported inheritance mapping strategies</title>
+		<p>The Elver OR Mapper supports two of the three inheritance mapping of JPOX
+			(see <a href="http://www.jpox.org/docs/1_1/inheritance.html">here</a>
+			on the jpox website):</p>
+		<ul>
+		<li>Table-per-class-hierarchy or super-class: in this scenario the classes of one 
+			class hierarchy are all mapped to one table. In JDO-2 this is called superclass-table.</li>
+		<li>Table-per-subclass or joined-subclass: in this strategy each subclass will have its own table. To
+			retrieve an object from the database the superclass and subclass tables are joined. 
+			This also applies to subclasses of subclasses. In JDO-2 this is called new-table.</li>
+		</ul>
+		<p>The OR Mapper can generate a mapping file using either of the two mapping strategies.
+			The two approaches are visible as separate menu options in the Elver menu (when clicking
+			on a Java package in Eclipse).</p>
+		<p>There is also another way of mapping inheritance structures: MappedSuperclass. In this method the superclass
+		is not persisted by itself and does not have its own table. All the properties of the superclass are stored in the 
+		table(s) of the subclass(es). MappedSuperclass is set by an EJB3-like annotation. For more information see the EJB3 spec or
+		the jpox website (<a href="http://www.jpox.org/docs/1_1/inheritance.html">subclass-table</a>).</p> 
+		</section>
+		<section><title>Specifying inheritance mapping per class hierarchy</title>
+		<p>There are cases where it is necessary
+		to use different inheritance mapping techniques for different class hierarchy within
+		one application or project. This can be achieved by adding specific EJB3-like annotations to the type definition
+		(uml or XML Schema).</p>
+		<p>As an example see the following type definition of Address which
+		sets the inheritance mapping strategy to JOINED (joined subclass) for Address and all
+		its subtypes:</p>
+				<source><![CDATA[
+<xsd:complexType name="Address" abstract="true">
+	<xsd:annotation>
+		<xsd:appinfo source="http://ejb.elver.org/Inheritance" ecore:key="strategy">JOINED</xsd:appinfo>
+	</xsd:annotation>
+ 	<xsd:sequence>
+		<xsd:element name="name" type="xsd:string"/>
+		<xsd:element name="street" type="xsd:string"/>
+		<xsd:element name="city" type="xsd:string"/>
+	</xsd:sequence>
+</xsd:complexType>
+			]]></source>
+		<p>The inheritance-mapping annotation can have one of the two following values: JOINED or SINGLE_TABLE.</p>
+		<p>The above annotation can also be added in UML. Please use the same values for the 
+			source and the key.</p>
+		<p><strong>The inheritance annotation has changed, from the 0.3.* to the 0.7.0 release, to an EJB3-like format.</strong></p>
+		</section>
+		<section><title>Multiple Inheritance Support</title>
+		<p>In EMF it is possible to define multiple inheritance structures. However, Hibernate can not handle multiple inheritance.</p>
+		<p>Therefore 
+		during the mapping the first supertype is considered to be the real parent (for jpox). The properties of the 
+		other super types are mapped together with the subclass. The other super types will have their own tables in the 
+		database but there will be no relations between the subclass table and its other superclass tables.
+		</p>
+		</section>
+		<section><title>Links to Inheritance-Mapping Articles</title>
+		<ul>
+			<li><a href="http://www.jpox.org/docs/1_1/inheritance.html">Inheritance page</a>
+				on the JPOX website</li>
+			<li><a href="http://www.ambysoft.com/essays/mappingObjects.html">Mapping Objects To Relational Databases</a>
+				by Scott Ambler</li>
+		</ul>
+		</section>
+	</body>
+</document>

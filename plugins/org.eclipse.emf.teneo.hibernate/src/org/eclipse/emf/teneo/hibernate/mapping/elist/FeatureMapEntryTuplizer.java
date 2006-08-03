@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryTuplizer.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: FeatureMapEntryTuplizer.java,v 1.2 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -21,7 +21,6 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.Constants;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
@@ -39,7 +38,7 @@ import org.hibernate.tuple.Instantiator;
  * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class FeatureMapEntryTuplizer extends EMFTuplizer {
@@ -78,10 +77,8 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 	/** Returns the correct accessor on the basis of the type of property */
 	protected PropertyAccessor getPropertyAccessor(Property mappedProperty, PersistentClass pc) {
 		final HbDataStore hds = HbHelper.INSTANCE.getDataStore(pc);
-		final String versionColumn = hds.getPersistenceProperties().getProperty(PersistenceOptions.VERSION_COLUMN_NAME) != null ? hds
-				.getPersistenceProperties().getProperty(PersistenceOptions.VERSION_COLUMN_NAME)
-				: HbMapperConstants.PROPERTY_VERSION;
-		if (mappedProperty.getName().compareToIgnoreCase(versionColumn) == 0) {
+		final String versionPropertyName = hds.getPersistenceOptions().getVersionColumnName();
+		if (mappedProperty.getName().compareToIgnoreCase(versionPropertyName) == 0) {
 			return hds.getHbContext().createVersionAccessor();
 		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_FEATURE) == 0) {
 			return hds.getHbContext().createFeatureMapEntryFeatureURIAccessor();

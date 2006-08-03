@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.3 2006/07/22 13:04:20 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.4 2006/08/03 09:57:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.elist;
@@ -68,7 +68,7 @@ import org.jpox.util.ClassUtils;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/07/22 13:04:20 $
+ * @version $Revision: 1.4 $ $Date: 2006/08/03 09:57:10 $
  */
 
 public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList, JPOXEList {
@@ -115,7 +115,7 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 	 */
 	public EListWrapper(StateManager ownerSM, String fieldName, List list) {
 		super((InternalEObject) ownerSM.getObject(), StoreUtil.getEStructuralFeature((InternalEObject) ownerSM
-				.getObject(), fieldName), list);
+				.getObject(), fieldName), new ArrayList(list));
 
 		AssertUtil.assertTrue("The delegate may not be an elistwrapper", !(getDelegate() instanceof EListWrapper));
 

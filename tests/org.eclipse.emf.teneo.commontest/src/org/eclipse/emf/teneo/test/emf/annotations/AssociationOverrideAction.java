@@ -12,7 +12,7 @@
  *   Laurens Fridael
  * </copyright>
  *
- * $Id: AssociationOverrideAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: AssociationOverrideAction.java,v 1.2 2006/08/03 09:58:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -22,7 +22,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.Address;
 import org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.AssociationoverrideFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.AssociationoverridePackage;
@@ -48,20 +50,29 @@ public class AssociationOverrideAction extends AbstractTestAction {
 
 	private static final String EMPLOYEE_DEPARTMENT = "R&D";
 
-	private static final Address ADDRESS = FACTORY.createAddress();	
+	private static final Address DEFAULT_ADDRESS = FACTORY.createAddress();	
 	static {
-		ADDRESS.setStreet("Amsterdamseweg 123");
-		ADDRESS.setPostalCode("1234 AZ");
+		DEFAULT_ADDRESS.setStreet("Amsterdamseweg 123");
+		DEFAULT_ADDRESS.setPostalCode("1234 AZ");
 	}
 
 	private static final String STUDENT_VERIFICATION_QUERY = 
-		"SELECT COUNT(*) FROM STUDENT A INNER JOIN ADDRESS B ON A.ADDRESS_ID = B.ID".toLowerCase();
+		"SELECT COUNT(*) FROM STUDENT A INNER JOIN ADDRESS B ON A.ADDRESS_ID = B.MYID".toLowerCase();
 
 	private static final String EMPLOYEE_VERIFICATION_QUERY = 
-		"SELECT COUNT(*) FROM EMPLOYEE A INNER JOIN ADDRESS B ON A.EMPLOYEE_ADDRESS_ID = B.ID".toLowerCase();
+		"SELECT COUNT(*) FROM EMPLOYEE A INNER JOIN ADDRESS B ON A.EMPLOYEE_ADDRESS_ID = B.MYID".toLowerCase();
 
 	public AssociationOverrideAction() {
 		super(AssociationoverridePackage.eINSTANCE);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.put(PersistenceOptions.ID_COLUMN_NAME, "myid");
+		return props;
 	}
 
 	public void doAction(TestStore store) {
@@ -76,7 +87,7 @@ public class AssociationOverrideAction extends AbstractTestAction {
 		store.beginTransaction();
 		final Student student = FACTORY.createStudent();
 		student.setName(STUDENT_NAME);
-		student.setAddress(ADDRESS);
+		student.setAddress(getAddress());
 		student.setFaculty(STUDENT_FACULTY);
 		store.store(student);
 		store.commitTransaction();
@@ -87,7 +98,7 @@ public class AssociationOverrideAction extends AbstractTestAction {
 		final Employee employee = FACTORY.createEmployee();
 		employee.setName(EMPLOYEE_NAME);
 		employee.setDepartment(EMPLOYEE_DEPARTMENT);
-		employee.setAddress(ADDRESS);
+		employee.setAddress(getAddress());
 		store.store(employee);
 		store.commitTransaction();
 	}
@@ -115,10 +126,17 @@ public class AssociationOverrideAction extends AbstractTestAction {
 	}
 
 	private void testAddress(Address address) {
-		assertEquals(ADDRESS.getStreet(), address.getStreet());
-		assertEquals(ADDRESS.getPostalCode(), address.getPostalCode());
+		assertEquals(DEFAULT_ADDRESS.getStreet(), address.getStreet());
+		assertEquals(DEFAULT_ADDRESS.getPostalCode(), address.getPostalCode());
 	}
 
+	private Address getAddress() {
+		final Address address = FACTORY.createAddress();
+		address.setStreet(DEFAULT_ADDRESS.getStreet());
+		address.setPostalCode(DEFAULT_ADDRESS.getPostalCode());
+		return address;
+	}
+	
 	private void testTables(TestStore store) {
 		final Connection conn = store.getConnection();
 		Statement stmt = null;

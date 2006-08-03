@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStoreFactory.java,v 1.3 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: JPOXTestStoreFactory.java,v 1.4 2006/08/03 09:58:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -28,13 +28,13 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * The jpox store factory
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class JPOXTestStoreFactory extends AbstractTestStoreFactory {
 
 	/** Creates the actual specific test store */
 	protected TestStore createStoreInstance(TestDatabaseAdapter adapter, EPackage[] epackages,
 			String mappingFileLocation, Properties props, InheritanceType inheritanceType) {
-		return new JPOXTestStore(adapter, epackages, null, props, inheritanceType);
+		return new JPOXTestStore(adapter, epackages, mappingFileLocation, props, inheritanceType);
 	}
 }

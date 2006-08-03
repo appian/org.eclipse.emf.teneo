@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Project Goal</title> 
+	</header> 
+	<body>
+		<p>The Elver project aims to combine existing open source technologies to develop 
+		a code and ui generation framework which takes away a lot of 
+		standard work of the software developer. The Elver project uses XML Schemas as the basis
+			for modeling, code and ui generation.
+		</p>
+		<section>
+			<title>XML Schema</title>
+		<p>The experience with XML Schema over the past years have been very positive. We like the
+		flexibility and power of the syntax. In addition we have noticed that it it is very efficient to
+		define a model using XML Schemas (in contrast to using advanced and complex modeling tools). 
+		</p>
+		</section>
+		<section>
+			<title>Code Generation</title>
+		<p>It is our belief that code generation is the future for software development. Most, if not all, plumbing
+		code can be replaced by a code generation framework. In addition code generation can take care of many
+		business rules if supported by the modeling language. The <a href="http://www.eclipse.org/emf">EMF project</a>
+		is an example of a code generation framework for XML Schemas.</p>
+		</section>
+		<section>
+			<title>UI Generation</title>
+		<p>Even more than with standard coding developers time is 'wasted' on ui development. Especially
+		standard data maintenance views take to much development time in relation to the actual value these functions
+		have for the end-customer. By using a powerfull modeling language as XML Schema as the 
+		input for a ui-generation framework it is possible to generate advanced web-UI's with 
+		very little coding.
+		</p>
+		</section>
+		<section>
+			<title>Project approach</title>
+		<ul>
+			<li>Use and adhere to open standards</li>
+			<li>Integrate and extend existing technologies to assemble a complete solution</li>
+			<li>Develop open source solutions to facilitate a broad use of our and other's technology</li>
+		</ul>
+		</section>
+	</body>
+</document>

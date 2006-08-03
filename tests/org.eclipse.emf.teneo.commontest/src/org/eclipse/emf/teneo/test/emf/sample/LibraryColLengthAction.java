@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryColLengthAction.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
+ * $Id: LibraryColLengthAction.java,v 1.3 2006/08/03 09:58:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibraryColLengthAction extends AbstractTestAction {
 	/**
@@ -55,6 +55,7 @@ public class LibraryColLengthAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.put(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "5");
+		props.put(PersistenceOptions.ID_COLUMN_NAME, "myID");
 		return props;
 	}
 

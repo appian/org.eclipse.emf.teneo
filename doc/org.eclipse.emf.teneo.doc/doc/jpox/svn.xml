@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Subversion</title> 
+	</header> 
+	<body>
+		<p>The source code of the EMF - JPOX integration is stored in a <a href="http://subversion.tigris.org/">Subversion</a> repository.
+			The subversion url is: svn://svn.elver.org/elver with anonymous login.</p>
+		<p></p>
+		<p>
+			<strong>The source code in subversion is updated on a daily basis and contains experimental
+				new features which can (temporarily) break already existing functionality and tests.
+				There is no guarantee that the code in subversion will work in anyway.</strong></p>
+		<section id="projects">
+			<title>Projects in Subversion</title>
+		<p>
+			The relevant projects within the
+			repository are:
+		</p>
+			<ul>
+			<li>org.elver.store: this project contains general code used by the JPOX as well as the Hibernate runtime layer.</li>
+			<li>org.elver.store.eclipse: this project contains general code for the eclipse menu options used by the JPOX as well as the Hibernate runtime layer.</li>
+			<li>org.elver.store.annotations: this project contains the handling of EJB3-like annotations.</li>
+			<li>org.elver.store.mapper.jpox: maps an annotated model to a JPOX mapping (a package.jdo)..</li>
+			<li>org.elver.store.jpox: this project contains the EMF - JPOX runtime layer.</li>
+			<li>org.elver.store.jpox.eclipse: this project contains the Eclipse menu options (generate
+				package.jdo and resource utility).</li>
+			<li>org.elver.store.samples: this project contains the examples and model information used in the testcases.</li>
+			<li>org.elver.store.commontest: this project contains the test case part which is common for Hibernate and JPOX</li>
+			<li>org.elver.store.jpox.test: the jpox specific part of the tests</li>
+			<li>org.elver.store.tutorial: the tutorials used on this website</li>
+			</ul>
+		<p>
+			Other projects in subversion are related to an integration between EMF and JSF and Hibernate.
+		</p>
+		<p>The projects have dependencies which are managed by the plugin dependencies in
+		the Manifest.MF</p>
+		<p>Sometimes projects will have a dependency to a org.jpox plugin project (not present in svn). This is used 
+		to debug jpox. When checking out the development projects these dependencies can
+			be replaced by the corresponding jpox jar file.</p>
+		<p>
+			Within each project there is a sub folder called trunk which contains the 
+			latest version. Other versions are present in the branch/version subfolders.
+		</p>
+		<p>We use the standard Eclipse code format with the line length set to 120, the formatter profile
+		can be downloaded <a href="../download/elver-code-profile.xml">here</a>.</p>
+		<p></p>
+		</section>
+	</body>
+</document>

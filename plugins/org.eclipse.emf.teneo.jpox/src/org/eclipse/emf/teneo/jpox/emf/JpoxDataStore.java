@@ -11,11 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.2 2006/07/22 13:04:20 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.3 2006/08/03 09:57:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -83,7 +85,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/07/22 13:04:20 $
+ * @version $Revision: 1.3 $ $Date: 2006/08/03 09:57:10 $
  */
 
 public class JpoxDataStore {
@@ -182,15 +184,36 @@ public class JpoxDataStore {
 		String suffix = properties.getProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY);
 		if (suffix == null)
 			suffix = "jdo";
-		final String[] jdoFileList = StoreUtil.getFileList(JpoxConstants.PREFIX_PACKAGE
-				+ JpoxConstants.EXTENSION_SEPARATOR + suffix, properties
-				.getProperty(JpoxConstants.PACKAGE_JDO_LOCATION));
-
+		final String jdoFileName = JpoxConstants.PREFIX_PACKAGE	+ JpoxConstants.EXTENSION_SEPARATOR + suffix;
+		String additionalLocation = properties.getProperty(JpoxConstants.PACKAGE_JDO_LOCATION);
+		if (additionalLocation != null && !additionalLocation.endsWith(jdoFileName)) {
+			additionalLocation += File.separator + jdoFileName;
+		}
+		// copy the file listed in the additional file list to a place in the classpath!
+		// use the EPackage interface class!
+		if (additionalLocation != null) {
+			log.debug("Handling additional jdo file location " + additionalLocation);
+			final InputStream is = this.getClass().getResourceAsStream(additionalLocation);
+			if (is == null) { // absolute location somewhere?
+				log.debug(additionalLocation + " not in classpath, copying it there!");
+				EPackage epack = getEPackages()[0];
+				final File packageDirectory = new File(epack.getClass().getResource('/' + epack.getClass().getName().replace('.', '/') + ".class").getFile());
+				final File destination = new File(packageDirectory.getParent(), jdoFileName);
+				if (destination.exists()) {
+					log.warn("Overwriting existing package.jdo file in location " + destination.getAbsolutePath());
+					destination.delete();
+				}
+				StoreUtil.copyFile(new File(additionalLocation), destination);
+			}
+		}
+		
+		final String[] jdoFileList = StoreUtil.getFileList(jdoFileName, null);
+		
 		// then create the list of all classnames
 		final String[] pcClassNames = getAllClassNames(jdoFileList);
 
 		// create the schema
-		createSchema(pcClassNames, properties);
+		createSchema(pcClassNames, properties, jdoFileList);
 
 		// a check if the topclasses are empty then as a default add all the classes from the pcClassNames
 		// this happens in case we have a testcase which is not based on epackages
@@ -365,7 +388,8 @@ public class JpoxDataStore {
 	}
 
 	/** Creates the tables in the database. This code is partially copied from the org.jpox.SchemaTool */
-	protected void createSchema(String[] pcClassNames, Properties origProps) {
+	protected void createSchema(String[] pcClassNames, Properties origProps,
+			String[] jdoFileList) {
 		if (!updateSchema) {
 			log.debug("Update of the database schema has been disabled returning");
 		}
@@ -382,7 +406,7 @@ public class JpoxDataStore {
 		newProps.setProperty(PMFConfiguration.VALIDATE_TABLES_PROPERTY, "true");
 
 		// Create a PersistenceManager for this store and create the tables
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(newProps);
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(newProps);		
 		org.jpox.PersistenceManager pm = (org.jpox.PersistenceManager) pmf.getPersistenceManager();
 		StoreManager store_mgr = StoreManagerFactory.getStoreManager(pm);
 		try {
@@ -434,7 +458,12 @@ public class JpoxDataStore {
 		documentBuilder.setEntityResolver(new JDOEntityResolver());
 
 		for (int i = 0; i < packageJDOFiles.length; i++) {
-			final Element docElement = documentBuilder.parse(this.getClass().getResourceAsStream(packageJDOFiles[i]))
+			log.debug("Reading jdo file: " + packageJDOFiles[i]);
+			InputStream is = this.getClass().getResourceAsStream(packageJDOFiles[i]);
+			if (is == null) { // absolute location somewhere?
+				is = new FileInputStream(packageJDOFiles[i]);
+			}
+			final Element docElement = documentBuilder.parse(is)
 					.getDocumentElement();
 
 			// find all the nodes with tagname class

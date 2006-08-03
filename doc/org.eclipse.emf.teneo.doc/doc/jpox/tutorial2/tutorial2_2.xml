@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+--> 
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>Run the Library Editor</title> 
+	</header> 
+	<body>
+		<p>To run the Library Editor go to step 4 of the EMF Library tutorials (Run the generated Editor). For
+			the EMF Library tutorial see:
+			(<a href="http://eclipse.org/emf/docs.php?doc=tutorials/xlibmod/xlibmod.html">based on Rose</a>, 
+			<a href="http://eclipse.org/emf/docs.php?doc=tutorials/clibmod/clibmod.html">based on Xml Schema</a>).</p>
+		<p>After adding a Library and a Writer (JRR Tolkien) and a Book you need to save the resource. 
+			The database mylibrary now contains a Library, a Book and a Writer.</p>
+		<p><strong>Note that the model constraints are checked when saving EMF objects. Validation errors 
+		(e.g. non-nullable fields are not set) are made visible in the Eclipse Error Log view 
+		(see menu Window > Show View > Error Log).
+		When one of the EMF objects is invalid then the complete save action is rolled back.</strong></p>
+		<p>You can try the following editor actions:</p>
+		<ul>
+			<li>Create Writers and Books, link them</li>
+			<li>Link Writer to multiple Books</li>
+			<li>Copy and paste of one or multiple Writers and Books</li>
+			<li>Delete of a Book if it has no Writer</li>
+			<li>Delete of a Writer if it has no Books</li>
+		</ul>
+		<p>Cut and paste is not supported, see <a href="../jpox_details.html#cutpaste">here</a> for more information and a solution.</p>
+	</body>
+</document>

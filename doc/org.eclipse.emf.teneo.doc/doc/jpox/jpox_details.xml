@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>EMF - JPOX Integration Details</title> 
+		<abstract>Discusses a number of specific implementation and use details of the EMF - JPOX integration.</abstract>
+	</header> 
+	<body>
+		<section><title>Requirements on EObjects: InternalEObject</title>
+		<p>The EMF JPOX persistency layer only requires that the persisted objects implement
+			the org.eclipse.emf.ecore.InternalEObject interface.</p>
+		</section>
+		<section><title>Requirements on EPackages</title>
+			<p>The OR Mapper searches for the EPackage classes in the project and uses the classpath of the project of
+				the selected ecore file. The only requirement is that the EPackage classes (the generated interface) 
+				extend the EMF EPackage interface directly.</p>
+		</section>
+		<section>
+			<title>Persisted EMF Objects after Commit</title>
+			<p>When EMF objects have been persisted and the transaction is committed then these objects can not be
+		changed anymore. Only read access is possible. Please refer to the 
+		<a href="http://www.jpox.org/docs/1_1/attach_detach.html">relevant JDO documentation</a> about this topic.</p>
+		</section>
+		<section><title>Classloader</title>
+			<p>Elver performs explicit classloading in specific locations. It is possible to set the classloader which is being
+			user by Elver. This can be done through the org.elver.store.ClassLoaderResolver class. In this class you can 
+			register a org.elver.store.classloader.ClassLoaderStrategy. The registered ClassLoaderStrategy is used by 
+			Elver to explicitly load classes.</p>
+		</section>
+		<section>
+			<title>Custom Types</title>
+			<p>You can register your own TypeMappings through a 
+			call to org.jpox.TypeManager.getTypeManager().addType. This needs to be done before you initialize the first JpoxDataStore.
+			An example of the call Elver uses to register the type mapping for EList</p>
+			<source>
+ClassLoaderResolver clr = new JDOClassLoaderResolver();
+TypeManager.getTypeManager().addType(EList.class.getName(), EListMapping.class.getName(), 
+		EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
+			</source>
+			<p>See the jpox documentation <a href="http://www.jpox.org/docs/1_1/types_userdefined.html">here</a>, it is not necessary
+			to use the xml file to register type mappings, the call to the TypeManager above will also work.</p>
+		</section>
+		<section id="cutpaste">
+			<title>Move an EObject between EContainers or support cut and paste in the EMF editor</title>
+			<p>In the standard approach it is not possible to move an EObject from one containment relation to another containment relation. A move
+			between containment relations corresponds to a cut and paste in the EMF editor. The reason is that Elver will 
+			specify an dependent-element="true" for a containment relation. This has a consequence that JPOX will throw 
+			an exception (Cannot write fields to a deleted object) when you move an EObject from its container to another container.</p> 
+			<p><em>Solution:</em> as a solution you can prevent the dependent-element from being set, by specifying 
+			an annotation on the relevant EReference features. As an example:</p>
+			<source><![CDATA[
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="writers" type="lib:Writer">
+	<xsd:annotation>
+		<xsd:appinfo source="http://ejb.elver.org/OneToMany" 
+			ecore:key="cascade">MERGE PERSIST REFRESH REMOVE</xsd:appinfo>
+	</xsd:annotation>
+</xsd:element>
+			]]></source>
+			<p>This annotation means that cascading deletes are still enforced but a child (the Writer) can exist without its
+			parent (the Library).</p>
+			<p>When this annotation is used in the context of a JPOX Resource then when an EObject is removed from 
+			its container then it will also be removed from the resource and from the database. However, when you set this 
+			annotation and not work with JPOX Resources then the removed EObject is not removed from the database and will 
+			be present without a container!</p>
+		</section>
+		<section>
+			<title>Validation</title>
+			<p>When storing and retrieving EMF objects from a JPOX store it is not required to work with a 
+			EMF type Resource. However the standard EMF validator checks if every EObject is
+			present in an EMF resource and that all referenced EObjects are in the same resource. So, if 
+			this standard validator is used unnecessary errors are thrown.
+			</p>
+			<p>To prevent this situation you can register your own validator which does not perform this resource check. 
+			For your convenience it is also possible to use the org.elver.store.jpox.validation.JPOXValidator. See its
+			source code below. 
+			</p>
+			<p>
+			Validators are registered using a call to put method of the EValidator.Registry.INSTANCE object.
+			</p>
+			<source>			
+public class JPOXValidator extends EObjectValidator
+{
+	/** 
+	 * Overrides the method from the superclass to prevent this check because it
+ 	* is not required in the context of a jdo store. Note that this assumes that 
+ 	* an object and its references are all stored in the same jpox database. 
+ 	*/
+	public boolean validate_EveryReferenceIsContained(EObject eObject, DiagnosticChain diagnostics, 
+		Map context) 
+	{
+		return true;
+	}
+}
+			</source>
+		</section>
+		<section><title>Force a join table for 1:n relations</title>
+		<p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
+		parent) in the child table/object. The disadvantage of this approach is that duplicates 
+		are not supported. To support duplicates in an elist a join table is required. To signal to 
+		Elver, that a join table should be used, the annotation as in this example can be used:</p>
+				<source><![CDATA[
+<xsd:element name="joinedItem" type="xsd:anyURI" ecore:reference="this:Item" maxOccurs="unbounded">
+	<xsd:annotation>
+		<xsd:appinfo source="http://annotation.elver.org/Unique" ecore:key="value">false</xsd:appinfo>
+	</xsd:annotation>
+</xsd:element>
+			]]></source>
+		<p>Based on this annotations Elver will generate a join table for this model. Note that 
+		this annotation can be combined with the indexed annotation.</p>
+		<p><em>The unique annotation does not exist in the EJB3 spec and is an Elver extension. Extension
+		annotations use the source: http://annotation.elver.org.</em></p>
+		</section>
+		<section>
+			<title>JPOX/Relational Validation and EObject persistency</title>
+			<p>When an object is made persistent using JPOX then it is almost always directly written to the backing
+			relational store. At that moment also constraints, such as nullable fields, are checked. This means that 
+			only valid EObjects should be made persistent using the PersistenceManager makePersistent call.</p>
+			<p><em>An object is also made persistent when it is added to the collection of a persistent object. 
+			So only valid objects should be added to the collection of a persistent object</em>. See the example below.</p>
+			<p>The following source will result in an error because the Book object does not have its title set when
+			it is added to the library.</p>
+			<source>
+Book book = LibraryFactory.eINSTANCE.createBook();
+lib.getBooks().add(book); // ERROR, here the book does not have a title yet!
+book.setAuthor(writer);
+book.setPages(305);
+book.setTitle("The Hobbit");
+book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+		</source>
+			<p>To make this valid, the book should be added to the library after all its values have been set.</p>
+		</section>
+		<section>
+			<title>PersistenceManagerFactory configuration</title>
+			<p>PersistenceManagerFactories should be created through a call to the relevant methods in the JPOXHelper.INSTANCE
+			object. If only the database connection information is passed then the JPOXHelper will
+				use the configuration properties below. for 
+			more information see the jpox site <a href="http://www.jpox.org/docs/1_1/pmf.html">here</a>.</p>
+			<source>
+properties.setProperty(PMFConfiguration.JDO_IGNORECACHE_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.JDO_RETAINVALUES_PROPERTY, "true");
+properties.setProperty(PMFConfiguration.JDO_NONTRANSACTIONAL_READ_PROPERTY, "true");
+
+properties.setProperty(PMFConfiguration.STRING_DEFAULT_LENGTH_PROPERTY, "255");
+
+properties.setProperty("javax.jdo.PersistenceManagerFactoryClass", "org.jpox.PersistenceManagerFactoryImpl");
+
+// set it all to false because of performance
+properties.setProperty(PMFConfiguration.AUTO_CREATE_SCHEMA_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.AUTO_CREATE_CONSTRAINTS_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.AUTO_CREATE_SCHEMA_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.AUTO_CREATE_TABLES_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.VALIDATE_COLUMNS_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.VALIDATE_CONSTRAINTS_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.VALIDATE_TABLES_PROPERTY, "false");
+
+properties.setProperty(PMFConfiguration.CACHE_LEVEL_1_TYPE_PROPERTY, 
+	"org.elver.store.jpox.emf.cache.EMFWeakRefCache");
+properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY, 
+	JpoxHelper.INSTANCE.getJdoFileExtension());
+		</source>
+			<p><em>For the EMF - JPOX integration it is very important that as a level1 cache one of the
+			cache implementations found in org.elver.store.jpox.cache is used.</em></p>
+			<p>The default String length is set to prevent a bug in MySql, the JDO default is 256.</p>
+			<p>The AUTO_CREATE_* and VALIDATE_* properties are set this way for performance reasons. At initialization time the JpoxDataStore will override these properties to update the database schema, 
+			see also here <a href="jpoxdatastore.html#options">options</a>.</p>
+			<p>You can set the file extension to use through the JpoxHelper.INSTANCE.setJdoFileExtension, this allows you to 
+			more easily test multiple package.jdo files.</p>
+		<p>The current integration will not work properly if one of the following settings is used:</p>
+		<ul>
+			<li>org.jpox.delayDatastoreOperationsUntilCommit to true does not work with bi-directional references</li>
+			<li>javax.jdo.option.Optimistic set to true does not work with bi-directional references.
+			The current EMF/JPOX integration works with pessimistic transactions. However, in the current 
+			JPOX version records are not locked in the database (<a href="http://www.jpox.org/docs/1_1/transactions.html">see</a>).</li>
+		</ul>
+		</section>
+		<section>
+			<title>Fetch Group</title>
+			<p>A FetchGroup defines which fields are read when an object is loaded from the data store. The EMF - JPOX
+				integration sometimes overrides the working of a FetchGroup because containment references are always
+				read.</p>
+		</section>
+		<section>
+			<title>Direct read of contained objects, container feature not set</title>
+			<p>When an object is contained and is read directly (using a JDO query) then its container feature is not set.
+			For example, a Book is contained in the Library (see tutorial). If a jdo query reads all books then these books
+			EMF objects do not have their container set. If a library object is read which contains books then 
+				the books will have their container feature set.</p>
+			<p>Since the 0.6.3 release the container can be set explicitly after retrieving the 
+			contained EObjects directly from the database, see <a href="jpoxdatastore.html#setcontainer">here</a>.
+			</p>
+		</section>
+		<section><title>Registering a Persistence Manager Factory Creator</title>
+		<p>You can register your own persistence manager factory creator class. This 
+			class is called by Elver to create a PersistenceManagerFactory. By registering your 
+			own PersistenceManagerFactoryCreator, you can override the creation of persistence managers etc.</p>
+		<p>The persistence manager factory creator should implement the interface: 
+			org.elver.store.jpox.emf.PersistenceManagerFactoryCreator. The creator can be registered using
+			the method JpoxHelper.INSTANCE.setPersistenceManagerFactoryCreator(....).</p>
+		</section>
+		<section>
+			<title>Lazy loading and proxy objects</title>
+			<p>As a default when an object is loaded from the JPOX store only the primitive type fields are read
+			immediately. Reference fields and collections are lazely loaded, only when required. This behavior is 
+			very similar to the proxy object behavior of standard EMF resource implementations.</p>
+			<p>If even 'more lazy' behavior is required then it is possible to set the fetch group on the
+			PersistenceManager, <a href="http://www.jpox.org/docs/1_1/fetchgroup.html">see</a></p>
+		</section>
+		<section>
+			<title>Hiding class names, using interfaces</title>
+			<p>EMF is very interface oriented and tries to hide the generated implementation classes. JPOX
+		on the other hand requires the use of the implementation classes in queries. The runtime layer 
+		supports the conversion of an EMF interface name to a implementation class through the JpoxHelper.INSTANCE.getInstanceClass method.
+		With this it is possible
+		to work with EMF interfaces without using the implementation class names directly.</p>
+		</section>
+		<section id="notjpoxsupported">
+			<title>Not Supported by JPOX</title>
+			<p>Lists of user-defined primitive types are not supported, an example is a list
+					of enumerates</p>
+		</section>
+	</body>
+</document>

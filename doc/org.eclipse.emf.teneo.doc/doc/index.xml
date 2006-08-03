@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title></title> 
+	</header> 
+	<body>
+		<section>
+			<title>Introduction</title>
+				<p>The Elver project focuses on combining code, persistency and UI generation solutions. 
+					Elver Persistency implements persistency solutions 
+					for generated Java objects by integrating code generation frameworks 
+					and existing persistency technologies.</p>
+		</section>
+		<section>
+			<title>EMF Persistency</title>
+				<p>Integrating EMF with existing persistency solutions, combines the power of a 
+					code generation framework like EMF 
+				and the power of storage, caching and querying of sophisticated object-relational mapping and persistency software.</p>
+				<p>EMF has been integrated with two persistency solutions:</p>
+				<p><strong><a href="hibernate/index.html">Hibernate:</a></strong> The EMF - Hibernate integration (alpha status) has just been released and supports
+				persisting of basic EObjects, ELists with 1:n, n:m, one-way, two-way and contained relations. EMF Objects can be retrieved
+			using HQL queries.</p>
+				<p><strong><a href="jpox/index.html">JDO/JPOX:</a></strong> The EMF - JPOX integration (alpha status) supports
+				all EMF and JDO 2.0/JPOX features. EMF objects can be persisted in most major relational databases and retrieved using an EMF resource approach or 
+					advanced JDOQL queries.
+				</p>
+		</section>
+	</body>
+</document>

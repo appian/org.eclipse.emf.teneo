@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.2 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -480,9 +480,14 @@ class EntityMapper extends AbstractMapper {
 
 		// note specific accessor is required because version accessor is not retrieved through
 		// emf tuplizer
-		return getHbmContext().getCurrent().addElement("version").addAttribute("name",
-				getHbmContext().getVersionColumnName()).addAttribute("access",
-				"org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
+		return getHbmContext().getCurrent().addElement("version").
+			// NOTE: the name is also set so that the property name can be 
+			// used later to identify a version prop, 
+			// TODO: improve this
+				addAttribute("name", getHbmContext().getVersionColumnName()).
+				addAttribute("column", getHbmContext().getVersionColumnName()).
+				addAttribute("access",
+					"org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
 	}
 
 }

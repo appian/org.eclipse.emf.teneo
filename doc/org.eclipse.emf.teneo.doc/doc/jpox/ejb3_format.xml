@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+ 
+ 	Licensed under the Apache License, Version 2.0 (the "License");
+ 	you may not use this file except in compliance with the License.
+ 	You may obtain a copy of the License at
+ 
+ 		http://www.apache.org/licenses/LICENSE-2.0
+ 
+ 	Unless required by applicable law or agreed to in writing, software
+ 	distributed under the License is distributed on an "AS IS" BASIS,
+ 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ 	See the License for the specific language governing permissions and
+ 	limitations under the License.
+-->
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document> 
+	<header> 
+		<title>Format of EJB3 Annotations as EAnnotations</title> 
+	</header> 
+	<body>
+		<p>EJB3 uses java annotations while Elver EJB3 is based on EMF EAnnotations. The main difference between java 
+		annotations and EAnnotations is that the latter does not support multi-level structures. An example of a 
+		multi-level annotation is the Columns annotation which contains Column annotations. 
+		This can not be expressed directly in an EAnnotation. With Elver we use a slightly 
+		different syntax to handle multi-level structures.
+		</p>
+		<section id="target">
+			<title>Introduction</title>
+			<p>EJB3 EAnnotations in Elver always have the source: http://ejb.elver.org. Elver specific annotations which have
+			been added to support additional functionality have the source: http://annotation.elver.org.</p>
+			<p>The name of the EJB3 annotation is appended to the source: http://ejb.elver.org/Basic.</p>
+			<p>To make an annotation unique sometimes an extra identifying code needs to be appended to the source:
+			for example http://ejb.elver.org/Column/c1.</p>
+			<p>The key of the annotation corresponds to the key in the EJB3 annotation.</p>
+			<p>An EJB3 Annotation can have different targets: TYPE, METHOD and FIELD (see the EJB3 spec). Annotations
+			with a TYPE target can be used for EMF EClasses, annotations with METHOD and FIELD targets can be used for
+			EStructuralFeatures. <em>Note:</em> EJB3 annotations relevant for a non-reference type java member can also be set on 
+			an EDataType (see <a href="ejb3_features.html#edatatype">here</a> for more information).</p>
+			<p>Multiple values in a multi value annotation are separated by spaces, for example:</p>
+<source><![CDATA[<xsd:appinfo source="http://ejb.elver.org/OneToMany" ecore:key="cascade">MERGE PERSIST</xsd:appinfo>
+			]]></source>			
+		</section>
+		<section id="simplenokeyvalye">
+			<title>Annotation without key-value</title>
+			<p>An example of an EJB3 annotation without a key-value pair is the Embedded annotation.</p>
+			<p>In a XML Schema model the Embedded annotation is specified as follows:</p>
+						<source><![CDATA[
+<xsd:element name="secondEmbedded" type="this:Embeddable">
+	<xsd:annotation>
+		<xsd:appinfo source="http://ejb.elver.org/Embedded">true</xsd:appinfo>
+	</xsd:annotation>
+</xsd:element>
+			]]></source>
+			<p>In an UML model the Embedded annotation is specified as follows:</p>
+						<source><![CDATA[
+http://ejb.elver.org/Embedded
+			]]></source>
+		</section>
+		<section id="simple">
+			<title>Annotation with key-value</title>
+			<p>An example of an EJB3 annotation with a key-value pair is the Basic annotation.</p>
+			<p>In a XML Schema model the Basic annotation is specified as follows:</p>
+						<source><![CDATA[
+<xsd:element name="myOptionalBasic" type="xsd:string">
+	<xsd:annotation>
+		<xsd:appinfo source="http://ejb.elver.org/Basic" ecore:key="optional">true</xsd:appinfo>
+		<xsd:appinfo source="http://ejb.elver.org/Basic" ecore:key="fetch">EAGER</xsd:appinfo>
+	</xsd:annotation>
+</xsd:element>
+			]]></source>
+			<p>In UML the annotation is specified as follows:</p>
+						<source><![CDATA[
+http://ejb.elver.org/AttributeOverride name='name' column='c1'
+			]]></source>
+			<p>It is explained below what a column with value c1 means.</p>
+		</section>
+		<section id="multi">
+			<title>Complex Annotation with multi-level structure</title>
+			<p>An example of a more complex annotation is the 
+			AttributeOverrides annotation which can contain multiple AttributeOverride annotations.</p>
+			<p>The AttributeOverrides annotation can be expressed in XML Schema as follows:</p>
+			<source><![CDATA[
+<xsd:element name="embedded" type="this:Embeddable">
+	<xsd:annotation>
+		<xsd:appinfo source="http://ejb.elver.org/Embedded">true</xsd:appinfo>
+		<xsd:appinfo source="http://ejb.elver.org/AttributeOverrides" 
+					ecore:key="value">a1 a2</xsd:appinfo>
+		<xsd:appinfo source="http://ejb.elver.org/AttributeOverride/a1" 
+					ecore:key="name">myString</xsd:appinfo>
+		<xsd:appinfo source="http://ejb.elver.org/AttributeOverride/a1" 
+					ecore:key="column">c1</xsd:appinfo>
+		<xsd:appinfo source="http://ejb.elver.org/Column/c1" 
+					ecore:key="name">columnString1</xsd:appinfo>
+		<xsd:appinfo source="http://ejb.elver.org/AttributeOverride/a2" 
+					ecore:key="name">myInteger</xsd:appinfo>
+		<xsd:appinfo source="http://ejb.elver.org/AttributeOverride/a2" 
+					ecore:key="column">c2</xsd:appinfo>
+		<xsd:appinfo source="http://ejb.elver.org/Column/c2" 
+					ecore:key="name">columnInteger1</xsd:appinfo>
+	</xsd:annotation>
+</xsd:element>
+			]]></source>
+			<p>This annotation models an embedded type by tagging the element with an Embedded annotation. The AttributeOverrides define how the 
+			properties of the embedded type are stored in the table. The AttributeOverrides consists of two AttributeOverride 
+			annotations which
+			are named a1 and a2. The a1 is appended to the source to make it unique: http://ejb.elver.org/AttributeOverride/a1.
+			The AttributeOverride contains an column key with a value c1. This value c1 is used in the source of the 
+			Column annotation to identify the Column annotation. 
+			</p>
+			<p>A multi-level annotation in uml is specified as follows:</p>
+			<source><![CDATA[
+http://ejb.elver.org/Embedded
+http://ejb.elver.org/AttributeOverride name='name' column='c1'
+http://ejb.elver.org/Column/c1 name='bornNameColumn'
+			]]></source>
+			</section>
+			<section id="omondo"><title>Where/how to specify annotations in Omondo</title>
+			<p>Double click on the element for which an annotation should be specified:</p>
+			<figure src="../images/omondo1.jpg" alt="Omondo step 1"/>
+			<p>Press Add in Annotations:</p>
+			<figure src="../images/omondo2.jpg" alt="Omondo step 2"/>
+			<p>Specify the full Elver name in the annotations field. The http://... prefix will be removed from the view when you press enter:</p>
+			<figure src="../images/omondo3.jpg" alt="Omondo step 3"/>
+			<p>Press Add on the name/value attribute and specify one of the attributes for this annotation and press OK:</p>
+			<figure src="../images/omondo4.jpg" alt="Omondo step 4"/>
+			<figure src="../images/omondo5.jpg" alt="Omondo step 5"/>
+			<p>and ready!</p>
+			</section>
+			<section id="rr">
+				<title>Where to specify annotations in Rational Rose</title>
+				<p>The image below illustrates where to specify annotations in Rational Rose:</p>
+				<p>The ecore model properties (ecore A, ecore B) are added to Rational Rose using the <a href="../examples/ecore.pty">ecore.pty</a> file.</p>
+				<figure src="../images/rose.jpg" alt="Setting annotations in Rational Rose"/>
+			</section>
+	</body>
+</document>

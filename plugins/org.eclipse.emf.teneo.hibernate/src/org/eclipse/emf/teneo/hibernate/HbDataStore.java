@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.3 2006/07/20 12:27:23 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.4 2006/08/03 09:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -83,7 +83,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class HbDataStore {
@@ -126,7 +126,7 @@ public class HbDataStore {
 	private String mappingXML = null;
 
 	/** The properties used to create the hibernate configuration object */
-	private Properties persistenceProperties;
+	private PersistenceOptions persistenceOptions;
 
 	private Properties hibernateProperties;
 
@@ -285,7 +285,7 @@ public class HbDataStore {
 
 	/** Adds a econtainer mapping to the class mapping */
 	protected void addContainerMappings() {
-		if (new PersistenceOptions(getPersistenceProperties()).isDisableEContainerMapping()) {
+		if (getPersistenceOptions().isDisableEContainerMapping()) {
 			log.debug("EContainer mapping disabled.");
 			return;
 		}
@@ -334,7 +334,8 @@ public class HbDataStore {
 	/** Sets the interceptor */
 	protected void setInterceptor() {
 		hbConfiguration
-				.setInterceptor(getHbContext().createInterceptor(getConfiguration(), getPersistenceProperties()));
+				.setInterceptor(getHbContext().createInterceptor(getConfiguration(), 
+						getPersistenceOptions()));
 	}
 
 	/**
@@ -342,7 +343,7 @@ public class HbDataStore {
 	 * configuration
 	 */
 	protected void mapModel() {
-		if (new PersistenceOptions(getPersistenceProperties()).isUseMappingFile()) {
+		if (getPersistenceOptions().isUseMappingFile()) {
 
 			// register otherwise the getFileList will not work
 			ERuntime.INSTANCE.register(getEPackages());
@@ -362,9 +363,9 @@ public class HbDataStore {
 	/** Generate a hibernate mapping xml string from a set of epackages */
 	protected String mapEPackages() {
 		log.debug("Generating mapping file from in-mem ecore");
-		PersistenceOptions po = new PersistenceOptions(getPersistenceProperties());
-		PAnnotatedModel paModel = PersistenceMappingBuilder.INSTANCE.buildMapping(getEPackages(), po);
-		HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
+		PAnnotatedModel paModel = PersistenceMappingBuilder.INSTANCE.buildMapping(getEPackages(), 
+				getPersistenceOptions());
+		HibernateMappingGenerator hmg = new HibernateMappingGenerator(getPersistenceOptions());
 		return hmg.generateToString(paModel);
 	}
 
@@ -450,7 +451,7 @@ public class HbDataStore {
 
 	/** Updates the database schema */
 	protected void updateDatabaseSchema() {
-		if (!new PersistenceOptions(getPersistenceProperties()).isUpdateSchema()) {
+		if (!getPersistenceOptions().isUpdateSchema()) {
 			log.debug("Database schema not updated, option " + PersistenceOptions.UPDATE_SCHEMA
 					+ " has been set to false");
 			return;
@@ -587,8 +588,8 @@ public class HbDataStore {
 		String targetEntityName = null;
 		if (referedTo instanceof EObject) {
 			final EObject eReferedTo = (EObject) referedTo;
-			targetEntityName = StoreUtil.getEClassURI(eReferedTo.eClass(), getPersistenceProperties().getProperty(
-					PersistenceOptions.QUALIFY_ENTITY_NAME));
+			targetEntityName = StoreUtil.getEClassURI(eReferedTo.eClass(), 
+					getPersistenceOptions().getQualifyEntityName());
 		} else if (referedTo instanceof HibernateFeatureMapEntry) {
 			final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) referedTo;
 			targetEntityName = fme.getEntityName();
@@ -733,7 +734,7 @@ public class HbDataStore {
 								// ==
 								// CascadeStyle.ALL;
 								toEntity = StoreUtil.getEClassURI(((EReference) ef).getEReferenceType(),
-										getPersistenceProperties().getProperty(PersistenceOptions.QUALIFY_ENTITY_NAME));
+										getPersistenceOptions().getQualifyEntityName());
 							} else if (ef instanceof EAttribute && ef.getEType() instanceof EClass) { // TODO
 								// can
 								// this
@@ -742,8 +743,8 @@ public class HbDataStore {
 								isContainer = true; // prop.getCascadeStyle().hasOrphanDelete()
 								// || prop.getCascadeStyle()
 								// == CascadeStyle.ALL;
-								toEntity = StoreUtil.getEClassURI((EClass) ef.getEType(), getPersistenceProperties()
-										.getProperty(PersistenceOptions.QUALIFY_ENTITY_NAME));
+								toEntity = StoreUtil.getEClassURI((EClass) ef.getEType(), 
+										getPersistenceOptions().getQualifyEntityName());
 							}
 							// filter out non eobjects
 							else {
@@ -794,14 +795,14 @@ public class HbDataStore {
 			return (ArrayList) refersTo.get(eclass);
 		}
 
-		final ArrayList thisList = (ArrayList) refersTo.get(StoreUtil.getEClassURI(eclass, getPersistenceProperties()
-				.getProperty(PersistenceOptions.QUALIFY_ENTITY_NAME)));
+		final ArrayList thisList = (ArrayList) refersTo.get(StoreUtil.getEClassURI(eclass,
+				getPersistenceOptions().getQualifyEntityName()));
 		if (thisList == null) {
 			return new ArrayList();
 		}
 		for (Iterator it = eclass.getESuperTypes().iterator(); it.hasNext();) {
-			String eclassUri = StoreUtil.getEClassURI((EClass) it.next(), getPersistenceProperties().getProperty(
-					PersistenceOptions.QUALIFY_ENTITY_NAME));
+			String eclassUri = StoreUtil.getEClassURI((EClass) it.next(), 
+					getPersistenceOptions().getQualifyEntityName());
 			addUnique(thisList, setRefersToOfSupers(eclassUri, refersTo, classDone));
 		}
 		classDone.add(eclass);
@@ -851,7 +852,10 @@ public class HbDataStore {
 	}
 
 	/**
-	 * Gets the persistence properties.
+	 * Gets the persistence options. The persistence options is a type representation of the persistence 
+	 * options. If not set through the setPersistenceProperties method then a properties file is searched
+	 * If found it is used to set the persistence options.
+	 * 
 	 * <p>
 	 * If no properties have been set explicitly, the method will attempt to load them from the file
 	 * "/elver-persistence.properties" at the root of the classpath. (A mechanism similar to "hibernate.properties".)
@@ -861,13 +865,13 @@ public class HbDataStore {
 	 * @return the persistence options as a Properties instance.
 	 * 
 	 */
-	public Properties getPersistenceProperties() {
-		if (persistenceProperties == null) {
-			persistenceProperties = new Properties();
+	public PersistenceOptions getPersistenceOptions() {
+		if (persistenceOptions == null) {
+			final Properties props = new Properties();
 			final InputStream in = this.getClass().getResourceAsStream(PersistenceOptions.DEFAULT_CLASSPATH_FILENAME);
 			if (in != null) {
 				try {
-					persistenceProperties.load(in);
+					props.load(in);
 				} catch (IOException e) {
 					throw new HbStoreException(e);
 				} finally {
@@ -878,23 +882,16 @@ public class HbDataStore {
 					}
 				}
 			}
-
+			persistenceOptions = new PersistenceOptions(props);
 		}
-		return persistenceProperties;
+		return persistenceOptions;
 	}
 
 	/**
 	 * Sets the persistence options.
 	 */
 	public void setPersistenceProperties(Properties persistenceOptions) {
-		this.persistenceProperties = persistenceOptions;
-
-		// dump the properties
-		log.debug("Persistence options set of HbDataStore " + getName());
-		for (Iterator it = persistenceOptions.keySet().iterator(); it.hasNext();) {
-			final String key = (String) it.next();
-			log.debug(key + ": " + persistenceOptions.getProperty(key));
-		}
+		this.persistenceOptions = new PersistenceOptions(persistenceOptions);
 	}
 
 	public Properties getHibernateProperties() {

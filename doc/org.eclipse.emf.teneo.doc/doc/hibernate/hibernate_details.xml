@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2005-2006, Elver.org (http://www.elver.org).
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<!--
+	@author <a href="mtaal@elver.org">Martin Taal</a>
+	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+-->
+
+<!DOCTYPE document PUBLIC
+	"-//APACHE//DTD Documentation V2.0//EN"
+	"http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document> 
+	<header> 
+		<title>EMF - Hibernate Integration Details</title> 
+		<abstract>Discusses a number of specific implementation and use details of the EMF - Hibernate integration.</abstract>
+	</header> 
+	<body>
+		<section><title>Classloader</title>
+			<p>Elver performs explicit classloading in specific locations. It is possible to set the classloader which is being
+			user by Elver. This can be done through the org.elver.store.ClassLoaderResolver class. In this class you can 
+			register a org.elver.store.classloader.ClassLoaderStrategy. The registered ClassLoaderStrategy is used by 
+			Elver to explicitly load classes.</p>
+		</section>
+		<section><title>Requirements on EObjects: InternalEObject</title>
+		<p>The EMF Hibernate persistency layer only requires that the persisted objects implement
+			the org.eclipse.emf.ecore.InternalEObject interface.</p>
+		</section>
+		<section>
+			<title>Relational Validation and EObject persistency</title>
+			<p>When an object is made persistent by session.save() then at 
+				that moment also constraints, such as nullable fields, are checked. So when
+				calling the session.save method the passed EObject should be valid.</p>
+		</section>
+		<section><title>Automatic creation of tables/Database Schema</title>
+		<p>The EMF Hibernate persistency layer will automatically update the database schema 
+		when a new SessionFactory is registered. The Hibernate class org.hibernate.tool.hbm2ddl.SchemaUpdate class is used for
+		this purpose.</p>
+		<p>An <a href="hbdatastore.html#options">option</a> can be used to control if the database schema should be updated when a new HbDataStore
+		is created.</p>
+		</section>
+		<section id="orgeneration"><title>Manual Generation of OR Mapping</title>
+		<p>Standard Elver will automatically map the model to Hibernate when a datastore is initialized. However, it can sometimes make sense to manually
+		adapt the mapping or use a specific mapping file. For this purpose Elver also allows you to manually generate the mapping file. To do this right
+		click on one or more .ecore files and choose the relevant option in the Elver submenu.</p>
+		<p> </p>
+		<figure src="images/ormapping_menu.jpg" alt="Manual generation of hibernate or mapping"/>
+		<p>The hibernate.hbm.xml is created in the folder of the selected .ecore file. To direct Elver to use this mapping file you 
+		need to do the following:</p>
+		<ol><li>Copy the hibernate.hbm.xml to the generated EPackage source tree and let it be copied to the output directory/destination when building.</li>
+		<li>Pass the following option: PersistenceOptions.USE_MAPPING_FILE with the value "true" to the HbDataStore.</li>
+		</ol>
+		<p><strong>Note:</strong> the generation of the hibernate.hbm.xml will only work if the org.elver.store.hibernate.runtime plugin has been added to the 
+		dependencies of the projects of the selected .ecore files.</p>
+		</section>
+		<section id="escaping"><title>Escaping of table and column names</title>
+		<p>Elver will escape table and column names of primitive types. Escaping is done by surrounding the name with backtics (`).</p>
+		<p>Note that:</p>
+		<ul>
+			<li>Join table names are not escaped: Hibernate will in some cases automatically create a table to store the contents of a collection,
+			for example the contents of a list with primitive types. Hibernate will not automatically escape this name. To escape such a join table you 
+			need to add a JoinTable annotation with an escaped name or a non-keyword name.</li>
+			<li>Elver will not escape column names of manually specified Column annotations</li>
+		</ul>
+		</section>
+		<section><title>Lazy loading/fetching, Proxy</title>
+			<p>The Hibernate integration does not make use of the Hibernate Proxy.</p>
+			<p>Primitive features and single refererences are eagerly loaded. ELists are 
+		lazily loaded. In the future probably also single-references will be lazily loaded.</p>
+		</section>
+		<section id="cutpaste">
+			<title>Move an EObject between EContainers or support cut and paste in the EMF editor</title>
+			<p>In the standard approach it is not possible to move an EObject from one containment relation to another containment relation. A move
+			between containment relations corresponds to a cut and paste in the EMF editor. The reason is that Elver will 
+			specify an orphan-delete cascade for a containment relation. This has a consequence that Hibernate will throw 
+			an exception (deleted object would be re-saved by cascade (remove deleted object from associations) when you move an EObject from its container to another container. 
+			See <a href="http://opensource.atlassian.com/projects/hibernate/browse/HHH-785">here</a> for a description.</p>
+			<p><em>Solution:</em> as a solution you can prevent the orphan-delete from being set as the cascade style, by specifying 
+			an annotation on the relevant EReference features or by setting the global runtime property PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT
+			to false (see <a href="options.html">here</a>). As an example of the first approach:</p>
+			<source><![CDATA[
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="writers" type="lib:Writer">
+	<xsd:annotation>
+		<xsd:appinfo source="http://ejb.elver.org/OneToMany" 
+			ecore:key="cascade">MERGE PERSIST REFRESH REMOVE</xsd:appinfo>
+	</xsd:annotation>
+</xsd:element>
+			]]></source>
+			<p>This annotation means that cascading deletes are still enforced but a child (the Writer) can exist without its
+			parent (the Library).</p>
+			<p>When this annotation is used in the context of a Hibernate Resource then when an EObject is removed from 
+			its container then it will also be removed from the resource and from the database. However, when you set this 
+			annotation and not work with Hibernate Resources then the removed EObject is not removed from the database and will 
+			be present without a container!</p>
+		</section>
+		<section>
+			<title>Validation</title>
+			<p>When storing and retrieving EMF objects from a Hibernate store it is not required to work with a 
+			EMF type Resource. However the standard EMF validator checks if every EObject is
+			present in an EMF resource and that all referenced EObjects are in the same resource. So, if 
+			this standard validator is used unnecessary errors are thrown.
+			</p>
+			<p>To prevent this situation you can register your own validator which does not perform this resource check. 
+				See the example here below.
+			</p>
+			<p>
+			Validators are registered using a call to put method of the EValidator.Registry.INSTANCE object.
+			</p>
+			<source>			
+public class MyValidator extends EObjectValidator
+{
+	/** 
+	* Overrides the method from the superclass to prevent this check because it
+ 	* is not required in the context of a hibernate store. Note that this assumes that 
+ 	* an object and its references are all stored in the same hibernate database. 
+ 	*/
+	public boolean validate_EveryReferenceIsContained(EObject eObject, DiagnosticChain diagnostics, Map context) 
+	{
+		return true;
+	}
+}
+			</source>
+		</section>
+		<section><title>Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</title>
+			<p>Default cacheprovider has been set to org.hibernate.cache.HashtableCacheProvider because of ehcache issues which occur when using
+			ehcache with the default values.</p>
+			<p>Encountered error message was: 
+			<em>Attempt to restart an already started EhCacheProvider. Use sessionFactory.close()  between repeated calls to buildSessionFactory. Consider using net.sf.ehcache.hibernate.SingletonEhCacheProvider. Error from  ehcache was: Cannot parseConfiguration CacheManager. Attempt to create a new instance of CacheManager using the diskStorePath "/tmp" which is already used by an existing CacheManager. The source of the configuration was classpath.</em>
+			</p>
+			<p>The HashtableCacheProvider is not for production use. You can override this default setting by setting the hibernate.cache.provider_class property with the cache provider class you want to use.
+			</p>
+		</section>
+		
+	</body>
+</document>
