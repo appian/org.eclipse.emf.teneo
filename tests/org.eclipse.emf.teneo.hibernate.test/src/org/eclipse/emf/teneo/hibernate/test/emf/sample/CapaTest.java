@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CapaTest.java,v 1.1 2006/08/03 09:58:38 mtaal Exp $
+ * $Id: CapaTest.java,v 1.2 2006/08/14 05:11:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -30,7 +30,7 @@ import org.hibernate.Session;
  * Tests the capa sample to reattach an object
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class CapaTest extends AbstractActionTest {
 
@@ -47,7 +47,6 @@ public class CapaTest extends AbstractActionTest {
 			
 			//ml.getMachines().add(getNewMachine(factory, "id4"));
 			hts.commitTransaction();
-			System.err.println(hts.getMappingXML());
 		}
 
 	};

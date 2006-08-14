@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.4 2006/08/03 09:58:38 mtaal Exp $
+ * $Id: AllTests.java,v 1.5 2006/08/14 05:11:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -38,11 +38,13 @@ import org.eclipse.emf.teneo.test.emf.sample.ProductAction;
 import org.eclipse.emf.teneo.test.emf.sample.SunBooksAction;
 import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
 
+import extlibrary.ExtLibraryAction;
+
 /**
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AllTests {
 
@@ -50,9 +52,10 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed.instance()
 				.getConfigurations());
 
-//		suite.addTestSuite(CapaTest.class);
+	//	suite.addTestSuite(ExtLibraryAction.class);
+		suite.addTestSuite(CapaTest.class);
 		suite.addTestSuite(LibraryAction.class);
-/*
+
 		suite.addTestSuite(DetachFromSessionAction.class);
 		
 		suite.addTestSuite(LibraryNonResolvingAction.class);
@@ -79,6 +82,6 @@ public class AllTests {
 		suite.addTestSuite(ProductAction.class);
 		suite.addTestSuite(WorkFlowAction.class);
 		suite.addTestSuite(ForumAction.class);
-*/		return suite;
+		return suite;
 	}
 }
