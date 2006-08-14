@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.3 2006/07/23 19:38:45 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.4 2006/08/14 05:09:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapper;
@@ -77,7 +77,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class DefaultAnnotator {
 
@@ -1129,7 +1129,7 @@ public class DefaultAnnotator {
 			aFeature.setIndexed(PannotationFactory.eINSTANCE.createIndexed());
 			aFeature.getIndexed().setValue(eFeature.isOrdered());
 		}
-		if (aFeature.getUnique() == null) {
+		if (aFeature.getUnique() == null && eFeature instanceof EReference) {
 			aFeature.setUnique(PannotationFactory.eINSTANCE.createUnique());
 			aFeature.getUnique().setValue(eFeature.isUnique());
 		}

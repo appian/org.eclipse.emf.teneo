@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.1 2006/07/08 22:04:30 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.2 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class JPOXMappingGenerator {
@@ -135,7 +135,13 @@ public class JPOXMappingGenerator {
 	private void processClassAnnotation(Element container, PAnnotatedEClass aClass) {
 
 		// ignore non-annotated eclasses
-		if (aClass.getEntity() == null && aClass.getMappedSuperclass() == null && aClass.getEmbeddable() == null) {
+		if (aClass.getEntity() == null && 
+				aClass.getMappedSuperclass() == null && aClass.getEmbeddable() == null) {
+			return;
+		}
+		
+		if (aClass.getAnnotatedEClass().isInterface()) {
+			log.debug(aClass.getAnnotatedEClass().getName() + " is interface, no explicit mapping");
 			return;
 		}
 
@@ -169,7 +175,7 @@ public class JPOXMappingGenerator {
 
 		// now do the implements subnode
 		ArrayList interfaces = new ArrayList();
-		collectImplements(eclass.getInstanceClass(), interfaces);
+		collectImplements(aClass, interfaces);
 		for (Iterator it = interfaces.iterator(); it.hasNext();) {
 			Class iclass = (Class) it.next();
 			Element impl = classElement.addElement("implements");
@@ -211,10 +217,28 @@ public class JPOXMappingGenerator {
 			}
 		}
 
+		mappingContext.setCurrentAClass(aClass);
 		mappingContext.getEClassFeatureMapper().map(aClass, classElement);
+		mappingContext.setCurrentAClass(null);
 		mappingContext.assertEmpty();
 	}
 
+	/** Collect the implemented interfaces minus the interfaces implemented by mapped 
+	 * superclasses.
+	 */
+	private void collectImplements(PAnnotatedEClass aClass, ArrayList result) {
+		collectImplements(aClass.getAnnotatedEClass().getInstanceClass(), result);
+		for (int i = 0; i < aClass.getAnnotatedEClass().getESuperTypes().size(); i++) {
+			final EClass ec = (EClass)aClass.getAnnotatedEClass().getESuperTypes().get(i);
+			final PAnnotatedEClass ac = aClass.getPaModel().getPAnnotated(ec);
+			if (ac != null && ac.getTransient() == null && !ec.isInterface()) {
+				final ArrayList inheritedInterfaces = new ArrayList();
+				collectImplements(ec.getInstanceClass(), inheritedInterfaces);
+				result.removeAll(inheritedInterfaces);
+			}
+		}
+	}
+	
 	/** Collects all implemented interfaces */
 	private void collectImplements(Class iclass, ArrayList result) {
 		if (result.contains(iclass)) return;

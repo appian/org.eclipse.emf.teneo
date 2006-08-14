@@ -14,7 +14,10 @@ Require-Bundle: org.eclipse.emf.common,
 Eclipse-LazyStart: true
 Eclipse-BuddyPolicy: dependent
 Bundle-Vendor: %Plugin.providerName
-Export-Package: org.eclipse.emf.teneo.samples,
+Export-Package: extlibrary,
+ extlibrary.impl,
+ extlibrary.util,
+ org.eclipse.emf.teneo.samples,
  org.eclipse.emf.teneo.samples.emf.annotations,
  org.eclipse.emf.teneo.samples.emf.annotations.associationoverride,
  org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.impl,

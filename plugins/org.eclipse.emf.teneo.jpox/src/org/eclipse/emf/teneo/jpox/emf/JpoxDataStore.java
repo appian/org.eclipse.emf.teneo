@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.3 2006/08/03 09:57:10 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.4 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf;
@@ -85,7 +85,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/08/03 09:57:10 $
+ * @version $Revision: 1.4 $ $Date: 2006/08/14 05:09:18 $
  */
 
 public class JpoxDataStore {
@@ -546,8 +546,6 @@ public class JpoxDataStore {
 			// if we only check containment relations then skip this
 			if (onlyContainers && !refersTo.isContainer())
 				continue;
-
-			System.err.println(refersTo.getQueryStr());
 
 			final Query qry = pm.newQuery(refersTo.getQueryStr());
 

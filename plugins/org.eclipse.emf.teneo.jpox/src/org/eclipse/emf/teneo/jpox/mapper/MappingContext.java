@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.1 2006/07/08 22:04:30 mtaal Exp $
+ * $Id: MappingContext.java,v 1.2 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -21,6 +21,7 @@ import java.util.Stack;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.jpox.mapper.association.EmbeddedMapper;
 import org.eclipse.emf.teneo.jpox.mapper.association.ManyToManyMapper;
@@ -41,7 +42,7 @@ import org.eclipse.emf.teneo.mapper.AbstractProcessingContext;
  * Contains instances of the mappers used.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class MappingContext extends AbstractProcessingContext {
@@ -90,6 +91,9 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	private PAnnotatedEStructuralFeature currentAFeature = null;
 
+	/** The current aclass being mapped */
+	private PAnnotatedEClass currentAClass = null;
+	
 	/** The map from efeature to attributeoverrides */
 	private HashMap attributeOverridesByFeature = new HashMap();
 
@@ -239,5 +243,19 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	public TableMapper getTableMapper() {
 		return tableMapper;
+	}
+
+	/**
+	 * @return the currentAClass
+	 */
+	public PAnnotatedEClass getCurrentAClass() {
+		return currentAClass;
+	}
+
+	/**
+	 * @param currentAClass the currentAClass to set
+	 */
+	public void setCurrentAClass(PAnnotatedEClass currentAClass) {
+		this.currentAClass = currentAClass;
 	}
 }

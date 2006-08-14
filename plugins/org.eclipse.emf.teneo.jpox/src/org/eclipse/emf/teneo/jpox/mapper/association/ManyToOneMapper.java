@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.2 2006/07/22 13:04:20 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.3 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class ManyToOneMapper extends AssociationMapper {
@@ -55,7 +55,7 @@ public class ManyToOneMapper extends AssociationMapper {
 		log.debug("Cascaderemove " + cascadeRemove);
 
 		Element field = eclassElement.addElement("field");
-		field.addAttribute("name", namingHandler.correctName(eReference)).addAttribute("persistence-modifier", "persistent");
+		field.addAttribute("name", namingHandler.correctName(mappingContext, eReference)).addAttribute("persistence-modifier", "persistent");
 		setCommonReferenceAttributes(field, aReference, cascadeRemove);
 
 		// special case if a modelField is a referencemodelfield and part of a two way relation then it

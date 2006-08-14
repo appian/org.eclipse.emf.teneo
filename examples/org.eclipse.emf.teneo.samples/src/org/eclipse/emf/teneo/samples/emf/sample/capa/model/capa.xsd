@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+xmlns:capa="http://www.eclipse.org/emf/teneo/samples/emf/sample/capa" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/sample/capa">
+
+    <xsd:complexType name="Machine">
+    	<xsd:sequence maxOccurs="1" minOccurs="1">
+    		<xsd:element name="WorkWeek" type="capa:WorkWeek" maxOccurs="1" minOccurs="1"></xsd:element>
+    		<xsd:element name="Tasks" type="capa:Task" maxOccurs="unbounded" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo source="http://ejb.elver.org/Transient">true</xsd:appinfo>
+				</xsd:annotation>
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="MachineId" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="MachineSearchString" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="TaskSearchString" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="Multiplicity" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="WorkDay">
+    	<xsd:attribute name="StartTime" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="Duration" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="DayOfWeek" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="WorkWeek">
+    	<xsd:sequence>
+    		<xsd:element name="Days" type="capa:WorkDay" minOccurs="0" maxOccurs="7"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="WorkWeekId" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="Task">
+    	<xsd:sequence>
+    		<xsd:element name="CapacityEntry"
+    			type="capa:CapacityEntry" minOccurs="1" maxOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="Production" type="capa:Production"
+    			maxOccurs="1" minOccurs="1">
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="TaskId" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="Name" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="TimePerPice" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="TimePerPreperation" type="xsd:float"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="CapacityEntry">
+    	<xsd:attribute name="CapacityEntryId" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="Name" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="Production">
+    	<xsd:attribute name="ProductionId" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="Article" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="TotalAmount" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="MissingAmount" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="StartTime" type="xsd:date"></xsd:attribute>
+    	<xsd:attribute name="DueTime" type="xsd:date"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="MachineList">
+    	<xsd:sequence>
+    		<xsd:element name="Machines" type="capa:Machine" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence></xsd:complexType>
+</xsd:schema>

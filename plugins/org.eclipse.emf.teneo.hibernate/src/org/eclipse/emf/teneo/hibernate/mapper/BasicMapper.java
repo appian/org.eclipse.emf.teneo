@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.2 2006/08/14 05:09:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -120,7 +120,7 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 				.isCurrentElementFeatureMap(), false);
 		addIsSetAttribute(paAttribute);
 		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
-		propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
+		//propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
 	}
 
 	/**

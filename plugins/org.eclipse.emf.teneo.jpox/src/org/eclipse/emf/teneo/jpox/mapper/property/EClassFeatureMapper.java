@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassFeatureMapper.java,v 1.1 2006/07/08 22:04:30 mtaal Exp $
+ * $Id: EClassFeatureMapper.java,v 1.2 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -23,6 +23,7 @@ import java.util.Iterator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.simpledom.Element;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.ERuntime;
@@ -38,7 +39,7 @@ import org.eclipse.emf.teneo.mapper.StoreMappingException;
  * Mapps the features of a passed annotated class, the class itself is not mapped here.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class EClassFeatureMapper extends AbstractMapper {
@@ -53,7 +54,7 @@ public class EClassFeatureMapper extends AbstractMapper {
 	/** Process the id annotation */
 	public void map(PAnnotatedEClass aClass, Element classElement) {
 		log.debug("Processing aclass: " + aClass.getAnnotatedEClass().getName() + "/" + aClass.getAnnotatedElement().getName());
-
+		
 		Class implClass = ERuntime.INSTANCE.getInstanceClass(aClass.getAnnotatedEClass());
 
 		// now handle the structural features
@@ -76,7 +77,7 @@ public class EClassFeatureMapper extends AbstractMapper {
 			// in jdo transient members should still be mapped
 			if (isTransient && hasJavaMember(implClass, aStructuralFeature.getAnnotatedEStructuralFeature())) {
 				Element field = classElement.addElement("field");
-				field.addAttribute("name", namingHandler.correctName((EStructuralFeature) aStructuralFeature.getAnnotatedElement()))
+				field.addAttribute("name", namingHandler.correctName(mappingContext, (EStructuralFeature) aStructuralFeature.getAnnotatedElement()))
 						.addAttribute("persistence-modifier", "none");
 				log.debug("TRANSIENT: " + aStructuralFeature.getAnnotatedElement().getName());
 				continue;
@@ -110,6 +111,16 @@ public class EClassFeatureMapper extends AbstractMapper {
 				classElement.addElement("field").addAttribute("name", field.getName()).addAttribute("persistence-modifier", "none");
 			}
 		}
+		
+		// now also handle the case that the supertype of the eclass is an interface only
+		// class, in this case the efeatures of the supertype are to be mapped here!
+		for (int i = 0; i < aClass.getAnnotatedEClass().getESuperTypes().size(); i++) {
+			final EClass ec = (EClass)aClass.getAnnotatedEClass().getESuperTypes().get(i);
+			if (ec.isInterface()) {
+				log.debug("SuperType is interface, also mapping it " + ec.getName());
+				map(aClass.getPaModel().getPAnnotated(ec), classElement);
+			}
+		}
 	}
 
 	/** Handles the annotated fields of a PAnnotatedEClass */
@@ -127,7 +138,7 @@ public class EClassFeatureMapper extends AbstractMapper {
 			} else if (aAttribute.getVersion() != null) {
 				// for jpox the version is an anonymous field which is not, versioning is done through the version tag
 				Element field = eclassElement.addElement("field");
-				field.addAttribute("name", namingHandler.correctName((EStructuralFeature) aStructuralFeature.getAnnotatedElement()))
+				field.addAttribute("name", namingHandler.correctName(mappingContext, (EStructuralFeature) aStructuralFeature.getAnnotatedElement()))
 						.addAttribute("persistence-modifier", "none");
 			}
 		} else { // must be ereference

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.3 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.4 2006/08/14 05:09:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -35,16 +35,20 @@ import org.eclipse.emf.teneo.test.emf.sample.ProductAction;
 import org.eclipse.emf.teneo.test.emf.sample.SunBooksAction;
 import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
 
+import extlibrary.ExtLibraryAction;
+
 /**
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class AllGenerateTests {
 	public static Test suite() {
 		MultiCfgTestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed
 				.instance().getConfigurations());
+
+		suite.addTest(new JPOXGenerateTest(ExtLibraryAction.class));
 
 		suite.addTest(new JPOXGenerateTest(LibraryTest.testAction));
 

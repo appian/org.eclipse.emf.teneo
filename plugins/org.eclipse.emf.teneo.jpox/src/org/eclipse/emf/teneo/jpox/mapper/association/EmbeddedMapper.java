@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.2 2006/07/22 13:04:20 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.3 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class EmbeddedMapper extends AbstractMapper {
@@ -52,7 +52,7 @@ public class EmbeddedMapper extends AbstractMapper {
 		if (eReference.isMany() || eReference.getEOpposite() != null || aReference.getAttributeOverrides().getValue().size() > 0) {
 			Element embeddedElement = fieldElement.addElement("embedded");
 			if (eReference.getEOpposite() != null) {
-				embeddedElement.addAttribute("owner-field", namingHandler.correctName(eReference.getEOpposite()));
+				embeddedElement.addAttribute("owner-field", namingHandler.correctName(mappingContext, eReference.getEOpposite()));
 			}
 
 			// now map the embedded class

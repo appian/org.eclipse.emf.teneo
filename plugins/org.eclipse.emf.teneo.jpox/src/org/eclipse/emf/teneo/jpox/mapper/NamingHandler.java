@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: NamingHandler.java,v 1.1 2006/07/08 22:04:30 mtaal Exp $
+ * $Id: NamingHandler.java,v 1.2 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.ERuntime;
  * databases.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class NamingHandler {
@@ -93,8 +93,8 @@ public class NamingHandler {
 	 * Check if the name of the structural feature exists as a field, if not find the correct name. TODO: replace this with the logic
 	 * used by emf to handle casing of feature names to java members
 	 */
-	public String correctName(EStructuralFeature efeature) {
-		Class implClass = ERuntime.INSTANCE.getInstanceClass(efeature.getEContainingClass());
+	public String correctName(MappingContext mc, EStructuralFeature efeature) {
+		Class implClass = ERuntime.INSTANCE.getInstanceClass(mc.getCurrentAClass().getAnnotatedEClass());
 		return correctName(implClass, efeature);
 	}
 }

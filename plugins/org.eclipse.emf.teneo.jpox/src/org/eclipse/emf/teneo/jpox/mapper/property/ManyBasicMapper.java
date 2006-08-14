@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyBasicMapper.java,v 1.1 2006/07/08 22:04:30 mtaal Exp $
+ * $Id: ManyBasicMapper.java,v 1.2 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ManyBasicMapper extends AbstractMapper {
 	/** The logger for all these exceptions */
@@ -51,7 +51,7 @@ public class ManyBasicMapper extends AbstractMapper {
 	public void map(PAnnotatedEAttribute aAttribute, Element eclassElement) {
 		log.debug("Processing one to many attribute: " + aAttribute.getAnnotatedElement().getName());
 		Element field = eclassElement.addElement("field");
-		field.addAttribute("name", namingHandler.correctName((EStructuralFeature) aAttribute.getAnnotatedElement())).addAttribute(
+		field.addAttribute("name", namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement())).addAttribute(
 				"persistence-modifier", "persistent");
 
 		EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();

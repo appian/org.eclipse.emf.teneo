@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.2 2006/07/22 13:04:20 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.3 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class ManyToManyMapper extends AssociationMapper {
@@ -57,7 +57,7 @@ public class ManyToManyMapper extends AssociationMapper {
 		if (cascadeRemove) log.warn("Cascade (all) remove on a many to many relation is an unlikely case");
 
 		Element field = eclassElement.addElement("field");
-		field.addAttribute("name", namingHandler.correctName(eReference)).addAttribute("persistence-modifier", "persistent");
+		field.addAttribute("name", namingHandler.correctName(mappingContext, eReference)).addAttribute("persistence-modifier", "persistent");
 
 		// two way were the otherside is the container then the reference should be delete
 		// confusing but foreign-key constraints are defined the other way around in jpox

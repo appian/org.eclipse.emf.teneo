@@ -17,7 +17,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+	@version $Revision: 1.2 $ $Date: 2006/08/14 05:09:08 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -36,6 +36,8 @@
 		</p>
 		<ul>
 			<li>Changed default column names for version and synthetic id to e_version and e_id. These names should be valid for most databases and prevent nameclashes.</li>
+			<li>For EAttribute, Unique attribute is not used anymore to set unique on property/column level.</li>
+			<li>Various changes to support multiple inheritance</li>
 		</ul>
 		<p></p>
 		<p>

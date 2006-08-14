@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.3 2006/07/23 19:38:45 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.4 2006/08/14 05:09:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class AbstractProcessingContext {
@@ -130,6 +130,11 @@ public class AbstractProcessingContext {
 	 * mappedsuperclasses.
 	 */
 	public List getMultipleInheritedFeatures(PAnnotatedEClass aClass) {
+		// if one or less supertype then no multiple inheritance
+		if (aClass.getAnnotatedEClass().getESuperTypes().size() <=1) { 
+			return new ArrayList();
+		}
+		
 		log.debug("Determining synthetic mapped features for " + aClass.getAnnotatedEClass().getName());
 		final List mappedFeatures = new ArrayList(aClass.getAnnotatedEClass().getEAllStructuralFeatures());
 		// remove all first inherited features

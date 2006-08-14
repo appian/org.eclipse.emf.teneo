@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.1 2006/07/08 22:04:30 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.2 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class MappingUtil {
@@ -60,8 +60,12 @@ public class MappingUtil {
 		return clazz.getName();
 	}
 
-	/** Returns the impl class name of an interface */
+	/** Returns the impl class name of an eclass, if the eclass is an interface
+	 * then the interface class is returned */
 	public static Class getImplClassOfEClass(EClass eClass) {
+		if (eClass.isInterface()) {
+			return eClass.getInstanceClass();
+		}
 		return ERuntime.INSTANCE.getInstanceClass(eClass);
 	}
 

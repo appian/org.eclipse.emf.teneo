@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Capa" importerID="org.eclipse.xsd.ecore.importer">
+  <foreignModel>capa.xsd</foreignModel>
+  <genPackages prefix="Capa" basePackage="org.eclipse.emf.teneo.samples.emf.sample"
+      resource="XML" disposableProviderFactory="true" ecorePackage="capa.ecore#/">
+    <genClasses ecoreClass="capa.ecore#//CapacityEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//CapacityEntry/capacityEntryId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//CapacityEntry/name"/>
+    </genClasses>
+    <genClasses ecoreClass="capa.ecore#//Machine">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capa.ecore#//Machine/workWeek"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capa.ecore#//Machine/tasks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Machine/machineId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Machine/machineSearchString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Machine/multiplicity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Machine/taskSearchString"/>
+    </genClasses>
+    <genClasses ecoreClass="capa.ecore#//MachineList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capa.ecore#//MachineList/machines"/>
+    </genClasses>
+    <genClasses ecoreClass="capa.ecore#//Production">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Production/article"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Production/dueTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Production/missingAmount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Production/productionId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Production/startTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Production/totalAmount"/>
+    </genClasses>
+    <genClasses ecoreClass="capa.ecore#//Task">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capa.ecore#//Task/capacityEntry"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capa.ecore#//Task/production"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Task/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Task/taskId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Task/timePerPice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//Task/timePerPreperation"/>
+    </genClasses>
+    <genClasses ecoreClass="capa.ecore#//WorkDay">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//WorkDay/dayOfWeek"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//WorkDay/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//WorkDay/startTime"/>
+    </genClasses>
+    <genClasses ecoreClass="capa.ecore#//WorkWeek">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capa.ecore#//WorkWeek/days"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capa.ecore#//WorkWeek/workWeekId"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

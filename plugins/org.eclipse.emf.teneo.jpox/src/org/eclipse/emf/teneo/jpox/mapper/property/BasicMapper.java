@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.1 2006/07/08 22:04:30 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.2 2006/08/14 05:09:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class BasicMapper extends AbstractMapper {
@@ -47,7 +47,7 @@ public class BasicMapper extends AbstractMapper {
 	public void map(PAnnotatedEAttribute aAttribute, Element eclassElement) {
 		log.debug("Processing basic field: " + aAttribute.getAnnotatedElement().getName());
 		Element field = eclassElement.addElement("field");
-		field.addAttribute("name", namingHandler.correctName((EStructuralFeature) aAttribute.getAnnotatedElement())).addAttribute(
+		field.addAttribute("name", namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement())).addAttribute(
 				"persistence-modifier", "persistent");
 		
 		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
@@ -96,7 +96,7 @@ public class BasicMapper extends AbstractMapper {
 					"persistence-modifier", "persistent");
 		}
 		
-		if (aAttribute.getAnnotatedEAttribute().isUnique()) {
+		if (false && aAttribute.getAnnotatedEAttribute().isUnique()) {
 			field.addElement("unique");
 		}
 	}
