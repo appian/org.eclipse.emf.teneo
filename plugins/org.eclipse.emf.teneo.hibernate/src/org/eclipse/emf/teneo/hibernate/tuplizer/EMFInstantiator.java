@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInstantiator.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: EMFInstantiator.java,v 1.2 2006/08/21 08:04:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -22,8 +22,8 @@ import java.util.Iterator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.hibernate.mapping.Component;
 import org.hibernate.mapping.PersistentClass;
@@ -33,7 +33,7 @@ import org.hibernate.tuple.Instantiator;
  * Instantiates eobjects using the efactory.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class EMFInstantiator implements Instantiator {
@@ -43,9 +43,6 @@ public class EMFInstantiator implements Instantiator {
 
 	/** The EClass for which we do all this */
 	private final EClass eclass;
-
-	/** And its factory */
-	private final EFactory efactory;
 
 	/** The proxy interface if used */
 	private final Class proxyInterface;
@@ -60,7 +57,6 @@ public class EMFInstantiator implements Instantiator {
 		proxyInterface = pc.getProxyInterface();
 		this.eclass = eclass;
 		mappedClass = eclass.getInstanceClass();
-		efactory = eclass.getEPackage().getEFactoryInstance();
 	}
 
 	/** Constructor */
@@ -70,25 +66,26 @@ public class EMFInstantiator implements Instantiator {
 		this.eclass = eclass;
 		mappedClass = eclass.getInstanceClass();
 		proxyInterface = null;
-		efactory = eclass.getEPackage().getEFactoryInstance();
 	}
 
-	/** Instantiates using the EFactory */
+	/** Instantiates using EcoreUtil.create() */
 	public Object instantiate() {
-		if (efactory == null) {
+		final EObject eobject = EcoreUtil.create(eclass);
+		if (eobject == null) {
 			throw new HbStoreException("The mapped " + mappedClass.getName() + " class can not be instantiated."
 					+ " Possibly the class it is not an eclass or it is abstract.");
 		}
-		return efactory.create(eclass);
+		return eobject;
 	}
 
-	/** Instantiates using the EFactory */
+	/** Instantiates using EcoreUtil.create() */
 	public Object instantiate(Serializable id) {
-		if (efactory == null) {
+		final EObject eobject = EcoreUtil.create(eclass);
+		if (eobject == null) {
 			throw new HbStoreException("The mapped " + mappedClass.getName() + " class can not be instantiated."
 					+ " Possibly the class it is not an eclass or it is abstract.");
 		}
-		return efactory.create(eclass);
+		return eobject;
 	}
 
 	/** Checks using the mapped class or the proxy interface */
