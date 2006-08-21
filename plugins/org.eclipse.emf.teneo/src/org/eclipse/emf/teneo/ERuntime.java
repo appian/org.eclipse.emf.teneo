@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ERuntime.java,v 1.3 2006/08/14 05:09:14 mtaal Exp $
+ * $Id: ERuntime.java,v 1.4 2006/08/21 11:29:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * for cross reference computation, contained computations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class ERuntime {
@@ -322,8 +322,7 @@ public class ERuntime {
 		if (eclass == null) {
 			throw new StoreException("No eclass for interf " + interf.getName());
 		}
-		final Class result = (Class) eclassToConcrete.get(eclass);
-		return result;
+		return getInstanceClass(eclass);
 	}
 
 	/** Returns the instanceclass for a passed eclass */

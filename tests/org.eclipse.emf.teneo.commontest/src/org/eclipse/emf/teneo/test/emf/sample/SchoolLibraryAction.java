@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SchoolLibraryAction.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
+ * $Id: SchoolLibraryAction.java,v 1.3 2006/08/21 11:29:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the schoollibrary example which has some more inheritance structures.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class SchoolLibraryAction extends AbstractTestAction {
 
@@ -209,22 +209,6 @@ public class SchoolLibraryAction extends AbstractTestAction {
 
 		} catch (IOException e) {
 			throw new StoreTestException("Exception", e);
-		}
-		
-		try {
-			// Check some unique constraints 
-			store.beginTransaction();
-			List books = store.getObjects(Book.class);
-			for (Iterator it = books.iterator(); it.hasNext();) {
-				Book bk = (Book)it.next();
-				bk.setPages(243);
-				store.store(bk);
-			}
-			store.commitTransaction();
-			fail(); // should not get here
-		} catch (Exception s) {
-			// this is good
-			store.rollbackTransaction();
 		}
 	}
 

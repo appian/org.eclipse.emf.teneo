@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListPropertyHandler.java,v 1.3 2006/08/03 09:58:19 mtaal Exp $
+ * $Id: EListPropertyHandler.java,v 1.4 2006/08/21 11:29:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -53,7 +53,7 @@ import org.hibernate.property.Setter;
  * methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -219,7 +219,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 
 	/** Create method can be overridden */
 	protected EList createPersistableList(InternalEObject target, EStructuralFeature estruct, List list) {
-		if (true || extraLazy) {
+		if (extraLazy) {
 			return new HbExtraLazyPersistableEList(target, estruct, list);
 		}
 		return new HibernatePersistableEList(target, estruct, list);

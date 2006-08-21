@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InventoryAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: InventoryAction.java,v 1.2 2006/08/21 11:29:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 /** 
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class InventoryAction extends AbstractTestAction 
 {
@@ -79,18 +79,6 @@ public class InventoryAction extends AbstractTestAction
         		pt.getInfoReferences().add(pt.getInfoReferences().get(0));
         		store.store(pt);
         		store.commitTransaction();
-        }
-        
-        {
-	        store.beginTransaction();	    
-	        PType pt = factory.createPType();
-	        pt.setName("myname");
-	        try {
-	        		store.store(pt);
-	        		fail("Unique constraint on name is not checked");
-	        } catch (Exception e) {
-	        		store.rollbackTransaction();
-	        }
         }
 	}
 }

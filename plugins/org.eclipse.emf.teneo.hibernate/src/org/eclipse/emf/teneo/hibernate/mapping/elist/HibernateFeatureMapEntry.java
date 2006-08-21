@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateFeatureMapEntry.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: HibernateFeatureMapEntry.java,v 1.2 2006/08/21 11:29:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -20,12 +20,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.teneo.EContainerRepairControl;
+import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
@@ -36,10 +39,11 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * member.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public class HibernateFeatureMapEntry implements FeatureMap.Entry {
+public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
+
 	/**
 	 * Gets an 'normal' FeatureMap.Entry and if it is not a FeatureMapEntry replaces it with a specific implementation.
 	 */
@@ -130,7 +134,7 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry {
 	/** Set the value from a previous entry */
 	public void setEntry(FeatureMap.Entry entry, FeatureMap.Internal owningMap) {
 		eStructuralFeature = entry.getEStructuralFeature();
-		featureValues.add(new FeatureValue(eStructuralFeature, entry.getValue()));
+		featureValues.add(createFeatureValue(eStructuralFeature, entry.getValue()));
 		setFeatureMap(owningMap);
 	}
 
@@ -167,12 +171,12 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry {
 	 * values are stored in the db
 	 */
 	public void addFeatureValue(EStructuralFeature feature, Object value) {
-		featureValues.add(new FeatureValue(feature, value));
+		featureValues.add(createFeatureValue(feature, value));
 	}
 
 	/** Sets the exact feature value for this entry */
 	public void setFeatureValue(EStructuralFeature feature, Object value, FeatureMap.Internal owningMap) {
-		featureValues.add(new FeatureValue(feature, value));
+		featureValues.add(createFeatureValue(feature, value));
 		setEStructuralFeature(feature);
 		setFeatureMap(owningMap);
 	}
@@ -185,6 +189,22 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry {
 				return fv.getValue();
 		}
 		return null; // TODO: maybe throw error?
+	}
+
+	/** get the real feature value */
+	private FeatureValue getFeatureValue() {
+		final EStructuralFeature feature = getEStructuralFeature();
+
+		AssertUtil.assertTrue("Feature is not set", feature != null);
+
+		for (Iterator it = featureValues.iterator(); it.hasNext();) {
+			final FeatureValue fv = (FeatureValue) it.next();
+			if (fv.matchesFeature(feature))
+				return fv;
+		}
+		
+		// can not get here, see assertion above
+		return null;
 	}
 
 	/**
@@ -247,14 +267,64 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry {
 		this.entityName = entityName;
 	}
 
+	/** Create the correct feature value type */
+	private FeatureValue createFeatureValue(EStructuralFeature feature, Object value) {
+		if (feature instanceof EReference && ((EReference) feature).getEOpposite() != null) {
+			return new InverseFeatureValue(feature, value);
+		} else if (feature instanceof EReference && ((EReference) feature).isContainment()) {
+			return new ContainmentFeatureValue(feature, value);
+		} else {
+			return new FeatureValue(feature, value);
+		}
+	}
+
+	/** Create a copy of this entry with a different value */
+	public Internal createEntry(InternalEObject value) {
+		HibernateFeatureMapEntry hfm = new HibernateFeatureMapEntry();
+		hfm.setFeatureValue(getEStructuralFeature(), value, owningMap);
+		return hfm;
+	}
+
+	/** Create a copy of this entry with a different value, calls createEntry(InternalEObject value) */
+	public Internal createEntry(Object value) {
+		return createEntry((InternalEObject) value);
+	}
+
+	/** Does inverse action on other end */
+	public final NotificationChain inverseAdd(InternalEObject owner, int featureID, NotificationChain notifications) {
+		return getFeatureValue().inverseAdd(owner, getValue(), featureID, notifications);
+	}
+
+	/** Does inverse action on other end */
+	public final NotificationChain inverseRemove(InternalEObject owner, int featureID, NotificationChain notifications) {
+		return getFeatureValue().inverseRemove(owner, getValue(), featureID, notifications);
+	}
+
+	/** Does inverse action on other end */
+	public final NotificationChain inverseAdd(InternalEObject owner, Object otherEnd, int featureID,
+			NotificationChain notifications) {
+		return getFeatureValue().inverseAdd(owner, (InternalEObject) getValue(), featureID, notifications);
+	}
+
+	/** Does inverse action on other end */
+	public NotificationChain inverseRemove(InternalEObject owner, Object otherEnd, int featureID,
+			NotificationChain notifications) {
+		return getFeatureValue().inverseRemove(owner, (InternalEObject) otherEnd, featureID, notifications);
+	}
+
+	/** validate the type of the value with the type expected by the efeature */
+	public void validate(Object value) {
+		getFeatureValue().validate(value);
+	}
+
 	/** Class to store feature value pairs together with their validator */
 	private class FeatureValue {
 
 		/** The feature */
-		private EStructuralFeature feature;
+		protected final EStructuralFeature feature;
 
 		/** Its value (can be null) */
-		private final Object value;
+		protected final Object value;
 
 		/** Constructor */
 		private FeatureValue(EStructuralFeature feature, Object value) {
@@ -280,6 +350,138 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry {
 		/** Returns the value */
 		private Object getValue() {
 			return value;
+		}
+
+		/** Handles inverse action, differs on the basis of the feature type */
+		public NotificationChain inverseAdd(InternalEObject owner, int featureID, NotificationChain notifications) {
+			return inverseAdd(owner, value, featureID, notifications);
+		}
+
+		/** Handles inverse action, differs on the basis of the feature type */
+		public NotificationChain inverseRemove(InternalEObject owner, int featureID, NotificationChain notifications) {
+			return inverseRemove(owner, value, featureID, notifications);
+		}
+
+		/** Handles inverse action, differs on the basis of the feature type */
+		public NotificationChain inverseAdd(InternalEObject owner, Object otherEnd, int featureID,
+				NotificationChain notifications) {
+			return notifications;
+		}
+
+		/** Handles inverse action, differs on the basis of the feature type */
+		public NotificationChain inverseRemove(InternalEObject owner, Object otherEnd, int featureID,
+				NotificationChain notifications) {
+			return notifications;
+		}
+
+		/** Does the real inverse action, default impl. does nothing */
+		protected NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd, int featureID,
+				NotificationChain notifications) {
+			return notifications;
+		}
+
+		/** Does the real inverse action, default impl. does nothing */
+		protected NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd, int featureID,
+				NotificationChain notifications) {
+			return notifications;
+		}
+
+		/** validate the type of the value with the type expected by the efeature */
+		public void validate(Object value) {
+			if (value != null && !eStructuralFeature.getEType().isInstance(value)) {
+				String valueClass = value instanceof EObject ? ((EObject) value).eClass().getName() : value.getClass()
+						.getName();
+				throw new ClassCastException("The feature '" + eStructuralFeature.getName() + "'s type '"
+						+ eStructuralFeature.getEType().getName() + "' does not permit a value of type '" + valueClass
+						+ "'");
+			}
+		}
+	}
+
+	/** Containment feature value */
+	private class ContainmentFeatureValue extends FeatureValue {
+
+		/** Constructor */
+		private ContainmentFeatureValue(EStructuralFeature feature, Object value) {
+			super(feature, value);
+		}
+
+		/** Handles inverse action, differs on the basis of the feature type */
+		public NotificationChain inverseAdd(InternalEObject owner, Object otherEnd, int featureID,
+				NotificationChain notifications) {
+			return inverseAdd(owner, (InternalEObject) value, featureID, notifications);
+		}
+
+		/** Handles inverse action, differs on the basis of the feature type */
+		public NotificationChain inverseRemove(InternalEObject owner, Object otherEnd, int featureID,
+				NotificationChain notifications) {
+			return inverseRemove(owner, (InternalEObject) value, featureID, notifications);
+		}
+
+		/** Does inverse action on other end */
+		protected NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd, int featureID,
+				NotificationChain notifications) {
+			if (otherEnd != null) {
+				int containmentFeatureID = owner.eClass().getFeatureID(eStructuralFeature);
+				notifications = otherEnd.eInverseAdd(owner, InternalEObject.EOPPOSITE_FEATURE_BASE
+						- (containmentFeatureID == -1 ? featureID : containmentFeatureID), null, notifications);
+			}
+
+			return notifications;
+		}
+
+		/** Does inverse action on other end */
+		protected NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd, int featureID,
+				NotificationChain notifications) {
+			if (otherEnd != null) {
+				int containmentFeatureID = owner.eClass().getFeatureID(eStructuralFeature);
+				notifications = otherEnd.eInverseRemove(owner, InternalEObject.EOPPOSITE_FEATURE_BASE
+						- (containmentFeatureID == -1 ? featureID : containmentFeatureID), null, notifications);
+			}
+
+			return notifications;
+		}
+	}
+
+	/** Bidirectional feature value */
+	private class InverseFeatureValue extends FeatureValue {
+
+		/** Constructor */
+		private InverseFeatureValue(EStructuralFeature feature, Object value) {
+			super(feature, value);
+		}
+
+		/** Handles inverse action, differs on the basis of the feature type */
+		public NotificationChain inverseAdd(InternalEObject owner, Object otherEnd, int featureID,
+				NotificationChain notifications) {
+			return inverseAdd(owner, (InternalEObject) value, featureID, notifications);
+		}
+
+		/** Handles inverse action, differs on the basis of the feature type */
+		public NotificationChain inverseRemove(InternalEObject owner, Object otherEnd, int featureID,
+				NotificationChain notifications) {
+			return inverseRemove(owner, (InternalEObject) value, featureID, notifications);
+		}
+
+		/** Does inverse action on other end */
+		protected final NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd, int featureID,
+				NotificationChain notifications) {
+			if (otherEnd != null) {
+				notifications = otherEnd.eInverseAdd(owner, otherEnd.eClass().getFeatureID(
+						((EReference) eStructuralFeature).getEOpposite()), null, notifications);
+			}
+
+			return notifications;
+		}
+
+		/** Does inverse action on other end */
+		protected final NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd, int featureID,
+				NotificationChain notifications) {
+			if (otherEnd != null) {
+				notifications = otherEnd.eInverseRemove(owner, otherEnd.eClass().getFeatureID(
+						((EReference) eStructuralFeature).getEOpposite()), null, notifications);
+			}
+			return notifications;
 		}
 	}
 }

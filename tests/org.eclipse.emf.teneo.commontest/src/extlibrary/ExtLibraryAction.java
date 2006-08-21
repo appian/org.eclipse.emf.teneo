@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtLibraryAction.java,v 1.1 2006/08/14 05:09:12 mtaal Exp $
+ * $Id: ExtLibraryAction.java,v 1.2 2006/08/21 11:29:42 mtaal Exp $
  */
 
 package extlibrary;
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the extlibrary
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ExtLibraryAction extends AbstractTestAction {
 	
@@ -88,6 +88,11 @@ public class ExtLibraryAction extends AbstractTestAction {
 		lb.getBorrowers().add(bw);
 		
 		store.store(lb);
+		store.commitTransaction();
+		
+		store.beginTransaction();
+		Lendable lendable = (Lendable)store.query("select from extlibrary.Lendable").get(0);
+		assertTrue(lendable != null);
 		store.commitTransaction();
 	}
 }
