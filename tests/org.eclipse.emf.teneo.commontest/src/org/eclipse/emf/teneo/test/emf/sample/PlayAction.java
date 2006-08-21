@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PlayAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: PlayAction.java,v 1.2 2006/08/21 12:44:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * and compare the data in this xml file with the original.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class PlayAction extends AbstractTestAction 
 {
@@ -58,7 +58,7 @@ public class PlayAction extends AbstractTestAction
 			{
 				// a file handle to the current class
 				// the play.xml is in the model directory
-				URL xmlUrl = PlayType.class.getResource("data" + File.separator + "small_play.xml");
+				URL xmlUrl = PlayType.class.getResource("data/small_play.xml");
 				final File playxmlFile = new File(xmlUrl.getFile());
 				final Resource resource = new XMLResourceImpl(URI.createFileURI(playxmlFile.getAbsolutePath()));
 				resource.load(Collections.EMPTY_MAP);
@@ -118,9 +118,9 @@ public class PlayAction extends AbstractTestAction
 	{
 		// a file handle to the current class
 		// the play.xml is in the model directory
-		URL newUrl = PlayType.class.getResource("data" + File.separator + fileNameTwo);
+		URL newUrl = PlayType.class.getResource("data/" + fileNameTwo);
 		final File new_play = new File(newUrl.getFile());
-		URL originalUrl = PlayType.class.getResource("data" + File.separator + fileNameOne);
+		URL originalUrl = PlayType.class.getResource("data/" + fileNameOne);
 		final File original_play = new File(originalUrl.getFile());
 		
 		final Resource original_resource;
