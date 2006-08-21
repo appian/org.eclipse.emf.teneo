@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableFeatureMap.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
+ * $Id: PersistableFeatureMap.java,v 1.3 2006/08/21 13:27:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the persistent store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public abstract class PersistableFeatureMap extends DelegatingFeatureMap implements PersistableDelegateList {
@@ -92,9 +92,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	}
 
 	/** Returns the element type to be used */
-	protected Class determineElementType() {
-		return FeatureMapEntry.getEntryClass(owner.getClass(), getEStructuralFeature().getName());
-	}
+	protected abstract Class determineElementType();
 
 	/** Returns the element type */
 	public Class getElementType() {
@@ -108,8 +106,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 		}
 
 		final FeatureMap.Entry emfEntry = (FeatureMap.Entry) entry;
-		return (FeatureMapEntry) FeatureMapEntry.createEntry(emfEntry.getEStructuralFeature(), emfEntry.getValue(),
-				elementType, this);
+		return (FeatureMap.Entry) createEntry(emfEntry.getEStructuralFeature(), emfEntry.getValue());
 	}
 
 	/** Convenience to replace all */
@@ -228,9 +225,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	// accessed.
 
 	/** OVerridden to create the correct featuremap entry */
-	protected FeatureMap.Entry createEntry(EStructuralFeature eStructuralFeature, Object value) {
-		return FeatureMapEntry.createEntry(eStructuralFeature, value, elementType, this);
-	}
+	protected abstract FeatureMap.Entry createEntry(EStructuralFeature eStructuralFeature, Object value);
 
 	/*
 	 * (non-Javadoc)

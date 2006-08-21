@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyFeatureMapEntry.java,v 1.1 2006/07/13 09:05:47 mtaal Exp $
+ * $Id: AnyFeatureMapEntry.java,v 1.2 2006/08/21 13:27:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.elist;
@@ -37,10 +37,11 @@ import org.jpox.store.OID;
  * actually stored. So in this case all information is stored in a set of String fields.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/13 09:05:47 $
+ * @version $Revision: 1.2 $ $Date: 2006/08/21 13:27:30 $
  */
 
 public class AnyFeatureMapEntry extends FeatureMapEntry {
+	
 	/** The logger */
 	private static Log log = LogFactory.getLog(AnyFeatureMapEntry.class);
 
@@ -57,6 +58,11 @@ public class AnyFeatureMapEntry extends FeatureMapEntry {
 	/* Constructor */
 	public AnyFeatureMapEntry(EStructuralFeature feature, Object value) {
 		super(feature, value);
+	}
+
+	/** Create copy with same feature and different value */
+	public Internal createEntry(Object value) {
+		return new AnyFeatureMapEntry(getEStructuralFeature(), value);
 	}
 
 	/*

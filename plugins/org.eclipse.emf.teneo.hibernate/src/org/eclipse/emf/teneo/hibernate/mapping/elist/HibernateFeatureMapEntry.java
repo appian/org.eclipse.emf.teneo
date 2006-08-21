@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateFeatureMapEntry.java,v 1.2 2006/08/21 11:29:47 mtaal Exp $
+ * $Id: HibernateFeatureMapEntry.java,v 1.3 2006/08/21 13:27:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * member.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
@@ -374,18 +374,6 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
 			return notifications;
 		}
 
-		/** Does the real inverse action, default impl. does nothing */
-		protected NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd, int featureID,
-				NotificationChain notifications) {
-			return notifications;
-		}
-
-		/** Does the real inverse action, default impl. does nothing */
-		protected NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd, int featureID,
-				NotificationChain notifications) {
-			return notifications;
-		}
-
 		/** validate the type of the value with the type expected by the efeature */
 		public void validate(Object value) {
 			if (value != null && !eStructuralFeature.getEType().isInstance(value)) {
@@ -419,7 +407,7 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
 		}
 
 		/** Does inverse action on other end */
-		protected NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd, int featureID,
+		private NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd, int featureID,
 				NotificationChain notifications) {
 			if (otherEnd != null) {
 				int containmentFeatureID = owner.eClass().getFeatureID(eStructuralFeature);
@@ -431,7 +419,7 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
 		}
 
 		/** Does inverse action on other end */
-		protected NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd, int featureID,
+		private NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd, int featureID,
 				NotificationChain notifications) {
 			if (otherEnd != null) {
 				int containmentFeatureID = owner.eClass().getFeatureID(eStructuralFeature);
@@ -464,7 +452,7 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
 		}
 
 		/** Does inverse action on other end */
-		protected final NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd, int featureID,
+		private final NotificationChain inverseAdd(InternalEObject owner, InternalEObject otherEnd, int featureID,
 				NotificationChain notifications) {
 			if (otherEnd != null) {
 				notifications = otherEnd.eInverseAdd(owner, otherEnd.eClass().getFeatureID(
@@ -475,7 +463,7 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
 		}
 
 		/** Does inverse action on other end */
-		protected final NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd, int featureID,
+		private final NotificationChain inverseRemove(InternalEObject owner, InternalEObject otherEnd, int featureID,
 				NotificationChain notifications) {
 			if (otherEnd != null) {
 				notifications = otherEnd.eInverseRemove(owner, otherEnd.eClass().getFeatureID(

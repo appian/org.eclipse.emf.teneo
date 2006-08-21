@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenericFeatureMapEntry.java,v 1.2 2006/07/22 13:04:24 mtaal Exp $
+ * $Id: GenericFeatureMapEntry.java,v 1.3 2006/08/21 13:27:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.elist;
@@ -26,10 +26,11 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Concrete implementation of generic feature map entry.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class GenericFeatureMapEntry extends FeatureMapEntry {
+	
 	/** The logger */
 //	private static Log log = LogFactory.getLog(GenericFeatureMapEntry.class);
 
@@ -61,12 +62,13 @@ public class GenericFeatureMapEntry extends FeatureMapEntry {
 	public GenericFeatureMapEntry(EStructuralFeature feature, Object value) {
 		super(feature, value);
 	}
+ 
+	/** Create copy with same feature and different value */
+	public Internal createEntry(Object value) {
+		return new GenericFeatureMapEntry(getEStructuralFeature(), value);
+	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.teneo.jpox.emf.elist.FeatureMapEntry#getStructuralFeatureDBID()
-	 */
+	/** Returns the unique string by which the featureid is stored in the db */
 	protected String getStructuralFeatureDBID() {
 		return featurePath;
 	}
