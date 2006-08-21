@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.7 2006/08/03 09:57:14 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.8 2006/08/21 10:31:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class PersistenceOptions {
 
@@ -53,11 +53,8 @@ public class PersistenceOptions {
 	/** The logger */
 	private static Log log = LogFactory.getLog(PersistenceOptions.class);
 
-	/** The prefix of all props */
-	private static final String BASE_NAME = PersistenceOptions.class.getName();
-
 	/** Optimistic locking */
-	public static final String OPTIMISTIC = new String(BASE_NAME + ".Optimistic").toLowerCase();
+	public static final String OPTIMISTIC = MAPPING_PREFIX + "optimistic_locking";
 
 	/** Inheritance mapping */
 	public static final String INHERITANCE_MAPPING = MAPPING_PREFIX + "inheritance";
@@ -75,8 +72,7 @@ public class PersistenceOptions {
 	 * Can be used to control if the entity ann. should be added automatically to the model elements or that the default
 	 * annotator should work according to the ejb3 spec.
 	 */
-	public static final String SET_ENTITY_AUTOMATICALLY = new String(BASE_NAME + ".SetEntityAutomatically")
-			.toLowerCase();
+	public static final String SET_ENTITY_AUTOMATICALLY = MAPPING_PREFIX + "set_entity_automatically";
 
 	/**
 	 * Can be used to control if implementation classes should be used for entity names and target entities or that
@@ -105,7 +101,7 @@ public class PersistenceOptions {
 	 * Truncate the column name if the length is larger than this property. In case of concatenating property names for
 	 * foreign keys
 	 */
-	public static final String MAXIMUM_SQL_NAME_LENGTH = new String(BASE_NAME + ".MaximumSqlNameLength").toLowerCase();
+	public static final String MAXIMUM_SQL_NAME_LENGTH = NAMING_PREFIX + "max_sql_name_length";
 
 	/**
 	 * Disable EContainer mapping.
@@ -113,8 +109,8 @@ public class PersistenceOptions {
 	public static final String DISABLE_ECONTAINER_MAPPING = MAPPING_PREFIX + "disable_econtainer";
 
 	/** Option to specify that for non-contained one-to-many always a join table is used, default is false */
-	public static final String JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS = new String(BASE_NAME
-			+ ".JoinTableForNonContainedAssociations").toLowerCase();
+	public static final String JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS = MAPPING_PREFIX
+			+ "join_table_for_non_contained_associations";
 
 	/**
 	 * The option which determines the casing of columns and table names, lowercase will result in lowercase letters,
@@ -151,11 +147,11 @@ public class PersistenceOptions {
 	 */
 	public PersistenceOptions(Properties properties) {
 		this.properties = getDefaultProperties();
-		
+
 		if (properties != null) {
 			this.properties.putAll(properties);
 		}
-		
+
 		logProperties();
 	}
 
@@ -171,7 +167,7 @@ public class PersistenceOptions {
 		try {
 			in = this.getClass().getResourceAsStream(DEFAULT_CLASSPATH_FILENAME);
 			if (in != null) {
-				log.debug("Loading persistence options from classpath \"/teneo-properties\".");
+				log.debug("Loading persistence options from classpath \"" + DEFAULT_CLASSPATH_FILENAME + "\".");
 				props.load(in);
 			}
 		} catch (IOException e) {
@@ -187,7 +183,7 @@ public class PersistenceOptions {
 			}
 		}
 		this.properties.putAll(props);
-		
+
 		logProperties();
 	}
 
@@ -199,11 +195,10 @@ public class PersistenceOptions {
 			log.debug(key + ": " + properties.getProperty(key));
 		}
 	}
-	
+
 	/** Returns the value of the UseJoinTableForNonContainedAssociations option, default is false */
 	public boolean isJoinTableForNonContainedAssociations() {
-		return Boolean.valueOf(properties.getProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS))
-				.booleanValue();
+		return Boolean.valueOf(properties.getProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS)).booleanValue();
 	}
 
 	/** Returns the value of the UseMappingFile option, default is false */
@@ -233,8 +228,7 @@ public class PersistenceOptions {
 
 	/** Returns value of the use impl. classname as entity, default is false */
 	public boolean isUseImplementationClassAsEntityName() {
-		return Boolean.valueOf(properties.getProperty(USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME))
-				.booleanValue();
+		return Boolean.valueOf(properties.getProperty(USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME)).booleanValue();
 	}
 
 	/** Is set entity automatically, default is true */
@@ -293,7 +287,7 @@ public class PersistenceOptions {
 		Field[] fields = PersistenceOptions.class.getFields();
 		for (int i = 0; i < fields.length; i++) {
 			try {
-				final Field field = fields[i]; 
+				final Field field = fields[i];
 				if ((field.getModifiers() & Modifier.STATIC) > 0 & field.getType().equals(String.class)) {
 					final String value = (String) field.get(null);
 					if (value.startsWith("teneo.")) {
@@ -304,7 +298,7 @@ public class PersistenceOptions {
 			}
 		}
 		Collections.sort(names);
-		return (String[])names.toArray(new String[names.size()]);
+		return (String[]) names.toArray(new String[names.size()]);
 	}
 
 	// TODO: Add remaining accessor wrappers.
