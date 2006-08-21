@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CapaAction.java,v 1.1 2006/08/14 05:09:12 mtaal Exp $
+ * $Id: CapaAction.java,v 1.2 2006/08/21 11:31:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the capa, detach and update
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class CapaAction extends AbstractTestAction {
 	
@@ -48,9 +48,6 @@ public class CapaAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	public void doAction(TestStore store) {
 		final CapaFactory factory = CapaFactory.eINSTANCE;
-
-		
-		store.disableDrop();
 		MachineList ml = factory.createMachineList();
 		{
 			store.beginTransaction();
