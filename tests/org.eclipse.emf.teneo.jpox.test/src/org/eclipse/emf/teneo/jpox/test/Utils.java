@@ -11,17 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Utils.java,v 1.3 2006/08/03 09:58:22 mtaal Exp $
+ * $Id: Utils.java,v 1.4 2006/08/22 22:35:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -31,7 +27,7 @@ import org.eclipse.emf.teneo.test.StoreTestException;
  * Contains utility methods for testing.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/08/03 09:58:22 $
+ * @version $Revision: 1.4 $ $Date: 2006/08/22 22:35:46 $
  */
 
 public class Utils {

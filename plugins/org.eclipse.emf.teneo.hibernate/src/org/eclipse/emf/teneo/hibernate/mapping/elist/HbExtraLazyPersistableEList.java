@@ -11,15 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.2 2006/08/21 11:29:47 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.3 2006/08/22 22:35:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
@@ -35,13 +33,13 @@ import org.hibernate.collection.PersistentList;
  * list can not work in a detached mode. 
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class HbExtraLazyPersistableEList extends PersistableEList {
 	
 	/** The logger */
-	private static Log log = LogFactory.getLog(HbExtraLazyPersistableEList.class);
+	//private static Log log = LogFactory.getLog(HbExtraLazyPersistableEList.class);
 
 	/** Constructor */
 	public HbExtraLazyPersistableEList(InternalEObject owner, EStructuralFeature feature, List list) {

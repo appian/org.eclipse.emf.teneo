@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BookAction.java,v 1.3 2006/08/22 22:24:51 mtaal Exp $
+ * $Id: BookAction.java,v 1.4 2006/08/22 22:35:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -23,9 +23,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
 
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage;
@@ -37,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
 */
 public class BookAction extends AbstractTestAction 
 {

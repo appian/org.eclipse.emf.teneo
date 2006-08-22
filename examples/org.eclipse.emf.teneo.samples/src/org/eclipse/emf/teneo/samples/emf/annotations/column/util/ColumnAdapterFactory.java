@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnAdapterFactory.java,v 1.3 2006/08/22 22:24:48 mtaal Exp $
+ * $Id: ColumnAdapterFactory.java,v 1.4 2006/08/22 22:35:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.column.util;
 
@@ -10,8 +10,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.teneo.samples.emf.annotations.column.*;
-
 import org.eclipse.emf.teneo.samples.emf.annotations.column.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage;
 
