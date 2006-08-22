@@ -11,16 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CapaTest.java,v 1.2 2006/08/14 05:11:20 mtaal Exp $
+ * $Id: CapaTest.java,v 1.3 2006/08/22 22:25:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.samples.emf.sample.capa.CapaFactory;
-import org.eclipse.emf.teneo.samples.emf.sample.capa.Machine;
 import org.eclipse.emf.teneo.samples.emf.sample.capa.MachineList;
-import org.eclipse.emf.teneo.samples.emf.sample.capa.WorkWeek;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.emf.sample.CapaAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -30,7 +28,7 @@ import org.hibernate.Session;
  * Tests the capa sample to reattach an object
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class CapaTest extends AbstractActionTest {
 

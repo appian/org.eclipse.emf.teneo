@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EContainerRepairControl.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
+ * $Id: EContainerRepairControl.java,v 1.3 2006/08/22 22:24:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
  * be set in child objects.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class EContainerRepairControl {
@@ -111,7 +111,7 @@ public class EContainerRepairControl {
 		if (log.isDebugEnabled()) {
 			log.debug("Repairing container relations of children of: " + owner.getClass().getName());
 		}
-
+		
 		if (!(owner instanceof InternalEObject))
 			return;
 

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListMapping.java,v 1.1 2006/07/08 22:04:29 mtaal Exp $
+ * $Id: EListMapping.java,v 1.2 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.elist;
@@ -22,7 +22,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.jdo.JDOFatalInternalException;
-import javax.jdo.JDOUserException;
 import javax.jdo.spi.PersistenceCapable;
 
 import org.eclipse.emf.ecore.EObject;
@@ -32,7 +31,8 @@ import org.eclipse.emf.teneo.jpox.emf.mapping.AnyTypeObject;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.jpox.ClassLoaderResolver;
 import org.jpox.StateManager;
-import org.jpox.metadata.FieldMetaData;
+import org.jpox.metadata.AbstractPropertyMetaData;
+import org.jpox.metadata.ForeignKeyDeleteAction;
 import org.jpox.sco.SCO;
 import org.jpox.store.DatastoreAdapter;
 import org.jpox.store.DatastoreContainerObject;
@@ -42,7 +42,7 @@ import org.jpox.store.mapping.CollectionMapping;
  * Mapping class around the EListWrapper. The newWrapper method returns a new EListWrapper instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/08 22:04:29 $
+ * @version $Revision: 1.2 $ $Date: 2006/08/22 22:23:29 $
  */
 
 public class EListMapping extends CollectionMapping {
@@ -64,11 +64,11 @@ public class EListMapping extends CollectionMapping {
 	 * @param dba
 	 *            Datastore Adapter
 	 * @param fmd
-	 *            FieldMetaData for field to be mapped.
+	 *            FiAbstractPropertyMetaDataeldMetaData for field to be mapped.
 	 * @param table
 	 *            Table containing the field
 	 */
-	public EListMapping(DatastoreAdapter dba, FieldMetaData fmd, DatastoreContainerObject datastoreContainer,
+	public EListMapping(DatastoreAdapter dba, AbstractPropertyMetaData fmd, DatastoreContainerObject datastoreContainer,
 			ClassLoaderResolver clr) {
 		super(dba, fmd, datastoreContainer, clr);
 	}
@@ -105,23 +105,37 @@ public class EListMapping extends CollectionMapping {
 	 * Method deletes all dependent objects based.
 	 */
 	public void deleteDependent(StateManager sm) {
-		// makes sure field is loaded
+        if (containerIsStoredInSingleColumn())
+        {
+            // Do nothing when serialised since we are handled in the main request
+            return;
+        }
+
+        // makes sure field is loaded
 		sm.isLoaded(sm.getObject(), fmd.getAbsoluteFieldNumber());
 		Collection value = (Collection) sm.provideField(fmd.getAbsoluteFieldNumber());
 		if (value != null && !value.isEmpty()) {
 			// in case of eobject or in case dependent has been set delete it!
-			if (fmd.getCollection().isDependentElement() || fmd.getCollection().isEmbeddedElement()) {
+			// also assume that if there is a foreign key constraint with cascade that it is depedendent. 
+			// This gave better results then trusting the foreign keys
+			final boolean dependent = fmd.getCollection().isDependentElement() || fmd.getCollection().isEmbeddedElement() ||
+				fmd.getForeignKeyMetaData().getDeleteAction().equals(ForeignKeyDeleteAction.CASCADE);
+			if (fmd.getJoinMetaData() != null || dependent) {
 				Object[] values = ((List) value).toArray();
+				
 				// clear the collection
-				preDelete(sm);
-				for (int i = 0; i < values.length; i++) {
-					if (values[i] instanceof PersistenceCapable) {
-						sm.getPersistenceManager().deletePersistent(values[i]);
+				getBackingStore(sm.getPersistenceManager().getClassLoaderResolver()).clear(sm);
+				
+				if (dependent) {
+					for (int i = 0; i < values.length; i++) {
+						if (values[i] instanceof PersistenceCapable) {
+							sm.getPersistenceManager().deletePersistent(values[i]);
+						}
 					}
 				}
 			} else {
 				// clear the collection
-				preDelete(sm);
+				getBackingStore(sm.getPersistenceManager().getClassLoaderResolver()).clear(sm);
 			}
 		}
 	}
@@ -172,8 +186,9 @@ public class EListMapping extends CollectionMapping {
 
 	/**
 	 * Override standard jpox behavior because it does not work correctly in case of two way relations.
-	 */
 	public void preDelete(StateManager sm) {
+		try
+		{
 		// in case of two way relations the list should be emptied explicitly and
 		// not as part of predelete
 		// in case of two-way relation the relation should explicitly be cleared
@@ -184,7 +199,12 @@ public class EListMapping extends CollectionMapping {
 			// value.clear();
 			getBackingStore(sm.getPersistenceManager().getClassLoaderResolver()).clear(sm);
 		}
+		} catch (Throwable t) {
+			t.printStackTrace(System.err);
+			t.printStackTrace(System.err);			
+		}
 	}
+	 */
 
 	/**
 	 * Method to be called after any fetch of the owner class element.
@@ -204,8 +224,9 @@ public class EListMapping extends CollectionMapping {
 	 */
 	public void postUpdate(StateManager sm) {
 		Collection value = (Collection) sm.provideField(fmd.getAbsoluteFieldNumber());
+		
 		if (value == null) {
-			throw new JDOUserException(LOCALISER.msg("AbstractListMapping.NullValueError"));
+			return; //can be null if never accessed
 		}
 
 		if (value instanceof SCO) {

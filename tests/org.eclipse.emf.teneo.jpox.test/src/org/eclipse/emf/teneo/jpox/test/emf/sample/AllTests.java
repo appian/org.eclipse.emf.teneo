@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.4 2006/08/14 05:09:04 mtaal Exp $
+ * $Id: AllTests.java,v 1.5 2006/08/22 22:24:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -40,37 +40,36 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 				.getConfigurations());
+		suite.addTestSuite(WorkFlowAction.class);
 
+  		suite.addTestSuite(SunBooksAction.class);
 		suite.addTestSuite(ExtLibraryAction.class);
+		suite.addTestSuite(InventoryAction.class);
+		suite.addTestSuite(CatalogResourceAction.class);
 
 		suite.addTestSuite(LibraryTest.class);
 
 		suite.addTestSuite(CatalogTest.class);
 
 		suite.addTestSuite(SchoolLibraryTest.class);
-		suite.addTestSuite(InventoryAction.class);
 		suite.addTestSuite(AccountingTest.class);
 		suite.addTestSuite(PlayImExportTest.class);
-		suite.addTestSuite(CatalogResourceAction.class);
 		suite.addTestSuite(ProductAction.class);
-		suite.addTestSuite(SunBooksAction.class);
 		suite.addTestSuite(LibraryGlobalEagerAction.class);
 		suite.addTestSuite(LibraryNonResolvingAction.class);
 		suite.addTestSuite(LibraryValidateResourceAction.class);
 		suite.addTestSuite(PrimerPOAction.class);
 		suite.addTestSuite(ForumAction.class);
-		suite.addTestSuite(WorkFlowAction.class);
 		suite.addTestSuite(ExtendedPO2Test.class);
 		suite.addTestSuite(PlayAction.class);
 		suite.addTestSuite(LibraryResourceAction.class);
 		return suite;
 	}
-
 }

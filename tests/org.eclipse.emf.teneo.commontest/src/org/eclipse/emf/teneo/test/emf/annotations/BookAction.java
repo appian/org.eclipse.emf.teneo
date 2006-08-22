@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BookAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: BookAction.java,v 1.3 2006/08/22 22:24:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
 */
 public class BookAction extends AbstractTestAction 
 {
@@ -48,15 +48,6 @@ public class BookAction extends AbstractTestAction
 	public BookAction()  
 	{
 		super(ColumnPackage.eINSTANCE);
-	}
-
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
-	 */
-	public Properties getExtraConfigurationProperties() {
-		Properties props = new Properties();
-		props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
-		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */
@@ -118,7 +109,7 @@ public class BookAction extends AbstractTestAction
 	    		try {
 	    			conn = store.getConnection();
 	    			stmt = conn.createStatement();
-		    		ResultSet rs = stmt.executeQuery("SELECT * FROM MYBOOKTABLE WHERE TITEL='' AND GEWICHT IS NULL");
+		    		ResultSet rs = stmt.executeQuery("SELECT * FROM mybooktable WHERE titel='' AND gewicht IS NULL");
 		    		assertTrue(rs != null); //dummy to get rid of warning
 	    		} catch (SQLException s) {
 	    			throw new StoreTestException("SQL Exception", s);

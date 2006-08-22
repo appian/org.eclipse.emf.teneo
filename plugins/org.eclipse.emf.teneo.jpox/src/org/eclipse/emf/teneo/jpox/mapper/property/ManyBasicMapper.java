@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyBasicMapper.java,v 1.2 2006/08/14 05:09:18 mtaal Exp $
+ * $Id: ManyBasicMapper.java,v 1.3 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class ManyBasicMapper extends AbstractMapper {
 	/** The logger for all these exceptions */
@@ -77,7 +77,7 @@ public class ManyBasicMapper extends AbstractMapper {
 				elemType = getObjectClassName(elemType);
 			}
 			Element collection = field.addElement("collection").addAttribute("element-type", elemType);
-
+			
 			MappingUtil.addEagerLazyLoading(collection, aAttribute.getOneToMany().getFetch());
 
 			// forces the elements to be placed in their own join table

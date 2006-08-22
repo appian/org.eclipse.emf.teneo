@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.3 2006/08/14 05:09:18 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.4 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class OneToOneMapper extends AssociationMapper {
@@ -78,7 +78,10 @@ public class OneToOneMapper extends AssociationMapper {
 			// -> result item points back to the list but is not present anymore in the list
 			if (aReference.getOneToOne() != null && aReference.getOneToOne().getMappedBy() != null
 					&& !aReference.getAnnotatedEReference().isContainment()) {
-				field.addAttribute("mapped-by", aReference.getOneToOne().getMappedBy());
+				// disabled mapped-by for now, for one reason or another jpox did not cascade the 
+				// persist action over a bidirectional relation, bidirectionality is controlled 
+				// anyway by emf. 
+				//field.addAttribute("mapped-by", aReference.getOneToOne().getMappedBy());
 			}
 
 			// add extra foreign key constraint

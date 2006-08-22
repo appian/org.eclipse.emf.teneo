@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFNullCache.java,v 1.1 2006/07/08 22:04:29 mtaal Exp $
+ * $Id: EMFNullCache.java,v 1.2 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.cache;
@@ -19,10 +19,11 @@ package org.eclipse.emf.teneo.jpox.emf.cache;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.teneo.EContainerRepairControl;
+import org.eclipse.emf.teneo.jpox.emf.JpoxUtil;
 import org.jpox.cache.Level1Cache;
 
 /**
@@ -30,7 +31,7 @@ import org.jpox.cache.Level1Cache;
  * repair for new objects.
  * 
  * @see java.lang.ref.WeakReference
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EMFNullCache implements Level1Cache {
 	public EMFNullCache() {
@@ -38,8 +39,7 @@ public class EMFNullCache implements Level1Cache {
 	}
 
 	public Object put(Object key, Object value) {
-		EContainerRepairControl.repair(value);
-
+		JpoxUtil.repairContainer(value);
 		return value;
 	}
 
@@ -100,7 +100,10 @@ public class EMFNullCache implements Level1Cache {
 	 * @see java.util.Map#putAll(java.util.Map)
 	 */
 	public void putAll(Map t) {
-
+		final Iterator it = t.values().iterator();
+		while (it.hasNext()) {
+			JpoxUtil.repairContainer(it.next());
+		}
 	}
 
 	/*

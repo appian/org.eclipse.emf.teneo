@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtLibraryAction.java,v 1.3 2006/08/21 11:31:55 mtaal Exp $
+ * $Id: ExtLibraryAction.java,v 1.4 2006/08/22 22:24:51 mtaal Exp $
  */
 
 package extlibrary;
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the extlibrary
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class ExtLibraryAction extends AbstractTestAction {
 	
@@ -38,6 +38,8 @@ public class ExtLibraryAction extends AbstractTestAction {
 
 	/** Test */
 	public void doAction(TestStore store) {
+		store.disableDrop();
+		
 		final ExtlibraryFactory factory = ExtlibraryFactory.eINSTANCE;
 		store.beginTransaction();
 		final Writer wr = factory.createWriter();
@@ -52,6 +54,7 @@ public class ExtLibraryAction extends AbstractTestAction {
 		bk.setPages(100);
 		bk.setPublicationDate(new Date());
 		bk.setTitle("title");
+		store.store(bk);
 		
 		final Library lb2 = factory.createLibrary();
 		lb2.setAddress("main street");
@@ -80,18 +83,20 @@ public class ExtLibraryAction extends AbstractTestAction {
 		lb.getEmployees().add(manager);
 		
 		final Borrower bw = factory.createBorrower();
-		bw.getBorrowed().add(bk);
 		bw.setAddress("borrowstreet");
 		bw.setFirstName("Jane");
 		bw.setLastName("Smith");
+		bw.getBorrowed().add(bk);
 		lb.getBorrowers().add(bw);
-		
 		store.store(lb);
 		store.commitTransaction();
 		
+		/*
+		//Polymorphic queries are not supported
 		store.beginTransaction();
 		Lendable lendable = (Lendable)store.query("select from extlibrary.Lendable").get(0);
 		assertTrue(lendable != null);
 		store.commitTransaction();
+		*/
 	}
 }

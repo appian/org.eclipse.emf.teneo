@@ -5,7 +5,7 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:complexType name="Book">
  	<xsd:annotation>
-		<xsd:appinfo source="http://ejb.elver.org/Table" ecore:key="name">MYBOOKTABLE</xsd:appinfo>
+		<xsd:appinfo source="http://ejb.elver.org/Table" ecore:key="name">mybooktable</xsd:appinfo>
 <!--		<xsd:appinfo source="http://ejb.elver.org/Table" ecore:key="schema">library</xsd:appinfo>
 		<xsd:appinfo source="http://ejb.elver.org/Table" ecore:key="catalog">library</xsd:appinfo> -->
     </xsd:annotation>
@@ -25,7 +25,7 @@
 	  </xsd:element>
       <xsd:element name="weight" type="xsd:decimal">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="name">GEWICHT</xsd:appinfo>
+			<xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="name">gewicht</xsd:appinfo>
 			<xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="nullable">true</xsd:appinfo>
 			<xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="precision">5</xsd:appinfo>
 			<xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="scale">2</xsd:appinfo>

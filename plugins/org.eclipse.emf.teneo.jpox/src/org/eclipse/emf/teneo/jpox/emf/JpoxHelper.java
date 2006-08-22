@@ -11,47 +11,32 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxHelper.java,v 1.2 2006/07/20 06:49:58 mtaal Exp $
+ * $Id: JpoxHelper.java,v 1.3 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf;
 
 import java.util.Hashtable;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
-import org.eclipse.emf.ecore.xml.type.internal.XMLDuration;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-import org.eclipse.emf.teneo.jpox.emf.elist.EListMapping;
-import org.eclipse.emf.teneo.jpox.emf.elist.EListWrapper;
-import org.eclipse.emf.teneo.jpox.emf.elist.FeatureMapMapping;
-import org.eclipse.emf.teneo.jpox.emf.elist.FeatureMapWrapper;
-import org.eclipse.emf.teneo.jpox.emf.mapping.EObjectMapping;
-import org.eclipse.emf.teneo.jpox.emf.mapping.XMLCalendarMapping;
-import org.eclipse.emf.teneo.jpox.emf.mapping.XMLDurationMapping;
 import org.eclipse.emf.teneo.jpox.emf.resource.JPOXResourceDAOFactory;
 import org.eclipse.emf.teneo.jpox.mapper.JPOXMappingGenerator;
 import org.eclipse.emf.teneo.mapper.PersistenceMappingBuilder;
-import org.jpox.ClassLoaderResolver;
-import org.jpox.JDOClassLoaderResolver;
-import org.jpox.TypeManager;
 
 /**
  * Is the main entry point for 'outside' users to create persistence manager factories and register EMF Data Stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class JpoxHelper {
 	/** The logger */
@@ -79,49 +64,11 @@ public class JpoxHelper {
 		Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put("jpoxdao", new JPOXResourceDAOFactory());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("jpoxdao", new JPOXResourceDAOFactory());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ejdo", new JPOXResourceDAOFactory());
-
-		INSTANCE.initializeTypes();
-	}
-
-	/** Initializes emf types with jpox */
-	private synchronized void initializeTypes() {
-		// for the first time also register the EList type mapper/wrapper
-		if (typesInitialized)
-			return;
-
-		if (log.isInfoEnabled()) {
-			log.info("Registering EListMapping, EListWrapper at the jpox manager for handling elists");
-			log.info("Registering FeatureMapMapping, FeatureMapWrapper at the jpox manager for handling FeatureMap");
-			log.info("Registering EObjectMapping at the jpox manager for handling EObjects/AnyType");
-			log.info("Registering XMLCalendarMapping at the jpox manager for handling EObjects/AnyType");
-			log.info("Registering XMLDurationMapping at the jpox manager for handling EObjects/AnyType");
-		}
-		ClassLoaderResolver clr = new JDOClassLoaderResolver();
-		TypeManager.getTypeManager().addType(List.class.getName(), EListMapping.class.getName(),
-				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
-		TypeManager.getTypeManager().addType(EList.class.getName(), EListMapping.class.getName(),
-				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
-		TypeManager.getTypeManager().addType(FeatureMap.class.getName(), FeatureMapMapping.class.getName(),
-				FeatureMapWrapper.class.getName(), false, "1.4", true, false, false, clr);
-		TypeManager.getTypeManager().addType(EObject.class.getName(), EObjectMapping.class.getName(), null, true,
-				"1.4", true, false, true, clr);
-		TypeManager.getTypeManager().addType(XMLCalendar.class.getName(), XMLCalendarMapping.class.getName(), null,
-				true, "1.4", true, false, true, clr);
-		TypeManager.getTypeManager().addType(XMLDuration.class.getName(), XMLDurationMapping.class.getName(), null,
-				true, "1.4", true, false, true, clr);
-
-		// TypeManager.getTypeManager().addType(AnyFeatureMapEntry.class.getName(), AnyFeatureMapEntryMapping.class,
-		// null, true, "1.4",
-		// true, false, true);
 		System.setProperty("org.jpox.cache.level1.type", "org.eclipse.emf.teneo.jpox.emf.cache.EMFWeakRefCache");
-		typesInitialized = true;
 	}
 
 	/** The list of EMF Datastores mapped by name */
 	private final Hashtable emfDataStores = new Hashtable();
-
-	/** Keeps track if the types have been initialized with jpox */
-	private boolean typesInitialized = false;
 
 	/**
 	 * Sets the suffix to use for searching for the jdo file. This method must be called before the
@@ -161,7 +108,6 @@ public class JpoxHelper {
 			jds.close();
 		}
 		emfDataStores.clear();
-		typesInitialized = false;
 		ERuntime.INSTANCE.clear();
 	}
 

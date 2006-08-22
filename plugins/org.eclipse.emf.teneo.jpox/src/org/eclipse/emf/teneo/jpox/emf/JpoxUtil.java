@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxUtil.java,v 1.1 2006/07/08 22:04:29 mtaal Exp $
+ * $Id: JpoxUtil.java,v 1.2 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf;
@@ -25,18 +25,40 @@ import javax.jdo.spi.PersistenceCapable;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.Constants;
+import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.jpox.PMFConfiguration;
+import org.jpox.StateManager;
 
 /**
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/08 22:04:29 $
+ * @version $Revision: 1.2 $ $Date: 2006/08/22 22:23:29 $
  */
 
 public class JpoxUtil {
 
+	/** Repair the container */
+	public static void repairContainer(Object value) {
+		if (value instanceof StateManager) {
+			if (((StateManager)value).isDeleted(((StateManager)value).getObject())) {
+				return;
+			}
+		}
+		EContainerRepairControl.repair(JpoxUtil.checkGetObject(value));
+	}
+	
+	/** Returns the object itself if it is an eobject, if it is a statemanager then the object
+	 * is returned, otherwise the object itself is returned.
+	 */
+	public static Object checkGetObject(Object value) {
+		if (value instanceof StateManager) {
+			return ((StateManager)value).getObject();
+		}
+		return value;
+	}
+	
 	/** Creates and registers an emf data store using a set of generic store properties */
 	public static JpoxDataStore getCreateDataStore(Properties props) {
 		final String name = props.getProperty(Constants.PROP_NAME);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.3 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.4 2006/08/22 22:24:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -50,14 +50,15 @@ import org.eclipse.emf.teneo.test.stores.TestDatabaseAdapter;
 import org.jpox.JDOClassLoaderResolver;
 import org.jpox.PMFConfiguration;
 import org.jpox.PersistenceManagerFactoryImpl;
-import org.jpox.metadata.ClassMetaData;
+import org.jpox.metadata.AbstractClassMetaData;
 import org.jpox.metadata.InheritanceStrategy;
+import org.jpox.store.Dictionary;
 
 /**
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -118,6 +119,8 @@ public class JPOXTestStore extends AbstractTestStore {
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_URL_PROPERTY, adapter.getDbUrl());
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, adapter.getDbUser());
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, adapter.getDbPwd());
+		properties.setProperty(Dictionary.IDENTIFIER_CASE_PROPERTY, "LowerCase");
+		
 		// properties.setProperty(PMFConfiguration.JDO_MAPPING_CATALOG_PROPERTY, adapter.getDbName());
 
 		if (inheritanceType.getValue() == InheritanceType.JOINED) {
@@ -387,7 +390,7 @@ public class JPOXTestStore extends AbstractTestStore {
 	/** Check inheritance strategy */
 	public boolean isInheritanceStrategy(String name, InheritanceType strategy) {
 		final Class clazz = clr.classForName(name);
-		final ClassMetaData cmd = ((PersistenceManagerFactoryImpl) pmf).getPMFContext().getMetaDataManager()
+		final AbstractClassMetaData cmd = ((PersistenceManagerFactoryImpl) pmf).getPMFContext().getMetaDataManager()
 				.getMetaDataForClass(clazz, clr);
 		if (strategy.equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
 			return cmd.getInheritanceMetaData().getStrategyValue() == InheritanceStrategy.SUPERCLASS_TABLE;

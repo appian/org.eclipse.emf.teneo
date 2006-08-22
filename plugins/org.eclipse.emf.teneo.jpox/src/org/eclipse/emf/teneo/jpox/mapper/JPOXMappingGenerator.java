@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.3 2006/08/21 13:27:32 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.4 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class JPOXMappingGenerator {
@@ -97,12 +97,8 @@ public class JPOXMappingGenerator {
 			for (Iterator aClassIterator = aPackage.getPaEClasses().iterator(); aClassIterator.hasNext();) {
 				PAnnotatedEClass aClass = (PAnnotatedEClass) aClassIterator.next();
 				Class implClass = ERuntime.INSTANCE.getInstanceClass((EClass) aClass.getAnnotatedElement());
-
-				if (aClass.getAnnotatedEClass().isInterface()) {
-					System.err.println("INTERFACE");
-				}
 				
-				if (implClass == null) continue; // ignore abstract classes
+				if (implClass == null || aClass.getAnnotatedEClass().isInterface()) continue; // ignore abstract classes
 
 				Package implPackage = implClass.getPackage();
 				ArrayList aclasses = (ArrayList) aClassesByPackage.get(implPackage);
@@ -145,8 +141,8 @@ public class JPOXMappingGenerator {
 		}
 		
 		if (aClass.getAnnotatedEClass().isInterface()) {
-			final Element classElement = container.addElement("interface");
-			classElement.addAttribute("name", aClass.getAnnotatedEClass().getInstanceClassName());	
+			//final Element classElement = container.addElement("interface");
+			//classElement.addAttribute("name", aClass.getAnnotatedEClass().getInstanceClassName());	
 			log.debug(aClass.getAnnotatedEClass().getName() + " is interface, no explicit mapping");
 			return;
 		}

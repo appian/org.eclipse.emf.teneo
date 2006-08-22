@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ENumMapping.java,v 1.1 2006/07/08 22:04:29 mtaal Exp $
+ * $Id: ENumMapping.java,v 1.2 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.mapping;
@@ -23,15 +23,16 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.jpox.emf.JpoxStoreException;
-import org.jpox.metadata.FieldMetaData;
+import org.jpox.ClassNameConstants;
+import org.jpox.metadata.AbstractPropertyMetaData;
 import org.jpox.store.DatastoreAdapter;
 import org.jpox.store.DatastoreContainerObject;
 import org.jpox.store.DatastoreField;
+import org.jpox.store.expression.LogicSetExpression;
 import org.jpox.store.expression.QueryExpression;
 import org.jpox.store.expression.ScalarExpression;
 import org.jpox.store.expression.StringExpression;
 import org.jpox.store.expression.StringLiteral;
-import org.jpox.store.expression.TableExpression;
 import org.jpox.store.mapping.JavaTypeMapping;
 import org.jpox.store.mapping.MappingManager;
 
@@ -43,7 +44,7 @@ import org.jpox.store.mapping.MappingManager;
  * method using the class signature (reflection).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/08 22:04:29 $
+ * @version $Revision: 1.2 $ $Date: 2006/08/22 22:23:29 $
  */
 
 public class ENumMapping extends JavaTypeMapping {
@@ -75,18 +76,38 @@ public class ENumMapping extends JavaTypeMapping {
 		} catch (StoreClassLoadException e) {
 			throw new JpoxStoreException("The enum can not be found: " + type);
 		}
+		addDatastoreField(ClassNameConstants.JAVA_LANG_STRING);
 	}
 
 	/** Constructor */
-	public ENumMapping(DatastoreAdapter dba, FieldMetaData fmd, DatastoreContainerObject datastoreContainer,
+	public ENumMapping(DatastoreAdapter dba, AbstractPropertyMetaData fmd, DatastoreContainerObject datastoreContainer,
 			org.jpox.ClassLoaderResolver clr) {
-		this(dba, fmd, datastoreContainer);
+		super(fmd, dba, fmd.getType().getName());
+		try {
+			enumType = fmd.getType();
+			getMethod = enumType.getMethod("get", new Class[] { String.class });
+		} catch (NoSuchMethodException e) {
+			throw new JpoxStoreException("The get method which returns an enum instance does not exist for the class: "
+					+ type);
+		} catch (StoreClassLoadException e) {
+			throw new JpoxStoreException("The enum can not be found: " + type);
+		}
+		this.datastoreContainer = datastoreContainer;
+		addDatastoreField(ClassNameConstants.JAVA_LANG_STRING);
 	}
 
-	/** Constructor */
-	public ENumMapping(DatastoreAdapter dba, FieldMetaData fmd, DatastoreContainerObject datastoreContainer) {
-		this(dba, fmd, datastoreContainer, true);
-	}
+    /**
+     * Convenience method to add a datastore field for this mapping.
+     * The column will be created using the ColumnMetaData for the respective position
+     * of this column. The column is added to the end of the list of datastore fields.
+     * @param typeName Java type of the field to add the column for.
+     */
+    protected void addDatastoreField(String typeName)
+    {
+        MappingManager mgr = dba.getMappingManager();
+        DatastoreField column = mgr.createDatastoreField(fmd, datastoreContainer, dba, this, typeName, getNumberOfDatastoreFields());
+        mgr.createDatastoreMapping(this, datastoreContainer.getStoreManager(), column, typeName);
+    }
 
 	/**
 	 * Constructor.
@@ -100,7 +121,7 @@ public class ENumMapping extends JavaTypeMapping {
 	 * @param initDatastoreMappings
 	 *            Whether to initialise the datastore mappings (create the columns etc)
 	 */
-	public ENumMapping(DatastoreAdapter dba, FieldMetaData fmd, DatastoreContainerObject datastoreContainer,
+	public ENumMapping(DatastoreAdapter dba, AbstractPropertyMetaData fmd, DatastoreContainerObject datastoreContainer,
 			boolean initDatastoreMappings) {
 		super(fmd, dba, fmd.getType().getName());
 
@@ -180,10 +201,11 @@ public class ENumMapping extends JavaTypeMapping {
 	}
 
 	/** The string value of the enum is stored, so I assume that the string value should be used here */
-	public ScalarExpression newScalarExpression(QueryExpression qs, TableExpression te) {
-		ScalarExpression expr = new StringExpression(qs, this, te);
-		return expr;
-	}
+    public ScalarExpression newScalarExpression(QueryExpression qs, LogicSetExpression te)
+    {
+        ScalarExpression expr = new StringExpression(qs, this, te);
+        return expr; 
+    }
 
 	/**
 	 * Method that sets the values to be put in the datastore columns from the Java object. In this case a string (the

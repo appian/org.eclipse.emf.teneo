@@ -515,16 +515,6 @@
     <element xmi:type="ecore:EReference" href="extlibrary.ecore#//BookOnTape/reader"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MLEYRCisEduIIq5eJ7hAJw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
   </edges>
-  <edges xmi:type="notation:Edge" xmi:id="_MLHbkCisEduIIq5eJ7hAJw" type="4002" source="_YyKtkCiqEduZ1o62mqnZTg" target="_Yx9SMyiqEduZ1o62mqnZTg">
-    <children xmi:type="notation:Node" xmi:id="_MLICoCisEduIIq5eJ7hAJw" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_MLICoSisEduIIq5eJ7hAJw" y="40"/>
-    </children>
-    <styles xmi:type="notation:RoutingStyle" xmi:id="_MLHbkSisEduIIq5eJ7hAJw"/>
-    <styles xmi:type="notation:FontStyle" xmi:id="_MLHbkiisEduIIq5eJ7hAJw" fontName="Bitstream Vera Sans"/>
-    <styles xmi:type="notation:LineStyle" xmi:id="_MLHbkyisEduIIq5eJ7hAJw"/>
-    <element xmi:type="ecore:EReference" href="extlibrary.ecore#//BookOnTape/author"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MLHblCisEduIIq5eJ7hAJw" points="[-48, 24, 468, -269]$[-257, 126, 259, -167]$[-277, 126, 239, -167]$[-484, 271, 32, -22]"/>
-  </edges>
   <edges xmi:type="notation:Edge" xmi:id="_MLKe4CisEduIIq5eJ7hAJw" type="4004" source="_YyNJ1CiqEduZ1o62mqnZTg" target="_YyIRUyiqEduZ1o62mqnZTg">
     <styles xmi:type="notation:RoutingStyle" xmi:id="_MLKe4SisEduIIq5eJ7hAJw"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_MLKe4iisEduIIq5eJ7hAJw" fontName="Bitstream Vera Sans"/>

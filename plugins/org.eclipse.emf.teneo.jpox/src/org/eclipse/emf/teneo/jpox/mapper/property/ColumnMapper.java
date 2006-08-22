@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ColumnMapper.java,v 1.1 2006/07/08 22:04:30 mtaal Exp $
+ * $Id: ColumnMapper.java,v 1.2 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
  * Maps the column annotation to a jpox representation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class ColumnMapper extends AbstractMapper {
@@ -61,8 +61,8 @@ public class ColumnMapper extends AbstractMapper {
 			columnElement.addAttribute("length", Integer.toString(column.getLength()));
 		}
 		if (column.isSetPrecision()) {
-			log.debug("Set precision " + column.getPrecision());
-			columnElement.addAttribute("precision", Integer.toString(column.getPrecision()));
+			log.debug("Set precision (using length attribute) " + column.getPrecision());
+			columnElement.addAttribute("length", Integer.toString(column.getPrecision()));
 		}
 		if (column.isSetScale()) {
 			log.debug("Set scale " + column.getScale());

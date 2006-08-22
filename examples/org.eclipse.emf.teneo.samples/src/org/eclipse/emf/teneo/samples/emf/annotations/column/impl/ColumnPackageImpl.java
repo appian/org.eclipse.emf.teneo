@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnPackageImpl.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: ColumnPackageImpl.java,v 1.2 2006/08/22 22:24:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.column.impl;
 
@@ -239,7 +239,7 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 		  (bookEClass, 
 		   source, 
 		   new String[] {
-			 "name", "MYBOOKTABLE"
+			 "name", "mybooktable"
 		   });								
 	}
 
@@ -315,7 +315,7 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 		  (getBook_Weight(), 
 		   source, 
 		   new String[] {
-			 "name", "GEWICHT",
+			 "name", "gewicht",
 			 "nullable", "true",
 			 "precision", "5",
 			 "scale", "2"

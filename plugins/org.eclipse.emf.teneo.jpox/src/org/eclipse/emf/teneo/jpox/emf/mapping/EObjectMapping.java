@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EObjectMapping.java,v 1.1 2006/07/08 22:04:29 mtaal Exp $
+ * $Id: EObjectMapping.java,v 1.2 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.mapping;
@@ -32,13 +32,13 @@ import org.eclipse.emf.teneo.util.StoreUtil;
 import org.jpox.ClassLoaderResolver;
 import org.jpox.ClassNameConstants;
 import org.jpox.StateManager;
-import org.jpox.metadata.FieldMetaData;
+import org.jpox.metadata.AbstractPropertyMetaData;
 import org.jpox.store.DatastoreAdapter;
 import org.jpox.store.DatastoreContainerObject;
 import org.jpox.store.OID;
+import org.jpox.store.expression.LogicSetExpression;
 import org.jpox.store.expression.QueryExpression;
 import org.jpox.store.expression.ScalarExpression;
-import org.jpox.store.expression.TableExpression;
 import org.jpox.store.mapping.MappingCallbacks;
 import org.jpox.store.mapping.SingleFieldMultiMapping;
 
@@ -54,7 +54,7 @@ import org.jpox.store.mapping.SingleFieldMultiMapping;
  * the future possibly referential integrity is supported by storing all any types with references in a reference table.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/08 22:04:29 $
+ * @version $Revision: 1.2 $ $Date: 2006/08/22 22:23:29 $
  */
 
 public class EObjectMapping extends SingleFieldMultiMapping implements MappingCallbacks {
@@ -67,7 +67,7 @@ public class EObjectMapping extends SingleFieldMultiMapping implements MappingCa
 	}
 
 	/** Constructor */
-	public EObjectMapping(DatastoreAdapter dba, FieldMetaData fmd, DatastoreContainerObject datastoreContainer,
+	public EObjectMapping(DatastoreAdapter dba, AbstractPropertyMetaData fmd, DatastoreContainerObject datastoreContainer,
 			ClassLoaderResolver clr) {
 		super(dba, fmd, datastoreContainer);
 
@@ -113,9 +113,9 @@ public class EObjectMapping extends SingleFieldMultiMapping implements MappingCa
 		return null; // to be implemented
 	}
 
-	/** The string value of the enum is stored, so I assume that the string value should be used here */
-	public ScalarExpression newScalarExpression(QueryExpression qs, TableExpression te) {
-		return null; // to be implemented
+	/** Returns null */
+	public ScalarExpression newScalarExpression(QueryExpression qs, LogicSetExpression te) {
+		return null;
 	}
 
 	/**

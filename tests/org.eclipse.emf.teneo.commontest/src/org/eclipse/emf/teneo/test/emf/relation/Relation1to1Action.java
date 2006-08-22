@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Relation1to1Action.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
+ * $Id: Relation1to1Action.java,v 1.3 2006/08/22 22:24:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.relation;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests many different kinds of 1:1 relations
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class Relation1to1Action extends AbstractTestAction 
 {
@@ -97,8 +97,9 @@ public class Relation1to1Action extends AbstractTestAction
     		NotContainedChildNRTNR notContainedChildNRTNR = factory.createNotContainedChildNRTNR();
     		notContainedChildNRTNR.setName("not contained two way not required - not required");
     		main.setNotcontainedtwowaynotrequirednr(notContainedChildNRTNR);
-
+    		
     		store.store(main);
+    		
     		store.commitTransaction();
     	}
     	

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFSoftRefCache.java,v 1.1 2006/07/08 22:04:29 mtaal Exp $
+ * $Id: EMFSoftRefCache.java,v 1.2 2006/08/22 22:23:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.cache;
@@ -19,19 +19,19 @@ package org.eclipse.emf.teneo.jpox.emf.cache;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.emf.teneo.EContainerRepairControl;
+import org.eclipse.emf.teneo.jpox.emf.JpoxUtil;
 import org.jpox.cache.SoftRefCache;
 
 /**
  * Implementation of cache to add econtainer control for new objects.
  * 
  * @see java.lang.ref.WeakReference
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EMFSoftRefCache extends SoftRefCache {
 	/** Is overridden to repair econtainer references for new objects */
 	public Object put(Object key, Object value) {
-		EContainerRepairControl.repair(value);
+		JpoxUtil.repairContainer(value);
 		return super.put(key, value);
 	}
 
@@ -39,7 +39,7 @@ public class EMFSoftRefCache extends SoftRefCache {
 	public void putAll(Map t) {
 		final Iterator it = t.values().iterator();
 		while (it.hasNext()) {
-			EContainerRepairControl.repair(it.next());
+			JpoxUtil.repairContainer(it.next());
 		}
 		super.putAll(t);
 	}

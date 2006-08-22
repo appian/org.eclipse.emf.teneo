@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Column" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>column.xsd</foreignModel>
-  <genPackages prefix="Column" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
-      disposableProviderFactory="true" ecorePackage="column.ecore#/">
+  <genPackages prefix="Column" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="column.ecore#/">
     <genClasses ecoreClass="column.ecore#//Book">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute column.ecore#//Book/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute column.ecore#//Book/pages"/>
