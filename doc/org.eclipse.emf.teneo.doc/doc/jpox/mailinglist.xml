@@ -17,7 +17,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+	@version $Revision: 1.2 $ $Date: 2006/08/24 21:27:43 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -29,6 +29,11 @@
 		<title>Elver Store Mailinglist</title> 
 	</header> 
 	<body>
+		<section>
+			<title>EMFT Newsgroup</title>
+			<p>Elver persistency is moving to Eclipse.org as a subproject in EMFT. Support for Elver/Teneo
+			is given on the EMFT newsgroup: news://news.eclipse.org/eclipse.technology.emft.</p>
+		</section>
 		<section id="maillist">
 			<title>Mailing List</title>
 		<p>

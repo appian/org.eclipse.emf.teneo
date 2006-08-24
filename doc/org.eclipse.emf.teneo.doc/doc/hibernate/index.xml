@@ -17,7 +17,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+	@version $Revision: 1.2 $ $Date: 2006/08/24 21:27:43 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -29,6 +29,17 @@
 		<title></title> 
 	</header> 
 	<body>
+		<section>
+			<title>Elver Persistency moves to Eclipse.org as Teneo within EMFT</title>
+			<p><strong>Elver persistency is in the process of moving to eclipse.org. Elver persistency will be continued as the Teneo project in the EMFT project.
+			The current status:</strong></p>
+			<ul>
+			<li>The source code has been moved to Eclipse cvs.</li>
+			<li>Currently we are working on the build process.</li>
+			<li>Support is given on both the 
+			EMFT newsgroup as the Elver mailinglist. When the build process at eclipse.org is operational, support will move completely to the
+			EMFT newsgroup.</li></ul>
+		</section>
 		<section>
 			<title>EMF Persistency Solution using Hibernate 3.1</title>
 				<p>The EMF - Hibernate integration currently supports a number of important EMF features and 

@@ -19,7 +19,7 @@
 	Forrest Site Definition.
 
 	@author <a href="pvdhoef@elver.org">Peter van de Hoef</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+	@version $Revision: 1.2 $ $Date: 2006/08/24 21:27:43 $
 -->
 
 <site label="Elver" href="" xmlns="http://apache.org/forrest/linkmap/1.0">
@@ -93,7 +93,7 @@
 		<jpox label="EMF/JPOX Support" href="emfjpoxsupport.html" description="Support for emf and jpox related questions"/>
 	</support>
 	<developer label="Developer" tab="jpox" href="jpox/">
-		<svn label="Subversion" href="svn.html" description="Our subversion structure and projects"/>
+		<svn label="CVS" href="svn.html" description="CVS structure and projects"/>
 		<test label="Test cases" href="testcases.html" description="Describes how to get the test cases up-and-running"/>
 	</developer>
 
@@ -150,7 +150,7 @@
 		<jpox label="EMF/Hibernate Support" href="emfhibsupport.html" description="Support for emf and hibernate related questions"/>
 	</support> 
 	<developer label="Developer" tab="hibernate" href="hibernate/">
-		<svn label="Subversion" href="svn.html" description="Our subversion structure and projects"/>
+		<svn label="CVS" href="svn.html" description="CVS structure and projects"/>
 		<test label="Test cases" href="testcases.html" description="Describes how to get the test cases up-and-running"/>
 	</developer>
 </site>

@@ -17,7 +17,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+	@version $Revision: 1.2 $ $Date: 2006/08/24 21:27:43 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -26,45 +26,43 @@
 
 <document> 
 	<header> 
-		<title>Subversion</title> 
+		<title>CVS</title> 
 	</header> 
 	<body>
-		<p>The source code of the EMF - Hibernate integration is stored in a <a href="http://subversion.tigris.org/">Subversion</a> repository.
-			The subversion url is: svn://svn.elver.org/elver with anonymous login.</p>
-		<p></p>
+		<p>The source code of the EMF - Hibernate integration is stored in Eclipse.org cvs here:</p>
+		<ul>
+		<li>host: dev.eclipse.org</li>
+		<li>repository: /cvsroot/technology</li>
+		<li>module: org.eclipse.emft/teneo</li>
+		</ul>
 		<p>
-			<strong>The source code in subversion is updated on a daily basis and contains experimental
+			<strong>The source code in cvs is updated on a daily basis and contains experimental
 				new features which can (temporarily) break already existing functionality and tests.
-				There is no guarantee that the code in subversion will work in anyway.</strong></p>
+				There is no guarantee that the code in cvs will work in anyway.</strong></p>
 		<section id="projects">
-			<title>Projects in Subversion</title>
-		<p>
-			The relevant Hibernate related projects within the repository are:
-		</p>
-			<ul>
-			<li>org.elver.store: this project contains general code used by the JPOX as well as the Hibernate runtime layer.</li>
-			<li>org.elver.store.eclipse: this project contains general code for the eclipse menu options used by the JPOX as well as the Hibernate runtime layer.</li>
-			<li>org.elver.store.annotations: this project contains code for reading and generating annotations.</li>
-			<li>org.elver.store.hibernate: this project contains the EMF - Hibernate mapping and runtime layer.</li>
-			<li>org.elver.store.hibernate.eclipse: this project contains the resource utility Eclipse plugins.</li>
-			<li>org.elver.store.samples: this project contains the examples and model information used in the testcases.</li>
-			<li>org.elver.store.commontest: this project contains the test case part which is common for Hibernate and JPOX</li>
-			<li>org.elver.store.hibernate.test: the hibernate specific part of the tests</li>
-			<li>org.elver.store.tutorial: the tutorials used on this website</li>
+			<title>Projects in CVS</title>
+		<p>The cvs repository has the following structure and projects:</p>
+		<ul>
+		<li>doc: contains this website</li>
+		<li>examples: contains the samples and tutorial projects. Samples has all the model projects which are used as the basis for the test cases. The tutorial project contains the tutorials used on this website.</li>
+		<li>plugins: this is the main folder. The following hibernate related projects are present here:
+			<ul><li>org.eclipse.emf.teneo: generic part of the runtime layer</li>
+			<li>org.eclipse.emf.teneo.annotations: the jpa annotations</li>
+			<li>org.eclipse.emf.teneo.eclipse: the generic part of the ui additions to eclipse for the Teneo right-click menus</li>
+			<li>org.eclipse.emf.teneo.hibernate: the main hibernate project containing the mapping logic, hibernate annotations and runtime layer</li>
+			<li>org.eclipse.emf.teneo.hibernate.eclipse: hibernate specific part of the ui additions to eclipse</li>
+			<li>org.eclipse.emf.teneo.libraries: common libraries (for example log4j).</li>
 			</ul>
-		<p>
-			Other projects in subversion are related to an integration between EMF and JSF and Hibernate.
-		</p>
-		<p>The projects have dependencies which are managed by the plugin dependencies in
-		the Manifest.MF</p>
-		<p>Sometimes projects will have a dependency to a org.hibernate plugin project (not present in svn). 
-			This is used 
-		to debug hibernate. When checking out the development projects these dependencies can
-			be replaced by the corresponding hibernate jar file.</p>
-		<p>
-			Within each project there is a sub folder called trunk which contains the 
-			latest version. Other versions are present in the branch/version subfolders.
-		</p>
+		</li>
+		<li>tests: contains the test cases:
+			<ul>
+				<li>org.eclipse.emf.teneo.commontest: this project contains the test case part which is common for Hibernate and JPOX</li>
+				<li>org.eclipse.emf.teneo.hibernate.libraries: hibernate libraries, not distributed as part of the build, used during testing</li>
+				<li>org.eclipse.emf.teneo.hibernate.test: hibernate test cases (junit)</li>
+			</ul>
+		</li>
+		</ul>
+		<p>In addition there are several feature projects and build related projects.</p>
 		<p>We use the standard Eclipse code format with the line length set to 120, the formatter profile
 		can be downloaded <a href="../download/elver-code-profile.xml">here</a>.</p>
 		</section>
