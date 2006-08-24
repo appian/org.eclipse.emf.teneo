@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.5 2006/08/24 22:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -32,7 +32,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.Columns;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
@@ -46,7 +45,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
-import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
@@ -64,7 +62,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.Parameter;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
@@ -75,7 +72,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
-import org.eclipse.emf.teneo.annotations.pannotation.Type;
 import org.eclipse.emf.teneo.annotations.pannotation.Unique;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
@@ -177,8 +173,6 @@ public class PannotationValidator extends EObjectValidator {
 				return validateBasic((Basic)value, diagnostics, context);
 			case PannotationPackage.COLUMN:
 				return validateColumn((Column)value, diagnostics, context);
-			case PannotationPackage.COLUMNS:
-				return validateColumns((Columns)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_COLUMN:
 				return validateDiscriminatorColumn((DiscriminatorColumn)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_VALUE:
@@ -197,8 +191,6 @@ public class PannotationValidator extends EObjectValidator {
 				return validateGeneratedValue((GeneratedValue)value, diagnostics, context);
 			case PannotationPackage.ID:
 				return validateId((Id)value, diagnostics, context);
-			case PannotationPackage.ID_BAG:
-				return validateIdBag((IdBag)value, diagnostics, context);
 			case PannotationPackage.ID_CLASS:
 				return validateIdClass((IdClass)value, diagnostics, context);
 			case PannotationPackage.INHERITANCE:
@@ -225,8 +217,6 @@ public class PannotationValidator extends EObjectValidator {
 				return validateOneToOne((OneToOne)value, diagnostics, context);
 			case PannotationPackage.ORDER_BY:
 				return validateOrderBy((OrderBy)value, diagnostics, context);
-			case PannotationPackage.PARAMETER:
-				return validateParameter((Parameter)value, diagnostics, context);
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN:
 				return validatePrimaryKeyJoinColumn((PrimaryKeyJoinColumn)value, diagnostics, context);
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMNS:
@@ -243,8 +233,6 @@ public class PannotationValidator extends EObjectValidator {
 				return validateTableGenerator((TableGenerator)value, diagnostics, context);
 			case PannotationPackage.TEMPORAL:
 				return validateTemporal((Temporal)value, diagnostics, context);
-			case PannotationPackage.TYPE:
-				return validateType((Type)value, diagnostics, context);
 			case PannotationPackage.TRANSIENT:
 				return validateTransient((Transient)value, diagnostics, context);
 			case PannotationPackage.UNIQUE_CONSTRAINT:
@@ -1557,60 +1545,6 @@ public class PannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateTemporalType(TemporalType temporalType, DiagnosticChain diagnostics, Map context) {
 		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateColumns(Columns columns, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(columns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(columns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(columns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(columns, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(columns, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(columns, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateParameter(Parameter parameter, DiagnosticChain diagnostics, Map context) {
-		return validate_EveryDefaultConstraint(parameter, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateType(Type type, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(type, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(type, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(type, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(type, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(type, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(type, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateIdBag(IdBag idBag, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(idBag, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(idBag, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(idBag, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(idBag, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(idBag, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(idBag, diagnostics, context);
-		return result;
 	}
 
 	/**

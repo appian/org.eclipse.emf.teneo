@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationAdapterFactory.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
+ * $Id: PannotationAdapterFactory.java,v 1.5 2006/08/24 22:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -16,7 +16,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.Columns;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
@@ -26,7 +25,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
-import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
@@ -43,7 +41,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.Parameter;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
@@ -53,7 +50,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
-import org.eclipse.emf.teneo.annotations.pannotation.Type;
 import org.eclipse.emf.teneo.annotations.pannotation.Unique;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
@@ -141,9 +137,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseColumn(Column object) {
 				return createColumnAdapter();
 			}
-			public Object caseColumns(Columns object) {
-				return createColumnsAdapter();
-			}
 			public Object caseDiscriminatorColumn(DiscriminatorColumn object) {
 				return createDiscriminatorColumnAdapter();
 			}
@@ -170,9 +163,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseId(Id object) {
 				return createIdAdapter();
-			}
-			public Object caseIdBag(IdBag object) {
-				return createIdBagAdapter();
 			}
 			public Object caseIdClass(IdClass object) {
 				return createIdClassAdapter();
@@ -213,9 +203,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseOrderBy(OrderBy object) {
 				return createOrderByAdapter();
 			}
-			public Object caseParameter(Parameter object) {
-				return createParameterAdapter();
-			}
 			public Object casePrimaryKeyJoinColumn(PrimaryKeyJoinColumn object) {
 				return createPrimaryKeyJoinColumnAdapter();
 			}
@@ -239,9 +226,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseTemporal(Temporal object) {
 				return createTemporalAdapter();
-			}
-			public Object caseType(Type object) {
-				return createTypeAdapter();
 			}
 			public Object caseTransient(Transient object) {
 				return createTransientAdapter();
@@ -833,62 +817,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUniqueAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.Columns <em>Columns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.Columns
-	 * @generated
-	 */
-	public Adapter createColumnsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.Parameter <em>Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.Parameter
-	 * @generated
-	 */
-	public Adapter createParameterAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.Type <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.Type
-	 * @generated
-	 */
-	public Adapter createTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.IdBag <em>Id Bag</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.IdBag
-	 * @generated
-	 */
-	public Adapter createIdBagAdapter() {
 		return null;
 	}
 

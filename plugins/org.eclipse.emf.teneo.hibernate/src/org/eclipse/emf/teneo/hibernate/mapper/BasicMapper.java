@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.2 2006/08/14 05:09:05 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.3 2006/08/24 22:12:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -27,7 +27,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.Columns;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.Lob;
@@ -39,6 +38,8 @@ import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.annotations.processing.TransientProcessor;
 import org.eclipse.emf.teneo.annotations.processing.VersionProcessor;
 import org.eclipse.emf.teneo.annotations.util.EcoreDataTypes;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -104,24 +105,29 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 	 *      Basic, org.eclipse.emf.teneo.annotations.pannotation.Column)
 	 */
 	public void processBasic(PAnnotatedEAttribute paAttribute) {
-		log.debug("processBasic " + paAttribute.getAnnotatedEAttribute().getName());
+        HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
+        if (hbAttribute.getHbType() != null) {
+            processType(hbAttribute);
+        } else {
+            log.debug("processBasic " + paAttribute.getAnnotatedEAttribute().getName());
 
-		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
+            final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
 
-		final Element propElement = addProperty(eAttribute.getName(), eAttribute.getEAttributeType());
+            final Element propElement = addProperty(eAttribute.getName(), eAttribute.getEAttributeType());
 
-		Basic basic = paAttribute.getBasic();
-		if (basic == null) {
-			basic = PannotationFactory.eINSTANCE.createBasic();
-		}
+            Basic basic = paAttribute.getBasic();
+            if (basic == null) {
+                basic = PannotationFactory.eINSTANCE.createBasic();
+            }
 
-		propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
-		addColumn(propElement, eAttribute.getName(), getColumn(paAttribute), getHbmContext()
-				.isCurrentElementFeatureMap(), false);
-		addIsSetAttribute(paAttribute);
-		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
+            propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
+            addColumn(propElement, eAttribute.getName(), getColumn(paAttribute), getHbmContext()
+                    .isCurrentElementFeatureMap(), false);
+            addIsSetAttribute(paAttribute);
+            propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
 		//propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
-	}
+        }
+    }
 
 	/**
 	 * Generate hb mapping for the given temporal attribute.
@@ -236,22 +242,22 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 	/**
 	 * Process Hibernate UserTypes
 	 */
-	public void processType(PAnnotatedEAttribute paAttribute) {
-		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
-
-		Basic basic = paAttribute.getBasic();
+	public void processType(HbAnnotatedEAttribute hbAttribute) {
+		final EAttribute eAttribute = hbAttribute.getAnnotatedEAttribute();
+        
+		Basic basic = hbAttribute.getBasic();
 		if (basic == null) {
 			basic = PannotationFactory.eINSTANCE.createBasic();
 		}
 
 		final Element propertyElement = getHbmContext().getCurrent().addElement("property");
 		propertyElement.addAttribute("name", eAttribute.getName());
-		propertyElement.addAttribute("type", paAttribute.getType().getType());
+		propertyElement.addAttribute("type", hbAttribute.getHbType().getType());
 		propertyElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
-		addIsSetAttribute(paAttribute);
+		addIsSetAttribute(hbAttribute);
 		propertyElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
 
-		final Columns columns = paAttribute.getColumns();
+		final Columns columns = hbAttribute.getHbColumns();
 		if (columns != null) {
 			for (Iterator it = columns.getValue().iterator(); it.hasNext();) {
 				final Column column = (Column) it.next();

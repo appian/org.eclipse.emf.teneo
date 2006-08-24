@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.4 2006/08/24 22:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -20,8 +20,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.Columns;
-import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumns;
@@ -40,15 +38,14 @@ import org.eclipse.emf.teneo.annotations.pannotation.Unique;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getPaEClass <em>Pa EClass</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getAnnotatedEStructuralFeature <em>Annotated EStructural Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getAttributeOverrides <em>Attribute Overrides</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getColumns <em>Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getJoinTable <em>Join Table</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getOneToMany <em>One To Many</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getSequenceGenerator <em>Sequence Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getTableGenerator <em>Table Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getJoinColumns <em>Join Columns</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getIdBag <em>Id Bag</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getIndexed <em>Indexed</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getUnique <em>Unique</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,16 +67,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 	 * @ordered
 	 */
 	protected AttributeOverrides attributeOverrides = null;
-
-	/**
-	 * The cached value of the '{@link #getColumns() <em>Columns</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getColumns()
-	 * @generated
-	 * @ordered
-	 */
-	protected Columns columns = null;
 
 	/**
 	 * The cached value of the '{@link #getJoinTable() <em>Join Table</em>}' containment reference. <!--
@@ -131,16 +118,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 	protected JoinColumns joinColumns = null;
 
 	/**
-	 * The cached value of the '{@link #getIdBag() <em>Id Bag</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIdBag()
-	 * @generated
-	 * @ordered
-	 */
-	protected IdBag idBag = null;
-
-	/**
 	 * The cached value of the '{@link #getIndexed() <em>Indexed</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -159,6 +136,16 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 	 * @ordered
 	 */
 	protected Unique unique = null;
+
+	/**
+	 * The cached value of the '{@link #getColumn() <em>Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColumn()
+	 * @generated
+	 * @ordered
+	 */
+	protected Column column = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -284,46 +271,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES, newAttributeOverrides, newAttributeOverrides));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Columns getColumns() {
-		return columns;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetColumns(Columns newColumns, NotificationChain msgs) {
-		Columns oldColumns = columns;
-		columns = newColumns;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS, oldColumns, newColumns);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setColumns(Columns newColumns) {
-		if (newColumns != columns) {
-			NotificationChain msgs = null;
-			if (columns != null)
-				msgs = ((InternalEObject)columns).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS, null, msgs);
-			if (newColumns != null)
-				msgs = ((InternalEObject)newColumns).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS, null, msgs);
-			msgs = basicSetColumns(newColumns, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS, newColumns, newColumns));
 	}
 
 	/**
@@ -530,46 +477,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IdBag getIdBag() {
-		return idBag;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetIdBag(IdBag newIdBag, NotificationChain msgs) {
-		IdBag oldIdBag = idBag;
-		idBag = newIdBag;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG, oldIdBag, newIdBag);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIdBag(IdBag newIdBag) {
-		if (newIdBag != idBag) {
-			NotificationChain msgs = null;
-			if (idBag != null)
-				msgs = ((InternalEObject)idBag).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG, null, msgs);
-			if (newIdBag != null)
-				msgs = ((InternalEObject)newIdBag).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG, null, msgs);
-			msgs = basicSetIdBag(newIdBag, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG, newIdBag, newIdBag));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Indexed getIndexed() {
 		return indexed;
 	}
@@ -672,8 +579,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 				return basicSetPaEClass(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES:
 				return basicSetAttributeOverrides(null, msgs);
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS:
-				return basicSetColumns(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_TABLE:
 				return basicSetJoinTable(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ONE_TO_MANY:
@@ -684,12 +589,12 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 				return basicSetTableGenerator(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS:
 				return basicSetJoinColumns(null, msgs);
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG:
-				return basicSetIdBag(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__INDEXED:
 				return basicSetIndexed(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE:
 				return basicSetUnique(null, msgs);
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN:
+				return basicSetColumn(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -721,8 +626,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 				return basicGetAnnotatedEStructuralFeature();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES:
 				return getAttributeOverrides();
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS:
-				return getColumns();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_TABLE:
 				return getJoinTable();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ONE_TO_MANY:
@@ -733,12 +636,12 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 				return getTableGenerator();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS:
 				return getJoinColumns();
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG:
-				return getIdBag();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__INDEXED:
 				return getIndexed();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE:
 				return getUnique();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN:
+				return getColumn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -759,9 +662,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES:
 				setAttributeOverrides((AttributeOverrides)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS:
-				setColumns((Columns)newValue);
-				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_TABLE:
 				setJoinTable((JoinTable)newValue);
 				return;
@@ -777,14 +677,14 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS:
 				setJoinColumns((JoinColumns)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG:
-				setIdBag((IdBag)newValue);
-				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__INDEXED:
 				setIndexed((Indexed)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE:
 				setUnique((Unique)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN:
+				setColumn((Column)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -806,9 +706,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES:
 				setAttributeOverrides((AttributeOverrides)null);
 				return;
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS:
-				setColumns((Columns)null);
-				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_TABLE:
 				setJoinTable((JoinTable)null);
 				return;
@@ -824,14 +721,14 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS:
 				setJoinColumns((JoinColumns)null);
 				return;
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG:
-				setIdBag((IdBag)null);
-				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__INDEXED:
 				setIndexed((Indexed)null);
 				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE:
 				setUnique((Unique)null);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN:
+				setColumn((Column)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -850,8 +747,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 				return basicGetAnnotatedEStructuralFeature() != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES:
 				return attributeOverrides != null;
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS:
-				return columns != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_TABLE:
 				return joinTable != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ONE_TO_MANY:
@@ -862,12 +757,12 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 				return tableGenerator != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS:
 				return joinColumns != null;
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG:
-				return idBag != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__INDEXED:
 				return indexed != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE:
 				return unique != null;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN:
+				return column != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -891,12 +786,41 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 	}
 
 	public Column getColumn() {
-		Column column = null;
-		final Columns columns = getColumns();
-		if (columns != null && !columns.getValue().isEmpty()) {
-			column = (Column) columns.getValue().get(0);
-		}
 		return column;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetColumn(Column newColumn, NotificationChain msgs) {
+		Column oldColumn = column;
+		column = newColumn;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN, oldColumn, newColumn);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setColumn(Column newColumn) {
+		if (newColumn != column) {
+			NotificationChain msgs = null;
+			if (column != null)
+				msgs = ((InternalEObject)column).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN, null, msgs);
+			if (newColumn != null)
+				msgs = ((InternalEObject)newColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN, null, msgs);
+			msgs = basicSetColumn(newColumn, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN, newColumn, newColumn));
 	}
 
 } // PAnnotatedEStructuralFeatureImpl

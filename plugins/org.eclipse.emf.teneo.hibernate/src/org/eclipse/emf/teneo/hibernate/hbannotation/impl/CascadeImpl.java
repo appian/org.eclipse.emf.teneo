@@ -2,48 +2,45 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnsImpl.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
+ * $Id: CascadeImpl.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
  */
-package org.eclipse.emf.teneo.annotations.pannotation.impl;
+package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.Columns;
-import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
+
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
+import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
+
+import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Columns</b></em>'.
+ * An implementation of the model object '<em><b>Cascade</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnsImpl#getEModelElement <em>EModel Element</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnsImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CascadeImpl#getEModelElement <em>EModel Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CascadeImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ColumnsImpl extends EObjectImpl implements Columns {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
+public class CascadeImpl extends EObjectImpl implements Cascade {
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -55,7 +52,7 @@ public class ColumnsImpl extends EObjectImpl implements Columns {
 	protected EModelElement eModelElement = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference list.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getValue()
@@ -69,7 +66,7 @@ public class ColumnsImpl extends EObjectImpl implements Columns {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ColumnsImpl() {
+	protected CascadeImpl() {
 		super();
 	}
 
@@ -79,7 +76,7 @@ public class ColumnsImpl extends EObjectImpl implements Columns {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return PannotationPackage.Literals.COLUMNS;
+		return HbAnnotationPackage.Literals.CASCADE;
 	}
 
 	/**
@@ -93,7 +90,7 @@ public class ColumnsImpl extends EObjectImpl implements Columns {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.COLUMNS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.CASCADE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -117,7 +114,7 @@ public class ColumnsImpl extends EObjectImpl implements Columns {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMNS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.CASCADE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -127,7 +124,7 @@ public class ColumnsImpl extends EObjectImpl implements Columns {
 	 */
 	public EList getValue() {
 		if (value == null) {
-			value = new EObjectContainmentEList(Column.class, this, PannotationPackage.COLUMNS__VALUE);
+			value = new EDataTypeUniqueEList(CascadeType.class, this, HbAnnotationPackage.CASCADE__VALUE);
 		}
 		return value;
 	}
@@ -137,25 +134,12 @@ public class ColumnsImpl extends EObjectImpl implements Columns {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PannotationPackage.COLUMNS__VALUE:
-				return ((InternalEList)getValue()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.COLUMNS__EMODEL_ELEMENT:
+			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case PannotationPackage.COLUMNS__VALUE:
+			case HbAnnotationPackage.CASCADE__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -168,10 +152,10 @@ public class ColumnsImpl extends EObjectImpl implements Columns {
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.COLUMNS__EMODEL_ELEMENT:
+			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case PannotationPackage.COLUMNS__VALUE:
+			case HbAnnotationPackage.CASCADE__VALUE:
 				getValue().clear();
 				getValue().addAll((Collection)newValue);
 				return;
@@ -186,10 +170,10 @@ public class ColumnsImpl extends EObjectImpl implements Columns {
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.COLUMNS__EMODEL_ELEMENT:
+			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case PannotationPackage.COLUMNS__VALUE:
+			case HbAnnotationPackage.CASCADE__VALUE:
 				getValue().clear();
 				return;
 		}
@@ -203,12 +187,27 @@ public class ColumnsImpl extends EObjectImpl implements Columns {
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.COLUMNS__EMODEL_ELEMENT:
+			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case PannotationPackage.COLUMNS__VALUE:
+			case HbAnnotationPackage.CASCADE__VALUE:
 				return value != null && !value.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ColumnsImpl
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (value: ");
+		result.append(value);
+		result.append(')');
+		return result.toString();
+	}
+
+} //CascadeImpl

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicPamodelBuilder.java,v 1.2 2006/07/04 21:56:30 mtaal Exp $
+ * $Id: BasicPamodelBuilder.java,v 1.3 2006/08/24 22:12:35 mtaal Exp $
  */
 
 
@@ -81,16 +81,14 @@ public class BasicPamodelBuilder {
 	protected PAnnotatedEModelElement create(EModelElement eModelElement) {
 		PAnnotatedEModelElement paElement = target.getPAnnotated(eModelElement);
 		if (paElement == null) {
-		    // DCB: Factor out actual model creation so that extensions can create their
-		    //      own model elements.
+		    // Factor out actual model creation so that extensions can create their
+		    // own model elements.
 			paElement = doCreate(eModelElement);
 		}
 		return paElement;
 	}
 
 	/**
-     * DCB: Factored out from create(EModelElement)
-     *
 	 * @return A newly created PAnnotatedEModelElement. This method is only
 	 *         responsible for the actual creation (and initialization) of this
 	 *         object. No other logic should happen here. This allows subclasses

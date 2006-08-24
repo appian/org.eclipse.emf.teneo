@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.4 2006/08/24 22:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.Columns;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
@@ -43,7 +42,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
-import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
@@ -62,7 +60,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.Parameter;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
@@ -73,7 +70,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
-import org.eclipse.emf.teneo.annotations.pannotation.Type;
 import org.eclipse.emf.teneo.annotations.pannotation.Unique;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
@@ -374,34 +370,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	private EClass uniqueEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass columnsEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass parameterEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass typeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass idBagEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1750,105 +1718,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getColumns() {
-		return columnsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getColumns_Value() {
-		return (EReference)columnsEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getParameter() {
-		return parameterEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getParameter_Name() {
-		return (EAttribute)parameterEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getParameter_Value() {
-		return (EAttribute)parameterEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getType() {
-		return typeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getType_Type() {
-		return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getType_Parameters() {
-		return (EReference)typeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getIdBag() {
-		return idBagEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getIdBag_Generator() {
-		return (EAttribute)idBagEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getIdBag_Type() {
-		return (EAttribute)idBagEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAssociationOverride() {
 		return associationOverrideEClass;
 	}
@@ -2013,9 +1882,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		createEAttribute(columnEClass, COLUMN__PRECISION);
 		createEAttribute(columnEClass, COLUMN__SCALE);
 
-		columnsEClass = createEClass(COLUMNS);
-		createEReference(columnsEClass, COLUMNS__VALUE);
-
 		discriminatorColumnEClass = createEClass(DISCRIMINATOR_COLUMN);
 		createEAttribute(discriminatorColumnEClass, DISCRIMINATOR_COLUMN__NAME);
 		createEAttribute(discriminatorColumnEClass, DISCRIMINATOR_COLUMN__DISCRIMINATOR_TYPE);
@@ -2042,10 +1908,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		createEAttribute(generatedValueEClass, GENERATED_VALUE__GENERATOR);
 
 		idEClass = createEClass(ID);
-
-		idBagEClass = createEClass(ID_BAG);
-		createEAttribute(idBagEClass, ID_BAG__GENERATOR);
-		createEAttribute(idBagEClass, ID_BAG__TYPE);
 
 		idClassEClass = createEClass(ID_CLASS);
 		createEAttribute(idClassEClass, ID_CLASS__VALUE);
@@ -2109,10 +1971,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		orderByEClass = createEClass(ORDER_BY);
 		createEAttribute(orderByEClass, ORDER_BY__VALUE);
 
-		parameterEClass = createEClass(PARAMETER);
-		createEAttribute(parameterEClass, PARAMETER__NAME);
-		createEAttribute(parameterEClass, PARAMETER__VALUE);
-
 		primaryKeyJoinColumnEClass = createEClass(PRIMARY_KEY_JOIN_COLUMN);
 		createEAttribute(primaryKeyJoinColumnEClass, PRIMARY_KEY_JOIN_COLUMN__NAME);
 		createEAttribute(primaryKeyJoinColumnEClass, PRIMARY_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME);
@@ -2157,10 +2015,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 
 		temporalEClass = createEClass(TEMPORAL);
 		createEAttribute(temporalEClass, TEMPORAL__VALUE);
-
-		typeEClass = createEClass(TYPE);
-		createEAttribute(typeEClass, TYPE__TYPE);
-		createEReference(typeEClass, TYPE__PARAMETERS);
 
 		transientEClass = createEClass(TRANSIENT);
 
@@ -2215,7 +2069,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		associationOverridesEClass.getESuperTypes().add(this.getPAnnotation());
 		basicEClass.getESuperTypes().add(this.getPAnnotation());
 		columnEClass.getESuperTypes().add(this.getPAnnotation());
-		columnsEClass.getESuperTypes().add(this.getPAnnotation());
 		discriminatorColumnEClass.getESuperTypes().add(this.getPAnnotation());
 		discriminatorValueEClass.getESuperTypes().add(this.getPAnnotation());
 		embeddableEClass.getESuperTypes().add(this.getPAnnotation());
@@ -2225,7 +2078,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		enumeratedEClass.getESuperTypes().add(this.getPAnnotation());
 		generatedValueEClass.getESuperTypes().add(this.getPAnnotation());
 		idEClass.getESuperTypes().add(this.getPAnnotation());
-		idBagEClass.getESuperTypes().add(this.getPAnnotation());
 		idClassEClass.getESuperTypes().add(this.getPAnnotation());
 		inheritanceEClass.getESuperTypes().add(this.getPAnnotation());
 		joinColumnEClass.getESuperTypes().add(this.getPAnnotation());
@@ -2247,7 +2099,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		tableEClass.getESuperTypes().add(this.getPAnnotation());
 		tableGeneratorEClass.getESuperTypes().add(this.getPAnnotation());
 		temporalEClass.getESuperTypes().add(this.getPAnnotation());
-		typeEClass.getESuperTypes().add(this.getPAnnotation());
 		transientEClass.getESuperTypes().add(this.getPAnnotation());
 		uniqueConstraintEClass.getESuperTypes().add(this.getPAnnotation());
 		versionEClass.getESuperTypes().add(this.getPAnnotation());
@@ -2288,9 +2139,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		initEAttribute(getColumn_Precision(), ecorePackage.getEInt(), "precision", "0", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Scale(), ecorePackage.getEInt(), "scale", "0", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(columnsEClass, Columns.class, "Columns", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getColumns_Value(), this.getColumn(), null, "value", null, 1, -1, Columns.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(discriminatorColumnEClass, DiscriminatorColumn.class, "DiscriminatorColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscriminatorColumn_Name(), ecorePackage.getEString(), "name", "DTYPE", 0, 1, DiscriminatorColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDiscriminatorColumn_DiscriminatorType(), this.getDiscriminatorType(), "discriminatorType", "STRING", 0, 1, DiscriminatorColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2317,10 +2165,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		initEAttribute(getGeneratedValue_Generator(), ecorePackage.getEString(), "generator", null, 0, 1, GeneratedValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(idEClass, Id.class, "Id", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(idBagEClass, IdBag.class, "IdBag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIdBag_Generator(), ecorePackage.getEString(), "generator", "increment", 0, 1, IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIdBag_Type(), ecorePackage.getEString(), "type", "long", 0, 1, IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(idClassEClass, IdClass.class, "IdClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdClass_Value(), ecorePackage.getEString(), "value", null, 1, 1, IdClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2384,10 +2228,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		initEClass(orderByEClass, OrderBy.class, "OrderBy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOrderBy_Value(), ecorePackage.getEString(), "value", null, 0, 1, OrderBy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameter_Value(), ecorePackage.getEString(), "value", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(primaryKeyJoinColumnEClass, PrimaryKeyJoinColumn.class, "PrimaryKeyJoinColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPrimaryKeyJoinColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, PrimaryKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPrimaryKeyJoinColumn_ReferencedColumnName(), ecorePackage.getEString(), "referencedColumnName", null, 0, 1, PrimaryKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2432,10 +2272,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 
 		initEClass(temporalEClass, Temporal.class, "Temporal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTemporal_Value(), this.getTemporalType(), "value", "TIMESTAMP", 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getType_Type(), ecorePackage.getEString(), "type", null, 1, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getType_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transientEClass, Transient.class, "Transient", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2521,7 +2357,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "Target", "http://annotation.elver.org/internal/Target",
 			 "Unsupported", "http://annotation.elver.org/internal/Unsupported"
-		   });																																																																											
+		   });																																																																							
 	}
 
 	/**
@@ -2543,13 +2379,13 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });				
+		   });			
 		addAnnotation
 		  (columnEClass, 
 		   source, 
 		   new String[] {
 			 "constraints", "ScalePrecisionForNumeric LengthForString"
-		   });					
+		   });				
 		addAnnotation
 		  (discriminatorValueEClass, 
 		   source, 
@@ -2591,7 +2427,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });										
+		   });									
 		addAnnotation
 		  (lobEClass, 
 		   source, 
@@ -2639,7 +2475,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });					
+		   });				
 		addAnnotation
 		  (versionEClass, 
 		   source, 
@@ -2693,13 +2529,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
-		   });				
-		addAnnotation
-		  (columnsEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
+		   });			
 		addAnnotation
 		  (discriminatorColumnEClass, 
 		   source, 
@@ -2754,12 +2584,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "0", "EAttribute"
 		   });			
-		addAnnotation
-		  (idBagEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
 		addAnnotation
 		  (idClassEClass, 
 		   source, 
@@ -2893,12 +2717,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 			 "0", "EAttribute"
 		   });			
 		addAnnotation
-		  (typeEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EAttribute"
-		   });		
-		addAnnotation
 		  (transientEClass, 
 		   source, 
 		   new String[] {
@@ -2943,13 +2761,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "name", "AssociationOverrides"
-		   });							
-		addAnnotation
-		  (columnEClass, 
-		   source, 
-		   new String[] {
-			 "name", "Columns"
-		   });																										
+		   });																													
 		addAnnotation
 		  (joinColumnEClass, 
 		   source, 
@@ -2967,7 +2779,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "name", "SecondaryTables"
-		   });													
+		   });												
 	}
 
 	/**
@@ -2989,13 +2801,13 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																				
+		   });																		
 		addAnnotation
 		  (entityEClass, 
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																	
+		   });																																
 		addAnnotation
 		  (primaryKeyJoinColumnsEClass, 
 		   source, 
@@ -3007,7 +2819,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });											
+		   });										
 	}
 
 	/**
@@ -3017,12 +2829,12 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	protected void createUnsupportedAnnotations() {
-		String source = "http://annotation.elver.org/internal/Unsupported";																																																		
+		String source = "http://annotation.elver.org/internal/Unsupported";																																															
 		addAnnotation
 		  (mapKeyEClass, 
 		   source, 
 		   new String[] {
-		   });																											
+		   });																										
 	}
 
 	/**
@@ -3032,13 +2844,13 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	protected void createPeristenceMappingAnnotations() {
-		String source = "http://annotation.elver.org/PeristenceMapping";																							
+		String source = "http://annotation.elver.org/PeristenceMapping";																					
 		addAnnotation
 		  (embeddableEClass, 
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																																						
+		   });																																																				
 	}
 
 	/**

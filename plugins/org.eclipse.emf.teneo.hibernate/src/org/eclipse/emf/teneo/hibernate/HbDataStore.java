@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.4 2006/08/03 09:58:19 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.5 2006/08/24 22:12:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -43,6 +43,7 @@ import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
+import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerAccessor;
@@ -51,7 +52,6 @@ import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerUserType;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResourceFactory;
-import org.eclipse.emf.teneo.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.EntityMode;
 import org.hibernate.Query;
@@ -83,7 +83,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HbDataStore {
@@ -363,9 +363,12 @@ public class HbDataStore {
 	/** Generate a hibernate mapping xml string from a set of epackages */
 	protected String mapEPackages() {
 		log.debug("Generating mapping file from in-mem ecore");
-		PAnnotatedModel paModel = PersistenceMappingBuilder.INSTANCE.buildMapping(getEPackages(), 
-				getPersistenceOptions());
-		HibernateMappingGenerator hmg = new HibernateMappingGenerator(getPersistenceOptions());
+        // DCB: Use Hibernate-specific annotation processing mechanism.  This allows use of
+        //      Hibernate-specific annotations.
+        final PersistenceOptions po = getPersistenceOptions();
+        PAnnotatedModel paModel = 
+            MappingBuilder.INSTANCE.buildMapping(getEPackages(), po);
+		HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
 		return hmg.generateToString(paModel);
 	}
 
@@ -389,8 +392,13 @@ public class HbDataStore {
 		// check if there are not alreadyecontai ner features for the eclass
 
 		EClass eclass = StoreUtil.getEClassFromURI(pc.getEntityName(), getEPackages());
-		if (eclass == null)
-			return; // featuremap
+        // DCB: Provide a way to avoid container mappings for a particular class.  You'd do this if, for example,
+        // you never load the contained objects except through the containers... or, you don't fit the use case
+        // for which this was put together (i.e., the generated model editing code tries to eagerly resolve the
+        // container)
+        if (eclass == null || eclass.getEAnnotation("http://facet.elver.org/SkipContainerMappings") != null) {
+            return; // featuremap
+        }
 		for (Iterator it = eclass.getEAllReferences().iterator(); it.hasNext();) {
 			EReference eref = (EReference) it.next();
 			if (eref.isContainer()) {

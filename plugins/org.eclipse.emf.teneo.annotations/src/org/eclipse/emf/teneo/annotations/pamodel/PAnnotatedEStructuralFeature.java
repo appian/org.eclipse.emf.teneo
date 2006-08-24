@@ -2,15 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeature.java,v 1.4 2006/07/26 12:43:34 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeature.java,v 1.5 2006/08/24 22:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.Columns;
-import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
@@ -29,15 +27,14 @@ import org.eclipse.emf.teneo.annotations.pannotation.Unique;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getPaEClass <em>Pa EClass</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getAnnotatedEStructuralFeature <em>Annotated EStructural Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getAttributeOverrides <em>Attribute Overrides</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getColumns <em>Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getJoinTable <em>Join Table</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getOneToMany <em>One To Many</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getSequenceGenerator <em>Sequence Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getTableGenerator <em>Table Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getJoinColumns <em>Join Columns</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getIdBag <em>Id Bag</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getIndexed <em>Indexed</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getUnique <em>Unique</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -132,31 +129,6 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement {
 	 * @generated
 	 */
 	void setAttributeOverrides(AttributeOverrides value);
-
-	/**
-	 * Returns the value of the '<em><b>Columns</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Columns</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Columns</em>' containment reference.
-	 * @see #setColumns(Columns)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_Columns()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Columns getColumns();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getColumns <em>Columns</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Columns</em>' containment reference.
-	 * @see #getColumns()
-	 * @generated
-	 */
-	void setColumns(Columns value);
 
 	/**
 	 * Returns the value of the '<em><b>Join Table</b></em>' containment reference.
@@ -284,31 +256,6 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement {
 	void setJoinColumns(JoinColumns value);
 
 	/**
-	 * Returns the value of the '<em><b>Id Bag</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Id Bag</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Id Bag</em>' containment reference.
-	 * @see #setIdBag(IdBag)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_IdBag()
-	 * @model containment="true"
-	 * @generated
-	 */
-	IdBag getIdBag();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getIdBag <em>Id Bag</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Id Bag</em>' containment reference.
-	 * @see #getIdBag()
-	 * @generated
-	 */
-	void setIdBag(IdBag value);
-
-	/**
 	 * Returns the value of the '<em><b>Indexed</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -368,5 +315,15 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement {
 	 * Convenience function for obtaining the first available Column annotation.
 	 */
 	public Column getColumn();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getColumn <em>Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Column</em>' containment reference.
+	 * @see #getColumn()
+	 * @generated
+	 */
+	void setColumn(Column value);
 
 } // PAnnotatedEStructuralFeature

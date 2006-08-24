@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.3 2006/08/03 09:58:19 mtaal Exp $
+ * $Id: MappingContext.java,v 1.4 2006/08/24 22:12:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -215,6 +215,7 @@ public class MappingContext extends AbstractProcessingContext {
 		final ManyToOneMapper manyToOneMapper = new ManyToOneMapper(this);
 		final OneToManyMapper oneToManyMapper = new OneToManyMapper(this);
 		final OneToOneMapper oneToOneMapper = new OneToOneMapper(this);
+        final UnclassifiableMapper unclassifiableMapper = new UnclassifiableMapper(this, featureMapper);
 
 		featureMapper.setBasicProcessor(basicMapper);
 		featureMapper.setTransientProcessor(basicMapper);
@@ -227,7 +228,7 @@ public class MappingContext extends AbstractProcessingContext {
 		featureMapper.setOneToManyProcessor(oneToManyMapper);
 		featureMapper.setOneToOneProcessor(oneToOneMapper);
 
-		featureMapper.setUnclassifiableProcessor(basicMapper);
+		featureMapper.setUnclassifiableProcessor(unclassifiableMapper);
 		return featureMapper;
 	}
 

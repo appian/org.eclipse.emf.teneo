@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactory.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
+ * $Id: PannotationFactory.java,v 1.4 2006/08/24 22:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -341,38 +341,6 @@ public interface PannotationFactory extends EFactory {
 	 * @generated
 	 */
 	Unique createUnique();
-
-	/**
-	 * Returns a new object of class '<em>Columns</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Columns</em>'.
-	 * @generated
-	 */
-	Columns createColumns();
-
-	/**
-	 * Returns a new object of class '<em>Parameter</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Parameter</em>'.
-	 * @generated
-	 */
-	Parameter createParameter();
-
-	/**
-	 * Returns a new object of class '<em>Type</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Type</em>'.
-	 * @generated
-	 */
-	Type createType();
-
-	/**
-	 * Returns a new object of class '<em>Id Bag</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Id Bag</em>'.
-	 * @generated
-	 */
-	IdBag createIdBag();
 
 	/**
 	 * Returns a new object of class '<em>Association Override</em>'.

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListPropertyHandler.java,v 1.4 2006/08/21 11:29:47 mtaal Exp $
+ * $Id: EListPropertyHandler.java,v 1.5 2006/08/24 22:12:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -24,6 +24,9 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -34,6 +37,7 @@ import org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEList
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEList;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
+import org.eclipse.emf.teneo.mapping.elist.PersistableEMap;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.FieldUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -53,7 +57,7 @@ import org.hibernate.property.Setter;
  * methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -101,6 +105,12 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	public Object get(Object owner) throws HibernateException {
 		Object obj = ((EObject) owner).eGet(eFeature);
 
+        if (obj instanceof PersistableEMap) {
+            return ((PersistableEMap) obj).getPersistableMap();
+        }
+        if (obj instanceof EMap) {
+            return ((EMap) obj).map();
+        }
 		if (obj instanceof PersistableDelegateList) {
 			return ((PersistableDelegateList) obj).getDelegate();
 		} else { // else replace the elist otherwise the wrong collection descriptor is placed in the collection map
@@ -138,6 +148,12 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	 */
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		final Object obj = ((EObject) owner).eGet(eFeature);
+        if (obj instanceof PersistableEMap) {
+            return ((PersistableEMap) obj).getPersistableMap();
+        }
+        if (obj instanceof EMap) {
+            return ((EMap) obj).map();
+        }
 		if (obj instanceof PersistableEList) {
 			return ((PersistableEList) obj).getDelegate();
 		}
@@ -205,6 +221,12 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 				// if currentvalue is not null then use the passed value
 				if (currentValue != null && currentValue instanceof PersistableEList) {
 					((PersistableEList) currentValue).replaceDelegate((List) value);
+                } else if (Map.Entry.class.isAssignableFrom(eFeature.getEType().getInstanceClass())) {
+                    EClassifier type = eFeature.getEType();
+                    Class instanceClass = type.getEPackage().getEFactoryInstance().create((EClass) type).getClass();
+                    javaField.set(target, 
+                            new PersistableEMap((EClass) eFeature.getEType(), instanceClass,
+                                    (InternalEObject) target, eFeature.getFeatureID(), (Map) value));
 				} else {
 					javaField.set(target, createPersistableList((InternalEObject) target, eFeature, (List) value));
 				}

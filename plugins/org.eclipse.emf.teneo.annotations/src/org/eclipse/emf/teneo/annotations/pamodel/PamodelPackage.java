@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.3 2006/07/26 12:43:34 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.4 2006/08/24 22:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -446,22 +446,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Columns</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>Join Table</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_TABLE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 4;
+	int PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_TABLE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>One To Many</b></em>' containment reference.
@@ -470,7 +461,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__ONE_TO_MANY = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 5;
+	int PANNOTATED_ESTRUCTURAL_FEATURE__ONE_TO_MANY = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Sequence Generator</b></em>' containment reference.
@@ -479,7 +470,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__SEQUENCE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 6;
+	int PANNOTATED_ESTRUCTURAL_FEATURE__SEQUENCE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
@@ -488,7 +479,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 7;
+	int PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference.
@@ -497,16 +488,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Id Bag</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 9;
+	int PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Indexed</b></em>' containment reference.
@@ -515,7 +497,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__INDEXED = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 10;
+	int PANNOTATED_ESTRUCTURAL_FEATURE__INDEXED = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Unique</b></em>' containment reference.
@@ -524,7 +506,16 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 11;
+	int PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the the '<em>PAnnotated EStructural Feature</em>' class. <!--
@@ -533,7 +524,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 12;
+	int PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
@@ -590,15 +581,6 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EATTRIBUTE__ATTRIBUTE_OVERRIDES = PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES;
 
 	/**
-	 * The feature id for the '<em><b>Columns</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EATTRIBUTE__COLUMNS = PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS;
-
-	/**
 	 * The feature id for the '<em><b>Join Table</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -644,15 +626,6 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EATTRIBUTE__JOIN_COLUMNS = PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS;
 
 	/**
-	 * The feature id for the '<em><b>Id Bag</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EATTRIBUTE__ID_BAG = PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG;
-
-	/**
 	 * The feature id for the '<em><b>Indexed</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -669,6 +642,15 @@ public interface PamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PANNOTATED_EATTRIBUTE__UNIQUE = PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EATTRIBUTE__COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EAttribute</b></em>' reference.
@@ -743,21 +725,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EATTRIBUTE__VERSION = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EATTRIBUTE__TYPE = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
-
-	/**
 	 * The number of structural features of the '<em>PAnnotated EAttribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EATTRIBUTE_FEATURE_COUNT = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 9;
+	int PANNOTATED_EATTRIBUTE_FEATURE_COUNT = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl <em>PAnnotated EReference</em>}' class.
@@ -814,15 +788,6 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__ATTRIBUTE_OVERRIDES = PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES;
 
 	/**
-	 * The feature id for the '<em><b>Columns</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EREFERENCE__COLUMNS = PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS;
-
-	/**
 	 * The feature id for the '<em><b>Join Table</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -868,15 +833,6 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__JOIN_COLUMNS = PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS;
 
 	/**
-	 * The feature id for the '<em><b>Id Bag</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EREFERENCE__ID_BAG = PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG;
-
-	/**
 	 * The feature id for the '<em><b>Indexed</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -893,6 +849,15 @@ public interface PamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PANNOTATED_EREFERENCE__UNIQUE = PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EReference</b></em>' reference.
@@ -1310,16 +1275,6 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEStructuralFeature_AttributeOverrides();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getColumns <em>Columns</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Columns</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getColumns()
-	 * @see #getPAnnotatedEStructuralFeature()
-	 * @generated
-	 */
-	EReference getPAnnotatedEStructuralFeature_Columns();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getJoinTable <em>Join Table</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Join Table</em>'.
@@ -1390,14 +1345,15 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEStructuralFeature_Unique();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getIdBag <em>Id Bag</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Id Bag</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getIdBag()
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Column</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getColumn()
 	 * @see #getPAnnotatedEStructuralFeature()
 	 * @generated
 	 */
-	EReference getPAnnotatedEStructuralFeature_IdBag();
+	EReference getPAnnotatedEStructuralFeature_Column();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute <em>PAnnotated EAttribute</em>}'.
@@ -1487,16 +1443,6 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPAnnotatedEAttribute_Version();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Type</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getType()
-	 * @see #getPAnnotatedEAttribute()
-	 * @generated
-	 */
-	EReference getPAnnotatedEAttribute_Type();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference <em>PAnnotated EReference</em>}'.
@@ -1893,14 +1839,6 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ESTRUCTURAL_FEATURE__ATTRIBUTE_OVERRIDES = eINSTANCE.getPAnnotatedEStructuralFeature_AttributeOverrides();
 
 		/**
-		 * The meta object literal for the '<em><b>Columns</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANNOTATED_ESTRUCTURAL_FEATURE__COLUMNS = eINSTANCE.getPAnnotatedEStructuralFeature_Columns();
-
-		/**
 		 * The meta object literal for the '<em><b>Join Table</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1941,14 +1879,6 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS = eINSTANCE.getPAnnotatedEStructuralFeature_JoinColumns();
 
 		/**
-		 * The meta object literal for the '<em><b>Id Bag</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANNOTATED_ESTRUCTURAL_FEATURE__ID_BAG = eINSTANCE.getPAnnotatedEStructuralFeature_IdBag();
-
-		/**
 		 * The meta object literal for the '<em><b>Indexed</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1963,6 +1893,14 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE = eINSTANCE.getPAnnotatedEStructuralFeature_Unique();
+
+		/**
+		 * The meta object literal for the '<em><b>Column</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN = eINSTANCE.getPAnnotatedEStructuralFeature_Column();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
@@ -2037,14 +1975,6 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_EATTRIBUTE__VERSION = eINSTANCE.getPAnnotatedEAttribute_Version();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANNOTATED_EATTRIBUTE__TYPE = eINSTANCE.getPAnnotatedEAttribute_Type();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl <em>PAnnotated EReference</em>}' class.

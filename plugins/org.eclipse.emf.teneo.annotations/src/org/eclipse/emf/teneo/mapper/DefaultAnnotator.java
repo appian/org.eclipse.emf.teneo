@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.4 2006/08/14 05:09:11 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.5 2006/08/24 22:12:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapper;
@@ -77,7 +77,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class DefaultAnnotator {
 
@@ -620,7 +620,7 @@ public class DefaultAnnotator {
 	}
 
 	/** Returns the type name of a many attribute */
-	private String getTargetTypeName(EAttribute eAttribute) {
+	protected String getTargetTypeName(EAttribute eAttribute) {
 		// check on equality on object.class is used for listunion simpleunions
 		final Class instanceClass = eAttribute.getEAttributeType().getInstanceClass();
 		if (!Object.class.equals(instanceClass) && !List.class.equals(instanceClass)) {
@@ -694,7 +694,7 @@ public class DefaultAnnotator {
 					+ " is not unique (allows duplicates) but it is bi-directional, this is not logical");
 		}
 		if ((optionJoinTableForNonContainedAssociations && !eReference.isContainment())
-				|| !aReference.getUnique().isValue() || aReference.getIdBag() != null) {
+				|| !aReference.getUnique().isValue() /* --DCB-- || aReference.getIdBag() != null */) {
 			JoinTable joinTable = aReference.getJoinTable();
 			if (joinTable == null) {
 				joinTable = aFactory.createJoinTable();
@@ -1122,7 +1122,7 @@ public class DefaultAnnotator {
 	}
 
 	/** Finds the additional annotations on a eReference */
-	private void setFacets(PAnnotatedEStructuralFeature aFeature) {
+	protected void setFacets(PAnnotatedEStructuralFeature aFeature) {
 		// note that currently emf always has ereference is ordered and always is unique
 		final EStructuralFeature eFeature = aFeature.getAnnotatedEStructuralFeature();
 		if (aFeature.getIndexed() == null) {
@@ -1144,10 +1144,6 @@ public class DefaultAnnotator {
 			}
 		}
 
-		// Force indexed to false if IdBag annotation is specified.
-		if (aFeature.getIdBag() != null) {
-			aFeature.getIndexed().setValue(false);
-		}
 	}
 
 	/** Returns the list of names of id props of the eclass */

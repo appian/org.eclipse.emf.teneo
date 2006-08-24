@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EannotationPamodelBuilder.java,v 1.2 2006/07/04 21:56:30 mtaal Exp $
+ * $Id: EannotationPamodelBuilder.java,v 1.3 2006/08/24 22:12:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.pamodel.util;
@@ -50,7 +50,6 @@ public class EannotationPamodelBuilder extends BasicPamodelBuilder {
 	
 	private static final Log log = LogFactory.getLog(EannotationPamodelBuilder.class);
 
-    // DCB: Change access modifier to protected for DFX purposes.
 	protected EAnnotationImporter eaImporter = new EAnnotationImporter(
 			new EAnnotationImporter.Handler() {
 				public void handle(PAnnotation pAnnotation) {

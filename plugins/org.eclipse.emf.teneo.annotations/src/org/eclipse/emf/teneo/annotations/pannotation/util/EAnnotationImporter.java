@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EAnnotationImporter.java,v 1.2 2006/07/04 21:56:30 mtaal Exp $
+ * $Id: EAnnotationImporter.java,v 1.3 2006/08/24 22:12:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.pannotation.util;
@@ -114,29 +114,23 @@ public class EAnnotationImporter {
 	/** Prefix for EJB PAnntation encoding annotation source */
 	public static final String ANNOTATION_URI_PREFIX_EJB = "http://ejb.elver.org/";
 
-	/** Prefix for Hibernate PAnntation encoding annotation source */
-	public static final String ANNOTATION_URI_PREFIX_HB = "http://hibernate.elver.org/";
-
 	/** work around for EMF bug ??? Ignore details with this key */
 	public static final String IGNORE_DETAIL_KEY = "appinfo";
 
 	/**
 	 * @return true if and only if the given source is the source of a PAnnotation
 	 */
-	public static boolean isPAnnotationSource(String source) {
+	public boolean isPAnnotationSource(String source) {
 		return source != null
-				&& (source.startsWith(ANNOTATION_URI_PREFIX) || source.startsWith(ANNOTATION_URI_PREFIX_EJB) || source
-						.startsWith(ANNOTATION_URI_PREFIX_HB));
+				&& (source.startsWith(ANNOTATION_URI_PREFIX) || source.startsWith(ANNOTATION_URI_PREFIX_EJB));
 	}
 
 	/** Returns the correct prefix to use */
-	private static String getPrefix(String source) {
+	protected String getPrefix(String source) {
 		if (source.indexOf(ANNOTATION_URI_PREFIX) != -1) {
 			return ANNOTATION_URI_PREFIX;
 		} else if (source.indexOf(ANNOTATION_URI_PREFIX_EJB) != -1) {
 			return ANNOTATION_URI_PREFIX_EJB;
-		} else if (source.indexOf(ANNOTATION_URI_PREFIX_HB) != -1) {
-			return ANNOTATION_URI_PREFIX_HB;
 		} else {
 			return ANNOTATION_URI_PREFIX;
 		}
@@ -145,21 +139,19 @@ public class EAnnotationImporter {
 	/**
 	 * @return Returns the PAnnotation EClass identified by the given source.
 	 */
-	public static EClass getPAnnotationEClass(String source) {
+	public EClass getPAnnotationEClass(String source) {
 		if (!isPAnnotationSource(source))
 			return null;
 
-		// DCB: Provide package in which the desired class can be found. This allows
+		// Provide package in which the desired class can be found. This allows
 		// for extensions to the Elver annotation processing mechanisms.
 		return getEClass(source, getPrefix(source), PannotationPackage.eINSTANCE);
 	}
 
 	/**
-	 * DCB: Factored some common code that can be used by annotation processing extensions
-	 * 
 	 * @return Returns the PAnnotation EClass identified by the given source in the given package
 	 */
-	protected static EClass getEClass(String source, String prefix, EPackage ePackage) {
+	protected EClass getEClass(String source, String prefix, EPackage ePackage) {
 		String annotationName = source.substring(prefix.length());
 
 		// get rid of the subordinate part if present
@@ -168,7 +160,7 @@ public class EAnnotationImporter {
 			annotationName = annotationName.substring(0, subOrdinateIndex);
 		}
 
-		// DCB: Don't assume use of PannotationPackage, but use the EPackage passed in as a param
+		// Don't assume use of PannotationPackage, but use the EPackage passed in as a param
 		EClassifier eClassifier = ePackage.getEClassifier(annotationName);
 		return eClassifier instanceof EClass ? (EClass) eClassifier : null;
 	}
@@ -176,18 +168,15 @@ public class EAnnotationImporter {
 	/**
 	 * @return Returns the PAnnotation EClass identified by the given annotation source.
 	 */
-	public static EClass getPAnnotationEClass(EAnnotation eAnnotation) {
+	public EClass getPAnnotationEClass(EAnnotation eAnnotation) {
 		return getPAnnotationEClass(eAnnotation.getSource());
 	}
 
 	/**
-	 * DCB: Renamed method for two reasons: (A) Consistency with other static method names (B) Allows me to use
-	 * isSubordinate for extensions to annotation processing mechanism
-	 * 
 	 * @return Returns true if and only if the given annotation defines a detail with key SUBORDINATE_ID_KEY. Such
 	 *         annotations are inteded to be referenced by other annotations.
 	 */
-	public static boolean isPAnnotationSubordinate(EAnnotation eAnnotation) {
+	public boolean isPAnnotationSubordinate(EAnnotation eAnnotation) {
 		if (!isPAnnotationSource(eAnnotation.getSource())) {
 			return false;
 		}
@@ -197,24 +186,18 @@ public class EAnnotationImporter {
 	}
 
 	/**
-	 * DCB: Renamed method to be consistent with other static method names. Also, factored out common code into
-	 * alternate method that allows for a custom prefix specification, thus allowing for extensions to the annotation
-	 * processing mechanism.
-	 * 
 	 * @return Return the id of the given annotation if this is a subordinate annotation. Returns <code>null</code>
 	 *         otherwise.
 	 */
-	public static String getPAnnotationSubordinateId(EAnnotation eAnnotation) {
+	public String getPAnnotationSubordinateId(EAnnotation eAnnotation) {
 		return getSubordinateId(eAnnotation, getPrefix(eAnnotation.getSource()));
 	}
 
 	/**
-	 * DCB: Factored out code from the old "getSubordinateId" method and parameterized the prefix
-	 * 
 	 * @return Return the id of the given annotation if this is a subordinate annotation. Returns <code>null</code>
 	 *         otherwise
 	 */
-	protected static String getSubordinateId(EAnnotation eAnnotation, String prefix) {
+	protected String getSubordinateId(EAnnotation eAnnotation, String prefix) {
 		// get the subordinate part
 		String source = eAnnotation.getSource();
 		int subOrdinateIndex = source.indexOf('/', prefix.length());
@@ -223,15 +206,10 @@ public class EAnnotationImporter {
 	}
 
 	/**
-	 * DCB: Renamed method to be consistent with names of other static methods. Also, instead of hard-coding the
-	 * "collection" pannotation eclasses, pull this information from the ECore metadata. This makes use of a new
-	 * annotation (http://annotation.elver.org/internal/Collection) with two details (i.e., parameters): name and
-	 * packageNS. If packageNS is not specified, then PannotationPackage.eNS_URI is assumed.
-	 * 
 	 * @return Returns the "collection" pannotation eclass that has elements of the given eclass. Returns null if no
 	 *         such pannotation exists exists.
 	 */
-	private static EClass getPAnnotationCollectionEClass(EClass annotationEClass) {
+	private EClass getPAnnotationCollectionEClass(EClass annotationEClass) {
 		if (null == annotationEClass || !PannotationPackage.eINSTANCE.getPAnnotation().isSuperTypeOf(annotationEClass))
 			return null;
 		EAnnotation annotation = annotationEClass.getEAnnotation("http://annotation.elver.org/internal/Collection");
@@ -246,16 +224,12 @@ public class EAnnotationImporter {
 	}
 
 	/**
-	 * DCB: Renamed method to be consistent with names of other static methods. Also, instead of hard-coding a reference
-	 * to the valueFeature, this is retrieved via ECore introspection, which allows extensions to the annotation
-	 * processing mechanisms to leverage this functionality. This assumes that the valueFeature will be named "value."
-	 * 
 	 * @return Create a new "collection" PAnnotation that has collEAnnoationEClass as EClass and componentPAnnotations
 	 *         as members.
 	 * @throws IllegalArgumentException
 	 *             if the given EClass is not a "collection" EClass.
 	 */
-	private static PAnnotation createPAnnotationCollection(EClass collAnnotationEClass, List memberPAnnotations) {
+	private PAnnotation createPAnnotationCollection(EClass collAnnotationEClass, List memberPAnnotations) {
 		if (!PannotationPackage.eINSTANCE.getPAnnotation().isSuperTypeOf(collAnnotationEClass))
 			throw new IllegalArgumentException(collAnnotationEClass.getName() + " is not a \"collection\" PAnnotation.");
 		EStructuralFeature valueFeature = collAnnotationEClass.getEStructuralFeature("value");
@@ -318,7 +292,7 @@ public class EAnnotationImporter {
 	 * @throws EAnnotationImportException
 	 */
 	protected PAnnotation createPAnnotation(EAnnotation eAnnotation) throws EAnnotationImportException {
-		// DCB: Introduce indirection so that the annotation processing mechanism can be extended.
+		// Indirection so that the annotation processing mechanism can be extended.
 		EClass pAnnotationEClass = getElverAnnotationEClass(eAnnotation);
 		if (pAnnotationEClass == null) {
 			error("Unknown annotation type", eAnnotation);
@@ -384,32 +358,31 @@ public class EAnnotationImporter {
 		}
 	}
 
-	// DCB: Design for extension
 	// Methods allows for easy overridding to add persistence-specific annotations
 	// These methods all provide indirection to existing methods so that extensions can
 	// plug in and/or override as necessary
 	protected boolean isElverAnnotationSource(String source) {
-		return EAnnotationImporter.isPAnnotationSource(source);
+		return isPAnnotationSource(source);
 	}
 
 	protected boolean isElverSubordinate(EAnnotation eAnnotation) {
-		return EAnnotationImporter.isPAnnotationSubordinate(eAnnotation);
+		return isPAnnotationSubordinate(eAnnotation);
 	}
 
 	protected String getElverSubordinateId(EAnnotation eAnnotation) {
-		return EAnnotationImporter.getPAnnotationSubordinateId(eAnnotation);
+		return getPAnnotationSubordinateId(eAnnotation);
 	}
 
 	protected EClass getElverAnnotationEClass(EAnnotation eAnnotation) {
-		return EAnnotationImporter.getPAnnotationEClass(eAnnotation);
+		return getPAnnotationEClass(eAnnotation);
 	}
 
 	protected EClass getElverCollectionEClass(EClass eClass) {
-		return EAnnotationImporter.getPAnnotationCollectionEClass(eClass);
+		return getPAnnotationCollectionEClass(eClass);
 	}
 
 	protected PAnnotation createElverCollection(EClass collAnnotationEClass, List memberPAnnotations) {
-		return EAnnotationImporter.createPAnnotationCollection(collAnnotationEClass, memberPAnnotations);
+		return createPAnnotationCollection(collAnnotationEClass, memberPAnnotations);
 	}
 
 	/**
@@ -425,7 +398,7 @@ public class EAnnotationImporter {
 		collectibleAnnotationsByType = new HashMap();
 		for (Iterator i = eAnnotations.iterator(); i.hasNext();) {
 			EAnnotation eAnnotation = (EAnnotation) i.next();
-			// DCB: Make use of new methods (i.e., indirection) to allow behaviors to be customized
+			// Make use of indirection to allow behaviors to be customized
 			// for annotation processing extensions
 			if (isElverAnnotationSource(eAnnotation.getSource())) { // ignore otherwise
 				if (isElverSubordinate(eAnnotation)) {
@@ -435,7 +408,6 @@ public class EAnnotationImporter {
 					// as part
 					// of a collection is identified here
 
-					// DCB: Leverage indirection for DFX
 					EClass containerPAnnotationEClass = getElverCollectionEClass(getElverAnnotationEClass(eAnnotation));
 					if (containerPAnnotationEClass != null
 							&& PannotationPackage.eINSTANCE.isTarget(containerPAnnotationEClass, eAnnotation
@@ -458,7 +430,6 @@ public class EAnnotationImporter {
 		Set usedAnnotations = new HashSet(collectibleAnnotationsByType.keySet());
 		for (ListIterator i = mainAnnotations.listIterator(); i.hasNext();) {
 			EAnnotation eAnnotation = (EAnnotation) i.next();
-			// DCB: Indirection for DFX
 			if (!usedAnnotations.add(getElverAnnotationEClass(eAnnotation))) {
 				error("Duplicate annotation", eAnnotation);
 				// drop duplicate
@@ -490,7 +461,6 @@ public class EAnnotationImporter {
 	 *             if the conversion fails.
 	 */
 	protected void initPAnnotation(PAnnotation pAnnotation, EAnnotation eAnnotation) throws EAnnotationImportException {
-		// DCB: Indirection for DFX
 		if (pAnnotation.eClass() != getElverAnnotationEClass(eAnnotation)) {
 			error("Trying to initialize " + pAnnotation + " from " + eAnnotation.getSource(), eAnnotation);
 			throw new EAnnotationImportException("Trying to initialize " + pAnnotation + " from "
@@ -565,7 +535,6 @@ public class EAnnotationImporter {
 					EModelElement targetElement = ((EAnnotation) componentEAnnotations.get(0)).getEModelElement();
 					for (Iterator j = componentEAnnotations.iterator(); j.hasNext();)
 						componentPAnnotations.add(process((EAnnotation) j.next()));
-					// DCB: Indirection for DFX
 					PAnnotation collAnnotation = createElverCollection(collAnnotationEClass, componentPAnnotations);
 					collAnnotation.setEModelElement(targetElement);
 					report(collAnnotation);
@@ -604,7 +573,7 @@ public class EAnnotationImporter {
 		for (Iterator it = typeAnnotations.iterator(); it.hasNext();) {
 			final EAnnotation annotation = (EAnnotation) it.next();
 			if (eAttribute.getEAnnotation(annotation.getSource()) == null) {
-				EClass pAnnotationEClass = getPAnnotationEClass(annotation.getSource());
+				EClass pAnnotationEClass = getElverAnnotationEClass(annotation);
 				if (pAnnotationEClass != null
 						&& PannotationPackage.eINSTANCE.isTarget(pAnnotationEClass, eAttribute.eClass())) {
 					if (copier == null) {

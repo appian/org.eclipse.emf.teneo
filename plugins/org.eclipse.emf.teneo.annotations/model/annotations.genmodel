@@ -55,7 +55,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/sequenceGenerator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/tableGenerator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/joinColumns"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/idBag"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/indexed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/unique"/>
     </genClasses>
@@ -207,10 +206,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//GeneratedValue/generator"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//Id"/>
-    <genClasses ecoreClass="pannotation.ecore#//IdBag">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//IdBag/generator"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//IdBag/type"/>
-    </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//IdClass">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//IdClass/value"/>
     </genClasses>

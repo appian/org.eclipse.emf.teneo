@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureProcessor.java,v 1.2 2006/07/04 21:56:30 mtaal Exp $
+ * $Id: FeatureProcessor.java,v 1.3 2006/08/24 22:12:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.processing;
@@ -224,8 +224,6 @@ public class FeatureProcessor {
 			basicProcessor.processLob(paAttribute);
 		else if (paAttribute.getTemporal() != null)
 			basicProcessor.processTemporal(paAttribute);
-		else if (paAttribute.getType() != null)
-			basicProcessor.processType(paAttribute);
 		else
 			basicProcessor.processBasic(paAttribute);
 		return Boolean.TRUE;

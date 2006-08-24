@@ -2,16 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParameterImpl.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
+ * $Id: ParameterImpl.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
  */
-package org.eclipse.emf.teneo.annotations.pannotation.impl;
+package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.Parameter;
+
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,21 +23,14 @@ import org.eclipse.emf.teneo.annotations.pannotation.Parameter;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ParameterImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ParameterImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ParameterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ParameterImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class ParameterImpl extends EObjectImpl implements Parameter {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -90,7 +86,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return PannotationPackage.Literals.PARAMETER;
+		return HbAnnotationPackage.Literals.PARAMETER;
 	}
 
 	/**
@@ -111,7 +107,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.PARAMETER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.PARAMETER__NAME, oldName, name));
 	}
 
 	/**
@@ -132,7 +128,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.PARAMETER__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.PARAMETER__VALUE, oldValue, value));
 	}
 
 	/**
@@ -142,9 +138,9 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.PARAMETER__NAME:
+			case HbAnnotationPackage.PARAMETER__NAME:
 				return getName();
-			case PannotationPackage.PARAMETER__VALUE:
+			case HbAnnotationPackage.PARAMETER__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -157,10 +153,10 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.PARAMETER__NAME:
+			case HbAnnotationPackage.PARAMETER__NAME:
 				setName((String)newValue);
 				return;
-			case PannotationPackage.PARAMETER__VALUE:
+			case HbAnnotationPackage.PARAMETER__VALUE:
 				setValue((String)newValue);
 				return;
 		}
@@ -174,10 +170,10 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.PARAMETER__NAME:
+			case HbAnnotationPackage.PARAMETER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case PannotationPackage.PARAMETER__VALUE:
+			case HbAnnotationPackage.PARAMETER__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -191,9 +187,9 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.PARAMETER__NAME:
+			case HbAnnotationPackage.PARAMETER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case PannotationPackage.PARAMETER__VALUE:
+			case HbAnnotationPackage.PARAMETER__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);

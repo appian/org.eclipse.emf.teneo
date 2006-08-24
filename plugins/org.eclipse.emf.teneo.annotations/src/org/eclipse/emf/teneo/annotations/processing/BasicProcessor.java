@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicProcessor.java,v 1.2 2006/07/04 21:56:30 mtaal Exp $
+ * $Id: BasicProcessor.java,v 1.3 2006/08/24 22:12:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.processing;
@@ -37,6 +37,4 @@ public interface BasicProcessor extends PAnnotatedProcessor {
 	void processLob(PAnnotatedEAttribute paAttribute);
 
 	void processEnum(PAnnotatedEAttribute paAttribute);
-
-	void processType(PAnnotatedEAttribute paAttribute);
 }

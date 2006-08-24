@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyAttributeMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: ManyAttributeMapper.java,v 1.2 2006/08/24 22:12:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -30,6 +30,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.processing.ManyAttributeProcessor;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -70,8 +71,9 @@ class ManyAttributeMapper extends AbstractAssociationMapper implements ManyAttri
 		if (log.isDebugEnabled())
 			log.debug("Generating many valued attribute mapping for " + paAttribute);
 
+        HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
+        
 		final Element collElement = addCollectionElement(paAttribute);
-		;
 		final Element keyElement = collElement.addElement("key");
 
 		final JoinTable jt = paAttribute.getJoinTable();
@@ -87,7 +89,7 @@ class ManyAttributeMapper extends AbstractAssociationMapper implements ManyAttri
 		}
 
 		if (paAttribute.getIndexed() != null && paAttribute.getIndexed().isValue()) {
-			assert (paAttribute.getIdBag() == null);
+			assert (hbAttribute.getHbIdBag() == null);
 			addListIndex(collElement, paAttribute);
 		}
 		addFetchType(collElement, otm.getFetch());

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: GenerateHBM.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: GenerateHBM.java,v 1.2 2006/08/24 22:12:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -33,13 +33,13 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.StoreException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-import org.eclipse.emf.teneo.mapper.PersistenceMappingBuilder;
+import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
 
 /**
  * Class is responsible for generating the hbm file. Is run through a launcher therefore the main methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class GenerateHBM {
@@ -101,7 +101,7 @@ public class GenerateHBM {
 			file.createNewFile();
 
 			final PersistenceOptions po = new PersistenceOptions(options);
-			PAnnotatedModel paModel = PersistenceMappingBuilder.INSTANCE.buildMapping(ecores, po);
+			PAnnotatedModel paModel = MappingBuilder.INSTANCE.buildMapping(ecores, po);
 			HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
 			FileWriter writer = new FileWriter(file);
 			writer.write(hmg.generateToString(paModel));

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.4 2006/08/14 05:09:11 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.5 2006/08/24 22:12:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class AbstractProcessingContext {
@@ -122,6 +122,11 @@ public class AbstractProcessingContext {
 	public List getOverride(PAnnotatedEReference paReference) {
 		return (List) currentOverrides.get(paReference.getAnnotatedEReference().getName());
 	}
+    
+    /** Return the overridden Joincolumns for the indicated featureName */
+    public Column getOverride(String featureName) {
+        return (Column) currentOverrides.get(featureName);
+    }
 
 	/**
 	 * Returns the flattened list of all features of the supertypes for which the features should be added to the

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactoryImpl.java,v 1.4 2006/07/26 12:43:35 mtaal Exp $
+ * $Id: PannotationFactoryImpl.java,v 1.5 2006/08/24 22:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.Columns;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
@@ -33,7 +32,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
-import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
@@ -51,7 +49,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.Parameter;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
@@ -62,7 +59,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
-import org.eclipse.emf.teneo.annotations.pannotation.Type;
 import org.eclipse.emf.teneo.annotations.pannotation.Unique;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
@@ -123,7 +119,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.ASSOCIATION_OVERRIDES: return createAssociationOverrides();
 			case PannotationPackage.BASIC: return createBasic();
 			case PannotationPackage.COLUMN: return createColumn();
-			case PannotationPackage.COLUMNS: return createColumns();
 			case PannotationPackage.DISCRIMINATOR_COLUMN: return createDiscriminatorColumn();
 			case PannotationPackage.DISCRIMINATOR_VALUE: return createDiscriminatorValue();
 			case PannotationPackage.EMBEDDABLE: return createEmbeddable();
@@ -133,7 +128,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.ENUMERATED: return createEnumerated();
 			case PannotationPackage.GENERATED_VALUE: return createGeneratedValue();
 			case PannotationPackage.ID: return createId();
-			case PannotationPackage.ID_BAG: return createIdBag();
 			case PannotationPackage.ID_CLASS: return createIdClass();
 			case PannotationPackage.INHERITANCE: return createInheritance();
 			case PannotationPackage.JOIN_COLUMN: return createJoinColumn();
@@ -147,7 +141,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.ONE_TO_MANY: return createOneToMany();
 			case PannotationPackage.ONE_TO_ONE: return createOneToOne();
 			case PannotationPackage.ORDER_BY: return createOrderBy();
-			case PannotationPackage.PARAMETER: return createParameter();
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN: return createPrimaryKeyJoinColumn();
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMNS: return createPrimaryKeyJoinColumns();
 			case PannotationPackage.SECONDARY_TABLE: return createSecondaryTable();
@@ -156,7 +149,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.TABLE: return createTable();
 			case PannotationPackage.TABLE_GENERATOR: return createTableGenerator();
 			case PannotationPackage.TEMPORAL: return createTemporal();
-			case PannotationPackage.TYPE: return createType();
 			case PannotationPackage.TRANSIENT: return createTransient();
 			case PannotationPackage.UNIQUE_CONSTRAINT: return createUniqueConstraint();
 			case PannotationPackage.VERSION: return createVersion();
@@ -747,46 +739,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 */
 	public String convertTemporalTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Columns createColumns() {
-		ColumnsImpl columns = new ColumnsImpl();
-		return columns;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Parameter createParameter() {
-		ParameterImpl parameter = new ParameterImpl();
-		return parameter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Type createType() {
-		TypeImpl type = new TypeImpl();
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IdBag createIdBag() {
-		IdBagImpl idBag = new IdBagImpl();
-		return idBag;
 	}
 
 	/**

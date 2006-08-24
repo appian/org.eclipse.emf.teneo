@@ -11,23 +11,27 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.2 2006/08/24 22:12:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
-import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
+import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -208,27 +212,39 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * <li>"&lt;idbag&gt;" if the collection is not indexed and has an IdBag annotation.
 	 * </ul>
 	 * 
-	 * @param paFeature
+	 * @param hbFeature
 	 *            The structural feature for which to create collection.
 	 * @return The collection element.
 	 */
 	protected Element addCollectionElement(PAnnotatedEStructuralFeature paFeature) {
 		final Element collectionElement;
-		final IdBag idBag = paFeature.getIdBag();
-		// disabled following check because it also failed for many eattribute which even with a onetomany
+        HbAnnotatedEStructuralFeature hbFeature = (HbAnnotatedEStructuralFeature) paFeature;
+		final IdBag idBag = hbFeature.getHbIdBag();
+
+        boolean isMap = false;
+        
+        if (hbFeature instanceof PAnnotatedEReference) {
+            EClass refType = ((PAnnotatedEReference) hbFeature).getAnnotatedEReference().getEReferenceType();
+            final Class instanceClass = refType.getInstanceClass();
+            isMap = (null != instanceClass && Map.Entry.class.isAssignableFrom(instanceClass));
+        }
+        
+        // disabled following check because it also failed for many eattribute which even with a onetomany
 		// do not create a onetomany tag
 		// if (paFeature.getOneToMany() != null && paFeature.getJoinTable() == null && idBag != null) {
 		// throw new ProcessingException("Cannot use one-to-many attribute mapping without jointable in combination with
 		// IdBag.");
 		// }
-		if (idBag != null) {
+        if (isMap) {
+            collectionElement = getHbmContext().getCurrent().addElement("map");
+        } else if (idBag != null) {
 			collectionElement = getHbmContext().getCurrent().addElement("idbag");
-		} else if (paFeature.getIndexed() != null && paFeature.getIndexed().isValue()) {
+		} else if (hbFeature.getIndexed() != null && hbFeature.getIndexed().isValue()) {
 			collectionElement = getHbmContext().getCurrent().addElement("list");
 		} else {
 			collectionElement = getHbmContext().getCurrent().addElement("bag");
 		}
-		collectionElement.addAttribute("name", paFeature.getAnnotatedEStructuralFeature().getName());
+		collectionElement.addAttribute("name", hbFeature.getAnnotatedEStructuralFeature().getName());
 		if (idBag != null) {
 			final String generator = (idBag.getGenerator() == null ? "increment" : idBag.getGenerator());
 			final String type = (idBag.getType() == null ? "long" : idBag.getType());

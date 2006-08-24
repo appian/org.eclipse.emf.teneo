@@ -2,18 +2,21 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdBagImpl.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
+ * $Id: IdBagImpl.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
  */
-package org.eclipse.emf.teneo.annotations.pannotation.impl;
+package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
-import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
+
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,22 +25,15 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.IdBagImpl#getEModelElement <em>EModel Element</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.IdBagImpl#getGenerator <em>Generator</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.IdBagImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getEModelElement <em>EModel Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getGenerator <em>Generator</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class IdBagImpl extends EObjectImpl implements IdBag {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -103,7 +99,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return PannotationPackage.Literals.ID_BAG;
+		return HbAnnotationPackage.Literals.ID_BAG;
 	}
 
 	/**
@@ -117,7 +113,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -141,7 +137,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -162,7 +158,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 		String oldGenerator = generator;
 		generator = newGenerator;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ID_BAG__GENERATOR, oldGenerator, generator));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.ID_BAG__GENERATOR, oldGenerator, generator));
 	}
 
 	/**
@@ -183,7 +179,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 		String oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ID_BAG__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.ID_BAG__TYPE, oldType, type));
 	}
 
 	/**
@@ -193,12 +189,12 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.ID_BAG__EMODEL_ELEMENT:
+			case HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case PannotationPackage.ID_BAG__GENERATOR:
+			case HbAnnotationPackage.ID_BAG__GENERATOR:
 				return getGenerator();
-			case PannotationPackage.ID_BAG__TYPE:
+			case HbAnnotationPackage.ID_BAG__TYPE:
 				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -211,13 +207,13 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.ID_BAG__EMODEL_ELEMENT:
+			case HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case PannotationPackage.ID_BAG__GENERATOR:
+			case HbAnnotationPackage.ID_BAG__GENERATOR:
 				setGenerator((String)newValue);
 				return;
-			case PannotationPackage.ID_BAG__TYPE:
+			case HbAnnotationPackage.ID_BAG__TYPE:
 				setType((String)newValue);
 				return;
 		}
@@ -231,13 +227,13 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.ID_BAG__EMODEL_ELEMENT:
+			case HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case PannotationPackage.ID_BAG__GENERATOR:
+			case HbAnnotationPackage.ID_BAG__GENERATOR:
 				setGenerator(GENERATOR_EDEFAULT);
 				return;
-			case PannotationPackage.ID_BAG__TYPE:
+			case HbAnnotationPackage.ID_BAG__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
 		}
@@ -251,11 +247,11 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.ID_BAG__EMODEL_ELEMENT:
+			case HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case PannotationPackage.ID_BAG__GENERATOR:
+			case HbAnnotationPackage.ID_BAG__GENERATOR:
 				return GENERATOR_EDEFAULT == null ? generator != null : !GENERATOR_EDEFAULT.equals(generator);
-			case PannotationPackage.ID_BAG__TYPE:
+			case HbAnnotationPackage.ID_BAG__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 		}
 		return super.eIsSet(featureID);

@@ -111,8 +111,6 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributeOverrides" eType="ecore:EClass pannotation.ecore#//AttributeOverrides"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" eType="ecore:EClass pannotation.ecore#//Columns"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinTable" eType="ecore:EClass pannotation.ecore#//JoinTable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="oneToMany" eType="ecore:EClass pannotation.ecore#//OneToMany"
@@ -123,11 +121,11 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" eType="ecore:EClass pannotation.ecore#//JoinColumns"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="idBag" eType="ecore:EClass pannotation.ecore#//IdBag"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="indexed" eType="ecore:EClass pannotation.ecore#//Indexed"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="unique" eType="ecore:EClass pannotation.ecore#//Unique"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="ecore:EClass pannotation.ecore#//Column"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEAttribute" eSuperTypes="#//PAnnotatedEStructuralFeature">
@@ -154,7 +152,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="ecore:EClass pannotation.ecore#//Version"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass pannotation.ecore#//Type"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEReference" eSuperTypes="#//PAnnotatedEStructuralFeature">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">

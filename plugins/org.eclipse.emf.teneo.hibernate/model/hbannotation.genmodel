@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.hibernate/src"
+    editDirectory="/org.eclipse.emf.teneo.hibernate.edit/src" editorDirectory="/org.eclipse.emf.teneo.hibernate.editor/src"
+    modelPluginID="org.eclipse.emf.teneo.hibernate" templateDirectory="" redirection=""
+    modelName="HbAnnotation" editPluginClass="org.eclipse.emf.teneo.hibernate.hbannotation.provider.HbAnnotationEditPlugin"
+    editorPluginClass="org.eclipse.emf.teneo.hibernate.hbannotation.presentation.HbAnnotationEditorPlugin"
+    updateClasspath="false" testSuiteClass="org.eclipse.emf.teneo.hibernate.hbannotation.tests.HbAnnotationAllTests"
+    importerID="org.eclipse.emf.importer.ecore" usedGenPackages="../../org.eclipse.emf.teneo.annotations/model/annotations.genmodel#//pamodel ../../org.eclipse.emf.teneo.annotations/model/annotations.genmodel#//pannotation">
+  <foreignModel>hbannotation.ecore</foreignModel>
+  <foreignModel>hbmodel.ecore</foreignModel>
+  <genPackages prefix="HbAnnotation" basePackage="org.eclipse.emf.teneo.hibernate"
+      disposableProviderFactory="true" ecorePackage="hbannotation.ecore#/">
+    <genClasses ecoreClass="hbannotation.ecore#//HbAnnotation"/>
+    <genClasses ecoreClass="hbannotation.ecore#//CollectionOfElements">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//CollectionOfElements/targetElement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//CollectionOfElements/fetch"/>
+    </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//Where">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Where/clause"/>
+    </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//Cascade">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Cascade/value"/>
+    </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//Columns">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbannotation.ecore#//Columns/columns"/>
+    </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//MapKey">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbannotation.ecore#//MapKey/columns"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="HbModel" basePackage="org.eclipse.emf.teneo.hibernate" disposableProviderFactory="true"
+      ecorePackage="hbmodel.ecore#/">
+    <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEStructuralFeature">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEStructuralFeature/hbWhere"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEStructuralFeature/hbCollectionOfElements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEStructuralFeature/hbMapKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEStructuralFeature/hbColumns"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEStructuralFeature/hbCascade"/>
+    </genClasses>
+    <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEAttribute"/>
+    <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEClass"/>
+    <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEModelElement"/>
+    <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEPackage"/>
+    <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEReference"/>
+  </genPackages>
+</genmodel:GenModel>

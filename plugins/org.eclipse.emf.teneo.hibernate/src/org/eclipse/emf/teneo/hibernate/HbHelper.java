@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: HbHelper.java,v 1.2 2006/08/24 22:12:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
-import org.eclipse.emf.teneo.mapper.PersistenceMappingBuilder;
 import org.hibernate.mapping.Component;
 import org.hibernate.mapping.PersistentClass;
 
@@ -35,7 +35,7 @@ import org.hibernate.mapping.PersistentClass;
  * Is the main entry point for 'outside' users to create, register and retrieve EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class HbHelper {
 	/** The logger */
@@ -166,10 +166,13 @@ public class HbHelper {
 	/** Separate utility method, generates a hibernate mapping for a set of epackages and options. 
 	 * The hibernate.hbm.xml is returned as a string. The mapping is not registered or used in any other way by Elver.*/
 	public String generateMapping(EPackage[] epackages, Properties props) {
-		log.debug("Generating mapping file passed epackages");
-		final PersistenceOptions po = new PersistenceOptions(props);
-		final PAnnotatedModel paModel = PersistenceMappingBuilder.INSTANCE.buildMapping(epackages, po);
-		final HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
-		return hmg.generateToString(paModel);
+        log.debug("Generating mapping file passed epackages");
+        // DCB: Use Hibernate-specific annotation processing mechanism.  This allows use of
+        //      Hibernate-specific annotations.
+        final PersistenceOptions po = new PersistenceOptions(props);
+        PAnnotatedModel paModel = 
+            MappingBuilder.INSTANCE.buildMapping(epackages, po);
+        HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
+        return hmg.generateToString(paModel);
 	}
 }

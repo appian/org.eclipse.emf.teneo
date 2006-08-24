@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hbmodel"
+    nsURI="http://www.eclipse.org/emf/teneo/2006/HbModel" nsPrefix="org.eclipse.emf.teneo.hibernate">
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEStructuralFeature" interface="true"
+      eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEStructuralFeature #//HbAnnotatedEModelElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbWhere" eType="ecore:EClass hbannotation.ecore#//Where"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbCollectionOfElements"
+        eType="ecore:EClass hbannotation.ecore#//CollectionOfElements" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbMapKey" eType="ecore:EClass hbannotation.ecore#//MapKey"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbColumns" eType="ecore:EClass hbannotation.ecore#//Columns"
+        defaultValueLiteral="" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbCascade" eType="ecore:EClass hbannotation.ecore#//Cascade"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbIdBag" eType="ecore:EClass hbannotation.ecore#//IdBag"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEAttribute" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEAttribute #//HbAnnotatedEStructuralFeature">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbType" eType="ecore:EClass hbannotation.ecore#//Type"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEClass" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEClass"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEModelElement" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEPackage" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEPackage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEReference" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEReference #//HbAnnotatedEStructuralFeature"/>
+</ecore:EPackage>

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.2 2006/08/24 22:12:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.processing.ManyToManyProcessor;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -75,22 +76,24 @@ class ManyToManyMapper extends AbstractAssociationMapper implements ManyToManyPr
 	public void processMtM(PAnnotatedEReference paReference) {
 		log.debug("Creating many-to-many for " + paReference);
 
-		final JoinTable jt = paReference.getJoinTable();
-		final ManyToMany mtm = paReference.getManyToMany();
+        HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
+        
+		final JoinTable jt = hbReference.getJoinTable();
+		final ManyToMany mtm = hbReference.getManyToMany();
 
 		if (jt == null) {
 			throw new ProcessingException("Jointable is mandatory "
-					+ StoreUtil.toString(paReference.getAnnotatedEReference()));
+					+ StoreUtil.toString(hbReference.getAnnotatedEReference()));
 		}
 
 		// TODO add isUnique on interface
 		// TODO request EMF team to deal correctly with unique attribute on EReferences
-		final Element collElement = addCollectionElement(paReference);
+		final Element collElement = addCollectionElement(hbReference);
 		final Element keyElement = collElement.addElement("key");
 
-		if (paReference.getIndexed() != null && paReference.getIndexed().isValue()) {
-			assert (paReference.getIdBag() == null);
-			addListIndex(collElement, paReference);
+		if (hbReference.getIndexed() != null && hbReference.getIndexed().isValue()) {
+			assert (hbReference.getHbIdBag() == null);
+			addListIndex(collElement, hbReference);
 		}
 		addFetchType(collElement, mtm.getFetch());
 		addCascades(collElement, mtm.getCascade(), false);
@@ -98,7 +101,7 @@ class ManyToManyMapper extends AbstractAssociationMapper implements ManyToManyPr
 		String targetName = mtm.getTargetEntity();
 		if (targetName == null) {
 			log.debug("Target is name, compute it");
-			targetName = getHbmContext().getEntityName(paReference.getAnnotatedEReference().getEReferenceType());
+			targetName = getHbmContext().getEntityName(hbReference.getAnnotatedEReference().getEReferenceType());
 		}
 		log.debug("Target entity-name " + targetName);
 
@@ -106,7 +109,7 @@ class ManyToManyMapper extends AbstractAssociationMapper implements ManyToManyPr
 				.addAttribute("unique", "false");
 
 		// inverse is not supported by indexed lists
-		if (mtm.getMappedBy() != null && !(paReference.getIndexed() != null && paReference.getIndexed().isValue())) {
+		if (mtm.getMappedBy() != null && !(hbReference.getIndexed() != null && hbReference.getIndexed().isValue())) {
 			collElement.addAttribute("inverse", "true");
 		}
 

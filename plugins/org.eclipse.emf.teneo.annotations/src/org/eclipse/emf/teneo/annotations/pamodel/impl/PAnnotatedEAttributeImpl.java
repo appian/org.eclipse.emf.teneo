@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEAttributeImpl.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
+ * $Id: PAnnotatedEAttributeImpl.java,v 1.4 2006/08/24 22:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
-import org.eclipse.emf.teneo.annotations.pannotation.Type;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
 
 /**
@@ -39,7 +38,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getLob <em>Lob</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getTemporal <em>Temporal</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -132,16 +130,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @ordered
 	 */
 	protected Version version = null;
-
-	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected Type type = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -508,44 +496,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Type getType() {
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject)type;
-			type = (Type)eResolveProxy(oldType);
-			if (type != oldType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PamodelPackage.PANNOTATED_EATTRIBUTE__TYPE, oldType, type));
-			}
-		}
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Type basicGetType() {
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setType(Type newType) {
-		Type oldType = type;
-		type = newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EATTRIBUTE__TYPE, oldType, type));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__BASIC:
@@ -590,9 +540,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 				return getTemporal();
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__VERSION:
 				return getVersion();
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__TYPE:
-				if (resolve) return getType();
-				return basicGetType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -627,9 +574,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 				return;
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__VERSION:
 				setVersion((Version)newValue);
-				return;
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__TYPE:
-				setType((Type)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -666,9 +610,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__VERSION:
 				setVersion((Version)null);
 				return;
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__TYPE:
-				setType((Type)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -696,8 +637,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 				return temporal != null;
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__VERSION:
 				return version != null;
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__TYPE:
-				return type != null;
 		}
 		return super.eIsSet(featureID);
 	}

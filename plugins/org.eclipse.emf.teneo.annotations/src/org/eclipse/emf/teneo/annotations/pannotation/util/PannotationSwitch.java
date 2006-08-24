@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationSwitch.java,v 1.4 2006/07/26 12:43:36 mtaal Exp $
+ * $Id: PannotationSwitch.java,v 1.5 2006/08/24 22:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -16,7 +16,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.Columns;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
@@ -26,7 +25,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
-import org.eclipse.emf.teneo.annotations.pannotation.IdBag;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
@@ -43,7 +41,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.Parameter;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
@@ -53,7 +50,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
-import org.eclipse.emf.teneo.annotations.pannotation.Type;
 import org.eclipse.emf.teneo.annotations.pannotation.Unique;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
@@ -187,13 +183,6 @@ public class PannotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PannotationPackage.COLUMNS: {
-				Columns columns = (Columns)theEObject;
-				Object result = caseColumns(columns);
-				if (result == null) result = casePAnnotation(columns);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PannotationPackage.DISCRIMINATOR_COLUMN: {
 				DiscriminatorColumn discriminatorColumn = (DiscriminatorColumn)theEObject;
 				Object result = caseDiscriminatorColumn(discriminatorColumn);
@@ -254,13 +243,6 @@ public class PannotationSwitch {
 				Id id = (Id)theEObject;
 				Object result = caseId(id);
 				if (result == null) result = casePAnnotation(id);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.ID_BAG: {
-				IdBag idBag = (IdBag)theEObject;
-				Object result = caseIdBag(idBag);
-				if (result == null) result = casePAnnotation(idBag);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -355,12 +337,6 @@ public class PannotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PannotationPackage.PARAMETER: {
-				Parameter parameter = (Parameter)theEObject;
-				Object result = caseParameter(parameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN: {
 				PrimaryKeyJoinColumn primaryKeyJoinColumn = (PrimaryKeyJoinColumn)theEObject;
 				Object result = casePrimaryKeyJoinColumn(primaryKeyJoinColumn);
@@ -414,13 +390,6 @@ public class PannotationSwitch {
 				Temporal temporal = (Temporal)theEObject;
 				Object result = caseTemporal(temporal);
 				if (result == null) result = casePAnnotation(temporal);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.TYPE: {
-				Type type = (Type)theEObject;
-				Object result = caseType(type);
-				if (result == null) result = casePAnnotation(type);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1060,66 +1029,6 @@ public class PannotationSwitch {
 	 * @generated
 	 */
 	public Object caseUnique(Unique object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Columns</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Columns</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseColumns(Columns object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Parameter</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Parameter</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseParameter(Parameter object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseType(Type object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Id Bag</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Id Bag</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseIdBag(IdBag object) {
 		return null;
 	}
 
