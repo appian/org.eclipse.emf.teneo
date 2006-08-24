@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyTypeAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: AnyTypeAction.java,v 1.2 2006/08/24 22:15:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * - Delete with cascading delete
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class AnyTypeAction extends AbstractTestAction 
 {
@@ -147,7 +147,7 @@ public class AnyTypeAction extends AbstractTestAction
     			{
     				assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getB_Name().getName() + 
     						"/" + entry.getEStructuralFeature().getName(), AnytypePackage.eINSTANCE.getB_Name() == entry.getEStructuralFeature());
-    				assertTrue("Expected/found: 'my b'/" + entry.getValue(), "my b".compareTo(entry.getValue()) == 0);
+    				assertTrue("Expected/found: 'my b'/" + entry.getValue(), "my b".compareTo((String) entry.getValue()) == 0);
     			}
     			else if (i == 1)
     			{
@@ -178,7 +178,7 @@ public class AnyTypeAction extends AbstractTestAction
     			{
     				assertTrue("Feature expected/found: " + AnytypePackage.eINSTANCE.getB_Name().getName() + 
     						"/" + entry.getEStructuralFeature().getName(), AnytypePackage.eINSTANCE.getB_Name() == entry.getEStructuralFeature());
-    				assertTrue("Expected/found: 'my b my any'/" + entry.getValue(), "my b my any".compareTo(entry.getValue()) == 0);
+    				assertTrue("Expected/found: 'my b my any'/" + entry.getValue(), "my b my any".compareTo((String) entry.getValue()) == 0);
     			}
     			else if (i == 1)
     			{
