@@ -2,11 +2,10 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Book.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: Book.java,v 1.2 2006/08/25 23:04:14 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,9 +24,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getBook()
  * @model extendedMetaData="name='Book' kind='elementOnly'"
+ * @extends SerializableEObject
  * @generated
  */
-public interface Book extends EObject {
+public interface Book extends SerializableEObject {
 	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->

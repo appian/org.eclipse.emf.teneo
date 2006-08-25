@@ -5,10 +5,11 @@
     editDirectory="/Scratch/src" editorDirectory="/Scratch/src" modelPluginID="Scratch"
     runtimeJar="true" modelName="Library" editPluginClass="org.eclipse.emf.teneo.samples.emf.library.provider.LibraryEditPlugin"
     editorPluginClass="org.eclipse.emf.teneo.test.store.library.presentation.LibraryEditorPlugin"
-    importerID="org.eclipse.xsd.ecore.importer">
+    rootExtendsInterface="org.eclipse.emf.teneo.samples.emf.sample.library.SerializableEObject"
+    rootImplementsInterface="" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>library.xsd</foreignModel>
-  <genPackages prefix="Library" basePackage="org.eclipse.emf.teneo.samples.emf.sample" resource="XML"
-      disposableProviderFactory="true" ecorePackage="library.ecore#/">
+  <genPackages prefix="Library" basePackage="org.eclipse.emf.teneo.samples.emf.sample"
+      resource="XML" disposableProviderFactory="true" ecorePackage="library.ecore#/">
     <genEnums ecoreEnum="library.ecore#//BookCategory">
       <genEnumLiterals ecoreEnumLiteral="library.ecore#//BookCategory/Mystery"/>
       <genEnumLiterals ecoreEnumLiteral="library.ecore#//BookCategory/ScienceFiction"/>

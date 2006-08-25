@@ -12,11 +12,12 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.3 2006/08/25 23:04:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -29,13 +30,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.DelegatingEcoreEList;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * A persistable elist which can be used by different or mappers. This persistable elist works around the idea that the
  * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public abstract class PersistableEList extends DelegatingEcoreEList implements PersistableDelegateList {
@@ -47,6 +49,9 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements P
 
 	/** The structural feature modeled by this list */
 	private EStructuralFeature estructuralFeature;
+
+	/** The unique path to the efeature, used to support serializaion */
+	private String eFeaturePath = "";
 
 	/** Is loaded from backend */
 	private boolean isLoaded = false;
@@ -81,8 +86,25 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements P
 		log.debug("Created persistable list " + logString);
 	}
 
+	/** Takes care of serializing the efeature */
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+		eFeaturePath = StoreUtil.structuralFeatureToString(estructuralFeature);
+		estructuralFeature = null;
+		additionalWriteObject();
+		out.defaultWriteObject();
+	}
+
+	/** Do your subclass thing for serialization */
+	protected void additionalWriteObject() {}
+	
+	/** Takes care of deserializing the efeature */
+	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+		in.defaultReadObject();
+		estructuralFeature = StoreUtil.stringToStructureFeature(eFeaturePath);
+	}
+
 	/*
-	 * (non-Javadoc)
+	 * Get the underlying efeature
 	 * 
 	 * @see org.eclipse.emf.ecore.util.DelegatingEcoreEList#getEStructuralFeature()
 	 */

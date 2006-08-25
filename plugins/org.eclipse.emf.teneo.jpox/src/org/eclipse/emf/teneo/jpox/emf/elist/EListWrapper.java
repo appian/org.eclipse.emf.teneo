@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.4 2006/08/03 09:57:10 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.5 2006/08/25 23:04:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.elist;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -68,7 +69,7 @@ import org.jpox.util.ClassUtils;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2006/08/03 09:57:10 $
+ * @version $Revision: 1.5 $ $Date: 2006/08/25 23:04:05 $
  */
 
 public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList, JPOXEList {
@@ -157,6 +158,13 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 		log.debug("Cloned elist: " + getLogString());
 	}
 
+	/** Nullify the delegate and stateManager before serializing */
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+		jdoDelegate = null;
+		stateManager = null;
+		out.defaultWriteObject();
+	}
+
 	/** Replace normal EObject with AnyTypeImpl */
 	private Object replaceForAnyType(Object obj) {
 		if (isEObjectList)
@@ -166,6 +174,11 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 
 		return obj; // note that an exception can not be thrown because the
 		// replace is always tried
+	}
+
+	/** Do your subclass thing for serialization */
+	protected void additionalWriteObject() {
+		stateManager = null;
 	}
 
 	/** Replace normal EObject with AnyTypeImpl */

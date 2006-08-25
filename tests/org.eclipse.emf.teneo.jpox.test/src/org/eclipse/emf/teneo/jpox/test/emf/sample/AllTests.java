@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.5 2006/08/22 22:24:55 mtaal Exp $
+ * $Id: AllTests.java,v 1.6 2006/08/25 23:04:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
+import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryValidateResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.PlayAction;
 import org.eclipse.emf.teneo.test.emf.sample.PrimerPOAction;
@@ -40,13 +41,14 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 				.getConfigurations());
+		suite.addTestSuite(LibrarySerializationAction.class);
 		suite.addTestSuite(WorkFlowAction.class);
 
   		suite.addTestSuite(SunBooksAction.class);

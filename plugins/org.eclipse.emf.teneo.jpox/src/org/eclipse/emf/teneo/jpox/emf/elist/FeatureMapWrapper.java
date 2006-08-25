@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapWrapper.java,v 1.2 2006/07/22 13:04:20 mtaal Exp $
+ * $Id: FeatureMapWrapper.java,v 1.3 2006/08/25 23:04:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf.elist;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -65,7 +66,7 @@ import org.jpox.util.ClassUtils;
  * to use the backingstore as the delegate because the list can be detached.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/07/22 13:04:20 $
+ * @version $Revision: 1.3 $ $Date: 2006/08/25 23:04:05 $
  */
 
 public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Queryable, SCOList, JPOXEList {
@@ -133,6 +134,13 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 			return GenericFeatureMapEntry.class; // FeatureMapEntry.getEntryClass(owner.getClass(),
 			// getEStructuralFeature().getName());
 		}
+	}
+
+	/** Nullify the delegate and stateManager before serializing */
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+		jdoDelegate = null;
+		stateManager = null;
+		out.defaultWriteObject();
 	}
 
 	/*

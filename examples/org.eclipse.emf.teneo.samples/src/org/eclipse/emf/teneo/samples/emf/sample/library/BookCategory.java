@@ -2,10 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookCategory.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: BookCategory.java,v 1.2 2006/08/25 23:04:14 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.io.ObjectStreamException;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -13,21 +19,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.AbstractEnumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Book Category</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Book Category</b></em>', and
+ * utility methods for working with them. <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getBookCategory()
  * @model
  * @generated
  */
-public final class BookCategory extends AbstractEnumerator {
+public final class BookCategory extends AbstractEnumerator implements Serializable {
 	/**
 	 * The '<em><b>Mystery</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Mystery</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Mystery</b></em>' literal object isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MYSTERY_LITERAL
@@ -41,8 +45,8 @@ public final class BookCategory extends AbstractEnumerator {
 	 * The '<em><b>Science Fiction</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Science Fiction</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Science Fiction</b></em>' literal object isn't clear, there really should be more
+	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SCIENCE_FICTION_LITERAL
@@ -56,8 +60,8 @@ public final class BookCategory extends AbstractEnumerator {
 	 * The '<em><b>Biography</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Biography</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Biography</b></em>' literal object isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BIOGRAPHY_LITERAL
@@ -69,8 +73,7 @@ public final class BookCategory extends AbstractEnumerator {
 
 	/**
 	 * The '<em><b>Mystery</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #MYSTERY
 	 * @generated
 	 * @ordered
@@ -79,8 +82,7 @@ public final class BookCategory extends AbstractEnumerator {
 
 	/**
 	 * The '<em><b>Science Fiction</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #SCIENCE_FICTION
 	 * @generated
 	 * @ordered
@@ -89,8 +91,7 @@ public final class BookCategory extends AbstractEnumerator {
 
 	/**
 	 * The '<em><b>Biography</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #BIOGRAPHY
 	 * @generated
 	 * @ordered
@@ -98,9 +99,9 @@ public final class BookCategory extends AbstractEnumerator {
 	public static final BookCategory BIOGRAPHY_LITERAL = new BookCategory(BIOGRAPHY, "Biography", "Biography");
 
 	/**
-	 * An array of all the '<em><b>Book Category</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Book Category</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @generated
 	 */
 	private static final BookCategory[] VALUES_ARRAY =
@@ -112,16 +113,16 @@ public final class BookCategory extends AbstractEnumerator {
 
 	/**
 	 * A public read-only list of all the '<em><b>Book Category</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Book Category</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static BookCategory get(String literal) {
@@ -136,8 +137,8 @@ public final class BookCategory extends AbstractEnumerator {
 
 	/**
 	 * Returns the '<em><b>Book Category</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public static BookCategory getByName(String name) {
@@ -152,8 +153,8 @@ public final class BookCategory extends AbstractEnumerator {
 
 	/**
 	 * Returns the '<em><b>Book Category</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static BookCategory get(int value) {
@@ -167,12 +168,39 @@ public final class BookCategory extends AbstractEnumerator {
 
 	/**
 	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private BookCategory(int value, String name, String literal) {
 		super(value, name, literal);
 	}
 
-} //BookCategory
+	/** Translates the enumerate into a serializable object */
+	public static class AbstractEnumeratorExternalizable implements Externalizable {
+		protected AbstractEnumerator enumerate;
+
+		public AbstractEnumeratorExternalizable() {
+		}
+
+		public AbstractEnumeratorExternalizable(AbstractEnumerator enumerate) {
+			this.enumerate = enumerate;
+		}
+
+		public void writeExternal(ObjectOutput objectOutput) throws IOException {
+			objectOutput.writeUTF(enumerate.getName());
+		}
+
+		public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
+			String name = objectInput.readUTF();
+			enumerate = get(name);
+		}
+
+		protected Object readResolve() {
+			return enumerate;
+		}
+	}
+
+	Object writeReplace() throws ObjectStreamException {
+		return new AbstractEnumeratorExternalizable(this);
+	}
+} // BookCategory

@@ -2,13 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: Writer.java,v 1.2 2006/08/25 23:04:14 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,9 +23,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getWriter()
  * @model extendedMetaData="name='Writer' kind='elementOnly'"
+ * @extends SerializableEObject
  * @generated
  */
-public interface Writer extends EObject {
+public interface Writer extends SerializableEObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

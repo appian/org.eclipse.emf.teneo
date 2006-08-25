@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: LibraryFactoryImpl.java,v 1.3 2006/08/25 23:04:14 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -63,9 +63,9 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 */
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case LibraryPackage.BOOK: return createBook();
-			case LibraryPackage.LIBRARY: return createLibrary();
-			case LibraryPackage.WRITER: return createWriter();
+			case LibraryPackage.BOOK: return (EObject)createBook();
+			case LibraryPackage.LIBRARY: return (EObject)createLibrary();
+			case LibraryPackage.WRITER: return (EObject)createWriter();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -12,10 +12,13 @@
  *
  * </copyright>
  *
- * $Id: FeatureMapEntry.java,v 1.3 2006/08/21 13:27:27 mtaal Exp $
+ * $Id: FeatureMapEntry.java,v 1.4 2006/08/25 23:04:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
+
+import java.io.IOException;
+import java.io.Serializable;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EObject;
@@ -34,14 +37,17 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the correct delegate is created.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
-public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal {
+public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Serializable {
 
 	/** The structural feature which defines which element this is */
 	private EStructuralFeature eStructuralFeature;
 
+	/** Path to the efeature for serialization support */
+	private String eFeaturePath;
+	
 	/** And its value */
 	private Object value;
 
@@ -68,6 +74,19 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal {
 		initialized = true;
 		initializeSpecificImplementation();
 		setInverseAction();
+	}
+
+	/** Takes care of serializing the efeature */
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+		eFeaturePath = StoreUtil.structuralFeatureToString(eStructuralFeature);
+		eStructuralFeature = null;
+		out.defaultWriteObject();
+	}
+
+	/** Takes care of deserializing the efeature */
+	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+		in.defaultReadObject();
+		eStructuralFeature = StoreUtil.stringToStructureFeature(eFeaturePath);
 	}
 
 	/** Set the inverseaction delegate, must be called after the efeature is set */

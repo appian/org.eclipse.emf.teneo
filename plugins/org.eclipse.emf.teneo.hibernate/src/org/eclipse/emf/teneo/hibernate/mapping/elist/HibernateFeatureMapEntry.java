@@ -11,11 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateFeatureMapEntry.java,v 1.3 2006/08/21 13:27:29 mtaal Exp $
+ * $Id: HibernateFeatureMapEntry.java,v 1.4 2006/08/25 23:04:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -39,10 +41,10 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * member.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
-public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
+public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Serializable {
 
 	/**
 	 * Gets an 'normal' FeatureMap.Entry and if it is not a FeatureMapEntry replaces it with a specific implementation.
@@ -94,6 +96,9 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
 	/** The structural feature which defines which element this is */
 	private EStructuralFeature eStructuralFeature;
 
+	/** To store the efeature during serialization */
+	private String eFeaturePath;
+	
 	/**
 	 * The featuremap to which we are connected. Is used to determine if entries have been added to another featuremap.
 	 * This happens in copy actions.
@@ -129,6 +134,19 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
 	/** Is true if this featureMap already belongs to the passed map */
 	public boolean belongsToFeatureMap(FeatureMap.Internal fm) {
 		return owningMap == fm; // object equality!
+	}
+
+	/** Takes care of serializing the efeature */
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+		eFeaturePath = StoreUtil.structuralFeatureToString(eStructuralFeature);
+		eStructuralFeature = null;
+		out.defaultWriteObject();
+	}
+
+	/** Takes care of deserializing the efeature */
+	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+		in.defaultReadObject();
+		eStructuralFeature = StoreUtil.stringToStructureFeature(eFeaturePath);
 	}
 
 	/** Set the value from a previous entry */
@@ -318,10 +336,13 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
 	}
 
 	/** Class to store feature value pairs together with their validator */
-	private class FeatureValue {
+	private class FeatureValue implements Serializable {
 
 		/** The feature */
-		protected final EStructuralFeature feature;
+		protected EStructuralFeature feature;
+		
+		/** The featurepath, is used during serialization */
+		private String featurePath;
 
 		/** Its value (can be null) */
 		protected final Object value;
@@ -331,6 +352,21 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal {
 			this.feature = feature;
 			this.value = value;
 		}
+
+		/** Takes care of serializing the efeature */
+		private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+			featurePath = StoreUtil.structuralFeatureToString(feature);
+			feature = null;
+			out.defaultWriteObject();
+		}
+
+		/** Takes care of deserializing the efeature */
+		 private void readObject(java.io.ObjectInputStream in)
+	     throws IOException, ClassNotFoundException 
+	     {
+			 in.defaultReadObject();
+			 feature = StoreUtil.stringToStructureFeature(featurePath); 
+	     }
 
 		/** Returns true if this feature value corresponds to the passed feature (taking into account substitution groups */
 		private boolean matchesFeature(EStructuralFeature eFeature) {

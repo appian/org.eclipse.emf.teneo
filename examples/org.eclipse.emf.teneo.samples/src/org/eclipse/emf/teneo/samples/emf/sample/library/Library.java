@@ -2,13 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: Library.java,v 1.2 2006/08/25 23:04:14 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,9 +24,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getLibrary()
  * @model extendedMetaData="name='Library' kind='elementOnly'"
+ * @extends SerializableEObject
  * @generated
  */
-public interface Library extends EObject {
+public interface Library extends SerializableEObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -67,7 +66,7 @@ public interface Library extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Writers</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getLibrary_Writers()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.library.Writer" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.library.Writer" containment="true"
 	 *        extendedMetaData="kind='element' name='writers'"
 	 * @generated
 	 */
@@ -84,7 +83,7 @@ public interface Library extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Books</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getLibrary_Books()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.library.Book" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.library.Book" containment="true"
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */
