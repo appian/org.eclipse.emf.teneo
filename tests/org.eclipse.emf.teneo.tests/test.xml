@@ -39,11 +39,13 @@
 			<param name="report" value="org.eclipse.emf.teneo.hibernate.test" />
 		</antcall>
 
+		<!--
 		<antcall target="runtests">
 			<param name="testPlugin" value="${org.eclipse.emf.teneo.jpox.generate.test}" />
 			<param name="report" value="org.eclipse.emf.teneo.jpox.generate.test" />
 		</antcall>
-
+		-->
+		
 		<antcall target="runtests">
 			<param name="testPlugin" value="${org.eclipse.emf.teneo.jpox.test}" />
 			<param name="report" value="org.eclipse.emf.teneo.jpox.test" />
