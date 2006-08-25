@@ -13,8 +13,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.teneo.annotations
 Eclipse-LazyStart: true
 Eclipse-BuddyPolicy: dependent
-Bundle-ClassPath: .,
- lib/jtds-1.1.jar,
+Bundle-ClassPath: lib/jtds-1.1.jar,
  lib/msbase.jar,
  lib/mssqlserver.jar,
  lib/msutil.jar,
