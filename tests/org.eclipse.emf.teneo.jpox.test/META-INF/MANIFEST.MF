@@ -25,4 +25,3 @@ Export-Package: org.eclipse.emf.teneo.jpox.test,
  org.eclipse.emf.teneo.jpox.test.generate,
  org.eclipse.emf.teneo.jpox.test.issues,
  org.eclipse.emf.teneo.jpox.test.stores
-Bundle-ClassPath: .
