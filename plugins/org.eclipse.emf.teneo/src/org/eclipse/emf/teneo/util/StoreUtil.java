@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.3 2006/08/03 09:57:14 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.4 2006/08/29 09:33:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -55,7 +55,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class StoreUtil {
@@ -561,6 +561,7 @@ public class StoreUtil {
 	/** Copies a file */
 	public static void copyFile(File src, File dst) {
 		try {
+			log.debug("Copy file from " + src.getAbsolutePath() + " to " + dst.getAbsolutePath());
 			InputStream in = new FileInputStream(src);
 			OutputStream out = new FileOutputStream(dst);
 	

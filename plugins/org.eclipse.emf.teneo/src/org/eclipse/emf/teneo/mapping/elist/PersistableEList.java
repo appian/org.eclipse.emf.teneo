@@ -1,4 +1,4 @@
-/**
+ /**
  * <copyright>
  *
  * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.3 2006/08/25 23:04:09 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.4 2006/08/29 09:33:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public abstract class PersistableEList extends DelegatingEcoreEList implements PersistableDelegateList {
