@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.9 2006/08/29 09:34:22 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.10 2006/08/29 17:07:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -39,7 +39,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -152,9 +152,9 @@ public class JPOXTestbed extends Testbed {
 		// will not the package.JPOX
 		// for superclass A because it will always search for package.jdo
 		try {
-			File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
-			log.debug("JDO FILE: " + destination.getAbsolutePath());
-			JPOXEnhancer.main(new String[] { destination.getAbsolutePath(), "-v" });
+			//File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
+			//log.debug("JDO FILE: " + destination.getAbsolutePath());
+			JPOXEnhancer.main(new String[] { mappingFile.getAbsolutePath(), "-v" });
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while enhancing", e);
 		}
@@ -170,8 +170,7 @@ public class JPOXTestbed extends Testbed {
 			final Class packageClass = test.getEPackages()[0].getClass();
 			
 			// get the location of the class file
-			
-			destination = new File(Utils.getParentDirThreeLevels(packageClass), "package.jdo");
+			destination = new File(Utils.getParentDir(packageClass), "package.jdo");
 
 			if (destination.exists())
 				destination.delete();
