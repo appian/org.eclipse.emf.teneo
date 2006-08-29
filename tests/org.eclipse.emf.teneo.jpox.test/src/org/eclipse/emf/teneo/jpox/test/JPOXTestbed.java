@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.10 2006/08/29 17:07:18 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.11 2006/08/29 17:32:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -39,7 +39,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -151,12 +151,16 @@ public class JPOXTestbed extends Testbed {
 		// otherwise the jpox enhancement fails! When enhancing a subclass B it
 		// will not the package.JPOX
 		// for superclass A because it will always search for package.jdo
+		final ClassLoader cl = Thread.currentThread().getContextClassLoader();
 		try {
+			Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
 			//File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
 			//log.debug("JDO FILE: " + destination.getAbsolutePath());
 			JPOXEnhancer.main(new String[] { mappingFile.getAbsolutePath(), "-v" });
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while enhancing", e);
+		} finally {
+			Thread.currentThread().setContextClassLoader(cl);			
 		}
 	}
 
