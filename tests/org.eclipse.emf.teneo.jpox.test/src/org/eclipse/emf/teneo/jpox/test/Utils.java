@@ -11,23 +11,26 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Utils.java,v 1.4 2006/08/22 22:35:46 mtaal Exp $
+ * $Id: Utils.java,v 1.5 2006/08/29 09:34:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.Properties;
 
+import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
 import org.eclipse.emf.teneo.test.StoreTestException;
 
 /**
  * Contains utility methods for testing.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2006/08/22 22:35:46 $
+ * @version $Revision: 1.5 $ $Date: 2006/08/29 09:34:22 $
  */
 
 public class Utils {
@@ -52,6 +55,13 @@ public class Utils {
 		return props;
 	}
 
+	/** Get the absolute path of the parent dir of the passed class */
+	public static String getParentDirThreeLevels(Class cls) throws IOException {
+		final URL classUrl = cls.getResource("");
+		final File classFile = new File(classUrl.getFile());
+		return classFile.getParentFile().getParentFile().getAbsolutePath();
+	}
+	
 	/**
 	 * Returns an array of test properties for one or more databases.
 	 */

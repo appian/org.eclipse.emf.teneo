@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.8 2006/08/29 09:05:51 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.9 2006/08/29 09:34:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -32,13 +32,14 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.conf.TestConfiguration;
 import org.eclipse.emf.teneo.test.conf.Testbed;
 import org.eclipse.emf.teneo.test.stores.TestStore;
+import org.eclipse.emf.teneo.util.StoreUtil;
 import org.jpox.enhancer.JPOXEnhancer;
 
 /**
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -151,39 +152,34 @@ public class JPOXTestbed extends Testbed {
 		// will not the package.JPOX
 		// for superclass A because it will always search for package.jdo
 		try {
-			//File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
-			log.debug("JDO FILE: " + mappingFile.getAbsolutePath());
-			JPOXEnhancer.main(new String[] { mappingFile.getAbsolutePath(), "-v" });
+			File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
+			log.debug("JDO FILE: " + destination.getAbsolutePath());
+			JPOXEnhancer.main(new String[] { destination.getAbsolutePath(), "-v" });
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while enhancing", e);
 		}
 	}
 
-	/** Copies the mapping file to the bin directory
+	/** Copies the mapping file to the bin directory */
 	private File copyMappingToClassesDir(AbstractTest test, File mappingFile, boolean optimistic) {
 		try {
 			final File destination;
-			if (test.getEPackages() != null) {
-
-				// the package.jdo is copied to the root of the classes dir to
-				// ensure that it is also
-				// found when a test case contains multiple packages
-				final Class packageClass = test.getEPackages()[0].getClass();
-				destination = new File(Utils.getClassParentDirectory(packageClass),
-						"package.jdo");
-			} else {
-				destination = new File(SamplesSource.getOutputDirectory(test.getTestPackageName(), true)
-						+ File.separator + "package.jdo");
-			}
+			// the package.jdo is copied to the root of the classes dir to
+			// ensure that it is also
+			// found when a test case contains multiple packages
+			final Class packageClass = test.getEPackages()[0].getClass();
+			
+			// get the location of the class file
+			
+			destination = new File(Utils.getParentDirThreeLevels(packageClass), "package.jdo");
 
 			if (destination.exists())
 				destination.delete();
 
-			Utils.copyFile(mappingFile, destination);
+			StoreUtil.copyFile(mappingFile, destination);
 			return destination;
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while enhancing", e);
 		}
 	}
-	*/
 }
