@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.7 2006/07/27 22:32:18 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.8 2006/08/29 09:05:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -21,6 +21,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Properties;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.jpox.emf.JpoxHelper;
@@ -36,9 +38,12 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class JPOXTestbed extends Testbed {
+	
+	/** The logger for this class */
+	private static Log log = LogFactory.getLog(JPOXTestbed.class);
 
 	/** If we get here then this should be the testbed! */
 	static {
@@ -147,6 +152,7 @@ public class JPOXTestbed extends Testbed {
 		// for superclass A because it will always search for package.jdo
 		try {
 			//File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
+			log.debug("JDO FILE: " + mappingFile.getAbsolutePath());
 			JPOXEnhancer.main(new String[] { mappingFile.getAbsolutePath(), "-v" });
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while enhancing", e);
