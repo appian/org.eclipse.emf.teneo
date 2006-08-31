@@ -2,16 +2,11 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="secondarytablehibernate"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/secondarytablehibernate" nsPrefix="secondarytablehibernate">
+    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/secondarytablehibernate"
+    nsPrefix="secondarytablehibernate">
   <eClassifiers xsi:type="ecore:EClass" name="Person">
-    <eAnnotations source="http://annotation.elver.org/SecondaryTables">
-      <details key="value" value="st1 st2"/>
-    </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/SecondaryTable/st1">
-      <details key="name" value="person_address"/>
-    </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/SecondaryTable/st2">
-      <details key="name" value="person_photo"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@SecondaryTables({&#xA;&#x9;&#x9;&#x9;&#x9;@SecondaryTable(name=&quot;person_address&quot;),&#xA;&#x9;&#x9;&#x9;&#x9;@SecondaryTable(name=&quot;person_photo&quot;)})"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Person"/>
@@ -19,8 +14,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
-      <eAnnotations source="http://annotation.elver.org/Id">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -36,11 +31,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
-      <eAnnotations source="http://annotation.elver.org/Lob">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column">
-        <details key="table" value="person_address"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Column(table=&quot;person_address&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -48,12 +40,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="photo" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Base64Binary">
-      <eAnnotations source="http://annotation.elver.org/Lob">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column">
-        <details key="length" value="1000000"/>
-        <details key="table" value="person_photo"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Column(table=&quot;person_photo&quot; length=&quot;1000000&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

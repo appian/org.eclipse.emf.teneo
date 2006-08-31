@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.2 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.3 2006/08/31 23:47:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.annotations;
@@ -34,6 +34,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.LazyLibraryAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LobAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ManyToManyAction;
 import org.eclipse.emf.teneo.test.emf.annotations.MappedSuperClassAction;
+import org.eclipse.emf.teneo.test.emf.annotations.SecondaryTableActionJDO;
 import org.eclipse.emf.teneo.test.emf.annotations.SetAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SetNMAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SetResourceAction;
@@ -44,7 +45,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All generate tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class AllGenerateTests {
 
@@ -52,6 +53,7 @@ public class AllGenerateTests {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				JPOXTestbed.instance().getConfigurations());
 
+		suite.addTest(new JPOXGenerateTest(SecondaryTableActionJDO.class));
 		suite.addTest(new JPOXGenerateTest(LobAction.class));
 		suite.addTest(new JPOXGenerateTest(JoinColumnsAction.class));
 		suite.addTest(new JPOXGenerateTest(CascadeNotallAction.class));
@@ -70,6 +72,7 @@ public class AllGenerateTests {
 		suite.addTest(new JPOXGenerateTest(SetNMAction.class));
 		suite.addTest(new JPOXGenerateTest(SetResourceAction.class));
 		suite.addTest(new JPOXGenerateTest(SetAction.class));
+		
 		// fails because of jpox bug, see: http://www.jpox.org/servlet/jira/browse/CORE-2567
 		// suite.addTest(new JPOXGenerateTest(EmbeddedAction.class));
 		// suite.addTest(new JPOXGenerateTest(AttributeOverridesAction.class));

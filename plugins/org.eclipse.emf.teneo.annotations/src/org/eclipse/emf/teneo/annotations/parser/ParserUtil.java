@@ -11,27 +11,21 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ParserUtil.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: ParserUtil.java,v 1.3 2006/08/31 23:47:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
-import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
  * Util class
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class ParserUtil {

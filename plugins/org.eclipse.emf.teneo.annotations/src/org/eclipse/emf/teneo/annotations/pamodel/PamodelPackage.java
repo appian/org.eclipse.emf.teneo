@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.5 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.6 2006/08/31 23:47:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -392,13 +392,31 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
+	 * The feature id for the '<em><b>Parsed Secondary Tables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ECLASS__PARSED_SECONDARY_TABLES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 18;
+
+	/**
+	 * The feature id for the '<em><b>Parsed Primary Key Join Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ECLASS__PARSED_PRIMARY_KEY_JOIN_COLUMNS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 19;
+
+	/**
 	 * The number of structural features of the '<em>PAnnotated EClass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 18;
+	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl <em>PAnnotated EStructural Feature</em>}' class.
@@ -1312,6 +1330,28 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEClass_ParsedAssociationOverrides();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedSecondaryTables <em>Parsed Secondary Tables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Parsed Secondary Tables</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedSecondaryTables()
+	 * @see #getPAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getPAnnotatedEClass_ParsedSecondaryTables();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedPrimaryKeyJoinColumns <em>Parsed Primary Key Join Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Parsed Primary Key Join Columns</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedPrimaryKeyJoinColumns()
+	 * @see #getPAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getPAnnotatedEClass_ParsedPrimaryKeyJoinColumns();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature <em>PAnnotated EStructural Feature</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>PAnnotated EStructural Feature</em>'.
@@ -1909,6 +1949,22 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES = eINSTANCE.getPAnnotatedEClass_ParsedAssociationOverrides();
+
+		/**
+		 * The meta object literal for the '<em><b>Parsed Secondary Tables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__PARSED_SECONDARY_TABLES = eINSTANCE.getPAnnotatedEClass_ParsedSecondaryTables();
+
+		/**
+		 * The meta object literal for the '<em><b>Parsed Primary Key Join Columns</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__PARSED_PRIMARY_KEY_JOIN_COLUMNS = eINSTANCE.getPAnnotatedEClass_ParsedPrimaryKeyJoinColumns();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl <em>PAnnotated EStructural Feature</em>}' class.

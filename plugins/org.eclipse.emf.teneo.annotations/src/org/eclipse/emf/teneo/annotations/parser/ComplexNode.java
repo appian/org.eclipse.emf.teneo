@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ComplexNode.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: ComplexNode.java,v 1.3 2006/08/31 23:47:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;

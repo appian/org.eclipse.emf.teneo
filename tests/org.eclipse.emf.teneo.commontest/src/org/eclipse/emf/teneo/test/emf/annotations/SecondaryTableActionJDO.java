@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SecondaryTableActionJDO.java,v 1.1 2006/07/04 22:12:14 mtaal Exp $
+ * $Id: SecondaryTableActionJDO.java,v 1.2 2006/08/31 23:46:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations for SecondaryTable
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class SecondaryTableActionJDO extends AbstractTestAction 
 {
@@ -54,7 +54,7 @@ public class SecondaryTableActionJDO extends AbstractTestAction
         {
 	        store.beginTransaction();
 	        Printer p = factory.createPrinter();
-	        p.setMake("hp");
+	        p.setMake("HP");
 	        p.setModel("officejet 2500");
 	        p.setTonerMake("hp");
 	        p.setTonerModel("56");
@@ -65,7 +65,7 @@ public class SecondaryTableActionJDO extends AbstractTestAction
         {
 	        store.beginTransaction();
 	        Printer p = (Printer)store.getObject(Printer.class);
-	        assertTrue(p.getMake().compareTo("p") == 0);
+	        assertTrue(p.getMake().compareTo("HP") == 0);
 	        assertTrue(p.getModel().compareTo("officejet 2500") == 0);
 	        assertTrue(p.getTonerMake().compareTo("hp") == 0);
 	        store.commitTransaction();
@@ -78,7 +78,7 @@ public class SecondaryTableActionJDO extends AbstractTestAction
 			try {
 	    			conn = store.getConnection();
 	    			stmt = conn.createStatement();
-		    		ResultSet rs = stmt.executeQuery("select * from THETONER");
+		    		ResultSet rs = stmt.executeQuery("select * from thetoner");
 		    		int cnt = 0;
 		    		while (rs.next()) {
 		    			cnt++;

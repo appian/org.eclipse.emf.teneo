@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SecondarytableHibernateAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: SecondarytableHibernateAction.java,v 1.3 2006/08/31 23:46:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -74,6 +74,7 @@ public class SecondarytableHibernateAction extends AbstractTestAction {
 	 * Stores a Person in the database.
 	 */
 	private void storePerson(TestStore store) {
+		store.disableDrop();
 		store.beginTransaction();
 
 		final Person person = SecondarytablehibernateFactory.eINSTANCE.createPerson();

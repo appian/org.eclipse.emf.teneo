@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackageImpl.java,v 1.5 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: PamodelPackageImpl.java,v 1.6 2006/08/31 23:47:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -446,6 +446,24 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPAnnotatedEClass_ParsedSecondaryTables() {
+		return (EReference)pAnnotatedEClassEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPAnnotatedEClass_ParsedPrimaryKeyJoinColumns() {
+		return (EReference)pAnnotatedEClassEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPAnnotatedEStructuralFeature() {
 		return pAnnotatedEStructuralFeatureEClass;
 	}
@@ -799,6 +817,8 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		createEReference(pAnnotatedEClassEClass, PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES);
 		createEReference(pAnnotatedEClassEClass, PANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES);
 		createEReference(pAnnotatedEClassEClass, PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES);
+		createEReference(pAnnotatedEClassEClass, PANNOTATED_ECLASS__PARSED_SECONDARY_TABLES);
+		createEReference(pAnnotatedEClassEClass, PANNOTATED_ECLASS__PARSED_PRIMARY_KEY_JOIN_COLUMNS);
 
 		pAnnotatedEStructuralFeatureEClass = createEClass(PANNOTATED_ESTRUCTURAL_FEATURE);
 		createEReference(pAnnotatedEStructuralFeatureEClass, PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS);
@@ -904,6 +924,8 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		initEReference(getPAnnotatedEClass_AssociationOverrides(), thePannotationPackage.getAssociationOverrides(), null, "associationOverrides", null, 0, 1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEClass_ParsedAttributeOverrides(), thePannotationPackage.getAttributeOverride(), null, "parsedAttributeOverrides", null, 0, -1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEClass_ParsedAssociationOverrides(), thePannotationPackage.getAssociationOverride(), null, "parsedAssociationOverrides", null, 0, -1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEClass_ParsedSecondaryTables(), thePannotationPackage.getSecondaryTable(), null, "parsedSecondaryTables", null, 0, -1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEClass_ParsedPrimaryKeyJoinColumns(), thePannotationPackage.getPrimaryKeyJoinColumn(), null, "parsedPrimaryKeyJoinColumns", null, 0, -1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pAnnotatedEStructuralFeatureEClass, PAnnotatedEStructuralFeature.class, "PAnnotatedEStructuralFeature", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPAnnotatedEStructuralFeature_PaEClass(), this.getPAnnotatedEClass(), this.getPAnnotatedEClass_PaEStructuralFeatures(), "paEClass", null, 0, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablehibernatePackage.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: SecondarytablehibernatePackage.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate;
 
@@ -189,7 +189,7 @@ public interface SecondarytablehibernatePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.impl.PersonImpl <em>Person</em>}' class.
 		 * <!-- begin-user-doc -->

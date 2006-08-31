@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablePackageImpl.java,v 1.1 2006/07/11 16:57:01 mtaal Exp $
+ * $Id: SecondarytablePackageImpl.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytable.impl;
 
@@ -222,46 +222,10 @@ public class SecondarytablePackageImpl extends EPackageImpl implements Secondary
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/SecondaryTable
-		createSecondaryTableAnnotations();
-		// http://annotation.elver.org/PrimaryKeyJoinColumn
-		createPrimaryKeyJoinColumnAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Column
-		createColumnAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/SecondaryTable</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createSecondaryTableAnnotations() {
-		String source = "http://annotation.elver.org/SecondaryTable";		
-		addAnnotation
-		  (printerEClass, 
-		   source, 
-		   new String[] {
-			 "name", "THETONER"
-		   });								
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/PrimaryKeyJoinColumn</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createPrimaryKeyJoinColumnAnnotations() {
-		String source = "http://annotation.elver.org/PrimaryKeyJoinColumn";			
-		addAnnotation
-		  (printerEClass, 
-		   source, 
-		   new String[] {
-			 "name", "PRINTER_ID"
-		   });							
 	}
 
 	/**
@@ -271,7 +235,7 @@ public class SecondarytablePackageImpl extends EPackageImpl implements Secondary
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";				
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
 		addAnnotation
 		  (printerEClass, 
 		   source, 
@@ -310,24 +274,30 @@ public class SecondarytablePackageImpl extends EPackageImpl implements Secondary
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Column</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createColumnAnnotations() {
-		String source = "http://annotation.elver.org/Column";							
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
+		addAnnotation
+		  (printerEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@SecondaryTable(name=\"THETONER\" \n\t\t\t\tpkJoinColumns={@PrimaryKeyJoinColumn(name=\"PRINTER_ID\")})"
+		   });					
 		addAnnotation
 		  (getPrinter_TonerMake(), 
 		   source, 
 		   new String[] {
-			 "table", "THETONER"
+			 "appinfo", "@Column(table=\"THETONER\")"
 		   });			
 		addAnnotation
 		  (getPrinter_TonerModel(), 
 		   source, 
 		   new String[] {
-			 "table", "THETONER"
+			 "appinfo", "@Column(table=\"THETONER\")"
 		   });	
 	}
 

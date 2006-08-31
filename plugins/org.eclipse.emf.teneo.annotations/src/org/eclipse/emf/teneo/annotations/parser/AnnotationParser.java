@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationParser.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: AnnotationParser.java,v 1.3 2006/08/31 23:47:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -19,8 +19,6 @@ package org.eclipse.emf.teneo.annotations.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.ENamedElement;
 
 /**
@@ -29,8 +27,6 @@ import org.eclipse.emf.ecore.ENamedElement;
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 public class AnnotationParser {
-	/** Log it */
-	private final static Log log = LogFactory.getLog(AnnotationParser.class);
 
 	/** The StringTokenizer being used */
 	private AnnotationTokenizer annotationTokenizer;
@@ -78,6 +74,8 @@ public class AnnotationParser {
 		// now parse the next token
 		final int token = annotationTokenizer.nextToken();
 		switch (token) {
+			case AnnotationTokenizer.T_EOF:
+				return;
 			case AnnotationTokenizer.T_CONTENTSTART:
 				parseContent(cn);
 				break;

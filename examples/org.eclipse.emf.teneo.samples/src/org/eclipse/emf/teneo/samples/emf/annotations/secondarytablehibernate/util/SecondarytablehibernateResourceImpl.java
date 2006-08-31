@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablehibernateResourceImpl.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: SecondarytablehibernateResourceImpl.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.util;
 

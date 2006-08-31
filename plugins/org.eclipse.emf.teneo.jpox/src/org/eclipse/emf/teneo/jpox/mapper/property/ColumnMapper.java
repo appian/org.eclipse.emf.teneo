@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ColumnMapper.java,v 1.2 2006/08/22 22:23:29 mtaal Exp $
+ * $Id: ColumnMapper.java,v 1.3 2006/08/31 23:46:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
  * Maps the column annotation to a jpox representation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class ColumnMapper extends AbstractMapper {
@@ -76,6 +76,10 @@ public class ColumnMapper extends AbstractMapper {
 			unique.add((Element) columnElement.clone());
 		} else { // otherwise add directly to field
 			fieldElement.add(columnElement);
+		}
+		
+		if (column.getTable() != null) {
+			fieldElement.addAttribute("table", column.getTable());
 		}
 	}
 }

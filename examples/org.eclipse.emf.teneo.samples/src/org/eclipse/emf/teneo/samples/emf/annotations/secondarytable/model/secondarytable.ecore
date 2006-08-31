@@ -2,13 +2,11 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="secondarytable"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/secondarytable" nsPrefix="secondarytable">
+    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/secondarytable"
+    nsPrefix="secondarytable">
   <eClassifiers xsi:type="ecore:EClass" name="Printer">
-    <eAnnotations source="http://annotation.elver.org/SecondaryTable">
-      <details key="name" value="THETONER"/>
-    </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/PrimaryKeyJoinColumn">
-      <details key="name" value="PRINTER_ID"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@SecondaryTable(name=&quot;THETONER&quot; &#xA;&#x9;&#x9;&#x9;&#x9;pkJoinColumns={@PrimaryKeyJoinColumn(name=&quot;PRINTER_ID&quot;)})"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Printer"/>
@@ -30,8 +28,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tonerMake" unique="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
-      <eAnnotations source="http://annotation.elver.org/Column">
-        <details key="table" value="THETONER"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(table=&quot;THETONER&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -40,8 +38,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tonerModel" unique="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
-      <eAnnotations source="http://annotation.elver.org/Column">
-        <details key="table" value="THETONER"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(table=&quot;THETONER&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Printer.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: Printer.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytable;
 
@@ -24,8 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytable.SecondarytablePackage#getPrinter()
- * @model annotation="http://annotation.elver.org/SecondaryTable name='THETONER'"
- *        annotation="http://annotation.elver.org/PrimaryKeyJoinColumn name='PRINTER_ID'"
+ * @model annotation="teneo.jpa appinfo='@SecondaryTable(name=\"THETONER\" \n\t\t\t\tpkJoinColumns={@PrimaryKeyJoinColumn(name=\"PRINTER_ID\")})'"
  *        extendedMetaData="name='Printer' kind='elementOnly'"
  * @generated
  */
@@ -96,7 +95,7 @@ public interface Printer extends EObject {
 	 * @see #setTonerMake(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytable.SecondarytablePackage#getPrinter_TonerMake()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        annotation="http://annotation.elver.org/Column table='THETONER'"
+	 *        annotation="teneo.jpa appinfo='@Column(table=\"THETONER\")'"
 	 *        extendedMetaData="kind='element' name='tonerMake'"
 	 * @generated
 	 */
@@ -124,7 +123,7 @@ public interface Printer extends EObject {
 	 * @see #setTonerModel(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytable.SecondarytablePackage#getPrinter_TonerModel()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        annotation="http://annotation.elver.org/Column table='THETONER'"
+	 *        annotation="teneo.jpa appinfo='@Column(table=\"THETONER\")'"
 	 *        extendedMetaData="kind='element' name='tonerModel'"
 	 * @generated
 	 */

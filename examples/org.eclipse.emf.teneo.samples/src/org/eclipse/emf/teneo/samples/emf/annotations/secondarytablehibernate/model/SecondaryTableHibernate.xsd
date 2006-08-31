@@ -4,30 +4,27 @@
 	<xsd:complexType name="Person">
 		<xsd:annotation>
 			<!-- Declare two secondary tables. -->
-			<xsd:appinfo source="http://annotation.elver.org/SecondaryTables" ecore:key="value">st1 st2</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/SecondaryTable/st1" ecore:key="name">person_address</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/SecondaryTable/st2" ecore:key="name">person_photo</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@SecondaryTables({
+				@SecondaryTable(name="person_address"),
+				@SecondaryTable(name="person_photo")})</xsd:appinfo>
 		</xsd:annotation>
 		<xsd:sequence>
 			<xsd:element name="id" type="xsd:long">
 				<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/Id">true</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="name" type="xsd:string"/>
 			<xsd:element name="address" type="xsd:string" minOccurs="0">
 				<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/Lob">true</xsd:appinfo>					
-					<!-- Map to person_address table. -->
-					<xsd:appinfo source="http://annotation.elver.org/Column" ecore:key="table">person_address</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">@Lob
+					@Column(table="person_address")</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="photo" type="xsd:base64Binary" minOccurs="0">
 				<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/Lob">true</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/Column" ecore:key="length">1000000</xsd:appinfo>
-					<!-- Map to person_photo table. -->
-					<xsd:appinfo source="http://annotation.elver.org/Column" ecore:key="table">person_photo</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">@Lob
+					@Column(table="person_photo" length="1000000")</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>

@@ -94,6 +94,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="parsedAssociationOverrides"
         upperBound="-1" eType="ecore:EClass pannotation.ecore#//AssociationOverride"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parsedSecondaryTables"
+        upperBound="-1" eType="ecore:EClass pannotation.ecore#//SecondaryTable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parsedPrimaryKeyJoinColumns"
+        upperBound="-1" eType="ecore:EClass pannotation.ecore#//PrimaryKeyJoinColumn"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEStructuralFeature" abstract="true"
       eSuperTypes="#//PAnnotatedEModelElement">

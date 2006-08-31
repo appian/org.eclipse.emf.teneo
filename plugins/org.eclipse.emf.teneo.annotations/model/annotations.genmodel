@@ -41,6 +41,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/associationOverrides"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/parsedAttributeOverrides"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/parsedAssociationOverrides"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/parsedSecondaryTables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/parsedPrimaryKeyJoinColumns"/>
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEStructuralFeature">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/paEClass"/>

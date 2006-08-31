@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablehibernatePackageImpl.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: SecondarytablehibernatePackageImpl.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.impl;
 
@@ -222,68 +222,44 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/SecondaryTables
-		createSecondaryTablesAnnotations();
-		// http://annotation.elver.org/SecondaryTable/st1
-		createSt1Annotations();
-		// http://annotation.elver.org/SecondaryTable/st2
-		createSt2Annotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Id
-		createIdAnnotations();
-		// http://annotation.elver.org/Lob
-		createLobAnnotations();
-		// http://annotation.elver.org/Column
-		createColumnAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/SecondaryTables</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createSecondaryTablesAnnotations() {
-		String source = "http://annotation.elver.org/SecondaryTables";		
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (personEClass, 
 		   source, 
 		   new String[] {
-			 "value", "st1 st2"
-		   });												
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/SecondaryTable/st1</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createSt1Annotations() {
-		String source = "http://annotation.elver.org/SecondaryTable/st1";			
+			 "appinfo", "@SecondaryTables({\n\t\t\t\t@SecondaryTable(name=\"person_address\"),\n\t\t\t\t@SecondaryTable(name=\"person_photo\")})"
+		   });			
 		addAnnotation
-		  (personEClass, 
+		  (getPerson_Id(), 
 		   source, 
 		   new String[] {
-			 "name", "person_address"
-		   });											
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/SecondaryTable/st2</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createSt2Annotations() {
-		String source = "http://annotation.elver.org/SecondaryTable/st2";				
+			 "appinfo", "@Id"
+		   });				
 		addAnnotation
-		  (personEClass, 
+		  (getPerson_Address(), 
 		   source, 
 		   new String[] {
-			 "name", "person_photo"
-		   });										
+			 "appinfo", "@Lob\n\t\t\t\t\t@Column(table=\"person_address\")"
+		   });			
+		addAnnotation
+		  (getPerson_Photo(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Lob\n\t\t\t\t\t@Column(table=\"person_photo\" length=\"1000000\")"
+		   });	
 	}
 
 	/**
@@ -293,7 +269,7 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";					
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
 		addAnnotation
 		  (personEClass, 
 		   source, 
@@ -314,14 +290,14 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 		   new String[] {
 			 "kind", "element",
 			 "name", "name"
-		   });				
+		   });			
 		addAnnotation
 		  (getPerson_Address(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
 			 "name", "address"
-		   });				
+		   });			
 		addAnnotation
 		  (getPerson_Photo(), 
 		   source, 
@@ -329,67 +305,6 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 			 "kind", "element",
 			 "name", "photo"
 		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Id</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIdAnnotations() {
-		String source = "http://annotation.elver.org/Id";						
-		addAnnotation
-		  (getPerson_Id(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });								
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Lob</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createLobAnnotations() {
-		String source = "http://annotation.elver.org/Lob";									
-		addAnnotation
-		  (getPerson_Address(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });				
-		addAnnotation
-		  (getPerson_Photo(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });		
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Column</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createColumnAnnotations() {
-		String source = "http://annotation.elver.org/Column";										
-		addAnnotation
-		  (getPerson_Address(), 
-		   source, 
-		   new String[] {
-			 "table", "person_address"
-		   });				
-		addAnnotation
-		  (getPerson_Photo(), 
-		   source, 
-		   new String[] {
-			 "length", "1000000",
-			 "table", "person_photo"
-		   });	
 	}
 
 } //SecondarytablehibernatePackageImpl

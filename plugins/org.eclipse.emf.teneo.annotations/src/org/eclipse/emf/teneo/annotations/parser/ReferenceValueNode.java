@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ReferenceValueNode.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: ReferenceValueNode.java,v 1.3 2006/08/31 23:47:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -19,7 +19,6 @@ package org.eclipse.emf.teneo.annotations.parser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 
 
 /**

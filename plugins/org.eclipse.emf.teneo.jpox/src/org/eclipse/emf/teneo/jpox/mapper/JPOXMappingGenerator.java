@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.4 2006/08/22 22:23:29 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.5 2006/08/31 23:46:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -30,6 +30,8 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -38,7 +40,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class JPOXMappingGenerator {
@@ -187,7 +189,7 @@ public class JPOXMappingGenerator {
 
 		// process the inheritance annotation
 		mappingContext.getInheritanceMapper().map(aClass, classElement);
-
+		
 		if (aClass.getTable() != null) {
 			mappingContext.getTableMapper().map(aClass.getTable(), classElement);
 		}
@@ -198,6 +200,19 @@ public class JPOXMappingGenerator {
 		} else {
 			log.debug("No explicit id field");
 			classElement.addAttribute("identity-type", "datastore");
+		}
+
+		if (aClass.getSecondaryTables() != null && aClass.getSecondaryTables().getValue().size() > 0) {
+			for (Iterator it = aClass.getSecondaryTables().getValue().iterator(); it.hasNext();) {
+				final SecondaryTable st = (SecondaryTable)it.next();
+				final Element joinElement = classElement.addElement("join");
+				joinElement.addAttribute("table", st.getName());
+				for (Iterator kit = st.getPkJoinColumns().iterator(); kit.hasNext();) {
+					final PrimaryKeyJoinColumn pkjc = (PrimaryKeyJoinColumn)kit.next();
+					joinElement.addElement("column"). 
+						addAttribute("name", pkjc.getName());
+				}
+			}
 		}
 
 		if (aClass.hasVersionAnnotatedFeature()) {

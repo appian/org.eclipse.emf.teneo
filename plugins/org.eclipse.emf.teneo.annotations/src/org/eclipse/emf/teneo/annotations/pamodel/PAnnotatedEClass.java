@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.4 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.5 2006/08/31 23:47:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -50,6 +50,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAssociationOverrides <em>Association Overrides</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedAttributeOverrides <em>Parsed Attribute Overrides</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedAssociationOverrides <em>Parsed Association Overrides</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedSecondaryTables <em>Parsed Secondary Tables</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedPrimaryKeyJoinColumns <em>Parsed Primary Key Join Columns</em>}</li>
  * </ul>
  * </p>
  *
@@ -499,6 +501,38 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @generated
 	 */
 	EList getParsedAssociationOverrides();
+
+	/**
+	 * Returns the value of the '<em><b>Parsed Secondary Tables</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parsed Secondary Tables</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parsed Secondary Tables</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_ParsedSecondaryTables()
+	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable" containment="true"
+	 * @generated
+	 */
+	EList getParsedSecondaryTables();
+
+	/**
+	 * Returns the value of the '<em><b>Parsed Primary Key Join Columns</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parsed Primary Key Join Columns</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parsed Primary Key Join Columns</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_ParsedPrimaryKeyJoinColumns()
+	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn" containment="true"
+	 * @generated
+	 */
+	EList getParsedPrimaryKeyJoinColumns();
 
 	/**
 	 * @return Returns the List of PAnnotatedEAttributes belonging to this PAnnotatedEClass for which an Id PAnnotation
