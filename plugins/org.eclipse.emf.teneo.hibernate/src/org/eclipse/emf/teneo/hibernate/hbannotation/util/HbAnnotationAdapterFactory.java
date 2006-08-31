@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationAdapterFactory.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: HbAnnotationAdapterFactory.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -26,6 +26,13 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.*;
  * @generated
  */
 public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
+
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
@@ -75,14 +82,11 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseHbAnnotation(HbAnnotation object) {
 				return createHbAnnotationAdapter();
 			}
-			public Object caseCollectionOfElements(CollectionOfElements object) {
-				return createCollectionOfElementsAdapter();
-			}
-			public Object caseWhere(Where object) {
-				return createWhereAdapter();
-			}
 			public Object caseCascade(Cascade object) {
 				return createCascadeAdapter();
+			}
+			public Object caseCollectionOfElements(CollectionOfElements object) {
+				return createCollectionOfElementsAdapter();
 			}
 			public Object caseColumns(Columns object) {
 				return createColumnsAdapter();
@@ -96,8 +100,14 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseType(Type object) {
 				return createTypeAdapter();
 			}
+			public Object caseWhere(Where object) {
+				return createWhereAdapter();
+			}
 			public Object caseIdBag(IdBag object) {
 				return createIdBagAdapter();
+			}
+			public Object caseGenericGenerator(GenericGenerator object) {
+				return createGenericGeneratorAdapter();
 			}
 			public Object casePAnnotation(PAnnotation object) {
 				return createPAnnotationAdapter();
@@ -243,6 +253,20 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
     public Adapter createIdBagAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator <em>Generic Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator
+	 * @generated
+	 */
+	public Adapter createGenericGeneratorAdapter() {
 		return null;
 	}
 

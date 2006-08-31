@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SequenceGenerator.java,v 1.2 2006/07/04 21:56:29 mtaal Exp $
+ * $Id: SequenceGenerator.java,v 1.3 2006/08/31 22:46:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -24,7 +24,7 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  * @model annotation="http://annotation.elver.org/internal/Target 0='EClass' 1='EStructuralFeature' 2='EPackage'"
  * @generated
  */
-public interface SequenceGenerator extends PAnnotation{
+public interface SequenceGenerator extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

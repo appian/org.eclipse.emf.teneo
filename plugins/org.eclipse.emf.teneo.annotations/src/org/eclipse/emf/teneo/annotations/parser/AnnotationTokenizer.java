@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.1 2006/08/31 15:33:17 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -61,37 +61,18 @@ class AnnotationTokenizer {
 	static final int T_CONTENTEND = 8;
 
 	static final int T_COMMA = 9;
-	
-	/**
-	 * Single char array used when JTokenizer has no Source.
-	 */
 
-	private char[] nullData = new char[] { 0 };
-
-	/* -------------------------- Non-Static Section -------------------------- */
-
-	/**
-	 * Data.
-	 */
-
+	/** Data */
 	private char[] data;
 
-	/**
-	 * Length.
-	 */
-
+	/** Length */
 	private int length;
 
-	/**
-	 * Points to the start of the current token.
-	 */
+	/** Points to the start of the current token */
 
 	private int tokBeg;
 
-	/**
-	 * Ponts to the end of the current token.
-	 */
-
+	/** Ponts to the end of the current token. */
 	private int tokEnd;
 
 	/** For which model element are we doing this */
@@ -176,7 +157,7 @@ class AnnotationTokenizer {
 	
 				// TYPENAME
 				case '@': {
-					// after the dollar the identifier part needs to be found
+					++lCur; // get rid of the @
 					tokBeg = lCur; // Save starting point of current lexeme.
 	
 					do {
@@ -266,7 +247,7 @@ class AnnotationTokenizer {
 	 */
 	final String getErrorText() {
 		final StringBuffer result = new StringBuffer();
-		//result.append("E Element: " + eNamedElement.getName() + "\n");
+		result.append("E Element: " + eNamedElement.getName() + "\n");
 		result.append("Begin: " + tokBeg + "\n");
 		result.append("End: " + tokEnd + "\n");
 		result.append("Length: " + data.length + "\n");
@@ -309,7 +290,6 @@ class AnnotationTokenizer {
 		tokBeg = oldTokBeg;
 		tokEnd = oldTokEnd;
 		currentToken = oldCurrentToken;
-		System.err.println(result.toString());
 		return result.toString();
 	}
 }

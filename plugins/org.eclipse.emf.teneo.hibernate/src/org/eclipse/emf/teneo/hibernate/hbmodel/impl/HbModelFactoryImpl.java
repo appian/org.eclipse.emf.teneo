@@ -2,19 +2,23 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelFactoryImpl.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: HbModelFactoryImpl.java,v 1.2 2006/08/31 22:47:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.emf.teneo.hibernate.hbmodel.*;
+
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelFactory;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +27,13 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.*;
  * @generated
  */
 public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
+
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->

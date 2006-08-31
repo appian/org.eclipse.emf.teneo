@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ParserNode.java,v 1.1 2006/08/31 15:33:17 mtaal Exp $
+ * $Id: ParserNode.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -25,7 +25,7 @@ package org.eclipse.emf.teneo.annotations.parser;
 abstract class ParserNode {
 	
 	/** The name parsed */
-	private String name;
+	private String name = "value";
 
 	/**
 	 * @return the name

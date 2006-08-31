@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.4 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.5 2006/08/31 22:46:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -2329,6 +2329,8 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		// Create annotations
 		// http://www.eclipse.org/emf/2004/EmfaticAnnotationMap
 		createEmfaticAnnotationMapAnnotations();
+		// teneo.mapping.source
+		createTeneoAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
 		// http://annotation.elver.org/internal/Target
@@ -2357,6 +2359,23 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "Target", "http://annotation.elver.org/internal/Target",
 			 "Unsupported", "http://annotation.elver.org/internal/Unsupported"
+		   });																																																																								
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.mapping.source</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.mapping.source";			
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "0", "http://annotation.elver.org/",
+			 "1", "http://ejb.elver.org/"
 		   });																																																																							
 	}
 
@@ -2367,7 +2386,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";			
+		String source = "http://www.eclipse.org/emf/2002/Ecore";				
 		addAnnotation
 		  (pAnnotationEClass, 
 		   source, 
@@ -2491,7 +2510,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	protected void createTargetAnnotations() {
-		String source = "http://annotation.elver.org/internal/Target";				
+		String source = "http://annotation.elver.org/internal/Target";					
 		addAnnotation
 		  (attributeOverrideEClass, 
 		   source, 
@@ -2749,7 +2768,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	protected void createCollectionAnnotations() {
-		String source = "http://annotation.elver.org/internal/Collection";					
+		String source = "http://annotation.elver.org/internal/Collection";						
 		addAnnotation
 		  (attributeOverrideEClass, 
 		   source, 
@@ -2789,7 +2808,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	protected void createPersistenceMappingAnnotations() {
-		String source = "http://annotation.elver.org/internal/PersistenceMapping";							
+		String source = "http://annotation.elver.org/internal/PersistenceMapping";								
 		addAnnotation
 		  (attributeOverridesEClass, 
 		   source, 
@@ -2829,7 +2848,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	protected void createUnsupportedAnnotations() {
-		String source = "http://annotation.elver.org/internal/Unsupported";																																															
+		String source = "http://annotation.elver.org/internal/Unsupported";																																																
 		addAnnotation
 		  (mapKeyEClass, 
 		   source, 
@@ -2844,7 +2863,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	protected void createPeristenceMappingAnnotations() {
-		String source = "http://annotation.elver.org/PeristenceMapping";																					
+		String source = "http://annotation.elver.org/PeristenceMapping";																						
 		addAnnotation
 		  (embeddableEClass, 
 		   source, 

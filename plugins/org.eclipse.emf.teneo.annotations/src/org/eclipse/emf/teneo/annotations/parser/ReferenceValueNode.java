@@ -11,11 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ReferenceValueNode.java,v 1.1 2006/08/31 15:33:17 mtaal Exp $
+ * $Id: ReferenceValueNode.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -26,6 +28,8 @@ import org.eclipse.emf.ecore.EPackage;
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 class ReferenceValueNode extends ParserNode {
+	/** Log it */
+	private final static Log log = LogFactory.getLog(ArrayValueNode.class);
 
 	/** The value */
 	private ParserNode value;
@@ -45,11 +49,13 @@ class ReferenceValueNode extends ParserNode {
 	}
 	
 	/** Translate into a list of eobjects */
-	EObject convert(EPackage ePackage) {
+	EObject convert(EClassResolver ecr) {
+		log.debug("Converting reference node " + getName());
 		if (!(value instanceof ComplexNode)) {
-			throw new AnnotationParserException("An reference annotation value may only contain a typename");
+			throw new AnnotationParserException("A reference annotation value may only " +
+					"contain a typename");
 		}
 		final ComplexNode cn = (ComplexNode)value;
-		return cn.convert(ePackage);
+		return cn.convert(ecr);
 	}
 }

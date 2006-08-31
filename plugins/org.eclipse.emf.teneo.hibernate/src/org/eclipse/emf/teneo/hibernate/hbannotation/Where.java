@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Where.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: Where.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -24,6 +24,13 @@ package org.eclipse.emf.teneo.hibernate.hbannotation;
  * @generated
  */
 public interface Where extends HbAnnotation {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
+
 	/**
 	 * Returns the value of the '<em><b>Clause</b></em>' attribute.
 	 * <!-- begin-user-doc -->

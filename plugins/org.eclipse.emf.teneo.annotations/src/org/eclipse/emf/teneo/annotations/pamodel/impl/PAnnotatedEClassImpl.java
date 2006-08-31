@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.4 2006/08/31 22:46:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -27,7 +28,9 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
+import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides;
+import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
@@ -37,9 +40,9 @@ import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
+import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
-import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
@@ -63,10 +66,11 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getInheritance <em>Inheritance</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getSecondaryTables <em>Secondary Tables</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getSequenceGenerator <em>Sequence Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getTable <em>Table</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getTableGenerator <em>Table Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getAssociationOverrides <em>Association Overrides</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getParsedAttributeOverrides <em>Parsed Attribute Overrides</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getParsedAssociationOverrides <em>Parsed Association Overrides</em>}</li>
  * </ul>
  * </p>
  *
@@ -201,16 +205,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	protected SecondaryTables secondaryTables = null;
 
 	/**
-	 * The cached value of the '{@link #getSequenceGenerator() <em>Sequence Generator</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSequenceGenerator()
-	 * @generated
-	 * @ordered
-	 */
-	protected SequenceGenerator sequenceGenerator = null;
-
-	/**
 	 * The cached value of the '{@link #getTable() <em>Table</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -239,6 +233,26 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @ordered
 	 */
 	protected AssociationOverrides associationOverrides = null;
+
+	/**
+	 * The cached value of the '{@link #getParsedAttributeOverrides() <em>Parsed Attribute Overrides</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParsedAttributeOverrides()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList parsedAttributeOverrides = null;
+
+	/**
+	 * The cached value of the '{@link #getParsedAssociationOverrides() <em>Parsed Association Overrides</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParsedAssociationOverrides()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList parsedAssociationOverrides = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -794,49 +808,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SequenceGenerator getSequenceGenerator() {
-		return sequenceGenerator;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSequenceGenerator(SequenceGenerator newSequenceGenerator, NotificationChain msgs) {
-		SequenceGenerator oldSequenceGenerator = sequenceGenerator;
-		sequenceGenerator = newSequenceGenerator;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR, oldSequenceGenerator, newSequenceGenerator);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSequenceGenerator(SequenceGenerator newSequenceGenerator) {
-		if (newSequenceGenerator != sequenceGenerator) {
-			NotificationChain msgs = null;
-			if (sequenceGenerator != null)
-				msgs = ((InternalEObject)sequenceGenerator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR, null, msgs);
-			if (newSequenceGenerator != null)
-				msgs = ((InternalEObject)newSequenceGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR, null, msgs);
-			msgs = basicSetSequenceGenerator(newSequenceGenerator, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR, newSequenceGenerator, newSequenceGenerator));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Table getTable() {
 		return table;
 	}
@@ -964,6 +935,32 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getParsedAttributeOverrides() {
+		if (attributeOverrides == null) {
+			attributeOverrides = PannotationFactory.eINSTANCE.createAttributeOverrides();
+		}
+		parsedAttributeOverrides = attributeOverrides.getValue();
+		return parsedAttributeOverrides;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getParsedAssociationOverrides() {
+		if (associationOverrides == null) {
+			associationOverrides = PannotationFactory.eINSTANCE.createAssociationOverrides();
+		}
+		parsedAssociationOverrides = associationOverrides.getValue();
+		return parsedAssociationOverrides;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -1009,14 +1006,16 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return basicSetPrimaryKeyJoinColumns(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
 				return basicSetSecondaryTables(null, msgs);
-			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR:
-				return basicSetSequenceGenerator(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
 				return basicSetTable(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR:
 				return basicSetTableGenerator(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
 				return basicSetAssociationOverrides(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES:
+				return ((InternalEList)getParsedAttributeOverrides()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES:
+				return ((InternalEList)getParsedAssociationOverrides()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1068,14 +1067,16 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return getPrimaryKeyJoinColumns();
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
 				return getSecondaryTables();
-			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR:
-				return getSequenceGenerator();
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
 				return getTable();
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR:
 				return getTableGenerator();
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
 				return getAssociationOverrides();
+			case PamodelPackage.PANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES:
+				return getParsedAttributeOverrides();
+			case PamodelPackage.PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES:
+				return getParsedAssociationOverrides();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1127,9 +1128,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
 				setSecondaryTables((SecondaryTables)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR:
-				setSequenceGenerator((SequenceGenerator)newValue);
-				return;
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
 				setTable((Table)newValue);
 				return;
@@ -1138,6 +1136,14 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
 				setAssociationOverrides((AssociationOverrides)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES:
+				getParsedAttributeOverrides().clear();
+				getParsedAttributeOverrides().addAll((Collection)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES:
+				getParsedAssociationOverrides().clear();
+				getParsedAssociationOverrides().addAll((Collection)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1189,9 +1195,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
 				setSecondaryTables((SecondaryTables)null);
 				return;
-			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR:
-				setSequenceGenerator((SequenceGenerator)null);
-				return;
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
 				setTable((Table)null);
 				return;
@@ -1200,6 +1203,12 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
 				setAssociationOverrides((AssociationOverrides)null);
+				return;
+			case PamodelPackage.PANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES:
+				getParsedAttributeOverrides().clear();
+				return;
+			case PamodelPackage.PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES:
+				getParsedAssociationOverrides().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -1238,14 +1247,16 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return primaryKeyJoinColumns != null;
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
 				return secondaryTables != null;
-			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR:
-				return sequenceGenerator != null;
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
 				return table != null;
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR:
 				return tableGenerator != null;
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
 				return associationOverrides != null;
+			case PamodelPackage.PANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES:
+				return parsedAttributeOverrides != null && !parsedAttributeOverrides.isEmpty();
+			case PamodelPackage.PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES:
+				return parsedAssociationOverrides != null && !parsedAssociationOverrides.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

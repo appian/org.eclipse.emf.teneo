@@ -2,22 +2,30 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.4 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.5 2006/08/31 22:46:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
+import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
@@ -25,6 +33,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
+import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Unique;
@@ -46,6 +55,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.Unique;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getIndexed <em>Indexed</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getUnique <em>Unique</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getParsedAttributeOverrides <em>Parsed Attribute Overrides</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getParsedJoinColumns <em>Parsed Join Columns</em>}</li>
  * </ul>
  * </p>
  *
@@ -146,6 +157,26 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 	 * @ordered
 	 */
 	protected Column column = null;
+
+	/**
+	 * The cached value of the '{@link #getParsedAttributeOverrides() <em>Parsed Attribute Overrides</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParsedAttributeOverrides()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList parsedAttributeOverrides = null;
+
+	/**
+	 * The cached value of the '{@link #getParsedJoinColumns() <em>Parsed Join Columns</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParsedJoinColumns()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList parsedJoinColumns = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -595,6 +626,10 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 				return basicSetUnique(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN:
 				return basicSetColumn(null, msgs);
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES:
+				return ((InternalEList)getParsedAttributeOverrides()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS:
+				return ((InternalEList)getParsedJoinColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -642,6 +677,10 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 				return getUnique();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN:
 				return getColumn();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES:
+				return getParsedAttributeOverrides();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS:
+				return getParsedJoinColumns();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -685,6 +724,14 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN:
 				setColumn((Column)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES:
+				getParsedAttributeOverrides().clear();
+				getParsedAttributeOverrides().addAll((Collection)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS:
+				getParsedJoinColumns().clear();
+				getParsedJoinColumns().addAll((Collection)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -730,6 +777,12 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN:
 				setColumn((Column)null);
 				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES:
+				getParsedAttributeOverrides().clear();
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS:
+				getParsedJoinColumns().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -763,6 +816,10 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 				return unique != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN:
 				return column != null;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES:
+				return parsedAttributeOverrides != null && !parsedAttributeOverrides.isEmpty();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS:
+				return parsedJoinColumns != null && !parsedJoinColumns.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -821,6 +878,32 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedEModelE
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN, newColumn, newColumn));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getParsedAttributeOverrides() {
+		if (attributeOverrides == null) {
+			attributeOverrides = PannotationFactory.eINSTANCE.createAttributeOverrides();
+		}
+		parsedAttributeOverrides = attributeOverrides.getValue();
+		return parsedAttributeOverrides;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList getParsedJoinColumns() {
+		if (joinColumns == null) {
+			joinColumns = PannotationFactory.eINSTANCE.createJoinColumns();
+		}
+		parsedJoinColumns = joinColumns.getValue();
+		return parsedJoinColumns;
 	}
 
 } // PAnnotatedEStructuralFeatureImpl

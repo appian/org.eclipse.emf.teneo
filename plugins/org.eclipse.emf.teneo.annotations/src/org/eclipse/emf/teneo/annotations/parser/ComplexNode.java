@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ComplexNode.java,v 1.1 2006/08/31 15:33:17 mtaal Exp $
+ * $Id: ComplexNode.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -37,6 +39,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 class ComplexNode extends ParserNode {
+	
+	/** Log it */
+	private final static Log log = LogFactory.getLog(ComplexNode.class);
 
 	/** The value */
 	private List children = new ArrayList();
@@ -47,8 +52,13 @@ class ComplexNode extends ParserNode {
 	}
 	
 	/** Translate into an eclass */
-	EObject convert(EPackage ePackage) {
-		final EClass eClass = (EClass)ePackage.getEClassifier(getName());
+	EObject convert(EClassResolver ecr) {
+		log.debug("Converting " + getName() + " to EObject ");
+		
+		final EClass eClass = ecr.getEClass(getName()); 
+		if (eClass == null) {
+			throw new AnnotationParserException("No eclass found with name " + getName());
+		}
 		final EObject eobj = EcoreUtil.create(eClass);
 
 		for (Iterator it = children.iterator(); it.hasNext();) {
@@ -57,6 +67,7 @@ class ComplexNode extends ParserNode {
 			final EStructuralFeature efeature = ParserUtil.getEStructuralFeature(eClass, pn.getName());
 			if (child instanceof PrimitiveValueNode) {
 				final PrimitiveValueNode pvn = (PrimitiveValueNode)child;
+				log.debug("Primitive child: " + pvn.getName() + ": " + pvn.getValue());
 				if (!(efeature instanceof EAttribute)) {
 					throw new AnnotationParserException("The EFeature " + efeature.getName() + "/" +
 							eClass.getName() + " is not an eattribute but a " + efeature.getClass().getName());
@@ -65,10 +76,12 @@ class ComplexNode extends ParserNode {
 				if (!efeature.isMany()) {
 					eobj.eSet(efeature, ParserUtil.convertValue((EDataType)eType, pvn.getValue()));
 				} else {
-					String[] sources = pvn.getValue().split("\\s+");
-					List referenced = new ArrayList(sources.length);
-					for (int i = 0; i < sources.length; i++)
+					final String[] sources = pvn.getValue().split("\\s+");
+					log.debug("Child is many, splitting content into " + sources.length + " parts");
+					final List referenced = new ArrayList(sources.length);
+					for (int i = 0; i < sources.length; i++) {
 						referenced.add(ParserUtil.convertValue((EDataType)eType, sources[i]));
+					}
 					((List) eobj.eGet(efeature)).addAll(referenced);
 				}
 			} else if (child instanceof ArrayValueNode) {
@@ -81,7 +94,8 @@ class ComplexNode extends ParserNode {
 					throw new AnnotationParserException("The EFeature " + efeature.getName() + "/" +
 							eClass.getName() + " is not ismany");
 				}
-				eobj.eSet(eref, ((ArrayValueNode)child).convert(ePackage));
+				log.debug("Array child");
+				eobj.eSet(eref, ((ArrayValueNode)child).convert(ecr));
 			} else if (child instanceof ReferenceValueNode) {
 				if (!(efeature instanceof EReference)) {
 					throw new AnnotationParserException("The EFeature " + efeature.getName() + "/" +
@@ -92,7 +106,8 @@ class ComplexNode extends ParserNode {
 					throw new AnnotationParserException("The EFeature " + efeature.getName() + "/" +
 							eClass.getName() + " is ismany, while a not ismany is expected");
 				}
-				eobj.eSet(eref, ((ReferenceValueNode)child).convert(ePackage));
+				log.debug("Reference child " + pn.getName());
+				eobj.eSet(eref, ((ReferenceValueNode)child).convert(ecr));
 			}
 		}
 		return eobj;

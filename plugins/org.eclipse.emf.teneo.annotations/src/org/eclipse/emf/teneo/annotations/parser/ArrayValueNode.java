@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ArrayValueNode.java,v 1.1 2006/08/31 15:33:17 mtaal Exp $
+ * $Id: ArrayValueNode.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EPackage;
 
 
@@ -29,6 +31,8 @@ import org.eclipse.emf.ecore.EPackage;
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 class ArrayValueNode extends ParserNode{
+	/** Log it */
+	private final static Log log = LogFactory.getLog(ArrayValueNode.class);
 
 	/** The value */
 	private List children = new ArrayList();
@@ -39,15 +43,25 @@ class ArrayValueNode extends ParserNode{
 	}
 	
 	/** Translate into a list of eobjects */
-	List convert(EPackage ePackage) {
+	List convert(EClassResolver ecr) {
+		log.debug("Converting array value node");
+
 		final ArrayList result = new ArrayList();
 		for (Iterator it = children.iterator(); it.hasNext();) {
 			final ParserNode pn = (ParserNode)it.next();
-			if (!(pn instanceof ComplexNode)) {
-				throw new AnnotationParserException("An array annotation value may only contain typenames and not primitive values");
+			if (pn instanceof ComplexNode) {
+				final ComplexNode cn = (ComplexNode)pn;
+				result.add(cn.convert(ecr));
+			} else if (pn instanceof ReferenceValueNode) {
+				final ReferenceValueNode rvn = (ReferenceValueNode)pn;
+				result.add(rvn.convert(ecr));
+			} else if (pn instanceof ArrayValueNode) {
+				final ArrayValueNode avn = (ArrayValueNode)pn;
+				result.addAll(avn.convert(ecr));
+			} else {
+				throw new AnnotationParserException("Type " + pn.getClass().getName() + "/" + pn.getName() +
+						" not supported here");
 			}
-			final ComplexNode cn = (ComplexNode)pn;
-			result.add(cn.convert(ePackage));
 		}
 		return result;
 	}	

@@ -24,6 +24,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEClass" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEModelElement" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEPackage" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEPackage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEPackage" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEPackage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbGenericGenerators" upperBound="-1"
+        eType="ecore:EClass hbannotation.ecore#//GenericGenerator" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEReference" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEReference #//HbAnnotatedEStructuralFeature"/>
 </ecore:EPackage>

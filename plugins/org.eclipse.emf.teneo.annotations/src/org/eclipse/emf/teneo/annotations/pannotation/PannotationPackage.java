@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.4 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.5 2006/08/31 22:46:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EReference;
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory
  * @model kind="package"
  *        annotation="http://www.eclipse.org/emf/2004/EmfaticAnnotationMap Target='http://annotation.elver.org/internal/Target' Unsupported='http://annotation.elver.org/internal/Unsupported'"
+ *        annotation="teneo.mapping.source 0='http://annotation.elver.org/' 1='http://ejb.elver.org/'"
  * @generated
  */
 public interface PannotationPackage extends EPackage {

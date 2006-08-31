@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EannotationPamodelBuilder.java,v 1.3 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: EannotationPamodelBuilder.java,v 1.4 2006/08/31 22:46:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.pamodel.util;
@@ -25,9 +25,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.util.EAnnotationImporter;
 
@@ -117,6 +119,19 @@ public class EannotationPamodelBuilder extends BasicPamodelBuilder {
 		}
 	}
 	
+	/**
+	 * Add the given annotation to the given PAnnotatedEModelElement.
+	 * @throws IllegalArgumentException if the given PAnnotation
+	 * is not admitted for the given PAnnotatedEModelElement.
+	 */
+	protected void setPAnnotation(PAnnotatedEModelElement pElement, PAnnotation pAnnotation) {
+		EReference pAnnotationRef = PamodelPackage.eINSTANCE.pAnnotationReference(pElement.eClass(), pAnnotation.eClass());
+		if (pAnnotationRef == null)
+			throw new IllegalArgumentException("PAnnotation of type '" + pAnnotation.eClass() 
+					+ "' does not apply to elements of type '" + pElement.eClass() + "'");
+		pElement.eSet(pAnnotationRef, pAnnotation);
+	}
+
 	/**
 	 * Interpret the EAnnotation of the given EModelElement as PAnnotation
 	 * ({@see org.eclipse.emf.teneo.annotations.pannotation.util.EAnnotationImporter})

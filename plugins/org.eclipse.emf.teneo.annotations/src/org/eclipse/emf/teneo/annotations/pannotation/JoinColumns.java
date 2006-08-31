@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoinColumns.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: JoinColumns.java,v 1.3 2006/08/31 22:46:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model annotation="http://annotation.elver.org/internal/Target 0='EReference'"
  * @generated
  */
-public interface JoinColumns extends PAnnotation{
+public interface JoinColumns extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

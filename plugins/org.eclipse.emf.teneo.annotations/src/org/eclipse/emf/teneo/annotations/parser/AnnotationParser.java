@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationParser.java,v 1.1 2006/08/31 15:33:17 mtaal Exp $
+ * $Id: AnnotationParser.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -71,6 +71,9 @@ public class AnnotationParser {
 		final ComplexNode cn = new ComplexNode();
 		cn.setName(annotationTokenizer.getLexeme());
 		addToParent(pn, cn);
+		if (pn == null) {
+			parserNodes.add(cn);
+		}
 		
 		// now parse the next token
 		final int token = annotationTokenizer.nextToken();
@@ -113,16 +116,22 @@ public class AnnotationParser {
 								annotationTokenizer.getErrorText());
 					}
 					final int nextToken = annotationTokenizer.nextToken();
-					if (nextToken == annotationTokenizer.T_VALUE) { 
+					if (nextToken == AnnotationTokenizer.T_VALUE) { 
 						final String value = annotationTokenizer.getLexeme();
 						final PrimitiveValueNode vn = new PrimitiveValueNode();
 						vn.setName(identifier);
 						vn.setValue(value);
 						addToParent(pn, vn);
-					} else if (nextToken == annotationTokenizer.T_TYPENAME) {
+					} else if (nextToken == AnnotationTokenizer.T_TYPENAME) {
 						final ReferenceValueNode rvn = new ReferenceValueNode();
 						rvn.setName(identifier);
 						parseTypeName(rvn);
+						addToParent(pn, rvn);
+					} else if (nextToken == AnnotationTokenizer.T_ARRAYSTART) {
+						final ArrayValueNode avn = new ArrayValueNode();
+						avn.setName(identifier);
+						parseArray(avn);
+						addToParent(pn, avn);
 					} else if (annotationTokenizer.nextToken() != AnnotationTokenizer.T_VALUE) {
 						throw new AnnotationParserException("No value token after =, see _ for error position " +
 								annotationTokenizer.getErrorText());

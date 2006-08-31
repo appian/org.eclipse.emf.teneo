@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicPamodelBuilder.java,v 1.3 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: BasicPamodelBuilder.java,v 1.4 2006/08/31 22:46:54 mtaal Exp $
  */
 
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
@@ -33,8 +32,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelFactory;
-import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 
 /**
  * Convience class for building a <code>PAnnotatedModel</code>.
@@ -230,7 +227,6 @@ public class BasicPamodelBuilder {
 	 * Add the given annotation to the given PAnnotatedEModelElement.
 	 * @throws IllegalArgumentException if the given PAnnotation
 	 * is not admitted for the given PAnnotatedEModelElement.
-	 */
 	protected void setPAnnotation(PAnnotatedEModelElement pElement, PAnnotation pAnnotation) {
 		EReference pAnnotationRef = PamodelPackage.eINSTANCE.pAnnotationReference(pElement.eClass(), pAnnotation.eClass());
 		if (pAnnotationRef == null)
@@ -238,6 +234,7 @@ public class BasicPamodelBuilder {
 					+ "' does not apply to elements of type '" + pElement.eClass() + "'");
 		pElement.eSet(pAnnotationRef, pAnnotation);
 	}
+	 */
 	
 	/**
 	 * Add the given PAnnotation to the target model.
@@ -248,11 +245,11 @@ public class BasicPamodelBuilder {
 	 * <code>pAnnotation.getEModelElement()</code> are null.
 	 * @throws IllegalArgumentException if the given <code>PAnnotation</code>
 	 * references an invalid <code>PAnnotatedElement</code>
-	 */
 	public void add(PAnnotation pAnnotation) {
 		PAnnotatedEModelElement pElement = pElement(pAnnotation.getEModelElement());
 		setPAnnotation(pElement, pAnnotation);
 	}
+	 */
 
 	/**
 	 * Add to the the target model a new PAnnotatedPackage refering
@@ -299,10 +296,10 @@ public class BasicPamodelBuilder {
 	 * 
 	 * <p>Elements for which a corresponding PAnnotatedElement is 
 	 * already present in the target model are ignored.  
-	 */
 	public void addRecurse(EClass eClass) {
 		addRecurse((PAnnotatedEPackage) pElement(eClass), eClass);
 	}
+	 */
 
 	/**
 	 * used by {@link #addRecurse(EClass)} to avoid recomputing the

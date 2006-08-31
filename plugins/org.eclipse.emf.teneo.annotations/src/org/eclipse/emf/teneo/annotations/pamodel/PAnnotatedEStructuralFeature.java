@@ -2,9 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeature.java,v 1.5 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeature.java,v 1.6 2006/08/31 22:46:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
@@ -35,6 +37,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.Unique;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getIndexed <em>Indexed</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getUnique <em>Unique</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getColumn <em>Column</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getParsedAttributeOverrides <em>Parsed Attribute Overrides</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getParsedJoinColumns <em>Parsed Join Columns</em>}</li>
  * </ul>
  * </p>
  *
@@ -325,5 +329,37 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement {
 	 * @generated
 	 */
 	void setColumn(Column value);
+
+	/**
+	 * Returns the value of the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parsed Attribute Overrides</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parsed Attribute Overrides</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_ParsedAttributeOverrides()
+	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride" containment="true"
+	 * @generated
+	 */
+	EList getParsedAttributeOverrides();
+
+	/**
+	 * Returns the value of the '<em><b>Parsed Join Columns</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.JoinColumn}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parsed Join Columns</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parsed Join Columns</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_ParsedJoinColumns()
+	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.JoinColumn" containment="true"
+	 * @generated
+	 */
+	EList getParsedJoinColumns();
 
 } // PAnnotatedEStructuralFeature

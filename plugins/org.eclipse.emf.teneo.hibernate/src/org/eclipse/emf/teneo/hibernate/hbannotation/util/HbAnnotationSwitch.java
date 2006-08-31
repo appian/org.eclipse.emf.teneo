@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationSwitch.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: HbAnnotationSwitch.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -29,6 +29,13 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.*;
  * @generated
  */
 public class HbAnnotationSwitch {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
+
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -96,27 +103,19 @@ public class HbAnnotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS: {
-				CollectionOfElements collectionOfElements = (CollectionOfElements)theEObject;
-				Object result = caseCollectionOfElements(collectionOfElements);
-				if (result == null) result = caseHbAnnotation(collectionOfElements);
-				if (result == null) result = casePAnnotation(collectionOfElements);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case HbAnnotationPackage.WHERE: {
-				Where where = (Where)theEObject;
-				Object result = caseWhere(where);
-				if (result == null) result = caseHbAnnotation(where);
-				if (result == null) result = casePAnnotation(where);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case HbAnnotationPackage.CASCADE: {
 				Cascade cascade = (Cascade)theEObject;
 				Object result = caseCascade(cascade);
 				if (result == null) result = caseHbAnnotation(cascade);
 				if (result == null) result = casePAnnotation(cascade);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS: {
+				CollectionOfElements collectionOfElements = (CollectionOfElements)theEObject;
+				Object result = caseCollectionOfElements(collectionOfElements);
+				if (result == null) result = caseHbAnnotation(collectionOfElements);
+				if (result == null) result = casePAnnotation(collectionOfElements);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -139,6 +138,8 @@ public class HbAnnotationSwitch {
 			case HbAnnotationPackage.PARAMETER: {
 				Parameter parameter = (Parameter)theEObject;
 				Object result = caseParameter(parameter);
+				if (result == null) result = caseHbAnnotation(parameter);
+				if (result == null) result = casePAnnotation(parameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -150,11 +151,27 @@ public class HbAnnotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case HbAnnotationPackage.WHERE: {
+				Where where = (Where)theEObject;
+				Object result = caseWhere(where);
+				if (result == null) result = caseHbAnnotation(where);
+				if (result == null) result = casePAnnotation(where);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case HbAnnotationPackage.ID_BAG: {
 				IdBag idBag = (IdBag)theEObject;
 				Object result = caseIdBag(idBag);
 				if (result == null) result = caseHbAnnotation(idBag);
 				if (result == null) result = casePAnnotation(idBag);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbAnnotationPackage.GENERIC_GENERATOR: {
+				GenericGenerator genericGenerator = (GenericGenerator)theEObject;
+				Object result = caseGenericGenerator(genericGenerator);
+				if (result == null) result = caseHbAnnotation(genericGenerator);
+				if (result == null) result = casePAnnotation(genericGenerator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -294,6 +311,21 @@ public class HbAnnotationSwitch {
 	 * @generated
 	 */
     public Object caseIdBag(IdBag object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Generic Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Generic Generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseGenericGenerator(GenericGenerator object) {
 		return null;
 	}
 

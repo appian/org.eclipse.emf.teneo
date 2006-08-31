@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackage.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PAnnotatedEPackage.java,v 1.3 2006/08/31 22:46:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='AtMostOneEClass'"
  * @generated
  */
-public interface PAnnotatedEPackage extends PAnnotatedEModelElement{
+public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -111,8 +111,8 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement{
 	 * Returns the value of the '<em><b>Sequence Generator</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Sequence Generator</em>' containment reference isn't clear, there really should be
-	 * more of a description here...
+	 * If the meaning of the '<em>Sequence Generator</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sequence Generator</em>' containment reference.
@@ -125,7 +125,8 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement{
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getSequenceGenerator <em>Sequence Generator</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Sequence Generator</em>' containment reference.
 	 * @see #getSequenceGenerator()
 	 * @generated

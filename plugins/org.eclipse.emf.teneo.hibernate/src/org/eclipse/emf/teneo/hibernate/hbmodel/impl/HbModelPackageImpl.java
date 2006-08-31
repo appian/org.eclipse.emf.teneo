@@ -2,24 +2,20 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackageImpl.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: HbModelPackageImpl.java,v 1.2 2006/08/31 22:47:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
+
+import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
-
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl;
-
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement;
@@ -36,6 +32,13 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
  * @generated
  */
 public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -268,6 +271,15 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getHbAnnotatedEPackage_HbGenericGenerators() {
+		return (EReference)hbAnnotatedEPackageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHbAnnotatedEReference() {
 		return hbAnnotatedEReferenceEClass;
 	}
@@ -316,6 +328,7 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 		hbAnnotatedEModelElementEClass = createEClass(HB_ANNOTATED_EMODEL_ELEMENT);
 
 		hbAnnotatedEPackageEClass = createEClass(HB_ANNOTATED_EPACKAGE);
+		createEReference(hbAnnotatedEPackageEClass, HB_ANNOTATED_EPACKAGE__HB_GENERIC_GENERATORS);
 
 		hbAnnotatedEReferenceEClass = createEClass(HB_ANNOTATED_EREFERENCE);
 	}
@@ -374,6 +387,7 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 		initEClass(hbAnnotatedEModelElementEClass, HbAnnotatedEModelElement.class, "HbAnnotatedEModelElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(hbAnnotatedEPackageEClass, HbAnnotatedEPackage.class, "HbAnnotatedEPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHbAnnotatedEPackage_HbGenericGenerators(), theHbAnnotationPackage.getGenericGenerator(), null, "hbGenericGenerators", null, 0, -1, HbAnnotatedEPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hbAnnotatedEReferenceEClass, HbAnnotatedEReference.class, "HbAnnotatedEReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -381,4 +395,17 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 		createResource(eNS_URI);
 	}
 
+	/**
+	 * {@see PamodelPackage#pAnnotationReference(EClass, EClass)}
+	 */
+	public EReference pAnnotationReference(EClass paElementEClass, EClass pAnnotationEClass) {
+		if (PamodelPackage.eINSTANCE.getPAnnotatedEModelElement().isSuperTypeOf(paElementEClass) &&
+			PannotationPackage.eINSTANCE.getPAnnotation().isSuperTypeOf(pAnnotationEClass))
+			for (Iterator i = paElementEClass.getEAllReferences().iterator(); i.hasNext(); ) {
+				EReference r = (EReference) i.next();
+				if (r.getEReferenceType() == pAnnotationEClass)
+					return r;
+			}
+		return null;
+	}
 } //HbModelPackageImpl

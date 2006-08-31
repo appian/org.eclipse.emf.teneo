@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackageImpl.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: HbAnnotationPackageImpl.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -11,16 +11,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EValidator;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
-
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
+import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
@@ -29,11 +26,8 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.util.HbAnnotationValidator;
-
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
-
 import org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbModelPackageImpl;
 
 /**
@@ -43,6 +37,13 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbModelPackageImpl;
  * @generated
  */
 public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotationPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -105,6 +106,13 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * @generated
 	 */
 	private EClass idBagEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass genericGeneratorEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -386,6 +394,42 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGenericGenerator() {
+		return genericGeneratorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGenericGenerator_Name() {
+		return (EAttribute)genericGeneratorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGenericGenerator_Strategy() {
+		return (EAttribute)genericGeneratorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGenericGenerator_Parameters() {
+		return (EReference)genericGeneratorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HbAnnotationFactory getHbAnnotationFactory() {
 		return (HbAnnotationFactory)getEFactoryInstance();
 	}
@@ -411,15 +455,12 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		// Create classes and their features
 		hbAnnotationEClass = createEClass(HB_ANNOTATION);
 
+		cascadeEClass = createEClass(CASCADE);
+		createEAttribute(cascadeEClass, CASCADE__VALUE);
+
 		collectionOfElementsEClass = createEClass(COLLECTION_OF_ELEMENTS);
 		createEAttribute(collectionOfElementsEClass, COLLECTION_OF_ELEMENTS__TARGET_ELEMENT);
 		createEAttribute(collectionOfElementsEClass, COLLECTION_OF_ELEMENTS__FETCH);
-
-		whereEClass = createEClass(WHERE);
-		createEAttribute(whereEClass, WHERE__CLAUSE);
-
-		cascadeEClass = createEClass(CASCADE);
-		createEAttribute(cascadeEClass, CASCADE__VALUE);
 
 		columnsEClass = createEClass(COLUMNS);
 		createEReference(columnsEClass, COLUMNS__VALUE);
@@ -435,9 +476,17 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		createEAttribute(typeEClass, TYPE__TYPE);
 		createEReference(typeEClass, TYPE__PARAMETERS);
 
+		whereEClass = createEClass(WHERE);
+		createEAttribute(whereEClass, WHERE__CLAUSE);
+
 		idBagEClass = createEClass(ID_BAG);
 		createEAttribute(idBagEClass, ID_BAG__GENERATOR);
 		createEAttribute(idBagEClass, ID_BAG__TYPE);
+
+		genericGeneratorEClass = createEClass(GENERIC_GENERATOR);
+		createEAttribute(genericGeneratorEClass, GENERIC_GENERATOR__NAME);
+		createEAttribute(genericGeneratorEClass, GENERIC_GENERATOR__STRATEGY);
+		createEReference(genericGeneratorEClass, GENERIC_GENERATOR__PARAMETERS);
 	}
 
 	/**
@@ -468,26 +517,25 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 
 		// Add supertypes to classes
 		hbAnnotationEClass.getESuperTypes().add(thePannotationPackage.getPAnnotation());
-		collectionOfElementsEClass.getESuperTypes().add(this.getHbAnnotation());
-		whereEClass.getESuperTypes().add(this.getHbAnnotation());
 		cascadeEClass.getESuperTypes().add(this.getHbAnnotation());
+		collectionOfElementsEClass.getESuperTypes().add(this.getHbAnnotation());
 		columnsEClass.getESuperTypes().add(this.getHbAnnotation());
 		mapKeyEClass.getESuperTypes().add(this.getHbAnnotation());
+		parameterEClass.getESuperTypes().add(this.getHbAnnotation());
 		typeEClass.getESuperTypes().add(this.getHbAnnotation());
+		whereEClass.getESuperTypes().add(this.getHbAnnotation());
 		idBagEClass.getESuperTypes().add(this.getHbAnnotation());
+		genericGeneratorEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(cascadeEClass, Cascade.class, "Cascade", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCascade_Value(), thePannotationPackage.getCascadeType(), "value", null, 0, -1, Cascade.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(collectionOfElementsEClass, CollectionOfElements.class, "CollectionOfElements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCollectionOfElements_TargetElement(), ecorePackage.getEString(), "targetElement", null, 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCollectionOfElements_Fetch(), thePannotationPackage.getFetchType(), "fetch", "LAZY", 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(whereEClass, Where.class, "Where", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWhere_Clause(), ecorePackage.getEString(), "clause", null, 0, 1, Where.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(cascadeEClass, Cascade.class, "Cascade", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCascade_Value(), thePannotationPackage.getCascadeType(), "value", null, 0, -1, Cascade.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(columnsEClass, Columns.class, "Columns", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getColumns_Value(), thePannotationPackage.getColumn(), null, "value", null, 0, -1, Columns.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -503,9 +551,17 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		initEAttribute(getType_Type(), ecorePackage.getEString(), "type", null, 1, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getType_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(whereEClass, Where.class, "Where", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWhere_Clause(), ecorePackage.getEString(), "clause", null, 0, 1, Where.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(idBagEClass, IdBag.class, "IdBag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdBag_Generator(), ecorePackage.getEString(), "generator", "increment", 0, 1, IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIdBag_Type(), ecorePackage.getEString(), "type", "long", 0, 1, IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(genericGeneratorEClass, GenericGenerator.class, "GenericGenerator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGenericGenerator_Name(), ecorePackage.getEString(), "name", null, 1, 1, GenericGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenericGenerator_Strategy(), ecorePackage.getEString(), "strategy", null, 1, 1, GenericGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGenericGenerator_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, GenericGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -517,6 +573,8 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		createEcoreAnnotations();
 		// http://annotation.elver.org/internal/Target
 		createTargetAnnotations();
+		// http://annotation.elver.org/internal/Collection
+		createCollectionAnnotations();
 	}
 
 	/**
@@ -531,9 +589,8 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		  (this, 
 		   source, 
 		   new String[] {
-			 "0", "teneo.hibernate:",
 			 "1", "http://hibernate.elver.org/"
-		   });								
+		   });												
 	}
 
 	/**
@@ -549,7 +606,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });							
+		   });											
 	}
 
 	/**
@@ -583,6 +640,14 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
+		   });			
+		addAnnotation
+		  (parameterEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature",
+			 "1", "EClass",
+			 "2", "EPackage"
 		   });		
 		addAnnotation
 		  (typeEClass, 
@@ -601,6 +666,38 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
+		   });		
+		addAnnotation
+		  (genericGeneratorEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature",
+			 "1", "EClass",
+			 "2", "EPackage"
+		   });	
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://annotation.elver.org/internal/Collection</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createCollectionAnnotations() {
+		String source = "http://annotation.elver.org/internal/Collection";								
+		addAnnotation
+		  (parameterEClass, 
+		   source, 
+		   new String[] {
+			 "name", "Parameters",
+			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
+		   });							
+		addAnnotation
+		  (genericGeneratorEClass, 
+		   source, 
+		   new String[] {
+			 "name", "GenericGenerators",
+			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
 		   });
 	}
 

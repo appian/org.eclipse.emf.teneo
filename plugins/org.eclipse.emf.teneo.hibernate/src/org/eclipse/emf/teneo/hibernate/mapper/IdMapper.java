@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.4 2006/08/03 09:58:19 mtaal Exp $
+ * $Id: IdMapper.java,v 1.5 2006/08/31 22:47:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -28,12 +28,16 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.processing.IdProcessor;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
+import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -218,18 +222,53 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 			}
 
 			final Element generatorElement = usedIdElement.addElement("generator");
-			generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
 			if (GenerationType.TABLE_LITERAL.equals(generatedValue.getStrategy())) {
+				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
 				generatorElement.addElement("param").addAttribute("name", "table").setText("uid_table"); // externalize
 				// this
 				generatorElement.addElement("param").addAttribute("name", "column").setText("next_hi_value_column"); // externalize
 				// this
-			}
-			if (generatedValue.getGenerator() != null) {
-				final SequenceGenerator sg = id.getPaModel().getSequenceGenerator(id.getAnnotatedEAttribute(),
-						generatedValue.getGenerator());
-				generatorElement.addElement("param").addAttribute("name", "sequence").setText(sg.getSequenceName());
+			} else if (generatedValue.getGenerator() != null) {
+				final GenericGenerator gg = getGenericGenerator(id.getPaModel(), generatedValue.getGenerator());
+				if (gg != null) {
+					log.debug("GenericGenerator the strategy in the GeneratedValue is ignored (if even set)");
+					generatorElement.addAttribute("class", gg.getStrategy());
+					if (gg.getParameters() != null) {
+						for (Iterator params = gg.getParameters().iterator(); params.hasNext();) {
+							final Parameter param = (Parameter)params.next();
+							generatorElement.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
+						}
+					}
+				} else {
+					generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
+					final SequenceGenerator sg = id.getPaModel().getSequenceGenerator(id.getAnnotatedEAttribute(),
+							generatedValue.getGenerator());
+					generatorElement.addElement("param").addAttribute("name", "sequence").setText(sg.getSequenceName());
+				}
+			} else {
+				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
 			}
 		}
+	}
+	
+
+	/** Returns a sequence generator on the basis of its name, if not found then an exception is thrown.
+	 * efeature is passed for debugging purposes. */
+	public GenericGenerator getGenericGenerator(PAnnotatedModel paModel, String name) {
+		for (Iterator it = paModel.getPaEPackages().iterator(); it.hasNext();) {
+			final HbAnnotatedEPackage pae = (HbAnnotatedEPackage)it.next();
+			for (Iterator sit = pae.getHbGenericGenerators().iterator(); sit.hasNext();) {
+				final GenericGenerator gg = (GenericGenerator)sit.next();
+				if (gg.getName() != null && gg.getName().compareTo(name) == 0) {
+					if (gg.getStrategy() == null) {
+						throw new ProcessingException("The GenericGenerator: " + name + " has no strategy defined!");
+					}
+					
+					return gg;
+				}
+			}
+		}
+		log.debug("No GenericGenerator defined under name: " + name);
+		return null;
 	}
 }

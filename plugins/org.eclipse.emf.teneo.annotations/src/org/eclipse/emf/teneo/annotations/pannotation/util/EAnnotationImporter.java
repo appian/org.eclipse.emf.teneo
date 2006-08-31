@@ -12,12 +12,13 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EAnnotationImporter.java,v 1.3 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: EAnnotationImporter.java,v 1.4 2006/08/31 22:46:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -34,8 +35,11 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
+import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
@@ -108,32 +112,43 @@ public class EAnnotationImporter {
 		void error(String msg, EAnnotation source);
 	}
 
-	/** Prefix for PAnntation encoding annotation source */
-	public static final String ANNOTATION_URI_PREFIX = "http://annotation.elver.org/";
-
-	/** Prefix for EJB PAnntation encoding annotation source */
-	public static final String ANNOTATION_URI_PREFIX_EJB = "http://ejb.elver.org/";
-
 	/** work around for EMF bug ??? Ignore details with this key */
 	public static final String IGNORE_DETAIL_KEY = "appinfo";
 
-	/**
-	 * @return true if and only if the given source is the source of a PAnnotation
-	 */
-	public boolean isPAnnotationSource(String source) {
-		return source != null
-				&& (source.startsWith(ANNOTATION_URI_PREFIX) || source.startsWith(ANNOTATION_URI_PREFIX_EJB));
-	}
+    /** Does it have one of the sources defined in the eannotations of the epackages */
+    public boolean isPAnnotationSource(String source) {
+        return null != getPrefix(source);
+    }
 
-	/** Returns the correct prefix to use */
-	protected String getPrefix(String source) {
-		if (source.indexOf(ANNOTATION_URI_PREFIX) != -1) {
-			return ANNOTATION_URI_PREFIX;
-		} else if (source.indexOf(ANNOTATION_URI_PREFIX_EJB) != -1) {
-			return ANNOTATION_URI_PREFIX_EJB;
-		} else {
-			return ANNOTATION_URI_PREFIX;
-		}
+    /** Returns the prefix of the annotation source, search uses using the prefixes defined
+     * in the annotation teneo.mapping.source on the epackage */
+    protected String getPrefix(String source) {
+        if (source == null) {
+            return null;
+        }
+        final Collection prefixes =
+                PannotationPackage.eINSTANCE.getEAnnotation(
+                        "teneo.mapping.source").getDetails().values();
+        for (Iterator iter = prefixes.iterator(); iter.hasNext();) {
+            String prefix = (String) iter.next();
+            if (source.startsWith(prefix)) {
+                return prefix;
+            }
+        }
+        return null;
+    }
+	
+	/**
+	 * Add the given annotation to the given PAnnotatedEModelElement.
+	 * @throws IllegalArgumentException if the given PAnnotation
+	 * is not admitted for the given PAnnotatedEModelElement.
+	 */
+	protected void setPAnnotation(PAnnotatedEModelElement pElement, PAnnotation pAnnotation) {
+		EReference pAnnotationRef = PamodelPackage.eINSTANCE.pAnnotationReference(pElement.eClass(), pAnnotation.eClass());
+		if (pAnnotationRef == null)
+			throw new IllegalArgumentException("PAnnotation of type '" + pAnnotation.eClass() 
+					+ "' does not apply to elements of type '" + pElement.eClass() + "'");
+		pElement.eSet(pAnnotationRef, pAnnotation);
 	}
 
 	/**
@@ -209,7 +224,7 @@ public class EAnnotationImporter {
 	 * @return Returns the "collection" pannotation eclass that has elements of the given eclass. Returns null if no
 	 *         such pannotation exists exists.
 	 */
-	private EClass getPAnnotationCollectionEClass(EClass annotationEClass) {
+	protected EClass getPAnnotationCollectionEClass(EClass annotationEClass) {
 		if (null == annotationEClass || !PannotationPackage.eINSTANCE.getPAnnotation().isSuperTypeOf(annotationEClass))
 			return null;
 		EAnnotation annotation = annotationEClass.getEAnnotation("http://annotation.elver.org/internal/Collection");
@@ -218,6 +233,7 @@ public class EAnnotationImporter {
 		}
 		String name = (String) annotation.getDetails().get("name");
 		String pkgNS = (String) annotation.getDetails().get("packageNS");
+	
 		pkgNS = (null == pkgNS) ? PannotationPackage.eNS_URI : pkgNS;
 		EPackage ePkg = EPackage.Registry.INSTANCE.getEPackage(pkgNS);
 		return (null == ePkg) ? null : (EClass) ePkg.eResource().getEObject("//" + name);
@@ -229,7 +245,7 @@ public class EAnnotationImporter {
 	 * @throws IllegalArgumentException
 	 *             if the given EClass is not a "collection" EClass.
 	 */
-	private PAnnotation createPAnnotationCollection(EClass collAnnotationEClass, List memberPAnnotations) {
+	protected PAnnotation createPAnnotationCollection(EClass collAnnotationEClass, List memberPAnnotations) {
 		if (!PannotationPackage.eINSTANCE.getPAnnotation().isSuperTypeOf(collAnnotationEClass))
 			throw new IllegalArgumentException(collAnnotationEClass.getName() + " is not a \"collection\" PAnnotation.");
 		EStructuralFeature valueFeature = collAnnotationEClass.getEStructuralFeature("value");
@@ -293,12 +309,13 @@ public class EAnnotationImporter {
 	 */
 	protected PAnnotation createPAnnotation(EAnnotation eAnnotation) throws EAnnotationImportException {
 		// Indirection so that the annotation processing mechanism can be extended.
-		EClass pAnnotationEClass = getElverAnnotationEClass(eAnnotation);
+		EClass pAnnotationEClass = getPAnnotationEClass(eAnnotation);
 		if (pAnnotationEClass == null) {
 			error("Unknown annotation type", eAnnotation);
 			throw new EAnnotationImportException("Unknown annotation type");
 		}
-		PAnnotation pAnnotation = (PAnnotation) EcoreUtil.create(pAnnotationEClass);
+		Object o = EcoreUtil.create(pAnnotationEClass);
+		PAnnotation pAnnotation = (PAnnotation) o;
 		pAnnotation.setEModelElement(eAnnotation.getEModelElement());
 		return pAnnotation;
 	}
@@ -358,33 +375,6 @@ public class EAnnotationImporter {
 		}
 	}
 
-	// Methods allows for easy overridding to add persistence-specific annotations
-	// These methods all provide indirection to existing methods so that extensions can
-	// plug in and/or override as necessary
-	protected boolean isElverAnnotationSource(String source) {
-		return isPAnnotationSource(source);
-	}
-
-	protected boolean isElverSubordinate(EAnnotation eAnnotation) {
-		return isPAnnotationSubordinate(eAnnotation);
-	}
-
-	protected String getElverSubordinateId(EAnnotation eAnnotation) {
-		return getPAnnotationSubordinateId(eAnnotation);
-	}
-
-	protected EClass getElverAnnotationEClass(EAnnotation eAnnotation) {
-		return getPAnnotationEClass(eAnnotation);
-	}
-
-	protected EClass getElverCollectionEClass(EClass eClass) {
-		return getPAnnotationCollectionEClass(eClass);
-	}
-
-	protected PAnnotation createElverCollection(EClass collAnnotationEClass, List memberPAnnotations) {
-		return createPAnnotationCollection(collAnnotationEClass, memberPAnnotations);
-	}
-
 	/**
 	 * Sets the list of visible annotations used used the import process.
 	 */
@@ -400,15 +390,15 @@ public class EAnnotationImporter {
 			EAnnotation eAnnotation = (EAnnotation) i.next();
 			// Make use of indirection to allow behaviors to be customized
 			// for annotation processing extensions
-			if (isElverAnnotationSource(eAnnotation.getSource())) { // ignore otherwise
-				if (isElverSubordinate(eAnnotation)) {
-					subAnnotationsById.put(getElverSubordinateId(eAnnotation), eAnnotation);
+			if (isPAnnotationSource(eAnnotation.getSource())) { // ignore otherwise
+				if (isPAnnotationSubordinate(eAnnotation)) {
+					subAnnotationsById.put(getPAnnotationSubordinateId(eAnnotation), eAnnotation);
 				} else {
 					// the collection pannotation is retrieved, each annotation which can be specified individually or
 					// as part
 					// of a collection is identified here
 
-					EClass containerPAnnotationEClass = getElverCollectionEClass(getElverAnnotationEClass(eAnnotation));
+					EClass containerPAnnotationEClass = getPAnnotationCollectionEClass(getPAnnotationEClass(eAnnotation));
 					if (containerPAnnotationEClass != null
 							&& PannotationPackage.eINSTANCE.isTarget(containerPAnnotationEClass, eAnnotation
 									.getEModelElement().eClass())) {
@@ -430,7 +420,7 @@ public class EAnnotationImporter {
 		Set usedAnnotations = new HashSet(collectibleAnnotationsByType.keySet());
 		for (ListIterator i = mainAnnotations.listIterator(); i.hasNext();) {
 			EAnnotation eAnnotation = (EAnnotation) i.next();
-			if (!usedAnnotations.add(getElverAnnotationEClass(eAnnotation))) {
+			if (!usedAnnotations.add(getPAnnotationEClass(eAnnotation))) {
 				error("Duplicate annotation", eAnnotation);
 				// drop duplicate
 				i.remove();
@@ -461,7 +451,7 @@ public class EAnnotationImporter {
 	 *             if the conversion fails.
 	 */
 	protected void initPAnnotation(PAnnotation pAnnotation, EAnnotation eAnnotation) throws EAnnotationImportException {
-		if (pAnnotation.eClass() != getElverAnnotationEClass(eAnnotation)) {
+		if (pAnnotation.eClass() != getPAnnotationEClass(eAnnotation)) {
 			error("Trying to initialize " + pAnnotation + " from " + eAnnotation.getSource(), eAnnotation);
 			throw new EAnnotationImportException("Trying to initialize " + pAnnotation + " from "
 					+ eAnnotation.getSource() + " in " + eAnnotation.getSource());
@@ -535,7 +525,7 @@ public class EAnnotationImporter {
 					EModelElement targetElement = ((EAnnotation) componentEAnnotations.get(0)).getEModelElement();
 					for (Iterator j = componentEAnnotations.iterator(); j.hasNext();)
 						componentPAnnotations.add(process((EAnnotation) j.next()));
-					PAnnotation collAnnotation = createElverCollection(collAnnotationEClass, componentPAnnotations);
+					PAnnotation collAnnotation = createPAnnotationCollection(collAnnotationEClass, componentPAnnotations);
 					collAnnotation.setEModelElement(targetElement);
 					report(collAnnotation);
 				} catch (EAnnotationImportException e) {
@@ -573,7 +563,7 @@ public class EAnnotationImporter {
 		for (Iterator it = typeAnnotations.iterator(); it.hasNext();) {
 			final EAnnotation annotation = (EAnnotation) it.next();
 			if (eAttribute.getEAnnotation(annotation.getSource()) == null) {
-				EClass pAnnotationEClass = getElverAnnotationEClass(annotation);
+				EClass pAnnotationEClass = getPAnnotationEClass(annotation);
 				if (pAnnotationEClass != null
 						&& PannotationPackage.eINSTANCE.isTarget(pAnnotationEClass, eAttribute.eClass())) {
 					if (copier == null) {

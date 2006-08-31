@@ -2,14 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackage.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: HbModelPackage.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 
 /**
@@ -28,6 +27,13 @@ import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
  * @generated
  */
 public interface HbModelPackage extends EPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
+
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -186,6 +192,24 @@ public interface HbModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__COLUMN = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN;
+
+	/**
+	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Parsed Join Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS;
 
 	/**
 	 * The feature id for the '<em><b>Hb Where</b></em>' containment reference.
@@ -376,6 +400,24 @@ public interface HbModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_EATTRIBUTE__COLUMN = PamodelPackage.PANNOTATED_EATTRIBUTE__COLUMN;
+
+	/**
+	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__PARSED_ATTRIBUTE_OVERRIDES = PamodelPackage.PANNOTATED_EATTRIBUTE__PARSED_ATTRIBUTE_OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Parsed Join Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__PARSED_JOIN_COLUMNS = PamodelPackage.PANNOTATED_EATTRIBUTE__PARSED_JOIN_COLUMNS;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EAttribute</b></em>' reference.
@@ -667,15 +709,6 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__SECONDARY_TABLES = PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES;
 
 	/**
-	 * The feature id for the '<em><b>Sequence Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_ECLASS__SEQUENCE_GENERATOR = PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATOR;
-
-	/**
 	 * The feature id for the '<em><b>Table</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -701,6 +734,24 @@ public interface HbModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_ECLASS__ASSOCIATION_OVERRIDES = PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES = PamodelPackage.PANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Parsed Association Overrides</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES = PamodelPackage.PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
@@ -786,7 +837,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EPACKAGE__PA_ECLASSES = PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES;
 
 	/**
-	 * The feature id for the '<em><b>Sequence Generator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Sequence Generators</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -804,13 +855,22 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EPACKAGE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR;
 
 	/**
+	 * The feature id for the '<em><b>Hb Generic Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EPACKAGE__HB_GENERIC_GENERATORS = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EPackage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EPACKAGE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 0;
+	int HB_ANNOTATED_EPACKAGE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl <em>Hb Annotated EReference</em>}' class.
@@ -938,6 +998,24 @@ public interface HbModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_EREFERENCE__COLUMN = PamodelPackage.PANNOTATED_EREFERENCE__COLUMN;
+
+	/**
+	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__PARSED_ATTRIBUTE_OVERRIDES = PamodelPackage.PANNOTATED_EREFERENCE__PARSED_ATTRIBUTE_OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Parsed Join Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__PARSED_JOIN_COLUMNS = PamodelPackage.PANNOTATED_EREFERENCE__PARSED_JOIN_COLUMNS;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EReference</b></em>' reference.
@@ -1212,6 +1290,17 @@ public interface HbModelPackage extends EPackage {
 	EClass getHbAnnotatedEPackage();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbGenericGenerators <em>Hb Generic Generators</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Hb Generic Generators</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbGenericGenerators()
+	 * @see #getHbAnnotatedEPackage()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEPackage_HbGenericGenerators();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference <em>Hb Annotated EReference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1242,7 +1331,7 @@ public interface HbModelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature <em>Hb Annotated EStructural Feature</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1350,6 +1439,14 @@ public interface HbModelPackage extends EPackage {
 		EClass HB_ANNOTATED_EPACKAGE = eINSTANCE.getHbAnnotatedEPackage();
 
 		/**
+		 * The meta object literal for the '<em><b>Hb Generic Generators</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EPACKAGE__HB_GENERIC_GENERATORS = eINSTANCE.getHbAnnotatedEPackage_HbGenericGenerators();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl <em>Hb Annotated EReference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1360,5 +1457,10 @@ public interface HbModelPackage extends EPackage {
 		EClass HB_ANNOTATED_EREFERENCE = eINSTANCE.getHbAnnotatedEReference();
 
 	}
+
+	/**
+	 * {@see PamodelPackage#pAnnotationReference(EClass, EClass)}
+	 */
+	public EReference pAnnotationReference(EClass paElementEClass, EClass pAnnotationEClass);
 
 } //HbModelPackage

@@ -1,15 +1,33 @@
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Douglas Bitting
+ * </copyright>
+ *
+ * $Id: HbAnnotationModelBuilder.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
+import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.util.EannotationPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.util.EAnnotationImporter;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelFactory;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
 
 /**
  * This class create the Hibernate-model versions of the various PaAnnotatedE* objects. 
@@ -30,6 +48,20 @@ public class HbAnnotationModelBuilder extends EannotationPamodelBuilder {
 					HbAnnotationModelBuilder.this.error(msg, source);
 				}
 			});
+	}
+
+	/**
+	 * Add the given annotation to the given PAnnotatedEModelElement.
+	 * @throws IllegalArgumentException if the given PAnnotation
+	 * is not admitted for the given PAnnotatedEModelElement.
+	 */
+	protected void setPAnnotation(PAnnotatedEModelElement pElement, PAnnotation pAnnotation) {
+		EReference pAnnotationRef = HbModelPackage.eINSTANCE.pAnnotationReference(pElement.eClass(), pAnnotation.eClass());
+		if (pAnnotationRef == null) {
+			super.setPAnnotation(pElement, pAnnotation);
+		} else {
+			pElement.eSet(pAnnotationRef, pAnnotation);
+		}
 	}
 
 	protected PAnnotatedEModelElement doCreate(EModelElement eModelElement) throws AssertionError {

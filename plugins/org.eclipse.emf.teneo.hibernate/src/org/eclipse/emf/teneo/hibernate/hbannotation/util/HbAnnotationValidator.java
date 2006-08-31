@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.1 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -30,6 +30,13 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.*;
  * @generated
  */
 public class HbAnnotationValidator extends EObjectValidator {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
+
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -103,12 +110,10 @@ public class HbAnnotationValidator extends EObjectValidator {
 		switch (classifierID) {
 			case HbAnnotationPackage.HB_ANNOTATION:
 				return validateHbAnnotation((HbAnnotation)value, diagnostics, context);
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS:
-				return validateCollectionOfElements((CollectionOfElements)value, diagnostics, context);
-			case HbAnnotationPackage.WHERE:
-				return validateWhere((Where)value, diagnostics, context);
 			case HbAnnotationPackage.CASCADE:
 				return validateCascade((Cascade)value, diagnostics, context);
+			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS:
+				return validateCollectionOfElements((CollectionOfElements)value, diagnostics, context);
 			case HbAnnotationPackage.COLUMNS:
 				return validateColumns((Columns)value, diagnostics, context);
 			case HbAnnotationPackage.MAP_KEY:
@@ -117,8 +122,12 @@ public class HbAnnotationValidator extends EObjectValidator {
 				return validateParameter((Parameter)value, diagnostics, context);
 			case HbAnnotationPackage.TYPE:
 				return validateType((Type)value, diagnostics, context);
+			case HbAnnotationPackage.WHERE:
+				return validateWhere((Where)value, diagnostics, context);
 			case HbAnnotationPackage.ID_BAG:
 				return validateIdBag((IdBag)value, diagnostics, context);
+			case HbAnnotationPackage.GENERIC_GENERATOR:
+				return validateGenericGenerator((GenericGenerator)value, diagnostics, context);
 			default: 
 				return true;
 		}
@@ -274,7 +283,13 @@ public class HbAnnotationValidator extends EObjectValidator {
 	 * @generated
 	 */
     public boolean validateParameter(Parameter parameter, DiagnosticChain diagnostics, Map context) {
-		return validate_EveryDefaultConstraint(parameter, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(parameter, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -304,6 +319,21 @@ public class HbAnnotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(idBag, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateGenericGenerator(GenericGenerator genericGenerator, DiagnosticChain diagnostics, Map context) {
+		boolean result = validate_EveryMultiplicityConforms(genericGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(genericGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(genericGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(genericGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(genericGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(genericGenerator, diagnostics, context);
 		return result;
 	}
 

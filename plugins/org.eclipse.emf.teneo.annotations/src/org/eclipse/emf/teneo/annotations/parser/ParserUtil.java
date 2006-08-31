@@ -11,21 +11,27 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ParserUtil.java,v 1.1 2006/08/31 15:33:17 mtaal Exp $
+ * $Id: ParserUtil.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
+import java.util.List;
+
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
+import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
  * Util class
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class ParserUtil {
@@ -50,6 +56,4 @@ public class ParserUtil {
 			throw new AnnotationParserException("Cannot convert '" + name + "' to an efeature for eclass " + eClass.getName());
 		}
 	}
-	
-	
 }
