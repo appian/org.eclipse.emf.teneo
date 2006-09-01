@@ -19,4 +19,3 @@ Export-Package: org.eclipse.emf.ecore.impl,
  org.eclipse.emf.teneo.hibernate.mapping.property,
  org.eclipse.emf.teneo.hibernate.resource,
  org.eclipse.emf.teneo.hibernate.tuplizer
-Bundle-ClassPath: .
