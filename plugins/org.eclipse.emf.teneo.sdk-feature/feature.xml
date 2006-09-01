@@ -23,9 +23,4 @@
          id="org.eclipse.emf.teneo"
          version="0.0.0"
          match="compatible"/>
-
-   <includes
-         id="org.eclipse.emf.teneo.hibernate"
-         version="0.0.0"
-         match="compatible"/>
 </feature>
