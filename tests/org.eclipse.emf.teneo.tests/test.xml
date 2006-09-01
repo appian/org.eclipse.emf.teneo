@@ -28,7 +28,7 @@
 		<tstamp><format property="runtests-starttime" pattern="HH:mm:ss"/></tstamp>
 		<echo message="Start: [${runtests-starttime}]"/>
 		<ant antfile="${eclipse-home}/plugins/${testPlugin}/test.xml" dir="${eclipse-home}" />
-		<copy file="${eclipse-home}/${report}.xml" tofile="${results}/xml/${report}_${platform}.xml" />
+		<copy file="${eclipse-home}/${report}.xml" tofile="${results}/xml/${report}_${platform}.xml" verbose="true"/>
 		<tstamp><format property="runtests-endtime" pattern="HH:mm:ss"/></tstamp>
 		<echo message="Done: [${runtests-endtime}]"/>
 	</target>
