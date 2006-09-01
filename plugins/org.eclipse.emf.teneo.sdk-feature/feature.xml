@@ -24,4 +24,34 @@
 	  version="0.0.0"
 	  match="compatible"/>
 
+	<includes
+      id="org.eclipse.emf.teneo.annotations"
+	  version="0.0.0"
+	  match="compatible"/>
+
+	<includes
+	  id="org.eclipse.emf.teneo.hibernate"
+	  version="0.0.0"
+	  match="compatible"/>
+
+	<includes
+	  id="org.eclipse.emf.teneo.jpox"
+	  version="0.0.0"
+	  match="compatible"/>
+
+	<includes
+	  id="org.eclipse.emf.teneo.eclipse"
+	  version="0.0.0"
+	  match="compatible"/>
+
+	<includes
+	  id="org.eclipse.emf.teneo.hibernate.eclipse"
+	  version="0.0.0"
+	  match="compatible"/>
+
+	<includes
+	  id="org.eclipse.emf.teneo.jpox.eclipse"
+	  version="0.0.0"
+	  match="compatible"/>
+
 </feature>
