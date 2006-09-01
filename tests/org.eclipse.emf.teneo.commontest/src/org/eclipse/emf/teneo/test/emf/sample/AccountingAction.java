@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AccountingAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: AccountingAction.java,v 1.2 2006/09/01 08:20:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 import org.eclipse.emf.teneo.samples.emf.sample.accounting.Account;
@@ -37,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * add to catalog, delete from catalog. 
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public abstract class AccountingAction extends AbstractTestAction 
 {
@@ -77,21 +78,9 @@ public abstract class AccountingAction extends AbstractTestAction
 	        store.store(all);
     		store.commitTransaction();    		
     	}
-		try {
-			URL fromUrl = AccountingPackage.class.getResource("import.xmi");
-			final File fromFile = new File(fromUrl.getFile());
-	
-			URL toUrl = PlayType.class.getResource("data");
-			final File parentFile = new File(toUrl.getFile());
-			final File toFile = new File(parentFile, "new_play.xml");
-			if (toFile.exists()) toFile.delete();
-			toFile.createNewFile();
-			imTestExport(fromFile, store);
-		} catch (IOException e) {
-			throw new StoreTestException("IOException ", e);
-		}
+		imTestExport(AccountingPackage.class.getResourceAsStream("import.xmi"), store);
 	}
 	
 	/** Import/export, from and to */
-	protected abstract void imTestExport(File fromFile, TestStore store);
+	protected abstract void imTestExport(InputStream is, TestStore store);
 }

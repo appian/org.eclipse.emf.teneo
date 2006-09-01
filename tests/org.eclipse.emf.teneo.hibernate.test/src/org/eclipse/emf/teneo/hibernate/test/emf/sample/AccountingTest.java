@@ -11,21 +11,18 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AccountingTest.java,v 1.3 2006/07/23 19:20:57 mtaal Exp $
+ * $Id: AccountingTest.java,v 1.4 2006/09/01 08:20:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import org.eclipse.emf.teneo.hibernate.HbConstants;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
-import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.emf.sample.AccountingAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -33,26 +30,22 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests import export
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class AccountingTest extends AbstractActionTest {
 
 	private static AccountingAction testAction = new AccountingAction() {
 
 		/** Import/export, from and to */
-		protected void imTestExport(File fromFile, TestStore store) {
-			try {
-				// import
-				HibernateTestStore hbTestStore = (HibernateTestStore) store;
-				HbDataStore ds = hbTestStore.getEmfDataStore();
-				
-				ds.importDataStore(new FileInputStream(fromFile), HbConstants.EXCHANGE_FORMAT_XMI);
+		protected void imTestExport(InputStream is, TestStore store) {
+			// import
+			HibernateTestStore hbTestStore = (HibernateTestStore) store;
+			HbDataStore ds = hbTestStore.getEmfDataStore();
+			
+			ds.importDataStore(is, HbConstants.EXCHANGE_FORMAT_XMI);
 
-				// export
-				ds.exportDataStore(new ByteArrayOutputStream(), HbConstants.EXCHANGE_FORMAT_XML, null);
-			} catch (FileNotFoundException f) {
-				throw new StoreTestException("File not found", f);
-			}
+			// export
+			ds.exportDataStore(new ByteArrayOutputStream(), HbConstants.EXCHANGE_FORMAT_XML, null);
 		}
 	};
 

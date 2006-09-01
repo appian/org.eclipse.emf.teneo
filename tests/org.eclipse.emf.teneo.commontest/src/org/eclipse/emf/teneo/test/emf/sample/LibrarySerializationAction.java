@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySerializationAction.java,v 1.2 2006/09/01 07:21:45 mtaal Exp $
+ * $Id: LibrarySerializationAction.java,v 1.3 2006/09/01 08:20:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -27,6 +27,9 @@ import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
+import org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl;
+import org.eclipse.emf.teneo.samples.emf.sample.library.impl.LibraryImpl;
+import org.eclipse.emf.teneo.samples.emf.sample.library.impl.WriterImpl;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -34,8 +37,10 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 /**
  * Tests serialization of the library example, also after persistence solution has replaced members.
  * 
+ * Test case uses Impl classes to facilitate build on emft server (encountered class loading errors).
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibrarySerializationAction extends AbstractTestAction {
 	/**
@@ -66,7 +71,7 @@ public class LibrarySerializationAction extends AbstractTestAction {
 		// then serialize after reading 
 		{
 			store.beginTransaction();
-			Library lib = (Library)store.getObject(Library.class);
+			LibraryImpl lib = (LibraryImpl)store.getObject(Library.class);
 			assertEquals(2, lib.getBooks().size());
 			assertEquals(1, lib.getWriters().size());
 			assertEquals(2, ((Writer)lib.getWriters().get(0)).getBooks().size());
@@ -97,10 +102,10 @@ public class LibrarySerializationAction extends AbstractTestAction {
 	
 	/** Creates a test set and returns a library */
 	private Library getTestSet(LibraryFactory factory, String preFix) {
-		final Writer writer = factory.createWriter();
+		final WriterImpl writer = (WriterImpl)factory.createWriter();
 		writer.setName(preFix + "JRR Tolkien");
 
-		final Book book = factory.createBook();
+		final BookImpl book = (BookImpl)factory.createBook();
 		book.setAuthor(writer);
 		book.setPages(5);
 		book.setTitle(preFix + "The Hobbit");

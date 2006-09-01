@@ -11,20 +11,17 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AccountingTest.java,v 1.2 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: AccountingTest.java,v 1.3 2006/09/01 08:20:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import org.eclipse.emf.teneo.jpox.emf.JpoxConstants;
 import org.eclipse.emf.teneo.jpox.emf.JpoxDataStore;
 import org.eclipse.emf.teneo.jpox.test.stores.JPOXTestStore;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
-import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.emf.sample.AccountingAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -32,25 +29,21 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests import export
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class AccountingTest extends AbstractActionTest {
 
 	static AccountingAction testAction = new AccountingAction() {
 
 		/** Import/export, from and to */
-		protected void imTestExport(File fromFile, TestStore store) {
-			try {
-				// import
-				JPOXTestStore jTestStore = (JPOXTestStore) store;
-				JpoxDataStore ds = jTestStore.getEmfDataStore();
-				ds.importDataStore(new FileInputStream(fromFile), JpoxConstants.EXCHANGE_FORMAT_XMI);
+		protected void imTestExport(InputStream is, TestStore store) {
+			// import
+			JPOXTestStore jTestStore = (JPOXTestStore) store;
+			JpoxDataStore ds = jTestStore.getEmfDataStore();
+			ds.importDataStore(is, JpoxConstants.EXCHANGE_FORMAT_XMI);
 
-				// export, not supported there is an error in the xml related to non-contained objects.
-				// ds.exportDataStore(new ByteArrayOutputStream(), JpoxConstants.EXCHANGE_FORMAT_XMI, null);
-			} catch (FileNotFoundException f) {
-				throw new StoreTestException("File not found", f);
-			}
+			// export, not supported there is an error in the xml related to non-contained objects.
+			// ds.exportDataStore(new ByteArrayOutputStream(), JpoxConstants.EXCHANGE_FORMAT_XMI, null);
 		}
 	};
 

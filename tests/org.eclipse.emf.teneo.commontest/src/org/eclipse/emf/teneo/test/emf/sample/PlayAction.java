@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PlayAction.java,v 1.3 2006/09/01 07:21:45 mtaal Exp $
+ * $Id: PlayAction.java,v 1.4 2006/09/01 08:20:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * and compare the data in this xml file with the original.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
+ * @version $Revision: 1.4 $ 
 */
 public class PlayAction extends AbstractTestAction 
 {
@@ -88,9 +88,9 @@ public class PlayAction extends AbstractTestAction
 	    	// read from the relational store
 	    	// and save it in a xml file
 	    	{
-				URL playTypeUrl = PlayType.class.getResource("data");
-				final File parentFile = new File(playTypeUrl.getFile());
-				final File xmlFile = new File(parentFile, "small_new_play.xml");
+				URL playTypeUrl = PlayType.class.getResource("");
+				final File clsFile = new File(playTypeUrl.getFile());
+				final File xmlFile = new File(clsFile.getParentFile(), "small_new_play.xml");
 
 				if (xmlFile.exists()) xmlFile.delete();
 				xmlFile.createNewFile();
