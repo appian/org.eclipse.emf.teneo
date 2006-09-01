@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAccess.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: EcoreAccess.java,v 1.2 2006/09/01 10:43:44 mtaal Exp $
  */
 
 package org.eclipse.emf.ecore.impl;
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.EStructuralFeature.Internal.DynamicValueHolder;
  * Provides access to package private methods in org.eclipse.emf.ecore.impl
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
-public class EcoreAccess {
+public class EcoreAccess extends BasicEObjectImpl {
 	
 	/** Return the DynamicValueHolder */
 	public static DynamicValueHolder getValueHolder(BasicEObjectImpl deo) {
