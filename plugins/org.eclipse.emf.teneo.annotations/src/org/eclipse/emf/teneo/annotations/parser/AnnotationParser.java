@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationParser.java,v 1.3 2006/08/31 23:47:09 mtaal Exp $
+ * $Id: AnnotationParser.java,v 1.4 2006/09/01 07:02:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -23,6 +23,9 @@ import org.eclipse.emf.ecore.ENamedElement;
 
 /**
  * Parses an annotation and creates a tree of parserNodes.
+ * 
+ * See AnnotationTokenizer for a short description on the type of parsed
+ * tokens.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
@@ -62,7 +65,7 @@ public class AnnotationParser {
 		}
 	}
 	
-	/** Parse a type name */
+	/** Parse a type name (a complex type) */
 	private void parseTypeName(ParserNode pn) {
 		final ComplexNode cn = new ComplexNode();
 		cn.setName(annotationTokenizer.getLexeme());

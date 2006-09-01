@@ -11,14 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PrimitiveValueNode.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: PrimitiveValueNode.java,v 1.3 2006/09/01 07:02:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
 
 /**
- * Simple value node
+ * Simple value node.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */

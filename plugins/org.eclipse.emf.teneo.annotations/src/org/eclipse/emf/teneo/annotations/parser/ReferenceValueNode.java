@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ReferenceValueNode.java,v 1.3 2006/08/31 23:47:09 mtaal Exp $
+ * $Id: ReferenceValueNode.java,v 1.4 2006/09/01 07:02:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 
 
 /**
- * Simple value node
+ * Node which has a complex type as its value.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */

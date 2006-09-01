@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ArrayValueNode.java,v 1.3 2006/08/31 23:47:09 mtaal Exp $
+ * $Id: ArrayValueNode.java,v 1.4 2006/09/01 07:02:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -25,7 +25,7 @@ import org.apache.commons.logging.LogFactory;
 
 
 /**
- * An array node contains a list of child values
+ * An array node contains a list of child values.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */

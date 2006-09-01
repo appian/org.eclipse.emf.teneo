@@ -11,14 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ParserNode.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: ParserNode.java,v 1.3 2006/09/01 07:02:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
 
 /**
- * Main class of the nodes parsed by the annotation parser
+ * Main class of the nodes which are the result of the annotation parser.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */

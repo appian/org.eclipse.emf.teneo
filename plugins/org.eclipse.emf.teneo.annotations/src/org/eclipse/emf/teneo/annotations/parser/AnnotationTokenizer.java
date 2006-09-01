@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.3 2006/09/01 07:02:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -21,8 +21,23 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.ENamedElement;
 
 /**
- * Tokenizes an annotation
+ * Tokenizes a java annotation. The main tokens are:
+ * - TypeName 
+ * - Identifier
+ * - Value
+ * - Array
  * 
+ * For example the following java annotation 
+ * @GenericGenerator(name="hibseq", strategy = "hilo",
+ *   parameters = {
+ *       @Parameter(name="table", value = "hilo_table"),
+ *       @Parameter(name="column", value="the_hilo_column")}
+ *   }
+ *  )
+ *  
+ * Here GenericGenerator is a TypeName, name and strategy are Identifiers and
+ * "hilo_table" is a value, the array is the part between the {}.
+ *   
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 class AnnotationTokenizer {

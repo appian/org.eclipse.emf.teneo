@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ComplexNode.java,v 1.3 2006/08/31 23:47:09 mtaal Exp $
+ * $Id: ComplexNode.java,v 1.4 2006/09/01 07:02:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 
 /**
- * Models a real type, an EClass
+ * Models a real type (a complex type in xml schema speak), an EClass.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
@@ -42,10 +42,10 @@ class ComplexNode extends ParserNode {
 	/** Log it */
 	private final static Log log = LogFactory.getLog(ComplexNode.class);
 
-	/** The value */
+	/** The child nodes */
 	private List children = new ArrayList();
 
-	/** Returns the list */
+	/** Returns the list of children */
 	List getChildren() {
 		return children;
 	}
