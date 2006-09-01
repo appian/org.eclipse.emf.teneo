@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelFactoryImpl.java,v 1.5 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: PamodelFactoryImpl.java,v 1.6 2006/09/01 06:56:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -11,8 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.annotations.pamodel.*;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.5 2006/08/31 23:47:09 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.6 2006/09/01 06:56:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -28,9 +27,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides;
-import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
@@ -40,10 +37,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
-import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
-import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;

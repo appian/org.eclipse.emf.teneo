@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.5 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.6 2006/09/01 06:56:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -11,21 +11,17 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;

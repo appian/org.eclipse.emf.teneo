@@ -11,7 +11,7 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HbAnnotationModelBuilder.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbAnnotationModelBuilder.java,v 1.3 2006/09/01 06:56:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
-import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.util.EannotationPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.util.EAnnotationImporter;

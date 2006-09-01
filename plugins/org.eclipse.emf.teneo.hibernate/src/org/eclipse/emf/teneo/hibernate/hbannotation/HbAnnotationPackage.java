@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackage.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbAnnotationPackage.java,v 1.3 2006/09/01 06:56:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**

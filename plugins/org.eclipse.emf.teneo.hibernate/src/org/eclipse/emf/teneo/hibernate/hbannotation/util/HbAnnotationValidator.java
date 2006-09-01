@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.3 2006/09/01 06:56:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -11,16 +11,21 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.emf.ecore.util.EObjectValidator;
-
 import org.eclipse.emf.teneo.annotations.pannotation.util.PannotationValidator;
-
-import org.eclipse.emf.teneo.hibernate.hbannotation.*;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
+import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
+import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
+import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 
 /**
  * <!-- begin-user-doc -->

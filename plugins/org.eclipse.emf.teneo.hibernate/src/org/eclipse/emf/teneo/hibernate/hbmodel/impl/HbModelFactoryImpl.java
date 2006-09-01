@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelFactoryImpl.java,v 1.2 2006/08/31 22:47:18 mtaal Exp $
+ * $Id: HbModelFactoryImpl.java,v 1.3 2006/09/01 06:56:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -11,8 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.hibernate.hbmodel.*;
-
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;

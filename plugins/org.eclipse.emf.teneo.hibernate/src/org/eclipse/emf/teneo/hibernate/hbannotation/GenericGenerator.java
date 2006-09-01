@@ -2,13 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GenericGenerator.java,v 1.1 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: GenericGenerator.java,v 1.2 2006/09/01 06:56:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
