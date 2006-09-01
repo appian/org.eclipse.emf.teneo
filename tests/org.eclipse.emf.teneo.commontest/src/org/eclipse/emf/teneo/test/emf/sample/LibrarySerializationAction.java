@@ -11,16 +11,20 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySerializationAction.java,v 1.3 2006/09/01 08:20:30 mtaal Exp $
+ * $Id: LibrarySerializationAction.java,v 1.4 2006/09/01 08:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
 
+import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
@@ -40,7 +44,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test case uses Impl classes to facilitate build on emft server (encountered class loading errors).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibrarySerializationAction extends AbstractTestAction {
 	/**
@@ -90,7 +94,7 @@ public class LibrarySerializationAction extends AbstractTestAction {
 
 			final byte[] bytes = bos.toByteArray();
 			
-			final ObjectInputStream ois = new ObjectInputStream(
+			final ObjectInputStream ois = new ElverObjectInputStream(
 					new ByteArrayInputStream(bytes));
 			checkTestSet((Library)ois.readObject(), prefix);
 			ois.close();
@@ -144,5 +148,31 @@ public class LibrarySerializationAction extends AbstractTestAction {
 		assertEquals(preFix + "The fellowship of the ring", bk2.getTitle());
 		assertEquals(7, bk2.getPages());
 		assertEquals(BookCategory.SCIENCE_FICTION_LITERAL, bk2.getCategory());
+	}
+	
+	/** Specific Object input stream to get rid of classloading issue */
+	private class ElverObjectInputStream extends ObjectInputStream {
+
+	    /** Constructor */
+	    public ElverObjectInputStream(InputStream in) throws IOException {
+	    	super(in);
+	    }
+
+	    /** Constructor */
+	    public ElverObjectInputStream() throws IOException {
+	    	super();
+	    }
+
+		/* (non-Javadoc)
+		 * @see java.io.ObjectInputStream#resolveClass(java.io.ObjectStreamClass)
+		 */
+		protected Class resolveClass(ObjectStreamClass desc) throws IOException, ClassNotFoundException {
+			final String clsName = desc.getName();
+			final Class cls = ClassLoaderResolver.classForName(clsName);
+			if (cls == null) {
+				return super.resolveClass(desc);
+			}
+			return cls;
+		}
 	}
 }

@@ -11,19 +11,18 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PlayAction.java,v 1.4 2006/09/01 08:20:30 mtaal Exp $
+ * $Id: PlayAction.java,v 1.5 2006/09/01 08:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
-import java.io.File;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.Collections;
 import java.util.Iterator;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
@@ -39,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * and compare the data in this xml file with the original.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
+ * @version $Revision: 1.5 $ 
 */
 public class PlayAction extends AbstractTestAction 
 {
@@ -86,26 +85,21 @@ public class PlayAction extends AbstractTestAction
 	    	}
 	    	
 	    	// read from the relational store
-	    	// and save it in a xml file
+	    	// and save it in a xml byte array
+	    	byte[] bytes;
 	    	{
-				URL playTypeUrl = PlayType.class.getResource("");
-				final File clsFile = new File(playTypeUrl.getFile());
-				final File xmlFile = new File(clsFile.getParentFile(), "small_new_play.xml");
-
-				if (xmlFile.exists()) xmlFile.delete();
-				xmlFile.createNewFile();
-
 				store.beginTransaction();
 	    		final PlayType myplay = (PlayType)store.getObject(PlayType.class);
-				
-				final Resource resource = new XMLResourceImpl(URI.createFileURI(xmlFile.getAbsolutePath()));
+	    		final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+				final Resource resource = new XMLResourceImpl();
 				resource.getContents().add(myplay);
-				resource.save(Collections.EMPTY_MAP);
+				resource.save(bos, Collections.EMPTY_MAP);
+				bytes = bos.toByteArray();
 	    		store.commitTransaction();
 	    	}
 	    	
 	    	// now compare the two resources
-    		compareResult("small_play.xml", "small_new_play.xml", true);
+    		compareResult("small_play.xml", bytes, true);
 		}
 		catch (Exception e)
 		{
@@ -114,10 +108,9 @@ public class PlayAction extends AbstractTestAction
 	}	
 	
 	/** Compare the original and the generated xml file */
-	protected void compareResult(String fileNameOne, String fileNameTwo, boolean asXML) throws IOException
+	protected void compareResult(String fileNameOne, byte[] bytes, boolean asXML) throws IOException
 	{
 		final InputStream isOne = PlayType.class.getResourceAsStream("data/" + fileNameOne);
-		final InputStream isTwo = PlayType.class.getResourceAsStream("data/" + fileNameTwo);
 		
 		final Resource original_resource;
 		if (asXML) {
@@ -134,7 +127,7 @@ public class PlayAction extends AbstractTestAction
 		} else {
 			new_resource = new XMIResourceImpl();
 		}
-		new_resource.load(isTwo, Collections.EMPTY_MAP);
+		new_resource.load(new ByteArrayInputStream(bytes), Collections.EMPTY_MAP);
 		final Iterator new_iterator = new_resource.getAllContents();
 		
 		// rough structural test

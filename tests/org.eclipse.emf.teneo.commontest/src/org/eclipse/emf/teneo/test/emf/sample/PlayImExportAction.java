@@ -11,14 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PlayImExportAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: PlayImExportAction.java,v 1.2 2006/09/01 08:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import org.eclipse.emf.teneo.samples.emf.sample.play.PlayType;
 import org.eclipse.emf.teneo.test.StoreTestException;
@@ -29,29 +31,24 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * and compare the data in this xml file with the original.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public abstract class PlayImExportAction extends PlayAction {
 	/** Creates a supplier, a product, relates then, saves and retrieves them again. */
 	public void doAction(TestStore store) {
 		try {
-			URL fromUrl = PlayType.class.getResource("data" + File.separator + "original_play.xml");
-			final File fromFile = new File(fromUrl.getFile());
-	
-			URL toUrl = PlayType.class.getResource("data");
-			final File parentFile = new File(toUrl.getFile());
-			final File toFile = new File(parentFile, "new_play.xml");
-			if (toFile.exists()) toFile.delete();
-			toFile.createNewFile();
-			imExport(fromFile, toFile, store);
-		    	// and compare the result
-	    		compareResult("original_play.xml", "new_play.xml", true);
+			final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			imExport(PlayType.class.getResourceAsStream("data" + File.separator + "original_play.xml"), 
+					bos, store);
+			
+		    // and compare the result
+	    	compareResult("original_play.xml", bos.toByteArray(), true);
 		} catch (IOException e) {
 			throw new StoreTestException("IOException ", e);
 		}
 	}
 	
 	/** Import/export, from and to */
-	protected abstract void imExport(File fromFile, File toFile, TestStore store);
+	protected abstract void imExport(InputStream is, OutputStream os, TestStore store);
 	
 }

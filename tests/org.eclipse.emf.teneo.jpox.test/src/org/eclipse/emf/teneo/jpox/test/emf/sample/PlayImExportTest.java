@@ -11,21 +11,18 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PlayImExportTest.java,v 1.2 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: PlayImExportTest.java,v 1.3 2006/09/01 08:57:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import org.eclipse.emf.teneo.jpox.emf.JpoxConstants;
 import org.eclipse.emf.teneo.jpox.emf.JpoxDataStore;
 import org.eclipse.emf.teneo.jpox.test.stores.JPOXTestStore;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
-import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.emf.sample.PlayImExportAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -33,25 +30,21 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests import export
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class PlayImExportTest extends AbstractActionTest {
 
 	static PlayImExportAction testAction = new PlayImExportAction() {
 
 		/** Import/export, from and to */
-		protected void imExport(File fromFile, File toFile, TestStore store) {
-			try {
-				// import
-				JPOXTestStore testStore = (JPOXTestStore) store;
-				JpoxDataStore ds = testStore.getDataStore();
-				ds.importDataStore(new FileInputStream(fromFile), JpoxConstants.EXCHANGE_FORMAT_XML);
+		protected void imExport(InputStream is, OutputStream os, TestStore store) {
+			// import
+			JPOXTestStore testStore = (JPOXTestStore) store;
+			JpoxDataStore ds = testStore.getDataStore();
+			ds.importDataStore(is, JpoxConstants.EXCHANGE_FORMAT_XML);
 
-				// export
-				ds.exportDataStore(new FileOutputStream(toFile), JpoxConstants.EXCHANGE_FORMAT_XML, null);
-			} catch (FileNotFoundException f) {
-				throw new StoreTestException("File not found", f);
-			}
+			// export
+			ds.exportDataStore(os, JpoxConstants.EXCHANGE_FORMAT_XML, null);
 		}
 	};
 
