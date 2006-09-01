@@ -19,39 +19,16 @@
       <discovery label="%updateSiteName" url="http://download.eclipse.org/technology/emft/updates/"/>
    </url>
 
-	<includes
-	  id="org.eclipse.emf.teneo"
-	  version="0.0.0"
-	  match="compatible"/>
+   <includes
+         id="org.eclipse.emf.teneo"
+         version="0.0.0"
+         match="compatible"/>
 
-	<includes
-      id="org.eclipse.emf.teneo.annotations"
-	  version="0.0.0"
-	  match="compatible"/>
-
-	<includes
-	  id="org.eclipse.emf.teneo.hibernate"
-	  version="0.0.0"
-	  match="compatible"/>
-
-	<includes
-	  id="org.eclipse.emf.teneo.jpox"
-	  version="0.0.0"
-	  match="compatible"/>
-
-	<includes
-	  id="org.eclipse.emf.teneo.eclipse"
-	  version="0.0.0"
-	  match="compatible"/>
-
-	<includes
-	  id="org.eclipse.emf.teneo.hibernate.eclipse"
-	  version="0.0.0"
-	  match="compatible"/>
-
-	<includes
-	  id="org.eclipse.emf.teneo.jpox.eclipse"
-	  version="0.0.0"
-	  match="compatible"/>
+   <plugin
+         id="org.eclipse.emf.teneo.annotations"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
