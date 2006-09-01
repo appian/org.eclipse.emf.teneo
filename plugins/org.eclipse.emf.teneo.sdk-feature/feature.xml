@@ -24,11 +24,8 @@
          version="0.0.0"
          match="compatible"/>
 
-   <plugin
-         id="org.eclipse.emf.teneo.annotations"
-         download-size="0"
-         install-size="0"
+   <includes
+         id="org.eclipse.emf.teneo.hibernate"
          version="0.0.0"
-         unpack="false"/>
-
+         match="compatible"/>
 </feature>
