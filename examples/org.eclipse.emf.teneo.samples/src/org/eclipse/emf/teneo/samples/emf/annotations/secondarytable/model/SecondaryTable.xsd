@@ -7,7 +7,8 @@
   <xsd:complexType name="Printer">
  	<xsd:annotation>
 		<xsd:appinfo source="teneo.jpa">@SecondaryTable(name="THETONER" 
-				pkJoinColumns={@PrimaryKeyJoinColumn(name="PRINTER_ID")})</xsd:appinfo>
+				pkJoinColumns={@PrimaryKeyJoinColumn(name="PRINTER_ID")})
+		</xsd:appinfo>
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element name="make" type="xsd:string"/>
