@@ -11,18 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySerializationAction.java,v 1.1 2006/08/25 23:04:10 mtaal Exp $
+ * $Id: LibrarySerializationAction.java,v 1.2 2006/09/01 07:21:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.URL;
 
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
@@ -38,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests serialization of the library example, also after persistence solution has replaced members.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibrarySerializationAction extends AbstractTestAction {
 	/**
@@ -81,13 +78,15 @@ public class LibrarySerializationAction extends AbstractTestAction {
 	/** Serialize and check result */
 	private void serialize(Library lib, String prefix) {
 		try {
-			final ObjectOutputStream oos = new ObjectOutputStream(
-					new FileOutputStream(serializeFile(prefix + "library", true)));
+			final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			final ObjectOutputStream oos = new ObjectOutputStream(bos);
 			oos.writeObject(lib);
 			oos.close();
+
+			final byte[] bytes = bos.toByteArray();
 			
 			final ObjectInputStream ois = new ObjectInputStream(
-					new FileInputStream(serializeFile(prefix + "library", false)));
+					new ByteArrayInputStream(bytes));
 			checkTestSet((Library)ois.readObject(), prefix);
 			ois.close();
 		} catch (Exception e) {
@@ -140,16 +139,5 @@ public class LibrarySerializationAction extends AbstractTestAction {
 		assertEquals(preFix + "The fellowship of the ring", bk2.getTitle());
 		assertEquals(7, bk2.getPages());
 		assertEquals(BookCategory.SCIENCE_FICTION_LITERAL, bk2.getCategory());
-	}
-	
-	/** Get serializable file */
-	private File serializeFile(String preFix, boolean remove) throws IOException {
-		final URL classUrl = Library.class.getResource("Library.class");
-		final File classFile = new File(classUrl.getFile());
-		final File outFile = new File(classFile.getParentFile(), preFix + ".ser");
-		if (outFile.exists() && remove) {
-			outFile.delete();
-		}
-		return outFile;
 	}
 }

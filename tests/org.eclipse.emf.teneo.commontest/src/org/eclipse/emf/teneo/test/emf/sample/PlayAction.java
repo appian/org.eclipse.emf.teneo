@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PlayAction.java,v 1.2 2006/08/21 12:44:08 mtaal Exp $
+ * $Id: PlayAction.java,v 1.3 2006/09/01 07:21:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Iterator;
@@ -38,7 +39,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * and compare the data in this xml file with the original.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class PlayAction extends AbstractTestAction 
 {
@@ -58,12 +59,11 @@ public class PlayAction extends AbstractTestAction
 			{
 				// a file handle to the current class
 				// the play.xml is in the model directory
-				URL xmlUrl = PlayType.class.getResource("data/small_play.xml");
-				final File playxmlFile = new File(xmlUrl.getFile());
-				final Resource resource = new XMLResourceImpl(URI.createFileURI(playxmlFile.getAbsolutePath()));
+				final Resource resource = new XMLResourceImpl();
+				resource.load(PlayType.class.getResourceAsStream("data/small_play.xml"), Collections.EMPTY_MAP);
 				resource.load(Collections.EMPTY_MAP);
 				play = (PlayType)resource.getContents().get(0);
-				resource.unload();
+				//resource.unload();
 			}
 			
 			// store the play in the database
@@ -116,35 +116,25 @@ public class PlayAction extends AbstractTestAction
 	/** Compare the original and the generated xml file */
 	protected void compareResult(String fileNameOne, String fileNameTwo, boolean asXML) throws IOException
 	{
-		// a file handle to the current class
-		// the play.xml is in the model directory
-		URL newUrl = PlayType.class.getResource("data/" + fileNameTwo);
-		final File new_play = new File(newUrl.getFile());
-		URL originalUrl = PlayType.class.getResource("data/" + fileNameOne);
-		final File original_play = new File(originalUrl.getFile());
+		final InputStream isOne = PlayType.class.getResourceAsStream("data/" + fileNameOne);
+		final InputStream isTwo = PlayType.class.getResourceAsStream("data/" + fileNameTwo);
 		
 		final Resource original_resource;
-		if (asXML)
-		{
-			original_resource = new XMLResourceImpl(URI.createFileURI(original_play.getAbsolutePath()));
+		if (asXML) {
+			original_resource = new XMLResourceImpl();
+		} else {
+			original_resource = new XMIResourceImpl();
 		}
-		else
-		{
-			original_resource = new XMIResourceImpl(URI.createFileURI(original_play.getAbsolutePath()));
-		}
-		original_resource.load(Collections.EMPTY_MAP);
+		original_resource.load(isOne, Collections.EMPTY_MAP);
 		final Iterator original_iterator = original_resource.getAllContents();
 
 		final Resource new_resource;
-		if (asXML)
-		{
-			new_resource = new XMLResourceImpl(URI.createFileURI(new_play.getAbsolutePath()));
+		if (asXML) {
+			new_resource = new XMLResourceImpl();
+		} else {
+			new_resource = new XMIResourceImpl();
 		}
-		else
-		{
-			new_resource = new XMIResourceImpl(URI.createFileURI(new_play.getAbsolutePath()));
-		}
-		new_resource.load(Collections.EMPTY_MAP);
+		new_resource.load(isTwo, Collections.EMPTY_MAP);
 		final Iterator new_iterator = new_resource.getAllContents();
 		
 		// rough structural test
