@@ -21,7 +21,7 @@
                enablesFor="+"
                id="org.eclipse.emf.teneo.jpox.eclipse.generatejdo"
                label="Generate EMF - JDO/JPOX OR Mapping (joined-subclass)"
-               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group"
+               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group1"
                tooltip="Select to generate a jdo 2.0 metadata file from the ecore model. Uses new-table inheritance mapping strategy.">
          </action>
       </objectContribution>
@@ -42,7 +42,7 @@
                enablesFor="+"
                id="org.eclipse.emf.teneo.jpox.eclipse.generatejdo"
                label="Generate EMF - JDO/JPOX OR Mapping (super-class)"
-               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group"
+               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group1"
                tooltip="Select to generate a jdo 2.0 metadata file from the ecore model. Uses superclass-table inheritance mapping strategy.">
          </action>
       </objectContribution>

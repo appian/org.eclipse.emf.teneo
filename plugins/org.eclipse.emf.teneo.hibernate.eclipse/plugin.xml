@@ -20,8 +20,8 @@
                class="org.eclipse.emf.teneo.hibernate.eclipse.GenerateHBMAction"
                enablesFor="+"
                id="org.eclipse.emf.teneo.hibernate.eclipse.generatehbm"
-               label="Generate EMF - Hibernate OR Mapping (joined)"
-               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group0"
+               label="Generate EMF - Hibernate OR Mapping (joined-subclass)"
+               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group2"
                tooltip="Select to generate a hibernate.hbm.xml file from the ecore model(s). Uses joined-subclass inheritance mapping strategy.">
          </action>
       </objectContribution>
@@ -42,7 +42,7 @@
                enablesFor="+"
                id="org.eclipse.emf.teneo.hibernate.eclipse.generatehbmsuperclass"
                label="Generate EMF - Hibernate OR Mapping (super-class)"
-               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group0"
+               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group2"
                tooltip="Select to generate a hibernate.hbm.xml file from the ecore model(s). Uses superclass-table inheritance mapping strategy.">
          </action>
       </objectContribution>
