@@ -11,15 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestStoreFactory.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: AbstractTestStoreFactory.java,v 1.3 2006/09/03 21:47:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
@@ -32,32 +30,23 @@ import org.eclipse.emf.teneo.test.conf.TestConfiguration;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public abstract class AbstractTestStoreFactory {
 
 	/** The logger */
 //	private static Log log = LogFactory.getLog(AbstractTestStoreFactory.class);
-
+ 
 	// TODO make insesitive to user.dir
 	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "run";
-
-	// a map of the already built stores
-	private Map configuredStores = new HashMap();
-
+	
 	/**
 	 * Request a store for the given configuration. No other store can be requested until this one is tear down. NOTE: dbName must be a
 	 * key: no equals dbName for difference usedEPackages/cfg
 	 */
 	public TestStore get(String dbName, EPackage[] usedEPackages, TestConfiguration cfg, Properties extraConfigProps)
 			throws FileNotFoundException {
-		TestStore store = (TestStore) configuredStores.get(dbName);
-		if (store == null) {
-			// create and register store among configured
-			store = createTestStore(dbName, usedEPackages, null, cfg, extraConfigProps);
-			configuredStores.put(dbName, store);
-		}
-		return store;
+		return createTestStore(dbName, usedEPackages, null, cfg, extraConfigProps);
 	}
 
 	/**
@@ -66,13 +55,7 @@ public abstract class AbstractTestStoreFactory {
 	 */
 	public TestStore get(String dbName, EPackage[] usedEPackages, File destMappingFile, TestConfiguration cfg,
 			Properties extraConfigProps) throws FileNotFoundException {
-		TestStore store = (TestStore) configuredStores.get(dbName);
-		if (store == null) {
-			// create and register store among configured
-			store = createTestStore(dbName, usedEPackages, destMappingFile, cfg, extraConfigProps);
-			configuredStores.put(dbName, store);
-		}
-		return store;
+		return createTestStore(dbName, usedEPackages, destMappingFile, cfg, extraConfigProps);
 	}
 
 	/** Creates the test store for emf test case */
