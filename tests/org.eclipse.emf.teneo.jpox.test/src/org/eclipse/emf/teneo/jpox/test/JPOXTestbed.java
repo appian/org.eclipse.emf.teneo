@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.12 2006/09/03 19:31:29 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.13 2006/09/03 20:55:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -21,8 +21,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Properties;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
@@ -40,7 +38,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class JPOXTestbed extends Testbed {
 	

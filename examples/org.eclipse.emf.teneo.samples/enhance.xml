@@ -20,36 +20,36 @@
 
       	<path id="enhancer.classpath">
 
-      	<fileset dir="${teneo.jpox.lib}">
-     		<include name="**/*.jar"/>
-      	</fileset>
+      		<fileset dir="${teneo.jpox.lib}">
+     			<include name="**/*.jar"/>
+	      	</fileset>
       	
-      	<fileset dir="${teneo.extra.lib}">
-      		<include name="**/*.jar"/>
-      	</fileset>
+    	  	<fileset dir="${teneo.extra.lib}">
+      			<include name="**/*.jar"/>
+      		</fileset>
 
-      	<!-- 
-      		MT: the enhance needs various emf jars, 
-      		this is a trick to just read all the jar files in eclipse, 
-      		should be replaced with the path to the eclipse runtime 
-      	-->
-      	<fileset dir="/local/eclipse/callisto/plugins">
-     		<include name="**/*.jar"/>
-      	</fileset>
+      		<!-- 
+      			MT: the enhance needs various emf jars, 
+      			this is a trick to just read all the jar files in eclipse, 
+      			should be replaced with the path to the eclipse runtime 
+      		-->
+      		<fileset dir="/local/eclipse/callisto/plugins">
+     			<include name="**/*.jar"/>
+      		</fileset>
 
-      	<pathelement location="${teneo.samples.dot}"/>
+      		<pathelement location="${teneo.samples.dot}"/>
 
-	  </path>
+	  	</path>
       	
-	  <!-- define the task enhancer used by target "enhance" -->
-	  <taskdef name="jpoxenhancer"
-	    classpathref="enhancer.classpath"
-	    classname="org.jpox.enhancer.tools.EnhancerTask"/>
+	  	<!-- define the task enhancer used by target "enhance" -->
+	  	<taskdef name="jpoxenhancer"
+	   		classpathref="enhancer.classpath"
+	    	classname="org.jpox.enhancer.tools.EnhancerTask"/>
 
-      <!-- enhance -->
-      <jpoxenhancer dir="${teneo.samples.base}/jdofiles"
-      	classpathref="enhancer.classpath" verbose="true">
-      		<jvmarg line="-Dlog4j.configuration=${log4j.config.file}"/>
-      </jpoxenhancer>
+      	<!-- enhance -->
+      	<jpoxenhancer dir="${teneo.samples.base}/jdofiles"
+      		classpathref="enhancer.classpath" verbose="true">
+      			<jvmarg line="-Dlog4j.configuration=${log4j.config.file}"/>
+      	</jpoxenhancer>
     </target>
 </project>
