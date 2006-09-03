@@ -11,15 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AccountingAction.java,v 1.2 2006/09/01 08:20:30 mtaal Exp $
+ * $Id: AccountingAction.java,v 1.3 2006/09/03 19:31:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 
 import org.eclipse.emf.teneo.samples.emf.sample.accounting.Account;
 import org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountGroup;
@@ -28,9 +25,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountingFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountingPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.accounting.JournalGroup;
 import org.eclipse.emf.teneo.samples.emf.sample.accounting.Vat;
-import org.eclipse.emf.teneo.samples.emf.sample.play.PlayType;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
-import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
@@ -38,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * add to catalog, delete from catalog. 
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public abstract class AccountingAction extends AbstractTestAction 
 {

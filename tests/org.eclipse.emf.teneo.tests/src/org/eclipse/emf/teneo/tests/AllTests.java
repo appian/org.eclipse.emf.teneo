@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.6 2006/07/23 19:38:49 mtaal Exp $
+ * $Id: AllTests.java,v 1.7 2006/09/03 19:31:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.tests;
@@ -23,7 +23,7 @@ import junit.framework.TestSuite;
  * Runs all tests.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class AllTests {
 
@@ -36,7 +36,6 @@ public class AllTests {
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.sample.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.issues.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.hibernate.test.test.AllTests.suite());
 
 //		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.annotations.AllGenerateTests.suite());
 //		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.detach.AllGenerateTests.suite());

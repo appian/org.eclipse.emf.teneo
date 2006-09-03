@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.11 2006/08/29 17:32:34 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.12 2006/09/03 19:31:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -23,6 +23,7 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.jpox.emf.JpoxHelper;
@@ -39,12 +40,12 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class JPOXTestbed extends Testbed {
 	
 	/** The logger for this class */
-	private static Log log = LogFactory.getLog(JPOXTestbed.class);
+	//private static Log log = LogFactory.getLog(JPOXTestbed.class);
 
 	/** If we get here then this should be the testbed! */
 	static {
@@ -140,6 +141,19 @@ public class JPOXTestbed extends Testbed {
 			options.put(PersistenceOptions.INHERITANCE_MAPPING, inheritanceType.getName());
 			fileWriter.write(JpoxHelper.INSTANCE.generateMapping(test.getEPackages(), options));
 			fileWriter.close();
+
+			// now copy the file to the samples plugin
+			final File projectDir = mappingFile.getParentFile().getParentFile().getParentFile().getParentFile().getParentFile();
+			final File samplesProject = new File (projectDir, "org.eclipse.emf.teneo.samples");
+			final File jdoFiles = new File(samplesProject, "jdofiles");
+
+			// just choose a name based on one of the classes in the package
+			final String fileName = ((EClassifier)test.getEPackages()[0].getEClassifiers().get(0)).getInstanceClassName() + ".jdo";
+			final File jdoFile = new File(jdoFiles, fileName);
+			if (jdoFile.exists()) jdoFile.delete();
+			jdoFile.createNewFile();
+			StoreUtil.copyFile(mappingFile, jdoFile);
+
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while creating package.jdo file", e);
 		}
@@ -151,20 +165,16 @@ public class JPOXTestbed extends Testbed {
 		// otherwise the jpox enhancement fails! When enhancing a subclass B it
 		// will not the package.JPOX
 		// for superclass A because it will always search for package.jdo
-		final ClassLoader cl = Thread.currentThread().getContextClassLoader();
 		try {
-			Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
 			//File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
 			//log.debug("JDO FILE: " + destination.getAbsolutePath());
 			JPOXEnhancer.main(new String[] { mappingFile.getAbsolutePath(), "-v" });
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while enhancing", e);
-		} finally {
-			Thread.currentThread().setContextClassLoader(cl);			
 		}
 	}
 
-	/** Copies the mapping file to the bin directory */
+	/** Copies the mapping file to the bin directory
 	private File copyMappingToClassesDir(AbstractTest test, File mappingFile, boolean optimistic) {
 		try {
 			final File destination;
@@ -185,4 +195,5 @@ public class JPOXTestbed extends Testbed {
 			throw new StoreTestException("Exception while enhancing", e);
 		}
 	}
+	*/
 }

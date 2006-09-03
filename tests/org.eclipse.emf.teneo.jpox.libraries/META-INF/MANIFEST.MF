@@ -8,7 +8,8 @@ Bundle-ClassPath: bcel-5.1.jar,
  log4j-1.2.13.jar,
  jdo2-api-2.0.jar,
  jpox-1.1.1.jar,
- jpox-enhancer-1.1.1.jar
+ jpox-enhancer-1.1.1.jar,
+ org.eclipse.emf.teneo.jpox.enhanced.jar
 Eclipse-BuddyPolicy: dependent
 Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
