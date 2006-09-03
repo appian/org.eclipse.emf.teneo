@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.8 2006/08/21 10:31:42 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.9 2006/09/03 20:52:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class PersistenceOptions {
 
@@ -98,6 +98,17 @@ public class PersistenceOptions {
 	public static final String ID_COLUMN_NAME = NAMING_PREFIX + "default_id_column";
 
 	/**
+	 * The path of the persistence XML file.
+	 */
+	public static final String PERSISTENCE_XML = MAPPING_PREFIX + "persistence_xml";
+
+	/**
+	 * Ignore mapping EAnnotations. Primarily meant for test cases that use Persistence XML mapping, so that they can
+	 * reuse the same sample models.
+	 */
+	public static final String IGNORE_EANNOTATIONS = MAPPING_PREFIX + "ignore_eannotations";
+
+	/**
 	 * Truncate the column name if the length is larger than this property. In case of concatenating property names for
 	 * foreign keys
 	 */
@@ -134,6 +145,7 @@ public class PersistenceOptions {
 		props.setProperty(ID_COLUMN_NAME, "e_id");
 		props.setProperty(DISABLE_ECONTAINER_MAPPING, "false");
 		props.setProperty(MAXIMUM_SQL_NAME_LENGTH, "-1");
+		props.setProperty(IGNORE_EANNOTATIONS, "false");
 		return props;
 	}
 
@@ -275,6 +287,20 @@ public class PersistenceOptions {
 					+ " value is ignored");
 			return -1;
 		}
+	}
+
+	/**
+	 * Returns the path of the XML persistence mapping file or null if the property has not been defined. 
+	 */
+	public String getPersistenceXmlPath() {
+		return properties.getProperty(PERSISTENCE_XML);
+	}
+	
+	/**
+	 * Returns a boolean indication whether to ignore mapping EAnnotations.
+	 */
+	public boolean isIgnoreEAnnotations() {
+		return Boolean.valueOf(properties.getProperty(IGNORE_EANNOTATIONS)).booleanValue();
 	}
 
 	/**

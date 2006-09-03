@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingBuilder.java,v 1.3 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: PersistenceMappingBuilder.java,v 1.4 2006/09/03 20:53:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapper;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -32,13 +33,14 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.util.BasicPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.util.EannotationPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
+import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
 
 /**
  * Receives a list of ecore files and generates a mapping model using different strategies. The mapping model is
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class PersistenceMappingBuilder {
 
@@ -47,7 +49,7 @@ public class PersistenceMappingBuilder {
 
 	/** The instance to use */
 	public static final PersistenceMappingBuilder INSTANCE = new PersistenceMappingBuilder();
-	
+
 	/** Receives a list of ecore files and returns a Mapping */
 	public PAnnotatedModel buildMapping(String[] ecoreFiles, PersistenceOptions po) {
 		// note options are set in call to buildPersistenceMapping(epackages)
@@ -93,16 +95,35 @@ public class PersistenceMappingBuilder {
 		log.debug("Create base pannotated model");
 		PAnnotatedModel pam = pamodelBuilder.getPAnnotatedModel();
 
-		log.debug("Import eannotations");
-		// DCB: Introduce indirection so that extensions to annotation processing mechanism
-		// can provide their own model builder.
-		EannotationPamodelBuilder epb = getAnnotationModelBuilder();
-		epb.setPAnnotatedModel(pam);
-		epb.processCurrentPAnnotatedModel();
+		if (po.isIgnoreEAnnotations()) {
+			log.debug("Ignoring eannotations");
+		} else {
+			log.debug("Import eannotations");
+			// DCB: Introduce indirection so that extensions to annotation processing mechanism
+			// can provide their own model builder.
+			EannotationPamodelBuilder epb = getAnnotationModelBuilder();
+			epb.setPAnnotatedModel(pam);
+			epb.processCurrentPAnnotatedModel();
+		}
 
-		log.debug("Parse annotations");
-		getEAnnotationParserImporter().process(pam);
-		
+		if (po.isIgnoreEAnnotations()) {
+			log.debug("Ignoring annotations");
+		} else {
+			log.debug("Parse annotations");
+			getEAnnotationParserImporter().process(pam);
+		}
+
+		if (po.getPersistenceXmlPath() != null) {
+			final InputStream in = this.getClass().getClassLoader().getResourceAsStream(po.getPersistenceXmlPath());
+			if (in == null) {
+				throw new RuntimeException("Could not find persistence XML resource in classpath: \""
+						+ po.getPersistenceXmlPath() + "\".");
+			}
+			final XmlPersistenceMapper xmlPersistenceMapper = getXmlPersistenceMapper();
+			xmlPersistenceMapper.setXmlMapping(in);
+			xmlPersistenceMapper.applyPersistenceMapping(pam);
+		}
+
 		log.debug("Add default annotations");
 		// DCB: Introduce indirection so that extensions to annotation processing mechanism
 		// can provide their own default annotation.
@@ -125,9 +146,16 @@ public class PersistenceMappingBuilder {
 	protected EannotationPamodelBuilder getAnnotationModelBuilder() {
 		return new EannotationPamodelBuilder();
 	}
-	
+
 	/** Return a java annotation parser */
 	protected EAnnotationParserImporter getEAnnotationParserImporter() {
 		return new EAnnotationParserImporter();
+	}
+
+	/**
+	 * Returns an XmlPersistenceMapper.
+	 */
+	protected XmlPersistenceMapper getXmlPersistenceMapper() {
+		return new XmlPersistenceMapper();
 	}
 }
