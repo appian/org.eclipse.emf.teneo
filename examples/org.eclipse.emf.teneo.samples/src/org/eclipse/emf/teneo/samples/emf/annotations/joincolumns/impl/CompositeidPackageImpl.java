@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidPackageImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: CompositeidPackageImpl.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -247,8 +247,6 @@ public class CompositeidPackageImpl extends EPackageImpl implements CompositeidP
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/JoinColumns
-		createJoinColumnsAnnotations();
 		// http://annotation.elver.org/JoinColumn/jc1
 		createJc1Annotations();
 		// http://annotation.elver.org/JoinColumn/jc2
@@ -262,29 +260,13 @@ public class CompositeidPackageImpl extends EPackageImpl implements CompositeidP
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/JoinColumns</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createJoinColumnsAnnotations() {
-		String source = "http://annotation.elver.org/JoinColumns";		
-		addAnnotation
-		  (getParent_Children(), 
-		   source, 
-		   new String[] {
-			 "value", "jc1 jc2"
-		   });						
-	}
-
-	/**
 	 * Initializes the annotations for <b>http://annotation.elver.org/JoinColumn/jc1</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createJc1Annotations() {
-		String source = "http://annotation.elver.org/JoinColumn/jc1";			
+		String source = "http://annotation.elver.org/JoinColumn";			
 		addAnnotation
 		  (getParent_Children(), 
 		   source, 
@@ -301,7 +283,7 @@ public class CompositeidPackageImpl extends EPackageImpl implements CompositeidP
 	 * @generated
 	 */
 	protected void createJc2Annotations() {
-		String source = "http://annotation.elver.org/JoinColumn/jc2";				
+		String source = "http://annotation.elver.org/JoinColumn";				
 		addAnnotation
 		  (getParent_Children(), 
 		   source, 

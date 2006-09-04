@@ -30,10 +30,10 @@
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="paEClasses" upperBound="-1"
         eType="#//PAnnotatedEClass" containment="true" eOpposite="#//PAnnotatedEClass/paEPackage"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceGenerator" eType="ecore:EClass pannotation.ecore#//SequenceGenerator"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerator" eType="ecore:EClass pannotation.ecore#//TableGenerator"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceGenerators" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//SequenceGenerator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerators" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//TableGenerator" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEClass" eSuperTypes="#//PAnnotatedEModelElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -58,8 +58,8 @@
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeOverrides" eType="ecore:EClass pannotation.ecore#//AttributeOverrides"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeOverrides" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//AttributeOverride" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="discriminatorColumn" eType="ecore:EClass pannotation.ecore#//DiscriminatorColumn"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="discriminatorValue" eType="ecore:EClass pannotation.ecore#//DiscriminatorValue"
@@ -79,42 +79,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="inheritance" eType="ecore:EClass pannotation.ecore#//Inheritance"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="primaryKeyJoinColumns"
-        eType="ecore:EClass pannotation.ecore#//PrimaryKeyJoinColumns" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="secondaryTables" eType="ecore:EClass pannotation.ecore#//SecondaryTables"
+        upperBound="-1" eType="ecore:EClass pannotation.ecore#//PrimaryKeyJoinColumn"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="secondaryTables" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//SecondaryTable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="ecore:EClass pannotation.ecore#//Table"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerator" eType="ecore:EClass pannotation.ecore#//TableGenerator"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="associationOverrides" eType="ecore:EClass pannotation.ecore#//AssociationOverrides"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parsedAttributeOverrides"
-        upperBound="-1" eType="ecore:EClass pannotation.ecore#//AttributeOverride"
-        containment="true">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
-        <details key="ignore" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parsedAssociationOverrides"
-        upperBound="-1" eType="ecore:EClass pannotation.ecore#//AssociationOverride"
-        containment="true">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
-        <details key="ignore" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parsedSecondaryTables"
-        upperBound="-1" eType="ecore:EClass pannotation.ecore#//SecondaryTable" containment="true">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
-        <details key="ignore" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parsedPrimaryKeyJoinColumns"
-        upperBound="-1" eType="ecore:EClass pannotation.ecore#//PrimaryKeyJoinColumn"
-        containment="true">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
-        <details key="ignore" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="associationOverrides" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//AssociationOverride" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEStructuralFeature" abstract="true"
       eSuperTypes="#//PAnnotatedEModelElement">
@@ -134,8 +108,8 @@
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeOverrides" eType="ecore:EClass pannotation.ecore#//AttributeOverrides"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeOverrides" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//AttributeOverride" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinTable" eType="ecore:EClass pannotation.ecore#//JoinTable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="oneToMany" eType="ecore:EClass pannotation.ecore#//OneToMany"
@@ -144,27 +118,14 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerator" eType="ecore:EClass pannotation.ecore#//TableGenerator"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" eType="ecore:EClass pannotation.ecore#//JoinColumns"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//JoinColumn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="indexed" eType="ecore:EClass pannotation.ecore#//Indexed"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="unique" eType="ecore:EClass pannotation.ecore#//Unique"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="ecore:EClass pannotation.ecore#//Column"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parsedAttributeOverrides"
-        upperBound="-1" eType="ecore:EClass pannotation.ecore#//AttributeOverride"
-        containment="true">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
-        <details key="ignore" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parsedJoinColumns" upperBound="-1"
-        eType="ecore:EClass pannotation.ecore#//JoinColumn" containment="true">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
-        <details key="ignore" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEAttribute" eSuperTypes="#//PAnnotatedEStructuralFeature">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -215,7 +176,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderBy" eType="ecore:EClass pannotation.ecore#//OrderBy"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="primaryKeyJoinColumn" eType="ecore:EClass pannotation.ecore#//PrimaryKeyJoinColumn"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="primaryKeyJoinColumns"
+        upperBound="-1" eType="ecore:EClass pannotation.ecore#//PrimaryKeyJoinColumn"
         containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

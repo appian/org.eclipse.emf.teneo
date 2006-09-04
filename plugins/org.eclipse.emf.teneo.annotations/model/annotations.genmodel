@@ -19,8 +19,8 @@
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/paModel"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/annotatedEPackage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/paEClasses"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/sequenceGenerator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/tableGenerator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/sequenceGenerators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/tableGenerators"/>
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEClass">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/paEPackage"/>
@@ -39,10 +39,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/table"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/tableGenerator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/associationOverrides"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/parsedAttributeOverrides"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/parsedAssociationOverrides"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/parsedSecondaryTables"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/parsedPrimaryKeyJoinColumns"/>
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEStructuralFeature">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/paEClass"/>
@@ -56,8 +52,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/indexed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/unique"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/column"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/parsedAttributeOverrides"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/parsedJoinColumns"/>
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEAttribute">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEAttribute/annotatedEAttribute"/>
@@ -78,7 +72,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/mapKey"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/oneToOne"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/orderBy"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/primaryKeyJoinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/primaryKeyJoinColumns"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Pannotation" basePackage="org.eclipse.emf.teneo.annotations"
@@ -126,15 +120,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//AttributeOverride/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//AttributeOverride/column"/>
     </genClasses>
-    <genClasses ecoreClass="pannotation.ecore#//AttributeOverrides">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//AttributeOverrides/value"/>
-    </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//AssociationOverride">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//AssociationOverride/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//AssociationOverride/joinColumns"/>
-    </genClasses>
-    <genClasses ecoreClass="pannotation.ecore#//AssociationOverrides">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//AssociationOverrides/value"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//Basic">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Basic/fetch"/>
@@ -191,9 +179,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//JoinColumn/columnDefinition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//JoinColumn/table"/>
     </genClasses>
-    <genClasses ecoreClass="pannotation.ecore#//JoinColumns">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//JoinColumns/value"/>
-    </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//JoinTable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//JoinTable/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//JoinTable/catalog"/>
@@ -240,18 +225,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//PrimaryKeyJoinColumn/referencedColumnName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//PrimaryKeyJoinColumn/columnDefinition"/>
     </genClasses>
-    <genClasses ecoreClass="pannotation.ecore#//PrimaryKeyJoinColumns">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//PrimaryKeyJoinColumns/value"/>
-    </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//SecondaryTable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SecondaryTable/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SecondaryTable/catalog"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SecondaryTable/schema"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//SecondaryTable/pkJoinColumns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//SecondaryTable/uniqueConstraints"/>
-    </genClasses>
-    <genClasses ecoreClass="pannotation.ecore#//SecondaryTables">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//SecondaryTables/value"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//SequenceGenerator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SequenceGenerator/name"/>

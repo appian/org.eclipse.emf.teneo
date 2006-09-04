@@ -12,12 +12,11 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.2 2006/09/04 15:42:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -110,11 +109,7 @@ abstract class AbstractMapper {
 	protected List getJoinColumns(PAnnotatedEReference paReference) {
 		List joinColumns = getHbmContext().getOverride(paReference);
 		if (joinColumns == null) {
-			if (paReference.getJoinColumns() == null) {
-				joinColumns = new ArrayList();
-			} else {
-				joinColumns = paReference.getJoinColumns().getValue();
-			}
+			return paReference.getJoinColumns();
 		}
 		return joinColumns;
 	}

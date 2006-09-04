@@ -12,12 +12,11 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.2 2006/09/04 15:42:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -63,13 +62,36 @@ class OneToOneMapper extends AbstractAssociationMapper implements OneToOneProces
 	 *      org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass)
 	 */
 	public void processOtOUni(PAnnotatedEReference paReference) {
-		if (paReference.getPrimaryKeyJoinColumn() != null) {
+		if (!paReference.getPrimaryKeyJoinColumns().isEmpty()) {
 			createOneToOne(paReference);
-			return;
+		} else {
+			createManyToOne(paReference);
 		}
-		if (log.isDebugEnabled()) {
-			log.debug("Generating one to one unidirectional mapping for " + paReference);
+	}
+
+	/**
+	 * @see org.eclipse.emf.teneo.annotations.processing.OneToOneProcessor#processBidirectionalOwner(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
+	 *      org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
+	 */
+	public void processOtOBidiOwner(PAnnotatedEReference paReference) {
+		if (!paReference.getPrimaryKeyJoinColumns().isEmpty()) {
+			createOneToOne(paReference);
+		} else {
+			createManyToOne(paReference);
 		}
+	}
+
+	/**
+	 * @see org.eclipse.emf.teneo.annotations.processing.OneToOneProcessor#processBidirectionalInverse(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
+	 *      org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
+	 */
+	public void processOtOBidilInverse(PAnnotatedEReference paReference) {
+		createOneToOne(paReference);
+	}
+
+	/** Create hibernate many-to-one mapping */
+	private void createManyToOne(PAnnotatedEReference paReference) {
+		log.debug("Generating many to one mapping for onetoone" + paReference);
 
 		final OneToOne oto = paReference.getOneToOne();
 		final String specifiedName = oto.getTargetEntity();
@@ -87,41 +109,7 @@ class OneToOneMapper extends AbstractAssociationMapper implements OneToOneProces
 		associationElement.addAttribute("unique", "true");
 	}
 
-	/**
-	 * @see org.eclipse.emf.teneo.annotations.processing.OneToOneProcessor#processBidirectionalOwner(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
-	 *      org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
-	 */
-	public void processOtOBidiOwner(PAnnotatedEReference paReference) {
-		if (paReference.getPrimaryKeyJoinColumn() != null) {
-			createOneToOne(paReference);
-			return;
-		}
-		if (log.isDebugEnabled())
-			log.debug("Generating one to one bidirectional owner mapping for " + paReference);
-
-		final OneToOne oto = paReference.getOneToOne();
-		String targetName = oto.getTargetEntity();
-		if (targetName == null) {
-			targetName = getHbmContext().getEntityName(paReference.getAnnotatedEReference().getEReferenceType());
-		}
-
-		Element associationElement = addManyToOne(paReference.getAnnotatedEReference().getName(), targetName);
-
-		addCascadesForSingle(associationElement, oto.getCascade());
-		addFetchType(associationElement, oto.getFetch());
-		addJoinColumns(associationElement, paReference.getJoinColumns() == null ? new ArrayList() : (List) paReference
-				.getJoinColumns().getValue(), oto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
-		associationElement.addAttribute("unique", "true");
-	}
-
-	/**
-	 * @see org.eclipse.emf.teneo.annotations.processing.OneToOneProcessor#processBidirectionalInverse(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
-	 *      org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
-	 */
-	public void processOtOBidilInverse(PAnnotatedEReference paReference) {
-		createOneToOne(paReference);
-	}
-
+	
 	/** Create hibernate one-to-one mapping */
 	private void createOneToOne(PAnnotatedEReference paReference) {
 		if (log.isDebugEnabled())
@@ -137,7 +125,7 @@ class OneToOneMapper extends AbstractAssociationMapper implements OneToOneProces
 
 		addCascadesForSingle(associationElement, oto.getCascade());
 		addFetchType(associationElement, oto.getFetch());
-		if (paReference.getPrimaryKeyJoinColumn() != null) {
+		if (paReference.getPrimaryKeyJoinColumns().size() > 0) {
 			associationElement.addAttribute("constrained", "true");
 		}
 	}

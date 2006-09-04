@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationParser.java,v 1.4 2006/09/01 07:02:28 mtaal Exp $
+ * $Id: AnnotationParser.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -54,7 +54,7 @@ public class AnnotationParser {
 	}
 
 	/** Adds a child to the parent */
-	private void addToParent(ParserNode parent, ParserNode child) {
+	private void addToParent(NamedParserNode parent, NamedParserNode child) {
 		if (parent == null) return;
 		if (parent instanceof ComplexNode) {
 			((ComplexNode)parent).getChildren().add(child);
@@ -66,7 +66,7 @@ public class AnnotationParser {
 	}
 	
 	/** Parse a type name (a complex type) */
-	private void parseTypeName(ParserNode pn) {
+	private void parseTypeName(NamedParserNode pn) {
 		final ComplexNode cn = new ComplexNode();
 		cn.setName(annotationTokenizer.getLexeme());
 		addToParent(pn, cn);
@@ -98,7 +98,7 @@ public class AnnotationParser {
 	}
 	
 	/** Parse the content of a typeName */
-	private void parseContent(ParserNode pn) {
+	private void parseContent(NamedParserNode pn) {
 		// content can either be an array or a set of values
 		boolean finished = false;
 		while (!finished) {
@@ -139,14 +139,17 @@ public class AnnotationParser {
 					}
 					break;
 				case AnnotationTokenizer.T_ARRAYSTART:
+					// special case in which the main type is just a list of other types
+					// for example SecondaryTables which is just a list of SecondaryTable
 					parseArray(pn);
+					((ComplexNode)pn).setList(true);
 					break;
 			}
 		}
 	}
 	
 	/** Parse an array */
-	private void parseArray(ParserNode pn) {
+	private void parseArray(NamedParserNode pn) {
 		// content can either be an array or a set of values
 		final ArrayValueNode an = new ArrayValueNode();
 		addToParent(pn, an);
@@ -159,6 +162,9 @@ public class AnnotationParser {
 							annotationTokenizer.getErrorText());
 				case AnnotationTokenizer.T_TYPENAME:
 					parseTypeName(an);
+					break;
+				case AnnotationTokenizer.T_IDENTIFIER:
+					an.getChildren().add(annotationTokenizer.getLexeme());
 					break;
 				case AnnotationTokenizer.T_COMMA:
 					break;

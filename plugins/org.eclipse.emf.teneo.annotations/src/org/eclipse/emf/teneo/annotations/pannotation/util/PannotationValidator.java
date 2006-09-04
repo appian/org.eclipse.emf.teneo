@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.7 2006/09/01 06:56:03 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.8 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -25,10 +25,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.emf.teneo.annotations.pannotation.*;
+
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
@@ -50,7 +50,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.JoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
@@ -63,9 +62,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
-import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
@@ -163,12 +160,8 @@ public class PannotationValidator extends EObjectValidator {
 				return validatePAnnotation((PAnnotation)value, diagnostics, context);
 			case PannotationPackage.ATTRIBUTE_OVERRIDE:
 				return validateAttributeOverride((AttributeOverride)value, diagnostics, context);
-			case PannotationPackage.ATTRIBUTE_OVERRIDES:
-				return validateAttributeOverrides((AttributeOverrides)value, diagnostics, context);
 			case PannotationPackage.ASSOCIATION_OVERRIDE:
 				return validateAssociationOverride((AssociationOverride)value, diagnostics, context);
-			case PannotationPackage.ASSOCIATION_OVERRIDES:
-				return validateAssociationOverrides((AssociationOverrides)value, diagnostics, context);
 			case PannotationPackage.BASIC:
 				return validateBasic((Basic)value, diagnostics, context);
 			case PannotationPackage.COLUMN:
@@ -197,8 +190,6 @@ public class PannotationValidator extends EObjectValidator {
 				return validateInheritance((Inheritance)value, diagnostics, context);
 			case PannotationPackage.JOIN_COLUMN:
 				return validateJoinColumn((JoinColumn)value, diagnostics, context);
-			case PannotationPackage.JOIN_COLUMNS:
-				return validateJoinColumns((JoinColumns)value, diagnostics, context);
 			case PannotationPackage.JOIN_TABLE:
 				return validateJoinTable((JoinTable)value, diagnostics, context);
 			case PannotationPackage.LOB:
@@ -219,12 +210,8 @@ public class PannotationValidator extends EObjectValidator {
 				return validateOrderBy((OrderBy)value, diagnostics, context);
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN:
 				return validatePrimaryKeyJoinColumn((PrimaryKeyJoinColumn)value, diagnostics, context);
-			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMNS:
-				return validatePrimaryKeyJoinColumns((PrimaryKeyJoinColumns)value, diagnostics, context);
 			case PannotationPackage.SECONDARY_TABLE:
 				return validateSecondaryTable((SecondaryTable)value, diagnostics, context);
-			case PannotationPackage.SECONDARY_TABLES:
-				return validateSecondaryTables((SecondaryTables)value, diagnostics, context);
 			case PannotationPackage.SEQUENCE_GENERATOR:
 				return validateSequenceGenerator((SequenceGenerator)value, diagnostics, context);
 			case PannotationPackage.TABLE:
@@ -334,21 +321,6 @@ public class PannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(attributeOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(attributeOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(attributeOverride, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAttributeOverrides(AttributeOverrides attributeOverrides, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(attributeOverrides, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(attributeOverrides, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(attributeOverrides, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(attributeOverrides, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(attributeOverrides, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(attributeOverrides, diagnostics, context);
 		return result;
 	}
 
@@ -878,21 +850,6 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateJoinColumns(JoinColumns joinColumns, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(joinColumns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(joinColumns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(joinColumns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(joinColumns, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(joinColumns, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(joinColumns, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateJoinTable(JoinTable joinTable, DiagnosticChain diagnostics, Map context) {
 		boolean result = validate_EveryMultiplicityConforms(joinTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(joinTable, diagnostics, context);
@@ -1255,21 +1212,6 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePrimaryKeyJoinColumns(PrimaryKeyJoinColumns primaryKeyJoinColumns, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(primaryKeyJoinColumns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(primaryKeyJoinColumns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(primaryKeyJoinColumns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(primaryKeyJoinColumns, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(primaryKeyJoinColumns, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(primaryKeyJoinColumns, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateSecondaryTable(SecondaryTable secondaryTable, DiagnosticChain diagnostics, Map context) {
 		boolean result = validate_EveryMultiplicityConforms(secondaryTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(secondaryTable, diagnostics, context);
@@ -1277,21 +1219,6 @@ public class PannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(secondaryTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(secondaryTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(secondaryTable, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSecondaryTables(SecondaryTables secondaryTables, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(secondaryTables, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(secondaryTables, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(secondaryTables, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(secondaryTables, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(secondaryTables, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(secondaryTables, diagnostics, context);
 		return result;
 	}
 
@@ -1559,21 +1486,6 @@ public class PannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(associationOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(associationOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(associationOverride, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAssociationOverrides(AssociationOverrides associationOverrides, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(associationOverrides, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(associationOverrides, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(associationOverrides, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(associationOverrides, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(associationOverrides, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(associationOverrides, diagnostics, context);
 		return result;
 	}
 

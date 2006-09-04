@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EAnnotationImporter.java,v 1.4 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: EAnnotationImporter.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.pannotation.util;
@@ -28,6 +28,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -103,6 +105,9 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  */
 public class EAnnotationImporter {
 
+	/** The logger */
+	protected static final Log log = LogFactory.getLog(EAnnotationImporter.class);
+
 	public interface Handler {
 
 		void handle(PAnnotation target);
@@ -115,38 +120,41 @@ public class EAnnotationImporter {
 	/** work around for EMF bug ??? Ignore details with this key */
 	public static final String IGNORE_DETAIL_KEY = "appinfo";
 
-    /** Does it have one of the sources defined in the eannotations of the epackages */
-    public boolean isPAnnotationSource(String source) {
-        return null != getPrefix(source);
-    }
+	/** Does it have one of the sources defined in the eannotations of the epackages */
+	public boolean isPAnnotationSource(String source) {
+		return null != getPrefix(source);
+	}
 
-    /** Returns the prefix of the annotation source, search uses using the prefixes defined
-     * in the annotation teneo.mapping.source on the epackage */
-    protected String getPrefix(String source) {
-        if (source == null) {
-            return null;
-        }
-        final Collection prefixes =
-                PannotationPackage.eINSTANCE.getEAnnotation(
-                        "teneo.mapping.source").getDetails().values();
-        for (Iterator iter = prefixes.iterator(); iter.hasNext();) {
-            String prefix = (String) iter.next();
-            if (source.startsWith(prefix)) {
-                return prefix;
-            }
-        }
-        return null;
-    }
-	
+	/**
+	 * Returns the prefix of the annotation source, search uses using the prefixes defined in the annotation
+	 * teneo.mapping.source on the epackage
+	 */
+	protected String getPrefix(String source) {
+		if (source == null) {
+			return null;
+		}
+		final Collection prefixes = PannotationPackage.eINSTANCE.getEAnnotation("teneo.mapping.source").getDetails()
+				.values();
+		for (Iterator iter = prefixes.iterator(); iter.hasNext();) {
+			String prefix = (String) iter.next();
+			if (source.startsWith(prefix)) {
+				return prefix;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * Add the given annotation to the given PAnnotatedEModelElement.
-	 * @throws IllegalArgumentException if the given PAnnotation
-	 * is not admitted for the given PAnnotatedEModelElement.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if the given PAnnotation is not admitted for the given PAnnotatedEModelElement.
 	 */
 	protected void setPAnnotation(PAnnotatedEModelElement pElement, PAnnotation pAnnotation) {
-		EReference pAnnotationRef = PamodelPackage.eINSTANCE.pAnnotationReference(pElement.eClass(), pAnnotation.eClass());
+		EReference pAnnotationRef = PamodelPackage.eINSTANCE.pAnnotationReference(pElement.eClass(), pAnnotation
+				.eClass());
 		if (pAnnotationRef == null)
-			throw new IllegalArgumentException("PAnnotation of type '" + pAnnotation.eClass() 
+			throw new IllegalArgumentException("PAnnotation of type '" + pAnnotation.eClass()
 					+ "' does not apply to elements of type '" + pElement.eClass() + "'");
 		pElement.eSet(pAnnotationRef, pAnnotation);
 	}
@@ -154,13 +162,18 @@ public class EAnnotationImporter {
 	/**
 	 * @return Returns the PAnnotation EClass identified by the given source.
 	 */
-	public EClass getPAnnotationEClass(String source) {
-		if (!isPAnnotationSource(source))
+	public EClass getPAnnotationEClass(String src) {
+		String localSource = src;
+		if (!isPAnnotationSource(localSource))
 			return null;
+
+		if (isPAnnotationSubordinate(localSource)) {
+			localSource = localSource.substring(0, localSource.lastIndexOf('/'));
+		}
 
 		// Provide package in which the desired class can be found. This allows
 		// for extensions to the Elver annotation processing mechanisms.
-		return getEClass(source, getPrefix(source), PannotationPackage.eINSTANCE);
+		return getEClass(localSource, getPrefix(localSource), PannotationPackage.eINSTANCE);
 	}
 
 	/**
@@ -192,11 +205,19 @@ public class EAnnotationImporter {
 	 *         annotations are inteded to be referenced by other annotations.
 	 */
 	public boolean isPAnnotationSubordinate(EAnnotation eAnnotation) {
-		if (!isPAnnotationSource(eAnnotation.getSource())) {
+		return isPAnnotationSubordinate(eAnnotation.getSource());
+	}
+
+	/**
+	 * @return Returns true if and only if the given annotation defines a detail with key SUBORDINATE_ID_KEY. Such
+	 *         annotations are inteded to be referenced by other annotations.
+	 */
+	public boolean isPAnnotationSubordinate(String source) {
+		if (!isPAnnotationSource(source)) {
 			return false;
 		}
 
-		String annotationName = eAnnotation.getSource().substring(getPrefix(eAnnotation.getSource()).length());
+		String annotationName = source.substring(getPrefix(source).length());
 		return annotationName.indexOf('/') != -1;
 	}
 
@@ -204,17 +225,16 @@ public class EAnnotationImporter {
 	 * @return Return the id of the given annotation if this is a subordinate annotation. Returns <code>null</code>
 	 *         otherwise.
 	 */
-	public String getPAnnotationSubordinateId(EAnnotation eAnnotation) {
-		return getSubordinateId(eAnnotation, getPrefix(eAnnotation.getSource()));
+	public String getPAnnotationSubordinateId(String src) {
+		return getSubordinateId(src, getPrefix(src));
 	}
 
 	/**
 	 * @return Return the id of the given annotation if this is a subordinate annotation. Returns <code>null</code>
 	 *         otherwise
 	 */
-	protected String getSubordinateId(EAnnotation eAnnotation, String prefix) {
+	protected String getSubordinateId(String source, String prefix) {
 		// get the subordinate part
-		String source = eAnnotation.getSource();
 		int subOrdinateIndex = source.indexOf('/', prefix.length());
 		assert (subOrdinateIndex != -1);
 		return source.substring(subOrdinateIndex + 1);
@@ -233,7 +253,7 @@ public class EAnnotationImporter {
 		}
 		String name = (String) annotation.getDetails().get("name");
 		String pkgNS = (String) annotation.getDetails().get("packageNS");
-	
+
 		pkgNS = (null == pkgNS) ? PannotationPackage.eNS_URI : pkgNS;
 		EPackage ePkg = EPackage.Registry.INSTANCE.getEPackage(pkgNS);
 		return (null == ePkg) ? null : (EClass) ePkg.eResource().getEObject("//" + name);
@@ -311,6 +331,15 @@ public class EAnnotationImporter {
 		// Indirection so that the annotation processing mechanism can be extended.
 		EClass pAnnotationEClass = getPAnnotationEClass(eAnnotation);
 		if (pAnnotationEClass == null) {
+			final String src = eAnnotation.getSource();
+			if (src.indexOf("SecondaryTables") != -1 || src.indexOf("JoinColumns") != -1
+					|| src.indexOf("AttributeOverrides") != -1 || src.indexOf("AssociationOverrides") != -1
+					|| src.indexOf("PrimaryKeyJoinColumns") != -1) {
+				// old annotations ignore
+				log.debug("Source of annotation " + src + " uses deprecated annotation, ignoring");
+				return null;
+			}
+
 			error("Unknown annotation type", eAnnotation);
 			throw new EAnnotationImportException("Unknown annotation type");
 		}
@@ -392,14 +421,15 @@ public class EAnnotationImporter {
 			// for annotation processing extensions
 			if (isPAnnotationSource(eAnnotation.getSource())) { // ignore otherwise
 				if (isPAnnotationSubordinate(eAnnotation)) {
-					subAnnotationsById.put(getPAnnotationSubordinateId(eAnnotation), eAnnotation);
+					subAnnotationsById.put(getPAnnotationSubordinateId(eAnnotation.getSource()), eAnnotation);
 				} else {
 					// the collection pannotation is retrieved, each annotation which can be specified individually or
 					// as part
 					// of a collection is identified here
 
 					EClass containerPAnnotationEClass = getPAnnotationCollectionEClass(getPAnnotationEClass(eAnnotation));
-					if (containerPAnnotationEClass != null
+					if (false
+							&& containerPAnnotationEClass != null
 							&& PannotationPackage.eINSTANCE.isTarget(containerPAnnotationEClass, eAnnotation
 									.getEModelElement().eClass())) {
 						List collectibleAnnotations = (List) collectibleAnnotationsByType
@@ -417,6 +447,8 @@ public class EAnnotationImporter {
 		}
 
 		// check for duplicate annotations
+		// ALLOW duplicates
+		/*
 		Set usedAnnotations = new HashSet(collectibleAnnotationsByType.keySet());
 		for (ListIterator i = mainAnnotations.listIterator(); i.hasNext();) {
 			EAnnotation eAnnotation = (EAnnotation) i.next();
@@ -426,6 +458,7 @@ public class EAnnotationImporter {
 				i.remove();
 			}
 		}
+		*/
 	}
 
 	/**
@@ -487,6 +520,9 @@ public class EAnnotationImporter {
 	 */
 	protected PAnnotation process(EAnnotation eAnnotation) throws EAnnotationImportException {
 		PAnnotation pAnnotation = createPAnnotation(eAnnotation);
+		
+		if (pAnnotation == null) return null; // to not fail on old annotations
+		
 		if (!PannotationPackage.eINSTANCE.isTarget(pAnnotation.eClass(), eAnnotation.getEModelElement().eClass())) {
 			error("Annotation type '" + pAnnotation.eClass().getName() + "' does not apply to EClass '"
 					+ eAnnotation.getEModelElement().eClass() + "'", eAnnotation);
@@ -525,7 +561,8 @@ public class EAnnotationImporter {
 					EModelElement targetElement = ((EAnnotation) componentEAnnotations.get(0)).getEModelElement();
 					for (Iterator j = componentEAnnotations.iterator(); j.hasNext();)
 						componentPAnnotations.add(process((EAnnotation) j.next()));
-					PAnnotation collAnnotation = createPAnnotationCollection(collAnnotationEClass, componentPAnnotations);
+					PAnnotation collAnnotation = createPAnnotationCollection(collAnnotationEClass,
+							componentPAnnotations);
 					collAnnotation.setEModelElement(targetElement);
 					report(collAnnotation);
 				} catch (EAnnotationImportException e) {
@@ -558,7 +595,7 @@ public class EAnnotationImporter {
 		final List annotations = new ArrayList();
 		annotations.addAll(eAttribute.getEAnnotations());
 		EcoreUtil.Copier copier = null; // Copier is lazily constructed, because in the majority of cases we won't even
-										// have any EAnnotations to copy.
+		// have any EAnnotations to copy.
 		final List typeAnnotations = eAttribute.getEType().getEAnnotations();
 		for (Iterator it = typeAnnotations.iterator(); it.hasNext();) {
 			final EAnnotation annotation = (EAnnotation) it.next();

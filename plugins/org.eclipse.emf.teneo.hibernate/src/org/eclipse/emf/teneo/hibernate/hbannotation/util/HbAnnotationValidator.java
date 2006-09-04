@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.3 2006/09/01 06:56:11 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.4 2006/09/04 15:42:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.teneo.annotations.pannotation.util.PannotationValidator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
+
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;

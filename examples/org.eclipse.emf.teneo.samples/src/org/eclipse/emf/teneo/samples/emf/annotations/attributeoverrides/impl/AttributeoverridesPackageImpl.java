@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeoverridesPackageImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: AttributeoverridesPackageImpl.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.impl;
 
@@ -251,8 +251,6 @@ public class AttributeoverridesPackageImpl extends EPackageImpl implements Attri
 		createAttributeOverrideAnnotations();
 		// http://annotation.elver.org/Column/c1
 		createC1Annotations();
-		// http://annotation.elver.org/AttributeOverrides
-		createAttributeOverridesAnnotations();
 		// http://annotation.elver.org/AttributeOverride/a1
 		createA1Annotations();
 		// http://annotation.elver.org/AttributeOverride/a2
@@ -280,22 +278,6 @@ public class AttributeoverridesPackageImpl extends EPackageImpl implements Attri
 		  (getPerson_LivesIn(), 
 		   source, 
 		   new String[] {
-		   });						
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/AttributeOverrides</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createAttributeOverridesAnnotations() {
-		String source = "http://annotation.elver.org/AttributeOverrides";							
-		addAnnotation
-		  (getPerson_LivesIn(), 
-		   source, 
-		   new String[] {
-			 "value", "a1 a2"
 		   });					
 	}
 
@@ -306,7 +288,7 @@ public class AttributeoverridesPackageImpl extends EPackageImpl implements Attri
 	 * @generated
 	 */
 	protected void createA1Annotations() {
-		String source = "http://annotation.elver.org/AttributeOverride/a1";								
+		String source = "http://annotation.elver.org/AttributeOverride/a1";							
 		addAnnotation
 		  (getPerson_LivesIn(), 
 		   source, 
@@ -323,7 +305,7 @@ public class AttributeoverridesPackageImpl extends EPackageImpl implements Attri
 	 * @generated
 	 */
 	protected void createA2Annotations() {
-		String source = "http://annotation.elver.org/AttributeOverride/a2";										
+		String source = "http://annotation.elver.org/AttributeOverride/a2";									
 		addAnnotation
 		  (getPerson_LivesIn(), 
 		   source, 
@@ -340,7 +322,7 @@ public class AttributeoverridesPackageImpl extends EPackageImpl implements Attri
 	 * @generated
 	 */
 	protected void createC2Annotations() {
-		String source = "http://annotation.elver.org/Column/c2";											
+		String source = "http://annotation.elver.org/Column/c2";										
 		addAnnotation
 		  (getPerson_LivesIn(), 
 		   source, 
@@ -356,7 +338,7 @@ public class AttributeoverridesPackageImpl extends EPackageImpl implements Attri
 	 * @generated
 	 */
 	protected void createEmbeddableAnnotations() {
-		String source = "http://annotation.elver.org/Embeddable";												
+		String source = "http://annotation.elver.org/Embeddable";											
 		addAnnotation
 		  (cityEClass, 
 		   source, 
@@ -378,7 +360,7 @@ public class AttributeoverridesPackageImpl extends EPackageImpl implements Attri
 		   new String[] {
 			 "name", "name",
 			 "column", "c1"
-		   });								
+		   });							
 	}
 
 	/**
@@ -394,7 +376,7 @@ public class AttributeoverridesPackageImpl extends EPackageImpl implements Attri
 		   source, 
 		   new String[] {
 			 "name", "bornNameColumn"
-		   });					
+		   });				
 		addAnnotation
 		  (getPerson_LivesIn(), 
 		   source, 

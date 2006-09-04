@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttributeImpl.java,v 1.2 2006/08/31 22:47:18 mtaal Exp $
+ * $Id: HbAnnotatedEAttributeImpl.java,v 1.3 2006/09/04 15:42:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
@@ -628,5 +629,5 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
-
+	
 } //HbAnnotatedEAttributeImpl

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyAttributeMapper.java,v 1.2 2006/08/24 22:12:51 mtaal Exp $
+ * $Id: ManyAttributeMapper.java,v 1.3 2006/09/04 15:42:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -77,8 +77,7 @@ class ManyAttributeMapper extends AbstractAssociationMapper implements ManyAttri
 		final Element keyElement = collElement.addElement("key");
 
 		final JoinTable jt = paAttribute.getJoinTable();
-		final List jcs = paAttribute.getJoinColumns() == null ? new ArrayList() : (List) paAttribute.getJoinColumns()
-				.getValue();
+		final List jcs = paAttribute.getJoinColumns() == null ? new ArrayList() : (List) paAttribute.getJoinColumns();
 		final OneToMany otm = paAttribute.getOneToMany();
 
 		if (jt != null) {

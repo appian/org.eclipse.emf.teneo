@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeoverridesSwitch.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: AttributeoverridesSwitch.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.util;
 
@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.*;
+
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.City;
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.Person;

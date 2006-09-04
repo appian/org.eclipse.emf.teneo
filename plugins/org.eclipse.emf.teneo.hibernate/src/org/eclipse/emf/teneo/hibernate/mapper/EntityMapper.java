@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.2 2006/08/03 09:58:19 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.3 2006/09/04 15:42:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -27,6 +27,7 @@ import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -34,10 +35,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
-import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.processing.FeatureProcessor;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
@@ -193,11 +194,11 @@ class EntityMapper extends AbstractMapper {
 		List mappedSuperClasses = getHbmContext().getMappedSuperClasses(entity);
 		log.debug("No of mappedSuperclasses " + mappedSuperClasses.size());
 
-		if (mappedSuperClasses.isEmpty() && entity.getAttributeOverrides() != null) {
+		if (mappedSuperClasses.isEmpty() && entity.getAttributeOverrides().size() > 0) {
 			log.error("Specified AttributeOverrides without mapped superclass in " + entity);
 			throw new ProcessingException("Specified AttributeOverrides without mapped superclass", entity);
 		}
-		if (mappedSuperClasses.isEmpty() && entity.getAssociationOverrides() != null) {
+		if (mappedSuperClasses.isEmpty() && entity.getAssociationOverrides().size() > 0) {
 			log.error("Specified AssociationOverrides without mapped superclass in " + entity);
 			throw new ProcessingException("Specified AssociationOverrides without mapped superclass", entity);
 		}
@@ -210,8 +211,8 @@ class EntityMapper extends AbstractMapper {
 		// MT: moved to processFeatures method because this should be done after the id
 		// element has been placed
 
-		if (entity.getPrimaryKeyJoinColumns() != null && entity.getPrimaryKeyJoinColumns().getValue().size() > 0) {
-			addPrimaryKeyJoinColumn(entity.getPrimaryKeyJoinColumns().getValue());
+		if (entity.getPrimaryKeyJoinColumns() != null && entity.getPrimaryKeyJoinColumns().size() > 0) {
+			addPrimaryKeyJoinColumn(entity.getPrimaryKeyJoinColumns());
 		} else if (entity.getPaSuperEntity() != null
 				&& !InheritanceType.SINGLE_TABLE_LITERAL.equals(entity.getInheritanceStrategy())) {
 			final ArrayList list = new ArrayList();
@@ -223,11 +224,11 @@ class EntityMapper extends AbstractMapper {
 			log.debug("Processing mapped superclasses, no of mappedsuperclasses: " + mappedSuperClasses.size());
 			for (Iterator i = mappedSuperClasses.iterator(); i.hasNext();) {
 				getHbmContext().pushOverrideOnStack();
-				if (entity.getAttributeOverrides() != null) {
-					getHbmContext().addOverrides(entity.getAttributeOverrides());
+				if (!entity.getAttributeOverrides().isEmpty()) {
+					getHbmContext().addAttributeOverrides(entity.getAttributeOverrides());
 				}
-				if (entity.getAssociationOverrides() != null) {
-					getHbmContext().addOverrides(entity.getAssociationOverrides());
+				if (!entity.getAssociationOverrides().isEmpty()) {
+					getHbmContext().addAssociationOverrides(entity.getAssociationOverrides());
 				}
 				try {
 					final PAnnotatedEClass mappedSuperClass = (PAnnotatedEClass) i.next();
@@ -247,10 +248,10 @@ class EntityMapper extends AbstractMapper {
 			}
 			getHbmContext().pushOverrideOnStack();
 			if (entity.getAttributeOverrides() != null) {
-				getHbmContext().addOverrides(entity.getAttributeOverrides());
+				getHbmContext().addAttributeOverrides(entity.getAttributeOverrides());
 			}
 			if (entity.getAssociationOverrides() != null) {
-				getHbmContext().addOverrides(entity.getAssociationOverrides());
+				getHbmContext().addAssociationOverrides(entity.getAssociationOverrides());
 			}
 			try {
 				processFeatures(multipleInheritanceFeatures);
@@ -258,13 +259,13 @@ class EntityMapper extends AbstractMapper {
 				getHbmContext().popOverrideStack();
 			}
 
-			final SecondaryTables secondaryTables = entity.getSecondaryTables();
-			if (secondaryTables == null || secondaryTables.getValue().size() == 0) {
+			final EList secondaryTables = entity.getSecondaryTables();
+			if (secondaryTables == null || secondaryTables.isEmpty()) {
 				// Process features normally.
 				processFeatures(entity.getPaEStructuralFeatures());
 			} else {
 				// Special processing needed for secondary tables.
-				processSecondaryTables(secondaryTables.getValue(), entity);
+				processSecondaryTables(secondaryTables, entity);
 			}
 		} finally {
 			getHbmContext().setCurrentTable(null);
@@ -346,7 +347,7 @@ class EntityMapper extends AbstractMapper {
 		final Map featuresByTable = new HashMap();
 		for (Iterator iter = entity.getPaEStructuralFeatures().iterator(); iter.hasNext();) {
 			final PAnnotatedEStructuralFeature feature = (PAnnotatedEStructuralFeature) iter.next();
-			final String tableName = feature.getTableName();
+			final String tableName = getSecondaryTableName(feature);
 			if (!tableNames.contains(tableName)) {
 				final String message = "Feature \"" + feature.getAnnotatedElement().getName()
 						+ "\" was mapped to undeclared secondary table \"" + tableName + "\".";
@@ -414,6 +415,18 @@ class EntityMapper extends AbstractMapper {
 		}
 	}
 
+	/** Returns the table name from the column annotation or the joincolumn annotation */
+	public String getSecondaryTableName(PAnnotatedEStructuralFeature pef) {
+		String tableName = null;
+		if (pef.getColumn() != null) {
+			tableName = pef.getColumn().getTable();
+		} else if (pef.getJoinColumns() != null && !pef.getJoinColumns().isEmpty()) {
+			tableName = ((JoinColumn) pef.getJoinColumns().get(0)).getTable();
+		}
+		return tableName;
+	}
+
+	
 	/** Process one feature */
 	protected void processFeature(PAnnotatedEStructuralFeature paFeature) {
 		featureProcessor.process(paFeature);

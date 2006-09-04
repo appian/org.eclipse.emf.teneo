@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactory.java,v 1.4 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: PannotationFactory.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -35,14 +35,6 @@ public interface PannotationFactory extends EFactory {
 	 * @generated
 	 */
 	AttributeOverride createAttributeOverride();
-
-	/**
-	 * Returns a new object of class '<em>Attribute Overrides</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Attribute Overrides</em>'.
-	 * @generated
-	 */
-	AttributeOverrides createAttributeOverrides();
 
 	/**
 	 * Returns a new object of class '<em>Basic</em>'.
@@ -165,14 +157,6 @@ public interface PannotationFactory extends EFactory {
 	JoinColumn createJoinColumn();
 
 	/**
-	 * Returns a new object of class '<em>Join Columns</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Join Columns</em>'.
-	 * @generated
-	 */
-	JoinColumns createJoinColumns();
-
-	/**
 	 * Returns a new object of class '<em>Join Table</em>'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Join Table</em>'.
@@ -246,29 +230,12 @@ public interface PannotationFactory extends EFactory {
 	PrimaryKeyJoinColumn createPrimaryKeyJoinColumn();
 
 	/**
-	 * Returns a new object of class '<em>Primary Key Join Columns</em>'. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @return a new object of class '<em>Primary Key Join Columns</em>'.
-	 * @generated
-	 */
-	PrimaryKeyJoinColumns createPrimaryKeyJoinColumns();
-
-	/**
 	 * Returns a new object of class '<em>Secondary Table</em>'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Secondary Table</em>'.
 	 * @generated
 	 */
 	SecondaryTable createSecondaryTable();
-
-	/**
-	 * Returns a new object of class '<em>Secondary Tables</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Secondary Tables</em>'.
-	 * @generated
-	 */
-	SecondaryTables createSecondaryTables();
 
 	/**
 	 * Returns a new object of class '<em>Sequence Generator</em>'.
@@ -349,14 +316,6 @@ public interface PannotationFactory extends EFactory {
 	 * @generated
 	 */
 	AssociationOverride createAssociationOverride();
-
-	/**
-	 * Returns a new object of class '<em>Association Overrides</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Association Overrides</em>'.
-	 * @generated
-	 */
-	AssociationOverrides createAssociationOverrides();
 
 	/**
 	 * Returns the package supported by this factory.

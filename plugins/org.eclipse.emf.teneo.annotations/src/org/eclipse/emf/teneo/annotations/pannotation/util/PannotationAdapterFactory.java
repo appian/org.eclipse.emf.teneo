@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationAdapterFactory.java,v 1.7 2006/09/01 06:56:03 mtaal Exp $
+ * $Id: PannotationAdapterFactory.java,v 1.8 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -10,10 +10,10 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.annotations.pannotation.*;
+
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
@@ -29,7 +29,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.JoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
@@ -42,9 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
-import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
@@ -122,14 +119,8 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseAttributeOverride(AttributeOverride object) {
 				return createAttributeOverrideAdapter();
 			}
-			public Object caseAttributeOverrides(AttributeOverrides object) {
-				return createAttributeOverridesAdapter();
-			}
 			public Object caseAssociationOverride(AssociationOverride object) {
 				return createAssociationOverrideAdapter();
-			}
-			public Object caseAssociationOverrides(AssociationOverrides object) {
-				return createAssociationOverridesAdapter();
 			}
 			public Object caseBasic(Basic object) {
 				return createBasicAdapter();
@@ -173,9 +164,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseJoinColumn(JoinColumn object) {
 				return createJoinColumnAdapter();
 			}
-			public Object caseJoinColumns(JoinColumns object) {
-				return createJoinColumnsAdapter();
-			}
 			public Object caseJoinTable(JoinTable object) {
 				return createJoinTableAdapter();
 			}
@@ -206,14 +194,8 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			public Object casePrimaryKeyJoinColumn(PrimaryKeyJoinColumn object) {
 				return createPrimaryKeyJoinColumnAdapter();
 			}
-			public Object casePrimaryKeyJoinColumns(PrimaryKeyJoinColumns object) {
-				return createPrimaryKeyJoinColumnsAdapter();
-			}
 			public Object caseSecondaryTable(SecondaryTable object) {
 				return createSecondaryTableAdapter();
-			}
-			public Object caseSecondaryTables(SecondaryTables object) {
-				return createSecondaryTablesAdapter();
 			}
 			public Object caseSequenceGenerator(SequenceGenerator object) {
 				return createSequenceGeneratorAdapter();
@@ -285,20 +267,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAttributeOverrideAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides <em>Attribute Overrides</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides
-	 * @generated
-	 */
-	public Adapter createAttributeOverridesAdapter() {
 		return null;
 	}
 
@@ -513,20 +481,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.JoinColumns <em>Join Columns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.JoinColumns
-	 * @generated
-	 */
-	public Adapter createJoinColumnsAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.JoinTable <em>Join Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -653,20 +607,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns
-	 * @generated
-	 */
-	public Adapter createPrimaryKeyJoinColumnsAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable <em>Secondary Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -677,20 +617,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSecondaryTableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables <em>Secondary Tables</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables
-	 * @generated
-	 */
-	public Adapter createSecondaryTablesAdapter() {
 		return null;
 	}
 
@@ -831,20 +757,6 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAssociationOverrideAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides <em>Association Overrides</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides
-	 * @generated
-	 */
-	public Adapter createAssociationOverridesAdapter() {
 		return null;
 	}
 

@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Embedded" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>embedded.xsd</foreignModel>
-  <genPackages prefix="Embedded" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
-      disposableProviderFactory="true" ecorePackage="embedded.ecore#/">
+  <genPackages prefix="Embedded" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="embedded.ecore#/">
     <genClasses ecoreClass="embedded.ecore#//Embeddable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//Embeddable/myString"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//Embeddable/myInteger"/>

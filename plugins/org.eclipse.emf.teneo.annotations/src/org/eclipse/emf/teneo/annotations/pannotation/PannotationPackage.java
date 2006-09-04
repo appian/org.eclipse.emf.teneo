@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.5 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.6 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -134,49 +134,13 @@ public interface PannotationPackage extends EPackage {
 	int ATTRIBUTE_OVERRIDE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AttributeOverridesImpl <em>Attribute Overrides</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.AttributeOverridesImpl
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getAttributeOverrides()
-	 * @generated
-	 */
-	int ATTRIBUTE_OVERRIDES = 2;
-
-	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE_OVERRIDES__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE_OVERRIDES__VALUE = PANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Attribute Overrides</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE_OVERRIDES_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl <em>Basic</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getBasic()
 	 * @generated
 	 */
-	int BASIC = 5;
+	int BASIC = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl <em>Column</em>}' class.
@@ -185,7 +149,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getColumn()
 	 * @generated
 	 */
-	int COLUMN = 6;
+	int COLUMN = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.DiscriminatorColumnImpl <em>Discriminator Column</em>}' class.
@@ -194,7 +158,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorColumn()
 	 * @generated
 	 */
-	int DISCRIMINATOR_COLUMN = 7;
+	int DISCRIMINATOR_COLUMN = 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.DiscriminatorValueImpl <em>Discriminator Value</em>}' class.
@@ -203,7 +167,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorValue()
 	 * @generated
 	 */
-	int DISCRIMINATOR_VALUE = 8;
+	int DISCRIMINATOR_VALUE = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EmbeddableImpl <em>Embeddable</em>}' class.
@@ -212,7 +176,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEmbeddable()
 	 * @generated
 	 */
-	int EMBEDDABLE = 9;
+	int EMBEDDABLE = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MappedSuperclassImpl <em>Mapped Superclass</em>}' class.
@@ -221,7 +185,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMappedSuperclass()
 	 * @generated
 	 */
-	int MAPPED_SUPERCLASS = 25;
+	int MAPPED_SUPERCLASS = 22;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EmbeddedImpl <em>Embedded</em>}' class.
@@ -230,7 +194,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEmbedded()
 	 * @generated
 	 */
-	int EMBEDDED = 10;
+	int EMBEDDED = 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EmbeddedIdImpl <em>Embedded Id</em>}' class.
@@ -239,7 +203,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEmbeddedId()
 	 * @generated
 	 */
-	int EMBEDDED_ID = 11;
+	int EMBEDDED_ID = 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EnumeratedImpl <em>Enumerated</em>}' class.
@@ -248,7 +212,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEnumerated()
 	 * @generated
 	 */
-	int ENUMERATED = 13;
+	int ENUMERATED = 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EntityImpl <em>Entity</em>}' class.
@@ -257,7 +221,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEntity()
 	 * @generated
 	 */
-	int ENTITY = 12;
+	int ENTITY = 10;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.GeneratedValueImpl <em>Generated Value</em>}' class.
@@ -266,7 +230,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getGeneratedValue()
 	 * @generated
 	 */
-	int GENERATED_VALUE = 14;
+	int GENERATED_VALUE = 12;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.IdImpl <em>Id</em>}' class.
@@ -275,7 +239,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getId()
 	 * @generated
 	 */
-	int ID = 15;
+	int ID = 13;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.IdClassImpl <em>Id Class</em>}' class.
@@ -284,7 +248,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getIdClass()
 	 * @generated
 	 */
-	int ID_CLASS = 16;
+	int ID_CLASS = 14;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.InheritanceImpl <em>Inheritance</em>}' class.
@@ -293,7 +257,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getInheritance()
 	 * @generated
 	 */
-	int INHERITANCE = 17;
+	int INHERITANCE = 15;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl <em>Join Column</em>}' class.
@@ -302,16 +266,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getJoinColumn()
 	 * @generated
 	 */
-	int JOIN_COLUMN = 18;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnsImpl <em>Join Columns</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnsImpl
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getJoinColumns()
-	 * @generated
-	 */
-	int JOIN_COLUMNS = 19;
+	int JOIN_COLUMN = 16;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinTableImpl <em>Join Table</em>}' class.
@@ -320,7 +275,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getJoinTable()
 	 * @generated
 	 */
-	int JOIN_TABLE = 20;
+	int JOIN_TABLE = 17;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.LobImpl <em>Lob</em>}' class.
@@ -329,7 +284,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getLob()
 	 * @generated
 	 */
-	int LOB = 21;
+	int LOB = 18;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToManyImpl <em>Many To Many</em>}' class.
@@ -338,7 +293,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getManyToMany()
 	 * @generated
 	 */
-	int MANY_TO_MANY = 22;
+	int MANY_TO_MANY = 19;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl <em>Many To One</em>}' class.
@@ -347,7 +302,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getManyToOne()
 	 * @generated
 	 */
-	int MANY_TO_ONE = 23;
+	int MANY_TO_ONE = 20;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyImpl <em>Map Key</em>}' class.
@@ -356,7 +311,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKey()
 	 * @generated
 	 */
-	int MAP_KEY = 24;
+	int MAP_KEY = 21;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl <em>One To Many</em>}' class.
@@ -365,7 +320,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOneToMany()
 	 * @generated
 	 */
-	int ONE_TO_MANY = 26;
+	int ONE_TO_MANY = 23;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl <em>One To One</em>}' class.
@@ -374,7 +329,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOneToOne()
 	 * @generated
 	 */
-	int ONE_TO_ONE = 27;
+	int ONE_TO_ONE = 24;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OrderByImpl <em>Order By</em>}' class.
@@ -383,7 +338,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOrderBy()
 	 * @generated
 	 */
-	int ORDER_BY = 28;
+	int ORDER_BY = 25;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnImpl <em>Primary Key Join Column</em>}' class.
@@ -392,16 +347,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getPrimaryKeyJoinColumn()
 	 * @generated
 	 */
-	int PRIMARY_KEY_JOIN_COLUMN = 29;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnsImpl <em>Primary Key Join Columns</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnsImpl
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getPrimaryKeyJoinColumns()
-	 * @generated
-	 */
-	int PRIMARY_KEY_JOIN_COLUMNS = 30;
+	int PRIMARY_KEY_JOIN_COLUMN = 26;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTableImpl <em>Secondary Table</em>}' class.
@@ -410,16 +356,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getSecondaryTable()
 	 * @generated
 	 */
-	int SECONDARY_TABLE = 31;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTablesImpl <em>Secondary Tables</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTablesImpl
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getSecondaryTables()
-	 * @generated
-	 */
-	int SECONDARY_TABLES = 32;
+	int SECONDARY_TABLE = 27;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceGeneratorImpl <em>Sequence Generator</em>}' class.
@@ -428,7 +365,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getSequenceGenerator()
 	 * @generated
 	 */
-	int SEQUENCE_GENERATOR = 33;
+	int SEQUENCE_GENERATOR = 28;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl <em>Table</em>}' class.
@@ -437,7 +374,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTable()
 	 * @generated
 	 */
-	int TABLE = 34;
+	int TABLE = 29;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableGeneratorImpl <em>Table Generator</em>}' class.
@@ -446,7 +383,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTableGenerator()
 	 * @generated
 	 */
-	int TABLE_GENERATOR = 35;
+	int TABLE_GENERATOR = 30;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TemporalImpl <em>Temporal</em>}' class.
@@ -455,7 +392,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTemporal()
 	 * @generated
 	 */
-	int TEMPORAL = 36;
+	int TEMPORAL = 31;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TransientImpl <em>Transient</em>}' class.
@@ -464,7 +401,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTransient()
 	 * @generated
 	 */
-	int TRANSIENT = 37;
+	int TRANSIENT = 32;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.UniqueConstraintImpl <em>Unique Constraint</em>}' class.
@@ -473,7 +410,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getUniqueConstraint()
 	 * @generated
 	 */
-	int UNIQUE_CONSTRAINT = 38;
+	int UNIQUE_CONSTRAINT = 33;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.VersionImpl <em>Version</em>}' class.
@@ -482,7 +419,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getVersion()
 	 * @generated
 	 */
-	int VERSION = 39;
+	int VERSION = 34;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverrideImpl <em>Association Override</em>}' class.
@@ -491,7 +428,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getAssociationOverride()
 	 * @generated
 	 */
-	int ASSOCIATION_OVERRIDE = 3;
+	int ASSOCIATION_OVERRIDE = 2;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -527,42 +464,6 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int ASSOCIATION_OVERRIDE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverridesImpl <em>Association Overrides</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverridesImpl
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getAssociationOverrides()
-	 * @generated
-	 */
-	int ASSOCIATION_OVERRIDES = 4;
-
-	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_OVERRIDES__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_OVERRIDES__VALUE = PANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Association Overrides</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_OVERRIDES_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -704,7 +605,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getIndexed()
 	 * @generated
 	 */
-	int INDEXED = 40;
+	int INDEXED = 35;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.UniqueImpl <em>Unique</em>}' class.
@@ -713,7 +614,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getUnique()
 	 * @generated
 	 */
-	int UNIQUE = 41;
+	int UNIQUE = 36;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1086,33 +987,6 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOIN_COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_COLUMNS__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_COLUMNS__VALUE = PANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Join Columns</em>' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_COLUMNS_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1538,33 +1412,6 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMARY_KEY_JOIN_COLUMNS__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRIMARY_KEY_JOIN_COLUMNS__VALUE = PANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Primary Key Join Columns</em>' class.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRIMARY_KEY_JOIN_COLUMNS_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
 	int SECONDARY_TABLE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
@@ -1617,33 +1464,6 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SECONDARY_TABLE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int SECONDARY_TABLES__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECONDARY_TABLES__VALUE = PANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Secondary Tables</em>' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECONDARY_TABLES_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2001,7 +1821,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getFetchType()
 	 * @generated
 	 */
-	int FETCH_TYPE = 45;
+	int FETCH_TYPE = 40;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType <em>Discriminator Type</em>}' enum.
@@ -2010,7 +1830,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorType()
 	 * @generated
 	 */
-	int DISCRIMINATOR_TYPE = 43;
+	int DISCRIMINATOR_TYPE = 38;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.EnumType <em>Enum Type</em>}' enum.
@@ -2019,7 +1839,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEnumType()
 	 * @generated
 	 */
-	int ENUM_TYPE = 44;
+	int ENUM_TYPE = 39;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.InheritanceType <em>Inheritance Type</em>}' enum.
@@ -2028,7 +1848,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getInheritanceType()
 	 * @generated
 	 */
-	int INHERITANCE_TYPE = 47;
+	int INHERITANCE_TYPE = 42;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.
@@ -2037,7 +1857,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCascadeType()
 	 * @generated
 	 */
-	int CASCADE_TYPE = 42;
+	int CASCADE_TYPE = 37;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.TemporalType <em>Temporal Type</em>}' enum.
@@ -2046,7 +1866,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTemporalType()
 	 * @generated
 	 */
-	int TEMPORAL_TYPE = 48;
+	int TEMPORAL_TYPE = 43;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.GenerationType <em>Generation Type</em>}' enum.
@@ -2055,7 +1875,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getGenerationType()
 	 * @generated
 	 */
-	int GENERATION_TYPE = 46;
+	int GENERATION_TYPE = 41;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation <em>PAnnotation</em>}'.
@@ -2104,25 +1924,6 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAttributeOverride_Column();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides <em>Attribute Overrides</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Attribute Overrides</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides
-	 * @generated
-	 */
-	EClass getAttributeOverrides();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Value</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides#getValue()
-	 * @see #getAttributeOverrides()
-	 * @generated
-	 */
-	EReference getAttributeOverrides_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.Basic <em>Basic</em>}'.
@@ -2571,25 +2372,6 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getJoinColumn_ReferencedColumnName();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.JoinColumns <em>Join Columns</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Join Columns</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.JoinColumns
-	 * @generated
-	 */
-	EClass getJoinColumns();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pannotation.JoinColumns#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Value</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.JoinColumns#getValue()
-	 * @see #getJoinColumns()
-	 * @generated
-	 */
-	EReference getJoinColumns_Value();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.JoinTable <em>Join Table</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Join Table</em>'.
@@ -2951,25 +2733,6 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getPrimaryKeyJoinColumn_ReferencedColumnName();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Primary Key Join Columns</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns
-	 * @generated
-	 */
-	EClass getPrimaryKeyJoinColumns();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Value</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns#getValue()
-	 * @see #getPrimaryKeyJoinColumns()
-	 * @generated
-	 */
-	EReference getPrimaryKeyJoinColumns_Value();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable <em>Secondary Table</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Secondary Table</em>'.
@@ -3027,25 +2790,6 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSecondaryTable_UniqueConstraints();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables <em>Secondary Tables</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Secondary Tables</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables
-	 * @generated
-	 */
-	EClass getSecondaryTables();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Value</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables#getValue()
-	 * @see #getSecondaryTables()
-	 * @generated
-	 */
-	EReference getSecondaryTables_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator <em>Sequence Generator</em>}'.
@@ -3378,25 +3122,6 @@ public interface PannotationPackage extends EPackage {
 	EReference getAssociationOverride_JoinColumns();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides <em>Association Overrides</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Association Overrides</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides
-	 * @generated
-	 */
-	EClass getAssociationOverrides();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Value</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides#getValue()
-	 * @see #getAssociationOverrides()
-	 * @generated
-	 */
-	EReference getAssociationOverrides_Value();
-
-	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.annotations.pannotation.FetchType <em>Fetch Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Fetch Type</em>'.
@@ -3525,24 +3250,6 @@ public interface PannotationPackage extends EPackage {
 		EReference ATTRIBUTE_OVERRIDE__COLUMN = eINSTANCE.getAttributeOverride_Column();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AttributeOverridesImpl <em>Attribute Overrides</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.AttributeOverridesImpl
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getAttributeOverrides()
-		 * @generated
-		 */
-		EClass ATTRIBUTE_OVERRIDES = eINSTANCE.getAttributeOverrides();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ATTRIBUTE_OVERRIDES__VALUE = eINSTANCE.getAttributeOverrides_Value();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverrideImpl <em>Association Override</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3567,24 +3274,6 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ASSOCIATION_OVERRIDE__JOIN_COLUMNS = eINSTANCE.getAssociationOverride_JoinColumns();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverridesImpl <em>Association Overrides</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverridesImpl
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getAssociationOverrides()
-		 * @generated
-		 */
-		EClass ASSOCIATION_OVERRIDES = eINSTANCE.getAssociationOverrides();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ASSOCIATION_OVERRIDES__VALUE = eINSTANCE.getAssociationOverrides_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl <em>Basic</em>}' class.
@@ -3975,24 +3664,6 @@ public interface PannotationPackage extends EPackage {
 		EAttribute JOIN_COLUMN__TABLE = eINSTANCE.getJoinColumn_Table();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnsImpl <em>Join Columns</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnsImpl
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getJoinColumns()
-		 * @generated
-		 */
-		EClass JOIN_COLUMNS = eINSTANCE.getJoinColumns();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOIN_COLUMNS__VALUE = eINSTANCE.getJoinColumns_Value();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinTableImpl <em>Join Table</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4317,24 +3988,6 @@ public interface PannotationPackage extends EPackage {
 		EAttribute PRIMARY_KEY_JOIN_COLUMN__COLUMN_DEFINITION = eINSTANCE.getPrimaryKeyJoinColumn_ColumnDefinition();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnsImpl <em>Primary Key Join Columns</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnsImpl
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getPrimaryKeyJoinColumns()
-		 * @generated
-		 */
-		EClass PRIMARY_KEY_JOIN_COLUMNS = eINSTANCE.getPrimaryKeyJoinColumns();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRIMARY_KEY_JOIN_COLUMNS__VALUE = eINSTANCE.getPrimaryKeyJoinColumns_Value();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTableImpl <em>Secondary Table</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4383,24 +4036,6 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SECONDARY_TABLE__UNIQUE_CONSTRAINTS = eINSTANCE.getSecondaryTable_UniqueConstraints();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTablesImpl <em>Secondary Tables</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTablesImpl
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getSecondaryTables()
-		 * @generated
-		 */
-		EClass SECONDARY_TABLES = eINSTANCE.getSecondaryTables();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SECONDARY_TABLES__VALUE = eINSTANCE.getSecondaryTables_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceGeneratorImpl <em>Sequence Generator</em>}' class.

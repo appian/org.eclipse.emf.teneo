@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.2 2006/09/04 15:42:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -52,7 +52,7 @@ class EmbeddedMapper extends AbstractMapper implements EmbeddedProcessor {
 		// push the current overrides
 		getHbmContext().pushOverrideOnStack();
 		// and add our own
-		getHbmContext().addOverrides(paReference.getAttributeOverrides());
+		getHbmContext().addAttributeOverrides(paReference.getAttributeOverrides());
 
 		// push the feature is used for automatic renaming
 		getHbmContext().pushEmbeddingFeature(paReference);

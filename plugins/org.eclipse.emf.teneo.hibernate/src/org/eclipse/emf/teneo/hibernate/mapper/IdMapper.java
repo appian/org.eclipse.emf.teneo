@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.5 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: IdMapper.java,v 1.6 2006/09/04 15:42:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -33,6 +33,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.processing.IdProcessor;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
@@ -222,25 +223,38 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 			}
 
 			final Element generatorElement = usedIdElement.addElement("generator");
-			if (GenerationType.TABLE_LITERAL.equals(generatedValue.getStrategy())) {
-				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
-				generatorElement.addElement("param").addAttribute("name", "table").setText("uid_table"); // externalize
-				// this
-				generatorElement.addElement("param").addAttribute("name", "column").setText("next_hi_value_column"); // externalize
-				// this
-			} else if (generatedValue.getGenerator() != null) {
-				final GenericGenerator gg = getGenericGenerator(id.getPaModel(), generatedValue.getGenerator());
-				if (gg != null) {
-					log.debug("GenericGenerator the strategy in the GeneratedValue is ignored (if even set)");
-					generatorElement.addAttribute("class", gg.getStrategy());
-					if (gg.getParameters() != null) {
-						for (Iterator params = gg.getParameters().iterator(); params.hasNext();) {
-							final Parameter param = (Parameter)params.next();
-							generatorElement.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
-						}
+			
+			GenericGenerator gg;
+			if (generatedValue.getGenerator() != null && 
+				(gg = getGenericGenerator(id.getPaModel(), generatedValue.getGenerator())) != null) {
+				log.debug("GenericGenerator the strategy in the GeneratedValue is ignored (if even set)");
+				generatorElement.addAttribute("class", gg.getStrategy());
+				if (gg.getParameters() != null) {
+					for (Iterator params = gg.getParameters().iterator(); params.hasNext();) {
+						final Parameter param = (Parameter)params.next();
+						generatorElement.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
 					}
-				} else {
-					generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
+				}
+			} else if (GenerationType.IDENTITY_LITERAL.equals(generatedValue.getStrategy())) {
+				generatorElement.addAttribute("class", "identity");
+			} else if (GenerationType.TABLE_LITERAL.equals(generatedValue.getStrategy())) {
+				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
+				if (generatedValue.getGenerator() != null) { // table generator
+					final TableGenerator tg = id.getPaModel().getTableGenerator(id.getAnnotatedEAttribute(),
+							generatedValue.getGenerator());
+					generatorElement.addElement("param").addAttribute("name", "table").
+						setText((tg.getTable() != null ? tg.getTable() : "uid_table")); // externalize
+					generatorElement.addElement("param").addAttribute("name", "column").
+						setText(tg.getValueColumnName() != null ? tg.getValueColumnName() : "next_hi_value_column"); // externalize
+					generatorElement.addElement("param").addAttribute("name", "max_lo"). 
+						setText(tg.getInitialValue() + "");
+				} else {				
+					generatorElement.addElement("param").addAttribute("name", "table").setText("uid_table"); // externalize
+					generatorElement.addElement("param").addAttribute("name", "column").setText("next_hi_value_column"); // externalize
+				}
+			} else if (GenerationType.SEQUENCE_LITERAL.equals(generatedValue.getStrategy())) {
+				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
+				if (generatedValue.getGenerator() != null) {
 					final SequenceGenerator sg = id.getPaModel().getSequenceGenerator(id.getAnnotatedEAttribute(),
 							generatedValue.getGenerator());
 					generatorElement.addElement("param").addAttribute("name", "sequence").setText(sg.getSequenceName());

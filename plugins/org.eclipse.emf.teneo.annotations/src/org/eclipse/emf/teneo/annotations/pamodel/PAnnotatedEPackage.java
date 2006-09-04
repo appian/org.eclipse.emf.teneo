@@ -2,14 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackage.java,v 1.3 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: PAnnotatedEPackage.java,v 1.4 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotated EPackage</b></em>'. <!--
@@ -21,8 +19,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaModel <em>Pa Model</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getAnnotatedEPackage <em>Annotated EPackage</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEClasses <em>Pa EClasses</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getSequenceGenerator <em>Sequence Generator</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getTableGenerator <em>Table Generator</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getSequenceGenerators <em>Sequence Generators</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getTableGenerators <em>Table Generators</em>}</li>
  * </ul>
  * </p>
  *
@@ -108,54 +106,35 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	EList getPaEClasses();
 
 	/**
-	 * Returns the value of the '<em><b>Sequence Generator</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Sequence Generators</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Sequence Generator</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Sequence Generators</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sequence Generator</em>' containment reference.
-	 * @see #setSequenceGenerator(SequenceGenerator)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_SequenceGenerator()
-	 * @model containment="true"
+	 * @return the value of the '<em>Sequence Generators</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_SequenceGenerators()
+	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator" containment="true"
 	 * @generated
 	 */
-	SequenceGenerator getSequenceGenerator();
+	EList getSequenceGenerators();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getSequenceGenerator <em>Sequence Generator</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sequence Generator</em>' containment reference.
-	 * @see #getSequenceGenerator()
-	 * @generated
-	 */
-	void setSequenceGenerator(SequenceGenerator value);
-
-	/**
-	 * Returns the value of the '<em><b>Table Generator</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Table Generators</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.TableGenerator}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Table Generator</em>' containment reference isn't clear, there really should be
-	 * more of a description here...
+	 * If the meaning of the '<em>Table Generators</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Table Generator</em>' containment reference.
-	 * @see #setTableGenerator(TableGenerator)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_TableGenerator()
-	 * @model containment="true"
+	 * @return the value of the '<em>Table Generators</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_TableGenerators()
+	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.TableGenerator" containment="true"
 	 * @generated
 	 */
-	TableGenerator getTableGenerator();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getTableGenerator <em>Table Generator</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Table Generator</em>' containment reference.
-	 * @see #getTableGenerator()
-	 * @generated
-	 */
-	void setTableGenerator(TableGenerator value);
+	EList getTableGenerators();
 
 } // PAnnotatedEPackage

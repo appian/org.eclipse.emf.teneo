@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.3 2006/08/14 05:09:18 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.4 2006/09/04 15:42:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class EmbeddedMapper extends AbstractMapper {
@@ -46,10 +46,10 @@ public class EmbeddedMapper extends AbstractMapper {
 		log.debug("Processing embedded field: " + aReference.getAnnotatedElement().getName());
 		
 		mappingContext.pushOverrideOnStack();
-		mappingContext.addOverrides(aReference.getAttributeOverrides());
+		mappingContext.addAttributeOverrides(aReference.getAttributeOverrides());
 		
 		EReference eReference = aReference.getAnnotatedEReference();
-		if (eReference.isMany() || eReference.getEOpposite() != null || aReference.getAttributeOverrides().getValue().size() > 0) {
+		if (eReference.isMany() || eReference.getEOpposite() != null || aReference.getAttributeOverrides().size() > 0) {
 			Element embeddedElement = fieldElement.addElement("embedded");
 			if (eReference.getEOpposite() != null) {
 				embeddedElement.addAttribute("owner-field", namingHandler.correctName(mappingContext, eReference.getEOpposite()));

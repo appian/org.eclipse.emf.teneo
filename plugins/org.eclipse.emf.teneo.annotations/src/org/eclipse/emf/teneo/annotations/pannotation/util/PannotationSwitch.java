@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationSwitch.java,v 1.7 2006/09/01 06:56:03 mtaal Exp $
+ * $Id: PannotationSwitch.java,v 1.8 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -10,10 +10,10 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.annotations.pannotation.*;
+
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
@@ -29,7 +29,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.JoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
@@ -42,9 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
-import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
@@ -148,24 +145,10 @@ public class PannotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PannotationPackage.ATTRIBUTE_OVERRIDES: {
-				AttributeOverrides attributeOverrides = (AttributeOverrides)theEObject;
-				Object result = caseAttributeOverrides(attributeOverrides);
-				if (result == null) result = casePAnnotation(attributeOverrides);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PannotationPackage.ASSOCIATION_OVERRIDE: {
 				AssociationOverride associationOverride = (AssociationOverride)theEObject;
 				Object result = caseAssociationOverride(associationOverride);
 				if (result == null) result = casePAnnotation(associationOverride);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.ASSOCIATION_OVERRIDES: {
-				AssociationOverrides associationOverrides = (AssociationOverrides)theEObject;
-				Object result = caseAssociationOverrides(associationOverrides);
-				if (result == null) result = casePAnnotation(associationOverrides);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -267,13 +250,6 @@ public class PannotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PannotationPackage.JOIN_COLUMNS: {
-				JoinColumns joinColumns = (JoinColumns)theEObject;
-				Object result = caseJoinColumns(joinColumns);
-				if (result == null) result = casePAnnotation(joinColumns);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PannotationPackage.JOIN_TABLE: {
 				JoinTable joinTable = (JoinTable)theEObject;
 				Object result = caseJoinTable(joinTable);
@@ -344,24 +320,10 @@ public class PannotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMNS: {
-				PrimaryKeyJoinColumns primaryKeyJoinColumns = (PrimaryKeyJoinColumns)theEObject;
-				Object result = casePrimaryKeyJoinColumns(primaryKeyJoinColumns);
-				if (result == null) result = casePAnnotation(primaryKeyJoinColumns);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PannotationPackage.SECONDARY_TABLE: {
 				SecondaryTable secondaryTable = (SecondaryTable)theEObject;
 				Object result = caseSecondaryTable(secondaryTable);
 				if (result == null) result = casePAnnotation(secondaryTable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.SECONDARY_TABLES: {
-				SecondaryTables secondaryTables = (SecondaryTables)theEObject;
-				Object result = caseSecondaryTables(secondaryTables);
-				if (result == null) result = casePAnnotation(secondaryTables);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -459,21 +421,6 @@ public class PannotationSwitch {
 	 * @generated
 	 */
 	public Object caseAttributeOverride(AttributeOverride object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Attribute Overrides</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Attribute Overrides</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseAttributeOverrides(AttributeOverrides object) {
 		return null;
 	}
 
@@ -703,21 +650,6 @@ public class PannotationSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Join Columns</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Join Columns</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseJoinColumns(JoinColumns object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpretting the object as an instance of '<em>Join Table</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -853,21 +785,6 @@ public class PannotationSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Primary Key Join Columns</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Primary Key Join Columns</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object casePrimaryKeyJoinColumns(PrimaryKeyJoinColumns object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpretting the object as an instance of '<em>Secondary Table</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -879,21 +796,6 @@ public class PannotationSwitch {
 	 * @generated
 	 */
 	public Object caseSecondaryTable(SecondaryTable object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Secondary Tables</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Secondary Tables</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseSecondaryTables(SecondaryTables object) {
 		return null;
 	}
 
@@ -1044,21 +946,6 @@ public class PannotationSwitch {
 	 * @generated
 	 */
 	public Object caseAssociationOverride(AssociationOverride object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Association Overrides</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Association Overrides</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseAssociationOverrides(AssociationOverrides object) {
 		return null;
 	}
 

@@ -6,14 +6,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="Parent" eSuperTypes="#//Person">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Child">
-      <eAnnotations source="http://annotation.elver.org/JoinColumns">
-        <details key="value" value="jc1 jc2"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/JoinColumn/jc1">
+      <eAnnotations source="http://annotation.elver.org/JoinColumn">
         <details key="name" value="myParentFirstName"/>
         <details key="referencedColumnName" value="firstName"/>
       </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/JoinColumn/jc2">
+      <eAnnotations source="http://annotation.elver.org/JoinColumn">
         <details key="name" value="myParentLastName"/>
         <details key="referencedColumnName" value="lastName"/>
       </eAnnotations>

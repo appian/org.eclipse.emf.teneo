@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ReferenceValueNode.java,v 1.4 2006/09/01 07:02:28 mtaal Exp $
+ * $Id: ReferenceValueNode.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -26,29 +26,29 @@ import org.eclipse.emf.ecore.EObject;
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class ReferenceValueNode extends ParserNode {
+class ReferenceValueNode extends NamedParserNode {
 	/** Log it */
 	private final static Log log = LogFactory.getLog(ArrayValueNode.class);
 
 	/** The value */
-	private ParserNode value;
+	private NamedParserNode value;
 
 	/**
 	 * @return the value
 	 */
-	public ParserNode getValue() {
+	public NamedParserNode getValue() {
 		return value;
 	}
 
 	/**
 	 * @param value the value to set
 	 */
-	public void setValue(ParserNode value) {
+	public void setValue(NamedParserNode value) {
 		this.value = value;
 	}
 	
 	/** Translate into a list of eobjects */
-	EObject convert(EClassResolver ecr) {
+	Object convert(EClassResolver ecr) {
 		log.debug("Converting reference node " + getName());
 		if (!(value instanceof ComplexNode)) {
 			throw new AnnotationParserException("A reference annotation value may only " +

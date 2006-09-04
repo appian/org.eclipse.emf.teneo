@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ArrayValueNode.java,v 1.4 2006/09/01 07:02:28 mtaal Exp $
+ * $Id: ArrayValueNode.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -29,7 +29,7 @@ import org.apache.commons.logging.LogFactory;
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class ArrayValueNode extends ParserNode{
+class ArrayValueNode extends NamedParserNode{
 	/** Log it */
 	private final static Log log = LogFactory.getLog(ArrayValueNode.class);
 
@@ -42,27 +42,27 @@ class ArrayValueNode extends ParserNode{
 	}
 	
 	/** Translate into a list of eobjects */
-	List convert(EClassResolver ecr) {
+	Object convert(EClassResolver ecr) {
 		log.debug("Converting array value node");
 
 		final ArrayList result = new ArrayList();
 		for (Iterator it = children.iterator(); it.hasNext();) {
-			final ParserNode pn = (ParserNode)it.next();
-			if (pn instanceof ComplexNode) {
-				final ComplexNode cn = (ComplexNode)pn;
+			final Object ob = it.next();
+			if (ob instanceof String) {
+				result.add(ob);
+			} else if (ob instanceof ComplexNode) {
+				final ComplexNode cn = (ComplexNode)ob;
 				result.add(cn.convert(ecr));
-			} else if (pn instanceof ReferenceValueNode) {
-				final ReferenceValueNode rvn = (ReferenceValueNode)pn;
+			} else if (ob instanceof ReferenceValueNode) {
+				final ReferenceValueNode rvn = (ReferenceValueNode)ob;
 				result.add(rvn.convert(ecr));
-			} else if (pn instanceof ArrayValueNode) {
-				final ArrayValueNode avn = (ArrayValueNode)pn;
-				result.addAll(avn.convert(ecr));
+			} else if (ob instanceof ArrayValueNode) {
+				final ArrayValueNode avn = (ArrayValueNode)ob;
+				result.addAll((List)avn.convert(ecr));
 			} else {
-				throw new AnnotationParserException("Type " + pn.getClass().getName() + "/" + pn.getName() +
-						" not supported here");
+				throw new AnnotationParserException("Type " + ob.getClass().getName() + " not supported here");
 			}
 		}
 		return result;
-	}	
-
+	}
 }

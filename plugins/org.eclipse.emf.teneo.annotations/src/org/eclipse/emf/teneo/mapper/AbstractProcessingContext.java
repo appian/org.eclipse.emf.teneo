@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.5 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.6 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapper;
@@ -25,6 +25,7 @@ import java.util.Stack;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
@@ -32,16 +33,14 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 
 /**
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class AbstractProcessingContext {
@@ -62,9 +61,9 @@ public class AbstractProcessingContext {
 	private Stack embeddingFeatureStack = new Stack();
 
 	/** Add attribute overrides, happens for each mapped superclass and each embedded component */
-	public void addOverrides(AttributeOverrides aos) {
+	public void addAttributeOverrides(EList aos) {
 		if (aos != null) {
-			for (Iterator i = aos.getValue().iterator(); i.hasNext();) {
+			for (Iterator i = aos.iterator(); i.hasNext();) {
 				AttributeOverride override = (AttributeOverride) i.next();
 				currentOverrides.put(override.getName(), override.getColumn());
 			}
@@ -72,9 +71,9 @@ public class AbstractProcessingContext {
 	}
 
 	/** Add association overrides, for each mapped subclass */
-	public void addOverrides(AssociationOverrides overrides) {
+	public void addAssociationOverrides(EList overrides) {
 		if (overrides != null) {
-			for (Iterator it = overrides.getValue().iterator(); it.hasNext();) {
+			for (Iterator it = overrides.iterator(); it.hasNext();) {
 				AssociationOverride override = (AssociationOverride) it.next();
 				currentOverrides.put(override.getName(), override.getJoinColumns());
 			}

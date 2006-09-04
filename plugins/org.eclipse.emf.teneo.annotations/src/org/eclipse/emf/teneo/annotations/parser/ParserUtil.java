@@ -11,10 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ParserUtil.java,v 1.3 2006/08/31 23:47:09 mtaal Exp $
+ * $Id: ParserUtil.java,v 1.4 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
+
+import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -25,7 +27,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * Util class
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class ParserUtil {
@@ -45,7 +47,11 @@ public class ParserUtil {
 	/** Get a structuralfeature */
 	public static EStructuralFeature getEStructuralFeature(EClass eClass, String name)  {
 		try {
-			return eClass.getEStructuralFeature(name);
+			for (Iterator it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
+				final EStructuralFeature ef = (EStructuralFeature)it.next();
+				if (ef.getName().compareToIgnoreCase(name) == 0) return ef;
+			}
+			throw new AnnotationParserException("No efeature " + name + " for eclass " + eClass.getName());
 		} catch (IllegalArgumentException e) {
 			throw new AnnotationParserException("Cannot convert '" + name + "' to an efeature for eclass " + eClass.getName());
 		}

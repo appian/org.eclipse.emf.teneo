@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.3 2006/09/01 07:02:28 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.4 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -37,6 +37,10 @@ import org.eclipse.emf.ecore.ENamedElement;
  *  
  * Here GenericGenerator is a TypeName, name and strategy are Identifiers and
  * "hilo_table" is a value, the array is the part between the {}.
+ *   
+ * There is a special case where the typename is actually a list of values, e.g. SecondaryTables.
+ * These are treated as a special type of TypeName which is translated into a ComplexNode with 
+ * isList=true. This is currently only supported at the top level.
  *   
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */

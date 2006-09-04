@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedPackageImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: EmbeddedPackageImpl.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -287,8 +287,6 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		createAttributeOverrideAnnotations();
 		// http://annotation.elver.org/Column/c1
 		createC1Annotations();
-		// http://annotation.elver.org/AttributeOverrides
-		createAttributeOverridesAnnotations();
 		// http://annotation.elver.org/AttributeOverride/a1
 		createA1Annotations();
 		// http://annotation.elver.org/AttributeOverride/a2
@@ -310,7 +308,7 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		   source, 
 		   new String[] {
 			 "appinfo", "true"
-		   });																										
+		   });																								
 	}
 
 	/**
@@ -355,14 +353,14 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		   new String[] {
 			 "kind", "element",
 			 "name", "firstEmbedded"
-		   });								
+		   });							
 		addAnnotation
 		  (getEmbedder_SecondEmbedded(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
 			 "name", "secondEmbedded"
-		   });								
+		   });							
 		addAnnotation
 		  (getEmbedder_ThirdEmbedded(), 
 		   source, 
@@ -405,13 +403,13 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		   source, 
 		   new String[] {
 			 "appinfo", "true"
-		   });								
+		   });							
 		addAnnotation
 		  (getEmbedder_ThirdEmbedded(), 
 		   source, 
 		   new String[] {
 			 "appinfo", "true"
-		   });								
+		   });							
 		addAnnotation
 		  (getEmbedder_FourthEmbedded(), 
 		   source, 
@@ -440,7 +438,7 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		   new String[] {
 			 "name", "myString",
 			 "column", "c1"
-		   });																				
+		   });																		
 	}
 
 	/**
@@ -450,14 +448,14 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	 * @generated
 	 */
 	protected void createA1Annotations() {
-		String source = "http://annotation.elver.org/AttributeOverride/a1";													
+		String source = "http://annotation.elver.org/AttributeOverride/a1";												
 		addAnnotation
 		  (getEmbedder_SecondEmbedded(), 
 		   source, 
 		   new String[] {
 			 "name", "myString",
 			 "column", "c1"
-		   });								
+		   });							
 		addAnnotation
 		  (getEmbedder_ThirdEmbedded(), 
 		   source, 
@@ -480,13 +478,13 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		   source, 
 		   new String[] {
 			 "name", "columnString3"
-		   });						
+		   });					
 		addAnnotation
 		  (getEmbedder_SecondEmbedded(), 
 		   source, 
 		   new String[] {
 			 "name", "columnString1"
-		   });								
+		   });							
 		addAnnotation
 		  (getEmbedder_ThirdEmbedded(), 
 		   source, 
@@ -496,42 +494,20 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/AttributeOverrides</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createAttributeOverridesAnnotations() {
-		String source = "http://annotation.elver.org/AttributeOverrides";												
-		addAnnotation
-		  (getEmbedder_SecondEmbedded(), 
-		   source, 
-		   new String[] {
-			 "value", "a1 a2"
-		   });								
-		addAnnotation
-		  (getEmbedder_ThirdEmbedded(), 
-		   source, 
-		   new String[] {
-			 "value", "a1 a2"
-		   });									
-	}
-
-	/**
 	 * Initializes the annotations for <b>http://annotation.elver.org/AttributeOverride/a2</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createA2Annotations() {
-		String source = "http://annotation.elver.org/AttributeOverride/a2";															
+		String source = "http://annotation.elver.org/AttributeOverride/a2";														
 		addAnnotation
 		  (getEmbedder_SecondEmbedded(), 
 		   source, 
 		   new String[] {
 			 "name", "myInteger",
 			 "column", "c2"
-		   });								
+		   });							
 		addAnnotation
 		  (getEmbedder_ThirdEmbedded(), 
 		   source, 
@@ -548,13 +524,13 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	 * @generated
 	 */
 	protected void createC2Annotations() {
-		String source = "http://annotation.elver.org/Column/c2";																
+		String source = "http://annotation.elver.org/Column/c2";															
 		addAnnotation
 		  (getEmbedder_SecondEmbedded(), 
 		   source, 
 		   new String[] {
 			 "name", "columnInteger1"
-		   });								
+		   });							
 		addAnnotation
 		  (getEmbedder_ThirdEmbedded(), 
 		   source, 

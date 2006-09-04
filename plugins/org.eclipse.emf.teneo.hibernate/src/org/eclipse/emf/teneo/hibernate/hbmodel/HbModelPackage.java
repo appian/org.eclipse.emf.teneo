@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackage.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbModelPackage.java,v 1.3 2006/09/04 15:42:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -113,7 +113,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE;
 
 	/**
-	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference.
+	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -158,7 +158,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -192,24 +192,6 @@ public interface HbModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__COLUMN = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Join Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS;
 
 	/**
 	 * The feature id for the '<em><b>Hb Where</b></em>' containment reference.
@@ -321,7 +303,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_EATTRIBUTE__ANNOTATED_ESTRUCTURAL_FEATURE;
 
 	/**
-	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference.
+	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -366,7 +348,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EATTRIBUTE__TABLE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -400,24 +382,6 @@ public interface HbModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_EATTRIBUTE__COLUMN = PamodelPackage.PANNOTATED_EATTRIBUTE__COLUMN;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EATTRIBUTE__PARSED_ATTRIBUTE_OVERRIDES = PamodelPackage.PANNOTATED_EATTRIBUTE__PARSED_ATTRIBUTE_OVERRIDES;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Join Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EATTRIBUTE__PARSED_JOIN_COLUMNS = PamodelPackage.PANNOTATED_EATTRIBUTE__PARSED_JOIN_COLUMNS;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EAttribute</b></em>' reference.
@@ -619,7 +583,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES = PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES;
 
 	/**
-	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference.
+	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -691,7 +655,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__INHERITANCE = PamodelPackage.PANNOTATED_ECLASS__INHERITANCE;
 
 	/**
-	 * The feature id for the '<em><b>Primary Key Join Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Primary Key Join Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -700,7 +664,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS = PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS;
 
 	/**
-	 * The feature id for the '<em><b>Secondary Tables</b></em>' containment reference.
+	 * The feature id for the '<em><b>Secondary Tables</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -727,31 +691,13 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__TABLE_GENERATOR = PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Association Overrides</b></em>' containment reference.
+	 * The feature id for the '<em><b>Association Overrides</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int HB_ANNOTATED_ECLASS__ASSOCIATION_OVERRIDES = PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES = PamodelPackage.PANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Association Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES = PamodelPackage.PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
@@ -843,16 +789,16 @@ public interface HbModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EPACKAGE__SEQUENCE_GENERATOR = PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR;
+	int HB_ANNOTATED_EPACKAGE__SEQUENCE_GENERATORS = PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EPACKAGE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR;
+	int HB_ANNOTATED_EPACKAGE__TABLE_GENERATORS = PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Hb Generic Generators</b></em>' containment reference list.
@@ -919,7 +865,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_ESTRUCTURAL_FEATURE;
 
 	/**
-	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference.
+	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -964,7 +910,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EREFERENCE__TABLE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -998,24 +944,6 @@ public interface HbModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_EREFERENCE__COLUMN = PamodelPackage.PANNOTATED_EREFERENCE__COLUMN;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EREFERENCE__PARSED_ATTRIBUTE_OVERRIDES = PamodelPackage.PANNOTATED_EREFERENCE__PARSED_ATTRIBUTE_OVERRIDES;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Join Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EREFERENCE__PARSED_JOIN_COLUMNS = PamodelPackage.PANNOTATED_EREFERENCE__PARSED_JOIN_COLUMNS;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EReference</b></em>' reference.
@@ -1090,13 +1018,13 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__ORDER_BY = PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY;
 
 	/**
-	 * The feature id for the '<em><b>Primary Key Join Column</b></em>' containment reference.
+	 * The feature id for the '<em><b>Primary Key Join Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN = PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN;
+	int HB_ANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS = PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS;
 
 	/**
 	 * The feature id for the '<em><b>Hb Where</b></em>' containment reference.

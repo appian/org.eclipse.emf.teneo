@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EannotationPamodelBuilder.java,v 1.4 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: EannotationPamodelBuilder.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.pamodel.util;
@@ -23,6 +23,7 @@ import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EReference;
@@ -125,11 +126,19 @@ public class EannotationPamodelBuilder extends BasicPamodelBuilder {
 	 * is not admitted for the given PAnnotatedEModelElement.
 	 */
 	protected void setPAnnotation(PAnnotatedEModelElement pElement, PAnnotation pAnnotation) {
+		if (pAnnotation == null) { // silently ignore to not fail on old annotations
+			log.debug("Annotation is null, ignoring");
+			return;
+		}
 		EReference pAnnotationRef = PamodelPackage.eINSTANCE.pAnnotationReference(pElement.eClass(), pAnnotation.eClass());
 		if (pAnnotationRef == null)
 			throw new IllegalArgumentException("PAnnotation of type '" + pAnnotation.eClass() 
 					+ "' does not apply to elements of type '" + pElement.eClass() + "'");
-		pElement.eSet(pAnnotationRef, pAnnotation);
+		if (pAnnotationRef.isMany()) {
+			((EList)pElement.eGet(pAnnotationRef)).add(pAnnotation);
+		} else {
+			pElement.eSet(pAnnotationRef, pAnnotation);
+		}
 	}
 
 	/**

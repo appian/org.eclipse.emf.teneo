@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactoryImpl.java,v 1.7 2006/09/01 06:56:03 mtaal Exp $
+ * $Id: PannotationFactoryImpl.java,v 1.8 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -12,10 +12,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.annotations.pannotation.*;
+
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
@@ -37,7 +37,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.JoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
@@ -50,9 +49,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumns;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
-import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
@@ -114,9 +111,7 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case PannotationPackage.ATTRIBUTE_OVERRIDE: return createAttributeOverride();
-			case PannotationPackage.ATTRIBUTE_OVERRIDES: return createAttributeOverrides();
 			case PannotationPackage.ASSOCIATION_OVERRIDE: return createAssociationOverride();
-			case PannotationPackage.ASSOCIATION_OVERRIDES: return createAssociationOverrides();
 			case PannotationPackage.BASIC: return createBasic();
 			case PannotationPackage.COLUMN: return createColumn();
 			case PannotationPackage.DISCRIMINATOR_COLUMN: return createDiscriminatorColumn();
@@ -131,7 +126,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.ID_CLASS: return createIdClass();
 			case PannotationPackage.INHERITANCE: return createInheritance();
 			case PannotationPackage.JOIN_COLUMN: return createJoinColumn();
-			case PannotationPackage.JOIN_COLUMNS: return createJoinColumns();
 			case PannotationPackage.JOIN_TABLE: return createJoinTable();
 			case PannotationPackage.LOB: return createLob();
 			case PannotationPackage.MANY_TO_MANY: return createManyToMany();
@@ -142,9 +136,7 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.ONE_TO_ONE: return createOneToOne();
 			case PannotationPackage.ORDER_BY: return createOrderBy();
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN: return createPrimaryKeyJoinColumn();
-			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMNS: return createPrimaryKeyJoinColumns();
 			case PannotationPackage.SECONDARY_TABLE: return createSecondaryTable();
-			case PannotationPackage.SECONDARY_TABLES: return createSecondaryTables();
 			case PannotationPackage.SEQUENCE_GENERATOR: return createSequenceGenerator();
 			case PannotationPackage.TABLE: return createTable();
 			case PannotationPackage.TABLE_GENERATOR: return createTableGenerator();
@@ -219,16 +211,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	public AttributeOverride createAttributeOverride() {
 		AttributeOverrideImpl attributeOverride = new AttributeOverrideImpl();
 		return attributeOverride;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AttributeOverrides createAttributeOverrides() {
-		AttributeOverridesImpl attributeOverrides = new AttributeOverridesImpl();
-		return attributeOverrides;
 	}
 
 	/**
@@ -386,16 +368,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public JoinColumns createJoinColumns() {
-		JoinColumnsImpl joinColumns = new JoinColumnsImpl();
-		return joinColumns;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public JoinTable createJoinTable() {
 		JoinTableImpl joinTable = new JoinTableImpl();
 		return joinTable;
@@ -486,29 +458,9 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PrimaryKeyJoinColumns createPrimaryKeyJoinColumns() {
-		PrimaryKeyJoinColumnsImpl primaryKeyJoinColumns = new PrimaryKeyJoinColumnsImpl();
-		return primaryKeyJoinColumns;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public SecondaryTable createSecondaryTable() {
 		SecondaryTableImpl secondaryTable = new SecondaryTableImpl();
 		return secondaryTable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SecondaryTables createSecondaryTables() {
-		SecondaryTablesImpl secondaryTables = new SecondaryTablesImpl();
-		return secondaryTables;
 	}
 
 	/**
@@ -749,16 +701,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	public AssociationOverride createAssociationOverride() {
 		AssociationOverrideImpl associationOverride = new AssociationOverrideImpl();
 		return associationOverride;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AssociationOverrides createAssociationOverrides() {
-		AssociationOverridesImpl associationOverrides = new AssociationOverridesImpl();
-		return associationOverrides;
 	}
 
 	/**

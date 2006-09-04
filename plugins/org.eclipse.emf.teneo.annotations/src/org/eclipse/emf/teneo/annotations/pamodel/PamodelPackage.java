@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.6 2006/08/31 23:47:09 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.7 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -176,22 +176,22 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EPACKAGE__PA_ECLASSES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Sequence Generator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Sequence Generators</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 3;
+	int PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EPACKAGE__TABLE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 4;
+	int PANNOTATED_EPACKAGE__TABLE_GENERATORS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>PAnnotated EPackage</em>' class.
@@ -257,7 +257,7 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference.
+	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -329,7 +329,7 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ECLASS__INHERITANCE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
-	 * The feature id for the '<em><b>Primary Key Join Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Primary Key Join Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * @generated
@@ -338,7 +338,7 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
-	 * The feature id for the '<em><b>Secondary Tables</b></em>' containment reference.
+	 * The feature id for the '<em><b>Secondary Tables</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -365,7 +365,7 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ECLASS__TABLE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
-	 * The feature id for the '<em><b>Association Overrides</b></em>' containment reference.
+	 * The feature id for the '<em><b>Association Overrides</b></em>' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * @generated
@@ -374,49 +374,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
-	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 16;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Association Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 17;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Secondary Tables</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ECLASS__PARSED_SECONDARY_TABLES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 18;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Primary Key Join Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ECLASS__PARSED_PRIMARY_KEY_JOIN_COLUMNS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 19;
-
-	/**
 	 * The number of structural features of the '<em>PAnnotated EClass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 20;
+	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl <em>PAnnotated EStructural Feature</em>}' class.
@@ -464,7 +428,7 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference.
+	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -509,7 +473,7 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
@@ -545,31 +509,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
-	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 11;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Join Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 12;
-
-	/**
 	 * The number of structural features of the the '<em>PAnnotated EStructural Feature</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 13;
+	int PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
@@ -617,7 +563,7 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EATTRIBUTE__ANNOTATED_ESTRUCTURAL_FEATURE = PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE;
 
 	/**
-	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference.
+	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -662,7 +608,7 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EATTRIBUTE__TABLE_GENERATOR = PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
@@ -696,24 +642,6 @@ public interface PamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PANNOTATED_EATTRIBUTE__COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EATTRIBUTE__PARSED_ATTRIBUTE_OVERRIDES = PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Join Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EATTRIBUTE__PARSED_JOIN_COLUMNS = PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EAttribute</b></em>' reference.
@@ -842,7 +770,7 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__ANNOTATED_ESTRUCTURAL_FEATURE = PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE;
 
 	/**
-	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference.
+	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -887,7 +815,7 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__TABLE_GENERATOR = PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
@@ -921,24 +849,6 @@ public interface PamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PANNOTATED_EREFERENCE__COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EREFERENCE__PARSED_ATTRIBUTE_OVERRIDES = PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES;
-
-	/**
-	 * The feature id for the '<em><b>Parsed Join Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EREFERENCE__PARSED_JOIN_COLUMNS = PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EReference</b></em>' reference.
@@ -1013,13 +923,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__ORDER_BY = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Primary Key Join Column</b></em>' containment reference.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Primary Key Join Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
+	int PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>PAnnotated EReference</em>' class.
@@ -1118,25 +1028,26 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEPackage_PaEClasses();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getSequenceGenerator <em>Sequence Generator</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getSequenceGenerators <em>Sequence Generators</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Sequence Generator</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getSequenceGenerator()
+	 * @return the meta object for the containment reference list '<em>Sequence Generators</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getSequenceGenerators()
 	 * @see #getPAnnotatedEPackage()
 	 * @generated
 	 */
-	EReference getPAnnotatedEPackage_SequenceGenerator();
+	EReference getPAnnotatedEPackage_SequenceGenerators();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getTableGenerator <em>Table Generator</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Table Generator</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getTableGenerator()
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getTableGenerators <em>Table Generators</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Table Generators</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getTableGenerators()
 	 * @see #getPAnnotatedEPackage()
 	 * @generated
 	 */
-	EReference getPAnnotatedEPackage_TableGenerator();
+	EReference getPAnnotatedEPackage_TableGenerators();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass <em>PAnnotated EClass</em>}'.
@@ -1178,9 +1089,9 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEClass_PaEStructuralFeatures();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAttributeOverrides <em>Attribute Overrides</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAttributeOverrides <em>Attribute Overrides</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Attribute Overrides</em>'.
+	 * @return the meta object for the containment reference list '<em>Attribute Overrides</em>'.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAttributeOverrides()
 	 * @see #getPAnnotatedEClass()
 	 * @generated
@@ -1258,9 +1169,9 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEClass_Inheritance();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Primary Key Join Columns</em>'.
+	 * @return the meta object for the containment reference list '<em>Primary Key Join Columns</em>'.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPrimaryKeyJoinColumns()
 	 * @see #getPAnnotatedEClass()
 	 * @generated
@@ -1268,9 +1179,9 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEClass_PrimaryKeyJoinColumns();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSecondaryTables <em>Secondary Tables</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSecondaryTables <em>Secondary Tables</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Secondary Tables</em>'.
+	 * @return the meta object for the containment reference list '<em>Secondary Tables</em>'.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSecondaryTables()
 	 * @see #getPAnnotatedEClass()
 	 * @generated
@@ -1298,58 +1209,14 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEClass_TableGenerator();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAssociationOverrides <em>Association Overrides</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAssociationOverrides <em>Association Overrides</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Association Overrides</em>'.
+	 * @return the meta object for the containment reference list '<em>Association Overrides</em>'.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAssociationOverrides()
 	 * @see #getPAnnotatedEClass()
 	 * @generated
 	 */
 	EReference getPAnnotatedEClass_AssociationOverrides();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedAttributeOverrides <em>Parsed Attribute Overrides</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parsed Attribute Overrides</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedAttributeOverrides()
-	 * @see #getPAnnotatedEClass()
-	 * @generated
-	 */
-	EReference getPAnnotatedEClass_ParsedAttributeOverrides();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedAssociationOverrides <em>Parsed Association Overrides</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parsed Association Overrides</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedAssociationOverrides()
-	 * @see #getPAnnotatedEClass()
-	 * @generated
-	 */
-	EReference getPAnnotatedEClass_ParsedAssociationOverrides();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedSecondaryTables <em>Parsed Secondary Tables</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parsed Secondary Tables</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedSecondaryTables()
-	 * @see #getPAnnotatedEClass()
-	 * @generated
-	 */
-	EReference getPAnnotatedEClass_ParsedSecondaryTables();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedPrimaryKeyJoinColumns <em>Parsed Primary Key Join Columns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parsed Primary Key Join Columns</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getParsedPrimaryKeyJoinColumns()
-	 * @see #getPAnnotatedEClass()
-	 * @generated
-	 */
-	EReference getPAnnotatedEClass_ParsedPrimaryKeyJoinColumns();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature <em>PAnnotated EStructural Feature</em>}'.
@@ -1381,9 +1248,9 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getAttributeOverrides <em>Attribute Overrides</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getAttributeOverrides <em>Attribute Overrides</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Attribute Overrides</em>'.
+	 * @return the meta object for the containment reference list '<em>Attribute Overrides</em>'.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getAttributeOverrides()
 	 * @see #getPAnnotatedEStructuralFeature()
 	 * @generated
@@ -1431,9 +1298,9 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEStructuralFeature_TableGenerator();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getJoinColumns <em>Join Columns</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getJoinColumns <em>Join Columns</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Join Columns</em>'.
+	 * @return the meta object for the containment reference list '<em>Join Columns</em>'.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getJoinColumns()
 	 * @see #getPAnnotatedEStructuralFeature()
 	 * @generated
@@ -1470,28 +1337,6 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPAnnotatedEStructuralFeature_Column();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getParsedAttributeOverrides <em>Parsed Attribute Overrides</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parsed Attribute Overrides</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getParsedAttributeOverrides()
-	 * @see #getPAnnotatedEStructuralFeature()
-	 * @generated
-	 */
-	EReference getPAnnotatedEStructuralFeature_ParsedAttributeOverrides();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getParsedJoinColumns <em>Parsed Join Columns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parsed Join Columns</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getParsedJoinColumns()
-	 * @see #getPAnnotatedEStructuralFeature()
-	 * @generated
-	 */
-	EReference getPAnnotatedEStructuralFeature_ParsedJoinColumns();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute <em>PAnnotated EAttribute</em>}'.
@@ -1672,14 +1517,15 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEReference_OrderBy();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getPrimaryKeyJoinColumn <em>Primary Key Join Column</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Primary Key Join Column</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getPrimaryKeyJoinColumn()
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Primary Key Join Columns</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getPrimaryKeyJoinColumns()
 	 * @see #getPAnnotatedEReference()
 	 * @generated
 	 */
-	EReference getPAnnotatedEReference_PrimaryKeyJoinColumn();
+	EReference getPAnnotatedEReference_PrimaryKeyJoinColumns();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1781,20 +1627,20 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_EPACKAGE__PA_ECLASSES = eINSTANCE.getPAnnotatedEPackage_PaEClasses();
 
 		/**
-		 * The meta object literal for the '<em><b>Sequence Generator</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Sequence Generators</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR = eINSTANCE.getPAnnotatedEPackage_SequenceGenerator();
+		EReference PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS = eINSTANCE.getPAnnotatedEPackage_SequenceGenerators();
 
 		/**
-		 * The meta object literal for the '<em><b>Table Generator</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Table Generators</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PANNOTATED_EPACKAGE__TABLE_GENERATOR = eINSTANCE.getPAnnotatedEPackage_TableGenerator();
+		EReference PANNOTATED_EPACKAGE__TABLE_GENERATORS = eINSTANCE.getPAnnotatedEPackage_TableGenerators();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl <em>PAnnotated EClass</em>}' class.
@@ -1831,7 +1677,7 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES = eINSTANCE.getPAnnotatedEClass_PaEStructuralFeatures();
 
 		/**
-		 * The meta object literal for the '<em><b>Attribute Overrides</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Attribute Overrides</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1895,7 +1741,7 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ECLASS__INHERITANCE = eINSTANCE.getPAnnotatedEClass_Inheritance();
 
 		/**
-		 * The meta object literal for the '<em><b>Primary Key Join Columns</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Primary Key Join Columns</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1903,7 +1749,7 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS = eINSTANCE.getPAnnotatedEClass_PrimaryKeyJoinColumns();
 
 		/**
-		 * The meta object literal for the '<em><b>Secondary Tables</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Secondary Tables</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1927,44 +1773,12 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ECLASS__TABLE_GENERATOR = eINSTANCE.getPAnnotatedEClass_TableGenerator();
 
 		/**
-		 * The meta object literal for the '<em><b>Association Overrides</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Association Overrides</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES = eINSTANCE.getPAnnotatedEClass_AssociationOverrides();
-
-		/**
-		 * The meta object literal for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANNOTATED_ECLASS__PARSED_ATTRIBUTE_OVERRIDES = eINSTANCE.getPAnnotatedEClass_ParsedAttributeOverrides();
-
-		/**
-		 * The meta object literal for the '<em><b>Parsed Association Overrides</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANNOTATED_ECLASS__PARSED_ASSOCIATION_OVERRIDES = eINSTANCE.getPAnnotatedEClass_ParsedAssociationOverrides();
-
-		/**
-		 * The meta object literal for the '<em><b>Parsed Secondary Tables</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANNOTATED_ECLASS__PARSED_SECONDARY_TABLES = eINSTANCE.getPAnnotatedEClass_ParsedSecondaryTables();
-
-		/**
-		 * The meta object literal for the '<em><b>Parsed Primary Key Join Columns</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANNOTATED_ECLASS__PARSED_PRIMARY_KEY_JOIN_COLUMNS = eINSTANCE.getPAnnotatedEClass_ParsedPrimaryKeyJoinColumns();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl <em>PAnnotated EStructural Feature</em>}' class.
@@ -1993,7 +1807,7 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE = eINSTANCE.getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature();
 
 		/**
-		 * The meta object literal for the '<em><b>Attribute Overrides</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Attribute Overrides</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2033,7 +1847,7 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR = eINSTANCE.getPAnnotatedEStructuralFeature_TableGenerator();
 
 		/**
-		 * The meta object literal for the '<em><b>Join Columns</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Join Columns</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2063,22 +1877,6 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_ESTRUCTURAL_FEATURE__COLUMN = eINSTANCE.getPAnnotatedEStructuralFeature_Column();
-
-		/**
-		 * The meta object literal for the '<em><b>Parsed Attribute Overrides</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_ATTRIBUTE_OVERRIDES = eINSTANCE.getPAnnotatedEStructuralFeature_ParsedAttributeOverrides();
-
-		/**
-		 * The meta object literal for the '<em><b>Parsed Join Columns</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANNOTATED_ESTRUCTURAL_FEATURE__PARSED_JOIN_COLUMNS = eINSTANCE.getPAnnotatedEStructuralFeature_ParsedJoinColumns();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
@@ -2229,12 +2027,12 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_EREFERENCE__ORDER_BY = eINSTANCE.getPAnnotatedEReference_OrderBy();
 
 		/**
-		 * The meta object literal for the '<em><b>Primary Key Join Column</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Primary Key Join Columns</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN = eINSTANCE.getPAnnotatedEReference_PrimaryKeyJoinColumn();
+		EReference PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS = eINSTANCE.getPAnnotatedEReference_PrimaryKeyJoinColumns();
 
 	}
 

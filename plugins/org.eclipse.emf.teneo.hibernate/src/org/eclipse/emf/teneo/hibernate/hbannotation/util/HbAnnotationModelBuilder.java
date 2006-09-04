@@ -11,9 +11,11 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HbAnnotationModelBuilder.java,v 1.3 2006/09/01 06:56:11 mtaal Exp $
+ * $Id: HbAnnotationModelBuilder.java,v 1.4 2006/09/04 15:42:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
+
+import java.util.List;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
@@ -55,9 +57,12 @@ public class HbAnnotationModelBuilder extends EannotationPamodelBuilder {
 	 * is not admitted for the given PAnnotatedEModelElement.
 	 */
 	protected void setPAnnotation(PAnnotatedEModelElement pElement, PAnnotation pAnnotation) {
+		if (pAnnotation == null) return; //ignore to not fail on old annotations
 		EReference pAnnotationRef = HbModelPackage.eINSTANCE.pAnnotationReference(pElement.eClass(), pAnnotation.eClass());
 		if (pAnnotationRef == null) {
 			super.setPAnnotation(pElement, pAnnotation);
+		} else if (pAnnotationRef.isMany()) { 
+			((List)pElement.eGet(pAnnotationRef)).add(pAnnotation);
 		} else {
 			pElement.eSet(pAnnotationRef, pAnnotation);
 		}

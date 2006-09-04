@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PrimitiveValueNode.java,v 1.3 2006/09/01 07:02:28 mtaal Exp $
+ * $Id: PrimitiveValueNode.java,v 1.4 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -22,7 +22,7 @@ package org.eclipse.emf.teneo.annotations.parser;
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class PrimitiveValueNode extends ParserNode {
+class PrimitiveValueNode extends NamedParserNode {
 
 	/** The value */
 	private String value;
@@ -46,4 +46,10 @@ class PrimitiveValueNode extends ParserNode {
 			this.value = value;
 		}
 	}
+		
+	/** Translate into an etype*/
+	Object convert(EClassResolver ecr) {
+		return value;
+	}
+
 }

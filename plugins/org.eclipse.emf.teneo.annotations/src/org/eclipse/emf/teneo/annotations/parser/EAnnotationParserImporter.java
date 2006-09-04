@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAnnotationParserImporter.java,v 1.2 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: EAnnotationParserImporter.java,v 1.3 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
@@ -101,36 +102,42 @@ public class EAnnotationParserImporter implements EClassResolver {
 		// now the parsed nodes should be translated into features of the enamedelement
 		// this is done multiplelevel
 		log.debug("Number of parsed typename annotations " + parsedNodes.size());
-		final ArrayList eobjects = new ArrayList();
+		final ArrayList objects = new ArrayList();
 		for (Iterator it = parsedNodes.iterator(); it.hasNext();) {
 			final ComplexNode cn = (ComplexNode)it.next();
-			eobjects.add(cn.convert(this));
+			if (cn.isList()) {
+				// find the efeature
+				final EStructuralFeature ef = ParserUtil.getEStructuralFeature(pee.eClass(), cn.getName());
+				pee.eSet(ef, cn.convert(this));
+			} else {
+				EObject eobj = (EObject)cn.convert(this);
+				boolean found = false;
+				for (Iterator eit = pee.eClass().getEAllReferences().iterator(); eit.hasNext();) {
+					final EReference eref = (EReference)eit.next();
+					if (eref.getEReferenceType() == eobj.eClass()) {
+						log.debug("Found EReference " + eref.getName() + " for " + eobj.eClass().getName());
+						if (eref.isMany()) {
+							((List)pee.eGet(eref)).add(eobj);
+						} else {
+							pee.eSet(eref, eobj);
+						}
+						found = true;
+						break;
+					}
+				}
+				if (!found) {
+					throw new AnnotationParserException("The eclass: " + pee.eClass().getName() + 
+							" does not have an efeature for " + eobj.eClass().getName());
+				}
+			}
 		}
 		
 		// now for each eobject find which eref stores it!
 		log.debug("Find efeature for each created eobject");
-		for (Iterator it = eobjects.iterator(); it.hasNext();) {
+		for (Iterator it = objects.iterator(); it.hasNext();) {
 			EObject eobj = (EObject)it.next();
 			log.debug("EClass " + eobj.eClass().getName());
 			
-			boolean found = false;
-			for (Iterator eit = pee.eClass().getEAllReferences().iterator(); eit.hasNext();) {
-				final EReference eref = (EReference)eit.next();
-				if (eref.getEReferenceType() == eobj.eClass()) {
-					log.debug("Found EReference " + eref.getName() + " for " + eobj.eClass().getName());
-					if (eref.isMany()) {
-						((List)pee.eGet(eref)).add(eobj);
-					} else {
-						pee.eSet(eref, eobj);
-					}
-					found = true;
-					break;
-				}
-			}
-			if (!found) {
-				throw new AnnotationParserException("The eclass: " + pee.eClass().getName() + 
-						" does not have an efeature for " + eobj.eClass().getName());
-			}
 		}
 	}
 

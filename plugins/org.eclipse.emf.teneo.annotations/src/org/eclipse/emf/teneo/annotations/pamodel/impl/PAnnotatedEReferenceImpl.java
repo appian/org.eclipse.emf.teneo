@@ -2,19 +2,24 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceImpl.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
+ * $Id: PAnnotatedEReferenceImpl.java,v 1.4 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
+
+import java.util.Collection;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
@@ -42,7 +47,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKey <em>Map Key</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOneToOne <em>One To One</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOrderBy <em>Order By</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getPrimaryKeyJoinColumn <em>Primary Key Join Column</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
  * </ul>
  * </p>
  *
@@ -141,14 +146,14 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	protected OrderBy orderBy = null;
 
 	/**
-	 * The cached value of the '{@link #getPrimaryKeyJoinColumn() <em>Primary Key Join Column</em>}' containment reference.
+	 * The cached value of the '{@link #getPrimaryKeyJoinColumns() <em>Primary Key Join Columns</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPrimaryKeyJoinColumn()
+	 * @see #getPrimaryKeyJoinColumns()
 	 * @generated
 	 * @ordered
 	 */
-	protected PrimaryKeyJoinColumn primaryKeyJoinColumn = null;
+	protected EList primaryKeyJoinColumns = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -529,42 +534,11 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PrimaryKeyJoinColumn getPrimaryKeyJoinColumn() {
-		return primaryKeyJoinColumn;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetPrimaryKeyJoinColumn(PrimaryKeyJoinColumn newPrimaryKeyJoinColumn, NotificationChain msgs) {
-		PrimaryKeyJoinColumn oldPrimaryKeyJoinColumn = primaryKeyJoinColumn;
-		primaryKeyJoinColumn = newPrimaryKeyJoinColumn;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN, oldPrimaryKeyJoinColumn, newPrimaryKeyJoinColumn);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList getPrimaryKeyJoinColumns() {
+		if (primaryKeyJoinColumns == null) {
+			primaryKeyJoinColumns = new EObjectContainmentEList(PrimaryKeyJoinColumn.class, this, PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPrimaryKeyJoinColumn(PrimaryKeyJoinColumn newPrimaryKeyJoinColumn) {
-		if (newPrimaryKeyJoinColumn != primaryKeyJoinColumn) {
-			NotificationChain msgs = null;
-			if (primaryKeyJoinColumn != null)
-				msgs = ((InternalEObject)primaryKeyJoinColumn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN, null, msgs);
-			if (newPrimaryKeyJoinColumn != null)
-				msgs = ((InternalEObject)newPrimaryKeyJoinColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN, null, msgs);
-			msgs = basicSetPrimaryKeyJoinColumn(newPrimaryKeyJoinColumn, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN, newPrimaryKeyJoinColumn, newPrimaryKeyJoinColumn));
+		return primaryKeyJoinColumns;
 	}
 
 	/**
@@ -588,8 +562,8 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 				return basicSetOneToOne(null, msgs);
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY:
 				return basicSetOrderBy(null, msgs);
-			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN:
-				return basicSetPrimaryKeyJoinColumn(null, msgs);
+			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
+				return ((InternalEList)getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -618,8 +592,8 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 				return getOneToOne();
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY:
 				return getOrderBy();
-			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN:
-				return getPrimaryKeyJoinColumn();
+			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
+				return getPrimaryKeyJoinColumns();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -655,8 +629,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY:
 				setOrderBy((OrderBy)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN:
-				setPrimaryKeyJoinColumn((PrimaryKeyJoinColumn)newValue);
+			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
+				getPrimaryKeyJoinColumns().clear();
+				getPrimaryKeyJoinColumns().addAll((Collection)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -693,8 +668,8 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY:
 				setOrderBy((OrderBy)null);
 				return;
-			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN:
-				setPrimaryKeyJoinColumn((PrimaryKeyJoinColumn)null);
+			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
+				getPrimaryKeyJoinColumns().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -723,8 +698,8 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 				return oneToOne != null;
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY:
 				return orderBy != null;
-			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMN:
-				return primaryKeyJoinColumn != null;
+			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
+				return primaryKeyJoinColumns != null && !primaryKeyJoinColumns.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

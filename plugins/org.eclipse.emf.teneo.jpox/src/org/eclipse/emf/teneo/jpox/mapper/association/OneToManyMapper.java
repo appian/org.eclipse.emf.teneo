@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.3 2006/08/14 05:09:18 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.4 2006/09/04 15:42:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class OneToManyMapper extends AssociationMapper {
@@ -89,8 +89,8 @@ public class OneToManyMapper extends AssociationMapper {
 			if (aReference.getJoinTable() != null) {
 				field.addAttribute("table", aReference.getJoinTable().getName());
 			}
-			if (aReference.getJoinColumns() != null && aReference.getJoinColumns().getValue().size() > 0) {
-				mappingContext.getJoinColumnMapper().map(aReference.getJoinColumns().getValue(), joinElement);
+			if (aReference.getJoinColumns() != null && aReference.getJoinColumns().size() > 0) {
+				mappingContext.getJoinColumnMapper().map(aReference.getJoinColumns(), joinElement);
 			}
 		}
 
@@ -153,9 +153,9 @@ public class OneToManyMapper extends AssociationMapper {
 			field.addAttribute("delete-action", "restrict");
 		}
 
-		if (!useJoin && aReference.getJoinColumns() != null && aReference.getJoinColumns().getValue().size() > 0) {
+		if (!useJoin && aReference.getJoinColumns() != null && aReference.getJoinColumns().size() > 0) {
 			// Element elemElement = field.addElement("element");
-			mappingContext.getJoinColumnMapper().map(aReference.getJoinColumns().getValue(), field);
+			mappingContext.getJoinColumnMapper().map(aReference.getJoinColumns(), field);
 		}
 
 		// do foreign key

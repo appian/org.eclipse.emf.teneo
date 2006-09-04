@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.4 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
@@ -39,7 +41,9 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
+import org.eclipse.emf.teneo.annotations.pamodel.util.EannotationPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 
 /**
@@ -55,6 +59,8 @@ import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
  * @generated
  */
 public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel {
+	
+	private static final Log log = LogFactory.getLog(PAnnotatedModelImpl.class);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -376,15 +382,38 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 * passed for debugging purposes.
 	 */
 	public SequenceGenerator getSequenceGenerator(EStructuralFeature efeature, String name) {
+		// TODO: should not only the paepackage of the efeature be checked?
 		for (Iterator it = getPaEPackages().iterator(); it.hasNext();) {
 			final PAnnotatedEPackage pae = (PAnnotatedEPackage)it.next();
-			final SequenceGenerator sg = pae.getSequenceGenerator();
-			if (sg.getName() != null && sg.getName().compareTo(name) == 0) {
-				return sg;
+			for (Iterator sit = pae.getSequenceGenerators().iterator(); sit.hasNext();) {
+				final SequenceGenerator sg = (SequenceGenerator)sit.next();
+				if (sg.getName() != null && sg.getName().compareTo(name) == 0) {
+					return sg;
+				}				
 			}
 		}
 		throw new ProcessingException("No sequence generator found with the name: " + name + ", name is used in " +
 				"annotation of element " + efeature.getEContainingClass().getName() + "/" + efeature.getName());
+	}
+
+	/**
+	 * Returns a table generator on the basis of its name, if not found then an exception is thrown. efeature is
+	 * passed for debugging purposes.
+	 */
+	public TableGenerator getTableGenerator(EStructuralFeature efeature, String name) {
+		// TODO: should not only the paepackage of the efeature be checked?
+		for (Iterator it = getPaEPackages().iterator(); it.hasNext();) {
+			final PAnnotatedEPackage pae = (PAnnotatedEPackage)it.next();
+			for (Iterator sit = pae.getTableGenerators().iterator(); sit.hasNext();) {
+				final TableGenerator tg = (TableGenerator)sit.next();
+				if (tg.getName() != null && tg.getName().compareTo(name) == 0) {
+					return tg;
+				}				
+			}
+		}
+		log.debug("No table generator found with the name: " + name + ", name is used in " +
+				"annotation of element " + efeature.getEContainingClass().getName() + "/" + efeature.getName());
+		return null;
 	}
 	
 } // PAnnotatedModelImpl

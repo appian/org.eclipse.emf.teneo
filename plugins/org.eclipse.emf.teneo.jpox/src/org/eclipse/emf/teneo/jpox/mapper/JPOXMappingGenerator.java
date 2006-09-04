@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.5 2006/08/31 23:46:55 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.6 2006/09/04 15:42:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class JPOXMappingGenerator {
@@ -202,8 +202,8 @@ public class JPOXMappingGenerator {
 			classElement.addAttribute("identity-type", "datastore");
 		}
 
-		if (aClass.getSecondaryTables() != null && aClass.getSecondaryTables().getValue().size() > 0) {
-			for (Iterator it = aClass.getSecondaryTables().getValue().iterator(); it.hasNext();) {
+		if (aClass.getSecondaryTables() != null && aClass.getSecondaryTables().size() > 0) {
+			for (Iterator it = aClass.getSecondaryTables().iterator(); it.hasNext();) {
 				final SecondaryTable st = (SecondaryTable)it.next();
 				final Element joinElement = classElement.addElement("join");
 				joinElement.addAttribute("table", st.getName());

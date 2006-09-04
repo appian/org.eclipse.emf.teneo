@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.5 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.6 2006/09/04 15:42:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapper;
@@ -64,7 +64,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
-import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTables;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
@@ -77,7 +76,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class DefaultAnnotator {
 
@@ -298,9 +297,7 @@ public class DefaultAnnotator {
 				final PrimaryKeyJoinColumn pkjc = aFactory.createPrimaryKeyJoinColumn();
 				final String colName = superClass.getName() + "_" + idFeature;
 				pkjc.setName(trunc(colName.toUpperCase(), true));
-				if (aClass.getPrimaryKeyJoinColumns() == null)
-					aClass.setPrimaryKeyJoinColumns(aFactory.createPrimaryKeyJoinColumns());
-				aClass.getPrimaryKeyJoinColumns().getValue().add(pkjc);
+				aClass.getPrimaryKeyJoinColumns().add(pkjc);
 			}
 		}
 
@@ -348,24 +345,21 @@ public class DefaultAnnotator {
 			processEFeature(aStructuralFeature, forceOptional);
 		}
 
-		final SecondaryTables secondaryTables = aClass.getSecondaryTables();
-		if (secondaryTables != null) {
-			// Add default PkJoinColumns for SecondaryTables.
-			for (Iterator iter = secondaryTables.getValue().iterator(); iter.hasNext();) {
-				final SecondaryTable secondaryTable = (SecondaryTable) iter.next();
-				final EList pkJoinColumns = secondaryTable.getPkJoinColumns();
-				if (pkJoinColumns.size() == 0) {
-					// No PkJoinColumns configured for this secondary table, so populate with defaults based on the ID
-					// attributes of the primary table.
-					final List aIdAttributes = aClass.getPaIdAttributes();
-					for (Iterator iter2 = aIdAttributes.iterator(); iter2.hasNext();) {
-						PAnnotatedEAttribute aIdAttribute = (PAnnotatedEAttribute) iter2.next();
-						final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE
-								.createPrimaryKeyJoinColumn();
-						pkJoinColumn
-								.setName(trunc(aIdAttribute.getAnnotatedEAttribute().getName().toUpperCase(), true));
-						pkJoinColumns.add(pkJoinColumn);
-					}
+		// Add default PkJoinColumns for SecondaryTables.
+		for (Iterator iter = aClass.getSecondaryTables().iterator(); iter.hasNext();) {
+			final SecondaryTable secondaryTable = (SecondaryTable) iter.next();
+			final EList pkJoinColumns = secondaryTable.getPkJoinColumns();
+			if (pkJoinColumns.size() == 0) {
+				// No PkJoinColumns configured for this secondary table, so populate with defaults based on the ID
+				// attributes of the primary table.
+				final List aIdAttributes = aClass.getPaIdAttributes();
+				for (Iterator iter2 = aIdAttributes.iterator(); iter2.hasNext();) {
+					PAnnotatedEAttribute aIdAttribute = (PAnnotatedEAttribute) iter2.next();
+					final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE
+							.createPrimaryKeyJoinColumn();
+					pkJoinColumn
+							.setName(trunc(aIdAttribute.getAnnotatedEAttribute().getName().toUpperCase(), true));
+					pkJoinColumns.add(pkJoinColumn);
 				}
 			}
 		}
@@ -464,7 +458,7 @@ public class DefaultAnnotator {
 				// place a mto
 				final boolean otoBidirectionalRelation = !isMany && eOpposite != null && !isOppositeMany;
 				final boolean otoUnidirectionalRelation = !isMany && eOpposite == null
-						&& (aReference.getOneToOne() != null || aReference.getPrimaryKeyJoinColumn() != null);
+						&& (aReference.getOneToOne() != null || !aReference.getPrimaryKeyJoinColumns().isEmpty());
 				final boolean mtoBidirectionalRelation = !isMany && eOpposite != null && isOppositeMany;
 				final boolean mtoUnidirectionalRelation = !isMany && eOpposite == null && !otoUnidirectionalRelation;
 
@@ -710,7 +704,7 @@ public class DefaultAnnotator {
 			}
 
 			// note joincolumns in jointable can be generated automatically by hib/jpox.
-		} else if (aReference.getJoinColumns() == null || aReference.getJoinColumns().getValue().isEmpty()) { // add
+		} else if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) { // add
 			// joincolum(s)
 			// the name of this eclass, the name of the property on the other side
 			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
@@ -931,7 +925,7 @@ public class DefaultAnnotator {
 		// create a set of joincolumns, note that if this is a two-way relation then
 		// the other side will use the name of the ereference as second parameter,
 		// matching the joincolumns on the other side
-		if (aReference.getJoinColumns() == null || aReference.getJoinColumns().getValue().isEmpty()) {
+		if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) {
 			// the name of the joincolumns is defined by the name of the other entity and its primary key fields
 			final PAnnotatedEClass aClass = aReference.getPaModel().getPAnnotated(eReference.getEReferenceType());
 			if (aClass != null) { // aClass == null when the reference it to a high level type such as EObject
@@ -943,9 +937,7 @@ public class DefaultAnnotator {
 	/** Creates a set of joincolumns for a reference to the annotated eclass */
 	private void addJoinColumns(PAnnotatedEClass aClass, EStructuralFeature esf, PAnnotatedEStructuralFeature aFeature,
 			boolean optional) {
-		if (aFeature.getJoinColumns() == null)
-			aFeature.setJoinColumns(aFactory.createJoinColumns());
-		aFeature.getJoinColumns().getValue().addAll(getJoinColumns(aClass, esf, optional, true));
+		aFeature.getJoinColumns().addAll(getJoinColumns(aClass, esf, optional, true));
 	}
 
 	/** Return a list of join columns */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Embedder.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: Embedder.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -41,7 +41,7 @@ public interface Embedder extends EObject {
 	 * @return the value of the '<em>First Embedded</em>' containment reference.
 	 * @see #setFirstEmbedded(Embeddable)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_FirstEmbedded()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        annotation="http://annotation.elver.org/Embedded appinfo='true'"
 	 *        annotation="http://annotation.elver.org/AttributeOverride name='myString' column='c1'"
 	 *        annotation="http://annotation.elver.org/Column/c1 name='columnString3'"
@@ -71,9 +71,8 @@ public interface Embedder extends EObject {
 	 * @return the value of the '<em>Second Embedded</em>' containment reference.
 	 * @see #setSecondEmbedded(Embeddable)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_SecondEmbedded()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        annotation="http://annotation.elver.org/Embedded appinfo='true'"
-	 *        annotation="http://annotation.elver.org/AttributeOverrides value='a1 a2'"
 	 *        annotation="http://annotation.elver.org/AttributeOverride/a1 name='myString' column='c1'"
 	 *        annotation="http://annotation.elver.org/Column/c1 name='columnString1'"
 	 *        annotation="http://annotation.elver.org/AttributeOverride/a2 name='myInteger' column='c2'"
@@ -104,9 +103,8 @@ public interface Embedder extends EObject {
 	 * @return the value of the '<em>Third Embedded</em>' containment reference.
 	 * @see #setThirdEmbedded(Embeddable)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_ThirdEmbedded()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        annotation="http://annotation.elver.org/Embedded appinfo='true'"
-	 *        annotation="http://annotation.elver.org/AttributeOverrides value='a1 a2'"
 	 *        annotation="http://annotation.elver.org/AttributeOverride/a1 name='myString' column='c1'"
 	 *        annotation="http://annotation.elver.org/Column/c1 name='columnString2'"
 	 *        annotation="http://annotation.elver.org/AttributeOverride/a2 name='myInteger' column='c2'"
@@ -137,7 +135,7 @@ public interface Embedder extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fourth Embedded</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_FourthEmbedded()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable" containment="true" resolveProxies="false" required="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable" containment="true" required="true"
 	 *        annotation="http://annotation.elver.org/Embedded appinfo='true'"
 	 *        extendedMetaData="kind='element' name='fourthEmbedded'"
 	 * @generated
@@ -155,7 +153,7 @@ public interface Embedder extends EObject {
 	 * @return the value of the '<em>Fifth Embedded</em>' containment reference.
 	 * @see #setFifthEmbedded(Embeddable)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_FifthEmbedded()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        annotation="http://annotation.elver.org/Embedded appinfo='true'"
 	 *        extendedMetaData="kind='element' name='fifthEmbedded'"
 	 * @generated

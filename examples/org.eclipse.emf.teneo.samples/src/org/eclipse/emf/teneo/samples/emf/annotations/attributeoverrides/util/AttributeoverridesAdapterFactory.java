@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeoverridesAdapterFactory.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: AttributeoverridesAdapterFactory.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.util;
 
@@ -10,6 +10,8 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.*;
+
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.City;
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.Person;

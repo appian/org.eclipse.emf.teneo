@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackageImpl.java,v 1.5 2006/09/01 06:56:03 mtaal Exp $
+ * $Id: PAnnotatedEPackageImpl.java,v 1.6 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -36,8 +37,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getPaModel <em>Pa Model</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getAnnotatedEPackage <em>Annotated EPackage</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getPaEClasses <em>Pa EClasses</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getSequenceGenerator <em>Sequence Generator</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getTableGenerator <em>Table Generator</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getSequenceGenerators <em>Sequence Generators</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getTableGenerators <em>Table Generators</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,24 +73,24 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	protected EList paEClasses = null;
 
 	/**
-	 * The cached value of the '{@link #getSequenceGenerator() <em>Sequence Generator</em>}' containment reference.
+	 * The cached value of the '{@link #getSequenceGenerators() <em>Sequence Generators</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSequenceGenerator()
+	 * @see #getSequenceGenerators()
 	 * @generated
 	 * @ordered
 	 */
-	protected SequenceGenerator sequenceGenerator = null;
+	protected EList sequenceGenerators = null;
 
 	/**
-	 * The cached value of the '{@link #getTableGenerator() <em>Table Generator</em>}' containment reference.
+	 * The cached value of the '{@link #getTableGenerators() <em>Table Generators</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTableGenerator()
+	 * @see #getTableGenerators()
 	 * @generated
 	 * @ordered
 	 */
-	protected TableGenerator tableGenerator = null;
+	protected EList tableGenerators = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -215,23 +216,11 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SequenceGenerator getSequenceGenerator() {
-		return sequenceGenerator;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSequenceGenerator(SequenceGenerator newSequenceGenerator, NotificationChain msgs) {
-		SequenceGenerator oldSequenceGenerator = sequenceGenerator;
-		sequenceGenerator = newSequenceGenerator;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR, oldSequenceGenerator, newSequenceGenerator);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList getSequenceGenerators() {
+		if (sequenceGenerators == null) {
+			sequenceGenerators = new EObjectContainmentEList(SequenceGenerator.class, this, PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS);
 		}
-		return msgs;
+		return sequenceGenerators;
 	}
 
 	/**
@@ -239,61 +228,11 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSequenceGenerator(SequenceGenerator newSequenceGenerator) {
-		if (newSequenceGenerator != sequenceGenerator) {
-			NotificationChain msgs = null;
-			if (sequenceGenerator != null)
-				msgs = ((InternalEObject)sequenceGenerator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR, null, msgs);
-			if (newSequenceGenerator != null)
-				msgs = ((InternalEObject)newSequenceGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR, null, msgs);
-			msgs = basicSetSequenceGenerator(newSequenceGenerator, msgs);
-			if (msgs != null) msgs.dispatch();
+	public EList getTableGenerators() {
+		if (tableGenerators == null) {
+			tableGenerators = new EObjectContainmentEList(TableGenerator.class, this, PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS);
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR, newSequenceGenerator, newSequenceGenerator));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TableGenerator getTableGenerator() {
-		return tableGenerator;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTableGenerator(TableGenerator newTableGenerator, NotificationChain msgs) {
-		TableGenerator oldTableGenerator = tableGenerator;
-		tableGenerator = newTableGenerator;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR, oldTableGenerator, newTableGenerator);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTableGenerator(TableGenerator newTableGenerator) {
-		if (newTableGenerator != tableGenerator) {
-			NotificationChain msgs = null;
-			if (tableGenerator != null)
-				msgs = ((InternalEObject)tableGenerator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR, null, msgs);
-			if (newTableGenerator != null)
-				msgs = ((InternalEObject)newTableGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR, null, msgs);
-			msgs = basicSetTableGenerator(newTableGenerator, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR, newTableGenerator, newTableGenerator));
+		return tableGenerators;
 	}
 
 	/**
@@ -324,10 +263,10 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 				return basicSetPaModel(null, msgs);
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
 				return ((InternalEList)getPaEClasses()).basicRemove(otherEnd, msgs);
-			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR:
-				return basicSetSequenceGenerator(null, msgs);
-			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR:
-				return basicSetTableGenerator(null, msgs);
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS:
+				return ((InternalEList)getSequenceGenerators()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS:
+				return ((InternalEList)getTableGenerators()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -359,10 +298,10 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 				return basicGetAnnotatedEPackage();
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
 				return getPaEClasses();
-			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR:
-				return getSequenceGenerator();
-			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR:
-				return getTableGenerator();
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS:
+				return getSequenceGenerators();
+			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS:
+				return getTableGenerators();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -384,11 +323,13 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 				getPaEClasses().clear();
 				getPaEClasses().addAll((Collection)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR:
-				setSequenceGenerator((SequenceGenerator)newValue);
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS:
+				getSequenceGenerators().clear();
+				getSequenceGenerators().addAll((Collection)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR:
-				setTableGenerator((TableGenerator)newValue);
+			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS:
+				getTableGenerators().clear();
+				getTableGenerators().addAll((Collection)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -410,11 +351,11 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
 				getPaEClasses().clear();
 				return;
-			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR:
-				setSequenceGenerator((SequenceGenerator)null);
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS:
+				getSequenceGenerators().clear();
 				return;
-			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR:
-				setTableGenerator((TableGenerator)null);
+			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS:
+				getTableGenerators().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -433,10 +374,10 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 				return annotatedEPackage != null;
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
 				return paEClasses != null && !paEClasses.isEmpty();
-			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATOR:
-				return sequenceGenerator != null;
-			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATOR:
-				return tableGenerator != null;
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS:
+				return sequenceGenerators != null && !sequenceGenerators.isEmpty();
+			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS:
+				return tableGenerators != null && !tableGenerators.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

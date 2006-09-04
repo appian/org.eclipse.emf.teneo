@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelValidator.java,v 1.6 2006/09/01 06:56:03 mtaal Exp $
+ * $Id: PamodelValidator.java,v 1.7 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -622,7 +622,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * @generated NOT
 	 */
 	public boolean validatePAnnotatedEClass_ProperPKJoin(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
-		if (pAnnotatedEClass.getPrimaryKeyJoinColumns() == null || pAnnotatedEClass.getPrimaryKeyJoinColumns().getValue().size() == 0)
+		if (pAnnotatedEClass.getPrimaryKeyJoinColumns() == null || pAnnotatedEClass.getPrimaryKeyJoinColumns().size() == 0)
 			return true;
 		if (pAnnotatedEClass.getEntity() == null) {
 			if (diagnostics != null) {

@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReference.java,v 1.3 2006/07/26 12:43:34 mtaal Exp $
+ * $Id: PAnnotatedEReference.java,v 1.4 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
@@ -14,7 +15,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
-import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotated EReference</b></em>'. <!--
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKey <em>Map Key</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getOneToOne <em>One To One</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getOrderBy <em>Order By</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getPrimaryKeyJoinColumn <em>Primary Key Join Column</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
  * </ul>
  * </p>
  *
@@ -248,29 +248,19 @@ public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
 	void setOrderBy(OrderBy value);
 
 	/**
-	 * Returns the value of the '<em><b>Primary Key Join Column</b></em>' containment reference. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Primary Key Join Columns</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn}.
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Primary Key Join Column</em>' containment reference isn't clear, there really
-	 * should be more of a description here...
+	 * If the meaning of the '<em>Primary Key Join Columns</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Primary Key Join Column</em>' containment reference.
-	 * @see #setPrimaryKeyJoinColumn(PrimaryKeyJoinColumn)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_PrimaryKeyJoinColumn()
-	 * @model containment="true"
+	 * @return the value of the '<em>Primary Key Join Columns</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_PrimaryKeyJoinColumns()
+	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn" containment="true"
 	 * @generated
 	 */
-	PrimaryKeyJoinColumn getPrimaryKeyJoinColumn();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getPrimaryKeyJoinColumn <em>Primary Key Join Column</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Primary Key Join Column</em>' containment reference.
-	 * @see #getPrimaryKeyJoinColumn()
-	 * @generated
-	 */
-	void setPrimaryKeyJoinColumn(PrimaryKeyJoinColumn value);
+	EList getPrimaryKeyJoinColumns();
 
 } // PAnnotatedEReference

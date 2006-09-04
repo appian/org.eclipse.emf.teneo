@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: Person.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides;
 
@@ -97,7 +97,6 @@ public interface Person extends EObject {
 	 * @see #setLivesIn(City)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage#getPerson_LivesIn()
 	 * @model required="true"
-	 *        annotation="http://annotation.elver.org/AttributeOverrides value='a1 a2'"
 	 *        annotation="http://annotation.elver.org/AttributeOverride/a1 name='name' column='c1'"
 	 *        annotation="http://annotation.elver.org/Column/c1 name='nameColumn'"
 	 *        annotation="http://annotation.elver.org/AttributeOverride/a2 name='country' column='c2'"

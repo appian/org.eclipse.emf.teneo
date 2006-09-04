@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.2 2006/08/24 22:12:51 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.3 2006/09/04 15:42:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -92,8 +92,7 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 
 		// TODO: throw error if both jointable and joincolumns have been set
 		// MT: below has been added
-		final List jcs = paReference.getJoinColumns() == null ? new ArrayList() : (List) paReference.getJoinColumns()
-				.getValue();
+		final List jcs = paReference.getJoinColumns() == null ? new ArrayList() : (List) paReference.getJoinColumns();
 		final JoinTable jt = paReference.getJoinTable();
 		if (jt != null) {
 			addJoinTable(collElement, keyElement, jt);
@@ -238,8 +237,7 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 		final Element keyElement = collElement.addElement("key");
 
 		// MT: added handling of join info
-		final List jcs = paReference.getJoinColumns() == null ? new ArrayList() : (List) paReference.getJoinColumns()
-				.getValue();
+		final List jcs = paReference.getJoinColumns() == null ? new ArrayList() : (List) paReference.getJoinColumns();
 		final JoinTable jt = paReference.getJoinTable();
 		if (jt != null) {
 			addJoinTable(collElement, keyElement, jt);

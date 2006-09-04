@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeoverridesPackage.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: AttributeoverridesPackage.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides;
 
@@ -41,7 +41,7 @@ public interface AttributeoverridesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/elver/samples/emf/annotations/attributeoverrides.ecore";
+	String eNS_URI = "http:///org/eclipse/emf/teneo/samples/emf/annotations/attributeoverrides.ecore";
 
 	/**
 	 * The package namespace name.

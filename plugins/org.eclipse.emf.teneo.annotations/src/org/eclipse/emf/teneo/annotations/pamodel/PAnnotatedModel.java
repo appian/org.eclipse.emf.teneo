@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModel.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PAnnotatedModel.java,v 1.3 2006/09/04 15:42:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotated Model</b></em>'. <!--
@@ -98,5 +99,11 @@ public interface PAnnotatedModel extends EObject{
 	 * passed for debugging purposes.
 	 */
 	public SequenceGenerator getSequenceGenerator(EStructuralFeature efeature, String name);
+
+	/**
+	 * Returns a table generator on the basis of its name, if not found then an exception is thrown. efeature is
+	 * passed for debugging purposes.
+	 */
+	public TableGenerator getTableGenerator(EStructuralFeature efeature, String name);
 
 } // PAnnotatedModel

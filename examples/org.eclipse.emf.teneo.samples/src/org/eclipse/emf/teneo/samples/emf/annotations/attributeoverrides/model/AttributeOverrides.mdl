@@ -182,7 +182,6 @@
 				name       	"annotation"
 				value      	(value Text 
 |http://annotation.elver.org/Embedded
-|http://annotation.elver.org/AttributeOverrides value='a1 a2'
 |http://annotation.elver.org/AttributeOverride/a1 name='name' column='c1'
 |http://annotation.elver.org/Column/c1 name='nameColumn'
 |http://annotation.elver.org/AttributeOverride/a2 name='country' column='c2'
