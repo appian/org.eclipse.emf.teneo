@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MultiCfgTestSuite.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: MultiCfgTestSuite.java,v 1.2 2006/09/04 08:38:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -20,10 +20,12 @@ package org.eclipse.emf.teneo.test.conf;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Properties;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.AbstractTest;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
@@ -33,7 +35,7 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class MultiCfgTestSuite extends TestSuite {
 
@@ -62,6 +64,34 @@ public class MultiCfgTestSuite extends TestSuite {
 		((ConfigurableTestSuite) suitesByCfg.get(cfg)).addTestSuite(testSuite);
 	}
 
+	/**
+	 * Adds a persistence XML test suite if the TestAction has an associated "&ltActionClass&gt;.persistence.xml" file.
+	 * 
+	 * @param testActionClass
+	 * @param testConfiguration
+	 */
+	private void addPersistenceXmlTestSuite(Class testActionClass, TestConfiguration testConfiguration) {
+		final AbstractTestAction testAction;
+		try {
+			testAction = (AbstractTestAction) testActionClass.newInstance();
+		} catch (Exception e) {
+			throw new AssertionError(e);
+		}
+
+		final String xmlPersistenceMappingPath = testAction.getPersistenceXmlPath();
+		if (xmlPersistenceMappingPath != null) {
+			// Run this TestAction with XML persistence mapping.
+			final Properties properties = new Properties();
+			properties.setProperty(PersistenceOptions.PERSISTENCE_XML, xmlPersistenceMappingPath);
+			// Ignore the existing EAnnotations, since we want to test only the XML mapping.
+			properties.setProperty(PersistenceOptions.IGNORE_EANNOTATIONS, "true");
+			
+			TestSuite testSuite = new TestSuite(testActionClass.getName() + " (persistence.xml)");
+			testSuite.addTest(new AbstractActionTest(testAction, properties));
+			((TestSuite) suitesByCfg.get(testConfiguration)).addTest(testSuite);
+		}
+	}
+
 	/** Add one test suite for a specific config */
 	protected void addTest(AbstractActionTest test, TestConfiguration cfg) {
 		((ConfigurableTestSuite) suitesByCfg.get(cfg)).addTest(test);
@@ -69,11 +99,17 @@ public class MultiCfgTestSuite extends TestSuite {
 
 	/** Add a test class */
 	public void addTestSuite(Class testClass) {
-		if (AbstractTest.class.isAssignableFrom(testClass) || AbstractTestAction.class.isAssignableFrom(testClass))
-			for (Iterator i = suitesByCfg.keySet().iterator(); i.hasNext();)
-				addTestSuite(testClass, (TestConfiguration) i.next());
-		else
+		if (AbstractTest.class.isAssignableFrom(testClass) || AbstractTestAction.class.isAssignableFrom(testClass)) {
+			for (Iterator i = suitesByCfg.keySet().iterator(); i.hasNext();) {
+				final TestConfiguration testConfiguration = (TestConfiguration) i.next();
+				addTestSuite(testClass, testConfiguration);
+				if (AbstractTestAction.class.isAssignableFrom(testClass)) {
+					addPersistenceXmlTestSuite(testClass, testConfiguration);
+				}
+			}
+		} else {
 			super.addTestSuite(testClass);
+		}
 	}
 
 	/** Add a test action */

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CascadeNotallAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: CascadeNotallAction.java,v 1.3 2006/09/04 08:38:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example without orphan delete or dependent element
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class CascadeNotallAction extends AbstractTestAction {
 	/**
@@ -171,7 +171,7 @@ public class CascadeNotallAction extends AbstractTestAction {
 			newLib.setName("tstlib");
 			res.getContents().add(newLib);
 			lib.getWriters().remove(writer);
-			assert(lib.getBooks().size() > 0); // force load of books to prevent dangling error in jpox
+			assertTrue(lib.getBooks().size() > 0); // force load of books to prevent dangling error in jpox
 			newLib.getWriters().add(writer);
 			res.save(null);
 			

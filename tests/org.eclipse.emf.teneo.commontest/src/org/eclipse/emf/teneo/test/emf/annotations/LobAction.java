@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LobAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: LobAction.java,v 1.3 2006/09/04 08:38:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -79,7 +79,6 @@ public class LobAction extends AbstractTestAction {
 			assertEquals(PHOTO[i], photo[i]);
 		}
 		
-
 		store.commitTransaction();
 	}
 }

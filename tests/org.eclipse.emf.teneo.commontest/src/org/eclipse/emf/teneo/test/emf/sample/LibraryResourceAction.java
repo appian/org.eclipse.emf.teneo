@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.2 2006/09/04 08:38:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	/**
@@ -172,7 +172,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 			newLib.setName("tstlib");
 			res.getContents().add(newLib);
 			lib.getWriters().remove(writer);
-			assert(lib.getBooks().size() > 0); // force load of books to prevent dangling error in jpox
+			assertTrue(lib.getBooks().size() > 0); // force load of books to prevent dangling error in jpox
 			newLib.getWriters().add(writer);
 			res.save(null);
 			fail("Orphan delete was not set"); // should fail
