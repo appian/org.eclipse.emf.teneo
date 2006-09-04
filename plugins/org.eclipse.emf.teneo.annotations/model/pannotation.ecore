@@ -23,9 +23,6 @@
       <details key="0" value="EClass"/>
       <details key="1" value="EStructuralFeature"/>
     </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/internal/Collection">
-      <details key="name" value="AttributeOverrides"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" lowerBound="1"
         eType="#//Column" containment="true"/>
@@ -33,9 +30,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="AssociationOverride" eSuperTypes="#//PAnnotation">
     <eAnnotations source="http://annotation.elver.org/internal/Target">
       <details key="0" value="EClass"/>
-    </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/internal/Collection">
-      <details key="name" value="AssociationOverrides"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" lowerBound="1"
@@ -182,9 +176,6 @@
       <details key="0" value="EClass"/>
       <details key="1" value="EReference"/>
     </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/internal/Collection">
-      <details key="name" value="JoinColumns"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referencedColumnName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -308,9 +299,6 @@
       <details key="0" value="EClass"/>
       <details key="1" value="EReference"/>
     </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/internal/Collection">
-      <details key="name" value="PrimaryKeyJoinColumns"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referencedColumnName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -318,9 +306,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="SecondaryTable" eSuperTypes="#//PAnnotation">
     <eAnnotations source="http://annotation.elver.org/internal/Target">
       <details key="0" value="EClass"/>
-    </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/internal/Collection">
-      <details key="name" value="SecondaryTables"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="catalog" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

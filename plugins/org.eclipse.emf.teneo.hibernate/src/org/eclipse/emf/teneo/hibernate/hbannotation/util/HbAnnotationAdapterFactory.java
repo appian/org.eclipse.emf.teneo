@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationAdapterFactory.java,v 1.4 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: HbAnnotationAdapterFactory.java,v 1.5 2006/09/04 15:53:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -11,8 +11,6 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
-import org.eclipse.emf.teneo.hibernate.hbannotation.*;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeOverride.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: AttributeOverride.java,v 1.3 2006/09/04 15:53:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -20,10 +20,9 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getAttributeOverride()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EClass' 1='EStructuralFeature'"
- *        annotation="http://annotation.elver.org/internal/Collection name='AttributeOverrides'"
  * @generated
  */
-public interface AttributeOverride extends PAnnotation{
+public interface AttributeOverride extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

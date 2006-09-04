@@ -17,7 +17,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.3 $ $Date: 2006/08/24 21:27:43 $
+	@version $Revision: 1.4 $ $Date: 2006/09/04 15:53:50 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -39,6 +39,7 @@
 			<li>Changed default column names for version and synthetic id to e_version and e_id. These names should be valid for most databases and prevent nameclashes.
 			You can be backward compatible by setting the names back to the old values using the relevant options, (see <a href="options.html">here</a>).</li>
 			<li>For EAttribute, Unique attribute is not used anymore to set unique on property/column level.</li>
+			Toplevel nested annotations not used anymore JoinColumns, etc.
 		</ul>
 		-->
 		<p></p>

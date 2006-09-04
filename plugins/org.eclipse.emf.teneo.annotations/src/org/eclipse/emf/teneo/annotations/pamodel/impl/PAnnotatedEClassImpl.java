@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.7 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.8 2006/09/04 15:53:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -38,7 +38,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
-import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;

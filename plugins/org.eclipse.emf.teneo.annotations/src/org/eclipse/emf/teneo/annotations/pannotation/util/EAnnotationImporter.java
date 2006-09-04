@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EAnnotationImporter.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: EAnnotationImporter.java,v 1.6 2006/09/04 15:53:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.pannotation.util;
@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;

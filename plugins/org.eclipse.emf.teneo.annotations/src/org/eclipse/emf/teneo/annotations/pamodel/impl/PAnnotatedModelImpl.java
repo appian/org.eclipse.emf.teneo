@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.6 2006/09/04 15:53:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -41,7 +41,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
-import org.eclipse.emf.teneo.annotations.pamodel.util.EannotationPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;

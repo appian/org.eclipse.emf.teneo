@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.6 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.7 2006/09/04 15:53:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -2170,8 +2170,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		createEcoreAnnotations();
 		// http://annotation.elver.org/internal/Target
 		createTargetAnnotations();
-		// http://annotation.elver.org/internal/Collection
-		createCollectionAnnotations();
 		// http://annotation.elver.org/PeristenceMapping
 		createPeristenceMappingAnnotations();
 		// http://annotation.elver.org/internal/PersistenceMapping
@@ -2194,7 +2192,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "Target", "http://annotation.elver.org/internal/Target",
 			 "Unsupported", "http://annotation.elver.org/internal/Unsupported"
-		   });																																																															
+		   });																																																										
 	}
 
 	/**
@@ -2211,7 +2209,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																														
+		   });																																																									
 	}
 
 	/**
@@ -2227,7 +2225,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });							
+		   });					
 		addAnnotation
 		  (basicEClass, 
 		   source, 
@@ -2281,7 +2279,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });								
+		   });							
 		addAnnotation
 		  (lobEClass, 
 		   source, 
@@ -2323,7 +2321,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "constraints", "WellFormedOrder IsManyValued"
-		   });										
+		   });								
 		addAnnotation
 		  (temporalEClass, 
 		   source, 
@@ -2352,13 +2350,13 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "0", "EClass",
 			 "1", "EStructuralFeature"
-		   });			
+		   });		
 		addAnnotation
 		  (associationOverrideEClass, 
 		   source, 
 		   new String[] {
 			 "0", "EClass"
-		   });			
+		   });		
 		addAnnotation
 		  (basicEClass, 
 		   source, 
@@ -2443,7 +2441,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "0", "EClass",
 			 "1", "EReference"
-		   });			
+		   });		
 		addAnnotation
 		  (joinTableEClass, 
 		   source, 
@@ -2504,13 +2502,13 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "0", "EClass",
 			 "1", "EReference"
-		   });			
+		   });		
 		addAnnotation
 		  (secondaryTableEClass, 
 		   source, 
 		   new String[] {
 			 "0", "EClass"
-		   });			
+		   });		
 		addAnnotation
 		  (sequenceGeneratorEClass, 
 		   source, 
@@ -2566,59 +2564,19 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/internal/Collection</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createCollectionAnnotations() {
-		String source = "http://annotation.elver.org/internal/Collection";						
-		addAnnotation
-		  (attributeOverrideEClass, 
-		   source, 
-		   new String[] {
-			 "name", "AttributeOverrides"
-		   });			
-		addAnnotation
-		  (associationOverrideEClass, 
-		   source, 
-		   new String[] {
-			 "name", "AssociationOverrides"
-		   });																											
-		addAnnotation
-		  (joinColumnEClass, 
-		   source, 
-		   new String[] {
-			 "name", "JoinColumns"
-		   });																				
-		addAnnotation
-		  (primaryKeyJoinColumnEClass, 
-		   source, 
-		   new String[] {
-			 "name", "PrimaryKeyJoinColumns"
-		   });			
-		addAnnotation
-		  (secondaryTableEClass, 
-		   source, 
-		   new String[] {
-			 "name", "SecondaryTables"
-		   });										
-	}
-
-	/**
 	 * Initializes the annotations for <b>http://annotation.elver.org/internal/PersistenceMapping</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createPersistenceMappingAnnotations() {
-		String source = "http://annotation.elver.org/internal/PersistenceMapping";																									
+		String source = "http://annotation.elver.org/internal/PersistenceMapping";																							
 		addAnnotation
 		  (entityEClass, 
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																								
+		   });																																					
 	}
 
 	/**
@@ -2628,12 +2586,12 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	protected void createUnsupportedAnnotations() {
-		String source = "http://annotation.elver.org/internal/Unsupported";																																											
+		String source = "http://annotation.elver.org/internal/Unsupported";																																								
 		addAnnotation
 		  (mapKeyEClass, 
 		   source, 
 		   new String[] {
-		   });																						
+		   });																				
 	}
 
 	/**
@@ -2643,13 +2601,13 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	protected void createPeristenceMappingAnnotations() {
-		String source = "http://annotation.elver.org/PeristenceMapping";																		
+		String source = "http://annotation.elver.org/PeristenceMapping";																
 		addAnnotation
 		  (embeddableEClass, 
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																															
+		   });																																												
 	}
 
 	/**

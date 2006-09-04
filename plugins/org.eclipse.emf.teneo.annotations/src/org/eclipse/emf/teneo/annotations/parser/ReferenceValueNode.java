@@ -11,14 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ReferenceValueNode.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: ReferenceValueNode.java,v 1.6 2006/09/04 15:53:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.ecore.EObject;
 
 
 /**

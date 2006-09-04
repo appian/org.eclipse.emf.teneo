@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AssociationOverride.java,v 1.2 2006/07/04 21:56:29 mtaal Exp $
+ * $Id: AssociationOverride.java,v 1.3 2006/09/04 15:53:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -22,10 +22,9 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getAssociationOverride()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EClass'"
- *        annotation="http://annotation.elver.org/internal/Collection name='AssociationOverrides'"
  * @generated
  */
-public interface AssociationOverride extends PAnnotation{
+public interface AssociationOverride extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

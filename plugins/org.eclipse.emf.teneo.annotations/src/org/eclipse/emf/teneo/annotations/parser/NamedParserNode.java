@@ -11,12 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: NamedParserNode.java,v 1.1 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: NamedParserNode.java,v 1.2 2006/09/04 15:53:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
-import java.util.List;
 
 
 /**

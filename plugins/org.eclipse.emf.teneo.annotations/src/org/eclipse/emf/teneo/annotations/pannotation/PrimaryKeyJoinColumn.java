@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PrimaryKeyJoinColumn.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PrimaryKeyJoinColumn.java,v 1.3 2006/09/04 15:53:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -21,10 +21,9 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getPrimaryKeyJoinColumn()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EClass' 1='EReference'"
- *        annotation="http://annotation.elver.org/internal/Collection name='PrimaryKeyJoinColumns'"
  * @generated
  */
-public interface PrimaryKeyJoinColumn extends PAnnotation{
+public interface PrimaryKeyJoinColumn extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

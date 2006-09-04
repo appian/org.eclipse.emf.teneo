@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReferenceImpl.java,v 1.3 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: HbAnnotatedEReferenceImpl.java,v 1.4 2006/09/04 15:53:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl;
-import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;

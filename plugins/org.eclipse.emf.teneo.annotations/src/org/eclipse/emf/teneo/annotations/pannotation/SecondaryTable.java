@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondaryTable.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: SecondaryTable.java,v 1.3 2006/09/04 15:53:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -25,10 +25,9 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSecondaryTable()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EClass'"
- *        annotation="http://annotation.elver.org/internal/Collection name='SecondaryTables'"
  * @generated
  */
-public interface SecondaryTable extends PAnnotation{
+public interface SecondaryTable extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
