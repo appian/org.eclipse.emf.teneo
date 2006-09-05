@@ -11,7 +11,7 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: MappingBuilder.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: MappingBuilder.java,v 1.3 2006/09/05 14:06:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -34,7 +34,7 @@ public class MappingBuilder extends PersistenceMappingBuilder {
 	}
 
 	protected BasicPamodelBuilder getModelBuilder() {
-		return new HbAnnotationModelBuilder();
+		return new HbAnnotationModelBuilder(true);
 	}
 
 	protected DefaultAnnotator getDefaultAnnotator() {

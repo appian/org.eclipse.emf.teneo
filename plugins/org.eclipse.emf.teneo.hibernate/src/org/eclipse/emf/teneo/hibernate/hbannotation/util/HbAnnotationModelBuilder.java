@@ -11,7 +11,7 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HbAnnotationModelBuilder.java,v 1.4 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: HbAnnotationModelBuilder.java,v 1.5 2006/09/05 14:06:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -34,8 +34,13 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
  * This class create the Hibernate-model versions of the various PaAnnotatedE* objects. 
  */
 public class HbAnnotationModelBuilder extends EannotationPamodelBuilder {
-	public HbAnnotationModelBuilder() {
-		super();
+	
+	/** If true then behaves like a basic model builder */
+	private final boolean disableAnnotationImport;
+	
+	/** Constructor */
+	public HbAnnotationModelBuilder(boolean disableAnnotationImport) {
+		this.disableAnnotationImport = disableAnnotationImport;
 		this.eaImporter = new HbAnnotationImporter( 
 			new EAnnotationImporter.Handler() {
 				public void handle(PAnnotation pAnnotation) {
@@ -50,6 +55,10 @@ public class HbAnnotationModelBuilder extends EannotationPamodelBuilder {
 				}
 			});
 	}
+	
+	public HbAnnotationModelBuilder() {
+		this(false);
+	}
 
 	/**
 	 * Add the given annotation to the given PAnnotatedEModelElement.
@@ -57,6 +66,8 @@ public class HbAnnotationModelBuilder extends EannotationPamodelBuilder {
 	 * is not admitted for the given PAnnotatedEModelElement.
 	 */
 	protected void setPAnnotation(PAnnotatedEModelElement pElement, PAnnotation pAnnotation) {
+		if (disableAnnotationImport) return;
+		
 		if (pAnnotation == null) return; //ignore to not fail on old annotations
 		EReference pAnnotationRef = HbModelPackage.eINSTANCE.pAnnotationReference(pElement.eClass(), pAnnotation.eClass());
 		if (pAnnotationRef == null) {
