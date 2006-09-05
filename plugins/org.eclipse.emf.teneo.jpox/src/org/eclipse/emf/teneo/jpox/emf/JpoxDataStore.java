@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.5 2006/08/22 22:23:29 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.6 2006/09/05 22:00:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf;
@@ -93,7 +93,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ $Date: 2006/08/22 22:23:29 $
+ * @version $Revision: 1.6 $ $Date: 2006/09/05 22:00:49 $
  */
 
 public class JpoxDataStore {
@@ -188,7 +188,8 @@ public class JpoxDataStore {
 				log.debug(additionalLocation + " not in classpath, copying it there!");
 				EPackage epack = getEPackages()[0];
 				final File packageDirectory = new File(epack.getClass().getResource('/' + epack.getClass().getName().replace('.', '/') + ".class").getFile());
-				final File destination = new File(packageDirectory.getParent(), jdoFileName);
+				final File dest = new File(packageDirectory.getParentFile(), jdoFileName);
+				final File destination = new File(dest.getAbsolutePath());
 				if (destination.exists()) {
 					log.warn("Overwriting existing package.jdo file in location " + destination.getAbsolutePath());
 					destination.delete();
