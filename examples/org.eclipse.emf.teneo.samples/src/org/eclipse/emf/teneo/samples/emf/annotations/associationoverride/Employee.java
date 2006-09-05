@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Employee.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: Employee.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride;
 
@@ -20,8 +20,7 @@ package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.AssociationoverridePackage#getEmployee()
- * @model annotation="http://annotation.elver.org/AssociationOverride name='address' joinColumns='c1'"
- *        annotation="http://annotation.elver.org/JoinColumn/c1 name='employee_address_id'"
+ * @model annotation="teneo.jpa appinfo='@AssociationOverride(name=\"address\" joinColumns=@JoinColumn(name=\"employee_address_id\"))'"
  *        extendedMetaData="name='Employee' kind='elementOnly'"
  * @generated
  */

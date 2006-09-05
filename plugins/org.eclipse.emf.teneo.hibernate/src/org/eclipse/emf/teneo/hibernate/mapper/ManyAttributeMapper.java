@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyAttributeMapper.java,v 1.3 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: ManyAttributeMapper.java,v 1.4 2006/09/05 12:17:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -87,8 +87,7 @@ class ManyAttributeMapper extends AbstractAssociationMapper implements ManyAttri
 			addKeyColumns(keyElement, jcs);
 		}
 
-		if (paAttribute.getIndexed() != null && paAttribute.getIndexed().isValue()) {
-			assert (hbAttribute.getHbIdBag() == null);
+		if (otm.isIndexed() && hbAttribute.getHbIdBag() == null) {
 			addListIndex(collElement, paAttribute);
 		}
 		addFetchType(collElement, otm.getFetch());

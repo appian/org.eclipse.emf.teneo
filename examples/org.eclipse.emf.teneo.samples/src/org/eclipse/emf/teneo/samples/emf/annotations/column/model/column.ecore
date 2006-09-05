@@ -4,8 +4,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="column"
     nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/column" nsPrefix="column">
   <eClassifiers xsi:type="ecore:EClass" name="Book">
-    <eAnnotations source="http://ejb.elver.org/Table">
-      <details key="name" value="mybooktable"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;mybooktable&quot;)"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Book"/>
@@ -13,10 +13,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
-      <eAnnotations source="http://ejb.elver.org/Column">
-        <details key="name" value="titel"/>
-        <details key="unique" value="true"/>
-        <details key="length" value="25"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;titel&quot; unique=&quot;true&quot; length=&quot;25&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -25,9 +23,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pages" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int" unsettable="true">
-      <eAnnotations source="http://ejb.elver.org/Column">
-        <details key="updatable" value="false"/>
-        <details key="insertable" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(updatable=&quot;false&quot; insertable=&quot;false&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -36,11 +33,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" unique="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Decimal">
-      <eAnnotations source="http://ejb.elver.org/Column">
-        <details key="name" value="gewicht"/>
-        <details key="nullable" value="true"/>
-        <details key="precision" value="5"/>
-        <details key="scale" value="2"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;gewicht&quot; nullable=&quot;true&quot; precision=&quot;5&quot; scale=&quot;2&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

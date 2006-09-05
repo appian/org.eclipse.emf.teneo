@@ -120,10 +120,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" upperBound="-1"
         eType="ecore:EClass pannotation.ecore#//JoinColumn" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="indexed" eType="ecore:EClass pannotation.ecore#//Indexed"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="unique" eType="ecore:EClass pannotation.ecore#//Unique"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="ecore:EClass pannotation.ecore#//Column"
         containment="true"/>
   </eClassifiers>

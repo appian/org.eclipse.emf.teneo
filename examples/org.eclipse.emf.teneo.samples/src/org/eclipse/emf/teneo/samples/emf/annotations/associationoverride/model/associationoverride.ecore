@@ -25,12 +25,8 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Employee" eSuperTypes="#//Person">
-    <eAnnotations source="http://annotation.elver.org/AssociationOverride">
-      <details key="name" value="address"/>
-      <details key="joinColumns" value="c1"/>
-    </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/JoinColumn/c1">
-      <details key="name" value="employee_address_id"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@AssociationOverride(name=&quot;address&quot; joinColumns=@JoinColumn(name=&quot;employee_address_id&quot;))"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Employee"/>
@@ -54,8 +50,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
-      <eAnnotations source="http://annotation.elver.org/Id">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -71,8 +67,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="address" lowerBound="1"
         eType="#//Address" containment="true" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/ManyToOne">
-        <details key="appinfo"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToOne"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttributeImpl.java,v 1.4 2006/09/04 15:53:48 mtaal Exp $
+ * $Id: HbAnnotatedEAttributeImpl.java,v 1.5 2006/09/05 12:17:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -628,5 +628,5 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
-	
+
 } //HbAnnotatedEAttributeImpl

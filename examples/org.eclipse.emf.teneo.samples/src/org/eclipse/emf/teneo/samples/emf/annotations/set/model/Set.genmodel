@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Set" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>Set.xsd</foreignModel>
-  <genPackages prefix="Set" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
-      disposableProviderFactory="true" ecorePackage="set.ecore#/">
+  <genPackages prefix="Set" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="set.ecore#/">
     <genClasses ecoreClass="set.ecore#//ContainedItem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute set.ecore#//ContainedItem/name"/>
     </genClasses>

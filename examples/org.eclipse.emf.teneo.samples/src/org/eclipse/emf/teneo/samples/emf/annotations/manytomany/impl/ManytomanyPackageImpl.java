@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManytomanyPackageImpl.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: ManytomanyPackageImpl.java,v 1.2 2006/09/05 12:16:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl;
 
@@ -258,12 +258,8 @@ public class ManytomanyPackageImpl extends EPackageImpl implements ManytomanyPac
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/ManyToMany
-		createManyToManyAnnotations();
-		// http://annotation.elver.org/JoinTable
-		createJoinTableAnnotations();
-		// http://annotation.elver.org/Indexed
-		createIndexedAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -280,14 +276,14 @@ public class ManytomanyPackageImpl extends EPackageImpl implements ManytomanyPac
 		   new String[] {
 			 "name", "Cntr",
 			 "kind", "elementOnly"
-		   });					
+		   });			
 		addAnnotation
 		  (getCntr_Rght(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
 			 "name", "rght"
-		   });			
+		   });		
 		addAnnotation
 		  (getCntr_Lft(), 
 		   source, 
@@ -315,7 +311,7 @@ public class ManytomanyPackageImpl extends EPackageImpl implements ManytomanyPac
 		   new String[] {
 			 "name", "Rght",
 			 "kind", "elementOnly"
-		   });					
+		   });		
 		addAnnotation
 		  (getRght_Cntr(), 
 		   source, 
@@ -326,91 +322,25 @@ public class ManytomanyPackageImpl extends EPackageImpl implements ManytomanyPac
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/ManyToMany</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createManyToManyAnnotations() {
-		String source = "http://annotation.elver.org/ManyToMany";			
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";			
 		addAnnotation
 		  (getCntr_Rght(), 
 		   source, 
 		   new String[] {
-			 "fetch", "EAGER",
-			 "cascade", "MERGE PERSIST",
-			 "targetEntity", "Rght"
+			 "appinfo", "\n\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity=\"Rght\" indexed=\"false\")\n\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t"
 		   });					
-		addAnnotation
-		  (getCntr_Lft(), 
-		   source, 
-		   new String[] {
-			 "fetch", "EAGER",
-			 "cascade", "MERGE PERSIST",
-			 "targetEntity", "Lft"
-		   });				
 		addAnnotation
 		  (getLft_Cntr(), 
 		   source, 
 		   new String[] {
-			 "fetch", "LAZY",
-			 "cascade", "MERGE PERSIST",
-			 "targetEntity", "Cntr",
-			 "mappedBy", "lft"
-		   });				
-		addAnnotation
-		  (getRght_Cntr(), 
-		   source, 
-		   new String[] {
-			 "fetch", "LAZY",
-			 "cascade", "MERGE PERSIST",
-			 "targetEntity", "Cntr",
-			 "mappedBy", "rght"
+			 "appinfo", "\n\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity=\"Cntr\" mappedBy=\"lft\")\n\t\t\t\t\t"
 		   });			
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/JoinTable</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createJoinTableAnnotations() {
-		String source = "http://annotation.elver.org/JoinTable";				
-		addAnnotation
-		  (getCntr_Rght(), 
-		   source, 
-		   new String[] {
-			 "name", "RightCenter"
-		   });											
-		addAnnotation
-		  (getRght_Cntr(), 
-		   source, 
-		   new String[] {
-			 "name", "RightCenter"
-		   });		
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Indexed</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIndexedAnnotations() {
-		String source = "http://annotation.elver.org/Indexed";					
-		addAnnotation
-		  (getCntr_Rght(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });											
-		addAnnotation
-		  (getRght_Cntr(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
-		   });	
 	}
 
 } //ManytomanyPackageImpl

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.6 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.7 2006/09/05 12:16:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -599,24 +599,6 @@ public interface PannotationPackage extends EPackage {
 	int COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 10;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.IndexedImpl <em>Indexed</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.IndexedImpl
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getIndexed()
-	 * @generated
-	 */
-	int INDEXED = 35;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.UniqueImpl <em>Unique</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.UniqueImpl
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getUnique()
-	 * @generated
-	 */
-	int UNIQUE = 36;
-
-	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
@@ -1119,13 +1101,22 @@ public interface PannotationPackage extends EPackage {
 	int MANY_TO_MANY__MAPPED_BY = PANNOTATION_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Indexed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANY_TO_MANY__INDEXED = PANNOTATION_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Many To Many</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MANY_TO_MANY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 4;
+	int MANY_TO_MANY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1267,13 +1258,31 @@ public interface PannotationPackage extends EPackage {
 	int ONE_TO_MANY__MAPPED_BY = PANNOTATION_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Indexed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONE_TO_MANY__INDEXED = PANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONE_TO_MANY__UNIQUE = PANNOTATION_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>One To Many</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ONE_TO_MANY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 4;
+	int ONE_TO_MANY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1763,65 +1772,13 @@ public interface PannotationPackage extends EPackage {
 	int VERSION_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int INDEXED__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INDEXED__VALUE = PANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Indexed</em>' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INDEXED_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int UNIQUE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNIQUE__VALUE = PANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Unique</em>' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNIQUE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.FetchType <em>Fetch Type</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getFetchType()
 	 * @generated
 	 */
-	int FETCH_TYPE = 40;
+	int FETCH_TYPE = 38;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType <em>Discriminator Type</em>}' enum.
@@ -1830,7 +1787,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorType()
 	 * @generated
 	 */
-	int DISCRIMINATOR_TYPE = 38;
+	int DISCRIMINATOR_TYPE = 36;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.EnumType <em>Enum Type</em>}' enum.
@@ -1839,7 +1796,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEnumType()
 	 * @generated
 	 */
-	int ENUM_TYPE = 39;
+	int ENUM_TYPE = 37;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.InheritanceType <em>Inheritance Type</em>}' enum.
@@ -1848,7 +1805,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getInheritanceType()
 	 * @generated
 	 */
-	int INHERITANCE_TYPE = 42;
+	int INHERITANCE_TYPE = 40;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.
@@ -1857,7 +1814,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCascadeType()
 	 * @generated
 	 */
-	int CASCADE_TYPE = 37;
+	int CASCADE_TYPE = 35;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.TemporalType <em>Temporal Type</em>}' enum.
@@ -1866,7 +1823,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTemporalType()
 	 * @generated
 	 */
-	int TEMPORAL_TYPE = 43;
+	int TEMPORAL_TYPE = 41;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.GenerationType <em>Generation Type</em>}' enum.
@@ -1875,7 +1832,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getGenerationType()
 	 * @generated
 	 */
-	int GENERATION_TYPE = 41;
+	int GENERATION_TYPE = 39;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation <em>PAnnotation</em>}'.
@@ -2499,6 +2456,17 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getManyToMany_MappedBy();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#isIndexed <em>Indexed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Indexed</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#isIndexed()
+	 * @see #getManyToMany()
+	 * @generated
+	 */
+	EAttribute getManyToMany_Indexed();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToOne <em>Many To One</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Many To One</em>'.
@@ -2614,6 +2582,28 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOneToMany_MappedBy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToMany#isIndexed <em>Indexed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Indexed</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OneToMany#isIndexed()
+	 * @see #getOneToMany()
+	 * @generated
+	 */
+	EAttribute getOneToMany_Indexed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToMany#isUnique <em>Unique</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unique</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OneToMany#isUnique()
+	 * @see #getOneToMany()
+	 * @generated
+	 */
+	EAttribute getOneToMany_Unique();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne <em>One To One</em>}'.
@@ -3053,44 +3043,6 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getVersion();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.Indexed <em>Indexed</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Indexed</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.Indexed
-	 * @generated
-	 */
-	EClass getIndexed();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.Indexed#isValue <em>Value</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.Indexed#isValue()
-	 * @see #getIndexed()
-	 * @generated
-	 */
-	EAttribute getIndexed_Value();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.Unique <em>Unique</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Unique</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.Unique
-	 * @generated
-	 */
-	EClass getUnique();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.Unique#isValue <em>Value</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.Unique#isValue()
-	 * @see #getUnique()
-	 * @generated
-	 */
-	EAttribute getUnique_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride <em>Association Override</em>}'.
@@ -3774,6 +3726,14 @@ public interface PannotationPackage extends EPackage {
 		EAttribute MANY_TO_MANY__MAPPED_BY = eINSTANCE.getManyToMany_MappedBy();
 
 		/**
+		 * The meta object literal for the '<em><b>Indexed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANY_TO_MANY__INDEXED = eINSTANCE.getManyToMany_Indexed();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl <em>Many To One</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3884,6 +3844,22 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ONE_TO_MANY__MAPPED_BY = eINSTANCE.getOneToMany_MappedBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Indexed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ONE_TO_MANY__INDEXED = eINSTANCE.getOneToMany_Indexed();
+
+		/**
+		 * The meta object literal for the '<em><b>Unique</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ONE_TO_MANY__UNIQUE = eINSTANCE.getOneToMany_Unique();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl <em>One To One</em>}' class.
@@ -4266,42 +4242,6 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass VERSION = eINSTANCE.getVersion();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.IndexedImpl <em>Indexed</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.IndexedImpl
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getIndexed()
-		 * @generated
-		 */
-		EClass INDEXED = eINSTANCE.getIndexed();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INDEXED__VALUE = eINSTANCE.getIndexed_Value();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.UniqueImpl <em>Unique</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.UniqueImpl
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getUnique()
-		 * @generated
-		 */
-		EClass UNIQUE = eINSTANCE.getUnique();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute UNIQUE__VALUE = eINSTANCE.getUnique_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.

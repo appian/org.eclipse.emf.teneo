@@ -17,8 +17,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="roles" unique="false" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
-      <eAnnotations source="http://hibernate.elver.org/IdBag">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@IdBag"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdbagPackageImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: IdbagPackageImpl.java,v 1.2 2006/09/05 12:16:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag.impl;
 
@@ -202,8 +202,8 @@ public class IdbagPackageImpl extends EPackageImpl implements IdbagPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://hibernate.elver.org/IdBag
-		createIdBagAnnotations();
+		// teneo.hibernate
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -238,18 +238,18 @@ public class IdbagPackageImpl extends EPackageImpl implements IdbagPackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://hibernate.elver.org/IdBag</b>.
+	 * Initializes the annotations for <b>teneo.hibernate</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createIdBagAnnotations() {
-		String source = "http://hibernate.elver.org/IdBag";				
+	protected void createTeneoAnnotations() {
+		String source = "teneo.hibernate";				
 		addAnnotation
 		  (getUser_Roles(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
+			 "appinfo", "@IdBag"
 		   });	
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BasicPackageImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: BasicPackageImpl.java,v 1.2 2006/09/05 12:16:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.basic.impl;
 
@@ -210,12 +210,8 @@ public class BasicPackageImpl extends EPackageImpl implements BasicPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://ejb.elver.org/Basic
-		createBasicAnnotations();
-		// http://ejb.elver.org/Version
-		createVersionAnnotations();
-		// http://ejb.elver.org/Transient
-		createTransientAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -257,50 +253,30 @@ public class BasicPackageImpl extends EPackageImpl implements BasicPackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Basic</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createBasicAnnotations() {
-		String source = "http://ejb.elver.org/Basic";			
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";			
 		addAnnotation
 		  (getBasic_MyOptionalBasic(), 
 		   source, 
 		   new String[] {
-			 "optional", "true"
-		   });					
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Version</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createVersionAnnotations() {
-		String source = "http://ejb.elver.org/Version";					
+			 "appinfo", "@Basic(optional=\"true\")"
+		   });			
 		addAnnotation
 		  (getBasic_MyVersion(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
+			 "appinfo", "@Version"
 		   });			
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Transient</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createTransientAnnotations() {
-		String source = "http://ejb.elver.org/Transient";							
 		addAnnotation
 		  (getBasic_MyTransient(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
+			 "appinfo", "@Transient"
 		   });	
 	}
 

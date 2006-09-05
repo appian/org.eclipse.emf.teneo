@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Book.java,v 1.2 2006/08/22 22:24:48 mtaal Exp $
+ * $Id: Book.java,v 1.3 2006/09/05 12:16:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.column;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage#getBook()
- * @model annotation="http://ejb.elver.org/Table name='mybooktable'"
+ * @model annotation="teneo.jpa appinfo='@Table(name=\"mybooktable\")'"
  *        extendedMetaData="name='Book' kind='elementOnly'"
  * @generated
  */
@@ -43,7 +43,7 @@ public interface Book extends EObject {
 	 * @see #setTitle(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage#getBook_Title()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        annotation="http://ejb.elver.org/Column name='titel' unique='true' length='25'"
+	 *        annotation="teneo.jpa appinfo='@Column(name=\"titel\" unique=\"true\" length=\"25\")'"
 	 *        extendedMetaData="kind='element' name='title'"
 	 * @generated
 	 */
@@ -73,7 +73,7 @@ public interface Book extends EObject {
 	 * @see #setPages(int)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage#getBook_Pages()
 	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
-	 *        annotation="http://ejb.elver.org/Column updatable='false' insertable='false'"
+	 *        annotation="teneo.jpa appinfo='@Column(updatable=\"false\" insertable=\"false\")'"
 	 *        extendedMetaData="kind='element' name='pages'"
 	 * @generated
 	 */
@@ -126,7 +126,7 @@ public interface Book extends EObject {
 	 * @see #setWeight(BigDecimal)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage#getBook_Weight()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Decimal" required="true"
-	 *        annotation="http://ejb.elver.org/Column name='gewicht' nullable='true' precision='5' scale='2'"
+	 *        annotation="teneo.jpa appinfo='@Column(name=\"gewicht\" nullable=\"true\" precision=\"5\" scale=\"2\")'"
 	 *        extendedMetaData="kind='element' name='weight'"
 	 * @generated
 	 */

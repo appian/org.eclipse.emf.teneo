@@ -2,14 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceImpl.java,v 1.4 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PAnnotatedEReferenceImpl.java,v 1.5 2006/09/05 12:16:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
 import java.util.Collection;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -29,7 +27,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
-import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 
 /**
@@ -56,7 +53,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl implements PAnnotatedEReference {
 
 	/** The logger */
-	private static final Log log = LogFactory.getLog(PAnnotatedEReferenceImpl.class);
+	//private static final Log log = LogFactory.getLog(PAnnotatedEReferenceImpl.class);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -211,12 +208,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE, oldAnnotatedEReference, annotatedEReference));
 			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_ESTRUCTURAL_FEATURE, oldAnnotatedEReference, annotatedEReference));
 			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_ELEMENT, oldAnnotatedEReference, annotatedEReference));
-		}
-		if (annotatedEReference.getEOpposite() != null && !annotatedEReference.getEOpposite().isMany()) {
-			final String logStr = getAnnotatedEReference().getName() + "/" + getAnnotatedEReference().getEContainingClass().getName();
-			log.debug("Setting unique is true for " + logStr + " because it not ismany eopposite");
-			setUnique(PannotationFactory.eINSTANCE.createUnique());
-			getUnique().setValue(true);
 		}
 	}
 

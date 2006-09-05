@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: User.java,v 1.1 2006/07/11 16:57:02 mtaal Exp $
+ * $Id: User.java,v 1.2 2006/09/05 12:16:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag;
 
@@ -67,7 +67,7 @@ public interface User extends EObject {
 	 * @return the value of the '<em>Roles</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.idbag.IdbagPackage#getUser_Roles()
 	 * @model type="java.lang.String" unique="false" dataType="org.eclipse.emf.ecore.xml.type.String"
-	 *        annotation="http://hibernate.elver.org/IdBag appinfo='true'"
+	 *        annotation="teneo.hibernate appinfo='@IdBag'"
 	 *        extendedMetaData="kind='element' name='role'"
 	 * @generated
 	 */

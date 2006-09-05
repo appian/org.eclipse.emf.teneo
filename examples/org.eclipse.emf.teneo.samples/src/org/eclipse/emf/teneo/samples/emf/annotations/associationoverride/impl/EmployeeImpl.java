@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmployeeImpl.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: EmployeeImpl.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.impl;
 

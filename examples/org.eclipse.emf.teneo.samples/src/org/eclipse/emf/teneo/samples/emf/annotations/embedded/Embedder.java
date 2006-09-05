@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Embedder.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
+ * $Id: Embedder.java,v 1.3 2006/09/05 12:16:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -42,9 +42,7 @@ public interface Embedder extends EObject {
 	 * @see #setFirstEmbedded(Embeddable)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_FirstEmbedded()
 	 * @model containment="true" required="true"
-	 *        annotation="http://annotation.elver.org/Embedded appinfo='true'"
-	 *        annotation="http://annotation.elver.org/AttributeOverride name='myString' column='c1'"
-	 *        annotation="http://annotation.elver.org/Column/c1 name='columnString3'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@Embedded\n\t\t\t\t\t@AttributeOverride(name=\"myString\" column=@Column(name=\"columnString3\"))\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='firstEmbedded'"
 	 * @generated
 	 */
@@ -72,11 +70,7 @@ public interface Embedder extends EObject {
 	 * @see #setSecondEmbedded(Embeddable)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_SecondEmbedded()
 	 * @model containment="true" required="true"
-	 *        annotation="http://annotation.elver.org/Embedded appinfo='true'"
-	 *        annotation="http://annotation.elver.org/AttributeOverride/a1 name='myString' column='c1'"
-	 *        annotation="http://annotation.elver.org/Column/c1 name='columnString1'"
-	 *        annotation="http://annotation.elver.org/AttributeOverride/a2 name='myInteger' column='c2'"
-	 *        annotation="http://annotation.elver.org/Column/c2 name='columnInteger1'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@Embedded\n\t\t\t\t\t@AttributeOverride(name=\"myString\" column=@Column(name=\"columnString1\"))\n\t\t\t\t\t@AttributeOverride(name=\"myInteger\" column=@Column(name=\"columnInteger1\"))\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='secondEmbedded'"
 	 * @generated
 	 */
@@ -104,11 +98,7 @@ public interface Embedder extends EObject {
 	 * @see #setThirdEmbedded(Embeddable)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_ThirdEmbedded()
 	 * @model containment="true" required="true"
-	 *        annotation="http://annotation.elver.org/Embedded appinfo='true'"
-	 *        annotation="http://annotation.elver.org/AttributeOverride/a1 name='myString' column='c1'"
-	 *        annotation="http://annotation.elver.org/Column/c1 name='columnString2'"
-	 *        annotation="http://annotation.elver.org/AttributeOverride/a2 name='myInteger' column='c2'"
-	 *        annotation="http://annotation.elver.org/Column/c2 name='columnInteger2'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@Embedded\n\t\t\t\t\t@AttributeOverride(name=\"myString\" column=@Column(name=\"columnString2\"))\n\t\t\t\t\t@AttributeOverride(name=\"myInteger\" column=@Column(name=\"columnInteger2\"))\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='thirdEmbedded'"
 	 * @generated
 	 */
@@ -136,7 +126,7 @@ public interface Embedder extends EObject {
 	 * @return the value of the '<em>Fourth Embedded</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_FourthEmbedded()
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable" containment="true" required="true"
-	 *        annotation="http://annotation.elver.org/Embedded appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@Embedded\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='fourthEmbedded'"
 	 * @generated
 	 */
@@ -154,7 +144,7 @@ public interface Embedder extends EObject {
 	 * @see #setFifthEmbedded(Embeddable)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_FifthEmbedded()
 	 * @model containment="true" required="true"
-	 *        annotation="http://annotation.elver.org/Embedded appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@Embedded\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='fifthEmbedded'"
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackage.java,v 1.3 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: HbModelPackage.java,v 1.4 2006/09/05 12:17:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -165,24 +165,6 @@ public interface HbModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__JOIN_COLUMNS;
-
-	/**
-	 * The feature id for the '<em><b>Indexed</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__INDEXED = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__INDEXED;
-
-	/**
-	 * The feature id for the '<em><b>Unique</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__UNIQUE;
 
 	/**
 	 * The feature id for the '<em><b>Column</b></em>' containment reference.
@@ -355,24 +337,6 @@ public interface HbModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_EATTRIBUTE__JOIN_COLUMNS = PamodelPackage.PANNOTATED_EATTRIBUTE__JOIN_COLUMNS;
-
-	/**
-	 * The feature id for the '<em><b>Indexed</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EATTRIBUTE__INDEXED = PamodelPackage.PANNOTATED_EATTRIBUTE__INDEXED;
-
-	/**
-	 * The feature id for the '<em><b>Unique</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EATTRIBUTE__UNIQUE = PamodelPackage.PANNOTATED_EATTRIBUTE__UNIQUE;
 
 	/**
 	 * The feature id for the '<em><b>Column</b></em>' containment reference.
@@ -917,24 +881,6 @@ public interface HbModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_EREFERENCE__JOIN_COLUMNS = PamodelPackage.PANNOTATED_EREFERENCE__JOIN_COLUMNS;
-
-	/**
-	 * The feature id for the '<em><b>Indexed</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EREFERENCE__INDEXED = PamodelPackage.PANNOTATED_EREFERENCE__INDEXED;
-
-	/**
-	 * The feature id for the '<em><b>Unique</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EREFERENCE__UNIQUE = PamodelPackage.PANNOTATED_EREFERENCE__UNIQUE;
 
 	/**
 	 * The feature id for the '<em><b>Column</b></em>' containment reference.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetPackageImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: SetPackageImpl.java,v 1.2 2006/09/05 12:16:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -300,10 +300,8 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Indexed
-		createIndexedAnnotations();
-		// http://annotation.elver.org/Unique
-		createUniqueAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -376,7 +374,7 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "item"
-		   });				
+		   });			
 		addAnnotation
 		  (getItemList_JoinedItem(), 
 		   source, 
@@ -387,46 +385,30 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Indexed</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createIndexedAnnotations() {
-		String source = "http://annotation.elver.org/Indexed";									
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";									
 		addAnnotation
 		  (getItemList_ContainedItem(), 
 		   source, 
 		   new String[] {
-			 "value", "false"
+			 "appinfo", "@OneToMany(indexed=\"false\")"
 		   });			
 		addAnnotation
 		  (getItemList_Item(), 
 		   source, 
 		   new String[] {
-			 "value", "false"
+			 "appinfo", "@OneToMany(indexed=\"false\")"
 		   });			
 		addAnnotation
 		  (getItemList_JoinedItem(), 
 		   source, 
 		   new String[] {
-			 "value", "false"
-		   });		
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Unique</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createUniqueAnnotations() {
-		String source = "http://annotation.elver.org/Unique";														
-		addAnnotation
-		  (getItemList_JoinedItem(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
+			 "appinfo", "@OneToMany(indexed=\"false\" unique=\"false\")"
 		   });	
 	}
 

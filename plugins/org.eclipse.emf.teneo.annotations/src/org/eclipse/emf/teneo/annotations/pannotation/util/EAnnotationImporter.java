@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EAnnotationImporter.java,v 1.6 2006/09/04 15:53:43 mtaal Exp $
+ * $Id: EAnnotationImporter.java,v 1.7 2006/09/05 12:16:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.pannotation.util;
@@ -333,7 +333,8 @@ public class EAnnotationImporter {
 			final String src = eAnnotation.getSource();
 			if (src.indexOf("SecondaryTables") != -1 || src.indexOf("JoinColumns") != -1
 					|| src.indexOf("AttributeOverrides") != -1 || src.indexOf("AssociationOverrides") != -1
-					|| src.indexOf("PrimaryKeyJoinColumns") != -1) {
+					|| src.indexOf("PrimaryKeyJoinColumns") != -1 || src.indexOf("Indexed") != -1 ||
+					src.endsWith("Unique")) {
 				// old annotations ignore
 				log.debug("Source of annotation " + src + " uses deprecated annotation, ignoring");
 				return null;

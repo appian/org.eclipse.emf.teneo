@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactoryImpl.java,v 1.9 2006/09/04 15:53:43 mtaal Exp $
+ * $Id: PannotationFactoryImpl.java,v 1.10 2006/09/05 12:16:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -31,7 +31,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
-import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
@@ -54,7 +53,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
-import org.eclipse.emf.teneo.annotations.pannotation.Unique;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
 
@@ -142,8 +140,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.TRANSIENT: return createTransient();
 			case PannotationPackage.UNIQUE_CONSTRAINT: return createUniqueConstraint();
 			case PannotationPackage.VERSION: return createVersion();
-			case PannotationPackage.INDEXED: return createIndexed();
-			case PannotationPackage.UNIQUE: return createUnique();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -529,26 +525,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	public Version createVersion() {
 		VersionImpl version = new VersionImpl();
 		return version;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Indexed createIndexed() {
-		IndexedImpl indexed = new IndexedImpl();
-		return indexed;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Unique createUnique() {
-		UniqueImpl unique = new UniqueImpl();
-		return unique;
 	}
 
 	/**

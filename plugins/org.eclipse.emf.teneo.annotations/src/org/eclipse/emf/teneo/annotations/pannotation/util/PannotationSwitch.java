@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationSwitch.java,v 1.9 2006/09/04 15:53:43 mtaal Exp $
+ * $Id: PannotationSwitch.java,v 1.10 2006/09/05 12:16:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
-import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
@@ -45,7 +44,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
-import org.eclipse.emf.teneo.annotations.pannotation.Unique;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
 
@@ -371,20 +369,6 @@ public class PannotationSwitch {
 				Version version = (Version)theEObject;
 				Object result = caseVersion(version);
 				if (result == null) result = casePAnnotation(version);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.INDEXED: {
-				Indexed indexed = (Indexed)theEObject;
-				Object result = caseIndexed(indexed);
-				if (result == null) result = casePAnnotation(indexed);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PannotationPackage.UNIQUE: {
-				Unique unique = (Unique)theEObject;
-				Object result = caseUnique(unique);
-				if (result == null) result = casePAnnotation(unique);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -899,36 +883,6 @@ public class PannotationSwitch {
 	 * @generated
 	 */
 	public Object caseVersion(Version object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Indexed</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Indexed</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseIndexed(Indexed object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Unique</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Unique</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseUnique(Unique object) {
 		return null;
 	}
 

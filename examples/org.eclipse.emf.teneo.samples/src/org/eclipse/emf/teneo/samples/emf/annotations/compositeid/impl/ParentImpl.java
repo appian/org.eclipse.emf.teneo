@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParentImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: ParentImpl.java,v 1.3 2006/09/05 12:16:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl;
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Basic.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: Basic.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.basic;
 
@@ -39,7 +39,7 @@ public interface Basic extends EObject {
 	 * @see #setMyOptionalBasic(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicPackage#getBasic_MyOptionalBasic()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        annotation="http://ejb.elver.org/Basic optional='true'"
+	 *        annotation="teneo.jpa appinfo='@Basic(optional=\"true\")'"
 	 *        extendedMetaData="kind='element' name='myOptionalBasic'"
 	 * @generated
 	 */
@@ -69,7 +69,7 @@ public interface Basic extends EObject {
 	 * @see #setMyVersion(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicPackage#getBasic_MyVersion()
 	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="http://ejb.elver.org/Version appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Version'"
 	 *        extendedMetaData="kind='element' name='myVersion'"
 	 * @generated
 	 */
@@ -122,7 +122,7 @@ public interface Basic extends EObject {
 	 * @see #setMyTransient(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicPackage#getBasic_MyTransient()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        annotation="http://ejb.elver.org/Transient appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Transient'"
 	 *        extendedMetaData="kind='element' name='myTransient'"
 	 * @generated
 	 */

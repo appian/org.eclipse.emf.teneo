@@ -7,14 +7,14 @@
   <genPackages prefix="Manytomany" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
       resource="XML" disposableProviderFactory="true" ecorePackage="manytomany.ecore#/">
     <genClasses ecoreClass="manytomany.ecore#//Cntr">
-      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference manytomany.ecore#//Cntr/rght"/>
-      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference manytomany.ecore#//Cntr/lft"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference manytomany.ecore#//Cntr/rght"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference manytomany.ecore#//Cntr/lft"/>
     </genClasses>
     <genClasses ecoreClass="manytomany.ecore#//Lft">
-      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference manytomany.ecore#//Lft/cntr"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference manytomany.ecore#//Lft/cntr"/>
     </genClasses>
     <genClasses ecoreClass="manytomany.ecore#//Rght">
-      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference manytomany.ecore#//Rght/cntr"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference manytomany.ecore#//Rght/cntr"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

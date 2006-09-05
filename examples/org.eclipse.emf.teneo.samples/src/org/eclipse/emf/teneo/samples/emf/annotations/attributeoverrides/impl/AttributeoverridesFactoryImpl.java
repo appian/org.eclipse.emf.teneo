@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeoverridesFactoryImpl.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
+ * $Id: AttributeoverridesFactoryImpl.java,v 1.3 2006/09/05 12:16:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.impl;
 
@@ -11,8 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.*;
-
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.City;

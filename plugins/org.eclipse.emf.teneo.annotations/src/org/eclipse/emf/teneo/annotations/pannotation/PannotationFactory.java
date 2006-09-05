@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactory.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PannotationFactory.java,v 1.6 2006/09/05 12:16:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -292,22 +292,6 @@ public interface PannotationFactory extends EFactory {
 	 * @generated
 	 */
 	Version createVersion();
-
-	/**
-	 * Returns a new object of class '<em>Indexed</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Indexed</em>'.
-	 * @generated
-	 */
-	Indexed createIndexed();
-
-	/**
-	 * Returns a new object of class '<em>Unique</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Unique</em>'.
-	 * @generated
-	 */
-	Unique createUnique();
 
 	/**
 	 * Returns a new object of class '<em>Association Override</em>'.

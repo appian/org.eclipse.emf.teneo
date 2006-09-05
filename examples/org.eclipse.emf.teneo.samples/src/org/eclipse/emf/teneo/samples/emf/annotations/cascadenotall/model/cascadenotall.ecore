@@ -2,7 +2,8 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cascadenotall"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/cascadenotall" nsPrefix="cascadenotall">
+    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/cascadenotall"
+    nsPrefix="cascadenotall">
   <eClassifiers xsi:type="ecore:EClass" name="Book">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Book"/>

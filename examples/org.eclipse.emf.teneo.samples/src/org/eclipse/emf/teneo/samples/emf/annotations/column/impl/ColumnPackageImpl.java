@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnPackageImpl.java,v 1.2 2006/08/22 22:24:48 mtaal Exp $
+ * $Id: ColumnPackageImpl.java,v 1.3 2006/09/05 12:16:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.column.impl;
 
@@ -219,28 +219,44 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://ejb.elver.org/Table
-		createTableAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://ejb.elver.org/Column
-		createColumnAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Table</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createTableAnnotations() {
-		String source = "http://ejb.elver.org/Table";		
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (bookEClass, 
 		   source, 
 		   new String[] {
-			 "name", "mybooktable"
-		   });								
+			 "appinfo", "@Table(name=\"mybooktable\")"
+		   });			
+		addAnnotation
+		  (getBook_Title(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Column(name=\"titel\" unique=\"true\" length=\"25\")"
+		   });			
+		addAnnotation
+		  (getBook_Pages(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Column(updatable=\"false\" insertable=\"false\")"
+		   });			
+		addAnnotation
+		  (getBook_Weight(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Column(name=\"gewicht\" nullable=\"true\" precision=\"5\" scale=\"2\")"
+		   });		
 	}
 
 	/**
@@ -286,40 +302,6 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 			 "kind", "element",
 			 "name", "author"
 		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Column</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createColumnAnnotations() {
-		String source = "http://ejb.elver.org/Column";				
-		addAnnotation
-		  (getBook_Title(), 
-		   source, 
-		   new String[] {
-			 "name", "titel",
-			 "unique", "true",
-			 "length", "25"
-		   });			
-		addAnnotation
-		  (getBook_Pages(), 
-		   source, 
-		   new String[] {
-			 "updatable", "false",
-			 "insertable", "false"
-		   });			
-		addAnnotation
-		  (getBook_Weight(), 
-		   source, 
-		   new String[] {
-			 "name", "gewicht",
-			 "nullable", "true",
-			 "precision", "5",
-			 "scale", "2"
-		   });		
 	}
 
 } //ColumnPackageImpl

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.7 2006/09/04 15:53:43 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.8 2006/09/05 12:16:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -41,7 +41,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
-import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
@@ -65,7 +64,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
-import org.eclipse.emf.teneo.annotations.pannotation.Unique;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
 import org.eclipse.emf.teneo.annotations.pannotation.util.PannotationValidator;
@@ -323,20 +321,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * @generated
 	 */
 	private EClass versionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass indexedEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass uniqueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1057,6 +1041,15 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getManyToMany_Indexed() {
+		return (EAttribute)manyToManyEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getManyToOne() {
 		return manyToOneEClass;
 	}
@@ -1158,6 +1151,24 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 */
 	public EAttribute getOneToMany_MappedBy() {
 		return (EAttribute)oneToManyEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOneToMany_Indexed() {
+		return (EAttribute)oneToManyEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOneToMany_Unique() {
+		return (EAttribute)oneToManyEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1570,42 +1581,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIndexed() {
-		return indexedEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getIndexed_Value() {
-		return (EAttribute)indexedEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getUnique() {
-		return uniqueEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getUnique_Value() {
-		return (EAttribute)uniqueEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAssociationOverride() {
 		return associationOverrideEClass;
 	}
@@ -1804,6 +1779,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		createEAttribute(manyToManyEClass, MANY_TO_MANY__CASCADE);
 		createEAttribute(manyToManyEClass, MANY_TO_MANY__FETCH);
 		createEAttribute(manyToManyEClass, MANY_TO_MANY__MAPPED_BY);
+		createEAttribute(manyToManyEClass, MANY_TO_MANY__INDEXED);
 
 		manyToOneEClass = createEClass(MANY_TO_ONE);
 		createEAttribute(manyToOneEClass, MANY_TO_ONE__TARGET_ENTITY);
@@ -1821,6 +1797,8 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		createEAttribute(oneToManyEClass, ONE_TO_MANY__CASCADE);
 		createEAttribute(oneToManyEClass, ONE_TO_MANY__FETCH);
 		createEAttribute(oneToManyEClass, ONE_TO_MANY__MAPPED_BY);
+		createEAttribute(oneToManyEClass, ONE_TO_MANY__INDEXED);
+		createEAttribute(oneToManyEClass, ONE_TO_MANY__UNIQUE);
 
 		oneToOneEClass = createEClass(ONE_TO_ONE);
 		createEAttribute(oneToOneEClass, ONE_TO_ONE__TARGET_ENTITY);
@@ -1877,12 +1855,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		createEAttribute(uniqueConstraintEClass, UNIQUE_CONSTRAINT__COLUMN_NAMES);
 
 		versionEClass = createEClass(VERSION);
-
-		indexedEClass = createEClass(INDEXED);
-		createEAttribute(indexedEClass, INDEXED__VALUE);
-
-		uniqueEClass = createEClass(UNIQUE);
-		createEAttribute(uniqueEClass, UNIQUE__VALUE);
 
 		// Create enums
 		cascadeTypeEEnum = createEEnum(CASCADE_TYPE);
@@ -1952,8 +1924,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		transientEClass.getESuperTypes().add(this.getPAnnotation());
 		uniqueConstraintEClass.getESuperTypes().add(this.getPAnnotation());
 		versionEClass.getESuperTypes().add(this.getPAnnotation());
-		indexedEClass.getESuperTypes().add(this.getPAnnotation());
-		uniqueEClass.getESuperTypes().add(this.getPAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(pAnnotationEClass, PAnnotation.class, "PAnnotation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2041,6 +2011,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		initEAttribute(getManyToMany_Cascade(), this.getCascadeType(), "cascade", null, 0, -1, ManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getManyToMany_Fetch(), this.getFetchType(), "fetch", "LAZY", 0, 1, ManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getManyToMany_MappedBy(), ecorePackage.getEString(), "mappedBy", null, 0, 1, ManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getManyToMany_Indexed(), ecorePackage.getEBoolean(), "indexed", "true", 0, 1, ManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(manyToOneEClass, ManyToOne.class, "ManyToOne", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getManyToOne_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0, 1, ManyToOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2058,6 +2029,8 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		initEAttribute(getOneToMany_Cascade(), this.getCascadeType(), "cascade", null, 0, -1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOneToMany_Fetch(), this.getFetchType(), "fetch", "LAZY", 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOneToMany_MappedBy(), ecorePackage.getEString(), "mappedBy", null, 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOneToMany_Indexed(), ecorePackage.getEBoolean(), "indexed", "true", 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOneToMany_Unique(), ecorePackage.getEBoolean(), "unique", "true", 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oneToOneEClass, OneToOne.class, "OneToOne", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOneToOne_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0, 1, OneToOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2114,12 +2087,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		initEAttribute(getUniqueConstraint_ColumnNames(), ecorePackage.getEString(), "columnNames", null, 1, -1, UniqueConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(versionEClass, Version.class, "Version", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(indexedEClass, Indexed.class, "Indexed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIndexed_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, Indexed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(uniqueEClass, Unique.class, "Unique", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getUnique_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, Unique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(cascadeTypeEEnum, CascadeType.class, "CascadeType");
@@ -2192,7 +2159,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "Target", "http://annotation.elver.org/internal/Target",
 			 "Unsupported", "http://annotation.elver.org/internal/Unsupported"
-		   });																																																										
+		   });																																																								
 	}
 
 	/**
@@ -2209,7 +2176,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																									
+		   });																																																							
 	}
 
 	/**
@@ -2333,7 +2300,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });		
+		   });
 	}
 
 	/**
@@ -2548,19 +2515,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "0", "EAttribute"
-		   });			
-		addAnnotation
-		  (indexedEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (uniqueEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });
+		   });	
 	}
 
 	/**
@@ -2576,7 +2531,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																					
+		   });																																			
 	}
 
 	/**
@@ -2591,7 +2546,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		  (mapKeyEClass, 
 		   source, 
 		   new String[] {
-		   });																				
+		   });																		
 	}
 
 	/**
@@ -2607,7 +2562,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																												
+		   });																																										
 	}
 
 	/**

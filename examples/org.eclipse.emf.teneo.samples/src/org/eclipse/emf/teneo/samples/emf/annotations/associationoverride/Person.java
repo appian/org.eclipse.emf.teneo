@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: Person.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride;
 
@@ -42,7 +42,7 @@ public interface Person extends EObject {
 	 * @see #setId(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.AssociationoverridePackage#getPerson_Id()
 	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="http://annotation.elver.org/Id appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Id'"
 	 *        extendedMetaData="kind='element' name='id'"
 	 * @generated
 	 */
@@ -121,8 +121,8 @@ public interface Person extends EObject {
 	 * @return the value of the '<em>Address</em>' containment reference.
 	 * @see #setAddress(Address)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.AssociationoverridePackage#getPerson_Address()
-	 * @model containment="true" resolveProxies="false" required="true"
-	 *        annotation="http://annotation.elver.org/ManyToOne appinfo='null'"
+	 * @model containment="true" required="true"
+	 *        annotation="teneo.jpa appinfo='@ManyToOne'"
 	 *        extendedMetaData="kind='element' name='address'"
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemList.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: ItemList.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -67,8 +67,8 @@ public interface ItemList extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Contained Item</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage#getItemList_ContainedItem()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.set.ContainedItem" containment="true" resolveProxies="false" required="true"
-	 *        annotation="http://annotation.elver.org/Indexed value='false'"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.set.ContainedItem" containment="true" required="true"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=\"false\")'"
 	 *        extendedMetaData="kind='element' name='containedItem'"
 	 * @generated
 	 */
@@ -88,7 +88,7 @@ public interface ItemList extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage#getItemList_Item()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.Item#getItemList
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.set.Item" opposite="itemList" required="true"
-	 *        annotation="http://annotation.elver.org/Indexed value='false'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=\"false\")'"
 	 *        extendedMetaData="kind='element' name='item'"
 	 * @generated
 	 */
@@ -106,8 +106,7 @@ public interface ItemList extends EObject {
 	 * @return the value of the '<em>Joined Item</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage#getItemList_JoinedItem()
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.set.Item" required="true"
-	 *        annotation="http://annotation.elver.org/Indexed value='false'"
-	 *        annotation="http://annotation.elver.org/Unique value='false'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=\"false\" unique=\"false\")'"
 	 *        extendedMetaData="kind='element' name='joinedItem'"
 	 * @generated
 	 */

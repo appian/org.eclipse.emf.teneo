@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AssociationoverridePackageImpl.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: AssociationoverridePackageImpl.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.impl;
 
@@ -323,16 +323,10 @@ public class AssociationoverridePackageImpl extends EPackageImpl implements Asso
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/AssociationOverride
-		createAssociationOverrideAnnotations();
-		// http://annotation.elver.org/JoinColumn/c1
-		createC1Annotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http://annotation.elver.org/MappedSuperclass
 		createMappedSuperclassAnnotations();
-		// http://annotation.elver.org/Id
-		createIdAnnotations();
-		// http://annotation.elver.org/ManyToOne
-		createManyToOneAnnotations();
 	}
 
 	/**
@@ -363,7 +357,7 @@ public class AssociationoverridePackageImpl extends EPackageImpl implements Asso
 		   new String[] {
 			 "kind", "element",
 			 "name", "postalCode"
-		   });				
+		   });			
 		addAnnotation
 		  (employeeEClass, 
 		   source, 
@@ -423,36 +417,31 @@ public class AssociationoverridePackageImpl extends EPackageImpl implements Asso
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/AssociationOverride</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createAssociationOverrideAnnotations() {
-		String source = "http://annotation.elver.org/AssociationOverride";					
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";					
 		addAnnotation
 		  (employeeEClass, 
 		   source, 
 		   new String[] {
-			 "name", "address",
-			 "joinColumns", "c1"
-		   });												
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/JoinColumn/c1</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createC1Annotations() {
-		String source = "http://annotation.elver.org/JoinColumn/c1";						
+			 "appinfo", "@AssociationOverride(name=\"address\" joinColumns=@JoinColumn(name=\"employee_address_id\"))"
+		   });						
 		addAnnotation
-		  (employeeEClass, 
+		  (getPerson_Id(), 
 		   source, 
 		   new String[] {
-			 "name", "employee_address_id"
-		   });											
+			 "appinfo", "@Id"
+		   });				
+		addAnnotation
+		  (getPerson_Address(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@ManyToOne"
+		   });			
 	}
 
 	/**
@@ -462,45 +451,13 @@ public class AssociationoverridePackageImpl extends EPackageImpl implements Asso
 	 * @generated
 	 */
 	protected void createMappedSuperclassAnnotations() {
-		String source = "http://annotation.elver.org/MappedSuperclass";									
+		String source = "http://annotation.elver.org/MappedSuperclass";								
 		addAnnotation
 		  (personEClass, 
 		   source, 
 		   new String[] {
 			 "appinfo", "true"
 		   });								
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Id</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIdAnnotations() {
-		String source = "http://annotation.elver.org/Id";											
-		addAnnotation
-		  (getPerson_Id(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });						
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/ManyToOne</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createManyToOneAnnotations() {
-		String source = "http://annotation.elver.org/ManyToOne";														
-		addAnnotation
-		  (getPerson_Address(), 
-		   source, 
-		   new String[] {
-			 "appinfo", null
-		   });			
 	}
 
 } //AssociationoverridePackageImpl

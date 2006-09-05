@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.4 2006/09/04 15:42:17 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.5 2006/09/05 12:17:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class OneToManyMapper extends AssociationMapper {
@@ -136,7 +136,7 @@ public class OneToManyMapper extends AssociationMapper {
 		}
 
 		// add order
-		if ((aReference.getIndexed() != null && aReference.getIndexed().isValue()) || aReference.getOrderBy() != null) {
+		if (otm.isIndexed() || aReference.getOrderBy() != null) {
 			Element order = field.addElement("order");
 			if (aReference.getOrderBy() != null) {
 				log.warn("JPOX does not support orderby ejb3, ignored");

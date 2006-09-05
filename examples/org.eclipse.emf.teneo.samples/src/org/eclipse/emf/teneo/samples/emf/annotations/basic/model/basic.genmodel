@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Basic" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>basic.xsd</foreignModel>
-  <genPackages prefix="Basic" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
-      disposableProviderFactory="true" ecorePackage="basic.ecore#/">
+  <genPackages prefix="Basic" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="basic.ecore#/">
     <genClasses ecoreClass="basic.ecore#//Basic">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute basic.ecore#//Basic/myOptionalBasic"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute basic.ecore#//Basic/myVersion"/>

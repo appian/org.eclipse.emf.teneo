@@ -2,19 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeature.java,v 1.7 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeature.java,v 1.8 2006/09/05 12:16:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.Indexed;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.Unique;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotated EStructural Feature</b></em>'.
@@ -31,8 +29,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Unique;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getSequenceGenerator <em>Sequence Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getTableGenerator <em>Table Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getJoinColumns <em>Join Columns</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getIndexed <em>Indexed</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getUnique <em>Unique</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
@@ -235,56 +231,6 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement {
 	 * @generated
 	 */
 	EList getJoinColumns();
-
-	/**
-	 * Returns the value of the '<em><b>Indexed</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Indexed</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Indexed</em>' containment reference.
-	 * @see #setIndexed(Indexed)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_Indexed()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Indexed getIndexed();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getIndexed <em>Indexed</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Indexed</em>' containment reference.
-	 * @see #getIndexed()
-	 * @generated
-	 */
-	void setIndexed(Indexed value);
-
-	/**
-	 * Returns the value of the '<em><b>Unique</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Unique</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unique</em>' containment reference.
-	 * @see #setUnique(Unique)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_Unique()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Unique getUnique();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getUnique <em>Unique</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unique</em>' containment reference.
-	 * @see #getUnique()
-	 * @generated
-	 */
-	void setUnique(Unique value);
 
 	/**
 	 * Convenience function for obtaining the first available Column annotation.

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.3 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.4 2006/09/05 12:17:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -100,11 +100,17 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 			addKeyColumns(keyElement, jcs);
 		}
 
-		if (paReference.getIndexed() != null && paReference.getIndexed().isValue()) {
+        final OneToMany otm = hbReference.getOneToMany();
+        if (hbReference.getHbIdBag() != null) {
+        	log.debug("Setting indexed=false because is an idbag");
+        	
+        	otm.setIndexed(false);
+        }
+        
+		if (otm.isIndexed()) {
 			addListIndex(collElement, paReference);
 		}
 
-        final OneToMany otm = hbReference.getOneToMany();
         final CollectionOfElements coe = hbReference.getHbCollectionOfElements();
         final Cascade hbCascade = hbReference.getHbCascade();
         final List hbCascadeList = (null == hbCascade) ? Collections.EMPTY_LIST : hbCascade.getValue();
@@ -133,15 +139,14 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
             addMap(collElement, hbReference);
         } else if (hbReference.getEmbedded() != null) {
             addCompositeElement(collElement, targetName, hbReference);
-		} else if (jt != null && !(paReference.getUnique() != null && paReference.getUnique().isValue()) || jt != null) {
+		} else if (jt != null) {
 			// A m2m forces a join table, note that isunique does not completely follow the semantics of emf, unique on
 			// an otm means that an element can only occur once in the table, if unique is false then you in effect have
 			// a
 			// mtm relation
 			// because an item can occur twice or more in the list.
 			// To force a jointable on a real otm a jointable annotation should be specified.
-			addManyToMany(collElement, targetName, inverseJoinColumns, paReference.getUnique() != null
-					&& paReference.getUnique().isValue());
+			addManyToMany(collElement, targetName, inverseJoinColumns, otm.isUnique());
 		} else {
 			addOneToMany(collElement, targetName);
 		}
@@ -249,7 +254,7 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 		addFetchType(collElement, otm.getFetch());
 		addCascadesForMany(collElement, otm.getCascade());
 
-		if (paReference.getIndexed() != null && paReference.getIndexed().isValue()) {
+		if (otm.isIndexed()) {
 			addListIndex(collElement, paReference);
 		}
 
@@ -263,8 +268,7 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 		} else if (jt != null) {
 			final List inverseJoinColumns = jt != null && jt.getInverseJoinColumns() != null ? (List) jt
 					.getInverseJoinColumns() : Collections.EMPTY_LIST;
-			addManyToMany(collElement, targetName, inverseJoinColumns, paReference.getUnique() != null
-					&& paReference.getUnique().isValue());
+			addManyToMany(collElement, targetName, inverseJoinColumns, otm.isUnique());
 		} else {
 			addOneToMany(collElement, targetName);
 		}

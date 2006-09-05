@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ComplexNode.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: ComplexNode.java,v 1.6 2006/09/05 12:16:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -125,12 +125,12 @@ class ComplexNode extends NamedParserNode {
 							eClass.getName() + " is not an ereference but a " + efeature.getClass().getName());
 				}
 				final EReference eref = (EReference)efeature;
-				if (eref.isMany()) {
-					throw new AnnotationParserException("The EFeature " + efeature.getName() + "/" +
-							eClass.getName() + " is ismany, while a not ismany is expected");
-				}
 				log.debug("Reference child " + pn.getName());
-				eobj.eSet(eref, ((ReferenceValueNode)child).convert(ecr));
+				if (eref.isMany()) {
+					((List)eobj.eGet(eref)).add(((ReferenceValueNode)child).convert(ecr));
+				} else {
+					eobj.eSet(eref, ((ReferenceValueNode)child).convert(ecr));
+				}
 			}
 		}
 		return eobj;

@@ -8,18 +8,15 @@
 	    	<xsd:sequence>
 	  		<xsd:element name="rght" type="xsd:IDREF" ecore:reference="this:Rght" maxOccurs="unbounded" ecore:opposite="cntr">
 			 	<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="fetch">EAGER</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="cascade">MERGE PERSIST</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="targetEntity">Rght</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/JoinTable" ecore:key="name">RightCenter</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/Indexed" ecore:key="value">false</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">
+					@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity="Rght" indexed="false")
+					@JoinTable(name="RightCenter")
+					</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
 	  		<xsd:element name="lft" type="xsd:IDREF" ecore:reference="this:Lft" maxOccurs="unbounded" ecore:opposite="cntr">
 			 	<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="fetch">EAGER</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="cascade">MERGE PERSIST</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="targetEntity">Lft</xsd:appinfo>
+					@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity="Lft")
 			    </xsd:annotation>
 			</xsd:element>
     		</xsd:sequence>
@@ -29,10 +26,9 @@
 	    	<xsd:sequence>
 	  		<xsd:element name="cntr" type="xsd:IDREF" ecore:reference="this:Cntr" maxOccurs="unbounded" ecore:opposite="lft">
 			 	<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="fetch">LAZY</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="cascade">MERGE PERSIST</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="targetEntity">Cntr</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="mappedBy">lft</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">
+					@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity="Cntr" mappedBy="lft")
+					</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
     		</xsd:sequence>
@@ -42,12 +38,8 @@
 	    	<xsd:sequence> 
 	  		<xsd:element name="cntr" type="xsd:IDREF" ecore:reference="this:Cntr" maxOccurs="unbounded" ecore:opposite="rght">
 			 	<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="fetch">LAZY</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="cascade">MERGE PERSIST</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="targetEntity">Cntr</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/ManyToMany" ecore:key="mappedBy">rght</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/JoinTable" ecore:key="name">RightCenter</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/Indexed" ecore:key="value">false</xsd:appinfo>
+					@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity="Cntr" mappedBy="rght" indexed="false")
+					@JoinTable(name="RightCenter")
 			    </xsd:annotation>
 			</xsd:element>
     		</xsd:sequence>

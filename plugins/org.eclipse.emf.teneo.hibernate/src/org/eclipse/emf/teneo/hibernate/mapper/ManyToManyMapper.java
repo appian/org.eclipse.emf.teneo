@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.2 2006/08/24 22:12:51 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.3 2006/09/05 12:17:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -91,7 +91,7 @@ class ManyToManyMapper extends AbstractAssociationMapper implements ManyToManyPr
 		final Element collElement = addCollectionElement(hbReference);
 		final Element keyElement = collElement.addElement("key");
 
-		if (hbReference.getIndexed() != null && hbReference.getIndexed().isValue()) {
+		if (mtm.isIndexed()) {
 			assert (hbReference.getHbIdBag() == null);
 			addListIndex(collElement, hbReference);
 		}
@@ -109,8 +109,10 @@ class ManyToManyMapper extends AbstractAssociationMapper implements ManyToManyPr
 				.addAttribute("unique", "false");
 
 		// inverse is not supported by indexed lists
-		if (mtm.getMappedBy() != null && !(hbReference.getIndexed() != null && hbReference.getIndexed().isValue())) {
+		if (mtm.getMappedBy() != null && !mtm.isIndexed()) {
 			collElement.addAttribute("inverse", "true");
+		} else if (mtm.getMappedBy() != null && !mtm.isIndexed()) {
+			log.warn("Indexed is true but indexed is not supported for inverse=true and many-to-many, not setting inverse=true");
 		}
 
 		addJoinTable(collElement, keyElement, jt);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Lft.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: Lft.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany;
 
@@ -40,7 +40,7 @@ public interface Lft extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyPackage#getLft_Cntr()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Cntr#getLft
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Cntr" opposite="lft" resolveProxies="false" required="true"
-	 *        annotation="http://annotation.elver.org/ManyToMany fetch='LAZY' cascade='MERGE PERSIST' targetEntity='Cntr' mappedBy='lft'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity=\"Cntr\" mappedBy=\"lft\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='cntr'"
 	 * @generated
 	 */

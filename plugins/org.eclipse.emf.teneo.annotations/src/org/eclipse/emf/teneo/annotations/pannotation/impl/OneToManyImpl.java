@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToManyImpl.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
+ * $Id: OneToManyImpl.java,v 1.4 2006/09/05 12:16:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -33,6 +33,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getCascade <em>Cascade</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getFetch <em>Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getMappedBy <em>Mapped By</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#isIndexed <em>Indexed</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#isUnique <em>Unique</em>}</li>
  * </ul>
  * </p>
  *
@@ -125,6 +127,46 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	 * @ordered
 	 */
 	protected String mappedBy = MAPPED_BY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIndexed() <em>Indexed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIndexed()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INDEXED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isIndexed() <em>Indexed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIndexed()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean indexed = INDEXED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUnique()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean UNIQUE_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUnique()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean unique = UNIQUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -262,6 +304,48 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isIndexed() {
+		return indexed;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIndexed(boolean newIndexed) {
+		boolean oldIndexed = indexed;
+		indexed = newIndexed;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__INDEXED, oldIndexed, indexed));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isUnique() {
+		return unique;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnique(boolean newUnique) {
+		boolean oldUnique = unique;
+		unique = newUnique;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__UNIQUE, oldUnique, unique));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.ONE_TO_MANY__EMODEL_ELEMENT:
@@ -275,6 +359,10 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 				return getFetch();
 			case PannotationPackage.ONE_TO_MANY__MAPPED_BY:
 				return getMappedBy();
+			case PannotationPackage.ONE_TO_MANY__INDEXED:
+				return isIndexed() ? Boolean.TRUE : Boolean.FALSE;
+			case PannotationPackage.ONE_TO_MANY__UNIQUE:
+				return isUnique() ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -302,6 +390,12 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 			case PannotationPackage.ONE_TO_MANY__MAPPED_BY:
 				setMappedBy((String)newValue);
 				return;
+			case PannotationPackage.ONE_TO_MANY__INDEXED:
+				setIndexed(((Boolean)newValue).booleanValue());
+				return;
+			case PannotationPackage.ONE_TO_MANY__UNIQUE:
+				setUnique(((Boolean)newValue).booleanValue());
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -328,6 +422,12 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 			case PannotationPackage.ONE_TO_MANY__MAPPED_BY:
 				setMappedBy(MAPPED_BY_EDEFAULT);
 				return;
+			case PannotationPackage.ONE_TO_MANY__INDEXED:
+				setIndexed(INDEXED_EDEFAULT);
+				return;
+			case PannotationPackage.ONE_TO_MANY__UNIQUE:
+				setUnique(UNIQUE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -349,6 +449,10 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 				return fetch != FETCH_EDEFAULT;
 			case PannotationPackage.ONE_TO_MANY__MAPPED_BY:
 				return MAPPED_BY_EDEFAULT == null ? mappedBy != null : !MAPPED_BY_EDEFAULT.equals(mappedBy);
+			case PannotationPackage.ONE_TO_MANY__INDEXED:
+				return indexed != INDEXED_EDEFAULT;
+			case PannotationPackage.ONE_TO_MANY__UNIQUE:
+				return unique != UNIQUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -370,6 +474,10 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 		result.append(fetch);
 		result.append(", mappedBy: ");
 		result.append(mappedBy);
+		result.append(", indexed: ");
+		result.append(indexed);
+		result.append(", unique: ");
+		result.append(unique);
 		result.append(')');
 		return result.toString();
 	}

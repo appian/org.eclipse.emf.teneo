@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToMany.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: OneToMany.java,v 1.3 2006/09/05 12:16:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='IsManyValued'"
  * @generated
  */
-public interface OneToMany extends PAnnotation{
+public interface OneToMany extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -130,5 +130,59 @@ public interface OneToMany extends PAnnotation{
 	 * @generated
 	 */
 	void setMappedBy(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Indexed</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Indexed</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Indexed</em>' attribute.
+	 * @see #setIndexed(boolean)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOneToMany_Indexed()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isIndexed();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToMany#isIndexed <em>Indexed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Indexed</em>' attribute.
+	 * @see #isIndexed()
+	 * @generated
+	 */
+	void setIndexed(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Unique</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unique</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unique</em>' attribute.
+	 * @see #setUnique(boolean)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOneToMany_Unique()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isUnique();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToMany#isUnique <em>Unique</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unique</em>' attribute.
+	 * @see #isUnique()
+	 * @generated
+	 */
+	void setUnique(boolean value);
 
 } // OneToMany

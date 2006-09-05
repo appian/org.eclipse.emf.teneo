@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.5 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.6 2006/09/05 12:17:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -83,7 +83,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class HbDataStore {
@@ -175,7 +175,7 @@ public class HbDataStore {
 
 		// set the event listeners
 		setEventListeners();
-
+		
 		updateDatabaseSchema();
 
 		log.debug("Registering datastore with persistent classes");

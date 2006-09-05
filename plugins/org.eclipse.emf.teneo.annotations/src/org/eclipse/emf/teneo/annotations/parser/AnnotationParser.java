@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationParser.java,v 1.5 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: AnnotationParser.java,v 1.6 2006/09/05 12:16:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -118,6 +118,12 @@ public class AnnotationParser {
 					}
 					final int nextToken = annotationTokenizer.nextToken();
 					if (nextToken == AnnotationTokenizer.T_VALUE) { 
+						final String value = annotationTokenizer.getLexeme();
+						final PrimitiveValueNode vn = new PrimitiveValueNode();
+						vn.setName(identifier);
+						vn.setValue(value);
+						addToParent(pn, vn);
+					} else if (nextToken == AnnotationTokenizer.T_IDENTIFIER) { 
 						final String value = annotationTokenizer.getLexeme();
 						final PrimitiveValueNode vn = new PrimitiveValueNode();
 						vn.setName(identifier);

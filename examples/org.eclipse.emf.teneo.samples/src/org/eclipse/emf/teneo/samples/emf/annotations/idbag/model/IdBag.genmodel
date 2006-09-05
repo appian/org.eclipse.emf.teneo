@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="IdBag" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>IdBag.xsd</foreignModel>
-  <genPackages prefix="Idbag" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
-      disposableProviderFactory="true" ecorePackage="idbag.ecore#/">
+  <genPackages prefix="Idbag" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="idbag.ecore#/">
     <genClasses ecoreClass="idbag.ecore#//User">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute idbag.ecore#//User/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute idbag.ecore#//User/roles"/>

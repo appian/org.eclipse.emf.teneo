@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.6 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.7 2006/09/05 12:16:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapper;
@@ -76,7 +76,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class DefaultAnnotator {
 
@@ -395,9 +395,6 @@ public class DefaultAnnotator {
 			// Note that this means that transient features will still have additional annotations such as basic etc.
 			// if (aStructuralFeature.getTransient() != null) return;
 
-			// set the indexed and unique
-			setFacets(aStructuralFeature);
-
 			if (aStructuralFeature instanceof PAnnotatedEAttribute) {
 				final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aStructuralFeature;
 				if (((PAnnotatedEAttribute) aStructuralFeature).getVersion() != null)
@@ -585,6 +582,7 @@ public class DefaultAnnotator {
 
 		final EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();
 		OneToMany otm = aAttribute.getOneToMany();
+		final boolean otmWasSet = otm != null; // otm was set manually
 		if (otm == null) {
 			log.debug("One to many not present adding one");
 			otm = aFactory.createOneToMany();
@@ -610,6 +608,40 @@ public class DefaultAnnotator {
 			// note not optional because lists of simple types are embedded
 			addJoinColumns(aAttribute.getPaEClass(), aAttribute.getAnnotatedEAttribute(), aAttribute, FeatureMapUtil
 					.isFeatureMap(eAttribute)); // with featuremap optional is true
+		}
+		
+		// set unique and indexed
+		if (!otmWasSet) {
+			log.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique because otm was not set manually");
+			otm.setIndexed(eAttribute.isOrdered());
+			otm.setUnique(eAttribute.isUnique());
+			EAnnotation ean = aAttribute.getAnnotatedElement().getEAnnotation(FACET_SOURCE_LIST);
+			if (ean != null && ean.getDetails() != null) {
+				if (ean.getDetails().get(FACET_INDEX) != null) {
+					log.warn("Setting indexed from deprecated annotation: " + FACET_INDEX);
+					otm.setIndexed(((String) ean.getDetails().get(FACET_INDEX)).compareToIgnoreCase("true") == 0);
+				}
+				if (ean.getDetails().get(FACET_UNIQUE) != null) {
+					log.warn("Setting unique from deprecated annotation: " + FACET_UNIQUE);
+					otm.setUnique(((String) ean.getDetails().get(FACET_UNIQUE)).compareToIgnoreCase("true") == 0);
+				}
+			}
+			
+			ean = aAttribute.getAnnotatedElement().getEAnnotation("http://annotation.elver.org/Indexed");
+			if (ean != null && ean.getDetails() != null) {
+				if (ean.getDetails().get("value") != null) {
+					log.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Indexed");
+					otm.setIndexed(((String) ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
+				}
+			}
+			ean = aAttribute.getAnnotatedElement().getEAnnotation("http://annotation.elver.org/Unique");
+			if (ean != null && ean.getDetails() != null) {
+				if (ean.getDetails().get("value") != null) {
+					log.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Unique");
+					otm.setUnique(((String) ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
+				}
+			}
+				
 		}
 	}
 
@@ -657,6 +689,7 @@ public class DefaultAnnotator {
 
 		final EReference eReference = (EReference) aReference.getAnnotatedElement();
 		OneToMany otm = aReference.getOneToMany();
+		final boolean otmWasSet = otm != null; // otm was set manually
 		if (otm == null) {
 			log.debug("EReference + " + logStr + " does not have a onetomany annotation, adding one");
 			otm = aFactory.createOneToMany();
@@ -682,13 +715,51 @@ public class DefaultAnnotator {
 			otm.setTargetEntity(StoreUtil.getEClassURI(eReference.getEReferenceType(), optionQualifyEClass));
 		}
 
-		// only use a jointable if the relation is non unique
-		if (!aReference.getUnique().isValue() && aReference.getAnnotatedEReference().getEOpposite() != null) {
+		// set unique and indexed
+		if (!otmWasSet) {
+			log.debug("Setting indexed and unique from ereference because otm was not set manually!");
+			otm.setIndexed(eReference.isOrdered());
+			otm.setUnique(eReference.isUnique());
+
+			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
+				log.debug("Setting unique because is bidirectional (has eopposite) otm");
+				otm.setUnique(true);
+			}
+		} else if (aReference.getAnnotatedEReference().getEOpposite() != null) {
 			log.warn("The EReference " + logStr
 					+ " is not unique (allows duplicates) but it is bi-directional, this is not logical");
 		}
+
+		EAnnotation ean = aReference.getAnnotatedElement().getEAnnotation(FACET_SOURCE_LIST);
+		if (ean != null && ean.getDetails() != null) {
+			if (ean.getDetails().get(FACET_INDEX) != null) {
+				log.warn("Setting indexed from deprecated annotation: " + FACET_INDEX);
+				otm.setIndexed(((String) ean.getDetails().get(FACET_INDEX)).compareToIgnoreCase("true") == 0);
+			}
+			if (ean.getDetails().get(FACET_UNIQUE) != null) {
+				log.warn("Setting unique from deprecated annotation: " + FACET_UNIQUE);
+				otm.setUnique(((String) ean.getDetails().get(FACET_UNIQUE)).compareToIgnoreCase("true") == 0);
+			}
+		}
+		
+		ean = aReference.getAnnotatedElement().getEAnnotation("http://annotation.elver.org/Indexed");
+		if (ean != null && ean.getDetails() != null) {
+			if (ean.getDetails().get("value") != null) {
+				log.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Indexed");
+				otm.setIndexed(((String) ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
+			}
+		}
+		ean = aReference.getAnnotatedElement().getEAnnotation("http://annotation.elver.org/Unique");
+		if (ean != null && ean.getDetails() != null) {
+			if (ean.getDetails().get("value") != null) {
+				log.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Unique");
+				otm.setUnique(((String) ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
+			}
+		}
+
+		// only use a jointable if the relation is non unique
 		if ((optionJoinTableForNonContainedAssociations && !eReference.isContainment())
-				|| !aReference.getUnique().isValue() /* --DCB-- || aReference.getIdBag() != null */) {
+				|| !otm.isUnique() /* --DCB-- || aReference.getIdBag() != null */) {
 			JoinTable joinTable = aReference.getJoinTable();
 			if (joinTable == null) {
 				joinTable = aFactory.createJoinTable();
@@ -732,6 +803,7 @@ public class DefaultAnnotator {
 		assert (eOpposite != null && eOpposite.isMany());
 
 		ManyToMany mtm = aReference.getManyToMany();
+		final boolean mtmWasSet = mtm != null; //mtm was set manually
 		if (mtm == null) {
 			log.debug("Adding manytomany annotations to ereference: " + featureLogStr);
 			mtm = aFactory.createManyToMany();
@@ -762,6 +834,28 @@ public class DefaultAnnotator {
 		}
 		joinTable.setEModelElement(eReference);
 
+		// set unique and indexed
+		if (!mtmWasSet) {
+			log.debug("Setting indexed and unique from ereference.isOrdered/isUnique because mtm was not set manually!");
+			mtm.setIndexed(eReference.isOrdered());
+		}
+
+		EAnnotation ean = aReference.getAnnotatedElement().getEAnnotation(FACET_SOURCE_LIST);
+		if (ean != null && ean.getDetails() != null) {
+			if (ean.getDetails().get(FACET_INDEX) != null) {
+				log.warn("Setting indexed from deprecated annotation: " + FACET_INDEX);
+				mtm.setIndexed(((String) ean.getDetails().get(FACET_INDEX)).compareTo("true") == 0);
+			}
+		}
+		
+		ean = aReference.getAnnotatedElement().getEAnnotation("http://annotation.elver.org/Indexed");
+		if (ean != null && ean.getDetails() != null) {
+			if (ean.getDetails().get("value") != null) {
+				log.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Indexed");
+				mtm.setIndexed(((String) ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
+			}
+		}
+
 		// NOTE that the ejb3 spec states that the jointable should be the concatenation of the
 		// tablenames of the owning entities with an underscore, this will quickly lead to nameclashes
 		// in the case there is more than one relation between two classes. This can be pretty likely
@@ -770,7 +864,7 @@ public class DefaultAnnotator {
 			// In case the reference is not indexed then one join table can be used for both sides
 			// If indexed then separate join tables should be used.
 			final String jTableName;
-			if (aReference.getIndexed().isValue()) {
+			if (mtm.isIndexed()) {
 				jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
 						+ getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel());
 			} else {
@@ -1111,31 +1205,6 @@ public class DefaultAnnotator {
 		if (eAnnotation == null)
 			return "";
 		return (String) eAnnotation.getDetails().get(key);
-	}
-
-	/** Finds the additional annotations on a eReference */
-	protected void setFacets(PAnnotatedEStructuralFeature aFeature) {
-		// note that currently emf always has ereference is ordered and always is unique
-		final EStructuralFeature eFeature = aFeature.getAnnotatedEStructuralFeature();
-		if (aFeature.getIndexed() == null) {
-			aFeature.setIndexed(PannotationFactory.eINSTANCE.createIndexed());
-			aFeature.getIndexed().setValue(eFeature.isOrdered());
-		}
-		if (aFeature.getUnique() == null && eFeature instanceof EReference) {
-			aFeature.setUnique(PannotationFactory.eINSTANCE.createUnique());
-			aFeature.getUnique().setValue(eFeature.isUnique());
-		}
-
-		final EAnnotation ean = aFeature.getAnnotatedElement().getEAnnotation(FACET_SOURCE_LIST);
-		if (ean != null && ean.getDetails() != null) {
-			if (ean.getDetails().get(FACET_INDEX) != null) {
-				aFeature.getIndexed().setValue(((String) ean.getDetails().get(FACET_INDEX)).compareTo("true") == 0);
-			}
-			if (ean.getDetails().get(FACET_UNIQUE) != null) {
-				aFeature.getUnique().setValue(((String) ean.getDetails().get(FACET_UNIQUE)).compareTo("true") == 0);
-			}
-		}
-
 	}
 
 	/** Returns the list of names of id props of the eclass */

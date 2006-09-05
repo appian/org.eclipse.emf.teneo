@@ -50,8 +50,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedItem" lowerBound="1"
         upperBound="-1" eType="#//ContainedItem" containment="true" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/Indexed">
-        <details key="value" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -60,8 +60,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="item" lowerBound="1" upperBound="-1"
         eType="#//Item" eOpposite="#//Item/itemList">
-      <eAnnotations source="http://annotation.elver.org/Indexed">
-        <details key="value" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -70,11 +70,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinedItem" lowerBound="1"
         upperBound="-1" eType="#//Item">
-      <eAnnotations source="http://annotation.elver.org/Indexed">
-        <details key="value" value="false"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Unique">
-        <details key="value" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; unique=&quot;false&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

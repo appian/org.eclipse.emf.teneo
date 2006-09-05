@@ -8,17 +8,17 @@
 	    	<xsd:sequence>
 	  		<xsd:element name="myOptionalBasic" type="xsd:string">
 			 	<xsd:annotation>
-					<xsd:appinfo source="http://ejb.elver.org/Basic" ecore:key="optional">true</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">@Basic(optional="true")</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
 	  		<xsd:element name="myVersion" type="xsd:long">
 			 	<xsd:annotation>
-					<xsd:appinfo source="http://ejb.elver.org/Version">true</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">@Version</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
 	  		<xsd:element name="myTransient" type="xsd:string">
 			 	<xsd:annotation>
-					<xsd:appinfo source="http://ejb.elver.org/Transient">true</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">@Transient</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
     		</xsd:sequence>

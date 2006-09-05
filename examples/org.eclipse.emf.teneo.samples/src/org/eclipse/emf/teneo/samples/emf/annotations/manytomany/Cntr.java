@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Cntr.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: Cntr.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany;
 
@@ -41,9 +41,7 @@ public interface Cntr extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyPackage#getCntr_Rght()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Rght#getCntr
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Rght" opposite="cntr" resolveProxies="false" required="true"
-	 *        annotation="http://annotation.elver.org/ManyToMany fetch='EAGER' cascade='MERGE PERSIST' targetEntity='Rght'"
-	 *        annotation="http://annotation.elver.org/JoinTable name='RightCenter'"
-	 *        annotation="http://annotation.elver.org/Indexed value='false'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity=\"Rght\" indexed=\"false\")\n\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='rght'"
 	 * @generated
 	 */
@@ -63,7 +61,6 @@ public interface Cntr extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyPackage#getCntr_Lft()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Lft#getCntr
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Lft" opposite="cntr" resolveProxies="false" required="true"
-	 *        annotation="http://annotation.elver.org/ManyToMany fetch='EAGER' cascade='MERGE PERSIST' targetEntity='Lft'"
 	 *        extendedMetaData="kind='element' name='lft'"
 	 * @generated
 	 */

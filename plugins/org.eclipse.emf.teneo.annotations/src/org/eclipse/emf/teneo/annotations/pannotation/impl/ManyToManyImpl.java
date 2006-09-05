@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToManyImpl.java,v 1.3 2006/07/26 12:43:35 mtaal Exp $
+ * $Id: ManyToManyImpl.java,v 1.4 2006/09/05 12:16:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToManyImpl#getCascade <em>Cascade</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToManyImpl#getFetch <em>Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToManyImpl#getMappedBy <em>Mapped By</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToManyImpl#isIndexed <em>Indexed</em>}</li>
  * </ul>
  * </p>
  *
@@ -125,6 +126,26 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * @ordered
 	 */
 	protected String mappedBy = MAPPED_BY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIndexed() <em>Indexed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIndexed()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INDEXED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isIndexed() <em>Indexed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIndexed()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean indexed = INDEXED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -262,6 +283,27 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isIndexed() {
+		return indexed;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIndexed(boolean newIndexed) {
+		boolean oldIndexed = indexed;
+		indexed = newIndexed;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.MANY_TO_MANY__INDEXED, oldIndexed, indexed));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.MANY_TO_MANY__EMODEL_ELEMENT:
@@ -275,6 +317,8 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 				return getFetch();
 			case PannotationPackage.MANY_TO_MANY__MAPPED_BY:
 				return getMappedBy();
+			case PannotationPackage.MANY_TO_MANY__INDEXED:
+				return isIndexed() ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -302,6 +346,9 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 			case PannotationPackage.MANY_TO_MANY__MAPPED_BY:
 				setMappedBy((String)newValue);
 				return;
+			case PannotationPackage.MANY_TO_MANY__INDEXED:
+				setIndexed(((Boolean)newValue).booleanValue());
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -328,6 +375,9 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 			case PannotationPackage.MANY_TO_MANY__MAPPED_BY:
 				setMappedBy(MAPPED_BY_EDEFAULT);
 				return;
+			case PannotationPackage.MANY_TO_MANY__INDEXED:
+				setIndexed(INDEXED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -349,6 +399,8 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 				return fetch != FETCH_EDEFAULT;
 			case PannotationPackage.MANY_TO_MANY__MAPPED_BY:
 				return MAPPED_BY_EDEFAULT == null ? mappedBy != null : !MAPPED_BY_EDEFAULT.equals(mappedBy);
+			case PannotationPackage.MANY_TO_MANY__INDEXED:
+				return indexed != INDEXED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -370,6 +422,8 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 		result.append(fetch);
 		result.append(", mappedBy: ");
 		result.append(mappedBy);
+		result.append(", indexed: ");
+		result.append(indexed);
 		result.append(')');
 		return result.toString();
 	}

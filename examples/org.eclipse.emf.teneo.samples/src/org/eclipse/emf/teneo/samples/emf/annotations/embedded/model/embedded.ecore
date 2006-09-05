@@ -34,15 +34,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="firstEmbedded" lowerBound="1"
         eType="#//Embeddable" containment="true" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/Embedded">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/AttributeOverride">
-        <details key="name" value="myString"/>
-        <details key="column" value="c1"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column/c1">
-        <details key="name" value="columnString3"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Embedded&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@AttributeOverride(name=&quot;myString&quot; column=@Column(name=&quot;columnString3&quot;))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -51,22 +44,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondEmbedded" lowerBound="1"
         eType="#//Embeddable" containment="true" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/Embedded">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
-        <details key="name" value="myString"/>
-        <details key="column" value="c1"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column/c1">
-        <details key="name" value="columnString1"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
-        <details key="name" value="myInteger"/>
-        <details key="column" value="c2"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column/c2">
-        <details key="name" value="columnInteger1"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Embedded&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@AttributeOverride(name=&quot;myString&quot; column=@Column(name=&quot;columnString1&quot;))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@AttributeOverride(name=&quot;myInteger&quot; column=@Column(name=&quot;columnInteger1&quot;))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -75,22 +54,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="thirdEmbedded" lowerBound="1"
         eType="#//Embeddable" containment="true" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/Embedded">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
-        <details key="name" value="myString"/>
-        <details key="column" value="c1"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column/c1">
-        <details key="name" value="columnString2"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
-        <details key="name" value="myInteger"/>
-        <details key="column" value="c2"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column/c2">
-        <details key="name" value="columnInteger2"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Embedded&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@AttributeOverride(name=&quot;myString&quot; column=@Column(name=&quot;columnString2&quot;))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@AttributeOverride(name=&quot;myInteger&quot; column=@Column(name=&quot;columnInteger2&quot;))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -99,8 +64,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fourthEmbedded" lowerBound="1"
         upperBound="-1" eType="#//Embeddable" containment="true" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/Embedded">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Embedded&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -109,8 +74,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fifthEmbedded" lowerBound="1"
         eType="#//Embeddable" containment="true" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/Embedded">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Embedded&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
