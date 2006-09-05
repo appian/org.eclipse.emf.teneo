@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<persistence-mapping xmlns="http://www.elver.org/teneo/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<!-- Template for TestAction persistence mapping. -->
+
+	<epackage namespace-uri="[NAMESPACEURI]">
+
+		<eclass name="[NAME]">
+		
+		</eclass>
+		
+	</epackage>
+
+</persistence-mapping>

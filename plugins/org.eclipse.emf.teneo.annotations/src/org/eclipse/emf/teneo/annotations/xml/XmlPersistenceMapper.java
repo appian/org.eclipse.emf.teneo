@@ -63,7 +63,7 @@ public class XmlPersistenceMapper {
 					"http://www.w3.org/2001/XMLSchema");
 			saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaSource", this.getClass()
 					.getResourceAsStream("persistence-mapping.xsd"));
-			saxParser.parse(xmlMapping, new XmlAnnotationContentHandler(pAnnotatedModel));
+			saxParser.parse(xmlMapping, new XmlPersistenceContentHandler(pAnnotatedModel));
 		} catch (SAXException e) {
 			throw new RuntimeException(e);
 		} catch (IOException e) {

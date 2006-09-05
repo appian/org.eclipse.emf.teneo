@@ -6,12 +6,11 @@
 
 		<eclass name="Person">
 			<property name="address">
-				<lob/>
+				<lob />
 			</property>
 			<property name="photo">
-				<column>
-					<length>1000000</length>
-				</column>
+				<lob />
+				<column length="1000000" />
 			</property>
 		</eclass>
 	</epackage>

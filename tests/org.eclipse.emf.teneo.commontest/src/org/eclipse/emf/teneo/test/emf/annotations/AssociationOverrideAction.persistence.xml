@@ -15,11 +15,8 @@
 		</eclass>
 		
 		<eclass name="Employee">
-			<association-override>
-				<name>address</name>
-				<join-column>
-					<name>employee_address_id</name>
-				</join-column>
+			<association-override name="address">
+				<join-column name="employee_address_id"/>
 			</association-override>
 		</eclass>
 		
