@@ -17,6 +17,11 @@ Bundle-Vendor: %Plugin.providerName
 Export-Package: extlibrary,
  extlibrary.impl,
  extlibrary.util,
+ javax.jdo,
+ javax.jdo.datastore,
+ javax.jdo.identity,
+ javax.jdo.listener,
+ javax.jdo.spi,
  org.eclipse.emf.teneo.samples,
  org.eclipse.emf.teneo.samples.emf.annotations,
  org.eclipse.emf.teneo.samples.emf.annotations.associationoverride,
@@ -305,3 +310,5 @@ Export-Package: extlibrary,
  org.eclipse.emf.teneo.samples.issues.transientsuper,
  org.eclipse.emf.teneo.samples.issues.transientsuper.impl,
  org.eclipse.emf.teneo.samples.issues.transientsuper.util
+Bundle-ClassPath: jdo2-api-2.0.jar,
+ .
