@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.7 2006/08/28 18:25:15 mtaal Exp $
+ * $Id: AllTests.java,v 1.8 2006/09/06 06:56:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class AllTests {
 
@@ -52,6 +52,7 @@ public class AllTests {
 				.getConfigurations());
 		suite.addTestSuite(LibrarySerializationAction.class);
 
+		suite.addTestSuite(DynamicAction.class);
 		suite.addTestSuite(LibraryAction.class);
 		//	suite.addTestSuite(ExtLibraryAction.class);
 		suite.addTestSuite(CapaTest.class);
@@ -60,7 +61,6 @@ public class AllTests {
 		
 		suite.addTestSuite(LibraryNonResolvingAction.class);
 
-		suite.addTestSuite(DynamicAction.class);
 		suite.addTestSuite(AccountingTest.class);
 		suite.addTestSuite(SunBooksAction.class);
 		suite.addTestSuite(LibraryTest.class);

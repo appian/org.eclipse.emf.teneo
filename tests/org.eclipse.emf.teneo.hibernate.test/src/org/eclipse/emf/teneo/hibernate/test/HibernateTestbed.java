@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.4 2006/07/23 19:20:57 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.5 2006/09/06 06:56:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -79,7 +79,8 @@ public class HibernateTestbed extends Testbed {
 			// but okay
 			writeMappingToFile(testCase);
 
-			TestStore store = storeFactory.get(getDbName(testCase, getActiveConfiguration()), testCase.getEPackages(), null,
+			TestStore store = storeFactory.get(getDbName(testCase, getActiveConfiguration()), 
+					testCase.getEPackages(), (String)null,
 					getActiveConfiguration(), testCase.getExtraConfigurationProperties());
 
 			// setup store
