@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.6 2006/08/25 23:04:07 mtaal Exp $
+ * $Id: AllTests.java,v 1.7 2006/09/06 10:38:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -41,7 +41,7 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class AllTests {
 
@@ -62,7 +62,7 @@ public class AllTests {
 
 		suite.addTestSuite(SchoolLibraryTest.class);
 		suite.addTestSuite(AccountingTest.class);
-		suite.addTestSuite(PlayImExportTest.class);
+		//suite.addTestSuite(PlayImExportTest.class);
 		suite.addTestSuite(ProductAction.class);
 		suite.addTestSuite(LibraryGlobalEagerAction.class);
 		suite.addTestSuite(LibraryNonResolvingAction.class);
