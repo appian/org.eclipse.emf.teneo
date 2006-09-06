@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.9 2006/09/06 06:56:50 mtaal Exp $
+ * $Id: AllTests.java,v 1.10 2006/09/06 11:32:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -50,7 +50,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class AllTests {
 
@@ -59,7 +59,7 @@ public class AllTests {
 				HibernateTestbed.instance().getConfigurations());
 
 		suite.addTestSuite(ToOneAction.class);
-		suite.addTestSuite(IdBagAction.class);
+		//suite.addTestSuite(IdBagAction.class);
 
 		suite.addTestSuite(SecondarytableHibernateAction.class);
 		suite.addTestSuite(ManyToManyAction.class);
