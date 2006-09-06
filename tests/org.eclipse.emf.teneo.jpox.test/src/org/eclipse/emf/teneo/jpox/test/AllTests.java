@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.4 2006/08/25 11:17:02 mtaal Exp $
+ * $Id: AllTests.java,v 1.5 2006/09/06 10:57:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -23,19 +23,19 @@ import junit.framework.TestSuite;
  * Runs all hibernate tests.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new TestSuite("All tests for jpox");
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.annotations.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.detach.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.elist.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.relation.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.annotations.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.detach.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.elist.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.relation.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.sample.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.issues.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs.AllTests.suite());
+//		suite.addTest(org.eclipse.emf.teneo.jpox.test.issues.AllTests.suite());
 		return suite;
 	}
 
