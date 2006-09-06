@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CascadeNotallAction.java,v 1.3 2006/09/04 08:38:59 mtaal Exp $
+ * $Id: CascadeNotallAction.java,v 1.4 2006/09/06 06:49:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example without orphan delete or dependent element
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class CascadeNotallAction extends AbstractTestAction {
 	/**
@@ -104,7 +104,6 @@ public class CascadeNotallAction extends AbstractTestAction {
 
 				/*
 				 * final Object[] obj = ((StoreResource)res).getCrossReferencers(tolkien); for (int i = 0; i < obj.length; i++) {
-				 * System.err.println(obj.getClass().getName()); }
 				 */
 
 				/*

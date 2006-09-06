@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BookAction.java,v 1.5 2006/09/05 12:17:00 mtaal Exp $
+ * $Id: BookAction.java,v 1.6 2006/09/06 06:49:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class BookAction extends AbstractTestAction {
 	/**
@@ -89,7 +89,6 @@ public class BookAction extends AbstractTestAction {
 			Book book = (Book) store.getObject(Book.class);
 			assertTrue("The length of the booktitle should not be more than 25: " + book.getTitle().length(), book
 					.getTitle().length() <= 25);
-			System.err.println(book.getWeight());
 			assertTrue("Only a precision of 5 is defined, so weight is not correctly stored as it has more digits",
 					Math.abs(testDbl.subtract(book.getWeight()).doubleValue()) > 1.0);
 			book.setWeight(new BigDecimal("25.5"));

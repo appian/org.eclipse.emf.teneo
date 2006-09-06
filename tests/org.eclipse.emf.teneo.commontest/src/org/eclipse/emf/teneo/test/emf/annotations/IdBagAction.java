@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdBagAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: IdBagAction.java,v 1.2 2006/09/06 06:49:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -72,6 +72,7 @@ public class IdBagAction extends AbstractTestAction {
 			final DatabaseMetaData metaData = store.getConnection().getMetaData();
 			resultSet = metaData.getPrimaryKeys(null, null, "roles");
 			assertTrue("No primary key found for \"roles\" table.", resultSet.next());
+			System.err.println(resultSet.getString("COLUMN_NAME"));
 			assertTrue("Primary key column should be named \"ID\"", "ID".equalsIgnoreCase(resultSet.getString("COLUMN_NAME")));
 			assertFalse("Found more than one primary key.", resultSet.next());
 		} catch (SQLException e) {
