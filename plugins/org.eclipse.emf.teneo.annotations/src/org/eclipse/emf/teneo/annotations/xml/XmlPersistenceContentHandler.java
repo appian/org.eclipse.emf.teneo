@@ -132,7 +132,6 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 				.create((EClass) annotationEStructuralFeature.getEType());
 		pAnnotations.push(pAnnotation);
 
-		System.err.println("Processing PAnnotation \"" + pAnnotation.eClass().getName() + "\".");
 		if (annotationEStructuralFeature.isMany()) {
 			((List) pAnnotatedEModelElement.eGet(annotationEStructuralFeature)).add(pAnnotation);
 		} else {
@@ -212,7 +211,7 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 			break;
 		}
 		default:
-			throw new AssertionError("Invalid parse state encountered.");
+			throw new ParseXMLAnnotationsException("Invalid parse state encountered.");
 		}
 		parseStates.push(new Integer(newParseState));
 
@@ -228,7 +227,6 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 			if (pAnnotatedEPackage == null) {
 				throw new SAXException("Could not find PAnnotatedEPackage \"" + namespaceUri + "\".");
 			}
-			System.err.println("Processing EPackage \"" + namespaceUri + "\".");
 			break;
 		}
 		case ECLASS: {
