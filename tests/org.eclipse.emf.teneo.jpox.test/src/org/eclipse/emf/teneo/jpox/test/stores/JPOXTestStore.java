@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.5 2006/09/06 08:58:32 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.6 2006/09/06 09:28:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -60,7 +60,7 @@ import org.jpox.store.Dictionary;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -140,8 +140,8 @@ public class JPOXTestStore extends AbstractTestStore {
 		File packageFile = new File(pluginDir,	packagePath);
 		File packageDirectory = packageFile.getParentFile();
 		if (!packageDirectory.exists()) {
-			packagePath = "org.eclipse.emf.teneo.samples" + File.separator + "@dot" + 
-				File.separator + epack.getClass().getName().replace('.', File.separatorChar) + ".class";
+			packagePath = "org.eclipse.emf.teneo.samples" + File.separator + 
+				epack.getClass().getName().replace('.', File.separatorChar) + ".class";
 			packageFile = new File(pluginDir,	packagePath);
 			packageDirectory = packageFile.getParentFile();
 		}
