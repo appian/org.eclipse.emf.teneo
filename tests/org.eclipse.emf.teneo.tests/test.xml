@@ -1,53 +1,47 @@
-<project name="Automated Testing for Teneo" default="all"  basedir="." >
+<?xml version="1.0"?>
 
-	<!--properties file containing the plugin directory name including version number-->
-	<property file="test.properties" />
+<project name="testsuite" default="run" basedir=".">
+  <!-- The property ${eclipse-home} should be passed into this script -->
+  <!-- Set a meaningful default value for when it is not. -->
+  <property name="eclipse-home" value="${basedir}\..\.."/>
 
-	<!--properties file containing other test flags and options -->
-	<property file="testing.properties" />
+  <!-- sets the properties plugin-name, and library-file -->
+  <property name="plugin-name" value="org.eclipse.emf.teneo.tests"/>
+  <property name="library-file" value="${eclipse-home}/plugins/org.eclipse.test/library.xml"/>
 
-	<!--default directory where test-eclipse will be installed-->
-	<property name="install" value="${basedir}/target" />
+  <!-- This target holds all initialization code that needs to be done for -->
+  <!-- all tests that are to be run. Initialization for individual tests -->
+  <!-- should be done within the body of the suite target. -->
+  <target name="init">
+    <tstamp/>
+    <delete>
+      <fileset dir="${eclipse-home}" includes="org*.xml"/>
+    </delete>
+  </target>
 
-	<!--name that can be added to report name to identify which platform tests results come from-->
-	<property name="platform" value="" />
+  <!-- This target defines the tests that need to be run. -->
+  <target name="suite">
+    <property name="emf-folder" value="${eclipse-home}/emf_folder"/>
+    <delete dir="${emf-folder}" quiet="true"/>
+    <ant target="core-test" antfile="${library-file}" dir="${eclipse-home}">
+      <property name="data-dir" value="${emf-folder}"/>
+      <property name="plugin-name" value="${plugin-name}"/>
+      <property name="classname" value="org.eclipse.emf.tests.AllTests"/>
+    </ant>
+  </target>
 
-	<!-- The root of the eclipse installation -->
-	<property name="eclipse-home" value="${install}/eclipse" />
+  <!-- This target holds code to cleanup the testing environment after -->
+  <!-- after all of the tests have been run. You can use this target to -->
+  <!-- delete temporary files that have been created. -->
+  <target name="cleanup">
+  </target>
 
-	<!-- The directory that will contain the xml and html results from the tests that are run -->
- 	<property name="results" value="${basedir}/results" />
-
-	<target name="init">
-	</target>
-
-	<target name="setup" if="clean" description="Reinstall the test Eclipse installation if specified by user">
-	</target>
-
-	<target name="runtests" depends="setup" description="Runs ant on the test.xml for a specified plugin.  Requires a property value setting for testPlugin only if test.properties is not available.  The property testPlugin represents a directory name made up of the plugin id and plugin version.  This directory must contain a valid test.xml.">
-		<tstamp><format property="runtests-starttime" pattern="HH:mm:ss"/></tstamp>
-		<echo message="Start: [${runtests-starttime}]"/>
-		<ant antfile="${eclipse-home}/plugins/${testPlugin}/test.xml" dir="${eclipse-home}" />
-		<copy file="${eclipse-home}/${report}.xml" tofile="${results}/xml/${report}_${platform}.xml" verbose="true"/>
-		<tstamp><format property="runtests-endtime" pattern="HH:mm:ss"/></tstamp>
-		<echo message="Done: [${runtests-endtime}]"/>
-	</target>
-
-	<target name="teneo" description="Runs the test.xml of the test plugins">
-		<antcall target="runtests">
-			<param name="testPlugin" value="${org.eclipse.emf.teneo.hibernate.test}" />
-			<param name="report" value="org.eclipse.emf.teneo.hibernate.test" />
-		</antcall>
-
-<!--
-		<antcall target="runtests">
-			<param name="testPlugin" value="${org.eclipse.emf.teneo.jpox.test}" />
-			<param name="report" value="org.eclipse.emf.teneo.jpox.test" />
-		</antcall>
--->
-	</target>
-
-	<target name="all">
-		<antcall target="teneo" />
-	</target>
+  <!-- This target runs the test suite. Any actions that need to happen -->
+  <!-- after all the tests have been run should go here. -->
+  <target name="run" depends="init,suite,cleanup">
+    <ant target="collect" antfile="${library-file}" dir="${eclipse-home}">
+      <property name="includes" value="org*.xml"/>
+      <property name="output-file" value="${plugin-name}.xml"/>
+    </ant>
+  </target>
 </project>
