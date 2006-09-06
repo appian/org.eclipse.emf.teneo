@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Utils.java,v 1.6 2006/08/29 17:07:18 mtaal Exp $
+ * $Id: Utils.java,v 1.7 2006/09/06 09:49:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -29,12 +29,24 @@ import org.eclipse.emf.teneo.test.StoreTestException;
  * Contains utility methods for testing.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ $Date: 2006/08/29 17:07:18 $
+ * @version $Revision: 1.7 $ $Date: 2006/09/06 09:49:51 $
  */
 
 public class Utils {
 	/** The propertyname used to specify which database to use */
 	public static String DATABASE_PROP_NAME = "database";
+
+	/** Filter on the name of the plugiin */
+	public static File getPluginDir(File pluginsDir, String pluginName) throws IOException {
+		final File[] plugins = pluginsDir.listFiles();
+		for (int i = 0; i < plugins.length; i++) {
+			final File plugin = plugins[i];
+			if (plugin.getName().startsWith(pluginName)) {
+				return plugin;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Returns test properties.

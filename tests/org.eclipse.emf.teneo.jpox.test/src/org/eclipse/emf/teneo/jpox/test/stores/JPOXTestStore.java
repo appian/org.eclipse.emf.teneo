@@ -11,12 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.6 2006/09/06 09:28:53 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.7 2006/09/06 09:49:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.Collection;
 import java.util.List;
@@ -45,6 +46,7 @@ import org.eclipse.emf.teneo.jpox.emf.JpoxConstants;
 import org.eclipse.emf.teneo.jpox.emf.JpoxDataStore;
 import org.eclipse.emf.teneo.jpox.emf.JpoxHelper;
 import org.eclipse.emf.teneo.jpox.emf.resource.JPOXResource;
+import org.eclipse.emf.teneo.jpox.test.Utils;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.AbstractTestStore;
 import org.eclipse.emf.teneo.test.stores.TestDatabaseAdapter;
@@ -60,7 +62,7 @@ import org.jpox.store.Dictionary;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -122,7 +124,7 @@ public class JPOXTestStore extends AbstractTestStore {
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, adapter.getDbUser());
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, adapter.getDbPwd());
 		properties.setProperty(Dictionary.IDENTIFIER_CASE_PROPERTY, "LowerCase");
-		
+
 		// properties.setProperty(PMFConfiguration.JDO_MAPPING_CATALOG_PROPERTY, adapter.getDbName());
 
 		if (inheritanceType.getValue() == InheritanceType.JOINED) {
@@ -131,30 +133,34 @@ public class JPOXTestStore extends AbstractTestStore {
 			properties.setProperty(PMFConfiguration.DEFAULT_INHERITANCE_STRATEGY_PROPERTY, "JDO2");
 		}
 
-		log.debug("Copying " + jdoLocation + " to classpath");
-		EPackage epack = epackages[0];
-		final File sourceFile = new File(jdoLocation);
-		final File pluginDir = sourceFile.getParentFile().getParentFile().getParentFile().getParentFile().getParentFile();
-		String packagePath = "org.eclipse.emf.teneo.samples" + File.separator + "bin" + 
-			File.separator + epack.getClass().getName().replace('.', File.separatorChar) + ".class";
-		File packageFile = new File(pluginDir,	packagePath);
-		File packageDirectory = packageFile.getParentFile();
-		if (!packageDirectory.exists()) {
-			packagePath = "org.eclipse.emf.teneo.samples" + File.separator + 
-				epack.getClass().getName().replace('.', File.separatorChar) + ".class";
-			packageFile = new File(pluginDir,	packagePath);
-			packageDirectory = packageFile.getParentFile();
+		try {
+			log.debug("Copying " + jdoLocation + " to classpath");
+			EPackage epack = epackages[0];
+			final File sourceFile = new File(jdoLocation);
+			final File pluginsDir = sourceFile.getParentFile().getParentFile().getParentFile().getParentFile()
+					.getParentFile();
+			final File pluginDir = Utils.getPluginDir(pluginsDir, "org.eclipse.emf.teneo.samples");
+			String packagePath = "bin" + File.separator + epack.getClass().getName().replace('.', File.separatorChar)
+					+ ".class";
+			File packageFile = new File(pluginDir, packagePath);
+			File packageDirectory = packageFile.getParentFile();
+			if (!packageDirectory.exists()) {
+				packagePath = epack.getClass().getName().replace('.', File.separatorChar) + ".class";
+				packageFile = new File(pluginDir, packagePath);
+				packageDirectory = packageFile.getParentFile();
+			}
+
+			final File dest = new File(packageDirectory.getParentFile(), "package.jdo");
+			final File destination = new File(dest.getAbsolutePath());
+			if (destination.exists()) {
+				log.warn("Overwriting existing package.jdo file in location " + destination.getAbsolutePath());
+				destination.delete();
+			}
+			StoreUtil.copyFile(new File(jdoLocation), destination);
+		} catch (IOException e) {
+			throw new StoreTestException("IOException while copying mapping file", e);
 		}
-			
-		final File dest = new File(packageDirectory.getParentFile(), "package.jdo");
-		
-		final File destination = new File(dest.getAbsolutePath());
-		if (destination.exists()) {
-			log.warn("Overwriting existing package.jdo file in location " + destination.getAbsolutePath());
-			destination.delete();
-		}
-		StoreUtil.copyFile(new File(jdoLocation), destination);
-		
+
 		emfDataStore = JpoxHelper.INSTANCE.createRegisterDataStore(adapter.getDbName());
 		emfDataStore.setProperties(properties);
 		emfDataStore.setEPackages(epackages);

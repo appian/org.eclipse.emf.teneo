@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.17 2006/09/06 09:28:53 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.18 2006/09/06 09:49:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -75,22 +75,15 @@ public class JPOXTestbed extends Testbed {
 			if (!testFile.exists()) { // running on eclipse server?
 				log.debug("Path to jdo file directory does not exist: " + RUN_BASE_DIR);
 				
-				final File pluginDir = new File(System.getProperty("user.dir"), "plugins");
-				final File[] plugins = pluginDir.listFiles();
-				for (int i = 0; i < plugins.length; i++) {
-					final File plugin = plugins[i];
-					if (plugin.getName().startsWith("org.eclipse.emf.teneo.jpox.test")) {
-						RUN_BASE_DIR = plugin.getAbsolutePath() + File.separator + 
-							"run";
-						break;
-					}
-				}
-				log.debug("Trying " + RUN_BASE_DIR);
-				testFile = new File(RUN_BASE_DIR);
-				if (!testFile.exists()) {
+				final File pluginsDir = new File(System.getProperty("user.dir"), "plugins");
+				final File pluginDir = Utils.getPluginDir(pluginsDir, "org.eclipse.emf.teneo.jpox.test");
+				if (pluginDir != null) {					
+					RUN_BASE_DIR = pluginDir.getAbsolutePath() + File.separator + "run";
+				} else {
 					// error will be thrown later because class initialization errors are sometimes
 					// difficult to find
-					log.error("Directory for jdo files does not exist " + RUN_BASE_DIR);
+					log.error("Directory for jdo files does not exist! " + pluginsDir.getAbsolutePath() + 
+							File.separator + "org.eclipse.emf.teneo.jpox.test....");					
 				}
 			}
 		} catch (Exception e) {
@@ -211,27 +204,4 @@ public class JPOXTestbed extends Testbed {
 			throw new StoreTestException("Exception while enhancing", e);
 		}
 	}
-
-	/** Copies the mapping file to the bin directory
-	private File copyMappingToClassesDir(AbstractTest test, File mappingFile, boolean optimistic) {
-		try {
-			final File destination;
-			// the package.jdo is copied to the root of the classes dir to
-			// ensure that it is also
-			// found when a test case contains multiple packages
-			final Class packageClass = test.getEPackages()[0].getClass();
-			
-			// get the location of the class file
-			destination = new File(Utils.getParentDir(packageClass), "package.jdo");
-
-			if (destination.exists())
-				destination.delete();
-
-			StoreUtil.copyFile(mappingFile, destination);
-			return destination;
-		} catch (Exception e) {
-			throw new StoreTestException("Exception while enhancing", e);
-		}
-	}
-	*/
 }
