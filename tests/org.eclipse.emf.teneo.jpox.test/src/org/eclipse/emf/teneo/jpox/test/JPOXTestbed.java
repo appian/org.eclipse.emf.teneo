@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.14 2006/09/05 22:00:47 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.15 2006/09/06 08:58:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -21,6 +21,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Properties;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
@@ -38,10 +40,13 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class JPOXTestbed extends Testbed {
 	
+	/** The logger */
+	private static final Log log = LogFactory.getLog(JPOXTestbed.class);
+
 	/** The logger for this class */
 	//private static Log log = LogFactory.getLog(JPOXTestbed.class);
 
@@ -63,6 +68,26 @@ public class JPOXTestbed extends Testbed {
 	 */
 	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "run";
 
+	/** Test the rundir */
+	static {
+		try {
+			File testFile = new File(RUN_BASE_DIR);
+			if (!testFile.exists()) { // running on eclipse server?
+				log.debug("Path to jdo file directory does not exist: " + RUN_BASE_DIR);
+				RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "eclipse" + File.separatorChar + "run";
+				log.debug("Trying " + RUN_BASE_DIR);
+				testFile = new File(RUN_BASE_DIR);
+				if (!testFile.exists()) {
+					// error will be thrown later because class initialization errors are sometimes
+					// difficult to find
+					log.error("Directory for jdo files does not exist " + RUN_BASE_DIR);
+				}
+			}
+		} catch (Exception e) {
+			throw new StoreTestException("Exception while checking directory " + RUN_BASE_DIR, e);
+		}
+	}
+	
 	/** The factory responsible for creating a store */
 	private JPOXTestStoreFactory storeFactory;
 
@@ -83,6 +108,11 @@ public class JPOXTestbed extends Testbed {
 	 */
 	public TestStore createStore(AbstractTest testCase) {
 		try {
+			if (!new File(RUN_BASE_DIR).exists()) {
+				log.error("Directory for jdo files does not exist " + RUN_BASE_DIR);
+				throw new StoreTestException("Directory for jdo files does not exist " + RUN_BASE_DIR);
+			}
+
 			File mappingFile = getMappingFile(testCase, getActiveConfiguration());
 			//copyMappingToClassesDir(testCase, mappingFile, getActiveConfiguration().isOptimistic());
 

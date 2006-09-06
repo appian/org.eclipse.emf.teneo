@@ -11,12 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.6 2006/09/05 22:00:49 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.7 2006/09/06 08:58:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -93,7 +92,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ $Date: 2006/09/05 22:00:49 $
+ * @version $Revision: 1.7 $ $Date: 2006/09/06 08:58:40 $
  */
 
 public class JpoxDataStore {
@@ -175,36 +174,13 @@ public class JpoxDataStore {
 		if (suffix == null)
 			suffix = "jdo";
 		final String jdoFileName = JpoxConstants.PREFIX_PACKAGE	+ JpoxConstants.EXTENSION_SEPARATOR + suffix;
-		String additionalLocation = properties.getProperty(JpoxConstants.PACKAGE_JDO_LOCATION);
-		if (additionalLocation != null && !additionalLocation.endsWith(jdoFileName)) {
-			additionalLocation += File.separator + jdoFileName;
-		}
-		// copy the file listed in the additional file list to a place in the classpath!
-		// use the EPackage interface class!
-		if (additionalLocation != null) {
-			log.debug("Handling additional jdo file location " + additionalLocation);
-			final InputStream is = this.getClass().getResourceAsStream(additionalLocation);
-			if (is == null) { // absolute location somewhere?
-				log.debug(additionalLocation + " not in classpath, copying it there!");
-				EPackage epack = getEPackages()[0];
-				final File packageDirectory = new File(epack.getClass().getResource('/' + epack.getClass().getName().replace('.', '/') + ".class").getFile());
-				final File dest = new File(packageDirectory.getParentFile(), jdoFileName);
-				final File destination = new File(dest.getAbsolutePath());
-				if (destination.exists()) {
-					log.warn("Overwriting existing package.jdo file in location " + destination.getAbsolutePath());
-					destination.delete();
-				}
-				StoreUtil.copyFile(new File(additionalLocation), destination);
-			}
-		}
-		
 		final String[] jdoFileList = StoreUtil.getFileList(jdoFileName, null);
 		
 		// then create the list of all classnames
 		final String[] pcClassNames = getAllClassNames(jdoFileList);
 
 		// create the schema
-		createSchema(pcClassNames, properties, jdoFileList);
+		createSchema(pcClassNames, properties);
 
 		// a check if the topclasses are empty then as a default add all the classes from the pcClassNames
 		// this happens in case we have a testcase which is not based on epackages
@@ -418,8 +394,7 @@ public class JpoxDataStore {
 	}
 
 	/** Creates the tables in the database. This code is partially copied from the org.jpox.SchemaTool */
-	protected void createSchema(String[] pcClassNames, Properties origProps,
-			String[] jdoFileList) {
+	protected void createSchema(String[] pcClassNames, Properties origProps) {
 		if (!updateSchema) {
 			log.debug("Update of the database schema has been disabled returning");
 		}
