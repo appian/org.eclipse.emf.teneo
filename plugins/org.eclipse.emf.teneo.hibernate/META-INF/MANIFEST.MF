@@ -9,8 +9,7 @@ Eclipse-BuddyPolicy: dependent
 Require-Bundle: org.eclipse.emf.teneo;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.teneo.annotations;visibility:=reexport
-Export-Package: org.eclipse.emf.ecore.impl,
- org.eclipse.emf.teneo.hibernate,
+Export-Package: org.eclipse.emf.teneo.hibernate,
  org.eclipse.emf.teneo.hibernate.mapper,
  org.eclipse.emf.teneo.hibernate.mapping,
  org.eclipse.emf.teneo.hibernate.mapping.econtainer,

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Element.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
+ * $Id: Element.java,v 1.3 2006/09/06 12:02:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
@@ -25,7 +25,7 @@ import java.util.List;
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class Element extends Node {
@@ -50,9 +50,13 @@ public class Element extends Node {
 			}
 		}
 
-		final Attribute attr = new Attribute();
-		attr.setName(name);
-		attr.setText(text);
+		final Attribute attr = new Attribute(name, text);
+		attributes.add(attr);
+		return this;
+	}
+
+	/** Method to add attribute */
+	public Element addAttribute(Attribute attr) {
 		attributes.add(attr);
 		return this;
 	}
@@ -61,6 +65,13 @@ public class Element extends Node {
 	public Element addElement(String name) {
 		final Element element = new Element();
 		element.setName(name);
+		children.add(element);
+		element.setParent(this);
+		return element;
+	}
+
+	/** Method to add Element */
+	public Element addElement(Element element) {
 		children.add(element);
 		element.setParent(this);
 		return element;

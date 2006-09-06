@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListPropertyHandler.java,v 1.5 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: EListPropertyHandler.java,v 1.6 2006/09/06 12:02:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
-import org.eclipse.emf.ecore.impl.EcoreAccess;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEList;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEList;
@@ -57,7 +56,7 @@ import org.hibernate.property.Setter;
  * methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
