@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.4 2006/09/06 10:58:32 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.5 2006/09/06 11:31:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -256,7 +256,6 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 				throw new SAXException("EClassifier \"" + eClassName + "\" is not an EClass.");
 			}
 			pAnnotatedEClass = pAnnotatedModel.getPAnnotated((EClass) eClassifier);
-			System.err.println("Processing EClass \"" + eClassName + "\".");
 			break;
 		}
 		case ESTRUCTURALFEATURE: {
@@ -274,7 +273,6 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 						+ eClass.getName() + "\" is not an EReference.");
 			}
 			pAnnotatedEStructuralFeature = pAnnotatedModel.getPAnnotated(eStructuralFeature);
-			System.err.println("Processing EStructuralFeature \"" + eStructuralFeatureName + "\".");
 			break;
 		}
 		case EPACKAGE_ANNOTATION:
