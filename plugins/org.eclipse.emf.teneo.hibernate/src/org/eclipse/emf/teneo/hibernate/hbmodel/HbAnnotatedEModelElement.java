@@ -2,11 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEModelElement.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbAnnotatedEModelElement.java,v 1.3 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface HbAnnotatedEModelElement extends EObject {
+public interface HbAnnotatedEModelElement extends PAnnotatedEModelElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.6 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.7 2006/09/06 21:59:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
@@ -81,6 +82,12 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	// Value for an annotation element.
 	private static final int ANNOTATION_ATTRIBUTE = 9;
 
+	// <eclass>
+	private static final int EDATATYPE = 10;
+
+	// Annotation element for an <eclass>.
+	private static final int EDATATYPE_ANNOTATION =11;
+
 	// The pattern to split the XML element names against.
 	private static Pattern XML_NAME_PATTERN = Pattern.compile("-");
 
@@ -105,6 +112,9 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 
 	// The current PAnnotatedEClass.
 	private PAnnotatedEClass pAnnotatedEClass;
+
+	// The current PAnnotatedEDataType.
+	private PAnnotatedEDataType pAnnotatedEDataType;
 
 	// The current PAnnotatedEStructuralFeature of pAnnotatedEClass.
 	private PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature;
@@ -179,7 +189,12 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 		}
 
 	}
-
+	
+	/** 
+	 * Returns an estructuralfeature on the basis of the name, mainly does conversion of the xmlName
+	 * to the efeaturename, the prefix returned from getPrefix is also used.
+	 * todo: move prefix handling to XmlElementToEStructuralFeatureMapper.
+	 */
 	private EStructuralFeature getEStructuralFeature(EObject pAnnotatedEModelElement, String xmlName) {
 		String annotationEStructuralFeatureName = convertXmlNameToEStructuralFeatureName(xmlName);
 		EStructuralFeature annotationEStructuralFeature = pAnnotatedEModelElement.eClass().getEStructuralFeature(
@@ -218,6 +233,8 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 		case EPACKAGE:
 			if (localName.equals("eclass")) {
 				newParseState = ECLASS;
+			} else if (localName.equals("edatatype")) {
+					newParseState = EDATATYPE;
 			} else {
 				newParseState = EPACKAGE_ANNOTATION;
 			}
@@ -231,6 +248,9 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 			break;
 		case ESTRUCTURALFEATURE:
 			newParseState = ESTRUCTURALFEATURE_ANNOTATION;
+			break;
+		case EDATATYPE:
+			newParseState = EDATATYPE_ANNOTATION;
 			break;
 		case EPACKAGE_ANNOTATION:
 		case ECLASS_ANNOTATION:
@@ -275,6 +295,18 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 			pAnnotatedEClass = pAnnotatedModel.getPAnnotated((EClass) eClassifier);
 			break;
 		}
+		case EDATATYPE: {
+			final String eDataTypeName = attributes.getValue("name");
+			final EDataType et = (EDataType)pAnnotatedEPackage.getAnnotatedEPackage().getEClassifier(eDataTypeName);
+			if (et == null) {
+				throw new SAXException("Could not find EClass \"" + eDataTypeName + "\"");
+			}
+			if (!(et instanceof EDataType)) {
+				throw new SAXException("EClassifier \"" + eDataTypeName + "\" is not an EDataType.");
+			}
+			pAnnotatedEDataType = pAnnotatedModel.getPAnnotated((EDataType) et);
+			break;
+		}
 		case ESTRUCTURALFEATURE: {
 			final String eStructuralFeatureName = attributes.getValue("name");
 			final EClass eClass = pAnnotatedEClass.getAnnotatedEClass();
@@ -300,6 +332,9 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 			break;
 		case ESTRUCTURALFEATURE_ANNOTATION:
 			applyAnnotation(pAnnotatedEStructuralFeature, localName, attributes);
+			break;
+		case EDATATYPE_ANNOTATION:
+			applyAnnotation(pAnnotatedEDataType, localName, attributes);
 			break;
 		case NESTED_ANNOTATION: {
 			// final String eStructuralFeatureName = convertElementNameToEStructuralFeatureName(localName);

@@ -11,16 +11,16 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: MappingBuilder.java,v 1.4 2006/09/06 17:26:44 mtaal Exp $
+ * $Id: MappingBuilder.java,v 1.5 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
+import org.eclipse.emf.teneo.annotations.mapper.DefaultAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.util.BasicPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.util.EannotationPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
 import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
-import org.eclipse.emf.teneo.mapper.DefaultAnnotator;
-import org.eclipse.emf.teneo.mapper.PersistenceMappingBuilder;
 
 /**
  * This class simply provides the Hibernate-equivalent builders to the

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttributeImpl.java,v 1.6 2006/09/06 17:26:44 mtaal Exp $
+ * $Id: HbAnnotatedEAttributeImpl.java,v 1.7 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
 
 /**
@@ -565,14 +565,14 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				default: return -1;
 			}
 		}
-		if (baseClass == HbAnnotatedEStructuralFeature.class) {
+		if (baseClass == HbAnnotatedETypeElement.class) {
 			switch (derivedFeatureID) {
-				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_WHERE: return HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_WHERE;
-				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLLECTION_OF_ELEMENTS: return HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_COLLECTION_OF_ELEMENTS;
-				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_MAP_KEY: return HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_MAP_KEY;
-				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLUMNS: return HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_COLUMNS;
-				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_CASCADE: return HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_CASCADE;
-				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_ID_BAG: return HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_ID_BAG;
+				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_WHERE: return HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_WHERE;
+				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLLECTION_OF_ELEMENTS: return HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_COLLECTION_OF_ELEMENTS;
+				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_MAP_KEY: return HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_MAP_KEY;
+				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLUMNS: return HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_COLUMNS;
+				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_CASCADE: return HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_CASCADE;
+				case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_ID_BAG: return HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG;
 				default: return -1;
 			}
 		}
@@ -590,14 +590,14 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				default: return -1;
 			}
 		}
-		if (baseClass == HbAnnotatedEStructuralFeature.class) {
+		if (baseClass == HbAnnotatedETypeElement.class) {
 			switch (baseFeatureID) {
-				case HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_WHERE: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_WHERE;
-				case HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_COLLECTION_OF_ELEMENTS: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLLECTION_OF_ELEMENTS;
-				case HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_MAP_KEY: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_MAP_KEY;
-				case HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_COLUMNS: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLUMNS;
-				case HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_CASCADE: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_CASCADE;
-				case HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_ID_BAG: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_ID_BAG;
+				case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_WHERE: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_WHERE;
+				case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_COLLECTION_OF_ELEMENTS: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLLECTION_OF_ELEMENTS;
+				case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_MAP_KEY: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_MAP_KEY;
+				case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_COLUMNS: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLUMNS;
+				case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_CASCADE: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_CASCADE;
+				case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG: return HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_ID_BAG;
 				default: return -1;
 			}
 		}

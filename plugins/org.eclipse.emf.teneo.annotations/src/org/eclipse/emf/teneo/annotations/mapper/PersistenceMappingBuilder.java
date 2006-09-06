@@ -11,10 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingBuilder.java,v 1.5 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: PersistenceMappingBuilder.java,v 1.1 2006/09/06 21:59:50 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.mapper;
+package org.eclipse.emf.teneo.annotations.mapper;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -23,12 +23,19 @@ import java.util.Iterator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.util.BasicPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.util.EannotationPamodelBuilder;
@@ -40,7 +47,7 @@ import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.1 $
  */
 public class PersistenceMappingBuilder {
 
@@ -124,6 +131,10 @@ public class PersistenceMappingBuilder {
 			xmlPersistenceMapper.applyPersistenceMapping(pam);
 		}
 
+		// now the annotations on the edatatype should be copied to the annotations on the 
+		// eattribute, overwrite may not occur!
+		processEDataTypeAnnotations(pam);
+		
 		log.debug("Add default annotations");
 		// DCB: Introduce indirection so that extensions to annotation processing mechanism
 		// can provide their own default annotation.
@@ -131,6 +142,38 @@ public class PersistenceMappingBuilder {
 
 		log.debug("Returning created pamodel");
 		return pam;
+	}
+	
+	/** For each pannotated eattribute find the pannotated edatatype and copy the values of the
+	 * estructuralfeature if not yet set in the eattribute
+	 */
+	private void processEDataTypeAnnotations(PAnnotatedModel pam) {
+		log.debug("Copying annotations on edatatypes over eattribute annotations!");
+		for (Iterator pit = pam.getPaEPackages().iterator(); pit.hasNext();) {
+			final PAnnotatedEPackage pep = (PAnnotatedEPackage)pit.next();
+			for (Iterator cit = pep.getPaEClasses().iterator(); cit.hasNext();) {
+				final PAnnotatedEClass pec = (PAnnotatedEClass)cit.next();
+				for (Iterator fit = pec.getPaEStructuralFeatures().iterator(); fit.hasNext();) {
+					final PAnnotatedEStructuralFeature pef = (PAnnotatedEStructuralFeature)fit.next();
+					if (pef instanceof PAnnotatedEAttribute) {
+						final PAnnotatedEAttribute pea = (PAnnotatedEAttribute)pef;
+						final EDataType et = (EDataType)pea.getAnnotatedEAttribute().getEAttributeType();
+						final PAnnotatedEDataType ped = pam.getPAnnotated(et);
+						if (ped == null) continue; // not an explicit modeled edatatype
+						for (Iterator eit = ped.eClass().getEAllStructuralFeatures().iterator(); eit.hasNext();) {
+							final EStructuralFeature esf = (EStructuralFeature)eit.next();
+							final EStructuralFeature asf = pea.eClass().getEStructuralFeature(esf.getName());
+							if (asf != null && !pea.eIsSet(asf) && ped.eIsSet(esf)) {
+								log.debug("Copying value for feature " + esf.getName() +
+										" from edatatype " + et.getName() + " to " + pea.getAnnotatedEAttribute().getName());
+								
+								pea.eSet(asf, ped.eGet(esf));
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	// DCB: New methods to allow for extension

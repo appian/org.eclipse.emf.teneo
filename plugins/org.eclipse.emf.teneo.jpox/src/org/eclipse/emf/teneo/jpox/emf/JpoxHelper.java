@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxHelper.java,v 1.3 2006/08/22 22:23:29 mtaal Exp $
+ * $Id: JpoxHelper.java,v 1.4 2006/09/06 21:59:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf;
@@ -27,16 +27,16 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.jpox.emf.resource.JPOXResourceDAOFactory;
 import org.eclipse.emf.teneo.jpox.mapper.JPOXMappingGenerator;
-import org.eclipse.emf.teneo.mapper.PersistenceMappingBuilder;
 
 /**
  * Is the main entry point for 'outside' users to create persistence manager factories and register EMF Data Stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class JpoxHelper {
 	/** The logger */

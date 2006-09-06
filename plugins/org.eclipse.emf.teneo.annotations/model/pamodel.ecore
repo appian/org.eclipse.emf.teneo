@@ -50,6 +50,12 @@
         eType="ecore:EClass pannotation.ecore#//SequenceGenerator" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerators" upperBound="-1"
         eType="ecore:EClass pannotation.ecore#//TableGenerator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paEDataTypes" upperBound="-1"
+        eType="#//PAnnotatedEDataType" containment="true" eOpposite="#//PAnnotatedEDataType/paEPackage">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
+        <details key="ignore" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEClass" eSuperTypes="#//PAnnotatedEModelElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -103,7 +109,7 @@
         eType="ecore:EClass pannotation.ecore#//AssociationOverride" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEStructuralFeature" abstract="true"
-      eSuperTypes="#//PAnnotatedEModelElement">
+      eSuperTypes="#//PAnnotatedETypedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="EClassCommutes TransientNotAnnotated"/>
     </eAnnotations>
@@ -120,20 +126,6 @@
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeOverrides" upperBound="-1"
-        eType="ecore:EClass pannotation.ecore#//AttributeOverride" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joinTable" eType="ecore:EClass pannotation.ecore#//JoinTable"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="oneToMany" eType="ecore:EClass pannotation.ecore#//OneToMany"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceGenerator" eType="ecore:EClass pannotation.ecore#//SequenceGenerator"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerator" eType="ecore:EClass pannotation.ecore#//TableGenerator"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" upperBound="-1"
-        eType="ecore:EClass pannotation.ecore#//JoinColumn" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="ecore:EClass pannotation.ecore#//Column"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEAttribute" eSuperTypes="#//PAnnotatedEStructuralFeature">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -187,5 +179,56 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="primaryKeyJoinColumns"
         upperBound="-1" eType="ecore:EClass pannotation.ecore#//PrimaryKeyJoinColumn"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedETypedElement" abstract="true"
+      eSuperTypes="#//PAnnotatedEModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="EClassCommutes TransientNotAnnotated"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeOverrides" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//AttributeOverride" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinTable" eType="ecore:EClass pannotation.ecore#//JoinTable"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oneToMany" eType="ecore:EClass pannotation.ecore#//OneToMany"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceGenerator" eType="ecore:EClass pannotation.ecore#//SequenceGenerator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerator" eType="ecore:EClass pannotation.ecore#//TableGenerator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//JoinColumn" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="ecore:EClass pannotation.ecore#//Column"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEDataType" eSuperTypes="#//PAnnotatedETypedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NotAnnotatedAsBasic GeneratedOnId DefinedGenerator IdOnEntityOrMappedSuper"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEDataType" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
+        <details key="ignore" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="basic" eType="ecore:EClass pannotation.ecore#//Basic"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enumerated" eType="ecore:EClass pannotation.ecore#//Enumerated"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generatedValue" eType="ecore:EClass pannotation.ecore#//GeneratedValue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="id" eType="ecore:EClass pannotation.ecore#//Id"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lob" eType="ecore:EClass pannotation.ecore#//Lob"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="temporal" eType="ecore:EClass pannotation.ecore#//Temporal"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="ecore:EClass pannotation.ecore#//Version"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paEPackage" eType="#//PAnnotatedEPackage"
+        eOpposite="#//PAnnotatedEPackage/paEDataTypes">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
+        <details key="ignore" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReference.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbAnnotatedEReference.java,v 1.3 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -18,7 +18,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
  * @model
  * @generated
  */
-public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotatedEStructuralFeature {
+public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotatedETypeElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -16,7 +16,7 @@ public class UnclassifiableMapper extends AbstractMapper implements
 		PAnnotatedProcessor {
 
 	private static final EStructuralFeature COLLECTION_OF_ELEMENTS = 
-		HbModelPackage.eINSTANCE.getHbAnnotatedEStructuralFeature_HbCollectionOfElements();
+		HbModelPackage.eINSTANCE.getHbAnnotatedETypeElement_HbCollectionOfElements();
 	private FeatureProcessor featureProcessor;
 
 	public UnclassifiableMapper(MappingContext hbmContext, FeatureProcessor featureProcessor) {

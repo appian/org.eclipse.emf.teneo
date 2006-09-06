@@ -11,7 +11,7 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HbAnnotationModelBuilder.java,v 1.5 2006/09/05 14:06:15 mtaal Exp $
+ * $Id: HbAnnotationModelBuilder.java,v 1.6 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -94,6 +94,10 @@ public class HbAnnotationModelBuilder extends EannotationPamodelBuilder {
 			break;
 		case EcorePackage.EPACKAGE:
 			paElement = HbModelFactory.eINSTANCE.createHbAnnotatedEPackage();
+			break;
+		case EcorePackage.EENUM:
+		case EcorePackage.EDATA_TYPE:
+			paElement = HbModelFactory.eINSTANCE.createHbAnnotatedEDataType();
 			break;
 		default:
 			throw new AssertionError("Trying to build HbAnnotatedEModelElement for a " + eModelElementEClass);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelSwitch.java,v 1.9 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: PamodelSwitch.java,v 1.10 2006/09/06 21:59:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -131,6 +131,7 @@ public class PamodelSwitch {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE: {
 				PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature = (PAnnotatedEStructuralFeature)theEObject;
 				Object result = casePAnnotatedEStructuralFeature(pAnnotatedEStructuralFeature);
+				if (result == null) result = casePAnnotatedETypedElement(pAnnotatedEStructuralFeature);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEStructuralFeature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -139,6 +140,7 @@ public class PamodelSwitch {
 				PAnnotatedEAttribute pAnnotatedEAttribute = (PAnnotatedEAttribute)theEObject;
 				Object result = casePAnnotatedEAttribute(pAnnotatedEAttribute);
 				if (result == null) result = casePAnnotatedEStructuralFeature(pAnnotatedEAttribute);
+				if (result == null) result = casePAnnotatedETypedElement(pAnnotatedEAttribute);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -147,7 +149,23 @@ public class PamodelSwitch {
 				PAnnotatedEReference pAnnotatedEReference = (PAnnotatedEReference)theEObject;
 				Object result = casePAnnotatedEReference(pAnnotatedEReference);
 				if (result == null) result = casePAnnotatedEStructuralFeature(pAnnotatedEReference);
+				if (result == null) result = casePAnnotatedETypedElement(pAnnotatedEReference);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT: {
+				PAnnotatedETypedElement pAnnotatedETypedElement = (PAnnotatedETypedElement)theEObject;
+				Object result = casePAnnotatedETypedElement(pAnnotatedETypedElement);
+				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedETypedElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PamodelPackage.PANNOTATED_EDATA_TYPE: {
+				PAnnotatedEDataType pAnnotatedEDataType = (PAnnotatedEDataType)theEObject;
+				Object result = casePAnnotatedEDataType(pAnnotatedEDataType);
+				if (result == null) result = casePAnnotatedETypedElement(pAnnotatedEDataType);
+				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEDataType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -246,6 +264,21 @@ public class PamodelSwitch {
 	}
 
 	/**
+	 * Returns the result of interpretting the object as an instance of '<em>PAnnotated EData Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>PAnnotated EData Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object casePAnnotatedEDataType(PAnnotatedEDataType object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpretting the object as an instance of '<em>PAnnotated EReference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -257,6 +290,21 @@ public class PamodelSwitch {
 	 * @generated
 	 */
 	public Object casePAnnotatedEReference(PAnnotatedEReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>PAnnotated ETyped Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>PAnnotated ETyped Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
 		return null;
 	}
 

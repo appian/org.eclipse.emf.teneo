@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicPamodelBuilder.java,v 1.4 2006/08/31 22:46:54 mtaal Exp $
+ * $Id: BasicPamodelBuilder.java,v 1.5 2006/09/06 21:59:50 mtaal Exp $
  */
 
 
@@ -21,12 +21,14 @@ package org.eclipse.emf.teneo.annotations.pamodel.util;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -110,6 +112,10 @@ public class BasicPamodelBuilder {
 		case EcorePackage.EPACKAGE:
 			paElement = PamodelFactory.eINSTANCE.createPAnnotatedEPackage();
 			break;
+		case EcorePackage.EENUM:
+		case EcorePackage.EDATA_TYPE:
+			paElement = PamodelFactory.eINSTANCE.createPAnnotatedEDataType();
+			break;
 		default:
 			throw new AssertionError("Trying to build PAnnotatedEModelElement for a " + eModelElementEClass);
 		}
@@ -160,6 +166,20 @@ public class BasicPamodelBuilder {
 	}
 	
 	/**
+	 * @return a <code>PAnnotatedEStructuralFeature</code> associated to the
+	 * given <code>EStructuralFeature</code> and adds it the model.
+	 * <p> The <code>PAnnotatedEStructuralFeature</code> is created only if 
+	 * not already present in the model.
+	 * <p>The operation may involve the creation of a 
+	 * <code>PAnnotatedEPackage</code> and a <code>PAnnotatedEClass</code>. 
+	 */
+	protected PAnnotatedEModelElement pElement(EDataType eDataType) {
+		PAnnotatedEDataType pDataType = (PAnnotatedEDataType) create(eDataType);
+		pElement(eDataType.getEPackage()).getPaEDataTypes().add(pDataType);
+		return pDataType;
+	}
+	
+	/**
 	 * @return a <code>PAnnotatedEModelElement</code> associated to the
 	 * given <code>EModelElement</code> and adds it the model.
 	 * @see #pElement(EPackage)
@@ -178,6 +198,9 @@ public class BasicPamodelBuilder {
 			break;
 		case EcorePackage.EPACKAGE:
 			pElement = pElement((EPackage) eElement);
+			break;
+		case EcorePackage.EDATA_TYPE:
+			pElement = pElement((EDataType) eElement);
 			break;
 		default:
 			throw new AssertionError("Trying to build PAnnotatedEModelElement for a " + eElement.eClass());
@@ -266,6 +289,8 @@ public class BasicPamodelBuilder {
 			Object eClassifier = i.next();
 			if (eClassifier instanceof EClass) {
 				addRecurse(paPackage, (EClass) eClassifier);
+			} else if (eClassifier instanceof EDataType) {
+				pElement((EDataType)eClassifier);
 			}
 		}
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelAdapterFactory.java,v 1.9 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: PamodelAdapterFactory.java,v 1.10 2006/09/06 21:59:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -103,6 +103,12 @@ public class PamodelAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object casePAnnotatedEReference(PAnnotatedEReference object) {
 				return createPAnnotatedEReferenceAdapter();
+			}
+			public Object casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
+				return createPAnnotatedETypedElementAdapter();
+			}
+			public Object casePAnnotatedEDataType(PAnnotatedEDataType object) {
+				return createPAnnotatedEDataTypeAdapter();
 			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
@@ -207,6 +213,20 @@ public class PamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType <em>PAnnotated EData Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType
+	 * @generated
+	 */
+	public Adapter createPAnnotatedEDataTypeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference <em>PAnnotated EReference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -217,6 +237,20 @@ public class PamodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPAnnotatedEReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement <em>PAnnotated ETyped Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement
+	 * @generated
+	 */
+	public Adapter createPAnnotatedETypedElementAdapter() {
 		return null;
 	}
 

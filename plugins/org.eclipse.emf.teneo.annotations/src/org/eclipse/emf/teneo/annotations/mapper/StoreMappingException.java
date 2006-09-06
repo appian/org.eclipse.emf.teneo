@@ -11,10 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: StoreMappingException.java,v 1.2 2006/07/23 19:38:45 mtaal Exp $
+ * $Id: StoreMappingException.java,v 1.1 2006/09/06 21:59:50 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.mapper;
+package org.eclipse.emf.teneo.annotations.mapper;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
  * distract the programmer and have no added value.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  */
 
 public class StoreMappingException extends RuntimeException {

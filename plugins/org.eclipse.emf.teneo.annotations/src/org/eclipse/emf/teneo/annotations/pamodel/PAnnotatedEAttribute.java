@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEAttribute.java,v 1.5 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: PAnnotatedEAttribute.java,v 1.6 2006/09/06 21:59:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -74,8 +74,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 	 * Returns the value of the '<em><b>Basic</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Basic</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Basic</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Basic</em>' containment reference.
@@ -88,7 +88,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getBasic <em>Basic</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Basic</em>' containment reference.
 	 * @see #getBasic()
 	 * @generated
@@ -99,8 +100,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 	 * Returns the value of the '<em><b>Enumerated</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Enumerated</em>' containment reference isn't clear, there really should be more of
-	 * a description here...
+	 * If the meaning of the '<em>Enumerated</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Enumerated</em>' containment reference.
@@ -113,7 +114,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getEnumerated <em>Enumerated</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Enumerated</em>' containment reference.
 	 * @see #getEnumerated()
 	 * @generated
@@ -124,8 +126,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 	 * Returns the value of the '<em><b>Generated Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Generated Value</em>' containment reference isn't clear, there really should be
-	 * more of a description here...
+	 * If the meaning of the '<em>Generated Value</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Generated Value</em>' containment reference.
@@ -138,7 +140,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getGeneratedValue <em>Generated Value</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Generated Value</em>' containment reference.
 	 * @see #getGeneratedValue()
 	 * @generated
@@ -149,8 +152,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 	 * Returns the value of the '<em><b>Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Id</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' containment reference.
@@ -163,7 +166,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getId <em>Id</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' containment reference.
 	 * @see #getId()
 	 * @generated
@@ -174,8 +178,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 	 * Returns the value of the '<em><b>Lob</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Lob</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Lob</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Lob</em>' containment reference.
@@ -188,7 +192,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getLob <em>Lob</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Lob</em>' containment reference.
 	 * @see #getLob()
 	 * @generated
@@ -199,8 +204,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 	 * Returns the value of the '<em><b>Temporal</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Temporal</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Temporal</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Temporal</em>' containment reference.
@@ -213,7 +218,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getTemporal <em>Temporal</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Temporal</em>' containment reference.
 	 * @see #getTemporal()
 	 * @generated
@@ -224,8 +230,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 	 * Returns the value of the '<em><b>Version</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Version</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>Version</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Version</em>' containment reference.
@@ -238,7 +244,8 @@ public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getVersion <em>Version</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Version</em>' containment reference.
 	 * @see #getVersion()
 	 * @generated

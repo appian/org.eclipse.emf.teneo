@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelFactoryImpl.java,v 1.9 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: PamodelFactoryImpl.java,v 1.10 2006/09/06 21:59:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -11,10 +11,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.annotations.pamodel.*;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
@@ -76,6 +75,7 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 			case PamodelPackage.PANNOTATED_ECLASS: return createPAnnotatedEClass();
 			case PamodelPackage.PANNOTATED_EATTRIBUTE: return createPAnnotatedEAttribute();
 			case PamodelPackage.PANNOTATED_EREFERENCE: return createPAnnotatedEReference();
+			case PamodelPackage.PANNOTATED_EDATA_TYPE: return createPAnnotatedEDataType();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -119,6 +119,16 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	public PAnnotatedEAttribute createPAnnotatedEAttribute() {
 		PAnnotatedEAttributeImpl pAnnotatedEAttribute = new PAnnotatedEAttributeImpl();
 		return pAnnotatedEAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PAnnotatedEDataType createPAnnotatedEDataType() {
+		PAnnotatedEDataTypeImpl pAnnotatedEDataType = new PAnnotatedEDataTypeImpl();
+		return pAnnotatedEDataType;
 	}
 
 	/**

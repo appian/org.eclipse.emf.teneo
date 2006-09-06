@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.4 2006/08/31 23:47:14 mtaal Exp $
+ * $Id: AllTests.java,v 1.5 2006/09/06 21:59:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.annotations;
@@ -26,6 +26,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.BookAction;
 import org.eclipse.emf.teneo.test.emf.annotations.CascadeNotallAction;
 import org.eclipse.emf.teneo.test.emf.annotations.CompositeIdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.DuplicatesAction;
+import org.eclipse.emf.teneo.test.emf.annotations.EDataTypeAction;
 import org.eclipse.emf.teneo.test.emf.annotations.IdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LazyLibraryAction;
@@ -42,13 +43,15 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				JPOXTestbed.instance().getConfigurations());
+		suite.addTestSuite(EDataTypeAction.class);
+
 		suite.addTestSuite(SecondaryTableActionJDO.class);
 		suite.addTestSuite(CascadeNotallAction.class);
 

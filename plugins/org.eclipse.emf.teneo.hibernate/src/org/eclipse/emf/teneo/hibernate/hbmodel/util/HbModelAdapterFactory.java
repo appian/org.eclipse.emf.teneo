@@ -2,25 +2,30 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelAdapterFactory.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbModelAdapterFactory.java,v 1.3 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-
-import org.eclipse.emf.teneo.hibernate.hbmodel.*;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,8 +89,8 @@ public class HbModelAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected HbModelSwitch modelSwitch =
 		new HbModelSwitch() {
-			public Object caseHbAnnotatedEStructuralFeature(HbAnnotatedEStructuralFeature object) {
-				return createHbAnnotatedEStructuralFeatureAdapter();
+			public Object caseHbAnnotatedETypeElement(HbAnnotatedETypeElement object) {
+				return createHbAnnotatedETypeElementAdapter();
 			}
 			public Object caseHbAnnotatedEAttribute(HbAnnotatedEAttribute object) {
 				return createHbAnnotatedEAttributeAdapter();
@@ -102,8 +107,14 @@ public class HbModelAdapterFactory extends AdapterFactoryImpl {
 			public Object caseHbAnnotatedEReference(HbAnnotatedEReference object) {
 				return createHbAnnotatedEReferenceAdapter();
 			}
+			public Object caseHbAnnotatedEDataType(HbAnnotatedEDataType object) {
+				return createHbAnnotatedEDataTypeAdapter();
+			}
 			public Object casePAnnotatedEModelElement(PAnnotatedEModelElement object) {
 				return createPAnnotatedEModelElementAdapter();
+			}
+			public Object casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
+				return createPAnnotatedETypedElementAdapter();
 			}
 			public Object casePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature object) {
 				return createPAnnotatedEStructuralFeatureAdapter();
@@ -119,6 +130,9 @@ public class HbModelAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object casePAnnotatedEReference(PAnnotatedEReference object) {
 				return createPAnnotatedEReferenceAdapter();
+			}
+			public Object casePAnnotatedEDataType(PAnnotatedEDataType object) {
+				return createPAnnotatedEDataTypeAdapter();
 			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
@@ -139,16 +153,16 @@ public class HbModelAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature <em>Hb Annotated EStructural Feature</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement <em>Hb Annotated EType Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement
 	 * @generated
 	 */
-	public Adapter createHbAnnotatedEStructuralFeatureAdapter() {
+	public Adapter createHbAnnotatedETypeElementAdapter() {
 		return null;
 	}
 
@@ -223,6 +237,20 @@ public class HbModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType <em>Hb Annotated EData Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType
+	 * @generated
+	 */
+	public Adapter createHbAnnotatedEDataTypeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement <em>PAnnotated EModel Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -233,6 +261,20 @@ public class HbModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPAnnotatedEModelElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement <em>PAnnotated ETyped Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement
+	 * @generated
+	 */
+	public Adapter createPAnnotatedETypedElementAdapter() {
 		return null;
 	}
 
@@ -303,6 +345,20 @@ public class HbModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPAnnotatedEReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType <em>PAnnotated EData Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType
+	 * @generated
+	 */
+	public Adapter createPAnnotatedEDataTypeAdapter() {
 		return null;
 	}
 

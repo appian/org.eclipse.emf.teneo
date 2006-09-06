@@ -11,18 +11,18 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingException.java,v 1.1 2006/07/08 22:04:30 mtaal Exp $
+ * $Id: JPOXMappingException.java,v 1.2 2006/09/06 21:59:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
 
-import org.eclipse.emf.teneo.mapper.StoreMappingException;
+import org.eclipse.emf.teneo.annotations.mapper.StoreMappingException;
 
 /**
  * Is thrown when something goes wrong when generating a jdo mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class JPOXMappingException extends StoreMappingException {

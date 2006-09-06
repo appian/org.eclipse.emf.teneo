@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelFactory.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbModelFactory.java,v 1.3 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -67,6 +67,15 @@ public interface HbModelFactory extends EFactory {
 	 * @generated
 	 */
 	HbAnnotatedEReference createHbAnnotatedEReference();
+
+	/**
+	 * Returns a new object of class '<em>Hb Annotated EData Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Hb Annotated EData Type</em>'.
+	 * @generated
+	 */
+	HbAnnotatedEDataType createHbAnnotatedEDataType();
 
 	/**
 	 * Returns the package supported by this factory.

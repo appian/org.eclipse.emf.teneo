@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureProcessor.java,v 1.3 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: FeatureProcessor.java,v 1.4 2006/09/06 21:59:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.processing;
@@ -59,13 +59,13 @@ public class FeatureProcessor {
 			PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_Transient(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Basic(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Id(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEStructuralFeature_OneToMany(),
+			PamodelPackage.eINSTANCE.getPAnnotatedETypedElement_OneToMany(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Version() };
 
 	/** Switch features for the annotated ereference */
 	private static final EStructuralFeature[] PAEREFERENCE_DISCR_FEATURES = new EStructuralFeature[] {
 			PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_Transient(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEStructuralFeature_OneToMany(),
+			PamodelPackage.eINSTANCE.getPAnnotatedETypedElement_OneToMany(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEReference_Embedded(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEReference_EmbeddedId(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEReference_ManyToMany(),

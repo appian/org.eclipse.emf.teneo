@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.2 2006/08/14 05:09:18 mtaal Exp $
+ * $Id: MappingContext.java,v 1.3 2006/09/06 21:59:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -21,6 +21,7 @@ import java.util.Stack;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.teneo.annotations.mapper.AbstractProcessingContext;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.jpox.mapper.association.EmbeddedMapper;
@@ -36,13 +37,12 @@ import org.eclipse.emf.teneo.jpox.mapper.property.InheritanceMapper;
 import org.eclipse.emf.teneo.jpox.mapper.property.JoinColumnMapper;
 import org.eclipse.emf.teneo.jpox.mapper.property.ManyBasicMapper;
 import org.eclipse.emf.teneo.jpox.mapper.property.TableMapper;
-import org.eclipse.emf.teneo.mapper.AbstractProcessingContext;
 
 /**
  * Contains instances of the mappers used.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class MappingContext extends AbstractProcessingContext {

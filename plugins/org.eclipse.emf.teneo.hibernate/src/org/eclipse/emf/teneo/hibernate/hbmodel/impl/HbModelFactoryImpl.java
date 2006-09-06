@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelFactoryImpl.java,v 1.5 2006/09/04 15:53:48 mtaal Exp $
+ * $Id: HbModelFactoryImpl.java,v 1.6 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelFactory;
@@ -72,6 +73,7 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 			case HbModelPackage.HB_ANNOTATED_ECLASS: return createHbAnnotatedEClass();
 			case HbModelPackage.HB_ANNOTATED_EPACKAGE: return createHbAnnotatedEPackage();
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE: return createHbAnnotatedEReference();
+			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE: return createHbAnnotatedEDataType();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -115,6 +117,16 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 	public HbAnnotatedEReference createHbAnnotatedEReference() {
 		HbAnnotatedEReferenceImpl hbAnnotatedEReference = new HbAnnotatedEReferenceImpl();
 		return hbAnnotatedEReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HbAnnotatedEDataType createHbAnnotatedEDataType() {
+		HbAnnotatedEDataTypeImpl hbAnnotatedEDataType = new HbAnnotatedEDataTypeImpl();
+		return hbAnnotatedEDataType;
 	}
 
 	/**

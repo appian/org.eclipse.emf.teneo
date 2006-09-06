@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttribute.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbAnnotatedEAttribute.java,v 1.3 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
  * @model
  * @generated
  */
-public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotatedEStructuralFeature {
+public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotatedETypeElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

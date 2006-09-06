@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.3 2006/09/05 12:17:06 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.4 2006/09/06 21:59:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -218,7 +218,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	 */
 	protected Element addCollectionElement(PAnnotatedEStructuralFeature paFeature) {
 		final Element collectionElement;
-        HbAnnotatedEStructuralFeature hbFeature = (HbAnnotatedEStructuralFeature) paFeature;
+        HbAnnotatedETypeElement hbFeature = (HbAnnotatedETypeElement) paFeature;
 		final IdBag idBag = hbFeature.getHbIdBag();
 
         boolean isMap = false;

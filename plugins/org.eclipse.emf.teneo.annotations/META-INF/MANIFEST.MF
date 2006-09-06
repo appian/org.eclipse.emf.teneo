@@ -12,6 +12,7 @@ Require-Bundle: org.eclipse.emf.common,
  org.eclipse.emf.teneo.libraries,
  org.eclipse.emf.teneo
 Export-Package: org.eclipse.emf.teneo.annotations,
+ org.eclipse.emf.teneo.annotations.mapper,
  org.eclipse.emf.teneo.annotations.pamodel,
  org.eclipse.emf.teneo.annotations.pamodel.impl,
  org.eclipse.emf.teneo.annotations.pamodel.util,
@@ -21,5 +22,4 @@ Export-Package: org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo.annotations.parser,
  org.eclipse.emf.teneo.annotations.processing,
  org.eclipse.emf.teneo.annotations.util,
- org.eclipse.emf.teneo.annotations.xml,
- org.eclipse.emf.teneo.mapper
+ org.eclipse.emf.teneo.annotations.xml

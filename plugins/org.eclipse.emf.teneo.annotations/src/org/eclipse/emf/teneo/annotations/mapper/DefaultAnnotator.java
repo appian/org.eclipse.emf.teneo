@@ -11,10 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.7 2006/09/05 12:16:57 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.1 2006/09/06 21:59:50 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.mapper;
+package org.eclipse.emf.teneo.annotations.mapper;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -76,7 +76,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.1 $
  */
 public class DefaultAnnotator {
 

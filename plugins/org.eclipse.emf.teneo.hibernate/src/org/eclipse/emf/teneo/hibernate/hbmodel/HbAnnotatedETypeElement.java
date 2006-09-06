@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEStructuralFeature.java,v 1.3 2006/09/06 17:26:44 mtaal Exp $
+ * $Id: HbAnnotatedETypeElement.java,v 1.1 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -16,26 +16,26 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Hb Annotated EStructural Feature</b></em>'.
+ * A representation of the model object '<em><b>Hb Annotated EType Element</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbWhere <em>Hb Where</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbCollectionOfElements <em>Hb Collection Of Elements</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbMapKey <em>Hb Map Key</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbColumns <em>Hb Columns</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbCascade <em>Hb Cascade</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbIdBag <em>Hb Id Bag</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbWhere <em>Hb Where</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbCollectionOfElements <em>Hb Collection Of Elements</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbMapKey <em>Hb Map Key</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbColumns <em>Hb Columns</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbCascade <em>Hb Cascade</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbIdBag <em>Hb Id Bag</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEStructuralFeature()
+ * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedETypeElement()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface HbAnnotatedEStructuralFeature extends PAnnotatedEStructuralFeature, HbAnnotatedEModelElement {
+public interface HbAnnotatedETypeElement extends PAnnotatedEStructuralFeature, HbAnnotatedEModelElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -53,14 +53,14 @@ public interface HbAnnotatedEStructuralFeature extends PAnnotatedEStructuralFeat
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Where</em>' containment reference.
 	 * @see #setHbWhere(Where)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEStructuralFeature_HbWhere()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedETypeElement_HbWhere()
 	 * @model containment="true"
 	 * @generated
 	 */
 	Where getHbWhere();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbWhere <em>Hb Where</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbWhere <em>Hb Where</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hb Where</em>' containment reference.
@@ -79,14 +79,14 @@ public interface HbAnnotatedEStructuralFeature extends PAnnotatedEStructuralFeat
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Collection Of Elements</em>' containment reference.
 	 * @see #setHbCollectionOfElements(CollectionOfElements)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEStructuralFeature_HbCollectionOfElements()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedETypeElement_HbCollectionOfElements()
 	 * @model containment="true"
 	 * @generated
 	 */
 	CollectionOfElements getHbCollectionOfElements();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbCollectionOfElements <em>Hb Collection Of Elements</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbCollectionOfElements <em>Hb Collection Of Elements</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hb Collection Of Elements</em>' containment reference.
@@ -105,14 +105,14 @@ public interface HbAnnotatedEStructuralFeature extends PAnnotatedEStructuralFeat
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Map Key</em>' containment reference.
 	 * @see #setHbMapKey(MapKey)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEStructuralFeature_HbMapKey()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedETypeElement_HbMapKey()
 	 * @model containment="true"
 	 * @generated
 	 */
 	MapKey getHbMapKey();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbMapKey <em>Hb Map Key</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbMapKey <em>Hb Map Key</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hb Map Key</em>' containment reference.
@@ -126,12 +126,12 @@ public interface HbAnnotatedEStructuralFeature extends PAnnotatedEStructuralFeat
 	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.Column}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Hb Columns</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Hb Columns</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Columns</em>' containment reference list.
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEStructuralFeature_HbColumns()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedETypeElement_HbColumns()
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.Column" containment="true"
 	 * @generated
 	 */
@@ -147,14 +147,14 @@ public interface HbAnnotatedEStructuralFeature extends PAnnotatedEStructuralFeat
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Cascade</em>' containment reference.
 	 * @see #setHbCascade(Cascade)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEStructuralFeature_HbCascade()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedETypeElement_HbCascade()
 	 * @model containment="true"
 	 * @generated
 	 */
 	Cascade getHbCascade();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbCascade <em>Hb Cascade</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbCascade <em>Hb Cascade</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hb Cascade</em>' containment reference.
@@ -173,14 +173,14 @@ public interface HbAnnotatedEStructuralFeature extends PAnnotatedEStructuralFeat
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Id Bag</em>' containment reference.
 	 * @see #setHbIdBag(IdBag)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEStructuralFeature_HbIdBag()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedETypeElement_HbIdBag()
 	 * @model containment="true"
 	 * @generated
 	 */
 	IdBag getHbIdBag();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbIdBag <em>Hb Id Bag</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbIdBag <em>Hb Id Bag</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hb Id Bag</em>' containment reference.
@@ -189,4 +189,4 @@ public interface HbAnnotatedEStructuralFeature extends PAnnotatedEStructuralFeat
 	 */
 	void setHbIdBag(IdBag value);
 
-} // HbAnnotatedEStructuralFeature
+} // HbAnnotatedETypeElement

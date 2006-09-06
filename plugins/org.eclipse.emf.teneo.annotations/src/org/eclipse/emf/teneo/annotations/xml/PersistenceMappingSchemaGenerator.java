@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingSchemaGenerator.java,v 1.1 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: PersistenceMappingSchemaGenerator.java,v 1.2 2006/09/06 21:59:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Parses the pamodel and pannotation model to generate a xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class PersistenceMappingSchemaGenerator {
@@ -124,9 +124,10 @@ public class PersistenceMappingSchemaGenerator {
 
 		root.addElement(createEPackageElement());
 		root.addElement(createEClassElement());
-		root.addElement(createEReferenceElement());
 		root.addElement(createEAttributeElement());
+		root.addElement(createEReferenceElement());
 		root.addElement(createPropertyElement());
+		root.addElement(createEDataTypeElement());
 		root.getChildren().addAll(annotationList);
 		
 		doc.setRoot(root);
@@ -236,12 +237,14 @@ public class PersistenceMappingSchemaGenerator {
 		addZeroUnbounded(choiceElement);
 		processStructuralFeatures(choiceElement, getPAnnotatedEClass().getEAllStructuralFeatures());
 
-		addZeroUnbounded(choiceElement.addElement("xsd:element").addAttribute("name", "eattribute").addAttribute(
-				"type", "EAttribute"));
-		addZeroUnbounded(choiceElement.addElement("xsd:element").addAttribute("name", "ereference").addAttribute(
-				"type", "EReference"));
-		addZeroUnbounded(choiceElement.addElement("xsd:element").addAttribute("name", "property").addAttribute("type",
-				"Property"));
+		choiceElement.addElement("xsd:element").addAttribute("name", "eattribute").addAttribute(
+				"type", "EAttribute");
+		choiceElement.addElement("xsd:element").addAttribute("name", "ereference").addAttribute(
+				"type", "EReference");
+		choiceElement.addElement("xsd:element").addAttribute("name", "property").addAttribute("type",
+				"Property");
+		choiceElement.addElement("xsd:element").addAttribute("name", "edatatype").addAttribute("type",
+				"EDataType");
 
 		eclassElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
 				.addAttribute("use", "required");
@@ -265,6 +268,17 @@ public class PersistenceMappingSchemaGenerator {
 		final Element choiceElement = eattrElement.addElement("xsd:choice");
 		addZeroUnbounded(choiceElement);
 		processStructuralFeatures(choiceElement, getPAnnotatedEAttribute().getEAllStructuralFeatures());
+		eattrElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
+				.addAttribute("use", "required");
+		return eattrElement;
+	}
+
+	/** Do the eDataType */
+	private Element createEDataTypeElement() {
+		final Element eattrElement = new Element("xsd:complexType").addAttribute("name", "EDataType");
+		final Element choiceElement = eattrElement.addElement("xsd:choice");
+		addZeroUnbounded(choiceElement);
+		processStructuralFeatures(choiceElement, getPAnnotatedEDataType().getEAllStructuralFeatures());
 		eattrElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
 				.addAttribute("use", "required");
 		return eattrElement;
@@ -364,6 +378,11 @@ public class PersistenceMappingSchemaGenerator {
 	/** Return the PAnnotatedEAttribute */
 	protected EClass getPAnnotatedEAttribute() {
 		return (EClass) modelEPackage.getEClassifier("PAnnotatedEAttribute");
+	}
+
+	/** Return the PAnnotatedEDataType */
+	protected EClass getPAnnotatedEDataType() {
+		return (EClass) modelEPackage.getEClassifier("PAnnotatedEDataType");
 	}
 
 	/**

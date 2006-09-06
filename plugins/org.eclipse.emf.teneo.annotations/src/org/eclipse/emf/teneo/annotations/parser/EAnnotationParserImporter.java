@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAnnotationParserImporter.java,v 1.4 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: EAnnotationParserImporter.java,v 1.5 2006/09/06 21:59:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -24,15 +24,14 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -71,6 +70,10 @@ public class EAnnotationParserImporter implements EClassResolver {
 			processAnnotatedModelElement(pac, pac.getAnnotatedEClass().getEPackage());
 			process(pac);
 		}
+		for (Iterator it = pap.getPaEDataTypes().iterator(); it.hasNext();) {
+			final PAnnotatedEDataType pac = (PAnnotatedEDataType)it.next();
+			processAnnotatedModelElement(pac, pac.getAnnotatedEDataType().getEPackage());
+		}
 	}
 	
 	/** Process the efeatures */
@@ -91,6 +94,7 @@ public class EAnnotationParserImporter implements EClassResolver {
 		}
 		
 		// now also do the annotations on the edatatype (if any)
+		/*
 		if (pee.getAnnotatedElement() instanceof EAttribute) {
 			final EAttribute eattr = (EAttribute)pee.getAnnotatedElement();
 			final EDataType edt = (EDataType)eattr.getEType();
@@ -98,6 +102,7 @@ public class EAnnotationParserImporter implements EClassResolver {
 				parsedNodes.addAll(process((EAnnotation)it.next(), pee.getAnnotatedElement()));
 			}
 		}
+		*/
 		
 		// now the parsed nodes should be translated into features of the enamedelement
 		// this is done multiplelevel

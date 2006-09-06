@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelSwitch.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbModelSwitch.java,v 1.3 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.util;
 
@@ -10,15 +10,22 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-
-import org.eclipse.emf.teneo.hibernate.hbmodel.*;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -101,12 +108,13 @@ public class HbModelSwitch {
 	 */
 	protected Object doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case HbModelPackage.HB_ANNOTATED_ESTRUCTURAL_FEATURE: {
-				HbAnnotatedEStructuralFeature hbAnnotatedEStructuralFeature = (HbAnnotatedEStructuralFeature)theEObject;
-				Object result = caseHbAnnotatedEStructuralFeature(hbAnnotatedEStructuralFeature);
-				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedEStructuralFeature);
-				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedEStructuralFeature);
-				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEStructuralFeature);
+			case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT: {
+				HbAnnotatedETypeElement hbAnnotatedETypeElement = (HbAnnotatedETypeElement)theEObject;
+				Object result = caseHbAnnotatedETypeElement(hbAnnotatedETypeElement);
+				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedETypeElement);
+				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedETypeElement);
+				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedETypeElement);
+				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedETypeElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -114,9 +122,10 @@ public class HbModelSwitch {
 				HbAnnotatedEAttribute hbAnnotatedEAttribute = (HbAnnotatedEAttribute)theEObject;
 				Object result = caseHbAnnotatedEAttribute(hbAnnotatedEAttribute);
 				if (result == null) result = casePAnnotatedEAttribute(hbAnnotatedEAttribute);
-				if (result == null) result = caseHbAnnotatedEStructuralFeature(hbAnnotatedEAttribute);
+				if (result == null) result = caseHbAnnotatedETypeElement(hbAnnotatedEAttribute);
 				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedEAttribute);
 				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedEAttribute);
+				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedEAttribute);
 				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -132,6 +141,7 @@ public class HbModelSwitch {
 			case HbModelPackage.HB_ANNOTATED_EMODEL_ELEMENT: {
 				HbAnnotatedEModelElement hbAnnotatedEModelElement = (HbAnnotatedEModelElement)theEObject;
 				Object result = caseHbAnnotatedEModelElement(hbAnnotatedEModelElement);
+				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEModelElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -147,10 +157,23 @@ public class HbModelSwitch {
 				HbAnnotatedEReference hbAnnotatedEReference = (HbAnnotatedEReference)theEObject;
 				Object result = caseHbAnnotatedEReference(hbAnnotatedEReference);
 				if (result == null) result = casePAnnotatedEReference(hbAnnotatedEReference);
-				if (result == null) result = caseHbAnnotatedEStructuralFeature(hbAnnotatedEReference);
+				if (result == null) result = caseHbAnnotatedETypeElement(hbAnnotatedEReference);
 				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedEReference);
 				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedEReference);
+				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedEReference);
 				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE: {
+				HbAnnotatedEDataType hbAnnotatedEDataType = (HbAnnotatedEDataType)theEObject;
+				Object result = caseHbAnnotatedEDataType(hbAnnotatedEDataType);
+				if (result == null) result = casePAnnotatedEDataType(hbAnnotatedEDataType);
+				if (result == null) result = caseHbAnnotatedETypeElement(hbAnnotatedEDataType);
+				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedEDataType);
+				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedEDataType);
+				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedEDataType);
+				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEDataType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -159,17 +182,17 @@ public class HbModelSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Hb Annotated EStructural Feature</em>'.
+	 * Returns the result of interpretting the object as an instance of '<em>Hb Annotated EType Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Hb Annotated EStructural Feature</em>'.
+	 * @return the result of interpretting the object as an instance of '<em>Hb Annotated EType Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseHbAnnotatedEStructuralFeature(HbAnnotatedEStructuralFeature object) {
+	public Object caseHbAnnotatedETypeElement(HbAnnotatedETypeElement object) {
 		return null;
 	}
 
@@ -249,6 +272,21 @@ public class HbModelSwitch {
 	}
 
 	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Hb Annotated EData Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Hb Annotated EData Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseHbAnnotatedEDataType(HbAnnotatedEDataType object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpretting the object as an instance of '<em>PAnnotated EModel Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -260,6 +298,21 @@ public class HbModelSwitch {
 	 * @generated
 	 */
 	public Object casePAnnotatedEModelElement(PAnnotatedEModelElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>PAnnotated ETyped Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>PAnnotated ETyped Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
 		return null;
 	}
 
@@ -335,6 +388,21 @@ public class HbModelSwitch {
 	 * @generated
 	 */
 	public Object casePAnnotatedEReference(PAnnotatedEReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>PAnnotated EData Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>PAnnotated EData Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object casePAnnotatedEDataType(PAnnotatedEDataType object) {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackage.java,v 1.5 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: PAnnotatedEPackage.java,v 1.6 2006/09/06 21:59:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EPackage;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEClasses <em>Pa EClasses</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getSequenceGenerators <em>Sequence Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getTableGenerators <em>Table Generators</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEDataTypes <em>Pa EData Types</em>}</li>
  * </ul>
  * </p>
  *
@@ -139,5 +140,24 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	 * @generated
 	 */
 	EList getTableGenerators();
+
+	/**
+	 * Returns the value of the '<em><b>Pa EData Types</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getPaEPackage <em>Pa EPackage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Pa EData Types</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pa EData Types</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_PaEDataTypes()
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getPaEPackage
+	 * @model type="org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType" opposite="paEPackage" containment="true"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
+	 * @generated
+	 */
+	EList getPaEDataTypes();
 
 } // PAnnotatedEPackage

@@ -11,16 +11,16 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.3 2006/09/05 12:17:06 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.4 2006/09/06 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
+import org.eclipse.emf.teneo.annotations.mapper.DefaultAnnotator;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
-import org.eclipse.emf.teneo.mapper.DefaultAnnotator;
 
 /**
  * This class simply understands not to create a OneToMany annotation when a CollectionOfElements

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.6 2006/09/04 15:53:43 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.7 2006/09/06 21:59:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
@@ -264,6 +266,14 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 */
 	public PAnnotatedEStructuralFeature getPAnnotated(EStructuralFeature e) {
 		return (PAnnotatedEStructuralFeature) eElement_to_pElement.get(e);
+	}
+
+	/**
+	 * @return Returns the unique <code>PAnnotatedEDataType</code> associated (via the <code>annotatedElement</code>
+	 *         feature) to the given <code>EDataType</code>.
+	 */
+	public PAnnotatedEDataType getPAnnotated(EDataType e) {
+		return (PAnnotatedEDataType) eElement_to_pElement.get(e);
 	}
 
 	/**

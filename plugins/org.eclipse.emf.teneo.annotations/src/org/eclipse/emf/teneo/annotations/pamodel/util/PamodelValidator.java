@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelValidator.java,v 1.8 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: PamodelValidator.java,v 1.9 2006/09/06 21:59:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -127,6 +127,10 @@ public class PamodelValidator extends EObjectValidator {
 				return validatePAnnotatedEAttribute((PAnnotatedEAttribute)value, diagnostics, context);
 			case PamodelPackage.PANNOTATED_EREFERENCE:
 				return validatePAnnotatedEReference((PAnnotatedEReference)value, diagnostics, context);
+			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT:
+				return validatePAnnotatedETypedElement((PAnnotatedETypedElement)value, diagnostics, context);
+			case PamodelPackage.PANNOTATED_EDATA_TYPE:
+				return validatePAnnotatedEDataType((PAnnotatedEDataType)value, diagnostics, context);
 			default: 
 				return true;
 		}
@@ -863,6 +867,130 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validatePAnnotatedEDataType(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map context) {
+		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotatedETypedElement_EClassCommutes(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotatedETypedElement_TransientNotAnnotated(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotatedEDataType_NotAnnotatedAsBasic(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotatedEDataType_GeneratedOnId(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotatedEDataType_DefinedGenerator(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotatedEDataType_IdOnEntityOrMappedSuper(pAnnotatedEDataType, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the NotAnnotatedAsBasic constraint of '<em>PAnnotated EData Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePAnnotatedEDataType_NotAnnotatedAsBasic(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(new BasicDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "NotAnnotatedAsBasic", getObjectLabel(pAnnotatedEDataType, context) }),
+						 new Object[] { pAnnotatedEDataType }));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the GeneratedOnId constraint of '<em>PAnnotated EData Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePAnnotatedEDataType_GeneratedOnId(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(new BasicDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "GeneratedOnId", getObjectLabel(pAnnotatedEDataType, context) }),
+						 new Object[] { pAnnotatedEDataType }));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the DefinedGenerator constraint of '<em>PAnnotated EData Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePAnnotatedEDataType_DefinedGenerator(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(new BasicDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "DefinedGenerator", getObjectLabel(pAnnotatedEDataType, context) }),
+						 new Object[] { pAnnotatedEDataType }));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the IdOnEntityOrMappedSuper constraint of '<em>PAnnotated EData Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePAnnotatedEDataType_IdOnEntityOrMappedSuper(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(new BasicDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "IdOnEntityOrMappedSuper", getObjectLabel(pAnnotatedEDataType, context) }),
+						 new Object[] { pAnnotatedEDataType }));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validatePAnnotatedEReference(PAnnotatedEReference pAnnotatedEReference, DiagnosticChain diagnostics, Map context) {
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEReference, diagnostics, context);
@@ -949,6 +1077,74 @@ public class PamodelValidator extends EObjectValidator {
 						 0,
 						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AssociationWellFormed", getObjectLabel(pAnnotatedEReference, context) }),
 						 new Object[] { pAnnotatedEReference }));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePAnnotatedETypedElement(PAnnotatedETypedElement pAnnotatedETypedElement, DiagnosticChain diagnostics, Map context) {
+		boolean result = validate_EveryMultiplicityConforms(pAnnotatedETypedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedETypedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedETypedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedETypedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedETypedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotatedETypedElement_EClassCommutes(pAnnotatedETypedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotatedETypedElement_TransientNotAnnotated(pAnnotatedETypedElement, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the EClassCommutes constraint of '<em>PAnnotated ETyped Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePAnnotatedETypedElement_EClassCommutes(PAnnotatedETypedElement pAnnotatedETypedElement, DiagnosticChain diagnostics, Map context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(new BasicDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "EClassCommutes", getObjectLabel(pAnnotatedETypedElement, context) }),
+						 new Object[] { pAnnotatedETypedElement }));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the TransientNotAnnotated constraint of '<em>PAnnotated ETyped Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePAnnotatedETypedElement_TransientNotAnnotated(PAnnotatedETypedElement pAnnotatedETypedElement, DiagnosticChain diagnostics, Map context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(new BasicDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "TransientNotAnnotated", getObjectLabel(pAnnotatedETypedElement, context) }),
+						 new Object[] { pAnnotatedETypedElement }));
 			}
 			return false;
 		}

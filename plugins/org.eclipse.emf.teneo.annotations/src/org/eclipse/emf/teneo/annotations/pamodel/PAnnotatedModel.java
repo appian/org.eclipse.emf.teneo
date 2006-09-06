@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModel.java,v 1.3 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PAnnotatedModel.java,v 1.4 2006/09/06 21:59:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -57,6 +58,12 @@ public interface PAnnotatedModel extends EObject{
 	 * @generated
 	 */
 	EList getPaEPackages();
+	
+	/**
+	 * @return Returns the unique <code>PAnnotatedEDataType</code> associated (via the <code>annotatedElement</code>
+	 *         feature) to the given <code>EDataType</code>.
+	 */
+	public PAnnotatedEDataType getPAnnotated(EDataType e);
 
 	/**
 	 * @return Returns the unique <code>PAnnotatedEModelElement</code> associated (via the

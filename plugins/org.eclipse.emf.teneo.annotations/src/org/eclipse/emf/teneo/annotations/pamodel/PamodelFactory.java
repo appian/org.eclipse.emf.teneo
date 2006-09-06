@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelFactory.java,v 1.3 2006/07/26 12:43:34 mtaal Exp $
+ * $Id: PamodelFactory.java,v 1.4 2006/09/06 21:59:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -59,6 +59,15 @@ public interface PamodelFactory extends EFactory {
 	 * @generated
 	 */
 	PAnnotatedEAttribute createPAnnotatedEAttribute();
+
+	/**
+	 * Returns a new object of class '<em>PAnnotated EData Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>PAnnotated EData Type</em>'.
+	 * @generated
+	 */
+	PAnnotatedEDataType createPAnnotatedEDataType();
 
 	/**
 	 * Returns a new object of class '<em>PAnnotated EReference</em>'.

@@ -11,7 +11,7 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HbMappingSchemaGenerator.java,v 1.1 2006/09/06 17:26:44 mtaal Exp $
+ * $Id: HbMappingSchemaGenerator.java,v 1.2 2006/09/06 21:59:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
@@ -66,13 +66,21 @@ public class HbMappingSchemaGenerator extends PersistenceMappingSchemaGenerator 
 	protected EClass getPAnnotatedEAttribute() {
 		return (EClass) getModelEPackage().getEClassifier("HbAnnotatedEAttribute");
 	}
-	
+
+	/** Return the PAnnotatedEDataType */
+	protected EClass getPAnnotatedEDataType() {
+		return (EClass) getModelEPackage().getEClassifier("HbAnnotatedEDataType");
+	}
+
 	/** get rid of the hb- prefix */
 	protected String convertToXmlName(String name) {
 		String result = super.convertToXmlName(name);
+		if (result.compareTo("hb-column") == 0) {
+			return "columns"; // prevents a specific nameclash
+		}
 		if (result.startsWith("hb-")) {
 			return result.substring(3);
 		}
-		return name;
+		return result;
 	}
 }
