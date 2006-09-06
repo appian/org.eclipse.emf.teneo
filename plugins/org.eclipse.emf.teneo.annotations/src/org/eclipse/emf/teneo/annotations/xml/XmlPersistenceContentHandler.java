@@ -12,11 +12,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.5 2006/09/06 11:31:36 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.6 2006/09/06 17:25:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Stack;
 import java.util.regex.Pattern;
@@ -117,9 +118,17 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	// Stack of parse states.
 	private Stack parseStates = new Stack();
 
-	XmlPersistenceContentHandler(PAnnotatedModel pAnnotatedModel) {
+	// prefix for extra efeature parsing
+	private final String prefix;
+
+	/** The xml element to structural feature mapper */
+	private final XmlElementToEStructuralFeatureMapper xmlElementToEStructuralFeatureMapper;
+	
+	XmlPersistenceContentHandler(PAnnotatedModel pAnnotatedModel, String prefix, InputStream schema) {
 		this.pAnnotatedModel = pAnnotatedModel;
 		parseStates.push(new Integer(ROOT));
+		this.prefix = prefix;
+		xmlElementToEStructuralFeatureMapper = new XmlElementToEStructuralFeatureMapper(schema);
 	}
 
 	/**
@@ -140,7 +149,8 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	 */
 	private void applyAnnotation(EObject pAnnotatedEModelElement, String elementName, Attributes attributes)
 			throws SAXException {
-		final EStructuralFeature annotationEStructuralFeature = getEStructuralFeature(pAnnotatedEModelElement, elementName);
+		final EStructuralFeature annotationEStructuralFeature = getEStructuralFeature(pAnnotatedEModelElement,
+				elementName);
 		if (annotationEStructuralFeature == null) {
 			throw new SAXException("Cannot handle element <" + elementName + ">");
 		}
@@ -170,16 +180,23 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 
 	}
 
-	private static EStructuralFeature getEStructuralFeature(EObject pAnnotatedEModelElement, String xmlName) {
+	private EStructuralFeature getEStructuralFeature(EObject pAnnotatedEModelElement, String xmlName) {
 		String annotationEStructuralFeatureName = convertXmlNameToEStructuralFeatureName(xmlName);
 		EStructuralFeature annotationEStructuralFeature = pAnnotatedEModelElement.eClass().getEStructuralFeature(
 				annotationEStructuralFeatureName);
 		if (annotationEStructuralFeature == null) {
-			annotationEStructuralFeatureName = XmlElementToEStructuralFeatureMapper.INSTANCE
-					.getEStructuralFeatureName(xmlName);
+			annotationEStructuralFeatureName = xmlElementToEStructuralFeatureMapper.getEStructuralFeatureName(xmlName);
 			annotationEStructuralFeature = pAnnotatedEModelElement.eClass().getEStructuralFeature(
 					annotationEStructuralFeatureName);
 		}
+		// if still null then try with the prefix
+		if (annotationEStructuralFeature == null) {
+			// note if a prefix is added then the first character of the first part has to be upper-cased
+			String name = convertXmlNameToEStructuralFeatureName(xmlName);
+			annotationEStructuralFeatureName = prefix + name.substring(0, 1).toUpperCase() + name.substring(1);;
+			annotationEStructuralFeature = pAnnotatedEModelElement.eClass().getEStructuralFeature(
+					annotationEStructuralFeatureName);
+		}		
 		return annotationEStructuralFeature;
 	}
 
@@ -316,7 +333,8 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 			assert (pAnnotation.eClass().getEStructuralFeatures().size() == 1);
 			final EAttribute eAttribute = (EAttribute) pAnnotation.eClass().getEStructuralFeatures().get(0);
 			final EDataType eAttributeType = eAttribute.getEAttributeType();
-			final Object valueObject = eAttributeType.getEPackage().getEFactoryInstance().createFromString(eAttributeType, value);
+			final Object valueObject = eAttributeType.getEPackage().getEFactoryInstance().createFromString(
+					eAttributeType, value);
 			pAnnotation.eSet(eAttribute, valueObject);
 			break;
 		}

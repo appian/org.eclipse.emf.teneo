@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeature.java,v 1.8 2006/09/05 12:16:57 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeature.java,v 1.9 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -59,7 +59,7 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement {
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_PaEClass()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPaEStructuralFeatures
 	 * @model opposite="paEStructuralFeatures"
-	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	PAnnotatedEClass getPaEClass();
@@ -85,7 +85,7 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedEModelElement {
 	 * @see #setAnnotatedEStructuralFeature(EStructuralFeature)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature()
 	 * @model required="true" volatile="true" derived="true"
-	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EStructuralFeature getAnnotatedEStructuralFeature();

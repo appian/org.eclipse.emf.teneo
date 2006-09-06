@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.6 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.7 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -72,7 +72,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_PaEPackage()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEClasses
 	 * @model opposite="paEClasses"
-	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	PAnnotatedEPackage getPaEPackage();
@@ -98,7 +98,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @see #setAnnotatedEClass(EClass)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_AnnotatedEClass()
 	 * @model required="true"
-	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EClass getAnnotatedEClass();
@@ -126,7 +126,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_PaEStructuralFeatures()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getPaEClass
 	 * @model type="org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature" opposite="paEClass" containment="true"
-	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EList getPaEStructuralFeatures();
@@ -262,7 +262,6 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @see #setEntity(Entity)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_Entity()
 	 * @model containment="true"
-	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	Entity getEntity();

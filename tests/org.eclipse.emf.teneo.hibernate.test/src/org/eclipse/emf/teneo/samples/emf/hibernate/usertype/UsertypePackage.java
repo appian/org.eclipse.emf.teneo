@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackage.java,v 1.2 2006/07/22 13:04:22 mtaal Exp $
+ * $Id: UsertypePackage.java,v 1.3 2006/09/06 17:26:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -127,10 +127,7 @@ public interface UsertypePackage extends EPackage {
 	 * @return the meta object for data type '<em>Name</em>'.
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name
 	 * @model instanceClass="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name"
-	 *        annotation="http://hibernate.elver.org/Type type='org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType'"
-	 *        annotation="http://hibernate.elver.org/Columns value='c1 c2'"
-	 *        annotation="http://ejb.elver.org/Column/c1 name='first_name'"
-	 *        annotation="http://ejb.elver.org/Column/c2 name='last_name'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Type(type=\"org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType\")\n\t\t\t\t\t\t@Columns({@Column(name=\"first_name\"), @Column(name=\"last_name\")})\n\t\t\t\t\t'"
 	 *        extendedMetaData="name='Name'" 
 	 * @generated
 	 */

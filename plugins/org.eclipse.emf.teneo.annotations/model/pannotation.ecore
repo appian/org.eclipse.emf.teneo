@@ -4,8 +4,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pannotation"
     nsURI="http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation" nsPrefix="org.elver.annotation">
   <eAnnotations source="http://www.eclipse.org/emf/2004/EmfaticAnnotationMap">
-    <details key="Target" value="http://annotation.elver.org/internal/Target"/>
-    <details key="Unsupported" value="http://annotation.elver.org/internal/Unsupported"/>
+    <details key="Target" value="teneo/internal/Target"/>
+    <details key="Unsupported" value="teneo/internal/Unsupported"/>
   </eAnnotations>
   <eAnnotations source="teneo.mapping.source">
     <details key="0" value="http://annotation.elver.org/"/>
@@ -16,10 +16,14 @@
       <details key="constraints" value="CompatibleEModelElementType AnnotationIsSupported"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eModelElement" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EModelElement">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
+        <details key="ignore" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttributeOverride" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
       <details key="1" value="EStructuralFeature"/>
     </eAnnotations>
@@ -28,7 +32,7 @@
         eType="#//Column" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssociationOverride" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -36,7 +40,7 @@
         upperBound="-1" eType="#//JoinColumn" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Basic" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EAttribute"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -48,7 +52,7 @@
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Column" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EStructuralFeature"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -73,7 +77,7 @@
         defaultValueLiteral="0" unsettable="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DiscriminatorColumn" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -85,7 +89,7 @@
         defaultValueLiteral="31" unsettable="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DiscriminatorValue" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -94,18 +98,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Embeddable" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="NoInterface"/>
     </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/PeristenceMapping">
+    <eAnnotations source="teneo/PeristenceMapping">
       <details key="ignore" value="true"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Embedded" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EReference"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -113,7 +117,7 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EmbeddedId" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EReference"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -121,19 +125,19 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="NoInterface NoReservedName"/>
     </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
+    <eAnnotations source="teneo/internal/PersistenceMapping">
       <details key="ignore" value="true"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Enumerated" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EStructuralFeature"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -143,7 +147,7 @@
         defaultValueLiteral="ORDINAL"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GeneratedValue" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EAttribute"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" eType="#//GenerationType"
@@ -151,7 +155,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="generator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Id" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EAttribute"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -159,20 +163,20 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdClass" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Inheritance" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" eType="#//InheritanceType"
         defaultValueLiteral="SINGLE_TABLE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JoinColumn" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
       <details key="1" value="EReference"/>
     </eAnnotations>
@@ -190,7 +194,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="table" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JoinTable" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EStructuralFeature"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -204,7 +208,7 @@
         eType="#//UniqueConstraint" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Lob" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EAttribute"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -212,7 +216,7 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ManyToMany" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EReference"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -228,7 +232,7 @@
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ManyToOne" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EReference"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -243,14 +247,14 @@
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MapKey" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EStructuralFeature"/>
     </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/internal/Unsupported"/>
+    <eAnnotations source="teneo/internal/Unsupported"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MappedSuperclass" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -258,7 +262,7 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OneToMany" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EStructuralFeature"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -276,7 +280,7 @@
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OneToOne" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EReference"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -292,7 +296,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OrderBy" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EReference"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -301,7 +305,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PrimaryKeyJoinColumn" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
       <details key="1" value="EReference"/>
     </eAnnotations>
@@ -310,7 +314,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SecondaryTable" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -322,7 +326,7 @@
         eType="#//UniqueConstraint" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SequenceGenerator" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
       <details key="1" value="EStructuralFeature"/>
       <details key="2" value="EPackage"/>
@@ -335,7 +339,7 @@
         defaultValueLiteral="50"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Table" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -345,7 +349,7 @@
         eType="#//UniqueConstraint" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TableGenerator" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
       <details key="1" value="EStructuralFeature"/>
       <details key="2" value="EPackage"/>
@@ -365,7 +369,7 @@
         eType="#//UniqueConstraint" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Temporal" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EAttribute"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -375,7 +379,7 @@
         defaultValueLiteral="TIMESTAMP"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transient" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EModelElement"/>
     </eAnnotations>
   </eClassifiers>
@@ -384,7 +388,7 @@
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Version" eSuperTypes="#//PAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
+    <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EAttribute"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">

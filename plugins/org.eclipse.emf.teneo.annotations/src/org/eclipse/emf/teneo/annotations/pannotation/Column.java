@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Column.java,v 1.3 2006/08/24 22:12:35 mtaal Exp $
+ * $Id: Column.java,v 1.4 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -26,7 +26,7 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  * </p>
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn()
- * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
+ * @model annotation="teneo/internal/Target 0='EStructuralFeature'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ScalePrecisionForNumeric LengthForString'"
  * @generated
  */

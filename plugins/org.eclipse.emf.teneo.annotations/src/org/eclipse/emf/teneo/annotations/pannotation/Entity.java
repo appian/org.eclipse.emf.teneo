@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Entity.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
+ * $Id: Entity.java,v 1.4 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -17,9 +17,9 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  * </p>
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getEntity()
- * @model annotation="http://annotation.elver.org/internal/Target 0='EClass'"
+ * @model annotation="teneo/internal/Target 0='EClass'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NoInterface NoReservedName'"
- *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
+ *        annotation="teneo/internal/PersistenceMapping ignore='true'"
  * @generated
  */
 public interface Entity extends PAnnotation {

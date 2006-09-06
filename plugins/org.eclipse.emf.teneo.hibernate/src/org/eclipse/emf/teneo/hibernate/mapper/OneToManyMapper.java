@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.4 2006/09/05 12:17:06 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.5 2006/09/06 17:26:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -38,7 +38,6 @@ import org.eclipse.emf.teneo.annotations.processing.OneToManyProcessor;
 import org.eclipse.emf.teneo.annotations.util.EcoreDataTypes;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -200,20 +199,17 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
             Element mapElt = collElement.addElement("element");
             
             Column eltCol = getHbmContext().getOverride("element");
-            Columns hbCols = hbReference.getHbColumns();
-            if (null != hbCols) {
-                List columns = hbCols.getValue();
-                if (null != columns) {
-                    if (columns.size() != 1) {
-                        throw new MappingException("Expected exactly one defined Column with Columns annotation",
-                                hbReference);
-                    }
-                    if (null != eltCol) {
-                        throw new MappingException("Cannot specify both AttributeOverride(\"element\") and Columns",
-                                hbReference);
-                    }
-                    eltCol = (Column) columns.get(0);
+            List columns = hbReference.getHbColumns();
+            if (columns.size() > 0) {
+                if (columns.size() != 1) {
+                    throw new MappingException("Expected exactly one defined Column with Columns annotation",
+                            hbReference);
                 }
+                if (null != eltCol) {
+                    throw new MappingException("Cannot specify both AttributeOverride(\"element\") and Columns",
+                            hbReference);
+                }
+                eltCol = (Column) columns.get(0);
             }
             
             mapElt.addAttribute("column", (null == eltCol) ? "VALUE" : eltCol.getName());

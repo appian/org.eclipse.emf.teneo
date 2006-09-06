@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ComplexNode.java,v 1.6 2006/09/05 12:16:57 mtaal Exp $
+ * $Id: ComplexNode.java,v 1.7 2006/09/06 17:25:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -74,7 +74,7 @@ class ComplexNode extends NamedParserNode {
 		for (Iterator it = children.iterator(); it.hasNext();) {
 			final Object child = it.next();
 			final NamedParserNode pn = (NamedParserNode)child;
-			final EStructuralFeature efeature = ParserUtil.getEStructuralFeature(eClass, pn.getName());
+			final EStructuralFeature efeature = ecr.getEStructuralFeature(eClass, pn.getName());
 			if (child instanceof PrimitiveValueNode) {
 				final PrimitiveValueNode pvn = (PrimitiveValueNode)child;
 				log.debug("Primitive child: " + pvn.getName() + ": " + pvn.getValue());

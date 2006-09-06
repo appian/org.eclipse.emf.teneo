@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackage.java,v 1.3 2006/09/01 06:56:11 mtaal Exp $
+ * $Id: HbAnnotationPackage.java,v 1.4 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -114,7 +114,7 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getWhere()
 	 * @generated
 	 */
-	int WHERE = 7;
+	int WHERE = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CascadeImpl <em>Cascade</em>}' class.
@@ -190,43 +190,6 @@ public interface HbAnnotationPackage extends EPackage {
 	int COLLECTION_OF_ELEMENTS_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ColumnsImpl <em>Columns</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.ColumnsImpl
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getColumns()
-	 * @generated
-	 */
-	int COLUMNS = 3;
-
-	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLUMNS__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLUMNS__VALUE = HB_ANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Columns</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLUMNS_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyImpl <em>Map Key</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -234,7 +197,7 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getMapKey()
 	 * @generated
 	 */
-	int MAP_KEY = 4;
+	int MAP_KEY = 3;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -271,7 +234,7 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 5;
+	int PARAMETER = 4;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -317,7 +280,7 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getType()
 	 * @generated
 	 */
-	int TYPE = 6;
+	int TYPE = 5;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -390,7 +353,7 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getIdBag()
 	 * @generated
 	 */
-	int ID_BAG = 8;
+	int ID_BAG = 7;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -437,7 +400,7 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getGenericGenerator()
 	 * @generated
 	 */
-	int GENERIC_GENERATOR = 9;
+	int GENERIC_GENERATOR = 8;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -568,27 +531,6 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCascade_Value();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Columns <em>Columns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Columns</em>'.
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Columns
-	 * @generated
-	 */
-	EClass getColumns();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Columns#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Value</em>'.
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Columns#getValue()
-	 * @see #getColumns()
-	 * @generated
-	 */
-	EReference getColumns_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKey <em>Map Key</em>}'.
@@ -843,24 +785,6 @@ public interface HbAnnotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CASCADE__VALUE = eINSTANCE.getCascade_Value();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ColumnsImpl <em>Columns</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.ColumnsImpl
-		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getColumns()
-		 * @generated
-		 */
-		EClass COLUMNS = eINSTANCE.getColumns();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COLUMNS__VALUE = eINSTANCE.getColumns_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyImpl <em>Map Key</em>}' class.

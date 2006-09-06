@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackageImpl.java,v 1.2 2006/08/31 22:47:18 mtaal Exp $
+ * $Id: HbModelPackageImpl.java,v 1.3 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -359,6 +359,7 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 		// Obtain other dependent packages
 		PamodelPackage thePamodelPackage = (PamodelPackage)EPackage.Registry.INSTANCE.getEPackage(PamodelPackage.eNS_URI);
 		HbAnnotationPackage theHbAnnotationPackage = (HbAnnotationPackage)EPackage.Registry.INSTANCE.getEPackage(HbAnnotationPackage.eNS_URI);
+		PannotationPackage thePannotationPackage = (PannotationPackage)EPackage.Registry.INSTANCE.getEPackage(PannotationPackage.eNS_URI);
 
 		// Add supertypes to classes
 		hbAnnotatedEStructuralFeatureEClass.getESuperTypes().add(thePamodelPackage.getPAnnotatedEStructuralFeature());
@@ -375,7 +376,7 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 		initEReference(getHbAnnotatedEStructuralFeature_HbWhere(), theHbAnnotationPackage.getWhere(), null, "hbWhere", null, 0, 1, HbAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEStructuralFeature_HbCollectionOfElements(), theHbAnnotationPackage.getCollectionOfElements(), null, "hbCollectionOfElements", null, 0, 1, HbAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEStructuralFeature_HbMapKey(), theHbAnnotationPackage.getMapKey(), null, "hbMapKey", null, 0, 1, HbAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHbAnnotatedEStructuralFeature_HbColumns(), theHbAnnotationPackage.getColumns(), null, "hbColumns", "", 0, 1, HbAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedEStructuralFeature_HbColumns(), thePannotationPackage.getColumn(), null, "hbColumns", "", 0, -1, HbAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEStructuralFeature_HbCascade(), theHbAnnotationPackage.getCascade(), null, "hbCascade", null, 0, 1, HbAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEStructuralFeature_HbIdBag(), theHbAnnotationPackage.getIdBag(), null, "hbIdBag", null, 0, 1, HbAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

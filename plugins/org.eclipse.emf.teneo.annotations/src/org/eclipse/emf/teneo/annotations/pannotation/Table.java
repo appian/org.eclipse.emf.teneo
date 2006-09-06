@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Table.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: Table.java,v 1.3 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -22,10 +22,10 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTable()
- * @model annotation="http://annotation.elver.org/internal/Target 0='EClass'"
+ * @model annotation="teneo/internal/Target 0='EClass'"
  * @generated
  */
-public interface Table extends PAnnotation{
+public interface Table extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

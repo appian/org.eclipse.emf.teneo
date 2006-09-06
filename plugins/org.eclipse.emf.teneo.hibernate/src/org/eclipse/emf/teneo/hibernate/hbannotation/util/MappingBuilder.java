@@ -11,13 +11,14 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: MappingBuilder.java,v 1.3 2006/09/05 14:06:15 mtaal Exp $
+ * $Id: MappingBuilder.java,v 1.4 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
 import org.eclipse.emf.teneo.annotations.pamodel.util.BasicPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.util.EannotationPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
+import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
 import org.eclipse.emf.teneo.mapper.DefaultAnnotator;
 import org.eclipse.emf.teneo.mapper.PersistenceMappingBuilder;
 
@@ -46,4 +47,19 @@ public class MappingBuilder extends PersistenceMappingBuilder {
 		return new HbEAnnotationParserImporter();
 	}
 
+	/** Overridden to use the local schema */
+	protected XmlPersistenceMapper getXmlPersistenceMapper() {
+		return new LocalXmlPersistenceMapper();
+	}
+
+	/** Overridden to make use of another schema */
+	private class LocalXmlPersistenceMapper extends XmlPersistenceMapper {
+		// nothing here because is not needed
+		
+		/** Return the hb prefix */
+		protected String getPrefix() {
+			return "hb";
+		}
+
+	}
 }

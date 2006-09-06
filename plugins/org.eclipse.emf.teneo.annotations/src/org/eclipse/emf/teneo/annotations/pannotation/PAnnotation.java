@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotation.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PAnnotation.java,v 1.3 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *        constraints='CompatibleEModelElementType AnnotationIsSupported'"
  * @generated
  */
-public interface PAnnotation extends EObject{
+public interface PAnnotation extends EObject {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -44,6 +44,7 @@ public interface PAnnotation extends EObject{
 	 * @see #setEModelElement(EModelElement)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getPAnnotation_EModelElement()
 	 * @model required="true"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EModelElement getEModelElement();

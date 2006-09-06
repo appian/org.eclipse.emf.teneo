@@ -11,12 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassResolver.java,v 1.2 2006/09/01 07:02:28 mtaal Exp $
+ * $Id: EClassResolver.java,v 1.3 2006/09/06 17:25:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 
 /**
@@ -28,4 +29,7 @@ public interface EClassResolver {
 	
 	/** Return an eclass, returns null if not found */
 	EClass getEClass(String name);
+		
+	/** Find the efeature */
+	EStructuralFeature getEStructuralFeature(EClass eClass, String name);
 }

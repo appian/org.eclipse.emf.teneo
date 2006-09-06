@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceMapper.java,v 1.4 2006/09/06 10:58:32 mtaal Exp $
+ * $Id: XmlPersistenceMapper.java,v 1.5 2006/09/06 17:25:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -39,7 +39,7 @@ public class XmlPersistenceMapper {
 	
 	/** The inputStream containing the xml document */
 	private InputStream xmlMapping;
-
+	
 	/** The logger */
 	protected static final Log log = LogFactory.getLog(XmlPersistenceMapper.class);
 
@@ -99,7 +99,8 @@ public class XmlPersistenceMapper {
 				saxParser = saxParserFactory.newSAXParser();
 			}
 			
-			saxParser.parse(xmlMapping, new XmlPersistenceContentHandler(pAnnotatedModel));
+			saxParser.parse(xmlMapping, new XmlPersistenceContentHandler(pAnnotatedModel, getPrefix(), 
+					 this.getClass().getResourceAsStream("persistence-mapping.xsd")));
 		} catch (SAXException e) {
 			throw new ParseXMLAnnotationsException(e);
 		} catch (IOException e) {
@@ -115,4 +116,8 @@ public class XmlPersistenceMapper {
 		}
 	}
 
+	/** Return a prefix which are used by a subpackage to make efeatures unique */
+	protected String getPrefix() {
+		return "";
+	}	
 }

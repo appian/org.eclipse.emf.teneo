@@ -2,19 +2,24 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReferenceImpl.java,v 1.4 2006/09/04 15:53:48 mtaal Exp $
+ * $Id: HbAnnotatedEReferenceImpl.java,v 1.5 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
@@ -80,14 +85,14 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	protected MapKey hbMapKey = null;
 
 	/**
-	 * The cached value of the '{@link #getHbColumns() <em>Hb Columns</em>}' containment reference.
+	 * The cached value of the '{@link #getHbColumns() <em>Hb Columns</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getHbColumns()
 	 * @generated
 	 * @ordered
 	 */
-	protected Columns hbColumns = null;
+	protected EList hbColumns = null;
 
 	/**
 	 * The cached value of the '{@link #getHbCascade() <em>Hb Cascade</em>}' containment reference.
@@ -261,42 +266,11 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Columns getHbColumns() {
+	public EList getHbColumns() {
+		if (hbColumns == null) {
+			hbColumns = new EObjectContainmentEList(Column.class, this, HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS);
+		}
 		return hbColumns;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetHbColumns(Columns newHbColumns, NotificationChain msgs) {
-		Columns oldHbColumns = hbColumns;
-		hbColumns = newHbColumns;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS, oldHbColumns, newHbColumns);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setHbColumns(Columns newHbColumns) {
-		if (newHbColumns != hbColumns) {
-			NotificationChain msgs = null;
-			if (hbColumns != null)
-				msgs = ((InternalEObject)hbColumns).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS, null, msgs);
-			if (newHbColumns != null)
-				msgs = ((InternalEObject)newHbColumns).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS, null, msgs);
-			msgs = basicSetHbColumns(newHbColumns, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS, newHbColumns, newHbColumns));
 	}
 
 	/**
@@ -399,7 +373,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_MAP_KEY:
 				return basicSetHbMapKey(null, msgs);
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS:
-				return basicSetHbColumns(null, msgs);
+				return ((InternalEList)getHbColumns()).basicRemove(otherEnd, msgs);
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CASCADE:
 				return basicSetHbCascade(null, msgs);
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
@@ -448,7 +422,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				setHbMapKey((MapKey)newValue);
 				return;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS:
-				setHbColumns((Columns)newValue);
+				getHbColumns().clear();
+				getHbColumns().addAll((Collection)newValue);
 				return;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CASCADE:
 				setHbCascade((Cascade)newValue);
@@ -477,7 +452,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				setHbMapKey((MapKey)null);
 				return;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS:
-				setHbColumns((Columns)null);
+				getHbColumns().clear();
 				return;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CASCADE:
 				setHbCascade((Cascade)null);
@@ -503,7 +478,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_MAP_KEY:
 				return hbMapKey != null;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS:
-				return hbColumns != null;
+				return hbColumns != null && !hbColumns.isEmpty();
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CASCADE:
 				return hbCascade != null;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:

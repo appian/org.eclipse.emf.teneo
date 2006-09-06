@@ -9,7 +9,7 @@
 		<eclass name="User">
 			<property name="roles">
 				<!-- IdBag not yet supported. -->
-				<!-- <id-bag /> -->
+				<id-bag />
 			</property>
 		</eclass>
 

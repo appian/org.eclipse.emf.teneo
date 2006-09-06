@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationSwitch.java,v 1.5 2006/09/04 15:53:48 mtaal Exp $
+ * $Id: HbAnnotationSwitch.java,v 1.6 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
@@ -127,14 +126,6 @@ public class HbAnnotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case HbAnnotationPackage.COLUMNS: {
-				Columns columns = (Columns)theEObject;
-				Object result = caseColumns(columns);
-				if (result == null) result = caseHbAnnotation(columns);
-				if (result == null) result = casePAnnotation(columns);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case HbAnnotationPackage.MAP_KEY: {
 				MapKey mapKey = (MapKey)theEObject;
 				Object result = caseMapKey(mapKey);
@@ -244,21 +235,6 @@ public class HbAnnotationSwitch {
 	 * @generated
 	 */
     public Object caseCascade(Cascade object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Columns</em>'.
-	 * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Columns</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-    public Object caseColumns(Columns object) {
 		return null;
 	}
 

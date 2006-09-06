@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingBuilder.java,v 1.4 2006/09/03 20:53:00 mtaal Exp $
+ * $Id: PersistenceMappingBuilder.java,v 1.5 2006/09/06 17:25:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapper;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class PersistenceMappingBuilder {
 
@@ -132,7 +132,7 @@ public class PersistenceMappingBuilder {
 		log.debug("Returning created pamodel");
 		return pam;
 	}
-
+	
 	// DCB: New methods to allow for extension
 	protected DefaultAnnotator getDefaultAnnotator() {
 		return new DefaultAnnotator();

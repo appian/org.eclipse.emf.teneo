@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorValue.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: DiscriminatorValue.java,v 1.3 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -18,11 +18,11 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  * </p>
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getDiscriminatorValue()
- * @model annotation="http://annotation.elver.org/internal/Target 0='EClass'"
+ * @model annotation="teneo/internal/Target 0='EClass'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NoAbstract'"
  * @generated
  */
-public interface DiscriminatorValue extends PAnnotation{
+public interface DiscriminatorValue extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

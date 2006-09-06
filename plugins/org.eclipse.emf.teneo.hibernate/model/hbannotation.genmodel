@@ -20,9 +20,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//CollectionOfElements/targetElement"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//CollectionOfElements/fetch"/>
     </genClasses>
-    <genClasses ecoreClass="hbannotation.ecore#//Columns">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbannotation.ecore#//Columns/value"/>
-    </genClasses>
     <genClasses ecoreClass="hbannotation.ecore#//MapKey">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbannotation.ecore#//MapKey/columns"/>
     </genClasses>

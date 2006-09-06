@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.8 2006/09/05 12:16:57 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.9 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -75,7 +75,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.util.PannotationValidator;
  * @generated
  */
 public class PannotationPackageImpl extends EPackageImpl implements PannotationPackage {
-	public static final String TARGET_ANNOTATION_SOURCE = "http://annotation.elver.org/internal/Target";
+	public static final String TARGET_ANNOTATION_SOURCE = "teneo/internal/Target";
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2135,13 +2135,13 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		createTeneoAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
-		// http://annotation.elver.org/internal/Target
-		createTargetAnnotations();
-		// http://annotation.elver.org/PeristenceMapping
-		createPeristenceMappingAnnotations();
-		// http://annotation.elver.org/internal/PersistenceMapping
+		// teneo/internal/PersistenceMapping
 		createPersistenceMappingAnnotations();
-		// http://annotation.elver.org/internal/Unsupported
+		// teneo/internal/Target
+		createTargetAnnotations();
+		// teneo/PeristenceMapping
+		createPeristenceMappingAnnotations();
+		// teneo/internal/Unsupported
 		createUnsupportedAnnotations();
 	}
 
@@ -2157,9 +2157,9 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		  (this, 
 		   source, 
 		   new String[] {
-			 "Target", "http://annotation.elver.org/internal/Target",
-			 "Unsupported", "http://annotation.elver.org/internal/Unsupported"
-		   });																																																								
+			 "Target", "teneo/internal/Target",
+			 "Unsupported", "teneo/internal/Unsupported"
+		   });																																																									
 	}
 
 	/**
@@ -2176,7 +2176,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																							
+		   });																																																								
 	}
 
 	/**
@@ -2192,7 +2192,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });					
+		   });						
 		addAnnotation
 		  (basicEClass, 
 		   source, 
@@ -2304,13 +2304,13 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/internal/Target</b>.
+	 * Initializes the annotations for <b>teneo/internal/Target</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createTargetAnnotations() {
-		String source = "http://annotation.elver.org/internal/Target";					
+		String source = "teneo/internal/Target";						
 		addAnnotation
 		  (attributeOverrideEClass, 
 		   source, 
@@ -2519,13 +2519,19 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/internal/PersistenceMapping</b>.
+	 * Initializes the annotations for <b>teneo/internal/PersistenceMapping</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createPersistenceMappingAnnotations() {
-		String source = "http://annotation.elver.org/internal/PersistenceMapping";																							
+		String source = "teneo/internal/PersistenceMapping";					
+		addAnnotation
+		  (getPAnnotation_EModelElement(), 
+		   source, 
+		   new String[] {
+			 "ignore", "true"
+		   });																				
 		addAnnotation
 		  (entityEClass, 
 		   source, 
@@ -2535,13 +2541,13 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/internal/Unsupported</b>.
+	 * Initializes the annotations for <b>teneo/internal/Unsupported</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createUnsupportedAnnotations() {
-		String source = "http://annotation.elver.org/internal/Unsupported";																																								
+		String source = "teneo/internal/Unsupported";																																									
 		addAnnotation
 		  (mapKeyEClass, 
 		   source, 
@@ -2550,13 +2556,13 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/PeristenceMapping</b>.
+	 * Initializes the annotations for <b>teneo/PeristenceMapping</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createPeristenceMappingAnnotations() {
-		String source = "http://annotation.elver.org/PeristenceMapping";																
+		String source = "teneo/PeristenceMapping";																	
 		addAnnotation
 		  (embeddableEClass, 
 		   source, 
@@ -2596,7 +2602,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 			for (int i=0; !hasTarget && i < admissibleTargets.length; i++)
 				hasTarget |= admissibleTargets[i].isSuperTypeOf(targetElementEClass);
 		}
-		
 		return hasTarget;
 	}
 

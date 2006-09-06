@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Temporal.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: Temporal.java,v 1.3 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -17,11 +17,11 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  * </p>
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTemporal()
- * @model annotation="http://annotation.elver.org/internal/Target 0='EAttribute'"
+ * @model annotation="teneo/internal/Target 0='EAttribute'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='AllowedElementType'"
  * @generated
  */
-public interface Temporal extends PAnnotation{
+public interface Temporal extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

@@ -4,17 +4,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="usertype"
     nsURI="http://www.elver.org/samples/emf/hibernate/usertype" nsPrefix="usertype">
   <eClassifiers xsi:type="ecore:EDataType" name="Name" instanceClassName="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name">
-    <eAnnotations source="http://hibernate.elver.org/Type">
-      <details key="type" value="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType"/>
-    </eAnnotations>
-    <eAnnotations source="http://hibernate.elver.org/Columns">
-      <details key="value" value="c1 c2"/>
-    </eAnnotations>
-    <eAnnotations source="http://ejb.elver.org/Column/c1">
-      <details key="name" value="first_name"/>
-    </eAnnotations>
-    <eAnnotations source="http://ejb.elver.org/Column/c2">
-      <details key="name" value="last_name"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Type(type=&quot;org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Columns({@Column(name=&quot;first_name&quot;), @Column(name=&quot;last_name&quot;)})&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Name"/>

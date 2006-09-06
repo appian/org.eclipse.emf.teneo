@@ -11,12 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEAnnotationParserImporter.java,v 1.1 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbEAnnotationParserImporter.java,v 1.2 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
+import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
 
 /**
@@ -39,5 +43,20 @@ public class HbEAnnotationParserImporter extends EAnnotationParserImporter {
 			return super.getEClass(name);
 		}
 		return eClass;
+	}
+	
+	/** Find the efeature */
+	public EStructuralFeature getEStructuralFeature(EClass eClass, String name) {
+		for (Iterator it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
+			final EStructuralFeature ef = (EStructuralFeature)it.next();
+			if (ef.getName().compareToIgnoreCase(name) == 0) return ef;
+		}
+		// not found try with the hb prefix
+		final String hbName = "hb" + name;
+		for (Iterator it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
+			final EStructuralFeature ef = (EStructuralFeature)it.next();
+			if (ef.getName().compareToIgnoreCase(hbName) == 0) return ef;
+		}
+		throw new HbStoreException("No efeature " + name + " for eclass " + eClass.getName());
 	}
 }

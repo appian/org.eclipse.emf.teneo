@@ -2,14 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEStructuralFeature.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbAnnotatedEStructuralFeature.java,v 1.3 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
@@ -122,31 +122,20 @@ public interface HbAnnotatedEStructuralFeature extends PAnnotatedEStructuralFeat
 	void setHbMapKey(MapKey value);
 
 	/**
-	 * Returns the value of the '<em><b>Hb Columns</b></em>' containment reference.
-	 * The default value is <code>""</code>.
+	 * Returns the value of the '<em><b>Hb Columns</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.Column}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Hb Columns</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Hb Columns</em>' containment reference.
-	 * @see #setHbColumns(Columns)
+	 * @return the value of the '<em>Hb Columns</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEStructuralFeature_HbColumns()
-	 * @model containment="true"
+	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.Column" containment="true"
 	 * @generated
 	 */
-	Columns getHbColumns();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbColumns <em>Hb Columns</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Hb Columns</em>' containment reference.
-	 * @see #getHbColumns()
-	 * @generated
-	 */
-	void setHbColumns(Columns value);
+	EList getHbColumns();
 
 	/**
 	 * Returns the value of the '<em><b>Hb Cascade</b></em>' containment reference.

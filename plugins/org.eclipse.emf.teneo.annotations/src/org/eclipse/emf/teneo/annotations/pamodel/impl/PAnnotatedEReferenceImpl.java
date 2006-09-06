@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceImpl.java,v 1.5 2006/09/05 12:16:57 mtaal Exp $
+ * $Id: PAnnotatedEReferenceImpl.java,v 1.6 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -51,9 +51,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  * @generated
  */
 public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl implements PAnnotatedEReference {
-
-	/** The logger */
-	//private static final Log log = LogFactory.getLog(PAnnotatedEReferenceImpl.class);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.hibernate.test/src"
     modelPluginID="org.eclipse.emf.teneo.hibernate.test" modelName="UserType" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>UserType.xsd</foreignModel>
-  <genPackages prefix="Usertype" basePackage="org.eclipse.emf.teneo.samples.emf.hibernate" resource="XML"
-      disposableProviderFactory="true" ecorePackage="usertype.ecore#/">
+  <genPackages prefix="Usertype" basePackage="org.eclipse.emf.teneo.samples.emf.hibernate"
+      resource="XML" disposableProviderFactory="true" ecorePackage="usertype.ecore#/">
     <genDataTypes ecoreDataType="usertype.ecore#//Name"/>
     <genClasses ecoreClass="usertype.ecore#//Person">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/name"/>

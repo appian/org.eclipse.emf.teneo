@@ -9,7 +9,11 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedElement" lowerBound="1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"
-        volatile="true" derived="true"/>
+        volatile="true" derived="true">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
+        <details key="ignore" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transient" eType="ecore:EClass pannotation.ecore#//Transient"
         containment="true"/>
   </eClassifiers>
@@ -25,11 +29,23 @@
       <details key="constraints" value="AtMostOneEClass"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="paModel" eType="#//PAnnotatedModel"
-        eOpposite="#//PAnnotatedModel/paEPackages"/>
+        eOpposite="#//PAnnotatedModel/paEPackages">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
+        <details key="ignore" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEPackage" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
+        <details key="ignore" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="paEClasses" upperBound="-1"
-        eType="#//PAnnotatedEClass" containment="true" eOpposite="#//PAnnotatedEClass/paEPackage"/>
+        eType="#//PAnnotatedEClass" containment="true" eOpposite="#//PAnnotatedEClass/paEPackage">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
+        <details key="ignore" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceGenerators" upperBound="-1"
         eType="ecore:EClass pannotation.ecore#//SequenceGenerator" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerators" upperBound="-1"
@@ -41,20 +57,20 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="paEPackage" eType="#//PAnnotatedEPackage"
         eOpposite="#//PAnnotatedEPackage/paEClasses">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEClass" lowerBound="1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="paEStructuralFeatures"
         upperBound="-1" eType="#//PAnnotatedEStructuralFeature" containment="true"
         eOpposite="#//PAnnotatedEStructuralFeature/paEClass">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -69,11 +85,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="mappedSuperclass" eType="ecore:EClass pannotation.ecore#//MappedSuperclass"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="ecore:EClass pannotation.ecore#//Entity"
-        containment="true">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
-        <details key="ignore" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="idClass" eType="ecore:EClass pannotation.ecore#//IdClass"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inheritance" eType="ecore:EClass pannotation.ecore#//Inheritance"
@@ -97,14 +109,14 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="paEClass" eType="#//PAnnotatedEClass"
         eOpposite="#//PAnnotatedEClass/paEStructuralFeatures">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEStructuralFeature"
         lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"
         volatile="true" derived="true">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -129,7 +141,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEAttribute" lowerBound="1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -154,7 +166,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEReference" lowerBound="1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference">
-      <eAnnotations source="http://annotation.elver.org/internal/PersistenceMapping">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>

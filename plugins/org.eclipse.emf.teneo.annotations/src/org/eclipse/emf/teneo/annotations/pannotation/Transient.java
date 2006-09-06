@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Transient.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: Transient.java,v 1.3 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -11,10 +11,10 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  *
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTransient()
- * @model annotation="http://annotation.elver.org/internal/Target 0='EModelElement'"
+ * @model annotation="teneo/internal/Target 0='EModelElement'"
  * @generated
  */
-public interface Transient extends PAnnotation{
+public interface Transient extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

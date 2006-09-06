@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationAdapterFactory.java,v 1.5 2006/09/04 15:53:48 mtaal Exp $
+ * $Id: HbAnnotationAdapterFactory.java,v 1.6 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
@@ -93,9 +92,6 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseCollectionOfElements(CollectionOfElements object) {
 				return createCollectionOfElementsAdapter();
-			}
-			public Object caseColumns(Columns object) {
-				return createColumnsAdapter();
 			}
 			public Object caseMapKey(MapKey object) {
 				return createMapKeyAdapter();
@@ -189,20 +185,6 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
     public Adapter createCascadeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Columns <em>Columns</em>}'.
-	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Columns
-	 * @generated
-	 */
-    public Adapter createColumnsAdapter() {
 		return null;
 	}
 

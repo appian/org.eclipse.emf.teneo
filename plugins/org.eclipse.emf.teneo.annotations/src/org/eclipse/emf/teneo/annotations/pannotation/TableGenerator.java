@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableGenerator.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: TableGenerator.java,v 1.3 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -29,10 +29,10 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTableGenerator()
- * @model annotation="http://annotation.elver.org/internal/Target 0='EClass' 1='EStructuralFeature' 2='EPackage'"
+ * @model annotation="teneo/internal/Target 0='EClass' 1='EStructuralFeature' 2='EPackage'"
  * @generated
  */
-public interface TableGenerator extends PAnnotation{
+public interface TableGenerator extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

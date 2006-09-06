@@ -2,20 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParameterImpl.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: ParameterImpl.java,v 1.3 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 

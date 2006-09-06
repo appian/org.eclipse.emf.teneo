@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackageImpl.java,v 1.2 2006/07/22 13:04:22 mtaal Exp $
+ * $Id: UsertypePackageImpl.java,v 1.3 2006/09/06 17:26:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -203,16 +203,26 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://hibernate.elver.org/Type
-		createTypeAnnotations();
-		// http://hibernate.elver.org/Columns
-		createColumnsAnnotations();
-		// http://ejb.elver.org/Column/c1
-		createC1Annotations();
-		// http://ejb.elver.org/Column/c2
-		createC2Annotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
+		addAnnotation
+		  (nameEDataType, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t\t@Type(type=\"org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType\")\n\t\t\t\t\t\t@Columns({@Column(name=\"first_name\"), @Column(name=\"last_name\")})\n\t\t\t\t\t"
+		   });			
 	}
 
 	/**
@@ -222,7 +232,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";						
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
 		addAnnotation
 		  (nameEDataType, 
 		   source, 
@@ -243,70 +253,6 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 			 "kind", "element",
 			 "name", "name"
 		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://hibernate.elver.org/Type</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createTypeAnnotations() {
-		String source = "http://hibernate.elver.org/Type";		
-		addAnnotation
-		  (nameEDataType, 
-		   source, 
-		   new String[] {
-			 "type", "org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType"
-		   });						
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://hibernate.elver.org/Columns</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createColumnsAnnotations() {
-		String source = "http://hibernate.elver.org/Columns";			
-		addAnnotation
-		  (nameEDataType, 
-		   source, 
-		   new String[] {
-			 "value", "c1 c2"
-		   });					
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Column/c1</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createC1Annotations() {
-		String source = "http://ejb.elver.org/Column/c1";				
-		addAnnotation
-		  (nameEDataType, 
-		   source, 
-		   new String[] {
-			 "name", "first_name"
-		   });				
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Column/c2</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createC2Annotations() {
-		String source = "http://ejb.elver.org/Column/c2";					
-		addAnnotation
-		  (nameEDataType, 
-		   source, 
-		   new String[] {
-			 "name", "last_name"
-		   });			
 	}
 
 } //UsertypePackageImpl

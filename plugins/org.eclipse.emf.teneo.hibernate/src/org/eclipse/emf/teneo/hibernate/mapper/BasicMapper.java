@@ -12,12 +12,13 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.3 2006/08/24 22:12:51 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.4 2006/09/06 17:26:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -38,7 +39,6 @@ import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.annotations.processing.TransientProcessor;
 import org.eclipse.emf.teneo.annotations.processing.VersionProcessor;
 import org.eclipse.emf.teneo.annotations.util.EcoreDataTypes;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -257,13 +257,11 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 		addIsSetAttribute(hbAttribute);
 		propertyElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
 
-		final Columns columns = hbAttribute.getHbColumns();
-		if (columns != null) {
-			for (Iterator it = columns.getValue().iterator(); it.hasNext();) {
-				final Column column = (Column) it.next();
-				addColumn(propertyElement, eAttribute.getName(), column, getHbmContext().isCurrentElementFeatureMap(),
-						false);
-			}
+		final List columns = hbAttribute.getHbColumns();
+		for (Iterator it = columns.iterator(); it.hasNext();) {
+			final Column column = (Column) it.next();
+			addColumn(propertyElement, eAttribute.getName(), column, getHbmContext().isCurrentElementFeatureMap(),
+					false);
 		}
 	}
 

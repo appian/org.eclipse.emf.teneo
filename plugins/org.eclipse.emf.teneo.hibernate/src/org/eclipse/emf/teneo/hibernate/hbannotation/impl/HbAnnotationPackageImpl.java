@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackageImpl.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbAnnotationPackageImpl.java,v 1.3 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -16,7 +16,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationFactory;
@@ -71,13 +70,6 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * @generated
 	 */
 	private EClass cascadeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass columnsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -277,24 +269,6 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getColumns() {
-		return columnsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getColumns_Value() {
-		return (EReference)columnsEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getMapKey() {
 		return mapKeyEClass;
 	}
@@ -462,9 +436,6 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		createEAttribute(collectionOfElementsEClass, COLLECTION_OF_ELEMENTS__TARGET_ELEMENT);
 		createEAttribute(collectionOfElementsEClass, COLLECTION_OF_ELEMENTS__FETCH);
 
-		columnsEClass = createEClass(COLUMNS);
-		createEReference(columnsEClass, COLUMNS__VALUE);
-
 		mapKeyEClass = createEClass(MAP_KEY);
 		createEReference(mapKeyEClass, MAP_KEY__COLUMNS);
 
@@ -519,7 +490,6 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		hbAnnotationEClass.getESuperTypes().add(thePannotationPackage.getPAnnotation());
 		cascadeEClass.getESuperTypes().add(this.getHbAnnotation());
 		collectionOfElementsEClass.getESuperTypes().add(this.getHbAnnotation());
-		columnsEClass.getESuperTypes().add(this.getHbAnnotation());
 		mapKeyEClass.getESuperTypes().add(this.getHbAnnotation());
 		parameterEClass.getESuperTypes().add(this.getHbAnnotation());
 		typeEClass.getESuperTypes().add(this.getHbAnnotation());
@@ -536,9 +506,6 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		initEClass(collectionOfElementsEClass, CollectionOfElements.class, "CollectionOfElements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCollectionOfElements_TargetElement(), ecorePackage.getEString(), "targetElement", null, 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCollectionOfElements_Fetch(), thePannotationPackage.getFetchType(), "fetch", "LAZY", 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(columnsEClass, Columns.class, "Columns", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getColumns_Value(), thePannotationPackage.getColumn(), null, "value", null, 0, -1, Columns.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mapKeyEClass, MapKey.class, "MapKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMapKey_Columns(), thePannotationPackage.getColumn(), null, "columns", null, 0, -1, MapKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -590,7 +557,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "1", "http://hibernate.elver.org/"
-		   });												
+		   });											
 	}
 
 	/**
@@ -606,7 +573,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });											
+		   });										
 	}
 
 	/**
@@ -625,12 +592,6 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   });		
 		addAnnotation
 		  (collectionOfElementsEClass, 
-		   source, 
-		   new String[] {
-			 "0", "EStructuralFeature"
-		   });		
-		addAnnotation
-		  (columnsEClass, 
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
@@ -684,7 +645,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * @generated
 	 */
 	protected void createCollectionAnnotations() {
-		String source = "http://annotation.elver.org/internal/Collection";								
+		String source = "http://annotation.elver.org/internal/Collection";							
 		addAnnotation
 		  (parameterEClass, 
 		   source, 

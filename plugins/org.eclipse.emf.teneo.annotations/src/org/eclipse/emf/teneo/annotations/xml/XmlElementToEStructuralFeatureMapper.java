@@ -12,17 +12,19 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlElementToEStructuralFeatureMapper.java,v 1.2 2006/09/06 10:58:32 mtaal Exp $
+ * $Id: XmlElementToEStructuralFeatureMapper.java,v 1.3 2006/09/06 17:25:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -34,25 +36,20 @@ import org.xml.sax.helpers.DefaultHandler;
  * 
  */
 class XmlElementToEStructuralFeatureMapper {
-	/**
-	 * Singleton instance.
-	 */
-	public static XmlElementToEStructuralFeatureMapper INSTANCE = new XmlElementToEStructuralFeatureMapper();
-
 	private Map eStructuralFeatureNamesByXmlElementName = new HashMap();
 
 	private String xmlElementName;
 
 	private boolean appInfoValue;
 
-	private XmlElementToEStructuralFeatureMapper() {
+	XmlElementToEStructuralFeatureMapper(InputStream schema) {
 		try {
 			final SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 			saxParserFactory.setNamespaceAware(true);
 			final SAXParser saxParser = saxParserFactory.newSAXParser();
 			saxParser.parse(this.getClass().getResourceAsStream("persistence-mapping.xsd"), new XmlContentHandler());
 		} catch (Exception e) {
-			throw new AssertionError(e);
+			throw new StoreAnnotationsException("Exception while parsing xsd", e);
 		}
 	}
 
@@ -62,7 +59,7 @@ class XmlElementToEStructuralFeatureMapper {
 			if (localName.equals("attribute") || localName.equals("element")) {
 				xmlElementName = attributes.getValue("name");
 			} else if (localName.equals("appinfo")
-					&& "http://annotation.elver.org/internal/EStructuralFeatureName".equals(attributes
+					&& PersistenceMappingSchemaGenerator.ESTRUCTURAL_FEATURE_SOURCE_NAME.equals(attributes
 							.getValue("source"))) {
 				appInfoValue = true;
 			}

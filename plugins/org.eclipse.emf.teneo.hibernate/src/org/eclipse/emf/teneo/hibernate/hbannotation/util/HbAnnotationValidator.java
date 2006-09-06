@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.5 2006/09/04 15:53:48 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.6 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.teneo.annotations.pannotation.util.PannotationValidator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Columns;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
@@ -119,8 +118,6 @@ public class HbAnnotationValidator extends EObjectValidator {
 				return validateCascade((Cascade)value, diagnostics, context);
 			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS:
 				return validateCollectionOfElements((CollectionOfElements)value, diagnostics, context);
-			case HbAnnotationPackage.COLUMNS:
-				return validateColumns((Columns)value, diagnostics, context);
 			case HbAnnotationPackage.MAP_KEY:
 				return validateMapKey((MapKey)value, diagnostics, context);
 			case HbAnnotationPackage.PARAMETER:
@@ -249,21 +246,6 @@ public class HbAnnotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(cascade, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public boolean validateColumns(Columns columns, DiagnosticChain diagnostics, Map context) {
-		boolean result = validate_EveryMultiplicityConforms(columns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(columns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(columns, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(columns, diagnostics, context);
-		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(columns, diagnostics, context);
-		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(columns, diagnostics, context);
 		return result;
 	}
 

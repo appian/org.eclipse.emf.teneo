@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackageImpl.java,v 1.8 2006/09/05 12:16:57 mtaal Exp $
+ * $Id: PamodelPackageImpl.java,v 1.9 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -881,7 +881,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		// Create annotations
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
-		// http://annotation.elver.org/internal/PersistenceMapping
+		// teneo/internal/PersistenceMapping
 		createPersistenceMappingAnnotations();
 	}
 
@@ -898,7 +898,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   source, 
 		   new String[] {
 			 "constraints", "PAnnotationElementCommutes"
-		   });		
+		   });			
 		addAnnotation
 		  (pAnnotatedModelEClass, 
 		   source, 
@@ -910,13 +910,13 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   source, 
 		   new String[] {
 			 "constraints", "AtMostOneEClass"
-		   });		
+		   });					
 		addAnnotation
 		  (pAnnotatedEClassEClass, 
 		   source, 
 		   new String[] {
 			 "constraints", "SameEFeatures EPackageCommutes ProperPrimaryKey EntityOrEmbeddableOrMappedSuper\tOverriddenAreDefined ProperInheritance ProperDiscriminator SingleTableForSingleStrategy ProperPKJoin"
-		   });						
+		   });					
 		addAnnotation
 		  (pAnnotatedEStructuralFeatureEClass, 
 		   source, 
@@ -938,13 +938,37 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/internal/PersistenceMapping</b>.
+	 * Initializes the annotations for <b>teneo/internal/PersistenceMapping</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createPersistenceMappingAnnotations() {
-		String source = "http://annotation.elver.org/internal/PersistenceMapping";						
+		String source = "teneo/internal/PersistenceMapping";			
+		addAnnotation
+		  (getPAnnotatedEModelElement_AnnotatedElement(), 
+		   source, 
+		   new String[] {
+			 "ignore", "true"
+		   });				
+		addAnnotation
+		  (getPAnnotatedEPackage_PaModel(), 
+		   source, 
+		   new String[] {
+			 "ignore", "true"
+		   });		
+		addAnnotation
+		  (getPAnnotatedEPackage_AnnotatedEPackage(), 
+		   source, 
+		   new String[] {
+			 "ignore", "true"
+		   });		
+		addAnnotation
+		  (getPAnnotatedEPackage_PaEClasses(), 
+		   source, 
+		   new String[] {
+			 "ignore", "true"
+		   });			
 		addAnnotation
 		  (getPAnnotatedEClass_PaEPackage(), 
 		   source, 
@@ -959,12 +983,6 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   });		
 		addAnnotation
 		  (getPAnnotatedEClass_PaEStructuralFeatures(), 
-		   source, 
-		   new String[] {
-			 "ignore", "true"
-		   });		
-		addAnnotation
-		  (getPAnnotatedEClass_Entity(), 
 		   source, 
 		   new String[] {
 			 "ignore", "true"

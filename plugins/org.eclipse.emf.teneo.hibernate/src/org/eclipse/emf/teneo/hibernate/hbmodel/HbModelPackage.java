@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackage.java,v 1.4 2006/09/05 12:17:06 mtaal Exp $
+ * $Id: HbModelPackage.java,v 1.5 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -203,7 +203,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_MAP_KEY = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Hb Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Hb Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -447,7 +447,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__HB_MAP_KEY = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Hb Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Hb Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1000,7 +1000,7 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__HB_MAP_KEY = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Hb Columns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Hb Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1080,10 +1080,10 @@ public interface HbModelPackage extends EPackage {
 	EReference getHbAnnotatedEStructuralFeature_HbMapKey();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbColumns <em>Hb Columns</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbColumns <em>Hb Columns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Hb Columns</em>'.
+	 * @return the meta object for the containment reference list '<em>Hb Columns</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEStructuralFeature#getHbColumns()
 	 * @see #getHbAnnotatedEStructuralFeature()
 	 * @generated
@@ -1241,7 +1241,7 @@ public interface HbModelPackage extends EPackage {
 		EReference HB_ANNOTATED_ESTRUCTURAL_FEATURE__HB_MAP_KEY = eINSTANCE.getHbAnnotatedEStructuralFeature_HbMapKey();
 
 		/**
-		 * The meta object literal for the '<em><b>Hb Columns</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Hb Columns</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

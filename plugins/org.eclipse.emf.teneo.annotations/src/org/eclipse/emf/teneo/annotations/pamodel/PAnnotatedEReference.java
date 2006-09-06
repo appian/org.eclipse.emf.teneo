@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReference.java,v 1.4 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PAnnotatedEReference.java,v 1.5 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -58,7 +58,7 @@ public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
 	 * @see #setAnnotatedEReference(EReference)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_AnnotatedEReference()
 	 * @model required="true"
-	 *        annotation="http://annotation.elver.org/internal/PersistenceMapping ignore='true'"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EReference getAnnotatedEReference();

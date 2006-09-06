@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Embeddable.java,v 1.3 2006/07/26 12:43:36 mtaal Exp $
+ * $Id: Embeddable.java,v 1.4 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -11,9 +11,9 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  *
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getEmbeddable()
- * @model annotation="http://annotation.elver.org/internal/Target 0='EClass'"
+ * @model annotation="teneo/internal/Target 0='EClass'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NoInterface'"
- *        annotation="http://annotation.elver.org/PeristenceMapping ignore='true'"
+ *        annotation="teneo/PeristenceMapping ignore='true'"
  * @generated
  */
 public interface Embeddable extends PAnnotation {

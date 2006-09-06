@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEModelElement.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: PAnnotatedEModelElement.java,v 1.3 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Transient;
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PAnnotationElementCommutes'"
  * @generated
  */
-public interface PAnnotatedEModelElement extends EObject{
+public interface PAnnotatedEModelElement extends EObject {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -48,6 +48,7 @@ public interface PAnnotatedEModelElement extends EObject{
 	 * @see #setAnnotatedElement(ENamedElement)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEModelElement_AnnotatedElement()
 	 * @model required="true" volatile="true" derived="true"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	ENamedElement getAnnotatedElement();

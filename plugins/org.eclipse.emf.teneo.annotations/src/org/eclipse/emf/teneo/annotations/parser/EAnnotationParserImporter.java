@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAnnotationParserImporter.java,v 1.3 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: EAnnotationParserImporter.java,v 1.4 2006/09/06 17:25:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -107,7 +107,7 @@ public class EAnnotationParserImporter implements EClassResolver {
 			final ComplexNode cn = (ComplexNode)it.next();
 			if (cn.isList()) {
 				// find the efeature
-				final EStructuralFeature ef = ParserUtil.getEStructuralFeature(pee.eClass(), cn.getName());
+				final EStructuralFeature ef = getEStructuralFeature(pee.eClass(), cn.getName());
 				pee.eSet(ef, cn.convert(this));
 			} else {
 				EObject eobj = (EObject)cn.convert(this);
@@ -174,5 +174,10 @@ public class EAnnotationParserImporter implements EClassResolver {
 		if (source == null) return false;
 		return source.startsWith("teneo.jpa") ||
 			source.startsWith("teneo.mapping");
+	}
+	
+	/** Find the efeature */
+	public EStructuralFeature getEStructuralFeature(EClass eClass, String name) {
+		return ParserUtil.getEStructuralFeature(eClass, name);
 	}
 }

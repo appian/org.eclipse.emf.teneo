@@ -4,10 +4,10 @@
 	
 	<xsd:simpleType name="Name" ecore:instanceClass="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name">
 				<xsd:annotation>
-					<xsd:appinfo source="http://hibernate.elver.org/Type" ecore:key="type">org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType</xsd:appinfo>
-					<xsd:appinfo source="http://hibernate.elver.org/Columns" ecore:key="value">c1 c2</xsd:appinfo>
-					<xsd:appinfo source="http://ejb.elver.org/Column/c1" ecore:key="name">first_name</xsd:appinfo>
-					<xsd:appinfo source="http://ejb.elver.org/Column/c2" ecore:key="name">last_name</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">
+						@Type(type="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType")
+						@Columns({@Column(name="first_name"), @Column(name="last_name")})
+					</xsd:appinfo>
 				</xsd:annotation>
 		<xsd:restriction/>
 	</xsd:simpleType>

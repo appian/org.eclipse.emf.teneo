@@ -26,14 +26,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fetch" eType="ecore:EEnum ../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//FetchType"
         defaultValueLiteral="LAZY"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Columns" eSuperTypes="#//HbAnnotation">
-    <eAnnotations source="http://annotation.elver.org/internal/Target">
-      <details key="0" value="EStructuralFeature"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
-        eType="ecore:EClass ../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//Column"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MapKey" eSuperTypes="#//HbAnnotation">
     <eAnnotations source="http://annotation.elver.org/internal/Target">
       <details key="0" value="EStructuralFeature"/>

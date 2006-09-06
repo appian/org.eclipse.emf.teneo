@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackage.java,v 1.4 2006/09/04 15:42:11 mtaal Exp $
+ * $Id: PAnnotatedEPackage.java,v 1.5 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -49,6 +49,7 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_PaModel()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel#getPaEPackages
 	 * @model opposite="paEPackages"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	PAnnotatedModel getPaModel();
@@ -74,6 +75,7 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	 * @see #setAnnotatedEPackage(EPackage)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_AnnotatedEPackage()
 	 * @model required="true"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EPackage getAnnotatedEPackage();
@@ -101,6 +103,7 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_PaEClasses()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPaEPackage
 	 * @model type="org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass" opposite="paEPackage" containment="true"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EList getPaEClasses();

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationFactory.java,v 1.2 2006/08/31 22:47:19 mtaal Exp $
+ * $Id: HbAnnotationFactory.java,v 1.3 2006/09/06 17:26:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -58,15 +58,6 @@ public interface HbAnnotationFactory extends EFactory {
 	 * @generated
 	 */
 	Cascade createCascade();
-
-	/**
-	 * Returns a new object of class '<em>Columns</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Columns</em>'.
-	 * @generated
-	 */
-	Columns createColumns();
 
 	/**
 	 * Returns a new object of class '<em>Map Key</em>'.

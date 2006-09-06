@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToOne.java,v 1.2 2006/07/04 21:56:28 mtaal Exp $
+ * $Id: OneToOne.java,v 1.3 2006/09/06 17:25:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -23,11 +23,11 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOneToOne()
- * @model annotation="http://annotation.elver.org/internal/Target 0='EReference'"
+ * @model annotation="teneo/internal/Target 0='EReference'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='IsNotManyValued'"
  * @generated
  */
-public interface OneToOne extends PAnnotation{
+public interface OneToOne extends PAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated

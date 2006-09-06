@@ -11,7 +11,8 @@
         eType="ecore:EClass hbannotation.ecore#//CollectionOfElements" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbMapKey" eType="ecore:EClass hbannotation.ecore#//MapKey"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hbColumns" eType="ecore:EClass hbannotation.ecore#//Columns"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbColumns" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//Column"
         defaultValueLiteral="" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbCascade" eType="ecore:EClass hbannotation.ecore#//Cascade"
         containment="true"/>
