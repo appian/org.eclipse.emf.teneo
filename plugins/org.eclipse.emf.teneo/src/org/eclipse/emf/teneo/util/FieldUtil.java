@@ -12,13 +12,12 @@
  *
  * </copyright>
  *
- * $Id: FieldUtil.java,v 1.3 2006/09/06 12:02:45 mtaal Exp $
+ * $Id: FieldUtil.java,v 1.4 2006/09/06 12:07:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Hashtable;
 
@@ -28,7 +27,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class FieldUtil {
