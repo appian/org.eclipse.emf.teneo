@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.18 2006/09/06 09:49:51 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.19 2006/09/06 13:09:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -71,18 +71,22 @@ public class JPOXTestbed extends Testbed {
 	/** Test the rundir */
 	static {
 		try {
+			System.err.println("RUNDIR " + RUN_BASE_DIR);
 			File testFile = new File(RUN_BASE_DIR);
 			if (!testFile.exists()) { // running on eclipse server?
 				log.debug("Path to jdo file directory does not exist: " + RUN_BASE_DIR);
-				
 				final File pluginsDir = new File(System.getProperty("user.dir"), "plugins");
 				final File pluginDir = Utils.getPluginDir(pluginsDir, "org.eclipse.emf.teneo.jpox.test");
 				if (pluginDir != null) {					
 					RUN_BASE_DIR = pluginDir.getAbsolutePath() + File.separator + "run";
+					System.err.println("RUNDIR2 " + RUN_BASE_DIR);
+					
 				} else {
 					// error will be thrown later because class initialization errors are sometimes
 					// difficult to find
 					log.error("Directory for jdo files does not exist! " + pluginsDir.getAbsolutePath() + 
+							File.separator + "org.eclipse.emf.teneo.jpox.test....");					
+					System.err.println("Directory for jdo files does not exist! " + pluginsDir.getAbsolutePath() + 
 							File.separator + "org.eclipse.emf.teneo.jpox.test....");					
 				}
 			}
