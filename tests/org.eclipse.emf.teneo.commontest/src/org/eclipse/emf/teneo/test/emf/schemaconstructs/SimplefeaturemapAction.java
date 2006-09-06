@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SimplefeaturemapAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: SimplefeaturemapAction.java,v 1.2 2006/09/06 06:55:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests for a simple featuremap (derived features)  
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class SimplefeaturemapAction extends AbstractTestAction 
 {
@@ -73,19 +73,15 @@ public class SimplefeaturemapAction extends AbstractTestAction
 //		        EList referenceList = 
 		        supplier.getHardCopyOrderReference(); // returns the list hard copy references
 		        
-		        // Will display java.lang.Long
-		        System.err.println(numberList.get(0).getClass().getName());
-
-		        // Will display preferred1
-		        System.err.println(((PurchaseOrder)preferredList.get(0)).getName());
+		        assertEquals(1002, ((Long)numberList.get(0)).longValue());
+		        assertEquals("preferred1", ((PurchaseOrder)preferredList.get(0)).getName());
 		        
 		        // Retrieve directly through the main featuremap member, 
 		        // this is the same purchaseorder as in the previous step
 		        FeatureMap.Entry entry = (FeatureMap.Entry)supplier.getOrders().get(1);
 		        PurchaseOrder referencePO = (PurchaseOrder)entry.getValue();
 
-		        // this will also display preferred1
-		        System.err.println(referencePO.getName());
+		        assertEquals("preferred1", referencePO.getName());
 
 		        store.store(supplier);
 		        store.commitTransaction();

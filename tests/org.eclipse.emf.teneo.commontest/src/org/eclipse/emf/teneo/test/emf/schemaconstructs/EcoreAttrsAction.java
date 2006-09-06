@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAttrsAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: EcoreAttrsAction.java,v 1.3 2006/09/06 06:55:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests number of ecore attributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class EcoreAttrsAction extends AbstractTestAction 
 {
@@ -94,7 +94,6 @@ public class EcoreAttrsAction extends AbstractTestAction
 	        
 	        entry = (FeatureMap.Entry)mixed.getMixed().get(3);
 	        assertEquals(entry.getEStructuralFeature(), EcoreattrsPackage.eINSTANCE.getMixed_Value());
-	        System.err.println(entry.getValue() + " " + entry.getValue().getClass().getName());
 	        assertEquals(1.5, ((Double)entry.getValue()).doubleValue(), 0.01);
 	        assertEquals(mixed.getValue(), ((Double)entry.getValue()).doubleValue(), 0.01);
 

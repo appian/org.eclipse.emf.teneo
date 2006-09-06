@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestStoreFactory.java,v 1.3 2006/09/03 21:47:23 mtaal Exp $
+ * $Id: AbstractTestStoreFactory.java,v 1.4 2006/09/06 06:55:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.conf.TestConfiguration;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public abstract class AbstractTestStoreFactory {
 
@@ -53,19 +53,29 @@ public abstract class AbstractTestStoreFactory {
 	 * Request a store for the given configuration. No other store can be requested until this one is tear down. NOTE: dbName must be a
 	 * key: no equals dbName for difference usedEPackages/cfg
 	 */
-	public TestStore get(String dbName, EPackage[] usedEPackages, File destMappingFile, TestConfiguration cfg,
+	public TestStore get(String dbName, EPackage[] usedEPackages, String mappingFilePath, TestConfiguration cfg,
 			Properties extraConfigProps) throws FileNotFoundException {
-		return createTestStore(dbName, usedEPackages, destMappingFile, cfg, extraConfigProps);
+		return createTestStore(dbName, usedEPackages, mappingFilePath, cfg, extraConfigProps);
+	}
+
+	/**
+	 * Request a store for the given configuration. No other store can be requested until this one is tear down. NOTE: dbName must be a
+	 * key: no equals dbName for difference usedEPackages/cfg
+	 */
+	public TestStore get(String dbName, EPackage[] usedEPackages, File mappingFile, TestConfiguration cfg,
+			Properties extraConfigProps) throws FileNotFoundException {
+		return createTestStore(dbName, usedEPackages, 
+				(mappingFile != null ? mappingFile.getAbsolutePath() : null), cfg, extraConfigProps);
 	}
 
 	/** Creates the test store for emf test case */
-	protected TestStore createTestStore(String dbName, EPackage[] usedEPackages, File mappingFile, TestConfiguration cfg,
+	protected TestStore createTestStore(String dbName, EPackage[] usedEPackages, String mappingFile, TestConfiguration cfg,
 			Properties props) throws FileNotFoundException {
 		cfg.getDbAdapter().setDbName(dbName);
 		// TODO: mappingfile is null for hibernate but set for jpox make this nicer than
 		// passing null value around
-		return createStoreInstance((TestDatabaseAdapter) cfg.getDbAdapter(), usedEPackages, (mappingFile != null ? mappingFile
-				.getAbsolutePath() : null), props, cfg.getMappingStrategy());
+		return createStoreInstance((TestDatabaseAdapter) cfg.getDbAdapter(), usedEPackages, 
+				mappingFile, props, cfg.getMappingStrategy());
 	}
 
 	/** Ensures that the run directory exists, this directory contains the mapping files */

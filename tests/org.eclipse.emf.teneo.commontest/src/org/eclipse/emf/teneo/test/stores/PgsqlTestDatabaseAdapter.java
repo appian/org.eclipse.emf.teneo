@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PgsqlTestDatabaseAdapter.java,v 1.1 2006/07/04 22:12:14 mtaal Exp $
+ * $Id: PgsqlTestDatabaseAdapter.java,v 1.2 2006/09/06 06:55:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.StoreTestException;
  * rough workaround has been implemented, i.e. the drop/create is retried a number of times before failing.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class PgsqlTestDatabaseAdapter extends BaseTestDatabaseAdapter {
@@ -76,7 +76,6 @@ public class PgsqlTestDatabaseAdapter extends BaseTestDatabaseAdapter {
 							//conn.commit();
 							return;
 						} catch (Exception e) {
-							System.err.println(e.getMessage());
 							Thread.sleep(500);
 							log.warn("Exception (" + e.getMessage() + ") while creating database (" + getDbName()
 									+ "), num of tries: " + tries + ", the create database gives up at: " + NO_TRIES);

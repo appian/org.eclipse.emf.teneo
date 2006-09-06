@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SchoolLibraryAction.java,v 1.4 2006/08/22 22:35:44 mtaal Exp $
+ * $Id: SchoolLibraryAction.java,v 1.5 2006/09/06 06:55:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the schoollibrary example which has some more inheritance structures.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class SchoolLibraryAction extends AbstractTestAction {
 
@@ -187,8 +187,6 @@ public class SchoolLibraryAction extends AbstractTestAction {
 //			while (it.hasNext()) {
 //				Book obj = (Book)it.next();
 //				if (obj.getAuthor() != null) {
-//					System.err.println(obj.eResource());
-//					System.err.println(obj.getAuthor().eResource());
 //					assertEquals(obj.eResource(), obj.getAuthor().eResource());
 //				}
 //			}

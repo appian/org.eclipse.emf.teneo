@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAccess.java,v 1.3 2006/09/01 12:19:09 mtaal Exp $
+ * $Id: EcoreAccess.java,v 1.4 2006/09/06 06:55:43 mtaal Exp $
  */
 
 package org.eclipse.emf.ecore.impl;
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Internal.DynamicValueHolder;
  * Provides access to package private methods in org.eclipse.emf.ecore.impl
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class EcoreAccess extends BasicEObjectImpl {
 	
@@ -60,6 +60,7 @@ public class EcoreAccess extends BasicEObjectImpl {
 	/** Gets an elist using the passed feature */
 	public EList instGetManyEFeatureValue(EStructuralFeature eFeature, BasicEObjectImpl owner) {
 		final DynamicValueHolder dvh = instGetValueHolder(owner);
+		
 		return (EList)dvh.dynamicGet(eFeature.getFeatureID());
 	}
 

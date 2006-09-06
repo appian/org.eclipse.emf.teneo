@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SubstitutionAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: SubstitutionAction.java,v 1.3 2006/09/06 06:55:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests for the substitution construction.  
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class SubstitutionAction extends AbstractTestAction 
 {
@@ -94,7 +94,6 @@ public class SubstitutionAction extends AbstractTestAction
     				if (number.getName().compareTo("o1") == 0)
     				{
     					assertEquals((int)3, number.getMySimpleAbstract().intValue());
-    					System.err.println(number.getMyComplexAbstractGroup().getValue(0).getClass().getName());
     					OddComplexNumberType odd = (OddComplexNumberType)number.getMyComplexAbstractGroup().getValue(0);
     					assertEquals("pcs", odd.getUnit());
     					assertEquals((int)1, odd.getValue().intValue());

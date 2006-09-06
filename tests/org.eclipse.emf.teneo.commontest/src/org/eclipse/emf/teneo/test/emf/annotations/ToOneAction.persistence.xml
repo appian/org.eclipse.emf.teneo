@@ -25,7 +25,7 @@
 				</many-to-one>
 			</property>
 			<property name="head">
-				<many-to-one fetch="EAGER" target-entity="Head" optional="true" cascade="ALL" />
+				<one-to-one fetch="EAGER" target-entity="Head" optional="true" cascade="ALL" />
 			</property>
 		</eclass>
 

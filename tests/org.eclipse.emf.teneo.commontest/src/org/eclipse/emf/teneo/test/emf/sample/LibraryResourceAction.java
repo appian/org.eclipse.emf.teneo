@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.2 2006/09/04 08:38:59 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.3 2006/09/06 06:55:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	/**
@@ -105,7 +105,6 @@ public class LibraryResourceAction extends AbstractTestAction {
 
 				/*
 				 * final Object[] obj = ((StoreResource)res).getCrossReferencers(tolkien); for (int i = 0; i < obj.length; i++) {
-				 * System.err.println(obj.getClass().getName()); }
 				 */
 
 				/*

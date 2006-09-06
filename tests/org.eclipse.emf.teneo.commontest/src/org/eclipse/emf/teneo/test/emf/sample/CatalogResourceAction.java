@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CatalogResourceAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: CatalogResourceAction.java,v 1.2 2006/09/06 06:55:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * All using a resource, tests add, delete and update of objects in a resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class CatalogResourceAction extends AbstractTestAction {
 	/**
@@ -359,7 +359,6 @@ public class CatalogResourceAction extends AbstractTestAction {
 				store.commitTransaction();
 			}
 		} catch (Exception e) {
-			e.printStackTrace(System.err);
 			throw new StoreTestException(e.getMessage(), e);
 		}
 	}
