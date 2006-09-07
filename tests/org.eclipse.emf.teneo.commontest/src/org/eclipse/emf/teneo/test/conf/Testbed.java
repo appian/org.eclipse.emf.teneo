@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: Testbed.java,v 1.4 2006/07/23 23:49:19 mtaal Exp $
+ * $Id: Testbed.java,v 1.5 2006/09/07 07:51:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public abstract class Testbed {
 	/** The logger */
@@ -81,6 +81,22 @@ public abstract class Testbed {
 			dbAdapters.addDBAdapters(this.getClass().getResourceAsStream(DBADAPTERS_PROP_RESOURCE));
 			testConfigs = new TestConfigurations(dbAdapters);
 			testConfigs.addConfigurations(getClass().getResourceAsStream(TEST_CFG_PROP_RESOURCE));
+			currentCfg = (TestConfiguration) testConfigs.getConfigurations().iterator().next();
+		} catch (IOException e) {
+			throw new StoreTestException("Unable to initialize TestSetting", e);
+		}
+	}
+
+	/**
+	 * Constructor, the constructor assumes that the test and db properties are located in the same location as the non-abstract
+	 * subclass
+	 */
+	protected Testbed(String configPropertiesFile) {
+		dbAdapters = new TestDBAdapters();
+		try {
+			dbAdapters.addDBAdapters(this.getClass().getResourceAsStream(DBADAPTERS_PROP_RESOURCE));
+			testConfigs = new TestConfigurations(dbAdapters);
+			testConfigs.addConfigurations(getClass().getResourceAsStream(configPropertiesFile));
 			currentCfg = (TestConfiguration) testConfigs.getConfigurations().iterator().next();
 		} catch (IOException e) {
 			throw new StoreTestException("Unable to initialize TestSetting", e);

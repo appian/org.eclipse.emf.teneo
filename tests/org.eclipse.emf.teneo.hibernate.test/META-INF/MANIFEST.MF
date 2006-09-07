@@ -20,7 +20,4 @@ Export-Package: org.eclipse.emf.teneo.hibernate.test,
  org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs,
  org.eclipse.emf.teneo.hibernate.test.issues,
  org.eclipse.emf.teneo.hibernate.test.stores,
- org.eclipse.emf.teneo.hibernate.test.stores.adapters,
- org.eclipse.emf.teneo.samples.emf.hibernate.usertype,
- org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl,
- org.eclipse.emf.teneo.samples.emf.hibernate.usertype.util
+ org.eclipse.emf.teneo.hibernate.test.stores.adapters
