@@ -3,13 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.jpox.libraries
 Bundle-Version: 0.7.5.qualifier
-Bundle-ClassPath: bcel-5.1.jar,
- commons-logging.jar,
- log4j-1.2.13.jar,
- jdo2-api-2.0.jar,
- jpox-1.1.1.jar,
- jpox-enhancer-1.1.1.jar,
- org.eclipse.emf.teneo.jpox.enhanced.jar
 Eclipse-BuddyPolicy: dependent
 Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
@@ -90,3 +83,10 @@ Export-Package: .,
  org.jpox.store.rdbms.typeinfo,
  org.jpox.store.scostore,
  org.jpox.util
+Bundle-ClassPath: bcel-5.1.jar,
+ commons-logging.jar,
+ jdo2-api-2.0.jar,
+ jpox.jar,
+ jpox-1.1.1.jar,
+ jpox-enhancer-1.1.1.jar,
+ log4j-1.2.13.jar
