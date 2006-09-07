@@ -11,13 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ENumUserType.java,v 1.2 2006/09/07 22:27:50 mtaal Exp $
+ * $Id: DynamicENumUserType.java,v 1.1 2006/09/07 22:27:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
 
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,11 +24,10 @@ import java.sql.Types;
 import java.util.HashMap;
 import java.util.Properties;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
-import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.EPackage;
 import org.hibernate.HibernateException;
 import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
@@ -38,21 +36,19 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/09/07 22:27:50 $
+ * @version $Revision: 1.1 $ $Date: 2006/09/07 22:27:50 $
  */
 
-public class ENumUserType implements UserType, ParameterizedType {
+public class DynamicENumUserType implements UserType, ParameterizedType {
 	/** The expected parameter name which contains the enum class name */
-	public static final String ENUM_CLASS_PARAM = "enumClass";
+	public static final String EPACKAGE_PARAM = "epackage";
+	public static final String ECLASSIFIER_PARAM = "eclassifier";
 
 	/** The sql types used for enums */
 	private static final int[] SQL_TYPES = new int[] { Types.VARCHAR };
 
 	/** The enum type we are handling here */
-	protected Class enumType;
-
-	/** The method which translates a string to an instance of the emf enum */
-	protected Method getMethod;
+	protected EEnum enumInstance;
 
 	/** Hashmap with string to enum mappings */
 	private final HashMap localCache = new HashMap();
@@ -95,8 +91,8 @@ public class ENumUserType implements UserType, ParameterizedType {
 
 		if (x.getClass() != y.getClass())
 			return false;
-		assert (x instanceof AbstractEnumerator);
-		return ((AbstractEnumerator) x).getValue() == ((AbstractEnumerator) y).getValue();
+		assert (x instanceof EEnumLiteral);
+		return ((EEnumLiteral) x).getValue() == ((EEnumLiteral) y).getValue();
 	}
 
 	/*
@@ -127,15 +123,9 @@ public class ENumUserType implements UserType, ParameterizedType {
 		if (enumValue != null)
 			return enumValue;
 
-		// call the getMethod!
-		try {
-			enumValue = (Enumerator) getMethod.invoke(null, new Object[] { name });
-			localCache.put(name, enumValue);
-			return enumValue;
-		} catch (Exception e) {
-			throw new HbStoreException("Exception when getting enum for class: " + enumType.getName()
-					+ " using value: " + name, e);
-		}
+		enumValue = enumInstance.getEEnumLiteralByLiteral(name);
+		localCache.put(name, enumValue);
+		return enumValue;
 	}
 
 	/*
@@ -147,7 +137,7 @@ public class ENumUserType implements UserType, ParameterizedType {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
-			st.setString(index, ((AbstractEnumerator) value).getName());
+			st.setString(index, ((EEnumLiteral) value).getName());
 		}
 	}
 
@@ -162,7 +152,7 @@ public class ENumUserType implements UserType, ParameterizedType {
 
 	/** Returns the parameterizezd enumType */
 	public Class returnedClass() {
-		return enumType;
+		return enumInstance.getClass();
 	}
 
 	/** An enum is stored in one varchar */
@@ -172,14 +162,9 @@ public class ENumUserType implements UserType, ParameterizedType {
 
 	/** Sets the enumclass */
 	public void setParameterValues(Properties parameters) {
-		final String enumClassName = parameters.getProperty(ENUM_CLASS_PARAM);
-		try {
-			enumType = ClassLoaderResolver.classForName(enumClassName);
-			getMethod = enumType.getMethod("get", new Class[] { String.class });
-		} catch (StoreClassLoadException e) {
-			throw new HbStoreException("Enum class " + enumClassName + " can not be found", e);
-		} catch (NoSuchMethodException e) {
-			throw new HbStoreException("Get method not present in enum class " + enumClassName, e);
-		}
+		final String epackUri = parameters.getProperty(EPACKAGE_PARAM);
+		final String eclassifier = parameters.getProperty(ECLASSIFIER_PARAM);
+		final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(epackUri);
+		enumInstance = (EEnum)epack.getEClassifier(eclassifier);
 	}
 }

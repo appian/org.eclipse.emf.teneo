@@ -7,7 +7,11 @@
     <xsd:sequence>
       <xsd:element name="title" type="xsd:string"/>
       <xsd:element name="pages" type="xsd:int"/>
-      <xsd:element name="category" type="lib:BookCategory"/>
+      <xsd:element name="category" type="lib:BookCategory">
+	 	<xsd:annotation>
+			<xsd:appinfo source="teneo.jpa">@Enumerated(ORDINAL)</xsd:appinfo>
+	    </xsd:annotation>
+	  </xsd:element>
       <xsd:element name="author" type="xsd:anyURI"
           ecore:reference="lib:Writer" ecore:opposite="books"/>
     </xsd:sequence>

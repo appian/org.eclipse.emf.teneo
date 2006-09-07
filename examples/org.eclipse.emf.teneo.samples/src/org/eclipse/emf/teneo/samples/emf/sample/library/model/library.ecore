@@ -24,6 +24,9 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" unique="false"
         lowerBound="1" eType="#//BookCategory" defaultValueLiteral="Mystery" unsettable="true">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Enumerated(ORDINAL)"/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="category"/>

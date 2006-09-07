@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.4 2006/09/06 17:26:44 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.5 2006/09/07 22:27:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,6 +24,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
@@ -40,6 +41,8 @@ import org.eclipse.emf.teneo.annotations.processing.TransientProcessor;
 import org.eclipse.emf.teneo.annotations.processing.VersionProcessor;
 import org.eclipse.emf.teneo.annotations.util.EcoreDataTypes;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
+import org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserType;
+import org.eclipse.emf.teneo.hibernate.mapping.ENumUserType;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -223,16 +226,21 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 		propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
 		propElement.addAttribute("access", "org.eclipse.emf.teneo.hibernate.mapping.EFeatureAccessor");
 		addColumn(propElement, eattr.getName(), column, getHbmContext().isCurrentElementFeatureMap(), false);
-
-		final String instanceClassName;
+		
 		if (paAttribute.getAnnotatedEAttribute().getEType().getInstanceClass() != null) {
-			instanceClassName = eattr.getEType().getInstanceClass().getName();
+			propElement.addElement("type"). 
+				addAttribute("name", hbEnumType(enumerated)). 
+				addElement("param"). 
+					addAttribute("name", ENumUserType.ENUM_CLASS_PARAM).
+					addText(eattr.getEType().getInstanceClass().getName());
 		} else {
-			instanceClassName = eattr.getEType().getInstanceClassName();
+			final Element typeElement = propElement.addElement("type"). 
+				addAttribute("name", hbDynamicEnumType(enumerated));
+			typeElement.addElement("param").addAttribute("name", DynamicENumUserType.ECLASSIFIER_PARAM). 
+				addText(paAttribute.getAnnotatedEAttribute().getEType().getName());
+			typeElement.addElement("param").addAttribute("name", DynamicENumUserType.EPACKAGE_PARAM). 
+				addText(paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
 		}
-
-		propElement.addElement("type").addAttribute("name", hbEnumType(enumerated)).addElement("param").addAttribute(
-				"name", "enumClass").addText(instanceClassName);
 
 		addIsSetAttribute(paAttribute);
 		propElement.addAttribute("not-null", isNullable(basic, eattr) ? "false" : "true");

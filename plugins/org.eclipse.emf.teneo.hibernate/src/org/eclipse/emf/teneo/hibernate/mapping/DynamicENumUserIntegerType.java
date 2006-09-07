@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ENumUserIntegerType.java,v 1.2 2006/09/07 22:27:50 mtaal Exp $
+ * $Id: DynamicENumUserIntegerType.java,v 1.1 2006/09/07 22:27:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -21,23 +21,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.HashMap;
-import java.util.Properties;
 
 import org.eclipse.emf.common.util.AbstractEnumerator;
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
-import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.hibernate.HibernateException;
 
 /**
- * Implements the EMF UserType for an Enum where the value is stored as an int.
+ * Implements the EMF UserType for an Enum in a dynamic model, for an integer field.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/09/07 22:27:50 $
+ * @version $Revision: 1.1 $ $Date: 2006/09/07 22:27:50 $
  */
 
-public class ENumUserIntegerType extends ENumUserType {
+public class DynamicENumUserIntegerType extends DynamicENumUserType {
 
 	/** The sql types used for enums */
 	private static final int[] SQL_TYPES = new int[] { Types.INTEGER };
@@ -60,16 +57,9 @@ public class ENumUserIntegerType extends ENumUserType {
 		if (enumValue != null)
 			return enumValue;
 
-		// call the getMethod!
-		try {
-			// use non
-			enumValue = (Enumerator) getMethod.invoke(null, new Object[] { objValue });
-			localCache.put(objValue, enumValue);
-			return enumValue;
-		} catch (Exception e) {
-			throw new HbStoreException("Exception when getting enum for class: " + enumType.getName()
-					+ " using int value: " + value, e);
-		}
+		enumValue = enumInstance.getEEnumLiteral(objValue.intValue());
+		localCache.put(objValue, enumValue);
+		return enumValue;
 	}
 
 	/*
@@ -81,25 +71,12 @@ public class ENumUserIntegerType extends ENumUserType {
 		if (value == null) {
 			st.setNull(index, Types.INTEGER);
 		} else {
-			st.setInt(index, ((AbstractEnumerator) value).getValue());
+			st.setInt(index, ((EEnumLiteral) value).getValue());
 		}
 	}
 
 	/** An enum is stored in one varchar */
 	public int[] sqlTypes() {
 		return SQL_TYPES;
-	}
-
-	/** Sets the enumclass */
-	public void setParameterValues(Properties parameters) {
-		final String enumClassName = parameters.getProperty(ENUM_CLASS_PARAM);
-		try {
-			enumType = ClassLoaderResolver.classForName(enumClassName);
-			getMethod = enumType.getMethod("get", new Class[] { int.class });
-		} catch (StoreClassLoadException e) {
-			throw new HbStoreException("Enum class " + enumClassName + " can not be found", e);
-		} catch (NoSuchMethodException e) {
-			throw new HbStoreException("Get method not present in enum class " + enumClassName, e);
-		}
 	}
 }

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackageImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: LibraryPackageImpl.java,v 1.3 2006/09/07 22:27:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -369,6 +369,8 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -399,7 +401,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "pages"
-		   });		
+		   });			
 		addAnnotation
 		  (getBook_Category(), 
 		   source, 
@@ -476,6 +478,22 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 			 "kind", "element",
 			 "name", "books"
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";					
+		addAnnotation
+		  (getBook_Category(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Enumerated(ORDINAL)"
+		   });											
 	}
 
 } //LibraryPackageImpl

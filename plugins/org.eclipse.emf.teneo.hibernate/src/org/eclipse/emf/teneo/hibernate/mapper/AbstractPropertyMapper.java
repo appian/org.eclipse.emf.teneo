@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractPropertyMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: AbstractPropertyMapper.java,v 1.2 2006/09/07 22:27:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -81,4 +81,14 @@ class AbstractPropertyMapper extends AbstractMapper {
 		return typeName;
 	}
 
+	/** Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type. */
+	protected String hbDynamicEnumType(Enumerated enumerated) {
+		final String typeName;
+		if (EnumType.STRING == enumerated.getValue().getValue()) {
+			typeName = "org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserType";
+		} else {
+			typeName = "org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserIntegerType";
+		}
+		return typeName;
+	}
 }

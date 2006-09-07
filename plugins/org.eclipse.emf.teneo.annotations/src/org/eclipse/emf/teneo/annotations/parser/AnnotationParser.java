@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationParser.java,v 1.6 2006/09/05 12:16:57 mtaal Exp $
+ * $Id: AnnotationParser.java,v 1.7 2006/09/07 22:27:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -112,12 +112,26 @@ public class AnnotationParser {
 				case AnnotationTokenizer.T_IDENTIFIER:
 					final String identifier = annotationTokenizer.getLexeme();
 					// next token must be an is
-					if (annotationTokenizer.nextToken() != AnnotationTokenizer.T_IS) {
+					int nextToken = annotationTokenizer.nextToken();
+					if (nextToken == AnnotationTokenizer.T_CONTENTEND) { 
+						final PrimitiveValueNode vn = new PrimitiveValueNode();
+						vn.setName("value");
+						vn.setValue(identifier);
+						addToParent(pn, vn);
+						return;
+					}
+					if (nextToken != AnnotationTokenizer.T_IS) {
 						throw new AnnotationParserException("No = character after identifier, see _ for error position " +
 								annotationTokenizer.getErrorText());
 					}
-					final int nextToken = annotationTokenizer.nextToken();
+					nextToken = annotationTokenizer.nextToken();
 					if (nextToken == AnnotationTokenizer.T_VALUE) { 
+						final String value = annotationTokenizer.getLexeme();
+						final PrimitiveValueNode vn = new PrimitiveValueNode();
+						vn.setName(identifier);
+						vn.setValue(value);
+						addToParent(pn, vn);
+					}if (nextToken == AnnotationTokenizer.T_VALUE) { 
 						final String value = annotationTokenizer.getLexeme();
 						final PrimitiveValueNode vn = new PrimitiveValueNode();
 						vn.setName(identifier);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: DynamicAction.java,v 1.2 2006/09/07 22:27:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -22,6 +22,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -39,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -110,6 +112,8 @@ public class DynamicAction extends AbstractTestAction {
 		EReference departmentManager = null;
 		EPackage companyPackage = null;
 		EAttribute departmentName = null;
+		EAttribute departmentType = null;
+		EEnumLiteral el1 = null;
 		{
 		    employeeClass = efactory.createEClass();
 		    employeeClass.setName("Employee");
@@ -137,12 +141,28 @@ public class DynamicAction extends AbstractTestAction {
 		    departmentManager.setContainment(true);
 		    departmentClass.getEStructuralFeatures().add(departmentManager);
 
+		    final EEnum dt = efactory.createEEnum();
+		    dt.setName("DepartmentType");
+		    el1 = efactory.createEEnumLiteral();
+		    el1.setName("division");
+		    el1.setValue(0);
+		    dt.getELiterals().add(el1);
+		    final EEnumLiteral el2 = efactory.createEEnumLiteral();
+		    el2.setName("office");
+		    el2.setValue(1);
+		    dt.getELiterals().add(el2);
+		    departmentType = efactory.createEAttribute();
+		    departmentType.setName("departmentType");
+		    departmentType.setEType(dt);		    
+		    departmentClass.getEStructuralFeatures().add(departmentType);
+		    
 		    companyPackage = efactory.createEPackage();
 		    companyPackage.setName("elv");
 		    companyPackage.setNsPrefix("elv");
 		    companyPackage.setNsURI("http:///www.elver.org/DynamicTest");
 		    companyPackage.getEClassifiers().add(employeeClass);
 		    companyPackage.getEClassifiers().add(departmentClass);
+		    companyPackage.getEClassifiers().add(dt);
 		    EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(), companyPackage);
 		    store.addEPackage(companyPackage);
 		    store.updateSchema();
@@ -177,6 +197,7 @@ public class DynamicAction extends AbstractTestAction {
 			
 			EObject department = EcoreUtil.create(departmentClass);
 			department.eSet(departmentName, "Software Development");
+			department.eSet(departmentType, el1);
 			final ArrayList departmentManagers = new ArrayList();
 			for (int i = 0; i < employees.size(); i++) {
 				Person employ = (Person)employees.get(i);

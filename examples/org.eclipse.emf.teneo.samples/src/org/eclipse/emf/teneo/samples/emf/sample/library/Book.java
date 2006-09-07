@@ -2,9 +2,10 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Book.java,v 1.2 2006/08/25 23:04:14 mtaal Exp $
+ * $Id: Book.java,v 1.3 2006/09/07 22:27:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
+
 
 
 /**
@@ -126,6 +127,7 @@ public interface Book extends SerializableEObject {
 	 * @see #setCategory(BookCategory)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getBook_Category()
 	 * @model default="Mystery" unique="false" unsettable="true" required="true"
+	 *        annotation="teneo.jpa appinfo='@Enumerated(ORDINAL)'"
 	 *        extendedMetaData="kind='element' name='category'"
 	 * @generated
 	 */

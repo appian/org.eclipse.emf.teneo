@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.6 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: IdMapper.java,v 1.7 2006/09/07 22:27:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,6 +39,8 @@ import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
+import org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserType;
+import org.eclipse.emf.teneo.hibernate.mapping.ENumUserType;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -204,9 +206,20 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 		if (id.getEnumerated() == null) {
 			usedIdElement.addAttribute("type", AbstractPropertyMapper.hbType(eAttribute.getEAttributeType()));
 		} else { // enumerated id
-			usedIdElement.addElement("type").addAttribute("name", hbEnumType(id.getEnumerated())).addElement("param")
-					.addAttribute("name", "enumClass").addText(
-							id.getAnnotatedEAttribute().getEType().getInstanceClassName());
+			if (id.getAnnotatedEAttribute().getEType().getInstanceClass() != null) {
+				usedIdElement.addElement("type"). 
+					addAttribute("name", hbEnumType(id.getEnumerated())). 
+					addElement("param"). 
+						addAttribute("name", ENumUserType.ENUM_CLASS_PARAM).
+						addText(eAttribute.getEType().getInstanceClass().getName());
+			} else {
+				final Element typeElement = usedIdElement.addElement("type"). 
+					addAttribute("name", hbDynamicEnumType(id.getEnumerated()));
+				typeElement.addElement("param").addAttribute("name", DynamicENumUserType.ECLASSIFIER_PARAM). 
+					addText(id.getAnnotatedEAttribute().getEType().getName());
+				typeElement.addElement("param").addAttribute("name", DynamicENumUserType.EPACKAGE_PARAM). 
+					addText(id.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
+			}
 		}
 
 		addColumn(usedIdElement, eAttribute.getName(), column, false, true);
