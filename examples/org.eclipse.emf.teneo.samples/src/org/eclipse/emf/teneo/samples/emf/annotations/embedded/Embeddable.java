@@ -2,12 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Embeddable.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: Embeddable.java,v 1.2 2006/09/07 10:06:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
 import org.eclipse.emf.ecore.EObject;
-
+ 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Embeddable</b></em>'.
