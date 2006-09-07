@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.5 2006/09/06 06:56:50 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.6 2006/09/07 22:29:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -113,6 +113,9 @@ public class HibernateTestbed extends Testbed {
 		if (mappingFile.exists()) mappingFile.delete();
 		mappingFile.createNewFile();
 		final FileWriter fileWriter = new FileWriter(mappingFile);
+		
+		System.err.println(mappingXML);
+		
 		fileWriter.write(mappingXML);
 		fileWriter.close();
 	}
