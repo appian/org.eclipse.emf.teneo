@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackage.java,v 1.5 2006/09/07 08:10:02 mtaal Exp $
+ * $Id: UsertypePackage.java,v 1.6 2006/09/07 22:26:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -126,7 +126,7 @@ public interface UsertypePackage extends EPackage {
 	 * @return the meta object for data type '<em>Name</em>'.
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name
 	 * @model instanceClass="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name"
-	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Type(type=\"org.eclipse.emf.teneo.hibernate.test.emf.sample.NameType\")\n\t\t\t\t\t\t@Columns({@Column(name=\"first_name\"), @Column(name=\"last_name\")})\n\t\t\t\t\t'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Type(type=\"org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType\")\n\t\t\t\t\t\t@Columns({@Column(name=\"first_name\"), @Column(name=\"last_name\")})\n\t\t\t\t\t'"
 	 *        extendedMetaData="name='Name'" 
 	 * @generated
 	 */
@@ -153,7 +153,7 @@ public interface UsertypePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl <em>Person</em>}' class.
 		 * <!-- begin-user-doc -->

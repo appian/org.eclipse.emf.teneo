@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.5 2006/09/07 08:22:31 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.6 2006/09/07 22:26:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
  * </ul>
  * </p>
  *
- * @generated 
+ * @generated
  */
 public class PersonImpl extends EObjectImpl implements Person {
 	/**

@@ -11,7 +11,7 @@
 				</xsd:annotation>
 		<xsd:restriction/>
 	</xsd:simpleType>
-	
+	 
 	<xsd:complexType name="Person">
 		<xsd:sequence>
 			<xsd:element name="name" type="this:Name">
