@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="usertype"
+    nsURI="http://www.elver.org/samples/emf/hibernate/usertype" nsPrefix="usertype">
+  <eClassifiers xsi:type="ecore:EDataType" name="Name" instanceClassName="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Type(type=&quot;org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Columns({@Column(name=&quot;first_name&quot;), @Column(name=&quot;last_name&quot;)})&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Name"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Person">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Person"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="1"
+        eType="#//Name">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>
