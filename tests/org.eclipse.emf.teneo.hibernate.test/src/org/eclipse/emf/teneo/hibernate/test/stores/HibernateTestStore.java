@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestStore.java,v 1.4 2006/08/21 07:43:44 mtaal Exp $
+ * $Id: HibernateTestStore.java,v 1.5 2006/09/08 04:35:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
@@ -54,7 +54,7 @@ import org.hibernate.persister.entity.SingleTableEntityPersister;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -137,7 +137,6 @@ public class HibernateTestStore extends AbstractTestStore {
 			session = emfDataStore.getSessionFactory().openSession();
 			tx = session.getTransaction();
 		}
-		// System.err.println(emfDataStore.getMappingXML());
 	}
 
 	/** Returns the mapping xml */
