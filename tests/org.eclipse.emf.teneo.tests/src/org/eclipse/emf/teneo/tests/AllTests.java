@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.8 2006/09/06 11:36:15 mtaal Exp $
+ * $Id: AllTests.java,v 1.9 2006/09/08 19:53:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.tests;
@@ -23,14 +23,12 @@ import junit.framework.TestSuite;
  * Runs all tests.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new TestSuite("All tests for hibernate");
-		suite.addTest(org.eclipse.emf.teneo.jpox.test.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.hibernate.test.AllTests.suite());
+		TestSuite suite = new TestSuite("Dummy Test");
 		return suite;
 	}
 

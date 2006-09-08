@@ -33,6 +33,15 @@
 		<echo message="Done: [${runtests-endtime}]"/>
 	</target>
 
+	<target name="runtests_this" depends="setup" description="Runs ant on the test.xml for a specified plugin.  Requires a property value setting for testPlugin only if test.properties is not available.  The property testPlugin represents a directory name made up of the plugin id and plugin version.  This directory must contain a valid test.xml.">
+		<tstamp><format property="runtests-starttime" pattern="HH:mm:ss"/></tstamp>
+		<echo message="Start: [${runtests-starttime}]"/>
+		<ant antfile="${eclipse-home}/plugins/${testPlugin}/test_this.xml" dir="${eclipse-home}" />
+		<copy file="${eclipse-home}/${report}.xml" tofile="${results}/xml/${report}_${platform}.xml" verbose="true"/>
+		<tstamp><format property="runtests-endtime" pattern="HH:mm:ss"/></tstamp>
+		<echo message="Done: [${runtests-endtime}]"/>
+	</target>
+
 	<target name="teneo" description="Runs the test.xml of the test plugins">
 		<antcall target="runtests">
 			<param name="testPlugin" value="${org.eclipse.emf.teneo.hibernate.test}" />
@@ -42,6 +51,11 @@
 		<antcall target="runtests">
 			<param name="testPlugin" value="${org.eclipse.emf.teneo.jpox.test}" />
 			<param name="report" value="org.eclipse.emf.teneo.jpox.test" />
+		</antcall>
+
+		<antcall target="runtests_this">
+			<param name="testPlugin" value="${org.eclipse.emf.teneo.tests}" />
+			<param name="report" value="org.eclipse.emf.teneo.tests" />
 		</antcall>
 	</target>
 
