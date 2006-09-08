@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: RunGenerateJob.java,v 1.2 2006/07/22 13:09:53 mtaal Exp $
+ * $Id: RunGenerateJob.java,v 1.3 2006/09/08 22:57:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.eclipse.genxml;
@@ -28,7 +28,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.DebugPlugin;
-import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
@@ -102,7 +101,7 @@ public class RunGenerateJob extends WorkspaceJob implements IJavaLaunchConfigura
 		//workingCopy.setAttribute(ATTR_WORKING_DIRECTORY, workingDir);
 		workingCopy.setAttribute(ATTR_PROGRAM_ARGUMENTS, getProgramArguments());
 		workingCopy.doSave();
-		ILaunch ilaunch = workingCopy.launch(ILaunchManager.RUN_MODE, null);
+		workingCopy.launch(ILaunchManager.RUN_MODE, null);
 		return Status.OK_STATUS;
 	}
 	
