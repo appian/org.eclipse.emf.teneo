@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicENumUserIntegerType.java,v 1.1 2006/09/07 22:27:50 mtaal Exp $
+ * $Id: DynamicENumUserIntegerType.java,v 1.2 2006/09/08 04:26:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -22,7 +22,6 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.HashMap;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.hibernate.HibernateException;
@@ -31,7 +30,7 @@ import org.hibernate.HibernateException;
  * Implements the EMF UserType for an Enum in a dynamic model, for an integer field.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/07 22:27:50 $
+ * @version $Revision: 1.2 $ $Date: 2006/09/08 04:26:47 $
  */
 
 public class DynamicENumUserIntegerType extends DynamicENumUserType {
