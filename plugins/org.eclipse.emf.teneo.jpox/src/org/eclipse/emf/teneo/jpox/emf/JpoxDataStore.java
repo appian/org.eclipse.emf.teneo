@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.7 2006/09/06 08:58:40 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.8 2006/09/12 20:54:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.emf;
@@ -92,7 +92,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $ $Date: 2006/09/06 08:58:40 $
+ * @version $Revision: 1.8 $ $Date: 2006/09/12 20:54:55 $
  */
 
 public class JpoxDataStore {
@@ -252,7 +252,7 @@ public class JpoxDataStore {
 		final TypeManager tm = initPmf.getPMFContext().getTypeManager();
 		final ClassLoader contextLoader = ClassLoaderResolver.getClassLoader();
         final org.jpox.ClassLoaderResolver clr = initPmf.getPMFContext().getClassLoaderResolver(contextLoader);
-
+        
 		tm.addType(List.class.getName(), EListMapping.class.getName(),
 				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
 		tm.addType(EList.class.getName(), EListMapping.class.getName(),
@@ -261,6 +261,8 @@ public class JpoxDataStore {
 				FeatureMapWrapper.class.getName(), false, "1.4", true, false, false, clr);
 		tm.addType(EObject.class.getName(), EObjectMapping.class.getName(), null, true,
 				"1.4", true, false, true, clr);
+
+        addCustomTypes(initPmf, clr);
 
 		for (int i = 0; i < getEPackages().length; i++) {
 			final EPackage epack = getEPackages()[i];
@@ -278,6 +280,13 @@ public class JpoxDataStore {
 		}
 	}
 
+	/** Add specific custom types */
+	protected void addCustomTypes(AbstractPersistenceManagerFactory initPmf, 
+			org.jpox.ClassLoaderResolver clr) {
+	
+	}
+	
+	
 	/** Checks if the passed object is by any change a contained object and if so returns true */
 	public boolean isContainedObject(Object obj) {
 		// TODO also check containment for superclasses

@@ -10,8 +10,8 @@ Eclipse-BuddyPolicy: dependent
 Require-Bundle: org.eclipse.emf.common,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.teneo,
- org.eclipse.emf.teneo.annotations
+ org.eclipse.emf.teneo;visibility:=reexport,
+ org.eclipse.emf.teneo.annotations;visibility:=reexport
 Export-Package: org.eclipse.emf.teneo.jpox.emf,
  org.eclipse.emf.teneo.jpox.emf.cache,
  org.eclipse.emf.teneo.jpox.emf.elist,
