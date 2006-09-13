@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	Copyright 2005-2006, Elver.org (http://www.elver.org).
-
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-
-		http://www.apache.org/licenses/LICENSE-2.0
-
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
+	Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+	All rights reserved. This program and the accompanying materials
+	are made available under the terms of the Eclipse Public License v1.0
+	which accompanies this distribution, and is available at
+	http://www.eclipse.org/legal/epl-v10.html
 -->
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+	@version $Revision: 1.2 $ $Date: 2006/09/13 16:05:49 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -31,10 +23,10 @@
 	</header> 
 	<body>
 		<section><title>Classloader</title>
-			<p>Elver performs explicit classloading in specific locations. It is possible to set the classloader which is being
-			user by Elver. This can be done through the org.elver.store.ClassLoaderResolver class. In this class you can 
-			register a org.elver.store.classloader.ClassLoaderStrategy. The registered ClassLoaderStrategy is used by 
-			Elver to explicitly load classes.</p>
+			<p>Teneo performs explicit classloading in specific locations. It is possible to set the classloader which is being
+			user by Teneo. This can be done through the org.eclipse.emf.teneo.ClassLoaderResolver class. In this class you can 
+			register a org.eclipse.emf.teneo.classloader.ClassLoaderStrategy. The registered ClassLoaderStrategy is used by 
+			Teneo to explicitly load classes.</p>
 		</section>
 		<section><title>Requirements on EObjects: InternalEObject</title>
 		<p>The EMF Hibernate persistency layer only requires that the persisted objects implement
@@ -54,27 +46,27 @@
 		is created.</p>
 		</section>
 		<section id="orgeneration"><title>Manual Generation of OR Mapping</title>
-		<p>Standard Elver will automatically map the model to Hibernate when a datastore is initialized. However, it can sometimes make sense to manually
-		adapt the mapping or use a specific mapping file. For this purpose Elver also allows you to manually generate the mapping file. To do this right
-		click on one or more .ecore files and choose the relevant option in the Elver submenu.</p>
+		<p>Standard Teneo will automatically map the model to Hibernate when a datastore is initialized. However, it can sometimes make sense to manually
+		adapt the mapping or use a specific mapping file. For this purpose Teneo also allows you to manually generate the mapping file. To do this right
+		click on one or more .ecore files and choose the relevant option in the Teneo submenu.</p>
 		<p> </p>
-		<figure src="images/ormapping_menu.jpg" alt="Manual generation of hibernate or mapping"/>
-		<p>The hibernate.hbm.xml is created in the folder of the selected .ecore file. To direct Elver to use this mapping file you 
+		<figure src="images/elver_menu.gif" alt="Manual generation of hibernate or mapping"/>
+		<p>The hibernate.hbm.xml is created in the folder of the selected .ecore file. To direct Teneo to use this mapping file you 
 		need to do the following:</p>
 		<ol><li>Copy the hibernate.hbm.xml to the generated EPackage source tree and let it be copied to the output directory/destination when building.</li>
 		<li>Pass the following option: PersistenceOptions.USE_MAPPING_FILE with the value "true" to the HbDataStore.</li>
 		</ol>
-		<p><strong>Note:</strong> the generation of the hibernate.hbm.xml will only work if the org.elver.store.hibernate.runtime plugin has been added to the 
+		<p><strong>Note:</strong> the generation of the hibernate.hbm.xml will only work if the org.eclipse.emf.teneo.hibernate.runtime plugin has been added to the 
 		dependencies of the projects of the selected .ecore files.</p>
 		</section>
 		<section id="escaping"><title>Escaping of table and column names</title>
-		<p>Elver will escape table and column names of primitive types. Escaping is done by surrounding the name with backtics (`).</p>
+		<p>Teneo will escape table and column names of primitive types. Escaping is done by surrounding the name with backtics (`).</p>
 		<p>Note that:</p>
 		<ul>
 			<li>Join table names are not escaped: Hibernate will in some cases automatically create a table to store the contents of a collection,
 			for example the contents of a list with primitive types. Hibernate will not automatically escape this name. To escape such a join table you 
 			need to add a JoinTable annotation with an escaped name or a non-keyword name.</li>
-			<li>Elver will not escape column names of manually specified Column annotations</li>
+			<li>Teneo will not escape column names of manually specified Column annotations</li>
 		</ul>
 		</section>
 		<section><title>Lazy loading/fetching, Proxy</title>
@@ -85,9 +77,9 @@
 		<section id="cutpaste">
 			<title>Move an EObject between EContainers or support cut and paste in the EMF editor</title>
 			<p>In the standard approach it is not possible to move an EObject from one containment relation to another containment relation. A move
-			between containment relations corresponds to a cut and paste in the EMF editor. The reason is that Elver will 
+			between containment relations corresponds to a cut and paste in the EMF editor. The reason is that Teneo will 
 			specify an orphan-delete cascade for a containment relation. This has a consequence that Hibernate will throw 
-			an exception (deleted object would be re-saved by cascade (remove deleted object from associations) when you move an EObject from its container to another container. 
+			an exception (deleted object would be re-saved by cascade, remove deleted object from associations) when you move an EObject from its container to another container. 
 			See <a href="http://opensource.atlassian.com/projects/hibernate/browse/HHH-785">here</a> for a description.</p>
 			<p><em>Solution:</em> as a solution you can prevent the orphan-delete from being set as the cascade style, by specifying 
 			an annotation on the relevant EReference features or by setting the global runtime property PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT
@@ -95,8 +87,7 @@
 			<source><![CDATA[
 <xsd:element maxOccurs="unbounded" minOccurs="0" name="writers" type="lib:Writer">
 	<xsd:annotation>
-		<xsd:appinfo source="http://ejb.elver.org/OneToMany" 
-			ecore:key="cascade">MERGE PERSIST REFRESH REMOVE</xsd:appinfo>
+		<xsd:appinfo source="teneo.jpa">@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})</xsd:appinfo>
 	</xsd:annotation>
 </xsd:element>
 			]]></source>

@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.2 $ $Date: 2006/09/13 10:42:35 $
+	@version $Revision: 1.3 $ $Date: 2006/09/13 16:05:49 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -69,7 +69,7 @@
 				<li>Export subsets of the relational store using HQL queries or other 
 				filtering</li>
 			</ul>
-			<p>Please send an email to the <a href="mailinglist.html">mailinglist</a> if you
+			<p>Please post a message on the <a href="mailinglist.html">newsgroup</a> if you
 			have other ideas or requirements for resource utilities.</p>
 		<p></p>
 		</section>		

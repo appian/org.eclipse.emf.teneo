@@ -17,7 +17,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+	@version $Revision: 1.2 $ $Date: 2006/09/13 16:05:49 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -47,7 +47,7 @@
 			<title>Configuration</title>
 			<p>
 				Before running the testcases you have to specify the database connection information in the dbadapters.properties
-				file in the org.elver.store.hibernate.test project in the src folder. The properties are explained in the dbadapters.properties file.
+				file in the org.eclipse.emf.teneo.hibernate.test project in the src folder. The properties are explained in the dbadapters.properties file.
 				The test.properties file in the same folder determines which configuration is tested (for example which database and 
 				which inheritance mapping strategy).
 			</p>
@@ -58,10 +58,10 @@
 		</section>
 		<section id="structure">
 			<title>Run the testcases</title>
-			<p>The org.elver.store.hibernate.test.AllTests class runs all testcases. More specific testruns are 
-			available in subpackages of org.elver.store.hibernate.test.</p>
+			<p>The org.eclipse.emf.teneo.hibernate.test.AllTests class runs all testcases. More specific testruns are 
+			available in subpackages of org.eclipse.emf.teneo.hibernate.test.</p>
 			<p>After you have done a test run, the system will store the generated hibernate.hbm.xml (for debug purposes) in the run directory of the 
-			org.elver.store.hibernate.test project.</p>
+			org.eclipse.emf.teneo.hibernate.test project.</p>
 		</section>
 </body>
 </document>

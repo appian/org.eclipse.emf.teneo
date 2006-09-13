@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	Copyright 2005-2006, Elver.org (http://www.elver.org).
-
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-
-		http://www.apache.org/licenses/LICENSE-2.0
-
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
+	Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+	All rights reserved. This program and the accompanying materials
+	are made available under the terms of the Eclipse Public License v1.0
+	which accompanies this distribution, and is available at
+	http://www.eclipse.org/legal/epl-v10.html
 -->
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+	@version $Revision: 1.2 $ $Date: 2006/09/13 16:05:49 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -51,7 +43,7 @@
 					<li>1.1 to 1.4: supported (not really relevant for persistency)</li>
 					<li>1.5 and 1.6: DocumentRoot, currently the persistency solution will not
 		persist a DocumentRoot object. The main reason for this is that the DocumentRoot is created to 
-		have a starting 'folder-like' point when loading a resource. In the Elver persistency solution this
+		have a starting 'folder-like' point when loading a resource. In the Teneo persistency solution this
 		is solved differently (see <a href="hibernateresources.html#Standard+load+behavior%3A+Top+level+types">here</a>).</li>
 					<li>1.7: not relevant for persistency (is supported)</li>
 				</ul></li>

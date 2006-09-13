@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.3 $ $Date: 2006/09/13 10:42:35 $
+	@version $Revision: 1.4 $ $Date: 2006/09/13 16:05:49 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -24,6 +24,13 @@
 		<section>
 			<title>EMFT Newsgroup</title>
 			<p>Support for Teneo is provided through the EMFT newsgroup: news://news.eclipse.org/eclipse.technology.emft.</p>
+		</section>
+		<section id="maillist">
+			<title>Archived Mailing List</title>
+		<p>The archive of the mailinglist posts before the move to EMFT can be viewed:
+			<a href="http://blog.gmane.org/gmane.comp.java.emf.persistency">here (web)</a> or 
+			<a href="nntp://news.gmane.org/gmane.comp.java.emf.persistency">here (news, nntp)</a>.
+		</p>
 		</section>
 		<section id="wedo">
 			<title>How we can help you</title>

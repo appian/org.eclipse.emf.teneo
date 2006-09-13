@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	Copyright 2005-2006, Elver.org (http://www.elver.org).
-
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-
-		http://www.apache.org/licenses/LICENSE-2.0
-
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
+	Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+	All rights reserved. This program and the accompanying materials
+	are made available under the terms of the Eclipse Public License v1.0
+	which accompanies this distribution, and is available at
+	http://www.eclipse.org/legal/epl-v10.html
 -->
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+	@version $Revision: 1.2 $ $Date: 2006/09/13 16:05:49 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -26,20 +18,20 @@
 
 <document> 
 	<header> 
-		<title>Supported EJB3 Annotation Features</title> 
+		<title>Supported JPA Annotation Features</title> 
 	</header> 
 	<body>
 		<section id="featuresejb3">
-			<title>EJB3 Annotation Features</title>
-			<p>The goal is to support all EJB3 persistence annotations.</p>
+			<title>JPA Annotation Features</title>
+			<p>The goal is to support all JPA persistence annotations.</p>
 			<p>You can download the EJB 3.0 Persistence Specification from the
 				<a href="http://jcp.org/aboutJava/communityprocess/final/jsr220/index.html">jsr-220 download page</a>. The
 				relevant document is &quot;ejb-3_0-fr-spec-persistence.pdf&quot;.</p>
 			<p>The numbers in the listings below refer to the sections in chapter 9 of the specification.</p>
 		</section>
 		<section>
-			<title>Supported Annotations</title>
-			<p>The EJB3 annotations listed below are supported as of the current release. &quot;Supported&quot; means that there are test
+			<title>Supported JPA Annotations</title>
+			<p>The JPA annotations listed below are supported as of the current release. &quot;Supported&quot; means that there are test
 				cases showing the annotation is correctly translated to an object-relational mapping and that the annotation works as
 				expected when persisting and retrieving objects to/from a database.</p>
 			<p>Supported as of the current release:</p>
@@ -75,6 +67,7 @@
 				<li>9.1.30: DiscriminatorColumn Annotation</li>
 				<li>9.1.31: Discriminator Annotation</li>
 				<li>9.1.32: PrimaryKeyJoinColumn Annotation</li>
+				<li>9.1.33: PrimaryKeyJoinColumns Annotation</li>
 				<li>9.1.34: Embeddable Annotation</li>
 				<li>9.1.35: Embedded Annotation</li>
 				<li>9.1.36: MappedSuperclass Annotation</li>
@@ -83,18 +76,29 @@
 				</ul>
 			</section>
 			<section>
-				<title>Currently Unsupported Annotations</title>
+				<title>Currently Unsupported JPA Annotations</title>
 				<p>The following annotations are not yet supported:</p>
 				<ul>
 				<li>9.1.27: MapKey Annotation</li>
-				<li>9.1.33: PrimaryKeyJoinColumns Annotation</li>
 				</ul>
 		</section>
-		
+		<section id="hbspecific">
+			<title>Hibernate Annotations Extensions</title>
+			<p>In addition to the JPA annotations, Teneo supports a number of 
+			<a href="http://www.hibernate.org/5.html#A7">Hibernate Annotations Extensions</a>.</p>
+			<p>The following Hibernate specific annotations are supported:</p>
+			<ul>
+				<li>Columns</li>
+				<li>GenericGenerator</li>
+				<li>IdBag</li>
+				<li>Type</li>
+			</ul>
+			<p>In future releases the support for hibernate specific annotations will be extended.</p>
+		</section>
 		<section>
 			<title>Annotation notes</title>
 			<section id="edatatype"><title>Annotations on EDataType</title>
-			<p>Every ejb3 annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
+			<p>Every JPA annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
 			Setting annotations on an EDataType has as advantage that the annotation is used in every location in which the EDataType is
 			used. For example the column length annotation can be defined on EDataType level and is then automatically added to 
 			each EAttribute which uses this EDataType. The annotations on EAttribute level take precedence so if both the EAttribute 
@@ -106,47 +110,37 @@
 				<p>This means also that in case that the super EClass of an EClass is transient that the properties of the super EClass are 
 				not persisted and that the sub EClass requires its own identifier/primary key properties.</p>
 			</section>
-			<section id="secondarytables_notes">
-				<title>SecondaryTable annotation</title>
-				<p>
-					Mapping properties to secondary tables works as follows.
-				</p>
-				<p>
-					First, define one or more SecondaryTable annotations for the type in question:
-				</p>
-				<source><![CDATA[<xsd:complexType name="Person">
+		
+		<section><title>Unique annotation added to OneToMany to force a join table for 1:n relations</title>
+		<p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
+		parent) in the child table/object. The disadvantage of this approach is that duplicates 
+		are not supported. To support duplicates in an elist a join table is required. To signal to 
+		Teneo, that a join table should be used, the annotation as in this example can be used:</p>
+				<source><![CDATA[
+<xsd:element name="joinedItem" type="xsd:anyURI" ecore:reference="this:Item" maxOccurs="unbounded">
 	<xsd:annotation>
-		<!-- Declare two secondary tables. -->
-		<xsd:appinfo source="http://ejb.elver.org/SecondaryTables" ecore:key="value">st1 st2</xsd:appinfo>
-		<xsd:appinfo source="http://ejb.elver.org/SecondaryTable/st1" ecore:key="name">person_address</xsd:appinfo>
-		<xsd:appinfo source="http://ejb.elver.org/SecondaryTable/st2" ecore:key="name">person_photo</xsd:appinfo>
-	</xsd:annotation>
-	<xsd:sequence>
-		<!-- Child elements here... -->
-	</xsd:sequence>
-</xsd:complexType>]]></source>
-				<p>Second, define a Column.table annotation for each property that should be mapped to a secondary table:</p>
-				<source><![CDATA[<xsd:element name="address" type="xsd:string">
-	<xsd:annotation>
-		<!-- Map to person_address table. -->
-		<xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="table">person_address</xsd:appinfo>
+		<xsd:appinfo source="teneo.jpa">@OneToMany(unique=false)</xsd:appinfo>
 	</xsd:annotation>
 </xsd:element>
-<xsd:element name="photo" type="xsd:base64Binary">
-	<xsd:annotation>
-		<xsd:appinfo source="http://ejb.elver.org/Lob">true</xsd:appinfo>
-		<!-- Map to person_photo table. -->
-		<xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="table">person_photo</xsd:appinfo>
-	</xsd:annotation>
-</xsd:element>]]></source>
-			</section>
+			]]></source>
+		<p>Based on this annotations Teneo will generate a join table for this model. Note that 
+		this annotation can be combined with the indexed annotation.</p>
+		<p><em>The unique annotation does not exist in the EJB3 spec and is an Teneo extension.</em></p>
+		</section>
+		
+		<section id="indexed"><title>Indexed Annotation</title>
+		<p>The http://annotation.elver.org/Indexed annotation can be used to signal to Elver that a certain association does
+		not require an index column and has a bag like behavior. 
+		See <a href="hibernate_relations.html#Mapping+non-indexed+relations">here</a>
+		for more information.</p>
+		</section>
 			
 			<section>
 				<title>EmbeddedID annotation</title>
 				<p>EmbeddedID lets you use an embedded class as an entity's composite primary key.</p>
 				<p><em>Note: in general, composite primary keys are only necessary for legacy data models.
 					It's strongly recommended to use single (non-composite) keys for new data models.</em></p>
-				<p>Elver requires that the composite key's class is an EObject, as it needs ECore metadata to define the correct mapping.</p>
+				<p>Teneo requires that the composite key's class is an EObject, as it needs ECore metadata to define the correct mapping.</p>
 			</section>
 			
 			<section id="lob_notes">
@@ -162,9 +156,11 @@
 <![CDATA[<xsd:element name="photo" type="xsd:base64Binary" minOccurs="0">
 	<xsd:annotation>
 		<!-- Map to a 'binary' field. -->
-		<xsd:appinfo source="http://ejb.elver.org/Lob">true</xsd:appinfo>
-		<!-- Use 1Mb maximum length. (MEDIUMBLOB in MySQL.) -->
-		<xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="length">1048576</xsd:appinfo>
+		<xsd:appinfo source="teneo.jpa">
+			@Lob
+			<!-- Use 1Mb maximum length. (MEDIUMBLOB in MySQL.) -->
+			@Column(length=1048576)
+		</xsd:appinfo>
 	</xsd:annotation>
 </xsd:element>]]>
 				</source>

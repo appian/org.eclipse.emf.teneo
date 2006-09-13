@@ -19,7 +19,7 @@
 	Forrest Site Definition.
 
 	@author <a href="pvdhoef@elver.org">Peter van de Hoef</a>
-	@version $Revision: 1.3 $ $Date: 2006/09/13 10:42:37 $
+	@version $Revision: 1.4 $ $Date: 2006/09/13 16:05:50 $
 -->
 
 <site label="Elver" href="" xmlns="http://apache.org/forrest/linkmap/1.0">
@@ -131,11 +131,10 @@
 			<resource label="EMF Hibernate Resources" href="hibernateresources.html" description="Description of the hibernate resource implementation"/>
 			<resource label="Resource Utility" href="resource_utility.html" description="Description of the resource utility"/>
 		</schema>
-		<schema label="Annotations"  href="hibernate/" tab="hibernate">
+		<schema label="Annotations (JPA/EJB3)"  href="hibernate/" tab="hibernate">
 			<featuremap label="Format" href="ejb3_format.html" description="Describes the format of EJB3/JPA annotations"/>		
 			<featuremap label="Examples" href="ejb3_examples.html" description="A number of examples of EJB3 annotations"/>		
 			<featuremap label="JPA/EJB3" href="ejb3_features.html" description="Supported EJB3 annotations"/>
-			<featuremap label="Custom" href="custom_annotations.html" description="Custom Hibernate-specific annotations"/>
 		</schema>
 		<schema label="XML Schema"  href="hibernate/" tab="hibernate">
 			<featuresconfig label="XML Schema Support" href="features_details.html" description="Gives a detailed listing of supported XML Schema features"/>
@@ -145,7 +144,7 @@
 	<support label="Support" tab="hibernate" href="hibernate/">
 		<trouble label="Troubleshooting" href="troubleshooting.html" description="Describes how to troubleshoot any problems you may encounter"/>
 		<trouble label="Upgrading" href="upgrading.html" description="Describes issues related to upgrading plugins"/>
-		<mailinglist label="Mailinglist" href="mailinglist.html" description="Our mailing list to get support"/>
+		<mailinglist label="Newsgroup" href="mailinglist.html" description="The newsgroup to get support"/>
 		<jpox label="EMF/Hibernate Support" href="emfhibsupport.html" description="Support for emf and hibernate related questions"/>
 	</support> 
 	<developer label="Developer" tab="hibernate" href="hibernate/">

@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.2 $ $Date: 2006/09/13 10:42:34 $
+	@version $Revision: 1.3 $ $Date: 2006/09/13 16:05:49 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -22,8 +22,8 @@
 		<abstract>Discusses specifics around modeling associations</abstract>
 	</header> 
 	<body>
-		<p><strong>The annotations described here have been changed, from the 0.3.* to the 0.7.0 release, 
-		to an EJB3-like format.</strong></p>
+		<p><strong>The syntax of the annotations described here have been changed in the Teneo release,
+		see <a href="ejb3_format.html">here</a>.</strong></p>
 	
 		<section><title>Mapping indexed 1:n relations</title>
 		<p>This is the default for an EMF association. Indexed 1:n relations are mapped using the Hibernate 

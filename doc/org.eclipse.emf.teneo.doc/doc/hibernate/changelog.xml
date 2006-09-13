@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.5 $ $Date: 2006/09/13 10:42:34 $
+	@version $Revision: 1.6 $ $Date: 2006/09/13 16:05:49 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -47,7 +47,7 @@
 			annotation.elver.org, Hibernate specific annotations now use hibernate.elver.org. 
 			For backward compatibility all ejb annotations can also still be used together with 
 			annotation.elver.org.</li>
-			<li><strong>The hibernate jar files have been moved to a separate plugin: org.elver.store.hibernate.libraries</strong>. This plugin contains the 
+			<li><strong>The hibernate jar files have been moved to a separate plugin: org.eclipse.emf.teneo.hibernate.libraries</strong>. This plugin contains the 
 			Hibernate 3.2 version. If you want to use a different Hibernate version then please replace the hibernate jars in this plugin (in the 
 			installation directory of Eclipse). In a later release this will possibly be made easier.</li>
 			<li><strong>All table and column names are now in lowercase.</strong> The casing can be controlled with an option
@@ -235,7 +235,7 @@ resulted in missing model fields in the mapping file.</li>
 				object is deleted, see <a href="hibernate_helper.html">here</a>.</li>
 			<li>Upgraded to Hibernate3.1rc1, for this release it is required to upgrade
 				to the Hibernate3.1rc1 release, the Hibernate libraries are all present in
-				the org.elver.store.hibernate.runtime plugin. Note that in rc1 the 
+				the org.eclipse.emf.teneo.hibernate.runtime plugin. Note that in rc1 the 
 				methods session.reconnect/disconnect have been deprecated.</li>
 			<li>Restructured the Tutorial &amp; Information part of the website.</li>
 		</ul>
@@ -283,7 +283,7 @@ resulted in missing model fields in the mapping file.</li>
 			<li>The resource utility has been improved. Now it is possible to validate the contents 
 		by explicitly selecting the validate option.</li>
 			<li>The plugin structure has been improved, more functions have been moved to 
-			a generic plugin (org.elver.store).</li>
+			a generic plugin (org.eclipse.emf.teneo).</li>
 		</ul>
 		<p></p>
 		<p>

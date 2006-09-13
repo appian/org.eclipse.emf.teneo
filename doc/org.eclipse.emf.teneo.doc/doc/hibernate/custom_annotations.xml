@@ -17,7 +17,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+	@version $Revision: 1.2 $ $Date: 2006/09/13 16:05:49 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -32,14 +32,9 @@
 		
 		<section>
 			<title>About</title>
-			<p>In addition to the EJB3 annotations, Elver supports a number of custom annotations which are partially based
-			on the Hibernate extensions: The hibernate specific annotation have the source hibernate.elver.org, the 
-			Elver specific annotations have annotation.elver.org as a source.</p>
-			<ul>
-				<li><a href="#idbag">IdBag</a></li>
-				<li><a href="#indexed">Indexed</a></li>
-				<li><a href="#unique">Unique</a></li>
-			</ul>
+			<p>In addition to the JPA annotations, Teneo supports a number of custom annotations and additional Hibernate
+			annotations (see <a href="http://www.hibernate.org/5.html#A7">here</a>).</p>
+			<p>The following Hibernate specific annotations are supported:</
 		</section>
 		
 		<section id="idbag">

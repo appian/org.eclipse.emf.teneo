@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.3 $ $Date: 2006/09/13 10:42:35 $
+	@version $Revision: 1.4 $ $Date: 2006/09/13 16:05:49 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -55,6 +55,10 @@
 		</li>
 		</ul>
 		<p>In addition there are several feature projects and build related projects.</p>
+		<p><strong>Several of the above projects use third party libraries during the build process. The 
+		plugin projects have dependencies defined on these libraries. However because of licensing these
+		libraries are not publically accessible in Eclipse cvs. The third party libraries have to be 
+		downloaded separately.</strong></p>
 		<p>We use the standard Eclipse code format with the line length set to 120, the formatter profile
 		can be downloaded <a href="../download/elver-code-profile.xml">here</a>.</p>
 		</section>
