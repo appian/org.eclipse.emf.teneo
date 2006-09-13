@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InternationalPrice.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: InternationalPrice.java,v 1.2 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
 
@@ -20,7 +20,7 @@ package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage#getInternationalPrice()
- * @model annotation="http://annotation.elver.org/DiscriminatorValue value='myInternationalPrice'"
+ * @model annotation="teneo.jpa appinfo='\n\t\t\t\t@DiscriminatorValue(\"myInternationalPrice\")\n\t\t\t'"
  *        extendedMetaData="name='InternationalPrice' kind='elementOnly'"
  * @generated
  */

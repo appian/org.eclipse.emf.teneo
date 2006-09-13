@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyBasicMapper.java,v 1.3 2006/08/22 22:23:29 mtaal Exp $
+ * $Id: ManyBasicMapper.java,v 1.4 2006/09/13 10:39:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -20,23 +20,23 @@ import java.util.Date;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
-import org.eclipse.emf.teneo.jpox.emf.elist.AnyFeatureMapEntry;
-import org.eclipse.emf.teneo.jpox.emf.mapping.AnyTypeObject;
+import org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.jpox.mapper.MappingUtil;
+import org.eclipse.emf.teneo.jpox.mapping.AnyTypeObject;
+import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class ManyBasicMapper extends AbstractMapper {
 	/** The logger for all these exceptions */

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ImportXMI.java,v 1.1 2006/07/08 22:23:05 mtaal Exp $
+ * $Id: ImportXMI.java,v 1.2 2006/09/13 10:39:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.eclipse;
@@ -24,15 +24,15 @@ import org.eclipse.core.internal.resources.File;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseException;
 import org.eclipse.emf.teneo.eclipse.resourcehandler.StoreImportXML;
-import org.eclipse.emf.teneo.jpox.emf.JpoxConstants;
-import org.eclipse.emf.teneo.jpox.emf.JpoxDataStore;
-import org.eclipse.emf.teneo.jpox.emf.JpoxUtil;
+import org.eclipse.emf.teneo.jpox.JpoxConstants;
+import org.eclipse.emf.teneo.jpox.JpoxDataStore;
+import org.eclipse.emf.teneo.jpox.JpoxUtil;
 
 /**
  * Performs the import xmi action
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class ImportXMI extends StoreImportXML {

@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../../skin/tigris.css";
+          @import "../../skin/quirks.css";
+          @import "../../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../../">
+<script type="text/javascript" src="../../skin/tigris.js"></script><script src="../../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Initialize the Library Editor</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../../index.html">Home</a></td><th><a class="base-selected" href="../../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.3')" id="menu_selected_1.3Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_selected_1.3" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">Initialize the Library Editor</div>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/ejb3_features.html">EJB3</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/custom_annotations.html">Custom</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/svn.html">CVS</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Initialize the Library Editor</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#Set+dependencies+of+EMF+model+and+editor+plugins">Set dependencies of EMF model and editor plugins</a>
+</li>
+<li>
+<a href="#Initialization">Initialization</a>
+</li>
+<li>
+<a href="#Resource+Factory+setting">Resource Factory setting</a>
+</li>
+<li>
+<a href="#Create+valid+EMF+Objects">Create valid EMF Objects</a>
+</li>
+</ul>
+		
+<a name="N1000E"></a><a name="Set+dependencies+of+EMF+model+and+editor+plugins"></a>
+<div class="h3">
+<h3>Set dependencies of EMF model and editor plugins</h3>
+			
+			
+<p>The EMF persistency plugin (org.elver.store.hibernate.runtime) has to be added 
+			to the dependencies tab of the plugin of the Library model project. Check 'reexport this dependency'.</p>
+			
+<p>
+<em>Important:</em> the following has to be added to the MANIFEST.MF of the
+				library (model) project:</p>
+<p>
+				
+<em>Eclipse-RegisterBuddy: org.elver.store.hibernate.runtime</em>
+</p>
+		
+</div>
+		
+<a name="N10021"></a><a name="Initialization"></a>
+<div class="h3">
+<h3>Initialization</h3>
+			
+			
+<p>To initialize the EMF  layer the following code has to be added to static inner
+				class <em>Implementation</em> in the <em>LibraryEditorPlugin</em> class.</p>
+			
+<pre class="code">
+public void start(BundleContext context) throws Exception 
+{
+	org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
+	
+	// Set the database information, Environment is org.hibernate.cfg.Environment
+	final Properties props = new Properties();
+	props.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
+	props.setProperty(Environment.USER, "root");
+	props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/library");
+	props.setProperty(Environment.PASS, "root");
+	props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+
+	// Initialize create the HbDataStore
+	HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore("library");
+	hbds.setEPackages(new EPackage[]{LibraryPackage.eINSTANCE});
+	hbds.setHibernateProperties(props);
+	hbds.initialize();
+	
+	// this is required to force the editor to retrieve the correct resource
+	Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("library", new HibernateResourceFactory())
+	
+	super.start(context);
+}
+	</pre>
+			
+<p>Remarks:</p>
+			
+<ul>
+			
+<li>The database properties have to be changed to contain your own database connection 
+			information.</li>
+			
+<li>The above source code uses the database library. This database has to exist (but can be empty).</li>
+			
+<li>
+<strong>The name of the datastore is chosen on purpose. The extension of the resource name (library in this case)
+			is used to find the datastore, so therefore here the name library is chosen.</strong>
+</li>
+			
+</ul>
+		
+</div>
+		
+<a name="N10045"></a><a name="Resource+Factory+setting"></a>
+<div class="h3">
+<h3>Resource Factory setting</h3>
+			
+			
+<p>For this tutorial an Hibernate EMF resource factory has to be specified. This is done
+				by setting the library element of the org.eclipse.emf.ecore.extension_parser extension
+				point to: org.elver.store.hibernate.resource.HibernateResourceFactory.</p>
+			
+<p>
+			
+<img alt="Enabling Hibernate support for the library project" src="../images/resourcefactory.jpg">
+			</p>				
+		
+</div>
+		
+<a name="N10056"></a><a name="Create+valid+EMF+Objects"></a>
+<div class="h3">
+<h3>Create valid EMF Objects</h3>
+			
+			
+<p>The standard generated EMF Library example creates invalid objects. For example when you run the editor
+			you can save a Library object with an empty name while this is a required element. 
+			Hibernate is more precise and will not allow this.</p>
+			
+<p>To prevent this add the following code in the performFinish method of the LibraryModelWizard
+			class in the library editor project. This has to be added around line 220 after the rootObject variable has been set:</p>
+			
+<pre class="code">
+if (rootObject instanceof Library)
+{
+	((Library)rootObject).setName("My Library");
+}
+else if (rootObject instanceof Book)
+{
+	((Book)rootObject).setTitle("My Title");
+}
+else if (rootObject instanceof Writer)
+{
+	((Writer)rootObject).setName("My Name");
+}
+</pre>
+			
+<p></p>
+			
+<p></p>
+			
+<p>Please click <a href="tutorial2_2.html">here</a> to go to the next step.</p>
+		
+</div>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

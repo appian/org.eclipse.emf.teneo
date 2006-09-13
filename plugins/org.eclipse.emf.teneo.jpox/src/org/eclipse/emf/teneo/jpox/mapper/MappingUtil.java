@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.2 2006/08/14 05:09:18 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.3 2006/09/13 10:39:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -30,9 +30,9 @@ import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
-import org.eclipse.emf.teneo.jpox.emf.elist.GenericFeatureMapEntry;
-import org.eclipse.emf.teneo.jpox.emf.mapping.AnyTypeEObject;
-import org.eclipse.emf.teneo.jpox.emf.mapping.AnyTypeObject;
+import org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry;
+import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
+import org.eclipse.emf.teneo.jpox.mapping.AnyTypeObject;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class MappingUtil {
@@ -209,7 +209,7 @@ public class MappingUtil {
 		element.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key", "implementation-classes")
 				.addAttribute("value", resultStr.toString());
 
-		element.addElement("extension").addAttribute("vendor-name", "elver.org").addAttribute("key", "estructuralfeatures")
+		element.addElement("extension").addAttribute("vendor-name", "teneo").addAttribute("key", "estructuralfeatures")
 				.addAttribute("value", fResultStr.toString());
 		return foundImpl;
 	}

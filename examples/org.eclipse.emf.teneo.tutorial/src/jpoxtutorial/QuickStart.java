@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: QuickStart.java,v 1.2 2006/07/23 19:38:43 mtaal Exp $
+ * $Id: QuickStart.java,v 1.3 2006/09/13 10:39:55 mtaal Exp $
  */
 
 package jpoxtutorial;
@@ -28,15 +28,15 @@ import org.eclipse.example.library.Library;
 import org.eclipse.example.library.LibraryFactory;
 import org.eclipse.example.library.LibraryPackage;
 import org.eclipse.example.library.Writer;
-import org.eclipse.emf.teneo.jpox.emf.JpoxDataStore;
-import org.eclipse.emf.teneo.jpox.emf.JpoxHelper;
+import org.eclipse.emf.teneo.jpox.JpoxDataStore;
+import org.eclipse.emf.teneo.jpox.JpoxHelper;
 import org.jpox.PMFConfiguration;
 
 /**
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
 */
 public class QuickStart {
 

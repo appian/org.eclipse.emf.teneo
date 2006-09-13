@@ -9,18 +9,18 @@
       <xsd:element name="name" type="xsd:string"/>
       <xsd:element name="containedItem" type="this:ContainedItem" maxOccurs="unbounded">
         <xsd:annotation>
-			<xsd:appinfo source="teneo.jpa">@OneToMany(indexed="false")</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(indexed=false)</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
       <xsd:element name="item" type="xsd:anyURI"
           ecore:reference="this:Item" ecore:opposite="list" maxOccurs="unbounded">
-        <xsd:annotation> 
-			<xsd:appinfo source="teneo.jpa">@OneToMany(indexed="false")</xsd:appinfo>
+        <xsd:annotation>  
+			<xsd:appinfo source="teneo.jpa">@OneToMany(indexed=false)</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
       <xsd:element name="joinedItem" type="xsd:anyURI" ecore:reference="this:Item" maxOccurs="unbounded">
         <xsd:annotation>
-			<xsd:appinfo source="teneo.jpa">@OneToMany(indexed="false" unique="false")</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(indexed=false unique=false)</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
     </xsd:sequence>

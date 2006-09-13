@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TableMapper.java,v 1.1 2006/07/08 22:04:30 mtaal Exp $
+ * $Id: TableMapper.java,v 1.2 2006/09/13 10:39:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -20,17 +20,17 @@ import java.util.Iterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
+import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * Maps the table annotation (and its subannotations) to a jpox representation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class TableMapper extends AbstractMapper {

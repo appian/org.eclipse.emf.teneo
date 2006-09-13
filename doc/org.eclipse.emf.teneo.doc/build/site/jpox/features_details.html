@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Supported XML Schema Features</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><td><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></td><th><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></th><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_1.html">Generate OR Mapping File</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpox_details.html">JPOX Details</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpoxresources.html">EMF/JPOX Resources</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/resource_utility.html">Resource Utility</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/ejb3_features.html">Supported Ann.</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/ejb3_format.html">EAnn. Format</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/ejb3_examples.html">EAnn. Examples</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.6')" id="menu_selected_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_selected_1.6" class="selectedmenuitemgroup">
+<div class="menupage">
+<div class="menupagetitle">XML Schema Features</div>
+</div>
+<div class="menuitem">
+<a href="../jpox/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/substitution.html">Substitution Group</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/anytype.html">xsd:any/xsd:anyType</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/schema_list.html">XML Schema Examples</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/svn.html">CVS</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Supported XML Schema Features</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+			
+<p>The goal is to implement most XML Schema Structures/Datatypes supported by EMF also for the persistency layer.
+		For a description of the mapping from XML Schema to EMF (ecore) 
+		see <a class="external" href="http://www.eclipse.org/emf/docs/overviews/XMLSchemaToEcoreMapping.pdf">here</a>.
+		In the listing below the numbers refer to the sections in this document.</p>
+				
+<p>Note: for each feature the following remarks are used:</p>
+				
+<ul>
+				
+<li>Supported: means that there are test cases which show
+		that the XML Schema feature is correctly translated in an ecore construction and EMF
+		object and that the resulting EMF object can be persisted and retrieved.</li>
+				
+<li>Not yet supported: means that this feature will not work and EMF objects with this 
+		feature are not persisted correctly</li>
+				
+<li>To be tested: means that this feature is expected to work but has not been tested yet</li>
+				
+</ul>
+			
+<p>The support by XML Schema Structure/Datatype:</p>
+			
+<ul>
+				
+<li>Schema (Chapter 1)
+				<ul>
+					
+<li>1.1 to 1.4: supported (not really relevant for persistency)</li>
+					
+<li>1.5 and 1.6: DocumentRoot, currently the persistency solution will not
+		persist a DocumentRoot object. The main reason for this is that the DocumentRoot is created to 
+		have a starting 'folder-like' point when loading a resource. In the Elver persistency solution this
+		is solved differently (see <a href="jpoxresources.html#Top+level+types">here</a>).</li>
+					
+<li>1.7: not relevant for persistency (is supported)</li>
+				
+</ul>
+</li>
+				
+<li>Simple Type Definition (Chapter 2)
+				<ul>
+					
+<li>2.1 Simple Type with restriction: supported</li>
+					
+<li>2.2 Simple Type with enumeration: supported</li>
+					
+<li>2.3 and 2.4 List and Union Simple Type: supported</li>
+					
+<li>2.5 Anonymous Simple Type: supported</li>
+					
+<li>2.6 Simple Type with ecore:name: supported</li>
+					
+<li>2.7 Simple Type with ecore:instanceClass: supported</li>
+				
+</ul>
+</li>
+				
+<li>Complex Type Definition (Chapter 3)
+				<ul>
+					
+<li>3.1 Complex Type with extension or restriction: supported</li>
+					
+<li>3.2 Anonymous Complex Type: supported</li>
+					
+<li>3.3 Abstract Complex Type: supported</li>
+					
+<li>3.4 Mixed Complex Type: supported</li>
+					
+<li>3.5 Complex Type with ecore:name: supported</li>
+					
+<li>3.6 Complex Type with ecore:featuremap: supported</li>
+					
+<li>3.7 Complex Type with ecore:mixed: supported</li>
+				
+</ul>
+				
+</li>
+				
+<li>Attribute declaration (Chapter 4), attributes have not been tested extensively.
+		However because the java representation of EMF objects makes no difference between attributes and elements.
+		The testcases for element declarations also in general apply to attribute declarations.
+				<ul>
+					
+<li>4.1 Attribute of type xsd:ID: supported</li>
+					
+<li>4.2 Attribute of type xsd:IDREF, xsd:IDREFS, xsd:anyURI: supported</li>
+					
+<li>4.3 Required Attribute: to be tested</li>
+					
+<li>4.4 Attribute with default: supported</li>
+					
+<li>4.5 Qualified Attribute: supported</li>
+					
+<li>4.6 Attribute reference: supported</li>
+					
+<li>4.7 Global Attribute: not relevant for persistence</li>
+					
+<li>4.8 Attribute with ecore:name: supported</li>
+				
+</ul>
+</li>
+				
+<li>Element Declaration (Chapter 5)
+					<ul>
+					
+<li>minOccurs/maxOccurs: all values of minOccurs and maxOccurs are supported</li>
+					
+<li>5.1 Element of type xsd:anyType: supported</li>
+					
+<li>5.2 Element of type xsd:ID: supported</li>
+					
+<li>5.3 Element of type xsd:IDREF, xsd:IDREFS, xsd:anyURI: supported</li>
+					
+<li>5.4 Nillable Element: supported</li>
+					
+<li>5.5 Element with default: supported</li>
+					
+<li>5.6 Qualified element: supported</li>
+					
+<li>5,7 Element reference: supported</li>
+					
+<li>5.8 Global Element: not relevant for persistence</li>
+					
+<li>5.9 Element with substitution group: supported</li>
+					
+<li>5.10 Abstract Element: supported</li>
+					
+<li>5.11 Element with ecore:name: supported</li>
+					
+<li>5.12 Element with ecore:opposite: supported</li>
+					
+<li>5.13 Element with ecore:featureMap: supported</li>
+					
+</ul>
+</li>
+				
+<li>Model group (Chapter 6)
+					<ul>
+						
+<li>6.1 Non repeating xsd:choice: supported</li>
+						
+<li>6.2 Repeating model group: supported</li>
+						
+<li>6.3 Repeating model group reference: supported</li>
+						
+<li>6.4 Model group with ecore:featureMap: supported</li>
+						
+<li>6.5 Model group with ecore:name: supported</li>
+					
+</ul>
+				
+</li>
+				
+<li>Wildcards (Chapter 7): supported</li>
+				
+<li>Annotations (Chapter 8): not relevant for persistence</li>
+				
+<li>Predefined Schema Simple Types (Chapter 9): almost all simple types which are persistable (see 
+				<a class="external" href="http://www.jpox.org/docs/1_1/types.html">here</a>) are supported. The following types are
+				not yet supported: gYear, gYearMonth, gDay, gMonthDay, duration.</li>
+		
+</ul>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

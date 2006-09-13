@@ -16,7 +16,9 @@
 			</xsd:element>
 	  		<xsd:element name="lft" type="xsd:IDREF" ecore:reference="this:Lft" maxOccurs="unbounded" ecore:opposite="cntr">
 			 	<xsd:annotation>
-					@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity="Lft")
+					<xsd:appinfo source="teneo.jpa">
+						@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity="Lft")
+					</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
     		</xsd:sequence>
@@ -38,8 +40,10 @@
 	    	<xsd:sequence> 
 	  		<xsd:element name="cntr" type="xsd:IDREF" ecore:reference="this:Cntr" maxOccurs="unbounded" ecore:opposite="rght">
 			 	<xsd:annotation>
-					@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity="Cntr" mappedBy="rght" indexed="false")
-					@JoinTable(name="RightCenter")
+					<xsd:appinfo source="teneo.jpa">
+						@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity="Cntr" mappedBy="rght" indexed="false")
+						@JoinTable(name="RightCenter")
+					</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
     		</xsd:sequence>

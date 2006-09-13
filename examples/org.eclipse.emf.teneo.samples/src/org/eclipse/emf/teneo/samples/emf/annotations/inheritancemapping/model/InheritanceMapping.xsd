@@ -4,17 +4,12 @@
 	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:ext="http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping">
 
-	<!-- Tests:
-	- Test different inheritance strategies in one project
-	- Test annotations to direct inheritance strategy
-	-->
-
    <xsd:complexType name="contentList">
    		<xsd:sequence>
    			<xsd:element name="name" type="xsd:string">
-				 <xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/Id">true</xsd:appinfo>
-		    		</xsd:annotation>
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
+		    	</xsd:annotation>
 			</xsd:element>
    			<xsd:element name="address" type="xsd:IDREF" ecore:reference="ext:Address" maxOccurs="unbounded"/>
    			<xsd:element name="price" type="xsd:IDREF" ecore:reference="ext:Price" maxOccurs="unbounded"/>
@@ -24,11 +19,12 @@
    <!-- The price class hierarchy is always mapped to superclass -->
   	<xsd:complexType name="Price">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/Table" ecore:key="name">myprice</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/Inheritance" ecore:key="strategy">SINGLE_TABLE</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/DiscriminatorColumn" ecore:key="name">DISCRIMINATOR</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/DiscriminatorColumn" ecore:key="discriminatorType">STRING</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/DiscriminatorValue" ecore:key="value">myPrice</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">
+				@Table(name="myprice")
+				@Inheritance(strategy=SINGLE_TABLE)
+				@DiscriminatorColumn(name="DISCRIMINATOR" discriminatorType=STRING)
+				@DiscriminatorValue("myPrice")
+			</xsd:appinfo>
 	    </xsd:annotation>
    		<xsd:sequence>
    			<xsd:element name="name" type="xsd:string"/>
@@ -38,7 +34,9 @@
 
   	<xsd:complexType name="InternationalPrice">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/DiscriminatorValue" ecore:key="value">myInternationalPrice</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">
+				@DiscriminatorValue("myInternationalPrice")
+			</xsd:appinfo>
 	    </xsd:annotation>
     	<xsd:complexContent>
      		<xsd:extension base="ext:Price">
@@ -52,13 +50,15 @@
    <!-- The price class hierarchy is always mapped to joined-subclass -->
  	<xsd:complexType name="Address" abstract="true">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/Inheritance" ecore:key="strategy">JOINED</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">
+				@Inheritance(strategy=JOINED)
+			</xsd:appinfo>
 	    </xsd:annotation>
  		<xsd:sequence>
       		<xsd:element name="name" type="xsd:string">
 				 <xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/Id">true</xsd:appinfo>
-		    		</xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
+		    	</xsd:annotation>
 			</xsd:element>
       		<xsd:element name="street" type="xsd:string"/>
       		<xsd:element name="city"   type="xsd:string"/>

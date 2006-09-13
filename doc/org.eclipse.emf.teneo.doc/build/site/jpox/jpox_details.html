@@ -1,0 +1,636 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>EMF - JPOX Integration Details</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><td><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></td><th><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></th><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_1.html">Generate OR Mapping File</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial1/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/tutorial2/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.4')" id="menu_selected_1.4Title" class="menutitle">Details</div>
+<div id="menu_selected_1.4" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../jpox/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">JPOX Details</div>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpoxresources.html">EMF/JPOX Resources</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/resource_utility.html">Resource Utility</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/ejb3_features.html">Supported Ann.</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/ejb3_format.html">EAnn. Format</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/ejb3_examples.html">EAnn. Examples</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/features_details.html">XML Schema Features</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/substitution.html">Substitution Group</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/anytype.html">xsd:any/xsd:anyType</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/schema_list.html">XML Schema Examples</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../jpox/svn.html">CVS</a>
+</div>
+<div class="menuitem">
+<a href="../jpox/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>EMF - JPOX Integration Details</em>
+</h2>
+</div>
+<div class="abstract">Discusses a number of specific implementation and use details of the EMF - JPOX integration.</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#Requirements+on+EObjects%3A+InternalEObject">Requirements on EObjects: InternalEObject</a>
+</li>
+<li>
+<a href="#Requirements+on+EPackages">Requirements on EPackages</a>
+</li>
+<li>
+<a href="#Persisted+EMF+Objects+after+Commit">Persisted EMF Objects after Commit</a>
+</li>
+<li>
+<a href="#Classloader">Classloader</a>
+</li>
+<li>
+<a href="#Custom+Types">Custom Types</a>
+</li>
+<li>
+<a href="#cutpaste">Move an EObject between EContainers or support cut and paste in the EMF editor</a>
+</li>
+<li>
+<a href="#Validation">Validation</a>
+</li>
+<li>
+<a href="#Force+a+join+table+for+1%3An+relations">Force a join table for 1:n relations</a>
+</li>
+<li>
+<a href="#JPOX%2FRelational+Validation+and+EObject+persistency">JPOX/Relational Validation and EObject persistency</a>
+</li>
+<li>
+<a href="#PersistenceManagerFactory+configuration">PersistenceManagerFactory configuration</a>
+</li>
+<li>
+<a href="#Fetch+Group">Fetch Group</a>
+</li>
+<li>
+<a href="#Direct+read+of+contained+objects%2C+container+feature+not+set">Direct read of contained objects, container feature not set</a>
+</li>
+<li>
+<a href="#Registering+a+Persistence+Manager+Factory+Creator">Registering a Persistence Manager Factory Creator</a>
+</li>
+<li>
+<a href="#Lazy+loading+and+proxy+objects">Lazy loading and proxy objects</a>
+</li>
+<li>
+<a href="#Hiding+class+names%2C+using+interfaces">Hiding class names, using interfaces</a>
+</li>
+<li>
+<a href="#notjpoxsupported">Not Supported by JPOX</a>
+</li>
+</ul>
+		
+<a name="N10011"></a><a name="Requirements+on+EObjects%3A+InternalEObject"></a>
+<div class="h3">
+<h3>Requirements on EObjects: InternalEObject</h3>
+		
+<p>The EMF JPOX persistency layer only requires that the persisted objects implement
+			the org.eclipse.emf.ecore.InternalEObject interface.</p>
+		
+</div>
+		
+<a name="N1001A"></a><a name="Requirements+on+EPackages"></a>
+<div class="h3">
+<h3>Requirements on EPackages</h3>
+			
+<p>The OR Mapper searches for the EPackage classes in the project and uses the classpath of the project of
+				the selected ecore file. The only requirement is that the EPackage classes (the generated interface) 
+				extend the EMF EPackage interface directly.</p>
+		
+</div>
+		
+<a name="N10023"></a><a name="Persisted+EMF+Objects+after+Commit"></a>
+<div class="h3">
+<h3>Persisted EMF Objects after Commit</h3>
+			
+			
+<p>When EMF objects have been persisted and the transaction is committed then these objects can not be
+		changed anymore. Only read access is possible. Please refer to the 
+		<a class="external" href="http://www.jpox.org/docs/1_1/attach_detach.html">relevant JDO documentation</a> about this topic.</p>
+		
+</div>
+		
+<a name="N10031"></a><a name="Classloader"></a>
+<div class="h3">
+<h3>Classloader</h3>
+			
+<p>Elver performs explicit classloading in specific locations. It is possible to set the classloader which is being
+			user by Elver. This can be done through the org.elver.store.ClassLoaderResolver class. In this class you can 
+			register a org.elver.store.classloader.ClassLoaderStrategy. The registered ClassLoaderStrategy is used by 
+			Elver to explicitly load classes.</p>
+		
+</div>
+		
+<a name="N1003A"></a><a name="Custom+Types"></a>
+<div class="h3">
+<h3>Custom Types</h3>
+			
+			
+<p>You can register your own TypeMappings through a 
+			call to org.jpox.TypeManager.getTypeManager().addType. This needs to be done before you initialize the first JpoxDataStore.
+			An example of the call Elver uses to register the type mapping for EList</p>
+			
+<pre class="code">
+ClassLoaderResolver clr = new JDOClassLoaderResolver();
+TypeManager.getTypeManager().addType(EList.class.getName(), EListMapping.class.getName(), 
+		EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
+			</pre>
+			
+<p>See the jpox documentation <a class="external" href="http://www.jpox.org/docs/1_1/types_userdefined.html">here</a>, it is not necessary
+			to use the xml file to register type mappings, the call to the TypeManager above will also work.</p>
+		
+</div>
+		
+<a name="N1004F"></a><a name="cutpaste"></a>
+<div class="h3">
+<h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
+			
+			
+<p>In the standard approach it is not possible to move an EObject from one containment relation to another containment relation. A move
+			between containment relations corresponds to a cut and paste in the EMF editor. The reason is that Elver will 
+			specify an dependent-element="true" for a containment relation. This has a consequence that JPOX will throw 
+			an exception (Cannot write fields to a deleted object) when you move an EObject from its container to another container.</p> 
+			
+<p>
+<em>Solution:</em> as a solution you can prevent the dependent-element from being set, by specifying 
+			an annotation on the relevant EReference features. As an example:</p>
+			
+<pre class="code">
+&lt;xsd:element maxOccurs="unbounded" minOccurs="0" name="writers" type="lib:Writer"&gt;
+	&lt;xsd:annotation&gt;
+		&lt;xsd:appinfo source="http://ejb.elver.org/OneToMany" 
+			ecore:key="cascade"&gt;MERGE PERSIST REFRESH REMOVE&lt;/xsd:appinfo&gt;
+	&lt;/xsd:annotation&gt;
+&lt;/xsd:element&gt;
+			</pre>
+			
+<p>This annotation means that cascading deletes are still enforced but a child (the Writer) can exist without its
+			parent (the Library).</p>
+			
+<p>When this annotation is used in the context of a JPOX Resource then when an EObject is removed from 
+			its container then it will also be removed from the resource and from the database. However, when you set this 
+			annotation and not work with JPOX Resources then the removed EObject is not removed from the database and will 
+			be present without a container!</p>
+		
+</div>
+		
+<a name="N10068"></a><a name="Validation"></a>
+<div class="h3">
+<h3>Validation</h3>
+			
+			
+<p>When storing and retrieving EMF objects from a JPOX store it is not required to work with a 
+			EMF type Resource. However the standard EMF validator checks if every EObject is
+			present in an EMF resource and that all referenced EObjects are in the same resource. So, if 
+			this standard validator is used unnecessary errors are thrown.
+			</p>
+			
+<p>To prevent this situation you can register your own validator which does not perform this resource check. 
+			For your convenience it is also possible to use the org.elver.store.jpox.validation.JPOXValidator. See its
+			source code below. 
+			</p>
+			
+<p>
+			Validators are registered using a call to put method of the EValidator.Registry.INSTANCE object.
+			</p>
+			
+<pre class="code">			
+public class JPOXValidator extends EObjectValidator
+{
+	/** 
+	 * Overrides the method from the superclass to prevent this check because it
+ 	* is not required in the context of a jdo store. Note that this assumes that 
+ 	* an object and its references are all stored in the same jpox database. 
+ 	*/
+	public boolean validate_EveryReferenceIsContained(EObject eObject, DiagnosticChain diagnostics, 
+		Map context) 
+	{
+		return true;
+	}
+}
+			</pre>
+		
+</div>
+		
+<a name="N1007C"></a><a name="Force+a+join+table+for+1%3An+relations"></a>
+<div class="h3">
+<h3>Force a join table for 1:n relations</h3>
+		
+<p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
+		parent) in the child table/object. The disadvantage of this approach is that duplicates 
+		are not supported. To support duplicates in an elist a join table is required. To signal to 
+		Elver, that a join table should be used, the annotation as in this example can be used:</p>
+				
+<pre class="code">
+&lt;xsd:element name="joinedItem" type="xsd:anyURI" ecore:reference="this:Item" maxOccurs="unbounded"&gt;
+	&lt;xsd:annotation&gt;
+		&lt;xsd:appinfo source="http://annotation.elver.org/Unique" ecore:key="value"&gt;false&lt;/xsd:appinfo&gt;
+	&lt;/xsd:annotation&gt;
+&lt;/xsd:element&gt;
+			</pre>
+		
+<p>Based on this annotations Elver will generate a join table for this model. Note that 
+		this annotation can be combined with the indexed annotation.</p>
+		
+<p>
+<em>The unique annotation does not exist in the EJB3 spec and is an Elver extension. Extension
+		annotations use the source: http://annotation.elver.org.</em>
+</p>
+		
+</div>
+		
+<a name="N10090"></a><a name="JPOX%2FRelational+Validation+and+EObject+persistency"></a>
+<div class="h3">
+<h3>JPOX/Relational Validation and EObject persistency</h3>
+			
+			
+<p>When an object is made persistent using JPOX then it is almost always directly written to the backing
+			relational store. At that moment also constraints, such as nullable fields, are checked. This means that 
+			only valid EObjects should be made persistent using the PersistenceManager makePersistent call.</p>
+			
+<p>
+<em>An object is also made persistent when it is added to the collection of a persistent object. 
+			So only valid objects should be added to the collection of a persistent object</em>. See the example below.</p>
+			
+<p>The following source will result in an error because the Book object does not have its title set when
+			it is added to the library.</p>
+			
+<pre class="code">
+Book book = LibraryFactory.eINSTANCE.createBook();
+lib.getBooks().add(book); // ERROR, here the book does not have a title yet!
+book.setAuthor(writer);
+book.setPages(305);
+book.setTitle("The Hobbit");
+book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+		</pre>
+			
+<p>To make this valid, the book should be added to the library after all its values have been set.</p>
+		
+</div>
+		
+<a name="N100A9"></a><a name="PersistenceManagerFactory+configuration"></a>
+<div class="h3">
+<h3>PersistenceManagerFactory configuration</h3>
+			
+			
+<p>PersistenceManagerFactories should be created through a call to the relevant methods in the JPOXHelper.INSTANCE
+			object. If only the database connection information is passed then the JPOXHelper will
+				use the configuration properties below. for 
+			more information see the jpox site <a class="external" href="http://www.jpox.org/docs/1_1/pmf.html">here</a>.</p>
+			
+<pre class="code">
+properties.setProperty(PMFConfiguration.JDO_IGNORECACHE_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.JDO_RETAINVALUES_PROPERTY, "true");
+properties.setProperty(PMFConfiguration.JDO_NONTRANSACTIONAL_READ_PROPERTY, "true");
+
+properties.setProperty(PMFConfiguration.STRING_DEFAULT_LENGTH_PROPERTY, "255");
+
+properties.setProperty("javax.jdo.PersistenceManagerFactoryClass", "org.jpox.PersistenceManagerFactoryImpl");
+
+// set it all to false because of performance
+properties.setProperty(PMFConfiguration.AUTO_CREATE_SCHEMA_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.AUTO_CREATE_CONSTRAINTS_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.AUTO_CREATE_SCHEMA_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.AUTO_CREATE_TABLES_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.VALIDATE_COLUMNS_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.VALIDATE_CONSTRAINTS_PROPERTY, "false");
+properties.setProperty(PMFConfiguration.VALIDATE_TABLES_PROPERTY, "false");
+
+properties.setProperty(PMFConfiguration.CACHE_LEVEL_1_TYPE_PROPERTY, 
+	"org.elver.store.jpox.emf.cache.EMFWeakRefCache");
+properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY, 
+	JpoxHelper.INSTANCE.getJdoFileExtension());
+		</pre>
+			
+<p>
+<em>For the EMF - JPOX integration it is very important that as a level1 cache one of the
+			cache implementations found in org.elver.store.jpox.cache is used.</em>
+</p>
+			
+<p>The default String length is set to prevent a bug in MySql, the JDO default is 256.</p>
+			
+<p>The AUTO_CREATE_* and VALIDATE_* properties are set this way for performance reasons. At initialization time the JpoxDataStore will override these properties to update the database schema, 
+			see also here <a href="jpoxdatastore.html#options">options</a>.</p>
+			
+<p>You can set the file extension to use through the JpoxHelper.INSTANCE.setJdoFileExtension, this allows you to 
+			more easily test multiple package.jdo files.</p>
+		
+<p>The current integration will not work properly if one of the following settings is used:</p>
+		
+<ul>
+			
+<li>org.jpox.delayDatastoreOperationsUntilCommit to true does not work with bi-directional references</li>
+			
+<li>javax.jdo.option.Optimistic set to true does not work with bi-directional references.
+			The current EMF/JPOX integration works with pessimistic transactions. However, in the current 
+			JPOX version records are not locked in the database (<a class="external" href="http://www.jpox.org/docs/1_1/transactions.html">see</a>).</li>
+		
+</ul>
+		
+</div>
+		
+<a name="N100DC"></a><a name="Fetch+Group"></a>
+<div class="h3">
+<h3>Fetch Group</h3>
+			
+			
+<p>A FetchGroup defines which fields are read when an object is loaded from the data store. The EMF - JPOX
+				integration sometimes overrides the working of a FetchGroup because containment references are always
+				read.</p>
+		
+</div>
+		
+<a name="N100E6"></a><a name="Direct+read+of+contained+objects%2C+container+feature+not+set"></a>
+<div class="h3">
+<h3>Direct read of contained objects, container feature not set</h3>
+			
+			
+<p>When an object is contained and is read directly (using a JDO query) then its container feature is not set.
+			For example, a Book is contained in the Library (see tutorial). If a jdo query reads all books then these books
+			EMF objects do not have their container set. If a library object is read which contains books then 
+				the books will have their container feature set.</p>
+			
+<p>Since the 0.6.3 release the container can be set explicitly after retrieving the 
+			contained EObjects directly from the database, see <a href="jpoxdatastore.html#setcontainer">here</a>.
+			</p>
+		
+</div>
+		
+<a name="N100F7"></a><a name="Registering+a+Persistence+Manager+Factory+Creator"></a>
+<div class="h3">
+<h3>Registering a Persistence Manager Factory Creator</h3>
+		
+<p>You can register your own persistence manager factory creator class. This 
+			class is called by Elver to create a PersistenceManagerFactory. By registering your 
+			own PersistenceManagerFactoryCreator, you can override the creation of persistence managers etc.</p>
+		
+<p>The persistence manager factory creator should implement the interface: 
+			org.elver.store.jpox.emf.PersistenceManagerFactoryCreator. The creator can be registered using
+			the method JpoxHelper.INSTANCE.setPersistenceManagerFactoryCreator(....).</p>
+		
+</div>
+		
+<a name="N10103"></a><a name="Lazy+loading+and+proxy+objects"></a>
+<div class="h3">
+<h3>Lazy loading and proxy objects</h3>
+			
+			
+<p>As a default when an object is loaded from the JPOX store only the primitive type fields are read
+			immediately. Reference fields and collections are lazely loaded, only when required. This behavior is 
+			very similar to the proxy object behavior of standard EMF resource implementations.</p>
+			
+<p>If even 'more lazy' behavior is required then it is possible to set the fetch group on the
+			PersistenceManager, <a class="external" href="http://www.jpox.org/docs/1_1/fetchgroup.html">see</a>
+</p>
+		
+</div>
+		
+<a name="N10113"></a><a name="Hiding+class+names%2C+using+interfaces"></a>
+<div class="h3">
+<h3>Hiding class names, using interfaces</h3>
+			
+			
+<p>EMF is very interface oriented and tries to hide the generated implementation classes. JPOX
+		on the other hand requires the use of the implementation classes in queries. The runtime layer 
+		supports the conversion of an EMF interface name to a implementation class through the JpoxHelper.INSTANCE.getInstanceClass method.
+		With this it is possible
+		to work with EMF interfaces without using the implementation class names directly.</p>
+		
+</div>
+		
+<a name="N1011D"></a><a name="notjpoxsupported"></a>
+<div class="h3">
+<h3>Not Supported by JPOX</h3>
+			
+			
+<p>Lists of user-defined primitive types are not supported, an example is a list
+					of enumerates</p>
+		
+</div>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

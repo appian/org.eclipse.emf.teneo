@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookCategory.java,v 1.2 2006/08/25 23:04:14 mtaal Exp $
+ * $Id: BookCategory.java,v 1.3 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
@@ -177,29 +177,37 @@ public final class BookCategory extends AbstractEnumerator implements Serializab
 
 	/** Translates the enumerate into a serializable object */
 	public static class AbstractEnumeratorExternalizable implements Externalizable {
+
+		/** The enumerate handled here */
 		protected AbstractEnumerator enumerate;
 
+		/** Empty Constructor */
 		public AbstractEnumeratorExternalizable() {
 		}
 
+		/** Constructor with the enumerate to serialize */
 		public AbstractEnumeratorExternalizable(AbstractEnumerator enumerate) {
 			this.enumerate = enumerate;
 		}
 
+		/** Write the name of the enumerate */
 		public void writeExternal(ObjectOutput objectOutput) throws IOException {
 			objectOutput.writeUTF(enumerate.getName());
 		}
 
+		/** Read the name of the enumerate and retrieve the enumerate */
 		public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
 			String name = objectInput.readUTF();
 			enumerate = get(name);
 		}
 
+		/** Return the read enumerate */
 		protected Object readResolve() {
 			return enumerate;
 		}
 	}
 
+	/** Replace the enumerate with the externalizable enumerate */
 	Object writeReplace() throws ObjectStreamException {
 		return new AbstractEnumeratorExternalizable(this);
 	}

@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	Copyright 2005-2006, Elver.org (http://www.elver.org).
-
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-
-		http://www.apache.org/licenses/LICENSE-2.0
-
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
+	Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+	All rights reserved. This program and the accompanying materials
+	are made available under the terms of the Eclipse Public License v1.0
+	which accompanies this distribution, and is available at
+	http://www.eclipse.org/legal/epl-v10.html
 -->
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+	@version $Revision: 1.2 $ $Date: 2006/09/13 10:42:35 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -42,19 +34,17 @@
 			<ol>
 				<li>Set Library model plugin dependency:
 				<ul>
-					<li>Add the EMF persistency runtime plugin (org.elver.store.jpox.runtime) to the plugin dependencies of the Library (model) project</li>
-					<li>Add <em>Eclipse-RegisterBuddy: org.elver.store.jpox.runtime</em> to the Manifest.MF of
-					the Library model project (see <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why).</li>
+					<li>Add the EMF persistency runtime plugin (org.eclipse.emf.teneo.jpox) to the plugin dependencies of the Library (model) project</li>
 				</ul>
 				</li>
 					<li>Enable JPOX: Right click on the Library project and select the menu JPOX and select 'Add JPOX Support' and check
 					'Enable Auto Enhancement'.</li>
 				<li>Generate JDO file: right click on the ecore file (normally called library.ecore) 
 				top package (org.eclipse.example.library) and in
-				the Elver menu choose one of the <em>Generate EMF - JDO/JPOX OR Mapping (...)</em> option. 
+				the Teneo menu choose one of the <em>Generate EMF - JDO/JPOX OR Mapping (...)</em> option. 
 				A package.jdo file should be created next to the ecore file. <em>It is possible that you need to refresh the 
 				folder to see the created package.jdo.</em></li>
-				<li>Copy the package.jdo to a location in the source tree, if you have automatic build enabled then JPOX 
+				<li>Copy the package.jdo to a location in the source tree and ensure that the build process copies it to the build target location, if you have automatic build enabled then JPOX 
 				should now enhance the classes automatically (after the build).</li>
 				<li>Create a database (with the name mylibrary) in your database server</li>
 				<li>Create a new class in the org.eclipse.example.library with a static main method</li>

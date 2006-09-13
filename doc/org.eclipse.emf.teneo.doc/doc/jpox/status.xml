@@ -17,7 +17,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+	@version $Revision: 1.2 $ $Date: 2006/09/13 10:42:35 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -31,26 +31,20 @@
 	<body>
 		<section id="version">
 			<title>Version</title>
-			<p>The current version is 0.7.2 (ALPHA). For changes since the first 0.5.0 release see <a href="changelog.html">here</a>.</p>
+			<p>The current version is 0.7.5 (BETA). For changes since the first 0.5.0 release see <a href="changelog.html">here</a>.</p>
 			<p>The 
 			integration should be tested further to assure that it is applicable to many different environments. Currently this release supports
-			the features listed <a href="features.html">here</a>, these features pass the <a href="testcases.html">testcases</a>.</p>
+			the features listed <a href="features.html">here</a>, these features pass the testcases.</p>
 		</section>
 		<section id="Todo">
 			<title>Todo</title>
-			<p>The following topics will be implemented in the near future:</p>
+			<p>The todo list:</p>
 			<ol>
 				<li>Extend EJB3 annotations support</li>
 				<li>User defined collections/types (which extend the current EMF collections)</li>
 				<li>Automatic validation of persisted EMF objects at commit</li>
 				<li>Support for dynamically added EAttributes/EClasses</li>
 				<li>More tests...</li>
-			</ol>
-			<p>The following topics will be covered later:</p>
-			<ol>
-				<li>Allow and retain manual changes in generated jdo files</li>
-				<li>Align the JDO/JPOX and Hibernate generated database schemas, facilitating switching or layer</li>
-				<li>More tests, For example on the area of jdo queries, different hierarchy mappings and performance</li>
 			</ol>
 		</section>
 		<section>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ContentList.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: ContentList.java,v 1.2 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
 
@@ -40,7 +40,7 @@ public interface ContentList extends EObject {
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage#getContentList_Name()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        annotation="http://annotation.elver.org/Id appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Id'"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */

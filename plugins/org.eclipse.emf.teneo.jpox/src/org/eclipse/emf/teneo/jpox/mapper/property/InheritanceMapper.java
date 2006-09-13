@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InheritanceMapper.java,v 1.3 2006/09/06 21:59:25 mtaal Exp $
+ * $Id: InheritanceMapper.java,v 1.4 2006/09/13 10:39:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -21,7 +21,6 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.annotations.mapper.StoreMappingException;
@@ -30,12 +29,13 @@ import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
+import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class InheritanceMapper extends AbstractMapper {

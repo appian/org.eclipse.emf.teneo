@@ -6,7 +6,7 @@
     nsPrefix="secondarytable">
   <eClassifiers xsi:type="ecore:EClass" name="Printer">
     <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="@SecondaryTable(name=&quot;THETONER&quot; &#xA;&#x9;&#x9;&#x9;&#x9;pkJoinColumns={@PrimaryKeyJoinColumn(name=&quot;PRINTER_ID&quot;)})"/>
+      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@SecondaryTable(name=&quot;THETONER&quot; pkJoinColumns={@PrimaryKeyJoinColumn(name=&quot;PRINTER_ID&quot;)})&#xA;&#x9;&#x9;"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Printer"/>

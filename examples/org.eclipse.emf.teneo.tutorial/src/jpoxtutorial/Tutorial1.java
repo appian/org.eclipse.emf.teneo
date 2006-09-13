@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Tutorial1.java,v 1.3 2006/09/12 20:55:02 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.4 2006/09/13 10:39:56 mtaal Exp $
  */
 
 package jpoxtutorial;
@@ -41,16 +41,16 @@ import org.eclipse.example.library.Writer;
 import org.eclipse.example.library.impl.BookImpl;
 import org.eclipse.example.library.impl.LibraryImpl;
 import org.eclipse.example.library.impl.WriterImpl;
-import org.eclipse.emf.teneo.jpox.emf.JpoxDataStore;
-import org.eclipse.emf.teneo.jpox.emf.JpoxHelper;
-import org.eclipse.emf.teneo.jpox.emf.resource.JPOXResourceDAO;
+import org.eclipse.emf.teneo.jpox.JpoxDataStore;
+import org.eclipse.emf.teneo.jpox.JpoxHelper;
+import org.eclipse.emf.teneo.jpox.resource.JPOXResourceDAO;
 import org.jpox.PMFConfiguration;
 
 /**
  * Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class Tutorial1 {
 

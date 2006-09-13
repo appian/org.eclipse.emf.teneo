@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.1 2006/07/11 16:57:13 mtaal Exp $
+ * $Id: Writer.java,v 1.2 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall;
 
@@ -69,7 +69,7 @@ public interface Writer extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.CascadenotallPackage#getWriter_Books()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.Book#getAuthor
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.Book" opposite="author"
-	 *        annotation="http://ejb.elver.org/OneToMany cascade='MERGE PERSIST' targetEntity='Book' mappedBy='author'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(cascade={MERGE,PERSIST} targetEntity=\"Book\" mappedBy=\"author\")'"
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */

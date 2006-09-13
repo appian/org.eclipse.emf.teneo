@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetPackageImpl.java,v 1.2 2006/09/05 12:16:35 mtaal Exp $
+ * $Id: SetPackageImpl.java,v 1.3 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -396,19 +396,19 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 		  (getItemList_ContainedItem(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@OneToMany(indexed=\"false\")"
+			 "appinfo", "@OneToMany(indexed=false)"
 		   });			
 		addAnnotation
 		  (getItemList_Item(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@OneToMany(indexed=\"false\")"
+			 "appinfo", "@OneToMany(indexed=false)"
 		   });			
 		addAnnotation
 		  (getItemList_JoinedItem(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@OneToMany(indexed=\"false\" unique=\"false\")"
+			 "appinfo", "@OneToMany(indexed=false unique=false)"
 		   });	
 	}
 

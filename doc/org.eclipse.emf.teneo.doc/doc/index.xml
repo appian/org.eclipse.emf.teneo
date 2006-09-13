@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	Copyright 2005-2006, Elver.org (http://www.elver.org).
-
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-
-		http://www.apache.org/licenses/LICENSE-2.0
-
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
+	Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+	All rights reserved. This program and the accompanying materials
+	are made available under the terms of the Eclipse Public License v1.0
+	which accompanies this distribution, and is available at
+	http://www.eclipse.org/legal/epl-v10.html
 -->
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.2 $ $Date: 2006/08/24 21:27:43 $
+	@version $Revision: 1.3 $ $Date: 2006/09/13 10:42:37 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -30,22 +22,24 @@
 	</header> 
 	<body>
 		<section>
-			<title>Introduction</title>
-				<p>The Elver project focuses on combining code, persistency and UI generation solutions. 
-					Elver Persistency implements persistency solutions 
-					for generated Java objects by integrating code generation frameworks 
-					and existing persistency technologies.</p>
+			<title>Elver Persistency has moved to Eclipse.org as Teneo within EMFT</title>
+			<p><strong>Elver persistency has moved to eclipse.org as the Teneo project within EMFT:</strong></p>
+			<ul>
+			<li>The elver.org website will remain the source for documentation of Teneo.</li>
+			<li>The source code can be retrieved from Eclipse cvs. The new main java package name: org.eclipse.emf.teneo.</li>
+			<li>Teneo/Elver is part of the EMFT build process, builds can be downloaded here: 
+			<a href="http://download.eclipse.org/technology/emft/downloads/">EMFT Downloads</a> 
+			(select the Teneo project in the listbox). For the Eclipse update manager use: 
+			http://download.eclipse.org/technology/emft/updates/.</li>
+			<li>Support is given on the EMFT newsgroup: news://news.eclipse.org/eclipse.technology.emft.</li>
+			</ul>
 		</section>
 		<section>
-			<title>Elver Persistency moves to Eclipse.org as Teneo within EMFT</title>
-			<p><strong>Elver persistency is in the process of moving to eclipse.org. Elver persistency will be continued as the Teneo project in the EMFT project.
-			The current status:</strong></p>
-			<ul>
-			<li>The source code has been moved to Eclipse cvs. The new main java package name: org.eclipse.emf.teneo.</li>
-			<li>Currently we are working on the build process.</li>
-			<li>Support is given on both the 
-			EMFT newsgroup as the Elver mailinglist. When the build process at eclipse.org is operational, support will move completely to the
-			EMFT newsgroup.</li></ul>
+			<title>Introduction</title>
+				<p>The Elver project focuses on combining code, persistency and UI generation solutions. 
+					Elver/Teneo Persistency implements persistency solutions 
+					for generated Java objects by integrating code generation frameworks 
+					and existing persistency technologies.</p>
 		</section>
 		<section>
 			<title>EMF Persistency</title>
@@ -53,7 +47,7 @@
 					code generation framework like EMF 
 				and the power of storage, caching and querying of sophisticated object-relational mapping and persistency software.</p>
 				<p>EMF has been integrated with two persistency solutions:</p>
-				<p><strong><a href="hibernate/index.html">Hibernate:</a></strong> The EMF - Hibernate integration (alpha status) has just been released and supports
+				<p><strong><a href="hibernate/index.html">Hibernate:</a></strong> The EMF - Hibernate integration (alpha status) supports
 				persisting of basic EObjects, ELists with 1:n, n:m, one-way, two-way and contained relations. EMF Objects can be retrieved
 			using HQL queries.</p>
 				<p><strong><a href="jpox/index.html">JDO/JPOX:</a></strong> The EMF - JPOX integration (alpha status) supports

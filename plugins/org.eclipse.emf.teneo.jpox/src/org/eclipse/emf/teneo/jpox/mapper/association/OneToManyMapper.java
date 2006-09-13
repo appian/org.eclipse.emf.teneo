@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.5 2006/09/05 12:17:17 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.6 2006/09/13 10:39:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -25,17 +25,17 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
-import org.eclipse.emf.teneo.jpox.emf.elist.AnyFeatureMapEntry;
-import org.eclipse.emf.teneo.jpox.emf.mapping.AnyTypeEObject;
+import org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry;
 import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.jpox.mapper.MappingUtil;
+import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class OneToManyMapper extends AssociationMapper {

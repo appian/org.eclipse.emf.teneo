@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InheritanceAnnotationAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: InheritanceAnnotationAction.java,v 1.3 2006/09/13 10:39:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations to direct the inheritance mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class InheritanceAnnotationAction extends AbstractTestAction 
 {
@@ -138,6 +138,7 @@ public class InheritanceAnnotationAction extends AbstractTestAction
 	    		ContentList contentList = (ContentList)store.getObject(ContentList.class);
 	    		checkAddressList(contentList.getAddress().iterator());
 	    		
+	    		System.err.println(contentList.getPrice().get(0).getClass().getName());
 	    		assertTrue(contentList.getPrice().get(0) instanceof InternationalPrice);
 	    		assertTrue(((InternationalPrice)contentList.getPrice().get(0)).getName().compareTo("euro") == 0);
 	    		assertTrue(contentList.getPrice().get(1) instanceof Price);

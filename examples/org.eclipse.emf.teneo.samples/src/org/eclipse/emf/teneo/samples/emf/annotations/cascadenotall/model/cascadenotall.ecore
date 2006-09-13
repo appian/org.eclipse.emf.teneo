@@ -66,8 +66,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writers" upperBound="-1"
         eType="#//Writer" containment="true" resolveProxies="false">
-      <eAnnotations source="http://ejb.elver.org/OneToMany">
-        <details key="cascade" value="MERGE PERSIST REFRESH REMOVE"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -76,8 +76,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="books" upperBound="-1"
         eType="#//Book" containment="true" resolveProxies="false">
-      <eAnnotations source="http://ejb.elver.org/OneToMany">
-        <details key="cascade" value="MERGE PERSIST REFRESH REMOVE"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -99,10 +99,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="books" upperBound="-1"
         eType="#//Book" eOpposite="#//Book/author">
-      <eAnnotations source="http://ejb.elver.org/OneToMany">
-        <details key="cascade" value="MERGE PERSIST"/>
-        <details key="targetEntity" value="Book"/>
-        <details key="mappedBy" value="author"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(cascade={MERGE,PERSIST} targetEntity=&quot;Book&quot; mappedBy=&quot;author&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

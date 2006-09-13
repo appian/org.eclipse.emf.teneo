@@ -1,18 +1,10 @@
 <?xml version="1.0"?>
 <!--
-	Copyright 2005-2006, Elver.org (http://www.elver.org).
- 
- 	Licensed under the Apache License, Version 2.0 (the "License");
- 	you may not use this file except in compliance with the License.
- 	You may obtain a copy of the License at
- 
- 		http://www.apache.org/licenses/LICENSE-2.0
- 
- 	Unless required by applicable law or agreed to in writing, software
- 	distributed under the License is distributed on an "AS IS" BASIS,
- 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- 	See the License for the specific language governing permissions and
- 	limitations under the License.
+	Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+	All rights reserved. This program and the accompanying materials
+	are made available under the terms of the Eclipse Public License v1.0
+	which accompanies this distribution, and is available at
+	http://www.eclipse.org/legal/epl-v10.html
 -->
 <!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
 <document> 
@@ -27,25 +19,25 @@
       <title>EMF Installation</title>
      	<p>EMF can be installed in Eclipse using the Eclipse update manager. 
 			 See <a href="http://eclipse.org/emf/docs.php?doc=docs/UsingUpdateManager/UsingUpdateManager.html">here</a> for more information.
-			 It is best to install the EMF SDK 2.1.* which contains the complete bundle with emf, xsd and sdo. 
+			 It is best to install the EMF SDK 2.2.* which contains the complete bundle with emf, xsd and sdo. 
 		</p>
 	 </section>
     <section>
      	<title>EMF - JPOX Persistency Plugin Installation</title>
-		<p> The EMF Persistency plugin can be downloaded from the elver.org update site. 
+		<p> The EMF Persistency plugin can be downloaded from the eclipse.org/emft update site. 
 			To configure this update site in Eclipse go to: <em>Help &gt; Software Updates &gt; Find and Install</em>. Select
 			'Search for new features to install' and click next.
 		</p>
 		<p> At this window create a new update site by clicking
-			on 'New Remote Site'. Enter any name you want, as a url enter: <em>http://update.elver.org/store</em>, 
+			on 'New Remote Site'. Enter any name you want, as a url enter: <em>http://download.eclipse.org/technology/emft/updates</em>, 
 			and press ok. 
 			</p>
 		<p>Select the newly created update site and press finish. When the update site contents are shown, select the 
-			Elver EMF Persistency JDO/JPOX (followed by version information) Feature.</p>
-		<p>The feature consists of a number of plugins: org.elver.store.jpox.eclipse and org.elver.store.jpox.runtime. The first plugin contains the OR Mapper which
+			Teneo EMF Persistency (possibly followed by version information) Feature.</p>
+		<p>The feature consists of a number of plugins: org.eclipse.emf.teneo.jpox.eclipse and org.eclipse.emf.teneo.jpox. The first plugin contains the OR Mapper which
 			generates jdo descriptor files. The second plugin contains the jar files for the EMF persistency runtime. 
 			</p>
-			<p>After you have installed the plugin and restarted eclipse you will see a new menu entry called Elver when 
+			<p>After you have installed the plugin and restarted eclipse you will see a new menu entry called Teneo when 
 			you right click on an ecore file.
 			</p>
 			<p><em>Note, if you have a earlier version of the EMF persistency plugin installed then you it is possible that 
@@ -53,15 +45,15 @@
 	</section>
 	  	 <section>
 		 <title>JPOX Libraries</title>
-			<p>The EMF persistency runtime contains a subset of the JPOX libraries. These have been used to run the 
-			tests. For the remaining JPOX runtime libraries please 
-			visit: <a href="http://www.jpox.org">the jpox website</a>.</p>
+			<p>The EMF persistency feature does not contain the JPOX libraries (and its dependencies). 
+			Please download the JPOX libraries separately from: <a href="http://www.jpox.org">the JPOX website</a>.</p>
 	 </section>
 	  
 	  <section id="jpoxplugin">
-      <title>JPOX - Eclipse plugin Installation</title>
+      <title>JPOX - Eclipse Enhancement Tool</title>
      	<p>
-		  	The jpox - eclipse plugin can be downloaded from the jpox website <a href="http://www.jpox.org/docs/download.html">here</a>.
+		  	JPOX delivers a plugin to automatically enhance class files after a package.jdo has been generated.
+		  	This jpox - eclipse plugin can be downloaded from the jpox website <a href="http://www.jpox.org/docs/download.html">here</a>.
 		  	After unzipping the JPOX zip file and placing it in the Eclipse plugin directory, restart Eclipse.
 			There should be an extra menu entry called JPOX when you right click on an ecore file..
 			<em>If this menu options is not shown then please read the following: 
@@ -74,25 +66,19 @@
 			2) check 'use project classpath when running tools'. This last option is the easiest as you probably only need to
 			specify the log4j jar separately.
 		</p>
-			<p>
-			<img src="images/jpox_eclipse_classpath2.gif" alt="Example of jpox plugin classpath settings in eclipse"/>
-			</p>
 	</section>
 
 	<section id="emfjpoxruntime">
      	<title>Using the EMF - JPOX Runtime plugin</title>
-		<p>The installed runtime plugin (org.elver.store.jpox.runtime) can be used in two ways: 
+		<p>The installed runtime plugin (org.eclipse.emf.teneo.jpox) can be used in two ways: 
 			1) in an EMF model plugin, 2) in a non-plugin project. </p>
 		<section>
 			<title>Using the runtime plugin in an EMF model plugin</title>
 			<p>To use the runtime plugin in an EMF model plugin go through the following steps (in this order):</p>
 			<ol>
 				<li>In the plugin.xml, dependency tab, of the EMF model plugin project add a dependency to 
-				the EMF persistency plugin (org.elver.store.jpox.runtime)</li>
-				<li>Add the following line to the Manifest.MF of the EMF model plugin project 
-					(see <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why):
-					<p>Eclipse-RegisterBuddy: org.elver.store.jpox.runtime</p></li>
-				<li>In case also an EMF editor project was generated the org.elver.store.jpox.runtime 
+				the EMF persistency plugin (org.eclipse.emf.teneo.jpox)</li>
+				<li>In case also an EMF editor project was generated the org.eclipse.emf.teneo.jpox 
 					plugin also needs to be added to the dependencies of the editor plugin.</li>				
 				<li>Right click on the EMF model project and in the JPOX menu choose 'Add JPOX Support'.
 				Next check 'Enable Auto-Enhancement' in the same JPOX menu</li>
@@ -104,12 +90,12 @@
 		</section>
 		<section>
 			<title>Using the runtime layer in a non-plugin EMF project</title>
-			<p>In case of a non-plugin project the jar files present in the following plugings 
-			need to be added to the classpath:</p>
+			<p>In case of a non-plugin project the jar files present in the following plugins 
+			need to be added to the classpath (in addition to the jpox jars):</p>
 			<ul>
-		<li>org.elver.store</li>
-		<li>org.elver.store.annotations</li>
-		<li>EMF - JPOX runtime jar (org.elver.store.jpox-[version].jar)</li>
+		<li>org.eclipse.emf.teneo</li>
+		<li>org.eclipse.emf.teneo.annotations</li>
+		<li>org.eclipse.emf.teneo.jpox (note: there are two jar files in this plugin, both are required)</li>
 		</ul>
 			<p>In addition a jdbc driver should be added to the classpath.</p>
 		</section>

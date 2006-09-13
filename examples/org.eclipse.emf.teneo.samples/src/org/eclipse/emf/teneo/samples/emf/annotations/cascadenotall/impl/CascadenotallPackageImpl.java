@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadenotallPackageImpl.java,v 1.1 2006/07/11 16:57:13 mtaal Exp $
+ * $Id: CascadenotallPackageImpl.java,v 1.2 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.impl;
 
@@ -372,8 +372,8 @@ public class CascadenotallPackageImpl extends EPackageImpl implements Cascadenot
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://ejb.elver.org/OneToMany
-		createOneToManyAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -484,32 +484,30 @@ public class CascadenotallPackageImpl extends EPackageImpl implements Cascadenot
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/OneToMany</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createOneToManyAnnotations() {
-		String source = "http://ejb.elver.org/OneToMany";											
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";											
 		addAnnotation
 		  (getLibrary_Writers(), 
 		   source, 
 		   new String[] {
-			 "cascade", "MERGE PERSIST REFRESH REMOVE"
+			 "appinfo", "@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})"
 		   });			
 		addAnnotation
 		  (getLibrary_Books(), 
 		   source, 
 		   new String[] {
-			 "cascade", "MERGE PERSIST REFRESH REMOVE"
+			 "appinfo", "@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})"
 		   });					
 		addAnnotation
 		  (getWriter_Books(), 
 		   source, 
 		   new String[] {
-			 "cascade", "MERGE PERSIST",
-			 "targetEntity", "Book",
-			 "mappedBy", "author"
+			 "appinfo", "@OneToMany(cascade={MERGE,PERSIST} targetEntity=\"Book\" mappedBy=\"author\")"
 		   });	
 	}
 

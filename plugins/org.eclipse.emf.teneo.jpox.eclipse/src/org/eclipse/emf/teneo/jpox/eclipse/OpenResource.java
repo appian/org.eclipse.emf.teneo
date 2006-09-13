@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OpenResource.java,v 1.1 2006/07/08 22:23:05 mtaal Exp $
+ * $Id: OpenResource.java,v 1.2 2006/09/13 10:39:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.eclipse;
@@ -19,13 +19,13 @@ package org.eclipse.emf.teneo.jpox.eclipse;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.eclipse.resourcehandler.StoreOpenResource;
-import org.eclipse.emf.teneo.jpox.emf.JpoxUtil;
+import org.eclipse.emf.teneo.jpox.JpoxUtil;
 
 /**
  * Performs the open resource action based on the information in the .ehb file
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class OpenResource extends StoreOpenResource {
 	/** Ensure that the data store is opened */

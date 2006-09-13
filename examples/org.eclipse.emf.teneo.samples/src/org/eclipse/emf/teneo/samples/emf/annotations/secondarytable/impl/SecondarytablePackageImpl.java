@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablePackageImpl.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
+ * $Id: SecondarytablePackageImpl.java,v 1.3 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytable.impl;
 
@@ -285,7 +285,7 @@ public class SecondarytablePackageImpl extends EPackageImpl implements Secondary
 		  (printerEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "@SecondaryTable(name=\"THETONER\" \n\t\t\t\tpkJoinColumns={@PrimaryKeyJoinColumn(name=\"PRINTER_ID\")})"
+			 "appinfo", "\n\t\t\t\t@SecondaryTable(name=\"THETONER\" pkJoinColumns={@PrimaryKeyJoinColumn(name=\"PRINTER_ID\")})\n\t\t"
 		   });					
 		addAnnotation
 		  (getPrinter_TonerMake(), 

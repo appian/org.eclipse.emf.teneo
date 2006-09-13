@@ -17,7 +17,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:07 $
+	@version $Revision: 1.2 $ $Date: 2006/09/13 10:42:34 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -71,6 +71,8 @@
 		no specific casing is done. The value lowercase will force lower case for all table/column name, the value 
 		uppercase will force uppercase for all table/column names, none wil do not casing. It is also possible to set this
 		option to the classname of a class implementing the org.elver.store.util.SQLCaseStrategy interface.</li>
+		<li><strong>PersistenceOptions.DISABLE_ECONTAINER_MAPPING</strong>: this option (values: "true" or "false") controls if the container relations
+		are mapped explicitly in the database, see also <a href="hibernate_relations.html#Storing+container+relation">here</a>.</li>
 		</ul>
 	</body>
 </document>

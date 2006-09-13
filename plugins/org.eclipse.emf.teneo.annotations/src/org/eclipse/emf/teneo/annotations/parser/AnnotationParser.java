@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationParser.java,v 1.7 2006/09/07 22:27:42 mtaal Exp $
+ * $Id: AnnotationParser.java,v 1.8 2006/09/13 10:43:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -108,6 +108,17 @@ public class AnnotationParser {
 					throw new AnnotationParserException("Unexcepted end to annotation string, " + 
 							annotationTokenizer.getErrorText());
 				case AnnotationTokenizer.T_CONTENTEND:
+					return;
+				case AnnotationTokenizer.T_VALUE:
+					final String theValue = annotationTokenizer.getLexeme();
+					final PrimitiveValueNode valueNode = new PrimitiveValueNode();
+					valueNode.setName("value");
+					valueNode.setValue(theValue);
+					addToParent(pn, valueNode);
+					if (annotationTokenizer.nextToken() != AnnotationTokenizer.T_CONTENTEND) {
+						throw new AnnotationParserException("After this value a closing ) should follow " + 
+								annotationTokenizer.getErrorText());
+					}
 					return;
 				case AnnotationTokenizer.T_IDENTIFIER:
 					final String identifier = annotationTokenizer.getLexeme();

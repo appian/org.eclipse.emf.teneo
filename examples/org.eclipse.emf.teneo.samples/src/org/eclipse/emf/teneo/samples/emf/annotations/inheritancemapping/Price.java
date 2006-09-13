@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Price.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: Price.java,v 1.2 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
 
@@ -24,10 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage#getPrice()
- * @model annotation="http://annotation.elver.org/Table name='myprice'"
- *        annotation="http://annotation.elver.org/Inheritance strategy='SINGLE_TABLE'"
- *        annotation="http://annotation.elver.org/DiscriminatorColumn name='DISCRIMINATOR' discriminatorType='STRING'"
- *        annotation="http://annotation.elver.org/DiscriminatorValue value='myPrice'"
+ * @model annotation="teneo.jpa appinfo='\n\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\" discriminatorType=STRING)\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t'"
  *        extendedMetaData="name='Price' kind='elementOnly'"
  * @generated
  */

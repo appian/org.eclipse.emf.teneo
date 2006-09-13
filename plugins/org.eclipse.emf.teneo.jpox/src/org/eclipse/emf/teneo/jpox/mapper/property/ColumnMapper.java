@@ -11,24 +11,24 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ColumnMapper.java,v 1.3 2006/08/31 23:46:55 mtaal Exp $
+ * $Id: ColumnMapper.java,v 1.4 2006/09/13 10:39:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.teneo.simpledom.DocumentHelper;
-import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
+import org.eclipse.emf.teneo.simpledom.DocumentHelper;
+import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * Maps the column annotation to a jpox representation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class ColumnMapper extends AbstractMapper {

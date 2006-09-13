@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	Copyright 2005-2006, Elver.org (http://www.elver.org).
-
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-
-		http://www.apache.org/licenses/LICENSE-2.0
-
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
+	Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+	All rights reserved. This program and the accompanying materials
+	are made available under the terms of the Eclipse Public License v1.0
+	which accompanies this distribution, and is available at
+	http://www.eclipse.org/legal/epl-v10.html
 -->
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:09 $
+	@version $Revision: 1.2 $ $Date: 2006/09/13 10:42:36 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -43,20 +35,17 @@
 		</section>
 		<section>
 			<title>Add runtime plugin to dependencies of plugin.xml</title>
-			<p>To enable the runtime layer the org.elver.store.jpox.runtime plugin needs to be added to the
+			<p>To enable the runtime layer the org.eclipse.emf.teneo.jpox plugin needs to be added to the
 				plugin dependencies of the plugin.xml (see image below).</p>
-			<p>In addition the following <em>Eclipse-RegisterBuddy: org.elver.store.jpox.runtime</em>, 
-				needs to be added to the MANIFEST.MF of the Library model project 
-				(see <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why).</p>
 			<p>In addition your database JDBC driver should be added to classpath of the plugin.</p>
 			<figure src="images/plugindependency.gif" alt="Setting dependency of plugin.xml"/>
-			<p><em>The runtime plugin needs to be specified in the plugin dependencies before the OR mapping can be generated.</em></p>
-		</section>
+			<p><strong>The runtime plugin needs to be specified in the plugin dependencies before the OR mapping can be generated.</strong></p>
+		</section> 
 		<section>
 			<title>Generate OR Mapping</title>
 			<p>To generate the OR mapping right click on the ecore file and select the option 
-				<em>Generate EMF - JDO/JPOX OR Mapping</em> in the Elver submenu (the exact label of this 
-				menu option may vary depending on the Elver release you use). The generation takes
+				<em>Generate EMF - JDO/JPOX OR Mapping</em> in the Teneo submenu (the exact label of this 
+				menu option may vary depending on the Teneo release you use). The generation takes
 				only a second, the package.jdo file should be created in the same folder as the ecore file. <em>It is possible
 				that the folder needs to be refreshed manually.</em></p>
 			<p>Next copy the created package.jdo file to a location in the source tree and build the project (if it is not done automatically).</p>

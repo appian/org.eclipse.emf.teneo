@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingPackageImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: InheritancemappingPackageImpl.java,v 1.3 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -499,40 +499,50 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/Inheritance
-		createInheritanceAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Id
-		createIdAnnotations();
-		// http://annotation.elver.org/DiscriminatorValue
-		createDiscriminatorValueAnnotations();
-		// http://annotation.elver.org/Table
-		createTableAnnotations();
-		// http://annotation.elver.org/DiscriminatorColumn
-		createDiscriminatorColumnAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Inheritance</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createInheritanceAnnotations() {
-		String source = "http://annotation.elver.org/Inheritance";		
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (addressEClass, 
 		   source, 
 		   new String[] {
-			 "strategy", "JOINED"
-		   });																		
+			 "appinfo", "\n\t\t\t\t@Inheritance(strategy=JOINED)\n\t\t\t"
+		   });			
+		addAnnotation
+		  (getAddress_Name(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });						
+		addAnnotation
+		  (getContentList_Name(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });							
+		addAnnotation
+		  (internationalPriceEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t@DiscriminatorValue(\"myInternationalPrice\")\n\t\t\t"
+		   });				
 		addAnnotation
 		  (priceEClass, 
 		   source, 
 		   new String[] {
-			 "strategy", "SINGLE_TABLE"
-		   });												
+			 "appinfo", "\n\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\" discriminatorType=STRING)\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t"
+		   });										
 	}
 
 	/**
@@ -626,7 +636,7 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		   new String[] {
 			 "kind", "element",
 			 "name", "currency"
-		   });						
+		   });			
 		addAnnotation
 		  (priceEClass, 
 		   source, 
@@ -696,83 +706,6 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 			 "name", "USState:Object",
 			 "baseType", "USState"
 		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Id</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIdAnnotations() {
-		String source = "http://annotation.elver.org/Id";				
-		addAnnotation
-		  (getAddress_Name(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });						
-		addAnnotation
-		  (getContentList_Name(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });																						
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/DiscriminatorValue</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createDiscriminatorValueAnnotations() {
-		String source = "http://annotation.elver.org/DiscriminatorValue";															
-		addAnnotation
-		  (internationalPriceEClass, 
-		   source, 
-		   new String[] {
-			 "value", "myInternationalPrice"
-		   });							
-		addAnnotation
-		  (priceEClass, 
-		   source, 
-		   new String[] {
-			 "value", "myPrice"
-		   });										
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Table</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createTableAnnotations() {
-		String source = "http://annotation.elver.org/Table";																		
-		addAnnotation
-		  (priceEClass, 
-		   source, 
-		   new String[] {
-			 "name", "myprice"
-		   });													
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/DiscriminatorColumn</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createDiscriminatorColumnAnnotations() {
-		String source = "http://annotation.elver.org/DiscriminatorColumn";																				
-		addAnnotation
-		  (priceEClass, 
-		   source, 
-		   new String[] {
-			 "name", "DISCRIMINATOR",
-			 "discriminatorType", "STRING"
-		   });											
 	}
 
 } //InheritancemappingPackageImpl

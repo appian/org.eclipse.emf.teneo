@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	Copyright 2005-2006, Elver.org (http://www.elver.org).
-
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-
-		http://www.apache.org/licenses/LICENSE-2.0
-
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
+	Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+	All rights reserved. This program and the accompanying materials
+	are made available under the terms of the Eclipse Public License v1.0
+	which accompanies this distribution, and is available at
+	http://www.eclipse.org/legal/epl-v10.html
 -->
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+	@version $Revision: 1.2 $ $Date: 2006/09/13 10:42:35 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -88,7 +80,7 @@ FeatureMap getMyAbstractGroup();
 
 /**
  * ........
- * @model unique="false" dataType="org.elver.store.test.emf.schemaconstructs.substitutionzvon.AAA" 
+ * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.AAA" required="true" transient="true" changeable="false" volatile="true" derived="true"
  *        required="true" transient="true" changeable="false" volatile="true" derived="true"
  *        extendedMetaData="kind='element' name='myAbstract' namespace='##targetNamespace' group='myAbstract:group'"
  * @generated
@@ -104,35 +96,34 @@ BigInteger getMyAbstract();
 		<section>
 			<title>Persisting a Substitution Group</title>
 			<p>The Substitution Group element is a FeatureMap which is mapped as a collection with embedded types.
-			The embedded type is org.elver.store.jpox.emf.elist.GenericFeatureMapEntry. The mapping for the above example
+			The embedded type is org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry. The mapping for the above example
 			is shown below. For more information regarding persisting FeatureMaps see <a href="featuremap.html">here</a>.</p>
 			<source><![CDATA[
 <field name="myAbstractGroup" persistence-modifier="persistent">
-	<collection element-type="org.elver.store.jpox.emf.elist.GenericFeatureMapEntry">
+	<collection element-type="org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry">
 		<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 	</collection>
 	<join/>
 	<element>
-	<embedded>
-		<field name="featurePath"/>
-		<field name="localAnyValue" embedded="true">
-			<extension vendor-name="jpox" key="implementation-classes" value="java.math.BigInteger"/>
-			<extension vendor-name="elver.org" key="estructuralfeatures" value="myAbstract"/>
-		</field>
-		<field name="localReferenceValue" embedded="true">
-			<extension vendor-name="jpox" key="implementation-classes" 
-				value="org.elver.store.jpox.emf.mapping.AnyTypeEObject"/>
-			<extension vendor-name="elver.org" key="estructuralfeatures" value=""/>
-			<foreign-key delete-action="restrict" update-action="cascade"/>
-		</field>
-		<field name="localContainmentReferenceValue" dependent="true" embedded="true">
-			<foreign-key delete-action="cascade" update-action="cascade"/>
-			<extension vendor-name="jpox" key="implementation-classes" 
-				value="org.elver.store.jpox.emf.mapping.AnyTypeEObject"/>
-			<extension vendor-name="elver.org" key="estructuralfeatures" value=""/>
-		</field>
-	</embedded>
+		<embedded>
+			<field name="featurePath"/>
+			<field name="localAnyValue" embedded="true">
+				<extension vendor-name="jpox" key="implementation-classes" value="java.math.BigInteger"/>
+				<extension vendor-name="teneo" key="estructuralfeatures" value="myAbstract"/>
+			</field>
+			<field name="localReferenceValue" embedded="true">
+				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject"/>
+				<extension vendor-name="teneo" key="estructuralfeatures" value=""/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
+			</field>
+			<field name="localContainmentReferenceValue" dependent="true" embedded="true">
+				<foreign-key delete-action="cascade" update-action="cascade"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject"/>
+				<extension vendor-name="teneo" key="estructuralfeatures" value=""/>
+			</field>
+		</embedded>
 	</element>
+	<order column="ROOTTYPE_MYABSTRACTGROUP_IDX"/>
 </field>
 			]]></source>
 		</section>

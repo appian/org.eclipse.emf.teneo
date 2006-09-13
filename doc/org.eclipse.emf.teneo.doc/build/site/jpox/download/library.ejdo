@@ -1,0 +1,51 @@
+#
+#	Copyright 2005-2006, Elver.org (http://www.elver.org).
+#
+#	Licensed under the Apache License, Version 2.0 (the "License");
+#	you may not use this file except in compliance with the License.
+#	You may obtain a copy of the License at
+#
+#		http://www.apache.org/licenses/LICENSE-2.0
+#
+#	Unless required by applicable law or agreed to in writing, software
+#	distributed under the License is distributed on an "AS IS" BASIS,
+#	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#	See the License for the specific language governing permissions and
+#	limitations under the License.
+# ----------------------------------------------------------------------
+# 
+
+# Contains an example of the contents of an ehb file. 
+
+# name: the name under which this information is used to register a 
+#		EMFDataStore/Persistence Manager Factory. Must be 
+# 		unique. IMPORTANT: this should be the same name as used in the calls to JPOXHelper
+# 		in the initialization code in the EditorPlugin class. 
+# 		In the Library examples the used name is: library.
+# query1, query2, ...: can be used to filter the content of the resource at the load action
+# nsuri: a comma delimited list of namespace uris (incl. http://) of epackages that are stored in this EMFDataStore/PMF.
+# editorid: the id of the editor to use when opening this resource. This id can be found
+# 			in the MANIFEST.MF > extensions tab > org.eclipse.ui.editors extension > 
+# 			Extension Element Details > id field.
+#			Either the editorid or the editorextension can be specified
+# editorextension: the id of the editor to use when opening this resource. This id can be found
+# 			in the MANIFEST.MF > extensions tab > org.eclipse.ui.editors extension > 
+# 			Extension Element Details > extensions field. In the Library EMF tutorial this extension is:
+# 			library. 
+#			Either the editorid or the editorextension can be specified
+# dbname: the database name
+# dburl: the database url with the database name.
+# dbuser: the database user
+# dbpassword: the password of the database user
+# dbdriver: the class name of the database driver
+
+name=library
+nsuri=http://www.example.eclipse.org/Library
+#query1=SELECT FROM org.eclipse.example.library.impl.WriterImpl
+#query2=SELECT FROM org.eclipse.example.library.impl.BookImpl
+editorextension=library 
+dbname=jdolibrary
+dburl=jdbc:mysql://127.0.0.1:3306/jdolibrary
+dbuser=root
+dbpassword=root
+dbdriver=com.mysql.jdbc.Driver

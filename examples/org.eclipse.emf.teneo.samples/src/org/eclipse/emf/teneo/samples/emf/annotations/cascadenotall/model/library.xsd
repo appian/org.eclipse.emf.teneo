@@ -18,9 +18,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="books"
           type="xsd:anyURI" ecore:reference="lib:Book" ecore:opposite="author">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://ejb.elver.org/OneToMany" ecore:key="cascade">MERGE PERSIST</xsd:appinfo>
-			<xsd:appinfo source="http://ejb.elver.org/OneToMany" ecore:key="targetEntity">Book</xsd:appinfo>
-			<xsd:appinfo source="http://ejb.elver.org/OneToMany" ecore:key="mappedBy">author</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(cascade={MERGE,PERSIST} targetEntity="Book" mappedBy="author")</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
     </xsd:sequence>
@@ -31,13 +29,13 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0"
           name="writers" type="lib:Writer">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://ejb.elver.org/OneToMany" ecore:key="cascade">MERGE PERSIST REFRESH REMOVE</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
       <xsd:element maxOccurs="unbounded" minOccurs="0"
           name="books" type="lib:Book">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://ejb.elver.org/OneToMany" ecore:key="cascade">MERGE PERSIST REFRESH REMOVE</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
     </xsd:sequence>

@@ -1,0 +1,353 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Upgrading EMF - Hibernate Plugins</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_features.html">EJB3</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/custom_annotations.html">Custom</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.7')" id="menu_selected_1.7Title" class="menutitle">Support</div>
+<div id="menu_selected_1.7" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">Upgrading</div>
+</div>
+<div class="menuitem">
+<a href="../hibernate/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/svn.html">CVS</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Upgrading EMF - Hibernate Plugins</em>
+</h2>
+</div>
+<div class="abstract">Describes specific aspects of upgrading the EMF - Hibernate plugins
+    </div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#Changes+from+a+0.3.*+to+the+0.7.0+release">Changes from a 0.3.* to the 0.7.0 release</a>
+</li>
+<li>
+<a href="#Regenerate+hibernate.hbm.xml+after+upgrading">Regenerate hibernate.hbm.xml after upgrading</a>
+</li>
+<li>
+<a href="#Upgrade+through+the+Update+Manager%3A+Search+for+upgrades...+or+Search+for+new+Features...">Upgrade through the Update Manager: Search for upgrades... or Search for new Features...</a>
+</li>
+<li>
+<a href="#Changed+datamodel+after+upgrading">Changed datamodel after upgrading</a>
+</li>
+</ul> 
+	  
+<a name="N10010"></a><a name="Changes+from+a+0.3.*+to+the+0.7.0+release"></a>
+<div class="h3">
+<h3>Changes from a 0.3.* to the 0.7.0 release</h3>
+	  	
+	  	
+<p>Going from the 0.3.* release to the 0.7.0 release Elver has changed in many places. The main change is that it is not 
+	  	required anymore to generate an intermediate hibernate.hbm.xml file. The mapping is done at runtime based on the ecore file.</p>
+		
+<p>The main entrance class the HibernateHelper has been replaced by HbHelper. The interface of this class is cleaner than its
+		predecessor. A new class has been introduced: HbDataStore. This class represents the combination of a set of EPackages and a
+		relational store. The HbDataStore can be used for different purposes. See <a href="hbdatastore.html">here</a>.
+		</p>
+		
+<p>Another major change is that in the HQL queries the EClass name should now be used instead of the java class names.</p>
+	  
+</div>
+	  
+<a name="N10024"></a><a name="Regenerate+hibernate.hbm.xml+after+upgrading"></a>
+<div class="h3">
+<h3>Regenerate hibernate.hbm.xml after upgrading</h3>
+	  	
+	  	
+<p>New functionality and bug fixes can result in changes in the generated hibernate.hbm.xml.
+	  New versions can depend on an updated hibernate.hbm.xml. So after upgrading it is sometimes 
+	  necessary to regenerate the hibernate.hbm.xml file.</p>
+	  
+</div>
+	  
+<a name="N1002E"></a><a name="Upgrade+through+the+Update+Manager%3A+Search+for+upgrades...+or+Search+for+new+Features..."></a>
+<div class="h3">
+<h3>Upgrade through the Update Manager: Search for upgrades... or Search for new Features...</h3>
+      
+     	
+<p>Depending on how you defined valid upgrades in 
+			 <em>windows &gt; preferences &gt; Install/Updates</em>, it is possible that
+			 the 'Search for Upgrades of installed features' in the update manager will
+			 not find the updated EMF-Hibernate plugin. If this happens then the 'Search for new Features..' option
+			 should be chosen in the Update Manager.
+		</p>
+		
+<p>After the Elver plugins has been downloaded the 
+			 update manager will detect that the 'new' feature is in fact an upgrade of an already
+			 installed feature. The old-version of the feature will automatically be disabled.
+			 This is visible in the Manage Configuration function in the <em>Help &gt; Sofware Updates</em> 
+			 menu.
+		</p>
+	 
+</div>
+    
+<a name="N10041"></a><a name="Changed+datamodel+after+upgrading"></a>
+<div class="h3">
+<h3>Changed datamodel after upgrading</h3>
+     	
+		
+<p>The OR Mapper is also updated to solve issues and add functionality. This can mean that the 
+			hibernate.hbm.xml generated by the OR Mapper differs from one version to another. Resulting in a
+			different database schema. When the database already exists from previous versions this can mean
+			that the new expected database schema does not correspond with the old database schema.
+		</p>
+		
+<p>Hibernate will try to correct differences by adding tables and columns. However not all changes
+			can be automatically repaired.</p>
+		
+<p>The issues can be resolved by manually adding missing columns. Another way to resolve the above issue 
+			is to start again with a new empty database.
+			Hibernate will then automatically create new tables which adhere to the package.jdo</p>
+		
+<p>For the longer term we are considering to offer tools which will better facilitate this upgrade process. 
+			For example to allow data to be 
+		copied from the relational EMF store to a temporary XML Resource, create the new database and
+		schema and then copy the information back.</p>
+	
+</div>
+  
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

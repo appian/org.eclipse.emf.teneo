@@ -12,14 +12,14 @@ Require-Bundle: org.eclipse.emf.common,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.teneo;visibility:=reexport,
  org.eclipse.emf.teneo.annotations;visibility:=reexport
-Export-Package: org.eclipse.emf.teneo.jpox.emf,
- org.eclipse.emf.teneo.jpox.emf.cache,
- org.eclipse.emf.teneo.jpox.emf.elist,
- org.eclipse.emf.teneo.jpox.emf.mapping,
- org.eclipse.emf.teneo.jpox.emf.resource,
- org.eclipse.emf.teneo.jpox.emf.validation,
+Export-Package: org.eclipse.emf.teneo.jpox,
+ org.eclipse.emf.teneo.jpox.cache,
+ org.eclipse.emf.teneo.jpox.elist,
  org.eclipse.emf.teneo.jpox.mapper,
  org.eclipse.emf.teneo.jpox.mapper.association,
- org.eclipse.emf.teneo.jpox.mapper.property
+ org.eclipse.emf.teneo.jpox.mapper.property,
+ org.eclipse.emf.teneo.jpox.mapping,
+ org.eclipse.emf.teneo.jpox.resource,
+ org.eclipse.emf.teneo.jpox.validation
 Bundle-ClassPath: org.eclipse.emf.teneo.jpox.enhanced.jar,
  org.eclipse.emf.teneo.jpox.jar

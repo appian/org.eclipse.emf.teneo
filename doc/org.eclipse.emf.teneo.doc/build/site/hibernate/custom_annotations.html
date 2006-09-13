@@ -1,0 +1,486 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Hibernate and Elver Extension Annotations</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Annotations</div>
+<div id="menu_selected_1.5" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_features.html">EJB3</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">Custom</div>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/mailinglist.html">Mailinglist</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/svn.html">CVS</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/testcases.html">Test cases</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Hibernate and Elver Extension Annotations</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#About">About</a>
+</li>
+<li>
+<a href="#idbag">IdBag Annotation</a>
+</li>
+<li>
+<a href="#type">Type and Columns annotations</a>
+</li>
+<li>
+<a href="#indexed">Indexed Annotation</a>
+</li>
+<li>
+<a href="#unique">Unique Annotation</a>
+</li>
+</ul>
+		
+		
+<a name="N1000E"></a><a name="About"></a>
+<div class="h3">
+<h3>About</h3>
+			
+			
+<p>In addition to the EJB3 annotations, Elver supports a number of custom annotations which are partially based
+			on the Hibernate extensions: The hibernate specific annotation have the source hibernate.elver.org, the 
+			Elver specific annotations have annotation.elver.org as a source.</p>
+			
+<ul>
+				
+<li>
+<a href="#idbag">IdBag</a>
+</li>
+				
+<li>
+<a href="#indexed">Indexed</a>
+</li>
+				
+<li>
+<a href="#unique">Unique</a>
+</li>
+			
+</ul>
+		
+</div>
+		
+		
+<a name="N1002A"></a><a name="idbag"></a>
+<div class="h3">
+<h3>IdBag Annotation</h3>
+				
+			
+<p>
+				The IdBag annotation causes collections to be mapped to a Hibernate
+				<a class="external" href="http://www.hibernate.org/hib_docs/v3/reference/en/html/collections.html#collections-idbag">&lt;idbag&gt;</a> element.
+				The main advantage of an &lt;idbag&gt; is that it usually performs much faster than a regular &lt;bag&gt;.
+			</p>
+			
+<p>
+				Note that &lt;idbags&gt; can only be used for</p>
+			
+<ul>
+				
+<li>value collections (for example a list of Strings)</li>
+				
+<li>many-to-many entity relationships</li>
+				
+<li>many-to-any entity relationships</li>
+			
+</ul>
+			
+<p>
+				 One-to-many relationships are not supported by &lt;idbag&gt;.
+			</p>
+					
+<p>
+<strong>Attributes</strong>
+</p>
+					
+<p>
+						The IdBag annotation has the following attributes:
+					</p>
+					
+<ul>
+						
+<li>
+							
+<strong>IdBag.type</strong> (optional, default: "long")<br>
+							The type used for the ID column.
+						</li>
+						
+<li>
+							
+<strong>IdBag.generator</strong> (optional, default: "increment")<br>
+							The generator used for the ID column.
+							Note that in the current Hibernate implementation "native" cannot be used as an &lt;idbag&gt; generator.
+						</li>
+					
+</ul>
+					
+<p></p>
+					
+<p>
+<strong>Example</strong>
+</p>
+					
+<p>
+						The following XML Schema element:
+					</p>
+
+<pre class="code">&lt;xsd:element name="role" type="xsd:string" minOccurs="0" maxOccurs="unbounded"&gt;
+	&lt;xsd:annotation&gt;
+		&lt;xsd:appinfo source="http://annotation.elver.org/IdBag"&gt;true&lt;/xsd:appinfo&gt;
+	&lt;/xsd:annotation&gt;
+&lt;/xsd:element&gt;</pre>
+				
+<p>
+					results in this Hibernate mapping:
+				</p>
+
+<pre class="code">&lt;idbag name="role" lazy="true" cascade="all,delete-orphan"&gt;
+	&lt;collection-id column="ID" type="long"&gt;
+		&lt;generator class="increment"/&gt;
+	&lt;/collection-id&gt;
+	&lt;key update="true"&gt;
+		&lt;column name="`ROLE_ID`" not-null="false" unique="false"/&gt;
+	&lt;/key&gt;
+	&lt;element type="java.lang.String"/&gt;
+&lt;/idbag&gt;</pre>
+		
+</div>
+		
+		
+<a name="N10078"></a><a name="type"></a>
+<div class="h3">
+<h3>Type and Columns annotations</h3>
+			
+			
+<p>
+				The Type and Columns annotations are used in conjunction to map
+				<a class="external" href="http://www.hibernate.org/hib_docs/v3/reference/en/html/mapping.html#mapping-types-custom">custom value types</a>
+				to multiple columns.	
+			</p>
+			
+<p>
+				
+<strong>Attributes</strong>
+			
+</p>
+			
+<ul>
+				
+<li>
+					
+<strong>Type.type (required)</strong>
+<br>
+					The fully-qualified class name of the UserType.						
+				</li>
+				
+<li>
+					
+<strong>Columns.value (required)</strong>
+<br>
+					One or more Column annotations.
+				</li>
+			
+</ul>
+			
+<p>
+				
+<strong>Example</strong>
+			
+</p>
+			
+<p>
+				In the example below the custom value type Name is mapped to the columns "first_name" and "last_name".
+			</p>
+			
+<pre class="code">
+&lt;xsd:simpleType name="Name" ecore:instanceClass="org.elver.samples.emf.hibernate.usertype.Name"&gt;
+	&lt;xsd:annotation&gt;
+		&lt;xsd:appinfo source="http://hibernate.elver.org/Type" ecore:key="type"&gt;org.elver.samples.emf.hibernate.usertype.NameType&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="http://hibernate.elver.org/Columns" ecore:key="value"&gt;c1 c2&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="http://ejb.elver.org/Column/c1" ecore:key="name"&gt;first_name&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="http://ejb.elver.org/Column/c2" ecore:key="name"&gt;last_name&lt;/xsd:appinfo&gt;
+	&lt;/xsd:annotation&gt;
+	&lt;xsd:restriction/&gt;
+&lt;/xsd:simpleType&gt;
+	
+&lt;xsd:complexType name="Person"&gt;
+	&lt;xsd:sequence&gt;
+		&lt;xsd:element name="name" type="this:Name"&gt;
+		&lt;/xsd:element&gt;
+	&lt;/xsd:sequence&gt;
+&lt;/xsd:complexType&gt;				
+			</pre>
+		
+</div>
+		
+		
+<a name="N100AA"></a><a name="indexed"></a>
+<div class="h3">
+<h3>Indexed Annotation</h3>
+		
+<p>The http://annotation.elver.org/Indexed annotation can be used to signal to Elver that a certain association does
+		not require an index column and has a bag like behavior. 
+		See <a href="hibernate_relations.html#Mapping+non-indexed+relations">here</a>
+		for more information.</p>
+		
+</div>
+		
+		
+<a name="N100B7"></a><a name="unique"></a>
+<div class="h3">
+<h3>Unique Annotation</h3>
+		
+<p>The http://annotation.elver.org/Unique annotation can be used to signal to Elver that a certain one-to-many association is not 
+		unique. This corresponds to a unidirectional one-to-many. This means that a join table should be used. 
+		See <a href="hibernate_relations.html#Force+a+join+table+for+1%3An+relations">here</a>
+		for more information.</p>
+		
+</div>
+		
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

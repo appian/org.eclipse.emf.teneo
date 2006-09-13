@@ -11,12 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DetachFeatureMapTest.java,v 1.2 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: DetachFeatureMapTest.java,v 1.3 2006/09/13 10:43:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.detach;
 
-import org.eclipse.emf.teneo.jpox.emf.resource.JPOXResource;
+import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.emf.detach.DetachFeatureMapAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Specific detach feature map test
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class DetachFeatureMapTest extends AbstractActionTest {
 

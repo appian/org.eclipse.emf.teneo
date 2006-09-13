@@ -51,7 +51,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedItem" lowerBound="1"
         upperBound="-1" eType="#//ContainedItem" containment="true" resolveProxies="false">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot;)"/>
+        <details key="appinfo" value="@OneToMany(indexed=false)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -61,7 +61,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="item" lowerBound="1" upperBound="-1"
         eType="#//Item" eOpposite="#//Item/itemList">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot;)"/>
+        <details key="appinfo" value="@OneToMany(indexed=false)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -71,7 +71,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinedItem" lowerBound="1"
         upperBound="-1" eType="#//Item">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; unique=&quot;false&quot;)"/>
+        <details key="appinfo" value="@OneToMany(indexed=false unique=false)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

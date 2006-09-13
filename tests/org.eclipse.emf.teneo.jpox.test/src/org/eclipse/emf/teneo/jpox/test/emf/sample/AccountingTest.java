@@ -11,15 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AccountingTest.java,v 1.3 2006/09/01 08:20:28 mtaal Exp $
+ * $Id: AccountingTest.java,v 1.4 2006/09/13 10:43:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
 
 import java.io.InputStream;
 
-import org.eclipse.emf.teneo.jpox.emf.JpoxConstants;
-import org.eclipse.emf.teneo.jpox.emf.JpoxDataStore;
+import org.eclipse.emf.teneo.jpox.JpoxConstants;
+import org.eclipse.emf.teneo.jpox.JpoxDataStore;
 import org.eclipse.emf.teneo.jpox.test.stores.JPOXTestStore;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.emf.sample.AccountingAction;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests import export
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class AccountingTest extends AbstractActionTest {
 

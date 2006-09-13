@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Printer.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
+ * $Id: Printer.java,v 1.3 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytable;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytable.SecondarytablePackage#getPrinter()
- * @model annotation="teneo.jpa appinfo='@SecondaryTable(name=\"THETONER\" \n\t\t\t\tpkJoinColumns={@PrimaryKeyJoinColumn(name=\"PRINTER_ID\")})'"
+ * @model annotation="teneo.jpa appinfo='\n\t\t\t\t@SecondaryTable(name=\"THETONER\" pkJoinColumns={@PrimaryKeyJoinColumn(name=\"PRINTER_ID\")})\n\t\t'"
  *        extendedMetaData="name='Printer' kind='elementOnly'"
  * @generated
  */

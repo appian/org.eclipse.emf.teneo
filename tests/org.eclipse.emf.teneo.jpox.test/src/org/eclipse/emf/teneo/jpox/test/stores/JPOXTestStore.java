@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.7 2006/09/06 09:49:51 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.8 2006/09/13 10:43:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -42,10 +42,10 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.StoreException;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
-import org.eclipse.emf.teneo.jpox.emf.JpoxConstants;
-import org.eclipse.emf.teneo.jpox.emf.JpoxDataStore;
-import org.eclipse.emf.teneo.jpox.emf.JpoxHelper;
-import org.eclipse.emf.teneo.jpox.emf.resource.JPOXResource;
+import org.eclipse.emf.teneo.jpox.JpoxConstants;
+import org.eclipse.emf.teneo.jpox.JpoxDataStore;
+import org.eclipse.emf.teneo.jpox.JpoxHelper;
+import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
 import org.eclipse.emf.teneo.jpox.test.Utils;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.AbstractTestStore;
@@ -62,7 +62,7 @@ import org.jpox.store.Dictionary;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */

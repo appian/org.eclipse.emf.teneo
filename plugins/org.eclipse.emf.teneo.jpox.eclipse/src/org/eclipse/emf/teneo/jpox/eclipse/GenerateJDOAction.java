@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenerateJDOAction.java,v 1.1 2006/07/08 22:23:05 mtaal Exp $
+ * $Id: GenerateJDOAction.java,v 1.2 2006/09/13 10:39:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.eclipse;
@@ -23,14 +23,14 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.eclipse.genxml.GenerateMappingAction;
-import org.eclipse.emf.teneo.jpox.emf.JpoxConstants;
+import org.eclipse.emf.teneo.jpox.JpoxConstants;
 import org.eclipse.emf.teneo.jpox.mapper.GenerateJDO;
 
 /**
  * Eclipse popup action to generate a jdo file based on emf generated sources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class GenerateJDOAction extends GenerateMappingAction {

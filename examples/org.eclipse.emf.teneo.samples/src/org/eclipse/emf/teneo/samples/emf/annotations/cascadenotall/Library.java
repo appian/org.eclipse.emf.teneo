@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.2 2006/09/05 12:16:36 mtaal Exp $
+ * $Id: Library.java,v 1.3 2006/09/13 10:39:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall;
 
@@ -68,7 +68,7 @@ public interface Library extends EObject {
 	 * @return the value of the '<em>Writers</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.CascadenotallPackage#getLibrary_Writers()
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.Writer" containment="true"
-	 *        annotation="http://ejb.elver.org/OneToMany cascade='MERGE PERSIST REFRESH REMOVE'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})'"
 	 *        extendedMetaData="kind='element' name='writers'"
 	 * @generated
 	 */
@@ -86,7 +86,7 @@ public interface Library extends EObject {
 	 * @return the value of the '<em>Books</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.CascadenotallPackage#getLibrary_Books()
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.Book" containment="true"
-	 *        annotation="http://ejb.elver.org/OneToMany cascade='MERGE PERSIST REFRESH REMOVE'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})'"
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */
