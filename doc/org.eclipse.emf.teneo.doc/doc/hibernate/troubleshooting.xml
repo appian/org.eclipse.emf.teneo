@@ -73,8 +73,9 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			</source>
 			<p>This will result in much more debugging information in the console.</p>
 		</section>
-		<section>
-			<title>Common issues</title>
+		<section><title>Cut and Paste does not work in the Editor</title>
+		<p>Please look <a href="hibernate_details.html#cutpaste">here</a></p>
+		</section>
 			<section><title>Column name e_version not supported by database</title>
 			<p>Teneo will automatically add a version column to the database for each object. The default version column name
 			is e_version. However not all databases support an _ in the column name. To set the version column name you can set 
@@ -104,16 +105,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			</p>
 			</section>
 			<section>
-				<title>java.lang.NoClassDefFoundError when starting/initializing runtime layer (1)</title>
-				<p>This error occurs when the runtime layer is initialized. It occurs because your 
-			application (and ecore libraries) are not present in the classpath of the runtime layer.
-			To solve this issue add the following line to the Manifest.MF of your EMF model project:
-			</p>
-			<p>Eclipse-RegisterBuddy: org.eclipse.emf.teneo.hibernate</p>
-			<p>See also the <a href="installation.html">installation</a> page</p>
-			</section>
-			<section>
-				<title>java.lang.NoClassDefFoundError when starting/initializing runtime layer (2)</title>
+				<title>java.lang.NoClassDefFoundError when starting/initializing runtime layer</title>
 				<p>When your model is divided over different projects/plugins then the dependency on
 				org.eclipse.emf.teneo.hibernate has to be set in the project with the 'widest' classpath (the project with a classpath containing the other plugins).
 				For example if you have the following two emf projects:</p>
@@ -150,11 +142,30 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			<section><title>Update manager does not find the upgrade of the EMF Hibernate plugin</title>
 			<p>As a workaround use find new features to install a new version of the EMF Hibernate plugin.</p>
 			</section>
-			<section><title>The EMF generated editor does not start and the error log gives a sql error 'Missing column....'</title>
+			<section><title>Editor does not start,  the error log gives a sql error 'Missing column....'</title>
 			<p>This can occur if your model has changed or you just upgraded the OR Mapper plugin and have generated a new 
 				hibernate.hbm.xml file. Before upgrading it is best
 				to export the current database using the <a href="resource_utility.xml">Resource Utility</a>. After exporting start
 			with a new database.</p>
+			</section>
+			<section><title>Editor does not start, ClassNotFoundException on the Editor Plugin</title>
+			<p>This can happen when the Hibernate libraries can not find the model classes. You can check if
+			you have set the BuddyPolicy in the Manifest.MF of the plugin containing the Hibernate jar files.
+			If not add the following to the Manifest.MF of the plugin containing the Hibernate jar files:
+			Eclipse-BuddyPolicy: dependent</p>
+			</section>
+			<section><title>Editor does not start, AssertionFailedException</title>
+			<p>When you start the editor you get the following exteption (stacktrace truncated):</p>
+			<source>
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: 
+at org.eclipse.core.runtime.Assert.isTrue(Assert.java:109)
+at org.eclipse.core.runtime.Assert.isTrue(Assert.java:95)
+at org.eclipse.ui.part.MultiPageEditorPart.setActivePage(MultiPageEditorPart.java:688)
+at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart.java:280)			
+			</source>
+			<p>You probably started the editor with an empty database, the editor does not support this.
+			You should have at least one root object in the database (for example a Library object in 
+			the Library tutorial).</p>
 			</section>
 			<section>
 				<title>Validation exception on enumerate properties when saving the editor content</title>
@@ -180,6 +191,5 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 				model code is not regenerated after a change in the ecore file. To let Teneo use the changes in the ecore
 				file the model code needs to be regenerated.</p>
 			</section>
-		</section>
 	</body>
 </document>

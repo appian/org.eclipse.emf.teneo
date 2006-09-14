@@ -47,6 +47,9 @@
 		 <title>JPOX Libraries</title>
 			<p>The EMF persistency feature does not contain the JPOX libraries (and its dependencies). 
 			Please download the JPOX libraries separately from: <a href="http://www.jpox.org">the JPOX website</a>.</p>
+			<p><strong>A common approach is to place the JPOX libraries in a separate plugin on which your model plugin will depend.
+			If you do this then you should also set the BuddyPolicy in the plugin containing the JPOX jars (in the Manifest.MF), 
+			for example: Eclipse-BuddyPolicy: dependent.</strong></p>
 	 </section>
 	  
 	  <section id="jpoxplugin">

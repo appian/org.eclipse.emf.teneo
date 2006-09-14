@@ -46,6 +46,9 @@
 		 <title>Hibernate Libraries</title>
 			<p>The EMF persistency feature does not contain the Hibernate libraries (and its dependencies). 
 			Please download the Hibernate libraries separately from: <a href="http://www.hibernate.org">the hibernate website</a>.</p>
+			<p><strong>A common approach is to place the Hibernate libraries in a separate plugin on which your model plugin will depend.
+			If you do this then you should also set the BuddyPolicy in the plugin containing the Hibernate jars (in the Manifest.MF), 
+			for example: Eclipse-BuddyPolicy: dependent.</strong></p>
 	 </section>
 	<section id="emfhibernateruntime">
      	<title>Install the EMF - Hibernate Runtime plugin</title>

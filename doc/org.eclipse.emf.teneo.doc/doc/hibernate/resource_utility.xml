@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.2 $ $Date: 2006/09/13 16:05:49 $
+	@version $Revision: 1.3 $ $Date: 2006/09/14 08:03:54 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -58,6 +58,10 @@
 			is a restriction of the generated EMF editor. So you should always have at least one
 			document in the resource. This document can be created by importing from a XML document
 			or by using the standard EMF open model wizard.</p>
+		</section>
+				<section><title>Throubleshooting: editor does not start, AssertionFailedException</title>
+		<p>See <a href="troubleshooting.html#Editor+does+not+start%2C+AssertionFailedException">here</a>
+		in the troubleshooting page.</p>
 		</section>
 		
 		<section><title>Future extensions</title>
