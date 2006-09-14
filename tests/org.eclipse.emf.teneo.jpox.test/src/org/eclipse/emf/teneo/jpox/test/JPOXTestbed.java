@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.23 2006/09/13 10:43:10 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.24 2006/09/14 03:47:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -103,7 +103,7 @@ public class JPOXTestbed extends Testbed {
 
 	/** Constructor */
 	private JPOXTestbed() {
-		super(isRunningOnEMFTServer() ? "emft_test.properties" : Testbed.TEST_CFG_PROP_RESOURCE);
+		super(isRunningOnEMFTServer() ? "/emft_test.properties" : "/local_test.properties");
 		storeFactory = new JPOXTestStoreFactory();
 	}
 
