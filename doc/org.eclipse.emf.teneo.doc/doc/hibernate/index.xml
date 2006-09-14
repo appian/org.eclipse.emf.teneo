@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.3 $ $Date: 2006/09/13 10:42:34 $
+	@version $Revision: 1.4 $ $Date: 2006/09/14 21:47:40 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -30,7 +30,7 @@
 			<li>Teneo/Elver is part of the EMFT build process, builds can be downloaded here: 
 			<a href="http://download.eclipse.org/technology/emft/downloads/">EMFT Downloads</a> 
 			(select the Teneo project in the listbox). For the Eclipse update manager use: 
-			http://download.eclipse.org/technology/emft/updates/.</li>
+			http://download.eclipse.org/technology/emft/updates/site-interim.xml.</li>
 			<li>Support is given on the EMFT newsgroup: news://news.eclipse.org/eclipse.technology.emft.</li>
 			</ul>
 		</section>

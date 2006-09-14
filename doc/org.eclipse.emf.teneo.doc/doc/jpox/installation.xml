@@ -29,7 +29,7 @@
 			'Search for new features to install' and click next.
 		</p>
 		<p> At this window create a new update site by clicking
-			on 'New Remote Site'. Enter any name you want, as a url enter: <em>http://download.eclipse.org/technology/emft/updates</em>, 
+			on 'New Remote Site'. Enter any name you want, as a url enter: <em>http://download.eclipse.org/technology/emft/updates/site-interim.xml</em>, 
 			and press ok. 
 			</p>
 		<p>Select the newly created update site and press finish. When the update site contents are shown, select the 
