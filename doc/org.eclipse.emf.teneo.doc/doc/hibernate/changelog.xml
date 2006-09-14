@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.6 $ $Date: 2006/09/13 16:05:49 $
+	@version $Revision: 1.7 $ $Date: 2006/09/14 04:36:37 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -68,9 +68,9 @@
 			<li>Added/changed support for the following annotations:
 				<ul>
 				<li>Added secondary table(s), embedded id and lob, (see <a href="ejb3_features.html">here</a>)</li>
-			<li>Added idbag (see <a href="custom_annotations.html#IdBag+Annotation">here</a>)</li>
-			<li>Added type annotation on EDataType to support UserType (see <a href="custom_annotations.html#type">here</a>)</li>
-			<li>Added columns (multiple) annotation (see <a href="custom_annotations.html#type">here</a>)</li>
+			<li>Added idbag</li>
+			<li>Added type annotation on EDataType to support UserType</li>
+			<li>Added columns (multiple) annotation</li>
 			<li>Added transient annotation on EClass level (see <a href="ejb3_features.html#transient">here</a>).</li>
 			<li>Changed the format of the Elver specific Indexed and Unique annotation (see <a href="hibernate_relations.html">here</a>)</li>
 			</ul></li>
