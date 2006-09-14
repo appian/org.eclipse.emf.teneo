@@ -11,9 +11,9 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.4 2006/09/06 21:59:07 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.5 2006/09/14 03:54:50 mtaal Exp $
  */
-
+ 
 package org.eclipse.emf.teneo.jpox.test.emf.annotations;
 
 import junit.framework.Test;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All generate tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AllGenerateTests {
 
