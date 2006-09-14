@@ -11,11 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.1 2006/09/13 10:39:52 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.2 2006/09/14 19:53:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
-
+ 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -92,7 +92,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/13 10:39:52 $
+ * @version $Revision: 1.2 $ $Date: 2006/09/14 19:53:54 $
  */
 
 public class JpoxDataStore {
