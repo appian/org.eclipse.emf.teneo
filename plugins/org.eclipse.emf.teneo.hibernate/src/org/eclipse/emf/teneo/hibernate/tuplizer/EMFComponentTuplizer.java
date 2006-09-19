@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFComponentTuplizer.java,v 1.2 2006/07/22 13:09:55 mtaal Exp $
+ * $Id: EMFComponentTuplizer.java,v 1.3 2006/09/19 07:24:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -31,12 +31,12 @@ import org.hibernate.mapping.Property;
 import org.hibernate.property.Getter;
 import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
-import org.hibernate.tuple.AbstractComponentTuplizer;
+import org.hibernate.tuple.component.AbstractComponentTuplizer;
 import org.hibernate.tuple.Instantiator;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class EMFComponentTuplizer extends AbstractComponentTuplizer {

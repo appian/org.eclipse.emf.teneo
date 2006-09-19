@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryTuplizer.java,v 1.2 2006/08/03 09:58:19 mtaal Exp $
+ * $Id: FeatureMapEntryTuplizer.java,v 1.3 2006/09/19 07:24:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -31,14 +31,14 @@ import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
 import org.hibernate.property.PropertyAccessor;
-import org.hibernate.tuple.EntityMetamodel;
+import org.hibernate.tuple.entity.EntityMetamodel;
 import org.hibernate.tuple.Instantiator;
 
 /**
  * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class FeatureMapEntryTuplizer extends EMFTuplizer {

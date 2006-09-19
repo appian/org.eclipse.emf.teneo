@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.3 2006/08/03 09:58:19 mtaal Exp $
+ * $Id: HbUtil.java,v 1.4 2006/09/19 07:24:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -21,6 +21,7 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -29,6 +30,7 @@ import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler;
 import org.eclipse.emf.teneo.util.StoreUtil;
+import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
 import org.hibernate.mapping.Collection;
 import org.hibernate.mapping.MetaAttribute;
@@ -41,13 +43,18 @@ import org.hibernate.property.PropertyAccessor;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class HbUtil {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbUtil.class);
 
+	/** Encode the id of an eobject */
+	public static String encodeId(EObject eobj, Session session) {
+		return "";
+	}
+	
 	/** Returns the correct accessor on the basis of the type of property */
 	public static PropertyAccessor getPropertyAccessor(Property mappedProperty, HbDataStore ds, String entityName) {
 		final String versionPropName = ds.getPersistenceOptions().getVersionColumnName();
