@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.8 2006/09/13 10:43:09 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.9 2006/09/21 00:57:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -56,13 +56,12 @@ import org.jpox.PMFConfiguration;
 import org.jpox.PersistenceManagerFactoryImpl;
 import org.jpox.metadata.AbstractClassMetaData;
 import org.jpox.metadata.InheritanceStrategy;
-import org.jpox.store.Dictionary;
 
 /**
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -123,7 +122,7 @@ public class JPOXTestStore extends AbstractTestStore {
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_URL_PROPERTY, adapter.getDbUrl());
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, adapter.getDbUser());
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, adapter.getDbPwd());
-		properties.setProperty(Dictionary.IDENTIFIER_CASE_PROPERTY, "LowerCase");
+		properties.setProperty(PMFConfiguration.IDENTIFIER_CASE_PROPERTY, "LowerCase");
 
 		// properties.setProperty(PMFConfiguration.JDO_MAPPING_CATALOG_PROPERTY, adapter.getDbName());
 

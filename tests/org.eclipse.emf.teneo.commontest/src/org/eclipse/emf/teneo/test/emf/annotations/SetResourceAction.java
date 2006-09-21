@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SetResourceAction.java,v 1.1 2006/07/04 22:12:14 mtaal Exp $
+ * $Id: SetResourceAction.java,v 1.2 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -35,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * references using resources. Most other aspects of resources are handled in the Catalog example.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class SetResourceAction extends AbstractTestAction 
 {
@@ -95,6 +96,7 @@ public class SetResourceAction extends AbstractTestAction
 		        
 		        res.getContents().add(list);
 		        res.save(null);
+				res.unload();
 	    	}
 	    	
 	    	// remove(i), removeAll, move
@@ -121,8 +123,9 @@ public class SetResourceAction extends AbstractTestAction
 	    			assertEquals(list, ((InternalEObject)list.getContainedItem().get(i)).eContainer());
 	    			if ((i % 2) == 0)
 	    			{
-	    				ContainedItem citem = (ContainedItem)list.getContainedItem().remove(i);
+	    				ContainedItem citem = (ContainedItem)list.getContainedItem().get(i);
 	    				cnames.remove(citem.getName()); // remove from here to check later
+	    				list.getContainedItem().remove(i);
 	    			}
 	    		}
 	    		
@@ -146,6 +149,7 @@ public class SetResourceAction extends AbstractTestAction
 	    		assertEquals(1, list.getItem().indexOf(obj));
 	    		
 	    		res.save(null);
+				res.unload();
 	    	}
 
 	    	int newCount = 0;
@@ -184,8 +188,10 @@ public class SetResourceAction extends AbstractTestAction
 	    			newList.add(item);
 	    			newCount++;
 	    		}
-	    		list.getItem().addAll(newList);
+	    		List myList = list.getItem();
+	    		myList.addAll(newList);
 	    		res.save(null);
+				res.unload();
 	    	}
 	    	
 	    	{
@@ -201,6 +207,7 @@ public class SetResourceAction extends AbstractTestAction
 	    		}
 	    		assertEquals(newCount, list.getItem().size());
 	    		res.save(null);
+				res.unload();
 	    	}
 		}
 		catch (IOException e)

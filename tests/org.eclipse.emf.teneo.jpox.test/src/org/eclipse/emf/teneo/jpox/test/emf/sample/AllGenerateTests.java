@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.6 2006/08/25 23:04:07 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.7 2006/09/21 00:57:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -42,38 +42,42 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class AllGenerateTests {
 	public static Test suite() {
 		MultiCfgTestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed
 				.instance().getConfigurations());
+		suite.addTest(new JPOXGenerateTest(LibraryTest.testAction));
+		suite.addTest(new JPOXGenerateTest(LibraryResourceCutPasteAction.class));
+		suite.addTest(new JPOXGenerateTest(LibraryNonResolvingAction.class));
+		
 		suite.addTest(new JPOXGenerateTest(LibrarySerializationAction.class));
+		suite.addTest(new JPOXGenerateTest(LibraryResourceAction.class));
+		suite.addTest(new JPOXGenerateTest(LibraryValidateResourceAction.class));
+		suite.addTest(new JPOXGenerateTest(LibraryGlobalEagerAction.class));
 
 		suite.addTest(new JPOXGenerateTest(WorkFlowAction.class));
-		
 		suite.addTest(new JPOXGenerateTest(SunBooksAction.class));
+		
 		suite.addTest(new JPOXGenerateTest(ExtLibraryAction.class));
-		suite.addTest(new JPOXGenerateTest(LibraryTest.testAction));
 
 		suite.addTest(new JPOXGenerateTest(InventoryAction.class));
-		suite.addTest(new JPOXGenerateTest(LibraryResourceAction.class));
+		suite.addTest(new JPOXGenerateTest(CatalogResourceAction.class));
+
 		suite.addTest(new JPOXGenerateTest(SchoolLibraryTest.testAction));
 		suite.addTest(new JPOXGenerateTest(ExtendedPO2Test.testAction));
+		
+		suite.addTest(new JPOXGenerateTest(AccountingTest.testAction));
+
 		suite.addTest(new JPOXGenerateTest(PlayImExportTest.testAction));
 		suite.addTest(new JPOXGenerateTest(PlayAction.class));
 
-		suite.addTest(new JPOXGenerateTest(LibraryResourceCutPasteAction.class));
-		suite.addTest(new JPOXGenerateTest(LibraryValidateResourceAction.class));
-		suite.addTest(new JPOXGenerateTest(LibraryGlobalEagerAction.class));
-		suite.addTest(new JPOXGenerateTest(LibraryNonResolvingAction.class));
 		suite.addTest(new JPOXGenerateTest(ProductAction.class));
 		suite.addTest(new JPOXGenerateTest(PrimerPOAction.class));
 		suite.addTest(new JPOXGenerateTest(ForumAction.class));
-		suite.addTest(new JPOXGenerateTest(CatalogResourceAction.class));
 		suite.addTest(new JPOXGenerateTest(CatalogTest.testAction));
-		suite.addTest(new JPOXGenerateTest(AccountingTest.testAction));
-
+		
 		return suite;
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapAction.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: FeatureMapAction.java,v 1.2 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.elist;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * - Delete restrictions
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/07/04 22:12:17 $
+ * @version $Revision: 1.2 $ $Date: 2006/09/21 00:57:18 $
 */
 public class FeatureMapAction extends AbstractTestAction 
 {
@@ -102,6 +102,7 @@ public class FeatureMapAction extends AbstractTestAction
 			try
 			{
 				res.save(null);
+				res.unload();
 			}
 			catch (Exception e)
 			{

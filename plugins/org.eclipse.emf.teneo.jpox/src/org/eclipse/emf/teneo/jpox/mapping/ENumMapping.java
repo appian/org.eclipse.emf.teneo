@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ENumMapping.java,v 1.1 2006/09/13 10:39:53 mtaal Exp $
+ * $Id: ENumMapping.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapping;
@@ -44,7 +44,7 @@ import org.jpox.store.mapping.MappingManager;
  * method using the class signature (reflection).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/13 10:39:53 $
+ * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
  */
 
 public class ENumMapping extends JavaTypeMapping {
@@ -63,7 +63,7 @@ public class ENumMapping extends JavaTypeMapping {
 
 	/** Constructor */
 	public ENumMapping(DatastoreAdapter dba, String type) {
-		super(null, dba, type);
+		super(dba, type, null, null);
 		this.datastoreContainer = null;
 
 		// get the static get method
@@ -80,9 +80,11 @@ public class ENumMapping extends JavaTypeMapping {
 	}
 
 	/** Constructor */
-	public ENumMapping(DatastoreAdapter dba, AbstractPropertyMetaData fmd, DatastoreContainerObject datastoreContainer,
+	public ENumMapping(DatastoreAdapter dba, AbstractPropertyMetaData fmd, 
+			DatastoreContainerObject datastoreContainer,
 			org.jpox.ClassLoaderResolver clr) {
-		super(fmd, dba, fmd.getType().getName());
+		super(dba, fmd.getType().getName(), fmd, datastoreContainer);
+		
 		try {
 			enumType = fmd.getType();
 			getMethod = enumType.getMethod("get", new Class[] { String.class });
@@ -110,46 +112,6 @@ public class ENumMapping extends JavaTypeMapping {
     }
 
 	/**
-	 * Constructor.
-	 * 
-	 * @param dba
-	 *            Datastroe Adapter
-	 * @param fmd
-	 *            FieldMetaData for the field to be mapped
-	 * @param datastoreContainer
-	 *            Table containing the mapped field
-	 * @param initDatastoreMappings
-	 *            Whether to initialise the datastore mappings (create the columns etc)
-	 */
-	public ENumMapping(DatastoreAdapter dba, AbstractPropertyMetaData fmd, DatastoreContainerObject datastoreContainer,
-			boolean initDatastoreMappings) {
-		super(fmd, dba, fmd.getType().getName());
-
-		this.datastoreContainer = datastoreContainer;
-		enumType = fmd.getType();
-
-		// get the static get method
-		try {
-			getMethod = enumType.getMethod("get", new Class[] { String.class });
-		} catch (NoSuchMethodException e) {
-			throw new JpoxStoreException("The get method which returns an enum instance does not exist for the class: "
-					+ enumType.getName(), e);
-		}
-
-		if (initDatastoreMappings) {
-			try {
-				MappingManager mgr = datastoreContainer.getStoreManager().getMappingManager();
-				DatastoreField column = mgr.createDatastoreField(fmd, datastoreContainer, dba, this, String.class
-						.getName(), 1);
-				mgr.createDatastoreMapping(this, datastoreContainer.getStoreManager(), column, String.class.getName());
-			} catch (Exception e) {
-				e.printStackTrace(System.err);
-				throw new JpoxStoreException("Exception", e);
-			}
-		}
-	}
-
-	/**
 	 * Return the Java type being represented.
 	 */
 	public Class getJavaType() {
@@ -169,7 +131,7 @@ public class ENumMapping extends JavaTypeMapping {
 	 * Return a typical value for the Java type. For the enum it returns the first value (the one with ordinal zero) as
 	 * an example.
 	 */
-	public Object getSampleValue() {
+	public Object getSampleValue(org.jpox.ClassLoaderResolver clr) {
 		// this is a bit of a hack, we assume that there is an enum for the int value 0
 		try {
 			final Method getIntMethod = enumType.getMethod("get", new Class[] { int.class });

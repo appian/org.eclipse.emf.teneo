@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: Library.java,v 1.2 2006/09/21 00:56:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy;
 
@@ -66,8 +66,8 @@ public interface Library extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Writers</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lazy.LazyPackage#getLibrary_Writers()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.lazy.Writer" containment="true" resolveProxies="false"
-	 *        annotation="http://annotation.elver.org/OneToMany fetch='EAGER' cascade='ALL' targetEntity='Writer'"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.lazy.Writer" containment="true"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(fetch=EAGER cascade=ALL targetEntity=\"Writer\")'"
 	 *        extendedMetaData="kind='element' name='writers'"
 	 * @generated
 	 */
@@ -84,8 +84,8 @@ public interface Library extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Books</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lazy.LazyPackage#getLibrary_Books()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.lazy.Book" containment="true" resolveProxies="false"
-	 *        annotation="http://annotation.elver.org/OneToMany fetch='EAGER' cascade='ALL' targetEntity='Book'"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.lazy.Book" containment="true"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(fetch=EAGER cascade=ALL targetEntity=\"Book\")'"
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */

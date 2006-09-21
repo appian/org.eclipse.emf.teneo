@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.6 2006/09/04 15:42:17 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.7 2006/09/21 00:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -25,6 +25,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.ERuntime;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
@@ -40,7 +41,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class JPOXMappingGenerator {
@@ -62,9 +63,13 @@ public class JPOXMappingGenerator {
 	/** The mapping context used */
 	private MappingContext mappingContext;
 
+	/** The version column name */
+	private final String versionColumnName;
+	
 	/** The constructor, creates all mappers etc. */
-	public JPOXMappingGenerator() {
+	public JPOXMappingGenerator(PersistenceOptions po) {
 		mappingContext = new MappingContext();
+		versionColumnName = po.getVersionColumnName();
 	}
 
 	/** Method gets a created annotatedModel and creates a jpox mapping file */
@@ -189,7 +194,7 @@ public class JPOXMappingGenerator {
 
 		// process the inheritance annotation
 		mappingContext.getInheritanceMapper().map(aClass, classElement);
-		
+			
 		if (aClass.getTable() != null) {
 			mappingContext.getTableMapper().map(aClass.getTable(), classElement);
 		}
@@ -228,10 +233,16 @@ public class JPOXMappingGenerator {
 			}
 			Element version = classElement.addElement("version");
 			version.addAttribute("strategy", "version-number");
+			version.addAttribute("column", versionColumnName);
 			// TOOD can the version attribute also be overridden??? Seems not logical
 			if (versionAttribute.getColumn() != null) {
 				mappingContext.getColumnMapper().map(versionAttribute.getColumn(), version);
 			}
+		} else {
+			// map the version default we now just it!
+			classElement.addElement("version") 
+				.addAttribute("strategy", "version-number") 
+				.addAttribute("column", versionColumnName);
 		}
 
 		mappingContext.setCurrentAClass(aClass);

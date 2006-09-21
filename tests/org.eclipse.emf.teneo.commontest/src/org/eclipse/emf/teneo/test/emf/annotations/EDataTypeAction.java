@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EDataTypeAction.java,v 1.1 2006/09/06 21:58:50 mtaal Exp $
+ * $Id: EDataTypeAction.java,v 1.2 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EDataTypeAction extends AbstractTestAction {
 	/**
@@ -48,7 +48,6 @@ public class EDataTypeAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		BigDecimal testDbl = new BigDecimal("12456677.90123");
 		final EdatatypeColumnFactory factory = EdatatypeColumnFactory.eINSTANCE;
 		try {

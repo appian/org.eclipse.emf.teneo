@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.3 2006/09/13 10:39:53 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.4 2006/09/21 00:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class MappingUtil {
@@ -169,8 +169,13 @@ public class MappingUtil {
 				Class instanceClass = efeature.getEType().getInstanceClass();
 				if (!onlyEObject && !EObject.class.isAssignableFrom(instanceClass) && !String.class.isAssignableFrom(instanceClass)
 						&& efeature instanceof EAttribute) {
-					if (!result.contains(instanceClass)) {
-						result.add(instanceClass.getName());
+					if (!result.contains(instanceClass.getName())) {
+						String name = instanceClass.getName();
+						if (name.indexOf('.') == -1) { // assume
+							log.warn("Primitive type " + name + " prepending java.lang.");
+							name = "java.lang." + name.substring(0, 1).toUpperCase() + name.substring(1);
+						}
+						result.add(name);
 						featureResult.add(efeature);
 					}
 				} else if (onlyEObject && efeature instanceof EReference) {

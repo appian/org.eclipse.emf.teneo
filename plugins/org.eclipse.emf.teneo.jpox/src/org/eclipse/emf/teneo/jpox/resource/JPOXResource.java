@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXResource.java,v 1.1 2006/09/13 10:39:53 mtaal Exp $
+ * $Id: JPOXResource.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.resource;
@@ -66,10 +66,10 @@ import org.eclipse.emf.teneo.resource.StoreResource;
  * resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/13 10:39:53 $
+ * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
  */
 
-public abstract class JPOXResource extends StoreResource {
+public class JPOXResource extends StoreResource {
 	/** The logger */
 	private static Log log = LogFactory.getLog(JPOXResource.class);
 
@@ -173,6 +173,19 @@ public abstract class JPOXResource extends StoreResource {
 		return pm;
 	}
 
+	/** 
+	 * Overridden because if an eobject is removed from its containing parent then jpox
+	 * will move it to the deleted state and then the content of the deleted object can 
+	 * not be used anymore.
+	 */
+	public void detached(EObject eObject) {
+		if (((PersistenceCapable)eObject).jdoIsDeleted()) {
+			detachedHelper(eObject);
+			return;
+		}
+		super.detached(eObject);
+	}
+
 	/**
 	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length zero then no
 	 * refering EObjects where found.
@@ -223,78 +236,114 @@ public abstract class JPOXResource extends StoreResource {
 	 * Saves the changed objects or removes the detached objects from this resource.
 	 */
 	protected void saveResource(Map options) {
-		log.debug("Saving resource with uri: " + getURI() + " and " + getContents().size() + " objects");
+		log.debug("SAVING DAO jpoxresource using uri: " + uri.toString());
 
-		// this happens if the resource was loaded through an inputstream
-		if (tx == null || !tx.isActive()) {
-			tx = pm.currentTransaction();
+		// now we have all the classnames, now retrieve all the objects using queries!!!!
+		tx = pm.currentTransaction();
+		if (!tx.isActive()) { // can also be asserted but okay try to be helpful
+			log.warn("Resource save: the transaction of the resource should always be active, but it isn't when save starts, beginning transaction");
 			tx.begin();
 		}
 
 		boolean err = true;
 		try {
-			// validate the contents
-			validateContents();
-
-			final List list = super.getSuperContents();
-			for (int i = 0; i < list.size(); i++) {
-				final Object obj = list.get(i);
+			// persist the new objects
+			final Iterator it = getContents().iterator();
+			while (it.hasNext()) {
+				final Object obj = it.next();
+				
 				if (obj instanceof PersistenceCapable) {
 					final PersistenceCapable pc = (PersistenceCapable) obj;
-					if (!pc.jdoIsPersistent()) {
+					if (!(pc.jdoIsPersistent())) {
 						pm.makePersistent(pc);
 					}
 				}
 			}
 
-			// delete all deleted objects
-			pm.deletePersistentAll(removedEObjects);
+			// now delete the deleted objects
+			// check needs to be done if the objects have not been removed in determine unreachables
+			final ArrayList reallyRemove = new ArrayList();
+			for (int i = 0; i < removedEObjects.size(); i++) {
+				final PersistenceCapable pc = (PersistenceCapable)removedEObjects.get(i);
+				if (pc.jdoIsPersistent() && !pc.jdoIsDeleted()) {
+					reallyRemove.add(pc);
+				}
+			}
+
+			// now attach the remaing and delete them all
+			/*
+			ArrayList toRemove = new ArrayList();
+			for (Iterator removeIt = reallyRemove.iterator(); removeIt.hasNext();) {
+				toRemove.add(((PersistenceManagerImpl) pm).makePersistent(removeIt.next()));
+			}
+			*/
+			pm.deletePersistentAll(reallyRemove);
 
 			err = false;
-		} catch (Exception e) {
-			e.printStackTrace(System.err);
-			throw new JpoxStoreException("Exception", e);
 		} finally {
 			if (err) {
+				log.warn("Exception during save, rolling back transaction");
 				tx.rollback();
 			} else {
+				log.warn("Committing transaction");
 				tx.commit();
 			}
+			tx = pm.currentTransaction();
+			tx.begin();
+			tx = null;
 		}
-
-		// doUnload();
-
-		// reload directly!
-		// load(null);
 	}
-
+	
 	/**
 	 * Loads all the objects in the global list
 	 */
-	protected List loadResource(Map options) {
+	public List loadResource(Map options) {
 		log.debug("Loading resource: " + getURI().toString());
 
-		// pm == null after an unload action
+		// check if the resource was unloaded first
 		if (pm == null) {
 			setPM();
 		}
 		tx = pm.currentTransaction();
-		tx.begin();
+		if (!tx.isActive()) {
+			log.debug("Starting transaction");
+			tx.begin();
+		}
 
+		List readObjects = null;
 		// note we have to a call to the super class otherwise an infinite loop is created
+		// final ArrayList<InternalEObject> eobjs = new ArrayList<InternalEObject>();
 		final ContentsEList elist = (ContentsEList) super.getSuperContents();
-		final List readObjects = loadFromStore(pm);
+		readObjects = loadFromStore(pm);
 		final Iterator it = readObjects.iterator();
 		while (it.hasNext()) {
 			final InternalEObject eobj = (InternalEObject) it.next();
-			if (!elist.contains(eobj)) // can maybe happen with extents?
-			{
-				EContainerRepairControl.repair(eobj);
-			}
+			EContainerRepairControl.repair(eobj);
 		}
 
 		log.debug("Loaded " + elist.size() + " objects");
 		return readObjects;
+	}
+
+	/** Explicit commit and close */
+	public void close() {
+		log.debug("Closing resource " + getURI());
+		if (getPersistenceManager().currentTransaction().isActive()) {
+			log.debug("Closing transaction");
+			getPersistenceManager().currentTransaction().commit();
+		}
+		log.debug("Closing persistencemanager");
+		getPersistenceManager().close();
+	}
+	
+	/**
+	 * Clears the list of eobjects by id and commits an open transaction
+	 */
+	protected void doUnload() {
+		if (getPersistenceManager().currentTransaction().isActive()) {
+			getPersistenceManager().currentTransaction().commit();
+		}
+		super.doUnload();
 	}
 
 	/**
@@ -351,21 +400,5 @@ public abstract class JPOXResource extends StoreResource {
 			}
 		}
 		return readObjects;
-	}
-
-	/**
-	 * Rollsback the transaction if any and clears different lists to start with an empty resource again. Note that the
-	 * super.dounload is not called because that clears the list resulting in all kinds of undesirable inverseremoves.
-	 */
-	protected void doUnload() {
-		if (tx != null && tx.isActive()) {
-			tx.rollback();
-			tx = null;
-		}
-
-		pm.close();
-		pm = null;
-
-		super.doUnload();
 	}
 }

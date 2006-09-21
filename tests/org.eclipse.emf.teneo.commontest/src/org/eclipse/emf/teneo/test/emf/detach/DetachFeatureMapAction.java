@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DetachFeatureMapAction.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: DetachFeatureMapAction.java,v 1.2 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.detach;
@@ -50,7 +50,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * on the featuremap (move, set, etc).
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public class DetachFeatureMapAction extends AbstractTestAction 
 {
@@ -117,6 +117,7 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				mobiles.add(m2);
 			     
 				resource.save(Collections.EMPTY_MAP);       
+				resource.unload();
 			}
 			
 			{
@@ -144,6 +145,7 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				
 				assertEquals (2, person.getMobile().size());
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 
 			{
@@ -154,6 +156,7 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				assertTrue(person.getMobile().get(0).toString().compareTo("002") == 0);
 				assertTrue(person.getMobile().get(1).toString().compareTo("001") == 0);
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			
 			// add two and delete 1
@@ -166,6 +169,7 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				person.getMobile().add("004");
 				person.getMobile().remove(1); //removes 001
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 
 			// check if this actually worked
@@ -178,6 +182,7 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				assertTrue(person.getMobile().get(1).toString().compareTo("003") == 0);
 				assertTrue(person.getMobile().get(2).toString().compareTo("004") == 0);
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			
 			// do a set and move 
@@ -189,6 +194,7 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				person.getPhones().move(0, 2); // order is now 004, 002, 003
 				person.getMobile().set(2, "005"); // order is now 004, 002, 005
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 
 			// the order should be 004, 002, 005
@@ -201,6 +207,7 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				assertTrue(person.getMobile().get(1).toString().compareTo("002") == 0);
 				assertTrue(person.getMobile().get(2).toString().compareTo("005") == 0);
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			
 			// test a specific feature related to copy action and then changing the changed object
@@ -242,6 +249,7 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				
 				// before the next save gave an error but now it works fine.
 				resource.save(Collections.EMPTY_MAP);				
+				resource.unload();
 			}
 
 			// the order should be 004, 002, 005
@@ -256,6 +264,7 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				person.getMobile().clear();
 				
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 		}
 		catch (Exception e)

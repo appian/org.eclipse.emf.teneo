@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EObjectMapping.java,v 1.1 2006/09/13 10:39:53 mtaal Exp $
+ * $Id: EObjectMapping.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapping;
@@ -54,7 +54,7 @@ import org.jpox.store.mapping.SingleFieldMultiMapping;
  * the future possibly referential integrity is supported by storing all any types with references in a reference table.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/13 10:39:53 $
+ * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
  */
 
 public class EObjectMapping extends SingleFieldMultiMapping implements MappingCallbacks {
@@ -86,7 +86,7 @@ public class EObjectMapping extends SingleFieldMultiMapping implements MappingCa
 	 * Return a typical value for the Java type. For the enum it returns the first value (the one with ordinal zero) as
 	 * an example.
 	 */
-	public Object getSampleValue() {
+	public Object getSampleValue(ClassLoaderResolver clr) {
 		JPOXSimpleAnyTypeImpl anyTypeImpl = new JPOXSimpleAnyTypeImpl();
 		anyTypeImpl.setInstanceType(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text().getEAttributeType());
 		anyTypeImpl.setValue("Sample Value");

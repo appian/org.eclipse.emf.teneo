@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.7 2006/09/06 10:38:01 mtaal Exp $
+ * $Id: AllTests.java,v 1.8 2006/09/21 00:57:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -27,13 +27,13 @@ import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
+import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryValidateResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.PlayAction;
 import org.eclipse.emf.teneo.test.emf.sample.PrimerPOAction;
 import org.eclipse.emf.teneo.test.emf.sample.ProductAction;
 import org.eclipse.emf.teneo.test.emf.sample.SunBooksAction;
-import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
 
 import extlibrary.ExtLibraryAction;
 
@@ -41,37 +41,41 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 				.getConfigurations());
-		suite.addTestSuite(LibrarySerializationAction.class);
-		suite.addTestSuite(WorkFlowAction.class);
+		suite.addTestSuite(LibraryResourceCutPasteAction.class);
+		suite.addTestSuite(LibraryNonResolvingAction.class);
+		suite.addTestSuite(LibraryTest.class);
 
+		suite.addTestSuite(LibraryValidateResourceAction.class);
+		suite.addTestSuite(LibraryResourceAction.class);
+		suite.addTestSuite(LibrarySerializationAction.class);
+		suite.addTestSuite(LibraryGlobalEagerAction.class);
+		
+		//suite.addTestSuite(WorkFlowAction.class);
   		suite.addTestSuite(SunBooksAction.class);
+
 		suite.addTestSuite(ExtLibraryAction.class);
+
 		suite.addTestSuite(InventoryAction.class);
 		suite.addTestSuite(CatalogResourceAction.class);
 
-		suite.addTestSuite(LibraryTest.class);
-
-		suite.addTestSuite(CatalogTest.class);
-
 		suite.addTestSuite(SchoolLibraryTest.class);
+		suite.addTestSuite(ExtendedPO2Test.class);
+
 		suite.addTestSuite(AccountingTest.class);
-		//suite.addTestSuite(PlayImExportTest.class);
+		suite.addTestSuite(PlayImExportTest.class);
+		suite.addTestSuite(PlayAction.class);
+
 		suite.addTestSuite(ProductAction.class);
-		suite.addTestSuite(LibraryGlobalEagerAction.class);
-		suite.addTestSuite(LibraryNonResolvingAction.class);
-		suite.addTestSuite(LibraryValidateResourceAction.class);
 		suite.addTestSuite(PrimerPOAction.class);
 		suite.addTestSuite(ForumAction.class);
-		suite.addTestSuite(ExtendedPO2Test.class);
-		suite.addTestSuite(PlayAction.class);
-		suite.addTestSuite(LibraryResourceAction.class);
+		suite.addTestSuite(CatalogTest.class);
 		return suite;
 	}
 }

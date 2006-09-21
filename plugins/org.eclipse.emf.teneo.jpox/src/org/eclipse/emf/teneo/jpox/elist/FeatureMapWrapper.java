@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapWrapper.java,v 1.1 2006/09/13 10:39:52 mtaal Exp $
+ * $Id: FeatureMapWrapper.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -23,8 +23,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManager;
-import javax.jdo.Transaction;
 import javax.jdo.spi.PersistenceCapable;
 
 import org.apache.commons.logging.Log;
@@ -36,9 +34,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.teneo.jpox.JpoxStoreException;
 import org.eclipse.emf.teneo.jpox.JpoxUtil;
-import org.eclipse.emf.teneo.jpox.resource.Detacher;
 import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
-import org.eclipse.emf.teneo.jpox.resource.JPOXResourceDAO;
+import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.mapping.elist.PersistableFeatureMap;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.type.FeatureMapEntry;
@@ -66,10 +63,10 @@ import org.jpox.util.ClassUtils;
  * to use the backingstore as the delegate because the list can be detached.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/13 10:39:52 $
+ * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
  */
 
-public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Queryable, SCOList, JPOXEList {
+public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Queryable, SCOList {
 	/** The logger */
 	private static Log log = LogFactory.getLog(FeatureMapWrapper.class);
 
@@ -152,9 +149,10 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 		return true;
 	}
 
-	/** Returns true if the owner is detached */
+	/** Is the owner detached */
 	private boolean isOwnerDetached() {
-		return Detacher.isDetached(getEObject());
+		final PersistenceCapable pc = (PersistenceCapable) getEObject();
+		return pc.jdoIsDetached();
 	}
 
 	/*
@@ -188,41 +186,6 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	// ----------------------- Implementation of JPOXEList methods
 	// -------------------
 
-	/** Detaches this wrapper and all its children, but makes no copy */
-	public void detach(Detacher detacher) {
-		// if we are not loaded and not being loaded
-		if (!isLoaded() && !isLoading())
-			return;
-
-		// load ourselves
-		load();
-
-		for (int i = 0; i < size(); i++) {
-			Object object = get(i);
-
-			if (object instanceof PersistenceCapable) {
-				// if the object is attached but there is already a detached
-				// version then
-				// use that
-				if (!JDOHelper.isDetached(object)) {
-					final PersistenceCapable pc = (PersistenceCapable) object;
-					final Object detachedVersion = detacher.getDetachedVersion(pc);
-					if (detachedVersion != null) {
-						setUnique(i, detachedVersion);
-						object = detachedVersion;
-					}
-				}
-
-				detacher.detachPreCommit((PersistenceCapable) object);
-			} else if (object instanceof JPOXEList) {
-				((JPOXEList) object).detach(detacher);
-			} else if (object instanceof SCO) {
-				detacher.detachSCO((SCO) object);
-			}
-		}
-		log.debug("Detached: " + getLogString());
-	}
-
 	/** Detach self, means nullify all references to jdo */
 	public void detachSelf() {
 		// and detach ourselves also
@@ -244,77 +207,33 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	protected synchronized void doLoad() {
 		AssertUtil.assertTrue("EList " + getLogString() + " is already loaded", !isLoaded());
 
-		// if there is a resource and this resource is not loading then this is
-		// a lazy collection
-		// which is retrieved on demand
-		final Resource res = owner.eResource();
-		boolean controlTrans = res != null && res instanceof JPOXResourceDAO && !((StoreResource) res).isLoading();
-		Transaction tx = null;
-		PersistenceManager pm = null;
-		boolean err = true;
-		try {
-			if (controlTrans) {
-				pm = ((JPOXResource) res).getPersistenceManager();
-				tx = pm.currentTransaction();
-				controlTrans = !tx.isActive();
-				if (controlTrans) {
-					tx.begin();
-				}
-			}
+		final Resource res = getEObject().eResource();
+		final boolean setLoading = res != null && res instanceof JPOXResource && !((StoreResource) res).isLoading();
+		if (setLoading) {
+			((StoreResource) res).setIsLoading(true);
+		}
 
-			Iterator iter = jdoDelegate.iterator();
+		// note add directly to the delegate to prevent infinite looping and
+		// notifications
+		final List list = getDelegate();
+		Iterator iter = jdoDelegate.iterator();
+		while (iter.hasNext()) {
+			final Object child = iter.next();
+			assert (getElementType().isInstance(child));
+			list.add(child);
 
-			// note add directly to the delegate to prevent infinite looping and
-			// notifications
-			final List list = getDelegate();
-			while (iter.hasNext()) {
-				final Object child = iter.next();
-				assert (getElementType().isInstance(child));
-				list.add(child);
+			// also set the container
+			// TODO check if the content of the featuremap entry should also
+			// not be
+			// added to the resource explicitly, is maybe already done
+			// correctly
+			// in the setContainer method
+			((FeatureMapEntry) child).setContainer((InternalEObject) owner);
+		}
 
-				// also set the container
-				// TODO check if the content of the featuremap entry should also
-				// not be
-				// added to the resource explicitly, is maybe already done
-				// correctly
-				// in the setContainer method
-				((FeatureMapEntry) child).setContainer((InternalEObject) owner);
-			}
-
-			err = false;
-			log.debug("Loaded " + list.size() + " objects from the backing store for elist " + getLogString());
-		} finally {
-			if (controlTrans && !err) {
-				// set the jdoDelegate to null so that detach actions
-				// are not reflected back into the jdoDelegate
-				jdoDelegate = null;
-
-				// now detach what we just loaded
-				((JPOXResourceDAO) res).setIsDetaching(true);
-				err = true;
-				Detacher detacher = null;
-				try {
-					detacher = new Detacher((JPOXResourceDAO) res);
-					detach(detacher);
-
-					err = false;
-				} finally {
-					((JPOXResourceDAO) res).setIsDetaching(false);
-					if (err) {
-						tx.rollback();
-					} else {
-						tx.commit();
-					}
-
-					// Actually detaches all the to-detach objects
-					detacher.detachPostCommit();
-
-					// and detach ourselves
-					detachSelf();
-				}
-			} else if (err && controlTrans) {
-				tx.rollback();
-			}
+		log.debug("Loaded " + list.size() + " objects from the backing store for elist " + getLogString());
+		if (setLoading) {
+			((JPOXResource) res).setIsLoading(false);
 		}
 	}
 
@@ -324,8 +243,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * @see org.jpox.sco.SCO#attachCopy(java.lang.Object, boolean)
 	 */
 	public void attachCopy(Object value) {
-		assert (value instanceof JPOXEList);
-		if (!((JPOXEList) value).isLoaded())
+		if (!((PersistableEList) value).isLoaded())
 			return;
 
 		load();
@@ -385,7 +303,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 		final Object[] values = toArray();
 		for (int i = 0; i < values.length; i++) {
 			if (values[i] != null && values[i] instanceof PersistenceCapable) {
-				stateManager.getPersistenceManager().makeTransientInternal(values[i], state);
+				stateManager.getPersistenceManager().findStateManager((PersistenceCapable)values[i]).makeTransient(state);
 			}
 		}
 		stateManager = null;
@@ -811,12 +729,8 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 */
 	public void clear() {
 		load();
-		try {
-			assert (deletedObjects.size() == 0);
-			super.clear();
-		} finally {
-			doRemove();
-		}
+		// doRemove does not need to be called because the jdoDelegate is cleared in didClear
+		super.clear();
 	}
 
 	/*
@@ -876,6 +790,29 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 			super.removeRange(arg0, arg1);
 		} finally {
 			doRemove();
+		}
+	}
+	
+	/**
+	 * Overridden to make public
+	 */
+	public void load() {
+		// TODO Auto-generated method stub
+		super.load();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.jpox.sco.SCOContainer#loadFieldsInFetchPlan(org.jpox.state.FetchPlanState)
+	 */
+	public void loadFieldsInFetchPlan(FetchPlanState arg0) {
+		Object[] values = toArray();
+		for (int i = 0; i < values.length; i++) {
+			if (values[i] != null && values[i] instanceof PersistenceCapable) {
+				stateManager.getPersistenceManager().findStateManager((PersistenceCapable) values[i])
+						.loadFieldsInFetchPlan(arg0);
+			}
 		}
 	}
 }

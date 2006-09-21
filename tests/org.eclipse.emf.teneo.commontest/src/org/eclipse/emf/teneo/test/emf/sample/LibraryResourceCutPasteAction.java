@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceCutPasteAction.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
+ * $Id: LibraryResourceCutPasteAction.java,v 1.3 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
@@ -36,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests cut/paste action
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibraryResourceCutPasteAction extends AbstractTestAction {
 	/**
@@ -96,6 +97,7 @@ public class LibraryResourceCutPasteAction extends AbstractTestAction {
 				res.getContents().add(library);
 				res.getContents().add(library2);
 				res.save(null);
+				res.unload();
 			}
 
 			// walk through the structure starting from the library
@@ -118,9 +120,9 @@ public class LibraryResourceCutPasteAction extends AbstractTestAction {
 					from = lib;
 				}
 
-				Writer tolkien = (Writer) from.getWriters().remove(0);
-				to.getWriters().add(tolkien);
+				to.getWriters().add(from.getWriters().get(0));
 				res.save(Collections.EMPTY_MAP);
+				res.unload();
 			}
 			
 			// check cascade deletes
@@ -130,6 +132,7 @@ public class LibraryResourceCutPasteAction extends AbstractTestAction {
 				res.getContents().remove(0);
 				res.getContents().remove(0);
 				res.save(null);
+				res.unload();
 			}
 			
 			store.checkNumber(Writer.class, 0);

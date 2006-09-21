@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CascadeNotallAction.java,v 1.4 2006/09/06 06:49:52 mtaal Exp $
+ * $Id: CascadeNotallAction.java,v 1.5 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example without orphan delete or dependent element
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class CascadeNotallAction extends AbstractTestAction {
 	/**
@@ -91,6 +91,7 @@ public class CascadeNotallAction extends AbstractTestAction {
 				res.getContents().add(library);
 				res.save(null);
 				res.save(null);
+				res.unload();
 			}
 
 			// walk through the structure starting from the library
@@ -140,6 +141,7 @@ public class CascadeNotallAction extends AbstractTestAction {
 				george.setName("G. Orwell"); // there was a bug in which this failed, reported by Georgi Manev
 				res.save(null);
 				res.save(null);
+				res.unload();
 			}
 
 			// TODO put in JPOX specific test code
@@ -173,6 +175,7 @@ public class CascadeNotallAction extends AbstractTestAction {
 			assertTrue(lib.getBooks().size() > 0); // force load of books to prevent dangling error in jpox
 			newLib.getWriters().add(writer);
 			res.save(null);
+			res.unload();
 			
 		} catch (IOException e) {
 			throw new StoreTestException("IOException during save", e);
@@ -192,6 +195,7 @@ public class CascadeNotallAction extends AbstractTestAction {
 			res.getContents().remove(0); 
 			res.getContents().remove(0);			
 			res.save(null);
+			res.unload();
 		} catch (IOException e) {
 			throw new StoreTestException("IOException during save", e);
 		}

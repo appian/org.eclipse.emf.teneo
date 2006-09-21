@@ -31,6 +31,9 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="author" lowerBound="1"
         eType="#//Writer" eOpposite="#//Writer/books">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToOne(fetch=LAZY)"/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="author"/>
@@ -65,10 +68,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writers" upperBound="-1"
         eType="#//Writer" containment="true" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/OneToMany">
-        <details key="fetch" value="EAGER"/>
-        <details key="cascade" value="ALL"/>
-        <details key="targetEntity" value="Writer"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(fetch=EAGER cascade=ALL targetEntity=&quot;Writer&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -77,10 +78,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="books" upperBound="-1"
         eType="#//Book" containment="true" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/OneToMany">
-        <details key="fetch" value="EAGER"/>
-        <details key="cascade" value="ALL"/>
-        <details key="targetEntity" value="Book"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(fetch=EAGER cascade=ALL targetEntity=&quot;Book&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -102,10 +101,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="books" upperBound="-1"
         eType="#//Book" eOpposite="#//Book/author">
-      <eAnnotations source="http://annotation.elver.org/OneToMany">
-        <details key="cascade" value="MERGE PERSIST"/>
-        <details key="targetEntity" value="Book"/>
-        <details key="mappedBy" value="author"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(cascade={MERGE,PERSIST} targetEntity=&quot;Book&quot; mappedBy=&quot;author&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

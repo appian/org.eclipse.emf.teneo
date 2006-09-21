@@ -11,17 +11,21 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyLibraryAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: LazyLibraryAction.java,v 1.3 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.samples.emf.annotations.lazy.Book;
@@ -39,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * does not result in loaded containment elists.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class LazyLibraryAction extends AbstractTestAction 
 {
@@ -52,6 +56,14 @@ public class LazyLibraryAction extends AbstractTestAction
 		super(LazyPackage.eINSTANCE);
 	}
 	
+	/** Sets USE_EMF_PROXIES to true */
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.PROXY_STRATEGY, PersistenceOptions.PROXY_STRATEGY_EMF);
+		props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
+		return props;
+	}
+
 	/** Creates an item, an address and links them to a po. */
 	public void doAction(TestStore store)
 	{
@@ -95,6 +107,19 @@ public class LazyLibraryAction extends AbstractTestAction
 	
 		        res.getContents().add(library);
 		        res.save(null);
+				res.unload();
+	    	}
+
+	    	{
+	    		store.refresh();
+	    		store.beginTransaction();
+	    		final List books = store.getObjects(Book.class);
+	    		for (Iterator it = books.iterator(); it.hasNext();) {
+	    			final Book bk = (Book)it.next();
+	    			System.err.println(bk.getTitle());
+	    			System.err.println(bk.getAuthor().getName());
+	    		}
+	    		store.commitTransaction();
 	    	}
 	    	
 	    	// test settrackingmodification before load
@@ -134,7 +159,7 @@ public class LazyLibraryAction extends AbstractTestAction
 	    		Library lib = (Library)res.getContents().get(0);
 	    		PersistableEList writers = (PersistableEList)lib.getWriters();
 				assertTrue("Elist should be loaded", writers.isLoaded());
-	    	}	    	
+	    	}
 		}
 		catch (IOException e)
 		{
@@ -149,8 +174,10 @@ public class LazyLibraryAction extends AbstractTestAction
 		res.eAdapters().add(libraryAdapter);
 		
 		Library lib = (Library)res.getContents().get(0);
-		PersistableEList writers = (PersistableEList)lib.getWriters();
 		PersistableEList books = (PersistableEList)lib.getBooks();
+		Book book = (Book)books.get(0);
+		assertTrue(book.getAuthor().getName() != null);
+		PersistableEList writers = (PersistableEList)lib.getWriters();
 		assertTrue("Elist is not loaded while the fetch is eager", writers.isLoaded());
 		assertTrue("Elist is not loaded while the fetch is eager", books.isLoaded());
 		assertTrue("BasicIterator should have next true", 
@@ -168,8 +195,7 @@ public class LazyLibraryAction extends AbstractTestAction
 		
 		lib.setName("test" + lib.getName());
 		
-		// get the first book and change it
-		final Book book = (Book)books.get(0);
+		// change the first book
 		book.setTitle("test" + book.getTitle());
 		
 		assertEquals(2, libraryAdapter.getCountNotifications());
@@ -178,6 +204,7 @@ public class LazyLibraryAction extends AbstractTestAction
 		assertTrue("Library should be the first modified object", modifieds[0] == lib);
 		assertTrue("Book should be the second modified object", modifieds[1] == book);
 		assertEquals(2, modifieds.length);
+		res.unload();
 	}
 	
 	/** Small adapter test */

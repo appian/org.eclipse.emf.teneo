@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.4 2006/08/29 09:33:29 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.5 2006/09/21 00:56:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -43,6 +43,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
@@ -55,7 +56,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class StoreUtil {
@@ -100,7 +101,7 @@ public class StoreUtil {
 		}
 		throw new StoreException("Qualify type " + qualify + " unknown");
 	}
-
+	
 	/**
 	 * Returns an estructuralfeature on the basis of the name of the eclass and the name of the feature itself.
 	 */
@@ -109,6 +110,18 @@ public class StoreUtil {
 		if (eclass == null)
 			return null;
 		return eclass.getEStructuralFeature(featureName);
+	}
+
+	/** Translates an eclass uri back to an eclass */
+	public static EClass getEClassFromURI(String theEClassURI) {
+		final Registry packageRegistry = Registry.INSTANCE;
+		final EPackage[] epacks = new EPackage[packageRegistry.size()];
+		int cnt = 0;
+		for (Iterator it = packageRegistry.values().iterator(); it.hasNext();) {
+			final EPackage epack = (EPackage)it.next();
+			epacks[cnt++] = epack;
+		}
+		return getEClassFromURI(theEClassURI, epacks);
 	}
 
 	/** Translates an eclass uri back to an eclass */

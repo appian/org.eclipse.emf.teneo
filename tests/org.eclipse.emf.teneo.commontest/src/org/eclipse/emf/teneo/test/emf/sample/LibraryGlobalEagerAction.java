@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryGlobalEagerAction.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
+ * $Id: LibraryGlobalEagerAction.java,v 1.3 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests setting of eager loading of containment at global level
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class LibraryGlobalEagerAction extends AbstractTestAction 
 {
@@ -115,6 +115,7 @@ public class LibraryGlobalEagerAction extends AbstractTestAction
 	
 		        res.getContents().add(library);
 		        res.save(null);
+				res.unload();
 	    	}
 	    	
 	    	// test settrackingmodification before load
@@ -194,6 +195,7 @@ public class LibraryGlobalEagerAction extends AbstractTestAction
 		assertTrue("Library should be the first modified object", modifieds[0] == lib);
 		assertTrue("Book should be the second modified object", modifieds[1] == book);
 		assertEquals(2, modifieds.length);
+		res.unload();
 	}
 	
 	/** Small adapter test */

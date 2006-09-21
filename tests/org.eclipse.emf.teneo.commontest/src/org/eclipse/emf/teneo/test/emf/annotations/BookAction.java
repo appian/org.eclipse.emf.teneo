@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BookAction.java,v 1.6 2006/09/06 06:49:52 mtaal Exp $
+ * $Id: BookAction.java,v 1.7 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class BookAction extends AbstractTestAction {
 	/**
@@ -48,7 +48,6 @@ public class BookAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		BigDecimal testDbl = new BigDecimal("12456677.90123");
 		final ColumnFactory factory = ColumnFactory.eINSTANCE;
 		try {

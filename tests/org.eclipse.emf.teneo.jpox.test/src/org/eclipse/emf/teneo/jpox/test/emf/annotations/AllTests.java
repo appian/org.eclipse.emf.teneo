@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.6 2006/09/13 10:43:09 mtaal Exp $
+ * $Id: AllTests.java,v 1.7 2006/09/21 00:57:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.annotations;
@@ -29,11 +29,13 @@ import org.eclipse.emf.teneo.test.emf.annotations.DuplicatesAction;
 import org.eclipse.emf.teneo.test.emf.annotations.EDataTypeAction;
 import org.eclipse.emf.teneo.test.emf.annotations.IdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationAction;
+import org.eclipse.emf.teneo.test.emf.annotations.JoinColumnsAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LazyLibraryAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LobAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ManyToManyAction;
 import org.eclipse.emf.teneo.test.emf.annotations.MappedSuperClassAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SecondaryTableActionJDO;
+import org.eclipse.emf.teneo.test.emf.annotations.SetAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SetNMAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SetResourceAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ToOneAction;
@@ -43,36 +45,41 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				JPOXTestbed.instance().getConfigurations());
-		suite.addTestSuite(InheritanceAnnotationAction.class);
 
+		suite.addTestSuite(SetResourceAction.class);
 		suite.addTestSuite(EDataTypeAction.class);
-
+		
 		suite.addTestSuite(SecondaryTableActionJDO.class);
-		suite.addTestSuite(CascadeNotallAction.class);
+		suite.addTestSuite(LobAction.class);
 
-		suite.addTestSuite(DuplicatesAction.class);
+		//suite.addTestSuite(JoinColumnsAction.class);
+		suite.addTestSuite(CascadeNotallAction.class);
+		
+		suite.addTestSuite(CompositeIdAction.class);
+		suite.addTestSuite(ToOneAction.class);
+
+		suite.addTestSuite(LazyLibraryAction.class);
+		suite.addTestSuite(ManyToManyAction.class);
+		suite.addTestSuite(UniqueConstraintsAction.class);
+
+		suite.addTestSuite(MappedSuperClassAction.class);
+		suite.addTestSuite(BasicAction.class);
 
 		suite.addTestSuite(BookAction.class);
-		suite.addTestSuite(MappedSuperClassAction.class);
-
-		suite.addTestSuite(LobAction.class);
-		suite.addTestSuite(CompositeIdAction.class);
-
-		suite.addTestSuite(UniqueConstraintsAction.class);
-		suite.addTestSuite(ToOneAction.class);
-		suite.addTestSuite(BasicAction.class);
-		suite.addTestSuite(LazyLibraryAction.class);
+		suite.addTestSuite(InheritanceAnnotationAction.class);
 		suite.addTestSuite(IdAction.class);
+
+		suite.addTestSuite(DuplicatesAction.class);
 		suite.addTestSuite(SetNMAction.class);
-		suite.addTestSuite(SetResourceAction.class);
-		suite.addTestSuite(ManyToManyAction.class);
+		suite.addTestSuite(SetAction.class);
+
 		/*
 		 *  // fails because of jpox bug, see: http://www.jpox.org/servlet/jira/browse/CORE-2567
 		 * suite.addTestSuite(EmbeddedAction.class); suite.addTestSuite(AttributeOverridesAction.class); // set is not

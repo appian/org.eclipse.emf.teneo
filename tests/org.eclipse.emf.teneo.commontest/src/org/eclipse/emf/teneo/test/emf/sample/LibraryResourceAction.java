@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.3 2006/09/06 06:55:46 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.4 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	/**
@@ -68,7 +68,6 @@ public class LibraryResourceAction extends AbstractTestAction {
 				book.setPages(510);
 				book.setTitle("Fellowship of the Ring");
 				book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
-
 				final Book book2 = factory.createBook();
 				book2.setAuthor(writer);
 				book2.setPages(500);
@@ -81,7 +80,6 @@ public class LibraryResourceAction extends AbstractTestAction {
 				book3.setPages(500);
 				book3.setTitle("1984");
 				book3.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
-
 				final Library library = factory.createLibrary();
 				library.setName("Science Fiction");
 				library.getBooks().add(book);
@@ -92,6 +90,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 				res.getContents().add(library);
 				res.save(null);
 				res.save(null);
+				res.unload();
 			}
 
 			// walk through the structure starting from the library
@@ -141,6 +140,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 				george.setName("G. Orwell"); // there was a bug in which this failed, reported by Georgi Manev
 				res.save(null);
 				res.save(null);
+				res.unload();
 			}
 
 			// TODO put in JPOX specific test code
@@ -174,6 +174,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 			assertTrue(lib.getBooks().size() > 0); // force load of books to prevent dangling error in jpox
 			newLib.getWriters().add(writer);
 			res.save(null);
+			res.unload();
 			fail("Orphan delete was not set"); // should fail
 		} catch (Exception e) {
 		}

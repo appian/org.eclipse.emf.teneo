@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.9 2006/09/03 20:52:57 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.10 2006/09/21 00:56:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class PersistenceOptions {
 
@@ -86,8 +86,15 @@ public class PersistenceOptions {
 	/** With the values */
 	public static final String QUALIFY_ENTITY_NAME_NO = "no";
 
+	/** The value of the QUALIFY_ENTITY_NAME when nsprefix qualification should occur */ 
 	public static final String QUALIFY_ENTITY_NAME_NSPREFIX = "nsprefix";
 
+	/** The proxy strategy, can be none (no proxies, default), emf, hibernate */
+	public static final String PROXY_STRATEGY = MAPPING_PREFIX + "proxy_strategy";
+	public static final String PROXY_STRATEGY_NONE = "none";
+	public static final String PROXY_STRATEGY_EMF = "emf";
+	public static final String PROXY_STRATEGY_HIBERNATE = "hibernate";
+	
 	/** Use static hibernate mapping file */
 	public static final String USE_MAPPING_FILE = MAPPING_PREFIX + "hibernate_mapping_file";
 
@@ -139,6 +146,7 @@ public class PersistenceOptions {
 		props.setProperty(UPDATE_SCHEMA, "true");
 		props.setProperty(FETCH_CONTAINMENT_EAGERLY, "false");
 		props.setProperty(USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME, "false");
+		props.setProperty(PROXY_STRATEGY, PROXY_STRATEGY_NONE);
 		props.setProperty(SET_ENTITY_AUTOMATICALLY, "true");
 		props.setProperty(VERSION_COLUMN_NAME, "e_version");
 		props.setProperty(SQL_CASE_STRATEGY, "lowercase");
@@ -226,6 +234,11 @@ public class PersistenceOptions {
 	/** Returns the value of the Optimistic option, default is true */
 	public boolean isUseOptimisticLocking() {
 		return Boolean.valueOf(properties.getProperty(OPTIMISTIC)).booleanValue();
+	}
+
+	/** Returns the value of the UpdateSchema option, default is true */
+	public String getProxyStrategy() {
+		return properties.getProperty(PROXY_STRATEGY);
 	}
 
 	/** Returns the value of the UpdateSchema option, default is true */

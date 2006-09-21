@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryValidateResourceAction.java,v 1.2 2006/07/22 10:16:32 mtaal Exp $
+ * $Id: LibraryValidateResourceAction.java,v 1.3 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests if simple validation works for the resource implementation.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class LibraryValidateResourceAction extends AbstractTestAction 
 {
@@ -95,10 +95,8 @@ public class LibraryValidateResourceAction extends AbstractTestAction
 		        	res.save(null);
 		        }
 		        
-		        final Writer writer2 = factory.createWriter();
-		        library.getWriters().add(writer2);
-		        library.getWriters().remove(writer2);
 		        res.save(null);
+				res.unload();
 	    	}
 
 	    	{
@@ -135,6 +133,7 @@ public class LibraryValidateResourceAction extends AbstractTestAction
 				assertTrue(ca[0] == orwell);
 				
 				res.save(null);				
+				res.unload();
 	    	}
 	    	
 	    	{
@@ -147,14 +146,15 @@ public class LibraryValidateResourceAction extends AbstractTestAction
 	    		// create a writer
 	    		Writer martin = factory.createWriter();
 	    		
-	    		// add to library, writer name not set so invalid
-	    		lib.getWriters().add(martin);
-	    		
 	    		// and then set the name
 	    		martin.setName("martin");
 	    		
+	    		// add to library, writer name not set so invalid
+	    		lib.getWriters().add(martin);
+	    		
 	    		// now we can savely save
 	    		res.save(null);
+				res.unload();
 	    	}
 	    	
 	    	{

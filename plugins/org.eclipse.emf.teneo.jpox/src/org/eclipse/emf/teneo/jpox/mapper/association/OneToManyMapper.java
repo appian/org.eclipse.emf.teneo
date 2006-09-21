@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.6 2006/09/13 10:39:52 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.7 2006/09/21 00:56:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class OneToManyMapper extends AssociationMapper {
@@ -71,7 +71,7 @@ public class OneToManyMapper extends AssociationMapper {
 		// item from the list.
 		// -> result item points back to the list but is not present anymore in the list
 		if (otm.getMappedBy() != null && !aReference.getAnnotatedEReference().isContainment()) {
-			field.addAttribute("mapped-by", otm.getMappedBy());
+			//field.addAttribute("mapped-by", otm.getMappedBy());
 		}
 
 		// collection element is present befpre join element

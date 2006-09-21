@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: Writer.java,v 1.2 2006/09/21 00:56:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy;
 
@@ -68,7 +68,7 @@ public interface Writer extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lazy.LazyPackage#getWriter_Books()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lazy.Book#getAuthor
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.lazy.Book" opposite="author"
-	 *        annotation="http://annotation.elver.org/OneToMany cascade='MERGE PERSIST' targetEntity='Book' mappedBy='author'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(cascade={MERGE,PERSIST} targetEntity=\"Book\" mappedBy=\"author\")'"
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */

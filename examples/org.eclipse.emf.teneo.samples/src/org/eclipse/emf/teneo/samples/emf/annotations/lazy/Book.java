@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Book.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: Book.java,v 1.2 2006/09/21 00:56:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy;
 
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model extendedMetaData="name='Book' kind='elementOnly'"
  * @generated
  */
-public interface Book extends EObject{
+public interface Book extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -181,6 +181,7 @@ public interface Book extends EObject{
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lazy.LazyPackage#getBook_Author()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lazy.Writer#getBooks
 	 * @model opposite="books" required="true"
+	 *        annotation="teneo.jpa appinfo='@ManyToOne(fetch=LAZY)'"
 	 *        extendedMetaData="kind='element' name='author'"
 	 * @generated
 	 */

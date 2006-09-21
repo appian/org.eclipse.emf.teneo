@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenerateJDO.java,v 1.2 2006/09/06 21:59:25 mtaal Exp $
+ * $Id: GenerateJDO.java,v 1.3 2006/09/21 00:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
  * Class is responsible for generating the jdo file. Is run through a launcher therefore the main methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class GenerateJDO {
@@ -99,7 +99,7 @@ public class GenerateJDO {
 
 			final PersistenceOptions po = new PersistenceOptions(options);
 			final PAnnotatedModel paModel = PersistenceMappingBuilder.INSTANCE.buildMapping(ecores, po);
-			final JPOXMappingGenerator jmg = new JPOXMappingGenerator();
+			final JPOXMappingGenerator jmg = new JPOXMappingGenerator(new PersistenceOptions());
 			final FileWriter writer = new FileWriter(file);
 			writer.write(jmg.generate(paModel));
 			writer.flush();

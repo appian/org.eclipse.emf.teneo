@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DetachAction.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: DetachAction.java,v 1.2 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.detach;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is a test case to test basic detach functionality in the dao resource; Specifically for JPOX/JDO
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ 
+ * @version $Revision: 1.2 $ 
 */
 public abstract class DetachAction extends AbstractTestAction 
 {
@@ -80,11 +80,12 @@ public abstract class DetachAction extends AbstractTestAction
 		        res.save(null);
 	            
 	            // check the state of some of the objects
-	            checkDetached(testa);
-	            checkDetached(testb);
-	            checkDetached(testb2);
-	            checkDetached(testb3);
-	            checkDetached(testc);
+		        // MT: in the new version objects are not detached anymore
+//	            checkDetached(testa);
+//	            checkDetached(testb);
+//	            checkDetached(testb2);
+//	            checkDetached(testb3);
+//	            checkDetached(testc);
 	
 	            // check some fields
 	            if (testa.getTestB() == null || testa.getCode() == null)
@@ -97,6 +98,7 @@ public abstract class DetachAction extends AbstractTestAction
 	            {
 	            	throw new Error("Values are lost in detached objects!");
 	            }
+				res.unload();
 	        }
 	
 	    	// Now retrieve TestA and TestC and detach them also
@@ -131,9 +133,10 @@ public abstract class DetachAction extends AbstractTestAction
 	    	    // now save and detach
 	    	    res.save(null);
 	    	    
-	            checkDetached(testa);
-	            checkDetached((EObject) testc.getTestB().get(0));
-	            checkDetached(testc);
+		        // MT: in the new version objects are not detached anymore
+//	            checkDetached(testa);
+//	            checkDetached((EObject) testc.getTestB().get(0));
+//	            checkDetached(testc);
 	
 	            if (testc.getMyDate()==null)
 	            {
@@ -150,6 +153,7 @@ public abstract class DetachAction extends AbstractTestAction
 	            
 	            // reattach again!
 	            res.save(null);
+				res.unload();
 	        }
 	
 	        // Now retrieve TestA and TestC and detach them also
@@ -193,12 +197,14 @@ public abstract class DetachAction extends AbstractTestAction
 	    	    	throw new Error("Testb should have 2 children!");
 	    	    }
 	    	    res.save(null);
+				res.unload();
 	            
 	            // do some final tests
-	            checkDetached(testa);
-	            checkDetached((EObject) testc.getTestB().get(0));
-	            checkDetached((EObject) testc.getTestB().get(1));
-	            checkDetached(testc);
+		        // MT: in the new version objects are not detached anymore
+//	            checkDetached(testa);
+//	            checkDetached((EObject) testc.getTestB().get(0));
+//	            checkDetached((EObject) testc.getTestB().get(1));
+//	            checkDetached(testc);
 	        }
 		}
 		catch (IOException e)

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.1 2006/09/13 10:39:52 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -23,7 +23,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
-import javax.jdo.Transaction;
 import javax.jdo.spi.PersistenceCapable;
 
 import org.apache.commons.logging.Log;
@@ -42,9 +41,7 @@ import org.eclipse.emf.teneo.jpox.JpoxStoreException;
 import org.eclipse.emf.teneo.jpox.JpoxUtil;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeObject;
-import org.eclipse.emf.teneo.jpox.resource.Detacher;
 import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
-import org.eclipse.emf.teneo.jpox.resource.JPOXResourceDAO;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.AssertUtil;
@@ -59,7 +56,6 @@ import org.jpox.store.expression.QueryExpression;
 import org.jpox.store.query.Query;
 import org.jpox.store.query.QueryStatement;
 import org.jpox.store.query.Queryable;
-import org.jpox.util.ClassUtils;
 
 /**
  * This class works as a wrapper around the EList as it is used in the EMF objects. The class extends PersistableEList,
@@ -69,10 +65,10 @@ import org.jpox.util.ClassUtils;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/13 10:39:52 $
+ * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
  */
 
-public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList, JPOXEList {
+public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList {
 	/** The logger */
 	private static Log log = LogFactory.getLog(EListWrapper.class);
 
@@ -136,11 +132,6 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 		}
 	}
 
-	/** Returns true if the owner is detached */
-	private boolean isOwnerDetached() {
-		return Detacher.isDetached(getEObject());
-	}
-
 	/**
 	 * Constructor, used for the clone method
 	 * 
@@ -162,6 +153,7 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 		jdoDelegate = null;
 		stateManager = null;
+		additionalWriteObject();
 		out.defaultWriteObject();
 	}
 
@@ -178,7 +170,6 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 
 	/** Do your subclass thing for serialization */
 	protected void additionalWriteObject() {
-		stateManager = null;
 	}
 
 	/** Replace normal EObject with AnyTypeImpl */
@@ -215,44 +206,15 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 	// ----------------------- Implementation of JPOXElist methods
 	// -------------------
 
-	/** Detaches this wrapper and all its children, but makes no copy */
-	public void detach(Detacher detacher) {
-		// if we are not yet loaded and are not loading then return
-		if (!isLoaded() && !isLoading()) {
-			return;
-		}
-
-		// load ourselves
-		load();
-
-		for (int i = 0; i < size(); i++) {
-			Object object = get(i);
-
-			if (object instanceof PersistenceCapable) {
-				// if the object is attached but there is already a detached
-				// version then
-				// use that
-				if (!Detacher.isDetached((EObject) object)) {
-					final PersistenceCapable pc = (PersistenceCapable) object;
-					final Object detachedVersion = detacher.getDetachedVersion(pc);
-					if (detachedVersion != null) {
-						basicSet(i, detachedVersion, null);
-						object = detachedVersion;
-					}
-				}
-				detacher.detachPreCommit((PersistenceCapable) object);
-			} else if (object instanceof SCO) {
-				detacher.detachSCO((SCO) object);
-			}
-		}
-
-		log.debug("Detached elist: " + getLogString());
-	}
-
 	/**
 	 * Method to detach the elements of this list.
 	 */
 	public void detach(FetchPlanState state) {
+		if (jdoDelegate == null)
+			return;
+		if (!isLoaded())
+			return;
+
 		load();
 		jdoDelegate.detach(state);
 
@@ -284,18 +246,18 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 				}
 			}
 		}
-		
+
 		// create a delegating ecorelist, this ensures that all the feature characteristics
 		// are supported
 		final EStructuralFeature feature = getEStructuralFeature();
-		final InternalEObject myOwner = (InternalEObject)getOwner();
+		final InternalEObject myOwner = (InternalEObject) getOwner();
 		final EList elist = new DelegatingEcoreEList(myOwner) {
 			protected List delegateList() {
 				return detached;
 			}
-			
+
 			public EStructuralFeature getEStructuralFeature() {
-				return feature; 
+				return feature;
 			}
 		};
 
@@ -334,10 +296,16 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 
 	// ----------------------- Implementation of SCO methods -------------------
 
+	/** Is the owner detached */
+	private boolean isOwnerDetached() {
+		final PersistenceCapable pc = (PersistenceCapable) getEObject();
+		return pc.jdoIsDetached();
+	}
+	
 	/** Returns the persistence manager from the owner */
 	private PersistenceManager getPM() {
 		final PersistenceCapable pc = (PersistenceCapable) getEObject();
-		if (!isOwnerDetached())
+		if (!pc.jdoIsDetached())
 			return pc.jdoGetPersistenceManager();
 		throw new JpoxStoreException("This method may not be called if the elist is detached");
 	}
@@ -384,7 +352,7 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 		log.debug("Unsetting owner of elist " + getLogString());
 
 		if (jdoDelegate != null) {
-			elistFieldName = null;
+			// elistFieldName = null;
 			jdoDelegate = null;
 			stateManager = null;
 		}
@@ -405,7 +373,8 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 		final Object[] values = toArray();
 		for (int i = 0; i < values.length; i++) {
 			if (values[i] != null && values[i] instanceof PersistenceCapable) {
-				stateManager.getPersistenceManager().makeTransientInternal(values[i], state);
+				stateManager.getPersistenceManager().findStateManager((PersistenceCapable) values[i]).makeTransient(
+						state);
 			}
 		}
 		stateManager = null;
@@ -461,18 +430,10 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 		final ArrayList attachedElements = new ArrayList(c.size());
 		final Iterator iter = c.iterator();
 		while (iter.hasNext()) {
-			Object detachedElement = iter.next();
-			if (ClassUtils.isPersistenceCapable(detachedElement)) {
-				if (Detacher.isDetached((EObject) detachedElement)) {
-					// TODO: handle embedded
-					attachedElements.add(((AbstractPersistenceManager) getPM()).attachCopy(detachedElement, false));
-				} else {
-					attachedElements.add(((AbstractPersistenceManager) getPM()).makePersistent(detachedElement));
-				}
-			} else {
-				attachedElements.add(detachedElement);
-			}
+			final PersistenceCapable detachedElement = (PersistenceCapable) iter.next();
+			attachedElements.add(((AbstractPersistenceManager) getPM()).attachCopy(detachedElement, false));
 		}
+
 		log.debug("Attaching " + attachedElements.size() + " objects to elist " + getLogString());
 		// NOTE: needed to pass the jdodelegate because the update actions
 		// should go directly to the
@@ -581,95 +542,44 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 	protected synchronized void doLoad() {
 		AssertUtil.assertTrue("EList " + getLogString() + " is already loaded", !isLoaded());
 
-		// if there is a resource and this resource is not loading then this is
-		// a lazy collection
-		// which is retrieved on demand
 		final Resource res = getEObject().eResource();
-		boolean controlTrans = res != null && res instanceof JPOXResourceDAO && !((StoreResource) res).isLoading();
-		Transaction tx = null;
-		PersistenceManager pm = null;
-		boolean err = true;
-		try {
-			if (controlTrans) {
-				pm = ((JPOXResource) res).getPersistenceManager();
-				tx = pm.currentTransaction();
-				controlTrans = !tx.isActive();
-				if (controlTrans) {
-					tx.begin();
-				}
-			}
-
-			// note add directly to the delegate to prevent infinite looping and
-			// notifications
-			final List list = getDelegate();
-			final Iterator iter = jdoDelegate.iterator();
-			while (iter.hasNext()) {
-				Object child = iter.next();
-
-				// get the eobject if hidden behind an eobjectlistelement
-				// bit ugly to reuse child var but okay
-				if (child instanceof AnyTypeEObject) {
-					child = ((AnyTypeEObject) child).getEObject();
-				} else if (child instanceof AnyTypeObject) {
-					child = ((AnyTypeObject) child).getObject();
-				}
-				list.add(child);
-			}
-
-			err = false;
-		} finally {
-			if (controlTrans && !err) {
-				// set the jdoDelegate to null so that detach actions
-				// are not reflected back into the jdoDelegate
-				jdoDelegate = null;
-
-				// now detach what we just loaded
-				((JPOXResourceDAO) res).setIsDetaching(true);
-				err = true;
-				Detacher detacher = null;
-				try {
-					detacher = new Detacher((JPOXResourceDAO) res);
-					detach(detacher);
-					err = false;
-				} finally {
-					((JPOXResourceDAO) res).setIsDetaching(false);
-					if (err) {
-						tx.rollback();
-					} else {
-						tx.commit();
-					}
-
-					// Actually detaches all the to-detach objects
-					detacher.detachPostCommit();
-
-					// detach ourselves because this elist is not being detached
-					detachSelf();
-				}
-			} else if (err) {
-				if (controlTrans)
-					tx.rollback();
-			}
+		final boolean setLoading = res != null && res instanceof JPOXResource && !((StoreResource) res).isLoading();
+		if (setLoading) {
+			((StoreResource) res).setIsLoading(true);
 		}
 
-		if (res != null && res instanceof StoreResource)
-			((StoreResource) res).setIsLoading(true);
-		try {
-			final Iterator it = getDelegate().iterator();
-			while (it.hasNext()) {
-				final Object child = it.next();
-				if (containmentList) {
-					EContainerRepairControl.repair(getEObject(), child, getEStructuralFeature());
-				} else if (res != null && res instanceof ResourceImpl) {
-					// attach the new objects so that they are adapted when
-					// required
-					if (child instanceof EObject) {
-						((ResourceImpl) res).attached((EObject) child);
-					}
+		// note add directly to the delegate to prevent infinite looping and
+		// notifications
+		final List list = getDelegate();
+		final Iterator iter = jdoDelegate.iterator();
+		while (iter.hasNext()) {
+			Object child = iter.next();
+
+			// get the eobject if hidden behind an eobjectlistelement
+			// bit ugly to reuse child var but okay
+			if (child instanceof AnyTypeEObject) {
+				child = ((AnyTypeEObject) child).getEObject();
+			} else if (child instanceof AnyTypeObject) {
+				child = ((AnyTypeObject) child).getObject();
+			}
+			list.add(child);
+		}
+
+		final Iterator it = getDelegate().iterator();
+		while (it.hasNext()) {
+			final Object child = it.next();
+			if (containmentList) {
+				EContainerRepairControl.repair(getEObject(), child, getEStructuralFeature());
+			} else if (res != null && res instanceof ResourceImpl) {
+				// attach the new objects so that they are adapted when
+				// required
+				if (child instanceof EObject) {
+					((ResourceImpl) res).attached((EObject) child);
 				}
 			}
-		} finally {
-			if (res != null && res instanceof StoreResource)
-				((JPOXResource) res).setIsLoading(false);
+		}
+		if (setLoading) {
+			((JPOXResource) res).setIsLoading(false);
 		}
 	}
 
@@ -804,5 +714,33 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 		}
 
 		super.didSet(index, newObject, oldObject);
+	}
+
+	/**
+	 * Overridden to make public
+	 */
+	public void load() {
+		// TODO Auto-generated method stub
+		super.load();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.jpox.sco.SCOContainer#loadFieldsInFetchPlan(org.jpox.state.FetchPlanState)
+	 */
+	public void loadFieldsInFetchPlan(FetchPlanState arg0) {
+		if (!isLoaded())
+			return;
+
+		if (stateManager == null)
+			return;
+		Object[] values = toArray();
+		for (int i = 0; i < values.length; i++) {
+			if (values[i] != null && values[i] instanceof PersistenceCapable) {
+				stateManager.getPersistenceManager().findStateManager((PersistenceCapable) values[i])
+						.loadFieldsInFetchPlan(arg0);
+			}
+		}
 	}
 }

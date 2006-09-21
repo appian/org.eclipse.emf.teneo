@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListMapping.java,v 1.1 2006/09/13 10:39:52 mtaal Exp $
+ * $Id: EListMapping.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
 import org.jpox.ClassLoaderResolver;
 import org.jpox.StateManager;
 import org.jpox.metadata.AbstractPropertyMetaData;
-import org.jpox.metadata.ForeignKeyDeleteAction;
+import org.jpox.metadata.ForeignKeyAction;
 import org.jpox.sco.SCO;
 import org.jpox.store.DatastoreAdapter;
 import org.jpox.store.DatastoreContainerObject;
@@ -42,7 +42,7 @@ import org.jpox.store.mapping.CollectionMapping;
  * Mapping class around the EListWrapper. The newWrapper method returns a new EListWrapper instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/13 10:39:52 $
+ * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
  */
 
 public class EListMapping extends CollectionMapping {
@@ -103,7 +103,7 @@ public class EListMapping extends CollectionMapping {
 
 	/**
 	 * Method deletes all dependent objects based.
-	 */
+	 */ 
 	public void deleteDependent(StateManager sm) {
         if (containerIsStoredInSingleColumn())
         {
@@ -118,9 +118,10 @@ public class EListMapping extends CollectionMapping {
 			// in case of eobject or in case dependent has been set delete it!
 			// also assume that if there is a foreign key constraint with cascade that it is depedendent. 
 			// This gave better results then trusting the foreign keys
-			final boolean dependent = fmd.getCollection().isDependentElement() || fmd.getCollection().isEmbeddedElement() ||
-				fmd.getForeignKeyMetaData().getDeleteAction().equals(ForeignKeyDeleteAction.CASCADE);
-			if (fmd.getJoinMetaData() != null || dependent) {
+			final boolean dependent = fmd.getCollection().isDependentElement() || 
+				fmd.getCollection().isEmbeddedElement() ||
+				fmd.getForeignKeyMetaData().getDeleteAction().equals(ForeignKeyAction.CASCADE);
+			if (dependent) {
 				Object[] values = ((List) value).toArray();
 				
 				// clear the collection

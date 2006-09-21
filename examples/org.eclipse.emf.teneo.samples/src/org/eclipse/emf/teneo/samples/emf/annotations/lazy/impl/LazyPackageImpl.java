@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LazyPackageImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: LazyPackageImpl.java,v 1.3 2006/09/21 00:56:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl;
 
@@ -369,8 +369,8 @@ public class LazyPackageImpl extends EPackageImpl implements LazyPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/OneToMany
-		createOneToManyAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -408,7 +408,7 @@ public class LazyPackageImpl extends EPackageImpl implements LazyPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "category"
-		   });		
+		   });			
 		addAnnotation
 		  (getBook_Author(), 
 		   source, 
@@ -481,36 +481,36 @@ public class LazyPackageImpl extends EPackageImpl implements LazyPackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/OneToMany</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createOneToManyAnnotations() {
-		String source = "http://annotation.elver.org/OneToMany";											
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";						
+		addAnnotation
+		  (getBook_Author(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@ManyToOne(fetch=LAZY)"
+		   });							
 		addAnnotation
 		  (getLibrary_Writers(), 
 		   source, 
 		   new String[] {
-			 "fetch", "EAGER",
-			 "cascade", "ALL",
-			 "targetEntity", "Writer"
+			 "appinfo", "@OneToMany(fetch=EAGER cascade=ALL targetEntity=\"Writer\")"
 		   });			
 		addAnnotation
 		  (getLibrary_Books(), 
 		   source, 
 		   new String[] {
-			 "fetch", "EAGER",
-			 "cascade", "ALL",
-			 "targetEntity", "Book"
+			 "appinfo", "@OneToMany(fetch=EAGER cascade=ALL targetEntity=\"Book\")"
 		   });					
 		addAnnotation
 		  (getWriter_Books(), 
 		   source, 
 		   new String[] {
-			 "cascade", "MERGE PERSIST",
-			 "targetEntity", "Book",
-			 "mappedBy", "author"
+			 "appinfo", "@OneToMany(cascade={MERGE,PERSIST} targetEntity=\"Book\" mappedBy=\"author\")"
 		   });	
 	}
 

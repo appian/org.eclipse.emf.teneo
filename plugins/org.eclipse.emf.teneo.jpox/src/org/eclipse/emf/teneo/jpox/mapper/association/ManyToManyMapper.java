@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.4 2006/09/04 15:42:17 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.5 2006/09/21 00:56:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class ManyToManyMapper extends AssociationMapper {
@@ -73,9 +73,11 @@ public class ManyToManyMapper extends AssociationMapper {
 		// 3) During the add emf sets the inverse, it detects that the inverse is already set and deletes the
 		// item from the list.
 		// -> result item points back to the list but is not present anymore in the list
+		// DISABLED this therefor
 		ManyToMany mtm = aReference.getManyToMany();
 		if (mtm.getMappedBy() != null && !aReference.getAnnotatedEReference().isContainment()) {
-			field.addAttribute("mapped-by", mtm.getMappedBy());
+			// see above
+			//field.addAttribute("mapped-by", mtm.getMappedBy());
 		}
 
 		// collection element is present befpre join element

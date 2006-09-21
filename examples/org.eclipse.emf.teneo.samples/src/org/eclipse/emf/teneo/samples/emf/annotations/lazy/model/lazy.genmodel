@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Lazy" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>lazy.xsd</foreignModel>
-  <genPackages prefix="Lazy" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
-      disposableProviderFactory="true" ecorePackage="lazy.ecore#/">
+  <genPackages prefix="Lazy" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="lazy.ecore#/">
     <genEnums ecoreEnum="lazy.ecore#//BookCategory">
       <genEnumLiterals ecoreEnumLiteral="lazy.ecore#//BookCategory/Mystery"/>
       <genEnumLiterals ecoreEnumLiteral="lazy.ecore#//BookCategory/ScienceFiction"/>

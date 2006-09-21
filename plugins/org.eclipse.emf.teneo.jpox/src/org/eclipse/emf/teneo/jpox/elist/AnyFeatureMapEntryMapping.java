@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyFeatureMapEntryMapping.java,v 1.1 2006/09/13 10:39:52 mtaal Exp $
+ * $Id: AnyFeatureMapEntryMapping.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -44,7 +44,7 @@ import org.jpox.store.mapping.SingleFieldMultiMapping;
  * field which keeps track if the content is an EObject or a simple type..
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/13 10:39:52 $
+ * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
  */
 
 public class AnyFeatureMapEntryMapping extends SingleFieldMultiMapping {
@@ -83,7 +83,7 @@ public class AnyFeatureMapEntryMapping extends SingleFieldMultiMapping {
 	 * Return a typical value for the Java type. For the enum it returns the first value (the one with ordinal zero) as
 	 * an example.
 	 */
-	public Object getSampleValue() {
+	public Object getSampleValue(ClassLoaderResolver clr) {
 		return new AnyFeatureMapEntry(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), "sample value");
 	}
 

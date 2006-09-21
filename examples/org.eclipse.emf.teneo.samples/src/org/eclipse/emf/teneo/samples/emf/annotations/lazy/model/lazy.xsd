@@ -9,7 +9,11 @@
       <xsd:element name="pages" type="xsd:int"/>
       <xsd:element name="category" type="lib:BookCategory"/>
       <xsd:element name="author" type="xsd:anyURI"
-          ecore:reference="lib:Writer" ecore:opposite="books"/>
+          ecore:reference="lib:Writer" ecore:opposite="books">
+	 	<xsd:annotation>
+			<xsd:appinfo source="teneo.jpa">@ManyToOne(fetch=LAZY)</xsd:appinfo>
+	    </xsd:annotation>
+      </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Writer">
@@ -18,9 +22,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="books"
           type="xsd:anyURI" ecore:reference="lib:Book" ecore:opposite="author">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/OneToMany" ecore:key="cascade">MERGE PERSIST</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/OneToMany" ecore:key="targetEntity">Book</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/OneToMany" ecore:key="mappedBy">author</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(cascade={MERGE,PERSIST} targetEntity="Book" mappedBy="author")</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
     </xsd:sequence>
@@ -31,17 +33,13 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0"
           name="writers" type="lib:Writer">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/OneToMany" ecore:key="fetch">EAGER</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/OneToMany" ecore:key="cascade">ALL</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/OneToMany" ecore:key="targetEntity">Writer</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(fetch=EAGER cascade=ALL targetEntity="Writer")</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
       <xsd:element maxOccurs="unbounded" minOccurs="0"
           name="books" type="lib:Book">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/OneToMany" ecore:key="fetch">EAGER</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/OneToMany" ecore:key="cascade">ALL</xsd:appinfo>
-			<xsd:appinfo source="http://annotation.elver.org/OneToMany" ecore:key="targetEntity">Book</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(fetch=EAGER cascade=ALL targetEntity="Book")</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
     </xsd:sequence>

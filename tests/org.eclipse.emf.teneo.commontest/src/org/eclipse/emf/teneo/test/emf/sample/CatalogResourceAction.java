@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CatalogResourceAction.java,v 1.2 2006/09/06 06:55:46 mtaal Exp $
+ * $Id: CatalogResourceAction.java,v 1.3 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * All using a resource, tests add, delete and update of objects in a resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class CatalogResourceAction extends AbstractTestAction {
 	/**
@@ -96,6 +96,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 				product.setPrice(price);
 				resource.getContents().add(product);
 				resource.save(null);
+				resource.unload();
 			}
 
 			{
@@ -129,6 +130,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 				product2.setPrice(price2);
 				resource.getContents().add(product2);
 				resource.save(null);
+				resource.unload();
 			}
 
 			store.beginTransaction();
@@ -208,6 +210,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 				resource.getContents().add(mainCatalog);
 				resource.getContents().add(subCatalog);
 				resource.save(null);
+				resource.unload();
 			}
 
 			store.beginTransaction();
@@ -241,6 +244,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 				assertTrue(((CatalogType) cat.getSubCatalog().get(0)).getName().compareTo("SubCatalog") == 0);
 
 				resource.save(null);
+				resource.unload();
 			}
 
 			// product was not deleted
@@ -278,6 +282,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 				// now remove one product from the resource
 				resource.getContents().remove(delProduct);
 				resource.save(null);
+				resource.unload();
 			}
 
 			// do some counts
@@ -321,6 +326,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 
 				result.getPrice().setPrice(result.getPrice().getPrice() + 100.0);
 				resource.save(null);
+				resource.unload();
 			}
 
 			// there should now only be a remarka and a remarkc

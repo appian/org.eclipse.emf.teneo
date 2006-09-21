@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Sample" importerID="org.eclipse.emf.importer.rose">
+  <foreignModel>sample.mdl</foreignModel>
+  <genPackages prefix="Main" disposableProviderFactory="true" ecorePackage="sample.ecore#/">
+    <genClasses ecoreClass="sample.ecore#//ChildObject2">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sample.ecore#//ChildObject2/length"/>
+    </genClasses>
+    <genClasses ecoreClass="sample.ecore#//ChildObject1">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sample.ecore#//ChildObject1/linkedObject"/>
+    </genClasses>
+    <genClasses ecoreClass="sample.ecore#//BaseObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sample.ecore#//BaseObject/object1"/>
+    </genClasses>
+    <genClasses ecoreClass="sample.ecore#//BaseGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sample.ecore#//BaseGroup/components"/>
+    </genClasses>
+    <genClasses ecoreClass="sample.ecore#//BaseComponent">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference sample.ecore#//BaseComponent/group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sample.ecore#//BaseComponent/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sample.ecore#//BaseComponent/Id"/>
+    </genClasses>
+    <genClasses ecoreClass="sample.ecore#//ChildObject3">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sample.ecore#//ChildObject3/width"/>
+    </genClasses>
+    <genClasses ecoreClass="sample.ecore#//ChildObject4">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sample.ecore#//ChildObject4/thickness"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

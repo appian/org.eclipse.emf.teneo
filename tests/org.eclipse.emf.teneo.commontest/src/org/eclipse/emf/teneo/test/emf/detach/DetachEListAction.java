@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DetachEListAction.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: DetachEListAction.java,v 1.2 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.detach;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is a test case to test detach functionality in the dao resource using an elist, checks insert, move, etc.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
 */
 public class DetachEListAction extends AbstractTestAction 
 {
@@ -82,6 +82,7 @@ public class DetachEListAction extends AbstractTestAction
 				contacts.getPersons().add(person1);
 				contacts.getPersons().add(person2);
 				resource.save(Collections.EMPTY_MAP);       
+				resource.unload();
 			}
 
 			assertFalse(store.transactionActive());
@@ -110,6 +111,7 @@ public class DetachEListAction extends AbstractTestAction
 				contacts.getPersons().add(person2);
 				contacts.getPersons().add(person1);
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			assertFalse(store.transactionActive());
 
@@ -122,6 +124,7 @@ public class DetachEListAction extends AbstractTestAction
 				assertTrue(person1.getName().compareTo("002") == 0);
 				assertTrue(person2.getName().compareTo("001") == 0);
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			assertFalse(store.transactionActive());
 			
@@ -139,6 +142,7 @@ public class DetachEListAction extends AbstractTestAction
 				contacts.getPersons().add(person4);
 				contacts.getPersons().remove(1); // remove person 001
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			assertFalse(store.transactionActive());
 
@@ -151,6 +155,7 @@ public class DetachEListAction extends AbstractTestAction
 				assertEquals("003", ((Person) contacts.getPersons().get(1)).getName());
 				assertEquals("004", ((Person) contacts.getPersons().get(2)).getName());
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			assertFalse(store.transactionActive());
 			
@@ -164,6 +169,7 @@ public class DetachEListAction extends AbstractTestAction
 				person5.setName("005");
 				contacts.getPersons().set(2, person5); // order is now 004, 002, 005
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			assertFalse(store.transactionActive());
 
@@ -176,6 +182,7 @@ public class DetachEListAction extends AbstractTestAction
 				assertEquals("002", ((Person) contacts.getPersons().get(1)).getName());
 				assertEquals("005", ((Person) contacts.getPersons().get(2)).getName());
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			assertFalse(store.transactionActive());
 			
@@ -187,6 +194,7 @@ public class DetachEListAction extends AbstractTestAction
 				person.setName("c1");
 				contacts.getContainedPersons().add(person);
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			assertFalse(store.transactionActive());
 
@@ -201,6 +209,7 @@ public class DetachEListAction extends AbstractTestAction
 				resource.save(Collections.EMPTY_MAP);
 				contacts.getContainedPersons().remove(0);
 				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
 			}
 			{
 				// check that the previous step actually deleted the persons

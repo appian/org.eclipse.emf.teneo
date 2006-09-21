@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.2 2006/09/14 19:53:54 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.3 2006/09/21 00:56:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -92,7 +92,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/09/14 19:53:54 $
+ * @version $Revision: 1.3 $ $Date: 2006/09/21 00:56:36 $
  */
 
 public class JpoxDataStore {
@@ -151,6 +151,11 @@ public class JpoxDataStore {
 		properties.setProperty(PMFConfiguration.VALIDATE_CONSTRAINTS_PROPERTY, "false");
 		properties.setProperty(PMFConfiguration.VALIDATE_TABLES_PROPERTY, "false");
 
+//		properties.setProperty(PMFConfiguration.JDO_DETACHALLONCOMMIT_PROPERTY, "true");
+		properties.setProperty(PMFConfiguration.PERSISTENCE_BY_REACHABILITY_AT_COMMIT, "true");
+		
+		properties.setProperty(PMFConfiguration.DELETION_POLICY_PROPERTY, "JPOX");
+		
 		properties.setProperty(PMFConfiguration.CACHE_LEVEL_1_TYPE_PROPERTY,
 				"org.eclipse.emf.teneo.jpox.cache.EMFWeakRefCache");
 		properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY, JpoxHelper.INSTANCE
@@ -417,7 +422,7 @@ public class JpoxDataStore {
 		final org.jpox.PersistenceManager pm = (org.jpox.PersistenceManager) localPmf.getPersistenceManager();
 		StoreManager store_mgr = pm.getStoreManager();
 		try {
-			store_mgr.addClasses(pcClassNames, pm.getClassLoaderResolver());
+			store_mgr.addClasses(pcClassNames, pm.getClassLoaderResolver(), null);
 		} finally {
 			pm.close();
 			localPmf.close();

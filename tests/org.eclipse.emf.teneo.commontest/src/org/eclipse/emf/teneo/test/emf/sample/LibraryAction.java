@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.3 2006/07/22 10:16:32 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.4 2006/09/21 00:57:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryAction extends AbstractTestAction {
 	/**
@@ -52,6 +52,7 @@ public class LibraryAction extends AbstractTestAction {
 			writer.setName("JRR Tolkien");
 
 			final Book book = factory.createBook();
+
 			book.setAuthor(writer);
 			book.setPages(5);
 			book.setTitle("The Hobbit");
