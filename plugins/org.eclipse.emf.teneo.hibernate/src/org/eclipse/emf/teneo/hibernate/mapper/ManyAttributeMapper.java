@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyAttributeMapper.java,v 1.4 2006/09/05 12:17:06 mtaal Exp $
+ * $Id: ManyAttributeMapper.java,v 1.5 2006/09/22 13:58:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
@@ -71,8 +72,12 @@ class ManyAttributeMapper extends AbstractAssociationMapper implements ManyAttri
 		if (log.isDebugEnabled())
 			log.debug("Generating many valued attribute mapping for " + paAttribute);
 
-        HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
-        
+        final HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
+		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
+		
+        final boolean isArray = eattr.getEType().getInstanceClass() != null
+			&& eattr.getEType().getInstanceClass().isArray();
+
 		final Element collElement = addCollectionElement(paAttribute);
 		final Element keyElement = collElement.addElement("key");
 
@@ -87,19 +92,25 @@ class ManyAttributeMapper extends AbstractAssociationMapper implements ManyAttri
 			addKeyColumns(keyElement, jcs);
 		}
 
-		if (otm.isIndexed() && hbAttribute.getHbIdBag() == null) {
+		if (!otm.isIndexed() && isArray) {
+			log.warn("One to many is not indexed but this is an array, force=ing index column!");
+		}
+		
+		if ((otm.isIndexed() || isArray) && hbAttribute.getHbIdBag() == null) {
 			addListIndex(collElement, paAttribute);
 		}
-		addFetchType(collElement, otm.getFetch());
-		addCascadesForMany(collElement, otm.getCascade());
 
+		if (!isArray) {
+			addFetchType(collElement, otm.getFetch());
+		}
+		addCascadesForMany(collElement, otm.getCascade());
+		
 		if (FeatureMapUtil.isFeatureMap(paAttribute.getAnnotatedEAttribute())) {
 			FeatureMapMapping fmm = new FeatureMapMapping(getHbmContext(), paAttribute);
 			getHbmContext().addFeatureMapMapper(fmm);
 			collElement.addElement("one-to-many").addAttribute("entity-name", fmm.getEntityName());
 		} else {
-			addElementElement(collElement, paAttribute.getAnnotatedEAttribute().getName(), paAttribute
-					.getAnnotatedEAttribute().getEAttributeType(), getColumn(paAttribute), otm.getTargetEntity());
+			addElementElement(collElement, eattr.getName(), eattr.getEAttributeType(), getColumn(paAttribute), otm.getTargetEntity());
 		}
 
 		// TODO maybe this is not sufficient to handl unsettable lists

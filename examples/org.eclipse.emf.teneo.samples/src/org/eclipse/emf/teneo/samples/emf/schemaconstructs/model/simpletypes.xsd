@@ -57,6 +57,10 @@
 		<!--	<element name="enu" type="this:SimpleEnum" maxOccurs="unbounded"/>-->
 			<element name="dat" type="this:Date" maxOccurs="unbounded"/>
 			<element name="limitedstring" type="this:LimitedString" maxOccurs="unbounded"/>
+			<element name="intArray" type="this:IntArray"/>
+			<element name="doubleArray" type="this:DoubleArray"/>
+			<element name="stringArray" type="this:StringArray"/>
+			<element name="byteArray" type="this:ByteArray"/>
 		</sequence>
 	</complexType>
 
@@ -99,6 +103,22 @@
   	
   	<simpleType ecore:instanceClass="java.util.Date" name="Date">
    		<restriction base="dateTime"/>
+ 	</simpleType>
+
+  	<simpleType ecore:instanceClass="int[]" name="IntArray">
+   		<restriction/>
+ 	</simpleType>
+
+  	<simpleType ecore:instanceClass="String[]" name="StringArray">
+   		<restriction/>
+ 	</simpleType>
+
+  	<simpleType ecore:instanceClass="double[]" name="DoubleArray">
+   		<restriction/>
+ 	</simpleType>
+
+  	<simpleType ecore:instanceClass="byte[]" name="ByteArray">
+   		<restriction/>
  	</simpleType>
  	
  	<!-- duration is not (yet) supported

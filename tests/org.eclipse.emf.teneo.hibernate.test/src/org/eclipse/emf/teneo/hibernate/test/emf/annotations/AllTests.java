@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.13 2006/09/07 22:29:09 mtaal Exp $
+ * $Id: AllTests.java,v 1.14 2006/09/22 13:58:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -51,13 +51,16 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(LazyLibraryAction.class);
+
+		suite.addTestSuite(InheritanceAnnotationAction.class);
 		suite.addTestSuite(UserTypeAction.class);
 
 		suite.addTestSuite(ToOneAction.class);
@@ -74,9 +77,7 @@ public class AllTests {
 
 		suite.addTestSuite(HbIdAction.class);
 		suite.addTestSuite(IdAction.class);
-		suite.addTestSuite(LazyLibraryAction.class);
 
-		suite.addTestSuite(InheritanceAnnotationAction.class);
 
 		suite.addTestSuite(MappedSuperClassAction.class);
 
@@ -97,7 +98,6 @@ public class AllTests {
 		suite.addTestSuite(AttributeOverridesAction.class);
 		suite.addTestSuite(LobAction.class);
 		suite.addTestSuite(EmbeddedIdAction.class);
-
 		return suite;
 
 	}

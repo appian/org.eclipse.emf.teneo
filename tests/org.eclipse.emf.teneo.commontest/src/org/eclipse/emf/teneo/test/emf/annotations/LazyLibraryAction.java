@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyLibraryAction.java,v 1.3 2006/09/21 00:57:18 mtaal Exp $
+ * $Id: LazyLibraryAction.java,v 1.4 2006/09/22 13:58:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * does not result in loaded containment elists.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
+ * @version $Revision: 1.4 $ 
 */
 public class LazyLibraryAction extends AbstractTestAction 
 {
@@ -108,18 +108,6 @@ public class LazyLibraryAction extends AbstractTestAction
 		        res.getContents().add(library);
 		        res.save(null);
 				res.unload();
-	    	}
-
-	    	{
-	    		store.refresh();
-	    		store.beginTransaction();
-	    		final List books = store.getObjects(Book.class);
-	    		for (Iterator it = books.iterator(); it.hasNext();) {
-	    			final Book bk = (Book)it.next();
-	    			System.err.println(bk.getTitle());
-	    			System.err.println(bk.getAuthor().getName());
-	    		}
-	    		store.commitTransaction();
 	    	}
 	    	
 	    	// test settrackingmodification before load

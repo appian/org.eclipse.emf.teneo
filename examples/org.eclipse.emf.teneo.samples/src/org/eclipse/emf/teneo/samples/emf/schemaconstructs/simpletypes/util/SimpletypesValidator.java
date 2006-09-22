@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesValidator.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: SimpletypesValidator.java,v 1.2 2006/09/22 13:58:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.util;
 
@@ -110,20 +110,28 @@ public class SimpletypesValidator extends EObjectValidator {
 				return validateBool((Boolean)value, diagnostics, context);
 			case SimpletypesPackage.BYTE:
 				return validateByte((Byte)value, diagnostics, context);
+			case SimpletypesPackage.BYTE_ARRAY:
+				return validateByteArray((byte[])value, diagnostics, context);
 			case SimpletypesPackage.DATE:
 				return validateDate((Date)value, diagnostics, context);
 			case SimpletypesPackage.DOUBLE:
 				return validateDouble((Double)value, diagnostics, context);
+			case SimpletypesPackage.DOUBLE_ARRAY:
+				return validateDoubleArray((double[])value, diagnostics, context);
 			case SimpletypesPackage.FLOAT:
 				return validateFloat((Float)value, diagnostics, context);
 			case SimpletypesPackage.INT:
 				return validateInt((Integer)value, diagnostics, context);
+			case SimpletypesPackage.INT_ARRAY:
+				return validateIntArray((int[])value, diagnostics, context);
 			case SimpletypesPackage.LIMITED_STRING:
 				return validateLimitedString((String)value, diagnostics, context);
 			case SimpletypesPackage.LONG:
 				return validateLong((Long)value, diagnostics, context);
 			case SimpletypesPackage.SIMPLE_ENUM_OBJECT:
 				return validateSimpleEnumObject((SimpleEnum)value, diagnostics, context);
+			case SimpletypesPackage.STRING_ARRAY:
+				return validateStringArray((String[])value, diagnostics, context);
 			default: 
 				return true;
 		}
@@ -188,6 +196,15 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateByteArray(byte[] byteArray, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateDate(Date date, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
@@ -206,6 +223,15 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateDoubleArray(double[] doubleArray, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateFloat(Float float_, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
@@ -216,6 +242,15 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateInt(Integer int_, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIntArray(int[] intArray, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -273,6 +308,15 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSimpleEnumObject(SimpleEnum simpleEnumObject, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStringArray(String[] stringArray, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 

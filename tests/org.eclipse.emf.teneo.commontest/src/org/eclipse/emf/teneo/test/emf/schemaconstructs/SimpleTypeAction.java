@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SimpleTypeAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: SimpleTypeAction.java,v 1.2 2006/09/22 13:58:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -28,12 +28,13 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Simpletype
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
+import org.jpox.enhancer.bcel.method.SimpleStateManagerCall;
 
 /**
  * Tests if simple types are stored/retrieved correctly.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class SimpleTypeAction extends AbstractTestAction {
 	/** Simple Type Values we test against */
@@ -145,7 +146,9 @@ public class SimpleTypeAction extends AbstractTestAction {
 		int length = 5; // not above 30 because is used to set the day of the month
 		Boolean[] bools = new Boolean[length];
 		Byte[] bytes = new Byte[length];
+		byte[] simpleBytes = new byte[length];
 		Integer[] ints = new Integer[length];
+		int[] simpleInts = new int[length];
 		Short[] shorts = new Short[length];
 		Long[] longs = new Long[length];
 		Double[] doubles = new Double[length];
@@ -155,6 +158,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 		String[] strings = new String[length];
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(DATE);
+		double[] simpleDoubles = new double[length];
 		for (int i = 0; i < length; i++) {
 			bools[i] = new Boolean(isEven(i));
 			bytes[i] = new Byte((byte) (BYTE + i));
@@ -164,6 +168,9 @@ public class SimpleTypeAction extends AbstractTestAction {
 			doubles[i] = new Double(DOUBLE + i);
 			floats[i] = new Float(FLOAT + i);
 			strings[i] = "TEST" + i;
+			simpleInts[i] = i;
+			simpleDoubles[i] = 1.156 * i;
+			simpleBytes[i] = (byte)(BYTE + i);
 
 			cal.set(Calendar.DAY_OF_MONTH, i + 1);
 			dates[i] = cal.getTime();
@@ -191,6 +198,10 @@ public class SimpleTypeAction extends AbstractTestAction {
 			// copy(stype.getEnu(), enums);
 			copy(stype.getDat(), dates);
 			copy(stype.getLimitedstring(), strings);
+			stype.setIntArray(simpleInts);
+			stype.setStringArray(strings);
+			stype.setDoubleArray(simpleDoubles);
+			stype.setByteArray(simpleBytes);
 			store.store(stype);
 			store.commitTransaction();
 		}
@@ -204,6 +215,11 @@ public class SimpleTypeAction extends AbstractTestAction {
 			assertValues(result.getLong(), longs);
 			assertValues(result.getDoubl(), doubles);
 			assertValues(result.getFloa(), floats);
+			assertValues(result.getIntArray(), simpleInts);
+			assertValues(result.getDoubleArray(), simpleDoubles);
+			assertValues(result.getStringArray(), strings);
+			assertValues(result.getByteArray(), simpleBytes);
+			
 			// assertTrue(compare(result.getEnu(), enums));
 			assertValues(store, result.getDat(), dates);
 			assertValues(result.getLimitedstring(), strings);
@@ -211,7 +227,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 	}
-
+	
 	/** Copies the values from an array to the elist */
 	private void copy(List list, Object[] objs) {
 		for (int i = 0; i < objs.length; i++) {
@@ -219,6 +235,46 @@ public class SimpleTypeAction extends AbstractTestAction {
 		}
 	}
 
+	/** Check result */
+	private void assertValues(int[] p, int[] s) {
+		int cnt = 0;
+		for (int i = 0; i < p.length; i++) {
+			assertEquals(p[i], s[i]);
+			cnt++;
+		}
+		assertEquals(p.length, s.length);
+	}
+
+	/** Check result */
+	private void assertValues(byte[] p, byte[] s) {
+		int cnt = 0;
+		for (int i = 0; i < p.length; i++) {
+			assertEquals(p[i], s[i]);
+			cnt++;
+		}
+		assertEquals(p.length, s.length);
+	}
+
+	/** Check result */
+	private void assertValues(double[] p, double[] s) {
+		int cnt = 0;
+		for (int i = 0; i < p.length; i++) {
+			assertEquals(p[i], s[i], 0.001);
+			cnt++;
+		}
+		assertEquals(p.length, s.length);
+	}
+
+	/** Check result */
+	private void assertValues(String[] p, String[] s) {
+		int cnt = 0;
+		for (int i = 0; i < p.length; i++) {
+			assertEquals(p[i], s[i]);
+			cnt++;
+		}
+		assertEquals(p.length, s.length);
+	}
+	
 	/** Checks if all the values in the list are equal to the passed array */
 	private void assertValues(List list, Boolean[] objs) {
 		assertEquals(objs.length, list.size());

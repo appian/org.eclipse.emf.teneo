@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesPackageImpl.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: SimpletypesPackageImpl.java,v 1.3 2006/09/22 13:58:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -79,6 +79,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType byteArrayEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType dateEDataType = null;
 
 	/**
@@ -93,6 +100,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType doubleArrayEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType floatEDataType = null;
 
 	/**
@@ -101,6 +115,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * @generated
 	 */
 	private EDataType intEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType intArrayEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,6 +143,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * @generated
 	 */
 	private EDataType simpleEnumObjectEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType stringArrayEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -300,6 +328,42 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 */
 	public EAttribute getSimpleList_Limitedstring() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimpleList_IntArray() {
+		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimpleList_DoubleArray() {
+		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimpleList_StringArray() {
+		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimpleList_ByteArray() {
+		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -541,6 +605,15 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getByteArray() {
+		return byteArrayEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getDate() {
 		return dateEDataType;
 	}
@@ -559,6 +632,15 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getDoubleArray() {
+		return doubleArrayEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getFloat() {
 		return floatEDataType;
 	}
@@ -570,6 +652,15 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 */
 	public EDataType getInt() {
 		return intEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getIntArray() {
+		return intArrayEDataType;
 	}
 
 	/**
@@ -597,6 +688,15 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 */
 	public EDataType getSimpleEnumObject() {
 		return simpleEnumObjectEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getStringArray() {
+		return stringArrayEDataType;
 	}
 
 	/**
@@ -638,6 +738,10 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		createEAttribute(simpleListEClass, SIMPLE_LIST__SHOR);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__DAT);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__LIMITEDSTRING);
+		createEAttribute(simpleListEClass, SIMPLE_LIST__INT_ARRAY);
+		createEAttribute(simpleListEClass, SIMPLE_LIST__DOUBLE_ARRAY);
+		createEAttribute(simpleListEClass, SIMPLE_LIST__STRING_ARRAY);
+		createEAttribute(simpleListEClass, SIMPLE_LIST__BYTE_ARRAY);
 
 		simpleTypeEClass = createEClass(SIMPLE_TYPE);
 		createEAttribute(simpleTypeEClass, SIMPLE_TYPE__CODE);
@@ -670,13 +774,17 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		// Create data types
 		boolEDataType = createEDataType(BOOL);
 		byteEDataType = createEDataType(BYTE);
+		byteArrayEDataType = createEDataType(BYTE_ARRAY);
 		dateEDataType = createEDataType(DATE);
 		doubleEDataType = createEDataType(DOUBLE);
+		doubleArrayEDataType = createEDataType(DOUBLE_ARRAY);
 		floatEDataType = createEDataType(FLOAT);
 		intEDataType = createEDataType(INT);
+		intArrayEDataType = createEDataType(INT_ARRAY);
 		limitedStringEDataType = createEDataType(LIMITED_STRING);
 		longEDataType = createEDataType(LONG);
 		simpleEnumObjectEDataType = createEDataType(SIMPLE_ENUM_OBJECT);
+		stringArrayEDataType = createEDataType(STRING_ARRAY);
 	}
 
 	/**
@@ -719,6 +827,10 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		initEAttribute(getSimpleList_Shor(), theXMLTypePackage.getShort(), "shor", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Dat(), this.getDate(), "dat", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Limitedstring(), this.getLimitedString(), "limitedstring", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_IntArray(), this.getIntArray(), "intArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_DoubleArray(), this.getDoubleArray(), "doubleArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_StringArray(), this.getStringArray(), "stringArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_ByteArray(), this.getByteArray(), "byteArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(simpleTypeEClass, SimpleType.class, "SimpleType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSimpleType_Code(), theXMLTypePackage.getString(), "code", "c1", 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -753,13 +865,17 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		// Initialize data types
 		initEDataType(boolEDataType, Boolean.class, "Bool", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(byteEDataType, Byte.class, "Byte", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(byteArrayEDataType, byte[].class, "ByteArray", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(dateEDataType, Date.class, "Date", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(doubleEDataType, Double.class, "Double", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(doubleArrayEDataType, double[].class, "DoubleArray", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(floatEDataType, Float.class, "Float", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(intEDataType, Integer.class, "Int", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(intArrayEDataType, int[].class, "IntArray", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(limitedStringEDataType, String.class, "LimitedString", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(longEDataType, Long.class, "Long", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(simpleEnumObjectEDataType, SimpleEnum.class, "SimpleEnumObject", IS_SERIALIZABLE, IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(stringArrayEDataType, String[].class, "StringArray", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -794,6 +910,12 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 			 "name", "Byte"
 		   });		
 		addAnnotation
+		  (byteArrayEDataType, 
+		   source, 
+		   new String[] {
+			 "name", "ByteArray"
+		   });		
+		addAnnotation
 		  (dateEDataType, 
 		   source, 
 		   new String[] {
@@ -806,6 +928,12 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 			 "name", "Double"
 		   });		
 		addAnnotation
+		  (doubleArrayEDataType, 
+		   source, 
+		   new String[] {
+			 "name", "DoubleArray"
+		   });		
+		addAnnotation
 		  (floatEDataType, 
 		   source, 
 		   new String[] {
@@ -816,6 +944,12 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		   source, 
 		   new String[] {
 			 "name", "Int"
+		   });		
+		addAnnotation
+		  (intArrayEDataType, 
+		   source, 
+		   new String[] {
+			 "name", "IntArray"
 		   });		
 		addAnnotation
 		  (limitedStringEDataType, 
@@ -920,6 +1054,34 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		   new String[] {
 			 "kind", "element",
 			 "name", "limitedstring"
+		   });		
+		addAnnotation
+		  (getSimpleList_IntArray(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "intArray"
+		   });		
+		addAnnotation
+		  (getSimpleList_DoubleArray(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "doubleArray"
+		   });		
+		addAnnotation
+		  (getSimpleList_StringArray(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "stringArray"
+		   });		
+		addAnnotation
+		  (getSimpleList_ByteArray(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "byteArray"
 		   });		
 		addAnnotation
 		  (simpleTypeEClass, 
@@ -1081,6 +1243,12 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		   new String[] {
 			 "kind", "element",
 			 "name", "dat"
+		   });		
+		addAnnotation
+		  (stringArrayEDataType, 
+		   source, 
+		   new String[] {
+			 "name", "StringArray"
 		   });
 	}
 
@@ -1091,13 +1259,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * @generated
 	 */
 	protected void createJoinTableAnnotations() {
-		String source = "http://annotation.elver.org/JoinTable";																			
+		String source = "http://annotation.elver.org/JoinTable";																						
 		addAnnotation
 		  (getSimpleList_Long(), 
 		   source, 
 		   new String[] {
 			 "name", "longNum"
-		   });																												
+		   });																																	
 	}
 
 	/**
@@ -1107,13 +1275,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * @generated
 	 */
 	protected void createEnumeratedAnnotations() {
-		String source = "http://annotation.elver.org/Enumerated";																																													
+		String source = "http://annotation.elver.org/Enumerated";																																																				
 		addAnnotation
 		  (getSimpleTypeObject_Enu(), 
 		   source, 
 		   new String[] {
 			 "value", "STRING"
-		   });		
+		   });			
 	}
 
 } //SimpletypesPackageImpl

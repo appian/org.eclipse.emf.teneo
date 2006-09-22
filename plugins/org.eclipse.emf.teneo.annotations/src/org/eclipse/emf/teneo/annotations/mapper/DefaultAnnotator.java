@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.1 2006/09/06 21:59:50 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.2 2006/09/22 13:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -76,7 +76,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class DefaultAnnotator {
 
@@ -649,8 +649,13 @@ public class DefaultAnnotator {
 	protected String getTargetTypeName(EAttribute eAttribute) {
 		// check on equality on object.class is used for listunion simpleunions
 		final Class instanceClass = eAttribute.getEAttributeType().getInstanceClass();
-		if (!Object.class.equals(instanceClass) && !List.class.equals(instanceClass)) {
-			return eAttribute.getEAttributeType().getInstanceClassName();
+		if (instanceClass != null && !Object.class.equals(instanceClass) && !List.class.equals(instanceClass)) {
+			if (instanceClass.isArray()) {
+				// get rid of the [] at the end 
+				return eAttribute.getEType().getInstanceClassName().substring(0,
+						eAttribute.getEType().getInstanceClassName().length() - 2);
+			}
+			return instanceClass.getName();
 		} else {
 			// the type is hidden somewhere deep get it
 			// the edatatype is the java.util.list

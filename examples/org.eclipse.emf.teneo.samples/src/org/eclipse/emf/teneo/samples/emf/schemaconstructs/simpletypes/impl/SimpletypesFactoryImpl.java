@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesFactoryImpl.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: SimpletypesFactoryImpl.java,v 1.3 2006/09/22 13:58:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.*;
+
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType;
@@ -87,20 +89,28 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 				return createBoolFromString(eDataType, initialValue);
 			case SimpletypesPackage.BYTE:
 				return createByteFromString(eDataType, initialValue);
+			case SimpletypesPackage.BYTE_ARRAY:
+				return createByteArrayFromString(eDataType, initialValue);
 			case SimpletypesPackage.DATE:
 				return createDateFromString(eDataType, initialValue);
 			case SimpletypesPackage.DOUBLE:
 				return createDoubleFromString(eDataType, initialValue);
+			case SimpletypesPackage.DOUBLE_ARRAY:
+				return createDoubleArrayFromString(eDataType, initialValue);
 			case SimpletypesPackage.FLOAT:
 				return createFloatFromString(eDataType, initialValue);
 			case SimpletypesPackage.INT:
 				return createIntFromString(eDataType, initialValue);
+			case SimpletypesPackage.INT_ARRAY:
+				return createIntArrayFromString(eDataType, initialValue);
 			case SimpletypesPackage.LIMITED_STRING:
 				return createLimitedStringFromString(eDataType, initialValue);
 			case SimpletypesPackage.LONG:
 				return createLongFromString(eDataType, initialValue);
 			case SimpletypesPackage.SIMPLE_ENUM_OBJECT:
 				return createSimpleEnumObjectFromString(eDataType, initialValue);
+			case SimpletypesPackage.STRING_ARRAY:
+				return createStringArrayFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -119,20 +129,28 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 				return convertBoolToString(eDataType, instanceValue);
 			case SimpletypesPackage.BYTE:
 				return convertByteToString(eDataType, instanceValue);
+			case SimpletypesPackage.BYTE_ARRAY:
+				return convertByteArrayToString(eDataType, instanceValue);
 			case SimpletypesPackage.DATE:
 				return convertDateToString(eDataType, instanceValue);
 			case SimpletypesPackage.DOUBLE:
 				return convertDoubleToString(eDataType, instanceValue);
+			case SimpletypesPackage.DOUBLE_ARRAY:
+				return convertDoubleArrayToString(eDataType, instanceValue);
 			case SimpletypesPackage.FLOAT:
 				return convertFloatToString(eDataType, instanceValue);
 			case SimpletypesPackage.INT:
 				return convertIntToString(eDataType, instanceValue);
+			case SimpletypesPackage.INT_ARRAY:
+				return convertIntArrayToString(eDataType, instanceValue);
 			case SimpletypesPackage.LIMITED_STRING:
 				return convertLimitedStringToString(eDataType, instanceValue);
 			case SimpletypesPackage.LONG:
 				return convertLongToString(eDataType, instanceValue);
 			case SimpletypesPackage.SIMPLE_ENUM_OBJECT:
 				return convertSimpleEnumObjectToString(eDataType, instanceValue);
+			case SimpletypesPackage.STRING_ARRAY:
+				return convertStringArrayToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -229,6 +247,28 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public byte[] createByteArrayFromString(EDataType eDataType, String initialValue) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertByteArrayToString(EDataType eDataType, Object instanceValue) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Date createDateFromString(EDataType eDataType, String initialValue) {
 		return (Date)super.createFromString(eDataType, initialValue);
 	}
@@ -265,6 +305,28 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double[] createDoubleArrayFromString(EDataType eDataType, String initialValue) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDoubleArrayToString(EDataType eDataType, Object instanceValue) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Float createFloatFromString(EDataType eDataType, String initialValue) {
 		return (Float)super.createFromString(eDataType, initialValue);
 	}
@@ -294,6 +356,28 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 */
 	public String convertIntToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int[] createIntArrayFromString(EDataType eDataType, String initialValue) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIntArrayToString(EDataType eDataType, Object instanceValue) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -348,6 +432,28 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 */
 	public String convertSimpleEnumObjectToString(EDataType eDataType, Object instanceValue) {
 		return convertSimpleEnumToString(SimpletypesPackage.Literals.SIMPLE_ENUM, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String[] createStringArrayFromString(EDataType eDataType, String initialValue) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertStringArrayToString(EDataType eDataType, Object instanceValue) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

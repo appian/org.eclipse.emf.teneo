@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleList.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: SimpleList.java,v 1.2 2006/09/22 13:58:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -28,6 +28,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getShor <em>Shor</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getDat <em>Dat</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getLimitedstring <em>Limitedstring</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getIntArray <em>Int Array</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getDoubleArray <em>Double Array</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getStringArray <em>String Array</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getByteArray <em>Byte Array</em>}</li>
  * </ul>
  * </p>
  *
@@ -244,5 +248,113 @@ public interface SimpleList extends EObject {
 	 * @generated
 	 */
 	EList getLimitedstring();
+
+	/**
+	 * Returns the value of the '<em><b>Int Array</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Int Array</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Int Array</em>' attribute.
+	 * @see #setIntArray(int[])
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleList_IntArray()
+	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.IntArray" required="true"
+	 *        extendedMetaData="kind='element' name='intArray'"
+	 * @generated
+	 */
+	int[] getIntArray();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getIntArray <em>Int Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Int Array</em>' attribute.
+	 * @see #getIntArray()
+	 * @generated
+	 */
+	void setIntArray(int[] value);
+
+	/**
+	 * Returns the value of the '<em><b>Double Array</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Double Array</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Double Array</em>' attribute.
+	 * @see #setDoubleArray(double[])
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleList_DoubleArray()
+	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.DoubleArray" required="true"
+	 *        extendedMetaData="kind='element' name='doubleArray'"
+	 * @generated
+	 */
+	double[] getDoubleArray();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getDoubleArray <em>Double Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Double Array</em>' attribute.
+	 * @see #getDoubleArray()
+	 * @generated
+	 */
+	void setDoubleArray(double[] value);
+
+	/**
+	 * Returns the value of the '<em><b>String Array</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>String Array</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>String Array</em>' attribute.
+	 * @see #setStringArray(String[])
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleList_StringArray()
+	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.StringArray" required="true"
+	 *        extendedMetaData="kind='element' name='stringArray'"
+	 * @generated
+	 */
+	String[] getStringArray();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getStringArray <em>String Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>String Array</em>' attribute.
+	 * @see #getStringArray()
+	 * @generated
+	 */
+	void setStringArray(String[] value);
+
+	/**
+	 * Returns the value of the '<em><b>Byte Array</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Byte Array</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Byte Array</em>' attribute.
+	 * @see #setByteArray(byte[])
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleList_ByteArray()
+	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.ByteArray" required="true"
+	 *        extendedMetaData="kind='element' name='byteArray'"
+	 * @generated
+	 */
+	byte[] getByteArray();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getByteArray <em>Byte Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Byte Array</em>' attribute.
+	 * @see #getByteArray()
+	 * @generated
+	 */
+	void setByteArray(byte[] value);
 
 } // SimpleList

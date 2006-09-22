@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.2 2006/09/22 13:58:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -39,8 +39,10 @@ import org.hibernate.property.Setter;
  * This class implements both the getter, setter and propertyaccessor interfaces. When the getGetter and getSetter
  * methods are called it returns itself.
  * 
+ * This accessor also handles arrays of primitive types.
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class EAttributePropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -50,9 +52,13 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	/** The field name for which this elist getter operates */
 	protected final EAttribute eAttribute;
 
+	/** The instanceclass */
+	protected final Class instanceClass;
+	
 	/** Constructor */
 	public EAttributePropertyHandler(EAttribute eAttribute) {
 		this.eAttribute = eAttribute;
+		instanceClass = eAttribute.getEType().getInstanceClass();
 		AssertUtil.assertTrue(eAttribute.getName() + " is a many feature which is not handled by this accessor ",
 				!eAttribute.isMany());
 		log.debug("Created getter/setter for " + StoreUtil.toString(eAttribute));
@@ -135,6 +141,128 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 		if (curValue != null && curValue.equals(value))
 			return; // do not set if not changed
 		EObject eobj = (EObject) target;
-		eobj.eSet(eAttribute, value);
+
+		final Object setValue;
+		if (value.getClass() != instanceClass) {
+			final Class valClass = value.getClass();
+			if (valClass == Integer[].class) {
+				setValue = convert((Integer[])value);
+			} else if (valClass == Byte[].class) {
+				setValue = convert((Byte[])value);
+			} else if (valClass == Boolean[].class) {
+				setValue = convert((Boolean[])value);
+			} else if (valClass == Double[].class) {
+				setValue = convert((Double[])value);
+			} else if (valClass == Float[].class) {
+				setValue = convert((Float[])value);
+			} else if (valClass == Long[].class) {
+				setValue = convert((Long[])value);
+			} else if (valClass == Short[].class) {
+				setValue = convert((Short[])value);
+			} else {
+				setValue = convert(value);
+			}
+		} else {
+			setValue = value;
+		}
+		eobj.eSet(eAttribute, setValue);
+	}
+	
+	/** Convert to a primitive type */
+	private Object convert(Integer[] arr) {
+		if (instanceClass != int[].class) {
+			log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
+			return arr;
+		}
+		final int[] res = new int[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			res[i] = arr[i].intValue();
+		}
+		return res;
+	}
+	
+	
+	/** Convert to a primitive type */
+	private Object convert(Boolean[] arr) {
+		if (instanceClass != boolean[].class) {
+			log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
+			return arr;
+		}
+		final boolean[] res = new boolean[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			res[i] = arr[i].booleanValue();
+		}
+		return res;
+	}
+	
+	/** Convert to a primitive type */
+	private Object convert(Byte[] arr) {
+		if (instanceClass != byte[].class) {
+			log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
+			return arr;
+		}
+		final byte[] res = new byte[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			res[i] = arr[i].byteValue();
+		}
+		return res;
+	}
+	
+	/** Convert to a primitive type */
+	private Object convert(Double[] arr) {
+		if (instanceClass != double[].class) {
+			log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
+			return arr;
+		}
+		final double[] res = new double[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			res[i] = arr[i].doubleValue();
+		}
+		return res;
+	}
+	
+	/** Convert to a primitive type */
+	private Object convert(Float[] arr) {
+		if (instanceClass != float[].class) {
+			log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
+			return arr;
+		}
+		final float[] res = new float[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			res[i] = arr[i].floatValue();
+		}
+		return res;
+	}
+	
+	/** Convert to a primitive type */
+	private Object convert(Long[] arr) {
+		if (instanceClass != long[].class) {
+			log.debug("Expecting [] as instance class but it is: " + instanceClass.getName());
+			return arr;
+		}
+		final long[] res = new long[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			res[i] = arr[i].longValue();
+		}
+		return res;
+	}
+	
+	/** Convert to a primitive type */
+	private Object convert(Short[] arr) {
+		if (instanceClass != short[].class) {
+			log.debug("Expecting short[] as instance class but it is: " + instanceClass.getName());
+			return arr;
+		}
+		final short[] res = new short[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			res[i] = arr[i].shortValue();
+		}
+		return res;
+	}
+	
+	/** Capature all, do not convert */
+	private Object convert(Object arr) {
+		log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
+		return arr;
 	}
 }

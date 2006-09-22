@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleListImpl.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: SimpleListImpl.java,v 1.3 2006/09/22 13:58:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -35,6 +35,10 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Simpletype
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getShor <em>Shor</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getDat <em>Dat</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getLimitedstring <em>Limitedstring</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getIntArray <em>Int Array</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getDoubleArray <em>Double Array</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getStringArray <em>String Array</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getByteArray <em>Byte Array</em>}</li>
  * </ul>
  * </p>
  *
@@ -159,6 +163,86 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @ordered
 	 */
 	protected EList limitedstring = null;
+
+	/**
+	 * The default value of the '{@link #getIntArray() <em>Int Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIntArray()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INT_ARRAY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIntArray() <em>Int Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIntArray()
+	 * @generated
+	 * @ordered
+	 */
+	protected int[] intArray = INT_ARRAY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDoubleArray() <em>Double Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoubleArray()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double[] DOUBLE_ARRAY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDoubleArray() <em>Double Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoubleArray()
+	 * @generated
+	 * @ordered
+	 */
+	protected double[] doubleArray = DOUBLE_ARRAY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStringArray() <em>String Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringArray()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String[] STRING_ARRAY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStringArray() <em>String Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringArray()
+	 * @generated
+	 * @ordered
+	 */
+	protected String[] stringArray = STRING_ARRAY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getByteArray() <em>Byte Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getByteArray()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte[] BYTE_ARRAY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getByteArray() <em>Byte Array</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getByteArray()
+	 * @generated
+	 * @ordered
+	 */
+	protected byte[] byteArray = BYTE_ARRAY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -337,6 +421,90 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int[] getIntArray() {
+		return intArray;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIntArray(int[] newIntArray) {
+		int[] oldIntArray = intArray;
+		intArray = newIntArray;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimpletypesPackage.SIMPLE_LIST__INT_ARRAY, oldIntArray, intArray));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double[] getDoubleArray() {
+		return doubleArray;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDoubleArray(double[] newDoubleArray) {
+		double[] oldDoubleArray = doubleArray;
+		doubleArray = newDoubleArray;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimpletypesPackage.SIMPLE_LIST__DOUBLE_ARRAY, oldDoubleArray, doubleArray));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String[] getStringArray() {
+		return stringArray;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStringArray(String[] newStringArray) {
+		String[] oldStringArray = stringArray;
+		stringArray = newStringArray;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimpletypesPackage.SIMPLE_LIST__STRING_ARRAY, oldStringArray, stringArray));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public byte[] getByteArray() {
+		return byteArray;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setByteArray(byte[] newByteArray) {
+		byte[] oldByteArray = byteArray;
+		byteArray = newByteArray;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimpletypesPackage.SIMPLE_LIST__BYTE_ARRAY, oldByteArray, byteArray));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_LIST__CODE:
@@ -359,6 +527,14 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 				return getDat();
 			case SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING:
 				return getLimitedstring();
+			case SimpletypesPackage.SIMPLE_LIST__INT_ARRAY:
+				return getIntArray();
+			case SimpletypesPackage.SIMPLE_LIST__DOUBLE_ARRAY:
+				return getDoubleArray();
+			case SimpletypesPackage.SIMPLE_LIST__STRING_ARRAY:
+				return getStringArray();
+			case SimpletypesPackage.SIMPLE_LIST__BYTE_ARRAY:
+				return getByteArray();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -409,6 +585,18 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 				getLimitedstring().clear();
 				getLimitedstring().addAll((Collection)newValue);
 				return;
+			case SimpletypesPackage.SIMPLE_LIST__INT_ARRAY:
+				setIntArray((int[])newValue);
+				return;
+			case SimpletypesPackage.SIMPLE_LIST__DOUBLE_ARRAY:
+				setDoubleArray((double[])newValue);
+				return;
+			case SimpletypesPackage.SIMPLE_LIST__STRING_ARRAY:
+				setStringArray((String[])newValue);
+				return;
+			case SimpletypesPackage.SIMPLE_LIST__BYTE_ARRAY:
+				setByteArray((byte[])newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -450,6 +638,18 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 			case SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING:
 				getLimitedstring().clear();
 				return;
+			case SimpletypesPackage.SIMPLE_LIST__INT_ARRAY:
+				setIntArray(INT_ARRAY_EDEFAULT);
+				return;
+			case SimpletypesPackage.SIMPLE_LIST__DOUBLE_ARRAY:
+				setDoubleArray(DOUBLE_ARRAY_EDEFAULT);
+				return;
+			case SimpletypesPackage.SIMPLE_LIST__STRING_ARRAY:
+				setStringArray(STRING_ARRAY_EDEFAULT);
+				return;
+			case SimpletypesPackage.SIMPLE_LIST__BYTE_ARRAY:
+				setByteArray(BYTE_ARRAY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -481,6 +681,14 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 				return dat != null && !dat.isEmpty();
 			case SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING:
 				return limitedstring != null && !limitedstring.isEmpty();
+			case SimpletypesPackage.SIMPLE_LIST__INT_ARRAY:
+				return INT_ARRAY_EDEFAULT == null ? intArray != null : !INT_ARRAY_EDEFAULT.equals(intArray);
+			case SimpletypesPackage.SIMPLE_LIST__DOUBLE_ARRAY:
+				return DOUBLE_ARRAY_EDEFAULT == null ? doubleArray != null : !DOUBLE_ARRAY_EDEFAULT.equals(doubleArray);
+			case SimpletypesPackage.SIMPLE_LIST__STRING_ARRAY:
+				return STRING_ARRAY_EDEFAULT == null ? stringArray != null : !STRING_ARRAY_EDEFAULT.equals(stringArray);
+			case SimpletypesPackage.SIMPLE_LIST__BYTE_ARRAY:
+				return BYTE_ARRAY_EDEFAULT == null ? byteArray != null : !BYTE_ARRAY_EDEFAULT.equals(byteArray);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -514,6 +722,14 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 		result.append(dat);
 		result.append(", limitedstring: ");
 		result.append(limitedstring);
+		result.append(", intArray: ");
+		result.append(intArray);
+		result.append(", doubleArray: ");
+		result.append(doubleArray);
+		result.append(", stringArray: ");
+		result.append(stringArray);
+		result.append(", byteArray: ");
+		result.append(byteArray);
 		result.append(')');
 		return result.toString();
 	}

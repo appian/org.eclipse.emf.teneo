@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.4 2006/09/19 07:24:14 mtaal Exp $
+ * $Id: HbUtil.java,v 1.5 2006/09/22 13:58:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -43,7 +43,7 @@ import org.hibernate.property.PropertyAccessor;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class HbUtil {
 
@@ -98,6 +98,7 @@ public class HbUtil {
 			if (eattr.isMany()) {
 				return ds.getHbContext().createEListAccessor(efeature, extraLazy);
 			} else {
+				// note also array types are going here!
 				return ds.getHbContext().createEAttributeAccessor(eattr);
 			}
 		}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyBasicMapper.java,v 1.4 2006/09/13 10:39:52 mtaal Exp $
+ * $Id: ManyBasicMapper.java,v 1.5 2006/09/22 13:58:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class ManyBasicMapper extends AbstractMapper {
 	/** The logger for all these exceptions */
@@ -55,11 +55,14 @@ public class ManyBasicMapper extends AbstractMapper {
 				"persistence-modifier", "persistent");
 
 		EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();
+        final boolean isArray = eAttribute.getEType().getInstanceClass() != null
+			&& eAttribute.getEType().getInstanceClass().isArray();
 
-		if (eAttribute.getEType().getInstanceClass() != null && eAttribute.getEType().getInstanceClass().isArray()) {
+		if (isArray) {
 			// handle arrays differently
-			field.addAttribute("embedded", "true");
-			field.addElement("array").addAttribute("embedded-element", "true");
+			field.addElement("array");
+			field.addElement("join");
+			field.addElement("element");
 			return; // and return from here
 		} else if (StoreUtil.isMixed(eAttribute)) {
 			field.addElement("collection").addAttribute("element-type", AnyFeatureMapEntry.class.getName());
@@ -67,6 +70,10 @@ public class ManyBasicMapper extends AbstractMapper {
 			MappingUtil.addFeatureMapEntryMapping(field);
 		} else if (FeatureMapUtil.isFeatureMap(eAttribute)) {
 			MappingUtil.addGenericFeatureMapEntryMapping(field, aAttribute, aAttribute.getOneToMany().getFetch());
+		} else if (isArray) {
+			field.addElement("array");
+			field.addElement("join");
+			field.addElement("element");
 		} else {
 			String elemType = aAttribute.getOneToMany().getTargetEntity();
 			boolean isAnyType = false;

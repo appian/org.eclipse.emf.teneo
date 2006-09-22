@@ -12,13 +12,17 @@
     </genEnums>
     <genDataTypes ecoreDataType="simpletypes.ecore#//Bool"/>
     <genDataTypes ecoreDataType="simpletypes.ecore#//Byte"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//ByteArray"/>
     <genDataTypes ecoreDataType="simpletypes.ecore#//Date"/>
     <genDataTypes ecoreDataType="simpletypes.ecore#//Double"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//DoubleArray"/>
     <genDataTypes ecoreDataType="simpletypes.ecore#//Float"/>
     <genDataTypes ecoreDataType="simpletypes.ecore#//Int"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//IntArray"/>
     <genDataTypes ecoreDataType="simpletypes.ecore#//LimitedString"/>
     <genDataTypes ecoreDataType="simpletypes.ecore#//Long"/>
     <genDataTypes ecoreDataType="simpletypes.ecore#//SimpleEnumObject"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//StringArray"/>
     <genClasses ecoreClass="simpletypes.ecore#//SimpleList">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/code"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/boo"/>
@@ -30,6 +34,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/shor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/dat"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/limitedstring"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/intArray"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/doubleArray"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/stringArray"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/byteArray"/>
     </genClasses>
     <genClasses ecoreClass="simpletypes.ecore#//SimpleType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/code"/>
