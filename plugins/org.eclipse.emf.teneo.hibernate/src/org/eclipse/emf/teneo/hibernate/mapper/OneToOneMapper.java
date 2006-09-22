@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.2 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.3 2006/09/22 05:21:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -101,7 +101,9 @@ class OneToOneMapper extends AbstractAssociationMapper implements OneToOneProces
 						paReference.getAnnotatedEReference().getEReferenceType())));
 
 		addCascadesForSingle(associationElement, oto.getCascade());
-		addFetchType(associationElement, oto.getFetch());
+		// todo default false until proxies are supported
+		associationElement.addAttribute("lazy", "false");
+		//addFetchType(associationElement, oto.getFetch());
 		final List joinColumns = getJoinColumns(paReference);
 		final boolean forceNullable = (oto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
 		addJoinColumns(associationElement, joinColumns, forceNullable);

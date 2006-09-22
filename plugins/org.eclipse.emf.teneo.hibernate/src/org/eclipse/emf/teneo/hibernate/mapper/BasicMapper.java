@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.6 2006/09/08 04:26:47 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.7 2006/09/22 05:21:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -122,6 +122,7 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
                 basic = PannotationFactory.eINSTANCE.createBasic();
             }
 
+            // Buildtime enhancement not supported
             propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
             addColumn(propElement, eAttribute.getName(), getColumn(paAttribute), getHbmContext()
                     .isCurrentElementFeatureMap(), false);

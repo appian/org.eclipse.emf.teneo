@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.4 2006/09/06 21:59:33 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.5 2006/09/22 05:21:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -179,6 +179,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * Sets the lazy attribute of the associationElement based on the fetchtype.
 	 */
 	protected void addFetchType(Element associationElement, FetchType fetch) {
+		// TODO: when proxies are supported the below should be changed!
 		associationElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(fetch) ? "true" : "false");
 	}
 

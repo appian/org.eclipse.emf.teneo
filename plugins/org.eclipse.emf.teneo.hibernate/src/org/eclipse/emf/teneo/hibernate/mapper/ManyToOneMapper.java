@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.2 2006/09/22 05:21:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -23,6 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.processing.ManyToOneProcessor;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
@@ -75,7 +76,10 @@ class ManyToOneMapper extends AbstractAssociationMapper implements ManyToOneProc
 		// associationElement.addAttribute("access", "org.eclipse.emf.teneo.hibernate.mapping.EFeatureAccessor");
 
 		addCascadesForSingle(associationElement, mto.getCascade());
-		addFetchType(associationElement, mto.getFetch());
+		// todo default false until proxies are supported
+		associationElement.addAttribute("lazy", "false");
+		//addFetchType(associationElement, mto.getFetch());
+		
 		addJoinColumns(associationElement, jcs, mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
 
 		associationElement.addAttribute("not-null",
