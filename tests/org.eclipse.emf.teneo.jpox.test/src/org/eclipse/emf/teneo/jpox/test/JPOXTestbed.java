@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.24 2006/09/14 03:47:01 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.25 2006/09/26 09:41:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -74,6 +74,7 @@ public class JPOXTestbed extends Testbed {
 	/** Test the rundir */
 	static {
 		try {
+			System.err.println("rundir: " + RUN_BASE_DIR);
 			if (RUN_BASE_DIR.indexOf("www-data") != -1) { // UGLY, replace with smarter solution!
 				runningOnEMFTServer = true;
 				log.debug("Path to jdo file directory does not exist: " + RUN_BASE_DIR);
