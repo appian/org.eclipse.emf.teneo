@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.10 2006/09/21 00:56:55 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.11 2006/09/26 13:23:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class PersistenceOptions {
 
@@ -135,6 +135,11 @@ public class PersistenceOptions {
 	 * uppercase in uppercase, none will just work as it did until now
 	 */
 	public static final String SQL_CASE_STRATEGY = NAMING_PREFIX + "strategy";
+    
+    /**
+     * Determines whether to always include a version mapping even if one is not specified.  Defaults to "true"
+     */
+    public static final String ALWAYS_VERSION = MAPPING_PREFIX + "always_version";
 
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
@@ -154,6 +159,7 @@ public class PersistenceOptions {
 		props.setProperty(DISABLE_ECONTAINER_MAPPING, "false");
 		props.setProperty(MAXIMUM_SQL_NAME_LENGTH, "-1");
 		props.setProperty(IGNORE_EANNOTATIONS, "false");
+        props.setProperty(ALWAYS_VERSION, "true");
 		return props;
 	}
 
@@ -339,6 +345,10 @@ public class PersistenceOptions {
 		Collections.sort(names);
 		return (String[]) names.toArray(new String[names.size()]);
 	}
+
+    public boolean getAlwaysVersion() {
+        return Boolean.valueOf(properties.getProperty(ALWAYS_VERSION)).booleanValue();
+    }
 
 	// TODO: Add remaining accessor wrappers.
 }

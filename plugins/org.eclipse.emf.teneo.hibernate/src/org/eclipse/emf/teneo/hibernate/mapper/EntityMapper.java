@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.3 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.4 2006/09/26 13:23:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -292,8 +292,11 @@ class EntityMapper extends AbstractMapper {
 				if (versionElement == null) {
 					versionElement = addVersionProperty();
 				}
-				entityElement.remove(versionElement);
-				entityElement.add(index, versionElement);
+                
+                if (null != versionElement) { // In case this is not versioned
+                    entityElement.remove(versionElement);
+                    entityElement.add(index, versionElement);
+                }
 			}
 
 			getHbmContext().setCurrent(entityElement.getParent());
@@ -491,6 +494,10 @@ class EntityMapper extends AbstractMapper {
 		// MT2: agree this can be controlled by an option.
 		assert (getHbmContext().getCurrent().element("version") == null);
 
+        if (!getHbmContext().alwaysVersion()) {
+            return null;
+        }
+        
 		// note specific accessor is required because version accessor is not retrieved through
 		// emf tuplizer
 		return getHbmContext().getCurrent().addElement("version").

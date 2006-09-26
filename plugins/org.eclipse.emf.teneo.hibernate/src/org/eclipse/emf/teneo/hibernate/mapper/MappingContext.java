@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.5 2006/09/06 21:59:33 mtaal Exp $
+ * $Id: MappingContext.java,v 1.6 2006/09/26 13:23:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -95,6 +95,8 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** The sql case strategy */
 	private SQLCaseStrategy sqlCaseStrategy;
+    
+    private boolean alwaysVersion;
 
 	/** The constructor */
 	MappingContext() {
@@ -114,6 +116,7 @@ public class MappingContext extends AbstractProcessingContext {
 		idColumnName = po.getIdColumnName();
 		maximumSqlNameLength = po.getMaximumSqlNameLength();
 		sqlCaseStrategy = po.getSQLCaseStrategy();
+        alwaysVersion = po.getAlwaysVersion();
 	}
 
 	/** Return the concrete impl. class */
@@ -376,4 +379,9 @@ public class MappingContext extends AbstractProcessingContext {
 	public String getIdColumnName() {
 		return idColumnName;
 	}
+    
+	/** Return the alwaysversion option */
+    public boolean alwaysVersion() {
+        return alwaysVersion;
+    }
 }

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.7 2006/09/07 22:27:50 mtaal Exp $
+ * $Id: IdMapper.java,v 1.8 2006/09/26 13:23:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -147,7 +147,7 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 			final Element keyPropertyElement = compositeIdElement.addElement("key-property");
 			keyPropertyElement.addAttribute("name", aFeature.getAnnotatedEStructuralFeature().getName());
 			addColumn(keyPropertyElement, aAttribute.getAnnotatedEAttribute().getName(), getColumn(aAttribute),
-					getHbmContext().isCurrentElementFeatureMap(), false);
+					getHbmContext().isCurrentElementFeatureMap(), true);
 			keyPropertyElement.addAttribute("type", hbType(aAttribute.getAnnotatedEAttribute().getEAttributeType()));
 		}
 		getHbmContext().setCurrent(compositeIdElement.getParent());
