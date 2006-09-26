@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.7 2006/09/21 00:57:12 mtaal Exp $
+ * $Id: AllTests.java,v 1.8 2006/09/26 12:47:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.annotations;
@@ -29,7 +29,6 @@ import org.eclipse.emf.teneo.test.emf.annotations.DuplicatesAction;
 import org.eclipse.emf.teneo.test.emf.annotations.EDataTypeAction;
 import org.eclipse.emf.teneo.test.emf.annotations.IdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationAction;
-import org.eclipse.emf.teneo.test.emf.annotations.JoinColumnsAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LazyLibraryAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LobAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ManyToManyAction;
@@ -45,7 +44,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class AllTests {
 

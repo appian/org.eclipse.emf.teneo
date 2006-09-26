@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.7 2006/09/21 00:56:35 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.8 2006/09/26 12:47:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class JPOXMappingGenerator {
@@ -54,11 +54,6 @@ public class JPOXMappingGenerator {
 
 	/** The suffix used for an id column in a list */
 	protected static final String ID_COLUMN_SUFFIX = "_ID";
-
-	/**
-	 * List of unique column names over all eclasses/structural features
-	 */
-	protected ArrayList uniqueNames = new ArrayList();
 
 	/** The mapping context used */
 	private MappingContext mappingContext;
@@ -194,31 +189,6 @@ public class JPOXMappingGenerator {
 
 		// process the inheritance annotation
 		mappingContext.getInheritanceMapper().map(aClass, classElement);
-			
-		if (aClass.getTable() != null) {
-			mappingContext.getTableMapper().map(aClass.getTable(), classElement);
-		}
-
-		if (aClass.hasIdAnnotatedFeature()) {
-			log.debug("Has id field");
-			classElement.addAttribute("identity-type", "application");
-		} else {
-			log.debug("No explicit id field");
-			classElement.addAttribute("identity-type", "datastore");
-		}
-
-		if (aClass.getSecondaryTables() != null && aClass.getSecondaryTables().size() > 0) {
-			for (Iterator it = aClass.getSecondaryTables().iterator(); it.hasNext();) {
-				final SecondaryTable st = (SecondaryTable)it.next();
-				final Element joinElement = classElement.addElement("join");
-				joinElement.addAttribute("table", st.getName());
-				for (Iterator kit = st.getPkJoinColumns().iterator(); kit.hasNext();) {
-					final PrimaryKeyJoinColumn pkjc = (PrimaryKeyJoinColumn)kit.next();
-					joinElement.addElement("column"). 
-						addAttribute("name", pkjc.getName());
-				}
-			}
-		}
 
 		if (aClass.hasVersionAnnotatedFeature()) {
 			PAnnotatedEAttribute versionAttribute = null;
@@ -243,6 +213,31 @@ public class JPOXMappingGenerator {
 			classElement.addElement("version") 
 				.addAttribute("strategy", "version-number") 
 				.addAttribute("column", versionColumnName);
+		}
+			
+		if (aClass.getTable() != null) {
+			mappingContext.getTableMapper().map(aClass.getTable(), classElement);
+		}
+
+		if (aClass.hasIdAnnotatedFeature()) {
+			log.debug("Has id field");
+			classElement.addAttribute("identity-type", "application");
+		} else {
+			log.debug("No explicit id field");
+			classElement.addAttribute("identity-type", "datastore");
+		}
+
+		if (aClass.getSecondaryTables() != null && aClass.getSecondaryTables().size() > 0) {
+			for (Iterator it = aClass.getSecondaryTables().iterator(); it.hasNext();) {
+				final SecondaryTable st = (SecondaryTable)it.next();
+				final Element joinElement = classElement.addElement("join");
+				joinElement.addAttribute("table", st.getName());
+				for (Iterator kit = st.getPkJoinColumns().iterator(); kit.hasNext();) {
+					final PrimaryKeyJoinColumn pkjc = (PrimaryKeyJoinColumn)kit.next();
+					joinElement.addElement("column"). 
+						addAttribute("name", pkjc.getName());
+				}
+			}
 		}
 
 		mappingContext.setCurrentAClass(aClass);
