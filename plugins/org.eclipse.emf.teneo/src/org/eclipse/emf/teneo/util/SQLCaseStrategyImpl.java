@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: SQLCaseStrategyImpl.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
+ * $Id: SQLCaseStrategyImpl.java,v 1.3 2006/09/26 10:00:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
  * Contains number of default implementations of the sql case strategy, nl. lower, upper and none
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class SQLCaseStrategyImpl {
@@ -42,11 +42,11 @@ public class SQLCaseStrategyImpl {
 				return new LowerCase();
 			}
 			if (option.toLowerCase().compareTo("uppercase") == 0) {
-				log.debug("Creating " + LowerCase.class.getName() + " as case strategy");
+				log.debug("Creating " + UpperCase.class.getName() + " as case strategy");
 				return new UpperCase();
 			}
 			if (option.toLowerCase().compareTo("none") == 0) {
-				log.debug("Creating " + LowerCase.class.getName() + " as case strategy");
+				log.debug("Creating " + None.class.getName() + " as case strategy");
 				return new None();
 			}
 
