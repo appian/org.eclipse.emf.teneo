@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.3 $ $Date: 2006/09/13 16:05:49 $
+	@version $Revision: 1.4 $ $Date: 2006/09/26 12:45:14 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -26,6 +26,9 @@
 		<p>Options are passed to the HbDataStore using a Properties object which is set using the HbDataStore.setPersistenceProperties method.</p>
 		<p>Boolean options can have the lower case String values: "false" or "true".</p>
 		<ul>
+		<li><strong>PersistenceOptions.ALWAYS_VERSION</strong>: this option (boolean, default: true) determines if the system should automatically 
+		add a version attribute to each class mapping. If set to true (the default) then the system will add a version property to the mapping if 
+		no other eattribute has a version annotation. If set to false then the version property is not added automatically.</li>
 		<li><strong>PersistenceOptions.DISABLE_ECONTAINER_MAPPING</strong>: this option (boolean) controls if the container relations
 		are mapped explicitly in the database, see also <a href="hibernate_relations.html#Storing+container+relation">here</a>.</li>
 		<li><strong>PersistenceOptions.FETCH_CONTAINMENT_EAGERLY</strong>: if set to "true" will set the fetch strategy of all

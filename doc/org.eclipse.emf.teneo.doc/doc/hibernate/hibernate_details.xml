@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.2 $ $Date: 2006/09/13 16:05:49 $
+	@version $Revision: 1.3 $ $Date: 2006/09/26 12:45:14 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -73,6 +73,16 @@
 			<p>The Hibernate integration does not make use of the Hibernate Proxy.</p>
 			<p>Primitive features and single refererences are eagerly loaded. ELists are 
 		lazily loaded. In the future probably also single-references will be lazily loaded.</p>
+		</section>
+		<section><title>Synthetic ID and Version properties</title>
+			<p>When Teneo detects that a certain type does not have an id or version annotated property then
+			it will add these automatically. The synthetic id and version are hidden for the developer. You can
+			retrieve the hidden synthetic id or version through the class org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler.
+			You can prevent the automatic adding of a synthetic version property by setting the PersistenceOptions.ALWAYS_VERSION 
+			to false, see <a href="options.html">here</a>. If this property is false then only efeatures with a version annotation are
+			translated into a version mapping.</p>
+			<p>Synthetic id and version use object equality (==), this means that synthetic id and version will not
+			work if objects are transferred to other systems and back (for example in case of client-server communication).</p>
 		</section>
 		<section id="cutpaste">
 			<title>Move an EObject between EContainers or support cut and paste in the EMF editor</title>
