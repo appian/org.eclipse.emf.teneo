@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.26 2006/09/26 15:21:41 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.27 2006/09/27 05:24:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -74,23 +74,19 @@ public class JPOXTestbed extends Testbed {
 	/** Test the rundir */
 	static {
 		try {
-			System.err.println("rundir: " + RUN_BASE_DIR);
 			if (RUN_BASE_DIR.indexOf("www-data") != -1) { // UGLY, replace with smarter solution!
 				runningOnEMFTServer = true;
 				log.debug("Path to jdo file directory does not exist: " + RUN_BASE_DIR);
 				final File pluginsDir = new File(System.getProperty("user.dir"), "plugins");
-				System.err.println(pluginsDir.getAbsolutePath());
 				final File pluginDir = Utils.getPluginDir(pluginsDir, "org.eclipse.emf.teneo.jpox.test");
 				if (pluginDir != null) {
 					RUN_BASE_DIR = pluginDir.getAbsolutePath() + File.separator + "run";
-					System.err.println("NOT NULL");
 				} else {
 					// error will be thrown later because class initialization errors are sometimes
 					// difficult to find
 					log.error("Directory for jdo files does not exist! " + pluginsDir.getAbsolutePath() + 
 							File.separator + "org.eclipse.emf.teneo.jpox.test....");					
 				}
-				System.err.println(RUN_BASE_DIR);
 			}
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while checking directory " + RUN_BASE_DIR, e);
@@ -122,6 +118,7 @@ public class JPOXTestbed extends Testbed {
 	 * Request a store for the given configuration.
 	 */
 	public TestStore createStore(AbstractTest testCase) {
+		System.err.println("RUNNING TEST " + testCase.getClass().getName());
 		try {
 			if (!new File(RUN_BASE_DIR).exists()) {
 				log.error("Directory for jdo files does not exist " + RUN_BASE_DIR);
