@@ -9,5 +9,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.annotations,
+ org.eclipse.emf.teneo.hibernate.libraries,
  org.eclipse.emf.teneo.hibernate,
- org.eclipse.emf.teneo.jpox
+ org.eclipse.emf.teneo.jpox,
+ org.eclipse.emf.teneo.jpox.libraries
