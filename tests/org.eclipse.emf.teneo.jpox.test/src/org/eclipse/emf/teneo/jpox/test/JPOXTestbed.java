@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.27 2006/09/27 05:24:10 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.28 2006/09/27 05:36:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -118,7 +118,7 @@ public class JPOXTestbed extends Testbed {
 	 * Request a store for the given configuration.
 	 */
 	public TestStore createStore(AbstractTest testCase) {
-		System.err.println("RUNNING TEST " + testCase.getClass().getName());
+		System.err.println("RUNNING TEST " + testCase.getName() + " - " + getActiveConfiguration().getName());
 		try {
 			if (!new File(RUN_BASE_DIR).exists()) {
 				log.error("Directory for jdo files does not exist " + RUN_BASE_DIR);
