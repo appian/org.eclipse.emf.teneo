@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.5 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.6 2006/09/27 20:37:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -182,6 +182,7 @@ class AnnotationTokenizer {
 					do {
 						lChar = data[++lCur];
 					} while (lChar == '-' || lChar == '_' || lChar == '/' || lChar == '@' || ('0' <= lChar && lChar <= '9')
+                            || lChar == ':'
 							|| ('a' <= lChar && lChar <= 'z') || ('A' <= lChar && lChar <= 'Z'));
 	
 					tokEnd = lCur; // Save endpoint of current lexeme.
@@ -195,7 +196,9 @@ class AnnotationTokenizer {
 	
 					do {
 						lChar = data[++lCur];
-					} while (lChar == ',' || lChar == '.' || lChar == ' ' || lChar == '_' || lChar == '/' || lChar == '@' || ('0' <= lChar && lChar <= '9')
+					} while (lChar == ',' || lChar == '.' || lChar == ' ' || lChar == '_' || lChar == '/' || lChar == '@'
+                            || lChar == ':' || lChar == '=' || lChar == '\''
+                            || ('0' <= lChar && lChar <= '9')
 							|| ('a' <= lChar && lChar <= 'z') || ('A' <= lChar && lChar <= 'Z'));
 	
 					if (lChar != '\"') {

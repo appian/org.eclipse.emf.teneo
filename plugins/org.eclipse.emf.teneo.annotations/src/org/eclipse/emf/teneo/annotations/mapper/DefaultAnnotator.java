@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.2 2006/09/22 13:58:19 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.3 2006/09/27 20:37:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -76,7 +76,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class DefaultAnnotator {
 
@@ -941,8 +941,11 @@ public class DefaultAnnotator {
 					+ oppName;
 			joinTable.setName(trunc(jTableName.toUpperCase().toUpperCase(), false));
 		}
-		// if (joinTable.getJoinColumns() == null) joinTable.setJoinColumns(aFactory.createJoinColumns());
-		joinTable.getJoinColumns().addAll(getJoinColumns(aReference.getPaEClass(), eReference, forceOptional, false));
+        if (joinTable.getJoinColumns() == null) {
+            joinTable.getJoinColumns().addAll(
+                    getJoinColumns(aReference.getPaEClass(), eReference,
+                            forceOptional, false));
+        }
 	}
 
 	/** Adds default annotations for a one to one reference */

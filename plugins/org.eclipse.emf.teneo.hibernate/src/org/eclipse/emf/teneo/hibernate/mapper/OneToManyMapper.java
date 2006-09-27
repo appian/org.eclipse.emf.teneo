@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.6 2006/09/22 05:21:48 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.7 2006/09/27 20:37:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -106,7 +106,7 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
         	otm.setIndexed(false);
         }
         
-		if (otm.isIndexed()) {
+		if (!isMap && otm.isIndexed()) {
 			addListIndex(collElement, paReference);
 		}
 
@@ -151,6 +151,7 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 		addIsSetAttribute(hbReference);
 	}
 
+	/** Add the map key and value */
     private void addMap(final Element collElement, final HbAnnotatedEReference hbReference) {
         final EClass refType = hbReference.getAnnotatedEReference().getEReferenceType();
         final EStructuralFeature keyFeature = refType.getEStructuralFeature("key");
@@ -166,7 +167,7 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
         if (keyType instanceof EDataType) {
             if (EcoreDataTypes.INSTANCE.isBasicType((EDataType) keyType)) {
                 Element mapKey = collElement.addElement("map-key");
-                String mapKeyColumn = "KEY";
+                String mapKeyColumn = null;
                 
                 if (hbReference.getHbMapKey() != null) {
                     if (getHbmContext().getOverride("key") != null) {
@@ -188,9 +189,13 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
                     mapKeyColumn = getHbmContext().getOverride("key").getName();
                 }
                 
-                mapKey.addAttribute("column", mapKeyColumn);
+                if (mapKeyColumn != null) {
+                	mapKey.addAttribute("column", mapKeyColumn);
+                }
                 mapKey.addAttribute("type", AbstractMapper.hbType((EDataType) keyType));
             }
+        } else { // key is an entity
+            Element mapKey = collElement.addElement("map-key");
         }
         
         final EClassifier valueType = valueFeature.getEType();
@@ -211,8 +216,13 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
                 eltCol = (Column) columns.get(0);
             }
             
-            mapElt.addAttribute("column", (null == eltCol) ? "VALUE" : eltCol.getName());
+            if (eltCol  != null && eltCol.getName() != null) {
+            	mapElt.addAttribute("column", eltCol.getName());
+            }
             mapElt.addAttribute("type", AbstractMapper.hbType((EDataType) valueType));
+        } else {
+        	collElement.addElement("one-to-many")
+        		.addAttribute("class", valueType.getName());
         }
     }
 

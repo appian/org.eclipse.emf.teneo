@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEAnnotationParserImporter.java,v 1.2 2006/09/06 17:26:44 mtaal Exp $
+ * $Id: HbEAnnotationParserImporter.java,v 1.3 2006/09/27 20:37:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -28,34 +28,46 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
  */
 public class HbEAnnotationParserImporter extends EAnnotationParserImporter {
 
+	/** The prefix for hibernate types */
+	private static final String HB_PREFIX = "hb:";
+
 	/** Returns true if the source is a hibernate source or a generic source */
 	protected boolean isValidSource(String source) {
-		if (source == null) return false;
+		if (source == null)
+			return false;
 		return source.startsWith("teneo.hibernate") || super.isValidSource(source);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.annotations.parser.EClassResolver#getEClass(java.lang.String)
 	 */
 	public EClass getEClass(String name) {
-		final EClass eClass = (EClass)HbAnnotationPackage.eINSTANCE.getEClassifier(name);
-		if (eClass == null) {
-			return super.getEClass(name);
+		if (name.startsWith(HB_PREFIX)) {
+			return (EClass) HbAnnotationPackage.eINSTANCE.getEClassifier(name.substring(HB_PREFIX.length()));
+		} else {
+			final EClass eClass = super.getEClass(name);
+			if (eClass == null) {
+				return (EClass) HbAnnotationPackage.eINSTANCE.getEClassifier(name);
+			}
+			return eClass;
 		}
-		return eClass;
 	}
-	
+
 	/** Find the efeature */
 	public EStructuralFeature getEStructuralFeature(EClass eClass, String name) {
 		for (Iterator it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
-			final EStructuralFeature ef = (EStructuralFeature)it.next();
-			if (ef.getName().compareToIgnoreCase(name) == 0) return ef;
+			final EStructuralFeature ef = (EStructuralFeature) it.next();
+			if (ef.getName().compareToIgnoreCase(name) == 0)
+				return ef;
 		}
 		// not found try with the hb prefix
 		final String hbName = "hb" + name;
 		for (Iterator it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
-			final EStructuralFeature ef = (EStructuralFeature)it.next();
-			if (ef.getName().compareToIgnoreCase(hbName) == 0) return ef;
+			final EStructuralFeature ef = (EStructuralFeature) it.next();
+			if (ef.getName().compareToIgnoreCase(hbName) == 0)
+				return ef;
 		}
 		throw new HbStoreException("No efeature " + name + " for eclass " + eClass.getName());
 	}

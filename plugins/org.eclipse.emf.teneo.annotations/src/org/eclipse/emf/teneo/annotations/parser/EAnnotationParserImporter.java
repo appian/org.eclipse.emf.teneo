@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAnnotationParserImporter.java,v 1.5 2006/09/06 21:59:49 mtaal Exp $
+ * $Id: EAnnotationParserImporter.java,v 1.6 2006/09/27 20:37:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -51,6 +51,9 @@ public class EAnnotationParserImporter implements EClassResolver {
 	/** annotation parser */
 	private AnnotationParser annotationParser = new AnnotationParser();
 	
+	/** The prefix to distinguish jpa annotations from hb or jpox annotations */
+    private static final String JPA_PREFIX = "jpa:";
+
 	/** Parse an pamodel */
 	public void process(PAnnotatedModel paModel) {
 		for (Iterator it = paModel.getPaEPackages().iterator(); it.hasNext();) {
@@ -119,7 +122,7 @@ public class EAnnotationParserImporter implements EClassResolver {
 				boolean found = false;
 				for (Iterator eit = pee.eClass().getEAllReferences().iterator(); eit.hasNext();) {
 					final EReference eref = (EReference)eit.next();
-					if (eref.getEReferenceType() == eobj.eClass()) {
+					if (eref.getEReferenceType().isInstance(eobj)) {
 						log.debug("Found EReference " + eref.getName() + " for " + eobj.eClass().getName());
 						if (eref.isMany()) {
 							((List)pee.eGet(eref)).add(eobj);
@@ -171,6 +174,9 @@ public class EAnnotationParserImporter implements EClassResolver {
 	 * @see org.eclipse.emf.teneo.annotations.parser.EClassResolver#getEClass(java.lang.String)
 	 */
 	public EClass getEClass(String name) {
+        if (name.startsWith(JPA_PREFIX)) {
+        	return getEClass(name.substring(JPA_PREFIX.length()));
+        }
 		return (EClass)PannotationPackage.eINSTANCE.getEClassifier(name);
 	}
 
