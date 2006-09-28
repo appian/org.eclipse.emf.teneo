@@ -17,7 +17,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.1 $ $Date: 2006/08/03 09:58:08 $
+	@version $Revision: 1.2 $ $Date: 2006/09/28 20:03:26 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -42,6 +42,7 @@
 				<li>Single Reference: contained, non-contained, one-way, two-way</li>
 				<li>One-To-Many relations (EList): contained, non-contained, one-way, two-way</li>
 				<li>Many-to-Many relations (EList): contained and non-contained, one-way, two-way</li>
+				<li>EMap</li>
 				<li>Notifications and adapters (limited testing done)</li>
 				<li>Enumerations</li>
 				<li>Resource implementations</li>
@@ -92,13 +93,6 @@
 				<li>etc.</li>
 			</ul>
 			<p>See <a href="http://www.jpox.org/docs/features.html">here</a> for a complete listing of the features of the JPOX product.</p>
-		</section>
-		<section id="notsupported">
-			<title>Not (yet) Supported EMF Features</title>
-			<p>The following EMF features are (currently) not supported or have not been tested to ensure that they are supported:</p>
-			<ul>
-				<li>EMaps</li>
-			</ul>
 		</section>
 		<section id="notjpoxsupported">
 			<title>Not Supported by JPOX</title>

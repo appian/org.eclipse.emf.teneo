@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
+ * $Id: StoreResource.java,v 1.3 2006/09/28 20:04:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -49,6 +49,7 @@ import org.eclipse.emf.ecore.util.EContentsEList.FeatureIteratorImpl;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.StoreValidationException;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
+import org.eclipse.emf.teneo.mapping.elist.PersistableEMap;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
@@ -56,7 +57,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -613,6 +614,10 @@ public abstract class StoreResource extends ResourceImpl {
 								Object value = eObject.eGet(feature, resolve());
 								if (value instanceof PersistableDelegateList
 										&& !((PersistableDelegateList) value).isLoaded()) {
+									continue;
+								}
+								if (value instanceof PersistableEMap
+										&& !((PersistableEMap) value).isLoaded()) {
 									continue;
 								}
 							}

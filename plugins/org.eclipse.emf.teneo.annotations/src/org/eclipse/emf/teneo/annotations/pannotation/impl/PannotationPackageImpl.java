@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.9 2006/09/06 17:25:59 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.10 2006/09/28 20:03:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -1059,6 +1059,15 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getManyToOne_TargetEntity() {
+		return (EAttribute)manyToOneEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getManyToOne_Fetch() {
 		return (EAttribute)manyToOneEClass.getEStructuralFeatures().get(2);
 	}
@@ -1070,15 +1079,6 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 */
 	public EAttribute getManyToOne_Optional() {
 		return (EAttribute)manyToOneEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getManyToOne_TargetEntity() {
-		return (EAttribute)manyToOneEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**

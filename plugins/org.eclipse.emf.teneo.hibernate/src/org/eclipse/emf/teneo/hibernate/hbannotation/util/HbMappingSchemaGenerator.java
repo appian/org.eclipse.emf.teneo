@@ -11,7 +11,7 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HbMappingSchemaGenerator.java,v 1.2 2006/09/06 21:59:33 mtaal Exp $
+ * $Id: HbMappingSchemaGenerator.java,v 1.3 2006/09/28 20:03:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
@@ -36,7 +36,7 @@ public class HbMappingSchemaGenerator extends PersistenceMappingSchemaGenerator 
 		final HbMappingSchemaGenerator pmsg = new HbMappingSchemaGenerator();
 		pmsg.setAnnotationEPackages(new EPackage[] { HbAnnotationPackage.eINSTANCE, PannotationPackage.eINSTANCE });
 		pmsg.setModelEPackage(HbModelPackage.eINSTANCE);
-		pmsg.setNameSpace("http://www.eclipse.org/emft/teneo/hibernate/persistence");
+		pmsg.setNameSpace("http://www.eclipse.org/emft/teneo");
 		try {
 			final FileWriter fw = new FileWriter("/home/mtaal/mytmp/persistence-mapping.xsd");
 			fw.write(pmsg.generate());

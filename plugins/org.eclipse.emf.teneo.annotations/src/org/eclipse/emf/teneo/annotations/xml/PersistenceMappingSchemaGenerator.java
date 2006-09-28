@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingSchemaGenerator.java,v 1.2 2006/09/06 21:59:50 mtaal Exp $
+ * $Id: PersistenceMappingSchemaGenerator.java,v 1.3 2006/09/28 20:03:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Parses the pamodel and pannotation model to generate a xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class PersistenceMappingSchemaGenerator {
@@ -86,7 +86,7 @@ public class PersistenceMappingSchemaGenerator {
 	private final Map schemaTypeNamesByAnnotationType = new HashMap();
 
 	/** Target name space */
-	private String nameSpace = "http://www.eclipse.org/emft/teneo/persistence";
+	private String nameSpace = "http://www.eclipse.org/emft/teneo";
 	
 	/** Initialize some main things */
 	private void initialize() {
@@ -116,6 +116,32 @@ public class PersistenceMappingSchemaGenerator {
 				.addAttribute("name", "epackage").addAttribute("type", "EPackage");
 
 
+		// first determine which types have only one string field, these are handled
+		// slightly different because this makes the xml easier
+		for (int i = 0; i < annotationEPackages.length; i++) {
+			final List eclassifiers = new ArrayList(annotationEPackages[i].getEClassifiers());
+			for (Iterator it = eclassifiers.iterator(); it.hasNext();) {
+				final EClassifier eClassifier = (EClassifier) it.next();
+				String schemaTypeName = eClassifier.getName();
+				if (eClassifier instanceof EClass) {
+					EClass eClass = (EClass)eClassifier;
+
+					// Annotation types with a single feature are converted to simple type references in the schema.
+					if (oneMappableFeature(eClass)) {
+						final EStructuralFeature eStructuralFeature = (EStructuralFeature) eClass.getEStructuralFeatures().get(0);
+						final EClassifier eType = eStructuralFeature.getEType();
+						schemaTypeName = (String) schemaTypeNamesByAnnotationType.get(eType.getName());
+						if (schemaTypeName == null) {
+							schemaTypeName = eType.getName();
+						}
+						schemaTypeNamesByAnnotationType.put(eClassifier.getName(), schemaTypeName);
+						continue;
+					}
+				}
+				schemaTypeNamesByAnnotationType.put(eClassifier.getName(), schemaTypeName);
+			}
+		}
+		
 		// process the annotations first to get the correct typing
 		final List annotationList = new ArrayList();
 		for (int i = 0; i < annotationEPackages.length; i++) {
@@ -160,6 +186,7 @@ public class PersistenceMappingSchemaGenerator {
 
 				// Annotation types with a single feature are converted to simple type references in the schema.
 				if (oneMappableFeature(eClass)) {
+					/*
 					final EStructuralFeature eStructuralFeature = (EStructuralFeature) eClass.getEStructuralFeatures().get(0);
 					final EClassifier eType = eStructuralFeature.getEType();
 					schemaTypeName = (String) schemaTypeNamesByAnnotationType.get(eType.getName());
@@ -167,6 +194,7 @@ public class PersistenceMappingSchemaGenerator {
 						schemaTypeName = eType.getName();
 					}
 					schemaTypeNamesByAnnotationType.put(eClassifier.getName(), schemaTypeName);
+					*/
 					continue;
 				}
 
@@ -224,6 +252,7 @@ public class PersistenceMappingSchemaGenerator {
 		addZeroUnbounded(choiceElement);
 		processStructuralFeatures(choiceElement, getPAnnotatedEPackage().getEAllStructuralFeatures());
 		choiceElement.addElement("xsd:element").addAttribute("name", "eclass").addAttribute("type", "EClass");
+		choiceElement.addElement("xsd:element").addAttribute("name", "edatatype").addAttribute("type", "EDataType");
 		// add the namespace-uri attribute
 		epackElement.addElement("xsd:attribute").addAttribute("name", "namespace-uri").addAttribute("type",
 				"xsd:anyURI").addAttribute("use", "required");
@@ -290,9 +319,11 @@ public class PersistenceMappingSchemaGenerator {
 		final Element choiceElement = propertyElement.addElement("xsd:choice");
 		addZeroUnbounded(choiceElement);
 		final List features = new ArrayList(getPAnnotatedEAttribute().getEAllStructuralFeatures());
-		features.addAll(getPAnnotatedEReference().getEStructuralFeatures());
+		features.addAll(getPAnnotatedEReference().getEAllStructuralFeatures());
 
 		processStructuralFeatures(choiceElement, features);
+		propertyElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
+			.addAttribute("use", "required");
 		return propertyElement;
 	}
 
@@ -312,10 +343,10 @@ public class PersistenceMappingSchemaGenerator {
 	private void processStructuralFeature(Element parentElement, EStructuralFeature eStructuralFeature) {
 		final EClassifier eType = eStructuralFeature.getEType();
 
-		if (isIgnorable(eStructuralFeature) || isUnsupported(eType)) {
+		if (isIgnorable(eStructuralFeature) || isIgnorable(eType) || isUnsupported(eType)) {
 			return;
 		}
-
+		
 		final int minOccurs = (eStructuralFeature.isRequired() ? 1 : 0);
 
 		// Determine the element name.
@@ -389,7 +420,7 @@ public class PersistenceMappingSchemaGenerator {
 	 * Tests whether an EModelElement can be ignored for persistence mapping.
 	 * 
 	 */
-	private static boolean isIgnorable(EModelElement eModelElement) {
+	protected static boolean isIgnorable(EModelElement eModelElement) {
 		final EAnnotation eAnnotation = eModelElement.getEAnnotation(PERSISTENCE_MAPPING_SOURCE);
 		boolean ignore = false;
 		if (eAnnotation != null) {
@@ -458,7 +489,7 @@ public class PersistenceMappingSchemaGenerator {
 	 * Tests whether an EModelElement is unsupported.
 	 * 
 	 */
-	private static boolean isUnsupported(EModelElement eModelElement) {
+	protected static boolean isUnsupported(EModelElement eModelElement) {
 		return (eModelElement.getEAnnotation(UNSUPPORTED_SOURCE) != null);
 	}
 

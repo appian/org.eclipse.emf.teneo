@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModel.java,v 1.4 2006/09/06 21:59:49 mtaal Exp $
+ * $Id: PAnnotatedModel.java,v 1.5 2006/09/28 20:03:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='AtMostOnePackage DistinctGenerators'"
  * @generated
  */
-public interface PAnnotatedModel extends EObject{
+public interface PAnnotatedModel extends EObject {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -58,7 +58,7 @@ public interface PAnnotatedModel extends EObject{
 	 * @generated
 	 */
 	EList getPaEPackages();
-	
+
 	/**
 	 * @return Returns the unique <code>PAnnotatedEDataType</code> associated (via the <code>annotatedElement</code>
 	 *         feature) to the given <code>EDataType</code>.

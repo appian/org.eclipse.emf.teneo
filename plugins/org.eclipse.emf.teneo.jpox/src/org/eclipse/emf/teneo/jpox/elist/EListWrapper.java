@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.3 2006/09/28 20:04:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -65,7 +65,7 @@ import org.jpox.store.query.Queryable;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
+ * @version $Revision: 1.3 $ $Date: 2006/09/28 20:04:11 $
  */
 
 public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList {
@@ -301,7 +301,7 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 		final PersistenceCapable pc = (PersistenceCapable) getEObject();
 		return pc.jdoIsDetached();
 	}
-	
+
 	/** Returns the persistence manager from the owner */
 	private PersistenceManager getPM() {
 		final PersistenceCapable pc = (PersistenceCapable) getEObject();

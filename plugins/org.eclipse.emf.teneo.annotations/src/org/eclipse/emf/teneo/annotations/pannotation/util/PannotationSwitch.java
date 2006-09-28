@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationSwitch.java,v 1.12 2006/09/06 21:59:49 mtaal Exp $
+ * $Id: PannotationSwitch.java,v 1.13 2006/09/28 20:03:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.annotations.pannotation.*;
+
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;

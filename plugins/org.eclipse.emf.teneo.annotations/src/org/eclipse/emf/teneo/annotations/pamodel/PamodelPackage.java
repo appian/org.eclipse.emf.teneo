@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.9 2006/09/06 21:59:49 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.10 2006/09/28 20:03:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -2330,7 +2330,7 @@ public interface PamodelPackage extends EPackage {
 		 */
 		EReference PANNOTATED_EDATA_TYPE__PA_EPACKAGE = eINSTANCE.getPAnnotatedEDataType_PaEPackage();
 
-			/**
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl <em>PAnnotated EReference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

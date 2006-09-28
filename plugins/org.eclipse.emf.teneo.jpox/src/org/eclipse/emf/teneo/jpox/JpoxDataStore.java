@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.3 2006/09/21 00:56:36 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.4 2006/09/28 20:04:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -39,6 +39,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.AbstractEnumerator;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -92,7 +93,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/09/21 00:56:36 $
+ * @version $Revision: 1.4 $ $Date: 2006/09/28 20:04:10 $
  */
 
 public class JpoxDataStore {
@@ -261,6 +262,8 @@ public class JpoxDataStore {
 		tm.addType(List.class.getName(), EListMapping.class.getName(),
 				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
 		tm.addType(EList.class.getName(), EListMapping.class.getName(),
+				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
+		tm.addType(EMap.class.getName(), EListMapping.class.getName(),
 				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
 		tm.addType(FeatureMap.class.getName(), FeatureMapMapping.class.getName(),
 				FeatureMapWrapper.class.getName(), false, "1.4", true, false, false, clr);

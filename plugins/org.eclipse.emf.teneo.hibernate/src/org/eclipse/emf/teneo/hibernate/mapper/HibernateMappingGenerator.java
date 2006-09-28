@@ -12,13 +12,14 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.2 2006/09/28 20:03:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
@@ -27,6 +28,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
@@ -148,9 +150,18 @@ public class HibernateMappingGenerator {
 			if (paEClass.getEntity() != null) {
 				// this is a persistent entity
 				PAnnotatedEClass paSuperEntity = paEClass.getPaSuperEntity();
-				if (paSuperEntity != null)
+				if (paSuperEntity != null) {
 					// enforce processing order consistent with inheritance order
 					processPAClass(paSuperEntity);
+				}
+				
+				// ignore the map entries which do not have an explicit entity 
+				if (paEClass.getAnnotatedEClass().getInstanceClass() == Map.Entry.class &&
+						paEClass.getEntity() == null) {
+					logger.debug("Ignoring " + paEClass.getAnnotatedEClass().getName() + " ignored, is a map entry");
+					paEClass.setTransient(PannotationFactory.eINSTANCE.createTransient());
+					return;
+				}
 
 				hbmContext.getEntityMapper().processEntity(paEClass);
 

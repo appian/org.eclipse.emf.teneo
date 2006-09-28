@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListPropertyHandler.java,v 1.6 2006/09/06 12:02:43 mtaal Exp $
+ * $Id: EListPropertyHandler.java,v 1.7 2006/09/28 20:03:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -24,9 +24,6 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -56,7 +53,7 @@ import org.hibernate.property.Setter;
  * methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -107,9 +104,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
         if (obj instanceof PersistableEMap) {
             return ((PersistableEMap) obj).getPersistableMap();
         }
-        if (obj instanceof EMap) {
-            return ((EMap) obj).map();
-        }
 		if (obj instanceof PersistableDelegateList) {
 			return ((PersistableDelegateList) obj).getDelegate();
 		} else { // else replace the elist otherwise the wrong collection descriptor is placed in the collection map
@@ -149,9 +143,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 		final Object obj = ((EObject) owner).eGet(eFeature);
         if (obj instanceof PersistableEMap) {
             return ((PersistableEMap) obj).getPersistableMap();
-        }
-        if (obj instanceof EMap) {
-            return ((EMap) obj).map();
         }
 		if (obj instanceof PersistableEList) {
 			return ((PersistableEList) obj).getDelegate();
@@ -220,12 +211,6 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 				// if currentvalue is not null then use the passed value
 				if (currentValue != null && currentValue instanceof PersistableEList) {
 					((PersistableEList) currentValue).replaceDelegate((List) value);
-                } else if (Map.Entry.class.isAssignableFrom(eFeature.getEType().getInstanceClass())) {
-                    EClassifier type = eFeature.getEType();
-                    Class instanceClass = type.getEPackage().getEFactoryInstance().create((EClass) type).getClass();
-                    javaField.set(target, 
-                            new PersistableEMap((EClass) eFeature.getEType(), instanceClass,
-                                    (InternalEObject) target, eFeature.getFeatureID(), (Map) value));
 				} else {
 					javaField.set(target, createPersistableList((InternalEObject) target, eFeature, (List) value));
 				}

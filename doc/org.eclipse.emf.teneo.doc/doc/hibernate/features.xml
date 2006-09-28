@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.2 $ $Date: 2006/09/13 10:42:34 $
+	@version $Revision: 1.3 $ $Date: 2006/09/28 20:03:27 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -32,6 +32,7 @@
 				<li>Single Reference: contained, non-contained, one-way, two-way</li>
 				<li>One-To-Many relations (EList): contained, non-contained, one-way, two-way</li>
 				<li>Feature maps</li>
+				<li>EMap</li>
 				<li>Notifications and adapters (limited testing done)</li>
 				<li>Enumerations</li>
 				<li>Resource implementation</li>
@@ -82,7 +83,6 @@
 			<p>The following EMF features are (currently) not supported or have not been tested to ensure that they are supported:</p>
 			<ul>
 				<li>XML Schema constructions such as xsd:any, xsd:anytype etc.</li>
-				<li>EMaps</li>
 				<li>xsd:list, xsd:union</li>
 			</ul>
 		</section>
