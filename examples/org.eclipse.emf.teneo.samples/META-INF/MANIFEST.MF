@@ -4,9 +4,7 @@ Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.samples
 Bundle-Version: 0.7.5.qualifier
 Bundle-Localization: plugin
-Require-Bundle: org.eclipse.emf.common,
- org.eclipse.emf.ecore,
- org.eclipse.emf.ecore.xmi,
+Require-Bundle: org.eclipse.emf.ecore.xmi,
  org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
@@ -228,6 +226,9 @@ Export-Package: extlibrary,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.util,
+ org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap,
+ org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl,
+ org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.util,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.util,

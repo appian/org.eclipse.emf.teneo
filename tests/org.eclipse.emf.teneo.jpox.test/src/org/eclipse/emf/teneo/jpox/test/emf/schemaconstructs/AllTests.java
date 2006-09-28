@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.4 2006/09/22 13:58:50 mtaal Exp $
+ * $Id: AllTests.java,v 1.5 2006/09/28 20:05:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -22,6 +22,7 @@ import junit.framework.TestSuite;
 import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.AnyTypeAction;
+import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EcoreAttrsAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.ExtensionAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.GroupAction;
@@ -39,7 +40,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AllTests {
 
@@ -47,14 +48,14 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 				JPOXTestbed.instance().getConfigurations());
 		
+		suite.addTestSuite(EMapAction.class);
+
 		suite.addTestSuite(SimpleTypeAction.class);
 
-		if (!JPOXTestbed.isRunningOnEMFTServer()) {
-			suite.addTestSuite(EcoreAttrsAction.class);
-			suite.addTestSuite(SimplefeaturemapAction.class);
-			suite.addTestSuite(SubstitutionAction.class);
-			suite.addTestSuite(SubstitutionzvonAction.class);
-		}
+		suite.addTestSuite(EcoreAttrsAction.class);
+		suite.addTestSuite(SimplefeaturemapAction.class);
+		suite.addTestSuite(SubstitutionAction.class);
+		suite.addTestSuite(SubstitutionzvonAction.class);
 
 		suite.addTestSuite(ListUnionAction.class);
 		suite.addTestSuite(ListAction.class);
