@@ -11,11 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.6 2006/09/05 12:17:06 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.7 2006/09/28 20:08:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
-
+ 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -83,7 +83,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class HbDataStore {
