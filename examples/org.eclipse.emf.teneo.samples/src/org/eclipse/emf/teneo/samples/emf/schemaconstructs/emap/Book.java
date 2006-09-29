@@ -2,13 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Book.java,v 1.1 2006/09/28 20:06:04 mtaal Exp $
+ * $Id: Book.java,v 1.2 2006/09/29 12:51:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap;
 
 import java.util.Map;
-
-import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EObject;
 

@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleList.java,v 1.3 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: SimpleList.java,v 1.4 2006/09/29 12:51:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesFactoryImpl.java,v 1.3 2006/09/22 13:58:33 mtaal Exp $
+ * $Id: SimpletypesFactoryImpl.java,v 1.4 2006/09/29 12:51:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -16,8 +16,6 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.*;
-
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType;

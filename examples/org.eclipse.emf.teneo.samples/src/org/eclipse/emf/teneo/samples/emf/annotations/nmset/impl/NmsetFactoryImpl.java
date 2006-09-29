@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NmsetFactoryImpl.java,v 1.3 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: NmsetFactoryImpl.java,v 1.4 2006/09/29 12:51:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.nmset.impl;
 
@@ -11,8 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.samples.emf.annotations.nmset.*;
-
 import org.eclipse.emf.teneo.samples.emf.annotations.nmset.MyItem;
 import org.eclipse.emf.teneo.samples.emf.annotations.nmset.NmsetFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.nmset.NmsetPackage;
