@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.5 $ $Date: 2006/09/29 20:33:14 $
+	@version $Revision: 1.6 $ $Date: 2006/09/29 20:44:38 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -40,7 +40,7 @@
 				standard Hibernate features. EMF objects can be persisted in most major relational databases and retrieved using an EMF resource approach or 
 					HQL queries.
 				</p>
-			<p><strong>Current version (Teneo): 0.7.5 BETA for Eclipse 3.2/EMF 2.2/Hibernate3.2 (and Hibernate 3.1.3) and jdk 1.4 and later,
+			<p><strong>Current version (Teneo): 0.7.5 BETA for Eclipse 3.2/EMF 2.2/Hibernate3.2rc4 and jdk 1.4 and later,
 			<a href="status.html">Status</a>, <a href="features.html">Features</a>, <a href="changelog.html">Changelog</a></strong></p>
 			<p><strong>Releases are not guaranteed to be backward compatible. When upgrading: please read the <a href="changelog.html">Changelog</a>
 			and the <a href="upgrading.html">Upgrading</a> pages</strong>.</p>
