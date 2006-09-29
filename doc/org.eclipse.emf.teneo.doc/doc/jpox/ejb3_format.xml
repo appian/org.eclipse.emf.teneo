@@ -21,7 +21,11 @@
 			an EDataType (see <a href="ejb3_features.html#edatatype">here</a> for more information).</p>
 		<section id="target">
 			<title>JPA Annotations in EAnnotations using the java annotation syntax</title>
-			<p>Teneo EAnnotations in Teneo always have the source: teneo.jpa.</p>
+			<p>The EAnnotations should adhere to the following format:</p>
+			<ul>
+			<li>The source must be: <strong>teneo.jpa</strong></li>
+			<li>The key must be: <strong>appinfo</strong> or <strong>value</strong></li>
+			</ul>
 		</section>
 		<section id="xml">
 			<title>JPA Annotations in XML</title>

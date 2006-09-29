@@ -9,7 +9,7 @@
 
 <!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.4 $ $Date: 2006/09/14 21:47:40 $
+	@version $Revision: 1.5 $ $Date: 2006/09/29 20:33:14 $
 -->
 
 <!DOCTYPE document PUBLIC
@@ -40,7 +40,7 @@
 				all EMF and JDO 2.0/JPOX features. EMF objects can be persisted in most major relational databases and retrieved using an EMF resource approach or 
 					advanced JDOQL queries.
 				</p>
-			<p><strong>Current version (Teneo): 0.7.5 BETA (last updated on 13 September 2006) for Eclipse 3.2/EMF 2.2/JPOX 1.1.1 and jdk 1.4 and later,
+			<p><strong>Current version (Teneo): 0.7.5 BETA for Eclipse 3.2/EMF 2.2/JPOX 1.1.1 and jdk 1.4 and later,
 			<a href="status.html">Status</a>, <a href="features.html">Features</a>, <a href="changelog.html">Change Log</a></strong></p>
 			<p><strong>Releases are not guaranteed to be backward compatible. Before upgrading first read the <a href="changelog.html">Change Log</a> and
 			<a href="upgrading.html">Upgrading</a> pages.</strong></p>
