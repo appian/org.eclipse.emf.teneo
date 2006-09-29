@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.7 2006/09/28 20:08:54 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.8 2006/09/29 20:35:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -74,7 +74,7 @@ import org.hibernate.mapping.SimpleValue;
 import org.hibernate.mapping.Table;
 import org.hibernate.mapping.Value;
 import org.hibernate.tool.hbm2ddl.SchemaUpdate;
-
+ 
 /**
  * Holds the SessionFactory and performs different initialization related actions. Initializes the database and offers
  * xml import and export methods. In addition can be used to retrieve all referers to a certain eobject.
@@ -83,7 +83,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class HbDataStore {
