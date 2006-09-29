@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.30 2006/09/27 07:11:56 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.31 2006/09/29 04:02:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -50,6 +50,9 @@ public class JPOXTestbed extends Testbed {
 	/** The logger for this class */
 	//private static Log log = LogFactory.getLog(JPOXTestbed.class);
 
+	/** The property file to use */
+	private static final String propFileName;
+	
 	/** If we get here then this should be the testbed! */
 	static {
 		Testbed.setTestBed(new JPOXTestbed());
@@ -75,6 +78,7 @@ public class JPOXTestbed extends Testbed {
 	static {
 		try {
 			if (RUN_BASE_DIR.indexOf("www-data") != -1) { // UGLY, replace with smarter solution!
+				propFileName = "/emft_test.properties";
 				runningOnEMFTServer = true;
 				log.debug("Path to jdo file directory does not exist: " + RUN_BASE_DIR);
 				final File pluginsDir = new File(System.getProperty("user.dir"), "plugins");
@@ -87,7 +91,11 @@ public class JPOXTestbed extends Testbed {
 					log.error("Directory for jdo files does not exist! " + pluginsDir.getAbsolutePath() + 
 							File.separator + "org.eclipse.emf.teneo.jpox.test....");					
 				}
+			} else {
+				propFileName = "/local_test.properties";
 			}
+			System.err.println("Property File " + propFileName);
+			
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while checking directory " + RUN_BASE_DIR, e);
 		}
@@ -103,7 +111,7 @@ public class JPOXTestbed extends Testbed {
 
 	/** Constructor */
 	private JPOXTestbed() {
-		super(isRunningOnEMFTServer() ? "/emft_test.properties" : "/local_test.properties");
+		super(propFileName);
 		storeFactory = new JPOXTestStoreFactory();
 	}
 
