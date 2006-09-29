@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: Person.java,v 1.3 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embeddedid;
 
@@ -38,8 +38,8 @@ public interface Person extends Serializable {
 	 * @return the value of the '<em>Name</em>' containment reference.
 	 * @see #setName(Name)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.EmbeddedidPackage#getPerson_Name()
-	 * @model containment="true" resolveProxies="false" required="true"
-	 *        annotation="http://annotation.elver.org/EmbeddedId appinfo='true'"
+	 * @model containment="true" required="true"
+	 *        annotation="teneo.jpa appinfo='@EmbeddedId'"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */
@@ -67,7 +67,7 @@ public interface Person extends Serializable {
 	 * @see #setAddress(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.EmbeddedidPackage#getPerson_Address()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String"
-	 *        annotation="http://annotation.elver.org/Lob appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Lob'"
 	 *        extendedMetaData="kind='element' name='address'"
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LobPackage.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: LobPackage.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lob;
 
@@ -189,7 +189,7 @@ public interface LobPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.lob.impl.PersonImpl <em>Person</em>}' class.
 		 * <!-- begin-user-doc -->

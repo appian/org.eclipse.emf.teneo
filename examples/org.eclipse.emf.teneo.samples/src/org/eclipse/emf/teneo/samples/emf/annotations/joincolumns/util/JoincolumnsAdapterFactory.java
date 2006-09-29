@@ -2,17 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidAdapterFactory.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: JoincolumnsAdapterFactory.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.util;
-
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child;
-import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.CompositeidPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
 
@@ -21,17 +20,17 @@ import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.CompositeidPackage
+ * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage
  * @generated
  */
-public class CompositeidAdapterFactory extends AdapterFactoryImpl {
+public class JoincolumnsAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static CompositeidPackage modelPackage;
+	protected static JoincolumnsPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -39,9 +38,9 @@ public class CompositeidAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CompositeidAdapterFactory() {
+	public JoincolumnsAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = CompositeidPackage.eINSTANCE;
+			modelPackage = JoincolumnsPackage.eINSTANCE;
 		}
 	}
 
@@ -69,8 +68,8 @@ public class CompositeidAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CompositeidSwitch modelSwitch =
-		new CompositeidSwitch() {
+	protected JoincolumnsSwitch modelSwitch =
+		new JoincolumnsSwitch() {
 			public Object caseParent(Parent object) {
 				return createParentAdapter();
 			}
@@ -99,13 +98,13 @@ public class CompositeidAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Parent <em>Parent</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.Parent
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent
 	 * @generated
 	 */
 	public Adapter createParentAdapter() {
@@ -113,13 +112,13 @@ public class CompositeidAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Child <em>Child</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child <em>Child</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.Child
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child
 	 * @generated
 	 */
 	public Adapter createChildAdapter() {
@@ -127,13 +126,13 @@ public class CompositeidAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Person <em>Person</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person <em>Person</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.Person
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person
 	 * @generated
 	 */
 	public Adapter createPersonAdapter() {
@@ -152,4 +151,4 @@ public class CompositeidAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //CompositeidAdapterFactory
+} //JoincolumnsAdapterFactory

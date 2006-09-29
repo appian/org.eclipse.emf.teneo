@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceCutPasteAction.java,v 1.3 2006/09/21 00:57:18 mtaal Exp $
+ * $Id: LibraryResourceCutPasteAction.java,v 1.4 2006/09/29 12:30:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -21,7 +21,6 @@ import java.util.Collections;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
@@ -37,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests cut/paste action
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryResourceCutPasteAction extends AbstractTestAction {
 	/**

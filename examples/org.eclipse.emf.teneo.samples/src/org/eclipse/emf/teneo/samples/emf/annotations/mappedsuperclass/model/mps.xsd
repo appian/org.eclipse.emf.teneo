@@ -6,12 +6,12 @@
     
   	<xsd:complexType name="Document">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/MappedSuperclass">true</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@MappedSuperclass</xsd:appinfo>
 	    </xsd:annotation>
 	    	<xsd:sequence>
 	  		<xsd:element name="myId" type="xsd:long">
 			 	<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/Id">true</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
 	  		<xsd:element name="myGenericInfo" type="xsd:string"/>
@@ -20,7 +20,7 @@
 
   	<xsd:complexType name="ParentDocument">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/MappedSuperclass">true</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@MappedSuperclass</xsd:appinfo>
 	    </xsd:annotation>
 	    	<xsd:complexContent>
       		<xsd:extension base="this:Document">

@@ -17,7 +17,7 @@
       <xsd:element name="name" type="xsd:string"/>
       <xsd:element name="childItem" type="this:ChildItem" maxOccurs="unbounded">
         <xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/Unique">false</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(unique=true)</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
     </xsd:sequence>

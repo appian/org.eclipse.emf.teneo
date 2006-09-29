@@ -33,7 +33,7 @@
 			<element name="shor" type="short" nillable="true"/>
 			<element name="enu" type="this:SimpleEnum" nillable="true">
 			 	<annotation>
-					<appinfo source="http://annotation.elver.org/Enumerated" ecore:key="value">STRING</appinfo>
+					<appinfo source="teneo.jpa">@Enumerated(STRING)</appinfo>
 			    </annotation>
 			</element>
 			<element name="dat" type="this:Date" nillable="true"/>
@@ -50,7 +50,7 @@
 			<element name="inte" type="this:Int" maxOccurs="unbounded"/>
 			<element name="long" type="this:Long" maxOccurs="unbounded">
 			 	<annotation>
-					<appinfo source="http://annotation.elver.org/JoinTable" ecore:key="name">longNum</appinfo>
+					<appinfo source="teneo.jpa">@JoinTable(name="longNum")</appinfo>
 			    </annotation>
 			</element>
 			<element name="shor" type="short" maxOccurs="unbounded"/>

@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Lob" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>lob.xsd</foreignModel>
-  <genPackages prefix="Lob" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
-      disposableProviderFactory="true" ecorePackage="lob.ecore#/">
+  <genPackages prefix="Lob" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="lob.ecore#/">
     <genClasses ecoreClass="lob.ecore#//Person">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lob.ecore#//Person/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lob.ecore#//Person/name"/>

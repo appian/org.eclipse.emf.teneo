@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: Person.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone;
 
@@ -38,7 +38,7 @@ public interface Person extends EObject {
 	 * @see #setAddress(Address)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.ToonePackage#getPerson_Address()
 	 * @model resolveProxies="false"
-	 *        annotation="http://annotation.elver.org/ManyToOne fetch='EAGER' cascade='MERGE PERSIST REFRESH' targetEntity='Address' optional='true'"
+	 *        annotation="teneo.jpa appinfo='@ManyToOne(fetch=EAGER cascade={MERGE,PERSIST,REFRESH} targetEntity=\"Address\" optional=true)'"
 	 *        extendedMetaData="kind='element' name='address'"
 	 * @generated
 	 */
@@ -68,7 +68,7 @@ public interface Person extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.ToonePackage#getPerson_Head()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.Head#getPerson
 	 * @model opposite="person" resolveProxies="false"
-	 *        annotation="http://annotation.elver.org/OneToOne fetch='EAGER' cascade='ALL' targetEntity='Head' optional='true'"
+	 *        annotation="teneo.jpa appinfo='@OneToOne(fetch=EAGER cascade=ALL targetEntity=\"Head\" optional=true)'"
 	 *        extendedMetaData="kind='element' name='head'"
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LazyFactoryImpl.java,v 1.3 2006/09/21 00:56:53 mtaal Exp $
+ * $Id: LazyFactoryImpl.java,v 1.4 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl;
 
@@ -12,8 +12,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.samples.emf.annotations.lazy.*;
-
 import org.eclipse.emf.teneo.samples.emf.annotations.lazy.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.lazy.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.annotations.lazy.LazyFactory;

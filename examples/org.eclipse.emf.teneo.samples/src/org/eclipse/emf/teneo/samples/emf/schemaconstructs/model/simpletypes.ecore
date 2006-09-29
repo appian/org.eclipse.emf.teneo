@@ -124,8 +124,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="long" unique="false" lowerBound="1"
         upperBound="-1" eType="#//Long">
-      <eAnnotations source="http://annotation.elver.org/JoinTable">
-        <details key="name" value="longNum"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;longNum&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -338,8 +338,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enu" unique="false" lowerBound="1"
         eType="#//SimpleEnumObject" defaultValueLiteral="Enum1" unsettable="true">
-      <eAnnotations source="http://annotation.elver.org/Enumerated">
-        <details key="value" value="STRING"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Enumerated(STRING)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

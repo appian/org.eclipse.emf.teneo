@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleTypeObject.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: SimpleTypeObject.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -484,7 +484,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #setEnu(SimpleEnum)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Enu()
 	 * @model default="Enum1" unique="false" unsettable="true" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnumObject" required="true"
-	 *        annotation="http://annotation.elver.org/Enumerated value='STRING'"
+	 *        annotation="teneo.jpa appinfo='@Enumerated(STRING)'"
 	 *        extendedMetaData="kind='element' name='enu'"
 	 * @generated
 	 */

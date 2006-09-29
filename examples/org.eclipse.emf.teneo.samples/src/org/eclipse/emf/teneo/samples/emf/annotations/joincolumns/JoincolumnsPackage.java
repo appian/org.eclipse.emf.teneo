@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidPackage.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: JoincolumnsPackage.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns;
 
@@ -22,18 +22,18 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.CompositeidFactory
+ * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsFactory
  * @model kind="package"
  * @generated
  */
-public interface CompositeidPackage extends EPackage {
+public interface JoincolumnsPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "compositeid";
+	String eNAME = "joincolumns";
 
 	/**
 	 * The package namespace URI.
@@ -41,7 +41,7 @@ public interface CompositeidPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/elver/samples/emf/annotations/jc.ecore";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/annotations/joincolumns";
 
 	/**
 	 * The package namespace name.
@@ -49,7 +49,7 @@ public interface CompositeidPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "org.eclipse.emf.teneo.samples.emf.annotations.joincolumns";
+	String eNS_PREFIX = "joincolumns";
 
 	/**
 	 * The singleton instance of the package.
@@ -57,14 +57,14 @@ public interface CompositeidPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	CompositeidPackage eINSTANCE = org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.CompositeidPackageImpl.init();
+	JoincolumnsPackage eINSTANCE = org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.JoincolumnsPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.PersonImpl <em>Person</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.PersonImpl
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.CompositeidPackageImpl#getPerson()
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.JoincolumnsPackageImpl#getPerson()
 	 * @generated
 	 */
 	int PERSON = 2;
@@ -101,7 +101,7 @@ public interface CompositeidPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.ParentImpl
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.CompositeidPackageImpl#getParent()
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.JoincolumnsPackageImpl#getParent()
 	 * @generated
 	 */
 	int PARENT = 0;
@@ -147,7 +147,7 @@ public interface CompositeidPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.ChildImpl
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.CompositeidPackageImpl#getChild()
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.JoincolumnsPackageImpl#getChild()
 	 * @generated
 	 */
 	int CHILD = 1;
@@ -181,63 +181,63 @@ public interface CompositeidPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Parent <em>Parent</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Parent</em>'.
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.Parent
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent
 	 * @generated
 	 */
 	EClass getParent();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Parent#getChildren <em>Children</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Children</em>'.
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.Parent#getChildren()
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent#getChildren()
 	 * @see #getParent()
 	 * @generated
 	 */
 	EReference getParent_Children();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Child <em>Child</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child <em>Child</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Child</em>'.
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.Child
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child
 	 * @generated
 	 */
 	EClass getChild();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Person <em>Person</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person <em>Person</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Person</em>'.
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.Person
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person
 	 * @generated
 	 */
 	EClass getPerson();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Person#getFirstName <em>First Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFirstName <em>First Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>First Name</em>'.
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.Person#getFirstName()
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFirstName()
 	 * @see #getPerson()
 	 * @generated
 	 */
 	EAttribute getPerson_FirstName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Person#getLastName <em>Last Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getLastName <em>Last Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Last Name</em>'.
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.Person#getLastName()
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getLastName()
 	 * @see #getPerson()
 	 * @generated
 	 */
@@ -250,7 +250,7 @@ public interface CompositeidPackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	CompositeidFactory getCompositeidFactory();
+	JoincolumnsFactory getJoincolumnsFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -270,7 +270,7 @@ public interface CompositeidPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.ParentImpl
-		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.CompositeidPackageImpl#getParent()
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.JoincolumnsPackageImpl#getParent()
 		 * @generated
 		 */
 		EClass PARENT = eINSTANCE.getParent();
@@ -288,7 +288,7 @@ public interface CompositeidPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.ChildImpl
-		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.CompositeidPackageImpl#getChild()
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.JoincolumnsPackageImpl#getChild()
 		 * @generated
 		 */
 		EClass CHILD = eINSTANCE.getChild();
@@ -298,7 +298,7 @@ public interface CompositeidPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.PersonImpl
-		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.CompositeidPackageImpl#getPerson()
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.JoincolumnsPackageImpl#getPerson()
 		 * @generated
 		 */
 		EClass PERSON = eINSTANCE.getPerson();
@@ -321,4 +321,4 @@ public interface CompositeidPackage extends EPackage {
 
 	}
 
-} //CompositeidPackage
+} //JoincolumnsPackage

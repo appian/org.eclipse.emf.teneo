@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Name.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: Name.java,v 1.3 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embeddedid;
 
@@ -22,7 +22,7 @@ import java.io.Serializable;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.EmbeddedidPackage#getName_()
- * @model annotation="http://annotation.elver.org/Embeddable appinfo='true'"
+ * @model annotation="teneo.jpa appinfo='@Embeddable'"
  *        extendedMetaData="name='Name' kind='elementOnly'"
  * @extends Serializable
  * @generated

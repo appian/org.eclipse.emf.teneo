@@ -11,14 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyLibraryAction.java,v 1.4 2006/09/22 13:58:54 mtaal Exp $
+ * $Id: LazyLibraryAction.java,v 1.5 2006/09/29 12:30:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -43,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * does not result in loaded containment elists.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
+ * @version $Revision: 1.5 $ 
 */
 public class LazyLibraryAction extends AbstractTestAction 
 {

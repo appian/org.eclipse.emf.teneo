@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LobPackageImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: LobPackageImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lob.impl;
 
@@ -224,12 +224,8 @@ public class LobPackageImpl extends EPackageImpl implements LobPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Id
-		createIdAnnotations();
-		// http://annotation.elver.org/Lob
-		createLobAnnotations();
-		// http://annotation.elver.org/Column
-		createColumnAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -267,7 +263,7 @@ public class LobPackageImpl extends EPackageImpl implements LobPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "address"
-		   });				
+		   });			
 		addAnnotation
 		  (getPerson_Photo(), 
 		   source, 
@@ -278,56 +274,30 @@ public class LobPackageImpl extends EPackageImpl implements LobPackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Id</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createIdAnnotations() {
-		String source = "http://annotation.elver.org/Id";			
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";			
 		addAnnotation
 		  (getPerson_Id(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
-		   });							
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Lob</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createLobAnnotations() {
-		String source = "http://annotation.elver.org/Lob";						
+			 "appinfo", "@Id"
+		   });				
 		addAnnotation
 		  (getPerson_Address(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
+			 "appinfo", "@Lob"
 		   });			
 		addAnnotation
 		  (getPerson_Photo(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
-		   });		
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Column</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createColumnAnnotations() {
-		String source = "http://annotation.elver.org/Column";									
-		addAnnotation
-		  (getPerson_Photo(), 
-		   source, 
-		   new String[] {
-			 "length", "1000000"
+			 "appinfo", "\n\t\t\t\t\t\t@Lob\n\t\t\t\t\t\t@Column(length=1000000)\n\t\t\t\t"
 		   });	
 	}
 

@@ -6,12 +6,12 @@
 		<xsd:sequence>
 			<xsd:element name="name" type="this:Name">
 				<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/EmbeddedId">true</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">@EmbeddedId</xsd:appinfo>
 				</xsd:annotation>				
 			</xsd:element>
 			<xsd:element name="address" type="xsd:string" minOccurs="0">
 				<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/Lob">true</xsd:appinfo>					
+					<xsd:appinfo source="teneo.jpa">@Lob</xsd:appinfo>					
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
@@ -19,7 +19,7 @@
 	
 	<xsd:complexType name="Name">
 		<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/Embeddable">true</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@Embeddable</xsd:appinfo>
 		</xsd:annotation>
 		<xsd:sequence>
 			<xsd:element name="firstName" type="xsd:string"/>

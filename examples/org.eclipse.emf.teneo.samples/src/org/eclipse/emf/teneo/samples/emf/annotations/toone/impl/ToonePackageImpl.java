@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ToonePackageImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: ToonePackageImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.impl;
 
@@ -280,8 +280,8 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 		createExtendedMetaDataAnnotations();
 		// http://annotation.elver.org/OneToOne
 		createOneToOneAnnotations();
-		// http://annotation.elver.org/ManyToOne
-		createManyToOneAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -368,34 +368,28 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 			 "optional", "false",
 			 "mappedBy", "head"
 		   });						
-		addAnnotation
-		  (getPerson_Head(), 
-		   source, 
-		   new String[] {
-			 "fetch", "EAGER",
-			 "cascade", "ALL",
-			 "targetEntity", "Head",
-			 "optional", "true"
-		   });	
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/ManyToOne</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createManyToOneAnnotations() {
-		String source = "http://annotation.elver.org/ManyToOne";									
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";									
 		addAnnotation
 		  (getPerson_Address(), 
 		   source, 
 		   new String[] {
-			 "fetch", "EAGER",
-			 "cascade", "MERGE PERSIST REFRESH",
-			 "targetEntity", "Address",
-			 "optional", "true"
+			 "appinfo", "@ManyToOne(fetch=EAGER cascade={MERGE,PERSIST,REFRESH} targetEntity=\"Address\" optional=true)"
 		   });			
+		addAnnotation
+		  (getPerson_Head(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@OneToOne(fetch=EAGER cascade=ALL targetEntity=\"Head\" optional=true)"
+		   });	
 	}
 
 } //ToonePackageImpl

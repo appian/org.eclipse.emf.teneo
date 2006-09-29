@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: Person.java,v 1.2 2006/09/29 12:30:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns;
 
@@ -16,13 +16,13 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Person#getFirstName <em>First Name</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Person#getLastName <em>Last Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFirstName <em>First Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getLastName <em>Last Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.CompositeidPackage#getPerson()
- * @model annotation="http://annotation.elver.org/IdClass value='org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID'"
+ * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage#getPerson()
+ * @model annotation="teneo.jpa appinfo='@IdClass(org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID)'"
  * @generated
  */
 public interface Person extends EObject {
@@ -36,14 +36,14 @@ public interface Person extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>First Name</em>' attribute.
 	 * @see #setFirstName(String)
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.CompositeidPackage#getPerson_FirstName()
-	 * @model
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage#getPerson_FirstName()
+	 * @model annotation="teneo.jpa appinfo='@Id'"
 	 * @generated
 	 */
 	String getFirstName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Person#getFirstName <em>First Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFirstName <em>First Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>First Name</em>' attribute.
@@ -62,14 +62,14 @@ public interface Person extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Last Name</em>' attribute.
 	 * @see #setLastName(String)
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.CompositeidPackage#getPerson_LastName()
-	 * @model
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage#getPerson_LastName()
+	 * @model annotation="teneo.jpa appinfo='@Id'"
 	 * @generated
 	 */
 	String getLastName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.annotations.joincolumns.Person#getLastName <em>Last Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getLastName <em>Last Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Last Name</em>' attribute.

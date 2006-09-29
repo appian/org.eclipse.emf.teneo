@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Body.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: Body.java,v 1.2 2006/09/29 12:30:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.transent;
 
@@ -40,7 +40,7 @@ public interface Body extends EObject {
 	 * @see #setTheID(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.transent.TransentPackage#getBody_TheID()
 	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="http://annotation.elver.org/Id appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Id'"
 	 *        extendedMetaData="kind='element' name='theID'"
 	 * @generated
 	 */
@@ -92,8 +92,8 @@ public interface Body extends EObject {
 	 * @return the value of the '<em>Head</em>' containment reference.
 	 * @see #setHead(Head)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.transent.TransentPackage#getBody_Head()
-	 * @model containment="true" resolveProxies="false" required="true"
-	 *        annotation="http://annotation.elver.org/Transient appinfo='true'"
+	 * @model containment="true" required="true"
+	 *        annotation="teneo.jpa appinfo='@Transient'"
 	 *        extendedMetaData="kind='element' name='head'"
 	 * @generated
 	 */

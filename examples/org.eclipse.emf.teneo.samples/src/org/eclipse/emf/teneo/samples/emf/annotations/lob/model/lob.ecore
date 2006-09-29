@@ -10,8 +10,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
-      <eAnnotations source="http://annotation.elver.org/Id">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -27,8 +27,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
-      <eAnnotations source="http://annotation.elver.org/Lob">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -36,11 +36,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="photo" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Base64Binary">
-      <eAnnotations source="http://annotation.elver.org/Lob">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column">
-        <details key="length" value="1000000"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Lob&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Column(length=1000000)&#xA;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

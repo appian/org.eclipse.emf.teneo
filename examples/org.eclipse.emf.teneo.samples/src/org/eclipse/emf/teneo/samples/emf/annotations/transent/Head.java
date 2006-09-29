@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Head.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: Head.java,v 1.2 2006/09/29 12:30:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.transent;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.transent.TransentPackage#getHead()
- * @model annotation="http://annotation.elver.org/Transient appinfo='true'"
+ * @model annotation="teneo.jpa appinfo='@Transient'"
  *        extendedMetaData="name='Head' kind='elementOnly'"
  * @generated
  */
@@ -40,7 +40,7 @@ public interface Head extends EObject {
 	 * @see #setMyID(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.transent.TransentPackage#getHead_MyID()
 	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="http://annotation.elver.org/Id appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Id'"
 	 *        extendedMetaData="kind='element' name='myID'"
 	 * @generated
 	 */

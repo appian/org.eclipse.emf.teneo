@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedidPackageImpl.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: EmbeddedidPackageImpl.java,v 1.2 2006/09/29 12:30:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.impl;
 
@@ -244,30 +244,38 @@ public class EmbeddedidPackageImpl extends EPackageImpl implements EmbeddedidPac
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/Embeddable
-		createEmbeddableAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/EmbeddedId
-		createEmbeddedIdAnnotations();
-		// http://annotation.elver.org/Lob
-		createLobAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Embeddable</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createEmbeddableAnnotations() {
-		String source = "http://annotation.elver.org/Embeddable";		
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (nameEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
-		   });								
+			 "appinfo", "@Embeddable"
+		   });						
+		addAnnotation
+		  (getPerson_Name(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@EmbeddedId"
+		   });			
+		addAnnotation
+		  (getPerson_Address(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Lob"
+		   });	
 	}
 
 	/**
@@ -320,38 +328,6 @@ public class EmbeddedidPackageImpl extends EPackageImpl implements EmbeddedidPac
 			 "kind", "element",
 			 "name", "address"
 		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/EmbeddedId</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createEmbeddedIdAnnotations() {
-		String source = "http://annotation.elver.org/EmbeddedId";							
-		addAnnotation
-		  (getPerson_Name(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });			
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Lob</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createLobAnnotations() {
-		String source = "http://annotation.elver.org/Lob";									
-		addAnnotation
-		  (getPerson_Address(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });	
 	}
 
 } //EmbeddedidPackageImpl

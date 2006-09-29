@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NmsetPackageImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: NmsetPackageImpl.java,v 1.3 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.nmset.impl;
 
@@ -243,8 +243,8 @@ public class NmsetPackageImpl extends EPackageImpl implements NmsetPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Indexed
-		createIndexedAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -300,19 +300,25 @@ public class NmsetPackageImpl extends EPackageImpl implements NmsetPackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Indexed</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createIndexedAnnotations() {
-		String source = "http://annotation.elver.org/Indexed";				
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";				
 		addAnnotation
 		  (getMyItem_YourItem(), 
 		   source, 
 		   new String[] {
-			 "value", "false"
+			 "appinfo", "@ManyToMany(Indexed=false)"
 		   });					
+		addAnnotation
+		  (getYourItem_MyItem(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@ManyToMany(Indexed=false)"
+		   });	
 	}
 
 } //NmsetPackageImpl

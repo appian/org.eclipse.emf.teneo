@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.11 2006/09/22 13:58:14 mtaal Exp $
+ * $Id: AllTests.java,v 1.12 2006/09/29 12:30:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -43,13 +43,15 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed.instance()
 				.getConfigurations());
+		//suite.addTestSuite(EcoreAction.class);
+
 		suite.addTestSuite(DynamicAction.class);
 		suite.addTestSuite(LibrarySerializationAction.class);
 
@@ -82,7 +84,6 @@ public class AllTests {
 		suite.addTestSuite(ProductAction.class);
 		suite.addTestSuite(WorkFlowAction.class);
 		suite.addTestSuite(ForumAction.class);
-
 		return suite;
 	}
 }

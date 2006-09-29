@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParentDocument.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: ParentDocument.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -20,7 +20,7 @@ package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getParentDocument()
- * @model annotation="http://annotation.elver.org/MappedSuperclass appinfo='true'"
+ * @model annotation="teneo.jpa appinfo='@MappedSuperclass'"
  *        extendedMetaData="name='ParentDocument' kind='elementOnly'"
  * @generated
  */

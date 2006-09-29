@@ -17,8 +17,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="yourItem" lowerBound="1"
         upperBound="-1" eType="#//YourItem" eOpposite="#//YourItem/myItem">
-      <eAnnotations source="http://annotation.elver.org/Indexed">
-        <details key="value" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(Indexed=false)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -40,8 +40,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="myItem" lowerBound="1"
         upperBound="-1" eType="#//MyItem" eOpposite="#//MyItem/yourItem">
-      <eAnnotations source="http://annotation.elver.org/Indexed">
-        <details key="value" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(Indexed=false)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

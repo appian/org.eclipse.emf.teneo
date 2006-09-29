@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidPackageImpl.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
+ * $Id: JoincolumnsPackageImpl.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -11,10 +11,11 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child;
-import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.CompositeidFactory;
-import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.CompositeidPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsFactory;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
 
@@ -24,7 +25,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CompositeidPackageImpl extends EPackageImpl implements CompositeidPackage {
+public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57,12 +58,12 @@ public class CompositeidPackageImpl extends EPackageImpl implements CompositeidP
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.CompositeidPackage#eNS_URI
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private CompositeidPackageImpl() {
-		super(eNS_URI, CompositeidFactory.eINSTANCE);
+	private JoincolumnsPackageImpl() {
+		super(eNS_URI, JoincolumnsFactory.eINSTANCE);
 	}
 
 	/**
@@ -94,24 +95,24 @@ public class CompositeidPackageImpl extends EPackageImpl implements CompositeidP
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static CompositeidPackage init() {
-		if (isInited) return (CompositeidPackage)EPackage.Registry.INSTANCE.getEPackage(CompositeidPackage.eNS_URI);
+	public static JoincolumnsPackage init() {
+		if (isInited) return (JoincolumnsPackage)EPackage.Registry.INSTANCE.getEPackage(JoincolumnsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		CompositeidPackageImpl theCompositeidPackage = (CompositeidPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof CompositeidPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new CompositeidPackageImpl());
+		JoincolumnsPackageImpl theJoincolumnsPackage = (JoincolumnsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof JoincolumnsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new JoincolumnsPackageImpl());
 
 		isInited = true;
 
 		// Create package meta-data objects
-		theCompositeidPackage.createPackageContents();
+		theJoincolumnsPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theCompositeidPackage.initializePackageContents();
+		theJoincolumnsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theCompositeidPackage.freeze();
+		theJoincolumnsPackage.freeze();
 
-		return theCompositeidPackage;
+		return theJoincolumnsPackage;
 	}
 
 	/**
@@ -173,8 +174,8 @@ public class CompositeidPackageImpl extends EPackageImpl implements CompositeidP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CompositeidFactory getCompositeidFactory() {
-		return (CompositeidFactory)getEFactoryInstance();
+	public JoincolumnsFactory getJoincolumnsFactory() {
+		return (JoincolumnsFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -247,102 +248,42 @@ public class CompositeidPackageImpl extends EPackageImpl implements CompositeidP
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/JoinColumn/jc1
-		createJc1Annotations();
-		// http://annotation.elver.org/JoinColumn/jc2
-		createJc2Annotations();
-		// http://annotation.elver.org/OrderBy
-		createOrderByAnnotations();
-		// http://annotation.elver.org/IdClass
-		createIdClassAnnotations();
-		// http://annotation.elver.org/Id
-		createIdAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/JoinColumn/jc1</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createJc1Annotations() {
-		String source = "http://annotation.elver.org/JoinColumn";			
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (getParent_Children(), 
 		   source, 
 		   new String[] {
-			 "name", "myParentFirstName",
-			 "referencedColumnName", "firstName"
-		   });					
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/JoinColumn/jc2</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createJc2Annotations() {
-		String source = "http://annotation.elver.org/JoinColumn";				
-		addAnnotation
-		  (getParent_Children(), 
-		   source, 
-		   new String[] {
-			 "name", "myParentLastName",
-			 "referencedColumnName", "lastName"
-		   });				
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/OrderBy</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createOrderByAnnotations() {
-		String source = "http://annotation.elver.org/OrderBy";					
-		addAnnotation
-		  (getParent_Children(), 
-		   source, 
-		   new String[] {
-			 "value", "firstName"
-		   });			
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/IdClass</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIdClassAnnotations() {
-		String source = "http://annotation.elver.org/IdClass";						
+			 "appinfo", "@JoinColumns({@JoinColumn(name=\"myParentFirstName\" referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\" referencedColumnName=\"lastName\")})\n\t@OrderBy(\"firstName\")"
+		   });		
 		addAnnotation
 		  (personEClass, 
 		   source, 
 		   new String[] {
-			 "value", "org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID"
+			 "appinfo", "@IdClass(org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID)"
 		   });		
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Id</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIdAnnotations() {
-		String source = "http://annotation.elver.org/Id";							
 		addAnnotation
 		  (getPerson_FirstName(), 
 		   source, 
 		   new String[] {
+			 "appinfo", "@Id"
 		   });		
 		addAnnotation
 		  (getPerson_LastName(), 
 		   source, 
 		   new String[] {
+			 "appinfo", "@Id"
 		   });
 	}
 
-} //CompositeidPackageImpl
+} //JoincolumnsPackageImpl

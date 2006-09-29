@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="NMSet" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>NMSet.xsd</foreignModel>
-  <genPackages prefix="Nmset" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
-      disposableProviderFactory="true" ecorePackage="nmset.ecore#/">
+  <genPackages prefix="Nmset" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="nmset.ecore#/">
     <genClasses ecoreClass="nmset.ecore#//MyItem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nmset.ecore#//MyItem/name"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference nmset.ecore#//MyItem/yourItem"/>

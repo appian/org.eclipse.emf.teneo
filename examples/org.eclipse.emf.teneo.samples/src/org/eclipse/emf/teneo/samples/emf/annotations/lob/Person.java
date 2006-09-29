@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: Person.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lob;
 
@@ -42,7 +42,7 @@ public interface Person extends EObject {
 	 * @see #setId(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lob.LobPackage#getPerson_Id()
 	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="http://annotation.elver.org/Id appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Id'"
 	 *        extendedMetaData="kind='element' name='id'"
 	 * @generated
 	 */
@@ -122,7 +122,7 @@ public interface Person extends EObject {
 	 * @see #setAddress(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lob.LobPackage#getPerson_Address()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String"
-	 *        annotation="http://annotation.elver.org/Lob appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Lob'"
 	 *        extendedMetaData="kind='element' name='address'"
 	 * @generated
 	 */
@@ -150,8 +150,7 @@ public interface Person extends EObject {
 	 * @see #setPhoto(byte[])
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.lob.LobPackage#getPerson_Photo()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Base64Binary"
-	 *        annotation="http://annotation.elver.org/Lob appinfo='true'"
-	 *        annotation="http://annotation.elver.org/Column length='1000000'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Lob\n\t\t\t\t\t\t@Column(length=1000000)\n\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='photo'"
 	 * @generated
 	 */

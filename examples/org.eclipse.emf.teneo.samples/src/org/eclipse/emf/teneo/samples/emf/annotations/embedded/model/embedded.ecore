@@ -4,8 +4,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="embedded"
     nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/embedded" nsPrefix="embedded">
   <eClassifiers xsi:type="ecore:EClass" name="Embeddable">
-    <eAnnotations source="http://annotation.elver.org/Embeddable">
-      <details key="appinfo" value="true"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Embeddable"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Embeddable"/>

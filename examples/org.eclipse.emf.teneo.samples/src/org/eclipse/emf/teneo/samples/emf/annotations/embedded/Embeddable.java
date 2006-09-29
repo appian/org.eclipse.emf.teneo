@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Embeddable.java,v 1.2 2006/09/07 10:06:30 mtaal Exp $
+ * $Id: Embeddable.java,v 1.3 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbeddable()
- * @model annotation="http://annotation.elver.org/Embeddable appinfo='true'"
+ * @model annotation="teneo.jpa appinfo='@Embeddable'"
  *        extendedMetaData="name='Embeddable' kind='elementOnly'"
  * @generated
  */

@@ -8,12 +8,12 @@
 	    <xsd:sequence>
 	      <xsd:element name="theID" type="xsd:long">
 		 	<xsd:annotation>
-				<xsd:appinfo source="http://annotation.elver.org/Id">true</xsd:appinfo>
+				<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
 		    </xsd:annotation>
 		  </xsd:element>
 	      <xsd:element name="head" type="this:Head" >
 		 	<xsd:annotation>
-				<xsd:appinfo source="http://annotation.elver.org/Transient">true</xsd:appinfo>
+				<xsd:appinfo source="teneo.jpa">@Transient</xsd:appinfo>
 		    </xsd:annotation>
 		  </xsd:element>
     		</xsd:sequence>
@@ -21,12 +21,12 @@
 
   	<xsd:complexType name="Head">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/Transient">true</xsd:appinfo>
+				<xsd:appinfo source="teneo.jpa">@Transient</xsd:appinfo>
 	    </xsd:annotation>
 	    <xsd:sequence>
 	      <xsd:element name="myID" type="xsd:long">
 		 	<xsd:annotation>
-				<xsd:appinfo source="http://annotation.elver.org/Id">true</xsd:appinfo>
+				<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
 		    </xsd:annotation>
 		  </xsd:element>
     		</xsd:sequence>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassPackageImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: MappedsuperclassPackageImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl;
 
@@ -266,33 +266,37 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/MappedSuperclass
-		createMappedSuperclassAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Id
-		createIdAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/MappedSuperclass</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createMappedSuperclassAnnotations() {
-		String source = "http://annotation.elver.org/MappedSuperclass";		
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (documentEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
-		   });						
+			 "appinfo", "@MappedSuperclass"
+		   });			
+		addAnnotation
+		  (getDocument_MyId(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });				
 		addAnnotation
 		  (parentDocumentEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
+			 "appinfo", "@MappedSuperclass"
 		   });				
 	}
 
@@ -353,22 +357,6 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 			 "kind", "element",
 			 "name", "mySpecificInfo"
 		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Id</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIdAnnotations() {
-		String source = "http://annotation.elver.org/Id";				
-		addAnnotation
-		  (getDocument_MyId(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });							
 	}
 
 } //MappedsuperclassPackageImpl

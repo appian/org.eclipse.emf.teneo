@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.32 2006/09/29 04:36:51 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.33 2006/09/29 12:29:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -89,7 +89,6 @@ public class JPOXTestbed extends Testbed {
 			} else {
 				propFileName = "/local_test.properties";
 			}
-			System.err.println("Property File " + propFileName);
 			Testbed.setTestBed(new JPOXTestbed());			
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while checking directory " + RUN_BASE_DIR, e);

@@ -4,8 +4,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="embeddedid"
     nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/embeddedid" nsPrefix="embeddedid">
   <eClassifiers xsi:type="ecore:EClass" name="Name">
-    <eAnnotations source="http://annotation.elver.org/Embeddable">
-      <details key="appinfo" value="true"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Embeddable"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Name"/>
@@ -33,8 +33,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//Name"
         containment="true" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/EmbeddedId">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@EmbeddedId"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -43,8 +43,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
-      <eAnnotations source="http://annotation.elver.org/Lob">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

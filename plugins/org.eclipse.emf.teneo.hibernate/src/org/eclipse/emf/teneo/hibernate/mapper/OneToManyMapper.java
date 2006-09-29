@@ -12,27 +12,21 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.8 2006/09/28 20:03:38 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.9 2006/09/29 12:29:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.processing.OneToManyProcessor;
@@ -79,8 +73,6 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
         final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
         
         EClass refType = hbReference.getAnnotatedEReference().getEReferenceType();
-        final Class instanceClass = refType.getInstanceClass();
-        boolean isMap = false && (null != instanceClass && Map.Entry.class.isAssignableFrom(instanceClass));
         
 		// TODO add isUnique on interface
 		// TODO request EMF team to deal correctly with unique attribute on EReferences
@@ -105,7 +97,7 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
         	otm.setIndexed(false);
         }
         
-		if (!isMap && otm.isIndexed()) {
+		if (otm.isIndexed()) {
 			addListIndex(collElement, paReference);
 		}
 
@@ -121,20 +113,16 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 
         String targetName = null;
         
-        if (!isMap) {
-            targetName = otm.getTargetEntity();
-            if (targetName == null) {
-                targetName = getHbmContext().getEntityName(refType);
-            }
+        targetName = otm.getTargetEntity();
+        if (targetName == null) {
+            targetName = getHbmContext().getEntityName(refType);
         }
 
 		// MT a manytomany is only required in case of unique=false, note that the ejb3 spec states that for uni otm
 		// always a jointable should be
 		// used (as a default). This is however to heavy for cases were a jointable is not required at all. Also
 		// hibernate supports uni otm without join table.
-        if (isMap) {
-            addMap(collElement, hbReference);
-        } else if (hbReference.getEmbedded() != null) {
+        if (hbReference.getEmbedded() != null) {
             addCompositeElement(collElement, targetName, hbReference);
 		} else if (jt != null) {
 			// A m2m forces a join table, note that isunique does not completely follow the semantics of emf, unique on
@@ -149,79 +137,6 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 		}
 		addIsSetAttribute(hbReference);
 	}
-
-	/** Add the map key and value */
-    private void addMap(final Element collElement, final HbAnnotatedEReference hbReference) {
-        final EClass refType = hbReference.getAnnotatedEReference().getEReferenceType();
-        final EStructuralFeature keyFeature = refType.getEStructuralFeature("key");
-        final EStructuralFeature valueFeature = refType.getEStructuralFeature("value");
-        
-        if (null == keyFeature) {
-            throw new MappingException("Map missing 'key' feature", hbReference);
-        } else if (null == valueFeature) {
-            throw new MappingException("Map missing 'value' feature", hbReference);
-        }
-        
-        final EClassifier keyType = keyFeature.getEType();
-        Element mapKey;
-        String mapKeyColumn = null;
-        if (keyType instanceof EDataType) {
-        	mapKey = collElement.addElement("map-key");
-        } else {
-        	mapKey = collElement.addElement("map-key-many-to-many");
-        }        	
-            
-        if (hbReference.getHbMapKey() != null) {
-            final List columns = hbReference.getHbMapKey().getColumns();
-            if (null == columns) {
-            	log.warn("No columns found in MapKey annotation");
-                //throw new MappingException("No columns found in MapKey annotation", hbReference);
-            } else {
-                if (columns.size() == 1) {
-                	// TODO: support associationoverride for emap
-                	mapKeyColumn = ((Column) columns.get(0)).getName();
-                	mapKey.addAttribute("column", mapKeyColumn);
-                } else if (columns.size() > 1){
-                	// create column elements 
-            		log.warn("Warning: multiple columns and emap have not been tested.");
-                	for (Iterator it = columns.iterator(); it.hasNext();) {
-                		final Column col = (Column)it.next();
-                		addColumnElement(mapKey, "", col, false);
-                	}
-                }
-            }
-        }
-
-        if (keyType instanceof EDataType) {
-            mapKey.addAttribute("type", AbstractMapper.hbType((EDataType) keyType));
-        } else if (keyType instanceof EClass){
-            mapKey.addAttribute("class", ((EClass)keyType).getName());
-        } else {
-        	throw new UnsupportedOperationException("Type " + keyType.getClass() + " not supported for EMap");
-        }
-        
-        final EClassifier valueType = valueFeature.getEType();
-        if (valueType instanceof EDataType) {
-            Element mapElt = collElement.addElement("element");
-            List columns = hbReference.getHbColumns();
-            if (columns != null) {
-            	if (columns.size() == 1) {
-                    Column eltCol = (Column) columns.get(0);
-                    mapElt.addAttribute("column", eltCol.getName());
-            	} else {
-            		log.warn("Warning: multiple columns and emap have not been tested.");
-                	// create column elements 
-                	for (Iterator it = columns.iterator(); it.hasNext();) {
-                		final Column col = (Column)it.next();
-                		addColumnElement(mapElt, "", col, false);
-                	}
-            	}
-            }
-            mapElt.addAttribute("type", AbstractMapper.hbType((EDataType) valueType));
-        } else {
-        	addOneToMany(collElement, valueType.getName());
-        }
-    }
 
     /**
 	 * 
@@ -239,7 +154,7 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 
 		// MT: note inverse does not work correctly with hibernate for indexed collections, see 7.3.3 of the hibernate
 		// manual 3.1.1
-		// collElement.addAttribute("inverse", "true");
+		//collElement.addAttribute("inverse", "true");
 		final Element keyElement = collElement.addElement("key");
 
 		// MT: added handling of join info

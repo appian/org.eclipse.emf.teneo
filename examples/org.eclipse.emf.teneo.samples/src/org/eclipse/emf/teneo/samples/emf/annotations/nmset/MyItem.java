@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MyItem.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: MyItem.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.nmset;
 
@@ -68,7 +68,7 @@ public interface MyItem extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.nmset.NmsetPackage#getMyItem_YourItem()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.nmset.YourItem#getMyItem
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.nmset.YourItem" opposite="myItem" required="true"
-	 *        annotation="http://annotation.elver.org/Indexed value='false'"
+	 *        annotation="teneo.jpa appinfo='@ManyToMany(Indexed=false)'"
 	 *        extendedMetaData="kind='element' name='yourItem'"
 	 * @generated
 	 */

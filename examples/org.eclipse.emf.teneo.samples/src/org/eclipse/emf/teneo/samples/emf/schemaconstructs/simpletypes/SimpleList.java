@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleList.java,v 1.2 2006/09/22 13:58:33 mtaal Exp $
+ * $Id: SimpleList.java,v 1.3 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -192,7 +192,7 @@ public interface SimpleList extends EObject {
 	 * @return the value of the '<em>Long</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleList_Long()
 	 * @model type="java.lang.Long" unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Long" required="true"
-	 *        annotation="http://annotation.elver.org/JoinTable name='longNum'"
+	 *        annotation="teneo.jpa appinfo='@JoinTable(name=\"longNum\")'"
 	 *        extendedMetaData="kind='element' name='long'"
 	 * @generated
 	 */

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationParser.java,v 1.8 2006/09/13 10:43:13 mtaal Exp $
+ * $Id: AnnotationParser.java,v 1.9 2006/09/29 12:30:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -136,13 +136,14 @@ public class AnnotationParser {
 								annotationTokenizer.getErrorText());
 					}
 					nextToken = annotationTokenizer.nextToken();
+//					if (nextToken == AnnotationTokenizer.T_VALUE) { 
+//						final String value = annotationTokenizer.getLexeme();
+//						final PrimitiveValueNode vn = new PrimitiveValueNode();
+//						vn.setName(identifier);
+//						vn.setValue(value);
+//						addToParent(pn, vn);
+//					}
 					if (nextToken == AnnotationTokenizer.T_VALUE) { 
-						final String value = annotationTokenizer.getLexeme();
-						final PrimitiveValueNode vn = new PrimitiveValueNode();
-						vn.setName(identifier);
-						vn.setValue(value);
-						addToParent(pn, vn);
-					}if (nextToken == AnnotationTokenizer.T_VALUE) { 
 						final String value = annotationTokenizer.getLexeme();
 						final PrimitiveValueNode vn = new PrimitiveValueNode();
 						vn.setName(identifier);
@@ -193,6 +194,14 @@ public class AnnotationParser {
 							annotationTokenizer.getErrorText());
 				case AnnotationTokenizer.T_TYPENAME:
 					parseTypeName(an);
+					break;
+				case AnnotationTokenizer.T_VALUE:
+					String value = annotationTokenizer.getLexeme();
+					if (value != null && value.length() > 1 && value.charAt(0) == '"' && 
+							value.charAt(value.length() - 1) == '"') {
+						value = value.substring(1, value.length() - 1);
+					}
+					an.getChildren().add(value);
 					break;
 				case AnnotationTokenizer.T_IDENTIFIER:
 					an.getChildren().add(annotationTokenizer.getLexeme());

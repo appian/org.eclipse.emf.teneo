@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Item.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: Item.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints;
 
@@ -22,8 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.UniqueconstraintsPackage#getItem()
- * @model annotation="http://annotation.elver.org/Table name='MYITEMTABLE' uniqueConstraints='u1'"
- *        annotation="http://annotation.elver.org/UniqueConstraint/u1 columnNames='MYSTR MYINT'"
+ * @model annotation="teneo.jpa appinfo='\n\t\t\t@Table(name=\"MYITEMTABLE\" uniqueConstraints={@UniqueConstraint(columnNames={\"MYSTR\",\"MYINT\"})})'"
  *        extendedMetaData="name='Item' kind='elementOnly'"
  * @generated
  */
@@ -40,7 +39,7 @@ public interface Item extends EObject {
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.UniqueconstraintsPackage#getItem_Name()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        annotation="http://annotation.elver.org/Column name='MYSTR'"
+	 *        annotation="teneo.jpa appinfo='@Column(name=\"MYSTR\")'"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */
@@ -70,7 +69,7 @@ public interface Item extends EObject {
 	 * @see #setAge(int)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.UniqueconstraintsPackage#getItem_Age()
 	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
-	 *        annotation="http://annotation.elver.org/Column name='MYINT'"
+	 *        annotation="teneo.jpa appinfo='@Column(name=\"MYINT\")'"
 	 *        extendedMetaData="kind='element' name='age'"
 	 * @generated
 	 */

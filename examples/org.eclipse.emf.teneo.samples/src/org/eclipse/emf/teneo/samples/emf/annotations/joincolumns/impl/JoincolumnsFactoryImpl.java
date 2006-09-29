@@ -2,10 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidFactoryImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: JoincolumnsFactoryImpl.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
-
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -13,8 +12,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child;
-import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.CompositeidFactory;
-import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.CompositeidPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsFactory;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
 
@@ -24,24 +23,24 @@ import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CompositeidFactoryImpl extends EFactoryImpl implements CompositeidFactory {
+public class JoincolumnsFactoryImpl extends EFactoryImpl implements JoincolumnsFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static CompositeidFactory init() {
+	public static JoincolumnsFactory init() {
 		try {
-			CompositeidFactory theCompositeidFactory = (CompositeidFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/elver/samples/emf/annotations/jc.ecore"); 
-			if (theCompositeidFactory != null) {
-				return theCompositeidFactory;
+			JoincolumnsFactory theJoincolumnsFactory = (JoincolumnsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/annotations/joincolumns"); 
+			if (theJoincolumnsFactory != null) {
+				return theJoincolumnsFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new CompositeidFactoryImpl();
+		return new JoincolumnsFactoryImpl();
 	}
 
 	/**
@@ -50,7 +49,7 @@ public class CompositeidFactoryImpl extends EFactoryImpl implements CompositeidF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CompositeidFactoryImpl() {
+	public JoincolumnsFactoryImpl() {
 		super();
 	}
 
@@ -61,9 +60,9 @@ public class CompositeidFactoryImpl extends EFactoryImpl implements CompositeidF
 	 */
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case CompositeidPackage.PARENT: return createParent();
-			case CompositeidPackage.CHILD: return createChild();
-			case CompositeidPackage.PERSON: return createPerson();
+			case JoincolumnsPackage.PARENT: return createParent();
+			case JoincolumnsPackage.CHILD: return createChild();
+			case JoincolumnsPackage.PERSON: return createPerson();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -104,8 +103,8 @@ public class CompositeidFactoryImpl extends EFactoryImpl implements CompositeidF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CompositeidPackage getCompositeidPackage() {
-		return (CompositeidPackage)getEPackage();
+	public JoincolumnsPackage getJoincolumnsPackage() {
+		return (JoincolumnsPackage)getEPackage();
 	}
 
 	/**
@@ -114,8 +113,8 @@ public class CompositeidFactoryImpl extends EFactoryImpl implements CompositeidF
 	 * @deprecated
 	 * @generated
 	 */
-	public static CompositeidPackage getPackage() {
-		return CompositeidPackage.eINSTANCE;
+	public static JoincolumnsPackage getPackage() {
+		return JoincolumnsPackage.eINSTANCE;
 	}
 
-} //CompositeidFactoryImpl
+} //JoincolumnsFactoryImpl

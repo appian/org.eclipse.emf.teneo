@@ -2,16 +2,18 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.2 2006/09/29 12:30:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.CompositeidPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
 
 /**
@@ -84,7 +86,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return CompositeidPackage.Literals.PERSON;
+		return JoincolumnsPackage.Literals.PERSON;
 	}
 
 	/**
@@ -105,7 +107,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 		String oldFirstName = firstName;
 		firstName = newFirstName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CompositeidPackage.PERSON__FIRST_NAME, oldFirstName, firstName));
+			eNotify(new ENotificationImpl(this, Notification.SET, JoincolumnsPackage.PERSON__FIRST_NAME, oldFirstName, firstName));
 	}
 
 	/**
@@ -126,7 +128,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 		String oldLastName = lastName;
 		lastName = newLastName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CompositeidPackage.PERSON__LAST_NAME, oldLastName, lastName));
+			eNotify(new ENotificationImpl(this, Notification.SET, JoincolumnsPackage.PERSON__LAST_NAME, oldLastName, lastName));
 	}
 
 	/**
@@ -136,9 +138,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CompositeidPackage.PERSON__FIRST_NAME:
+			case JoincolumnsPackage.PERSON__FIRST_NAME:
 				return getFirstName();
-			case CompositeidPackage.PERSON__LAST_NAME:
+			case JoincolumnsPackage.PERSON__LAST_NAME:
 				return getLastName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -151,10 +153,10 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CompositeidPackage.PERSON__FIRST_NAME:
+			case JoincolumnsPackage.PERSON__FIRST_NAME:
 				setFirstName((String)newValue);
 				return;
-			case CompositeidPackage.PERSON__LAST_NAME:
+			case JoincolumnsPackage.PERSON__LAST_NAME:
 				setLastName((String)newValue);
 				return;
 		}
@@ -168,10 +170,10 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CompositeidPackage.PERSON__FIRST_NAME:
+			case JoincolumnsPackage.PERSON__FIRST_NAME:
 				setFirstName(FIRST_NAME_EDEFAULT);
 				return;
-			case CompositeidPackage.PERSON__LAST_NAME:
+			case JoincolumnsPackage.PERSON__LAST_NAME:
 				setLastName(LAST_NAME_EDEFAULT);
 				return;
 		}
@@ -185,9 +187,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CompositeidPackage.PERSON__FIRST_NAME:
+			case JoincolumnsPackage.PERSON__FIRST_NAME:
 				return FIRST_NAME_EDEFAULT == null ? firstName != null : !FIRST_NAME_EDEFAULT.equals(firstName);
-			case CompositeidPackage.PERSON__LAST_NAME:
+			case JoincolumnsPackage.PERSON__LAST_NAME:
 				return LAST_NAME_EDEFAULT == null ? lastName != null : !LAST_NAME_EDEFAULT.equals(lastName);
 		}
 		return super.eIsSet(featureID);

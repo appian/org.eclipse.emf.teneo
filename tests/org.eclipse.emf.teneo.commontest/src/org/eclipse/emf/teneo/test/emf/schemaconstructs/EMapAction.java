@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAction.java,v 1.1 2006/09/28 20:03:33 mtaal Exp $
+ * $Id: EMapAction.java,v 1.2 2006/09/29 12:30:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -23,7 +23,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
-import org.eclipse.emf.teneo.mapping.elist.PersistableEMap;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapFactory;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage;
@@ -36,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EMapAction extends AbstractTestAction {
 	/**

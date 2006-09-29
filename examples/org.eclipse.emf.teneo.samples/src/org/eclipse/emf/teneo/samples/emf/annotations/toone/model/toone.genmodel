@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Toone" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>toone.xsd</foreignModel>
-  <genPackages prefix="Toone" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
-      disposableProviderFactory="true" ecorePackage="toone.ecore#/">
+  <genPackages prefix="Toone" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="toone.ecore#/">
     <genClasses ecoreClass="toone.ecore#//Address">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toone.ecore#//Address/city"/>
     </genClasses>

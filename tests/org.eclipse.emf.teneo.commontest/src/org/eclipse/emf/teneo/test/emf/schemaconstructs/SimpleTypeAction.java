@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SimpleTypeAction.java,v 1.2 2006/09/22 13:58:54 mtaal Exp $
+ * $Id: SimpleTypeAction.java,v 1.3 2006/09/29 12:30:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -28,13 +28,12 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Simpletype
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.jpox.enhancer.bcel.method.SimpleStateManagerCall;
 
 /**
  * Tests if simple types are stored/retrieved correctly.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class SimpleTypeAction extends AbstractTestAction {
 	/** Simple Type Values we test against */

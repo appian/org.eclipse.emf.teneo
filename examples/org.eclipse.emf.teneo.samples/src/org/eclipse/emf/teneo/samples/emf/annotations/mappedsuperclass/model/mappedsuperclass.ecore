@@ -2,10 +2,11 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mappedsuperclass"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/mappedsuperclass" nsPrefix="mappedsuperclass">
+    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/mappedsuperclass"
+    nsPrefix="mappedsuperclass">
   <eClassifiers xsi:type="ecore:EClass" name="Document">
-    <eAnnotations source="http://annotation.elver.org/MappedSuperclass">
-      <details key="appinfo" value="true"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@MappedSuperclass"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Document"/>
@@ -13,8 +14,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="myId" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
-      <eAnnotations source="http://annotation.elver.org/Id">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -30,8 +31,8 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParentDocument" eSuperTypes="#//Document">
-    <eAnnotations source="http://annotation.elver.org/MappedSuperclass">
-      <details key="appinfo" value="true"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@MappedSuperclass"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="ParentDocument"/>

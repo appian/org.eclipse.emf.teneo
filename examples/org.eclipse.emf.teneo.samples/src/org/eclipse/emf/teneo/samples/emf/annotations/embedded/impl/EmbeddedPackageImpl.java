@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedPackageImpl.java,v 1.3 2006/09/05 12:16:35 mtaal Exp $
+ * $Id: EmbeddedPackageImpl.java,v 1.4 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -277,28 +277,10 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/Embeddable
-		createEmbeddableAnnotations();
-		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
-		createExtendedMetaDataAnnotations();
 		// teneo.jpa
 		createTeneoAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Embeddable</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createEmbeddableAnnotations() {
-		String source = "http://annotation.elver.org/Embeddable";		
-		addAnnotation
-		  (embeddableEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });														
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
 	}
 
 	/**
@@ -381,7 +363,13 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";							
+		String source = "teneo.jpa";		
+		addAnnotation
+		  (embeddableEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Embeddable"
+		   });						
 		addAnnotation
 		  (getEmbedder_FirstEmbedded(), 
 		   source, 

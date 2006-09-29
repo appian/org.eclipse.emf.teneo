@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TransentPackageImpl.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: TransentPackageImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.transent.impl;
 
@@ -235,10 +235,8 @@ public class TransentPackageImpl extends EPackageImpl implements TransentPackage
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Id
-		createIdAnnotations();
-		// http://annotation.elver.org/Transient
-		createTransientAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -287,47 +285,37 @@ public class TransentPackageImpl extends EPackageImpl implements TransentPackage
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Id</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createIdAnnotations() {
-		String source = "http://annotation.elver.org/Id";			
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";			
 		addAnnotation
 		  (getBody_TheID(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
-		   });							
-		addAnnotation
-		  (getHead_MyID(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });	
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Transient</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createTransientAnnotations() {
-		String source = "http://annotation.elver.org/Transient";					
+			 "appinfo", "@Id"
+		   });			
 		addAnnotation
 		  (getBody_Head(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
+			 "appinfo", "@Transient"
 		   });			
 		addAnnotation
 		  (headEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
+			 "appinfo", "@Transient"
 		   });			
+		addAnnotation
+		  (getHead_MyID(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });	
 	}
 
 } //TransentPackageImpl

@@ -9,19 +9,18 @@
 	
   <xsd:complexType name="Item">
     <xsd:annotation>
-		<xsd:appinfo source="http://annotation.elver.org/Table" ecore:key="name">MYITEMTABLE</xsd:appinfo>
-		<xsd:appinfo source="http://annotation.elver.org/Table" ecore:key="uniqueConstraints">u1</xsd:appinfo>
-		<xsd:appinfo source="http://annotation.elver.org/UniqueConstraint/u1" ecore:key="columnNames">MYSTR MYINT</xsd:appinfo>
+		<xsd:appinfo source="teneo.jpa">
+			@Table(name="MYITEMTABLE" uniqueConstraints={@UniqueConstraint(columnNames={"MYSTR","MYINT"})})</xsd:appinfo>
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element name="name" type="xsd:string">
         <xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/Column" ecore:key="name">MYSTR</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@Column(name="MYSTR")</xsd:appinfo>
 	    </xsd:annotation>
 	 </xsd:element>
       <xsd:element name="age" type="xsd:int">
         <xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/Column" ecore:key="name">MYINT</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@Column(name="MYINT")</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
     </xsd:sequence>

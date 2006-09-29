@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Item.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: Item.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.duplicates;
 
@@ -65,8 +65,8 @@ public interface Item extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Child Item</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.duplicates.DuplicatesPackage#getItem_ChildItem()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.duplicates.ChildItem" containment="true" resolveProxies="false" required="true"
-	 *        annotation="http://facet.elver.org/List unique='false'"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.duplicates.ChildItem" containment="true" required="true"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(unique=true)'"
 	 *        extendedMetaData="kind='element' name='childItem'"
 	 * @generated
 	 */

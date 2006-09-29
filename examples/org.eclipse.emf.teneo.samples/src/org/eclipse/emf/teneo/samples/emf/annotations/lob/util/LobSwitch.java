@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LobSwitch.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: LobSwitch.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lob.util;
 

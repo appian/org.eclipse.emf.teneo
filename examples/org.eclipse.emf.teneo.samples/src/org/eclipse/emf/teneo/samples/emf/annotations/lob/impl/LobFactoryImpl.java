@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LobFactoryImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: LobFactoryImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lob.impl;
 

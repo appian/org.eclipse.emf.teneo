@@ -51,7 +51,7 @@
 
   	<xsd:complexType name="Embeddable">
 	 	<xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/Embeddable">true</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@Embeddable</xsd:appinfo>
 	    </xsd:annotation>
     	<xsd:sequence>
       		<xsd:element name="myString" type="xsd:string"/>

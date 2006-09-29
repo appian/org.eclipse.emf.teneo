@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.4 2006/09/28 20:03:57 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.5 2006/09/29 12:30:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -22,7 +22,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
@@ -77,7 +76,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class DefaultAnnotator {
 
@@ -356,10 +355,8 @@ public class DefaultAnnotator {
 				final List aIdAttributes = aClass.getPaIdAttributes();
 				for (Iterator iter2 = aIdAttributes.iterator(); iter2.hasNext();) {
 					PAnnotatedEAttribute aIdAttribute = (PAnnotatedEAttribute) iter2.next();
-					final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE
-							.createPrimaryKeyJoinColumn();
-					pkJoinColumn
-							.setName(trunc(aIdAttribute.getAnnotatedEAttribute().getName().toUpperCase(), true));
+					final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
+					pkJoinColumn.setName(trunc(aIdAttribute.getAnnotatedEAttribute().getName().toUpperCase(), true));
 					pkJoinColumns.add(pkJoinColumn);
 				}
 			}
@@ -608,12 +605,13 @@ public class DefaultAnnotator {
 		if (aAttribute.getJoinTable() == null) {
 			// note not optional because lists of simple types are embedded
 			addJoinColumns(aAttribute.getPaEClass(), aAttribute.getAnnotatedEAttribute(), aAttribute, FeatureMapUtil
-					.isFeatureMap(eAttribute)); // with featuremap optional is true
+					.isFeatureMap(eAttribute), true); // with featuremap optional is true
 		}
-		
+
 		// set unique and indexed
 		if (!otmWasSet) {
-			log.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique because otm was not set manually");
+			log
+					.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique because otm was not set manually");
 			otm.setIndexed(eAttribute.isOrdered());
 			otm.setUnique(eAttribute.isUnique());
 			EAnnotation ean = aAttribute.getAnnotatedElement().getEAnnotation(FACET_SOURCE_LIST);
@@ -627,7 +625,7 @@ public class DefaultAnnotator {
 					otm.setUnique(((String) ean.getDetails().get(FACET_UNIQUE)).compareToIgnoreCase("true") == 0);
 				}
 			}
-			
+
 			ean = aAttribute.getAnnotatedElement().getEAnnotation("http://annotation.elver.org/Indexed");
 			if (ean != null && ean.getDetails() != null) {
 				if (ean.getDetails().get("value") != null) {
@@ -642,7 +640,7 @@ public class DefaultAnnotator {
 					otm.setUnique(((String) ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
 				}
 			}
-				
+
 		}
 	}
 
@@ -652,7 +650,7 @@ public class DefaultAnnotator {
 		final Class instanceClass = eAttribute.getEAttributeType().getInstanceClass();
 		if (instanceClass != null && !Object.class.equals(instanceClass) && !List.class.equals(instanceClass)) {
 			if (instanceClass.isArray()) {
-				// get rid of the [] at the end 
+				// get rid of the [] at the end
 				return eAttribute.getEType().getInstanceClassName().substring(0,
 						eAttribute.getEType().getInstanceClassName().length() - 2);
 			}
@@ -747,7 +745,7 @@ public class DefaultAnnotator {
 				otm.setUnique(((String) ean.getDetails().get(FACET_UNIQUE)).compareToIgnoreCase("true") == 0);
 			}
 		}
-		
+
 		ean = aReference.getAnnotatedElement().getEAnnotation("http://annotation.elver.org/Indexed");
 		if (ean != null && ean.getDetails() != null) {
 			if (ean.getDetails().get("value") != null) {
@@ -764,8 +762,7 @@ public class DefaultAnnotator {
 		}
 
 		// only use a jointable if the relation is non unique
-		if ((optionJoinTableForNonContainedAssociations && !eReference.isContainment())
-				|| !otm.isUnique() /* --DCB-- || aReference.getIdBag() != null */) {
+		if ((optionJoinTableForNonContainedAssociations && !eReference.isContainment()) || !otm.isUnique()) {
 			JoinTable joinTable = aReference.getJoinTable();
 			if (joinTable == null) {
 				joinTable = aFactory.createJoinTable();
@@ -785,11 +782,14 @@ public class DefaultAnnotator {
 			// joincolum(s)
 			// the name of this eclass, the name of the property on the other side
 			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
-				addJoinColumns(aReference.getPaEClass(), aReference.getAnnotatedEReference().getEOpposite(),
-						aReference, aReference.getEmbedded() == null);
+				// get opposite 
+				EReference opposite = aReference.getAnnotatedEReference().getEOpposite();
+				
+				addJoinColumns(aReference.getPaModel().getPAnnotated(opposite.getEContainingClass()), opposite,
+						aReference, aReference.getEmbedded() == null, true);
 			} else { // no prop on the other side just use this one
 				addJoinColumns(aReference.getPaEClass(), aReference.getAnnotatedEReference(), aReference, aReference
-						.getEmbedded() == null);
+						.getEmbedded() == null, true);
 			}
 		}
 	}
@@ -809,7 +809,7 @@ public class DefaultAnnotator {
 		assert (eOpposite != null && eOpposite.isMany());
 
 		ManyToMany mtm = aReference.getManyToMany();
-		final boolean mtmWasSet = mtm != null; //mtm was set manually
+		final boolean mtmWasSet = mtm != null; // mtm was set manually
 		if (mtm == null) {
 			log.debug("Adding manytomany annotations to ereference: " + featureLogStr);
 			mtm = aFactory.createManyToMany();
@@ -842,7 +842,8 @@ public class DefaultAnnotator {
 
 		// set unique and indexed
 		if (!mtmWasSet) {
-			log.debug("Setting indexed and unique from ereference.isOrdered/isUnique because mtm was not set manually!");
+			log
+					.debug("Setting indexed and unique from ereference.isOrdered/isUnique because mtm was not set manually!");
 			mtm.setIndexed(eReference.isOrdered());
 		}
 
@@ -853,7 +854,7 @@ public class DefaultAnnotator {
 				mtm.setIndexed(((String) ean.getDetails().get(FACET_INDEX)).compareTo("true") == 0);
 			}
 		}
-		
+
 		ean = aReference.getAnnotatedElement().getEAnnotation("http://annotation.elver.org/Indexed");
 		if (ean != null && ean.getDetails() != null) {
 			if (ean.getDetails().get("value") != null) {
@@ -889,7 +890,7 @@ public class DefaultAnnotator {
 			// so
 			// add them
 			// if (joinTable.getJoinColumns() == null) joinTable.getJoinColumns().addAll(aFactory.createJoinColumns());
-			joinTable.getJoinColumns().addAll(getJoinColumns(aReference.getPaEClass(), eReference, false, false));
+			joinTable.getJoinColumns().addAll(getJoinColumns(aReference.getPaEClass(), eReference, false, false, true));
 		}
 		if (/* joinTable.getInverseJoinColumns() == null || */joinTable.getInverseJoinColumns().size() == 0) { // no
 			// inversejoincolumns,
@@ -900,7 +901,7 @@ public class DefaultAnnotator {
 			// joinTable.setInverseJoinColumns(aFactory.createJoinColumns());
 			joinTable.getInverseJoinColumns().addAll(
 					getJoinColumns(annotatedModel.getPAnnotated(eOpposite.getEContainingClass()), eOpposite, false,
-							false));
+							false, true));
 		}
 	}
 
@@ -942,11 +943,10 @@ public class DefaultAnnotator {
 					+ oppName;
 			joinTable.setName(trunc(jTableName.toUpperCase().toUpperCase(), false));
 		}
-        if (joinTable.getJoinColumns() == null) {
-            joinTable.getJoinColumns().addAll(
-                    getJoinColumns(aReference.getPaEClass(), eReference,
-                            forceOptional, false));
-        }
+		if (joinTable.getJoinColumns() == null) {
+			joinTable.getJoinColumns().addAll(
+					getJoinColumns(aReference.getPaEClass(), eReference, forceOptional, false, true));
+		}
 	}
 
 	/** Adds default annotations for a one to one reference */
@@ -1030,22 +1030,32 @@ public class DefaultAnnotator {
 		// matching the joincolumns on the other side
 		if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) {
 			// the name of the joincolumns is defined by the name of the other entity and its primary key fields
-			final PAnnotatedEClass aClass = aReference.getPaModel().getPAnnotated(eReference.getEReferenceType());
+			final PAnnotatedEClass aClass;
+			if (eReference.getEOpposite() == null) {
+				aClass = aReference.getPaModel().getPAnnotated(eReference.getEReferenceType());
+			} else {
+				aClass = aReference.getPaEClass();
+			}
 			if (aClass != null) { // aClass == null when the reference it to a high level type such as EObject
-				addJoinColumns(aClass, aReference.getAnnotatedEReference(), aReference, mto.isOptional());
+				// note that the joincolumns are set to not insertable/updatable if
+				// this is a bidirectional relation without a join table, in that case the other side
+				// controls the columns
+				addJoinColumns(aClass, aReference.getAnnotatedEReference(), aReference, mto.isOptional(), eReference
+						.getEOpposite() == null
+						&& aReference.getJoinTable() == null);
 			}
 		}
 	}
 
 	/** Creates a set of joincolumns for a reference to the annotated eclass */
 	private void addJoinColumns(PAnnotatedEClass aClass, EStructuralFeature esf, PAnnotatedEStructuralFeature aFeature,
-			boolean optional) {
-		aFeature.getJoinColumns().addAll(getJoinColumns(aClass, esf, optional, true));
+			boolean optional, boolean isUpdateInsertable) {
+		aFeature.getJoinColumns().addAll(getJoinColumns(aClass, esf, optional, true, isUpdateInsertable));
 	}
 
 	/** Return a list of join columns */
 	private List getJoinColumns(PAnnotatedEClass aClass, EStructuralFeature esf, boolean optional,
-			boolean useFeatureName) {
+			boolean useFeatureName, boolean isUpdateInsertable) {
 		final List result = new ArrayList();
 		final List names = getIDFeaturesNames(aClass);
 		for (Iterator it = names.iterator(); it.hasNext();) {
@@ -1053,12 +1063,14 @@ public class DefaultAnnotator {
 			JoinColumn jc = aFactory.createJoinColumn();
 			final String jcName;
 			if (useFeatureName) {
-				jcName = esf.getName() + "_" + name;
+				jcName = aClass.getAnnotatedEClass().getName() + "_" + esf.getName() + "_" + name;
 			} else {
 				jcName = aClass.getAnnotatedEClass().getName() + "_" + name;
 			}
 			jc.setName(trunc(jcName.toUpperCase(), true));
 			jc.setNullable(optional);
+			jc.setUpdatable(isUpdateInsertable);
+			jc.setInsertable(isUpdateInsertable);
 			result.add(jc);
 		}
 		return result;

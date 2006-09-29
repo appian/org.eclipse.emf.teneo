@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesPackageImpl.java,v 1.3 2006/09/22 13:58:33 mtaal Exp $
+ * $Id: SimpletypesPackageImpl.java,v 1.4 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -883,10 +883,8 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/JoinTable
-		createJoinTableAnnotations();
-		// http://annotation.elver.org/Enumerated
-		createEnumeratedAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -1253,34 +1251,24 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/JoinTable</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createJoinTableAnnotations() {
-		String source = "http://annotation.elver.org/JoinTable";																						
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";																						
 		addAnnotation
 		  (getSimpleList_Long(), 
 		   source, 
 		   new String[] {
-			 "name", "longNum"
-		   });																																	
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Enumerated</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createEnumeratedAnnotations() {
-		String source = "http://annotation.elver.org/Enumerated";																																																				
+			 "appinfo", "@JoinTable(name=\"longNum\")"
+		   });																															
 		addAnnotation
 		  (getSimpleTypeObject_Enu(), 
 		   source, 
 		   new String[] {
-			 "value", "STRING"
+			 "appinfo", "@Enumerated(STRING)"
 		   });			
 	}
 

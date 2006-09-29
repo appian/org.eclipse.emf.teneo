@@ -12,7 +12,7 @@
       <xsd:element name="yourItem" type="xsd:anyURI"
           ecore:reference="this:YourItem" ecore:opposite="myItem" maxOccurs="unbounded">
         <xsd:annotation>
-			<xsd:appinfo source="http://annotation.elver.org/Indexed" ecore:key="value">false</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@ManyToMany(Indexed=false)</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
     </xsd:sequence>
@@ -25,7 +25,7 @@
           ecore:reference="this:MyItem" ecore:opposite="yourItem" maxOccurs="unbounded">
         <xsd:annotation>
 			<!-- facet.elver.org is maintained for backwards compatibility -->
-			<xsd:appinfo source="http://annotation.elver.org/Indexed" ecore:key="value">false</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@ManyToMany(Indexed=false)</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
     </xsd:sequence>

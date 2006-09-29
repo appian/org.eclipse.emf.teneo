@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueconstraintsPackageImpl.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: UniqueconstraintsPackageImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.impl;
 
@@ -200,47 +200,38 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/Table
-		createTableAnnotations();
-		// http://annotation.elver.org/UniqueConstraint/u1
-		createU1Annotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Column
-		createColumnAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Table</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createTableAnnotations() {
-		String source = "http://annotation.elver.org/Table";		
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (itemEClass, 
 		   source, 
 		   new String[] {
-			 "name", "MYITEMTABLE",
-			 "uniqueConstraints", "u1"
-		   });						
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/UniqueConstraint/u1</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createU1Annotations() {
-		String source = "http://annotation.elver.org/UniqueConstraint/u1";			
+			 "appinfo", "\n\t\t\t@Table(name=\"MYITEMTABLE\" uniqueConstraints={@UniqueConstraint(columnNames={\"MYSTR\",\"MYINT\"})})"
+		   });			
 		addAnnotation
-		  (itemEClass, 
+		  (getItem_Name(), 
 		   source, 
 		   new String[] {
-			 "columnNames", "MYSTR MYINT"
-		   });					
+			 "appinfo", "@Column(name=\"MYSTR\")"
+		   });			
+		addAnnotation
+		  (getItem_Age(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Column(name=\"MYINT\")"
+		   });	
 	}
 
 	/**
@@ -250,7 +241,7 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";				
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
 		addAnnotation
 		  (itemEClass, 
 		   source, 
@@ -272,28 +263,6 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 			 "kind", "element",
 			 "name", "age"
 		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Column</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createColumnAnnotations() {
-		String source = "http://annotation.elver.org/Column";					
-		addAnnotation
-		  (getItem_Name(), 
-		   source, 
-		   new String[] {
-			 "name", "MYSTR"
-		   });			
-		addAnnotation
-		  (getItem_Age(), 
-		   source, 
-		   new String[] {
-			 "name", "MYINT"
-		   });	
 	}
 
 } //UniqueconstraintsPackageImpl

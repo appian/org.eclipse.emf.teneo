@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DuplicatesPackageImpl.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: DuplicatesPackageImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.duplicates.impl;
 
@@ -235,8 +235,8 @@ public class DuplicatesPackageImpl extends EPackageImpl implements DuplicatesPac
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://facet.elver.org/List
-		createListAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -285,18 +285,18 @@ public class DuplicatesPackageImpl extends EPackageImpl implements DuplicatesPac
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://facet.elver.org/List</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createListAnnotations() {
-		String source = "http://facet.elver.org/List";						
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";						
 		addAnnotation
 		  (getItem_ChildItem(), 
 		   source, 
 		   new String[] {
-			 "unique", "false"
+			 "appinfo", "@OneToMany(unique=true)"
 		   });	
 	}
 

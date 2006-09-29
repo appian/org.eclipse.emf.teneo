@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Document.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: Document.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getDocument()
- * @model annotation="http://annotation.elver.org/MappedSuperclass appinfo='true'"
+ * @model annotation="teneo.jpa appinfo='@MappedSuperclass'"
  *        extendedMetaData="name='Document' kind='elementOnly'"
  * @generated
  */
@@ -41,7 +41,7 @@ public interface Document extends EObject {
 	 * @see #setMyId(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getDocument_MyId()
 	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="http://annotation.elver.org/Id appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Id'"
 	 *        extendedMetaData="kind='element' name='myId'"
 	 * @generated
 	 */

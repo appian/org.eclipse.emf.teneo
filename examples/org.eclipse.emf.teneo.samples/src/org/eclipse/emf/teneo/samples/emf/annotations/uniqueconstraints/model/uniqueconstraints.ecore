@@ -2,14 +2,11 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uniqueconstraints"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/uniqueconstraints" nsPrefix="uniqueconstraints">
+    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/uniqueconstraints"
+    nsPrefix="uniqueconstraints">
   <eClassifiers xsi:type="ecore:EClass" name="Item">
-    <eAnnotations source="http://annotation.elver.org/Table">
-      <details key="name" value="MYITEMTABLE"/>
-      <details key="uniqueConstraints" value="u1"/>
-    </eAnnotations>
-    <eAnnotations source="http://annotation.elver.org/UniqueConstraint/u1">
-      <details key="columnNames" value="MYSTR MYINT"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;@Table(name=&quot;MYITEMTABLE&quot; uniqueConstraints={@UniqueConstraint(columnNames={&quot;MYSTR&quot;,&quot;MYINT&quot;})})"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Item"/>
@@ -17,8 +14,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
-      <eAnnotations source="http://annotation.elver.org/Column">
-        <details key="name" value="MYSTR"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;MYSTR&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -27,8 +24,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="age" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int" unsettable="true">
-      <eAnnotations source="http://annotation.elver.org/Column">
-        <details key="name" value="MYINT"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;MYINT&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

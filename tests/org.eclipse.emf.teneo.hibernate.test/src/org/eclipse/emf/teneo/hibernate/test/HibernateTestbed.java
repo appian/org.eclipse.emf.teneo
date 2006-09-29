@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.8 2006/09/29 05:14:23 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.9 2006/09/29 12:30:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -61,7 +61,6 @@ public class HibernateTestbed extends Testbed {
 			} else {
 				propFileName = "/local_test.properties";
 			}
-			System.err.println("Property File " + propFileName);
 			Testbed.setTestBed(new HibernateTestbed());
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while checking directory " + RUN_BASE_DIR, e);

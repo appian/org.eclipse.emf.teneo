@@ -2,17 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidSwitch.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: JoincolumnsSwitch.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.util;
-
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child;
-import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.CompositeidPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
 
@@ -26,17 +25,17 @@ import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.annotations.joincolumns.CompositeidPackage
+ * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage
  * @generated
  */
-public class CompositeidSwitch {
+public class JoincolumnsSwitch {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static CompositeidPackage modelPackage;
+	protected static JoincolumnsPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -44,9 +43,9 @@ public class CompositeidSwitch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CompositeidSwitch() {
+	public JoincolumnsSwitch() {
 		if (modelPackage == null) {
-			modelPackage = CompositeidPackage.eINSTANCE;
+			modelPackage = JoincolumnsPackage.eINSTANCE;
 		}
 	}
 
@@ -90,21 +89,21 @@ public class CompositeidSwitch {
 	 */
 	protected Object doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case CompositeidPackage.PARENT: {
+			case JoincolumnsPackage.PARENT: {
 				Parent parent = (Parent)theEObject;
 				Object result = caseParent(parent);
 				if (result == null) result = casePerson(parent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CompositeidPackage.CHILD: {
+			case JoincolumnsPackage.CHILD: {
 				Child child = (Child)theEObject;
 				Object result = caseChild(child);
 				if (result == null) result = casePerson(child);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CompositeidPackage.PERSON: {
+			case JoincolumnsPackage.PERSON: {
 				Person person = (Person)theEObject;
 				Object result = casePerson(person);
 				if (result == null) result = defaultCase(theEObject);
@@ -174,4 +173,4 @@ public class CompositeidSwitch {
 		return null;
 	}
 
-} //CompositeidSwitch
+} //JoincolumnsSwitch
