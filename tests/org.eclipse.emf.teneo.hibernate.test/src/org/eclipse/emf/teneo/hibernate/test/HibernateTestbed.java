@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.7 2006/09/08 04:35:42 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.8 2006/09/29 05:14:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -38,16 +38,34 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class HibernateTestbed extends Testbed {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HibernateTestbed.class);
 
-	/** If we get here then this should be the testbed! */
+	/** The property file to use */
+	private static final String propFileName;
+
+	/**
+	 * The directory in which the mapping files are generated TODO make insesitive to user.dir
+	 */
+	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "run";
+
+	/** Test the rundir */
 	static {
-		Testbed.setTestBed(new HibernateTestbed());
+		try {
+			if (RUN_BASE_DIR.indexOf("www-data") != -1) { // UGLY, replace with smarter solution!
+				propFileName = "/emft_test.properties";
+			} else {
+				propFileName = "/local_test.properties";
+			}
+			System.err.println("Property File " + propFileName);
+			Testbed.setTestBed(new HibernateTestbed());
+		} catch (Exception e) {
+			throw new StoreTestException("Exception while checking directory " + RUN_BASE_DIR, e);
+		}
 	}
 
 	/** Delegates to the test bed */
@@ -55,16 +73,12 @@ public class HibernateTestbed extends Testbed {
 		return Testbed.instance();
 	}
 
-	/**
-	 * The directory in which the mapping files are generated TODO make insesitive to user.dir
-	 */
-	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "run";
-
 	/** The factory which creates test stores */
 	private HibernateTestStoreFactory storeFactory;
 
 	/** Constructor */
 	private HibernateTestbed() {
+		super(propFileName);
 		storeFactory = new HibernateTestStoreFactory();
 	}
 

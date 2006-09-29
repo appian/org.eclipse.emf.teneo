@@ -17,8 +17,7 @@
 	  <p>
 	  The EMF - JPOX Persistency solution consists of two tools:</p>
 	<ol>
-		<li>EMF - JPOX OR Mapper: generates object-relational mapping files from the tags in 
-the EMF-generated source code. </li>
+		<li>EMF - JPOX OR Mapper: generates object-relational mapping files from ecore model. </li>
 	 <li>EMF - JPOX Runtime: takes care of handling EMF specific 
 things such as EMF collections, containment and bi-directional relations.</li>
 	</ol>

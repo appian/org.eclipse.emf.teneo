@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.5 2006/09/28 20:05:36 mtaal Exp $
+ * $Id: AllTests.java,v 1.6 2006/09/29 05:14:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class AllTests {
 
@@ -52,10 +52,14 @@ public class AllTests {
 
 		suite.addTestSuite(SimpleTypeAction.class);
 
-		suite.addTestSuite(EcoreAttrsAction.class);
-		suite.addTestSuite(SimplefeaturemapAction.class);
-		suite.addTestSuite(SubstitutionAction.class);
-		suite.addTestSuite(SubstitutionzvonAction.class);
+		if (!JPOXTestbed.isRunningOnEMFTServer()) {
+			// on the emft server these fail with
+			// java.lang.UnsatisfiedLinkError: /opt/j2sdk1.4.2_12/jre/lib/i386/libawt.so: libXp.so.6: cannot open shared object file: No such file or directory
+			suite.addTestSuite(EcoreAttrsAction.class);
+			suite.addTestSuite(SimplefeaturemapAction.class);
+			suite.addTestSuite(SubstitutionAction.class);
+			suite.addTestSuite(SubstitutionzvonAction.class);
+		}
 
 		suite.addTestSuite(ListUnionAction.class);
 		suite.addTestSuite(ListAction.class);
