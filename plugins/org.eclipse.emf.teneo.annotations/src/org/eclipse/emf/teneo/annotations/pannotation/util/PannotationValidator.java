@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.13 2006/09/28 20:03:57 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.14 2006/10/03 09:50:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -70,7 +70,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.annotations.pannotation.Version;
-import org.eclipse.emf.teneo.annotations.util.EcoreDataTypes;
+import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
  * <!-- begin-user-doc -->

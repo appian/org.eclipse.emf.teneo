@@ -12,10 +12,10 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.2 2006/07/04 21:56:30 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.1 2006/10/03 09:50:04 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.annotations.util;
+package org.eclipse.emf.teneo.util;
 
 import java.util.Arrays;
 import java.util.Collections;

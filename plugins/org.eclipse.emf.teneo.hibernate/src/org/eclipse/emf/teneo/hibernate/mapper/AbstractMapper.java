@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.2 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.3 2006/10/03 09:50:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -30,8 +30,8 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
-import org.eclipse.emf.teneo.annotations.util.EcoreDataTypes;
 import org.eclipse.emf.teneo.simpledom.Element;
+import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
  * Base class for all mapping classes. Provides access to the hbmcontext.

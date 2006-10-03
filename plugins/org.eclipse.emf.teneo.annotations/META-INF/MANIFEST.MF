@@ -21,5 +21,4 @@ Export-Package: org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo.annotations.pannotation.util,
  org.eclipse.emf.teneo.annotations.parser,
  org.eclipse.emf.teneo.annotations.processing,
- org.eclipse.emf.teneo.annotations.util,
  org.eclipse.emf.teneo.annotations.xml

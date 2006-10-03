@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.7 2006/09/22 05:21:48 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.8 2006/10/03 09:50:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -38,11 +38,11 @@ import org.eclipse.emf.teneo.annotations.processing.BasicProcessor;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.annotations.processing.TransientProcessor;
 import org.eclipse.emf.teneo.annotations.processing.VersionProcessor;
-import org.eclipse.emf.teneo.annotations.util.EcoreDataTypes;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserType;
 import org.eclipse.emf.teneo.hibernate.mapping.ENumUserType;
 import org.eclipse.emf.teneo.simpledom.Element;
+import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
  * Maps a basic element to its mapping Context.
