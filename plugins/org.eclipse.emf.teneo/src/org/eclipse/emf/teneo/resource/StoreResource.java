@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.3 2006/09/28 20:04:19 mtaal Exp $
+ * $Id: StoreResource.java,v 1.4 2006/10/04 14:08:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -57,7 +57,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -248,7 +248,7 @@ public abstract class StoreResource extends ResourceImpl {
 					// the normal add will remove the container of the object when the
 					// resource is set in the child object, this issue can happen with
 					// direct reads using queries.
-					StoreUtil.setEResource((InternalEObject) obj, this);
+					StoreUtil.setEResource((InternalEObject) obj, this, true);
 					elist.basicAdd(obj, null);
 					attached((EObject) obj);
 				}
@@ -311,7 +311,9 @@ public abstract class StoreResource extends ResourceImpl {
 			final InternalEObject obj = (InternalEObject) newOrChangedObjects.get(i);
 
 			// ensure that the resource is set correctly before validating
-			assert (obj.eResource() == this);
+			if (obj.eResource() != this) {
+				assert (obj.eResource() == this);
+			}
 			EContainerRepairControl.setEResourceToAlLContent((InternalEObject) obj, this);
 
 			if (newOrChangedObjects.contains(obj.eContainer()))
@@ -446,6 +448,11 @@ public abstract class StoreResource extends ResourceImpl {
 		if (newEObjects.contains(eObject) || loadedEObjects.contains(eObject))
 			return;
 
+		// Already belongs to another resource
+		if (eObject.eResource() != null && eObject.eResource() != this) {
+			return; 
+		}
+		
 		addedEObject(eObject);
 
 		if (isTrackingModification()) {
@@ -461,7 +468,7 @@ public abstract class StoreResource extends ResourceImpl {
 		}
 
 		if (eObject instanceof InternalEObject && eObject.eResource() == null) {
-			StoreUtil.setEResource((InternalEObject) eObject, this);
+			StoreUtil.setEResource((InternalEObject) eObject, this, false);
 		}
 
 		// now also attach all ereferences with single values
@@ -478,6 +485,9 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** Overridden to also support persistence specific id instead of single emf id */
 	protected void detachedHelper(EObject eObject) {
+		
+		if (eObject.eResource() != this) return;
+		
 		removedEObject(eObject);
 
 		Map map = getIntrinsicIDToEObjectMap();

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.9 2006/09/27 05:48:34 mtaal Exp $
+ * $Id: AllTests.java,v 1.10 2006/10/04 14:08:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -41,13 +41,15 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 				.getConfigurations());
+		suite.addTestSuite(LibraryPMControllerAction.class);
+
 		suite.addTestSuite(LibraryResourceCutPasteAction.class);
 		suite.addTestSuite(LibraryNonResolvingAction.class);
 		suite.addTestSuite(LibraryTest.class);

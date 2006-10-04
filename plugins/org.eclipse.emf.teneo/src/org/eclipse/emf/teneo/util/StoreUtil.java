@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.5 2006/09/21 00:56:55 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.6 2006/10/04 14:08:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -56,7 +56,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class StoreUtil {
@@ -236,19 +236,17 @@ public class StoreUtil {
 
 	/**
 	 * Sets the eresource by walking up the containment structure and finding the highest parent. There the resource is
-	 * set.If the resource is already correct nothing is done.
+	 * set.If the resource is already set nothing is done.
 	 */
-	public static void setEResource(InternalEObject eobj, Resource.Internal resource) {
-		if (eobj.eResource() == resource)
+	public static void setEResource(InternalEObject eobj, Resource.Internal resource, boolean force) {
+		if (eobj.eResource() != null && eobj.eResource() != resource && !force)
 			return;
 
 		InternalEObject currentEObject = eobj;
-
-		while (currentEObject.eContainer() != null) {
+		while (currentEObject.eContainer() != null && !currentEObject.eContainmentFeature().isResolveProxies()) {
 			currentEObject = (InternalEObject) currentEObject.eContainer();
 			AssertUtil.assertNotSameObject(currentEObject, currentEObject.eContainer());
 		}
-
 		currentEObject.eSetResource(resource, null);
 	}
 

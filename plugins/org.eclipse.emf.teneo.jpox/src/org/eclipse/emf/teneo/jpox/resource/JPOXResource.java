@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXResource.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
+ * $Id: JPOXResource.java,v 1.3 2006/10/04 14:08:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.resource;
@@ -27,7 +27,6 @@ import java.util.Properties;
 
 import javax.jdo.FetchPlan;
 import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 import javax.jdo.spi.PersistenceCapable;
@@ -66,7 +65,7 @@ import org.eclipse.emf.teneo.resource.StoreResource;
  * resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
+ * @version $Revision: 1.3 $ $Date: 2006/10/04 14:08:24 $
  */
 
 public class JPOXResource extends StoreResource {
@@ -76,11 +75,11 @@ public class JPOXResource extends StoreResource {
 	/** Use a very minimal fetch group */
 	public static final String FETCH_MINIMAL = "fetch_minimal";
 
-	/** Link to the persistence manager factory */
-	protected final PersistenceManagerFactory pmf;
+	/** The pm controller param */
+	public static final String PM_CONTROLLER_PARAM = "pmController";
 
 	/** The related persistence manager */
-	protected PersistenceManager pm;
+	protected PersistenceManager persistenceManager;
 
 	/** The current transaction, can be null in unloaded state */
 	protected Transaction tx = null;
@@ -93,6 +92,10 @@ public class JPOXResource extends StoreResource {
 
 	private boolean fetchAll = false;
 
+	/** The pm controller is set if the pm is controlled outside of this resource */
+	private PMController pmController = null;
+	private boolean hasPMController = false;
+	
 	/**
 	 * The constructor, gets an uri and retrieves the backing store
 	 */
@@ -136,50 +139,70 @@ public class JPOXResource extends StoreResource {
 				// then try the extension of the resource
 				emfdsName = uri.fileExtension();
 			}
+			emfDataStore = JpoxHelper.INSTANCE.getDataStore(emfdsName);
+			super.init(emfDataStore.getTopClasses());
 		} else if (params.get(DS_NAME_PARAM) != null) // only the name
 		{
 			emfdsName = getParam(params, DS_NAME_PARAM, uri.query());
 
 			setDefinedQueries(getQueries(params));
-		}
+			emfDataStore = JpoxHelper.INSTANCE.getDataStore(emfdsName);
+			super.init(emfDataStore.getTopClasses());
+		} else if (params.get(PM_CONTROLLER_PARAM) != null) {
 
-		if (emfdsName == null) {
-			throw new JpoxStoreException("The JPOX Resource can not be initialized using the querystring: "
-					+ uri.query() + ". Are all the required parameters present?");
+			setDefinedQueries(getQueries(params));
+
+			final String scName = getParam(params, PM_CONTROLLER_PARAM, uri.query());
+			pmController = PMController.getPMController(scName);
+			log.debug("Using p, controller " + scName);
+			emfDataStore = pmController.getJpoxDataStore();
+			hasPMController = true;
+
+			// this should be done now, otherwise the classes are not loaded (to retrieve the topclasses)
+			super.init(emfDataStore.getTopClasses());
+		} else {
+			throw new JpoxStoreException("The following uri can not be used to create a" +
+					" jpoxresource, it misses parameters for either the jpoxdatastore or a pmController " + uri.toString());
 		}
 
 		log.debug("Looking for emf data store using  " + emfdsName);
-		emfDataStore = JpoxHelper.INSTANCE.getDataStore(emfdsName);
-		pmf = emfDataStore.getPMF();
-		super.init(emfDataStore.getTopClasses());
 
 		final String fetch_param = (String) params.get(FETCH_MINIMAL);
 		fetchMinimal = fetch_param != null && fetch_param.compareToIgnoreCase("true") == 0;
 		fetchAll = useAllFetchGroup;
-
-		// this should be done now, otherwise the classes are not loaded (to retrieve the topclasses)
-		pm = pmf.getPersistenceManager();
-
-		setPM(pm);
-	}
-
-	/** Creates a pm and sets fetch groups */
-	protected void setPM() {
-		setPM(pmf.getPersistenceManager());
+		
+		// load the persistencemanager
+		//getPersistenceManager();
 	}
 
 	/** Returns the persistence manager */
 	public PersistenceManager getPersistenceManager() {
-		return pm;
+		if (persistenceManager == null) {
+			if (pmController != null) {
+				persistenceManager = pmController.getPM();
+			} else {
+				persistenceManager = emfDataStore.getPMF().getPersistenceManager();
+			}
+			// set the fetch groups
+			if (fetchAll) {
+				log.debug("Fetchgroup contains all fields for this resource; " + uri);
+				persistenceManager.getFetchPlan().addGroup(FetchPlan.ALL);
+			} else if (fetchMinimal) {
+				log.debug("Minimal fetch group used for resource; " + uri);
+				persistenceManager.getFetchPlan().addGroup(FetchPlan.DEFAULT);
+			} else {
+				log.debug("Standard emf/jpox fetch group used for resource; " + uri);
+			}
+		}
+		return persistenceManager;
 	}
 
-	/** 
-	 * Overridden because if an eobject is removed from its containing parent then jpox
-	 * will move it to the deleted state and then the content of the deleted object can 
-	 * not be used anymore.
+	/**
+	 * Overridden because if an eobject is removed from its containing parent then jpox will move it to the deleted
+	 * state and then the content of the deleted object can not be used anymore.
 	 */
 	public void detached(EObject eObject) {
-		if (((PersistenceCapable)eObject).jdoIsDeleted()) {
+		if (((PersistenceCapable) eObject).jdoIsDeleted()) {
 			detachedHelper(eObject);
 			return;
 		}
@@ -194,12 +217,11 @@ public class JPOXResource extends StoreResource {
 		Transaction tx = null;
 		boolean err = true;
 		try {
-			if (pm == null) {
-				setPM();
+			if (!hasPMController) {
+				tx = getPersistenceManager().currentTransaction();
+				tx.begin();
 			}
-			tx = pm.currentTransaction();
-			tx.begin();
-			final Object[] result = emfDataStore.getCrossReferencers(pm, referedTo);
+			final Object[] result = emfDataStore.getCrossReferencers(getPersistenceManager(), referedTo);
 			err = false;
 
 			return result;
@@ -207,28 +229,15 @@ public class JPOXResource extends StoreResource {
 			e.printStackTrace(System.err);
 			throw new JpoxStoreException("Exception when doing cross reference search " + emfDataStore.getName(), e);
 		} finally {
-			if (err) {
-				if (tx != null && tx.isActive())
-					tx.rollback();
-			} else {
-				tx.commit();
+			if (!hasPMController) {
+				if (err) {
+					if (tx != null && tx.isActive())
+						tx.rollback();
+				} else {
+					tx.commit();
+				}
+				tx = null;
 			}
-			tx = null;
-		}
-	}
-
-	/** Opens a new persistence managers */
-	private void setPM(PersistenceManager newPM) {
-		pm = newPM;
-		// set the fetch groups
-		if (fetchAll) {
-			log.debug("Fetchgroup contains all fields for this resource; " + uri);
-			pm.getFetchPlan().addGroup(FetchPlan.ALL);
-		} else if (fetchMinimal) {
-			log.debug("Minimal fetch group used for resource; " + uri);
-			pm.getFetchPlan().addGroup(FetchPlan.DEFAULT);
-		} else {
-			log.debug("Standard emf/jpox fetch group used for resource; " + uri);
 		}
 	}
 
@@ -239,23 +248,25 @@ public class JPOXResource extends StoreResource {
 		log.debug("SAVING DAO jpoxresource using uri: " + uri.toString());
 
 		// now we have all the classnames, now retrieve all the objects using queries!!!!
-		tx = pm.currentTransaction();
-		if (!tx.isActive()) { // can also be asserted but okay try to be helpful
-			log.warn("Resource save: the transaction of the resource should always be active, but it isn't when save starts, beginning transaction");
-			tx.begin();
+		if (!hasPMController) {
+			tx = getPersistenceManager().currentTransaction();
+			if (!tx.isActive()) { // can also be asserted but okay try to be helpful
+				log.warn("Resource save: the transaction of the resource should always be active, but it isn't when save starts, beginning transaction");
+				tx.begin();
+			}
 		}
-
+		
 		boolean err = true;
 		try {
 			// persist the new objects
 			final Iterator it = getContents().iterator();
 			while (it.hasNext()) {
 				final Object obj = it.next();
-				
+
 				if (obj instanceof PersistenceCapable) {
 					final PersistenceCapable pc = (PersistenceCapable) obj;
 					if (!(pc.jdoIsPersistent())) {
-						pm.makePersistent(pc);
+						getPersistenceManager().makePersistent(pc);
 					}
 				}
 			}
@@ -264,36 +275,38 @@ public class JPOXResource extends StoreResource {
 			// check needs to be done if the objects have not been removed in determine unreachables
 			final ArrayList reallyRemove = new ArrayList();
 			for (int i = 0; i < removedEObjects.size(); i++) {
-				final PersistenceCapable pc = (PersistenceCapable)removedEObjects.get(i);
-				if (pc.jdoIsPersistent() && !pc.jdoIsDeleted()) {
+				final PersistenceCapable pc = (PersistenceCapable) removedEObjects.get(i);
+				final EObject eobj = (EObject)pc;
+				if (pc.jdoIsPersistent() && !pc.jdoIsDeleted() && 
+						(eobj.eResource() == null || eobj.eResource() == this)) {
 					reallyRemove.add(pc);
 				}
 			}
 
 			// now attach the remaing and delete them all
 			/*
-			ArrayList toRemove = new ArrayList();
-			for (Iterator removeIt = reallyRemove.iterator(); removeIt.hasNext();) {
-				toRemove.add(((PersistenceManagerImpl) pm).makePersistent(removeIt.next()));
-			}
-			*/
-			pm.deletePersistentAll(reallyRemove);
+			 * ArrayList toRemove = new ArrayList(); for (Iterator removeIt = reallyRemove.iterator();
+			 * removeIt.hasNext();) { toRemove.add(((PersistenceManagerImpl) pm).makePersistent(removeIt.next())); }
+			 */
+			getPersistenceManager().deletePersistentAll(reallyRemove);
 
 			err = false;
 		} finally {
-			if (err) {
-				log.warn("Exception during save, rolling back transaction");
-				tx.rollback();
-			} else {
-				log.warn("Committing transaction");
-				tx.commit();
+			if (!hasPMController) {
+				if (err) {
+					log.warn("Exception during save, rolling back transaction");
+					tx.rollback();
+				} else {
+					log.warn("Committing transaction");
+					tx.commit();
+				}
+				tx = getPersistenceManager().currentTransaction();
+				tx.begin();
+				tx = null;
 			}
-			tx = pm.currentTransaction();
-			tx.begin();
-			tx = null;
 		}
 	}
-	
+
 	/**
 	 * Loads all the objects in the global list
 	 */
@@ -301,20 +314,19 @@ public class JPOXResource extends StoreResource {
 		log.debug("Loading resource: " + getURI().toString());
 
 		// check if the resource was unloaded first
-		if (pm == null) {
-			setPM();
-		}
-		tx = pm.currentTransaction();
-		if (!tx.isActive()) {
-			log.debug("Starting transaction");
-			tx.begin();
+		if (!hasPMController) {
+			tx = getPersistenceManager().currentTransaction();
+			if (!tx.isActive()) {
+				log.debug("Starting transaction");
+				tx.begin();
+			}
 		}
 
 		List readObjects = null;
 		// note we have to a call to the super class otherwise an infinite loop is created
 		// final ArrayList<InternalEObject> eobjs = new ArrayList<InternalEObject>();
 		final ContentsEList elist = (ContentsEList) super.getSuperContents();
-		readObjects = loadFromStore(pm);
+		readObjects = loadFromStore(getPersistenceManager());
 		final Iterator it = readObjects.iterator();
 		while (it.hasNext()) {
 			final InternalEObject eobj = (InternalEObject) it.next();
@@ -335,14 +347,21 @@ public class JPOXResource extends StoreResource {
 		log.debug("Closing persistencemanager");
 		getPersistenceManager().close();
 	}
-	
+
 	/**
 	 * Clears the list of eobjects by id and commits an open transaction
 	 */
 	protected void doUnload() {
-		if (getPersistenceManager().currentTransaction().isActive()) {
-			getPersistenceManager().currentTransaction().commit();
+		if (!hasPMController) { 
+			if (getPersistenceManager().currentTransaction().isActive()) {
+				log.debug("At unload, transaction is still active committing it");
+				getPersistenceManager().currentTransaction().commit();
+			}
+	
+			log.debug("At unload: closing and nullifying persistencemanager");
+			getPersistenceManager().close();
 		}
+		persistenceManager = null;
 		super.doUnload();
 	}
 

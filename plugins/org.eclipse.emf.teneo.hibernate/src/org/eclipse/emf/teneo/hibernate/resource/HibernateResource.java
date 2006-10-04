@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.2 2006/10/04 14:08:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -29,8 +29,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.hibernate.HbConstants;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
@@ -55,22 +55,28 @@ import org.hibernate.impl.SessionImpl;
  * Another simple trick which is used to fool emf a bit is that the extension of the uri can also be used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
 	/** The logger */
 	private static Log log = LogFactory.getLog(HibernateResource.class);
 
-	/** This threadlocal can be used by lazy loaders to store a session */
-	public static final ThreadLocal threadSession = new ThreadLocal();
-
 	/** The store used to determine where to query for the data */
 	protected HbDataStore emfDataStore;
 
+	/** The uri parameter under which to store a session controller */
+	public static String SESSION_CONTROLLER_PARAM = "sessionController";
+	
 	/** The session used for long transactions */
 	private Session session = null; // is opened at first load
 
+	/** The session controller */
+	private SessionController sessionController = null;
+	
+	/** Is set to true if there is a sessionController */
+	private boolean hasSessionController = false;
+	
 	/**
 	 * The constructor, gets an uri and retrieves the backing OJBStore
 	 */
@@ -81,7 +87,6 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 		final HashMap params = decodeQueryString(uri.query());
 
-		String emfdsName = null;
 		if (uri.query() == null && uri.fileExtension() != null) // this is probably a platform uri!
 		{
 			if (HbConstants.EHB_FILE_EXTENSION.compareTo(uri.fileExtension()) == 0) {
@@ -92,7 +97,6 @@ public class HibernateResource extends StoreResource implements HbResource {
 					final Properties props = new Properties();
 					props.load(is);
 					is.close();
-					emfdsName = props.getProperty(Constants.PROP_NAME);
 					emfDataStore = HbUtil.getCreateDataStore(props);
 					setDefinedQueries(getQueries(props));
 				} catch (IOException e) {
@@ -101,22 +105,24 @@ public class HibernateResource extends StoreResource implements HbResource {
 			} else {
 				log.debug("Trying fileextension: " + uri.fileExtension());
 				// then try the extension of the resource
-				emfdsName = uri.fileExtension();
+				emfDataStore = (HbDataStore) HbHelper.INSTANCE.getDataStore(uri.fileExtension());
 			}
 		} else if (params.get(DS_NAME_PARAM) != null) // only the name
 		{
-			emfdsName = getParam(params, DS_NAME_PARAM, uri.query());
 			setDefinedQueries(getQueries(params));
+			emfDataStore = (HbDataStore) HbHelper.INSTANCE.getDataStore(getParam(params, DS_NAME_PARAM, uri.query()));
+		} else if (params.get(SESSION_CONTROLLER_PARAM) != null) {
+
+			setDefinedQueries(getQueries(params));
+			
+			final String scName = getParam(params, SESSION_CONTROLLER_PARAM, uri.query());
+			sessionController = SessionController.getSessionController(scName);
+			log.debug("Using session controller " + scName);
+			emfDataStore = sessionController.getHbDataStore();
+			hasSessionController = true;
 		}
 
-		if (emfdsName == null) {
-			throw new HbStoreException("The Resource can not be initialized using the querystring: " + uri.query()
-					+ ". Are all the required parameters present?");
-		}
-		log.debug("Looking for emf data store using  " + emfdsName);
-
-		emfDataStore = (HbDataStore) HbHelper.INSTANCE.getDataStore(emfdsName);
-
+		log.debug("Using emf data store using  " + emfDataStore.getName());
 		super.init(emfDataStore.getTopEntities());
 	}
 
@@ -131,9 +137,13 @@ public class HibernateResource extends StoreResource implements HbResource {
 	 */
 	public Session getSession() {
 		if (session == null) {
-			// session can be null when this is an xml import!		;
-			session = emfDataStore.getSessionFactory().openSession();
-			session.setFlushMode(FlushMode.NEVER);
+			if (hasSessionController) {
+				session = sessionController.getSession();
+			} else {
+				// session can be null when this is an xml import!		;
+				session = emfDataStore.getSessionFactory().openSession();
+				session.setFlushMode(FlushMode.NEVER);
+			}
 		}
 		return session;
 	}
@@ -157,7 +167,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 		boolean err = true;
 		final Session mySession = getSession();
 		try {
-			tx = mySession.beginTransaction();
+			if (!hasSessionController) tx = mySession.beginTransaction();
 			final Object[] result = emfDataStore.getCrossReferencers(mySession, referedTo);
 			err = false;
 
@@ -166,11 +176,13 @@ public class HibernateResource extends StoreResource implements HbResource {
 			e.printStackTrace(System.err);
 			throw new HbStoreException("Exception when doing cross reference search " + emfDataStore.getName(), e);
 		} finally {
-			if (err) {
-				if (tx != null) tx.rollback();
-				mySession.close();
-			} else {
-				tx.commit();
+			if (!hasSessionController) {
+				if (err) {
+					if (tx != null) tx.rollback();
+					mySession.close();
+				} else {
+					tx.commit();
+				}
 			}
 		}
 	}
@@ -185,7 +197,9 @@ public class HibernateResource extends StoreResource implements HbResource {
 		Transaction tx = null;
 		final Session mySession = getSession();
 		try {
-			tx = mySession.beginTransaction();
+			if (!hasSessionController) {
+				tx = mySession.beginTransaction();
+			}
 
 			final List list = super.getSuperContents();
 			for (int i = 0; i < list.size(); i++) {
@@ -202,22 +216,27 @@ public class HibernateResource extends StoreResource implements HbResource {
 				final Object obj = removedEObjects.get(i);
 				if (IdentifierCacheHandler.getID(obj) != null) // persisted object
 				{
-					mySession.delete(obj);
+					if (((InternalEObject)obj).eDirectResource() == null || 
+							((InternalEObject)obj).eDirectResource() == this) { 
+						mySession.delete(obj);
+					}
 				}
 			}
 
 			// now flush everything
-			mySession.flush();
+			if (!hasSessionController) mySession.flush();
 			err = false;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
 			throw new HbStoreException("Exception when saving resource " + emfDataStore.getName(), e);
 		} finally {
-			if (err) {
-				if (tx != null) tx.rollback();
-				mySession.close();
-			} else {
-				tx.commit();
+			if (!hasSessionController) {
+				if (err) {
+					if (tx != null) tx.rollback();
+					mySession.close();
+				} else {
+					tx.commit();
+				}
 			}
 		}
 	}
@@ -233,7 +252,9 @@ public class HibernateResource extends StoreResource implements HbResource {
 		boolean err = true;
 		final Session mySession = getSession();
 		try {
-			tx = mySession.beginTransaction();
+			if (!hasSessionController) {
+				tx = mySession.beginTransaction();
+			}
 
 			// note we have to a call to the super class otherwise an infinite loop is created
 			final List storeList = loadFromStore(mySession);
@@ -244,11 +265,13 @@ public class HibernateResource extends StoreResource implements HbResource {
 			e.printStackTrace(System.err);
 			throw new HbStoreException("Exception when saving resource " + emfDataStore.getName(), e);
 		} finally {
-			if (err) {
-				if (tx != null) tx.rollback();
-				mySession.close();
-			} else {
-				tx.commit();
+			if (!hasSessionController) {
+				if (err) {
+					if (tx != null) tx.rollback();
+					mySession.close();
+				} else {
+					tx.commit();
+				}
 			}
 		}
 	}
@@ -260,9 +283,14 @@ public class HibernateResource extends StoreResource implements HbResource {
 	protected void doUnload() {
 		super.doUnload();
 
-		AssertUtil.assertTrue("Session must be disconnected in unload", !((SessionImpl) getSession()).isTransactionInProgress());
-
-		setSession(null);
+		if (!hasSessionController) {
+			AssertUtil.assertTrue("Session must be disconnected in unload", !((SessionImpl) getSession()).isTransactionInProgress());
+			log.debug("Doing unload, closing and nullifying session");
+			getSession().close();
+			setSession(null);
+		} else {
+			log.debug("Doing unload, has session controller, sessioncontroller is therefor responsible for session close");
+		}
 	}
 
 	/**
@@ -316,5 +344,12 @@ public class HibernateResource extends StoreResource implements HbResource {
 			}
 		}
 		return readObjects;
+	}
+
+	/**
+	 * @return the hasSessionController
+	 */
+	public boolean isHasSessionController() {
+		return hasSessionController;
 	}
 }

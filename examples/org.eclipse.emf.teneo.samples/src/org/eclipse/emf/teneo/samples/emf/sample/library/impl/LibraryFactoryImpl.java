@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryFactoryImpl.java,v 1.3 2006/08/25 23:04:14 mtaal Exp $
+ * $Id: LibraryFactoryImpl.java,v 1.4 2006/10/04 14:08:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.sample.library.*;
+
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
