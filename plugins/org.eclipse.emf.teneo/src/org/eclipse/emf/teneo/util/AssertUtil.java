@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: AssertUtil.java,v 1.2 2006/07/04 21:28:53 mtaal Exp $
+ * $Id: AssertUtil.java,v 1.3 2006/10/05 04:42:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * Contains utility methods for assertions
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class AssertUtil {
@@ -91,7 +91,7 @@ public class AssertUtil {
 	/** Checks object memory inequality */
 	public static void assertNotSameObject(Object obj1, Object obj2) {
 		if (obj1 == obj2) {
-			throw new AssertionError("Objects are not the same");
+			throw new AssertionError("Objects are the same");
 		}
 	}
 
