@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdentifierCacheHandler.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: IdentifierCacheHandler.java,v 1.2 2006/10/05 14:32:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class IdentifierCacheHandler {
@@ -190,7 +190,7 @@ public class IdentifierCacheHandler {
 			}
 
 			// still present compare on values
-			return obj0 == obj1;
+			return obj0 == obj1 || obj0.equals(obj1);
 		}
 
 		/** The hashcode of the enclosed object is returned */
