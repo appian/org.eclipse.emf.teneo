@@ -1,0 +1,40 @@
++ %TITLE%
+
+++ Introduction
+
+Teneo combines the power of the ((http://www.eclipse.org/emft/)(EMF)) modeling and code generation framework and the power of storage, caching and querying of sophisticated object-relational mapping software such as Hibernate.
+
+++ Why use Teneo
+
+* Teneo allows you to start with your model (UML or XML Schema) and automatically generate the java source code and object-relational mappings. 
+* Teneo takes over much (or even all) of the manual work of creating relational mapping schemes.
+* Teneo supports JPA annotations on model level, this keeps your java code clean from persistency specific constructs.
+* The integration with EMF allows you to generate Eclipse RCP editors which persist automatically to a relational database.
+
+++ Automatic Mapping 
+
+Teneo automatically maps the EMF Ecore model to a Hibernate object relational mapping. The automatic mapping can be done in-memory when your application is initialized or a separate hibernate mapping file can be generated. The generated hbm file can be adapted manually and used in the runtime layer. 
+
+A distinct feature of Teneo is that it maps the model elements to Hibernate entities. This means that you can use model elements (like EMF EClasses and EFeatures) in HQL and when reading objects from the database.
+
+++ Runtime Layer
+
+EMF objects require specific handling in relation to Hibernate. This is mainly related to the way EMF handles references and collections. Also the EMF resource approach requires specific Hibernate implementations. To handle the EMF specifics, the EMF - Hibernate runtime layer was developed. This layer is small (about 150kb) but is essential to get a working EMF - Hibernate integration.
+
+The main visible component of the runtime layer is the HbDataStore. The HbDataStore controls a SessionFactory and a set of EPackages which are persisted using the PersistenceManagers of this PersistenceManagerFactory. When using a SessionFactory, behind the scenes Teneo takes care of instantiating EMF objects and setting/getting EFeatures from the database. Teneo also handles lazy loading of EMF Lists.
+
+++ JPA/EJB3 Annotations in UML/XML Schema or separate XML
+
+Teneo will automatically map the EMF model to an object relational representation. However there are situations in which it makes sense to influence or control the mapping. For this purpose Teneo supports JPA annotations in the model. The annotations can be used to control the way the inheritance structure is mapped to the relational store or how efeatures are mapped to database columns. Annotations can be specified directly in your model definition or defined separately in a xml file.
+
+The JPA support has been developed in such a way that it is only required to specify annotations for those parts of the model for which the automatic mapping logic does not result in the required behavior. For example it is possible to specify a column annotation for one efeature in a model while all other efeatures and eclasses are automatically handled by Teneo.
+
+++ Support and information
+
+Teneo is a project hosted within Eclipse - EMFT at ((http://www.eclipse.org/emft/projects/teneo/#teneo)(eclipse.org)).
+
+Teneo can be downloaded ((http://www.eclipse.org/emft/downloads/?proj=teneo)(here)) (select Teneo in the listbox).
+
+Tutorials and documentation can be found ((http://www.elver.org/hibernate/index.html)(here)).
+
+Support is given through the EMFT newsgroup: news://news.eclipse.org/eclipse.technology.emft.
