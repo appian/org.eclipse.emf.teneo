@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdentifierCacheHandler.java,v 1.2 2006/10/05 14:32:04 mtaal Exp $
+ * $Id: IdentifierCacheHandler.java,v 1.3 2006/10/15 07:36:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class IdentifierCacheHandler {
@@ -190,7 +190,15 @@ public class IdentifierCacheHandler {
 			}
 
 			// still present compare on values
-			return obj0 == obj1 || obj0.equals(obj1);
+			// equals call should maybe also be done but goes wrong for featuremap entries
+			// which are equal if their values and featuremap are equal
+			// identifier and version caching are only usefull in case of object equality
+			// because it uses weak references and the first level cache of hb should
+			// ensure that only one instance of a certain object is present.
+			// There should always be one instance anyway in one session otherwise 
+			// references between objects can be set wrong (or at least there is a great
+			// change that they go wrong).
+			return obj0 == obj1;
 		}
 
 		/** The hashcode of the enclosed object is returned */
