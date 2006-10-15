@@ -154,7 +154,7 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -255,10 +252,7 @@
 <li>Set Library model plugin dependency:
 				<ul>
 					
-<li>Add the EMF persistency runtime plugin (org.elver.store.jpox.runtime) to the plugin dependencies of the Library (model) project</li>
-					
-<li>Add <em>Eclipse-RegisterBuddy: org.elver.store.jpox.runtime</em> to the Manifest.MF of
-					the Library model project (see <a class="external" href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why).</li>
+<li>Add the EMF persistency runtime plugin (org.eclipse.emf.teneo.jpox) to the plugin dependencies of the Library (model) project</li>
 				
 </ul>
 				
@@ -269,12 +263,12 @@
 				
 <li>Generate JDO file: right click on the ecore file (normally called library.ecore) 
 				top package (org.eclipse.example.library) and in
-				the Elver menu choose one of the <em>Generate EMF - JDO/JPOX OR Mapping (...)</em> option. 
+				the Teneo menu choose one of the <em>Generate EMF - JDO/JPOX OR Mapping (...)</em> option. 
 				A package.jdo file should be created next to the ecore file. <em>It is possible that you need to refresh the 
 				folder to see the created package.jdo.</em>
 </li>
 				
-<li>Copy the package.jdo to a location in the source tree, if you have automatic build enabled then JPOX 
+<li>Copy the package.jdo to a location in the source tree and ensure that the build process copies it to the build target location, if you have automatic build enabled then JPOX 
 				should now enhance the classes automatically (after the build).</li>
 				
 <li>Create a database (with the name mylibrary) in your database server</li>

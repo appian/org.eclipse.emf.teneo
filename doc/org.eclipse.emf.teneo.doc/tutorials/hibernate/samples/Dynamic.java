@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Dynamic.java,v 1.2 2006/07/23 19:38:47 mtaal Exp $
+ * $Id: Dynamic.java,v 1.3 2006/10/15 08:39:23 mtaal Exp $
  */
 
 package hbtutorial;
@@ -31,7 +31,7 @@ import org.eclipse.example.library.BookCategory;
 import org.eclipse.example.library.LibraryFactory;
 import org.eclipse.example.library.LibraryPackage;
 import org.eclipse.example.library.Writer;
-import org.elver.store.hibernate.HbDataStore;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -41,7 +41,7 @@ import org.hibernate.Transaction;
  * Dynamic Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
 */
 public class Dynamic {
 

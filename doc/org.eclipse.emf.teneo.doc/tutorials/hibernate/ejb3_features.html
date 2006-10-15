@@ -16,7 +16,7 @@
 <link href="../skin/forrest.css" type="text/css" rel="stylesheet">
 <link rel="shortcut icon" href="../">
 <script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
-<title>Supported EJB3 Annotation Features</title>
+<title>Supported JPA Annotation Features</title>
 <meta content="text/css" http-equiv="Content-style-type">
 </head>
 <body class="composite" onload="focus()">
@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_selected_1.5" class="selectedmenuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menupage">
-<div class="menupagetitle">EJB3</div>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<div class="menupagetitle">JPA/EJB3</div>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -238,19 +232,22 @@
 <div id="bodycol">
 <div id="apphead">
 <h2>
-<em>Supported EJB3 Annotation Features</em>
+<em>Supported JPA Annotation Features</em>
 </h2>
 </div>
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
-<a href="#featuresejb3">EJB3 Annotation Features</a>
+<a href="#featuresejb3">JPA Annotation Features</a>
 </li>
 <li>
-<a href="#Supported+Annotations">Supported Annotations</a>
+<a href="#Supported+JPA+Annotations">Supported JPA Annotations</a>
 </li>
 <li>
-<a href="#Currently+Unsupported+Annotations">Currently Unsupported Annotations</a>
+<a href="#Currently+Unsupported+JPA+Annotations">Currently Unsupported JPA Annotations</a>
+</li>
+<li>
+<a href="#hbspecific">Hibernate Annotations Extensions</a>
 </li>
 <li>
 <a href="#Annotation+notes">Annotation notes</a>
@@ -262,7 +259,10 @@
 <a href="#transient">Transient on EClass</a>
 </li>
 <li>
-<a href="#secondarytables_notes">SecondaryTable annotation</a>
+<a href="#Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations">Unique annotation added to OneToMany to force a join table for 1:n relations</a>
+</li>
+<li>
+<a href="#indexed">Indexed Annotation</a>
 </li>
 <li>
 <a href="#EmbeddedID+annotation">EmbeddedID annotation</a>
@@ -276,10 +276,10 @@
 		
 <a name="N1000E"></a><a name="featuresejb3"></a>
 <div class="h3">
-<h3>EJB3 Annotation Features</h3>
+<h3>JPA Annotation Features</h3>
 			
 			
-<p>The goal is to support all EJB3 persistence annotations.</p>
+<p>The goal is to support all JPA persistence annotations.</p>
 			
 <p>You can download the EJB 3.0 Persistence Specification from the
 				<a class="external" href="http://jcp.org/aboutJava/communityprocess/final/jsr220/index.html">jsr-220 download page</a>. The
@@ -289,12 +289,12 @@
 		
 </div>
 		
-<a name="N10022"></a><a name="Supported+Annotations"></a>
+<a name="N10022"></a><a name="Supported+JPA+Annotations"></a>
 <div class="h3">
-<h3>Supported Annotations</h3>
+<h3>Supported JPA Annotations</h3>
 			
 			
-<p>The EJB3 annotations listed below are supported as of the current release. "Supported" means that there are test
+<p>The JPA annotations listed below are supported as of the current release. "Supported" means that there are test
 				cases showing the annotation is correctly translated to an object-relational mapping and that the annotation works as
 				expected when persisting and retrieving objects to/from a database.</p>
 			
@@ -364,6 +364,8 @@
 				
 <li>9.1.32: PrimaryKeyJoinColumn Annotation</li>
 				
+<li>9.1.33: PrimaryKeyJoinColumns Annotation</li>
+				
 <li>9.1.34: Embeddable Annotation</li>
 				
 <li>9.1.35: Embedded Annotation</li>
@@ -378,9 +380,9 @@
 			
 </div>
 			
-<a name="N1009E"></a><a name="Currently+Unsupported+Annotations"></a>
+<a name="N100A1"></a><a name="Currently+Unsupported+JPA+Annotations"></a>
 <div class="h3">
-<h3>Currently Unsupported Annotations</h3>
+<h3>Currently Unsupported JPA Annotations</h3>
 				
 				
 <p>The following annotations are not yet supported:</p>
@@ -389,74 +391,93 @@
 				
 <li>9.1.27: MapKey Annotation</li>
 				
-<li>9.1.33: PrimaryKeyJoinColumns Annotation</li>
-				
 </ul>
 		
 </div>
 		
+<a name="N100B1"></a><a name="hbspecific"></a>
+<div class="h3">
+<h3>Hibernate Annotations Extensions</h3>
+			
+			
+<p>In addition to the JPA annotations, Teneo supports a number of 
+			<a class="external" href="http://www.hibernate.org/5.html#A7">Hibernate Annotations Extensions</a>.</p>
+			
+<p>The following Hibernate specific annotations are supported:</p>
+			
+<ul>
+				
+<li>Columns</li>
+				
+<li>GenericGenerator</li>
+				
+<li>IdBag</li>
+				
+<li>Type</li>
+			
+</ul>
+			
+<p>In future releases the support for hibernate specific annotations will be extended.</p>
 		
-<a name="N100B1"></a><a name="Annotation+notes"></a>
+</div>
+		
+<a name="N100D4"></a><a name="Annotation+notes"></a>
 <div class="h3">
 <h3>Annotation notes</h3>
 			
 			
-<a name="N100B7"></a><a name="edatatype"></a>
+<a name="N100DA"></a><a name="edatatype"></a>
 <div class="h4">
 <h4>Annotations on EDataType</h4>
-<p>Every ejb3 annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
+<p>Every JPA annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
 			Setting annotations on an EDataType has as advantage that the annotation is used in every location in which the EDataType is
 			used. For example the column length annotation can be defined on EDataType level and is then automatically added to 
 			each EAttribute which uses this EDataType. The annotations on EAttribute level take precedence so if both the EAttribute 
 			and the EDataType have the same annotation then the annotation on the EAttribute is used.</p>
 </div>
 			
-<a name="N100C0"></a><a name="transient"></a>
+<a name="N100E3"></a><a name="transient"></a>
 <div class="h4">
 <h4>Transient on EClass</h4>
 <p>The Transient annotation can also be used on an EClass. This prevents an EClass from being mapped and be persisted.</p>
 <p>This means also that in case that the super EClass of an EClass is transient that the properties of the super EClass are 
 				not persisted and that the sub EClass requires its own identifier/primary key properties.</p>
 </div>
-			
-<a name="N100CD"></a><a name="secondarytables_notes"></a>
+		
+		
+<a name="N100F0"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
 <div class="h4">
-<h4>SecondaryTable annotation</h4>
-<p>
-					Mapping properties to secondary tables works as follows.
-				</p>
-<p>
-					First, define one or more SecondaryTable annotations for the type in question:
-				</p>
-<pre class="code">&lt;xsd:complexType name="Person"&gt;
+<h4>Unique annotation added to OneToMany to force a join table for 1:n relations</h4>
+<p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
+		parent) in the child table/object. The disadvantage of this approach is that duplicates 
+		are not supported. To support duplicates in an elist a join table is required. To signal to 
+		Teneo, that a join table should be used, the annotation as in this example can be used:</p>
+<pre class="code">
+&lt;xsd:element name="joinedItem" type="xsd:anyURI" ecore:reference="this:Item" maxOccurs="unbounded"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;!-- Declare two secondary tables. --&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/SecondaryTables" ecore:key="value"&gt;st1 st2&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/SecondaryTable/st1" ecore:key="name"&gt;person_address&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/SecondaryTable/st2" ecore:key="name"&gt;person_photo&lt;/xsd:appinfo&gt;
-	&lt;/xsd:annotation&gt;
-	&lt;xsd:sequence&gt;
-		&lt;!-- Child elements here... --&gt;
-	&lt;/xsd:sequence&gt;
-&lt;/xsd:complexType&gt;</pre>
-<p>Second, define a Column.table annotation for each property that should be mapped to a secondary table:</p>
-<pre class="code">&lt;xsd:element name="address" type="xsd:string"&gt;
-	&lt;xsd:annotation&gt;
-		&lt;!-- Map to person_address table. --&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="table"&gt;person_address&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@OneToMany(unique=false)&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
 &lt;/xsd:element&gt;
-&lt;xsd:element name="photo" type="xsd:base64Binary"&gt;
-	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Lob"&gt;true&lt;/xsd:appinfo&gt;
-		&lt;!-- Map to person_photo table. --&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="table"&gt;person_photo&lt;/xsd:appinfo&gt;
-	&lt;/xsd:annotation&gt;
-&lt;/xsd:element&gt;</pre>
+			</pre>
+<p>Based on this annotations Teneo will generate a join table for this model. Note that 
+		this annotation can be combined with the indexed annotation.</p>
+<p>
+<em>The unique annotation does not exist in the EJB3 spec and is a Teneo extension.</em>
+</p>
+</div>
+		
+		
+<a name="N10104"></a><a name="indexed"></a>
+<div class="h4">
+<h4>Indexed Annotation</h4>
+<p>The http://annotation.elver.org/Indexed annotation can be used to signal to Elver that a certain association does
+		not require an index column and has a bag like behavior. 
+		See <a href="hibernate_relations.html#Mapping+non-indexed+relations">here</a>
+		for more information.</p>
 </div>
 			
 			
-<a name="N100E5"></a><a name="EmbeddedID+annotation"></a>
+<a name="N10111"></a><a name="EmbeddedID+annotation"></a>
 <div class="h4">
 <h4>EmbeddedID annotation</h4>
 <p>EmbeddedID lets you use an embedded class as an entity's composite primary key.</p>
@@ -464,11 +485,11 @@
 <em>Note: in general, composite primary keys are only necessary for legacy data models.
 					It's strongly recommended to use single (non-composite) keys for new data models.</em>
 </p>
-<p>Elver requires that the composite key's class is an EObject, as it needs ECore metadata to define the correct mapping.</p>
+<p>Teneo requires that the composite key's class is an EObject, as it needs ECore metadata to define the correct mapping.</p>
 </div>
 			
 			
-<a name="N100F6"></a><a name="lob_notes"></a>
+<a name="N10122"></a><a name="lob_notes"></a>
 <div class="h4">
 <h4>Lob annotation</h4>
 <p>
@@ -482,9 +503,11 @@
 &lt;xsd:element name="photo" type="xsd:base64Binary" minOccurs="0"&gt;
 	&lt;xsd:annotation&gt;
 		&lt;!-- Map to a 'binary' field. --&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Lob"&gt;true&lt;/xsd:appinfo&gt;
-		&lt;!-- Use 1Mb maximum length. (MEDIUMBLOB in MySQL.) --&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Column" ecore:key="length"&gt;1048576&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;
+			@Lob
+			&lt;!-- Use 1Mb maximum length. (MEDIUMBLOB in MySQL.) --&gt;
+			@Column(length=1048576)
+		&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
 &lt;/xsd:element&gt;
 				</pre>

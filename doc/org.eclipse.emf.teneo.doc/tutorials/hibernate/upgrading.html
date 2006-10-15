@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <div class="menupagetitle">Upgrading</div>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -246,6 +240,9 @@
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
+<a href="#Upgrading+to+Teneo">Upgrading to Teneo</a>
+</li>
+<li>
 <a href="#Changes+from+a+0.3.*+to+the+0.7.0+release">Changes from a 0.3.* to the 0.7.0 release</a>
 </li>
 <li>
@@ -258,8 +255,22 @@
 <a href="#Changed+datamodel+after+upgrading">Changed datamodel after upgrading</a>
 </li>
 </ul> 
+  	
+<a name="N10010"></a><a name="Upgrading+to+Teneo"></a>
+<div class="h3">
+<h3>Upgrading to Teneo</h3>
+  		
+  		
+<p>The Teneo plugins have different names and ids than the Elver plugins. This means that if you 
+  		install Teneo plugins that they will coexist next to the installed Elver plugins. This should not
+  		be a problem but can lead to confusion because the classnames (without the package names) have stayed the
+  		same (for example HbDataStore is called the same in Teneo and in Elver).</p>
+  		
+<p>There is no automatic removal of Elver plugins, this has to be done manually (see below).</p>
+  	
+</div>
 	  
-<a name="N10010"></a><a name="Changes+from+a+0.3.*+to+the+0.7.0+release"></a>
+<a name="N1001D"></a><a name="Changes+from+a+0.3.*+to+the+0.7.0+release"></a>
 <div class="h3">
 <h3>Changes from a 0.3.* to the 0.7.0 release</h3>
 	  	
@@ -276,7 +287,7 @@
 	  
 </div>
 	  
-<a name="N10024"></a><a name="Regenerate+hibernate.hbm.xml+after+upgrading"></a>
+<a name="N10031"></a><a name="Regenerate+hibernate.hbm.xml+after+upgrading"></a>
 <div class="h3">
 <h3>Regenerate hibernate.hbm.xml after upgrading</h3>
 	  	
@@ -287,7 +298,7 @@
 	  
 </div>
 	  
-<a name="N1002E"></a><a name="Upgrade+through+the+Update+Manager%3A+Search+for+upgrades...+or+Search+for+new+Features..."></a>
+<a name="N1003B"></a><a name="Upgrade+through+the+Update+Manager%3A+Search+for+upgrades...+or+Search+for+new+Features..."></a>
 <div class="h3">
 <h3>Upgrade through the Update Manager: Search for upgrades... or Search for new Features...</h3>
       
@@ -308,7 +319,7 @@
 	 
 </div>
     
-<a name="N10041"></a><a name="Changed+datamodel+after+upgrading"></a>
+<a name="N1004E"></a><a name="Changed+datamodel+after+upgrading"></a>
 <div class="h3">
 <h3>Changed datamodel after upgrading</h3>
      	

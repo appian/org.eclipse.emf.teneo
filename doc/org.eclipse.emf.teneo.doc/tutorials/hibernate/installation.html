@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -248,13 +242,13 @@
 <a href="#emf">EMF Installation</a>
 </li>
 <li>
-<a href="#EMF+-+Hibernate+Persistency+Plugin+Installation">EMF - Hibernate Persistency Plugin Installation</a>
+<a href="#EMF+-+hibernate+Persistency+Plugin+Installation">EMF - hibernate Persistency Plugin Installation</a>
 </li>
 <li>
 <a href="#Hibernate+Libraries">Hibernate Libraries</a>
 </li>
 <li>
-<a href="#emfjpoxruntime">Install the EMF - Hibernate Runtime plugin</a>
+<a href="#emfhibernateruntime">Install the EMF - Hibernate Runtime plugin</a>
 <ul class="minitoc">
 <li>
 <a href="#Using+the+runtime+plugin+in+an+EMF+model+plugin">Using the runtime plugin in an EMF model plugin</a>
@@ -278,69 +272,71 @@
 	 
 </div>
     
-<a name="N10021"></a><a name="EMF+-+Hibernate+Persistency+Plugin+Installation"></a>
+<a name="N10021"></a><a name="EMF+-+hibernate+Persistency+Plugin+Installation"></a>
 <div class="h3">
-<h3>EMF - Hibernate Persistency Plugin Installation</h3>
+<h3>EMF - hibernate Persistency Plugin Installation</h3>
      	
 		
-<p> The EMF Persistency plugin can be downloaded from the elver.org update site. 
+<p> The EMF Persistency plugin can be downloaded from the eclipse.org/emft update site. 
 			To configure this update site in Eclipse go to: <em>Help &gt; Software Updates &gt; Find and Install</em>. Select
 			'Search for new features to install' and click next.
 		</p>
 		
 <p> At this window create a new update site by clicking
-			on 'New Remote Site'. Enter any name you want, as a url enter: <em>http://update.elver.org/store</em>, 
+			on 'New Remote Site'. Enter any name you want, as a url enter: <em>http://download.eclipse.org/technology/emft/updates/site-interim.xml</em>, 
 			and press ok. 
 			</p>
 		
 <p>Select the newly created update site and press finish. When the update site contents are shown, select the 
-			EMF Hibernate Persistency (followed by version information) Feature.</p>
+			Teneo EMF Persistency (possibly followed by version information) Feature.</p>
 		
-<p>The feature consists of a number of plugins: org.elver.store.annotations (responsible for the EJB3-like annotations),
-			org.elver.store and org.elver.store.eclipse (contains the OR Mapper ui and the Resource Utility) and the 
-			org.elver.store.hibernate.runtime plugin containing all runtime jars.</p>
+<p>The feature consists of a number of plugins: org.eclipse.emf.teneo.hibernate.eclipse and org.eclipse.emf.teneo.hibernate. The first plugin contains the OR Mapper which
+			generates jdo descriptor files. The second plugin contains the jar files for the EMF persistency runtime. 
+			</p>
+			
+<p>After you have installed the plugin and restarted eclipse you will see a new menu entry called Teneo when 
+			you right click on an ecore file.
+			</p>
+			
+<p>
+<em>Note, if you have a earlier version of the EMF persistency plugin installed then you it is possible that 
+			you need to manually disable the previous version of the EMF - hibernate feature, see <a href="upgrading.html">here</a>.</em>
+</p>
 	
 </div>
 	 
-<a name="N1003A"></a><a name="Hibernate+Libraries"></a>
+<a name="N10045"></a><a name="Hibernate+Libraries"></a>
 <div class="h3">
 <h3>Hibernate Libraries</h3>
 		 
-		 
-<p>The org.elver.store.hibernate.runtime contains a subset of the Hibernate libraries. These have been used to run the 
-			tests. For the remaining Hibernate runtime libraries please 
-			visit: <a class="external" href="http://www.hibernate.org">the hibernate website</a>.</p>
+			
+<p>The EMF persistency feature does not contain the Hibernate libraries (and its dependencies). 
+			Please download the Hibernate libraries separately from: <a class="external" href="http://www.hibernate.org">the hibernate website</a>.</p>
+			
+<p>
+<strong>A common approach is to place the Hibernate libraries in a separate plugin on which your model plugin will depend.
+			If you do this then you should also set the BuddyPolicy in the plugin containing the Hibernate jars (in the Manifest.MF), 
+			for example: Eclipse-BuddyPolicy: dependent.</strong>
+</p>
 	 
 </div>
 	
-<a name="N10048"></a><a name="emfjpoxruntime"></a>
+<a name="N10057"></a><a name="emfhibernateruntime"></a>
 <div class="h3">
 <h3>Install the EMF - Hibernate Runtime plugin</h3>
      	
 		
-<p>The installed runtime plugin (org.elver.store.hibernate.runtime) can be used in two ways: 
+<p>The installed runtime plugin (org.eclipse.emf.teneo.hibernate) can be used in two ways: 
 			1) in an EMF model plugin, 2) in a non-plugin project. </p>
-			
-<p></p>
-<p>
-			
-<img alt="Setting plugin dependency" src="images/plugin_dependency_reexport.gif">
-			</p>
 		
-<a name="N10059"></a><a name="Using+the+runtime+plugin+in+an+EMF+model+plugin"></a>
+<a name="N10060"></a><a name="Using+the+runtime+plugin+in+an+EMF+model+plugin"></a>
 <div class="h4">
 <h4>Using the runtime plugin in an EMF model plugin</h4>
 <p>To install the runtime plugin in an EMF model plugin go through the following steps (in this order):</p>
 <ol>
 				
 <li>In the plugin.xml, dependency tab, of the EMF model plugin project add a dependency to 
-				the org.elver.store.hibernate.runtime plugin. Enable this plugin for export (reexport dependency).</li>
-				
-<li>Add the following line to the Manifest.MF of the EMF model plugin project 
-					(see <a class="external" href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why):
-					<p>Eclipse-RegisterBuddy: org.elver.store.hibernate.runtime</p>
-				
-</li>
+				the org.eclipse.emf.teneo.hibernate plugin. Enable this plugin for export (reexport dependency).</li>
 				
 <li>Add a JDBC driver to the EMF editor (or the model) plugin project. If only added to the 
 				EMF model project ensure that the EMF editor project has access to the jdbc driver.</li>
@@ -348,29 +344,25 @@
 </ol>
 <p></p>
 <p>
-			
-<img alt="Setting register buddy" src="images/registerbuddy.jpg">
-			</p>
-<p>
 <strong>From here please follow either the <a href="quick_tutorial.html">Quick Start</a> or 
 				<a href="tutorialone/tutorial1_intro.html">the Library Tutorial</a>.</strong>
 </p>
 </div>
 		
-<a name="N1008B"></a><a name="Installing+the+runtime+layer+in+a+non-plugin+EMF+project"></a>
+<a name="N10081"></a><a name="Installing+the+runtime+layer+in+a+non-plugin+EMF+project"></a>
 <div class="h4">
 <h4>Installing the runtime layer in a non-plugin EMF project</h4>
 <p>In case of a non-plugin project all the jar-files present in the following plugins should be in the classpath:</p>
 <ul>
 				
-<li>org.elver.store</li>
+<li>org.eclipse.emf.teneo</li>
 				
-<li>org.elver.store.annotations</li>
+<li>org.eclipse.emf.teneo.annotations</li>
 				
-<li>	org.elver.store.hibernate.runtime</li>
+<li>org.eclipse.emf.teneo.hibernate</li>
 			
 </ul>
-<p>In addition a jdbc driver should be added to the classpath.</p>
+<p>In addition the hibernate libraries and a jdbc driver should be added to the classpath.</p>
 </div>
 	
 </div>

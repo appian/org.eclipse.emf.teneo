@@ -45,7 +45,7 @@
 <div id="toptabs" class="tabs">
 <table border="0" cellspacing="0" cellpadding="4">
 <tr>
-<td><a class="base-selected" href="../index.html">Home</a></td><td><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></td><th><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></th><td><a class="base-selected" href="../services/index.html">Services</a></td>
+<td><a class="base-selected" href="../index.html">Home</a></td><td><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></td><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
 </tr>
 </table>
 </div>
@@ -76,6 +76,36 @@
 <div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
 <div id="menu_1.1" class="menuitemgroup">
 <div class="menuitem">
+<a href="../index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../contributors.html">Contributors</a>
+</div>
+<div class="menuitem">
+<a href="../links.html">Links</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">About</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../goal.html">Project Goal</a>
+</div>
+<div class="menuitem">
+<a href="../elver.html">The Elver</a>
+</div>
+<div class="menuitem">
+<a href="../license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Services</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../services/index.html">Springsite.com</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Home</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
 <a href="../jpox/index.html">Introduction</a>
 </div>
 <div class="menuitem">
@@ -103,8 +133,8 @@
 <a href="../jpox/license.html">License</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
-<div id="menu_1.2" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/tutorial1/tutorial1_intro.html">Introduction</a>
 </div>
@@ -124,8 +154,8 @@
 <a href="../jpox/tutorial1/tutorial1_5.html">Using EMF/JPOX Resources</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor tutorial</div>
-<div id="menu_1.3" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">Library Editor tutorial</div>
+<div id="menu_1.6" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/tutorial2/tutorial2_intro.html">Introduction</a>
 </div>
@@ -136,8 +166,8 @@
 <a href="../jpox/tutorial2/tutorial2_2.html">Run the Library Editor</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
-<div id="menu_1.4" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Details</div>
+<div id="menu_1.7" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/inheritance.html">Inheritance Mapping</a>
 </div>
@@ -154,8 +184,8 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
-<div id="menu_1.5" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Annotations (JPA/EJB3)</div>
+<div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
 </div>
@@ -166,8 +196,8 @@
 <a href="../jpox/ejb3_examples.html">EAnn. Examples</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
-<div id="menu_1.6" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.9')" id="menu_1.9Title" class="menutitle">XML Schema</div>
+<div id="menu_1.9" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/features_details.html">XML Schema Features</a>
 </div>
@@ -184,8 +214,8 @@
 <a href="../jpox/schema_list.html">XML Schema Examples</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
-<div id="menu_1.7" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.10')" id="menu_1.10Title" class="menutitle">Support</div>
+<div id="menu_1.10" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/troubleshooting.html">Troubleshooting</a>
 </div>
@@ -193,19 +223,151 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_selected_1.8')" id="menu_selected_1.8Title" class="menutitle">Developer</div>
-<div id="menu_selected_1.8" class="selectedmenuitemgroup">
+<div onclick="SwitchMenu('menu_1.11')" id="menu_1.11Title" class="menutitle">Developer</div>
+<div id="menu_1.11" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
-<div class="menupage">
-<div class="menupagetitle">Test cases</div>
+</div>
+<div onclick="SwitchMenu('menu_1.12')" id="menu_1.12Title" class="menutitle">Home</div>
+<div id="menu_1.12" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.13')" id="menu_1.13Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.13" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.14')" id="menu_1.14Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.14" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.15')" id="menu_1.15Title" class="menutitle">Details</div>
+<div id="menu_1.15" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.16')" id="menu_1.16Title" class="menutitle">Annotations (JPA/EJB3)</div>
+<div id="menu_1.16" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.17')" id="menu_1.17Title" class="menutitle">XML Schema</div>
+<div id="menu_1.17" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.18')" id="menu_1.18Title" class="menutitle">Support</div>
+<div id="menu_1.18" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.19')" id="menu_1.19Title" class="menutitle">Developer</div>
+<div id="menu_1.19" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>

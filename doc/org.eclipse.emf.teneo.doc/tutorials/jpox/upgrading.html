@@ -154,7 +154,7 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <div class="menupagetitle">Upgrading</div>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -240,6 +237,9 @@
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
+<a href="#Upgrading+to+Teneo">Upgrading to Teneo</a>
+</li>
+<li>
 <a href="#Upgrading+to+the+0.7.0+release">Upgrading to the 0.7.0 release</a>
 </li>
 <li>
@@ -259,7 +259,21 @@
 </li>
 </ul> 
   	
-<a name="N10010"></a><a name="Upgrading+to+the+0.7.0+release"></a>
+<a name="N10010"></a><a name="Upgrading+to+Teneo"></a>
+<div class="h3">
+<h3>Upgrading to Teneo</h3>
+  		
+  		
+<p>The Teneo plugins have different names and ids than the Elver plugins. This means that if you 
+  		install Teneo plugins that they will coexist next to the installed Elver plugins. This should not
+  		be a problem but can lead to confusion because the classnames (without the package names) have stayed the
+  		same (for example JpoxDataStore is called the same in Teneo and in Elver).</p>
+  		
+<p>There is no automatic removal of Elver plugins, this has to be done manually (see below).</p>
+  	
+</div>
+  	
+<a name="N1001D"></a><a name="Upgrading+to+the+0.7.0+release"></a>
 <div class="h3">
 <h3>Upgrading to the 0.7.0 release</h3>
   		
@@ -277,7 +291,7 @@
   	
 </div>
   	
-<a name="N10023"></a><a name="Changes+from+the+0.6.5+to+the+0.7.0+release"></a>
+<a name="N10030"></a><a name="Changes+from+the+0.6.5+to+the+0.7.0+release"></a>
 <div class="h3">
 <h3>Changes from the 0.6.5 to the 0.7.0 release</h3>
   		
@@ -306,7 +320,7 @@
 		
 </div>
 	  
-<a name="N1005E"></a><a name="Set+the+JPOX+libraries+for+the+JPOX+plugin"></a>
+<a name="N1006B"></a><a name="Set+the+JPOX+libraries+for+the+JPOX+plugin"></a>
 <div class="h3">
 <h3>Set the JPOX libraries for the JPOX plugin</h3>
 	  	
@@ -318,7 +332,7 @@
 	  
 </div>
 	  
-<a name="N10068"></a><a name="Regenerate+package.jdo+after+upgrading"></a>
+<a name="N10075"></a><a name="Regenerate+package.jdo+after+upgrading"></a>
 <div class="h3">
 <h3>Regenerate package.jdo after upgrading</h3>
 	  	
@@ -329,7 +343,7 @@
 	  
 </div>
 	  
-<a name="N10072"></a><a name="Upgrade+through+the+Update+Manager%3A+Search+for+upgrades...+or+Search+for+new+Features..."></a>
+<a name="N1007F"></a><a name="Upgrade+through+the+Update+Manager%3A+Search+for+upgrades...+or+Search+for+new+Features..."></a>
 <div class="h3">
 <h3>Upgrade through the Update Manager: Search for upgrades... or Search for new Features...</h3>
       
@@ -350,7 +364,7 @@
 	 
 </div>
     
-<a name="N10085"></a><a name="Changed+datamodel+after+upgrading"></a>
+<a name="N10092"></a><a name="Changed+datamodel+after+upgrading"></a>
 <div class="h3">
 <h3>Changed datamodel after upgrading</h3>
      	

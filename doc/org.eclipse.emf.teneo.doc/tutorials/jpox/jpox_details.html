@@ -154,7 +154,7 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -322,10 +319,10 @@
 <div class="h3">
 <h3>Classloader</h3>
 			
-<p>Elver performs explicit classloading in specific locations. It is possible to set the classloader which is being
-			user by Elver. This can be done through the org.elver.store.ClassLoaderResolver class. In this class you can 
-			register a org.elver.store.classloader.ClassLoaderStrategy. The registered ClassLoaderStrategy is used by 
-			Elver to explicitly load classes.</p>
+<p>Teneo performs explicit classloading in specific locations. It is possible to set the classloader which is being
+			user by Teneo. This can be done through the org.eclipse.emf.teneo.classloader.ClassLoaderResolver class. In this class you can 
+			register a org.eclipse.emf.teneo.classloader.ClassLoaderStrategy. The registered ClassLoaderStrategy is used by 
+			Teneo to explicitly load classes.</p>
 		
 </div>
 		
@@ -335,12 +332,12 @@
 			
 			
 <p>You can register your own TypeMappings through a 
-			call to org.jpox.TypeManager.getTypeManager().addType. This needs to be done before you initialize the first JpoxDataStore.
-			An example of the call Elver uses to register the type mapping for EList</p>
+			call to org.jpox.TypeManager.addType. This needs to be done during initialization of the 
+			Persistence Manager Factory. To accomplish this you need to override <a href="jpoxdatastore.html#JpoxDataStore">JPOXDataStore</a> and the 
+			method addCustomTypes(...). Then you can register your own typemapping as follows:</p>
 			
 <pre class="code">
-ClassLoaderResolver clr = new JDOClassLoaderResolver();
-TypeManager.getTypeManager().addType(EList.class.getName(), EListMapping.class.getName(), 
+tm.addType(List.class.getName(), EListMapping.class.getName(),
 		EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
 			</pre>
 			
@@ -349,13 +346,13 @@ TypeManager.getTypeManager().addType(EList.class.getName(), EListMapping.class.g
 		
 </div>
 		
-<a name="N1004F"></a><a name="cutpaste"></a>
+<a name="N10053"></a><a name="cutpaste"></a>
 <div class="h3">
 <h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
 			
 			
 <p>In the standard approach it is not possible to move an EObject from one containment relation to another containment relation. A move
-			between containment relations corresponds to a cut and paste in the EMF editor. The reason is that Elver will 
+			between containment relations corresponds to a cut and paste in the EMF editor. The reason is that Teneo will 
 			specify an dependent-element="true" for a containment relation. This has a consequence that JPOX will throw 
 			an exception (Cannot write fields to a deleted object) when you move an EObject from its container to another container.</p> 
 			
@@ -364,10 +361,9 @@ TypeManager.getTypeManager().addType(EList.class.getName(), EListMapping.class.g
 			an annotation on the relevant EReference features. As an example:</p>
 			
 <pre class="code">
-&lt;xsd:element maxOccurs="unbounded" minOccurs="0" name="writers" type="lib:Writer"&gt;
+&lt;xsd:element maxOccurs="unbounded" minOccurs="0" name="books" type="lib:Book"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/OneToMany" 
-			ecore:key="cascade"&gt;MERGE PERSIST REFRESH REMOVE&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
 &lt;/xsd:element&gt;
 			</pre>
@@ -382,7 +378,7 @@ TypeManager.getTypeManager().addType(EList.class.getName(), EListMapping.class.g
 		
 </div>
 		
-<a name="N10068"></a><a name="Validation"></a>
+<a name="N1006C"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
 			
@@ -394,7 +390,7 @@ TypeManager.getTypeManager().addType(EList.class.getName(), EListMapping.class.g
 			</p>
 			
 <p>To prevent this situation you can register your own validator which does not perform this resource check. 
-			For your convenience it is also possible to use the org.elver.store.jpox.validation.JPOXValidator. See its
+			For your convenience it is also possible to use the org.eclipse.emf.teneo.jpox.validation.JPOXValidator. See its
 			source code below. 
 			</p>
 			
@@ -420,34 +416,33 @@ public class JPOXValidator extends EObjectValidator
 		
 </div>
 		
-<a name="N1007C"></a><a name="Force+a+join+table+for+1%3An+relations"></a>
+<a name="N10080"></a><a name="Force+a+join+table+for+1%3An+relations"></a>
 <div class="h3">
 <h3>Force a join table for 1:n relations</h3>
 		
 <p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
 		parent) in the child table/object. The disadvantage of this approach is that duplicates 
 		are not supported. To support duplicates in an elist a join table is required. To signal to 
-		Elver, that a join table should be used, the annotation as in this example can be used:</p>
+		Teneo, that a join table should be used, the annotation as in this example can be used:</p>
 				
 <pre class="code">
 &lt;xsd:element name="joinedItem" type="xsd:anyURI" ecore:reference="this:Item" maxOccurs="unbounded"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://annotation.elver.org/Unique" ecore:key="value"&gt;false&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@OneToMany(unique=false)&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
 &lt;/xsd:element&gt;
 			</pre>
 		
-<p>Based on this annotations Elver will generate a join table for this model. Note that 
+<p>Based on this annotations Teneo will generate a join table for this model. Note that 
 		this annotation can be combined with the indexed annotation.</p>
 		
 <p>
-<em>The unique annotation does not exist in the EJB3 spec and is an Elver extension. Extension
-		annotations use the source: http://annotation.elver.org.</em>
+<em>The unique annotation does not exist in the EJB3 spec and is a Teneo extension.</em>
 </p>
 		
 </div>
 		
-<a name="N10090"></a><a name="JPOX%2FRelational+Validation+and+EObject+persistency"></a>
+<a name="N10094"></a><a name="JPOX%2FRelational+Validation+and+EObject+persistency"></a>
 <div class="h3">
 <h3>JPOX/Relational Validation and EObject persistency</h3>
 			
@@ -476,7 +471,7 @@ book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 		
 </div>
 		
-<a name="N100A9"></a><a name="PersistenceManagerFactory+configuration"></a>
+<a name="N100AD"></a><a name="PersistenceManagerFactory+configuration"></a>
 <div class="h3">
 <h3>PersistenceManagerFactory configuration</h3>
 			
@@ -505,14 +500,14 @@ properties.setProperty(PMFConfiguration.VALIDATE_CONSTRAINTS_PROPERTY, "false");
 properties.setProperty(PMFConfiguration.VALIDATE_TABLES_PROPERTY, "false");
 
 properties.setProperty(PMFConfiguration.CACHE_LEVEL_1_TYPE_PROPERTY, 
-	"org.elver.store.jpox.emf.cache.EMFWeakRefCache");
+	"org.eclipse.emf.teneo.jpox.cache.EMFWeakRefCache");
 properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY, 
 	JpoxHelper.INSTANCE.getJdoFileExtension());
 		</pre>
 			
 <p>
 <em>For the EMF - JPOX integration it is very important that as a level1 cache one of the
-			cache implementations found in org.elver.store.jpox.cache is used.</em>
+			cache implementations found in org.eclipse.emf.teneo.jpo.xemf.cache is used.</em>
 </p>
 			
 <p>The default String length is set to prevent a bug in MySql, the JDO default is 256.</p>
@@ -537,7 +532,7 @@ properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY,
 		
 </div>
 		
-<a name="N100DC"></a><a name="Fetch+Group"></a>
+<a name="N100E0"></a><a name="Fetch+Group"></a>
 <div class="h3">
 <h3>Fetch Group</h3>
 			
@@ -548,7 +543,7 @@ properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY,
 		
 </div>
 		
-<a name="N100E6"></a><a name="Direct+read+of+contained+objects%2C+container+feature+not+set"></a>
+<a name="N100EA"></a><a name="Direct+read+of+contained+objects%2C+container+feature+not+set"></a>
 <div class="h3">
 <h3>Direct read of contained objects, container feature not set</h3>
 			
@@ -564,21 +559,21 @@ properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY,
 		
 </div>
 		
-<a name="N100F7"></a><a name="Registering+a+Persistence+Manager+Factory+Creator"></a>
+<a name="N100FB"></a><a name="Registering+a+Persistence+Manager+Factory+Creator"></a>
 <div class="h3">
 <h3>Registering a Persistence Manager Factory Creator</h3>
 		
 <p>You can register your own persistence manager factory creator class. This 
-			class is called by Elver to create a PersistenceManagerFactory. By registering your 
+			class is called by Teneo to create a PersistenceManagerFactory. By registering your 
 			own PersistenceManagerFactoryCreator, you can override the creation of persistence managers etc.</p>
 		
 <p>The persistence manager factory creator should implement the interface: 
-			org.elver.store.jpox.emf.PersistenceManagerFactoryCreator. The creator can be registered using
-			the method JpoxHelper.INSTANCE.setPersistenceManagerFactoryCreator(....).</p>
+			org.eclipse.emf.teneo.jpox.PMFCreator. The creator can be registered using
+			the method JpoxHelper.INSTANCE.setPMFCreator(....).</p>
 		
 </div>
 		
-<a name="N10103"></a><a name="Lazy+loading+and+proxy+objects"></a>
+<a name="N10107"></a><a name="Lazy+loading+and+proxy+objects"></a>
 <div class="h3">
 <h3>Lazy loading and proxy objects</h3>
 			
@@ -593,7 +588,7 @@ properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY,
 		
 </div>
 		
-<a name="N10113"></a><a name="Hiding+class+names%2C+using+interfaces"></a>
+<a name="N10117"></a><a name="Hiding+class+names%2C+using+interfaces"></a>
 <div class="h3">
 <h3>Hiding class names, using interfaces</h3>
 			
@@ -606,7 +601,7 @@ properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY,
 		
 </div>
 		
-<a name="N1011D"></a><a name="notjpoxsupported"></a>
+<a name="N10121"></a><a name="notjpoxsupported"></a>
 <div class="h3">
 <h3>Not Supported by JPOX</h3>
 			

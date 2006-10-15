@@ -154,7 +154,7 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -321,7 +318,7 @@ FeatureMap getMyAbstractGroup();
 
 /**
  * ........
- * @model unique="false" dataType="org.elver.store.test.emf.schemaconstructs.substitutionzvon.AAA" 
+ * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.AAA" required="true" transient="true" changeable="false" volatile="true" derived="true"
  *        required="true" transient="true" changeable="false" volatile="true" derived="true"
  *        extendedMetaData="kind='element' name='myAbstract' namespace='##targetNamespace' group='myAbstract:group'"
  * @generated
@@ -343,36 +340,35 @@ BigInteger getMyAbstract();
 			
 			
 <p>The Substitution Group element is a FeatureMap which is mapped as a collection with embedded types.
-			The embedded type is org.elver.store.jpox.emf.elist.GenericFeatureMapEntry. The mapping for the above example
+			The embedded type is org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry. The mapping for the above example
 			is shown below. For more information regarding persisting FeatureMaps see <a href="featuremap.html">here</a>.</p>
 			
 <pre class="code">
 &lt;field name="myAbstractGroup" persistence-modifier="persistent"&gt;
-	&lt;collection element-type="org.elver.store.jpox.emf.elist.GenericFeatureMapEntry"&gt;
+	&lt;collection element-type="org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry"&gt;
 		&lt;extension vendor-name="jpox" key="cache-lazy-loading" value="true"/&gt;
 	&lt;/collection&gt;
 	&lt;join/&gt;
 	&lt;element&gt;
-	&lt;embedded&gt;
-		&lt;field name="featurePath"/&gt;
-		&lt;field name="localAnyValue" embedded="true"&gt;
-			&lt;extension vendor-name="jpox" key="implementation-classes" value="java.math.BigInteger"/&gt;
-			&lt;extension vendor-name="elver.org" key="estructuralfeatures" value="myAbstract"/&gt;
-		&lt;/field&gt;
-		&lt;field name="localReferenceValue" embedded="true"&gt;
-			&lt;extension vendor-name="jpox" key="implementation-classes" 
-				value="org.elver.store.jpox.emf.mapping.AnyTypeEObject"/&gt;
-			&lt;extension vendor-name="elver.org" key="estructuralfeatures" value=""/&gt;
-			&lt;foreign-key delete-action="restrict" update-action="cascade"/&gt;
-		&lt;/field&gt;
-		&lt;field name="localContainmentReferenceValue" dependent="true" embedded="true"&gt;
-			&lt;foreign-key delete-action="cascade" update-action="cascade"/&gt;
-			&lt;extension vendor-name="jpox" key="implementation-classes" 
-				value="org.elver.store.jpox.emf.mapping.AnyTypeEObject"/&gt;
-			&lt;extension vendor-name="elver.org" key="estructuralfeatures" value=""/&gt;
-		&lt;/field&gt;
-	&lt;/embedded&gt;
+		&lt;embedded&gt;
+			&lt;field name="featurePath"/&gt;
+			&lt;field name="localAnyValue" embedded="true"&gt;
+				&lt;extension vendor-name="jpox" key="implementation-classes" value="java.math.BigInteger"/&gt;
+				&lt;extension vendor-name="teneo" key="estructuralfeatures" value="myAbstract"/&gt;
+			&lt;/field&gt;
+			&lt;field name="localReferenceValue" embedded="true"&gt;
+				&lt;extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject"/&gt;
+				&lt;extension vendor-name="teneo" key="estructuralfeatures" value=""/&gt;
+				&lt;foreign-key delete-action="restrict" update-action="cascade"/&gt;
+			&lt;/field&gt;
+			&lt;field name="localContainmentReferenceValue" dependent="true" embedded="true"&gt;
+				&lt;foreign-key delete-action="cascade" update-action="cascade"/&gt;
+				&lt;extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject"/&gt;
+				&lt;extension vendor-name="teneo" key="estructuralfeatures" value=""/&gt;
+			&lt;/field&gt;
+		&lt;/embedded&gt;
 	&lt;/element&gt;
+	&lt;order column="ROOTTYPE_MYABSTRACTGROUP_IDX"/&gt;
 &lt;/field&gt;
 			</pre>
 		

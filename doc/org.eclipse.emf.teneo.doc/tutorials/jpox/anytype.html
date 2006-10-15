@@ -154,7 +154,7 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -290,7 +287,7 @@ EObject getSingleAnyType();
  */
 void setSingleAnyType(EObject value);
 		</pre>
-<p>As is visible the EObject type is used as the member type. When storing any EObject in the database Elver
+<p>As is visible the EObject type is used as the member type. When storing any EObject in the database Teneo
 				persistency will use two columns (both varchar). The first columns is used to store the datatype if the 
 				EObject if it is a primitive type. The second column either stores the String representation of a 
 				primitive value or the unique object id as defined by JPOX.
@@ -315,16 +312,15 @@ void setSingleAnyType(EObject value);
 EList getMultiAnyType();
 	</pre>
 <p>As is visible the member is an EList which can contain EObject types. The maxOccurs="unbounded" anytype is 
-			mapped as a collection with an embedded PersistenceCapable type: org.elver.store.jpox.emf.mapping.AnyTypeEObject.</p>
+			mapped as a collection with an embedded PersistenceCapable type: org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject.</p>
 <pre class="code">
 &lt;field name="multiAnyType" persistence-modifier="persistent" embedded="true" delete-action="restrict"&gt;
-	&lt;collection element-type="org.elver.store.jpox.emf.mapping.AnyTypeEObject"&gt;
+	&lt;collection element-type="org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject"&gt;
 		&lt;extension vendor-name="jpox" key="cache-lazy-loading" value="true"/&gt;
 	&lt;/collection&gt;
 	&lt;join&gt;
-		&lt;column name="TESTANY_MULTIANYTYPE_ID" allows-null="true"/&gt;
+		&lt;column name="multianytype_id" allows-null="true"/&gt;
 	&lt;/join&gt;
-	&lt;order/&gt;
 	&lt;element&gt;
 		&lt;embedded&gt;
 			&lt;field name="classifier"&gt;
@@ -335,6 +331,7 @@ EList getMultiAnyType();
 			&lt;/field&gt;
 		&lt;/embedded&gt;
 	&lt;/element&gt;
+	&lt;order column="TESTANY_MULTIANYTYPE_IDX"/&gt;
 &lt;/field&gt;
 				</pre>
 <p>This mapping will result
@@ -349,12 +346,12 @@ EList getMultiAnyType();
 <div class="h4">
 <h4>Setting a primitive value in an xsd:anyType member</h4>
 <p>It is possible to set a primitive value in an xsd:anyType member.
-				Elver persistency assumes that primitive values are set using an EObject which implements 
+				Teneo persistency assumes that primitive values are set using an EObject which implements 
 				org.eclipse.emf.ecore.xml.type.SimpleAnyType. An example of such an object is:
 				org.eclipse.emf.ecore.xml.type.impl.SimpleAnyTypeImpl.
 				When a primitive type is retrieved from the relational store then 
 				the system will encapsulate the primitive value in a 
-				org.elver.store.jpox.emf.JPOXSimpleAnyTypeImpl object.
+				org.eclipse.emf.teneo.jpox.mapping.JPOXSimpleAnyTypeImpl object.
 			</p>
 </div>
 		

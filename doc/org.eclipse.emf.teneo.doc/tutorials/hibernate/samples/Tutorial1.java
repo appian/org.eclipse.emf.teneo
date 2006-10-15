@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Tutorial1.java,v 1.2 2006/07/23 19:38:47 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.3 2006/10/15 08:39:23 mtaal Exp $
  */
 
 package hbtutorial;
@@ -32,9 +32,9 @@ import org.eclipse.example.library.Library;
 import org.eclipse.example.library.LibraryFactory;
 import org.eclipse.example.library.LibraryPackage;
 import org.eclipse.example.library.Writer;
-import org.elver.store.hibernate.HbDataStore;
-import org.elver.store.hibernate.HbHelper;
-import org.elver.store.hibernate.resource.HibernateResource;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
+import org.eclipse.emf.teneo.hibernate.HbHelper;
+import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -43,7 +43,7 @@ import org.hibernate.SessionFactory;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class Tutorial1 {
 
@@ -52,7 +52,7 @@ public class Tutorial1 {
 
 		// Create the DataStore.
 		final String dataStoreName = "LibraryDataStore";
-		final HbDataStore dataStore = HbHelper.INSTANCE.createRegisterDataStore(dataStoreName);
+		final HbDataStore dataStore = (HbDataStore)HbHelper.INSTANCE.createRegisterDataStore(dataStoreName);
 
 		// the name of the database, this database should exist but does not
 		// need to contain tables

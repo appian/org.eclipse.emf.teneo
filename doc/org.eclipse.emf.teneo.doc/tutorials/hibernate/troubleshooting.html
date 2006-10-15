@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -259,10 +253,10 @@
 <a href="#More+debug+information+from+Eclipse">More debug information from Eclipse</a>
 </li>
 <li>
-<a href="#Common+issues">Common issues</a>
-<ul class="minitoc">
+<a href="#Cut+and+Paste+does+not+work+in+the+Editor">Cut and Paste does not work in the Editor</a>
+</li>
 <li>
-<a href="#Column+name+_vn_+not+supported+by+database">Column name _vn_ not supported by database</a>
+<a href="#Column+name+e_version+not+supported+by+database">Column name e_version not supported by database</a>
 </li>
 <li>
 <a href="#Column+names+too+long">Column names too long</a>
@@ -274,10 +268,7 @@
 <a href="#Created+new+model+through+new+model+wizard%3A+diagnostic+error">Created new model through new model wizard: diagnostic error</a>
 </li>
 <li>
-<a href="#java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer+%281%29">java.lang.NoClassDefFoundError when starting/initializing runtime layer (1)</a>
-</li>
-<li>
-<a href="#java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer+%282%29">java.lang.NoClassDefFoundError when starting/initializing runtime layer (2)</a>
+<a href="#java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer">java.lang.NoClassDefFoundError when starting/initializing runtime layer</a>
 </li>
 <li>
 <a href="#No+class+def+found%3A+org.hibernate.proxy.ProxyFactory">No class def found: org.hibernate.proxy.ProxyFactory</a>
@@ -292,7 +283,13 @@
 <a href="#Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin">Update manager does not find the upgrade of the EMF Hibernate plugin</a>
 </li>
 <li>
-<a href="#The+EMF+generated+editor+does+not+start+and+the+error+log+gives+a+sql+error+%27Missing+column....%27">The EMF generated editor does not start and the error log gives a sql error 'Missing column....'</a>
+<a href="#Editor+does+not+start%2C++the+error+log+gives+a+sql+error+%27Missing+column....%27">Editor does not start,  the error log gives a sql error 'Missing column....'</a>
+</li>
+<li>
+<a href="#Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin">Editor does not start, ClassNotFoundException on the Editor Plugin</a>
+</li>
+<li>
+<a href="#Editor+does+not+start%2C+AssertionFailedException">Editor does not start, AssertionFailedException</a>
 </li>
 <li>
 <a href="#Validation+exception+on+enumerate+properties+when+saving+the+editor+content">Validation exception on enumerate properties when saving the editor content</a>
@@ -301,17 +298,17 @@
 <a href="#Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor">Stacktraces when starting Eclipse with already open EMF editor</a>
 </li>
 <li>
-<a href="#Elver+does+not+see+my+changes+in+the+ecore+model">Elver does not see my changes in the ecore model</a>
+<a href="#Teneo+does+not+see+my+changes+in+the+ecore+model">Teneo does not see my changes in the ecore model</a>
 </li>
 </ul>
-</li>
-</ul>
+		
+<br>
 		
 <p>
-<em>For troubleshooting please also visit the <strong><a href="knownissues.html">Known Issues</a></strong> page.</em>
+<em>For troubleshooting please also visit <strong>the EMFT open issues list <a class="external" href="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMFT&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&query_format=advanced&order=map_components.name">here</a>.</strong></em>
 </p>
 		
-<a name="N10016"></a><a name="runtime"></a>
+<a name="N10019"></a><a name="runtime"></a>
 <div class="h3">
 <h3>Troubleshooting the Mapping and Runtime layer/Hibernate</h3>
 			
@@ -330,17 +327,17 @@
 		
 </div>
 		
-<a name="N10031"></a><a name="ormapper"></a>
+<a name="N10034"></a><a name="ormapper"></a>
 <div class="h3">
 <h3>Troubleshooting the automatic in-memory mapping</h3>
 			
 			
-<p>The mapping is generated in memory. To view the mapping created by Elver please call the method 
+<p>The mapping is generated in memory. To view the mapping created by Teneo please call the method 
 			getMappingXML on the HbDataStore. The returned String contains the Hibernate mapping.</p>
 		
 </div>
 		
-<a name="N1003B"></a><a name="manualormapper"></a>
+<a name="N1003E"></a><a name="manualormapper"></a>
 <div class="h3">
 <h3>Troubleshooting the OR Mapper Menu Option</h3>
 			
@@ -351,20 +348,20 @@
 <p>The OR Mapper menu option only works if the ecore file is located in the same Java Project as the generated
 			EPackage sources.</p>
 			
-<p>When the console shows this exception: <em>Exception in thread "main" java.lang.NoClassDefFoundError: org/elver/store/hibernate/mapper/GenerateHBM</em>
-			then you have not added the org.elver.store.hibernate.runtime to the dependencies of the model plugin.</p>
+<p>When the console shows this exception: <em>Exception in thread "main" java.lang.NoClassDefFoundError: org/eclipse/emf/teneo/hibernate/mapper/GenerateHBM</em>
+			then you have not added the org.eclipse.emf.teneo.hibernate plugin to the dependencies of the model plugin.</p>
 			
 <p>
 			To analyze what the problem is first view the error log. The error log
 			can be opened through: <em>Window &gt; Show View &gt; Error Log</em>. By doubleclicking on the lines in
 			the error log you can get more information.</p>
 			
-<p>More information is present in the log file generated by the Elver plugins. The log 
-			file can be found in the .metadata/.plugins/org.elver.store.jpox.eclipse or .metadata/.plugins/org.elver.store.eclipse subdirectory in the Eclipse workspace directory (note
+<p>More information is present in the log file generated by the Teneo plugins. The log 
+			file can be found in the .metadata/.plugins/org.eclipse.emf.teneo.jpox.eclipse or .metadata/.plugins/org.eclipse.emf.teneo.eclipse subdirectory in the Eclipse workspace directory (note
 			the dots before metadata and plugins).</p>
 			
-<p>More information is present in the log file generated by the Elver plugins. The log 
-			file can be found in the .metadata/.plugins/org.elver.store.hibernate.eclipse or .metadata/.plugins/org.elver.store.eclipse subdirectory in the Eclipse workspace directory (note
+<p>More information is present in the log file generated by the Teneo plugins. The log 
+			file can be found in the .metadata/.plugins/org.eclipse.emf.teneo.hibernate.eclipse or .metadata/.plugins/org.eclipse.emf.teneo.eclipse subdirectory in the Eclipse workspace directory (note
 			the dots before metadata and plugins).</p>
 			
 <p>When mailing a question regarding these type of errors please also post the logfile.
@@ -372,7 +369,7 @@
 		
 </div>
 		
-<a name="N1005D"></a><a name="resourceplanning"></a>
+<a name="N10060"></a><a name="resourceplanning"></a>
 <div class="h3">
 <h3>Troubleshooting the Resource Utilities</h3>
 			
@@ -386,8 +383,8 @@
 			the error log you can get more information.
 			</p>
 			
-<p>More information is present in the log file generated by the Elver plugins. The log 
-			file can be found in the .metadata/.plugins/org.elver.store.hibernate.eclipse or .metadata/.plugins/org.elver.store.eclipse subdirectory in the Eclipse workspace directory (note
+<p>More information is present in the log file generated by the Teneo plugins. The log 
+			file can be found in the .metadata/.plugins/org.eclipse.emf.teneo.hibernate.eclipse or .metadata/.plugins/org.eclipse.emf.teneo.eclipse subdirectory in the Eclipse workspace directory (note
 			the dots before metadata and plugins).</p>
 			
 <p>When mailing a question regarding these type of errors please also post the logfile.
@@ -395,7 +392,7 @@
 		
 </div>
 		
-<a name="N10073"></a><a name="More+debug+information+from+Eclipse"></a>
+<a name="N10076"></a><a name="More+debug+information+from+Eclipse"></a>
 <div class="h3">
 <h3>More debug information from Eclipse</h3>
 			
@@ -411,92 +408,102 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 		
-<a name="N10083"></a><a name="Common+issues"></a>
+<a name="N10086"></a><a name="Cut+and+Paste+does+not+work+in+the+Editor"></a>
 <div class="h3">
-<h3>Common issues</h3>
-			
-			
-<a name="N10089"></a><a name="Column+name+_vn_+not+supported+by+database"></a>
-<div class="h4">
-<h4>Column name _vn_ not supported by database</h4>
-<p>Elver will automatically add a version column to the database for each object. The default version column name
-			is _vn_. However not all databases support an _ in the column name. To set the version column name you can set 
-			an option as explained <a href="options.html">here</a>.</p>
+<h3>Cut and Paste does not work in the Editor</h3>
+		
+<p>Please look <a href="hibernate_details.html#cutpaste">here</a>
+</p>
+		
 </div>
 			
-<a name="N10096"></a><a name="Column+names+too+long"></a>
-<div class="h4">
-<h4>Column names too long</h4>
-<p>Elver creates foreign key column names by concatenating the name of the (e)class and the property name. The result can be
+<a name="N10092"></a><a name="Column+name+e_version+not+supported+by+database"></a>
+<div class="h3">
+<h3>Column name e_version not supported by database</h3>
+			
+<p>Teneo will automatically add a version column to the database for each object. The default version column name
+			is e_version. However not all databases support an _ in the column name. To set the version column name you can set 
+			an option as explained <a href="options.html">here</a>.</p>
+			
+</div>
+			
+<a name="N1009F"></a><a name="Column+names+too+long"></a>
+<div class="h3">
+<h3>Column names too long</h3>
+			
+<p>Teneo creates foreign key column names by concatenating the name of the (e)class and the property name. The result can be
 			a column name which is too long for certain databases. You can control the maximum column name length by setting the 
 			relevant runtime option, see <a href="options.html">here</a>.</p>
+			
 </div>
 			
-<a name="N100A3"></a><a name="org.hibernate.DuplicateMappingException%3A+Duplicate+class%2Fentitymapping"></a>
-<div class="h4">
-<h4>org.hibernate.DuplicateMappingException: Duplicate class/entitymapping</h4>
+<a name="N100AC"></a><a name="org.hibernate.DuplicateMappingException%3A+Duplicate+class%2Fentitymapping"></a>
+<div class="h3">
+<h3>org.hibernate.DuplicateMappingException: Duplicate class/entitymapping</h3>
+			
 <p>This exception occurs when two EClasses (of different EPackages) have the same name. To solve this you need to
-			direct Elver to use qualified EClass names, see <a href="options.html">here</a>. Note that when using qualified 
+			direct Teneo to use qualified EClass names, see <a href="options.html">here</a>. Note that when using qualified 
 			EClass names that also HQL needs to use the qualified EClass names. The EClass names are qualified by prepending
 			the nsprefix of the EPackage with a dot (.) as a separator.</p>
+			
 </div>
 			
-<a name="N100B0"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
-<div class="h4">
-<h4>Created new model through new model wizard: diagnostic error</h4>
+<a name="N100B9"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
+<div class="h3">
+<h3>Created new model through new model wizard: diagnostic error</h3>
+			
 <p>The generated EMF model wizard allows invalid documents. When going through the 
 			wizard you need to select a type to create as the first document in the resource. The 
 			EMF model wizard creates an empty (all members are null) instance of this type and adds
 				 it to the Hibernate resource. Before the Hibernate resource is 
 			saved it checks if the content of the resource is valid. When nullable-constraints
 				are violated a StoreValidationException (with Diagnostics) is thrown.</p>
+			
 <p>To solve this you should make your model more relaxed (make elements nullable) or
 				add a small amount of code, which sets the non-nullable fields, to the model wizard. An example of this last solution
 				is illustrated in the Library Tutorial. 
 			</p>
+			
 </div>
 			
-<a name="N100BC"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer+%281%29"></a>
-<div class="h4">
-<h4>java.lang.NoClassDefFoundError when starting/initializing runtime layer (1)</h4>
-<p>This error occurs when the runtime layer is initialized. It occurs because your 
-			application (and ecore libraries) are not present in the classpath of the runtime layer.
-			To solve this issue add the following line to the Manifest.MF of your EMF model project:
-			</p>
-<p>Eclipse-RegisterBuddy: org.elver.store.hibernate.runtime</p>
-<p>See also the <a href="installation.html">installation</a> page</p>
-</div>
-			
-<a name="N100D0"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer+%282%29"></a>
-<div class="h4">
-<h4>java.lang.NoClassDefFoundError when starting/initializing runtime layer (2)</h4>
-<p>When your model is divided over different projects/plugins then the registerbuddy setting has to 
-				be set in the project with the 'widest' classpath (the project with a classpath containing the other plugins).
+<a name="N100C5"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer"></a>
+<div class="h3">
+<h3>java.lang.NoClassDefFoundError when starting/initializing runtime layer</h3>
+				
+				
+<p>When your model is divided over different projects/plugins then the dependency on
+				org.eclipse.emf.teneo.hibernate has to be set in the project with the 'widest' classpath (the project with a classpath containing the other plugins).
 				For example if you have the following two emf projects:</p>
+				
 <ul>
 <li>Core</li>
 <li>Specific (which uses/imports Core)</li>
 </ul>
-<p>Then the registerbuddy should only be in the META-INF of the 'Specific' project. This is required 
-				otherwise Hibernate will not see the 'Specific' project. Setting register-buddy in both 'Core' and 'Specific' 
-				will also result in classpath errors in Hibernate.</p>
+				
+<p>Then the dependency should preferably be in the META-INF of the 'Specific' project. This is required 
+				otherwise Hibernate will not see the 'Specific' project.</p>
+			
 </div>
 			
-<a name="N100E3"></a><a name="No+class+def+found%3A+org.hibernate.proxy.ProxyFactory"></a>
-<div class="h4">
-<h4>No class def found: org.hibernate.proxy.ProxyFactory</h4>
+<a name="N100D8"></a><a name="No+class+def+found%3A+org.hibernate.proxy.ProxyFactory"></a>
+<div class="h3">
+<h3>No class def found: org.hibernate.proxy.ProxyFactory</h3>
+			
 <p>This exception can occur when your classes have been enhanced by JPOX and you
 			try to persist them via hibernate. Another reason can be that the name you used
 			to register the SessionFactory does not correspond to the expected extension
 			(e.g. library). 
 			</p>
+			
 </div>
 			
-<a name="N100EC"></a><a name="Could+not+determine+type+for%3A+org.eclipse.emf.common.util.AbstractEnumerator%2C+for+columns%3A+%5Borg.hibernate.mapping.Column%28enu%29%5D"></a>
-<div class="h4">
-<h4>Could not determine type for: org.eclipse.emf.common.util.AbstractEnumerator, for columns: [org.hibernate.mapping.Column(enu)]</h4>
+<a name="N100E1"></a><a name="Could+not+determine+type+for%3A+org.eclipse.emf.common.util.AbstractEnumerator%2C+for+columns%3A+%5Borg.hibernate.mapping.Column%28enu%29%5D"></a>
+<div class="h3">
+<h3>Could not determine type for: org.eclipse.emf.common.util.AbstractEnumerator, for columns: [org.hibernate.mapping.Column(enu)]</h3>
+			
 <p>This exception can occur when you have a enumerate object type in your model. An enumerate object type differs from a
 			standard enumerate because it has a nillable="true" attribute on the element, for example:</p>
+			
 <pre class="code">
 &lt;element name="enu" type="this:SimpleEnum" nillable="true"/&gt;
 
@@ -507,62 +514,111 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 	&lt;/restriction&gt;
 &lt;/simpleType&gt;
 			</pre>
+			
 <p>As a workaround add an Enumerated annotation (see ejb3 annotations on this site) to the element.</p>
+			
 </div>
 			
-<a name="N100FB"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
-<div class="h4">
-<h4>The resource is empty in the generated editor</h4>
-<p>See the <a href="knownissues.html">Know Issues</a>.</p>
+<a name="N100F0"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
+<div class="h3">
+<h3>The resource is empty in the generated editor</h3>
+				
+				
+<p>See the <a href="knownissues.html">Known Issues</a>.</p>
+			
 </div>
 			
-<a name="N10109"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin"></a>
-<div class="h4">
-<h4>Update manager does not find the upgrade of the EMF Hibernate plugin</h4>
+<a name="N100FE"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin"></a>
+<div class="h3">
+<h3>Update manager does not find the upgrade of the EMF Hibernate plugin</h3>
+			
 <p>As a workaround use find new features to install a new version of the EMF Hibernate plugin.</p>
+			
 </div>
 			
-<a name="N10112"></a><a name="The+EMF+generated+editor+does+not+start+and+the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
-<div class="h4">
-<h4>The EMF generated editor does not start and the error log gives a sql error 'Missing column....'</h4>
+<a name="N10107"></a><a name="Editor+does+not+start%2C++the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
+<div class="h3">
+<h3>Editor does not start,  the error log gives a sql error 'Missing column....'</h3>
+			
 <p>This can occur if your model has changed or you just upgraded the OR Mapper plugin and have generated a new 
 				hibernate.hbm.xml file. Before upgrading it is best
 				to export the current database using the <a href="resource_utility.xml">Resource Utility</a>. After exporting start
 			with a new database.</p>
+			
 </div>
 			
-<a name="N1011F"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
-<div class="h4">
-<h4>Validation exception on enumerate properties when saving the editor content</h4>
+<a name="N10114"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin"></a>
+<div class="h3">
+<h3>Editor does not start, ClassNotFoundException on the Editor Plugin</h3>
+			
+<p>This can happen when the Hibernate libraries can not find the model classes. You can check if
+			you have set the BuddyPolicy in the Manifest.MF of the plugin containing the Hibernate jar files.
+			If not add the following to the Manifest.MF of the plugin containing the Hibernate jar files:
+			Eclipse-BuddyPolicy: dependent</p>
+			
+</div>
+			
+<a name="N1011D"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
+<div class="h3">
+<h3>Editor does not start, AssertionFailedException</h3>
+			
+<p>When you start the editor you get the following exteption (stacktrace truncated):</p>
+			
+<pre class="code">
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: 
+at org.eclipse.core.runtime.Assert.isTrue(Assert.java:109)
+at org.eclipse.core.runtime.Assert.isTrue(Assert.java:95)
+at org.eclipse.ui.part.MultiPageEditorPart.setActivePage(MultiPageEditorPart.java:688)
+at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart.java:280)			
+			</pre>
+			
+<p>You probably started the editor with an empty database, the editor does not support this.
+			You should have at least one root object in the database (for example a Library object in 
+			the Library tutorial).</p>
+			
+</div>
+			
+<a name="N1012C"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
+<div class="h3">
+<h3>Validation exception on enumerate properties when saving the editor content</h3>
+				
+				
 <p>Symptom: a validation error is thrown (see the console) that certain enumerate fields have not been
 					set.</p>
+				
 <p>Cause: the EMF validator incorrectly enforces that the value of an enumerate field
 					should not be the same as the default value.</p>
+				
 <p>Solution: is an EMF issue which has been solved 
 					(<a class="external" href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=104723">see here</a>). Upgrading EMF to a 2.2 or a 
 					later 2.1 release solves this.</p>
+			
 </div>
 			
-<a name="N10133"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
-<div class="h4">
-<h4>Stacktraces when starting Eclipse with already open EMF editor</h4>
+<a name="N10140"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
+<div class="h3">
+<h3>Stacktraces when starting Eclipse with already open EMF editor</h3>
+				
 <p>Symptom: This occurs when keeping an EMF generated editor open when closing eclipse and
 				then starting eclipse again. When starting Eclipse again you see many stack traces in the console
 					with messages like: class not found exception: org/hibernate/proxy/proxy.</p>
+				
 <p>Consequence: The editor will open correctly and can be used. The only 'consequence' is that the
 					data is not lazily loaded.</p>
+				
 <p>Solution: A solution has been implemented in release 0.2.0.1.</p>
+			
 </div>
 			
-<a name="N10142"></a><a name="Elver+does+not+see+my+changes+in+the+ecore+model"></a>
-<div class="h4">
-<h4>Elver does not see my changes in the ecore model</h4>
-<p>Elver uses the runtime version of the ecore model. The runtime version is present as java code in the 
+<a name="N1014F"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
+<div class="h3">
+<h3>Teneo does not see my changes in the ecore model</h3>
+				
+<p>Teneo uses the runtime version of the ecore model. The runtime version is present as java code in the 
 				generated EPackage implementation class. This runtime ecore can differ from the ecore file when the 
-				model code is not regenerated after a change in the ecore file. So to let Elver use the changes in the ecore
+				model code is not regenerated after a change in the ecore file. To let Teneo use the changes in the ecore
 				file the model code needs to be regenerated.</p>
-</div>
-		
+			
 </div>
 	
 </div>

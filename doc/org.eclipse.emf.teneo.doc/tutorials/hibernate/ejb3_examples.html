@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_selected_1.5" class="selectedmenuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <div class="menupagetitle">Examples</div>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -244,13 +238,7 @@
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
-<a href="#id">Id Annotation</a>
-</li>
-<li>
-<a href="#compositeid">Composite Id in Uml</a>
-</li>
-<li>
-<a href="#column">Table and Column annotations</a>
+<a href="#column">Annotations on EDataType</a>
 </li>
 <li>
 <a href="#mtm">ManyToMany Annotations</a>
@@ -263,131 +251,86 @@
 </li>
 </ul>
 		
-<a name="N1000E"></a><a name="id"></a>
+<a name="N1000E"></a><a name="column"></a>
 <div class="h3">
-<h3>Id Annotation</h3>
+<h3>Annotations on EDataType</h3>
 			
 			
-<p>An example with a generated id, note the definition of the Generator on global level.</p>
+<p>An example of the use of a Table annotation at EClass level and Column annotations 
+			on EDataType level, first in xml and then using the :</p>
 			
 <pre class="code">
-&lt;xsd:schema targetNamespace="http://www.elver.org/samples/emf/annotations/id"
-	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-	xmlns:lib="http://www.elver.org/samples/emf/annotations/id"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+&lt;epackage namespace-uri="http://www.eclipse.org/emf/teneo/samples/emf/annotations/edatatype_column"&gt;
 
-	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/SequenceGenerator" 
-				ecore:key="name"&gt;GENERATOR&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/SequenceGenerator" 
-				ecore:key="sequenceName"&gt;mySequenceName&lt;/xsd:appinfo&gt;
-	&lt;/xsd:annotation&gt;
+	&lt;eclass name="Book"&gt;
+		&lt;table name="mybooktable"/&gt;
+		&lt;property name="title"&gt;
+			&lt;column name="titel" unique="true" length="25"/&gt;
+		&lt;/property&gt;
+	&lt;/eclass&gt;
 
-	&lt;xsd:complexType name="SimpleID"&gt;
-	&lt;xsd:sequence&gt;
-		&lt;xsd:element name="autoID" type="xsd:long"&gt;
-			&lt;xsd:annotation&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/Id"&gt;true&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/GeneratedValue"&gt;true&lt;/xsd:appinfo&gt;
-			&lt;/xsd:annotation&gt;
-		&lt;/xsd:element&gt;
-	&lt;/xsd:sequence&gt;
-	&lt;/xsd:complexType&gt;
-  
-	&lt;xsd:complexType name="TableID"&gt;
-	&lt;xsd:sequence&gt;
-		&lt;xsd:element name="myid" type="xsd:long"&gt;
-			&lt;xsd:annotation&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/Id"&gt;true&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/GeneratedValue" 
-						ecore:key="strategy"&gt;TABLE&lt;/xsd:appinfo&gt;
-			&lt;/xsd:annotation&gt;
-		&lt;/xsd:element&gt;
-	&lt;/xsd:sequence&gt;
-	&lt;/xsd:complexType&gt;
-  
-	&lt;xsd:complexType name="IdentityID"&gt;
-	&lt;xsd:sequence&gt;
-		&lt;xsd:element name="myid" type="xsd:long"&gt;
-			&lt;xsd:annotation&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/Id"&gt;true&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/GeneratedValue" 
-						ecore:key="strategy"&gt;IDENTITY&lt;/xsd:appinfo&gt;
-			&lt;/xsd:annotation&gt;
-		&lt;/xsd:element&gt;
-	&lt;/xsd:sequence&gt;
-	&lt;/xsd:complexType&gt;
-&lt;/xsd:schema&gt;
+	&lt;edatatype name="TitleType"&gt;
+		&lt;column name="mytitle" unique="false" length="50"/&gt;
+	&lt;/edatatype&gt;
+		
+	&lt;edatatype name="PagesType"&gt;
+		&lt;column updatable="false" insertable="false"/&gt;
+	&lt;/edatatype&gt;
+	
+	&lt;edatatype name="WeightType"&gt;
+		&lt;column name="gewicht" nullable="true" precision="5" scale="2"/&gt;
+	&lt;/edatatype&gt;
+
+&lt;/epackage&gt;
 			</pre>
-		
-</div>
-		
-<a name="N1001C"></a><a name="compositeid"></a>
-<div class="h3">
-<h3>Composite Id in Uml</h3>
 			
+<p>And in java annotation syntax in EAnnotations:</p>
 			
-<p>The annotation for a composite id using a specific id class. Please read the documentation of Hibernate for
-			all the requirements which apply to the composite id class.</p>
-			
-<pre class="code">
-http://ejb.elver.org/IdClass value='org.elver.samples.emf.annotations.compositeid.PersonID'
-			</pre>
-		
-</div>
-		
-<a name="N1002A"></a><a name="column"></a>
-<div class="h3">
-<h3>Table and Column annotations</h3>
-			
-			
-<p>An example of the use of a Table annotation at EClass level and a Column annotation:</p>
-			
-<pre class="code">
+<pre class="code">			
 &lt;xsd:complexType name="Book"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Table" 
-					ecore:key="name"&gt;MYBOOKTABLE&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@Table(name="mybooktable")&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
 	&lt;xsd:sequence&gt;
-		&lt;xsd:element name="title" type="xsd:string"&gt;
+		&lt;xsd:element name="title" type="TitleType"&gt;
 			&lt;xsd:annotation&gt;
-			&lt;xsd:appinfo source="http://ejb.elver.org/Column" 
-					ecore:key="name"&gt;titel&lt;/xsd:appinfo&gt;
-			&lt;xsd:appinfo source="http://ejb.elver.org/Column" 
-					ecore:key="unique"&gt;true&lt;/xsd:appinfo&gt;
-			&lt;xsd:appinfo source="http://ejb.elver.org/Column" 
-					ecore:key="length"&gt;25&lt;/xsd:appinfo&gt;
-		   	&lt;/xsd:annotation&gt;
+				&lt;xsd:appinfo source="teneo.jpa"&gt;@Column(name="titel" unique="true" length="25")&lt;/xsd:appinfo&gt;
+			&lt;/xsd:annotation&gt;
 		&lt;/xsd:element&gt;
-	   	&lt;xsd:element name="pages" type="xsd:int"&gt;
-			&lt;xsd:annotation&gt;
-			&lt;xsd:appinfo source="http://ejb.elver.org/Column" 
-					ecore:key="updatable"&gt;false&lt;/xsd:appinfo&gt;
-			&lt;xsd:appinfo source="http://ejb.elver.org/Column" 
-					ecore:key="insertable"&gt;false&lt;/xsd:appinfo&gt;
-		    &lt;/xsd:annotation&gt;
-		&lt;/xsd:element&gt;
-	  	&lt;xsd:element name="weight" type="xsd:decimal"&gt;
-			&lt;xsd:annotation&gt;
-			&lt;xsd:appinfo source="http://ejb.elver.org/Column" 
-					ecore:key="name"&gt;GEWICHT&lt;/xsd:appinfo&gt;
-			&lt;xsd:appinfo source="http://ejb.elver.org/Column" 
-					ecore:key="nullable"&gt;true&lt;/xsd:appinfo&gt;
-			&lt;xsd:appinfo source="http://ejb.elver.org/Column" 
-					ecore:key="precision"&gt;5&lt;/xsd:appinfo&gt;
-			&lt;xsd:appinfo source="http://ejb.elver.org/Column" 
-					ecore:key="scale"&gt;2&lt;/xsd:appinfo&gt;
-	    		&lt;/xsd:annotation&gt;
-	  	&lt;/xsd:element&gt;
+		&lt;xsd:element name="pages" type="PagesType"/&gt;
+		&lt;xsd:element name="weight" type="WeightType"/&gt;
 		&lt;xsd:element name="author" type="xsd:string"/&gt;
 	&lt;/xsd:sequence&gt;
 &lt;/xsd:complexType&gt;
+
+&lt;xsd:simpleType name="TitleType"&gt;
+	&lt;xsd:annotation&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@Column(name="mytitle" unique="false" length="50")&lt;/xsd:appinfo&gt;
+	&lt;/xsd:annotation&gt;
+	&lt;xsd:restriction base="xsd:string"&gt;
+	&lt;/xsd:restriction&gt;
+&lt;/xsd:simpleType&gt;
+ 
+&lt;xsd:simpleType name="PagesType"&gt;
+	&lt;xsd:annotation&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@Column(updatable="false" insertable="false")&lt;/xsd:appinfo&gt;
+	&lt;/xsd:annotation&gt;
+	&lt;xsd:restriction base="xsd:int"&gt;
+	&lt;/xsd:restriction&gt;
+&lt;/xsd:simpleType&gt;
+
+&lt;xsd:simpleType name="WeightType"&gt;
+	&lt;xsd:annotation&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@Column(name="gewicht" nullable="true" precision="5" scale="2")&lt;/xsd:appinfo&gt;
+	&lt;/xsd:annotation&gt;
+	&lt;xsd:restriction base="xsd:decimal"&gt;
+	&lt;/xsd:restriction&gt;
+&lt;/xsd:simpleType&gt;
 			</pre>
 			
 </div>
 		
-<a name="N10038"></a><a name="mtm"></a>
+<a name="N10023"></a><a name="mtm"></a>
 <div class="h3">
 <h3>ManyToMany Annotations</h3>
 			
@@ -397,48 +340,31 @@ http://ejb.elver.org/IdClass value='org.elver.samples.emf.annotations.compositei
 <pre class="code">
 &lt;xsd:complexType name="Cntr"&gt;
 	&lt;xsd:sequence&gt;
-		xsd:element name="rght" type="xsd:IDREF" ecore:reference="this:Rght" 
-				maxOccurs="unbounded" ecore:opposite="cntr"&gt;
+		&lt;xsd:element name="rght" type="xsd:IDREF" ecore:reference="this:Rght" maxOccurs="unbounded" ecore:opposite="cntr"&gt;
 			&lt;xsd:annotation&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="fetch"&gt;EAGER&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="cascade"&gt;MERGE PERSIST&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="targetEntity"&gt;Rght&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/JoinTable" 
-						ecore:key="name"&gt;RightCenter&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://annotation.elver.org/Indexed" 
-						ecore:key="value"&gt;false&lt;/xsd:appinfo&gt;
+				&lt;xsd:appinfo source="teneo.jpa"&gt;
+					@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity="Rght" indexed="false")
+					@JoinTable(name="RightCenter")
+				&lt;/xsd:appinfo&gt;
 			&lt;/xsd:annotation&gt;
 		&lt;/xsd:element&gt;
-	  	&lt;xsd:element name="lft" type="xsd:IDREF" ecore:reference="this:Lft" 
-	  			maxOccurs="unbounded" ecore:opposite="cntr"&gt;
+		&lt;xsd:element name="lft" type="xsd:IDREF" ecore:reference="this:Lft" maxOccurs="unbounded" ecore:opposite="cntr"&gt;
 			&lt;xsd:annotation&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="fetch"&gt;EAGER&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="cascade"&gt;MERGE PERSIST&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="targetEntity"&gt;Lft&lt;/xsd:appinfo&gt;
+				&lt;xsd:appinfo source="teneo.jpa"&gt;
+					@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity="Lft")
+				&lt;/xsd:appinfo&gt;
 			&lt;/xsd:annotation&gt;
 		&lt;/xsd:element&gt;
-    	&lt;/xsd:sequence&gt;
+	&lt;/xsd:sequence&gt;
 &lt;/xsd:complexType&gt;
 
 &lt;xsd:complexType name="Lft"&gt;
 	&lt;xsd:sequence&gt;
-		&lt;xsd:element name="cntr" type="xsd:IDREF" ecore:reference="this:Cntr" 
-			maxOccurs="unbounded" ecore:opposite="lft"&gt;
+		&lt;xsd:element name="cntr" type="xsd:IDREF" ecore:reference="this:Cntr" maxOccurs="unbounded" ecore:opposite="lft"&gt;
 			&lt;xsd:annotation&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="fetch"&gt;LAZY&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="cascade"&gt;MERGE PERSIST&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="targetEntity"&gt;Cntr&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="mappedBy"&gt;lft&lt;/xsd:appinfo&gt;
+				&lt;xsd:appinfo source="teneo.jpa"&gt;
+					@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity="Cntr" mappedBy="lft")
+				&lt;/xsd:appinfo&gt;
 			&lt;/xsd:annotation&gt;
 		&lt;/xsd:element&gt;
 	&lt;/xsd:sequence&gt;
@@ -446,21 +372,12 @@ http://ejb.elver.org/IdClass value='org.elver.samples.emf.annotations.compositei
 
 &lt;xsd:complexType name="Rght"&gt;
 	&lt;xsd:sequence&gt; 
-		&lt;xsd:element name="cntr" type="xsd:IDREF" ecore:reference="this:Cntr" 
-					maxOccurs="unbounded" ecore:opposite="rght"&gt;
+		&lt;xsd:element name="cntr" type="xsd:IDREF" ecore:reference="this:Cntr" maxOccurs="unbounded" ecore:opposite="rght"&gt;
 			&lt;xsd:annotation&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="fetch"&gt;LAZY&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="cascade"&gt;MERGE PERSIST&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="targetEntity"&gt;Cntr&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/ManyToMany" 
-						ecore:key="mappedBy"&gt;rght&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://ejb.elver.org/JoinTable" 
-						ecore:key="name"&gt;RightCenter&lt;/xsd:appinfo&gt;
-				&lt;xsd:appinfo source="http://annotation.elver.org/Indexed" 
-						ecore:key="value"&gt;false&lt;/xsd:appinfo&gt;
+				&lt;xsd:appinfo source="teneo.jpa"&gt;
+					@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity="Cntr" mappedBy="rght" indexed="false")
+					@JoinTable(name="RightCenter")
+				&lt;/xsd:appinfo&gt;
 			&lt;/xsd:annotation&gt;
 		&lt;/xsd:element&gt;
 	&lt;/xsd:sequence&gt;
@@ -469,7 +386,7 @@ http://ejb.elver.org/IdClass value='org.elver.samples.emf.annotations.compositei
 			
 </div>
 		
-<a name="N10046"></a><a name="inheritance"></a>
+<a name="N10031"></a><a name="inheritance"></a>
 <div class="h3">
 <h3>Inheritance and Discriminator Annotations</h3>
 			
@@ -479,16 +396,12 @@ http://ejb.elver.org/IdClass value='org.elver.samples.emf.annotations.compositei
 <pre class="code">
 &lt;xsd:complexType name="Price"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Table" 
-				ecore:key="name"&gt;MYPRICE&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Inheritance" 
-				ecore:key="strategy"&gt;SINGLE_TABLE&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/DiscriminatorColumn" 
-				ecore:key="name"&gt;DISCRIMINATOR&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/DiscriminatorColumn" 
-				ecore:key="discriminatorType"&gt;STRING&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/DiscriminatorValue" 
-				ecore:key="value"&gt;myPrice&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;
+			@Table(name="myprice")
+			@Inheritance(strategy=SINGLE_TABLE)
+			@DiscriminatorColumn(name="DISCRIMINATOR" discriminatorType=STRING)
+			@DiscriminatorValue("myPrice")
+		&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
 	&lt;xsd:sequence&gt;
 		&lt;xsd:element name="name" type="xsd:string"/&gt;
@@ -497,15 +410,27 @@ http://ejb.elver.org/IdClass value='org.elver.samples.emf.annotations.compositei
 &lt;/xsd:complexType&gt;
 			</pre>
 			
+<p>In xml:</p>
+			
+<pre class="code">
+&lt;eclass name="Price"&gt;
+	&lt;table name="myprice" /&gt;
+	&lt;inheritance&gt;SINGLE_TABLE&lt;/inheritance&gt;
+	&lt;discriminator-column name="DISCRIMINATOR" discriminator-type="STRING" /&gt;
+	&lt;discriminator-value&gt;myPrice&lt;/discriminator-value&gt;
+&lt;/eclass&gt;
+			</pre>
+			
+			
 </div>
 		
-<a name="N10054"></a><a name="other"></a>
+<a name="N10046"></a><a name="other"></a>
 <div class="h3">
 <h3>Other examples</h3>
 			
 			
 <p>For other examples of annotations on this site see here: <a href="inheritance.html">Inheritance</a> and 
-			<a href="hibernate_relations.html">Associations</a>.</p>
+			<a href="hibernate_details.html">Associations</a>.</p>
 		
 </div>
 	

@@ -154,7 +154,7 @@
 <div class="menupagetitle">JpoxDataStore</div>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -285,12 +282,12 @@
 			methods. To get access to the JpoxHelper functionality you need to use the JpoxHelper.INSTANCE object.
 			In addition the JpoxHelper allows you to register a PMFCreator.</p>
 		
-<p>The PMFCreator is called by Elver to create a PersistenceManagerFactory. By registering your 
+<p>The PMFCreator is called by Teneo to create a PersistenceManagerFactory. By registering your 
 			own PersistenceManagerFactoryCreator, you can override the creation of persistence managers etc.</p>
 		
 <p>The persistence manager factory creator should implement the interface: 
-			org.elver.store.jpox.emf.PersistenceManagerFactoryCreator. The creator can be registered using
-			the method JpoxHelper.INSTANCE.setPersistenceManagerFactoryCreator(....).</p>
+			org.eclipse.emf.teneo.jpox.PMFCreator. The creator can be registered using
+			the method JpoxHelper.INSTANCE.setPMFCreator(....).</p>
 		
 </div>
 		
@@ -314,12 +311,12 @@
 <strong>PersistenceOptions.SQL_CASE_STRATEGY</strong>: controls if the table and column names are uppercased, lowercased or 
 			no specific casing is done. The value lowercase will force lower case for all table/column name, the value 
 			uppercase will force uppercase for all table/column names, none wil do not casing. It is also possible to set this
-			option to the classname of a class implementing the org.elver.store.util.SQLCaseStrategy interface.
+			option to the classname of a class implementing the org.eclipse.emf.teneo.util.SQLCaseStrategy interface.
 			Note this option can only be used when generating the package.jdo programmatically.</li>
 			
 </ul>
 			
-<p>The available options are all present in the <em>org.elver.store.PersistenceOptions</em> class.</p>
+<p>The available options are all present in the <em>org.eclipse.emf.teneo.PersistenceOptions</em> class.</p>
 		
 </div>
 		
@@ -330,7 +327,7 @@
 			
 <p>Options are passed to the JpoxDataStore using a Properties object which is set using the JpoxDataStore.setProperties method.</p>
 			
-<p>The options described here are all present in the <em>org.elver.store.PersistenceOptions</em> class. The constant names used 
+<p>The options described here are all present in the <em>org.eclipse.emf.teneo.PersistenceOptions</em> class. The constant names used 
 			in this page all refer to this class.</p>
 			
 <p>Boolean options can have the lower case String values: "false" or "true".</p>
@@ -344,6 +341,10 @@
 <li>	
 <strong>PersistenceOptions.FETCH_CONTAINMENT_EAGERLY</strong>: if set to "true" will set the fetch strategy of all
 			containment references to EAGER. This means that containment relations are completely read in memory. Default is "false".</li>
+			
+<li> 
+<strong>PersistenceOptions.PERSISTENCE_XML</strong>: the location of the xml annotations file. The location should be a resource
+			path.</li>
 			
 </ul>
 		

@@ -163,7 +163,7 @@
 <a href="../../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../../hibernate/custom_annotations.html">Custom</a>
+<a href="../../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../../hibernate/testcases.html">Test cases</a>
+<a href="../../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -260,24 +254,24 @@
 <h3>Add runtime plugin to dependencies of plugin.xml</h3>
 			
 			
-<p>To enable the runtime layer the org.elver.store.hibernate.runtime plugin needs to be added to the
-				plugin dependencies of the plugin.xml (see image below).</p>
+<p>To enable the runtime layer the org.eclipse.emf.teneo.hibernate plugin needs to be added to the
+				plugin dependencies of the plugin.xml (see image below). <em>The org.eclipse.emf.teneo.hibernate plugin
+				should be re-exported.</em>
+</p>
 			
-<p>In addition the following <em>Eclipse-RegisterBuddy: org.elver.store.hibernate.runtime</em>, 
-				needs to be added to the MANIFEST.MF of the Library model project 
-				(see <a class="external" href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why).</p>
-			
-<p>In addition your database JDBC driver should be added to classpath of the plugin and possible the packages
+<p>Your database JDBC driver should be added to classpath of the plugin and possible the packages
 				of the jdbc driver have to be made visible to other plugins.</p>
+			
+<p>Add the hibernate libraries to the model project and make the packages visible.</p>
 			
 <p>
 			
-<img alt="Setting dependency of plugin.xml" src="../images/plugin_dependency_reexport.gif">
+<img alt="Setting dependency of plugin.xml" src="../images/plugin_dependency.gif">
 			</p>
 		
 </div>
 		
-<a name="N1002F"></a><a name="Create+Empty+Database"></a>
+<a name="N1002A"></a><a name="Create+Empty+Database"></a>
 <div class="h3">
 <h3>Create Empty Database</h3>
 			
@@ -288,12 +282,12 @@
 		
 </div>
 		
-<a name="N1003C"></a><a name="Add+Logging"></a>
+<a name="N10037"></a><a name="Add+Logging"></a>
 <div class="h3">
 <h3>Add Logging</h3>
 			
 			
-<p>To view the log messages of Hibernate and Elver you have to set the log4j properties. A
+<p>To view the log messages of Hibernate and Teneo you have to set the log4j properties. A
 			simple sample log4j.properties file can be downloaded <a href="../samples/log4j.properties">here</a>.
 			The log4j.properties file has to be placed directly in the src folder of the library model project.</p>
 			

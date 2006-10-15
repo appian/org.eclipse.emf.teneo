@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -249,6 +243,15 @@
 		
 <p>
 		
+<strong>From 12 September 2006: for changelog and release notes see the emft website: <a class="external" href="http://www.eclipse.org/emft/news/release-notes.php">here</a></strong>
+		
+</p>
+		
+		
+<p></p>
+		
+<p>
+		
 <strong>Release: 0.7.2 ALPHA - 7 June 2006</strong>
 		
 </p>
@@ -262,7 +265,7 @@
 			annotation.elver.org.</li>
 			
 <li>
-<strong>The hibernate jar files have been moved to a separate plugin: org.elver.store.hibernate.libraries</strong>. This plugin contains the 
+<strong>The hibernate jar files have been moved to a separate plugin: org.eclipse.emf.teneo.hibernate.libraries</strong>. This plugin contains the 
 			Hibernate 3.2 version. If you want to use a different Hibernate version then please replace the hibernate jars in this plugin (in the 
 			installation directory of Eclipse). In a later release this will possibly be made easier.</li>
 			
@@ -298,11 +301,11 @@
 				
 <li>Added secondary table(s), embedded id and lob, (see <a href="ejb3_features.html">here</a>)</li>
 			
-<li>Added idbag (see <a href="custom_annotations.html#IdBag+Annotation">here</a>)</li>
+<li>Added idbag</li>
 			
-<li>Added type annotation on EDataType to support UserType (see <a href="custom_annotations.html#type">here</a>)</li>
+<li>Added type annotation on EDataType to support UserType</li>
 			
-<li>Added columns (multiple) annotation (see <a href="custom_annotations.html#type">here</a>)</li>
+<li>Added columns (multiple) annotation</li>
 			
 <li>Added transient annotation on EClass level (see <a href="ejb3_features.html#transient">here</a>).</li>
 			
@@ -568,7 +571,7 @@ resulted in missing model fields in the mapping file.</li>
 			
 <li>Upgraded to Hibernate3.1rc1, for this release it is required to upgrade
 				to the Hibernate3.1rc1 release, the Hibernate libraries are all present in
-				the org.elver.store.hibernate.runtime plugin. Note that in rc1 the 
+				the org.eclipse.emf.teneo.hibernate.runtime plugin. Note that in rc1 the 
 				methods session.reconnect/disconnect have been deprecated.</li>
 			
 <li>Restructured the Tutorial &amp; Information part of the website.</li>
@@ -642,7 +645,7 @@ resulted in missing model fields in the mapping file.</li>
 		by explicitly selecting the validate option.</li>
 			
 <li>The plugin structure has been improved, more functions have been moved to 
-			a generic plugin (org.elver.store).</li>
+			a generic plugin (org.eclipse.emf.teneo).</li>
 		
 </ul>
 		

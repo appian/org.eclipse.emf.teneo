@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -268,12 +262,12 @@
 </ul>
 		
 <p>
-<strong>The annotations described here have been changed, from the 0.3.* to the 0.7.0 release, 
-		to an EJB3-like format.</strong>
+<strong>The syntax of the annotations described here have been changed in the Teneo release,
+		see <a href="ejb3_format.html">here</a>.</strong>
 </p>
 	
 		
-<a name="N10015"></a><a name="Mapping+indexed+1%3An+relations"></a>
+<a name="N10019"></a><a name="Mapping+indexed+1%3An+relations"></a>
 <div class="h3">
 <h3>Mapping indexed 1:n relations</h3>
 		
@@ -282,7 +276,7 @@
 		
 </div>		
 		
-<a name="N1001E"></a><a name="Mapping+non-indexed+relations"></a>
+<a name="N10022"></a><a name="Mapping+non-indexed+relations"></a>
 <div class="h3">
 <h3>Mapping non-indexed relations</h3>
 		
@@ -297,9 +291,10 @@
 <pre class="code">
 &lt;xsd:element name="containedItem" type="this:ContainedItem" maxOccurs="unbounded"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://annotation.elver.org/Indexed" ecore:key="value"&gt;false&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@OneToMany(indexed=false)&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
-&lt;/xsd:element&gt;</pre>
+&lt;/xsd:element&gt;
+		</pre>
 		
 <p>In this example it is specified that the item member (an elist) should not be indexed.
 		For EMF and java the relations will be represented as an elist, however the order of the 
@@ -310,17 +305,18 @@
 		<em>This also means that the order of a list when it is saved is not guaranteed to be the same
 		as the order when the list is retrieved.</em>.</p>
 		
+<p>The indexed attribute is also supported on the ManyToMany annotation.</p>
+		
 <p>The above annotation can also be added in UML. Please use the same values for the 
 			source and the key.</p>
 		
 <p>
-<em>The indexed annotation does not exist in the EJB3 spec and is an Elver extension. Extension
-		annotations use the source: http://annotation.elver.org.</em>
+<em>The indexed annotation does not exist in the EJB3 spec and is a Teneo extension.</em>
 </p>
 		
 </div>		
 		
-<a name="N1003E"></a><a name="Mapping+indexed+many-to-many+%28nm%29+relations"></a>
+<a name="N10045"></a><a name="Mapping+indexed+many-to-many+%28nm%29+relations"></a>
 <div class="h3">
 <h3>Mapping indexed many-to-many (nm) relations</h3>
 		
@@ -339,55 +335,54 @@
 		
 </div>		
 		
-<a name="N1004D"></a><a name="Mapping+non-indexed+nm+relations"></a>
+<a name="N10054"></a><a name="Mapping+non-indexed+nm+relations"></a>
 <div class="h3">
 <h3>Mapping non-indexed nm relations</h3>
 		
 <p>Non-indexed relations can be persisted using 1 join table. To specify that a nm relation
 		is non-indexed both sides of the relation should have the indexed is false annotation. If 
-		Elver encounters a non-indexed nm relations then only 1 join table will be used.</p>
+		Teneo encounters a non-indexed nm relations then only 1 join table will be used.</p>
 		
 </div>		
 		
-<a name="N10056"></a><a name="Force+a+join+table+for+1%3An+relations"></a>
+<a name="N1005D"></a><a name="Force+a+join+table+for+1%3An+relations"></a>
 <div class="h3">
 <h3>Force a join table for 1:n relations</h3>
 		
 <p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
 		parent) in the child table/object. The disadvantage of this approach is that duplicates 
 		are not supported. To support duplicates in an elist a join table is required. To signal to 
-		Elver, that a join table should be used, the annotation as in this example can be used:</p>
+		Teneo, that a join table should be used, the annotation as in this example can be used:</p>
 				
 <pre class="code">
 &lt;xsd:element name="joinedItem" type="xsd:anyURI" ecore:reference="this:Item" maxOccurs="unbounded"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://annotation.elver.org/Unique" ecore:key="value"&gt;false&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@OneToMany(indexed=false unique=false)&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
 &lt;/xsd:element&gt;
 			</pre>
 		
-<p>Based on this annotations Elver will generate a join table for this model. Note that 
+<p>Based on this annotations Teneo will generate a join table for this model. Note that 
 		this annotation can be combined with the indexed annotation.</p>
 		
 <p>
-<em>The unique annotation does not exist in the EJB3 spec and is an Elver extension. Extension
-		annotations use the source: http://annotation.elver.org.</em>
+<em>The unique annotation does not exist in the EJB3 spec and is a Teneo extension.</em>
 </p>
 		
 </div>		
 		
-<a name="N1006A"></a><a name="Embedded+components"></a>
+<a name="N10071"></a><a name="Embedded+components"></a>
 <div class="h3">
 <h3>Embedded components</h3>
 		
-<p>Elver supports relations in which the child should be embedded in the parent table. 
+<p>Teneo supports relations in which the child should be embedded in the parent table. 
 		Embedding is defined on type level using an annotation:
 		</p>
 				
 <pre class="code">
 &lt;xsd:element name="firstEmbedded" type="this:Embeddable"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Embedded"&gt;true&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@Embedded&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
 &lt;/xsd:element&gt;
 			</pre>
@@ -399,7 +394,7 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 		
 </div>		
 		
-<a name="N1007D"></a><a name="Storing+container+relation"></a>
+<a name="N10084"></a><a name="Storing+container+relation"></a>
 <div class="h3">
 <h3>Storing container relation</h3>
 			
@@ -449,6 +444,11 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 				from the container to the contained object. This is required because one eobject type can be contained 
 				by multiple other eobject types which are not known when the hibernate.hbm.xml is generated. 
 			</p>
+			
+<p>
+<strong>The econtainer mapping creation can be disabled by setting the PersistenceOptions.DISABLE_ECONTAINER_MAPPING
+			to true, see also <a href="options.html">here</a>.</strong>
+</p>
 		
 </div>
 	

@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -262,7 +256,7 @@
 <div class="h3">
 <h3>Supported inheritance mapping strategies</h3>
 		
-<p>The Elver OR Mapper supports two of the three inheritance mapping of Hibernate
+<p>The Teneo OR Mapper supports two of the three inheritance mapping of Hibernate
 			(see <a class="external" href="http://www.hibernate.org/hib_docs/v3/reference/en/html/inheritance.html">
 			chapter 9</a> of the Hibernate manual):</p>
 		
@@ -282,7 +276,7 @@
 		
 <ol>
 		
-<li>Globally: pass the constant org.elver.store.mapper.PersistenceMappingOptions.INHERITANCEMAPPING as a property 
+<li>Globally: pass the constant org.eclipse.emf.teneo.mapper.PersistenceMappingOptions.INHERITANCEMAPPING as a property 
 		when initializing a HbDataStore. This property can have two values: SINGLE_TABLE or JOINED.</li>
 		
 <li>By using an (EJB3) annotation for individual types: see below.</li>
@@ -314,7 +308,7 @@
 <pre class="code">
 &lt;xsd:complexType name="Address" abstract="true"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Inheritance" ecore:key="strategy"&gt;JOINED&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@Inheritance(strategy=JOINED)&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
  	&lt;xsd:sequence&gt;
 		&lt;xsd:element name="name" type="xsd:string"/&gt;

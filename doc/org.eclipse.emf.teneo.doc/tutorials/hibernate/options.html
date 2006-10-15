@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -243,7 +237,7 @@
 </div>
 <div class="app" id="projecthome">
 		
-<p>The options described here are all present in the <em>org.elver.store.PersistenceOptions</em> class. The constant names used 
+<p>The options described here are all present in the <em>org.eclipse.emf.teneo.PersistenceOptions</em> class. The constant names used 
 		in this page all refer to this class.</p>
 		
 <p>Options are passed to the HbDataStore using a Properties object which is set using the HbDataStore.setPersistenceProperties method.</p>
@@ -253,52 +247,30 @@
 <ul>
 		
 <li>
-<strong>PersistenceOptions.OPTIMISTIC</strong>: if this property is "false" then no version properties are added to the 
-		mapping of EClasses. Default is "true".</li>
+<strong>PersistenceOptions.ALWAYS_VERSION</strong>: this option (boolean, default: true) determines if the system should automatically 
+		add a version attribute to each class mapping. If set to true (the default) then the system will add a version property to the mapping if 
+		no other eattribute has a version annotation. If set to false then the version property is not added automatically.</li>
 		
-<li>	
-<strong>PersistenceOptions.INHERITANCE_MAPPING</strong>: the default inheritance mapping strategy to use, this can be
-		JOINED or SINGLE_TABLE, see <a href="inheritance.html">here</a> for more information. Default is SINGLE_TABLE.</li>
+<li>
+<strong>PersistenceOptions.DISABLE_ECONTAINER_MAPPING</strong>: this option (boolean) controls if the container relations
+		are mapped explicitly in the database, see also <a href="hibernate_relations.html#Storing+container+relation">here</a>.</li>
 		
-<li>	
-<strong>PersistenceOptions.UPDATE_SCHEMA</strong>: if set to "false" then the database schema is not updated 
-		when initializing a HbDataStore. This improves startup times. Default is "true".</li>
-		
-<li>	
+<li>
 <strong>PersistenceOptions.FETCH_CONTAINMENT_EAGERLY</strong>: if set to "true" will set the fetch strategy of all
 		containment references to EAGER. This means that containment relations are completely read in memory. Default is "false".</li>
-		
-<li>	
-<strong>PersistenceOptions.SET_ENTITY_AUTOMATICALLY</strong>: if set to "false" then only EClasses which have an
-		Entity annotation will be mapped. Default is "true", this means that all EClasses are mapped to the persistent store.</li>
-		
-<li>
-<strong>PersistenceOptions.QUALIFY_ENTITY_NAME</strong>: if set to PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX then
-		all EClass names (used as entityname) will be qualified with the nsprefix of the EPackage. The nsprefix is prepended to the
-		EClass name with a dot as a separator, for example: library.Writer. Note that all HQL queries should then use the 
-		qualified EClass names.</li>
-		
-<li>
-<strong>PersistenceOptions.USE_MAPPING_FILE</strong>: if set to "true" then Elver will not do an automatic mapping of the
-		ecore model to Hibernate but instead search for a hibernate.hbm.xml in the classpath of the EMF generated java classes.</li>
-		
-<li>
-<strong>PersistenceOptions.VERSION_COLUMN_NAME</strong>: can be used to set the version column name which is used
-		to store the version of an object in case of optimistic locking. Default the version column name is _vn_, however not all
-		databases support _ in the name.</li>
 		
 <li>
 <strong>PersistenceOptions.ID_COLUMN_NAME</strong>: can be used to set the id column name which is used
 		to store the id of an object. The id column is only added automatically if the model does not define a primary key for the
-		type. Default the id column name is _id_, however not all databases support _ in the name.</li>
+		type. Default the id column name is e_id, however not all databases support _ in the name.</li>
 		
 <li>
-<strong>PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT</strong>: as a default Elver will set a cascade style ALL on a 
-		containment relation. This also enables dependent or orphan delete behavior. However it makes more difficult to support cut/paste
-		operations using resources (see <a href="hibernate_details.html#cutpaste">here</a>). This option can be used to control the dependent or
-		orphan delete behavior on a containment relation. If set to false then all cascade styles are set with  
-		dependent/orphan-delete disabled. If set to true (the default) then all cascade styles are set including orphan-delete/dependent.
-		</li>
+<strong>PersistenceOptions.INHERITANCE_MAPPING</strong>: the default inheritance mapping strategy to use, this can be
+		JOINED or SINGLE_TABLE, see <a href="inheritance.html">here</a> for more information. Default is SINGLE_TABLE.</li>
+		
+<li>
+<strong>PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS</strong>: boolean, if set to true then always a join table is created
+		for one-to-many non-contained associations.</li>
 		
 <li>
 <strong>PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH</strong>: can be used to control the column and table name length. This is especially
@@ -308,10 +280,49 @@
 		system will truncate the part before the suffix.</li>
 		
 <li>
+<strong>PersistenceOptions.OPTIMISTIC</strong>: if this property is "false" then no version properties are added to the 
+		mapping of EClasses. Default is "true".</li>
+		
+<li> 
+<strong>PersistenceOptions.PERSISTENCE_XML</strong>: the location of the xml annotations file. The location should be a resource
+		path.</li>
+		
+<li>
+<strong>PersistenceOptions.QUALIFY_ENTITY_NAME</strong>: if set to PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX then
+		all EClass names (used as entityname) will be qualified with the nsprefix of the EPackage. The nsprefix is prepended to the
+		EClass name with a dot as a separator, for example: library.Writer. Note that all HQL queries should then use the 
+		qualified EClass names.</li>
+		
+<li>
+<strong>PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT</strong>: as a default Teneo will set a cascade style ALL on a 
+		containment relation. This also enables dependent or orphan delete behavior. However it makes more difficult to support cut/paste
+		operations using resources (see <a href="hibernate_details.html#cutpaste">here</a>). This option can be used to control the dependent or
+		orphan delete behavior on a containment relation. If set to false then all cascade styles are set with  
+		dependent/orphan-delete disabled. If set to true (the default) then all cascade styles are set including orphan-delete/dependent.
+		</li>
+		
+<li>	
+<strong>PersistenceOptions.SET_ENTITY_AUTOMATICALLY</strong>: if set to "false" then only EClasses which have an
+		Entity annotation will be mapped. Default is "true", this means that all EClasses are mapped to the persistent store.</li>
+		
+<li>
 <strong>PersistenceOptions.SQL_CASE_STRATEGY</strong>: controls if the table and column names are uppercased, lowercased or 
 		no specific casing is done. The value lowercase will force lower case for all table/column name, the value 
 		uppercase will force uppercase for all table/column names, none wil do not casing. It is also possible to set this
-		option to the classname of a class implementing the org.elver.store.util.SQLCaseStrategy interface.</li>
+		option to the classname of a class implementing the org.eclipse.emf.teneo.util.SQLCaseStrategy interface.</li>
+		
+<li>	
+<strong>PersistenceOptions.UPDATE_SCHEMA</strong>: if set to "false" then the database schema is not updated 
+		when initializing a HbDataStore. This improves startup times. Default is "true".</li>
+		
+<li>
+<strong>PersistenceOptions.USE_MAPPING_FILE</strong>: if set to "true" then Teneo will not do an automatic mapping of the
+		ecore model to Hibernate but instead search for a hibernate.hbm.xml in the classpath of the EMF generated java classes.</li>
+		
+<li>
+<strong>PersistenceOptions.VERSION_COLUMN_NAME</strong>: can be used to set the version column name which is used
+		to store the version of an object in case of optimistic locking. Default the version column name is e_version, however not all
+		databases support _ in the name.</li>
 		
 </ul>
 	

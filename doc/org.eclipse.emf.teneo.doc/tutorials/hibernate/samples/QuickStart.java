@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: QuickStart.java,v 1.2 2006/07/23 19:38:47 mtaal Exp $
+ * $Id: QuickStart.java,v 1.3 2006/10/15 08:39:23 mtaal Exp $
  */
 
 package hbtutorial;
@@ -23,8 +23,8 @@ import org.eclipse.example.library.Library;
 import org.eclipse.example.library.LibraryFactory;
 import org.eclipse.example.library.LibraryPackage;
 import org.eclipse.example.library.Writer;
-import org.elver.store.hibernate.HbDataStore;
-import org.elver.store.hibernate.HbHelper;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
+import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -33,7 +33,7 @@ import org.hibernate.Transaction;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
 */
 public class QuickStart {
 
@@ -50,7 +50,7 @@ public class QuickStart {
 		String hbName = "MySF"; 
 	
 		// create the HbDataStore
-		HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore(hbName);
+		HbDataStore hbds = (HbDataStore)HbHelper.INSTANCE.createRegisterDataStore(hbName);
 		
 		// The hibernate properties can be set by having a hibernate.properties file in the root of the classpath.
 		// Another approach is setting the properties in the HbDataStore. To do this comment out the following lines

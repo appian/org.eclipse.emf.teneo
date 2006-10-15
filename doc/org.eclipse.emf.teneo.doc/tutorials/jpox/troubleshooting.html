@@ -154,7 +154,7 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -261,8 +258,11 @@
 <a href="#runtime">Troubleshooting the Runtime layer</a>
 </li>
 <li>
-<a href="#Common+issues">Common issues</a>
-<ul class="minitoc">
+<a href="#Cut+and+Paste+does+not+work+in+the+Editor">Cut and Paste does not work in the Editor</a>
+</li>
+<li>
+<a href="#java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer">java.lang.NoClassDefFoundError when starting/initializing runtime layer</a>
+</li>
 <li>
 <a href="#Derby+database+and+cascading+deletes">Derby database and cascading deletes</a>
 </li>
@@ -273,33 +273,22 @@
 <a href="#OR+Mapper%3A+java.lang.NoSuchMethodError%3A+org.eclipse.emf.common.util.AbstractEnumerator">OR Mapper: java.lang.NoSuchMethodError: org.eclipse.emf.common.util.AbstractEnumerator</a>
 </li>
 <li>
-<a href="#java.lang.NoClassDefFoundError+when+initializing+runtime+layer+%281%29">java.lang.NoClassDefFoundError when initializing runtime layer (1)</a>
-</li>
-<li>
-<a href="#java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer+%282%29">java.lang.NoClassDefFoundError when starting/initializing runtime layer (2)</a>
-</li>
-<li>
-<a href="#Exception+in+thread+%22main%22+java.lang.NoClassDefFoundError%3A+org%2Felver%2Fstore%2Fjpox%2Fmapper%2FGenerateJDO">Exception in thread "main" java.lang.NoClassDefFoundError: org/elver/store/jpox/mapper/GenerateJDO</a>
-</li>
-<li>
-<a href="#Build+path+contains+duplicate+entries">Build path contains duplicate entries</a>
-</li>
-<li>
 <a href="#The+resource+is+empty+in+the+generated+editor">The resource is empty in the generated editor</a>
-</li>
-<li>
-<a href="#Different+versions+of+jar+files+in+JPOX+Enhancer+plugin+classpath+and+versions+in+org.elver.store.jpox.runtime">Different versions of jar files in JPOX Enhancer plugin classpath and versions in org.elver.store.jpox.runtime</a>
 </li>
 <li>
 <a href="#Update+manager+does+not+find+the+upgrade+of+the+EMF+-+JDO+plugin">Update manager does not find the upgrade of the EMF - JDO plugin</a>
 </li>
 <li>
-<a href="#The+EMF+generated+editor+does+not+start+and+the+error+log+gives+a+sql+error+%27Missing+column....%27">The EMF generated editor does not start and the error log gives a sql error 'Missing column....'</a>
+<a href="#Editor+does+not+start%2C+the+error+log+gives+a+sql+error+%27Missing+column....%27">Editor does not start, the error log gives a sql error 'Missing column....'</a>
 </li>
 <li>
-<a href="#Elver+does+not+see+my+changes+in+the+ecore+model">Elver does not see my changes in the ecore model</a>
+<a href="#Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin%2C+org.jpox.exceptions.ClassNotResolvedException">Editor does not start, ClassNotFoundException on the Editor Plugin, org.jpox.exceptions.ClassNotResolvedException</a>
 </li>
-</ul>
+<li>
+<a href="#Editor+does+not+start%2C+AssertionFailedException">Editor does not start, AssertionFailedException</a>
+</li>
+<li>
+<a href="#Teneo+does+not+see+my+changes+in+the+ecore+model">Teneo does not see my changes in the ecore model</a>
 </li>
 </ul>
 		
@@ -328,8 +317,8 @@
 <p>The OR Mapper menu option only works if the ecore file is located in the same Java Project as the generated
 			EPackage sources.</p>
 			
-<p>When the console shows this exception: <em>Exception in thread "main" java.lang.NoClassDefFoundError: org/elver/store/jpox/mapper/GenerateJDO</em>
-			then you have not added the org.elver.store.jpox.runtime to the dependencies of the model plugin.</p>
+<p>When the console shows this exception: <em>Exception in thread "main" java.lang.NoClassDefFoundError: org/eclipse/emf/teneo/jpox/mapper/GenerateJDO</em>
+			then you have not added the org.eclipse.emf.teneo.jpox plugin to the dependencies of the model plugin.</p>
 			
 <p>
 			To analyze what the problem is first view the error log. The error log
@@ -346,8 +335,8 @@
 <p>When you see the exception java.lang.NoSuchMethodError: org.eclipse.emf.common.util.AbstractEnumerator then 
 			you need to upgrade to EMF 2.2</p>
 			
-<p>More information is present in the log file generated by the Elver plugins. The log 
-			file can be found in the .metadata/.plugins/org.elver.store.jpox.eclipse or .metadata/.plugins/org.elver.store.eclipse subdirectory in the Eclipse workspace directory (note
+<p>More information is present in the log file generated by the Teneo plugins. The log 
+			file can be found in the .metadata/.plugins/org.eclipse.emf.teneo.jpox.eclipse or .metadata/.plugins/org.eclipse.emf.teneo.eclipse subdirectory in the Eclipse workspace directory (note
 			the dots before metadata and plugins).</p>
 			
 <p>
@@ -437,43 +426,73 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 		
-<a name="N100B8"></a><a name="Common+issues"></a>
+<a name="N100B8"></a><a name="Cut+and+Paste+does+not+work+in+the+Editor"></a>
 <div class="h3">
-<h3>Common issues</h3>
-			
-			
-<a name="N100BE"></a><a name="Derby+database+and+cascading+deletes"></a>
-<div class="h4">
-<h4>Derby database and cascading deletes</h4>
-<p>
-			Elver will specify foreign keys with cascade delete in the mapping file if required 
-		by the model (for example with containment). However Derby does not support cascading deletes and will
-		throw an error in the initialisation phase. The only solution is to manually delete the cascade delete
-		foreign key tags in the package.jdo. Elver does not know at mapping file generation time which database
-		is used and can therefore not know if cascade deletes are supported or not.
-			</p>
+<h3>Cut and Paste does not work in the Editor</h3>
+		
+<p>Please look <a href="jpox_details.html#cutpaste">here</a>
+</p>
+		
 </div>
 			
-<a name="N100C7"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
-<div class="h4">
-<h4>Created new model through new model wizard: diagnostic error</h4>
+<a name="N100C4"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer"></a>
+<div class="h3">
+<h3>java.lang.NoClassDefFoundError when starting/initializing runtime layer</h3>
+				
+				
+<p>When your model is divided over different projects/plugins then org.eclipse.emf.teneo.jpox plugin has to
+				be set (as a dependency) in the project with the 'widest' classpath (the project with a classpath containing the other plugins).
+				For example if you have the following two emf projects:</p>
+				
+<ul>
+<li>Core</li>
+<li>Specific (which uses/imports Core)</li>
+</ul>
+				
+<p>Then the dependency should only be in the META-INF of the 'Specific' project. This is required 
+				otherwise Jpox will not see the 'Specific' project.</p>
+			
+</div>
+			
+<a name="N100D7"></a><a name="Derby+database+and+cascading+deletes"></a>
+<div class="h3">
+<h3>Derby database and cascading deletes</h3>
+			
+<p>
+			Teneo will specify foreign keys with cascade delete in the mapping file if required 
+		by the model (for example with containment). However Derby does not support cascading deletes and will
+		throw an error in the initialisation phase. The only solution is to manually delete the cascade delete
+		foreign key tags in the package.jdo. Teneo does not know at mapping file generation time which database
+		is used and can therefore not know if cascade deletes are supported or not.
+			</p>
+			
+</div>
+			
+<a name="N100E0"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
+<div class="h3">
+<h3>Created new model through new model wizard: diagnostic error</h3>
+			
 <p>The generated EMF model wizard allows invalid documents. When going through the 
 			wizard you need to select a type to create as the first document in the resource. The 
 			EMF model wizard creates an empty (all members are null) instance of this type and adds
 				 it to the JPOX resource. Before the JPOX resource is 
 			saved it checks if the content of the resource is valid. When nullable-constraints
 				are violated a StoreValidationException (with Diagnostics) is thrown.</p>
+			
 <p>To solve this you should make your model more relaxed (make elements nullable) or
 				add a small amount of code, which sets the non-nullable fields, to the model wizard. An example of this last solution
 				is illustrated in the Library Tutorial. 
 			</p>
+			
 </div>
 			
-<a name="N100D3"></a><a name="OR+Mapper%3A+java.lang.NoSuchMethodError%3A+org.eclipse.emf.common.util.AbstractEnumerator"></a>
-<div class="h4">
-<h4>OR Mapper: java.lang.NoSuchMethodError: org.eclipse.emf.common.util.AbstractEnumerator</h4>
+<a name="N100EC"></a><a name="OR+Mapper%3A+java.lang.NoSuchMethodError%3A+org.eclipse.emf.common.util.AbstractEnumerator"></a>
+<div class="h3">
+<h3>OR Mapper: java.lang.NoSuchMethodError: org.eclipse.emf.common.util.AbstractEnumerator</h3>
+			
 <p>When you run the or mapper and no popup box is shown then view the error log. If the error log shows the 
 			stacktrace below then you need to upgrade to EMF 2.2</p>
+			
 <pre class="code">
 java.lang.NoSuchMethodError: org.eclipse.emf.common.util.AbstractEnumerator.&lt;init&gt;(ILjava/lang/String;Ljava/lang/String;)V
 at org.elver.store.annotations.pannotation.InheritanceType.&lt;init&gt;(InheritanceType.java:182)
@@ -481,93 +500,79 @@ at org.elver.store.annotations.pannotation.InheritanceType.&lt;clinit&gt;(Inheri
 at org.elver.store.jpox.eclipse.popup.actions.GenerateJDOActionSuperTable.run(GenerateJDOActionSuperTable.java:42)
 at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
 			</pre>
+			
 </div>
 			
-<a name="N100E0"></a><a name="java.lang.NoClassDefFoundError+when+initializing+runtime+layer+%281%29"></a>
-<div class="h4">
-<h4>java.lang.NoClassDefFoundError when initializing runtime layer (1)</h4>
-<p>This error occurs when the runtime layer is initialized. It occurs because your 
-			application (and ecore libraries) are not present in the classpath of the runtime layer.
-			To solve this issue add the following line to the Manifest.MF of your EMF model project:
-			</p>
-<p>Eclipse-RegisterBuddy: org.elver.store.jpox.runtime</p>
-<p>See also the <a href="installation.html">installation</a> page</p>
-</div>
-			
-<a name="N100F4"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer+%282%29"></a>
-<div class="h4">
-<h4>java.lang.NoClassDefFoundError when starting/initializing runtime layer (2)</h4>
-<p>When your model is divided over different projects/plugins then the registerbuddy setting has to 
-				be set in the project with the 'widest' classpath (the project with a classpath containing the other plugins).
-				For example if you have the following two emf projects:</p>
-<ul>
-<li>Core</li>
-<li>Specific (which uses/imports Core)</li>
-</ul>
-<p>Then the registerbuddy should only be in the META-INF of the 'Specific' project. This is required 
-				otherwise Jpox will not see the 'Specific' project. Setting register-buddy in both 'Core' and 'Specific' 
-				will also result in classpath errors in Jpox.</p>
-</div>
-			
-<a name="N10107"></a><a name="Exception+in+thread+%22main%22+java.lang.NoClassDefFoundError%3A+org%2Felver%2Fstore%2Fjpox%2Fmapper%2FGenerateJDO"></a>
-<div class="h4">
-<h4>Exception in thread "main" java.lang.NoClassDefFoundError: org/elver/store/jpox/mapper/GenerateJDO</h4>
-<p>You have not added the org.elver.store.jpox.runtime to the dependencies of the model plugin. Add the 
-				org.elver.store.jpox.runtime plugin to the dependencies of the model project and set the register buddy setting
-				in the Manifest file.</p>
-</div>
-			
-<a name="N10111"></a><a name="Build+path+contains+duplicate+entries"></a>
-<div class="h4">
-<h4>Build path contains duplicate entries</h4>
-<p>It is possible that you get a message in the Problems view: build path
-				contains duplicate entry: ..... This occurs when JPOX support was enabled
-			for the project before the org.elver.store.jpox.runtime was added to the dependency tab of the plugin.xml
-			of the EMF model project.
-			To resolve this, choose 'Remove JPOX Support' in the JPOX menu and then choose 'Add JPOX Support' again.
-			The JPOX Libraries node in the project build path should disappear. The JPOX Libraries node is not
-			necessary because the org.elver.store.jpox.runtime already provides all the required libraries.</p>
-</div>
-			
-<a name="N1011B"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
-<div class="h4">
-<h4>The resource is empty in the generated editor</h4>
+<a name="N100F9"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
+<div class="h3">
+<h3>The resource is empty in the generated editor</h3>
+				
+				
 <p>The JPOX resources will only load EMF objects which have been enhanced. To ensure that
 				the EMF classes are enhanced make sure that 'Enable Auto Enhancement' is checked in the 
 				JPOX submenu. The JPOX submenu is displayed when you right click on the EMF model project.</p>
+				
 <p>See also the <a href="knownissues.html">Know Issues</a>.</p>
+			
 </div>
 			
-<a name="N1012C"></a><a name="Different+versions+of+jar+files+in+JPOX+Enhancer+plugin+classpath+and+versions+in+org.elver.store.jpox.runtime"></a>
-<div class="h4">
-<h4>Different versions of jar files in JPOX Enhancer plugin classpath and versions in org.elver.store.jpox.runtime</h4>
-<p>After updating the org.elver.store.jpox.runtime plugin it is important to let the jar files
-				in the JPOX classpath (see <a href="installation.html">JPOX Eclipse Plugin installation</a>) point to the 
-				jar files in the latest version of the org.elver.store.jpox.store.runtime plugin.</p>
-</div>
+<a name="N1010A"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+-+JDO+plugin"></a>
+<div class="h3">
+<h3>Update manager does not find the upgrade of the EMF - JDO plugin</h3>
 			
-<a name="N1013A"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+-+JDO+plugin"></a>
-<div class="h4">
-<h4>Update manager does not find the upgrade of the EMF - JDO plugin</h4>
 <p>Please see the <a href="upgrading.html">upgrade page</a> for more information.</p>
+			
 </div>
 			
-<a name="N10147"></a><a name="The+EMF+generated+editor+does+not+start+and+the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
-<div class="h4">
-<h4>The EMF generated editor does not start and the error log gives a sql error 'Missing column....'</h4>
+<a name="N10117"></a><a name="Editor+does+not+start%2C+the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
+<div class="h3">
+<h3>Editor does not start, the error log gives a sql error 'Missing column....'</h3>
+			
 <p>This can occur if your model has changed or you just upgraded the OR Mapper plugin, 
 			see the <a href="upgrading.html">upgrade page</a> for more information.</p>
+			
 </div>
 			
-<a name="N10154"></a><a name="Elver+does+not+see+my+changes+in+the+ecore+model"></a>
-<div class="h4">
-<h4>Elver does not see my changes in the ecore model</h4>
-<p>Elver uses the runtime version of the ecore model. The runtime version is present as java code in the 
-				generated EPackage implementation class. This runtime ecore can differ from the ecore file when the 
-				model code is not regenerated after a change in the ecore file. So to let Elver use the changes in the ecore
-				file the model code needs to be regenerated.</p>
+<a name="N10124"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin%2C+org.jpox.exceptions.ClassNotResolvedException"></a>
+<div class="h3">
+<h3>Editor does not start, ClassNotFoundException on the Editor Plugin, org.jpox.exceptions.ClassNotResolvedException</h3>
+			
+<p>This can happen when the JPOX libraries can not find the model classes. You can check if
+			you have set the BuddyPolicy in the Manifest.MF of the plugin containing the JPOX jar files.
+			If not add the following to the Manifest.MF of the plugin containing the JPOX jar files:
+			Eclipse-BuddyPolicy: dependent</p>
+			
 </div>
-		
+			
+<a name="N1012D"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
+<div class="h3">
+<h3>Editor does not start, AssertionFailedException</h3>
+			
+<p>When you start the editor you get the following exteption (stacktrace truncated):</p>
+			
+<pre class="code">
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: 
+at org.eclipse.core.runtime.Assert.isTrue(Assert.java:109)
+at org.eclipse.core.runtime.Assert.isTrue(Assert.java:95)
+at org.eclipse.ui.part.MultiPageEditorPart.setActivePage(MultiPageEditorPart.java:688)
+at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart.java:280)			
+			</pre>
+			
+<p>You probably started the editor with an empty database, the editor does not support this.
+			You should have at least one root object in the database (for example a Library object in 
+			the Library tutorial).</p>
+			
+</div>
+			
+<a name="N1013D"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
+<div class="h3">
+<h3>Teneo does not see my changes in the ecore model</h3>
+				
+<p>Teneo uses the runtime version of the ecore model. The runtime version is present as java code in the 
+				generated EPackage implementation class. This runtime ecore can differ from the ecore file when the 
+				model code is not regenerated after a change in the ecore file. So to let Teneo use the changes in the ecore
+				file the model code needs to be regenerated.</p>
+			
 </div>
 	
 </div>

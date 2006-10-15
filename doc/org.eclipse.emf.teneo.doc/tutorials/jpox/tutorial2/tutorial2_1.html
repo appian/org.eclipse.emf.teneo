@@ -154,7 +154,7 @@
 <a href="../../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../../jpox/mailinglist.html">Mailinglist</a>
+<a href="../../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../../jpox/testcases.html">Test cases</a>
+<a href="../../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -259,17 +256,13 @@
 <h3>Set dependencies of EMF model and editor plugins</h3>
 			
 			
-<p>The EMF persistency plugin (org.elver.store.jpox.runtime) has to be added 
+<p>The EMF persistency plugin (org.eclipse.emf.teneo.jpox) has to be added 
 			to the dependencies tab of the plugin.xml of <em>both</em> the library and the
 			library.editor plugin project.</p>
-			
-<p>
-<em>Important:</em> the following has to be added to the MANIFEST.MF of the
-				library (model) project: <em>Eclipse-RegisterBuddy: org.elver.store.jpox.runtime</em>.</p>
 		
 </div>
 		
-<a name="N10023"></a><a name="Enable+JPOX+Support+for+the+EMF+model+project"></a>
+<a name="N1001B"></a><a name="Enable+JPOX+Support+for+the+EMF+model+project"></a>
 <div class="h3">
 <h3>Enable JPOX Support for the EMF model project</h3>
 			
@@ -283,7 +276,7 @@
 		
 </div>
 		
-<a name="N10037"></a><a name="Initialization"></a>
+<a name="N1002F"></a><a name="Initialization"></a>
 <div class="h3">
 <h3>Initialization</h3>
 			
@@ -308,6 +301,10 @@ public void start(BundleContext context) throws Exception
     	jpoxDataStore.setProperties(properties);
     	jpoxDataStore.setEPackages(new EPackage[]{LibraryPackage.eINSTANCE});
     	jpoxDataStore.initialize();
+
+	// this is required to force the editor to retrieve the correct resource
+	Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("library", new JPOXResourceDAOFactory());
+
 	super.start(context);
 }
 		</pre>
@@ -330,14 +327,14 @@ public void start(BundleContext context) throws Exception
 		
 </div>
 		
-<a name="N1005B"></a><a name="Resource+Factory+setting"></a>
+<a name="N10053"></a><a name="Resource+Factory+setting"></a>
 <div class="h3">
 <h3>Resource Factory setting</h3>
 			
 			
 <p>For this tutorial an EMF JPOX resource factory has to be specified. This is done
 				by setting the library element of the org.eclipse.emf.ecore.extension_parser extension
-				point to: org.elver.store.jpox.emf.resource.JPOXResourceDAOFactory (see image below).</p>
+				point to: org.eclipse.emf.teneo.jpox.resource.JPOXResourceDAOFactory (see image below).</p>
 			
 <p>
 			
@@ -359,7 +356,7 @@ public void start(BundleContext context) throws Exception
 		
 </div>
 		
-<a name="N10078"></a><a name="Create+valid+EMF+Objects"></a>
+<a name="N10070"></a><a name="Create+valid+EMF+Objects"></a>
 <div class="h3">
 <h3>Create valid EMF Objects</h3>
 			

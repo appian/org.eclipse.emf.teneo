@@ -16,7 +16,7 @@
 <link href="../skin/forrest.css" type="text/css" rel="stylesheet">
 <link rel="shortcut icon" href="../">
 <script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
-<title>Format of EJB3 Annotations as EAnnotations</title>
+<title>Format of JPA/EJB3 Annotations as EAnnotations and as XML</title>
 <meta content="text/css" http-equiv="Content-style-type">
 </head>
 <body class="composite" onload="focus()">
@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_selected_1.5" class="selectedmenuitemgroup">
 <div class="menupage">
 <div class="menupagetitle">Format</div>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -238,16 +232,19 @@
 <div id="bodycol">
 <div id="apphead">
 <h2>
-<em>Format of EJB3 Annotations as EAnnotations</em>
+<em>Format of JPA/EJB3 Annotations as EAnnotations and as XML</em>
 </h2>
 </div>
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
-<a href="#target">Introduction</a>
+<a href="#target">JPA Annotations in EAnnotations using the java annotation syntax</a>
 </li>
 <li>
-<a href="#simplenokeyvalye">Annotation without key-value</a>
+<a href="#xml">JPA Annotations in XML</a>
+</li>
+<li>
+<a href="#simplenokeyvalye">Simple Annotation Example</a>
 </li>
 <li>
 <a href="#simple">Annotation with key-value</a>
@@ -255,74 +252,83 @@
 <li>
 <a href="#multi">Complex Annotation with multi-level structure</a>
 </li>
-<li>
-<a href="#omondo">Where/how to specify annotations in Omondo</a>
-</li>
-<li>
-<a href="#rr">Where to specify annotations in Rational Rose</a>
-</li>
 </ul>
 		
-<p>EJB3 uses java annotations while Elver EJB3 is based on EMF EAnnotations. The main difference between java 
-		annotations and EAnnotations is that the latter does not support multi-level structures. An example of a 
-		multi-level annotation is the Columns annotation which contains Column annotations. 
-		This can not be expressed directly in an EAnnotation. With Elver we use a slightly 
-		different syntax to handle multi-level structures.
-		</p>
+<p>Teneo allows two ways to specify EJB3/JPA-like annotations: 1) using the java annotations syntax 
+		in EAnnotations, 2) a separate xml document.</p>
 		
-<a name="N10011"></a><a name="target"></a>
-<div class="h3">
-<h3>Introduction</h3>
+<p>This page will show examples of both approaches.</p>
 			
-			
-<p>EJB3 EAnnotations in Elver always have the source: http://ejb.elver.org. Elver specific annotations use
-			the source http://annotation.elver.org, Hibernate specific annotations use the source http://hibernate.elver.org.</p>
-			
-<p>The name of the EJB3 annotation is appended to the source: http://ejb.elver.org/Basic.</p>
-			
-<p>To make an annotation unique sometimes an extra identifying code needs to be appended to the source:
-			for example http://ejb.elver.org/Column/c1.</p>
-			
-<p>The key of the annotation corresponds to the key in the EJB3 annotation.</p>
-			
-<p>An EJB3 Annotation can have different targets: TYPE, METHOD and FIELD (see the EJB3 spec). Annotations
+<p>A JPA Annotation can have different targets: TYPE, METHOD and FIELD (see the EJB3/JPA spec). Annotations
 			with a TYPE target can be used for EMF EClasses, annotations with METHOD and FIELD targets can be used for
-			EStructuralFeatures. <em>Note:</em> EJB3 annotations relevant for a non-reference type java member can also be set on 
+			EStructuralFeatures. <em>Note:</em> JPA annotations relevant for a non-reference type java member can also be set on 
 			an EDataType (see <a href="ejb3_features.html#edatatype">here</a> for more information).</p>
+		
+<a name="N1001D"></a><a name="target"></a>
+<div class="h3">
+<h3>JPA Annotations in EAnnotations using the java annotation syntax</h3>
 			
-<p>Multiple values in a multi value annotation are separated by spaces, for example:</p>
-
-<pre class="code">&lt;xsd:appinfo source="http://ejb.elver.org/OneToMany" ecore:key="cascade"&gt;MERGE PERSIST&lt;/xsd:appinfo&gt;
-			</pre>			
+			
+<p>The EAnnotations should adhere to the following format:</p>
+			
+<ul>
+			
+<li>The source must be: <strong>teneo.jpa</strong>
+</li>
+			
+<li>The key must be: <strong>appinfo</strong> or <strong>value</strong>
+</li>
+			
+</ul>
 		
 </div>
 		
-<a name="N10034"></a><a name="simplenokeyvalye"></a>
+<a name="N10037"></a><a name="xml"></a>
 <div class="h3">
-<h3>Annotation without key-value</h3>
+<h3>JPA Annotations in XML</h3>
 			
 			
-<p>An example of an EJB3 annotation without a key-value pair is the Embedded annotation.</p>
+<p>JPA annotations can also be specified in a separate xml file. 
+			The xsd for the XML annotations can be downloaded <a href="download/persistence-mapping-hibernate.xsd">here</a>.</p>
+			
+<p>The xsd shows that it is possible to specify annotations on EPackage, EClass, EAttribute, EReference and EDataType level.
+			In addition there is a special property element which combines the annotations for EAttribute and EReference. The 
+			property tag is a convenience tag which	can be used to in place of both an EAttribute and an EReference tag.</p>
+			
+<p>When initializing a JpoxDataStore the location of the xml annotation file should be passed using the 
+			persistenceoption: PersistenceOptions.PERSISTENCE_XML. The location should be a resource
+			path.</p>
+		
+</div>
+		
+<a name="N1004B"></a><a name="simplenokeyvalye"></a>
+<div class="h3">
+<h3>Simple Annotation Example</h3>
+			
+			
+<p>An example of an JPA annotation without a key-value pair is the Embedded annotation.</p>
 			
 <p>In a XML Schema model the Embedded annotation is specified as follows:</p>
-						
+			
 <pre class="code">
 &lt;xsd:element name="secondEmbedded" type="this:Embeddable"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Embedded"&gt;true&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@Embedded&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
 &lt;/xsd:element&gt;
 			</pre>
 			
-<p>In an UML model the Embedded annotation is specified as follows:</p>
-						
-<pre class="code">
-http://ejb.elver.org/Embedded
-			</pre>
+<p>An example of a (different) simple annotation in xml:</p>
+			
+<pre class="code">			
+&lt;eclass name="Name"&gt;
+	&lt;embeddable /&gt;
+&lt;/eclass&gt;
+			</pre>			
 		
 </div>
 		
-<a name="N1004A"></a><a name="simple"></a>
+<a name="N10063"></a><a name="simple"></a>
 <div class="h3">
 <h3>Annotation with key-value</h3>
 			
@@ -334,114 +340,49 @@ http://ejb.elver.org/Embedded
 <pre class="code">
 &lt;xsd:element name="myOptionalBasic" type="xsd:string"&gt;
 	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Basic" ecore:key="optional"&gt;true&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Basic" ecore:key="fetch"&gt;EAGER&lt;/xsd:appinfo&gt;
+		&lt;xsd:appinfo source="teneo.jpa"&gt;@Basic(optional=true fetch=EAGER)&lt;/xsd:appinfo&gt;
 	&lt;/xsd:annotation&gt;
 &lt;/xsd:element&gt;
 			</pre>
 			
-<p>In UML the annotation is specified as follows:</p>
+<p>An example of a (different) key-value annotation in xml:</p>
 						
-<pre class="code">
-http://ejb.elver.org/AttributeOverride name='name' column='c1'
-			</pre>
+<pre class="code">			
+&lt;property name="head"&gt;
+	&lt;one-to-one fetch="EAGER" target-entity="Head" optional="true" cascade="ALL" /&gt;
+&lt;/property&gt;
+			</pre>			
 			
-<p>It is explained below what a column with value c1 means.</p>
+<p>As you can see this example uses the property tag. The property tag is a convenience tag which
+			can be used to in place of both an EAttribute and an EReference tag.</p>
 		
 </div>
 		
-<a name="N10063"></a><a name="multi"></a>
+<a name="N1007E"></a><a name="multi"></a>
 <div class="h3">
 <h3>Complex Annotation with multi-level structure</h3>
 			
 			
 <p>An example of a more complex annotation is the 
-			AttributeOverrides annotation which can contain multiple AttributeOverride annotations.</p>
-			
-<p>The AttributeOverrides annotation can be expressed in XML Schema as follows:</p>
+			SecondaryTable annotation which can contain a pkJoinColumns annotation:</p>
 			
 <pre class="code">
-&lt;xsd:element name="embedded" type="this:Embeddable"&gt;
-	&lt;xsd:annotation&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Embedded"&gt;true&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/AttributeOverrides" 
-					ecore:key="value"&gt;a1 a2&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/AttributeOverride/a1" 
-					ecore:key="name"&gt;myString&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/AttributeOverride/a1" 
-					ecore:key="column"&gt;c1&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Column/c1" 
-					ecore:key="name"&gt;columnString1&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/AttributeOverride/a2" 
-					ecore:key="name"&gt;myInteger&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/AttributeOverride/a2" 
-					ecore:key="column"&gt;c2&lt;/xsd:appinfo&gt;
-		&lt;xsd:appinfo source="http://ejb.elver.org/Column/c2" 
-					ecore:key="name"&gt;columnInteger1&lt;/xsd:appinfo&gt;
-	&lt;/xsd:annotation&gt;
-&lt;/xsd:element&gt;
+&lt;xsd:annotation&gt;
+	&lt;xsd:appinfo source="teneo.jpa"&gt;
+		@SecondaryTable(name="THETONER" pkJoinColumns={@PrimaryKeyJoinColumn(name="PRINTER_ID")})
+	&lt;/xsd:appinfo&gt;
+&lt;/xsd:annotation&gt;
 			</pre>
 			
-<p>This annotation models an embedded type by tagging the element with an Embedded annotation. The AttributeOverrides define how the 
-			properties of the embedded type are stored in the table. The AttributeOverrides consists of two AttributeOverride 
-			annotations which
-			are named a1 and a2. The a1 is appended to the source to make it unique: http://ejb.elver.org/AttributeOverride/a1.
-			The AttributeOverride contains an column key with a value c1. This value c1 is used in the source of the 
-			Column annotation to identify the Column annotation. 
-			</p>
+<p>An example of a (different) more complex annotation in xml:</p>
 			
-<p>A multi-level annotation in uml is specified as follows:</p>
-			
-<pre class="code">
-http://ejb.elver.org/Embedded
-http://ejb.elver.org/AttributeOverride name='name' column='c1'
-http://ejb.elver.org/Column/c1 name='bornNameColumn'
-			</pre>
-			
-</div>
-			
-<a name="N1007C"></a><a name="omondo"></a>
-<div class="h3">
-<h3>Where/how to specify annotations in Omondo</h3>
-			
-<p>Double click on the element for which an annotation should be specified:</p>
-			
-<div align="center">
-<img class="figure" alt="Omondo step 1" src="../images/omondo1.jpg"></div>
-			
-<p>Press Add in Annotations:</p>
-			
-<div align="center">
-<img class="figure" alt="Omondo step 2" src="../images/omondo2.jpg"></div>
-			
-<p>Specify the full Elver name in the annotations field. The http://... prefix will be removed from the view when you press enter:</p>
-			
-<div align="center">
-<img class="figure" alt="Omondo step 3" src="../images/omondo3.jpg"></div>
-			
-<p>Press Add on the name/value attribute and specify one of the attributes for this annotation and press OK:</p>
-			
-<div align="center">
-<img class="figure" alt="Omondo step 4" src="../images/omondo4.jpg"></div>
-			
-<div align="center">
-<img class="figure" alt="Omondo step 5" src="../images/omondo5.jpg"></div>
-			
-<p>and ready!</p>
-			
-</div>
-			
-<a name="N100A5"></a><a name="rr"></a>
-<div class="h3">
-<h3>Where to specify annotations in Rational Rose</h3>
-				
-				
-<p>The image below illustrates where to specify annotations in Rational Rose:</p>
-				
-<p>The ecore model properties (ecore A, ecore B) are added to Rational Rose using the <a href="../examples/ecore.pty">ecore.pty</a> file.</p>
-				
-<div align="center">
-<img class="figure" alt="Setting annotations in Rational Rose" src="../images/rose.jpg"></div>
+<pre class="code">			
+&lt;eclass name="Employee"&gt;
+	&lt;association-override name="address"&gt;
+		&lt;join-column name="employee_address_id"/&gt;
+	&lt;/association-override&gt;
+&lt;/eclass&gt;
+			</pre>			
 			
 </div>
 	

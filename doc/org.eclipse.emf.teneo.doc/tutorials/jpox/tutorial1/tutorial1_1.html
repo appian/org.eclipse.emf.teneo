@@ -154,7 +154,7 @@
 <a href="../../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../../jpox/mailinglist.html">Mailinglist</a>
+<a href="../../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../../jpox/testcases.html">Test cases</a>
+<a href="../../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -284,12 +281,8 @@
 <h3>Add runtime plugin to dependencies of plugin.xml</h3>
 			
 			
-<p>To enable the runtime layer the org.elver.store.jpox.runtime plugin needs to be added to the
+<p>To enable the runtime layer the org.eclipse.emf.teneo.jpox plugin needs to be added to the
 				plugin dependencies of the plugin.xml (see image below).</p>
-			
-<p>In addition the following <em>Eclipse-RegisterBuddy: org.elver.store.jpox.runtime</em>, 
-				needs to be added to the MANIFEST.MF of the Library model project 
-				(see <a class="external" href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why).</p>
 			
 <p>In addition your database JDBC driver should be added to classpath of the plugin.</p>
 			
@@ -297,19 +290,19 @@
 <img class="figure" alt="Setting dependency of plugin.xml" src="images/plugindependency.gif"></div>
 			
 <p>
-<em>The runtime plugin needs to be specified in the plugin dependencies before the OR mapping can be generated.</em>
+<strong>The runtime plugin needs to be specified in the plugin dependencies before the OR mapping can be generated.</strong>
 </p>
 		
-</div>
+</div> 
 		
-<a name="N1004B"></a><a name="Generate+OR+Mapping"></a>
+<a name="N10041"></a><a name="Generate+OR+Mapping"></a>
 <div class="h3">
 <h3>Generate OR Mapping</h3>
 			
 			
 <p>To generate the OR mapping right click on the ecore file and select the option 
-				<em>Generate EMF - JDO/JPOX OR Mapping</em> in the Elver submenu (the exact label of this 
-				menu option may vary depending on the Elver release you use). The generation takes
+				<em>Generate EMF - JDO/JPOX OR Mapping</em> in the Teneo submenu (the exact label of this 
+				menu option may vary depending on the Teneo release you use). The generation takes
 				only a second, the package.jdo file should be created in the same folder as the ecore file. <em>It is possible
 				that the folder needs to be refreshed manually.</em>
 </p>
@@ -345,7 +338,7 @@
 		
 </div>
 		
-<a name="N10080"></a><a name="Create+Empty+Database"></a>
+<a name="N10076"></a><a name="Create+Empty+Database"></a>
 <div class="h3">
 <h3>Create Empty Database</h3>
 			
@@ -356,7 +349,7 @@
 		
 </div>
 		
-<a name="N1008D"></a><a name="Add+Logging"></a>
+<a name="N10083"></a><a name="Add+Logging"></a>
 <div class="h3">
 <h3>Add Logging</h3>
 			

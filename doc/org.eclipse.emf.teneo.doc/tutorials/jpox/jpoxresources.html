@@ -154,7 +154,7 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -235,7 +232,7 @@
 <em>JPOX EMF Resources</em>
 </h2>
 </div>
-<div class="abstract">From the 0.7.0 release the EMF-JPOX integration offers one type of resource: JPOXResourceDAO. It 
+<div class="abstract">From the 0.7.5 release the EMF-JPOX integration offers one type of resource: JPOXResource. It 
     		extends the org.eclipse.emf.ecore.resource.impl.ResourceImpl.
     </div>
 <div class="app" id="projecthome">
@@ -244,7 +241,13 @@
 <a href="#Resource+URI">Resource URI</a>
 </li>
 <li>
-<a href="#JPOX+%28DAO%29+Resource">JPOX (DAO) Resource</a>
+<a href="#JPOX+Resource">JPOX Resource</a>
+</li>
+<li>
+<a href="#Sharing+one+PersistenceManager+between+Resources%2C+One+transaction+when+saving+multiple+resources">Sharing one PersistenceManager between Resources, One transaction when saving multiple resources</a>
+</li>
+<li>
+<a href="#Closing+a+resource">Closing a resource</a>
 </li>
 <li>
 <a href="#Validation">Validation</a>
@@ -264,7 +267,7 @@
 </ul>
 </li>
 <li>
-<a href="#Closing+a+resource">Closing a resource</a>
+<a href="#Closing+a+resource-N100B0">Closing a resource</a>
 </li>
 </ul>
 	 
@@ -279,11 +282,11 @@
 		  protocol: jpox and jpoxdao. <em>The jpoxdao protocol is deprecated and present because of backwards compatibility.</em>
 </p>
 		 
-<p>From the 0.7.0 the EMF-JPOX integration offers one type of resource: JPOXResourceDAO. The previous JPOXResource is no 
-		 longer used. The jpox protocol will from now return a JPOXResourceDAO instance.</p>
+<p>From the 0.7.5 release the EMF-JPOX integration offers one type of resource: JPOXResource. The previous JPOXResourceDAO is no 
+		 longer used. The jpox protocol will from now return a JPOXResource instance.</p>
 	  
 <p>The JPOX resource needs to know how to reach a data store. This is done by passing the name
-	  of a JpoxDataStore to the resource with the JPOXResourceDAO.DS_NAME_PARAM parameter. The name of the 
+	  of a JpoxDataStore to the resource with the JPOXResource.DS_NAME_PARAM parameter. The name of the 
 	  JpoxDataStore is the name used when creating/registering a JpoxDataStore
 	  using the JpoxHelper.INSTANCE object.
 	  </p>
@@ -292,18 +295,20 @@
 	
 </div>
     
-<a name="N1002D"></a><a name="JPOX+%28DAO%29+Resource"></a>
+<a name="N1002D"></a><a name="JPOX+Resource"></a>
 <div class="h3">
-<h3>JPOX (DAO) Resource</h3>
+<h3>JPOX Resource</h3>
       
       
-<p>The JPOX DAO Resource (org.elver.store.jpox.resource.JPOXResourceDAO) starts and completes a 
-		  transaction in the load action and reopens and commits a transaction for the save action.
-		This behavior has the following consequences:</p>
+<p>The JPOX Resource (org.eclipse.emf.teneo.jpox.resource.JPOXResource) starts a 
+		  transaction in the load action and commits and reopens a transaction for the save action.
+		</p>
+		
+<p>This behavior has the following consequences:</p>
 		
 <ul>
 		  
-<li>A transaction is only open during the time of the load or save action and not in between.</li>
+<li>The assumption is that optimistic transactions are enabled.</li>
 		  
 <li>After saving the resource the saved objects can still be used by the application, so no refresh
 			  is required. </li>
@@ -314,8 +319,85 @@
 </ul>
 	
 </div>
+    
+<a name="N10046"></a><a name="Sharing+one+PersistenceManager+between+Resources%2C+One+transaction+when+saving+multiple+resources"></a>
+<div class="h3">
+<h3>Sharing one PersistenceManager between Resources, One transaction when saving multiple resources</h3>
       
-<a name="N10043"></a><a name="Validation"></a>
+		
+<p>As a standard behavior the resource will create its own PersistenceManager (pm) at load time.
+		However, there are cases when you want to use one pm to load and save multiple resources. This 
+		is for example the case when there are references between objects in different resources. 
+		In this case the load and save actions of multiple resources should use the same pm and be done
+		in the same transaction.</p>
+		
+<p>To support this Teneo has the concept of a PMController. A PMController manages one pm
+		for multiple resources. A PMController is registered using a specific name. When a resource is opened this
+		name is passed as an uri parameter. Using this name the JPOXResource can then find the PMController
+		and retrieve a pm. When a JPOXResource has a PMController then the JPOXResource does not itself 
+		create a pm or begin and commit transactions. Beginning and committing transactions is the responsibility
+		of the application itself.</p>
+		
+<p>Here is some example code illustrating the use of a PMController:</p>
+		
+<pre class="code">
+	PMController pmc = new PMController();
+
+	// when creating a PMController you have to pass your JpoxDataStore instance
+	pmc.setJpoxDataStore(jpoxDataStore);
+
+	// register the PMController, the name is used in the uri of the resource
+	PMController.registerPMController("testsc", sc);
+
+	// create an uri using the PMController name
+	URI uri1 = URI.createURI("hibernate://?" + JPOXResource.SESSION_CONTROLLER_PARAM + "=testsc&amp;query1=select from " + BookImpl.class.getName());
+	URI uri2 = URI.createURI("hibernate://?" + JPOXResource.SESSION_CONTROLLER_PARAM + "=testsc&amp;query1=select from " + WriterImpl.class.getName());
+	// resourceSet has to be set before somehow..
+	final Resource res1 = resourceSet.createResource(uri1);
+	final Resource res2 = resourceSet.createResource(uri2);
+	
+	// now load the resources 
+	pmc.getPM().currentTransaction().begin();
+	res1.load(Collections.EMPTY_MAP);
+	res2.load(Collections.EMPTY_MAP);
+	pmc.getPM().currentTransaction().commit();
+	
+	// do something usefull with your loaded resources...
+
+	// and save them
+	pmc.getPM().currentTransaction().begin();
+	res1.save(Collections.EMPTY_MAP);
+	res2.save(Collections.EMPTY_MAP);
+	pmc.getPM().currentTransaction().commit();
+		</pre>
+		
+<p>
+<strong>Loading different EObjects (refering to eachother) in different resources can have side-effects if
+		there are containment relations to and from these EObjects (with resolving=false). 
+		If the containment relation is non-resolving then
+		EMF will place an EObject always in the same resource as its container. If you use queries to load your resources
+		then the containers are loaded also. For example: assume EObjects A1 and A2 both have container A0. If one resource
+		loads A1 then A0 is also loaded automatically and A0 and A1 are in the same resource. If then a second resource loads
+		A2 then A2 will be placed in the first resource because its container is located there. Overall this results in 
+		unpredictable behavior. So: to correctly work with multiple resources the containment relations should be set to
+		resolving = true.</strong>
+</p>
+		
+</div>
+		
+<a name="N1005E"></a><a name="Closing+a+resource"></a>
+<div class="h3">
+<h3>Closing a resource</h3>
+	  		
+      
+<p>The JPOXResource can be closed by calling the unload method. 
+		  This method will close the PersistenceManager. In case a PMController is used
+		  the unload method will just nullify the internal pm member, you should close
+		  the pm explicitly.</p>
+	
+</div>
+      
+<a name="N10068"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
       
@@ -323,12 +405,12 @@
 <p>The JPOX Resource automatically validates its content (the EObjects) when the
 		  resource is saved. This validation makes use of the EMF validation framework through calls to
 		  the Diagnostician.INSTANCE.validate method. Validation fails when a ERROR level Diagnostic is
-		  encountered. In this case the resource save method will throw an org.elver.store.StoreValidationException. 
+		  encountered. In this case the resource save method will throw an org.eclipse.emf.teneo.StoreValidationException. 
 		  This exception has a method to retrieve all Diagnostics.</p>
 	
 </div>
 		
-<a name="N1004D"></a><a name="Standard+load+behavior%3A+Top+level+types"></a>
+<a name="N10072"></a><a name="Standard+load+behavior%3A+Top+level+types"></a>
 <div class="h3">
 <h3>Standard load behavior: Top level types</h3>
 	  		
@@ -342,13 +424,13 @@
 	  
 </div>
 	 
-<a name="N1005E"></a><a name="Customizing+load+behavior"></a>
+<a name="N10083"></a><a name="Customizing+load+behavior"></a>
 <div class="h3">
 <h3>Customizing load behavior</h3>
 	 
 <p>It is possible to customize what the resource actually loads from the database.</p>
 		 
-<a name="N10066"></a><a name="Extend+the+resource+implementation+with+a+Java+subclass"></a>
+<a name="N1008B"></a><a name="Extend+the+resource+implementation+with+a+Java+subclass"></a>
 <div class="h4">
 <h4>Extend the resource implementation with a Java subclass</h4>
 <p>It is possible to customize the load behavior by overriding the loadFromStore method
@@ -357,7 +439,7 @@
 			</p>
 </div>
 		 
-<a name="N1006F"></a><a name="Set+specific+queries+to+load+the+resource"></a>
+<a name="N10094"></a><a name="Set+specific+queries+to+load+the+resource"></a>
 <div class="h4">
 <h4>Set specific queries to load the resource</h4>
 <p>There are two ways to pass specific queries to the JPOXResourceDAO. The first method
@@ -375,7 +457,7 @@
 	 
 </div>
 		
-<a name="N1008B"></a><a name="Closing+a+resource"></a>
+<a name="N100B0"></a><a name="Closing+a+resource-N100B0"></a>
 <div class="h3">
 <h3>Closing a resource</h3>
 	  		

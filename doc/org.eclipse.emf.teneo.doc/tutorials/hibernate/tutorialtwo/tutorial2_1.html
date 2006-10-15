@@ -163,7 +163,7 @@
 <a href="../../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../../hibernate/custom_annotations.html">Custom</a>
+<a href="../../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../../hibernate/testcases.html">Test cases</a>
+<a href="../../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -262,20 +256,12 @@
 <h3>Set dependencies of EMF model and editor plugins</h3>
 			
 			
-<p>The EMF persistency plugin (org.elver.store.hibernate.runtime) has to be added 
+<p>The EMF persistency plugin (org.eclipse.emf.teneo.hibernate) has to be added 
 			to the dependencies tab of the plugin of the Library model project. Check 'reexport this dependency'.</p>
-			
-<p>
-<em>Important:</em> the following has to be added to the MANIFEST.MF of the
-				library (model) project:</p>
-<p>
-				
-<em>Eclipse-RegisterBuddy: org.elver.store.hibernate.runtime</em>
-</p>
 		
 </div>
 		
-<a name="N10021"></a><a name="Initialization"></a>
+<a name="N10018"></a><a name="Initialization"></a>
 <div class="h3">
 <h3>Initialization</h3>
 			
@@ -301,7 +287,10 @@ public void start(BundleContext context) throws Exception
 	hbds.setEPackages(new EPackage[]{LibraryPackage.eINSTANCE});
 	hbds.setHibernateProperties(props);
 	hbds.initialize();
-
+	
+	// this is required to force the editor to retrieve the correct resource
+	Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("library", new HibernateResourceFactory())
+	
 	super.start(context);
 }
 	</pre>
@@ -324,14 +313,14 @@ public void start(BundleContext context) throws Exception
 		
 </div>
 		
-<a name="N10045"></a><a name="Resource+Factory+setting"></a>
+<a name="N1003C"></a><a name="Resource+Factory+setting"></a>
 <div class="h3">
 <h3>Resource Factory setting</h3>
 			
 			
 <p>For this tutorial an Hibernate EMF resource factory has to be specified. This is done
 				by setting the library element of the org.eclipse.emf.ecore.extension_parser extension
-				point to: org.elver.store.hibernate.resource.HibernateResourceFactory.</p>
+				point to: org.eclipse.emf.teneo.hibernate.resource.HibernateResourceFactory.</p>
 			
 <p>
 			
@@ -340,7 +329,7 @@ public void start(BundleContext context) throws Exception
 		
 </div>
 		
-<a name="N10056"></a><a name="Create+valid+EMF+Objects"></a>
+<a name="N1004D"></a><a name="Create+valid+EMF+Objects"></a>
 <div class="h3">
 <h3>Create valid EMF Objects</h3>
 			

@@ -154,7 +154,7 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -264,8 +261,8 @@
 </ul>
 		
 <p>EMF uses Feature Maps in a number of situations, for example to implement XML Schema repeating 
-		model groups or to implement derived features. The Elver persistency layer supports 
-		Feature Maps and generates the required JDO mappings. Elver FeatureMap support is hidden 
+		model groups or to implement derived features. The Teneo persistency layer supports 
+		Feature Maps and generates the required JDO mappings. Teneo FeatureMap support is hidden 
 		for the developer. The information here is mainly intended to help understand
 		the created mappings and relational tables.</p>
 		
@@ -324,42 +321,41 @@ public EList getPreferredOrders() {
 						A FeatureMap.Entry has two members: 1) a StructuralFeature which defines what type of entry it is, 
 						and 2) the actual value.</p>
 <p>For the relational mapping this same structure is 
-						used. Elver maps a featuremap as a collection with an embedded type. The embedded type is the 
-						org.elver.store.jpox.emf.elist.GenericFeatureMapEntry which implements FeatureMap.Entry.
+						used. Teneo maps a featuremap as a collection with an embedded type. The embedded type is the 
+						org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry which implements FeatureMap.Entry.
 						Each FeatureMap EAttribute is mapped separately and the entries of one FeatureMap EAttribute are 
 						persisted in a separate join table (see the jpox website for embedded collections here <a class="external" href="http://www.jpox.org/docs/1_1/embedded.html#Collection">here</a>).
 					</p>
 <p>The mapping for the orders property is as follows:</p>
 <pre class="code">
 &lt;field name="orders" persistence-modifier="persistent"&gt;
-	&lt;collection element-type="org.elver.store.jpox.emf.elist.GenericFeatureMapEntry"&gt;
-		&lt;extension vendor-name="jpox" key="cache-lazy-loading" value="true"/&gt;
-	&lt;/collection&gt;
-	&lt;join/&gt;
-	&lt;element&gt;
+			&lt;collection element-type="org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry"&gt;
+				&lt;extension vendor-name="jpox" key="cache-lazy-loading" value="true"/&gt;
+			&lt;/collection&gt;
+			&lt;join/&gt;
+		&lt;element&gt;
 		&lt;embedded&gt;
-		&lt;field name="featurePath"/&gt;
-		&lt;field name="localAnyValue" embedded="true"&gt;
-			&lt;extension vendor-name="jpox" key="implementation-classes" value="long"/&gt;
-			&lt;extension vendor-name="elver.org" key="estructuralfeatures" value="hardCopyOrderNumber"/&gt;
-		&lt;/field&gt;
-		&lt;field name="localReferenceValue" embedded="true"&gt;
-			&lt;extension vendor-name="jpox" key="implementation-classes" 
-				value="org.elver.store.jpox.emf.mapping.AnyTypeEObject"/&gt;
-			&lt;extension vendor-name="elver.org" key="estructuralfeatures" value=""/&gt;
-			&lt;foreign-key delete-action="restrict" update-action="cascade"/&gt;
-		&lt;/field&gt;
-		&lt;field name="localContainmentReferenceValue" dependent="true"&gt;
-			&lt;foreign-key delete-action="cascade" update-action="cascade"/&gt;
-			&lt;extension vendor-name="jpox" key="implementation-classes" 
-				value="org.elver.samples.emf.schemaconstructs.simplefeaturemap.impl.PurchaseOrderImpl"/&gt;
-			&lt;extension vendor-name="elver.org" key="estructuralfeatures" value="preferredOrders"/&gt;
-		&lt;/field&gt;
+			&lt;field name="featurePath"/&gt;
+			&lt;field name="localAnyValue" embedded="true"&gt;
+				&lt;extension vendor-name="jpox" key="implementation-classes" value="long"/&gt;
+				&lt;extension vendor-name="teneo" key="estructuralfeatures" value="hardCopyOrderNumber"/&gt;
+			&lt;/field&gt;
+			&lt;field name="localReferenceValue" embedded="true"&gt;
+					&lt;extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject"/&gt;
+					&lt;extension vendor-name="teneo" key="estructuralfeatures" value=""/&gt;
+				&lt;foreign-key delete-action="restrict" update-action="cascade"/&gt;
+			&lt;/field&gt;
+			&lt;field name="localContainmentReferenceValue" dependent="true"&gt;
+				&lt;foreign-key delete-action="cascade" update-action="cascade"/&gt;
+				&lt;extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simplefeaturemap.impl.PurchaseOrderImpl"/&gt;
+				&lt;extension vendor-name="teneo" key="estructuralfeatures" value="preferredOrders"/&gt;
+			&lt;/field&gt;
 		&lt;/embedded&gt;
 	&lt;/element&gt;
+	&lt;order column="SUPPLIER_ORDERS_IDX"/&gt;
 &lt;/field&gt;
 			</pre>
-<p>The orders property is mapped as a collection with embedded elements. The org.elver.store.jpox.emf.elist.GenericFeatureMapEntry
+<p>The orders property is mapped as a collection with embedded elements. The org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry
 					has four properties:</p>
 <ul>
 					
@@ -372,7 +368,7 @@ public EList getPreferredOrders() {
 <li>localContainmentReferenceValue: stores a containment reference value, the allowed types are specified using the extension tag.</li>
 					
 </ul>
-<p>The above field mappings also have an extension with vendor-name is elver.org, this extension is used to identify the
+<p>The above field mappings also have an extension with vendor-name is teneo, this extension is used to identify the
 					EStructuralFeatures which are allowed in the specific field.</p>
 <p>For different FeatureMap EAttributes the embedded type is the same (always the GenericFeatureMapEntry) but the extension tags will
 					differ based on the allowed types of the FeatureMap.</p>
@@ -472,33 +468,32 @@ Monitor&lt;/productName&gt; shipped from our warehouse on
 			</pre>
 			
 <p>Mixed content is mapped to a relational store in a similar way as the FeatureMap above. The difference with 
-			the standard FeatureMap mapping is that a different embedded type is used (org.elver.store.jpox.emf.elist.AnyFeatureMapEntry)
+			the standard FeatureMap mapping is that a different embedded type is used (org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry)
 			which stores all content in one field (anyValue, see below):</p>
 			
 <pre class="code">
-&lt;class name="org.elver.samples.emf.schemaconstructs.mixed.impl.SalutationTypeImpl" 
-	requires-extent="true" persistence-modifier="persistence-capable" detachable="true" 
-	table="SALUTATIONTYPE" identity-type="datastore"&gt;
-  &lt;implements name="org.elver.samples.emf.schemaconstructs.mixed.SalutationType"/&gt;
-  &lt;implements name="org.eclipse.emf.ecore.EObject"/&gt;
-  &lt;implements name="org.eclipse.emf.common.notify.Notifier"/&gt;
-  &lt;inheritance strategy="new-table"&gt;
-    &lt;discriminator column="DTYPE" strategy="value-map" value="SalutationType"/&gt;
-  &lt;/inheritance&gt;
-  &lt;field name="mixed" persistence-modifier="persistent"&gt;
-    &lt;collection element-type="org.elver.store.jpox.emf.elist.AnyFeatureMapEntry"/&gt;
-    &lt;join/&gt;
-    &lt;element&gt;
-      &lt;embedded&gt;
-        &lt;field name="featurePath"&gt;
-          &lt;column name="FEATUREPATH"/&gt;
-        &lt;/field&gt;
-        &lt;field name="anyValue"&gt;
-          &lt;column name="ANYVALUE"/&gt;
-        &lt;/field&gt;
-      &lt;/embedded&gt;
-    &lt;/element&gt;
-  &lt;/field&gt;
+&lt;class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.SalutationTypeImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="salutationtype" identity-type="datastore"&gt;
+	&lt;implements name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.SalutationType"/&gt;
+	&lt;implements name="org.eclipse.emf.ecore.EObject"/&gt;
+	&lt;implements name="org.eclipse.emf.common.notify.Notifier"/&gt;
+	&lt;inheritance strategy="new-table"&gt;
+		&lt;discriminator column="DTYPE" strategy="value-map" value="SalutationType"/&gt;
+	&lt;/inheritance&gt;
+	&lt;field name="mixed" persistence-modifier="persistent"&gt;
+		&lt;collection element-type="org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry"/&gt;
+		&lt;join/&gt;
+		&lt;element&gt;
+			&lt;embedded&gt;
+				&lt;field name="featurePath"&gt;
+					&lt;column name="FEATUREPATH"/&gt;
+				&lt;/field&gt;
+				&lt;field name="anyValue"&gt;
+					&lt;column name="ANYVALUE"/&gt;
+				&lt;/field&gt;
+			&lt;/embedded&gt;
+		&lt;/element&gt;
+		&lt;order column="SALUTATIONTYPE_MIXED_IDX"/&gt;
+	&lt;/field&gt;
 &lt;/class&gt;
 			</pre>
 			

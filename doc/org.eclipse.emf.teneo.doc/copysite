@@ -1,1 +1,0 @@
-scp -r build/site/* root@elver.org:/home/elverweb

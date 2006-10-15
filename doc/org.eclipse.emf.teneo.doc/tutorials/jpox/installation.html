@@ -154,7 +154,7 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -249,7 +246,7 @@
 <a href="#JPOX+Libraries">JPOX Libraries</a>
 </li>
 <li>
-<a href="#jpoxplugin">JPOX - Eclipse plugin Installation</a>
+<a href="#jpoxplugin">JPOX - Eclipse Enhancement Tool</a>
 </li>
 <li>
 <a href="#emfjpoxruntime">Using the EMF - JPOX Runtime plugin</a>
@@ -271,7 +268,7 @@
      	
 <p>EMF can be installed in Eclipse using the Eclipse update manager. 
 			 See <a class="external" href="http://eclipse.org/emf/docs.php?doc=docs/UsingUpdateManager/UsingUpdateManager.html">here</a> for more information.
-			 It is best to install the EMF SDK 2.1.* which contains the complete bundle with emf, xsd and sdo. 
+			 It is best to install the EMF SDK 2.2.* which contains the complete bundle with emf, xsd and sdo. 
 		</p>
 	 
 </div>
@@ -281,24 +278,24 @@
 <h3>EMF - JPOX Persistency Plugin Installation</h3>
      	
 		
-<p> The EMF Persistency plugin can be downloaded from the elver.org update site. 
+<p> The EMF Persistency plugin can be downloaded from the eclipse.org/emft update site. 
 			To configure this update site in Eclipse go to: <em>Help &gt; Software Updates &gt; Find and Install</em>. Select
 			'Search for new features to install' and click next.
 		</p>
 		
 <p> At this window create a new update site by clicking
-			on 'New Remote Site'. Enter any name you want, as a url enter: <em>http://update.elver.org/store</em>, 
+			on 'New Remote Site'. Enter any name you want, as a url enter: <em>http://download.eclipse.org/technology/emft/updates/site-interim.xml</em>, 
 			and press ok. 
 			</p>
 		
 <p>Select the newly created update site and press finish. When the update site contents are shown, select the 
-			Elver EMF Persistency JDO/JPOX (followed by version information) Feature.</p>
+			Teneo EMF Persistency (possibly followed by version information) Feature.</p>
 		
-<p>The feature consists of a number of plugins: org.elver.store.jpox.eclipse and org.elver.store.jpox.runtime. The first plugin contains the OR Mapper which
+<p>The feature consists of a number of plugins: org.eclipse.emf.teneo.jpox.eclipse and org.eclipse.emf.teneo.jpox. The first plugin contains the OR Mapper which
 			generates jdo descriptor files. The second plugin contains the jar files for the EMF persistency runtime. 
 			</p>
 			
-<p>After you have installed the plugin and restarted eclipse you will see a new menu entry called Elver when 
+<p>After you have installed the plugin and restarted eclipse you will see a new menu entry called Teneo when 
 			you right click on an ecore file.
 			</p>
 			
@@ -314,20 +311,26 @@
 <h3>JPOX Libraries</h3>
 		 
 			
-<p>The EMF persistency runtime contains a subset of the JPOX libraries. These have been used to run the 
-			tests. For the remaining JPOX runtime libraries please 
-			visit: <a class="external" href="http://www.jpox.org">the jpox website</a>.</p>
+<p>The EMF persistency feature does not contain the JPOX libraries (and its dependencies). 
+			Please download the JPOX libraries separately from: <a class="external" href="http://www.jpox.org">the JPOX website</a>.</p>
+			
+<p>
+<strong>A common approach is to place the JPOX libraries in a separate plugin on which your model plugin will depend.
+			If you do this then you should also set the BuddyPolicy in the plugin containing the JPOX jars (in the Manifest.MF), 
+			for example: Eclipse-BuddyPolicy: dependent.</strong>
+</p>
 	 
 </div>
 	  
 	  
-<a name="N10053"></a><a name="jpoxplugin"></a>
+<a name="N10057"></a><a name="jpoxplugin"></a>
 <div class="h3">
-<h3>JPOX - Eclipse plugin Installation</h3>
+<h3>JPOX - Eclipse Enhancement Tool</h3>
       
      	
 <p>
-		  	The jpox - eclipse plugin can be downloaded from the jpox website <a class="external" href="http://www.jpox.org/docs/download.html">here</a>.
+		  	JPOX delivers a plugin to automatically enhance class files after a package.jdo has been generated.
+		  	This jpox - eclipse plugin can be downloaded from the jpox website <a class="external" href="http://www.jpox.org/docs/download.html">here</a>.
 		  	After unzipping the JPOX zip file and placing it in the Eclipse plugin directory, restart Eclipse.
 			There should be an extra menu entry called JPOX when you right click on an ecore file..
 			<em>If this menu options is not shown then please read the following: 
@@ -342,38 +345,28 @@
 			2) check 'use project classpath when running tools'. This last option is the easiest as you probably only need to
 			specify the log4j jar separately.
 		</p>
-			
-<p>
-			
-<img alt="Example of jpox plugin classpath settings in eclipse" src="images/jpox_eclipse_classpath2.gif">
-			</p>
 	
 </div>
 
 	
-<a name="N10075"></a><a name="emfjpoxruntime"></a>
+<a name="N10072"></a><a name="emfjpoxruntime"></a>
 <div class="h3">
 <h3>Using the EMF - JPOX Runtime plugin</h3>
      	
 		
-<p>The installed runtime plugin (org.elver.store.jpox.runtime) can be used in two ways: 
+<p>The installed runtime plugin (org.eclipse.emf.teneo.jpox) can be used in two ways: 
 			1) in an EMF model plugin, 2) in a non-plugin project. </p>
 		
-<a name="N1007E"></a><a name="Using+the+runtime+plugin+in+an+EMF+model+plugin"></a>
+<a name="N1007B"></a><a name="Using+the+runtime+plugin+in+an+EMF+model+plugin"></a>
 <div class="h4">
 <h4>Using the runtime plugin in an EMF model plugin</h4>
 <p>To use the runtime plugin in an EMF model plugin go through the following steps (in this order):</p>
 <ol>
 				
 <li>In the plugin.xml, dependency tab, of the EMF model plugin project add a dependency to 
-				the EMF persistency plugin (org.elver.store.jpox.runtime)</li>
+				the EMF persistency plugin (org.eclipse.emf.teneo.jpox)</li>
 				
-<li>Add the following line to the Manifest.MF of the EMF model plugin project 
-					(see <a class="external" href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=87775#c57">here</a> why):
-					<p>Eclipse-RegisterBuddy: org.elver.store.jpox.runtime</p>
-</li>
-				
-<li>In case also an EMF editor project was generated the org.elver.store.jpox.runtime 
+<li>In case also an EMF editor project was generated the org.eclipse.emf.teneo.jpox 
 					plugin also needs to be added to the dependencies of the editor plugin.</li>				
 				
 <li>Right click on the EMF model project and in the JPOX menu choose 'Add JPOX Support'.
@@ -387,18 +380,18 @@
 				contains duplicate entry: ....</em>.</p>
 </div>
 		
-<a name="N100AA"></a><a name="Using+the+runtime+layer+in+a+non-plugin+EMF+project"></a>
+<a name="N1009E"></a><a name="Using+the+runtime+layer+in+a+non-plugin+EMF+project"></a>
 <div class="h4">
 <h4>Using the runtime layer in a non-plugin EMF project</h4>
-<p>In case of a non-plugin project the jar files present in the following plugings 
-			need to be added to the classpath:</p>
+<p>In case of a non-plugin project the jar files present in the following plugins 
+			need to be added to the classpath (in addition to the jpox jars):</p>
 <ul>
 		
-<li>org.elver.store</li>
+<li>org.eclipse.emf.teneo</li>
 		
-<li>org.elver.store.annotations</li>
+<li>org.eclipse.emf.teneo.annotations</li>
 		
-<li>EMF - JPOX runtime jar (org.elver.store.jpox-[version].jar)</li>
+<li>org.eclipse.emf.teneo.jpox (note: there are two jar files in this plugin, both are required)</li>
 		
 </ul>
 <p>In addition a jdbc driver should be added to the classpath.</p>

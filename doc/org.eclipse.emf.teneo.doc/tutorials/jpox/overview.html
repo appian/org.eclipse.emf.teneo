@@ -154,7 +154,7 @@
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (EJB3)</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../jpox/ejb3_features.html">Supported Ann.</a>
@@ -193,7 +193,7 @@
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../jpox/mailinglist.html">Mailinglist</a>
+<a href="../jpox/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../jpox/emfjpoxsupport.html">EMF/JPOX Support</a>
@@ -202,10 +202,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../jpox/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../jpox/testcases.html">Test cases</a>
+<a href="../jpox/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -259,8 +256,7 @@
 	
 <ol>
 		
-<li>EMF - JPOX OR Mapper: generates object-relational mapping files from the tags in 
-the EMF-generated source code. </li>
+<li>EMF - JPOX OR Mapper: generates object-relational mapping files from ecore model. </li>
 	 
 <li>EMF - JPOX Runtime: takes care of handling EMF specific 
 things such as EMF collections, containment and bi-directional relations.</li>
@@ -318,12 +314,12 @@ things such as EMF collections, containment and bi-directional relations.</li>
 		The <a href="jpoxdatastore.html">JpoxDataStore</a> 
 		controls a PersistenceManagerFactory and a set of EPackages which are persisted using the PersistenceManagers
 		of this PersistenceManagerFactory. When using a PersistenceManager, 
-		behind the scenes Elver takes care of instantiating EMF objects and setting/getting EFeatures from the database. 
-		Elver also handles lazy loading of ELists.</p>
+		behind the scenes Teneo takes care of instantiating EMF objects and setting/getting EFeatures from the database. 
+		Teneo also handles lazy loading of ELists.</p>
 		
 <p>
 <div align="center">
-<img class="figure" alt="Elver Runtime Layer" src="images/Runtime.jpg"></div>
+<img class="figure" alt="Teneo Runtime Layer" src="images/Runtime.jpg"></div>
 </p>
 	
 </div>
@@ -333,14 +329,14 @@ things such as EMF collections, containment and bi-directional relations.</li>
 <h3>EJB3 Annotations</h3>
 				
 		
-<p>Elver can automatically map the EMF model to an object relational representation. However there are situations in which it makes
-		sense to influence or control the mapping. For this purpose Elver supports EJB3-like annotations in the model. The annotations 
+<p>Teneo can automatically map the EMF model to an object relational representation. However there are situations in which it makes
+		sense to influence or control the mapping. For this purpose Teneo supports EJB3-like annotations in the model. The annotations 
 		can be used to control the way the inheritance structure is mapped to the relational store or how efeatures are mapped to database 
 		columns. For a complete overview of the supported EJB3 annotations see <a href="ejb3_features.html">here</a>.</p>
 		
 <p>The EJB3 support has been developed in such a way that it is only required to specify annotations for those parts of the model for 
 		which the automatic behavior does not result in the required behavior. For example it is possible to specify a column annotation for 
-		one efeature in a model while all other efeatures and eclasses are automatically handled by Elver.</p>
+		one efeature in a model while all other efeatures and eclasses are automatically handled by Teneo.</p>
 		
 <p>
 <em>EJB3 annotations are defined in EAnnotations in a specific format. See 

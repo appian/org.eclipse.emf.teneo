@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
 <div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
-<a href="../hibernate/svn.html">Subversion</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<a href="../hibernate/svn.html">CVS</a>
 </div>
 </div>
 </div>
@@ -272,13 +266,19 @@
 </ul>
 </li>
 <li>
+<a href="#Sharing+one+Session+between+Resources%2C+One+transaction+when+saving+multiple+resources">Sharing one Session between Resources, One transaction when saving multiple resources</a>
+</li>
+<li>
+<a href="#Closing+a+resource">Closing a resource</a>
+</li>
+<li>
 <a href="#Other+aspects">Other aspects</a>
 <ul class="minitoc">
 <li>
 <a href="#Resource+use+after+Hibernate+exception">Resource use after Hibernate exception</a>
 </li>
 <li>
-<a href="#Closing+a+resource">Closing a resource</a>
+<a href="#Closing+a+resource-N100BD">Closing a resource</a>
 </li>
 </ul>
 </li>
@@ -295,17 +295,15 @@
 	  
 <ul>
 	  
-<li>Protocol: initiallly the Hibernate EMF Resource (factory) will be registered for the protocol hibernate</li>
+<li>Protocol: the Hibernate EMF Resource (factory) will be registered for the protocols hibernate and ehb</li>
 	  
-<li>Extension: when a new HbDataStore is created and registered then the registration name 
-		  of the HbDataStore is used to register the Hibernate EMF Resource (factory) for that extension. 
-		</li>
+<li>Extension: the Hibernate EMF Resource (factory) will be registered for the extensions hibernate and ehb</li>
 	  
 </ul>
 	  
 <p>When the hibernate protocol is used to retrieve a Resource then the resource 
 		  needs to know how to reach a data store.  This is done by passing the registration name
-	  of a HbDataStore to the resource with the org.elver.store.Resource.DS_NAME_PARAM parameter. 
+	  of a HbDataStore to the resource with the org.eclipse.emf.teneo.Resource.DS_NAME_PARAM parameter. 
 	  </p>
 	  
 <p>An example of a URI which returns a Hibernate resource: <em>hibernate://dsname=library</em>.</p>
@@ -337,7 +335,7 @@
 <p>The Hibernate Resource automatically validates its content (the EObjects) when the
 		  resource is saved. This validation makes use of the EMF validation framework throug calls to
 		  the Diagnostician.INSTANCE.validate method. Validation fails when a ERROR level Diagnostic is
-		  encountered. In this case the resource save method will throw a org.elver.store.StoreValidationException. 
+		  encountered. In this case the resource save method will throw a org.eclipse.emf.teneo.StoreValidationException. 
 		  This exception has a method to retrieve all Diagnostics.</p>
 	
 </div>
@@ -388,12 +386,89 @@
 	 
 </div>
     
-<a name="N10089"></a><a name="Other+aspects"></a>
+<a name="N10089"></a><a name="Sharing+one+Session+between+Resources%2C+One+transaction+when+saving+multiple+resources"></a>
+<div class="h3">
+<h3>Sharing one Session between Resources, One transaction when saving multiple resources</h3>
+      
+		
+<p>As a standard behavior the resource will create its own session at load time.
+		However, there are cases when you want to use one session to load and save multiple resources. This 
+		is for example the case when there are references between objects in different resources. 
+		In this case the load and save actions of multiple resources should use the same session and be done
+		in the same transaction.</p>
+		
+<p>To support this Teneo has the concept of a SessionController. A SessionController manages one session
+		for multiple resources. A SessionController is registered using a specific name. When a resource is opened this
+		name is passed as an uri parameter. Using this name the HibernateResource can then find the SessionController
+		and retrieve a session. When a HibernateResource has a SessionController then the HibernateResource does not itself 
+		create a session or begin and commit transactions. Beginning and committing transactions is the responsibility
+		of the application itself.</p>
+		
+<p>Here is some example code illustrating the use of a SessionController:</p>
+		
+<pre class="code">
+	SessionController sc = new SessionController();
+
+	// when creating a SessionController you have to pass your HbDataStore instance
+	sc.setHbDataStore(hbDataStore);
+
+	// register the SessionController, the name is used in the uri of the resource
+	SessionController.registerSessionController("testsc", sc);
+
+	// create an uri using the SessionController name
+	URI uri1 = URI.createURI("hibernate://?" + HibernateResource.SESSION_CONTROLLER_PARAM + "=testsc&amp;query1=from Book");
+	URI uri2 = URI.createURI("hibernate://?" + HibernateResource.SESSION_CONTROLLER_PARAM + "=testsc&amp;query1=from Writer");
+	// resourceSet has to be set before somehow..
+	final Resource res1 = resourceSet.createResource(uri1);
+	final Resource res2 = resourceSet.createResource(uri2);
+	
+	// now load the resources 
+	sc.getSession().beginTransaction();
+	res1.load(Collections.EMPTY_MAP);
+	res2.load(Collections.EMPTY_MAP);
+	sc.getSession().getTransaction().commit();
+	
+	// do something usefull with your loaded resources...
+
+	// and save them
+	sc.getSession().beginTransaction();
+	res1.save(Collections.EMPTY_MAP);
+	res2.save(Collections.EMPTY_MAP);
+	sc.getSession().getTransaction().commit();
+		</pre>
+		
+<p>
+<strong>Loading different EObjects (refering to eachother) in different resources can have side-effects if
+		there are containment relations to and from these EObjects (with resolving=false). 
+		If the containment relation is non-resolving then
+		EMF will place an EObject always in the same resource as its container. If you use queries to load your resources
+		then the containers are loaded also. For example: assume EObjects A1 and A2 both have container A0. If one resource
+		loads A1 then A0 is also loaded automatically and A0 and A1 are in the same resource. If then a second resource loads
+		A2 then A2 will be placed in the first resource because its container is located there. Overall this results in 
+		unpredictable behavior. So: to correctly work with multiple resources the containment relations should be set to
+		resolving = true.</strong>
+</p>
+		
+</div>
+		
+<a name="N100A1"></a><a name="Closing+a+resource"></a>
+<div class="h3">
+<h3>Closing a resource</h3>
+	  		
+      
+<p>The Hibernate EMF resource can be closed by calling the unload method. 
+		  This method will close the disconnected session. In case a SessionController is used
+		  the unload method will just nullify the internal session member, you should close
+		  the session explicitly.</p>
+	
+</div>
+    
+<a name="N100AB"></a><a name="Other+aspects"></a>
 <div class="h3">
 <h3>Other aspects</h3>
       
 		
-<a name="N1008F"></a><a name="Resource+use+after+Hibernate+exception"></a>
+<a name="N100B1"></a><a name="Resource+use+after+Hibernate+exception"></a>
 <div class="h4">
 <h4>Resource use after Hibernate exception</h4>
 <p>When a Hibernate error/exception occurs when working with a Hibernate resource it can not
@@ -401,7 +476,7 @@
 <p>In a future resource implementation this issue will be solved.</p>
 </div>
 		
-<a name="N1009B"></a><a name="Closing+a+resource"></a>
+<a name="N100BD"></a><a name="Closing+a+resource-N100BD"></a>
 <div class="h4">
 <h4>Closing a resource</h4>
 <p>The Hibernate EMF resource can be closed by calling the unload method. 

@@ -16,7 +16,7 @@
 <link href="../skin/forrest.css" type="text/css" rel="stylesheet">
 <link rel="shortcut icon" href="../">
 <script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
-<title>Subversion</title>
+<title>CVS</title>
 <meta content="text/css" http-equiv="Content-style-type">
 </head>
 <body class="composite" onload="focus()">
@@ -163,7 +163,7 @@
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
@@ -172,10 +172,7 @@
 <a href="../hibernate/ejb3_examples.html">Examples</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/ejb3_features.html">EJB3</a>
-</div>
-<div class="menuitem">
-<a href="../hibernate/custom_annotations.html">Custom</a>
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
@@ -199,7 +196,7 @@
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/mailinglist.html">Mailinglist</a>
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
@@ -208,10 +205,7 @@
 <div onclick="SwitchMenu('menu_selected_1.8')" id="menu_selected_1.8Title" class="menutitle">Developer</div>
 <div id="menu_selected_1.8" class="selectedmenuitemgroup">
 <div class="menupage">
-<div class="menupagetitle">Subversion</div>
-</div>
-<div class="menuitem">
-<a href="../hibernate/testcases.html">Test cases</a>
+<div class="menupagetitle">CVS</div>
 </div>
 </div>
 </div>
@@ -238,75 +232,89 @@
 <div id="bodycol">
 <div id="apphead">
 <h2>
-<em>Subversion</em>
+<em>CVS</em>
 </h2>
 </div>
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
-<a href="#projects">Projects in Subversion</a>
+<a href="#projects">Projects in CVS</a>
 </li>
 </ul>
 		
-<p>The source code of the EMF - Hibernate integration is stored in a <a class="external" href="http://subversion.tigris.org/">Subversion</a> repository.
-			The subversion url is: svn://svn.elver.org/elver with anonymous login.</p>
+<p>The source code of the EMF - Hibernate integration is stored in Eclipse.org cvs here:</p>
 		
-<p></p>
-		
-<p>
-			
-<strong>The source code in subversion is updated on a daily basis and contains experimental
-				new features which can (temporarily) break already existing functionality and tests.
-				There is no guarantee that the code in subversion will work in anyway.</strong>
-</p>
-		
-<a name="N1001C"></a><a name="projects"></a>
-<div class="h3">
-<h3>Projects in Subversion</h3>
-			
-		
-<p>
-			The relevant Hibernate related projects within the repository are:
-		</p>
-			
 <ul>
-			
-<li>org.elver.store: this project contains general code used by the JPOX as well as the Hibernate runtime layer.</li>
-			
-<li>org.elver.store.eclipse: this project contains general code for the eclipse menu options used by the JPOX as well as the Hibernate runtime layer.</li>
-			
-<li>org.elver.store.annotations: this project contains code for reading and generating annotations.</li>
-			
-<li>org.elver.store.hibernate: this project contains the EMF - Hibernate mapping and runtime layer.</li>
-			
-<li>org.elver.store.hibernate.eclipse: this project contains the resource utility Eclipse plugins.</li>
-			
-<li>org.elver.store.samples: this project contains the examples and model information used in the testcases.</li>
-			
-<li>org.elver.store.commontest: this project contains the test case part which is common for Hibernate and JPOX</li>
-			
-<li>org.elver.store.hibernate.test: the hibernate specific part of the tests</li>
-			
-<li>org.elver.store.tutorial: the tutorials used on this website</li>
-			
+		
+<li>host: dev.eclipse.org</li>
+		
+<li>repository: /cvsroot/technology</li>
+		
+<li>module: org.eclipse.emft/teneo</li>
+		
 </ul>
 		
 <p>
-			Other projects in subversion are related to an integration between EMF and JSF and Hibernate.
-		</p>
+			
+<strong>The source code in cvs is updated on a daily basis and contains experimental
+				new features which can (temporarily) break already existing functionality and tests.
+				There is no guarantee that the code in cvs will work in anyway.</strong>
+</p>
 		
-<p>The projects have dependencies which are managed by the plugin dependencies in
-		the Manifest.MF</p>
+<a name="N10022"></a><a name="projects"></a>
+<div class="h3">
+<h3>Projects in CVS</h3>
+			
 		
-<p>Sometimes projects will have a dependency to a org.hibernate plugin project (not present in svn). 
-			This is used 
-		to debug hibernate. When checking out the development projects these dependencies can
-			be replaced by the corresponding hibernate jar file.</p>
+<p>The cvs repository has the following structure and projects:</p>
+		
+<ul>
+		
+<li>doc: contains this website</li>
+		
+<li>examples: contains the samples and tutorial projects. Samples has all the model projects which are used as the basis for the test cases. The tutorial project contains the tutorials used on this website.</li>
+		
+<li>plugins: this is the main folder. The following hibernate related projects are present here:
+			<ul>
+<li>org.eclipse.emf.teneo: generic part of the runtime layer</li>
+			
+<li>org.eclipse.emf.teneo.annotations: the jpa annotations</li>
+			
+<li>org.eclipse.emf.teneo.eclipse: the generic part of the ui additions to eclipse for the Teneo right-click menus</li>
+			
+<li>org.eclipse.emf.teneo.hibernate: the main hibernate project containing the mapping logic, hibernate annotations and runtime layer</li>
+			
+<li>org.eclipse.emf.teneo.hibernate.eclipse: hibernate specific part of the ui additions to eclipse</li>
+			
+<li>org.eclipse.emf.teneo.libraries: common libraries (for example log4j).</li>
+			
+</ul>
+		
+</li>
+		
+<li>tests: contains the test cases:
+			<ul>
+				
+<li>org.eclipse.emf.teneo.commontest: this project contains the test case part which is common for Hibernate and JPOX</li>
+				
+<li>org.eclipse.emf.teneo.hibernate.libraries: hibernate libraries, not distributed as part of the build, used during testing</li>
+				
+<li>org.eclipse.emf.teneo.hibernate.test: hibernate test cases (junit)</li>
+			
+</ul>
+		
+</li>
+		
+</ul>
+		
+<p>In addition there are several feature projects and build related projects.</p>
 		
 <p>
-			Within each project there is a sub folder called trunk which contains the 
-			latest version. Other versions are present in the branch/version subfolders.
-		</p>
+<strong>Several of the above projects use third party libraries during the build process. The 
+		plugin projects have dependencies defined on these libraries. However because of licensing these
+		libraries are not publically accessible in Eclipse cvs. The third party libraries have to be 
+		downloaded separately.</strong>
+</p>
 		
 <p>We use the standard Eclipse code format with the line length set to 120, the formatter profile
 		can be downloaded <a href="../download/elver-code-profile.xml">here</a>.</p>
