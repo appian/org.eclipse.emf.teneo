@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.6 2006/09/29 12:46:33 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.7 2006/10/16 19:53:14 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -76,7 +76,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class DefaultAnnotator {
 
@@ -296,7 +296,7 @@ public class DefaultAnnotator {
 				final String idFeature = (String) it.next();
 				final PrimaryKeyJoinColumn pkjc = aFactory.createPrimaryKeyJoinColumn();
 				final String colName = superClass.getName() + "_" + idFeature;
-				pkjc.setName(trunc(colName.toUpperCase(), true));
+				pkjc.setName(trunc(colName, true));
 				aClass.getPrimaryKeyJoinColumns().add(pkjc);
 			}
 		}
@@ -308,10 +308,10 @@ public class DefaultAnnotator {
 						.equals(InheritanceType.JOINED_LITERAL)))) {
 			final Table table = aFactory.createTable();
 			table.setEModelElement(eclass);
-			table.setName(trunc(eclass.getName().toUpperCase(), false));
+			table.setName(trunc(eclass.getName(), false));
 			aClass.setTable(table);
 		} else if (aClass.getTable() != null && aClass.getTable().getName() == null) {
-			aClass.getTable().setName(trunc(eclass.getName().toUpperCase(), false));
+			aClass.getTable().setName(trunc(eclass.getName(), false));
 		}
 
 		// if the strategy is all classes of one hierarchy in one table and this is not the superclass
@@ -356,7 +356,7 @@ public class DefaultAnnotator {
 				for (Iterator iter2 = aIdAttributes.iterator(); iter2.hasNext();) {
 					PAnnotatedEAttribute aIdAttribute = (PAnnotatedEAttribute) iter2.next();
 					final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
-					pkJoinColumn.setName(trunc(aIdAttribute.getAnnotatedEAttribute().getName().toUpperCase(), true));
+					pkJoinColumn.setName(trunc(aIdAttribute.getAnnotatedEAttribute().getName(), true));
 					pkJoinColumns.add(pkJoinColumn);
 				}
 			}
@@ -420,7 +420,7 @@ public class DefaultAnnotator {
 
 				if (aAttribute.getColumn() != null && aAttribute.getColumn().getName() == null) {
 					aAttribute.getColumn().setName(
-							trunc(aAttribute.getAnnotatedEAttribute().getName().toUpperCase(), true));
+							trunc(aAttribute.getAnnotatedEAttribute().getName(), true));
 				}
 
 			} else if (aStructuralFeature instanceof PAnnotatedEReference) {
@@ -473,7 +473,7 @@ public class DefaultAnnotator {
 
 				// handle column naming at this level
 				if (aReference.getColumn() != null && aReference.getColumn().getName() == null) {
-					aReference.getColumn().setName(trunc(eReference.getName().toUpperCase(), true));
+					aReference.getColumn().setName(trunc(eReference.getName(), true));
 				}
 
 			} else {
@@ -774,7 +774,7 @@ public class DefaultAnnotator {
 			if (joinTable.getName() == null) {
 				final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel())
 						+ "_" + getEntityName(eReference.getEReferenceType(), aReference.getPaModel());
-				joinTable.setName(trunc(jTableName.toUpperCase().toUpperCase(), false));
+				joinTable.setName(trunc(jTableName, false));
 			}
 
 			// note joincolumns in jointable can be generated automatically by hib/jpox.
@@ -884,7 +884,7 @@ public class DefaultAnnotator {
 				}
 			}
 
-			joinTable.setName(trunc(jTableName.toUpperCase().toUpperCase(), false));
+			joinTable.setName(trunc(jTableName, false));
 		}
 		if (/* joinTable.getJoinColumns() == null || */joinTable.getJoinColumns().size() == 0) { // no joincolumns,
 			// so
@@ -941,7 +941,7 @@ public class DefaultAnnotator {
 			final String oppName = mtm.getTargetEntity();
 			final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
 					+ oppName;
-			joinTable.setName(trunc(jTableName.toUpperCase().toUpperCase(), false));
+			joinTable.setName(trunc(jTableName, false));
 		}
 		if (joinTable.getJoinColumns() == null) {
 			joinTable.getJoinColumns().addAll(
@@ -1067,7 +1067,7 @@ public class DefaultAnnotator {
 			} else {
 				jcName = aClass.getAnnotatedEClass().getName() + "_" + name;
 			}
-			jc.setName(trunc(jcName.toUpperCase(), true));
+			jc.setName(trunc(jcName, true));
 			jc.setNullable(optional);
 			jc.setUpdatable(isUpdateInsertable);
 			jc.setInsertable(isUpdateInsertable);
