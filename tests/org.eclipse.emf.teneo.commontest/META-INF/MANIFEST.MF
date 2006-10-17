@@ -15,7 +15,9 @@ Require-Bundle: org.eclipse.emf.ecore.xmi,
 Eclipse-LazyStart: true
 Eclipse-BuddyPolicy: dependent
 Bundle-ClassPath: lib/mysql-connector-java-3.1.10-bin.jar,
- lib/tools.jar
+ lib/tools.jar,
+ lib/jtds-1.2.jar,
+ .
 Export-Package: com.mysql.jdbc,
  com.mysql.jdbc.integration.c3p0,
  com.mysql.jdbc.integration.jboss,
@@ -56,6 +58,12 @@ Export-Package: com.mysql.jdbc,
  com.sun.tools.jdi,
  com.sun.tools.jdi.resources,
  extlibrary,
+ net.sourceforge.jtds.jdbc,
+ net.sourceforge.jtds.jdbc.cache,
+ net.sourceforge.jtds.jdbcx,
+ net.sourceforge.jtds.jdbcx.proxy,
+ net.sourceforge.jtds.ssl,
+ net.sourceforge.jtds.util,
  org.eclipse.emf.teneo.test,
  org.eclipse.emf.teneo.test.conf,
  org.eclipse.emf.teneo.test.emf.annotations,
