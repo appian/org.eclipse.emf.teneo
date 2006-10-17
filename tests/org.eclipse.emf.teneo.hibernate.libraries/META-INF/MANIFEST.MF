@@ -571,5 +571,4 @@ Bundle-ClassPath: ant-antlr-1.6.5.jar,
  syndiag2.jar,
  versioncheck.jar,
  xerces-2.6.2.jar,
- xml-apis.jar,
- jtds-1.2.jar
+ xml-apis.jar
