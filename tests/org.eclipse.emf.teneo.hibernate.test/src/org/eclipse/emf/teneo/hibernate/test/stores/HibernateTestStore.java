@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestStore.java,v 1.6 2006/09/29 12:30:23 mtaal Exp $
+ * $Id: HibernateTestStore.java,v 1.7 2006/10/17 09:42:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
@@ -54,7 +54,7 @@ import org.hibernate.persister.entity.SingleTableEntityPersister;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -306,7 +306,7 @@ public class HibernateTestStore extends AbstractTestStore {
 	public void doTearDown() {
 		AssertUtil.assertTrue("Transaction is still active at end of test", !((SessionImpl) session).isTransactionInProgress());
 
-		if (tx.isActive()) {
+		if (tx.isActive() || ((SessionImpl) session).isTransactionInProgress()) {
 			tx.rollback();
 		}
 
