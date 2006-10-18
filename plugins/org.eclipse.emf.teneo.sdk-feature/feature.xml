@@ -28,11 +28,11 @@
          id="org.eclipse.emf.teneo.source"
          version="0.0.0"
          match="compatible"/>
-         
-   <includes
+
+   <plugin
          id="org.eclipse.emf.teneo.doc"
-         version="0.0.0"
-         match="compatible"
-         unpack="true"/>
-         
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
 </feature>
