@@ -28,4 +28,10 @@
          id="org.eclipse.emf.teneo.source"
          version="0.0.0"
          match="compatible"/>
+         
+   <includes
+         id="org.eclipse.emf.teneo.doc"
+         version="0.0.0"
+         match="compatible"/>
+         
 </feature>
