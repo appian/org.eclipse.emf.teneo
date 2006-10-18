@@ -32,6 +32,7 @@
    <includes
          id="org.eclipse.emf.teneo.doc"
          version="0.0.0"
-         match="compatible"/>
+         match="compatible"
+         unpack="true"/>
          
 </feature>
