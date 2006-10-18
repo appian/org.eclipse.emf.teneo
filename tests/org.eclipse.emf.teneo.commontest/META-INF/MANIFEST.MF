@@ -16,6 +16,7 @@ Eclipse-LazyStart: true
 Eclipse-BuddyPolicy: dependent
 Bundle-ClassPath: lib/tools.jar,
  lib/jtds-1.2.jar,
+ lib/mysql-connector-java-3.1.12-bin.jar,
  .
 Export-Package: com.mysql.jdbc,
  com.mysql.jdbc.integration.c3p0,
