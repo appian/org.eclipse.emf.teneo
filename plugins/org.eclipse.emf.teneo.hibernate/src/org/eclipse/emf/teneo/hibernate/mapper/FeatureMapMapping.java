@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapMapping.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: FeatureMapMapping.java,v 1.2 2006/10/19 04:54:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -121,5 +121,10 @@ class FeatureMapMapping {
 		hbmContext.setCurrent(mainElement.getParent());
 		hbmContext.setCurrentElementFeatureMap(false);
 		log.debug("Finished processing featuremap");
+	}
+	
+	/** Returns the eattribute */
+	public EAttribute getEAttribute() {
+		return paAttribute.getAnnotatedEAttribute();
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.7 2006/10/16 19:53:14 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.8 2006/10/19 04:53:41 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -76,7 +76,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class DefaultAnnotator {
 
@@ -221,7 +221,8 @@ public class DefaultAnnotator {
 
 		// first do the superclasses
 		for (Iterator it = aClass.getAnnotatedEClass().getESuperTypes().iterator(); it.hasNext();) {
-			PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated((EClass) it.next());
+			final EClass eclass = (EClass) it.next();
+			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(eclass);
 			processClass(superAClass);
 		}
 

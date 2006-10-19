@@ -11,16 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.2 2006/10/17 09:48:04 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.3 2006/10/19 04:54:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -39,13 +35,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests persisting of ecore models in a relational store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class EcoreAction extends AbstractTestAction {
 	
 	/** Constructor */
 	public EcoreAction() {
-		super(EcorePackage.eINSTANCE);
+		super(new EPackage[] {EcorePackage.eINSTANCE, 
+				org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE});
 	}
 
 	/** Reads the library model and persists it. */
@@ -55,6 +52,7 @@ public class EcoreAction extends AbstractTestAction {
 			// ignore this as this fails any way
 			return; 
 		}
+		store.disableDrop();
 		
 		// read ecore as a resource
 		final Resource resourceOne = new XMIResourceImpl();

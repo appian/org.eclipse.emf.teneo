@@ -311,6 +311,11 @@ Export-Package: extlibrary,
  org.eclipse.emf.teneo.samples.issues.topclasses.util,
  org.eclipse.emf.teneo.samples.issues.transientsuper,
  org.eclipse.emf.teneo.samples.issues.transientsuper.impl,
- org.eclipse.emf.teneo.samples.issues.transientsuper.util
+ org.eclipse.emf.teneo.samples.issues.transientsuper.util,
+ org.eclipse.gmf.runtime.notation,
+ org.eclipse.gmf.runtime.notation.datatype,
+ org.eclipse.gmf.runtime.notation.impl,
+ org.eclipse.gmf.runtime.notation.stylepooling,
+ org.eclipse.gmf.runtime.notation.util
 Bundle-ClassPath: jdo2-api-2.0.jar,
  .

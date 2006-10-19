@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.4 2006/09/26 13:23:06 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.5 2006/10/19 04:54:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -322,6 +322,7 @@ class EntityMapper extends AbstractMapper {
 			// read again because the fmm.process can result in new feature map
 			// mappings
 			featureMapMappers = getHbmContext().getClearFeatureMapMappers();
+			System.err.println(featureMapMappers.size());
 		}
 	}
 

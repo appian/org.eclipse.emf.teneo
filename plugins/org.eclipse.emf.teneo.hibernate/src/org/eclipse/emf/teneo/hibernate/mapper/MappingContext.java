@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.6 2006/09/26 13:23:06 mtaal Exp $
+ * $Id: MappingContext.java,v 1.7 2006/10/19 04:54:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -60,6 +60,9 @@ public class MappingContext extends AbstractProcessingContext {
 	/** Keeps track of the list of featuremapmappers created for the current entity */
 	private final List featureMapMappers = new ArrayList();
 
+	/** The list of eattributes for which a featuremap mapping was created */
+	private final List handledFeatureMapEAttributes = new ArrayList();
+	
 	/** the mapper used for features */
 	private final FeatureProcessor featureProcessor;
 
@@ -201,7 +204,10 @@ public class MappingContext extends AbstractProcessingContext {
 	 *            a featureMapMapper to the featuremapp mapper list
 	 */
 	public void addFeatureMapMapper(FeatureMapMapping featureMapMapper) {
-		featureMapMappers.add(featureMapMapper);
+		if (!handledFeatureMapEAttributes.contains(featureMapMapper.getEAttribute())) {
+			featureMapMappers.add(featureMapMapper);
+			handledFeatureMapEAttributes.add(featureMapMapper.getEAttribute());
+		}
 	}
 
 	/**
@@ -384,4 +390,9 @@ public class MappingContext extends AbstractProcessingContext {
     public boolean alwaysVersion() {
         return alwaysVersion;
     }
+
+    /** Returns the list of eattrs, note list is updated outside of this object */
+	public List getHandledFeatureMapEAttributes() {
+		return handledFeatureMapEAttributes;
+	}
 }
