@@ -29,10 +29,9 @@
          version="0.0.0"
          match="compatible"/>
 
-   <plugin
+   <includes
          id="org.eclipse.emf.teneo.doc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
+         version="0.0.0"
+         match="compatible"/>
 
 </feature>
