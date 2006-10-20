@@ -12,6 +12,13 @@
   <foreignModel>hbmodel.ecore</foreignModel>
   <genPackages prefix="HbAnnotation" basePackage="org.eclipse.emf.teneo.hibernate"
       disposableProviderFactory="true" ecorePackage="hbannotation.ecore#/">
+    <genEnums ecoreEnum="hbannotation.ecore#//CacheConcurrencyStrategy">
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//CacheConcurrencyStrategy/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//CacheConcurrencyStrategy/READ_ONLY"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//CacheConcurrencyStrategy/NONSTRICT_READ_WRITE"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//CacheConcurrencyStrategy/READ_WRITE"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//CacheConcurrencyStrategy/TRANSACTIONAL"/>
+    </genEnums>
     <genClasses ecoreClass="hbannotation.ecore#//HbAnnotation"/>
     <genClasses ecoreClass="hbannotation.ecore#//Cascade">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Cascade/value"/>
@@ -43,6 +50,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//GenericGenerator/strategy"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbannotation.ecore#//GenericGenerator/parameters"/>
     </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//Cache">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Cache/usage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Cache/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Cache/include"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="HbModel" basePackage="org.eclipse.emf.teneo.hibernate" disposableProviderFactory="true"
       ecorePackage="hbmodel.ecore#/">
@@ -57,12 +69,16 @@
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEAttribute">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEAttribute/hbType"/>
     </genClasses>
-    <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEClass"/>
+    <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEClass">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/hbCache"/>
+    </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEModelElement"/>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEPackage">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/hbGenericGenerators"/>
     </genClasses>
-    <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEReference"/>
+    <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEReference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/hbCache"/>
+    </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEDataType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEDataType/hbType"/>
     </genClasses>

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.16 2006/10/19 04:54:24 mtaal Exp $
+ * $Id: AllTests.java,v 1.17 2006/10/20 13:22:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class AllTests {
 
@@ -56,12 +56,13 @@ public class AllTests {
 		// this test works with ms sql server but not with mysql
 		//suite.addTestSuite(EcoreAction.class);
 
+		suite.addTestSuite(LibraryAction.class);
+
 		suite.addTestSuite(LibrarySessionControllerAction.class);
 
 		suite.addTestSuite(DynamicAction.class);
 		suite.addTestSuite(LibrarySerializationAction.class);
 
-		suite.addTestSuite(LibraryAction.class);
 		//	suite.addTestSuite(ExtLibraryAction.class);
 		suite.addTestSuite(CapaTest.class);
 

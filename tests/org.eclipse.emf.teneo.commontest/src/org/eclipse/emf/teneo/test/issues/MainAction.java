@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MainAction.java,v 1.1 2006/09/21 00:57:18 mtaal Exp $
+ * $Id: MainAction.java,v 1.2 2006/10/20 13:21:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests issue with inheritance and polymorphic relations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class MainAction extends AbstractTestAction {
 	/**
@@ -133,8 +133,6 @@ public class MainAction extends AbstractTestAction {
 					if (cpn instanceof ChildObject1) {
 						ChildObject1 co1 = (ChildObject1) cpn;
 						BaseObject bo = co1.getLinkedObject();
-						System.err.println(bo.getClass().getName());
-						System.err.println(bo.getName());
 						assertTrue(bo.getClass().getName().compareTo(bo.getName()) == 0);
 						assertTrue(!(bo instanceof ChildObject1));
 					}

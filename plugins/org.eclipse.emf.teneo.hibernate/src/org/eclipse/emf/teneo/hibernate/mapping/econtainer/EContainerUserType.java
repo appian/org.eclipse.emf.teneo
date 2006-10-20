@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerUserType.java,v 1.2 2006/07/22 13:09:55 mtaal Exp $
+ * $Id: EContainerUserType.java,v 1.3 2006/10/20 13:21:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -54,7 +54,7 @@ import org.hibernate.usertype.CompositeUserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/07/22 13:09:55 $
+ * @version $Revision: 1.3 $ $Date: 2006/10/20 13:21:49 $
  */
 
 public class EContainerUserType extends AbstractType implements CompositeUserType, AssociationType {
@@ -262,22 +262,27 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	 * Translates the serialized cached object to a real object
 	 */
 	public Object assemble(Serializable cached, SessionImplementor session, Object owner) throws HibernateException {
-		final ContainerPointer cp = (ContainerPointer) cached;
-		if (cp == null)
-			return null;
-		return cp.getObject(session);
+		// already correct
+		if (!(cached instanceof ContainerPointer)) {
+			final String entityName = session.bestGuessEntityName(cached);
+			final Serializable idObject = (Serializable)getID(entityName, cached, session);
+			return session.internalLoad(entityName, idObject, false, false);
+		} else {
+			final ContainerPointer cp = (ContainerPointer) cached;
+			if (cp == null)
+				return null;
+			return cp.getObject(session);
+		}
 	}
 
 	/** Create a containerpointer */
 	public Serializable disassemble(Object value, SessionImplementor session) throws HibernateException {
 		if (value == null)
 			return null;
-		final String entityName = session.bestGuessEntityName(value);
-
 		try {
+			final String entityName = session.bestGuessEntityName(value);
 			final Object idObject = getID(entityName, value, session);
-			final String ename = session.bestGuessEntityName(value);
-			return new ContainerPointer(getIdentifierType(ename, session), entityName, idObject.toString());
+			return new ContainerPointer(getIdentifierType(entityName, session), entityName, idObject.toString());
 		} catch (TransientObjectException toe) {
 			return null;
 		}

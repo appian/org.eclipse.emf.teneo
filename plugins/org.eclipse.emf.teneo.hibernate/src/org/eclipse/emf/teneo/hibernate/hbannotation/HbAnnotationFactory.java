@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationFactory.java,v 1.3 2006/09/06 17:26:44 mtaal Exp $
+ * $Id: HbAnnotationFactory.java,v 1.4 2006/10/20 13:21:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -103,6 +103,15 @@ public interface HbAnnotationFactory extends EFactory {
 	 * @generated
 	 */
 	GenericGenerator createGenericGenerator();
+
+	/**
+	 * Returns a new object of class '<em>Cache</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cache</em>'.
+	 * @generated
+	 */
+	Cache createCache();
 
 	/**
 	 * Returns the package supported by this factory.

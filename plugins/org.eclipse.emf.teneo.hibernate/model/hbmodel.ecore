@@ -23,14 +23,20 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbType" eType="ecore:EClass hbannotation.ecore#//Type"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEClass" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEClass"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEClass" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEClass">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbCache" eType="ecore:EClass hbannotation.ecore#//Cache"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEModelElement" interface="true"
       eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEModelElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEPackage" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEPackage">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbGenericGenerators" upperBound="-1"
         eType="ecore:EClass hbannotation.ecore#//GenericGenerator" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEReference" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEReference #//HbAnnotatedETypeElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEReference" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEReference #//HbAnnotatedETypeElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbCache" eType="ecore:EClass hbannotation.ecore#//Cache"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEDataType" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEDataType #//HbAnnotatedETypeElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbType" eType="ecore:EClass hbannotation.ecore#//Type"
         containment="true"/>

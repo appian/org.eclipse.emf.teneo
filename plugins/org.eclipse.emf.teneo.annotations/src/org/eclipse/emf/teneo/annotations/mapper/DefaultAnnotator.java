@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.8 2006/10/19 04:53:41 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.9 2006/10/20 13:21:34 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -76,7 +76,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class DefaultAnnotator {
 
@@ -157,7 +157,7 @@ public class DefaultAnnotator {
 	 */
 
 	/** Sets the options in a number of members */
-	private void setLocalOptions(PersistenceOptions po) {
+	protected void setLocalOptions(PersistenceOptions po) {
 		if (po.getInheritanceMapping() != null) {
 			switch (InheritanceType.get(po.getInheritanceMapping()).getValue()) {
 			case InheritanceType.JOINED:

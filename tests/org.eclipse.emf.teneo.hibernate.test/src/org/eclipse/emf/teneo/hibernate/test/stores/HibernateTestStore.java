@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestStore.java,v 1.7 2006/10/17 09:42:35 mtaal Exp $
+ * $Id: HibernateTestStore.java,v 1.8 2006/10/20 13:22:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
@@ -54,7 +54,7 @@ import org.hibernate.persister.entity.SingleTableEntityPersister;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -118,7 +118,6 @@ public class HibernateTestStore extends AbstractTestStore {
 		props.setProperty(Environment.URL, dbadapter.getDbUrl());
 		props.setProperty(Environment.PASS, dbadapter.getDbPwd());
 		props.setProperty(Environment.DIALECT, dbadapter.getDialect());
-		//props.setProperty(Environment.CACHE_PROVIDER, HashtableCacheProvider.class.getName());
 		return props;
 	}
 

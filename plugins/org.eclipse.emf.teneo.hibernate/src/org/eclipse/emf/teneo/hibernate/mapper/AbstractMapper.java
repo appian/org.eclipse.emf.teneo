@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.3 2006/10/03 09:50:08 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.4 2006/10/20 13:21:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -30,6 +30,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
@@ -166,5 +167,24 @@ abstract class AbstractMapper {
 				columnElement.addAttribute("unique-key", uc);
 			}
 		}
+	}
+	
+	/** Adds a cache element */
+	protected void addCacheElement(Element parent, Cache cache) {
+		// translate to hibernate specific notation
+		final String usage = cache.getUsage().getName().toLowerCase().replaceAll("_", "-");
+		
+		// note a trick because the name of the 
+		Element cacheElement = parent.addElement("cache").addAttribute("usage", 
+				usage);
+		if (cache.getRegion() != null) {
+			cacheElement.addAttribute("region", cache.getRegion());
+		}
+		if (cache.getInclude() != null) {
+			cacheElement.addAttribute("include", cache.getInclude());
+		}
+		parent.remove(cacheElement);
+		parent.add(0, cacheElement);
+
 	}
 }

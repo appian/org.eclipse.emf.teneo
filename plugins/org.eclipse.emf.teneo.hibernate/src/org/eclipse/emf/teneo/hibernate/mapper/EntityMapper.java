@@ -12,11 +12,12 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.5 2006/10/19 04:54:05 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.6 2006/10/20 13:21:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
+import java.awt.event.HierarchyBoundsAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -42,6 +43,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.processing.FeatureProcessor;
 import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -133,7 +136,7 @@ class EntityMapper extends AbstractMapper {
 		if (hasCompositeID(entity)) { // only for this specific case it is required to have the impl.name
 			target.addAttribute("name", hbmContext.getInstanceClassName(entity));
 		}
-
+		
 		if (superEntity != null) {
 			final String extendsEntity = getHbmContext().getEntityName(superEntity.getAnnotatedEClass());
 			target.addAttribute("extends", extendsEntity);
@@ -159,6 +162,7 @@ class EntityMapper extends AbstractMapper {
 				log.debug("Catalog " + table.getCatalog());
 			}
 		}
+		
 		return target;
 	}
 
@@ -304,7 +308,10 @@ class EntityMapper extends AbstractMapper {
 			// now process the featuremap entries if any
 			processFeatureMapFeatures();
 		}
-
+		
+		if (entity.getPaSuperEntity() == null && ((HbAnnotatedEClass)entity).getHbCache() != null) {
+			addCacheElement(entityElement, ((HbAnnotatedEClass)entity).getHbCache());
+		}
 	}
 
 	/** Process the featuremap entries */
@@ -322,7 +329,6 @@ class EntityMapper extends AbstractMapper {
 			// read again because the fmm.process can result in new feature map
 			// mappings
 			featureMapMappers = getHbmContext().getClearFeatureMapMappers();
-			System.err.println(featureMapMappers.size());
 		}
 	}
 

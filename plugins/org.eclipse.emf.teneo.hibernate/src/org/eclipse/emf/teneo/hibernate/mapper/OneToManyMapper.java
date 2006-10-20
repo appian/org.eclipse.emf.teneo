@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.9 2006/09/29 12:29:47 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.10 2006/10/20 13:21:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -32,6 +32,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.processing.OneToManyProcessor;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -77,6 +78,11 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 		// TODO add isUnique on interface
 		// TODO request EMF team to deal correctly with unique attribute on EReferences
 		final Element collElement = addCollectionElement(paReference);
+		
+		if (((HbAnnotatedEReference)paReference).getHbCache() != null) {
+			addCacheElement(collElement, ((HbAnnotatedEReference)paReference).getHbCache());
+		}
+		
 		// .getAnnotatedElement().getName(),
 		// paReference.getIndexed() != null && paReference.getIndexed().isValue());
 		final Element keyElement = collElement.addElement("key");
@@ -152,6 +158,10 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 		// paReference.isIndexed());
 		final Element collElement = addCollectionElement(paReference);
 
+		if (((HbAnnotatedEReference)paReference).getHbCache() != null) {
+			addCacheElement(collElement, ((HbAnnotatedEReference)paReference).getHbCache());
+		}
+		
 		// MT: note inverse does not work correctly with hibernate for indexed collections, see 7.3.3 of the hibernate
 		// manual 3.1.1
 		//collElement.addAttribute("inverse", "true");

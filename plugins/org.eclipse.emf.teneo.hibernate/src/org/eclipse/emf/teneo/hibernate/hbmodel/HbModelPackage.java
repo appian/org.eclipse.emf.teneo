@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackage.java,v 1.6 2006/09/06 21:59:33 mtaal Exp $
+ * $Id: HbModelPackage.java,v 1.7 2006/10/20 13:21:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -664,13 +664,22 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__ASSOCIATION_OVERRIDES = PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES;
 
 	/**
+	 * The feature id for the '<em><b>Hb Cache</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__HB_CACHE = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 0;
+	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
@@ -1054,13 +1063,22 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__HB_ID_BAG = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Hb Cache</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 6;
+	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 7;
 
 
 	/**
@@ -1434,6 +1452,17 @@ public interface HbModelPackage extends EPackage {
 	EClass getHbAnnotatedEClass();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbCache <em>Hb Cache</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Hb Cache</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbCache()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_HbCache();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1473,6 +1502,17 @@ public interface HbModelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHbAnnotatedEReference();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbCache <em>Hb Cache</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Hb Cache</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbCache()
+	 * @see #getHbAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEReference_HbCache();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType <em>Hb Annotated EData Type</em>}'.
@@ -1604,6 +1644,14 @@ public interface HbModelPackage extends EPackage {
 		EClass HB_ANNOTATED_ECLASS = eINSTANCE.getHbAnnotatedEClass();
 
 		/**
+		 * The meta object literal for the '<em><b>Hb Cache</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__HB_CACHE = eINSTANCE.getHbAnnotatedEClass_HbCache();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1640,6 +1688,14 @@ public interface HbModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass HB_ANNOTATED_EREFERENCE = eINSTANCE.getHbAnnotatedEReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Cache</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EREFERENCE__HB_CACHE = eINSTANCE.getHbAnnotatedEReference_HbCache();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.

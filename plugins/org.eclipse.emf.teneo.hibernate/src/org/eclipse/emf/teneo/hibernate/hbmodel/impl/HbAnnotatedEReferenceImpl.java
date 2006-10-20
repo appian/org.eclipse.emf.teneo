@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReferenceImpl.java,v 1.6 2006/09/06 21:59:33 mtaal Exp $
+ * $Id: HbAnnotatedEReferenceImpl.java,v 1.7 2006/10/20 13:21:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
@@ -41,6 +42,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbColumns <em>Hb Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCascade <em>Hb Cascade</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbIdBag <em>Hb Id Bag</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCache <em>Hb Cache</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,6 +115,16 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @ordered
 	 */
 	protected IdBag hbIdBag = null;
+
+	/**
+	 * The cached value of the '{@link #getHbCache() <em>Hb Cache</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbCache()
+	 * @generated
+	 * @ordered
+	 */
+	protected Cache hbCache = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -364,6 +376,49 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Cache getHbCache() {
+		return hbCache;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetHbCache(Cache newHbCache, NotificationChain msgs) {
+		Cache oldHbCache = hbCache;
+		hbCache = newHbCache;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE, oldHbCache, newHbCache);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHbCache(Cache newHbCache) {
+		if (newHbCache != hbCache) {
+			NotificationChain msgs = null;
+			if (hbCache != null)
+				msgs = ((InternalEObject)hbCache).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE, null, msgs);
+			if (newHbCache != null)
+				msgs = ((InternalEObject)newHbCache).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE, null, msgs);
+			msgs = basicSetHbCache(newHbCache, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE, newHbCache, newHbCache));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_WHERE:
@@ -378,6 +433,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return basicSetHbCascade(null, msgs);
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
 				return basicSetHbIdBag(null, msgs);
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
+				return basicSetHbCache(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -401,6 +458,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return getHbCascade();
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
 				return getHbIdBag();
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
+				return getHbCache();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -431,6 +490,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
 				setHbIdBag((IdBag)newValue);
 				return;
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
+				setHbCache((Cache)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -460,6 +522,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
 				setHbIdBag((IdBag)null);
 				return;
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
+				setHbCache((Cache)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -483,6 +548,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return hbCascade != null;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
 				return hbIdBag != null;
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
+				return hbCache != null;
 		}
 		return super.eIsSet(featureID);
 	}

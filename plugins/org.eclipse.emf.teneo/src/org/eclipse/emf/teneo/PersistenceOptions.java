@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.11 2006/09/26 13:23:08 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.12 2006/10/20 13:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class PersistenceOptions {
 
@@ -141,6 +141,11 @@ public class PersistenceOptions {
      */
     public static final String ALWAYS_VERSION = MAPPING_PREFIX + "always_version";
 
+    /** The default cache strategy, can be one of: NONE, READ_ONLY, NONSTRICT_READ_ONLY, READ_WRITE, TRANSACTIONAl.
+     * If different than NONE (=default) then for Hibernate every class will be second-level cached!
+     */
+    public static final String DEFAULT_CACHE_STRATEGY = MAPPING_PREFIX + "default_cache_strategy";
+    
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
@@ -160,6 +165,7 @@ public class PersistenceOptions {
 		props.setProperty(MAXIMUM_SQL_NAME_LENGTH, "-1");
 		props.setProperty(IGNORE_EANNOTATIONS, "false");
         props.setProperty(ALWAYS_VERSION, "true");
+        props.setProperty(DEFAULT_CACHE_STRATEGY, "NONE");
 		return props;
 	}
 
@@ -292,6 +298,12 @@ public class PersistenceOptions {
 		return properties.getProperty(QUALIFY_ENTITY_NAME, QUALIFY_ENTITY_NAME_NO);
 	}
 
+	/** Returns the default second level caching strategy, default value is NONE (no second level caching). */
+	public String getDefaultCacheStrategy() {
+		return properties.getProperty(DEFAULT_CACHE_STRATEGY);
+	}
+
+	/** Are econtainer mappings (hibernate) disabled */
 	public boolean isDisableEContainerMapping() {
 		return Boolean.valueOf(properties.getProperty(DISABLE_ECONTAINER_MAPPING)).booleanValue();
 	}

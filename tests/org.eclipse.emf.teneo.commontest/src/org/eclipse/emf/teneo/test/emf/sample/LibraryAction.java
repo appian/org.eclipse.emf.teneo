@@ -11,11 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.4 2006/09/21 00:57:18 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.5 2006/10/20 13:21:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
+import java.util.List;
+import java.util.Properties;
+
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
@@ -29,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class LibraryAction extends AbstractTestAction {
 	/**
@@ -39,6 +43,12 @@ public class LibraryAction extends AbstractTestAction {
 	 */
 	public LibraryAction() {
 		super(LibraryPackage.eINSTANCE);
+	}
+
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY, "READ_WRITE");
+		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */
@@ -75,6 +85,29 @@ public class LibraryAction extends AbstractTestAction {
 			assertEquals(2, writer.getBooks().size());
 		}
 
+		// read the writers in the cache
+		store.refresh();
+		store.beginTransaction();
+		final Writer writer = (Writer)store.getObject(Writer.class);
+		assertTrue(writer.getBooks().size() == 2);
+		store.commitTransaction();
+		store.refresh();
+		store.beginTransaction();
+		final List books1 = store.getObjects(Book.class);
+		store.commitTransaction();
+		store.refresh();
+		store.beginTransaction();
+		final List books2 = store.getObjects(Book.class);
+		store.commitTransaction();
+		assertTrue(books1.size() == books2.size());
+		for (int i = 0; i < books1.size(); i++) {
+			final Book bk1 = (Book)books1.get(i);
+			final Book bk2 = (Book)books2.get(i);
+			assertEquals(bk1.getTitle(), bk2.getTitle());
+			assertTrue(bk1 != bk2);
+			assertTrue(bk1.getAuthor() != bk2.getAuthor());
+		}
+		
 		// walk through the structure starting from the library
 		{
 			store.beginTransaction();

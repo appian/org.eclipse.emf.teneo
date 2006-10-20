@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.3 2006/09/05 12:17:06 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.4 2006/10/20 13:21:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -86,9 +86,12 @@ class ManyToManyMapper extends AbstractAssociationMapper implements ManyToManyPr
 					+ StoreUtil.toString(hbReference.getAnnotatedEReference()));
 		}
 
-		// TODO add isUnique on interface
-		// TODO request EMF team to deal correctly with unique attribute on EReferences
 		final Element collElement = addCollectionElement(hbReference);
+		
+		if (((HbAnnotatedEReference)paReference).getHbCache() != null) {
+			addCacheElement(collElement, ((HbAnnotatedEReference)paReference).getHbCache());
+		}
+
 		final Element keyElement = collElement.addElement("key");
 
 		if (mtm.isIndexed()) {

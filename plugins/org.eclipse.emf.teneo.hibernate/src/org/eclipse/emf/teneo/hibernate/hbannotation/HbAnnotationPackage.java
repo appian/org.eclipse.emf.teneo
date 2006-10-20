@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackage.java,v 1.4 2006/09/06 17:26:44 mtaal Exp $
+ * $Id: HbAnnotationPackage.java,v 1.5 2006/10/20 13:21:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
@@ -449,6 +450,72 @@ public interface HbAnnotationPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CacheImpl <em>Cache</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.CacheImpl
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getCache()
+	 * @generated
+	 */
+	int CACHE = 9;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Usage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE__USAGE = HB_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Region</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE__REGION = HB_ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Include</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE__INCLUDE = HB_ANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Cache</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getCacheConcurrencyStrategy()
+	 * @generated
+	 */
+	int CACHE_CONCURRENCY_STRATEGY = 10;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation <em>Hb Annotation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -693,6 +760,59 @@ public interface HbAnnotationPackage extends EPackage {
 	EReference getGenericGenerator_Parameters();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Cache <em>Cache</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cache</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Cache
+	 * @generated
+	 */
+	EClass getCache();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Cache#getUsage <em>Usage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Usage</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Cache#getUsage()
+	 * @see #getCache()
+	 * @generated
+	 */
+	EAttribute getCache_Usage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Cache#getRegion <em>Region</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Region</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Cache#getRegion()
+	 * @see #getCache()
+	 * @generated
+	 */
+	EAttribute getCache_Region();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Cache#getInclude <em>Include</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Include</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Cache#getInclude()
+	 * @see #getCache()
+	 * @generated
+	 */
+	EAttribute getCache_Include();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Cache Concurrency Strategy</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
+	 * @generated
+	 */
+	EEnum getCacheConcurrencyStrategy();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -916,6 +1036,50 @@ public interface HbAnnotationPackage extends EPackage {
 		 */
 		EReference GENERIC_GENERATOR__PARAMETERS = eINSTANCE.getGenericGenerator_Parameters();
 
-}
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CacheImpl <em>Cache</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.CacheImpl
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getCache()
+		 * @generated
+		 */
+		EClass CACHE = eINSTANCE.getCache();
+
+		/**
+		 * The meta object literal for the '<em><b>Usage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CACHE__USAGE = eINSTANCE.getCache_Usage();
+
+		/**
+		 * The meta object literal for the '<em><b>Region</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CACHE__REGION = eINSTANCE.getCache_Region();
+
+		/**
+		 * The meta object literal for the '<em><b>Include</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CACHE__INCLUDE = eINSTANCE.getCache_Include();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getCacheConcurrencyStrategy()
+		 * @generated
+		 */
+		EEnum CACHE_CONCURRENCY_STRATEGY = eINSTANCE.getCacheConcurrencyStrategy();
+
+	}
 
 } //HbAnnotationPackage

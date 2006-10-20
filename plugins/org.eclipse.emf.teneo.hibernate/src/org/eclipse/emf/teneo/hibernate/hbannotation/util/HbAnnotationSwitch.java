@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationSwitch.java,v 1.6 2006/09/06 17:26:44 mtaal Exp $
+ * $Id: HbAnnotationSwitch.java,v 1.7 2006/10/20 13:21:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -11,6 +11,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
+
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
@@ -174,6 +176,14 @@ public class HbAnnotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case HbAnnotationPackage.CACHE: {
+				Cache cache = (Cache)theEObject;
+				Object result = caseCache(cache);
+				if (result == null) result = caseHbAnnotation(cache);
+				if (result == null) result = casePAnnotation(cache);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -310,6 +320,21 @@ public class HbAnnotationSwitch {
 	 * @generated
 	 */
 	public Object caseGenericGenerator(GenericGenerator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Cache</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Cache</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseCache(Cache object) {
 		return null;
 	}
 

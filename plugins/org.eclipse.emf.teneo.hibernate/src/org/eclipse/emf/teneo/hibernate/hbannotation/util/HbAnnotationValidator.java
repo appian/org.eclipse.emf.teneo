@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.6 2006/09/06 17:26:44 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.7 2006/10/20 13:21:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.teneo.annotations.pannotation.util.PannotationValidator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
+
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
@@ -130,6 +132,10 @@ public class HbAnnotationValidator extends EObjectValidator {
 				return validateIdBag((IdBag)value, diagnostics, context);
 			case HbAnnotationPackage.GENERIC_GENERATOR:
 				return validateGenericGenerator((GenericGenerator)value, diagnostics, context);
+			case HbAnnotationPackage.CACHE:
+				return validateCache((Cache)value, diagnostics, context);
+			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
+				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			default: 
 				return true;
 		}
@@ -322,6 +328,30 @@ public class HbAnnotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(genericGenerator, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCache(Cache cache, DiagnosticChain diagnostics, Map context) {
+		boolean result = validate_EveryMultiplicityConforms(cache, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(cache, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(cache, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(cache, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(cache, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(cache, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCacheConcurrencyStrategy(CacheConcurrencyStrategy cacheConcurrencyStrategy, DiagnosticChain diagnostics, Map context) {
+		return true;
 	}
 
 } //HbAnnotationValidator
