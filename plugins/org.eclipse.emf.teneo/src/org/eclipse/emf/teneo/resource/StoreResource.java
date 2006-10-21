@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.4 2006/10/04 14:08:22 mtaal Exp $
+ * $Id: StoreResource.java,v 1.5 2006/10/21 10:10:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.RandomAccess;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -57,7 +58,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -450,9 +451,9 @@ public abstract class StoreResource extends ResourceImpl {
 
 		// Already belongs to another resource
 		if (eObject.eResource() != null && eObject.eResource() != this) {
-			return; 
+			return;
 		}
-		
+
 		addedEObject(eObject);
 
 		if (isTrackingModification()) {
@@ -485,9 +486,10 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** Overridden to also support persistence specific id instead of single emf id */
 	protected void detachedHelper(EObject eObject) {
-		
-		if (eObject.eResource() != this) return;
-		
+
+		if (eObject.eResource() != this)
+			return;
+
 		removedEObject(eObject);
 
 		Map map = getIntrinsicIDToEObjectMap();
@@ -613,10 +615,15 @@ public abstract class StoreResource extends ResourceImpl {
 				}
 				case -3: {
 					// Undo the preparation for previous and continue.
-					values.next();
+					// Undo the preparation for previous and continue.
+					if (values == null) {
+						++valueListIndex;
+					} else {
+						values.next();
+					}
 				}
 				default: {
-					if (values == null || !scanNext(values)) {
+					if (valueList == null || (values == null ? !scanNext() : !scanNext(values))) {
 						while (featureCursor < eStructuralFeatures.length) {
 							EStructuralFeature feature = eStructuralFeatures[featureCursor++];
 
@@ -626,28 +633,39 @@ public abstract class StoreResource extends ResourceImpl {
 										&& !((PersistableDelegateList) value).isLoaded()) {
 									continue;
 								}
-								if (value instanceof PersistableEMap
-										&& !((PersistableEMap) value).isLoaded()) {
+								if (value instanceof PersistableEMap && !((PersistableEMap) value).isLoaded()) {
 									continue;
 								}
 							}
-
 							if (isIncluded(feature) && (!useIsSet() || eObject.eIsSet(feature))) {
 								Object value = eObject.eGet(feature, resolve());
 								isHandlingFeatureMap = FeatureMapUtil.isFeatureMap(feature);
 								if (isHandlingFeatureMap || feature.isMany()) {
-									values = resolve() ? ((List) value).listIterator() : ((InternalEList) value)
-											.basicListIterator();
-									if (scanNext(values)) {
-										preparedResult = values.next();
+									valueList = resolve() ? (List) value : (valueInternalEList = (InternalEList) value);
+									if (valueList instanceof RandomAccess) {
+										values = null;
+										valueListSize = valueList.size();
+										valueListIndex = 0;
+									} else {
+										values = valueInternalEList == null ? valueList.listIterator()
+												: valueInternalEList.basicListIterator();
+									}
+									if (values == null ? scanNext() : scanNext(values)) {
+										preparedResult = values == null ? valueInternalEList == null ? valueList
+												.get(valueListIndex++) : valueInternalEList.basicGet(valueListIndex++)
+												: values.next();
 										if (isHandlingFeatureMap) {
-											preparedResult = ((FeatureMap.Entry) preparedResult).getValue();
+											FeatureMap.Entry entry = (FeatureMap.Entry) preparedResult;
+											preparedFeature = entry.getEStructuralFeature();
+											preparedResult = entry.getValue();
+										} else {
+											preparedFeature = feature;
 										}
-										preparedFeature = feature;
 										prepared = 3;
 										return true;
 									}
 								} else if (value != null) {
+									valueList = null;
 									values = null;
 									preparedResult = value;
 									preparedFeature = feature;
@@ -656,14 +674,18 @@ public abstract class StoreResource extends ResourceImpl {
 								}
 							}
 						}
+						valueList = null;
 						values = null;
 						isHandlingFeatureMap = false;
 						prepared = 1;
 						return false;
 					} else {
-						preparedResult = values.next();
+						preparedResult = values == null ? valueInternalEList == null ? valueList.get(valueListIndex++)
+								: valueInternalEList.basicGet(valueListIndex++) : values.next();
 						if (isHandlingFeatureMap) {
-							preparedResult = ((FeatureMap.Entry) preparedResult).getValue();
+							FeatureMap.Entry entry = (FeatureMap.Entry) preparedResult;
+							preparedFeature = entry.getEStructuralFeature();
+							preparedResult = entry.getValue();
 						}
 						prepared = 3;
 						return true;

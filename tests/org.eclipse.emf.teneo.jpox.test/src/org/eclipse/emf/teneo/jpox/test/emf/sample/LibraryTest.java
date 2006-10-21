@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.4 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.5 2006/10/21 10:10:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -30,7 +30,7 @@ import org.jpox.AbstractPersistenceManager;
  * Tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class LibraryTest extends AbstractActionTest {
 
@@ -40,6 +40,11 @@ public class LibraryTest extends AbstractActionTest {
 					.eContainer() == null);
 		};
 		
+		/** Reads objects in multiple sessions and checks that they are unequal 
+		 * DISABLED FOR JPOX
+		 */
+		protected void checkUseCache(TestStore store) {}
+
 		protected void checkDetachCopy(TestStore store, Writer writ) {
 			// the assert is actually done to force a load of the books
 			assertEquals(2, writ.getBooks().size());
