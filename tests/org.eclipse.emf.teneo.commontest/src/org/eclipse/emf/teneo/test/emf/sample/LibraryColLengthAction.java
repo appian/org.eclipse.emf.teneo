@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryColLengthAction.java,v 1.3 2006/08/03 09:58:23 mtaal Exp $
+ * $Id: LibraryColLengthAction.java,v 1.4 2006/10/25 18:56:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryColLengthAction extends AbstractTestAction {
 	/**
@@ -49,7 +49,9 @@ public class LibraryColLengthAction extends AbstractTestAction {
 		super(LibraryPackage.eINSTANCE);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
 	 */
 	public Properties getExtraConfigurationProperties() {
@@ -93,29 +95,31 @@ public class LibraryColLengthAction extends AbstractTestAction {
 		}
 
 		if (true) {
-	    		Connection conn = null;
-	    		Statement stmt = null;
-	    		try {
-	    			conn = store.getConnection();
-	    			stmt = conn.createStatement();
-		    		ResultSet rs = stmt.executeQuery("SELECT * FROM BOOK WHERE BO_ID<>0 AND L_IDX>0 AND W_IDX>0".toLowerCase());
-		    		if (rs.next()) { // do something otherwise a compiler may optimise something away
-		    			stmt = null;
-		    			conn = null;
-		    		} else {
-		    			stmt = null;
-		    			conn = null;
-		    		}
-	    		} catch (SQLException s) {
-	    			throw new StoreTestException("SQL Exception", s);
-	    		} finally {
-	    			try {
-		    			if (stmt != null) stmt.close();
-		    			if (conn != null) conn.close();
-	    			} catch (SQLException s) {
-		    			throw new StoreTestException("SQL Exception", s);
-	    			}
-	    		}
-	    	}
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				conn = store.getConnection();
+				stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM BOOK WHERE BO_ID<>0 AND L_IDX>0 AND W_IDX>0"
+						.toLowerCase());
+				assertTrue(rs.next());
+			} catch (SQLException s) {
+				throw new StoreTestException("SQL Exception", s);
+			} finally {
+				try {
+					if (stmt != null) {
+						stmt.close();
+						stmt = null;
+					}
+						
+					if (conn != null) {
+						conn.close();
+						conn = null;
+					}
+				} catch (SQLException s) {
+					throw new StoreTestException("SQL Exception", s);
+				}
+			}
+		}
 	}
 }

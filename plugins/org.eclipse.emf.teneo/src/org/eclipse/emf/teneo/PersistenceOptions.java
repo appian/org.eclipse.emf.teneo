@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.12 2006/10/20 13:21:36 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.13 2006/10/25 18:56:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class PersistenceOptions {
 
@@ -145,6 +145,11 @@ public class PersistenceOptions {
      * If different than NONE (=default) then for Hibernate every class will be second-level cached!
      */
     public static final String DEFAULT_CACHE_STRATEGY = MAPPING_PREFIX + "default_cache_strategy";
+
+	/**
+	 * Join table naming strategy, two values: ejb3 and unique
+	 */
+	public static final String JOIN_TABLE_NAMING_STRATEGY = MAPPING_PREFIX + "join_table_naming_strategy";
     
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
@@ -166,6 +171,8 @@ public class PersistenceOptions {
 		props.setProperty(IGNORE_EANNOTATIONS, "false");
         props.setProperty(ALWAYS_VERSION, "true");
         props.setProperty(DEFAULT_CACHE_STRATEGY, "NONE");
+        props.setProperty(JOIN_TABLE_NAMING_STRATEGY, "ejb3");
+        
 		return props;
 	}
 
@@ -291,6 +298,11 @@ public class PersistenceOptions {
 	/** Returns the value of the id column option, returns null if not set */
 	public String getIdColumnName() {
 		return properties.getProperty(ID_COLUMN_NAME);
+	}
+
+	/** Returns the value of the join table naming strategy */
+	public String getJoinTableNamingStrategy() {
+		return properties.getProperty(JOIN_TABLE_NAMING_STRATEGY);
 	}
 
 	/** Returns the qualify entity names option, returns QUALIFY_ENTITY_NAME_NO ("no") */

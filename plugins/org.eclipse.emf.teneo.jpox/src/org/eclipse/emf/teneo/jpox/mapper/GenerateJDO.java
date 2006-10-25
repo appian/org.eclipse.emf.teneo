@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenerateJDO.java,v 1.3 2006/09/21 00:56:35 mtaal Exp $
+ * $Id: GenerateJDO.java,v 1.4 2006/10/25 18:56:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
  * Class is responsible for generating the jdo file. Is run through a launcher therefore the main methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class GenerateJDO {
@@ -71,7 +71,7 @@ public class GenerateJDO {
 							log.warn("JDO generator found " + epack.getName() + " but this is not an EPackage, ignoring it");
 						}
 					} catch (Throwable t) { // ignore everything but log it
-						log.error("Exception while instantiating " + epacks[i]);
+						log.error("Exception while instantiating " + epacks[p], t);
 					}
 				}
 			} else {

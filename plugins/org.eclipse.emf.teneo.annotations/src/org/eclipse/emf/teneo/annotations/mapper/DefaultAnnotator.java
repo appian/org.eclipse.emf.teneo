@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.9 2006/10/20 13:21:34 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.10 2006/10/25 18:55:59 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
@@ -68,6 +69,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
+import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.SQLCaseStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -76,7 +78,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class DefaultAnnotator {
 
@@ -103,6 +105,9 @@ public class DefaultAnnotator {
 
 	/** Determines if always a join table is used for non-contained relations */
 	private boolean optionJoinTableForNonContainedAssociations = false;
+
+	/** Determines the join table naming strategy */
+	private String optionJoinTableNamingStrategy = null;
 
 	/** Set orphan delete on containment */
 	private boolean optionSetCascadeAllOnContainment = true;
@@ -195,6 +200,15 @@ public class DefaultAnnotator {
 
 		optionSQLCaseStrategy = po.getSQLCaseStrategy();
 		log.debug("SQLCaseStrategy " + optionSQLCaseStrategy.getClass().getName());
+		
+		optionJoinTableNamingStrategy = po.getJoinTableNamingStrategy();
+		log.debug("JoinTableNamingStrategy " + optionJoinTableNamingStrategy);
+		
+		if (optionJoinTableNamingStrategy == null || optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") != 0 &&
+				optionJoinTableNamingStrategy.compareToIgnoreCase("unique") != 0)  {
+			throw new IllegalArgumentException("JoinTable naming strategy option: " + optionJoinTableNamingStrategy
+					+ " is not supported");
+		}
 	}
 
 	/** Maps one epackage */
@@ -208,6 +222,11 @@ public class DefaultAnnotator {
 
 	/** Returns the annotated version of an EClass */
 	protected void processClass(PAnnotatedEClass aClass) {
+		if (aClass == null) {
+			throw new StoreAnnotationsException("Mapping Exception, no Annotated Class for EClass, " +
+					"a common cause is that you did not register all EPackages in the DataStore/Helper Class. " +
+					"When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
+		}
 		log.debug(" Adding default annotations for EClass: " + aClass.getAnnotatedElement().getName());
 
 		// do not process the document root
@@ -773,9 +792,17 @@ public class DefaultAnnotator {
 
 			// see remark in manytomany about naming of jointables
 			if (joinTable.getName() == null) {
-				final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel())
+				if (optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
+					final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel())
 						+ "_" + getEntityName(eReference.getEReferenceType(), aReference.getPaModel());
-				joinTable.setName(trunc(jTableName, false));
+					joinTable.setName(trunc(jTableName, false));
+				} else {
+					AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy +
+							" not supported", optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
+					final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+						+ eReference.getName();
+					joinTable.setName(trunc(jTableName, false));
+				}
 			}
 
 			// note joincolumns in jointable can be generated automatically by hib/jpox.
@@ -868,20 +895,38 @@ public class DefaultAnnotator {
 		// tablenames of the owning entities with an underscore, this will quickly lead to nameclashes
 		// in the case there is more than one relation between two classes. This can be pretty likely
 		// if the inheritance strategy is single_table.
+		// now possibility to use a different naming strategy
 		if (joinTable.getName() == null) {
 			// In case the reference is not indexed then one join table can be used for both sides
 			// If indexed then separate join tables should be used.
 			final String jTableName;
-			if (mtm.isIndexed()) {
-				jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
-						+ getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel());
-			} else {
-				if (compareNames(eReference, eOpposite)) {
-					jTableName = getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel()) + "_"
-							+ getEntityName(eReference.getEContainingClass(), aReference.getPaModel());
-				} else {
+			if (optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
+				if (mtm.isIndexed()) {
 					jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
 							+ getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel());
+				} else {
+					if (compareNames(eReference, eOpposite)) {
+						jTableName = getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel()) + "_"
+								+ getEntityName(eReference.getEContainingClass(), aReference.getPaModel());
+					} else {
+						jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+								+ getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel());
+					}
+				}
+			} else {
+				AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy +
+						" not supported", optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
+				if (mtm.isIndexed()) {
+					jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+							+ eReference.getName();
+				} else {
+					if (compareNames(eReference, eOpposite)) {
+						jTableName = getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel()) + "_"
+								+ eOpposite.getName();
+					} else {
+						jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+							+ eReference.getName();
+					}
 				}
 			}
 
@@ -939,10 +984,18 @@ public class DefaultAnnotator {
 		// note that here not the eclass name is used for the opposite side but the name of the targetentity
 		// because that's the one which is known here
 		if (joinTable.getName() == null) {
-			final String oppName = mtm.getTargetEntity();
-			final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
-					+ oppName;
-			joinTable.setName(trunc(jTableName, false));
+			if (optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
+				final String oppName = mtm.getTargetEntity();
+				final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+						+ oppName;
+				joinTable.setName(trunc(jTableName, false));
+			} else {
+				AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy +
+						" not supported", optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
+				final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+					+ eReference.getName();
+				joinTable.setName(trunc(jTableName, false));
+			}
 		}
 		if (joinTable.getJoinColumns() == null) {
 			joinTable.getJoinColumns().addAll(

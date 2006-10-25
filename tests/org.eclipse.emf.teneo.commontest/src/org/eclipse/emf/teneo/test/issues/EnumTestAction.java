@@ -11,26 +11,30 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EnumTestAction.java,v 1.1 2006/07/04 22:12:16 mtaal Exp $
+ * $Id: EnumTestAction.java,v 1.2 2006/10/25 18:56:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
 
+import java.io.IOException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.samples.issues.enumtest.EnumtestFactory;
 import org.eclipse.emf.teneo.samples.issues.enumtest.EnumtestPackage;
 import org.eclipse.emf.teneo.samples.issues.enumtest.Item;
 import org.eclipse.emf.teneo.samples.issues.enumtest.ItemType;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
+import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests nullable enum and enum as id
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EnumTestAction extends AbstractTestAction {
 	/**
@@ -87,5 +91,22 @@ public class EnumTestAction extends AbstractTestAction {
 			}
 			store.commitTransaction();
 		}
+/*		
+		// do save action with a resource
+		try {
+			final Resource rs = store.getResource();
+			final Item item1 = EnumtestFactory.eINSTANCE.createItem();
+			item1.setItemType(ItemType.PRODUCT_FAMILY_LITERAL);
+			item1.setNullableItemType(null);
+			rs.getContents().add(item1);
+			final Item item2 = EnumtestFactory.eINSTANCE.createItem();
+			item2.setItemType(ItemType.PRODUCT_FAMILY_LITERAL);
+			item2.setNullableItemType(ItemType.PRODUCT_LITERAL);
+			rs.getContents().add(item2);
+			rs.save(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			throw new StoreTestException("Exception while saving resource", e);
+		}
+*/
 	}
 }

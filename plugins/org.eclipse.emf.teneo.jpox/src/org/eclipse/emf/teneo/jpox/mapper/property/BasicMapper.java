@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.3 2006/09/13 10:39:52 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.4 2006/10/25 18:56:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class BasicMapper extends AbstractMapper {
@@ -96,8 +96,8 @@ public class BasicMapper extends AbstractMapper {
 					"persistence-modifier", "persistent");
 		}
 		
-		if (false && aAttribute.getAnnotatedEAttribute().isUnique()) {
-			field.addElement("unique");
-		}
+		//if (false && aAttribute.getAnnotatedEAttribute().isUnique()) {
+		//	field.addElement("unique");
+		//}
 	}
 }

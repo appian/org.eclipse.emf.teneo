@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.8 2006/10/03 09:50:08 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.9 2006/10/25 18:56:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -128,7 +128,7 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
                     .isCurrentElementFeatureMap(), false);
             addIsSetAttribute(paAttribute);
             propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
-		//propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
+            //propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
         }
     }
 
@@ -156,7 +156,9 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 				.isCurrentElementFeatureMap(), false);
 		addIsSetAttribute(paAttribute);
 		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
-		propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
+		
+		// 162256
+		// propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
 	}
 
 	/**
@@ -195,10 +197,12 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 				.isCurrentElementFeatureMap(), false);
 		addIsSetAttribute(paAttribute);
 		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
-		if (eAttribute.isUnique()) {
-			log.warn("Unique is true for a LOB type attribute, this does not seem logical");
-		}
-		propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
+		
+		// see issue: 162256
+		//if (eAttribute.isUnique()) {
+		//	log.warn("Unique is true for a LOB type attribute, this does not seem logical");
+		//}
+		//propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
 	}
 
 	/**
@@ -244,7 +248,8 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 
 		addIsSetAttribute(paAttribute);
 		propElement.addAttribute("not-null", isNullable(basic, eattr) ? "false" : "true");
-		propElement.addAttribute("unique", eattr.isUnique() ? "true" : "false");
+		// 162256
+		// propElement.addAttribute("unique", eattr.isUnique() ? "true" : "false");
 	}
 
 	/**

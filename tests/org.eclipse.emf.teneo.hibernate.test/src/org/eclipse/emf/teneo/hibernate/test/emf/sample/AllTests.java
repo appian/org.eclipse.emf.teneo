@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.17 2006/10/20 13:22:06 mtaal Exp $
+ * $Id: AllTests.java,v 1.18 2006/10/25 18:55:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -23,12 +23,12 @@ import org.eclipse.emf.teneo.hibernate.test.HibernateTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.DynamicAction;
-import org.eclipse.emf.teneo.test.emf.sample.EcoreAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryColLengthAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
+import org.eclipse.emf.teneo.test.emf.sample.LibraryJoinTableNamingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryQualifyActionHB;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class AllTests {
 
@@ -55,7 +55,9 @@ public class AllTests {
 
 		// this test works with ms sql server but not with mysql
 		//suite.addTestSuite(EcoreAction.class);
+		suite.addTestSuite(LibraryJoinTableNamingAction.class);
 
+//		suite.addTestSuite(YahooAction.class);
 		suite.addTestSuite(LibraryAction.class);
 
 		suite.addTestSuite(LibrarySessionControllerAction.class);
