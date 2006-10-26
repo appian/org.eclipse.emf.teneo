@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.6 2006/10/26 17:01:08 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.7 2006/10/26 17:34:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -57,6 +57,10 @@ import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
+import org.eclipse.emf.teneo.jpox.cache.EMFHardRefCache;
+import org.eclipse.emf.teneo.jpox.cache.EMFNullCache;
+import org.eclipse.emf.teneo.jpox.cache.EMFSoftRefCache;
+import org.eclipse.emf.teneo.jpox.cache.EMFWeakRefCache;
 import org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry;
 import org.eclipse.emf.teneo.jpox.elist.EListMapping;
 import org.eclipse.emf.teneo.jpox.elist.EListWrapper;
@@ -82,6 +86,9 @@ import org.jpox.metadata.AbstractPropertyMetaData;
 import org.jpox.metadata.ExtensionMetaData;
 import org.jpox.metadata.JDOEntityResolver;
 import org.jpox.metadata.MetaDataManager;
+import org.jpox.plugin.ConfigurationElement;
+import org.jpox.plugin.Extension;
+import org.jpox.plugin.ExtensionPoint;
 import org.jpox.store.StoreManager;
 import org.jpox.util.ClassUtils;
 import org.w3c.dom.Element;
@@ -93,7 +100,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ $Date: 2006/10/26 17:01:08 $
+ * @version $Revision: 1.7 $ $Date: 2006/10/26 17:34:47 $
  */
 
 public class JpoxDataStore {
@@ -259,10 +266,30 @@ public class JpoxDataStore {
 		final ClassLoader contextLoader = ClassLoaderResolver.getClassLoader();
         final org.jpox.ClassLoaderResolver clr = initPmf.getPMFContext().getClassLoaderResolver(contextLoader);
         
-        //initPmf.getPMFContext().getPluginManager().getExtensionPoint("org.jpox.cache_level1").
-        
-//        Extension extension = new Extension();
-        
+        log.debug("Registering level 1 Cache Implementations");
+        final ExtensionPoint ep = initPmf.getPMFContext().getPluginManager().getExtensionPoint("org.jpox.cache_level1");
+        final Extension extension = new Extension(ep, ep.getPlugin());
+        ep.addExtension(extension);
+        final ConfigurationElement ce1 = new ConfigurationElement(extension, "cache", null);
+        ce1.putAttribute("name", EMFWeakRefCache.class.getName());
+        ce1.putAttribute("class-name", EMFWeakRefCache.class.getName());
+        extension.addConfigurationElement(ce1);
+        log.debug("Registered " + EMFWeakRefCache.class.getName());
+        final ConfigurationElement ce2 = new ConfigurationElement(extension, "cache", null);
+        ce2.putAttribute("name", EMFHardRefCache.class.getName());
+        ce2.putAttribute("class-name", EMFHardRefCache.class.getName());
+        extension.addConfigurationElement(ce2);
+        log.debug("Registered " + EMFHardRefCache.class.getName());
+        final ConfigurationElement ce3 = new ConfigurationElement(extension, "cache", null);
+        ce3.putAttribute("name", EMFNullCache.class.getName());
+        ce3.putAttribute("class-name", EMFNullCache.class.getName());
+        extension.addConfigurationElement(ce3);
+        log.debug("Registered " + EMFNullCache.class.getName());
+        final ConfigurationElement ce4 = new ConfigurationElement(extension, "cache", null);
+        ce4.putAttribute("name", EMFSoftRefCache.class.getName());
+        ce4.putAttribute("class-name", EMFSoftRefCache.class.getName());
+        extension.addConfigurationElement(ce4);
+        log.debug("Registered " + EMFSoftRefCache.class.getName());
         
 		tm.addType(initPmf.getPMFContext().getPluginManager(),
 				"org.jpox.store_mapping", List.class.getName(), EListMapping.class.getName(),
