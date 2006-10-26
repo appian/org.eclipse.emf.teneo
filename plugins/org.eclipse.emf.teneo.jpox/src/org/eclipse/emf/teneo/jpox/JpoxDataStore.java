@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.5 2006/10/26 14:18:47 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.6 2006/10/26 17:01:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -38,6 +38,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -46,6 +48,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
@@ -55,10 +58,15 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry;
+import org.eclipse.emf.teneo.jpox.elist.EListMapping;
+import org.eclipse.emf.teneo.jpox.elist.EListWrapper;
+import org.eclipse.emf.teneo.jpox.elist.FeatureMapMapping;
+import org.eclipse.emf.teneo.jpox.elist.FeatureMapWrapper;
 import org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry;
 import org.eclipse.emf.teneo.jpox.elist.RemoveLifeCycleListener;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 import org.eclipse.emf.teneo.jpox.mapping.ENumMapping;
+import org.eclipse.emf.teneo.jpox.mapping.EObjectMapping;
 import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
 import org.eclipse.emf.teneo.jpox.resource.JPOXResourceDAO;
 import org.eclipse.emf.teneo.type.FeatureMapEntry;
@@ -85,7 +93,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ $Date: 2006/10/26 14:18:47 $
+ * @version $Revision: 1.6 $ $Date: 2006/10/26 17:01:08 $
  */
 
 public class JpoxDataStore {
@@ -251,17 +259,26 @@ public class JpoxDataStore {
 		final ClassLoader contextLoader = ClassLoaderResolver.getClassLoader();
         final org.jpox.ClassLoaderResolver clr = initPmf.getPMFContext().getClassLoaderResolver(contextLoader);
         
-        // moved to plugin.xml
-//		tm.addType(List.class.getName(), EListMapping.class.getName(),
-//				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
-//		tm.addType(EList.class.getName(), EListMapping.class.getName(),
-//				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
-//		tm.addType(EMap.class.getName(), EListMapping.class.getName(),
-//				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
-//		tm.addType(FeatureMap.class.getName(), FeatureMapMapping.class.getName(),
-//				FeatureMapWrapper.class.getName(), false, "1.4", true, false, false, clr);
-//		tm.addType(EObject.class.getName(), EObjectMapping.class.getName(), null, true,
-//				"1.4", true, false, true, clr);
+        //initPmf.getPMFContext().getPluginManager().getExtensionPoint("org.jpox.cache_level1").
+        
+//        Extension extension = new Extension();
+        
+        
+		tm.addType(initPmf.getPMFContext().getPluginManager(),
+				"org.jpox.store_mapping", List.class.getName(), EListMapping.class.getName(),
+				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
+		tm.addType(initPmf.getPMFContext().getPluginManager(),
+				"org.jpox.store_mapping", EList.class.getName(), EListMapping.class.getName(),
+				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
+		tm.addType(initPmf.getPMFContext().getPluginManager(),
+				"org.jpox.store_mapping", EMap.class.getName(), EListMapping.class.getName(),
+				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
+		tm.addType(initPmf.getPMFContext().getPluginManager(),
+				"org.jpox.store_mapping", FeatureMap.class.getName(), FeatureMapMapping.class.getName(),
+				FeatureMapWrapper.class.getName(), false, "1.4", true, false, false, clr);
+		tm.addType(initPmf.getPMFContext().getPluginManager(),
+				"org.jpox.store_mapping", EObject.class.getName(), EObjectMapping.class.getName(), null, true,
+				"1.4", true, false, true, clr);
 
         addCustomTypes(initPmf, clr);
 
