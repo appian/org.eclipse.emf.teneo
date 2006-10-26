@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?eclipse version="3.2"?>
 <plugin id="teneo.jpox" name="JPOX plug-ins" provider-name="Eclipse.EMFT.Teneo">
     <extension point="org.jpox.cache_level1">
 	    <cache name="org.eclipse.emf.teneo.jpox.cache.EMFWeakRefCache" class-name="org.eclipse.emf.teneo.jpox.cache.EMFWeakRefCache"/>
