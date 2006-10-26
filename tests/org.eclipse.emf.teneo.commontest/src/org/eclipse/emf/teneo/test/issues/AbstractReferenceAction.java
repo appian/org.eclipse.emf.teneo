@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractReferenceAction.java,v 1.1 2006/07/04 22:12:16 mtaal Exp $
+ * $Id: AbstractReferenceAction.java,v 1.2 2006/10/26 14:16:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests reference relations between abstract relations. This failed during compute references, the test is therefore very light.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AbstractReferenceAction extends AbstractTestAction {
 	/**
@@ -74,7 +74,8 @@ public class AbstractReferenceAction extends AbstractTestAction {
 				uoa.getCountry().add(city);
 
 				res.getContents().add(uoa);
-
+				res.save(null);
+				
 				Person person = factory.createPerson();
 				person.setName("myname");
 				person.getAddress().add(uoa);

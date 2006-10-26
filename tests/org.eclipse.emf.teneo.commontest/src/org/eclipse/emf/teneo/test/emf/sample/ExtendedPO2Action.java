@@ -11,20 +11,17 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtendedPO2Action.java,v 1.2 2006/10/25 19:24:24 mtaal Exp $
+ * $Id: ExtendedPO2Action.java,v 1.3 2006/10/26 14:16:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
-import java.io.IOException;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.Customer;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.EPO2Factory;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.EPO2Package;
@@ -35,14 +32,13 @@ import org.eclipse.emf.teneo.samples.emf.sample.epo2.PurchaseOrder;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.Supplier;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.USAddress;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
-import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests the extended po 2 example
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/10/25 19:24:24 $
+ * @version $Revision: 1.3 $ $Date: 2006/10/26 14:16:18 $
 */
 public abstract class ExtendedPO2Action extends AbstractTestAction 
 {
