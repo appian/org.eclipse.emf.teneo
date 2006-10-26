@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapWrapper.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
+ * $Id: FeatureMapWrapper.java,v 1.3 2006/10/26 14:18:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -48,7 +48,7 @@ import org.jpox.sco.exceptions.QueryUnownedSCOException;
 import org.jpox.state.FetchPlanState;
 import org.jpox.store.expression.QueryExpression;
 import org.jpox.store.query.Queryable;
-import org.jpox.store.query.Query.ResultObjectFactory;
+import org.jpox.store.query.ResultObjectFactory;
 import org.jpox.util.ClassUtils;
 
 /**
@@ -63,7 +63,7 @@ import org.jpox.util.ClassUtils;
  * to use the backingstore as the delegate because the list can be detached.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
+ * @version $Revision: 1.3 $ $Date: 2006/10/26 14:18:47 $
  */
 
 public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Queryable, SCOList {
@@ -468,8 +468,8 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * @see org.jpox.store.query.Queryable#newResultObjectFactory(org.jpox.store.expression.QueryExpression, boolean,
 	 *      java.lang.Class, boolean)
 	 */
-	public ResultObjectFactory newResultObjectFactory(QueryExpression stmt, boolean ignoreCache, Class resultClass,
-			boolean useFetchPlan) {
+    public synchronized ResultObjectFactory newResultObjectFactory(
+            QueryExpression stmt, boolean ignoreCache, Class resultClass, boolean useFetchPlan) {
 		if (jdoDelegate == null) {
 			throw new QueryUnownedSCOException();
 		}

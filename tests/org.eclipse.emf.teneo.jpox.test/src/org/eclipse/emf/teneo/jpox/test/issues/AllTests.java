@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.6 2006/09/26 12:47:25 mtaal Exp $
+ * $Id: AllTests.java,v 1.7 2006/10/26 14:19:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.issues;
@@ -32,20 +32,22 @@ import org.eclipse.emf.teneo.test.issues.SimplenmAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", JPOXTestbed
 				.instance().getConfigurations());
-//		suite.addTestSuite(MainAction.class);
+		
+		if (!JPOXTestbed.isRunningOnEMFTServer()) {
+			suite.addTestSuite(AbstractReferenceAction.class);
+		}
 		suite.addTestSuite(BagDuplicateAction.class);
 		suite.addTestSuite(InheritanceAction.class);
 
 		suite.addTestSuite(EnumTestAction.class);
 		suite.addTestSuite(InterfaceTrueAction.class);
-		suite.addTestSuite(AbstractReferenceAction.class);
 		suite.addTestSuite(SimplenmAction.class);
 		
 		// TODO always fails for jpox, seems unimportant

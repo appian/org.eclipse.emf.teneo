@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListMapping.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
+ * $Id: EListMapping.java,v 1.3 2006/10/26 14:18:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -29,49 +29,19 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeObject;
 import org.eclipse.emf.teneo.util.StoreUtil;
-import org.jpox.ClassLoaderResolver;
 import org.jpox.StateManager;
-import org.jpox.metadata.AbstractPropertyMetaData;
 import org.jpox.metadata.ForeignKeyAction;
 import org.jpox.sco.SCO;
-import org.jpox.store.DatastoreAdapter;
-import org.jpox.store.DatastoreContainerObject;
 import org.jpox.store.mapping.CollectionMapping;
 
 /**
  * Mapping class around the EListWrapper. The newWrapper method returns a new EListWrapper instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
+ * @version $Revision: 1.3 $ $Date: 2006/10/26 14:18:47 $
  */
 
 public class EListMapping extends CollectionMapping {
-	/**
-	 * Constructor taking the database adapter representing the datastore being used and the class of the mapping.
-	 * 
-	 * @param dba
-	 *            Database adapter
-	 * @param type
-	 *            Type of the field
-	 */
-	public EListMapping(DatastoreAdapter dba, String type) {
-		super(dba, type);
-	}
-
-	/**
-	 * Constructor, specifying the table and the relative field.
-	 * 
-	 * @param dba
-	 *            Datastore Adapter
-	 * @param fmd
-	 *            FiAbstractPropertyMetaDataeldMetaData for field to be mapped.
-	 * @param table
-	 *            Table containing the field
-	 */
-	public EListMapping(DatastoreAdapter dba, AbstractPropertyMetaData fmd, DatastoreContainerObject datastoreContainer,
-			ClassLoaderResolver clr) {
-		super(dba, fmd, datastoreContainer, clr);
-	}
 
 	/**
 	 * Accessor for an instance of the wrapper class.

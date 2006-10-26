@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EObjectMapping.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
+ * $Id: EObjectMapping.java,v 1.3 2006/10/26 14:18:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapping;
@@ -54,22 +54,25 @@ import org.jpox.store.mapping.SingleFieldMultiMapping;
  * the future possibly referential integrity is supported by storing all any types with references in a reference table.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
+ * @version $Revision: 1.3 $ $Date: 2006/10/26 14:18:47 $
  */
 
 public class EObjectMapping extends SingleFieldMultiMapping implements MappingCallbacks {
 	/** The logger */
 	private static Log log = LogFactory.getLog(EObjectMapping.class);
-
-	/** Constructor */
-	public EObjectMapping(DatastoreAdapter dba, String type) {
-		super(dba, type);
-	}
-
-	/** Constructor */
-	public EObjectMapping(DatastoreAdapter dba, AbstractPropertyMetaData fmd, DatastoreContainerObject datastoreContainer,
-			ClassLoaderResolver clr) {
-		super(dba, fmd, datastoreContainer);
+	
+    /**
+     * Initialize this JavaTypeMapping with the given DatastoreAdapter for
+     * the given FieldMetaData.
+     *  
+     * @param dba The Datastore Adapter that this Mapping should use.
+     * @param fmd FieldMetaData for the field to be mapped (if any)
+     * @param container The datastore container storing this mapping (if any)
+     * @param clr the ClassLoaderResolver
+     */
+    public void initialize(DatastoreAdapter dba, AbstractPropertyMetaData fmd, DatastoreContainerObject container, ClassLoaderResolver clr)
+    {
+		super.initialize(dba, fmd, container, clr);
 
 		addDatastoreField(ClassNameConstants.JAVA_LANG_STRING);
 		addDatastoreField(ClassNameConstants.JAVA_LANG_STRING);
@@ -158,7 +161,7 @@ public class EObjectMapping extends SingleFieldMultiMapping implements MappingCa
 
 		if (strVal0.startsWith(AnyTypeEObject.IS_PC)) {
 			// a persistence capable object // note can be null if not found!
-			final Object obj = pm.getObjectById(new OID(strVal1), true, true);
+			final Object obj = pm.getObjectById(new OID(strVal1), true, true, null);
 			if (obj == null) // object can be deleted throw an error which shows this
 			{
 				final String msg = "EObjectMapping.getObject(): Object with object id: " + strVal1 + " of class: "

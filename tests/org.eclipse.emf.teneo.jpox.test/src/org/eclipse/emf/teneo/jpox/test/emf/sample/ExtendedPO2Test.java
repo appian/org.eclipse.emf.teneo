@@ -11,10 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtendedPO2Test.java,v 1.3 2006/07/23 19:28:58 mtaal Exp $
+ * $Id: ExtendedPO2Test.java,v 1.4 2006/10/26 14:19:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
+
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.Item;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
@@ -25,7 +28,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class ExtendedPO2Test extends AbstractActionTest {
 
@@ -33,8 +36,11 @@ public class ExtendedPO2Test extends AbstractActionTest {
 
 		protected void checkContainerForSeparatelyReadItem(TestStore store) {
 			store.beginTransaction();
-			Item itemtest2 = (Item) store.getObject(Item.class);
-			assertTrue(itemtest2.eContainer() == null);
+			List list = store.getObjects(Item.class);
+			for (Iterator it = list.iterator(); it.hasNext();) {
+				Item itemtest2 = (Item) it.next();
+				assertTrue(itemtest2.eContainer() == null);
+			}
 			store.commitTransaction();
 		}
 	};

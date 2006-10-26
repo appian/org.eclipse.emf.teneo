@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ENumMapping.java,v 1.2 2006/09/21 00:56:35 mtaal Exp $
+ * $Id: ENumMapping.java,v 1.3 2006/10/26 14:18:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapping;
@@ -20,9 +20,9 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.jpox.JpoxStoreException;
+import org.jpox.ClassLoaderResolver;
 import org.jpox.ClassNameConstants;
 import org.jpox.metadata.AbstractPropertyMetaData;
 import org.jpox.store.DatastoreAdapter;
@@ -44,46 +44,32 @@ import org.jpox.store.mapping.MappingManager;
  * method using the class signature (reflection).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/09/21 00:56:35 $
+ * @version $Revision: 1.3 $ $Date: 2006/10/26 14:18:47 $
  */
 
 public class ENumMapping extends JavaTypeMapping {
 
-	/** The datastore class, see jpox for info */
-	protected DatastoreContainerObject datastoreContainer;
-
 	/** The enum type we are handling here */
-	private final Class enumType;
+	private Class enumType;
 
 	/** The method which translates a string to an instance of the emf enum */
-	private final Method getMethod;
+	private Method getMethod;
 
 	/** Hashmap with string to enum mappings */
 	private final HashMap localCache = new HashMap();
-
-	/** Constructor */
-	public ENumMapping(DatastoreAdapter dba, String type) {
-		super(dba, type, null, null);
-		this.datastoreContainer = null;
-
-		// get the static get method
-		try {
-			enumType = ClassLoaderResolver.classForName(type);
-			getMethod = enumType.getMethod("get", new Class[] { String.class });
-		} catch (NoSuchMethodException e) {
-			throw new JpoxStoreException("The get method which returns an enum instance does not exist for the class: "
-					+ type);
-		} catch (StoreClassLoadException e) {
-			throw new JpoxStoreException("The enum can not be found: " + type);
-		}
-		addDatastoreField(ClassNameConstants.JAVA_LANG_STRING);
-	}
-
-	/** Constructor */
-	public ENumMapping(DatastoreAdapter dba, AbstractPropertyMetaData fmd, 
-			DatastoreContainerObject datastoreContainer,
-			org.jpox.ClassLoaderResolver clr) {
-		super(dba, fmd.getType().getName(), fmd, datastoreContainer);
+	
+    /**
+     * Initialize this JavaTypeMapping with the given DatastoreAdapter for
+     * the given FieldMetaData.
+     *  
+     * @param dba The Datastore Adapter that this Mapping should use.
+     * @param fmd FieldMetaData for the field to be mapped (if any)
+     * @param container The datastore container storing this mapping (if any)
+     * @param clr the ClassLoaderResolver
+     */
+    public void initialize(DatastoreAdapter dba, AbstractPropertyMetaData fmd, DatastoreContainerObject container, ClassLoaderResolver clr)
+    {
+		super.initialize(dba, fmd, container, clr);
 		
 		try {
 			enumType = fmd.getType();
@@ -94,7 +80,6 @@ public class ENumMapping extends JavaTypeMapping {
 		} catch (StoreClassLoadException e) {
 			throw new JpoxStoreException("The enum can not be found: " + type);
 		}
-		this.datastoreContainer = datastoreContainer;
 		addDatastoreField(ClassNameConstants.JAVA_LANG_STRING);
 	}
 

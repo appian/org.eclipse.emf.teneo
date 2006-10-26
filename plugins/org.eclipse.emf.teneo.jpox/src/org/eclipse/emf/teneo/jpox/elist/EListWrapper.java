@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.3 2006/09/28 20:04:11 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.4 2006/10/26 14:18:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -53,9 +53,8 @@ import org.jpox.sco.SCOList;
 import org.jpox.sco.exceptions.QueryUnownedSCOException;
 import org.jpox.state.FetchPlanState;
 import org.jpox.store.expression.QueryExpression;
-import org.jpox.store.query.Query;
-import org.jpox.store.query.QueryStatement;
 import org.jpox.store.query.Queryable;
+import org.jpox.store.query.ResultObjectFactory;
 
 /**
  * This class works as a wrapper around the EList as it is used in the EMF objects. The class extends PersistableEList,
@@ -65,7 +64,7 @@ import org.jpox.store.query.Queryable;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/09/28 20:04:11 $
+ * @version $Revision: 1.4 $ $Date: 2006/10/26 14:18:47 $
  */
 
 public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList {
@@ -461,8 +460,8 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 	 *            whether to use the fetch plan to retrieve fields in the same query
 	 * @return The ResultObjectFactory
 	 */
-	public synchronized Query.ResultObjectFactory newResultObjectFactory(QueryExpression stmt, boolean ignoreCache,
-			Class resultClass, boolean useFetchPlan) {
+    public synchronized ResultObjectFactory newResultObjectFactory(
+            QueryExpression stmt, boolean ignoreCache, Class resultClass, boolean useFetchPlan) {
 		if (jdoDelegate == null) {
 			throw new QueryUnownedSCOException();
 		}
@@ -511,28 +510,6 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 			throw new QueryUnownedSCOException();
 		}
 		return jdoDelegate.newQueryStatement(candidate_class);
-	}
-
-	/**
-	 * Method to return a ResultObjectFactory for the SCO.
-	 * 
-	 * @param stmt
-	 *            The QueryStatement
-	 * @param ignoreCache
-	 *            Whether to ignore the cache
-	 * @param resultClass
-	 *            Whether to create objects of a particular class
-	 * @param useFetchPlan
-	 *            whether to use the fetch plan to retrieve fields in the same query
-	 * @return The ResultObjectFactory
-	 */
-	public synchronized Query.ResultObjectFactory newResultObjectFactory(QueryStatement stmt, boolean ignoreCache,
-			Class resultClass, boolean useFetchPlan) {
-		if (jdoDelegate == null) {
-			throw new QueryUnownedSCOException();
-		}
-
-		return jdoDelegate.newResultObjectFactory(stmt, ignoreCache, resultClass, useFetchPlan);
 	}
 
 	// ---------------------------------- EList methods including loading from

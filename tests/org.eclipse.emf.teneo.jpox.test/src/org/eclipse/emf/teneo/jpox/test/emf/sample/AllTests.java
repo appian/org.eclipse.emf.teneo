@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.11 2006/10/21 10:10:46 mtaal Exp $
+ * $Id: AllTests.java,v 1.12 2006/10/26 14:19:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -41,13 +41,19 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 				.getConfigurations());
+		suite.addTestSuite(SchoolLibraryTest.class);
+
+		suite.addTestSuite(LibrarySerializationAction.class);
+
+		suite.addTestSuite(ExtendedPO2Test.class);
+
 		suite.addTestSuite(LibraryTest.class);
 
 		suite.addTestSuite(LibraryPMControllerAction.class);
@@ -57,7 +63,6 @@ public class AllTests {
 
 		suite.addTestSuite(LibraryValidateResourceAction.class);
 		suite.addTestSuite(LibraryResourceAction.class);
-		suite.addTestSuite(LibrarySerializationAction.class);
 		suite.addTestSuite(LibraryGlobalEagerAction.class);
 		
 		//suite.addTestSuite(WorkFlowAction.class);
@@ -67,9 +72,6 @@ public class AllTests {
 
 		suite.addTestSuite(InventoryAction.class);
 		suite.addTestSuite(CatalogResourceAction.class);
-
-		suite.addTestSuite(SchoolLibraryTest.class);
-		suite.addTestSuite(ExtendedPO2Test.class);
 
 		suite.addTestSuite(AccountingTest.class);
 		if (!JPOXTestbed.isRunningOnEMFTServer()) {
