@@ -304,16 +304,26 @@ public void start(BundleContext context) throws Exception
 			
 <li>The above source code uses the database library. This database has to exist (but can be empty).</li>
 			
+<li>The name of the datastore is chosen on purpose. The extension of the resource name (library in this case)
+			is used to find the datastore, so therefore here the name library is chosen.</li>
+			
 <li>
-<strong>The name of the datastore is chosen on purpose. The extension of the resource name (library in this case)
-			is used to find the datastore, so therefore here the name library is chosen.</strong>
+<em>If you get this exception then you did not set the Eclipse-BuddyPolicy in the plugin containing the Hibernate libraries
+			(see <a href="../installation.html#Hibernate+Libraries">here</a>)</em>:
+			<pre class="code">
+org.hibernate.MappingException: Could not determine type for: 
+	org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerUserType, for columns: [org.hibernate.mapping.Column(econtainer_class), org.hibernate.mapping.Column(e_container)]
+at org.hibernate.mapping.SimpleValue.getType(SimpleValue.java:266)
+at org.hibernate.mapping.SimpleValue.isValid(SimpleValue.java:253)
+at org.hibernate.mapping.Property.isValid(Property.java:185)
+			</pre>
 </li>
 			
 </ul>
 		
 </div>
 		
-<a name="N1003C"></a><a name="Resource+Factory+setting"></a>
+<a name="N10047"></a><a name="Resource+Factory+setting"></a>
 <div class="h3">
 <h3>Resource Factory setting</h3>
 			
@@ -329,7 +339,7 @@ public void start(BundleContext context) throws Exception
 		
 </div>
 		
-<a name="N1004D"></a><a name="Create+valid+EMF+Objects"></a>
+<a name="N10058"></a><a name="Create+valid+EMF+Objects"></a>
 <div class="h3">
 <h3>Create valid EMF Objects</h3>
 			

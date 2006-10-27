@@ -300,6 +300,9 @@
 <li>
 <a href="#Teneo+does+not+see+my+changes+in+the+ecore+model">Teneo does not see my changes in the ecore model</a>
 </li>
+<li>
+<a href="#JoinTable+name+clash">JoinTable name clash</a>
+</li>
 </ul>
 		
 <br>
@@ -618,6 +621,15 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 				generated EPackage implementation class. This runtime ecore can differ from the ecore file when the 
 				model code is not regenerated after a change in the ecore file. To let Teneo use the changes in the ecore
 				file the model code needs to be regenerated.</p>
+			
+</div>
+			
+<a name="N10158"></a><a name="JoinTable+name+clash"></a>
+<div class="h3">
+<h3>JoinTable name clash</h3>
+			
+<p>If you have two EReferences between two EClasses then it is possible that you will get a jointable name clash. To
+			prevent this set the PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY to unique (see <a href="options.html">here</a>).</p>
 			
 </div>
 	

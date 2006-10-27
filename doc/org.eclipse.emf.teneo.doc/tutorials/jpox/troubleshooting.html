@@ -279,6 +279,9 @@
 <a href="#Update+manager+does+not+find+the+upgrade+of+the+EMF+-+JDO+plugin">Update manager does not find the upgrade of the EMF - JDO plugin</a>
 </li>
 <li>
+<a href="#JoinTable+name+clash">JoinTable name clash</a>
+</li>
+<li>
 <a href="#Editor+does+not+start%2C+the+error+log+gives+a+sql+error+%27Missing+column....%27">Editor does not start, the error log gives a sql error 'Missing column....'</a>
 </li>
 <li>
@@ -524,7 +527,17 @@ at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
 			
 </div>
 			
-<a name="N10117"></a><a name="Editor+does+not+start%2C+the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
+<a name="N10117"></a><a name="JoinTable+name+clash"></a>
+<div class="h3">
+<h3>JoinTable name clash</h3>
+			
+<p>If you have two EReferences between two EClasses then it is possible that you will get a jointable name clash. To
+			prevent this set the PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY to unique. This is only possible if 
+			you programmatically create the jdo mapping file through the JpoxHelper class.</p>
+			
+</div>
+			
+<a name="N10120"></a><a name="Editor+does+not+start%2C+the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
 <div class="h3">
 <h3>Editor does not start, the error log gives a sql error 'Missing column....'</h3>
 			
@@ -533,7 +546,7 @@ at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
 			
 </div>
 			
-<a name="N10124"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin%2C+org.jpox.exceptions.ClassNotResolvedException"></a>
+<a name="N1012D"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin%2C+org.jpox.exceptions.ClassNotResolvedException"></a>
 <div class="h3">
 <h3>Editor does not start, ClassNotFoundException on the Editor Plugin, org.jpox.exceptions.ClassNotResolvedException</h3>
 			
@@ -544,7 +557,7 @@ at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
 			
 </div>
 			
-<a name="N1012D"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
+<a name="N10136"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
 <div class="h3">
 <h3>Editor does not start, AssertionFailedException</h3>
 			
@@ -564,7 +577,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N1013D"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
+<a name="N10146"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
 <div class="h3">
 <h3>Teneo does not see my changes in the ecore model</h3>
 				

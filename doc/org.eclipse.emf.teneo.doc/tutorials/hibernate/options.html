@@ -252,6 +252,11 @@
 		no other eattribute has a version annotation. If set to false then the version property is not added automatically.</li>
 		
 <li>
+<strong>PersistenceOptions.DEFAULT_CACHE_STRATEGY</strong>: this option allows you to set second level caching at a global level.
+		If set to a value other than NONE then all EClasses and collection EFeatures will have caching set.
+		The value is one of NONE, READ_ONLY, NONSTRICT_READ_WRITE, READ_WRITE, TRANSACTIONAL.</li>
+		
+<li>
 <strong>PersistenceOptions.DISABLE_ECONTAINER_MAPPING</strong>: this option (boolean) controls if the container relations
 		are mapped explicitly in the database, see also <a href="hibernate_relations.html#Storing+container+relation">here</a>.</li>
 		
@@ -271,6 +276,13 @@
 <li>
 <strong>PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS</strong>: boolean, if set to true then always a join table is created
 		for one-to-many non-contained associations.</li>
+		
+<li>
+<strong>PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY</strong>: string option which 
+		can have two values: ejb3 (=default) or unique. In ejb3 a join table name is the concatenation of the two entity names with an underscore (_) separator.
+		The unique value will create a join table with the name of the refering entity name and estructural feature name,
+		e.g. Writer_books in the Library example.
+		</li>
 		
 <li>
 <strong>PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH</strong>: can be used to control the column and table name length. This is especially

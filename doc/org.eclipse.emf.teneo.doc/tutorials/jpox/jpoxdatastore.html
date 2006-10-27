@@ -334,17 +334,27 @@
 			
 <ul>
 			
-<li>	
+<li>
 <strong>PersistenceOptions.UPDATE_SCHEMA</strong>: if set to "false" then the database schema is not updated 
 			when initializing a JpoxDataStore. This improves startup times. Default is "true".</li>
 			
-<li>	
+<li>
 <strong>PersistenceOptions.FETCH_CONTAINMENT_EAGERLY</strong>: if set to "true" will set the fetch strategy of all
 			containment references to EAGER. This means that containment relations are completely read in memory. Default is "false".</li>
 			
 <li> 
 <strong>PersistenceOptions.PERSISTENCE_XML</strong>: the location of the xml annotations file. The location should be a resource
 			path.</li>
+			
+<li>
+<strong>PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY</strong>: string option which 
+			can have two values: ejb3 or unique. In ejb3 a join table name is the concatenation of the two entity names with an underscore (_) separator.
+			The unique value will create a join table with the name of the refering entity name and estructural feature name,
+			e.g. Writer_books in the Library example.</li>
+			
+<li>
+<strong>PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS</strong>: boolean, if set to true then always a join table is created
+			for one-to-many non-contained associations.</li>
 			
 </ul>
 		

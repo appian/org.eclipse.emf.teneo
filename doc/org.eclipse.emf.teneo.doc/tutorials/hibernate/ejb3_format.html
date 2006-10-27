@@ -263,8 +263,13 @@
 			with a TYPE target can be used for EMF EClasses, annotations with METHOD and FIELD targets can be used for
 			EStructuralFeatures. <em>Note:</em> JPA annotations relevant for a non-reference type java member can also be set on 
 			an EDataType (see <a href="ejb3_features.html#edatatype">here</a> for more information).</p>
+			
+<p>
+<em>Note: </em> when specifying enumerated values then the constant value of the enumeration should be used without the annotation class name.
+			For example the annotation: @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+			should (in Teneo) be written as: @Cache(usage = NONSTRICT_READ_WRITE) (without quotes)</p>
 		
-<a name="N1001D"></a><a name="target"></a>
+<a name="N10022"></a><a name="target"></a>
 <div class="h3">
 <h3>JPA Annotations in EAnnotations using the java annotation syntax</h3>
 			
@@ -283,7 +288,7 @@
 		
 </div>
 		
-<a name="N10037"></a><a name="xml"></a>
+<a name="N1003C"></a><a name="xml"></a>
 <div class="h3">
 <h3>JPA Annotations in XML</h3>
 			
@@ -301,7 +306,7 @@
 		
 </div>
 		
-<a name="N1004B"></a><a name="simplenokeyvalye"></a>
+<a name="N10050"></a><a name="simplenokeyvalye"></a>
 <div class="h3">
 <h3>Simple Annotation Example</h3>
 			
@@ -328,7 +333,7 @@
 		
 </div>
 		
-<a name="N10063"></a><a name="simple"></a>
+<a name="N10068"></a><a name="simple"></a>
 <div class="h3">
 <h3>Annotation with key-value</h3>
 			
@@ -358,7 +363,7 @@
 		
 </div>
 		
-<a name="N1007E"></a><a name="multi"></a>
+<a name="N10083"></a><a name="multi"></a>
 <div class="h3">
 <h3>Complex Annotation with multi-level structure</h3>
 			
