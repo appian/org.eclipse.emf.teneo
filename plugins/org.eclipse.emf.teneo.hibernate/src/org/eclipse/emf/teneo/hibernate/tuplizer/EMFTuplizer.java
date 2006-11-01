@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.3 2006/09/19 07:24:14 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.4 2006/11/01 16:19:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -43,7 +43,7 @@ import org.hibernate.tuple.Instantiator;
  * same behavior for the getVersion methods. Also a specific object instantiator is used to make use of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -92,7 +92,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
 		final EClass eclass = StoreUtil.getEClassFromURI(persistentClass.getEntityName(), ds.getEPackages());
 		if (eclass == null) {
-			throw new HbStoreException("No eclass found for entityname: " + persistentClass.getEntityName());
+			throw new HbMapperException("No eclass found for entityname: " + persistentClass.getEntityName());
 		}
 		return new EMFInstantiator(eclass, persistentClass);
 	}

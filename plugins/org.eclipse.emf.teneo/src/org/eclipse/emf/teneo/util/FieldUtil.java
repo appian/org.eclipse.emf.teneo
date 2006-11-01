@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: FieldUtil.java,v 1.4 2006/09/06 12:07:21 mtaal Exp $
+ * $Id: FieldUtil.java,v 1.5 2006/11/01 16:19:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class FieldUtil {
@@ -66,6 +66,46 @@ public class FieldUtil {
 		}
 	}
 
+	/** Get the value for a field, first the getter is called, if not found then the 
+	 * field is accessed directly
+	 */
+	public static Object callGetter(Object target, String fieldName) {
+		try {
+			// handle two cases get and is
+			Method method = getMethodInternal(target.getClass(), "get" + fieldName);
+			if (method == null) {
+				method = getMethodInternal(target.getClass(), "is" + fieldName);
+			}
+			if (method != null) {
+				return callMethod(method, method.getName(), new Object[0]);
+			}
+			
+			// no method try a field
+			final Field field = getField(target.getClass(), fieldName);
+			return field.get(target);
+		} catch (Exception e) {
+			throw new StoreException("Exception getting " + fieldName + " from " +
+					target.getClass().getName(), e);
+		}
+	}
+
+	/** Some other utility methods */
+	public static void callSetter(Object target, String fieldName, Object value) {
+		try {
+			Method method = getMethodInternal(target.getClass(), "set" + fieldName);
+			if (method != null) {
+				callMethod(method, method.getName(), new Object[] {value});
+			}
+			
+			// no method try a field
+			final Field field = getField(target.getClass(), fieldName);
+			field.set(target, value);
+		} catch (Exception e) {
+			throw new StoreException("Exception setting " + fieldName + " from " +
+					target.getClass().getName(), e);
+		}
+	}
+	
 	/**
 	 * Returns a field using a certain name, walks up the class hierarchy to find the field, will make the field
 	 * accessible also. Is a bit rough because it does a case insensitive search. Note if the field is not found an

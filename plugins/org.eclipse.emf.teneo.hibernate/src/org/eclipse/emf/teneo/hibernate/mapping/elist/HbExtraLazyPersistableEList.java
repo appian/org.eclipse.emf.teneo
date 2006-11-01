@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.3 2006/08/22 22:35:41 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.4 2006/11/01 16:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -20,7 +20,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.hibernate.collection.PersistentBag;
 import org.hibernate.collection.PersistentCollection;
@@ -33,7 +33,7 @@ import org.hibernate.collection.PersistentList;
  * list can not work in a detached mode. 
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class HbExtraLazyPersistableEList extends PersistableEList {
@@ -81,7 +81,7 @@ public class HbExtraLazyPersistableEList extends PersistableEList {
 		{
 
 		} else {
-			throw new HbStoreException("Type " + newDelegate.getClass().getName() + " can not be "
+			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be "
 					+ " used as a replacement for elist " + logString);
 		}
 	}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.2 2006/08/03 09:58:19 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.3 2006/11/01 16:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.teneo.EContainerRepairControl;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.util.AssertUtil;
@@ -43,7 +43,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class HibernatePersistableEList extends PersistableEList {
@@ -171,7 +171,7 @@ public class HibernatePersistableEList extends PersistableEList {
 		{
 
 		} else {
-			throw new HbStoreException("Type " + newDelegate.getClass().getName() + " can not be "
+			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be "
 					+ " used as a replacement for elist " + logString);
 		}
 	}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListPropertyHandler.java,v 1.7 2006/09/28 20:03:38 mtaal Exp $
+ * $Id: EListPropertyHandler.java,v 1.8 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEList;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEList;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
@@ -53,7 +53,7 @@ import org.hibernate.property.Setter;
  * methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -125,7 +125,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 				try {
 					javaField.set(owner, pelist);
 				} catch (Exception e) {
-					throw new HbStoreException("The field " + javaField.getName() + " can not be set using object "
+					throw new HbMapperException("The field " + javaField.getName() + " can not be set using object "
 							+ pelist.getClass().getName() + " on target " + owner.getClass().getName(), e);
 				}
 			}
@@ -217,7 +217,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 				log.debug("Set value " + value.getClass().getName() + " for target " + target.getClass().getName()
 						+ " field " + eFeature.getName());
 			} catch (Exception e) {
-				throw new HbStoreException("The field + " + javaField.getName() + " can not be set using object "
+				throw new HbMapperException("The field + " + javaField.getName() + " can not be set using object "
 						+ value.getClass().getName() + " on target " + target.getClass().getName(), e);
 			}
 		}

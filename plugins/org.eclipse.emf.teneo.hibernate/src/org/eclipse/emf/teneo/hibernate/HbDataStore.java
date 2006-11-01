@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.8 2006/09/29 20:35:28 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.9 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -83,7 +83,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class HbDataStore {
@@ -145,7 +145,7 @@ public class HbDataStore {
 	public final void initialize() {
 		// check a few things
 		if (getEPackages() == null)
-			throw new HbStoreException("EPackages are not set");
+			throw new HbMapperException("EPackages are not set");
 		// if (getName() == null)
 		// throw new HbStoreException("Name is not set");
 
@@ -539,7 +539,7 @@ public class HbDataStore {
 			hibResource.getContents().addAll(importResource.getContents());
 			hibResource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
-			throw new HbStoreException("Exception when exporting " + name, e);
+			throw new HbMapperException("Exception when exporting " + name, e);
 		}
 	}
 
@@ -571,7 +571,7 @@ public class HbDataStore {
 
 			hibResource.unload();
 		} catch (IOException e) {
-			throw new HbStoreException("Exception when exporting " + name, e);
+			throw new HbMapperException("Exception when exporting " + name, e);
 		}
 	}
 
@@ -721,7 +721,7 @@ public class HbDataStore {
 								final Collection coll = (Collection) prop.getValue();
 								toEntity = ((ManyToOne) coll.getElement()).getReferencedEntityName();
 							} else {
-								throw new HbStoreException("Type "
+								throw new HbMapperException("Type "
 										+ ((Collection) prop.getValue()).getElement().getClass().getName()
 										+ " not supported");
 							}
@@ -771,7 +771,7 @@ public class HbDataStore {
 
 					list.add(new ReferenceTo(pc.getEntityName(), prop, isContainer, isMany));
 				} catch (StoreClassLoadException e) {
-					throw new HbStoreException("Class not found using property: " + prop.getName() + " of " + prop, e);
+					throw new HbMapperException("Class not found using property: " + prop.getName() + " of " + prop, e);
 				}
 			}
 		}
@@ -868,7 +868,7 @@ public class HbDataStore {
 	 * If no properties have been set explicitly, the method will attempt to load them from the file
 	 * "/elver-persistence.properties" at the root of the classpath. (A mechanism similar to "hibernate.properties".)
 	 * 
-	 * @throws HbStoreException
+	 * @throws HbMapperException
 	 *             if an error occured reading the properties file.
 	 * @return the persistence options as a Properties instance.
 	 * 
@@ -881,12 +881,12 @@ public class HbDataStore {
 				try {
 					props.load(in);
 				} catch (IOException e) {
-					throw new HbStoreException(e);
+					throw new HbMapperException(e);
 				} finally {
 					try {
 						in.close();
 					} catch (IOException e) {
-						throw new HbStoreException(e);
+						throw new HbMapperException(e);
 					}
 				}
 			}

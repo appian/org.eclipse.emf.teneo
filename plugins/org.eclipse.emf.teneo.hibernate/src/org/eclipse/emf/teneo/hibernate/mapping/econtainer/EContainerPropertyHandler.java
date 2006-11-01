@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerPropertyHandler.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: EContainerPropertyHandler.java,v 1.2 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -25,7 +25,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.FieldUtil;
 import org.hibernate.HibernateException;
@@ -38,7 +38,7 @@ import org.hibernate.property.Setter;
  * Implements the accessor for eContainer member
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class EContainerPropertyHandler implements Getter, Setter {
@@ -85,7 +85,7 @@ public class EContainerPropertyHandler implements Getter, Setter {
 		try {
 			ecField.set(target, value);
 		} catch (Exception e) {
-			throw new HbStoreException("Exception when setting econtainer for: " + target.getClass().getName()
+			throw new HbMapperException("Exception when setting econtainer for: " + target.getClass().getName()
 					+ " to value: " + value);
 		}
 	}

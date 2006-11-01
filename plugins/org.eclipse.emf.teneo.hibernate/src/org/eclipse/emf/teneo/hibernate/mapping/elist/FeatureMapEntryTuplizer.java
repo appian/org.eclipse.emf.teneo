@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryTuplizer.java,v 1.3 2006/09/19 07:24:14 mtaal Exp $
+ * $Id: FeatureMapEntryTuplizer.java,v 1.4 2006/11/01 16:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer;
@@ -38,7 +38,7 @@ import org.hibernate.tuple.Instantiator;
  * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class FeatureMapEntryTuplizer extends EMFTuplizer {
@@ -96,7 +96,7 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 				.getEPackages());
 
 		if (efeature == null) {
-			throw new HbStoreException("Feature not found for entity/property " + pc.getEntityName() + "/"
+			throw new HbMapperException("Feature not found for entity/property " + pc.getEntityName() + "/"
 					+ mappedProperty.getName());
 		}
 

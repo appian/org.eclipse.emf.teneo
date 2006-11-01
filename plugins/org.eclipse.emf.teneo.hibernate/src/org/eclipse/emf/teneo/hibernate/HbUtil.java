@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.5 2006/09/22 13:58:21 mtaal Exp $
+ * $Id: HbUtil.java,v 1.6 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -43,7 +43,7 @@ import org.hibernate.property.PropertyAccessor;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class HbUtil {
 
@@ -75,7 +75,7 @@ public class HbUtil {
 		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(entityName, mappedProperty.getName(), ds.getEPackages());
 
 		if (efeature == null) {
-			throw new HbStoreException("Feature not found for entity/property " + entityName + "/" + mappedProperty.getName());
+			throw new HbMapperException("Feature not found for entity/property " + entityName + "/" + mappedProperty.getName());
 		}
 
 		log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + entityName + "/" + efeature.getName());

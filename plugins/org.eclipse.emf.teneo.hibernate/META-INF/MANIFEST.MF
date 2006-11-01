@@ -8,9 +8,9 @@ Bundle-Localization: plugin
 Eclipse-BuddyPolicy: dependent
 Require-Bundle: org.eclipse.emf.teneo;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.teneo.annotations;visibility:=reexport
+ org.eclipse.emf.teneo.annotations;visibility:=reexport,
+ org.eclipse.emf.teneo.hibernate.mapper
 Export-Package: org.eclipse.emf.teneo.hibernate,
- org.eclipse.emf.teneo.hibernate.mapper,
  org.eclipse.emf.teneo.hibernate.mapping,
  org.eclipse.emf.teneo.hibernate.mapping.econtainer,
  org.eclipse.emf.teneo.hibernate.mapping.elist,

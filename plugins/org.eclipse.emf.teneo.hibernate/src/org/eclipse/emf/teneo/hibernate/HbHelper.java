@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.2 2006/08/24 22:12:52 mtaal Exp $
+ * $Id: HbHelper.java,v 1.3 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -35,7 +35,7 @@ import org.hibernate.mapping.PersistentClass;
  * Is the main entry point for 'outside' users to create, register and retrieve EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HbHelper {
 	/** The logger */
@@ -70,7 +70,7 @@ public class HbHelper {
 		for (Iterator it = ds.getConfiguration().getClassMappings(); it.hasNext();) {
 			final PersistentClass pc = (PersistentClass) it.next();
 			if (dataStoreByPersistentClass.get(pc) != null) {
-				throw new HbStoreException("There is already a datastore registered for this pc: " + pc.getEntityName()
+				throw new HbMapperException("There is already a datastore registered for this pc: " + pc.getEntityName()
 						+ ((HbDataStore) dataStoreByPersistentClass.get(pc)).getName() + "/" + ds.getName());
 			}
 			log.debug("Datastore: " + ds.getName() + " registered for pc: " + pc.getEntityName());
@@ -88,7 +88,7 @@ public class HbHelper {
 	public HbDataStore getDataStore(PersistentClass pc) {
 		final HbDataStore ds = (HbDataStore) dataStoreByPersistentClass.get(pc);
 		if (ds == null) {
-			throw new HbStoreException("No datastore for pc " + pc.getEntityName());
+			throw new HbMapperException("No datastore for pc " + pc.getEntityName());
 		}
 		return ds;
 	}
@@ -97,7 +97,7 @@ public class HbHelper {
 	public HbDataStore getDataStore(Component component) {
 		final HbDataStore ds = (HbDataStore) dataStoreByPersistentClass.get(component);
 		if (ds == null) {
-			throw new HbStoreException("No datastore for pc " + component.getComponentClassName());
+			throw new HbMapperException("No datastore for pc " + component.getComponentClassName());
 		}
 		return ds;
 	}
@@ -116,7 +116,7 @@ public class HbHelper {
 	/** Deregisters a session factory from the registry */
 	public synchronized void deRegisterDataStore(String name) {
 		if (name == null) {
-			throw new HbStoreException("An unique name should be specified when deregistering a session factory");
+			throw new HbMapperException("An unique name should be specified when deregistering a session factory");
 		}
 		final HbDataStore emfds = (HbDataStore) emfDataStores.get(name);
 		if (emfds == null) {
@@ -128,7 +128,7 @@ public class HbHelper {
 			final PersistentClass pc = (PersistentClass) it.next();
 			HbDataStore removedDS = (HbDataStore) dataStoreByPersistentClass.remove(pc);
 			if (removedDS != emfds) {
-				throw new HbStoreException("Removed datastore is unequal to deregistered ds: " + removedDS.getName() + "/"
+				throw new HbMapperException("Removed datastore is unequal to deregistered ds: " + removedDS.getName() + "/"
 						+ emfds.getName() + "/" + pc.getEntityName());
 			}
 		}

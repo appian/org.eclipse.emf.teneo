@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SessionController.java,v 1.1 2006/10/04 14:08:08 mtaal Exp $
+ * $Id: SessionController.java,v 1.2 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -21,7 +21,7 @@ import java.util.Hashtable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.hibernate.Session;
 
 /**
@@ -34,7 +34,7 @@ import org.hibernate.Session;
  * session controller.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class SessionController {
@@ -47,7 +47,7 @@ public class SessionController {
 	/** Register a session controller */
 	public static synchronized void registerSessionController(String name, SessionController sc) {
 		if (sessionControllers.get(name) != null) {
-			throw new HbStoreException("There is already a session controller registered with the name: " + name);
+			throw new HbMapperException("There is already a session controller registered with the name: " + name);
 		}
 		log.debug("Registering session controller: " + name);
 		sessionControllers.put(name, sc);
@@ -56,7 +56,7 @@ public class SessionController {
 	/** Deregisters a session controller */
 	public static synchronized void deRegisterSessionController(String name) {
 		if (sessionControllers.get(name) == null) {
-			throw new HbStoreException("There is no session controller registered with the name: " + name);
+			throw new HbMapperException("There is no session controller registered with the name: " + name);
 		}
 		log.debug("De-Registering session controller: " + name);
 		sessionControllers.remove(name);

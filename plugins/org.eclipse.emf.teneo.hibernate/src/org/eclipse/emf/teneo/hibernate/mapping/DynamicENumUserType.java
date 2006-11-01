@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicENumUserType.java,v 1.1 2006/09/07 22:27:50 mtaal Exp $
+ * $Id: DynamicENumUserType.java,v 1.2 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.hibernate.HibernateException;
 import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
@@ -36,14 +37,10 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/07 22:27:50 $
+ * @version $Revision: 1.2 $ $Date: 2006/11/01 16:19:45 $
  */
 
 public class DynamicENumUserType implements UserType, ParameterizedType {
-	/** The expected parameter name which contains the enum class name */
-	public static final String EPACKAGE_PARAM = "epackage";
-	public static final String ECLASSIFIER_PARAM = "eclassifier";
-
 	/** The sql types used for enums */
 	private static final int[] SQL_TYPES = new int[] { Types.VARCHAR };
 
@@ -162,8 +159,8 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 
 	/** Sets the enumclass */
 	public void setParameterValues(Properties parameters) {
-		final String epackUri = parameters.getProperty(EPACKAGE_PARAM);
-		final String eclassifier = parameters.getProperty(ECLASSIFIER_PARAM);
+		final String epackUri = parameters.getProperty(HbMapperConstants.EPACKAGE_PARAM);
+		final String eclassifier = parameters.getProperty(HbMapperConstants.ECLASSIFIER_PARAM);
 		final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(epackUri);
 		enumInstance = (EEnum)epack.getEClassifier(eclassifier);
 	}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFComponentTuplizer.java,v 1.3 2006/09/19 07:24:14 mtaal Exp $
+ * $Id: EMFComponentTuplizer.java,v 1.4 2006/11/01 16:19:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.engine.SessionFactoryImplementor;
@@ -36,7 +36,7 @@ import org.hibernate.tuple.Instantiator;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class EMFComponentTuplizer extends AbstractComponentTuplizer {
@@ -59,7 +59,7 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(component);
 		final EClass eclass = StoreUtil.getEClassFromURI(component.getComponentClassName(), ds.getEPackages());
 		if (eclass == null) {
-			throw new HbStoreException("No eclass found for entityname: " + component.getComponentClassName());
+			throw new HbMapperException("No eclass found for entityname: " + component.getComponentClassName());
 		}
 		return new EMFInstantiator(eclass, component);
 	}

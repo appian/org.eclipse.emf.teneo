@@ -16,6 +16,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo.hibernate,
- org.eclipse.emf.teneo.eclipse
+ org.eclipse.emf.teneo.eclipse,
+ org.eclipse.emf.teneo.hibernate.mapper
 Eclipse-LazyStart: true
 Bundle-Activator: org.eclipse.emf.teneo.eclipse.StorePlugin

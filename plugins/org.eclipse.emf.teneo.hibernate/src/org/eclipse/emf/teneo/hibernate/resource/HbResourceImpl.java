@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbResourceImpl.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: HbResourceImpl.java,v 1.2 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.hibernate.HbConstants;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.resource.StoreResource;
@@ -55,7 +55,7 @@ import org.hibernate.Transaction;
  * Another simple trick which is used to fool emf a bit is that the extension of the uri can also be used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HbResourceImpl extends StoreResource implements HbResource {
@@ -93,7 +93,7 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 					emfDataStore = HbUtil.getCreateDataStore(props);
 					setDefinedQueries(getQueries(props));
 				} catch (IOException e) {
-					throw new HbStoreException("Exception when reading properties from: " + uri.toString(), e);
+					throw new HbMapperException("Exception when reading properties from: " + uri.toString(), e);
 				}
 			} else {
 				log.debug("Trying fileextension: " + uri.fileExtension());
@@ -107,7 +107,7 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 		}
 
 		if (emfdsName == null) {
-			throw new HbStoreException("The Resource can not be initialized using the querystring: " + uri.query()
+			throw new HbMapperException("The Resource can not be initialized using the querystring: " + uri.query()
 					+ ". Are all the required parameters present?");
 		}
 		log.debug("Looking for emf data store using  " + emfdsName);
@@ -167,7 +167,7 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
-			throw new HbStoreException("Exception when doing cross reference search " + emfDataStore.getName(), e);
+			throw new HbMapperException("Exception when doing cross reference search " + emfDataStore.getName(), e);
 		} finally {
 			if (err) {
 				if (tx != null) tx.rollback();
@@ -214,7 +214,7 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 			err = false;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
-			throw new HbStoreException("Exception when saving resource " + emfDataStore.getName(), e);
+			throw new HbMapperException("Exception when saving resource " + emfDataStore.getName(), e);
 		} finally {
 			if (err) {
 				if (tx != null) tx.rollback();
@@ -245,7 +245,7 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 			return storeList;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
-			throw new HbStoreException("Exception when saving resource " + emfDataStore.getName(), e);
+			throw new HbMapperException("Exception when saving resource " + emfDataStore.getName(), e);
 		} finally {
 			if (err) {
 				if (tx != null) tx.rollback();

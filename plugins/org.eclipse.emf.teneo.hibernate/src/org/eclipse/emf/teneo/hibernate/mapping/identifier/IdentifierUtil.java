@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdentifierUtil.java,v 1.2 2006/07/22 13:09:55 mtaal Exp $
+ * $Id: IdentifierUtil.java,v 1.3 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
@@ -23,7 +23,7 @@ import java.util.Hashtable;
 
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.hibernate.engine.ForeignKeys;
 import org.hibernate.engine.SessionImplementor;
 import org.hibernate.impl.SessionImpl;
@@ -35,7 +35,7 @@ import org.hibernate.type.Type;
  * uses the underlying hibernate identifier. This allows more flexibility than the EMF identifier.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class IdentifierUtil {
@@ -92,24 +92,24 @@ public class IdentifierUtil {
 				final Class clazz = ClassLoaderResolver.classForName(className);
 				constructor = clazz.getConstructor(new Class[] { String.class });
 			} catch (StoreClassLoadException e) {
-				throw new HbStoreException("Class " + className + " not found");
+				throw new HbMapperException("Class " + className + " not found");
 			} catch (NoSuchMethodException e) {
-				throw new HbStoreException("Class " + className
+				throw new HbMapperException("Class " + className
 						+ " does not have a constructor with a String parameter!");
 			}
 		}
 		if (constructor == null) {
-			throw new HbStoreException("Class " + className + " does not have a constructor with a String parameter!");
+			throw new HbMapperException("Class " + className + " does not have a constructor with a String parameter!");
 		}
 
 		try {
 			return (Serializable) constructor.newInstance(new Object[] { strValue });
 		} catch (InvocationTargetException e) {
-			throw new HbStoreException("Can not instantiate: " + className + " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
 		} catch (InstantiationException e) {
-			throw new HbStoreException("Can not instantiate: " + className + " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
 		} catch (IllegalAccessException e) {
-			throw new HbStoreException("Can not instantiate: " + className + " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
 		}
 	}
 

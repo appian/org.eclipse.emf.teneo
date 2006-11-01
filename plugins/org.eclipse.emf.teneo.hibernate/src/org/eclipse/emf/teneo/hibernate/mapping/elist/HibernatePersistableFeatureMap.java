@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableFeatureMap.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: HibernatePersistableFeatureMap.java,v 1.2 2006/11/01 16:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.teneo.EContainerRepairControl;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableFeatureMap;
 import org.eclipse.emf.teneo.util.AssertUtil;
@@ -43,7 +43,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
@@ -174,7 +174,7 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 					((PersistentBag) newDelegate).isWrapper(delegate));
 			super.replaceDelegate(newDelegate);
 		} else {
-			throw new HbStoreException("Type " + newDelegate.getClass().getName() + " can not be "
+			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be "
 					+ " used as a replacement for elist " + logString);
 		}
 	}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ENumUserType.java,v 1.2 2006/09/07 22:27:50 mtaal Exp $
+ * $Id: ENumUserType.java,v 1.3 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -29,7 +29,8 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.hibernate.HibernateException;
 import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
@@ -38,12 +39,10 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/09/07 22:27:50 $
+ * @version $Revision: 1.3 $ $Date: 2006/11/01 16:19:45 $
  */
 
 public class ENumUserType implements UserType, ParameterizedType {
-	/** The expected parameter name which contains the enum class name */
-	public static final String ENUM_CLASS_PARAM = "enumClass";
 
 	/** The sql types used for enums */
 	private static final int[] SQL_TYPES = new int[] { Types.VARCHAR };
@@ -133,7 +132,7 @@ public class ENumUserType implements UserType, ParameterizedType {
 			localCache.put(name, enumValue);
 			return enumValue;
 		} catch (Exception e) {
-			throw new HbStoreException("Exception when getting enum for class: " + enumType.getName()
+			throw new HbMapperException("Exception when getting enum for class: " + enumType.getName()
 					+ " using value: " + name, e);
 		}
 	}
@@ -172,14 +171,14 @@ public class ENumUserType implements UserType, ParameterizedType {
 
 	/** Sets the enumclass */
 	public void setParameterValues(Properties parameters) {
-		final String enumClassName = parameters.getProperty(ENUM_CLASS_PARAM);
+		final String enumClassName = parameters.getProperty(HbMapperConstants.ENUM_CLASS_PARAM);
 		try {
 			enumType = ClassLoaderResolver.classForName(enumClassName);
 			getMethod = enumType.getMethod("get", new Class[] { String.class });
 		} catch (StoreClassLoadException e) {
-			throw new HbStoreException("Enum class " + enumClassName + " can not be found", e);
+			throw new HbMapperException("Enum class " + enumClassName + " can not be found", e);
 		} catch (NoSuchMethodException e) {
-			throw new HbStoreException("Get method not present in enum class " + enumClassName, e);
+			throw new HbMapperException("Get method not present in enum class " + enumClassName, e);
 		}
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInstantiator.java,v 1.2 2006/08/21 08:04:06 mtaal Exp $
+ * $Id: EMFInstantiator.java,v 1.3 2006/11/01 16:19:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -24,7 +24,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.hibernate.mapping.Component;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.tuple.Instantiator;
@@ -33,7 +33,7 @@ import org.hibernate.tuple.Instantiator;
  * Instantiates eobjects using the efactory.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class EMFInstantiator implements Instantiator {
@@ -72,7 +72,7 @@ public class EMFInstantiator implements Instantiator {
 	public Object instantiate() {
 		final EObject eobject = EcoreUtil.create(eclass);
 		if (eobject == null) {
-			throw new HbStoreException("The mapped " + mappedClass.getName() + " class can not be instantiated."
+			throw new HbMapperException("The mapped " + mappedClass.getName() + " class can not be instantiated."
 					+ " Possibly the class it is not an eclass or it is abstract.");
 		}
 		return eobject;
@@ -82,7 +82,7 @@ public class EMFInstantiator implements Instantiator {
 	public Object instantiate(Serializable id) {
 		final EObject eobject = EcoreUtil.create(eclass);
 		if (eobject == null) {
-			throw new HbStoreException("The mapped " + mappedClass.getName() + " class can not be instantiated."
+			throw new HbMapperException("The mapped " + mappedClass.getName() + " class can not be instantiated."
 					+ " Possibly the class it is not an eclass or it is abstract.");
 		}
 		return eobject;

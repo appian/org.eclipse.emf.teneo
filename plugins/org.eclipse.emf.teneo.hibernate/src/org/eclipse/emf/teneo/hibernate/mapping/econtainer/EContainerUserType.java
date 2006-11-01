@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerUserType.java,v 1.3 2006/10/20 13:21:49 mtaal Exp $
+ * $Id: EContainerUserType.java,v 1.4 2006/11/01 16:19:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -30,7 +30,7 @@ import org.dom4j.Node;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
-import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.hibernate.EntityMode;
 import org.hibernate.Hibernate;
@@ -54,7 +54,7 @@ import org.hibernate.usertype.CompositeUserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/10/20 13:21:49 $
+ * @version $Revision: 1.4 $ $Date: 2006/11/01 16:19:45 $
  */
 
 public class EContainerUserType extends AbstractType implements CompositeUserType, AssociationType {
@@ -311,7 +311,7 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 			return IdentifierCacheHandler.getID(container);
 		}
 
-		throw new HbStoreException("Property: " + property + " not supported in " + component.getClass().getName());
+		throw new HbMapperException("Property: " + property + " not supported in " + component.getClass().getName());
 	}
 
 	/** Load the object on the basis of the data in the resultset */
@@ -404,24 +404,24 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 				final Class clazz = ClassLoaderResolver.classForName(className);
 				constructor = clazz.getConstructor(new Class[] { String.class });
 			} catch (StoreClassLoadException e) {
-				throw new HbStoreException("Class " + className + " not found");
+				throw new HbMapperException("Class " + className + " not found");
 			} catch (NoSuchMethodException e) {
-				throw new HbStoreException("Class " + className
+				throw new HbMapperException("Class " + className
 						+ " does not have a constructor with a String parameter!");
 			}
 		}
 		if (constructor == null) {
-			throw new HbStoreException("Class " + className + " does not have a constructor with a String parameter!");
+			throw new HbMapperException("Class " + className + " does not have a constructor with a String parameter!");
 		}
 
 		try {
 			return (Serializable) constructor.newInstance(new Object[] { strValue });
 		} catch (InvocationTargetException e) {
-			throw new HbStoreException("Can not instantiate: " + className + " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
 		} catch (InstantiationException e) {
-			throw new HbStoreException("Can not instantiate: " + className + " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
 		} catch (IllegalAccessException e) {
-			throw new HbStoreException("Can not instantiate: " + className + " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
 		}
 	}
 
