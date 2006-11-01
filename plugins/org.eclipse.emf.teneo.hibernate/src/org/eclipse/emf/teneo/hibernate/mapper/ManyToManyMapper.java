@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.4 2006/10/20 13:21:49 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.5 2006/11/01 11:39:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -25,8 +25,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
-import org.eclipse.emf.teneo.annotations.processing.ManyToManyProcessor;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -37,7 +35,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class ManyToManyMapper extends AbstractAssociationMapper implements ManyToManyProcessor {
+class ManyToManyMapper extends AbstractAssociationMapper {
 
 	/** Logger */
 	private static final Log log = LogFactory.getLog(ManyToManyMapper.class);
@@ -50,30 +48,9 @@ class ManyToManyMapper extends AbstractAssociationMapper implements ManyToManyPr
 	}
 
 	/**
-	 * Many to Many unidirectional
-	 */
-	public void processMtMUni(PAnnotatedEReference paReference) {
-		processMtM(paReference);
-	}
-
-	/**
-	 * Many to Many bidirectional owner
-	 */
-	public void processMtMBidiOwner(PAnnotatedEReference paReference) {
-		processMtM(paReference);
-	}
-
-	/**
-	 * Many to Many bidirectional inverse
-	 */
-	public void processMtMBidiInverse(PAnnotatedEReference paReference) {
-		processMtM(paReference);
-	}
-
-	/**
 	 * Process a many to many for all cases
 	 */
-	public void processMtM(PAnnotatedEReference paReference) {
+	public void process(PAnnotatedEReference paReference) {
 		log.debug("Creating many-to-many for " + paReference);
 
         HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
@@ -82,7 +59,7 @@ class ManyToManyMapper extends AbstractAssociationMapper implements ManyToManyPr
 		final ManyToMany mtm = hbReference.getManyToMany();
 
 		if (jt == null) {
-			throw new ProcessingException("Jointable is mandatory "
+			throw new MappingException("Jointable is mandatory "
 					+ StoreUtil.toString(hbReference.getAnnotatedEReference()));
 		}
 

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.4 2006/09/21 00:56:35 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.5 2006/11/01 11:39:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeObject;
@@ -40,7 +39,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class MappingUtil {
@@ -51,11 +50,11 @@ public class MappingUtil {
 	public static String getImplNameOfEClass(String eClassURI) {
 		final EClass eclass = StoreUtil.getEClassFromURI(eClassURI, ERuntime.INSTANCE.getEPackages());
 		if (eclass == null) {
-			throw new ProcessingException("Uri: " + eClassURI + " does not translate to an eclass");
+			throw new JPOXMappingException("Uri: " + eClassURI + " does not translate to an eclass");
 		}
 		final Class clazz = getImplClassOfEClass(eclass);
 		if (clazz == null) {
-			throw new ProcessingException("Uri: " + eClassURI + " does not translate to an instance class");
+			throw new JPOXMappingException("Uri: " + eClassURI + " does not translate to an instance class");
 		}
 		return clazz.getName();
 	}

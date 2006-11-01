@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingException.java,v 1.1 2006/07/05 22:29:30 mtaal Exp $
+ * $Id: MappingException.java,v 1.2 2006/11/01 11:39:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -33,6 +33,11 @@ public class MappingException extends RuntimeException {
 
 	/** Logger */
 	private static final Log log = LogFactory.getLog(MappingException.class);
+
+	public MappingException(String msg) {
+		super(msg);
+		log.error("EXCEPTION: " + msg + " CAUSE ");
+	}
 
 	/** Constructor */
 	public MappingException(String msg, PAnnotatedEModelElement paElement) {

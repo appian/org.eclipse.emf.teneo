@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.3 2006/09/22 05:21:48 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.4 2006/11/01 11:39:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,7 +24,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
-import org.eclipse.emf.teneo.annotations.processing.OneToOneProcessor;
+import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class OneToOneMapper extends AbstractAssociationMapper implements OneToOneProcessor {
+class OneToOneMapper extends AbstractAssociationMapper {
 
 	private static final Log log = LogFactory.getLog(OneToOneMapper.class);
 
@@ -57,36 +57,18 @@ class OneToOneMapper extends AbstractAssociationMapper implements OneToOneProces
 				"entity-name", targetEntity);
 	}
 
-	/**
-	 * @see org.eclipse.emf.teneo.annotations.processing.OneToOneProcessor#processUnidirectional(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
-	 *      org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass)
-	 */
-	public void processOtOUni(PAnnotatedEReference paReference) {
-		if (!paReference.getPrimaryKeyJoinColumns().isEmpty()) {
-			createOneToOne(paReference);
+	/** Process the one-to-one */
+	public void process(PAnnotatedEReference paReference) {
+		if (getOtherSide(paReference) == null || 
+				paReference.getOneToOne().eIsSet(PannotationPackage.eINSTANCE.getOneToOne_MappedBy())) {
+			if (!paReference.getPrimaryKeyJoinColumns().isEmpty()) {
+				createOneToOne(paReference);
+			} else {
+				createManyToOne(paReference);
+			}
 		} else {
-			createManyToOne(paReference);
-		}
-	}
-
-	/**
-	 * @see org.eclipse.emf.teneo.annotations.processing.OneToOneProcessor#processBidirectionalOwner(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
-	 *      org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
-	 */
-	public void processOtOBidiOwner(PAnnotatedEReference paReference) {
-		if (!paReference.getPrimaryKeyJoinColumns().isEmpty()) {
 			createOneToOne(paReference);
-		} else {
-			createManyToOne(paReference);
 		}
-	}
-
-	/**
-	 * @see org.eclipse.emf.teneo.annotations.processing.OneToOneProcessor#processBidirectionalInverse(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
-	 *      org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
-	 */
-	public void processOtOBidilInverse(PAnnotatedEReference paReference) {
-		createOneToOne(paReference);
 	}
 
 	/** Create hibernate many-to-one mapping */

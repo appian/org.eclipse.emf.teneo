@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.3 2006/09/22 13:58:21 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.4 2006/11/01 11:39:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,8 +24,6 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
-import org.eclipse.emf.teneo.annotations.processing.ManyToOneProcessor;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -40,7 +38,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class ManyToOneMapper extends AbstractAssociationMapper implements ManyToOneProcessor {
+class ManyToOneMapper extends AbstractAssociationMapper {
 
 	/** Log it */
 	private static final Log log = LogFactory.getLog(ManyToOneMapper.class);
@@ -53,13 +51,13 @@ class ManyToOneMapper extends AbstractAssociationMapper implements ManyToOneProc
 	/**
 	 * Generate the hb mapping for the given reference and annotations.
 	 */
-	private void processMtO(PAnnotatedEReference paReference) {
+	public void process(PAnnotatedEReference paReference) {
 		log.debug("Process many-to-one " + paReference);
 
 		final List jcs = getJoinColumns(paReference);
 		if (jcs.size() > 1) { // TODO support multiple join columns
 			log.error("Unsupported multiple join columns in " + paReference);
-			throw new ProcessingException("Unsupported multiple join columns", paReference);
+			throw new MappingException("Unsupported multiple join columns", paReference);
 		}
 
 		final ManyToOne mto = paReference.getManyToOne();
@@ -91,29 +89,4 @@ class ManyToOneMapper extends AbstractAssociationMapper implements ManyToOneProc
 		// associationElement.addAttribute("unique", "true");
 		addIsSetAttribute(paReference);
 	}
-
-	/**
-	 * @see org.eclipse.emf.teneo.annotations.processing.ManyToOneProcessor#processMtOUni(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
-	 *      org.eclipse.emf.teneo.annotations.pannotation.ManyToOne, java.util.List)
-	 */
-	public void processMtOUni(PAnnotatedEReference paReference) {
-		if (log.isDebugEnabled()) {
-			log.debug("Generating many to one unidirectional mapping for " + paReference);
-		}
-
-		processMtO(paReference);
-	}
-
-	/**
-	 * @see org.eclipse.emf.teneo.annotations.processing.ManyToOneProcessor#processMtOBidiOwner(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
-	 *      org.eclipse.emf.teneo.annotations.pannotation.ManyToOne, java.util.List)
-	 */
-	public void processMtOBidiOwner(PAnnotatedEReference paReference) {
-		if (log.isDebugEnabled()) {
-			log.debug("Generating many to one bidirectional owner mapping for " + paReference);
-		}
-
-		processMtOUni(paReference);
-	}
-
 }

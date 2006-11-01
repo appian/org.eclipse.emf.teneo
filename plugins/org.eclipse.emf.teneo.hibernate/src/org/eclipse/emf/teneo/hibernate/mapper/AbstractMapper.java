@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.4 2006/10/20 13:21:49 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.5 2006/11/01 11:39:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -29,7 +29,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
@@ -45,9 +44,15 @@ abstract class AbstractMapper {
 	/** logs it all */
 	private static final Log log = LogFactory.getLog(AbstractMapper.class);
 
+	/** return the opposite of an association */
+	protected PAnnotatedEReference getOtherSide(PAnnotatedEReference paReference) {
+		// TODO assuming that mappedBy coincide with opposite, check in validation
+		return paReference.getPaModel().getPAnnotated(paReference.getAnnotatedEReference().getEOpposite());
+	}
+	
 	/**
 	 * @return Returns the hibernate name for the given Ecore data type.
-	 * @throws ProcessingException
+	 * @throws MappingException
 	 *             if no corresponding hb type is defined.
 	 */
 	protected static String hbType(EDataType eDataType) {
@@ -67,7 +72,7 @@ abstract class AbstractMapper {
 			return eDataType.getInstanceClassName();
 		} else {
 			return "serializable"; // MT: this is sometimes the best/robust approach
-			// throw new ProcessingException("Do not know how to handle type " + eDataType);
+			// throw new MappingException("Do not know how to handle type " + eDataType);
 		}
 	}
 
@@ -134,7 +139,7 @@ abstract class AbstractMapper {
 	/** Generic method to log and throw error situation */
 	public void processIllFormed(PAnnotatedEModelElement paElement, String cause, PAnnotation offendingAnnotation) {
 		log.error(cause + " on " + paElement);
-		throw new ProcessingException(cause, offendingAnnotation);
+		throw new MappingException(cause, offendingAnnotation);
 	}
 
 	/**

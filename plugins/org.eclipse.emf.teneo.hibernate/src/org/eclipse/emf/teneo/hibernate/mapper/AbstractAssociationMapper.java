@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.7 2006/09/28 20:03:38 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.8 2006/11/01 11:39:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -31,7 +31,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -238,7 +237,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		// disabled following check because it also failed for many eattribute which even with a onetomany
 		// do not create a onetomany tag
 		// if (paFeature.getOneToMany() != null && paFeature.getJoinTable() == null && idBag != null) {
-		// throw new ProcessingException("Cannot use one-to-many attribute mapping without jointable in combination with
+		// throw new MappingException("Cannot use one-to-many attribute mapping without jointable in combination with
 		// IdBag.");
 		// }
 		if (isArray) { // array type
@@ -288,11 +287,11 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 
 			if (!joinColumn.isInsertable()) {
 				log.error("Unsupported non insertable join column in " + joinColumn);
-				throw new ProcessingException("Unsupported non insertable join column", joinColumn);
+				throw new MappingException("Unsupported non insertable join column", joinColumn);
 			}
 			if (joinColumn.isUpdatable() != isUpdatable) {
 				log.error("Unsupported join column updatable in " + joinColumn);
-				throw new ProcessingException("Unsupported join column updatable", joinColumn);
+				throw new MappingException("Unsupported join column updatable", joinColumn);
 			}
 
 			keyElement.addElement("column").addAttribute("name", getHbmContext().trunc(joinColumn.getName()))
@@ -301,12 +300,12 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 
 			if (joinColumn.getTable() != null) {
 				log.error("Unsupported secondary table in " + joinColumn);
-				throw new ProcessingException("Unsupported secondary table", joinColumn);
+				throw new MappingException("Unsupported secondary table", joinColumn);
 			}
 
 			if (joinColumn.getColumnDefinition() != null) {
 				log.error("Unsupported column definition in " + joinColumn);
-				throw new ProcessingException("Unsupported column definition", joinColumn);
+				throw new MappingException("Unsupported column definition", joinColumn);
 			}
 		}
 		// TODO jc.getReferencedColumnName();
@@ -334,7 +333,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		}
 		if (joinTable.getUniqueConstraints().size() > 0) {
 			log.error("Unsupported unique constraints in " + joinTable);
-			throw new ProcessingException("Unsupported unique constraints", joinTable);
+			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
 		addKeyColumns(keyElement, joinTable.getJoinColumns()/*
 															 * == null ? new ArrayList() :

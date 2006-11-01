@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.2 2006/09/28 20:03:38 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.3 2006/11/01 11:39:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -29,7 +29,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -102,7 +101,7 @@ public class HibernateMappingGenerator {
 			initEntityNames(hbmContext, paModel);
 			processPersistentClasses(paModel);
 			return hbmContext.endDocument();
-		} catch (ProcessingException exc) {
+		} catch (MappingException exc) {
 			throw new MappingException("Hibernate mapping generation failed", exc);
 		}
 	}

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.7 2006/10/19 04:54:05 mtaal Exp $
+ * $Id: MappingContext.java,v 1.8 2006/11/01 11:39:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -35,7 +35,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
-import org.eclipse.emf.teneo.annotations.processing.FeatureProcessor;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.SQLCaseStrategy;
@@ -44,7 +43,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -64,7 +63,7 @@ public class MappingContext extends AbstractProcessingContext {
 	private final List handledFeatureMapEAttributes = new ArrayList();
 	
 	/** the mapper used for features */
-	private final FeatureProcessor featureProcessor;
+	private final FeatureMapper featureMapper;
 
 	/**
 	 * Is the current element a mixed or a feature map, in this case all features should be not required. TODO: check,
@@ -103,7 +102,7 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** The constructor */
 	MappingContext() {
-		featureProcessor = createFeatureProcessor();
+		featureMapper = createFeatureMapper();
 		entityMapper = new EntityMapper(this);
 	}
 
@@ -141,7 +140,7 @@ public class MappingContext extends AbstractProcessingContext {
 		}
 		final Class clazz = ERuntime.INSTANCE.getInstanceClass(eClass);
 		/*
-		 * Handle this in the caller if (clazz == null) { throw new ProcessingException("No instanceclass can be found
+		 * Handle this in the caller if (clazz == null) { throw new MappingException("No instanceclass can be found
 		 * for this eclass: " + aClass.getAnnotatedEClass().getName()); }
 		 */
 		return clazz.getName();
@@ -213,31 +212,17 @@ public class MappingContext extends AbstractProcessingContext {
 	/**
 	 * @return The builder used by entity mapped that maps features to hbm.
 	 */
-	private FeatureProcessor createFeatureProcessor() {
-		final FeatureProcessor featureMapper = new FeatureProcessor();
-
-		final BasicMapper basicMapper = new BasicMapper(this);
-		final ManyAttributeMapper manyAttributeMapper = new ManyAttributeMapper(this);
-		final EmbeddedMapper embeddedMapper = new EmbeddedMapper(this);
-		final IdMapper idMapper = new IdMapper(this);
-		final ManyToManyMapper manyToManyMapper = new ManyToManyMapper(this);
-		final ManyToOneMapper manyToOneMapper = new ManyToOneMapper(this);
-		final OneToManyMapper oneToManyMapper = new OneToManyMapper(this);
-		final OneToOneMapper oneToOneMapper = new OneToOneMapper(this);
-        final UnclassifiableMapper unclassifiableMapper = new UnclassifiableMapper(this, featureMapper);
-
-		featureMapper.setBasicProcessor(basicMapper);
-		featureMapper.setTransientProcessor(basicMapper);
-		featureMapper.setVersionProcessor(basicMapper);
-		featureMapper.setManyAttributeProcessor(manyAttributeMapper);
-		featureMapper.setEmbeddedProcessor(embeddedMapper);
-		featureMapper.setIdProcessor(idMapper);
-		featureMapper.setManyToManyProcessor(manyToManyMapper);
-		featureMapper.setManyToOneProcessor(manyToOneMapper);
-		featureMapper.setOneToManyProcessor(oneToManyMapper);
-		featureMapper.setOneToOneProcessor(oneToOneMapper);
-
-		featureMapper.setUnclassifiableProcessor(unclassifiableMapper);
+	private FeatureMapper createFeatureMapper() {
+		final FeatureMapper featureMapper = new FeatureMapper();
+ 
+		featureMapper.setBasicMapper(new BasicMapper(this));
+		featureMapper.setManyAttributeMapper(new ManyAttributeMapper(this));
+		featureMapper.setEmbeddedMapper(new EmbeddedMapper(this));
+		featureMapper.setIdMapper(new IdMapper(this));
+		featureMapper.setManyToManyMapper(new ManyToManyMapper(this));
+		featureMapper.setManyToOneMapper(new ManyToOneMapper(this));
+		featureMapper.setOneToManyMapper(new OneToManyMapper(this));
+		featureMapper.setOneToOneMapper(new OneToOneMapper(this));
 		return featureMapper;
 	}
 
@@ -251,8 +236,8 @@ public class MappingContext extends AbstractProcessingContext {
 	/**
 	 * @return the featureMapper
 	 */
-	public FeatureProcessor getFeatureProcessor() {
-		return featureProcessor;
+	public FeatureMapper getFeatureMapper() {
+		return featureMapper;
 	}
 
 	/**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.7 2006/09/06 21:59:49 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.8 2006/11/01 11:39:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -45,7 +46,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>PAnnotated Model</b></em>'. <!--
@@ -401,7 +401,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 				}				
 			}
 		}
-		throw new ProcessingException("No sequence generator found with the name: " + name + ", name is used in " +
+		throw new StoreAnnotationsException("No sequence generator found with the name: " + name + ", name is used in " +
 				"annotation of element " + efeature.getEContainingClass().getName() + "/" + efeature.getName());
 	}
 

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyAttributeMapper.java,v 1.5 2006/09/22 13:58:21 mtaal Exp $
+ * $Id: ManyAttributeMapper.java,v 1.6 2006/11/01 11:39:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -30,7 +30,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
-import org.eclipse.emf.teneo.annotations.processing.ManyAttributeProcessor;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -51,7 +50,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class ManyAttributeMapper extends AbstractAssociationMapper implements ManyAttributeProcessor {
+class ManyAttributeMapper extends AbstractAssociationMapper {
 
 	/** The logger */
 	private static final Log log = LogFactory.getLog(ManyAttributeMapper.class);
@@ -65,8 +64,7 @@ class ManyAttributeMapper extends AbstractAssociationMapper implements ManyAttri
 	}
 
 	/**
-	 * @see org.eclipse.emf.teneo.annotations.processing.ManyAttributeProcessor#processManyAttribute(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute)
-	 *      oneToMany.getMappedBy() is not set joinTable.getInverseJoinColumns() is empty
+	 * Process a many=true EAttribute
 	 */
 	public void processManyAttribute(PAnnotatedEAttribute paAttribute) {
 		if (log.isDebugEnabled())

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.9 2006/10/25 18:56:03 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.10 2006/11/01 11:39:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -34,10 +34,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
-import org.eclipse.emf.teneo.annotations.processing.BasicProcessor;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
-import org.eclipse.emf.teneo.annotations.processing.TransientProcessor;
-import org.eclipse.emf.teneo.annotations.processing.VersionProcessor;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserType;
 import org.eclipse.emf.teneo.hibernate.mapping.ENumUserType;
@@ -59,7 +55,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, TransientProcessor, VersionProcessor {
+class BasicMapper extends AbstractPropertyMapper {
 
 	/** Log it all */
 	private static final Log log = LogFactory.getLog(BasicMapper.class);
@@ -102,9 +98,6 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 
 	/**
 	 * Generate hb mapping for the given basic attribute.
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.processing.BasicProcessor#processBasic(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute,
-	 *      Basic, org.eclipse.emf.teneo.annotations.pannotation.Column)
 	 */
 	public void processBasic(PAnnotatedEAttribute paAttribute) {
         HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
@@ -134,10 +127,6 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 
 	/**
 	 * Generate hb mapping for the given temporal attribute.
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.processing.BasicProcessor#processTemporal(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute,
-	 *      Basic, org.eclipse.emf.teneo.annotations.pannotation.Temporal,
-	 *      org.eclipse.emf.teneo.annotations.pannotation.Column)
 	 */
 	public void processTemporal(PAnnotatedEAttribute paAttribute) {
 		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
@@ -163,9 +152,6 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 
 	/**
 	 * Generate hb mapping for the given lob attribute.
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.processing.BasicProcessor#processLob(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute,
-	 *      Basic, org.eclipse.emf.teneo.annotations.pannotation.Column)
 	 */
 	public void processLob(PAnnotatedEAttribute paAttribute) {
 		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
@@ -179,7 +165,7 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 		} else if (EcoreDataTypes.INSTANCE.isEString(eType)) {
 			columnType = "text";
 		} else {
-			throw new ProcessingException("Lob annotations can only be used with Strings or byte arrays. "
+			throw new MappingException("Lob annotations can only be used with Strings or byte arrays. "
 					+ "Attribute is of type: " + eType);
 		}
 
@@ -207,10 +193,6 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 
 	/**
 	 * Generate hb mapping for the given enum attribute.
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.processing.BasicProcessor#processEnum(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute,
-	 *      Basic, org.eclipse.emf.teneo.annotations.pannotation.Enumerated,
-	 *      org.eclipse.emf.teneo.annotations.pannotation.Column)
 	 */
 	public void processEnum(PAnnotatedEAttribute paAttribute) {
 		log.debug("processEnum " + paAttribute.getAnnotatedEAttribute());
@@ -280,9 +262,6 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 
 	/**
 	 * Generate hb mapping for the given version attribute.
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.processing.VersionProcessor#processVersion(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute,
-	 *      org.eclipse.emf.teneo.annotations.pannotation.Column)
 	 */
 	public void processVersion(PAnnotatedEAttribute paAttribute) {
 		if (log.isDebugEnabled()) {
@@ -300,8 +279,6 @@ class BasicMapper extends AbstractPropertyMapper implements BasicProcessor, Tran
 
 	/**
 	 * Ignore transient attributes.
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.processing.TransientProcessor#processTransient(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
 	 */
 	public void processTransient(PAnnotatedEStructuralFeature paFeature) {
 		if (log.isDebugEnabled())

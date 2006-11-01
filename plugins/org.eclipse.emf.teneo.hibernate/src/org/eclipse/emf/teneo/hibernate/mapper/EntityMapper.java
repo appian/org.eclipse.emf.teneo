@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.7 2006/10/26 14:18:52 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.8 2006/11/01 11:39:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -40,8 +40,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
-import org.eclipse.emf.teneo.annotations.processing.FeatureProcessor;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -58,7 +56,7 @@ class EntityMapper extends AbstractMapper {
 	private static final Log log = LogFactory.getLog(EntityMapper.class);
 
 	/** the mapper used for features, is copied from the hbm context for convenience reasons */
-	private final FeatureProcessor featureProcessor;
+	private final FeatureMapper featureMapper;
 
 	/** Convenience maps to inheritance strategy names and discriminator types */
 	private static final String[] INHERITANCE_STRATEGY_NAMES;
@@ -102,7 +100,7 @@ class EntityMapper extends AbstractMapper {
 	 */
 	public EntityMapper(MappingContext hbmContext) {
 		super(hbmContext);
-		featureProcessor = hbmContext.getFeatureProcessor();
+		featureMapper = hbmContext.getFeatureMapper();
 	}
 
 	/**
@@ -198,11 +196,11 @@ class EntityMapper extends AbstractMapper {
 
 		if (mappedSuperClasses.isEmpty() && entity.getAttributeOverrides().size() > 0) {
 			log.error("Specified AttributeOverrides without mapped superclass in " + entity);
-			throw new ProcessingException("Specified AttributeOverrides without mapped superclass", entity);
+			throw new MappingException("Specified AttributeOverrides without mapped superclass", entity);
 		}
 		if (mappedSuperClasses.isEmpty() && entity.getAssociationOverrides().size() > 0) {
 			log.error("Specified AssociationOverrides without mapped superclass in " + entity);
-			throw new ProcessingException("Specified AssociationOverrides without mapped superclass", entity);
+			throw new MappingException("Specified AssociationOverrides without mapped superclass", entity);
 		}
 
 		Element entityElement = createEntity(entity, entity.getInheritanceStrategy(), entity.getPaSuperEntity(), entity
@@ -245,7 +243,7 @@ class EntityMapper extends AbstractMapper {
 			if (entity.getAnnotatedEClass().getESuperTypes().size() <= 1 && multipleInheritanceFeatures.size() > 0) {
 				log.error("Entity has one or less super type but a multiple "
 						+ "inheritance structure was detected, this is an application error.");
-				throw new ProcessingException("Entity has one or less super type but a multiple "
+				throw new MappingException("Entity has one or less super type but a multiple "
 						+ "inheritance structure was detected, this is an application error.");
 			}
 			getHbmContext().pushOverrideOnStack();
@@ -360,7 +358,7 @@ class EntityMapper extends AbstractMapper {
 				final String message = "Feature \"" + feature.getAnnotatedElement().getName()
 						+ "\" was mapped to undeclared secondary table \"" + tableName + "\".";
 				log.error(message);
-				throw new ProcessingException(message);
+				throw new MappingException(message);
 			}
 			List featuresInTable = (List) featuresByTable.get(tableName);
 			if (featuresInTable == null) {
@@ -434,10 +432,9 @@ class EntityMapper extends AbstractMapper {
 		return tableName;
 	}
 
-	
 	/** Process one feature */
 	protected void processFeature(PAnnotatedEStructuralFeature paFeature) {
-		featureProcessor.process(paFeature);
+		featureMapper.process(paFeature);
 	}
 
 	/**
@@ -454,7 +451,7 @@ class EntityMapper extends AbstractMapper {
 
 			if (pkJC.getColumnDefinition() != null) {
 				log.error("Unsupported column definition in primary key join column " + pkJC);
-				throw new ProcessingException("Unsupported column definition in primary key join column", pkJC);
+				throw new MappingException("Unsupported column definition in primary key join column", pkJC);
 			}
 
 			if (pkJC.getName() != null) {
@@ -481,7 +478,7 @@ class EntityMapper extends AbstractMapper {
 
 		if (dColumn.getColumnDefinition() != null) {
 			log.error("Unsupported column definition in discriminator column " + dColumn);
-			throw new ProcessingException("Unsupported column definition in discriminator column", dColumn);
+			throw new MappingException("Unsupported column definition in discriminator column", dColumn);
 		}
 		return dcElement;
 	}

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapMapping.java,v 1.2 2006/10/19 04:54:05 mtaal Exp $
+ * $Id: FeatureMapMapping.java,v 1.3 2006/11/01 11:39:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -28,7 +28,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
-import org.eclipse.emf.teneo.annotations.processing.FeatureProcessor;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -79,7 +78,7 @@ class FeatureMapMapping {
 				StoreUtil.getEClassURI(paAttribute.getAnnotatedEAttribute().getEContainingClass(), hbmContext
 						.getQualifyEntityNames()));
 
-		final FeatureProcessor fp = hbmContext.getFeatureProcessor();
+		final FeatureMapper fp = hbmContext.getFeatureMapper();
 		hbmContext.setCurrent(mainElement);
 		hbmContext.setCurrentElementFeatureMap(true);
 

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.8 2006/09/26 13:23:06 mtaal Exp $
+ * $Id: IdMapper.java,v 1.9 2006/11/01 11:39:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -34,8 +34,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
-import org.eclipse.emf.teneo.annotations.processing.IdProcessor;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
@@ -50,7 +48,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class IdMapper extends AbstractPropertyMapper implements IdProcessor {
+class IdMapper extends AbstractPropertyMapper{
 
 	/** The logger */
 	private static final Log log = LogFactory.getLog(IdMapper.class);
@@ -92,7 +90,7 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 	 */
 	public static Element addSyntheticId(MappingContext mc, Element entityElement) {
 		if (entityElement.element("id") != null || entityElement.element("composite-id") != null) {
-			throw new ProcessingException("Syntheticid should only be called if there is no id element");
+			throw new MappingException("Syntheticid should only be called if there is no id element");
 		}
 
 		final Element idElement = DocumentHelper.createElement("id");
@@ -125,9 +123,6 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 
 	/**
 	 * Process embedded id.
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.processing.IdProcessor#processEmbeddedId(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute,
-	 *      org.eclipse.emf.teneo.annotations.pannotation.AttributeOverrides)
 	 */
 	public void processEmbeddedId(PAnnotatedEReference aReference) {
 		final EReference eReference = aReference.getAnnotatedEReference();
@@ -168,7 +163,7 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 							+ id
 							+ " while it has a "
 							+ "superclass/type, id properties should always be specified in the top of the inheritance structure");
-			throw new ProcessingException(
+			throw new MappingException(
 					"The annotated eclass: "
 							+ aClass
 							+ " has an id-annotated feature: "
@@ -184,12 +179,12 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 		if (column != null && column.getColumnDefinition() != null) {
 			// TODO support
 			log.error("Unsupported, ColumnDefinition  in " + column);
-			throw new ProcessingException("Unsupported, ColumnDefinition", column);
+			throw new MappingException("Unsupported, ColumnDefinition", column);
 		}
 		if (column != null && column.getTable() != null) {
 			// TODO support
 			log.error("Unsupported, SecondaryTable in " + column);
-			throw new ProcessingException("Unsupported, SecondaryTable", column);
+			throw new MappingException("Unsupported, SecondaryTable", column);
 		}
 
 		final Element idElement = getCreateIdElement(getHbmContext().getCurrent(), aClass);
@@ -230,7 +225,7 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 		if (generatedValue != null) {
 
 			if (isCompositeId) {
-				throw new ProcessingException("Composite id can not have a generated value "
+				throw new MappingException("Composite id can not have a generated value "
 						+ id.getAnnotatedEAttribute().getEContainingClass().getName() + "/"
 						+ id.getAnnotatedEAttribute().getName());
 			}
@@ -288,7 +283,7 @@ class IdMapper extends AbstractPropertyMapper implements IdProcessor {
 				final GenericGenerator gg = (GenericGenerator)sit.next();
 				if (gg.getName() != null && gg.getName().compareTo(name) == 0) {
 					if (gg.getStrategy() == null) {
-						throw new ProcessingException("The GenericGenerator: " + name + " has no strategy defined!");
+						throw new MappingException("The GenericGenerator: " + name + " has no strategy defined!");
 					}
 					
 					return gg;

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.2 2006/09/04 15:42:32 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.3 2006/11/01 11:39:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,8 +24,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
-import org.eclipse.emf.teneo.annotations.processing.EmbeddedProcessor;
-import org.eclipse.emf.teneo.annotations.processing.ProcessingException;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -34,7 +32,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class EmbeddedMapper extends AbstractMapper implements EmbeddedProcessor {
+class EmbeddedMapper extends AbstractMapper {
 
 	private static final Log log = LogFactory.getLog(EmbeddedMapper.class);
 
@@ -43,12 +41,9 @@ class EmbeddedMapper extends AbstractMapper implements EmbeddedProcessor {
 	}
 
 	/**
-	 * unsupported
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.processing.EmbeddedProcessor#processEmbedded(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
-	 *      org.eclipse.emf.teneo.annotations.pannotation.Embedded)
+	 * Process Embedded object
 	 */
-	public void processEmbedded(PAnnotatedEReference paReference) {
+	public void process(PAnnotatedEReference paReference) {
 		// push the current overrides
 		getHbmContext().pushOverrideOnStack();
 		// and add our own
@@ -68,9 +63,9 @@ class EmbeddedMapper extends AbstractMapper implements EmbeddedProcessor {
 						.getEReferenceType());
 			} else {
 				if (paReference.getManyToMany() != null) {
-					throw new ProcessingException("ManyToMany can not be combined with Embedded " + paReference);
+					throw new MappingException("ManyToMany can not be combined with Embedded " + paReference);
 				} else if (paReference.getOneToMany() == null) {
-					throw new ProcessingException("OneToMany must be set for embedded elist type: " + paReference);
+					throw new MappingException("OneToMany must be set for embedded elist type: " + paReference);
 				}
 
 				// only one to many
@@ -106,6 +101,6 @@ class EmbeddedMapper extends AbstractMapper implements EmbeddedProcessor {
 	/** Process a list of components */
 	private void processMultiEmbedded(PAnnotatedEReference paReference) {
 		// let the featureprocessor handle this, the one to many is handled by the OneToManyMapper
-		getHbmContext().getFeatureProcessor().caseOneToMany(paReference);
+		getHbmContext().getFeatureMapper().getOneToManyMapper().process(paReference);
 	}
 }

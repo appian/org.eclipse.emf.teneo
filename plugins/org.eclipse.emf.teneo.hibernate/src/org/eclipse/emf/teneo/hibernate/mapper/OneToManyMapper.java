@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.11 2006/10/26 14:18:52 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.12 2006/11/01 11:39:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
-import org.eclipse.emf.teneo.annotations.processing.OneToManyProcessor;
+import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProcessor {
+class OneToManyMapper extends AbstractAssociationMapper {
 
 	/** The log */
 	private static final Log log = LogFactory.getLog(OneToManyMapper.class);
@@ -58,14 +58,26 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 		super(hbmContext);
 	}
 
+	/** Process the paReference */
+	public void process(PAnnotatedEReference paReference) {
+		// TODO assuming it coincides with specified targetEntity, correct? Guaranteed by validation?
+		if (getOtherSide(paReference) == null) {
+			processOtMUni(paReference);
+		} else if (!paReference.getOneToMany().eIsSet(PannotationPackage.eINSTANCE.getOneToMany_MappedBy())) {
+			throw new MappingException("The many side of a bidirectional one to many association must be the owning side", paReference);
+		} else {
+			// MT: TODO add check, in this case unique should always true because an child can only occur once within
+			// the collection because
+			// of the bidirectional behavior.
+			processOtMBidiInverse(paReference);
+		}
+	}
+	
 	/**
 	 * joinTable.getInverseJoinColumns must be null TODO choose appropriate mapping according to the presence of
 	 * JoinTable
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.processing.OneToManyProcessor#processUnidirectional(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
-	 *      org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass)
 	 */
-	public void processOtMUni(PAnnotatedEReference paReference) {
+	private void processOtMUni(PAnnotatedEReference paReference) {
 		if (log.isDebugEnabled()) {
 			log.debug("Generating one to many unidirectional mapping for " + paReference);
 		}
@@ -144,11 +156,9 @@ class OneToManyMapper extends AbstractAssociationMapper implements OneToManyProc
 	}
 
     /**
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.processing.OneToManyProcessor#processBidirectionalInverse(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
-	 *      org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
+	 * Process bidirectional one-to-many
 	 */
-	public void processOtMBidiInverse(PAnnotatedEReference paReference) {
+	private void processOtMBidiInverse(PAnnotatedEReference paReference) {
 		if (log.isDebugEnabled()) {
 			log.debug("Generating one to many bidirectional inverse mapping for " + paReference);
 		}
