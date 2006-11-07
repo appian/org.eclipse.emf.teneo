@@ -13,6 +13,7 @@ Require-Bundle: org.eclipse.emf.common,
 Eclipse-LazyStart: true
 Export-Package: org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.classloader,
+ org.eclipse.emf.teneo.ecore,
  org.eclipse.emf.teneo.mapping.elist,
  org.eclipse.emf.teneo.resource,
  org.eclipse.emf.teneo.simpledom,

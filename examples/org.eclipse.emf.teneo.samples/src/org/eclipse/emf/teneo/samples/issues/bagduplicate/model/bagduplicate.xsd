@@ -12,10 +12,11 @@
 			<element ecore:reference="this:Person" minOccurs="0" name="father" type="xsd:IDREF"/>
 			<element ecore:reference="this:Person" minOccurs="0" name="mother" type="xsd:IDREF"/>
 			<element ecore:reference="this:Person" maxOccurs="unbounded" minOccurs="0" name="children" type="xsd:IDREF">
-			 	<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/Unique" ecore:key="value">false</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/Indexed" ecore:key="value">false</xsd:appinfo>
-			    </xsd:annotation>
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">
+						@OneToMany(unique=false indexed=false)
+					</xsd:appinfo>
+				</xsd:annotation>
 			</element>
 		</sequence>
 	</complexType>

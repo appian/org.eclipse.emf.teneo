@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TransientsuperPackage.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: TransientsuperPackage.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.transientsuper;
 
@@ -239,6 +239,7 @@ public interface TransientsuperPackage extends EPackage {
 	 * @return the meta object for class '<em>Serializable</em>'.
 	 * @see java.io.Serializable
 	 * @model instanceClass="java.io.Serializable"
+	 *        annotation="teneo.jpa appinfo='@Transient'"
 	 * @generated
 	 */
 	EClass getSerializable();
@@ -296,7 +297,7 @@ public interface TransientsuperPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.issues.transientsuper.impl.PBaseObjectImpl <em>PBase Object</em>}' class.
 		 * <!-- begin-user-doc -->

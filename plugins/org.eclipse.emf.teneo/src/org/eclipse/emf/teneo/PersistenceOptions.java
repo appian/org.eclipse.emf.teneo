@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.13 2006/10/25 18:56:29 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.14 2006/11/07 10:22:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class PersistenceOptions {
 
@@ -373,6 +373,13 @@ public class PersistenceOptions {
     public boolean getAlwaysVersion() {
         return Boolean.valueOf(properties.getProperty(ALWAYS_VERSION)).booleanValue();
     }
+
+	/**
+	 * @return the properties
+	 */
+	public Properties getProperties() {
+		return properties;
+	}
 
 	// TODO: Add remaining accessor wrappers.
 }

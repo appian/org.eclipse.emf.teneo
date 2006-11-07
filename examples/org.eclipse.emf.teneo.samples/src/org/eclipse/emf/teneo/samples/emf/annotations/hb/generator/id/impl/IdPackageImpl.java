@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackageImpl.java,v 1.1 2006/08/31 22:47:46 mtaal Exp $
+ * $Id: IdPackageImpl.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl;
 
@@ -271,7 +271,7 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		  (this, 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n@GenericGenerator(name=\"hibseq\", strategy = \"hilo\",\n    parameters = {\n        @Parameter(name=\"table\", value = \"hilo_table\"),\n        @Parameter(name=\"column\", value=\"the_hilo_column\")\n    }\n)\n\t\t"
+			 "appinfo", "\n@GenericGenerator(name=\"system-uuid\", strategy = \"uuid\")\n@GenericGenerator(name=\"hibseq\", strategy = \"hilo\",\n    parameters = {\n        @Parameter(name=\"table\", value = \"hilo_table\"),\n        @Parameter(name=\"column\", value=\"the_hilo_column\")\n    }\n)\n\t\t"
 		   });			
 		addAnnotation
 		  (getIdentityID_Myid(), 

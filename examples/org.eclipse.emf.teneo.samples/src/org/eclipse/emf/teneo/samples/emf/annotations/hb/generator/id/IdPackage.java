@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackage.java,v 1.1 2006/08/31 22:47:46 mtaal Exp $
+ * $Id: IdPackage.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdFactory
  * @model kind="package"
- *        annotation="teneo.hibernate appinfo='\n@GenericGenerator(name=\"hibseq\", strategy = \"hilo\",\n    parameters = {\n        @Parameter(name=\"table\", value = \"hilo_table\"),\n        @Parameter(name=\"column\", value=\"the_hilo_column\")\n    }\n)\n\t\t'"
+ *        annotation="teneo.hibernate appinfo='\n@GenericGenerator(name=\"system-uuid\", strategy = \"uuid\")\n@GenericGenerator(name=\"hibseq\", strategy = \"hilo\",\n    parameters = {\n        @Parameter(name=\"table\", value = \"hilo_table\"),\n        @Parameter(name=\"column\", value=\"the_hilo_column\")\n    }\n)\n\t\t'"
  * @generated
  */
 public interface IdPackage extends EPackage {

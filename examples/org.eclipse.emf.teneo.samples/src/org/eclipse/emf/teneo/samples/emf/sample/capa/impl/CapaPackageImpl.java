@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CapaPackageImpl.java,v 1.1 2006/08/14 05:08:58 mtaal Exp $
+ * $Id: CapaPackageImpl.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.capa.impl;
 
@@ -593,8 +593,8 @@ public class CapaPackageImpl extends EPackageImpl implements CapaPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://ejb.elver.org/Transient
-		createTransientAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -839,18 +839,18 @@ public class CapaPackageImpl extends EPackageImpl implements CapaPackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Transient</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createTransientAnnotations() {
-		String source = "http://ejb.elver.org/Transient";							
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";							
 		addAnnotation
 		  (getMachine_Tasks(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
+			 "appinfo", "@Transient"
 		   });																												
 	}
 

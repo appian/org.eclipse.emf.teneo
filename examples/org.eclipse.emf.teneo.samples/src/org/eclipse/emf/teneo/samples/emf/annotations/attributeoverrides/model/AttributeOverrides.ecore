@@ -11,36 +11,21 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bornIn" lowerBound="1"
         eType="#//City">
-      <eAnnotations source="http://annotation.elver.org/Embedded"/>
-      <eAnnotations source="http://annotation.elver.org/AttributeOverride">
-        <details key="name" value="name"/>
-        <details key="column" value="c1"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column/c1">
-        <details key="name" value="bornNameColumn"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Embedded&#xA;@AttributeOverride(name=&quot;name&quot; column=@Column(name=&quot;bornNameColumn&quot;))"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="livesIn" lowerBound="1"
         eType="#//City">
-      <eAnnotations source="http://annotation.elver.org/Embedded"/>
-      <eAnnotations source="http://annotation.elver.org/AttributeOverride/a1">
-        <details key="name" value="name"/>
-        <details key="column" value="c1"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column/c1">
-        <details key="name" value="nameColumn"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/AttributeOverride/a2">
-        <details key="name" value="country"/>
-        <details key="column" value="c2"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Column/c2">
-        <details key="name" value="countryColumn"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Embedded&#xA;@AttributeOverrides({&#xA;&#x9;@AttributeOverride(name=&quot;name&quot; column=@Column(name=&quot;nameColumn&quot;)),&#xA;&#x9;@AttributeOverride(name=&quot;country&quot; column=@Column(name=&quot;countryColumn&quot;))&#xA;})"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="City">
-    <eAnnotations source="http://annotation.elver.org/Embeddable"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Embeddable"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="country" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

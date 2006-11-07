@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidPackageImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: CompositeidPackageImpl.java,v 1.3 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl;
 
@@ -246,101 +246,41 @@ public class CompositeidPackageImpl extends EPackageImpl implements CompositeidP
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/JoinColumn/jc1
-		createJc1Annotations();
-		// http://annotation.elver.org/JoinColumn/jc2
-		createJc2Annotations();
-		// http://annotation.elver.org/OrderBy
-		createOrderByAnnotations();
-		// http://annotation.elver.org/IdClass
-		createIdClassAnnotations();
-		// http://annotation.elver.org/Id
-		createIdAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/JoinColumn/jc1</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createJc1Annotations() {
-		String source = "http://annotation.elver.org/JoinColumn/jc1";		
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (getParent_Children(), 
 		   source, 
 		   new String[] {
-			 "name", "myParentFirstName",
-			 "referencedColumnName", "firstName"
-		   });					
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/JoinColumn/jc2</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createJc2Annotations() {
-		String source = "http://annotation.elver.org/JoinColumn/jc2";			
-		addAnnotation
-		  (getParent_Children(), 
-		   source, 
-		   new String[] {
-			 "name", "myParentLastName",
-			 "referencedColumnName", "lastName"
-		   });				
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/OrderBy</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createOrderByAnnotations() {
-		String source = "http://annotation.elver.org/OrderBy";				
-		addAnnotation
-		  (getParent_Children(), 
-		   source, 
-		   new String[] {
-			 "value", "firstName"
-		   });			
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/IdClass</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIdClassAnnotations() {
-		String source = "http://annotation.elver.org/IdClass";					
+			 "appinfo", "@JoinColumns({\n\t@JoinColumn(name=\"myParentFirstName\", referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\", referencedColumnName=\"lastName\"),\n})\n@OrderBy(\"firstName\")"
+		   });		
 		addAnnotation
 		  (personEClass, 
 		   source, 
 		   new String[] {
-			 "value", "org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID"
+			 "appinfo", "@IdClass(org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID)"
 		   });		
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Id</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIdAnnotations() {
-		String source = "http://annotation.elver.org/Id";						
 		addAnnotation
 		  (getPerson_FirstName(), 
 		   source, 
 		   new String[] {
+			 "appinfo", "@Id"
 		   });		
 		addAnnotation
 		  (getPerson_LastName(), 
 		   source, 
 		   new String[] {
+			 "appinfo", "@Id"
 		   });
 	}
 

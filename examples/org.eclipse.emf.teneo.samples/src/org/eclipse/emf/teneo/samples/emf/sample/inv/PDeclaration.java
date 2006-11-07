@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PDeclaration.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: PDeclaration.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.inv;
 
@@ -38,8 +38,7 @@ public interface PDeclaration extends EObject {
 	 * @see #setId(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.inv.InventoryPackage#getPDeclaration_Id()
 	 * @model id="true" ordered="false"
-	 *        annotation="http://annotation.elver.org/Id appinfo='true'"
-	 *        annotation="http://annotation.elver.org/GeneratedValue appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Id\n@GeneratedValue'"
 	 * @generated
 	 */
 	long getId();

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InventorySwitch.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: InventorySwitch.java,v 1.3 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.inv.util;
 
@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.sample.inv.*;
+
 import org.eclipse.emf.teneo.samples.emf.sample.inv.InventoryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.inv.PDeclaration;
 import org.eclipse.emf.teneo.samples.emf.sample.inv.PType;

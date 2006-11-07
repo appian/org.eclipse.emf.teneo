@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryTuplizer.java,v 1.4 2006/11/01 16:19:44 mtaal Exp $
+ * $Id: FeatureMapEntryTuplizer.java,v 1.5 2006/11/07 10:22:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -38,7 +38,7 @@ import org.hibernate.tuple.Instantiator;
  * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class FeatureMapEntryTuplizer extends EMFTuplizer {
@@ -91,7 +91,7 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 		}
 
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(pc);
-		final String eclassUri = HbUtil.getEClassNameFromMeta(pc);
+		final String eclassUri = HbUtil.getEClassNameFromFeatureMapMeta(pc);
 		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eclassUri, mappedProperty.getName(), ds
 				.getEPackages());
 

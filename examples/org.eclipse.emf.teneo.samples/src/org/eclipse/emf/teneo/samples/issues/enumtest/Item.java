@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Item.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: Item.java,v 1.2 2006/11/07 10:22:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.enumtest;
 
@@ -43,7 +43,7 @@ public interface Item extends EObject {
 	 * @see #setItemType(ItemType)
 	 * @see org.eclipse.emf.teneo.samples.issues.enumtest.EnumtestPackage#getItem_ItemType()
 	 * @model default="Product" unique="false" unsettable="true" required="true"
-	 *        annotation="http://annotation.elver.org/Id appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Id'"
 	 *        extendedMetaData="kind='element' name='itemType'"
 	 * @generated
 	 */

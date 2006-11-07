@@ -3,9 +3,8 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="id"
     nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/id" nsPrefix="id">
-  <eAnnotations source="http://ejb.elver.org/SequenceGenerator">
-    <details key="name" value="GENERATOR"/>
-    <details key="sequenceName" value="mySequenceName"/>
+  <eAnnotations source="teneo.jpa">
+    <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATOR&quot; sequenceName=&quot;mySequenceName&quot;)&#xA;&#x9;&#x9;"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="IdentityID">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -14,11 +13,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="myid" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
-      <eAnnotations source="http://ejb.elver.org/Id">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://ejb.elver.org/GeneratedValue">
-        <details key="strategy" value="IDENTITY"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Id&#xA;&#x9;&#x9;&#x9;&#x9;@GeneratedValue(strategy=&quot;IDENTITY&quot;)&#xA;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -34,15 +30,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoID" unique="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
         unsettable="true">
-      <eAnnotations source="http://ejb.elver.org/Id">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://ejb.elver.org/GeneratedValue">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://ejb.elver.org/Column">
-        <details key="name" value="AUTOD"/>
-        <details key="nullable" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Id&#xA;&#x9;&#x9;&#x9;&#x9;@GeneratedValue&#xA;&#x9;&#x9;&#x9;&#x9;@Column(name=&quot;AUTOD&quot; nullable=&quot;false&quot;)&#xA;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -57,11 +46,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="myid" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
-      <eAnnotations source="http://ejb.elver.org/Id">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://ejb.elver.org/GeneratedValue">
-        <details key="strategy" value="TABLE"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Id&#xA;&#x9;&#x9;&#x9;&#x9;@GeneratedValue(strategy=&quot;TABLE&quot;)&#xA;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

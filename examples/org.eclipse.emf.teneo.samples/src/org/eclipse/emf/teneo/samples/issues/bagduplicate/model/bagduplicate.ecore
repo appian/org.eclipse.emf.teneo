@@ -31,11 +31,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Person" resolveProxies="false">
-      <eAnnotations source="http://annotation.elver.org/Unique">
-        <details key="value" value="false"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/Indexed">
-        <details key="value" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@OneToMany(unique=false indexed=false)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Inventory" importerID="org.eclipse.emf.importer.ecore">
   <foreignModel>inventory.ecore</foreignModel>
-  <genPackages prefix="Inventory" basePackage="org.eclipse.emf.teneo.samples.emf.sample" disposableProviderFactory="true"
-      ecorePackage="inventory.ecore#/">
+  <genPackages prefix="Inventory" basePackage="org.eclipse.emf.teneo.samples.emf.sample"
+      disposableProviderFactory="true" ecorePackage="inventory.ecore#/">
     <genClasses ecoreClass="inventory.ecore#//PType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inventory.ecore#//PType/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inventory.ecore#//PType/name"/>

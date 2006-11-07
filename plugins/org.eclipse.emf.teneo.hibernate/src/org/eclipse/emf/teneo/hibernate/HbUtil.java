@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.6 2006/11/01 16:19:45 mtaal Exp $
+ * $Id: HbUtil.java,v 1.7 2006/11/07 10:22:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -43,7 +43,7 @@ import org.hibernate.property.PropertyAccessor;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class HbUtil {
 
@@ -60,9 +60,11 @@ public class HbUtil {
 		final String versionPropName = ds.getPersistenceOptions().getVersionColumnName();
 		final String idPropName = ds.getPersistenceOptions().getIdColumnName();
 		
-		if (mappedProperty.getName().compareToIgnoreCase(idPropName) == 0) {
+		if (mappedProperty.getName().compareToIgnoreCase(idPropName) == 0 ||
+			 mappedProperty.getMetaAttribute(HbMapperConstants.ID_META) != null) { // synthetic ID
 			return new IdentifierPropertyHandler();			
-		} else if (mappedProperty.getName().compareToIgnoreCase(versionPropName) == 0) {
+		} else if (mappedProperty.getName().compareToIgnoreCase(versionPropName) == 0 ||
+				mappedProperty.getMetaAttribute(HbMapperConstants.VERSION_META) != null) {
 			return ds.getHbContext().createVersionAccessor();
 		} else if (mappedProperty.getName().compareToIgnoreCase("_identifierMapper") == 0) { // name is used by hb
 			return new EmbeddedPropertyAccessor(); // new DummyPropertyHandler();
@@ -105,8 +107,11 @@ public class HbUtil {
 	}
 
 	/** Returns the meta class uri, if not found then null is returned */
-	public static String getEClassNameFromMeta(PersistentClass pc) {
-		final MetaAttribute ma = pc.getMetaAttribute(HbMapperConstants.ECLASS_META);
+	public static String getEClassNameFromFeatureMapMeta(PersistentClass pc) {
+		MetaAttribute ma = pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META);
+		if (ma == null) {
+			ma = pc.getMetaAttribute(HbMapperConstants.ECLASS_META);
+		}
 		if (ma == null) return null;
 		return ma.getValue();
 	}

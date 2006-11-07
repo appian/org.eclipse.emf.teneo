@@ -41,8 +41,8 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person">
-    <eAnnotations source="http://annotation.elver.org/MappedSuperclass">
-      <details key="appinfo" value="true"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@MappedSuperclass"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Person"/>

@@ -10,7 +10,7 @@
     	<xsd:sequence>
       		<xsd:element name="itemType" type="this:ItemType">
 			 	<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/Id">true</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
 			    </xsd:annotation>
 			  </xsd:element>
       		<xsd:element name="nullableItemType" type="this:ItemType" minOccurs="0"/>

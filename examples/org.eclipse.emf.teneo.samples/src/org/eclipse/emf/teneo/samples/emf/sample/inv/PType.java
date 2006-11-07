@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PType.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: PType.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.inv;
 
@@ -44,8 +44,7 @@ public interface PType extends EObject {
 	 * @see #setId(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.inv.InventoryPackage#getPType_Id()
 	 * @model id="true" ordered="false"
-	 *        annotation="http://annotation.elver.org/Id appinfo='true'"
-	 *        annotation="http://annotation.elver.org/GeneratedValue appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Id\n@GeneratedValue'"
 	 * @generated
 	 */
 	long getId();
@@ -128,7 +127,7 @@ public interface PType extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.inv.InventoryPackage#getPType_SubTypes()
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.inv.PType#getBase
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.inv.PType" opposite="base" ordered="false"
-	 *        annotation="http://annotation.elver.org/Indexed value='false'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=false)'"
 	 * @generated
 	 */
 	EList getSubTypes();
@@ -145,7 +144,7 @@ public interface PType extends EObject {
 	 * @return the value of the '<em>Sub NO Types</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.inv.InventoryPackage#getPType_SubNOTypes()
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.inv.PType" ordered="false"
-	 *        annotation="http://annotation.elver.org/Indexed value='false'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=false)'"
 	 * @generated
 	 */
 	EList getSubNOTypes();
@@ -162,7 +161,7 @@ public interface PType extends EObject {
 	 * @return the value of the '<em>Info References</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.inv.InventoryPackage#getPType_InfoReferences()
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.inv.PDeclaration"
-	 *        annotation="http://annotation.elver.org/Indexed value='false'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=false)'"
 	 * @generated
 	 */
 	EList getInfoReferences();

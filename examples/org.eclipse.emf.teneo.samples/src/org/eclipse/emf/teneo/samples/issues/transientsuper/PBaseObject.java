@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PBaseObject.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: PBaseObject.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.transientsuper;
 
@@ -69,7 +69,7 @@ public interface PBaseObject extends EObject, Serializable {
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.issues.transientsuper.TransientsuperPackage#getPBaseObject_Name()
 	 * @model unique="false"
-	 *        annotation="http://ejb.elver.org/Column length='255'"
+	 *        annotation="teneo.jpa appinfo='@Column(length=255)'"
 	 * @generated
 	 */
 	String getName();
@@ -96,7 +96,7 @@ public interface PBaseObject extends EObject, Serializable {
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.issues.transientsuper.TransientsuperPackage#getPBaseObject_Children()
 	 * @model type="org.eclipse.emf.teneo.samples.issues.transientsuper.PBaseObject" containment="true"
-	 *        annotation="http://ejb.elver.org/OneToMany cascade='MERGE PERSIST REFRESH REMOVE'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})'"
 	 * @generated
 	 */
 	EList getChildren();

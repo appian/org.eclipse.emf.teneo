@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Machine.java,v 1.1 2006/08/14 05:08:59 mtaal Exp $
+ * $Id: Machine.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.capa;
 
@@ -71,7 +71,7 @@ public interface Machine extends EObject {
 	 * @return the value of the '<em>Tasks</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.capa.CapaPackage#getMachine_Tasks()
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.capa.Task" containment="true"
-	 *        annotation="http://ejb.elver.org/Transient appinfo='true'"
+	 *        annotation="teneo.jpa appinfo='@Transient'"
 	 *        extendedMetaData="kind='element' name='Tasks'"
 	 * @generated
 	 */

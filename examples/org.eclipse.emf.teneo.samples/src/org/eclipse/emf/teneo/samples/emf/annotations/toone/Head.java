@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Head.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: Head.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone;
 
@@ -67,7 +67,7 @@ public interface Head extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.ToonePackage#getHead_Person()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.Person#getHead
 	 * @model opposite="head" resolveProxies="false" required="true"
-	 *        annotation="http://annotation.elver.org/OneToOne fetch='EAGER' cascade='MERGE PERSIST REFRESH' targetEntity='Person' optional='false' mappedBy='head'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@OneToOne(fetch=EAGER cascade={MERGE,PERSIST,REFRESH} targetEntity=\"Person\" optional=false mappedBy=\"head\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='person'"
 	 * @generated
 	 */

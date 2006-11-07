@@ -30,12 +30,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="person" lowerBound="1"
         eType="#//Person" resolveProxies="false" eOpposite="#//Person/head">
-      <eAnnotations source="http://annotation.elver.org/OneToOne">
-        <details key="fetch" value="EAGER"/>
-        <details key="cascade" value="MERGE PERSIST REFRESH"/>
-        <details key="targetEntity" value="Person"/>
-        <details key="optional" value="false"/>
-        <details key="mappedBy" value="head"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@OneToOne(fetch=EAGER cascade={MERGE,PERSIST,REFRESH} targetEntity=&quot;Person&quot; optional=false mappedBy=&quot;head&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

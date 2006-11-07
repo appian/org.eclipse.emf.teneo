@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AssociationoverridePackageImpl.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
+ * $Id: AssociationoverridePackageImpl.java,v 1.3 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.impl;
 
@@ -325,8 +325,6 @@ public class AssociationoverridePackageImpl extends EPackageImpl implements Asso
 		createExtendedMetaDataAnnotations();
 		// teneo.jpa
 		createTeneoAnnotations();
-		// http://annotation.elver.org/MappedSuperclass
-		createMappedSuperclassAnnotations();
 	}
 
 	/**
@@ -429,7 +427,13 @@ public class AssociationoverridePackageImpl extends EPackageImpl implements Asso
 		   source, 
 		   new String[] {
 			 "appinfo", "@AssociationOverride(name=\"address\" joinColumns=@JoinColumn(name=\"employee_address_id\"))"
-		   });						
+		   });				
+		addAnnotation
+		  (personEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@MappedSuperclass"
+		   });			
 		addAnnotation
 		  (getPerson_Id(), 
 		   source, 
@@ -442,22 +446,6 @@ public class AssociationoverridePackageImpl extends EPackageImpl implements Asso
 		   new String[] {
 			 "appinfo", "@ManyToOne"
 		   });			
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/MappedSuperclass</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createMappedSuperclassAnnotations() {
-		String source = "http://annotation.elver.org/MappedSuperclass";								
-		addAnnotation
-		  (personEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });								
 	}
 
 } //AssociationoverridePackageImpl

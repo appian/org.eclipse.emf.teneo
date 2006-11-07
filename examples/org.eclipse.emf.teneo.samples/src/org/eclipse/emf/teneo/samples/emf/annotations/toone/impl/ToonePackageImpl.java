@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ToonePackageImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: ToonePackageImpl.java,v 1.3 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.impl;
 
@@ -278,8 +278,6 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/OneToOne
-		createOneToOneAnnotations();
 		// teneo.jpa
 		createTeneoAnnotations();
 	}
@@ -351,33 +349,19 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/OneToOne</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createOneToOneAnnotations() {
-		String source = "http://annotation.elver.org/OneToOne";						
-		addAnnotation
-		  (getHead_Person(), 
-		   source, 
-		   new String[] {
-			 "fetch", "EAGER",
-			 "cascade", "MERGE PERSIST REFRESH",
-			 "targetEntity", "Person",
-			 "optional", "false",
-			 "mappedBy", "head"
-		   });						
-	}
-
-	/**
 	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";									
+		String source = "teneo.jpa";						
+		addAnnotation
+		  (getHead_Person(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t\t@OneToOne(fetch=EAGER cascade={MERGE,PERSIST,REFRESH} targetEntity=\"Person\" optional=false mappedBy=\"head\")\n\t\t\t\t\t"
+		   });				
 		addAnnotation
 		  (getPerson_Address(), 
 		   source, 

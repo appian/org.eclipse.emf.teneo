@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BagduplicatePackageImpl.java,v 1.1 2006/07/11 16:57:01 mtaal Exp $
+ * $Id: BagduplicatePackageImpl.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bagduplicate.impl;
 
@@ -225,10 +225,8 @@ public class BagduplicatePackageImpl extends EPackageImpl implements Bagduplicat
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Unique
-		createUniqueAnnotations();
-		// http://annotation.elver.org/Indexed
-		createIndexedAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -266,7 +264,7 @@ public class BagduplicatePackageImpl extends EPackageImpl implements Bagduplicat
 		   new String[] {
 			 "kind", "element",
 			 "name", "mother"
-		   });				
+		   });			
 		addAnnotation
 		  (getPerson_Children(), 
 		   source, 
@@ -277,34 +275,18 @@ public class BagduplicatePackageImpl extends EPackageImpl implements Bagduplicat
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Unique</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createUniqueAnnotations() {
-		String source = "http://annotation.elver.org/Unique";						
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";						
 		addAnnotation
 		  (getPerson_Children(), 
 		   source, 
 		   new String[] {
-			 "value", "false"
-		   });		
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Indexed</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIndexedAnnotations() {
-		String source = "http://annotation.elver.org/Indexed";							
-		addAnnotation
-		  (getPerson_Children(), 
-		   source, 
-		   new String[] {
-			 "value", "false"
+			 "appinfo", "\n\t\t\t\t\t\t@OneToMany(unique=false indexed=false)\n\t\t\t\t\t"
 		   });	
 	}
 

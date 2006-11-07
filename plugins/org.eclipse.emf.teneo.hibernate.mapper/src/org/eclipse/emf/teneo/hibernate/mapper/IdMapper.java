@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: IdMapper.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -102,6 +102,12 @@ class IdMapper extends AbstractPropertyMapper{
 			addElement("generator").
 			addAttribute("class", "native");
 		
+		final Element meta = new Element("meta");
+		meta.addAttribute("attribute", HbMapperConstants.ID_META).addText("true");
+		idElement.add(0, meta);
+		
+		idElement.addAttribute("access", mc.getIdPropertyHandlerName());
+
 		return idElement;
 	}
 

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.10 2006/10/25 18:55:59 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.11 2006/11/07 10:22:42 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -78,7 +78,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class DefaultAnnotator {
 
@@ -242,6 +242,11 @@ public class DefaultAnnotator {
 		for (Iterator it = aClass.getAnnotatedEClass().getESuperTypes().iterator(); it.hasNext();) {
 			final EClass eclass = (EClass) it.next();
 			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(eclass);
+			if (superAClass == null) {
+				throw new StoreAnnotationsException("Mapping Exception, no Annotated Class for EClass: " + eclass.getName() +
+						" a common cause is that you did not register all EPackages in the DataStore/Helper Class. " +
+						"When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
+			}			
 			processClass(superAClass);
 		}
 

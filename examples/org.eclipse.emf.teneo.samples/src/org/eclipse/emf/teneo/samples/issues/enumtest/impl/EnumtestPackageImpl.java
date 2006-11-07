@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EnumtestPackageImpl.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: EnumtestPackageImpl.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.enumtest.impl;
 
@@ -243,8 +243,8 @@ public class EnumtestPackageImpl extends EPackageImpl implements EnumtestPackage
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://annotation.elver.org/Id
-		createIdAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -292,18 +292,18 @@ public class EnumtestPackageImpl extends EPackageImpl implements EnumtestPackage
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Id</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createIdAnnotations() {
-		String source = "http://annotation.elver.org/Id";			
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";			
 		addAnnotation
 		  (getItem_ItemType(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
+			 "appinfo", "@Id"
 		   });				
 	}
 

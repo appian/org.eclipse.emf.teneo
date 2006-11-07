@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingBuilder.java,v 1.1 2006/09/06 21:59:50 mtaal Exp $
+ * $Id: PersistenceMappingBuilder.java,v 1.2 2006/11/07 10:22:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -38,7 +40,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.util.BasicPamodelBuilder;
-import org.eclipse.emf.teneo.annotations.pamodel.util.EannotationPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
 import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
 
@@ -47,7 +48,7 @@ import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class PersistenceMappingBuilder {
 
@@ -102,16 +103,17 @@ public class PersistenceMappingBuilder {
 		log.debug("Create base pannotated model");
 		PAnnotatedModel pam = pamodelBuilder.getPAnnotatedModel();
 
-		if (po.isIgnoreEAnnotations()) {
-			log.debug("Ignoring eannotations");
-		} else {
-			log.debug("Import eannotations");
-			// DCB: Introduce indirection so that extensions to annotation processing mechanism
-			// can provide their own model builder.
-			EannotationPamodelBuilder epb = getAnnotationModelBuilder();
-			epb.setPAnnotatedModel(pam);
-			epb.processCurrentPAnnotatedModel();
-		}
+		log.debug("Deprecated eannotations with http://annotations.elver.org or http://ejb.elver.org are ignored.");
+//		if (po.isIgnoreEAnnotations()) {
+//			log.debug("Ignoring eannotations");
+//		} else {
+//			log.debug("Import eannotations");
+//			// DCB: Introduce indirection so that extensions to annotation processing mechanism
+//			// can provide their own model builder.
+//			EannotationPamodelBuilder epb = getAnnotationModelBuilder();
+//			epb.setPAnnotatedModel(pam);
+//			epb.processCurrentPAnnotatedModel();
+//		}
 
 		if (po.isIgnoreEAnnotations()) {
 			log.debug("Ignoring annotations");
@@ -121,14 +123,25 @@ public class PersistenceMappingBuilder {
 		}
 
 		if (po.getPersistenceXmlPath() != null) {
-			final InputStream in = this.getClass().getClassLoader().getResourceAsStream(po.getPersistenceXmlPath());
-			if (in == null) {
-				throw new RuntimeException("Could not find persistence XML resource in classpath: \""
-						+ po.getPersistenceXmlPath() + "\".");
+			try {
+				final InputStream in = this.getClass().getClassLoader().getResourceAsStream(po.getPersistenceXmlPath());
+				if (in == null) {
+					throw new RuntimeException("Could not find persistence XML resource in classpath: \""
+							+ po.getPersistenceXmlPath() + "\".");
+				}
+				final XmlPersistenceMapper xmlPersistenceMapper = getXmlPersistenceMapper();
+				xmlPersistenceMapper.setXmlMapping(in);
+				xmlPersistenceMapper.applyPersistenceMapping(pam);
+				in.close();
+				final InputStream[] iss = getAdditionalXMLMappings();
+				for (int i = 0; i < iss.length; i++) {
+					xmlPersistenceMapper.setXmlMapping(iss[i]);
+					xmlPersistenceMapper.applyPersistenceMapping(pam);
+					iss[i].close();
+				}
+			} catch (IOException e) {
+				throw new StoreAnnotationsException("Exception while loading xml persistence mappings", e);
 			}
-			final XmlPersistenceMapper xmlPersistenceMapper = getXmlPersistenceMapper();
-			xmlPersistenceMapper.setXmlMapping(in);
-			xmlPersistenceMapper.applyPersistenceMapping(pam);
 		}
 
 		// now the annotations on the edatatype should be copied to the annotations on the 
@@ -185,11 +198,6 @@ public class PersistenceMappingBuilder {
 		return new BasicPamodelBuilder();
 	}
 
-	/** Return the EAnnotationImporter */
-	protected EannotationPamodelBuilder getAnnotationModelBuilder() {
-		return new EannotationPamodelBuilder();
-	}
-
 	/** Return a java annotation parser */
 	protected EAnnotationParserImporter getEAnnotationParserImporter() {
 		return new EAnnotationParserImporter();
@@ -200,5 +208,10 @@ public class PersistenceMappingBuilder {
 	 */
 	protected XmlPersistenceMapper getXmlPersistenceMapper() {
 		return new XmlPersistenceMapper();
+	}
+	
+	/** Additional inputstreams for xml mappings */
+	protected InputStream[] getAdditionalXMLMappings(){
+		return new InputStream[0];
 	}
 }

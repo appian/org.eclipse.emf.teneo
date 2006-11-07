@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingSchemaGenerator.java,v 1.3 2006/09/28 20:03:57 mtaal Exp $
+ * $Id: PersistenceMappingSchemaGenerator.java,v 1.4 2006/11/07 10:22:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Parses the pamodel and pannotation model to generate a xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class PersistenceMappingSchemaGenerator {
@@ -319,6 +319,7 @@ public class PersistenceMappingSchemaGenerator {
 		final Element choiceElement = propertyElement.addElement("xsd:choice");
 		addZeroUnbounded(choiceElement);
 		final List features = new ArrayList(getPAnnotatedEAttribute().getEAllStructuralFeatures());
+		features.removeAll(getPAnnotatedEReference().getEAllStructuralFeatures());
 		features.addAll(getPAnnotatedEReference().getEAllStructuralFeatures());
 
 		processStructuralFeatures(choiceElement, features);
@@ -370,9 +371,11 @@ public class PersistenceMappingSchemaGenerator {
 		if (eStructuralFeature instanceof EReference) {
 			// EReferences are represented by child elements.
 			final Element element = createSchemaElement(elementName, typeName, eStructuralFeature.getName());
-			element.addAttribute(new Attribute("minOccurs", String.valueOf(minOccurs)));
-			if (eStructuralFeature.isMany()) {
-				element.addAttribute(new Attribute("maxOccurs", "unbounded"));
+			if (parentElement.getName().compareTo("xsd:choice") != 0) {
+				element.addAttribute(new Attribute("minOccurs", String.valueOf(minOccurs)));
+				if (eStructuralFeature.isMany()) {
+					element.addAttribute(new Attribute("maxOccurs", "unbounded"));
+				}
 			}
 			parentElement.addElement(element);
 		} else {
@@ -385,8 +388,10 @@ public class PersistenceMappingSchemaGenerator {
 				final Element element = createSchemaElement(eStructuralFeature.getName(), typeName, eStructuralFeature
 						.getName());
 				parentElement.addElement(element);
-				element.addAttribute(new Attribute("minOccurs", "0"));
-				element.addAttribute(new Attribute("maxOccurs", "unbounded"));
+				if (parentElement.getName().compareTo("xsd:choice") != 0) {
+					element.addAttribute(new Attribute("minOccurs", "0"));
+					element.addAttribute(new Attribute("maxOccurs", "unbounded"));
+				}
 			}
 		}
 	}

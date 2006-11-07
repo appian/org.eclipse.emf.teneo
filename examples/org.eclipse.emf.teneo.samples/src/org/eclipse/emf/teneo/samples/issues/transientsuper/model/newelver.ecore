@@ -7,28 +7,30 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://ejb.elver.org/Column">
-        <details key="length" value="255"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(length=255)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//PBaseObject" defaultValueLiteral="" containment="true">
-      <eAnnotations source="http://ejb.elver.org/OneToMany">
-        <details key="cascade" value="MERGE PERSIST REFRESH REMOVE"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Serializable" instanceClassName="java.io.Serializable"
       interface="true">
-    <eAnnotations source="http://ejb.elver.org/Transient"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Transient"/>
+    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PVersionObject" eSuperTypes="#//PBaseObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionNumber" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://ejb.elver.org/Column">
-        <details key="length" value="4000"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(length=4000)"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

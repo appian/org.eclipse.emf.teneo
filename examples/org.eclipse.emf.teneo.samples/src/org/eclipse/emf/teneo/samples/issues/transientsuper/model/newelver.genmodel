@@ -4,7 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Newelver" importerID="org.eclipse.emf.importer.ecore">
   <foreignModel>newelver.ecore</foreignModel>
-  <genPackages prefix="Transientsuper" basePackage="org.eclipse.emf.teneo.samples.issues" disposableProviderFactory="true" ecorePackage="newelver.ecore#/">
+  <genPackages prefix="Transientsuper" basePackage="org.eclipse.emf.teneo.samples.issues"
+      disposableProviderFactory="true" ecorePackage="newelver.ecore#/">
     <genClasses ecoreClass="newelver.ecore#//PBaseObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute newelver.ecore#//PBaseObject/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute newelver.ecore#//PBaseObject/name"/>

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: MappingContext.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -25,6 +25,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.AbstractProcessingContext;
@@ -43,7 +44,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -99,9 +100,9 @@ public class MappingContext extends AbstractProcessingContext {
 	private SQLCaseStrategy sqlCaseStrategy;
     
     private boolean alwaysVersion;
-
+    
 	/** The constructor */
-	MappingContext() {
+	public MappingContext() {
 		featureMapper = createFeatureMapper();
 		entityMapper = new EntityMapper(this);
 	}
@@ -380,9 +381,24 @@ public class MappingContext extends AbstractProcessingContext {
 	public List getHandledFeatureMapEAttributes() {
 		return handledFeatureMapEAttributes;
 	}
+
+	/** Returns the correct property name */
+	public String getPropertyName(EStructuralFeature ef) {
+		return ef.getName();
+	}
 	
-	/** Return the efeature accessor */
-	public String getFeatureAccessor() {
-		return "org.eclipse.emf.teneo.hibernate.mapping.EFeatureAccessor";
+	/** Return the version property handler */
+	public String getVersionPropertyHandlerName() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler";
+	}
+	
+	/** Return the id property handler */
+	public String getIdPropertyHandlerName() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler";
+	}
+	
+	/** Add a tuplizer element or not */
+	public void addTuplizerElement(Element entityElement, EClass eclass) {
+		
 	}
 }

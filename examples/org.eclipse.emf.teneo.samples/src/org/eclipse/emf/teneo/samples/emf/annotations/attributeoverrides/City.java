@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: City.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: City.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage#getCity()
- * @model
+ * @model annotation="teneo.jpa appinfo='@Embeddable'"
  * @generated
  */
 public interface City extends EObject {

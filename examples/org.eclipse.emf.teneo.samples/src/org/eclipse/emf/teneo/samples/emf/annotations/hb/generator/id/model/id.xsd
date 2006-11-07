@@ -6,6 +6,7 @@
 
 	<xsd:annotation>
 		<xsd:appinfo source="teneo.hibernate">
+@GenericGenerator(name="system-uuid", strategy = "uuid")
 @GenericGenerator(name="hibseq", strategy = "hilo",
     parameters = {
         @Parameter(name="table", value = "hilo_table"),

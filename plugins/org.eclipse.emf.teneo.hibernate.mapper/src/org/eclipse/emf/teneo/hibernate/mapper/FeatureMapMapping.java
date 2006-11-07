@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapMapping.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: FeatureMapMapping.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -74,7 +74,7 @@ class FeatureMapMapping {
 		Element mainElement = hbmContext.getCurrent().addElement("class").addAttribute("entity-name", entityName)
 				.addAttribute("lazy", "false").addAttribute("table", hbmContext.trunc(entityName.toUpperCase(), false));
 
-		mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.ECLASS_META).addText(
+		mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META).addText(
 				StoreUtil.getEClassURI(paAttribute.getAnnotatedEAttribute().getEContainingClass(), hbmContext
 						.getQualifyEntityNames()));
 

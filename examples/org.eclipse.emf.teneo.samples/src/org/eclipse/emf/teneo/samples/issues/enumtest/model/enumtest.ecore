@@ -10,8 +10,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="itemType" unique="false"
         lowerBound="1" eType="#//ItemType" defaultValueLiteral="Product" unsettable="true">
-      <eAnnotations source="http://annotation.elver.org/Id">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

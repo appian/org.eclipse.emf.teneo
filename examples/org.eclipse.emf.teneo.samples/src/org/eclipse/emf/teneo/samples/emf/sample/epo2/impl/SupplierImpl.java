@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SupplierImpl.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: SupplierImpl.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -10,19 +10,14 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.Customer;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.EPO2Package;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.PurchaseOrder;
@@ -157,7 +152,7 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	public EList getPendingOrders() {
 		// TODO: implement this method to return the 'Pending Orders' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return new EObjectContainmentEList(PurchaseOrder.class, this, EPO2Package.SUPPLIER__ORDERS);
 	}
 
 	/**
@@ -168,7 +163,7 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	public EList getShippedOrders() {
 		// TODO: implement this method to return the 'Shipped Orders' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return new EObjectContainmentEList(PurchaseOrder.class, this, EPO2Package.SUPPLIER__ORDERS);
 	}
 
 	/**

@@ -30,11 +30,9 @@
 	  		<xsd:element name="hairColor" type="xsd:string"/>
 			<xsd:element name="person" type="xsd:IDREF" ecore:reference="this:Person" ecore:opposite="head">
 			 	<xsd:annotation>
-					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="fetch">EAGER</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="cascade">MERGE PERSIST REFRESH</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="targetEntity">Person</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="optional">false</xsd:appinfo>
-					<xsd:appinfo source="http://annotation.elver.org/OneToOne" ecore:key="mappedBy">head</xsd:appinfo>
+					<xsd:appinfo source="teneo.jpa">
+						@OneToOne(fetch=EAGER cascade={MERGE,PERSIST,REFRESH} targetEntity="Person" optional=false mappedBy="head")
+					</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
     		</xsd:sequence>

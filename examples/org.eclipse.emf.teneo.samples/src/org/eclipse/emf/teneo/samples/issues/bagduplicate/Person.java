@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2006/07/11 16:57:13 mtaal Exp $
+ * $Id: Person.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bagduplicate;
 
@@ -123,8 +123,7 @@ public interface Person extends EObject {
 	 * @return the value of the '<em>Children</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.issues.bagduplicate.BagduplicatePackage#getPerson_Children()
 	 * @model type="org.eclipse.emf.teneo.samples.issues.bagduplicate.Person" resolveProxies="false"
-	 *        annotation="http://annotation.elver.org/Unique value='false'"
-	 *        annotation="http://annotation.elver.org/Indexed value='false'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@OneToMany(unique=false indexed=false)\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='children'"
 	 * @generated
 	 */

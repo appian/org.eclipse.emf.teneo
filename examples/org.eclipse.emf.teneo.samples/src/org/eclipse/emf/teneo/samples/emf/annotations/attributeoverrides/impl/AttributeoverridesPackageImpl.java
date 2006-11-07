@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeoverridesPackageImpl.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
+ * $Id: AttributeoverridesPackageImpl.java,v 1.3 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.impl;
 
@@ -245,144 +245,36 @@ public class AttributeoverridesPackageImpl extends EPackageImpl implements Attri
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/Embedded
-		createEmbeddedAnnotations();
-		// http://annotation.elver.org/AttributeOverride
-		createAttributeOverrideAnnotations();
-		// http://annotation.elver.org/Column/c1
-		createC1Annotations();
-		// http://annotation.elver.org/AttributeOverride/a1
-		createA1Annotations();
-		// http://annotation.elver.org/AttributeOverride/a2
-		createA2Annotations();
-		// http://annotation.elver.org/Column/c2
-		createC2Annotations();
-		// http://annotation.elver.org/Embeddable
-		createEmbeddableAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Embedded</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createEmbeddedAnnotations() {
-		String source = "http://annotation.elver.org/Embedded";			
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";			
 		addAnnotation
 		  (getPerson_BornIn(), 
 		   source, 
 		   new String[] {
-		   });				
-		addAnnotation
-		  (getPerson_LivesIn(), 
-		   source, 
-		   new String[] {
-		   });					
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/AttributeOverride/a1</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createA1Annotations() {
-		String source = "http://annotation.elver.org/AttributeOverride/a1";							
-		addAnnotation
-		  (getPerson_LivesIn(), 
-		   source, 
-		   new String[] {
-			 "name", "name",
-			 "column", "c1"
-		   });				
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/AttributeOverride/a2</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createA2Annotations() {
-		String source = "http://annotation.elver.org/AttributeOverride/a2";									
-		addAnnotation
-		  (getPerson_LivesIn(), 
-		   source, 
-		   new String[] {
-			 "name", "country",
-			 "column", "c2"
+			 "appinfo", "@Embedded\n@AttributeOverride(name=\"name\" column=@Column(name=\"bornNameColumn\"))"
 		   });		
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Column/c2</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createC2Annotations() {
-		String source = "http://annotation.elver.org/Column/c2";										
 		addAnnotation
 		  (getPerson_LivesIn(), 
 		   source, 
 		   new String[] {
-			 "name", "countryColumn"
-		   });	
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Embeddable</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createEmbeddableAnnotations() {
-		String source = "http://annotation.elver.org/Embeddable";											
+			 "appinfo", "@Embedded\n@AttributeOverrides({\n\t@AttributeOverride(name=\"name\" column=@Column(name=\"nameColumn\")),\n\t@AttributeOverride(name=\"country\" column=@Column(name=\"countryColumn\"))\n})"
+		   });		
 		addAnnotation
 		  (cityEClass, 
 		   source, 
 		   new String[] {
+			 "appinfo", "@Embeddable"
 		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/AttributeOverride</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createAttributeOverrideAnnotations() {
-		String source = "http://annotation.elver.org/AttributeOverride";				
-		addAnnotation
-		  (getPerson_BornIn(), 
-		   source, 
-		   new String[] {
-			 "name", "name",
-			 "column", "c1"
-		   });							
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Column/c1</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createC1Annotations() {
-		String source = "http://annotation.elver.org/Column/c1";					
-		addAnnotation
-		  (getPerson_BornIn(), 
-		   source, 
-		   new String[] {
-			 "name", "bornNameColumn"
-		   });				
-		addAnnotation
-		  (getPerson_LivesIn(), 
-		   source, 
-		   new String[] {
-			 "name", "nameColumn"
-		   });			
 	}
 
 } //AttributeoverridesPackageImpl

@@ -11,14 +11,13 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: MappingBuilder.java,v 1.1 2006/11/01 16:18:43 mtaal Exp $
+ * $Id: MappingBuilder.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
 import org.eclipse.emf.teneo.annotations.mapper.DefaultAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.util.BasicPamodelBuilder;
-import org.eclipse.emf.teneo.annotations.pamodel.util.EannotationPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
 import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
 
@@ -29,13 +28,9 @@ import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
 public class MappingBuilder extends PersistenceMappingBuilder {
 
 	public static final MappingBuilder INSTANCE = new MappingBuilder();
-	
-	protected EannotationPamodelBuilder getAnnotationModelBuilder() {
-		return new HbAnnotationModelBuilder();
-	}
 
 	protected BasicPamodelBuilder getModelBuilder() {
-		return new HbAnnotationModelBuilder(true);
+		return new HbAnnotationModelBuilder();
 	}
 
 	protected DefaultAnnotator getDefaultAnnotator() {

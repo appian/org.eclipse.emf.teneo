@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InventoryPackage.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: InventoryPackage.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.inv;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.samples.emf.sample.inv.InventoryFactory
  * @model kind="package"
- *        annotation="http://annotation.elver.org/SequenceGenerator name='GENERATOR' sequenceName='IDSEQUENCE'"
+ *        annotation="teneo.jpa appinfo='@SequenceGenerator(name=\"GENERATOR\", sequenceName=\"IDSEQUENCE\")'"
  * @generated
  */
 public interface InventoryPackage extends EPackage {
@@ -300,7 +300,7 @@ public interface InventoryPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.inv.impl.PTypeImpl <em>PType</em>}' class.
 		 * <!-- begin-user-doc -->

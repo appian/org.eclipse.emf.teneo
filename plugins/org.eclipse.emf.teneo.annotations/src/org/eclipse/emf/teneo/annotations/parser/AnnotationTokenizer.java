@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.7 2006/09/29 12:30:08 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.8 2006/11/07 10:22:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -196,7 +196,7 @@ class AnnotationTokenizer {
 	
 					do {
 						lChar = data[++lCur];
-					} while (lChar == ',' || lChar == '.' || lChar == ' ' || lChar == '_' || lChar == '/' || lChar == '@'
+					} while (lChar == ',' ||  lChar == '-' || lChar == '.' || lChar == ' ' || lChar == '_' || lChar == '/' || lChar == '@'
                             || lChar == ':' || lChar == '=' || lChar == '\''
                             || ('0' <= lChar && lChar <= '9')
 							|| ('a' <= lChar && lChar <= 'z') || ('A' <= lChar && lChar <= 'Z'));

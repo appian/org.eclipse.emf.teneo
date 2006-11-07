@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Test" importerID="org.eclipse.emf.importer.ecore">
+  <foreignModel>test.ecore</foreignModel>
+  <genPackages prefix="Library" resource="XML" disposableProviderFactory="true" ecorePackage="test.ecore#/">
+    <genEnums ecoreEnum="test.ecore#//BookCategory">
+      <genEnumLiterals ecoreEnumLiteral="test.ecore#//BookCategory/Mystery"/>
+      <genEnumLiterals ecoreEnumLiteral="test.ecore#//BookCategory/ScienceFiction"/>
+      <genEnumLiterals ecoreEnumLiteral="test.ecore#//BookCategory/Biography"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="test.ecore#//BookCategoryObject"/>
+    <genClasses ecoreClass="test.ecore#//Book">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute test.ecore#//Book/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute test.ecore#//Book/pages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute test.ecore#//Book/category"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference test.ecore#//Book/author"/>
+    </genClasses>
+    <genClasses ecoreClass="test.ecore#//Library">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute test.ecore#//Library/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference test.ecore#//Library/writers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference test.ecore#//Library/books"/>
+    </genClasses>
+    <genClasses ecoreClass="test.ecore#//Writer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute test.ecore#//Writer/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference test.ecore#//Writer/books"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

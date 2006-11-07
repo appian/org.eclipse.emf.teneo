@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
+ * $Id: Person.java,v 1.3 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides;
 
@@ -69,8 +69,7 @@ public interface Person extends EObject {
 	 * @see #setBornIn(City)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage#getPerson_BornIn()
 	 * @model required="true"
-	 *        annotation="http://annotation.elver.org/AttributeOverride name='name' column='c1'"
-	 *        annotation="http://annotation.elver.org/Column/c1 name='bornNameColumn'"
+	 *        annotation="teneo.jpa appinfo='@Embedded\n@AttributeOverride(name=\"name\" column=@Column(name=\"bornNameColumn\"))'"
 	 * @generated
 	 */
 	City getBornIn();
@@ -97,10 +96,7 @@ public interface Person extends EObject {
 	 * @see #setLivesIn(City)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage#getPerson_LivesIn()
 	 * @model required="true"
-	 *        annotation="http://annotation.elver.org/AttributeOverride/a1 name='name' column='c1'"
-	 *        annotation="http://annotation.elver.org/Column/c1 name='nameColumn'"
-	 *        annotation="http://annotation.elver.org/AttributeOverride/a2 name='country' column='c2'"
-	 *        annotation="http://annotation.elver.org/Column/c2 name='countryColumn'"
+	 *        annotation="teneo.jpa appinfo='@Embedded\n@AttributeOverrides({\n\t@AttributeOverride(name=\"name\" column=@Column(name=\"nameColumn\")),\n\t@AttributeOverride(name=\"country\" column=@Column(name=\"countryColumn\"))\n})'"
 	 * @generated
 	 */
 	City getLivesIn();

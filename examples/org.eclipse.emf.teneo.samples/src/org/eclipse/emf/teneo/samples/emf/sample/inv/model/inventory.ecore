@@ -3,18 +3,14 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="inv"
     nsURI="http://www.eclipse.org/emf/teneo/samples/emf/sample/inv" nsPrefix="inv">
-  <eAnnotations source="http://annotation.elver.org/SequenceGenerator">
-    <details key="name" value="GENERATOR"/>
-    <details key="sequenceName" value="IDSEQUENCE"/>
+  <eAnnotations source="teneo.jpa">
+    <details key="appinfo" value="@SequenceGenerator(name=&quot;GENERATOR&quot;, sequenceName=&quot;IDSEQUENCE&quot;)"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="PType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
         iD="true">
-      <eAnnotations source="http://annotation.elver.org/Id">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/GeneratedValue">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id&#xA;@GeneratedValue"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -22,31 +18,28 @@
         eOpposite="#//PType/subTypes"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" ordered="false"
         unique="false" upperBound="-1" eType="#//PType" eOpposite="#//PType/base">
-      <eAnnotations source="http://annotation.elver.org/Indexed">
-        <details key="value" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=false)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subNOTypes" ordered="false"
         unique="false" upperBound="-1" eType="#//PType">
-      <eAnnotations source="http://annotation.elver.org/Indexed">
-        <details key="value" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=false)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="infoReferences" unique="false"
         upperBound="-1" eType="#//PDeclaration" defaultValueLiteral="">
-      <eAnnotations source="http://annotation.elver.org/Indexed">
-        <details key="value" value="false"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=false)"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PDeclaration">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
         iD="true">
-      <eAnnotations source="http://annotation.elver.org/Id">
-        <details key="appinfo" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://annotation.elver.org/GeneratedValue">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id&#xA;@GeneratedValue"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryInstantiator.java,v 1.1 2006/07/05 22:29:31 mtaal Exp $
+ * $Id: FeatureMapEntryInstantiator.java,v 1.2 2006/11/07 10:22:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -29,7 +29,7 @@ import org.hibernate.tuple.Instantiator;
  * Instantiates feature map entries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class FeatureMapEntryInstantiator implements Instantiator {
@@ -45,8 +45,9 @@ public class FeatureMapEntryInstantiator implements Instantiator {
 
 	/** Constructor */
 	public FeatureMapEntryInstantiator(PersistentClass pc) {
-		AssertUtil.assertTrue(pc.getEntityName() + " does not have a meta attribute", pc
-				.getMetaAttribute(HbMapperConstants.ECLASS_META) != null);
+		AssertUtil.assertTrue(pc.getEntityName() + " does not have a meta attribute", 
+				pc.getMetaAttribute(HbMapperConstants.ECLASS_META) != null ||
+					pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null);
 		log.debug("Creating fme instantiator for " + pc.getEntityName());
 		proxyInterface = pc.getProxyInterface();
 		persistentClass = pc;

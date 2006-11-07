@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PVersionObject.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: PVersionObject.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.transientsuper;
 
@@ -63,7 +63,7 @@ public interface PVersionObject extends PBaseObject {
 	 * @see #setComment(String)
 	 * @see org.eclipse.emf.teneo.samples.issues.transientsuper.TransientsuperPackage#getPVersionObject_Comment()
 	 * @model unique="false"
-	 *        annotation="http://ejb.elver.org/Column length='4000'"
+	 *        annotation="teneo.jpa appinfo='@Column(length=4000)'"
 	 * @generated
 	 */
 	String getComment();

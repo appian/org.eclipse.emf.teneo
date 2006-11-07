@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TransientsuperPackageImpl.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: TransientsuperPackageImpl.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.transientsuper.impl;
 
@@ -271,65 +271,42 @@ public class TransientsuperPackageImpl extends EPackageImpl implements Transient
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://ejb.elver.org/Column
-		createColumnAnnotations();
-		// http://ejb.elver.org/OneToMany
-		createOneToManyAnnotations();
-		// http://ejb.elver.org/Transient
-		createTransientAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Column</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createColumnAnnotations() {
-		String source = "http://ejb.elver.org/Column";		
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (getPBaseObject_Name(), 
 		   source, 
 		   new String[] {
-			 "length", "255"
-		   });				
-		addAnnotation
-		  (getPVersionObject_Comment(), 
-		   source, 
-		   new String[] {
-			 "length", "4000"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/OneToMany</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createOneToManyAnnotations() {
-		String source = "http://ejb.elver.org/OneToMany";			
+			 "appinfo", "@Column(length=255)"
+		   });		
 		addAnnotation
 		  (getPBaseObject_Children(), 
 		   source, 
 		   new String[] {
-			 "cascade", "MERGE PERSIST REFRESH REMOVE"
+			 "appinfo", "@OneToMany(cascade={MERGE,PERSIST,REFRESH,REMOVE})"
 		   });		
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Transient</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createTransientAnnotations() {
-		String source = "http://ejb.elver.org/Transient";				
 		addAnnotation
 		  (serializableEClass, 
 		   source, 
 		   new String[] {
-		   });	
+			 "appinfo", "@Transient"
+		   });		
+		addAnnotation
+		  (getPVersionObject_Comment(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Column(length=4000)"
+		   });
 	}
 
 } //TransientsuperPackageImpl

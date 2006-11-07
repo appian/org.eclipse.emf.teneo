@@ -5,7 +5,7 @@
     nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/hb/generator/id"
     nsPrefix="id">
   <eAnnotations source="teneo.hibernate">
-    <details key="appinfo" value="&#xA;@GenericGenerator(name=&quot;hibseq&quot;, strategy = &quot;hilo&quot;,&#xA;    parameters = {&#xA;        @Parameter(name=&quot;table&quot;, value = &quot;hilo_table&quot;),&#xA;        @Parameter(name=&quot;column&quot;, value=&quot;the_hilo_column&quot;)&#xA;    }&#xA;)&#xA;&#x9;&#x9;"/>
+    <details key="appinfo" value="&#xA;@GenericGenerator(name=&quot;system-uuid&quot;, strategy = &quot;uuid&quot;)&#xA;@GenericGenerator(name=&quot;hibseq&quot;, strategy = &quot;hilo&quot;,&#xA;    parameters = {&#xA;        @Parameter(name=&quot;table&quot;, value = &quot;hilo_table&quot;),&#xA;        @Parameter(name=&quot;column&quot;, value=&quot;the_hilo_column&quot;)&#xA;    }&#xA;)&#xA;&#x9;&#x9;"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="IdentityID">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

@@ -36,8 +36,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         eType="#//Task" containment="true" resolveProxies="false">
-      <eAnnotations source="http://ejb.elver.org/Transient">
-        <details key="appinfo" value="true"/>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Transient"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

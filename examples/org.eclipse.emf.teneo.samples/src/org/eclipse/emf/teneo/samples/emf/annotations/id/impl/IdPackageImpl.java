@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackageImpl.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: IdPackageImpl.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
@@ -250,33 +250,44 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://ejb.elver.org/SequenceGenerator
-		createSequenceGeneratorAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://ejb.elver.org/Id
-		createIdAnnotations();
-		// http://ejb.elver.org/GeneratedValue
-		createGeneratedValueAnnotations();
-		// http://ejb.elver.org/Column
-		createColumnAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/SequenceGenerator</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createSequenceGeneratorAnnotations() {
-		String source = "http://ejb.elver.org/SequenceGenerator";		
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-			 "name", "GENERATOR",
-			 "sequenceName", "mySequenceName"
-		   });													
+			 "appinfo", "\n\t\t\t@SequenceGenerator(name=\"GENERATOR\" sequenceName=\"mySequenceName\")\n\t\t"
+		   });			
+		addAnnotation
+		  (getIdentityID_Myid(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t@Id\n\t\t\t\t@GeneratedValue(strategy=\"IDENTITY\")\n\t\t\t"
+		   });				
+		addAnnotation
+		  (getSimpleID_AutoID(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t@Id\n\t\t\t\t@GeneratedValue\n\t\t\t\t@Column(name=\"AUTOD\" nullable=\"false\")\n\t\t\t"
+		   });				
+		addAnnotation
+		  (getTableID_Myid(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t@Id\n\t\t\t\t@GeneratedValue(strategy=\"TABLE\")\n\t\t\t"
+		   });	
 	}
 
 	/**
@@ -293,7 +304,7 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		   new String[] {
 			 "name", "IdentityID",
 			 "kind", "elementOnly"
-		   });				
+		   });			
 		addAnnotation
 		  (getIdentityID_Myid(), 
 		   source, 
@@ -307,7 +318,7 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		   new String[] {
 			 "name", "SimpleID",
 			 "kind", "elementOnly"
-		   });					
+		   });			
 		addAnnotation
 		  (getSimpleID_AutoID(), 
 		   source, 
@@ -321,7 +332,7 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		   new String[] {
 			 "name", "TableID",
 			 "kind", "elementOnly"
-		   });				
+		   });			
 		addAnnotation
 		  (getTableID_Myid(), 
 		   source, 
@@ -329,79 +340,6 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 			 "kind", "element",
 			 "name", "myid"
 		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Id</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIdAnnotations() {
-		String source = "http://ejb.elver.org/Id";				
-		addAnnotation
-		  (getIdentityID_Myid(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });					
-		addAnnotation
-		  (getSimpleID_AutoID(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });						
-		addAnnotation
-		  (getTableID_Myid(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });		
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/GeneratedValue</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createGeneratedValueAnnotations() {
-		String source = "http://ejb.elver.org/GeneratedValue";					
-		addAnnotation
-		  (getIdentityID_Myid(), 
-		   source, 
-		   new String[] {
-			 "strategy", "IDENTITY"
-		   });					
-		addAnnotation
-		  (getSimpleID_AutoID(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });						
-		addAnnotation
-		  (getTableID_Myid(), 
-		   source, 
-		   new String[] {
-			 "strategy", "TABLE"
-		   });	
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://ejb.elver.org/Column</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createColumnAnnotations() {
-		String source = "http://ejb.elver.org/Column";										
-		addAnnotation
-		  (getSimpleID_AutoID(), 
-		   source, 
-		   new String[] {
-			 "name", "AUTOD",
-			 "nullable", "false"
-		   });					
 	}
 
 } //IdPackageImpl

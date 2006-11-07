@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
+ * $Id: Person.java,v 1.3 2006/11/07 10:22:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.AssociationoverridePackage#getPerson()
- * @model annotation="http://annotation.elver.org/MappedSuperclass appinfo='true'"
+ * @model annotation="teneo.jpa appinfo='@MappedSuperclass'"
  *        extendedMetaData="name='Person' kind='elementOnly'"
  * @generated
  */

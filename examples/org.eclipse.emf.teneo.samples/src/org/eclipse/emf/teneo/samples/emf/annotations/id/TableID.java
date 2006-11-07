@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableID.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: TableID.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id;
 
@@ -39,8 +39,7 @@ public interface TableID extends EObject {
 	 * @see #setMyid(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.IdPackage#getTableID_Myid()
 	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="http://ejb.elver.org/Id appinfo='true'"
-	 *        annotation="http://ejb.elver.org/GeneratedValue strategy='TABLE'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t@Id\n\t\t\t\t@GeneratedValue(strategy=\"TABLE\")\n\t\t\t'"
 	 *        extendedMetaData="kind='element' name='myid'"
 	 * @generated
 	 */

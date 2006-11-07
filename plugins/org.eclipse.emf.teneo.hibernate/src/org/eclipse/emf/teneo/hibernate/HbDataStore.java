@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.9 2006/11/01 16:19:45 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.10 2006/11/07 10:22:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -83,7 +83,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class HbDataStore {
@@ -201,7 +201,8 @@ public class HbDataStore {
 		final Configuration cfg = getConfiguration();
 		for (Iterator pcs = cfg.getClassMappings(); pcs.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
-			if (pc.getMetaAttribute(HbMapperConstants.ECLASS_META) != null) { // featuremap
+			if (pc.getMetaAttribute(HbMapperConstants.ECLASS_META) != null ||
+					pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null) { // featuremap
 				// entry
 				pc.addTuplizer(EntityMode.MAP, getHbContext().getFeatureMapEntryTuplizer(cfg).getName());
 			} else {
@@ -293,7 +294,7 @@ public class HbDataStore {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 
 			// if a featuremap then just return
-			if (HbUtil.getEClassNameFromMeta(pc) != null)
+			if (HbUtil.getEClassNameFromFeatureMapMeta(pc) != null)
 				continue;
 
 			// check if container is required is done in the
@@ -658,7 +659,8 @@ public class HbDataStore {
 			final PersistentClass pc = (PersistentClass) it.next();
 
 			// keep track which are the feature map entries
-			if (pc.getMetaAttribute(HbMapperConstants.ECLASS_META) != null)
+			if (pc.getMetaAttribute(HbMapperConstants.ECLASS_META) != null ||
+					pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null)
 				fmes.add(pc.getEntityName());
 
 			// everyone should have a list otherwise the copying of referers to

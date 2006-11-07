@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -53,17 +53,25 @@ public class HibernateMappingGenerator {
 	private final MappingContext hbmContext;
 
 	/**
-	 * Instantiate an Hibernate mapping generator using the given context and the given entity mapper.
+	 * Instantiate an Hibernate mapping generator.
 	 */
 	HibernateMappingGenerator(final MappingContext hbmContext) {
 		this.hbmContext = hbmContext;
 	}
 
 	/**
-	 * Instantiate an Hibernate mapping generator using the given context and the given entity mapper.
+	 * Instantiate an Hibernate mapping generator.
 	 */
 	public HibernateMappingGenerator(PersistenceOptions po) {
 		this.hbmContext = new MappingContext();
+		this.hbmContext.setMappingProperties(po);
+	}
+
+	/**
+	 * Instantiate an Hibernate mapping generator.
+	 */
+	public HibernateMappingGenerator(MappingContext mc, PersistenceOptions po) {
+		this.hbmContext = mc;
 		this.hbmContext.setMappingProperties(po);
 	}
 

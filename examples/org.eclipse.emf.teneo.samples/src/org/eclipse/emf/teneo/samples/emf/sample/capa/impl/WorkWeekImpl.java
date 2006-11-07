@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WorkWeekImpl.java,v 1.1 2006/08/14 05:08:58 mtaal Exp $
+ * $Id: WorkWeekImpl.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.capa.impl;
 
@@ -100,7 +100,7 @@ public class WorkWeekImpl extends EObjectImpl implements WorkWeek {
 		}
 		return days;
 	}
-	
+
 	/** Set the days */
 	public void setDays(EList list) {
 		days = list;

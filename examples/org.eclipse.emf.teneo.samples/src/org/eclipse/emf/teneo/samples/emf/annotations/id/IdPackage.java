@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackage.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: IdPackage.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.samples.emf.annotations.id.IdFactory
  * @model kind="package"
- *        annotation="http://ejb.elver.org/SequenceGenerator name='GENERATOR' sequenceName='mySequenceName'"
+ *        annotation="teneo.jpa appinfo='\n\t\t\t@SequenceGenerator(name=\"GENERATOR\" sequenceName=\"mySequenceName\")\n\t\t'"
  * @generated
  */
 public interface IdPackage extends EPackage {

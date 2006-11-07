@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EPO2FactoryImpl.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: EPO2FactoryImpl.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -11,10 +11,17 @@ import java.util.Date;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
-import org.eclipse.emf.teneo.samples.emf.sample.epo2.*;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.Customer;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.EPO2Factory;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.EPO2Package;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.GlobalAddress;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.GlobalLocation;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.Item;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.OrderStatus;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.PurchaseOrder;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.Supplier;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.USAddress;
 
 /**
  * <!-- begin-user-doc -->

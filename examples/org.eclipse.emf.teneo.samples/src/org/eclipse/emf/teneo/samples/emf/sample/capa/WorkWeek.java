@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WorkWeek.java,v 1.1 2006/08/14 05:08:59 mtaal Exp $
+ * $Id: WorkWeek.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.capa;
 
@@ -44,7 +44,7 @@ public interface WorkWeek extends EObject {
 	 * @generated
 	 */
 	EList getDays();
-	
+
 	/** Set the days */
 	public void setDays(EList list);
 

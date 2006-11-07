@@ -8,9 +8,9 @@ targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/sample/capa">
     	<xsd:sequence maxOccurs="1" minOccurs="1">
     		<xsd:element name="WorkWeek" type="capa:WorkWeek" maxOccurs="1" minOccurs="1"></xsd:element>
     		<xsd:element name="Tasks" type="capa:Task" maxOccurs="unbounded" minOccurs="0">
-				<xsd:annotation>
-					<xsd:appinfo source="http://ejb.elver.org/Transient">true</xsd:appinfo>
-				</xsd:annotation>
+			 	<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@Transient</xsd:appinfo>
+			    </xsd:annotation>
     		</xsd:element>
     	</xsd:sequence>
     	<xsd:attribute name="MachineId" type="xsd:string"></xsd:attribute>

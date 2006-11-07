@@ -4,8 +4,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Id" importerID="org.eclipse.xsd.ecore.importer">
   <foreignModel>id.xsd</foreignModel>
-  <genPackages prefix="Id" basePackage="org.eclipse.emf.teneo.samples.emf.annotations" resource="XML"
-      disposableProviderFactory="true" ecorePackage="id.ecore#/">
+  <genPackages prefix="Id" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="id.ecore#/">
     <genClasses ecoreClass="id.ecore#//IdentityID">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//IdentityID/myid"/>
     </genClasses>

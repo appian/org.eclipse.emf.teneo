@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InventoryPackageImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: InventoryPackageImpl.java,v 1.3 2006/11/07 10:22:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.inv.impl;
 
@@ -279,103 +279,54 @@ public class InventoryPackageImpl extends EPackageImpl implements InventoryPacka
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://annotation.elver.org/SequenceGenerator
-		createSequenceGeneratorAnnotations();
-		// http://annotation.elver.org/Id
-		createIdAnnotations();
-		// http://annotation.elver.org/GeneratedValue
-		createGeneratedValueAnnotations();
-		// http://annotation.elver.org/Indexed
-		createIndexedAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/SequenceGenerator</b>.
+	 * Initializes the annotations for <b>teneo.jpa</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createSequenceGeneratorAnnotations() {
-		String source = "http://annotation.elver.org/SequenceGenerator";		
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-			 "name", "GENERATOR",
-			 "sequenceName", "IDSEQUENCE"
-		   });							
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Id</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIdAnnotations() {
-		String source = "http://annotation.elver.org/Id";			
+			 "appinfo", "@SequenceGenerator(name=\"GENERATOR\", sequenceName=\"IDSEQUENCE\")"
+		   });		
 		addAnnotation
 		  (getPType_Id(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "true"
-		   });						
-		addAnnotation
-		  (getPDeclaration_Id(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });	
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/GeneratedValue</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createGeneratedValueAnnotations() {
-		String source = "http://annotation.elver.org/GeneratedValue";				
-		addAnnotation
-		  (getPType_Id(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });						
-		addAnnotation
-		  (getPDeclaration_Id(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "true"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://annotation.elver.org/Indexed</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIndexedAnnotations() {
-		String source = "http://annotation.elver.org/Indexed";					
+			 "appinfo", "@Id\n@GeneratedValue"
+		   });		
 		addAnnotation
 		  (getPType_SubTypes(), 
 		   source, 
 		   new String[] {
-			 "value", "false"
+			 "appinfo", "@OneToMany(indexed=false)"
 		   });		
 		addAnnotation
 		  (getPType_SubNOTypes(), 
 		   source, 
 		   new String[] {
-			 "value", "false"
+			 "appinfo", "@OneToMany(indexed=false)"
 		   });		
 		addAnnotation
 		  (getPType_InfoReferences(), 
 		   source, 
 		   new String[] {
-			 "value", "false"
+			 "appinfo", "@OneToMany(indexed=false)"
 		   });		
+		addAnnotation
+		  (getPDeclaration_Id(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id\n@GeneratedValue"
+		   });
 	}
 
 } //InventoryPackageImpl

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: Person.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.compositeid.CompositeidPackage#getPerson()
- * @model annotation="http://annotation.elver.org/IdClass value='org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID'"
+ * @model annotation="teneo.jpa appinfo='@IdClass(org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID)'"
  * @generated
  */
 public interface Person extends EObject {
@@ -37,7 +37,7 @@ public interface Person extends EObject {
 	 * @return the value of the '<em>First Name</em>' attribute.
 	 * @see #setFirstName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.compositeid.CompositeidPackage#getPerson_FirstName()
-	 * @model
+	 * @model annotation="teneo.jpa appinfo='@Id'"
 	 * @generated
 	 */
 	String getFirstName();
@@ -63,7 +63,7 @@ public interface Person extends EObject {
 	 * @return the value of the '<em>Last Name</em>' attribute.
 	 * @see #setLastName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.compositeid.CompositeidPackage#getPerson_LastName()
-	 * @model
+	 * @model annotation="teneo.jpa appinfo='@Id'"
 	 * @generated
 	 */
 	String getLastName();

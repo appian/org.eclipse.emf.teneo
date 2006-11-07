@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -44,6 +44,7 @@ import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Maps the entity and its features, also takes care of embedded superclass mapping.
@@ -136,8 +137,18 @@ class EntityMapper extends AbstractMapper {
 				target.addAttribute("name", hbmContext.getInstanceClassName(entity));
 			}
 		} else {
+			// get the interfacec
+			final String proxyName;
+			final Class interfaceClass = EModelResolver.instance().getJavaInterfaceClass(entity.getAnnotatedEClass());
+			if (interfaceClass != null) {
+				proxyName = interfaceClass.getName();
+			} else {
+				proxyName = entityName;
+			}
+
 			target = getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name", entityName)
-					.addAttribute("abstract", isAbstractStr).addAttribute("lazy", "true");
+					.addAttribute("proxy", proxyName).addAttribute("abstract", isAbstractStr).addAttribute("lazy",
+							"true");
 		}
 
 		if (superEntity != null) {
@@ -145,7 +156,7 @@ class EntityMapper extends AbstractMapper {
 			target.addAttribute("extends", extendsEntity);
 			log.debug("Extends " + extendsEntity);
 		}
-
+		
 		if (dValue != null) {
 			target.addAttribute("discriminator-value", dValue.getValue());
 			log.debug("DValue " + dValue.getValue());
@@ -311,10 +322,22 @@ class EntityMapper extends AbstractMapper {
 			// now process the featuremap entries if any
 			processFeatureMapFeatures();
 		}
+		
+		getHbmContext().addTuplizerElement(entityElement, entity.getAnnotatedEClass());		
 
 		if (entity.getPaSuperEntity() == null && ((HbAnnotatedEClass) entity).getHbCache() != null) {
 			addCacheElement(entityElement, ((HbAnnotatedEClass) entity).getHbCache());
 		}
+		
+		final Element meta1 = new Element("meta");
+		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META) 
+			.addText(entity.getAnnotatedEClass().getName());
+		final Element meta2 = new Element("meta");
+		meta2.addAttribute("attribute", HbMapperConstants.EPACKAGE_META) 
+			.addText(entity.getAnnotatedEClass().getEPackage().getNsURI());
+		
+		entityElement.add(0, meta1);
+		entityElement.add(1, meta2);
 	}
 
 	/** Process the featuremap entries */
@@ -491,16 +514,9 @@ class EntityMapper extends AbstractMapper {
 	}
 
 	/**
-	 * Add a synthetic version if the entity does not define one TODO remove synthetic version property MT: why remove
-	 * it? TODO because if one needs optimistic lock one should define an attribute to support it at least I would like
-	 * this draconian approach MT This is a convenience, imo you always want optimistic locking and why would you want a
-	 * version attribute in a business object next to name, product code, order number etc. imho this is exposing
-	 * persistency details to the business layer.
+	 * Add a synthetic version if the entity does not define one 
 	 */
 	private Element addVersionProperty() {
-		// note hasVersion does not consider mapped superclasses
-		// FIXME this add version everywhere, specify where needed
-		// MT2: agree this can be controlled by an option.
 		assert (getHbmContext().getCurrent().element("version") == null);
 
 		if (!getHbmContext().alwaysVersion()) {
@@ -509,13 +525,15 @@ class EntityMapper extends AbstractMapper {
 
 		// note specific accessor is required because version accessor is not retrieved through
 		// emf tuplizer
-		return getHbmContext().getCurrent().addElement("version").
-		// NOTE: the name is also set so that the property name can be
-				// used later to identify a version prop,
-				// TODO: improve this
+		final Element versionElement = getHbmContext().getCurrent().addElement("version").
 				addAttribute("name", getHbmContext().getVersionColumnName()).addAttribute("column",
-						getHbmContext().getVersionColumnName()).addAttribute("access",
-						"org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
-	}
+						getHbmContext().getVersionColumnName());
+		final Element meta = new Element("meta");
+		meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
+		versionElement.add(0, meta);
 
+		versionElement.addAttribute("access", getHbmContext().getVersionPropertyHandlerName());
+		
+		return versionElement;
+	}
 }
