@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InterfaceTrueAction.java,v 1.1 2006/07/04 22:12:16 mtaal Exp $
+ * $Id: InterfaceTrueAction.java,v 1.2 2006/11/12 00:08:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
 
+import org.eclipse.emf.teneo.samples.issues.interfacetrue.Address;
 import org.eclipse.emf.teneo.samples.issues.interfacetrue.InterfacetrueFactory;
 import org.eclipse.emf.teneo.samples.issues.interfacetrue.InterfacetruePackage;
 import org.eclipse.emf.teneo.samples.issues.interfacetrue.USAddress;
@@ -26,7 +27,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the setting interface="true" on an eclass
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class InterfaceTrueAction extends AbstractTestAction {
 	/**
