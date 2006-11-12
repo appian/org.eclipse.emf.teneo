@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassFactoryImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: MappedsuperclassFactoryImpl.java,v 1.2 2006/11/12 00:08:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl;
 
@@ -59,12 +59,23 @@ public class MappedsuperclassFactoryImpl extends EFactoryImpl implements Mappeds
 	 */
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case MappedsuperclassPackage.ADD_ID_DOCUMENT: return createAddIDDocument();
 			case MappedsuperclassPackage.DOCUMENT: return createDocument();
 			case MappedsuperclassPackage.PARENT_DOCUMENT: return createParentDocument();
 			case MappedsuperclassPackage.SPECIFIC_DOCUMENT: return createSpecificDocument();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AddIDDocument createAddIDDocument() {
+		AddIDDocumentImpl addIDDocument = new AddIDDocumentImpl();
+		return addIDDocument;
 	}
 
 	/**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassPackageImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: MappedsuperclassPackageImpl.java,v 1.3 2006/11/12 00:08:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl;
 
@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
+import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.AddIDDocument;
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document;
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage;
@@ -27,6 +28,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.SpecificDo
  * @generated
  */
 public class MappedsuperclassPackageImpl extends EPackageImpl implements MappedsuperclassPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass addIDDocumentEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -124,6 +132,24 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAddIDDocument() {
+		return addIDDocumentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAddIDDocument_Name() {
+		return (EAttribute)addIDDocumentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDocument() {
 		return documentEClass;
 	}
@@ -133,17 +159,8 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDocument_MyId() {
-		return (EAttribute)documentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getDocument_MyGenericInfo() {
-		return (EAttribute)documentEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)documentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -210,8 +227,10 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		isCreated = true;
 
 		// Create classes and their features
+		addIDDocumentEClass = createEClass(ADD_ID_DOCUMENT);
+		createEAttribute(addIDDocumentEClass, ADD_ID_DOCUMENT__NAME);
+
 		documentEClass = createEClass(DOCUMENT);
-		createEAttribute(documentEClass, DOCUMENT__MY_ID);
 		createEAttribute(documentEClass, DOCUMENT__MY_GENERIC_INFO);
 
 		parentDocumentEClass = createEClass(PARENT_DOCUMENT);
@@ -248,12 +267,15 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
 
 		// Add supertypes to classes
+		addIDDocumentEClass.getESuperTypes().add(this.getDocument());
 		parentDocumentEClass.getESuperTypes().add(this.getDocument());
 		specificDocumentEClass.getESuperTypes().add(this.getParentDocument());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(addIDDocumentEClass, AddIDDocument.class, "AddIDDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAddIDDocument_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, AddIDDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDocument_MyId(), theXMLTypePackage.getLong(), "myId", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_MyGenericInfo(), theXMLTypePackage.getString(), "myGenericInfo", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parentDocumentEClass, ParentDocument.class, "ParentDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -266,10 +288,10 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		createResource(eNS_URI);
 
 		// Create annotations
-		// teneo.jpa
-		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -279,18 +301,12 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";		
+		String source = "teneo.jpa";				
 		addAnnotation
 		  (documentEClass, 
 		   source, 
 		   new String[] {
 			 "appinfo", "@MappedSuperclass"
-		   });			
-		addAnnotation
-		  (getDocument_MyId(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Id"
 		   });				
 		addAnnotation
 		  (parentDocumentEClass, 
@@ -307,20 +323,27 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
+		addAnnotation
+		  (addIDDocumentEClass, 
+		   source, 
+		   new String[] {
+			 "name", "AddIDDocument",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getAddIDDocument_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
+		   });			
 		addAnnotation
 		  (documentEClass, 
 		   source, 
 		   new String[] {
 			 "name", "Document",
 			 "kind", "elementOnly"
-		   });			
-		addAnnotation
-		  (getDocument_MyId(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "name", "myId"
 		   });		
 		addAnnotation
 		  (getDocument_MyGenericInfo(), 

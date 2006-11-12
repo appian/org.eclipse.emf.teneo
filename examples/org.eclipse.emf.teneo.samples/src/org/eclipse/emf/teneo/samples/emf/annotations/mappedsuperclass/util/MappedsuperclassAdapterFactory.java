@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassAdapterFactory.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: MappedsuperclassAdapterFactory.java,v 1.2 2006/11/12 00:08:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.util;
 
@@ -70,6 +70,9 @@ public class MappedsuperclassAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected MappedsuperclassSwitch modelSwitch =
 		new MappedsuperclassSwitch() {
+			public Object caseAddIDDocument(AddIDDocument object) {
+				return createAddIDDocumentAdapter();
+			}
 			public Object caseDocument(Document object) {
 				return createDocumentAdapter();
 			}
@@ -96,6 +99,20 @@ public class MappedsuperclassAdapterFactory extends AdapterFactoryImpl {
 		return (Adapter)modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.AddIDDocument <em>Add ID Document</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.AddIDDocument
+	 * @generated
+	 */
+	public Adapter createAddIDDocumentAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document <em>Document</em>}'.

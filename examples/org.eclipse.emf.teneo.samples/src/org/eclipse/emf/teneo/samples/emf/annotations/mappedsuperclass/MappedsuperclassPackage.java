@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassPackage.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: MappedsuperclassPackage.java,v 1.2 2006/11/12 00:08:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -66,16 +66,7 @@ public interface MappedsuperclassPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.MappedsuperclassPackageImpl#getDocument()
 	 * @generated
 	 */
-	int DOCUMENT = 0;
-
-	/**
-	 * The feature id for the '<em><b>My Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__MY_ID = 0;
+	int DOCUMENT = 1;
 
 	/**
 	 * The feature id for the '<em><b>My Generic Info</b></em>' attribute.
@@ -84,7 +75,7 @@ public interface MappedsuperclassPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__MY_GENERIC_INFO = 1;
+	int DOCUMENT__MY_GENERIC_INFO = 0;
 
 	/**
 	 * The number of structural features of the '<em>Document</em>' class.
@@ -93,7 +84,44 @@ public interface MappedsuperclassPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_FEATURE_COUNT = 2;
+	int DOCUMENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.AddIDDocumentImpl <em>Add ID Document</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.AddIDDocumentImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.MappedsuperclassPackageImpl#getAddIDDocument()
+	 * @generated
+	 */
+	int ADD_ID_DOCUMENT = 0;
+
+	/**
+	 * The feature id for the '<em><b>My Generic Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_ID_DOCUMENT__MY_GENERIC_INFO = DOCUMENT__MY_GENERIC_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_ID_DOCUMENT__NAME = DOCUMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Add ID Document</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_ID_DOCUMENT_FEATURE_COUNT = DOCUMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.ParentDocumentImpl <em>Parent Document</em>}' class.
@@ -103,16 +131,7 @@ public interface MappedsuperclassPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.MappedsuperclassPackageImpl#getParentDocument()
 	 * @generated
 	 */
-	int PARENT_DOCUMENT = 1;
-
-	/**
-	 * The feature id for the '<em><b>My Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARENT_DOCUMENT__MY_ID = DOCUMENT__MY_ID;
+	int PARENT_DOCUMENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>My Generic Info</b></em>' attribute.
@@ -149,16 +168,7 @@ public interface MappedsuperclassPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.MappedsuperclassPackageImpl#getSpecificDocument()
 	 * @generated
 	 */
-	int SPECIFIC_DOCUMENT = 2;
-
-	/**
-	 * The feature id for the '<em><b>My Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIFIC_DOCUMENT__MY_ID = PARENT_DOCUMENT__MY_ID;
+	int SPECIFIC_DOCUMENT = 3;
 
 	/**
 	 * The feature id for the '<em><b>My Generic Info</b></em>' attribute.
@@ -198,6 +208,27 @@ public interface MappedsuperclassPackage extends EPackage {
 
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.AddIDDocument <em>Add ID Document</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Add ID Document</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.AddIDDocument
+	 * @generated
+	 */
+	EClass getAddIDDocument();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.AddIDDocument#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.AddIDDocument#getName()
+	 * @see #getAddIDDocument()
+	 * @generated
+	 */
+	EAttribute getAddIDDocument_Name();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -206,17 +237,6 @@ public interface MappedsuperclassPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDocument();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document#getMyId <em>My Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>My Id</em>'.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document#getMyId()
-	 * @see #getDocument()
-	 * @generated
-	 */
-	EAttribute getDocument_MyId();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document#getMyGenericInfo <em>My Generic Info</em>}'.
@@ -294,6 +314,24 @@ public interface MappedsuperclassPackage extends EPackage {
 	 */
 	interface Literals  {
 		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.AddIDDocumentImpl <em>Add ID Document</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.AddIDDocumentImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.MappedsuperclassPackageImpl#getAddIDDocument()
+		 * @generated
+		 */
+		EClass ADD_ID_DOCUMENT = eINSTANCE.getAddIDDocument();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADD_ID_DOCUMENT__NAME = eINSTANCE.getAddIDDocument_Name();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.DocumentImpl <em>Document</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -302,14 +340,6 @@ public interface MappedsuperclassPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DOCUMENT = eINSTANCE.getDocument();
-
-		/**
-		 * The meta object literal for the '<em><b>My Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOCUMENT__MY_ID = eINSTANCE.getDocument_MyId();
 
 		/**
 		 * The meta object literal for the '<em><b>My Generic Info</b></em>' attribute feature.

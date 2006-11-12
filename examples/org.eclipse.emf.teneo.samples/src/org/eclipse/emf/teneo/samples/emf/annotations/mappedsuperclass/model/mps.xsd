@@ -9,13 +9,18 @@
 			<xsd:appinfo source="teneo.jpa">@MappedSuperclass</xsd:appinfo>
 	    </xsd:annotation>
 	    	<xsd:sequence>
-	  		<xsd:element name="myId" type="xsd:long">
-			 	<xsd:annotation>
-					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
-			    </xsd:annotation>
-			</xsd:element>
 	  		<xsd:element name="myGenericInfo" type="xsd:string"/>
     		</xsd:sequence>
+  	</xsd:complexType>
+
+  	<xsd:complexType name="AddIDDocument">
+	    	<xsd:complexContent>
+      		<xsd:extension base="this:Document">
+		        	<xsd:sequence>
+			  		<xsd:element name="name" type="xsd:string"/>
+		        	</xsd:sequence>
+			</xsd:extension>
+	    	</xsd:complexContent>
   	</xsd:complexType>
 
   	<xsd:complexType name="ParentDocument">
@@ -25,7 +30,7 @@
 	    	<xsd:complexContent>
       		<xsd:extension base="this:Document">
 		        	<xsd:sequence>
-			  		<xsd:element name="myName" type="xsd:string"/>
+				  		<xsd:element name="myName" type="xsd:string"/>
 		        	</xsd:sequence>
 			</xsd:extension>
 	    	</xsd:complexContent>

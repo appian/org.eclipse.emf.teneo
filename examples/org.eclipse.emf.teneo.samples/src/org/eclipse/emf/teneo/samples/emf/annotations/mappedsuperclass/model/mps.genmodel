@@ -6,8 +6,10 @@
   <foreignModel>mps.xsd</foreignModel>
   <genPackages prefix="Mappedsuperclass" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
       resource="XML" disposableProviderFactory="true" ecorePackage="mappedsuperclass.ecore#/">
+    <genClasses ecoreClass="mappedsuperclass.ecore#//AddIDDocument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mappedsuperclass.ecore#//AddIDDocument/name"/>
+    </genClasses>
     <genClasses ecoreClass="mappedsuperclass.ecore#//Document">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mappedsuperclass.ecore#//Document/myId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mappedsuperclass.ecore#//Document/myGenericInfo"/>
     </genClasses>
     <genClasses ecoreClass="mappedsuperclass.ecore#//ParentDocument">

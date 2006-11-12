@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassFactory.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: MappedsuperclassFactory.java,v 1.2 2006/11/12 00:08:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -24,6 +24,15 @@ public interface MappedsuperclassFactory extends EFactory {
 	 * @generated
 	 */
 	MappedsuperclassFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.MappedsuperclassFactoryImpl.init();
+
+	/**
+	 * Returns a new object of class '<em>Add ID Document</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Add ID Document</em>'.
+	 * @generated
+	 */
+	AddIDDocument createAddIDDocument();
 
 	/**
 	 * Returns a new object of class '<em>Document</em>'.

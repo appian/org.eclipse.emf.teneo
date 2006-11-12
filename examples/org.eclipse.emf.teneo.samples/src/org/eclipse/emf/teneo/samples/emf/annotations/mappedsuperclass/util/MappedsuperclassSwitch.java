@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassSwitch.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: MappedsuperclassSwitch.java,v 1.2 2006/11/12 00:08:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.util;
 
@@ -87,6 +87,13 @@ public class MappedsuperclassSwitch {
 	 */
 	protected Object doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case MappedsuperclassPackage.ADD_ID_DOCUMENT: {
+				AddIDDocument addIDDocument = (AddIDDocument)theEObject;
+				Object result = caseAddIDDocument(addIDDocument);
+				if (result == null) result = caseDocument(addIDDocument);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case MappedsuperclassPackage.DOCUMENT: {
 				Document document = (Document)theEObject;
 				Object result = caseDocument(document);
@@ -110,6 +117,21 @@ public class MappedsuperclassSwitch {
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Add ID Document</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Add ID Document</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseAddIDDocument(AddIDDocument object) {
+		return null;
 	}
 
 	/**
