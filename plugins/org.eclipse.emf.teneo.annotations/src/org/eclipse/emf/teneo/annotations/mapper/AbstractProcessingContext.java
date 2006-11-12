@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.1 2006/09/06 21:59:50 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.2 2006/11/12 00:08:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class AbstractProcessingContext {
@@ -182,5 +182,25 @@ public class AbstractProcessingContext {
 		}
 
 		return result;
+	}
+
+	/** Returns true if the eclass only has mappedsuperclasses without id annotated property */
+	public boolean mustAddSyntheticID(PAnnotatedEClass entity) {
+		if (entity.hasIdAnnotatedFeature()) {
+			return false;
+		}
+		for (Iterator it = entity.getAnnotatedEClass().getEAllSuperTypes().iterator(); it.hasNext();) {
+			final EClass superEClass = (EClass) it.next();
+			PAnnotatedEClass superPAClass = entity.getPaModel().getPAnnotated(superEClass);
+			if (superPAClass != null && superPAClass.getMappedSuperclass() == null) {
+				return false;
+			} else if (superPAClass != null && superPAClass.getMappedSuperclass() != null) {
+				if (superPAClass.hasIdAnnotatedFeature()) {
+					return false;
+				}
+			}
+		}
+
+		return true;
 	}
 }

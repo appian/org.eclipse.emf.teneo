@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.8 2006/09/04 15:53:43 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.9 2006/11/12 00:08:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
@@ -1070,7 +1071,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public boolean hasIdAnnotatedFeature() {
 		if (!getPaIdAttributes().isEmpty()) return true;
 
-		List eSupers = getAnnotatedEClass().getESuperTypes();
+		List eSupers = getAnnotatedEClass().getEAllSuperTypes();
 		for (Iterator it = eSupers.iterator(); it.hasNext();) {
 			EClass eSuper = (EClass)it.next();
 			PAnnotatedEClass aClass = getPaModel().getPAnnotated(eSuper);
@@ -1110,7 +1111,14 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		while (it.hasNext()) {
 			PAnnotatedEStructuralFeature aFeature = (PAnnotatedEStructuralFeature) it.next();
 			if (aFeature instanceof PAnnotatedEAttribute) {
-				if (((PAnnotatedEAttribute) aFeature).getId() != null && ((PAnnotatedEAttribute) aFeature).getTransient() == null)
+				if (((PAnnotatedEAttribute) aFeature).getId() != null && 
+						((PAnnotatedEAttribute) aFeature).getTransient() == null) {
+					attrs.add(aFeature);
+				}
+			} 
+			if (aFeature instanceof PAnnotatedEReference)
+				if (((PAnnotatedEReference) aFeature).getEmbeddedId() != null && 
+						((PAnnotatedEReference) aFeature).getTransient() == null) {
 					attrs.add(aFeature);
 			}
 		}

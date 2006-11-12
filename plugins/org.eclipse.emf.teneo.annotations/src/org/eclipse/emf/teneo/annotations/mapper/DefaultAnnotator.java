@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.11 2006/11/07 10:22:42 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.12 2006/11/12 00:08:36 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -78,7 +78,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class DefaultAnnotator {
 
@@ -274,7 +274,7 @@ public class DefaultAnnotator {
 		if (aClass.getEntity() == null && aClass.getEmbeddable() == null && aClass.getMappedSuperclass() == null) {
 			Entity entity = aFactory.createEntity();
 			entity.setEModelElement(eclass);
-			entity.setName(StoreUtil.getEClassURI(eclass, optionQualifyEClass));
+			entity.setName(getEntityName(eclass));
 			aClass.setEntity(entity);
 		} else if (aClass.getEntity() != null && aClass.getEntity().getName() == null) {
 			aClass.getEntity().setName(eclass.getName());
@@ -741,7 +741,7 @@ public class DefaultAnnotator {
 		// very generic type (EObject), if the type can be derived here then this should
 		// be added here
 		if (otm.getTargetEntity() == null) {
-			otm.setTargetEntity(StoreUtil.getEClassURI(eReference.getEReferenceType(), optionQualifyEClass));
+			otm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
 		}
 
 		// set unique and indexed
@@ -798,13 +798,13 @@ public class DefaultAnnotator {
 			// see remark in manytomany about naming of jointables
 			if (joinTable.getName() == null) {
 				if (optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
-					final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel())
-						+ "_" + getEntityName(eReference.getEReferenceType(), aReference.getPaModel());
+					final String jTableName = getEntityName(eReference.getEContainingClass())
+						+ "_" + getEntityName(eReference.getEReferenceType());
 					joinTable.setName(trunc(jTableName, false));
 				} else {
 					AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy +
 							" not supported", optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
-					final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+					final String jTableName = getEntityName(eReference.getEContainingClass()) + "_"
 						+ eReference.getName();
 					joinTable.setName(trunc(jTableName, false));
 				}
@@ -854,7 +854,7 @@ public class DefaultAnnotator {
 
 		setCascade(mtm.getCascade(), eReference.isContainment());
 		if (mtm.getTargetEntity() == null) {
-			mtm.setTargetEntity(StoreUtil.getEClassURI(eReference.getEReferenceType(), optionQualifyEClass));
+			mtm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
 		}
 
 		// determine where to place the jointable annotation and where to place the mappedby
@@ -907,29 +907,29 @@ public class DefaultAnnotator {
 			final String jTableName;
 			if (optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
 				if (mtm.isIndexed()) {
-					jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
-							+ getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel());
+					jTableName = getEntityName(eReference.getEContainingClass()) + "_"
+							+ getEntityName(eOpposite.getEContainingClass());
 				} else {
 					if (compareNames(eReference, eOpposite)) {
-						jTableName = getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel()) + "_"
-								+ getEntityName(eReference.getEContainingClass(), aReference.getPaModel());
+						jTableName = getEntityName(eOpposite.getEContainingClass()) + "_"
+								+ getEntityName(eReference.getEContainingClass());
 					} else {
-						jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
-								+ getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel());
+						jTableName = getEntityName(eReference.getEContainingClass()) + "_"
+								+ getEntityName(eOpposite.getEContainingClass());
 					}
 				}
 			} else {
 				AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy +
 						" not supported", optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
 				if (mtm.isIndexed()) {
-					jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+					jTableName = getEntityName(eReference.getEContainingClass()) + "_"
 							+ eReference.getName();
 				} else {
 					if (compareNames(eReference, eOpposite)) {
-						jTableName = getEntityName(eOpposite.getEContainingClass(), aReference.getPaModel()) + "_"
+						jTableName = getEntityName(eOpposite.getEContainingClass()) + "_"
 								+ eOpposite.getName();
 					} else {
-						jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+						jTableName = getEntityName(eReference.getEContainingClass()) + "_"
 							+ eReference.getName();
 					}
 				}
@@ -975,7 +975,7 @@ public class DefaultAnnotator {
 		setCascade(mtm.getCascade(), eReference.isContainment());
 
 		if (mtm.getTargetEntity() == null) {
-			mtm.setTargetEntity(StoreUtil.getEClassURI(eReference.getEReferenceType(), optionQualifyEClass));
+			mtm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
 		}
 
 		// with a unidirectional mtm the join is always placed here
@@ -991,13 +991,13 @@ public class DefaultAnnotator {
 		if (joinTable.getName() == null) {
 			if (optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
 				final String oppName = mtm.getTargetEntity();
-				final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+				final String jTableName = getEntityName(eReference.getEContainingClass()) + "_"
 						+ oppName;
 				joinTable.setName(trunc(jTableName, false));
 			} else {
 				AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy +
 						" not supported", optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
-				final String jTableName = getEntityName(eReference.getEContainingClass(), aReference.getPaModel()) + "_"
+				final String jTableName = getEntityName(eReference.getEContainingClass()) + "_"
 					+ eReference.getName();
 				joinTable.setName(trunc(jTableName, false));
 			}
@@ -1044,7 +1044,7 @@ public class DefaultAnnotator {
 		// very generic type (EObject), if the type can be derived here then this should
 		// be added here
 		if (oto.getTargetEntity() == null) {
-			oto.setTargetEntity(StoreUtil.getEClassURI(eReference.getEReferenceType(), optionQualifyEClass));
+			oto.setTargetEntity(getEntityName(eReference.getEReferenceType()));
 		}
 	}
 
@@ -1081,7 +1081,7 @@ public class DefaultAnnotator {
 		// very generic type (EObject), if the type can be derived here then this should
 		// be added here
 		if (mto.getTargetEntity() == null) {
-			mto.setTargetEntity(StoreUtil.getEClassURI(eReference.getEReferenceType(), optionQualifyEClass));
+			mto.setTargetEntity(getEntityName(eReference.getEReferenceType()));
 		}
 
 		// create a set of joincolumns, note that if this is a two-way relation then
@@ -1114,9 +1114,15 @@ public class DefaultAnnotator {
 
 	/** Return a list of join columns */
 	private List getJoinColumns(PAnnotatedEClass aClass, EStructuralFeature esf, boolean optional,
-			boolean useFeatureName, boolean isUpdateInsertable) {
+			boolean doUseFeatureName, boolean isUpdateInsertable) {
 		final List result = new ArrayList();
 		final List names = getIDFeaturesNames(aClass);
+		
+		boolean useFeatureName = doUseFeatureName;
+		if (esf.getEType() == aClass.getAnnotatedEClass()) {
+			useFeatureName = true;
+		}
+		
 		for (Iterator it = names.iterator(); it.hasNext();) {
 			String name = (String) it.next();
 			JoinColumn jc = aFactory.createJoinColumn();
@@ -1270,13 +1276,13 @@ public class DefaultAnnotator {
 		return nameHere.compareTo(nameThere) > 0;
 	}
 
-	/** Returns the entity name of the eclass of the passsed EStructuralFeature */
-	private String getEntityName(EClass eclass, PAnnotatedModel pamodel) {
-		final PAnnotatedEClass aclass = pamodel.getPAnnotated(eclass);
-		if (aclass.getEntity() == null) { // create the name ourselved
-			return StoreUtil.getEClassURI(aclass.getAnnotatedEClass(), optionQualifyEClass);
-		}
-		return aclass.getEntity().getName();
+	/** Returns the entity name of the eclass */
+	private String getEntityName(EClass eclass) {
+		final PAnnotatedEClass aclass = annotatedModel.getPAnnotated(eclass);
+		if (aclass != null && aclass.getEntity() != null) {
+			return aclass.getEntity().getName();
+		} 
+		return StoreUtil.getEClassURI(eclass, optionQualifyEClass);
 	}
 
 	/** Returns the value of an annotation with a certain key */
