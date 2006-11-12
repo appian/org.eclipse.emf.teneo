@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: FeatureMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -35,8 +35,8 @@ public class FeatureMapper {
 	/** Switch features for the annotated eattribute */
 	private static final EStructuralFeature[] PAEATTRIBUTE_DISCR_FEATURES = new EStructuralFeature[] {
 			PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_Transient(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Basic(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Id(),
+			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Basic(),
 			PamodelPackage.eINSTANCE.getPAnnotatedETypedElement_OneToMany(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Version() };
 

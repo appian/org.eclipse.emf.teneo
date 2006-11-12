@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -22,12 +22,12 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
+import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -166,6 +166,5 @@ abstract class AbstractMapper {
 		}
 		parent.remove(cacheElement);
 		parent.add(0, cacheElement);
-
 	}
 }

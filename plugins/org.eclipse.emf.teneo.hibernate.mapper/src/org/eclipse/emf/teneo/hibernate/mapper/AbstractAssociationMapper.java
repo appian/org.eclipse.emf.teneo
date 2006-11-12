@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -57,7 +57,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	}
 
 	/** Adds a manytoone tag to the current element of the hbmcontext */
-	protected Element addManyToOne(String assocName, String referedTo, boolean isReferedEntity) {
+	protected Element addManyToOne(PAnnotatedEReference aReference, String referedTo, boolean isReferedEntity) {
+		final String assocName = getHbmContext().getPropertyName(aReference.getAnnotatedEReference());
 		log.debug("addManyToOne " + assocName + "/" + referedTo);
 		
 		if (isReferedEntity) {
@@ -259,7 +260,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		} else {
 			collectionElement = getHbmContext().getCurrent().addElement("bag");
 		}
-		collectionElement.addAttribute("name", hbFeature.getAnnotatedEStructuralFeature().getName());
+		collectionElement.addAttribute("name", getHbmContext().getPropertyName(hbFeature.getAnnotatedEStructuralFeature()));
 		if (idBag != null) {
 			final String generator = (idBag.getGenerator() == null ? "increment" : idBag.getGenerator());
 			final String type = (idBag.getType() == null ? "long" : idBag.getType());

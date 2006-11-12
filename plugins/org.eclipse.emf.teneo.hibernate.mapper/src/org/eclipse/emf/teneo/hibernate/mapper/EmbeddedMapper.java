@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -80,7 +80,11 @@ class EmbeddedMapper extends AbstractMapper {
 
 	/** Process a many-to-one component */
 	private void processSingleEmbedded(PAnnotatedEReference paReference, String targetName, EClass target) {
-		if (targetName == null) {
+		final EClass refType = (EClass)paReference.getAnnotatedEReference().getEType();
+	
+		if (getHbmContext().isEasyEMFGenerated(refType)) {
+			targetName = getHbmContext().getImpl(refType).getName();
+		} else if (targetName == null) {
 			log.debug("Target is null, compute it");
 			targetName = getHbmContext().getEntityName(target);
 		}

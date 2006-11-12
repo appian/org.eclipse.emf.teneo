@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.3 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -82,6 +82,7 @@ public class HibernateMappingGenerator {
 		for (Iterator ip = paModel.getPaEPackages().iterator(); ip.hasNext();) {
 			for (Iterator ic = ((PAnnotatedEPackage) ip.next()).getPaEClasses().iterator(); ic.hasNext();) {
 				PAnnotatedEClass paClass = (PAnnotatedEClass) ic.next();
+
 				if (paClass.getEntity() != null) {
 					hbmContext.setEntityName(paClass.getAnnotatedEClass(), getEntityName(paClass));
 				}
@@ -94,7 +95,7 @@ public class HibernateMappingGenerator {
 	 */
 	private String getEntityName(PAnnotatedEClass paClass) {
 		final EClass eclass = paClass.getAnnotatedEClass();
-		if (EModelResolver.instance().hasImplementationClass(eclass)) {
+		if (hbmContext.isEasyEMFGenerated(eclass)) {
 			return EModelResolver.instance().getJavaClass(eclass).getName();
 		}
 

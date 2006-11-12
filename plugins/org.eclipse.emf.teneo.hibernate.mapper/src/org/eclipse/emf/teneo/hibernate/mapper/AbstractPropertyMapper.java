@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractPropertyMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: AbstractPropertyMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -71,24 +71,20 @@ class AbstractPropertyMapper extends AbstractMapper {
 	}
 
 	/** Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type. */
-	protected String hbEnumType(Enumerated enumerated) {
-		final String typeName;
+	public String getEnumUserType(Enumerated enumerated) {
 		if (EnumType.STRING == enumerated.getValue().getValue()) {
-			typeName = "org.eclipse.emf.teneo.hibernate.mapping.ENumUserType";
+			return getHbmContext().getEnumUserType();
 		} else {
-			typeName = "org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType";
+			return getHbmContext().getEnumIntegerUserType();
 		}
-		return typeName;
 	}
 
 	/** Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type. */
 	protected String hbDynamicEnumType(Enumerated enumerated) {
-		final String typeName;
 		if (EnumType.STRING == enumerated.getValue().getValue()) {
-			typeName = "org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserType";
+			return getHbmContext().getDynamicEnumUserType();
 		} else {
-			typeName = "org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserIntegerType";
+			return getHbmContext().getDynamicEnumIntegerUserType();
 		}
-		return typeName;
 	}
 }

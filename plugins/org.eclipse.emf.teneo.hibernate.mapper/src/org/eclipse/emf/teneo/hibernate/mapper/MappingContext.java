@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
+ * $Id: MappingContext.java,v 1.3 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.ERuntime;
@@ -36,6 +37,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.SQLCaseStrategy;
@@ -44,7 +46,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -123,12 +125,12 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/** Return the concrete impl. class */
-	synchronized String getInstanceClassName(PAnnotatedEClass aClass) {
+	protected String getInstanceClassName(PAnnotatedEClass aClass) {
 		return getInstanceClassName(aClass.getPaModel(), aClass.getAnnotatedEClass());
 	}
 
 	/** Return the concrete impl. class */
-	synchronized String getInstanceClassName(PAnnotatedModel paModel, EClass eClass) {
+	protected String getInstanceClassName(PAnnotatedModel paModel, EClass eClass) {
 		if (!eRuntimeInitialized) {
 			final EPackage[] epackages = new EPackage[paModel.getPaEPackages().size()];
 			int cnt = 0;
@@ -150,7 +152,7 @@ public class MappingContext extends AbstractProcessingContext {
 	/**
 	 * @return Returns the entity name for the given entity EClass.
 	 */
-	public String getEntityName(EClass entityEClass) {
+	public String getEntityName(EClass entityEClass) {		
 		final String name = (String) entityNames.get(entityEClass);
 		if (name == null)
 			throw new IllegalStateException("An entity name has not been registered for " + entityEClass);
@@ -384,7 +386,7 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** Returns the correct property name */
 	public String getPropertyName(EStructuralFeature ef) {
-		return ef.getName();
+		return EModelResolver.instance().getJavaMember(ef);
 	}
 	
 	/** Return the version property handler */
@@ -397,8 +399,55 @@ public class MappingContext extends AbstractProcessingContext {
 		return "org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler";
 	}
 	
+	/** There are four cases: EMF generated, EMF Dynamic, Easy EMF Generated, Easy EMF Dynamic */
+	public boolean isEasyEMFGenerated(EClassifier eclassifier) {
+		return EModelResolver.instance().hasImplementationClass(eclassifier);
+	}
+
+	public boolean isEasyEMFDynamic(EClassifier eclassifier) {
+		return !isEasyEMFGenerated(eclassifier) &&
+			EModelResolver.instance().isRegistered(eclassifier.getEPackage());		
+	}
+	
+	public boolean isEMFGenerated(EClassifier eclassifier) {
+		return eclassifier.getInstanceClass() != null;
+	}
+	
+	public boolean isEMFDynamic(EClassifier eclassifier) {
+		return !isEasyEMFDynamic(eclassifier) && !isEMFGenerated(eclassifier);
+	}
+	
+	/** Check if this is an entity (so without an impl class) */
+	public Class getImpl(EClassifier eclassifier) {
+		return EModelResolver.instance().getJavaClass(eclassifier);
+	}
+	
+	/** Check if this is an entity (so without an impl class) */
+	public boolean hasImpl(PAnnotatedEStructuralFeature af) {
+		return EModelResolver.instance().hasImplementationClass(af.getAnnotatedEStructuralFeature().getEContainingClass());
+	}
+	
 	/** Add a tuplizer element or not */
 	public void addTuplizerElement(Element entityElement, EClass eclass) {
-		
+	}
+	
+	/** Returns the enumusertype class name */
+	public String getEnumUserType() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.ENumUserType";
+	}
+	
+	/** Returns the enum user type integer name */
+	public String getEnumIntegerUserType() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType";
+	}
+	
+	/** Returns the enumusertype class name for the dynamic case */
+	public String getDynamicEnumUserType() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserType";
+	}
+	
+	/** Returns the enum user type integer name for the dynamic case */
+	public String getDynamicEnumIntegerUserType() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserIntegerType";
 	}
 }

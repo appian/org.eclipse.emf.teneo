@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -30,7 +30,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
@@ -133,7 +132,10 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		String targetName = null;
 
 		targetName = otm.getTargetEntity();
-		if (targetName == null) {
+		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(refType);
+		if (isEasyEMFGenerated) {
+			targetName = getHbmContext().getImpl(refType).getName();
+		} else if (targetName == null) {
 			targetName = getHbmContext().getEntityName(refType);
 		}
 
@@ -141,7 +143,6 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		// always a jointable should be
 		// used (as a default). This is however to heavy for cases were a jointable is not required at all. Also
 		// hibernate supports uni otm without join table.
-		final boolean isEntity = !EModelResolver.instance().hasImplementationClass(refType);
 		if (hbReference.getEmbedded() != null) {
 			addCompositeElement(collElement, targetName, hbReference);
 		} else if (jt != null) {
@@ -151,9 +152,9 @@ class OneToManyMapper extends AbstractAssociationMapper {
 			// mtm relation
 			// because an item can occur twice or more in the list.
 			// To force a jointable on a real otm a jointable annotation should be specified.
-			addManyToMany(collElement, targetName, isEntity, inverseJoinColumns, otm.isUnique());
+			addManyToMany(collElement, targetName, !isEasyEMFGenerated, inverseJoinColumns, otm.isUnique());
 		} else {
-			addOneToMany(collElement, targetName, isEntity);
+			addOneToMany(collElement, targetName, !isEasyEMFGenerated);
 		}
 	}
 
@@ -168,6 +169,8 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		// final Element collElement = addCollectionElement(paReference.getAnnotatedElement().getName(),
 		// paReference.isIndexed());
 		final Element collElement = addCollectionElement(paReference);
+
+		final EClass refType = paReference.getAnnotatedEReference().getEReferenceType();
 
 		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
 			addCacheElement(collElement, ((HbAnnotatedEReference) paReference).getHbCache());
@@ -196,20 +199,21 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		}
 
 		String targetName = otm.getTargetEntity();
-		if (targetName == null) {
+		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(refType);
+		if (isEasyEMFGenerated) {
+			targetName = getHbmContext().getImpl(refType).getName();
+		} else if (targetName == null) {
 			targetName = getHbmContext().getEntityName(paReference.getAnnotatedEReference().getEReferenceType());
 		}
 
-		final EClass refType = paReference.getAnnotatedEReference().getEReferenceType();
-		final boolean isEntity = !EModelResolver.instance().hasImplementationClass(refType);
 		if (paReference.getEmbedded() != null) {
 			addCompositeElement(collElement, targetName, paReference);
 		} else if (jt != null) {
 			final List inverseJoinColumns = jt != null && jt.getInverseJoinColumns() != null ? (List) jt
 					.getInverseJoinColumns() : Collections.EMPTY_LIST;
-			addManyToMany(collElement, targetName, isEntity, inverseJoinColumns, otm.isUnique());
+			addManyToMany(collElement, targetName, !isEasyEMFGenerated, inverseJoinColumns, otm.isUnique());
 		} else {
-			addOneToMany(collElement, targetName, isEntity);
+			addOneToMany(collElement, targetName, !isEasyEMFGenerated);
 		}
 	}
 

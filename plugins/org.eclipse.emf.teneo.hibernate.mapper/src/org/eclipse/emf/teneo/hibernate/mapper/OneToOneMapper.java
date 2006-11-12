@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -22,11 +22,11 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -73,14 +73,14 @@ class OneToOneMapper extends AbstractAssociationMapper {
 		String specifiedName = oto.getTargetEntity();
 
 		final EClass referedTo = paReference.getAnnotatedEReference().getEReferenceType();
-		final boolean hasImplClass = EModelResolver.instance().hasImplementationClass(referedTo);
-		if (hasImplClass) {
-			specifiedName = EModelResolver.instance().getJavaClass(referedTo).getName();
+		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(referedTo);
+		if (isEasyEMFGenerated) {
+			specifiedName = getHbmContext().getImpl(referedTo).getName();
 		}
 
-		final Element associationElement = addManyToOne(paReference.getAnnotatedEReference().getName(),
+		final Element associationElement = addManyToOne(paReference,
 				(specifiedName != null ? specifiedName : getHbmContext().getEntityName(
-						paReference.getAnnotatedEReference().getEReferenceType())), !hasImplClass);
+						paReference.getAnnotatedEReference().getEReferenceType())), !isEasyEMFGenerated);
 
 		addCascadesForSingle(associationElement, oto.getCascade());
 		// todo default false until proxies are supported
@@ -105,14 +105,21 @@ class OneToOneMapper extends AbstractAssociationMapper {
 		}
 
 		final EClass referedTo = paReference.getAnnotatedEReference().getEReferenceType();
-		final boolean hasImplClass = EModelResolver.instance().hasImplementationClass(referedTo);
-		if (hasImplClass) {
-			targetName = EModelResolver.instance().getJavaClass(referedTo).getName();
+		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(referedTo);
+		if (isEasyEMFGenerated) {
+			targetName = getHbmContext().getImpl(referedTo).getName();
 		}
 
-		final Element associationElement = addOneToOne(paReference.getAnnotatedEReference().getName(), targetName,
-				!hasImplClass);
+		final EReference eref = paReference.getAnnotatedEReference();
+		final EReference otherSide = eref.getEOpposite();
+		final Element associationElement = addOneToOne(getHbmContext().getPropertyName(eref), targetName,
+				!isEasyEMFGenerated);
 
+		// add the other-side
+		if (otherSide != null) {
+			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
+		}
+		
 		addCascadesForSingle(associationElement, oto.getCascade());
 		addFetchType(associationElement, oto.getFetch());
 		if (paReference.getPrimaryKeyJoinColumns().size() > 0) {

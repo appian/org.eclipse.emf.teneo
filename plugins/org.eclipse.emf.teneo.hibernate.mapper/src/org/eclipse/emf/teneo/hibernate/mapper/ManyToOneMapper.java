@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
-import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -65,28 +64,25 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 		final EClass referedTo = paReference.getAnnotatedEReference().getEReferenceType();
 		final ManyToOne mto = paReference.getManyToOne();
 		String targetName = mto.getTargetEntity();
-		if (targetName == null) {
+		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(referedTo);
+		if (isEasyEMFGenerated) {
+			targetName = getHbmContext().getImpl(referedTo).getName();
+		} else if (targetName == null) {
 			log.debug("Target is null, compute it");
 			targetName = getHbmContext().getEntityName(referedTo);
 		}
 
 		log.debug("Target " + targetName);
 
-		final boolean hasImplClass = EModelResolver.instance().hasImplementationClass(referedTo);
-		if (hasImplClass) {
-			targetName = EModelResolver.instance().getJavaClass(referedTo).getName();
-		}
-		
-		final Element associationElement = addManyToOne(paReference.getAnnotatedEReference().getName(), 
-				targetName, !hasImplClass);
-		
+		final Element associationElement = addManyToOne(paReference, targetName, !isEasyEMFGenerated);
+
 		// associationElement.addAttribute("access", "org.eclipse.emf.teneo.hibernate.mapping.EFeatureAccessor");
 
 		addCascadesForSingle(associationElement, mto.getCascade());
 		// todo default false until proxies are supported
 		associationElement.addAttribute("lazy", "false");
-		//addFetchType(associationElement, mto.getFetch());
-		
+		// addFetchType(associationElement, mto.getFetch());
+
 		addJoinColumns(associationElement, jcs, mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
 
 		associationElement.addAttribute("not-null",

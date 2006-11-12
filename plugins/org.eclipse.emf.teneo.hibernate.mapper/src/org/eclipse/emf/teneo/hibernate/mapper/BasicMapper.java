@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.3 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -23,6 +23,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -30,26 +31,14 @@ import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
-import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
-import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
-import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
  * Maps a basic element to its mapping Context.
- * <p>
- * Assumes that the given {@link PAnnotatedEStructuralFeature} is normal, i.e.
- * <ul>
- * <li>it is a {@link PAnnotatedEAttribute};
- * <li>it has a {@link Basic} annotation;
- * <li>it is EEnum typed, if and only if it has an {@link Enumerated} annotation;
- * <li>it is Date or Calendar typed if and only if it has an {@link  Temporal} annotation;
- * <li>if it has a {@link Lob} annotation then it is of correct type.
- * </ul>
  * 
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
@@ -75,54 +64,33 @@ class BasicMapper extends AbstractPropertyMapper {
 		super(mappingContext);
 	}
 
-	/** Returns the correct temporal type for hibernate */
-	private static String hbType(TemporalType temporalType) {
-		return BasicMapper.TEMPORAL_TYPE_NAMES[temporalType != null ? temporalType.getValue() : TemporalType.TIMESTAMP];
-	}
-
-	/** Adds a property with name and type set */
-	protected Element addProperty(EAttribute eattr, EDataType attrType) {
-		final String attrName = getHbmContext().getPropertyName(eattr);
-		log.debug("addProperty " + attrName + " of type " + AbstractPropertyMapper.hbType(attrType));
-		return getHbmContext().getCurrent().addElement("property").addAttribute("name", attrName).addAttribute("type",
-				AbstractPropertyMapper.hbType(attrType));
-	}
-
-	/** Adds a property with the type set */
-	protected Element addProperty(EAttribute eattr, TemporalType attrType) {
-		final String attrName = getHbmContext().getPropertyName(eattr);
-		log.debug("addProperty: " + attrName + " temporal " + attrType.getName());
-		return getHbmContext().getCurrent().addElement("property").addAttribute("name", attrName).addAttribute("type",
-				BasicMapper.hbType(attrType));
-	}
-
 	/**
 	 * Generate hb mapping for the given basic attribute.
 	 */
 	public void processBasic(PAnnotatedEAttribute paAttribute) {
-        HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
-        if (hbAttribute.getHbType() != null) {
-            processType(hbAttribute);
-        } else {
-            log.debug("processBasic " + paAttribute.getAnnotatedEAttribute().getName());
+		HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
+		if (hbAttribute.getHbType() != null) {
+			processType(hbAttribute);
+		} else {
+			log.debug("processBasic " + paAttribute.getAnnotatedEAttribute().getName());
 
-            final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
+			final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
 
-            final Element propElement = addProperty(eAttribute, eAttribute.getEAttributeType());
+			final Element propElement = addProperty(eAttribute, eAttribute.getEAttributeType());
 
-            Basic basic = paAttribute.getBasic();
-            if (basic == null) {
-                basic = PannotationFactory.eINSTANCE.createBasic();
-            }
+			Basic basic = paAttribute.getBasic();
+			if (basic == null) {
+				basic = PannotationFactory.eINSTANCE.createBasic();
+			}
 
-            // Buildtime enhancement not supported
-            propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
-            addColumn(propElement, eAttribute.getName(), getColumn(paAttribute), getHbmContext()
-                    .isCurrentElementFeatureMap(), false);
-            propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
-            //propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
-        }
-    }
+			// Buildtime enhancement not supported
+			propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
+			addColumn(propElement, eAttribute.getName(), getColumn(paAttribute), getHbmContext()
+					.isCurrentElementFeatureMap(), false);
+			propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
+			// propElement.addAttribute("unique", eAttribute.isUnique() ? "true" : "false");
+		}
+	}
 
 	/**
 	 * Generate hb mapping for the given temporal attribute.
@@ -186,8 +154,8 @@ class BasicMapper extends AbstractPropertyMapper {
 		log.debug("processEnum " + paAttribute.getAnnotatedEAttribute());
 
 		final Column column = getColumn(paAttribute);
-		final Element propElement = getHbmContext().getCurrent().addElement("property") 
-			.addAttribute("name", getHbmContext().getPropertyName(paAttribute.getAnnotatedEAttribute()));
+		final Element propElement = getHbmContext().getCurrent().addElement("property").addAttribute("name",
+				getHbmContext().getPropertyName(paAttribute.getAnnotatedEAttribute()));
 
 		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
 		Basic basic = paAttribute.getBasic();
@@ -201,22 +169,30 @@ class BasicMapper extends AbstractPropertyMapper {
 		propElement.addAttribute("not-null", isNullable(basic, eattr) ? "false" : "true");
 		addColumn(propElement, eattr.getName(), column, getHbmContext().isCurrentElementFeatureMap(), false);
 
-		// if not an entity
-		if (EModelResolver.instance().getJavaClass(paAttribute.getAnnotatedEAttribute().eClass()) == null) {
-			if (paAttribute.getAnnotatedEAttribute().getEType().getInstanceClass() != null) {
-				propElement.addElement("type"). 
-					addAttribute("name", hbEnumType(enumerated)). 
-					addElement("param"). 
-						addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).
-						addText(eattr.getEType().getInstanceClass().getName());
-			} else {
-				final Element typeElement = propElement.addElement("type"). 
-					addAttribute("name", hbDynamicEnumType(enumerated));
-				typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM). 
-					addText(paAttribute.getAnnotatedEAttribute().getEType().getName());
-				typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM). 
-					addText(paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
-			}
+		// if an entity then add the special things
+		final EClassifier eclassifier = paAttribute.getAnnotatedEAttribute().getEType();
+		if (getHbmContext().isEasyEMFGenerated(eclassifier)) {
+			final Class instanceClass = getHbmContext().getImpl(eclassifier);
+			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated))
+					.addElement("param").addAttribute("name", "enumClassName").addText(instanceClass.getName());
+		} else if (getHbmContext().isEasyEMFDynamic(eclassifier)) {
+			final Element typeElement = propElement.addElement("type").addAttribute("name",
+					hbDynamicEnumType(enumerated));
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
+					paAttribute.getAnnotatedEAttribute().getEType().getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
+					paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
+		} else if (getHbmContext().isEMFGenerated(eclassifier)) {
+			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated))
+					.addElement("param").addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
+							eattr.getEType().getInstanceClass().getName());
+		} else { // must be emf dynamic
+			final Element typeElement = propElement.addElement("type").addAttribute("name",
+					hbDynamicEnumType(enumerated));
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
+					paAttribute.getAnnotatedEAttribute().getEType().getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
+					paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
 		}
 	}
 
@@ -225,7 +201,7 @@ class BasicMapper extends AbstractPropertyMapper {
 	 */
 	public void processType(HbAnnotatedEAttribute hbAttribute) {
 		final EAttribute eAttribute = hbAttribute.getAnnotatedEAttribute();
-        
+
 		Basic basic = hbAttribute.getBasic();
 		if (basic == null) {
 			basic = PannotationFactory.eINSTANCE.createBasic();
@@ -266,6 +242,27 @@ class BasicMapper extends AbstractPropertyMapper {
 	public void processTransient(PAnnotatedEStructuralFeature paFeature) {
 		if (log.isDebugEnabled())
 			log.debug("Skipping transient feature for " + paFeature.getAnnotatedEStructuralFeature().getName());
+	}
+
+	/** Returns the correct temporal type for hibernate */
+	private static String hbType(TemporalType temporalType) {
+		return BasicMapper.TEMPORAL_TYPE_NAMES[temporalType != null ? temporalType.getValue() : TemporalType.TIMESTAMP];
+	}
+
+	/** Adds a property with name and type set */
+	protected Element addProperty(EAttribute eattr, EDataType attrType) {
+		final String attrName = getHbmContext().getPropertyName(eattr);
+		log.debug("addProperty " + attrName + " of type " + AbstractPropertyMapper.hbType(attrType));
+		return getHbmContext().getCurrent().addElement("property").addAttribute("name", attrName).addAttribute("type",
+				AbstractPropertyMapper.hbType(attrType));
+	}
+
+	/** Adds a property with the type set */
+	protected Element addProperty(EAttribute eattr, TemporalType attrType) {
+		final String attrName = getHbmContext().getPropertyName(eattr);
+		log.debug("addProperty: " + attrName + " temporal " + attrType.getName());
+		return getHbmContext().getCurrent().addElement("property").addAttribute("name", attrName).addAttribute("type",
+				BasicMapper.hbType(attrType));
 	}
 
 	/**

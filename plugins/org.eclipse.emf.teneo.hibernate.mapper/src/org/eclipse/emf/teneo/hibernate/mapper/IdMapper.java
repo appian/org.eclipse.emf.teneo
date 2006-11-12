@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
+ * $Id: IdMapper.java,v 1.3 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -30,6 +30,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
@@ -159,7 +160,7 @@ class IdMapper extends AbstractPropertyMapper{
 		final PAnnotatedEClass aClass = id.getPaEClass();
 
 		// check precondition
-		if (aClass.getPaSuperEntity() != null || aClass.getPaMappedSuper() != null) {
+		if (aClass.getPaSuperEntity() != null && aClass.getPaSuperEntity().hasIdAnnotatedFeature()) { 
 			log
 					.error("The annotated eclass: "
 							+ aClass
@@ -205,9 +206,27 @@ class IdMapper extends AbstractPropertyMapper{
 		if (id.getEnumerated() == null) {
 			usedIdElement.addAttribute("type", AbstractPropertyMapper.hbType(eAttribute.getEAttributeType()));
 		} else { // enumerated id
-			if (id.getAnnotatedEAttribute().getEType().getInstanceClass() != null) {
+			if (getHbmContext().isEasyEMFGenerated(id.getAnnotatedEAttribute().getEType())) {
+				// if the instanceclass is registered in the context then this java class is 
+				// created differently
+				final String typeName;
+				if (EnumType.STRING == id.getEnumerated().getValue().getValue()) {
+					typeName = "org.elver.persistence.hibernate.type.EnumUserType";
+				} else {
+					typeName = "org.elver.persistence.hibernate.type.EnumIntegerUserType";
+				}
+
+				final Class instanceClass = getHbmContext().getImpl(id.getAnnotatedEAttribute().getEType());
 				usedIdElement.addElement("type"). 
-					addAttribute("name", hbEnumType(id.getEnumerated())). 
+				addAttribute("name", typeName). 
+				addElement("param"). 
+					addAttribute("name", "enumClassName").
+					addText(instanceClass.getName());
+			} else if (getHbmContext().isEasyEMFDynamic(id.getAnnotatedEAttribute().getEType())) {
+				throw new UnsupportedOperationException("NOT YET SUPPORTED");
+			} else if (id.getAnnotatedEAttribute().getEType().getInstanceClass() != null) {
+				usedIdElement.addElement("type"). 
+					addAttribute("name", getEnumUserType(id.getEnumerated())). 
 					addElement("param"). 
 						addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).
 						addText(eAttribute.getEType().getInstanceClass().getName());

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.2 2006/11/07 10:22:59 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.3 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -28,6 +28,7 @@ import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -44,7 +45,6 @@ import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
-import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Maps the entity and its features, also takes care of embedded superclass mapping.
@@ -111,7 +111,8 @@ class EntityMapper extends AbstractMapper {
 	private Element createEntity(PAnnotatedEClass entity, InheritanceType inhStrategy, PAnnotatedEClass superEntity,
 			DiscriminatorValue dValue, Table table) {
 		// determine what type of hibernate tag should be used
-		InheritanceType inheritanceStrategy = inhStrategy != null ? inhStrategy : InheritanceType.SINGLE_TABLE_LITERAL;
+		final InheritanceType inheritanceStrategy = inhStrategy != null ? inhStrategy : InheritanceType.SINGLE_TABLE_LITERAL;
+		final EClass eclass = entity.getAnnotatedEClass();
 		final String hbClassName;
 		if (superEntity == null) {
 			hbClassName = "class";
@@ -123,23 +124,12 @@ class EntityMapper extends AbstractMapper {
 
 		final Element target;
 
-		final boolean hasImplClass = EModelResolver.instance().hasImplementationClass(entity.getAnnotatedEClass());
-		final String entityName = getHbmContext().getEntityName(entity.getAnnotatedEClass());
-		final String isAbstractStr = entity.getAnnotatedEClass().isAbstract() ? "true" : "false";
-		if (!hasImplClass) { // entity
-			target = getHbmContext().getCurrent().addElement(hbClassName).addAttribute("entity-name", entityName)
-					.addAttribute("abstract", isAbstractStr).addAttribute("lazy", "false");
-
-			// note for composite ids the name must be set always!
-			// entity.getAnnotatedEClass().getInstanceClass() != null) { // ||
-			// entity.getAnnotatedEClass().getInstanceClass() != null ||
-			if (hasCompositeID(entity)) { // only for this specific case it is required to have the impl.name
-				target.addAttribute("name", hbmContext.getInstanceClassName(entity));
-			}
-		} else {
+		final String entityName = getHbmContext().getEntityName(eclass);
+		final String isAbstractStr = eclass.isAbstract() ? "true" : "false";
+		if (getHbmContext().isEasyEMFGenerated(eclass)) { // entity
 			// get the interfacec
 			final String proxyName;
-			final Class interfaceClass = EModelResolver.instance().getJavaInterfaceClass(entity.getAnnotatedEClass());
+			final Class interfaceClass = EModelResolver.instance().getJavaInterfaceClass(eclass);
 			if (interfaceClass != null) {
 				proxyName = interfaceClass.getName();
 			} else {
@@ -149,6 +139,16 @@ class EntityMapper extends AbstractMapper {
 			target = getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name", entityName)
 					.addAttribute("proxy", proxyName).addAttribute("abstract", isAbstractStr).addAttribute("lazy",
 							"true");
+		} else {
+			target = getHbmContext().getCurrent().addElement(hbClassName).addAttribute("entity-name", entityName)
+			.addAttribute("abstract", isAbstractStr).addAttribute("lazy", "false");
+
+			// note for composite ids the name must be set always!
+			// entity.getAnnotatedEClass().getInstanceClass() != null) { // ||
+			// entity.getAnnotatedEClass().getInstanceClass() != null ||
+			if (hasCompositeID(entity)) { // only for this specific case it is required to have the impl.name
+				target.addAttribute("name", hbmContext.getInstanceClassName(entity));
+			}
 		}
 
 		if (superEntity != null) {
@@ -295,8 +295,10 @@ class EntityMapper extends AbstractMapper {
 			// create a synthetic id for roots
 			if (idElement == null && entity.getPaSuperEntity() == null && entity.getPaMappedSuper() == null) {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
+			} else if (getHbmContext().mustAddSyntheticID(entity)){
+				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
 			}
-
+			
 			if (idElement != null) {
 				int index = entityElement.indexOf(idElement) + 1;
 

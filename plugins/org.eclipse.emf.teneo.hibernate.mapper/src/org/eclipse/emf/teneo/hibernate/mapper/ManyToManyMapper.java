@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.1 2006/11/01 16:18:41 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -26,7 +26,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
-import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -83,23 +82,25 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		final EClass referedTo = hbReference.getAnnotatedEReference().getEReferenceType();
 		
 		String targetName = mtm.getTargetEntity();
-		if (targetName == null) {
-			log.debug("Target is name, compute it");
+		if (getHbmContext().isEasyEMFGenerated(referedTo)) {
+			targetName = getHbmContext().getImpl(referedTo).getName();
+		} else if (targetName == null) {
+			log.debug("Target is null, compute it");
 			targetName = getHbmContext().getEntityName(referedTo);
 		}
 		log.debug("Target entity-name " + targetName);
 
-		boolean hasImplClass = EModelResolver.instance().hasImplementationClass(referedTo);
-		if (hasImplClass) {
-			targetName = EModelResolver.instance().getJavaClass(referedTo).getName();
+		boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(referedTo);
+		if (isEasyEMFGenerated) {
+			targetName = getHbmContext().getImpl(referedTo).getName();
 		}
 		
 		final Element mtmElement;
-		if (!hasImplClass) {
-			mtmElement = collElement.addElement("many-to-many").addAttribute("entity-name", targetName)
+		if (isEasyEMFGenerated) {
+			mtmElement = collElement.addElement("many-to-many").addAttribute("class", targetName)
 				.addAttribute("unique", "false");
 		} else {
-			mtmElement = collElement.addElement("many-to-many").addAttribute("class", targetName)
+			mtmElement = collElement.addElement("many-to-many").addAttribute("entity-name", targetName)
 				.addAttribute("unique", "false");
 		}
 
