@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.12 2006/11/12 00:08:36 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.13 2006/11/12 23:59:21 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -78,7 +78,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class DefaultAnnotator {
 
@@ -115,6 +115,9 @@ public class DefaultAnnotator {
 	/** Force eager containment */
 	private boolean optionFetchContainmentEagerly = false;
 
+	/** Current Temporal */
+	private TemporalType optionDefaultTemporal = null;
+	
 	/** Option maximum column length */
 	private int optionMaximumSqlLength = -1;
 
@@ -203,6 +206,11 @@ public class DefaultAnnotator {
 		
 		optionJoinTableNamingStrategy = po.getJoinTableNamingStrategy();
 		log.debug("JoinTableNamingStrategy " + optionJoinTableNamingStrategy);
+		
+		optionDefaultTemporal = TemporalType.get(po.getDefaultTemporalValue());
+		if (optionDefaultTemporal == null) {
+			throw new IllegalArgumentException("Temporal value not found: " + po.getDefaultTemporalValue());
+		}
 		
 		if (optionJoinTableNamingStrategy == null || optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") != 0 &&
 				optionJoinTableNamingStrategy.compareToIgnoreCase("unique") != 0)  {
@@ -562,12 +570,12 @@ public class DefaultAnnotator {
 
 			if (clazz != null && Date.class.isAssignableFrom(clazz)) {
 				final Temporal temporal = aFactory.createTemporal();
-				temporal.setValue(TemporalType.DATE_LITERAL);
+				temporal.setValue(optionDefaultTemporal);
 				aAttribute.setTemporal(temporal);
 				temporal.setEModelElement(eAttribute);
 			} else if (clazz != null && Calendar.class.isAssignableFrom(clazz)) {
 				final Temporal temporal = aFactory.createTemporal();
-				temporal.setValue(TemporalType.DATE_LITERAL);
+				temporal.setValue(optionDefaultTemporal);
 				aAttribute.setTemporal(temporal);
 				temporal.setEModelElement(eAttribute);
 			}

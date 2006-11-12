@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.14 2006/11/07 10:22:55 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.15 2006/11/12 23:59:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class PersistenceOptions {
 
@@ -151,6 +151,9 @@ public class PersistenceOptions {
 	 */
 	public static final String JOIN_TABLE_NAMING_STRATEGY = MAPPING_PREFIX + "join_table_naming_strategy";
     
+	/** The default time/date type used */
+	public static final String DEFAULT_TEMPORAL_VALUE = MAPPING_PREFIX + "default_temporal";
+	
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
@@ -172,6 +175,7 @@ public class PersistenceOptions {
         props.setProperty(ALWAYS_VERSION, "true");
         props.setProperty(DEFAULT_CACHE_STRATEGY, "NONE");
         props.setProperty(JOIN_TABLE_NAMING_STRATEGY, "ejb3");
+        props.setProperty(DEFAULT_TEMPORAL_VALUE, "TIMESTAMP");
         
 		return props;
 	}
@@ -235,6 +239,11 @@ public class PersistenceOptions {
 		}
 	}
 
+	/** Return the default temporal value */
+	public String getDefaultTemporalValue() {
+		return properties.getProperty(DEFAULT_TEMPORAL_VALUE);
+	}
+	
 	/** Returns the value of the UseJoinTableForNonContainedAssociations option, default is false */
 	public boolean isJoinTableForNonContainedAssociations() {
 		return Boolean.valueOf(properties.getProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS)).booleanValue();
