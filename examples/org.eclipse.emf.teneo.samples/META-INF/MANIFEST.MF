@@ -12,13 +12,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi,
 Eclipse-LazyStart: true
 Eclipse-BuddyPolicy: dependent
 Bundle-Vendor: %Plugin.providerName
-Export-Package: com.pareis.trading,
- com.pareis.trading.impl,
- com.pareis.trading.util,
- com.pareis.trading.yahoo,
- com.pareis.trading.yahoo.impl,
- com.pareis.trading.yahoo.util,
- extlibrary,
+Export-Package: extlibrary,
  extlibrary.impl,
  extlibrary.util,
  main,
