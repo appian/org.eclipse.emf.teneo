@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.18 2006/10/25 18:55:45 mtaal Exp $
+ * $Id: AllTests.java,v 1.19 2006/11/12 00:07:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -44,26 +44,28 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed.instance()
 				.getConfigurations());
-//		suite.addTestSuite(GMFNotationAction.class);
+//		suite.addTestSuite(YahooAction.class);
 
+		suite.addTestSuite(ExtendedPO2Test.class);
+		suite.addTestSuite(LibrarySerializationAction.class);
+
+		//		suite.addTestSuite(GMFNotationAction.class);
 		// this test works with ms sql server but not with mysql
 		//suite.addTestSuite(EcoreAction.class);
 		suite.addTestSuite(LibraryJoinTableNamingAction.class);
 
-//		suite.addTestSuite(YahooAction.class);
 		suite.addTestSuite(LibraryAction.class);
 
 		suite.addTestSuite(LibrarySessionControllerAction.class);
 
 		suite.addTestSuite(DynamicAction.class);
-		suite.addTestSuite(LibrarySerializationAction.class);
 
 		//	suite.addTestSuite(ExtLibraryAction.class);
 		suite.addTestSuite(CapaTest.class);
@@ -88,7 +90,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryGlobalEagerAction.class);
 		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(PlayAction.class);
-		suite.addTestSuite(ExtendedPO2Test.class);
 		suite.addTestSuite(PrimerPOAction.class);
 		suite.addTestSuite(ProductAction.class);
 		suite.addTestSuite(WorkFlowAction.class);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.9 2006/09/29 12:30:24 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.10 2006/11/12 00:07:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -26,7 +26,6 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.HbConstants;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
-import org.eclipse.emf.teneo.hibernate.mapper.MappingException;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStoreFactory;
 import org.eclipse.emf.teneo.test.AbstractTest;
 import org.eclipse.emf.teneo.test.StoreTestException;
@@ -38,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -101,14 +100,12 @@ public class HibernateTestbed extends Testbed {
 
 			return store;
 		} catch (IOException e) {
-			throw new StoreTestException("Exception while writing hbm file " + e.getMessage(), e);
-		} catch (MappingException m) {
-			throw new StoreTestException("Exception while creating mapping file: " + m.getMessage(), m);
+			throw new StoreTestException("Exception while writing hbm file/creating mapping file " + e.getMessage(), e);
 		}
 	}
 
 	/** Creates the mapping xml and writes it to a mapping file */
-	private void writeMappingToFile(AbstractTest testCase) throws MappingException, IOException {
+	private void writeMappingToFile(AbstractTest testCase) throws IOException {
 		final Properties props = testCase.getExtraConfigurationProperties();
 		props.put(PersistenceOptions.INHERITANCE_MAPPING, getActiveConfiguration().getMappingStrategy().getName());
 		final Properties properties = new Properties();
