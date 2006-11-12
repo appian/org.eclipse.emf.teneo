@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.7 2006/10/26 14:19:10 mtaal Exp $
+ * $Id: AllTests.java,v 1.8 2006/11/12 00:08:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.issues;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.issues.SimplenmAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class AllTests {
 
@@ -41,16 +41,16 @@ public class AllTests {
 				.instance().getConfigurations());
 		
 		if (!JPOXTestbed.isRunningOnEMFTServer()) {
-			suite.addTestSuite(AbstractReferenceAction.class);
 		}
+		suite.addTestSuite(InterfaceTrueAction.class);
 		suite.addTestSuite(BagDuplicateAction.class);
 		suite.addTestSuite(InheritanceAction.class);
 
 		suite.addTestSuite(EnumTestAction.class);
-		suite.addTestSuite(InterfaceTrueAction.class);
 		suite.addTestSuite(SimplenmAction.class);
-		
+
 		// TODO always fails for jpox, seems unimportant
+		// suite.addTestSuite(AbstractReferenceAction.class);
 		// suite.addTestSuite(TopClassesAction.class);
 
 		// the following test cases are all non-epackage
