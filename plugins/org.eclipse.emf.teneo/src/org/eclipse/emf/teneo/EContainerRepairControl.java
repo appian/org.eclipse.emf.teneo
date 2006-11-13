@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EContainerRepairControl.java,v 1.3 2006/08/22 22:24:52 mtaal Exp $
+ * $Id: EContainerRepairControl.java,v 1.4 2006/11/13 19:55:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -29,6 +29,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
+import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
+import org.eclipse.emf.teneo.mapping.elist.PersistableFeatureMap;
 
 /**
  * Supports the repair of the eContainer and resource setting of child objects when an object is loaded from the backing
@@ -46,7 +48,7 @@ import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
  * be set in child objects.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class EContainerRepairControl {
@@ -72,6 +74,12 @@ public class EContainerRepairControl {
 					final EList list = (EList) start.eGet(eref);
 					if (list == null)
 						continue;
+					if ((list instanceof PersistableEList) && !((PersistableEList)list).isLoaded()) {
+						continue;
+					}
+					if ((list instanceof PersistableFeatureMap) && !((PersistableFeatureMap)list).isLoaded()) {
+						continue;
+					}
 					for (int i = 0; i < list.size(); i++) {
 						final InternalEObject child = (InternalEObject) list.get(i);
 						if (child.eResource() == null) // no container

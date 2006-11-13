@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.5 2006/10/21 10:10:49 mtaal Exp $
+ * $Id: StoreResource.java,v 1.6 2006/11/13 19:55:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.RandomAccess;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -36,21 +35,13 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
-import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.ecore.util.EContentsEList.FeatureIteratorImpl;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.StoreValidationException;
-import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
-import org.eclipse.emf.teneo.mapping.elist.PersistableEMap;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
@@ -58,7 +49,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -333,7 +324,7 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** Copied from IBM tutorial, validates one eobject */
 	public org.eclipse.emf.common.util.Diagnostic validateObject(EObject eObject) {
-		org.eclipse.emf.common.util.Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
+		org.eclipse.emf.common.util.Diagnostic diagnostic = NonLoadingDiagnostician.INSTANCE.validate(eObject);
 		if (diagnostic.getSeverity() == org.eclipse.emf.common.util.Diagnostic.ERROR) {
 			return diagnostic;
 		}
@@ -426,7 +417,8 @@ public abstract class StoreResource extends ResourceImpl {
 	public void attached(EObject eObject) {
 		attachedHelper(eObject);
 		for (Iterator tree = getNonResolvingContent(eObject).basicIterator(); tree.hasNext();) {
-			attachedHelper((EObject) tree.next());
+			final Object obj = tree.next();
+			attachedHelper((EObject) obj);
 		}
 	}
 
@@ -582,118 +574,7 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** Returns a non-resolving contents elist for an eobject */
 	private EContentsEList getNonResolvingContent(EObject eObject) {
-		return new EContentsEList(eObject) {
-			protected boolean resolve() {
-				return false;
-			}
-
-			public Iterator basicIterator() {
-				if (eStructuralFeatures == null) {
-					return FeatureIteratorImpl.EMPTY_ITERATOR;
-				}
-
-				return getFeatureIterator(eObject, eStructuralFeatures);
-			}
-		};
-	}
-
-	/** Returns a featureiterator which does not load unloaded elists */
-	private Iterator getFeatureIterator(EObject eObject, EStructuralFeature[] eStructuralFeatures) {
-		if (eStructuralFeatures == null) {
-			return FeatureIteratorImpl.EMPTY_ITERATOR;
-		}
-
-		return new FeatureIteratorImpl(eObject, eStructuralFeatures) {
-			public boolean hasNext() {
-				switch (prepared) {
-				case 3:
-				case 2: {
-					return true;
-				}
-				case 1: {
-					return false;
-				}
-				case -3: {
-					// Undo the preparation for previous and continue.
-					// Undo the preparation for previous and continue.
-					if (values == null) {
-						++valueListIndex;
-					} else {
-						values.next();
-					}
-				}
-				default: {
-					if (valueList == null || (values == null ? !scanNext() : !scanNext(values))) {
-						while (featureCursor < eStructuralFeatures.length) {
-							EStructuralFeature feature = eStructuralFeatures[featureCursor++];
-
-							if (feature.isMany()) {
-								Object value = eObject.eGet(feature, resolve());
-								if (value instanceof PersistableDelegateList
-										&& !((PersistableDelegateList) value).isLoaded()) {
-									continue;
-								}
-								if (value instanceof PersistableEMap && !((PersistableEMap) value).isLoaded()) {
-									continue;
-								}
-							}
-							if (isIncluded(feature) && (!useIsSet() || eObject.eIsSet(feature))) {
-								Object value = eObject.eGet(feature, resolve());
-								isHandlingFeatureMap = FeatureMapUtil.isFeatureMap(feature);
-								if (isHandlingFeatureMap || feature.isMany()) {
-									valueList = resolve() ? (List) value : (valueInternalEList = (InternalEList) value);
-									if (valueList instanceof RandomAccess) {
-										values = null;
-										valueListSize = valueList.size();
-										valueListIndex = 0;
-									} else {
-										values = valueInternalEList == null ? valueList.listIterator()
-												: valueInternalEList.basicListIterator();
-									}
-									if (values == null ? scanNext() : scanNext(values)) {
-										preparedResult = values == null ? valueInternalEList == null ? valueList
-												.get(valueListIndex++) : valueInternalEList.basicGet(valueListIndex++)
-												: values.next();
-										if (isHandlingFeatureMap) {
-											FeatureMap.Entry entry = (FeatureMap.Entry) preparedResult;
-											preparedFeature = entry.getEStructuralFeature();
-											preparedResult = entry.getValue();
-										} else {
-											preparedFeature = feature;
-										}
-										prepared = 3;
-										return true;
-									}
-								} else if (value != null) {
-									valueList = null;
-									values = null;
-									preparedResult = value;
-									preparedFeature = feature;
-									prepared = 2;
-									return true;
-								}
-							}
-						}
-						valueList = null;
-						values = null;
-						isHandlingFeatureMap = false;
-						prepared = 1;
-						return false;
-					} else {
-						preparedResult = values == null ? valueInternalEList == null ? valueList.get(valueListIndex++)
-								: valueInternalEList.basicGet(valueListIndex++) : values.next();
-						if (isHandlingFeatureMap) {
-							FeatureMap.Entry entry = (FeatureMap.Entry) preparedResult;
-							preparedFeature = entry.getEStructuralFeature();
-							preparedResult = entry.getValue();
-						}
-						prepared = 3;
-						return true;
-					}
-				}
-				}
-			}
-		};
+		return NonLoadingEContentsEList.create(eObject, false);
 	}
 
 	/*
