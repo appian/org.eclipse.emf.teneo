@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.4 2006/09/28 20:05:52 mtaal Exp $
+ * $Id: AllTests.java,v 1.5 2006/11/13 19:55:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;
@@ -38,22 +38,22 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", HibernateTestbed
 				.instance().getConfigurations());
-		suite.addTestSuite(EMapAction.class);
+		suite.addTestSuite(AttributesTest.class);
 
+		suite.addTestSuite(EMapAction.class);
 		suite.addTestSuite(SimpleTypeAction.class);
 		suite.addTestSuite(ListAction.class);
 		suite.addTestSuite(EcoreAttrsAction.class);
 		suite.addTestSuite(MixedAction.class);
 		suite.addTestSuite(SimplefeaturemapAction.class);
 		suite.addTestSuite(RestrictionAction.class);
-		suite.addTestSuite(AttributesTest.class);
 		suite.addTestSuite(ExtensionAction.class);
 		suite.addTestSuite(GroupAction.class);
 		suite.addTestSuite(NestedGroupAction.class);
