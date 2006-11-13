@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicPamodelBuilder.java,v 1.6 2006/11/13 14:53:08 mtaal Exp $
+ * $Id: BasicPamodelBuilder.java,v 1.7 2006/11/13 19:55:36 mtaal Exp $
  */
 
 
@@ -290,7 +290,7 @@ public class BasicPamodelBuilder {
 			if (eClassifier instanceof EClass) {
 				addRecurse(paPackage, (EClass) eClassifier);
 			} else if (eClassifier instanceof EDataType) {
-				final PAnnotatedEDataType ped = pElement((EDataType)eClassifier);
+				pElement((EDataType)eClassifier);
 			}
 		}
 	}

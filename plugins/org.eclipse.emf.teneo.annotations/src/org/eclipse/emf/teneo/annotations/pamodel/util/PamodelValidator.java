@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelValidator.java,v 1.9 2006/09/06 21:59:49 mtaal Exp $
+ * $Id: PamodelValidator.java,v 1.10 2006/11/13 19:55:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -20,14 +20,14 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
-import org.eclipse.emf.teneo.annotations.pamodel.*;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
