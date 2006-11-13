@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidFactoryImpl.java,v 1.3 2006/11/07 10:22:27 mtaal Exp $
+ * $Id: CompositeidFactoryImpl.java,v 1.4 2006/11/13 19:55:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl;
 
@@ -11,8 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.samples.emf.annotations.compositeid.*;
-
 import org.eclipse.emf.teneo.samples.emf.annotations.compositeid.Child;
 import org.eclipse.emf.teneo.samples.emf.annotations.compositeid.CompositeidFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.compositeid.CompositeidPackage;

@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: User.java,v 1.2 2006/09/05 12:16:36 mtaal Exp $
+ * $Id: User.java,v 1.3 2006/11/13 19:55:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

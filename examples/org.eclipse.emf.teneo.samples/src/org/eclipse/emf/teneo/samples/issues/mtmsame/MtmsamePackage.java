@@ -2,14 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MtmsamePackage.java,v 1.1 2006/11/12 00:08:30 mtaal Exp $
+ * $Id: MtmsamePackage.java,v 1.2 2006/11/13 19:55:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.mtmsame;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.EReference;
 
 /**

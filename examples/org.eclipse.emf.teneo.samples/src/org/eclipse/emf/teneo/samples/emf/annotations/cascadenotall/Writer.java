@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.2 2006/09/13 10:39:43 mtaal Exp $
+ * $Id: Writer.java,v 1.3 2006/11/13 19:55:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
