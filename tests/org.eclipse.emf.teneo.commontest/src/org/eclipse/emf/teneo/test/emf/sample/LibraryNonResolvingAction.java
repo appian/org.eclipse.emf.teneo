@@ -11,12 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryNonResolvingAction.java,v 1.3 2006/09/21 00:57:18 mtaal Exp $
+ * $Id: LibraryNonResolvingAction.java,v 1.4 2006/11/13 19:55:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.io.IOException;
+import java.util.Collections;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
@@ -39,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * does not result in loaded containment elists.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
+ * @version $Revision: 1.4 $ 
 */
 public class LibraryNonResolvingAction extends AbstractTestAction 
 {
@@ -115,6 +116,17 @@ public class LibraryNonResolvingAction extends AbstractTestAction
 	    		//((StoreResource)res).setAutoResolve(false);
 	    		res.load(null);
 	    		res.setTrackingModification(true);
+	    		testResolving(res);
+	    	}
+	    	{
+	    		Resource res = store.getResource();
+	    		// default is false
+	    		//((StoreResource)res).setAutoResolve(false);
+	    		res.load(null);
+	    		res.setTrackingModification(true);
+	    		Library lib = (Library)res.getContents().get(0);
+	    		lib.setName(lib.getName() + "_");
+	    		res.save(Collections.EMPTY_MAP);
 	    		testResolving(res);
 	    	}
 
