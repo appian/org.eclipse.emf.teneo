@@ -415,7 +415,9 @@
 				
 <li>IdBag</li>
 				
-<li>Type</li>
+<li>Type (on EAttribute)</li>
+				
+<li>TypeDef (on EDataType)</li>
 			
 </ul>
 			
@@ -423,12 +425,12 @@
 		
 </div>
 		
-<a name="N100D7"></a><a name="Annotation+notes"></a>
+<a name="N100DA"></a><a name="Annotation+notes"></a>
 <div class="h3">
 <h3>Annotation notes</h3>
 			
 			
-<a name="N100DD"></a><a name="edatatype"></a>
+<a name="N100E0"></a><a name="edatatype"></a>
 <div class="h4">
 <h4>Annotations on EDataType</h4>
 <p>Every JPA annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
@@ -438,7 +440,7 @@
 			and the EDataType have the same annotation then the annotation on the EAttribute is used.</p>
 </div>
 			
-<a name="N100E6"></a><a name="transient"></a>
+<a name="N100E9"></a><a name="transient"></a>
 <div class="h4">
 <h4>Transient on EClass</h4>
 <p>The Transient annotation can also be used on an EClass. This prevents an EClass from being mapped and be persisted.</p>
@@ -447,7 +449,7 @@
 </div>
 		
 		
-<a name="N100F3"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
+<a name="N100F6"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
 <div class="h4">
 <h4>Unique annotation added to OneToMany to force a join table for 1:n relations</h4>
 <p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
@@ -469,7 +471,7 @@
 </div>
 		
 		
-<a name="N10107"></a><a name="indexed"></a>
+<a name="N1010A"></a><a name="indexed"></a>
 <div class="h4">
 <h4>Indexed Annotation</h4>
 <p>The http://annotation.elver.org/Indexed annotation can be used to signal to Elver that a certain association does
@@ -479,7 +481,7 @@
 </div>
 			
 			
-<a name="N10114"></a><a name="EmbeddedID+annotation"></a>
+<a name="N10117"></a><a name="EmbeddedID+annotation"></a>
 <div class="h4">
 <h4>EmbeddedID annotation</h4>
 <p>EmbeddedID lets you use an embedded class as an entity's composite primary key.</p>
@@ -491,7 +493,7 @@
 </div>
 			
 			
-<a name="N10125"></a><a name="lob_notes"></a>
+<a name="N10128"></a><a name="lob_notes"></a>
 <div class="h4">
 <h4>Lob annotation</h4>
 <p>

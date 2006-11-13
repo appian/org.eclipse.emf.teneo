@@ -260,6 +260,9 @@
 <a href="#Lazy+loading%2Ffetching%2C+Proxy">Lazy loading/fetching, Proxy</a>
 </li>
 <li>
+<a href="#Automatic+creation+of+TypeDef+for+EDataType">Automatic creation of TypeDef for EDataType</a>
+</li>
+<li>
 <a href="#Synthetic+ID+and+Version+properties">Synthetic ID and Version properties</a>
 </li>
 <li>
@@ -378,7 +381,23 @@
 		
 </div>
 		
-<a name="N1007E"></a><a name="Synthetic+ID+and+Version+properties"></a>
+<a name="N1007E"></a><a name="Automatic+creation+of+TypeDef+for+EDataType"></a>
+<div class="h3">
+<h3>Automatic creation of TypeDef for EDataType</h3>
+			
+<p>When you define an EDataType in your EPackage Teneo will automatically map this EDataType to a TypeDef if the instanceClass of
+			the EDataType can not be handled by native Hibernate.</p>
+			
+<p>The TypeDef will make use of the 
+			UserType org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType. This user type persists the value in a single varchar column.
+			This means that the EDataType needs to be convertable from/to a String. EMF will generate the appropriate methods in the generated 
+			EFactory for your EPackage. Many times EMF will throw an UnsupportedOperationException. You need to manually change this code to convert
+			your type correctly from and to a String.
+			</p>
+		
+</div>
+		
+<a name="N1008A"></a><a name="Synthetic+ID+and+Version+properties"></a>
 <div class="h3">
 <h3>Synthetic ID and Version properties</h3>
 			
@@ -394,7 +413,7 @@
 		
 </div>
 		
-<a name="N1008E"></a><a name="cutpaste"></a>
+<a name="N1009A"></a><a name="cutpaste"></a>
 <div class="h3">
 <h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
 			
@@ -428,7 +447,7 @@
 		
 </div>
 		
-<a name="N100AF"></a><a name="Validation"></a>
+<a name="N100BB"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
 			
@@ -464,7 +483,7 @@ public class MyValidator extends EObjectValidator
 		
 </div>
 		
-<a name="N100C3"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
+<a name="N100CF"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
 <div class="h3">
 <h3>Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</h3>
 			
