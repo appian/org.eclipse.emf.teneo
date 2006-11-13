@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyAttributeMapper.java,v 1.1 2006/11/01 16:18:42 mtaal Exp $
+ * $Id: ManyAttributeMapper.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -23,11 +23,9 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
-import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
@@ -70,11 +68,11 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 		if (log.isDebugEnabled())
 			log.debug("Generating many valued attribute mapping for " + paAttribute);
 
-        final HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
+		final HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
 		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
-		
-        final boolean isArray = eattr.getEType().getInstanceClass() != null
-			&& eattr.getEType().getInstanceClass().isArray();
+
+		final boolean isArray = eattr.getEType().getInstanceClass() != null
+				&& eattr.getEType().getInstanceClass().isArray();
 
 		final Element collElement = addCollectionElement(paAttribute);
 		final Element keyElement = collElement.addElement("key");
@@ -93,7 +91,7 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 		if (!otm.isIndexed() && isArray) {
 			log.warn("One to many is not indexed but this is an array, force=ing index column!");
 		}
-		
+
 		if ((otm.isIndexed() || isArray) && hbAttribute.getHbIdBag() == null) {
 			addListIndex(collElement, paAttribute);
 		}
@@ -102,29 +100,30 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 			addFetchType(collElement, otm.getFetch());
 		}
 		addCascadesForMany(collElement, otm.getCascade());
-		
+
 		if (FeatureMapUtil.isFeatureMap(paAttribute.getAnnotatedEAttribute())) {
 			FeatureMapMapping fmm = new FeatureMapMapping(getHbmContext(), paAttribute);
 			getHbmContext().addFeatureMapMapper(fmm);
 			collElement.addElement("one-to-many").addAttribute("entity-name", fmm.getEntityName());
 		} else {
-			addElementElement(collElement, eattr.getName(), eattr.getEAttributeType(), getColumn(paAttribute), otm.getTargetEntity());
+			addElementElement(collElement, eattr.getName(), paAttribute, getColumns(paAttribute), otm
+					.getTargetEntity());
 		}
 	}
 
 	/**
 	 * Add Element element in given collection element.
 	 */
-	private Element addElementElement(Element collElement, String defaultName, EDataType attributeType, Column column,
+	private Element addElementElement(Element collElement, String defaultName, PAnnotatedEAttribute paAttribute, List columns,
 			String targetEntity) {
 		final Element elElement;
 		if (targetEntity == null) {
-			elElement = collElement.addElement("element").addAttribute("type", hbType(attributeType));
+			elElement = collElement.addElement("element").addAttribute("type", hbType(paAttribute));
 		} else {
 			elElement = collElement.addElement("element").addAttribute("type", targetEntity);
 		}
-		if (column != null) {
-			addColumnElement(elElement, defaultName, column, getHbmContext().isCurrentElementFeatureMap());
+		if (columns != null && columns.size() > 0) {
+			addColumns(elElement, defaultName, columns, getHbmContext().isCurrentElementFeatureMap(), false);
 		}
 		return elElement;
 	}

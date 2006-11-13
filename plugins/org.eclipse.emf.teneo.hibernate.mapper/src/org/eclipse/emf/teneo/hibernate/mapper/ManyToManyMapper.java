@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.3 2006/11/13 14:53:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -54,8 +54,8 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 	public void process(PAnnotatedEReference paReference) {
 		log.debug("Creating many-to-many for " + paReference);
 
-        HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
-        
+		HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
+
 		final JoinTable jt = hbReference.getJoinTable();
 		final ManyToMany mtm = hbReference.getManyToMany();
 
@@ -65,9 +65,9 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		}
 
 		final Element collElement = addCollectionElement(hbReference);
-		
-		if (((HbAnnotatedEReference)paReference).getHbCache() != null) {
-			addCacheElement(collElement, ((HbAnnotatedEReference)paReference).getHbCache());
+
+		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
+			addCacheElement(collElement, ((HbAnnotatedEReference) paReference).getHbCache());
 		}
 
 		final Element keyElement = collElement.addElement("key");
@@ -80,7 +80,7 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		addCascades(collElement, mtm.getCascade(), false);
 
 		final EClass referedTo = hbReference.getAnnotatedEReference().getEReferenceType();
-		
+
 		String targetName = mtm.getTargetEntity();
 		if (getHbmContext().isEasyEMFGenerated(referedTo)) {
 			targetName = getHbmContext().getImpl(referedTo).getName();
@@ -94,21 +94,22 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		if (isEasyEMFGenerated) {
 			targetName = getHbmContext().getImpl(referedTo).getName();
 		}
-		
+
 		final Element mtmElement;
 		if (isEasyEMFGenerated) {
-			mtmElement = collElement.addElement("many-to-many").addAttribute("class", targetName)
-				.addAttribute("unique", "false");
+			mtmElement = collElement.addElement("many-to-many").addAttribute("class", targetName).addAttribute(
+					"unique", "false");
 		} else {
-			mtmElement = collElement.addElement("many-to-many").addAttribute("entity-name", targetName)
-				.addAttribute("unique", "false");
+			mtmElement = collElement.addElement("many-to-many").addAttribute("entity-name", targetName).addAttribute(
+					"unique", "false");
 		}
 
 		// inverse is not supported by indexed lists
 		if (mtm.getMappedBy() != null && !mtm.isIndexed()) {
 			collElement.addAttribute("inverse", "true");
 		} else if (mtm.getMappedBy() != null && !mtm.isIndexed()) {
-			log.warn("Indexed is true but indexed is not supported for inverse=true and many-to-many, not setting inverse=true");
+			log
+					.warn("Indexed is true but indexed is not supported for inverse=true and many-to-many, not setting inverse=true");
 		}
 
 		addJoinTable(collElement, keyElement, jt);

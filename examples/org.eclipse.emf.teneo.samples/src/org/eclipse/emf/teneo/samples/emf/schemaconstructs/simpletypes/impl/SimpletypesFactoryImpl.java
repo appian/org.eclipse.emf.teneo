@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesFactoryImpl.java,v 1.4 2006/09/29 12:51:54 mtaal Exp $
+ * $Id: SimpletypesFactoryImpl.java,v 1.5 2006/11/13 14:52:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -362,8 +362,6 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public int[] createIntArrayFromString(EDataType eDataType, String initialValue) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
 
@@ -373,8 +371,6 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertIntArrayToString(EDataType eDataType, Object instanceValue) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
 

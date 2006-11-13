@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.13 2006/11/12 23:59:21 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.14 2006/11/13 14:53:08 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,6 +41,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -78,7 +79,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class DefaultAnnotator {
 
@@ -222,12 +223,22 @@ public class DefaultAnnotator {
 	/** Maps one epackage */
 	protected void processPackage(PAnnotatedEPackage aPackage) {
 		log.debug(">>>> Adding default annotations for EPackage " + aPackage.getAnnotatedElement().getName());
-
+		
+		log.debug("Processing EDataTypes");
+		for (Iterator it = aPackage.getPaEDataTypes().iterator(); it.hasNext();) {
+			processEDataType((PAnnotatedEDataType) it.next());
+		}
+		
+		log.debug("Processing EClasses");
 		for (Iterator it = aPackage.getPaEClasses().iterator(); it.hasNext();) {
 			processClass((PAnnotatedEClass) it.next());
 		}
 	}
 
+	/** Process an edatatype, does nothing in this impl. */
+	protected void processEDataType(PAnnotatedEDataType ped) {
+	}
+	
 	/** Returns the annotated version of an EClass */
 	protected void processClass(PAnnotatedEClass aClass) {
 		if (aClass == null) {
@@ -632,7 +643,7 @@ public class DefaultAnnotator {
 			otm.getCascade().add(CascadeType.ALL_LITERAL);
 
 		if (otm.getTargetEntity() == null || otm.getTargetEntity() == null) {
-			otm.setTargetEntity(getTargetTypeName(eAttribute));
+			otm.setTargetEntity(getTargetTypeName(aAttribute));
 		}
 
 		if (aAttribute.getJoinTable() == null) {
@@ -678,7 +689,8 @@ public class DefaultAnnotator {
 	}
 
 	/** Returns the type name of a many attribute */
-	protected String getTargetTypeName(EAttribute eAttribute) {
+	protected String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
+		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
 		// check on equality on object.class is used for listunion simpleunions
 		final Class instanceClass = eAttribute.getEAttributeType().getInstanceClass();
 		if (instanceClass != null && !Object.class.equals(instanceClass) && !List.class.equals(instanceClass)) {

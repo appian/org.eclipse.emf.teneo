@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: FieldUtil.java,v 1.6 2006/11/12 00:08:38 mtaal Exp $
+ * $Id: FieldUtil.java,v 1.7 2006/11/13 14:52:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class FieldUtil {
@@ -154,7 +154,6 @@ public class FieldUtil {
 			return null;
 		}
 
-		System.err.println(methodName);
 		final Method[] methods = clazz.getDeclaredMethods();
 		for (int i = 0; i < methods.length; i++) {
 			if (methods[i].getName().compareToIgnoreCase(methodName) == 0) {

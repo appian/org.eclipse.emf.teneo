@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo.libraries,
  org.eclipse.emf.ecore
+Import-Package: org.hibernate.type

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.3 2006/11/12 00:08:19 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.4 2006/11/13 14:53:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -111,7 +111,8 @@ class EntityMapper extends AbstractMapper {
 	private Element createEntity(PAnnotatedEClass entity, InheritanceType inhStrategy, PAnnotatedEClass superEntity,
 			DiscriminatorValue dValue, Table table) {
 		// determine what type of hibernate tag should be used
-		final InheritanceType inheritanceStrategy = inhStrategy != null ? inhStrategy : InheritanceType.SINGLE_TABLE_LITERAL;
+		final InheritanceType inheritanceStrategy = inhStrategy != null ? inhStrategy
+				: InheritanceType.SINGLE_TABLE_LITERAL;
 		final EClass eclass = entity.getAnnotatedEClass();
 		final String hbClassName;
 		if (superEntity == null) {
@@ -141,7 +142,7 @@ class EntityMapper extends AbstractMapper {
 							"true");
 		} else {
 			target = getHbmContext().getCurrent().addElement(hbClassName).addAttribute("entity-name", entityName)
-			.addAttribute("abstract", isAbstractStr).addAttribute("lazy", "false");
+					.addAttribute("abstract", isAbstractStr).addAttribute("lazy", "false");
 
 			// note for composite ids the name must be set always!
 			// entity.getAnnotatedEClass().getInstanceClass() != null) { // ||
@@ -156,7 +157,7 @@ class EntityMapper extends AbstractMapper {
 			target.addAttribute("extends", extendsEntity);
 			log.debug("Extends " + extendsEntity);
 		}
-		
+
 		if (dValue != null) {
 			target.addAttribute("discriminator-value", dValue.getValue());
 			log.debug("DValue " + dValue.getValue());
@@ -295,10 +296,10 @@ class EntityMapper extends AbstractMapper {
 			// create a synthetic id for roots
 			if (idElement == null && entity.getPaSuperEntity() == null && entity.getPaMappedSuper() == null) {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
-			} else if (getHbmContext().mustAddSyntheticID(entity)){
+			} else if (getHbmContext().mustAddSyntheticID(entity)) {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
 			}
-			
+
 			if (idElement != null) {
 				int index = entityElement.indexOf(idElement) + 1;
 
@@ -324,20 +325,20 @@ class EntityMapper extends AbstractMapper {
 			// now process the featuremap entries if any
 			processFeatureMapFeatures();
 		}
-		
-		getHbmContext().addTuplizerElement(entityElement, entity.getAnnotatedEClass());		
+
+		getHbmContext().addTuplizerElement(entityElement, entity.getAnnotatedEClass());
 
 		if (entity.getPaSuperEntity() == null && ((HbAnnotatedEClass) entity).getHbCache() != null) {
 			addCacheElement(entityElement, ((HbAnnotatedEClass) entity).getHbCache());
 		}
-		
+
 		final Element meta1 = new Element("meta");
-		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META) 
-			.addText(entity.getAnnotatedEClass().getName());
+		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META).addText(
+				entity.getAnnotatedEClass().getName());
 		final Element meta2 = new Element("meta");
-		meta2.addAttribute("attribute", HbMapperConstants.EPACKAGE_META) 
-			.addText(entity.getAnnotatedEClass().getEPackage().getNsURI());
-		
+		meta2.addAttribute("attribute", HbMapperConstants.EPACKAGE_META).addText(
+				entity.getAnnotatedEClass().getEPackage().getNsURI());
+
 		entityElement.add(0, meta1);
 		entityElement.add(1, meta2);
 	}
@@ -516,7 +517,7 @@ class EntityMapper extends AbstractMapper {
 	}
 
 	/**
-	 * Add a synthetic version if the entity does not define one 
+	 * Add a synthetic version if the entity does not define one
 	 */
 	private Element addVersionProperty() {
 		assert (getHbmContext().getCurrent().element("version") == null);
@@ -527,15 +528,14 @@ class EntityMapper extends AbstractMapper {
 
 		// note specific accessor is required because version accessor is not retrieved through
 		// emf tuplizer
-		final Element versionElement = getHbmContext().getCurrent().addElement("version").
-				addAttribute("name", getHbmContext().getVersionColumnName()).addAttribute("column",
-						getHbmContext().getVersionColumnName());
+		final Element versionElement = getHbmContext().getCurrent().addElement("version").addAttribute("name",
+				getHbmContext().getVersionColumnName()).addAttribute("column", getHbmContext().getVersionColumnName());
 		final Element meta = new Element("meta");
 		meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
 		versionElement.add(0, meta);
 
 		versionElement.addAttribute("access", getHbmContext().getVersionPropertyHandlerName());
-		
+
 		return versionElement;
 	}
 }

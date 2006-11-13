@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationFactoryImpl.java,v 1.1 2006/11/01 16:18:44 mtaal Exp $
+ * $Id: HbAnnotationFactoryImpl.java,v 1.2 2006/11/13 14:53:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -84,6 +84,7 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 			case HbAnnotationPackage.ID_BAG: return createIdBag();
 			case HbAnnotationPackage.GENERIC_GENERATOR: return createGenericGenerator();
 			case HbAnnotationPackage.CACHE: return createCache();
+			case HbAnnotationPackage.TYPE_DEF: return createTypeDef();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -205,6 +206,16 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	public Cache createCache() {
 		CacheImpl cache = new CacheImpl();
 		return cache;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypeDef createTypeDef() {
+		TypeDefImpl typeDef = new TypeDefImpl();
+		return typeDef;
 	}
 
 	/**

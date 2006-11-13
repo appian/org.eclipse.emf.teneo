@@ -10,9 +10,10 @@
  * Contributors:
  *   Martin Taal
  *   Davide Marchignoli
+ *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.3 2006/11/12 00:08:19 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.4 2006/11/13 14:53:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -31,8 +32,13 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
+import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
@@ -117,6 +123,7 @@ public class HibernateMappingGenerator {
 		try {
 			hbmContext.beginDocument(createDocument());
 			initEntityNames(hbmContext, paModel);
+			processTypedefs(paModel);
 			processPersistentClasses(paModel);
 			return hbmContext.endDocument();
 		} catch (MappingException exc) {
@@ -183,6 +190,41 @@ public class HibernateMappingGenerator {
 
 			} else if (logger.isDebugEnabled())
 				logger.debug("Skipping non-persistent class " + paEClass);
+		}
+	}
+
+	/**
+	 * Processes the typedef annotations and creates corresponding typedef instances in the mapping.
+	 */
+	protected void processTypedefs(PAnnotatedModel paModel) {
+		// Walk thru all the packages looking for custom EDataTypes.
+		for (Iterator pi = paModel.getPaEPackages().iterator(); pi.hasNext();) {
+			HbAnnotatedEPackage paPackage = (HbAnnotatedEPackage) pi.next();
+
+			// handle the typedefs
+			for (Iterator it = paPackage.getHbTypeDef().iterator(); it.hasNext();) {
+				final TypeDef td = (TypeDef) it.next();
+				emitTypeDef(td);
+			}
+
+			// Walk thru all the classifiers of the given package.
+			for (Iterator adatatypes = paPackage.getPaEDataTypes().iterator(); adatatypes.hasNext();) {
+				final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) adatatypes.next();
+				if (hed.getHbTypeDef() != null) {
+					emitTypeDef(hed.getHbTypeDef());
+				}
+			}
+		}
+	}
+
+	/** Emit a typedef */
+	private void emitTypeDef(TypeDef td) {
+		final Element target = this.hbmContext.getCurrent().addElement("typedef");
+		target.addAttribute("name", td.getName());
+		target.addAttribute("class", td.getTypeClass());
+		for (Iterator it = td.getParameters().iterator(); it.hasNext();) {
+			final Parameter param = (Parameter) it.next();
+			target.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
 		}
 	}
 }

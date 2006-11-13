@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackageImpl.java,v 1.1 2006/11/01 16:18:44 mtaal Exp $
+ * $Id: HbAnnotationPackageImpl.java,v 1.2 2006/11/13 14:53:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
+import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 import org.eclipse.emf.teneo.hibernate.hbannotation.util.HbAnnotationValidator;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
@@ -115,6 +116,13 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * @generated
 	 */
 	private EClass cacheEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass typeDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -457,6 +465,42 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTypeDef() {
+		return typeDefEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTypeDef_Name() {
+		return (EAttribute)typeDefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTypeDef_Parameters() {
+		return (EReference)typeDefEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTypeDef_TypeClass() {
+		return (EAttribute)typeDefEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getCacheConcurrencyStrategy() {
 		return cacheConcurrencyStrategyEEnum;
 	}
@@ -526,6 +570,11 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		createEAttribute(cacheEClass, CACHE__REGION);
 		createEAttribute(cacheEClass, CACHE__INCLUDE);
 
+		typeDefEClass = createEClass(TYPE_DEF);
+		createEAttribute(typeDefEClass, TYPE_DEF__NAME);
+		createEReference(typeDefEClass, TYPE_DEF__PARAMETERS);
+		createEAttribute(typeDefEClass, TYPE_DEF__TYPE_CLASS);
+
 		// Create enums
 		cacheConcurrencyStrategyEEnum = createEEnum(CACHE_CONCURRENCY_STRATEGY);
 	}
@@ -567,6 +616,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		idBagEClass.getESuperTypes().add(this.getHbAnnotation());
 		genericGeneratorEClass.getESuperTypes().add(this.getHbAnnotation());
 		cacheEClass.getESuperTypes().add(this.getHbAnnotation());
+		typeDefEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -606,6 +656,11 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		initEAttribute(getCache_Region(), ecorePackage.getEString(), "region", null, 0, 1, Cache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCache_Include(), ecorePackage.getEString(), "include", null, 0, 1, Cache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(typeDefEClass, TypeDef.class, "TypeDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTypeDef_Name(), ecorePackage.getEString(), "name", null, 1, 1, TypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTypeDef_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, TypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeDef_TypeClass(), ecorePackage.getEString(), "typeClass", null, 1, 1, TypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.class, "CacheConcurrencyStrategy");
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.NONE_LITERAL);
@@ -641,7 +696,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "1", "http://hibernate.elver.org/"
-		   });												
+		   });													
 	}
 
 	/**
@@ -657,7 +712,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });											
+		   });												
 	}
 
 	/**
@@ -698,7 +753,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		  (typeEClass, 
 		   source, 
 		   new String[] {
-			 "0", "EAttribute"
+			 "0", "EStructuralFeature"
 		   });		
 		addAnnotation
 		  (whereEClass, 
@@ -726,6 +781,14 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   new String[] {
 			 "0", "EReference",
 			 "1", "EClass"
+		   });		
+		addAnnotation
+		  (typeDefEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature",
+			 "1", "EClass",
+			 "2", "EPackage"
 		   });
 	}
 
@@ -750,7 +813,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   new String[] {
 			 "name", "GenericGenerators",
 			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
-		   });	
+		   });		
 	}
 
 } //HbAnnotationPackageImpl

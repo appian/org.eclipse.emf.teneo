@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicPamodelBuilder.java,v 1.5 2006/09/06 21:59:50 mtaal Exp $
+ * $Id: BasicPamodelBuilder.java,v 1.6 2006/11/13 14:53:08 mtaal Exp $
  */
 
 
@@ -173,7 +173,7 @@ public class BasicPamodelBuilder {
 	 * <p>The operation may involve the creation of a 
 	 * <code>PAnnotatedEPackage</code> and a <code>PAnnotatedEClass</code>. 
 	 */
-	protected PAnnotatedEModelElement pElement(EDataType eDataType) {
+	protected PAnnotatedEDataType pElement(EDataType eDataType) {
 		PAnnotatedEDataType pDataType = (PAnnotatedEDataType) create(eDataType);
 		pElement(eDataType.getEPackage()).getPaEDataTypes().add(pDataType);
 		return pDataType;
@@ -290,7 +290,7 @@ public class BasicPamodelBuilder {
 			if (eClassifier instanceof EClass) {
 				addRecurse(paPackage, (EClass) eClassifier);
 			} else if (eClassifier instanceof EDataType) {
-				pElement((EDataType)eClassifier);
+				final PAnnotatedEDataType ped = pElement((EDataType)eClassifier);
 			}
 		}
 	}

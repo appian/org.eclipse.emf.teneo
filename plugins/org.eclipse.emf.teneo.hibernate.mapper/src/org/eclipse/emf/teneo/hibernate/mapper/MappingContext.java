@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.3 2006/11/12 00:08:19 mtaal Exp $
+ * $Id: MappingContext.java,v 1.4 2006/11/13 14:53:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -64,7 +64,7 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** The list of eattributes for which a featuremap mapping was created */
 	private final List handledFeatureMapEAttributes = new ArrayList();
-	
+
 	/** the mapper used for features */
 	private final FeatureMapper featureMapper;
 
@@ -100,9 +100,9 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** The sql case strategy */
 	private SQLCaseStrategy sqlCaseStrategy;
-    
-    private boolean alwaysVersion;
-    
+
+	private boolean alwaysVersion;
+
 	/** The constructor */
 	public MappingContext() {
 		featureMapper = createFeatureMapper();
@@ -121,7 +121,7 @@ public class MappingContext extends AbstractProcessingContext {
 		idColumnName = po.getIdColumnName();
 		maximumSqlNameLength = po.getMaximumSqlNameLength();
 		sqlCaseStrategy = po.getSQLCaseStrategy();
-        alwaysVersion = po.getAlwaysVersion();
+		alwaysVersion = po.getAlwaysVersion();
 	}
 
 	/** Return the concrete impl. class */
@@ -143,8 +143,8 @@ public class MappingContext extends AbstractProcessingContext {
 		}
 		final Class clazz = ERuntime.INSTANCE.getInstanceClass(eClass);
 		/*
-		 * Handle this in the caller if (clazz == null) { throw new MappingException("No instanceclass can be found
-		 * for this eclass: " + aClass.getAnnotatedEClass().getName()); }
+		 * Handle this in the caller if (clazz == null) { throw new MappingException("No instanceclass can be found for
+		 * this eclass: " + aClass.getAnnotatedEClass().getName()); }
 		 */
 		return clazz.getName();
 	}
@@ -152,7 +152,7 @@ public class MappingContext extends AbstractProcessingContext {
 	/**
 	 * @return Returns the entity name for the given entity EClass.
 	 */
-	public String getEntityName(EClass entityEClass) {		
+	public String getEntityName(EClass entityEClass) {
 		final String name = (String) entityNames.get(entityEClass);
 		if (name == null)
 			throw new IllegalStateException("An entity name has not been registered for " + entityEClass);
@@ -217,7 +217,7 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	private FeatureMapper createFeatureMapper() {
 		final FeatureMapper featureMapper = new FeatureMapper();
- 
+
 		featureMapper.setBasicMapper(new BasicMapper(this));
 		featureMapper.setManyAttributeMapper(new ManyAttributeMapper(this));
 		featureMapper.setEmbeddedMapper(new EmbeddedMapper(this));
@@ -373,13 +373,13 @@ public class MappingContext extends AbstractProcessingContext {
 	public String getIdColumnName() {
 		return idColumnName;
 	}
-    
-	/** Return the alwaysversion option */
-    public boolean alwaysVersion() {
-        return alwaysVersion;
-    }
 
-    /** Returns the list of eattrs, note list is updated outside of this object */
+	/** Return the alwaysversion option */
+	public boolean alwaysVersion() {
+		return alwaysVersion;
+	}
+
+	/** Returns the list of eattrs, note list is updated outside of this object */
 	public List getHandledFeatureMapEAttributes() {
 		return handledFeatureMapEAttributes;
 	}
@@ -388,64 +388,64 @@ public class MappingContext extends AbstractProcessingContext {
 	public String getPropertyName(EStructuralFeature ef) {
 		return EModelResolver.instance().getJavaMember(ef);
 	}
-	
+
 	/** Return the version property handler */
 	public String getVersionPropertyHandlerName() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler";
 	}
-	
+
 	/** Return the id property handler */
 	public String getIdPropertyHandlerName() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler";
 	}
-	
+
 	/** There are four cases: EMF generated, EMF Dynamic, Easy EMF Generated, Easy EMF Dynamic */
 	public boolean isEasyEMFGenerated(EClassifier eclassifier) {
 		return EModelResolver.instance().hasImplementationClass(eclassifier);
 	}
 
 	public boolean isEasyEMFDynamic(EClassifier eclassifier) {
-		return !isEasyEMFGenerated(eclassifier) &&
-			EModelResolver.instance().isRegistered(eclassifier.getEPackage());		
+		return !isEasyEMFGenerated(eclassifier) && EModelResolver.instance().isRegistered(eclassifier.getEPackage());
 	}
-	
+
 	public boolean isEMFGenerated(EClassifier eclassifier) {
 		return eclassifier.getInstanceClass() != null;
 	}
-	
+
 	public boolean isEMFDynamic(EClassifier eclassifier) {
 		return !isEasyEMFDynamic(eclassifier) && !isEMFGenerated(eclassifier);
 	}
-	
+
 	/** Check if this is an entity (so without an impl class) */
 	public Class getImpl(EClassifier eclassifier) {
 		return EModelResolver.instance().getJavaClass(eclassifier);
 	}
-	
+
 	/** Check if this is an entity (so without an impl class) */
 	public boolean hasImpl(PAnnotatedEStructuralFeature af) {
-		return EModelResolver.instance().hasImplementationClass(af.getAnnotatedEStructuralFeature().getEContainingClass());
+		return EModelResolver.instance().hasImplementationClass(
+				af.getAnnotatedEStructuralFeature().getEContainingClass());
 	}
-	
+
 	/** Add a tuplizer element or not */
 	public void addTuplizerElement(Element entityElement, EClass eclass) {
 	}
-	
+
 	/** Returns the enumusertype class name */
 	public String getEnumUserType() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.ENumUserType";
 	}
-	
+
 	/** Returns the enum user type integer name */
 	public String getEnumIntegerUserType() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType";
 	}
-	
+
 	/** Returns the enumusertype class name for the dynamic case */
 	public String getDynamicEnumUserType() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserType";
 	}
-	
+
 	/** Returns the enum user type integer name for the dynamic case */
 	public String getDynamicEnumIntegerUserType() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserIntegerType";

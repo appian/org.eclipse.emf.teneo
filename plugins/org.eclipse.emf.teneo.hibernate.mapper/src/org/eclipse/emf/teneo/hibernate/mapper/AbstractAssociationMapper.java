@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.3 2006/11/13 14:53:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -60,13 +60,13 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	protected Element addManyToOne(PAnnotatedEReference aReference, String referedTo, boolean isReferedEntity) {
 		final String assocName = getHbmContext().getPropertyName(aReference.getAnnotatedEReference());
 		log.debug("addManyToOne " + assocName + "/" + referedTo);
-		
+
 		if (isReferedEntity) {
-			return getHbmContext().getCurrent().addElement("many-to-one").
-				addAttribute("name", assocName).addAttribute("entity-name", referedTo);
+			return getHbmContext().getCurrent().addElement("many-to-one").addAttribute("name", assocName).addAttribute(
+					"entity-name", referedTo);
 		} else {
-			return getHbmContext().getCurrent().addElement("many-to-one").
-				addAttribute("name", assocName).addAttribute("class", referedTo);
+			return getHbmContext().getCurrent().addElement("many-to-one").addAttribute("name", assocName).addAttribute(
+					"class", referedTo);
 		}
 	}
 
@@ -204,11 +204,10 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 
 	/**
 	 * @return a newly added hibernate for given collection
-	 * @deprecated use addCollectionElement(PAnnotatedEStructuralFeature) instead.
-	protected Element addCollectionElement(String name, boolean isIndexed) {
-		return getHbmContext().getCurrent().addElement(isIndexed ? "list" : "bag").addAttribute("name", name);
-		// .addAttribute("access", "org.eclipse.emf.teneo.hibernate.mapping.elist.EListPropertyAccessor");
-	}
+	 * @deprecated use addCollectionElement(PAnnotatedEStructuralFeature) instead. protected Element
+	 *             addCollectionElement(String name, boolean isIndexed) { return
+	 *             getHbmContext().getCurrent().addElement(isIndexed ? "list" : "bag").addAttribute("name", name); //
+	 *             .addAttribute("access", "org.eclipse.emf.teneo.hibernate.mapping.elist.EListPropertyAccessor"); }
 	 */
 
 	/**
@@ -260,7 +259,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		} else {
 			collectionElement = getHbmContext().getCurrent().addElement("bag");
 		}
-		collectionElement.addAttribute("name", getHbmContext().getPropertyName(hbFeature.getAnnotatedEStructuralFeature()));
+		collectionElement.addAttribute("name", getHbmContext().getPropertyName(
+				hbFeature.getAnnotatedEStructuralFeature()));
 		if (idBag != null) {
 			final String generator = (idBag.getGenerator() == null ? "increment" : idBag.getGenerator());
 			final String type = (idBag.getType() == null ? "long" : idBag.getType());

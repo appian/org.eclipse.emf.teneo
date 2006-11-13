@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.3 2006/11/12 00:08:19 mtaal Exp $
+ * $Id: IdMapper.java,v 1.4 2006/11/13 14:53:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -29,7 +29,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
@@ -47,7 +46,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class IdMapper extends AbstractPropertyMapper{
+class IdMapper extends AbstractPropertyMapper {
 
 	/** The logger */
 	private static final Log log = LogFactory.getLog(IdMapper.class);
@@ -95,18 +94,16 @@ class IdMapper extends AbstractPropertyMapper{
 		final Element idElement = DocumentHelper.createElement("id");
 		entityElement.add(0, idElement);
 		idElement.addAttribute("type", "long").
-			// NOTE: the name is also set so that the property name can be 
-			// used later to identify an id prop, 
-			// TODO: improve this
-			addAttribute("name", mc.getIdColumnName()).
-			addAttribute("column", mc.getIdColumnName()).
-			addElement("generator").
-			addAttribute("class", "native");
-		
+		// NOTE: the name is also set so that the property name can be
+				// used later to identify an id prop,
+				// TODO: improve this
+				addAttribute("name", mc.getIdColumnName()).addAttribute("column", mc.getIdColumnName()).addElement(
+						"generator").addAttribute("class", "native");
+
 		final Element meta = new Element("meta");
 		meta.addAttribute("attribute", HbMapperConstants.ID_META).addText("true");
 		idElement.add(0, meta);
-		
+
 		idElement.addAttribute("access", mc.getIdPropertyHandlerName());
 
 		return idElement;
@@ -146,9 +143,9 @@ class IdMapper extends AbstractPropertyMapper{
 			PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aFeature;
 			final Element keyPropertyElement = compositeIdElement.addElement("key-property");
 			keyPropertyElement.addAttribute("name", aFeature.getAnnotatedEStructuralFeature().getName());
-			addColumn(keyPropertyElement, aAttribute.getAnnotatedEAttribute().getName(), getColumn(aAttribute),
+			addColumns(keyPropertyElement, aAttribute.getAnnotatedEAttribute().getName(), getColumns(aAttribute),
 					getHbmContext().isCurrentElementFeatureMap(), true);
-			keyPropertyElement.addAttribute("type", hbType(aAttribute.getAnnotatedEAttribute().getEAttributeType()));
+			keyPropertyElement.addAttribute("type", hbType(aAttribute));
 		}
 		getHbmContext().setCurrent(compositeIdElement.getParent());
 	}
@@ -160,7 +157,7 @@ class IdMapper extends AbstractPropertyMapper{
 		final PAnnotatedEClass aClass = id.getPaEClass();
 
 		// check precondition
-		if (aClass.getPaSuperEntity() != null && aClass.getPaSuperEntity().hasIdAnnotatedFeature()) { 
+		if (aClass.getPaSuperEntity() != null && aClass.getPaSuperEntity().hasIdAnnotatedFeature()) {
 			log
 					.error("The annotated eclass: "
 							+ aClass
@@ -178,19 +175,19 @@ class IdMapper extends AbstractPropertyMapper{
 		}
 
 		final EAttribute eAttribute = id.getAnnotatedEAttribute();
-		final Column column = getColumn(id);
+		final List columns = getColumns(id);
 		final GeneratedValue generatedValue = id.getGeneratedValue();
 
-		if (column != null && column.getColumnDefinition() != null) {
-			// TODO support
-			log.error("Unsupported, ColumnDefinition  in " + column);
-			throw new MappingException("Unsupported, ColumnDefinition", column);
-		}
-		if (column != null && column.getTable() != null) {
-			// TODO support
-			log.error("Unsupported, SecondaryTable in " + column);
-			throw new MappingException("Unsupported, SecondaryTable", column);
-		}
+//		if (column != null && column.getColumnDefinition() != null) {
+//			// TODO support
+//			log.error("Unsupported, ColumnDefinition  in " + column);
+//			throw new MappingException("Unsupported, ColumnDefinition", column);
+//		}
+//		if (column != null && column.getTable() != null) {
+//			// TODO support
+//			log.error("Unsupported, SecondaryTable in " + column);
+//			throw new MappingException("Unsupported, SecondaryTable", column);
+//		}
 
 		final Element idElement = getCreateIdElement(getHbmContext().getCurrent(), aClass);
 		final boolean isCompositeId = aClass.getIdClass() != null;
@@ -202,12 +199,14 @@ class IdMapper extends AbstractPropertyMapper{
 			usedIdElement = idElement;
 		}
 
+		addColumns(usedIdElement, eAttribute.getName(), columns, false, true);
+
 		usedIdElement.addAttribute("name", eAttribute.getName());
 		if (id.getEnumerated() == null) {
-			usedIdElement.addAttribute("type", AbstractPropertyMapper.hbType(eAttribute.getEAttributeType()));
+			usedIdElement.addAttribute("type", hbType(id));
 		} else { // enumerated id
 			if (getHbmContext().isEasyEMFGenerated(id.getAnnotatedEAttribute().getEType())) {
-				// if the instanceclass is registered in the context then this java class is 
+				// if the instanceclass is registered in the context then this java class is
 				// created differently
 				final String typeName;
 				if (EnumType.STRING == id.getEnumerated().getValue().getValue()) {
@@ -217,30 +216,23 @@ class IdMapper extends AbstractPropertyMapper{
 				}
 
 				final Class instanceClass = getHbmContext().getImpl(id.getAnnotatedEAttribute().getEType());
-				usedIdElement.addElement("type"). 
-				addAttribute("name", typeName). 
-				addElement("param"). 
-					addAttribute("name", "enumClassName").
-					addText(instanceClass.getName());
+				usedIdElement.addElement("type").addAttribute("name", typeName).addElement("param").addAttribute(
+						"name", "enumClassName").addText(instanceClass.getName());
 			} else if (getHbmContext().isEasyEMFDynamic(id.getAnnotatedEAttribute().getEType())) {
 				throw new UnsupportedOperationException("NOT YET SUPPORTED");
 			} else if (id.getAnnotatedEAttribute().getEType().getInstanceClass() != null) {
-				usedIdElement.addElement("type"). 
-					addAttribute("name", getEnumUserType(id.getEnumerated())). 
-					addElement("param"). 
-						addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).
-						addText(eAttribute.getEType().getInstanceClass().getName());
+				usedIdElement.addElement("type").addAttribute("name", getEnumUserType(id.getEnumerated())).addElement(
+						"param").addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
+						eAttribute.getEType().getInstanceClass().getName());
 			} else {
-				final Element typeElement = usedIdElement.addElement("type"). 
-					addAttribute("name", hbDynamicEnumType(id.getEnumerated()));
-				typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM). 
-					addText(id.getAnnotatedEAttribute().getEType().getName());
-				typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM). 
-					addText(id.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
+				final Element typeElement = usedIdElement.addElement("type").addAttribute("name",
+						hbDynamicEnumType(id.getEnumerated()));
+				typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
+						id.getAnnotatedEAttribute().getEType().getName());
+				typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
+						id.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
 			}
 		}
-
-		addColumn(usedIdElement, eAttribute.getName(), column, false, true);
 
 		// TODO define what to do for unsettable id attribute (unlikely, maybe
 		// error)
@@ -254,16 +246,17 @@ class IdMapper extends AbstractPropertyMapper{
 			}
 
 			final Element generatorElement = usedIdElement.addElement("generator");
-			
+
 			GenericGenerator gg;
-			if (generatedValue.getGenerator() != null && 
-				(gg = getGenericGenerator(id.getPaModel(), generatedValue.getGenerator())) != null) {
+			if (generatedValue.getGenerator() != null
+					&& (gg = getGenericGenerator(id.getPaModel(), generatedValue.getGenerator())) != null) {
 				log.debug("GenericGenerator the strategy in the GeneratedValue is ignored (if even set)");
 				generatorElement.addAttribute("class", gg.getStrategy());
 				if (gg.getParameters() != null) {
 					for (Iterator params = gg.getParameters().iterator(); params.hasNext();) {
-						final Parameter param = (Parameter)params.next();
-						generatorElement.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
+						final Parameter param = (Parameter) params.next();
+						generatorElement.addElement("param").addAttribute("name", param.getName()).addText(
+								param.getValue());
 					}
 				}
 			} else if (GenerationType.IDENTITY_LITERAL.equals(generatedValue.getStrategy())) {
@@ -273,13 +266,13 @@ class IdMapper extends AbstractPropertyMapper{
 				if (generatedValue.getGenerator() != null) { // table generator
 					final TableGenerator tg = id.getPaModel().getTableGenerator(id.getAnnotatedEAttribute(),
 							generatedValue.getGenerator());
-					generatorElement.addElement("param").addAttribute("name", "table").
-						setText((tg.getTable() != null ? tg.getTable() : "uid_table")); // externalize
-					generatorElement.addElement("param").addAttribute("name", "column").
-						setText(tg.getValueColumnName() != null ? tg.getValueColumnName() : "next_hi_value_column"); // externalize
-					generatorElement.addElement("param").addAttribute("name", "max_lo"). 
-						setText(tg.getInitialValue() + "");
-				} else {				
+					generatorElement.addElement("param").addAttribute("name", "table").setText(
+							(tg.getTable() != null ? tg.getTable() : "uid_table")); // externalize
+					generatorElement.addElement("param").addAttribute("name", "column").setText(
+							tg.getValueColumnName() != null ? tg.getValueColumnName() : "next_hi_value_column"); // externalize
+					generatorElement.addElement("param").addAttribute("name", "max_lo").setText(
+							tg.getInitialValue() + "");
+				} else {
 					generatorElement.addElement("param").addAttribute("name", "table").setText("uid_table"); // externalize
 					generatorElement.addElement("param").addAttribute("name", "column").setText("next_hi_value_column"); // externalize
 				}
@@ -295,20 +288,21 @@ class IdMapper extends AbstractPropertyMapper{
 			}
 		}
 	}
-	
 
-	/** Returns a sequence generator on the basis of its name, if not found then an exception is thrown.
-	 * efeature is passed for debugging purposes. */
+	/**
+	 * Returns a sequence generator on the basis of its name, if not found then an exception is thrown. efeature is
+	 * passed for debugging purposes.
+	 */
 	public GenericGenerator getGenericGenerator(PAnnotatedModel paModel, String name) {
 		for (Iterator it = paModel.getPaEPackages().iterator(); it.hasNext();) {
-			final HbAnnotatedEPackage pae = (HbAnnotatedEPackage)it.next();
+			final HbAnnotatedEPackage pae = (HbAnnotatedEPackage) it.next();
 			for (Iterator sit = pae.getHbGenericGenerators().iterator(); sit.hasNext();) {
-				final GenericGenerator gg = (GenericGenerator)sit.next();
+				final GenericGenerator gg = (GenericGenerator) sit.next();
 				if (gg.getName() != null && gg.getName().compareTo(name) == 0) {
 					if (gg.getStrategy() == null) {
 						throw new MappingException("The GenericGenerator: " + name + " has no strategy defined!");
 					}
-					
+
 					return gg;
 				}
 			}

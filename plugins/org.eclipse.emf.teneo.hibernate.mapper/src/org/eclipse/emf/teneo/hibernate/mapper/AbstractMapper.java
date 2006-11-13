@@ -12,24 +12,29 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.3 2006/11/13 14:53:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
-import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
+import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
@@ -49,32 +54,6 @@ abstract class AbstractMapper {
 		// TODO assuming that mappedBy coincide with opposite, check in validation
 		return paReference.getPaModel().getPAnnotated(paReference.getAnnotatedEReference().getEOpposite());
 	}
-	
-	/**
-	 * @return Returns the hibernate name for the given Ecore data type.
-	 * @throws MappingException
-	 *             if no corresponding hb type is defined.
-	 */
-	protected static String hbType(EDataType eDataType) {
-		// externalise this typesource
-		final String typeSource = "http://annotations.hibernate.org/Type";
-		if (eDataType.getEAnnotation(typeSource) != null) {
-			return (String) eDataType.getEAnnotation(typeSource).getDetails().get("type");
-		} else if (EcoreDataTypes.INSTANCE.isEWrapper(eDataType) || EcoreDataTypes.INSTANCE.isEPrimitive(eDataType)) {
-			return eDataType.getInstanceClassName();
-		} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
-			return eDataType.getInstanceClassName();
-		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType)) {
-			return "java.util.Date";
-		} else if (eDataType.getInstanceClass() == Object.class) {
-			return "serializable"; // MT: this is sometimes the best/robust approach
-		} else if (eDataType.getInstanceClass() != null) {
-			return eDataType.getInstanceClassName();
-		} else {
-			return "serializable"; // MT: this is sometimes the best/robust approach
-			// throw new MappingException("Do not know how to handle type " + eDataType);
-		}
-	}
 
 	/** The mapping context of this mapping action */
 	protected final MappingContext hbmContext;
@@ -92,12 +71,99 @@ abstract class AbstractMapper {
 	}
 
 	/**
-	 * Returns the (possibly overridden) column annotation for the given attribute.
+	 * @return Returns the hibernate name for the given Ecore data type.
+	 * @throws MappingException
+	 *             if no corresponding hb type is defined.
 	 */
-	protected Column getColumn(PAnnotatedEAttribute paAttribute) {
+	protected String hbType(PAnnotatedEAttribute paAttribute) {
+		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
+		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType)paAttribute.getPaModel().getPAnnotated(eAttribute.getEAttributeType());
+		final EDataType eDataType = paAttribute.getAnnotatedEAttribute().getEAttributeType();
+		if (hed != null && hed.getHbTypeDef() != null) {
+			return hed.getHbTypeDef().getName();
+		} else if (EcoreDataTypes.INSTANCE.isEWrapper(eDataType) || EcoreDataTypes.INSTANCE.isEPrimitive(eDataType)) {
+			return eDataType.getInstanceClassName();
+		} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
+			return eDataType.getInstanceClassName();
+		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType)) {
+			return "java.util.Date";
+		} else if (eDataType.getInstanceClass() == Object.class) {
+			return "serializable"; // MT: this is sometimes the best/robust approach
+		} else if (eDataType.getInstanceClass() != null) {
+			return eDataType.getInstanceClassName();
+		} else {
+			return "serializable"; // MT: this is sometimes the best/robust approach
+			// throw new MappingException("Do not know how to handle type " + eDataType);
+		}
+	}
+
+	/** Sets property attributes on the basis of the column */
+	protected void addColumn(Element propertyElement, String defaultName, Column column, boolean forceNullable,
+			boolean isId) {
+		if (column != null) {
+			if (!isId) {
+				propertyElement.addAttribute("insert", column.isInsertable() ? "true" : "false");
+				propertyElement.addAttribute("update", column.isUpdatable() ? "true" : "false");
+
+				// MT: I think that the column nullability should not be used for setting not-null
+				// on the property, this is already specified by the optional attribute on the
+				// basic annotation. Maybe a check can be used instead to detect inconsistenties
+				// in the column attributes and the basic ann.
+				// Note that the ejb3 spec says that optional should be disregarded for primitive types which I
+				// do not understand.
+				// I disabled it for now to ignore for the test cases.
+				// MT05032006: After some more thought the column nullability can be used in case of
+				// single table inheritance mapping
+				propertyElement.addAttribute("not-null", column.isNullable() ? "false" : "true");
+				propertyElement.addAttribute("unique", column.isUnique() ? "true" : "false");
+			}
+			addColumnElement(propertyElement, defaultName, column, forceNullable);
+
+		} else if (getHbmContext().getEmbeddingFeature() != null) { // embedded
+			// TODO: check illegal, embedded component can not really have an id
+			final PAnnotatedEReference pae = getHbmContext().getEmbeddingFeature();
+			final String name = pae.getAnnotatedEReference().getName() + "_" + defaultName;
+			final Column newColumn = PannotationFactory.eINSTANCE.createColumn();
+			newColumn.setName(name);
+			addColumnElement(propertyElement, defaultName, newColumn, forceNullable);
+			//propertyElement.addAttribute("column", getHbmContext().trunc(name));
+		} else {
+			final Column newColumn = PannotationFactory.eINSTANCE.createColumn();
+			newColumn.setName(getHbmContext().trunc(defaultName));
+			addColumnElement(propertyElement, defaultName, newColumn, forceNullable);
+			//propertyElement.addAttribute("column", getHbmContext().trunc(defaultName));
+		}
+	}
+	
+	/** Same as above only handles multiple columns */
+	protected void addColumns(Element propertyElement, String defaultName, List columns, boolean forceNullable,
+			boolean isId) {
+		for (Iterator it = columns.iterator(); it.hasNext();) {
+			final Column column = (Column) it.next();
+			addColumn(propertyElement, defaultName, column, forceNullable, isId);
+		}
+	}
+
+	/**
+	 * Returns the (possibly overridden) columns annotation for the given attribute.
+	 */
+	protected List getColumns(PAnnotatedEAttribute paAttribute) {
 		final Column defaultColumn = paAttribute.getColumn();
 		final Column oc = getHbmContext().getOverride(paAttribute);
-		return (oc == null) ? defaultColumn : oc;
+		
+		if (oc != null) {
+			final ArrayList result = new ArrayList();
+			result.add(oc);
+			return result;
+		}
+		// try multiple columns 
+		final HbAnnotatedEAttribute hae = (HbAnnotatedEAttribute)paAttribute;
+		if (hae.getHbColumns().size() > 0) {
+			return hae.getHbColumns();
+		}
+		final ArrayList result = new ArrayList();
+		result.add(defaultColumn);
+		return result;
 	}
 
 	/**
@@ -149,15 +215,14 @@ abstract class AbstractMapper {
 			}
 		}
 	}
-	
+
 	/** Adds a cache element */
 	protected void addCacheElement(Element parent, Cache cache) {
 		// translate to hibernate specific notation
 		final String usage = cache.getUsage().getName().toLowerCase().replaceAll("_", "-");
-		
-		// note a trick because the name of the 
-		Element cacheElement = parent.addElement("cache").addAttribute("usage", 
-				usage);
+
+		// note a trick because the name of the
+		Element cacheElement = parent.addElement("cache").addAttribute("usage", usage);
 		if (cache.getRegion() != null) {
 			cacheElement.addAttribute("region", cache.getRegion());
 		}

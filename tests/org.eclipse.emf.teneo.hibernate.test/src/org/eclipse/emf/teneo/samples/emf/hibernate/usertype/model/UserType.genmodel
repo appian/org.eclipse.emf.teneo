@@ -2,13 +2,18 @@
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.hibernate.test/src"
-    modelPluginID="org.eclipse.emf.teneo.hibernate.test" modelName="UserType" importerID="org.eclipse.xsd.ecore.importer">
-  <foreignModel>UserType.xsd</foreignModel>
+    modelPluginID="org.eclipse.emf.teneo.hibernate.test" modelName="UserType" importerID="org.eclipse.emf.importer.ecore">
+  <foreignModel>usertype.ecore</foreignModel>
   <genPackages prefix="Usertype" basePackage="org.eclipse.emf.teneo.samples.emf.hibernate"
       resource="XML" disposableProviderFactory="true" ecorePackage="usertype.ecore#/">
     <genDataTypes ecoreDataType="usertype.ecore#//Name"/>
+    <genDataTypes ecoreDataType="usertype.ecore#//PhoneNumber"/>
+    <genDataTypes ecoreDataType="usertype.ecore#//IntArray"/>
     <genClasses ecoreClass="usertype.ecore#//Person">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/numbers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/phoneNumbers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/emergencyContact"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

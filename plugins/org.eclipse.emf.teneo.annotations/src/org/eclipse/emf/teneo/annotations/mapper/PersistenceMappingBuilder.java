@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingBuilder.java,v 1.2 2006/11/07 10:22:42 mtaal Exp $
+ * $Id: PersistenceMappingBuilder.java,v 1.3 2006/11/13 14:53:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class PersistenceMappingBuilder {
 
@@ -160,7 +160,7 @@ public class PersistenceMappingBuilder {
 	/** For each pannotated eattribute find the pannotated edatatype and copy the values of the
 	 * estructuralfeature if not yet set in the eattribute
 	 */
-	private void processEDataTypeAnnotations(PAnnotatedModel pam) {
+	protected void processEDataTypeAnnotations(PAnnotatedModel pam) {
 		log.debug("Copying annotations on edatatypes over eattribute annotations!");
 		for (Iterator pit = pam.getPaEPackages().iterator(); pit.hasNext();) {
 			final PAnnotatedEPackage pep = (PAnnotatedEPackage)pit.next();

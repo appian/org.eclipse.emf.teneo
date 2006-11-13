@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackage.java,v 1.6 2006/09/07 22:26:49 mtaal Exp $
+ * $Id: UsertypePackage.java,v 1.7 2006/11/13 14:52:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -79,13 +79,40 @@ public interface UsertypePackage extends EPackage {
 	int PERSON__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Numbers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__NUMBERS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Phone Numbers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__PHONE_NUMBERS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Emergency Contact</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__EMERGENCY_CONTACT = 3;
+
+	/**
 	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 1;
+	int PERSON_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '<em>Name</em>' data type.
@@ -96,6 +123,27 @@ public interface UsertypePackage extends EPackage {
 	 * @generated
 	 */
 	int NAME = 1;
+
+
+	/**
+	 * The meta object id for the '<em>Phone Number</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getPhoneNumber()
+	 * @generated
+	 */
+	int PHONE_NUMBER = 2;
+
+
+	/**
+	 * The meta object id for the '<em>Int Array</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getIntArray()
+	 * @generated
+	 */
+	int INT_ARRAY = 3;
 
 
 	/**
@@ -120,17 +168,73 @@ public interface UsertypePackage extends EPackage {
 	EAttribute getPerson_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getNumbers <em>Numbers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Numbers</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getNumbers()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EAttribute getPerson_Numbers();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getPhoneNumbers <em>Phone Numbers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Phone Numbers</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getPhoneNumbers()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EAttribute getPerson_PhoneNumbers();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getEmergencyContact <em>Emergency Contact</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Emergency Contact</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getEmergencyContact()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EAttribute getPerson_EmergencyContact();
+
+	/**
 	 * Returns the meta object for data type '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Name</em>'.
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name
 	 * @model instanceClass="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name"
-	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Type(type=\"org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType\")\n\t\t\t\t\t\t@Columns({@Column(name=\"first_name\"), @Column(name=\"last_name\")})\n\t\t\t\t\t'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@TypeDef(name=\"nameType\" typeClass=\"org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType\")\n\t\t\t\t\t\t@Columns({@Column(name=\"first_name\"), @Column(name=\"last_name\")})\n\t\t\t\t\t'"
 	 *        extendedMetaData="name='Name'" 
 	 * @generated
 	 */
 	EDataType getName_();
+
+	/**
+	 * Returns the meta object for data type '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber <em>Phone Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Phone Number</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber
+	 * @model instanceClass="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber"
+	 * @generated
+	 */
+	EDataType getPhoneNumber();
+
+	/**
+	 * Returns the meta object for data type '<em>Int Array</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Int Array</em>'.
+	 * @model instanceClass="int[]"
+	 *        extendedMetaData="name='IntArray'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@TypeDef(name=\"intArrayType\" typeClass=\"org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType\", parameters={@Parameter(name=\"epackage\" value=\"http://www.elver.org/samples/emf/hibernate/usertype\"), @Parameter(name=\"edatatype\", value=\"IntArray\")})\n\t\t\t\t\t'" 
+	 * @generated
+	 */
+	EDataType getIntArray();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -173,6 +277,30 @@ public interface UsertypePackage extends EPackage {
 		EAttribute PERSON__NAME = eINSTANCE.getPerson_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Numbers</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSON__NUMBERS = eINSTANCE.getPerson_Numbers();
+
+		/**
+		 * The meta object literal for the '<em><b>Phone Numbers</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSON__PHONE_NUMBERS = eINSTANCE.getPerson_PhoneNumbers();
+
+		/**
+		 * The meta object literal for the '<em><b>Emergency Contact</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSON__EMERGENCY_CONTACT = eINSTANCE.getPerson_EmergencyContact();
+
+		/**
 		 * The meta object literal for the '<em>Name</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -181,6 +309,25 @@ public interface UsertypePackage extends EPackage {
 		 * @generated
 		 */
 		EDataType NAME = eINSTANCE.getName_();
+
+		/**
+		 * The meta object literal for the '<em>Phone Number</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getPhoneNumber()
+		 * @generated
+		 */
+		EDataType PHONE_NUMBER = eINSTANCE.getPhoneNumber();
+
+		/**
+		 * The meta object literal for the '<em>Int Array</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getIntArray()
+		 * @generated
+		 */
+		EDataType INT_ARRAY = eINSTANCE.getIntArray();
 
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationSwitch.java,v 1.1 2006/11/01 16:18:43 mtaal Exp $
+ * $Id: HbAnnotationSwitch.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -184,6 +184,14 @@ public class HbAnnotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case HbAnnotationPackage.TYPE_DEF: {
+				TypeDef typeDef = (TypeDef)theEObject;
+				Object result = caseTypeDef(typeDef);
+				if (result == null) result = caseHbAnnotation(typeDef);
+				if (result == null) result = casePAnnotation(typeDef);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -335,6 +343,21 @@ public class HbAnnotationSwitch {
 	 * @generated
 	 */
 	public Object caseCache(Cache object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Type Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Type Def</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseTypeDef(TypeDef object) {
 		return null;
 	}
 

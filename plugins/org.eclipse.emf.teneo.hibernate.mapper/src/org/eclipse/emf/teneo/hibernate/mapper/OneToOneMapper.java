@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.3 2006/11/13 14:53:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -78,9 +78,9 @@ class OneToOneMapper extends AbstractAssociationMapper {
 			specifiedName = getHbmContext().getImpl(referedTo).getName();
 		}
 
-		final Element associationElement = addManyToOne(paReference,
-				(specifiedName != null ? specifiedName : getHbmContext().getEntityName(
-						paReference.getAnnotatedEReference().getEReferenceType())), !isEasyEMFGenerated);
+		final Element associationElement = addManyToOne(paReference, (specifiedName != null ? specifiedName
+				: getHbmContext().getEntityName(paReference.getAnnotatedEReference().getEReferenceType())),
+				!isEasyEMFGenerated);
 
 		addCascadesForSingle(associationElement, oto.getCascade());
 		// todo default false until proxies are supported
@@ -119,7 +119,7 @@ class OneToOneMapper extends AbstractAssociationMapper {
 		if (otherSide != null) {
 			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
 		}
-		
+
 		addCascadesForSingle(associationElement, oto.getCascade());
 		addFetchType(associationElement, oto.getFetch());
 		if (paReference.getPrimaryKeyJoinColumns().size() > 0) {

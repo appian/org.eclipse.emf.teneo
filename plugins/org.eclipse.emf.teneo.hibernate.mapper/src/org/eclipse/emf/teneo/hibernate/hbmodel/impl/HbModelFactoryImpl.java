@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelFactoryImpl.java,v 1.1 2006/11/01 16:18:44 mtaal Exp $
+ * $Id: HbModelFactoryImpl.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -20,42 +20,39 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelFactory;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
 
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static HbModelFactory init() {
 		try {
-			HbModelFactory theHbModelFactory = (HbModelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/2006/HbModel"); 
+			HbModelFactory theHbModelFactory = (HbModelFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.eclipse.org/emf/teneo/2006/HbModel");
 			if (theHbModelFactory != null) {
 				return theHbModelFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new HbModelFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HbModelFactoryImpl() {
@@ -63,25 +60,30 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE: return createHbAnnotatedEAttribute();
-			case HbModelPackage.HB_ANNOTATED_ECLASS: return createHbAnnotatedEClass();
-			case HbModelPackage.HB_ANNOTATED_EPACKAGE: return createHbAnnotatedEPackage();
-			case HbModelPackage.HB_ANNOTATED_EREFERENCE: return createHbAnnotatedEReference();
-			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE: return createHbAnnotatedEDataType();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case HbModelPackage.HB_ANNOTATED_EATTRIBUTE:
+			return createHbAnnotatedEAttribute();
+		case HbModelPackage.HB_ANNOTATED_ECLASS:
+			return createHbAnnotatedEClass();
+		case HbModelPackage.HB_ANNOTATED_EPACKAGE:
+			return createHbAnnotatedEPackage();
+		case HbModelPackage.HB_ANNOTATED_EREFERENCE:
+			return createHbAnnotatedEReference();
+		case HbModelPackage.HB_ANNOTATED_EDATA_TYPE:
+			return createHbAnnotatedEDataType();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HbAnnotatedEAttribute createHbAnnotatedEAttribute() {
@@ -90,8 +92,8 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HbAnnotatedEClass createHbAnnotatedEClass() {
@@ -100,8 +102,8 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HbAnnotatedEPackage createHbAnnotatedEPackage() {
@@ -110,8 +112,8 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HbAnnotatedEReference createHbAnnotatedEReference() {
@@ -120,8 +122,8 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HbAnnotatedEDataType createHbAnnotatedEDataType() {
@@ -130,17 +132,17 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HbModelPackage getHbModelPackage() {
-		return (HbModelPackage)getEPackage();
+		return (HbModelPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -148,4 +150,4 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 		return HbModelPackage.eINSTANCE;
 	}
 
-} //HbModelFactoryImpl
+} // HbModelFactoryImpl

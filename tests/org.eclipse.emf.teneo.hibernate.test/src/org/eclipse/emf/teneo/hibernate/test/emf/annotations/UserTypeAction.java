@@ -11,7 +11,7 @@
  *   L.M. Fridael
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.3 2006/07/23 23:50:14 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.4 2006/11/13 14:52:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -24,6 +24,7 @@ import java.util.List;
 
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypeFactory;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
@@ -33,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test
  * 
  * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class UserTypeAction extends AbstractTestAction {
 
@@ -55,6 +56,13 @@ public class UserTypeAction extends AbstractTestAction {
 		store.beginTransaction();
 		Person person = UsertypeFactory.eINSTANCE.createPerson();
 		person.setName(NAME);
+		UsaPhoneNumber up1 = new UsaPhoneNumber(100, 200, 300);
+		UsaPhoneNumber up2 = new UsaPhoneNumber(400, 500, 600);
+		UsaPhoneNumber up3 = new UsaPhoneNumber(700, 800, 900);
+		person.setEmergencyContact(up1);
+		person.getPhoneNumbers().add(up2);
+		person.getPhoneNumbers().add(up3);
+		person.setNumbers(new int[] {4, 5});
 		store.store(person);
 		store.commitTransaction();
 	}
@@ -65,6 +73,13 @@ public class UserTypeAction extends AbstractTestAction {
 		assertEquals(1, results.size());
 		Person person = (Person) results.get(0);
 		assertEquals(NAME, person.getName());
+		assertEquals(new UsaPhoneNumber(100, 200, 300), person.getEmergencyContact());
+		assertTrue(person.getPhoneNumbers().contains(new UsaPhoneNumber(400, 500, 600)));
+		assertTrue(person.getPhoneNumbers().contains(new UsaPhoneNumber(700, 800, 900)));
+		int[] nums = person.getNumbers();
+		assertEquals(2, nums.length);
+		assertEquals(4, nums[0]);
+		assertEquals(5, nums[1]);
 		store.commitTransaction();
 	}
 
@@ -95,5 +110,4 @@ public class UserTypeAction extends AbstractTestAction {
 			}
 		}
 	}
-
 }

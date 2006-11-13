@@ -5,7 +5,7 @@
     nsURI="http://www.elver.org/samples/emf/hibernate/usertype" nsPrefix="usertype">
   <eClassifiers xsi:type="ecore:EDataType" name="Name" instanceClassName="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name">
     <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Type(type=&quot;org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Columns({@Column(name=&quot;first_name&quot;), @Column(name=&quot;last_name&quot;)})&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@TypeDef(name=&quot;nameType&quot; typeClass=&quot;org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Columns({@Column(name=&quot;first_name&quot;), @Column(name=&quot;last_name&quot;)})&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Name"/>
@@ -23,5 +23,25 @@
         <details key="name" value="name"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numbers" unique="false"
+        lowerBound="1" eType="#//IntArray">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="intArray"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="phoneNumbers" upperBound="100"
+        eType="#//PhoneNumber"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emergencyContact" eType="#//PhoneNumber"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="PhoneNumber" instanceClassName="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="IntArray" instanceClassName="int[]">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="IntArray"/>
+    </eAnnotations>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@TypeDef(name=&quot;intArrayType&quot; typeClass=&quot;org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType&quot;, parameters={@Parameter(name=&quot;epackage&quot; value=&quot;http://www.elver.org/samples/emf/hibernate/usertype&quot;), @Parameter(name=&quot;edatatype&quot;, value=&quot;IntArray&quot;)})&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

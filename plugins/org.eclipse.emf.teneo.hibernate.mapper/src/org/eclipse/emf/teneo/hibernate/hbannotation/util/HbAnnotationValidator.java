@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.1 2006/11/01 16:18:43 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -134,6 +134,8 @@ public class HbAnnotationValidator extends EObjectValidator {
 				return validateGenericGenerator((GenericGenerator)value, diagnostics, context);
 			case HbAnnotationPackage.CACHE:
 				return validateCache((Cache)value, diagnostics, context);
+			case HbAnnotationPackage.TYPE_DEF:
+				return validateTypeDef((TypeDef)value, diagnostics, context);
 			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			default: 
@@ -342,6 +344,21 @@ public class HbAnnotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(cache, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTypeDef(TypeDef typeDef, DiagnosticChain diagnostics, Map context) {
+		boolean result = validate_EveryMultiplicityConforms(typeDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(typeDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(typeDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(typeDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(typeDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(typeDef, diagnostics, context);
 		return result;
 	}
 

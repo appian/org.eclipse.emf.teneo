@@ -2,7 +2,7 @@
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n"
-    modelDirectory="/org.eclipse.emf.teneo.hibernate/src" editDirectory="/org.eclipse.emf.teneo.hibernate.edit/src"
+    modelDirectory="/org.eclipse.emf.teneo.hibernate.mapper/src" editDirectory="/org.eclipse.emf.teneo.hibernate.edit/src"
     editorDirectory="/org.eclipse.emf.teneo.hibernate.editor/src" modelPluginID="org.eclipse.emf.teneo.hibernate"
     templateDirectory="" redirection="" modelName="HbAnnotation" editPluginClass="org.eclipse.emf.teneo.hibernate.hbannotation.provider.HbAnnotationEditPlugin"
     editorPluginClass="org.eclipse.emf.teneo.hibernate.hbannotation.presentation.HbAnnotationEditorPlugin"
@@ -55,6 +55,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Cache/region"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Cache/include"/>
     </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//TypeDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//TypeDef/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbannotation.ecore#//TypeDef/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//TypeDef/typeClass"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="HbModel" basePackage="org.eclipse.emf.teneo.hibernate" disposableProviderFactory="true"
       ecorePackage="hbmodel.ecore#/">
@@ -75,12 +80,13 @@
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEModelElement"/>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEPackage">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/hbGenericGenerators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/hbTypeDef"/>
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEReference">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/hbCache"/>
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEDataType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEDataType/hbType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEDataType/hbTypeDef"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
