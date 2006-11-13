@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.3 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.4 2006/11/13 19:55:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -21,16 +21,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
@@ -47,8 +42,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
 abstract class AbstractMapper {
 
 	/** logs it all */
-	private static final Log log = LogFactory.getLog(AbstractMapper.class);
-
+	// private static final Log log = LogFactory.getLog(AbstractMapper.class);
 	/** return the opposite of an association */
 	protected PAnnotatedEReference getOtherSide(PAnnotatedEReference paReference) {
 		// TODO assuming that mappedBy coincide with opposite, check in validation
@@ -77,7 +71,8 @@ abstract class AbstractMapper {
 	 */
 	protected String hbType(PAnnotatedEAttribute paAttribute) {
 		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
-		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType)paAttribute.getPaModel().getPAnnotated(eAttribute.getEAttributeType());
+		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) paAttribute.getPaModel().getPAnnotated(
+				eAttribute.getEAttributeType());
 		final EDataType eDataType = paAttribute.getAnnotatedEAttribute().getEAttributeType();
 		if (hed != null && hed.getHbTypeDef() != null) {
 			return hed.getHbTypeDef().getName();
@@ -97,75 +92,6 @@ abstract class AbstractMapper {
 		}
 	}
 
-	/** Sets property attributes on the basis of the column */
-	protected void addColumn(Element propertyElement, String defaultName, Column column, boolean forceNullable,
-			boolean isId) {
-		if (column != null) {
-			if (!isId) {
-				propertyElement.addAttribute("insert", column.isInsertable() ? "true" : "false");
-				propertyElement.addAttribute("update", column.isUpdatable() ? "true" : "false");
-
-				// MT: I think that the column nullability should not be used for setting not-null
-				// on the property, this is already specified by the optional attribute on the
-				// basic annotation. Maybe a check can be used instead to detect inconsistenties
-				// in the column attributes and the basic ann.
-				// Note that the ejb3 spec says that optional should be disregarded for primitive types which I
-				// do not understand.
-				// I disabled it for now to ignore for the test cases.
-				// MT05032006: After some more thought the column nullability can be used in case of
-				// single table inheritance mapping
-				propertyElement.addAttribute("not-null", column.isNullable() ? "false" : "true");
-				propertyElement.addAttribute("unique", column.isUnique() ? "true" : "false");
-			}
-			addColumnElement(propertyElement, defaultName, column, forceNullable);
-
-		} else if (getHbmContext().getEmbeddingFeature() != null) { // embedded
-			// TODO: check illegal, embedded component can not really have an id
-			final PAnnotatedEReference pae = getHbmContext().getEmbeddingFeature();
-			final String name = pae.getAnnotatedEReference().getName() + "_" + defaultName;
-			final Column newColumn = PannotationFactory.eINSTANCE.createColumn();
-			newColumn.setName(name);
-			addColumnElement(propertyElement, defaultName, newColumn, forceNullable);
-			//propertyElement.addAttribute("column", getHbmContext().trunc(name));
-		} else {
-			final Column newColumn = PannotationFactory.eINSTANCE.createColumn();
-			newColumn.setName(getHbmContext().trunc(defaultName));
-			addColumnElement(propertyElement, defaultName, newColumn, forceNullable);
-			//propertyElement.addAttribute("column", getHbmContext().trunc(defaultName));
-		}
-	}
-	
-	/** Same as above only handles multiple columns */
-	protected void addColumns(Element propertyElement, String defaultName, List columns, boolean forceNullable,
-			boolean isId) {
-		for (Iterator it = columns.iterator(); it.hasNext();) {
-			final Column column = (Column) it.next();
-			addColumn(propertyElement, defaultName, column, forceNullable, isId);
-		}
-	}
-
-	/**
-	 * Returns the (possibly overridden) columns annotation for the given attribute.
-	 */
-	protected List getColumns(PAnnotatedEAttribute paAttribute) {
-		final Column defaultColumn = paAttribute.getColumn();
-		final Column oc = getHbmContext().getOverride(paAttribute);
-		
-		if (oc != null) {
-			final ArrayList result = new ArrayList();
-			result.add(oc);
-			return result;
-		}
-		// try multiple columns 
-		final HbAnnotatedEAttribute hae = (HbAnnotatedEAttribute)paAttribute;
-		if (hae.getHbColumns().size() > 0) {
-			return hae.getHbColumns();
-		}
-		final ArrayList result = new ArrayList();
-		result.add(defaultColumn);
-		return result;
-	}
-
 	/**
 	 * Returns the (possibly overridden) JoinColumns annotations for the given reference or an empty list if no
 	 * JoinColumns were defined.
@@ -178,17 +104,103 @@ abstract class AbstractMapper {
 		return joinColumns;
 	}
 
-	/** Generic method to log and throw error situation */
-	public void processIllFormed(PAnnotatedEModelElement paElement, String cause, PAnnotation offendingAnnotation) {
-		log.error(cause + " on " + paElement);
-		throw new MappingException(cause, offendingAnnotation);
+	/** Adds a cache element */
+	protected void addCacheElement(Element parent, Cache cache) {
+		// translate to hibernate specific notation
+		final String usage = cache.getUsage().getName().toLowerCase().replaceAll("_", "-");
+
+		// note a trick because the name of the
+		Element cacheElement = parent.addElement("cache").addAttribute("usage", usage);
+		if (cache.getRegion() != null) {
+			cacheElement.addAttribute("region", cache.getRegion());
+		}
+		if (cache.getInclude() != null) {
+			cacheElement.addAttribute("include", cache.getInclude());
+		}
+		parent.remove(cacheElement);
+		parent.add(0, cacheElement);
+	}
+
+	/** Same as above only handles multiple columns */
+	protected void addColumns(Element propertyElement, String defaultName, List columns, boolean isNullable,
+			boolean setColumnAttributesInProperty) {
+		// if no columns set then use some default
+		if (columns.isEmpty()) {
+			final String name;
+			if (getHbmContext().getEmbeddingFeature() != null) { // embedded
+				// TODO: check illegal, embedded component can not really have an id
+				final PAnnotatedEReference pae = getHbmContext().getEmbeddingFeature();
+				name = getHbmContext().trunc(pae.getAnnotatedEReference().getName() + "_" + defaultName);
+			} else {
+				name = getHbmContext().trunc(defaultName);
+			}
+			final Column col = PannotationFactory.eINSTANCE.createColumn();
+			col.setName(name);
+			col.setNullable(isNullable);
+			columns.add(col);
+		}
+		for (Iterator it = columns.iterator(); it.hasNext();) {
+			final Column column = (Column) it.next();
+			addColumn(propertyElement, defaultName, column, isNullable, setColumnAttributesInProperty);
+		}
+	}
+
+	/**
+	 * Returns the (possibly overridden) columns annotation for the given attribute.
+	 */
+	protected List getColumns(PAnnotatedEAttribute paAttribute) {
+		final Column defaultColumn = paAttribute.getColumn();
+		final Column oc = getHbmContext().getOverride(paAttribute);
+
+		if (oc != null) {
+			final ArrayList result = new ArrayList();
+			result.add(oc);
+			return result;
+		}
+		// try multiple columns
+		final HbAnnotatedEAttribute hae = (HbAnnotatedEAttribute) paAttribute;
+		if (hae.getHbColumns().size() > 0) {
+			return hae.getHbColumns();
+		}
+		final ArrayList result = new ArrayList();
+		if (defaultColumn != null) {
+			result.add(defaultColumn);
+		}
+		return result;
+	}
+
+	/** Sets property attributes on the basis of the column */
+	private void addColumn(Element propertyElement, String defaultName, Column column, boolean isNullable,
+			boolean setColumnAttributesInProperty) {
+		if (column != null) {
+			if (setColumnAttributesInProperty) {
+				// this is not the nicest place to do this
+				if (propertyElement.getName().compareTo("property") == 0
+						|| propertyElement.getName().compareTo("many-to-one") == 0) {
+					propertyElement.addAttribute("insert", column.isInsertable() ? "true" : "false");
+					propertyElement.addAttribute("update", column.isUpdatable() ? "true" : "false");
+				}
+				// MT: I think that the column nullability should not be used for setting not-null
+				// on the property, this is already specified by the optional attribute on the
+				// basic annotation. Maybe a check can be used instead to detect inconsistenties
+				// in the column attributes and the basic ann.
+				// Note that the ejb3 spec says that optional should be disregarded for primitive types which I
+				// do not understand.
+				// I disabled it for now to ignore for the test cases.
+				// MT05032006: After some more thought the column nullability can be used in case of
+				// single table inheritance mapping
+				propertyElement.addAttribute("not-null", isNullable || column.isNullable() ? "false" : "true");
+				propertyElement.addAttribute("unique", column.isUnique() ? "true" : "false");
+			}
+			addColumnElement(propertyElement, defaultName, column, isNullable);
+		}
 	}
 
 	/**
 	 * Add a columnelement to the property, takes into account length, precision etc. forceNullable is set when the
 	 * feature belongs to a featuremap
 	 */
-	protected void addColumnElement(Element propertyElement, String defaultName, Column column, boolean forceNullable) {
+	private void addColumnElement(Element propertyElement, String defaultName, Column column, boolean forceNullable) {
 		if (column != null) {
 			Element columnElement = propertyElement.addElement("column").addAttribute("not-null",
 					column.isNullable() || forceNullable ? "false" : "true").addAttribute("unique",
@@ -214,22 +226,5 @@ abstract class AbstractMapper {
 				columnElement.addAttribute("unique-key", uc);
 			}
 		}
-	}
-
-	/** Adds a cache element */
-	protected void addCacheElement(Element parent, Cache cache) {
-		// translate to hibernate specific notation
-		final String usage = cache.getUsage().getName().toLowerCase().replaceAll("_", "-");
-
-		// note a trick because the name of the
-		Element cacheElement = parent.addElement("cache").addAttribute("usage", usage);
-		if (cache.getRegion() != null) {
-			cacheElement.addAttribute("region", cache.getRegion());
-		}
-		if (cache.getInclude() != null) {
-			cacheElement.addAttribute("include", cache.getInclude());
-		}
-		parent.remove(cacheElement);
-		parent.add(0, cacheElement);
 	}
 }

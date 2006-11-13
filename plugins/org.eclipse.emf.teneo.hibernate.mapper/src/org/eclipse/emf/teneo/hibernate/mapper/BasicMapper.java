@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.4 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.5 2006/11/13 19:55:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -28,12 +28,10 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
-import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
-import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
@@ -85,7 +83,8 @@ class BasicMapper extends AbstractPropertyMapper {
 		// Buildtime enhancement not supported
 		propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
 		addColumns(propElement, eAttribute.getName(), getColumns(paAttribute), getHbmContext()
-				.isCurrentElementFeatureMap(), false);
+				.isCurrentElementFeatureMap()
+				|| isNullable(basic, eAttribute), true);
 		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
 
 		handleTypeDef(paAttribute, propElement);
@@ -109,7 +108,8 @@ class BasicMapper extends AbstractPropertyMapper {
 
 		propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
 		addColumns(propElement, eAttribute.getName(), getColumns(paAttribute), getHbmContext()
-				.isCurrentElementFeatureMap(), false);
+				.isCurrentElementFeatureMap()
+				|| isNullable(basic, eAttribute), true);
 		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
 		handleTypeDef(paAttribute, propElement);
 	}
@@ -143,8 +143,8 @@ class BasicMapper extends AbstractPropertyMapper {
 		}
 
 		propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
-		addColumns(propElement, paAttribute.getAnnotatedEAttribute().getName(), getColumns(paAttribute), getHbmContext()
-				.isCurrentElementFeatureMap(), false);
+		addColumns(propElement, paAttribute.getAnnotatedEAttribute().getName(), getColumns(paAttribute),
+				getHbmContext().isCurrentElementFeatureMap() || isNullable(basic, eAttribute), true);
 		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
 		handleTypeDef(paAttribute, propElement);
 	}
@@ -155,21 +155,22 @@ class BasicMapper extends AbstractPropertyMapper {
 	public void processEnum(PAnnotatedEAttribute paAttribute) {
 		log.debug("processEnum " + paAttribute.getAnnotatedEAttribute());
 
-		final List columns = getColumns(paAttribute);
-		final Element propElement = getHbmContext().getCurrent().addElement("property").addAttribute("name",
-				getHbmContext().getPropertyName(paAttribute.getAnnotatedEAttribute()));
-
 		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
 		Basic basic = paAttribute.getBasic();
 		if (basic == null) {
 			basic = PannotationFactory.eINSTANCE.createBasic();
 		}
 
+		final List columns = getColumns(paAttribute);
+		final Element propElement = getHbmContext().getCurrent().addElement("property").addAttribute("name",
+				getHbmContext().getPropertyName(paAttribute.getAnnotatedEAttribute()));
+
 		Enumerated enumerated = paAttribute.getEnumerated();
 
 		propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
 		propElement.addAttribute("not-null", isNullable(basic, eattr) ? "false" : "true");
-		addColumns(propElement, eattr.getName(), columns, getHbmContext().isCurrentElementFeatureMap(), false);
+		addColumns(propElement, eattr.getName(), columns, isNullable(basic, eattr)
+				|| getHbmContext().isCurrentElementFeatureMap(), true);
 
 		// if an entity then add the special things
 		final EClassifier eclassifier = paAttribute.getAnnotatedEAttribute().getEType();
@@ -214,7 +215,7 @@ class BasicMapper extends AbstractPropertyMapper {
 		if (hed == null) { // edatatype not defined in this epackage (probably emf native)
 			return;
 		}
-		
+
 		final String name;
 		final List params;
 		if (hea.getHbType() != null) {
@@ -250,16 +251,13 @@ class BasicMapper extends AbstractPropertyMapper {
 		}
 		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
 		final Element propElement = getHbmContext().getCurrent().addElement("version").addAttribute("name",
-				eAttribute.getName()).addAttribute("type",
-				hbType(paAttribute));
+				eAttribute.getName()).addAttribute("type", hbType(paAttribute));
 		List columns = getColumns(paAttribute);
-		if (columns.size() == 0) {
-			throw new HbMapperException("Version attribute has no columns defined, eclass " + paAttribute.getAnnotatedEAttribute().getEContainingClass().getName());
-		} if (columns.size() > 1) {
-			log.warn("Version has more than one attribute, only using the first one, eclass: " + paAttribute.getAnnotatedEAttribute().getEContainingClass().getName());
+		if (columns.size() > 1) {
+			log.warn("Version has more than one attribute, only using the first one, eclass: "
+					+ paAttribute.getAnnotatedEAttribute().getEContainingClass().getName());
 		}
-		addColumnElement(propElement, eAttribute.getName(), (Column)columns.get(0), getHbmContext()
-				.isCurrentElementFeatureMap());
+		addColumns(propElement, eAttribute.getName(), columns, getHbmContext().isCurrentElementFeatureMap(), false);
 		handleTypeDef(paAttribute, propElement);
 	}
 

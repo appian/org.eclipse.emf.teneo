@@ -12,20 +12,13 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractPropertyMapper.java,v 1.3 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: AbstractPropertyMapper.java,v 1.4 2006/11/13 19:55:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
-import java.util.Iterator;
-import java.util.List;
-
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
-import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
-import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
-import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * Base class for basic, enum, id etc. mappers. Mainly provides convenience methods.

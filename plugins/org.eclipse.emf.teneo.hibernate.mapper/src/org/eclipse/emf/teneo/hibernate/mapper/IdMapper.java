@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.4 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: IdMapper.java,v 1.5 2006/11/13 19:55:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -144,7 +144,7 @@ class IdMapper extends AbstractPropertyMapper {
 			final Element keyPropertyElement = compositeIdElement.addElement("key-property");
 			keyPropertyElement.addAttribute("name", aFeature.getAnnotatedEStructuralFeature().getName());
 			addColumns(keyPropertyElement, aAttribute.getAnnotatedEAttribute().getName(), getColumns(aAttribute),
-					getHbmContext().isCurrentElementFeatureMap(), true);
+					getHbmContext().isCurrentElementFeatureMap(), false);
 			keyPropertyElement.addAttribute("type", hbType(aAttribute));
 		}
 		getHbmContext().setCurrent(compositeIdElement.getParent());
@@ -178,16 +178,16 @@ class IdMapper extends AbstractPropertyMapper {
 		final List columns = getColumns(id);
 		final GeneratedValue generatedValue = id.getGeneratedValue();
 
-//		if (column != null && column.getColumnDefinition() != null) {
-//			// TODO support
-//			log.error("Unsupported, ColumnDefinition  in " + column);
-//			throw new MappingException("Unsupported, ColumnDefinition", column);
-//		}
-//		if (column != null && column.getTable() != null) {
-//			// TODO support
-//			log.error("Unsupported, SecondaryTable in " + column);
-//			throw new MappingException("Unsupported, SecondaryTable", column);
-//		}
+		// if (column != null && column.getColumnDefinition() != null) {
+		// // TODO support
+		// log.error("Unsupported, ColumnDefinition in " + column);
+		// throw new MappingException("Unsupported, ColumnDefinition", column);
+		// }
+		// if (column != null && column.getTable() != null) {
+		// // TODO support
+		// log.error("Unsupported, SecondaryTable in " + column);
+		// throw new MappingException("Unsupported, SecondaryTable", column);
+		// }
 
 		final Element idElement = getCreateIdElement(getHbmContext().getCurrent(), aClass);
 		final boolean isCompositeId = aClass.getIdClass() != null;
@@ -199,7 +199,7 @@ class IdMapper extends AbstractPropertyMapper {
 			usedIdElement = idElement;
 		}
 
-		addColumns(usedIdElement, eAttribute.getName(), columns, false, true);
+		addColumns(usedIdElement, eAttribute.getName(), columns, false, false);
 
 		usedIdElement.addAttribute("name", eAttribute.getName());
 		if (id.getEnumerated() == null) {

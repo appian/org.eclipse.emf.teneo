@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyAttributeMapper.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: ManyAttributeMapper.java,v 1.3 2006/11/13 19:55:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -106,16 +106,15 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 			getHbmContext().addFeatureMapMapper(fmm);
 			collElement.addElement("one-to-many").addAttribute("entity-name", fmm.getEntityName());
 		} else {
-			addElementElement(collElement, eattr.getName(), paAttribute, getColumns(paAttribute), otm
-					.getTargetEntity());
+			addElementElement(collElement, eattr.getName(), paAttribute, getColumns(paAttribute), otm.getTargetEntity());
 		}
 	}
 
 	/**
 	 * Add Element element in given collection element.
 	 */
-	private Element addElementElement(Element collElement, String defaultName, PAnnotatedEAttribute paAttribute, List columns,
-			String targetEntity) {
+	private Element addElementElement(Element collElement, String defaultName, PAnnotatedEAttribute paAttribute,
+			List columns, String targetEntity) {
 		final Element elElement;
 		if (targetEntity == null) {
 			elElement = collElement.addElement("element").addAttribute("type", hbType(paAttribute));
@@ -123,7 +122,7 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 			elElement = collElement.addElement("element").addAttribute("type", targetEntity);
 		}
 		if (columns != null && columns.size() > 0) {
-			addColumns(elElement, defaultName, columns, getHbmContext().isCurrentElementFeatureMap(), false);
+			addColumns(elElement, defaultName, columns, getHbmContext().isCurrentElementFeatureMap(), true);
 		}
 		return elElement;
 	}
