@@ -4,6 +4,7 @@ Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.hibernate.mapper
 Bundle-Version: 0.7.5.qualifier
 Bundle-Localization: plugin
+Eclipse-BuddyPolicy: dependent
 Bundle-Vendor: %Plugin.providerName
 Export-Package: org.eclipse.emf.teneo.hibernate,
  org.eclipse.emf.teneo.hibernate.hbannotation,
@@ -17,4 +18,3 @@ Require-Bundle: org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo.libraries,
  org.eclipse.emf.ecore
-Import-Package: org.hibernate.type

@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.3 2006/11/13 21:29:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -221,6 +221,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 				// get rid of the [] at the end
 				final String primType = typeClassName.substring(0, typeClassName.length() - 2);
 				// check if hb supports it
+				// no dots is primitve
 				if (TypeFactory.basic(primType) != null) {
 					return null; // if so let hb do it
 				}
