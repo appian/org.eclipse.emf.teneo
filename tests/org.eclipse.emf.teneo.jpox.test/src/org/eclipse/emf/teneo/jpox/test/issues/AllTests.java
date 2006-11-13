@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.8 2006/11/12 00:08:14 mtaal Exp $
+ * $Id: AllTests.java,v 1.9 2006/11/13 19:56:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.issues;
@@ -21,7 +21,6 @@ import junit.framework.TestSuite;
 
 import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
-import org.eclipse.emf.teneo.test.issues.AbstractReferenceAction;
 import org.eclipse.emf.teneo.test.issues.BagDuplicateAction;
 import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.InheritanceAction;
@@ -32,7 +31,7 @@ import org.eclipse.emf.teneo.test.issues.SimplenmAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class AllTests {
 
