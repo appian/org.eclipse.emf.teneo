@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.6 2006/11/13 19:55:40 mtaal Exp $
+ * $Id: StoreResource.java,v 1.7 2006/11/14 10:57:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -44,12 +44,14 @@ import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.StoreValidationException;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
+import com.sun.corba.se.internal.ior.NewObjectKeyTemplateBase;
+
 /**
  * General part of Store Resources. Main feature is that it keeps track of changes to the resource content and that
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -304,6 +306,7 @@ public abstract class StoreResource extends ResourceImpl {
 
 			// ensure that the resource is set correctly before validating
 			if (obj.eResource() != this) {
+				Resource res = obj.eResource();
 				assert (obj.eResource() == this);
 			}
 			EContainerRepairControl.setEResourceToAlLContent((InternalEObject) obj, this);
@@ -479,8 +482,14 @@ public abstract class StoreResource extends ResourceImpl {
 	/** Overridden to also support persistence specific id instead of single emf id */
 	protected void detachedHelper(EObject eObject) {
 
-		if (eObject.eResource() != this)
+		// support move to other resource
+		if (eObject.eResource() != this) {
+			removedEObjects.remove(eObject);
+			modifiedEObjects.remove(eObject);
+			loadedEObjects.remove(eObject);
+			newEObjects.remove(eObject);
 			return;
+		}
 
 		removedEObject(eObject);
 

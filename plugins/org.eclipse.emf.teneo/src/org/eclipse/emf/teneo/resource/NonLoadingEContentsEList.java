@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: NonLoadingEContentsEList.java,v 1.1 2006/11/13 19:55:40 mtaal Exp $
+ * $Id: NonLoadingEContentsEList.java,v 1.2 2006/11/14 10:57:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.mapping.elist.PersistableFeatureMap;
  * Is a contents elist which will only iterate over loaded efeatures.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class NonLoadingEContentsEList extends EContentsEList {
@@ -49,6 +49,8 @@ public class NonLoadingEContentsEList extends EContentsEList {
 				} else if ((list instanceof PersistableFeatureMap) && ((PersistableFeatureMap) list).isLoaded()) {
 					result.add(eref);
 				} else if (eref.getLowerBound() > 0 && forValidation) {
+					result.add(eref);
+				} if (!(list instanceof PersistableEList) && !(list instanceof PersistableFeatureMap)) {
 					result.add(eref);
 				}
 				
