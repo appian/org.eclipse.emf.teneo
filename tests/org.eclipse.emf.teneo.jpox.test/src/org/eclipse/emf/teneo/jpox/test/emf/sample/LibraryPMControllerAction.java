@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryPMControllerAction.java,v 1.1 2006/10/04 14:08:56 mtaal Exp $
+ * $Id: LibraryPMControllerAction.java,v 1.2 2006/11/14 10:56:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryPMControllerAction extends AbstractTestAction {
 	/**
@@ -90,12 +90,12 @@ public class LibraryPMControllerAction extends AbstractTestAction {
 				res1.getContents().add(book2);
 				
 				final Library library = factory.createLibrary();
+				res2.getContents().add(library);
 				library.setName("Science Fiction");
 				library.getBooks().add(book);
 				library.getBooks().add(book2);
 				library.getWriters().add(writer);
 
-				res2.getContents().add(library);
 				pmc.getPM().currentTransaction().begin();
 				res1.save(null);
 				res2.save(null);

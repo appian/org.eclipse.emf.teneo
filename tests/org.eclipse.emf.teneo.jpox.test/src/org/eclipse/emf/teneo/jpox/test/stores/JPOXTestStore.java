@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.9 2006/09/21 00:57:12 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.10 2006/11/14 10:56:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -61,7 +61,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -123,7 +123,7 @@ public class JPOXTestStore extends AbstractTestStore {
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, adapter.getDbUser());
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, adapter.getDbPwd());
 		properties.setProperty(PMFConfiguration.IDENTIFIER_CASE_PROPERTY, "LowerCase");
-
+		
 		// properties.setProperty(PMFConfiguration.JDO_MAPPING_CATALOG_PROPERTY, adapter.getDbName());
 
 		if (inheritanceType.getValue() == InheritanceType.JOINED) {
@@ -377,7 +377,7 @@ public class JPOXTestStore extends AbstractTestStore {
 
 	/** Base method to get a resource belonging to the pmf of this test case */
 	public Resource getResource(String extraParam) {
-		String uriStr = "jpoxdao://?" + JPOXResource.DS_NAME_PARAM + "=" + getDatabaseAdapter().getDbName();
+		String uriStr = "jpox://?" + JPOXResource.DS_NAME_PARAM + "=" + getDatabaseAdapter().getDbName();
 
 		if (extraParam != null) {
 			uriStr += "&" + extraParam;
