@@ -5,7 +5,7 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:complexType name="Book">
     <xsd:sequence>
-      <xsd:element name="title" type="xsd:string"/>
+      <xsd:element name="title" type="xsd:ID"/>
       <xsd:element name="pages" type="xsd:int"/>
       <xsd:element name="category" type="lib:BookCategory">
 	 	<xsd:annotation>

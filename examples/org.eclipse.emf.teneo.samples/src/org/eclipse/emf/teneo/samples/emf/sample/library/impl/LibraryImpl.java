@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: LibraryImpl.java,v 1.3 2006/11/14 10:57:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -124,7 +124,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 */
 	public EList getWriters() {
 		if (writers == null) {
-			writers = new EObjectContainmentEList(Writer.class, this, LibraryPackage.LIBRARY__WRITERS);
+			writers = new EObjectContainmentEList.Resolving(Writer.class, this, LibraryPackage.LIBRARY__WRITERS);
 		}
 		return writers;
 	}
@@ -136,7 +136,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 */
 	public EList getBooks() {
 		if (books == null) {
-			books = new EObjectContainmentEList(Book.class, this, LibraryPackage.LIBRARY__BOOKS);
+			books = new EObjectContainmentEList.Resolving(Book.class, this, LibraryPackage.LIBRARY__BOOKS);
 		}
 		return books;
 	}

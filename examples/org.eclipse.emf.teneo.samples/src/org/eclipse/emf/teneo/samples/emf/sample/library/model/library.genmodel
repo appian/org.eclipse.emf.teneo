@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Library" rootExtendsInterface="org.eclipse.emf.teneo.samples.emf.sample.library.SerializableEObject"
-    importerID="org.eclipse.emf.importer.ecore">
+    importerID="org.eclipse.emf.importer.ecore" containmentProxies="true">
   <foreignModel>library.ecore</foreignModel>
   <genPackages prefix="Library" basePackage="org.eclipse.emf.teneo.samples.emf.sample"
       resource="XML" disposableProviderFactory="true" ecorePackage="library.ecore#/">
