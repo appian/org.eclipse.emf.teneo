@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySessionControllerAction.java,v 1.1 2006/10/04 14:09:51 mtaal Exp $
+ * $Id: LibrarySessionControllerAction.java,v 1.2 2006/11/14 10:58:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibrarySessionControllerAction extends AbstractTestAction {
 	/**
@@ -89,8 +89,6 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 				book2.setPages(500);
 				book2.setTitle("The Hobbit");
 				book2.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
-				res1.getContents().add(book);
-				res1.getContents().add(book2);
 				
 				final Library library = factory.createLibrary();
 				library.setName("Science Fiction");
@@ -99,6 +97,10 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 				library.getWriters().add(writer);
 
 				res2.getContents().add(library);
+
+				res1.getContents().add(book);
+				res1.getContents().add(book2);
+
 				sc.getSession().beginTransaction();
 				res1.save(null);
 				res2.save(null);

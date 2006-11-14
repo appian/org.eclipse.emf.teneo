@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.21 2006/11/13 19:55:30 mtaal Exp $
+ * $Id: AllTests.java,v 1.22 2006/11/14 10:58:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public class AllTests {
 
@@ -52,7 +52,9 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed.instance()
 				.getConfigurations());
 	//	suite.addTestSuite(YahooAction.class);
-		
+
+		suite.addTestSuite(LibraryResourceAction.class);
+		suite.addTestSuite(LibrarySessionControllerAction.class);
 		suite.addTestSuite(LibraryNonResolvingAction.class);
 
 		suite.addTestSuite(ExtendedPO2Test.class);
@@ -64,8 +66,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryJoinTableNamingAction.class);
 
 		suite.addTestSuite(LibraryAction.class);
-
-		suite.addTestSuite(LibrarySessionControllerAction.class);
 
 		suite.addTestSuite(DynamicAction.class);
 
@@ -88,7 +88,6 @@ public class AllTests {
 
 		suite.addTestSuite(LibraryQualifyActionHB.class);
 		suite.addTestSuite(LibraryGlobalEagerAction.class);
-		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(PlayAction.class);
 		suite.addTestSuite(PrimerPOAction.class);
 		suite.addTestSuite(ProductAction.class);
