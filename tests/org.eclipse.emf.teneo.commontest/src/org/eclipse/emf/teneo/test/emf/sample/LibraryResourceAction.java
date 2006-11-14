@@ -11,14 +11,22 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.4 2006/09/21 00:57:18 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.5 2006/11/14 10:56:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Collections;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
@@ -34,7 +42,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	/**
@@ -96,6 +104,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 			// walk through the structure starting from the library
 			{
 				Resource res = store.getResource();
+				res.setTrackingModification(true);
 				res.load(null);
 
 				Library lib = (Library) res.getContents().get(0);
@@ -127,12 +136,13 @@ public class LibraryResourceAction extends AbstractTestAction {
 				final Writer george = factory.createWriter();
 				george.setName("George Orwell");
 				orwellsBook.setAuthor(george);
-
+				
 				// and put george in our library
 				lib.getWriters().add(george);
-
+				
 				assertEquals(2, tolkien.getBooks().size());
-
+				assertEquals(3, lib.getBooks().size());
+				
 				// and save it all
 				res.save(null);
 				res.save(null);
@@ -143,6 +153,25 @@ public class LibraryResourceAction extends AbstractTestAction {
 				res.unload();
 			}
 
+//			{
+//				
+//				XMLResourceImpl xi = new XMLResourceImpl();
+//				xi.getContents().add(tolkien);
+//				FileOutputStream fos = new FileOutputStream("/home/mtaal/mytmp/test.xml");
+//				xi.save(fos, Collections.EMPTY_MAP);
+//				System.err.println(EcoreUtil.getID(george));
+//				System.err.println(EcoreUtil.getID(orwellsBook));
+//
+//				ResourceSet rs = new ResourceSetImpl();
+//				Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xml", new XMLResourceFactoryImpl());
+//
+//				Resource xi = rs.createResource(URI.createFileURI("/home/mtaal/mytmp/test.xml"));
+//				//xi.load(fis, Collections.EMPTY_MAP);
+//				xi.load(Collections.EMPTY_MAP);
+//				Writer wt = (Writer)xi.getContents().get(0);
+//				System.err.println(((Book)wt.getBooks().get(0)).getTitle());
+//			}
+			
 			// TODO put in JPOX specific test code
 			// // now retrieve the writer using a simple query
 			// if (store instanceof JPOXTestStore)
