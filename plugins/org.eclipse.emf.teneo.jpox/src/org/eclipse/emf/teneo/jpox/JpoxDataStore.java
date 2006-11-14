@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.7 2006/10/26 17:34:47 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.8 2006/11/14 10:33:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -72,7 +72,6 @@ import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 import org.eclipse.emf.teneo.jpox.mapping.ENumMapping;
 import org.eclipse.emf.teneo.jpox.mapping.EObjectMapping;
 import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
-import org.eclipse.emf.teneo.jpox.resource.JPOXResourceDAO;
 import org.eclipse.emf.teneo.type.FeatureMapEntry;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -100,7 +99,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $ $Date: 2006/10/26 17:34:47 $
+ * @version $Revision: 1.8 $ $Date: 2006/11/14 10:33:57 $
  */
 
 public class JpoxDataStore {
@@ -403,7 +402,7 @@ public class JpoxDataStore {
 			importResource = new XMIResourceImpl();
 		}
 
-		final JPOXResource jpoxResource = new JPOXResourceDAO(URI.createFileURI("." + name));
+		final JPOXResource jpoxResource = new JPOXResource(URI.createFileURI("." + name));
 
 		try {
 			importResource.load(is, Collections.EMPTY_MAP);
@@ -416,7 +415,7 @@ public class JpoxDataStore {
 
 	/** Export the complete content of the EMF Data Store to an outputstream */
 	public void exportDataStore(OutputStream os, int exportFormat, String encoding) {
-		final JPOXResource jpoxResource = new JPOXResourceDAO(URI.createFileURI("." + name));
+		final JPOXResource jpoxResource = new JPOXResource(URI.createFileURI("." + name));
 		jpoxResource.load(Collections.EMPTY_MAP);
 
 		try {

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXResourceFactory.java,v 1.1 2006/09/21 00:56:35 mtaal Exp $
+ * $Id: JPOXResourceFactory.java,v 1.2 2006/11/14 10:33:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.resource;
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.resource.Resource;
  * Creates jpox resources based on an uri.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/21 00:56:35 $
+ * @version $Revision: 1.2 $ $Date: 2006/11/14 10:33:57 $
  */
 
 public class JPOXResourceFactory implements Resource.Factory {
@@ -35,6 +35,6 @@ public class JPOXResourceFactory implements Resource.Factory {
 	 * @see org.eclipse.emf.ecore.resource.Resource.Factory#createResource(org.eclipse.emf.common.util.URI)
 	 */
 	public Resource createResource(URI uri) {
-		return new JPOXResourceDAO(uri);
+		return new JPOXResource(uri);
 	}
 }
