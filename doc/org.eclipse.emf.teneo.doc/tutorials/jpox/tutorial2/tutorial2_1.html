@@ -303,7 +303,7 @@ public void start(BundleContext context) throws Exception
     	jpoxDataStore.initialize();
 
 	// this is required to force the editor to retrieve the correct resource
-	Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("library", new JPOXResourceDAOFactory());
+	Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("library", new JPOXResourceFactory());
 
 	super.start(context);
 }
@@ -334,7 +334,7 @@ public void start(BundleContext context) throws Exception
 			
 <p>For this tutorial an EMF JPOX resource factory has to be specified. This is done
 				by setting the library element of the org.eclipse.emf.ecore.extension_parser extension
-				point to: org.eclipse.emf.teneo.jpox.resource.JPOXResourceDAOFactory (see image below).</p>
+				point to: org.eclipse.emf.teneo.jpox.resource.JPOXResourceFactory (see image below).</p>
 			
 <p>
 			

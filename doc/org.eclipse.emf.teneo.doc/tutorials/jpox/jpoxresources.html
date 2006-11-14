@@ -350,8 +350,8 @@
 	PMController.registerPMController("testsc", sc);
 
 	// create an uri using the PMController name
-	URI uri1 = URI.createURI("hibernate://?" + JPOXResource.SESSION_CONTROLLER_PARAM + "=testsc&amp;query1=select from " + BookImpl.class.getName());
-	URI uri2 = URI.createURI("hibernate://?" + JPOXResource.SESSION_CONTROLLER_PARAM + "=testsc&amp;query1=select from " + WriterImpl.class.getName());
+	URI uri1 = URI.createURI("jpox://?" + JPOXResource.SESSION_CONTROLLER_PARAM + "=testsc&amp;query1=select from " + BookImpl.class.getName());
+	URI uri2 = URI.createURI("jpox://?" + JPOXResource.SESSION_CONTROLLER_PARAM + "=testsc&amp;query1=select from " + WriterImpl.class.getName());
 	// resourceSet has to be set before somehow..
 	final Resource res1 = resourceSet.createResource(uri1);
 	final Resource res2 = resourceSet.createResource(uri2);
@@ -380,7 +380,7 @@
 		loads A1 then A0 is also loaded automatically and A0 and A1 are in the same resource. If then a second resource loads
 		A2 then A2 will be placed in the first resource because its container is located there. Overall this results in 
 		unpredictable behavior. So: to correctly work with multiple resources the containment relations should be set to
-		resolving = true.</strong>
+		resolving = true, in addition the genmodel property Containment Proxy needs to be set to true.</strong>
 </p>
 		
 </div>
@@ -402,9 +402,11 @@
 <h3>Validation</h3>
       
       
-<p>The JPOX Resource automatically validates its content (the EObjects) when the
-		  resource is saved. This validation makes use of the EMF validation framework through calls to
-		  the Diagnostician.INSTANCE.validate method. Validation fails when a ERROR level Diagnostic is
+<p>To enable validation on a JPOX Resource you need to call setTrackingModification(true) on the resource.
+      The JPOX Resource then validates its content (the EObjects) when the
+		  resource is saved. This validation makes use of the org.eclipse.emf.teneo.resource.NonLoadingDiagnostician.
+		  This is a subclass of the standard EMF Diagnostician which does not load unloaded lazy lists. Only lists with 
+		  minOccurs&gt;0 are loaded during validation. Validation fails when a ERROR level Diagnostic is
 		  encountered. In this case the resource save method will throw an org.eclipse.emf.teneo.StoreValidationException. 
 		  This exception has a method to retrieve all Diagnostics.</p>
 	
@@ -434,7 +436,7 @@
 <div class="h4">
 <h4>Extend the resource implementation with a Java subclass</h4>
 <p>It is possible to customize the load behavior by overriding the loadFromStore method
-				in JPOXResourceDAO. This method gets a PersistenceManager and should return a list of  
+				in JPOXResource. This method gets a PersistenceManager and should return a list of  
 				objects read from the JDO/JPOX datastore.
 			</p>
 </div>
@@ -442,7 +444,7 @@
 <a name="N10094"></a><a name="Set+specific+queries+to+load+the+resource"></a>
 <div class="h4">
 <h4>Set specific queries to load the resource</h4>
-<p>There are two ways to pass specific queries to the JPOXResourceDAO. The first method
+<p>There are two ways to pass specific queries to the JPOXResource. The first method
 				is using uri parameters:</p>
 <p>
 <em>jpox://?dsname=mystore&amp;query1=SELECT FROM org.eclipse.example.library.impl.WriterImpl</em>

@@ -250,7 +250,7 @@
 		
 <p>The EMF Resource concept is very different from a relational/querying approach. In this part of the 
 			tutorial it is described how objects can be loaded, updated and saved using the EMF JPOX resource
-			implementations (the org.eclipse.emf.teneo.jpox.resource.JPOXResourceDAO.</p>
+			implementations (the org.eclipse.emf.teneo.jpox.resource.JPOXResource.</p>
 		
 <p>For more information on the EMF JPOX resource <a href="../jpoxresources.html">see</a>.</p>
 		
@@ -260,13 +260,13 @@
 			
 			
 <p>An EMF resource is retrieved using a specific URL. The protocol of the URI
-			is <em>jpox</em>. In addition the URI has to contain the JPOXResourceDAO.DS_NAME_PARAM parameter. 
+			is <em>jpox</em>. In addition the URI has to contain the JPOXResource.DS_NAME_PARAM parameter. 
 			This parameter should be set to the name of the JpoxDataStore 
 				created through the JpoxHelper.INSTANCE.createRegisterDataStore call. See 
 				<a href="tutorial1_2.html">step 2 of this tutorial</a>.</p>
 			
 <pre class="code">
-String uriStr = "jpox://?" + JPOXResourceDAO.DS_NAME_PARAM + "=MyPMF";
+String uriStr = "jpox://?" + JPOXResource.DS_NAME_PARAM + "=MyPMF";
 final URI uri = URI.createURI(uriStr);
 ResourceSet resourceSet = new ResourceSetImpl();
 final Resource res = resourceSet.createResource(uri);
@@ -339,7 +339,7 @@ res.getContents().add(libNew);
 <h3>Save the resource</h3>
 			
 			
-<p>Save the resource. The JPOXResourceDAO handles things like transactions.</p>
+<p>Save the resource. The JPOXResource handles things like transactions.</p>
 			
 <pre class="code">
 res.save(Collections.EMPTY_MAP);

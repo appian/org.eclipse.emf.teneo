@@ -332,9 +332,11 @@
 <h3>Validation</h3>
       
       
-<p>The Hibernate Resource automatically validates its content (the EObjects) when the
-		  resource is saved. This validation makes use of the EMF validation framework throug calls to
-		  the Diagnostician.INSTANCE.validate method. Validation fails when a ERROR level Diagnostic is
+<p>To enable validation on a Hibernate Resource you need to call setTrackingModification(true) on the resource.
+      The Hibernate Resource then validates its content (the EObjects) when the
+		  resource is saved. This validation makes use of the org.eclipse.emf.teneo.resource.NonLoadingDiagnostician.
+		  This is a subclass of the standard EMF Diagnostician which does not load unloaded lazy lists. Only lists with 
+		  minOccurs&gt;0 are loaded during validation. Validation fails when a ERROR level Diagnostic is
 		  encountered. In this case the resource save method will throw a org.eclipse.emf.teneo.StoreValidationException. 
 		  This exception has a method to retrieve all Diagnostics.</p>
 	
@@ -446,7 +448,7 @@
 		loads A1 then A0 is also loaded automatically and A0 and A1 are in the same resource. If then a second resource loads
 		A2 then A2 will be placed in the first resource because its container is located there. Overall this results in 
 		unpredictable behavior. So: to correctly work with multiple resources the containment relations should be set to
-		resolving = true.</strong>
+		resolving = true, in addition the genmodel property Containment Proxy needs to be set to true.</strong>
 </p>
 		
 </div>

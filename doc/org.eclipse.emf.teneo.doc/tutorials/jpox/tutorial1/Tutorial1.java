@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Tutorial1.java,v 1.5 2006/11/13 21:55:11 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.6 2006/11/14 10:57:40 mtaal Exp $
  */
 
 package jpoxtutorial;
@@ -43,14 +43,14 @@ import org.eclipse.example.library.impl.LibraryImpl;
 import org.eclipse.example.library.impl.WriterImpl;
 import org.eclipse.emf.teneo.jpox.JpoxDataStore;
 import org.eclipse.emf.teneo.jpox.JpoxHelper;
-import org.eclipse.emf.teneo.jpox.resource.JPOXResourceDAO;
+import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
 import org.jpox.PMFConfiguration;
 
 /**
  * Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class Tutorial1 {
 
@@ -200,7 +200,7 @@ public class Tutorial1 {
 		pm.close();
 
 		try {
-			String uriStr = "jpox://?" + JPOXResourceDAO.DS_NAME_PARAM + "=MyPMF";
+			String uriStr = "jpox://?" + JPOXResource.DS_NAME_PARAM + "=MyPMF";
 			final URI uri = URI.createURI(uriStr);
 			ResourceSet resourceSet = new ResourceSetImpl();
 			final Resource res = resourceSet.createResource(uri);
