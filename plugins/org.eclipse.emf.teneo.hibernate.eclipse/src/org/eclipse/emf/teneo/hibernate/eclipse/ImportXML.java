@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ImportXML.java,v 1.1 2006/07/08 15:04:38 mtaal Exp $
+ * $Id: ImportXML.java,v 1.2 2006/11/15 17:17:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.eclipse;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.hibernate.HbUtil;
  * Performs the import xml action
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class ImportXML extends StoreImportXML {
@@ -46,9 +46,9 @@ public class ImportXML extends StoreImportXML {
 				is.close();
 			}
 		} catch (IOException i) {
-			throw new StoreEclipseException("IO exception while importing xmi", i);
+			throw new StoreEclipseException("IO exception while importing xml", i);
 		} catch (CoreException c) {
-			throw new StoreEclipseException("Core exception while importing xmi", c);
+			throw new StoreEclipseException("Core exception while importing xml", c);
 		}
 	}
 }

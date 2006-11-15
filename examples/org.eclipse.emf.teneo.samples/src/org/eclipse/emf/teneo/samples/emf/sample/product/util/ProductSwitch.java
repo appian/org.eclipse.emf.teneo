@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductSwitch.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: ProductSwitch.java,v 1.3 2006/11/15 17:18:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.util;
 
@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.sample.product.*;
+
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductType;
 import org.eclipse.emf.teneo.samples.emf.sample.product.SupplierType;
@@ -100,6 +102,12 @@ public class ProductSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ProductPackage.CLASSIFICATION_TYPE: {
+				ClassificationType classificationType = (ClassificationType)theEObject;
+				Object result = caseClassificationType(classificationType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -131,6 +139,21 @@ public class ProductSwitch {
 	 * @generated
 	 */
 	public Object caseSupplierType(SupplierType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Classification Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Classification Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseClassificationType(ClassificationType object) {
 		return null;
 	}
 

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAction.java,v 1.2 2006/09/29 12:30:28 mtaal Exp $
+ * $Id: EMapAction.java,v 1.3 2006/11/15 17:17:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class EMapAction extends AbstractTestAction {
 	/**
@@ -49,7 +49,7 @@ public class EMapAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	public void doAction(TestStore store) {
-		store.disableDrop();
+//		store.disableDrop();
 		{
 			store.beginTransaction();
 			store.store(createTestSet("prefix1"));

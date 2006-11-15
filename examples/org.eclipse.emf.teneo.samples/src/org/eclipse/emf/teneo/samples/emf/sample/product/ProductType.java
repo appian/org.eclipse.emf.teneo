@@ -2,9 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductType.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: ProductType.java,v 1.2 2006/11/15 17:18:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -21,6 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getSupplier <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getPrice <em>Price</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getCreatedOn <em>Created On</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getAnyOne <em>Any One</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getAnyList <em>Any List</em>}</li>
  * </ul>
  * </p>
  *
@@ -112,27 +116,27 @@ public interface ProductType extends EObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Supplier</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Supplier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Supplier</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Supplier</em>' containment reference.
+	 * @return the value of the '<em>Supplier</em>' reference.
 	 * @see #setSupplier(SupplierType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage#getProductType_Supplier()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='element' name='Supplier'"
 	 * @generated
 	 */
 	SupplierType getSupplier();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getSupplier <em>Supplier</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getSupplier <em>Supplier</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Supplier</em>' containment reference.
+	 * @param value the new value of the '<em>Supplier</em>' reference.
 	 * @see #getSupplier()
 	 * @generated
 	 */
@@ -218,5 +222,47 @@ public interface ProductType extends EObject {
 	 * @generated
 	 */
 	void setCreatedOn(Object value);
+
+	/**
+	 * Returns the value of the '<em><b>Any One</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Any One</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Any One</em>' reference.
+	 * @see #setAnyOne(EObject)
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage#getProductType_AnyOne()
+	 * @model
+	 * @generated
+	 */
+	EObject getAnyOne();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getAnyOne <em>Any One</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Any One</em>' reference.
+	 * @see #getAnyOne()
+	 * @generated
+	 */
+	void setAnyOne(EObject value);
+
+	/**
+	 * Returns the value of the '<em><b>Any List</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Any List</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Any List</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage#getProductType_AnyList()
+	 * @model type="org.eclipse.emf.ecore.EObject" containment="true"
+	 * @generated
+	 */
+	EList getAnyList();
 
 } // ProductType

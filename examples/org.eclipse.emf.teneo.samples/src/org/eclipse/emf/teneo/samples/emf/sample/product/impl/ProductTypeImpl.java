@@ -2,16 +2,26 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductTypeImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: ProductTypeImpl.java,v 1.3 2006/11/15 17:18:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductType;
 import org.eclipse.emf.teneo.samples.emf.sample.product.SupplierType;
@@ -28,6 +38,8 @@ import org.eclipse.emf.teneo.samples.emf.sample.product.SupplierType;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.product.impl.ProductTypeImpl#getSupplier <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.product.impl.ProductTypeImpl#getPrice <em>Price</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.product.impl.ProductTypeImpl#getCreatedOn <em>Created On</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.product.impl.ProductTypeImpl#getAnyOne <em>Any One</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.product.impl.ProductTypeImpl#getAnyList <em>Any List</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,7 +96,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSupplier() <em>Supplier</em>}' containment reference.
+	 * The cached value of the '{@link #getSupplier() <em>Supplier</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSupplier()
@@ -141,6 +153,26 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * @ordered
 	 */
 	protected Object createdOn = CREATED_ON_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getAnyOne() <em>Any One</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnyOne()
+	 * @generated
+	 * @ordered
+	 */
+	protected EObject anyOne = null;
+
+	/**
+	 * The cached value of the '{@link #getAnyList() <em>Any List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnyList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList anyList = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -241,33 +273,11 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSupplier(SupplierType newSupplier, NotificationChain msgs) {
+	public void setSupplier(SupplierType newSupplier) {
 		SupplierType oldSupplier = supplier;
 		supplier = newSupplier;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_TYPE__SUPPLIER, oldSupplier, newSupplier);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSupplier(SupplierType newSupplier) {
-		if (newSupplier != supplier) {
-			NotificationChain msgs = null;
-			if (supplier != null)
-				msgs = ((InternalEObject)supplier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProductPackage.PRODUCT_TYPE__SUPPLIER, null, msgs);
-			if (newSupplier != null)
-				msgs = ((InternalEObject)newSupplier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProductPackage.PRODUCT_TYPE__SUPPLIER, null, msgs);
-			msgs = basicSetSupplier(newSupplier, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_TYPE__SUPPLIER, newSupplier, newSupplier));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_TYPE__SUPPLIER, oldSupplier, supplier));
 	}
 
 	/**
@@ -342,10 +352,60 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EObject getAnyOne() {
+		if (anyOne != null && anyOne.eIsProxy()) {
+			InternalEObject oldAnyOne = (InternalEObject)anyOne;
+			anyOne = eResolveProxy(oldAnyOne);
+			if (anyOne != oldAnyOne) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProductPackage.PRODUCT_TYPE__ANY_ONE, oldAnyOne, anyOne));
+			}
+		}
+		return anyOne;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject basicGetAnyOne() {
+		return anyOne;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAnyOne(EObject newAnyOne) {
+		EObject oldAnyOne = anyOne;
+		anyOne = newAnyOne;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_TYPE__ANY_ONE, oldAnyOne, anyOne));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getAnyList() {
+		if (anyList == null) {
+			anyList = new EObjectContainmentEList(EObject.class, this, ProductPackage.PRODUCT_TYPE__ANY_LIST);
+		}
+		return anyList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_TYPE__SUPPLIER:
-				return basicSetSupplier(null, msgs);
+			case ProductPackage.PRODUCT_TYPE__ANY_LIST:
+				return ((InternalEList)getAnyList()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -367,6 +427,11 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 				return new Double(getPrice());
 			case ProductPackage.PRODUCT_TYPE__CREATED_ON:
 				return getCreatedOn();
+			case ProductPackage.PRODUCT_TYPE__ANY_ONE:
+				if (resolve) return getAnyOne();
+				return basicGetAnyOne();
+			case ProductPackage.PRODUCT_TYPE__ANY_LIST:
+				return getAnyList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -392,6 +457,13 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 				return;
 			case ProductPackage.PRODUCT_TYPE__CREATED_ON:
 				setCreatedOn((Object)newValue);
+				return;
+			case ProductPackage.PRODUCT_TYPE__ANY_ONE:
+				setAnyOne((EObject)newValue);
+				return;
+			case ProductPackage.PRODUCT_TYPE__ANY_LIST:
+				getAnyList().clear();
+				getAnyList().addAll((Collection)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -419,6 +491,12 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 			case ProductPackage.PRODUCT_TYPE__CREATED_ON:
 				setCreatedOn(CREATED_ON_EDEFAULT);
 				return;
+			case ProductPackage.PRODUCT_TYPE__ANY_ONE:
+				setAnyOne((EObject)null);
+				return;
+			case ProductPackage.PRODUCT_TYPE__ANY_LIST:
+				getAnyList().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -440,6 +518,10 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 				return isSetPrice();
 			case ProductPackage.PRODUCT_TYPE__CREATED_ON:
 				return CREATED_ON_EDEFAULT == null ? createdOn != null : !CREATED_ON_EDEFAULT.equals(createdOn);
+			case ProductPackage.PRODUCT_TYPE__ANY_ONE:
+				return anyOne != null;
+			case ProductPackage.PRODUCT_TYPE__ANY_LIST:
+				return anyList != null && !anyList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

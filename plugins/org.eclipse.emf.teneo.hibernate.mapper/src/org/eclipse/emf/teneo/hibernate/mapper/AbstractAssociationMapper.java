@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.3 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.4 2006/11/15 17:17:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -61,6 +61,10 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		final String assocName = getHbmContext().getPropertyName(aReference.getAnnotatedEReference());
 		log.debug("addManyToOne " + assocName + "/" + referedTo);
 
+		if (isEObject(referedTo)) {
+			return getHbmContext().getCurrent().addElement("any").addAttribute("name", assocName).addAttribute(
+					"id-type", "long");
+		}
 		if (isReferedEntity) {
 			return getHbmContext().getCurrent().addElement("many-to-one").addAttribute("name", assocName).addAttribute(
 					"entity-name", referedTo);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.14 2006/11/13 14:53:08 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.15 2006/11/15 17:17:46 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
@@ -79,7 +80,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class DefaultAnnotator {
 
@@ -807,7 +808,9 @@ public class DefaultAnnotator {
 		}
 
 		// only use a jointable if the relation is non unique
-		if ((optionJoinTableForNonContainedAssociations && !eReference.isContainment()) || !otm.isUnique()) {
+		final boolean isEObject = StoreUtil.EOBJECT_ECLASS_URI.compareTo(otm.getTargetEntity()) == 0;
+		if (isEObject || // in case of eobject always a join table is required 
+				(optionJoinTableForNonContainedAssociations && !eReference.isContainment()) || !otm.isUnique()) {
 			JoinTable joinTable = aReference.getJoinTable();
 			if (joinTable == null) {
 				joinTable = aFactory.createJoinTable();
@@ -817,13 +820,13 @@ public class DefaultAnnotator {
 
 			// see remark in manytomany about naming of jointables
 			if (joinTable.getName() == null) {
-				if (optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
+				if (!isEObject && optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
 					final String jTableName = getEntityName(eReference.getEContainingClass())
 						+ "_" + getEntityName(eReference.getEReferenceType());
 					joinTable.setName(trunc(jTableName, false));
 				} else {
 					AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy +
-							" not supported", optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
+							" not supported", isEObject || optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
 					final String jTableName = getEntityName(eReference.getEContainingClass()) + "_"
 						+ eReference.getName();
 					joinTable.setName(trunc(jTableName, false));
@@ -1301,7 +1304,7 @@ public class DefaultAnnotator {
 		final PAnnotatedEClass aclass = annotatedModel.getPAnnotated(eclass);
 		if (aclass != null && aclass.getEntity() != null) {
 			return aclass.getEntity().getName();
-		} 
+		}
 		return StoreUtil.getEClassURI(eclass, optionQualifyEClass);
 	}
 

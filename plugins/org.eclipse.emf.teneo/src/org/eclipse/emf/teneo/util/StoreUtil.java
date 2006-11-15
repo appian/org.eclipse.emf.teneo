@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.6 2006/10/04 14:08:23 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.7 2006/11/15 17:17:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -56,11 +57,15 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class StoreUtil {
 
+	/** The EObject eclass */
+	public static EClass EOBJECT_ECLASS = (EClass)EcorePackage.eINSTANCE.getEClassifier("EObject");
+	public static String EOBJECT_ECLASS_URI = EcorePackage.eINSTANCE.getNsURI() + "/" + EOBJECT_ECLASS.getName();
+	
 	/** The logger */
 	private static Log log = LogFactory.getLog(StoreUtil.class);
 
@@ -94,6 +99,9 @@ public class StoreUtil {
 
 	/** Translates an ECLass to a string representation */
 	public static String getEClassURI(EClass eclass, String qualify) {
+		if (eclass == EOBJECT_ECLASS) {
+			return EOBJECT_ECLASS_URI;
+		}
 		if (qualify == null || qualify.compareTo(PersistenceOptions.QUALIFY_ENTITY_NAME_NO) == 0) {
 			return eclass.getName();
 		} else if (qualify.compareTo(PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX) == 0) {

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductFactory.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: ProductFactory.java,v 1.2 2006/11/15 17:18:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product;
 
@@ -42,6 +42,15 @@ public interface ProductFactory extends EFactory {
 	 * @generated
 	 */
 	SupplierType createSupplierType();
+
+	/**
+	 * Returns a new object of class '<em>Classification Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Classification Type</em>'.
+	 * @generated
+	 */
+	ClassificationType createClassificationType();
 
 	/**
 	 * Returns the package supported by this factory.

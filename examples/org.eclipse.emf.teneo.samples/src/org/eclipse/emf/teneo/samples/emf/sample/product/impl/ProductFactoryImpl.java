@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: ProductFactoryImpl.java,v 1.3 2006/11/15 17:18:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.impl;
 
@@ -11,6 +11,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.sample.product.*;
+
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductType;
@@ -61,6 +63,7 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 		switch (eClass.getClassifierID()) {
 			case ProductPackage.PRODUCT_TYPE: return createProductType();
 			case ProductPackage.SUPPLIER_TYPE: return createSupplierType();
+			case ProductPackage.CLASSIFICATION_TYPE: return createClassificationType();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -84,6 +87,16 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	public SupplierType createSupplierType() {
 		SupplierTypeImpl supplierType = new SupplierTypeImpl();
 		return supplierType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassificationType createClassificationType() {
+		ClassificationTypeImpl classificationType = new ClassificationTypeImpl();
+		return classificationType;
 	}
 
 	/**

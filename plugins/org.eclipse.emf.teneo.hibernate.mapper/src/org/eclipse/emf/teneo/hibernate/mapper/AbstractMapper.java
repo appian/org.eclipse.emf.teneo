@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.4 2006/11/13 19:55:09 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.5 2006/11/15 17:17:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -28,10 +28,12 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Base class for all mapping classes. Provides access to the hbmcontext.
@@ -64,12 +66,58 @@ abstract class AbstractMapper {
 		return hbmContext;
 	}
 
+	/** Handles the type or typedef annotations */
+	protected void setType(PAnnotatedEAttribute paAttribute, Element propElement) {
+
+		// handle the type annotation
+		final HbAnnotatedEAttribute hea = (HbAnnotatedEAttribute) paAttribute;
+		final EDataType ed = (EDataType) hea.getAnnotatedEAttribute().getEType();
+		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) hea.getPaModel().getPAnnotated(ed);
+
+		final String name;
+		final List params;
+		if (hea.getHbType() != null) {
+			name = hea.getHbType().getType();
+			params = hea.getHbType().getParameters();
+		} else if (hed != null && hed.getHbTypeDef() != null) {
+			name = hed.getHbTypeDef().getName();
+			params = null;
+		} else {
+			name = null;
+			params = null;
+		}
+		if (name != null) {
+			if (params == null || params.isEmpty()) {
+				// simple
+				propElement.addAttribute("type", name);
+			} else {
+				final Element typeElement = propElement.addElement("type").addAttribute("name", name);
+				for (Iterator it = params.iterator(); it.hasNext();) {
+					final Parameter param = (Parameter) it.next();
+					typeElement.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
+				}
+			}
+		} else {
+			final String hType = hbType(paAttribute);
+			if (hType != null) {
+				propElement.addAttribute("type", hType);
+			} else {
+				final Element typeElement = propElement.addElement("type").addAttribute("name",
+						hbmContext.getDefaultUserType());
+				typeElement.addElement("param").addAttribute("name", HbMapperConstants.EDATATYPE_PARAM).addText(
+						paAttribute.getAnnotatedEAttribute().getEAttributeType().getName());
+				typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
+						paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
+			}
+		}
+	}
+
 	/**
 	 * @return Returns the hibernate name for the given Ecore data type.
 	 * @throws MappingException
 	 *             if no corresponding hb type is defined.
 	 */
-	protected String hbType(PAnnotatedEAttribute paAttribute) {
+	private String hbType(PAnnotatedEAttribute paAttribute) {
 		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
 		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) paAttribute.getPaModel().getPAnnotated(
 				eAttribute.getEAttributeType());
@@ -82,13 +130,13 @@ abstract class AbstractMapper {
 			return eDataType.getInstanceClassName();
 		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType)) {
 			return "java.util.Date";
-		} else if (eDataType.getInstanceClass() == Object.class) {
-			return "serializable"; // MT: this is sometimes the best/robust approach
+		} else if (eDataType.getInstanceClass() != null && eDataType.getInstanceClass() == Object.class) {
+			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
 		} else if (eDataType.getInstanceClass() != null) {
 			return eDataType.getInstanceClassName();
 		} else {
-			return "serializable"; // MT: this is sometimes the best/robust approach
-			// throw new MappingException("Do not know how to handle type " + eDataType);
+			// all edatatypes are translatable to a string
+			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
 		}
 	}
 
@@ -135,7 +183,7 @@ abstract class AbstractMapper {
 				name = getHbmContext().trunc(defaultName);
 			}
 			final Column col = PannotationFactory.eINSTANCE.createColumn();
-			col.setName(name);
+			col.setName(hbmContext.trunc(name));
 			col.setNullable(isNullable);
 			columns.add(col);
 		}
@@ -143,6 +191,20 @@ abstract class AbstractMapper {
 			final Column column = (Column) it.next();
 			addColumn(propertyElement, defaultName, column, isNullable, setColumnAttributesInProperty);
 		}
+	}
+
+	/** Adds anytype columns */
+	protected List getAnyTypeColumns(String featureName, boolean isNullable) {
+		final ArrayList result = new ArrayList();
+		final Column typeColumn = PannotationFactory.eINSTANCE.createColumn();
+		typeColumn.setName(hbmContext.trunc(featureName + "_type"));
+		typeColumn.setNullable(isNullable);
+		result.add(typeColumn);
+		final Column idColumn = PannotationFactory.eINSTANCE.createColumn();
+		idColumn.setName(hbmContext.trunc(featureName + "_id"));
+		idColumn.setNullable(isNullable);
+		result.add(idColumn);
+		return result;
 	}
 
 	/**
@@ -226,5 +288,13 @@ abstract class AbstractMapper {
 				columnElement.addAttribute("unique-key", uc);
 			}
 		}
+	}
+
+	/** Returns true if the target is the general EObject type */
+	protected boolean isEObject(String typeName) {
+		if (typeName == null) {
+			return false;
+		}
+		return typeName.compareTo(StoreUtil.EOBJECT_ECLASS_URI) == 0;
 	}
 }

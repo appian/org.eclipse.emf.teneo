@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductAdapterFactory.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: ProductAdapterFactory.java,v 1.3 2006/11/15 17:18:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.util;
 
@@ -10,6 +10,8 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.sample.product.*;
+
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductType;
 import org.eclipse.emf.teneo.samples.emf.sample.product.SupplierType;
@@ -75,6 +77,9 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 			public Object caseSupplierType(SupplierType object) {
 				return createSupplierTypeAdapter();
 			}
+			public Object caseClassificationType(ClassificationType object) {
+				return createClassificationTypeAdapter();
+			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -118,6 +123,20 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSupplierTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ClassificationType <em>Classification Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.ClassificationType
+	 * @generated
+	 */
+	public Adapter createClassificationTypeAdapter() {
 		return null;
 	}
 

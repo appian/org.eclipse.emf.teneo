@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.10 2006/11/07 10:22:54 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.11 2006/11/15 17:17:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -83,7 +83,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class HbDataStore {
@@ -540,7 +540,7 @@ public class HbDataStore {
 			hibResource.getContents().addAll(importResource.getContents());
 			hibResource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
-			throw new HbMapperException("Exception when exporting " + name, e);
+			throw new HbMapperException("Exception when importing " + name, e);
 		}
 	}
 

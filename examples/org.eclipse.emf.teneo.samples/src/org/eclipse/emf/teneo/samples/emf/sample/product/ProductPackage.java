@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductPackage.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: ProductPackage.java,v 1.2 2006/11/15 17:18:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product;
 
@@ -88,7 +88,7 @@ public interface ProductPackage extends EPackage {
 	int PRODUCT_TYPE__ID = 1;
 
 	/**
-	 * The feature id for the '<em><b>Supplier</b></em>' containment reference.
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -115,13 +115,31 @@ public interface ProductPackage extends EPackage {
 	int PRODUCT_TYPE__CREATED_ON = 4;
 
 	/**
+	 * The feature id for the '<em><b>Any One</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_TYPE__ANY_ONE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Any List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_TYPE__ANY_LIST = 6;
+
+	/**
 	 * The number of structural features of the '<em>Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_TYPE_FEATURE_COUNT = 5;
+	int PRODUCT_TYPE_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.sample.product.impl.SupplierTypeImpl <em>Supplier Type</em>}' class.
@@ -162,6 +180,35 @@ public interface ProductPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.sample.product.impl.ClassificationTypeImpl <em>Classification Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.impl.ClassificationTypeImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.impl.ProductPackageImpl#getClassificationType()
+	 * @generated
+	 */
+	int CLASSIFICATION_TYPE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_TYPE__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Classification Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_TYPE_FEATURE_COUNT = 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,10 +241,10 @@ public interface ProductPackage extends EPackage {
 	EAttribute getProductType_Id();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getSupplier <em>Supplier</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getSupplier <em>Supplier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Supplier</em>'.
+	 * @return the meta object for the reference '<em>Supplier</em>'.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getSupplier()
 	 * @see #getProductType()
 	 * @generated
@@ -225,6 +272,28 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProductType_CreatedOn();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getAnyOne <em>Any One</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Any One</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getAnyOne()
+	 * @see #getProductType()
+	 * @generated
+	 */
+	EReference getProductType_AnyOne();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getAnyList <em>Any List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Any List</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.ProductType#getAnyList()
+	 * @see #getProductType()
+	 * @generated
+	 */
+	EReference getProductType_AnyList();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.sample.product.SupplierType <em>Supplier Type</em>}'.
@@ -257,6 +326,27 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSupplierType_NoOfEmployees();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ClassificationType <em>Classification Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Classification Type</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.ClassificationType
+	 * @generated
+	 */
+	EClass getClassificationType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.sample.product.ClassificationType#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.ClassificationType#getName()
+	 * @see #getClassificationType()
+	 * @generated
+	 */
+	EAttribute getClassificationType_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -307,7 +397,7 @@ public interface ProductPackage extends EPackage {
 		EAttribute PRODUCT_TYPE__ID = eINSTANCE.getProductType_Id();
 
 		/**
-		 * The meta object literal for the '<em><b>Supplier</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Supplier</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -329,6 +419,22 @@ public interface ProductPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PRODUCT_TYPE__CREATED_ON = eINSTANCE.getProductType_CreatedOn();
+
+		/**
+		 * The meta object literal for the '<em><b>Any One</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_TYPE__ANY_ONE = eINSTANCE.getProductType_AnyOne();
+
+		/**
+		 * The meta object literal for the '<em><b>Any List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_TYPE__ANY_LIST = eINSTANCE.getProductType_AnyList();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.product.impl.SupplierTypeImpl <em>Supplier Type</em>}' class.
@@ -355,6 +461,24 @@ public interface ProductPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SUPPLIER_TYPE__NO_OF_EMPLOYEES = eINSTANCE.getSupplierType_NoOfEmployees();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.product.impl.ClassificationTypeImpl <em>Classification Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.product.impl.ClassificationTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.product.impl.ProductPackageImpl#getClassificationType()
+		 * @generated
+		 */
+		EClass CLASSIFICATION_TYPE = eINSTANCE.getClassificationType();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASSIFICATION_TYPE__NAME = eINSTANCE.getClassificationType_Name();
 
 	}
 

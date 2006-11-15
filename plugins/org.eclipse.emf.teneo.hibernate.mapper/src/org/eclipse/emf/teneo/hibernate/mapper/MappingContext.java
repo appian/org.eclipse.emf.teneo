@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.4 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: MappingContext.java,v 1.5 2006/11/15 17:17:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -449,5 +449,15 @@ public class MappingContext extends AbstractProcessingContext {
 	/** Returns the enum user type integer name for the dynamic case */
 	public String getDynamicEnumIntegerUserType() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.DynamicENumUserIntegerType";
+	}
+
+	/** Return the default user type */
+	public String getDefaultUserType() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
+	}
+
+	/** Returns the default any type */
+	public String getAnytype() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.AnyEObjectType";
 	}
 }

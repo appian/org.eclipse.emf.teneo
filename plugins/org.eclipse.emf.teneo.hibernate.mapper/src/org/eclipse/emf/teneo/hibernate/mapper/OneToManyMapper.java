@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.3 2006/11/15 17:17:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,6 +24,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -84,8 +85,8 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		}
 
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
-
-		final EClass refType = hbReference.getAnnotatedEReference().getEReferenceType();
+		final EReference eref = hbReference.getAnnotatedEReference();
+		final EClass refType = eref.getEReferenceType();
 
 		// TODO add isUnique on interface
 		// TODO request EMF team to deal correctly with unique attribute on EReferences
@@ -100,7 +101,6 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		final Element keyElement = collElement.addElement("key");
 
 		// TODO: throw error if both jointable and joincolumns have been set
-		// MT: below has been added
 		final List jcs = paReference.getJoinColumns() == null ? new ArrayList() : (List) paReference.getJoinColumns();
 		final JoinTable jt = paReference.getJoinTable();
 		if (jt != null) {
@@ -145,7 +145,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		// hibernate supports uni otm without join table.
 		if (hbReference.getEmbedded() != null) {
 			addCompositeElement(collElement, targetName, hbReference);
-		} else if (jt != null) {
+		} else if (!isEObject(targetName) && jt != null) {
 			// A m2m forces a join table, note that isunique does not completely follow the semantics of emf, unique on
 			// an otm means that an element can only occur once in the table, if unique is false then you in effect have
 			// a
@@ -154,7 +154,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 			// To force a jointable on a real otm a jointable annotation should be specified.
 			addManyToMany(collElement, targetName, !isEasyEMFGenerated, inverseJoinColumns, otm.isUnique());
 		} else {
-			addOneToMany(collElement, targetName, !isEasyEMFGenerated);
+			addOneToMany(collElement, eref.getName(), targetName, !isEasyEMFGenerated);
 		}
 	}
 
@@ -169,8 +169,8 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		// final Element collElement = addCollectionElement(paReference.getAnnotatedElement().getName(),
 		// paReference.isIndexed());
 		final Element collElement = addCollectionElement(paReference);
-
-		final EClass refType = paReference.getAnnotatedEReference().getEReferenceType();
+		final EReference eref = paReference.getAnnotatedEReference();
+		final EClass refType = eref.getEReferenceType();
 
 		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
 			addCacheElement(collElement, ((HbAnnotatedEReference) paReference).getHbCache());
@@ -203,7 +203,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		if (isEasyEMFGenerated) {
 			targetName = getHbmContext().getImpl(refType).getName();
 		} else if (targetName == null) {
-			targetName = getHbmContext().getEntityName(paReference.getAnnotatedEReference().getEReferenceType());
+			targetName = getHbmContext().getEntityName(eref.getEReferenceType());
 		}
 
 		if (paReference.getEmbedded() != null) {
@@ -213,7 +213,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 					.getInverseJoinColumns() : Collections.EMPTY_LIST;
 			addManyToMany(collElement, targetName, !isEasyEMFGenerated, inverseJoinColumns, otm.isUnique());
 		} else {
-			addOneToMany(collElement, targetName, !isEasyEMFGenerated);
+			addOneToMany(collElement, eref.getName(), targetName, !isEasyEMFGenerated);
 		}
 	}
 
@@ -223,8 +223,11 @@ class OneToManyMapper extends AbstractAssociationMapper {
 	 * @param collElement
 	 * @param targetEntity
 	 */
-	private void addOneToMany(Element collElement, String targetEntity, boolean isEntity) {
-		if (isEntity) {
+	private void addOneToMany(Element collElement, String featureName, String targetEntity, boolean isEntity) {
+		if (isEObject(targetEntity)) { // anytype
+			final Element any = collElement.addElement("many-to-any").addAttribute("id-type", "long");
+			addColumns(any, null, getAnyTypeColumns(featureName, false), false, false);
+		} else if (isEntity) {
 			collElement.addElement("one-to-many").addAttribute("entity-name", targetEntity);
 		} else {
 			collElement.addElement("one-to-many").addAttribute("class", targetEntity);

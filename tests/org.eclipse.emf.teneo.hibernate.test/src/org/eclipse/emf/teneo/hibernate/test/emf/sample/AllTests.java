@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.22 2006/11/14 10:58:22 mtaal Exp $
+ * $Id: AllTests.java,v 1.23 2006/11/15 17:17:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -34,6 +34,7 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryQualifyActionHB;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
+import org.eclipse.emf.teneo.test.emf.sample.MindMapAction;
 import org.eclipse.emf.teneo.test.emf.sample.PlayAction;
 import org.eclipse.emf.teneo.test.emf.sample.PrimerPOAction;
 import org.eclipse.emf.teneo.test.emf.sample.ProductAction;
@@ -44,15 +45,18 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed.instance()
 				.getConfigurations());
-	//	suite.addTestSuite(YahooAction.class);
+		suite.addTestSuite(ProductAction.class);
 
+		//	suite.addTestSuite(YahooAction.class);
+		suite.addTestSuite(MindMapAction.class);
+		
 		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibrarySessionControllerAction.class);
 		suite.addTestSuite(LibraryNonResolvingAction.class);
@@ -90,9 +94,9 @@ public class AllTests {
 		suite.addTestSuite(LibraryGlobalEagerAction.class);
 		suite.addTestSuite(PlayAction.class);
 		suite.addTestSuite(PrimerPOAction.class);
-		suite.addTestSuite(ProductAction.class);
 		suite.addTestSuite(WorkFlowAction.class);
 		suite.addTestSuite(ForumAction.class);
+
 		return suite;
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtLibraryAction.java,v 1.4 2006/08/22 22:24:51 mtaal Exp $
+ * $Id: ExtLibraryAction.java,v 1.5 2006/11/15 17:17:48 mtaal Exp $
  */
 
 package extlibrary;
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the extlibrary
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class ExtLibraryAction extends AbstractTestAction {
 	
@@ -38,7 +38,7 @@ public class ExtLibraryAction extends AbstractTestAction {
 
 	/** Test */
 	public void doAction(TestStore store) {
-		store.disableDrop();
+//		store.disableDrop();
 		
 		final ExtlibraryFactory factory = ExtlibraryFactory.eINSTANCE;
 		store.beginTransaction();

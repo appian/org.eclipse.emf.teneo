@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.3 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.4 2006/11/15 17:17:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -70,27 +70,34 @@ class OneToOneMapper extends AbstractAssociationMapper {
 		log.debug("Generating many to one mapping for onetoone" + paReference);
 
 		final OneToOne oto = paReference.getOneToOne();
+		final EReference eref = paReference.getAnnotatedEReference();
 		String specifiedName = oto.getTargetEntity();
 
-		final EClass referedTo = paReference.getAnnotatedEReference().getEReferenceType();
+		final EClass referedTo = eref.getEReferenceType();
 		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(referedTo);
 		if (isEasyEMFGenerated) {
 			specifiedName = getHbmContext().getImpl(referedTo).getName();
 		}
 
 		final Element associationElement = addManyToOne(paReference, (specifiedName != null ? specifiedName
-				: getHbmContext().getEntityName(paReference.getAnnotatedEReference().getEReferenceType())),
-				!isEasyEMFGenerated);
+				: getHbmContext().getEntityName(eref.getEReferenceType())), !isEasyEMFGenerated);
 
 		addCascadesForSingle(associationElement, oto.getCascade());
-		// todo default false until proxies are supported
-		associationElement.addAttribute("lazy", "false");
-		// addFetchType(associationElement, oto.getFetch());
-		final List joinColumns = getJoinColumns(paReference);
-		final boolean forceNullable = (oto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
-		addJoinColumns(associationElement, joinColumns, forceNullable);
 
-		associationElement.addAttribute("unique", "true");
+		if (isEObject(specifiedName)) {
+			addColumns(associationElement, eref.getName(), getAnyTypeColumns(eref.getName(), true), true, false);
+		} else {
+			if (getHbmContext().isEasyEMFGenerated(eref.getEContainingClass())) {
+				addFetchType(associationElement, oto.getFetch());
+			} else {
+				associationElement.addAttribute("lazy", "false");
+			}
+			final List joinColumns = getJoinColumns(paReference);
+			final boolean forceNullable = (oto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
+			addJoinColumns(associationElement, joinColumns, forceNullable);
+
+			associationElement.addAttribute("unique", "true");
+		}
 	}
 
 	/** Create hibernate one-to-one mapping */
@@ -115,12 +122,13 @@ class OneToOneMapper extends AbstractAssociationMapper {
 		final Element associationElement = addOneToOne(getHbmContext().getPropertyName(eref), targetName,
 				!isEasyEMFGenerated);
 
+		addCascadesForSingle(associationElement, oto.getCascade());
+
 		// add the other-side
 		if (otherSide != null) {
 			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
 		}
 
-		addCascadesForSingle(associationElement, oto.getCascade());
 		addFetchType(associationElement, oto.getFetch());
 		if (paReference.getPrimaryKeyJoinColumns().size() > 0) {
 			associationElement.addAttribute("constrained", "true");

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductPackageImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: ProductPackageImpl.java,v 1.3 2006/11/15 17:18:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.impl;
 
@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.emf.teneo.samples.emf.sample.product.ClassificationType;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductType;
@@ -37,6 +38,13 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * @generated
 	 */
 	private EClass supplierTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass classificationTypeEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -168,6 +176,24 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProductType_AnyOne() {
+		return (EReference)productTypeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProductType_AnyList() {
+		return (EReference)productTypeEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSupplierType() {
 		return supplierTypeEClass;
 	}
@@ -188,6 +214,24 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 */
 	public EAttribute getSupplierType_NoOfEmployees() {
 		return (EAttribute)supplierTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getClassificationType() {
+		return classificationTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassificationType_Name() {
+		return (EAttribute)classificationTypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -224,10 +268,15 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		createEReference(productTypeEClass, PRODUCT_TYPE__SUPPLIER);
 		createEAttribute(productTypeEClass, PRODUCT_TYPE__PRICE);
 		createEAttribute(productTypeEClass, PRODUCT_TYPE__CREATED_ON);
+		createEReference(productTypeEClass, PRODUCT_TYPE__ANY_ONE);
+		createEReference(productTypeEClass, PRODUCT_TYPE__ANY_LIST);
 
 		supplierTypeEClass = createEClass(SUPPLIER_TYPE);
 		createEAttribute(supplierTypeEClass, SUPPLIER_TYPE__NAME);
 		createEAttribute(supplierTypeEClass, SUPPLIER_TYPE__NO_OF_EMPLOYEES);
+
+		classificationTypeEClass = createEClass(CLASSIFICATION_TYPE);
+		createEAttribute(classificationTypeEClass, CLASSIFICATION_TYPE__NAME);
 	}
 
 	/**
@@ -262,13 +311,18 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		initEClass(productTypeEClass, ProductType.class, "ProductType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductType_Code(), theXMLTypePackage.getString(), "code", "c1", 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductType_Id(), theXMLTypePackage.getID(), "id", null, 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProductType_Supplier(), this.getSupplierType(), null, "supplier", null, 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProductType_Supplier(), this.getSupplierType(), null, "supplier", null, 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductType_Price(), theXMLTypePackage.getDouble(), "price", null, 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductType_CreatedOn(), theXMLTypePackage.getDate(), "createdOn", null, 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProductType_AnyOne(), ecorePackage.getEObject(), null, "AnyOne", null, 0, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProductType_AnyList(), ecorePackage.getEObject(), null, "AnyList", null, 0, -1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(supplierTypeEClass, SupplierType.class, "SupplierType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSupplierType_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, SupplierType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSupplierType_NoOfEmployees(), theXMLTypePackage.getInt(), "noOfEmployees", null, 1, 1, SupplierType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(classificationTypeEClass, ClassificationType.class, "ClassificationType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClassificationType_Name(), theXMLTypePackage.getString(), "name", "", 1, 1, ClassificationType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -276,6 +330,8 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -348,6 +404,36 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "NoOfEmployees"
+		   });		
+		addAnnotation
+		  (classificationTypeEClass, 
+		   source, 
+		   new String[] {
+			 "name", "ProductType",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getClassificationType_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "Code"
+		   });	
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";													
+		addAnnotation
+		  (getClassificationType_Name(), 
+		   source, 
+		   new String[] {
+			 "appInfo", "@Id"
 		   });
 	}
 

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.2 2006/11/12 00:08:19 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.3 2006/11/15 17:17:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -76,17 +76,24 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 
 		final Element associationElement = addManyToOne(paReference, targetName, !isEasyEMFGenerated);
 
-		// associationElement.addAttribute("access", "org.eclipse.emf.teneo.hibernate.mapping.EFeatureAccessor");
-
 		addCascadesForSingle(associationElement, mto.getCascade());
-		// todo default false until proxies are supported
-		associationElement.addAttribute("lazy", "false");
-		// addFetchType(associationElement, mto.getFetch());
 
-		addJoinColumns(associationElement, jcs, mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
+		if (isEObject(targetName)) {
+			final String erefName = paReference.getAnnotatedEReference().getName();
+			addColumns(associationElement, erefName, getAnyTypeColumns(erefName, true), true, false);
+		} else {
+			// todo default false until proxies are supported
+			if (getHbmContext().isEasyEMFGenerated(paReference.getAnnotatedEReference().getEContainingClass())) {
+				addFetchType(associationElement, mto.getFetch());
+			} else {
+				associationElement.addAttribute("lazy", "false");
+			}
 
-		associationElement.addAttribute("not-null",
-				mto.isOptional() || getHbmContext().isCurrentElementFeatureMap() ? "false" : "true");
+			addJoinColumns(associationElement, jcs, mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
+
+			associationElement.addAttribute("not-null", mto.isOptional()
+					|| getHbmContext().isCurrentElementFeatureMap() ? "false" : "true");
+		}
 
 		// MT: TODO; the characteristic of the other side should be checked (if present), if the otherside is a onetoone
 		// then this

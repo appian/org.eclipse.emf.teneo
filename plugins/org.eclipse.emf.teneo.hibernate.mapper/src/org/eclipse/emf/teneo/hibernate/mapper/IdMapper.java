@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.5 2006/11/13 19:55:08 mtaal Exp $
+ * $Id: IdMapper.java,v 1.6 2006/11/15 17:17:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -145,7 +145,7 @@ class IdMapper extends AbstractPropertyMapper {
 			keyPropertyElement.addAttribute("name", aFeature.getAnnotatedEStructuralFeature().getName());
 			addColumns(keyPropertyElement, aAttribute.getAnnotatedEAttribute().getName(), getColumns(aAttribute),
 					getHbmContext().isCurrentElementFeatureMap(), false);
-			keyPropertyElement.addAttribute("type", hbType(aAttribute));
+			setType(aAttribute, keyPropertyElement);
 		}
 		getHbmContext().setCurrent(compositeIdElement.getParent());
 	}
@@ -203,7 +203,7 @@ class IdMapper extends AbstractPropertyMapper {
 
 		usedIdElement.addAttribute("name", eAttribute.getName());
 		if (id.getEnumerated() == null) {
-			usedIdElement.addAttribute("type", hbType(id));
+			setType(id, usedIdElement);
 		} else { // enumerated id
 			if (getHbmContext().isEasyEMFGenerated(id.getAnnotatedEAttribute().getEType())) {
 				// if the instanceclass is registered in the context then this java class is
