@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.15 2006/11/15 17:17:46 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.16 2006/11/16 13:36:00 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -80,7 +80,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class DefaultAnnotator {
 
@@ -780,33 +780,6 @@ public class DefaultAnnotator {
 					+ " is not unique (allows duplicates) but it is bi-directional, this is not logical");
 		}
 
-		EAnnotation ean = aReference.getAnnotatedElement().getEAnnotation(FACET_SOURCE_LIST);
-		if (ean != null && ean.getDetails() != null) {
-			if (ean.getDetails().get(FACET_INDEX) != null) {
-				log.warn("Setting indexed from deprecated annotation: " + FACET_INDEX);
-				otm.setIndexed(((String) ean.getDetails().get(FACET_INDEX)).compareToIgnoreCase("true") == 0);
-			}
-			if (ean.getDetails().get(FACET_UNIQUE) != null) {
-				log.warn("Setting unique from deprecated annotation: " + FACET_UNIQUE);
-				otm.setUnique(((String) ean.getDetails().get(FACET_UNIQUE)).compareToIgnoreCase("true") == 0);
-			}
-		}
-
-		ean = aReference.getAnnotatedElement().getEAnnotation("http://annotation.elver.org/Indexed");
-		if (ean != null && ean.getDetails() != null) {
-			if (ean.getDetails().get("value") != null) {
-				log.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Indexed");
-				otm.setIndexed(((String) ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
-			}
-		}
-		ean = aReference.getAnnotatedElement().getEAnnotation("http://annotation.elver.org/Unique");
-		if (ean != null && ean.getDetails() != null) {
-			if (ean.getDetails().get("value") != null) {
-				log.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Unique");
-				otm.setUnique(((String) ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
-			}
-		}
-
 		// only use a jointable if the relation is non unique
 		final boolean isEObject = StoreUtil.EOBJECT_ECLASS_URI.compareTo(otm.getTargetEntity()) == 0;
 		if (isEObject || // in case of eobject always a join table is required 
@@ -885,7 +858,12 @@ public class DefaultAnnotator {
 		// note that the join is always set on the other side of mapped by!
 		// note that we can not do setJoinHere = !setMappedByHere because there are situations
 		// that even for mtm no mappedby is set on either side, nl. in case of containment
-		if (mtm.getMappedBy() == null && setMappedBy(eReference)) {
+
+		// also check if the other side has a (manual) manytomany with mappedby set
+		// bugzilla: 164808
+		final PAnnotatedEReference otherPA = aReference.getPaModel().getPAnnotated(eOpposite);
+		if (mtm.getMappedBy() == null && setMappedBy(eReference) 
+				&& (otherPA.getManyToMany() == null || otherPA.getManyToMany().getMappedBy() == null)) {
 			mtm.setMappedBy(eOpposite.getName());
 		}
 
