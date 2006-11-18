@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.16 2006/11/16 13:36:00 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.17 2006/11/18 14:16:57 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -80,7 +80,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class DefaultAnnotator {
 
@@ -420,8 +420,9 @@ public class DefaultAnnotator {
 			// - transietn is true and it's opposite is not a containment relation
 			final boolean isTransient = eStructuralFeature.isTransient()
 					&& (eStructuralFeature instanceof EAttribute
-							|| ((EReference) eStructuralFeature).getEOpposite() == null || !((EReference) eStructuralFeature)
-							.getEOpposite().isContainment());
+							|| ((EReference) eStructuralFeature).getEOpposite() == null || 
+							!((EReference) eStructuralFeature).getEOpposite().isContainment() ||
+							((EReference) eStructuralFeature).getEOpposite().isTransient());
 
 			if (aStructuralFeature.getTransient() == null && (eStructuralFeature.isVolatile() || isTransient)) {
 				log.debug("Structural feature " + eStructuralFeature.getName()
