@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAnnotationParserImporter.java,v 1.6 2006/09/27 20:37:23 mtaal Exp $
+ * $Id: EAnnotationParserImporter.java,v 1.7 2006/11/18 06:14:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -162,7 +162,7 @@ public class EAnnotationParserImporter implements EClassResolver {
 			final Map.Entry pAnnotationDetails = (Map.Entry) i.next();
 			String fName = (String) pAnnotationDetails.getKey();
 			// todo externalize
-			if (fName.compareTo("appinfo") == 0 || fName.compareTo("value") == 0) {
+			if (fName.compareToIgnoreCase("appinfo") == 0 || fName.compareToIgnoreCase("value") == 0) {
 				log.debug("Annotation content: \n " + (String)pAnnotationDetails.getValue());
 				result.addAll(annotationParser.parse(ene, (String)pAnnotationDetails.getValue()));
 			}
@@ -183,6 +183,7 @@ public class EAnnotationParserImporter implements EClassResolver {
 	/** Is a valid source */
 	protected boolean isValidSource(String source) {
 		if (source == null) return false;
+		// todo externalize
 		return source.startsWith("teneo.jpa") ||
 			source.startsWith("teneo.mapping");
 	}
