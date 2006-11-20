@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestStore.java,v 1.1 2006/07/04 22:12:14 mtaal Exp $
+ * $Id: AbstractTestStore.java,v 1.2 2006/11/20 08:18:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -26,10 +26,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
 /**
- * The hibernate test store encapsulates the datastore actions to a hibernate store.
+ * Base abstractteststore 
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public abstract class AbstractTestStore implements TestStore {
 	/** The logger */
@@ -115,5 +115,15 @@ public abstract class AbstractTestStore implements TestStore {
 	/** Gets the container list */
 	public boolean setContainer(EObject obj) {
 		return true;
+	}
+	
+	/** Is this a hibernate test store */ 
+	public boolean isHibernateTestStore() {
+		return false;
+	}
+	
+	/** Is this a jpox test store */ 
+	public boolean isJPOXTestStore() {
+		return false;
 	}
 }

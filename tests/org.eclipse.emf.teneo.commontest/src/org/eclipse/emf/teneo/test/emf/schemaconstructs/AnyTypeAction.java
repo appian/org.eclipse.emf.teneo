@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyTypeAction.java,v 1.2 2006/08/24 22:15:21 mtaal Exp $
+ * $Id: AnyTypeAction.java,v 1.3 2006/11/20 08:18:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * - Delete with cascading delete
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class AnyTypeAction extends AbstractTestAction 
 {
@@ -198,7 +198,14 @@ public class AnyTypeAction extends AbstractTestAction
     		store.commitTransaction();
     	}
 
-    	// now test cascading deletes and non-cascading deletes
+		{
+    		store.beginTransaction();
+    		TestAny testAny = (TestAny)store.getObject(TestAny.class);
+    		testAny.getMultiAnyType().remove(0);
+    		store.commitTransaction();
+		}
+
+		// now test cascading deletes and non-cascading deletes
 		{
     		store.beginTransaction();
     		TestAny testAny = (TestAny)store.getObject(TestAny.class);

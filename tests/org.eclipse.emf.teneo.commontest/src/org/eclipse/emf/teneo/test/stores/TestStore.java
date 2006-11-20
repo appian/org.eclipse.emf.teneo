@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TestStore.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: TestStore.java,v 1.3 2006/11/20 08:18:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * be reused.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public interface TestStore {
 
@@ -128,4 +128,10 @@ public interface TestStore {
 	 * @return the inheritanceType
 	 */
 	public InheritanceType getInheritanceType();
+	
+	/** Is this a hibernate test store */ 
+	public boolean isHibernateTestStore();
+	
+	/** Is this a jpox test store */ 
+	public boolean isJPOXTestStore();
 }
