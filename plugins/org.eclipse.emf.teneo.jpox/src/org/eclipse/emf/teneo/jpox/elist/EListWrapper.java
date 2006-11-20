@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.4 2006/10/26 14:18:47 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.5 2006/11/20 08:18:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -64,7 +64,7 @@ import org.jpox.store.query.ResultObjectFactory;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2006/10/26 14:18:47 $
+ * @version $Revision: 1.5 $ $Date: 2006/11/20 08:18:28 $
  */
 
 public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList {
@@ -663,7 +663,7 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 				// only remove if not working within a resource because the resource will handle the remove then
 				PersistenceCapable pc = (PersistenceCapable) oldObject;
 				if (pc.jdoIsPersistent() || pc.jdoIsTransactional()) {
-					getPM().deletePersistent(obj);
+					getPM().deletePersistent(oldObject);
 				}
 			}
 		}

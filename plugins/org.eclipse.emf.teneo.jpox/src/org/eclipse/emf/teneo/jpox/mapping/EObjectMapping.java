@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EObjectMapping.java,v 1.3 2006/10/26 14:18:47 mtaal Exp $
+ * $Id: EObjectMapping.java,v 1.4 2006/11/20 08:18:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapping;
@@ -54,7 +54,7 @@ import org.jpox.store.mapping.SingleFieldMultiMapping;
  * the future possibly referential integrity is supported by storing all any types with references in a reference table.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/10/26 14:18:47 $
+ * @version $Revision: 1.4 $ $Date: 2006/11/20 08:18:28 $
  */
 
 public class EObjectMapping extends SingleFieldMultiMapping implements MappingCallbacks {
@@ -126,7 +126,10 @@ public class EObjectMapping extends SingleFieldMultiMapping implements MappingCa
 	 */
 	public void setObject(org.jpox.PersistenceManager pm, Object preparedStatement, int[] exprIndex, Object value) {
 		final EObject eobj = (EObject) value;
-		if (eobj instanceof PersistenceCapable) {
+		if (eobj == null) {
+			getDataStoreMapping(0).setString(preparedStatement, exprIndex[0], null);
+			getDataStoreMapping(1).setString(preparedStatement, exprIndex[1], null);
+		} else if (eobj instanceof PersistenceCapable) {
 			final PersistenceCapable pc = (PersistenceCapable) eobj;
 
 			if (pc.jdoGetObjectId() == null) {
