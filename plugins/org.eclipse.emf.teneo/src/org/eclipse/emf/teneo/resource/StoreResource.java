@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.7 2006/11/14 10:57:54 mtaal Exp $
+ * $Id: StoreResource.java,v 1.8 2006/11/20 08:18:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -44,14 +44,12 @@ import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.StoreValidationException;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
-import com.sun.corba.se.internal.ior.NewObjectKeyTemplateBase;
-
 /**
  * General part of Store Resources. Main feature is that it keeps track of changes to the resource content and that
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
