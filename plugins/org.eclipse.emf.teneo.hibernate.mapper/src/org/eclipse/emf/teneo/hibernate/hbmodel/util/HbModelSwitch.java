@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelSwitch.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: HbModelSwitch.java,v 1.3 2006/11/20 08:18:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.util;
 
@@ -18,6 +18,8 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
+import org.eclipse.emf.teneo.hibernate.hbmodel.*;
+
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
@@ -32,28 +34,26 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
- * 
  * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage
  * @generated
  */
 public class HbModelSwitch {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
 
 	/**
-	 * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached model package
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected static HbModelPackage modelPackage;
 
 	/**
-	 * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Creates an instance of the switch.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public HbModelSwitch() {
@@ -63,9 +63,8 @@ public class HbModelSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
-	 * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -74,135 +73,102 @@ public class HbModelSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
-	 * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
 	protected Object doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
-		} else {
+		}
+		else {
 			List eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch((EClass) eSuperTypes.get(0), theEObject);
+			return
+				eSuperTypes.isEmpty() ?
+					defaultCase(theEObject) :
+					doSwitch((EClass)eSuperTypes.get(0), theEObject);
 		}
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
-	 * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
 	protected Object doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT: {
-			HbAnnotatedETypeElement hbAnnotatedETypeElement = (HbAnnotatedETypeElement) theEObject;
-			Object result = caseHbAnnotatedETypeElement(hbAnnotatedETypeElement);
-			if (result == null)
-				result = casePAnnotatedEStructuralFeature(hbAnnotatedETypeElement);
-			if (result == null)
-				result = caseHbAnnotatedEModelElement(hbAnnotatedETypeElement);
-			if (result == null)
-				result = casePAnnotatedETypedElement(hbAnnotatedETypeElement);
-			if (result == null)
-				result = casePAnnotatedEModelElement(hbAnnotatedETypeElement);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case HbModelPackage.HB_ANNOTATED_EATTRIBUTE: {
-			HbAnnotatedEAttribute hbAnnotatedEAttribute = (HbAnnotatedEAttribute) theEObject;
-			Object result = caseHbAnnotatedEAttribute(hbAnnotatedEAttribute);
-			if (result == null)
-				result = casePAnnotatedEAttribute(hbAnnotatedEAttribute);
-			if (result == null)
-				result = caseHbAnnotatedETypeElement(hbAnnotatedEAttribute);
-			if (result == null)
-				result = casePAnnotatedEStructuralFeature(hbAnnotatedEAttribute);
-			if (result == null)
-				result = caseHbAnnotatedEModelElement(hbAnnotatedEAttribute);
-			if (result == null)
-				result = casePAnnotatedETypedElement(hbAnnotatedEAttribute);
-			if (result == null)
-				result = casePAnnotatedEModelElement(hbAnnotatedEAttribute);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case HbModelPackage.HB_ANNOTATED_ECLASS: {
-			HbAnnotatedEClass hbAnnotatedEClass = (HbAnnotatedEClass) theEObject;
-			Object result = caseHbAnnotatedEClass(hbAnnotatedEClass);
-			if (result == null)
-				result = casePAnnotatedEClass(hbAnnotatedEClass);
-			if (result == null)
-				result = casePAnnotatedEModelElement(hbAnnotatedEClass);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case HbModelPackage.HB_ANNOTATED_EMODEL_ELEMENT: {
-			HbAnnotatedEModelElement hbAnnotatedEModelElement = (HbAnnotatedEModelElement) theEObject;
-			Object result = caseHbAnnotatedEModelElement(hbAnnotatedEModelElement);
-			if (result == null)
-				result = casePAnnotatedEModelElement(hbAnnotatedEModelElement);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case HbModelPackage.HB_ANNOTATED_EPACKAGE: {
-			HbAnnotatedEPackage hbAnnotatedEPackage = (HbAnnotatedEPackage) theEObject;
-			Object result = caseHbAnnotatedEPackage(hbAnnotatedEPackage);
-			if (result == null)
-				result = casePAnnotatedEPackage(hbAnnotatedEPackage);
-			if (result == null)
-				result = casePAnnotatedEModelElement(hbAnnotatedEPackage);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case HbModelPackage.HB_ANNOTATED_EREFERENCE: {
-			HbAnnotatedEReference hbAnnotatedEReference = (HbAnnotatedEReference) theEObject;
-			Object result = caseHbAnnotatedEReference(hbAnnotatedEReference);
-			if (result == null)
-				result = casePAnnotatedEReference(hbAnnotatedEReference);
-			if (result == null)
-				result = caseHbAnnotatedETypeElement(hbAnnotatedEReference);
-			if (result == null)
-				result = casePAnnotatedEStructuralFeature(hbAnnotatedEReference);
-			if (result == null)
-				result = caseHbAnnotatedEModelElement(hbAnnotatedEReference);
-			if (result == null)
-				result = casePAnnotatedETypedElement(hbAnnotatedEReference);
-			if (result == null)
-				result = casePAnnotatedEModelElement(hbAnnotatedEReference);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case HbModelPackage.HB_ANNOTATED_EDATA_TYPE: {
-			HbAnnotatedEDataType hbAnnotatedEDataType = (HbAnnotatedEDataType) theEObject;
-			Object result = caseHbAnnotatedEDataType(hbAnnotatedEDataType);
-			if (result == null)
-				result = casePAnnotatedEDataType(hbAnnotatedEDataType);
-			if (result == null)
-				result = caseHbAnnotatedETypeElement(hbAnnotatedEDataType);
-			if (result == null)
-				result = casePAnnotatedETypedElement(hbAnnotatedEDataType);
-			if (result == null)
-				result = casePAnnotatedEStructuralFeature(hbAnnotatedEDataType);
-			if (result == null)
-				result = caseHbAnnotatedEModelElement(hbAnnotatedEDataType);
-			if (result == null)
-				result = casePAnnotatedEModelElement(hbAnnotatedEDataType);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT: {
+				HbAnnotatedETypeElement hbAnnotatedETypeElement = (HbAnnotatedETypeElement)theEObject;
+				Object result = caseHbAnnotatedETypeElement(hbAnnotatedETypeElement);
+				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedETypeElement);
+				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedETypeElement);
+				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedETypeElement);
+				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedETypeElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE: {
+				HbAnnotatedEAttribute hbAnnotatedEAttribute = (HbAnnotatedEAttribute)theEObject;
+				Object result = caseHbAnnotatedEAttribute(hbAnnotatedEAttribute);
+				if (result == null) result = casePAnnotatedEAttribute(hbAnnotatedEAttribute);
+				if (result == null) result = caseHbAnnotatedETypeElement(hbAnnotatedEAttribute);
+				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedEAttribute);
+				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedEAttribute);
+				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedEAttribute);
+				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEAttribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbModelPackage.HB_ANNOTATED_ECLASS: {
+				HbAnnotatedEClass hbAnnotatedEClass = (HbAnnotatedEClass)theEObject;
+				Object result = caseHbAnnotatedEClass(hbAnnotatedEClass);
+				if (result == null) result = casePAnnotatedEClass(hbAnnotatedEClass);
+				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbModelPackage.HB_ANNOTATED_EMODEL_ELEMENT: {
+				HbAnnotatedEModelElement hbAnnotatedEModelElement = (HbAnnotatedEModelElement)theEObject;
+				Object result = caseHbAnnotatedEModelElement(hbAnnotatedEModelElement);
+				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEModelElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbModelPackage.HB_ANNOTATED_EPACKAGE: {
+				HbAnnotatedEPackage hbAnnotatedEPackage = (HbAnnotatedEPackage)theEObject;
+				Object result = caseHbAnnotatedEPackage(hbAnnotatedEPackage);
+				if (result == null) result = casePAnnotatedEPackage(hbAnnotatedEPackage);
+				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEPackage);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE: {
+				HbAnnotatedEReference hbAnnotatedEReference = (HbAnnotatedEReference)theEObject;
+				Object result = caseHbAnnotatedEReference(hbAnnotatedEReference);
+				if (result == null) result = casePAnnotatedEReference(hbAnnotatedEReference);
+				if (result == null) result = caseHbAnnotatedETypeElement(hbAnnotatedEReference);
+				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedEReference);
+				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedEReference);
+				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedEReference);
+				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE: {
+				HbAnnotatedEDataType hbAnnotatedEDataType = (HbAnnotatedEDataType)theEObject;
+				Object result = caseHbAnnotatedEDataType(hbAnnotatedEDataType);
+				if (result == null) result = casePAnnotatedEDataType(hbAnnotatedEDataType);
+				if (result == null) result = caseHbAnnotatedETypeElement(hbAnnotatedEDataType);
+				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedEDataType);
+				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedEDataType);
+				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedEDataType);
+				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEDataType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
 		}
 	}
 
@@ -345,9 +311,7 @@ public class HbModelSwitch {
 	 * Returns the result of interpretting the object as an instance of '<em>PAnnotated EStructural Feature</em>'.
 	 * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpretting the object as an instance of '<em>PAnnotated EStructural Feature</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -432,12 +396,11 @@ public class HbModelSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc -->
+	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch, but this is the last
 	 * case anyway. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
+	 * @param object the target of the switch.
 	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated

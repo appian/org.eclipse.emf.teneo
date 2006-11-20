@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.4 2006/11/15 17:17:52 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.5 2006/11/20 08:18:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -32,6 +32,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -62,8 +63,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		log.debug("addManyToOne " + assocName + "/" + referedTo);
 
 		if (isEObject(referedTo)) {
-			return getHbmContext().getCurrent().addElement("any").addAttribute("name", assocName).addAttribute(
-					"id-type", "long");
+			return getHbmContext().getCurrent().addElement("any").addAttribute("name", assocName) 
+				.addAttribute("id-type", "long");
 		}
 		if (isReferedEntity) {
 			return getHbmContext().getCurrent().addElement("many-to-one").addAttribute("name", assocName).addAttribute(
@@ -272,6 +273,13 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			collectionIdElement.addAttribute("column", "ID");
 			collectionIdElement.addAttribute("type", type);
 			collectionIdElement.addElement("generator").addAttribute("class", generator);
+		}
+		
+		if (hbFeature instanceof HbAnnotatedEReference) {
+			final HbAnnotatedEReference hae = (HbAnnotatedEReference)hbFeature;
+			if (hae.getHbFetch() != null) {
+				collectionElement.addAttribute("fetch", hae.getHbFetch().getValue().getName().toLowerCase());
+			}
 		}
 		return collectionElement;
 	}

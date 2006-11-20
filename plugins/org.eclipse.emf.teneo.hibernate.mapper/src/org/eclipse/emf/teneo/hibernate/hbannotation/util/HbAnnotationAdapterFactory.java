@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationAdapterFactory.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: HbAnnotationAdapterFactory.java,v 1.3 2006/11/20 08:18:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -118,6 +118,9 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseTypeDef(TypeDef object) {
 				return createTypeDefAdapter();
+			}
+			public Object caseFetch(Fetch object) {
+				return createFetchAdapter();
 			}
 			public Object casePAnnotation(PAnnotation object) {
 				return createPAnnotationAdapter();
@@ -291,6 +294,20 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTypeDefAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Fetch <em>Fetch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Fetch
+	 * @generated
+	 */
+	public Adapter createFetchAdapter() {
 		return null;
 	}
 

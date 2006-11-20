@@ -19,6 +19,11 @@
       <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//CacheConcurrencyStrategy/READ_WRITE"/>
       <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//CacheConcurrencyStrategy/TRANSACTIONAL"/>
     </genEnums>
+    <genEnums ecoreEnum="hbannotation.ecore#//HbFetchType">
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbFetchType/JOIN"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbFetchType/SELECT"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbFetchType/SUBSELECT"/>
+    </genEnums>
     <genClasses ecoreClass="hbannotation.ecore#//HbAnnotation"/>
     <genClasses ecoreClass="hbannotation.ecore#//Cascade">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Cascade/value"/>
@@ -60,6 +65,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbannotation.ecore#//TypeDef/parameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//TypeDef/typeClass"/>
     </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//Fetch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Fetch/value"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="HbModel" basePackage="org.eclipse.emf.teneo.hibernate" disposableProviderFactory="true"
       ecorePackage="hbmodel.ecore#/">
@@ -84,6 +92,7 @@
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEReference">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/hbCache"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/hbFetch"/>
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEDataType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEDataType/hbTypeDef"/>

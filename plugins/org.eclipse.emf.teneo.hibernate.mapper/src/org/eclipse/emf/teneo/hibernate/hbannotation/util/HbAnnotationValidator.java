@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.3 2006/11/20 08:18:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -136,8 +136,12 @@ public class HbAnnotationValidator extends EObjectValidator {
 				return validateCache((Cache)value, diagnostics, context);
 			case HbAnnotationPackage.TYPE_DEF:
 				return validateTypeDef((TypeDef)value, diagnostics, context);
+			case HbAnnotationPackage.FETCH:
+				return validateFetch((Fetch)value, diagnostics, context);
 			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
+			case HbAnnotationPackage.HB_FETCH_TYPE:
+				return validateHbFetchType((HbFetchType)value, diagnostics, context);
 			default: 
 				return true;
 		}
@@ -367,7 +371,31 @@ public class HbAnnotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateFetch(Fetch fetch, DiagnosticChain diagnostics, Map context) {
+		boolean result = validate_EveryMultiplicityConforms(fetch, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(fetch, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(fetch, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(fetch, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(fetch, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(fetch, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateCacheConcurrencyStrategy(CacheConcurrencyStrategy cacheConcurrencyStrategy, DiagnosticChain diagnostics, Map context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHbFetchType(HbFetchType hbFetchType, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 

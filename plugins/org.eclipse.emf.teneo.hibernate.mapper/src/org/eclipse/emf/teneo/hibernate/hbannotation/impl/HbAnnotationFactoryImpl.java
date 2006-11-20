@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationFactoryImpl.java,v 1.2 2006/11/13 14:53:01 mtaal Exp $
+ * $Id: HbAnnotationFactoryImpl.java,v 1.3 2006/11/20 08:18:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -85,6 +85,7 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 			case HbAnnotationPackage.GENERIC_GENERATOR: return createGenericGenerator();
 			case HbAnnotationPackage.CACHE: return createCache();
 			case HbAnnotationPackage.TYPE_DEF: return createTypeDef();
+			case HbAnnotationPackage.FETCH: return createFetch();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -99,6 +100,8 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 		switch (eDataType.getClassifierID()) {
 			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return createCacheConcurrencyStrategyFromString(eDataType, initialValue);
+			case HbAnnotationPackage.HB_FETCH_TYPE:
+				return createHbFetchTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -113,6 +116,8 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 		switch (eDataType.getClassifierID()) {
 			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return convertCacheConcurrencyStrategyToString(eDataType, instanceValue);
+			case HbAnnotationPackage.HB_FETCH_TYPE:
+				return convertHbFetchTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -223,6 +228,16 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Fetch createFetch() {
+		FetchImpl fetch = new FetchImpl();
+		return fetch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CacheConcurrencyStrategy createCacheConcurrencyStrategyFromString(EDataType eDataType, String initialValue) {
 		CacheConcurrencyStrategy result = CacheConcurrencyStrategy.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -235,6 +250,26 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * @generated
 	 */
 	public String convertCacheConcurrencyStrategyToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HbFetchType createHbFetchTypeFromString(EDataType eDataType, String initialValue) {
+		HbFetchType result = HbFetchType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertHbFetchTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

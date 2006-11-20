@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationSwitch.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: HbAnnotationSwitch.java,v 1.3 2006/11/20 08:18:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -192,6 +192,14 @@ public class HbAnnotationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case HbAnnotationPackage.FETCH: {
+				Fetch fetch = (Fetch)theEObject;
+				Object result = caseFetch(fetch);
+				if (result == null) result = caseHbAnnotation(fetch);
+				if (result == null) result = casePAnnotation(fetch);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -358,6 +366,21 @@ public class HbAnnotationSwitch {
 	 * @generated
 	 */
 	public Object caseTypeDef(TypeDef object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Fetch</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Fetch</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseFetch(Fetch object) {
 		return null;
 	}
 

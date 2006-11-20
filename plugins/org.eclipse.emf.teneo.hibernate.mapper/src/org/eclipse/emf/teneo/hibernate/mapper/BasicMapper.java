@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.6 2006/11/15 17:17:52 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.7 2006/11/20 08:18:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -34,7 +34,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.simpledom.Element;
-import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
  * Maps a basic element to its mapping Context.
@@ -115,7 +114,7 @@ class BasicMapper extends AbstractPropertyMapper {
 				|| isNullable(basic, eAttribute), true);
 		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
 
-		if (hed.getHbTypeDef() != null || hea.getHbType() != null) {
+		if ((hed != null && hed.getHbTypeDef() != null) || hea.getHbType() != null) {
 			setType(paAttribute, propElement);
 		} else {
 			propElement.addAttribute("type", BasicMapper.hbType(tt));
@@ -128,18 +127,6 @@ class BasicMapper extends AbstractPropertyMapper {
 	public void processLob(PAnnotatedEAttribute paAttribute) {
 		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
 		log.debug("processLob " + eAttribute.getName());
-		final EDataType eType = eAttribute.getEAttributeType();
-		final String columnType;
-		// See
-		// http://www.hibernate.org/hib_docs/v3/reference/en/html/mapping.html#mapping-types-basictypes
-		if (EcoreDataTypes.isByteArray(eType)) {
-			columnType = "binary";
-		} else if (EcoreDataTypes.INSTANCE.isEString(eType)) {
-			columnType = "text";
-		} else {
-			throw new MappingException("Lob annotations can only be used with Strings or byte arrays. "
-					+ "Attribute is of type: " + eType);
-		}
 
 		final Element propElement = getHbmContext().getCurrent().addElement("property");
 		propElement.addAttribute("name", getHbmContext().getPropertyName(eAttribute));

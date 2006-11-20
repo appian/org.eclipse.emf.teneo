@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.5 2006/11/15 17:17:52 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.6 2006/11/20 08:18:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -124,6 +124,15 @@ abstract class AbstractMapper {
 		final EDataType eDataType = paAttribute.getAnnotatedEAttribute().getEAttributeType();
 		if (hed != null && hed.getHbTypeDef() != null) {
 			return hed.getHbTypeDef().getName();
+		} else if (paAttribute.getLob() != null) {
+			if (EcoreDataTypes.isByteArray(eDataType)) {
+				return "binary";
+			} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
+				return "text";
+			} else {
+				throw new MappingException("Lob annotations can only be used with Strings or byte arrays. "
+						+ "Attribute is of type: " + eDataType);
+			}
 		} else if (EcoreDataTypes.INSTANCE.isEWrapper(eDataType) || EcoreDataTypes.INSTANCE.isEPrimitive(eDataType)) {
 			return eDataType.getInstanceClassName();
 		} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
@@ -131,11 +140,12 @@ abstract class AbstractMapper {
 		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType)) {
 			return "java.util.Date";
 		} else if (eDataType.getInstanceClass() != null && eDataType.getInstanceClass() == Object.class) {
+			// null forces caller to use usertype
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
 		} else if (eDataType.getInstanceClass() != null) {
 			return eDataType.getInstanceClassName();
 		} else {
-			// all edatatypes are translatable to a string
+			// all edatatypes are translatable to a string, done by caller
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
 		}
 	}

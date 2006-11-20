@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CollectionOfElements.java,v 1.2 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: CollectionOfElements.java,v 1.3 2006/11/20 08:18:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -11,15 +11,15 @@ import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Collection Of Elements</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements#getTargetElement <em>Target Element</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements#getFetch <em>Fetch</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements#getTargetElement <em>Target Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements#getFetch <em>Fetch</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getCollectionOfElements()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated
@@ -27,19 +27,18 @@ import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 public interface CollectionOfElements extends HbAnnotation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	String copyright = "Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
 
 	/**
-	 * Returns the value of the '<em><b>Target Element</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Target Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target Element</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Target Element</em>' attribute.
 	 * @see #setTargetElement(String)
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getCollectionOfElements_TargetElement()
@@ -49,11 +48,9 @@ public interface CollectionOfElements extends HbAnnotation {
 	String getTargetElement();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements#getTargetElement <em>Target Element</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Target Element</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements#getTargetElement <em>Target Element</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target Element</em>' attribute.
 	 * @see #getTargetElement()
 	 * @generated
 	 */
@@ -79,11 +76,9 @@ public interface CollectionOfElements extends HbAnnotation {
 	FetchType getFetch();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements#getFetch <em>Fetch</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Fetch</em>' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements#getFetch <em>Fetch</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fetch</em>' attribute.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
 	 * @see #getFetch()
 	 * @generated
