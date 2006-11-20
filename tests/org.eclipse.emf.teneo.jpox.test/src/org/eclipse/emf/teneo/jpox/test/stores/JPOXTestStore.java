@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.10 2006/11/14 10:56:33 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.11 2006/11/20 08:17:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -61,7 +61,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -449,5 +449,10 @@ public class JPOXTestStore extends AbstractTestStore {
 	 */
 	public InheritanceType getInheritanceType() {
 		return inheritanceType;
+	}
+	
+	/** Is this a jpox test store */ 
+	public boolean isJPOXTestStore() {
+		return true;
 	}
 }
