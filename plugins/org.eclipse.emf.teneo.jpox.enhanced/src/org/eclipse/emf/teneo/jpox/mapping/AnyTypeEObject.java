@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyTypeEObject.java,v 1.1 2006/09/13 10:43:14 mtaal Exp $
+ * $Id: AnyTypeEObject.java,v 1.2 2006/11/20 08:18:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapping;
@@ -23,7 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.xml.type.SimpleAnyType;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.jpox.store.OID;
@@ -34,10 +34,10 @@ import org.jpox.store.OID;
  * construction.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2006/09/13 10:43:14 $
+ * @version $Revision: 1.2 $ $Date: 2006/11/20 08:18:25 $
  */
 
-public class AnyTypeEObject extends BasicEObjectImpl {
+public class AnyTypeEObject extends EObjectImpl {
 	/** The logger */
 	private static Log log = LogFactory.getLog(AnyTypeEObject.class);
 
