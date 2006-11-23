@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.5 2006/11/23 06:12:22 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.6 2006/11/23 13:51:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -88,7 +88,7 @@ class OneToOneMapper extends AbstractAssociationMapper {
 			addColumns(associationElement, eref.getName(), getAnyTypeColumns(eref.getName(), true), true, false);
 		} else {
 			if (getHbmContext().isEasyEMFGenerated(eref.getEContainingClass())) {
-				addFetchType(associationElement, oto.getFetch());
+				addFetchType(associationElement, oto.getFetch(), true);
 			} else {
 				associationElement.addAttribute("lazy", "false");
 			}
@@ -125,7 +125,7 @@ class OneToOneMapper extends AbstractAssociationMapper {
 			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
 		}
 
-		addFetchType(associationElement, oto.getFetch());
+		addFetchType(associationElement, oto.getFetch(), true);
 		if (paReference.getPrimaryKeyJoinColumns().size() > 0) {
 			associationElement.addAttribute("constrained", "true");
 		}

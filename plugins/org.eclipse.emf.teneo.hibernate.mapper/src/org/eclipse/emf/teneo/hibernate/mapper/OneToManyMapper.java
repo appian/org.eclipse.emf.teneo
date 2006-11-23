@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.4 2006/11/23 06:12:22 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.5 2006/11/23 13:51:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -124,7 +124,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		final List hbCascadeList = (null == hbCascade) ? Collections.EMPTY_LIST : hbCascade.getValue();
 
 		// TODO OneToMany and CollectionOfElements are mutually exclusive. Should throw exception if both there?
-		addFetchType(collElement, (null != coe) ? coe.getFetch() : otm.getFetch());
+		addFetchType(collElement, (null != coe) ? coe.getFetch() : otm.getFetch(), false);
 		addCascadesForMany(collElement, (null != coe) ? hbCascadeList : otm.getCascade());
 		List inverseJoinColumns = jt != null && jt.getInverseJoinColumns() != null ? (List) jt.getInverseJoinColumns()
 				: Collections.EMPTY_LIST;
@@ -189,7 +189,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		}
 
 		final OneToMany otm = paReference.getOneToMany();
-		addFetchType(collElement, otm.getFetch());
+		addFetchType(collElement, otm.getFetch(), false);
 		addCascadesForMany(collElement, otm.getCascade());
 
 		if (otm.isIndexed()) {

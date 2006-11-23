@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.5 2006/11/20 08:18:08 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.6 2006/11/23 13:51:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -189,9 +189,13 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	/**
 	 * Sets the lazy attribute of the associationElement based on the fetchtype.
 	 */
-	protected void addFetchType(Element associationElement, FetchType fetch) {
+	protected void addFetchType(Element associationElement, FetchType fetch, boolean useProxy) {
 		// TODO: when proxies are supported the below should be changed!
-		associationElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(fetch) ? "true" : "false");
+		if (useProxy) {
+			associationElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(fetch) ? "true" : "false");
+		} else {
+			associationElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(fetch) ? "true" : "false");
+		}
 	}
 
 	/**
@@ -249,6 +253,9 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		// throw new MappingException("Cannot use one-to-many attribute mapping without jointable in combination with
 		// IdBag.");
 		// }
+		final EClass eclass = paFeature.getPaEClass().getAnnotatedEClass();
+		final boolean isEasyGenerated = getHbmContext().isEasyEMFGenerated(eclass) ||
+			getHbmContext().isEasyEMFDynamic(eclass);
 		if (isArray) { // array type
 			collectionElement = getHbmContext().getCurrent().addElement("array");
 		} else if (isMap && false) {
@@ -257,6 +264,10 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			collectionElement = getHbmContext().getCurrent().addElement("idbag");
 		} else if (hbFeature.getOneToMany() != null && hbFeature.getOneToMany().isIndexed()) {
 			collectionElement = getHbmContext().getCurrent().addElement("list");
+		} else if (isEasyGenerated && 
+				hbFeature.getOneToMany() != null && !hbFeature.getOneToMany().isIndexed() &&
+				hbFeature.getJoinTable() == null) {
+			collectionElement = getHbmContext().getCurrent().addElement("set");
 		} else if (hbFeature instanceof PAnnotatedEReference
 				&& ((PAnnotatedEReference) hbFeature).getManyToMany() != null
 				&& ((PAnnotatedEReference) hbFeature).getManyToMany().isIndexed()) {

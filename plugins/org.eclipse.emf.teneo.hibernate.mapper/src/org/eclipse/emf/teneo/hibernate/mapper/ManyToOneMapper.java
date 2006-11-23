@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.4 2006/11/23 06:12:22 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.5 2006/11/23 13:51:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -81,7 +81,7 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 		} else {
 			// todo default false until proxies are supported
 			if (getHbmContext().isEasyEMFGenerated(paReference.getAnnotatedEReference().getEContainingClass())) {
-				addFetchType(associationElement, mto.getFetch());
+				addFetchType(associationElement, mto.getFetch(), true);
 			} else {
 				associationElement.addAttribute("lazy", "false");
 			}

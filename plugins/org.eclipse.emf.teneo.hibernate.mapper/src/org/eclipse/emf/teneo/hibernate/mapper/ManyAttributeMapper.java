@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyAttributeMapper.java,v 1.4 2006/11/15 17:17:52 mtaal Exp $
+ * $Id: ManyAttributeMapper.java,v 1.5 2006/11/23 13:51:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -97,7 +97,7 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 		}
 
 		if (!isArray) {
-			addFetchType(collElement, otm.getFetch());
+			addFetchType(collElement, otm.getFetch(), false);
 		}
 		addCascadesForMany(collElement, otm.getCascade());
 
