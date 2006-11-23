@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManytomanyPackageImpl.java,v 1.2 2006/09/05 12:16:36 mtaal Exp $
+ * $Id: ManytomanyPackageImpl.java,v 1.3 2006/11/23 13:51:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl;
 
@@ -283,7 +283,7 @@ public class ManytomanyPackageImpl extends EPackageImpl implements ManytomanyPac
 		   new String[] {
 			 "kind", "element",
 			 "name", "rght"
-		   });		
+		   });			
 		addAnnotation
 		  (getCntr_Lft(), 
 		   source, 
@@ -311,7 +311,7 @@ public class ManytomanyPackageImpl extends EPackageImpl implements ManytomanyPac
 		   new String[] {
 			 "name", "Rght",
 			 "kind", "elementOnly"
-		   });		
+		   });			
 		addAnnotation
 		  (getRght_Cntr(), 
 		   source, 
@@ -334,13 +334,25 @@ public class ManytomanyPackageImpl extends EPackageImpl implements ManytomanyPac
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity=\"Rght\" indexed=\"false\")\n\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t"
-		   });					
+		   });			
+		addAnnotation
+		  (getCntr_Lft(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity=\"Lft\")\n\t\t\t\t\t"
+		   });				
 		addAnnotation
 		  (getLft_Cntr(), 
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity=\"Cntr\" mappedBy=\"lft\")\n\t\t\t\t\t"
-		   });			
+		   });				
+		addAnnotation
+		  (getRght_Cntr(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity=\"Cntr\" mappedBy=\"rght\" indexed=\"false\")\n\t\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t"
+		   });	
 	}
 
 } //ManytomanyPackageImpl

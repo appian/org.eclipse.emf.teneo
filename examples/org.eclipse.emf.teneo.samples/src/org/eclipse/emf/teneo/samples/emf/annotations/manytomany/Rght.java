@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Rght.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
+ * $Id: Rght.java,v 1.3 2006/11/23 13:51:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany;
 
@@ -40,6 +40,7 @@ public interface Rght extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyPackage#getRght_Cntr()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Cntr#getRght
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Cntr" opposite="rght" resolveProxies="false" required="true"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity=\"Cntr\" mappedBy=\"rght\" indexed=\"false\")\n\t\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='cntr'"
 	 * @generated
 	 */

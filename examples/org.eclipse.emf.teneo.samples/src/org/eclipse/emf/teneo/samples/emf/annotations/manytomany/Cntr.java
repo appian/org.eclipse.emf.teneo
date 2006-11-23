@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Cntr.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
+ * $Id: Cntr.java,v 1.3 2006/11/23 13:51:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany;
 
@@ -61,6 +61,7 @@ public interface Cntr extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyPackage#getCntr_Lft()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Lft#getCntr
 	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Lft" opposite="cntr" resolveProxies="false" required="true"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity=\"Lft\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='lft'"
 	 * @generated
 	 */
