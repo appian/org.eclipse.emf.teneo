@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.7 2006/11/15 17:17:06 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.8 2006/11/23 06:11:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -57,7 +57,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class StoreUtil {
@@ -134,6 +134,9 @@ public class StoreUtil {
 
 	/** Translates an eclass uri back to an eclass */
 	public static EClass getEClassFromURI(String theEClassURI, EPackage[] epackages) {
+		if (theEClassURI.compareTo(EOBJECT_ECLASS_URI) == 0) {
+			return EcorePackage.eINSTANCE.getEObject();
+		}
 		String nsPrefix = null;
 		String eClassName = theEClassURI;
 		if (eClassName.indexOf(NSPREFIX_ECLASS_SEPARATOR) != -1) {
