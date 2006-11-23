@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.24 2006/11/20 08:18:54 mtaal Exp $
+ * $Id: AllTests.java,v 1.25 2006/11/23 06:12:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -24,6 +24,7 @@ import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.DynamicAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
+import org.eclipse.emf.teneo.test.emf.sample.GMFNotationAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryColLengthAction;
@@ -45,14 +46,16 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed.instance()
 				.getConfigurations());
+//		suite.addTestSuite(GMFNotationAction.class);
 //		suite.addTestSuite(LobjAction.class);
+		
 		suite.addTestSuite(ProductAction.class);
 
 		//	suite.addTestSuite(YahooAction.class);
