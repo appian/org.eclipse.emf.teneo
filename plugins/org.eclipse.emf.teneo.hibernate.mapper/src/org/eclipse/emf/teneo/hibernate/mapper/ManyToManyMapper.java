@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.3 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.4 2006/11/23 06:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -82,10 +82,7 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		final EClass referedTo = hbReference.getAnnotatedEReference().getEReferenceType();
 
 		String targetName = mtm.getTargetEntity();
-		if (getHbmContext().isEasyEMFGenerated(referedTo)) {
-			targetName = getHbmContext().getImpl(referedTo).getName();
-		} else if (targetName == null) {
-			log.debug("Target is null, compute it");
+		if (targetName == null || getHbmContext().isEasyEMFGenerated(referedTo)) {
 			targetName = getHbmContext().getEntityName(referedTo);
 		}
 		log.debug("Target entity-name " + targetName);

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.3 2006/11/15 17:17:52 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.4 2006/11/23 06:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -133,9 +133,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 
 		targetName = otm.getTargetEntity();
 		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(refType);
-		if (isEasyEMFGenerated) {
-			targetName = getHbmContext().getImpl(refType).getName();
-		} else if (targetName == null) {
+		if (isEasyEMFGenerated || targetName == null) {
 			targetName = getHbmContext().getEntityName(refType);
 		}
 
@@ -200,9 +198,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 
 		String targetName = otm.getTargetEntity();
 		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(refType);
-		if (isEasyEMFGenerated) {
-			targetName = getHbmContext().getImpl(refType).getName();
-		} else if (targetName == null) {
+		if (targetName == null || isEasyEMFGenerated) {
 			targetName = getHbmContext().getEntityName(eref.getEReferenceType());
 		}
 

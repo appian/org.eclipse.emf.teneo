@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.5 2006/11/15 17:17:52 mtaal Exp $
+ * $Id: MappingContext.java,v 1.6 2006/11/23 06:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -153,7 +153,13 @@ public class MappingContext extends AbstractProcessingContext {
 	 * @return Returns the entity name for the given entity EClass.
 	 */
 	public String getEntityName(EClass entityEClass) {
-		final String name = (String) entityNames.get(entityEClass);
+		String name = (String) entityNames.get(entityEClass);
+		if (name == null) {
+			final Class implClass = getImpl(entityEClass);
+			if (implClass != null) {
+				name = implClass.getName();
+			}
+		}
 		if (name == null)
 			throw new IllegalStateException("An entity name has not been registered for " + entityEClass);
 		return name;
@@ -428,7 +434,7 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/** Add a tuplizer element or not */
-	public void addTuplizerElement(Element entityElement, EClass eclass) {
+	public void addTuplizerElement(Element entityElement, PAnnotatedEClass aclass) {
 	}
 
 	/** Returns the enumusertype class name */

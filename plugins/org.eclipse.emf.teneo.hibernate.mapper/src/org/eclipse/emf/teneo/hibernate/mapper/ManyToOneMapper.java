@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.3 2006/11/15 17:17:52 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.4 2006/11/23 06:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -65,10 +65,7 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 		final ManyToOne mto = paReference.getManyToOne();
 		String targetName = mto.getTargetEntity();
 		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(referedTo);
-		if (isEasyEMFGenerated) {
-			targetName = getHbmContext().getImpl(referedTo).getName();
-		} else if (targetName == null) {
-			log.debug("Target is null, compute it");
+		if (targetName == null || isEasyEMFGenerated) {
 			targetName = getHbmContext().getEntityName(referedTo);
 		}
 

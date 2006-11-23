@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.4 2006/11/15 17:17:52 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.5 2006/11/23 06:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -75,8 +75,8 @@ class OneToOneMapper extends AbstractAssociationMapper {
 
 		final EClass referedTo = eref.getEReferenceType();
 		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(referedTo);
-		if (isEasyEMFGenerated) {
-			specifiedName = getHbmContext().getImpl(referedTo).getName();
+		if (specifiedName == null || isEasyEMFGenerated) {
+			specifiedName = getHbmContext().getEntityName(referedTo);
 		}
 
 		final Element associationElement = addManyToOne(paReference, (specifiedName != null ? specifiedName
@@ -107,14 +107,10 @@ class OneToOneMapper extends AbstractAssociationMapper {
 
 		final OneToOne oto = paReference.getOneToOne();
 		String targetName = oto.getTargetEntity();
-		if (targetName == null) {
-			targetName = getHbmContext().getEntityName(paReference.getAnnotatedEReference().getEReferenceType());
-		}
-
 		final EClass referedTo = paReference.getAnnotatedEReference().getEReferenceType();
 		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(referedTo);
-		if (isEasyEMFGenerated) {
-			targetName = getHbmContext().getImpl(referedTo).getName();
+		if (targetName == null || isEasyEMFGenerated) {
+			targetName = getHbmContext().getEntityName(referedTo);
 		}
 
 		final EReference eref = paReference.getAnnotatedEReference();

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.4 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.5 2006/11/23 06:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -131,13 +131,15 @@ class EntityMapper extends AbstractMapper {
 			// get the interfacec
 			final String proxyName;
 			final Class interfaceClass = EModelResolver.instance().getJavaInterfaceClass(eclass);
+			final String className = EModelResolver.instance().getJavaClass(eclass).getName();
 			if (interfaceClass != null) {
 				proxyName = interfaceClass.getName();
 			} else {
-				proxyName = entityName;
+				proxyName = className;
 			}
 
-			target = getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name", entityName)
+			target = getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name", className)
+					.addAttribute("entity-name", entityName)
 					.addAttribute("proxy", proxyName).addAttribute("abstract", isAbstractStr).addAttribute("lazy",
 							"true");
 		} else {
@@ -326,7 +328,7 @@ class EntityMapper extends AbstractMapper {
 			processFeatureMapFeatures();
 		}
 
-		getHbmContext().addTuplizerElement(entityElement, entity.getAnnotatedEClass());
+		getHbmContext().addTuplizerElement(entityElement, entity);
 
 		if (entity.getPaSuperEntity() == null && ((HbAnnotatedEClass) entity).getHbCache() != null) {
 			addCacheElement(entityElement, ((HbAnnotatedEClass) entity).getHbCache());

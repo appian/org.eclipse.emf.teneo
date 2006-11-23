@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.4 2006/11/13 14:53:00 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.5 2006/11/23 06:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -101,7 +101,7 @@ public class HibernateMappingGenerator {
 	 */
 	private String getEntityName(PAnnotatedEClass paClass) {
 		final EClass eclass = paClass.getAnnotatedEClass();
-		if (hbmContext.isEasyEMFGenerated(eclass)) {
+		if (false && hbmContext.isEasyEMFGenerated(eclass)) {
 			return EModelResolver.instance().getJavaClass(eclass).getName();
 		}
 
