@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Lobj" importerID="org.eclipse.emf.importer.ecore">
+  <foreignModel>lobj.ecore</foreignModel>
+  <genPackages prefix="Lobj" resource="XML" disposableProviderFactory="true" ecorePackage="lobj.ecore#/">
+    <genClasses image="false" ecoreClass="lobj.ecore#//LearningObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//LearningObject/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//LearningObject/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//LearningObject/synchronized"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="lobj.ecore#//Block">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Block/blockMeta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Block/externalMetadata"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Block/source"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Block/accessControl"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//HypertextBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//HypertextBlock/hypertextContent"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="lobj.ecore#//AbstractContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//AbstractContent/heading"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//AbstractContent/language"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//HypertextContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//HypertextContent/content"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//HypertextContent/blockAudiofile"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//HypertextContent/resrcFile"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//BlockFolder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//BlockFolder/folderMeta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//BlockFolder/blockFolder"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//BlockFolder/block"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//BlockFolder/accessControl"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Category">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Category/titleMeta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Category/course"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//CorrBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//CorrBlock/presentationBlock"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//CorrBlock/titleMeta"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Course">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Course/courseMeta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Course/externalMetadata"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//Course/coursetype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Course/outlineAsXml"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//Course/module"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Item">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Item/corrBlock"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Item/childitems"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Item/luRef"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//LearningUnit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LearningUnit/luMeta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LearningUnit/externalMetadata"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//LearningUnit/treeAsXml"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//LearningUnit/luFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LearningUnit/accessControl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LearningUnit/item"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//LuFolder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LuFolder/folderMeta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LuFolder/luFolder"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LuFolder/learningUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LuFolder/accessControl"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Module">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Module/moduleMeta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Module/externalMetadata"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Module/rootNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Module/moduleFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Module/treeAsXml"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Module/accessControl"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//ModuleFolder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ModuleFolder/folderMeta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ModuleFolder/moduleFolder"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ModuleFolder/module"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ModuleFolder/accessControl"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//ResrcFolder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ResrcFolder/folderMeta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ResrcFolder/resrcFolder"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ResrcFolder/accessControl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFolder/deleteScheduled"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ResrcFolder/resrcFile"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Theme">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Theme/simpleDidacMeta"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//PresentationBlock">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//PresentationBlock/lod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//PresentationBlock/rendering"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//PresentationBlock/block"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Node">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Node/visible"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//ThemeNode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ThemeNode/theme"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ThemeNode/childnodes"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//LuNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//LuNode/learningUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//ResrcFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFile/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFile/file_tn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFile/originalextension"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFile/filesize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFile/resrcHref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ResrcFile/accesscontrol"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//ResrcFile/resrcFiletype"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//ResrcFile/hypertextContent"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//blockAudiofile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//blockAudiofile/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//blockAudiofile/originalextension"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//blockAudiofile/filesize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//blockAudiofile/resrcHref"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//blockAudiofile/resrcFiletype"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//ResrcFiletype">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFiletype/filetypeExtension"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFiletype/filetypeDesc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFiletype/image"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFiletype/applet"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFiletype/filetypeImageSmall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcFiletype/filetypeImageBif"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//AccessControl">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//AccessControl/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//AccessControl/lastModified"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//AccessControl/lastModifiedBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//AccessControl/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//AccessControl/lastStatusChange"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//AccessControl/lastStatusChangeBy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//AccessControl/sharednotes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//AccessControl/authorizes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//AccessControl/editionHistory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//AccessControl/globalAccess"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Address">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Address/street"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Address/postcode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Address/city"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Address/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Address/country"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Address/phone"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Address/fax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Address/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Address/otheraddr"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Affiliation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Affiliation/shortaffil"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Affiliation/jobtitle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Affiliation/orgname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Affiliation/orgdiv"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Affiliation/address"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Author">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Author/credittype"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Author/person"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Author/address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Author/email"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//BlockMeta">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//BlockMeta/lod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//BlockMeta/rendering"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//BlockMeta/blocktype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//BlockMeta/creationDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//BlockMeta/lastModified"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//BlockMeta/simpleDidacMeta"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//BlockMeta/defLang"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Blocktype">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Blocktype/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Blocktype/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Blocktype/creationDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Blocktype/styleRef"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//Blocktype/domains"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//TitleMeta">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//TitleMeta/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//TitleMeta/title"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//CourseMeta">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//CourseMeta/didacMeta"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//CourseMeta/hours"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//CourseMeta/lvanr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//CourseMeta/columnfilterasxml"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//CourseMeta/fromext"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//CourseMeta/creationDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//CourseMeta/lecturer"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//CourseMeta/defLang"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//SimpleDidacMeta">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//SimpleDidacMeta/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//SimpleDidacMeta/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//SimpleDidacMeta/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//SimpleDidacMeta/keywords"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//DidacMeta">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//DidacMeta/goal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//DidacMeta/precognition"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Domain">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Domain/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Domain/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//Domain/blocktypes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Domain/creationDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Domain/serverURL"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Edition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Edition/editionNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Edition/editedBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Edition/isVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Edition/lastVersionNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Edition/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Edition/editionCreationDate"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//FolderMeta">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//FolderMeta/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//FolderMeta/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//FolderMeta/creationDate"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//LuMeta">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LuMeta/didacMeta"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//LuMeta/creationDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//LuMeta/domain"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LuMeta/authors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//LuMeta/publishInfo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//LuMeta/defLang"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Userauthorization">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//Userauthorization/user"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//Userauthorization/authType"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Note">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Note/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Note/noteAuthor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Note/content"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Person/honorific"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Person/firstname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Person/surname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Person/contrib"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Person/affiliations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Person/personblurb"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Publisher">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Publisher/publishername"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Publisher/address"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//PublishInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//PublishInfo/edition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//PublishInfo/pubdate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//PublishInfo/publisher"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//PublishInfo/pubsnumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//PublishInfo/releaseinfo"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//ResrcMeta">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcMeta/filename"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcMeta/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcMeta/height"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcMeta/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcMeta/creationDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcMeta/lastModified"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcMeta/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcMeta/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ResrcMeta/keywords"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Sharednotes">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Sharednotes/notes"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Coursetype">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//Coursetype/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Coursetype/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Coursetype/description"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//ExternalMetadata">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ExternalMetadata/ref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ExternalMetadata/file"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Language">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Language/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Language/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Language/version"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Precognition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Precognition/precog"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Precognition/internalRefs"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//InternalRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//InternalRef/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//InternalRef/ref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//InternalRef/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//InternalRef/reftype"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//ModuleMeta">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ModuleMeta/didacMeta"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//ModuleMeta/creationDate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ModuleMeta/authors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//ModuleMeta/publishInfo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//ModuleMeta/defLang"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//Source">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lobj.ecore#//Source/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Source/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Source/subtitle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Source/publishedIn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Source/publishedBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Source/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//Source/pp"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//AuthorizationTypes">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//AuthorizationTypes/authType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//AuthorizationTypes/authTypeDesc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//AuthorizationTypes/readOnly"/>
+    </genClasses>
+    <genClasses ecoreClass="lobj.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/loginname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/firstname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/lastname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/matriculationnr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/scn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/icqnumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/icqpassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/entryasxml"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/languagenr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/notificationprofileasxml"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/dossierasxml"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/photo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/onlinestatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/onlinedate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/datafilter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/inchatsince"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/contchatdate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/chatroomnr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/fromext"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/lastlogindate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/currlogindate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/lastcoursematerialnr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/lastcoursematerialviewnr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/authenticateldap"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lobj.ecore#//User/photochanged"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lobj.ecore#//User/authorizations"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -81,9 +81,6 @@
         <details key="kind" value="element"/>
         <details key="name" value="Code"/>
       </eAnnotations>
-      <eAnnotations source="teneo.jpa">
-        <details key="appInfo" value="@Id"/>
-      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

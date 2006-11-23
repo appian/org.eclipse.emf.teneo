@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductPackageImpl.java,v 1.3 2006/11/15 17:18:17 mtaal Exp $
+ * $Id: ProductPackageImpl.java,v 1.4 2006/11/23 06:12:14 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.impl;
 
@@ -330,8 +330,6 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// teneo.jpa
-		createTeneoAnnotations();
 	}
 
 	/**
@@ -418,22 +416,6 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "Code"
-		   });	
-	}
-
-	/**
-	 * Initializes the annotations for <b>teneo.jpa</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";													
-		addAnnotation
-		  (getClassificationType_Name(), 
-		   source, 
-		   new String[] {
-			 "appInfo", "@Id"
 		   });
 	}
 

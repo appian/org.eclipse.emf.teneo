@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+    targetNamespace="http://www.example.org/mindmap"
+    xmlns:mindmap="http://www.example.org/mindmap"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+
+  <xsd:element name="map" type="mindmap:Map"/>
+
+  <xsd:complexType name="Map">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="rootTopics" type="mindmap:Topic"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="relations" type="mindmap:Relationship"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="resources" type="mindmap:Resource"/>
+    </xsd:sequence>
+    <xsd:attribute name="title" type="xsd:string"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="Topic">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="comments" type="mindmap:Thread"/>
+    </xsd:sequence>
+    <xsd:attribute name="name" type="xsd:string"/>
+    <xsd:attribute ecore:reference="mindmap:Topic" name="subtopics">
+      <xsd:simpleType>
+        <xsd:list itemType="xsd:anyURI"/>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute ecore:opposite="topics" ecore:reference="mindmap:Resource" name="resources">
+      <xsd:simpleType>
+        <xsd:list itemType="xsd:anyURI"/>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute name="percentComplete" type="xsd:float"/>
+    <xsd:attribute name="priority" type="mindmap:Priority"/>
+    <xsd:attribute name="startDate" type="xsd:date"/>
+    <xsd:attribute name="endDate" type="xsd:date"/>
+    <xsd:attribute default="0" name="duration" type="xsd:float"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="Relationship">
+    <xsd:attribute name="label" type="xsd:string"/>
+    <xsd:attribute ecore:reference="mindmap:Topic" name="source" type="xsd:anyURI"/>
+    <xsd:attribute ecore:reference="mindmap:Topic" name="target" type="xsd:anyURI"/>
+    <xsd:attribute name="type" type="mindmap:RelationshipType"/>
+  </xsd:complexType>
+  <xsd:complexType name="Resource">
+    <xsd:attribute name="name" type="xsd:string"/>
+    <xsd:attribute ecore:opposite="resources" ecore:reference="mindmap:Topic" name="topics">
+      <xsd:simpleType>
+        <xsd:list itemType="xsd:anyURI"/>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute name="email" type="xsd:string"/>
+    <xsd:attribute ecore:opposite="author" ecore:reference="mindmap:Thread" name="comments">
+      <xsd:simpleType>
+        <xsd:list itemType="xsd:anyURI"/>
+      </xsd:simpleType>
+    </xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="Thread">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="items" type="mindmap:ThreadItem"/>
+    </xsd:sequence>
+    <xsd:attribute ecore:opposite="comments" ecore:reference="mindmap:Resource" name="author" type="xsd:anyURI"/>
+    <xsd:attribute name="subject" type="xsd:string"/>
+    <xsd:attribute name="postDate" type="xsd:date"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="ThreadItem">
+    <xsd:attribute ecore:reference="mindmap:Resource" name="author" type="xsd:anyURI"/>
+    <xsd:attribute name="body" type="xsd:string"/>
+    <xsd:attribute name="itemPostDate" type="xsd:date"/>
+  </xsd:complexType>
+
+  <xsd:simpleType name="RelationshipType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="DEPENDENCY"/>
+      <xsd:enumeration value="INCLUDES"/>
+      <xsd:enumeration value="EXTENDS"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Priority">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ZERO"/>
+      <xsd:enumeration value="ONE"/>
+      <xsd:enumeration value="TWO"/>
+      <xsd:enumeration value="THREE"/>
+      <xsd:enumeration value="FOUR"/>
+      <xsd:enumeration value="FIVE"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

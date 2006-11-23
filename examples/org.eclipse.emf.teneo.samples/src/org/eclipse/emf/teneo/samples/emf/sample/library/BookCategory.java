@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookCategory.java,v 1.3 2006/09/13 10:39:43 mtaal Exp $
+ * $Id: BookCategory.java,v 1.4 2006/11/23 06:12:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
@@ -208,7 +208,7 @@ public final class BookCategory extends AbstractEnumerator implements Serializab
 	}
 
 	/** Replace the enumerate with the externalizable enumerate */
-	Object writeReplace() throws ObjectStreamException {
+	protected Object writeReplace() throws ObjectStreamException {
 		return new AbstractEnumeratorExternalizable(this);
 	}
 } // BookCategory

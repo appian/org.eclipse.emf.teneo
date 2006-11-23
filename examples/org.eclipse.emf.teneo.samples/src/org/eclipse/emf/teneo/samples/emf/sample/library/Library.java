@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.3 2006/11/14 10:57:50 mtaal Exp $
+ * $Id: Library.java,v 1.4 2006/11/23 06:12:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
@@ -68,6 +68,7 @@ public interface Library extends SerializableEObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getLibrary_Writers()
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.library.Writer" containment="true" resolveProxies="true"
 	 *        extendedMetaData="kind='element' name='writers'"
+	 *        annotation="teneo.hibernate appinfo='@Fetch(SUBSELECT)'"
 	 * @generated
 	 */
 	EList getWriters();

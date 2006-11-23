@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackageImpl.java,v 1.4 2006/10/04 14:08:20 mtaal Exp $
+ * $Id: LibraryPackageImpl.java,v 1.5 2006/11/23 06:12:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -371,6 +371,8 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		createExtendedMetaDataAnnotations();
 		// teneo.jpa
 		createTeneoAnnotations();
+		// teneo.hibernate
+		createTeneo_1Annotations();
 	}
 
 	/**
@@ -449,7 +451,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "writers"
-		   });		
+		   });			
 		addAnnotation
 		  (getLibrary_Books(), 
 		   source, 
@@ -493,7 +495,23 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		   source, 
 		   new String[] {
 			 "appinfo", "@Enumerated(ORDINAL)"
-		   });											
+		   });												
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.hibernate</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneo_1Annotations() {
+		String source = "teneo.hibernate";													
+		addAnnotation
+		  (getLibrary_Writers(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Fetch(SUBSELECT)"
+		   });				
 	}
 
 } //LibraryPackageImpl

@@ -28,7 +28,11 @@
     <xsd:sequence>
       <xsd:element name="name" type="xsd:string"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0"
-          name="writers" type="lib:Writer"/>
+          name="writers" type="lib:Writer">
+	 	<xsd:annotation>
+			<xsd:appinfo source="teneo.hibernate">@Fetch(SUBSELECT)</xsd:appinfo>
+	    </xsd:annotation>
+	  </xsd:element>
       <xsd:element maxOccurs="unbounded" minOccurs="0"
           name="books" type="lib:Book"/>
     </xsd:sequence>

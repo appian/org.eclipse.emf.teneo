@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ClassificationType.java,v 1.1 2006/11/15 17:18:17 mtaal Exp $
+ * $Id: ClassificationType.java,v 1.2 2006/11/23 06:12:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product;
 
@@ -41,7 +41,6 @@ public interface ClassificationType extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage#getClassificationType_Name()
 	 * @model default="" unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='Code'"
-	 *        annotation="teneo.jpa appInfo='@Id'"
 	 * @generated
 	 */
 	String getName();
