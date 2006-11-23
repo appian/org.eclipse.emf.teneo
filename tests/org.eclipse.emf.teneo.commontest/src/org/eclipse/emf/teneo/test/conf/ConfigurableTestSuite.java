@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ConfigurableTestSuite.java,v 1.1 2006/07/04 22:12:17 mtaal Exp $
+ * $Id: ConfigurableTestSuite.java,v 1.2 2006/11/23 06:12:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ConfigurableTestSuite extends TestSuite {
 
@@ -67,7 +67,7 @@ public class ConfigurableTestSuite extends TestSuite {
 	/**
 	 * Returns a test which will fail and log a warning message.
 	 */
-	private static Test warning(final String message) {
+	public static Test warning(final String message) {
 		return new TestCase("warning") {
 			protected void runTest() {
 				fail(message);

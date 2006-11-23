@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MindMapAction.java,v 1.1 2006/11/15 17:17:48 mtaal Exp $
+ * $Id: MindMapAction.java,v 1.2 2006/11/23 06:12:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -21,22 +21,22 @@ import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
-import org.eclipse.emf.teneo.samples.emf.sample.mindmap.Map;
-import org.eclipse.emf.teneo.samples.emf.sample.mindmap.MindmapFactory;
-import org.eclipse.emf.teneo.samples.emf.sample.mindmap.MindmapPackage;
-import org.eclipse.emf.teneo.samples.emf.sample.mindmap.Priority;
-import org.eclipse.emf.teneo.samples.emf.sample.mindmap.Relationship;
-import org.eclipse.emf.teneo.samples.emf.sample.mindmap.RelationshipType;
-import org.eclipse.emf.teneo.samples.emf.sample.mindmap.Resource;
-import org.eclipse.emf.teneo.samples.emf.sample.mindmap.Topic;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
+import org.example.mindmap.Map;
+import org.example.mindmap.MindmapFactory;
+import org.example.mindmap.MindmapPackage;
+import org.example.mindmap.Priority;
+import org.example.mindmap.Relationship;
+import org.example.mindmap.RelationshipType;
+import org.example.mindmap.Resource;
+import org.example.mindmap.Topic;
 
 /**
  * Tests the gmf mindmap example
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class MindMapAction extends AbstractTestAction {
 	
