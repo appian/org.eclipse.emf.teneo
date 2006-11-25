@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ResourceAction.java,v 1.1 2006/07/04 22:12:16 mtaal Exp $
+ * $Id: ResourceAction.java,v 1.2 2006/11/25 23:52:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests setting resource when a single ref. relation is loaded.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ResourceAction extends AbstractTestAction {
 
@@ -78,7 +78,11 @@ public class ResourceAction extends AbstractTestAction {
 			res.load(Collections.EMPTY_MAP);
 			Iterator it = res.getContents().iterator();
 			while (it.hasNext()) {
-				Person obj = (Person)it.next();
+				Object o = it.next();
+				if (!(o instanceof Person)) {
+					continue;
+				}
+				Person obj = (Person)o;
 				assertEquals(obj.eResource(), obj.getHead().eResource());
 				assertTrue(obj.eResource() != null);
 			}
