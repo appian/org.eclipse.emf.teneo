@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.3 2006/11/01 16:19:44 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.4 2006/11/25 23:52:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -29,6 +29,7 @@ import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
+import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -43,7 +44,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class HibernatePersistableEList extends PersistableEList {
@@ -123,7 +124,13 @@ public class HibernatePersistableEList extends PersistableEList {
 					// attach the new objects so that they are adapted when required
 					for (int i = 0; i < objs.length; i++) {
 						if (objs[i] instanceof EObject) {
-							((ResourceImpl) res).attached((EObject) objs[i]);
+							if (!isContainment()) {
+								if (((EObject)objs[i]).eResource() == null) {
+									((StoreResource)res).addToResource(objs[i]);
+								}
+							} else { // if containment then just attach
+								((ResourceImpl) res).attached((EObject) objs[i]);
+							}
 						}
 					}
 				} finally {

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.4 2006/11/15 17:17:34 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.5 2006/11/25 23:52:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -57,7 +57,7 @@ import org.hibernate.impl.SessionImpl;
  * hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -78,6 +78,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 	/** Is set to true if there is a sessionController */
 	private boolean hasSessionController = false;
+	
+	private int listByQueryLoadingCounter;
 
 	/**
 	 * The constructor, gets an uri and retrieves the backing OJBStore
@@ -363,5 +365,51 @@ public class HibernateResource extends StoreResource implements HbResource {
 	 */
 	public boolean isHasSessionController() {
 		return hasSessionController;
+	}
+	
+	public boolean isLoading() {
+		return isLoading || listByQueryLoadingCounter >0;
+	}
+	
+	public Object[] listByQuery(String query, boolean cache) {
+		log.debug("Started listing objects by query " + query + " in resource " + getURI());
+		Transaction tx = null;
+		Session mySession = null;
+		boolean err = true;
+		listByQueryLoadingCounter ++;
+		try {
+			mySession = getSession();
+			if (!hasSessionController) {
+				tx = mySession.beginTransaction();
+			}
+			Query qry = mySession.createQuery(query);
+			qry.setCacheable(cache);
+			Object[] result = qry.list().toArray();
+
+			for (int i = 0; i < result.length; i++) {
+				Object object = result[i];
+				if (object instanceof EObject) {
+					EObject eObject = (EObject) object;
+					attached(eObject);
+				}
+			}
+
+			err = false;
+			log.debug("Listed " + result.length + " objects using query " + query + " in resource " + getURI());
+			return result;
+		} finally {
+			listByQueryLoadingCounter--;
+			if (!hasSessionController) {
+				if (err) {
+					if (tx != null){
+						tx.rollback();
+					}
+					mySession.close();
+				} else {
+					tx.commit();
+				}
+			}			
+			log.debug("Finished listing objects by query " + query + " in resource " + getURI());
+		}
 	}
 }
