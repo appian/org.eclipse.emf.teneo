@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.8 2006/11/23 06:11:28 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.9 2006/11/25 23:52:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -30,7 +30,9 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
+import org.eclipse.emf.common.notify.impl.NotifyingListImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -52,20 +54,22 @@ import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.StoreException;
+import org.eclipse.emf.teneo.resource.StoreResource;
 
 /**
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class StoreUtil {
 
 	/** The EObject eclass */
-	public static EClass EOBJECT_ECLASS = (EClass)EcorePackage.eINSTANCE.getEClassifier("EObject");
+	public static EClass EOBJECT_ECLASS = (EClass) EcorePackage.eINSTANCE.getEClassifier("EObject");
+
 	public static String EOBJECT_ECLASS_URI = EcorePackage.eINSTANCE.getNsURI() + "/" + EOBJECT_ECLASS.getName();
-	
+
 	/** The logger */
 	private static Log log = LogFactory.getLog(StoreUtil.class);
 
@@ -109,7 +113,7 @@ public class StoreUtil {
 		}
 		throw new StoreException("Qualify type " + qualify + " unknown");
 	}
-	
+
 	/**
 	 * Returns an estructuralfeature on the basis of the name of the eclass and the name of the feature itself.
 	 */
@@ -126,7 +130,7 @@ public class StoreUtil {
 		final EPackage[] epacks = new EPackage[packageRegistry.size()];
 		int cnt = 0;
 		for (Iterator it = packageRegistry.values().iterator(); it.hasNext();) {
-			final EPackage epack = (EPackage)it.next();
+			final EPackage epack = (EPackage) it.next();
 			epacks[cnt++] = epack;
 		}
 		return getEClassFromURI(theEClassURI, epacks);
@@ -252,6 +256,9 @@ public class StoreUtil {
 	public static void setEResource(InternalEObject eobj, Resource.Internal resource, boolean force) {
 		if (eobj.eResource() != null && eobj.eResource() != resource && !force)
 			return;
+		if (eobj.eResource() == resource) {
+			return;
+		}
 
 		InternalEObject currentEObject = eobj;
 		while (currentEObject.eContainer() != null && !currentEObject.eContainmentFeature().isResolveProxies()) {
@@ -586,7 +593,7 @@ public class StoreUtil {
 			log.debug("Copy file from " + src.getAbsolutePath() + " to " + dst.getAbsolutePath());
 			InputStream in = new FileInputStream(src);
 			OutputStream out = new FileOutputStream(dst);
-	
+
 			// Transfer bytes from in to out
 			byte[] buf = new byte[1024];
 			int len;
@@ -596,8 +603,8 @@ public class StoreUtil {
 			in.close();
 			out.close();
 		} catch (Exception e) {
-			throw new StoreException("Exception while copying from/to " + src.getAbsolutePath() 
-					+ "/" + dst.getAbsolutePath(), e);
+			throw new StoreException("Exception while copying from/to " + src.getAbsolutePath() + "/"
+					+ dst.getAbsolutePath(), e);
 		}
 	}
 }

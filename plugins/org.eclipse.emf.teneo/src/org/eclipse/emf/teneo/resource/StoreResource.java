@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.9 2006/11/23 06:11:28 mtaal Exp $
+ * $Id: StoreResource.java,v 1.10 2006/11/25 23:52:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -27,6 +27,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
@@ -40,6 +41,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.StoreValidationException;
@@ -50,7 +52,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -103,6 +105,9 @@ public abstract class StoreResource extends ResourceImpl {
 	 */
 	private String[] definedQueries = new String[0];
 
+	/** Send notifications under load */
+	private boolean sendNotificationsOnLoad = true;
+	
 	/**
 	 * The constructor, gets an uri and retrieves the backing OJBStore
 	 */
@@ -223,28 +228,30 @@ public abstract class StoreResource extends ResourceImpl {
 		if (isLoaded())
 			return;
 
+		String option;
+		if (options != null && (option = (String)options.get(XMLResource.OPTION_DISABLE_NOTIFY)) != null) {
+			sendNotificationsOnLoad = "false".compareToIgnoreCase(option) == 0;
+		} else if (options != null && (option = (String)options.get(XMIResource.OPTION_DISABLE_NOTIFY)) != null) { 
+			sendNotificationsOnLoad = "false".compareToIgnoreCase(option) == 0;
+		} else {
+			sendNotificationsOnLoad = true;
+		}
+		
 		isLoading = true;
 		try {
 			clearChangeTrackerArrays();
 			List list = loadResource(options);
 
 			// get from the superclass otherwise infinite looping
-			final ContentsEList elist = (ContentsEList) super.getContents();
 
 			final Iterator it = list.iterator();
 			while (it.hasNext()) {
-				final Object obj = it.next();
-				if (!elist.contains(obj)) // can maybe happen with extents?
-				{
-					// fill in the resource, do not use the normal add method because it
-					// is possible that a child of a container is loaded, in that case
-					// the normal add will remove the container of the object when the
-					// resource is set in the child object, this issue can happen with
-					// direct reads using queries.
-					StoreUtil.setEResource((InternalEObject) obj, this, true);
-					elist.basicAdd(obj, null);
-					attached((EObject) obj);
-				}
+				// fill in the resource, do not use the normal add method because it
+				// is possible that a child of a container is loaded, in that case
+				// the normal add will remove the container of the object when the
+				// resource is set in the child object, this issue can happen with
+				// direct reads using queries.
+				addToResource(it.next());
 			}
 		} finally {
 			isLoading = false;
@@ -252,6 +259,27 @@ public abstract class StoreResource extends ResourceImpl {
 		}
 	}
 
+	/** Add to the resource and dispatch if send notification */
+	public void addToResource(Object obj) {
+		final ContentsEList elist = (ContentsEList) super.getContents();
+
+		if (elist.contains(obj))  {
+			return; // can maybe happen with extents?
+		}
+		
+		// already part of this resource
+		if (false && ((EObject)obj).eResource() == this) {
+			return;
+		}
+		
+		final NotificationChain notification = elist.basicAdd(obj, null);
+		StoreUtil.setEResource((InternalEObject) obj, this, true);					
+		attached((EObject) obj);
+		if (sendNotificationsOnLoad && notification != null) {
+			notification.dispatch();
+		}
+	}
+	
 	/**
 	 * Called by subclass
 	 * 
@@ -618,5 +646,12 @@ public abstract class StoreResource extends ResourceImpl {
 			}
 			}
 		}
+	}
+
+	/**
+	 * @return the sendNotificationsOnLoad
+	 */
+	public boolean isSendNotificationsOnLoad() {
+		return sendNotificationsOnLoad;
 	}
 }
