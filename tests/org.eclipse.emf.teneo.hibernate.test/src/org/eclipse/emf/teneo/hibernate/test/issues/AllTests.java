@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.3 2006/11/12 00:07:56 mtaal Exp $
+ * $Id: AllTests.java,v 1.4 2006/11/25 23:52:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.issues;
@@ -35,18 +35,18 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed.instance()
 				.getConfigurations());
+		suite.addTestSuite(ResourceAction.class);
 
 		suite.addTestSuite(MTMSameAction.class);
 
 		suite.addTestSuite(InheritanceAction.class);
-		suite.addTestSuite(ResourceAction.class);
 
 		suite.addTestSuite(BagDuplicateAction.class);
 		suite.addTestSuite(EnumTestAction.class);
@@ -55,6 +55,7 @@ public class AllTests {
 		suite.addTestSuite(InterfaceTrueAction.class);
 		suite.addTestSuite(SimplenmAction.class);
 		suite.addTestSuite(TopClassesAction.class);
+		
 		// non emf tests: can not be run anymore
 		// suite.addTestSuite(DuplicateFieldAction.class);
 		// suite.addTestSuite(HierarchyQueryAction.class);
