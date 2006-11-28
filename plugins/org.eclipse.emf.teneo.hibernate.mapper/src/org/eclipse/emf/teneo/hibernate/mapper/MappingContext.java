@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.6 2006/11/23 06:12:22 mtaal Exp $
+ * $Id: MappingContext.java,v 1.7 2006/11/28 06:14:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -37,6 +37,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
+import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -46,7 +47,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -87,7 +88,7 @@ public class MappingContext extends AbstractProcessingContext {
 	private boolean eRuntimeInitialized = false;
 
 	/** The option to qualify entity names */
-	private String qualifyEntityNames = null;
+	private EClassNameStrategy eclassNameStrategy = null;
 
 	/** Version column name */
 	private String versionColumnName = null;
@@ -116,7 +117,7 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** Set relevant properties */
 	void setMappingProperties(PersistenceOptions po) {
-		qualifyEntityNames = po.getQualifyEntityName();
+		eclassNameStrategy = po.getEClassNameStrategy();
 		versionColumnName = po.getVersionColumnName();
 		idColumnName = po.getIdColumnName();
 		maximumSqlNameLength = po.getMaximumSqlNameLength();
@@ -311,13 +312,6 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/**
-	 * @return the qualifyEntityNames
-	 */
-	public String getQualifyEntityNames() {
-		return qualifyEntityNames;
-	}
-
-	/**
 	 * @return the versionColumnName
 	 */
 	public String getVersionColumnName() {
@@ -465,5 +459,12 @@ public class MappingContext extends AbstractProcessingContext {
 	/** Returns the default any type */
 	public String getAnytype() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.AnyEObjectType";
+	}
+
+	/**
+	 * @return the eclassNameStrategy
+	 */
+	public EClassNameStrategy getEClassNameStrategy() {
+		return eclassNameStrategy;
 	}
 }

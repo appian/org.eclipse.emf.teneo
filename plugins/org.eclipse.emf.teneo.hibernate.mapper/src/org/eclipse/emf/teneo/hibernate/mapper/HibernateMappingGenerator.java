@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.5 2006/11/23 06:12:22 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.6 2006/11/28 06:14:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -111,7 +111,7 @@ public class HibernateMappingGenerator {
 			// MT: I think for 99.9% of the cases there are no name clashes but it is possible to
 			// that a package name is required to make things unique. This can be done in a next release as an
 			// optional feature.
-			name = StoreUtil.getEClassURI(paClass.getAnnotatedEClass(), hbmContext.getQualifyEntityNames());
+			name = hbmContext.getEClassNameStrategy().toUniqueName(eclass);
 		}
 		return name;
 	}
