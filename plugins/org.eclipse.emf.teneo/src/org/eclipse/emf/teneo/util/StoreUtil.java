@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.9 2006/11/25 23:52:18 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.10 2006/11/28 06:13:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -30,45 +30,32 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
-import org.eclipse.emf.common.notify.impl.NotifyingListImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.EPackage.Registry;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.ERuntime;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.StoreException;
-import org.eclipse.emf.teneo.resource.StoreResource;
 
 /**
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class StoreUtil {
-
-	/** The EObject eclass */
-	public static EClass EOBJECT_ECLASS = (EClass) EcorePackage.eINSTANCE.getEClassifier("EObject");
-
-	public static String EOBJECT_ECLASS_URI = EcorePackage.eINSTANCE.getNsURI() + "/" + EOBJECT_ECLASS.getName();
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(StoreUtil.class);
@@ -86,7 +73,7 @@ public class StoreUtil {
 	public static final String ANNOTATION_SOURCE = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 
 	/** The nsprefix, eclass separator */
-	private static final String NSPREFIX_ECLASS_SEPARATOR = ".";
+	//private static final String NSPREFIX_ECLASS_SEPARATOR = ".";
 
 	/** Returns the name of the entity used for this feature map entry */
 	public static String getEntityName(EStructuralFeature feature) {
@@ -101,7 +88,7 @@ public class StoreUtil {
 		return efeature.getEContainingClass().getName() + "/" + efeature.getName();
 	}
 
-	/** Translates an ECLass to a string representation */
+	/** Translates an ECLass to a string representation
 	public static String getEClassURI(EClass eclass, String qualify) {
 		if (eclass == EOBJECT_ECLASS) {
 			return EOBJECT_ECLASS_URI;
@@ -116,7 +103,6 @@ public class StoreUtil {
 
 	/**
 	 * Returns an estructuralfeature on the basis of the name of the eclass and the name of the feature itself.
-	 */
 	public static EStructuralFeature getEStructuralFeature(String eclassURI, String featureName, EPackage[] epackages) {
 		EClass eclass = getEClassFromURI(eclassURI, epackages);
 		if (eclass == null)
@@ -124,7 +110,8 @@ public class StoreUtil {
 		return eclass.getEStructuralFeature(featureName);
 	}
 
-	/** Translates an eclass uri back to an eclass */
+	/*
+	/** Translates an eclass uri back to an eclass /
 	public static EClass getEClassFromURI(String theEClassURI) {
 		final Registry packageRegistry = Registry.INSTANCE;
 		final EPackage[] epacks = new EPackage[packageRegistry.size()];
@@ -136,16 +123,16 @@ public class StoreUtil {
 		return getEClassFromURI(theEClassURI, epacks);
 	}
 
-	/** Translates an eclass uri back to an eclass */
-	public static EClass getEClassFromURI(String theEClassURI, EPackage[] epackages) {
+	/** Translates an eclass uri back to an eclass /
+	public static EClass getEClassFromURI(String theEClassURI, EPackage[] epackages, EClassNameStrategy nameStrategy) {
 		if (theEClassURI.compareTo(EOBJECT_ECLASS_URI) == 0) {
 			return EcorePackage.eINSTANCE.getEObject();
 		}
 		String nsPrefix = null;
 		String eClassName = theEClassURI;
 		if (eClassName.indexOf(NSPREFIX_ECLASS_SEPARATOR) != -1) {
-			nsPrefix = theEClassURI.substring(0, eClassName.indexOf(NSPREFIX_ECLASS_SEPARATOR));
-			eClassName = theEClassURI.substring(1 + eClassName.indexOf(NSPREFIX_ECLASS_SEPARATOR));
+			nsPrefix = theEClassURI.substring(0, eClassName.lastIndexOf(NSPREFIX_ECLASS_SEPARATOR));
+			eClassName = theEClassURI.substring(1 + eClassName.lastIndexOf(NSPREFIX_ECLASS_SEPARATOR));
 		}
 
 		ArrayList eclasses = new ArrayList();
@@ -189,9 +176,9 @@ public class StoreUtil {
 		 * final EClass eclass = (EClass)epack.getEClassifier(name); if (eclass == null) { throw new
 		 * StoreAnnotationsException("The nsuri " + nsuri + " and eclassname: " + name + " does not resolve to an
 		 * EClass"); } return eclass;
-		 */
+		 /
 	}
-
+*/
 	/** Sends out a notification of an elist load */
 	public static void dispatchEListLoadNotification(final EObject notifier, final EList elist,
 			final EStructuralFeature feature) {
@@ -247,25 +234,6 @@ public class StoreUtil {
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Sets the eresource by walking up the containment structure and finding the highest parent. There the resource is
-	 * set.If the resource is already set nothing is done.
-	 */
-	public static void setEResource(InternalEObject eobj, Resource.Internal resource, boolean force) {
-		if (eobj.eResource() != null && eobj.eResource() != resource && !force)
-			return;
-		if (eobj.eResource() == resource) {
-			return;
-		}
-
-		InternalEObject currentEObject = eobj;
-		while (currentEObject.eContainer() != null && !currentEObject.eContainmentFeature().isResolveProxies()) {
-			currentEObject = (InternalEObject) currentEObject.eContainer();
-			AssertUtil.assertNotSameObject(currentEObject, currentEObject.eContainer());
-		}
-		currentEObject.eSetResource(resource, null);
 	}
 
 	/** Translates a string to a structural feature */
@@ -380,8 +348,10 @@ public class StoreUtil {
 		if (reserve != null)
 			return reserve;
 
-		throw new StoreException("The fieldname " + fieldName + " is not present as a ereference type in the class: "
-				+ eclass.getName());
+		return null;
+		
+//		throw new StoreException("The fieldname " + fieldName + " is not present as a ereference type in the class: "
+//				+ eclass.getName());
 	}
 
 	/**

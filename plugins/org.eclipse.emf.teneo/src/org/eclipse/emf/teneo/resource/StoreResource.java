@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.10 2006/11/25 23:52:18 mtaal Exp $
+ * $Id: StoreResource.java,v 1.11 2006/11/28 06:13:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -45,23 +45,32 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.StoreValidationException;
-import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * General part of Store Resources. Main feature is that it keeps track of changes to the resource content and that
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
+
 	/** The name of the parameter used for the datastore name */
 	public static final String DS_NAME_PARAM = "dsname";
 
 	/** Prefix to use when specifying query parameters in the uri or in the property file */
 	public static final String QUERY_PREFIX = "query";
 
+	/** Load strategy */
+	public static final String LOAD_STRATEGY_PARAM = "loadStrategy";
+	
+	/** The default strategy */
+	public static final String ADD_TO_CONTENTS = "addToContents";
+	
+	/** The just set eResource */
+	public static final String SET_ERESOURCE = "setEResource";
+	
 	/** The logger */
 	private static Log log = LogFactory.getLog(StoreResource.class);
 
@@ -107,6 +116,9 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** Send notifications under load */
 	private boolean sendNotificationsOnLoad = true;
+
+	/** The load strategy */
+	private String loadStrategy = SET_ERESOURCE;
 	
 	/**
 	 * The constructor, gets an uri and retrieves the backing OJBStore
@@ -114,6 +126,11 @@ public abstract class StoreResource extends ResourceImpl {
 	public StoreResource(URI uri) {
 		super(uri);
 
+		final HashMap params = decodeQueryString(uri.query());
+		if (params.get(LOAD_STRATEGY_PARAM) != null) {
+			loadStrategy = (String)params.get(LOAD_STRATEGY_PARAM);
+		}
+		
 		if (log.isDebugEnabled()) {
 			log.debug("Created " + this.getClass().getName() + " using uri: " + uri.toString());
 		}
@@ -229,12 +246,16 @@ public abstract class StoreResource extends ResourceImpl {
 			return;
 
 		String option;
-		if (options != null && (option = (String)options.get(XMLResource.OPTION_DISABLE_NOTIFY)) != null) {
+		if (options != null && (option = (String) options.get(XMLResource.OPTION_DISABLE_NOTIFY)) != null) {
 			sendNotificationsOnLoad = "false".compareToIgnoreCase(option) == 0;
-		} else if (options != null && (option = (String)options.get(XMIResource.OPTION_DISABLE_NOTIFY)) != null) { 
+		} else if (options != null && (option = (String) options.get(XMIResource.OPTION_DISABLE_NOTIFY)) != null) {
 			sendNotificationsOnLoad = "false".compareToIgnoreCase(option) == 0;
 		} else {
 			sendNotificationsOnLoad = true;
+		}
+
+		if (options != null && options.get(LOAD_STRATEGY_PARAM) != null) {
+			loadStrategy = (String)options.get(LOAD_STRATEGY_PARAM);
 		}
 		
 		isLoading = true;
@@ -242,16 +263,10 @@ public abstract class StoreResource extends ResourceImpl {
 			clearChangeTrackerArrays();
 			List list = loadResource(options);
 
-			// get from the superclass otherwise infinite looping
-
 			final Iterator it = list.iterator();
 			while (it.hasNext()) {
-				// fill in the resource, do not use the normal add method because it
-				// is possible that a child of a container is loaded, in that case
-				// the normal add will remove the container of the object when the
-				// resource is set in the child object, this issue can happen with
-				// direct reads using queries.
-				addToResource(it.next());
+				final InternalEObject eObject = (InternalEObject)it.next();
+				addToContent(eObject);
 			}
 		} finally {
 			isLoading = false;
@@ -259,24 +274,16 @@ public abstract class StoreResource extends ResourceImpl {
 		}
 	}
 
-	/** Add to the resource and dispatch if send notification */
-	public void addToResource(Object obj) {
+	/** Add to this resource */
+	protected void addToContent(InternalEObject eObject) {
+		setEResource(eObject, true);
 		final ContentsEList elist = (ContentsEList) super.getContents();
-
-		if (elist.contains(obj))  {
-			return; // can maybe happen with extents?
-		}
-		
-		// already part of this resource
-		if (false && ((EObject)obj).eResource() == this) {
-			return;
-		}
-		
-		final NotificationChain notification = elist.basicAdd(obj, null);
-		StoreUtil.setEResource((InternalEObject) obj, this, true);					
-		attached((EObject) obj);
-		if (sendNotificationsOnLoad && notification != null) {
-			notification.dispatch();
+		if (!elist.contains(eObject)) {
+			final NotificationChain notifications = elist.basicAdd(eObject, null);
+			if (notifications != null && sendNotificationsOnLoad) {
+				notifications.dispatch();
+			}
+			attached(eObject);
 		}
 	}
 	
@@ -333,7 +340,6 @@ public abstract class StoreResource extends ResourceImpl {
 
 			// ensure that the resource is set correctly before validating
 			if (obj.eResource() != this) {
-				Resource res = obj.eResource();
 				assert (obj.eResource() == this);
 			}
 			EContainerRepairControl.setEResourceToAlLContent((InternalEObject) obj, this);
@@ -437,7 +443,9 @@ public abstract class StoreResource extends ResourceImpl {
 			return;
 		}
 
-		assert (loadedEObjects.contains(eObject));
+		if (!loadedEObjects.contains(eObject)) {
+			assert (loadedEObjects.contains(eObject));
+		}
 		assert (!removedEObjects.contains(eObject));
 		removedEObjects.add(eObject);
 		loadedEObjects.remove(eObject);
@@ -463,8 +471,17 @@ public abstract class StoreResource extends ResourceImpl {
 	/**
 	 * Attached the object to this resource, This object will be stored at the next save action. Also handles the
 	 * specific id generation used for different resource impl.
+	 * 
+	 * Note that this method does not add the object to the resource.getContents(). It just adds the object to the
+	 * internal lists of this resource.
 	 */
 	protected void attachedHelper(EObject eObject) {
+		// also attach the container
+		if (eObject.eContainer() != null && eObject.eContainer().eResource() == null &&
+				!eObject.eContainmentFeature().isResolveProxies()) {
+			attached(eObject.eContainer());
+		}
+
 		// a bit strange as an object can only be contained once but this can happen if someone
 		// adds an object to a resource directly and then later add this same object as a child
 		// to a container
@@ -478,6 +495,23 @@ public abstract class StoreResource extends ResourceImpl {
 
 		addedEObject(eObject);
 
+		if (eObject instanceof InternalEObject && eObject.eResource() == null) {
+			setEResource((InternalEObject)eObject, false);
+		}
+
+		// only add an eobject to contents if it does not have a container or if the container 
+		// relation allows resolve proxies (container and contained can be in different resources)
+		// and the load strategy is correct
+		if ((eObject.eContainer() == null || eObject.eContainmentFeature() == null || 
+				eObject.eContainmentFeature().isResolveProxies()) && !getSuperContents().contains(eObject) &&
+				loadStrategy.compareTo(ADD_TO_CONTENTS) == 0) {
+			final ContentsEList elist = (ContentsEList) super.getContents();
+			final NotificationChain notifications = elist.basicAdd(eObject, null);
+			if (notifications != null && sendNotificationsOnLoad) {
+				notifications.dispatch();
+			}
+		}
+		
 		if (isTrackingModification()) {
 			eObject.eAdapters().add(modificationTrackingAdapter);
 		}
@@ -489,20 +523,90 @@ public abstract class StoreResource extends ResourceImpl {
 				map.put(id, eObject);
 			}
 		}
-
-		if (eObject instanceof InternalEObject && eObject.eResource() == null) {
-			StoreUtil.setEResource((InternalEObject) eObject, this, false);
-		}
-
-		// now also attach all ereferences with single values
+		
+		// now also attach all ereferences with single values which are contained
 		for (Iterator it = eObject.eClass().getEAllReferences().iterator(); it.hasNext();) {
 			final EReference eref = (EReference) it.next();
 			if (!eref.isMany() && eObject.eGet(eref) != null) { // the ismanies are handled differently
 				final Resource res = ((EObject) eObject.eGet(eref)).eResource();
 				if (res == null) { // attach it to this resource because it has no other
-					attached((EObject) eObject.eGet(eref));
+					final InternalEObject referedTo = (InternalEObject) eObject.eGet(eref);
+					attached(referedTo);
 				}
 			}
+		}
+	}
+
+	/**
+	 * Add to the contents of this resource and dispatch if send notification. It also takes care of attaching this
+	 * object and its contained children to the internal lists and setting the eResource.
+	 * 
+	 * Approaches:
+	 * - Set eResource and add to contents (if no econtainer)
+	 * - Just set eResource and add to contents if it does not have a container
+	public void addToResource(InternalEObject eObject, boolean forceAddToContents) {
+		// if it has an econtainer then also add the econtainer
+		if (eObject.eContainer() != null && eObject.eContainer().eResource() == null) {
+			addToResource((InternalEObject)eObject.eContainer(), false);
+		}
+
+		// if the econtainer is already part of this resource then just attach
+		if (!forceAddToContents && eObject.eContainer() != null && eObject.eContainer().eResource() == this) {
+			attached(eObject);
+			return;
+		}
+		
+		// probably lazy load action of non-containment, already part of this just return
+		if (!forceAddToContents && eObject.eResource() == this && !loadedEObjects.contains(eObject) &&
+				!removedEObjects.contains(eObject) && !newEObjects.contains(eObject)) {
+			attached(eObject);
+			return;
+		}
+		
+		// already part of another resource
+		if (!forceAddToContents && eObject.eResource() != null) {
+			return;
+		}
+				
+		final ContentsEList elist = (ContentsEList) super.getContents();
+		if (elist.contains(eObject)) { 
+			// can happen because of extends, polymorphism
+			return;
+		}
+
+		// fill in the resource, do not use the normal add method because it
+		// is possible that a child of a container is loaded, in that case
+		// the normal add will remove the container of the object when the
+		// resource is set in the child object, this issue can happen with
+		// direct reads using queries.
+		NotificationChain notification = null;
+		if (loadStrategy.compareToIgnoreCase(ADD_TO_CONTENTS) == 0 || forceAddToContents) {
+			notification = elist.basicAdd(eObject, null);
+		}
+		if (eObject.eResource() == null || (forceAddToContents && eObject.eResource() != this)) {
+			setEResource(eObject, forceAddToContents);
+		}
+//		attached(eObject);
+		if (sendNotificationsOnLoad && notification != null) {
+			notification.dispatch();
+		}
+	}
+	 */
+
+	/**
+	 * Sets the eresource by walking up the containment structure and finding the highest parent. There the resource is
+	 * set.If the resource is already set nothing is done.
+	 */
+	public void setEResource(InternalEObject eobj, boolean force) {
+		if (eobj.eResource() != null && eobj.eResource() != this && !force)
+			return;
+
+		InternalEObject currentEObject = eobj;
+		while (currentEObject.eContainer() != null && !currentEObject.eContainmentFeature().isResolveProxies()) {
+			currentEObject = (InternalEObject) currentEObject.eContainer();
+		}
+		if (currentEObject.eResource() != this) {
+			currentEObject.eSetResource(this, null);
 		}
 	}
 

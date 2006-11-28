@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.15 2006/11/12 23:59:17 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.16 2006/11/28 06:13:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -29,6 +29,8 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
+import org.eclipse.emf.teneo.ecore.EClassNameStrategyUtils;
 import org.eclipse.emf.teneo.util.SQLCaseStrategy;
 import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
 
@@ -38,7 +40,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class PersistenceOptions {
 
@@ -315,8 +317,9 @@ public class PersistenceOptions {
 	}
 
 	/** Returns the qualify entity names option, returns QUALIFY_ENTITY_NAME_NO ("no") */
-	public String getQualifyEntityName() {
-		return properties.getProperty(QUALIFY_ENTITY_NAME, QUALIFY_ENTITY_NAME_NO);
+	public EClassNameStrategy getEClassNameStrategy() {
+		// note create uses singletons
+		return EClassNameStrategyUtils.create(properties.getProperty(QUALIFY_ENTITY_NAME, QUALIFY_ENTITY_NAME_NO));
 	}
 
 	/** Returns the default second level caching strategy, default value is NONE (no second level caching). */
