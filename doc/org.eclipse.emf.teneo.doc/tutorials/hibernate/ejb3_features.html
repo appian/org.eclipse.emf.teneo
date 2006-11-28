@@ -136,8 +136,20 @@
 <a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">GMF Editor Tutorial</div>
 <div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial1.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial2.html">Environment Setup</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial3.html">Running the editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Details</div>
+<div id="menu_1.5" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
 </div>
@@ -162,9 +174,12 @@
 <div class="menuitem">
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
 </div>
-<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
-<div id="menu_selected_1.5" class="selectedmenuitemgroup">
+</div>
+<div onclick="SwitchMenu('menu_selected_1.6')" id="menu_selected_1.6Title" class="menutitle">Annotations (JPA/EJB3)</div>
+<div id="menu_selected_1.6" class="selectedmenuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
 </div>
@@ -175,8 +190,8 @@
 <div class="menupagetitle">JPA/EJB3</div>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
-<div id="menu_1.6" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">XML Schema</div>
+<div id="menu_1.7" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/features_details.html">XML Schema Support</a>
 </div>
@@ -187,11 +202,8 @@
 <a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
-<div id="menu_1.7" class="menuitemgroup">
-<div class="menuitem">
-<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
-</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Support</div>
+<div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
@@ -202,8 +214,8 @@
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
-<div id="menu_1.8" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.9')" id="menu_1.9Title" class="menutitle">Developer</div>
+<div id="menu_1.9" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/svn.html">CVS</a>
 </div>
@@ -411,6 +423,8 @@
 				
 <li>Columns</li>
 				
+<li>Fetch</li>
+				
 <li>GenericGenerator</li>
 				
 <li>IdBag</li>
@@ -425,12 +439,12 @@
 		
 </div>
 		
-<a name="N100DA"></a><a name="Annotation+notes"></a>
+<a name="N100DD"></a><a name="Annotation+notes"></a>
 <div class="h3">
 <h3>Annotation notes</h3>
 			
 			
-<a name="N100E0"></a><a name="edatatype"></a>
+<a name="N100E3"></a><a name="edatatype"></a>
 <div class="h4">
 <h4>Annotations on EDataType</h4>
 <p>Every JPA annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
@@ -440,7 +454,7 @@
 			and the EDataType have the same annotation then the annotation on the EAttribute is used.</p>
 </div>
 			
-<a name="N100E9"></a><a name="transient"></a>
+<a name="N100EC"></a><a name="transient"></a>
 <div class="h4">
 <h4>Transient on EClass</h4>
 <p>The Transient annotation can also be used on an EClass. This prevents an EClass from being mapped and be persisted.</p>
@@ -449,7 +463,7 @@
 </div>
 		
 		
-<a name="N100F6"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
+<a name="N100F9"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
 <div class="h4">
 <h4>Unique annotation added to OneToMany to force a join table for 1:n relations</h4>
 <p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
@@ -471,7 +485,7 @@
 </div>
 		
 		
-<a name="N1010A"></a><a name="indexed"></a>
+<a name="N1010D"></a><a name="indexed"></a>
 <div class="h4">
 <h4>Indexed Annotation</h4>
 <p>The http://annotation.elver.org/Indexed annotation can be used to signal to Elver that a certain association does
@@ -481,7 +495,7 @@
 </div>
 			
 			
-<a name="N10117"></a><a name="EmbeddedID+annotation"></a>
+<a name="N1011A"></a><a name="EmbeddedID+annotation"></a>
 <div class="h4">
 <h4>EmbeddedID annotation</h4>
 <p>EmbeddedID lets you use an embedded class as an entity's composite primary key.</p>
@@ -493,7 +507,7 @@
 </div>
 			
 			
-<a name="N10128"></a><a name="lob_notes"></a>
+<a name="N1012B"></a><a name="lob_notes"></a>
 <div class="h4">
 <h4>Lob annotation</h4>
 <p>

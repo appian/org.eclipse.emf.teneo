@@ -1,0 +1,372 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../../skin/tigris.css";
+          @import "../../skin/quirks.css";
+          @import "../../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../../">
+<script type="text/javascript" src="../../skin/tigris.js"></script><script src="../../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Running the GMF Editor</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../../images/empty.gif"></a>
+</div>
+</td><td valign="top" align="right">
+<div class="right" align="right" id="login">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
+		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+</form>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../../index.html">Home</a></td><th><a class="base-selected" href="../../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.4')" id="menu_selected_1.4Title" class="menutitle">GMF Editor Tutorial</div>
+<div id="menu_selected_1.4" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/gmftutorial/tutorial1.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/gmftutorial/tutorial2.html">Environment Setup</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">Running the editor</div>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Details</div>
+<div id="menu_1.5" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">Annotations (JPA/EJB3)</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/ejb3_features.html">JPA/EJB3</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">XML Schema</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Support</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/mailinglist.html">Newsgroup</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.9')" id="menu_1.9Title" class="menutitle">Developer</div>
+<div id="menu_1.9" class="menuitemgroup">
+<div class="menuitem">
+<a href="../../hibernate/svn.html">CVS</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Running the GMF Editor</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#Link+to+the+database">Link to the database</a>
+</li>
+<li>
+<a href="#Running+the+diagram">Running the diagram</a>
+</li>
+<li>
+<a href="#Hibernate+Resources">Hibernate Resources</a>
+</li>
+<li>
+<a href="#Possible+issues">Possible issues</a>
+</li>
+</ul>
+		
+<p>This section replaces the 'Running the diagram' part of the GMF tutorial.</p>
+		
+<a name="N10011"></a><a name="Link+to+the+database"></a>
+<div class="h3">
+<h3>Link to the database</h3>
+			
+			
+<p>Teneo requires connection information as well as which epackages are to be persisted
+			in the database. For this tutorial this information is set in a property file.</p>
+			
+<p>You can download a property file with most information set for the mindmap tutorial <a href="teneo.mindmap">here</a>.</p>
+			
+<p>Remarks:</p>
+			
+<ul>
+			
+<li>The database properties in the property file have to be changed to contain your own database connection 
+			information.</li>
+			
+<li>
+<em>The property file is set to use the database 'mindmap'. This database has to exist (but can be empty).</em>
+</li>
+			
+</ul>
+		
+</div>
+		
+<a name="N1002F"></a><a name="Running+the+diagram"></a>
+<div class="h3">
+<h3>Running the diagram</h3>
+		
+<p>To run the diagram start a second workbench and create a project. Then save the property file 
+		in the project. The property file must have the extension mindmap.</p>
+		
+<p>Next right click on the property file and select 'Initialize mindmap_diagram diagram file'.
+		</p>
+			
+<p>
+<img alt="Initialize diagram" src="../images/gmf_initialize.jpg"></p>
+		
+<p>Just select the default choices in the wizard. After pressing finish the tables in
+		the database are created and the mindmap diagram editor is opened.
+		</p>
+		
+<p></p>
+		
+<p>
+			
+<img alt="Initialize diagram" src="../images/gmf_diagram1.jpg"></p>
+		
+<p>Now you can create topics and relate them. When you press save the data is stored in the database.
+			</p>
+<p>
+<img alt="Save diagram" src="../images/gmf_diagram2.jpg"></p>
+		
+<p>You can close the editor and re-open it by right-clicking on the mindmap_diagram file. The open logic assumes 
+		that the mindmap_diagram file and the .mindmap file are in the same location.
+			<img alt="Open diagram" src="../images/gmf_reopen.jpg"></p>
+		
+</div>
+		
+<a name="N10058"></a><a name="Hibernate+Resources"></a>
+<div class="h3">
+<h3>Hibernate Resources</h3>
+		
+<p>This tutorial makes use of a specific implementation of EMF resource for Hibernate. For more
+		information regarding the use of these resources see <a href="../hibernateresources.html">here</a>.
+		</p>
+		
+</div>
+		
+<a name="N10065"></a><a name="Possible+issues"></a>
+<div class="h3">
+<h3>Possible issues</h3>		
+			
+<p>
+<em>If you get this exception then you did not set the Eclipse-BuddyPolicy in the plugin containing the Hibernate libraries
+			(see <a href="../installation.html#Hibernate+Libraries">here</a>)</em>:</p>
+			
+<pre class="code">
+org.hibernate.MappingException: Could not determine type for: 
+	org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerUserType, for columns: [org.hibernate.mapping.Column(econtainer_class), org.hibernate.mapping.Column(e_container)]
+at org.hibernate.mapping.SimpleValue.getType(SimpleValue.java:266)
+at org.hibernate.mapping.SimpleValue.isValid(SimpleValue.java:253)
+at org.hibernate.mapping.Property.isValid(Property.java:185)
+			</pre>
+		
+</div>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2006 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

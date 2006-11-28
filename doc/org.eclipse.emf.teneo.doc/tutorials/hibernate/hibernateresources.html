@@ -136,8 +136,20 @@
 <a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_selected_1.4')" id="menu_selected_1.4Title" class="menutitle">Details</div>
-<div id="menu_selected_1.4" class="selectedmenuitemgroup">
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">GMF Editor Tutorial</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial1.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial2.html">Environment Setup</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial3.html">Running the editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Details</div>
+<div id="menu_selected_1.5" class="selectedmenuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
 </div>
@@ -162,9 +174,12 @@
 <div class="menuitem">
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
-<div id="menu_1.5" class="menuitemgroup">
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">Annotations (JPA/EJB3)</div>
+<div id="menu_1.6" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
 </div>
@@ -175,8 +190,8 @@
 <a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
-<div id="menu_1.6" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">XML Schema</div>
+<div id="menu_1.7" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/features_details.html">XML Schema Support</a>
 </div>
@@ -187,11 +202,8 @@
 <a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
-<div id="menu_1.7" class="menuitemgroup">
-<div class="menuitem">
-<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
-</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Support</div>
+<div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
@@ -202,8 +214,8 @@
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
-<div id="menu_1.8" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.9')" id="menu_1.9Title" class="menutitle">Developer</div>
+<div id="menu_1.9" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/svn.html">CVS</a>
 </div>
@@ -266,6 +278,9 @@
 </ul>
 </li>
 <li>
+<a href="#Load+of+referenced+Objects">Load of referenced Objects</a>
+</li>
+<li>
 <a href="#Sharing+one+Session+between+Resources%2C+One+transaction+when+saving+multiple+resources">Sharing one Session between Resources, One transaction when saving multiple resources</a>
 </li>
 <li>
@@ -278,7 +293,7 @@
 <a href="#Resource+use+after+Hibernate+exception">Resource use after Hibernate exception</a>
 </li>
 <li>
-<a href="#Closing+a+resource-N100BD">Closing a resource</a>
+<a href="#Closing+a+resource-N100D2">Closing a resource</a>
 </li>
 </ul>
 </li>
@@ -387,8 +402,38 @@
 </div>
 	 
 </div>
+	 
+<a name="N10089"></a><a name="Load+of+referenced+Objects"></a>
+<div class="h3">
+<h3>Load of referenced Objects</h3>
+	 
+<p>Objects can be loaded explicitly (by using queries) or they are loaded implicitly when a 'lazy' collection is loaded or
+	 there are references from explicitly loaded objects. The resource implementation can handle implicit loading of additional objects in different ways.
+	 The implicit load strategy is controlled by setting the StoreResource.LOAD_STRATEGY_PARAM parameter. This parameter can be passed as an option to 
+	 the load method or as a parameter in the uri. It can have two values:
+	 </p>
+	 
+<ul>
+	 
+<li>StoreResource.SET_ERESOURCE (default): in this mode only the explicitly loaded objects are present in the contents of the resource
+	 (i.e. in the top of the resource content). Objects may be present as contained children of explicitly loaded objects. Eventhough the 
+	 referenced objects are not directly present in the contents the eResource of the referenced objects is set to 
+	 the loading resource. This is only done if objects are not already present in another resource.</li>
+	 
+<li>StoreResource.ADD_TO_CONTENTS: this value means that any referenced objects and the container of a 
+	 loaded object (if resolveProxies==false for the containment relation) are added to the contents of the resource.
+	 This means that these objects are present in the top of the resource. If resolveProxies==true then the container of a
+	 loaded object is not loaded in the resource as the container may be in a different resource. Implicitly loaded objects are only added to the 
+	 loading resource if they are not already present in another resource.</li>
+	 
+</ul>
+	 
+<p>Implicit loading is mainly of importance when loading a resource using queries. In the default load method all top-entities are loaded anyway and then 
+	 all objects are reachable through a loaded container.</p>
+	 
+</div>
     
-<a name="N10089"></a><a name="Sharing+one+Session+between+Resources%2C+One+transaction+when+saving+multiple+resources"></a>
+<a name="N1009E"></a><a name="Sharing+one+Session+between+Resources%2C+One+transaction+when+saving+multiple+resources"></a>
 <div class="h3">
 <h3>Sharing one Session between Resources, One transaction when saving multiple resources</h3>
       
@@ -453,7 +498,7 @@
 		
 </div>
 		
-<a name="N100A1"></a><a name="Closing+a+resource"></a>
+<a name="N100B6"></a><a name="Closing+a+resource"></a>
 <div class="h3">
 <h3>Closing a resource</h3>
 	  		
@@ -465,12 +510,12 @@
 	
 </div>
     
-<a name="N100AB"></a><a name="Other+aspects"></a>
+<a name="N100C0"></a><a name="Other+aspects"></a>
 <div class="h3">
 <h3>Other aspects</h3>
       
 		
-<a name="N100B1"></a><a name="Resource+use+after+Hibernate+exception"></a>
+<a name="N100C6"></a><a name="Resource+use+after+Hibernate+exception"></a>
 <div class="h4">
 <h4>Resource use after Hibernate exception</h4>
 <p>When a Hibernate error/exception occurs when working with a Hibernate resource it can not
@@ -478,7 +523,7 @@
 <p>In a future resource implementation this issue will be solved.</p>
 </div>
 		
-<a name="N100BD"></a><a name="Closing+a+resource-N100BD"></a>
+<a name="N100D2"></a><a name="Closing+a+resource-N100D2"></a>
 <div class="h4">
 <h4>Closing a resource</h4>
 <p>The Hibernate EMF resource can be closed by calling the unload method. 

@@ -136,8 +136,20 @@
 <a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_selected_1.4')" id="menu_selected_1.4Title" class="menutitle">Details</div>
-<div id="menu_selected_1.4" class="selectedmenuitemgroup">
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">GMF Editor Tutorial</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial1.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial2.html">Environment Setup</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial3.html">Running the editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Details</div>
+<div id="menu_selected_1.5" class="selectedmenuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
 </div>
@@ -162,9 +174,12 @@
 <div class="menuitem">
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
-<div id="menu_1.5" class="menuitemgroup">
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">Annotations (JPA/EJB3)</div>
+<div id="menu_1.6" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
 </div>
@@ -175,8 +190,8 @@
 <a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
-<div id="menu_1.6" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">XML Schema</div>
+<div id="menu_1.7" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/features_details.html">XML Schema Support</a>
 </div>
@@ -187,11 +202,8 @@
 <a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
-<div id="menu_1.7" class="menuitemgroup">
-<div class="menuitem">
-<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
-</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Support</div>
+<div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
@@ -202,8 +214,8 @@
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
-<div id="menu_1.8" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.9')" id="menu_1.9Title" class="menutitle">Developer</div>
+<div id="menu_1.9" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/svn.html">CVS</a>
 </div>
@@ -261,6 +273,9 @@
 </li>
 <li>
 <a href="#Automatic+creation+of+TypeDef+for+EDataType">Automatic creation of TypeDef for EDataType</a>
+</li>
+<li>
+<a href="#Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties">Client-Server scenario: requires explicitly modelled id and version properties</a>
 </li>
 <li>
 <a href="#Synthetic+ID+and+Version+properties">Synthetic ID and Version properties</a>
@@ -397,7 +412,19 @@
 		
 </div>
 		
-<a name="N1008A"></a><a name="Synthetic+ID+and+Version+properties"></a>
+<a name="N1008A"></a><a name="Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties"></a>
+<div class="h3">
+<h3>Client-Server scenario: requires explicitly modelled id and version properties</h3>
+			
+<p>When Teneo detects that a certain type does not have an id or version annotated property then
+			it will add these automatically (see next point). The synthetic id and version are hidden for the developer. However, the synthetic id 
+			and version will not work when objects are (de)serialized for example in a client-server situation. In this case you
+			need to explicitly model an id and a version property and annotate them as such using jpa annotations.
+			</p>
+		
+</div>
+		
+<a name="N10093"></a><a name="Synthetic+ID+and+Version+properties"></a>
 <div class="h3">
 <h3>Synthetic ID and Version properties</h3>
 			
@@ -413,14 +440,14 @@
 		
 </div>
 		
-<a name="N1009A"></a><a name="cutpaste"></a>
+<a name="N100A3"></a><a name="cutpaste"></a>
 <div class="h3">
 <h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
 			
 			
 <p>In the standard approach it is not possible to move an EObject from one containment relation to another containment relation. A move
 			between containment relations corresponds to a cut and paste in the EMF editor. The reason is that Teneo will 
-			specify an orphan-delete cascade for a containment relation. This has a consequence that Hibernate will throw 
+			specify an orphan-delete cascade for a containment relation. This has as a consequence that Hibernate will throw 
 			an exception (deleted object would be re-saved by cascade, remove deleted object from associations) when you move an EObject from its container to another container. 
 			See <a class="external" href="http://opensource.atlassian.com/projects/hibernate/browse/HHH-785">here</a> for a description.</p>
 			
@@ -447,7 +474,7 @@
 		
 </div>
 		
-<a name="N100BB"></a><a name="Validation"></a>
+<a name="N100C4"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
 			
@@ -483,7 +510,7 @@ public class MyValidator extends EObjectValidator
 		
 </div>
 		
-<a name="N100CF"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
+<a name="N100D8"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
 <div class="h3">
 <h3>Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</h3>
 			

@@ -1,0 +1,42 @@
+#
+# Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Eclipse Public License v1.0
+# which accompanies this distribution, and is available at
+# http://www.eclipse.org/legal/epl-v10.html
+#
+
+# @author <a href="mtaal@elver.org">Martin Taal</a>
+# @version $Revision: 1.1 $ $Date: 2006/11/28 23:12:15 $
+
+# name: the name under which this information is used to register a EMFDataStore/Session Factory. Must be 
+# 		unique. IMPORTANT: this should be the same name as used in the calls to HibernateHelper
+# 		in the initialization code in the EditorPlugin class. 
+# 		In the Library examples the used name is: library.
+# nsuri: a comma delimited list of namespace uris (incl. http://) of epackages that are stored in 
+#		this EMFDataStore/Session Factory.
+# query1, query2, ...: can be used to filter the content of the resource at the load action
+# editorid: the id of the editor to use when opening this resource. This id can be found
+# 			in the MANIFEST.MF > extensions tab > org.eclipse.ui.editors extension > 
+# 			Extension Element Details > id field.
+#			Either the editorid or the editorextension can be specified
+# editorextension: the id of the editor to use when opening this resource. This id can be found
+# 			in the MANIFEST.MF > extensions tab > org.eclipse.ui.editors extension > 
+# 			Extension Element Details > extensions field. In the Library EMF tutorial this extension
+# 			is: library.
+#			Either the editorid or the editorextension can be specified
+# dbname: the database name
+# dburl: the database url with the database name.
+# dbdialect: the database dialect (see hibernate documentation at: http://www.hibernate.org/hib_docs/v3/reference/en/html/session-configuration.html#configuration-optional-dialects)
+# dbuser: the database user
+# dbpassword: the password of the database user
+# dbdriver: the class name of the database driver
+
+name=mindmap
+nsuri=http://www.example.org/mindmap
+dbname=mindmap
+dburl=jdbc:mysql://127.0.0.1:3306/mindmap
+dbdialect=org.hibernate.dialect.MySQLInnoDBDialect
+dbuser=root
+dbpassword=root
+dbdriver=com.mysql.jdbc.Driver

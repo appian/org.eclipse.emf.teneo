@@ -153,6 +153,9 @@
 <div class="menuitem">
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
+<div class="menuitem">
+<a href="../jpox/troubleshooting.html">Troubleshooting</a>
+</div>
 </div>
 <div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
@@ -186,9 +189,6 @@
 </div>
 <div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
 <div id="menu_1.7" class="menuitemgroup">
-<div class="menuitem">
-<a href="../jpox/troubleshooting.html">Troubleshooting</a>
-</div>
 <div class="menuitem">
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
@@ -353,7 +353,7 @@ tm.addType(List.class.getName(), EListMapping.class.getName(),
 			
 <p>In the standard approach it is not possible to move an EObject from one containment relation to another containment relation. A move
 			between containment relations corresponds to a cut and paste in the EMF editor. The reason is that Teneo will 
-			specify an dependent-element="true" for a containment relation. This has a consequence that JPOX will throw 
+			specify an dependent-element="true" for a containment relation. This has as a consequence that JPOX will throw 
 			an exception (Cannot write fields to a deleted object) when you move an EObject from its container to another container.</p> 
 			
 <p>

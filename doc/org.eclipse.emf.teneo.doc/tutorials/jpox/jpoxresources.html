@@ -153,6 +153,9 @@
 <div class="menuitem">
 <a href="../jpox/jpoxdatastore.html">JpoxDataStore</a>
 </div>
+<div class="menuitem">
+<a href="../jpox/troubleshooting.html">Troubleshooting</a>
+</div>
 </div>
 <div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
 <div id="menu_1.5" class="menuitemgroup">
@@ -186,9 +189,6 @@
 </div>
 <div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">Support</div>
 <div id="menu_1.7" class="menuitemgroup">
-<div class="menuitem">
-<a href="../jpox/troubleshooting.html">Troubleshooting</a>
-</div>
 <div class="menuitem">
 <a href="../jpox/upgrading.html">Upgrading</a>
 </div>
@@ -267,7 +267,10 @@
 </ul>
 </li>
 <li>
-<a href="#Closing+a+resource-N100B0">Closing a resource</a>
+<a href="#Load+of+referenced+Objects">Load of referenced Objects</a>
+</li>
+<li>
+<a href="#Closing+a+resource-N100C5">Closing a resource</a>
 </li>
 </ul>
 	 
@@ -458,8 +461,38 @@
 </div>
 	 
 </div>
+	 
+<a name="N100B0"></a><a name="Load+of+referenced+Objects"></a>
+<div class="h3">
+<h3>Load of referenced Objects</h3>
+	 
+<p>Objects can be loaded explicitly (by using queries) or they are loaded implicitly when a 'lazy' collection is loaded or
+	 there are references from explicitly loaded objects. The resource implementation can handle implicit loading of additional objects in different ways.
+	 The implicit load strategy is controlled by setting the StoreResource.LOAD_STRATEGY_PARAM parameter. This parameter can be passed as an option to 
+	 the load method or as a parameter in the uri. It can have two values:
+	 </p>
+	 
+<ul>
+	 
+<li>StoreResource.SET_ERESOURCE (default): in this mode only the explicitly loaded objects are present in the contents of the resource
+	 (i.e. in the top of the resource content). Objects may be present as contained children of explicitly loaded objects. Eventhough the 
+	 referenced objects are not directly present in the contents the eResource of the referenced objects is set to 
+	 the loading resource. This is only done if objects are not already present in another resource.</li>
+	 
+<li>StoreResource.ADD_TO_CONTENTS: this value means that any referenced objects and the container of a 
+	 loaded object (if resolveProxies==false for the containment relation) are added to the contents of the resource.
+	 This means that these objects are present in the top of the resource. If resolveProxies==true then the container of a
+	 loaded object is not loaded in the resource as the container may be in a different resource. Implicitly loaded objects are only added to the 
+	 loading resource if they are not already present in another resource.</li>
+	 
+</ul>
+	 
+<p>Implicit loading is mainly of importance when loading a resource using queries. In the default load method all top-entities are loaded anyway and then 
+	 all objects are reachable through a loaded container.</p>
+	 
+</div>
 		
-<a name="N100B0"></a><a name="Closing+a+resource-N100B0"></a>
+<a name="N100C5"></a><a name="Closing+a+resource-N100C5"></a>
 <div class="h3">
 <h3>Closing a resource</h3>
 	  		

@@ -136,8 +136,20 @@
 <a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">Details</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">GMF Editor Tutorial</div>
 <div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial1.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial2.html">Environment Setup</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial3.html">Running the editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Details</div>
+<div id="menu_selected_1.5" class="selectedmenuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
 </div>
@@ -162,9 +174,12 @@
 <div class="menuitem">
 <a href="../hibernate/resource_utility.html">Resource Utility</a>
 </div>
+<div class="menupage">
+<div class="menupagetitle">Troubleshooting</div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Annotations (JPA/EJB3)</div>
-<div id="menu_1.5" class="menuitemgroup">
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">Annotations (JPA/EJB3)</div>
+<div id="menu_1.6" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
 </div>
@@ -175,8 +190,8 @@
 <a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">XML Schema</div>
-<div id="menu_1.6" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">XML Schema</div>
+<div id="menu_1.7" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/features_details.html">XML Schema Support</a>
 </div>
@@ -187,11 +202,8 @@
 <a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_selected_1.7')" id="menu_selected_1.7Title" class="menutitle">Support</div>
-<div id="menu_selected_1.7" class="selectedmenuitemgroup">
-<div class="menupage">
-<div class="menupagetitle">Troubleshooting</div>
-</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Support</div>
+<div id="menu_1.8" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/upgrading.html">Upgrading</a>
 </div>
@@ -202,8 +214,8 @@
 <a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Developer</div>
-<div id="menu_1.8" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_1.9')" id="menu_1.9Title" class="menutitle">Developer</div>
+<div id="menu_1.9" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/svn.html">CVS</a>
 </div>
@@ -254,6 +266,9 @@
 </li>
 <li>
 <a href="#Cut+and+Paste+does+not+work+in+the+Editor">Cut and Paste does not work in the Editor</a>
+</li>
+<li>
+<a href="#Client-server+scenario%3A+when+saving+on+the+server+always+new+objects+are+created+or+I+get+a+duplicate+key+exception">Client-server scenario: when saving on the server always new objects are created or I get a duplicate key exception</a>
 </li>
 <li>
 <a href="#Column+name+e_version+not+supported+by+database">Column name e_version not supported by database</a>
@@ -419,8 +434,18 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 </p>
 		
 </div>
+		
+<a name="N10092"></a><a name="Client-server+scenario%3A+when+saving+on+the+server+always+new+objects+are+created+or+I+get+a+duplicate+key+exception"></a>
+<div class="h3">
+<h3>Client-server scenario: when saving on the server always new objects are created or I get a duplicate key exception</h3>
+		
+<p>What can be the case is that you did not explicitly model an id and/or version attribute in each type. Both are required to be 
+		modeled explicitly, see <a href="hibernate_details.html#Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties">here</a>.
+		</p>
+		
+</div>
 			
-<a name="N10092"></a><a name="Column+name+e_version+not+supported+by+database"></a>
+<a name="N1009F"></a><a name="Column+name+e_version+not+supported+by+database"></a>
 <div class="h3">
 <h3>Column name e_version not supported by database</h3>
 			
@@ -430,7 +455,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N1009F"></a><a name="Column+names+too+long"></a>
+<a name="N100AC"></a><a name="Column+names+too+long"></a>
 <div class="h3">
 <h3>Column names too long</h3>
 			
@@ -440,7 +465,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100AC"></a><a name="org.hibernate.DuplicateMappingException%3A+Duplicate+class%2Fentitymapping"></a>
+<a name="N100B9"></a><a name="org.hibernate.DuplicateMappingException%3A+Duplicate+class%2Fentitymapping"></a>
 <div class="h3">
 <h3>org.hibernate.DuplicateMappingException: Duplicate class/entitymapping</h3>
 			
@@ -451,7 +476,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100B9"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
+<a name="N100C6"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
 <div class="h3">
 <h3>Created new model through new model wizard: diagnostic error</h3>
 			
@@ -469,7 +494,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100C5"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer"></a>
+<a name="N100D2"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer"></a>
 <div class="h3">
 <h3>java.lang.NoClassDefFoundError when starting/initializing runtime layer</h3>
 				
@@ -488,7 +513,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100D8"></a><a name="No+class+def+found%3A+org.hibernate.proxy.ProxyFactory"></a>
+<a name="N100E5"></a><a name="No+class+def+found%3A+org.hibernate.proxy.ProxyFactory"></a>
 <div class="h3">
 <h3>No class def found: org.hibernate.proxy.ProxyFactory</h3>
 			
@@ -500,7 +525,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100E1"></a><a name="Could+not+determine+type+for%3A+org.eclipse.emf.common.util.AbstractEnumerator%2C+for+columns%3A+%5Borg.hibernate.mapping.Column%28enu%29%5D"></a>
+<a name="N100EE"></a><a name="Could+not+determine+type+for%3A+org.eclipse.emf.common.util.AbstractEnumerator%2C+for+columns%3A+%5Borg.hibernate.mapping.Column%28enu%29%5D"></a>
 <div class="h3">
 <h3>Could not determine type for: org.eclipse.emf.common.util.AbstractEnumerator, for columns: [org.hibernate.mapping.Column(enu)]</h3>
 			
@@ -522,7 +547,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100F0"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
+<a name="N100FD"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
 <div class="h3">
 <h3>The resource is empty in the generated editor</h3>
 				
@@ -531,7 +556,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100FE"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin"></a>
+<a name="N1010B"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin"></a>
 <div class="h3">
 <h3>Update manager does not find the upgrade of the EMF Hibernate plugin</h3>
 			
@@ -539,7 +564,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10107"></a><a name="Editor+does+not+start%2C++the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
+<a name="N10114"></a><a name="Editor+does+not+start%2C++the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
 <div class="h3">
 <h3>Editor does not start,  the error log gives a sql error 'Missing column....'</h3>
 			
@@ -550,7 +575,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10114"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin"></a>
+<a name="N10121"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin"></a>
 <div class="h3">
 <h3>Editor does not start, ClassNotFoundException on the Editor Plugin</h3>
 			
@@ -561,7 +586,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N1011D"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
+<a name="N1012A"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
 <div class="h3">
 <h3>Editor does not start, AssertionFailedException</h3>
 			
@@ -581,7 +606,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N1012C"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
+<a name="N10139"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
 <div class="h3">
 <h3>Validation exception on enumerate properties when saving the editor content</h3>
 				
@@ -598,7 +623,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10140"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
+<a name="N1014D"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
 <div class="h3">
 <h3>Stacktraces when starting Eclipse with already open EMF editor</h3>
 				
@@ -613,7 +638,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N1014F"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
+<a name="N1015C"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
 <div class="h3">
 <h3>Teneo does not see my changes in the ecore model</h3>
 				
@@ -624,7 +649,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10158"></a><a name="JoinTable+name+clash"></a>
+<a name="N10165"></a><a name="JoinTable+name+clash"></a>
 <div class="h3">
 <h3>JoinTable name clash</h3>
 			
