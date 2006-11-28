@@ -11,31 +11,31 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInterceptor.java,v 1.2 2006/08/03 09:58:19 mtaal Exp $
+ * $Id: EMFInterceptor.java,v 1.3 2006/11/28 06:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.util.StoreUtil;
+import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.hibernate.EmptyInterceptor;
 
 /**
  * Intercepts the getEntityName call to return the EClass name as the entity name.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class EMFInterceptor extends EmptyInterceptor {
 
 	/** The qualify property used to compute the eclassname */
-	private final String qualify;
+	private final EClassNameStrategy qualifyStrategy;
 	
 	/** Constructor */
 	public EMFInterceptor(PersistenceOptions po) {
-		qualify = po.getQualifyEntityName();
+		qualifyStrategy = po.getEClassNameStrategy();
 	}
 	
 	/**
@@ -47,7 +47,7 @@ public class EMFInterceptor extends EmptyInterceptor {
 		if (object instanceof EObject) {
 			// TODO handle featuremap
 			EObject eobj = (EObject) object;
-			return StoreUtil.getEClassURI(eobj.eClass(), qualify);
+			return qualifyStrategy.toUniqueName(eobj.eClass());
 		}
 		
 		return super.getEntityName(object);

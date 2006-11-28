@@ -11,11 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.11 2006/11/15 17:17:34 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.12 2006/11/28 06:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
- 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -43,6 +43,7 @@ import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
+import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
@@ -74,7 +75,7 @@ import org.hibernate.mapping.SimpleValue;
 import org.hibernate.mapping.Table;
 import org.hibernate.mapping.Value;
 import org.hibernate.tool.hbm2ddl.SchemaUpdate;
- 
+
 /**
  * Holds the SessionFactory and performs different initialization related actions. Initializes the database and offers
  * xml import and export methods. In addition can be used to retrieve all referers to a certain eobject.
@@ -83,7 +84,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class HbDataStore {
@@ -175,7 +176,7 @@ public class HbDataStore {
 
 		// set the event listeners
 		setEventListeners();
-		
+
 		updateDatabaseSchema();
 
 		log.debug("Registering datastore with persistent classes");
@@ -201,8 +202,8 @@ public class HbDataStore {
 		final Configuration cfg = getConfiguration();
 		for (Iterator pcs = cfg.getClassMappings(); pcs.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
-			if (pc.getMetaAttribute(HbMapperConstants.ECLASS_META) != null ||
-					pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null) { // featuremap
+			if (pc.getMetaAttribute(HbMapperConstants.ECLASS_META) != null
+					|| pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null) { // featuremap
 				// entry
 				pc.addTuplizer(EntityMode.MAP, getHbContext().getFeatureMapEntryTuplizer(cfg).getName());
 			} else {
@@ -252,13 +253,18 @@ public class HbDataStore {
 	 * Sets the emf component tuplizer (if it is an eclass) or the hibernate component tuplizer
 	 */
 	private void setComponentTuplizer(Component component, Configuration cfg) {
-		if (StoreUtil.getEClassFromURI(component.getComponentClassName(), getEPackages()) != null) { // component
-			// is a
-			// valid
-			// eclass
-			component.addTuplizer(EntityMode.MAP, getHbContext().getEMFComponentTuplizerClass(cfg).getName());
-			HbHelper.INSTANCE.registerDataStoreByComponent(this, component);
+		// check if the eclass exists
+		try {
+			EClass eClass = getPersistenceOptions().getEClassNameStrategy().toEClass(component.getComponentClassName(),
+					getEPackages());
+		} catch (IllegalArgumentException e) {
+			return; // not a valud eclass;
 		}
+		// is a
+		// valid
+		// eclass
+		component.addTuplizer(EntityMode.MAP, getHbContext().getEMFComponentTuplizerClass(cfg).getName());
+		HbHelper.INSTANCE.registerDataStoreByComponent(this, component);
 	}
 
 	/** Compute the top eclasses */
@@ -334,9 +340,7 @@ public class HbDataStore {
 
 	/** Sets the interceptor */
 	protected void setInterceptor() {
-		hbConfiguration
-				.setInterceptor(getHbContext().createInterceptor(getConfiguration(), 
-						getPersistenceOptions()));
+		hbConfiguration.setInterceptor(getHbContext().createInterceptor(getConfiguration(), getPersistenceOptions()));
 	}
 
 	/**
@@ -364,11 +368,10 @@ public class HbDataStore {
 	/** Generate a hibernate mapping xml string from a set of epackages */
 	protected String mapEPackages() {
 		log.debug("Generating mapping file from in-mem ecore");
-        // DCB: Use Hibernate-specific annotation processing mechanism.  This allows use of
-        //      Hibernate-specific annotations.
-        final PersistenceOptions po = getPersistenceOptions();
-        PAnnotatedModel paModel = 
-            MappingBuilder.INSTANCE.buildMapping(getEPackages(), po);
+		// DCB: Use Hibernate-specific annotation processing mechanism. This allows use of
+		// Hibernate-specific annotations.
+		final PersistenceOptions po = getPersistenceOptions();
+		PAnnotatedModel paModel = MappingBuilder.INSTANCE.buildMapping(getEPackages(), po);
 		HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
 		return hmg.generateToString(paModel);
 	}
@@ -392,14 +395,17 @@ public class HbDataStore {
 		log.debug("Adding container mapping for " + pc.getEntityName());
 		// check if there are not alreadyecontai ner features for the eclass
 
-		EClass eclass = StoreUtil.getEClassFromURI(pc.getEntityName(), getEPackages());
-        // DCB: Provide a way to avoid container mappings for a particular class.  You'd do this if, for example,
-        // you never load the contained objects except through the containers... or, you don't fit the use case
-        // for which this was put together (i.e., the generated model editing code tries to eagerly resolve the
-        // container)
-        if (eclass == null || eclass.getEAnnotation("http://facet.elver.org/SkipContainerMappings") != null) {
-            return; // featuremap
-        }
+		final EClass eclass = getPersistenceOptions().getEClassNameStrategy().toEClass(pc.getEntityName(),
+				getEPackages());
+
+		// DCB: Provide a way to avoid container mappings for a particular class. You'd do this if, for example,
+		// you never load the contained objects except through the containers... or, you don't fit the use case
+		// for which this was put together (i.e., the generated model editing code tries to eagerly resolve the
+		// container)
+		if (eclass == null || eclass.getEAnnotation("http://facet.elver.org/SkipContainerMappings") != null) {
+			return; // featuremap
+		}
+
 		for (Iterator it = eclass.getEAllReferences().iterator(); it.hasNext();) {
 			EReference eref = (EReference) it.next();
 			if (eref.isContainer()) {
@@ -597,8 +603,7 @@ public class HbDataStore {
 		String targetEntityName = null;
 		if (referedTo instanceof EObject) {
 			final EObject eReferedTo = (EObject) referedTo;
-			targetEntityName = StoreUtil.getEClassURI(eReferedTo.eClass(), 
-					getPersistenceOptions().getQualifyEntityName());
+			targetEntityName = getPersistenceOptions().getEClassNameStrategy().toUniqueName(eReferedTo.eClass());
 		} else if (referedTo instanceof HibernateFeatureMapEntry) {
 			final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) referedTo;
 			targetEntityName = fme.getEntityName();
@@ -659,8 +664,8 @@ public class HbDataStore {
 			final PersistentClass pc = (PersistentClass) it.next();
 
 			// keep track which are the feature map entries
-			if (pc.getMetaAttribute(HbMapperConstants.ECLASS_META) != null ||
-					pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null)
+			if (pc.getMetaAttribute(HbMapperConstants.ECLASS_META) != null
+					|| pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null)
 				fmes.add(pc.getEntityName());
 
 			// everyone should have a list otherwise the copying of referers to
@@ -681,8 +686,15 @@ public class HbDataStore {
 				// the best.
 
 				final Property prop = (Property) propIt.next();
-				final EStructuralFeature ef = StoreUtil.getEStructuralFeature(pc.getEntityName(), prop.getName(),
-						getEPackages());
+				EClass eClass;
+				try{
+					eClass = getPersistenceOptions().getEClassNameStrategy().toEClass(pc.getEntityName(), getEPackages());
+				} catch (IllegalArgumentException e) {
+					// ignoring exception on purpose
+					eClass = null;
+				}
+						
+				final EStructuralFeature ef = eClass == null ? null : StoreUtil.getEStructuralFeature(eClass, prop.getName());
 				try {
 					String toEntity = "";
 					boolean isContainer = false;
@@ -743,8 +755,8 @@ public class HbDataStore {
 								// prop.getCascadeStyle()
 								// ==
 								// CascadeStyle.ALL;
-								toEntity = StoreUtil.getEClassURI(((EReference) ef).getEReferenceType(),
-										getPersistenceOptions().getQualifyEntityName());
+								toEntity = getPersistenceOptions().getEClassNameStrategy().toUniqueName(
+										((EReference) ef).getEReferenceType());
 							} else if (ef instanceof EAttribute && ef.getEType() instanceof EClass) { // TODO
 								// can
 								// this
@@ -753,8 +765,7 @@ public class HbDataStore {
 								isContainer = true; // prop.getCascadeStyle().hasOrphanDelete()
 								// || prop.getCascadeStyle()
 								// == CascadeStyle.ALL;
-								toEntity = StoreUtil.getEClassURI((EClass) ef.getEType(), 
-										getPersistenceOptions().getQualifyEntityName());
+								toEntity = getPersistenceOptions().getEClassNameStrategy().toUniqueName((EClass) ef.getEType());
 							}
 							// filter out non eobjects
 							else {
@@ -797,7 +808,8 @@ public class HbDataStore {
 	 * list
 	 */
 	private ArrayList setRefersToOfSupers(String eClassUri, HashMap refersTo, ArrayList classDone) {
-		EClass eclass = StoreUtil.getEClassFromURI(eClassUri, getEPackages());
+		final EClassNameStrategy ens = getPersistenceOptions().getEClassNameStrategy();
+		EClass eclass = ens.toEClass(eClassUri, getEPackages());
 		if (eclass == null)
 			return new ArrayList();
 
@@ -805,14 +817,12 @@ public class HbDataStore {
 			return (ArrayList) refersTo.get(eclass);
 		}
 
-		final ArrayList thisList = (ArrayList) refersTo.get(StoreUtil.getEClassURI(eclass,
-				getPersistenceOptions().getQualifyEntityName()));
+		final ArrayList thisList = (ArrayList) refersTo.get(ens.toUniqueName(eclass));
 		if (thisList == null) {
 			return new ArrayList();
 		}
 		for (Iterator it = eclass.getESuperTypes().iterator(); it.hasNext();) {
-			String eclassUri = StoreUtil.getEClassURI((EClass) it.next(), 
-					getPersistenceOptions().getQualifyEntityName());
+			String eclassUri = ens.toUniqueName((EClass) it.next());
 			addUnique(thisList, setRefersToOfSupers(eclassUri, refersTo, classDone));
 		}
 		classDone.add(eclass);
@@ -862,9 +872,9 @@ public class HbDataStore {
 	}
 
 	/**
-	 * Gets the persistence options. The persistence options is a type representation of the persistence 
-	 * options. If not set through the setPersistenceProperties method then a properties file is searched
-	 * If found it is used to set the persistence options.
+	 * Gets the persistence options. The persistence options is a type representation of the persistence options. If not
+	 * set through the setPersistenceProperties method then a properties file is searched If found it is used to set the
+	 * persistence options.
 	 * 
 	 * <p>
 	 * If no properties have been set explicitly, the method will attempt to load them from the file

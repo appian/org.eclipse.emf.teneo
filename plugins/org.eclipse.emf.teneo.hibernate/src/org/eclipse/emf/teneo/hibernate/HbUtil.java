@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.7 2006/11/07 10:22:54 mtaal Exp $
+ * $Id: HbUtil.java,v 1.8 2006/11/28 06:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -21,6 +21,7 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -43,7 +44,7 @@ import org.hibernate.property.PropertyAccessor;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class HbUtil {
 
@@ -74,10 +75,11 @@ public class HbUtil {
 			return ds.getHbContext().createEContainerFeatureIDAccessor();
 		}
 
-		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(entityName, mappedProperty.getName(), ds.getEPackages());
+		final EClass eClass = ds.getPersistenceOptions().getEClassNameStrategy().toEClass(entityName, ds.getEPackages());
+		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass, mappedProperty.getName());;
 
 		if (efeature == null) {
-			throw new HbMapperException("Feature not found for entity/property " + entityName + "/" + mappedProperty.getName());
+			throw new HbMapperException("Feature not found for eclass/entity/property " + eClass.getName() + "/" + entityName + "/" + mappedProperty.getName());
 		}
 
 		log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + entityName + "/" + efeature.getName());
@@ -118,7 +120,6 @@ public class HbUtil {
 
 	/**
 	 * Returns the structural feature, handles the case of structural features which are part of a feature map entry.
-	 */
 	public static EStructuralFeature getFeature(PersistentClass pc, String propName, EPackage[] epacks) {
 		final MetaAttribute ma = pc.getMetaAttribute("eclass"); // TODO: externalize
 		final String eclassName;
@@ -129,6 +130,7 @@ public class HbUtil {
 		}
 		return StoreUtil.getEStructuralFeature(eclassName, propName, epacks);
 	}
+	 */
 
 	/** Creates and registers an emf data store using a set of generic store properties */
 	public static HbDataStore getCreateDataStore(Properties props) {

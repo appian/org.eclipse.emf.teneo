@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.4 2006/11/01 16:19:43 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.5 2006/11/28 06:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -25,7 +25,6 @@ import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
-import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.EntityMode;
 import org.hibernate.HibernateException;
 import org.hibernate.mapping.PersistentClass;
@@ -34,30 +33,29 @@ import org.hibernate.property.Getter;
 import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 import org.hibernate.proxy.ProxyFactory;
+import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.entity.AbstractEntityTuplizer;
 import org.hibernate.tuple.entity.EntityMetamodel;
-import org.hibernate.tuple.Instantiator;
 
 /**
- * Overrides the get and setidentifier methods to get the identifier from an internal cache instead of from the EMF object itself. The
- * same behavior for the getVersion methods. Also a specific object instantiator is used to make use of the emf efactories.
+ * Overrides the get and setidentifier methods to get the identifier from an internal cache instead of from the EMF
+ * object itself. The same behavior for the getVersion methods. Also a specific object instantiator is used to make use
+ * of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
 
 	/** The logger */
-//	private static Log log = LogFactory.getLog(EMFTuplizer.class);
-
+	// private static Log log = LogFactory.getLog(EMFTuplizer.class);
 	/** The entitymetamodel for which this is all done */
-//	private final EntityMetamodel theEntityMetamodel;
-
+	// private final EntityMetamodel theEntityMetamodel;
 	/** Constructor */
 	public EMFTuplizer(EntityMetamodel entityMetamodel, PersistentClass mappedEntity) {
 		super(entityMetamodel, mappedEntity);
-		//theEntityMetamodel = entityMetamodel;
+		// theEntityMetamodel = entityMetamodel;
 	}
 
 	/**
@@ -65,7 +63,8 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 */
 	public Serializable getIdentifier(Object object) throws HibernateException {
 		Serializable id = (Serializable) IdentifierCacheHandler.getID(object);
-		if (id != null) return id;
+		if (id != null)
+			return id;
 		return super.getIdentifier(object);
 	}
 
@@ -74,7 +73,8 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 */
 	public Object getVersion(Object object) throws HibernateException {
 		final Object version = super.getVersion(object);
-		if (version != null) return version;
+		if (version != null)
+			return version;
 
 		return IdentifierCacheHandler.getVersion(object);
 	}
@@ -90,7 +90,8 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/** Creates an EMF Instantiator */
 	protected Instantiator buildInstantiator(PersistentClass persistentClass) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
-		final EClass eclass = StoreUtil.getEClassFromURI(persistentClass.getEntityName(), ds.getEPackages());
+		final EClass eclass = ds.getPersistenceOptions().getEClassNameStrategy().toEClass(
+				persistentClass.getEntityName(), ds.getEPackages());
 		if (eclass == null) {
 			throw new HbMapperException("No eclass found for entityname: " + persistentClass.getEntityName());
 		}
@@ -127,16 +128,10 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 
 		return null;
 		/*
-		ProxyFactory pf = new MapProxyFactory();
-		try {
-			// TODO: design new lifecycle for ProxyFactory
-			pf.postInstantiate(getEntityName(), null, null, null, null, null);
-		} catch (HibernateException he) {
-			log.warn("could not create proxy factory for:" + getEntityName(), he);
-			pf = null;
-		}
-		return pf;
-		*/
+		 * ProxyFactory pf = new MapProxyFactory(); try { // TODO: design new lifecycle for ProxyFactory
+		 * pf.postInstantiate(getEntityName(), null, null, null, null, null); } catch (HibernateException he) {
+		 * log.warn("could not create proxy factory for:" + getEntityName(), he); pf = null; } return pf;
+		 */
 	}
 
 	/*

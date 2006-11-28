@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.4 2006/11/25 23:52:14 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.5 2006/11/28 06:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
@@ -44,7 +43,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HibernatePersistableEList extends PersistableEList {
@@ -119,17 +118,13 @@ public class HibernatePersistableEList extends PersistableEList {
 			if (controlsSession)
 				((HbResource) res).setIsLoading(true);
 
-			if (res != null && res instanceof ResourceImpl) {
+			if (res != null && res instanceof StoreResource) {
 				try {
-					// attach the new objects so that they are adapted when required
-					for (int i = 0; i < objs.length; i++) {
-						if (objs[i] instanceof EObject) {
-							if (!isContainment()) {
-								if (((EObject)objs[i]).eResource() == null) {
-									((StoreResource)res).addToResource(objs[i]);
-								}
-							} else { // if containment then just attach
-								((ResourceImpl) res).attached((EObject) objs[i]);
+					// attach the new contained objects so that they are adapted when required
+					if (isContainment()) {
+						for (int i = 0; i < objs.length; i++) {
+							if (objs[i] instanceof EObject) {
+									((StoreResource)res).attached((InternalEObject)objs[i]);
 							}
 						}
 					}

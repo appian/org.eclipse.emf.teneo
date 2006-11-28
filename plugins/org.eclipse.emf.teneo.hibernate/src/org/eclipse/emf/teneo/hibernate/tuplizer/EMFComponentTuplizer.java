@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFComponentTuplizer.java,v 1.4 2006/11/01 16:19:43 mtaal Exp $
+ * $Id: EMFComponentTuplizer.java,v 1.5 2006/11/28 06:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -24,26 +24,24 @@ import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
-import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.engine.SessionFactoryImplementor;
 import org.hibernate.mapping.Component;
 import org.hibernate.mapping.Property;
 import org.hibernate.property.Getter;
 import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
-import org.hibernate.tuple.component.AbstractComponentTuplizer;
 import org.hibernate.tuple.Instantiator;
+import org.hibernate.tuple.component.AbstractComponentTuplizer;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 
 	/** The logger */
-//	private static Log log = LogFactory.getLog(EMFComponentTuplizer.class);
-
+	// private static Log log = LogFactory.getLog(EMFComponentTuplizer.class);
 	/** Constructor */
 	public EMFComponentTuplizer(Component component) {
 		super(component);
@@ -57,7 +55,8 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	/** Creates an EMF Instantiator */
 	protected Instantiator buildInstantiator(Component component) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(component);
-		final EClass eclass = StoreUtil.getEClassFromURI(component.getComponentClassName(), ds.getEPackages());
+		final EClass eclass = ds.getPersistenceOptions().getEClassNameStrategy().toEClass(
+				component.getComponentClassName(), ds.getEPackages());
 		if (eclass == null) {
 			throw new HbMapperException("No eclass found for entityname: " + component.getComponentClassName());
 		}

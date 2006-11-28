@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableFeatureMap.java,v 1.3 2006/11/25 23:52:14 mtaal Exp $
+ * $Id: HibernatePersistableFeatureMap.java,v 1.4 2006/11/28 06:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -21,12 +21,10 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
@@ -46,7 +44,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
@@ -145,13 +143,9 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 					final InternalEObject eobj = (InternalEObject) fme.getValue();
 					if (eobj != null) {
 						EContainerRepairControl.setContainer(owner, eobj, fme.getEStructuralFeature());
-						if (fme.getEStructuralFeature() instanceof EReference) {
-							final EReference eref = (EReference)fme.getEStructuralFeature();
-							if (!eref.isContainment() && ((EObject)fme.getValue()).eResource() == null) {
-								((StoreResource)res).addToResource((EObject)fme.getValue());	
-							} else if (fme.getValue() instanceof EObject) {
-								((ResourceImpl) res).attached((EObject) fme.getValue());
-							}
+						if (fme.getEStructuralFeature() instanceof EReference &&
+								((EReference)fme.getEStructuralFeature()).isContainment()) {
+							((StoreResource)res).attached((InternalEObject)fme.getValue());	
 						}
 					}
 				}

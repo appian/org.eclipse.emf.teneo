@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryTuplizer.java,v 1.5 2006/11/07 10:22:54 mtaal Exp $
+ * $Id: FeatureMapEntryTuplizer.java,v 1.6 2006/11/28 06:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.Constants;
@@ -38,7 +39,7 @@ import org.hibernate.tuple.Instantiator;
  * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class FeatureMapEntryTuplizer extends EMFTuplizer {
@@ -92,8 +93,8 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(pc);
 		final String eclassUri = HbUtil.getEClassNameFromFeatureMapMeta(pc);
-		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eclassUri, mappedProperty.getName(), ds
-				.getEPackages());
+		final EClass eClass = ds.getPersistenceOptions().getEClassNameStrategy().toEClass(eclassUri, ds.getEPackages());
+		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass, mappedProperty.getName());
 
 		if (efeature == null) {
 			throw new HbMapperException("Feature not found for entity/property " + pc.getEntityName() + "/"

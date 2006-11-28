@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.5 2006/11/25 23:52:14 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.6 2006/11/28 06:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -31,7 +31,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.teneo.hibernate.HbConstants;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
@@ -57,7 +56,7 @@ import org.hibernate.impl.SessionImpl;
  * hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -78,8 +77,6 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 	/** Is set to true if there is a sessionController */
 	private boolean hasSessionController = false;
-	
-	private int listByQueryLoadingCounter;
 
 	/**
 	 * The constructor, gets an uri and retrieves the backing OJBStore
@@ -360,6 +357,53 @@ public class HibernateResource extends StoreResource implements HbResource {
 		return readObjects;
 	}
 
+	/** Reads a set of objects into the resource by using a query. */
+	public Object[] getObjectsByQuery(String query, boolean cache) {
+		log.debug("Started listing objects by query " + query + " in resource " + getURI());
+		Transaction tx = null;
+		Session mySession = null;
+		boolean err = true;
+		setIsLoading(true);
+		try {
+			mySession = getSession();
+			if (!hasSessionController) {
+				tx = mySession.beginTransaction();
+			}
+			final Query qry = mySession.createQuery(query);
+			qry.setCacheable(cache);
+			final Object[] result = qry.list().toArray();
+
+			for (int i = 0; i < result.length; i++) {
+				Object object = result[i];
+				if (object instanceof InternalEObject) {
+					final InternalEObject eObject = (InternalEObject) object;
+					// only add if the object is not already part of this resource.
+					// if already part of this resource then it should have been loaded through
+					// a containment relation.
+					assert(eObject.eResource() != this || loadedEObjects.contains(eObject) || newEObjects.contains(eObject));						
+					addToContent(eObject);
+				}
+			}
+
+			err = false;
+			log.debug("Listed " + result.length + " objects using query " + query + " in resource " + getURI());
+			return result;
+		} finally {
+			if (!hasSessionController) {
+				if (err) {
+					if (tx != null) {
+						tx.rollback();
+					}
+					mySession.close();
+				} else {
+					tx.commit();
+				}
+			}
+			setIsLoading(false);
+			log.debug("Finished getting objects by query " + query + " in resource " + getURI());
+		}
+	}
+
 	/**
 	 * @return the hasSessionController
 	 */
@@ -368,15 +412,16 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 	
 	public boolean isLoading() {
-		return isLoading || listByQueryLoadingCounter >0;
+		return isLoading;
 	}
 	
+	/** Load additional objects into the contents using a query */
 	public Object[] listByQuery(String query, boolean cache) {
 		log.debug("Started listing objects by query " + query + " in resource " + getURI());
 		Transaction tx = null;
 		Session mySession = null;
 		boolean err = true;
-		listByQueryLoadingCounter ++;
+		setIsLoading(true);
 		try {
 			mySession = getSession();
 			if (!hasSessionController) {
@@ -388,9 +433,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 			for (int i = 0; i < result.length; i++) {
 				Object object = result[i];
-				if (object instanceof EObject) {
-					EObject eObject = (EObject) object;
-					attached(eObject);
+				if (object instanceof InternalEObject) {
+					addToContent((InternalEObject) object);
 				}
 			}
 
@@ -398,7 +442,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 			log.debug("Listed " + result.length + " objects using query " + query + " in resource " + getURI());
 			return result;
 		} finally {
-			listByQueryLoadingCounter--;
+			setIsLoading(false);
 			if (!hasSessionController) {
 				if (err) {
 					if (tx != null){
