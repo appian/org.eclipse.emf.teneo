@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.17 2006/11/18 14:16:57 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.18 2006/11/28 06:14:07 mtaal Exp $
  */
  
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -36,7 +36,6 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
@@ -71,6 +70,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
+import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.SQLCaseStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -80,7 +80,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class DefaultAnnotator {
 
@@ -127,7 +127,7 @@ public class DefaultAnnotator {
 	private SQLCaseStrategy optionSQLCaseStrategy = null;
 
 	/** The eclass qualify approach */
-	private String optionQualifyEClass = null;
+	private EClassNameStrategy optionEClassNameStrategy = null;
 
 	/** Convenience link to pamodel factory */
 	private PannotationFactory aFactory = PannotationFactory.eINSTANCE;
@@ -194,8 +194,8 @@ public class DefaultAnnotator {
 		optionSetCascadeAllOnContainment = po.isSetCascadeAllOnContainment();
 		log.debug("Option set cascade all on containment: " + optionSetCascadeAllOnContainment);
 
-		optionQualifyEClass = po.getQualifyEntityName();
-		log.debug("Qualify EClass name option: " + optionQualifyEClass);
+		optionEClassNameStrategy = po.getEClassNameStrategy();
+		log.debug("Qualify EClass name option: " + optionEClassNameStrategy.getClass().getName());
 
 		optionMaximumSqlLength = po.getMaximumSqlNameLength();
 		log.debug("Maximum column length: " + optionMaximumSqlLength);
@@ -380,7 +380,7 @@ public class DefaultAnnotator {
 		// add a discriminator value
 		if (aClass.getDiscriminatorValue() == null && inheritanceType.equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
 			final DiscriminatorValue dv = aFactory.createDiscriminatorValue();
-			dv.setValue(eclass.getName());
+			dv.setValue(getEntityName(eclass));
 			dv.setEModelElement(eclass);
 			aClass.setDiscriminatorValue(dv);
 		}
@@ -782,7 +782,7 @@ public class DefaultAnnotator {
 		}
 
 		// only use a jointable if the relation is non unique
-		final boolean isEObject = StoreUtil.EOBJECT_ECLASS_URI.compareTo(otm.getTargetEntity()) == 0;
+		final boolean isEObject = EClassNameStrategy.EOBJECT_ECLASS_URI.compareTo(otm.getTargetEntity()) == 0;
 		if (isEObject || // in case of eobject always a join table is required 
 				(optionJoinTableForNonContainedAssociations && !eReference.isContainment()) || !otm.isUnique()) {
 			JoinTable joinTable = aReference.getJoinTable();
@@ -1284,7 +1284,7 @@ public class DefaultAnnotator {
 		if (aclass != null && aclass.getEntity() != null) {
 			return aclass.getEntity().getName();
 		}
-		return StoreUtil.getEClassURI(eclass, optionQualifyEClass);
+		return optionEClassNameStrategy.toUniqueName(eclass);
 	}
 
 	/** Returns the value of an annotation with a certain key */
