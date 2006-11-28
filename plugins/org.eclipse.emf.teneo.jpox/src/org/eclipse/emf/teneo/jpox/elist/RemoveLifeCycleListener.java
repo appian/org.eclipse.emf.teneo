@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: RemoveLifeCycleListener.java,v 1.2 2006/11/20 08:18:28 mtaal Exp $
+ * $Id: RemoveLifeCycleListener.java,v 1.3 2006/11/28 06:14:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -27,13 +27,12 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
-import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 
 /**
  * Captures the remove life cycle listener to ensure load of featuremaps before a delete.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2006/11/20 08:18:28 $
+ * @version $Revision: 1.3 $ $Date: 2006/11/28 06:14:10 $
  */
 
 public class RemoveLifeCycleListener implements DeleteLifecycleListener {

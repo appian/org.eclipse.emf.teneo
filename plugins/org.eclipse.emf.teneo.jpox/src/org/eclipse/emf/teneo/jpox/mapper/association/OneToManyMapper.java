@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.7 2006/09/21 00:56:36 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.8 2006/11/28 06:14:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class OneToManyMapper extends AssociationMapper {
@@ -54,11 +54,13 @@ public class OneToManyMapper extends AssociationMapper {
 
 		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all cases?
 		List cascade = aReference.getOneToMany().getCascade();
-		boolean cascadeRemove = cascade.contains(CascadeType.ALL_LITERAL) || cascade.contains(CascadeType.REMOVE_LITERAL);
+		boolean cascadeRemove = cascade.contains(CascadeType.ALL_LITERAL)
+				|| cascade.contains(CascadeType.REMOVE_LITERAL);
 		log.debug("Cascaderemove " + cascadeRemove);
 
 		Element field = eclassElement.addElement("field");
-		field.addAttribute("name", namingHandler.correctName(mappingContext, eReference)).addAttribute("persistence-modifier", "persistent");
+		field.addAttribute("name", namingHandler.correctName(mappingContext, eReference)).addAttribute(
+				"persistence-modifier", "persistent");
 
 		OneToMany otm = aReference.getOneToMany();
 
@@ -71,7 +73,7 @@ public class OneToManyMapper extends AssociationMapper {
 		// item from the list.
 		// -> result item points back to the list but is not present anymore in the list
 		if (otm.getMappedBy() != null && !aReference.getAnnotatedEReference().isContainment()) {
-			//field.addAttribute("mapped-by", otm.getMappedBy());
+			// field.addAttribute("mapped-by", otm.getMappedBy());
 		}
 
 		// collection element is present befpre join element
@@ -83,7 +85,8 @@ public class OneToManyMapper extends AssociationMapper {
 		// use a join table for mtm relations and non unique relations
 		boolean useJoin = aReference.getJoinTable() != null || isWildcard
 				|| eReference.getEReferenceType().getInstanceClass().equals(EObject.class)
-				|| eReference.getEReferenceType().getInstanceClass().equals(Object.class) || aReference.getEmbedded() != null;
+				|| eReference.getEReferenceType().getInstanceClass().equals(Object.class)
+				|| aReference.getEmbedded() != null;
 		if (useJoin) {
 			Element joinElement = field.addElement("join");
 			if (aReference.getJoinTable() != null) {
@@ -117,7 +120,7 @@ public class OneToManyMapper extends AssociationMapper {
 			field.addAttribute("embedded", "true");
 		} else { // this is the normal case
 			String targetEntity = aReference.getOneToMany().getTargetEntity();
-			collection.addAttribute("element-type", MappingUtil.getImplNameOfEClass(targetEntity));
+			collection.addAttribute("element-type", MappingUtil.getImplNameOfEClass(targetEntity, mappingContext));
 		}
 
 		if (!embedded && aReference.getEmbedded() != null) {
@@ -129,7 +132,7 @@ public class OneToManyMapper extends AssociationMapper {
 		// set dependent attribute
 		if (embedded) {
 			// do nothing, embedded is dependent anyway
-		} else if (cascade.contains(CascadeType.ALL_LITERAL) || MappingUtil.isGroup(eReference)) { //cascadeRemove || 
+		} else if (cascade.contains(CascadeType.ALL_LITERAL) || MappingUtil.isGroup(eReference)) { // cascadeRemove ||
 			collection.addAttribute("dependent-element", "true");
 		} else {
 			collection.addAttribute("dependent-element", "false");
@@ -160,9 +163,11 @@ public class OneToManyMapper extends AssociationMapper {
 
 		// do foreign key
 		if (!useJoin && cascadeRemove) { // containment does not need a join table
-			field.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute("update-action", "cascade");
+			field.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute("update-action",
+					"cascade");
 		} else if (!useJoin) {
-			field.addElement("foreign-key").addAttribute("delete-action", "restrict").addAttribute("update-action", "cascade");
+			field.addElement("foreign-key").addAttribute("delete-action", "restrict").addAttribute("update-action",
+					"cascade");
 		}
 	}
 }

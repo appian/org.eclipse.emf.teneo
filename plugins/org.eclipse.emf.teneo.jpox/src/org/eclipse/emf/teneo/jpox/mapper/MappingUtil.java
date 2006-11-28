@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.5 2006/11/01 11:39:25 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.6 2006/11/28 06:14:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class MappingUtil {
@@ -47,8 +47,11 @@ public class MappingUtil {
 	protected static final Log log = LogFactory.getLog(MappingUtil.class);
 
 	/** Returns the impl class name of an eclass */
-	public static String getImplNameOfEClass(String eClassURI) {
-		final EClass eclass = StoreUtil.getEClassFromURI(eClassURI, ERuntime.INSTANCE.getEPackages());
+	public static String getImplNameOfEClass(String eClassURI, MappingContext mappingContext) {
+		if (mappingContext == null || mappingContext.getEClassNameStrategy() == null) {
+			System.err.println("TEST");
+		}
+		final EClass eclass = mappingContext.getEClassNameStrategy().toEClass(eClassURI, mappingContext.getEpackages());
 		if (eclass == null) {
 			throw new JPOXMappingException("Uri: " + eClassURI + " does not translate to an eclass");
 		}

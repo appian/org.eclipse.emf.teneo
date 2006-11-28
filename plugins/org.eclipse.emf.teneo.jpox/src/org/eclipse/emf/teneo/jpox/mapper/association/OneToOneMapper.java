@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.5 2006/09/04 15:42:17 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.6 2006/11/28 06:14:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class OneToOneMapper extends AssociationMapper {
@@ -50,11 +50,13 @@ public class OneToOneMapper extends AssociationMapper {
 
 		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all cases?
 		List cascade = aReference.getOneToOne().getCascade();
-		boolean cascadeRemove = cascade.contains(CascadeType.ALL_LITERAL) || cascade.contains(CascadeType.REMOVE_LITERAL);
+		boolean cascadeRemove = cascade.contains(CascadeType.ALL_LITERAL)
+				|| cascade.contains(CascadeType.REMOVE_LITERAL);
 		log.debug("Cascaderemove " + cascadeRemove);
 
 		Element field = eclassElement.addElement("field");
-		field.addAttribute("name", namingHandler.correctName(mappingContext, eReference)).addAttribute("persistence-modifier", "persistent");
+		field.addAttribute("name", namingHandler.correctName(mappingContext, eReference)).addAttribute(
+				"persistence-modifier", "persistent");
 		setCommonReferenceAttributes(field, aReference, cascadeRemove);
 
 		// special case if a modelField is a referencemodelfield and part of a two way relation then it
@@ -64,7 +66,8 @@ public class OneToOneMapper extends AssociationMapper {
 		// - its depedent child is deleted, the reference from o to the child is nullified
 		// - exception is thrown before o can be deleted that reference to child is null
 		// maybe required dependent is an uncommon model.
-		boolean setNullable = aReference.getOneToOne().isOptional() || eReference.getEOpposite() != null || cascadeRemove;
+		boolean setNullable = aReference.getOneToOne().isOptional() || eReference.getEOpposite() != null
+				|| cascadeRemove;
 		field.addAttribute("null-value", setNullable ? "none" : "exception");
 
 		if (aReference.getEmbedded() != null) {
@@ -78,16 +81,17 @@ public class OneToOneMapper extends AssociationMapper {
 			// -> result item points back to the list but is not present anymore in the list
 			if (aReference.getOneToOne() != null && aReference.getOneToOne().getMappedBy() != null
 					&& !aReference.getAnnotatedEReference().isContainment()) {
-				// disabled mapped-by for now, for one reason or another jpox did not cascade the 
-				// persist action over a bidirectional relation, bidirectionality is controlled 
-				// anyway by emf. 
-				//field.addAttribute("mapped-by", aReference.getOneToOne().getMappedBy());
+				// disabled mapped-by for now, for one reason or another jpox did not cascade the
+				// persist action over a bidirectional relation, bidirectionality is controlled
+				// anyway by emf.
+				// field.addAttribute("mapped-by", aReference.getOneToOne().getMappedBy());
 			}
 
 			// add extra foreign key constraint
 			// for embedded no foreign key constraint
 			if (cascadeRemove && aReference.getEmbedded() == null) {
-				field.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute("update-action", "cascade");
+				field.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute("update-action",
+						"cascade");
 			} else {
 				field.addElement("foreign-key");
 			}
@@ -98,7 +102,9 @@ public class OneToOneMapper extends AssociationMapper {
 			}
 		}
 
-		field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key", "implementation-classes").addAttribute(
-				"value", MappingUtil.getImplNameOfEClass(aReference.getOneToOne().getTargetEntity()));
+		field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key", "implementation-classes")
+				.addAttribute(
+						"value",
+						MappingUtil.getImplNameOfEClass(aReference.getOneToOne().getTargetEntity(), mappingContext));
 	}
 }

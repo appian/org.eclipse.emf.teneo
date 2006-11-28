@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AssociationMapper.java,v 1.2 2006/07/22 13:04:20 mtaal Exp $
+ * $Id: AssociationMapper.java,v 1.3 2006/11/28 06:14:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class AssociationMapper extends AbstractMapper {
@@ -43,7 +43,8 @@ public class AssociationMapper extends AbstractMapper {
 	}
 
 	/** Sets common reference field attributes */
-	protected void setCommonReferenceAttributes(Element fieldElement, PAnnotatedEReference aReference, boolean cascadeRemove) {
+	protected void setCommonReferenceAttributes(Element fieldElement, PAnnotatedEReference aReference,
+			boolean cascadeRemove) {
 		EReference eReference = (EReference) aReference.getAnnotatedElement();
 
 		boolean isWildcard = MappingUtil.isWildcard(eReference);
@@ -52,7 +53,8 @@ public class AssociationMapper extends AbstractMapper {
 		// our experience showed that if dependent is set on wildcard that errors occur in jpox.
 		if (cascadeRemove) {
 			fieldElement.addAttribute("dependent", "true");
-		} else if (FeatureMapUtil.isFeatureMap(eReference) && !isWildcard) { // featuremap entries are always dependent
+		} else if (FeatureMapUtil.isFeatureMap(eReference) && !isWildcard) { // featuremap entries are always
+																				// dependent
 			fieldElement.addAttribute("dependent", "true");
 		} else if (eReference.isContainment() && !isWildcard) {
 			// dependent if containment and it is a single reference field (not multi)

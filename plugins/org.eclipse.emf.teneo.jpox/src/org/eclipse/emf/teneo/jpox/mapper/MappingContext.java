@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.3 2006/09/06 21:59:25 mtaal Exp $
+ * $Id: MappingContext.java,v 1.4 2006/11/28 06:14:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -21,9 +21,11 @@ import java.util.Stack;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.annotations.mapper.AbstractProcessingContext;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.jpox.mapper.association.EmbeddedMapper;
 import org.eclipse.emf.teneo.jpox.mapper.association.ManyToManyMapper;
 import org.eclipse.emf.teneo.jpox.mapper.association.ManyToOneMapper;
@@ -42,7 +44,7 @@ import org.eclipse.emf.teneo.jpox.mapper.property.TableMapper;
  * Contains instances of the mappers used.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class MappingContext extends AbstractProcessingContext {
@@ -108,9 +110,16 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** The tableMapper */
 	private TableMapper tableMapper;
+	
+	/** The eclass naming strategy */
+	private EClassNameStrategy eclassNameStrategy;
 
+	/** The epackages for which this is all done */
+	private EPackage[] epackages;
+	
 	/** The constructor, creates all mappers etc. */
-	public MappingContext() {
+	public MappingContext(EClassNameStrategy eclassNameStrategy) {
+		this.eclassNameStrategy = eclassNameStrategy;
 		namingHandler = new NamingHandler();
 		otmMapper = new OneToManyMapper(this);
 		mtmMapper = new ManyToManyMapper(this);
@@ -257,5 +266,26 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	public void setCurrentAClass(PAnnotatedEClass currentAClass) {
 		this.currentAClass = currentAClass;
+	}
+
+	/**
+	 * @return the eclassNameStrategy
+	 */
+	public EClassNameStrategy getEClassNameStrategy() {
+		return eclassNameStrategy;
+	}
+
+	/**
+	 * @return the epackages
+	 */
+	public EPackage[] getEpackages() {
+		return epackages;
+	}
+
+	/**
+	 * @param epackages the epackages to set
+	 */
+	public void setEpackages(EPackage[] epackages) {
+		this.epackages = epackages;
 	}
 }

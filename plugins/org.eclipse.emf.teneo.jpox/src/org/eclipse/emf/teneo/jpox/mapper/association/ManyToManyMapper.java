@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.5 2006/09/21 00:56:36 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.6 2006/11/28 06:14:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class ManyToManyMapper extends AssociationMapper {
@@ -51,13 +51,16 @@ public class ManyToManyMapper extends AssociationMapper {
 
 		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all cases?
 		List cascade = aReference.getManyToMany().getCascade();
-		boolean cascadeRemove = cascade.contains(CascadeType.ALL_LITERAL) || cascade.contains(CascadeType.REMOVE_LITERAL);
+		boolean cascadeRemove = cascade.contains(CascadeType.ALL_LITERAL)
+				|| cascade.contains(CascadeType.REMOVE_LITERAL);
 		log.debug("Cascaderemove " + cascadeRemove);
 
-		if (cascadeRemove) log.warn("Cascade (all) remove on a many to many relation is an unlikely case");
+		if (cascadeRemove)
+			log.warn("Cascade (all) remove on a many to many relation is an unlikely case");
 
 		Element field = eclassElement.addElement("field");
-		field.addAttribute("name", namingHandler.correctName(mappingContext, eReference)).addAttribute("persistence-modifier", "persistent");
+		field.addAttribute("name", namingHandler.correctName(mappingContext, eReference)).addAttribute(
+				"persistence-modifier", "persistent");
 
 		// two way were the otherside is the container then the reference should be delete
 		// confusing but foreign-key constraints are defined the other way around in jpox
@@ -77,7 +80,7 @@ public class ManyToManyMapper extends AssociationMapper {
 		ManyToMany mtm = aReference.getManyToMany();
 		if (mtm.getMappedBy() != null && !aReference.getAnnotatedEReference().isContainment()) {
 			// see above
-			//field.addAttribute("mapped-by", mtm.getMappedBy());
+			// field.addAttribute("mapped-by", mtm.getMappedBy());
 		}
 
 		// collection element is present befpre join element
@@ -94,7 +97,8 @@ public class ManyToManyMapper extends AssociationMapper {
 			mappingContext.getJoinColumnMapper().map(aReference.getJoinColumns(), joinElement);
 		}
 
-		collection.addAttribute("element-type", MappingUtil.getImplNameOfEClass(aReference.getManyToMany().getTargetEntity()));
+		collection.addAttribute("element-type", MappingUtil.getImplNameOfEClass(aReference.getManyToMany()
+				.getTargetEntity(), mappingContext));
 
 		if (cascadeRemove) {
 			collection.addAttribute("dependent-element", "true");

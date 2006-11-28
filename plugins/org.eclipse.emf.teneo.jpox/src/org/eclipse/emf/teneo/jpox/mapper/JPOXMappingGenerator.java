@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.8 2006/09/26 12:47:35 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.9 2006/11/28 06:14:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -33,6 +33,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
+import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -41,7 +42,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class JPOXMappingGenerator {
@@ -61,10 +62,14 @@ public class JPOXMappingGenerator {
 	/** The version column name */
 	private final String versionColumnName;
 	
+	/** The eclass naming strategy */
+	private EClassNameStrategy eclassNameStrategy;
+	
 	/** The constructor, creates all mappers etc. */
 	public JPOXMappingGenerator(PersistenceOptions po) {
-		mappingContext = new MappingContext();
 		versionColumnName = po.getVersionColumnName();
+		eclassNameStrategy = po.getEClassNameStrategy();
+		mappingContext = new MappingContext(eclassNameStrategy);
 	}
 
 	/** Method gets a created annotatedModel and creates a jpox mapping file */
@@ -77,7 +82,6 @@ public class JPOXMappingGenerator {
 		// "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 2.0//EN",
 		// "http://java.sun.com/dtd/jdo_2_0.dtd") );
 
-		
 		Element rootElement = new Element();
 		rootElement.setName("jdo");
 		mappingDoc.setRoot(rootElement);
@@ -88,7 +92,9 @@ public class JPOXMappingGenerator {
 			PAnnotatedEPackage aPackage = (PAnnotatedEPackage) it.next();
 			epackages.add(aPackage.getAnnotatedElement());
 		}
-		ERuntime.INSTANCE.register((EPackage[]) epackages.toArray(new EPackage[epackages.size()]));
+		final EPackage[] epackagesArray = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
+		ERuntime.INSTANCE.register(epackagesArray);
+		mappingContext.setEpackages(epackagesArray);
 
 		// group the eclasses by their impl. java package, this is required because
 		// class tags should be all grouped in one package
@@ -270,5 +276,12 @@ public class JPOXMappingGenerator {
 		for (int i = 0; i < interfaces.length; i++) {
 			collectImplements(interfaces[i], result);
 		}
+	}
+
+	/**
+	 * @return the eclassNameStrategy
+	 */
+	public EClassNameStrategy getEClassNameStrategy() {
+		return eclassNameStrategy;
 	}
 }
