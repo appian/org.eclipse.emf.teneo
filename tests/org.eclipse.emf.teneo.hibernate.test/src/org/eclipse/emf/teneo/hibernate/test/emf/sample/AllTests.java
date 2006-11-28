@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.25 2006/11/23 06:12:26 mtaal Exp $
+ * $Id: AllTests.java,v 1.26 2006/11/28 06:13:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 public class AllTests {
 
@@ -55,6 +55,13 @@ public class AllTests {
 				.getConfigurations());
 //		suite.addTestSuite(GMFNotationAction.class);
 //		suite.addTestSuite(LobjAction.class);
+
+		suite.addTestSuite(LibrarySessionControllerAddContentAction.class);
+
+		
+		suite.addTestSuite(LibrarySessionControllerAction.class);
+
+		suite.addTestSuite(SchoolLibraryTest.class);
 		
 		suite.addTestSuite(ProductAction.class);
 
@@ -62,7 +69,6 @@ public class AllTests {
 		suite.addTestSuite(MindMapAction.class);
 		
 		suite.addTestSuite(LibraryResourceAction.class);
-		suite.addTestSuite(LibrarySessionControllerAction.class);
 		suite.addTestSuite(LibraryNonResolvingAction.class);
 
 		suite.addTestSuite(ExtendedPO2Test.class);
@@ -85,7 +91,6 @@ public class AllTests {
 		suite.addTestSuite(AccountingTest.class);
 		suite.addTestSuite(SunBooksAction.class);
 		suite.addTestSuite(LibraryTest.class);
-		suite.addTestSuite(SchoolLibraryTest.class);
 		//suite.addTestSuite(WoWAction.class);
 		suite.addTestSuite(CatalogTest.class);
 		suite.addTestSuite(InventoryAction.class);
