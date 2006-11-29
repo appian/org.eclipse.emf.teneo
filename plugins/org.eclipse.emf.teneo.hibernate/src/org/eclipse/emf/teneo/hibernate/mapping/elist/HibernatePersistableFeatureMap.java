@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableFeatureMap.java,v 1.4 2006/11/28 06:14:04 mtaal Exp $
+ * $Id: HibernatePersistableFeatureMap.java,v 1.5 2006/11/29 07:07:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -44,7 +44,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
@@ -143,9 +143,9 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 					final InternalEObject eobj = (InternalEObject) fme.getValue();
 					if (eobj != null) {
 						EContainerRepairControl.setContainer(owner, eobj, fme.getEStructuralFeature());
-						if (fme.getEStructuralFeature() instanceof EReference &&
-								((EReference)fme.getEStructuralFeature()).isContainment()) {
-							((StoreResource)res).attached((InternalEObject)fme.getValue());	
+						if (fme.getEStructuralFeature() instanceof EReference) {
+							((StoreResource) res).addToContentOrAttach((InternalEObject) fme.getValue(),
+									((EReference) fme.getEStructuralFeature()).isContainment());
 						}
 					}
 				}

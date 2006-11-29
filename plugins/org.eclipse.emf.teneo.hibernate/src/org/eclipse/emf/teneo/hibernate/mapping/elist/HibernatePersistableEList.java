@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.5 2006/11/28 06:14:04 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.6 2006/11/29 07:07:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class HibernatePersistableEList extends PersistableEList {
@@ -121,11 +121,9 @@ public class HibernatePersistableEList extends PersistableEList {
 			if (res != null && res instanceof StoreResource) {
 				try {
 					// attach the new contained objects so that they are adapted when required
-					if (isContainment()) {
-						for (int i = 0; i < objs.length; i++) {
-							if (objs[i] instanceof EObject) {
-									((StoreResource)res).attached((InternalEObject)objs[i]);
-							}
+					for (int i = 0; i < objs.length; i++) {
+						if (objs[i] instanceof EObject) {
+							((StoreResource)res).addToContentOrAttach((InternalEObject)objs[i], isContainment());
 						}
 					}
 				} finally {
