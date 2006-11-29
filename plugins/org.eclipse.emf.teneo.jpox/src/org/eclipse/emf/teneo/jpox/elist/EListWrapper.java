@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.6 2006/11/28 06:14:10 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.7 2006/11/29 07:07:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -64,7 +64,7 @@ import org.jpox.store.query.ResultObjectFactory;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ $Date: 2006/11/28 06:14:10 $
+ * @version $Revision: 1.7 $ $Date: 2006/11/29 07:07:27 $
  */
 
 public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList {
@@ -551,7 +551,9 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 					child instanceof EObject && ((EObject)child).eResource() == null) {
 				// attach the new objects so that they are adapted when
 				// required
-				((StoreResource) res).attached((InternalEObject) child);
+				// true is passed although this is not containment, need to do that 
+				// to get attached working correctly. TODO make nicer
+				((StoreResource) res).addToContentOrAttach((InternalEObject) child, true);
 			}
 		}
 		if (setLoading) {
