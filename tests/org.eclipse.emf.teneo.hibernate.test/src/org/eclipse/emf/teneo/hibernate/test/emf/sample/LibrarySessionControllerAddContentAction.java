@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySessionControllerAddContentAction.java,v 1.1 2006/11/28 06:13:56 mtaal Exp $
+ * $Id: LibrarySessionControllerAddContentAction.java,v 1.2 2006/11/29 07:06:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibrarySessionControllerAddContentAction extends AbstractTestAction {
 	/**
@@ -55,27 +55,23 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 		super(LibraryPackage.eINSTANCE);
 	}
 
-	protected boolean hibernateEnabled() {
-		return true;
-	}
-
 	/** Creates an item, an address and links them to a po. */
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		final ResourceSet resourceSet = new ResourceSetImpl();
 
 		SessionController sc = new SessionController();
-		sc.setHbDataStore(((HibernateTestStore)store).getEmfDataStore());
+		sc.setHbDataStore(((HibernateTestStore) store).getEmfDataStore());
 		SessionController.registerSessionController("testsc", sc);
-		
+
 		final HashMap options = new HashMap();
 		options.put(StoreResource.LOAD_STRATEGY_PARAM, StoreResource.ADD_TO_CONTENTS);
-		
+
 		// create a book, writer and library
 		try {
 			{
-				HibernateResource res1 = (HibernateResource)getResource(resourceSet, null);
-				HibernateResource res2 = (HibernateResource)getResource(resourceSet, null);
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet, null);
+				HibernateResource res2 = (HibernateResource) getResource(resourceSet, null);
 				sc.getSession().beginTransaction();
 				res1.load(options);
 				res2.load(options);
@@ -84,7 +80,7 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				final Writer writer = factory.createWriter();
 				writer.setName("JRR Tolkien");
 				res2.getContents().add(writer);
-				
+
 				final Book book = factory.createBook();
 				book.setAuthor(writer);
 				book.setPages(510);
@@ -95,7 +91,7 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				book2.setPages(500);
 				book2.setTitle("The Hobbit");
 				book2.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
-				
+
 				final Library library = factory.createLibrary();
 				library.setName("Science Fiction");
 				library.getBooks().add(book);
@@ -119,12 +115,12 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 			SessionController.deRegisterSessionController("testsc");
 
 			sc = new SessionController();
-			sc.setHbDataStore(((HibernateTestStore)store).getEmfDataStore());
+			sc.setHbDataStore(((HibernateTestStore) store).getEmfDataStore());
 			SessionController.registerSessionController("testsc", sc);
 
 			{
-				HibernateResource res1 = (HibernateResource)getResource(resourceSet, "query1=from Book");
-				HibernateResource res2 = (HibernateResource)getResource(resourceSet, "query1=from Writer");
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet, "query1=from Book");
+				HibernateResource res2 = (HibernateResource) getResource(resourceSet, "query1=from Writer");
 				sc.getSession().beginTransaction();
 				res1.load(options);
 				assertTrue(res1.getContents().get(1) instanceof Writer);
@@ -137,7 +133,7 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				final ArrayList tempList = new ArrayList(res1.getContents());
 				for (Iterator it = tempList.iterator(); it.hasNext();) {
 					final Object obj = it.next();
-					final Book book = (Book)obj;
+					final Book book = (Book) obj;
 					assertTrue(book.eResource() == res1);
 					assertTrue(book.getAuthor().eResource() == res2);
 					assertTrue(book.getAuthor().getBooks().size() == 2);
@@ -145,17 +141,17 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 					cnt++;
 				}
 				assertEquals(2, cnt);
-				//assertEquals(1, res2.getContents().size());
+				// assertEquals(1, res2.getContents().size());
 				sc.getSession().beginTransaction();
 				res1.save(Collections.EMPTY_MAP);
 				res2.save(Collections.EMPTY_MAP);
-				sc.getSession().getTransaction().commit();				
+				sc.getSession().getTransaction().commit();
 				res1.unload();
 				res2.unload();
 			}
-			
+
 			{
-				HibernateResource res1 = (HibernateResource)getResource(resourceSet, "query1=from Writer");
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet, "query1=from Writer");
 				sc.getSession().beginTransaction();
 				res1.load(options);
 				assertTrue(res1.getContents().get(0) instanceof Writer);
@@ -164,10 +160,31 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				assertEquals(3, res1.getContents().size());
 				assertTrue(res1.getContents().get(1) instanceof Book);
 				assertTrue(res1.getContents().get(2) instanceof Book);
-				final Writer writ = (Writer)res1.getContents().get(0);
+				final Writer writ = (Writer) res1.getContents().get(0);
 				assertTrue(writ.getBooks().contains(res1.getContents().get(1)));
 				res1.save(Collections.EMPTY_MAP);
-				sc.getSession().getTransaction().commit();				
+				sc.getSession().getTransaction().commit();
+				res1.unload();
+				sc.getSession().clear();
+			}
+			SessionController.deRegisterSessionController("testsc");
+
+			sc = new SessionController();
+			sc.setHbDataStore(((HibernateTestStore) store).getEmfDataStore());
+			SessionController.registerSessionController("testsc", sc);
+
+			{
+				// check load of books into lazy load
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet, "query1=from Writer");
+				sc.getSession().beginTransaction();
+				res1.load(options);
+				assertTrue(res1.getContents().get(0) instanceof Writer);
+				assertEquals(1, res1.getContents().size());
+				Writer writ = (Writer) res1.getContents().get(0);
+				assertEquals(2, writ.getBooks().size());
+				assertTrue(res1.getContents().contains(writ.getBooks().get(0)));
+				assertTrue(res1.getContents().contains(writ.getBooks().get(1)));
+				sc.getSession().getTransaction().commit();
 				res1.unload();
 			}
 
