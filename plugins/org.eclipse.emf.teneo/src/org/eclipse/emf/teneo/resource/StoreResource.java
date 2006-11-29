@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.11 2006/11/28 06:13:36 mtaal Exp $
+ * $Id: StoreResource.java,v 1.12 2006/11/29 07:07:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -51,7 +51,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -283,6 +283,27 @@ public abstract class StoreResource extends ResourceImpl {
 			if (notifications != null && sendNotificationsOnLoad) {
 				notifications.dispatch();
 			}
+			attached(eObject);
+		}
+	}
+
+	/** Add to this resource if the load strategy is add to content, otherwise attach
+	 * if is containment, otherwise do nothing. Mainly used when lazy loading a list. 
+	 */
+	public void addToContentOrAttach(InternalEObject eObject, boolean isContainmentLoad) {
+		if (loadStrategy.compareTo(ADD_TO_CONTENTS) == 0) {
+			if (eObject.eResource() == null) { // with lazy load the resource can already be set
+				setEResource(eObject, true);
+			}
+			final ContentsEList elist = (ContentsEList) super.getContents();
+			if (!elist.contains(eObject)) {
+				final NotificationChain notifications = elist.basicAdd(eObject, null);
+				if (notifications != null && sendNotificationsOnLoad) {
+					notifications.dispatch();
+				}
+				attached(eObject);
+			}
+		} else if (isContainmentLoad) {
 			attached(eObject);
 		}
 	}
