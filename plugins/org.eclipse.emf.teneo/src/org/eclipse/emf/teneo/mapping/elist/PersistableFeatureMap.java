@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableFeatureMap.java,v 1.3 2006/08/21 13:27:27 mtaal Exp $
+ * $Id: PersistableFeatureMap.java,v 1.4 2006/12/06 06:15:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the persistent store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public abstract class PersistableFeatureMap extends DelegatingFeatureMap implements PersistableDelegateList {
@@ -472,4 +472,14 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 		return super.delegateToString();
 	}
 
+	/** 
+	 * Is overridden because it can't use delegates for equality because the delegate
+	 * (a hibernate or jpox list) will try to be equal with this persistable elist.
+	 * 
+	 * This method does jvm instance equality because doing a full-fledge equal would result in 
+	 * a load of the list.
+	 */
+	public boolean equals(Object object) {
+		return this == object;
+	}
 }

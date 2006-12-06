@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEMap.java,v 1.2 2006/09/28 20:04:19 mtaal Exp $
+ * $Id: PersistableEMap.java,v 1.3 2006/12/06 06:15:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.util.EcoreEMap;
 /**
  * A persistable emap which delegates to another map for persisting changes.
  * 
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public abstract class PersistableEMap extends EcoreEMap implements EMap {
 	/** The logger */
@@ -691,5 +691,16 @@ public abstract class PersistableEMap extends EcoreEMap implements EMap {
 	 */
 	public void setLoaded(boolean loaded) {
 		this.loaded = loaded;
+	}
+	
+	/** 
+	 * Is overridden because it can't use delegates for equality because the delegate
+	 * (a hibernate or jpox list) will try to be equal with this persistable elist.
+	 * 
+	 * This method does jvm instance equality because doing a full-fledge equal would result in 
+	 * a load of the list.
+	 */
+	public boolean equals(Object object) {
+		return this == object;
 	}
 }

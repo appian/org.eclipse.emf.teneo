@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.5 2006/09/28 20:04:19 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.6 2006/12/06 06:15:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public abstract class PersistableEList extends DelegatingEcoreEList implements EMap, PersistableDelegateList {
@@ -702,5 +702,24 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 		public boolean isLoaded() {
 			return PersistableEList.this.isLoaded();
 		}
+	}
+
+	/** 
+	 * Is overridden because it can't use delegates for equality because the delegate
+	 * (a hibernate or jpox list) will try to be equal with this persistable elist.
+	 * 
+	 * This method does jvm instance equality because doing a full-fledge equal would result in 
+	 * a load of the list.
+	 */
+	public boolean equals(Object object) {
+		return this == object;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
 	}
 }
