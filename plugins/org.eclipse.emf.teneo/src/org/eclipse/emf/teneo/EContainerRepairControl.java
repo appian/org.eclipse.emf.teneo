@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EContainerRepairControl.java,v 1.4 2006/11/13 19:55:40 mtaal Exp $
+ * $Id: EContainerRepairControl.java,v 1.5 2006/12/18 21:22:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.mapping.elist.PersistableFeatureMap;
  * be set in child objects.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class EContainerRepairControl {
@@ -192,7 +192,8 @@ public class EContainerRepairControl {
 
 		for (int i = 0; i < repairList.size(); i++) {
 			RepairControl repairControl = (RepairControl) repairList.get(i);
-			if (repairControl.getFeatureID() == correctedFeatureID) {
+			if (repairControl.getFeatureID() == correctedFeatureID
+				&& repairControl.childClass.isAssignableFrom(child.getClass())) {
 				repairControl.repair((InternalEObject) owner, (InternalEObject) child);
 				return;
 			}
