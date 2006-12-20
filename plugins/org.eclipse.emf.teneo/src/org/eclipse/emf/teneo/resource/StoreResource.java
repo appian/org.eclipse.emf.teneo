@@ -12,13 +12,14 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.12 2006/11/29 07:07:21 mtaal Exp $
+ * $Id: StoreResource.java,v 1.13 2006/12/20 09:40:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +52,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -78,23 +79,23 @@ public abstract class StoreResource extends ResourceImpl {
 	protected ArrayList removedEObjects = new ArrayList();
 
 	/**
-	 * The list of objects loaded from the backend. objects which have been removed are still part of this list. This is
-	 * to prevent them from being added to the newEObjects list.
+	 * The set of objects loaded from the backend. objects which have been removed are still part of this list. This is
+	 * to prevent them from being added to the newEObjects set.
 	 */
-	protected ArrayList loadedEObjects = new ArrayList();
+	protected HashSet loadedEObjects = new HashSet();
 
 	/**
-	 * The list of new objects new EObjects are never part of the loadedEObjects, when a newEObject is removed it is
-	 * just removed from this list and not added to the removed EObjects. new eobjects are never part of the
-	 * modifiedEObjects list.
+	 * The set of new objects new EObjects are never part of the loadedEObjects, when a newEObject is removed it is
+	 * just removed from this set and not added to the removed EObjects. new eobjects are never part of the
+	 * modifiedEObjects set.
 	 */
-	protected ArrayList newEObjects = new ArrayList();
+	protected HashSet newEObjects = new HashSet();
 
 	/**
-	 * The list of changed objects, this contains the loadedEObjects which have changed new EObjects are never part of
-	 * this list
+	 * The set of changed objects, this contains the loadedEObjects which have changed new EObjects are never part of
+	 * this set
 	 */
-	protected ArrayList modifiedEObjects = new ArrayList();
+	protected HashSet modifiedEObjects = new HashSet();
 
 	/** True when loading, isLoaded is maintained in the superclass */
 	protected boolean isLoading = false;
