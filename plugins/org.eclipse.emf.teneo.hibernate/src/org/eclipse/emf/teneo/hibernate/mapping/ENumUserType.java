@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ENumUserType.java,v 1.3 2006/11/01 16:19:45 mtaal Exp $
+ * $Id: ENumUserType.java,v 1.4 2006/12/20 06:31:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -39,7 +39,7 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/11/01 16:19:45 $
+ * @version $Revision: 1.4 $ $Date: 2006/12/20 06:31:25 $
  */
 
 public class ENumUserType implements UserType, ParameterizedType {
@@ -146,7 +146,7 @@ public class ENumUserType implements UserType, ParameterizedType {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
-			st.setString(index, ((AbstractEnumerator) value).getName());
+			st.setString(index, ((AbstractEnumerator) value).getLiteral());
 		}
 	}
 
