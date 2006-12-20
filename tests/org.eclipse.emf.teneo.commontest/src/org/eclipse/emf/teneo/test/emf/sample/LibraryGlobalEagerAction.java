@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryGlobalEagerAction.java,v 1.3 2006/09/21 00:57:18 mtaal Exp $
+ * $Id: LibraryGlobalEagerAction.java,v 1.4 2006/12/20 09:41:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests setting of eager loading of containment at global level
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
+ * @version $Revision: 1.4 $ 
 */
 public class LibraryGlobalEagerAction extends AbstractTestAction 
 {
@@ -192,8 +192,14 @@ public class LibraryGlobalEagerAction extends AbstractTestAction
 		assertEquals(2, libraryAdapter.getCountNotifications());
 		
 		EObject[] modifieds = ((StoreResource)res).getModifiedEObjects();
-		assertTrue("Library should be the first modified object", modifieds[0] == lib);
-		assertTrue("Book should be the second modified object", modifieds[1] == book);
+		boolean fndLibrary = false;
+		boolean fndBook = false;
+		for (int i = 0; i < modifieds.length; i++) {
+			fndLibrary = fndLibrary || modifieds[i] == lib;
+			fndBook = fndBook || modifieds[i] == book;
+		}
+		assertTrue("Library should be a modified object", fndLibrary);
+		assertTrue("Book should be a modified object", fndBook);
 		assertEquals(2, modifieds.length);
 		res.unload();
 	}

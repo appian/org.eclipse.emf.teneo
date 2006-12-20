@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyLibraryAction.java,v 1.5 2006/09/29 12:30:28 mtaal Exp $
+ * $Id: LazyLibraryAction.java,v 1.6 2006/12/20 09:41:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * does not result in loaded containment elists.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ 
+ * @version $Revision: 1.6 $ 
 */
 public class LazyLibraryAction extends AbstractTestAction 
 {
@@ -187,8 +187,14 @@ public class LazyLibraryAction extends AbstractTestAction
 		assertEquals(2, libraryAdapter.getCountNotifications());
 		
 		EObject[] modifieds = ((StoreResource)res).getModifiedEObjects();
-		assertTrue("Library should be the first modified object", modifieds[0] == lib);
-		assertTrue("Book should be the second modified object", modifieds[1] == book);
+		boolean fndLibrary = false;
+		boolean fndBook = false;
+		for (int i = 0; i < modifieds.length; i++) {
+			fndLibrary = fndLibrary || modifieds[i] == lib;
+			fndBook = fndBook || modifieds[i] == book;
+		}
+		assertTrue("Library should be a modified object", fndLibrary);
+		assertTrue("Book should be a modified object", fndBook);
 		assertEquals(2, modifieds.length);
 		res.unload();
 	}
