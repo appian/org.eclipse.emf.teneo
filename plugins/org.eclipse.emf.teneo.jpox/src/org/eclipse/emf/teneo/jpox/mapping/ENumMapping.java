@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ENumMapping.java,v 1.3 2006/10/26 14:18:47 mtaal Exp $
+ * $Id: ENumMapping.java,v 1.4 2006/12/20 06:31:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapping;
@@ -44,7 +44,7 @@ import org.jpox.store.mapping.MappingManager;
  * method using the class signature (reflection).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/10/26 14:18:47 $
+ * @version $Revision: 1.4 $ $Date: 2006/12/20 06:31:24 $
  */
 
 public class ENumMapping extends JavaTypeMapping {
@@ -143,7 +143,7 @@ public class ENumMapping extends JavaTypeMapping {
 
 	/** The string value of the enum is stored, so I assume that the string value should be used here */
 	public ScalarExpression newLiteral(QueryExpression qs, Object value) {
-		ScalarExpression expr = new StringLiteral(qs, this, ((Enumerator) value).getName());
+		ScalarExpression expr = new StringLiteral(qs, this, ((Enumerator) value).getLiteral());
 		return expr;
 	}
 
@@ -163,7 +163,7 @@ public class ENumMapping extends JavaTypeMapping {
 		if (enumValue == null) {
 			getDataStoreMapping(0).setString(preparedStatement, exprIndex[0], null);
 		} else {
-			getDataStoreMapping(0).setString(preparedStatement, exprIndex[0], enumValue.getName());
+			getDataStoreMapping(0).setString(preparedStatement, exprIndex[0], enumValue.getLiteral());
 		}
 	}
 
