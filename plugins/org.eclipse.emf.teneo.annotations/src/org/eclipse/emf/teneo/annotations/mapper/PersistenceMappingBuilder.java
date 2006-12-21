@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingBuilder.java,v 1.3 2006/11/13 14:53:08 mtaal Exp $
+ * $Id: PersistenceMappingBuilder.java,v 1.4 2006/12/21 15:46:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -19,17 +19,21 @@ package org.eclipse.emf.teneo.annotations.mapper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
@@ -48,7 +52,7 @@ import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class PersistenceMappingBuilder {
 
@@ -180,7 +184,14 @@ public class PersistenceMappingBuilder {
 								log.debug("Copying value for feature " + esf.getName() +
 										" from edatatype " + et.getName() + " to " + pea.getAnnotatedEAttribute().getName());
 								
-								pea.eSet(asf, ped.eGet(esf));
+								final Object obj = ped.eGet(esf);
+								if (obj instanceof Collection) {
+									pea.eSet(asf, EcoreUtil.copyAll((Collection)obj));
+								} else if (obj instanceof EObject) {
+									pea.eSet(asf, (EObject)obj);
+								} else {
+									throw new StoreAnnotationsException("Class " + obj.getClass().getName() + " not supported should be eobject or collection");
+								}
 							}
 						}
 					}
