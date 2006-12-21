@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingBuilder.java,v 1.4 2006/12/21 15:46:34 mtaal Exp $
+ * $Id: PersistenceMappingBuilder.java,v 1.5 2006/12/21 15:47:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -52,7 +52,7 @@ import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class PersistenceMappingBuilder {
 
@@ -188,7 +188,7 @@ public class PersistenceMappingBuilder {
 								if (obj instanceof Collection) {
 									pea.eSet(asf, EcoreUtil.copyAll((Collection)obj));
 								} else if (obj instanceof EObject) {
-									pea.eSet(asf, (EObject)obj);
+									pea.eSet(asf, EcoreUtil.copy((EObject)obj));
 								} else {
 									throw new StoreAnnotationsException("Class " + obj.getClass().getName() + " not supported should be eobject or collection");
 								}
