@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.6 2006/11/29 07:07:18 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.7 2006/12/27 20:23:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class HibernatePersistableEList extends PersistableEList {
@@ -62,8 +62,20 @@ public class HibernatePersistableEList extends PersistableEList {
 	public boolean isLoaded() {
 		if (delegate instanceof AbstractPersistentCollection) {
 			if (((AbstractPersistentCollection) delegate).wasInitialized()) {
-				setIsLoaded(true);
-				// log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+				if (isLoading()) {
+					// probably are we doing this already return
+					return false;
+				}
+				// delegate is loaded in case of subselect or eager loading
+				log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+				try {
+					setIsLoading(true);
+					// do load to load the resource
+					doLoad();
+					setIsLoaded(true);
+				} finally {
+					setIsLoading(false);
+				}
 			}
 		}
 		return super.isLoaded();
@@ -105,6 +117,7 @@ public class HibernatePersistableEList extends PersistableEList {
 
 			Object[] objs = delegate.toArray(); // this forces the load
 
+			// disabled for now as containers are persisted by hibernate anyway
 			if (false && isContainment()) {
 				final int featureID = getEStructuralFeature().getFeatureID();
 				for (int i = 0; i < objs.length; i++) {
@@ -115,7 +128,7 @@ public class HibernatePersistableEList extends PersistableEList {
 			}
 
 			// add the new objects so they are tracked
-			if (controlsSession)
+			if (controlsSession) // true implies that res is a HbResource
 				((HbResource) res).setIsLoading(true);
 
 			if (res != null && res instanceof StoreResource) {

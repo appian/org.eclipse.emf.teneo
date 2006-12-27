@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableFeatureMap.java,v 1.5 2006/11/29 07:07:18 mtaal Exp $
+ * $Id: HibernatePersistableFeatureMap.java,v 1.6 2006/12/27 20:23:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -44,7 +44,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
@@ -95,8 +95,20 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 	public boolean isLoaded() {
 		if (delegate instanceof AbstractPersistentCollection) {
 			if (((AbstractPersistentCollection) delegate).wasInitialized()) {
-				setIsLoaded(true);
-				// log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+				// delegate is loaded in case of subselect or eager loading
+				if (isLoading()) {
+					// probably are we doing this already return
+					return false;
+				}
+				log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+				try {
+					setIsLoading(true);
+					// do load to load the resource
+					doLoad();
+					setIsLoaded(true);
+				} finally {
+					setIsLoading(false);
+				}
 			}
 		}
 		return super.isLoaded();
@@ -143,7 +155,7 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 					final InternalEObject eobj = (InternalEObject) fme.getValue();
 					if (eobj != null) {
 						EContainerRepairControl.setContainer(owner, eobj, fme.getEStructuralFeature());
-						if (fme.getEStructuralFeature() instanceof EReference) {
+						if (res != null && res instanceof StoreResource && fme.getEStructuralFeature() instanceof EReference) {
 							((StoreResource) res).addToContentOrAttach((InternalEObject) fme.getValue(),
 									((EReference) fme.getEStructuralFeature()).isContainment());
 						}
