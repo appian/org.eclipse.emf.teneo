@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.13 2006/12/20 09:40:59 mtaal Exp $
+ * $Id: StoreResource.java,v 1.14 2006/12/28 21:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -52,7 +52,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -117,6 +117,9 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** Send notifications under load */
 	private boolean sendNotificationsOnLoad = true;
+	
+	/** Is send notification set by parameter */
+	private boolean sendNotificationSetByParam = false;
 
 	/** The load strategy */
 	private String loadStrategy = SET_ERESOURCE;
@@ -136,6 +139,14 @@ public abstract class StoreResource extends ResourceImpl {
 			log.debug("Created " + this.getClass().getName() + " using uri: " + uri.toString());
 		}
 
+		if (params.get(XMLResource.OPTION_DISABLE_NOTIFY) != null) {
+			sendNotificationSetByParam = true;
+			sendNotificationsOnLoad = "false".compareToIgnoreCase((String)params.get(XMLResource.OPTION_DISABLE_NOTIFY)) == 0;
+		} else if (params.get(XMIResource.OPTION_DISABLE_NOTIFY) != null) {
+			sendNotificationSetByParam = true;
+			sendNotificationsOnLoad = "false".compareToIgnoreCase((String)params.get(XMIResource.OPTION_DISABLE_NOTIFY)) == 0;
+		}
+		
 		setLoaded(false);
 	}
 
@@ -251,7 +262,7 @@ public abstract class StoreResource extends ResourceImpl {
 			sendNotificationsOnLoad = "false".compareToIgnoreCase(option) == 0;
 		} else if (options != null && (option = (String) options.get(XMIResource.OPTION_DISABLE_NOTIFY)) != null) {
 			sendNotificationsOnLoad = "false".compareToIgnoreCase(option) == 0;
-		} else {
+		} else if (!sendNotificationSetByParam){
 			sendNotificationsOnLoad = true;
 		}
 

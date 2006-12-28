@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableFeatureMap.java,v 1.4 2006/12/06 06:15:31 mtaal Exp $
+ * $Id: PersistableFeatureMap.java,v 1.5 2006/12/28 21:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the persistent store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public abstract class PersistableFeatureMap extends DelegatingFeatureMap implements PersistableDelegateList {
@@ -191,6 +191,11 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	/** Is loaded */
 	public void setIsLoaded(boolean isLoaded) {
 		this.isLoaded = isLoaded;
+	}
+
+	/** Is loading */
+	public void setIsLoading(boolean isLoading) {
+		this.isLoading = isLoading;
 	}
 
 	/** Returns true if the load action is running and false otherwise */
