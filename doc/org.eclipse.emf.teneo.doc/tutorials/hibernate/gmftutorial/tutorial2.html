@@ -308,6 +308,16 @@ try {
 					"Unable to load resource: " + mySelectedModelFile.getFullPath().toString(), ex); //$NON-NLS-1$
 }
 // Added for Teneo tutorial
+
+TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
+	.createEditingDomain();
+ResourceSet resourceSet = editingDomain.getResourceSet();
+	EObject diagramRoot = null;
+try {
+	// ADDED +"?DISABLE_NOTIFY=true" for Teneo tutorial
+	Resource resource = resourceSet.getResource(URI
+		.createPlatformResourceURI(mySelectedModelFile
+		.getFullPath().toString() +"?DISABLE_NOTIFY=true"), true); 
 	</pre>
 		
 </div>
