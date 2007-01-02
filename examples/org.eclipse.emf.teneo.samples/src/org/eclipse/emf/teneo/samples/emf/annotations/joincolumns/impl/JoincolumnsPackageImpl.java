@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsPackageImpl.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
+ * $Id: JoincolumnsPackageImpl.java,v 1.2 2007/01/02 17:53:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -264,7 +264,7 @@ public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsP
 		  (getParent_Children(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@JoinColumns({@JoinColumn(name=\"myParentFirstName\" referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\" referencedColumnName=\"lastName\")})\n\t@OrderBy(\"firstName\")"
+			 "appinfo", "@JoinColumns({@JoinColumn(name=\"myParentFirstName\" referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\" referencedColumnName=\"lastName\")})"
 		   });		
 		addAnnotation
 		  (personEClass, 

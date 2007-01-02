@@ -15,7 +15,7 @@
       <xsd:element name="item" type="xsd:anyURI"
           ecore:reference="this:Item" ecore:opposite="list" maxOccurs="unbounded">
         <xsd:annotation>  
-			<xsd:appinfo source="teneo.jpa">@OneToMany(indexed=false)</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(indexed=false) @OrderBy("name desc")</xsd:appinfo>
 	    </xsd:annotation>
       </xsd:element>
       <xsd:element name="joinedItem" type="xsd:anyURI" ecore:reference="this:Item" maxOccurs="unbounded">

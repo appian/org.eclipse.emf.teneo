@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidPackageImpl.java,v 1.3 2006/11/07 10:22:27 mtaal Exp $
+ * $Id: CompositeidPackageImpl.java,v 1.4 2007/01/02 17:53:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl;
 
@@ -262,7 +262,7 @@ public class CompositeidPackageImpl extends EPackageImpl implements CompositeidP
 		  (getParent_Children(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@JoinColumns({\n\t@JoinColumn(name=\"myParentFirstName\", referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\", referencedColumnName=\"lastName\"),\n})\n@OrderBy(\"firstName\")"
+			 "appinfo", "@JoinColumns({\n\t@JoinColumn(name=\"myParentFirstName\", referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\", referencedColumnName=\"lastName\"),\n})"
 		   });		
 		addAnnotation
 		  (personEClass, 
