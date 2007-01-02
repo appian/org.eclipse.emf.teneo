@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.6 2006/11/23 13:51:30 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.7 2007/01/02 17:53:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -292,6 +292,11 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 				collectionElement.addAttribute("fetch", hae.getHbFetch().getValue().getName().toLowerCase());
 			}
 		}
+		
+		if (paFeature instanceof PAnnotatedEReference && ((PAnnotatedEReference)paFeature).getOrderBy() != null) {
+			collectionElement.addAttribute("order-by", ((PAnnotatedEReference)paFeature).getOrderBy().getValue());
+		}
+		
 		return collectionElement;
 	}
 
