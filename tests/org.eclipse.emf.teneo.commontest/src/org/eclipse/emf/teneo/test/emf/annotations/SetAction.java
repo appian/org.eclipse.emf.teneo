@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SetAction.java,v 1.2 2006/07/22 10:16:31 mtaal Exp $
+ * $Id: SetAction.java,v 1.3 2007/01/02 17:53:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test 1n relation (contained and non-contained) using sets.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class SetAction extends AbstractTestAction 
 {
@@ -132,8 +132,10 @@ public class SetAction extends AbstractTestAction
 	    		ItemList list = (ItemList)store.getObject(ItemList.class);
 	
 	    		ArrayList checkNames = new ArrayList(names);
+	    		String lastName = "name_zzzz";
 	    		for (int i = 0; i < list.getItem().size(); i++)
 	    		{
+	    			assertTrue(((Item)list.getItem().get(i)).getName().compareTo(lastName) < 0);
 	    			assertTrue(checkNames.remove(((Item)list.getItem().get(i)).getName()));
 	    		}
 	    		assertEquals(0, checkNames.size());
