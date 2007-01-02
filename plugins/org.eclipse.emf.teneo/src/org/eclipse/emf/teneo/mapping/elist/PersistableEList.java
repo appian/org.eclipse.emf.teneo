@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.7 2006/12/28 21:38:38 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.8 2007/01/02 17:53:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public abstract class PersistableEList extends DelegatingEcoreEList implements EMap, PersistableDelegateList {
@@ -565,13 +565,13 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.EMap#put(java.lang.Object, java.lang.Object)
 	 */
-	public Object put(Object arg0, Object arg1) {
-		Object entry = get(arg0);
+	public Object put(Object key, Object value) {
+		Object entry = get(key);
 		if (entry != null) {
-			((Entry) entry).setValue(arg1);
+			((Entry) entry).setValue(value);
 			return entry;
 		}
-		entry = newEntry(arg0, arg0);
+		entry = newEntry(key, value);
 		add(entry);
 		return entry;
 	}
