@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.7 2006/12/27 20:23:05 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.8 2007/01/03 08:50:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class HibernatePersistableEList extends PersistableEList {
@@ -60,6 +60,9 @@ public class HibernatePersistableEList extends PersistableEList {
 	 * happens with eagerly loaded lists.
 	 */
 	public boolean isLoaded() {
+		if (super.isLoaded()) {
+			return true;
+		}
 		if (delegate instanceof AbstractPersistentCollection) {
 			if (((AbstractPersistentCollection) delegate).wasInitialized()) {
 				if (isLoading()) {
