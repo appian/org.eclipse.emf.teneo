@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.8 2007/01/03 08:50:52 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.9 2007/01/03 09:06:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class HibernatePersistableEList extends PersistableEList {
@@ -60,25 +60,19 @@ public class HibernatePersistableEList extends PersistableEList {
 	 * happens with eagerly loaded lists.
 	 */
 	public boolean isLoaded() {
-		if (super.isLoaded()) {
-			return true;
-		}
-		if (delegate instanceof AbstractPersistentCollection) {
-			if (((AbstractPersistentCollection) delegate).wasInitialized()) {
-				if (isLoading()) {
-					// probably are we doing this already return
-					return false;
-				}
-				// delegate is loaded in case of subselect or eager loading
-				log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
-				try {
-					setIsLoading(true);
-					// do load to load the resource
-					doLoad();
-					setIsLoaded(true);
-				} finally {
-					setIsLoading(false);
-				}
+		// if the delegated list was loaded under the hood and this HibernatePersistableEList did 
+		// not yet notice it then do the local load behavior.
+		// delegate is loaded in case of subselect or eager loading
+		if (!super.isLoaded() && !isLoading() && delegate instanceof AbstractPersistentCollection &&
+				((AbstractPersistentCollection) delegate).wasInitialized()) {
+			log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+			try {
+				setIsLoading(true);
+				// do load to load the resource
+				doLoad();
+				setIsLoaded(true);
+			} finally {
+				setIsLoading(false);
 			}
 		}
 		return super.isLoaded();
