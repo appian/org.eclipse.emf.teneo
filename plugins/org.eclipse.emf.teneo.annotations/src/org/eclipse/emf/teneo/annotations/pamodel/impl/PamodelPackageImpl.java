@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackageImpl.java,v 1.10 2006/09/06 21:59:49 mtaal Exp $
+ * $Id: PamodelPackageImpl.java,v 1.11 2007/01/24 23:29:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -786,7 +786,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPAnnotatedETypedElement_TableGenerator() {
+	public EReference getPAnnotatedETypedElement_TableGenerators() {
 		return (EReference)pAnnotatedETypedElementEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -899,7 +899,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		createEReference(pAnnotatedETypedElementEClass, PANNOTATED_ETYPED_ELEMENT__JOIN_TABLE);
 		createEReference(pAnnotatedETypedElementEClass, PANNOTATED_ETYPED_ELEMENT__ONE_TO_MANY);
 		createEReference(pAnnotatedETypedElementEClass, PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR);
-		createEReference(pAnnotatedETypedElementEClass, PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR);
+		createEReference(pAnnotatedETypedElementEClass, PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS);
 		createEReference(pAnnotatedETypedElementEClass, PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS);
 		createEReference(pAnnotatedETypedElementEClass, PANNOTATED_ETYPED_ELEMENT__COLUMN);
 
@@ -1014,7 +1014,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		initEReference(getPAnnotatedETypedElement_JoinTable(), thePannotationPackage.getJoinTable(), null, "joinTable", null, 0, 1, PAnnotatedETypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedETypedElement_OneToMany(), thePannotationPackage.getOneToMany(), null, "oneToMany", null, 0, 1, PAnnotatedETypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedETypedElement_SequenceGenerator(), thePannotationPackage.getSequenceGenerator(), null, "sequenceGenerator", null, 0, 1, PAnnotatedETypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPAnnotatedETypedElement_TableGenerator(), thePannotationPackage.getTableGenerator(), null, "tableGenerator", null, 0, 1, PAnnotatedETypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedETypedElement_TableGenerators(), thePannotationPackage.getTableGenerator(), null, "tableGenerators", null, 0, -1, PAnnotatedETypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedETypedElement_JoinColumns(), thePannotationPackage.getJoinColumn(), null, "joinColumns", null, 0, -1, PAnnotatedETypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedETypedElement_Column(), thePannotationPackage.getColumn(), null, "column", null, 0, 1, PAnnotatedETypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

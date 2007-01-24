@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.8 2006/11/01 11:39:13 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.9 2007/01/24 23:29:40 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -413,13 +413,26 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		// TODO: should not only the paepackage of the efeature be checked?
 		for (Iterator it = getPaEPackages().iterator(); it.hasNext();) {
 			final PAnnotatedEPackage pae = (PAnnotatedEPackage)it.next();
-			for (Iterator sit = pae.getTableGenerators().iterator(); sit.hasNext();) {
-				final TableGenerator tg = (TableGenerator)sit.next();
+			for (Iterator tit = pae.getTableGenerators().iterator(); tit.hasNext();) {
+				final TableGenerator tg = (TableGenerator)tit.next();
 				if (tg.getName() != null && tg.getName().compareTo(name) == 0) {
 					return tg;
 				}				
 			}
+			for (Iterator cit = pae.getPaEClasses().iterator(); cit.hasNext();) {
+				final PAnnotatedEClass pec = (PAnnotatedEClass)cit.next();
+				for (Iterator sit = pec.getPaEStructuralFeatures().iterator(); sit.hasNext();) {
+					final PAnnotatedEStructuralFeature pef = (PAnnotatedEStructuralFeature)sit.next();
+					for (Iterator tit = pef.getTableGenerators().iterator(); tit.hasNext();) {
+						final TableGenerator tg = (TableGenerator)tit.next();
+						if (tg.getName() != null && tg.getName().compareTo(name) == 0) {
+							return tg;
+						}				
+					}
+				}
+			}
 		}
+		
 		log.debug("No table generator found with the name: " + name + ", name is used in " +
 				"annotation of element " + efeature.getEContainingClass().getName() + "/" + efeature.getName());
 		return null;

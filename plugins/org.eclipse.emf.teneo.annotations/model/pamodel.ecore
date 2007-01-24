@@ -193,8 +193,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceGenerator" eType="ecore:EClass pannotation.ecore#//SequenceGenerator"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerator" eType="ecore:EClass pannotation.ecore#//TableGenerator"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerators" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//TableGenerator" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" upperBound="-1"
         eType="ecore:EClass pannotation.ecore#//JoinColumn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="ecore:EClass pannotation.ecore#//Column"

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedETypedElementImpl.java,v 1.1 2006/09/06 21:59:49 mtaal Exp $
+ * $Id: PAnnotatedETypedElementImpl.java,v 1.2 2007/01/24 23:29:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl#getJoinTable <em>Join Table</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl#getOneToMany <em>One To Many</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl#getSequenceGenerator <em>Sequence Generator</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl#getTableGenerator <em>Table Generator</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl#getTableGenerators <em>Table Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl#getJoinColumns <em>Join Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl#getColumn <em>Column</em>}</li>
  * </ul>
@@ -94,14 +94,14 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	protected SequenceGenerator sequenceGenerator = null;
 
 	/**
-	 * The cached value of the '{@link #getTableGenerator() <em>Table Generator</em>}' containment reference.
+	 * The cached value of the '{@link #getTableGenerators() <em>Table Generators</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTableGenerator()
+	 * @see #getTableGenerators()
 	 * @generated
 	 * @ordered
 	 */
-	protected TableGenerator tableGenerator = null;
+	protected EList tableGenerators = null;
 
 	/**
 	 * The cached value of the '{@link #getJoinColumns() <em>Join Columns</em>}' containment reference list.
@@ -287,42 +287,11 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TableGenerator getTableGenerator() {
-		return tableGenerator;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTableGenerator(TableGenerator newTableGenerator, NotificationChain msgs) {
-		TableGenerator oldTableGenerator = tableGenerator;
-		tableGenerator = newTableGenerator;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR, oldTableGenerator, newTableGenerator);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList getTableGenerators() {
+		if (tableGenerators == null) {
+			tableGenerators = new EObjectContainmentEList(TableGenerator.class, this, PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTableGenerator(TableGenerator newTableGenerator) {
-		if (newTableGenerator != tableGenerator) {
-			NotificationChain msgs = null;
-			if (tableGenerator != null)
-				msgs = ((InternalEObject)tableGenerator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR, null, msgs);
-			if (newTableGenerator != null)
-				msgs = ((InternalEObject)newTableGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR, null, msgs);
-			msgs = basicSetTableGenerator(newTableGenerator, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR, newTableGenerator, newTableGenerator));
+		return tableGenerators;
 	}
 
 	/**
@@ -395,8 +364,8 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 				return basicSetOneToMany(null, msgs);
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR:
 				return basicSetSequenceGenerator(null, msgs);
-			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR:
-				return basicSetTableGenerator(null, msgs);
+			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS:
+				return ((InternalEList)getTableGenerators()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS:
 				return ((InternalEList)getJoinColumns()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__COLUMN:
@@ -420,8 +389,8 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 				return getOneToMany();
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR:
 				return getSequenceGenerator();
-			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR:
-				return getTableGenerator();
+			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS:
+				return getTableGenerators();
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS:
 				return getJoinColumns();
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__COLUMN:
@@ -450,8 +419,9 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR:
 				setSequenceGenerator((SequenceGenerator)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR:
-				setTableGenerator((TableGenerator)newValue);
+			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS:
+				getTableGenerators().clear();
+				getTableGenerators().addAll((Collection)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS:
 				getJoinColumns().clear();
@@ -483,8 +453,8 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR:
 				setSequenceGenerator((SequenceGenerator)null);
 				return;
-			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR:
-				setTableGenerator((TableGenerator)null);
+			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS:
+				getTableGenerators().clear();
 				return;
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS:
 				getJoinColumns().clear();
@@ -511,8 +481,8 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 				return oneToMany != null;
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR:
 				return sequenceGenerator != null;
-			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR:
-				return tableGenerator != null;
+			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS:
+				return tableGenerators != null && !tableGenerators.isEmpty();
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS:
 				return joinColumns != null && !joinColumns.isEmpty();
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__COLUMN:

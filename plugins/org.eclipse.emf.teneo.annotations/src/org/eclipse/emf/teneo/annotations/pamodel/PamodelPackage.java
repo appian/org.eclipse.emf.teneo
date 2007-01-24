@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.10 2006/09/28 20:03:57 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.11 2007/01/24 23:29:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -456,13 +456,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 4;
+	int PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -555,13 +555,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ESTRUCTURAL_FEATURE__SEQUENCE_GENERATOR = PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR = PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR;
+	int PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATORS = PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -691,13 +691,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EATTRIBUTE__SEQUENCE_GENERATOR = PANNOTATED_ESTRUCTURAL_FEATURE__SEQUENCE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EATTRIBUTE__TABLE_GENERATOR = PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR;
+	int PANNOTATED_EATTRIBUTE__TABLE_GENERATORS = PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -871,13 +871,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__SEQUENCE_GENERATOR = PANNOTATED_ESTRUCTURAL_FEATURE__SEQUENCE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EREFERENCE__TABLE_GENERATOR = PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR;
+	int PANNOTATED_EREFERENCE__TABLE_GENERATORS = PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -1060,13 +1060,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EDATA_TYPE__SEQUENCE_GENERATOR = PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__TABLE_GENERATOR = PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR;
+	int PANNOTATED_EDATA_TYPE__TABLE_GENERATORS = PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -1855,15 +1855,15 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedETypedElement_SequenceGenerator();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement#getTableGenerator <em>Table Generator</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement#getTableGenerators <em>Table Generators</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Table Generator</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement#getTableGenerator()
+	 * @return the meta object for the containment reference list '<em>Table Generators</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement#getTableGenerators()
 	 * @see #getPAnnotatedETypedElement()
 	 * @generated
 	 */
-	EReference getPAnnotatedETypedElement_TableGenerator();
+	EReference getPAnnotatedETypedElement_TableGenerators();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement#getJoinColumns <em>Join Columns</em>}'.
@@ -2455,12 +2455,12 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR = eINSTANCE.getPAnnotatedETypedElement_SequenceGenerator();
 
 		/**
-		 * The meta object literal for the '<em><b>Table Generator</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Table Generators</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATOR = eINSTANCE.getPAnnotatedETypedElement_TableGenerator();
+		EReference PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS = eINSTANCE.getPAnnotatedETypedElement_TableGenerators();
 
 		/**
 		 * The meta object literal for the '<em><b>Join Columns</b></em>' containment reference list feature.
