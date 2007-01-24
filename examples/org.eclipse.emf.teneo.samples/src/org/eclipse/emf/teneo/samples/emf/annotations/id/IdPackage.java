@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackage.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
+ * $Id: IdPackage.java,v 1.3 2007/01/24 23:30:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id;
 
@@ -146,6 +146,35 @@ public interface IdPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.TableGeneratorIDImpl <em>Table Generator ID</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.TableGeneratorIDImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.IdPackageImpl#getTableGeneratorID()
+	 * @generated
+	 */
+	int TABLE_GENERATOR_ID = 3;
+
+	/**
+	 * The feature id for the '<em><b>Myid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_GENERATOR_ID__MYID = 0;
+
+	/**
+	 * The number of structural features of the '<em>Table Generator ID</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_GENERATOR_ID_FEATURE_COUNT = 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.IdentityID <em>Identity ID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -207,6 +236,27 @@ public interface IdPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTableID_Myid();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.TableGeneratorID <em>Table Generator ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Table Generator ID</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.TableGeneratorID
+	 * @generated
+	 */
+	EClass getTableGeneratorID();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.TableGeneratorID#getMyid <em>Myid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Myid</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.TableGeneratorID#getMyid()
+	 * @see #getTableGeneratorID()
+	 * @generated
+	 */
+	EAttribute getTableGeneratorID_Myid();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -283,6 +333,24 @@ public interface IdPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TABLE_ID__MYID = eINSTANCE.getTableID_Myid();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.TableGeneratorIDImpl <em>Table Generator ID</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.TableGeneratorIDImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.IdPackageImpl#getTableGeneratorID()
+		 * @generated
+		 */
+		EClass TABLE_GENERATOR_ID = eINSTANCE.getTableGeneratorID();
+
+		/**
+		 * The meta object literal for the '<em><b>Myid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TABLE_GENERATOR_ID__MYID = eINSTANCE.getTableGeneratorID_Myid();
 
 	}
 

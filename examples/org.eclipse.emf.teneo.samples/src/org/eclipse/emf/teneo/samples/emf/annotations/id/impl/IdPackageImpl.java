@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackageImpl.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
+ * $Id: IdPackageImpl.java,v 1.3 2007/01/24 23:30:14 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.id.IdFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdentityID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.SimpleID;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.TableGeneratorID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.TableID;
 
 /**
@@ -44,6 +45,13 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 	 * @generated
 	 */
 	private EClass tableIDEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableGeneratorIDEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -175,6 +183,24 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTableGeneratorID() {
+		return tableGeneratorIDEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTableGeneratorID_Myid() {
+		return (EAttribute)tableGeneratorIDEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public IdFactory getIdFactory() {
 		return (IdFactory)getEFactoryInstance();
 	}
@@ -206,6 +232,9 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 
 		tableIDEClass = createEClass(TABLE_ID);
 		createEAttribute(tableIDEClass, TABLE_ID__MYID);
+
+		tableGeneratorIDEClass = createEClass(TABLE_GENERATOR_ID);
+		createEAttribute(tableGeneratorIDEClass, TABLE_GENERATOR_ID__MYID);
 	}
 
 	/**
@@ -245,6 +274,9 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 
 		initEClass(tableIDEClass, TableID.class, "TableID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTableID_Myid(), theXMLTypePackage.getLong(), "myid", null, 1, 1, TableID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tableGeneratorIDEClass, TableGeneratorID.class, "TableGeneratorID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTableGeneratorID_Myid(), theXMLTypePackage.getLong(), "myid", null, 1, 1, TableGeneratorID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -287,6 +319,12 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t@Id\n\t\t\t\t@GeneratedValue(strategy=\"TABLE\")\n\t\t\t"
+		   });				
+		addAnnotation
+		  (getTableGeneratorID_Myid(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t@Id\n\t\t\t\t@TableGenerator(name=\"TGENERATOR\", table=\"TGEN\", initialValue=\"2\", valueColumnName=\"VAL_COL\")\n\t\t\t\t@GeneratedValue(strategy=TABLE, generator=\"TGENERATOR\")\n\t\t\t"
 		   });	
 	}
 
@@ -335,6 +373,20 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		   });			
 		addAnnotation
 		  (getTableID_Myid(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "myid"
+		   });		
+		addAnnotation
+		  (tableGeneratorIDEClass, 
+		   source, 
+		   new String[] {
+			 "name", "TableID",
+			 "kind", "elementOnly"
+		   });			
+		addAnnotation
+		  (getTableGeneratorID_Myid(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
