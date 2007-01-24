@@ -2,11 +2,10 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackage.java,v 1.3 2006/11/20 08:18:08 mtaal Exp $
+ * $Id: HbModelPackage.java,v 1.4 2007/01/24 23:29:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -130,7 +129,7 @@ public interface HbModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ETYPE_ELEMENT__TABLE_GENERATOR = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATOR;
+	int HB_ANNOTATED_ETYPE_ELEMENT__TABLE_GENERATOR = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -301,7 +300,7 @@ public interface HbModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EATTRIBUTE__TABLE_GENERATOR;
+	int HB_ANNOTATED_EATTRIBUTE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EATTRIBUTE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -886,7 +885,7 @@ public interface HbModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EREFERENCE__TABLE_GENERATOR;
+	int HB_ANNOTATED_EREFERENCE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EREFERENCE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -1156,7 +1155,7 @@ public interface HbModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EDATA_TYPE__TABLE_GENERATOR;
+	int HB_ANNOTATED_EDATA_TYPE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EDATA_TYPE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
