@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.9 2007/01/03 09:06:29 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.10 2007/01/24 16:08:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class HibernatePersistableEList extends PersistableEList {
@@ -63,8 +63,9 @@ public class HibernatePersistableEList extends PersistableEList {
 		// if the delegated list was loaded under the hood and this HibernatePersistableEList did 
 		// not yet notice it then do the local load behavior.
 		// delegate is loaded in case of subselect or eager loading
-		if (!super.isLoaded() && !isLoading() && delegate instanceof AbstractPersistentCollection &&
-				((AbstractPersistentCollection) delegate).wasInitialized()) {
+		final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection &&
+			((AbstractPersistentCollection) delegate).wasInitialized();
+		if (!super.isLoaded() && !isLoading() && isDelegateLoaded) {
 			log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
 			try {
 				setIsLoading(true);
@@ -86,7 +87,7 @@ public class HibernatePersistableEList extends PersistableEList {
 
 		Transaction tx = null;
 		Session session = null;
-		boolean controlsSession = false;
+		boolean controlsTransaction = false;
 		boolean err = true;
 		Resource res = null;
 		try {
@@ -95,12 +96,15 @@ public class HibernatePersistableEList extends PersistableEList {
 				session = ((HbResource) res).getSession();
 				if (res.isLoaded()) // resource is loaded reopen transaction
 				{
-					if (!((SessionImpl) session).isTransactionInProgress()) {
+					// if the delegate is already loaded then no transaction is required
+					final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection &&
+						((AbstractPersistentCollection) delegate).wasInitialized();
+					if (!isDelegateLoaded && !((SessionImpl) session).isTransactionInProgress()) {
 						log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
-						controlsSession = true;
+						controlsTransaction = true;
 						tx = session.beginTransaction();
 					} else {
-						log.debug("Resource session is still active, using it");
+						log.debug("Delegate loaded or resource session is still active, using it");
 					}
 				} else {
 					log.debug("Elist uses session from resource, " + logString);
@@ -109,7 +113,7 @@ public class HibernatePersistableEList extends PersistableEList {
 				log.debug("EList is not loaded in session context");
 			}
 
-			if (controlsSession)
+			if (controlsTransaction)
 				assert (res instanceof HbResource);
 
 			Object[] objs = delegate.toArray(); // this forces the load
@@ -124,11 +128,9 @@ public class HibernatePersistableEList extends PersistableEList {
 				}
 			}
 
-			// add the new objects so they are tracked
-			if (controlsSession) // true implies that res is a HbResource
-				((HbResource) res).setIsLoading(true);
-
+			// add the new objects to the resource so they are tracked
 			if (res != null && res instanceof StoreResource) {
+				((StoreResource) res).setIsLoading(true);
 				try {
 					// attach the new contained objects so that they are adapted when required
 					for (int i = 0; i < objs.length; i++) {
@@ -137,14 +139,13 @@ public class HibernatePersistableEList extends PersistableEList {
 						}
 					}
 				} finally {
-					if (controlsSession)
-						((HbResource) res).setIsLoading(false);
+					((HbResource) res).setIsLoading(false);
 				}
 			}
 			err = false;
 			log.debug("Loaded " + objs.length + " from backend store for " + logString);
 		} finally {
-			if (controlsSession) {
+			if (controlsTransaction) {
 				if (err) {
 					tx.rollback();
 				} else {
