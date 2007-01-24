@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.3 2006/09/13 10:39:52 mtaal Exp $
+ * $Id: IdMapper.java,v 1.4 2007/01/24 23:29:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -25,6 +25,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -33,7 +34,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class IdMapper extends AbstractMapper {
@@ -90,11 +91,25 @@ public class IdMapper extends AbstractMapper {
 
 			// get the sequence from the global generator
 			if (gv.getGenerator() != null) {
-				final SequenceGenerator sg = aAttribute.getPaModel().getSequenceGenerator(aAttribute.getAnnotatedEAttribute(),
-						gv.getGenerator());
-				fieldElement.addAttribute("sequence", sg.getSequenceName());
+				 if (GenerationType.TABLE_LITERAL.equals(gv.getStrategy())) {
+					fieldElement.addAttribute("strategy", "increment");
+					final TableGenerator tg = aAttribute.getPaModel().getTableGenerator(aAttribute.getAnnotatedEAttribute(),
+							gv.getGenerator());
+					if (tg.getTable() != null) {
+						fieldElement.addAttribute("sequence-table-name", tg.getTable());
+					}
+					if (tg.getPkColumnName() != null) {
+						fieldElement.addAttribute("sequence-name-column-name", tg.getPkColumnName());
+					}
+					if (tg.getValueColumnName() != null) {
+						fieldElement.addAttribute("sequence-nextval-column-name", tg.getValueColumnName());
+					}
+				 } else {	
+					final SequenceGenerator sg = aAttribute.getPaModel().getSequenceGenerator(aAttribute.getAnnotatedEAttribute(),
+							gv.getGenerator());
+					fieldElement.addAttribute("sequence", sg.getSequenceName());
+				 }
 			}
 		}
 	}
-
 }

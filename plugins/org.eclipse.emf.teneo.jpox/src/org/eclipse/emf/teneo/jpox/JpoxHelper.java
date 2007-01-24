@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxHelper.java,v 1.2 2006/09/21 00:56:36 mtaal Exp $
+ * $Id: JpoxHelper.java,v 1.3 2007/01/24 23:29:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.jpox.resource.JPOXResourceFactory;
  * Is the main entry point for 'outside' users to create persistence manager factories and register EMF Data Stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class JpoxHelper {
 	/** The logger */
@@ -63,7 +63,7 @@ public class JpoxHelper {
 		// support old way
 		Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put("jpoxdao", new JPOXResourceFactory());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("jpoxdao", new JPOXResourceFactory());
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ejdo", new JPOXResourceFactory());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(JpoxConstants.EJDO_EXTENSION, new JPOXResourceFactory());
 		System.setProperty("org.jpox.cache.level1.type", "org.eclipse.emf.teneo.jpox.cache.EMFWeakRefCache");
 	}
 
