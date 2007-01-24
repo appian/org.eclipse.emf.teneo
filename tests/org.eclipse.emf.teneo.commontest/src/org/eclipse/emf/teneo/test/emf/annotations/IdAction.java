@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdAction.java,v 1.1 2006/07/04 22:12:15 mtaal Exp $
+ * $Id: IdAction.java,v 1.2 2007/01/24 23:29:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -25,6 +25,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.id.IdFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdentityID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.SimpleID;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.TableGeneratorID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.TableID;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -33,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
 */
 public class IdAction extends AbstractTestAction 
 {
@@ -53,12 +54,14 @@ public class IdAction extends AbstractTestAction
 	public void doAction(TestStore store)
 	{
 		final IdFactory factory = IdFactory.eINSTANCE;
+		store.disableDrop();
 	    	{
 	    		store.beginTransaction();
 	    		for (int i = 0; i < NO_TEST_OBJECTS; i++) {
 		    		store.store(factory.createIdentityID());
 		    		store.store(factory.createTableID());
 		    		store.store(factory.createSimpleID());
+		    		store.store(factory.createTableGeneratorID());
 	    		}
 	    		store.commitTransaction();
 	    	}
@@ -88,6 +91,14 @@ public class IdAction extends AbstractTestAction
 	    		for (Iterator it = list.iterator(); it.hasNext();) {
 	    			SimpleID sid = (SimpleID)it.next();
 	    			testMap.put(new Long(sid.getAutoID()), sid);
+	    		}
+	    		assertEquals(NO_TEST_OBJECTS, testMap.size());
+
+	    		list = (List)store.getObjects(TableGeneratorID.class);
+	    		testMap = new HashMap();
+	    		for (Iterator it = list.iterator(); it.hasNext();) {
+	    			final TableGeneratorID sid = (TableGeneratorID)it.next();
+	    			testMap.put(new Long(sid.getMyid()), sid);
 	    		}
 	    		assertEquals(NO_TEST_OBJECTS, testMap.size());
 	    		store.commitTransaction();
