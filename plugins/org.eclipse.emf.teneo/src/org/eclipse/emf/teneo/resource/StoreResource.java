@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.14 2006/12/28 21:38:38 mtaal Exp $
+ * $Id: StoreResource.java,v 1.15 2007/01/24 23:29:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -52,7 +53,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
