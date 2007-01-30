@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingBuilder.java,v 1.6 2006/12/21 15:47:47 mtaal Exp $
+ * $Id: PersistenceMappingBuilder.java,v 1.7 2007/01/30 10:51:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -24,7 +24,6 @@ import java.util.Iterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -52,7 +51,7 @@ import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class PersistenceMappingBuilder {
 

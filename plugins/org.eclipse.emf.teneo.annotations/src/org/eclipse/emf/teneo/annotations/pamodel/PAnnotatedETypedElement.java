@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedETypedElement.java,v 1.2 2007/01/24 23:29:42 mtaal Exp $
+ * $Id: PAnnotatedETypedElement.java,v 1.3 2007/01/30 10:51:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -11,7 +11,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
 /**
  * <!-- begin-user-doc -->
