@@ -11,22 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.5 2006/11/14 10:56:13 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.6 2007/01/30 10:51:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Collections;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
@@ -42,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	/**

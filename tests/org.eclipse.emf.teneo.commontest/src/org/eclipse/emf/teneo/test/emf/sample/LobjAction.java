@@ -11,13 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LobjAction.java,v 1.1 2006/11/20 08:18:12 mtaal Exp $
+ * $Id: LobjAction.java,v 1.2 2007/01/30 10:51:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Collections;
 import java.util.Iterator;
 
@@ -37,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the capa, detach and update
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LobjAction extends AbstractTestAction {
 

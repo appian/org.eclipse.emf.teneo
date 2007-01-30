@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GMFNotationAction.java,v 1.2 2006/11/23 06:12:19 mtaal Exp $
+ * $Id: GMFNotationAction.java,v 1.3 2007/01/30 10:51:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -28,9 +28,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMIResource;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -41,7 +39,7 @@ import org.example.mindmap.MindmapPackage;
  * Tests persisting of gmf diagram.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class GMFNotationAction extends AbstractTestAction {
 	
