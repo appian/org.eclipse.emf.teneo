@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.5 2006/11/23 06:12:22 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.6 2007/01/30 10:51:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -235,9 +235,12 @@ class EntityMapper extends AbstractMapper {
 		if (entity.getPrimaryKeyJoinColumns() != null && entity.getPrimaryKeyJoinColumns().size() > 0) {
 			addPrimaryKeyJoinColumn(entity.getPrimaryKeyJoinColumns());
 		} else if (entity.getPaSuperEntity() != null
-				&& !InheritanceType.SINGLE_TABLE_LITERAL.equals(entity.getInheritanceStrategy())) {
+				&& InheritanceType.JOINED_LITERAL.equals(entity.getInheritanceStrategy())) {
 			final ArrayList list = new ArrayList();
-			list.add(PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn());
+			final PrimaryKeyJoinColumn pkjc = PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
+			final String entityName = getHbmContext().getEntityName(entity.getAnnotatedEClass());
+			getHbmContext().trunc(entityName + "id"); // TODO improve name creation here
+			list.add(pkjc);
 			addPrimaryKeyJoinColumn(list);
 		}
 

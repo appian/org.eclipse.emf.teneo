@@ -2,11 +2,10 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackageImpl.java,v 1.3 2006/11/20 08:18:08 mtaal Exp $
+ * $Id: HbModelPackageImpl.java,v 1.4 2007/01/30 10:51:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
-import org.eclipse.emf.ecore.EAttribute;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;

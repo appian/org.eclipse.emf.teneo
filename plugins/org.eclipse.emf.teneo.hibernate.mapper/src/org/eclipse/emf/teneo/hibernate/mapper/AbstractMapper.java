@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.7 2006/11/28 06:14:01 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.8 2007/01/30 10:51:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -34,7 +34,6 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
-import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Base class for all mapping classes. Provides access to the hbmcontext.

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.4 2006/11/23 06:12:22 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.5 2007/01/30 10:51:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -34,8 +34,10 @@ import org.eclipse.emf.teneo.simpledom.Element;
  */
 class EmbeddedMapper extends AbstractMapper {
 
+	// the logger
 	private static final Log log = LogFactory.getLog(EmbeddedMapper.class);
 
+	/** Constructor */
 	public EmbeddedMapper(MappingContext mappingContext) {
 		super(mappingContext);
 	}
@@ -44,6 +46,8 @@ class EmbeddedMapper extends AbstractMapper {
 	 * Process Embedded object
 	 */
 	public void process(PAnnotatedEReference paReference) {
+		log.debug("Processing embedded: " + paReference.toString());
+		
 		// push the current overrides
 		getHbmContext().pushOverrideOnStack();
 		// and add our own
@@ -80,6 +84,8 @@ class EmbeddedMapper extends AbstractMapper {
 
 	/** Process a many-to-one component */
 	private void processSingleEmbedded(PAnnotatedEReference paReference, String targetName, EClass target) {
+		log.debug("Processing single embedded: " + paReference.toString());
+		
 		final EClass refType = (EClass) paReference.getAnnotatedEReference().getEType();
 
 		if (targetName == null || getHbmContext().isEasyEMFGenerated(refType)) {
@@ -101,6 +107,8 @@ class EmbeddedMapper extends AbstractMapper {
 
 	/** Process a list of components */
 	private void processMultiEmbedded(PAnnotatedEReference paReference) {
+		log.debug("Processing multi embedded: " + paReference.toString());
+		
 		// let the featureprocessor handle this, the one to many is handled by the OneToManyMapper
 		getHbmContext().getFeatureMapper().getOneToManyMapper().process(paReference);
 	}

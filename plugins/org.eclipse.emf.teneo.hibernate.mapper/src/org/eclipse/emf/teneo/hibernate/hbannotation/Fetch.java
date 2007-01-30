@@ -2,11 +2,10 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Fetch.java,v 1.1 2006/11/20 08:18:08 mtaal Exp $
+ * $Id: Fetch.java,v 1.2 2007/01/30 10:51:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->

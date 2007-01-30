@@ -2,17 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReference.java,v 1.3 2006/11/20 08:18:08 mtaal Exp $
+ * $Id: HbAnnotatedEReference.java,v 1.4 2007/01/30 10:51:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
-
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
 
 /**
