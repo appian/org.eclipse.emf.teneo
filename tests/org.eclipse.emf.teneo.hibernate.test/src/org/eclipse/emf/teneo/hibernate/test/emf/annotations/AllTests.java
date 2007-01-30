@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.23 2007/01/24 23:28:50 mtaal Exp $
+ * $Id: AllTests.java,v 1.24 2007/01/30 10:51:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -34,6 +34,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.EmbeddedIdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.IdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.IdBagAction;
 import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationAction;
+import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationTablePerClassAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LazyLibraryAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LobAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ManyToManyAction;
@@ -51,13 +52,15 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(InheritanceAnnotationTablePerClassAction.class);
+		
 		suite.addTestSuite(IdAction.class);
 
 		suite.addTestSuite(SetAction.class);

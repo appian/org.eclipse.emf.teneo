@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestStore.java,v 1.9 2006/11/20 08:18:54 mtaal Exp $
+ * $Id: HibernateTestStore.java,v 1.10 2007/01/30 10:51:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
@@ -49,12 +49,13 @@ import org.hibernate.impl.SessionImpl;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.persister.entity.JoinedSubclassEntityPersister;
 import org.hibernate.persister.entity.SingleTableEntityPersister;
+import org.hibernate.persister.entity.UnionSubclassEntityPersister;
 
 /**
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -71,9 +72,6 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	/** The transaction object */
 	private Transaction tx;
-
-	/** Used to disable drop */
-	private boolean donotDrop = false;
 
 	/** The props used to create it all */
 	private Properties props;
@@ -294,11 +292,6 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	}
 
-	/** Can be used to disabled dropping of the store, convenience for testing */
-	public void disableDrop() {
-		donotDrop = true;
-	}
-
 	/**
 	 * Is called just after the test, the dropStore parameter can be used to prevent dropping the database when an error
 	 */
@@ -385,6 +378,9 @@ public class HibernateTestStore extends AbstractTestStore {
 		}
 		if (strategy.equals(InheritanceType.JOINED_LITERAL)) {
 			return cmd instanceof JoinedSubclassEntityPersister;
+		}
+		if (strategy.equals(InheritanceType.TABLE_PER_CLASS_LITERAL)) {
+			return cmd instanceof UnionSubclassEntityPersister;
 		}
 		throw new StoreTestException("Strategy: " + strategy.toString() + " not supported ");
 	}

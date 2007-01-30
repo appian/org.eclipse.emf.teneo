@@ -11,11 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ReadEcore.java,v 1.1 2007/01/24 23:28:46 mtaal Exp $
+ * $Id: ReadEcore.java,v 1.2 2007/01/30 10:51:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.test;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -33,7 +32,7 @@ import org.eclipse.emf.teneo.hibernate.HbHelper;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ReadEcore {
 
