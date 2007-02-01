@@ -268,7 +268,7 @@
 <div class="h3">
 <h3>Supported inheritance mapping strategies</h3>
 		
-<p>The Teneo OR Mapper supports two of the three inheritance mapping of Hibernate
+<p>The Teneo OR Mapper supports all three inheritance mapping of Hibernate
 			(see <a class="external" href="http://www.hibernate.org/hib_docs/v3/reference/en/html/inheritance.html">
 			chapter 9</a> of the Hibernate manual):</p>
 		
@@ -280,6 +280,13 @@
 <li>JOINED: Table-per-subclass, in this strategy each subclass will have its own table. To
 			retrieve an object from the database the superclass and subclass tables are joined. 
 			This also applies to subclasses of subclasses.</li>
+		
+<li>TABLE_PER_CLASS: table-per-class, each concrete class is stored in its own table. All
+		properties (including inherited) are mapped to the table of the concrete class. Teneo uses the 
+		union-subclass concept of Hibernate to map table-per-class. The disadvantage is that generated 
+		id's are not supported. If you prefer the table-per-class implicit polymorphism approach of Hibernate then 
+		this can be (in a way) achieved by setting the mapped superclass annotation on the superclass. Note that with mapped superclass
+		the superclass itself will not be persisted separately.</li>
 		
 </ul>
 		
@@ -304,7 +311,7 @@
 		
 </div>
 		
-<a name="N10039"></a><a name="Specifying+inheritance+mapping+per+class+hierarchy"></a>
+<a name="N1003C"></a><a name="Specifying+inheritance+mapping+per+class+hierarchy"></a>
 <div class="h3">
 <h3>Specifying inheritance mapping per class hierarchy</h3>
 		
@@ -341,7 +348,7 @@
 		
 </div>
 		
-<a name="N10053"></a><a name="Multiple+Inheritance+Support"></a>
+<a name="N10056"></a><a name="Multiple+Inheritance+Support"></a>
 <div class="h3">
 <h3>Multiple Inheritance Support</h3>
 		
@@ -355,7 +362,7 @@
 		
 </div>
 		
-<a name="N1005F"></a><a name="Links+to+Inheritance-Mapping+Articles"></a>
+<a name="N10062"></a><a name="Links+to+Inheritance-Mapping+Articles"></a>
 <div class="h3">
 <h3>Links to Inheritance-Mapping Articles</h3>
 		
@@ -383,7 +390,7 @@
 <table width="100%" cellpadding="4" cellspacing="0" border="0">
 <tr>
 <td class="footer"><a href="license.html">
-          Copyright &copy; 2006 The Elver Project</a>
+          Copyright &copy; 2007 The Elver Project</a>
       - All rights reserved.
       </td>
 </tr>

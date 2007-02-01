@@ -6,7 +6,7 @@
 	http://www.eclipse.org/legal/epl-v10.html
 --><!--
 	@author <a href="mtaal@elver.org">Martin Taal</a>
-	@version $Revision: 1.8 $ $Date: 2007/02/01 12:36:54 $
+	@version $Revision: 1.9 $ $Date: 2007/02/01 14:17:47 $
 --><!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V1.3//EN" "document-v13.dtd">
 <document> 
 &#9;<header> 
@@ -50,6 +50,10 @@
 &#9;&#9;&#9;is a restriction of the generated EMF editor. So you should always have at least one
 &#9;&#9;&#9;document in the resource. This document can be created by importing from a XML document
 &#9;&#9;&#9;or by using the standard EMF open model wizard.</p>
+&#9;&#9;</section>
+&#9;&#9;<section><title>Throubleshooting: the editor is not started but instead the ehb file is opened in the text editor</title>
+&#9;&#9;<p>This happens when the ehb file is already open in a text editor. This can happen because you need to 
+&#9;&#9;edit the properties in a text editor. So first close the text editor with the ehb file and then choose 'Open Resource'.</p>
 &#9;&#9;</section>
 &#9;&#9;&#9;&#9;<section><title>Throubleshooting: editor does not start, AssertionFailedException</title>
 &#9;&#9;<p>See <link href="troubleshooting.html#Editor+does+not+start%2C+AssertionFailedException">here</link>
