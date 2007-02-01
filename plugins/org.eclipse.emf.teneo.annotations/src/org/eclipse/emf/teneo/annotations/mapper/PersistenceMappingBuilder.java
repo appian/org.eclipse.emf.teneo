@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingBuilder.java,v 1.7 2007/01/30 10:51:10 mtaal Exp $
+ * $Id: PersistenceMappingBuilder.java,v 1.8 2007/02/01 12:35:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -51,7 +51,7 @@ import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class PersistenceMappingBuilder {
 

@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicPamodelBuilder.java,v 1.7 2006/11/13 19:55:36 mtaal Exp $
+ * $Id: BasicPamodelBuilder.java,v 1.8 2007/02/01 12:35:02 mtaal Exp $
  */
 
 
