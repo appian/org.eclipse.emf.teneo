@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.6 2006/11/28 06:14:04 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.7 2007/02/01 12:34:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -19,7 +19,6 @@ package org.eclipse.emf.teneo.hibernate.resource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +55,7 @@ import org.hibernate.impl.SessionImpl;
  * hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -86,7 +85,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 		log.debug("Creating hibernateresource using uri: " + uri.toString());
 
-		final HashMap params = decodeQueryString(uri.query());
+		final Map params = decodeQueryString(uri.query());
 
 		if (params.get(DS_NAME_PARAM) != null) { // only the name
 			setDefinedQueries(getQueries(params));
