@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.12 2006/11/28 06:14:04 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.13 2007/02/01 12:06:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -84,7 +84,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class HbDataStore {
@@ -257,6 +257,9 @@ public class HbDataStore {
 		try {
 			EClass eClass = getPersistenceOptions().getEClassNameStrategy().toEClass(component.getComponentClassName(),
 					getEPackages());
+			if (eClass != null) {
+				log.debug("Found " + eClass.getName() + " as a component");
+			}
 		} catch (IllegalArgumentException e) {
 			return; // not a valud eclass;
 		}
