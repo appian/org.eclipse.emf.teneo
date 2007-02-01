@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.7 2007/01/30 10:51:47 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.8 2007/02/01 12:06:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -31,6 +31,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
+import org.eclipse.emf.teneo.ecore.DefaultEClassNameStrategy;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
@@ -49,7 +50,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
 public class HibernateMappingGenerator {
 
 	/** The logger */
-	private static final Log logger = LogFactory.getLog(HibernateMappingGenerator.class);
+	private static final Log log = LogFactory.getLog(HibernateMappingGenerator.class);
 
 	/** The list of processed annotated classes */
 	private Set processedPAClasses = null;
@@ -117,8 +118,8 @@ public class HibernateMappingGenerator {
 
 	/** Generate a hibernate mapping xml document from the pamodel */
 	public Document generate(PAnnotatedModel paModel) throws MappingException {
-		if (logger.isDebugEnabled())
-			logger.debug("Geneting Hibernate mapping for " + paModel);
+		if (log.isDebugEnabled())
+			log.debug("Geneting Hibernate mapping for " + paModel);
 		try {
 			hbmContext.beginDocument(createDocument());
 			initEntityNames(hbmContext, paModel);
@@ -145,6 +146,11 @@ public class HibernateMappingGenerator {
 		mappingDoc.setDocType("<!DOCTYPE hibernate-mapping PUBLIC \"-//Hibernate/Hibernate Mapping DTD 3.0//EN\" "
 				+ "\"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd\">");
 		mappingDoc.setRoot(DocumentHelper.createElement("hibernate-mapping"));
+		// set auto-import is false if the default eclass naming strategy is not used
+		if (!(hbmContext.getEClassNameStrategy() instanceof DefaultEClassNameStrategy)) {
+			log.debug("Setting auto-import=false because eclassnamingstrategy is not the defaulteclassnamestrategy");
+			mappingDoc.getRoot().addAttribute("auto-import", "false");
+		}
 		return mappingDoc;
 	}
 
@@ -180,15 +186,15 @@ public class HibernateMappingGenerator {
 
 				// ignore the map entries which do not have an explicit entity
 				if (paEClass.getAnnotatedEClass().getInstanceClass() == Map.Entry.class && paEClass.getEntity() == null) {
-					logger.debug("Ignoring " + paEClass.getAnnotatedEClass().getName() + " ignored, is a map entry");
+					log.debug("Ignoring " + paEClass.getAnnotatedEClass().getName() + " ignored, is a map entry");
 					paEClass.setTransient(PannotationFactory.eINSTANCE.createTransient());
 					return;
 				}
 
 				hbmContext.getEntityMapper().processEntity(paEClass);
 
-			} else if (logger.isDebugEnabled())
-				logger.debug("Skipping non-persistent class " + paEClass);
+			} else if (log.isDebugEnabled())
+				log.debug("Skipping non-persistent class " + paEClass);
 		}
 	}
 
