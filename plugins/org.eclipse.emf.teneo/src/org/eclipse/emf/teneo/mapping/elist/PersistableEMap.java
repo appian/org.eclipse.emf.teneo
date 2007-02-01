@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEMap.java,v 1.3 2006/12/06 06:15:31 mtaal Exp $
+ * $Id: PersistableEMap.java,v 1.4 2007/02/01 12:34:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.util.EcoreEMap;
 /**
  * A persistable emap which delegates to another map for persisting changes.
  * 
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public abstract class PersistableEMap extends EcoreEMap implements EMap {
 	/** The logger */

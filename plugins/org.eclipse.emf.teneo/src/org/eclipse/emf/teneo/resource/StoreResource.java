@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,13 +12,12 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.15 2007/01/24 23:29:20 mtaal Exp $
+ * $Id: StoreResource.java,v 1.16 2007/02/01 12:34:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -53,7 +52,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -131,7 +130,7 @@ public abstract class StoreResource extends ResourceImpl {
 	public StoreResource(URI uri) {
 		super(uri);
 
-		final HashMap params = decodeQueryString(uri.query());
+		final Map params = decodeQueryString(uri.query());
 		if (params.get(LOAD_STRATEGY_PARAM) != null) {
 			loadStrategy = (String)params.get(LOAD_STRATEGY_PARAM);
 		}
@@ -195,7 +194,7 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/** Get the parameter from the hashmap, if not found then throw an exception */
-	protected String getParam(HashMap params, String paramName, String report) {
+	protected String getParam(Map params, String paramName, String report) {
 		final String param = (String) params.get(paramName);
 		if (param == null) {
 			throw new StoreResourceException("Parameter " + paramName + " missing in querystring: " + report);
@@ -204,8 +203,8 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/** Decode the query string in a hashmap */
-	protected HashMap decodeQueryString(String qryStr) {
-		final HashMap result = new HashMap();
+	protected Map decodeQueryString(String qryStr) {
+		final TreeMap result = new TreeMap();
 
 		if (qryStr == null)
 			return result;

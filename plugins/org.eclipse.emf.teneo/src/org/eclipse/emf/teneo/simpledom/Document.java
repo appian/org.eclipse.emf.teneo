@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Document.java,v 1.3 2006/09/06 17:26:46 mtaal Exp $
+ * $Id: Document.java,v 1.4 2007/02/01 12:34:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
@@ -23,7 +23,7 @@ import java.util.Date;
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class Document {
