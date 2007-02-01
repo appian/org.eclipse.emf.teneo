@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.6 2006/11/23 13:51:30 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.7 2007/02/01 12:35:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
