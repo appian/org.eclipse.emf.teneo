@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.19 2007/01/30 10:51:11 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.20 2007/02/01 12:06:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -80,7 +80,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public class DefaultAnnotator {
 
@@ -362,7 +362,8 @@ public class DefaultAnnotator {
 						.equals(InheritanceType.TABLE_PER_CLASS_LITERAL))) {
 			final Table table = aFactory.createTable();
 			table.setEModelElement(eclass);
-			table.setName(trunc(eclass.getName(), false));
+			
+			table.setName(trunc(getEntityName(eclass).replace('.', '_'), false));
 			aClass.setTable(table);
 		} else if (aClass.getTable() != null && aClass.getTable().getName() == null) {
 			aClass.getTable().setName(trunc(eclass.getName(), false));
