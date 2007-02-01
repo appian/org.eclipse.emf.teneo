@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EObjectMapping.java,v 1.4 2006/11/20 08:18:28 mtaal Exp $
+ * $Id: EObjectMapping.java,v 1.5 2007/02/01 12:36:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapping;
@@ -54,7 +54,7 @@ import org.jpox.store.mapping.SingleFieldMultiMapping;
  * the future possibly referential integrity is supported by storing all any types with references in a reference table.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2006/11/20 08:18:28 $
+ * @version $Revision: 1.5 $ $Date: 2007/02/01 12:36:36 $
  */
 
 public class EObjectMapping extends SingleFieldMultiMapping implements MappingCallbacks {

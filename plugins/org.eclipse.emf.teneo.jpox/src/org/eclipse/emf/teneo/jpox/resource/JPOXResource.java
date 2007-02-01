@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXResource.java,v 1.3 2006/10/04 14:08:24 mtaal Exp $
+ * $Id: JPOXResource.java,v 1.4 2007/02/01 12:36:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.resource;
@@ -19,7 +19,6 @@ package org.eclipse.emf.teneo.jpox.resource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +64,7 @@ import org.eclipse.emf.teneo.resource.StoreResource;
  * resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/10/04 14:08:24 $
+ * @version $Revision: 1.4 $ $Date: 2007/02/01 12:36:36 $
  */
 
 public class JPOXResource extends StoreResource {
@@ -114,7 +113,7 @@ public class JPOXResource extends StoreResource {
 
 		log.debug("Created jpoxresource using uri: " + uri.toString());
 
-		final HashMap params = decodeQueryString(uri.query());
+		final Map params = decodeQueryString(uri.query());
 
 		String emfdsName = null;
 		if (uri.query() == null && uri.fileExtension() != null) // this is probably a platform uri!

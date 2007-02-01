@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyBasicMapper.java,v 1.5 2006/09/22 13:58:01 mtaal Exp $
+ * $Id: ManyBasicMapper.java,v 1.6 2007/02/01 12:36:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class ManyBasicMapper extends AbstractMapper {
 	/** The logger for all these exceptions */

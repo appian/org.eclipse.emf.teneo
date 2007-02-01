@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapWrapper.java,v 1.3 2006/10/26 14:18:47 mtaal Exp $
+ * $Id: FeatureMapWrapper.java,v 1.4 2007/02/01 12:36:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -63,7 +63,7 @@ import org.jpox.util.ClassUtils;
  * to use the backingstore as the delegate because the list can be detached.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2006/10/26 14:18:47 $
+ * @version $Revision: 1.4 $ $Date: 2007/02/01 12:36:35 $
  */
 
 public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Queryable, SCOList {
