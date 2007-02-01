@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestStore.java,v 1.10 2007/01/30 10:51:36 mtaal Exp $
+ * $Id: HibernateTestStore.java,v 1.11 2007/02/01 12:36:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
@@ -55,7 +55,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
