@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingBuilder.java,v 1.8 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PersistenceMappingBuilder.java,v 1.9 2007/02/05 14:37:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -51,7 +51,7 @@ import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class PersistenceMappingBuilder {
 
@@ -154,6 +154,7 @@ public class PersistenceMappingBuilder {
 		log.debug("Add default annotations");
 		// DCB: Introduce indirection so that extensions to annotation processing mechanism
 		// can provide their own default annotation.
+		pam.setInitialized(true);
 		getDefaultAnnotator().map(pam, po);
 
 		log.debug("Returning created pamodel");

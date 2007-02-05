@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.10 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.11 2007/02/05 14:37:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -131,6 +132,9 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 */
 	protected final Map eElement_to_pElement;
 
+	/** Set to true if initialized */
+	private boolean initialized = false;
+	
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -241,6 +245,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 *         <code>annotatedElement</code> feature) to the given <code>EModelElement</code>.
 	 */
 	public PAnnotatedEModelElement getPAnnotated(EModelElement e) {
+		checkAnnotatedPresent(e, eElement_to_pElement);
 		return (PAnnotatedEModelElement) eElement_to_pElement.get(e);
 	}
 
@@ -249,6 +254,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 *         feature) to the given <code>EPackage</code>.
 	 */
 	public PAnnotatedEPackage getPAnnotated(EPackage e) {
+		checkAnnotatedPresent(e, eElement_to_pElement);
 		return (PAnnotatedEPackage) eElement_to_pElement.get(e);
 	}
 
@@ -257,6 +263,10 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 *         feature) to the given <code>EClass</code>.
 	 */
 	public PAnnotatedEClass getPAnnotated(EClass e) {
+		if (e.getEPackage() instanceof EcorePackage) {
+			return null; // ignore the eobjects
+		}
+		checkAnnotatedPresent(e, eElement_to_pElement);
 		return (PAnnotatedEClass) eElement_to_pElement.get(e);
 	}
 
@@ -265,6 +275,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 *         <code>annotatedElement</code> feature) to the given <code>EStructuralFeature</code>.
 	 */
 	public PAnnotatedEStructuralFeature getPAnnotated(EStructuralFeature e) {
+		checkAnnotatedPresent(e, eElement_to_pElement);
 		return (PAnnotatedEStructuralFeature) eElement_to_pElement.get(e);
 	}
 
@@ -273,6 +284,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 *         feature) to the given <code>EDataType</code>.
 	 */
 	public PAnnotatedEDataType getPAnnotated(EDataType e) {
+		// do not check because many datatypes belong to the emf package
 		return (PAnnotatedEDataType) eElement_to_pElement.get(e);
 	}
 
@@ -281,6 +293,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 *         feature) to the given <code>EAttribute</code>.
 	 */
 	public PAnnotatedEAttribute getPAnnotated(EAttribute e) {
+		checkAnnotatedPresent(e, eElement_to_pElement);
 		return (PAnnotatedEAttribute) eElement_to_pElement.get(e);
 	}
 
@@ -289,9 +302,29 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 *         feature) to the given <code>EReference</code>.
 	 */
 	public PAnnotatedEReference getPAnnotated(EReference e) {
+		checkAnnotatedPresent(e, eElement_to_pElement);
 		return (PAnnotatedEReference) eElement_to_pElement.get(e);
 	}
 
+	/** Checks if there is a annotated model element for the passed emf model element. If not then an illegal argument is thrown */
+	private void checkAnnotatedPresent(EModelElement ee, Map map) {
+		if (!isInitialized()) {
+			return; // at this point the model is not yet fully initialized. 
+		}
+		if (ee == null) {
+			throw new IllegalArgumentException("Trying to retrieve Annotated Type using null. " + 
+				"This can occur if not all epackages have been registered with Teneo.\n" + 
+				"Or this can occur if epackages which refer to eachother are placed in different ecore/xsd files " +
+				"and they are not read using one resource set. The reference from one epackage to another must be " +
+				"resolvable by EMF.");
+		}
+		if (map.get(ee) == null) {
+			final String name = ee instanceof ENamedElement ? " for: " + ((ENamedElement)ee).getName() : ""; 
+			throw new IllegalArgumentException("No annotated model element present " + name + 
+					" for type " + ee.eClass().getName() + " has its epackage been registered with Teneo?");
+		}
+	}
+	
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -436,6 +469,20 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		log.debug("No table generator found with the name: " + name + ", name is used in " +
 				"annotation of element " + efeature.getEContainingClass().getName() + "/" + efeature.getName());
 		return null;
+	}
+
+	/**
+	 * @return the initialized
+	 */
+	public boolean isInitialized() {
+		return initialized;
+	}
+
+	/**
+	 * @param initialized the initialized to set
+	 */
+	public void setInitialized(boolean initialized) {
+		this.initialized = initialized;
 	}
 	
 } // PAnnotatedModelImpl

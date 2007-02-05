@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModel.java,v 1.6 2007/02/01 12:35:00 mtaal Exp $
+ * $Id: PAnnotatedModel.java,v 1.7 2007/02/05 14:37:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -112,5 +112,15 @@ public interface PAnnotatedModel extends EObject {
 	 * passed for debugging purposes.
 	 */
 	public TableGenerator getTableGenerator(EStructuralFeature efeature, String name);
+
+
+	/**
+	 * @return the initialized
+	 */
+	public boolean isInitialized();
+	/**
+	 * @param initialized the initialized to set
+	 */
+	public void setInitialized(boolean initialized);
 
 } // PAnnotatedModel

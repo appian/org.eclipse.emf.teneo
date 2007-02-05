@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.23 2007/02/05 13:20:48 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.24 2007/02/05 14:37:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -80,7 +80,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 public class DefaultAnnotator {
 
@@ -152,6 +152,7 @@ public class DefaultAnnotator {
 	 */
 	public synchronized void map(PAnnotatedModel annotatedModel, PersistenceOptions po) {
 		setLocalOptions(po);
+		annotatedModel.setInitialized(true);
 		this.annotatedModel = annotatedModel;
 		// computeEntityNames();
 		for (Iterator it = annotatedModel.getPaEPackages().iterator(); it.hasNext();) {
@@ -1293,6 +1294,13 @@ public class DefaultAnnotator {
 
 	/** Returns the entity name of the eclass */
 	private String getEntityName(EClass eclass) {
+		if (eclass == null) {
+			throw new IllegalArgumentException("Passed eclass is null." +
+					"This can occur if epackages which refer to eachother are placed in different ecore/xsd files " +
+					"and they are not read using one resource set. The reference from one epackage to another must be " +
+					"resolvable by EMF.");
+		}
+
 		final PAnnotatedEClass aclass = annotatedModel.getPAnnotated(eclass);
 		if (aclass != null && aclass.getEntity() != null) {
 			return aclass.getEntity().getName();
