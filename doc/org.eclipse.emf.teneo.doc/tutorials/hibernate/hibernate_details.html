@@ -278,6 +278,9 @@
 <a href="#Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties">Client-Server scenario: requires explicitly modelled id and version properties</a>
 </li>
 <li>
+<a href="#Default+ID+Feature+Name">Default ID Feature Name</a>
+</li>
+<li>
 <a href="#Synthetic+ID+and+Version+properties">Synthetic ID and Version properties</a>
 </li>
 <li>
@@ -424,7 +427,19 @@
 		
 </div>
 		
-<a name="N10093"></a><a name="Synthetic+ID+and+Version+properties"></a>
+<a name="N10093"></a><a name="Default+ID+Feature+Name"></a>
+<div class="h3">
+<h3>Default ID Feature Name</h3>
+		
+<p>When Teneo searches for the id-feature of an eclass it searches for an efeature with the @id annotation. If no efeature with such an annotation
+		can be found Teneo will search for a feature with the name specified in the PersistenceOptions.DEFAULT_ID_FEATURE_NAME option 
+		(see persistence options <a href="options.html">here</a>). A possible use to set this option to "id" and add a feature with 
+		the name "id" to each eclass. This "id" feature is then automatically used as the persistence identifier by Teneo.
+		</p>
+		
+</div>
+		
+<a name="N100A0"></a><a name="Synthetic+ID+and+Version+properties"></a>
 <div class="h3">
 <h3>Synthetic ID and Version properties</h3>
 			
@@ -440,7 +455,7 @@
 		
 </div>
 		
-<a name="N100A3"></a><a name="cutpaste"></a>
+<a name="N100B0"></a><a name="cutpaste"></a>
 <div class="h3">
 <h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
 			
@@ -474,7 +489,7 @@
 		
 </div>
 		
-<a name="N100C4"></a><a name="Validation"></a>
+<a name="N100D1"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
 			
@@ -510,7 +525,7 @@ public class MyValidator extends EObjectValidator
 		
 </div>
 		
-<a name="N100D8"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
+<a name="N100E5"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
 <div class="h3">
 <h3>Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</h3>
 			

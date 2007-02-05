@@ -269,6 +269,11 @@
 		The value is one of NONE, READ_ONLY, NONSTRICT_READ_WRITE, READ_WRITE, TRANSACTIONAL.</li>
 		
 <li>
+<strong>PersistenceOptions.DEFAULT_ID_FEATURE_NAME</strong>: with this option it is possible to let Teneo automatically identify the id-property. 
+		All efeatures with this name are used as persistence id. The default value is e_id (same as for the default id column name). To ensure that no efeature is 
+		by accident considered as the id-feature this should be set to an empty string.</li>
+		
+<li>
 <strong>PersistenceOptions.DEFAULT_TEMPORAL_VALUE</strong>: this option controls the default mapping to use for temporal (e.g. java.util.Date) properties.
 		The default is TIMESTAMP, other allowed values are DATE, TIME.</li>
 		
