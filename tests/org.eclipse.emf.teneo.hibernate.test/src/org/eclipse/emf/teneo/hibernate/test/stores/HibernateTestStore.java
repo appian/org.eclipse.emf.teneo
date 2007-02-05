@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestStore.java,v 1.11 2007/02/01 12:36:25 mtaal Exp $
+ * $Id: HibernateTestStore.java,v 1.12 2007/02/05 15:36:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
@@ -55,7 +55,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -392,7 +392,13 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	/** Returns the query name to use for the instance */
 	private String getEntityName(Class clazz) {
-		return clazz.getName().substring(clazz.getName().lastIndexOf('.') + 1);
+		final String entityName = clazz.getName().substring(clazz.getName().lastIndexOf('.') + 1);
+		if (props.get(PersistenceOptions.QUALIFY_ENTITY_NAME) != null && 
+				props.get(PersistenceOptions.QUALIFY_ENTITY_NAME).equals(PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX)) {
+			return epackages[0].getNsPrefix() + "." + entityName;
+		} else {
+			return entityName;
+		}
 	}
 
 	/**
