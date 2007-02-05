@@ -30,7 +30,17 @@ public class DefaultEClassNameStrategy implements EClassNameStrategy {
 		}
 
 		if (eClass == null) {
-			throw new IllegalArgumentException("EClass cannot be null.");
+			throw new IllegalArgumentException("Passed eclass is null." +
+					"This can occur if epackages which refer to eachother are placed in different ecore/xsd files " +
+					"and they are not read using one resource set. The reference from one epackage to another must be " +
+					"resolvable by EMF.");
+		}
+		
+		if (eClass.getName() == null) {
+			throw new IllegalArgumentException("EClass " + eClass.toString() + " has a null name." +
+					"This can occur if epackages which refer to eachother are placed in different ecore/xsd files " +
+					"and they are not read using one resource set. The reference from one epackage to another must be " +
+					"resolvable by EMF.");
 		}
 		return eClass.getName();
 	}
