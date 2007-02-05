@@ -11,11 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DuplicatesAction.java,v 1.2 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: DuplicatesAction.java,v 1.3 2007/02/05 15:35:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
+import java.util.Properties;
+
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.duplicates.ChildItem;
 import org.eclipse.emf.teneo.samples.emf.annotations.duplicates.DuplicatesFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.duplicates.DuplicatesPackage;
@@ -27,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
 */
 public class DuplicatesAction extends AbstractTestAction 
 {
@@ -41,7 +44,7 @@ public class DuplicatesAction extends AbstractTestAction
 	{
 		super(DuplicatesPackage.eINSTANCE);
 	}
-	
+
 	/** Test */
 	public void doAction(TestStore store)
 	{

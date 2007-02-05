@@ -11,14 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SetAction.java,v 1.4 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: SetAction.java,v 1.5 2007/02/05 15:35:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
 import java.util.ArrayList;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.set.ContainedItem;
 import org.eclipse.emf.teneo.samples.emf.annotations.set.Item;
 import org.eclipse.emf.teneo.samples.emf.annotations.set.ItemList;
@@ -31,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test 1n relation (contained and non-contained) using sets.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
+ * @version $Revision: 1.5 $ 
 */
 public class SetAction extends AbstractTestAction 
 {
@@ -46,11 +48,20 @@ public class SetAction extends AbstractTestAction
 	{
 		super(SetPackage.eINSTANCE);
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.put(PersistenceOptions.QUALIFY_ENTITY_NAME, PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
+		return props;
+	}
+
 	/** Creates an item, an address and links them to a po. */
 	public void doAction(TestStore store)
 	{
-		final SetFactory factory = SetFactory.eINSTANCE;
+  		final SetFactory factory = SetFactory.eINSTANCE;
 		// create a book, writer and library
 		ArrayList names = new ArrayList();
 		ArrayList cnames = new ArrayList();
