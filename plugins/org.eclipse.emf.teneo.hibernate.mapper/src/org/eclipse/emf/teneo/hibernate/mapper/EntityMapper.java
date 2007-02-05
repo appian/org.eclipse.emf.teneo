@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.7 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.8 2007/02/05 16:13:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -164,8 +164,10 @@ class EntityMapper extends AbstractMapper {
 			target.addAttribute("discriminator-value", dValue.getValue());
 			log.debug("DValue " + dValue.getValue());
 		}
-
-		if (table != null) {
+		
+		if (table != null && hbClassName.compareTo(INHERITANCE_STRATEGY_NAMES[InheritanceType.SINGLE_TABLE]) == 0) {
+			log.warn("EClass/Entity (" + entityName + ") is mapped as subclass in a single table with its superclass but it also has a table annotation. This table annotation is ignored.");
+		} else if (table != null) {
 			if (table.getName() != null) {
 				target.addAttribute("table", getHbmContext().trunc(table.getName(), false));
 				log.debug("Table " + "`" + table.getName() + "`");
