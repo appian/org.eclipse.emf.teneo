@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UKAddressImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: UKAddressImpl.java,v 1.2 2007/02/05 16:13:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -97,7 +97,7 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return ExtensionPackage.eINSTANCE.getUKAddress();
+		return ExtensionPackage.Literals.UK_ADDRESS;
 	}
 
 	/**
@@ -172,20 +172,14 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case ExtensionPackage.UK_ADDRESS__NAME:
-				return getName();
-			case ExtensionPackage.UK_ADDRESS__STREET:
-				return getStreet();
-			case ExtensionPackage.UK_ADDRESS__CITY:
-				return getCity();
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case ExtensionPackage.UK_ADDRESS__POSTCODE:
 				return getPostcode();
 			case ExtensionPackage.UK_ADDRESS__EXPORT_CODE:
 				return getExportCode();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -193,17 +187,8 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case ExtensionPackage.UK_ADDRESS__NAME:
-				setName((String)newValue);
-				return;
-			case ExtensionPackage.UK_ADDRESS__STREET:
-				setStreet((String)newValue);
-				return;
-			case ExtensionPackage.UK_ADDRESS__CITY:
-				setCity((String)newValue);
-				return;
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case ExtensionPackage.UK_ADDRESS__POSTCODE:
 				setPostcode((String)newValue);
 				return;
@@ -211,7 +196,7 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 				setExportCode((BigInteger)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -219,17 +204,8 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case ExtensionPackage.UK_ADDRESS__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case ExtensionPackage.UK_ADDRESS__STREET:
-				setStreet(STREET_EDEFAULT);
-				return;
-			case ExtensionPackage.UK_ADDRESS__CITY:
-				setCity(CITY_EDEFAULT);
-				return;
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.UK_ADDRESS__POSTCODE:
 				setPostcode(POSTCODE_EDEFAULT);
 				return;
@@ -237,7 +213,7 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 				unsetExportCode();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -245,20 +221,14 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case ExtensionPackage.UK_ADDRESS__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ExtensionPackage.UK_ADDRESS__STREET:
-				return STREET_EDEFAULT == null ? street != null : !STREET_EDEFAULT.equals(street);
-			case ExtensionPackage.UK_ADDRESS__CITY:
-				return CITY_EDEFAULT == null ? city != null : !CITY_EDEFAULT.equals(city);
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.UK_ADDRESS__POSTCODE:
 				return POSTCODE_EDEFAULT == null ? postcode != null : !POSTCODE_EDEFAULT.equals(postcode);
 			case ExtensionPackage.UK_ADDRESS__EXPORT_CODE:
 				return isSetExportCode();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**

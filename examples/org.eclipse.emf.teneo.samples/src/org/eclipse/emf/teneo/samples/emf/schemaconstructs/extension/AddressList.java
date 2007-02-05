@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressList.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: AddressList.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model extendedMetaData="name='AddressList' kind='elementOnly'"
  * @generated
  */
-public interface AddressList extends EObject{
+public interface AddressList extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -67,7 +67,7 @@ public interface AddressList extends EObject{
 	 * @return the value of the '<em>First Address</em>' containment reference.
 	 * @see #setFirstAddress(FirstAddressHolder)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.ExtensionPackage#getAddressList_FirstAddress()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='firstAddress'"
 	 * @generated
 	 */

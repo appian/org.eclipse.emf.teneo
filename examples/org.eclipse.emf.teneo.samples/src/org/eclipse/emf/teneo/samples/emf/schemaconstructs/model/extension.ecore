@@ -2,7 +2,8 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="extension"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/extension" nsPrefix="extension">
+    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/extension"
+    nsPrefix="extension">
   <eClassifiers xsi:type="ecore:EClass" name="Address" abstract="true">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Address"/>
@@ -142,6 +143,9 @@
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="USAddress"/>
       <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;UNITEDSTATESADDRESS&quot;)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" unique="false" lowerBound="1"
         eType="#//USState" defaultValueLiteral="AK" unsettable="true">

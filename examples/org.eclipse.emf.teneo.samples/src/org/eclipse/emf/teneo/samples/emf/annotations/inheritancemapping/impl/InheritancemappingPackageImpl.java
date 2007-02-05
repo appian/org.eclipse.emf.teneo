@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingPackageImpl.java,v 1.3 2006/09/13 10:39:43 mtaal Exp $
+ * $Id: InheritancemappingPackageImpl.java,v 1.4 2007/02/05 16:13:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -499,10 +499,10 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		createResource(eNS_URI);
 
 		// Create annotations
-		// teneo.jpa
-		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -512,13 +512,13 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";		
+		String source = "teneo.jpa";			
 		addAnnotation
 		  (addressEClass, 
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t@Inheritance(strategy=JOINED)\n\t\t\t"
-		   });			
+		   });		
 		addAnnotation
 		  (getAddress_Name(), 
 		   source, 
@@ -542,7 +542,13 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\" discriminatorType=STRING)\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t"
-		   });										
+		   });								
+		addAnnotation
+		  (usAddressEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Table(name=\"UNITEDSTATESADDRESS\")\n\t\t\t"
+		   });				
 	}
 
 	/**
@@ -552,14 +558,14 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
 		addAnnotation
 		  (addressEClass, 
 		   source, 
 		   new String[] {
 			 "name", "Address",
 			 "kind", "elementOnly"
-		   });			
+		   });				
 		addAnnotation
 		  (getAddress_Name(), 
 		   source, 
@@ -678,7 +684,7 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		   new String[] {
 			 "name", "USAddress",
 			 "kind", "elementOnly"
-		   });		
+		   });			
 		addAnnotation
 		  (getUSAddress_State(), 
 		   source, 

@@ -2,8 +2,8 @@
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
-    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Extension" importerID="org.eclipse.xsd.ecore.importer">
-  <foreignModel>Extension.xsd</foreignModel>
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Extension" importerID="org.eclipse.emf.importer.ecore">
+  <foreignModel>extension.ecore</foreignModel>
   <genPackages prefix="Extension" basePackage="org.eclipse.emf.teneo.samples.emf.schemaconstructs"
       resource="XML" disposableProviderFactory="true" ecorePackage="extension.ecore#/">
     <genEnums ecoreEnum="extension.ecore#//USState">

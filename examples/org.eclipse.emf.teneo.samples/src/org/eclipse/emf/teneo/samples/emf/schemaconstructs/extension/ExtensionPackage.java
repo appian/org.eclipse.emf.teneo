@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtensionPackage.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: ExtensionPackage.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EReference;
  * @model kind="package"
  * @generated
  */
-public interface ExtensionPackage extends EPackage{
+public interface ExtensionPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -43,7 +43,7 @@ public interface ExtensionPackage extends EPackage{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/extension";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/extension";
 
 	/**
 	 * The package namespace name.
@@ -99,7 +99,7 @@ public interface ExtensionPackage extends EPackage{
 	int ADDRESS__CITY = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Address</em>' class.
+	 * The number of structural features of the '<em>Address</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -145,7 +145,7 @@ public interface ExtensionPackage extends EPackage{
 	int ADDRESS_LIST__SECOND_ADDRESS = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Address List</em>' class.
+	 * The number of structural features of the '<em>Address List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -229,7 +229,7 @@ public interface ExtensionPackage extends EPackage{
 	int UK_ADDRESS__EXPORT_CODE = ADDRESS_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>UK Address</em>' class.
+	 * The number of structural features of the '<em>UK Address</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -302,7 +302,7 @@ public interface ExtensionPackage extends EPackage{
 	int DISTRICT_UK_ADDRESS__DISTRICT = UK_ADDRESS_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>District UK Address</em>' class.
+	 * The number of structural features of the '<em>District UK Address</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -320,7 +320,7 @@ public interface ExtensionPackage extends EPackage{
 	int FIRST_ADDRESS_HOLDER__VALUE = 0;
 
 	/**
-	 * The number of structural features of the the '<em>First Address Holder</em>' class.
+	 * The number of structural features of the '<em>First Address Holder</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -347,7 +347,7 @@ public interface ExtensionPackage extends EPackage{
 	int INTERNATIONAL_PRICE__CURRENCY = 1;
 
 	/**
-	 * The number of structural features of the the '<em>International Price</em>' class.
+	 * The number of structural features of the '<em>International Price</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -411,7 +411,7 @@ public interface ExtensionPackage extends EPackage{
 	int US_ADDRESS__ZIP = ADDRESS_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>US Address</em>' class.
+	 * The number of structural features of the '<em>US Address</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -738,5 +738,242 @@ public interface ExtensionPackage extends EPackage{
 	 * @generated
 	 */
 	ExtensionFactory getExtensionFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals  {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.AddressImpl <em>Address</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.AddressImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getAddress()
+		 * @generated
+		 */
+		EClass ADDRESS = eINSTANCE.getAddress();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS__NAME = eINSTANCE.getAddress_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Street</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS__STREET = eINSTANCE.getAddress_Street();
+
+		/**
+		 * The meta object literal for the '<em><b>City</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS__CITY = eINSTANCE.getAddress_City();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.AddressListImpl <em>Address List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.AddressListImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getAddressList()
+		 * @generated
+		 */
+		EClass ADDRESS_LIST = eINSTANCE.getAddressList();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS_LIST__NAME = eINSTANCE.getAddressList_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>First Address</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADDRESS_LIST__FIRST_ADDRESS = eINSTANCE.getAddressList_FirstAddress();
+
+		/**
+		 * The meta object literal for the '<em><b>Second Address</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADDRESS_LIST__SECOND_ADDRESS = eINSTANCE.getAddressList_SecondAddress();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.DistrictUKAddressImpl <em>District UK Address</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.DistrictUKAddressImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getDistrictUKAddress()
+		 * @generated
+		 */
+		EClass DISTRICT_UK_ADDRESS = eINSTANCE.getDistrictUKAddress();
+
+		/**
+		 * The meta object literal for the '<em><b>District</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DISTRICT_UK_ADDRESS__DISTRICT = eINSTANCE.getDistrictUKAddress_District();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.FirstAddressHolderImpl <em>First Address Holder</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.FirstAddressHolderImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getFirstAddressHolder()
+		 * @generated
+		 */
+		EClass FIRST_ADDRESS_HOLDER = eINSTANCE.getFirstAddressHolder();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FIRST_ADDRESS_HOLDER__VALUE = eINSTANCE.getFirstAddressHolder_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.InternationalPriceImpl <em>International Price</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.InternationalPriceImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getInternationalPrice()
+		 * @generated
+		 */
+		EClass INTERNATIONAL_PRICE = eINSTANCE.getInternationalPrice();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTERNATIONAL_PRICE__VALUE = eINSTANCE.getInternationalPrice_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Currency</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTERNATIONAL_PRICE__CURRENCY = eINSTANCE.getInternationalPrice_Currency();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.UKAddressImpl <em>UK Address</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.UKAddressImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getUKAddress()
+		 * @generated
+		 */
+		EClass UK_ADDRESS = eINSTANCE.getUKAddress();
+
+		/**
+		 * The meta object literal for the '<em><b>Postcode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UK_ADDRESS__POSTCODE = eINSTANCE.getUKAddress_Postcode();
+
+		/**
+		 * The meta object literal for the '<em><b>Export Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UK_ADDRESS__EXPORT_CODE = eINSTANCE.getUKAddress_ExportCode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.USAddressImpl <em>US Address</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.USAddressImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getUSAddress()
+		 * @generated
+		 */
+		EClass US_ADDRESS = eINSTANCE.getUSAddress();
+
+		/**
+		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute US_ADDRESS__STATE = eINSTANCE.getUSAddress_State();
+
+		/**
+		 * The meta object literal for the '<em><b>Zip</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute US_ADDRESS__ZIP = eINSTANCE.getUSAddress_Zip();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.USState <em>US State</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.USState
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getUSState()
+		 * @generated
+		 */
+		EEnum US_STATE = eINSTANCE.getUSState();
+
+		/**
+		 * The meta object literal for the '<em>Postcode</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getPostcode()
+		 * @generated
+		 */
+		EDataType POSTCODE = eINSTANCE.getPostcode();
+
+		/**
+		 * The meta object literal for the '<em>UK Postcode</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getUKPostcode()
+		 * @generated
+		 */
+		EDataType UK_POSTCODE = eINSTANCE.getUKPostcode();
+
+		/**
+		 * The meta object literal for the '<em>US State Object</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.USState
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionPackageImpl#getUSStateObject()
+		 * @generated
+		 */
+		EDataType US_STATE_OBJECT = eINSTANCE.getUSStateObject();
+
+	}
 
 } //ExtensionPackage

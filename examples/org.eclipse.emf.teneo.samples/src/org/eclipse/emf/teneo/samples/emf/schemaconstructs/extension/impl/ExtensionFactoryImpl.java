@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtensionFactoryImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: ExtensionFactoryImpl.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -10,7 +10,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
@@ -24,6 +28,25 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.*;
  * @generated
  */
 public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ExtensionFactory init() {
+		try {
+			ExtensionFactory theExtensionFactory = (ExtensionFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/extension"); 
+			if (theExtensionFactory != null) {
+				return theExtensionFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new ExtensionFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -59,11 +82,8 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 */
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case ExtensionPackage.US_STATE: {
-				USState result = USState.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-				return result;
-			}
+			case ExtensionPackage.US_STATE:
+				return createUSStateFromString(eDataType, initialValue);
 			case ExtensionPackage.POSTCODE:
 				return createPostcodeFromString(eDataType, initialValue);
 			case ExtensionPackage.UK_POSTCODE:
@@ -83,7 +103,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case ExtensionPackage.US_STATE:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertUSStateToString(eDataType, instanceValue);
 			case ExtensionPackage.POSTCODE:
 				return convertPostcodeToString(eDataType, instanceValue);
 			case ExtensionPackage.UK_POSTCODE:
@@ -160,8 +180,28 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public USState createUSStateFromString(EDataType eDataType, String initialValue) {
+		USState result = USState.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertUSStateToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String createPostcodeFromString(EDataType eDataType, String initialValue) {
-		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.eINSTANCE.getString(), initialValue);
+		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, initialValue);
 	}
 
 	/**
@@ -170,7 +210,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * @generated
 	 */
 	public String convertPostcodeToString(EDataType eDataType, Object instanceValue) {
-		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.eINSTANCE.getString(), instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, instanceValue);
 	}
 
 	/**
@@ -179,7 +219,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * @generated
 	 */
 	public String createUKPostcodeFromString(EDataType eDataType, String initialValue) {
-		return (String)ExtensionFactory.eINSTANCE.createFromString(ExtensionPackage.eINSTANCE.getPostcode(), initialValue);
+		return (String)createPostcodeFromString(ExtensionPackage.Literals.POSTCODE, initialValue);
 	}
 
 	/**
@@ -188,7 +228,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * @generated
 	 */
 	public String convertUKPostcodeToString(EDataType eDataType, Object instanceValue) {
-		return ExtensionFactory.eINSTANCE.convertToString(ExtensionPackage.eINSTANCE.getPostcode(), instanceValue);
+		return convertPostcodeToString(ExtensionPackage.Literals.POSTCODE, instanceValue);
 	}
 
 	/**
@@ -197,7 +237,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * @generated
 	 */
 	public USState createUSStateObjectFromString(EDataType eDataType, String initialValue) {
-		return (USState)ExtensionFactory.eINSTANCE.createFromString(ExtensionPackage.eINSTANCE.getUSState(), initialValue);
+		return (USState)createUSStateFromString(ExtensionPackage.Literals.US_STATE, initialValue);
 	}
 
 	/**
@@ -206,7 +246,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * @generated
 	 */
 	public String convertUSStateObjectToString(EDataType eDataType, Object instanceValue) {
-		return ExtensionFactory.eINSTANCE.convertToString(ExtensionPackage.eINSTANCE.getUSState(), instanceValue);
+		return convertUSStateToString(ExtensionPackage.Literals.US_STATE, instanceValue);
 	}
 
 	/**

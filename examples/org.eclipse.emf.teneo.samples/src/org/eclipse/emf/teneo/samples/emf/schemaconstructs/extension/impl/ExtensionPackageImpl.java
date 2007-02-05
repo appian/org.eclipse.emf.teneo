@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtensionPackageImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: ExtensionPackageImpl.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -174,7 +174,7 @@ public class ExtensionPackageImpl extends EPackageImpl implements ExtensionPacka
 		isInited = true;
 
 		// Initialize simple dependencies
-		XMLTypePackageImpl.init();
+		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theExtensionPackage.createPackageContents();
@@ -511,7 +511,7 @@ public class ExtensionPackageImpl extends EPackageImpl implements ExtensionPacka
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XMLTypePackageImpl theXMLTypePackage = (XMLTypePackageImpl)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
 
 		// Add supertypes to classes
 		districtUKAddressEClass.getESuperTypes().add(this.getUKAddress());
@@ -564,6 +564,8 @@ public class ExtensionPackageImpl extends EPackageImpl implements ExtensionPacka
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -722,7 +724,7 @@ public class ExtensionPackageImpl extends EPackageImpl implements ExtensionPacka
 		   new String[] {
 			 "name", "USAddress",
 			 "kind", "elementOnly"
-		   });		
+		   });			
 		addAnnotation
 		  (getUSAddress_State(), 
 		   source, 
@@ -750,6 +752,22 @@ public class ExtensionPackageImpl extends EPackageImpl implements ExtensionPacka
 			 "name", "USState:Object",
 			 "baseType", "USState"
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";																							
+		addAnnotation
+		  (usAddressEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Table(name=\"UNITEDSTATESADDRESS\")"
+		   });				
 	}
 
 } //ExtensionPackageImpl

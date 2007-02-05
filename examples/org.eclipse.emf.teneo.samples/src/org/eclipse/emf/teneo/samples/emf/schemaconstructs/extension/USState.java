@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: USState.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: USState.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension;
 
@@ -75,7 +75,7 @@ public final class USState extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final USState AK_LITERAL = new USState(AK, "AK");
+	public static final USState AK_LITERAL = new USState(AK, "AK", "AK");
 
 	/**
 	 * The '<em><b>AL</b></em>' literal object.
@@ -85,7 +85,7 @@ public final class USState extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final USState AL_LITERAL = new USState(AL, "AL");
+	public static final USState AL_LITERAL = new USState(AL, "AL", "AL");
 
 	/**
 	 * The '<em><b>AR</b></em>' literal object.
@@ -95,7 +95,7 @@ public final class USState extends AbstractEnumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final USState AR_LITERAL = new USState(AR, "AR");
+	public static final USState AR_LITERAL = new USState(AR, "AR", "AR");
 
 	/**
 	 * An array of all the '<em><b>US State</b></em>' enumerators.
@@ -119,15 +119,15 @@ public final class USState extends AbstractEnumerator {
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>US State</b></em>' literal with the specified name.
+	 * Returns the '<em><b>US State</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static USState get(String name) {
+	public static USState get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			USState result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -135,7 +135,23 @@ public final class USState extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>US State</b></em>' literal with the specified value.
+	 * Returns the '<em><b>US State</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static USState getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			USState result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>US State</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -155,8 +171,8 @@ public final class USState extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private USState(int value, String name) {
-		super(value, name);
+	private USState(int value, String name, String literal) {
+		super(value, name, literal);
 	}
 
 } //USState

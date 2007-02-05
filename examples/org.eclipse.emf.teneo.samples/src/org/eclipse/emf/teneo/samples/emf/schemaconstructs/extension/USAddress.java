@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: USAddress.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: USAddress.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension;
 
@@ -23,9 +23,10 @@ import java.math.BigInteger;
  *
  * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.ExtensionPackage#getUSAddress()
  * @model extendedMetaData="name='USAddress' kind='elementOnly'"
+ *        annotation="teneo.jpa appinfo='@Table(name=\"UNITEDSTATESADDRESS\")'"
  * @generated
  */
-public interface USAddress extends Address{
+public interface USAddress extends Address {
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' attribute.
 	 * The default value is <code>"AK"</code>.

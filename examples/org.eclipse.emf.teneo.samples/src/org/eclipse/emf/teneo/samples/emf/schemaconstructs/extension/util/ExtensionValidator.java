@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtensionValidator.java,v 1.1 2006/07/11 16:57:01 mtaal Exp $
+ * $Id: ExtensionValidator.java,v 1.2 2007/02/05 16:13:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.util;
 
@@ -113,7 +113,7 @@ public class ExtensionValidator extends EObjectValidator {
 			case ExtensionPackage.US_ADDRESS:
 				return validateUSAddress((USAddress)value, diagnostics, context);
 			case ExtensionPackage.US_STATE:
-				return validateUSState((Object)value, diagnostics, context);
+				return validateUSState((USState)value, diagnostics, context);
 			case ExtensionPackage.POSTCODE:
 				return validatePostcode((String)value, diagnostics, context);
 			case ExtensionPackage.UK_POSTCODE:
@@ -193,7 +193,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUSState(Object usState, DiagnosticChain diagnostics, Map context) {
+	public boolean validateUSState(USState usState, DiagnosticChain diagnostics, Map context) {
 		return true;
 	}
 
@@ -218,7 +218,7 @@ public class ExtensionValidator extends EObjectValidator {
 		int length = postcode.length();  
 		boolean result = length >= 7;
 		if (!result && diagnostics != null) 
-			reportMinLengthViolation(ExtensionPackage.eINSTANCE.getPostcode(), postcode, length, 7, diagnostics, context);
+			reportMinLengthViolation(ExtensionPackage.Literals.POSTCODE, postcode, length, 7, diagnostics, context);
 		return result;
 	}
 
@@ -232,7 +232,7 @@ public class ExtensionValidator extends EObjectValidator {
 		int length = postcode.length();  
 		boolean result = length <= 7;
 		if (!result && diagnostics != null) 
-			reportMaxLengthViolation(ExtensionPackage.eINSTANCE.getPostcode(), postcode, length, 7, diagnostics, context);
+			reportMaxLengthViolation(ExtensionPackage.Literals.POSTCODE, postcode, length, 7, diagnostics, context);
 		return result;
 	}
 
@@ -268,7 +268,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateUKPostcode_Pattern(String ukPostcode, DiagnosticChain diagnostics, Map context) {
-		return validatePattern(ExtensionPackage.eINSTANCE.getUKPostcode(), ukPostcode, UK_POSTCODE__PATTERN__VALUES, diagnostics, context);
+		return validatePattern(ExtensionPackage.Literals.UK_POSTCODE, ukPostcode, UK_POSTCODE__PATTERN__VALUES, diagnostics, context);
 	}
 
 	/**

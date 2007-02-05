@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingFactoryImpl.java,v 1.4 2006/09/13 16:06:47 mtaal Exp $
+ * $Id: InheritancemappingFactoryImpl.java,v 1.5 2007/02/05 16:13:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.*;
+
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ContentList;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.DistrictUKAddress;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingFactory;

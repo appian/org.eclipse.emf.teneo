@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: USAddressImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: USAddressImpl.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -107,7 +107,7 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return ExtensionPackage.eINSTANCE.getUSAddress();
+		return ExtensionPackage.Literals.US_ADDRESS;
 	}
 
 	/**
@@ -207,20 +207,14 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case ExtensionPackage.US_ADDRESS__NAME:
-				return getName();
-			case ExtensionPackage.US_ADDRESS__STREET:
-				return getStreet();
-			case ExtensionPackage.US_ADDRESS__CITY:
-				return getCity();
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case ExtensionPackage.US_ADDRESS__STATE:
 				return getState();
 			case ExtensionPackage.US_ADDRESS__ZIP:
 				return getZip();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -228,17 +222,8 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case ExtensionPackage.US_ADDRESS__NAME:
-				setName((String)newValue);
-				return;
-			case ExtensionPackage.US_ADDRESS__STREET:
-				setStreet((String)newValue);
-				return;
-			case ExtensionPackage.US_ADDRESS__CITY:
-				setCity((String)newValue);
-				return;
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case ExtensionPackage.US_ADDRESS__STATE:
 				setState((USState)newValue);
 				return;
@@ -246,7 +231,7 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 				setZip((BigInteger)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -254,17 +239,8 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case ExtensionPackage.US_ADDRESS__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case ExtensionPackage.US_ADDRESS__STREET:
-				setStreet(STREET_EDEFAULT);
-				return;
-			case ExtensionPackage.US_ADDRESS__CITY:
-				setCity(CITY_EDEFAULT);
-				return;
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.US_ADDRESS__STATE:
 				unsetState();
 				return;
@@ -272,7 +248,7 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 				unsetZip();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -280,20 +256,14 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case ExtensionPackage.US_ADDRESS__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ExtensionPackage.US_ADDRESS__STREET:
-				return STREET_EDEFAULT == null ? street != null : !STREET_EDEFAULT.equals(street);
-			case ExtensionPackage.US_ADDRESS__CITY:
-				return CITY_EDEFAULT == null ? city != null : !CITY_EDEFAULT.equals(city);
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.US_ADDRESS__STATE:
 				return isSetState();
 			case ExtensionPackage.US_ADDRESS__ZIP:
 				return isSetZip();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**

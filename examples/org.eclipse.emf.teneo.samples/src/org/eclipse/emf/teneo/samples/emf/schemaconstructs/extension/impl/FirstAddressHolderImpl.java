@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FirstAddressHolderImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: FirstAddressHolderImpl.java,v 1.2 2007/02/05 16:13:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -60,7 +60,7 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return ExtensionPackage.eINSTANCE.getFirstAddressHolder();
+		return ExtensionPackage.Literals.FIRST_ADDRESS_HOLDER;
 	}
 
 	/**
@@ -80,12 +80,12 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case ExtensionPackage.FIRST_ADDRESS_HOLDER__VALUE:
 				return getValue();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -93,14 +93,14 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case ExtensionPackage.FIRST_ADDRESS_HOLDER__VALUE:
 				getValue().clear();
 				getValue().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -108,13 +108,13 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.FIRST_ADDRESS_HOLDER__VALUE:
 				getValue().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -122,12 +122,12 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.FIRST_ADDRESS_HOLDER__VALUE:
 				return value != null && !value.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 } //FirstAddressHolderImpl

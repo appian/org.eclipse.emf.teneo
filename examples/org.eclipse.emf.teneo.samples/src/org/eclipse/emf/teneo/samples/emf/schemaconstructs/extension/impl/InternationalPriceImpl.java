@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InternationalPriceImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: InternationalPriceImpl.java,v 1.2 2007/02/05 16:13:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -89,7 +89,7 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return ExtensionPackage.eINSTANCE.getInternationalPrice();
+		return ExtensionPackage.Literals.INTERNATIONAL_PRICE;
 	}
 
 	/**
@@ -139,14 +139,14 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case ExtensionPackage.INTERNATIONAL_PRICE__VALUE:
 				return getValue();
 			case ExtensionPackage.INTERNATIONAL_PRICE__CURRENCY:
 				return getCurrency();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -154,8 +154,8 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case ExtensionPackage.INTERNATIONAL_PRICE__VALUE:
 				setValue((BigDecimal)newValue);
 				return;
@@ -163,7 +163,7 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 				setCurrency((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -171,8 +171,8 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.INTERNATIONAL_PRICE__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
@@ -180,7 +180,7 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 				setCurrency(CURRENCY_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -188,14 +188,14 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.INTERNATIONAL_PRICE__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case ExtensionPackage.INTERNATIONAL_PRICE__CURRENCY:
 				return CURRENCY_EDEFAULT == null ? currency != null : !CURRENCY_EDEFAULT.equals(currency);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**

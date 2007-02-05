@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressListImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: AddressListImpl.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -98,7 +98,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return ExtensionPackage.eINSTANCE.getAddressList();
+		return ExtensionPackage.Literals.ADDRESS_LIST;
 	}
 
 	/**
@@ -182,16 +182,12 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case ExtensionPackage.ADDRESS_LIST__FIRST_ADDRESS:
-					return basicSetFirstAddress(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ExtensionPackage.ADDRESS_LIST__FIRST_ADDRESS:
+				return basicSetFirstAddress(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -199,8 +195,8 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case ExtensionPackage.ADDRESS_LIST__NAME:
 				return getName();
 			case ExtensionPackage.ADDRESS_LIST__FIRST_ADDRESS:
@@ -208,7 +204,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 			case ExtensionPackage.ADDRESS_LIST__SECOND_ADDRESS:
 				return getSecondAddress();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -216,8 +212,8 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case ExtensionPackage.ADDRESS_LIST__NAME:
 				setName((String)newValue);
 				return;
@@ -229,7 +225,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 				getSecondAddress().addAll((Collection)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -237,8 +233,8 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.ADDRESS_LIST__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -249,7 +245,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 				getSecondAddress().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -257,8 +253,8 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.ADDRESS_LIST__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ExtensionPackage.ADDRESS_LIST__FIRST_ADDRESS:
@@ -266,7 +262,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 			case ExtensionPackage.ADDRESS_LIST__SECOND_ADDRESS:
 				return secondAddress != null && !secondAddress.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**

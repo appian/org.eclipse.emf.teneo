@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: AddressImpl.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -108,7 +108,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return ExtensionPackage.eINSTANCE.getAddress();
+		return ExtensionPackage.Literals.ADDRESS;
 	}
 
 	/**
@@ -179,8 +179,8 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case ExtensionPackage.ADDRESS__NAME:
 				return getName();
 			case ExtensionPackage.ADDRESS__STREET:
@@ -188,7 +188,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 			case ExtensionPackage.ADDRESS__CITY:
 				return getCity();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -196,8 +196,8 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case ExtensionPackage.ADDRESS__NAME:
 				setName((String)newValue);
 				return;
@@ -208,7 +208,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 				setCity((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -216,8 +216,8 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.ADDRESS__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -228,7 +228,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 				setCity(CITY_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -236,8 +236,8 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case ExtensionPackage.ADDRESS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ExtensionPackage.ADDRESS__STREET:
@@ -245,7 +245,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 			case ExtensionPackage.ADDRESS__CITY:
 				return CITY_EDEFAULT == null ? city != null : !CITY_EDEFAULT.equals(city);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**

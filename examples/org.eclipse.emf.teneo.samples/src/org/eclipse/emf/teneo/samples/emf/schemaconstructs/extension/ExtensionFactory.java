@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtensionFactory.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: ExtensionFactory.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension;
 
@@ -16,14 +16,14 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.ExtensionPackage
  * @generated
  */
-public interface ExtensionFactory extends EFactory{
+public interface ExtensionFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ExtensionFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionFactoryImpl();
+	ExtensionFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.ExtensionFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Address List</em>'.
