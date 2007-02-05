@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.22 2007/02/05 13:04:53 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.23 2007/02/05 13:20:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -80,7 +80,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 public class DefaultAnnotator {
 
@@ -346,7 +346,9 @@ public class DefaultAnnotator {
 				if (!firstDone) {
 					superClass = eSuperClass;
 				}
-				idFeatures.addAll(getIDFeaturesNames(aSuperClass));
+				final List superList = getIDFeaturesNames(aSuperClass);
+				idFeatures.removeAll(superList);
+				idFeatures.addAll(superList);
 				if (!idFeatures.isEmpty())
 					break;
 			}
@@ -1324,9 +1326,10 @@ public class DefaultAnnotator {
 			EStructuralFeature feature = (EStructuralFeature) it.next();
 			PAnnotatedEStructuralFeature aStructuralFeature = aClass.getPaModel().getPAnnotated(feature);
 			if (aStructuralFeature instanceof PAnnotatedEAttribute) {
-				PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aStructuralFeature;
-				if (aAttribute.getId() != null) {
-					list.add(aAttribute.getAnnotatedEAttribute().getName());
+				final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aStructuralFeature;
+				final String attrName = aAttribute.getAnnotatedEAttribute().getName();
+				if (aAttribute.getId() != null && !list.contains(attrName)) {
+					list.add(attrName);
 				}
 			}
 		}
@@ -1336,7 +1339,9 @@ public class DefaultAnnotator {
 				final EClass eClass = (EClass) it.next();
 				final PAnnotatedEClass aSuperClass = annotatedModel.getPAnnotated(eClass);
 				if (aSuperClass != null) {
-					list.addAll(getIDFeaturesNamesRecurse(aSuperClass));
+					final List superList = getIDFeaturesNamesRecurse(aSuperClass);
+					list.removeAll(superList);
+					list.addAll(superList);
 				}
 				if (!list.isEmpty()) {
 					return list;
