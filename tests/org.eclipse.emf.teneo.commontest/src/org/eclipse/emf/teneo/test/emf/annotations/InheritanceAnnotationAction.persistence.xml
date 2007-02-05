@@ -30,6 +30,10 @@
 			</property>
 		</eclass>
 
+		<eclass name="USAddress">
+			<table name="UNITEDSTATESADDRESS"/>
+		</eclass>
+
 	</epackage>
 
 </persistence-mapping>
