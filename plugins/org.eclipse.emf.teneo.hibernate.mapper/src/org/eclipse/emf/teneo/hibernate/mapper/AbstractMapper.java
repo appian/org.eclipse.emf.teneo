@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.9 2007/02/01 12:35:54 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.10 2007/02/05 15:35:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,6 +48,9 @@ abstract class AbstractMapper {
 	/** return the opposite of an association */
 	protected PAnnotatedEReference getOtherSide(PAnnotatedEReference paReference) {
 		// TODO assuming that mappedBy coincide with opposite, check in validation
+		if (paReference.getAnnotatedEReference().getEOpposite() == null) {
+			return null;
+		}
 		return paReference.getPaModel().getPAnnotated(paReference.getAnnotatedEReference().getEOpposite());
 	}
 
