@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.17 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.18 2007/02/05 13:04:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class PersistenceOptions {
 
@@ -106,6 +106,9 @@ public class PersistenceOptions {
 	/** Name of id column, default value is e_id */
 	public static final String ID_COLUMN_NAME = NAMING_PREFIX + "default_id_column";
 
+	/** The name of the id feature if no feature has a @id annotation */
+	public static final String DEFAULT_ID_FEATURE_NAME = NAMING_PREFIX + "default_id_feature";
+	
 	/**
 	 * The path of the persistence XML file.
 	 */
@@ -178,6 +181,7 @@ public class PersistenceOptions {
         props.setProperty(DEFAULT_CACHE_STRATEGY, "NONE");
         props.setProperty(JOIN_TABLE_NAMING_STRATEGY, "ejb3");
         props.setProperty(DEFAULT_TEMPORAL_VALUE, "TIMESTAMP");
+        props.setProperty(DEFAULT_ID_FEATURE_NAME, "e_id");
         
 		return props;
 	}
@@ -309,6 +313,11 @@ public class PersistenceOptions {
 	/** Returns the value of the id column option, returns null if not set */
 	public String getIdColumnName() {
 		return properties.getProperty(ID_COLUMN_NAME);
+	}
+
+	/** Returns the value of the default id property*/
+	public String getDefaultIDFeatureName() {
+		return properties.getProperty(DEFAULT_ID_FEATURE_NAME);
 	}
 
 	/** Returns the value of the join table naming strategy */
