@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.24 2007/02/05 14:37:57 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.25 2007/02/05 15:35:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -80,7 +80,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 public class DefaultAnnotator {
 
@@ -1364,21 +1364,23 @@ public class DefaultAnnotator {
 	}
 
 	/** Utilit method to truncate a column name */
-	private String trunc(String name, boolean truncSuffix) {
+	private String trunc(String truncName, boolean truncSuffix) {
+		final String correctedName = truncName.replace('.', '_');
+
 		if (optionMaximumSqlLength == -1)
-			return optionSQLCaseStrategy.convert(name);
-		if (name.length() < optionMaximumSqlLength)
-			return optionSQLCaseStrategy.convert(name);
+			return optionSQLCaseStrategy.convert(correctedName);
+		if (correctedName.length() < optionMaximumSqlLength)
+			return optionSQLCaseStrategy.convert(correctedName);
 
 		// truncate the part before the last _ because this is often the suffix
-		final int underscore = name.lastIndexOf('_');
+		final int underscore = correctedName.lastIndexOf('_');
 		if (truncSuffix && underscore != -1 && underscore > 0) {
-			final String usStr = name.substring(underscore);
+			final String usStr = correctedName.substring(underscore);
 			if ((optionMaximumSqlLength - usStr.length()) < 0)
-				return optionSQLCaseStrategy.convert(name);
-			return optionSQLCaseStrategy.convert(name.substring(0, optionMaximumSqlLength - usStr.length()) + usStr);
+				return optionSQLCaseStrategy.convert(correctedName);
+			return optionSQLCaseStrategy.convert(correctedName.substring(0, optionMaximumSqlLength - usStr.length()) + usStr);
 		}
 
-		return optionSQLCaseStrategy.convert(name.substring(0, optionMaximumSqlLength));
+		return optionSQLCaseStrategy.convert(correctedName.substring(0, optionMaximumSqlLength));
 	}
 }
