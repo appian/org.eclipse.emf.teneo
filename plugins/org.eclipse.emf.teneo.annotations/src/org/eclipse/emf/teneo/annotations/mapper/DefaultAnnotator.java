@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.21 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.22 2007/02/05 13:04:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -80,7 +80,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public class DefaultAnnotator {
 
@@ -119,6 +119,9 @@ public class DefaultAnnotator {
 
 	/** Current Temporal */
 	private TemporalType optionDefaultTemporal = null;
+
+	/** The default id feature name */
+	private String optionDefaultIDFeatureName = null;;
 
 	/** Option maximum column length */
 	private int optionMaximumSqlLength = -1;
@@ -197,7 +200,10 @@ public class DefaultAnnotator {
 
 		optionSetCascadeAllOnContainment = po.isSetCascadeAllOnContainment();
 		log.debug("Option set cascade all on containment: " + optionSetCascadeAllOnContainment);
-
+		
+		optionDefaultIDFeatureName = po.getDefaultIDFeatureName();
+		log.debug("Option default id feature name: " + optionDefaultIDFeatureName);
+		
 		optionEClassNameStrategy = po.getEClassNameStrategy();
 		log.debug("Qualify EClass name option: " + optionEClassNameStrategy.getClass().getName());
 
@@ -1300,8 +1306,19 @@ public class DefaultAnnotator {
 		return (String) eAnnotation.getDetails().get(key);
 	}
 
-	/** Returns the list of names of id props of the eclass */
+	/** Returns the list of names of id props of the eclass, walks the inheritance tree to find the 
+	 * id feature, if none is found then the  */
 	private List getIDFeaturesNames(PAnnotatedEClass aClass) {
+		final List list = getIDFeaturesNamesRecurse(aClass);
+		// See, 172756
+		if (list.isEmpty()) {
+			list.add(optionDefaultIDFeatureName);
+		}
+		return list;
+	}
+	
+	/** Internal will walk the inheritance tree to find the id feature */
+	private List getIDFeaturesNamesRecurse(PAnnotatedEClass aClass) {
 		final ArrayList list = new ArrayList();
 		for (Iterator it = aClass.getAnnotatedEClass().getEStructuralFeatures().iterator(); it.hasNext();) {
 			EStructuralFeature feature = (EStructuralFeature) it.next();
@@ -1319,7 +1336,7 @@ public class DefaultAnnotator {
 				final EClass eClass = (EClass) it.next();
 				final PAnnotatedEClass aSuperClass = annotatedModel.getPAnnotated(eClass);
 				if (aSuperClass != null) {
-					list.addAll(getIDFeaturesNames(aSuperClass));
+					list.addAll(getIDFeaturesNamesRecurse(aSuperClass));
 				}
 				if (!list.isEmpty()) {
 					return list;
@@ -1329,9 +1346,6 @@ public class DefaultAnnotator {
 				return list;
 			}
 			// fall through
-		}
-		if (list.isEmpty()) {
-			list.add("id"); // todo externalize
 		}
 		return list;
 	}
