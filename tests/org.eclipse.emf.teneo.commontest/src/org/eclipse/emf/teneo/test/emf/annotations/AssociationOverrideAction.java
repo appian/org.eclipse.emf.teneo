@@ -12,7 +12,7 @@
  *   Laurens Fridael
  * </copyright>
  *
- * $Id: AssociationOverrideAction.java,v 1.4 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: AssociationOverrideAction.java,v 1.5 2007/02/05 13:04:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -57,7 +57,7 @@ public class AssociationOverrideAction extends AbstractTestAction {
 	}
 
 	private static final String STUDENT_VERIFICATION_QUERY = 
-		"SELECT COUNT(*) FROM STUDENT A INNER JOIN ADDRESS B ON A.ADDRESS_ADDRESS_ID = B.MYID".toLowerCase();
+		"SELECT COUNT(*) FROM STUDENT A INNER JOIN ADDRESS B ON A.ADDRESS_ADDRESS_E_ID = B.MYID".toLowerCase();
 
 	private static final String EMPLOYEE_VERIFICATION_QUERY = 
 		"SELECT COUNT(*) FROM EMPLOYEE A INNER JOIN ADDRESS B ON A.EMPLOYEE_ADDRESS_ID = B.MYID".toLowerCase();
