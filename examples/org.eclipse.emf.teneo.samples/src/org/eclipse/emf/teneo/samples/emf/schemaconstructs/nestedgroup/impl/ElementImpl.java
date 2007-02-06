@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ElementImpl.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: ElementImpl.java,v 1.1.2.1 2007/02/06 09:25:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl;
 
@@ -116,7 +116,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FeatureMap getTrue() {
+	public FeatureMap getTrue() { 
 		return (FeatureMap)((FeatureMap)getMixed()).list(NestedgroupPackage.eINSTANCE.getElement_True());
 	}
 
