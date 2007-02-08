@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableFeatureMap.java,v 1.6 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: PersistableFeatureMap.java,v 1.7 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -44,15 +44,15 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the persistent store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
-public abstract class PersistableFeatureMap extends DelegatingFeatureMap implements PersistableDelegateList {
+public abstract class PersistableFeatureMap extends DelegatingFeatureMap implements PersistableDelegateList<FeatureMap.Entry> {
 	/** The logger */
 	private static Log log = LogFactory.getLog(PersistableFeatureMap.class);
 
 	/** The actual list, must never be an elist as notifications etc. are done by this list */
-	protected List delegate;
+	protected List<FeatureMap.Entry> delegate;
 
 	/** Is loaded from backend */
 	private boolean isLoaded = false;
@@ -64,15 +64,15 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	protected final String logString;
 
 	/** The type of the elements in this list */
-	private final Class elementType;
+	private final Class<? extends FeatureMap.Entry> elementType;
 
 	/** Constructor */
-	public PersistableFeatureMap(InternalEObject owner, EStructuralFeature feature, List list) {
+	public PersistableFeatureMap(InternalEObject owner, EStructuralFeature feature, List<FeatureMap.Entry> list) {
 		super(owner, feature);
 		elementType = determineElementType();
 
 		if (list == null) {
-			delegate = new ArrayList();
+			delegate = new ArrayList<FeatureMap.Entry>();
 			isLoaded = true;
 		} else if (list instanceof EList) {
 			AssertUtil.assertTrue("The passed elist is not a featuremap but a : " + list.getClass().getName()
@@ -92,15 +92,15 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	}
 
 	/** Returns the element type to be used */
-	protected abstract Class determineElementType();
+	protected abstract Class<? extends FeatureMap.Entry> determineElementType();
 
 	/** Returns the element type */
-	public Class getElementType() {
+	public Class<? extends FeatureMap.Entry> getElementType() {
 		return elementType;
 	}
 
 	/** Shortcut to replace entries */
-	protected FeatureMap.Entry replaceEntry(Object entry) {
+	protected FeatureMap.Entry replaceEntry(FeatureMap.Entry entry) {
 		if (entry instanceof FeatureMapEntry && ((FeatureMapEntry) entry).belongsToFeatureMap(this)) {
 			return (FeatureMapEntry) entry;
 		}
@@ -110,11 +110,10 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	}
 
 	/** Convenience to replace all */
-	private List replaceEntryAll(Collection coll) {
-		final ArrayList result = new ArrayList();
-		final Iterator it = coll.iterator();
-		while (it.hasNext()) {
-			result.add(replaceEntry(it.next()));
+	private List<FeatureMap.Entry> replaceEntryAll(Collection<? extends FeatureMap.Entry> coll) {
+		final ArrayList<FeatureMap.Entry> result = new ArrayList<FeatureMap.Entry>();
+		for (FeatureMap.Entry fe : coll) {
+			result.add(replaceEntry(fe));
 		}
 		return result;
 	}
@@ -130,19 +129,20 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	}
 
 	/** Return the delegate list without doing a load */
-	public List getDelegate() {
+	public List<FeatureMap.Entry> getDelegate() {
 		return delegate;
 	}
 
 	/** Returns the underlying elist */
-	protected List delegateList() {
+	@Override
+	protected List<FeatureMap.Entry> delegateList() {
 		load();
 
 		return delegate;
 	}
 
 	/** Replace the delegating list */
-	public void replaceDelegate(List newDelegate) {
+	public void replaceDelegate(List<FeatureMap.Entry> newDelegate) {
 		AssertUtil.assertTrue("This featuremap " + logString + " already wraps an or specific featuremap",
 				!isPersistencyWrapped());
 
@@ -177,6 +177,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.ecore.util.EcoreEList#isNotificationRequired()
 	 */
+	@Override
 	protected boolean isNotificationRequired() {
 		if (!isLoaded() || isLoading())
 			return false; // not yet loaded so no notifications, prevents infinite looping
@@ -210,7 +211,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	public abstract boolean isPersistencyWrapped();
 
 	/** Override the didadd to enable opposite setting */
-	protected void didAdd(int index, Object obj) {
+	@Override
+	protected void didAdd(int index, FeatureMap.Entry obj) {
 		final NotificationChain nc = inverseAdd(obj, null);
 		if (nc != null && isNotificationRequired())
 			nc.dispatch();
@@ -218,7 +220,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	}
 
 	/** Override the didremove to enable opposite setting */
-	protected void didRemove(int index, Object obj) {
+	@Override
+	protected void didRemove(int index, FeatureMap.Entry obj) {
 		final NotificationChain nc = inverseRemove(obj, null);
 		if (nc != null && isNotificationRequired())
 			nc.dispatch();
@@ -237,7 +240,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateAdd(int, java.lang.Object)
 	 */
-	protected void delegateAdd(int index, Object object) {
+	@Override
+	protected void delegateAdd(int index, FeatureMap.Entry object) {
 		load();
 		super.delegateAdd(index, object);
 	}
@@ -247,7 +251,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateAdd(java.lang.Object)
 	 */
-	protected void delegateAdd(Object object) {
+	@Override
+	protected void delegateAdd(FeatureMap.Entry object) {
 		load();
 		super.delegateAdd(object);
 	}
@@ -257,7 +262,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addAllUnique(java.util.Collection)
 	 */
-	public boolean addAllUnique(Collection collection) {
+	@Override
+	public boolean addAllUnique(Collection<? extends FeatureMap.Entry> collection) {
 		return super.addAllUnique(replaceEntryAll(collection));
 	}
 
@@ -266,7 +272,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addAllUnique(int, java.util.Collection)
 	 */
-	public boolean addAllUnique(int index, Collection collection) {
+	@Override
+	public boolean addAllUnique(int index, Collection<? extends FeatureMap.Entry> collection) {
 		return super.addAllUnique(index, replaceEntryAll(collection));
 	}
 
@@ -275,7 +282,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addUnique(int, java.lang.Object)
 	 */
-	public void addUnique(int index, Object object) {
+	@Override
+	public void addUnique(int index, FeatureMap.Entry object) {
 		super.addUnique(index, replaceEntry(object));
 	}
 
@@ -284,7 +292,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addUnique(java.lang.Object)
 	 */
-	public void addUnique(Object object) {
+	@Override
+	public void addUnique(FeatureMap.Entry object) {
 		super.addUnique(replaceEntry(object));
 	}
 
@@ -293,7 +302,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#setUnique(int, java.lang.Object)
 	 */
-	public Object setUnique(int index, Object object) {
+	@Override
+	public FeatureMap.Entry setUnique(int index, FeatureMap.Entry object) {
 		return super.setUnique(index, replaceEntry(object));
 	}
 
@@ -302,7 +312,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateBasicList()
 	 */
-	protected List delegateBasicList() {
+	@Override
+	protected List<FeatureMap.Entry> delegateBasicList() {
 		load();
 		return super.delegateBasicList();
 	}
@@ -312,6 +323,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateClear()
 	 */
+	@Override
 	protected void delegateClear() {
 		load();
 		super.delegateClear();
@@ -322,6 +334,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateContains(java.lang.Object)
 	 */
+	@Override
 	protected boolean delegateContains(Object object) {
 		load();
 		return super.delegateContains(object);
@@ -332,7 +345,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateContainsAll(java.util.Collection)
 	 */
-	protected boolean delegateContainsAll(Collection collection) {
+	@Override
+	protected boolean delegateContainsAll(Collection<?> collection) {
 		load();
 		return super.delegateContainsAll(collection);
 	}
@@ -342,6 +356,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateEquals(java.lang.Object)
 	 */
+	@Override
 	protected boolean delegateEquals(Object object) {
 		load();
 		return super.delegateEquals(object);
@@ -352,7 +367,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateGet(int)
 	 */
-	protected Object delegateGet(int index) {
+	@Override
+	protected FeatureMap.Entry delegateGet(int index) {
 		load();
 		return super.delegateGet(index);
 	}
@@ -362,6 +378,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateHashCode()
 	 */
+	@Override
 	protected int delegateHashCode() {
 		load();
 		return super.delegateHashCode();
@@ -372,6 +389,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateIndexOf(java.lang.Object)
 	 */
+	@Override
 	protected int delegateIndexOf(Object object) {
 		load();
 		return super.delegateIndexOf(object);
@@ -382,6 +400,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateIsEmpty()
 	 */
+	@Override
 	protected boolean delegateIsEmpty() {
 		load();
 		return super.delegateIsEmpty();
@@ -392,7 +411,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateIterator()
 	 */
-	protected Iterator delegateIterator() {
+	@Override
+	protected Iterator<FeatureMap.Entry> delegateIterator() {
 		load();
 		return super.delegateIterator();
 	}
@@ -402,6 +422,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateLastIndexOf(java.lang.Object)
 	 */
+	@Override
 	protected int delegateLastIndexOf(Object object) {
 		load();
 		return super.delegateLastIndexOf(object);
@@ -412,7 +433,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateListIterator()
 	 */
-	protected ListIterator delegateListIterator() {
+	@Override
+	protected ListIterator<FeatureMap.Entry> delegateListIterator() {
 		// TODO Auto-generated method stub
 		return super.delegateListIterator();
 	}
@@ -422,7 +444,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateRemove(int)
 	 */
-	protected Object delegateRemove(int index) {
+	@Override
+	protected FeatureMap.Entry delegateRemove(int index) {
 		load();
 		return super.delegateRemove(index);
 	}
@@ -432,7 +455,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateSet(int, java.lang.Object)
 	 */
-	protected Object delegateSet(int index, Object object) {
+	@Override
+	protected FeatureMap.Entry delegateSet(int index, FeatureMap.Entry object) {
 		load();
 		return super.delegateSet(index, object);
 	}
@@ -442,6 +466,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateSize()
 	 */
+	@Override
 	protected int delegateSize() {
 		load();
 		return super.delegateSize();
@@ -452,6 +477,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateToArray()
 	 */
+	@Override
 	protected Object[] delegateToArray() {
 		load();
 		return super.delegateToArray();
@@ -462,7 +488,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateToArray(java.lang.Object[])
 	 */
-	protected Object[] delegateToArray(Object[] array) {
+	@Override
+	protected <T> T[] delegateToArray(T[] array) {
 		load();
 		return super.delegateToArray(array);
 	}
@@ -472,6 +499,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateToString()
 	 */
+	@Override
 	protected String delegateToString() {
 		load();
 		return super.delegateToString();
@@ -484,6 +512,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * This method does jvm instance equality because doing a full-fledge equal would result in 
 	 * a load of the list.
 	 */
+	@Override
 	public boolean equals(Object object) {
 		return this == object;
 	}

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreException.java,v 1.3 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: StoreException.java,v 1.4 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -21,13 +21,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Is used to throw runtime store exceptions. This class offers automatic logging to commons logging. Note that this
- * class extends RuntimeException, so no forced throws and catch statements. Although there are very differing views on
- * this topic but it is our experience that to many checked exceptions only distract the programmer and have no added
- * value.
+ * Is used to throw runtime store exceptions. This class offers automatic
+ * logging to commons logging. Note that this class extends RuntimeException, so
+ * no forced throws and catch statements. Although there are very differing
+ * views on this topic but it is our experience that to many checked exceptions
+ * only distract the programmer and have no added value.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class StoreException extends RuntimeException {

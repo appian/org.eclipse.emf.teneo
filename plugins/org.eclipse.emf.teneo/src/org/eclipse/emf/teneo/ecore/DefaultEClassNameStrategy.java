@@ -6,8 +6,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 
 /**
- * This implementation assumes that EClass names are unique. It will (de)Resolve using
- * the EClass name.
+ * This implementation assumes that EClass names are unique. It will (de)Resolve
+ * using the EClass name.
  * <p>
  * TODO: Should be moved to Teneo project.
  * 
@@ -30,17 +30,21 @@ public class DefaultEClassNameStrategy implements EClassNameStrategy {
 		}
 
 		if (eClass == null) {
-			throw new IllegalArgumentException("Passed eclass is null." +
-					"This can occur if epackages which refer to eachother are placed in different ecore/xsd files " +
-					"and they are not read using one resource set. The reference from one epackage to another must be " +
-					"resolvable by EMF.");
+			throw new IllegalArgumentException(
+					"Passed eclass is null."
+							+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
+							+ "and they are not read using one resource set. The reference from one epackage to another must be "
+							+ "resolvable by EMF.");
 		}
-		
+
 		if (eClass.getName() == null) {
-			throw new IllegalArgumentException("EClass " + eClass.toString() + " has a null name." +
-					"This can occur if epackages which refer to eachother are placed in different ecore/xsd files " +
-					"and they are not read using one resource set. The reference from one epackage to another must be " +
-					"resolvable by EMF.");
+			throw new IllegalArgumentException(
+					"EClass "
+							+ eClass.toString()
+							+ " has a null name."
+							+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
+							+ "and they are not read using one resource set. The reference from one epackage to another must be "
+							+ "resolvable by EMF.");
 		}
 		return eClass.getName();
 	}
@@ -58,7 +62,7 @@ public class DefaultEClassNameStrategy implements EClassNameStrategy {
 		if (eClassName.compareTo(EOBJECT_ECLASS_URI) == 0) {
 			return EcorePackage.eINSTANCE.getEObject();
 		}
-		
+
 		// now try all epackages
 		EClass eClass = null;
 		for (int i = 0; i < epackages.length; i++) {
@@ -67,15 +71,21 @@ public class DefaultEClassNameStrategy implements EClassNameStrategy {
 			if (eClassifier instanceof EClass) {
 				if (eClass != null) {
 					// doubly entry! Actually require different resolver
-					throw new IllegalArgumentException("There is more than one EClass with the same name (" + eClassName + 
-							" in EPackage " + eClass.getEPackage().getName() + " and " + ePackage.getName() + 
-							". A different EClassResolver should be used.");
+					throw new IllegalArgumentException(
+							"There is more than one EClass with the same name ("
+									+ eClassName
+									+ " in EPackage "
+									+ eClass.getEPackage().getName()
+									+ " and "
+									+ ePackage.getName()
+									+ ". A different EClassResolver should be used.");
 				}
-				eClass = (EClass)eClassifier;
+				eClass = (EClass) eClassifier;
 			}
 		}
 		if (eClass == null) {
-			throw new IllegalArgumentException("No EClass found using " + eClassName);
+			throw new IllegalArgumentException("No EClass found using "
+					+ eClassName);
 		}
 		return eClass;
 	}

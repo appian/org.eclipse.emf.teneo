@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.2 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.3 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -33,16 +33,27 @@ import org.eclipse.emf.ecore.EcorePackage;
  */
 public class EcoreDataTypes {
 
-	private static final List PRIMITIVES_ETYPES_LIST = Collections.unmodifiableList(Arrays.asList(new EDataType[] {
-			EcorePackage.eINSTANCE.getEBoolean(), EcorePackage.eINSTANCE.getEByte(), EcorePackage.eINSTANCE.getEChar(),
-			EcorePackage.eINSTANCE.getEDouble(), EcorePackage.eINSTANCE.getEFloat(), EcorePackage.eINSTANCE.getEInt(),
-			EcorePackage.eINSTANCE.getELong(), EcorePackage.eINSTANCE.getEShort(), }));
+	private static final List<EDataType> PRIMITIVES_ETYPES_LIST = Collections
+			.unmodifiableList(Arrays.asList(new EDataType[] {
+					EcorePackage.eINSTANCE.getEBoolean(),
+					EcorePackage.eINSTANCE.getEByte(),
+					EcorePackage.eINSTANCE.getEChar(),
+					EcorePackage.eINSTANCE.getEDouble(),
+					EcorePackage.eINSTANCE.getEFloat(),
+					EcorePackage.eINSTANCE.getEInt(),
+					EcorePackage.eINSTANCE.getELong(),
+					EcorePackage.eINSTANCE.getEShort(), }));
 
-	private static final List WRAPPERS_ETYPES_LIST = Collections.unmodifiableList(Arrays.asList(new EDataType[] {
-			EcorePackage.eINSTANCE.getEBooleanObject(), EcorePackage.eINSTANCE.getEByteObject(),
-			EcorePackage.eINSTANCE.getECharacterObject(), EcorePackage.eINSTANCE.getEDoubleObject(),
-			EcorePackage.eINSTANCE.getEFloatObject(), EcorePackage.eINSTANCE.getEIntegerObject(),
-			EcorePackage.eINSTANCE.getELongObject(), EcorePackage.eINSTANCE.getEShortObject(), }));
+	private static final List<EDataType> WRAPPERS_ETYPES_LIST = Collections
+			.unmodifiableList(Arrays.asList(new EDataType[] {
+					EcorePackage.eINSTANCE.getEBooleanObject(),
+					EcorePackage.eINSTANCE.getEByteObject(),
+					EcorePackage.eINSTANCE.getECharacterObject(),
+					EcorePackage.eINSTANCE.getEDoubleObject(),
+					EcorePackage.eINSTANCE.getEFloatObject(),
+					EcorePackage.eINSTANCE.getEIntegerObject(),
+					EcorePackage.eINSTANCE.getELongObject(),
+					EcorePackage.eINSTANCE.getEShortObject(), }));
 
 	public static EcoreDataTypes INSTANCE = new EcoreDataTypes();
 
@@ -52,14 +63,16 @@ public class EcoreDataTypes {
 	// TODO: Make all utility methods static.
 
 	/**
-	 * @return Returns an immutable list of the Ecore EDataType for java primitives.
+	 * @return Returns an immutable list of the Ecore EDataType for java
+	 *         primitives.
 	 */
-	public List getEPrimitives() {
+	public List<EDataType> getEPrimitives() {
 		return PRIMITIVES_ETYPES_LIST;
 	}
 
 	/**
-	 * @return Returns true if and only if the the given eDataType is the Ecore EDataType for a primitive type.
+	 * @return Returns true if and only if the the given eDataType is the Ecore
+	 *         EDataType for a primitive type.
 	 */
 	public boolean isEPrimitive(EDataType eDataType) {
 		return (eDataType != null) && (eDataType.getInstanceClass() != null)
@@ -67,14 +80,16 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * @return Returns an immutable list of the Ecore EDataType for java primitive wrapper classes.
+	 * @return Returns an immutable list of the Ecore EDataType for java
+	 *         primitive wrapper classes.
 	 */
-	public List getEWrappers() {
+	public List<EDataType> getEWrappers() {
 		return WRAPPERS_ETYPES_LIST;
 	}
 
 	/**
-	 * @return Returns true if and only if the the given eDataType is the Ecore EDataType for a primitive wrapper class.
+	 * @return Returns true if and only if the the given eDataType is the Ecore
+	 *         EDataType for a primitive wrapper class.
 	 */
 	public boolean isEWrapper(EDataType eDataType) {
 		return WRAPPERS_ETYPES_LIST.contains(eDataType);
@@ -93,16 +108,19 @@ public class EcoreDataTypes {
 	 * @return true if and only if the given dataType is a string datatype.
 	 */
 	public boolean isEDate(EDataType eDataType) {
-		Class ic = eDataType.getInstanceClass();
-		return java.util.Date.class == ic || java.util.Calendar.class == ic || java.sql.Date.class == ic;
+		Class<?> ic = eDataType.getInstanceClass();
+		return java.util.Date.class == ic || java.util.Calendar.class == ic
+				|| java.sql.Date.class == ic;
 	}
 
 	/**
-	 * @return Returns true if and only if the given type is either a primitive or a wrapper or string or a date.
+	 * @return Returns true if and only if the given type is either a primitive
+	 *         or a wrapper or string or a date.
 	 */
 	public boolean isSimpleType(EDataType eType) {
 		// TODO move elsewhere
-		return isEPrimitive(eType) || isEWrapper(eType) || isEString(eType) || isEDate(eType);
+		return isEPrimitive(eType) || isEWrapper(eType) || isEString(eType)
+				|| isEDate(eType);
 	}
 
 	/**
@@ -130,9 +148,10 @@ public class EcoreDataTypes {
 	 * @return true if the eType is a byte array.
 	 */
 	public static boolean isByteArray(EDataType eType) {
-		final Class clazz = eType.getInstanceClass();
+		final Class<?> clazz = eType.getInstanceClass();
 		if (clazz != null) {
-			return (clazz.isArray() && clazz.getComponentType().equals(Byte.TYPE));
+			return (clazz.isArray() && clazz.getComponentType().equals(
+					Byte.TYPE));
 		} else {
 			return false;
 		}

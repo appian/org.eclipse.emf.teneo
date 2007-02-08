@@ -6,8 +6,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
- * The EModelResolver allows pluggable access to the underlying ecore model.
- * It maps from eclass/efeature names to java member names or to real eclass names.
+ * The EModelResolver allows pluggable access to the underlying ecore model. It
+ * maps from eclass/efeature names to java member names or to real eclass names.
  * This default implementation only returns null.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
@@ -27,8 +27,11 @@ public class EModelResolver {
 		instance = modelResolver;
 	}
 
-	/** @return the EClass for a java class, if not found then the superclass of the javaclass is tried */
-	public EClass getEClass(Class javaClass) {
+	/**
+	 * @return the EClass for a java class, if not found then the superclass of
+	 *         the javaclass is tried
+	 */
+	public EClass getEClass(Class<?> javaClass) {
 		return null;
 	}
 
@@ -47,12 +50,12 @@ public class EModelResolver {
 	}
 
 	/** @return the java implementation class for an EClass */
-	public Class getJavaClass(EClassifier eclassifier) {
+	public Class<?> getJavaClass(EClassifier eclassifier) {
 		return null;
 	}
 
 	/** @return the java interface class for an EClass */
-	public Class getJavaInterfaceClass(EClass eclass) {
+	public Class<?> getJavaInterfaceClass(EClass eclass) {
 		return null;
 	}
 
@@ -60,12 +63,12 @@ public class EModelResolver {
 	public boolean hasImplementationClass(EClassifier eclassifier) {
 		return false;
 	}
-	
+
 	/** Returns null */
 	public Object create(EClass eclass) {
 		return null;
 	}
-	
+
 	/** Returns null */
 	public Object create(EPackage epackage, String eclassName) {
 		return null;

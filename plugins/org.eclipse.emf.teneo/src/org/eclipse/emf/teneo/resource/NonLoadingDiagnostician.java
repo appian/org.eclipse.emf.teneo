@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: NonLoadingDiagnostician.java,v 1.2 2007/02/01 12:34:22 mtaal Exp $
+ * $Id: NonLoadingDiagnostician.java,v 1.3 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -26,10 +26,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.Diagnostician;
 
 /**
- * Extends the default EMF Diagnostican to prevent the validation to load unloaded lists.
+ * Extends the default EMF Diagnostican to prevent the validation to load
+ * unloaded lists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class NonLoadingDiagnostician extends Diagnostician {
@@ -38,10 +39,12 @@ public class NonLoadingDiagnostician extends Diagnostician {
 	public static NonLoadingDiagnostician INSTANCE = new NonLoadingDiagnostician();
 
 	/** Overriden to prevent loading of complete content */
-	protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics, Map context) {
-		List eContents = NonLoadingEContentsEList.create(eObject, true);
+	protected boolean doValidateContents(EObject eObject,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		List<EObject> eContents = NonLoadingEContentsEList
+				.create(eObject, true);
 		if (!eContents.isEmpty()) {
-			Iterator i = eContents.iterator();
+			Iterator<EObject> i = eContents.iterator();
 			EObject child = (EObject) i.next();
 			boolean result = validate(child, diagnostics, context);
 			while (i.hasNext() && (result || diagnostics != null)) {

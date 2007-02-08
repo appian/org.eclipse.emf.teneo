@@ -18,26 +18,35 @@ public class EClassNameStrategyUtils {
 	private static Log log = LogFactory.getLog(EClassNameStrategyUtils.class);
 
 	/**
-	 * Creates the correct eclass name strategy based on the String setting. 
+	 * Creates the correct eclass name strategy based on the String setting.
 	 * 
 	 */
 	public static EClassNameStrategy create(String option) {
 		try {
 			if (option == null) {
-				log.debug("Creating " + DefaultEClassNameStrategy.class.getName() + " as eclass name strategy");
+				log.debug("Creating "
+						+ DefaultEClassNameStrategy.class.getName()
+						+ " as eclass name strategy");
 				return DefaultEClassNameStrategy.INSTANCE;
 			}
-			if (option.compareToIgnoreCase(PersistenceOptions.QUALIFY_ENTITY_NAME_NO) == 0) {
-				log.debug("Creating " + DefaultEClassNameStrategy.class.getName() + " as eclass name strategy");
+			if (option
+					.compareToIgnoreCase(PersistenceOptions.QUALIFY_ENTITY_NAME_NO) == 0) {
+				log.debug("Creating "
+						+ DefaultEClassNameStrategy.class.getName()
+						+ " as eclass name strategy");
 				return DefaultEClassNameStrategy.INSTANCE;
 			}
-			if (option.compareToIgnoreCase(PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX) == 0) {
-				log.debug("Creating " + QualifyingEClassNameStrategy.class.getName() + " as case strategy");
+			if (option
+					.compareToIgnoreCase(PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX) == 0) {
+				log.debug("Creating "
+						+ QualifyingEClassNameStrategy.class.getName()
+						+ " as case strategy");
 				return QualifyingEClassNameStrategy.INSTANCE;
 			}
 
 			log.debug("Assuming class name creating instance of " + option);
-			return (EClassNameStrategy) ClassLoaderResolver.classForName(option).newInstance();
+			return (EClassNameStrategy) ClassLoaderResolver
+					.classForName(option).newInstance();
 		} catch (Exception e) {
 			throw new StoreException("Could not instantiate: " + option, e);
 		}

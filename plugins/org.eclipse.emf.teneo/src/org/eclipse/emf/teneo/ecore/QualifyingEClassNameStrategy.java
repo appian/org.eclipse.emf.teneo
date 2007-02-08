@@ -6,8 +6,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 
 /**
- * This implementation qualifies the EClassName using the NsPrefix of the EPackage. If
- * the NsPrefix is not set then the EPackage name is used. The result will be nsPrefix + "." + eclassName.
+ * This implementation qualifies the EClassName using the NsPrefix of the
+ * EPackage. If the NsPrefix is not set then the EPackage name is used. The
+ * result will be nsPrefix + "." + eclassName.
  * <p>
  * TODO: Should be moved to Teneo project.
  * 
@@ -55,31 +56,40 @@ public class QualifyingEClassNameStrategy implements EClassNameStrategy {
 		// get prefix or name
 		final int index = eClassStr.lastIndexOf(".");
 		if (index == -1) {
-			throw new IllegalArgumentException("Illegal eClassStr for this resolver (no dot separating the epackage nsprefix and name): " + eClassStr);
+			throw new IllegalArgumentException(
+					"Illegal eClassStr for this resolver (no dot separating the epackage nsprefix and name): "
+							+ eClassStr);
 		}
 		final String nsPrefix = eClassStr.substring(0, index);
 		final String eClassName = eClassStr.substring(index + 1);
-		
+
 		// now try all epackages
 		EClass eClass = null;
 		for (int i = 0; i < epackages.length; i++) {
 			final EPackage ePackage = epackages[i];
-			if (ePackage.getNsPrefix().compareTo(nsPrefix) == 0 || 
-					ePackage.getName().compareTo(nsPrefix) == 0) {
-				final EClassifier eClassifier = ePackage.getEClassifier(eClassName);				
+			if (ePackage.getNsPrefix().compareTo(nsPrefix) == 0
+					|| ePackage.getName().compareTo(nsPrefix) == 0) {
+				final EClassifier eClassifier = ePackage
+						.getEClassifier(eClassName);
 				if (eClassifier instanceof EClass) {
 					if (eClass != null) {
 						// doubly entry! Actually require different resolver
-						throw new IllegalArgumentException("There is more than one EClass with the same identifying String (" + eClassStr + 
-								" in EPackage " + eClass.getEPackage().getName() + " and " + ePackage.getName() + 
-								". A different EClassResolver should be used.");
+						throw new IllegalArgumentException(
+								"There is more than one EClass with the same identifying String ("
+										+ eClassStr
+										+ " in EPackage "
+										+ eClass.getEPackage().getName()
+										+ " and "
+										+ ePackage.getName()
+										+ ". A different EClassResolver should be used.");
 					}
-					eClass = (EClass)eClassifier;
+					eClass = (EClass) eClassifier;
 				}
 			}
 		}
 		if (eClass == null) {
-			throw new IllegalArgumentException("No EClass found using " + eClassStr);
+			throw new IllegalArgumentException("No EClass found using "
+					+ eClassStr);
 		}
 		return eClass;
 	}

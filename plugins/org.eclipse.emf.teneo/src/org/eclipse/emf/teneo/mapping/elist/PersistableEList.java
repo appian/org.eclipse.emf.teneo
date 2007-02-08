@@ -12,28 +12,21 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.10 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.11 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.Map.Entry;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.DelegatingEcoreEList;
@@ -44,15 +37,15 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
-public abstract class PersistableEList extends DelegatingEcoreEList implements EMap, PersistableDelegateList {
+public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implements PersistableDelegateList<E> {
 	/** The logger */
 	private static Log log = LogFactory.getLog(PersistableEList.class);
 
 	/** The actual list, must never be an elist as notifications etc. are done by this list */
-	protected List delegate;
+	protected List<E> delegate;
 
 	/** The structural feature modeled by this list */
 	private EStructuralFeature estructuralFeature;
@@ -70,14 +63,14 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	protected final String logString;
 
 	/** Constructor */
-	public PersistableEList(InternalEObject owner, EStructuralFeature feature, List list) {
+	public PersistableEList(InternalEObject owner, EStructuralFeature feature, List<E> list) {
 		super(owner);
 		estructuralFeature = feature;
 		if (list == null) {
-			delegate = new ArrayList();
+			delegate = new ArrayList<E>();
 			isLoaded = true;
 		} else if (list instanceof EList) {
-			delegate = new ArrayList(list);
+			delegate = new ArrayList<E>(list);
 			isLoaded = true;
 		} else if (list instanceof ArrayList) // already loaded lists are packaged in an elist
 		{
@@ -116,6 +109,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.ecore.util.DelegatingEcoreEList#getEStructuralFeature()
 	 */
+    @Override
 	public EStructuralFeature getEStructuralFeature() {
 		return estructuralFeature;
 	}
@@ -125,11 +119,13 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.ecore.util.DelegatingEcoreEList#getFeature()
 	 */
+    @Override
 	public Object getFeature() {
 		return estructuralFeature;
 	}
 
 	/** Return the isunique value of the efeature */
+    @Override
 	public boolean isUnique() {
 		return estructuralFeature.isUnique();
 	}
@@ -139,24 +135,26 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.ecore.util.DelegatingEcoreEList#getFeatureID()
 	 */
+    @Override
 	public int getFeatureID() {
 		return estructuralFeature.getFeatureID();
 	}
 
 	/** Return the delegate list without doing a load */
-	public List getDelegate() {
+	public List<E> getDelegate() {
 		return delegate;
 	}
 
 	/** Returns the underlying elist */
-	protected List delegateList() {
+    @Override
+	protected List<E> delegateList() {
 		load();
 
 		return delegate;
 	}
 
 	/** Replace the delegating list */
-	public void replaceDelegate(List newDelegate) {
+	public void replaceDelegate(List<E> newDelegate) {
 		// disabled this assertion because in case of a session refresh it is possible
 		// that the list is replaced by a persistent list
 		// AssertUtil.assertTrue("This elist " + logString + " already wraps an or specific list",
@@ -236,7 +234,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateAdd(int, java.lang.Object)
 	 */
-	protected void delegateAdd(int index, Object object) {
+    @Override
+	protected void delegateAdd(int index, E object) {
 		load();
 		super.delegateAdd(index, object);
 	}
@@ -246,7 +245,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateAdd(java.lang.Object)
 	 */
-	protected void delegateAdd(Object object) {
+    @Override
+	protected void delegateAdd(E object) {
 		load();
 		super.delegateAdd(object);
 	}
@@ -256,7 +256,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateBasicList()
 	 */
-	protected List delegateBasicList() {
+    @Override
+	protected List<E> delegateBasicList() {
 		load();
 		return super.delegateBasicList();
 	}
@@ -266,6 +267,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateClear()
 	 */
+    @Override
 	protected void delegateClear() {
 		load();
 		super.delegateClear();
@@ -276,6 +278,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateContains(java.lang.Object)
 	 */
+    @Override
 	protected boolean delegateContains(Object object) {
 		load();
 		return super.delegateContains(object);
@@ -286,7 +289,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateContainsAll(java.util.Collection)
 	 */
-	protected boolean delegateContainsAll(Collection collection) {
+    @Override
+	protected boolean delegateContainsAll(Collection<?> collection) {
 		load();
 		return super.delegateContainsAll(collection);
 	}
@@ -296,6 +300,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateEquals(java.lang.Object)
 	 */
+    @Override
 	protected boolean delegateEquals(Object object) {
 		load();
 		return super.delegateEquals(object);
@@ -306,7 +311,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateGet(int)
 	 */
-	protected Object delegateGet(int index) {
+    @Override
+	protected E delegateGet(int index) {
 		load();
 		return super.delegateGet(index);
 	}
@@ -316,6 +322,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateHashCode()
 	 */
+    @Override
 	protected int delegateHashCode() {
 		load();
 		return super.delegateHashCode();
@@ -326,6 +333,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateIndexOf(java.lang.Object)
 	 */
+    @Override
 	protected int delegateIndexOf(Object object) {
 		load();
 		return super.delegateIndexOf(object);
@@ -336,6 +344,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateIsEmpty()
 	 */
+    @Override
 	protected boolean delegateIsEmpty() {
 		load();
 		return super.delegateIsEmpty();
@@ -346,7 +355,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateIterator()
 	 */
-	protected Iterator delegateIterator() {
+    @Override
+	protected Iterator<E> delegateIterator() {
 		load();
 		return super.delegateIterator();
 	}
@@ -356,6 +366,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateLastIndexOf(java.lang.Object)
 	 */
+    @Override
 	protected int delegateLastIndexOf(Object object) {
 		load();
 		return super.delegateLastIndexOf(object);
@@ -366,8 +377,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateListIterator()
 	 */
-	protected ListIterator delegateListIterator() {
-		// TODO Auto-generated method stub
+    @Override
+	protected ListIterator<E> delegateListIterator() {
 		return super.delegateListIterator();
 	}
 
@@ -376,7 +387,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateRemove(int)
 	 */
-	protected Object delegateRemove(int index) {
+    @Override
+	protected E delegateRemove(int index) {
 		load();
 		return super.delegateRemove(index);
 	}
@@ -386,7 +398,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateSet(int, java.lang.Object)
 	 */
-	protected Object delegateSet(int index, Object object) {
+    @Override
+	protected E delegateSet(int index, E object) {
 		load();
 		return super.delegateSet(index, object);
 	}
@@ -396,6 +409,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateSize()
 	 */
+    @Override
 	protected int delegateSize() {
 		load();
 		return super.delegateSize();
@@ -406,6 +420,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateToArray()
 	 */
+    @Override
 	protected Object[] delegateToArray() {
 		load();
 		return super.delegateToArray();
@@ -416,7 +431,8 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateToArray(java.lang.Object[])
 	 */
-	protected Object[] delegateToArray(Object[] array) {
+    @Override
+	protected <T> T[] delegateToArray(T[] array) {
 		load();
 		return super.delegateToArray(array);
 	}
@@ -426,15 +442,17 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateToString()
 	 */
+    @Override
 	protected String delegateToString() {
 		load();
 		return super.delegateToString();
 	}
 
 	/** If not loaded then basicIterator will always return a false for hasNext */
-	public Iterator basicIterator() {
+    @Override
+	public Iterator<E> basicIterator() {
 		if (!isLoaded()) {
-			return new NonResolvingEIterator() {
+			return new NonResolvingEIterator<E>() {
 				/** Always returns false */
 				public boolean hasNext() {
 					return false;
@@ -446,9 +464,10 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	}
 
 	/** If not loaded then basicIterator will always return a false for hasNext/hasPrevious */
-	public ListIterator basicListIterator() {
+    @Override
+	public ListIterator<E> basicListIterator() {
 		if (!isLoaded()) {
-			return new NonResolvingEListIterator() {
+			return new NonResolvingEListIterator<E>() {
 				/** Always returns false */
 				public boolean hasNext() {
 					return false;
@@ -465,10 +484,11 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	}
 
 	/** If not loaded then basicIterator will always return a false for hasNext/hasPrevious */
-	public ListIterator basicListIterator(int index) {
+    @Override
+	public ListIterator<E> basicListIterator(int index) {
 		if (!isLoaded()) {
 			// note no size check on index as this would load this thing
-			return new NonResolvingEListIterator() {
+			return new NonResolvingEListIterator<E>() {
 				/** Always returns false */
 				public boolean hasNext() {
 					return false;
@@ -484,231 +504,6 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 		return super.basicListIterator(index);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#containsKey(java.lang.Object)
-	 */
-	public boolean containsKey(Object arg0) {
-		return get(arg0) != null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#containsValue(java.lang.Object)
-	 */
-	public boolean containsValue(Object arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#entrySet()
-	 */
-	public Set entrySet() {
-		return new TreeSet(this);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#get(java.lang.Object)
-	 */
-	public Object get(Object arg0) {
-		for (Iterator it = iterator(); it.hasNext();) {
-			Entry entry = (Entry) it.next();
-			if (arg0.equals(entry.getKey())) {
-				return entry.getValue();
-			}
-		}
-		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#indexOfKey(java.lang.Object)
-	 */
-	public int indexOfKey(Object arg0) {
-		final Object entry = get(arg0);
-		return indexOf(entry);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#keySet()
-	 */
-	public Set keySet() {
-		final Set set = new TreeSet();
-		for (Iterator it = iterator(); it.hasNext();) {
-			Entry entry = (Entry) it.next();
-			set.add(entry.getKey());
-		}
-		return set;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#map()
-	 */
-	public Map map() {
-		return new DelegatingMap();
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#put(java.lang.Object, java.lang.Object)
-	 */
-	public Object put(Object key, Object value) {
-		Object entry = get(key);
-		if (entry != null) {
-			((Entry) entry).setValue(value);
-			return entry;
-		}
-		entry = newEntry(key, value);
-		add(entry);
-		return entry;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#putAll(org.eclipse.emf.common.util.EMap)
-	 */
-	public void putAll(EMap arg0) {
-		putAll(arg0.map());
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#putAll(java.util.Map)
-	 */
-	public void putAll(Map arg0) {
-		load();
-		addAll(Arrays.asList(arg0.entrySet().toArray()));
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#removeKey(java.lang.Object)
-	 */
-	public Object removeKey(Object arg0) {
-		load();
-		for (Iterator it = iterator(); it.hasNext();) {
-			Entry entry = (Entry) it.next();
-			if (arg0.equals(entry.getKey())) {
-				remove(entry);
-				return entry.getValue();
-			}
-		}
-		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.EMap#values()
-	 */
-	public Collection values() {
-		final ArrayList result = new ArrayList();
-		for (Iterator it = iterator(); it.hasNext();) {
-			Entry entry = (Entry) it.next();
-			result.add(entry.getValue());
-		}
-
-		return result;
-	}
-
-	/** returns a new map entry */
-	protected Entry newEntry(Object key, Object value) {
-		final EClass entryEClass = (EClass) getEStructuralFeature().getEType();
-
-		org.eclipse.emf.common.util.BasicEMap.Entry entry = (org.eclipse.emf.common.util.BasicEMap.Entry) entryEClass
-				.getEPackage().getEFactoryInstance().create(entryEClass);
-		entry.setHash(key == null ? 0 : key.hashCode());
-		entry.setKey(key);
-		entry.setValue(value);
-		return entry;
-	}
-
-	/** Forwards all calls to its EListWrapper */
-	public class DelegatingMap implements EMap.InternalMapView {
-		public DelegatingMap() {
-		}
-
-		public EMap eMap() {
-			return PersistableEList.this;
-		}
-
-		public int size() {
-			return PersistableEList.this.size();
-		}
-
-		public boolean isEmpty() {
-			return PersistableEList.this.isEmpty();
-		}
-
-		public boolean containsKey(Object key) {
-			return PersistableEList.this.containsKey(key);
-		}
-
-		public boolean containsValue(Object value) {
-			return PersistableEList.this.containsValue(value);
-		}
-
-		public Object get(Object key) {
-			return PersistableEList.this.get(key);
-		}
-
-		public Object put(Object key, Object value) {
-			return PersistableEList.this.put(key, value);
-		}
-
-		public Object remove(Object key) {
-			return PersistableEList.this.removeKey(key);
-		}
-
-		public void putAll(Map map) {
-			PersistableEList.this.putAll(map);
-		}
-
-		public void clear() {
-			PersistableEList.this.clear();
-		}
-
-		public Set keySet() {
-			return PersistableEList.this.keySet();
-		}
-
-		public Collection values() {
-			return PersistableEList.this.values();
-		}
-
-		public Set entrySet() {
-			return PersistableEList.this.entrySet();
-		}
-
-		public boolean equals(Object object) {
-			return PersistableEList.this.equals(object);
-		}
-
-		public int hashCode() {
-			return PersistableEList.this.hashCode();
-		}
-		
-		public boolean isLoaded() {
-			return PersistableEList.this.isLoaded();
-		}
-	}
-
 	/** 
 	 * Is overridden because it can't use delegates for equality because the delegate
 	 * (a hibernate or jpox list) will try to be equal with this persistable elist.
@@ -716,6 +511,7 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	 * This method does jvm instance equality because doing a full-fledge equal would result in 
 	 * a load of the list.
 	 */
+    @Override
 	public boolean equals(Object object) {
 		return this == object;
 	}
@@ -723,8 +519,234 @@ public abstract class PersistableEList extends DelegatingEcoreEList implements E
 	/* (non-Javadoc)
 	 * @see java.lang.Object#clone()
 	 */
+    @Override
 	protected Object clone() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
 		return super.clone();
 	}
+
+	//TODOMAP
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#containsKey(java.lang.Object)
+//	 */
+//	public boolean containsKey(Object arg0) {
+//		return get(arg0) != null;
+//	}
+//
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#containsValue(java.lang.Object)
+//	 */
+//	public boolean containsValue(Object arg0) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
+//
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#entrySet()
+//	 */
+//	public Set entrySet() {
+//		return new TreeSet(this);
+//	}
+//
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#get(java.lang.Object)
+//	 */
+//	public Object get(Object arg0) {
+//		for (Iterator it = iterator(); it.hasNext();) {
+//			Entry entry = (Entry) it.next();
+//			if (arg0.equals(entry.getKey())) {
+//				return entry.getValue();
+//			}
+//		}
+//		return null;
+//	}
+//
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#indexOfKey(java.lang.Object)
+//	 */
+//	public int indexOfKey(Object arg0) {
+//		final Object entry = get(arg0);
+//		return indexOf(entry);
+//	}
+//
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#keySet()
+//	 */
+//	public Set keySet() {
+//		final Set set = new TreeSet();
+//		for (Iterator it = iterator(); it.hasNext();) {
+//			Entry entry = (Entry) it.next();
+//			set.add(entry.getKey());
+//		}
+//		return set;
+//	}
+//
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#map()
+//	 */
+//	public Map map() {
+//		return new DelegatingMap();
+//	}
+//	
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#put(java.lang.Object, java.lang.Object)
+//	 */
+//	public Object put(Object key, Object value) {
+//		Object entry = get(key);
+//		if (entry != null) {
+//			((Entry) entry).setValue(value);
+//			return entry;
+//		}
+//		entry = newEntry(key, value);
+//		add(entry);
+//		return entry;
+//	}
+//
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#putAll(org.eclipse.emf.common.util.EMap)
+//	 */
+//	public void putAll(EMap arg0) {
+//		putAll(arg0.map());
+//	}
+//
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#putAll(java.util.Map)
+//	 */
+//	public void putAll(Map arg0) {
+//		load();
+//		addAll(Arrays.asList(arg0.entrySet().toArray()));
+//	}
+//
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#removeKey(java.lang.Object)
+//	 */
+//	public Object removeKey(Object arg0) {
+//		load();
+//		for (Iterator it = iterator(); it.hasNext();) {
+//			Entry entry = (Entry) it.next();
+//			if (arg0.equals(entry.getKey())) {
+//				remove(entry);
+//				return entry.getValue();
+//			}
+//		}
+//		return null;
+//	}
+//
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see org.eclipse.emf.common.util.EMap#values()
+//	 */
+//	public Collection values() {
+//		final ArrayList result = new ArrayList();
+//		for (Iterator it = iterator(); it.hasNext();) {
+//			Entry entry = (Entry) it.next();
+//			result.add(entry.getValue());
+//		}
+//
+//		return result;
+//	}
+//
+//	/** returns a new map entry */
+//	protected Entry newEntry(Object key, Object value) {
+//		final EClass entryEClass = (EClass) getEStructuralFeature().getEType();
+//
+//		org.eclipse.emf.common.util.BasicEMap.Entry entry = (org.eclipse.emf.common.util.BasicEMap.Entry) entryEClass
+//				.getEPackage().getEFactoryInstance().create(entryEClass);
+//		entry.setHash(key == null ? 0 : key.hashCode());
+//		entry.setKey(key);
+//		entry.setValue(value);
+//		return entry;
+//	}
+//
+//	/** Forwards all calls to its EListWrapper */
+//	public class DelegatingMap implements EMap.InternalMapView {
+//		public DelegatingMap() {
+//		}
+//
+//		public EMap eMap() {
+//			return PersistableEList.this;
+//		}
+//
+//		public int size() {
+//			return PersistableEList.this.size();
+//		}
+//
+//		public boolean isEmpty() {
+//			return PersistableEList.this.isEmpty();
+//		}
+//
+//		public boolean containsKey(Object key) {
+//			return PersistableEList.this.containsKey(key);
+//		}
+//
+//		public boolean containsValue(Object value) {
+//			return PersistableEList.this.containsValue(value);
+//		}
+//
+//		public Object get(Object key) {
+//			return PersistableEList.this.get(key);
+//		}
+//
+//		public Object put(Object key, Object value) {
+//			return PersistableEList.this.put(key, value);
+//		}
+//
+//		public Object remove(Object key) {
+//			return PersistableEList.this.removeKey(key);
+//		}
+//
+//		public void putAll(Map map) {
+//			PersistableEList.this.putAll(map);
+//		}
+//
+//		public void clear() {
+//			PersistableEList.this.clear();
+//		}
+//
+//		public Set keySet() {
+//			return PersistableEList.this.keySet();
+//		}
+//
+//		public Collection values() {
+//			return PersistableEList.this.values();
+//		}
+//
+//		public Set entrySet() {
+//			return PersistableEList.this.entrySet();
+//		}
+//
+//		public boolean equals(Object object) {
+//			return PersistableEList.this.equals(object);
+//		}
+//
+//		public int hashCode() {
+//			return PersistableEList.this.hashCode();
+//		}
+//		
+//		public boolean isLoaded() {
+//			return PersistableEList.this.isLoaded();
+//		}
+//	}
 }

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Node.java,v 1.4 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: Node.java,v 1.5 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
@@ -21,7 +21,7 @@ package org.eclipse.emf.teneo.simpledom;
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public abstract class Node {
@@ -31,7 +31,7 @@ public abstract class Node {
 
 	/** The content, only text is supported */
 	private String text = "";
-	
+
 	/**
 	 * @return the name
 	 */

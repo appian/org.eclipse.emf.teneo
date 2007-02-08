@@ -12,20 +12,19 @@
  *
  * </copyright>
  *
- * $Id: StoreValidationException.java,v 1.3 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: StoreValidationException.java,v 1.4 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
 
-import java.util.Iterator;
-
 import org.eclipse.emf.common.util.Diagnostic;
 
 /**
- * Is used to contain a list of Diagnostics which contain error messages found during the save of a resource.
+ * Is used to contain a list of Diagnostics which contain error messages found
+ * during the save of a resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class StoreValidationException extends RuntimeException {
@@ -57,8 +56,7 @@ public class StoreValidationException extends RuntimeException {
 				result.append("\n");
 			result.append(diagnostics[i].getMessage());
 
-			for (Iterator it = diagnostics[i].getChildren().iterator(); it.hasNext();) {
-				Diagnostic childDiagnostic = (Diagnostic) it.next();
+			for (Diagnostic childDiagnostic : diagnostics[i].getChildren()) {
 				switch (childDiagnostic.getSeverity()) {
 				case Diagnostic.ERROR:
 					result.append("\n\t" + childDiagnostic.getMessage());

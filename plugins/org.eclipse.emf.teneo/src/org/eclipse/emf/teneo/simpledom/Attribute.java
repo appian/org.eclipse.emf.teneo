@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Attribute.java,v 1.4 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: Attribute.java,v 1.5 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
@@ -21,7 +21,7 @@ package org.eclipse.emf.teneo.simpledom;
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class Attribute extends Node {
 
@@ -29,13 +29,13 @@ public class Attribute extends Node {
 	public Attribute() {
 		super();
 	}
-	
+
 	/** Constructor */
 	public Attribute(String name, String text) {
 		setName(name);
 		setText(text);
 	}
-	
+
 	/** emit me */
 	String emitXML() {
 		return getName() + "=\"" + getText() + "\"";

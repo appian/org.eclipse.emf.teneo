@@ -12,46 +12,45 @@
  *
  * </copyright>
  *
- * $Id: Element.java,v 1.5 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: Element.java,v 1.6 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class Element extends Node {
 
 	/** The children */
-	private List children = new ArrayList();
+	private List<Element> children = new ArrayList<Element>();
 
 	/** The attributes */
-	private List attributes = new ArrayList();
+	private List<Attribute> attributes = new ArrayList<Attribute>();
 
 	/** The parent element */
 	private Element parent = null;
 
 	/** Constructor */
-	public Element() {}
-	
+	public Element() {
+	}
+
 	/** Constructor */
 	public Element(String name) {
 		setName(name);
 	}
-	
+
 	/** Method to add attribute */
 	public Element addAttribute(String name, String text) {
 		// check if already present
-		for (Iterator it = attributes.iterator(); it.hasNext();) {
-			final Attribute attr = (Attribute) it.next();
+		for (Attribute attr : attributes) {
 			if (attr.getName().compareTo(name) == 0) {
 				attr.setText(text);
 				return this;
@@ -109,8 +108,7 @@ public class Element extends Node {
 
 	/** Find a child element */
 	public Element element(String name) {
-		for (Iterator it = children.iterator(); it.hasNext();) {
-			final Element elem = (Element) it.next();
+		for (Element elem : children) {
 			if (elem.getName().compareTo(name) == 0)
 				return elem;
 		}
@@ -188,10 +186,10 @@ public class Element extends Node {
 	}
 
 	/** Return the children */
-	public List getChildren() {
+	public List<Element> getChildren() {
 		return children;
 	}
-	
+
 	/** Clone */
 	public Object clone() {
 		final Element element = new Element();

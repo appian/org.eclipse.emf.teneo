@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreClassLoadException.java,v 1.2 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: StoreClassLoadException.java,v 1.3 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.classloader;
@@ -23,10 +23,16 @@ import org.eclipse.emf.teneo.StoreException;
  * Is used to throw exception when getting a class in the classloader
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class StoreClassLoadException extends StoreException {
+
+	/**
+	 * Serial ID
+	 */
+	private static final long serialVersionUID = -952752250000575101L;
+
 	/**
 	 * The constructor, logs the exception also
 	 */

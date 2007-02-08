@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassLoaderResolver.java,v 1.2 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: ClassLoaderResolver.java,v 1.3 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.classloader;
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Is responsible for determining which class loader to use.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class ClassLoaderResolver {
@@ -40,12 +40,13 @@ public class ClassLoaderResolver {
 		try {
 			setClassLoaderStrategy(new ContextClassLoaderStrategy());
 		} catch (Exception e) {
-			throw new StoreException("Exception when setting default class loader strategy", e);
+			throw new StoreException(
+					"Exception when setting default class loader strategy", e);
 		}
 	}
 
 	/** Returns a class based on the name */
-	public static Class classForName(String name) {
+	public static Class<?> classForName(String name) {
 		try {
 			return Class.forName(name, true, getClassLoader());
 		} catch (Exception e) {
@@ -69,8 +70,10 @@ public class ClassLoaderResolver {
 	 * @param classLoaderStrategy
 	 *            The classLoaderStrategy to set.
 	 */
-	public static void setClassLoaderStrategy(ClassLoaderStrategy classLoaderStrategy) {
+	public static void setClassLoaderStrategy(
+			ClassLoaderStrategy classLoaderStrategy) {
 		ClassLoaderResolver.classLoaderStrategy = classLoaderStrategy;
-		log.info("Class loader strategy set to: " + classLoaderStrategy.getClass().getName());
+		log.info("Class loader strategy set to: "
+				+ classLoaderStrategy.getClass().getName());
 	}
 }

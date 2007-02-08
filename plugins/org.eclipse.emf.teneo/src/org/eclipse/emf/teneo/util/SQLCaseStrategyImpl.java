@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: SQLCaseStrategyImpl.java,v 1.4 2007/02/01 12:34:21 mtaal Exp $
+ * $Id: SQLCaseStrategyImpl.java,v 1.5 2007/02/08 23:14:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -23,10 +23,11 @@ import org.eclipse.emf.teneo.StoreException;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 
 /**
- * Contains number of default implementations of the sql case strategy, nl. lower, upper and none
+ * Contains number of default implementations of the sql case strategy, nl.
+ * lower, upper and none
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class SQLCaseStrategyImpl {
@@ -38,19 +39,23 @@ public class SQLCaseStrategyImpl {
 	public static SQLCaseStrategy createSQLCaseStrategy(String option) {
 		try {
 			if (option.toLowerCase().compareTo("lowercase") == 0) {
-				log.debug("Creating " + LowerCase.class.getName() + " as case strategy");
+				log.debug("Creating " + LowerCase.class.getName()
+						+ " as case strategy");
 				return new LowerCase();
 			}
 			if (option.toLowerCase().compareTo("uppercase") == 0) {
-				log.debug("Creating " + UpperCase.class.getName() + " as case strategy");
+				log.debug("Creating " + UpperCase.class.getName()
+						+ " as case strategy");
 				return new UpperCase();
 			}
 			if (option.toLowerCase().compareTo("none") == 0) {
-				log.debug("Creating " + None.class.getName() + " as case strategy");
+				log.debug("Creating " + None.class.getName()
+						+ " as case strategy");
 				return new None();
 			}
 
-			return (SQLCaseStrategy) ClassLoaderResolver.classForName(option).newInstance();
+			return (SQLCaseStrategy) ClassLoaderResolver.classForName(option)
+					.newInstance();
 		} catch (Exception e) {
 			throw new StoreException("Could not instantiate: " + option, e);
 		}
