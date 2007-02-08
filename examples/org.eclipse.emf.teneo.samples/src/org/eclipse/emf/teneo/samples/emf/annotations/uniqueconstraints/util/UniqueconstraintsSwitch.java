@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueconstraintsSwitch.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: UniqueconstraintsSwitch.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.UniqueconstraintsPackage
  * @generated
  */
-public class UniqueconstraintsSwitch {
+public class UniqueconstraintsSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class UniqueconstraintsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class UniqueconstraintsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,11 +85,11 @@ public class UniqueconstraintsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case UniqueconstraintsPackage.ITEM: {
 				Item item = (Item)theEObject;
-				Object result = caseItem(item);
+				T result = caseItem(item);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -108,7 +108,7 @@ public class UniqueconstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseItem(Item object) {
+	public T caseItem(Item object) {
 		return null;
 	}
 
@@ -123,7 +123,7 @@ public class UniqueconstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

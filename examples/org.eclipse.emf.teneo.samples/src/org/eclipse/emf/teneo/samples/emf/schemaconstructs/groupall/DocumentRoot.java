@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentRoot.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: DocumentRoot.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall;
 
@@ -66,7 +66,7 @@ public interface DocumentRoot extends EObject{
 	 *        extendedMetaData="kind='attribute' name='xmlns:prefix'"
 	 * @generated
 	 */
-	EMap getXMLNSPrefixMap();
+	EMap<String, String> getXMLNSPrefixMap();
 
 	/**
 	 * Returns the value of the '<em><b>XSI Schema Location</b></em>' map.
@@ -84,7 +84,7 @@ public interface DocumentRoot extends EObject{
 	 *        extendedMetaData="kind='attribute' name='xsi:schemaLocation'"
 	 * @generated
 	 */
-	EMap getXSISchemaLocation();
+	EMap<String, String> getXSISchemaLocation();
 
 	/**
 	 * Returns the value of the '<em><b>Simple All</b></em>' containment reference.
@@ -97,7 +97,7 @@ public interface DocumentRoot extends EObject{
 	 * @return the value of the '<em>Simple All</em>' containment reference.
 	 * @see #setSimpleAll(SimpleAllType)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.GroupallPackage#getDocumentRoot_SimpleAll()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='simpleAll' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -124,7 +124,7 @@ public interface DocumentRoot extends EObject{
 	 * @return the value of the '<em>Simple All Map</em>' containment reference.
 	 * @see #setSimpleAllMap(SimpleAllMapType)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.GroupallPackage#getDocumentRoot_SimpleAllMap()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='simpleAllMap' namespace='##targetNamespace'"
 	 * @generated
 	 */

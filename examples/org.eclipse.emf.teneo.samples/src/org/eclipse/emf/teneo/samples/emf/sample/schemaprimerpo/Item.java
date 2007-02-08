@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Item.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: Item.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getItem()
+ * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getItem()
  * @model extendedMetaData="name='Item' kind='elementOnly'"
  * @generated
  */
@@ -43,7 +43,7 @@ public interface Item extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Product Name</em>' attribute.
 	 * @see #setProductName(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getItem_ProductName()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getItem_ProductName()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='productName'"
 	 * @generated
@@ -70,7 +70,7 @@ public interface Item extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Quantity</em>' attribute.
 	 * @see #setQuantity(BigInteger)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getItem_Quantity()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getItem_Quantity()
 	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.QuantityType" required="true"
 	 *        extendedMetaData="kind='element' name='quantity'"
 	 * @generated
@@ -97,7 +97,7 @@ public interface Item extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>US Price</em>' attribute.
 	 * @see #setUSPrice(BigDecimal)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getItem_USPrice()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getItem_USPrice()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Decimal" required="true"
 	 *        extendedMetaData="kind='element' name='USPrice'"
 	 * @generated
@@ -124,7 +124,7 @@ public interface Item extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Comment</em>' attribute.
 	 * @see #setComment(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getItem_Comment()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getItem_Comment()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='element' name='comment' namespace='##targetNamespace'"
 	 * @generated
@@ -151,7 +151,7 @@ public interface Item extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ship Date</em>' attribute.
 	 * @see #setShipDate(Object)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getItem_ShipDate()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getItem_ShipDate()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Date"
 	 *        extendedMetaData="kind='element' name='shipDate'"
 	 * @generated
@@ -178,7 +178,7 @@ public interface Item extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Part Num</em>' attribute.
 	 * @see #setPartNum(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getItem_PartNum()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getItem_PartNum()
 	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SKU" required="true"
 	 *        extendedMetaData="kind='attribute' name='partNum'"
 	 * @generated

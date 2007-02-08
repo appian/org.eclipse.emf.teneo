@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumPackage.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: ForumPackage.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum;
 
@@ -43,7 +43,7 @@ public interface ForumPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/sample/forum";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/sample/forum";
 
 	/**
 	 * The package namespace name.
@@ -99,7 +99,7 @@ public interface ForumPackage extends EPackage {
 	int FORUM__TOPICS = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Forum</em>' class.
+	 * The number of structural features of the '<em>Forum</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -145,7 +145,7 @@ public interface ForumPackage extends EPackage {
 	int MEMBER__CREATED = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Member</em>' class.
+	 * The number of structural features of the '<em>Member</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -191,7 +191,7 @@ public interface ForumPackage extends EPackage {
 	int POST__TOPIC = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Post</em>' class.
+	 * The number of structural features of the '<em>Post</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -246,7 +246,7 @@ public interface ForumPackage extends EPackage {
 	int TOPIC__POSTS = 3;
 
 	/**
-	 * The number of structural features of the the '<em>Topic</em>' class.
+	 * The number of structural features of the '<em>Topic</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -488,5 +488,184 @@ public interface ForumPackage extends EPackage {
 	 * @generated
 	 */
 	ForumFactory getForumFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumImpl <em>Forum</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumPackageImpl#getForum()
+		 * @generated
+		 */
+		EClass FORUM = eINSTANCE.getForum();
+
+		/**
+		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FORUM__TITLE = eINSTANCE.getForum_Title();
+
+		/**
+		 * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FORUM__MEMBERS = eINSTANCE.getForum_Members();
+
+		/**
+		 * The meta object literal for the '<em><b>Topics</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FORUM__TOPICS = eINSTANCE.getForum_Topics();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.forum.impl.MemberImpl <em>Member</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.impl.MemberImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumPackageImpl#getMember()
+		 * @generated
+		 */
+		EClass MEMBER = eINSTANCE.getMember();
+
+		/**
+		 * The meta object literal for the '<em><b>Nickname</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEMBER__NICKNAME = eINSTANCE.getMember_Nickname();
+
+		/**
+		 * The meta object literal for the '<em><b>Posts</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MEMBER__POSTS = eINSTANCE.getMember_Posts();
+
+		/**
+		 * The meta object literal for the '<em><b>Created</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MEMBER__CREATED = eINSTANCE.getMember_Created();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.forum.impl.PostImpl <em>Post</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.impl.PostImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumPackageImpl#getPost()
+		 * @generated
+		 */
+		EClass POST = eINSTANCE.getPost();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute POST__COMMENT = eINSTANCE.getPost_Comment();
+
+		/**
+		 * The meta object literal for the '<em><b>Author</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference POST__AUTHOR = eINSTANCE.getPost_Author();
+
+		/**
+		 * The meta object literal for the '<em><b>Topic</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference POST__TOPIC = eINSTANCE.getPost_Topic();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.forum.impl.TopicImpl <em>Topic</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.impl.TopicImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumPackageImpl#getTopic()
+		 * @generated
+		 */
+		EClass TOPIC = eINSTANCE.getTopic();
+
+		/**
+		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TOPIC__TITLE = eINSTANCE.getTopic_Title();
+
+		/**
+		 * The meta object literal for the '<em><b>Category</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TOPIC__CATEGORY = eINSTANCE.getTopic_Category();
+
+		/**
+		 * The meta object literal for the '<em><b>Creator</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TOPIC__CREATOR = eINSTANCE.getTopic_Creator();
+
+		/**
+		 * The meta object literal for the '<em><b>Posts</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TOPIC__POSTS = eINSTANCE.getTopic_Posts();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.forum.TopicCategory <em>Topic Category</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.TopicCategory
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumPackageImpl#getTopicCategory()
+		 * @generated
+		 */
+		EEnum TOPIC_CATEGORY = eINSTANCE.getTopicCategory();
+
+		/**
+		 * The meta object literal for the '<em>Topic Category Object</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.TopicCategory
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumPackageImpl#getTopicCategoryObject()
+		 * @generated
+		 */
+		EDataType TOPIC_CATEGORY_OBJECT = eINSTANCE.getTopicCategoryObject();
+
+	}
 
 } //ForumPackage

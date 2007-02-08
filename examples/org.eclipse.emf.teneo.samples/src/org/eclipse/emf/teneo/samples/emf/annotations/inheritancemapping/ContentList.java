@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ContentList.java,v 1.2 2006/09/13 10:39:43 mtaal Exp $
+ * $Id: ContentList.java,v 1.3 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
 
@@ -71,7 +71,7 @@ public interface ContentList extends EObject {
 	 *        extendedMetaData="kind='element' name='address'"
 	 * @generated
 	 */
-	EList getAddress();
+	EList<Address> getAddress();
 
 	/**
 	 * Returns the value of the '<em><b>Price</b></em>' reference list.
@@ -88,6 +88,6 @@ public interface ContentList extends EObject {
 	 *        extendedMetaData="kind='element' name='price'"
 	 * @generated
 	 */
-	EList getPrice();
+	EList<Price> getPrice();
 
 } // ContentList

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ActType.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: ActType.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play;
 
@@ -40,11 +40,11 @@ public interface ActType extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scene</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getActType_Scene()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.play.SceneType" containment="true" resolveProxies="false" required="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.play.SceneType" containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='scene' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList getScene();
+	EList<SceneType> getScene();
 
 	/**
 	 * Returns the value of the '<em><b>Pindex</b></em>' attribute.

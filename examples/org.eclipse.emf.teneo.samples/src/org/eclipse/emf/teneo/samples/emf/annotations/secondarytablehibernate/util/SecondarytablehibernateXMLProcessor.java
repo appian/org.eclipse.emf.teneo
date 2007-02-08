@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablehibernateXMLProcessor.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
+ * $Id: SecondarytablehibernateXMLProcessor.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.util;
 
@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernatePackage;
@@ -38,7 +39,8 @@ public class SecondarytablehibernateXMLProcessor extends XMLProcessor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Map getRegistrations() {
+	@Override
+	protected Map<String, Resource.Factory> getRegistrations() {
 		if (registrations == null) {
 			super.getRegistrations();
 			registrations.put(XML_EXTENSION, new SecondarytablehibernateResourceFactoryImpl());

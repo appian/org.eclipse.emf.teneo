@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SpeechType.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: SpeechType.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play;
 
@@ -64,7 +64,7 @@ public interface SpeechType extends EObject {
 	 *        extendedMetaData="kind='element' name='speaker' namespace='##targetNamespace' group='#group:0'"
 	 * @generated
 	 */
-	EList getSpeaker();
+	EList<String> getSpeaker();
 
 	/**
 	 * Returns the value of the '<em><b>Line</b></em>' attribute list.
@@ -81,7 +81,7 @@ public interface SpeechType extends EObject {
 	 *        extendedMetaData="kind='element' name='line' namespace='##targetNamespace' group='#group:0'"
 	 * @generated
 	 */
-	EList getLine();
+	EList<String> getLine();
 
 	/**
 	 * Returns the value of the '<em><b>Stage Directions</b></em>' attribute list.
@@ -98,6 +98,6 @@ public interface SpeechType extends EObject {
 	 *        extendedMetaData="kind='element' name='stageDirections' namespace='##targetNamespace' group='#group:0'"
 	 * @generated
 	 */
-	EList getStageDirections();
+	EList<String> getStageDirections();
 
 } // SpeechType

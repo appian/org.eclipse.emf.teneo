@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InternationalPriceImpl.java,v 1.2 2007/02/05 16:13:46 mtaal Exp $
+ * $Id: InternationalPriceImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -88,6 +88,7 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ExtensionPackage.Literals.INTERNATIONAL_PRICE;
 	}
@@ -139,6 +140,7 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ExtensionPackage.INTERNATIONAL_PRICE__VALUE:
@@ -154,6 +156,7 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ExtensionPackage.INTERNATIONAL_PRICE__VALUE:
@@ -171,6 +174,7 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ExtensionPackage.INTERNATIONAL_PRICE__VALUE:
@@ -188,6 +192,7 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ExtensionPackage.INTERNATIONAL_PRICE__VALUE:
@@ -203,6 +208,7 @@ public class InternationalPriceImpl extends EObjectImpl implements International
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

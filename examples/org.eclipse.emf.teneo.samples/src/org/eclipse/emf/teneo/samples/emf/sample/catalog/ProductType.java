@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductType.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: ProductType.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog;
 
@@ -122,11 +122,11 @@ public interface ProductType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Remark</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getProductType_Remark()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.catalog.StringType" containment="true" resolveProxies="false" required="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.catalog.StringType" containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='Remark'"
 	 * @generated
 	 */
-	EList getRemark();
+	EList<StringType> getRemark();
 
 	/**
 	 * Returns the value of the '<em><b>Price</b></em>' containment reference.
@@ -139,7 +139,7 @@ public interface ProductType extends EObject {
 	 * @return the value of the '<em>Price</em>' containment reference.
 	 * @see #setPrice(PriceType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getProductType_Price()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='Price'"
 	 * @generated
 	 */

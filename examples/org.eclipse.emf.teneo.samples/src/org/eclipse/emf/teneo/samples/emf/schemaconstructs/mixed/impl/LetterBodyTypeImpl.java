@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LetterBodyTypeImpl.java,v 1.1 2006/07/11 16:57:13 mtaal Exp $
+ * $Id: LetterBodyTypeImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl;
 
@@ -44,6 +44,13 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.SalutationType;
  * @generated
  */
 public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
 	/**
 	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
 	 * <!-- begin-user-doc -->
@@ -98,8 +105,9 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return MixedPackage.eINSTANCE.getLetterBodyType();
+		return MixedPackage.Literals.LETTER_BODY_TYPE;
 	}
 
 	/**
@@ -120,7 +128,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * @generated
 	 */
 	public SalutationType getSalutation() {
-		return (SalutationType)getMixed().get(MixedPackage.eINSTANCE.getLetterBodyType_Salutation(), true);
+		return (SalutationType)getMixed().get(MixedPackage.Literals.LETTER_BODY_TYPE__SALUTATION, true);
 	}
 
 	/**
@@ -129,7 +137,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * @generated
 	 */
 	public NotificationChain basicSetSalutation(SalutationType newSalutation, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(MixedPackage.eINSTANCE.getLetterBodyType_Salutation(), newSalutation, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(MixedPackage.Literals.LETTER_BODY_TYPE__SALUTATION, newSalutation, msgs);
 	}
 
 	/**
@@ -138,7 +146,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * @generated
 	 */
 	public void setSalutation(SalutationType newSalutation) {
-		((FeatureMap.Internal)getMixed()).set(MixedPackage.eINSTANCE.getLetterBodyType_Salutation(), newSalutation);
+		((FeatureMap.Internal)getMixed()).set(MixedPackage.Literals.LETTER_BODY_TYPE__SALUTATION, newSalutation);
 	}
 
 	/**
@@ -147,7 +155,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * @generated
 	 */
 	public BigInteger getQuantity() {
-		return (BigInteger)getMixed().get(MixedPackage.eINSTANCE.getLetterBodyType_Quantity(), true);
+		return (BigInteger)getMixed().get(MixedPackage.Literals.LETTER_BODY_TYPE__QUANTITY, true);
 	}
 
 	/**
@@ -156,7 +164,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * @generated
 	 */
 	public void setQuantity(BigInteger newQuantity) {
-		((FeatureMap.Internal)getMixed()).set(MixedPackage.eINSTANCE.getLetterBodyType_Quantity(), newQuantity);
+		((FeatureMap.Internal)getMixed()).set(MixedPackage.Literals.LETTER_BODY_TYPE__QUANTITY, newQuantity);
 	}
 
 	/**
@@ -165,7 +173,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * @generated
 	 */
 	public String getProductName() {
-		return (String)getMixed().get(MixedPackage.eINSTANCE.getLetterBodyType_ProductName(), true);
+		return (String)getMixed().get(MixedPackage.Literals.LETTER_BODY_TYPE__PRODUCT_NAME, true);
 	}
 
 	/**
@@ -174,7 +182,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * @generated
 	 */
 	public void setProductName(String newProductName) {
-		((FeatureMap.Internal)getMixed()).set(MixedPackage.eINSTANCE.getLetterBodyType_ProductName(), newProductName);
+		((FeatureMap.Internal)getMixed()).set(MixedPackage.Literals.LETTER_BODY_TYPE__PRODUCT_NAME, newProductName);
 	}
 
 	/**
@@ -183,7 +191,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * @generated
 	 */
 	public Object getShipDate() {
-		return (Object)getMixed().get(MixedPackage.eINSTANCE.getLetterBodyType_ShipDate(), true);
+		return getMixed().get(MixedPackage.Literals.LETTER_BODY_TYPE__SHIP_DATE, true);
 	}
 
 	/**
@@ -192,7 +200,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * @generated
 	 */
 	public void setShipDate(Object newShipDate) {
-		((FeatureMap.Internal)getMixed()).set(MixedPackage.eINSTANCE.getLetterBodyType_ShipDate(), newShipDate);
+		((FeatureMap.Internal)getMixed()).set(MixedPackage.Literals.LETTER_BODY_TYPE__SHIP_DATE, newShipDate);
 	}
 
 	/**
@@ -200,29 +208,28 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case MixedPackage.LETTER_BODY_TYPE__MIXED:
-					return ((InternalEList)getMixed()).basicRemove(otherEnd, msgs);
-				case MixedPackage.LETTER_BODY_TYPE__SALUTATION:
-					return basicSetSalutation(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case MixedPackage.LETTER_BODY_TYPE__MIXED:
-				return getMixed();
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
+			case MixedPackage.LETTER_BODY_TYPE__SALUTATION:
+				return basicSetSalutation(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case MixedPackage.LETTER_BODY_TYPE__MIXED:
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
 			case MixedPackage.LETTER_BODY_TYPE__SALUTATION:
 				return getSalutation();
 			case MixedPackage.LETTER_BODY_TYPE__QUANTITY:
@@ -232,7 +239,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 			case MixedPackage.LETTER_BODY_TYPE__SHIP_DATE:
 				return getShipDate();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -240,11 +247,11 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case MixedPackage.LETTER_BODY_TYPE__MIXED:
-				getMixed().clear();
-				getMixed().addAll((Collection)newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case MixedPackage.LETTER_BODY_TYPE__SALUTATION:
 				setSalutation((SalutationType)newValue);
@@ -256,10 +263,10 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 				setProductName((String)newValue);
 				return;
 			case MixedPackage.LETTER_BODY_TYPE__SHIP_DATE:
-				setShipDate((Object)newValue);
+				setShipDate(newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -267,8 +274,9 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case MixedPackage.LETTER_BODY_TYPE__MIXED:
 				getMixed().clear();
 				return;
@@ -285,7 +293,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 				setShipDate(SHIP_DATE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -293,8 +301,9 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case MixedPackage.LETTER_BODY_TYPE__MIXED:
 				return mixed != null && !mixed.isEmpty();
 			case MixedPackage.LETTER_BODY_TYPE__SALUTATION:
@@ -306,7 +315,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 			case MixedPackage.LETTER_BODY_TYPE__SHIP_DATE:
 				return SHIP_DATE_EDEFAULT == null ? getShipDate() != null : !SHIP_DATE_EDEFAULT.equals(getShipDate());
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -314,6 +323,7 @@ public class LetterBodyTypeImpl extends EObjectImpl implements LetterBodyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

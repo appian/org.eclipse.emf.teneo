@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Contacts.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: Contacts.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachelist;
 
@@ -43,7 +43,7 @@ public interface Contacts extends EObject{
 	 *        extendedMetaData="kind='element' name='persons'"
 	 * @generated
 	 */
-	EList getPersons();
+	EList<Person> getPersons();
 
 	/**
 	 * Returns the value of the '<em><b>Contained Persons</b></em>' containment reference list.
@@ -56,10 +56,10 @@ public interface Contacts extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Contained Persons</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachelist.DetachelistPackage#getContacts_ContainedPersons()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.detach.detachelist.Person" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.detach.detachelist.Person" containment="true"
 	 *        extendedMetaData="kind='element' name='containedPersons'"
 	 * @generated
 	 */
-	EList getContainedPersons();
+	EList<Person> getContainedPersons();
 
 } // Contacts

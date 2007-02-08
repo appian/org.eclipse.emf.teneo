@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FirstAddressHolder.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: FirstAddressHolder.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension;
 
@@ -42,6 +42,6 @@ public interface FirstAddressHolder extends EObject {
 	 *        extendedMetaData="name=':0' kind='simple'"
 	 * @generated
 	 */
-	EList getValue();
+	EList<Address> getValue();
 
 } // FirstAddressHolder

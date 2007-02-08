@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManytomanyAdapterFactory.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: ManytomanyAdapterFactory.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.util;
 
@@ -52,6 +52,7 @@ public class ManytomanyAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +69,22 @@ public class ManytomanyAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ManytomanySwitch modelSwitch =
-		new ManytomanySwitch() {
-			public Object caseCntr(Cntr object) {
+	protected ManytomanySwitch<Adapter> modelSwitch =
+		new ManytomanySwitch<Adapter>() {
+			@Override
+			public Adapter caseCntr(Cntr object) {
 				return createCntrAdapter();
 			}
-			public Object caseLft(Lft object) {
+			@Override
+			public Adapter caseLft(Lft object) {
 				return createLftAdapter();
 			}
-			public Object caseRght(Rght object) {
+			@Override
+			public Adapter caseRght(Rght object) {
 				return createRghtAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +97,9 @@ public class ManytomanyAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EcoreattrsPackage.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: EcoreattrsPackage.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs;
 
@@ -41,7 +41,7 @@ public interface EcoreattrsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/ecoreattrs";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/ecoreattrs";
 
 	/**
 	 * The package namespace name.
@@ -88,7 +88,7 @@ public interface EcoreattrsPackage extends EPackage {
 	int ELEMENT__NAMES = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Element</em>' class.
+	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -134,7 +134,7 @@ public interface EcoreattrsPackage extends EPackage {
 	int FEATURE__VALUE = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Feature</em>' class.
+	 * The number of structural features of the '<em>Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -180,7 +180,7 @@ public interface EcoreattrsPackage extends EPackage {
 	int MIXED__VALUE = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Mixed</em>' class.
+	 * The number of structural features of the '<em>Mixed</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -226,7 +226,7 @@ public interface EcoreattrsPackage extends EPackage {
 	int NAME_LIST__LAST_NAME = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Name List</em>' class.
+	 * The number of structural features of the '<em>Name List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -404,5 +404,148 @@ public interface EcoreattrsPackage extends EPackage {
 	 * @generated
 	 */
 	EcoreattrsFactory getEcoreattrsFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.ElementImpl <em>Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.ElementImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.EcoreattrsPackageImpl#getElement()
+		 * @generated
+		 */
+		EClass ELEMENT = eINSTANCE.getElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name Map</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__NAME_MAP = eINSTANCE.getElement_NameMap();
+
+		/**
+		 * The meta object literal for the '<em><b>Names</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT__NAMES = eINSTANCE.getElement_Names();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.FeatureImpl <em>Feature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.FeatureImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.EcoreattrsPackageImpl#getFeature()
+		 * @generated
+		 */
+		EClass FEATURE = eINSTANCE.getFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>AMap</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE__AMAP = eINSTANCE.getFeature_AMap();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE__NAME = eINSTANCE.getFeature_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE__VALUE = eINSTANCE.getFeature_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.MixedImpl <em>Mixed</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.MixedImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.EcoreattrsPackageImpl#getMixed()
+		 * @generated
+		 */
+		EClass MIXED = eINSTANCE.getMixed();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MIXED__MIXED = eINSTANCE.getMixed_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MIXED__NAME = eINSTANCE.getMixed_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MIXED__VALUE = eINSTANCE.getMixed_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.NameListImpl <em>Name List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.NameListImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.EcoreattrsPackageImpl#getNameList()
+		 * @generated
+		 */
+		EClass NAME_LIST = eINSTANCE.getNameList();
+
+		/**
+		 * The meta object literal for the '<em><b>First Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAME_LIST__FIRST_NAME = eINSTANCE.getNameList_FirstName();
+
+		/**
+		 * The meta object literal for the '<em><b>Middle Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAME_LIST__MIDDLE_NAME = eINSTANCE.getNameList_MiddleName();
+
+		/**
+		 * The meta object literal for the '<em><b>Last Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAME_LIST__LAST_NAME = eINSTANCE.getNameList_LastName();
+
+	}
 
 } //EcoreattrsPackage

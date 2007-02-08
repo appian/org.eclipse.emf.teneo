@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PromotionTypeImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: PromotionTypeImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl;
 
@@ -86,8 +86,9 @@ public class PromotionTypeImpl extends EObjectImpl implements PromotionType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return SunBooksPackage.eINSTANCE.getPromotionType();
+		return SunBooksPackage.Literals.PROMOTION_TYPE;
 	}
 
 	/**
@@ -137,14 +138,15 @@ public class PromotionTypeImpl extends EObjectImpl implements PromotionType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case SunBooksPackage.PROMOTION_TYPE__DISCOUNT:
 				return getDiscount();
 			case SunBooksPackage.PROMOTION_TYPE__NONE:
 				return getNone();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -152,8 +154,9 @@ public class PromotionTypeImpl extends EObjectImpl implements PromotionType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case SunBooksPackage.PROMOTION_TYPE__DISCOUNT:
 				setDiscount((String)newValue);
 				return;
@@ -161,7 +164,7 @@ public class PromotionTypeImpl extends EObjectImpl implements PromotionType {
 				setNone((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -169,8 +172,9 @@ public class PromotionTypeImpl extends EObjectImpl implements PromotionType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case SunBooksPackage.PROMOTION_TYPE__DISCOUNT:
 				setDiscount(DISCOUNT_EDEFAULT);
 				return;
@@ -178,7 +182,7 @@ public class PromotionTypeImpl extends EObjectImpl implements PromotionType {
 				setNone(NONE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -186,14 +190,15 @@ public class PromotionTypeImpl extends EObjectImpl implements PromotionType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case SunBooksPackage.PROMOTION_TYPE__DISCOUNT:
 				return DISCOUNT_EDEFAULT == null ? discount != null : !DISCOUNT_EDEFAULT.equals(discount);
 			case SunBooksPackage.PROMOTION_TYPE__NONE:
 				return NONE_EDEFAULT == null ? none != null : !NONE_EDEFAULT.equals(none);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -201,6 +206,7 @@ public class PromotionTypeImpl extends EObjectImpl implements PromotionType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

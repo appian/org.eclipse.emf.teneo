@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1to1Switch.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: Relation1to1Switch.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1to1.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.*;
  * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.Relation1to1Package
  * @generated
  */
-public class Relation1to1Switch {
+public class Relation1to1Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class Relation1to1Switch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class Relation1to1Switch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,53 +85,53 @@ public class Relation1to1Switch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case Relation1to1Package.CONTAINED_CHILD_NR: {
 				ContainedChildNR containedChildNR = (ContainedChildNR)theEObject;
-				Object result = caseContainedChildNR(containedChildNR);
+				T result = caseContainedChildNR(containedChildNR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1to1Package.CONTAINED_CHILD_R: {
 				ContainedChildR containedChildR = (ContainedChildR)theEObject;
-				Object result = caseContainedChildR(containedChildR);
+				T result = caseContainedChildR(containedChildR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1to1Package.MAIN: {
 				Main main = (Main)theEObject;
-				Object result = caseMain(main);
+				T result = caseMain(main);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1to1Package.NOT_CONTAINED_CHILD_NR: {
 				NotContainedChildNR notContainedChildNR = (NotContainedChildNR)theEObject;
-				Object result = caseNotContainedChildNR(notContainedChildNR);
+				T result = caseNotContainedChildNR(notContainedChildNR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1to1Package.NOT_CONTAINED_CHILD_NRT: {
 				NotContainedChildNRT notContainedChildNRT = (NotContainedChildNRT)theEObject;
-				Object result = caseNotContainedChildNRT(notContainedChildNRT);
+				T result = caseNotContainedChildNRT(notContainedChildNRT);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1to1Package.NOT_CONTAINED_CHILD_NRTNR: {
 				NotContainedChildNRTNR notContainedChildNRTNR = (NotContainedChildNRTNR)theEObject;
-				Object result = caseNotContainedChildNRTNR(notContainedChildNRTNR);
+				T result = caseNotContainedChildNRTNR(notContainedChildNRTNR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1to1Package.NOT_CONTAINED_CHILD_R: {
 				NotContainedChildR notContainedChildR = (NotContainedChildR)theEObject;
-				Object result = caseNotContainedChildR(notContainedChildR);
+				T result = caseNotContainedChildR(notContainedChildR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR: {
 				NotContainedChildRTNR notContainedChildRTNR = (NotContainedChildRTNR)theEObject;
-				Object result = caseNotContainedChildRTNR(notContainedChildRTNR);
+				T result = caseNotContainedChildRTNR(notContainedChildRTNR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -150,7 +150,7 @@ public class Relation1to1Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseContainedChildNR(ContainedChildNR object) {
+	public T caseContainedChildNR(ContainedChildNR object) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class Relation1to1Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseContainedChildR(ContainedChildR object) {
+	public T caseContainedChildR(ContainedChildR object) {
 		return null;
 	}
 
@@ -180,7 +180,7 @@ public class Relation1to1Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMain(Main object) {
+	public T caseMain(Main object) {
 		return null;
 	}
 
@@ -195,7 +195,7 @@ public class Relation1to1Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseNotContainedChildNR(NotContainedChildNR object) {
+	public T caseNotContainedChildNR(NotContainedChildNR object) {
 		return null;
 	}
 
@@ -210,7 +210,7 @@ public class Relation1to1Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseNotContainedChildNRT(NotContainedChildNRT object) {
+	public T caseNotContainedChildNRT(NotContainedChildNRT object) {
 		return null;
 	}
 
@@ -225,7 +225,7 @@ public class Relation1to1Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseNotContainedChildNRTNR(NotContainedChildNRTNR object) {
+	public T caseNotContainedChildNRTNR(NotContainedChildNRTNR object) {
 		return null;
 	}
 
@@ -240,7 +240,7 @@ public class Relation1to1Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseNotContainedChildR(NotContainedChildR object) {
+	public T caseNotContainedChildR(NotContainedChildR object) {
 		return null;
 	}
 
@@ -255,7 +255,7 @@ public class Relation1to1Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseNotContainedChildRTNR(NotContainedChildRTNR object) {
+	public T caseNotContainedChildRTNR(NotContainedChildRTNR object) {
 		return null;
 	}
 
@@ -270,7 +270,7 @@ public class Relation1to1Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

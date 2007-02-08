@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SchoollibraryPackageImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: SchoollibraryPackageImpl.java,v 1.2 2007/02/08 23:09:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl;
 
@@ -229,7 +229,11 @@ public class SchoollibraryPackageImpl extends EPackageImpl implements Schoollibr
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		LibraryPackageImpl theLibraryPackage = (LibraryPackageImpl)EPackage.Registry.INSTANCE.getEPackage(LibraryPackage.eNS_URI);
+		LibraryPackage theLibraryPackage = (LibraryPackage)EPackage.Registry.INSTANCE.getEPackage(LibraryPackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		schoolBookEClass.getESuperTypes().add(theLibraryPackage.getBook());

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TwoCRImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: TwoCRImpl.java,v 1.3 2007/02/08 23:09:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl;
 
@@ -66,6 +66,7 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return Relation1tonPackage.Literals.TWO_CR;
 	}
@@ -106,6 +107,16 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetMain(Main newMain, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newMain, Relation1tonPackage.TWO_CR__MAIN, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setMain(Main newMain) {
 		if (newMain != eInternalContainer() || (eContainerFeatureID != Relation1tonPackage.TWO_CR__MAIN && newMain != null)) {
 			if (EcoreUtil.isAncestor(this, newMain))
@@ -115,7 +126,7 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newMain != null)
 				msgs = ((InternalEObject)newMain).eInverseAdd(this, Relation1tonPackage.MAIN__TWOCR, Main.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newMain, Relation1tonPackage.TWO_CR__MAIN, msgs);
+			msgs = basicSetMain(newMain, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -127,12 +138,13 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case Relation1tonPackage.TWO_CR__MAIN:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, Relation1tonPackage.TWO_CR__MAIN, msgs);
+				return basicSetMain((Main)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -142,10 +154,11 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case Relation1tonPackage.TWO_CR__MAIN:
-				return eBasicSetContainer(null, Relation1tonPackage.TWO_CR__MAIN, msgs);
+				return basicSetMain(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -155,6 +168,7 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID) {
 			case Relation1tonPackage.TWO_CR__MAIN:
@@ -168,6 +182,7 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case Relation1tonPackage.TWO_CR__NAME:
@@ -183,6 +198,7 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case Relation1tonPackage.TWO_CR__NAME:
@@ -200,6 +216,7 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case Relation1tonPackage.TWO_CR__NAME:
@@ -217,6 +234,7 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case Relation1tonPackage.TWO_CR__NAME:
@@ -232,6 +250,7 @@ public class TwoCRImpl extends EObjectImpl implements TwoCR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

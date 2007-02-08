@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Book.java,v 1.2 2006/09/29 12:51:54 mtaal Exp $
+ * $Id: Book.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap;
 
+import org.eclipse.emf.common.util.EMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -73,7 +74,7 @@ public interface Book extends EObject {
 	 *        extendedMetaData="kind='element' name='writers'"
 	 * @generated
 	 */
-	Map getWriters();
+	EMap<String, Writer> getWriters();
 
 	/**
 	 * Returns the value of the '<em><b>Key Words</b></em>' map.
@@ -91,7 +92,7 @@ public interface Book extends EObject {
 	 *        extendedMetaData="kind='element' name='keyWords'"
 	 * @generated
 	 */
-	Map getKeyWords();
+	EMap<String, String> getKeyWords();
 
 	/**
 	 * Returns the value of the '<em><b>City By Writer</b></em>' map.
@@ -109,6 +110,6 @@ public interface Book extends EObject {
 	 *        extendedMetaData="kind='element' name='cityByWriter'"
 	 * @generated
 	 */
-	Map getCityByWriter();
+	EMap<Writer, String> getCityByWriter();
 
 } // Book

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AssociationoverrideFactoryImpl.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
+ * $Id: AssociationoverrideFactoryImpl.java,v 1.3 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.impl;
 
@@ -57,6 +57,7 @@ public class AssociationoverrideFactoryImpl extends EFactoryImpl implements Asso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case AssociationoverridePackage.ADDRESS: return createAddress();
@@ -123,6 +124,7 @@ public class AssociationoverrideFactoryImpl extends EFactoryImpl implements Asso
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static AssociationoverridePackage getPackage() {
 		return AssociationoverridePackage.eINSTANCE;
 	}

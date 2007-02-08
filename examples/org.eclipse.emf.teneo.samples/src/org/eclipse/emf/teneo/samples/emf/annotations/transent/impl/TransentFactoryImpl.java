@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TransentFactoryImpl.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: TransentFactoryImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.transent.impl;
 
@@ -57,6 +57,7 @@ public class TransentFactoryImpl extends EFactoryImpl implements TransentFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case TransentPackage.BODY: return createBody();
@@ -101,6 +102,7 @@ public class TransentFactoryImpl extends EFactoryImpl implements TransentFactory
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static TransentPackage getPackage() {
 		return TransentPackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MainImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: MainImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl;
 
@@ -83,7 +83,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList multinr = null;
+	protected EList<MultiNR> multinr = null;
 
 	/**
 	 * The cached value of the '{@link #getMultirn() <em>Multirn</em>}' reference list.
@@ -93,7 +93,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList multirn = null;
+	protected EList<MultiRN> multirn = null;
 
 	/**
 	 * The cached value of the '{@link #getMultinn() <em>Multinn</em>}' reference list.
@@ -103,7 +103,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList multinn = null;
+	protected EList<MultiNN> multinn = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,8 +119,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return RelationntomPackage.eINSTANCE.getMain();
+		return RelationntomPackage.Literals.MAIN;
 	}
 
 	/**
@@ -174,9 +175,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMultinr() {
+	public EList<MultiNR> getMultinr() {
 		if (multinr == null) {
-			multinr = new EObjectWithInverseEList.ManyInverse(MultiNR.class, this, RelationntomPackage.MAIN__MULTINR, RelationntomPackage.MULTI_NR__MAIN);
+			multinr = new EObjectWithInverseEList.ManyInverse<MultiNR>(MultiNR.class, this, RelationntomPackage.MAIN__MULTINR, RelationntomPackage.MULTI_NR__MAIN);
 		}
 		return multinr;
 	}
@@ -186,9 +187,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMultirn() {
+	public EList<MultiRN> getMultirn() {
 		if (multirn == null) {
-			multirn = new EObjectWithInverseEList.ManyInverse(MultiRN.class, this, RelationntomPackage.MAIN__MULTIRN, RelationntomPackage.MULTI_RN__MAIN);
+			multirn = new EObjectWithInverseEList.ManyInverse<MultiRN>(MultiRN.class, this, RelationntomPackage.MAIN__MULTIRN, RelationntomPackage.MULTI_RN__MAIN);
 		}
 		return multirn;
 	}
@@ -198,9 +199,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMultinn() {
+	public EList<MultiNN> getMultinn() {
 		if (multinn == null) {
-			multinn = new EObjectWithInverseEList.ManyInverse(MultiNN.class, this, RelationntomPackage.MAIN__MULTINN, RelationntomPackage.MULTI_NN__MAIN);
+			multinn = new EObjectWithInverseEList.ManyInverse<MultiNN>(MultiNN.class, this, RelationntomPackage.MAIN__MULTINN, RelationntomPackage.MULTI_NN__MAIN);
 		}
 		return multinn;
 	}
@@ -210,22 +211,18 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case RelationntomPackage.MAIN__MULTINR:
-					return ((InternalEList)getMultinr()).basicAdd(otherEnd, msgs);
-				case RelationntomPackage.MAIN__MULTIRN:
-					return ((InternalEList)getMultirn()).basicAdd(otherEnd, msgs);
-				case RelationntomPackage.MAIN__MULTINN:
-					return ((InternalEList)getMultinn()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case RelationntomPackage.MAIN__MULTINR:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMultinr()).basicAdd(otherEnd, msgs);
+			case RelationntomPackage.MAIN__MULTIRN:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMultirn()).basicAdd(otherEnd, msgs);
+			case RelationntomPackage.MAIN__MULTINN:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMultinn()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -233,20 +230,17 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case RelationntomPackage.MAIN__MULTINR:
-					return ((InternalEList)getMultinr()).basicRemove(otherEnd, msgs);
-				case RelationntomPackage.MAIN__MULTIRN:
-					return ((InternalEList)getMultirn()).basicRemove(otherEnd, msgs);
-				case RelationntomPackage.MAIN__MULTINN:
-					return ((InternalEList)getMultinn()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case RelationntomPackage.MAIN__MULTINR:
+				return ((InternalEList<?>)getMultinr()).basicRemove(otherEnd, msgs);
+			case RelationntomPackage.MAIN__MULTIRN:
+				return ((InternalEList<?>)getMultirn()).basicRemove(otherEnd, msgs);
+			case RelationntomPackage.MAIN__MULTINN:
+				return ((InternalEList<?>)getMultinn()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -254,8 +248,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case RelationntomPackage.MAIN__NAME:
 				return getName();
 			case RelationntomPackage.MAIN__MULTINR:
@@ -265,7 +260,7 @@ public class MainImpl extends EObjectImpl implements Main {
 			case RelationntomPackage.MAIN__MULTINN:
 				return getMultinn();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -273,25 +268,27 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case RelationntomPackage.MAIN__NAME:
 				setName((String)newValue);
 				return;
 			case RelationntomPackage.MAIN__MULTINR:
 				getMultinr().clear();
-				getMultinr().addAll((Collection)newValue);
+				getMultinr().addAll((Collection<? extends MultiNR>)newValue);
 				return;
 			case RelationntomPackage.MAIN__MULTIRN:
 				getMultirn().clear();
-				getMultirn().addAll((Collection)newValue);
+				getMultirn().addAll((Collection<? extends MultiRN>)newValue);
 				return;
 			case RelationntomPackage.MAIN__MULTINN:
 				getMultinn().clear();
-				getMultinn().addAll((Collection)newValue);
+				getMultinn().addAll((Collection<? extends MultiNN>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -299,8 +296,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case RelationntomPackage.MAIN__NAME:
 				unsetName();
 				return;
@@ -314,7 +312,7 @@ public class MainImpl extends EObjectImpl implements Main {
 				getMultinn().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -322,8 +320,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case RelationntomPackage.MAIN__NAME:
 				return isSetName();
 			case RelationntomPackage.MAIN__MULTINR:
@@ -333,7 +332,7 @@ public class MainImpl extends EObjectImpl implements Main {
 			case RelationntomPackage.MAIN__MULTINN:
 				return multinn != null && !multinn.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -341,6 +340,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

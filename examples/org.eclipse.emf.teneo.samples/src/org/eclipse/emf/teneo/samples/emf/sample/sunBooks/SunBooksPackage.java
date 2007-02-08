@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SunBooksPackage.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: SunBooksPackage.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks;
 
@@ -43,7 +43,7 @@ public interface SunBooksPackage extends EPackage{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/sample/sun_books";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/sample/sun_books";
 
 	/**
 	 * The package namespace name.
@@ -81,7 +81,7 @@ public interface SunBooksPackage extends EPackage{
 	int AUTHORS_TYPE__AUTHOR_NAME = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Authors Type</em>' class.
+	 * The number of structural features of the '<em>Authors Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -109,7 +109,7 @@ public interface SunBooksPackage extends EPackage{
 	int BOOKS_TYPE__BOOK = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Books Type</em>' class.
+	 * The number of structural features of the '<em>Books Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -209,7 +209,7 @@ public interface SunBooksPackage extends EPackage{
 	int BOOK_TYPE__ITEM_ID = 8;
 
 	/**
-	 * The number of structural features of the the '<em>Book Type</em>' class.
+	 * The number of structural features of the '<em>Book Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -237,7 +237,7 @@ public interface SunBooksPackage extends EPackage{
 	int COLLECTION_TYPE__BOOKS = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Collection Type</em>' class.
+	 * The number of structural features of the '<em>Collection Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -292,7 +292,7 @@ public interface SunBooksPackage extends EPackage{
 	int DOCUMENT_ROOT__COLLECTION = 3;
 
 	/**
-	 * The number of structural features of the the '<em>Document Root</em>' class.
+	 * The number of structural features of the '<em>Document Root</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -329,7 +329,7 @@ public interface SunBooksPackage extends EPackage{
 	int PROMOTION_TYPE__NONE = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Promotion Type</em>' class.
+	 * The number of structural features of the '<em>Promotion Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -688,5 +688,264 @@ public interface SunBooksPackage extends EPackage{
 	 * @generated
 	 */
 	SunBooksFactory getSunBooksFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.AuthorsTypeImpl <em>Authors Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.AuthorsTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksPackageImpl#getAuthorsType()
+		 * @generated
+		 */
+		EClass AUTHORS_TYPE = eINSTANCE.getAuthorsType();
+
+		/**
+		 * The meta object literal for the '<em><b>Author Name</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AUTHORS_TYPE__AUTHOR_NAME = eINSTANCE.getAuthorsType_AuthorName();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.BooksTypeImpl <em>Books Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.BooksTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksPackageImpl#getBooksType()
+		 * @generated
+		 */
+		EClass BOOKS_TYPE = eINSTANCE.getBooksType();
+
+		/**
+		 * The meta object literal for the '<em><b>Book</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOOKS_TYPE__BOOK = eINSTANCE.getBooksType_Book();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.BookTypeImpl <em>Book Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.BookTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksPackageImpl#getBookType()
+		 * @generated
+		 */
+		EClass BOOK_TYPE = eINSTANCE.getBookType();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOK_TYPE__NAME = eINSTANCE.getBookType_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>ISBN</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOK_TYPE__ISBN = eINSTANCE.getBookType_ISBN();
+
+		/**
+		 * The meta object literal for the '<em><b>Price</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOK_TYPE__PRICE = eINSTANCE.getBookType_Price();
+
+		/**
+		 * The meta object literal for the '<em><b>Authors</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOOK_TYPE__AUTHORS = eINSTANCE.getBookType_Authors();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOK_TYPE__DESCRIPTION = eINSTANCE.getBookType_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Promotion</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOOK_TYPE__PROMOTION = eINSTANCE.getBookType_Promotion();
+
+		/**
+		 * The meta object literal for the '<em><b>Publication Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOK_TYPE__PUBLICATION_DATE = eINSTANCE.getBookType_PublicationDate();
+
+		/**
+		 * The meta object literal for the '<em><b>Book Category</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOK_TYPE__BOOK_CATEGORY = eINSTANCE.getBookType_BookCategory();
+
+		/**
+		 * The meta object literal for the '<em><b>Item Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOK_TYPE__ITEM_ID = eINSTANCE.getBookType_ItemId();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.CollectionTypeImpl <em>Collection Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.CollectionTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksPackageImpl#getCollectionType()
+		 * @generated
+		 */
+		EClass COLLECTION_TYPE = eINSTANCE.getCollectionType();
+
+		/**
+		 * The meta object literal for the '<em><b>Books</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COLLECTION_TYPE__BOOKS = eINSTANCE.getCollectionType_Books();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.DocumentRootImpl <em>Document Root</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.DocumentRootImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksPackageImpl#getDocumentRoot()
+		 * @generated
+		 */
+		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__MIXED = eINSTANCE.getDocumentRoot_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>XMLNS Prefix Map</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__XMLNS_PREFIX_MAP = eINSTANCE.getDocumentRoot_XMLNSPrefixMap();
+
+		/**
+		 * The meta object literal for the '<em><b>XSI Schema Location</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = eINSTANCE.getDocumentRoot_XSISchemaLocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Collection</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__COLLECTION = eINSTANCE.getDocumentRoot_Collection();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.PromotionTypeImpl <em>Promotion Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.PromotionTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksPackageImpl#getPromotionType()
+		 * @generated
+		 */
+		EClass PROMOTION_TYPE = eINSTANCE.getPromotionType();
+
+		/**
+		 * The meta object literal for the '<em><b>Discount</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROMOTION_TYPE__DISCOUNT = eINSTANCE.getPromotionType_Discount();
+
+		/**
+		 * The meta object literal for the '<em><b>None</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROMOTION_TYPE__NONE = eINSTANCE.getPromotionType_None();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookCategoryType <em>Book Category Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookCategoryType
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksPackageImpl#getBookCategoryType()
+		 * @generated
+		 */
+		EEnum BOOK_CATEGORY_TYPE = eINSTANCE.getBookCategoryType();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookCategoryType1 <em>Book Category Type1</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookCategoryType1
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksPackageImpl#getBookCategoryType1()
+		 * @generated
+		 */
+		EEnum BOOK_CATEGORY_TYPE1 = eINSTANCE.getBookCategoryType1();
+
+		/**
+		 * The meta object literal for the '<em>Book Category Type Object</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookCategoryType
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksPackageImpl#getBookCategoryTypeObject()
+		 * @generated
+		 */
+		EDataType BOOK_CATEGORY_TYPE_OBJECT = eINSTANCE.getBookCategoryTypeObject();
+
+		/**
+		 * The meta object literal for the '<em>Book Category Type Object1</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookCategoryType1
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksPackageImpl#getBookCategoryTypeObject1()
+		 * @generated
+		 */
+		EDataType BOOK_CATEGORY_TYPE_OBJECT1 = eINSTANCE.getBookCategoryTypeObject1();
+
+	}
 
 } //SunBooksPackage

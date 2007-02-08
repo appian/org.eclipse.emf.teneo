@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RelationntomFactory.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: RelationntomFactory.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relationntom;
 
@@ -23,7 +23,7 @@ public interface RelationntomFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	RelationntomFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.RelationntomFactoryImpl();
+	RelationntomFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.RelationntomFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Main</em>'.

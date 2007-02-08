@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdAdapterFactory.java,v 1.1 2006/08/31 22:47:46 mtaal Exp $
+ * $Id: IdAdapterFactory.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.util;
 
@@ -52,6 +52,7 @@ public class IdAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +69,22 @@ public class IdAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IdSwitch modelSwitch =
-		new IdSwitch() {
-			public Object caseIdentityID(IdentityID object) {
+	protected IdSwitch<Adapter> modelSwitch =
+		new IdSwitch<Adapter>() {
+			@Override
+			public Adapter caseIdentityID(IdentityID object) {
 				return createIdentityIDAdapter();
 			}
-			public Object caseSimpleID(SimpleID object) {
+			@Override
+			public Adapter caseSimpleID(SimpleID object) {
 				return createSimpleIDAdapter();
 			}
-			public Object caseTableID(TableID object) {
+			@Override
+			public Adapter caseTableID(TableID object) {
 				return createTableIDAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +97,9 @@ public class IdAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

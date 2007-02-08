@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PlayType.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: PlayType.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play;
 
@@ -70,7 +70,7 @@ public interface PlayType extends EObject{
 	 * @return the value of the '<em>Fm</em>' containment reference.
 	 * @see #setFm(FmType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getPlayType_Fm()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='fm' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -97,7 +97,7 @@ public interface PlayType extends EObject{
 	 * @return the value of the '<em>Personae</em>' containment reference.
 	 * @see #setPersonae(PersonaeType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getPlayType_Personae()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='personae' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -178,10 +178,10 @@ public interface PlayType extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Act</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getPlayType_Act()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.play.ActType" containment="true" resolveProxies="false" required="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.play.ActType" containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='act' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList getAct();
+	EList<ActType> getAct();
 
 } // PlayType

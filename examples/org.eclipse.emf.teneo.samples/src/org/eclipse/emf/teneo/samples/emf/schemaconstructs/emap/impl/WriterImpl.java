@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterImpl.java,v 1.1 2006/09/28 20:06:04 mtaal Exp $
+ * $Id: WriterImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl;
 
@@ -64,6 +64,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return EmapPackage.Literals.WRITER;
 	}
@@ -94,6 +95,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EmapPackage.WRITER__NAME:
@@ -107,6 +109,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EmapPackage.WRITER__NAME:
@@ -121,6 +124,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case EmapPackage.WRITER__NAME:
@@ -135,6 +139,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EmapPackage.WRITER__NAME:
@@ -148,6 +153,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

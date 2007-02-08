@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EdatatypeColumnAdapterFactory.java,v 1.1 2006/09/06 21:58:59 mtaal Exp $
+ * $Id: EdatatypeColumnAdapterFactory.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.edatatypeColumn.util;
 
@@ -52,6 +52,7 @@ public class EdatatypeColumnAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,12 +69,14 @@ public class EdatatypeColumnAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EdatatypeColumnSwitch modelSwitch =
-		new EdatatypeColumnSwitch() {
-			public Object caseBook(Book object) {
+	protected EdatatypeColumnSwitch<Adapter> modelSwitch =
+		new EdatatypeColumnSwitch<Adapter>() {
+			@Override
+			public Adapter caseBook(Book object) {
 				return createBookAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -86,8 +89,9 @@ public class EdatatypeColumnAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

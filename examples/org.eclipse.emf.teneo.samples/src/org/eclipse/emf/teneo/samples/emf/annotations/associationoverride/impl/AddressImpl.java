@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
+ * $Id: AddressImpl.java,v 1.3 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.impl;
 
@@ -85,6 +85,7 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return AssociationoverridePackage.Literals.ADDRESS;
 	}
@@ -136,6 +137,7 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AssociationoverridePackage.ADDRESS__STREET:
@@ -151,6 +153,7 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AssociationoverridePackage.ADDRESS__STREET:
@@ -168,6 +171,7 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AssociationoverridePackage.ADDRESS__STREET:
@@ -185,6 +189,7 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AssociationoverridePackage.ADDRESS__STREET:
@@ -200,6 +205,7 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CTypeImpl.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: CTypeImpl.java,v 1.2 2007/02/08 23:09:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl;
 
@@ -95,8 +95,9 @@ public class CTypeImpl extends EObjectImpl implements CType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return NestedgroupPackage.eINSTANCE.getCType();
+		return NestedgroupPackage.Literals.CTYPE;
 	}
 
 	/**
@@ -171,14 +172,15 @@ public class CTypeImpl extends EObjectImpl implements CType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case NestedgroupPackage.CTYPE__CNAME:
 				return getCname();
 			case NestedgroupPackage.CTYPE__CVALUE:
 				return new Double(getCvalue());
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -186,8 +188,9 @@ public class CTypeImpl extends EObjectImpl implements CType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case NestedgroupPackage.CTYPE__CNAME:
 				setCname((String)newValue);
 				return;
@@ -195,7 +198,7 @@ public class CTypeImpl extends EObjectImpl implements CType {
 				setCvalue(((Double)newValue).doubleValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -203,8 +206,9 @@ public class CTypeImpl extends EObjectImpl implements CType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case NestedgroupPackage.CTYPE__CNAME:
 				setCname(CNAME_EDEFAULT);
 				return;
@@ -212,7 +216,7 @@ public class CTypeImpl extends EObjectImpl implements CType {
 				unsetCvalue();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -220,14 +224,15 @@ public class CTypeImpl extends EObjectImpl implements CType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case NestedgroupPackage.CTYPE__CNAME:
 				return CNAME_EDEFAULT == null ? cname != null : !CNAME_EDEFAULT.equals(cname);
 			case NestedgroupPackage.CTYPE__CVALUE:
 				return isSetCvalue();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -235,6 +240,7 @@ public class CTypeImpl extends EObjectImpl implements CType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

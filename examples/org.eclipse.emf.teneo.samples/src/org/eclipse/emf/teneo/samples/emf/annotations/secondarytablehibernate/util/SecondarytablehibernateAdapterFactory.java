@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablehibernateAdapterFactory.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
+ * $Id: SecondarytablehibernateAdapterFactory.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.util;
 
@@ -52,6 +52,7 @@ public class SecondarytablehibernateAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,12 +69,14 @@ public class SecondarytablehibernateAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SecondarytablehibernateSwitch modelSwitch =
-		new SecondarytablehibernateSwitch() {
-			public Object casePerson(Person object) {
+	protected SecondarytablehibernateSwitch<Adapter> modelSwitch =
+		new SecondarytablehibernateSwitch<Adapter>() {
+			@Override
+			public Adapter casePerson(Person object) {
 				return createPersonAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -86,8 +89,9 @@ public class SecondarytablehibernateAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TranslatedDescriptionTypeImpl.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: TranslatedDescriptionTypeImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl;
 
@@ -86,8 +86,9 @@ public class TranslatedDescriptionTypeImpl extends EObjectImpl implements Transl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return FeaturemapPackage.eINSTANCE.getTranslatedDescriptionType();
+		return FeaturemapPackage.Literals.TRANSLATED_DESCRIPTION_TYPE;
 	}
 
 	/**
@@ -137,14 +138,15 @@ public class TranslatedDescriptionTypeImpl extends EObjectImpl implements Transl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case FeaturemapPackage.TRANSLATED_DESCRIPTION_TYPE__DESCRIPTION:
 				return getDescription();
 			case FeaturemapPackage.TRANSLATED_DESCRIPTION_TYPE__LANGUAGE:
 				return getLanguage();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -152,8 +154,9 @@ public class TranslatedDescriptionTypeImpl extends EObjectImpl implements Transl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case FeaturemapPackage.TRANSLATED_DESCRIPTION_TYPE__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
@@ -161,7 +164,7 @@ public class TranslatedDescriptionTypeImpl extends EObjectImpl implements Transl
 				setLanguage((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -169,8 +172,9 @@ public class TranslatedDescriptionTypeImpl extends EObjectImpl implements Transl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case FeaturemapPackage.TRANSLATED_DESCRIPTION_TYPE__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
@@ -178,7 +182,7 @@ public class TranslatedDescriptionTypeImpl extends EObjectImpl implements Transl
 				setLanguage(LANGUAGE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -186,14 +190,15 @@ public class TranslatedDescriptionTypeImpl extends EObjectImpl implements Transl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case FeaturemapPackage.TRANSLATED_DESCRIPTION_TYPE__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case FeaturemapPackage.TRANSLATED_DESCRIPTION_TYPE__LANGUAGE:
 				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -201,6 +206,7 @@ public class TranslatedDescriptionTypeImpl extends EObjectImpl implements Transl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MixedPackage.java,v 1.1 2006/07/11 16:57:02 mtaal Exp $
+ * $Id: MixedPackage.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed;
 
@@ -28,6 +28,13 @@ import org.eclipse.emf.ecore.EReference;
  */
 public interface MixedPackage extends EPackage {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
+	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -41,7 +48,7 @@ public interface MixedPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/mixed";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/mixed";
 
 	/**
 	 * The package namespace name.
@@ -106,7 +113,7 @@ public interface MixedPackage extends EPackage {
 	int DOCUMENT_ROOT__LETTER_BODY = 3;
 
 	/**
-	 * The number of structural features of the the '<em>Document Root</em>' class.
+	 * The number of structural features of the '<em>Document Root</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -170,7 +177,7 @@ public interface MixedPackage extends EPackage {
 	int LETTER_BODY_TYPE__SHIP_DATE = 4;
 
 	/**
-	 * The number of structural features of the the '<em>Letter Body Type</em>' class.
+	 * The number of structural features of the '<em>Letter Body Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -207,7 +214,7 @@ public interface MixedPackage extends EPackage {
 	int SALUTATION_TYPE__NAME = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Salutation Type</em>' class.
+	 * The number of structural features of the '<em>Salutation Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -375,5 +382,138 @@ public interface MixedPackage extends EPackage {
 	 * @generated
 	 */
 	MixedFactory getMixedFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.DocumentRootImpl <em>Document Root</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.DocumentRootImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.MixedPackageImpl#getDocumentRoot()
+		 * @generated
+		 */
+		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__MIXED = eINSTANCE.getDocumentRoot_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>XMLNS Prefix Map</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__XMLNS_PREFIX_MAP = eINSTANCE.getDocumentRoot_XMLNSPrefixMap();
+
+		/**
+		 * The meta object literal for the '<em><b>XSI Schema Location</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = eINSTANCE.getDocumentRoot_XSISchemaLocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Letter Body</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__LETTER_BODY = eINSTANCE.getDocumentRoot_LetterBody();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.LetterBodyTypeImpl <em>Letter Body Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.LetterBodyTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.MixedPackageImpl#getLetterBodyType()
+		 * @generated
+		 */
+		EClass LETTER_BODY_TYPE = eINSTANCE.getLetterBodyType();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LETTER_BODY_TYPE__MIXED = eINSTANCE.getLetterBodyType_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>Salutation</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LETTER_BODY_TYPE__SALUTATION = eINSTANCE.getLetterBodyType_Salutation();
+
+		/**
+		 * The meta object literal for the '<em><b>Quantity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LETTER_BODY_TYPE__QUANTITY = eINSTANCE.getLetterBodyType_Quantity();
+
+		/**
+		 * The meta object literal for the '<em><b>Product Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LETTER_BODY_TYPE__PRODUCT_NAME = eINSTANCE.getLetterBodyType_ProductName();
+
+		/**
+		 * The meta object literal for the '<em><b>Ship Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LETTER_BODY_TYPE__SHIP_DATE = eINSTANCE.getLetterBodyType_ShipDate();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.SalutationTypeImpl <em>Salutation Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.SalutationTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.MixedPackageImpl#getSalutationType()
+		 * @generated
+		 */
+		EClass SALUTATION_TYPE = eINSTANCE.getSalutationType();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SALUTATION_TYPE__MIXED = eINSTANCE.getSalutationType_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SALUTATION_TYPE__NAME = eINSTANCE.getSalutationType_Name();
+
+	}
 
 } //MixedPackage

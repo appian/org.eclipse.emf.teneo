@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumAdapterFactory.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: ForumAdapterFactory.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum.util;
 
@@ -52,6 +52,7 @@ public class ForumAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,21 +69,26 @@ public class ForumAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ForumSwitch modelSwitch =
-		new ForumSwitch() {
-			public Object caseForum(Forum object) {
+	protected ForumSwitch<Adapter> modelSwitch =
+		new ForumSwitch<Adapter>() {
+			@Override
+			public Adapter caseForum(Forum object) {
 				return createForumAdapter();
 			}
-			public Object caseMember(Member object) {
+			@Override
+			public Adapter caseMember(Member object) {
 				return createMemberAdapter();
 			}
-			public Object casePost(Post object) {
+			@Override
+			public Adapter casePost(Post object) {
 				return createPostAdapter();
 			}
-			public Object caseTopic(Topic object) {
+			@Override
+			public Adapter caseTopic(Topic object) {
 				return createTopicAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -95,8 +101,9 @@ public class ForumAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

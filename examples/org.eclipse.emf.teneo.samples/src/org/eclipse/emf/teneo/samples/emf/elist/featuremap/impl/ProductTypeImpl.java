@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductTypeImpl.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: ProductTypeImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl;
 
@@ -25,8 +25,11 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.teneo.samples.emf.elist.featuremap.FeaturemapPackage;
+import org.eclipse.emf.teneo.samples.emf.elist.featuremap.PriceByQuantityType;
 import org.eclipse.emf.teneo.samples.emf.elist.featuremap.ProductClassification;
 import org.eclipse.emf.teneo.samples.emf.elist.featuremap.ProductType;
+import org.eclipse.emf.teneo.samples.emf.elist.featuremap.SupplierPriceType;
+import org.eclipse.emf.teneo.samples.emf.elist.featuremap.TranslatedDescriptionType;
 
 /**
  * <!-- begin-user-doc -->
@@ -133,8 +136,9 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return FeaturemapPackage.eINSTANCE.getProductType();
+		return FeaturemapPackage.Literals.PRODUCT_TYPE;
 	}
 
 	/**
@@ -175,8 +179,8 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDescription() {
-		return ((FeatureMap)getGroup()).list(FeaturemapPackage.eINSTANCE.getProductType_Description());
+	public EList<String> getDescription() {
+		return getGroup().list(FeaturemapPackage.Literals.PRODUCT_TYPE__DESCRIPTION);
 	}
 
 	/**
@@ -184,8 +188,8 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTranslatedDescription() {
-		return ((FeatureMap)getGroup()).list(FeaturemapPackage.eINSTANCE.getProductType_TranslatedDescription());
+	public EList<TranslatedDescriptionType> getTranslatedDescription() {
+		return getGroup().list(FeaturemapPackage.Literals.PRODUCT_TYPE__TRANSLATED_DESCRIPTION);
 	}
 
 	/**
@@ -251,8 +255,8 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPriceByQuantity() {
-		return ((FeatureMap)getGroup1()).list(FeaturemapPackage.eINSTANCE.getProductType_PriceByQuantity());
+	public EList<PriceByQuantityType> getPriceByQuantity() {
+		return getGroup1().list(FeaturemapPackage.Literals.PRODUCT_TYPE__PRICE_BY_QUANTITY);
 	}
 
 	/**
@@ -260,8 +264,8 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPriceFromSupplier() {
-		return ((FeatureMap)getGroup1()).list(FeaturemapPackage.eINSTANCE.getProductType_PriceFromSupplier());
+	public EList<SupplierPriceType> getPriceFromSupplier() {
+		return getGroup1().list(FeaturemapPackage.Literals.PRODUCT_TYPE__PRICE_FROM_SUPPLIER);
 	}
 
 	/**
@@ -269,8 +273,8 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSimplePrice() {
-		return ((FeatureMap)getGroup1()).list(FeaturemapPackage.eINSTANCE.getProductType_SimplePrice());
+	public EList<Double> getSimplePrice() {
+		return getGroup1().list(FeaturemapPackage.Literals.PRODUCT_TYPE__SIMPLE_PRICE);
 	}
 
 	/**
@@ -278,20 +282,17 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case FeaturemapPackage.PRODUCT_TYPE__GROUP:
-					return ((InternalEList)getGroup()).basicRemove(otherEnd, msgs);
-				case FeaturemapPackage.PRODUCT_TYPE__GROUP1:
-					return ((InternalEList)getGroup1()).basicRemove(otherEnd, msgs);
-				case FeaturemapPackage.PRODUCT_TYPE__PRICE_BY_QUANTITY:
-					return ((InternalEList)getPriceByQuantity()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case FeaturemapPackage.PRODUCT_TYPE__GROUP:
+				return ((InternalEList<?>)getGroup()).basicRemove(otherEnd, msgs);
+			case FeaturemapPackage.PRODUCT_TYPE__GROUP1:
+				return ((InternalEList<?>)getGroup1()).basicRemove(otherEnd, msgs);
+			case FeaturemapPackage.PRODUCT_TYPE__PRICE_BY_QUANTITY:
+				return ((InternalEList<?>)getPriceByQuantity()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -299,12 +300,14 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case FeaturemapPackage.PRODUCT_TYPE__NAME:
 				return getName();
 			case FeaturemapPackage.PRODUCT_TYPE__GROUP:
-				return getGroup();
+				if (coreType) return getGroup();
+				return ((FeatureMap.Internal)getGroup()).getWrapper();
 			case FeaturemapPackage.PRODUCT_TYPE__DESCRIPTION:
 				return getDescription();
 			case FeaturemapPackage.PRODUCT_TYPE__TRANSLATED_DESCRIPTION:
@@ -312,7 +315,8 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 			case FeaturemapPackage.PRODUCT_TYPE__PRODUCT_CLASSIFICATION:
 				return getProductClassification();
 			case FeaturemapPackage.PRODUCT_TYPE__GROUP1:
-				return getGroup1();
+				if (coreType) return getGroup1();
+				return ((FeatureMap.Internal)getGroup1()).getWrapper();
 			case FeaturemapPackage.PRODUCT_TYPE__PRICE_BY_QUANTITY:
 				return getPriceByQuantity();
 			case FeaturemapPackage.PRODUCT_TYPE__PRICE_FROM_SUPPLIER:
@@ -320,7 +324,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 			case FeaturemapPackage.PRODUCT_TYPE__SIMPLE_PRICE:
 				return getSimplePrice();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -328,44 +332,44 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case FeaturemapPackage.PRODUCT_TYPE__NAME:
 				setName((String)newValue);
 				return;
 			case FeaturemapPackage.PRODUCT_TYPE__GROUP:
-				getGroup().clear();
-				getGroup().addAll((Collection)newValue);
+				((FeatureMap.Internal)getGroup()).set(newValue);
 				return;
 			case FeaturemapPackage.PRODUCT_TYPE__DESCRIPTION:
 				getDescription().clear();
-				getDescription().addAll((Collection)newValue);
+				getDescription().addAll((Collection<? extends String>)newValue);
 				return;
 			case FeaturemapPackage.PRODUCT_TYPE__TRANSLATED_DESCRIPTION:
 				getTranslatedDescription().clear();
-				getTranslatedDescription().addAll((Collection)newValue);
+				getTranslatedDescription().addAll((Collection<? extends TranslatedDescriptionType>)newValue);
 				return;
 			case FeaturemapPackage.PRODUCT_TYPE__PRODUCT_CLASSIFICATION:
 				setProductClassification((ProductClassification)newValue);
 				return;
 			case FeaturemapPackage.PRODUCT_TYPE__GROUP1:
-				getGroup1().clear();
-				getGroup1().addAll((Collection)newValue);
+				((FeatureMap.Internal)getGroup1()).set(newValue);
 				return;
 			case FeaturemapPackage.PRODUCT_TYPE__PRICE_BY_QUANTITY:
 				getPriceByQuantity().clear();
-				getPriceByQuantity().addAll((Collection)newValue);
+				getPriceByQuantity().addAll((Collection<? extends PriceByQuantityType>)newValue);
 				return;
 			case FeaturemapPackage.PRODUCT_TYPE__PRICE_FROM_SUPPLIER:
 				getPriceFromSupplier().clear();
-				getPriceFromSupplier().addAll((Collection)newValue);
+				getPriceFromSupplier().addAll((Collection<? extends SupplierPriceType>)newValue);
 				return;
 			case FeaturemapPackage.PRODUCT_TYPE__SIMPLE_PRICE:
 				getSimplePrice().clear();
-				getSimplePrice().addAll((Collection)newValue);
+				getSimplePrice().addAll((Collection<? extends Double>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -373,8 +377,9 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case FeaturemapPackage.PRODUCT_TYPE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -403,7 +408,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 				getSimplePrice().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -411,8 +416,9 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case FeaturemapPackage.PRODUCT_TYPE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FeaturemapPackage.PRODUCT_TYPE__GROUP:
@@ -432,7 +438,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 			case FeaturemapPackage.PRODUCT_TYPE__SIMPLE_PRICE:
 				return !getSimplePrice().isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -440,6 +446,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PlaySwitch.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: PlaySwitch.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.play.*;
  * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage
  * @generated
  */
-public class PlaySwitch {
+public class PlaySwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class PlaySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class PlaySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,53 +85,53 @@ public class PlaySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case PlayPackage.ACT_TYPE: {
 				ActType actType = (ActType)theEObject;
-				Object result = caseActType(actType);
+				T result = caseActType(actType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PlayPackage.DOCUMENT_ROOT: {
 				DocumentRoot documentRoot = (DocumentRoot)theEObject;
-				Object result = caseDocumentRoot(documentRoot);
+				T result = caseDocumentRoot(documentRoot);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PlayPackage.FM_TYPE: {
 				FmType fmType = (FmType)theEObject;
-				Object result = caseFmType(fmType);
+				T result = caseFmType(fmType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PlayPackage.PERSONAE_TYPE: {
 				PersonaeType personaeType = (PersonaeType)theEObject;
-				Object result = casePersonaeType(personaeType);
+				T result = casePersonaeType(personaeType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PlayPackage.PERSONA_GROUP_TYPE: {
 				PersonaGroupType personaGroupType = (PersonaGroupType)theEObject;
-				Object result = casePersonaGroupType(personaGroupType);
+				T result = casePersonaGroupType(personaGroupType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PlayPackage.PLAY_TYPE: {
 				PlayType playType = (PlayType)theEObject;
-				Object result = casePlayType(playType);
+				T result = casePlayType(playType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PlayPackage.SCENE_TYPE: {
 				SceneType sceneType = (SceneType)theEObject;
-				Object result = caseSceneType(sceneType);
+				T result = caseSceneType(sceneType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PlayPackage.SPEECH_TYPE: {
 				SpeechType speechType = (SpeechType)theEObject;
-				Object result = caseSpeechType(speechType);
+				T result = caseSpeechType(speechType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -150,7 +150,7 @@ public class PlaySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActType(ActType object) {
+	public T caseActType(ActType object) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class PlaySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDocumentRoot(DocumentRoot object) {
+	public T caseDocumentRoot(DocumentRoot object) {
 		return null;
 	}
 
@@ -180,7 +180,7 @@ public class PlaySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFmType(FmType object) {
+	public T caseFmType(FmType object) {
 		return null;
 	}
 
@@ -195,7 +195,7 @@ public class PlaySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePersonaeType(PersonaeType object) {
+	public T casePersonaeType(PersonaeType object) {
 		return null;
 	}
 
@@ -210,7 +210,7 @@ public class PlaySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePersonaGroupType(PersonaGroupType object) {
+	public T casePersonaGroupType(PersonaGroupType object) {
 		return null;
 	}
 
@@ -225,7 +225,7 @@ public class PlaySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePlayType(PlayType object) {
+	public T casePlayType(PlayType object) {
 		return null;
 	}
 
@@ -240,7 +240,7 @@ public class PlaySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSceneType(SceneType object) {
+	public T caseSceneType(SceneType object) {
 		return null;
 	}
 
@@ -255,7 +255,7 @@ public class PlaySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSpeechType(SpeechType object) {
+	public T caseSpeechType(SpeechType object) {
 		return null;
 	}
 
@@ -270,7 +270,7 @@ public class PlaySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

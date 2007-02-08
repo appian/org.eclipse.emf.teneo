@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InternationalPriceImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: InternationalPriceImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -60,6 +60,7 @@ public class InternationalPriceImpl extends PriceImpl implements InternationalPr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return InheritancemappingPackage.Literals.INTERNATIONAL_PRICE;
 	}
@@ -90,6 +91,7 @@ public class InternationalPriceImpl extends PriceImpl implements InternationalPr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case InheritancemappingPackage.INTERNATIONAL_PRICE__CURRENCY:
@@ -103,6 +105,7 @@ public class InternationalPriceImpl extends PriceImpl implements InternationalPr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InheritancemappingPackage.INTERNATIONAL_PRICE__CURRENCY:
@@ -117,6 +120,7 @@ public class InternationalPriceImpl extends PriceImpl implements InternationalPr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case InheritancemappingPackage.INTERNATIONAL_PRICE__CURRENCY:
@@ -131,6 +135,7 @@ public class InternationalPriceImpl extends PriceImpl implements InternationalPr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InheritancemappingPackage.INTERNATIONAL_PRICE__CURRENCY:
@@ -144,6 +149,7 @@ public class InternationalPriceImpl extends PriceImpl implements InternationalPr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

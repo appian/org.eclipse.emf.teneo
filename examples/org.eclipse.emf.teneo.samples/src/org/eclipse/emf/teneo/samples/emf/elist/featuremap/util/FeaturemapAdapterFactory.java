@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FeaturemapAdapterFactory.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: FeaturemapAdapterFactory.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.elist.featuremap.util;
 
@@ -52,6 +52,7 @@ public class FeaturemapAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,21 +69,26 @@ public class FeaturemapAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FeaturemapSwitch modelSwitch =
-		new FeaturemapSwitch() {
-			public Object casePriceByQuantityType(PriceByQuantityType object) {
+	protected FeaturemapSwitch<Adapter> modelSwitch =
+		new FeaturemapSwitch<Adapter>() {
+			@Override
+			public Adapter casePriceByQuantityType(PriceByQuantityType object) {
 				return createPriceByQuantityTypeAdapter();
 			}
-			public Object caseProductType(ProductType object) {
+			@Override
+			public Adapter caseProductType(ProductType object) {
 				return createProductTypeAdapter();
 			}
-			public Object caseSupplierPriceType(SupplierPriceType object) {
+			@Override
+			public Adapter caseSupplierPriceType(SupplierPriceType object) {
 				return createSupplierPriceTypeAdapter();
 			}
-			public Object caseTranslatedDescriptionType(TranslatedDescriptionType object) {
+			@Override
+			public Adapter caseTranslatedDescriptionType(TranslatedDescriptionType object) {
 				return createTranslatedDescriptionTypeAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -95,8 +101,9 @@ public class FeaturemapAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

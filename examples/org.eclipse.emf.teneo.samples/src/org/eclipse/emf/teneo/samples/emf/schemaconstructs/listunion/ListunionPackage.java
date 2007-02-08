@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ListunionPackage.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: ListunionPackage.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion;
 
@@ -41,7 +41,7 @@ public interface ListunionPackage extends EPackage{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/listunion";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/listunion";
 
 	/**
 	 * The package namespace name.
@@ -151,7 +151,7 @@ public interface ListunionPackage extends EPackage{
 	int STATES_BY_COUNTRY__SIMPLE_STRING_UNIONS = 8;
 
 	/**
-	 * The number of structural features of the the '<em>states By Country</em>' class.
+	 * The number of structural features of the '<em>states By Country</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -563,5 +563,232 @@ public interface ListunionPackage extends EPackage{
 	 * @generated
 	 */
 	ListunionFactory getListunionFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.statesByCountryImpl <em>states By Country</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.statesByCountryImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getstatesByCountry()
+		 * @generated
+		 */
+		EClass STATES_BY_COUNTRY = eINSTANCE.getstatesByCountry();
+
+		/**
+		 * The meta object literal for the '<em><b>Country</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATES_BY_COUNTRY__COUNTRY = eINSTANCE.getstatesByCountry_Country();
+
+		/**
+		 * The meta object literal for the '<em><b>All States</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATES_BY_COUNTRY__ALL_STATES = eINSTANCE.getstatesByCountry_AllStates();
+
+		/**
+		 * The meta object literal for the '<em><b>Six Important States</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATES_BY_COUNTRY__SIX_IMPORTANT_STATES = eINSTANCE.getstatesByCountry_SixImportantStates();
+
+		/**
+		 * The meta object literal for the '<em><b>Zip Union</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATES_BY_COUNTRY__ZIP_UNION = eINSTANCE.getstatesByCountry_ZipUnion();
+
+		/**
+		 * The meta object literal for the '<em><b>Zip Unions</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATES_BY_COUNTRY__ZIP_UNIONS = eINSTANCE.getstatesByCountry_ZipUnions();
+
+		/**
+		 * The meta object literal for the '<em><b>Simple Union</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATES_BY_COUNTRY__SIMPLE_UNION = eINSTANCE.getstatesByCountry_SimpleUnion();
+
+		/**
+		 * The meta object literal for the '<em><b>Simple Unions</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATES_BY_COUNTRY__SIMPLE_UNIONS = eINSTANCE.getstatesByCountry_SimpleUnions();
+
+		/**
+		 * The meta object literal for the '<em><b>Simple String Union</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATES_BY_COUNTRY__SIMPLE_STRING_UNION = eINSTANCE.getstatesByCountry_SimpleStringUnion();
+
+		/**
+		 * The meta object literal for the '<em><b>Simple String Unions</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATES_BY_COUNTRY__SIMPLE_STRING_UNIONS = eINSTANCE.getstatesByCountry_SimpleStringUnions();
+
+		/**
+		 * The meta object literal for the '<em>Simple String Union Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getSimpleStringUnionType()
+		 * @generated
+		 */
+		EDataType SIMPLE_STRING_UNION_TYPE = eINSTANCE.getSimpleStringUnionType();
+
+		/**
+		 * The meta object literal for the '<em>Simple String Union Type Member0</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getSimpleStringUnionTypeMember0()
+		 * @generated
+		 */
+		EDataType SIMPLE_STRING_UNION_TYPE_MEMBER0 = eINSTANCE.getSimpleStringUnionTypeMember0();
+
+		/**
+		 * The meta object literal for the '<em>Simple String Union Type Member1</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getSimpleStringUnionTypeMember1()
+		 * @generated
+		 */
+		EDataType SIMPLE_STRING_UNION_TYPE_MEMBER1 = eINSTANCE.getSimpleStringUnionTypeMember1();
+
+		/**
+		 * The meta object literal for the '<em>Simple Union Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Object
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getSimpleUnionType()
+		 * @generated
+		 */
+		EDataType SIMPLE_UNION_TYPE = eINSTANCE.getSimpleUnionType();
+
+		/**
+		 * The meta object literal for the '<em>Simple Union Type Member0</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.math.BigInteger
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getSimpleUnionTypeMember0()
+		 * @generated
+		 */
+		EDataType SIMPLE_UNION_TYPE_MEMBER0 = eINSTANCE.getSimpleUnionTypeMember0();
+
+		/**
+		 * The meta object literal for the '<em>Simple Union Type Member1</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getSimpleUnionTypeMember1()
+		 * @generated
+		 */
+		EDataType SIMPLE_UNION_TYPE_MEMBER1 = eINSTANCE.getSimpleUnionTypeMember1();
+
+		/**
+		 * The meta object literal for the '<em>Six States List</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getSixStatesList()
+		 * @generated
+		 */
+		EDataType SIX_STATES_LIST = eINSTANCE.getSixStatesList();
+
+		/**
+		 * The meta object literal for the '<em>State</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getState()
+		 * @generated
+		 */
+		EDataType STATE = eINSTANCE.getState();
+
+		/**
+		 * The meta object literal for the '<em>State List</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getStateList()
+		 * @generated
+		 */
+		EDataType STATE_LIST = eINSTANCE.getStateList();
+
+		/**
+		 * The meta object literal for the '<em>String List</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getStringList()
+		 * @generated
+		 */
+		EDataType STRING_LIST = eINSTANCE.getStringList();
+
+		/**
+		 * The meta object literal for the '<em>Zip Code</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getZipCode()
+		 * @generated
+		 */
+		EDataType ZIP_CODE = eINSTANCE.getZipCode();
+
+		/**
+		 * The meta object literal for the '<em>Zip Unions Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getZipUnionsType()
+		 * @generated
+		 */
+		EDataType ZIP_UNIONS_TYPE = eINSTANCE.getZipUnionsType();
+
+		/**
+		 * The meta object literal for the '<em>Zip Union Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl.ListunionPackageImpl#getZipUnionType()
+		 * @generated
+		 */
+		EDataType ZIP_UNION_TYPE = eINSTANCE.getZipUnionType();
+
+	}
 
 } //ListunionPackage

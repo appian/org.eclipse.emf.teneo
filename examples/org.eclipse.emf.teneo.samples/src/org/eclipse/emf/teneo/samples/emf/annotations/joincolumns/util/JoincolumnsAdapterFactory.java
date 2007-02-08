@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsAdapterFactory.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
+ * $Id: JoincolumnsAdapterFactory.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.util;
 
@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent;
@@ -52,6 +53,7 @@ public class JoincolumnsAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +70,22 @@ public class JoincolumnsAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected JoincolumnsSwitch modelSwitch =
-		new JoincolumnsSwitch() {
-			public Object caseParent(Parent object) {
+	protected JoincolumnsSwitch<Adapter> modelSwitch =
+		new JoincolumnsSwitch<Adapter>() {
+			@Override
+			public Adapter caseParent(Parent object) {
 				return createParentAdapter();
 			}
-			public Object caseChild(Child object) {
+			@Override
+			public Adapter caseChild(Child object) {
 				return createChildAdapter();
 			}
-			public Object casePerson(Person object) {
+			@Override
+			public Adapter casePerson(Person object) {
 				return createPersonAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +98,9 @@ public class JoincolumnsAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

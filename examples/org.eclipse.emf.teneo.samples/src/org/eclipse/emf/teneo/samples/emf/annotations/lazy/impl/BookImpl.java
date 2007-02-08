@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: BookImpl.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl;
 
@@ -136,6 +136,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return LazyPackage.Literals.BOOK;
 	}
@@ -318,6 +319,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LazyPackage.BOOK__AUTHOR:
@@ -333,6 +335,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LazyPackage.BOOK__AUTHOR:
@@ -346,6 +349,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LazyPackage.BOOK__TITLE:
@@ -366,6 +370,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LazyPackage.BOOK__TITLE:
@@ -389,6 +394,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case LazyPackage.BOOK__TITLE:
@@ -412,6 +418,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case LazyPackage.BOOK__TITLE:
@@ -431,6 +438,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

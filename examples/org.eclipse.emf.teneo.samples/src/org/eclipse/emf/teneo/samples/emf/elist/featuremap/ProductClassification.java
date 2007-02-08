@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductClassification.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: ProductClassification.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.elist.featuremap;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,26 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class ProductClassification extends AbstractEnumerator {
+public enum ProductClassification implements Enumerator
+{
+	/**
+	 * The '<em><b>Normal</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NORMAL
+	 * @generated
+	 * @ordered
+	 */
+	NORMAL_LITERAL(0, "Normal", "Normal"),
+	/**
+	 * The '<em><b>Special</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SPECIAL
+	 * @generated
+	 * @ordered
+	 */
+	SPECIAL_LITERAL(1, "Special", "Special");
 	/**
 	 * The '<em><b>Normal</b></em>' literal value.
 	 * <!-- begin-user-doc -->
@@ -53,26 +72,6 @@ public final class ProductClassification extends AbstractEnumerator {
 	public static final int SPECIAL = 1;
 
 	/**
-	 * The '<em><b>Normal</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NORMAL
-	 * @generated
-	 * @ordered
-	 */
-	public static final ProductClassification NORMAL_LITERAL = new ProductClassification(NORMAL, "Normal");
-
-	/**
-	 * The '<em><b>Special</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SPECIAL
-	 * @generated
-	 * @ordered
-	 */
-	public static final ProductClassification SPECIAL_LITERAL = new ProductClassification(SPECIAL, "Special");
-
-	/**
 	 * An array of all the '<em><b>Product Classification</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -90,18 +89,18 @@ public final class ProductClassification extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ProductClassification> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Product Classification</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Product Classification</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static ProductClassification get(String name) {
+	public static ProductClassification get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			ProductClassification result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -109,7 +108,23 @@ public final class ProductClassification extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Product Classification</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Product Classification</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ProductClassification getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			ProductClassification result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Product Classification</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -119,8 +134,29 @@ public final class ProductClassification extends AbstractEnumerator {
 			case NORMAL: return NORMAL_LITERAL;
 			case SPECIAL: return SPECIAL_LITERAL;
 		}
-		return null;	
+		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -128,8 +164,47 @@ public final class ProductClassification extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ProductClassification(int value, String name) {
-		super(value, name);
+	private ProductClassification(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //ProductClassification
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

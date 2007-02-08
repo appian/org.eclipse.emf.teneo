@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ListunionValidator.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: ListunionValidator.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.util;
 
@@ -13,6 +13,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.ecore.EPackage;
@@ -92,6 +94,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EPackage getEPackage() {
 	  return ListunionPackage.eINSTANCE;
 	}
@@ -102,7 +105,8 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map context) {
+	@Override
+	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
 			case ListunionPackage.STATES_BY_COUNTRY:
 				return validatestatesByCountry((statesByCountry)value, diagnostics, context);
@@ -119,13 +123,13 @@ public class ListunionValidator extends EObjectValidator {
 			case ListunionPackage.SIMPLE_UNION_TYPE_MEMBER1:
 				return validateSimpleUnionTypeMember1((String)value, diagnostics, context);
 			case ListunionPackage.SIX_STATES_LIST:
-				return validateSixStatesList((List)value, diagnostics, context);
+				return validateSixStatesList((List<?>)value, diagnostics, context);
 			case ListunionPackage.STATE:
 				return validateState((String)value, diagnostics, context);
 			case ListunionPackage.STATE_LIST:
-				return validateStateList((List)value, diagnostics, context);
+				return validateStateList((List<?>)value, diagnostics, context);
 			case ListunionPackage.STRING_LIST:
-				return validateStringList((List)value, diagnostics, context);
+				return validateStringList((List<?>)value, diagnostics, context);
 			case ListunionPackage.ZIP_CODE:
 				return validateZipCode((String)value, diagnostics, context);
 			case ListunionPackage.ZIP_UNIONS_TYPE:
@@ -142,7 +146,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatestatesByCountry(statesByCountry statesByCountry, DiagnosticChain diagnostics, Map context) {
+	public boolean validatestatesByCountry(statesByCountry statesByCountry, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(statesByCountry, diagnostics, context);
 	}
 
@@ -151,7 +155,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleStringUnionType(String simpleStringUnionType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleStringUnionType(String simpleStringUnionType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateSimpleStringUnionType_MemberTypes(simpleStringUnionType, diagnostics, context);
 		return result;
 	}
@@ -162,15 +166,28 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleStringUnionType_MemberTypes(String simpleStringUnionType, DiagnosticChain diagnostics, Map context) {
-		boolean result = true;
-		if (ListunionPackage.eINSTANCE.getSimpleStringUnionTypeMember0().isInstance(simpleStringUnionType)) {
-			result &= validateSimpleStringUnionTypeMember0((String)simpleStringUnionType, diagnostics, context);
+	public boolean validateSimpleStringUnionType_MemberTypes(String simpleStringUnionType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			BasicDiagnostic tempDiagnostics = new BasicDiagnostic();
+			if (ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER0.isInstance(simpleStringUnionType)) {
+				if (validateSimpleStringUnionTypeMember0(simpleStringUnionType, tempDiagnostics, context)) return true;
+			}
+			if (ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER1.isInstance(simpleStringUnionType)) {
+				if (validateSimpleStringUnionTypeMember1(simpleStringUnionType, tempDiagnostics, context)) return true;
+			}
+			for (Diagnostic diagnostic : tempDiagnostics.getChildren()) {
+				diagnostics.add(diagnostic);
+			}
 		}
-		else if (ListunionPackage.eINSTANCE.getSimpleStringUnionTypeMember1().isInstance(simpleStringUnionType)) {
-			result &= validateSimpleStringUnionTypeMember1((String)simpleStringUnionType, diagnostics, context);
+		else {
+			if (ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER0.isInstance(simpleStringUnionType)) {
+				if (validateSimpleStringUnionTypeMember0(simpleStringUnionType, null, context)) return true;
+			}
+			if (ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER1.isInstance(simpleStringUnionType)) {
+				if (validateSimpleStringUnionTypeMember1(simpleStringUnionType, null, context)) return true;
+			}
 		}
-	  return result;
+		return false;
 	}
 
 	/**
@@ -178,7 +195,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleStringUnionTypeMember0(String simpleStringUnionTypeMember0, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleStringUnionTypeMember0(String simpleStringUnionTypeMember0, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateSimpleStringUnionTypeMember0_MinLength(simpleStringUnionTypeMember0, diagnostics, context);
 		return result;
 	}
@@ -189,11 +206,11 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleStringUnionTypeMember0_MinLength(String simpleStringUnionTypeMember0, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleStringUnionTypeMember0_MinLength(String simpleStringUnionTypeMember0, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = simpleStringUnionTypeMember0.length();  
 		boolean result = length >= 1;
 		if (!result && diagnostics != null) 
-			reportMinLengthViolation(ListunionPackage.eINSTANCE.getSimpleStringUnionTypeMember0(), simpleStringUnionTypeMember0, length, 1, diagnostics, context);
+			reportMinLengthViolation(ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER0, simpleStringUnionTypeMember0, length, 1, diagnostics, context);
 		return result;
 	}
 
@@ -202,7 +219,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleStringUnionTypeMember1(String simpleStringUnionTypeMember1, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleStringUnionTypeMember1(String simpleStringUnionTypeMember1, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateSimpleStringUnionTypeMember1_MaxLength(simpleStringUnionTypeMember1, diagnostics, context);
 		return result;
 	}
@@ -213,11 +230,11 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleStringUnionTypeMember1_MaxLength(String simpleStringUnionTypeMember1, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleStringUnionTypeMember1_MaxLength(String simpleStringUnionTypeMember1, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = simpleStringUnionTypeMember1.length();  
 		boolean result = length <= 5;
 		if (!result && diagnostics != null) 
-			reportMaxLengthViolation(ListunionPackage.eINSTANCE.getSimpleStringUnionTypeMember1(), simpleStringUnionTypeMember1, length, 5, diagnostics, context);
+			reportMaxLengthViolation(ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER1, simpleStringUnionTypeMember1, length, 5, diagnostics, context);
 		return result;
 	}
 
@@ -226,7 +243,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleUnionType(Object simpleUnionType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleUnionType(Object simpleUnionType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateSimpleUnionType_MemberTypes(simpleUnionType, diagnostics, context);
 		return result;
 	}
@@ -237,15 +254,28 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleUnionType_MemberTypes(Object simpleUnionType, DiagnosticChain diagnostics, Map context) {
-		boolean result = true;
-		if (ListunionPackage.eINSTANCE.getSimpleUnionTypeMember0().isInstance(simpleUnionType)) {
-			result &= validateSimpleUnionTypeMember0((BigInteger)simpleUnionType, diagnostics, context);
+	public boolean validateSimpleUnionType_MemberTypes(Object simpleUnionType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			BasicDiagnostic tempDiagnostics = new BasicDiagnostic();
+			if (ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER0.isInstance(simpleUnionType)) {
+				if (validateSimpleUnionTypeMember0((BigInteger)simpleUnionType, tempDiagnostics, context)) return true;
+			}
+			if (ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER1.isInstance(simpleUnionType)) {
+				if (validateSimpleUnionTypeMember1((String)simpleUnionType, tempDiagnostics, context)) return true;
+			}
+			for (Diagnostic diagnostic : tempDiagnostics.getChildren()) {
+				diagnostics.add(diagnostic);
+			}
 		}
-		else if (ListunionPackage.eINSTANCE.getSimpleUnionTypeMember1().isInstance(simpleUnionType)) {
-			result &= validateSimpleUnionTypeMember1((String)simpleUnionType, diagnostics, context);
+		else {
+			if (ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER0.isInstance(simpleUnionType)) {
+				if (validateSimpleUnionTypeMember0((BigInteger)simpleUnionType, null, context)) return true;
+			}
+			if (ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER1.isInstance(simpleUnionType)) {
+				if (validateSimpleUnionTypeMember1((String)simpleUnionType, null, context)) return true;
+			}
 		}
-	  return result;
+		return false;
 	}
 
 	/**
@@ -253,7 +283,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleUnionTypeMember0(BigInteger simpleUnionTypeMember0, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleUnionTypeMember0(BigInteger simpleUnionTypeMember0, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -262,7 +292,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleUnionTypeMember1(String simpleUnionTypeMember1, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleUnionTypeMember1(String simpleUnionTypeMember1, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateSimpleUnionTypeMember1_Enumeration(simpleUnionTypeMember1, diagnostics, context);
 		return result;
 	}
@@ -285,10 +315,10 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleUnionTypeMember1_Enumeration(String simpleUnionTypeMember1, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleUnionTypeMember1_Enumeration(String simpleUnionTypeMember1, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = SIMPLE_UNION_TYPE_MEMBER1__ENUMERATION__VALUES.contains(simpleUnionTypeMember1);
 		if (!result && diagnostics != null) 
-			reportEnumerationViolation(ListunionPackage.eINSTANCE.getSimpleUnionTypeMember1(), simpleUnionTypeMember1, SIMPLE_UNION_TYPE_MEMBER1__ENUMERATION__VALUES, diagnostics, context);
+			reportEnumerationViolation(ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER1, simpleUnionTypeMember1, SIMPLE_UNION_TYPE_MEMBER1__ENUMERATION__VALUES, diagnostics, context);
 		return result; 
 	}
 
@@ -297,7 +327,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSixStatesList(List sixStatesList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSixStatesList(List<?> sixStatesList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateStateList_ItemType(sixStatesList, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSixStatesList_MinLength(sixStatesList, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSixStatesList_MaxLength(sixStatesList, diagnostics, context);
@@ -310,11 +340,11 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSixStatesList_MinLength(List sixStatesList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSixStatesList_MinLength(List<?> sixStatesList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = sixStatesList.size();  
 		boolean result = length >= 6;
 		if (!result && diagnostics != null) 
-			reportMinLengthViolation(ListunionPackage.eINSTANCE.getSixStatesList(), sixStatesList, length, 6, diagnostics, context);
+			reportMinLengthViolation(ListunionPackage.Literals.SIX_STATES_LIST, sixStatesList, length, 6, diagnostics, context);
 		return result;
 	}
 
@@ -324,11 +354,11 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSixStatesList_MaxLength(List sixStatesList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSixStatesList_MaxLength(List<?> sixStatesList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = sixStatesList.size();  
 		boolean result = length <= 6;
 		if (!result && diagnostics != null) 
-			reportMaxLengthViolation(ListunionPackage.eINSTANCE.getSixStatesList(), sixStatesList, length, 6, diagnostics, context);
+			reportMaxLengthViolation(ListunionPackage.Literals.SIX_STATES_LIST, sixStatesList, length, 6, diagnostics, context);
 		return result;
 	}
 
@@ -337,7 +367,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateState(String state, DiagnosticChain diagnostics, Map context) {
+	public boolean validateState(String state, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateState_MaxLength(state, diagnostics, context);
 		return result;
 	}
@@ -348,11 +378,11 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateState_MaxLength(String state, DiagnosticChain diagnostics, Map context) {
+	public boolean validateState_MaxLength(String state, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = state.length();  
 		boolean result = length <= 12;
 		if (!result && diagnostics != null) 
-			reportMaxLengthViolation(ListunionPackage.eINSTANCE.getState(), state, length, 12, diagnostics, context);
+			reportMaxLengthViolation(ListunionPackage.Literals.STATE, state, length, 12, diagnostics, context);
 		return result;
 	}
 
@@ -361,7 +391,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStateList(List stateList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateStateList(List<?> stateList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateStateList_ItemType(stateList, diagnostics, context);
 		return result;
 	}
@@ -372,19 +402,19 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStateList_ItemType(List stateList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateStateList_ItemType(List<?> stateList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
-		for (Iterator i = stateList.iterator(); i.hasNext() && (result || diagnostics != null); ) {
+		for (Iterator<?> i = stateList.iterator(); i.hasNext() && (result || diagnostics != null); ) {
 			Object item = i.next();
-			if (ListunionPackage.eINSTANCE.getState().isInstance(item)) {
+			if (ListunionPackage.Literals.STATE.isInstance(item)) {
 				result &= validateState((String)item, diagnostics, context);
 			}
 			else {
 				result = false;
-				reportDataValueTypeViolation(ListunionPackage.eINSTANCE.getState(), item, diagnostics, context);
+				reportDataValueTypeViolation(ListunionPackage.Literals.STATE, item, diagnostics, context);
 			}
 		}
-	  return result;
+		return result;
 	}
 
 	/**
@@ -392,7 +422,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStringList(List stringList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateStringList(List<?> stringList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateStringList_ItemType(stringList, diagnostics, context);
 		return result;
 	}
@@ -403,19 +433,19 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStringList_ItemType(List stringList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateStringList_ItemType(List<?> stringList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
-		for (Iterator i = stringList.iterator(); i.hasNext() && (result || diagnostics != null); ) {
+		for (Iterator<?> i = stringList.iterator(); i.hasNext() && (result || diagnostics != null); ) {
 			Object item = i.next();
-			if (XMLTypePackage.eINSTANCE.getString().isInstance(item)) {
+			if (XMLTypePackage.Literals.STRING.isInstance(item)) {
 				result &= xmlTypeValidator.validateString((String)item, diagnostics, context);
 			}
 			else {
 				result = false;
-				reportDataValueTypeViolation(XMLTypePackage.eINSTANCE.getString(), item, diagnostics, context);
+				reportDataValueTypeViolation(XMLTypePackage.Literals.STRING, item, diagnostics, context);
 			}
 		}
-	  return result;
+		return result;
 	}
 
 	/**
@@ -423,7 +453,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateZipCode(String zipCode, DiagnosticChain diagnostics, Map context) {
+	public boolean validateZipCode(String zipCode, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateZipCode_MaxLength(zipCode, diagnostics, context);
 		return result;
 	}
@@ -434,11 +464,11 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateZipCode_MaxLength(String zipCode, DiagnosticChain diagnostics, Map context) {
+	public boolean validateZipCode_MaxLength(String zipCode, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = zipCode.length();  
 		boolean result = length <= 6;
 		if (!result && diagnostics != null) 
-			reportMaxLengthViolation(ListunionPackage.eINSTANCE.getZipCode(), zipCode, length, 6, diagnostics, context);
+			reportMaxLengthViolation(ListunionPackage.Literals.ZIP_CODE, zipCode, length, 6, diagnostics, context);
 		return result;
 	}
 
@@ -447,7 +477,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateZipUnionsType(String zipUnionsType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateZipUnionsType(String zipUnionsType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateZipUnionsType_MemberTypes(zipUnionsType, diagnostics, context);
 		return result;
 	}
@@ -458,15 +488,28 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateZipUnionsType_MemberTypes(String zipUnionsType, DiagnosticChain diagnostics, Map context) {
-		boolean result = true;
-		if (ListunionPackage.eINSTANCE.getZipCode().isInstance(zipUnionsType)) {
-			result &= validateZipCode((String)zipUnionsType, diagnostics, context);
+	public boolean validateZipUnionsType_MemberTypes(String zipUnionsType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			BasicDiagnostic tempDiagnostics = new BasicDiagnostic();
+			if (ListunionPackage.Literals.ZIP_CODE.isInstance(zipUnionsType)) {
+				if (validateZipCode(zipUnionsType, tempDiagnostics, context)) return true;
+			}
+			if (ListunionPackage.Literals.STATE.isInstance(zipUnionsType)) {
+				if (validateState(zipUnionsType, tempDiagnostics, context)) return true;
+			}
+			for (Diagnostic diagnostic : tempDiagnostics.getChildren()) {
+				diagnostics.add(diagnostic);
+			}
 		}
-		else if (ListunionPackage.eINSTANCE.getState().isInstance(zipUnionsType)) {
-			result &= validateState((String)zipUnionsType, diagnostics, context);
+		else {
+			if (ListunionPackage.Literals.ZIP_CODE.isInstance(zipUnionsType)) {
+				if (validateZipCode(zipUnionsType, null, context)) return true;
+			}
+			if (ListunionPackage.Literals.STATE.isInstance(zipUnionsType)) {
+				if (validateState(zipUnionsType, null, context)) return true;
+			}
 		}
-	  return result;
+		return false;
 	}
 
 	/**
@@ -474,7 +517,7 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateZipUnionType(String zipUnionType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateZipUnionType(String zipUnionType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateZipUnionType_MemberTypes(zipUnionType, diagnostics, context);
 		return result;
 	}
@@ -485,15 +528,28 @@ public class ListunionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateZipUnionType_MemberTypes(String zipUnionType, DiagnosticChain diagnostics, Map context) {
-		boolean result = true;
-		if (ListunionPackage.eINSTANCE.getZipCode().isInstance(zipUnionType)) {
-			result &= validateZipCode((String)zipUnionType, diagnostics, context);
+	public boolean validateZipUnionType_MemberTypes(String zipUnionType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			BasicDiagnostic tempDiagnostics = new BasicDiagnostic();
+			if (ListunionPackage.Literals.ZIP_CODE.isInstance(zipUnionType)) {
+				if (validateZipCode(zipUnionType, tempDiagnostics, context)) return true;
+			}
+			if (ListunionPackage.Literals.STATE.isInstance(zipUnionType)) {
+				if (validateState(zipUnionType, tempDiagnostics, context)) return true;
+			}
+			for (Diagnostic diagnostic : tempDiagnostics.getChildren()) {
+				diagnostics.add(diagnostic);
+			}
 		}
-		else if (ListunionPackage.eINSTANCE.getState().isInstance(zipUnionType)) {
-			result &= validateState((String)zipUnionType, diagnostics, context);
+		else {
+			if (ListunionPackage.Literals.ZIP_CODE.isInstance(zipUnionType)) {
+				if (validateZipCode(zipUnionType, null, context)) return true;
+			}
+			if (ListunionPackage.Literals.STATE.isInstance(zipUnionType)) {
+				if (validateState(zipUnionType, null, context)) return true;
+			}
 		}
-	  return result;
+		return false;
 	}
 
 } //ListunionValidator

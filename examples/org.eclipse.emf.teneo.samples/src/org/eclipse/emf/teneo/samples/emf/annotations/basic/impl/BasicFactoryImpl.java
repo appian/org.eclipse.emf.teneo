@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BasicFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: BasicFactoryImpl.java,v 1.3 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.basic.impl;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.annotations.basic.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.Basic;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicPackage;
@@ -56,6 +57,7 @@ public class BasicFactoryImpl extends EFactoryImpl implements BasicFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case BasicPackage.BASIC: return createBasic();
@@ -89,6 +91,7 @@ public class BasicFactoryImpl extends EFactoryImpl implements BasicFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static BasicPackage getPackage() {
 		return BasicPackage.eINSTANCE;
 	}

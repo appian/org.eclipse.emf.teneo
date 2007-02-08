@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeoverridesSwitch.java,v 1.4 2006/11/07 10:22:27 mtaal Exp $
+ * $Id: AttributeoverridesSwitch.java,v 1.5 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.util;
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.Person;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage
  * @generated
  */
-public class AttributeoverridesSwitch {
+public class AttributeoverridesSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -57,7 +57,7 @@ public class AttributeoverridesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -68,16 +68,16 @@ public class AttributeoverridesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -88,17 +88,17 @@ public class AttributeoverridesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case AttributeoverridesPackage.PERSON: {
 				Person person = (Person)theEObject;
-				Object result = casePerson(person);
+				T result = casePerson(person);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AttributeoverridesPackage.CITY: {
 				City city = (City)theEObject;
-				Object result = caseCity(city);
+				T result = caseCity(city);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -117,7 +117,7 @@ public class AttributeoverridesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePerson(Person object) {
+	public T casePerson(Person object) {
 		return null;
 	}
 
@@ -132,7 +132,7 @@ public class AttributeoverridesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCity(City object) {
+	public T caseCity(City object) {
 		return null;
 	}
 
@@ -147,7 +147,7 @@ public class AttributeoverridesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

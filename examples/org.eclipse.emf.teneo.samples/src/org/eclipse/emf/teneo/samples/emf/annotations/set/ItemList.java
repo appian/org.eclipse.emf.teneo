@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemList.java,v 1.4 2007/01/02 17:53:28 mtaal Exp $
+ * $Id: ItemList.java,v 1.5 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -29,6 +29,13 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ItemList extends EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -72,7 +79,7 @@ public interface ItemList extends EObject {
 	 *        extendedMetaData="kind='element' name='containedItem'"
 	 * @generated
 	 */
-	EList getContainedItem();
+	EList<ContainedItem> getContainedItem();
 
 	/**
 	 * Returns the value of the '<em><b>Item</b></em>' reference list.
@@ -92,7 +99,7 @@ public interface ItemList extends EObject {
 	 *        extendedMetaData="kind='element' name='item'"
 	 * @generated
 	 */
-	EList getItem();
+	EList<Item> getItem();
 
 	/**
 	 * Returns the value of the '<em><b>Joined Item</b></em>' reference list.
@@ -110,6 +117,6 @@ public interface ItemList extends EObject {
 	 *        extendedMetaData="kind='element' name='joinedItem'"
 	 * @generated
 	 */
-	EList getJoinedItem();
+	EList<Item> getJoinedItem();
 
 } // ItemList

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PlayPackage.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: PlayPackage.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play;
 
@@ -98,7 +98,7 @@ public interface PlayPackage extends EPackage{
 	int ACT_TYPE__TITLE = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Act Type</em>' class.
+	 * The number of structural features of the '<em>Act Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -288,7 +288,7 @@ public interface PlayPackage extends EPackage{
 	int DOCUMENT_ROOT__TITLE = 18;
 
 	/**
-	 * The number of structural features of the the '<em>Document Root</em>' class.
+	 * The number of structural features of the '<em>Document Root</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -316,7 +316,7 @@ public interface PlayPackage extends EPackage{
 	int FM_TYPE__P = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Fm Type</em>' class.
+	 * The number of structural features of the '<em>Fm Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -371,7 +371,7 @@ public interface PlayPackage extends EPackage{
 	int PERSONAE_TYPE__PERSONA_GROUP = 3;
 
 	/**
-	 * The number of structural features of the the '<em>Personae Type</em>' class.
+	 * The number of structural features of the '<em>Personae Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -408,7 +408,7 @@ public interface PlayPackage extends EPackage{
 	int PERSONA_GROUP_TYPE__GROUP_DESCRIPTION = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Persona Group Type</em>' class.
+	 * The number of structural features of the '<em>Persona Group Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -481,7 +481,7 @@ public interface PlayPackage extends EPackage{
 	int PLAY_TYPE__ACT = 5;
 
 	/**
-	 * The number of structural features of the the '<em>Type</em>' class.
+	 * The number of structural features of the '<em>Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -545,7 +545,7 @@ public interface PlayPackage extends EPackage{
 	int SCENE_TYPE__TITLE = 4;
 
 	/**
-	 * The number of structural features of the the '<em>Scene Type</em>' class.
+	 * The number of structural features of the '<em>Scene Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -600,7 +600,7 @@ public interface PlayPackage extends EPackage{
 	int SPEECH_TYPE__STAGE_DIRECTIONS = 3;
 
 	/**
-	 * The number of structural features of the the '<em>Speech Type</em>' class.
+	 * The number of structural features of the '<em>Speech Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1203,5 +1203,462 @@ public interface PlayPackage extends EPackage{
 	 * @generated
 	 */
 	PlayFactory getPlayFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.play.impl.ActTypeImpl <em>Act Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.ActTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayPackageImpl#getActType()
+		 * @generated
+		 */
+		EClass ACT_TYPE = eINSTANCE.getActType();
+
+		/**
+		 * The meta object literal for the '<em><b>Scene</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACT_TYPE__SCENE = eINSTANCE.getActType_Scene();
+
+		/**
+		 * The meta object literal for the '<em><b>Pindex</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACT_TYPE__PINDEX = eINSTANCE.getActType_Pindex();
+
+		/**
+		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACT_TYPE__TITLE = eINSTANCE.getActType_Title();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.play.impl.DocumentRootImpl <em>Document Root</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.DocumentRootImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayPackageImpl#getDocumentRoot()
+		 * @generated
+		 */
+		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__MIXED = eINSTANCE.getDocumentRoot_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>XMLNS Prefix Map</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__XMLNS_PREFIX_MAP = eINSTANCE.getDocumentRoot_XMLNSPrefixMap();
+
+		/**
+		 * The meta object literal for the '<em><b>XSI Schema Location</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = eINSTANCE.getDocumentRoot_XSISchemaLocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Act</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__ACT = eINSTANCE.getDocumentRoot_Act();
+
+		/**
+		 * The meta object literal for the '<em><b>Fm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__FM = eINSTANCE.getDocumentRoot_Fm();
+
+		/**
+		 * The meta object literal for the '<em><b>Group Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__GROUP_DESCRIPTION = eINSTANCE.getDocumentRoot_GroupDescription();
+
+		/**
+		 * The meta object literal for the '<em><b>Line</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__LINE = eINSTANCE.getDocumentRoot_Line();
+
+		/**
+		 * The meta object literal for the '<em><b>P</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__P = eINSTANCE.getDocumentRoot_P();
+
+		/**
+		 * The meta object literal for the '<em><b>Persona</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__PERSONA = eINSTANCE.getDocumentRoot_Persona();
+
+		/**
+		 * The meta object literal for the '<em><b>Personae</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__PERSONAE = eINSTANCE.getDocumentRoot_Personae();
+
+		/**
+		 * The meta object literal for the '<em><b>Persona Group</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__PERSONA_GROUP = eINSTANCE.getDocumentRoot_PersonaGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Play</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__PLAY = eINSTANCE.getDocumentRoot_Play();
+
+		/**
+		 * The meta object literal for the '<em><b>Play Sub Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__PLAY_SUB_TITLE = eINSTANCE.getDocumentRoot_PlaySubTitle();
+
+		/**
+		 * The meta object literal for the '<em><b>Scene</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__SCENE = eINSTANCE.getDocumentRoot_Scene();
+
+		/**
+		 * The meta object literal for the '<em><b>Scene Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__SCENE_DESCRIPTION = eINSTANCE.getDocumentRoot_SceneDescription();
+
+		/**
+		 * The meta object literal for the '<em><b>Speaker</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__SPEAKER = eINSTANCE.getDocumentRoot_Speaker();
+
+		/**
+		 * The meta object literal for the '<em><b>Speech</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__SPEECH = eINSTANCE.getDocumentRoot_Speech();
+
+		/**
+		 * The meta object literal for the '<em><b>Stage Directions</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__STAGE_DIRECTIONS = eINSTANCE.getDocumentRoot_StageDirections();
+
+		/**
+		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__TITLE = eINSTANCE.getDocumentRoot_Title();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.play.impl.FmTypeImpl <em>Fm Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.FmTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayPackageImpl#getFmType()
+		 * @generated
+		 */
+		EClass FM_TYPE = eINSTANCE.getFmType();
+
+		/**
+		 * The meta object literal for the '<em><b>P</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FM_TYPE__P = eINSTANCE.getFmType_P();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.play.impl.PersonaeTypeImpl <em>Personae Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PersonaeTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayPackageImpl#getPersonaeType()
+		 * @generated
+		 */
+		EClass PERSONAE_TYPE = eINSTANCE.getPersonaeType();
+
+		/**
+		 * The meta object literal for the '<em><b>Group</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSONAE_TYPE__GROUP = eINSTANCE.getPersonaeType_Group();
+
+		/**
+		 * The meta object literal for the '<em><b>Title</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSONAE_TYPE__TITLE = eINSTANCE.getPersonaeType_Title();
+
+		/**
+		 * The meta object literal for the '<em><b>Persona</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSONAE_TYPE__PERSONA = eINSTANCE.getPersonaeType_Persona();
+
+		/**
+		 * The meta object literal for the '<em><b>Persona Group</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSONAE_TYPE__PERSONA_GROUP = eINSTANCE.getPersonaeType_PersonaGroup();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.play.impl.PersonaGroupTypeImpl <em>Persona Group Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PersonaGroupTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayPackageImpl#getPersonaGroupType()
+		 * @generated
+		 */
+		EClass PERSONA_GROUP_TYPE = eINSTANCE.getPersonaGroupType();
+
+		/**
+		 * The meta object literal for the '<em><b>Persona</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSONA_GROUP_TYPE__PERSONA = eINSTANCE.getPersonaGroupType_Persona();
+
+		/**
+		 * The meta object literal for the '<em><b>Group Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSONA_GROUP_TYPE__GROUP_DESCRIPTION = eINSTANCE.getPersonaGroupType_GroupDescription();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayTypeImpl <em>Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayPackageImpl#getPlayType()
+		 * @generated
+		 */
+		EClass PLAY_TYPE = eINSTANCE.getPlayType();
+
+		/**
+		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLAY_TYPE__TITLE = eINSTANCE.getPlayType_Title();
+
+		/**
+		 * The meta object literal for the '<em><b>Fm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLAY_TYPE__FM = eINSTANCE.getPlayType_Fm();
+
+		/**
+		 * The meta object literal for the '<em><b>Personae</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLAY_TYPE__PERSONAE = eINSTANCE.getPlayType_Personae();
+
+		/**
+		 * The meta object literal for the '<em><b>Scene Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLAY_TYPE__SCENE_DESCRIPTION = eINSTANCE.getPlayType_SceneDescription();
+
+		/**
+		 * The meta object literal for the '<em><b>Play Sub Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLAY_TYPE__PLAY_SUB_TITLE = eINSTANCE.getPlayType_PlaySubTitle();
+
+		/**
+		 * The meta object literal for the '<em><b>Act</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLAY_TYPE__ACT = eINSTANCE.getPlayType_Act();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.play.impl.SceneTypeImpl <em>Scene Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.SceneTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayPackageImpl#getSceneType()
+		 * @generated
+		 */
+		EClass SCENE_TYPE = eINSTANCE.getSceneType();
+
+		/**
+		 * The meta object literal for the '<em><b>Group</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCENE_TYPE__GROUP = eINSTANCE.getSceneType_Group();
+
+		/**
+		 * The meta object literal for the '<em><b>Stage Directions</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCENE_TYPE__STAGE_DIRECTIONS = eINSTANCE.getSceneType_StageDirections();
+
+		/**
+		 * The meta object literal for the '<em><b>Speech</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCENE_TYPE__SPEECH = eINSTANCE.getSceneType_Speech();
+
+		/**
+		 * The meta object literal for the '<em><b>Pindex</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCENE_TYPE__PINDEX = eINSTANCE.getSceneType_Pindex();
+
+		/**
+		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCENE_TYPE__TITLE = eINSTANCE.getSceneType_Title();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.play.impl.SpeechTypeImpl <em>Speech Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.SpeechTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayPackageImpl#getSpeechType()
+		 * @generated
+		 */
+		EClass SPEECH_TYPE = eINSTANCE.getSpeechType();
+
+		/**
+		 * The meta object literal for the '<em><b>Group</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPEECH_TYPE__GROUP = eINSTANCE.getSpeechType_Group();
+
+		/**
+		 * The meta object literal for the '<em><b>Speaker</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPEECH_TYPE__SPEAKER = eINSTANCE.getSpeechType_Speaker();
+
+		/**
+		 * The meta object literal for the '<em><b>Line</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPEECH_TYPE__LINE = eINSTANCE.getSpeechType_Line();
+
+		/**
+		 * The meta object literal for the '<em><b>Stage Directions</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPEECH_TYPE__STAGE_DIRECTIONS = eINSTANCE.getSpeechType_StageDirections();
+
+		/**
+		 * The meta object literal for the '<em>Pindex Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayPackageImpl#getPindexType()
+		 * @generated
+		 */
+		EDataType PINDEX_TYPE = eINSTANCE.getPindexType();
+
+	}
 
 } //PlayPackage

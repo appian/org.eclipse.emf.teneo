@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetFactoryImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: SetFactoryImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -23,6 +23,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.*;
  * @generated
  */
 public class SetFactoryImpl extends EFactoryImpl implements SetFactory {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -57,6 +64,7 @@ public class SetFactoryImpl extends EFactoryImpl implements SetFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SetPackage.CONTAINED_ITEM: return createContainedItem();
@@ -112,6 +120,7 @@ public class SetFactoryImpl extends EFactoryImpl implements SetFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static SetPackage getPackage() {
 		return SetPackage.eINSTANCE;
 	}

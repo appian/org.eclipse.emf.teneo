@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MixedImpl.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: MixedImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl;
 
@@ -73,8 +73,9 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return EcoreattrsPackage.eINSTANCE.getMixed();
+		return EcoreattrsPackage.Literals.MIXED;
 	}
 
 	/**
@@ -95,7 +96,7 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * @generated
 	 */
 	public String getName() {
-		return (String)getMixed().get(EcoreattrsPackage.eINSTANCE.getMixed_Name(), true);
+		return (String)getMixed().get(EcoreattrsPackage.Literals.MIXED__NAME, true);
 	}
 
 	/**
@@ -104,7 +105,7 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		((FeatureMap.Internal)getMixed()).set(EcoreattrsPackage.eINSTANCE.getMixed_Name(), newName);
+		((FeatureMap.Internal)getMixed()).set(EcoreattrsPackage.Literals.MIXED__NAME, newName);
 	}
 
 	/**
@@ -113,7 +114,7 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * @generated
 	 */
 	public double getValue() {
-		return ((Double)getMixed().get(EcoreattrsPackage.eINSTANCE.getMixed_Value(), true)).doubleValue();
+		return ((Double)getMixed().get(EcoreattrsPackage.Literals.MIXED__VALUE, true)).doubleValue();
 	}
 
 	/**
@@ -122,7 +123,7 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * @generated
 	 */
 	public void setValue(double newValue) {
-		((FeatureMap.Internal)getMixed()).set(EcoreattrsPackage.eINSTANCE.getMixed_Value(), new Double(newValue));
+		((FeatureMap.Internal)getMixed()).set(EcoreattrsPackage.Literals.MIXED__VALUE, new Double(newValue));
 	}
 
 	/**
@@ -131,7 +132,7 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * @generated
 	 */
 	public void unsetValue() {
-		((FeatureMap.Internal)getMixed()).clear(EcoreattrsPackage.eINSTANCE.getMixed_Value());
+		((FeatureMap.Internal)getMixed()).clear(EcoreattrsPackage.Literals.MIXED__VALUE);
 	}
 
 	/**
@@ -140,7 +141,7 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * @generated
 	 */
 	public boolean isSetValue() {
-		return !((FeatureMap.Internal)getMixed()).isEmpty(EcoreattrsPackage.eINSTANCE.getMixed_Value());
+		return !((FeatureMap.Internal)getMixed()).isEmpty(EcoreattrsPackage.Literals.MIXED__VALUE);
 	}
 
 	/**
@@ -148,33 +149,32 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case EcoreattrsPackage.MIXED__MIXED:
-					return ((InternalEList)getMixed()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case EcoreattrsPackage.MIXED__MIXED:
-				return getMixed();
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case EcoreattrsPackage.MIXED__MIXED:
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
 			case EcoreattrsPackage.MIXED__NAME:
 				return getName();
 			case EcoreattrsPackage.MIXED__VALUE:
 				return new Double(getValue());
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -182,11 +182,11 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case EcoreattrsPackage.MIXED__MIXED:
-				getMixed().clear();
-				getMixed().addAll((Collection)newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case EcoreattrsPackage.MIXED__NAME:
 				setName((String)newValue);
@@ -195,7 +195,7 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 				setValue(((Double)newValue).doubleValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -203,8 +203,9 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case EcoreattrsPackage.MIXED__MIXED:
 				getMixed().clear();
 				return;
@@ -215,7 +216,7 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 				unsetValue();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -223,8 +224,9 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case EcoreattrsPackage.MIXED__MIXED:
 				return mixed != null && !mixed.isEmpty();
 			case EcoreattrsPackage.MIXED__NAME:
@@ -232,7 +234,7 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 			case EcoreattrsPackage.MIXED__VALUE:
 				return isSetValue();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -240,6 +242,7 @@ public class MixedImpl extends EObjectImpl implements Mixed {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

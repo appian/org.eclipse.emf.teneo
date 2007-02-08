@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PlayPackageImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: PlayPackageImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.impl;
 
@@ -159,7 +159,7 @@ public class PlayPackageImpl extends EPackageImpl implements PlayPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		XMLTypePackageImpl.init();
+		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		thePlayPackage.createPackageContents();
@@ -775,7 +775,11 @@ public class PlayPackageImpl extends EPackageImpl implements PlayPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XMLTypePackageImpl theXMLTypePackage = (XMLTypePackageImpl)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

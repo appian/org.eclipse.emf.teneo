@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1to1Factory.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: Relation1to1Factory.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1to1;
 
@@ -23,7 +23,7 @@ public interface Relation1to1Factory extends EFactory{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	Relation1to1Factory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.Relation1to1FactoryImpl();
+	Relation1to1Factory eINSTANCE = org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.Relation1to1FactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Contained Child NR</em>'.

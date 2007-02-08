@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: Person.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachelist;
 
@@ -66,10 +66,10 @@ public interface Person extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachelist.DetachelistPackage#getPerson_Children()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.detach.detachelist.Person" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.detach.detachelist.Person" containment="true"
 	 *        extendedMetaData="kind='element' name='children'"
 	 * @generated
 	 */
-	EList getChildren();
+	EList<Person> getChildren();
 
 } // Person

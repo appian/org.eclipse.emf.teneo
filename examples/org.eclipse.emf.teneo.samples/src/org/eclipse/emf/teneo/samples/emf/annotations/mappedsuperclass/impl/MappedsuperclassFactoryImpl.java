@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassFactoryImpl.java,v 1.2 2006/11/12 00:08:30 mtaal Exp $
+ * $Id: MappedsuperclassFactoryImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl;
 
@@ -23,6 +23,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.*;
  * @generated
  */
 public class MappedsuperclassFactoryImpl extends EFactoryImpl implements MappedsuperclassFactory {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -57,6 +64,7 @@ public class MappedsuperclassFactoryImpl extends EFactoryImpl implements Mappeds
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case MappedsuperclassPackage.ADD_ID_DOCUMENT: return createAddIDDocument();
@@ -123,6 +131,7 @@ public class MappedsuperclassFactoryImpl extends EFactoryImpl implements Mappeds
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static MappedsuperclassPackage getPackage() {
 		return MappedsuperclassPackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductType.java,v 1.2 2006/11/15 17:18:17 mtaal Exp $
+ * $Id: ProductType.java,v 1.3 2007/02/08 23:09:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product;
 
@@ -263,6 +263,6 @@ public interface ProductType extends EObject {
 	 * @model type="org.eclipse.emf.ecore.EObject" containment="true"
 	 * @generated
 	 */
-	EList getAnyList();
+	EList<EObject> getAnyList();
 
 } // ProductType

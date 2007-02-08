@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressGroupImpl.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: AddressGroupImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl;
 
@@ -111,8 +111,9 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return GroupallPackage.eINSTANCE.getAddressGroup();
+		return GroupallPackage.Literals.ADDRESS_GROUP;
 	}
 
 	/**
@@ -248,18 +249,15 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GroupallPackage.ADDRESS_GROUP__SHIP_TO:
-					return basicSetShipTo(null, msgs);
-				case GroupallPackage.ADDRESS_GROUP__BILL_TO:
-					return basicSetBillTo(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GroupallPackage.ADDRESS_GROUP__SHIP_TO:
+				return basicSetShipTo(null, msgs);
+			case GroupallPackage.ADDRESS_GROUP__BILL_TO:
+				return basicSetBillTo(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -267,8 +265,9 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case GroupallPackage.ADDRESS_GROUP__GROUP_NAME:
 				return getGroupName();
 			case GroupallPackage.ADDRESS_GROUP__SHIP_TO:
@@ -278,7 +277,7 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 			case GroupallPackage.ADDRESS_GROUP__SIMPLE_ADDRESS:
 				return getSimpleAddress();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -286,8 +285,9 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case GroupallPackage.ADDRESS_GROUP__GROUP_NAME:
 				setGroupName((String)newValue);
 				return;
@@ -301,7 +301,7 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 				setSimpleAddress((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -309,8 +309,9 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case GroupallPackage.ADDRESS_GROUP__GROUP_NAME:
 				setGroupName(GROUP_NAME_EDEFAULT);
 				return;
@@ -324,7 +325,7 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 				setSimpleAddress(SIMPLE_ADDRESS_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -332,8 +333,9 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case GroupallPackage.ADDRESS_GROUP__GROUP_NAME:
 				return GROUP_NAME_EDEFAULT == null ? groupName != null : !GROUP_NAME_EDEFAULT.equals(groupName);
 			case GroupallPackage.ADDRESS_GROUP__SHIP_TO:
@@ -343,7 +345,7 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 			case GroupallPackage.ADDRESS_GROUP__SIMPLE_ADDRESS:
 				return SIMPLE_ADDRESS_EDEFAULT == null ? simpleAddress != null : !SIMPLE_ADDRESS_EDEFAULT.equals(simpleAddress);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -351,6 +353,7 @@ public class AddressGroupImpl extends EObjectImpl implements AddressGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

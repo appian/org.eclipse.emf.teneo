@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SunBooksSwitch.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: SunBooksSwitch.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.sunBooks.*;
  * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.SunBooksPackage
  * @generated
  */
-public class SunBooksSwitch {
+public class SunBooksSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class SunBooksSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class SunBooksSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,41 +85,41 @@ public class SunBooksSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SunBooksPackage.AUTHORS_TYPE: {
 				AuthorsType authorsType = (AuthorsType)theEObject;
-				Object result = caseAuthorsType(authorsType);
+				T result = caseAuthorsType(authorsType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SunBooksPackage.BOOKS_TYPE: {
 				BooksType booksType = (BooksType)theEObject;
-				Object result = caseBooksType(booksType);
+				T result = caseBooksType(booksType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SunBooksPackage.BOOK_TYPE: {
 				BookType bookType = (BookType)theEObject;
-				Object result = caseBookType(bookType);
+				T result = caseBookType(bookType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SunBooksPackage.COLLECTION_TYPE: {
 				CollectionType collectionType = (CollectionType)theEObject;
-				Object result = caseCollectionType(collectionType);
+				T result = caseCollectionType(collectionType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SunBooksPackage.DOCUMENT_ROOT: {
 				DocumentRoot documentRoot = (DocumentRoot)theEObject;
-				Object result = caseDocumentRoot(documentRoot);
+				T result = caseDocumentRoot(documentRoot);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SunBooksPackage.PROMOTION_TYPE: {
 				PromotionType promotionType = (PromotionType)theEObject;
-				Object result = casePromotionType(promotionType);
+				T result = casePromotionType(promotionType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -138,7 +138,7 @@ public class SunBooksSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAuthorsType(AuthorsType object) {
+	public T caseAuthorsType(AuthorsType object) {
 		return null;
 	}
 
@@ -153,7 +153,7 @@ public class SunBooksSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBooksType(BooksType object) {
+	public T caseBooksType(BooksType object) {
 		return null;
 	}
 
@@ -168,7 +168,7 @@ public class SunBooksSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBookType(BookType object) {
+	public T caseBookType(BookType object) {
 		return null;
 	}
 
@@ -183,7 +183,7 @@ public class SunBooksSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCollectionType(CollectionType object) {
+	public T caseCollectionType(CollectionType object) {
 		return null;
 	}
 
@@ -198,7 +198,7 @@ public class SunBooksSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDocumentRoot(DocumentRoot object) {
+	public T caseDocumentRoot(DocumentRoot object) {
 		return null;
 	}
 
@@ -213,7 +213,7 @@ public class SunBooksSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePromotionType(PromotionType object) {
+	public T casePromotionType(PromotionType object) {
 		return null;
 	}
 
@@ -228,7 +228,7 @@ public class SunBooksSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

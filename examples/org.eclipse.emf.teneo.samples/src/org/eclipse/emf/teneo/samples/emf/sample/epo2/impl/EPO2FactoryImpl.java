@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EPO2FactoryImpl.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
+ * $Id: EPO2FactoryImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -11,7 +11,10 @@ import java.util.Date;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.sample.epo2.*;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.Customer;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.EPO2Factory;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.EPO2Package;
@@ -31,6 +34,25 @@ import org.eclipse.emf.teneo.samples.emf.sample.epo2.USAddress;
  */
 public class EPO2FactoryImpl extends EFactoryImpl implements EPO2Factory {
 	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EPO2Factory init() {
+		try {
+			EPO2Factory theEPO2Factory = (EPO2Factory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/extendedpo2"); 
+			if (theEPO2Factory != null) {
+				return theEPO2Factory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new EPO2FactoryImpl();
+	}
+
+	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -45,6 +67,7 @@ public class EPO2FactoryImpl extends EFactoryImpl implements EPO2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EPO2Package.ITEM: return createItem();
@@ -64,13 +87,11 @@ public class EPO2FactoryImpl extends EFactoryImpl implements EPO2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case EPO2Package.ORDER_STATUS: {
-				OrderStatus result = OrderStatus.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-				return result;
-			}
+			case EPO2Package.ORDER_STATUS:
+				return createOrderStatusFromString(eDataType, initialValue);
 			case EPO2Package.SKU:
 				return createSKUFromString(eDataType, initialValue);
 			case EPO2Package.DATE:
@@ -85,10 +106,11 @@ public class EPO2FactoryImpl extends EFactoryImpl implements EPO2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case EPO2Package.ORDER_STATUS:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertOrderStatusToString(eDataType, instanceValue);
 			case EPO2Package.SKU:
 				return convertSKUToString(eDataType, instanceValue);
 			case EPO2Package.DATE:
@@ -173,8 +195,28 @@ public class EPO2FactoryImpl extends EFactoryImpl implements EPO2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OrderStatus createOrderStatusFromString(EDataType eDataType, String initialValue) {
+		OrderStatus result = OrderStatus.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOrderStatusToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String createSKUFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
+		return (String)super.createFromString(initialValue);
 	}
 
 	/**
@@ -183,7 +225,7 @@ public class EPO2FactoryImpl extends EFactoryImpl implements EPO2Factory {
 	 * @generated
 	 */
 	public String convertSKUToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
+		return super.convertToString(instanceValue);
 	}
 
 	/**
@@ -192,7 +234,7 @@ public class EPO2FactoryImpl extends EFactoryImpl implements EPO2Factory {
 	 * @generated
 	 */
 	public Date createDateFromString(EDataType eDataType, String initialValue) {
-		return (Date)super.createFromString(eDataType, initialValue);
+		return (Date)super.createFromString(initialValue);
 	}
 
 	/**
@@ -201,7 +243,7 @@ public class EPO2FactoryImpl extends EFactoryImpl implements EPO2Factory {
 	 * @generated
 	 */
 	public String convertDateToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
+		return super.convertToString(instanceValue);
 	}
 
 	/**
@@ -219,6 +261,7 @@ public class EPO2FactoryImpl extends EFactoryImpl implements EPO2Factory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static EPO2Package getPackage() {
 		return EPO2Package.eINSTANCE;
 	}

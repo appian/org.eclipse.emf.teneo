@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: ItemImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -34,6 +34,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage;
  * @generated
  */
 public class ItemImpl extends EObjectImpl implements Item {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -78,6 +85,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return SetPackage.Literals.ITEM;
 	}
@@ -151,6 +159,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case SetPackage.ITEM__ITEM_LIST:
@@ -166,6 +175,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case SetPackage.ITEM__ITEM_LIST:
@@ -179,6 +189,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SetPackage.ITEM__NAME:
@@ -194,6 +205,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case SetPackage.ITEM__NAME:
@@ -211,6 +223,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SetPackage.ITEM__NAME:
@@ -228,6 +241,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SetPackage.ITEM__NAME:
@@ -243,6 +257,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

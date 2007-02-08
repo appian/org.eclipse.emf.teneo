@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PriceByQuantityTypeImpl.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: PriceByQuantityTypeImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl;
 
@@ -104,8 +104,9 @@ public class PriceByQuantityTypeImpl extends EObjectImpl implements PriceByQuant
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return FeaturemapPackage.eINSTANCE.getPriceByQuantityType();
+		return FeaturemapPackage.Literals.PRICE_BY_QUANTITY_TYPE;
 	}
 
 	/**
@@ -205,14 +206,15 @@ public class PriceByQuantityTypeImpl extends EObjectImpl implements PriceByQuant
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case FeaturemapPackage.PRICE_BY_QUANTITY_TYPE__PRICE:
 				return new Double(getPrice());
 			case FeaturemapPackage.PRICE_BY_QUANTITY_TYPE__QUANTITY:
 				return new Double(getQuantity());
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -220,8 +222,9 @@ public class PriceByQuantityTypeImpl extends EObjectImpl implements PriceByQuant
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case FeaturemapPackage.PRICE_BY_QUANTITY_TYPE__PRICE:
 				setPrice(((Double)newValue).doubleValue());
 				return;
@@ -229,7 +232,7 @@ public class PriceByQuantityTypeImpl extends EObjectImpl implements PriceByQuant
 				setQuantity(((Double)newValue).doubleValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -237,8 +240,9 @@ public class PriceByQuantityTypeImpl extends EObjectImpl implements PriceByQuant
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case FeaturemapPackage.PRICE_BY_QUANTITY_TYPE__PRICE:
 				unsetPrice();
 				return;
@@ -246,7 +250,7 @@ public class PriceByQuantityTypeImpl extends EObjectImpl implements PriceByQuant
 				unsetQuantity();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -254,14 +258,15 @@ public class PriceByQuantityTypeImpl extends EObjectImpl implements PriceByQuant
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case FeaturemapPackage.PRICE_BY_QUANTITY_TYPE__PRICE:
 				return isSetPrice();
 			case FeaturemapPackage.PRICE_BY_QUANTITY_TYPE__QUANTITY:
 				return isSetQuantity();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -269,6 +274,7 @@ public class PriceByQuantityTypeImpl extends EObjectImpl implements PriceByQuant
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

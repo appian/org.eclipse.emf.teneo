@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueconstraintsPackageImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: UniqueconstraintsPackageImpl.java,v 1.3 2007/02/08 23:09:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.impl;
 
@@ -188,6 +188,10 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AssociationoverrideSwitch.java,v 1.2 2006/09/05 12:16:35 mtaal Exp $
+ * $Id: AssociationoverrideSwitch.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.AssociationoverridePackage
  * @generated
  */
-public class AssociationoverrideSwitch {
+public class AssociationoverrideSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class AssociationoverrideSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class AssociationoverrideSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,30 +85,30 @@ public class AssociationoverrideSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case AssociationoverridePackage.ADDRESS: {
 				Address address = (Address)theEObject;
-				Object result = caseAddress(address);
+				T result = caseAddress(address);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AssociationoverridePackage.EMPLOYEE: {
 				Employee employee = (Employee)theEObject;
-				Object result = caseEmployee(employee);
+				T result = caseEmployee(employee);
 				if (result == null) result = casePerson(employee);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AssociationoverridePackage.PERSON: {
 				Person person = (Person)theEObject;
-				Object result = casePerson(person);
+				T result = casePerson(person);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AssociationoverridePackage.STUDENT: {
 				Student student = (Student)theEObject;
-				Object result = caseStudent(student);
+				T result = caseStudent(student);
 				if (result == null) result = casePerson(student);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -128,7 +128,7 @@ public class AssociationoverrideSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddress(Address object) {
+	public T caseAddress(Address object) {
 		return null;
 	}
 
@@ -143,7 +143,7 @@ public class AssociationoverrideSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEmployee(Employee object) {
+	public T caseEmployee(Employee object) {
 		return null;
 	}
 
@@ -158,7 +158,7 @@ public class AssociationoverrideSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePerson(Person object) {
+	public T casePerson(Person object) {
 		return null;
 	}
 
@@ -173,7 +173,7 @@ public class AssociationoverrideSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStudent(Student object) {
+	public T caseStudent(Student object) {
 		return null;
 	}
 
@@ -188,7 +188,7 @@ public class AssociationoverrideSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedFactoryImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: EmbeddedFactoryImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -57,6 +57,7 @@ public class EmbeddedFactoryImpl extends EFactoryImpl implements EmbeddedFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EmbeddedPackage.EMBEDDABLE: return createEmbeddable();
@@ -101,6 +102,7 @@ public class EmbeddedFactoryImpl extends EFactoryImpl implements EmbeddedFactory
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static EmbeddedPackage getPackage() {
 		return EmbeddedPackage.eINSTANCE;
 	}

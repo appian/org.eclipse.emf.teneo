@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddIDDocument.java,v 1.1 2006/11/12 00:08:30 mtaal Exp $
+ * $Id: AddIDDocument.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -24,6 +24,13 @@ package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
  * @generated
  */
 public interface AddIDDocument extends Document {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

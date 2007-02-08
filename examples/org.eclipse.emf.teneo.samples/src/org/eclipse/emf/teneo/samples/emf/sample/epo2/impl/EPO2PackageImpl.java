@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EPO2PackageImpl.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: EPO2PackageImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -662,6 +662,10 @@ public class EPO2PackageImpl extends EPackageImpl implements EPO2Package {
 		setName(eNAME);
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		usAddressEClass.getESuperTypes().add(this.getAddress());

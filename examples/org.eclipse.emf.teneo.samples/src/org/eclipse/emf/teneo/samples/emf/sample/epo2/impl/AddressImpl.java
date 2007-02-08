@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: AddressImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -83,8 +83,9 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return EPO2Package.eINSTANCE.getAddress();
+		return EPO2Package.Literals.ADDRESS;
 	}
 
 	/**
@@ -134,14 +135,15 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case EPO2Package.ADDRESS__NAME:
 				return getName();
 			case EPO2Package.ADDRESS__COUNTRY:
 				return getCountry();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -149,8 +151,9 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case EPO2Package.ADDRESS__NAME:
 				setName((String)newValue);
 				return;
@@ -158,7 +161,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 				setCountry((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -166,8 +169,9 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case EPO2Package.ADDRESS__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -175,7 +179,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 				setCountry(COUNTRY_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -183,14 +187,15 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case EPO2Package.ADDRESS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case EPO2Package.ADDRESS__COUNTRY:
 				return COUNTRY_EDEFAULT == null ? country != null : !COUNTRY_EDEFAULT.equals(country);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -198,6 +203,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

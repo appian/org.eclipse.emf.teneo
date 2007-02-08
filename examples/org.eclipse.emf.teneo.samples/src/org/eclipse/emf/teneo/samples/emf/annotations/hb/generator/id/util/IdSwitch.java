@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdSwitch.java,v 1.1 2006/08/31 22:47:46 mtaal Exp $
+ * $Id: IdSwitch.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdPackage
  * @generated
  */
-public class IdSwitch {
+public class IdSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class IdSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class IdSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,23 @@ public class IdSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case IdPackage.IDENTITY_ID: {
 				IdentityID identityID = (IdentityID)theEObject;
-				Object result = caseIdentityID(identityID);
+				T result = caseIdentityID(identityID);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case IdPackage.SIMPLE_ID: {
 				SimpleID simpleID = (SimpleID)theEObject;
-				Object result = caseSimpleID(simpleID);
+				T result = caseSimpleID(simpleID);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case IdPackage.TABLE_ID: {
 				TableID tableID = (TableID)theEObject;
-				Object result = caseTableID(tableID);
+				T result = caseTableID(tableID);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,7 +120,7 @@ public class IdSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseIdentityID(IdentityID object) {
+	public T caseIdentityID(IdentityID object) {
 		return null;
 	}
 
@@ -135,7 +135,7 @@ public class IdSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSimpleID(SimpleID object) {
+	public T caseSimpleID(SimpleID object) {
 		return null;
 	}
 
@@ -150,7 +150,7 @@ public class IdSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTableID(TableID object) {
+	public T caseTableID(TableID object) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class IdSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

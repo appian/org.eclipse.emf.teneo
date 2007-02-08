@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParentImpl.java,v 1.3 2006/09/05 12:16:33 mtaal Exp $
+ * $Id: ParentImpl.java,v 1.4 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl;
 
@@ -37,7 +37,7 @@ public class ParentImpl extends PersonImpl implements Parent {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList children = null;
+	protected EList<Child> children = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -53,6 +53,7 @@ public class ParentImpl extends PersonImpl implements Parent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return CompositeidPackage.Literals.PARENT;
 	}
@@ -62,9 +63,9 @@ public class ParentImpl extends PersonImpl implements Parent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getChildren() {
+	public EList<Child> getChildren() {
 		if (children == null) {
-			children = new EObjectResolvingEList(Child.class, this, CompositeidPackage.PARENT__CHILDREN);
+			children = new EObjectResolvingEList<Child>(Child.class, this, CompositeidPackage.PARENT__CHILDREN);
 		}
 		return children;
 	}
@@ -74,6 +75,7 @@ public class ParentImpl extends PersonImpl implements Parent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CompositeidPackage.PARENT__CHILDREN:
@@ -87,11 +89,13 @@ public class ParentImpl extends PersonImpl implements Parent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CompositeidPackage.PARENT__CHILDREN:
 				getChildren().clear();
-				getChildren().addAll((Collection)newValue);
+				getChildren().addAll((Collection<? extends Child>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -102,6 +106,7 @@ public class ParentImpl extends PersonImpl implements Parent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CompositeidPackage.PARENT__CHILDREN:
@@ -116,6 +121,7 @@ public class ParentImpl extends PersonImpl implements Parent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CompositeidPackage.PARENT__CHILDREN:

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetPackage.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: SetPackage.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -27,6 +27,13 @@ import org.eclipse.emf.ecore.EReference;
  * @generated
  */
 public interface SetPackage extends EPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->

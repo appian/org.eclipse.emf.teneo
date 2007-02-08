@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManytomanySwitch.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: ManytomanySwitch.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.manytomany.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyPackage
  * @generated
  */
-public class ManytomanySwitch {
+public class ManytomanySwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class ManytomanySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class ManytomanySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,23 @@ public class ManytomanySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case ManytomanyPackage.CNTR: {
 				Cntr cntr = (Cntr)theEObject;
-				Object result = caseCntr(cntr);
+				T result = caseCntr(cntr);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ManytomanyPackage.LFT: {
 				Lft lft = (Lft)theEObject;
-				Object result = caseLft(lft);
+				T result = caseLft(lft);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ManytomanyPackage.RGHT: {
 				Rght rght = (Rght)theEObject;
-				Object result = caseRght(rght);
+				T result = caseRght(rght);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,7 +120,7 @@ public class ManytomanySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCntr(Cntr object) {
+	public T caseCntr(Cntr object) {
 		return null;
 	}
 
@@ -135,7 +135,7 @@ public class ManytomanySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLft(Lft object) {
+	public T caseLft(Lft object) {
 		return null;
 	}
 
@@ -150,7 +150,7 @@ public class ManytomanySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRght(Rght object) {
+	public T caseRght(Rght object) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class ManytomanySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

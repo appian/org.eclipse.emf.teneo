@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdResourceFactoryImpl.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: IdResourceFactoryImpl.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.util;
 
@@ -38,6 +38,7 @@ public class IdResourceFactoryImpl extends ResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new IdResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AccountingPackage.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: AccountingPackage.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting;
 
@@ -42,7 +42,7 @@ public interface AccountingPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/sample/accounting";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/sample/accounting";
 
 	/**
 	 * The package namespace name.
@@ -80,7 +80,7 @@ public interface AccountingPackage extends EPackage {
 	int ACCOUNT__NAME = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Account</em>' class.
+	 * The number of structural features of the '<em>Account</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -117,7 +117,7 @@ public interface AccountingPackage extends EPackage {
 	int ACCOUNT_GROUP__ACCOUNT = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Account Group</em>' class.
+	 * The number of structural features of the '<em>Account Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -190,7 +190,7 @@ public interface AccountingPackage extends EPackage {
 	int ACCOUNTING__JOURNAL_GROUP = 5;
 
 	/**
-	 * The number of structural features of the the '<em>Accounting</em>' class.
+	 * The number of structural features of the '<em>Accounting</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -227,7 +227,7 @@ public interface AccountingPackage extends EPackage {
 	int BALANCE_ACCOUNT__REPORT = ACCOUNT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>Balance Account</em>' class.
+	 * The number of structural features of the '<em>Balance Account</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -273,7 +273,7 @@ public interface AccountingPackage extends EPackage {
 	int JOURNAL_GROUP__JOURNAL_STATEMENTS = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Journal Group</em>' class.
+	 * The number of structural features of the '<em>Journal Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -346,7 +346,7 @@ public interface AccountingPackage extends EPackage {
 	int JOURNAL_STATEMENT__VAT = 5;
 
 	/**
-	 * The number of structural features of the the '<em>Journal Statement</em>' class.
+	 * The number of structural features of the '<em>Journal Statement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -374,7 +374,7 @@ public interface AccountingPackage extends EPackage {
 	int PL_ACCOUNT__NAME = ACCOUNT__NAME;
 
 	/**
-	 * The number of structural features of the the '<em>PL Account</em>' class.
+	 * The number of structural features of the '<em>PL Account</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -420,7 +420,7 @@ public interface AccountingPackage extends EPackage {
 	int REPORT__CREDIT_REPORT_GROUP = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Report</em>' class.
+	 * The number of structural features of the '<em>Report</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -466,7 +466,7 @@ public interface AccountingPackage extends EPackage {
 	int REPORT_GROUP__ACCOUNT = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Report Group</em>' class.
+	 * The number of structural features of the '<em>Report Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -503,7 +503,7 @@ public interface AccountingPackage extends EPackage {
 	int VAT__RATE = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Vat</em>' class.
+	 * The number of structural features of the '<em>Vat</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -939,5 +939,346 @@ public interface AccountingPackage extends EPackage {
 	 * @generated
 	 */
 	AccountingFactory getAccountingFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountImpl <em>Account</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getAccount()
+		 * @generated
+		 */
+		EClass ACCOUNT = eINSTANCE.getAccount();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACCOUNT__NAME = eINSTANCE.getAccount_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountGroupImpl <em>Account Group</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountGroupImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getAccountGroup()
+		 * @generated
+		 */
+		EClass ACCOUNT_GROUP = eINSTANCE.getAccountGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACCOUNT_GROUP__NAME = eINSTANCE.getAccountGroup_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Account</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACCOUNT_GROUP__ACCOUNT = eINSTANCE.getAccountGroup_Account();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingImpl <em>Accounting</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getAccounting()
+		 * @generated
+		 */
+		EClass ACCOUNTING = eINSTANCE.getAccounting();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACCOUNTING__NAME = eINSTANCE.getAccounting_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Account Group</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACCOUNTING__ACCOUNT_GROUP = eINSTANCE.getAccounting_AccountGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Vat</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACCOUNTING__VAT = eINSTANCE.getAccounting_Vat();
+
+		/**
+		 * The meta object literal for the '<em><b>Vat Account</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACCOUNTING__VAT_ACCOUNT = eINSTANCE.getAccounting_VatAccount();
+
+		/**
+		 * The meta object literal for the '<em><b>Report</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACCOUNTING__REPORT = eINSTANCE.getAccounting_Report();
+
+		/**
+		 * The meta object literal for the '<em><b>Journal Group</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACCOUNTING__JOURNAL_GROUP = eINSTANCE.getAccounting_JournalGroup();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.BalanceAccountImpl <em>Balance Account</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.BalanceAccountImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getBalanceAccount()
+		 * @generated
+		 */
+		EClass BALANCE_ACCOUNT = eINSTANCE.getBalanceAccount();
+
+		/**
+		 * The meta object literal for the '<em><b>Report</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BALANCE_ACCOUNT__REPORT = eINSTANCE.getBalanceAccount_Report();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.JournalGroupImpl <em>Journal Group</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.JournalGroupImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getJournalGroup()
+		 * @generated
+		 */
+		EClass JOURNAL_GROUP = eINSTANCE.getJournalGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOURNAL_GROUP__NAME = eINSTANCE.getJournalGroup_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Journal Groups</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNAL_GROUP__JOURNAL_GROUPS = eINSTANCE.getJournalGroup_JournalGroups();
+
+		/**
+		 * The meta object literal for the '<em><b>Journal Statements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNAL_GROUP__JOURNAL_STATEMENTS = eINSTANCE.getJournalGroup_JournalStatements();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.JournalStatementImpl <em>Journal Statement</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.JournalStatementImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getJournalStatement()
+		 * @generated
+		 */
+		EClass JOURNAL_STATEMENT = eINSTANCE.getJournalStatement();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOURNAL_STATEMENT__DESCRIPTION = eINSTANCE.getJournalStatement_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOURNAL_STATEMENT__DATE = eINSTANCE.getJournalStatement_Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Amount</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOURNAL_STATEMENT__AMOUNT = eINSTANCE.getJournalStatement_Amount();
+
+		/**
+		 * The meta object literal for the '<em><b>Debit Account</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNAL_STATEMENT__DEBIT_ACCOUNT = eINSTANCE.getJournalStatement_DebitAccount();
+
+		/**
+		 * The meta object literal for the '<em><b>Credit Account</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNAL_STATEMENT__CREDIT_ACCOUNT = eINSTANCE.getJournalStatement_CreditAccount();
+
+		/**
+		 * The meta object literal for the '<em><b>Vat</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNAL_STATEMENT__VAT = eINSTANCE.getJournalStatement_Vat();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.PLAccountImpl <em>PL Account</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.PLAccountImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getPLAccount()
+		 * @generated
+		 */
+		EClass PL_ACCOUNT = eINSTANCE.getPLAccount();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportImpl <em>Report</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getReport()
+		 * @generated
+		 */
+		EClass REPORT = eINSTANCE.getReport();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPORT__NAME = eINSTANCE.getReport_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Debit Report Group</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPORT__DEBIT_REPORT_GROUP = eINSTANCE.getReport_DebitReportGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Credit Report Group</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPORT__CREDIT_REPORT_GROUP = eINSTANCE.getReport_CreditReportGroup();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportGroupImpl <em>Report Group</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportGroupImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getReportGroup()
+		 * @generated
+		 */
+		EClass REPORT_GROUP = eINSTANCE.getReportGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPORT_GROUP__NAME = eINSTANCE.getReportGroup_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Report Group</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPORT_GROUP__REPORT_GROUP = eINSTANCE.getReportGroup_ReportGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Account</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPORT_GROUP__ACCOUNT = eINSTANCE.getReportGroup_Account();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.VatImpl <em>Vat</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.VatImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getVat()
+		 * @generated
+		 */
+		EClass VAT = eINSTANCE.getVat();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VAT__NAME = eINSTANCE.getVat_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Rate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VAT__RATE = eINSTANCE.getVat_Rate();
+
+		/**
+		 * The meta object literal for the '<em>Date</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.Date
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingPackageImpl#getDate()
+		 * @generated
+		 */
+		EDataType DATE = eINSTANCE.getDate();
+
+	}
 
 } //AccountingPackage

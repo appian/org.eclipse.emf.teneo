@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Accounting.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: Accounting.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting;
 
@@ -97,11 +97,11 @@ public interface Accounting extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Account Group</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountingPackage#getAccounting_AccountGroup()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountGroup" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountGroup" containment="true"
 	 *        extendedMetaData="kind='element' name='accountGroup'"
 	 * @generated
 	 */
-	EList getAccountGroup();
+	EList<AccountGroup> getAccountGroup();
 
 	/**
 	 * Returns the value of the '<em><b>Vat</b></em>' containment reference list.
@@ -114,11 +114,11 @@ public interface Accounting extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Vat</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountingPackage#getAccounting_Vat()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.accounting.Vat" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.accounting.Vat" containment="true"
 	 *        extendedMetaData="kind='element' name='vat'"
 	 * @generated
 	 */
-	EList getVat();
+	EList<Vat> getVat();
 
 	/**
 	 * Returns the value of the '<em><b>Vat Account</b></em>' reference.
@@ -158,7 +158,7 @@ public interface Accounting extends EObject {
 	 * @return the value of the '<em>Report</em>' containment reference.
 	 * @see #setReport(Report)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountingPackage#getAccounting_Report()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='report'"
 	 * @generated
 	 */
@@ -185,10 +185,10 @@ public interface Accounting extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Journal Group</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountingPackage#getAccounting_JournalGroup()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.accounting.JournalGroup" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.accounting.JournalGroup" containment="true"
 	 *        extendedMetaData="kind='element' name='JournalGroup'"
 	 * @generated
 	 */
-	EList getJournalGroup();
+	EList<JournalGroup> getJournalGroup();
 
 } // Accounting

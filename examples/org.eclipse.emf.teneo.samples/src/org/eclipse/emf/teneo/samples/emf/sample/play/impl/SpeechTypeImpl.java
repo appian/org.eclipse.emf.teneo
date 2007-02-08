@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SpeechTypeImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: SpeechTypeImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.impl;
 
@@ -66,8 +66,9 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PlayPackage.eINSTANCE.getSpeechType();
+		return PlayPackage.Literals.SPEECH_TYPE;
 	}
 
 	/**
@@ -87,8 +88,8 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSpeaker() {
-		return ((FeatureMap)getGroup()).list(PlayPackage.eINSTANCE.getSpeechType_Speaker());
+	public EList<String> getSpeaker() {
+		return getGroup().list(PlayPackage.Literals.SPEECH_TYPE__SPEAKER);
 	}
 
 	/**
@@ -96,8 +97,8 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLine() {
-		return ((FeatureMap)getGroup()).list(PlayPackage.eINSTANCE.getSpeechType_Line());
+	public EList<String> getLine() {
+		return getGroup().list(PlayPackage.Literals.SPEECH_TYPE__LINE);
 	}
 
 	/**
@@ -105,8 +106,8 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getStageDirections() {
-		return ((FeatureMap)getGroup()).list(PlayPackage.eINSTANCE.getSpeechType_StageDirections());
+	public EList<String> getStageDirections() {
+		return getGroup().list(PlayPackage.Literals.SPEECH_TYPE__STAGE_DIRECTIONS);
 	}
 
 	/**
@@ -114,27 +115,26 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PlayPackage.SPEECH_TYPE__GROUP:
-					return ((InternalEList)getGroup()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case PlayPackage.SPEECH_TYPE__GROUP:
-				return getGroup();
+				return ((InternalEList<?>)getGroup()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case PlayPackage.SPEECH_TYPE__GROUP:
+				if (coreType) return getGroup();
+				return ((FeatureMap.Internal)getGroup()).getWrapper();
 			case PlayPackage.SPEECH_TYPE__SPEAKER:
 				return getSpeaker();
 			case PlayPackage.SPEECH_TYPE__LINE:
@@ -142,7 +142,7 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 			case PlayPackage.SPEECH_TYPE__STAGE_DIRECTIONS:
 				return getStageDirections();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -150,26 +150,27 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PlayPackage.SPEECH_TYPE__GROUP:
-				getGroup().clear();
-				getGroup().addAll((Collection)newValue);
+				((FeatureMap.Internal)getGroup()).set(newValue);
 				return;
 			case PlayPackage.SPEECH_TYPE__SPEAKER:
 				getSpeaker().clear();
-				getSpeaker().addAll((Collection)newValue);
+				getSpeaker().addAll((Collection<? extends String>)newValue);
 				return;
 			case PlayPackage.SPEECH_TYPE__LINE:
 				getLine().clear();
-				getLine().addAll((Collection)newValue);
+				getLine().addAll((Collection<? extends String>)newValue);
 				return;
 			case PlayPackage.SPEECH_TYPE__STAGE_DIRECTIONS:
 				getStageDirections().clear();
-				getStageDirections().addAll((Collection)newValue);
+				getStageDirections().addAll((Collection<? extends String>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -177,8 +178,9 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PlayPackage.SPEECH_TYPE__GROUP:
 				getGroup().clear();
 				return;
@@ -192,7 +194,7 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 				getStageDirections().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -200,8 +202,9 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PlayPackage.SPEECH_TYPE__GROUP:
 				return group != null && !group.isEmpty();
 			case PlayPackage.SPEECH_TYPE__SPEAKER:
@@ -211,7 +214,7 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 			case PlayPackage.SPEECH_TYPE__STAGE_DIRECTIONS:
 				return !getStageDirections().isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -219,6 +222,7 @@ public class SpeechTypeImpl extends EObjectImpl implements SpeechType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

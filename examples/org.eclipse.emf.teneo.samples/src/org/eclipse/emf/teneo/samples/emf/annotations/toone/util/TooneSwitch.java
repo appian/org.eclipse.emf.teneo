@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TooneSwitch.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: TooneSwitch.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.toone.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.ToonePackage
  * @generated
  */
-public class TooneSwitch {
+public class TooneSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class TooneSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class TooneSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,23 @@ public class TooneSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case ToonePackage.ADDRESS: {
 				Address address = (Address)theEObject;
-				Object result = caseAddress(address);
+				T result = caseAddress(address);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ToonePackage.HEAD: {
 				Head head = (Head)theEObject;
-				Object result = caseHead(head);
+				T result = caseHead(head);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ToonePackage.PERSON: {
 				Person person = (Person)theEObject;
-				Object result = casePerson(person);
+				T result = casePerson(person);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,7 +120,7 @@ public class TooneSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddress(Address object) {
+	public T caseAddress(Address object) {
 		return null;
 	}
 
@@ -135,7 +135,7 @@ public class TooneSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseHead(Head object) {
+	public T caseHead(Head object) {
 		return null;
 	}
 
@@ -150,7 +150,7 @@ public class TooneSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePerson(Person object) {
+	public T casePerson(Person object) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class TooneSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

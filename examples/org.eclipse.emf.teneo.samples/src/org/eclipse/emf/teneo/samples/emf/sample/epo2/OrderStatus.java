@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OrderStatus.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: OrderStatus.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,35 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class OrderStatus extends AbstractEnumerator {
+public enum OrderStatus implements Enumerator
+{
+	/**
+	 * The '<em><b>Pending</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PENDING
+	 * @generated
+	 * @ordered
+	 */
+	PENDING_LITERAL(0, "Pending", "Pending"),
+	/**
+	 * The '<em><b>Back Order</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BACK_ORDER
+	 * @generated
+	 * @ordered
+	 */
+	BACK_ORDER_LITERAL(1, "BackOrder", "BackOrder"),
+	/**
+	 * The '<em><b>Complete</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #COMPLETE
+	 * @generated
+	 * @ordered
+	 */
+	COMPLETE_LITERAL(2, "Complete", "Complete");
 	/**
 	 * The '<em><b>Pending</b></em>' literal value.
 	 * <!-- begin-user-doc -->
@@ -68,36 +96,6 @@ public final class OrderStatus extends AbstractEnumerator {
 	public static final int COMPLETE = 2;
 
 	/**
-	 * The '<em><b>Pending</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PENDING
-	 * @generated
-	 * @ordered
-	 */
-	public static final OrderStatus PENDING_LITERAL = new OrderStatus(PENDING, "Pending");
-
-	/**
-	 * The '<em><b>Back Order</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #BACK_ORDER
-	 * @generated
-	 * @ordered
-	 */
-	public static final OrderStatus BACK_ORDER_LITERAL = new OrderStatus(BACK_ORDER, "BackOrder");
-
-	/**
-	 * The '<em><b>Complete</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #COMPLETE
-	 * @generated
-	 * @ordered
-	 */
-	public static final OrderStatus COMPLETE_LITERAL = new OrderStatus(COMPLETE, "Complete");
-
-	/**
 	 * An array of all the '<em><b>Order Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,18 +114,18 @@ public final class OrderStatus extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<OrderStatus> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Order Status</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Order Status</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static OrderStatus get(String name) {
+	public static OrderStatus get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			OrderStatus result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -135,7 +133,23 @@ public final class OrderStatus extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Order Status</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Order Status</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static OrderStatus getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			OrderStatus result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Order Status</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -146,8 +160,29 @@ public final class OrderStatus extends AbstractEnumerator {
 			case BACK_ORDER: return BACK_ORDER_LITERAL;
 			case COMPLETE: return COMPLETE_LITERAL;
 		}
-		return null;	
+		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -155,8 +190,47 @@ public final class OrderStatus extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private OrderStatus(int value, String name) {
-		super(value, name);
+	private OrderStatus(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //OrderStatus
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

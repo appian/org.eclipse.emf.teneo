@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CityImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: CityImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.impl;
 
@@ -82,6 +82,7 @@ public class CityImpl extends EObjectImpl implements City {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return AttributeoverridesPackage.Literals.CITY;
 	}
@@ -133,6 +134,7 @@ public class CityImpl extends EObjectImpl implements City {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AttributeoverridesPackage.CITY__NAME:
@@ -148,6 +150,7 @@ public class CityImpl extends EObjectImpl implements City {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AttributeoverridesPackage.CITY__NAME:
@@ -165,6 +168,7 @@ public class CityImpl extends EObjectImpl implements City {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AttributeoverridesPackage.CITY__NAME:
@@ -182,6 +186,7 @@ public class CityImpl extends EObjectImpl implements City {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AttributeoverridesPackage.CITY__NAME:
@@ -197,6 +202,7 @@ public class CityImpl extends EObjectImpl implements City {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

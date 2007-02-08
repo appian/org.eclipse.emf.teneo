@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ContainedItemImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: ContainedItemImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -30,6 +30,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage;
  * @generated
  */
 public class ContainedItemImpl extends EObjectImpl implements ContainedItem {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -64,6 +71,7 @@ public class ContainedItemImpl extends EObjectImpl implements ContainedItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return SetPackage.Literals.CONTAINED_ITEM;
 	}
@@ -94,6 +102,7 @@ public class ContainedItemImpl extends EObjectImpl implements ContainedItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SetPackage.CONTAINED_ITEM__NAME:
@@ -107,6 +116,7 @@ public class ContainedItemImpl extends EObjectImpl implements ContainedItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case SetPackage.CONTAINED_ITEM__NAME:
@@ -121,6 +131,7 @@ public class ContainedItemImpl extends EObjectImpl implements ContainedItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SetPackage.CONTAINED_ITEM__NAME:
@@ -135,6 +146,7 @@ public class ContainedItemImpl extends EObjectImpl implements ContainedItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SetPackage.CONTAINED_ITEM__NAME:
@@ -148,6 +160,7 @@ public class ContainedItemImpl extends EObjectImpl implements ContainedItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

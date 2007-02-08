@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestCImpl.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: TestCImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl;
 
@@ -91,7 +91,7 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList testB = null;
+	protected EList<TestB> testB = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,8 +107,9 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return DetachtestPackage.eINSTANCE.getTestC();
+		return DetachtestPackage.Literals.TEST_C;
 	}
 
 	/**
@@ -158,9 +159,9 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTestB() {
+	public EList<TestB> getTestB() {
 		if (testB == null) {
-			testB = new EObjectContainmentEList(TestB.class, this, DetachtestPackage.TEST_C__TEST_B);
+			testB = new EObjectContainmentEList<TestB>(TestB.class, this, DetachtestPackage.TEST_C__TEST_B);
 		}
 		return testB;
 	}
@@ -170,16 +171,13 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case DetachtestPackage.TEST_C__TEST_B:
-					return ((InternalEList)getTestB()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case DetachtestPackage.TEST_C__TEST_B:
+				return ((InternalEList<?>)getTestB()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -187,8 +185,9 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case DetachtestPackage.TEST_C__CODE:
 				return getCode();
 			case DetachtestPackage.TEST_C__MY_DATE:
@@ -196,7 +195,7 @@ public class TestCImpl extends EObjectImpl implements TestC {
 			case DetachtestPackage.TEST_C__TEST_B:
 				return getTestB();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -204,20 +203,22 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case DetachtestPackage.TEST_C__CODE:
 				setCode((String)newValue);
 				return;
 			case DetachtestPackage.TEST_C__MY_DATE:
-				setMyDate((Object)newValue);
+				setMyDate(newValue);
 				return;
 			case DetachtestPackage.TEST_C__TEST_B:
 				getTestB().clear();
-				getTestB().addAll((Collection)newValue);
+				getTestB().addAll((Collection<? extends TestB>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -225,8 +226,9 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case DetachtestPackage.TEST_C__CODE:
 				setCode(CODE_EDEFAULT);
 				return;
@@ -237,7 +239,7 @@ public class TestCImpl extends EObjectImpl implements TestC {
 				getTestB().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -245,8 +247,9 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case DetachtestPackage.TEST_C__CODE:
 				return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
 			case DetachtestPackage.TEST_C__MY_DATE:
@@ -254,7 +257,7 @@ public class TestCImpl extends EObjectImpl implements TestC {
 			case DetachtestPackage.TEST_C__TEST_B:
 				return testB != null && !testB.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -262,6 +265,7 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

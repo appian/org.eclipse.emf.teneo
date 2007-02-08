@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnytypeSwitch.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: AnytypeSwitch.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.*;
  * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage
  * @generated
  */
-public class AnytypeSwitch {
+public class AnytypeSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class AnytypeSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class AnytypeSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,23 @@ public class AnytypeSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case AnytypePackage.A: {
 				A a = (A)theEObject;
-				Object result = caseA(a);
+				T result = caseA(a);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AnytypePackage.B: {
 				B b = (B)theEObject;
-				Object result = caseB(b);
+				T result = caseB(b);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AnytypePackage.TEST_ANY: {
 				TestAny testAny = (TestAny)theEObject;
-				Object result = caseTestAny(testAny);
+				T result = caseTestAny(testAny);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,7 +120,7 @@ public class AnytypeSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseA(A object) {
+	public T caseA(A object) {
 		return null;
 	}
 
@@ -135,7 +135,7 @@ public class AnytypeSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseB(B object) {
+	public T caseB(B object) {
 		return null;
 	}
 
@@ -150,7 +150,7 @@ public class AnytypeSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTestAny(TestAny object) {
+	public T caseTestAny(TestAny object) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class AnytypeSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

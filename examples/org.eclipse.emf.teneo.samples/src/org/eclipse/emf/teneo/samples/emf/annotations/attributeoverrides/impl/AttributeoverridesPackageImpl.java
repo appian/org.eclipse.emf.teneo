@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeoverridesPackageImpl.java,v 1.3 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: AttributeoverridesPackageImpl.java,v 1.4 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.impl;
 
@@ -228,6 +228,10 @@ public class AttributeoverridesPackageImpl extends EPackageImpl implements Attri
 		setName(eNAME);
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

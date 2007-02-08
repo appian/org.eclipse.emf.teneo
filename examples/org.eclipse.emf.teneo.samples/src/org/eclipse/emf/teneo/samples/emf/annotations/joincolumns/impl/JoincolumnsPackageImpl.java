@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsPackageImpl.java,v 1.2 2007/01/02 17:53:28 mtaal Exp $
+ * $Id: JoincolumnsPackageImpl.java,v 1.3 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -229,6 +229,10 @@ public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsP
 		setName(eNAME);
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		parentEClass.getESuperTypes().add(this.getPerson());

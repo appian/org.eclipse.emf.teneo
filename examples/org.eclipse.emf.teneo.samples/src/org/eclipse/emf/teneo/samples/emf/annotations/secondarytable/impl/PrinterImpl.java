@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PrinterImpl.java,v 1.1 2006/07/11 16:57:01 mtaal Exp $
+ * $Id: PrinterImpl.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytable.impl;
 
@@ -127,6 +127,7 @@ public class PrinterImpl extends EObjectImpl implements Printer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return SecondarytablePackage.Literals.PRINTER;
 	}
@@ -220,6 +221,7 @@ public class PrinterImpl extends EObjectImpl implements Printer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SecondarytablePackage.PRINTER__MAKE:
@@ -239,6 +241,7 @@ public class PrinterImpl extends EObjectImpl implements Printer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case SecondarytablePackage.PRINTER__MAKE:
@@ -262,6 +265,7 @@ public class PrinterImpl extends EObjectImpl implements Printer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SecondarytablePackage.PRINTER__MAKE:
@@ -285,6 +289,7 @@ public class PrinterImpl extends EObjectImpl implements Printer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SecondarytablePackage.PRINTER__MAKE:
@@ -304,6 +309,7 @@ public class PrinterImpl extends EObjectImpl implements Printer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

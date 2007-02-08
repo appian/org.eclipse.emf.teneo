@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PurchaseOrder.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: PurchaseOrder.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2;
 
@@ -52,7 +52,7 @@ public interface PurchaseOrder extends EObject {
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.epo2.Item" opposite="order" containment="true"
 	 * @generated
 	 */
-	EList getItems();
+	EList<Item> getItems();
 
 	/**
 	 * Returns the value of the '<em><b>Bill To</b></em>' containment reference.

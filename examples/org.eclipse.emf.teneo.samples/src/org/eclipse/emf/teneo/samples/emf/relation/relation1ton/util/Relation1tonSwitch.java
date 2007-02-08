@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1tonSwitch.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: Relation1tonSwitch.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.*;
  * @see org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Relation1tonPackage
  * @generated
  */
-public class Relation1tonSwitch {
+public class Relation1tonSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class Relation1tonSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class Relation1tonSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,59 +85,59 @@ public class Relation1tonSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case Relation1tonPackage.MAIN: {
 				Main main = (Main)theEObject;
-				Object result = caseMain(main);
+				T result = caseMain(main);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1tonPackage.ONE_CN: {
 				OneCN oneCN = (OneCN)theEObject;
-				Object result = caseOneCN(oneCN);
+				T result = caseOneCN(oneCN);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1tonPackage.ONE_CR: {
 				OneCR oneCR = (OneCR)theEObject;
-				Object result = caseOneCR(oneCR);
+				T result = caseOneCR(oneCR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1tonPackage.ONE_NN: {
 				OneNN oneNN = (OneNN)theEObject;
-				Object result = caseOneNN(oneNN);
+				T result = caseOneNN(oneNN);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1tonPackage.ONE_NR: {
 				OneNR oneNR = (OneNR)theEObject;
-				Object result = caseOneNR(oneNR);
+				T result = caseOneNR(oneNR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1tonPackage.TWO_CN: {
 				TwoCN twoCN = (TwoCN)theEObject;
-				Object result = caseTwoCN(twoCN);
+				T result = caseTwoCN(twoCN);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1tonPackage.TWO_CR: {
 				TwoCR twoCR = (TwoCR)theEObject;
-				Object result = caseTwoCR(twoCR);
+				T result = caseTwoCR(twoCR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1tonPackage.TWO_NN: {
 				TwoNN twoNN = (TwoNN)theEObject;
-				Object result = caseTwoNN(twoNN);
+				T result = caseTwoNN(twoNN);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Relation1tonPackage.TWO_NR: {
 				TwoNR twoNR = (TwoNR)theEObject;
-				Object result = caseTwoNR(twoNR);
+				T result = caseTwoNR(twoNR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -156,7 +156,7 @@ public class Relation1tonSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMain(Main object) {
+	public T caseMain(Main object) {
 		return null;
 	}
 
@@ -171,7 +171,7 @@ public class Relation1tonSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOneCN(OneCN object) {
+	public T caseOneCN(OneCN object) {
 		return null;
 	}
 
@@ -186,7 +186,7 @@ public class Relation1tonSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOneCR(OneCR object) {
+	public T caseOneCR(OneCR object) {
 		return null;
 	}
 
@@ -201,7 +201,7 @@ public class Relation1tonSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOneNN(OneNN object) {
+	public T caseOneNN(OneNN object) {
 		return null;
 	}
 
@@ -216,7 +216,7 @@ public class Relation1tonSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOneNR(OneNR object) {
+	public T caseOneNR(OneNR object) {
 		return null;
 	}
 
@@ -231,7 +231,7 @@ public class Relation1tonSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTwoCN(TwoCN object) {
+	public T caseTwoCN(TwoCN object) {
 		return null;
 	}
 
@@ -246,7 +246,7 @@ public class Relation1tonSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTwoCR(TwoCR object) {
+	public T caseTwoCR(TwoCR object) {
 		return null;
 	}
 
@@ -261,7 +261,7 @@ public class Relation1tonSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTwoNN(TwoNN object) {
+	public T caseTwoNN(TwoNN object) {
 		return null;
 	}
 
@@ -276,7 +276,7 @@ public class Relation1tonSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTwoNR(TwoNR object) {
+	public T caseTwoNR(TwoNR object) {
 		return null;
 	}
 
@@ -291,7 +291,7 @@ public class Relation1tonSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

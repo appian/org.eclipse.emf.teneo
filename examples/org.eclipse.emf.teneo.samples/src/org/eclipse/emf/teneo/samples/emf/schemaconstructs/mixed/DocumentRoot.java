@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentRoot.java,v 1.1 2006/07/11 16:57:02 mtaal Exp $
+ * $Id: DocumentRoot.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed;
 
@@ -32,6 +32,13 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * @generated
  */
 public interface DocumentRoot extends EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
 	/**
 	 * Returns the value of the '<em><b>Mixed</b></em>' attribute list.
 	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
@@ -65,7 +72,7 @@ public interface DocumentRoot extends EObject {
 	 *        extendedMetaData="kind='attribute' name='xmlns:prefix'"
 	 * @generated
 	 */
-	EMap getXMLNSPrefixMap();
+	EMap<String, String> getXMLNSPrefixMap();
 
 	/**
 	 * Returns the value of the '<em><b>XSI Schema Location</b></em>' map.
@@ -83,7 +90,7 @@ public interface DocumentRoot extends EObject {
 	 *        extendedMetaData="kind='attribute' name='xsi:schemaLocation'"
 	 * @generated
 	 */
-	EMap getXSISchemaLocation();
+	EMap<String, String> getXSISchemaLocation();
 
 	/**
 	 * Returns the value of the '<em><b>Letter Body</b></em>' containment reference.
@@ -96,7 +103,7 @@ public interface DocumentRoot extends EObject {
 	 * @return the value of the '<em>Letter Body</em>' containment reference.
 	 * @see #setLetterBody(LetterBodyType)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.MixedPackage#getDocumentRoot_LetterBody()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='letterBody' namespace='##targetNamespace'"
 	 * @generated
 	 */

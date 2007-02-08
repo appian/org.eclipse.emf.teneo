@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Main.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: Main.java,v 1.2 2007/02/08 23:09:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton;
 
@@ -101,11 +101,11 @@ public interface Main extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Onecr</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Relation1tonPackage#getMain_Onecr()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCR" containment="true" resolveProxies="false" required="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCR" containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='onecr'"
 	 * @generated
 	 */
-	EList getOnecr();
+	EList<OneCR> getOnecr();
 
 	/**
 	 * Returns the value of the '<em><b>Onecn</b></em>' containment reference list.
@@ -118,11 +118,11 @@ public interface Main extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Onecn</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Relation1tonPackage#getMain_Onecn()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCN" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCN" containment="true"
 	 *        extendedMetaData="kind='element' name='onecn'"
 	 * @generated
 	 */
-	EList getOnecn();
+	EList<OneCN> getOnecn();
 
 	/**
 	 * Returns the value of the '<em><b>Onenr</b></em>' reference list.
@@ -139,7 +139,7 @@ public interface Main extends EObject {
 	 *        extendedMetaData="kind='element' name='onenr'"
 	 * @generated
 	 */
-	EList getOnenr();
+	EList<OneNR> getOnenr();
 
 	/**
 	 * Returns the value of the '<em><b>Onenn</b></em>' reference list.
@@ -156,7 +156,7 @@ public interface Main extends EObject {
 	 *        extendedMetaData="kind='element' name='onenn'"
 	 * @generated
 	 */
-	EList getOnenn();
+	EList<OneNN> getOnenn();
 
 	/**
 	 * Returns the value of the '<em><b>Twocr</b></em>' containment reference list.
@@ -171,11 +171,11 @@ public interface Main extends EObject {
 	 * @return the value of the '<em>Twocr</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Relation1tonPackage#getMain_Twocr()
 	 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoCR#getMain
-	 * @model type="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoCR" opposite="main" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoCR" opposite="main" containment="true"
 	 *        extendedMetaData="kind='element' name='twocr'"
 	 * @generated
 	 */
-	EList getTwocr();
+	EList<TwoCR> getTwocr();
 
 	/**
 	 * Returns the value of the '<em><b>Twocn</b></em>' containment reference list.
@@ -190,11 +190,11 @@ public interface Main extends EObject {
 	 * @return the value of the '<em>Twocn</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Relation1tonPackage#getMain_Twocn()
 	 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoCN#getMain
-	 * @model type="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoCN" opposite="main" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.TwoCN" opposite="main" containment="true"
 	 *        extendedMetaData="kind='element' name='twocn'"
 	 * @generated
 	 */
-	EList getTwocn();
+	EList<TwoCN> getTwocn();
 
 	/**
 	 * Returns the value of the '<em><b>Twonr</b></em>' reference list.
@@ -213,7 +213,7 @@ public interface Main extends EObject {
 	 *        extendedMetaData="kind='element' name='twonr'"
 	 * @generated
 	 */
-	EList getTwonr();
+	EList<TwoNR> getTwonr();
 
 	/**
 	 * Returns the value of the '<em><b>Twonn</b></em>' reference list.
@@ -232,6 +232,6 @@ public interface Main extends EObject {
 	 *        extendedMetaData="kind='element' name='twonn'"
 	 * @generated
 	 */
-	EList getTwonn();
+	EList<TwoNN> getTwonn();
 
 } // Main

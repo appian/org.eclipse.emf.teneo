@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.3 2006/11/13 19:55:48 mtaal Exp $
+ * $Id: Writer.java,v 1.4 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall;
 
@@ -72,6 +72,6 @@ public interface Writer extends EObject {
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */
-	EList getBooks();
+	EList<Book> getBooks();
 
 } // Writer

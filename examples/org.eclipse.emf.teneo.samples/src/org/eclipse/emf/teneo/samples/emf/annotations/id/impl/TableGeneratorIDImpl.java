@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableGeneratorIDImpl.java,v 1.1 2007/01/24 23:30:15 mtaal Exp $
+ * $Id: TableGeneratorIDImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
@@ -73,6 +73,7 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return IdPackage.Literals.TABLE_GENERATOR_ID;
 	}
@@ -128,6 +129,7 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case IdPackage.TABLE_GENERATOR_ID__MYID:
@@ -141,6 +143,7 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case IdPackage.TABLE_GENERATOR_ID__MYID:
@@ -155,6 +158,7 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case IdPackage.TABLE_GENERATOR_ID__MYID:
@@ -169,6 +173,7 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case IdPackage.TABLE_GENERATOR_ID__MYID:
@@ -182,6 +187,7 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

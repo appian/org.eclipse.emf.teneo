@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumFactoryImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: ForumFactoryImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum.impl;
 
@@ -10,8 +10,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.teneo.samples.emf.sample.forum.*;
 
 /**
@@ -21,6 +23,25 @@ import org.eclipse.emf.teneo.samples.emf.sample.forum.*;
  * @generated
  */
 public class ForumFactoryImpl extends EFactoryImpl implements ForumFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ForumFactory init() {
+		try {
+			ForumFactory theForumFactory = (ForumFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/sample/forum"); 
+			if (theForumFactory != null) {
+				return theForumFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new ForumFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -36,6 +57,7 @@ public class ForumFactoryImpl extends EFactoryImpl implements ForumFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ForumPackage.FORUM: return createForum();
@@ -52,13 +74,11 @@ public class ForumFactoryImpl extends EFactoryImpl implements ForumFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case ForumPackage.TOPIC_CATEGORY: {
-				TopicCategory result = TopicCategory.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-				return result;
-			}
+			case ForumPackage.TOPIC_CATEGORY:
+				return createTopicCategoryFromString(eDataType, initialValue);
 			case ForumPackage.TOPIC_CATEGORY_OBJECT:
 				return createTopicCategoryObjectFromString(eDataType, initialValue);
 			default:
@@ -71,10 +91,11 @@ public class ForumFactoryImpl extends EFactoryImpl implements ForumFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case ForumPackage.TOPIC_CATEGORY:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertTopicCategoryToString(eDataType, instanceValue);
 			case ForumPackage.TOPIC_CATEGORY_OBJECT:
 				return convertTopicCategoryObjectToString(eDataType, instanceValue);
 			default:
@@ -127,8 +148,28 @@ public class ForumFactoryImpl extends EFactoryImpl implements ForumFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TopicCategory createTopicCategoryFromString(EDataType eDataType, String initialValue) {
+		TopicCategory result = TopicCategory.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTopicCategoryToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TopicCategory createTopicCategoryObjectFromString(EDataType eDataType, String initialValue) {
-		return (TopicCategory)ForumFactory.eINSTANCE.createFromString(ForumPackage.eINSTANCE.getTopicCategory(), initialValue);
+		return createTopicCategoryFromString(ForumPackage.Literals.TOPIC_CATEGORY, initialValue);
 	}
 
 	/**
@@ -137,7 +178,7 @@ public class ForumFactoryImpl extends EFactoryImpl implements ForumFactory {
 	 * @generated
 	 */
 	public String convertTopicCategoryObjectToString(EDataType eDataType, Object instanceValue) {
-		return ForumFactory.eINSTANCE.convertToString(ForumPackage.eINSTANCE.getTopicCategory(), instanceValue);
+		return convertTopicCategoryToString(ForumPackage.Literals.TOPIC_CATEGORY, instanceValue);
 	}
 
 	/**
@@ -155,6 +196,7 @@ public class ForumFactoryImpl extends EFactoryImpl implements ForumFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static ForumPackage getPackage() {
 		return ForumPackage.eINSTANCE;
 	}

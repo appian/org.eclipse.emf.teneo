@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GroupallAdapterFactory.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: GroupallAdapterFactory.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.util;
 
@@ -52,6 +52,7 @@ public class GroupallAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,27 +69,34 @@ public class GroupallAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GroupallSwitch modelSwitch =
-		new GroupallSwitch() {
-			public Object caseAddress(Address object) {
+	protected GroupallSwitch<Adapter> modelSwitch =
+		new GroupallSwitch<Adapter>() {
+			@Override
+			public Adapter caseAddress(Address object) {
 				return createAddressAdapter();
 			}
-			public Object caseAddressGroup(AddressGroup object) {
+			@Override
+			public Adapter caseAddressGroup(AddressGroup object) {
 				return createAddressGroupAdapter();
 			}
-			public Object caseAddressList(AddressList object) {
+			@Override
+			public Adapter caseAddressList(AddressList object) {
 				return createAddressListAdapter();
 			}
-			public Object caseDocumentRoot(DocumentRoot object) {
+			@Override
+			public Adapter caseDocumentRoot(DocumentRoot object) {
 				return createDocumentRootAdapter();
 			}
-			public Object caseSimpleAllMapType(SimpleAllMapType object) {
+			@Override
+			public Adapter caseSimpleAllMapType(SimpleAllMapType object) {
 				return createSimpleAllMapTypeAdapter();
 			}
-			public Object caseSimpleAllType(SimpleAllType object) {
+			@Override
+			public Adapter caseSimpleAllType(SimpleAllType object) {
 				return createSimpleAllTypeAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -101,8 +109,9 @@ public class GroupallAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

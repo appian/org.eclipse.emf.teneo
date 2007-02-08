@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SchoollibrarySwitch.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: SchoollibrarySwitch.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.util;
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.*;
  * @see org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.SchoollibraryPackage
  * @generated
  */
-public class SchoollibrarySwitch {
+public class SchoollibrarySwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -57,7 +57,7 @@ public class SchoollibrarySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -68,16 +68,16 @@ public class SchoollibrarySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -88,17 +88,17 @@ public class SchoollibrarySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SchoollibraryPackage.ASSET: {
 				Asset asset = (Asset)theEObject;
-				Object result = caseAsset(asset);
+				T result = caseAsset(asset);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SchoollibraryPackage.SCHOOL_BOOK: {
 				SchoolBook schoolBook = (SchoolBook)theEObject;
-				Object result = caseSchoolBook(schoolBook);
+				T result = caseSchoolBook(schoolBook);
 				if (result == null) result = caseBook(schoolBook);
 				if (result == null) result = caseAsset(schoolBook);
 				if (result == null) result = defaultCase(theEObject);
@@ -106,7 +106,7 @@ public class SchoollibrarySwitch {
 			}
 			case SchoollibraryPackage.SCHOOL_LIBRARY: {
 				SchoolLibrary schoolLibrary = (SchoolLibrary)theEObject;
-				Object result = caseSchoolLibrary(schoolLibrary);
+				T result = caseSchoolLibrary(schoolLibrary);
 				if (result == null) result = caseLibrary(schoolLibrary);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -126,7 +126,7 @@ public class SchoollibrarySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAsset(Asset object) {
+	public T caseAsset(Asset object) {
 		return null;
 	}
 
@@ -141,7 +141,7 @@ public class SchoollibrarySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSchoolBook(SchoolBook object) {
+	public T caseSchoolBook(SchoolBook object) {
 		return null;
 	}
 
@@ -156,7 +156,7 @@ public class SchoollibrarySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSchoolLibrary(SchoolLibrary object) {
+	public T caseSchoolLibrary(SchoolLibrary object) {
 		return null;
 	}
 
@@ -171,7 +171,7 @@ public class SchoollibrarySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBook(Book object) {
+	public T caseBook(Book object) {
 		return null;
 	}
 
@@ -186,7 +186,7 @@ public class SchoollibrarySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLibrary(Library object) {
+	public T caseLibrary(Library object) {
 		return null;
 	}
 
@@ -201,7 +201,7 @@ public class SchoollibrarySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

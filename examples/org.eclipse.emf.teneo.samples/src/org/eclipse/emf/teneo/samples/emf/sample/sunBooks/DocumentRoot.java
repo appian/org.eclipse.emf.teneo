@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentRoot.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: DocumentRoot.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks;
 
@@ -65,7 +65,7 @@ public interface DocumentRoot extends EObject {
 	 *        extendedMetaData="kind='attribute' name='xmlns:prefix'"
 	 * @generated
 	 */
-	EMap getXMLNSPrefixMap();
+	EMap<String, String> getXMLNSPrefixMap();
 
 	/**
 	 * Returns the value of the '<em><b>XSI Schema Location</b></em>' map.
@@ -83,7 +83,7 @@ public interface DocumentRoot extends EObject {
 	 *        extendedMetaData="kind='attribute' name='xsi:schemaLocation'"
 	 * @generated
 	 */
-	EMap getXSISchemaLocation();
+	EMap<String, String> getXSISchemaLocation();
 
 	/**
 	 * Returns the value of the '<em><b>Collection</b></em>' containment reference.
@@ -96,7 +96,7 @@ public interface DocumentRoot extends EObject {
 	 * @return the value of the '<em>Collection</em>' containment reference.
 	 * @see #setCollection(CollectionType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.SunBooksPackage#getDocumentRoot_Collection()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='Collection' namespace='##targetNamespace'"
 	 * @generated
 	 */

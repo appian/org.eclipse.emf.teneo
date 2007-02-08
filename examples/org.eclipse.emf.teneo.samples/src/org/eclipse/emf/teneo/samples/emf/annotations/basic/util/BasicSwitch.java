@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BasicSwitch.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: BasicSwitch.java,v 1.3 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.basic.util;
 
@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.annotations.basic.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.Basic;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicPackage;
 
@@ -26,7 +27,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicPackage;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicPackage
  * @generated
  */
-public class BasicSwitch {
+public class BasicSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +55,7 @@ public class BasicSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +66,16 @@ public class BasicSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,11 +86,11 @@ public class BasicSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case BasicPackage.BASIC: {
 				Basic basic = (Basic)theEObject;
-				Object result = caseBasic(basic);
+				T result = caseBasic(basic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -108,7 +109,7 @@ public class BasicSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBasic(Basic object) {
+	public T caseBasic(Basic object) {
 		return null;
 	}
 
@@ -123,7 +124,7 @@ public class BasicSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

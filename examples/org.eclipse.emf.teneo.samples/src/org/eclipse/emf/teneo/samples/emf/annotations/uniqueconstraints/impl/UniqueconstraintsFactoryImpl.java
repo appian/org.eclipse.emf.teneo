@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueconstraintsFactoryImpl.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: UniqueconstraintsFactoryImpl.java,v 1.2 2007/02/08 23:09:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.impl;
 
@@ -57,6 +57,7 @@ public class UniqueconstraintsFactoryImpl extends EFactoryImpl implements Unique
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case UniqueconstraintsPackage.ITEM: return createItem();
@@ -90,6 +91,7 @@ public class UniqueconstraintsFactoryImpl extends EFactoryImpl implements Unique
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static UniqueconstraintsPackage getPackage() {
 		return UniqueconstraintsPackage.eINSTANCE;
 	}

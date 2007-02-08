@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BooksType.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: BooksType.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks;
 
@@ -38,10 +38,10 @@ public interface BooksType extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Book</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.SunBooksPackage#getBooksType_Book()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookType" containment="true" resolveProxies="false" required="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookType" containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='book'"
 	 * @generated
 	 */
-	EList getBook();
+	EList<BookType> getBook();
 
 } // BooksType

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AccountImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: AccountImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting.impl;
 
@@ -65,8 +65,9 @@ public abstract class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return AccountingPackage.eINSTANCE.getAccount();
+		return AccountingPackage.Literals.ACCOUNT;
 	}
 
 	/**
@@ -95,12 +96,13 @@ public abstract class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case AccountingPackage.ACCOUNT__NAME:
 				return getName();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -108,13 +110,14 @@ public abstract class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case AccountingPackage.ACCOUNT__NAME:
 				setName((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -122,13 +125,14 @@ public abstract class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.ACCOUNT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -136,12 +140,13 @@ public abstract class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.ACCOUNT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -149,6 +154,7 @@ public abstract class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

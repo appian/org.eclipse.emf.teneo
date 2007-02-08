@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CatalogFactoryImpl.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: CatalogFactoryImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog.impl;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.sample.catalog.*;
 import org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogType;
@@ -60,6 +61,7 @@ public class CatalogFactoryImpl extends EFactoryImpl implements CatalogFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CatalogPackage.CATALOG_TYPE: return createCatalogType();
@@ -137,6 +139,7 @@ public class CatalogFactoryImpl extends EFactoryImpl implements CatalogFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static CatalogPackage getPackage() {
 		return CatalogPackage.eINSTANCE;
 	}

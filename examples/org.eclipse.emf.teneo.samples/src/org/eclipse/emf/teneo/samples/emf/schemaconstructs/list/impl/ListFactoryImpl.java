@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ListFactoryImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: ListFactoryImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.list.impl;
 
@@ -66,6 +66,7 @@ public class ListFactoryImpl extends EFactoryImpl implements ListFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ListPackage.STATES_BY_COUNTRY: return createstatesByCountry();
@@ -79,6 +80,7 @@ public class ListFactoryImpl extends EFactoryImpl implements ListFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case ListPackage.SIX_STATES_LIST:
@@ -101,6 +103,7 @@ public class ListFactoryImpl extends EFactoryImpl implements ListFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case ListPackage.SIX_STATES_LIST:
@@ -133,8 +136,8 @@ public class ListFactoryImpl extends EFactoryImpl implements ListFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List createSixStatesListFromString(EDataType eDataType, String initialValue) {
-		return (List)createStateListFromString(ListPackage.Literals.STATE_LIST, initialValue);
+	public List<String> createSixStatesListFromString(EDataType eDataType, String initialValue) {
+		return createStateListFromString(ListPackage.Literals.STATE_LIST, initialValue);
 	}
 
 	/**
@@ -169,9 +172,9 @@ public class ListFactoryImpl extends EFactoryImpl implements ListFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List createStateListFromString(EDataType eDataType, String initialValue) {
+	public List<String> createStateListFromString(EDataType eDataType, String initialValue) {
 		if (initialValue == null) return null;
-		List result = new ArrayList();
+		List<String> result = new ArrayList<String>();
 		for (StringTokenizer stringTokenizer = new StringTokenizer(initialValue); stringTokenizer.hasMoreTokens(); ) {
 			String item = stringTokenizer.nextToken();
 			result.add(createStateFromString(ListPackage.Literals.STATE, item));
@@ -186,11 +189,11 @@ public class ListFactoryImpl extends EFactoryImpl implements ListFactory {
 	 */
 	public String convertStateListToString(EDataType eDataType, Object instanceValue) {
 		if (instanceValue == null) return null;
-		List list = (List)instanceValue;
+		List<?> list = (List<?>)instanceValue;
 		if (list.isEmpty()) return "";
 		StringBuffer result = new StringBuffer();
-		for (Iterator i = list.iterator(); i.hasNext(); ) {
-			result.append(convertStateToString(ListPackage.Literals.STATE, i.next()));
+		for (Object item : list) {
+			result.append(convertStateToString(ListPackage.Literals.STATE, item));
 			result.append(' ');
 		}
 		return result.substring(0, result.length() - 1);
@@ -201,12 +204,12 @@ public class ListFactoryImpl extends EFactoryImpl implements ListFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List createStringListFromString(EDataType eDataType, String initialValue) {
+	public List<String> createStringListFromString(EDataType eDataType, String initialValue) {
 		if (initialValue == null) return null;
-		List result = new ArrayList();
+		List<String> result = new ArrayList<String>();
 		for (StringTokenizer stringTokenizer = new StringTokenizer(initialValue); stringTokenizer.hasMoreTokens(); ) {
 			String item = stringTokenizer.nextToken();
-			result.add(XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, item));
+			result.add((String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, item));
 		}
 		return result;
 	}
@@ -218,11 +221,11 @@ public class ListFactoryImpl extends EFactoryImpl implements ListFactory {
 	 */
 	public String convertStringListToString(EDataType eDataType, Object instanceValue) {
 		if (instanceValue == null) return null;
-		List list = (List)instanceValue;
+		List<?> list = (List<?>)instanceValue;
 		if (list.isEmpty()) return "";
 		StringBuffer result = new StringBuffer();
-		for (Iterator i = list.iterator(); i.hasNext(); ) {
-			result.append(XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, i.next()));
+		for (Object item : list) {
+			result.append(XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, item));
 			result.append(' ');
 		}
 		return result.substring(0, result.length() - 1);
@@ -261,6 +264,7 @@ public class ListFactoryImpl extends EFactoryImpl implements ListFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static ListPackage getPackage() {
 		return ListPackage.eINSTANCE;
 	}

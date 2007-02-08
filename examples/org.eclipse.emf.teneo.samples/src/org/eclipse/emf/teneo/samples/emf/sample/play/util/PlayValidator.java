@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PlayValidator.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: PlayValidator.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.util;
 
@@ -86,6 +86,7 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EPackage getEPackage() {
 	  return PlayPackage.eINSTANCE;
 	}
@@ -96,7 +97,8 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map context) {
+	@Override
+	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
 			case PlayPackage.ACT_TYPE:
 				return validateActType((ActType)value, diagnostics, context);
@@ -126,7 +128,7 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateActType(ActType actType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateActType(ActType actType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(actType, diagnostics, context);
 	}
 
@@ -135,7 +137,7 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDocumentRoot(DocumentRoot documentRoot, DiagnosticChain diagnostics, Map context) {
+	public boolean validateDocumentRoot(DocumentRoot documentRoot, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(documentRoot, diagnostics, context);
 	}
 
@@ -144,7 +146,7 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFmType(FmType fmType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateFmType(FmType fmType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(fmType, diagnostics, context);
 	}
 
@@ -153,7 +155,7 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePersonaeType(PersonaeType personaeType, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePersonaeType(PersonaeType personaeType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(personaeType, diagnostics, context);
 	}
 
@@ -162,7 +164,7 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePersonaGroupType(PersonaGroupType personaGroupType, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePersonaGroupType(PersonaGroupType personaGroupType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(personaGroupType, diagnostics, context);
 	}
 
@@ -171,7 +173,7 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePlayType(PlayType playType, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePlayType(PlayType playType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(playType, diagnostics, context);
 	}
 
@@ -180,7 +182,7 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSceneType(SceneType sceneType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSceneType(SceneType sceneType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(sceneType, diagnostics, context);
 	}
 
@@ -189,7 +191,7 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSpeechType(SpeechType speechType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSpeechType(SpeechType speechType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(speechType, diagnostics, context);
 	}
 
@@ -198,7 +200,7 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePindexType(String pindexType, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePindexType(String pindexType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validatePindexType_Enumeration(pindexType, diagnostics, context);
 		return result;
 	}
@@ -222,10 +224,10 @@ public class PlayValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePindexType_Enumeration(String pindexType, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePindexType_Enumeration(String pindexType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = PINDEX_TYPE__ENUMERATION__VALUES.contains(pindexType);
 		if (!result && diagnostics != null) 
-			reportEnumerationViolation(PlayPackage.eINSTANCE.getPindexType(), pindexType, PINDEX_TYPE__ENUMERATION__VALUES, diagnostics, context);
+			reportEnumerationViolation(PlayPackage.Literals.PINDEX_TYPE, pindexType, PINDEX_TYPE__ENUMERATION__VALUES, diagnostics, context);
 		return result; 
 	}
 

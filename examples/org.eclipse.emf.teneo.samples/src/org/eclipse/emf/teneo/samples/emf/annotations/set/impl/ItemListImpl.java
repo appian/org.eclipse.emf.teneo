@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemListImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: ItemListImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -47,6 +47,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage;
  */
 public class ItemListImpl extends EObjectImpl implements ItemList {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
+	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,7 +81,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList containedItem = null;
+	protected EList<ContainedItem> containedItem = null;
 
 	/**
 	 * The cached value of the '{@link #getItem() <em>Item</em>}' reference list.
@@ -84,7 +91,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList item = null;
+	protected EList<Item> item = null;
 
 	/**
 	 * The cached value of the '{@link #getJoinedItem() <em>Joined Item</em>}' reference list.
@@ -94,7 +101,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList joinedItem = null;
+	protected EList<Item> joinedItem = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -110,6 +117,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return SetPackage.Literals.ITEM_LIST;
 	}
@@ -140,9 +148,9 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getContainedItem() {
+	public EList<ContainedItem> getContainedItem() {
 		if (containedItem == null) {
-			containedItem = new EObjectContainmentEList(ContainedItem.class, this, SetPackage.ITEM_LIST__CONTAINED_ITEM);
+			containedItem = new EObjectContainmentEList<ContainedItem>(ContainedItem.class, this, SetPackage.ITEM_LIST__CONTAINED_ITEM);
 		}
 		return containedItem;
 	}
@@ -152,9 +160,9 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getItem() {
+	public EList<Item> getItem() {
 		if (item == null) {
-			item = new EObjectWithInverseResolvingEList(Item.class, this, SetPackage.ITEM_LIST__ITEM, SetPackage.ITEM__ITEM_LIST);
+			item = new EObjectWithInverseResolvingEList<Item>(Item.class, this, SetPackage.ITEM_LIST__ITEM, SetPackage.ITEM__ITEM_LIST);
 		}
 		return item;
 	}
@@ -164,9 +172,9 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getJoinedItem() {
+	public EList<Item> getJoinedItem() {
 		if (joinedItem == null) {
-			joinedItem = new EObjectResolvingEList(Item.class, this, SetPackage.ITEM_LIST__JOINED_ITEM);
+			joinedItem = new EObjectResolvingEList<Item>(Item.class, this, SetPackage.ITEM_LIST__JOINED_ITEM);
 		}
 		return joinedItem;
 	}
@@ -176,10 +184,12 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case SetPackage.ITEM_LIST__ITEM:
-				return ((InternalEList)getItem()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getItem()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -189,12 +199,13 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case SetPackage.ITEM_LIST__CONTAINED_ITEM:
-				return ((InternalEList)getContainedItem()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getContainedItem()).basicRemove(otherEnd, msgs);
 			case SetPackage.ITEM_LIST__ITEM:
-				return ((InternalEList)getItem()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getItem()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -204,6 +215,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SetPackage.ITEM_LIST__NAME:
@@ -223,6 +235,8 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case SetPackage.ITEM_LIST__NAME:
@@ -230,15 +244,15 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 				return;
 			case SetPackage.ITEM_LIST__CONTAINED_ITEM:
 				getContainedItem().clear();
-				getContainedItem().addAll((Collection)newValue);
+				getContainedItem().addAll((Collection<? extends ContainedItem>)newValue);
 				return;
 			case SetPackage.ITEM_LIST__ITEM:
 				getItem().clear();
-				getItem().addAll((Collection)newValue);
+				getItem().addAll((Collection<? extends Item>)newValue);
 				return;
 			case SetPackage.ITEM_LIST__JOINED_ITEM:
 				getJoinedItem().clear();
-				getJoinedItem().addAll((Collection)newValue);
+				getJoinedItem().addAll((Collection<? extends Item>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -249,6 +263,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SetPackage.ITEM_LIST__NAME:
@@ -272,6 +287,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SetPackage.ITEM_LIST__NAME:
@@ -291,6 +307,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

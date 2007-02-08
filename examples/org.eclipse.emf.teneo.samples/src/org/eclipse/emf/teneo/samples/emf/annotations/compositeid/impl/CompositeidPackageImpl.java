@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidPackageImpl.java,v 1.4 2007/01/02 17:53:28 mtaal Exp $
+ * $Id: CompositeidPackageImpl.java,v 1.5 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl;
 
@@ -227,6 +227,10 @@ public class CompositeidPackageImpl extends EPackageImpl implements CompositeidP
 		setName(eNAME);
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		parentEClass.getESuperTypes().add(this.getPerson());

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Main.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: Main.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1to1;
 
@@ -98,7 +98,7 @@ public interface Main extends EObject{
 	 * @return the value of the '<em>Containedonewayrequired</em>' containment reference.
 	 * @see #setContainedonewayrequired(ContainedChildR)
 	 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.Relation1to1Package#getMain_Containedonewayrequired()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='containedonewayrequired'"
 	 * @generated
 	 */
@@ -125,7 +125,7 @@ public interface Main extends EObject{
 	 * @return the value of the '<em>Containedone Waynotrequired</em>' containment reference.
 	 * @see #setContainedoneWaynotrequired(ContainedChildNR)
 	 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.Relation1to1Package#getMain_ContainedoneWaynotrequired()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='containedoneWaynotrequired'"
 	 * @generated
 	 */

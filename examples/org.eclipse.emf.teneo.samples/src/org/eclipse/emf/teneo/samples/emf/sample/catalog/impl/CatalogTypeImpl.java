@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CatalogTypeImpl.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: CatalogTypeImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog.impl;
 
@@ -83,7 +83,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList subCatalog = null;
+	protected EList<CatalogType> subCatalog = null;
 
 	/**
 	 * The cached value of the '{@link #getProduct() <em>Product</em>}' reference list.
@@ -93,7 +93,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList product = null;
+	protected EList<ProductType> product = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,6 +109,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return CatalogPackage.Literals.CATALOG_TYPE;
 	}
@@ -160,9 +161,9 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSubCatalog() {
+	public EList<CatalogType> getSubCatalog() {
 		if (subCatalog == null) {
-			subCatalog = new EObjectEList(CatalogType.class, this, CatalogPackage.CATALOG_TYPE__SUB_CATALOG);
+			subCatalog = new EObjectEList<CatalogType>(CatalogType.class, this, CatalogPackage.CATALOG_TYPE__SUB_CATALOG);
 		}
 		return subCatalog;
 	}
@@ -172,9 +173,9 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getProduct() {
+	public EList<ProductType> getProduct() {
 		if (product == null) {
-			product = new EObjectEList(ProductType.class, this, CatalogPackage.CATALOG_TYPE__PRODUCT);
+			product = new EObjectEList<ProductType>(ProductType.class, this, CatalogPackage.CATALOG_TYPE__PRODUCT);
 		}
 		return product;
 	}
@@ -184,6 +185,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CatalogPackage.CATALOG_TYPE__NAME:
@@ -203,6 +205,8 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CatalogPackage.CATALOG_TYPE__NAME:
@@ -213,11 +217,11 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 				return;
 			case CatalogPackage.CATALOG_TYPE__SUB_CATALOG:
 				getSubCatalog().clear();
-				getSubCatalog().addAll((Collection)newValue);
+				getSubCatalog().addAll((Collection<? extends CatalogType>)newValue);
 				return;
 			case CatalogPackage.CATALOG_TYPE__PRODUCT:
 				getProduct().clear();
-				getProduct().addAll((Collection)newValue);
+				getProduct().addAll((Collection<? extends ProductType>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -228,6 +232,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CatalogPackage.CATALOG_TYPE__NAME:
@@ -251,6 +256,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CatalogPackage.CATALOG_TYPE__NAME:
@@ -270,6 +276,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

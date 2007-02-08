@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AuthorsType.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: AuthorsType.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks;
 
@@ -42,6 +42,6 @@ public interface AuthorsType extends EObject {
 	 *        extendedMetaData="kind='element' name='authorName'"
 	 * @generated
 	 */
-	EList getAuthorName();
+	EList<String> getAuthorName();
 
 } // AuthorsType

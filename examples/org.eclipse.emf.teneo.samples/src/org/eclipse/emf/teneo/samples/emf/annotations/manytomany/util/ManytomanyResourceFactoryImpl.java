@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManytomanyResourceFactoryImpl.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: ManytomanyResourceFactoryImpl.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.util;
 
@@ -38,6 +38,7 @@ public class ManytomanyResourceFactoryImpl extends ResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new ManytomanyResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassPackage.java,v 1.2 2006/11/12 00:08:30 mtaal Exp $
+ * $Id: MappedsuperclassPackage.java,v 1.3 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -26,6 +26,13 @@ import org.eclipse.emf.ecore.EPackage;
  * @generated
  */
 public interface MappedsuperclassPackage extends EPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->

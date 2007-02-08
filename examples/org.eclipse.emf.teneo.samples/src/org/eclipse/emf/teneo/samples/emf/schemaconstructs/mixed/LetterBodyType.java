@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LetterBodyType.java,v 1.1 2006/07/11 16:57:02 mtaal Exp $
+ * $Id: LetterBodyType.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed;
 
@@ -34,6 +34,13 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  */
 public interface LetterBodyType extends EObject {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
+	/**
 	 * Returns the value of the '<em><b>Mixed</b></em>' attribute list.
 	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
 	 * <!-- begin-user-doc -->
@@ -61,7 +68,7 @@ public interface LetterBodyType extends EObject {
 	 * @return the value of the '<em>Salutation</em>' containment reference.
 	 * @see #setSalutation(SalutationType)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.MixedPackage#getLetterBodyType_Salutation()
-	 * @model containment="true" resolveProxies="false" required="true" transient="true" volatile="true" derived="true"
+	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='salutation'"
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: User.java,v 1.3 2006/11/13 19:55:48 mtaal Exp $
+ * $Id: User.java,v 1.4 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag;
 
@@ -70,6 +70,6 @@ public interface User extends EObject {
 	 *        extendedMetaData="kind='element' name='role'"
 	 * @generated
 	 */
-	EList getRoles();
+	EList<String> getRoles();
 
 } // User

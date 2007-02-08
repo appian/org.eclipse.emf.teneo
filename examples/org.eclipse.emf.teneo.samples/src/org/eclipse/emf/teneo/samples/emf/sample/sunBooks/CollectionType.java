@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CollectionType.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: CollectionType.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks;
 
@@ -36,7 +36,7 @@ public interface CollectionType extends EObject {
 	 * @return the value of the '<em>Books</em>' containment reference.
 	 * @see #setBooks(BooksType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.SunBooksPackage#getCollectionType_Books()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductSwitch.java,v 1.3 2006/11/15 17:18:17 mtaal Exp $
+ * $Id: ProductSwitch.java,v 1.4 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.util;
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.product.SupplierType;
  * @see org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage
  * @generated
  */
-public class ProductSwitch {
+public class ProductSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -57,7 +57,7 @@ public class ProductSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -68,16 +68,16 @@ public class ProductSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -88,23 +88,23 @@ public class ProductSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case ProductPackage.PRODUCT_TYPE: {
 				ProductType productType = (ProductType)theEObject;
-				Object result = caseProductType(productType);
+				T result = caseProductType(productType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ProductPackage.SUPPLIER_TYPE: {
 				SupplierType supplierType = (SupplierType)theEObject;
-				Object result = caseSupplierType(supplierType);
+				T result = caseSupplierType(supplierType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ProductPackage.CLASSIFICATION_TYPE: {
 				ClassificationType classificationType = (ClassificationType)theEObject;
-				Object result = caseClassificationType(classificationType);
+				T result = caseClassificationType(classificationType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -123,7 +123,7 @@ public class ProductSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseProductType(ProductType object) {
+	public T caseProductType(ProductType object) {
 		return null;
 	}
 
@@ -138,7 +138,7 @@ public class ProductSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSupplierType(SupplierType object) {
+	public T caseSupplierType(SupplierType object) {
 		return null;
 	}
 
@@ -153,7 +153,7 @@ public class ProductSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseClassificationType(ClassificationType object) {
+	public T caseClassificationType(ClassificationType object) {
 		return null;
 	}
 
@@ -168,7 +168,7 @@ public class ProductSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

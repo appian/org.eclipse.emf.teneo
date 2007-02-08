@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeoverridesAdapterFactory.java,v 1.4 2006/11/07 10:22:27 mtaal Exp $
+ * $Id: AttributeoverridesAdapterFactory.java,v 1.5 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.util;
 
@@ -53,6 +53,7 @@ public class AttributeoverridesAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -69,15 +70,18 @@ public class AttributeoverridesAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AttributeoverridesSwitch modelSwitch =
-		new AttributeoverridesSwitch() {
-			public Object casePerson(Person object) {
+	protected AttributeoverridesSwitch<Adapter> modelSwitch =
+		new AttributeoverridesSwitch<Adapter>() {
+			@Override
+			public Adapter casePerson(Person object) {
 				return createPersonAdapter();
 			}
-			public Object caseCity(City object) {
+			@Override
+			public Adapter caseCity(City object) {
 				return createCityAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -90,8 +94,9 @@ public class AttributeoverridesAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

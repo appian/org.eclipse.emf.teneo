@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DetachelistPackage.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: DetachelistPackage.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachelist;
 
@@ -41,7 +41,7 @@ public interface DetachelistPackage extends EPackage{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/detach/detachelist";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/detach/detachelist";
 
 	/**
 	 * The package namespace name.
@@ -88,7 +88,7 @@ public interface DetachelistPackage extends EPackage{
 	int CONTACTS__CONTAINED_PERSONS = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Contacts</em>' class.
+	 * The number of structural features of the '<em>Contacts</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -125,7 +125,7 @@ public interface DetachelistPackage extends EPackage{
 	int PERSON__CHILDREN = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Person</em>' class.
+	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -206,5 +206,72 @@ public interface DetachelistPackage extends EPackage{
 	 * @generated
 	 */
 	DetachelistFactory getDetachelistFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.detach.detachelist.impl.ContactsImpl <em>Contacts</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.detach.detachelist.impl.ContactsImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.detach.detachelist.impl.DetachelistPackageImpl#getContacts()
+		 * @generated
+		 */
+		EClass CONTACTS = eINSTANCE.getContacts();
+
+		/**
+		 * The meta object literal for the '<em><b>Persons</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTACTS__PERSONS = eINSTANCE.getContacts_Persons();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Persons</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTACTS__CONTAINED_PERSONS = eINSTANCE.getContacts_ContainedPersons();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.detach.detachelist.impl.PersonImpl <em>Person</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.detach.detachelist.impl.PersonImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.detach.detachelist.impl.DetachelistPackageImpl#getPerson()
+		 * @generated
+		 */
+		EClass PERSON = eINSTANCE.getPerson();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSON__NAME = eINSTANCE.getPerson_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSON__CHILDREN = eINSTANCE.getPerson_Children();
+
+	}
 
 } //DetachelistPackage

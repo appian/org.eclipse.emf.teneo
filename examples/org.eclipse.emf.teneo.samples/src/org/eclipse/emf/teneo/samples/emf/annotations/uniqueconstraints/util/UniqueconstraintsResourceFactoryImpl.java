@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueconstraintsResourceFactoryImpl.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: UniqueconstraintsResourceFactoryImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.util;
 
@@ -38,6 +38,7 @@ public class UniqueconstraintsResourceFactoryImpl extends ResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new UniqueconstraintsResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

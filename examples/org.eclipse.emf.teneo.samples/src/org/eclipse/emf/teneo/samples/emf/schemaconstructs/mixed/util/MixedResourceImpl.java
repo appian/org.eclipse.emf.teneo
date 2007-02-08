@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MixedResourceImpl.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: MixedResourceImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.util;
 
@@ -18,6 +18,13 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * @generated
  */
 public class MixedResourceImpl extends XMLResourceImpl {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->

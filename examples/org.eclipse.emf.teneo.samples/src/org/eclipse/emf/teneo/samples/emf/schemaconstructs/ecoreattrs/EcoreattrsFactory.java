@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EcoreattrsFactory.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: EcoreattrsFactory.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs;
 
@@ -23,7 +23,7 @@ public interface EcoreattrsFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	EcoreattrsFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.EcoreattrsFactoryImpl();
+	EcoreattrsFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.EcoreattrsFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Element</em>'.

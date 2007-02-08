@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributesSwitch.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: AttributesSwitch.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.*;
  * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.AttributesPackage
  * @generated
  */
-public class AttributesSwitch {
+public class AttributesSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class AttributesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class AttributesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,23 @@ public class AttributesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case AttributesPackage.A: {
 				A a = (A)theEObject;
-				Object result = caseA(a);
+				T result = caseA(a);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AttributesPackage.DOCUMENT_ROOT: {
 				DocumentRoot documentRoot = (DocumentRoot)theEObject;
-				Object result = caseDocumentRoot(documentRoot);
+				T result = caseDocumentRoot(documentRoot);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AttributesPackage.R: {
 				R r = (R)theEObject;
-				Object result = caseR(r);
+				T result = caseR(r);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,7 +120,7 @@ public class AttributesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseA(A object) {
+	public T caseA(A object) {
 		return null;
 	}
 
@@ -135,7 +135,7 @@ public class AttributesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDocumentRoot(DocumentRoot object) {
+	public T caseDocumentRoot(DocumentRoot object) {
 		return null;
 	}
 
@@ -150,7 +150,7 @@ public class AttributesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseR(R object) {
+	public T caseR(R object) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class AttributesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SupplierImpl.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: SupplierImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -69,7 +69,7 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList customers = null;
+	protected EList<Customer> customers = null;
 
 	/**
 	 * The cached value of the '{@link #getOrders() <em>Orders</em>}' containment reference list.
@@ -79,7 +79,7 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList orders = null;
+	protected EList<PurchaseOrder> orders = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,8 +95,9 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return EPO2Package.eINSTANCE.getSupplier();
+		return EPO2Package.Literals.SUPPLIER;
 	}
 
 	/**
@@ -125,9 +126,9 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getCustomers() {
+	public EList<Customer> getCustomers() {
 		if (customers == null) {
-			customers = new EObjectContainmentEList(Customer.class, this, EPO2Package.SUPPLIER__CUSTOMERS);
+			customers = new EObjectContainmentEList<Customer>(Customer.class, this, EPO2Package.SUPPLIER__CUSTOMERS);
 		}
 		return customers;
 	}
@@ -137,9 +138,9 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOrders() {
+	public EList<PurchaseOrder> getOrders() {
 		if (orders == null) {
-			orders = new EObjectContainmentEList(PurchaseOrder.class, this, EPO2Package.SUPPLIER__ORDERS);
+			orders = new EObjectContainmentEList<PurchaseOrder>(PurchaseOrder.class, this, EPO2Package.SUPPLIER__ORDERS);
 		}
 		return orders;
 	}
@@ -149,10 +150,12 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPendingOrders() {
+	public EList<PurchaseOrder> getPendingOrders() {
 		// TODO: implement this method to return the 'Pending Orders' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		return new EObjectContainmentEList(PurchaseOrder.class, this, EPO2Package.SUPPLIER__ORDERS);
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -160,10 +163,12 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getShippedOrders() {
+	public EList<PurchaseOrder> getShippedOrders() {
 		// TODO: implement this method to return the 'Shipped Orders' reference list
 		// Ensure that you remove @generated or mark it @generated NOT
-		return new EObjectContainmentEList(PurchaseOrder.class, this, EPO2Package.SUPPLIER__ORDERS);
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -171,18 +176,15 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case EPO2Package.SUPPLIER__CUSTOMERS:
-					return ((InternalEList)getCustomers()).basicRemove(otherEnd, msgs);
-				case EPO2Package.SUPPLIER__ORDERS:
-					return ((InternalEList)getOrders()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EPO2Package.SUPPLIER__CUSTOMERS:
+				return ((InternalEList<?>)getCustomers()).basicRemove(otherEnd, msgs);
+			case EPO2Package.SUPPLIER__ORDERS:
+				return ((InternalEList<?>)getOrders()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -190,8 +192,9 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case EPO2Package.SUPPLIER__NAME:
 				return getName();
 			case EPO2Package.SUPPLIER__CUSTOMERS:
@@ -203,7 +206,7 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 			case EPO2Package.SUPPLIER__SHIPPED_ORDERS:
 				return getShippedOrders();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -211,21 +214,23 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case EPO2Package.SUPPLIER__NAME:
 				setName((String)newValue);
 				return;
 			case EPO2Package.SUPPLIER__CUSTOMERS:
 				getCustomers().clear();
-				getCustomers().addAll((Collection)newValue);
+				getCustomers().addAll((Collection<? extends Customer>)newValue);
 				return;
 			case EPO2Package.SUPPLIER__ORDERS:
 				getOrders().clear();
-				getOrders().addAll((Collection)newValue);
+				getOrders().addAll((Collection<? extends PurchaseOrder>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -233,8 +238,9 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case EPO2Package.SUPPLIER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -245,7 +251,7 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 				getOrders().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -253,8 +259,9 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case EPO2Package.SUPPLIER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case EPO2Package.SUPPLIER__CUSTOMERS:
@@ -266,7 +273,7 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 			case EPO2Package.SUPPLIER__SHIPPED_ORDERS:
 				return !getShippedOrders().isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -274,6 +281,7 @@ public class SupplierImpl extends EObjectImpl implements Supplier {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

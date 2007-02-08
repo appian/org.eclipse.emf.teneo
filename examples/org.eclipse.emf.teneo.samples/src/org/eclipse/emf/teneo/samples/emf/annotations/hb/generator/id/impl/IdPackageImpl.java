@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackageImpl.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
+ * $Id: IdPackageImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl;
 
@@ -236,6 +236,10 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

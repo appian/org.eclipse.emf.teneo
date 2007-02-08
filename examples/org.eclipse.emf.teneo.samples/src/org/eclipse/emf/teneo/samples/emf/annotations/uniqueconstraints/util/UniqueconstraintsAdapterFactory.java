@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueconstraintsAdapterFactory.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: UniqueconstraintsAdapterFactory.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.util;
 
@@ -52,6 +52,7 @@ public class UniqueconstraintsAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,12 +69,14 @@ public class UniqueconstraintsAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UniqueconstraintsSwitch modelSwitch =
-		new UniqueconstraintsSwitch() {
-			public Object caseItem(Item object) {
+	protected UniqueconstraintsSwitch<Adapter> modelSwitch =
+		new UniqueconstraintsSwitch<Adapter>() {
+			@Override
+			public Adapter caseItem(Item object) {
 				return createItemAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -86,8 +89,9 @@ public class UniqueconstraintsAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonaeType.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: PersonaeType.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play;
 
@@ -64,7 +64,7 @@ public interface PersonaeType extends EObject{
 	 *        extendedMetaData="kind='element' name='title' namespace='##targetNamespace' group='#group:0'"
 	 * @generated
 	 */
-	EList getTitle();
+	EList<String> getTitle();
 
 	/**
 	 * Returns the value of the '<em><b>Persona</b></em>' attribute list.
@@ -81,7 +81,7 @@ public interface PersonaeType extends EObject{
 	 *        extendedMetaData="kind='element' name='persona' namespace='##targetNamespace' group='#group:0'"
 	 * @generated
 	 */
-	EList getPersona();
+	EList<String> getPersona();
 
 	/**
 	 * Returns the value of the '<em><b>Persona Group</b></em>' containment reference list.
@@ -94,10 +94,10 @@ public interface PersonaeType extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Persona Group</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getPersonaeType_PersonaGroup()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.play.PersonaGroupType" containment="true" resolveProxies="false" transient="true" volatile="true" derived="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.play.PersonaGroupType" containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='personaGroup' namespace='##targetNamespace' group='#group:0'"
 	 * @generated
 	 */
-	EList getPersonaGroup();
+	EList<PersonaGroupType> getPersonaGroup();
 
 } // PersonaeType

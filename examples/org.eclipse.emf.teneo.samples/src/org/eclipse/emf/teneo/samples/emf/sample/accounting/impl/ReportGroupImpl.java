@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReportGroupImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: ReportGroupImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting.impl;
 
@@ -72,7 +72,7 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList reportGroup = null;
+	protected EList<ReportGroup> reportGroup = null;
 
 	/**
 	 * The cached value of the '{@link #getAccount() <em>Account</em>}' reference list.
@@ -82,7 +82,7 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList account = null;
+	protected EList<BalanceAccount> account = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,8 +98,9 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return AccountingPackage.eINSTANCE.getReportGroup();
+		return AccountingPackage.Literals.REPORT_GROUP;
 	}
 
 	/**
@@ -128,9 +129,9 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getReportGroup() {
+	public EList<ReportGroup> getReportGroup() {
 		if (reportGroup == null) {
-			reportGroup = new EObjectContainmentEList(ReportGroup.class, this, AccountingPackage.REPORT_GROUP__REPORT_GROUP);
+			reportGroup = new EObjectContainmentEList<ReportGroup>(ReportGroup.class, this, AccountingPackage.REPORT_GROUP__REPORT_GROUP);
 		}
 		return reportGroup;
 	}
@@ -140,9 +141,9 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAccount() {
+	public EList<BalanceAccount> getAccount() {
 		if (account == null) {
-			account = new EObjectWithInverseEList.ManyInverse(BalanceAccount.class, this, AccountingPackage.REPORT_GROUP__ACCOUNT, AccountingPackage.BALANCE_ACCOUNT__REPORT);
+			account = new EObjectWithInverseEList.ManyInverse<BalanceAccount>(BalanceAccount.class, this, AccountingPackage.REPORT_GROUP__ACCOUNT, AccountingPackage.BALANCE_ACCOUNT__REPORT);
 		}
 		return account;
 	}
@@ -152,18 +153,14 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case AccountingPackage.REPORT_GROUP__ACCOUNT:
-					return ((InternalEList)getAccount()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AccountingPackage.REPORT_GROUP__ACCOUNT:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAccount()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -171,18 +168,15 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case AccountingPackage.REPORT_GROUP__REPORT_GROUP:
-					return ((InternalEList)getReportGroup()).basicRemove(otherEnd, msgs);
-				case AccountingPackage.REPORT_GROUP__ACCOUNT:
-					return ((InternalEList)getAccount()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AccountingPackage.REPORT_GROUP__REPORT_GROUP:
+				return ((InternalEList<?>)getReportGroup()).basicRemove(otherEnd, msgs);
+			case AccountingPackage.REPORT_GROUP__ACCOUNT:
+				return ((InternalEList<?>)getAccount()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -190,8 +184,9 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case AccountingPackage.REPORT_GROUP__NAME:
 				return getName();
 			case AccountingPackage.REPORT_GROUP__REPORT_GROUP:
@@ -199,7 +194,7 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 			case AccountingPackage.REPORT_GROUP__ACCOUNT:
 				return getAccount();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -207,21 +202,23 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case AccountingPackage.REPORT_GROUP__NAME:
 				setName((String)newValue);
 				return;
 			case AccountingPackage.REPORT_GROUP__REPORT_GROUP:
 				getReportGroup().clear();
-				getReportGroup().addAll((Collection)newValue);
+				getReportGroup().addAll((Collection<? extends ReportGroup>)newValue);
 				return;
 			case AccountingPackage.REPORT_GROUP__ACCOUNT:
 				getAccount().clear();
-				getAccount().addAll((Collection)newValue);
+				getAccount().addAll((Collection<? extends BalanceAccount>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -229,8 +226,9 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.REPORT_GROUP__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -241,7 +239,7 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 				getAccount().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -249,8 +247,9 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.REPORT_GROUP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case AccountingPackage.REPORT_GROUP__REPORT_GROUP:
@@ -258,7 +257,7 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 			case AccountingPackage.REPORT_GROUP__ACCOUNT:
 				return account != null && !account.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -266,6 +265,7 @@ public class ReportGroupImpl extends EObjectImpl implements ReportGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

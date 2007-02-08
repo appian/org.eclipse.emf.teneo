@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsSwitch.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
+ * $Id: JoincolumnsSwitch.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.util;
 
@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent;
@@ -28,7 +29,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage
  * @generated
  */
-public class JoincolumnsSwitch {
+public class JoincolumnsSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -56,7 +57,7 @@ public class JoincolumnsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -67,16 +68,16 @@ public class JoincolumnsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -87,25 +88,25 @@ public class JoincolumnsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case JoincolumnsPackage.PARENT: {
 				Parent parent = (Parent)theEObject;
-				Object result = caseParent(parent);
+				T result = caseParent(parent);
 				if (result == null) result = casePerson(parent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case JoincolumnsPackage.CHILD: {
 				Child child = (Child)theEObject;
-				Object result = caseChild(child);
+				T result = caseChild(child);
 				if (result == null) result = casePerson(child);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case JoincolumnsPackage.PERSON: {
 				Person person = (Person)theEObject;
-				Object result = casePerson(person);
+				T result = casePerson(person);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -124,7 +125,7 @@ public class JoincolumnsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseParent(Parent object) {
+	public T caseParent(Parent object) {
 		return null;
 	}
 
@@ -139,7 +140,7 @@ public class JoincolumnsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseChild(Child object) {
+	public T caseChild(Child object) {
 		return null;
 	}
 
@@ -154,7 +155,7 @@ public class JoincolumnsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePerson(Person object) {
+	public T casePerson(Person object) {
 		return null;
 	}
 
@@ -169,7 +170,7 @@ public class JoincolumnsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

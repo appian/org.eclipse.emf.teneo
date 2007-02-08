@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Forum.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: Forum.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum;
 
@@ -67,11 +67,11 @@ public interface Forum extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Members</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.ForumPackage#getForum_Members()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.forum.Member" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.forum.Member" containment="true"
 	 *        extendedMetaData="kind='element' name='members'"
 	 * @generated
 	 */
-	EList getMembers();
+	EList<Member> getMembers();
 
 	/**
 	 * Returns the value of the '<em><b>Topics</b></em>' containment reference list.
@@ -84,10 +84,10 @@ public interface Forum extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Topics</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.forum.ForumPackage#getForum_Topics()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.forum.Topic" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.forum.Topic" containment="true"
 	 *        extendedMetaData="kind='element' name='topics'"
 	 * @generated
 	 */
-	EList getTopics();
+	EList<Topic> getTopics();
 
 } // Forum

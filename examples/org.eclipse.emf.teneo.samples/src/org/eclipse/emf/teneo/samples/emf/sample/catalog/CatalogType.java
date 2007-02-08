@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CatalogType.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: CatalogType.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog;
 
@@ -99,7 +99,7 @@ public interface CatalogType extends EObject {
 	 *        extendedMetaData="kind='element' name='SubCatalog'"
 	 * @generated
 	 */
-	EList getSubCatalog();
+	EList<CatalogType> getSubCatalog();
 
 	/**
 	 * Returns the value of the '<em><b>Product</b></em>' reference list.
@@ -116,6 +116,6 @@ public interface CatalogType extends EObject {
 	 *        extendedMetaData="kind='element' name='Product'"
 	 * @generated
 	 */
-	EList getProduct();
+	EList<ProductType> getProduct();
 
 } // CatalogType

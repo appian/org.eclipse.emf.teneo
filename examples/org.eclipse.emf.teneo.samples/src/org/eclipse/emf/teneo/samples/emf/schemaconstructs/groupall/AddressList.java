@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressList.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: AddressList.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall;
 
@@ -87,11 +87,11 @@ public interface AddressList extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ship To</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.GroupallPackage#getAddressList_ShipTo()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.Address" containment="true" resolveProxies="false" required="true" transient="true" volatile="true" derived="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.Address" containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='shipTo' group='#addrs:1'"
 	 * @generated
 	 */
-	EList getShipTo();
+	EList<Address> getShipTo();
 
 	/**
 	 * Returns the value of the '<em><b>Bill To</b></em>' containment reference list.
@@ -104,10 +104,10 @@ public interface AddressList extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bill To</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.GroupallPackage#getAddressList_BillTo()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.Address" containment="true" resolveProxies="false" required="true" transient="true" volatile="true" derived="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.Address" containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='billTo' group='#addrs:1'"
 	 * @generated
 	 */
-	EList getBillTo();
+	EList<Address> getBillTo();
 
 } // AddressList

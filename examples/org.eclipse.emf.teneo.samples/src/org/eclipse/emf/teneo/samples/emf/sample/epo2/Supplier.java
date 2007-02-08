@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Supplier.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: Supplier.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2;
 
@@ -70,7 +70,7 @@ public interface Supplier extends EObject {
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.epo2.Customer" containment="true"
 	 * @generated
 	 */
-	EList getCustomers();
+	EList<Customer> getCustomers();
 
 	/**
 	 * Returns the value of the '<em><b>Orders</b></em>' containment reference list.
@@ -86,7 +86,7 @@ public interface Supplier extends EObject {
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.epo2.PurchaseOrder" containment="true"
 	 * @generated
 	 */
-	EList getOrders();
+	EList<PurchaseOrder> getOrders();
 
 	/**
 	 * Returns the value of the '<em><b>Pending Orders</b></em>' reference list.
@@ -102,7 +102,7 @@ public interface Supplier extends EObject {
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.epo2.PurchaseOrder" resolveProxies="false" transient="true" changeable="false" volatile="true"
 	 * @generated
 	 */
-	EList getPendingOrders();
+	EList<PurchaseOrder> getPendingOrders();
 
 	/**
 	 * Returns the value of the '<em><b>Shipped Orders</b></em>' reference list.
@@ -118,6 +118,6 @@ public interface Supplier extends EObject {
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.epo2.PurchaseOrder" resolveProxies="false" transient="true" changeable="false" volatile="true"
 	 * @generated
 	 */
-	EList getShippedOrders();
+	EList<PurchaseOrder> getShippedOrders();
 
 } // Supplier

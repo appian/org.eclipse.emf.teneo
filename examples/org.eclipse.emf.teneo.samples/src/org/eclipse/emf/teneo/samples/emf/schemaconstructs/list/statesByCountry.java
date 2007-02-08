@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: statesByCountry.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: statesByCountry.java,v 1.2 2007/02/08 23:09:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.list;
 
@@ -120,13 +120,13 @@ public interface statesByCountry extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>All States</em>' attribute.
-	 * @see #setAllStates(List)
+	 * @see #setAllStates(List<String>)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.list.ListPackage#getstatesByCountry_AllStates()
 	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.list.StateList" required="true" many="false"
 	 *        extendedMetaData="kind='element' name='AllStates'"
 	 * @generated
 	 */
-	List getAllStates();
+	List<String> getAllStates();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.list.statesByCountry#getAllStates <em>All States</em>}' attribute.
@@ -136,7 +136,7 @@ public interface statesByCountry extends EObject {
 	 * @see #getAllStates()
 	 * @generated
 	 */
-	void setAllStates(List value);
+	void setAllStates(List<String> value);
 
 	/**
 	 * Returns the value of the '<em><b>Six Important States</b></em>' attribute.
@@ -147,13 +147,13 @@ public interface statesByCountry extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Six Important States</em>' attribute.
-	 * @see #setSixImportantStates(List)
+	 * @see #setSixImportantStates(List<String>)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.list.ListPackage#getstatesByCountry_SixImportantStates()
 	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.list.SixStatesList" required="true" many="false"
 	 *        extendedMetaData="kind='element' name='SixImportantStates'"
 	 * @generated
 	 */
-	List getSixImportantStates();
+	List<String> getSixImportantStates();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.list.statesByCountry#getSixImportantStates <em>Six Important States</em>}' attribute.
@@ -163,6 +163,6 @@ public interface statesByCountry extends EObject {
 	 * @see #getSixImportantStates()
 	 * @generated
 	 */
-	void setSixImportantStates(List value);
+	void setSixImportantStates(List<String> value);
 
 } // statesByCountry

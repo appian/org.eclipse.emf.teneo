@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.2 2006/09/21 00:56:53 mtaal Exp $
+ * $Id: Library.java,v 1.3 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy;
 
@@ -71,7 +71,7 @@ public interface Library extends EObject {
 	 *        extendedMetaData="kind='element' name='writers'"
 	 * @generated
 	 */
-	EList getWriters();
+	EList<Writer> getWriters();
 
 	/**
 	 * Returns the value of the '<em><b>Books</b></em>' containment reference list.
@@ -89,6 +89,6 @@ public interface Library extends EObject {
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */
-	EList getBooks();
+	EList<Book> getBooks();
 
 } // Library

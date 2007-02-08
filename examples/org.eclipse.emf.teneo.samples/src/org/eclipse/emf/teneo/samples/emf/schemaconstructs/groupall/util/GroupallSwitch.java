@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GroupallSwitch.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: GroupallSwitch.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.*;
  * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.GroupallPackage
  * @generated
  */
-public class GroupallSwitch {
+public class GroupallSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class GroupallSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class GroupallSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,41 +85,41 @@ public class GroupallSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case GroupallPackage.ADDRESS: {
 				Address address = (Address)theEObject;
-				Object result = caseAddress(address);
+				T result = caseAddress(address);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case GroupallPackage.ADDRESS_GROUP: {
 				AddressGroup addressGroup = (AddressGroup)theEObject;
-				Object result = caseAddressGroup(addressGroup);
+				T result = caseAddressGroup(addressGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case GroupallPackage.ADDRESS_LIST: {
 				AddressList addressList = (AddressList)theEObject;
-				Object result = caseAddressList(addressList);
+				T result = caseAddressList(addressList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case GroupallPackage.DOCUMENT_ROOT: {
 				DocumentRoot documentRoot = (DocumentRoot)theEObject;
-				Object result = caseDocumentRoot(documentRoot);
+				T result = caseDocumentRoot(documentRoot);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE: {
 				SimpleAllMapType simpleAllMapType = (SimpleAllMapType)theEObject;
-				Object result = caseSimpleAllMapType(simpleAllMapType);
+				T result = caseSimpleAllMapType(simpleAllMapType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case GroupallPackage.SIMPLE_ALL_TYPE: {
 				SimpleAllType simpleAllType = (SimpleAllType)theEObject;
-				Object result = caseSimpleAllType(simpleAllType);
+				T result = caseSimpleAllType(simpleAllType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -138,7 +138,7 @@ public class GroupallSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddress(Address object) {
+	public T caseAddress(Address object) {
 		return null;
 	}
 
@@ -153,7 +153,7 @@ public class GroupallSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddressGroup(AddressGroup object) {
+	public T caseAddressGroup(AddressGroup object) {
 		return null;
 	}
 
@@ -168,7 +168,7 @@ public class GroupallSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddressList(AddressList object) {
+	public T caseAddressList(AddressList object) {
 		return null;
 	}
 
@@ -183,7 +183,7 @@ public class GroupallSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDocumentRoot(DocumentRoot object) {
+	public T caseDocumentRoot(DocumentRoot object) {
 		return null;
 	}
 
@@ -198,7 +198,7 @@ public class GroupallSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSimpleAllMapType(SimpleAllMapType object) {
+	public T caseSimpleAllMapType(SimpleAllMapType object) {
 		return null;
 	}
 
@@ -213,7 +213,7 @@ public class GroupallSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSimpleAllType(SimpleAllType object) {
+	public T caseSimpleAllType(SimpleAllType object) {
 		return null;
 	}
 
@@ -228,7 +228,7 @@ public class GroupallSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

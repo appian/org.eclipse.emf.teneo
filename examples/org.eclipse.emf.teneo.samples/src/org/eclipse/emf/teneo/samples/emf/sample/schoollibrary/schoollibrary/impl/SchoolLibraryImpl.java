@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SchoolLibraryImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: SchoolLibraryImpl.java,v 1.2 2007/02/08 23:09:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl;
 
@@ -72,8 +72,9 @@ public class SchoolLibraryImpl extends LibraryImpl implements SchoolLibrary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return SchoollibraryPackage.eINSTANCE.getSchoolLibrary();
+		return SchoollibraryPackage.Literals.SCHOOL_LIBRARY;
 	}
 
 	/**
@@ -102,37 +103,13 @@ public class SchoolLibraryImpl extends LibraryImpl implements SchoolLibrary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case SchoollibraryPackage.SCHOOL_LIBRARY__WRITERS:
-					return ((InternalEList)getWriters()).basicRemove(otherEnd, msgs);
-				case SchoollibraryPackage.SCHOOL_LIBRARY__BOOKS:
-					return ((InternalEList)getBooks()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case SchoollibraryPackage.SCHOOL_LIBRARY__NAME:
-				return getName();
-			case SchoollibraryPackage.SCHOOL_LIBRARY__WRITERS:
-				return getWriters();
-			case SchoollibraryPackage.SCHOOL_LIBRARY__BOOKS:
-				return getBooks();
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case SchoollibraryPackage.SCHOOL_LIBRARY__LOCATION:
 				return getLocation();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -140,24 +117,14 @@ public class SchoolLibraryImpl extends LibraryImpl implements SchoolLibrary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case SchoollibraryPackage.SCHOOL_LIBRARY__NAME:
-				setName((String)newValue);
-				return;
-			case SchoollibraryPackage.SCHOOL_LIBRARY__WRITERS:
-				getWriters().clear();
-				getWriters().addAll((Collection)newValue);
-				return;
-			case SchoollibraryPackage.SCHOOL_LIBRARY__BOOKS:
-				getBooks().clear();
-				getBooks().addAll((Collection)newValue);
-				return;
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case SchoollibraryPackage.SCHOOL_LIBRARY__LOCATION:
 				setLocation((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -165,22 +132,14 @@ public class SchoolLibraryImpl extends LibraryImpl implements SchoolLibrary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case SchoollibraryPackage.SCHOOL_LIBRARY__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case SchoollibraryPackage.SCHOOL_LIBRARY__WRITERS:
-				getWriters().clear();
-				return;
-			case SchoollibraryPackage.SCHOOL_LIBRARY__BOOKS:
-				getBooks().clear();
-				return;
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case SchoollibraryPackage.SCHOOL_LIBRARY__LOCATION:
 				setLocation(LOCATION_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -188,18 +147,13 @@ public class SchoolLibraryImpl extends LibraryImpl implements SchoolLibrary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case SchoollibraryPackage.SCHOOL_LIBRARY__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case SchoollibraryPackage.SCHOOL_LIBRARY__WRITERS:
-				return writers != null && !writers.isEmpty();
-			case SchoollibraryPackage.SCHOOL_LIBRARY__BOOKS:
-				return books != null && !books.isEmpty();
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case SchoollibraryPackage.SCHOOL_LIBRARY__LOCATION:
 				return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -207,6 +161,7 @@ public class SchoolLibraryImpl extends LibraryImpl implements SchoolLibrary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

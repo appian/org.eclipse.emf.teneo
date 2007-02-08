@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.1 2006/07/11 16:57:00 mtaal Exp $
+ * $Id: Writer.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library;
 
@@ -70,6 +70,6 @@ public interface Writer extends EObject {
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.Book" opposite="author"
 	 * @generated
 	 */
-	EList getBooks();
+	EList<Book> getBooks();
 
 } // Writer

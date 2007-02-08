@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1to1AdapterFactory.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: Relation1to1AdapterFactory.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1to1.util;
 
@@ -52,6 +52,7 @@ public class Relation1to1AdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,33 +69,42 @@ public class Relation1to1AdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Relation1to1Switch modelSwitch =
-		new Relation1to1Switch() {
-			public Object caseContainedChildNR(ContainedChildNR object) {
+	protected Relation1to1Switch<Adapter> modelSwitch =
+		new Relation1to1Switch<Adapter>() {
+			@Override
+			public Adapter caseContainedChildNR(ContainedChildNR object) {
 				return createContainedChildNRAdapter();
 			}
-			public Object caseContainedChildR(ContainedChildR object) {
+			@Override
+			public Adapter caseContainedChildR(ContainedChildR object) {
 				return createContainedChildRAdapter();
 			}
-			public Object caseMain(Main object) {
+			@Override
+			public Adapter caseMain(Main object) {
 				return createMainAdapter();
 			}
-			public Object caseNotContainedChildNR(NotContainedChildNR object) {
+			@Override
+			public Adapter caseNotContainedChildNR(NotContainedChildNR object) {
 				return createNotContainedChildNRAdapter();
 			}
-			public Object caseNotContainedChildNRT(NotContainedChildNRT object) {
+			@Override
+			public Adapter caseNotContainedChildNRT(NotContainedChildNRT object) {
 				return createNotContainedChildNRTAdapter();
 			}
-			public Object caseNotContainedChildNRTNR(NotContainedChildNRTNR object) {
+			@Override
+			public Adapter caseNotContainedChildNRTNR(NotContainedChildNRTNR object) {
 				return createNotContainedChildNRTNRAdapter();
 			}
-			public Object caseNotContainedChildR(NotContainedChildR object) {
+			@Override
+			public Adapter caseNotContainedChildR(NotContainedChildR object) {
 				return createNotContainedChildRAdapter();
 			}
-			public Object caseNotContainedChildRTNR(NotContainedChildRTNR object) {
+			@Override
+			public Adapter caseNotContainedChildRTNR(NotContainedChildRTNR object) {
 				return createNotContainedChildRTNRAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -107,8 +117,9 @@ public class Relation1to1AdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

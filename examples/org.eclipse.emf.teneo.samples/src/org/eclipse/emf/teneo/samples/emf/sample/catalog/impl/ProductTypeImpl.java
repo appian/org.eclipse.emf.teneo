@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductTypeImpl.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: ProductTypeImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog.impl;
 
@@ -96,7 +96,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList remark = null;
+	protected EList<StringType> remark = null;
 
 	/**
 	 * The cached value of the '{@link #getPrice() <em>Price</em>}' containment reference.
@@ -122,6 +122,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return CatalogPackage.Literals.PRODUCT_TYPE;
 	}
@@ -198,9 +199,9 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRemark() {
+	public EList<StringType> getRemark() {
 		if (remark == null) {
-			remark = new EObjectContainmentEList(StringType.class, this, CatalogPackage.PRODUCT_TYPE__REMARK);
+			remark = new EObjectContainmentEList<StringType>(StringType.class, this, CatalogPackage.PRODUCT_TYPE__REMARK);
 		}
 		return remark;
 	}
@@ -253,10 +254,11 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CatalogPackage.PRODUCT_TYPE__REMARK:
-				return ((InternalEList)getRemark()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getRemark()).basicRemove(otherEnd, msgs);
 			case CatalogPackage.PRODUCT_TYPE__PRICE:
 				return basicSetPrice(null, msgs);
 		}
@@ -268,6 +270,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CatalogPackage.PRODUCT_TYPE__CODE:
@@ -287,6 +290,8 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CatalogPackage.PRODUCT_TYPE__CODE:
@@ -297,7 +302,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 				return;
 			case CatalogPackage.PRODUCT_TYPE__REMARK:
 				getRemark().clear();
-				getRemark().addAll((Collection)newValue);
+				getRemark().addAll((Collection<? extends StringType>)newValue);
 				return;
 			case CatalogPackage.PRODUCT_TYPE__PRICE:
 				setPrice((PriceType)newValue);
@@ -311,6 +316,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CatalogPackage.PRODUCT_TYPE__CODE:
@@ -334,6 +340,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CatalogPackage.PRODUCT_TYPE__CODE:
@@ -353,6 +360,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

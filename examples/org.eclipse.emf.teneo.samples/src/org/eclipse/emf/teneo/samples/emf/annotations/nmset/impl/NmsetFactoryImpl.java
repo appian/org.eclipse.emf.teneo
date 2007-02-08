@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NmsetFactoryImpl.java,v 1.4 2006/09/29 12:51:54 mtaal Exp $
+ * $Id: NmsetFactoryImpl.java,v 1.5 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.nmset.impl;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.annotations.nmset.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.nmset.MyItem;
 import org.eclipse.emf.teneo.samples.emf.annotations.nmset.NmsetFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.nmset.NmsetPackage;
@@ -57,6 +58,7 @@ public class NmsetFactoryImpl extends EFactoryImpl implements NmsetFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case NmsetPackage.MY_ITEM: return createMyItem();
@@ -101,6 +103,7 @@ public class NmsetFactoryImpl extends EFactoryImpl implements NmsetFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static NmsetPackage getPackage() {
 		return NmsetPackage.eINSTANCE;
 	}

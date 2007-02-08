@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DynamicFactoryImpl.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: DynamicFactoryImpl.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl;
 
@@ -57,6 +57,7 @@ public class DynamicFactoryImpl extends EFactoryImpl implements DynamicFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case DynamicPackage.PERSON: return createPerson();
@@ -90,6 +91,7 @@ public class DynamicFactoryImpl extends EFactoryImpl implements DynamicFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static DynamicPackage getPackage() {
 		return DynamicPackage.eINSTANCE;
 	}

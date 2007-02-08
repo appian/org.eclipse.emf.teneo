@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ListValidator.java,v 1.1 2006/07/11 16:56:54 mtaal Exp $
+ * $Id: ListValidator.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.list.util;
 
@@ -89,6 +89,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EPackage getEPackage() {
 	  return ListPackage.eINSTANCE;
 	}
@@ -99,18 +100,19 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map context) {
+	@Override
+	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
 			case ListPackage.STATES_BY_COUNTRY:
 				return validatestatesByCountry((statesByCountry)value, diagnostics, context);
 			case ListPackage.SIX_STATES_LIST:
-				return validateSixStatesList((List)value, diagnostics, context);
+				return validateSixStatesList((List<?>)value, diagnostics, context);
 			case ListPackage.STATE:
 				return validateState((String)value, diagnostics, context);
 			case ListPackage.STATE_LIST:
-				return validateStateList((List)value, diagnostics, context);
+				return validateStateList((List<?>)value, diagnostics, context);
 			case ListPackage.STRING_LIST:
-				return validateStringList((List)value, diagnostics, context);
+				return validateStringList((List<?>)value, diagnostics, context);
 			case ListPackage.ZIP_CODE:
 				return validateZipCode((String)value, diagnostics, context);
 			default: 
@@ -123,7 +125,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatestatesByCountry(statesByCountry statesByCountry, DiagnosticChain diagnostics, Map context) {
+	public boolean validatestatesByCountry(statesByCountry statesByCountry, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(statesByCountry, diagnostics, context);
 	}
 
@@ -132,7 +134,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSixStatesList(List sixStatesList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSixStatesList(List<?> sixStatesList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateStateList_ItemType(sixStatesList, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSixStatesList_MinLength(sixStatesList, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSixStatesList_MaxLength(sixStatesList, diagnostics, context);
@@ -145,7 +147,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSixStatesList_MinLength(List sixStatesList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSixStatesList_MinLength(List<?> sixStatesList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = sixStatesList.size();  
 		boolean result = length >= 6;
 		if (!result && diagnostics != null) 
@@ -159,7 +161,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSixStatesList_MaxLength(List sixStatesList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSixStatesList_MaxLength(List<?> sixStatesList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = sixStatesList.size();  
 		boolean result = length <= 6;
 		if (!result && diagnostics != null) 
@@ -172,7 +174,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateState(String state, DiagnosticChain diagnostics, Map context) {
+	public boolean validateState(String state, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateState_MaxLength(state, diagnostics, context);
 		return result;
 	}
@@ -183,7 +185,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateState_MaxLength(String state, DiagnosticChain diagnostics, Map context) {
+	public boolean validateState_MaxLength(String state, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = state.length();  
 		boolean result = length <= 12;
 		if (!result && diagnostics != null) 
@@ -196,7 +198,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStateList(List stateList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateStateList(List<?> stateList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateStateList_ItemType(stateList, diagnostics, context);
 		return result;
 	}
@@ -207,9 +209,9 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStateList_ItemType(List stateList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateStateList_ItemType(List<?> stateList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
-		for (Iterator i = stateList.iterator(); i.hasNext() && (result || diagnostics != null); ) {
+		for (Iterator<?> i = stateList.iterator(); i.hasNext() && (result || diagnostics != null); ) {
 			Object item = i.next();
 			if (ListPackage.Literals.STATE.isInstance(item)) {
 				result &= validateState((String)item, diagnostics, context);
@@ -227,7 +229,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStringList(List stringList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateStringList(List<?> stringList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateStringList_ItemType(stringList, diagnostics, context);
 		return result;
 	}
@@ -238,9 +240,9 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStringList_ItemType(List stringList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateStringList_ItemType(List<?> stringList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
-		for (Iterator i = stringList.iterator(); i.hasNext() && (result || diagnostics != null); ) {
+		for (Iterator<?> i = stringList.iterator(); i.hasNext() && (result || diagnostics != null); ) {
 			Object item = i.next();
 			if (XMLTypePackage.Literals.STRING.isInstance(item)) {
 				result &= xmlTypeValidator.validateString((String)item, diagnostics, context);
@@ -258,7 +260,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateZipCode(String zipCode, DiagnosticChain diagnostics, Map context) {
+	public boolean validateZipCode(String zipCode, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateZipCode_MaxLength(zipCode, diagnostics, context);
 		return result;
 	}
@@ -269,7 +271,7 @@ public class ListValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateZipCode_MaxLength(String zipCode, DiagnosticChain diagnostics, Map context) {
+	public boolean validateZipCode_MaxLength(String zipCode, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = zipCode.length();  
 		boolean result = length <= 6;
 		if (!result && diagnostics != null) 

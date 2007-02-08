@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmapAdapterFactory.java,v 1.1 2006/09/28 20:06:04 mtaal Exp $
+ * $Id: EmapAdapterFactory.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.util;
 
@@ -54,6 +54,7 @@ public class EmapAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -70,24 +71,30 @@ public class EmapAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EmapSwitch modelSwitch =
-		new EmapSwitch() {
-			public Object caseBook(Book object) {
+	protected EmapSwitch<Adapter> modelSwitch =
+		new EmapSwitch<Adapter>() {
+			@Override
+			public Adapter caseBook(Book object) {
 				return createBookAdapter();
 			}
-			public Object caseStringToStringMapEntry(Map.Entry object) {
+			@Override
+			public Adapter caseStringToStringMapEntry(Map.Entry<String, String> object) {
 				return createStringToStringMapEntryAdapter();
 			}
-			public Object caseStringToWriterMapEntry(Map.Entry object) {
+			@Override
+			public Adapter caseStringToWriterMapEntry(Map.Entry<String, Writer> object) {
 				return createStringToWriterMapEntryAdapter();
 			}
-			public Object caseWriter(Writer object) {
+			@Override
+			public Adapter caseWriter(Writer object) {
 				return createWriterAdapter();
 			}
-			public Object caseWriterToStringMapEntry(Map.Entry object) {
+			@Override
+			public Adapter caseWriterToStringMapEntry(Map.Entry<Writer, String> object) {
 				return createWriterToStringMapEntryAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -100,8 +107,9 @@ public class EmapAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

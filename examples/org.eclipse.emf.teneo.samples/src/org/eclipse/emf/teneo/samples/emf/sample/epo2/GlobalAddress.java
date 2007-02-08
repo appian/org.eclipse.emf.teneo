@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GlobalAddress.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: GlobalAddress.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2;
 
@@ -39,6 +39,6 @@ public interface GlobalAddress extends Address, GlobalLocation {
 	 * @model type="java.lang.String"
 	 * @generated
 	 */
-	EList getLocation();
+	EList<String> getLocation();
 
 } // GlobalAddress

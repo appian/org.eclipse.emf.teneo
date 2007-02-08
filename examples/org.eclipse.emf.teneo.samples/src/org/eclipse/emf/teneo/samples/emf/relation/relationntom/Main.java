@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Main.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: Main.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relationntom;
 
@@ -102,7 +102,7 @@ public interface Main extends EObject {
 	 *        extendedMetaData="kind='element' name='multinr'"
 	 * @generated
 	 */
-	EList getMultinr();
+	EList<MultiNR> getMultinr();
 
 	/**
 	 * Returns the value of the '<em><b>Multirn</b></em>' reference list.
@@ -121,7 +121,7 @@ public interface Main extends EObject {
 	 *        extendedMetaData="kind='element' name='multirn'"
 	 * @generated
 	 */
-	EList getMultirn();
+	EList<MultiRN> getMultirn();
 
 	/**
 	 * Returns the value of the '<em><b>Multinn</b></em>' reference list.
@@ -140,6 +140,6 @@ public interface Main extends EObject {
 	 *        extendedMetaData="kind='element' name='multinn'"
 	 * @generated
 	 */
-	EList getMultinn();
+	EList<MultiNN> getMultinn();
 
 } // Main

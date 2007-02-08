@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingPackageImpl.java,v 1.4 2007/02/05 16:13:46 mtaal Exp $
+ * $Id: InheritancemappingPackageImpl.java,v 1.5 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -451,6 +451,10 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		districtUKAddressEClass.getESuperTypes().add(this.getUKAddress());

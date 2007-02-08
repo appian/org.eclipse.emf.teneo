@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DuplicatesSwitch.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: DuplicatesSwitch.java,v 1.2 2007/02/08 23:09:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.duplicates.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.duplicates.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.duplicates.DuplicatesPackage
  * @generated
  */
-public class DuplicatesSwitch {
+public class DuplicatesSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class DuplicatesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class DuplicatesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,17 +85,17 @@ public class DuplicatesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case DuplicatesPackage.CHILD_ITEM: {
 				ChildItem childItem = (ChildItem)theEObject;
-				Object result = caseChildItem(childItem);
+				T result = caseChildItem(childItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case DuplicatesPackage.ITEM: {
 				Item item = (Item)theEObject;
-				Object result = caseItem(item);
+				T result = caseItem(item);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -114,7 +114,7 @@ public class DuplicatesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseChildItem(ChildItem object) {
+	public T caseChildItem(ChildItem object) {
 		return null;
 	}
 
@@ -129,7 +129,7 @@ public class DuplicatesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseItem(Item object) {
+	public T caseItem(Item object) {
 		return null;
 	}
 
@@ -144,7 +144,7 @@ public class DuplicatesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

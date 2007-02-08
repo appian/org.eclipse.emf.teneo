@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: statesByCountry.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: statesByCountry.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion;
 
@@ -73,13 +73,13 @@ public interface statesByCountry extends EObject{
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>All States</em>' attribute.
-	 * @see #setAllStates(List)
+	 * @see #setAllStates(List<String>)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.ListunionPackage#getstatesByCountry_AllStates()
 	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.StateList" required="true" many="false"
 	 *        extendedMetaData="kind='element' name='AllStates'"
 	 * @generated
 	 */
-	List getAllStates();
+	List<String> getAllStates();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.statesByCountry#getAllStates <em>All States</em>}' attribute.
@@ -89,7 +89,7 @@ public interface statesByCountry extends EObject{
 	 * @see #getAllStates()
 	 * @generated
 	 */
-	void setAllStates(List value);
+	void setAllStates(List<String> value);
 
 	/**
 	 * Returns the value of the '<em><b>Six Important States</b></em>' attribute.
@@ -100,13 +100,13 @@ public interface statesByCountry extends EObject{
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Six Important States</em>' attribute.
-	 * @see #setSixImportantStates(List)
+	 * @see #setSixImportantStates(List<String>)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.ListunionPackage#getstatesByCountry_SixImportantStates()
 	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.SixStatesList" required="true" many="false"
 	 *        extendedMetaData="kind='element' name='SixImportantStates'"
 	 * @generated
 	 */
-	List getSixImportantStates();
+	List<String> getSixImportantStates();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.statesByCountry#getSixImportantStates <em>Six Important States</em>}' attribute.
@@ -116,7 +116,7 @@ public interface statesByCountry extends EObject{
 	 * @see #getSixImportantStates()
 	 * @generated
 	 */
-	void setSixImportantStates(List value);
+	void setSixImportantStates(List<String> value);
 
 	/**
 	 * Returns the value of the '<em><b>Zip Union</b></em>' attribute.
@@ -160,7 +160,7 @@ public interface statesByCountry extends EObject{
 	 *        extendedMetaData="kind='element' name='zipUnions'"
 	 * @generated
 	 */
-	EList getZipUnions();
+	EList<String> getZipUnions();
 
 	/**
 	 * Returns the value of the '<em><b>Simple Union</b></em>' attribute.
@@ -204,7 +204,7 @@ public interface statesByCountry extends EObject{
 	 *        extendedMetaData="kind='element' name='simpleUnions'"
 	 * @generated
 	 */
-	EList getSimpleUnions();
+	EList<Object> getSimpleUnions();
 
 	/**
 	 * Returns the value of the '<em><b>Simple String Union</b></em>' attribute.
@@ -248,6 +248,6 @@ public interface statesByCountry extends EObject{
 	 *        extendedMetaData="kind='element' name='simpleStringUnions'"
 	 * @generated
 	 */
-	EList getSimpleStringUnions();
+	EList<String> getSimpleStringUnions();
 
 } // statesByCountry

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ToonePackageImpl.java,v 1.3 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: ToonePackageImpl.java,v 1.4 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.impl;
 
@@ -257,6 +257,10 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

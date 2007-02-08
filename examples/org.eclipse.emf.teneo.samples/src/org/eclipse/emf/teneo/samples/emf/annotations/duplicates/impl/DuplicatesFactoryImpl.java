@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DuplicatesFactoryImpl.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: DuplicatesFactoryImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.duplicates.impl;
 
@@ -57,6 +57,7 @@ public class DuplicatesFactoryImpl extends EFactoryImpl implements DuplicatesFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case DuplicatesPackage.CHILD_ITEM: return createChildItem();
@@ -101,6 +102,7 @@ public class DuplicatesFactoryImpl extends EFactoryImpl implements DuplicatesFac
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static DuplicatesPackage getPackage() {
 		return DuplicatesPackage.eINSTANCE;
 	}

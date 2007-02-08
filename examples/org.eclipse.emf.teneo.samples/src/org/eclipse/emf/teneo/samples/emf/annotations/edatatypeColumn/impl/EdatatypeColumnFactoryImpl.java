@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EdatatypeColumnFactoryImpl.java,v 1.1 2006/09/06 21:58:59 mtaal Exp $
+ * $Id: EdatatypeColumnFactoryImpl.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.edatatypeColumn.impl;
 
@@ -63,6 +63,7 @@ public class EdatatypeColumnFactoryImpl extends EFactoryImpl implements Edatatyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EdatatypeColumnPackage.BOOK: return createBook();
@@ -76,6 +77,7 @@ public class EdatatypeColumnFactoryImpl extends EFactoryImpl implements Edatatyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case EdatatypeColumnPackage.PAGES_TYPE:
@@ -96,6 +98,7 @@ public class EdatatypeColumnFactoryImpl extends EFactoryImpl implements Edatatyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case EdatatypeColumnPackage.PAGES_TYPE:
@@ -145,7 +148,7 @@ public class EdatatypeColumnFactoryImpl extends EFactoryImpl implements Edatatyp
 	 * @generated
 	 */
 	public Integer createPagesTypeObjectFromString(EDataType eDataType, String initialValue) {
-		return (Integer)createPagesTypeFromString(EdatatypeColumnPackage.Literals.PAGES_TYPE, initialValue);
+		return createPagesTypeFromString(EdatatypeColumnPackage.Literals.PAGES_TYPE, initialValue);
 	}
 
 	/**
@@ -208,6 +211,7 @@ public class EdatatypeColumnFactoryImpl extends EFactoryImpl implements Edatatyp
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static EdatatypeColumnPackage getPackage() {
 		return EdatatypeColumnPackage.eINSTANCE;
 	}

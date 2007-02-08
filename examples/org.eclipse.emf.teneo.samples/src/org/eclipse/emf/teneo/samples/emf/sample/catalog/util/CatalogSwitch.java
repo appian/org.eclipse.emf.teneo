@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CatalogSwitch.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: CatalogSwitch.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.catalog.*;
  * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage
  * @generated
  */
-public class CatalogSwitch {
+public class CatalogSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class CatalogSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class CatalogSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,35 +85,35 @@ public class CatalogSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case CatalogPackage.CATALOG_TYPE: {
 				CatalogType catalogType = (CatalogType)theEObject;
-				Object result = caseCatalogType(catalogType);
+				T result = caseCatalogType(catalogType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CatalogPackage.PRICE_TYPE: {
 				PriceType priceType = (PriceType)theEObject;
-				Object result = casePriceType(priceType);
+				T result = casePriceType(priceType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CatalogPackage.PRODUCT_TYPE: {
 				ProductType productType = (ProductType)theEObject;
-				Object result = caseProductType(productType);
+				T result = caseProductType(productType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CatalogPackage.STRING_TYPE: {
 				StringType stringType = (StringType)theEObject;
-				Object result = caseStringType(stringType);
+				T result = caseStringType(stringType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CatalogPackage.SUPPLIER_TYPE: {
 				SupplierType supplierType = (SupplierType)theEObject;
-				Object result = caseSupplierType(supplierType);
+				T result = caseSupplierType(supplierType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -132,7 +132,7 @@ public class CatalogSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCatalogType(CatalogType object) {
+	public T caseCatalogType(CatalogType object) {
 		return null;
 	}
 
@@ -147,7 +147,7 @@ public class CatalogSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePriceType(PriceType object) {
+	public T casePriceType(PriceType object) {
 		return null;
 	}
 
@@ -162,7 +162,7 @@ public class CatalogSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseProductType(ProductType object) {
+	public T caseProductType(ProductType object) {
 		return null;
 	}
 
@@ -177,7 +177,7 @@ public class CatalogSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStringType(StringType object) {
+	public T caseStringType(StringType object) {
 		return null;
 	}
 
@@ -192,7 +192,7 @@ public class CatalogSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSupplierType(SupplierType object) {
+	public T caseSupplierType(SupplierType object) {
 		return null;
 	}
 
@@ -207,7 +207,7 @@ public class CatalogSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

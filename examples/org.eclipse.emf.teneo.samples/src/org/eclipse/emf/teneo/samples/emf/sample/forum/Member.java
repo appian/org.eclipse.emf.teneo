@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Member.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: Member.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum;
 
@@ -73,7 +73,7 @@ public interface Member extends EObject {
 	 *        extendedMetaData="kind='element' name='posts'"
 	 * @generated
 	 */
-	EList getPosts();
+	EList<Post> getPosts();
 
 	/**
 	 * Returns the value of the '<em><b>Created</b></em>' reference list.
@@ -92,6 +92,6 @@ public interface Member extends EObject {
 	 *        extendedMetaData="kind='element' name='created'"
 	 * @generated
 	 */
-	EList getCreated();
+	EList<Topic> getCreated();
 
 } // Member

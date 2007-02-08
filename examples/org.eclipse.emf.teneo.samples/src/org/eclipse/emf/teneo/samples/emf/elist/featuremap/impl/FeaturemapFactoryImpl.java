@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FeaturemapFactoryImpl.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: FeaturemapFactoryImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl;
 
@@ -10,8 +10,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.teneo.samples.emf.elist.featuremap.*;
 
 /**
@@ -21,6 +23,25 @@ import org.eclipse.emf.teneo.samples.emf.elist.featuremap.*;
  * @generated
  */
 public class FeaturemapFactoryImpl extends EFactoryImpl implements FeaturemapFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static FeaturemapFactory init() {
+		try {
+			FeaturemapFactory theFeaturemapFactory = (FeaturemapFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/store/test/emf/elist/featuremap"); 
+			if (theFeaturemapFactory != null) {
+				return theFeaturemapFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new FeaturemapFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -36,6 +57,7 @@ public class FeaturemapFactoryImpl extends EFactoryImpl implements FeaturemapFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case FeaturemapPackage.PRICE_BY_QUANTITY_TYPE: return createPriceByQuantityType();
@@ -52,13 +74,11 @@ public class FeaturemapFactoryImpl extends EFactoryImpl implements FeaturemapFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case FeaturemapPackage.PRODUCT_CLASSIFICATION: {
-				ProductClassification result = ProductClassification.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-				return result;
-			}
+			case FeaturemapPackage.PRODUCT_CLASSIFICATION:
+				return createProductClassificationFromString(eDataType, initialValue);
 			case FeaturemapPackage.PRODUCT_CLASSIFICATION_OBJECT:
 				return createProductClassificationObjectFromString(eDataType, initialValue);
 			default:
@@ -71,10 +91,11 @@ public class FeaturemapFactoryImpl extends EFactoryImpl implements FeaturemapFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case FeaturemapPackage.PRODUCT_CLASSIFICATION:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertProductClassificationToString(eDataType, instanceValue);
 			case FeaturemapPackage.PRODUCT_CLASSIFICATION_OBJECT:
 				return convertProductClassificationObjectToString(eDataType, instanceValue);
 			default:
@@ -127,8 +148,28 @@ public class FeaturemapFactoryImpl extends EFactoryImpl implements FeaturemapFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ProductClassification createProductClassificationFromString(EDataType eDataType, String initialValue) {
+		ProductClassification result = ProductClassification.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertProductClassificationToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ProductClassification createProductClassificationObjectFromString(EDataType eDataType, String initialValue) {
-		return (ProductClassification)FeaturemapFactory.eINSTANCE.createFromString(FeaturemapPackage.eINSTANCE.getProductClassification(), initialValue);
+		return createProductClassificationFromString(FeaturemapPackage.Literals.PRODUCT_CLASSIFICATION, initialValue);
 	}
 
 	/**
@@ -137,7 +178,7 @@ public class FeaturemapFactoryImpl extends EFactoryImpl implements FeaturemapFac
 	 * @generated
 	 */
 	public String convertProductClassificationObjectToString(EDataType eDataType, Object instanceValue) {
-		return FeaturemapFactory.eINSTANCE.convertToString(FeaturemapPackage.eINSTANCE.getProductClassification(), instanceValue);
+		return convertProductClassificationToString(FeaturemapPackage.Literals.PRODUCT_CLASSIFICATION, instanceValue);
 	}
 
 	/**
@@ -155,6 +196,7 @@ public class FeaturemapFactoryImpl extends EFactoryImpl implements FeaturemapFac
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static FeaturemapPackage getPackage() {
 		return FeaturemapPackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemImpl.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: ItemImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage;
 
 /**
@@ -87,7 +88,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final BigDecimal USPRICE_EDEFAULT = null;
+	protected static final BigDecimal US_PRICE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getUSPrice() <em>US Price</em>}' attribute.
@@ -97,7 +98,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * @generated
 	 * @ordered
 	 */
-	protected BigDecimal uSPrice = USPRICE_EDEFAULT;
+	protected BigDecimal uSPrice = US_PRICE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
@@ -173,8 +174,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PrimerpoPackage.eINSTANCE.getItem();
+		return SchemaprimerpoPackage.Literals.ITEM;
 	}
 
 	/**
@@ -195,7 +197,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 		String oldProductName = productName;
 		productName = newProductName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.ITEM__PRODUCT_NAME, oldProductName, productName));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.ITEM__PRODUCT_NAME, oldProductName, productName));
 	}
 
 	/**
@@ -216,7 +218,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 		BigInteger oldQuantity = quantity;
 		quantity = newQuantity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.ITEM__QUANTITY, oldQuantity, quantity));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.ITEM__QUANTITY, oldQuantity, quantity));
 	}
 
 	/**
@@ -237,7 +239,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 		BigDecimal oldUSPrice = uSPrice;
 		uSPrice = newUSPrice;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.ITEM__USPRICE, oldUSPrice, uSPrice));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.ITEM__US_PRICE, oldUSPrice, uSPrice));
 	}
 
 	/**
@@ -258,7 +260,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 		String oldComment = comment;
 		comment = newComment;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.ITEM__COMMENT, oldComment, comment));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.ITEM__COMMENT, oldComment, comment));
 	}
 
 	/**
@@ -279,7 +281,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 		Object oldShipDate = shipDate;
 		shipDate = newShipDate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.ITEM__SHIP_DATE, oldShipDate, shipDate));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.ITEM__SHIP_DATE, oldShipDate, shipDate));
 	}
 
 	/**
@@ -300,7 +302,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 		String oldPartNum = partNum;
 		partNum = newPartNum;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.ITEM__PART_NUM, oldPartNum, partNum));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.ITEM__PART_NUM, oldPartNum, partNum));
 	}
 
 	/**
@@ -308,22 +310,23 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.ITEM__PRODUCT_NAME:
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.ITEM__PRODUCT_NAME:
 				return getProductName();
-			case PrimerpoPackage.ITEM__QUANTITY:
+			case SchemaprimerpoPackage.ITEM__QUANTITY:
 				return getQuantity();
-			case PrimerpoPackage.ITEM__USPRICE:
+			case SchemaprimerpoPackage.ITEM__US_PRICE:
 				return getUSPrice();
-			case PrimerpoPackage.ITEM__COMMENT:
+			case SchemaprimerpoPackage.ITEM__COMMENT:
 				return getComment();
-			case PrimerpoPackage.ITEM__SHIP_DATE:
+			case SchemaprimerpoPackage.ITEM__SHIP_DATE:
 				return getShipDate();
-			case PrimerpoPackage.ITEM__PART_NUM:
+			case SchemaprimerpoPackage.ITEM__PART_NUM:
 				return getPartNum();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -331,28 +334,29 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.ITEM__PRODUCT_NAME:
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.ITEM__PRODUCT_NAME:
 				setProductName((String)newValue);
 				return;
-			case PrimerpoPackage.ITEM__QUANTITY:
+			case SchemaprimerpoPackage.ITEM__QUANTITY:
 				setQuantity((BigInteger)newValue);
 				return;
-			case PrimerpoPackage.ITEM__USPRICE:
+			case SchemaprimerpoPackage.ITEM__US_PRICE:
 				setUSPrice((BigDecimal)newValue);
 				return;
-			case PrimerpoPackage.ITEM__COMMENT:
+			case SchemaprimerpoPackage.ITEM__COMMENT:
 				setComment((String)newValue);
 				return;
-			case PrimerpoPackage.ITEM__SHIP_DATE:
-				setShipDate((Object)newValue);
+			case SchemaprimerpoPackage.ITEM__SHIP_DATE:
+				setShipDate(newValue);
 				return;
-			case PrimerpoPackage.ITEM__PART_NUM:
+			case SchemaprimerpoPackage.ITEM__PART_NUM:
 				setPartNum((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -360,28 +364,29 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.ITEM__PRODUCT_NAME:
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.ITEM__PRODUCT_NAME:
 				setProductName(PRODUCT_NAME_EDEFAULT);
 				return;
-			case PrimerpoPackage.ITEM__QUANTITY:
+			case SchemaprimerpoPackage.ITEM__QUANTITY:
 				setQuantity(QUANTITY_EDEFAULT);
 				return;
-			case PrimerpoPackage.ITEM__USPRICE:
-				setUSPrice(USPRICE_EDEFAULT);
+			case SchemaprimerpoPackage.ITEM__US_PRICE:
+				setUSPrice(US_PRICE_EDEFAULT);
 				return;
-			case PrimerpoPackage.ITEM__COMMENT:
+			case SchemaprimerpoPackage.ITEM__COMMENT:
 				setComment(COMMENT_EDEFAULT);
 				return;
-			case PrimerpoPackage.ITEM__SHIP_DATE:
+			case SchemaprimerpoPackage.ITEM__SHIP_DATE:
 				setShipDate(SHIP_DATE_EDEFAULT);
 				return;
-			case PrimerpoPackage.ITEM__PART_NUM:
+			case SchemaprimerpoPackage.ITEM__PART_NUM:
 				setPartNum(PART_NUM_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -389,22 +394,23 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.ITEM__PRODUCT_NAME:
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.ITEM__PRODUCT_NAME:
 				return PRODUCT_NAME_EDEFAULT == null ? productName != null : !PRODUCT_NAME_EDEFAULT.equals(productName);
-			case PrimerpoPackage.ITEM__QUANTITY:
+			case SchemaprimerpoPackage.ITEM__QUANTITY:
 				return QUANTITY_EDEFAULT == null ? quantity != null : !QUANTITY_EDEFAULT.equals(quantity);
-			case PrimerpoPackage.ITEM__USPRICE:
-				return USPRICE_EDEFAULT == null ? uSPrice != null : !USPRICE_EDEFAULT.equals(uSPrice);
-			case PrimerpoPackage.ITEM__COMMENT:
+			case SchemaprimerpoPackage.ITEM__US_PRICE:
+				return US_PRICE_EDEFAULT == null ? uSPrice != null : !US_PRICE_EDEFAULT.equals(uSPrice);
+			case SchemaprimerpoPackage.ITEM__COMMENT:
 				return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
-			case PrimerpoPackage.ITEM__SHIP_DATE:
+			case SchemaprimerpoPackage.ITEM__SHIP_DATE:
 				return SHIP_DATE_EDEFAULT == null ? shipDate != null : !SHIP_DATE_EDEFAULT.equals(shipDate);
-			case PrimerpoPackage.ITEM__PART_NUM:
+			case SchemaprimerpoPackage.ITEM__PART_NUM:
 				return PART_NUM_EDEFAULT == null ? partNum != null : !PART_NUM_EDEFAULT.equals(partNum);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -412,6 +418,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

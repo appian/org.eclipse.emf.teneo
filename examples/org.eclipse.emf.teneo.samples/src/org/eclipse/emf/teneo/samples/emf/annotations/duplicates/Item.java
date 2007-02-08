@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Item.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: Item.java,v 1.3 2007/02/08 23:09:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.duplicates;
 
@@ -70,6 +70,6 @@ public interface Item extends EObject {
 	 *        extendedMetaData="kind='element' name='childItem'"
 	 * @generated
 	 */
-	EList getChildItem();
+	EList<ChildItem> getChildItem();
 
 } // Item

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.1 2006/07/11 16:57:13 mtaal Exp $
+ * $Id: BookImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.impl;
 
@@ -139,6 +139,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return CascadenotallPackage.Literals.BOOK;
 	}
@@ -321,6 +322,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CascadenotallPackage.BOOK__AUTHOR:
@@ -336,6 +338,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CascadenotallPackage.BOOK__AUTHOR:
@@ -349,6 +352,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CascadenotallPackage.BOOK__TITLE:
@@ -369,6 +373,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CascadenotallPackage.BOOK__TITLE:
@@ -392,6 +397,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CascadenotallPackage.BOOK__TITLE:
@@ -415,6 +421,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CascadenotallPackage.BOOK__TITLE:
@@ -434,6 +441,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

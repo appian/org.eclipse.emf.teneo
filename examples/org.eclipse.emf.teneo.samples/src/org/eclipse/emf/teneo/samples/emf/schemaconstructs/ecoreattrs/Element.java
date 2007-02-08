@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Element.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: Element.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs;
 
@@ -56,7 +56,7 @@ public interface Element extends EObject {
 	 * @return the value of the '<em>Names</em>' containment reference.
 	 * @see #setNames(NameList)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.EcoreattrsPackage#getElement_Names()
-	 * @model containment="true" resolveProxies="false" required="true" transient="true" volatile="true" derived="true"
+	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='names' group='#names:group'"
 	 * @generated
 	 */

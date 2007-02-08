@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CntrImpl.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: CntrImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl;
 
@@ -48,7 +48,7 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList rght = null;
+	protected EList<Rght> rght = null;
 
 	/**
 	 * The cached value of the '{@link #getLft() <em>Lft</em>}' reference list.
@@ -58,7 +58,7 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList lft = null;
+	protected EList<Lft> lft = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,6 +74,7 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ManytomanyPackage.Literals.CNTR;
 	}
@@ -83,9 +84,9 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRght() {
+	public EList<Rght> getRght() {
 		if (rght == null) {
-			rght = new EObjectWithInverseEList.ManyInverse(Rght.class, this, ManytomanyPackage.CNTR__RGHT, ManytomanyPackage.RGHT__CNTR);
+			rght = new EObjectWithInverseEList.ManyInverse<Rght>(Rght.class, this, ManytomanyPackage.CNTR__RGHT, ManytomanyPackage.RGHT__CNTR);
 		}
 		return rght;
 	}
@@ -95,9 +96,9 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLft() {
+	public EList<Lft> getLft() {
 		if (lft == null) {
-			lft = new EObjectWithInverseEList.ManyInverse(Lft.class, this, ManytomanyPackage.CNTR__LFT, ManytomanyPackage.LFT__CNTR);
+			lft = new EObjectWithInverseEList.ManyInverse<Lft>(Lft.class, this, ManytomanyPackage.CNTR__LFT, ManytomanyPackage.LFT__CNTR);
 		}
 		return lft;
 	}
@@ -107,12 +108,14 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ManytomanyPackage.CNTR__RGHT:
-				return ((InternalEList)getRght()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRght()).basicAdd(otherEnd, msgs);
 			case ManytomanyPackage.CNTR__LFT:
-				return ((InternalEList)getLft()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLft()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -122,12 +125,13 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ManytomanyPackage.CNTR__RGHT:
-				return ((InternalEList)getRght()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getRght()).basicRemove(otherEnd, msgs);
 			case ManytomanyPackage.CNTR__LFT:
-				return ((InternalEList)getLft()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getLft()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -137,6 +141,7 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ManytomanyPackage.CNTR__RGHT:
@@ -152,15 +157,17 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ManytomanyPackage.CNTR__RGHT:
 				getRght().clear();
-				getRght().addAll((Collection)newValue);
+				getRght().addAll((Collection<? extends Rght>)newValue);
 				return;
 			case ManytomanyPackage.CNTR__LFT:
 				getLft().clear();
-				getLft().addAll((Collection)newValue);
+				getLft().addAll((Collection<? extends Lft>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -171,6 +178,7 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ManytomanyPackage.CNTR__RGHT:
@@ -188,6 +196,7 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ManytomanyPackage.CNTR__RGHT:

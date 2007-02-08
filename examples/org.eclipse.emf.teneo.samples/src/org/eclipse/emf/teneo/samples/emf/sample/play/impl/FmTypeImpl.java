@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FmTypeImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: FmTypeImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.impl;
 
@@ -42,7 +42,7 @@ public class FmTypeImpl extends EObjectImpl implements FmType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList p = null;
+	protected EList<String> p = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -58,8 +58,9 @@ public class FmTypeImpl extends EObjectImpl implements FmType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PlayPackage.eINSTANCE.getFmType();
+		return PlayPackage.Literals.FM_TYPE;
 	}
 
 	/**
@@ -67,9 +68,9 @@ public class FmTypeImpl extends EObjectImpl implements FmType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getP() {
+	public EList<String> getP() {
 		if (p == null) {
-			p = new EDataTypeEList(String.class, this, PlayPackage.FM_TYPE__P);
+			p = new EDataTypeEList<String>(String.class, this, PlayPackage.FM_TYPE__P);
 		}
 		return p;
 	}
@@ -79,12 +80,13 @@ public class FmTypeImpl extends EObjectImpl implements FmType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PlayPackage.FM_TYPE__P:
 				return getP();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -92,14 +94,16 @@ public class FmTypeImpl extends EObjectImpl implements FmType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PlayPackage.FM_TYPE__P:
 				getP().clear();
-				getP().addAll((Collection)newValue);
+				getP().addAll((Collection<? extends String>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -107,13 +111,14 @@ public class FmTypeImpl extends EObjectImpl implements FmType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PlayPackage.FM_TYPE__P:
 				getP().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -121,12 +126,13 @@ public class FmTypeImpl extends EObjectImpl implements FmType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PlayPackage.FM_TYPE__P:
 				return p != null && !p.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -134,6 +140,7 @@ public class FmTypeImpl extends EObjectImpl implements FmType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

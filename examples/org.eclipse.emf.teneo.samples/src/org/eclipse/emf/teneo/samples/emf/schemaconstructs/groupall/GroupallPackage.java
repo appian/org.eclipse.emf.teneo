@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GroupallPackage.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: GroupallPackage.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall;
 
@@ -41,7 +41,7 @@ public interface GroupallPackage extends EPackage{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/groupall";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/groupall";
 
 	/**
 	 * The package namespace name.
@@ -97,7 +97,7 @@ public interface GroupallPackage extends EPackage{
 	int ADDRESS__LONG_NAME = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Address</em>' class.
+	 * The number of structural features of the '<em>Address</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -152,7 +152,7 @@ public interface GroupallPackage extends EPackage{
 	int ADDRESS_GROUP__SIMPLE_ADDRESS = 3;
 
 	/**
-	 * The number of structural features of the the '<em>Address Group</em>' class.
+	 * The number of structural features of the '<em>Address Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -207,7 +207,7 @@ public interface GroupallPackage extends EPackage{
 	int ADDRESS_LIST__BILL_TO = 3;
 
 	/**
-	 * The number of structural features of the the '<em>Address List</em>' class.
+	 * The number of structural features of the '<em>Address List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -271,7 +271,7 @@ public interface GroupallPackage extends EPackage{
 	int DOCUMENT_ROOT__SIMPLE_ALL_MAP = 4;
 
 	/**
-	 * The number of structural features of the the '<em>Document Root</em>' class.
+	 * The number of structural features of the '<em>Document Root</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -326,7 +326,7 @@ public interface GroupallPackage extends EPackage{
 	int SIMPLE_ALL_MAP_TYPE__CCC = 3;
 
 	/**
-	 * The number of structural features of the the '<em>Simple All Map Type</em>' class.
+	 * The number of structural features of the '<em>Simple All Map Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -372,7 +372,7 @@ public interface GroupallPackage extends EPackage{
 	int SIMPLE_ALL_TYPE__CCC = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Simple All Type</em>' class.
+	 * The number of structural features of the '<em>Simple All Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -702,5 +702,264 @@ public interface GroupallPackage extends EPackage{
 	 * @generated
 	 */
 	GroupallFactory getGroupallFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.AddressImpl <em>Address</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.AddressImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.GroupallPackageImpl#getAddress()
+		 * @generated
+		 */
+		EClass ADDRESS = eINSTANCE.getAddress();
+
+		/**
+		 * The meta object literal for the '<em><b>Group</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS__GROUP = eINSTANCE.getAddress_Group();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS__NAME = eINSTANCE.getAddress_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Long Name</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS__LONG_NAME = eINSTANCE.getAddress_LongName();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.AddressGroupImpl <em>Address Group</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.AddressGroupImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.GroupallPackageImpl#getAddressGroup()
+		 * @generated
+		 */
+		EClass ADDRESS_GROUP = eINSTANCE.getAddressGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Group Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS_GROUP__GROUP_NAME = eINSTANCE.getAddressGroup_GroupName();
+
+		/**
+		 * The meta object literal for the '<em><b>Ship To</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADDRESS_GROUP__SHIP_TO = eINSTANCE.getAddressGroup_ShipTo();
+
+		/**
+		 * The meta object literal for the '<em><b>Bill To</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADDRESS_GROUP__BILL_TO = eINSTANCE.getAddressGroup_BillTo();
+
+		/**
+		 * The meta object literal for the '<em><b>Simple Address</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS_GROUP__SIMPLE_ADDRESS = eINSTANCE.getAddressGroup_SimpleAddress();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.AddressListImpl <em>Address List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.AddressListImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.GroupallPackageImpl#getAddressList()
+		 * @generated
+		 */
+		EClass ADDRESS_LIST = eINSTANCE.getAddressList();
+
+		/**
+		 * The meta object literal for the '<em><b>Group Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS_LIST__GROUP_NAME = eINSTANCE.getAddressList_GroupName();
+
+		/**
+		 * The meta object literal for the '<em><b>Addrs</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS_LIST__ADDRS = eINSTANCE.getAddressList_Addrs();
+
+		/**
+		 * The meta object literal for the '<em><b>Ship To</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADDRESS_LIST__SHIP_TO = eINSTANCE.getAddressList_ShipTo();
+
+		/**
+		 * The meta object literal for the '<em><b>Bill To</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADDRESS_LIST__BILL_TO = eINSTANCE.getAddressList_BillTo();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.DocumentRootImpl <em>Document Root</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.DocumentRootImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.GroupallPackageImpl#getDocumentRoot()
+		 * @generated
+		 */
+		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__MIXED = eINSTANCE.getDocumentRoot_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>XMLNS Prefix Map</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__XMLNS_PREFIX_MAP = eINSTANCE.getDocumentRoot_XMLNSPrefixMap();
+
+		/**
+		 * The meta object literal for the '<em><b>XSI Schema Location</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = eINSTANCE.getDocumentRoot_XSISchemaLocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Simple All</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__SIMPLE_ALL = eINSTANCE.getDocumentRoot_SimpleAll();
+
+		/**
+		 * The meta object literal for the '<em><b>Simple All Map</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__SIMPLE_ALL_MAP = eINSTANCE.getDocumentRoot_SimpleAllMap();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.SimpleAllMapTypeImpl <em>Simple All Map Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.SimpleAllMapTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.GroupallPackageImpl#getSimpleAllMapType()
+		 * @generated
+		 */
+		EClass SIMPLE_ALL_MAP_TYPE = eINSTANCE.getSimpleAllMapType();
+
+		/**
+		 * The meta object literal for the '<em><b>All Map</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_ALL_MAP_TYPE__ALL_MAP = eINSTANCE.getSimpleAllMapType_AllMap();
+
+		/**
+		 * The meta object literal for the '<em><b>Aaa</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_ALL_MAP_TYPE__AAA = eINSTANCE.getSimpleAllMapType_Aaa();
+
+		/**
+		 * The meta object literal for the '<em><b>Bbb</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_ALL_MAP_TYPE__BBB = eINSTANCE.getSimpleAllMapType_Bbb();
+
+		/**
+		 * The meta object literal for the '<em><b>Ccc</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_ALL_MAP_TYPE__CCC = eINSTANCE.getSimpleAllMapType_Ccc();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.SimpleAllTypeImpl <em>Simple All Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.SimpleAllTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.GroupallPackageImpl#getSimpleAllType()
+		 * @generated
+		 */
+		EClass SIMPLE_ALL_TYPE = eINSTANCE.getSimpleAllType();
+
+		/**
+		 * The meta object literal for the '<em><b>Aaa</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_ALL_TYPE__AAA = eINSTANCE.getSimpleAllType_Aaa();
+
+		/**
+		 * The meta object literal for the '<em><b>Bbb</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_ALL_TYPE__BBB = eINSTANCE.getSimpleAllType_Bbb();
+
+		/**
+		 * The meta object literal for the '<em><b>Ccc</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_ALL_TYPE__CCC = eINSTANCE.getSimpleAllType_Ccc();
+
+	}
 
 } //GroupallPackage

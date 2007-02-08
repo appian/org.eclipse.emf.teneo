@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributesPackageImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: AttributesPackageImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl;
 
@@ -106,7 +106,7 @@ public class AttributesPackageImpl extends EPackageImpl implements AttributesPac
 		isInited = true;
 
 		// Initialize simple dependencies
-		XMLTypePackageImpl.init();
+		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theAttributesPackage.createPackageContents();
@@ -326,7 +326,11 @@ public class AttributesPackageImpl extends EPackageImpl implements AttributesPac
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XMLTypePackageImpl theXMLTypePackage = (XMLTypePackageImpl)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

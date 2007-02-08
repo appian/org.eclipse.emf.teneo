@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedidSwitch.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: EmbeddedidSwitch.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.EmbeddedidPackage
  * @generated
  */
-public class EmbeddedidSwitch {
+public class EmbeddedidSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class EmbeddedidSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class EmbeddedidSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,17 +85,17 @@ public class EmbeddedidSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case EmbeddedidPackage.NAME: {
 				Name name = (Name)theEObject;
-				Object result = caseName(name);
+				T result = caseName(name);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EmbeddedidPackage.PERSON: {
 				Person person = (Person)theEObject;
-				Object result = casePerson(person);
+				T result = casePerson(person);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -114,7 +114,7 @@ public class EmbeddedidSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseName(Name object) {
+	public T caseName(Name object) {
 		return null;
 	}
 
@@ -129,7 +129,7 @@ public class EmbeddedidSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePerson(Person object) {
+	public T casePerson(Person object) {
 		return null;
 	}
 
@@ -144,7 +144,7 @@ public class EmbeddedidSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

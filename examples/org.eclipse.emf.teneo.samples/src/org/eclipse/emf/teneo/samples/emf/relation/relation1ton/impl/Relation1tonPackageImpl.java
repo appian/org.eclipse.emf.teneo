@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1tonPackageImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: Relation1tonPackageImpl.java,v 1.3 2007/02/08 23:09:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl;
 
@@ -528,6 +528,10 @@ public class Relation1tonPackageImpl extends EPackageImpl implements Relation1to
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DetachtestAdapterFactory.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: DetachtestAdapterFactory.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.util;
 
@@ -52,6 +52,7 @@ public class DetachtestAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +69,22 @@ public class DetachtestAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DetachtestSwitch modelSwitch =
-		new DetachtestSwitch() {
-			public Object caseTestA(TestA object) {
+	protected DetachtestSwitch<Adapter> modelSwitch =
+		new DetachtestSwitch<Adapter>() {
+			@Override
+			public Adapter caseTestA(TestA object) {
 				return createTestAAdapter();
 			}
-			public Object caseTestB(TestB object) {
+			@Override
+			public Adapter caseTestB(TestB object) {
 				return createTestBAdapter();
 			}
-			public Object caseTestC(TestC object) {
+			@Override
+			public Adapter caseTestC(TestC object) {
 				return createTestCAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +97,9 @@ public class DetachtestAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

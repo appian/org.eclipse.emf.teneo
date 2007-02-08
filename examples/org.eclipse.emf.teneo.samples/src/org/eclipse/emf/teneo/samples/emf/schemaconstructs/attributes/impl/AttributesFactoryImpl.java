@@ -2,15 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributesFactoryImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: AttributesFactoryImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.*;
 
 /**
@@ -20,6 +22,25 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.*;
  * @generated
  */
 public class AttributesFactoryImpl extends EFactoryImpl implements AttributesFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static AttributesFactory init() {
+		try {
+			AttributesFactory theAttributesFactory = (AttributesFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/attributes"); 
+			if (theAttributesFactory != null) {
+				return theAttributesFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new AttributesFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -35,6 +56,7 @@ public class AttributesFactoryImpl extends EFactoryImpl implements AttributesFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case AttributesPackage.A: return createA();
@@ -90,6 +112,7 @@ public class AttributesFactoryImpl extends EFactoryImpl implements AttributesFac
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static AttributesPackage getPackage() {
 		return AttributesPackage.eINSTANCE;
 	}

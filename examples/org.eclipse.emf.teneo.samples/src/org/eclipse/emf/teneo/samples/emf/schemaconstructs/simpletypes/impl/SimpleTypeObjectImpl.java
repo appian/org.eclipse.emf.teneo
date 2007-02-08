@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleTypeObjectImpl.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: SimpleTypeObjectImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -344,6 +344,7 @@ public class SimpleTypeObjectImpl extends EObjectImpl implements SimpleTypeObjec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return SimpletypesPackage.Literals.SIMPLE_TYPE_OBJECT;
 	}
@@ -813,6 +814,7 @@ public class SimpleTypeObjectImpl extends EObjectImpl implements SimpleTypeObjec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_TYPE_OBJECT__CODE:
@@ -844,6 +846,7 @@ public class SimpleTypeObjectImpl extends EObjectImpl implements SimpleTypeObjec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_TYPE_OBJECT__CODE:
@@ -885,6 +888,7 @@ public class SimpleTypeObjectImpl extends EObjectImpl implements SimpleTypeObjec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_TYPE_OBJECT__CODE:
@@ -926,6 +930,7 @@ public class SimpleTypeObjectImpl extends EObjectImpl implements SimpleTypeObjec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_TYPE_OBJECT__CODE:
@@ -957,6 +962,7 @@ public class SimpleTypeObjectImpl extends EObjectImpl implements SimpleTypeObjec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RestrictionAdapterFactory.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: RestrictionAdapterFactory.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.util;
 
@@ -52,6 +52,7 @@ public class RestrictionAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,15 +69,18 @@ public class RestrictionAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RestrictionSwitch modelSwitch =
-		new RestrictionSwitch() {
-			public Object caseMember(Member object) {
+	protected RestrictionSwitch<Adapter> modelSwitch =
+		new RestrictionSwitch<Adapter>() {
+			@Override
+			public Adapter caseMember(Member object) {
 				return createMemberAdapter();
 			}
-			public Object caseXMLDeviant(XMLDeviant object) {
+			@Override
+			public Adapter caseXMLDeviant(XMLDeviant object) {
 				return createXMLDeviantAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -89,8 +93,9 @@ public class RestrictionAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

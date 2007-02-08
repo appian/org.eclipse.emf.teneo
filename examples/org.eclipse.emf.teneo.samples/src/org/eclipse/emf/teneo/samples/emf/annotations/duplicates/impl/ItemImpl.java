@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemImpl.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: ItemImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.duplicates.impl;
 
@@ -69,7 +69,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList childItem = null;
+	protected EList<ChildItem> childItem = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,6 +85,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return DuplicatesPackage.Literals.ITEM;
 	}
@@ -115,9 +116,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getChildItem() {
+	public EList<ChildItem> getChildItem() {
 		if (childItem == null) {
-			childItem = new EObjectContainmentEList(ChildItem.class, this, DuplicatesPackage.ITEM__CHILD_ITEM);
+			childItem = new EObjectContainmentEList<ChildItem>(ChildItem.class, this, DuplicatesPackage.ITEM__CHILD_ITEM);
 		}
 		return childItem;
 	}
@@ -127,10 +128,11 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case DuplicatesPackage.ITEM__CHILD_ITEM:
-				return ((InternalEList)getChildItem()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getChildItem()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -140,6 +142,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DuplicatesPackage.ITEM__NAME:
@@ -155,6 +158,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DuplicatesPackage.ITEM__NAME:
@@ -162,7 +167,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 				return;
 			case DuplicatesPackage.ITEM__CHILD_ITEM:
 				getChildItem().clear();
-				getChildItem().addAll((Collection)newValue);
+				getChildItem().addAll((Collection<? extends ChildItem>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -173,6 +178,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case DuplicatesPackage.ITEM__NAME:
@@ -190,6 +196,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case DuplicatesPackage.ITEM__NAME:
@@ -205,6 +212,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

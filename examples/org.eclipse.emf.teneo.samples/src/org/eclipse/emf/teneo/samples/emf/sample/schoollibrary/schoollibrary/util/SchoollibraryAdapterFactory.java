@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SchoollibraryAdapterFactory.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: SchoollibraryAdapterFactory.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.util;
 
@@ -55,6 +55,7 @@ public class SchoollibraryAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -71,24 +72,30 @@ public class SchoollibraryAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SchoollibrarySwitch modelSwitch =
-		new SchoollibrarySwitch() {
-			public Object caseAsset(Asset object) {
+	protected SchoollibrarySwitch<Adapter> modelSwitch =
+		new SchoollibrarySwitch<Adapter>() {
+			@Override
+			public Adapter caseAsset(Asset object) {
 				return createAssetAdapter();
 			}
-			public Object caseSchoolBook(SchoolBook object) {
+			@Override
+			public Adapter caseSchoolBook(SchoolBook object) {
 				return createSchoolBookAdapter();
 			}
-			public Object caseSchoolLibrary(SchoolLibrary object) {
+			@Override
+			public Adapter caseSchoolLibrary(SchoolLibrary object) {
 				return createSchoolLibraryAdapter();
 			}
-			public Object caseBook(Book object) {
+			@Override
+			public Adapter caseBook(Book object) {
 				return createBookAdapter();
 			}
-			public Object caseLibrary(Library object) {
+			@Override
+			public Adapter caseLibrary(Library object) {
 				return createLibraryAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -101,8 +108,9 @@ public class SchoollibraryAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

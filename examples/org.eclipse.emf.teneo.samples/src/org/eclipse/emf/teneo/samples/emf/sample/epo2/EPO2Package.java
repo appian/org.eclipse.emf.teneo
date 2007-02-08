@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EPO2Package.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: EPO2Package.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2;
 
@@ -43,7 +43,7 @@ public interface EPO2Package extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/extendedpo2";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/extendedpo2";
 
 	/**
 	 * The package namespace name.
@@ -135,7 +135,7 @@ public interface EPO2Package extends EPackage {
 	int ITEM__PART_NUM = 6;
 
 	/**
-	 * The number of structural features of the the '<em>Item</em>' class.
+	 * The number of structural features of the '<em>Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -172,7 +172,7 @@ public interface EPO2Package extends EPackage {
 	int ADDRESS__COUNTRY = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Address</em>' class.
+	 * The number of structural features of the '<em>Address</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -245,7 +245,7 @@ public interface EPO2Package extends EPackage {
 	int US_ADDRESS__ZIP = ADDRESS_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>US Address</em>' class.
+	 * The number of structural features of the '<em>US Address</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -345,7 +345,7 @@ public interface EPO2Package extends EPackage {
 	int PURCHASE_ORDER__PREVIOUS_ORDER = 8;
 
 	/**
-	 * The number of structural features of the the '<em>Purchase Order</em>' class.
+	 * The number of structural features of the '<em>Purchase Order</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -409,7 +409,7 @@ public interface EPO2Package extends EPackage {
 	int SUPPLIER__SHIPPED_ORDERS = 4;
 
 	/**
-	 * The number of structural features of the the '<em>Supplier</em>' class.
+	 * The number of structural features of the '<em>Supplier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -446,7 +446,7 @@ public interface EPO2Package extends EPackage {
 	int CUSTOMER__ORDERS = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Customer</em>' class.
+	 * The number of structural features of the '<em>Customer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -501,7 +501,7 @@ public interface EPO2Package extends EPackage {
 	int GLOBAL_ADDRESS__LOCATION = ADDRESS_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the the '<em>Global Address</em>' class.
+	 * The number of structural features of the '<em>Global Address</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -529,7 +529,7 @@ public interface EPO2Package extends EPackage {
 	int GLOBAL_LOCATION__COUNTRY_CODE = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Global Location</em>' class.
+	 * The number of structural features of the '<em>Global Location</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1029,5 +1029,378 @@ public interface EPO2Package extends EPackage {
 	 * @generated
 	 */
 	EPO2Factory getEPO2Factory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.ItemImpl <em>Item</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.ItemImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getItem()
+		 * @generated
+		 */
+		EClass ITEM = eINSTANCE.getItem();
+
+		/**
+		 * The meta object literal for the '<em><b>Order</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ITEM__ORDER = eINSTANCE.getItem_Order();
+
+		/**
+		 * The meta object literal for the '<em><b>Product Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITEM__PRODUCT_NAME = eINSTANCE.getItem_ProductName();
+
+		/**
+		 * The meta object literal for the '<em><b>Quantity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITEM__QUANTITY = eINSTANCE.getItem_Quantity();
+
+		/**
+		 * The meta object literal for the '<em><b>US Price</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITEM__US_PRICE = eINSTANCE.getItem_USPrice();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITEM__COMMENT = eINSTANCE.getItem_Comment();
+
+		/**
+		 * The meta object literal for the '<em><b>Ship Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITEM__SHIP_DATE = eINSTANCE.getItem_ShipDate();
+
+		/**
+		 * The meta object literal for the '<em><b>Part Num</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITEM__PART_NUM = eINSTANCE.getItem_PartNum();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.USAddressImpl <em>US Address</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.USAddressImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getUSAddress()
+		 * @generated
+		 */
+		EClass US_ADDRESS = eINSTANCE.getUSAddress();
+
+		/**
+		 * The meta object literal for the '<em><b>Street</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute US_ADDRESS__STREET = eINSTANCE.getUSAddress_Street();
+
+		/**
+		 * The meta object literal for the '<em><b>City</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute US_ADDRESS__CITY = eINSTANCE.getUSAddress_City();
+
+		/**
+		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute US_ADDRESS__STATE = eINSTANCE.getUSAddress_State();
+
+		/**
+		 * The meta object literal for the '<em><b>Zip</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute US_ADDRESS__ZIP = eINSTANCE.getUSAddress_Zip();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.PurchaseOrderImpl <em>Purchase Order</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.PurchaseOrderImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getPurchaseOrder()
+		 * @generated
+		 */
+		EClass PURCHASE_ORDER = eINSTANCE.getPurchaseOrder();
+
+		/**
+		 * The meta object literal for the '<em><b>Items</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PURCHASE_ORDER__ITEMS = eINSTANCE.getPurchaseOrder_Items();
+
+		/**
+		 * The meta object literal for the '<em><b>Bill To</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PURCHASE_ORDER__BILL_TO = eINSTANCE.getPurchaseOrder_BillTo();
+
+		/**
+		 * The meta object literal for the '<em><b>Ship To</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PURCHASE_ORDER__SHIP_TO = eINSTANCE.getPurchaseOrder_ShipTo();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PURCHASE_ORDER__COMMENT = eINSTANCE.getPurchaseOrder_Comment();
+
+		/**
+		 * The meta object literal for the '<em><b>Order Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PURCHASE_ORDER__ORDER_DATE = eINSTANCE.getPurchaseOrder_OrderDate();
+
+		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PURCHASE_ORDER__STATUS = eINSTANCE.getPurchaseOrder_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Total Amount</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PURCHASE_ORDER__TOTAL_AMOUNT = eINSTANCE.getPurchaseOrder_TotalAmount();
+
+		/**
+		 * The meta object literal for the '<em><b>Customer</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PURCHASE_ORDER__CUSTOMER = eINSTANCE.getPurchaseOrder_Customer();
+
+		/**
+		 * The meta object literal for the '<em><b>Previous Order</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PURCHASE_ORDER__PREVIOUS_ORDER = eINSTANCE.getPurchaseOrder_PreviousOrder();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.AddressImpl <em>Address</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.AddressImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getAddress()
+		 * @generated
+		 */
+		EClass ADDRESS = eINSTANCE.getAddress();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS__NAME = eINSTANCE.getAddress_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Country</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS__COUNTRY = eINSTANCE.getAddress_Country();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.SupplierImpl <em>Supplier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.SupplierImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getSupplier()
+		 * @generated
+		 */
+		EClass SUPPLIER = eINSTANCE.getSupplier();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUPPLIER__NAME = eINSTANCE.getSupplier_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Customers</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUPPLIER__CUSTOMERS = eINSTANCE.getSupplier_Customers();
+
+		/**
+		 * The meta object literal for the '<em><b>Orders</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUPPLIER__ORDERS = eINSTANCE.getSupplier_Orders();
+
+		/**
+		 * The meta object literal for the '<em><b>Pending Orders</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUPPLIER__PENDING_ORDERS = eINSTANCE.getSupplier_PendingOrders();
+
+		/**
+		 * The meta object literal for the '<em><b>Shipped Orders</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUPPLIER__SHIPPED_ORDERS = eINSTANCE.getSupplier_ShippedOrders();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.CustomerImpl <em>Customer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.CustomerImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getCustomer()
+		 * @generated
+		 */
+		EClass CUSTOMER = eINSTANCE.getCustomer();
+
+		/**
+		 * The meta object literal for the '<em><b>Customer ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOMER__CUSTOMER_ID = eINSTANCE.getCustomer_CustomerID();
+
+		/**
+		 * The meta object literal for the '<em><b>Orders</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CUSTOMER__ORDERS = eINSTANCE.getCustomer_Orders();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.GlobalAddressImpl <em>Global Address</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.GlobalAddressImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getGlobalAddress()
+		 * @generated
+		 */
+		EClass GLOBAL_ADDRESS = eINSTANCE.getGlobalAddress();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GLOBAL_ADDRESS__LOCATION = eINSTANCE.getGlobalAddress_Location();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.GlobalLocationImpl <em>Global Location</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.GlobalLocationImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getGlobalLocation()
+		 * @generated
+		 */
+		EClass GLOBAL_LOCATION = eINSTANCE.getGlobalLocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Country Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GLOBAL_LOCATION__COUNTRY_CODE = eINSTANCE.getGlobalLocation_CountryCode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.epo2.OrderStatus <em>Order Status</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.OrderStatus
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getOrderStatus()
+		 * @generated
+		 */
+		EEnum ORDER_STATUS = eINSTANCE.getOrderStatus();
+
+		/**
+		 * The meta object literal for the '<em>SKU</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getSKU()
+		 * @generated
+		 */
+		EDataType SKU = eINSTANCE.getSKU();
+
+		/**
+		 * The meta object literal for the '<em>Date</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.Date
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.EPO2PackageImpl#getDate()
+		 * @generated
+		 */
+		EDataType DATE = eINSTANCE.getDate();
+
+	}
 
 } //EPO2Package

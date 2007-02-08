@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Element.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: Element.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup;
 
@@ -105,11 +105,11 @@ public interface Element extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>C</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.NestedgroupPackage#getElement_C()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.CType" containment="true" resolveProxies="false" required="true" transient="true" volatile="true" derived="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.CType" containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='C' group='#C:group'"
 	 * @generated
 	 */
-	EList getC();
+	EList<CType> getC();
 
 	/**
 	 * Returns the value of the '<em><b>Recursive</b></em>' containment reference.
@@ -122,7 +122,7 @@ public interface Element extends EObject{
 	 * @return the value of the '<em>Recursive</em>' containment reference.
 	 * @see #setRecursive(Element)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.NestedgroupPackage#getElement_Recursive()
-	 * @model containment="true" resolveProxies="false" required="true" transient="true" volatile="true" derived="true"
+	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='recursive'"
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: USAddressImpl.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
+ * $Id: USAddressImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -124,8 +124,9 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return EPO2Package.eINSTANCE.getUSAddress();
+		return EPO2Package.Literals.US_ADDRESS;
 	}
 
 	/**
@@ -217,12 +218,9 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case EPO2Package.US_ADDRESS__NAME:
-				return getName();
-			case EPO2Package.US_ADDRESS__COUNTRY:
-				return getCountry();
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case EPO2Package.US_ADDRESS__STREET:
 				return getStreet();
 			case EPO2Package.US_ADDRESS__CITY:
@@ -232,7 +230,7 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 			case EPO2Package.US_ADDRESS__ZIP:
 				return new Integer(getZip());
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -240,14 +238,9 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case EPO2Package.US_ADDRESS__NAME:
-				setName((String)newValue);
-				return;
-			case EPO2Package.US_ADDRESS__COUNTRY:
-				setCountry((String)newValue);
-				return;
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case EPO2Package.US_ADDRESS__STREET:
 				setStreet((String)newValue);
 				return;
@@ -261,7 +254,7 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 				setZip(((Integer)newValue).intValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -269,14 +262,9 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case EPO2Package.US_ADDRESS__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case EPO2Package.US_ADDRESS__COUNTRY:
-				setCountry(COUNTRY_EDEFAULT);
-				return;
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case EPO2Package.US_ADDRESS__STREET:
 				setStreet(STREET_EDEFAULT);
 				return;
@@ -290,7 +278,7 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 				setZip(ZIP_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -298,12 +286,9 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case EPO2Package.US_ADDRESS__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case EPO2Package.US_ADDRESS__COUNTRY:
-				return COUNTRY_EDEFAULT == null ? country != null : !COUNTRY_EDEFAULT.equals(country);
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case EPO2Package.US_ADDRESS__STREET:
 				return STREET_EDEFAULT == null ? street != null : !STREET_EDEFAULT.equals(street);
 			case EPO2Package.US_ADDRESS__CITY:
@@ -313,7 +298,7 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 			case EPO2Package.US_ADDRESS__ZIP:
 				return zip != ZIP_EDEFAULT;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -321,6 +306,7 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

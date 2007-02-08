@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentRootImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: DocumentRootImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.impl;
 
@@ -85,7 +85,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap xMLNSPrefixMap = null;
+	protected EMap<String, String> xMLNSPrefixMap = null;
 
 	/**
 	 * The cached value of the '{@link #getXSISchemaLocation() <em>XSI Schema Location</em>}' map.
@@ -95,7 +95,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap xSISchemaLocation = null;
+	protected EMap<String, String> xSISchemaLocation = null;
 
 	/**
 	 * The default value of the '{@link #getGroupDescription() <em>Group Description</em>}' attribute.
@@ -201,8 +201,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PlayPackage.eINSTANCE.getDocumentRoot();
+		return PlayPackage.Literals.DOCUMENT_ROOT;
 	}
 
 	/**
@@ -222,9 +223,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap getXMLNSPrefixMap() {
+	public EMap<String, String> getXMLNSPrefixMap() {
 		if (xMLNSPrefixMap == null) {
-			xMLNSPrefixMap = new EcoreEMap(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class, this, PlayPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
+			xMLNSPrefixMap = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, PlayPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
 		}
 		return xMLNSPrefixMap;
 	}
@@ -234,9 +235,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap getXSISchemaLocation() {
+	public EMap<String, String> getXSISchemaLocation() {
 		if (xSISchemaLocation == null) {
-			xSISchemaLocation = new EcoreEMap(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class, this, PlayPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
+			xSISchemaLocation = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, PlayPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
 		}
 		return xSISchemaLocation;
 	}
@@ -247,7 +248,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public ActType getAct() {
-		return (ActType)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_Act(), true);
+		return (ActType)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__ACT, true);
 	}
 
 	/**
@@ -256,7 +257,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public NotificationChain basicSetAct(ActType newAct, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.eINSTANCE.getDocumentRoot_Act(), newAct, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.Literals.DOCUMENT_ROOT__ACT, newAct, msgs);
 	}
 
 	/**
@@ -265,7 +266,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setAct(ActType newAct) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_Act(), newAct);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__ACT, newAct);
 	}
 
 	/**
@@ -274,7 +275,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public FmType getFm() {
-		return (FmType)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_Fm(), true);
+		return (FmType)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__FM, true);
 	}
 
 	/**
@@ -283,7 +284,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public NotificationChain basicSetFm(FmType newFm, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.eINSTANCE.getDocumentRoot_Fm(), newFm, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.Literals.DOCUMENT_ROOT__FM, newFm, msgs);
 	}
 
 	/**
@@ -292,7 +293,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setFm(FmType newFm) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_Fm(), newFm);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__FM, newFm);
 	}
 
 	/**
@@ -301,7 +302,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public String getGroupDescription() {
-		return (String)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_GroupDescription(), true);
+		return (String)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__GROUP_DESCRIPTION, true);
 	}
 
 	/**
@@ -310,7 +311,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setGroupDescription(String newGroupDescription) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_GroupDescription(), newGroupDescription);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__GROUP_DESCRIPTION, newGroupDescription);
 	}
 
 	/**
@@ -319,7 +320,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public String getLine() {
-		return (String)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_Line(), true);
+		return (String)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__LINE, true);
 	}
 
 	/**
@@ -328,7 +329,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setLine(String newLine) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_Line(), newLine);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__LINE, newLine);
 	}
 
 	/**
@@ -337,7 +338,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public String getP() {
-		return (String)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_P(), true);
+		return (String)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__P, true);
 	}
 
 	/**
@@ -346,7 +347,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setP(String newP) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_P(), newP);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__P, newP);
 	}
 
 	/**
@@ -355,7 +356,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public String getPersona() {
-		return (String)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_Persona(), true);
+		return (String)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__PERSONA, true);
 	}
 
 	/**
@@ -364,7 +365,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setPersona(String newPersona) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_Persona(), newPersona);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__PERSONA, newPersona);
 	}
 
 	/**
@@ -373,7 +374,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public PersonaeType getPersonae() {
-		return (PersonaeType)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_Personae(), true);
+		return (PersonaeType)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__PERSONAE, true);
 	}
 
 	/**
@@ -382,7 +383,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public NotificationChain basicSetPersonae(PersonaeType newPersonae, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.eINSTANCE.getDocumentRoot_Personae(), newPersonae, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.Literals.DOCUMENT_ROOT__PERSONAE, newPersonae, msgs);
 	}
 
 	/**
@@ -391,7 +392,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setPersonae(PersonaeType newPersonae) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_Personae(), newPersonae);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__PERSONAE, newPersonae);
 	}
 
 	/**
@@ -400,7 +401,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public PersonaGroupType getPersonaGroup() {
-		return (PersonaGroupType)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_PersonaGroup(), true);
+		return (PersonaGroupType)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__PERSONA_GROUP, true);
 	}
 
 	/**
@@ -409,7 +410,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public NotificationChain basicSetPersonaGroup(PersonaGroupType newPersonaGroup, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.eINSTANCE.getDocumentRoot_PersonaGroup(), newPersonaGroup, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.Literals.DOCUMENT_ROOT__PERSONA_GROUP, newPersonaGroup, msgs);
 	}
 
 	/**
@@ -418,7 +419,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setPersonaGroup(PersonaGroupType newPersonaGroup) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_PersonaGroup(), newPersonaGroup);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__PERSONA_GROUP, newPersonaGroup);
 	}
 
 	/**
@@ -427,7 +428,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public PlayType getPlay() {
-		return (PlayType)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_Play(), true);
+		return (PlayType)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__PLAY, true);
 	}
 
 	/**
@@ -436,7 +437,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public NotificationChain basicSetPlay(PlayType newPlay, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.eINSTANCE.getDocumentRoot_Play(), newPlay, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.Literals.DOCUMENT_ROOT__PLAY, newPlay, msgs);
 	}
 
 	/**
@@ -445,7 +446,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setPlay(PlayType newPlay) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_Play(), newPlay);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__PLAY, newPlay);
 	}
 
 	/**
@@ -454,7 +455,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public String getPlaySubTitle() {
-		return (String)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_PlaySubTitle(), true);
+		return (String)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__PLAY_SUB_TITLE, true);
 	}
 
 	/**
@@ -463,7 +464,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setPlaySubTitle(String newPlaySubTitle) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_PlaySubTitle(), newPlaySubTitle);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__PLAY_SUB_TITLE, newPlaySubTitle);
 	}
 
 	/**
@@ -472,7 +473,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public SceneType getScene() {
-		return (SceneType)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_Scene(), true);
+		return (SceneType)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__SCENE, true);
 	}
 
 	/**
@@ -481,7 +482,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public NotificationChain basicSetScene(SceneType newScene, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.eINSTANCE.getDocumentRoot_Scene(), newScene, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.Literals.DOCUMENT_ROOT__SCENE, newScene, msgs);
 	}
 
 	/**
@@ -490,7 +491,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setScene(SceneType newScene) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_Scene(), newScene);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__SCENE, newScene);
 	}
 
 	/**
@@ -499,7 +500,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public String getSceneDescription() {
-		return (String)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_SceneDescription(), true);
+		return (String)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__SCENE_DESCRIPTION, true);
 	}
 
 	/**
@@ -508,7 +509,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setSceneDescription(String newSceneDescription) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_SceneDescription(), newSceneDescription);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__SCENE_DESCRIPTION, newSceneDescription);
 	}
 
 	/**
@@ -517,7 +518,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public String getSpeaker() {
-		return (String)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_Speaker(), true);
+		return (String)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__SPEAKER, true);
 	}
 
 	/**
@@ -526,7 +527,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setSpeaker(String newSpeaker) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_Speaker(), newSpeaker);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__SPEAKER, newSpeaker);
 	}
 
 	/**
@@ -535,7 +536,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public SpeechType getSpeech() {
-		return (SpeechType)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_Speech(), true);
+		return (SpeechType)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__SPEECH, true);
 	}
 
 	/**
@@ -544,7 +545,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public NotificationChain basicSetSpeech(SpeechType newSpeech, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.eINSTANCE.getDocumentRoot_Speech(), newSpeech, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(PlayPackage.Literals.DOCUMENT_ROOT__SPEECH, newSpeech, msgs);
 	}
 
 	/**
@@ -553,7 +554,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setSpeech(SpeechType newSpeech) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_Speech(), newSpeech);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__SPEECH, newSpeech);
 	}
 
 	/**
@@ -562,7 +563,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public String getStageDirections() {
-		return (String)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_StageDirections(), true);
+		return (String)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__STAGE_DIRECTIONS, true);
 	}
 
 	/**
@@ -571,7 +572,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setStageDirections(String newStageDirections) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_StageDirections(), newStageDirections);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__STAGE_DIRECTIONS, newStageDirections);
 	}
 
 	/**
@@ -580,7 +581,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public String getTitle() {
-		return (String)getMixed().get(PlayPackage.eINSTANCE.getDocumentRoot_Title(), true);
+		return (String)getMixed().get(PlayPackage.Literals.DOCUMENT_ROOT__TITLE, true);
 	}
 
 	/**
@@ -589,7 +590,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setTitle(String newTitle) {
-		((FeatureMap.Internal)getMixed()).set(PlayPackage.eINSTANCE.getDocumentRoot_Title(), newTitle);
+		((FeatureMap.Internal)getMixed()).set(PlayPackage.Literals.DOCUMENT_ROOT__TITLE, newTitle);
 	}
 
 	/**
@@ -597,49 +598,50 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PlayPackage.DOCUMENT_ROOT__MIXED:
-					return ((InternalEList)getMixed()).basicRemove(otherEnd, msgs);
-				case PlayPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-					return ((InternalEList)getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
-				case PlayPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-					return ((InternalEList)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
-				case PlayPackage.DOCUMENT_ROOT__ACT:
-					return basicSetAct(null, msgs);
-				case PlayPackage.DOCUMENT_ROOT__FM:
-					return basicSetFm(null, msgs);
-				case PlayPackage.DOCUMENT_ROOT__PERSONAE:
-					return basicSetPersonae(null, msgs);
-				case PlayPackage.DOCUMENT_ROOT__PERSONA_GROUP:
-					return basicSetPersonaGroup(null, msgs);
-				case PlayPackage.DOCUMENT_ROOT__PLAY:
-					return basicSetPlay(null, msgs);
-				case PlayPackage.DOCUMENT_ROOT__SCENE:
-					return basicSetScene(null, msgs);
-				case PlayPackage.DOCUMENT_ROOT__SPEECH:
-					return basicSetSpeech(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case PlayPackage.DOCUMENT_ROOT__MIXED:
-				return getMixed();
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
 			case PlayPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				return getXMLNSPrefixMap();
+				return ((InternalEList<?>)getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
 			case PlayPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				return getXSISchemaLocation();
+				return ((InternalEList<?>)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
+			case PlayPackage.DOCUMENT_ROOT__ACT:
+				return basicSetAct(null, msgs);
+			case PlayPackage.DOCUMENT_ROOT__FM:
+				return basicSetFm(null, msgs);
+			case PlayPackage.DOCUMENT_ROOT__PERSONAE:
+				return basicSetPersonae(null, msgs);
+			case PlayPackage.DOCUMENT_ROOT__PERSONA_GROUP:
+				return basicSetPersonaGroup(null, msgs);
+			case PlayPackage.DOCUMENT_ROOT__PLAY:
+				return basicSetPlay(null, msgs);
+			case PlayPackage.DOCUMENT_ROOT__SCENE:
+				return basicSetScene(null, msgs);
+			case PlayPackage.DOCUMENT_ROOT__SPEECH:
+				return basicSetSpeech(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case PlayPackage.DOCUMENT_ROOT__MIXED:
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
+			case PlayPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+				if (coreType) return getXMLNSPrefixMap();
+				else return getXMLNSPrefixMap().map();
+			case PlayPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+				if (coreType) return getXSISchemaLocation();
+				else return getXSISchemaLocation().map();
 			case PlayPackage.DOCUMENT_ROOT__ACT:
 				return getAct();
 			case PlayPackage.DOCUMENT_ROOT__FM:
@@ -673,7 +675,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 			case PlayPackage.DOCUMENT_ROOT__TITLE:
 				return getTitle();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -681,19 +683,17 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PlayPackage.DOCUMENT_ROOT__MIXED:
-				getMixed().clear();
-				getMixed().addAll((Collection)newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case PlayPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				getXMLNSPrefixMap().clear();
-				getXMLNSPrefixMap().addAll((Collection)newValue);
+				((EStructuralFeature.Setting)getXMLNSPrefixMap()).set(newValue);
 				return;
 			case PlayPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				getXSISchemaLocation().clear();
-				getXSISchemaLocation().addAll((Collection)newValue);
+				((EStructuralFeature.Setting)getXSISchemaLocation()).set(newValue);
 				return;
 			case PlayPackage.DOCUMENT_ROOT__ACT:
 				setAct((ActType)newValue);
@@ -744,7 +744,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 				setTitle((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -752,8 +752,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PlayPackage.DOCUMENT_ROOT__MIXED:
 				getMixed().clear();
 				return;
@@ -812,7 +813,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 				setTitle(TITLE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -820,8 +821,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PlayPackage.DOCUMENT_ROOT__MIXED:
 				return mixed != null && !mixed.isEmpty();
 			case PlayPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
@@ -861,7 +863,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 			case PlayPackage.DOCUMENT_ROOT__TITLE:
 				return TITLE_EDEFAULT == null ? getTitle() != null : !TITLE_EDEFAULT.equals(getTitle());
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -869,6 +871,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ChildImpl.java,v 1.3 2006/09/05 12:16:33 mtaal Exp $
+ * $Id: ChildImpl.java,v 1.4 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl;
 
@@ -34,6 +34,7 @@ public class ChildImpl extends PersonImpl implements Child {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return CompositeidPackage.Literals.CHILD;
 	}

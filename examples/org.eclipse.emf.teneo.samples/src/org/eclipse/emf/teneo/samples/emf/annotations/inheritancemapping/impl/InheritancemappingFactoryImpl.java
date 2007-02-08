@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingFactoryImpl.java,v 1.5 2007/02/05 16:13:46 mtaal Exp $
+ * $Id: InheritancemappingFactoryImpl.java,v 1.6 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -65,6 +65,7 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case InheritancemappingPackage.CONTENT_LIST: return createContentList();
@@ -83,6 +84,7 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case InheritancemappingPackage.US_STATE:
@@ -99,6 +101,7 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case InheritancemappingPackage.US_STATE:
@@ -196,7 +199,7 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 * @generated
 	 */
 	public USState createUSStateObjectFromString(EDataType eDataType, String initialValue) {
-		return (USState)createUSStateFromString(InheritancemappingPackage.Literals.US_STATE, initialValue);
+		return createUSStateFromString(InheritancemappingPackage.Literals.US_STATE, initialValue);
 	}
 
 	/**
@@ -223,6 +226,7 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static InheritancemappingPackage getPackage() {
 		return InheritancemappingPackage.eINSTANCE;
 	}

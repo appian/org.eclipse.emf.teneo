@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: AddressImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -103,6 +103,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return InheritancemappingPackage.Literals.ADDRESS;
 	}
@@ -175,6 +176,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case InheritancemappingPackage.ADDRESS__NAME:
@@ -192,6 +194,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InheritancemappingPackage.ADDRESS__NAME:
@@ -212,6 +215,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case InheritancemappingPackage.ADDRESS__NAME:
@@ -232,6 +236,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InheritancemappingPackage.ADDRESS__NAME:
@@ -249,6 +254,7 @@ public abstract class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

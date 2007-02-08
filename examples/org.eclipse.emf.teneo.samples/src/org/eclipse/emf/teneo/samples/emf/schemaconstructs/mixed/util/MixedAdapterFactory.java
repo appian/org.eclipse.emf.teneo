@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MixedAdapterFactory.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: MixedAdapterFactory.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.util;
 
@@ -24,6 +24,12 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.*;
  * @generated
  */
 public class MixedAdapterFactory extends AdapterFactoryImpl {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
@@ -52,6 +58,7 @@ public class MixedAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +75,22 @@ public class MixedAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MixedSwitch modelSwitch =
-		new MixedSwitch() {
-			public Object caseDocumentRoot(DocumentRoot object) {
+	protected MixedSwitch<Adapter> modelSwitch =
+		new MixedSwitch<Adapter>() {
+			@Override
+			public Adapter caseDocumentRoot(DocumentRoot object) {
 				return createDocumentRootAdapter();
 			}
-			public Object caseLetterBodyType(LetterBodyType object) {
+			@Override
+			public Adapter caseLetterBodyType(LetterBodyType object) {
 				return createLetterBodyTypeAdapter();
 			}
-			public Object caseSalutationType(SalutationType object) {
+			@Override
+			public Adapter caseSalutationType(SalutationType object) {
 				return createSalutationTypeAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +103,9 @@ public class MixedAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

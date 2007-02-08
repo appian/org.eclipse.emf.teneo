@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AImpl.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: AImpl.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.A;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.CType;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.NestedgroupPackage;
 
 /**
@@ -88,8 +89,9 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return NestedgroupPackage.eINSTANCE.getA();
+		return NestedgroupPackage.Literals.A;
 	}
 
 	/**
@@ -130,8 +132,8 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getB() {
-		return ((FeatureMap)getGroup()).list(NestedgroupPackage.eINSTANCE.getA_B());
+	public EList<String> getB() {
+		return getGroup().list(NestedgroupPackage.Literals.A__B);
 	}
 
 	/**
@@ -139,8 +141,8 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getC() {
-		return ((FeatureMap)getGroup()).list(NestedgroupPackage.eINSTANCE.getA_C());
+	public EList<CType> getC() {
+		return getGroup().list(NestedgroupPackage.Literals.A__C);
 	}
 
 	/**
@@ -148,18 +150,15 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case NestedgroupPackage.A__GROUP:
-					return ((InternalEList)getGroup()).basicRemove(otherEnd, msgs);
-				case NestedgroupPackage.A__C:
-					return ((InternalEList)getC()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case NestedgroupPackage.A__GROUP:
+				return ((InternalEList<?>)getGroup()).basicRemove(otherEnd, msgs);
+			case NestedgroupPackage.A__C:
+				return ((InternalEList<?>)getC()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -167,18 +166,20 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case NestedgroupPackage.A__NAME:
 				return getName();
 			case NestedgroupPackage.A__GROUP:
-				return getGroup();
+				if (coreType) return getGroup();
+				return ((FeatureMap.Internal)getGroup()).getWrapper();
 			case NestedgroupPackage.A__B:
 				return getB();
 			case NestedgroupPackage.A__C:
 				return getC();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -186,25 +187,26 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case NestedgroupPackage.A__NAME:
 				setName((String)newValue);
 				return;
 			case NestedgroupPackage.A__GROUP:
-				getGroup().clear();
-				getGroup().addAll((Collection)newValue);
+				((FeatureMap.Internal)getGroup()).set(newValue);
 				return;
 			case NestedgroupPackage.A__B:
 				getB().clear();
-				getB().addAll((Collection)newValue);
+				getB().addAll((Collection<? extends String>)newValue);
 				return;
 			case NestedgroupPackage.A__C:
 				getC().clear();
-				getC().addAll((Collection)newValue);
+				getC().addAll((Collection<? extends CType>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -212,8 +214,9 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case NestedgroupPackage.A__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -227,7 +230,7 @@ public class AImpl extends EObjectImpl implements A {
 				getC().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -235,8 +238,9 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case NestedgroupPackage.A__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case NestedgroupPackage.A__GROUP:
@@ -246,7 +250,7 @@ public class AImpl extends EObjectImpl implements A {
 			case NestedgroupPackage.A__C:
 				return !getC().isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -254,6 +258,7 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

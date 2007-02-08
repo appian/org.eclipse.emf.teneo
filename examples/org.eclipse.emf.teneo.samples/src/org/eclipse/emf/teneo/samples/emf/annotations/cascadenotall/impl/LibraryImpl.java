@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryImpl.java,v 1.1 2006/07/11 16:57:13 mtaal Exp $
+ * $Id: LibraryImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.impl;
 
@@ -71,7 +71,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList writers = null;
+	protected EList<Writer> writers = null;
 
 	/**
 	 * The cached value of the '{@link #getBooks() <em>Books</em>}' containment reference list.
@@ -81,7 +81,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList books = null;
+	protected EList<Book> books = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,6 +97,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return CascadenotallPackage.Literals.LIBRARY;
 	}
@@ -127,9 +128,9 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getWriters() {
+	public EList<Writer> getWriters() {
 		if (writers == null) {
-			writers = new EObjectContainmentEList(Writer.class, this, CascadenotallPackage.LIBRARY__WRITERS);
+			writers = new EObjectContainmentEList<Writer>(Writer.class, this, CascadenotallPackage.LIBRARY__WRITERS);
 		}
 		return writers;
 	}
@@ -139,9 +140,9 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBooks() {
+	public EList<Book> getBooks() {
 		if (books == null) {
-			books = new EObjectContainmentEList(Book.class, this, CascadenotallPackage.LIBRARY__BOOKS);
+			books = new EObjectContainmentEList<Book>(Book.class, this, CascadenotallPackage.LIBRARY__BOOKS);
 		}
 		return books;
 	}
@@ -151,12 +152,13 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CascadenotallPackage.LIBRARY__WRITERS:
-				return ((InternalEList)getWriters()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getWriters()).basicRemove(otherEnd, msgs);
 			case CascadenotallPackage.LIBRARY__BOOKS:
-				return ((InternalEList)getBooks()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getBooks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -166,6 +168,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CascadenotallPackage.LIBRARY__NAME:
@@ -183,6 +186,8 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CascadenotallPackage.LIBRARY__NAME:
@@ -190,11 +195,11 @@ public class LibraryImpl extends EObjectImpl implements Library {
 				return;
 			case CascadenotallPackage.LIBRARY__WRITERS:
 				getWriters().clear();
-				getWriters().addAll((Collection)newValue);
+				getWriters().addAll((Collection<? extends Writer>)newValue);
 				return;
 			case CascadenotallPackage.LIBRARY__BOOKS:
 				getBooks().clear();
-				getBooks().addAll((Collection)newValue);
+				getBooks().addAll((Collection<? extends Book>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -205,6 +210,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CascadenotallPackage.LIBRARY__NAME:
@@ -225,6 +231,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CascadenotallPackage.LIBRARY__NAME:
@@ -242,6 +249,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

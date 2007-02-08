@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TooneResourceFactoryImpl.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: TooneResourceFactoryImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.util;
 
@@ -38,6 +38,7 @@ public class TooneResourceFactoryImpl extends ResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new TooneResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

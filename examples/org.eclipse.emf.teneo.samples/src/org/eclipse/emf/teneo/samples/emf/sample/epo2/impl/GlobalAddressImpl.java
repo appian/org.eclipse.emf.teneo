@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GlobalAddressImpl.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: GlobalAddressImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -61,7 +61,7 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList location = null;
+	protected EList<String> location = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,8 +77,9 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return EPO2Package.eINSTANCE.getGlobalAddress();
+		return EPO2Package.Literals.GLOBAL_ADDRESS;
 	}
 
 	/**
@@ -107,9 +108,9 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLocation() {
+	public EList<String> getLocation() {
 		if (location == null) {
-			location = new EDataTypeUniqueEList(String.class, this, EPO2Package.GLOBAL_ADDRESS__LOCATION);
+			location = new EDataTypeUniqueEList<String>(String.class, this, EPO2Package.GLOBAL_ADDRESS__LOCATION);
 		}
 		return location;
 	}
@@ -119,18 +120,15 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case EPO2Package.GLOBAL_ADDRESS__NAME:
-				return getName();
-			case EPO2Package.GLOBAL_ADDRESS__COUNTRY:
-				return getCountry();
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case EPO2Package.GLOBAL_ADDRESS__COUNTRY_CODE:
 				return new Integer(getCountryCode());
 			case EPO2Package.GLOBAL_ADDRESS__LOCATION:
 				return getLocation();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -138,23 +136,19 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case EPO2Package.GLOBAL_ADDRESS__NAME:
-				setName((String)newValue);
-				return;
-			case EPO2Package.GLOBAL_ADDRESS__COUNTRY:
-				setCountry((String)newValue);
-				return;
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case EPO2Package.GLOBAL_ADDRESS__COUNTRY_CODE:
 				setCountryCode(((Integer)newValue).intValue());
 				return;
 			case EPO2Package.GLOBAL_ADDRESS__LOCATION:
 				getLocation().clear();
-				getLocation().addAll((Collection)newValue);
+				getLocation().addAll((Collection<? extends String>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -162,14 +156,9 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case EPO2Package.GLOBAL_ADDRESS__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case EPO2Package.GLOBAL_ADDRESS__COUNTRY:
-				setCountry(COUNTRY_EDEFAULT);
-				return;
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case EPO2Package.GLOBAL_ADDRESS__COUNTRY_CODE:
 				setCountryCode(COUNTRY_CODE_EDEFAULT);
 				return;
@@ -177,7 +166,7 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 				getLocation().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -185,18 +174,15 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case EPO2Package.GLOBAL_ADDRESS__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case EPO2Package.GLOBAL_ADDRESS__COUNTRY:
-				return COUNTRY_EDEFAULT == null ? country != null : !COUNTRY_EDEFAULT.equals(country);
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case EPO2Package.GLOBAL_ADDRESS__COUNTRY_CODE:
 				return countryCode != COUNTRY_CODE_EDEFAULT;
 			case EPO2Package.GLOBAL_ADDRESS__LOCATION:
 				return location != null && !location.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -204,7 +190,8 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == GlobalLocation.class) {
 			switch (derivedFeatureID) {
 				case EPO2Package.GLOBAL_ADDRESS__COUNTRY_CODE: return EPO2Package.GLOBAL_LOCATION__COUNTRY_CODE;
@@ -219,7 +206,8 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == GlobalLocation.class) {
 			switch (baseFeatureID) {
 				case EPO2Package.GLOBAL_LOCATION__COUNTRY_CODE: return EPO2Package.GLOBAL_ADDRESS__COUNTRY_CODE;
@@ -234,6 +222,7 @@ public class GlobalAddressImpl extends AddressImpl implements GlobalAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

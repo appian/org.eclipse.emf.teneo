@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdFactoryImpl.java,v 1.1 2006/08/31 22:47:46 mtaal Exp $
+ * $Id: IdFactoryImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl;
 
@@ -57,6 +57,7 @@ public class IdFactoryImpl extends EFactoryImpl implements IdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case IdPackage.IDENTITY_ID: return createIdentityID();
@@ -112,6 +113,7 @@ public class IdFactoryImpl extends EFactoryImpl implements IdFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static IdPackage getPackage() {
 		return IdPackage.eINSTANCE;
 	}

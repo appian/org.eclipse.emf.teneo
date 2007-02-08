@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnSwitch.java,v 1.4 2006/08/22 22:35:42 mtaal Exp $
+ * $Id: ColumnSwitch.java,v 1.5 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.column.util;
 
@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.annotations.column.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage;
 
@@ -26,7 +27,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage
  * @generated
  */
-public class ColumnSwitch {
+public class ColumnSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +55,7 @@ public class ColumnSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +66,16 @@ public class ColumnSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,11 +86,11 @@ public class ColumnSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case ColumnPackage.BOOK: {
 				Book book = (Book)theEObject;
-				Object result = caseBook(book);
+				T result = caseBook(book);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -108,7 +109,7 @@ public class ColumnSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBook(Book object) {
+	public T caseBook(Book object) {
 		return null;
 	}
 
@@ -123,7 +124,7 @@ public class ColumnSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

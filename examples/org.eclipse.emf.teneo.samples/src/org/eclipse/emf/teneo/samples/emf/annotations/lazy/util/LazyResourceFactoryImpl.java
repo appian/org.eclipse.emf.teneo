@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LazyResourceFactoryImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: LazyResourceFactoryImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy.util;
 
@@ -38,6 +38,7 @@ public class LazyResourceFactoryImpl extends ResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new LazyResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

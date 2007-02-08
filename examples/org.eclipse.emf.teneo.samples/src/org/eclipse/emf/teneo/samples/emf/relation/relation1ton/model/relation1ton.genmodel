@@ -3,9 +3,10 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     editDirectory="/org.eclipse.emf.teneo.samples.edit/src" editorDirectory="/org.eclipse.emf.teneo.samples.editor/src"
-    modelPluginID="org.eclipse.emf.teneo.samples" runtimeJar="true" modelName="relation1ton" editPluginClass="org.eclipse.emf.teneo.samples.emf.relation1ton.provider.Relation1tonEditPlugin"
+    modelPluginID="org.eclipse.emf.teneo.samples" runtimeJar="true" modelName="relation1ton"
+    editPluginClass="org.eclipse.emf.teneo.samples.emf.relation1ton.provider.Relation1tonEditPlugin"
     editorPluginClass="org.eclipse.emf.teneo.samples.emf.relation1ton.presentation.Relation1tonEditorPlugin"
-    importerID="org.eclipse.xsd.ecore.importer">
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="5.0">
   <foreignModel>relation1ton.xsd</foreignModel>
   <genPackages prefix="Relation1ton" basePackage="org.eclipse.emf.teneo.samples.emf.relation"
       resource="XML" disposableProviderFactory="true" ecorePackage="relation1ton.ecore#/">

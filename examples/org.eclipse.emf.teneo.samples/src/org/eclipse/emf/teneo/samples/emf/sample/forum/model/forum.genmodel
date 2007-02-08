@@ -6,10 +6,10 @@
     runtimeJar="true" modelName="Forum" editPluginClass="org.eclipse.emf.teneo.samples.emf.forum.provider.ForumEditPlugin"
     editorPluginClass="org.eclipse.emf.teneo.samples.emf.forum.presentation.ForumEditorPlugin"
     testsDirectory="/Scratch.tests/src" testSuiteClass="org.eclipse.emf.teneo.samples.emf.forum.tests.ForumAllTests"
-    importerID="org.eclipse.xsd.ecore.importer">
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="5.0">
   <foreignModel>forum.xsd</foreignModel>
-  <genPackages prefix="Forum" basePackage="org.eclipse.emf.teneo.samples.emf.sample" resource="XML"
-      disposableProviderFactory="true" ecorePackage="forum.ecore#/">
+  <genPackages prefix="Forum" basePackage="org.eclipse.emf.teneo.samples.emf.sample"
+      resource="XML" disposableProviderFactory="true" ecorePackage="forum.ecore#/">
     <genEnums ecoreEnum="forum.ecore#//TopicCategory">
       <genEnumLiterals ecoreEnumLiteral="forum.ecore#//TopicCategory/Announcement"/>
       <genEnumLiterals ecoreEnumLiteral="forum.ecore#//TopicCategory/GuestBook"/>

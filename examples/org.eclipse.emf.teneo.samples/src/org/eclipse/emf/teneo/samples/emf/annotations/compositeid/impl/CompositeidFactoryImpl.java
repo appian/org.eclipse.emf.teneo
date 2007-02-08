@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CompositeidFactoryImpl.java,v 1.5 2007/01/02 17:53:28 mtaal Exp $
+ * $Id: CompositeidFactoryImpl.java,v 1.6 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl;
 
@@ -60,6 +60,7 @@ public class CompositeidFactoryImpl extends EFactoryImpl implements CompositeidF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CompositeidPackage.PARENT: return createParent();
@@ -115,6 +116,7 @@ public class CompositeidFactoryImpl extends EFactoryImpl implements CompositeidF
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static CompositeidPackage getPackage() {
 		return CompositeidPackage.eINSTANCE;
 	}

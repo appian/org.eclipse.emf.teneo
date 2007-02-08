@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.2 2006/09/29 12:30:04 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.3 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -85,6 +85,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return JoincolumnsPackage.Literals.PERSON;
 	}
@@ -136,6 +137,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case JoincolumnsPackage.PERSON__FIRST_NAME:
@@ -151,6 +153,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case JoincolumnsPackage.PERSON__FIRST_NAME:
@@ -168,6 +171,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case JoincolumnsPackage.PERSON__FIRST_NAME:
@@ -185,6 +189,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case JoincolumnsPackage.PERSON__FIRST_NAME:
@@ -200,6 +205,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

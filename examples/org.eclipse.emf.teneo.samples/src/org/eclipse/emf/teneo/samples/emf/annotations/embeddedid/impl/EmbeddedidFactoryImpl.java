@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedidFactoryImpl.java,v 1.2 2006/09/29 12:30:04 mtaal Exp $
+ * $Id: EmbeddedidFactoryImpl.java,v 1.3 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.impl;
 
@@ -57,6 +57,7 @@ public class EmbeddedidFactoryImpl extends EFactoryImpl implements EmbeddedidFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EmbeddedidPackage.NAME: return (EObject)createName();
@@ -101,6 +102,7 @@ public class EmbeddedidFactoryImpl extends EFactoryImpl implements EmbeddedidFac
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static EmbeddedidPackage getPackage() {
 		return EmbeddedidPackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EdatatypeColumnResourceFactoryImpl.java,v 1.1 2006/09/06 21:58:59 mtaal Exp $
+ * $Id: EdatatypeColumnResourceFactoryImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.edatatypeColumn.util;
 
@@ -38,6 +38,7 @@ public class EdatatypeColumnResourceFactoryImpl extends ResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new EdatatypeColumnResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

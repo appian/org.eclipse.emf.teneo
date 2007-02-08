@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RelationntomPackage.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: RelationntomPackage.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relationntom;
 
@@ -41,7 +41,7 @@ public interface RelationntomPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/relation/relationntom";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/relation/relationntom";
 
 	/**
 	 * The package namespace name.
@@ -106,7 +106,7 @@ public interface RelationntomPackage extends EPackage {
 	int MAIN__MULTINN = 3;
 
 	/**
-	 * The number of structural features of the the '<em>Main</em>' class.
+	 * The number of structural features of the '<em>Main</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -143,7 +143,7 @@ public interface RelationntomPackage extends EPackage {
 	int MULTI_NN__MAIN = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Multi NN</em>' class.
+	 * The number of structural features of the '<em>Multi NN</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -180,7 +180,7 @@ public interface RelationntomPackage extends EPackage {
 	int MULTI_NR__MAIN = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Multi NR</em>' class.
+	 * The number of structural features of the '<em>Multi NR</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -217,7 +217,7 @@ public interface RelationntomPackage extends EPackage {
 	int MULTI_RN__MAIN = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Multi RN</em>' class.
+	 * The number of structural features of the '<em>Multi RN</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -384,5 +384,140 @@ public interface RelationntomPackage extends EPackage {
 	 * @generated
 	 */
 	RelationntomFactory getRelationntomFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.MainImpl <em>Main</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.MainImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.RelationntomPackageImpl#getMain()
+		 * @generated
+		 */
+		EClass MAIN = eINSTANCE.getMain();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAIN__NAME = eINSTANCE.getMain_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Multinr</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAIN__MULTINR = eINSTANCE.getMain_Multinr();
+
+		/**
+		 * The meta object literal for the '<em><b>Multirn</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAIN__MULTIRN = eINSTANCE.getMain_Multirn();
+
+		/**
+		 * The meta object literal for the '<em><b>Multinn</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAIN__MULTINN = eINSTANCE.getMain_Multinn();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.MultiNNImpl <em>Multi NN</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.MultiNNImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.RelationntomPackageImpl#getMultiNN()
+		 * @generated
+		 */
+		EClass MULTI_NN = eINSTANCE.getMultiNN();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTI_NN__NAME = eINSTANCE.getMultiNN_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Main</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTI_NN__MAIN = eINSTANCE.getMultiNN_Main();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.MultiNRImpl <em>Multi NR</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.MultiNRImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.RelationntomPackageImpl#getMultiNR()
+		 * @generated
+		 */
+		EClass MULTI_NR = eINSTANCE.getMultiNR();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTI_NR__NAME = eINSTANCE.getMultiNR_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Main</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTI_NR__MAIN = eINSTANCE.getMultiNR_Main();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.MultiRNImpl <em>Multi RN</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.MultiRNImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl.RelationntomPackageImpl#getMultiRN()
+		 * @generated
+		 */
+		EClass MULTI_RN = eINSTANCE.getMultiRN();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTI_RN__NAME = eINSTANCE.getMultiRN_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Main</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTI_RN__MAIN = eINSTANCE.getMultiRN_Main();
+
+	}
 
 } //RelationntomPackage

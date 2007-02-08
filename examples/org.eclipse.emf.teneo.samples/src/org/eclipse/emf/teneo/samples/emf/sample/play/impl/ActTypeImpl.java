@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ActTypeImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: ActTypeImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.impl;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.play.SceneType;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.play.impl.ActTypeImpl#getTitle <em>Title</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ActTypeImpl extends EObjectImpl implements ActType {
@@ -51,7 +51,7 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList scene = null;
+	protected EList<SceneType> scene = null;
 
 	/**
 	 * The default value of the '{@link #getPindex() <em>Pindex</em>}' attribute.
@@ -116,8 +116,9 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PlayPackage.eINSTANCE.getActType();
+		return PlayPackage.Literals.ACT_TYPE;
 	}
 
 	/**
@@ -125,9 +126,9 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getScene() {
+	public EList<SceneType> getScene() {
 		if (scene == null) {
-			scene = new EObjectContainmentEList(SceneType.class, this, PlayPackage.ACT_TYPE__SCENE);
+			scene = new EObjectContainmentEList<SceneType>(SceneType.class, this, PlayPackage.ACT_TYPE__SCENE);
 		}
 		return scene;
 	}
@@ -204,16 +205,13 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PlayPackage.ACT_TYPE__SCENE:
-					return ((InternalEList)getScene()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PlayPackage.ACT_TYPE__SCENE:
+				return ((InternalEList<?>)getScene()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -221,8 +219,9 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PlayPackage.ACT_TYPE__SCENE:
 				return getScene();
 			case PlayPackage.ACT_TYPE__PINDEX:
@@ -230,7 +229,7 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 			case PlayPackage.ACT_TYPE__TITLE:
 				return getTitle();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -238,11 +237,13 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PlayPackage.ACT_TYPE__SCENE:
 				getScene().clear();
-				getScene().addAll((Collection)newValue);
+				getScene().addAll((Collection<? extends SceneType>)newValue);
 				return;
 			case PlayPackage.ACT_TYPE__PINDEX:
 				setPindex(((Byte)newValue).byteValue());
@@ -251,7 +252,7 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 				setTitle((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -259,8 +260,9 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PlayPackage.ACT_TYPE__SCENE:
 				getScene().clear();
 				return;
@@ -271,7 +273,7 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 				setTitle(TITLE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -279,8 +281,9 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PlayPackage.ACT_TYPE__SCENE:
 				return scene != null && !scene.isEmpty();
 			case PlayPackage.ACT_TYPE__PINDEX:
@@ -288,7 +291,7 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 			case PlayPackage.ACT_TYPE__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -296,6 +299,7 @@ public class ActTypeImpl extends EObjectImpl implements ActType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributesAdapterFactory.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: AttributesAdapterFactory.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.util;
 
@@ -52,6 +52,7 @@ public class AttributesAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +69,22 @@ public class AttributesAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AttributesSwitch modelSwitch =
-		new AttributesSwitch() {
-			public Object caseA(A object) {
+	protected AttributesSwitch<Adapter> modelSwitch =
+		new AttributesSwitch<Adapter>() {
+			@Override
+			public Adapter caseA(A object) {
 				return createAAdapter();
 			}
-			public Object caseDocumentRoot(DocumentRoot object) {
+			@Override
+			public Adapter caseDocumentRoot(DocumentRoot object) {
 				return createDocumentRootAdapter();
 			}
-			public Object caseR(R object) {
+			@Override
+			public Adapter caseR(R object) {
 				return createRAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +97,9 @@ public class AttributesAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

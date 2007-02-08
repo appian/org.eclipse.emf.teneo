@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MyItemImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: MyItemImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.nmset.impl;
 
@@ -64,7 +64,7 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList yourItem = null;
+	protected EList<YourItem> yourItem = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,6 +80,7 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return NmsetPackage.Literals.MY_ITEM;
 	}
@@ -110,9 +111,9 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getYourItem() {
+	public EList<YourItem> getYourItem() {
 		if (yourItem == null) {
-			yourItem = new EObjectWithInverseResolvingEList.ManyInverse(YourItem.class, this, NmsetPackage.MY_ITEM__YOUR_ITEM, NmsetPackage.YOUR_ITEM__MY_ITEM);
+			yourItem = new EObjectWithInverseResolvingEList.ManyInverse<YourItem>(YourItem.class, this, NmsetPackage.MY_ITEM__YOUR_ITEM, NmsetPackage.YOUR_ITEM__MY_ITEM);
 		}
 		return yourItem;
 	}
@@ -122,10 +123,12 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case NmsetPackage.MY_ITEM__YOUR_ITEM:
-				return ((InternalEList)getYourItem()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getYourItem()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -135,10 +138,11 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case NmsetPackage.MY_ITEM__YOUR_ITEM:
-				return ((InternalEList)getYourItem()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getYourItem()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -148,6 +152,7 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case NmsetPackage.MY_ITEM__NAME:
@@ -163,6 +168,8 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case NmsetPackage.MY_ITEM__NAME:
@@ -170,7 +177,7 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 				return;
 			case NmsetPackage.MY_ITEM__YOUR_ITEM:
 				getYourItem().clear();
-				getYourItem().addAll((Collection)newValue);
+				getYourItem().addAll((Collection<? extends YourItem>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -181,6 +188,7 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case NmsetPackage.MY_ITEM__NAME:
@@ -198,6 +206,7 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case NmsetPackage.MY_ITEM__NAME:
@@ -213,6 +222,7 @@ public class MyItemImpl extends EObjectImpl implements MyItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

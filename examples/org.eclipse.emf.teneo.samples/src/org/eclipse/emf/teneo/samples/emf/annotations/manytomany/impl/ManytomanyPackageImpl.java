@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManytomanyPackageImpl.java,v 1.3 2006/11/23 13:51:32 mtaal Exp $
+ * $Id: ManytomanyPackageImpl.java,v 1.4 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl;
 
@@ -238,6 +238,10 @@ public class ManytomanyPackageImpl extends EPackageImpl implements ManytomanyPac
 		setName(eNAME);
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

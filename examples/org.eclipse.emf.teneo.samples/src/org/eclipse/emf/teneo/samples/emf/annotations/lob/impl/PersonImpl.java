@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lob.impl;
 
@@ -136,6 +136,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return LobPackage.Literals.PERSON;
 	}
@@ -254,6 +255,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LobPackage.PERSON__ID:
@@ -273,6 +275,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LobPackage.PERSON__ID:
@@ -296,6 +299,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case LobPackage.PERSON__ID:
@@ -319,6 +323,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case LobPackage.PERSON__ID:
@@ -338,6 +343,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="AttributesOverrides"
-    importerID="org.eclipse.emf.importer.ecore">
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0">
   <foreignModel>AttributeOverrides.ecore</foreignModel>
   <genPackages prefix="Attributeoverrides" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
       disposableProviderFactory="true" ecorePackage="AttributeOverrides.ecore#/">

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SunBooksAdapterFactory.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: SunBooksAdapterFactory.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks.util;
 
@@ -52,6 +52,7 @@ public class SunBooksAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,27 +69,34 @@ public class SunBooksAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SunBooksSwitch modelSwitch =
-		new SunBooksSwitch() {
-			public Object caseAuthorsType(AuthorsType object) {
+	protected SunBooksSwitch<Adapter> modelSwitch =
+		new SunBooksSwitch<Adapter>() {
+			@Override
+			public Adapter caseAuthorsType(AuthorsType object) {
 				return createAuthorsTypeAdapter();
 			}
-			public Object caseBooksType(BooksType object) {
+			@Override
+			public Adapter caseBooksType(BooksType object) {
 				return createBooksTypeAdapter();
 			}
-			public Object caseBookType(BookType object) {
+			@Override
+			public Adapter caseBookType(BookType object) {
 				return createBookTypeAdapter();
 			}
-			public Object caseCollectionType(CollectionType object) {
+			@Override
+			public Adapter caseCollectionType(CollectionType object) {
 				return createCollectionTypeAdapter();
 			}
-			public Object caseDocumentRoot(DocumentRoot object) {
+			@Override
+			public Adapter caseDocumentRoot(DocumentRoot object) {
 				return createDocumentRootAdapter();
 			}
-			public Object casePromotionType(PromotionType object) {
+			@Override
+			public Adapter casePromotionType(PromotionType object) {
 				return createPromotionTypeAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -101,8 +109,9 @@ public class SunBooksAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

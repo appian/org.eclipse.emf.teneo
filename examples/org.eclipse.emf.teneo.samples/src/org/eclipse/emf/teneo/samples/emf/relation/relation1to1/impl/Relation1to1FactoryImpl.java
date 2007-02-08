@@ -2,13 +2,15 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1to1FactoryImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: Relation1to1FactoryImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.*;
 
 
@@ -19,6 +21,25 @@ import org.eclipse.emf.teneo.samples.emf.relation.relation1to1.*;
  * @generated
  */
 public class Relation1to1FactoryImpl extends EFactoryImpl implements Relation1to1Factory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Relation1to1Factory init() {
+		try {
+			Relation1to1Factory theRelation1to1Factory = (Relation1to1Factory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1to1"); 
+			if (theRelation1to1Factory != null) {
+				return theRelation1to1Factory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new Relation1to1FactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -34,6 +55,7 @@ public class Relation1to1FactoryImpl extends EFactoryImpl implements Relation1to
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case Relation1to1Package.CONTAINED_CHILD_NR: return createContainedChildNR();
@@ -144,6 +166,7 @@ public class Relation1to1FactoryImpl extends EFactoryImpl implements Relation1to
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static Relation1to1Package getPackage() {
 		return Relation1to1Package.eINSTANCE;
 	}

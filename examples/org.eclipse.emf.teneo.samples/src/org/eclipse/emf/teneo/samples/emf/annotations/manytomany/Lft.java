@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Lft.java,v 1.2 2006/09/05 12:16:33 mtaal Exp $
+ * $Id: Lft.java,v 1.3 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany;
 
@@ -44,6 +44,6 @@ public interface Lft extends EObject {
 	 *        extendedMetaData="kind='element' name='cntr'"
 	 * @generated
 	 */
-	EList getCntr();
+	EList<Cntr> getCntr();
 
 } // Lft

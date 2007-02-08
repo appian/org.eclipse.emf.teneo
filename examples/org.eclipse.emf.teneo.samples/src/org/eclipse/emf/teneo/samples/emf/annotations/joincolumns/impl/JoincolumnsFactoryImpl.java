@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsFactoryImpl.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
+ * $Id: JoincolumnsFactoryImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
@@ -58,6 +59,7 @@ public class JoincolumnsFactoryImpl extends EFactoryImpl implements JoincolumnsF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case JoincolumnsPackage.PARENT: return createParent();
@@ -113,6 +115,7 @@ public class JoincolumnsFactoryImpl extends EFactoryImpl implements JoincolumnsF
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static JoincolumnsPackage getPackage() {
 		return JoincolumnsPackage.eINSTANCE;
 	}

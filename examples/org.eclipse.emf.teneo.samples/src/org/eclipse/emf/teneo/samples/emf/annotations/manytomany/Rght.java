@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Rght.java,v 1.3 2006/11/23 13:51:32 mtaal Exp $
+ * $Id: Rght.java,v 1.4 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany;
 
@@ -44,6 +44,6 @@ public interface Rght extends EObject {
 	 *        extendedMetaData="kind='element' name='cntr'"
 	 * @generated
 	 */
-	EList getCntr();
+	EList<Cntr> getCntr();
 
 } // Rght

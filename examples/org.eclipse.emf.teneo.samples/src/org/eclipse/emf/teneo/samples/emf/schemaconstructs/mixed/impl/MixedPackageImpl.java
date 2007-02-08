@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MixedPackageImpl.java,v 1.1 2006/07/11 16:57:13 mtaal Exp $
+ * $Id: MixedPackageImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl;
 
@@ -30,6 +30,13 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.SalutationType;
  * @generated
  */
 public class MixedPackageImpl extends EPackageImpl implements MixedPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,7 +115,7 @@ public class MixedPackageImpl extends EPackageImpl implements MixedPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		XMLTypePackageImpl.init();
+		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theMixedPackage.createPackageContents();
@@ -318,7 +325,11 @@ public class MixedPackageImpl extends EPackageImpl implements MixedPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XMLTypePackageImpl theXMLTypePackage = (XMLTypePackageImpl)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

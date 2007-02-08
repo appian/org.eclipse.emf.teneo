@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdbagFactoryImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: IdbagFactoryImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag.impl;
 
@@ -57,6 +57,7 @@ public class IdbagFactoryImpl extends EFactoryImpl implements IdbagFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case IdbagPackage.USER: return createUser();
@@ -90,6 +91,7 @@ public class IdbagFactoryImpl extends EFactoryImpl implements IdbagFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static IdbagPackage getPackage() {
 		return IdbagPackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TransentSwitch.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: TransentSwitch.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.transent.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.transent.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.transent.TransentPackage
  * @generated
  */
-public class TransentSwitch {
+public class TransentSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class TransentSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class TransentSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,17 +85,17 @@ public class TransentSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case TransentPackage.BODY: {
 				Body body = (Body)theEObject;
-				Object result = caseBody(body);
+				T result = caseBody(body);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TransentPackage.HEAD: {
 				Head head = (Head)theEObject;
-				Object result = caseHead(head);
+				T result = caseHead(head);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -114,7 +114,7 @@ public class TransentSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBody(Body object) {
+	public T caseBody(Body object) {
 		return null;
 	}
 
@@ -129,7 +129,7 @@ public class TransentSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseHead(Head object) {
+	public T caseHead(Head object) {
 		return null;
 	}
 
@@ -144,7 +144,7 @@ public class TransentSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

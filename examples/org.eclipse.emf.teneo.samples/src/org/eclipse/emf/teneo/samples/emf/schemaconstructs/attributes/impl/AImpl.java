@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: AImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl;
 
@@ -209,8 +209,9 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return AttributesPackage.eINSTANCE.getA();
+		return AttributesPackage.Literals.A;
 	}
 
 	/**
@@ -440,8 +441,9 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case AttributesPackage.A__NAME:
 				return getName();
 			case AttributesPackage.A__B:
@@ -457,7 +459,7 @@ public class AImpl extends EObjectImpl implements A {
 			case AttributesPackage.A__MY_R:
 				return getMyR();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -465,8 +467,9 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case AttributesPackage.A__NAME:
 				setName((String)newValue);
 				return;
@@ -489,7 +492,7 @@ public class AImpl extends EObjectImpl implements A {
 				setMyR((R)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -497,8 +500,9 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case AttributesPackage.A__NAME:
 				unsetName();
 				return;
@@ -521,7 +525,7 @@ public class AImpl extends EObjectImpl implements A {
 				setMyR((R)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -529,8 +533,9 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case AttributesPackage.A__NAME:
 				return isSetName();
 			case AttributesPackage.A__B:
@@ -546,7 +551,7 @@ public class AImpl extends EObjectImpl implements A {
 			case AttributesPackage.A__MY_R:
 				return myR != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -554,6 +559,7 @@ public class AImpl extends EObjectImpl implements A {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

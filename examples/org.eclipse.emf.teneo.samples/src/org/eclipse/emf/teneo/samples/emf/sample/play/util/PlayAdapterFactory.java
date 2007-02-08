@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PlayAdapterFactory.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: PlayAdapterFactory.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.util;
 
@@ -52,6 +52,7 @@ public class PlayAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,33 +69,42 @@ public class PlayAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PlaySwitch modelSwitch =
-		new PlaySwitch() {
-			public Object caseActType(ActType object) {
+	protected PlaySwitch<Adapter> modelSwitch =
+		new PlaySwitch<Adapter>() {
+			@Override
+			public Adapter caseActType(ActType object) {
 				return createActTypeAdapter();
 			}
-			public Object caseDocumentRoot(DocumentRoot object) {
+			@Override
+			public Adapter caseDocumentRoot(DocumentRoot object) {
 				return createDocumentRootAdapter();
 			}
-			public Object caseFmType(FmType object) {
+			@Override
+			public Adapter caseFmType(FmType object) {
 				return createFmTypeAdapter();
 			}
-			public Object casePersonaeType(PersonaeType object) {
+			@Override
+			public Adapter casePersonaeType(PersonaeType object) {
 				return createPersonaeTypeAdapter();
 			}
-			public Object casePersonaGroupType(PersonaGroupType object) {
+			@Override
+			public Adapter casePersonaGroupType(PersonaGroupType object) {
 				return createPersonaGroupTypeAdapter();
 			}
-			public Object casePlayType(PlayType object) {
+			@Override
+			public Adapter casePlayType(PlayType object) {
 				return createPlayTypeAdapter();
 			}
-			public Object caseSceneType(SceneType object) {
+			@Override
+			public Adapter caseSceneType(SceneType object) {
 				return createSceneTypeAdapter();
 			}
-			public Object caseSpeechType(SpeechType object) {
+			@Override
+			public Adapter caseSpeechType(SpeechType object) {
 				return createSpeechTypeAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -107,8 +117,9 @@ public class PlayAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

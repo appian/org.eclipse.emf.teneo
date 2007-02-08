@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SceneType.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: SceneType.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play;
 
@@ -65,7 +65,7 @@ public interface SceneType extends EObject{
 	 *        extendedMetaData="kind='element' name='stageDirections' namespace='##targetNamespace' group='#group:0'"
 	 * @generated
 	 */
-	EList getStageDirections();
+	EList<String> getStageDirections();
 
 	/**
 	 * Returns the value of the '<em><b>Speech</b></em>' containment reference list.
@@ -78,11 +78,11 @@ public interface SceneType extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Speech</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getSceneType_Speech()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.play.SpeechType" containment="true" resolveProxies="false" transient="true" volatile="true" derived="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.play.SpeechType" containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='speech' namespace='##targetNamespace' group='#group:0'"
 	 * @generated
 	 */
-	EList getSpeech();
+	EList<SpeechType> getSpeech();
 
 	/**
 	 * Returns the value of the '<em><b>Pindex</b></em>' attribute.

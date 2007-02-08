@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FeaturemapSwitch.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: FeaturemapSwitch.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.elist.featuremap.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.elist.featuremap.*;
  * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.FeaturemapPackage
  * @generated
  */
-public class FeaturemapSwitch {
+public class FeaturemapSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class FeaturemapSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class FeaturemapSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,29 +85,29 @@ public class FeaturemapSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case FeaturemapPackage.PRICE_BY_QUANTITY_TYPE: {
 				PriceByQuantityType priceByQuantityType = (PriceByQuantityType)theEObject;
-				Object result = casePriceByQuantityType(priceByQuantityType);
+				T result = casePriceByQuantityType(priceByQuantityType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case FeaturemapPackage.PRODUCT_TYPE: {
 				ProductType productType = (ProductType)theEObject;
-				Object result = caseProductType(productType);
+				T result = caseProductType(productType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case FeaturemapPackage.SUPPLIER_PRICE_TYPE: {
 				SupplierPriceType supplierPriceType = (SupplierPriceType)theEObject;
-				Object result = caseSupplierPriceType(supplierPriceType);
+				T result = caseSupplierPriceType(supplierPriceType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case FeaturemapPackage.TRANSLATED_DESCRIPTION_TYPE: {
 				TranslatedDescriptionType translatedDescriptionType = (TranslatedDescriptionType)theEObject;
-				Object result = caseTranslatedDescriptionType(translatedDescriptionType);
+				T result = caseTranslatedDescriptionType(translatedDescriptionType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -126,7 +126,7 @@ public class FeaturemapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePriceByQuantityType(PriceByQuantityType object) {
+	public T casePriceByQuantityType(PriceByQuantityType object) {
 		return null;
 	}
 
@@ -141,7 +141,7 @@ public class FeaturemapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseProductType(ProductType object) {
+	public T caseProductType(ProductType object) {
 		return null;
 	}
 
@@ -156,7 +156,7 @@ public class FeaturemapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSupplierPriceType(SupplierPriceType object) {
+	public T caseSupplierPriceType(SupplierPriceType object) {
 		return null;
 	}
 
@@ -171,7 +171,7 @@ public class FeaturemapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTranslatedDescriptionType(TranslatedDescriptionType object) {
+	public T caseTranslatedDescriptionType(TranslatedDescriptionType object) {
 		return null;
 	}
 
@@ -186,7 +186,7 @@ public class FeaturemapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

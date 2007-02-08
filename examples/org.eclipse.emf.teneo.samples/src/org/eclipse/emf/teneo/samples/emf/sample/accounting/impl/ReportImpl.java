@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReportImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: ReportImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting.impl;
 
@@ -90,8 +90,9 @@ public class ReportImpl extends EObjectImpl implements Report {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return AccountingPackage.eINSTANCE.getReport();
+		return AccountingPackage.Literals.REPORT;
 	}
 
 	/**
@@ -206,18 +207,15 @@ public class ReportImpl extends EObjectImpl implements Report {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case AccountingPackage.REPORT__DEBIT_REPORT_GROUP:
-					return basicSetDebitReportGroup(null, msgs);
-				case AccountingPackage.REPORT__CREDIT_REPORT_GROUP:
-					return basicSetCreditReportGroup(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AccountingPackage.REPORT__DEBIT_REPORT_GROUP:
+				return basicSetDebitReportGroup(null, msgs);
+			case AccountingPackage.REPORT__CREDIT_REPORT_GROUP:
+				return basicSetCreditReportGroup(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -225,8 +223,9 @@ public class ReportImpl extends EObjectImpl implements Report {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case AccountingPackage.REPORT__NAME:
 				return getName();
 			case AccountingPackage.REPORT__DEBIT_REPORT_GROUP:
@@ -234,7 +233,7 @@ public class ReportImpl extends EObjectImpl implements Report {
 			case AccountingPackage.REPORT__CREDIT_REPORT_GROUP:
 				return getCreditReportGroup();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -242,8 +241,9 @@ public class ReportImpl extends EObjectImpl implements Report {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case AccountingPackage.REPORT__NAME:
 				setName((String)newValue);
 				return;
@@ -254,7 +254,7 @@ public class ReportImpl extends EObjectImpl implements Report {
 				setCreditReportGroup((ReportGroup)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -262,8 +262,9 @@ public class ReportImpl extends EObjectImpl implements Report {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.REPORT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -274,7 +275,7 @@ public class ReportImpl extends EObjectImpl implements Report {
 				setCreditReportGroup((ReportGroup)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -282,8 +283,9 @@ public class ReportImpl extends EObjectImpl implements Report {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.REPORT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case AccountingPackage.REPORT__DEBIT_REPORT_GROUP:
@@ -291,7 +293,7 @@ public class ReportImpl extends EObjectImpl implements Report {
 			case AccountingPackage.REPORT__CREDIT_REPORT_GROUP:
 				return creditReportGroup != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -299,6 +301,7 @@ public class ReportImpl extends EObjectImpl implements Report {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

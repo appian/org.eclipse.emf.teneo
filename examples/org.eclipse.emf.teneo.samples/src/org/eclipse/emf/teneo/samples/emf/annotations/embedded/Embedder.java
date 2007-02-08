@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Embedder.java,v 1.3 2006/09/05 12:16:33 mtaal Exp $
+ * $Id: Embedder.java,v 1.4 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -130,7 +130,7 @@ public interface Embedder extends EObject {
 	 *        extendedMetaData="kind='element' name='fourthEmbedded'"
 	 * @generated
 	 */
-	EList getFourthEmbedded();
+	EList<Embeddable> getFourthEmbedded();
 
 	/**
 	 * Returns the value of the '<em><b>Fifth Embedded</b></em>' containment reference.

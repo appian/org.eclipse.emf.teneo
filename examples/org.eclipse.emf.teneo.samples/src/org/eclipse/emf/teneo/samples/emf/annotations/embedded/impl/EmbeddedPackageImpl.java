@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedPackageImpl.java,v 1.4 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: EmbeddedPackageImpl.java,v 1.5 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -258,6 +258,10 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

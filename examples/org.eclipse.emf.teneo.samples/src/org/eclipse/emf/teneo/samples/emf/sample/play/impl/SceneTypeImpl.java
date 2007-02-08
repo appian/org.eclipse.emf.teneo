@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SceneTypeImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: SceneTypeImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.play.SceneType;
+import org.eclipse.emf.teneo.samples.emf.sample.play.SpeechType;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +42,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.play.SceneType;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.play.impl.SceneTypeImpl#getTitle <em>Title</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SceneTypeImpl extends EObjectImpl implements SceneType {
@@ -109,8 +110,9 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PlayPackage.eINSTANCE.getSceneType();
+		return PlayPackage.Literals.SCENE_TYPE;
 	}
 
 	/**
@@ -130,8 +132,8 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getStageDirections() {
-		return ((FeatureMap)getGroup()).list(PlayPackage.eINSTANCE.getSceneType_StageDirections());
+	public EList<String> getStageDirections() {
+		return getGroup().list(PlayPackage.Literals.SCENE_TYPE__STAGE_DIRECTIONS);
 	}
 
 	/**
@@ -139,8 +141,8 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSpeech() {
-		return ((FeatureMap)getGroup()).list(PlayPackage.eINSTANCE.getSceneType_Speech());
+	public EList<SpeechType> getSpeech() {
+		return getGroup().list(PlayPackage.Literals.SCENE_TYPE__SPEECH);
 	}
 
 	/**
@@ -190,18 +192,15 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PlayPackage.SCENE_TYPE__GROUP:
-					return ((InternalEList)getGroup()).basicRemove(otherEnd, msgs);
-				case PlayPackage.SCENE_TYPE__SPEECH:
-					return ((InternalEList)getSpeech()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PlayPackage.SCENE_TYPE__GROUP:
+				return ((InternalEList<?>)getGroup()).basicRemove(otherEnd, msgs);
+			case PlayPackage.SCENE_TYPE__SPEECH:
+				return ((InternalEList<?>)getSpeech()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -209,10 +208,12 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PlayPackage.SCENE_TYPE__GROUP:
-				return getGroup();
+				if (coreType) return getGroup();
+				return ((FeatureMap.Internal)getGroup()).getWrapper();
 			case PlayPackage.SCENE_TYPE__STAGE_DIRECTIONS:
 				return getStageDirections();
 			case PlayPackage.SCENE_TYPE__SPEECH:
@@ -222,7 +223,7 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 			case PlayPackage.SCENE_TYPE__TITLE:
 				return getTitle();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -230,19 +231,20 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PlayPackage.SCENE_TYPE__GROUP:
-				getGroup().clear();
-				getGroup().addAll((Collection)newValue);
+				((FeatureMap.Internal)getGroup()).set(newValue);
 				return;
 			case PlayPackage.SCENE_TYPE__STAGE_DIRECTIONS:
 				getStageDirections().clear();
-				getStageDirections().addAll((Collection)newValue);
+				getStageDirections().addAll((Collection<? extends String>)newValue);
 				return;
 			case PlayPackage.SCENE_TYPE__SPEECH:
 				getSpeech().clear();
-				getSpeech().addAll((Collection)newValue);
+				getSpeech().addAll((Collection<? extends SpeechType>)newValue);
 				return;
 			case PlayPackage.SCENE_TYPE__PINDEX:
 				setPindex((String)newValue);
@@ -251,7 +253,7 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 				setTitle((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -259,8 +261,9 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PlayPackage.SCENE_TYPE__GROUP:
 				getGroup().clear();
 				return;
@@ -277,7 +280,7 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 				setTitle(TITLE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -285,8 +288,9 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PlayPackage.SCENE_TYPE__GROUP:
 				return group != null && !group.isEmpty();
 			case PlayPackage.SCENE_TYPE__STAGE_DIRECTIONS:
@@ -298,7 +302,7 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 			case PlayPackage.SCENE_TYPE__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -306,6 +310,7 @@ public class SceneTypeImpl extends EObjectImpl implements SceneType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.1 2006/07/11 16:57:00 mtaal Exp $
+ * $Id: Library.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library;
 
@@ -69,7 +69,7 @@ public interface Library extends EObject {
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.Writer" containment="true"
 	 * @generated
 	 */
-	EList getWriters();
+	EList<Writer> getWriters();
 
 	/**
 	 * Returns the value of the '<em><b>Books</b></em>' containment reference list.
@@ -85,6 +85,6 @@ public interface Library extends EObject {
 	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.Book" containment="true"
 	 * @generated
 	 */
-	EList getBooks();
+	EList<Book> getBooks();
 
 } // Library

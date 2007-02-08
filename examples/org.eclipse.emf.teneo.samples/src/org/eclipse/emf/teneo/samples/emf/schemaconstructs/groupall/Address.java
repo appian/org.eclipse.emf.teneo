@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Address.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: Address.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall;
 
@@ -63,7 +63,7 @@ public interface Address extends EObject {
 	 *        extendedMetaData="kind='element' name='name' group='#group:0'"
 	 * @generated
 	 */
-	EList getName();
+	EList<String> getName();
 
 	/**
 	 * Returns the value of the '<em><b>Long Name</b></em>' attribute list.
@@ -80,6 +80,6 @@ public interface Address extends EObject {
 	 *        extendedMetaData="kind='element' name='longName' group='#group:0'"
 	 * @generated
 	 */
-	EList getLongName();
+	EList<String> getLongName();
 
 } // Address

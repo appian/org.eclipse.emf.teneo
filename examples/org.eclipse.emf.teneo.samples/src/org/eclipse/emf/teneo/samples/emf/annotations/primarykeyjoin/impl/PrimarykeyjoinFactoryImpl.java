@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PrimarykeyjoinFactoryImpl.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: PrimarykeyjoinFactoryImpl.java,v 1.2 2007/02/08 23:09:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.primarykeyjoin.impl;
 
@@ -57,6 +57,7 @@ public class PrimarykeyjoinFactoryImpl extends EFactoryImpl implements Primaryke
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case PrimarykeyjoinPackage.BODY: return createBody();
@@ -101,6 +102,7 @@ public class PrimarykeyjoinFactoryImpl extends EFactoryImpl implements Primaryke
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static PrimarykeyjoinPackage getPackage() {
 		return PrimarykeyjoinPackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: AddressImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl;
 
@@ -65,8 +65,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return GroupallPackage.eINSTANCE.getAddress();
+		return GroupallPackage.Literals.ADDRESS;
 	}
 
 	/**
@@ -86,8 +87,8 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getName() {
-		return ((FeatureMap)getGroup()).list(GroupallPackage.eINSTANCE.getAddress_Name());
+	public EList<String> getName() {
+		return getGroup().list(GroupallPackage.Literals.ADDRESS__NAME);
 	}
 
 	/**
@@ -95,8 +96,8 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLongName() {
-		return ((FeatureMap)getGroup()).list(GroupallPackage.eINSTANCE.getAddress_LongName());
+	public EList<String> getLongName() {
+		return getGroup().list(GroupallPackage.Literals.ADDRESS__LONG_NAME);
 	}
 
 	/**
@@ -104,33 +105,32 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GroupallPackage.ADDRESS__GROUP:
-					return ((InternalEList)getGroup()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case GroupallPackage.ADDRESS__GROUP:
-				return getGroup();
+				return ((InternalEList<?>)getGroup()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case GroupallPackage.ADDRESS__GROUP:
+				if (coreType) return getGroup();
+				return ((FeatureMap.Internal)getGroup()).getWrapper();
 			case GroupallPackage.ADDRESS__NAME:
 				return getName();
 			case GroupallPackage.ADDRESS__LONG_NAME:
 				return getLongName();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -138,22 +138,23 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case GroupallPackage.ADDRESS__GROUP:
-				getGroup().clear();
-				getGroup().addAll((Collection)newValue);
+				((FeatureMap.Internal)getGroup()).set(newValue);
 				return;
 			case GroupallPackage.ADDRESS__NAME:
 				getName().clear();
-				getName().addAll((Collection)newValue);
+				getName().addAll((Collection<? extends String>)newValue);
 				return;
 			case GroupallPackage.ADDRESS__LONG_NAME:
 				getLongName().clear();
-				getLongName().addAll((Collection)newValue);
+				getLongName().addAll((Collection<? extends String>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -161,8 +162,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case GroupallPackage.ADDRESS__GROUP:
 				getGroup().clear();
 				return;
@@ -173,7 +175,7 @@ public class AddressImpl extends EObjectImpl implements Address {
 				getLongName().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -181,8 +183,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case GroupallPackage.ADDRESS__GROUP:
 				return group != null && !group.isEmpty();
 			case GroupallPackage.ADDRESS__NAME:
@@ -190,7 +193,7 @@ public class AddressImpl extends EObjectImpl implements Address {
 			case GroupallPackage.ADDRESS__LONG_NAME:
 				return !getLongName().isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -198,6 +201,7 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

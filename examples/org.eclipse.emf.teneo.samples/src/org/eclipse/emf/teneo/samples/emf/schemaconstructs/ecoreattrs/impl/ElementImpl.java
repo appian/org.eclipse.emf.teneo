@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ElementImpl.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: ElementImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl;
 
@@ -63,8 +63,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return EcoreattrsPackage.eINSTANCE.getElement();
+		return EcoreattrsPackage.Literals.ELEMENT;
 	}
 
 	/**
@@ -85,7 +86,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * @generated
 	 */
 	public NameList getNames() {
-		return (NameList)getNameMap().get(EcoreattrsPackage.eINSTANCE.getElement_Names(), true);
+		return (NameList)getNameMap().get(EcoreattrsPackage.Literals.ELEMENT__NAMES, true);
 	}
 
 	/**
@@ -94,7 +95,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * @generated
 	 */
 	public NotificationChain basicSetNames(NameList newNames, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getNameMap()).basicAdd(EcoreattrsPackage.eINSTANCE.getElement_Names(), newNames, msgs);
+		return ((FeatureMap.Internal)getNameMap()).basicAdd(EcoreattrsPackage.Literals.ELEMENT__NAMES, newNames, msgs);
 	}
 
 	/**
@@ -103,7 +104,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * @generated
 	 */
 	public void setNames(NameList newNames) {
-		((FeatureMap.Internal)getNameMap()).set(EcoreattrsPackage.eINSTANCE.getElement_Names(), newNames);
+		((FeatureMap.Internal)getNameMap()).set(EcoreattrsPackage.Literals.ELEMENT__NAMES, newNames);
 	}
 
 	/**
@@ -111,33 +112,32 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case EcoreattrsPackage.ELEMENT__NAME_MAP:
-					return ((InternalEList)getNameMap()).basicRemove(otherEnd, msgs);
-				case EcoreattrsPackage.ELEMENT__NAMES:
-					return basicSetNames(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case EcoreattrsPackage.ELEMENT__NAME_MAP:
-				return getNameMap();
+				return ((InternalEList<?>)getNameMap()).basicRemove(otherEnd, msgs);
+			case EcoreattrsPackage.ELEMENT__NAMES:
+				return basicSetNames(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case EcoreattrsPackage.ELEMENT__NAME_MAP:
+				if (coreType) return getNameMap();
+				return ((FeatureMap.Internal)getNameMap()).getWrapper();
 			case EcoreattrsPackage.ELEMENT__NAMES:
 				return getNames();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -145,17 +145,17 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case EcoreattrsPackage.ELEMENT__NAME_MAP:
-				getNameMap().clear();
-				getNameMap().addAll((Collection)newValue);
+				((FeatureMap.Internal)getNameMap()).set(newValue);
 				return;
 			case EcoreattrsPackage.ELEMENT__NAMES:
 				setNames((NameList)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -163,8 +163,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case EcoreattrsPackage.ELEMENT__NAME_MAP:
 				getNameMap().clear();
 				return;
@@ -172,7 +173,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 				setNames((NameList)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -180,14 +181,15 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case EcoreattrsPackage.ELEMENT__NAME_MAP:
 				return nameMap != null && !nameMap.isEmpty();
 			case EcoreattrsPackage.ELEMENT__NAMES:
 				return getNames() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -195,6 +197,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

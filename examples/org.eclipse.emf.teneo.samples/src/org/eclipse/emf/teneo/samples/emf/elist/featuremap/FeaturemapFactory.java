@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FeaturemapFactory.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: FeaturemapFactory.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.elist.featuremap;
 
@@ -23,7 +23,7 @@ public interface FeaturemapFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	FeaturemapFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.FeaturemapFactoryImpl();
+	FeaturemapFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.FeaturemapFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Price By Quantity Type</em>'.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LazyAdapterFactory.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: LazyAdapterFactory.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy.util;
 
@@ -52,6 +52,7 @@ public class LazyAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +69,22 @@ public class LazyAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LazySwitch modelSwitch =
-		new LazySwitch() {
-			public Object caseBook(Book object) {
+	protected LazySwitch<Adapter> modelSwitch =
+		new LazySwitch<Adapter>() {
+			@Override
+			public Adapter caseBook(Book object) {
 				return createBookAdapter();
 			}
-			public Object caseLibrary(Library object) {
+			@Override
+			public Adapter caseLibrary(Library object) {
 				return createLibraryAdapter();
 			}
-			public Object caseWriter(Writer object) {
+			@Override
+			public Adapter caseWriter(Writer object) {
 				return createWriterAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +97,9 @@ public class LazyAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

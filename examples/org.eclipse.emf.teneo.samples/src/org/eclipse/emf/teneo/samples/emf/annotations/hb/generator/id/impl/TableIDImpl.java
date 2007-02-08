@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableIDImpl.java,v 1.1 2006/08/31 22:47:46 mtaal Exp $
+ * $Id: TableIDImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl;
 
@@ -73,6 +73,7 @@ public class TableIDImpl extends EObjectImpl implements TableID {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return IdPackage.Literals.TABLE_ID;
 	}
@@ -128,6 +129,7 @@ public class TableIDImpl extends EObjectImpl implements TableID {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case IdPackage.TABLE_ID__MYID:
@@ -141,6 +143,7 @@ public class TableIDImpl extends EObjectImpl implements TableID {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case IdPackage.TABLE_ID__MYID:
@@ -155,6 +158,7 @@ public class TableIDImpl extends EObjectImpl implements TableID {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case IdPackage.TABLE_ID__MYID:
@@ -169,6 +173,7 @@ public class TableIDImpl extends EObjectImpl implements TableID {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case IdPackage.TABLE_ID__MYID:
@@ -182,6 +187,7 @@ public class TableIDImpl extends EObjectImpl implements TableID {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

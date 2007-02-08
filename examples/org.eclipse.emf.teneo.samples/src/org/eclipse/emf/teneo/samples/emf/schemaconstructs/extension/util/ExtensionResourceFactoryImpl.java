@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtensionResourceFactoryImpl.java,v 1.2 2007/02/05 16:13:46 mtaal Exp $
+ * $Id: ExtensionResourceFactoryImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.util;
 
@@ -38,6 +38,7 @@ public class ExtensionResourceFactoryImpl extends ResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new ExtensionResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

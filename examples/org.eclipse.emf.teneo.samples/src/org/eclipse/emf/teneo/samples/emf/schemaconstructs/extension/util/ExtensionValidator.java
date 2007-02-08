@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtensionValidator.java,v 1.2 2007/02/05 16:13:46 mtaal Exp $
+ * $Id: ExtensionValidator.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.util;
 
@@ -86,6 +86,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EPackage getEPackage() {
 	  return ExtensionPackage.eINSTANCE;
 	}
@@ -96,7 +97,8 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map context) {
+	@Override
+	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
 			case ExtensionPackage.ADDRESS:
 				return validateAddress((Address)value, diagnostics, context);
@@ -130,7 +132,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAddress(Address address, DiagnosticChain diagnostics, Map context) {
+	public boolean validateAddress(Address address, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(address, diagnostics, context);
 	}
 
@@ -139,7 +141,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAddressList(AddressList addressList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateAddressList(AddressList addressList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(addressList, diagnostics, context);
 	}
 
@@ -148,7 +150,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDistrictUKAddress(DistrictUKAddress districtUKAddress, DiagnosticChain diagnostics, Map context) {
+	public boolean validateDistrictUKAddress(DistrictUKAddress districtUKAddress, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(districtUKAddress, diagnostics, context);
 	}
 
@@ -157,7 +159,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFirstAddressHolder(FirstAddressHolder firstAddressHolder, DiagnosticChain diagnostics, Map context) {
+	public boolean validateFirstAddressHolder(FirstAddressHolder firstAddressHolder, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(firstAddressHolder, diagnostics, context);
 	}
 
@@ -166,7 +168,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInternationalPrice(InternationalPrice internationalPrice, DiagnosticChain diagnostics, Map context) {
+	public boolean validateInternationalPrice(InternationalPrice internationalPrice, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(internationalPrice, diagnostics, context);
 	}
 
@@ -175,7 +177,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUKAddress(UKAddress ukAddress, DiagnosticChain diagnostics, Map context) {
+	public boolean validateUKAddress(UKAddress ukAddress, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(ukAddress, diagnostics, context);
 	}
 
@@ -184,7 +186,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUSAddress(USAddress usAddress, DiagnosticChain diagnostics, Map context) {
+	public boolean validateUSAddress(USAddress usAddress, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(usAddress, diagnostics, context);
 	}
 
@@ -193,7 +195,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUSState(USState usState, DiagnosticChain diagnostics, Map context) {
+	public boolean validateUSState(USState usState, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -202,7 +204,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePostcode(String postcode, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePostcode(String postcode, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validatePostcode_MinLength(postcode, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePostcode_MaxLength(postcode, diagnostics, context);
 		return result;
@@ -214,7 +216,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePostcode_MinLength(String postcode, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePostcode_MinLength(String postcode, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = postcode.length();  
 		boolean result = length >= 7;
 		if (!result && diagnostics != null) 
@@ -228,7 +230,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePostcode_MaxLength(String postcode, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePostcode_MaxLength(String postcode, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = postcode.length();  
 		boolean result = length <= 7;
 		if (!result && diagnostics != null) 
@@ -241,7 +243,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUKPostcode(String ukPostcode, DiagnosticChain diagnostics, Map context) {
+	public boolean validateUKPostcode(String ukPostcode, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validatePostcode_MinLength(ukPostcode, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePostcode_MaxLength(ukPostcode, diagnostics, context);
 		if (result || diagnostics != null) result &= validateUKPostcode_Pattern(ukPostcode, diagnostics, context);
@@ -267,7 +269,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUKPostcode_Pattern(String ukPostcode, DiagnosticChain diagnostics, Map context) {
+	public boolean validateUKPostcode_Pattern(String ukPostcode, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validatePattern(ExtensionPackage.Literals.UK_POSTCODE, ukPostcode, UK_POSTCODE__PATTERN__VALUES, diagnostics, context);
 	}
 
@@ -276,7 +278,7 @@ public class ExtensionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUSStateObject(USState usStateObject, DiagnosticChain diagnostics, Map context) {
+	public boolean validateUSStateObject(USState usStateObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

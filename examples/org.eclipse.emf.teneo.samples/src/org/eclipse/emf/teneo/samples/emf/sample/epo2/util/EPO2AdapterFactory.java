@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EPO2AdapterFactory.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: EPO2AdapterFactory.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.util;
 
@@ -52,6 +52,7 @@ public class EPO2AdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,33 +69,42 @@ public class EPO2AdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EPO2Switch modelSwitch =
-		new EPO2Switch() {
-			public Object caseItem(Item object) {
+	protected EPO2Switch<Adapter> modelSwitch =
+		new EPO2Switch<Adapter>() {
+			@Override
+			public Adapter caseItem(Item object) {
 				return createItemAdapter();
 			}
-			public Object caseUSAddress(USAddress object) {
+			@Override
+			public Adapter caseUSAddress(USAddress object) {
 				return createUSAddressAdapter();
 			}
-			public Object casePurchaseOrder(PurchaseOrder object) {
+			@Override
+			public Adapter casePurchaseOrder(PurchaseOrder object) {
 				return createPurchaseOrderAdapter();
 			}
-			public Object caseAddress(Address object) {
+			@Override
+			public Adapter caseAddress(Address object) {
 				return createAddressAdapter();
 			}
-			public Object caseSupplier(Supplier object) {
+			@Override
+			public Adapter caseSupplier(Supplier object) {
 				return createSupplierAdapter();
 			}
-			public Object caseCustomer(Customer object) {
+			@Override
+			public Adapter caseCustomer(Customer object) {
 				return createCustomerAdapter();
 			}
-			public Object caseGlobalAddress(GlobalAddress object) {
+			@Override
+			public Adapter caseGlobalAddress(GlobalAddress object) {
 				return createGlobalAddressAdapter();
 			}
-			public Object caseGlobalLocation(GlobalLocation object) {
+			@Override
+			public Adapter caseGlobalLocation(GlobalLocation object) {
 				return createGlobalLocationAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -107,8 +117,9 @@ public class EPO2AdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

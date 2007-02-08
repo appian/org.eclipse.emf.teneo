@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FeatureImpl.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: FeatureImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl;
 
@@ -73,8 +73,9 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return EcoreattrsPackage.eINSTANCE.getFeature();
+		return EcoreattrsPackage.Literals.FEATURE;
 	}
 
 	/**
@@ -95,7 +96,7 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * @generated
 	 */
 	public String getName() {
-		return (String)getAMap().get(EcoreattrsPackage.eINSTANCE.getFeature_Name(), true);
+		return (String)getAMap().get(EcoreattrsPackage.Literals.FEATURE__NAME, true);
 	}
 
 	/**
@@ -104,7 +105,7 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		((FeatureMap.Internal)getAMap()).set(EcoreattrsPackage.eINSTANCE.getFeature_Name(), newName);
+		((FeatureMap.Internal)getAMap()).set(EcoreattrsPackage.Literals.FEATURE__NAME, newName);
 	}
 
 	/**
@@ -113,7 +114,7 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * @generated
 	 */
 	public double getValue() {
-		return ((Double)getAMap().get(EcoreattrsPackage.eINSTANCE.getFeature_Value(), true)).doubleValue();
+		return ((Double)getAMap().get(EcoreattrsPackage.Literals.FEATURE__VALUE, true)).doubleValue();
 	}
 
 	/**
@@ -122,7 +123,7 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * @generated
 	 */
 	public void setValue(double newValue) {
-		((FeatureMap.Internal)getAMap()).set(EcoreattrsPackage.eINSTANCE.getFeature_Value(), new Double(newValue));
+		((FeatureMap.Internal)getAMap()).set(EcoreattrsPackage.Literals.FEATURE__VALUE, new Double(newValue));
 	}
 
 	/**
@@ -131,7 +132,7 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * @generated
 	 */
 	public void unsetValue() {
-		((FeatureMap.Internal)getAMap()).clear(EcoreattrsPackage.eINSTANCE.getFeature_Value());
+		((FeatureMap.Internal)getAMap()).clear(EcoreattrsPackage.Literals.FEATURE__VALUE);
 	}
 
 	/**
@@ -140,7 +141,7 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * @generated
 	 */
 	public boolean isSetValue() {
-		return !((FeatureMap.Internal)getAMap()).isEmpty(EcoreattrsPackage.eINSTANCE.getFeature_Value());
+		return !((FeatureMap.Internal)getAMap()).isEmpty(EcoreattrsPackage.Literals.FEATURE__VALUE);
 	}
 
 	/**
@@ -148,33 +149,32 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case EcoreattrsPackage.FEATURE__AMAP:
-					return ((InternalEList)getAMap()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case EcoreattrsPackage.FEATURE__AMAP:
-				return getAMap();
+				return ((InternalEList<?>)getAMap()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case EcoreattrsPackage.FEATURE__AMAP:
+				if (coreType) return getAMap();
+				return ((FeatureMap.Internal)getAMap()).getWrapper();
 			case EcoreattrsPackage.FEATURE__NAME:
 				return getName();
 			case EcoreattrsPackage.FEATURE__VALUE:
 				return new Double(getValue());
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -182,11 +182,11 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case EcoreattrsPackage.FEATURE__AMAP:
-				getAMap().clear();
-				getAMap().addAll((Collection)newValue);
+				((FeatureMap.Internal)getAMap()).set(newValue);
 				return;
 			case EcoreattrsPackage.FEATURE__NAME:
 				setName((String)newValue);
@@ -195,7 +195,7 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 				setValue(((Double)newValue).doubleValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -203,8 +203,9 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case EcoreattrsPackage.FEATURE__AMAP:
 				getAMap().clear();
 				return;
@@ -215,7 +216,7 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 				unsetValue();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -223,8 +224,9 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case EcoreattrsPackage.FEATURE__AMAP:
 				return aMap != null && !aMap.isEmpty();
 			case EcoreattrsPackage.FEATURE__NAME:
@@ -232,7 +234,7 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 			case EcoreattrsPackage.FEATURE__VALUE:
 				return isSetValue();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -240,6 +242,7 @@ public class FeatureImpl extends EObjectImpl implements Feature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

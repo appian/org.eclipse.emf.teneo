@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FmType.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: FmType.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play;
 
@@ -42,6 +42,6 @@ public interface FmType extends EObject {
 	 *        extendedMetaData="kind='element' name='p' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList getP();
+	EList<String> getP();
 
 } // FmType

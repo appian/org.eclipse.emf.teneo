@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ContentListImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: ContentListImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -63,7 +63,7 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList address = null;
+	protected EList<Address> address = null;
 
 	/**
 	 * The cached value of the '{@link #getPrice() <em>Price</em>}' reference list.
@@ -73,7 +73,7 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList price = null;
+	protected EList<Price> price = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,6 +89,7 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return InheritancemappingPackage.Literals.CONTENT_LIST;
 	}
@@ -119,9 +120,9 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAddress() {
+	public EList<Address> getAddress() {
 		if (address == null) {
-			address = new EObjectEList(Address.class, this, InheritancemappingPackage.CONTENT_LIST__ADDRESS);
+			address = new EObjectEList<Address>(Address.class, this, InheritancemappingPackage.CONTENT_LIST__ADDRESS);
 		}
 		return address;
 	}
@@ -131,9 +132,9 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPrice() {
+	public EList<Price> getPrice() {
 		if (price == null) {
-			price = new EObjectEList(Price.class, this, InheritancemappingPackage.CONTENT_LIST__PRICE);
+			price = new EObjectEList<Price>(Price.class, this, InheritancemappingPackage.CONTENT_LIST__PRICE);
 		}
 		return price;
 	}
@@ -143,6 +144,7 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case InheritancemappingPackage.CONTENT_LIST__NAME:
@@ -160,6 +162,8 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InheritancemappingPackage.CONTENT_LIST__NAME:
@@ -167,11 +171,11 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 				return;
 			case InheritancemappingPackage.CONTENT_LIST__ADDRESS:
 				getAddress().clear();
-				getAddress().addAll((Collection)newValue);
+				getAddress().addAll((Collection<? extends Address>)newValue);
 				return;
 			case InheritancemappingPackage.CONTENT_LIST__PRICE:
 				getPrice().clear();
-				getPrice().addAll((Collection)newValue);
+				getPrice().addAll((Collection<? extends Price>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -182,6 +186,7 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case InheritancemappingPackage.CONTENT_LIST__NAME:
@@ -202,6 +207,7 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InheritancemappingPackage.CONTENT_LIST__NAME:
@@ -219,6 +225,7 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

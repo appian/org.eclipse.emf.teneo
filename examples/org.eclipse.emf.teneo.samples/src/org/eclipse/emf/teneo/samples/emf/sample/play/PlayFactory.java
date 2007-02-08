@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PlayFactory.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: PlayFactory.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play;
 
@@ -23,7 +23,7 @@ public interface PlayFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	PlayFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayFactoryImpl();
+	PlayFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Act Type</em>'.

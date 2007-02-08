@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SchoollibraryPackage.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: SchoollibraryPackage.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary;
 
@@ -80,7 +80,7 @@ public interface SchoollibraryPackage extends EPackage {
 	int ASSET__VALUE = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Asset</em>' class.
+	 * The number of structural features of the '<em>Asset</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -144,7 +144,7 @@ public interface SchoollibraryPackage extends EPackage {
 	int SCHOOL_BOOK__VALUE = LibraryPackage.BOOK_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>School Book</em>' class.
+	 * The number of structural features of the '<em>School Book</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -199,7 +199,7 @@ public interface SchoollibraryPackage extends EPackage {
 	int SCHOOL_LIBRARY__LOCATION = LibraryPackage.LIBRARY_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the the '<em>School Library</em>' class.
+	 * The number of structural features of the '<em>School Library</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -268,5 +268,66 @@ public interface SchoollibraryPackage extends EPackage {
 	 * @generated
 	 */
 	SchoollibraryFactory getSchoollibraryFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.AssetImpl <em>Asset</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.AssetImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoollibraryPackageImpl#getAsset()
+		 * @generated
+		 */
+		EClass ASSET = eINSTANCE.getAsset();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSET__VALUE = eINSTANCE.getAsset_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoolBookImpl <em>School Book</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoolBookImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoollibraryPackageImpl#getSchoolBook()
+		 * @generated
+		 */
+		EClass SCHOOL_BOOK = eINSTANCE.getSchoolBook();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoolLibraryImpl <em>School Library</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoolLibraryImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoollibraryPackageImpl#getSchoolLibrary()
+		 * @generated
+		 */
+		EClass SCHOOL_LIBRARY = eINSTANCE.getSchoolLibrary();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCHOOL_LIBRARY__LOCATION = eINSTANCE.getSchoolLibrary_Location();
+
+	}
 
 } //SchoollibraryPackage

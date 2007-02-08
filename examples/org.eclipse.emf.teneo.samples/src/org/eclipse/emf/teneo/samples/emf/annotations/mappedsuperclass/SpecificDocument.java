@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SpecificDocument.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: SpecificDocument.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -24,6 +24,13 @@ package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
  * @generated
  */
 public interface SpecificDocument extends ParentDocument {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
 	/**
 	 * Returns the value of the '<em><b>My Specific Info</b></em>' attribute.
 	 * <!-- begin-user-doc -->

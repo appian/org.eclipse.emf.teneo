@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FirstAddressHolderImpl.java,v 1.2 2007/02/05 16:13:46 mtaal Exp $
+ * $Id: FirstAddressHolderImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -43,7 +43,7 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * @generated
 	 * @ordered
 	 */
-	protected EList value = null;
+	protected EList<Address> value = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -59,6 +59,7 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ExtensionPackage.Literals.FIRST_ADDRESS_HOLDER;
 	}
@@ -68,9 +69,9 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getValue() {
+	public EList<Address> getValue() {
 		if (value == null) {
-			value = new EObjectEList(Address.class, this, ExtensionPackage.FIRST_ADDRESS_HOLDER__VALUE);
+			value = new EObjectEList<Address>(Address.class, this, ExtensionPackage.FIRST_ADDRESS_HOLDER__VALUE);
 		}
 		return value;
 	}
@@ -80,6 +81,7 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ExtensionPackage.FIRST_ADDRESS_HOLDER__VALUE:
@@ -93,11 +95,13 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ExtensionPackage.FIRST_ADDRESS_HOLDER__VALUE:
 				getValue().clear();
-				getValue().addAll((Collection)newValue);
+				getValue().addAll((Collection<? extends Address>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -108,6 +112,7 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ExtensionPackage.FIRST_ADDRESS_HOLDER__VALUE:
@@ -122,6 +127,7 @@ public class FirstAddressHolderImpl extends EObjectImpl implements FirstAddressH
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ExtensionPackage.FIRST_ADDRESS_HOLDER__VALUE:

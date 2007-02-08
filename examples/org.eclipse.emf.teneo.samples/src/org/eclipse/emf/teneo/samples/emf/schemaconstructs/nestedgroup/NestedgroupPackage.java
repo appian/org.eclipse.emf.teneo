@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NestedgroupPackage.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: NestedgroupPackage.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup;
 
@@ -41,7 +41,7 @@ public interface NestedgroupPackage extends EPackage{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/nestedgroup";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/nestedgroup";
 
 	/**
 	 * The package namespace name.
@@ -106,7 +106,7 @@ public interface NestedgroupPackage extends EPackage{
 	int A__C = 3;
 
 	/**
-	 * The number of structural features of the the '<em>A</em>' class.
+	 * The number of structural features of the '<em>A</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -143,7 +143,7 @@ public interface NestedgroupPackage extends EPackage{
 	int CTYPE__CVALUE = 1;
 
 	/**
-	 * The number of structural features of the the '<em>CType</em>' class.
+	 * The number of structural features of the '<em>CType</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -207,7 +207,7 @@ public interface NestedgroupPackage extends EPackage{
 	int ELEMENT__RECURSIVE = 4;
 
 	/**
-	 * The number of structural features of the the '<em>Element</em>' class.
+	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -375,5 +375,138 @@ public interface NestedgroupPackage extends EPackage{
 	 * @generated
 	 */
 	NestedgroupFactory getNestedgroupFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.AImpl <em>A</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.AImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.NestedgroupPackageImpl#getA()
+		 * @generated
+		 */
+		EClass A = eINSTANCE.getA();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__NAME = eINSTANCE.getA_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Group</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__GROUP = eINSTANCE.getA_Group();
+
+		/**
+		 * The meta object literal for the '<em><b>B</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__B = eINSTANCE.getA_B();
+
+		/**
+		 * The meta object literal for the '<em><b>C</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference A__C = eINSTANCE.getA_C();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.CTypeImpl <em>CType</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.CTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.NestedgroupPackageImpl#getCType()
+		 * @generated
+		 */
+		EClass CTYPE = eINSTANCE.getCType();
+
+		/**
+		 * The meta object literal for the '<em><b>Cname</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CTYPE__CNAME = eINSTANCE.getCType_Cname();
+
+		/**
+		 * The meta object literal for the '<em><b>Cvalue</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CTYPE__CVALUE = eINSTANCE.getCType_Cvalue();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.ElementImpl <em>Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.ElementImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.NestedgroupPackageImpl#getElement()
+		 * @generated
+		 */
+		EClass ELEMENT = eINSTANCE.getElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__MIXED = eINSTANCE.getElement_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__NAME = eINSTANCE.getElement_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>True</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__TRUE = eINSTANCE.getElement_True();
+
+		/**
+		 * The meta object literal for the '<em><b>C</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT__C = eINSTANCE.getElement_C();
+
+		/**
+		 * The meta object literal for the '<em><b>Recursive</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT__RECURSIVE = eINSTANCE.getElement_Recursive();
+
+	}
 
 } //NestedgroupPackage

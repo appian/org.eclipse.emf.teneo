@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SalutationType.java,v 1.1 2006/07/11 16:57:02 mtaal Exp $
+ * $Id: SalutationType.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed;
 
@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * A representation of the model object '<em><b>Salutation Type</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>  
+ * <p>
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.SalutationType#getMixed <em>Mixed</em>}</li>
@@ -28,6 +28,13 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * @generated
  */
 public interface SalutationType extends EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
 	/**
 	 * Returns the value of the '<em><b>Mixed</b></em>' attribute list.
 	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RestrictionFactory.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: RestrictionFactory.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction;
 
@@ -23,7 +23,7 @@ public interface RestrictionFactory extends EFactory{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	RestrictionFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.impl.RestrictionFactoryImpl();
+	RestrictionFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.impl.RestrictionFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Member</em>'.

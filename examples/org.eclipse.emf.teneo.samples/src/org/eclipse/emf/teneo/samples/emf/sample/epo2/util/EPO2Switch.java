@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EPO2Switch.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: EPO2Switch.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.epo2.*;
  * @see org.eclipse.emf.teneo.samples.emf.sample.epo2.EPO2Package
  * @generated
  */
-public class EPO2Switch {
+public class EPO2Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class EPO2Switch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class EPO2Switch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,48 +85,48 @@ public class EPO2Switch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case EPO2Package.ITEM: {
 				Item item = (Item)theEObject;
-				Object result = caseItem(item);
+				T result = caseItem(item);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EPO2Package.US_ADDRESS: {
 				USAddress usAddress = (USAddress)theEObject;
-				Object result = caseUSAddress(usAddress);
+				T result = caseUSAddress(usAddress);
 				if (result == null) result = caseAddress(usAddress);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EPO2Package.PURCHASE_ORDER: {
 				PurchaseOrder purchaseOrder = (PurchaseOrder)theEObject;
-				Object result = casePurchaseOrder(purchaseOrder);
+				T result = casePurchaseOrder(purchaseOrder);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EPO2Package.ADDRESS: {
 				Address address = (Address)theEObject;
-				Object result = caseAddress(address);
+				T result = caseAddress(address);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EPO2Package.SUPPLIER: {
 				Supplier supplier = (Supplier)theEObject;
-				Object result = caseSupplier(supplier);
+				T result = caseSupplier(supplier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EPO2Package.CUSTOMER: {
 				Customer customer = (Customer)theEObject;
-				Object result = caseCustomer(customer);
+				T result = caseCustomer(customer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EPO2Package.GLOBAL_ADDRESS: {
 				GlobalAddress globalAddress = (GlobalAddress)theEObject;
-				Object result = caseGlobalAddress(globalAddress);
+				T result = caseGlobalAddress(globalAddress);
 				if (result == null) result = caseAddress(globalAddress);
 				if (result == null) result = caseGlobalLocation(globalAddress);
 				if (result == null) result = defaultCase(theEObject);
@@ -134,7 +134,7 @@ public class EPO2Switch {
 			}
 			case EPO2Package.GLOBAL_LOCATION: {
 				GlobalLocation globalLocation = (GlobalLocation)theEObject;
-				Object result = caseGlobalLocation(globalLocation);
+				T result = caseGlobalLocation(globalLocation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -153,7 +153,7 @@ public class EPO2Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseItem(Item object) {
+	public T caseItem(Item object) {
 		return null;
 	}
 
@@ -168,7 +168,7 @@ public class EPO2Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUSAddress(USAddress object) {
+	public T caseUSAddress(USAddress object) {
 		return null;
 	}
 
@@ -183,7 +183,7 @@ public class EPO2Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePurchaseOrder(PurchaseOrder object) {
+	public T casePurchaseOrder(PurchaseOrder object) {
 		return null;
 	}
 
@@ -198,7 +198,7 @@ public class EPO2Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddress(Address object) {
+	public T caseAddress(Address object) {
 		return null;
 	}
 
@@ -213,7 +213,7 @@ public class EPO2Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSupplier(Supplier object) {
+	public T caseSupplier(Supplier object) {
 		return null;
 	}
 
@@ -228,7 +228,7 @@ public class EPO2Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCustomer(Customer object) {
+	public T caseCustomer(Customer object) {
 		return null;
 	}
 
@@ -243,7 +243,7 @@ public class EPO2Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGlobalAddress(GlobalAddress object) {
+	public T caseGlobalAddress(GlobalAddress object) {
 		return null;
 	}
 
@@ -258,7 +258,7 @@ public class EPO2Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGlobalLocation(GlobalLocation object) {
+	public T caseGlobalLocation(GlobalLocation object) {
 		return null;
 	}
 
@@ -273,7 +273,7 @@ public class EPO2Switch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

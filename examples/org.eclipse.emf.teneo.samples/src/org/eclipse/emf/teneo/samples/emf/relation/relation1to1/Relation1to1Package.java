@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1to1Package.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: Relation1to1Package.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1to1;
 
@@ -41,7 +41,7 @@ public interface Relation1to1Package extends EPackage{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/relation/relation1to1";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1to1";
 
 	/**
 	 * The package namespace name.
@@ -79,7 +79,7 @@ public interface Relation1to1Package extends EPackage{
 	int CONTAINED_CHILD_NR__NAME = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Contained Child NR</em>' class.
+	 * The number of structural features of the '<em>Contained Child NR</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -107,7 +107,7 @@ public interface Relation1to1Package extends EPackage{
 	int CONTAINED_CHILD_R__NAME = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Contained Child R</em>' class.
+	 * The number of structural features of the '<em>Contained Child R</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -198,7 +198,7 @@ public interface Relation1to1Package extends EPackage{
 	int MAIN__NOTCONTAINEDTWOWAYNOTREQUIREDNR = 7;
 
 	/**
-	 * The number of structural features of the the '<em>Main</em>' class.
+	 * The number of structural features of the '<em>Main</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -226,7 +226,7 @@ public interface Relation1to1Package extends EPackage{
 	int NOT_CONTAINED_CHILD_NR__NAME = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Not Contained Child NR</em>' class.
+	 * The number of structural features of the '<em>Not Contained Child NR</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -263,7 +263,7 @@ public interface Relation1to1Package extends EPackage{
 	int NOT_CONTAINED_CHILD_NRT__MAIN = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Not Contained Child NRT</em>' class.
+	 * The number of structural features of the '<em>Not Contained Child NRT</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -300,7 +300,7 @@ public interface Relation1to1Package extends EPackage{
 	int NOT_CONTAINED_CHILD_NRTNR__MAIN = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Not Contained Child NRTNR</em>' class.
+	 * The number of structural features of the '<em>Not Contained Child NRTNR</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -328,7 +328,7 @@ public interface Relation1to1Package extends EPackage{
 	int NOT_CONTAINED_CHILD_R__NAME = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Not Contained Child R</em>' class.
+	 * The number of structural features of the '<em>Not Contained Child R</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -365,7 +365,7 @@ public interface Relation1to1Package extends EPackage{
 	int NOT_CONTAINED_CHILD_RTNR__MAIN = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Not Contained Child RTNR</em>' class.
+	 * The number of structural features of the '<em>Not Contained Child RTNR</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -660,5 +660,244 @@ public interface Relation1to1Package extends EPackage{
 	 * @generated
 	 */
 	Relation1to1Factory getRelation1to1Factory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.ContainedChildNRImpl <em>Contained Child NR</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.ContainedChildNRImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.Relation1to1PackageImpl#getContainedChildNR()
+		 * @generated
+		 */
+		EClass CONTAINED_CHILD_NR = eINSTANCE.getContainedChildNR();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINED_CHILD_NR__NAME = eINSTANCE.getContainedChildNR_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.ContainedChildRImpl <em>Contained Child R</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.ContainedChildRImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.Relation1to1PackageImpl#getContainedChildR()
+		 * @generated
+		 */
+		EClass CONTAINED_CHILD_R = eINSTANCE.getContainedChildR();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINED_CHILD_R__NAME = eINSTANCE.getContainedChildR_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.MainImpl <em>Main</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.MainImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.Relation1to1PackageImpl#getMain()
+		 * @generated
+		 */
+		EClass MAIN = eINSTANCE.getMain();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAIN__NAME = eINSTANCE.getMain_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Containedonewayrequired</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAIN__CONTAINEDONEWAYREQUIRED = eINSTANCE.getMain_Containedonewayrequired();
+
+		/**
+		 * The meta object literal for the '<em><b>Containedone Waynotrequired</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAIN__CONTAINEDONE_WAYNOTREQUIRED = eINSTANCE.getMain_ContainedoneWaynotrequired();
+
+		/**
+		 * The meta object literal for the '<em><b>Notcontainedonewayrequired</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAIN__NOTCONTAINEDONEWAYREQUIRED = eINSTANCE.getMain_Notcontainedonewayrequired();
+
+		/**
+		 * The meta object literal for the '<em><b>Notcontainedonewaynotrequired</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAIN__NOTCONTAINEDONEWAYNOTREQUIRED = eINSTANCE.getMain_Notcontainedonewaynotrequired();
+
+		/**
+		 * The meta object literal for the '<em><b>Notcontainedtwowaynotrequired</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAIN__NOTCONTAINEDTWOWAYNOTREQUIRED = eINSTANCE.getMain_Notcontainedtwowaynotrequired();
+
+		/**
+		 * The meta object literal for the '<em><b>Notcontainedtwowayrequirednr</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAIN__NOTCONTAINEDTWOWAYREQUIREDNR = eINSTANCE.getMain_Notcontainedtwowayrequirednr();
+
+		/**
+		 * The meta object literal for the '<em><b>Notcontainedtwowaynotrequirednr</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAIN__NOTCONTAINEDTWOWAYNOTREQUIREDNR = eINSTANCE.getMain_Notcontainedtwowaynotrequirednr();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildNRImpl <em>Not Contained Child NR</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildNRImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.Relation1to1PackageImpl#getNotContainedChildNR()
+		 * @generated
+		 */
+		EClass NOT_CONTAINED_CHILD_NR = eINSTANCE.getNotContainedChildNR();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOT_CONTAINED_CHILD_NR__NAME = eINSTANCE.getNotContainedChildNR_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildNRTImpl <em>Not Contained Child NRT</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildNRTImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.Relation1to1PackageImpl#getNotContainedChildNRT()
+		 * @generated
+		 */
+		EClass NOT_CONTAINED_CHILD_NRT = eINSTANCE.getNotContainedChildNRT();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOT_CONTAINED_CHILD_NRT__NAME = eINSTANCE.getNotContainedChildNRT_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Main</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NOT_CONTAINED_CHILD_NRT__MAIN = eINSTANCE.getNotContainedChildNRT_Main();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildNRTNRImpl <em>Not Contained Child NRTNR</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildNRTNRImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.Relation1to1PackageImpl#getNotContainedChildNRTNR()
+		 * @generated
+		 */
+		EClass NOT_CONTAINED_CHILD_NRTNR = eINSTANCE.getNotContainedChildNRTNR();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOT_CONTAINED_CHILD_NRTNR__NAME = eINSTANCE.getNotContainedChildNRTNR_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Main</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NOT_CONTAINED_CHILD_NRTNR__MAIN = eINSTANCE.getNotContainedChildNRTNR_Main();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildRImpl <em>Not Contained Child R</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildRImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.Relation1to1PackageImpl#getNotContainedChildR()
+		 * @generated
+		 */
+		EClass NOT_CONTAINED_CHILD_R = eINSTANCE.getNotContainedChildR();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOT_CONTAINED_CHILD_R__NAME = eINSTANCE.getNotContainedChildR_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildRTNRImpl <em>Not Contained Child RTNR</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildRTNRImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.Relation1to1PackageImpl#getNotContainedChildRTNR()
+		 * @generated
+		 */
+		EClass NOT_CONTAINED_CHILD_RTNR = eINSTANCE.getNotContainedChildRTNR();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOT_CONTAINED_CHILD_RTNR__NAME = eINSTANCE.getNotContainedChildRTNR_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Main</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NOT_CONTAINED_CHILD_RTNR__MAIN = eINSTANCE.getNotContainedChildRTNR_Main();
+
+	}
 
 } //Relation1to1Package

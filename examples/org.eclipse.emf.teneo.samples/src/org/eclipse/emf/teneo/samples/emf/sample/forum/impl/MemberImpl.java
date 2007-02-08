@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MemberImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: MemberImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum.impl;
 
@@ -74,7 +74,7 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList posts = null;
+	protected EList<Post> posts = null;
 
 	/**
 	 * The cached value of the '{@link #getCreated() <em>Created</em>}' reference list.
@@ -84,7 +84,7 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList created = null;
+	protected EList<Topic> created = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,8 +100,9 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return ForumPackage.eINSTANCE.getMember();
+		return ForumPackage.Literals.MEMBER;
 	}
 
 	/**
@@ -130,9 +131,9 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPosts() {
+	public EList<Post> getPosts() {
 		if (posts == null) {
-			posts = new EObjectWithInverseEList(Post.class, this, ForumPackage.MEMBER__POSTS, ForumPackage.POST__AUTHOR);
+			posts = new EObjectWithInverseEList<Post>(Post.class, this, ForumPackage.MEMBER__POSTS, ForumPackage.POST__AUTHOR);
 		}
 		return posts;
 	}
@@ -142,9 +143,9 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getCreated() {
+	public EList<Topic> getCreated() {
 		if (created == null) {
-			created = new EObjectWithInverseEList(Topic.class, this, ForumPackage.MEMBER__CREATED, ForumPackage.TOPIC__CREATOR);
+			created = new EObjectWithInverseEList<Topic>(Topic.class, this, ForumPackage.MEMBER__CREATED, ForumPackage.TOPIC__CREATOR);
 		}
 		return created;
 	}
@@ -154,20 +155,16 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case ForumPackage.MEMBER__POSTS:
-					return ((InternalEList)getPosts()).basicAdd(otherEnd, msgs);
-				case ForumPackage.MEMBER__CREATED:
-					return ((InternalEList)getCreated()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ForumPackage.MEMBER__POSTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPosts()).basicAdd(otherEnd, msgs);
+			case ForumPackage.MEMBER__CREATED:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCreated()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -175,18 +172,15 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case ForumPackage.MEMBER__POSTS:
-					return ((InternalEList)getPosts()).basicRemove(otherEnd, msgs);
-				case ForumPackage.MEMBER__CREATED:
-					return ((InternalEList)getCreated()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ForumPackage.MEMBER__POSTS:
+				return ((InternalEList<?>)getPosts()).basicRemove(otherEnd, msgs);
+			case ForumPackage.MEMBER__CREATED:
+				return ((InternalEList<?>)getCreated()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -194,8 +188,9 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case ForumPackage.MEMBER__NICKNAME:
 				return getNickname();
 			case ForumPackage.MEMBER__POSTS:
@@ -203,7 +198,7 @@ public class MemberImpl extends EObjectImpl implements Member {
 			case ForumPackage.MEMBER__CREATED:
 				return getCreated();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -211,21 +206,23 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case ForumPackage.MEMBER__NICKNAME:
 				setNickname((String)newValue);
 				return;
 			case ForumPackage.MEMBER__POSTS:
 				getPosts().clear();
-				getPosts().addAll((Collection)newValue);
+				getPosts().addAll((Collection<? extends Post>)newValue);
 				return;
 			case ForumPackage.MEMBER__CREATED:
 				getCreated().clear();
-				getCreated().addAll((Collection)newValue);
+				getCreated().addAll((Collection<? extends Topic>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -233,8 +230,9 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case ForumPackage.MEMBER__NICKNAME:
 				setNickname(NICKNAME_EDEFAULT);
 				return;
@@ -245,7 +243,7 @@ public class MemberImpl extends EObjectImpl implements Member {
 				getCreated().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -253,8 +251,9 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case ForumPackage.MEMBER__NICKNAME:
 				return NICKNAME_EDEFAULT == null ? nickname != null : !NICKNAME_EDEFAULT.equals(nickname);
 			case ForumPackage.MEMBER__POSTS:
@@ -262,7 +261,7 @@ public class MemberImpl extends EObjectImpl implements Member {
 			case ForumPackage.MEMBER__CREATED:
 				return created != null && !created.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -270,6 +269,7 @@ public class MemberImpl extends EObjectImpl implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

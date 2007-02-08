@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: statesByCountryImpl.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: statesByCountryImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl;
 
@@ -74,7 +74,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final List ALL_STATES_EDEFAULT = null;
+	protected static final List<String> ALL_STATES_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getAllStates() <em>All States</em>}' attribute.
@@ -84,7 +84,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * @generated
 	 * @ordered
 	 */
-	protected List allStates = ALL_STATES_EDEFAULT;
+	protected List<String> allStates = ALL_STATES_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getSixImportantStates() <em>Six Important States</em>}' attribute.
@@ -94,7 +94,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final List SIX_IMPORTANT_STATES_EDEFAULT = null;
+	protected static final List<String> SIX_IMPORTANT_STATES_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getSixImportantStates() <em>Six Important States</em>}' attribute.
@@ -104,7 +104,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * @generated
 	 * @ordered
 	 */
-	protected List sixImportantStates = SIX_IMPORTANT_STATES_EDEFAULT;
+	protected List<String> sixImportantStates = SIX_IMPORTANT_STATES_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getZipUnion() <em>Zip Union</em>}' attribute.
@@ -134,7 +134,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList zipUnions = null;
+	protected EList<String> zipUnions = null;
 
 	/**
 	 * The default value of the '{@link #getSimpleUnion() <em>Simple Union</em>}' attribute.
@@ -164,7 +164,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList simpleUnions = null;
+	protected EList<Object> simpleUnions = null;
 
 	/**
 	 * The default value of the '{@link #getSimpleStringUnion() <em>Simple String Union</em>}' attribute.
@@ -194,7 +194,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList simpleStringUnions = null;
+	protected EList<String> simpleStringUnions = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -210,8 +210,9 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return ListunionPackage.eINSTANCE.getstatesByCountry();
+		return ListunionPackage.Literals.STATES_BY_COUNTRY;
 	}
 
 	/**
@@ -240,7 +241,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getAllStates() {
+	public List<String> getAllStates() {
 		return allStates;
 	}
 
@@ -249,8 +250,8 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAllStates(List newAllStates) {
-		List oldAllStates = allStates;
+	public void setAllStates(List<String> newAllStates) {
+		List<String> oldAllStates = allStates;
 		allStates = newAllStates;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ListunionPackage.STATES_BY_COUNTRY__ALL_STATES, oldAllStates, allStates));
@@ -261,7 +262,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getSixImportantStates() {
+	public List<String> getSixImportantStates() {
 		return sixImportantStates;
 	}
 
@@ -270,8 +271,8 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSixImportantStates(List newSixImportantStates) {
-		List oldSixImportantStates = sixImportantStates;
+	public void setSixImportantStates(List<String> newSixImportantStates) {
+		List<String> oldSixImportantStates = sixImportantStates;
 		sixImportantStates = newSixImportantStates;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ListunionPackage.STATES_BY_COUNTRY__SIX_IMPORTANT_STATES, oldSixImportantStates, sixImportantStates));
@@ -303,9 +304,9 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getZipUnions() {
+	public EList<String> getZipUnions() {
 		if (zipUnions == null) {
-			zipUnions = new EDataTypeEList(String.class, this, ListunionPackage.STATES_BY_COUNTRY__ZIP_UNIONS);
+			zipUnions = new EDataTypeEList<String>(String.class, this, ListunionPackage.STATES_BY_COUNTRY__ZIP_UNIONS);
 		}
 		return zipUnions;
 	}
@@ -336,9 +337,9 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSimpleUnions() {
+	public EList<Object> getSimpleUnions() {
 		if (simpleUnions == null) {
-			simpleUnions = new EDataTypeEList(Object.class, this, ListunionPackage.STATES_BY_COUNTRY__SIMPLE_UNIONS);
+			simpleUnions = new EDataTypeEList<Object>(Object.class, this, ListunionPackage.STATES_BY_COUNTRY__SIMPLE_UNIONS);
 		}
 		return simpleUnions;
 	}
@@ -369,9 +370,9 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSimpleStringUnions() {
+	public EList<String> getSimpleStringUnions() {
 		if (simpleStringUnions == null) {
-			simpleStringUnions = new EDataTypeEList(String.class, this, ListunionPackage.STATES_BY_COUNTRY__SIMPLE_STRING_UNIONS);
+			simpleStringUnions = new EDataTypeEList<String>(String.class, this, ListunionPackage.STATES_BY_COUNTRY__SIMPLE_STRING_UNIONS);
 		}
 		return simpleStringUnions;
 	}
@@ -381,8 +382,9 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case ListunionPackage.STATES_BY_COUNTRY__COUNTRY:
 				return getCountry();
 			case ListunionPackage.STATES_BY_COUNTRY__ALL_STATES:
@@ -402,7 +404,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 			case ListunionPackage.STATES_BY_COUNTRY__SIMPLE_STRING_UNIONS:
 				return getSimpleStringUnions();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -410,40 +412,42 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case ListunionPackage.STATES_BY_COUNTRY__COUNTRY:
 				setCountry((String)newValue);
 				return;
 			case ListunionPackage.STATES_BY_COUNTRY__ALL_STATES:
-				setAllStates((List)newValue);
+				setAllStates((List<String>)newValue);
 				return;
 			case ListunionPackage.STATES_BY_COUNTRY__SIX_IMPORTANT_STATES:
-				setSixImportantStates((List)newValue);
+				setSixImportantStates((List<String>)newValue);
 				return;
 			case ListunionPackage.STATES_BY_COUNTRY__ZIP_UNION:
 				setZipUnion((String)newValue);
 				return;
 			case ListunionPackage.STATES_BY_COUNTRY__ZIP_UNIONS:
 				getZipUnions().clear();
-				getZipUnions().addAll((Collection)newValue);
+				getZipUnions().addAll((Collection<? extends String>)newValue);
 				return;
 			case ListunionPackage.STATES_BY_COUNTRY__SIMPLE_UNION:
-				setSimpleUnion((Object)newValue);
+				setSimpleUnion(newValue);
 				return;
 			case ListunionPackage.STATES_BY_COUNTRY__SIMPLE_UNIONS:
 				getSimpleUnions().clear();
-				getSimpleUnions().addAll((Collection)newValue);
+				getSimpleUnions().addAll((Collection<? extends Object>)newValue);
 				return;
 			case ListunionPackage.STATES_BY_COUNTRY__SIMPLE_STRING_UNION:
 				setSimpleStringUnion((String)newValue);
 				return;
 			case ListunionPackage.STATES_BY_COUNTRY__SIMPLE_STRING_UNIONS:
 				getSimpleStringUnions().clear();
-				getSimpleStringUnions().addAll((Collection)newValue);
+				getSimpleStringUnions().addAll((Collection<? extends String>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -451,8 +455,9 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case ListunionPackage.STATES_BY_COUNTRY__COUNTRY:
 				setCountry(COUNTRY_EDEFAULT);
 				return;
@@ -481,7 +486,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 				getSimpleStringUnions().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -489,8 +494,9 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case ListunionPackage.STATES_BY_COUNTRY__COUNTRY:
 				return COUNTRY_EDEFAULT == null ? country != null : !COUNTRY_EDEFAULT.equals(country);
 			case ListunionPackage.STATES_BY_COUNTRY__ALL_STATES:
@@ -510,7 +516,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 			case ListunionPackage.STATES_BY_COUNTRY__SIMPLE_STRING_UNIONS:
 				return simpleStringUnions != null && !simpleStringUnions.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -518,6 +524,7 @@ public class statesByCountryImpl extends EObjectImpl implements statesByCountry 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

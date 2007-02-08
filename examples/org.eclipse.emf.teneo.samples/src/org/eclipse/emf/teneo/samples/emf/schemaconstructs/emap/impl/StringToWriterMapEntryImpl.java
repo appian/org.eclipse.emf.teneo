@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: StringToWriterMapEntryImpl.java,v 1.1 2006/09/28 20:06:04 mtaal Exp $
+ * $Id: StringToWriterMapEntryImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
  *
  * @generated
  */
-public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap.Entry {
+public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<String,Writer> {
 	/**
 	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -79,6 +79,7 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return EmapPackage.Literals.STRING_TO_WRITER_MAP_ENTRY;
 	}
@@ -130,6 +131,7 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EmapPackage.STRING_TO_WRITER_MAP_ENTRY__KEY:
@@ -145,6 +147,7 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EmapPackage.STRING_TO_WRITER_MAP_ENTRY__KEY:
@@ -162,6 +165,7 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case EmapPackage.STRING_TO_WRITER_MAP_ENTRY__KEY:
@@ -179,6 +183,7 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EmapPackage.STRING_TO_WRITER_MAP_ENTRY__KEY:
@@ -194,6 +199,7 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
@@ -238,7 +244,7 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getKey() {
+	public String getKey() {
 		return getTypedKey();
 	}
 
@@ -247,8 +253,8 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setKey(Object key) {
-		setTypedKey((String)key);
+	public void setKey(String key) {
+		setTypedKey(key);
 	}
 
 	/**
@@ -256,7 +262,7 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getValue() {
+	public Writer getValue() {
 		return getTypedValue();
 	}
 
@@ -265,9 +271,9 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object setValue(Object value) {
-		Object oldValue = getValue();
-		setTypedValue((Writer)value);
+	public Writer setValue(Writer value) {
+		Writer oldValue = getValue();
+		setTypedValue(value);
 		return oldValue;
 	}
 
@@ -276,9 +282,10 @@ public class StringToWriterMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap getEMap() {
+	@SuppressWarnings("unchecked")
+	public EMap<String, Writer> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<String, Writer>)container.eGet(eContainmentFeature());
 	}
 
 } //StringToWriterMapEntryImpl

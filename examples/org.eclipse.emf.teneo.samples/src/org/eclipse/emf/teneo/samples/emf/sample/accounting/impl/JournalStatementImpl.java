@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JournalStatementImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: JournalStatementImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting.impl;
 
@@ -162,8 +162,9 @@ public class JournalStatementImpl extends EObjectImpl implements JournalStatemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return AccountingPackage.eINSTANCE.getJournalStatement();
+		return AccountingPackage.Literals.JOURNAL_STATEMENT;
 	}
 
 	/**
@@ -347,8 +348,9 @@ public class JournalStatementImpl extends EObjectImpl implements JournalStatemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case AccountingPackage.JOURNAL_STATEMENT__DESCRIPTION:
 				return getDescription();
 			case AccountingPackage.JOURNAL_STATEMENT__DATE:
@@ -362,7 +364,7 @@ public class JournalStatementImpl extends EObjectImpl implements JournalStatemen
 			case AccountingPackage.JOURNAL_STATEMENT__VAT:
 				return getVat();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -370,8 +372,9 @@ public class JournalStatementImpl extends EObjectImpl implements JournalStatemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case AccountingPackage.JOURNAL_STATEMENT__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
@@ -391,7 +394,7 @@ public class JournalStatementImpl extends EObjectImpl implements JournalStatemen
 				setVat((Vat)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -399,8 +402,9 @@ public class JournalStatementImpl extends EObjectImpl implements JournalStatemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.JOURNAL_STATEMENT__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
@@ -420,7 +424,7 @@ public class JournalStatementImpl extends EObjectImpl implements JournalStatemen
 				unsetVat();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -428,8 +432,9 @@ public class JournalStatementImpl extends EObjectImpl implements JournalStatemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.JOURNAL_STATEMENT__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case AccountingPackage.JOURNAL_STATEMENT__DATE:
@@ -443,7 +448,7 @@ public class JournalStatementImpl extends EObjectImpl implements JournalStatemen
 			case AccountingPackage.JOURNAL_STATEMENT__VAT:
 				return isSetVat();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -451,6 +456,7 @@ public class JournalStatementImpl extends EObjectImpl implements JournalStatemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

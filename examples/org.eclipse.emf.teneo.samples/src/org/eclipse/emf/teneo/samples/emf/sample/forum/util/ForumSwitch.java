@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumSwitch.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: ForumSwitch.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.forum.*;
  * @see org.eclipse.emf.teneo.samples.emf.sample.forum.ForumPackage
  * @generated
  */
-public class ForumSwitch {
+public class ForumSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class ForumSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class ForumSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,29 +85,29 @@ public class ForumSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case ForumPackage.FORUM: {
 				Forum forum = (Forum)theEObject;
-				Object result = caseForum(forum);
+				T result = caseForum(forum);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ForumPackage.MEMBER: {
 				Member member = (Member)theEObject;
-				Object result = caseMember(member);
+				T result = caseMember(member);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ForumPackage.POST: {
 				Post post = (Post)theEObject;
-				Object result = casePost(post);
+				T result = casePost(post);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ForumPackage.TOPIC: {
 				Topic topic = (Topic)theEObject;
-				Object result = caseTopic(topic);
+				T result = caseTopic(topic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -126,7 +126,7 @@ public class ForumSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseForum(Forum object) {
+	public T caseForum(Forum object) {
 		return null;
 	}
 
@@ -141,7 +141,7 @@ public class ForumSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMember(Member object) {
+	public T caseMember(Member object) {
 		return null;
 	}
 
@@ -156,7 +156,7 @@ public class ForumSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePost(Post object) {
+	public T casePost(Post object) {
 		return null;
 	}
 
@@ -171,7 +171,7 @@ public class ForumSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTopic(Topic object) {
+	public T caseTopic(Topic object) {
 		return null;
 	}
 
@@ -186,7 +186,7 @@ public class ForumSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

@@ -2,15 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EcoreattrsFactoryImpl.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: EcoreattrsFactoryImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.*;
 
 /**
@@ -20,6 +22,25 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.*;
  * @generated
  */
 public class EcoreattrsFactoryImpl extends EFactoryImpl implements EcoreattrsFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EcoreattrsFactory init() {
+		try {
+			EcoreattrsFactory theEcoreattrsFactory = (EcoreattrsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/ecoreattrs"); 
+			if (theEcoreattrsFactory != null) {
+				return theEcoreattrsFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new EcoreattrsFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -35,6 +56,7 @@ public class EcoreattrsFactoryImpl extends EFactoryImpl implements EcoreattrsFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EcoreattrsPackage.ELEMENT: return createElement();
@@ -101,6 +123,7 @@ public class EcoreattrsFactoryImpl extends EFactoryImpl implements EcoreattrsFac
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static EcoreattrsPackage getPackage() {
 		return EcoreattrsPackage.eINSTANCE;
 	}

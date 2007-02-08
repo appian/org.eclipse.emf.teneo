@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryFactoryImpl.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: LibraryFactoryImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.impl;
 
@@ -10,8 +10,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.*;
 
 /**
@@ -21,6 +23,25 @@ import org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.*;
  * @generated
  */
 public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static LibraryFactory init() {
+		try {
+			LibraryFactory theLibraryFactory = (LibraryFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/elver/store/test/emf/sample/schoollibrary/library.ecore"); 
+			if (theLibraryFactory != null) {
+				return theLibraryFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new LibraryFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -36,6 +57,7 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case LibraryPackage.BOOK: return createBook();
@@ -51,13 +73,11 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case LibraryPackage.BOOK_CATEGORY: {
-				BookCategory result = BookCategory.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-				return result;
-			}
+			case LibraryPackage.BOOK_CATEGORY:
+				return createBookCategoryFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -68,10 +88,11 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case LibraryPackage.BOOK_CATEGORY:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertBookCategoryToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -112,6 +133,26 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BookCategory createBookCategoryFromString(EDataType eDataType, String initialValue) {
+		BookCategory result = BookCategory.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBookCategoryToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LibraryPackage getLibraryPackage() {
 		return (LibraryPackage)getEPackage();
 	}
@@ -122,6 +163,7 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static LibraryPackage getPackage() {
 		return LibraryPackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManytomanyFactoryImpl.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: ManytomanyFactoryImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl;
 
@@ -57,6 +57,7 @@ public class ManytomanyFactoryImpl extends EFactoryImpl implements ManytomanyFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ManytomanyPackage.CNTR: return createCntr();
@@ -112,6 +113,7 @@ public class ManytomanyFactoryImpl extends EFactoryImpl implements ManytomanyFac
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static ManytomanyPackage getPackage() {
 		return ManytomanyPackage.eINSTANCE;
 	}

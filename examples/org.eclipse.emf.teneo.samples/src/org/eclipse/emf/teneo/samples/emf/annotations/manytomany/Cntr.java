@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Cntr.java,v 1.3 2006/11/23 13:51:32 mtaal Exp $
+ * $Id: Cntr.java,v 1.4 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany;
 
@@ -45,7 +45,7 @@ public interface Cntr extends EObject {
 	 *        extendedMetaData="kind='element' name='rght'"
 	 * @generated
 	 */
-	EList getRght();
+	EList<Rght> getRght();
 
 	/**
 	 * Returns the value of the '<em><b>Lft</b></em>' reference list.
@@ -65,6 +65,6 @@ public interface Cntr extends EObject {
 	 *        extendedMetaData="kind='element' name='lft'"
 	 * @generated
 	 */
-	EList getLft();
+	EList<Lft> getLft();
 
 } // Cntr

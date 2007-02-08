@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentImpl.java,v 1.2 2006/11/12 00:08:30 mtaal Exp $
+ * $Id: DocumentImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl;
 
@@ -30,6 +30,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Mappedsupe
  * @generated
  */
 public class DocumentImpl extends EObjectImpl implements Document {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
 	/**
 	 * The default value of the '{@link #getMyGenericInfo() <em>My Generic Info</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -64,6 +71,7 @@ public class DocumentImpl extends EObjectImpl implements Document {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return MappedsuperclassPackage.Literals.DOCUMENT;
 	}
@@ -94,6 +102,7 @@ public class DocumentImpl extends EObjectImpl implements Document {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case MappedsuperclassPackage.DOCUMENT__MY_GENERIC_INFO:
@@ -107,6 +116,7 @@ public class DocumentImpl extends EObjectImpl implements Document {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case MappedsuperclassPackage.DOCUMENT__MY_GENERIC_INFO:
@@ -121,6 +131,7 @@ public class DocumentImpl extends EObjectImpl implements Document {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case MappedsuperclassPackage.DOCUMENT__MY_GENERIC_INFO:
@@ -135,6 +146,7 @@ public class DocumentImpl extends EObjectImpl implements Document {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case MappedsuperclassPackage.DOCUMENT__MY_GENERIC_INFO:
@@ -148,6 +160,7 @@ public class DocumentImpl extends EObjectImpl implements Document {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

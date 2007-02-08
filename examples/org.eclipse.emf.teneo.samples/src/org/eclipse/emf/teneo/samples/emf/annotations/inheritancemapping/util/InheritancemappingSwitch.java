@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingSwitch.java,v 1.1 2006/07/11 16:57:00 mtaal Exp $
+ * $Id: InheritancemappingSwitch.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage
  * @generated
  */
-public class InheritancemappingSwitch {
+public class InheritancemappingSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class InheritancemappingSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class InheritancemappingSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,23 @@ public class InheritancemappingSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case InheritancemappingPackage.ADDRESS: {
 				Address address = (Address)theEObject;
-				Object result = caseAddress(address);
+				T result = caseAddress(address);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case InheritancemappingPackage.CONTENT_LIST: {
 				ContentList contentList = (ContentList)theEObject;
-				Object result = caseContentList(contentList);
+				T result = caseContentList(contentList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case InheritancemappingPackage.DISTRICT_UK_ADDRESS: {
 				DistrictUKAddress districtUKAddress = (DistrictUKAddress)theEObject;
-				Object result = caseDistrictUKAddress(districtUKAddress);
+				T result = caseDistrictUKAddress(districtUKAddress);
 				if (result == null) result = caseUKAddress(districtUKAddress);
 				if (result == null) result = caseAddress(districtUKAddress);
 				if (result == null) result = defaultCase(theEObject);
@@ -109,27 +109,27 @@ public class InheritancemappingSwitch {
 			}
 			case InheritancemappingPackage.INTERNATIONAL_PRICE: {
 				InternationalPrice internationalPrice = (InternationalPrice)theEObject;
-				Object result = caseInternationalPrice(internationalPrice);
+				T result = caseInternationalPrice(internationalPrice);
 				if (result == null) result = casePrice(internationalPrice);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case InheritancemappingPackage.PRICE: {
 				Price price = (Price)theEObject;
-				Object result = casePrice(price);
+				T result = casePrice(price);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case InheritancemappingPackage.UK_ADDRESS: {
 				UKAddress ukAddress = (UKAddress)theEObject;
-				Object result = caseUKAddress(ukAddress);
+				T result = caseUKAddress(ukAddress);
 				if (result == null) result = caseAddress(ukAddress);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case InheritancemappingPackage.US_ADDRESS: {
 				USAddress usAddress = (USAddress)theEObject;
-				Object result = caseUSAddress(usAddress);
+				T result = caseUSAddress(usAddress);
 				if (result == null) result = caseAddress(usAddress);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -149,7 +149,7 @@ public class InheritancemappingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddress(Address object) {
+	public T caseAddress(Address object) {
 		return null;
 	}
 
@@ -164,7 +164,7 @@ public class InheritancemappingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseContentList(ContentList object) {
+	public T caseContentList(ContentList object) {
 		return null;
 	}
 
@@ -179,7 +179,7 @@ public class InheritancemappingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDistrictUKAddress(DistrictUKAddress object) {
+	public T caseDistrictUKAddress(DistrictUKAddress object) {
 		return null;
 	}
 
@@ -194,7 +194,7 @@ public class InheritancemappingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInternationalPrice(InternationalPrice object) {
+	public T caseInternationalPrice(InternationalPrice object) {
 		return null;
 	}
 
@@ -209,7 +209,7 @@ public class InheritancemappingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePrice(Price object) {
+	public T casePrice(Price object) {
 		return null;
 	}
 
@@ -224,7 +224,7 @@ public class InheritancemappingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUKAddress(UKAddress object) {
+	public T caseUKAddress(UKAddress object) {
 		return null;
 	}
 
@@ -239,7 +239,7 @@ public class InheritancemappingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUSAddress(USAddress object) {
+	public T caseUSAddress(USAddress object) {
 		return null;
 	}
 
@@ -254,7 +254,7 @@ public class InheritancemappingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

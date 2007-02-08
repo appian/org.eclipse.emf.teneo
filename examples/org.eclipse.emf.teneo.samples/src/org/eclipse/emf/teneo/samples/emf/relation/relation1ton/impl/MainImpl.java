@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MainImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: MainImpl.java,v 1.3 2007/02/08 23:09:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl;
 
@@ -90,7 +90,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList onecr = null;
+	protected EList<OneCR> onecr = null;
 
 	/**
 	 * The cached value of the '{@link #getOnecn() <em>Onecn</em>}' containment reference list.
@@ -100,7 +100,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList onecn = null;
+	protected EList<OneCN> onecn = null;
 
 	/**
 	 * The cached value of the '{@link #getOnenr() <em>Onenr</em>}' reference list.
@@ -110,7 +110,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList onenr = null;
+	protected EList<OneNR> onenr = null;
 
 	/**
 	 * The cached value of the '{@link #getOnenn() <em>Onenn</em>}' reference list.
@@ -120,7 +120,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList onenn = null;
+	protected EList<OneNN> onenn = null;
 
 	/**
 	 * The cached value of the '{@link #getTwocr() <em>Twocr</em>}' containment reference list.
@@ -130,7 +130,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList twocr = null;
+	protected EList<TwoCR> twocr = null;
 
 	/**
 	 * The cached value of the '{@link #getTwocn() <em>Twocn</em>}' containment reference list.
@@ -140,7 +140,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList twocn = null;
+	protected EList<TwoCN> twocn = null;
 
 	/**
 	 * The cached value of the '{@link #getTwonr() <em>Twonr</em>}' reference list.
@@ -150,7 +150,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList twonr = null;
+	protected EList<TwoNR> twonr = null;
 
 	/**
 	 * The cached value of the '{@link #getTwonn() <em>Twonn</em>}' reference list.
@@ -160,7 +160,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList twonn = null;
+	protected EList<TwoNN> twonn = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,6 +176,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return Relation1tonPackage.Literals.MAIN;
 	}
@@ -231,9 +232,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOnecr() {
+	public EList<OneCR> getOnecr() {
 		if (onecr == null) {
-			onecr = new EObjectContainmentEList(OneCR.class, this, Relation1tonPackage.MAIN__ONECR);
+			onecr = new EObjectContainmentEList<OneCR>(OneCR.class, this, Relation1tonPackage.MAIN__ONECR);
 		}
 		return onecr;
 	}
@@ -243,9 +244,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOnecn() {
+	public EList<OneCN> getOnecn() {
 		if (onecn == null) {
-			onecn = new EObjectContainmentEList(OneCN.class, this, Relation1tonPackage.MAIN__ONECN);
+			onecn = new EObjectContainmentEList<OneCN>(OneCN.class, this, Relation1tonPackage.MAIN__ONECN);
 		}
 		return onecn;
 	}
@@ -255,9 +256,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOnenr() {
+	public EList<OneNR> getOnenr() {
 		if (onenr == null) {
-			onenr = new EObjectEList(OneNR.class, this, Relation1tonPackage.MAIN__ONENR);
+			onenr = new EObjectEList<OneNR>(OneNR.class, this, Relation1tonPackage.MAIN__ONENR);
 		}
 		return onenr;
 	}
@@ -267,9 +268,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOnenn() {
+	public EList<OneNN> getOnenn() {
 		if (onenn == null) {
-			onenn = new EObjectEList(OneNN.class, this, Relation1tonPackage.MAIN__ONENN);
+			onenn = new EObjectEList<OneNN>(OneNN.class, this, Relation1tonPackage.MAIN__ONENN);
 		}
 		return onenn;
 	}
@@ -279,9 +280,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTwocr() {
+	public EList<TwoCR> getTwocr() {
 		if (twocr == null) {
-			twocr = new EObjectContainmentWithInverseEList(TwoCR.class, this, Relation1tonPackage.MAIN__TWOCR, Relation1tonPackage.TWO_CR__MAIN);
+			twocr = new EObjectContainmentWithInverseEList<TwoCR>(TwoCR.class, this, Relation1tonPackage.MAIN__TWOCR, Relation1tonPackage.TWO_CR__MAIN);
 		}
 		return twocr;
 	}
@@ -291,9 +292,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTwocn() {
+	public EList<TwoCN> getTwocn() {
 		if (twocn == null) {
-			twocn = new EObjectContainmentWithInverseEList(TwoCN.class, this, Relation1tonPackage.MAIN__TWOCN, Relation1tonPackage.TWO_CN__MAIN);
+			twocn = new EObjectContainmentWithInverseEList<TwoCN>(TwoCN.class, this, Relation1tonPackage.MAIN__TWOCN, Relation1tonPackage.TWO_CN__MAIN);
 		}
 		return twocn;
 	}
@@ -303,9 +304,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTwonr() {
+	public EList<TwoNR> getTwonr() {
 		if (twonr == null) {
-			twonr = new EObjectWithInverseEList(TwoNR.class, this, Relation1tonPackage.MAIN__TWONR, Relation1tonPackage.TWO_NR__MAIN);
+			twonr = new EObjectWithInverseEList<TwoNR>(TwoNR.class, this, Relation1tonPackage.MAIN__TWONR, Relation1tonPackage.TWO_NR__MAIN);
 		}
 		return twonr;
 	}
@@ -315,9 +316,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTwonn() {
+	public EList<TwoNN> getTwonn() {
 		if (twonn == null) {
-			twonn = new EObjectWithInverseEList(TwoNN.class, this, Relation1tonPackage.MAIN__TWONN, Relation1tonPackage.TWO_NN__MAIN);
+			twonn = new EObjectWithInverseEList<TwoNN>(TwoNN.class, this, Relation1tonPackage.MAIN__TWONN, Relation1tonPackage.TWO_NN__MAIN);
 		}
 		return twonn;
 	}
@@ -327,16 +328,18 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case Relation1tonPackage.MAIN__TWOCR:
-				return ((InternalEList)getTwocr()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTwocr()).basicAdd(otherEnd, msgs);
 			case Relation1tonPackage.MAIN__TWOCN:
-				return ((InternalEList)getTwocn()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTwocn()).basicAdd(otherEnd, msgs);
 			case Relation1tonPackage.MAIN__TWONR:
-				return ((InternalEList)getTwonr()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTwonr()).basicAdd(otherEnd, msgs);
 			case Relation1tonPackage.MAIN__TWONN:
-				return ((InternalEList)getTwonn()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTwonn()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -346,20 +349,21 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case Relation1tonPackage.MAIN__ONECR:
-				return ((InternalEList)getOnecr()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getOnecr()).basicRemove(otherEnd, msgs);
 			case Relation1tonPackage.MAIN__ONECN:
-				return ((InternalEList)getOnecn()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getOnecn()).basicRemove(otherEnd, msgs);
 			case Relation1tonPackage.MAIN__TWOCR:
-				return ((InternalEList)getTwocr()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getTwocr()).basicRemove(otherEnd, msgs);
 			case Relation1tonPackage.MAIN__TWOCN:
-				return ((InternalEList)getTwocn()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getTwocn()).basicRemove(otherEnd, msgs);
 			case Relation1tonPackage.MAIN__TWONR:
-				return ((InternalEList)getTwonr()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getTwonr()).basicRemove(otherEnd, msgs);
 			case Relation1tonPackage.MAIN__TWONN:
-				return ((InternalEList)getTwonn()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getTwonn()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -369,6 +373,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case Relation1tonPackage.MAIN__NAME:
@@ -398,6 +403,8 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case Relation1tonPackage.MAIN__NAME:
@@ -405,35 +412,35 @@ public class MainImpl extends EObjectImpl implements Main {
 				return;
 			case Relation1tonPackage.MAIN__ONECR:
 				getOnecr().clear();
-				getOnecr().addAll((Collection)newValue);
+				getOnecr().addAll((Collection<? extends OneCR>)newValue);
 				return;
 			case Relation1tonPackage.MAIN__ONECN:
 				getOnecn().clear();
-				getOnecn().addAll((Collection)newValue);
+				getOnecn().addAll((Collection<? extends OneCN>)newValue);
 				return;
 			case Relation1tonPackage.MAIN__ONENR:
 				getOnenr().clear();
-				getOnenr().addAll((Collection)newValue);
+				getOnenr().addAll((Collection<? extends OneNR>)newValue);
 				return;
 			case Relation1tonPackage.MAIN__ONENN:
 				getOnenn().clear();
-				getOnenn().addAll((Collection)newValue);
+				getOnenn().addAll((Collection<? extends OneNN>)newValue);
 				return;
 			case Relation1tonPackage.MAIN__TWOCR:
 				getTwocr().clear();
-				getTwocr().addAll((Collection)newValue);
+				getTwocr().addAll((Collection<? extends TwoCR>)newValue);
 				return;
 			case Relation1tonPackage.MAIN__TWOCN:
 				getTwocn().clear();
-				getTwocn().addAll((Collection)newValue);
+				getTwocn().addAll((Collection<? extends TwoCN>)newValue);
 				return;
 			case Relation1tonPackage.MAIN__TWONR:
 				getTwonr().clear();
-				getTwonr().addAll((Collection)newValue);
+				getTwonr().addAll((Collection<? extends TwoNR>)newValue);
 				return;
 			case Relation1tonPackage.MAIN__TWONN:
 				getTwonn().clear();
-				getTwonn().addAll((Collection)newValue);
+				getTwonn().addAll((Collection<? extends TwoNN>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -444,6 +451,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case Relation1tonPackage.MAIN__NAME:
@@ -482,6 +490,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case Relation1tonPackage.MAIN__NAME:
@@ -511,6 +520,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

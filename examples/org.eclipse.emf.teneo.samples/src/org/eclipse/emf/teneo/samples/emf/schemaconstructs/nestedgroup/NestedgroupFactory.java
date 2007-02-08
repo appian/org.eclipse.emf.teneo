@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NestedgroupFactory.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: NestedgroupFactory.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup;
 
@@ -23,7 +23,7 @@ public interface NestedgroupFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	NestedgroupFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.NestedgroupFactoryImpl();
+	NestedgroupFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.NestedgroupFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>A</em>'.

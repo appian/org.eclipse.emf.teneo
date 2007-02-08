@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestA.java,v 1.1 2006/07/11 16:57:02 mtaal Exp $
+ * $Id: TestA.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest;
 
@@ -64,7 +64,7 @@ public interface TestA extends EObject {
 	 * @return the value of the '<em>Test B</em>' containment reference.
 	 * @see #setTestB(TestB)
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.DetachtestPackage#getTestA_TestB()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='testB'"
 	 * @generated
 	 */

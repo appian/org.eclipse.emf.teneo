@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: A.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: A.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup;
 
@@ -91,7 +91,7 @@ public interface A extends EObject {
 	 *        extendedMetaData="kind='element' name='B' group='#group:1'"
 	 * @generated
 	 */
-	EList getB();
+	EList<String> getB();
 
 	/**
 	 * Returns the value of the '<em><b>C</b></em>' containment reference list.
@@ -104,10 +104,10 @@ public interface A extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>C</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.NestedgroupPackage#getA_C()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.CType" containment="true" resolveProxies="false" transient="true" volatile="true" derived="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.CType" containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='C' group='#group:1'"
 	 * @generated
 	 */
-	EList getC();
+	EList<CType> getC();
 
 } // A

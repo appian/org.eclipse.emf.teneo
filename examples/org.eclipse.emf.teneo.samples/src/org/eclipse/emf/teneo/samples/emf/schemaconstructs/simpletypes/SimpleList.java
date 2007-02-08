@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleList.java,v 1.4 2006/09/29 12:51:54 mtaal Exp $
+ * $Id: SimpleList.java,v 1.5 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
+import java.util.Date;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
@@ -109,7 +110,7 @@ public interface SimpleList extends EObject {
 	 *        extendedMetaData="kind='element' name='boo'"
 	 * @generated
 	 */
-	EList getBoo();
+	EList<Boolean> getBoo();
 
 	/**
 	 * Returns the value of the '<em><b>Byt</b></em>' attribute list.
@@ -126,7 +127,7 @@ public interface SimpleList extends EObject {
 	 *        extendedMetaData="kind='element' name='byt'"
 	 * @generated
 	 */
-	EList getByt();
+	EList<Byte> getByt();
 
 	/**
 	 * Returns the value of the '<em><b>Doubl</b></em>' attribute list.
@@ -143,7 +144,7 @@ public interface SimpleList extends EObject {
 	 *        extendedMetaData="kind='element' name='doubl'"
 	 * @generated
 	 */
-	EList getDoubl();
+	EList<Double> getDoubl();
 
 	/**
 	 * Returns the value of the '<em><b>Floa</b></em>' attribute list.
@@ -160,7 +161,7 @@ public interface SimpleList extends EObject {
 	 *        extendedMetaData="kind='element' name='floa'"
 	 * @generated
 	 */
-	EList getFloa();
+	EList<Float> getFloa();
 
 	/**
 	 * Returns the value of the '<em><b>Inte</b></em>' attribute list.
@@ -177,7 +178,7 @@ public interface SimpleList extends EObject {
 	 *        extendedMetaData="kind='element' name='inte'"
 	 * @generated
 	 */
-	EList getInte();
+	EList<Integer> getInte();
 
 	/**
 	 * Returns the value of the '<em><b>Long</b></em>' attribute list.
@@ -195,7 +196,7 @@ public interface SimpleList extends EObject {
 	 *        extendedMetaData="kind='element' name='long'"
 	 * @generated
 	 */
-	EList getLong();
+	EList<Long> getLong();
 
 	/**
 	 * Returns the value of the '<em><b>Shor</b></em>' attribute list.
@@ -212,7 +213,7 @@ public interface SimpleList extends EObject {
 	 *        extendedMetaData="kind='element' name='shor'"
 	 * @generated
 	 */
-	EList getShor();
+	EList<Short> getShor();
 
 	/**
 	 * Returns the value of the '<em><b>Dat</b></em>' attribute list.
@@ -229,7 +230,7 @@ public interface SimpleList extends EObject {
 	 *        extendedMetaData="kind='element' name='dat'"
 	 * @generated
 	 */
-	EList getDat();
+	EList<Date> getDat();
 
 	/**
 	 * Returns the value of the '<em><b>Limitedstring</b></em>' attribute list.
@@ -246,7 +247,7 @@ public interface SimpleList extends EObject {
 	 *        extendedMetaData="kind='element' name='limitedstring'"
 	 * @generated
 	 */
-	EList getLimitedstring();
+	EList<String> getLimitedstring();
 
 	/**
 	 * Returns the value of the '<em><b>Int Array</b></em>' attribute.

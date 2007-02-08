@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ListunionFactoryImpl.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: ListunionFactoryImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.impl;
 
@@ -17,8 +17,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
@@ -31,6 +34,25 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.listunion.*;
  * @generated
  */
 public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ListunionFactory init() {
+		try {
+			ListunionFactory theListunionFactory = (ListunionFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/listunion"); 
+			if (theListunionFactory != null) {
+				return theListunionFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new ListunionFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -46,6 +68,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ListunionPackage.STATES_BY_COUNTRY: return createstatesByCountry();
@@ -59,6 +82,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case ListunionPackage.SIMPLE_STRING_UNION_TYPE:
@@ -97,6 +121,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case ListunionPackage.SIMPLE_STRING_UNION_TYPE:
@@ -146,15 +171,30 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String createSimpleStringUnionTypeFromString(EDataType eDataType, String initialValue) {
+		if (initialValue == null) return null;
+		String result = null;
+		RuntimeException exception = null;
 		try {
-			String result = (String)ListunionFactory.eINSTANCE.createFromString(ListunionPackage.eINSTANCE.getSimpleStringUnionTypeMember0(), initialValue);
-			if (result != null) {
+			result = createSimpleStringUnionTypeMember0FromString(ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER0, initialValue);
+			if (result != null && Diagnostician.INSTANCE.validate(eDataType, result, null, null)) {
 				return result;
 			}
 		}
-		catch (RuntimeException exception) {
+		catch (RuntimeException e) {
+			exception = e;
 		}
-		return (String)ListunionFactory.eINSTANCE.createFromString(ListunionPackage.eINSTANCE.getSimpleStringUnionTypeMember1(), initialValue);
+		try {
+			result = createSimpleStringUnionTypeMember1FromString(ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER1, initialValue);
+			if (result != null && Diagnostician.INSTANCE.validate(eDataType, result, null, null)) {
+				return result;
+			}
+		}
+		catch (RuntimeException e) {
+			exception = e;
+		}
+		if (result != null || exception == null) return result;
+    
+		throw exception;
 	}
 
 	/**
@@ -163,20 +203,23 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertSimpleStringUnionTypeToString(EDataType eDataType, Object instanceValue) {
-		if (ListunionPackage.eINSTANCE.getSimpleStringUnionTypeMember0().isInstance(instanceValue)) {
+		if (instanceValue == null) return null;
+		if (ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER0.isInstance(instanceValue)) {
 			try {
-				String value = ListunionFactory.eINSTANCE.convertToString(ListunionPackage.eINSTANCE.getSimpleStringUnionTypeMember0(), instanceValue);
+				String value = convertSimpleStringUnionTypeMember0ToString(ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER0, instanceValue);
 				if (value != null) return value;
 			}
 			catch (Exception e) {
+				// Keep trying other member types until all have failed.
 			}
 		}
-		if (ListunionPackage.eINSTANCE.getSimpleStringUnionTypeMember1().isInstance(instanceValue)) {
+		if (ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER1.isInstance(instanceValue)) {
 			try {
-				String value = ListunionFactory.eINSTANCE.convertToString(ListunionPackage.eINSTANCE.getSimpleStringUnionTypeMember1(), instanceValue);
+				String value = convertSimpleStringUnionTypeMember1ToString(ListunionPackage.Literals.SIMPLE_STRING_UNION_TYPE_MEMBER1, instanceValue);
 				if (value != null) return value;
 			}
 			catch (Exception e) {
+				// Keep trying other member types until all have failed.
 			}
 		}
 		throw new IllegalArgumentException("Invalid value: '"+instanceValue+"' for datatype :"+eDataType.getName());
@@ -188,7 +231,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String createSimpleStringUnionTypeMember0FromString(EDataType eDataType, String initialValue) {
-		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.eINSTANCE.getString(), initialValue);
+		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, initialValue);
 	}
 
 	/**
@@ -197,7 +240,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertSimpleStringUnionTypeMember0ToString(EDataType eDataType, Object instanceValue) {
-		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.eINSTANCE.getString(), instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, instanceValue);
 	}
 
 	/**
@@ -206,7 +249,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String createSimpleStringUnionTypeMember1FromString(EDataType eDataType, String initialValue) {
-		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.eINSTANCE.getString(), initialValue);
+		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, initialValue);
 	}
 
 	/**
@@ -215,7 +258,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertSimpleStringUnionTypeMember1ToString(EDataType eDataType, Object instanceValue) {
-		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.eINSTANCE.getString(), instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, instanceValue);
 	}
 
 	/**
@@ -224,15 +267,30 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public Object createSimpleUnionTypeFromString(EDataType eDataType, String initialValue) {
+		if (initialValue == null) return null;
+		Object result = null;
+		RuntimeException exception = null;
 		try {
-			Object result = (Object)ListunionFactory.eINSTANCE.createFromString(ListunionPackage.eINSTANCE.getSimpleUnionTypeMember0(), initialValue);
-			if (result != null) {
+			result = createSimpleUnionTypeMember0FromString(ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER0, initialValue);
+			if (result != null && Diagnostician.INSTANCE.validate(eDataType, result, null, null)) {
 				return result;
 			}
 		}
-		catch (RuntimeException exception) {
+		catch (RuntimeException e) {
+			exception = e;
 		}
-		return (Object)ListunionFactory.eINSTANCE.createFromString(ListunionPackage.eINSTANCE.getSimpleUnionTypeMember1(), initialValue);
+		try {
+			result = createSimpleUnionTypeMember1FromString(ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER1, initialValue);
+			if (result != null && Diagnostician.INSTANCE.validate(eDataType, result, null, null)) {
+				return result;
+			}
+		}
+		catch (RuntimeException e) {
+			exception = e;
+		}
+		if (result != null || exception == null) return result;
+    
+		throw exception;
 	}
 
 	/**
@@ -241,20 +299,23 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertSimpleUnionTypeToString(EDataType eDataType, Object instanceValue) {
-		if (ListunionPackage.eINSTANCE.getSimpleUnionTypeMember0().isInstance(instanceValue)) {
+		if (instanceValue == null) return null;
+		if (ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER0.isInstance(instanceValue)) {
 			try {
-				String value = ListunionFactory.eINSTANCE.convertToString(ListunionPackage.eINSTANCE.getSimpleUnionTypeMember0(), instanceValue);
+				String value = convertSimpleUnionTypeMember0ToString(ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER0, instanceValue);
 				if (value != null) return value;
 			}
 			catch (Exception e) {
+				// Keep trying other member types until all have failed.
 			}
 		}
-		if (ListunionPackage.eINSTANCE.getSimpleUnionTypeMember1().isInstance(instanceValue)) {
+		if (ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER1.isInstance(instanceValue)) {
 			try {
-				String value = ListunionFactory.eINSTANCE.convertToString(ListunionPackage.eINSTANCE.getSimpleUnionTypeMember1(), instanceValue);
+				String value = convertSimpleUnionTypeMember1ToString(ListunionPackage.Literals.SIMPLE_UNION_TYPE_MEMBER1, instanceValue);
 				if (value != null) return value;
 			}
 			catch (Exception e) {
+				// Keep trying other member types until all have failed.
 			}
 		}
 		throw new IllegalArgumentException("Invalid value: '"+instanceValue+"' for datatype :"+eDataType.getName());
@@ -266,7 +327,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public BigInteger createSimpleUnionTypeMember0FromString(EDataType eDataType, String initialValue) {
-		return (BigInteger)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.eINSTANCE.getInteger(), initialValue);
+		return (BigInteger)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.INTEGER, initialValue);
 	}
 
 	/**
@@ -275,7 +336,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertSimpleUnionTypeMember0ToString(EDataType eDataType, Object instanceValue) {
-		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.eINSTANCE.getInteger(), instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.INTEGER, instanceValue);
 	}
 
 	/**
@@ -284,7 +345,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String createSimpleUnionTypeMember1FromString(EDataType eDataType, String initialValue) {
-		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.eINSTANCE.getString(), initialValue);
+		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, initialValue);
 	}
 
 	/**
@@ -293,7 +354,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertSimpleUnionTypeMember1ToString(EDataType eDataType, Object instanceValue) {
-		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.eINSTANCE.getString(), instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, instanceValue);
 	}
 
 	/**
@@ -301,8 +362,8 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List createSixStatesListFromString(EDataType eDataType, String initialValue) {
-		return (List)ListunionFactory.eINSTANCE.createFromString(ListunionPackage.eINSTANCE.getStateList(), initialValue);
+	public List<String> createSixStatesListFromString(EDataType eDataType, String initialValue) {
+		return createStateListFromString(ListunionPackage.Literals.STATE_LIST, initialValue);
 	}
 
 	/**
@@ -311,7 +372,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertSixStatesListToString(EDataType eDataType, Object instanceValue) {
-		return ListunionFactory.eINSTANCE.convertToString(ListunionPackage.eINSTANCE.getStateList(), instanceValue);
+		return convertStateListToString(ListunionPackage.Literals.STATE_LIST, instanceValue);
 	}
 
 	/**
@@ -320,7 +381,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String createStateFromString(EDataType eDataType, String initialValue) {
-		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.eINSTANCE.getString(), initialValue);
+		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, initialValue);
 	}
 
 	/**
@@ -329,7 +390,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertStateToString(EDataType eDataType, Object instanceValue) {
-		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.eINSTANCE.getString(), instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, instanceValue);
 	}
 
 	/**
@@ -337,12 +398,12 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List createStateListFromString(EDataType eDataType, String initialValue) {
+	public List<String> createStateListFromString(EDataType eDataType, String initialValue) {
 		if (initialValue == null) return null;
-		List result = new ArrayList();
+		List<String> result = new ArrayList<String>();
 		for (StringTokenizer stringTokenizer = new StringTokenizer(initialValue); stringTokenizer.hasMoreTokens(); ) {
 			String item = stringTokenizer.nextToken();
-			result.add(ListunionFactory.eINSTANCE.createFromString(ListunionPackage.eINSTANCE.getState(), item));
+			result.add(createStateFromString(ListunionPackage.Literals.STATE, item));
 		}
 		return result;
 	}
@@ -354,11 +415,11 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 */
 	public String convertStateListToString(EDataType eDataType, Object instanceValue) {
 		if (instanceValue == null) return null;
-		List list = (List)instanceValue;
+		List<?> list = (List<?>)instanceValue;
 		if (list.isEmpty()) return "";
 		StringBuffer result = new StringBuffer();
-		for (Iterator i = list.iterator(); i.hasNext(); ) {
-			result.append(ListunionFactory.eINSTANCE.convertToString(ListunionPackage.eINSTANCE.getState(), i.next()));
+		for (Object item : list) {
+			result.append(convertStateToString(ListunionPackage.Literals.STATE, item));
 			result.append(' ');
 		}
 		return result.substring(0, result.length() - 1);
@@ -369,12 +430,12 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List createStringListFromString(EDataType eDataType, String initialValue) {
+	public List<String> createStringListFromString(EDataType eDataType, String initialValue) {
 		if (initialValue == null) return null;
-		List result = new ArrayList();
+		List<String> result = new ArrayList<String>();
 		for (StringTokenizer stringTokenizer = new StringTokenizer(initialValue); stringTokenizer.hasMoreTokens(); ) {
 			String item = stringTokenizer.nextToken();
-			result.add(XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.eINSTANCE.getString(), item));
+			result.add((String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, item));
 		}
 		return result;
 	}
@@ -386,11 +447,11 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 */
 	public String convertStringListToString(EDataType eDataType, Object instanceValue) {
 		if (instanceValue == null) return null;
-		List list = (List)instanceValue;
+		List<?> list = (List<?>)instanceValue;
 		if (list.isEmpty()) return "";
 		StringBuffer result = new StringBuffer();
-		for (Iterator i = list.iterator(); i.hasNext(); ) {
-			result.append(XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.eINSTANCE.getString(), i.next()));
+		for (Object item : list) {
+			result.append(XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, item));
 			result.append(' ');
 		}
 		return result.substring(0, result.length() - 1);
@@ -402,7 +463,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String createZipCodeFromString(EDataType eDataType, String initialValue) {
-		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.eINSTANCE.getString(), initialValue);
+		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, initialValue);
 	}
 
 	/**
@@ -411,7 +472,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertZipCodeToString(EDataType eDataType, Object instanceValue) {
-		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.eINSTANCE.getString(), instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, instanceValue);
 	}
 
 	/**
@@ -420,15 +481,30 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String createZipUnionsTypeFromString(EDataType eDataType, String initialValue) {
+		if (initialValue == null) return null;
+		String result = null;
+		RuntimeException exception = null;
 		try {
-			String result = (String)ListunionFactory.eINSTANCE.createFromString(ListunionPackage.eINSTANCE.getZipCode(), initialValue);
-			if (result != null) {
+			result = createZipCodeFromString(ListunionPackage.Literals.ZIP_CODE, initialValue);
+			if (result != null && Diagnostician.INSTANCE.validate(eDataType, result, null, null)) {
 				return result;
 			}
 		}
-		catch (RuntimeException exception) {
+		catch (RuntimeException e) {
+			exception = e;
 		}
-		return (String)ListunionFactory.eINSTANCE.createFromString(ListunionPackage.eINSTANCE.getState(), initialValue);
+		try {
+			result = createStateFromString(ListunionPackage.Literals.STATE, initialValue);
+			if (result != null && Diagnostician.INSTANCE.validate(eDataType, result, null, null)) {
+				return result;
+			}
+		}
+		catch (RuntimeException e) {
+			exception = e;
+		}
+		if (result != null || exception == null) return result;
+    
+		throw exception;
 	}
 
 	/**
@@ -437,20 +513,23 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertZipUnionsTypeToString(EDataType eDataType, Object instanceValue) {
-		if (ListunionPackage.eINSTANCE.getZipCode().isInstance(instanceValue)) {
+		if (instanceValue == null) return null;
+		if (ListunionPackage.Literals.ZIP_CODE.isInstance(instanceValue)) {
 			try {
-				String value = ListunionFactory.eINSTANCE.convertToString(ListunionPackage.eINSTANCE.getZipCode(), instanceValue);
+				String value = convertZipCodeToString(ListunionPackage.Literals.ZIP_CODE, instanceValue);
 				if (value != null) return value;
 			}
 			catch (Exception e) {
+				// Keep trying other member types until all have failed.
 			}
 		}
-		if (ListunionPackage.eINSTANCE.getState().isInstance(instanceValue)) {
+		if (ListunionPackage.Literals.STATE.isInstance(instanceValue)) {
 			try {
-				String value = ListunionFactory.eINSTANCE.convertToString(ListunionPackage.eINSTANCE.getState(), instanceValue);
+				String value = convertStateToString(ListunionPackage.Literals.STATE, instanceValue);
 				if (value != null) return value;
 			}
 			catch (Exception e) {
+				// Keep trying other member types until all have failed.
 			}
 		}
 		throw new IllegalArgumentException("Invalid value: '"+instanceValue+"' for datatype :"+eDataType.getName());
@@ -462,15 +541,30 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String createZipUnionTypeFromString(EDataType eDataType, String initialValue) {
+		if (initialValue == null) return null;
+		String result = null;
+		RuntimeException exception = null;
 		try {
-			String result = (String)ListunionFactory.eINSTANCE.createFromString(ListunionPackage.eINSTANCE.getZipCode(), initialValue);
-			if (result != null) {
+			result = createZipCodeFromString(ListunionPackage.Literals.ZIP_CODE, initialValue);
+			if (result != null && Diagnostician.INSTANCE.validate(eDataType, result, null, null)) {
 				return result;
 			}
 		}
-		catch (RuntimeException exception) {
+		catch (RuntimeException e) {
+			exception = e;
 		}
-		return (String)ListunionFactory.eINSTANCE.createFromString(ListunionPackage.eINSTANCE.getState(), initialValue);
+		try {
+			result = createStateFromString(ListunionPackage.Literals.STATE, initialValue);
+			if (result != null && Diagnostician.INSTANCE.validate(eDataType, result, null, null)) {
+				return result;
+			}
+		}
+		catch (RuntimeException e) {
+			exception = e;
+		}
+		if (result != null || exception == null) return result;
+    
+		throw exception;
 	}
 
 	/**
@@ -479,20 +573,23 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @generated
 	 */
 	public String convertZipUnionTypeToString(EDataType eDataType, Object instanceValue) {
-		if (ListunionPackage.eINSTANCE.getZipCode().isInstance(instanceValue)) {
+		if (instanceValue == null) return null;
+		if (ListunionPackage.Literals.ZIP_CODE.isInstance(instanceValue)) {
 			try {
-				String value = ListunionFactory.eINSTANCE.convertToString(ListunionPackage.eINSTANCE.getZipCode(), instanceValue);
+				String value = convertZipCodeToString(ListunionPackage.Literals.ZIP_CODE, instanceValue);
 				if (value != null) return value;
 			}
 			catch (Exception e) {
+				// Keep trying other member types until all have failed.
 			}
 		}
-		if (ListunionPackage.eINSTANCE.getState().isInstance(instanceValue)) {
+		if (ListunionPackage.Literals.STATE.isInstance(instanceValue)) {
 			try {
-				String value = ListunionFactory.eINSTANCE.convertToString(ListunionPackage.eINSTANCE.getState(), instanceValue);
+				String value = convertStateToString(ListunionPackage.Literals.STATE, instanceValue);
 				if (value != null) return value;
 			}
 			catch (Exception e) {
+				// Keep trying other member types until all have failed.
 			}
 		}
 		throw new IllegalArgumentException("Invalid value: '"+instanceValue+"' for datatype :"+eDataType.getName());
@@ -513,6 +610,7 @@ public class ListunionFactoryImpl extends EFactoryImpl implements ListunionFacto
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static ListunionPackage getPackage() {
 		return ListunionPackage.eINSTANCE;
 	}

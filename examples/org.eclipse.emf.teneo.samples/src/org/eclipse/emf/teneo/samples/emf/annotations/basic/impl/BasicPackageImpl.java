@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BasicPackageImpl.java,v 1.2 2006/09/05 12:16:36 mtaal Exp $
+ * $Id: BasicPackageImpl.java,v 1.3 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.basic.impl;
 
@@ -195,6 +195,10 @@ public class BasicPackageImpl extends EPackageImpl implements BasicPackage {
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

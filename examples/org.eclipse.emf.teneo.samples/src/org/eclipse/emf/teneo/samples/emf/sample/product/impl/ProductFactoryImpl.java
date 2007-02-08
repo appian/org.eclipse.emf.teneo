@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductFactoryImpl.java,v 1.3 2006/11/15 17:18:17 mtaal Exp $
+ * $Id: ProductFactoryImpl.java,v 1.4 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.impl;
 
@@ -59,6 +59,7 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ProductPackage.PRODUCT_TYPE: return createProductType();
@@ -114,6 +115,7 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static ProductPackage getPackage() {
 		return ProductPackage.eINSTANCE;
 	}

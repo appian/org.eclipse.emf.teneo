@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ChildImpl.java,v 1.2 2006/09/29 12:30:04 mtaal Exp $
+ * $Id: ChildImpl.java,v 1.3 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -35,6 +35,7 @@ public class ChildImpl extends PersonImpl implements Child {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return JoincolumnsPackage.Literals.CHILD;
 	}

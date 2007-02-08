@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PostImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: PostImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum.impl;
 
@@ -94,8 +94,9 @@ public class PostImpl extends EObjectImpl implements Post {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return ForumPackage.eINSTANCE.getPost();
+		return ForumPackage.Literals.POST;
 	}
 
 	/**
@@ -210,24 +211,19 @@ public class PostImpl extends EObjectImpl implements Post {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case ForumPackage.POST__AUTHOR:
-					if (author != null)
-						msgs = ((InternalEObject)author).eInverseRemove(this, ForumPackage.MEMBER__POSTS, Member.class, msgs);
-					return basicSetAuthor((Member)otherEnd, msgs);
-				case ForumPackage.POST__TOPIC:
-					if (topic != null)
-						msgs = ((InternalEObject)topic).eInverseRemove(this, ForumPackage.TOPIC__POSTS, Topic.class, msgs);
-					return basicSetTopic((Topic)otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ForumPackage.POST__AUTHOR:
+				if (author != null)
+					msgs = ((InternalEObject)author).eInverseRemove(this, ForumPackage.MEMBER__POSTS, Member.class, msgs);
+				return basicSetAuthor((Member)otherEnd, msgs);
+			case ForumPackage.POST__TOPIC:
+				if (topic != null)
+					msgs = ((InternalEObject)topic).eInverseRemove(this, ForumPackage.TOPIC__POSTS, Topic.class, msgs);
+				return basicSetTopic((Topic)otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -235,18 +231,15 @@ public class PostImpl extends EObjectImpl implements Post {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case ForumPackage.POST__AUTHOR:
-					return basicSetAuthor(null, msgs);
-				case ForumPackage.POST__TOPIC:
-					return basicSetTopic(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ForumPackage.POST__AUTHOR:
+				return basicSetAuthor(null, msgs);
+			case ForumPackage.POST__TOPIC:
+				return basicSetTopic(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -254,8 +247,9 @@ public class PostImpl extends EObjectImpl implements Post {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case ForumPackage.POST__COMMENT:
 				return getComment();
 			case ForumPackage.POST__AUTHOR:
@@ -263,7 +257,7 @@ public class PostImpl extends EObjectImpl implements Post {
 			case ForumPackage.POST__TOPIC:
 				return getTopic();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -271,8 +265,9 @@ public class PostImpl extends EObjectImpl implements Post {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case ForumPackage.POST__COMMENT:
 				setComment((String)newValue);
 				return;
@@ -283,7 +278,7 @@ public class PostImpl extends EObjectImpl implements Post {
 				setTopic((Topic)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -291,8 +286,9 @@ public class PostImpl extends EObjectImpl implements Post {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case ForumPackage.POST__COMMENT:
 				setComment(COMMENT_EDEFAULT);
 				return;
@@ -303,7 +299,7 @@ public class PostImpl extends EObjectImpl implements Post {
 				setTopic((Topic)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -311,8 +307,9 @@ public class PostImpl extends EObjectImpl implements Post {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case ForumPackage.POST__COMMENT:
 				return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
 			case ForumPackage.POST__AUTHOR:
@@ -320,7 +317,7 @@ public class PostImpl extends EObjectImpl implements Post {
 			case ForumPackage.POST__TOPIC:
 				return topic != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -328,6 +325,7 @@ public class PostImpl extends EObjectImpl implements Post {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

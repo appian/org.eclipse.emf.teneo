@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablehibernateResourceFactoryImpl.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
+ * $Id: SecondarytablehibernateResourceFactoryImpl.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.util;
 
@@ -38,6 +38,7 @@ public class SecondarytablehibernateResourceFactoryImpl extends ResourceFactoryI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new SecondarytablehibernateResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AuthorsTypeImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: AuthorsTypeImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl;
 
@@ -42,7 +42,7 @@ public class AuthorsTypeImpl extends EObjectImpl implements AuthorsType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList authorName = null;
+	protected EList<String> authorName = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -58,8 +58,9 @@ public class AuthorsTypeImpl extends EObjectImpl implements AuthorsType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return SunBooksPackage.eINSTANCE.getAuthorsType();
+		return SunBooksPackage.Literals.AUTHORS_TYPE;
 	}
 
 	/**
@@ -67,9 +68,9 @@ public class AuthorsTypeImpl extends EObjectImpl implements AuthorsType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAuthorName() {
+	public EList<String> getAuthorName() {
 		if (authorName == null) {
-			authorName = new EDataTypeEList(String.class, this, SunBooksPackage.AUTHORS_TYPE__AUTHOR_NAME);
+			authorName = new EDataTypeEList<String>(String.class, this, SunBooksPackage.AUTHORS_TYPE__AUTHOR_NAME);
 		}
 		return authorName;
 	}
@@ -79,12 +80,13 @@ public class AuthorsTypeImpl extends EObjectImpl implements AuthorsType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case SunBooksPackage.AUTHORS_TYPE__AUTHOR_NAME:
 				return getAuthorName();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -92,14 +94,16 @@ public class AuthorsTypeImpl extends EObjectImpl implements AuthorsType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case SunBooksPackage.AUTHORS_TYPE__AUTHOR_NAME:
 				getAuthorName().clear();
-				getAuthorName().addAll((Collection)newValue);
+				getAuthorName().addAll((Collection<? extends String>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -107,13 +111,14 @@ public class AuthorsTypeImpl extends EObjectImpl implements AuthorsType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case SunBooksPackage.AUTHORS_TYPE__AUTHOR_NAME:
 				getAuthorName().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -121,12 +126,13 @@ public class AuthorsTypeImpl extends EObjectImpl implements AuthorsType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case SunBooksPackage.AUTHORS_TYPE__AUTHOR_NAME:
 				return authorName != null && !authorName.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -134,6 +140,7 @@ public class AuthorsTypeImpl extends EObjectImpl implements AuthorsType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

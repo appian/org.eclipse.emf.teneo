@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParentDocument.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: ParentDocument.java,v 1.3 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -25,6 +25,13 @@ package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
  * @generated
  */
 public interface ParentDocument extends Document {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
 	/**
 	 * Returns the value of the '<em><b>My Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

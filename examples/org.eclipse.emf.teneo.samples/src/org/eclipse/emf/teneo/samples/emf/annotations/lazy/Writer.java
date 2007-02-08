@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.2 2006/09/21 00:56:53 mtaal Exp $
+ * $Id: Writer.java,v 1.3 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy;
 
@@ -72,6 +72,6 @@ public interface Writer extends EObject {
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */
-	EList getBooks();
+	EList<Book> getBooks();
 
 } // Writer

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AccountingAdapterFactory.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: AccountingAdapterFactory.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting.util;
 
@@ -52,6 +52,7 @@ public class AccountingAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,39 +69,50 @@ public class AccountingAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AccountingSwitch modelSwitch =
-		new AccountingSwitch() {
-			public Object caseAccount(Account object) {
+	protected AccountingSwitch<Adapter> modelSwitch =
+		new AccountingSwitch<Adapter>() {
+			@Override
+			public Adapter caseAccount(Account object) {
 				return createAccountAdapter();
 			}
-			public Object caseAccountGroup(AccountGroup object) {
+			@Override
+			public Adapter caseAccountGroup(AccountGroup object) {
 				return createAccountGroupAdapter();
 			}
-			public Object caseAccounting(Accounting object) {
+			@Override
+			public Adapter caseAccounting(Accounting object) {
 				return createAccountingAdapter();
 			}
-			public Object caseBalanceAccount(BalanceAccount object) {
+			@Override
+			public Adapter caseBalanceAccount(BalanceAccount object) {
 				return createBalanceAccountAdapter();
 			}
-			public Object caseJournalGroup(JournalGroup object) {
+			@Override
+			public Adapter caseJournalGroup(JournalGroup object) {
 				return createJournalGroupAdapter();
 			}
-			public Object caseJournalStatement(JournalStatement object) {
+			@Override
+			public Adapter caseJournalStatement(JournalStatement object) {
 				return createJournalStatementAdapter();
 			}
-			public Object casePLAccount(PLAccount object) {
+			@Override
+			public Adapter casePLAccount(PLAccount object) {
 				return createPLAccountAdapter();
 			}
-			public Object caseReport(Report object) {
+			@Override
+			public Adapter caseReport(Report object) {
 				return createReportAdapter();
 			}
-			public Object caseReportGroup(ReportGroup object) {
+			@Override
+			public Adapter caseReportGroup(ReportGroup object) {
 				return createReportGroupAdapter();
 			}
-			public Object caseVat(Vat object) {
+			@Override
+			public Adapter caseVat(Vat object) {
 				return createVatAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -113,8 +125,9 @@ public class AccountingAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

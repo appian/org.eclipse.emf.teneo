@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MultiNRImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: MultiNRImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relationntom.impl;
 
@@ -70,7 +70,7 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList main = null;
+	protected EList<Main> main = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,8 +86,9 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return RelationntomPackage.eINSTANCE.getMultiNR();
+		return RelationntomPackage.Literals.MULTI_NR;
 	}
 
 	/**
@@ -116,9 +117,9 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMain() {
+	public EList<Main> getMain() {
 		if (main == null) {
-			main = new EObjectWithInverseResolvingEList.ManyInverse(Main.class, this, RelationntomPackage.MULTI_NR__MAIN, RelationntomPackage.MAIN__MULTINR);
+			main = new EObjectWithInverseResolvingEList.ManyInverse<Main>(Main.class, this, RelationntomPackage.MULTI_NR__MAIN, RelationntomPackage.MAIN__MULTINR);
 		}
 		return main;
 	}
@@ -128,18 +129,14 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case RelationntomPackage.MULTI_NR__MAIN:
-					return ((InternalEList)getMain()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case RelationntomPackage.MULTI_NR__MAIN:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMain()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -147,16 +144,13 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case RelationntomPackage.MULTI_NR__MAIN:
-					return ((InternalEList)getMain()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case RelationntomPackage.MULTI_NR__MAIN:
+				return ((InternalEList<?>)getMain()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -164,14 +158,15 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case RelationntomPackage.MULTI_NR__NAME:
 				return getName();
 			case RelationntomPackage.MULTI_NR__MAIN:
 				return getMain();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -179,17 +174,19 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case RelationntomPackage.MULTI_NR__NAME:
 				setName((String)newValue);
 				return;
 			case RelationntomPackage.MULTI_NR__MAIN:
 				getMain().clear();
-				getMain().addAll((Collection)newValue);
+				getMain().addAll((Collection<? extends Main>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -197,8 +194,9 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case RelationntomPackage.MULTI_NR__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -206,7 +204,7 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 				getMain().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -214,14 +212,15 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case RelationntomPackage.MULTI_NR__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case RelationntomPackage.MULTI_NR__MAIN:
 				return main != null && !main.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -229,6 +228,7 @@ public class MultiNRImpl extends EObjectImpl implements MultiNR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

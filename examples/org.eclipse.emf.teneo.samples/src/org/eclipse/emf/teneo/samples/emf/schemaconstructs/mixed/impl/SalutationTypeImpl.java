@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SalutationTypeImpl.java,v 1.1 2006/07/11 16:57:13 mtaal Exp $
+ * $Id: SalutationTypeImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl;
 
@@ -39,6 +39,13 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.SalutationType;
  */
 public class SalutationTypeImpl extends EObjectImpl implements SalutationType {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
+	/**
 	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -72,8 +79,9 @@ public class SalutationTypeImpl extends EObjectImpl implements SalutationType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return MixedPackage.eINSTANCE.getSalutationType();
+		return MixedPackage.Literals.SALUTATION_TYPE;
 	}
 
 	/**
@@ -94,7 +102,7 @@ public class SalutationTypeImpl extends EObjectImpl implements SalutationType {
 	 * @generated
 	 */
 	public String getName() {
-		return (String)getMixed().get(MixedPackage.eINSTANCE.getSalutationType_Name(), true);
+		return (String)getMixed().get(MixedPackage.Literals.SALUTATION_TYPE__NAME, true);
 	}
 
 	/**
@@ -103,7 +111,7 @@ public class SalutationTypeImpl extends EObjectImpl implements SalutationType {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		((FeatureMap.Internal)getMixed()).set(MixedPackage.eINSTANCE.getSalutationType_Name(), newName);
+		((FeatureMap.Internal)getMixed()).set(MixedPackage.Literals.SALUTATION_TYPE__NAME, newName);
 	}
 
 	/**
@@ -111,31 +119,30 @@ public class SalutationTypeImpl extends EObjectImpl implements SalutationType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case MixedPackage.SALUTATION_TYPE__MIXED:
-					return ((InternalEList)getMixed()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case MixedPackage.SALUTATION_TYPE__MIXED:
-				return getMixed();
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case MixedPackage.SALUTATION_TYPE__MIXED:
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
 			case MixedPackage.SALUTATION_TYPE__NAME:
 				return getName();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -143,17 +150,17 @@ public class SalutationTypeImpl extends EObjectImpl implements SalutationType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case MixedPackage.SALUTATION_TYPE__MIXED:
-				getMixed().clear();
-				getMixed().addAll((Collection)newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case MixedPackage.SALUTATION_TYPE__NAME:
 				setName((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -161,8 +168,9 @@ public class SalutationTypeImpl extends EObjectImpl implements SalutationType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case MixedPackage.SALUTATION_TYPE__MIXED:
 				getMixed().clear();
 				return;
@@ -170,7 +178,7 @@ public class SalutationTypeImpl extends EObjectImpl implements SalutationType {
 				setName(NAME_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -178,14 +186,15 @@ public class SalutationTypeImpl extends EObjectImpl implements SalutationType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case MixedPackage.SALUTATION_TYPE__MIXED:
 				return mixed != null && !mixed.isEmpty();
 			case MixedPackage.SALUTATION_TYPE__NAME:
 				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -193,6 +202,7 @@ public class SalutationTypeImpl extends EObjectImpl implements SalutationType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

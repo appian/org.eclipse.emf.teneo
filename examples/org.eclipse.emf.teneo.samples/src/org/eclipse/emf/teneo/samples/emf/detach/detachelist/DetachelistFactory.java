@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DetachelistFactory.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: DetachelistFactory.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachelist;
 
@@ -23,7 +23,7 @@ public interface DetachelistFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	DetachelistFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.detach.detachelist.impl.DetachelistFactoryImpl();
+	DetachelistFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.detach.detachelist.impl.DetachelistFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Contacts</em>'.

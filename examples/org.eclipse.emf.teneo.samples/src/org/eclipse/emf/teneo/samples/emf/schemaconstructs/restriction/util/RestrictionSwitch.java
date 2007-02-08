@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RestrictionSwitch.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: RestrictionSwitch.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.*;
  * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.RestrictionPackage
  * @generated
  */
-public class RestrictionSwitch {
+public class RestrictionSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class RestrictionSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class RestrictionSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,18 +85,18 @@ public class RestrictionSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case RestrictionPackage.MEMBER: {
 				Member member = (Member)theEObject;
-				Object result = caseMember(member);
+				T result = caseMember(member);
 				if (result == null) result = caseXMLDeviant(member);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case RestrictionPackage.XML_DEVIANT: {
 				XMLDeviant xmlDeviant = (XMLDeviant)theEObject;
-				Object result = caseXMLDeviant(xmlDeviant);
+				T result = caseXMLDeviant(xmlDeviant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,7 +115,7 @@ public class RestrictionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMember(Member object) {
+	public T caseMember(Member object) {
 		return null;
 	}
 
@@ -130,7 +130,7 @@ public class RestrictionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXMLDeviant(XMLDeviant object) {
+	public T caseXMLDeviant(XMLDeviant object) {
 		return null;
 	}
 
@@ -145,7 +145,7 @@ public class RestrictionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

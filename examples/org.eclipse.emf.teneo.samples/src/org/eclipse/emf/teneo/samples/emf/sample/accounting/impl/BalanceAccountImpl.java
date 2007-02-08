@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BalanceAccountImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: BalanceAccountImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting.impl;
 
@@ -45,7 +45,7 @@ public class BalanceAccountImpl extends AccountImpl implements BalanceAccount {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList report = null;
+	protected EList<ReportGroup> report = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,8 +61,9 @@ public class BalanceAccountImpl extends AccountImpl implements BalanceAccount {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return AccountingPackage.eINSTANCE.getBalanceAccount();
+		return AccountingPackage.Literals.BALANCE_ACCOUNT;
 	}
 
 	/**
@@ -70,9 +71,9 @@ public class BalanceAccountImpl extends AccountImpl implements BalanceAccount {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getReport() {
+	public EList<ReportGroup> getReport() {
 		if (report == null) {
-			report = new EObjectWithInverseEList.ManyInverse(ReportGroup.class, this, AccountingPackage.BALANCE_ACCOUNT__REPORT, AccountingPackage.REPORT_GROUP__ACCOUNT);
+			report = new EObjectWithInverseEList.ManyInverse<ReportGroup>(ReportGroup.class, this, AccountingPackage.BALANCE_ACCOUNT__REPORT, AccountingPackage.REPORT_GROUP__ACCOUNT);
 		}
 		return report;
 	}
@@ -82,18 +83,14 @@ public class BalanceAccountImpl extends AccountImpl implements BalanceAccount {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case AccountingPackage.BALANCE_ACCOUNT__REPORT:
-					return ((InternalEList)getReport()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AccountingPackage.BALANCE_ACCOUNT__REPORT:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReport()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -101,16 +98,13 @@ public class BalanceAccountImpl extends AccountImpl implements BalanceAccount {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case AccountingPackage.BALANCE_ACCOUNT__REPORT:
-					return ((InternalEList)getReport()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AccountingPackage.BALANCE_ACCOUNT__REPORT:
+				return ((InternalEList<?>)getReport()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -118,14 +112,13 @@ public class BalanceAccountImpl extends AccountImpl implements BalanceAccount {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case AccountingPackage.BALANCE_ACCOUNT__NAME:
-				return getName();
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case AccountingPackage.BALANCE_ACCOUNT__REPORT:
 				return getReport();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -133,17 +126,16 @@ public class BalanceAccountImpl extends AccountImpl implements BalanceAccount {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case AccountingPackage.BALANCE_ACCOUNT__NAME:
-				setName((String)newValue);
-				return;
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case AccountingPackage.BALANCE_ACCOUNT__REPORT:
 				getReport().clear();
-				getReport().addAll((Collection)newValue);
+				getReport().addAll((Collection<? extends ReportGroup>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -151,16 +143,14 @@ public class BalanceAccountImpl extends AccountImpl implements BalanceAccount {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case AccountingPackage.BALANCE_ACCOUNT__NAME:
-				setName(NAME_EDEFAULT);
-				return;
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.BALANCE_ACCOUNT__REPORT:
 				getReport().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -168,14 +158,13 @@ public class BalanceAccountImpl extends AccountImpl implements BalanceAccount {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case AccountingPackage.BALANCE_ACCOUNT__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.BALANCE_ACCOUNT__REPORT:
 				return report != null && !report.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 } //BalanceAccountImpl

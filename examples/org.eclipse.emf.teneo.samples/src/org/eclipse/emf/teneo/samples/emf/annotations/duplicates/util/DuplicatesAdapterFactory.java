@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DuplicatesAdapterFactory.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: DuplicatesAdapterFactory.java,v 1.2 2007/02/08 23:09:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.duplicates.util;
 
@@ -52,6 +52,7 @@ public class DuplicatesAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,15 +69,18 @@ public class DuplicatesAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DuplicatesSwitch modelSwitch =
-		new DuplicatesSwitch() {
-			public Object caseChildItem(ChildItem object) {
+	protected DuplicatesSwitch<Adapter> modelSwitch =
+		new DuplicatesSwitch<Adapter>() {
+			@Override
+			public Adapter caseChildItem(ChildItem object) {
 				return createChildItemAdapter();
 			}
-			public Object caseItem(Item object) {
+			@Override
+			public Adapter caseItem(Item object) {
 				return createItemAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -89,8 +93,9 @@ public class DuplicatesAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

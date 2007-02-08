@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ContactsImpl.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: ContactsImpl.java,v 1.2 2007/02/08 23:09:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachelist.impl;
 
@@ -51,7 +51,7 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList persons = null;
+	protected EList<Person> persons = null;
 
 	/**
 	 * The cached value of the '{@link #getContainedPersons() <em>Contained Persons</em>}' containment reference list.
@@ -61,7 +61,7 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList containedPersons = null;
+	protected EList<Person> containedPersons = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,8 +77,9 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return DetachelistPackage.eINSTANCE.getContacts();
+		return DetachelistPackage.Literals.CONTACTS;
 	}
 
 	/**
@@ -86,9 +87,9 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPersons() {
+	public EList<Person> getPersons() {
 		if (persons == null) {
-			persons = new EObjectEList(Person.class, this, DetachelistPackage.CONTACTS__PERSONS);
+			persons = new EObjectEList<Person>(Person.class, this, DetachelistPackage.CONTACTS__PERSONS);
 		}
 		return persons;
 	}
@@ -98,9 +99,9 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getContainedPersons() {
+	public EList<Person> getContainedPersons() {
 		if (containedPersons == null) {
-			containedPersons = new EObjectContainmentEList(Person.class, this, DetachelistPackage.CONTACTS__CONTAINED_PERSONS);
+			containedPersons = new EObjectContainmentEList<Person>(Person.class, this, DetachelistPackage.CONTACTS__CONTAINED_PERSONS);
 		}
 		return containedPersons;
 	}
@@ -110,16 +111,13 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case DetachelistPackage.CONTACTS__CONTAINED_PERSONS:
-					return ((InternalEList)getContainedPersons()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case DetachelistPackage.CONTACTS__CONTAINED_PERSONS:
+				return ((InternalEList<?>)getContainedPersons()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -127,14 +125,15 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case DetachelistPackage.CONTACTS__PERSONS:
 				return getPersons();
 			case DetachelistPackage.CONTACTS__CONTAINED_PERSONS:
 				return getContainedPersons();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -142,18 +141,20 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case DetachelistPackage.CONTACTS__PERSONS:
 				getPersons().clear();
-				getPersons().addAll((Collection)newValue);
+				getPersons().addAll((Collection<? extends Person>)newValue);
 				return;
 			case DetachelistPackage.CONTACTS__CONTAINED_PERSONS:
 				getContainedPersons().clear();
-				getContainedPersons().addAll((Collection)newValue);
+				getContainedPersons().addAll((Collection<? extends Person>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -161,8 +162,9 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case DetachelistPackage.CONTACTS__PERSONS:
 				getPersons().clear();
 				return;
@@ -170,7 +172,7 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 				getContainedPersons().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -178,14 +180,15 @@ public class ContactsImpl extends EObjectImpl implements Contacts {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case DetachelistPackage.CONTACTS__PERSONS:
 				return persons != null && !persons.isEmpty();
 			case DetachelistPackage.CONTACTS__CONTAINED_PERSONS:
 				return containedPersons != null && !containedPersons.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 } //ContactsImpl

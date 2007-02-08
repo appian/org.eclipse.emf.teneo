@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetPackageImpl.java,v 1.4 2007/01/02 17:53:28 mtaal Exp $
+ * $Id: SetPackageImpl.java,v 1.5 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -28,6 +28,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage;
  * @generated
  */
 public class SetPackageImpl extends EPackageImpl implements SetPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -277,6 +284,10 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BasicAdapterFactory.java,v 1.2 2006/07/22 13:01:17 mtaal Exp $
+ * $Id: BasicAdapterFactory.java,v 1.3 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.basic.util;
 
@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.annotations.basic.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.Basic;
 import org.eclipse.emf.teneo.samples.emf.annotations.basic.BasicPackage;
 
@@ -50,6 +51,7 @@ public class BasicAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -66,12 +68,14 @@ public class BasicAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BasicSwitch modelSwitch =
-		new BasicSwitch() {
-			public Object caseBasic(Basic object) {
+	protected BasicSwitch<Adapter> modelSwitch =
+		new BasicSwitch<Adapter>() {
+			@Override
+			public Adapter caseBasic(Basic object) {
 				return createBasicAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -84,8 +88,9 @@ public class BasicAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

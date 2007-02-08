@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FeaturemapPackage.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: FeaturemapPackage.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.elist.featuremap;
 
@@ -90,7 +90,7 @@ public interface FeaturemapPackage extends EPackage {
 	int PRICE_BY_QUANTITY_TYPE__QUANTITY = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Price By Quantity Type</em>' class.
+	 * The number of structural features of the '<em>Price By Quantity Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -190,7 +190,7 @@ public interface FeaturemapPackage extends EPackage {
 	int PRODUCT_TYPE__SIMPLE_PRICE = 8;
 
 	/**
-	 * The number of structural features of the the '<em>Product Type</em>' class.
+	 * The number of structural features of the '<em>Product Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -227,7 +227,7 @@ public interface FeaturemapPackage extends EPackage {
 	int SUPPLIER_PRICE_TYPE__PRICE = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Supplier Price Type</em>' class.
+	 * The number of structural features of the '<em>Supplier Price Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -264,7 +264,7 @@ public interface FeaturemapPackage extends EPackage {
 	int TRANSLATED_DESCRIPTION_TYPE__LANGUAGE = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Translated Description Type</em>' class.
+	 * The number of structural features of the '<em>Translated Description Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -528,5 +528,200 @@ public interface FeaturemapPackage extends EPackage {
 	 * @generated
 	 */
 	FeaturemapFactory getFeaturemapFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.PriceByQuantityTypeImpl <em>Price By Quantity Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.PriceByQuantityTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.FeaturemapPackageImpl#getPriceByQuantityType()
+		 * @generated
+		 */
+		EClass PRICE_BY_QUANTITY_TYPE = eINSTANCE.getPriceByQuantityType();
+
+		/**
+		 * The meta object literal for the '<em><b>Price</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRICE_BY_QUANTITY_TYPE__PRICE = eINSTANCE.getPriceByQuantityType_Price();
+
+		/**
+		 * The meta object literal for the '<em><b>Quantity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRICE_BY_QUANTITY_TYPE__QUANTITY = eINSTANCE.getPriceByQuantityType_Quantity();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.ProductTypeImpl <em>Product Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.ProductTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.FeaturemapPackageImpl#getProductType()
+		 * @generated
+		 */
+		EClass PRODUCT_TYPE = eINSTANCE.getProductType();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_TYPE__NAME = eINSTANCE.getProductType_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Group</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_TYPE__GROUP = eINSTANCE.getProductType_Group();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_TYPE__DESCRIPTION = eINSTANCE.getProductType_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Translated Description</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_TYPE__TRANSLATED_DESCRIPTION = eINSTANCE.getProductType_TranslatedDescription();
+
+		/**
+		 * The meta object literal for the '<em><b>Product Classification</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_TYPE__PRODUCT_CLASSIFICATION = eINSTANCE.getProductType_ProductClassification();
+
+		/**
+		 * The meta object literal for the '<em><b>Group1</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_TYPE__GROUP1 = eINSTANCE.getProductType_Group1();
+
+		/**
+		 * The meta object literal for the '<em><b>Price By Quantity</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_TYPE__PRICE_BY_QUANTITY = eINSTANCE.getProductType_PriceByQuantity();
+
+		/**
+		 * The meta object literal for the '<em><b>Price From Supplier</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_TYPE__PRICE_FROM_SUPPLIER = eINSTANCE.getProductType_PriceFromSupplier();
+
+		/**
+		 * The meta object literal for the '<em><b>Simple Price</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_TYPE__SIMPLE_PRICE = eINSTANCE.getProductType_SimplePrice();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.SupplierPriceTypeImpl <em>Supplier Price Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.SupplierPriceTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.FeaturemapPackageImpl#getSupplierPriceType()
+		 * @generated
+		 */
+		EClass SUPPLIER_PRICE_TYPE = eINSTANCE.getSupplierPriceType();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUPPLIER_PRICE_TYPE__NAME = eINSTANCE.getSupplierPriceType_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Price</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUPPLIER_PRICE_TYPE__PRICE = eINSTANCE.getSupplierPriceType_Price();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.TranslatedDescriptionTypeImpl <em>Translated Description Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.TranslatedDescriptionTypeImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.FeaturemapPackageImpl#getTranslatedDescriptionType()
+		 * @generated
+		 */
+		EClass TRANSLATED_DESCRIPTION_TYPE = eINSTANCE.getTranslatedDescriptionType();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSLATED_DESCRIPTION_TYPE__DESCRIPTION = eINSTANCE.getTranslatedDescriptionType_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSLATED_DESCRIPTION_TYPE__LANGUAGE = eINSTANCE.getTranslatedDescriptionType_Language();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.elist.featuremap.ProductClassification <em>Product Classification</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.ProductClassification
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.FeaturemapPackageImpl#getProductClassification()
+		 * @generated
+		 */
+		EEnum PRODUCT_CLASSIFICATION = eINSTANCE.getProductClassification();
+
+		/**
+		 * The meta object literal for the '<em>Product Classification Object</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.ProductClassification
+		 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.FeaturemapPackageImpl#getProductClassificationObject()
+		 * @generated
+		 */
+		EDataType PRODUCT_CLASSIFICATION_OBJECT = eINSTANCE.getProductClassificationObject();
+
+	}
 
 } //FeaturemapPackage

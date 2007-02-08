@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributesFactory.java,v 1.1 2006/07/11 16:57:01 mtaal Exp $
+ * $Id: AttributesFactory.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes;
 
@@ -23,7 +23,7 @@ public interface AttributesFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	AttributesFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.AttributesFactoryImpl();
+	AttributesFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.AttributesFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>A</em>'.

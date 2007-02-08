@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DetachtestSwitch.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: DetachtestSwitch.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.detach.detachtest.*;
  * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.DetachtestPackage
  * @generated
  */
-public class DetachtestSwitch {
+public class DetachtestSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class DetachtestSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class DetachtestSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,23 @@ public class DetachtestSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case DetachtestPackage.TEST_A: {
 				TestA testA = (TestA)theEObject;
-				Object result = caseTestA(testA);
+				T result = caseTestA(testA);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case DetachtestPackage.TEST_B: {
 				TestB testB = (TestB)theEObject;
-				Object result = caseTestB(testB);
+				T result = caseTestB(testB);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case DetachtestPackage.TEST_C: {
 				TestC testC = (TestC)theEObject;
-				Object result = caseTestC(testC);
+				T result = caseTestC(testC);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,7 +120,7 @@ public class DetachtestSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTestA(TestA object) {
+	public T caseTestA(TestA object) {
 		return null;
 	}
 
@@ -135,7 +135,7 @@ public class DetachtestSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTestB(TestB object) {
+	public T caseTestB(TestB object) {
 		return null;
 	}
 
@@ -150,7 +150,7 @@ public class DetachtestSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTestC(TestC object) {
+	public T caseTestC(TestC object) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class DetachtestSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

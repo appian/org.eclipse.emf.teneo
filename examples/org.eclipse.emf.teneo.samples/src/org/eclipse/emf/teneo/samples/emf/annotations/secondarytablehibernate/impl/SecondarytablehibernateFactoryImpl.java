@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablehibernateFactoryImpl.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
+ * $Id: SecondarytablehibernateFactoryImpl.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.impl;
 
@@ -57,6 +57,7 @@ public class SecondarytablehibernateFactoryImpl extends EFactoryImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SecondarytablehibernatePackage.PERSON: return createPerson();
@@ -90,6 +91,7 @@ public class SecondarytablehibernateFactoryImpl extends EFactoryImpl implements 
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static SecondarytablehibernatePackage getPackage() {
 		return SecondarytablehibernatePackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestBImpl.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: TestBImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl;
 
@@ -65,8 +65,9 @@ public class TestBImpl extends EObjectImpl implements TestB {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return DetachtestPackage.eINSTANCE.getTestB();
+		return DetachtestPackage.Literals.TEST_B;
 	}
 
 	/**
@@ -95,12 +96,13 @@ public class TestBImpl extends EObjectImpl implements TestB {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case DetachtestPackage.TEST_B__CODE:
 				return getCode();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -108,13 +110,14 @@ public class TestBImpl extends EObjectImpl implements TestB {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case DetachtestPackage.TEST_B__CODE:
 				setCode((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -122,13 +125,14 @@ public class TestBImpl extends EObjectImpl implements TestB {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case DetachtestPackage.TEST_B__CODE:
 				setCode(CODE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -136,12 +140,13 @@ public class TestBImpl extends EObjectImpl implements TestB {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case DetachtestPackage.TEST_B__CODE:
 				return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -149,6 +154,7 @@ public class TestBImpl extends EObjectImpl implements TestB {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

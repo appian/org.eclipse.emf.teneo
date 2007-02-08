@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1tonAdapterFactory.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: Relation1tonAdapterFactory.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton.util;
 
@@ -52,6 +52,7 @@ public class Relation1tonAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,36 +69,46 @@ public class Relation1tonAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Relation1tonSwitch modelSwitch =
-		new Relation1tonSwitch() {
-			public Object caseMain(Main object) {
+	protected Relation1tonSwitch<Adapter> modelSwitch =
+		new Relation1tonSwitch<Adapter>() {
+			@Override
+			public Adapter caseMain(Main object) {
 				return createMainAdapter();
 			}
-			public Object caseOneCN(OneCN object) {
+			@Override
+			public Adapter caseOneCN(OneCN object) {
 				return createOneCNAdapter();
 			}
-			public Object caseOneCR(OneCR object) {
+			@Override
+			public Adapter caseOneCR(OneCR object) {
 				return createOneCRAdapter();
 			}
-			public Object caseOneNN(OneNN object) {
+			@Override
+			public Adapter caseOneNN(OneNN object) {
 				return createOneNNAdapter();
 			}
-			public Object caseOneNR(OneNR object) {
+			@Override
+			public Adapter caseOneNR(OneNR object) {
 				return createOneNRAdapter();
 			}
-			public Object caseTwoCN(TwoCN object) {
+			@Override
+			public Adapter caseTwoCN(TwoCN object) {
 				return createTwoCNAdapter();
 			}
-			public Object caseTwoCR(TwoCR object) {
+			@Override
+			public Adapter caseTwoCR(TwoCR object) {
 				return createTwoCRAdapter();
 			}
-			public Object caseTwoNN(TwoNN object) {
+			@Override
+			public Adapter caseTwoNN(TwoNN object) {
 				return createTwoNNAdapter();
 			}
-			public Object caseTwoNR(TwoNR object) {
+			@Override
+			public Adapter caseTwoNR(TwoNR object) {
 				return createTwoNRAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -110,8 +121,9 @@ public class Relation1tonAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

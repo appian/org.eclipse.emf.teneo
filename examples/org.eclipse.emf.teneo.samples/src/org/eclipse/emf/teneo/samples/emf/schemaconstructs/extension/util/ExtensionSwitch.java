@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtensionSwitch.java,v 1.1 2006/07/11 16:57:01 mtaal Exp $
+ * $Id: ExtensionSwitch.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.*;
  * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.ExtensionPackage
  * @generated
  */
-public class ExtensionSwitch {
+public class ExtensionSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class ExtensionSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class ExtensionSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,23 @@ public class ExtensionSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case ExtensionPackage.ADDRESS: {
 				Address address = (Address)theEObject;
-				Object result = caseAddress(address);
+				T result = caseAddress(address);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ExtensionPackage.ADDRESS_LIST: {
 				AddressList addressList = (AddressList)theEObject;
-				Object result = caseAddressList(addressList);
+				T result = caseAddressList(addressList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ExtensionPackage.DISTRICT_UK_ADDRESS: {
 				DistrictUKAddress districtUKAddress = (DistrictUKAddress)theEObject;
-				Object result = caseDistrictUKAddress(districtUKAddress);
+				T result = caseDistrictUKAddress(districtUKAddress);
 				if (result == null) result = caseUKAddress(districtUKAddress);
 				if (result == null) result = caseAddress(districtUKAddress);
 				if (result == null) result = defaultCase(theEObject);
@@ -109,26 +109,26 @@ public class ExtensionSwitch {
 			}
 			case ExtensionPackage.FIRST_ADDRESS_HOLDER: {
 				FirstAddressHolder firstAddressHolder = (FirstAddressHolder)theEObject;
-				Object result = caseFirstAddressHolder(firstAddressHolder);
+				T result = caseFirstAddressHolder(firstAddressHolder);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ExtensionPackage.INTERNATIONAL_PRICE: {
 				InternationalPrice internationalPrice = (InternationalPrice)theEObject;
-				Object result = caseInternationalPrice(internationalPrice);
+				T result = caseInternationalPrice(internationalPrice);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ExtensionPackage.UK_ADDRESS: {
 				UKAddress ukAddress = (UKAddress)theEObject;
-				Object result = caseUKAddress(ukAddress);
+				T result = caseUKAddress(ukAddress);
 				if (result == null) result = caseAddress(ukAddress);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ExtensionPackage.US_ADDRESS: {
 				USAddress usAddress = (USAddress)theEObject;
-				Object result = caseUSAddress(usAddress);
+				T result = caseUSAddress(usAddress);
 				if (result == null) result = caseAddress(usAddress);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -148,7 +148,7 @@ public class ExtensionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddress(Address object) {
+	public T caseAddress(Address object) {
 		return null;
 	}
 
@@ -163,7 +163,7 @@ public class ExtensionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddressList(AddressList object) {
+	public T caseAddressList(AddressList object) {
 		return null;
 	}
 
@@ -178,7 +178,7 @@ public class ExtensionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDistrictUKAddress(DistrictUKAddress object) {
+	public T caseDistrictUKAddress(DistrictUKAddress object) {
 		return null;
 	}
 
@@ -193,7 +193,7 @@ public class ExtensionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFirstAddressHolder(FirstAddressHolder object) {
+	public T caseFirstAddressHolder(FirstAddressHolder object) {
 		return null;
 	}
 
@@ -208,7 +208,7 @@ public class ExtensionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInternationalPrice(InternationalPrice object) {
+	public T caseInternationalPrice(InternationalPrice object) {
 		return null;
 	}
 
@@ -223,7 +223,7 @@ public class ExtensionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUKAddress(UKAddress object) {
+	public T caseUKAddress(UKAddress object) {
 		return null;
 	}
 
@@ -238,7 +238,7 @@ public class ExtensionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUSAddress(USAddress object) {
+	public T caseUSAddress(USAddress object) {
 		return null;
 	}
 
@@ -253,7 +253,7 @@ public class ExtensionSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtensionPackageImpl.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
+ * $Id: ExtensionPackageImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -512,6 +512,10 @@ public class ExtensionPackageImpl extends EPackageImpl implements ExtensionPacka
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		districtUKAddressEClass.getESuperTypes().add(this.getUKAddress());

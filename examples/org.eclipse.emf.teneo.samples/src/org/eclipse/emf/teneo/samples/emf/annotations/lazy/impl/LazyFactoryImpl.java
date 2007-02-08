@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LazyFactoryImpl.java,v 1.4 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: LazyFactoryImpl.java,v 1.5 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl;
 
@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.annotations.lazy.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.lazy.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.lazy.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.annotations.lazy.LazyFactory;
@@ -60,6 +61,7 @@ public class LazyFactoryImpl extends EFactoryImpl implements LazyFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case LazyPackage.BOOK: return createBook();
@@ -75,6 +77,7 @@ public class LazyFactoryImpl extends EFactoryImpl implements LazyFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case LazyPackage.BOOK_CATEGORY:
@@ -91,6 +94,7 @@ public class LazyFactoryImpl extends EFactoryImpl implements LazyFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case LazyPackage.BOOK_CATEGORY:
@@ -158,7 +162,7 @@ public class LazyFactoryImpl extends EFactoryImpl implements LazyFactory {
 	 * @generated
 	 */
 	public BookCategory createBookCategoryObjectFromString(EDataType eDataType, String initialValue) {
-		return (BookCategory)createBookCategoryFromString(LazyPackage.Literals.BOOK_CATEGORY, initialValue);
+		return createBookCategoryFromString(LazyPackage.Literals.BOOK_CATEGORY, initialValue);
 	}
 
 	/**
@@ -185,6 +189,7 @@ public class LazyFactoryImpl extends EFactoryImpl implements LazyFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static LazyPackage getPackage() {
 		return LazyPackage.eINSTANCE;
 	}

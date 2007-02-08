@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductAdapterFactory.java,v 1.3 2006/11/15 17:18:17 mtaal Exp $
+ * $Id: ProductAdapterFactory.java,v 1.4 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.util;
 
@@ -53,6 +53,7 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -69,18 +70,22 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProductSwitch modelSwitch =
-		new ProductSwitch() {
-			public Object caseProductType(ProductType object) {
+	protected ProductSwitch<Adapter> modelSwitch =
+		new ProductSwitch<Adapter>() {
+			@Override
+			public Adapter caseProductType(ProductType object) {
 				return createProductTypeAdapter();
 			}
-			public Object caseSupplierType(SupplierType object) {
+			@Override
+			public Adapter caseSupplierType(SupplierType object) {
 				return createSupplierTypeAdapter();
 			}
-			public Object caseClassificationType(ClassificationType object) {
+			@Override
+			public Adapter caseClassificationType(ClassificationType object) {
 				return createClassificationTypeAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -93,8 +98,9 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

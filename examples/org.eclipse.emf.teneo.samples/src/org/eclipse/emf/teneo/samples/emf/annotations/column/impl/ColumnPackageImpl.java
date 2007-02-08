@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnPackageImpl.java,v 1.3 2006/09/05 12:16:36 mtaal Exp $
+ * $Id: ColumnPackageImpl.java,v 1.4 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.column.impl;
 
@@ -205,6 +205,10 @@ public class ColumnPackageImpl extends EPackageImpl implements ColumnPackage {
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

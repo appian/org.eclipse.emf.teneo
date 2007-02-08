@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressGroup.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: AddressGroup.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall;
 
@@ -66,7 +66,7 @@ public interface AddressGroup extends EObject {
 	 * @return the value of the '<em>Ship To</em>' containment reference.
 	 * @see #setShipTo(Address)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.GroupallPackage#getAddressGroup_ShipTo()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='shipTo'"
 	 * @generated
 	 */
@@ -93,7 +93,7 @@ public interface AddressGroup extends EObject {
 	 * @return the value of the '<em>Bill To</em>' containment reference.
 	 * @see #setBillTo(Address)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.GroupallPackage#getAddressGroup_BillTo()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='billTo'"
 	 * @generated
 	 */

@@ -2,15 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DetachtestFactoryImpl.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: DetachtestFactoryImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.teneo.samples.emf.detach.detachtest.*;
 
 /**
@@ -20,6 +22,25 @@ import org.eclipse.emf.teneo.samples.emf.detach.detachtest.*;
  * @generated
  */
 public class DetachtestFactoryImpl extends EFactoryImpl implements DetachtestFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static DetachtestFactory init() {
+		try {
+			DetachtestFactory theDetachtestFactory = (DetachtestFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/detach/detachtest"); 
+			if (theDetachtestFactory != null) {
+				return theDetachtestFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new DetachtestFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -35,6 +56,7 @@ public class DetachtestFactoryImpl extends EFactoryImpl implements DetachtestFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case DetachtestPackage.TEST_A: return createTestA();
@@ -90,6 +112,7 @@ public class DetachtestFactoryImpl extends EFactoryImpl implements DetachtestFac
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static DetachtestPackage getPackage() {
 		return DetachtestPackage.eINSTANCE;
 	}

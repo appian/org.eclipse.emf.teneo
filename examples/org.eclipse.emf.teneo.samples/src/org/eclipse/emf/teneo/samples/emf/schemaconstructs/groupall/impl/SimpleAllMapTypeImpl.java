@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleAllMapTypeImpl.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: SimpleAllMapTypeImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl;
 
@@ -94,8 +94,9 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return GroupallPackage.eINSTANCE.getSimpleAllMapType();
+		return GroupallPackage.Literals.SIMPLE_ALL_MAP_TYPE;
 	}
 
 	/**
@@ -116,7 +117,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * @generated
 	 */
 	public String getAaa() {
-		return (String)getAllMap().get(GroupallPackage.eINSTANCE.getSimpleAllMapType_Aaa(), true);
+		return (String)getAllMap().get(GroupallPackage.Literals.SIMPLE_ALL_MAP_TYPE__AAA, true);
 	}
 
 	/**
@@ -125,7 +126,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * @generated
 	 */
 	public void setAaa(String newAaa) {
-		((FeatureMap.Internal)getAllMap()).set(GroupallPackage.eINSTANCE.getSimpleAllMapType_Aaa(), newAaa);
+		((FeatureMap.Internal)getAllMap()).set(GroupallPackage.Literals.SIMPLE_ALL_MAP_TYPE__AAA, newAaa);
 	}
 
 	/**
@@ -134,7 +135,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * @generated
 	 */
 	public String getBbb() {
-		return (String)getAllMap().get(GroupallPackage.eINSTANCE.getSimpleAllMapType_Bbb(), true);
+		return (String)getAllMap().get(GroupallPackage.Literals.SIMPLE_ALL_MAP_TYPE__BBB, true);
 	}
 
 	/**
@@ -143,7 +144,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * @generated
 	 */
 	public void setBbb(String newBbb) {
-		((FeatureMap.Internal)getAllMap()).set(GroupallPackage.eINSTANCE.getSimpleAllMapType_Bbb(), newBbb);
+		((FeatureMap.Internal)getAllMap()).set(GroupallPackage.Literals.SIMPLE_ALL_MAP_TYPE__BBB, newBbb);
 	}
 
 	/**
@@ -152,7 +153,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * @generated
 	 */
 	public String getCcc() {
-		return (String)getAllMap().get(GroupallPackage.eINSTANCE.getSimpleAllMapType_Ccc(), true);
+		return (String)getAllMap().get(GroupallPackage.Literals.SIMPLE_ALL_MAP_TYPE__CCC, true);
 	}
 
 	/**
@@ -161,7 +162,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * @generated
 	 */
 	public void setCcc(String newCcc) {
-		((FeatureMap.Internal)getAllMap()).set(GroupallPackage.eINSTANCE.getSimpleAllMapType_Ccc(), newCcc);
+		((FeatureMap.Internal)getAllMap()).set(GroupallPackage.Literals.SIMPLE_ALL_MAP_TYPE__CCC, newCcc);
 	}
 
 	/**
@@ -169,27 +170,26 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case GroupallPackage.SIMPLE_ALL_MAP_TYPE__ALL_MAP:
-					return ((InternalEList)getAllMap()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__ALL_MAP:
-				return getAllMap();
+				return ((InternalEList<?>)getAllMap()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__ALL_MAP:
+				if (coreType) return getAllMap();
+				return ((FeatureMap.Internal)getAllMap()).getWrapper();
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__AAA:
 				return getAaa();
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__BBB:
@@ -197,7 +197,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__CCC:
 				return getCcc();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -205,11 +205,11 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__ALL_MAP:
-				getAllMap().clear();
-				getAllMap().addAll((Collection)newValue);
+				((FeatureMap.Internal)getAllMap()).set(newValue);
 				return;
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__AAA:
 				setAaa((String)newValue);
@@ -221,7 +221,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 				setCcc((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -229,8 +229,9 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__ALL_MAP:
 				getAllMap().clear();
 				return;
@@ -244,7 +245,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 				setCcc(CCC_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -252,8 +253,9 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__ALL_MAP:
 				return allMap != null && !allMap.isEmpty();
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__AAA:
@@ -263,7 +265,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 			case GroupallPackage.SIMPLE_ALL_MAP_TYPE__CCC:
 				return CCC_EDEFAULT == null ? getCcc() != null : !CCC_EDEFAULT.equals(getCcc());
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -271,6 +273,7 @@ public class SimpleAllMapTypeImpl extends EObjectImpl implements SimpleAllMapTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

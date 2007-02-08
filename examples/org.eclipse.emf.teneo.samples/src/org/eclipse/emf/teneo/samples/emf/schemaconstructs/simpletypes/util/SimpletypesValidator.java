@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesValidator.java,v 1.2 2006/09/22 13:58:34 mtaal Exp $
+ * $Id: SimpletypesValidator.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.util;
 
@@ -86,6 +86,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EPackage getEPackage() {
 	  return SimpletypesPackage.eINSTANCE;
 	}
@@ -96,7 +97,8 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map context) {
+	@Override
+	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
 			case SimpletypesPackage.SIMPLE_LIST:
 				return validateSimpleList((SimpleList)value, diagnostics, context);
@@ -142,7 +144,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleList(SimpleList simpleList, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleList(SimpleList simpleList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simpleList, diagnostics, context);
 	}
 
@@ -151,7 +153,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleType(SimpleType simpleType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleType(SimpleType simpleType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simpleType, diagnostics, context);
 	}
 
@@ -160,7 +162,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleTypeObject(SimpleTypeObject simpleTypeObject, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleTypeObject(SimpleTypeObject simpleTypeObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simpleTypeObject, diagnostics, context);
 	}
 
@@ -169,7 +171,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleEnum(SimpleEnum simpleEnum, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleEnum(SimpleEnum simpleEnum, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -178,7 +180,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBool(Boolean bool, DiagnosticChain diagnostics, Map context) {
+	public boolean validateBool(Boolean bool, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -187,7 +189,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateByte(Byte byte_, DiagnosticChain diagnostics, Map context) {
+	public boolean validateByte(Byte byte_, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -196,7 +198,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateByteArray(byte[] byteArray, DiagnosticChain diagnostics, Map context) {
+	public boolean validateByteArray(byte[] byteArray, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -205,7 +207,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDate(Date date, DiagnosticChain diagnostics, Map context) {
+	public boolean validateDate(Date date, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -214,7 +216,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDouble(Double double_, DiagnosticChain diagnostics, Map context) {
+	public boolean validateDouble(Double double_, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -223,7 +225,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDoubleArray(double[] doubleArray, DiagnosticChain diagnostics, Map context) {
+	public boolean validateDoubleArray(double[] doubleArray, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -232,7 +234,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFloat(Float float_, DiagnosticChain diagnostics, Map context) {
+	public boolean validateFloat(Float float_, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -241,7 +243,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInt(Integer int_, DiagnosticChain diagnostics, Map context) {
+	public boolean validateInt(Integer int_, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -250,7 +252,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateIntArray(int[] intArray, DiagnosticChain diagnostics, Map context) {
+	public boolean validateIntArray(int[] intArray, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -259,7 +261,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateLimitedString(String limitedString, DiagnosticChain diagnostics, Map context) {
+	public boolean validateLimitedString(String limitedString, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateLimitedString_MinLength(limitedString, diagnostics, context);
 		if (result || diagnostics != null) result &= validateLimitedString_MaxLength(limitedString, diagnostics, context);
 		return result;
@@ -271,7 +273,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateLimitedString_MinLength(String limitedString, DiagnosticChain diagnostics, Map context) {
+	public boolean validateLimitedString_MinLength(String limitedString, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = limitedString.length();  
 		boolean result = length >= 10;
 		if (!result && diagnostics != null) 
@@ -285,7 +287,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateLimitedString_MaxLength(String limitedString, DiagnosticChain diagnostics, Map context) {
+	public boolean validateLimitedString_MaxLength(String limitedString, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int length = limitedString.length();  
 		boolean result = length <= 10;
 		if (!result && diagnostics != null) 
@@ -298,7 +300,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateLong(Long long_, DiagnosticChain diagnostics, Map context) {
+	public boolean validateLong(Long long_, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -307,7 +309,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSimpleEnumObject(SimpleEnum simpleEnumObject, DiagnosticChain diagnostics, Map context) {
+	public boolean validateSimpleEnumObject(SimpleEnum simpleEnumObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -316,7 +318,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStringArray(String[] stringArray, DiagnosticChain diagnostics, Map context) {
+	public boolean validateStringArray(String[] stringArray, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

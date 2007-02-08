@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SchoollibraryFactory.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: SchoollibraryFactory.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary;
 
@@ -23,7 +23,7 @@ public interface SchoollibraryFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	SchoollibraryFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoollibraryFactoryImpl();
+	SchoollibraryFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoollibraryFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Asset</em>'.

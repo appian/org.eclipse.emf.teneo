@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductTypeImpl.java,v 1.4 2006/11/23 06:12:14 mtaal Exp $
+ * $Id: ProductTypeImpl.java,v 1.5 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.impl;
 
@@ -168,7 +168,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList anyList = null;
+	protected EList<EObject> anyList = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,6 +184,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ProductPackage.Literals.PRODUCT_TYPE;
 	}
@@ -386,9 +387,9 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAnyList() {
+	public EList<EObject> getAnyList() {
 		if (anyList == null) {
-			anyList = new EObjectContainmentEList(EObject.class, this, ProductPackage.PRODUCT_TYPE__ANY_LIST);
+			anyList = new EObjectContainmentEList<EObject>(EObject.class, this, ProductPackage.PRODUCT_TYPE__ANY_LIST);
 		}
 		return anyList;
 	}
@@ -398,10 +399,11 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ProductPackage.PRODUCT_TYPE__ANY_LIST:
-				return ((InternalEList)getAnyList()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getAnyList()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -411,6 +413,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ProductPackage.PRODUCT_TYPE__CODE:
@@ -437,6 +440,8 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ProductPackage.PRODUCT_TYPE__CODE:
@@ -452,14 +457,14 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 				setPrice(((Double)newValue).doubleValue());
 				return;
 			case ProductPackage.PRODUCT_TYPE__CREATED_ON:
-				setCreatedOn((Object)newValue);
+				setCreatedOn(newValue);
 				return;
 			case ProductPackage.PRODUCT_TYPE__ANY_ONE:
 				setAnyOne((EObject)newValue);
 				return;
 			case ProductPackage.PRODUCT_TYPE__ANY_LIST:
 				getAnyList().clear();
-				getAnyList().addAll((Collection)newValue);
+				getAnyList().addAll((Collection<? extends EObject>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -470,6 +475,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ProductPackage.PRODUCT_TYPE__CODE:
@@ -502,6 +508,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ProductPackage.PRODUCT_TYPE__CODE:
@@ -527,6 +534,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

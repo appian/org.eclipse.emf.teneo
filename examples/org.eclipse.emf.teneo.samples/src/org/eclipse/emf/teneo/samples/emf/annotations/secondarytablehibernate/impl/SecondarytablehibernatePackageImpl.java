@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablehibernatePackageImpl.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
+ * $Id: SecondarytablehibernatePackageImpl.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.impl;
 
@@ -208,6 +208,10 @@ public class SecondarytablehibernatePackageImpl extends EPackageImpl implements 
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

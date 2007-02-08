@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EcoreattrsAdapterFactory.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: EcoreattrsAdapterFactory.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.util;
 
@@ -52,6 +52,7 @@ public class EcoreattrsAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,21 +69,26 @@ public class EcoreattrsAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EcoreattrsSwitch modelSwitch =
-		new EcoreattrsSwitch() {
-			public Object caseElement(Element object) {
+	protected EcoreattrsSwitch<Adapter> modelSwitch =
+		new EcoreattrsSwitch<Adapter>() {
+			@Override
+			public Adapter caseElement(Element object) {
 				return createElementAdapter();
 			}
-			public Object caseFeature(Feature object) {
+			@Override
+			public Adapter caseFeature(Feature object) {
 				return createFeatureAdapter();
 			}
-			public Object caseMixed(Mixed object) {
+			@Override
+			public Adapter caseMixed(Mixed object) {
 				return createMixedAdapter();
 			}
-			public Object caseNameList(NameList object) {
+			@Override
+			public Adapter caseNameList(NameList object) {
 				return createNameListAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -95,8 +101,9 @@ public class EcoreattrsAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

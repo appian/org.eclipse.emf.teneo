@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AccountingSwitch.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: AccountingSwitch.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.accounting.*;
  * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountingPackage
  * @generated
  */
-public class AccountingSwitch {
+public class AccountingSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class AccountingSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class AccountingSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,67 +85,67 @@ public class AccountingSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case AccountingPackage.ACCOUNT: {
 				Account account = (Account)theEObject;
-				Object result = caseAccount(account);
+				T result = caseAccount(account);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AccountingPackage.ACCOUNT_GROUP: {
 				AccountGroup accountGroup = (AccountGroup)theEObject;
-				Object result = caseAccountGroup(accountGroup);
+				T result = caseAccountGroup(accountGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AccountingPackage.ACCOUNTING: {
 				Accounting accounting = (Accounting)theEObject;
-				Object result = caseAccounting(accounting);
+				T result = caseAccounting(accounting);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AccountingPackage.BALANCE_ACCOUNT: {
 				BalanceAccount balanceAccount = (BalanceAccount)theEObject;
-				Object result = caseBalanceAccount(balanceAccount);
+				T result = caseBalanceAccount(balanceAccount);
 				if (result == null) result = caseAccount(balanceAccount);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AccountingPackage.JOURNAL_GROUP: {
 				JournalGroup journalGroup = (JournalGroup)theEObject;
-				Object result = caseJournalGroup(journalGroup);
+				T result = caseJournalGroup(journalGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AccountingPackage.JOURNAL_STATEMENT: {
 				JournalStatement journalStatement = (JournalStatement)theEObject;
-				Object result = caseJournalStatement(journalStatement);
+				T result = caseJournalStatement(journalStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AccountingPackage.PL_ACCOUNT: {
 				PLAccount plAccount = (PLAccount)theEObject;
-				Object result = casePLAccount(plAccount);
+				T result = casePLAccount(plAccount);
 				if (result == null) result = caseAccount(plAccount);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AccountingPackage.REPORT: {
 				Report report = (Report)theEObject;
-				Object result = caseReport(report);
+				T result = caseReport(report);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AccountingPackage.REPORT_GROUP: {
 				ReportGroup reportGroup = (ReportGroup)theEObject;
-				Object result = caseReportGroup(reportGroup);
+				T result = caseReportGroup(reportGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AccountingPackage.VAT: {
 				Vat vat = (Vat)theEObject;
-				Object result = caseVat(vat);
+				T result = caseVat(vat);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -164,7 +164,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAccount(Account object) {
+	public T caseAccount(Account object) {
 		return null;
 	}
 
@@ -179,7 +179,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAccountGroup(AccountGroup object) {
+	public T caseAccountGroup(AccountGroup object) {
 		return null;
 	}
 
@@ -194,7 +194,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAccounting(Accounting object) {
+	public T caseAccounting(Accounting object) {
 		return null;
 	}
 
@@ -209,7 +209,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBalanceAccount(BalanceAccount object) {
+	public T caseBalanceAccount(BalanceAccount object) {
 		return null;
 	}
 
@@ -224,7 +224,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseJournalGroup(JournalGroup object) {
+	public T caseJournalGroup(JournalGroup object) {
 		return null;
 	}
 
@@ -239,7 +239,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseJournalStatement(JournalStatement object) {
+	public T caseJournalStatement(JournalStatement object) {
 		return null;
 	}
 
@@ -254,7 +254,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePLAccount(PLAccount object) {
+	public T casePLAccount(PLAccount object) {
 		return null;
 	}
 
@@ -269,7 +269,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReport(Report object) {
+	public T caseReport(Report object) {
 		return null;
 	}
 
@@ -284,7 +284,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReportGroup(ReportGroup object) {
+	public T caseReportGroup(ReportGroup object) {
 		return null;
 	}
 
@@ -299,7 +299,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseVat(Vat object) {
+	public T caseVat(Vat object) {
 		return null;
 	}
 
@@ -314,7 +314,7 @@ public class AccountingSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

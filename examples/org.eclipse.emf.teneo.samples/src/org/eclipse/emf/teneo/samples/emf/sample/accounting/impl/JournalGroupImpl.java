@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JournalGroupImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: JournalGroupImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting.impl;
 
@@ -71,7 +71,7 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList journalGroups = null;
+	protected EList<JournalGroup> journalGroups = null;
 
 	/**
 	 * The cached value of the '{@link #getJournalStatements() <em>Journal Statements</em>}' containment reference list.
@@ -81,7 +81,7 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList journalStatements = null;
+	protected EList<JournalStatement> journalStatements = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,8 +97,9 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return AccountingPackage.eINSTANCE.getJournalGroup();
+		return AccountingPackage.Literals.JOURNAL_GROUP;
 	}
 
 	/**
@@ -127,9 +128,9 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getJournalGroups() {
+	public EList<JournalGroup> getJournalGroups() {
 		if (journalGroups == null) {
-			journalGroups = new EObjectContainmentEList(JournalGroup.class, this, AccountingPackage.JOURNAL_GROUP__JOURNAL_GROUPS);
+			journalGroups = new EObjectContainmentEList<JournalGroup>(JournalGroup.class, this, AccountingPackage.JOURNAL_GROUP__JOURNAL_GROUPS);
 		}
 		return journalGroups;
 	}
@@ -139,9 +140,9 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getJournalStatements() {
+	public EList<JournalStatement> getJournalStatements() {
 		if (journalStatements == null) {
-			journalStatements = new EObjectContainmentEList(JournalStatement.class, this, AccountingPackage.JOURNAL_GROUP__JOURNAL_STATEMENTS);
+			journalStatements = new EObjectContainmentEList<JournalStatement>(JournalStatement.class, this, AccountingPackage.JOURNAL_GROUP__JOURNAL_STATEMENTS);
 		}
 		return journalStatements;
 	}
@@ -151,18 +152,15 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case AccountingPackage.JOURNAL_GROUP__JOURNAL_GROUPS:
-					return ((InternalEList)getJournalGroups()).basicRemove(otherEnd, msgs);
-				case AccountingPackage.JOURNAL_GROUP__JOURNAL_STATEMENTS:
-					return ((InternalEList)getJournalStatements()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AccountingPackage.JOURNAL_GROUP__JOURNAL_GROUPS:
+				return ((InternalEList<?>)getJournalGroups()).basicRemove(otherEnd, msgs);
+			case AccountingPackage.JOURNAL_GROUP__JOURNAL_STATEMENTS:
+				return ((InternalEList<?>)getJournalStatements()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -170,8 +168,9 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case AccountingPackage.JOURNAL_GROUP__NAME:
 				return getName();
 			case AccountingPackage.JOURNAL_GROUP__JOURNAL_GROUPS:
@@ -179,7 +178,7 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 			case AccountingPackage.JOURNAL_GROUP__JOURNAL_STATEMENTS:
 				return getJournalStatements();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -187,21 +186,23 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case AccountingPackage.JOURNAL_GROUP__NAME:
 				setName((String)newValue);
 				return;
 			case AccountingPackage.JOURNAL_GROUP__JOURNAL_GROUPS:
 				getJournalGroups().clear();
-				getJournalGroups().addAll((Collection)newValue);
+				getJournalGroups().addAll((Collection<? extends JournalGroup>)newValue);
 				return;
 			case AccountingPackage.JOURNAL_GROUP__JOURNAL_STATEMENTS:
 				getJournalStatements().clear();
-				getJournalStatements().addAll((Collection)newValue);
+				getJournalStatements().addAll((Collection<? extends JournalStatement>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -209,8 +210,9 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.JOURNAL_GROUP__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -221,7 +223,7 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 				getJournalStatements().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -229,8 +231,9 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.JOURNAL_GROUP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case AccountingPackage.JOURNAL_GROUP__JOURNAL_GROUPS:
@@ -238,7 +241,7 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 			case AccountingPackage.JOURNAL_GROUP__JOURNAL_STATEMENTS:
 				return journalStatements != null && !journalStatements.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -246,6 +249,7 @@ public class JournalGroupImpl extends EObjectImpl implements JournalGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

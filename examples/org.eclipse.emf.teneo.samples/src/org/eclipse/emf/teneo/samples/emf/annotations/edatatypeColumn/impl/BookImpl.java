@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.1 2006/09/06 21:58:59 mtaal Exp $
+ * $Id: BookImpl.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.edatatypeColumn.impl;
 
@@ -138,6 +138,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return EdatatypeColumnPackage.Literals.BOOK;
 	}
@@ -256,6 +257,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EdatatypeColumnPackage.BOOK__TITLE:
@@ -275,6 +277,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EdatatypeColumnPackage.BOOK__TITLE:
@@ -298,6 +301,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case EdatatypeColumnPackage.BOOK__TITLE:
@@ -321,6 +325,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EdatatypeColumnPackage.BOOK__TITLE:
@@ -340,6 +345,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

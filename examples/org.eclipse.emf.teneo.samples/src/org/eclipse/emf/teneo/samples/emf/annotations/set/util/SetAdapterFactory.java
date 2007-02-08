@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetAdapterFactory.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: SetAdapterFactory.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.util;
 
@@ -24,6 +24,12 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.*;
  * @generated
  */
 public class SetAdapterFactory extends AdapterFactoryImpl {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
@@ -52,6 +58,7 @@ public class SetAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +75,22 @@ public class SetAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SetSwitch modelSwitch =
-		new SetSwitch() {
-			public Object caseContainedItem(ContainedItem object) {
+	protected SetSwitch<Adapter> modelSwitch =
+		new SetSwitch<Adapter>() {
+			@Override
+			public Adapter caseContainedItem(ContainedItem object) {
 				return createContainedItemAdapter();
 			}
-			public Object caseItem(Item object) {
+			@Override
+			public Adapter caseItem(Item object) {
 				return createItemAdapter();
 			}
-			public Object caseItemList(ItemList object) {
+			@Override
+			public Adapter caseItemList(ItemList object) {
 				return createItemListAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +103,9 @@ public class SetAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

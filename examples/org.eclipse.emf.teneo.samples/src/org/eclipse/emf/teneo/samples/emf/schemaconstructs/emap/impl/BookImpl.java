@@ -2,11 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.1 2006/09/28 20:06:04 mtaal Exp $
+ * $Id: BookImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl;
-
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -25,6 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
 
 /**
  * <!-- begin-user-doc -->
@@ -71,7 +70,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap writers = null;
+	protected EMap<String, Writer> writers = null;
 
 	/**
 	 * The cached value of the '{@link #getKeyWords() <em>Key Words</em>}' map.
@@ -81,7 +80,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap keyWords = null;
+	protected EMap<String, String> keyWords = null;
 
 	/**
 	 * The cached value of the '{@link #getCityByWriter() <em>City By Writer</em>}' map.
@@ -91,7 +90,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap cityByWriter = null;
+	protected EMap<Writer, String> cityByWriter = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,6 +106,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return EmapPackage.Literals.BOOK;
 	}
@@ -137,11 +137,11 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map getWriters() {
+	public EMap<String, Writer> getWriters() {
 		if (writers == null) {
-			writers = new EcoreEMap(EmapPackage.Literals.STRING_TO_WRITER_MAP_ENTRY, StringToWriterMapEntryImpl.class, this, EmapPackage.BOOK__WRITERS);
+			writers = new EcoreEMap<String,Writer>(EmapPackage.Literals.STRING_TO_WRITER_MAP_ENTRY, StringToWriterMapEntryImpl.class, this, EmapPackage.BOOK__WRITERS);
 		}
-		return writers.map();
+		return writers;
 	}
 
 	/**
@@ -149,11 +149,11 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map getKeyWords() {
+	public EMap<String, String> getKeyWords() {
 		if (keyWords == null) {
-			keyWords = new EcoreEMap(EmapPackage.Literals.STRING_TO_STRING_MAP_ENTRY, StringToStringMapEntryImpl.class, this, EmapPackage.BOOK__KEY_WORDS);
+			keyWords = new EcoreEMap<String,String>(EmapPackage.Literals.STRING_TO_STRING_MAP_ENTRY, StringToStringMapEntryImpl.class, this, EmapPackage.BOOK__KEY_WORDS);
 		}
-		return keyWords.map();
+		return keyWords;
 	}
 
 	/**
@@ -161,11 +161,11 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map getCityByWriter() {
+	public EMap<Writer, String> getCityByWriter() {
 		if (cityByWriter == null) {
-			cityByWriter = new EcoreEMap(EmapPackage.Literals.WRITER_TO_STRING_MAP_ENTRY, WriterToStringMapEntryImpl.class, this, EmapPackage.BOOK__CITY_BY_WRITER);
+			cityByWriter = new EcoreEMap<Writer,String>(EmapPackage.Literals.WRITER_TO_STRING_MAP_ENTRY, WriterToStringMapEntryImpl.class, this, EmapPackage.BOOK__CITY_BY_WRITER);
 		}
-		return cityByWriter.map();
+		return cityByWriter;
 	}
 
 	/**
@@ -173,14 +173,15 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EmapPackage.BOOK__WRITERS:
-				return ((InternalEList)((EMap.InternalMapView)getWriters()).eMap()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getWriters()).basicRemove(otherEnd, msgs);
 			case EmapPackage.BOOK__KEY_WORDS:
-				return ((InternalEList)((EMap.InternalMapView)getKeyWords()).eMap()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getKeyWords()).basicRemove(otherEnd, msgs);
 			case EmapPackage.BOOK__CITY_BY_WRITER:
-				return ((InternalEList)((EMap.InternalMapView)getCityByWriter()).eMap()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getCityByWriter()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -190,19 +191,20 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EmapPackage.BOOK__TITLE:
 				return getTitle();
 			case EmapPackage.BOOK__WRITERS:
-				if (coreType) return ((EMap.InternalMapView)getWriters()).eMap();
-				else return getWriters();
+				if (coreType) return getWriters();
+				else return getWriters().map();
 			case EmapPackage.BOOK__KEY_WORDS:
-				if (coreType) return ((EMap.InternalMapView)getKeyWords()).eMap();
-				else return getKeyWords();
+				if (coreType) return getKeyWords();
+				else return getKeyWords().map();
 			case EmapPackage.BOOK__CITY_BY_WRITER:
-				if (coreType) return ((EMap.InternalMapView)getCityByWriter()).eMap();
-				else return getCityByWriter();
+				if (coreType) return getCityByWriter();
+				else return getCityByWriter().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -212,19 +214,20 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EmapPackage.BOOK__TITLE:
 				setTitle((String)newValue);
 				return;
 			case EmapPackage.BOOK__WRITERS:
-				((EStructuralFeature.Setting)((EMap.InternalMapView)getWriters()).eMap()).set(newValue);
+				((EStructuralFeature.Setting)getWriters()).set(newValue);
 				return;
 			case EmapPackage.BOOK__KEY_WORDS:
-				((EStructuralFeature.Setting)((EMap.InternalMapView)getKeyWords()).eMap()).set(newValue);
+				((EStructuralFeature.Setting)getKeyWords()).set(newValue);
 				return;
 			case EmapPackage.BOOK__CITY_BY_WRITER:
-				((EStructuralFeature.Setting)((EMap.InternalMapView)getCityByWriter()).eMap()).set(newValue);
+				((EStructuralFeature.Setting)getCityByWriter()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -235,6 +238,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case EmapPackage.BOOK__TITLE:
@@ -258,6 +262,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EmapPackage.BOOK__TITLE:
@@ -277,6 +282,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

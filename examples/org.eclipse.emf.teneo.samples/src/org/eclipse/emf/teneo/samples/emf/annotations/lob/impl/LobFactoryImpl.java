@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LobFactoryImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: LobFactoryImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lob.impl;
 
@@ -57,6 +57,7 @@ public class LobFactoryImpl extends EFactoryImpl implements LobFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case LobPackage.PERSON: return createPerson();
@@ -90,6 +91,7 @@ public class LobFactoryImpl extends EFactoryImpl implements LobFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static LobPackage getPackage() {
 		return LobPackage.eINSTANCE;
 	}

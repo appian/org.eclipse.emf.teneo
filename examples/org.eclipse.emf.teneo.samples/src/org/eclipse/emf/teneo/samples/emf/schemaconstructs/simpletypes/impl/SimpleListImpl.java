@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleListImpl.java,v 1.3 2006/09/22 13:58:33 mtaal Exp $
+ * $Id: SimpleListImpl.java,v 1.4 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -82,7 +82,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList boo = null;
+	protected EList<Boolean> boo = null;
 
 	/**
 	 * The cached value of the '{@link #getByt() <em>Byt</em>}' attribute list.
@@ -92,7 +92,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList byt = null;
+	protected EList<Byte> byt = null;
 
 	/**
 	 * The cached value of the '{@link #getDoubl() <em>Doubl</em>}' attribute list.
@@ -102,7 +102,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList doubl = null;
+	protected EList<Double> doubl = null;
 
 	/**
 	 * The cached value of the '{@link #getFloa() <em>Floa</em>}' attribute list.
@@ -112,7 +112,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList floa = null;
+	protected EList<Float> floa = null;
 
 	/**
 	 * The cached value of the '{@link #getInte() <em>Inte</em>}' attribute list.
@@ -122,7 +122,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList inte = null;
+	protected EList<Integer> inte = null;
 
 	/**
 	 * The cached value of the '{@link #getLong() <em>Long</em>}' attribute list.
@@ -132,7 +132,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList long_ = null;
+	protected EList<Long> long_ = null;
 
 	/**
 	 * The cached value of the '{@link #getShor() <em>Shor</em>}' attribute list.
@@ -142,7 +142,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList shor = null;
+	protected EList<Short> shor = null;
 
 	/**
 	 * The cached value of the '{@link #getDat() <em>Dat</em>}' attribute list.
@@ -152,7 +152,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList dat = null;
+	protected EList<Date> dat = null;
 
 	/**
 	 * The cached value of the '{@link #getLimitedstring() <em>Limitedstring</em>}' attribute list.
@@ -162,7 +162,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList limitedstring = null;
+	protected EList<String> limitedstring = null;
 
 	/**
 	 * The default value of the '{@link #getIntArray() <em>Int Array</em>}' attribute.
@@ -258,6 +258,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return SimpletypesPackage.Literals.SIMPLE_LIST;
 	}
@@ -313,9 +314,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBoo() {
+	public EList<Boolean> getBoo() {
 		if (boo == null) {
-			boo = new EDataTypeEList(Boolean.class, this, SimpletypesPackage.SIMPLE_LIST__BOO);
+			boo = new EDataTypeEList<Boolean>(Boolean.class, this, SimpletypesPackage.SIMPLE_LIST__BOO);
 		}
 		return boo;
 	}
@@ -325,9 +326,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getByt() {
+	public EList<Byte> getByt() {
 		if (byt == null) {
-			byt = new EDataTypeEList(Byte.class, this, SimpletypesPackage.SIMPLE_LIST__BYT);
+			byt = new EDataTypeEList<Byte>(Byte.class, this, SimpletypesPackage.SIMPLE_LIST__BYT);
 		}
 		return byt;
 	}
@@ -337,9 +338,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDoubl() {
+	public EList<Double> getDoubl() {
 		if (doubl == null) {
-			doubl = new EDataTypeEList(Double.class, this, SimpletypesPackage.SIMPLE_LIST__DOUBL);
+			doubl = new EDataTypeEList<Double>(Double.class, this, SimpletypesPackage.SIMPLE_LIST__DOUBL);
 		}
 		return doubl;
 	}
@@ -349,9 +350,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFloa() {
+	public EList<Float> getFloa() {
 		if (floa == null) {
-			floa = new EDataTypeEList(Float.class, this, SimpletypesPackage.SIMPLE_LIST__FLOA);
+			floa = new EDataTypeEList<Float>(Float.class, this, SimpletypesPackage.SIMPLE_LIST__FLOA);
 		}
 		return floa;
 	}
@@ -361,9 +362,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInte() {
+	public EList<Integer> getInte() {
 		if (inte == null) {
-			inte = new EDataTypeEList(Integer.class, this, SimpletypesPackage.SIMPLE_LIST__INTE);
+			inte = new EDataTypeEList<Integer>(Integer.class, this, SimpletypesPackage.SIMPLE_LIST__INTE);
 		}
 		return inte;
 	}
@@ -373,9 +374,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLong() {
+	public EList<Long> getLong() {
 		if (long_ == null) {
-			long_ = new EDataTypeEList(Long.class, this, SimpletypesPackage.SIMPLE_LIST__LONG);
+			long_ = new EDataTypeEList<Long>(Long.class, this, SimpletypesPackage.SIMPLE_LIST__LONG);
 		}
 		return long_;
 	}
@@ -385,9 +386,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getShor() {
+	public EList<Short> getShor() {
 		if (shor == null) {
-			shor = new EDataTypeEList(Short.class, this, SimpletypesPackage.SIMPLE_LIST__SHOR);
+			shor = new EDataTypeEList<Short>(Short.class, this, SimpletypesPackage.SIMPLE_LIST__SHOR);
 		}
 		return shor;
 	}
@@ -397,9 +398,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDat() {
+	public EList<Date> getDat() {
 		if (dat == null) {
-			dat = new EDataTypeEList(Date.class, this, SimpletypesPackage.SIMPLE_LIST__DAT);
+			dat = new EDataTypeEList<Date>(Date.class, this, SimpletypesPackage.SIMPLE_LIST__DAT);
 		}
 		return dat;
 	}
@@ -409,9 +410,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLimitedstring() {
+	public EList<String> getLimitedstring() {
 		if (limitedstring == null) {
-			limitedstring = new EDataTypeEList(String.class, this, SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING);
+			limitedstring = new EDataTypeEList<String>(String.class, this, SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING);
 		}
 		return limitedstring;
 	}
@@ -505,6 +506,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_LIST__CODE:
@@ -544,6 +546,8 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_LIST__CODE:
@@ -551,39 +555,39 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__BOO:
 				getBoo().clear();
-				getBoo().addAll((Collection)newValue);
+				getBoo().addAll((Collection<? extends Boolean>)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__BYT:
 				getByt().clear();
-				getByt().addAll((Collection)newValue);
+				getByt().addAll((Collection<? extends Byte>)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__DOUBL:
 				getDoubl().clear();
-				getDoubl().addAll((Collection)newValue);
+				getDoubl().addAll((Collection<? extends Double>)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__FLOA:
 				getFloa().clear();
-				getFloa().addAll((Collection)newValue);
+				getFloa().addAll((Collection<? extends Float>)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__INTE:
 				getInte().clear();
-				getInte().addAll((Collection)newValue);
+				getInte().addAll((Collection<? extends Integer>)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__LONG:
 				getLong().clear();
-				getLong().addAll((Collection)newValue);
+				getLong().addAll((Collection<? extends Long>)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__SHOR:
 				getShor().clear();
-				getShor().addAll((Collection)newValue);
+				getShor().addAll((Collection<? extends Short>)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__DAT:
 				getDat().clear();
-				getDat().addAll((Collection)newValue);
+				getDat().addAll((Collection<? extends Date>)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING:
 				getLimitedstring().clear();
-				getLimitedstring().addAll((Collection)newValue);
+				getLimitedstring().addAll((Collection<? extends String>)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__INT_ARRAY:
 				setIntArray((int[])newValue);
@@ -606,6 +610,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_LIST__CODE:
@@ -659,6 +664,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_LIST__CODE:
@@ -698,6 +704,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

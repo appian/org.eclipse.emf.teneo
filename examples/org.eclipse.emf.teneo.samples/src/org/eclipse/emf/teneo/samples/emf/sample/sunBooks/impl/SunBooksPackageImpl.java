@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SunBooksPackageImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: SunBooksPackageImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl;
 
@@ -164,7 +164,7 @@ public class SunBooksPackageImpl extends EPackageImpl implements SunBooksPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		XMLTypePackageImpl.init();
+		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theSunBooksPackage.createPackageContents();
@@ -521,7 +521,11 @@ public class SunBooksPackageImpl extends EPackageImpl implements SunBooksPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XMLTypePackageImpl theXMLTypePackage = (XMLTypePackageImpl)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

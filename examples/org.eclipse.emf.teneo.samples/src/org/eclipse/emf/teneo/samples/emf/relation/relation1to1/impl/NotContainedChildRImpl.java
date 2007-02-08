@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NotContainedChildRImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: NotContainedChildRImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl;
 
@@ -62,8 +62,9 @@ public class NotContainedChildRImpl extends EObjectImpl implements NotContainedC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return Relation1to1Package.eINSTANCE.getNotContainedChildR();
+		return Relation1to1Package.Literals.NOT_CONTAINED_CHILD_R;
 	}
 
 	/**
@@ -92,12 +93,13 @@ public class NotContainedChildRImpl extends EObjectImpl implements NotContainedC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case Relation1to1Package.NOT_CONTAINED_CHILD_R__NAME:
 				return getName();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -105,13 +107,14 @@ public class NotContainedChildRImpl extends EObjectImpl implements NotContainedC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case Relation1to1Package.NOT_CONTAINED_CHILD_R__NAME:
 				setName((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -119,13 +122,14 @@ public class NotContainedChildRImpl extends EObjectImpl implements NotContainedC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case Relation1to1Package.NOT_CONTAINED_CHILD_R__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -133,12 +137,13 @@ public class NotContainedChildRImpl extends EObjectImpl implements NotContainedC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case Relation1to1Package.NOT_CONTAINED_CHILD_R__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -146,6 +151,7 @@ public class NotContainedChildRImpl extends EObjectImpl implements NotContainedC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

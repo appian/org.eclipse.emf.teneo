@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmapSwitch.java,v 1.1 2006/09/28 20:06:04 mtaal Exp $
+ * $Id: EmapSwitch.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.util;
 
@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.*;
  * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage
  * @generated
  */
-public class EmapSwitch {
+public class EmapSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -55,7 +55,7 @@ public class EmapSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -66,16 +66,16 @@ public class EmapSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -86,35 +86,35 @@ public class EmapSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case EmapPackage.BOOK: {
 				Book book = (Book)theEObject;
-				Object result = caseBook(book);
+				T result = caseBook(book);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EmapPackage.STRING_TO_STRING_MAP_ENTRY: {
-				Map.Entry stringToStringMapEntry = (Map.Entry)theEObject;
-				Object result = caseStringToStringMapEntry(stringToStringMapEntry);
+				@SuppressWarnings("unchecked") Map.Entry<String, String> stringToStringMapEntry = (Map.Entry<String, String>)theEObject;
+				T result = caseStringToStringMapEntry(stringToStringMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EmapPackage.STRING_TO_WRITER_MAP_ENTRY: {
-				Map.Entry stringToWriterMapEntry = (Map.Entry)theEObject;
-				Object result = caseStringToWriterMapEntry(stringToWriterMapEntry);
+				@SuppressWarnings("unchecked") Map.Entry<String, Writer> stringToWriterMapEntry = (Map.Entry<String, Writer>)theEObject;
+				T result = caseStringToWriterMapEntry(stringToWriterMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EmapPackage.WRITER: {
 				Writer writer = (Writer)theEObject;
-				Object result = caseWriter(writer);
+				T result = caseWriter(writer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EmapPackage.WRITER_TO_STRING_MAP_ENTRY: {
-				Map.Entry writerToStringMapEntry = (Map.Entry)theEObject;
-				Object result = caseWriterToStringMapEntry(writerToStringMapEntry);
+				@SuppressWarnings("unchecked") Map.Entry<Writer, String> writerToStringMapEntry = (Map.Entry<Writer, String>)theEObject;
+				T result = caseWriterToStringMapEntry(writerToStringMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -133,7 +133,7 @@ public class EmapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBook(Book object) {
+	public T caseBook(Book object) {
 		return null;
 	}
 
@@ -148,7 +148,7 @@ public class EmapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStringToStringMapEntry(Map.Entry object) {
+	public T caseStringToStringMapEntry(Map.Entry<String, String> object) {
 		return null;
 	}
 
@@ -163,7 +163,7 @@ public class EmapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStringToWriterMapEntry(Map.Entry object) {
+	public T caseStringToWriterMapEntry(Map.Entry<String, Writer> object) {
 		return null;
 	}
 
@@ -178,7 +178,7 @@ public class EmapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseWriter(Writer object) {
+	public T caseWriter(Writer object) {
 		return null;
 	}
 
@@ -193,7 +193,7 @@ public class EmapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseWriterToStringMapEntry(Map.Entry object) {
+	public T caseWriterToStringMapEntry(Map.Entry<Writer, String> object) {
 		return null;
 	}
 
@@ -208,7 +208,7 @@ public class EmapSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

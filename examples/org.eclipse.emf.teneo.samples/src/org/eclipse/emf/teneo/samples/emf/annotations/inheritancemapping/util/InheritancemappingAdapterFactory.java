@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingAdapterFactory.java,v 1.1 2006/07/11 16:57:00 mtaal Exp $
+ * $Id: InheritancemappingAdapterFactory.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.util;
 
@@ -52,6 +52,7 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,30 +69,38 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InheritancemappingSwitch modelSwitch =
-		new InheritancemappingSwitch() {
-			public Object caseAddress(Address object) {
+	protected InheritancemappingSwitch<Adapter> modelSwitch =
+		new InheritancemappingSwitch<Adapter>() {
+			@Override
+			public Adapter caseAddress(Address object) {
 				return createAddressAdapter();
 			}
-			public Object caseContentList(ContentList object) {
+			@Override
+			public Adapter caseContentList(ContentList object) {
 				return createContentListAdapter();
 			}
-			public Object caseDistrictUKAddress(DistrictUKAddress object) {
+			@Override
+			public Adapter caseDistrictUKAddress(DistrictUKAddress object) {
 				return createDistrictUKAddressAdapter();
 			}
-			public Object caseInternationalPrice(InternationalPrice object) {
+			@Override
+			public Adapter caseInternationalPrice(InternationalPrice object) {
 				return createInternationalPriceAdapter();
 			}
-			public Object casePrice(Price object) {
+			@Override
+			public Adapter casePrice(Price object) {
 				return createPriceAdapter();
 			}
-			public Object caseUKAddress(UKAddress object) {
+			@Override
+			public Adapter caseUKAddress(UKAddress object) {
 				return createUKAddressAdapter();
 			}
-			public Object caseUSAddress(USAddress object) {
+			@Override
+			public Adapter caseUSAddress(USAddress object) {
 				return createUSAddressAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -104,8 +113,9 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

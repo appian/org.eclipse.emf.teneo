@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookType.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: BookType.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks;
 
@@ -152,7 +152,7 @@ public interface BookType extends EObject {
 	 * @return the value of the '<em>Authors</em>' containment reference.
 	 * @see #setAuthors(AuthorsType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.SunBooksPackage#getBookType_Authors()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='authors'"
 	 * @generated
 	 */
@@ -206,7 +206,7 @@ public interface BookType extends EObject {
 	 * @return the value of the '<em>Promotion</em>' containment reference.
 	 * @see #setPromotion(PromotionType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.sunBooks.SunBooksPackage#getBookType_Promotion()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='promotion'"
 	 * @generated
 	 */

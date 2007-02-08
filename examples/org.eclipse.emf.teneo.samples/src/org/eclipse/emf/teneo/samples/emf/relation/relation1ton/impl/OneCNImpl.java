@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneCNImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: OneCNImpl.java,v 1.3 2007/02/08 23:09:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl;
 
@@ -61,6 +61,7 @@ public class OneCNImpl extends EObjectImpl implements OneCN {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return Relation1tonPackage.Literals.ONE_CN;
 	}
@@ -91,6 +92,7 @@ public class OneCNImpl extends EObjectImpl implements OneCN {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case Relation1tonPackage.ONE_CN__NAME:
@@ -104,6 +106,7 @@ public class OneCNImpl extends EObjectImpl implements OneCN {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case Relation1tonPackage.ONE_CN__NAME:
@@ -118,6 +121,7 @@ public class OneCNImpl extends EObjectImpl implements OneCN {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case Relation1tonPackage.ONE_CN__NAME:
@@ -132,6 +136,7 @@ public class OneCNImpl extends EObjectImpl implements OneCN {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case Relation1tonPackage.ONE_CN__NAME:
@@ -145,6 +150,7 @@ public class OneCNImpl extends EObjectImpl implements OneCN {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

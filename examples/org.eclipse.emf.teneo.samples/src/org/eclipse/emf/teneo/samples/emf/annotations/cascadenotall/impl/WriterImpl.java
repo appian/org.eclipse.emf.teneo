@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterImpl.java,v 1.1 2006/07/11 16:57:13 mtaal Exp $
+ * $Id: WriterImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.impl;
 
@@ -69,7 +69,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList books = null;
+	protected EList<Book> books = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,6 +85,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return CascadenotallPackage.Literals.WRITER;
 	}
@@ -115,9 +116,9 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBooks() {
+	public EList<Book> getBooks() {
 		if (books == null) {
-			books = new EObjectWithInverseResolvingEList(Book.class, this, CascadenotallPackage.WRITER__BOOKS, CascadenotallPackage.BOOK__AUTHOR);
+			books = new EObjectWithInverseResolvingEList<Book>(Book.class, this, CascadenotallPackage.WRITER__BOOKS, CascadenotallPackage.BOOK__AUTHOR);
 		}
 		return books;
 	}
@@ -127,10 +128,12 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CascadenotallPackage.WRITER__BOOKS:
-				return ((InternalEList)getBooks()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getBooks()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -140,10 +143,11 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CascadenotallPackage.WRITER__BOOKS:
-				return ((InternalEList)getBooks()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getBooks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -153,6 +157,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CascadenotallPackage.WRITER__NAME:
@@ -168,6 +173,8 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CascadenotallPackage.WRITER__NAME:
@@ -175,7 +182,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 				return;
 			case CascadenotallPackage.WRITER__BOOKS:
 				getBooks().clear();
-				getBooks().addAll((Collection)newValue);
+				getBooks().addAll((Collection<? extends Book>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -186,6 +193,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CascadenotallPackage.WRITER__NAME:
@@ -203,6 +211,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CascadenotallPackage.WRITER__NAME:
@@ -218,6 +227,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

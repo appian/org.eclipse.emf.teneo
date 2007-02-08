@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ListAdapterFactory.java,v 1.1 2006/07/11 16:56:54 mtaal Exp $
+ * $Id: ListAdapterFactory.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.list.util;
 
@@ -52,6 +52,7 @@ public class ListAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,12 +69,14 @@ public class ListAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ListSwitch modelSwitch =
-		new ListSwitch() {
-			public Object casestatesByCountry(statesByCountry object) {
+	protected ListSwitch<Adapter> modelSwitch =
+		new ListSwitch<Adapter>() {
+			@Override
+			public Adapter casestatesByCountry(statesByCountry object) {
 				return createstatesByCountryAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -86,8 +89,9 @@ public class ListAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

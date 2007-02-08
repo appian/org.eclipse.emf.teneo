@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GroupallFactory.java,v 1.1 2006/07/11 16:57:10 mtaal Exp $
+ * $Id: GroupallFactory.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall;
 
@@ -23,7 +23,7 @@ public interface GroupallFactory extends EFactory{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	GroupallFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.GroupallFactoryImpl();
+	GroupallFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.GroupallFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Address</em>'.

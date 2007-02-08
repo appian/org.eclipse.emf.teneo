@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedidAdapterFactory.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: EmbeddedidAdapterFactory.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.util;
 
@@ -52,6 +52,7 @@ public class EmbeddedidAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,15 +69,18 @@ public class EmbeddedidAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EmbeddedidSwitch modelSwitch =
-		new EmbeddedidSwitch() {
-			public Object caseName(Name object) {
+	protected EmbeddedidSwitch<Adapter> modelSwitch =
+		new EmbeddedidSwitch<Adapter>() {
+			@Override
+			public Adapter caseName(Name object) {
 				return createNameAdapter();
 			}
-			public Object casePerson(Person object) {
+			@Override
+			public Adapter casePerson(Person object) {
 				return createPersonAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -89,8 +93,9 @@ public class EmbeddedidAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

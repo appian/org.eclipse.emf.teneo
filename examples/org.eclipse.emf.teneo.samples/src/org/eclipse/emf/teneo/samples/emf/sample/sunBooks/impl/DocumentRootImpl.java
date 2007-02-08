@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentRootImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: DocumentRootImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl;
 
@@ -64,7 +64,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap xMLNSPrefixMap = null;
+	protected EMap<String, String> xMLNSPrefixMap = null;
 
 	/**
 	 * The cached value of the '{@link #getXSISchemaLocation() <em>XSI Schema Location</em>}' map.
@@ -74,7 +74,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap xSISchemaLocation = null;
+	protected EMap<String, String> xSISchemaLocation = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,8 +90,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return SunBooksPackage.eINSTANCE.getDocumentRoot();
+		return SunBooksPackage.Literals.DOCUMENT_ROOT;
 	}
 
 	/**
@@ -111,9 +112,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap getXMLNSPrefixMap() {
+	public EMap<String, String> getXMLNSPrefixMap() {
 		if (xMLNSPrefixMap == null) {
-			xMLNSPrefixMap = new EcoreEMap(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class, this, SunBooksPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
+			xMLNSPrefixMap = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, SunBooksPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
 		}
 		return xMLNSPrefixMap;
 	}
@@ -123,9 +124,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap getXSISchemaLocation() {
+	public EMap<String, String> getXSISchemaLocation() {
 		if (xSISchemaLocation == null) {
-			xSISchemaLocation = new EcoreEMap(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class, this, SunBooksPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
+			xSISchemaLocation = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, SunBooksPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
 		}
 		return xSISchemaLocation;
 	}
@@ -136,7 +137,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public CollectionType getCollection() {
-		return (CollectionType)getMixed().get(SunBooksPackage.eINSTANCE.getDocumentRoot_Collection(), true);
+		return (CollectionType)getMixed().get(SunBooksPackage.Literals.DOCUMENT_ROOT__COLLECTION, true);
 	}
 
 	/**
@@ -145,7 +146,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public NotificationChain basicSetCollection(CollectionType newCollection, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(SunBooksPackage.eINSTANCE.getDocumentRoot_Collection(), newCollection, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(SunBooksPackage.Literals.DOCUMENT_ROOT__COLLECTION, newCollection, msgs);
 	}
 
 	/**
@@ -154,7 +155,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setCollection(CollectionType newCollection) {
-		((FeatureMap.Internal)getMixed()).set(SunBooksPackage.eINSTANCE.getDocumentRoot_Collection(), newCollection);
+		((FeatureMap.Internal)getMixed()).set(SunBooksPackage.Literals.DOCUMENT_ROOT__COLLECTION, newCollection);
 	}
 
 	/**
@@ -162,41 +163,42 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case SunBooksPackage.DOCUMENT_ROOT__MIXED:
-					return ((InternalEList)getMixed()).basicRemove(otherEnd, msgs);
-				case SunBooksPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-					return ((InternalEList)getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
-				case SunBooksPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-					return ((InternalEList)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
-				case SunBooksPackage.DOCUMENT_ROOT__COLLECTION:
-					return basicSetCollection(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case SunBooksPackage.DOCUMENT_ROOT__MIXED:
-				return getMixed();
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
 			case SunBooksPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				return getXMLNSPrefixMap();
+				return ((InternalEList<?>)getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
 			case SunBooksPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				return getXSISchemaLocation();
+				return ((InternalEList<?>)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
+			case SunBooksPackage.DOCUMENT_ROOT__COLLECTION:
+				return basicSetCollection(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case SunBooksPackage.DOCUMENT_ROOT__MIXED:
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
+			case SunBooksPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+				if (coreType) return getXMLNSPrefixMap();
+				else return getXMLNSPrefixMap().map();
+			case SunBooksPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+				if (coreType) return getXSISchemaLocation();
+				else return getXSISchemaLocation().map();
 			case SunBooksPackage.DOCUMENT_ROOT__COLLECTION:
 				return getCollection();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -204,25 +206,23 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case SunBooksPackage.DOCUMENT_ROOT__MIXED:
-				getMixed().clear();
-				getMixed().addAll((Collection)newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case SunBooksPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				getXMLNSPrefixMap().clear();
-				getXMLNSPrefixMap().addAll((Collection)newValue);
+				((EStructuralFeature.Setting)getXMLNSPrefixMap()).set(newValue);
 				return;
 			case SunBooksPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				getXSISchemaLocation().clear();
-				getXSISchemaLocation().addAll((Collection)newValue);
+				((EStructuralFeature.Setting)getXSISchemaLocation()).set(newValue);
 				return;
 			case SunBooksPackage.DOCUMENT_ROOT__COLLECTION:
 				setCollection((CollectionType)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -230,8 +230,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case SunBooksPackage.DOCUMENT_ROOT__MIXED:
 				getMixed().clear();
 				return;
@@ -245,7 +246,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 				setCollection((CollectionType)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -253,8 +254,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case SunBooksPackage.DOCUMENT_ROOT__MIXED:
 				return mixed != null && !mixed.isEmpty();
 			case SunBooksPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
@@ -264,7 +266,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 			case SunBooksPackage.DOCUMENT_ROOT__COLLECTION:
 				return getCollection() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -272,6 +274,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

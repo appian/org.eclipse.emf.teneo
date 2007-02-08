@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AssociationoverrideResourceFactoryImpl.java,v 1.2 2006/09/05 12:16:35 mtaal Exp $
+ * $Id: AssociationoverrideResourceFactoryImpl.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.util;
 
@@ -38,6 +38,7 @@ public class AssociationoverrideResourceFactoryImpl extends ResourceFactoryImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new AssociationoverrideResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

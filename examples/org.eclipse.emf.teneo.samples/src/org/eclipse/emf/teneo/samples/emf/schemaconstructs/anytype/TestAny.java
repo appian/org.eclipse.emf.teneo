@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestAny.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: TestAny.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype;
 
@@ -71,7 +71,7 @@ public interface TestAny extends EObject{
 	 * @return the value of the '<em>Single Any Type</em>' containment reference.
 	 * @see #setSingleAnyType(EObject)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage#getTestAny_SingleAnyType()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='singleAnyType'"
 	 * @generated
 	 */
@@ -98,11 +98,11 @@ public interface TestAny extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Multi Any Type</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage#getTestAny_MultiAnyType()
-	 * @model type="org.eclipse.emf.ecore.EObject" containment="true" resolveProxies="false" required="true"
+	 * @model type="org.eclipse.emf.ecore.EObject" containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='multiAnyType'"
 	 * @generated
 	 */
-	EList getMultiAnyType();
+	EList<EObject> getMultiAnyType();
 
 	/**
 	 * Returns the value of the '<em><b>My Any</b></em>' attribute list.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleEnum.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: SimpleEnum.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,26 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class SimpleEnum extends AbstractEnumerator {
+public enum SimpleEnum implements Enumerator
+{
+	/**
+	 * The '<em><b>Enum1</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENUM1
+	 * @generated
+	 * @ordered
+	 */
+	ENUM1_LITERAL(0, "Enum1", "Enum1"),
+	/**
+	 * The '<em><b>Enum2</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENUM2
+	 * @generated
+	 * @ordered
+	 */
+	ENUM2_LITERAL(1, "Enum2", "Enum2");
 	/**
 	 * The '<em><b>Enum1</b></em>' literal value.
 	 * <!-- begin-user-doc -->
@@ -53,26 +72,6 @@ public final class SimpleEnum extends AbstractEnumerator {
 	public static final int ENUM2 = 1;
 
 	/**
-	 * The '<em><b>Enum1</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ENUM1
-	 * @generated
-	 * @ordered
-	 */
-	public static final SimpleEnum ENUM1_LITERAL = new SimpleEnum(ENUM1, "Enum1", "Enum1");
-
-	/**
-	 * The '<em><b>Enum2</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ENUM2
-	 * @generated
-	 * @ordered
-	 */
-	public static final SimpleEnum ENUM2_LITERAL = new SimpleEnum(ENUM2, "Enum2", "Enum2");
-
-	/**
 	 * An array of all the '<em><b>Simple Enum</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -90,7 +89,7 @@ public final class SimpleEnum extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<SimpleEnum> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Simple Enum</b></em>' literal with the specified literal value.
@@ -135,8 +134,29 @@ public final class SimpleEnum extends AbstractEnumerator {
 			case ENUM1: return ENUM1_LITERAL;
 			case ENUM2: return ENUM2_LITERAL;
 		}
-		return null;	
+		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -145,7 +165,46 @@ public final class SimpleEnum extends AbstractEnumerator {
 	 * @generated
 	 */
 	private SimpleEnum(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //SimpleEnum
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BodyImpl.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: BodyImpl.java,v 1.2 2007/02/08 23:09:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.primarykeyjoin.impl;
 
@@ -87,6 +87,7 @@ public class BodyImpl extends EObjectImpl implements Body {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PrimarykeyjoinPackage.Literals.BODY;
 	}
@@ -185,6 +186,7 @@ public class BodyImpl extends EObjectImpl implements Body {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PrimarykeyjoinPackage.BODY__HEAD:
@@ -198,6 +200,7 @@ public class BodyImpl extends EObjectImpl implements Body {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PrimarykeyjoinPackage.BODY__THE_ID:
@@ -213,6 +216,7 @@ public class BodyImpl extends EObjectImpl implements Body {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PrimarykeyjoinPackage.BODY__THE_ID:
@@ -230,6 +234,7 @@ public class BodyImpl extends EObjectImpl implements Body {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PrimarykeyjoinPackage.BODY__THE_ID:
@@ -247,6 +252,7 @@ public class BodyImpl extends EObjectImpl implements Body {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PrimarykeyjoinPackage.BODY__THE_ID:
@@ -262,6 +268,7 @@ public class BodyImpl extends EObjectImpl implements Body {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

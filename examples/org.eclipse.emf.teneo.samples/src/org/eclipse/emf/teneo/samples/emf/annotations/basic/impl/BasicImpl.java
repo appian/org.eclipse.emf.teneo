@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BasicImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: BasicImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.basic.impl;
 
@@ -112,6 +112,7 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return BasicPackage.Literals.BASIC;
 	}
@@ -209,6 +210,7 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case BasicPackage.BASIC__MY_OPTIONAL_BASIC:
@@ -226,6 +228,7 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case BasicPackage.BASIC__MY_OPTIONAL_BASIC:
@@ -246,6 +249,7 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case BasicPackage.BASIC__MY_OPTIONAL_BASIC:
@@ -266,6 +270,7 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case BasicPackage.BASIC__MY_OPTIONAL_BASIC:
@@ -283,6 +288,7 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

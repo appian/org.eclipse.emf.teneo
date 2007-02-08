@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GroupallPackageImpl.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: GroupallPackageImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl;
 
@@ -132,7 +132,7 @@ public class GroupallPackageImpl extends EPackageImpl implements GroupallPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		XMLTypePackageImpl.init();
+		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theGroupallPackage.createPackageContents();
@@ -495,7 +495,11 @@ public class GroupallPackageImpl extends EPackageImpl implements GroupallPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XMLTypePackageImpl theXMLTypePackage = (XMLTypePackageImpl)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

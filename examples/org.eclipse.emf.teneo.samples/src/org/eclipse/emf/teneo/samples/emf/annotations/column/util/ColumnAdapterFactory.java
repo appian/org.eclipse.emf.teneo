@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnAdapterFactory.java,v 1.4 2006/08/22 22:35:42 mtaal Exp $
+ * $Id: ColumnAdapterFactory.java,v 1.5 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.column.util;
 
@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.annotations.column.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage;
 
@@ -50,6 +51,7 @@ public class ColumnAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -66,12 +68,14 @@ public class ColumnAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ColumnSwitch modelSwitch =
-		new ColumnSwitch() {
-			public Object caseBook(Book object) {
+	protected ColumnSwitch<Adapter> modelSwitch =
+		new ColumnSwitch<Adapter>() {
+			@Override
+			public Adapter caseBook(Book object) {
 				return createBookAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -84,8 +88,9 @@ public class ColumnAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

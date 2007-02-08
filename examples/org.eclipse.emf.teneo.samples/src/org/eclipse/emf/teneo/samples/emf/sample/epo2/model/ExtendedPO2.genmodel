@@ -5,10 +5,10 @@
     editDirectory="/Scratch.edit/src" editorDirectory="/Scratch.editor/src" modelPluginID="Scratch"
     runtimeJar="true" modelName="ExtendedPO2" editPluginClass="com.example.epo2.provider.Epo2EditPlugin"
     editorPluginClass="com.example.epo2.presentation.Epo2EditorPlugin" testsDirectory="/Scratch.tests/src"
-    testSuiteClass="com.example.epo2.tests.Epo2AllTests">
+    testSuiteClass="com.example.epo2.tests.Epo2AllTests" complianceLevel="5.0">
   <foreignModel>ExtendedPO2.mdl</foreignModel>
-  <genPackages prefix="EPO2" basePackage="org.eclipse.emf.teneo.samples.emf.extendedpo2" disposableProviderFactory="true"
-      ecorePackage="ExtendedPO2.ecore#/">
+  <genPackages prefix="EPO2" basePackage="org.eclipse.emf.teneo.samples.emf.sample"
+      disposableProviderFactory="true" ecorePackage="ExtendedPO2.ecore#/">
     <genEnums ecoreEnum="ExtendedPO2.ecore#//OrderStatus">
       <genEnumLiterals ecoreEnumLiteral="ExtendedPO2.ecore#//OrderStatus/Pending"/>
       <genEnumLiterals ecoreEnumLiteral="ExtendedPO2.ecore#//OrderStatus/BackOrder"/>

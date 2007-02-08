@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: YourItem.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: YourItem.java,v 1.3 2007/02/08 23:09:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.nmset;
 
@@ -72,6 +72,6 @@ public interface YourItem extends EObject {
 	 *        extendedMetaData="kind='element' name='myItem'"
 	 * @generated
 	 */
-	EList getMyItem();
+	EList<MyItem> getMyItem();
 
 } // YourItem

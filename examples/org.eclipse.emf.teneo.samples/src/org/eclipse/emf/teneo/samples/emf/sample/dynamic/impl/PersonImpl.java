@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl;
 
@@ -87,6 +87,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return DynamicPackage.Literals.PERSON;
 	}
@@ -129,8 +130,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAge() {
-		return ((FeatureMap)getGroup()).list(DynamicPackage.Literals.PERSON__AGE);
+	public EList<Integer> getAge() {
+		return getGroup().list(DynamicPackage.Literals.PERSON__AGE);
 	}
 
 	/**
@@ -138,8 +139,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLength() {
-		return ((FeatureMap)getGroup()).list(DynamicPackage.Literals.PERSON__LENGTH);
+	public EList<Integer> getLength() {
+		return getGroup().list(DynamicPackage.Literals.PERSON__LENGTH);
 	}
 
 	/**
@@ -147,10 +148,11 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case DynamicPackage.PERSON__GROUP:
-				return ((InternalEList)getGroup()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getGroup()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -160,6 +162,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DynamicPackage.PERSON__NAME:
@@ -180,6 +183,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DynamicPackage.PERSON__NAME:
@@ -190,11 +195,11 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return;
 			case DynamicPackage.PERSON__AGE:
 				getAge().clear();
-				getAge().addAll((Collection)newValue);
+				getAge().addAll((Collection<? extends Integer>)newValue);
 				return;
 			case DynamicPackage.PERSON__LENGTH:
 				getLength().clear();
-				getLength().addAll((Collection)newValue);
+				getLength().addAll((Collection<? extends Integer>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -205,6 +210,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case DynamicPackage.PERSON__NAME:
@@ -228,6 +234,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case DynamicPackage.PERSON__NAME:
@@ -247,6 +254,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

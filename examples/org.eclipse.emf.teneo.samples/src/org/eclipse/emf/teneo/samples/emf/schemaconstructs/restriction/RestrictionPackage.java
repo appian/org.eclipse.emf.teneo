@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RestrictionPackage.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: RestrictionPackage.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction;
 
@@ -40,7 +40,7 @@ public interface RestrictionPackage extends EPackage{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/restriction";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/restriction";
 
 	/**
 	 * The package namespace name.
@@ -114,7 +114,7 @@ public interface RestrictionPackage extends EPackage{
 	int XML_DEVIANT__MAIL_READER = 4;
 
 	/**
-	 * The number of structural features of the the '<em>XML Deviant</em>' class.
+	 * The number of structural features of the '<em>XML Deviant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -178,7 +178,7 @@ public interface RestrictionPackage extends EPackage{
 	int MEMBER__MAIL_READER = XML_DEVIANT__MAIL_READER;
 
 	/**
-	 * The number of structural features of the the '<em>Member</em>' class.
+	 * The number of structural features of the '<em>Member</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -270,5 +270,80 @@ public interface RestrictionPackage extends EPackage{
 	 * @generated
 	 */
 	RestrictionFactory getRestrictionFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.impl.MemberImpl <em>Member</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.impl.MemberImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.impl.RestrictionPackageImpl#getMember()
+		 * @generated
+		 */
+		EClass MEMBER = eINSTANCE.getMember();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.impl.XMLDeviantImpl <em>XML Deviant</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.impl.XMLDeviantImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.impl.RestrictionPackageImpl#getXMLDeviant()
+		 * @generated
+		 */
+		EClass XML_DEVIANT = eINSTANCE.getXMLDeviant();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Posts</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XML_DEVIANT__NUM_POSTS = eINSTANCE.getXMLDeviant_NumPosts();
+
+		/**
+		 * The meta object literal for the '<em><b>Signature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XML_DEVIANT__SIGNATURE = eINSTANCE.getXMLDeviant_Signature();
+
+		/**
+		 * The meta object literal for the '<em><b>Email</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XML_DEVIANT__EMAIL = eINSTANCE.getXMLDeviant_Email();
+
+		/**
+		 * The meta object literal for the '<em><b>First Subscribed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XML_DEVIANT__FIRST_SUBSCRIBED = eINSTANCE.getXMLDeviant_FirstSubscribed();
+
+		/**
+		 * The meta object literal for the '<em><b>Mail Reader</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XML_DEVIANT__MAIL_READER = eINSTANCE.getXMLDeviant_MailReader();
+
+	}
 
 } //RestrictionPackage

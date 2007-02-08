@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesAdapterFactory.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: SimpletypesAdapterFactory.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.util;
 
@@ -52,6 +52,7 @@ public class SimpletypesAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +69,22 @@ public class SimpletypesAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SimpletypesSwitch modelSwitch =
-		new SimpletypesSwitch() {
-			public Object caseSimpleList(SimpleList object) {
+	protected SimpletypesSwitch<Adapter> modelSwitch =
+		new SimpletypesSwitch<Adapter>() {
+			@Override
+			public Adapter caseSimpleList(SimpleList object) {
 				return createSimpleListAdapter();
 			}
-			public Object caseSimpleType(SimpleType object) {
+			@Override
+			public Adapter caseSimpleType(SimpleType object) {
 				return createSimpleTypeAdapter();
 			}
-			public Object caseSimpleTypeObject(SimpleTypeObject object) {
+			@Override
+			public Adapter caseSimpleTypeObject(SimpleTypeObject object) {
 				return createSimpleTypeObjectAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +97,9 @@ public class SimpletypesAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

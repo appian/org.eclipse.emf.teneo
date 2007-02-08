@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PurchaseOrderImpl.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: PurchaseOrderImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -56,7 +56,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList items = null;
+	protected EList<Item> items = null;
 
 	/**
 	 * The cached value of the '{@link #getBillTo() <em>Bill To</em>}' containment reference.
@@ -182,8 +182,9 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return EPO2Package.eINSTANCE.getPurchaseOrder();
+		return EPO2Package.Literals.PURCHASE_ORDER;
 	}
 
 	/**
@@ -191,9 +192,9 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getItems() {
+	public EList<Item> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentWithInverseEList(Item.class, this, EPO2Package.PURCHASE_ORDER__ITEMS, EPO2Package.ITEM__ORDER);
+			items = new EObjectContainmentWithInverseEList<Item>(Item.class, this, EPO2Package.PURCHASE_ORDER__ITEMS, EPO2Package.ITEM__ORDER);
 		}
 		return items;
 	}
@@ -427,22 +428,18 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case EPO2Package.PURCHASE_ORDER__ITEMS:
-					return ((InternalEList)getItems()).basicAdd(otherEnd, msgs);
-				case EPO2Package.PURCHASE_ORDER__CUSTOMER:
-					if (customer != null)
-						msgs = ((InternalEObject)customer).eInverseRemove(this, EPO2Package.CUSTOMER__ORDERS, Customer.class, msgs);
-					return basicSetCustomer((Customer)otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EPO2Package.PURCHASE_ORDER__ITEMS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getItems()).basicAdd(otherEnd, msgs);
+			case EPO2Package.PURCHASE_ORDER__CUSTOMER:
+				if (customer != null)
+					msgs = ((InternalEObject)customer).eInverseRemove(this, EPO2Package.CUSTOMER__ORDERS, Customer.class, msgs);
+				return basicSetCustomer((Customer)otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -450,22 +447,19 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case EPO2Package.PURCHASE_ORDER__ITEMS:
-					return ((InternalEList)getItems()).basicRemove(otherEnd, msgs);
-				case EPO2Package.PURCHASE_ORDER__BILL_TO:
-					return basicSetBillTo(null, msgs);
-				case EPO2Package.PURCHASE_ORDER__SHIP_TO:
-					return basicSetShipTo(null, msgs);
-				case EPO2Package.PURCHASE_ORDER__CUSTOMER:
-					return basicSetCustomer(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EPO2Package.PURCHASE_ORDER__ITEMS:
+				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
+			case EPO2Package.PURCHASE_ORDER__BILL_TO:
+				return basicSetBillTo(null, msgs);
+			case EPO2Package.PURCHASE_ORDER__SHIP_TO:
+				return basicSetShipTo(null, msgs);
+			case EPO2Package.PURCHASE_ORDER__CUSTOMER:
+				return basicSetCustomer(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -473,8 +467,9 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case EPO2Package.PURCHASE_ORDER__ITEMS:
 				return getItems();
 			case EPO2Package.PURCHASE_ORDER__BILL_TO:
@@ -494,7 +489,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 			case EPO2Package.PURCHASE_ORDER__PREVIOUS_ORDER:
 				return getPreviousOrder();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -502,11 +497,13 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case EPO2Package.PURCHASE_ORDER__ITEMS:
 				getItems().clear();
-				getItems().addAll((Collection)newValue);
+				getItems().addAll((Collection<? extends Item>)newValue);
 				return;
 			case EPO2Package.PURCHASE_ORDER__BILL_TO:
 				setBillTo((Address)newValue);
@@ -530,7 +527,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 				setPreviousOrder((PurchaseOrder)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -538,8 +535,9 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case EPO2Package.PURCHASE_ORDER__ITEMS:
 				getItems().clear();
 				return;
@@ -565,7 +563,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 				setPreviousOrder((PurchaseOrder)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -573,8 +571,9 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case EPO2Package.PURCHASE_ORDER__ITEMS:
 				return items != null && !items.isEmpty();
 			case EPO2Package.PURCHASE_ORDER__BILL_TO:
@@ -594,7 +593,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 			case EPO2Package.PURCHASE_ORDER__PREVIOUS_ORDER:
 				return previousOrder != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -602,6 +601,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

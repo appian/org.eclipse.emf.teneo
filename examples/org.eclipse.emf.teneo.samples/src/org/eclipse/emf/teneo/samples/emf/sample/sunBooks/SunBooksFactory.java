@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SunBooksFactory.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: SunBooksFactory.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks;
 
@@ -23,7 +23,7 @@ public interface SunBooksFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	SunBooksFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksFactoryImpl();
+	SunBooksFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.SunBooksFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Authors Type</em>'.

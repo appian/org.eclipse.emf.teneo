@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonaGroupType.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: PersonaGroupType.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play;
 
@@ -43,7 +43,7 @@ public interface PersonaGroupType extends EObject {
 	 *        extendedMetaData="kind='element' name='persona' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList getPersona();
+	EList<String> getPersona();
 
 	/**
 	 * Returns the value of the '<em><b>Group Description</b></em>' attribute.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReportGroup.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: ReportGroup.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting;
 
@@ -67,11 +67,11 @@ public interface ReportGroup extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Report Group</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountingPackage#getReportGroup_ReportGroup()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.accounting.ReportGroup" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.accounting.ReportGroup" containment="true"
 	 *        extendedMetaData="kind='element' name='reportGroup'"
 	 * @generated
 	 */
-	EList getReportGroup();
+	EList<ReportGroup> getReportGroup();
 
 	/**
 	 * Returns the value of the '<em><b>Account</b></em>' reference list.
@@ -90,6 +90,6 @@ public interface ReportGroup extends EObject {
 	 *        extendedMetaData="kind='element' name='account'"
 	 * @generated
 	 */
-	EList getAccount();
+	EList<BalanceAccount> getAccount();
 
 } // ReportGroup

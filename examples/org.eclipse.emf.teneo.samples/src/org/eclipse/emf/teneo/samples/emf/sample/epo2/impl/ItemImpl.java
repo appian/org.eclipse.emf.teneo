@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemImpl.java,v 1.2 2006/11/07 10:22:27 mtaal Exp $
+ * $Id: ItemImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -174,8 +174,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return EPO2Package.eINSTANCE.getItem();
+		return EPO2Package.Literals.ITEM;
 	}
 
 	/**
@@ -185,7 +186,17 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 */
 	public PurchaseOrder getOrder() {
 		if (eContainerFeatureID != EPO2Package.ITEM__ORDER) return null;
-		return (PurchaseOrder)eContainer;
+		return (PurchaseOrder)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOrder(PurchaseOrder newOrder, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOrder, EPO2Package.ITEM__ORDER, msgs);
+		return msgs;
 	}
 
 	/**
@@ -194,15 +205,15 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * @generated
 	 */
 	public void setOrder(PurchaseOrder newOrder) {
-		if (newOrder != eContainer || (eContainerFeatureID != EPO2Package.ITEM__ORDER && newOrder != null)) {
+		if (newOrder != eInternalContainer() || (eContainerFeatureID != EPO2Package.ITEM__ORDER && newOrder != null)) {
 			if (EcoreUtil.isAncestor(this, newOrder))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOrder != null)
 				msgs = ((InternalEObject)newOrder).eInverseAdd(this, EPO2Package.PURCHASE_ORDER__ITEMS, PurchaseOrder.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newOrder, EPO2Package.ITEM__ORDER, msgs);
+			msgs = basicSetOrder(newOrder, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -340,20 +351,15 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case EPO2Package.ITEM__ORDER:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, EPO2Package.ITEM__ORDER, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EPO2Package.ITEM__ORDER:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetOrder((PurchaseOrder)otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -361,16 +367,13 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case EPO2Package.ITEM__ORDER:
-					return eBasicSetContainer(null, EPO2Package.ITEM__ORDER, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EPO2Package.ITEM__ORDER:
+				return basicSetOrder(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -378,16 +381,13 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case EPO2Package.ITEM__ORDER:
-					return eContainer.eInverseRemove(this, EPO2Package.PURCHASE_ORDER__ITEMS, PurchaseOrder.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case EPO2Package.ITEM__ORDER:
+				return eInternalContainer().eInverseRemove(this, EPO2Package.PURCHASE_ORDER__ITEMS, PurchaseOrder.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -395,8 +395,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case EPO2Package.ITEM__ORDER:
 				return getOrder();
 			case EPO2Package.ITEM__PRODUCT_NAME:
@@ -412,7 +413,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 			case EPO2Package.ITEM__PART_NUM:
 				return getPartNum();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -420,8 +421,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case EPO2Package.ITEM__ORDER:
 				setOrder((PurchaseOrder)newValue);
 				return;
@@ -444,7 +446,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 				setPartNum((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -452,8 +454,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case EPO2Package.ITEM__ORDER:
 				setOrder((PurchaseOrder)null);
 				return;
@@ -476,7 +479,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 				setPartNum(PART_NUM_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -484,8 +487,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case EPO2Package.ITEM__ORDER:
 				return getOrder() != null;
 			case EPO2Package.ITEM__PRODUCT_NAME:
@@ -501,7 +505,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 			case EPO2Package.ITEM__PART_NUM:
 				return PART_NUM_EDEFAULT == null ? partNum != null : !PART_NUM_EDEFAULT.equals(partNum);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -509,6 +513,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

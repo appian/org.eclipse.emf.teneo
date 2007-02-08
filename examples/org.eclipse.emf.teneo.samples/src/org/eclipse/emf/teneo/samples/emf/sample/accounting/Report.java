@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Report.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: Report.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting;
 
@@ -65,7 +65,7 @@ public interface Report extends EObject {
 	 * @return the value of the '<em>Debit Report Group</em>' containment reference.
 	 * @see #setDebitReportGroup(ReportGroup)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountingPackage#getReport_DebitReportGroup()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='debitReportGroup'"
 	 * @generated
 	 */
@@ -92,7 +92,7 @@ public interface Report extends EObject {
 	 * @return the value of the '<em>Credit Report Group</em>' containment reference.
 	 * @see #setCreditReportGroup(ReportGroup)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountingPackage#getReport_CreditReportGroup()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='creditReportGroup'"
 	 * @generated
 	 */

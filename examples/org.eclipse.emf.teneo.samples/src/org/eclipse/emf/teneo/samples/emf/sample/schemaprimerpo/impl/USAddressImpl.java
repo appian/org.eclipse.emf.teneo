@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: USAddressImpl.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: USAddressImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl;
 
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.USAddress;
 
@@ -181,8 +182,9 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PrimerpoPackage.eINSTANCE.getUSAddress();
+		return SchemaprimerpoPackage.Literals.US_ADDRESS;
 	}
 
 	/**
@@ -203,7 +205,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.US_ADDRESS__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.US_ADDRESS__NAME, oldName, name));
 	}
 
 	/**
@@ -224,7 +226,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 		String oldStreet = street;
 		street = newStreet;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.US_ADDRESS__STREET, oldStreet, street));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.US_ADDRESS__STREET, oldStreet, street));
 	}
 
 	/**
@@ -245,7 +247,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 		String oldCity = city;
 		city = newCity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.US_ADDRESS__CITY, oldCity, city));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.US_ADDRESS__CITY, oldCity, city));
 	}
 
 	/**
@@ -266,7 +268,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 		String oldState = state;
 		state = newState;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.US_ADDRESS__STATE, oldState, state));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.US_ADDRESS__STATE, oldState, state));
 	}
 
 	/**
@@ -287,7 +289,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 		BigDecimal oldZip = zip;
 		zip = newZip;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.US_ADDRESS__ZIP, oldZip, zip));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.US_ADDRESS__ZIP, oldZip, zip));
 	}
 
 	/**
@@ -310,7 +312,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 		boolean oldCountryESet = countryESet;
 		countryESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.US_ADDRESS__COUNTRY, oldCountry, country, !oldCountryESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.US_ADDRESS__COUNTRY, oldCountry, country, !oldCountryESet));
 	}
 
 	/**
@@ -324,7 +326,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 		country = COUNTRY_EDEFAULT;
 		countryESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PrimerpoPackage.US_ADDRESS__COUNTRY, oldCountry, COUNTRY_EDEFAULT, oldCountryESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, SchemaprimerpoPackage.US_ADDRESS__COUNTRY, oldCountry, COUNTRY_EDEFAULT, oldCountryESet));
 	}
 
 	/**
@@ -341,22 +343,23 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.US_ADDRESS__NAME:
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.US_ADDRESS__NAME:
 				return getName();
-			case PrimerpoPackage.US_ADDRESS__STREET:
+			case SchemaprimerpoPackage.US_ADDRESS__STREET:
 				return getStreet();
-			case PrimerpoPackage.US_ADDRESS__CITY:
+			case SchemaprimerpoPackage.US_ADDRESS__CITY:
 				return getCity();
-			case PrimerpoPackage.US_ADDRESS__STATE:
+			case SchemaprimerpoPackage.US_ADDRESS__STATE:
 				return getState();
-			case PrimerpoPackage.US_ADDRESS__ZIP:
+			case SchemaprimerpoPackage.US_ADDRESS__ZIP:
 				return getZip();
-			case PrimerpoPackage.US_ADDRESS__COUNTRY:
+			case SchemaprimerpoPackage.US_ADDRESS__COUNTRY:
 				return getCountry();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -364,28 +367,29 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.US_ADDRESS__NAME:
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.US_ADDRESS__NAME:
 				setName((String)newValue);
 				return;
-			case PrimerpoPackage.US_ADDRESS__STREET:
+			case SchemaprimerpoPackage.US_ADDRESS__STREET:
 				setStreet((String)newValue);
 				return;
-			case PrimerpoPackage.US_ADDRESS__CITY:
+			case SchemaprimerpoPackage.US_ADDRESS__CITY:
 				setCity((String)newValue);
 				return;
-			case PrimerpoPackage.US_ADDRESS__STATE:
+			case SchemaprimerpoPackage.US_ADDRESS__STATE:
 				setState((String)newValue);
 				return;
-			case PrimerpoPackage.US_ADDRESS__ZIP:
+			case SchemaprimerpoPackage.US_ADDRESS__ZIP:
 				setZip((BigDecimal)newValue);
 				return;
-			case PrimerpoPackage.US_ADDRESS__COUNTRY:
+			case SchemaprimerpoPackage.US_ADDRESS__COUNTRY:
 				setCountry((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -393,28 +397,29 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.US_ADDRESS__NAME:
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.US_ADDRESS__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case PrimerpoPackage.US_ADDRESS__STREET:
+			case SchemaprimerpoPackage.US_ADDRESS__STREET:
 				setStreet(STREET_EDEFAULT);
 				return;
-			case PrimerpoPackage.US_ADDRESS__CITY:
+			case SchemaprimerpoPackage.US_ADDRESS__CITY:
 				setCity(CITY_EDEFAULT);
 				return;
-			case PrimerpoPackage.US_ADDRESS__STATE:
+			case SchemaprimerpoPackage.US_ADDRESS__STATE:
 				setState(STATE_EDEFAULT);
 				return;
-			case PrimerpoPackage.US_ADDRESS__ZIP:
+			case SchemaprimerpoPackage.US_ADDRESS__ZIP:
 				setZip(ZIP_EDEFAULT);
 				return;
-			case PrimerpoPackage.US_ADDRESS__COUNTRY:
+			case SchemaprimerpoPackage.US_ADDRESS__COUNTRY:
 				unsetCountry();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -422,22 +427,23 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.US_ADDRESS__NAME:
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.US_ADDRESS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case PrimerpoPackage.US_ADDRESS__STREET:
+			case SchemaprimerpoPackage.US_ADDRESS__STREET:
 				return STREET_EDEFAULT == null ? street != null : !STREET_EDEFAULT.equals(street);
-			case PrimerpoPackage.US_ADDRESS__CITY:
+			case SchemaprimerpoPackage.US_ADDRESS__CITY:
 				return CITY_EDEFAULT == null ? city != null : !CITY_EDEFAULT.equals(city);
-			case PrimerpoPackage.US_ADDRESS__STATE:
+			case SchemaprimerpoPackage.US_ADDRESS__STATE:
 				return STATE_EDEFAULT == null ? state != null : !STATE_EDEFAULT.equals(state);
-			case PrimerpoPackage.US_ADDRESS__ZIP:
+			case SchemaprimerpoPackage.US_ADDRESS__ZIP:
 				return ZIP_EDEFAULT == null ? zip != null : !ZIP_EDEFAULT.equals(zip);
-			case PrimerpoPackage.US_ADDRESS__COUNTRY:
+			case SchemaprimerpoPackage.US_ADDRESS__COUNTRY:
 				return isSetCountry();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -445,6 +451,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

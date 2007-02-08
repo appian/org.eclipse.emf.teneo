@@ -2,10 +2,11 @@
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
-    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Featuremap" importerID="org.eclipse.xsd.ecore.importer">
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Featuremap" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0">
   <foreignModel>featuremap.xsd</foreignModel>
-  <genPackages prefix="Featuremap" basePackage="org.eclipse.emf.teneo.store.test.emf.elist" resource="XML"
-      disposableProviderFactory="true" ecorePackage="featuremap.ecore#/">
+  <genPackages prefix="Featuremap" basePackage="org.eclipse.emf.teneo.samples.emf.elist"
+      resource="XML" disposableProviderFactory="true" ecorePackage="featuremap.ecore#/">
     <genEnums ecoreEnum="featuremap.ecore#//ProductClassification">
       <genEnumLiterals ecoreEnumLiteral="featuremap.ecore#//ProductClassification/Normal"/>
       <genEnumLiterals ecoreEnumLiteral="featuremap.ecore#//ProductClassification/Special"/>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PlayFactoryImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: PlayFactoryImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.impl;
 
@@ -10,8 +10,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
@@ -24,6 +26,25 @@ import org.eclipse.emf.teneo.samples.emf.sample.play.*;
  * @generated
  */
 public class PlayFactoryImpl extends EFactoryImpl implements PlayFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static PlayFactory init() {
+		try {
+			PlayFactory thePlayFactory = (PlayFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/sample/play"); 
+			if (thePlayFactory != null) {
+				return thePlayFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new PlayFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -39,6 +60,7 @@ public class PlayFactoryImpl extends EFactoryImpl implements PlayFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case PlayPackage.ACT_TYPE: return createActType();
@@ -59,6 +81,7 @@ public class PlayFactoryImpl extends EFactoryImpl implements PlayFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case PlayPackage.PINDEX_TYPE:
@@ -73,6 +96,7 @@ public class PlayFactoryImpl extends EFactoryImpl implements PlayFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case PlayPackage.PINDEX_TYPE:
@@ -168,7 +192,7 @@ public class PlayFactoryImpl extends EFactoryImpl implements PlayFactory {
 	 * @generated
 	 */
 	public String createPindexTypeFromString(EDataType eDataType, String initialValue) {
-		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.eINSTANCE.getNMTOKEN(), initialValue);
+		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.NMTOKEN, initialValue);
 	}
 
 	/**
@@ -177,7 +201,7 @@ public class PlayFactoryImpl extends EFactoryImpl implements PlayFactory {
 	 * @generated
 	 */
 	public String convertPindexTypeToString(EDataType eDataType, Object instanceValue) {
-		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.eINSTANCE.getNMTOKEN(), instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.NMTOKEN, instanceValue);
 	}
 
 	/**
@@ -195,6 +219,7 @@ public class PlayFactoryImpl extends EFactoryImpl implements PlayFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static PlayPackage getPackage() {
 		return PlayPackage.eINSTANCE;
 	}

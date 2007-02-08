@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtensionFactoryImpl.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
+ * $Id: ExtensionFactoryImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -62,6 +62,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ExtensionPackage.ADDRESS_LIST: return createAddressList();
@@ -80,6 +81,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case ExtensionPackage.US_STATE:
@@ -100,6 +102,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case ExtensionPackage.US_STATE:
@@ -219,7 +222,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * @generated
 	 */
 	public String createUKPostcodeFromString(EDataType eDataType, String initialValue) {
-		return (String)createPostcodeFromString(ExtensionPackage.Literals.POSTCODE, initialValue);
+		return createPostcodeFromString(ExtensionPackage.Literals.POSTCODE, initialValue);
 	}
 
 	/**
@@ -237,7 +240,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * @generated
 	 */
 	public USState createUSStateObjectFromString(EDataType eDataType, String initialValue) {
-		return (USState)createUSStateFromString(ExtensionPackage.Literals.US_STATE, initialValue);
+		return createUSStateFromString(ExtensionPackage.Literals.US_STATE, initialValue);
 	}
 
 	/**
@@ -264,6 +267,7 @@ public class ExtensionFactoryImpl extends EFactoryImpl implements ExtensionFacto
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static ExtensionPackage getPackage() {
 		return ExtensionPackage.eINSTANCE;
 	}

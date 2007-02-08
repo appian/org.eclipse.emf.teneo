@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Asset.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: Asset.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.SchoollibraryPackage#getAsset()
+ * @model
  * @generated
  */
 public interface Asset extends EObject {

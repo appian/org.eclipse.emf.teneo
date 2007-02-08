@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UKAddressImpl.java,v 1.2 2007/02/05 16:13:46 mtaal Exp $
+ * $Id: UKAddressImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -96,6 +96,7 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ExtensionPackage.Literals.UK_ADDRESS;
 	}
@@ -172,6 +173,7 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ExtensionPackage.UK_ADDRESS__POSTCODE:
@@ -187,6 +189,7 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ExtensionPackage.UK_ADDRESS__POSTCODE:
@@ -204,6 +207,7 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ExtensionPackage.UK_ADDRESS__POSTCODE:
@@ -221,6 +225,7 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ExtensionPackage.UK_ADDRESS__POSTCODE:
@@ -236,6 +241,7 @@ public class UKAddressImpl extends AddressImpl implements UKAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

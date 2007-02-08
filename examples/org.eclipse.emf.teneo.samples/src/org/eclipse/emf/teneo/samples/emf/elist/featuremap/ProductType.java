@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductType.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: ProductType.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.elist.featuremap;
 
@@ -96,7 +96,7 @@ public interface ProductType extends EObject {
 	 *        extendedMetaData="kind='element' name='Description' group='#group:1'"
 	 * @generated
 	 */
-	EList getDescription();
+	EList<String> getDescription();
 
 	/**
 	 * Returns the value of the '<em><b>Translated Description</b></em>' reference list.
@@ -113,7 +113,7 @@ public interface ProductType extends EObject {
 	 *        extendedMetaData="kind='element' name='TranslatedDescription' group='#group:1'"
 	 * @generated
 	 */
-	EList getTranslatedDescription();
+	EList<TranslatedDescriptionType> getTranslatedDescription();
 
 	/**
 	 * Returns the value of the '<em><b>Product Classification</b></em>' attribute.
@@ -201,11 +201,11 @@ public interface ProductType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Price By Quantity</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.elist.featuremap.FeaturemapPackage#getProductType_PriceByQuantity()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.elist.featuremap.PriceByQuantityType" containment="true" resolveProxies="false" transient="true" volatile="true" derived="true"
+	 * @model type="org.eclipse.emf.teneo.samples.emf.elist.featuremap.PriceByQuantityType" containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='PriceByQuantity' group='#group:5'"
 	 * @generated
 	 */
-	EList getPriceByQuantity();
+	EList<PriceByQuantityType> getPriceByQuantity();
 
 	/**
 	 * Returns the value of the '<em><b>Price From Supplier</b></em>' reference list.
@@ -222,7 +222,7 @@ public interface ProductType extends EObject {
 	 *        extendedMetaData="kind='element' name='PriceFromSupplier' group='#group:5'"
 	 * @generated
 	 */
-	EList getPriceFromSupplier();
+	EList<SupplierPriceType> getPriceFromSupplier();
 
 	/**
 	 * Returns the value of the '<em><b>Simple Price</b></em>' attribute list.
@@ -239,6 +239,6 @@ public interface ProductType extends EObject {
 	 *        extendedMetaData="kind='element' name='SimplePrice' group='#group:5'"
 	 * @generated
 	 */
-	EList getSimplePrice();
+	EList<Double> getSimplePrice();
 
 } // ProductType

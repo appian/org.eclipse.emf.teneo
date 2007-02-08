@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TopicCategory.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: TopicCategory.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,35 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class TopicCategory extends AbstractEnumerator {
+public enum TopicCategory implements Enumerator
+{
+	/**
+	 * The '<em><b>Announcement</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ANNOUNCEMENT
+	 * @generated
+	 * @ordered
+	 */
+	ANNOUNCEMENT_LITERAL(0, "Announcement", "Announcement"),
+	/**
+	 * The '<em><b>Guest Book</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #GUEST_BOOK
+	 * @generated
+	 * @ordered
+	 */
+	GUEST_BOOK_LITERAL(1, "GuestBook", "GuestBook"),
+	/**
+	 * The '<em><b>Discussion</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DISCUSSION
+	 * @generated
+	 * @ordered
+	 */
+	DISCUSSION_LITERAL(2, "Discussion", "Discussion");
 	/**
 	 * The '<em><b>Announcement</b></em>' literal value.
 	 * <!-- begin-user-doc -->
@@ -68,36 +96,6 @@ public final class TopicCategory extends AbstractEnumerator {
 	public static final int DISCUSSION = 2;
 
 	/**
-	 * The '<em><b>Announcement</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ANNOUNCEMENT
-	 * @generated
-	 * @ordered
-	 */
-	public static final TopicCategory ANNOUNCEMENT_LITERAL = new TopicCategory(ANNOUNCEMENT, "Announcement");
-
-	/**
-	 * The '<em><b>Guest Book</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #GUEST_BOOK
-	 * @generated
-	 * @ordered
-	 */
-	public static final TopicCategory GUEST_BOOK_LITERAL = new TopicCategory(GUEST_BOOK, "GuestBook");
-
-	/**
-	 * The '<em><b>Discussion</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DISCUSSION
-	 * @generated
-	 * @ordered
-	 */
-	public static final TopicCategory DISCUSSION_LITERAL = new TopicCategory(DISCUSSION, "Discussion");
-
-	/**
 	 * An array of all the '<em><b>Topic Category</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,18 +114,18 @@ public final class TopicCategory extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<TopicCategory> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Topic Category</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Topic Category</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static TopicCategory get(String name) {
+	public static TopicCategory get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			TopicCategory result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -135,7 +133,23 @@ public final class TopicCategory extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Topic Category</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Topic Category</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static TopicCategory getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			TopicCategory result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Topic Category</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -146,8 +160,29 @@ public final class TopicCategory extends AbstractEnumerator {
 			case GUEST_BOOK: return GUEST_BOOK_LITERAL;
 			case DISCUSSION: return DISCUSSION_LITERAL;
 		}
-		return null;	
+		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -155,8 +190,47 @@ public final class TopicCategory extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private TopicCategory(int value, String name) {
-		super(value, name);
+	private TopicCategory(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //TopicCategory
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

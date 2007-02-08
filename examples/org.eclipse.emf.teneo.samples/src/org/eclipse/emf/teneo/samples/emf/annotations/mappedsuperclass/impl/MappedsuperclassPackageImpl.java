@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassPackageImpl.java,v 1.3 2006/11/12 00:08:30 mtaal Exp $
+ * $Id: MappedsuperclassPackageImpl.java,v 1.4 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl;
 
@@ -28,6 +28,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.SpecificDo
  * @generated
  */
 public class MappedsuperclassPackageImpl extends EPackageImpl implements MappedsuperclassPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -265,6 +272,10 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		addIDDocumentEClass.getESuperTypes().add(this.getDocument());

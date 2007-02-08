@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnFactoryImpl.java,v 1.4 2006/08/22 22:35:42 mtaal Exp $
+ * $Id: ColumnFactoryImpl.java,v 1.5 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.column.impl;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.annotations.column.*;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage;
@@ -56,6 +57,7 @@ public class ColumnFactoryImpl extends EFactoryImpl implements ColumnFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ColumnPackage.BOOK: return createBook();
@@ -89,6 +91,7 @@ public class ColumnFactoryImpl extends EFactoryImpl implements ColumnFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static ColumnPackage getPackage() {
 		return ColumnPackage.eINSTANCE;
 	}

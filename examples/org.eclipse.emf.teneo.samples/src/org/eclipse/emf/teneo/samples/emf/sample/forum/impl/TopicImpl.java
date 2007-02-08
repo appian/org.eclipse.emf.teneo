@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TopicImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: TopicImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum.impl;
 
@@ -115,7 +115,7 @@ public class TopicImpl extends EObjectImpl implements Topic {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList posts = null;
+	protected EList<Post> posts = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,8 +131,9 @@ public class TopicImpl extends EObjectImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return ForumPackage.eINSTANCE.getTopic();
+		return ForumPackage.Literals.TOPIC;
 	}
 
 	/**
@@ -250,9 +251,9 @@ public class TopicImpl extends EObjectImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPosts() {
+	public EList<Post> getPosts() {
 		if (posts == null) {
-			posts = new EObjectWithInverseEList(Post.class, this, ForumPackage.TOPIC__POSTS, ForumPackage.POST__TOPIC);
+			posts = new EObjectWithInverseEList<Post>(Post.class, this, ForumPackage.TOPIC__POSTS, ForumPackage.POST__TOPIC);
 		}
 		return posts;
 	}
@@ -262,22 +263,18 @@ public class TopicImpl extends EObjectImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case ForumPackage.TOPIC__CREATOR:
-					if (creator != null)
-						msgs = ((InternalEObject)creator).eInverseRemove(this, ForumPackage.MEMBER__CREATED, Member.class, msgs);
-					return basicSetCreator((Member)otherEnd, msgs);
-				case ForumPackage.TOPIC__POSTS:
-					return ((InternalEList)getPosts()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ForumPackage.TOPIC__CREATOR:
+				if (creator != null)
+					msgs = ((InternalEObject)creator).eInverseRemove(this, ForumPackage.MEMBER__CREATED, Member.class, msgs);
+				return basicSetCreator((Member)otherEnd, msgs);
+			case ForumPackage.TOPIC__POSTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPosts()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -285,18 +282,15 @@ public class TopicImpl extends EObjectImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case ForumPackage.TOPIC__CREATOR:
-					return basicSetCreator(null, msgs);
-				case ForumPackage.TOPIC__POSTS:
-					return ((InternalEList)getPosts()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ForumPackage.TOPIC__CREATOR:
+				return basicSetCreator(null, msgs);
+			case ForumPackage.TOPIC__POSTS:
+				return ((InternalEList<?>)getPosts()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -304,8 +298,9 @@ public class TopicImpl extends EObjectImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case ForumPackage.TOPIC__TITLE:
 				return getTitle();
 			case ForumPackage.TOPIC__CATEGORY:
@@ -315,7 +310,7 @@ public class TopicImpl extends EObjectImpl implements Topic {
 			case ForumPackage.TOPIC__POSTS:
 				return getPosts();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -323,8 +318,10 @@ public class TopicImpl extends EObjectImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case ForumPackage.TOPIC__TITLE:
 				setTitle((String)newValue);
 				return;
@@ -336,10 +333,10 @@ public class TopicImpl extends EObjectImpl implements Topic {
 				return;
 			case ForumPackage.TOPIC__POSTS:
 				getPosts().clear();
-				getPosts().addAll((Collection)newValue);
+				getPosts().addAll((Collection<? extends Post>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -347,8 +344,9 @@ public class TopicImpl extends EObjectImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case ForumPackage.TOPIC__TITLE:
 				setTitle(TITLE_EDEFAULT);
 				return;
@@ -362,7 +360,7 @@ public class TopicImpl extends EObjectImpl implements Topic {
 				getPosts().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -370,8 +368,9 @@ public class TopicImpl extends EObjectImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case ForumPackage.TOPIC__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case ForumPackage.TOPIC__CATEGORY:
@@ -381,7 +380,7 @@ public class TopicImpl extends EObjectImpl implements Topic {
 			case ForumPackage.TOPIC__POSTS:
 				return posts != null && !posts.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -389,6 +388,7 @@ public class TopicImpl extends EObjectImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonaeTypeImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: PersonaeTypeImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.emf.teneo.samples.emf.sample.play.PersonaGroupType;
 import org.eclipse.emf.teneo.samples.emf.sample.play.PersonaeType;
 import org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage;
 
@@ -66,8 +67,9 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PlayPackage.eINSTANCE.getPersonaeType();
+		return PlayPackage.Literals.PERSONAE_TYPE;
 	}
 
 	/**
@@ -87,8 +89,8 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTitle() {
-		return ((FeatureMap)getGroup()).list(PlayPackage.eINSTANCE.getPersonaeType_Title());
+	public EList<String> getTitle() {
+		return getGroup().list(PlayPackage.Literals.PERSONAE_TYPE__TITLE);
 	}
 
 	/**
@@ -96,8 +98,8 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPersona() {
-		return ((FeatureMap)getGroup()).list(PlayPackage.eINSTANCE.getPersonaeType_Persona());
+	public EList<String> getPersona() {
+		return getGroup().list(PlayPackage.Literals.PERSONAE_TYPE__PERSONA);
 	}
 
 	/**
@@ -105,8 +107,8 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPersonaGroup() {
-		return ((FeatureMap)getGroup()).list(PlayPackage.eINSTANCE.getPersonaeType_PersonaGroup());
+	public EList<PersonaGroupType> getPersonaGroup() {
+		return getGroup().list(PlayPackage.Literals.PERSONAE_TYPE__PERSONA_GROUP);
 	}
 
 	/**
@@ -114,29 +116,28 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PlayPackage.PERSONAE_TYPE__GROUP:
-					return ((InternalEList)getGroup()).basicRemove(otherEnd, msgs);
-				case PlayPackage.PERSONAE_TYPE__PERSONA_GROUP:
-					return ((InternalEList)getPersonaGroup()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case PlayPackage.PERSONAE_TYPE__GROUP:
-				return getGroup();
+				return ((InternalEList<?>)getGroup()).basicRemove(otherEnd, msgs);
+			case PlayPackage.PERSONAE_TYPE__PERSONA_GROUP:
+				return ((InternalEList<?>)getPersonaGroup()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case PlayPackage.PERSONAE_TYPE__GROUP:
+				if (coreType) return getGroup();
+				return ((FeatureMap.Internal)getGroup()).getWrapper();
 			case PlayPackage.PERSONAE_TYPE__TITLE:
 				return getTitle();
 			case PlayPackage.PERSONAE_TYPE__PERSONA:
@@ -144,7 +145,7 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 			case PlayPackage.PERSONAE_TYPE__PERSONA_GROUP:
 				return getPersonaGroup();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -152,26 +153,27 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PlayPackage.PERSONAE_TYPE__GROUP:
-				getGroup().clear();
-				getGroup().addAll((Collection)newValue);
+				((FeatureMap.Internal)getGroup()).set(newValue);
 				return;
 			case PlayPackage.PERSONAE_TYPE__TITLE:
 				getTitle().clear();
-				getTitle().addAll((Collection)newValue);
+				getTitle().addAll((Collection<? extends String>)newValue);
 				return;
 			case PlayPackage.PERSONAE_TYPE__PERSONA:
 				getPersona().clear();
-				getPersona().addAll((Collection)newValue);
+				getPersona().addAll((Collection<? extends String>)newValue);
 				return;
 			case PlayPackage.PERSONAE_TYPE__PERSONA_GROUP:
 				getPersonaGroup().clear();
-				getPersonaGroup().addAll((Collection)newValue);
+				getPersonaGroup().addAll((Collection<? extends PersonaGroupType>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -179,8 +181,9 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PlayPackage.PERSONAE_TYPE__GROUP:
 				getGroup().clear();
 				return;
@@ -194,7 +197,7 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 				getPersonaGroup().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -202,8 +205,9 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PlayPackage.PERSONAE_TYPE__GROUP:
 				return group != null && !group.isEmpty();
 			case PlayPackage.PERSONAE_TYPE__TITLE:
@@ -213,7 +217,7 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 			case PlayPackage.PERSONAE_TYPE__PERSONA_GROUP:
 				return !getPersonaGroup().isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -221,6 +225,7 @@ public class PersonaeTypeImpl extends EObjectImpl implements PersonaeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

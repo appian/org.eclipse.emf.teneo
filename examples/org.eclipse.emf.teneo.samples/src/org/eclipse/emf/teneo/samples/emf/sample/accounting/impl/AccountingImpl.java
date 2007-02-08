@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AccountingImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: AccountingImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting.impl;
 
@@ -87,7 +87,7 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList accountGroup = null;
+	protected EList<AccountGroup> accountGroup = null;
 
 	/**
 	 * The cached value of the '{@link #getVat() <em>Vat</em>}' containment reference list.
@@ -97,7 +97,7 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList vat = null;
+	protected EList<Vat> vat = null;
 
 	/**
 	 * The cached value of the '{@link #getVatAccount() <em>Vat Account</em>}' reference.
@@ -127,7 +127,7 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList journalGroup = null;
+	protected EList<JournalGroup> journalGroup = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,8 +143,9 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return AccountingPackage.eINSTANCE.getAccounting();
+		return AccountingPackage.Literals.ACCOUNTING;
 	}
 
 	/**
@@ -198,9 +199,9 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAccountGroup() {
+	public EList<AccountGroup> getAccountGroup() {
 		if (accountGroup == null) {
-			accountGroup = new EObjectContainmentEList(AccountGroup.class, this, AccountingPackage.ACCOUNTING__ACCOUNT_GROUP);
+			accountGroup = new EObjectContainmentEList<AccountGroup>(AccountGroup.class, this, AccountingPackage.ACCOUNTING__ACCOUNT_GROUP);
 		}
 		return accountGroup;
 	}
@@ -210,9 +211,9 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getVat() {
+	public EList<Vat> getVat() {
 		if (vat == null) {
-			vat = new EObjectContainmentEList(Vat.class, this, AccountingPackage.ACCOUNTING__VAT);
+			vat = new EObjectContainmentEList<Vat>(Vat.class, this, AccountingPackage.ACCOUNTING__VAT);
 		}
 		return vat;
 	}
@@ -286,9 +287,9 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getJournalGroup() {
+	public EList<JournalGroup> getJournalGroup() {
 		if (journalGroup == null) {
-			journalGroup = new EObjectContainmentEList(JournalGroup.class, this, AccountingPackage.ACCOUNTING__JOURNAL_GROUP);
+			journalGroup = new EObjectContainmentEList<JournalGroup>(JournalGroup.class, this, AccountingPackage.ACCOUNTING__JOURNAL_GROUP);
 		}
 		return journalGroup;
 	}
@@ -298,22 +299,19 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case AccountingPackage.ACCOUNTING__ACCOUNT_GROUP:
-					return ((InternalEList)getAccountGroup()).basicRemove(otherEnd, msgs);
-				case AccountingPackage.ACCOUNTING__VAT:
-					return ((InternalEList)getVat()).basicRemove(otherEnd, msgs);
-				case AccountingPackage.ACCOUNTING__REPORT:
-					return basicSetReport(null, msgs);
-				case AccountingPackage.ACCOUNTING__JOURNAL_GROUP:
-					return ((InternalEList)getJournalGroup()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AccountingPackage.ACCOUNTING__ACCOUNT_GROUP:
+				return ((InternalEList<?>)getAccountGroup()).basicRemove(otherEnd, msgs);
+			case AccountingPackage.ACCOUNTING__VAT:
+				return ((InternalEList<?>)getVat()).basicRemove(otherEnd, msgs);
+			case AccountingPackage.ACCOUNTING__REPORT:
+				return basicSetReport(null, msgs);
+			case AccountingPackage.ACCOUNTING__JOURNAL_GROUP:
+				return ((InternalEList<?>)getJournalGroup()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -321,8 +319,9 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case AccountingPackage.ACCOUNTING__NAME:
 				return getName();
 			case AccountingPackage.ACCOUNTING__ACCOUNT_GROUP:
@@ -336,7 +335,7 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 			case AccountingPackage.ACCOUNTING__JOURNAL_GROUP:
 				return getJournalGroup();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -344,18 +343,20 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case AccountingPackage.ACCOUNTING__NAME:
 				setName((String)newValue);
 				return;
 			case AccountingPackage.ACCOUNTING__ACCOUNT_GROUP:
 				getAccountGroup().clear();
-				getAccountGroup().addAll((Collection)newValue);
+				getAccountGroup().addAll((Collection<? extends AccountGroup>)newValue);
 				return;
 			case AccountingPackage.ACCOUNTING__VAT:
 				getVat().clear();
-				getVat().addAll((Collection)newValue);
+				getVat().addAll((Collection<? extends Vat>)newValue);
 				return;
 			case AccountingPackage.ACCOUNTING__VAT_ACCOUNT:
 				setVatAccount((BalanceAccount)newValue);
@@ -365,10 +366,10 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 				return;
 			case AccountingPackage.ACCOUNTING__JOURNAL_GROUP:
 				getJournalGroup().clear();
-				getJournalGroup().addAll((Collection)newValue);
+				getJournalGroup().addAll((Collection<? extends JournalGroup>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -376,8 +377,9 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.ACCOUNTING__NAME:
 				unsetName();
 				return;
@@ -397,7 +399,7 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 				getJournalGroup().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -405,8 +407,9 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.ACCOUNTING__NAME:
 				return isSetName();
 			case AccountingPackage.ACCOUNTING__ACCOUNT_GROUP:
@@ -420,7 +423,7 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 			case AccountingPackage.ACCOUNTING__JOURNAL_GROUP:
 				return journalGroup != null && !journalGroup.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -428,6 +431,7 @@ public class AccountingImpl extends EObjectImpl implements Accounting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LazySwitch.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: LazySwitch.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.lazy.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.lazy.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.lazy.LazyPackage
  * @generated
  */
-public class LazySwitch {
+public class LazySwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class LazySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class LazySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,23 @@ public class LazySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case LazyPackage.BOOK: {
 				Book book = (Book)theEObject;
-				Object result = caseBook(book);
+				T result = caseBook(book);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LazyPackage.LIBRARY: {
 				Library library = (Library)theEObject;
-				Object result = caseLibrary(library);
+				T result = caseLibrary(library);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LazyPackage.WRITER: {
 				Writer writer = (Writer)theEObject;
-				Object result = caseWriter(writer);
+				T result = caseWriter(writer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,7 +120,7 @@ public class LazySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBook(Book object) {
+	public T caseBook(Book object) {
 		return null;
 	}
 
@@ -135,7 +135,7 @@ public class LazySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLibrary(Library object) {
+	public T caseLibrary(Library object) {
 		return null;
 	}
 
@@ -150,7 +150,7 @@ public class LazySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseWriter(Writer object) {
+	public T caseWriter(Writer object) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class LazySwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

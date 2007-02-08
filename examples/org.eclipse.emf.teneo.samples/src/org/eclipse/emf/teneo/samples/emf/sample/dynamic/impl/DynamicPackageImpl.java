@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DynamicPackageImpl.java,v 1.1 2006/07/11 16:57:18 mtaal Exp $
+ * $Id: DynamicPackageImpl.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl;
 
@@ -208,6 +208,10 @@ public class DynamicPackageImpl extends EPackageImpl implements DynamicPackage {
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

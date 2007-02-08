@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MixedFactory.java,v 1.1 2006/07/11 16:57:02 mtaal Exp $
+ * $Id: MixedFactory.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed;
 
@@ -18,12 +18,18 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface MixedFactory extends EFactory {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	MixedFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.MixedFactoryImpl();
+	MixedFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.schemaconstructs.mixed.impl.MixedFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Document Root</em>'.

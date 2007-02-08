@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookCategoryType1.java,v 1.1 2006/07/11 16:57:16 mtaal Exp $
+ * $Id: BookCategoryType1.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.sunBooks;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,44 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class BookCategoryType1 extends AbstractEnumerator {
+public enum BookCategoryType1 implements Enumerator
+{
+	/**
+	 * The '<em><b>Magazine</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MAGAZINE
+	 * @generated
+	 * @ordered
+	 */
+	MAGAZINE_LITERAL(0, "magazine", "magazine"),
+	/**
+	 * The '<em><b>Novel</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NOVEL
+	 * @generated
+	 * @ordered
+	 */
+	NOVEL_LITERAL(1, "novel", "novel"),
+	/**
+	 * The '<em><b>Fiction</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #FICTION
+	 * @generated
+	 * @ordered
+	 */
+	FICTION_LITERAL(2, "fiction", "fiction"),
+	/**
+	 * The '<em><b>Other</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OTHER
+	 * @generated
+	 * @ordered
+	 */
+	OTHER_LITERAL(3, "other", "other");
 	/**
 	 * The '<em><b>Magazine</b></em>' literal value.
 	 * <!-- begin-user-doc -->
@@ -83,46 +120,6 @@ public final class BookCategoryType1 extends AbstractEnumerator {
 	public static final int OTHER = 3;
 
 	/**
-	 * The '<em><b>Magazine</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #MAGAZINE
-	 * @generated
-	 * @ordered
-	 */
-	public static final BookCategoryType1 MAGAZINE_LITERAL = new BookCategoryType1(MAGAZINE, "magazine");
-
-	/**
-	 * The '<em><b>Novel</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NOVEL
-	 * @generated
-	 * @ordered
-	 */
-	public static final BookCategoryType1 NOVEL_LITERAL = new BookCategoryType1(NOVEL, "novel");
-
-	/**
-	 * The '<em><b>Fiction</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #FICTION
-	 * @generated
-	 * @ordered
-	 */
-	public static final BookCategoryType1 FICTION_LITERAL = new BookCategoryType1(FICTION, "fiction");
-
-	/**
-	 * The '<em><b>Other</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #OTHER
-	 * @generated
-	 * @ordered
-	 */
-	public static final BookCategoryType1 OTHER_LITERAL = new BookCategoryType1(OTHER, "other");
-
-	/**
 	 * An array of all the '<em><b>Book Category Type1</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -142,18 +139,18 @@ public final class BookCategoryType1 extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<BookCategoryType1> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Book Category Type1</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Book Category Type1</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static BookCategoryType1 get(String name) {
+	public static BookCategoryType1 get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			BookCategoryType1 result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -161,7 +158,23 @@ public final class BookCategoryType1 extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Book Category Type1</b></em>' literal with the specified value.
+	 * Returns the '<em><b>Book Category Type1</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static BookCategoryType1 getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			BookCategoryType1 result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Book Category Type1</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -173,8 +186,29 @@ public final class BookCategoryType1 extends AbstractEnumerator {
 			case FICTION: return FICTION_LITERAL;
 			case OTHER: return OTHER_LITERAL;
 		}
-		return null;	
+		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -182,8 +216,47 @@ public final class BookCategoryType1 extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private BookCategoryType1(int value, String name) {
-		super(value, name);
+	private BookCategoryType1(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //BookCategoryType1
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

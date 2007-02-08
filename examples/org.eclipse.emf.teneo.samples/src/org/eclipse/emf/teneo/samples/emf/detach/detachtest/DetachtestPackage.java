@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DetachtestPackage.java,v 1.1 2006/07/11 16:57:02 mtaal Exp $
+ * $Id: DetachtestPackage.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest;
 
@@ -41,7 +41,7 @@ public interface DetachtestPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/detach/detachtest";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/detach/detachtest";
 
 	/**
 	 * The package namespace name.
@@ -88,7 +88,7 @@ public interface DetachtestPackage extends EPackage {
 	int TEST_A__TEST_B = 1;
 
 	/**
-	 * The number of structural features of the the '<em>Test A</em>' class.
+	 * The number of structural features of the '<em>Test A</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -116,7 +116,7 @@ public interface DetachtestPackage extends EPackage {
 	int TEST_B__CODE = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Test B</em>' class.
+	 * The number of structural features of the '<em>Test B</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -162,7 +162,7 @@ public interface DetachtestPackage extends EPackage {
 	int TEST_C__TEST_B = 2;
 
 	/**
-	 * The number of structural features of the the '<em>Test C</em>' class.
+	 * The number of structural features of the '<em>Test C</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -275,5 +275,98 @@ public interface DetachtestPackage extends EPackage {
 	 * @generated
 	 */
 	DetachtestFactory getDetachtestFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl.TestAImpl <em>Test A</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl.TestAImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl.DetachtestPackageImpl#getTestA()
+		 * @generated
+		 */
+		EClass TEST_A = eINSTANCE.getTestA();
+
+		/**
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_A__CODE = eINSTANCE.getTestA_Code();
+
+		/**
+		 * The meta object literal for the '<em><b>Test B</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_A__TEST_B = eINSTANCE.getTestA_TestB();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl.TestBImpl <em>Test B</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl.TestBImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl.DetachtestPackageImpl#getTestB()
+		 * @generated
+		 */
+		EClass TEST_B = eINSTANCE.getTestB();
+
+		/**
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_B__CODE = eINSTANCE.getTestB_Code();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl.TestCImpl <em>Test C</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl.TestCImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl.DetachtestPackageImpl#getTestC()
+		 * @generated
+		 */
+		EClass TEST_C = eINSTANCE.getTestC();
+
+		/**
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_C__CODE = eINSTANCE.getTestC_Code();
+
+		/**
+		 * The meta object literal for the '<em><b>My Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_C__MY_DATE = eINSTANCE.getTestC_MyDate();
+
+		/**
+		 * The meta object literal for the '<em><b>Test B</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_C__TEST_B = eINSTANCE.getTestC_TestB();
+
+	}
 
 } //DetachtestPackage

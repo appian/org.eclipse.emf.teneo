@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NmsetPackageImpl.java,v 1.3 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: NmsetPackageImpl.java,v 1.4 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.nmset.impl;
 
@@ -225,6 +225,10 @@ public class NmsetPackageImpl extends EPackageImpl implements NmsetPackage {
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

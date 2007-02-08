@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: Person.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.dynamic;
 
@@ -91,7 +91,7 @@ public interface Person extends EObject {
 	 *        extendedMetaData="kind='element' name='age' group='#group:1'"
 	 * @generated
 	 */
-	EList getAge();
+	EList<Integer> getAge();
 
 	/**
 	 * Returns the value of the '<em><b>Length</b></em>' attribute list.
@@ -108,6 +108,6 @@ public interface Person extends EObject {
 	 *        extendedMetaData="kind='element' name='length' group='#group:1'"
 	 * @generated
 	 */
-	EList getLength();
+	EList<Integer> getLength();
 
 } // Person

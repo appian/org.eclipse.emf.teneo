@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EcoreattrsSwitch.java,v 1.1 2006/07/11 16:56:55 mtaal Exp $
+ * $Id: EcoreattrsSwitch.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.*;
  * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.EcoreattrsPackage
  * @generated
  */
-public class EcoreattrsSwitch {
+public class EcoreattrsSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class EcoreattrsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class EcoreattrsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,29 +85,29 @@ public class EcoreattrsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case EcoreattrsPackage.ELEMENT: {
 				Element element = (Element)theEObject;
-				Object result = caseElement(element);
+				T result = caseElement(element);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EcoreattrsPackage.FEATURE: {
 				Feature feature = (Feature)theEObject;
-				Object result = caseFeature(feature);
+				T result = caseFeature(feature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EcoreattrsPackage.MIXED: {
 				Mixed mixed = (Mixed)theEObject;
-				Object result = caseMixed(mixed);
+				T result = caseMixed(mixed);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EcoreattrsPackage.NAME_LIST: {
 				NameList nameList = (NameList)theEObject;
-				Object result = caseNameList(nameList);
+				T result = caseNameList(nameList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -126,7 +126,7 @@ public class EcoreattrsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseElement(Element object) {
+	public T caseElement(Element object) {
 		return null;
 	}
 
@@ -141,7 +141,7 @@ public class EcoreattrsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFeature(Feature object) {
+	public T caseFeature(Feature object) {
 		return null;
 	}
 
@@ -156,7 +156,7 @@ public class EcoreattrsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMixed(Mixed object) {
+	public T caseMixed(Mixed object) {
 		return null;
 	}
 
@@ -171,7 +171,7 @@ public class EcoreattrsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseNameList(NameList object) {
+	public T caseNameList(NameList object) {
 		return null;
 	}
 
@@ -186,7 +186,7 @@ public class EcoreattrsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

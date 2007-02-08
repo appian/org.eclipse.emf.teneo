@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryFactory.java,v 1.1 2006/07/11 16:57:00 mtaal Exp $
+ * $Id: LibraryFactory.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library;
 
@@ -23,7 +23,7 @@ public interface LibraryFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	LibraryFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.impl.LibraryFactoryImpl();
+	LibraryFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.impl.LibraryFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Book</em>'.

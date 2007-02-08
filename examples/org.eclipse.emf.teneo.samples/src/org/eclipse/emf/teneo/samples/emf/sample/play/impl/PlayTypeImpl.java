@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PlayTypeImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: PlayTypeImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.impl;
 
@@ -136,7 +136,7 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList act = null;
+	protected EList<ActType> act = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,8 +152,9 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PlayPackage.eINSTANCE.getPlayType();
+		return PlayPackage.Literals.PLAY_TYPE;
 	}
 
 	/**
@@ -310,9 +311,9 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAct() {
+	public EList<ActType> getAct() {
 		if (act == null) {
-			act = new EObjectContainmentEList(ActType.class, this, PlayPackage.PLAY_TYPE__ACT);
+			act = new EObjectContainmentEList<ActType>(ActType.class, this, PlayPackage.PLAY_TYPE__ACT);
 		}
 		return act;
 	}
@@ -322,20 +323,17 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PlayPackage.PLAY_TYPE__FM:
-					return basicSetFm(null, msgs);
-				case PlayPackage.PLAY_TYPE__PERSONAE:
-					return basicSetPersonae(null, msgs);
-				case PlayPackage.PLAY_TYPE__ACT:
-					return ((InternalEList)getAct()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PlayPackage.PLAY_TYPE__FM:
+				return basicSetFm(null, msgs);
+			case PlayPackage.PLAY_TYPE__PERSONAE:
+				return basicSetPersonae(null, msgs);
+			case PlayPackage.PLAY_TYPE__ACT:
+				return ((InternalEList<?>)getAct()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -343,8 +341,9 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PlayPackage.PLAY_TYPE__TITLE:
 				return getTitle();
 			case PlayPackage.PLAY_TYPE__FM:
@@ -358,7 +357,7 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 			case PlayPackage.PLAY_TYPE__ACT:
 				return getAct();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -366,8 +365,10 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PlayPackage.PLAY_TYPE__TITLE:
 				setTitle((String)newValue);
 				return;
@@ -385,10 +386,10 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 				return;
 			case PlayPackage.PLAY_TYPE__ACT:
 				getAct().clear();
-				getAct().addAll((Collection)newValue);
+				getAct().addAll((Collection<? extends ActType>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -396,8 +397,9 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PlayPackage.PLAY_TYPE__TITLE:
 				setTitle(TITLE_EDEFAULT);
 				return;
@@ -417,7 +419,7 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 				getAct().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -425,8 +427,9 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PlayPackage.PLAY_TYPE__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case PlayPackage.PLAY_TYPE__FM:
@@ -440,7 +443,7 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 			case PlayPackage.PLAY_TYPE__ACT:
 				return act != null && !act.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -448,6 +451,7 @@ public class PlayTypeImpl extends EObjectImpl implements PlayType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

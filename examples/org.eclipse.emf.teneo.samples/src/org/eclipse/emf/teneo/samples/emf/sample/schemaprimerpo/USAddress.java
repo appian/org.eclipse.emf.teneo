@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: USAddress.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: USAddress.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo;
 
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getUSAddress()
+ * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getUSAddress()
  * @model extendedMetaData="name='USAddress' kind='elementOnly'"
  * @generated
  */
@@ -42,7 +42,7 @@ public interface USAddress extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getUSAddress_Name()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getUSAddress_Name()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
@@ -69,7 +69,7 @@ public interface USAddress extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Street</em>' attribute.
 	 * @see #setStreet(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getUSAddress_Street()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getUSAddress_Street()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='street'"
 	 * @generated
@@ -96,7 +96,7 @@ public interface USAddress extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>City</em>' attribute.
 	 * @see #setCity(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getUSAddress_City()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getUSAddress_City()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='city'"
 	 * @generated
@@ -123,7 +123,7 @@ public interface USAddress extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>State</em>' attribute.
 	 * @see #setState(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getUSAddress_State()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getUSAddress_State()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='state'"
 	 * @generated
@@ -150,7 +150,7 @@ public interface USAddress extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Zip</em>' attribute.
 	 * @see #setZip(BigDecimal)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getUSAddress_Zip()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getUSAddress_Zip()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Decimal" required="true"
 	 *        extendedMetaData="kind='element' name='zip'"
 	 * @generated
@@ -180,7 +180,7 @@ public interface USAddress extends EObject {
 	 * @see #isSetCountry()
 	 * @see #unsetCountry()
 	 * @see #setCountry(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getUSAddress_Country()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getUSAddress_Country()
 	 * @model default="US" unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.NMTOKEN"
 	 *        extendedMetaData="kind='attribute' name='country'"
 	 * @generated

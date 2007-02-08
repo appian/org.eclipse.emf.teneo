@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: BookImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.impl;
 
@@ -122,8 +122,9 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return LibraryPackage.eINSTANCE.getBook();
+		return LibraryPackage.Literals.BOOK;
 	}
 
 	/**
@@ -196,8 +197,8 @@ public class BookImpl extends EObjectImpl implements Book {
 	 */
 	public Writer getAuthor() {
 		if (author != null && author.eIsProxy()) {
-			Writer oldAuthor = author;
-			author = (Writer)eResolveProxy((InternalEObject)author);
+			InternalEObject oldAuthor = (InternalEObject)author;
+			author = (Writer)eResolveProxy(oldAuthor);
 			if (author != oldAuthor) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LibraryPackage.BOOK__AUTHOR, oldAuthor, author));
@@ -254,20 +255,15 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case LibraryPackage.BOOK__AUTHOR:
-					if (author != null)
-						msgs = ((InternalEObject)author).eInverseRemove(this, LibraryPackage.WRITER__BOOKS, Writer.class, msgs);
-					return basicSetAuthor((Writer)otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case LibraryPackage.BOOK__AUTHOR:
+				if (author != null)
+					msgs = ((InternalEObject)author).eInverseRemove(this, LibraryPackage.WRITER__BOOKS, Writer.class, msgs);
+				return basicSetAuthor((Writer)otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -275,16 +271,13 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case LibraryPackage.BOOK__AUTHOR:
-					return basicSetAuthor(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case LibraryPackage.BOOK__AUTHOR:
+				return basicSetAuthor(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -292,8 +285,9 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case LibraryPackage.BOOK__TITLE:
 				return getTitle();
 			case LibraryPackage.BOOK__PAGES:
@@ -304,7 +298,7 @@ public class BookImpl extends EObjectImpl implements Book {
 				if (resolve) return getAuthor();
 				return basicGetAuthor();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -312,8 +306,9 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case LibraryPackage.BOOK__TITLE:
 				setTitle((String)newValue);
 				return;
@@ -327,7 +322,7 @@ public class BookImpl extends EObjectImpl implements Book {
 				setAuthor((Writer)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -335,8 +330,9 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case LibraryPackage.BOOK__TITLE:
 				setTitle(TITLE_EDEFAULT);
 				return;
@@ -350,7 +346,7 @@ public class BookImpl extends EObjectImpl implements Book {
 				setAuthor((Writer)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -358,8 +354,9 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case LibraryPackage.BOOK__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case LibraryPackage.BOOK__PAGES:
@@ -369,7 +366,7 @@ public class BookImpl extends EObjectImpl implements Book {
 			case LibraryPackage.BOOK__AUTHOR:
 				return author != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -377,6 +374,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

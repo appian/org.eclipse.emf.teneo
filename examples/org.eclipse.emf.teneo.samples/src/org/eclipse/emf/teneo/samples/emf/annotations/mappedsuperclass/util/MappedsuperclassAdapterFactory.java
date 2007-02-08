@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassAdapterFactory.java,v 1.2 2006/11/12 00:08:30 mtaal Exp $
+ * $Id: MappedsuperclassAdapterFactory.java,v 1.3 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.util;
 
@@ -24,6 +24,12 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.*;
  * @generated
  */
 public class MappedsuperclassAdapterFactory extends AdapterFactoryImpl {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
@@ -52,6 +58,7 @@ public class MappedsuperclassAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,21 +75,26 @@ public class MappedsuperclassAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MappedsuperclassSwitch modelSwitch =
-		new MappedsuperclassSwitch() {
-			public Object caseAddIDDocument(AddIDDocument object) {
+	protected MappedsuperclassSwitch<Adapter> modelSwitch =
+		new MappedsuperclassSwitch<Adapter>() {
+			@Override
+			public Adapter caseAddIDDocument(AddIDDocument object) {
 				return createAddIDDocumentAdapter();
 			}
-			public Object caseDocument(Document object) {
+			@Override
+			public Adapter caseDocument(Document object) {
 				return createDocumentAdapter();
 			}
-			public Object caseParentDocument(ParentDocument object) {
+			@Override
+			public Adapter caseParentDocument(ParentDocument object) {
 				return createParentDocumentAdapter();
 			}
-			public Object caseSpecificDocument(SpecificDocument object) {
+			@Override
+			public Adapter caseSpecificDocument(SpecificDocument object) {
 				return createSpecificDocumentAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -95,8 +107,9 @@ public class MappedsuperclassAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

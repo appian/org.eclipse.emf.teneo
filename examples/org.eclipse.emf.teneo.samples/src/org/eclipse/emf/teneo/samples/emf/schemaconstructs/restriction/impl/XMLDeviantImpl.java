@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: XMLDeviantImpl.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: XMLDeviantImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.restriction.impl;
 
@@ -160,8 +160,9 @@ public class XMLDeviantImpl extends EObjectImpl implements XMLDeviant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return RestrictionPackage.eINSTANCE.getXMLDeviant();
+		return RestrictionPackage.Literals.XML_DEVIANT;
 	}
 
 	/**
@@ -299,8 +300,9 @@ public class XMLDeviantImpl extends EObjectImpl implements XMLDeviant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case RestrictionPackage.XML_DEVIANT__NUM_POSTS:
 				return getNumPosts();
 			case RestrictionPackage.XML_DEVIANT__SIGNATURE:
@@ -312,7 +314,7 @@ public class XMLDeviantImpl extends EObjectImpl implements XMLDeviant {
 			case RestrictionPackage.XML_DEVIANT__MAIL_READER:
 				return getMailReader();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -320,8 +322,9 @@ public class XMLDeviantImpl extends EObjectImpl implements XMLDeviant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case RestrictionPackage.XML_DEVIANT__NUM_POSTS:
 				setNumPosts((BigInteger)newValue);
 				return;
@@ -332,13 +335,13 @@ public class XMLDeviantImpl extends EObjectImpl implements XMLDeviant {
 				setEmail((String)newValue);
 				return;
 			case RestrictionPackage.XML_DEVIANT__FIRST_SUBSCRIBED:
-				setFirstSubscribed((Object)newValue);
+				setFirstSubscribed(newValue);
 				return;
 			case RestrictionPackage.XML_DEVIANT__MAIL_READER:
 				setMailReader((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -346,8 +349,9 @@ public class XMLDeviantImpl extends EObjectImpl implements XMLDeviant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case RestrictionPackage.XML_DEVIANT__NUM_POSTS:
 				setNumPosts(NUM_POSTS_EDEFAULT);
 				return;
@@ -364,7 +368,7 @@ public class XMLDeviantImpl extends EObjectImpl implements XMLDeviant {
 				setMailReader(MAIL_READER_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -372,8 +376,9 @@ public class XMLDeviantImpl extends EObjectImpl implements XMLDeviant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case RestrictionPackage.XML_DEVIANT__NUM_POSTS:
 				return NUM_POSTS_EDEFAULT == null ? numPosts != null : !NUM_POSTS_EDEFAULT.equals(numPosts);
 			case RestrictionPackage.XML_DEVIANT__SIGNATURE:
@@ -385,7 +390,7 @@ public class XMLDeviantImpl extends EObjectImpl implements XMLDeviant {
 			case RestrictionPackage.XML_DEVIANT__MAIL_READER:
 				return MAIL_READER_EDEFAULT == null ? mailReader != null : !MAIL_READER_EDEFAULT.equals(mailReader);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -393,6 +398,7 @@ public class XMLDeviantImpl extends EObjectImpl implements XMLDeviant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonaGroupTypeImpl.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: PersonaGroupTypeImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play.impl;
 
@@ -46,7 +46,7 @@ public class PersonaGroupTypeImpl extends EObjectImpl implements PersonaGroupTyp
 	 * @generated
 	 * @ordered
 	 */
-	protected EList persona = null;
+	protected EList<String> persona = null;
 
 	/**
 	 * The default value of the '{@link #getGroupDescription() <em>Group Description</em>}' attribute.
@@ -82,8 +82,9 @@ public class PersonaGroupTypeImpl extends EObjectImpl implements PersonaGroupTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PlayPackage.eINSTANCE.getPersonaGroupType();
+		return PlayPackage.Literals.PERSONA_GROUP_TYPE;
 	}
 
 	/**
@@ -91,9 +92,9 @@ public class PersonaGroupTypeImpl extends EObjectImpl implements PersonaGroupTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPersona() {
+	public EList<String> getPersona() {
 		if (persona == null) {
-			persona = new EDataTypeEList(String.class, this, PlayPackage.PERSONA_GROUP_TYPE__PERSONA);
+			persona = new EDataTypeEList<String>(String.class, this, PlayPackage.PERSONA_GROUP_TYPE__PERSONA);
 		}
 		return persona;
 	}
@@ -124,14 +125,15 @@ public class PersonaGroupTypeImpl extends EObjectImpl implements PersonaGroupTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case PlayPackage.PERSONA_GROUP_TYPE__PERSONA:
 				return getPersona();
 			case PlayPackage.PERSONA_GROUP_TYPE__GROUP_DESCRIPTION:
 				return getGroupDescription();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -139,17 +141,19 @@ public class PersonaGroupTypeImpl extends EObjectImpl implements PersonaGroupTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case PlayPackage.PERSONA_GROUP_TYPE__PERSONA:
 				getPersona().clear();
-				getPersona().addAll((Collection)newValue);
+				getPersona().addAll((Collection<? extends String>)newValue);
 				return;
 			case PlayPackage.PERSONA_GROUP_TYPE__GROUP_DESCRIPTION:
 				setGroupDescription((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -157,8 +161,9 @@ public class PersonaGroupTypeImpl extends EObjectImpl implements PersonaGroupTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case PlayPackage.PERSONA_GROUP_TYPE__PERSONA:
 				getPersona().clear();
 				return;
@@ -166,7 +171,7 @@ public class PersonaGroupTypeImpl extends EObjectImpl implements PersonaGroupTyp
 				setGroupDescription(GROUP_DESCRIPTION_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -174,14 +179,15 @@ public class PersonaGroupTypeImpl extends EObjectImpl implements PersonaGroupTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case PlayPackage.PERSONA_GROUP_TYPE__PERSONA:
 				return persona != null && !persona.isEmpty();
 			case PlayPackage.PERSONA_GROUP_TYPE__GROUP_DESCRIPTION:
 				return GROUP_DESCRIPTION_EDEFAULT == null ? groupDescription != null : !GROUP_DESCRIPTION_EDEFAULT.equals(groupDescription);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -189,6 +195,7 @@ public class PersonaGroupTypeImpl extends EObjectImpl implements PersonaGroupTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

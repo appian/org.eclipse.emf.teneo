@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassSwitch.java,v 1.2 2006/11/12 00:08:30 mtaal Exp $
+ * $Id: MappedsuperclassSwitch.java,v 1.3 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.util;
 
@@ -26,7 +26,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage
  * @generated
  */
-public class MappedsuperclassSwitch {
+public class MappedsuperclassSwitch<T> {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "";
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +60,7 @@ public class MappedsuperclassSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +71,16 @@ public class MappedsuperclassSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,31 +91,31 @@ public class MappedsuperclassSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case MappedsuperclassPackage.ADD_ID_DOCUMENT: {
 				AddIDDocument addIDDocument = (AddIDDocument)theEObject;
-				Object result = caseAddIDDocument(addIDDocument);
+				T result = caseAddIDDocument(addIDDocument);
 				if (result == null) result = caseDocument(addIDDocument);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case MappedsuperclassPackage.DOCUMENT: {
 				Document document = (Document)theEObject;
-				Object result = caseDocument(document);
+				T result = caseDocument(document);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case MappedsuperclassPackage.PARENT_DOCUMENT: {
 				ParentDocument parentDocument = (ParentDocument)theEObject;
-				Object result = caseParentDocument(parentDocument);
+				T result = caseParentDocument(parentDocument);
 				if (result == null) result = caseDocument(parentDocument);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case MappedsuperclassPackage.SPECIFIC_DOCUMENT: {
 				SpecificDocument specificDocument = (SpecificDocument)theEObject;
-				Object result = caseSpecificDocument(specificDocument);
+				T result = caseSpecificDocument(specificDocument);
 				if (result == null) result = caseParentDocument(specificDocument);
 				if (result == null) result = caseDocument(specificDocument);
 				if (result == null) result = defaultCase(theEObject);
@@ -130,7 +136,7 @@ public class MappedsuperclassSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddIDDocument(AddIDDocument object) {
+	public T caseAddIDDocument(AddIDDocument object) {
 		return null;
 	}
 
@@ -145,7 +151,7 @@ public class MappedsuperclassSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDocument(Document object) {
+	public T caseDocument(Document object) {
 		return null;
 	}
 
@@ -160,7 +166,7 @@ public class MappedsuperclassSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseParentDocument(ParentDocument object) {
+	public T caseParentDocument(ParentDocument object) {
 		return null;
 	}
 
@@ -175,7 +181,7 @@ public class MappedsuperclassSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSpecificDocument(SpecificDocument object) {
+	public T caseSpecificDocument(SpecificDocument object) {
 		return null;
 	}
 
@@ -190,7 +196,7 @@ public class MappedsuperclassSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

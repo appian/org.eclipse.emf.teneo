@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: VatImpl.java,v 1.1 2006/07/11 16:56:57 mtaal Exp $
+ * $Id: VatImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.accounting.impl;
 
@@ -95,8 +95,9 @@ public class VatImpl extends EObjectImpl implements Vat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return AccountingPackage.eINSTANCE.getVat();
+		return AccountingPackage.Literals.VAT;
 	}
 
 	/**
@@ -171,14 +172,15 @@ public class VatImpl extends EObjectImpl implements Vat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case AccountingPackage.VAT__NAME:
 				return getName();
 			case AccountingPackage.VAT__RATE:
 				return new Float(getRate());
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -186,8 +188,9 @@ public class VatImpl extends EObjectImpl implements Vat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case AccountingPackage.VAT__NAME:
 				setName((String)newValue);
 				return;
@@ -195,7 +198,7 @@ public class VatImpl extends EObjectImpl implements Vat {
 				setRate(((Float)newValue).floatValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -203,8 +206,9 @@ public class VatImpl extends EObjectImpl implements Vat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.VAT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -212,7 +216,7 @@ public class VatImpl extends EObjectImpl implements Vat {
 				unsetRate();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -220,14 +224,15 @@ public class VatImpl extends EObjectImpl implements Vat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case AccountingPackage.VAT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case AccountingPackage.VAT__RATE:
 				return isSetRate();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -235,6 +240,7 @@ public class VatImpl extends EObjectImpl implements Vat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmapFactoryImpl.java,v 1.1 2006/09/28 20:06:04 mtaal Exp $
+ * $Id: EmapFactoryImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl;
 
@@ -59,6 +59,7 @@ public class EmapFactoryImpl extends EFactoryImpl implements EmapFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EmapPackage.BOOK: return createBook();
@@ -86,7 +87,7 @@ public class EmapFactoryImpl extends EFactoryImpl implements EmapFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry createStringToStringMapEntry() {
+	public Map.Entry<String, String> createStringToStringMapEntry() {
 		StringToStringMapEntryImpl stringToStringMapEntry = new StringToStringMapEntryImpl();
 		return stringToStringMapEntry;
 	}
@@ -96,7 +97,7 @@ public class EmapFactoryImpl extends EFactoryImpl implements EmapFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry createStringToWriterMapEntry() {
+	public Map.Entry<String, Writer> createStringToWriterMapEntry() {
 		StringToWriterMapEntryImpl stringToWriterMapEntry = new StringToWriterMapEntryImpl();
 		return stringToWriterMapEntry;
 	}
@@ -116,7 +117,7 @@ public class EmapFactoryImpl extends EFactoryImpl implements EmapFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry createWriterToStringMapEntry() {
+	public Map.Entry<Writer, String> createWriterToStringMapEntry() {
 		WriterToStringMapEntryImpl writerToStringMapEntry = new WriterToStringMapEntryImpl();
 		return writerToStringMapEntry;
 	}
@@ -136,6 +137,7 @@ public class EmapFactoryImpl extends EFactoryImpl implements EmapFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static EmapPackage getPackage() {
 		return EmapPackage.eINSTANCE;
 	}

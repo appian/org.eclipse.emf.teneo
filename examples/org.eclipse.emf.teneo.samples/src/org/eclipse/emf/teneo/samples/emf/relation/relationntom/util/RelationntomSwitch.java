@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RelationntomSwitch.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: RelationntomSwitch.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relationntom.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.relation.relationntom.*;
  * @see org.eclipse.emf.teneo.samples.emf.relation.relationntom.RelationntomPackage
  * @generated
  */
-public class RelationntomSwitch {
+public class RelationntomSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class RelationntomSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class RelationntomSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,29 +85,29 @@ public class RelationntomSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case RelationntomPackage.MAIN: {
 				Main main = (Main)theEObject;
-				Object result = caseMain(main);
+				T result = caseMain(main);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case RelationntomPackage.MULTI_NN: {
 				MultiNN multiNN = (MultiNN)theEObject;
-				Object result = caseMultiNN(multiNN);
+				T result = caseMultiNN(multiNN);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case RelationntomPackage.MULTI_NR: {
 				MultiNR multiNR = (MultiNR)theEObject;
-				Object result = caseMultiNR(multiNR);
+				T result = caseMultiNR(multiNR);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case RelationntomPackage.MULTI_RN: {
 				MultiRN multiRN = (MultiRN)theEObject;
-				Object result = caseMultiRN(multiRN);
+				T result = caseMultiRN(multiRN);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -126,7 +126,7 @@ public class RelationntomSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMain(Main object) {
+	public T caseMain(Main object) {
 		return null;
 	}
 
@@ -141,7 +141,7 @@ public class RelationntomSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMultiNN(MultiNN object) {
+	public T caseMultiNN(MultiNN object) {
 		return null;
 	}
 
@@ -156,7 +156,7 @@ public class RelationntomSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMultiNR(MultiNR object) {
+	public T caseMultiNR(MultiNR object) {
 		return null;
 	}
 
@@ -171,7 +171,7 @@ public class RelationntomSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMultiRN(MultiRN object) {
+	public T caseMultiRN(MultiRN object) {
 		return null;
 	}
 
@@ -186,7 +186,7 @@ public class RelationntomSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

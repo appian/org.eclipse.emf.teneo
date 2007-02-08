@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TooneAdapterFactory.java,v 1.1 2006/07/11 16:57:03 mtaal Exp $
+ * $Id: TooneAdapterFactory.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.util;
 
@@ -52,6 +52,7 @@ public class TooneAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +69,22 @@ public class TooneAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TooneSwitch modelSwitch =
-		new TooneSwitch() {
-			public Object caseAddress(Address object) {
+	protected TooneSwitch<Adapter> modelSwitch =
+		new TooneSwitch<Adapter>() {
+			@Override
+			public Adapter caseAddress(Address object) {
 				return createAddressAdapter();
 			}
-			public Object caseHead(Head object) {
+			@Override
+			public Adapter caseHead(Head object) {
 				return createHeadAdapter();
 			}
-			public Object casePerson(Person object) {
+			@Override
+			public Adapter casePerson(Person object) {
 				return createPersonAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +97,9 @@ public class TooneAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

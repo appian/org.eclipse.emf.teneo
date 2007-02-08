@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressList.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
+ * $Id: AddressList.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension;
 
@@ -98,6 +98,6 @@ public interface AddressList extends EObject {
 	 *        extendedMetaData="kind='element' name='secondAddress'"
 	 * @generated
 	 */
-	EList getSecondAddress();
+	EList<Address> getSecondAddress();
 
 } // AddressList

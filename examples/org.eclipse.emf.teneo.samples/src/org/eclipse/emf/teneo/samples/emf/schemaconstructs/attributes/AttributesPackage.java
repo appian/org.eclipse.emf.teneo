@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributesPackage.java,v 1.1 2006/07/11 16:57:01 mtaal Exp $
+ * $Id: AttributesPackage.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes;
 
@@ -41,7 +41,7 @@ public interface AttributesPackage extends EPackage{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/attributes";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/attributes";
 
 	/**
 	 * The package namespace name.
@@ -133,7 +133,7 @@ public interface AttributesPackage extends EPackage{
 	int A__MY_R = 6;
 
 	/**
-	 * The number of structural features of the the '<em>A</em>' class.
+	 * The number of structural features of the '<em>A</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -188,7 +188,7 @@ public interface AttributesPackage extends EPackage{
 	int DOCUMENT_ROOT__COMMENT = 3;
 
 	/**
-	 * The number of structural features of the the '<em>Document Root</em>' class.
+	 * The number of structural features of the '<em>Document Root</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -216,7 +216,7 @@ public interface AttributesPackage extends EPackage{
 	int R__NAME = 0;
 
 	/**
-	 * The number of structural features of the the '<em>R</em>' class.
+	 * The number of structural features of the '<em>R</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -395,5 +395,146 @@ public interface AttributesPackage extends EPackage{
 	 * @generated
 	 */
 	AttributesFactory getAttributesFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.AImpl <em>A</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.AImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.AttributesPackageImpl#getA()
+		 * @generated
+		 */
+		EClass A = eINSTANCE.getA();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__NAME = eINSTANCE.getA_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>B</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__B = eINSTANCE.getA_B();
+
+		/**
+		 * The meta object literal for the '<em><b>C</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__C = eINSTANCE.getA_C();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__COMMENT = eINSTANCE.getA_Comment();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__ID = eINSTANCE.getA_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>D</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__D = eINSTANCE.getA_D();
+
+		/**
+		 * The meta object literal for the '<em><b>My R</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference A__MY_R = eINSTANCE.getA_MyR();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.DocumentRootImpl <em>Document Root</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.DocumentRootImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.AttributesPackageImpl#getDocumentRoot()
+		 * @generated
+		 */
+		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__MIXED = eINSTANCE.getDocumentRoot_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>XMLNS Prefix Map</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__XMLNS_PREFIX_MAP = eINSTANCE.getDocumentRoot_XMLNSPrefixMap();
+
+		/**
+		 * The meta object literal for the '<em><b>XSI Schema Location</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = eINSTANCE.getDocumentRoot_XSISchemaLocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT_ROOT__COMMENT = eINSTANCE.getDocumentRoot_Comment();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.RImpl <em>R</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.RImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.AttributesPackageImpl#getR()
+		 * @generated
+		 */
+		EClass R = eINSTANCE.getR();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute R__NAME = eINSTANCE.getR_Name();
+
+	}
 
 } //AttributesPackage

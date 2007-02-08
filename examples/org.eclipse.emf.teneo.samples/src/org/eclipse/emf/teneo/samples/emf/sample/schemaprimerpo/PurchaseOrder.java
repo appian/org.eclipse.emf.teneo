@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PurchaseOrder.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: PurchaseOrder.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getPurchaseOrder()
+ * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getPurchaseOrder()
  * @model extendedMetaData="name='PurchaseOrder' kind='elementOnly'"
  * @generated
  */
@@ -41,8 +41,8 @@ public interface PurchaseOrder extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ship To</em>' containment reference.
 	 * @see #setShipTo(USAddress)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getPurchaseOrder_ShipTo()
-	 * @model containment="true" resolveProxies="false"
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getPurchaseOrder_ShipTo()
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='shipTo'"
 	 * @generated
 	 */
@@ -68,8 +68,8 @@ public interface PurchaseOrder extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bill To</em>' containment reference.
 	 * @see #setBillTo(USAddress)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getPurchaseOrder_BillTo()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getPurchaseOrder_BillTo()
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='billTo'"
 	 * @generated
 	 */
@@ -95,7 +95,7 @@ public interface PurchaseOrder extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Comment</em>' attribute.
 	 * @see #setComment(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getPurchaseOrder_Comment()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getPurchaseOrder_Comment()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='element' name='comment' namespace='##targetNamespace'"
 	 * @generated
@@ -122,12 +122,12 @@ public interface PurchaseOrder extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Items</em>' containment reference list.
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getPurchaseOrder_Items()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item" containment="true" resolveProxies="false"
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getPurchaseOrder_Items()
+	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item" containment="true"
 	 *        extendedMetaData="kind='element' name='items'"
 	 * @generated
 	 */
-	EList getItems();
+	EList<Item> getItems();
 
 	/**
 	 * Returns the value of the '<em><b>Order Date</b></em>' attribute.
@@ -139,7 +139,7 @@ public interface PurchaseOrder extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Order Date</em>' attribute.
 	 * @see #setOrderDate(Object)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getPurchaseOrder_OrderDate()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getPurchaseOrder_OrderDate()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Date"
 	 *        extendedMetaData="kind='attribute' name='orderDate'"
 	 * @generated

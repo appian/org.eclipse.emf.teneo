@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NestedgroupAdapterFactory.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: NestedgroupAdapterFactory.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.util;
 
@@ -52,6 +52,7 @@ public class NestedgroupAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +69,22 @@ public class NestedgroupAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected NestedgroupSwitch modelSwitch =
-		new NestedgroupSwitch() {
-			public Object caseA(A object) {
+	protected NestedgroupSwitch<Adapter> modelSwitch =
+		new NestedgroupSwitch<Adapter>() {
+			@Override
+			public Adapter caseA(A object) {
 				return createAAdapter();
 			}
-			public Object caseCType(CType object) {
+			@Override
+			public Adapter caseCType(CType object) {
 				return createCTypeAdapter();
 			}
-			public Object caseElement(Element object) {
+			@Override
+			public Adapter caseElement(Element object) {
 				return createElementAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +97,9 @@ public class NestedgroupAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

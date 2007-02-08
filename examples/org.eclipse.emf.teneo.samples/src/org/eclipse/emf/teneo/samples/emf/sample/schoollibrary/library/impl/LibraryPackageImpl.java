@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackageImpl.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: LibraryPackageImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.impl;
 
@@ -319,6 +319,10 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		setName(eNAME);
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 

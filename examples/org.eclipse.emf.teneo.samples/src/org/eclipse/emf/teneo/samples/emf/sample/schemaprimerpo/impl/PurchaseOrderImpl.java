@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PurchaseOrderImpl.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: PurchaseOrderImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PurchaseOrder;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.USAddress;
 
 /**
@@ -94,7 +95,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList items = null;
+	protected EList<Item> items = null;
 
 	/**
 	 * The default value of the '{@link #getOrderDate() <em>Order Date</em>}' attribute.
@@ -130,8 +131,9 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return PrimerpoPackage.eINSTANCE.getPurchaseOrder();
+		return SchemaprimerpoPackage.Literals.PURCHASE_ORDER;
 	}
 
 	/**
@@ -152,7 +154,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 		USAddress oldShipTo = shipTo;
 		shipTo = newShipTo;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PrimerpoPackage.PURCHASE_ORDER__SHIP_TO, oldShipTo, newShipTo);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.PURCHASE_ORDER__SHIP_TO, oldShipTo, newShipTo);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -167,14 +169,14 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 		if (newShipTo != shipTo) {
 			NotificationChain msgs = null;
 			if (shipTo != null)
-				msgs = ((InternalEObject)shipTo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PrimerpoPackage.PURCHASE_ORDER__SHIP_TO, null, msgs);
+				msgs = ((InternalEObject)shipTo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SchemaprimerpoPackage.PURCHASE_ORDER__SHIP_TO, null, msgs);
 			if (newShipTo != null)
-				msgs = ((InternalEObject)newShipTo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PrimerpoPackage.PURCHASE_ORDER__SHIP_TO, null, msgs);
+				msgs = ((InternalEObject)newShipTo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SchemaprimerpoPackage.PURCHASE_ORDER__SHIP_TO, null, msgs);
 			msgs = basicSetShipTo(newShipTo, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.PURCHASE_ORDER__SHIP_TO, newShipTo, newShipTo));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.PURCHASE_ORDER__SHIP_TO, newShipTo, newShipTo));
 	}
 
 	/**
@@ -195,7 +197,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 		USAddress oldBillTo = billTo;
 		billTo = newBillTo;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PrimerpoPackage.PURCHASE_ORDER__BILL_TO, oldBillTo, newBillTo);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.PURCHASE_ORDER__BILL_TO, oldBillTo, newBillTo);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -210,14 +212,14 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 		if (newBillTo != billTo) {
 			NotificationChain msgs = null;
 			if (billTo != null)
-				msgs = ((InternalEObject)billTo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PrimerpoPackage.PURCHASE_ORDER__BILL_TO, null, msgs);
+				msgs = ((InternalEObject)billTo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SchemaprimerpoPackage.PURCHASE_ORDER__BILL_TO, null, msgs);
 			if (newBillTo != null)
-				msgs = ((InternalEObject)newBillTo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PrimerpoPackage.PURCHASE_ORDER__BILL_TO, null, msgs);
+				msgs = ((InternalEObject)newBillTo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SchemaprimerpoPackage.PURCHASE_ORDER__BILL_TO, null, msgs);
 			msgs = basicSetBillTo(newBillTo, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.PURCHASE_ORDER__BILL_TO, newBillTo, newBillTo));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.PURCHASE_ORDER__BILL_TO, newBillTo, newBillTo));
 	}
 
 	/**
@@ -238,7 +240,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 		String oldComment = comment;
 		comment = newComment;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.PURCHASE_ORDER__COMMENT, oldComment, comment));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.PURCHASE_ORDER__COMMENT, oldComment, comment));
 	}
 
 	/**
@@ -246,9 +248,9 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getItems() {
+	public EList<Item> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentEList(Item.class, this, PrimerpoPackage.PURCHASE_ORDER__ITEMS);
+			items = new EObjectContainmentEList<Item>(Item.class, this, SchemaprimerpoPackage.PURCHASE_ORDER__ITEMS);
 		}
 		return items;
 	}
@@ -271,7 +273,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 		Object oldOrderDate = orderDate;
 		orderDate = newOrderDate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PrimerpoPackage.PURCHASE_ORDER__ORDER_DATE, oldOrderDate, orderDate));
+			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.PURCHASE_ORDER__ORDER_DATE, oldOrderDate, orderDate));
 	}
 
 	/**
@@ -279,20 +281,17 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case PrimerpoPackage.PURCHASE_ORDER__SHIP_TO:
-					return basicSetShipTo(null, msgs);
-				case PrimerpoPackage.PURCHASE_ORDER__BILL_TO:
-					return basicSetBillTo(null, msgs);
-				case PrimerpoPackage.PURCHASE_ORDER__ITEMS:
-					return ((InternalEList)getItems()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.PURCHASE_ORDER__SHIP_TO:
+				return basicSetShipTo(null, msgs);
+			case SchemaprimerpoPackage.PURCHASE_ORDER__BILL_TO:
+				return basicSetBillTo(null, msgs);
+			case SchemaprimerpoPackage.PURCHASE_ORDER__ITEMS:
+				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -300,20 +299,21 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.PURCHASE_ORDER__SHIP_TO:
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.PURCHASE_ORDER__SHIP_TO:
 				return getShipTo();
-			case PrimerpoPackage.PURCHASE_ORDER__BILL_TO:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__BILL_TO:
 				return getBillTo();
-			case PrimerpoPackage.PURCHASE_ORDER__COMMENT:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__COMMENT:
 				return getComment();
-			case PrimerpoPackage.PURCHASE_ORDER__ITEMS:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__ITEMS:
 				return getItems();
-			case PrimerpoPackage.PURCHASE_ORDER__ORDER_DATE:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__ORDER_DATE:
 				return getOrderDate();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -321,26 +321,28 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.PURCHASE_ORDER__SHIP_TO:
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.PURCHASE_ORDER__SHIP_TO:
 				setShipTo((USAddress)newValue);
 				return;
-			case PrimerpoPackage.PURCHASE_ORDER__BILL_TO:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__BILL_TO:
 				setBillTo((USAddress)newValue);
 				return;
-			case PrimerpoPackage.PURCHASE_ORDER__COMMENT:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__COMMENT:
 				setComment((String)newValue);
 				return;
-			case PrimerpoPackage.PURCHASE_ORDER__ITEMS:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__ITEMS:
 				getItems().clear();
-				getItems().addAll((Collection)newValue);
+				getItems().addAll((Collection<? extends Item>)newValue);
 				return;
-			case PrimerpoPackage.PURCHASE_ORDER__ORDER_DATE:
-				setOrderDate((Object)newValue);
+			case SchemaprimerpoPackage.PURCHASE_ORDER__ORDER_DATE:
+				setOrderDate(newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -348,25 +350,26 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.PURCHASE_ORDER__SHIP_TO:
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.PURCHASE_ORDER__SHIP_TO:
 				setShipTo((USAddress)null);
 				return;
-			case PrimerpoPackage.PURCHASE_ORDER__BILL_TO:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__BILL_TO:
 				setBillTo((USAddress)null);
 				return;
-			case PrimerpoPackage.PURCHASE_ORDER__COMMENT:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__COMMENT:
 				setComment(COMMENT_EDEFAULT);
 				return;
-			case PrimerpoPackage.PURCHASE_ORDER__ITEMS:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__ITEMS:
 				getItems().clear();
 				return;
-			case PrimerpoPackage.PURCHASE_ORDER__ORDER_DATE:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__ORDER_DATE:
 				setOrderDate(ORDER_DATE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -374,20 +377,21 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-			case PrimerpoPackage.PURCHASE_ORDER__SHIP_TO:
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case SchemaprimerpoPackage.PURCHASE_ORDER__SHIP_TO:
 				return shipTo != null;
-			case PrimerpoPackage.PURCHASE_ORDER__BILL_TO:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__BILL_TO:
 				return billTo != null;
-			case PrimerpoPackage.PURCHASE_ORDER__COMMENT:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__COMMENT:
 				return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
-			case PrimerpoPackage.PURCHASE_ORDER__ITEMS:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__ITEMS:
 				return items != null && !items.isEmpty();
-			case PrimerpoPackage.PURCHASE_ORDER__ORDER_DATE:
+			case SchemaprimerpoPackage.PURCHASE_ORDER__ORDER_DATE:
 				return ORDER_DATE_EDEFAULT == null ? orderDate != null : !ORDER_DATE_EDEFAULT.equals(orderDate);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -395,6 +399,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

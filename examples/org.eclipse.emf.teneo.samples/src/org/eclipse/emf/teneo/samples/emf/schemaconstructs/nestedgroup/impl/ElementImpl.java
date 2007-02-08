@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ElementImpl.java,v 1.1 2006/07/11 16:56:56 mtaal Exp $
+ * $Id: ElementImpl.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.CType;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.Element;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.NestedgroupPackage;
 
@@ -77,8 +78,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return NestedgroupPackage.eINSTANCE.getElement();
+		return NestedgroupPackage.Literals.ELEMENT;
 	}
 
 	/**
@@ -99,7 +101,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * @generated
 	 */
 	public String getName() {
-		return (String)getMixed().get(NestedgroupPackage.eINSTANCE.getElement_Name(), true);
+		return (String)getMixed().get(NestedgroupPackage.Literals.ELEMENT__NAME, true);
 	}
 
 	/**
@@ -108,7 +110,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		((FeatureMap.Internal)getMixed()).set(NestedgroupPackage.eINSTANCE.getElement_Name(), newName);
+		((FeatureMap.Internal)getMixed()).set(NestedgroupPackage.Literals.ELEMENT__NAME, newName);
 	}
 
 	/**
@@ -117,7 +119,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * @generated
 	 */
 	public FeatureMap getTrue() {
-		return (FeatureMap)((FeatureMap)getMixed()).list(NestedgroupPackage.eINSTANCE.getElement_True());
+		return (FeatureMap)getMixed().<FeatureMap.Entry>list(NestedgroupPackage.Literals.ELEMENT__TRUE);
 	}
 
 	/**
@@ -125,8 +127,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getC() {
-		return ((FeatureMap)getTrue()).list(NestedgroupPackage.eINSTANCE.getElement_C());
+	public EList<CType> getC() {
+		return getTrue().list(NestedgroupPackage.Literals.ELEMENT__C);
 	}
 
 	/**
@@ -135,7 +137,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * @generated
 	 */
 	public Element getRecursive() {
-		return (Element)getMixed().get(NestedgroupPackage.eINSTANCE.getElement_Recursive(), true);
+		return (Element)getMixed().get(NestedgroupPackage.Literals.ELEMENT__RECURSIVE, true);
 	}
 
 	/**
@@ -144,7 +146,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * @generated
 	 */
 	public NotificationChain basicSetRecursive(Element newRecursive, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(NestedgroupPackage.eINSTANCE.getElement_Recursive(), newRecursive, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(NestedgroupPackage.Literals.ELEMENT__RECURSIVE, newRecursive, msgs);
 	}
 
 	/**
@@ -153,7 +155,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * @generated
 	 */
 	public void setRecursive(Element newRecursive) {
-		((FeatureMap.Internal)getMixed()).set(NestedgroupPackage.eINSTANCE.getElement_Recursive(), newRecursive);
+		((FeatureMap.Internal)getMixed()).set(NestedgroupPackage.Literals.ELEMENT__RECURSIVE, newRecursive);
 	}
 
 	/**
@@ -161,43 +163,43 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case NestedgroupPackage.ELEMENT__MIXED:
-					return ((InternalEList)getMixed()).basicRemove(otherEnd, msgs);
-				case NestedgroupPackage.ELEMENT__TRUE:
-					return ((InternalEList)getTrue()).basicRemove(otherEnd, msgs);
-				case NestedgroupPackage.ELEMENT__C:
-					return ((InternalEList)getC()).basicRemove(otherEnd, msgs);
-				case NestedgroupPackage.ELEMENT__RECURSIVE:
-					return basicSetRecursive(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 			case NestedgroupPackage.ELEMENT__MIXED:
-				return getMixed();
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
+			case NestedgroupPackage.ELEMENT__TRUE:
+				return ((InternalEList<?>)getTrue()).basicRemove(otherEnd, msgs);
+			case NestedgroupPackage.ELEMENT__C:
+				return ((InternalEList<?>)getC()).basicRemove(otherEnd, msgs);
+			case NestedgroupPackage.ELEMENT__RECURSIVE:
+				return basicSetRecursive(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case NestedgroupPackage.ELEMENT__MIXED:
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
 			case NestedgroupPackage.ELEMENT__NAME:
 				return getName();
 			case NestedgroupPackage.ELEMENT__TRUE:
-				return getTrue();
+				if (coreType) return getTrue();
+				return ((FeatureMap.Internal)getTrue()).getWrapper();
 			case NestedgroupPackage.ELEMENT__C:
 				return getC();
 			case NestedgroupPackage.ELEMENT__RECURSIVE:
 				return getRecursive();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -205,28 +207,28 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case NestedgroupPackage.ELEMENT__MIXED:
-				getMixed().clear();
-				getMixed().addAll((Collection)newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case NestedgroupPackage.ELEMENT__NAME:
 				setName((String)newValue);
 				return;
 			case NestedgroupPackage.ELEMENT__TRUE:
-				getTrue().clear();
-				getTrue().addAll((Collection)newValue);
+				((FeatureMap.Internal)getTrue()).set(newValue);
 				return;
 			case NestedgroupPackage.ELEMENT__C:
 				getC().clear();
-				getC().addAll((Collection)newValue);
+				getC().addAll((Collection<? extends CType>)newValue);
 				return;
 			case NestedgroupPackage.ELEMENT__RECURSIVE:
 				setRecursive((Element)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -234,8 +236,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case NestedgroupPackage.ELEMENT__MIXED:
 				getMixed().clear();
 				return;
@@ -252,7 +255,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 				setRecursive((Element)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -260,8 +263,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case NestedgroupPackage.ELEMENT__MIXED:
 				return mixed != null && !mixed.isEmpty();
 			case NestedgroupPackage.ELEMENT__NAME:
@@ -273,7 +277,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 			case NestedgroupPackage.ELEMENT__RECURSIVE:
 				return getRecursive() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -281,6 +285,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

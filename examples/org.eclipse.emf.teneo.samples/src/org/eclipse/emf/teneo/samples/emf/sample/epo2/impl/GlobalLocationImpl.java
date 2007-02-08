@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GlobalLocationImpl.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: GlobalLocationImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.epo2.impl;
 
@@ -62,8 +62,9 @@ public class GlobalLocationImpl extends EObjectImpl implements GlobalLocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return EPO2Package.eINSTANCE.getGlobalLocation();
+		return EPO2Package.Literals.GLOBAL_LOCATION;
 	}
 
 	/**
@@ -92,12 +93,13 @@ public class GlobalLocationImpl extends EObjectImpl implements GlobalLocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case EPO2Package.GLOBAL_LOCATION__COUNTRY_CODE:
 				return new Integer(getCountryCode());
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -105,13 +107,14 @@ public class GlobalLocationImpl extends EObjectImpl implements GlobalLocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case EPO2Package.GLOBAL_LOCATION__COUNTRY_CODE:
 				setCountryCode(((Integer)newValue).intValue());
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -119,13 +122,14 @@ public class GlobalLocationImpl extends EObjectImpl implements GlobalLocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case EPO2Package.GLOBAL_LOCATION__COUNTRY_CODE:
 				setCountryCode(COUNTRY_CODE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -133,12 +137,13 @@ public class GlobalLocationImpl extends EObjectImpl implements GlobalLocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case EPO2Package.GLOBAL_LOCATION__COUNTRY_CODE:
 				return countryCode != COUNTRY_CODE_EDEFAULT;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -146,6 +151,7 @@ public class GlobalLocationImpl extends EObjectImpl implements GlobalLocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleAllTypeImpl.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: SimpleAllTypeImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl;
 
@@ -107,8 +107,9 @@ public class SimpleAllTypeImpl extends EObjectImpl implements SimpleAllType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return GroupallPackage.eINSTANCE.getSimpleAllType();
+		return GroupallPackage.Literals.SIMPLE_ALL_TYPE;
 	}
 
 	/**
@@ -179,8 +180,9 @@ public class SimpleAllTypeImpl extends EObjectImpl implements SimpleAllType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case GroupallPackage.SIMPLE_ALL_TYPE__AAA:
 				return getAaa();
 			case GroupallPackage.SIMPLE_ALL_TYPE__BBB:
@@ -188,7 +190,7 @@ public class SimpleAllTypeImpl extends EObjectImpl implements SimpleAllType {
 			case GroupallPackage.SIMPLE_ALL_TYPE__CCC:
 				return getCcc();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -196,8 +198,9 @@ public class SimpleAllTypeImpl extends EObjectImpl implements SimpleAllType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case GroupallPackage.SIMPLE_ALL_TYPE__AAA:
 				setAaa((String)newValue);
 				return;
@@ -208,7 +211,7 @@ public class SimpleAllTypeImpl extends EObjectImpl implements SimpleAllType {
 				setCcc((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -216,8 +219,9 @@ public class SimpleAllTypeImpl extends EObjectImpl implements SimpleAllType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case GroupallPackage.SIMPLE_ALL_TYPE__AAA:
 				setAaa(AAA_EDEFAULT);
 				return;
@@ -228,7 +232,7 @@ public class SimpleAllTypeImpl extends EObjectImpl implements SimpleAllType {
 				setCcc(CCC_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -236,8 +240,9 @@ public class SimpleAllTypeImpl extends EObjectImpl implements SimpleAllType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case GroupallPackage.SIMPLE_ALL_TYPE__AAA:
 				return AAA_EDEFAULT == null ? aaa != null : !AAA_EDEFAULT.equals(aaa);
 			case GroupallPackage.SIMPLE_ALL_TYPE__BBB:
@@ -245,7 +250,7 @@ public class SimpleAllTypeImpl extends EObjectImpl implements SimpleAllType {
 			case GroupallPackage.SIMPLE_ALL_TYPE__CCC:
 				return CCC_EDEFAULT == null ? ccc != null : !CCC_EDEFAULT.equals(ccc);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -253,6 +258,7 @@ public class SimpleAllTypeImpl extends EObjectImpl implements SimpleAllType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

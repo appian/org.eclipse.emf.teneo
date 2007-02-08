@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbedderImpl.java,v 1.1 2006/07/11 16:56:58 mtaal Exp $
+ * $Id: EmbedderImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -82,7 +82,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList fourthEmbedded = null;
+	protected EList<Embeddable> fourthEmbedded = null;
 
 	/**
 	 * The cached value of the '{@link #getFifthEmbedded() <em>Fifth Embedded</em>}' containment reference.
@@ -108,6 +108,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return EmbeddedPackage.Literals.EMBEDDER;
 	}
@@ -246,9 +247,9 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFourthEmbedded() {
+	public EList<Embeddable> getFourthEmbedded() {
 		if (fourthEmbedded == null) {
-			fourthEmbedded = new EObjectContainmentEList(Embeddable.class, this, EmbeddedPackage.EMBEDDER__FOURTH_EMBEDDED);
+			fourthEmbedded = new EObjectContainmentEList<Embeddable>(Embeddable.class, this, EmbeddedPackage.EMBEDDER__FOURTH_EMBEDDED);
 		}
 		return fourthEmbedded;
 	}
@@ -301,6 +302,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EmbeddedPackage.EMBEDDER__FIRST_EMBEDDED:
@@ -310,7 +312,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 			case EmbeddedPackage.EMBEDDER__THIRD_EMBEDDED:
 				return basicSetThirdEmbedded(null, msgs);
 			case EmbeddedPackage.EMBEDDER__FOURTH_EMBEDDED:
-				return ((InternalEList)getFourthEmbedded()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getFourthEmbedded()).basicRemove(otherEnd, msgs);
 			case EmbeddedPackage.EMBEDDER__FIFTH_EMBEDDED:
 				return basicSetFifthEmbedded(null, msgs);
 		}
@@ -322,6 +324,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EmbeddedPackage.EMBEDDER__FIRST_EMBEDDED:
@@ -343,6 +346,8 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EmbeddedPackage.EMBEDDER__FIRST_EMBEDDED:
@@ -356,7 +361,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 				return;
 			case EmbeddedPackage.EMBEDDER__FOURTH_EMBEDDED:
 				getFourthEmbedded().clear();
-				getFourthEmbedded().addAll((Collection)newValue);
+				getFourthEmbedded().addAll((Collection<? extends Embeddable>)newValue);
 				return;
 			case EmbeddedPackage.EMBEDDER__FIFTH_EMBEDDED:
 				setFifthEmbedded((Embeddable)newValue);
@@ -370,6 +375,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case EmbeddedPackage.EMBEDDER__FIRST_EMBEDDED:
@@ -396,6 +402,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EmbeddedPackage.EMBEDDER__FIRST_EMBEDDED:

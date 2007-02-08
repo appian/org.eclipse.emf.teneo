@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MainImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: MainImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl;
 
@@ -157,8 +157,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return Relation1to1Package.eINSTANCE.getMain();
+		return Relation1to1Package.Literals.MAIN;
 	}
 
 	/**
@@ -469,28 +470,23 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYNOTREQUIRED:
-					if (notcontainedtwowaynotrequired != null)
-						msgs = ((InternalEObject)notcontainedtwowaynotrequired).eInverseRemove(this, Relation1to1Package.NOT_CONTAINED_CHILD_NRT__MAIN, NotContainedChildNRT.class, msgs);
-					return basicSetNotcontainedtwowaynotrequired((NotContainedChildNRT)otherEnd, msgs);
-				case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYREQUIREDNR:
-					if (notcontainedtwowayrequirednr != null)
-						msgs = ((InternalEObject)notcontainedtwowayrequirednr).eInverseRemove(this, Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__MAIN, NotContainedChildRTNR.class, msgs);
-					return basicSetNotcontainedtwowayrequirednr((NotContainedChildRTNR)otherEnd, msgs);
-				case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYNOTREQUIREDNR:
-					if (notcontainedtwowaynotrequirednr != null)
-						msgs = ((InternalEObject)notcontainedtwowaynotrequirednr).eInverseRemove(this, Relation1to1Package.NOT_CONTAINED_CHILD_NRTNR__MAIN, NotContainedChildNRTNR.class, msgs);
-					return basicSetNotcontainedtwowaynotrequirednr((NotContainedChildNRTNR)otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYNOTREQUIRED:
+				if (notcontainedtwowaynotrequired != null)
+					msgs = ((InternalEObject)notcontainedtwowaynotrequired).eInverseRemove(this, Relation1to1Package.NOT_CONTAINED_CHILD_NRT__MAIN, NotContainedChildNRT.class, msgs);
+				return basicSetNotcontainedtwowaynotrequired((NotContainedChildNRT)otherEnd, msgs);
+			case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYREQUIREDNR:
+				if (notcontainedtwowayrequirednr != null)
+					msgs = ((InternalEObject)notcontainedtwowayrequirednr).eInverseRemove(this, Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__MAIN, NotContainedChildRTNR.class, msgs);
+				return basicSetNotcontainedtwowayrequirednr((NotContainedChildRTNR)otherEnd, msgs);
+			case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYNOTREQUIREDNR:
+				if (notcontainedtwowaynotrequirednr != null)
+					msgs = ((InternalEObject)notcontainedtwowaynotrequirednr).eInverseRemove(this, Relation1to1Package.NOT_CONTAINED_CHILD_NRTNR__MAIN, NotContainedChildNRTNR.class, msgs);
+				return basicSetNotcontainedtwowaynotrequirednr((NotContainedChildNRTNR)otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -498,24 +494,21 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case Relation1to1Package.MAIN__CONTAINEDONEWAYREQUIRED:
-					return basicSetContainedonewayrequired(null, msgs);
-				case Relation1to1Package.MAIN__CONTAINEDONE_WAYNOTREQUIRED:
-					return basicSetContainedoneWaynotrequired(null, msgs);
-				case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYNOTREQUIRED:
-					return basicSetNotcontainedtwowaynotrequired(null, msgs);
-				case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYREQUIREDNR:
-					return basicSetNotcontainedtwowayrequirednr(null, msgs);
-				case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYNOTREQUIREDNR:
-					return basicSetNotcontainedtwowaynotrequirednr(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Relation1to1Package.MAIN__CONTAINEDONEWAYREQUIRED:
+				return basicSetContainedonewayrequired(null, msgs);
+			case Relation1to1Package.MAIN__CONTAINEDONE_WAYNOTREQUIRED:
+				return basicSetContainedoneWaynotrequired(null, msgs);
+			case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYNOTREQUIRED:
+				return basicSetNotcontainedtwowaynotrequired(null, msgs);
+			case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYREQUIREDNR:
+				return basicSetNotcontainedtwowayrequirednr(null, msgs);
+			case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYNOTREQUIREDNR:
+				return basicSetNotcontainedtwowaynotrequirednr(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -523,8 +516,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case Relation1to1Package.MAIN__NAME:
 				return getName();
 			case Relation1to1Package.MAIN__CONTAINEDONEWAYREQUIRED:
@@ -542,7 +536,7 @@ public class MainImpl extends EObjectImpl implements Main {
 			case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYNOTREQUIREDNR:
 				return getNotcontainedtwowaynotrequirednr();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -550,8 +544,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case Relation1to1Package.MAIN__NAME:
 				setName((String)newValue);
 				return;
@@ -577,7 +572,7 @@ public class MainImpl extends EObjectImpl implements Main {
 				setNotcontainedtwowaynotrequirednr((NotContainedChildNRTNR)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -585,8 +580,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case Relation1to1Package.MAIN__NAME:
 				unsetName();
 				return;
@@ -612,7 +608,7 @@ public class MainImpl extends EObjectImpl implements Main {
 				setNotcontainedtwowaynotrequirednr((NotContainedChildNRTNR)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -620,8 +616,9 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case Relation1to1Package.MAIN__NAME:
 				return isSetName();
 			case Relation1to1Package.MAIN__CONTAINEDONEWAYREQUIRED:
@@ -639,7 +636,7 @@ public class MainImpl extends EObjectImpl implements Main {
 			case Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYNOTREQUIREDNR:
 				return notcontainedtwowaynotrequirednr != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -647,6 +644,7 @@ public class MainImpl extends EObjectImpl implements Main {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

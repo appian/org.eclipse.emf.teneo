@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnytypePackage.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: AnytypePackage.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype;
 
@@ -106,7 +106,7 @@ public interface AnytypePackage extends EPackage{
 	int A__MY_B = 3;
 
 	/**
-	 * The number of structural features of the the '<em>A</em>' class.
+	 * The number of structural features of the '<em>A</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -134,7 +134,7 @@ public interface AnytypePackage extends EPackage{
 	int B__NAME = 0;
 
 	/**
-	 * The number of structural features of the the '<em>B</em>' class.
+	 * The number of structural features of the '<em>B</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -198,7 +198,7 @@ public interface AnytypePackage extends EPackage{
 	int TEST_ANY__ANY = 4;
 
 	/**
-	 * The number of structural features of the the '<em>Test Any</em>' class.
+	 * The number of structural features of the '<em>Test Any</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -355,5 +355,130 @@ public interface AnytypePackage extends EPackage{
 	 * @generated
 	 */
 	AnytypeFactory getAnytypeFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.AImpl <em>A</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.AImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.AnytypePackageImpl#getA()
+		 * @generated
+		 */
+		EClass A = eINSTANCE.getA();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__NAME = eINSTANCE.getA_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Doub</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__DOUB = eINSTANCE.getA_Doub();
+
+		/**
+		 * The meta object literal for the '<em><b>Lon</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute A__LON = eINSTANCE.getA_Lon();
+
+		/**
+		 * The meta object literal for the '<em><b>My B</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference A__MY_B = eINSTANCE.getA_MyB();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.BImpl <em>B</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.BImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.AnytypePackageImpl#getB()
+		 * @generated
+		 */
+		EClass B = eINSTANCE.getB();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute B__NAME = eINSTANCE.getB_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl <em>Test Any</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.AnytypePackageImpl#getTestAny()
+		 * @generated
+		 */
+		EClass TEST_ANY = eINSTANCE.getTestAny();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_ANY__NAME = eINSTANCE.getTestAny_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Any Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_ANY__SINGLE_ANY_TYPE = eINSTANCE.getTestAny_SingleAnyType();
+
+		/**
+		 * The meta object literal for the '<em><b>Multi Any Type</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_ANY__MULTI_ANY_TYPE = eINSTANCE.getTestAny_MultiAnyType();
+
+		/**
+		 * The meta object literal for the '<em><b>My Any</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_ANY__MY_ANY = eINSTANCE.getTestAny_MyAny();
+
+		/**
+		 * The meta object literal for the '<em><b>Any</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_ANY__ANY = eINSTANCE.getTestAny_Any();
+
+	}
 
 } //AnytypePackage

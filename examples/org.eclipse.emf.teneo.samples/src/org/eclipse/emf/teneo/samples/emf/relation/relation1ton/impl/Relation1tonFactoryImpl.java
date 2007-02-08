@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Relation1tonFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: Relation1tonFactoryImpl.java,v 1.3 2007/02/08 23:09:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.*;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Main;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCN;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCR;
@@ -64,6 +65,7 @@ public class Relation1tonFactoryImpl extends EFactoryImpl implements Relation1to
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case Relation1tonPackage.MAIN: return createMain();
@@ -185,6 +187,7 @@ public class Relation1tonFactoryImpl extends EFactoryImpl implements Relation1to
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static Relation1tonPackage getPackage() {
 		return Relation1tonPackage.eINSTANCE;
 	}

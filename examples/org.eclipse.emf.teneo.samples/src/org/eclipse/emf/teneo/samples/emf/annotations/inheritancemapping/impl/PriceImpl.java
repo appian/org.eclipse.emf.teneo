@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PriceImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: PriceImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -84,6 +84,7 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return InheritancemappingPackage.Literals.PRICE;
 	}
@@ -135,6 +136,7 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case InheritancemappingPackage.PRICE__NAME:
@@ -150,6 +152,7 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InheritancemappingPackage.PRICE__NAME:
@@ -167,6 +170,7 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case InheritancemappingPackage.PRICE__NAME:
@@ -184,6 +188,7 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InheritancemappingPackage.PRICE__NAME:
@@ -199,6 +204,7 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

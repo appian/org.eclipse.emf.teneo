@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentRoot.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: DocumentRoot.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getDocumentRoot()
+ * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getDocumentRoot()
  * @model extendedMetaData="name='' kind='mixed'"
  * @generated
  */
@@ -43,7 +43,7 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getDocumentRoot_Mixed()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getDocumentRoot_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -61,12 +61,12 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XMLNS Prefix Map</em>' map.
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getDocumentRoot_XMLNSPrefixMap()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getDocumentRoot_XMLNSPrefixMap()
 	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry" keyType="java.lang.String" valueType="java.lang.String" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xmlns:prefix'"
 	 * @generated
 	 */
-	EMap getXMLNSPrefixMap();
+	EMap<String, String> getXMLNSPrefixMap();
 
 	/**
 	 * Returns the value of the '<em><b>XSI Schema Location</b></em>' map.
@@ -79,12 +79,12 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XSI Schema Location</em>' map.
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getDocumentRoot_XSISchemaLocation()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getDocumentRoot_XSISchemaLocation()
 	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry" keyType="java.lang.String" valueType="java.lang.String" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xsi:schemaLocation'"
 	 * @generated
 	 */
-	EMap getXSISchemaLocation();
+	EMap<String, String> getXSISchemaLocation();
 
 	/**
 	 * Returns the value of the '<em><b>Comment</b></em>' attribute.
@@ -96,7 +96,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Comment</em>' attribute.
 	 * @see #setComment(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getDocumentRoot_Comment()
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getDocumentRoot_Comment()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='comment' namespace='##targetNamespace'"
 	 * @generated
@@ -123,8 +123,8 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Order</em>' containment reference.
 	 * @see #setOrder(PurchaseOrder)
-	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage#getDocumentRoot_Order()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getDocumentRoot_Order()
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='order' namespace='##targetNamespace'"
 	 * @generated
 	 */

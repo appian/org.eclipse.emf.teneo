@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Document.java,v 1.3 2006/11/12 00:08:30 mtaal Exp $
+ * $Id: Document.java,v 1.4 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -26,6 +26,13 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Document extends EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String copyright = "";
+
 	/**
 	 * Returns the value of the '<em><b>My Generic Info</b></em>' attribute.
 	 * <!-- begin-user-doc -->

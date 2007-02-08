@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NotContainedChildRTNRImpl.java,v 1.1 2006/07/11 16:56:59 mtaal Exp $
+ * $Id: NotContainedChildRTNRImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl;
 
@@ -76,8 +76,9 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return Relation1to1Package.eINSTANCE.getNotContainedChildRTNR();
+		return Relation1to1Package.Literals.NOT_CONTAINED_CHILD_RTNR;
 	}
 
 	/**
@@ -108,8 +109,8 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 	 */
 	public Main getMain() {
 		if (main != null && main.eIsProxy()) {
-			Main oldMain = main;
-			main = (Main)eResolveProxy((InternalEObject)main);
+			InternalEObject oldMain = (InternalEObject)main;
+			main = (Main)eResolveProxy(oldMain);
 			if (main != oldMain) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__MAIN, oldMain, main));
@@ -166,20 +167,15 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__MAIN:
-					if (main != null)
-						msgs = ((InternalEObject)main).eInverseRemove(this, Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYREQUIREDNR, Main.class, msgs);
-					return basicSetMain((Main)otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__MAIN:
+				if (main != null)
+					msgs = ((InternalEObject)main).eInverseRemove(this, Relation1to1Package.MAIN__NOTCONTAINEDTWOWAYREQUIREDNR, Main.class, msgs);
+				return basicSetMain((Main)otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -187,16 +183,13 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__MAIN:
-					return basicSetMain(null, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__MAIN:
+				return basicSetMain(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -204,15 +197,16 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__NAME:
 				return getName();
 			case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__MAIN:
 				if (resolve) return getMain();
 				return basicGetMain();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -220,8 +214,9 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__NAME:
 				setName((String)newValue);
 				return;
@@ -229,7 +224,7 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 				setMain((Main)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -237,8 +232,9 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -246,7 +242,7 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 				setMain((Main)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -254,14 +250,15 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case Relation1to1Package.NOT_CONTAINED_CHILD_RTNR__MAIN:
 				return main != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -269,6 +266,7 @@ public class NotContainedChildRTNRImpl extends EObjectImpl implements NotContain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

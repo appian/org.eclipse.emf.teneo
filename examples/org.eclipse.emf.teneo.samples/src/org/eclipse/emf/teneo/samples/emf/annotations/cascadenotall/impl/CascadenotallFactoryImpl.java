@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadenotallFactoryImpl.java,v 1.1 2006/07/11 16:57:13 mtaal Exp $
+ * $Id: CascadenotallFactoryImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.impl;
 
@@ -58,6 +58,7 @@ public class CascadenotallFactoryImpl extends EFactoryImpl implements Cascadenot
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CascadenotallPackage.BOOK: return createBook();
@@ -73,6 +74,7 @@ public class CascadenotallFactoryImpl extends EFactoryImpl implements Cascadenot
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case CascadenotallPackage.BOOK_CATEGORY:
@@ -89,6 +91,7 @@ public class CascadenotallFactoryImpl extends EFactoryImpl implements Cascadenot
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case CascadenotallPackage.BOOK_CATEGORY:
@@ -156,7 +159,7 @@ public class CascadenotallFactoryImpl extends EFactoryImpl implements Cascadenot
 	 * @generated
 	 */
 	public BookCategory createBookCategoryObjectFromString(EDataType eDataType, String initialValue) {
-		return (BookCategory)createBookCategoryFromString(CascadenotallPackage.Literals.BOOK_CATEGORY, initialValue);
+		return createBookCategoryFromString(CascadenotallPackage.Literals.BOOK_CATEGORY, initialValue);
 	}
 
 	/**
@@ -183,6 +186,7 @@ public class CascadenotallFactoryImpl extends EFactoryImpl implements Cascadenot
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static CascadenotallPackage getPackage() {
 		return CascadenotallPackage.eINSTANCE;
 	}

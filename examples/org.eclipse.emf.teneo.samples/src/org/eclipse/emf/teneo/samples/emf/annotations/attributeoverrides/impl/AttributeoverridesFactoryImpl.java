@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeoverridesFactoryImpl.java,v 1.4 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: AttributeoverridesFactoryImpl.java,v 1.5 2007/02/08 23:09:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.impl;
 
@@ -59,6 +59,7 @@ public class AttributeoverridesFactoryImpl extends EFactoryImpl implements Attri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case AttributeoverridesPackage.PERSON: return createPerson();
@@ -103,6 +104,7 @@ public class AttributeoverridesFactoryImpl extends EFactoryImpl implements Attri
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static AttributeoverridesPackage getPackage() {
 		return AttributeoverridesPackage.eINSTANCE;
 	}

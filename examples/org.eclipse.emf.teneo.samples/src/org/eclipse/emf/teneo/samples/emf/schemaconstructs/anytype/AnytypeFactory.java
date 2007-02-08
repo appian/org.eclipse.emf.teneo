@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnytypeFactory.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: AnytypeFactory.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype;
 
@@ -23,7 +23,7 @@ public interface AnytypeFactory extends EFactory{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	AnytypeFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.AnytypeFactoryImpl();
+	AnytypeFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.AnytypeFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>A</em>'.

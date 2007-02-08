@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytableFactoryImpl.java,v 1.1 2006/07/11 16:57:01 mtaal Exp $
+ * $Id: SecondarytableFactoryImpl.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytable.impl;
 
@@ -57,6 +57,7 @@ public class SecondarytableFactoryImpl extends EFactoryImpl implements Secondary
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SecondarytablePackage.PRINTER: return createPrinter();
@@ -90,6 +91,7 @@ public class SecondarytableFactoryImpl extends EFactoryImpl implements Secondary
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static SecondarytablePackage getPackage() {
 		return SecondarytablePackage.eINSTANCE;
 	}

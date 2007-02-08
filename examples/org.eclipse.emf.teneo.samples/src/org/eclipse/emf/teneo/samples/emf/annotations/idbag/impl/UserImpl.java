@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UserImpl.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: UserImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag.impl;
 
@@ -65,7 +65,7 @@ public class UserImpl extends EObjectImpl implements User {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList roles = null;
+	protected EList<String> roles = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,6 +81,7 @@ public class UserImpl extends EObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return IdbagPackage.Literals.USER;
 	}
@@ -111,9 +112,9 @@ public class UserImpl extends EObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRoles() {
+	public EList<String> getRoles() {
 		if (roles == null) {
-			roles = new EDataTypeEList(String.class, this, IdbagPackage.USER__ROLES);
+			roles = new EDataTypeEList<String>(String.class, this, IdbagPackage.USER__ROLES);
 		}
 		return roles;
 	}
@@ -123,6 +124,7 @@ public class UserImpl extends EObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case IdbagPackage.USER__NAME:
@@ -138,6 +140,8 @@ public class UserImpl extends EObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case IdbagPackage.USER__NAME:
@@ -145,7 +149,7 @@ public class UserImpl extends EObjectImpl implements User {
 				return;
 			case IdbagPackage.USER__ROLES:
 				getRoles().clear();
-				getRoles().addAll((Collection)newValue);
+				getRoles().addAll((Collection<? extends String>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -156,6 +160,7 @@ public class UserImpl extends EObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case IdbagPackage.USER__NAME:
@@ -173,6 +178,7 @@ public class UserImpl extends EObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case IdbagPackage.USER__NAME:
@@ -188,6 +194,7 @@ public class UserImpl extends EObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

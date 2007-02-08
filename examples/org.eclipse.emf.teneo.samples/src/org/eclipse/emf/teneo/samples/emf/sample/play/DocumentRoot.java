@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentRoot.java,v 1.1 2006/07/11 16:57:04 mtaal Exp $
+ * $Id: DocumentRoot.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.play;
 
@@ -80,7 +80,7 @@ public interface DocumentRoot extends EObject {
 	 *        extendedMetaData="kind='attribute' name='xmlns:prefix'"
 	 * @generated
 	 */
-	EMap getXMLNSPrefixMap();
+	EMap<String, String> getXMLNSPrefixMap();
 
 	/**
 	 * Returns the value of the '<em><b>XSI Schema Location</b></em>' map.
@@ -98,7 +98,7 @@ public interface DocumentRoot extends EObject {
 	 *        extendedMetaData="kind='attribute' name='xsi:schemaLocation'"
 	 * @generated
 	 */
-	EMap getXSISchemaLocation();
+	EMap<String, String> getXSISchemaLocation();
 
 	/**
 	 * Returns the value of the '<em><b>Act</b></em>' containment reference.
@@ -111,7 +111,7 @@ public interface DocumentRoot extends EObject {
 	 * @return the value of the '<em>Act</em>' containment reference.
 	 * @see #setAct(ActType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getDocumentRoot_Act()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='act' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -138,7 +138,7 @@ public interface DocumentRoot extends EObject {
 	 * @return the value of the '<em>Fm</em>' containment reference.
 	 * @see #setFm(FmType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getDocumentRoot_Fm()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='fm' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -273,7 +273,7 @@ public interface DocumentRoot extends EObject {
 	 * @return the value of the '<em>Personae</em>' containment reference.
 	 * @see #setPersonae(PersonaeType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getDocumentRoot_Personae()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='personae' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -300,7 +300,7 @@ public interface DocumentRoot extends EObject {
 	 * @return the value of the '<em>Persona Group</em>' containment reference.
 	 * @see #setPersonaGroup(PersonaGroupType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getDocumentRoot_PersonaGroup()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='personaGroup' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -327,7 +327,7 @@ public interface DocumentRoot extends EObject {
 	 * @return the value of the '<em>Play</em>' containment reference.
 	 * @see #setPlay(PlayType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getDocumentRoot_Play()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='play' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -381,7 +381,7 @@ public interface DocumentRoot extends EObject {
 	 * @return the value of the '<em>Scene</em>' containment reference.
 	 * @see #setScene(SceneType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getDocumentRoot_Scene()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='scene' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -462,7 +462,7 @@ public interface DocumentRoot extends EObject {
 	 * @return the value of the '<em>Speech</em>' containment reference.
 	 * @see #setSpeech(SpeechType)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage#getDocumentRoot_Speech()
-	 * @model containment="true" resolveProxies="false" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='speech' namespace='##targetNamespace'"
 	 * @generated
 	 */

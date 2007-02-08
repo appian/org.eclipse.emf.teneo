@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NmsetSwitch.java,v 1.1 2006/07/11 16:57:06 mtaal Exp $
+ * $Id: NmsetSwitch.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.nmset.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.nmset.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.nmset.NmsetPackage
  * @generated
  */
-public class NmsetSwitch {
+public class NmsetSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class NmsetSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class NmsetSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,17 +85,17 @@ public class NmsetSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case NmsetPackage.MY_ITEM: {
 				MyItem myItem = (MyItem)theEObject;
-				Object result = caseMyItem(myItem);
+				T result = caseMyItem(myItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case NmsetPackage.YOUR_ITEM: {
 				YourItem yourItem = (YourItem)theEObject;
-				Object result = caseYourItem(yourItem);
+				T result = caseYourItem(yourItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -114,7 +114,7 @@ public class NmsetSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMyItem(MyItem object) {
+	public T caseMyItem(MyItem object) {
 		return null;
 	}
 
@@ -129,7 +129,7 @@ public class NmsetSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseYourItem(YourItem object) {
+	public T caseYourItem(YourItem object) {
 		return null;
 	}
 
@@ -144,7 +144,7 @@ public class NmsetSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

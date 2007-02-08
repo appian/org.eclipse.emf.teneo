@@ -2,8 +2,8 @@
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
-    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Emap" suppressEMFTypes="true"
-    featureMapWrapperInternalInterface="" importerID="org.eclipse.xsd.ecore.importer">
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Emap" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0">
   <foreignModel>emap.xsd</foreignModel>
   <genPackages prefix="Emap" basePackage="org.eclipse.emf.teneo.samples.emf.schemaconstructs"
       resource="XML" disposableProviderFactory="true" ecorePackage="emap.ecore#/">

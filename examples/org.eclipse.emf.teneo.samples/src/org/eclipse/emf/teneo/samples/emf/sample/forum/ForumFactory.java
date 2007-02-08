@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumFactory.java,v 1.1 2006/07/11 16:57:15 mtaal Exp $
+ * $Id: ForumFactory.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.forum;
 
@@ -23,7 +23,7 @@ public interface ForumFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ForumFactory eINSTANCE = new org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumFactoryImpl();
+	ForumFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Forum</em>'.

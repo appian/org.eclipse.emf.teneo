@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ClassificationTypeImpl.java,v 1.1 2006/11/15 17:18:17 mtaal Exp $
+ * $Id: ClassificationTypeImpl.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.product.impl;
 
@@ -73,6 +73,7 @@ public class ClassificationTypeImpl extends EObjectImpl implements Classificatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ProductPackage.Literals.CLASSIFICATION_TYPE;
 	}
@@ -128,6 +129,7 @@ public class ClassificationTypeImpl extends EObjectImpl implements Classificatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ProductPackage.CLASSIFICATION_TYPE__NAME:
@@ -141,6 +143,7 @@ public class ClassificationTypeImpl extends EObjectImpl implements Classificatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ProductPackage.CLASSIFICATION_TYPE__NAME:
@@ -155,6 +158,7 @@ public class ClassificationTypeImpl extends EObjectImpl implements Classificatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ProductPackage.CLASSIFICATION_TYPE__NAME:
@@ -169,6 +173,7 @@ public class ClassificationTypeImpl extends EObjectImpl implements Classificatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ProductPackage.CLASSIFICATION_TYPE__NAME:
@@ -182,6 +187,7 @@ public class ClassificationTypeImpl extends EObjectImpl implements Classificatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

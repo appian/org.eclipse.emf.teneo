@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressListImpl.java,v 1.2 2007/02/05 16:13:45 mtaal Exp $
+ * $Id: AddressListImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl;
 
@@ -81,7 +81,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList secondAddress = null;
+	protected EList<Address> secondAddress = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,6 +97,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ExtensionPackage.Literals.ADDRESS_LIST;
 	}
@@ -170,9 +171,9 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSecondAddress() {
+	public EList<Address> getSecondAddress() {
 		if (secondAddress == null) {
-			secondAddress = new EObjectResolvingEList(Address.class, this, ExtensionPackage.ADDRESS_LIST__SECOND_ADDRESS);
+			secondAddress = new EObjectResolvingEList<Address>(Address.class, this, ExtensionPackage.ADDRESS_LIST__SECOND_ADDRESS);
 		}
 		return secondAddress;
 	}
@@ -182,6 +183,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ExtensionPackage.ADDRESS_LIST__FIRST_ADDRESS:
@@ -195,6 +197,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ExtensionPackage.ADDRESS_LIST__NAME:
@@ -212,6 +215,8 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ExtensionPackage.ADDRESS_LIST__NAME:
@@ -222,7 +227,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 				return;
 			case ExtensionPackage.ADDRESS_LIST__SECOND_ADDRESS:
 				getSecondAddress().clear();
-				getSecondAddress().addAll((Collection)newValue);
+				getSecondAddress().addAll((Collection<? extends Address>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -233,6 +238,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ExtensionPackage.ADDRESS_LIST__NAME:
@@ -253,6 +259,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ExtensionPackage.ADDRESS_LIST__NAME:
@@ -270,6 +277,7 @@ public class AddressListImpl extends EObjectImpl implements AddressList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
