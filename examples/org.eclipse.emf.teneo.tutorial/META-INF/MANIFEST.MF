@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Teneo Tutorial Code
 Bundle-SymbolicName: org.eclipse.emf.teneo.tutorial
-Bundle-Version: 0.7.5.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
