@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.8 2007/02/01 12:34:05 mtaal Exp $
+ * $Id: AllTests.java,v 1.9 2007/02/08 23:13:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -40,17 +40,16 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 				JPOXTestbed.instance().getConfigurations());
-		
-		suite.addTestSuite(AnyTypeAction.class);
-		
 		suite.addTestSuite(EMapAction.class);
+/*		
+		suite.addTestSuite(AnyTypeAction.class);
 
 		suite.addTestSuite(SimpleTypeAction.class);
 
@@ -73,7 +72,7 @@ public class AllTests {
 
 		suite.addTestSuite(AttributesTest.class);
 		suite.addTestSuite(GroupAction.class);
-
+*/
 		return suite;
 	}
 
