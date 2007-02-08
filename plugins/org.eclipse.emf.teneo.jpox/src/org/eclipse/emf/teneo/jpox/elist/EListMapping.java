@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListMapping.java,v 1.4 2007/02/01 12:36:35 mtaal Exp $
+ * $Id: EListMapping.java,v 1.5 2007/02/08 23:14:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -20,12 +20,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.jdo.JDOFatalInternalException;
 import javax.jdo.spi.PersistenceCapable;
 
+import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeObject;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -38,7 +42,7 @@ import org.jpox.store.mapping.CollectionMapping;
  * Mapping class around the EListWrapper. The newWrapper method returns a new EListWrapper instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2007/02/01 12:36:35 $
+ * @version $Revision: 1.5 $ $Date: 2007/02/08 23:14:52 $
  */
 
 public class EListMapping extends CollectionMapping {
@@ -53,7 +57,7 @@ public class EListMapping extends CollectionMapping {
 	 * @return Instance of the wrapper
 	 */
 	protected Object newWrapper(StateManager sm, String fldName) {
-		return new EListWrapper(sm, fldName);
+		return createWrapper(sm, fldName, null);
 	}
 
 	/**
@@ -66,7 +70,7 @@ public class EListMapping extends CollectionMapping {
 	 * @return Instance of the wrapper
 	 */
 	protected Object newDefaultWrapper(StateManager sm, String fieldName) {
-		return new EListWrapper(sm, fieldName);
+		return createWrapper(sm, fieldName, null);
 	}
 
 	// -------------------- Implementation of MappingCallbacks --------------------
@@ -83,7 +87,7 @@ public class EListMapping extends CollectionMapping {
 
         // makes sure field is loaded
 		sm.isLoaded(sm.getObject(), fmd.getAbsoluteFieldNumber());
-		Collection value = (Collection) sm.provideField(fmd.getAbsoluteFieldNumber());
+		Collection<?> value = (Collection<?>) sm.provideField(fmd.getAbsoluteFieldNumber());
 		if (value != null && !value.isEmpty()) {
 			// in case of eobject or in case dependent has been set delete it!
 			// also assume that if there is a foreign key constraint with cascade that it is depedendent. 
@@ -92,7 +96,7 @@ public class EListMapping extends CollectionMapping {
 				fmd.getCollection().isEmbeddedElement() ||
 				fmd.getForeignKeyMetaData().getDeleteAction().equals(ForeignKeyAction.CASCADE);
 			if (dependent) {
-				Object[] values = ((List) value).toArray();
+				Object[] values = ((List<?>) value).toArray();
 				
 				// clear the collection
 				getBackingStore(sm.getPersistenceManager().getClassLoaderResolver()).clear(sm);
@@ -118,7 +122,7 @@ public class EListMapping extends CollectionMapping {
 	 *            StateManager of the owner
 	 */
 	public void postInsert(StateManager sm) {
-		Collection value = (Collection) sm.provideField(fmd.getAbsoluteFieldNumber());
+		Collection<?> value = (Collection<?>) sm.provideField(fmd.getAbsoluteFieldNumber());
 
 		if (value instanceof EListWrapper) {
 			// do nothing because this should be already okay
@@ -126,16 +130,16 @@ public class EListMapping extends CollectionMapping {
 			// get the feature
 			final EStructuralFeature feature = StoreUtil.getEStructuralFeature((EObject) sm.getObject(), fmd.getName());
 			if (feature.getEType().getInstanceClass() == EObject.class) {
-				final ArrayList newValues = new ArrayList();
-				final Iterator it = value.iterator();
+				final ArrayList<Object> newValues = new ArrayList<Object>();
+				final Iterator<?> it = value.iterator();
 				while (it.hasNext()) {
 					final AnyTypeEObject any = new AnyTypeEObject(sm.getPersistenceManager(), (EObject) it.next());
 					newValues.add(any);
 				}
 				value = newValues;
 			} else if (feature.getEType().getInstanceClass() == Object.class) {
-				final ArrayList newValues = new ArrayList();
-				final Iterator it = value.iterator();
+				final ArrayList<Object> newValues = new ArrayList<Object>();
+				final Iterator<?> it = value.iterator();
 				while (it.hasNext()) {
 					final AnyTypeObject any = new AnyTypeObject(sm.getPersistenceManager(), it.next());
 					newValues.add(any);
@@ -149,12 +153,45 @@ public class EListMapping extends CollectionMapping {
 		getBackingStore(sm.getPersistenceManager().getClassLoaderResolver()).addAll(sm, value);
 
 		if (value == null) {
-			sm.replaceField(fmd.getAbsoluteFieldNumber(), new EListWrapper(sm, fieldName, new ArrayList()));
+			sm.replaceField(fmd.getAbsoluteFieldNumber(), createWrapper(sm, fieldName, new ArrayList<Object>()));
 		} else {
-			sm.replaceField(fmd.getAbsoluteFieldNumber(), new EListWrapper(sm, fieldName, (List) value));
+			sm.replaceField(fmd.getAbsoluteFieldNumber(), createWrapper(sm, fieldName, (List<?>) value));
 		}
 	}
 
+	/** Creates the wrapper, either an emap or elist */
+	@SuppressWarnings("unchecked")
+	private Object createWrapper(StateManager sm, String fieldName, List<?> list) {
+		final EStructuralFeature estruct = StoreUtil.getEStructuralFeature((InternalEObject) sm
+				.getObject(), fieldName);
+		if (estruct instanceof EReference) {
+			final EReference eref = (EReference)estruct;
+			// the test for emap checks: the entry class must have a instanceclass: Map.Entry
+			// and the entry class must have two efeatures with the name key and value
+			boolean isEMap = eref.getEReferenceType() != null && eref.getEReferenceType().getInstanceClass() != null && 
+				Map.Entry.class.isAssignableFrom(eref.getEReferenceType().getInstanceClass()); 
+			isEMap = isEMap && 
+				eref.getEReferenceType().getEStructuralFeatures().size() == 2 &&
+					eref.getEReferenceType().getEStructuralFeature("key") != null &&
+					eref.getEReferenceType().getEStructuralFeature("value") != null;
+			
+			if (isEMap) {
+				if (list != null) {
+					return new EMapWrapper<Object, Object>(sm, fieldName, 
+							(List<Map.Entry<Object, Object>>)list);
+					//emap.setJPOXControlInformation(sm, fieldName, (List<ap.Entry<Object, Object>>)list);
+				} else {
+					return new EMapWrapper<Object, Object>(sm, fieldName);
+				}
+			}
+		}
+		if (list != null) {
+			return new EListWrapper(sm, fieldName, list);
+		} else {
+			return new EListWrapper(sm, fieldName);
+		}
+	}
+	
 	/**
 	 * Override standard jpox behavior because it does not work correctly in case of two way relations.
 	public void preDelete(StateManager sm) {
@@ -194,7 +231,7 @@ public class EListMapping extends CollectionMapping {
 	 *            StateManager of the owner
 	 */
 	public void postUpdate(StateManager sm) {
-		Collection value = (Collection) sm.provideField(fmd.getAbsoluteFieldNumber());
+		Collection<?> value = (Collection<?>) sm.provideField(fmd.getAbsoluteFieldNumber());
 		
 		if (value == null) {
 			return; //can be null if never accessed
@@ -216,6 +253,6 @@ public class EListMapping extends CollectionMapping {
 		getBackingStore(sm.getPersistenceManager().getClassLoaderResolver()).clear(sm);
 		getBackingStore(sm.getPersistenceManager().getClassLoaderResolver()).addAll(sm, value);
 
-		sm.replaceField(fmd.getAbsoluteFieldNumber(), new EListWrapper(sm, fieldName, (List) value));
+		sm.replaceField(fmd.getAbsoluteFieldNumber(), createWrapper(sm, fieldName, (List<?>) value));
 	}
 }

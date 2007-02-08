@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFNullCache.java,v 1.2 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: EMFNullCache.java,v 1.3 2007/02/08 23:14:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.cache;
@@ -31,8 +31,9 @@ import org.jpox.cache.Level1Cache;
  * repair for new objects.
  * 
  * @see java.lang.ref.WeakReference
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
+@SuppressWarnings("unchecked")
 public class EMFNullCache implements Level1Cache {
 	public EMFNullCache() {
 		// default constructor

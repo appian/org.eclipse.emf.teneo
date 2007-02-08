@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFHardRefCache.java,v 1.2 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: EMFHardRefCache.java,v 1.3 2007/02/08 23:14:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.cache;
@@ -26,8 +26,9 @@ import org.jpox.cache.HardRefCache;
  * Implementation of cache to add econtainer control for new objects.
  * 
  * @see java.lang.ref.WeakReference
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
+@SuppressWarnings("unchecked")
 public class EMFHardRefCache extends HardRefCache {
 	/** Is overridden to repair econtainer references for new objects */
 	public Object put(Object key, Object value) {

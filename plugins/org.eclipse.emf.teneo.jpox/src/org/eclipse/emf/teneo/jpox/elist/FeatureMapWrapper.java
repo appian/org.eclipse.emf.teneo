@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapWrapper.java,v 1.4 2007/02/01 12:36:35 mtaal Exp $
+ * $Id: FeatureMapWrapper.java,v 1.5 2007/02/08 23:14:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -63,10 +63,15 @@ import org.jpox.util.ClassUtils;
  * to use the backingstore as the delegate because the list can be detached.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2007/02/01 12:36:35 $
+ * @version $Revision: 1.5 $ $Date: 2007/02/08 23:14:52 $
  */
 
 public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Queryable, SCOList {
+	/**
+	 * Generated Serial ID
+	 */
+	private static final long serialVersionUID = 7582443003647643367L;
+
 	/** The logger */
 	private static Log log = LogFactory.getLog(FeatureMapWrapper.class);
 
@@ -82,9 +87,9 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	/**
 	 * An ArrayList of deletedobjects, is set by the didRemove method and used by the remove methods at the end
 	 */
-	private final ArrayList deletedObjects = new ArrayList();
+	private final ArrayList<Entry> deletedObjects = new ArrayList<Entry>();
 
-	private final ArrayList deletedObjectsIndex = new ArrayList();
+	private final ArrayList<Integer> deletedObjectsIndex = new ArrayList<Integer>();
 
 	/**
 	 * Constructor, using the StateManager of the "owner" and the field name.
@@ -95,7 +100,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 *            The name of the field of the SCO.
 	 */
 	public FeatureMapWrapper(StateManager ownerSM, String fieldName) {
-		this(ownerSM, fieldName, new ArrayList());
+		this(ownerSM, fieldName, new ArrayList<Entry>());
 	}
 
 	/**
@@ -106,7 +111,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * @param fieldName
 	 *            The name of the field of the SCO.
 	 */
-	public FeatureMapWrapper(StateManager ownerSM, String featureFieldName, List list) {
+	public FeatureMapWrapper(StateManager ownerSM, String featureFieldName, List<Entry> list) {
 		super((InternalEObject) ownerSM.getObject(), StoreUtil.getEStructuralFeature((InternalEObject) ownerSM
 				.getObject(), featureFieldName), list);
 
@@ -123,7 +128,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	}
 
 	/** Returns the element type to be used */
-	protected Class determineElementType() {
+	protected Class<? extends FeatureMap.Entry> determineElementType() {
 		// determines which class should be used as the element type
 		if (StoreUtil.isWildCard(getEStructuralFeature())) {
 			return AnyFeatureMapEntry.class;
@@ -215,10 +220,10 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 
 		// note add directly to the delegate to prevent infinite looping and
 		// notifications
-		final List list = getDelegate();
-		Iterator iter = jdoDelegate.iterator();
+		final List<Entry> list = getDelegate();
+		Iterator<?> iter = jdoDelegate.iterator();
 		while (iter.hasNext()) {
-			final Object child = iter.next();
+			final Entry child = (Entry)iter.next();
 			assert (getElementType().isInstance(child));
 			list.add(child);
 
@@ -243,20 +248,20 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * @see org.jpox.sco.SCO#attachCopy(java.lang.Object, boolean)
 	 */
 	public void attachCopy(Object value) {
-		if (!((PersistableEList) value).isLoaded())
+		if (!((PersistableEList<?>) value).isLoaded())
 			return;
 
 		load();
 
-		java.util.Collection c = (java.util.Collection) value;
+		java.util.Collection<?> c = (java.util.Collection<?>) value;
 
 		// Attach all of the elements in the new list
-		ArrayList attachedElements = new ArrayList(c.size());
-		Iterator iter = c.iterator();
+		ArrayList<Entry> attachedElements = new ArrayList<Entry>(c.size());
+		Iterator<?> iter = c.iterator();
 		while (iter.hasNext()) {
 			Object detachedElement = iter.next();
 			if (ClassUtils.isPersistenceCapable(detachedElement)) {
-				attachedElements.add(stateManager.getPersistenceManager().attachCopy(detachedElement, true));
+				attachedElements.add((Entry)stateManager.getPersistenceManager().attachCopy(detachedElement, true));
 			} else {
 				// should this ever happen?
 				throw new JpoxStoreException("A FeatureMap may only contain persistable objects, this object "
@@ -317,7 +322,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 		load();
 		jdoDelegate.detachCopy(state);
 
-		final ArrayList detached = new ArrayList();
+		final ArrayList<Entry> detached = new ArrayList<Entry>();
 		final Object[] values = toArray();
 		for (int i = 0; i < values.length; i++) {
 			if (values[i] == null) {
@@ -325,9 +330,9 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 			} else {
 				Object object = values[i];
 				if (object instanceof PersistenceCapable) {
-					detached.add(stateManager.getPersistenceManager().detachCopyInternal(object, state));
+					detached.add((Entry)stateManager.getPersistenceManager().detachCopyInternal(object, state));
 				} else {
-					detached.add(object);
+					detached.add((Entry)object);
 				}
 			}
 		}
@@ -357,6 +362,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.jpox.sco.SCO#setValueFrom(java.lang.Object)
 	 */
+	@SuppressWarnings("unchecked")
 	public void setValueFrom(Object obj) throws ClassCastException {
 		Collection c = (Collection) obj;
 		clear();
@@ -368,6 +374,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.jpox.sco.SCO#setValueFrom(java.lang.Object, boolean)
 	 */
+	@SuppressWarnings("unchecked")
 	public void setValueFrom(Object arg0, boolean arg1) throws ClassCastException {
 		final Collection c = (Collection) arg0;
 		if (arg1) {
@@ -400,6 +407,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * @param reachables
 	 *            List of StateManagers reachable so far
 	 */
+	@SuppressWarnings("unchecked")
 	public void runReachability(java.util.Set reachables) {
 		if (jdoDelegate != null) {
 			jdoDelegate.runReachability(reachables);
@@ -416,7 +424,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 
 	/** Set method for SCO.set */
 	public Object set(int arg0, Object arg1, boolean arg2) {
-		return set(arg0, arg1);
+		return set(arg0, (Entry)arg1);
 	}
 
 	/*
@@ -454,6 +462,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 *            The candidate class
 	 * @return The QueryStatement
 	 */
+	@SuppressWarnings("unchecked")
 	public synchronized QueryExpression newQueryStatement(Class candidate_class) {
 		if (jdoDelegate == null) {
 			throw new QueryUnownedSCOException();
@@ -468,6 +477,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * @see org.jpox.store.query.Queryable#newResultObjectFactory(org.jpox.store.expression.QueryExpression, boolean,
 	 *      java.lang.Class, boolean)
 	 */
+	@SuppressWarnings("unchecked")
     public synchronized ResultObjectFactory newResultObjectFactory(
             QueryExpression stmt, boolean ignoreCache, Class resultClass, boolean useFetchPlan) {
 		if (jdoDelegate == null) {
@@ -497,7 +507,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#didAdd(int, java.lang.Object)
 	 */
-	protected void didAdd(int index, Object newObject) {
+	protected void didAdd(int index, Entry newObject) {
 		assert (newObject instanceof FeatureMapEntry);
 
 		if (!isLoaded())
@@ -557,7 +567,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#didMove(int, java.lang.Object, int)
 	 */
-	protected void didMove(int index, Object movedObject, int oldIndex) {
+	protected void didMove(int index, Entry movedObject, int oldIndex) {
 		assert (movedObject instanceof FeatureMapEntry);
 		if (jdoDelegate != null) {
 			final Object newObject = createEntry(((FeatureMapEntry) movedObject).getEStructuralFeature(),
@@ -578,7 +588,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#didRemove(int, java.lang.Object)
 	 */
-	protected void didRemove(int index, Object oldObject) {
+	protected void didRemove(int index, Entry oldObject) {
 		assert (oldObject instanceof FeatureMapEntry);
 		assert (!deletedObjects.contains(oldObject));
 		deletedObjects.add(oldObject);
@@ -624,7 +634,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#didSet(int, java.lang.Object, java.lang.Object)
 	 */
-	protected void didSet(int index, Object newObject, Object oldObject) {
+	protected void didSet(int index, Entry newObject, Entry oldObject) {
 		assert (newObject instanceof FeatureMapEntry);
 		assert (oldObject instanceof FeatureMapEntry);
 
@@ -712,7 +722,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * @see org.eclipse.emf.ecore.util.BasicFeatureMap#removeAll(org.eclipse.emf.ecore.EStructuralFeature,
 	 *      java.util.Collection)
 	 */
-	public synchronized boolean removeAll(EStructuralFeature feature, Collection collection) {
+	public synchronized boolean removeAll(EStructuralFeature feature, Collection<?> collection) {
 		load();
 		try {
 			assert (deletedObjects.size() == 0);
@@ -738,7 +748,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#remove(int)
 	 */
-	public synchronized Object remove(int index) {
+	public Entry remove(int index) {
 		load();
 		try {
 			assert (deletedObjects.size() == 0);
@@ -753,7 +763,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#removeAll(java.util.Collection)
 	 */
-	public synchronized boolean removeAll(Collection collection) {
+	public boolean removeAll(Collection<?> collection) {
 		load();
 		try {
 			assert (deletedObjects.size() == 0);

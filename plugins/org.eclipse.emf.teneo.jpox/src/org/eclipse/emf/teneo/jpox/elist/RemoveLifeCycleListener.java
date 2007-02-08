@@ -11,12 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: RemoveLifeCycleListener.java,v 1.4 2007/02/01 12:36:35 mtaal Exp $
+ * $Id: RemoveLifeCycleListener.java,v 1.5 2007/02/08 23:14:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
-
-import java.util.Iterator;
 
 import javax.jdo.listener.DeleteLifecycleListener;
 import javax.jdo.listener.InstanceLifecycleEvent;
@@ -32,7 +30,7 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
  * Captures the remove life cycle listener to ensure load of featuremaps before a delete.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2007/02/01 12:36:35 $
+ * @version $Revision: 1.5 $ $Date: 2007/02/08 23:14:52 $
  */
 
 public class RemoveLifeCycleListener implements DeleteLifecycleListener {
@@ -52,9 +50,7 @@ public class RemoveLifeCycleListener implements DeleteLifecycleListener {
 		final Object source = arg0.getSource();
 		if (source instanceof EObject) {
 			final EObject eo = (EObject)source;
-			final Iterator eas = eo.eClass().getEAllAttributes().iterator();
-			while (eas.hasNext()) {
-				final EAttribute ea = (EAttribute)eas.next();
+			for (EAttribute ea : eo.eClass().getEAllAttributes()) {
 				if (FeatureMapUtil.isFeatureMap(ea)) {
 					final FeatureMap fm = (FeatureMap)eo.eGet(ea);
 					if (fm instanceof FeatureMapWrapper) {

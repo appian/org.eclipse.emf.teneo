@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyFeatureMapEntryMapping.java,v 1.4 2007/02/01 12:36:35 mtaal Exp $
+ * $Id: AnyFeatureMapEntryMapping.java,v 1.5 2007/02/08 23:14:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -44,7 +44,7 @@ import org.jpox.store.mapping.SingleFieldMultiMapping;
  * field which keeps track if the content is an EObject or a simple type..
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2007/02/01 12:36:35 $
+ * @version $Revision: 1.5 $ $Date: 2007/02/08 23:14:52 $
  */
 
 public class AnyFeatureMapEntryMapping extends SingleFieldMultiMapping {
@@ -78,7 +78,7 @@ public class AnyFeatureMapEntryMapping extends SingleFieldMultiMapping {
 	/**
 	 * Return the Java type being represented.
 	 */
-	public Class getJavaType() {
+	public Class<?> getJavaType() {
 		return EObject.class;
 	}
 
