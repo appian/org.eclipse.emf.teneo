@@ -2,15 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbFetchType.java,v 1.2 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbFetchType.java,v 1.3 2007/02/08 23:13:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
+
+import static org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType.JOIN;
+import static org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType.SELECT;
+import static org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType.SUBSELECT;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +25,35 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class HbFetchType extends AbstractEnumerator {
+public enum HbFetchType implements Enumerator
+{
+	/**
+	 * The '<em><b>JOIN</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JOIN
+	 * @generated
+	 * @ordered
+	 */
+	JOIN_LITERAL(0, "JOIN", "JOIN"),
+	/**
+	 * The '<em><b>SELECT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SELECT
+	 * @generated
+	 * @ordered
+	 */
+	SELECT_LITERAL(1, "SELECT", "SELECT"),
+	/**
+	 * The '<em><b>SUBSELECT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SUBSELECT
+	 * @generated
+	 * @ordered
+	 */
+	SUBSELECT_LITERAL(2, "SUBSELECT", "SUBSELECT");
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -75,36 +107,6 @@ public final class HbFetchType extends AbstractEnumerator {
 	public static final int SUBSELECT = 2;
 
 	/**
-	 * The '<em><b>JOIN</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #JOIN
-	 * @generated
-	 * @ordered
-	 */
-	public static final HbFetchType JOIN_LITERAL = new HbFetchType(JOIN, "JOIN", "JOIN");
-
-	/**
-	 * The '<em><b>SELECT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SELECT
-	 * @generated
-	 * @ordered
-	 */
-	public static final HbFetchType SELECT_LITERAL = new HbFetchType(SELECT, "SELECT", "SELECT");
-
-	/**
-	 * The '<em><b>SUBSELECT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SUBSELECT
-	 * @generated
-	 * @ordered
-	 */
-	public static final HbFetchType SUBSELECT_LITERAL = new HbFetchType(SUBSELECT, "SUBSELECT", "SUBSELECT");
-
-	/**
 	 * An array of all the '<em><b>Hb Fetch Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -123,7 +125,7 @@ public final class HbFetchType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<HbFetchType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Hb Fetch Type</b></em>' literal with the specified literal value.
@@ -169,8 +171,29 @@ public final class HbFetchType extends AbstractEnumerator {
 			case SELECT: return SELECT_LITERAL;
 			case SUBSELECT: return SUBSELECT_LITERAL;
 		}
-		return null;	
+		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -179,7 +202,46 @@ public final class HbFetchType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private HbFetchType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //HbFetchType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeDefImpl.java,v 1.3 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: TypeDefImpl.java,v 1.4 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -82,7 +82,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList parameters = null;
+	protected EList<Parameter> parameters = null;
 
 	/**
 	 * The default value of the '{@link #getTypeClass() <em>Type Class</em>}' attribute.
@@ -118,6 +118,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return HbAnnotationPackage.Literals.TYPE_DEF;
 	}
@@ -186,9 +187,9 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getParameters() {
+	public EList<Parameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectResolvingEList(Parameter.class, this, HbAnnotationPackage.TYPE_DEF__PARAMETERS);
+			parameters = new EObjectResolvingEList<Parameter>(Parameter.class, this, HbAnnotationPackage.TYPE_DEF__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -219,6 +220,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbAnnotationPackage.TYPE_DEF__EMODEL_ELEMENT:
@@ -239,6 +241,8 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbAnnotationPackage.TYPE_DEF__EMODEL_ELEMENT:
@@ -249,7 +253,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 				return;
 			case HbAnnotationPackage.TYPE_DEF__PARAMETERS:
 				getParameters().clear();
-				getParameters().addAll((Collection)newValue);
+				getParameters().addAll((Collection<? extends Parameter>)newValue);
 				return;
 			case HbAnnotationPackage.TYPE_DEF__TYPE_CLASS:
 				setTypeClass((String)newValue);
@@ -263,6 +267,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.TYPE_DEF__EMODEL_ELEMENT:
@@ -286,6 +291,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.TYPE_DEF__EMODEL_ELEMENT:
@@ -305,6 +311,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

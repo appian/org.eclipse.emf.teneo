@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEDataTypeImpl.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotatedEDataTypeImpl.java,v 1.5 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -98,7 +98,7 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList hbColumns = null;
+	protected EList<Column> hbColumns = null;
 
 	/**
 	 * The cached value of the '{@link #getHbCascade() <em>Hb Cascade</em>}' containment reference. <!--
@@ -142,6 +142,7 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return HbModelPackage.Literals.HB_ANNOTATED_EDATA_TYPE;
 	}
@@ -338,9 +339,9 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getHbColumns() {
+	public EList<Column> getHbColumns() {
 		if (hbColumns == null) {
-			hbColumns = new EObjectContainmentEList(Column.class, this, HbModelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS);
+			hbColumns = new EObjectContainmentEList<Column>(Column.class, this, HbModelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS);
 		}
 		return hbColumns;
 	}
@@ -469,6 +470,7 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__PA_ECLASS:
@@ -483,6 +485,7 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__PA_ECLASS:
@@ -494,7 +497,7 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__HB_MAP_KEY:
 				return basicSetHbMapKey(null, msgs);
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
-				return ((InternalEList)getHbColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getHbColumns()).basicRemove(otherEnd, msgs);
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__HB_CASCADE:
 				return basicSetHbCascade(null, msgs);
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
@@ -509,6 +512,7 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID) {
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__PA_ECLASS:
@@ -521,6 +525,7 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__PA_ECLASS:
@@ -550,6 +555,8 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__PA_ECLASS:
@@ -569,7 +576,7 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 				return;
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS:
 				getHbColumns().clear();
-				getHbColumns().addAll((Collection)newValue);
+				getHbColumns().addAll((Collection<? extends Column>)newValue);
 				return;
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__HB_CASCADE:
 				setHbCascade((Cascade)newValue);
@@ -588,6 +595,7 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__PA_ECLASS:
@@ -625,6 +633,7 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__PA_ECLASS:
@@ -653,7 +662,8 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == PAnnotatedEStructuralFeature.class) {
 			switch (derivedFeatureID) {
 				case HbModelPackage.HB_ANNOTATED_EDATA_TYPE__PA_ECLASS: return PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS;
@@ -684,7 +694,8 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == PAnnotatedEStructuralFeature.class) {
 			switch (baseFeatureID) {
 				case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS: return HbModelPackage.HB_ANNOTATED_EDATA_TYPE__PA_ECLASS;

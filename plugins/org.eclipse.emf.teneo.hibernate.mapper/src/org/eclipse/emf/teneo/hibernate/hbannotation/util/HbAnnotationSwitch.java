@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationSwitch.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotationSwitch.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage
  * @generated
  */
-public class HbAnnotationSwitch {
+public class HbAnnotationSwitch<T> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -73,7 +73,7 @@ public class HbAnnotationSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-    public Object doSwitch(EObject theEObject) {
+    public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -84,16 +84,16 @@ public class HbAnnotationSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-    protected Object doSwitch(EClass theEClass, EObject theEObject) {
+    protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -104,18 +104,18 @@ public class HbAnnotationSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-    protected Object doSwitch(int classifierID, EObject theEObject) {
+    protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case HbAnnotationPackage.HB_ANNOTATION: {
 				HbAnnotation hbAnnotation = (HbAnnotation)theEObject;
-				Object result = caseHbAnnotation(hbAnnotation);
+				T result = caseHbAnnotation(hbAnnotation);
 				if (result == null) result = casePAnnotation(hbAnnotation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case HbAnnotationPackage.CASCADE: {
 				Cascade cascade = (Cascade)theEObject;
-				Object result = caseCascade(cascade);
+				T result = caseCascade(cascade);
 				if (result == null) result = caseHbAnnotation(cascade);
 				if (result == null) result = casePAnnotation(cascade);
 				if (result == null) result = defaultCase(theEObject);
@@ -123,7 +123,7 @@ public class HbAnnotationSwitch {
 			}
 			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS: {
 				CollectionOfElements collectionOfElements = (CollectionOfElements)theEObject;
-				Object result = caseCollectionOfElements(collectionOfElements);
+				T result = caseCollectionOfElements(collectionOfElements);
 				if (result == null) result = caseHbAnnotation(collectionOfElements);
 				if (result == null) result = casePAnnotation(collectionOfElements);
 				if (result == null) result = defaultCase(theEObject);
@@ -131,7 +131,7 @@ public class HbAnnotationSwitch {
 			}
 			case HbAnnotationPackage.MAP_KEY: {
 				MapKey mapKey = (MapKey)theEObject;
-				Object result = caseMapKey(mapKey);
+				T result = caseMapKey(mapKey);
 				if (result == null) result = caseHbAnnotation(mapKey);
 				if (result == null) result = casePAnnotation(mapKey);
 				if (result == null) result = defaultCase(theEObject);
@@ -139,7 +139,7 @@ public class HbAnnotationSwitch {
 			}
 			case HbAnnotationPackage.PARAMETER: {
 				Parameter parameter = (Parameter)theEObject;
-				Object result = caseParameter(parameter);
+				T result = caseParameter(parameter);
 				if (result == null) result = caseHbAnnotation(parameter);
 				if (result == null) result = casePAnnotation(parameter);
 				if (result == null) result = defaultCase(theEObject);
@@ -147,7 +147,7 @@ public class HbAnnotationSwitch {
 			}
 			case HbAnnotationPackage.TYPE: {
 				Type type = (Type)theEObject;
-				Object result = caseType(type);
+				T result = caseType(type);
 				if (result == null) result = caseHbAnnotation(type);
 				if (result == null) result = casePAnnotation(type);
 				if (result == null) result = defaultCase(theEObject);
@@ -155,7 +155,7 @@ public class HbAnnotationSwitch {
 			}
 			case HbAnnotationPackage.WHERE: {
 				Where where = (Where)theEObject;
-				Object result = caseWhere(where);
+				T result = caseWhere(where);
 				if (result == null) result = caseHbAnnotation(where);
 				if (result == null) result = casePAnnotation(where);
 				if (result == null) result = defaultCase(theEObject);
@@ -163,7 +163,7 @@ public class HbAnnotationSwitch {
 			}
 			case HbAnnotationPackage.ID_BAG: {
 				IdBag idBag = (IdBag)theEObject;
-				Object result = caseIdBag(idBag);
+				T result = caseIdBag(idBag);
 				if (result == null) result = caseHbAnnotation(idBag);
 				if (result == null) result = casePAnnotation(idBag);
 				if (result == null) result = defaultCase(theEObject);
@@ -171,7 +171,7 @@ public class HbAnnotationSwitch {
 			}
 			case HbAnnotationPackage.GENERIC_GENERATOR: {
 				GenericGenerator genericGenerator = (GenericGenerator)theEObject;
-				Object result = caseGenericGenerator(genericGenerator);
+				T result = caseGenericGenerator(genericGenerator);
 				if (result == null) result = caseHbAnnotation(genericGenerator);
 				if (result == null) result = casePAnnotation(genericGenerator);
 				if (result == null) result = defaultCase(theEObject);
@@ -179,7 +179,7 @@ public class HbAnnotationSwitch {
 			}
 			case HbAnnotationPackage.CACHE: {
 				Cache cache = (Cache)theEObject;
-				Object result = caseCache(cache);
+				T result = caseCache(cache);
 				if (result == null) result = caseHbAnnotation(cache);
 				if (result == null) result = casePAnnotation(cache);
 				if (result == null) result = defaultCase(theEObject);
@@ -187,7 +187,7 @@ public class HbAnnotationSwitch {
 			}
 			case HbAnnotationPackage.TYPE_DEF: {
 				TypeDef typeDef = (TypeDef)theEObject;
-				Object result = caseTypeDef(typeDef);
+				T result = caseTypeDef(typeDef);
 				if (result == null) result = caseHbAnnotation(typeDef);
 				if (result == null) result = casePAnnotation(typeDef);
 				if (result == null) result = defaultCase(theEObject);
@@ -195,7 +195,7 @@ public class HbAnnotationSwitch {
 			}
 			case HbAnnotationPackage.FETCH: {
 				Fetch fetch = (Fetch)theEObject;
-				Object result = caseFetch(fetch);
+				T result = caseFetch(fetch);
 				if (result == null) result = caseHbAnnotation(fetch);
 				if (result == null) result = casePAnnotation(fetch);
 				if (result == null) result = defaultCase(theEObject);
@@ -216,7 +216,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public Object caseHbAnnotation(HbAnnotation object) {
+    public T caseHbAnnotation(HbAnnotation object) {
 		return null;
 	}
 
@@ -231,7 +231,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public Object caseCollectionOfElements(CollectionOfElements object) {
+    public T caseCollectionOfElements(CollectionOfElements object) {
 		return null;
 	}
 
@@ -246,7 +246,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public Object caseWhere(Where object) {
+    public T caseWhere(Where object) {
 		return null;
 	}
 
@@ -261,7 +261,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public Object caseCascade(Cascade object) {
+    public T caseCascade(Cascade object) {
 		return null;
 	}
 
@@ -276,7 +276,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public Object caseMapKey(MapKey object) {
+    public T caseMapKey(MapKey object) {
 		return null;
 	}
 
@@ -291,7 +291,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public Object caseParameter(Parameter object) {
+    public T caseParameter(Parameter object) {
 		return null;
 	}
 
@@ -306,7 +306,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public Object caseType(Type object) {
+    public T caseType(Type object) {
 		return null;
 	}
 
@@ -321,7 +321,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public Object caseIdBag(IdBag object) {
+    public T caseIdBag(IdBag object) {
 		return null;
 	}
 
@@ -336,7 +336,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGenericGenerator(GenericGenerator object) {
+	public T caseGenericGenerator(GenericGenerator object) {
 		return null;
 	}
 
@@ -351,7 +351,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCache(Cache object) {
+	public T caseCache(Cache object) {
 		return null;
 	}
 
@@ -366,7 +366,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTypeDef(TypeDef object) {
+	public T caseTypeDef(TypeDef object) {
 		return null;
 	}
 
@@ -381,7 +381,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFetch(Fetch object) {
+	public T caseFetch(Fetch object) {
 		return null;
 	}
 
@@ -396,7 +396,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public Object casePAnnotation(PAnnotation object) {
+    public T casePAnnotation(PAnnotation object) {
 		return null;
 	}
 
@@ -411,7 +411,7 @@ public class HbAnnotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-    public Object defaultCase(EObject object) {
+    public T defaultCase(EObject object) {
 		return null;
 	}
 

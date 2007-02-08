@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeImpl.java,v 1.2 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: TypeImpl.java,v 1.3 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -81,7 +81,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList parameters = null;
+	protected EList<Parameter> parameters = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,6 +97,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return HbAnnotationPackage.Literals.TYPE;
 	}
@@ -165,9 +166,9 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getParameters() {
+	public EList<Parameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectResolvingEList(Parameter.class, this, HbAnnotationPackage.TYPE__PARAMETERS);
+			parameters = new EObjectResolvingEList<Parameter>(Parameter.class, this, HbAnnotationPackage.TYPE__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -177,6 +178,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbAnnotationPackage.TYPE__EMODEL_ELEMENT:
@@ -195,6 +197,8 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbAnnotationPackage.TYPE__EMODEL_ELEMENT:
@@ -205,7 +209,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 				return;
 			case HbAnnotationPackage.TYPE__PARAMETERS:
 				getParameters().clear();
-				getParameters().addAll((Collection)newValue);
+				getParameters().addAll((Collection<? extends Parameter>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -216,6 +220,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.TYPE__EMODEL_ELEMENT:
@@ -236,6 +241,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.TYPE__EMODEL_ELEMENT:
@@ -253,6 +259,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

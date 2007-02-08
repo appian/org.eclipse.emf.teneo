@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackageImpl.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbModelPackageImpl.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -392,6 +392,10 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 		PamodelPackage thePamodelPackage = (PamodelPackage)EPackage.Registry.INSTANCE.getEPackage(PamodelPackage.eNS_URI);
 		HbAnnotationPackage theHbAnnotationPackage = (HbAnnotationPackage)EPackage.Registry.INSTANCE.getEPackage(HbAnnotationPackage.eNS_URI);
 		PannotationPackage thePannotationPackage = (PannotationPackage)EPackage.Registry.INSTANCE.getEPackage(PannotationPackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		hbAnnotatedETypeElementEClass.getESuperTypes().add(thePamodelPackage.getPAnnotatedEStructuralFeature());

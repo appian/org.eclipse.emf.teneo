@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CacheImpl.java,v 1.3 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: CacheImpl.java,v 1.4 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -124,6 +124,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return HbAnnotationPackage.Literals.CACHE;
 	}
@@ -234,6 +235,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbAnnotationPackage.CACHE__EMODEL_ELEMENT:
@@ -254,6 +256,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbAnnotationPackage.CACHE__EMODEL_ELEMENT:
@@ -277,6 +280,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.CACHE__EMODEL_ELEMENT:
@@ -300,6 +304,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.CACHE__EMODEL_ELEMENT:
@@ -319,6 +324,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

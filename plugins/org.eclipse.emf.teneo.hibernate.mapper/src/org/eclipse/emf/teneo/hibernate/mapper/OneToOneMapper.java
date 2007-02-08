@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.7 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.8 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -92,7 +93,7 @@ class OneToOneMapper extends AbstractAssociationMapper {
 			} else {
 				associationElement.addAttribute("lazy", "false");
 			}
-			final List joinColumns = getJoinColumns(paReference);
+			final List<JoinColumn> joinColumns = getJoinColumns(paReference);
 			final boolean forceNullable = (oto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
 			addJoinColumns(associationElement, joinColumns, forceNullable);
 

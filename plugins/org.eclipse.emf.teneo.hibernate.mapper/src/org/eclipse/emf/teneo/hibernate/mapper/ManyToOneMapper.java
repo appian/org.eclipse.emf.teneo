@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.6 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.7 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,6 +24,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -55,7 +56,7 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 	public void process(PAnnotatedEReference paReference) {
 		log.debug("Process many-to-one " + paReference);
 
-		final List jcs = getJoinColumns(paReference);
+		final List<JoinColumn> jcs = getJoinColumns(paReference);
 		if (jcs.size() > 1) { // TODO support multiple join columns
 			log.error("Unsupported multiple join columns in " + paReference);
 			throw new MappingException("Unsupported multiple join columns", paReference);

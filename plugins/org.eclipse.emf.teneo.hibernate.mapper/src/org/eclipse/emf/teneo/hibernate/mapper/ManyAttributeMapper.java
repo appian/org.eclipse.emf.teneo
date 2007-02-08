@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyAttributeMapper.java,v 1.6 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: ManyAttributeMapper.java,v 1.7 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
@@ -78,7 +80,7 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 		final Element keyElement = collElement.addElement("key");
 
 		final JoinTable jt = paAttribute.getJoinTable();
-		final List jcs = paAttribute.getJoinColumns() == null ? new ArrayList() : (List) paAttribute.getJoinColumns();
+		final List<JoinColumn> jcs = paAttribute.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paAttribute.getJoinColumns();
 		final OneToMany otm = paAttribute.getOneToMany();
 
 		if (jt != null) {
@@ -114,7 +116,7 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 	 * Add Element element in given collection element.
 	 */
 	private Element addElementElement(Element collElement, String defaultName, PAnnotatedEAttribute paAttribute,
-			List columns, String targetEntity) {
+			List<Column> columns, String targetEntity) {
 		final Element elElement;
 		if (targetEntity == null) {
 			elElement = collElement.addElement("element");

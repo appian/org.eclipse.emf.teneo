@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelAdapterFactory.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbModelAdapterFactory.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.util;
 
@@ -66,6 +66,7 @@ public class HbModelAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -81,54 +82,70 @@ public class HbModelAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HbModelSwitch modelSwitch =
-		new HbModelSwitch() {
-			public Object caseHbAnnotatedETypeElement(HbAnnotatedETypeElement object) {
+	protected HbModelSwitch<Adapter> modelSwitch =
+		new HbModelSwitch<Adapter>() {
+			@Override
+			public Adapter caseHbAnnotatedETypeElement(HbAnnotatedETypeElement object) {
 				return createHbAnnotatedETypeElementAdapter();
 			}
-			public Object caseHbAnnotatedEAttribute(HbAnnotatedEAttribute object) {
+			@Override
+			public Adapter caseHbAnnotatedEAttribute(HbAnnotatedEAttribute object) {
 				return createHbAnnotatedEAttributeAdapter();
 			}
-			public Object caseHbAnnotatedEClass(HbAnnotatedEClass object) {
+			@Override
+			public Adapter caseHbAnnotatedEClass(HbAnnotatedEClass object) {
 				return createHbAnnotatedEClassAdapter();
 			}
-			public Object caseHbAnnotatedEModelElement(HbAnnotatedEModelElement object) {
+			@Override
+			public Adapter caseHbAnnotatedEModelElement(HbAnnotatedEModelElement object) {
 				return createHbAnnotatedEModelElementAdapter();
 			}
-			public Object caseHbAnnotatedEPackage(HbAnnotatedEPackage object) {
+			@Override
+			public Adapter caseHbAnnotatedEPackage(HbAnnotatedEPackage object) {
 				return createHbAnnotatedEPackageAdapter();
 			}
-			public Object caseHbAnnotatedEReference(HbAnnotatedEReference object) {
+			@Override
+			public Adapter caseHbAnnotatedEReference(HbAnnotatedEReference object) {
 				return createHbAnnotatedEReferenceAdapter();
 			}
-			public Object caseHbAnnotatedEDataType(HbAnnotatedEDataType object) {
+			@Override
+			public Adapter caseHbAnnotatedEDataType(HbAnnotatedEDataType object) {
 				return createHbAnnotatedEDataTypeAdapter();
 			}
-			public Object casePAnnotatedEModelElement(PAnnotatedEModelElement object) {
+			@Override
+			public Adapter casePAnnotatedEModelElement(PAnnotatedEModelElement object) {
 				return createPAnnotatedEModelElementAdapter();
 			}
-			public Object casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
+			@Override
+			public Adapter casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
 				return createPAnnotatedETypedElementAdapter();
 			}
-			public Object casePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature object) {
+			@Override
+			public Adapter casePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature object) {
 				return createPAnnotatedEStructuralFeatureAdapter();
 			}
-			public Object casePAnnotatedEAttribute(PAnnotatedEAttribute object) {
+			@Override
+			public Adapter casePAnnotatedEAttribute(PAnnotatedEAttribute object) {
 				return createPAnnotatedEAttributeAdapter();
 			}
-			public Object casePAnnotatedEClass(PAnnotatedEClass object) {
+			@Override
+			public Adapter casePAnnotatedEClass(PAnnotatedEClass object) {
 				return createPAnnotatedEClassAdapter();
 			}
-			public Object casePAnnotatedEPackage(PAnnotatedEPackage object) {
+			@Override
+			public Adapter casePAnnotatedEPackage(PAnnotatedEPackage object) {
 				return createPAnnotatedEPackageAdapter();
 			}
-			public Object casePAnnotatedEReference(PAnnotatedEReference object) {
+			@Override
+			public Adapter casePAnnotatedEReference(PAnnotatedEReference object) {
 				return createPAnnotatedEReferenceAdapter();
 			}
-			public Object casePAnnotatedEDataType(PAnnotatedEDataType object) {
+			@Override
+			public Adapter casePAnnotatedEDataType(PAnnotatedEDataType object) {
 				return createPAnnotatedEDataTypeAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -140,8 +157,9 @@ public class HbModelAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

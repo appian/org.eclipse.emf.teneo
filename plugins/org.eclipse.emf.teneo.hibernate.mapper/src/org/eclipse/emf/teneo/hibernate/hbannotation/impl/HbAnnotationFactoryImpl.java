@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationFactoryImpl.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotationFactoryImpl.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -76,6 +76,7 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case HbAnnotationPackage.CASCADE: return createCascade();
@@ -99,6 +100,7 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
@@ -115,6 +117,7 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
@@ -291,6 +294,7 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static HbAnnotationPackage getPackage() {
 		return HbAnnotationPackage.eINSTANCE;
 	}

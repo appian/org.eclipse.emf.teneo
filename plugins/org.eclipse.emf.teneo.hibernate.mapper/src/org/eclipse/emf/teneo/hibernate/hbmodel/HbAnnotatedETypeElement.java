@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedETypeElement.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotatedETypeElement.java,v 1.5 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
@@ -131,7 +132,7 @@ public interface HbAnnotatedETypeElement extends PAnnotatedEStructuralFeature, H
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.Column" containment="true"
 	 * @generated
 	 */
-	EList getHbColumns();
+	EList<Column> getHbColumns();
 
 	/**
 	 * Returns the value of the '<em><b>Hb Cascade</b></em>' containment reference.

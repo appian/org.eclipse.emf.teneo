@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackageImpl.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotationPackageImpl.java,v 1.5 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -651,6 +651,10 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 
 		// Obtain other dependent packages
 		PannotationPackage thePannotationPackage = (PannotationPackage)EPackage.Registry.INSTANCE.getEPackage(PannotationPackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		hbAnnotationEClass.getESuperTypes().add(thePannotationPackage.getPAnnotation());

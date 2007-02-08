@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.8 2007/02/01 12:35:54 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.9 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
@@ -155,7 +156,7 @@ class BasicMapper extends AbstractPropertyMapper {
 			basic = PannotationFactory.eINSTANCE.createBasic();
 		}
 
-		final List columns = getColumns(paAttribute);
+		final List<Column> columns = getColumns(paAttribute);
 		final Element propElement = getHbmContext().getCurrent().addElement("property").addAttribute("name",
 				getHbmContext().getPropertyName(paAttribute.getAnnotatedEAttribute()));
 
@@ -174,7 +175,7 @@ class BasicMapper extends AbstractPropertyMapper {
 		if (hed.getHbTypeDef() != null || hea.getHbType() != null) {
 			setType(paAttribute, propElement);
 		} else if (getHbmContext().isEasyEMFGenerated(eclassifier)) {
-			final Class instanceClass = getHbmContext().getImpl(eclassifier);
+			final Class<?> instanceClass = getHbmContext().getImpl(eclassifier);
 			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated)).addElement("param")
 					.addAttribute("name", "enumClassName").addText(instanceClass.getName());
 		} else if (getHbmContext().isEasyEMFDynamic(eclassifier)) {
@@ -208,7 +209,7 @@ class BasicMapper extends AbstractPropertyMapper {
 		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
 		final Element propElement = getHbmContext().getCurrent().addElement("version").addAttribute("name",
 				eAttribute.getName());
-		List columns = getColumns(paAttribute);
+		List<Column> columns = getColumns(paAttribute);
 		if (columns.size() > 1) {
 			log.warn("Version has more than one attribute, only using the first one, eclass: "
 					+ paAttribute.getAnnotatedEAttribute().getEContainingClass().getName());

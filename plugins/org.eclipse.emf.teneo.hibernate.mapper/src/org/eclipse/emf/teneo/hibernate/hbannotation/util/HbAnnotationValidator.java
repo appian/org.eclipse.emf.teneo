@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -105,7 +105,8 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected EPackage getEPackage() {
+    @Override
+				protected EPackage getEPackage() {
 	  return HbAnnotationPackage.eINSTANCE;
 	}
 
@@ -115,7 +116,8 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map context) {
+    @Override
+				protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
 			case HbAnnotationPackage.HB_ANNOTATION:
 				return validateHbAnnotation((HbAnnotation)value, diagnostics, context);
@@ -155,11 +157,14 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean validateHbAnnotation(HbAnnotation hbAnnotation, DiagnosticChain diagnostics, Map context) {
+    public boolean validateHbAnnotation(HbAnnotation hbAnnotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(hbAnnotation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(hbAnnotation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(hbAnnotation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(hbAnnotation, diagnostics, context);
 		return result;
@@ -171,7 +176,7 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean validateHbAnnotation_CompatibleEModelElementType(HbAnnotation hbAnnotation, DiagnosticChain diagnostics, Map context) {
+    public boolean validateHbAnnotation_CompatibleEModelElementType(HbAnnotation hbAnnotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
@@ -198,7 +203,7 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean validateHbAnnotation_AnnotationIsSupported(HbAnnotation hbAnnotation, DiagnosticChain diagnostics, Map context) {
+    public boolean validateHbAnnotation_AnnotationIsSupported(HbAnnotation hbAnnotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
@@ -224,11 +229,14 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean validateCollectionOfElements(CollectionOfElements collectionOfElements, DiagnosticChain diagnostics, Map context) {
+    public boolean validateCollectionOfElements(CollectionOfElements collectionOfElements, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(collectionOfElements, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(collectionOfElements, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(collectionOfElements, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(collectionOfElements, diagnostics, context);
 		return result;
@@ -239,11 +247,14 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean validateWhere(Where where, DiagnosticChain diagnostics, Map context) {
+    public boolean validateWhere(Where where, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(where, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(where, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(where, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(where, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(where, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(where, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(where, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(where, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(where, diagnostics, context);
 		return result;
@@ -254,11 +265,14 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean validateCascade(Cascade cascade, DiagnosticChain diagnostics, Map context) {
+    public boolean validateCascade(Cascade cascade, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(cascade, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(cascade, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(cascade, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(cascade, diagnostics, context);
 		return result;
@@ -269,11 +283,14 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean validateMapKey(MapKey mapKey, DiagnosticChain diagnostics, Map context) {
+    public boolean validateMapKey(MapKey mapKey, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(mapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mapKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(mapKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mapKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(mapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(mapKey, diagnostics, context);
 		return result;
@@ -284,11 +301,14 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean validateParameter(Parameter parameter, DiagnosticChain diagnostics, Map context) {
+    public boolean validateParameter(Parameter parameter, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(parameter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(parameter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(parameter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(parameter, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(parameter, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(parameter, diagnostics, context);
 		return result;
@@ -299,11 +319,14 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean validateType(Type type, DiagnosticChain diagnostics, Map context) {
+    public boolean validateType(Type type, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(type, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(type, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(type, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(type, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(type, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(type, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(type, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(type, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(type, diagnostics, context);
 		return result;
@@ -314,11 +337,14 @@ public class HbAnnotationValidator extends EObjectValidator {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean validateIdBag(IdBag idBag, DiagnosticChain diagnostics, Map context) {
+    public boolean validateIdBag(IdBag idBag, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(idBag, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(idBag, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(idBag, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(idBag, diagnostics, context);
 		return result;
@@ -329,11 +355,14 @@ public class HbAnnotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateGenericGenerator(GenericGenerator genericGenerator, DiagnosticChain diagnostics, Map context) {
+	public boolean validateGenericGenerator(GenericGenerator genericGenerator, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(genericGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(genericGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(genericGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(genericGenerator, diagnostics, context);
 		return result;
@@ -344,11 +373,14 @@ public class HbAnnotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCache(Cache cache, DiagnosticChain diagnostics, Map context) {
+	public boolean validateCache(Cache cache, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(cache, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(cache, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(cache, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(cache, diagnostics, context);
 		return result;
@@ -359,11 +391,14 @@ public class HbAnnotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTypeDef(TypeDef typeDef, DiagnosticChain diagnostics, Map context) {
+	public boolean validateTypeDef(TypeDef typeDef, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(typeDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(typeDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(typeDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(typeDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(typeDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(typeDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(typeDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(typeDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(typeDef, diagnostics, context);
 		return result;
@@ -374,11 +409,14 @@ public class HbAnnotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFetch(Fetch fetch, DiagnosticChain diagnostics, Map context) {
+	public boolean validateFetch(Fetch fetch, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(fetch, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(fetch, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(fetch, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(fetch, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(fetch, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(fetch, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(fetch, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(fetch, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(fetch, diagnostics, context);
 		return result;
@@ -389,7 +427,7 @@ public class HbAnnotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCacheConcurrencyStrategy(CacheConcurrencyStrategy cacheConcurrencyStrategy, DiagnosticChain diagnostics, Map context) {
+	public boolean validateCacheConcurrencyStrategy(CacheConcurrencyStrategy cacheConcurrencyStrategy, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -398,7 +436,7 @@ public class HbAnnotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateHbFetchType(HbFetchType hbFetchType, DiagnosticChain diagnostics, Map context) {
+	public boolean validateHbFetchType(HbFetchType hbFetchType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

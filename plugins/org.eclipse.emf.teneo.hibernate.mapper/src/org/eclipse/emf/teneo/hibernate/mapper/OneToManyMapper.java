@@ -12,13 +12,12 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.6 2007/02/01 12:35:54 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.7 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -28,6 +27,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
@@ -101,7 +102,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		final Element keyElement = collElement.addElement("key");
 
 		// TODO: throw error if both jointable and joincolumns have been set
-		final List jcs = paReference.getJoinColumns() == null ? new ArrayList() : (List) paReference.getJoinColumns();
+		final List<JoinColumn> jcs = paReference.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paReference.getJoinColumns();
 		final JoinTable jt = paReference.getJoinTable();
 		if (jt != null) {
 			addJoinTable(collElement, keyElement, jt);
@@ -121,13 +122,13 @@ class OneToManyMapper extends AbstractAssociationMapper {
 
 		final CollectionOfElements coe = hbReference.getHbCollectionOfElements();
 		final Cascade hbCascade = hbReference.getHbCascade();
-		final List hbCascadeList = (null == hbCascade) ? Collections.EMPTY_LIST : hbCascade.getValue();
+		final List<CascadeType> hbCascadeList = (null == hbCascade) ? new ArrayList<CascadeType>() : hbCascade.getValue();
 
 		// TODO OneToMany and CollectionOfElements are mutually exclusive. Should throw exception if both there?
 		addFetchType(collElement, (null != coe) ? coe.getFetch() : otm.getFetch(), false);
 		addCascadesForMany(collElement, (null != coe) ? hbCascadeList : otm.getCascade());
-		List inverseJoinColumns = jt != null && jt.getInverseJoinColumns() != null ? (List) jt.getInverseJoinColumns()
-				: Collections.EMPTY_LIST;
+		List<JoinColumn> inverseJoinColumns = jt != null && jt.getInverseJoinColumns() != null ? jt.getInverseJoinColumns()
+				: new ArrayList<JoinColumn>();
 
 		String targetName = null;
 
@@ -180,7 +181,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		final Element keyElement = collElement.addElement("key");
 
 		// MT: added handling of join info
-		final List jcs = paReference.getJoinColumns() == null ? new ArrayList() : (List) paReference.getJoinColumns();
+		final List<JoinColumn> jcs = paReference.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paReference.getJoinColumns();
 		final JoinTable jt = paReference.getJoinTable();
 		if (jt != null) {
 			addJoinTable(collElement, keyElement, jt);
@@ -205,8 +206,8 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		if (paReference.getEmbedded() != null) {
 			addCompositeElement(collElement, targetName, paReference);
 		} else if (jt != null) {
-			final List inverseJoinColumns = jt != null && jt.getInverseJoinColumns() != null ? (List) jt
-					.getInverseJoinColumns() : Collections.EMPTY_LIST;
+			final List<JoinColumn> inverseJoinColumns = jt != null && jt.getInverseJoinColumns() != null ? jt
+					.getInverseJoinColumns() : new ArrayList<JoinColumn>();
 			addManyToMany(collElement, targetName, !isEasyEMFGenerated, inverseJoinColumns, otm.isUnique());
 		} else {
 			addOneToMany(collElement, eref.getName(), targetName, !isEasyEMFGenerated);
@@ -234,7 +235,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 	 * Creates a many-to-many to handle the unidirectional manytomany. A unidirectional manytomany is now specified
 	 * using the one to many annotation while its implementation has a join table.
 	 */
-	private Element addManyToMany(Element collElement, String targetEntity, boolean isEntity, List invJoinColumns,
+	private Element addManyToMany(Element collElement, String targetEntity, boolean isEntity, List<JoinColumn> invJoinColumns,
 			boolean unique) {
 		Element manyToMany;
 		if (isEntity) {

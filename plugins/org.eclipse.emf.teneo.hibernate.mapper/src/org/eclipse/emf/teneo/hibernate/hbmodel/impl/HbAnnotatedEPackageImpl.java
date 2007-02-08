@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEPackageImpl.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotatedEPackageImpl.java,v 1.5 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -47,7 +47,7 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * @generated
 	 * @ordered
 	 */
-	protected EList hbGenericGenerators = null;
+	protected EList<GenericGenerator> hbGenericGenerators = null;
 
 	/**
 	 * The cached value of the '{@link #getHbTypeDef() <em>Hb Type Def</em>}' containment reference list. <!--
@@ -57,7 +57,7 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * @generated
 	 * @ordered
 	 */
-	protected EList hbTypeDef = null;
+	protected EList<TypeDef> hbTypeDef = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -71,6 +71,7 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return HbModelPackage.Literals.HB_ANNOTATED_EPACKAGE;
 	}
@@ -79,9 +80,9 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getHbGenericGenerators() {
+	public EList<GenericGenerator> getHbGenericGenerators() {
 		if (hbGenericGenerators == null) {
-			hbGenericGenerators = new EObjectContainmentEList(GenericGenerator.class, this, HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_GENERIC_GENERATORS);
+			hbGenericGenerators = new EObjectContainmentEList<GenericGenerator>(GenericGenerator.class, this, HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_GENERIC_GENERATORS);
 		}
 		return hbGenericGenerators;
 	}
@@ -90,9 +91,9 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getHbTypeDef() {
+	public EList<TypeDef> getHbTypeDef() {
 		if (hbTypeDef == null) {
-			hbTypeDef = new EObjectContainmentEList(TypeDef.class, this, HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_TYPE_DEF);
+			hbTypeDef = new EObjectContainmentEList<TypeDef>(TypeDef.class, this, HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_TYPE_DEF);
 		}
 		return hbTypeDef;
 	}
@@ -101,12 +102,13 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_GENERIC_GENERATORS:
-				return ((InternalEList)getHbGenericGenerators()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getHbGenericGenerators()).basicRemove(otherEnd, msgs);
 			case HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_TYPE_DEF:
-				return ((InternalEList)getHbTypeDef()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getHbTypeDef()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -115,6 +117,7 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_GENERIC_GENERATORS:
@@ -129,15 +132,17 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_GENERIC_GENERATORS:
 				getHbGenericGenerators().clear();
-				getHbGenericGenerators().addAll((Collection)newValue);
+				getHbGenericGenerators().addAll((Collection<? extends GenericGenerator>)newValue);
 				return;
 			case HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_TYPE_DEF:
 				getHbTypeDef().clear();
-				getHbTypeDef().addAll((Collection)newValue);
+				getHbTypeDef().addAll((Collection<? extends TypeDef>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -147,6 +152,7 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_GENERIC_GENERATORS:
@@ -163,6 +169,7 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EPACKAGE__HB_GENERIC_GENERATORS:

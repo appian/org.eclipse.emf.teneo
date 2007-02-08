@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeDef.java,v 1.3 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: TypeDef.java,v 1.4 2007/02/08 23:13:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -70,7 +70,7 @@ public interface TypeDef extends HbAnnotation {
 	 * @model type="org.eclipse.emf.teneo.hibernate.hbannotation.Parameter"
 	 * @generated
 	 */
-	EList getParameters();
+	EList<Parameter> getParameters();
 
 	/**
 	 * Returns the value of the '<em><b>Type Class</b></em>' attribute.

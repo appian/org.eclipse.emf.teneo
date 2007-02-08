@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.8 2007/02/01 12:35:54 mtaal Exp $
+ * $Id: MappingContext.java,v 1.9 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -23,6 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
@@ -47,7 +48,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -58,13 +59,13 @@ public class MappingContext extends AbstractProcessingContext {
 	private Element currentElement;
 
 	/** Mapping from eclass to entity name */
-	private Map entityNames = null;
+	private Map<EClass, String> entityNames = null;
 
 	/** Keeps track of the list of featuremapmappers created for the current entity */
-	private final List featureMapMappers = new ArrayList();
+	private final List<FeatureMapMapping> featureMapMappers = new ArrayList<FeatureMapMapping>();
 
 	/** The list of eattributes for which a featuremap mapping was created */
-	private final List handledFeatureMapEAttributes = new ArrayList();
+	private final List<EAttribute> handledFeatureMapEAttributes = new ArrayList<EAttribute>();
 
 	/** the mapper used for features */
 	private final FeatureMapper featureMapper;
@@ -135,14 +136,13 @@ public class MappingContext extends AbstractProcessingContext {
 		if (!eRuntimeInitialized) {
 			final EPackage[] epackages = new EPackage[paModel.getPaEPackages().size()];
 			int cnt = 0;
-			for (Iterator it = paModel.getPaEPackages().iterator(); it.hasNext();) {
-				final PAnnotatedEPackage pap = (PAnnotatedEPackage) it.next();
+			for (PAnnotatedEPackage pap : paModel.getPaEPackages()) {
 				epackages[cnt++] = pap.getAnnotatedEPackage();
 			}
 			ERuntime.INSTANCE.register(epackages);
 			eRuntimeInitialized = true;
 		}
-		final Class clazz = ERuntime.INSTANCE.getInstanceClass(eClass);
+		final Class<?> clazz = ERuntime.INSTANCE.getInstanceClass(eClass);
 		/*
 		 * Handle this in the caller if (clazz == null) { throw new MappingException("No instanceclass can be found for
 		 * this eclass: " + aClass.getAnnotatedEClass().getName()); }
@@ -156,7 +156,7 @@ public class MappingContext extends AbstractProcessingContext {
 	public String getEntityName(EClass entityEClass) {
 		String name = (String) entityNames.get(entityEClass);
 		if (name == null) {
-			final Class implClass = getImpl(entityEClass);
+			final Class<?> implClass = getImpl(entityEClass);
 			if (implClass != null) {
 				name = implClass.getName();
 			}
@@ -175,7 +175,7 @@ public class MappingContext extends AbstractProcessingContext {
 	public void beginDocument(Document draft) {
 		mappingDoc = draft;
 		currentElement = draft.getRoot();
-		entityNames = new HashMap();
+		entityNames = new HashMap<EClass, String>();
 	}
 
 	/** Finished creating the document */
@@ -202,8 +202,8 @@ public class MappingContext extends AbstractProcessingContext {
 	 * 
 	 * @return the featureMapMappers gathered during the entity processing
 	 */
-	public List getClearFeatureMapMappers() {
-		final ArrayList result = new ArrayList(featureMapMappers); // clone the list!
+	public List<FeatureMapMapping> getClearFeatureMapMappers() {
+		final ArrayList<FeatureMapMapping> result = new ArrayList<FeatureMapMapping>(featureMapMappers); // clone the list!
 		featureMapMappers.clear();
 		return result;
 	}
@@ -237,9 +237,9 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/** process the features of the annotated eclass */
-	protected void processFeatures(List features) {
-		for (Iterator i = features.iterator(); i.hasNext();) {
-			entityMapper.processFeature((PAnnotatedEStructuralFeature) i.next());
+	protected void processFeatures(List<PAnnotatedEStructuralFeature> features) {
+		for (Iterator<PAnnotatedEStructuralFeature> i = features.iterator(); i.hasNext();) {
+			entityMapper.processFeature(i.next());
 		}
 	}
 
@@ -290,7 +290,7 @@ public class MappingContext extends AbstractProcessingContext {
 	/** Get unique constraint key. */
 	public String getUniqueConstraintKey(String colName) {
 		// Obtain UniqueConstraints from secondary or primary table.
-		List uniqueConstraints = null;
+		List<UniqueConstraint> uniqueConstraints = null;
 		if (currentSecondaryTable != null) {
 			uniqueConstraints = currentSecondaryTable.getUniqueConstraints();
 		} else if (currentTable != null) {
@@ -380,7 +380,7 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/** Returns the list of eattrs, note list is updated outside of this object */
-	public List getHandledFeatureMapEAttributes() {
+	public List<EAttribute> getHandledFeatureMapEAttributes() {
 		return handledFeatureMapEAttributes;
 	}
 
@@ -417,7 +417,7 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/** Check if this is an entity (so without an impl class) */
-	public Class getImpl(EClassifier eclassifier) {
+	public Class<?> getImpl(EClassifier eclassifier) {
 		return EModelResolver.instance().getJavaClass(eclassifier);
 	}
 

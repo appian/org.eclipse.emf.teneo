@@ -12,13 +12,12 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.10 2007/02/05 15:35:35 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.11 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -26,6 +25,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
@@ -78,7 +78,7 @@ abstract class AbstractMapper {
 		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) hea.getPaModel().getPAnnotated(ed);
 
 		final String name;
-		final List params;
+		final List<Parameter> params;
 		if (hea.getHbType() != null) {
 			name = hea.getHbType().getType();
 			params = hea.getHbType().getParameters();
@@ -95,8 +95,7 @@ abstract class AbstractMapper {
 				propElement.addAttribute("type", name);
 			} else {
 				final Element typeElement = propElement.addElement("type").addAttribute("name", name);
-				for (Iterator it = params.iterator(); it.hasNext();) {
-					final Parameter param = (Parameter) it.next();
+				for (Parameter param : params) {
 					typeElement.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
 				}
 			}
@@ -157,8 +156,8 @@ abstract class AbstractMapper {
 	 * Returns the (possibly overridden) JoinColumns annotations for the given reference or an empty list if no
 	 * JoinColumns were defined.
 	 */
-	protected List getJoinColumns(PAnnotatedEReference paReference) {
-		List joinColumns = getHbmContext().getOverride(paReference);
+	protected List<JoinColumn> getJoinColumns(PAnnotatedEReference paReference) {
+		List<JoinColumn> joinColumns = getHbmContext().getOverride(paReference);
 		if (joinColumns == null) {
 			return paReference.getJoinColumns();
 		}
@@ -183,7 +182,7 @@ abstract class AbstractMapper {
 	}
 
 	/** Same as above only handles multiple columns */
-	protected void addColumns(Element propertyElement, String defaultName, List columns, boolean isNullable,
+	protected void addColumns(Element propertyElement, String defaultName, List<Column> columns, boolean isNullable,
 			boolean setColumnAttributesInProperty) {
 		// if no columns set then use some default
 		if (columns.isEmpty()) {
@@ -200,15 +199,14 @@ abstract class AbstractMapper {
 			col.setNullable(isNullable);
 			columns.add(col);
 		}
-		for (Iterator it = columns.iterator(); it.hasNext();) {
-			final Column column = (Column) it.next();
+		for (Column column : columns) {
 			addColumn(propertyElement, defaultName, column, isNullable, setColumnAttributesInProperty);
 		}
 	}
 
 	/** Adds anytype columns */
-	protected List getAnyTypeColumns(String featureName, boolean isNullable) {
-		final ArrayList result = new ArrayList();
+	protected List<Column> getAnyTypeColumns(String featureName, boolean isNullable) {
+		final ArrayList<Column> result = new ArrayList<Column>();
 		final Column typeColumn = PannotationFactory.eINSTANCE.createColumn();
 		typeColumn.setName(hbmContext.trunc(featureName + "_type"));
 		typeColumn.setNullable(isNullable);
@@ -223,12 +221,12 @@ abstract class AbstractMapper {
 	/**
 	 * Returns the (possibly overridden) columns annotation for the given attribute.
 	 */
-	protected List getColumns(PAnnotatedEAttribute paAttribute) {
+	protected List<Column> getColumns(PAnnotatedEAttribute paAttribute) {
 		final Column defaultColumn = paAttribute.getColumn();
 		final Column oc = getHbmContext().getOverride(paAttribute);
 
 		if (oc != null) {
-			final ArrayList result = new ArrayList();
+			final ArrayList<Column> result = new ArrayList<Column>();
 			result.add(oc);
 			return result;
 		}
@@ -237,7 +235,7 @@ abstract class AbstractMapper {
 		if (hae.getHbColumns().size() > 0) {
 			return hae.getHbColumns();
 		}
-		final ArrayList result = new ArrayList();
+		final ArrayList<Column> result = new ArrayList<Column>();
 		if (defaultColumn != null) {
 			result.add(defaultColumn);
 		}

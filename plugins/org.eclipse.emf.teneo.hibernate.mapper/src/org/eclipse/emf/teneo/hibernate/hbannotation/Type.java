@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Type.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: Type.java,v 1.5 2007/02/08 23:13:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -69,6 +69,6 @@ public interface Type extends HbAnnotation {
 	 * @model type="org.eclipse.emf.teneo.hibernate.hbannotation.Parameter"
 	 * @generated
 	 */
-	EList getParameters();
+	EList<Parameter> getParameters();
 
 } // Type

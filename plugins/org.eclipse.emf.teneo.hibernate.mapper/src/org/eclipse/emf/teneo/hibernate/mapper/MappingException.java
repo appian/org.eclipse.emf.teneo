@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingException.java,v 1.2 2007/02/01 12:35:54 mtaal Exp $
+ * $Id: MappingException.java,v 1.3 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -31,6 +31,11 @@ import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
  */
 public class MappingException extends RuntimeException {
 
+	/**
+	 * Generated Serial ID
+	 */
+	private static final long serialVersionUID = 7816794038091161326L;
+	
 	/** Logger */
 	private static final Log log = LogFactory.getLog(MappingException.class);
 

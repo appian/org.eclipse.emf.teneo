@@ -12,12 +12,10 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.6 2007/02/01 12:35:54 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.7 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
-
-import java.util.Iterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -107,8 +105,7 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 
 		addJoinTable(collElement, keyElement, jt);
 		if (jt.getInverseJoinColumns() != null) {
-			for (Iterator it = jt.getInverseJoinColumns().iterator(); it.hasNext();) {
-				final JoinColumn joinColumn = (JoinColumn) it.next();
+			for (JoinColumn joinColumn : jt.getInverseJoinColumns()) {
 				mtmElement.addElement("column").addAttribute("name", getHbmContext().trunc(joinColumn.getName()))
 						.addAttribute("not-null", joinColumn.isNullable() ? "false" : "true").addAttribute("unique",
 								joinColumn.isUnique() ? "true" : "false");

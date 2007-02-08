@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.7 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: IdMapper.java,v 1.8 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -26,9 +26,11 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
@@ -134,9 +136,7 @@ class IdMapper extends AbstractPropertyMapper {
 		final String className = getHbmContext().getInstanceClassName(aClass.getPaModel(), aClass.getAnnotatedEClass());
 		compositeIdElement.addAttribute("class", className);
 		getHbmContext().setCurrent(compositeIdElement);
-		final List aFeatures = aClass.getPaEStructuralFeatures();
-		for (Iterator iter = aFeatures.iterator(); iter.hasNext();) {
-			PAnnotatedEStructuralFeature aFeature = (PAnnotatedEStructuralFeature) iter.next();
+		for (PAnnotatedEStructuralFeature aFeature : aClass.getPaEStructuralFeatures()) {
 			if (!(aFeature instanceof PAnnotatedEAttribute)) {
 				continue;
 			}
@@ -175,7 +175,7 @@ class IdMapper extends AbstractPropertyMapper {
 		}
 
 		final EAttribute eAttribute = id.getAnnotatedEAttribute();
-		final List columns = getColumns(id);
+		final List<Column> columns = getColumns(id);
 		final GeneratedValue generatedValue = id.getGeneratedValue();
 
 		// if (column != null && column.getColumnDefinition() != null) {
@@ -215,7 +215,7 @@ class IdMapper extends AbstractPropertyMapper {
 					typeName = "org.elver.persistence.hibernate.type.EnumIntegerUserType";
 				}
 
-				final Class instanceClass = getHbmContext().getImpl(id.getAnnotatedEAttribute().getEType());
+				final Class<?> instanceClass = getHbmContext().getImpl(id.getAnnotatedEAttribute().getEType());
 				usedIdElement.addElement("type").addAttribute("name", typeName).addElement("param").addAttribute(
 						"name", "enumClassName").addText(instanceClass.getName());
 			} else if (getHbmContext().isEasyEMFDynamic(id.getAnnotatedEAttribute().getEType())) {
@@ -253,8 +253,7 @@ class IdMapper extends AbstractPropertyMapper {
 				log.debug("GenericGenerator the strategy in the GeneratedValue is ignored (if even set)");
 				generatorElement.addAttribute("class", gg.getStrategy());
 				if (gg.getParameters() != null) {
-					for (Iterator params = gg.getParameters().iterator(); params.hasNext();) {
-						final Parameter param = (Parameter) params.next();
+					for (Parameter param : gg.getParameters()) {
 						generatorElement.addElement("param").addAttribute("name", param.getName()).addText(
 								param.getValue());
 					}
@@ -294,10 +293,9 @@ class IdMapper extends AbstractPropertyMapper {
 	 * passed for debugging purposes.
 	 */
 	public GenericGenerator getGenericGenerator(PAnnotatedModel paModel, String name) {
-		for (Iterator it = paModel.getPaEPackages().iterator(); it.hasNext();) {
+		for (Iterator<PAnnotatedEPackage> it = paModel.getPaEPackages().iterator(); it.hasNext();) {
 			final HbAnnotatedEPackage pae = (HbAnnotatedEPackage) it.next();
-			for (Iterator sit = pae.getHbGenericGenerators().iterator(); sit.hasNext();) {
-				final GenericGenerator gg = (GenericGenerator) sit.next();
+			for (GenericGenerator gg : pae.getHbGenericGenerators()) {
 				if (gg.getName() != null && gg.getName().compareTo(name) == 0) {
 					if (gg.getStrategy() == null) {
 						throw new MappingException("The GenericGenerator: " + name + " has no strategy defined!");

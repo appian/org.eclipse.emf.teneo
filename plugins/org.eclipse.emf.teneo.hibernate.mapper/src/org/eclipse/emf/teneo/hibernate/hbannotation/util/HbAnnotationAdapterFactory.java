@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationAdapterFactory.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotationAdapterFactory.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -69,7 +69,8 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-    public boolean isFactoryForType(Object object) {
+    @Override
+				public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
 		}
@@ -85,48 +86,62 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected HbAnnotationSwitch modelSwitch =
-		new HbAnnotationSwitch() {
-			public Object caseHbAnnotation(HbAnnotation object) {
+    protected HbAnnotationSwitch<Adapter> modelSwitch =
+		new HbAnnotationSwitch<Adapter>() {
+			@Override
+			public Adapter caseHbAnnotation(HbAnnotation object) {
 				return createHbAnnotationAdapter();
 			}
-			public Object caseCascade(Cascade object) {
+			@Override
+			public Adapter caseCascade(Cascade object) {
 				return createCascadeAdapter();
 			}
-			public Object caseCollectionOfElements(CollectionOfElements object) {
+			@Override
+			public Adapter caseCollectionOfElements(CollectionOfElements object) {
 				return createCollectionOfElementsAdapter();
 			}
-			public Object caseMapKey(MapKey object) {
+			@Override
+			public Adapter caseMapKey(MapKey object) {
 				return createMapKeyAdapter();
 			}
-			public Object caseParameter(Parameter object) {
+			@Override
+			public Adapter caseParameter(Parameter object) {
 				return createParameterAdapter();
 			}
-			public Object caseType(Type object) {
+			@Override
+			public Adapter caseType(Type object) {
 				return createTypeAdapter();
 			}
-			public Object caseWhere(Where object) {
+			@Override
+			public Adapter caseWhere(Where object) {
 				return createWhereAdapter();
 			}
-			public Object caseIdBag(IdBag object) {
+			@Override
+			public Adapter caseIdBag(IdBag object) {
 				return createIdBagAdapter();
 			}
-			public Object caseGenericGenerator(GenericGenerator object) {
+			@Override
+			public Adapter caseGenericGenerator(GenericGenerator object) {
 				return createGenericGeneratorAdapter();
 			}
-			public Object caseCache(Cache object) {
+			@Override
+			public Adapter caseCache(Cache object) {
 				return createCacheAdapter();
 			}
-			public Object caseTypeDef(TypeDef object) {
+			@Override
+			public Adapter caseTypeDef(TypeDef object) {
 				return createTypeDefAdapter();
 			}
-			public Object caseFetch(Fetch object) {
+			@Override
+			public Adapter caseFetch(Fetch object) {
 				return createFetchAdapter();
 			}
-			public Object casePAnnotation(PAnnotation object) {
+			@Override
+			public Adapter casePAnnotation(PAnnotation object) {
 				return createPAnnotationAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -139,8 +154,9 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-    public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+    @Override
+				public Adapter createAdapter(Notifier target) {
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

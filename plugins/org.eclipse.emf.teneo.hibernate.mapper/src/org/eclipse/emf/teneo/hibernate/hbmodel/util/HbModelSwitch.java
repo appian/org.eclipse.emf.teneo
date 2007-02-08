@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelSwitch.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbModelSwitch.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.util;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
  * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage
  * @generated
  */
-public class HbModelSwitch {
+public class HbModelSwitch<T> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -66,7 +66,7 @@ public class HbModelSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -76,16 +76,16 @@ public class HbModelSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -95,11 +95,11 @@ public class HbModelSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT: {
 				HbAnnotatedETypeElement hbAnnotatedETypeElement = (HbAnnotatedETypeElement)theEObject;
-				Object result = caseHbAnnotatedETypeElement(hbAnnotatedETypeElement);
+				T result = caseHbAnnotatedETypeElement(hbAnnotatedETypeElement);
 				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedETypeElement);
 				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedETypeElement);
 				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedETypeElement);
@@ -109,7 +109,7 @@ public class HbModelSwitch {
 			}
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE: {
 				HbAnnotatedEAttribute hbAnnotatedEAttribute = (HbAnnotatedEAttribute)theEObject;
-				Object result = caseHbAnnotatedEAttribute(hbAnnotatedEAttribute);
+				T result = caseHbAnnotatedEAttribute(hbAnnotatedEAttribute);
 				if (result == null) result = casePAnnotatedEAttribute(hbAnnotatedEAttribute);
 				if (result == null) result = caseHbAnnotatedETypeElement(hbAnnotatedEAttribute);
 				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedEAttribute);
@@ -121,7 +121,7 @@ public class HbModelSwitch {
 			}
 			case HbModelPackage.HB_ANNOTATED_ECLASS: {
 				HbAnnotatedEClass hbAnnotatedEClass = (HbAnnotatedEClass)theEObject;
-				Object result = caseHbAnnotatedEClass(hbAnnotatedEClass);
+				T result = caseHbAnnotatedEClass(hbAnnotatedEClass);
 				if (result == null) result = casePAnnotatedEClass(hbAnnotatedEClass);
 				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEClass);
 				if (result == null) result = defaultCase(theEObject);
@@ -129,14 +129,14 @@ public class HbModelSwitch {
 			}
 			case HbModelPackage.HB_ANNOTATED_EMODEL_ELEMENT: {
 				HbAnnotatedEModelElement hbAnnotatedEModelElement = (HbAnnotatedEModelElement)theEObject;
-				Object result = caseHbAnnotatedEModelElement(hbAnnotatedEModelElement);
+				T result = caseHbAnnotatedEModelElement(hbAnnotatedEModelElement);
 				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEModelElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case HbModelPackage.HB_ANNOTATED_EPACKAGE: {
 				HbAnnotatedEPackage hbAnnotatedEPackage = (HbAnnotatedEPackage)theEObject;
-				Object result = caseHbAnnotatedEPackage(hbAnnotatedEPackage);
+				T result = caseHbAnnotatedEPackage(hbAnnotatedEPackage);
 				if (result == null) result = casePAnnotatedEPackage(hbAnnotatedEPackage);
 				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEPackage);
 				if (result == null) result = defaultCase(theEObject);
@@ -144,7 +144,7 @@ public class HbModelSwitch {
 			}
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE: {
 				HbAnnotatedEReference hbAnnotatedEReference = (HbAnnotatedEReference)theEObject;
-				Object result = caseHbAnnotatedEReference(hbAnnotatedEReference);
+				T result = caseHbAnnotatedEReference(hbAnnotatedEReference);
 				if (result == null) result = casePAnnotatedEReference(hbAnnotatedEReference);
 				if (result == null) result = caseHbAnnotatedETypeElement(hbAnnotatedEReference);
 				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedEReference);
@@ -156,7 +156,7 @@ public class HbModelSwitch {
 			}
 			case HbModelPackage.HB_ANNOTATED_EDATA_TYPE: {
 				HbAnnotatedEDataType hbAnnotatedEDataType = (HbAnnotatedEDataType)theEObject;
-				Object result = caseHbAnnotatedEDataType(hbAnnotatedEDataType);
+				T result = caseHbAnnotatedEDataType(hbAnnotatedEDataType);
 				if (result == null) result = casePAnnotatedEDataType(hbAnnotatedEDataType);
 				if (result == null) result = caseHbAnnotatedETypeElement(hbAnnotatedEDataType);
 				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedEDataType);
@@ -181,7 +181,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseHbAnnotatedETypeElement(HbAnnotatedETypeElement object) {
+	public T caseHbAnnotatedETypeElement(HbAnnotatedETypeElement object) {
 		return null;
 	}
 
@@ -196,7 +196,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseHbAnnotatedEAttribute(HbAnnotatedEAttribute object) {
+	public T caseHbAnnotatedEAttribute(HbAnnotatedEAttribute object) {
 		return null;
 	}
 
@@ -211,7 +211,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseHbAnnotatedEClass(HbAnnotatedEClass object) {
+	public T caseHbAnnotatedEClass(HbAnnotatedEClass object) {
 		return null;
 	}
 
@@ -226,7 +226,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseHbAnnotatedEModelElement(HbAnnotatedEModelElement object) {
+	public T caseHbAnnotatedEModelElement(HbAnnotatedEModelElement object) {
 		return null;
 	}
 
@@ -241,7 +241,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseHbAnnotatedEPackage(HbAnnotatedEPackage object) {
+	public T caseHbAnnotatedEPackage(HbAnnotatedEPackage object) {
 		return null;
 	}
 
@@ -256,7 +256,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseHbAnnotatedEReference(HbAnnotatedEReference object) {
+	public T caseHbAnnotatedEReference(HbAnnotatedEReference object) {
 		return null;
 	}
 
@@ -271,7 +271,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseHbAnnotatedEDataType(HbAnnotatedEDataType object) {
+	public T caseHbAnnotatedEDataType(HbAnnotatedEDataType object) {
 		return null;
 	}
 
@@ -286,7 +286,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePAnnotatedEModelElement(PAnnotatedEModelElement object) {
+	public T casePAnnotatedEModelElement(PAnnotatedEModelElement object) {
 		return null;
 	}
 
@@ -301,7 +301,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
+	public T casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
 		return null;
 	}
 
@@ -314,7 +314,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature object) {
+	public T casePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature object) {
 		return null;
 	}
 
@@ -329,7 +329,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePAnnotatedEAttribute(PAnnotatedEAttribute object) {
+	public T casePAnnotatedEAttribute(PAnnotatedEAttribute object) {
 		return null;
 	}
 
@@ -344,7 +344,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePAnnotatedEClass(PAnnotatedEClass object) {
+	public T casePAnnotatedEClass(PAnnotatedEClass object) {
 		return null;
 	}
 
@@ -359,7 +359,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePAnnotatedEPackage(PAnnotatedEPackage object) {
+	public T casePAnnotatedEPackage(PAnnotatedEPackage object) {
 		return null;
 	}
 
@@ -374,7 +374,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePAnnotatedEReference(PAnnotatedEReference object) {
+	public T casePAnnotatedEReference(PAnnotatedEReference object) {
 		return null;
 	}
 
@@ -389,7 +389,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePAnnotatedEDataType(PAnnotatedEDataType object) {
+	public T casePAnnotatedEDataType(PAnnotatedEDataType object) {
 		return null;
 	}
 
@@ -403,7 +403,7 @@ public class HbModelSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

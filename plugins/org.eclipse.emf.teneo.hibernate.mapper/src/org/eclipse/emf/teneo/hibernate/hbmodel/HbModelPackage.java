@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackage.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbModelPackage.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -123,13 +123,13 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ETYPE_ELEMENT__SEQUENCE_GENERATOR = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__SEQUENCE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ETYPE_ELEMENT__TABLE_GENERATOR = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATORS;
+	int HB_ANNOTATED_ETYPE_ELEMENT__TABLE_GENERATORS = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -294,13 +294,13 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__SEQUENCE_GENERATOR = PamodelPackage.PANNOTATED_EATTRIBUTE__SEQUENCE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EATTRIBUTE__TABLE_GENERATORS;
+	int HB_ANNOTATED_EATTRIBUTE__TABLE_GENERATORS = PamodelPackage.PANNOTATED_EATTRIBUTE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -879,13 +879,13 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__SEQUENCE_GENERATOR = PamodelPackage.PANNOTATED_EREFERENCE__SEQUENCE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EREFERENCE__TABLE_GENERATORS;
+	int HB_ANNOTATED_EREFERENCE__TABLE_GENERATORS = PamodelPackage.PANNOTATED_EREFERENCE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -1149,13 +1149,13 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EDATA_TYPE__SEQUENCE_GENERATOR = PamodelPackage.PANNOTATED_EDATA_TYPE__SEQUENCE_GENERATOR;
 
 	/**
-	 * The feature id for the '<em><b>Table Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__TABLE_GENERATOR = PamodelPackage.PANNOTATED_EDATA_TYPE__TABLE_GENERATORS;
+	int HB_ANNOTATED_EDATA_TYPE__TABLE_GENERATORS = PamodelPackage.PANNOTATED_EDATA_TYPE__TABLE_GENERATORS;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.

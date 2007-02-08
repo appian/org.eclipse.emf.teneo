@@ -12,12 +12,10 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapMapping.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: FeatureMapMapping.java,v 1.6 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
-
-import java.util.Iterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -94,8 +92,7 @@ class FeatureMapMapping {
 		// and now process the features of this group
 		final PAnnotatedEClass paClass = paAttribute.getPaEClass();
 		final boolean isMixed = StoreUtil.isMixed(paAttribute.getAnnotatedEAttribute());
-		for (Iterator it = paClass.getPaEStructuralFeatures().iterator(); it.hasNext();) {
-			PAnnotatedEStructuralFeature paFeature = (PAnnotatedEStructuralFeature) it.next();
+		for (PAnnotatedEStructuralFeature paFeature : paClass.getPaEStructuralFeatures()) {
 			EStructuralFeature eFeature = paFeature.getAnnotatedEStructuralFeature();
 			if ((isMixed && eFeature.getFeatureID() != paAttribute.getAnnotatedEAttribute().getFeatureID())
 					|| StoreUtil.isElementOfGroup(eFeature, paAttribute.getAnnotatedEAttribute())) {

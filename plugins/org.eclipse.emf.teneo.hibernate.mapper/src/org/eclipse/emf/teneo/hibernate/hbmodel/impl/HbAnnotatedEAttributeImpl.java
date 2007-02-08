@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttributeImpl.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotatedEAttributeImpl.java,v 1.5 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -91,7 +91,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList hbColumns = null;
+	protected EList<Column> hbColumns = null;
 
 	/**
 	 * The cached value of the '{@link #getHbCascade() <em>Hb Cascade</em>}' containment reference. <!--
@@ -135,6 +135,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return HbModelPackage.Literals.HB_ANNOTATED_EATTRIBUTE;
 	}
@@ -263,9 +264,9 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getHbColumns() {
+	public EList<Column> getHbColumns() {
 		if (hbColumns == null) {
-			hbColumns = new EObjectContainmentEList(Column.class, this, HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLUMNS);
+			hbColumns = new EObjectContainmentEList<Column>(Column.class, this, HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLUMNS);
 		}
 		return hbColumns;
 	}
@@ -394,6 +395,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_WHERE:
@@ -403,7 +405,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_MAP_KEY:
 				return basicSetHbMapKey(null, msgs);
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLUMNS:
-				return ((InternalEList)getHbColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getHbColumns()).basicRemove(otherEnd, msgs);
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_CASCADE:
 				return basicSetHbCascade(null, msgs);
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_ID_BAG:
@@ -418,6 +420,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_WHERE:
@@ -442,6 +445,8 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_WHERE:
@@ -455,7 +460,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				return;
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_COLUMNS:
 				getHbColumns().clear();
-				getHbColumns().addAll((Collection)newValue);
+				getHbColumns().addAll((Collection<? extends Column>)newValue);
 				return;
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_CASCADE:
 				setHbCascade((Cascade)newValue);
@@ -474,6 +479,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_WHERE:
@@ -505,6 +511,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE__HB_WHERE:
@@ -529,7 +536,8 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == HbAnnotatedEModelElement.class) {
 			switch (derivedFeatureID) {
 				default: return -1;
@@ -553,7 +561,8 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == HbAnnotatedEModelElement.class) {
 			switch (baseFeatureID) {
 				default: return -1;

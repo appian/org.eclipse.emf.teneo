@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelFactoryImpl.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbModelFactoryImpl.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -61,6 +61,7 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case HbModelPackage.HB_ANNOTATED_EATTRIBUTE: return createHbAnnotatedEAttribute();
@@ -131,6 +132,7 @@ public class HbModelFactoryImpl extends EFactoryImpl implements HbModelFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static HbModelPackage getPackage() {
 		return HbModelPackage.eINSTANCE;
 	}

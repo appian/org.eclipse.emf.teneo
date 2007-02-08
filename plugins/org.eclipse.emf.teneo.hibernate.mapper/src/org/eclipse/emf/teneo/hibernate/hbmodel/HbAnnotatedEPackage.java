@@ -2,12 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEPackage.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotatedEPackage.java,v 1.5 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Hb Annotated EPackage</b></em>'. <!--
@@ -47,7 +49,7 @@ public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	 * @model type="org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator" containment="true"
 	 * @generated
 	 */
-	EList getHbGenericGenerators();
+	EList<GenericGenerator> getHbGenericGenerators();
 
 	/**
 	 * Returns the value of the '<em><b>Hb Type Def</b></em>' containment reference list.
@@ -63,6 +65,6 @@ public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	 * @model type="org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef" containment="true"
 	 * @generated
 	 */
-	EList getHbTypeDef();
+	EList<TypeDef> getHbTypeDef();
 
 } // HbAnnotatedEPackage

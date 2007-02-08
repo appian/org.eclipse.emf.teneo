@@ -2,11 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MapKey.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: MapKey.java,v 1.5 2007/02/08 23:13:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Map Key</b></em>'. <!-- end-user-doc -->
@@ -43,6 +44,6 @@ public interface MapKey extends HbAnnotation {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.Column" containment="true" ordered="false"
 	 * @generated
 	 */
-	EList getColumns();
+	EList<Column> getColumns();
 
 } // MapKey

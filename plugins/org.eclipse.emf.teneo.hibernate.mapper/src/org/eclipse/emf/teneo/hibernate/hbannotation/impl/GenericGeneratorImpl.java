@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GenericGeneratorImpl.java,v 1.2 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: GenericGeneratorImpl.java,v 1.3 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -102,7 +102,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	 * @generated
 	 * @ordered
 	 */
-	protected EList parameters = null;
+	protected EList<Parameter> parameters = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,6 +118,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return HbAnnotationPackage.Literals.GENERIC_GENERATOR;
 	}
@@ -207,9 +208,9 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getParameters() {
+	public EList<Parameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectResolvingEList(Parameter.class, this, HbAnnotationPackage.GENERIC_GENERATOR__PARAMETERS);
+			parameters = new EObjectResolvingEList<Parameter>(Parameter.class, this, HbAnnotationPackage.GENERIC_GENERATOR__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -219,6 +220,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbAnnotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
@@ -239,6 +241,8 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbAnnotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
@@ -252,7 +256,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 				return;
 			case HbAnnotationPackage.GENERIC_GENERATOR__PARAMETERS:
 				getParameters().clear();
-				getParameters().addAll((Collection)newValue);
+				getParameters().addAll((Collection<? extends Parameter>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -263,6 +267,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
@@ -286,6 +291,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
@@ -305,6 +311,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

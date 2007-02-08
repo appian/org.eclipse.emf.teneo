@@ -11,12 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.8 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.9 2007/02/08 23:13:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -80,7 +79,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * the basis of the insertable/updatable attributes of the joinColumns. Note that the joinColumns list can be empty.
 	 * forcenullable is set to true when a feature map entry is being processed.
 	 */
-	protected void addJoinColumns(Element associationElement, List joinColumns, boolean forceNullable) {
+	protected void addJoinColumns(Element associationElement, List<JoinColumn> joinColumns, boolean forceNullable) {
 		log.debug("addJoinColumns " + associationElement.getName() + "/ no of joincolumns" + joinColumns.size());
 
 		// assumption is that if one column is not insertable then the association is
@@ -88,9 +87,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		boolean insertable = true;
 		boolean updatable = true;
 
-		for (Iterator it = joinColumns.iterator(); it.hasNext();) {
-			JoinColumn joinColumn = (JoinColumn) it.next();
-
+		for (JoinColumn joinColumn : joinColumns) {
 			log.debug("JoinColumn " + joinColumn.getName());
 
 			Element columnElement = associationElement.addElement("column").addAttribute("not-null",
@@ -128,7 +125,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * @param cascade:
 	 *            list of cascade annotation types
 	 */
-	protected void addCascadesForSingle(Element associationElement, List cascades) {
+	protected void addCascadesForSingle(Element associationElement, List<CascadeType> cascades) {
 		addCascades(associationElement, cascades, false);
 	}
 
@@ -141,7 +138,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * @param cascade:
 	 *            list of cascade annotation types
 	 */
-	protected void addCascadesForMany(Element associationElement, List cascades) {
+	protected void addCascadesForMany(Element associationElement, List<CascadeType> cascades) {
 		addCascades(associationElement, cascades, true);
 	}
 
@@ -155,11 +152,10 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * @param addDeleteOrphan:
 	 *            if true then delete-orphan is added in case of cascade all
 	 */
-	protected void addCascades(Element associationElement, List cascades, boolean addDeleteOrphan) {
+	protected void addCascades(Element associationElement, List<CascadeType> cascades, boolean addDeleteOrphan) {
 		if (!cascades.isEmpty()) {
 			StringBuffer sb = new StringBuffer();
-			for (Iterator i = cascades.iterator(); i.hasNext();) {
-				CascadeType cascade = (CascadeType) i.next();
+			for (CascadeType cascade : cascades) {
 				switch (cascade.getValue()) {
 				case CascadeType.ALL:
 					sb.append("all,"); // assuming all appears alone
@@ -239,7 +235,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		boolean isMap = false;
 		if (hbFeature instanceof PAnnotatedEReference) {
 			EClass refType = ((PAnnotatedEReference) hbFeature).getAnnotatedEReference().getEReferenceType();
-			final Class instanceClass = refType.getInstanceClass();
+			final Class<?> instanceClass = refType.getInstanceClass();
 			isMap = (null != instanceClass && Map.Entry.class.isAssignableFrom(instanceClass));
 		}
 
@@ -303,13 +299,11 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	/**
 	 * Adds columns to a key element. Also sets update on the key element based on the values in the columns.
 	 */
-	protected void addKeyColumns(Element keyElement, List joinColumns) {
+	protected void addKeyColumns(Element keyElement, List<JoinColumn> joinColumns) {
 		log.debug("Adding key columns");
 		boolean setUpdatable = false;
 		boolean isUpdatable = false;
-		for (Iterator it = joinColumns.iterator(); it.hasNext();) {
-			JoinColumn joinColumn = (JoinColumn) it.next();
-
+		for (JoinColumn joinColumn : joinColumns) {
 			log.debug("Column " + joinColumn.getName());
 
 			if (!setUpdatable) {

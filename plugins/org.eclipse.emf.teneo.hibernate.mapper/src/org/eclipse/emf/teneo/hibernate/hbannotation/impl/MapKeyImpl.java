@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MapKeyImpl.java,v 1.2 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: MapKeyImpl.java,v 1.3 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -62,7 +62,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList columns = null;
+	protected EList<Column> columns = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,6 +78,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return HbAnnotationPackage.Literals.MAP_KEY;
 	}
@@ -125,9 +126,9 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getColumns() {
+	public EList<Column> getColumns() {
 		if (columns == null) {
-			columns = new EObjectContainmentEList(Column.class, this, HbAnnotationPackage.MAP_KEY__COLUMNS);
+			columns = new EObjectContainmentEList<Column>(Column.class, this, HbAnnotationPackage.MAP_KEY__COLUMNS);
 		}
 		return columns;
 	}
@@ -137,10 +138,11 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case HbAnnotationPackage.MAP_KEY__COLUMNS:
-				return ((InternalEList)getColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -150,6 +152,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbAnnotationPackage.MAP_KEY__EMODEL_ELEMENT:
@@ -166,6 +169,8 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbAnnotationPackage.MAP_KEY__EMODEL_ELEMENT:
@@ -173,7 +178,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 				return;
 			case HbAnnotationPackage.MAP_KEY__COLUMNS:
 				getColumns().clear();
-				getColumns().addAll((Collection)newValue);
+				getColumns().addAll((Collection<? extends Column>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -184,6 +189,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.MAP_KEY__EMODEL_ELEMENT:
@@ -201,6 +207,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.MAP_KEY__EMODEL_ELEMENT:

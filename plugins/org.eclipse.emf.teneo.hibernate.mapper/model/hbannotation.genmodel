@@ -7,7 +7,7 @@
     templateDirectory="" redirection="" modelName="HbAnnotation" editPluginClass="org.eclipse.emf.teneo.hibernate.hbannotation.provider.HbAnnotationEditPlugin"
     editorPluginClass="org.eclipse.emf.teneo.hibernate.hbannotation.presentation.HbAnnotationEditorPlugin"
     updateClasspath="false" testSuiteClass="org.eclipse.emf.teneo.hibernate.hbannotation.tests.HbAnnotationAllTests"
-    importerID="org.eclipse.emf.importer.ecore" usedGenPackages="../../org.eclipse.emf.teneo.annotations/model/annotations.genmodel#//pamodel ../../org.eclipse.emf.teneo.annotations/model/annotations.genmodel#//pannotation">
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" usedGenPackages="../../org.eclipse.emf.teneo.annotations/model/annotations.genmodel#//pamodel ../../org.eclipse.emf.teneo.annotations/model/annotations.genmodel#//pannotation">
   <foreignModel>hbannotation.ecore</foreignModel>
   <foreignModel>hbmodel.ecore</foreignModel>
   <genPackages prefix="HbAnnotation" basePackage="org.eclipse.emf.teneo.hibernate"

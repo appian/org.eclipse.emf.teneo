@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadeImpl.java,v 1.2 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: CascadeImpl.java,v 1.3 2007/02/08 23:13:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -60,7 +60,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList value = null;
+	protected EList<CascadeType> value = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,6 +76,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return HbAnnotationPackage.Literals.CASCADE;
 	}
@@ -123,9 +124,9 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getValue() {
+	public EList<CascadeType> getValue() {
 		if (value == null) {
-			value = new EDataTypeUniqueEList(CascadeType.class, this, HbAnnotationPackage.CASCADE__VALUE);
+			value = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this, HbAnnotationPackage.CASCADE__VALUE);
 		}
 		return value;
 	}
@@ -135,6 +136,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
@@ -151,6 +153,8 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
@@ -158,7 +162,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 				return;
 			case HbAnnotationPackage.CASCADE__VALUE:
 				getValue().clear();
-				getValue().addAll((Collection)newValue);
+				getValue().addAll((Collection<? extends CascadeType>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -169,6 +173,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
@@ -186,6 +191,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
@@ -201,6 +207,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
