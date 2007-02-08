@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyEObjectType.java,v 1.2 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: AnyEObjectType.java,v 1.3 2007/02/08 23:11:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -53,12 +53,17 @@ import org.hibernate.type.Type;
  */
 public class AnyEObjectType extends AbstractType implements AbstractComponentType, AssociationType {
 
+	/**
+	 * Generated Serial ID
+	 */
+	private static final long serialVersionUID = 3857353606004705457L;
+
 	private static final String[] PROPERTY_NAMES = new String[] { "class", "idtype", "idstr"};
 
 	private static final int[] SQL_TYPES = { Types.VARCHAR, Types.VARCHAR, Types.VARCHAR };
 
 	/** Constructor by id */
-	private final HashMap constructors = new HashMap();
+	private final HashMap<String, Constructor<?>> constructors = new HashMap<String, Constructor<?>>();
 
 	/**
 	 * Return the types of the columns that this UserType will serialize into.
@@ -133,9 +138,9 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 	/** Creates an id object of the correct type */
 	private Serializable getId(String idStr, String idType) {
 		try {
-			Constructor constructor = (Constructor) constructors.get(idType);
+			Constructor<?> constructor = (Constructor<?>) constructors.get(idType);
 			if (constructor == null) {
-				final Class idClass = this.getClass().getClassLoader().loadClass(idType);
+				final Class<?> idClass = this.getClass().getClassLoader().loadClass(idType);
 				constructor = idClass.getConstructor(new Class[] { String.class });
 			}
 			return (Serializable) constructor.newInstance(new Object[] { idStr });
@@ -196,7 +201,7 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 	}
 
 	/** Returns EObject */
-	public Class getReturnedClass() {
+	public Class<?> getReturnedClass() {
 		return EObject.class;
 	}
 
@@ -217,6 +222,11 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 	}
 
 	public static final class EObjectCacheEntry implements Serializable {
+		/**
+		 * Serial Version ID
+		 */
+		private static final long serialVersionUID = 1030890286147221359L;
+
 		/** The cached entityName */
 		String entityName;
 
@@ -246,6 +256,7 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Object replace(Object original, Object target, SessionImplementor session, Object owner, Map copyCache)
 			throws HibernateException {
 		if (original == null) {
@@ -353,6 +364,7 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public String getOnCondition(String alias, SessionFactoryImplementor factory, Map enabledFilters)
 			throws MappingException {
 		throw new UnsupportedOperationException();

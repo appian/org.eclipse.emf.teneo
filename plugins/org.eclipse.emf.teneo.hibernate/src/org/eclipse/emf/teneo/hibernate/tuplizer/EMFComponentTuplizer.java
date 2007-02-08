@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFComponentTuplizer.java,v 1.6 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: EMFComponentTuplizer.java,v 1.7 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -35,10 +35,15 @@ import org.hibernate.tuple.component.AbstractComponentTuplizer;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class EMFComponentTuplizer extends AbstractComponentTuplizer {
+
+	/**
+	 * Generated Serial ID
+	 */
+	private static final long serialVersionUID = 6316160569897347041L;
 
 	/** The logger */
 	// private static Log log = LogFactory.getLog(EMFComponentTuplizer.class);
@@ -48,17 +53,20 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	}
 
 	/** Creates an EMF Instantiator */
-	protected Instantiator buildInstantiator(Component component, Property property) {
+	protected Instantiator buildInstantiator(Component component,
+			Property property) {
 		return buildInstantiator(component);
 	}
 
 	/** Creates an EMF Instantiator */
 	protected Instantiator buildInstantiator(Component component) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(component);
-		final EClass eclass = ds.getPersistenceOptions().getEClassNameStrategy().toEClass(
-				component.getComponentClassName(), ds.getEPackages());
+		final EClass eclass = ds.getPersistenceOptions()
+				.getEClassNameStrategy().toEClass(
+						component.getComponentClassName(), ds.getEPackages());
 		if (eclass == null) {
-			throw new HbMapperException("No eclass found for entityname: " + component.getComponentClassName());
+			throw new HbMapperException("No eclass found for entityname: "
+					+ component.getComponentClassName());
 		}
 		return new EMFInstantiator(eclass, component);
 	}
@@ -70,7 +78,8 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	 *      org.hibernate.mapping.PersistentClass)
 	 */
 	protected Getter buildGetter(Component component, Property mappedProperty) {
-		return getPropertyAccessor(mappedProperty, component).getGetter(null, mappedProperty.getName());
+		return getPropertyAccessor(mappedProperty, component).getGetter(null,
+				mappedProperty.getName());
 	}
 
 	/*
@@ -80,13 +89,16 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	 *      org.hibernate.mapping.PersistentClass)
 	 */
 	protected Setter buildSetter(Component component, Property mappedProperty) {
-		return getPropertyAccessor(mappedProperty, component).getSetter(null, mappedProperty.getName());
+		return getPropertyAccessor(mappedProperty, component).getSetter(null,
+				mappedProperty.getName());
 	}
 
 	/** Returns the correct accessor on the basis of the type of property */
-	public static PropertyAccessor getPropertyAccessor(Property mappedProperty, Component comp) {
+	public static PropertyAccessor getPropertyAccessor(Property mappedProperty,
+			Component comp) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(comp);
-		return HbUtil.getPropertyAccessor(mappedProperty, ds, comp.getComponentClassName());
+		return HbUtil.getPropertyAccessor(mappedProperty, ds, comp
+				.getComponentClassName());
 	}
 
 	/*
@@ -94,7 +106,7 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	 * 
 	 * @see org.hibernate.tuple.Tuplizer#getMappedClass()
 	 */
-	public Class getMappedClass() {
+	public Class<?> getMappedClass() {
 		return EObject.class;
 	}
 
@@ -128,9 +140,10 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.tuple.ComponentTuplizer#setParent(java.lang.Object, java.lang.Object,
-	 *      org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.tuple.ComponentTuplizer#setParent(java.lang.Object,
+	 *      java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void setParent(Object component, Object parent, SessionFactoryImplementor factory) {
+	public void setParent(Object component, Object parent,
+			SessionFactoryImplementor factory) {
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbContext.java,v 1.3 2007/02/01 12:34:13 mtaal Exp $
+ * $Id: HbContext.java,v 1.4 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -25,31 +25,39 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.property.PropertyAccessor;
 
 /**
- * The HbContext contains factory methods or configuration methods for different objects or other parameters used by the Hibernate EMF
- * layer. This class can be overridden to instantiate your own tuplizers, accessors etc.
+ * The HbContext contains factory methods or configuration methods for different
+ * objects or other parameters used by the Hibernate EMF layer. This class can
+ * be overridden to instantiate your own tuplizers, accessors etc.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public interface HbContext {
 
 	/** Return the Tuplizer class used by the Hibernate EMF layer */
-	public abstract Class getEMFTuplizerClass(Configuration hbConfiguration);
+	public abstract Class<?> getEMFTuplizerClass(Configuration hbConfiguration);
 
 	/** Return the Tuplizer class used by the Hibernate EMF layer for Components */
-	public abstract Class getEMFComponentTuplizerClass(Configuration hbConfiguration);
+	public abstract Class<?> getEMFComponentTuplizerClass(
+			Configuration hbConfiguration);
 
 	/** Returns the Tuplizer used for featuremap entries */
-	public abstract Class getFeatureMapEntryTuplizer(Configuration hbConfiguration);
+	public abstract Class<?> getFeatureMapEntryTuplizer(
+			Configuration hbConfiguration);
 
 	/** Return the Interceptor class used */
-	public abstract Interceptor createInterceptor(Configuration hbConfiguration, PersistenceOptions po);
+	public abstract Interceptor createInterceptor(
+			Configuration hbConfiguration, PersistenceOptions po);
 
-	/** Return the accessor used to acces the string repr. of the feature in the featuremapentry */
+	/**
+	 * Return the accessor used to acces the string repr. of the feature in the
+	 * featuremapentry
+	 */
 	public abstract PropertyAccessor createFeatureMapEntryFeatureURIAccessor();
 
 	/** Return the accessor used to acces the features of a feature map */
-	public abstract PropertyAccessor createFeatureMapEntryAccessor(EStructuralFeature feature);
+	public abstract PropertyAccessor createFeatureMapEntryAccessor(
+			EStructuralFeature feature);
 
 	/** Return the accessor used to acces version props */
 	public abstract PropertyAccessor createVersionAccessor();
@@ -61,19 +69,24 @@ public interface HbContext {
 	public abstract PropertyAccessor createEContainerFeatureIDAccessor();
 
 	/** Return the featuremap accessor */
-	public abstract PropertyAccessor createFeatureMapPropertyAccessor(EStructuralFeature eFeature);
+	public abstract PropertyAccessor createFeatureMapPropertyAccessor(
+			EStructuralFeature eFeature);
 
 	/** Return the elist accessor */
-	public abstract PropertyAccessor createEListAccessor(EStructuralFeature eFeature, boolean extraLazy);
+	public abstract PropertyAccessor createEListAccessor(
+			EStructuralFeature eFeature, boolean extraLazy);
 
 	/** Return the EReference accessor */
-	public abstract PropertyAccessor createEReferenceAccessor(EReference eReference);
+	public abstract PropertyAccessor createEReferenceAccessor(
+			EReference eReference);
 
 	/** Return the general EFeatureAccessor */
-	public abstract PropertyAccessor createEAttributeAccessor(EAttribute eAttribute);
+	public abstract PropertyAccessor createEAttributeAccessor(
+			EAttribute eAttribute);
 
 	/**
-	 * The method which gets called to create a hibernateConfiguration. The default factory only does new Configuration().
+	 * The method which gets called to create a hibernateConfiguration. The
+	 * default factory only does new Configuration().
 	 */
 	public abstract Configuration createConfiguration();
 

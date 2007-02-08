@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbStoreException.java,v 1.2 2007/02/01 12:34:13 mtaal Exp $
+ * $Id: HbStoreException.java,v 1.3 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -20,12 +20,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Is used to throw runtime emf/jpox integration exceptions. This class offers automatic logging to commons logging. Note that this
- * class extends RuntimeException, so no forced throws and catch statements. Although there are very differing views on this topic but
- * it is our experience that to many checked exceptions only distract the programmer and have no added value.
+ * Is used to throw runtime emf/jpox integration exceptions. This class offers
+ * automatic logging to commons logging. Note that this class extends
+ * RuntimeException, so no forced throws and catch statements. Although there
+ * are very differing views on this topic but it is our experience that to many
+ * checked exceptions only distract the programmer and have no added value.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class HbStoreException extends RuntimeException {
@@ -54,7 +56,7 @@ public class HbStoreException extends RuntimeException {
 		super(cause);
 		log.error(cause);
 	}
-	
+
 	/**
 	 * The constructor, logs the exception also
 	 */
@@ -63,5 +65,5 @@ public class HbStoreException extends RuntimeException {
 
 		// and log it
 		log.error(msg, this);
-	}	
+	}
 }

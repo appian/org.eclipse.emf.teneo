@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbContextImpl.java,v 1.3 2007/02/01 12:34:13 mtaal Exp $
+ * $Id: HbContextImpl.java,v 1.4 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -37,11 +37,12 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.property.PropertyAccessor;
 
 /**
- * The HbContext contains factory methods or configuration methods for different objects or other parameters used by the Hibernate EMF
- * layer. This class can be overridden to instantiate your own tuplizers, accessors etc.
+ * The HbContext contains factory methods or configuration methods for different
+ * objects or other parameters used by the Hibernate EMF layer. This class can
+ * be overridden to instantiate your own tuplizers, accessors etc.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class HbContextImpl implements HbContext {
 
@@ -50,7 +51,7 @@ public class HbContextImpl implements HbContext {
 	 * 
 	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getEMFTuplizerClass(org.hibernate.cfg.Configuration)
 	 */
-	public Class getEMFTuplizerClass(Configuration hbConfiguration) {
+	public Class<?> getEMFTuplizerClass(Configuration hbConfiguration) {
 		return EMFTuplizer.class;
 	}
 
@@ -59,7 +60,7 @@ public class HbContextImpl implements HbContext {
 	 * 
 	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getEMFComponentTuplizerClass(org.hibernate.cfg.Configuration)
 	 */
-	public Class getEMFComponentTuplizerClass(Configuration hbConfiguration) {
+	public Class<?> getEMFComponentTuplizerClass(Configuration hbConfiguration) {
 		return EMFComponentTuplizer.class;
 	}
 
@@ -68,7 +69,7 @@ public class HbContextImpl implements HbContext {
 	 * 
 	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getFeatureMapEntryTuplizer(org.hibernate.cfg.Configuration)
 	 */
-	public Class getFeatureMapEntryTuplizer(Configuration hbConfiguration) {
+	public Class<?> getFeatureMapEntryTuplizer(Configuration hbConfiguration) {
 		return FeatureMapEntryTuplizer.class;
 	}
 
@@ -77,7 +78,8 @@ public class HbContextImpl implements HbContext {
 	 * 
 	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createInterceptor(org.hibernate.cfg.Configuration)
 	 */
-	public Interceptor createInterceptor(Configuration hbConfiguration, PersistenceOptions po) {
+	public Interceptor createInterceptor(Configuration hbConfiguration,
+			PersistenceOptions po) {
 		return new EMFInterceptor(po);
 	}
 
@@ -95,7 +97,8 @@ public class HbContextImpl implements HbContext {
 	 * 
 	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createFeatureMapEntryAccessor(org.eclipse.emf.ecore.EStructuralFeature)
 	 */
-	public PropertyAccessor createFeatureMapEntryAccessor(EStructuralFeature feature) {
+	public PropertyAccessor createFeatureMapEntryAccessor(
+			EStructuralFeature feature) {
 		return new FeatureMapEntryPropertyHandler(feature);
 	}
 
@@ -131,7 +134,8 @@ public class HbContextImpl implements HbContext {
 	 * 
 	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createFeatureMapPropertyAccessor(org.eclipse.emf.ecore.EStructuralFeature)
 	 */
-	public PropertyAccessor createFeatureMapPropertyAccessor(EStructuralFeature eFeature) {
+	public PropertyAccessor createFeatureMapPropertyAccessor(
+			EStructuralFeature eFeature) {
 		return new FeatureMapPropertyHandler(eFeature);
 	}
 
@@ -140,7 +144,8 @@ public class HbContextImpl implements HbContext {
 	 * 
 	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEListAccessor(org.eclipse.emf.ecore.EStructuralFeature)
 	 */
-	public PropertyAccessor createEListAccessor(EStructuralFeature eFeature, boolean extraLazy) {
+	public PropertyAccessor createEListAccessor(EStructuralFeature eFeature,
+			boolean extraLazy) {
 		return new EListPropertyHandler(eFeature, extraLazy);
 	}
 

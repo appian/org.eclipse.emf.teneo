@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerUserType.java,v 1.5 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: EContainerUserType.java,v 1.6 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -54,46 +54,61 @@ import org.hibernate.usertype.CompositeUserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ $Date: 2007/02/01 12:34:14 $
+ * @version $Revision: 1.6 $ $Date: 2007/02/08 23:11:37 $
  */
 
-public class EContainerUserType extends AbstractType implements CompositeUserType, AssociationType {
+public class EContainerUserType extends AbstractType implements
+		CompositeUserType, AssociationType {
+	/**
+	 * Serial version id
+	 */
+	private static final long serialVersionUID = 6385066726834417274L;
+
 	/** Separator used in encoding the class name and value */
 	private static final String ENCODING_SEPARATOR = ";";
 
 	/** The property names */
-	private static final String[] propertyNames = new String[] { "containerclass", "containerid" };
+	private static final String[] propertyNames = new String[] {
+			"containerclass", "containerid" };
 
 	/** The property types (two strings) */
-	private static final Type[] propertyTypes = new Type[] { Hibernate.STRING, Hibernate.STRING };
+	private static final Type[] propertyTypes = new Type[] { Hibernate.STRING,
+			Hibernate.STRING };
 
 	/** The sql types */
-	private static final int[] sqlTypes = new int[] { Types.VARCHAR, Types.VARCHAR };
+	private static final int[] sqlTypes = new int[] { Types.VARCHAR,
+			Types.VARCHAR };
 
 	/** HashTable with cached constructors */
-	private final Hashtable constructorCache = new Hashtable();
+	private final Hashtable<String, Constructor<?>> constructorCache = new Hashtable<String, Constructor<?>>();
 
 	/** HashTable with identifier types hashed by entityname */
-	private final Hashtable identifierTypeCache = new Hashtable();
+	private final Hashtable<String, Type> identifierTypeCache = new Hashtable<String, Type>();
 
-	/** Abstract method from super class, currently does not really print anything meaningfull */
-	public String toLoggableString(Object value, SessionFactoryImplementor factory) throws HibernateException {
-		return (value != null ? "EContainer: " + value.getClass().getName() : "EContainer null value");
+	/**
+	 * Abstract method from super class, currently does not really print
+	 * anything meaningfull
+	 */
+	public String toLoggableString(Object value,
+			SessionFactoryImplementor factory) throws HibernateException {
+		return (value != null ? "EContainer: " + value.getClass().getName()
+				: "EContainer null value");
 	}
 
 	/** The generic class returned (nl. Object) */
-	public Class getReturnedClass() {
+	public Class<?> getReturnedClass() {
 		return Object.class;
 	}
 
 	/** Just returns passed value */
-	public Object deepCopy(Object value, EntityMode entityMode, SessionFactoryImplementor factory)
-			throws HibernateException {
+	public Object deepCopy(Object value, EntityMode entityMode,
+			SessionFactoryImplementor factory) throws HibernateException {
 		return value;
 	}
 
 	/** Not supported */
-	public Object fromXMLNode(Node xml, Mapping factory) throws HibernateException {
+	public Object fromXMLNode(Node xml, Mapping factory)
+			throws HibernateException {
 		throw new UnsupportedOperationException("not supported for econtainer");
 	}
 
@@ -108,13 +123,14 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	}
 
 	/** Does nothing */
-	public boolean isDirty(Object old, Object current, boolean[] checkable, SessionImplementor session)
-			throws HibernateException {
+	public boolean isDirty(Object old, Object current, boolean[] checkable,
+			SessionImplementor session) throws HibernateException {
 		return isDirty(old, current, session);
 	}
 
 	/** Not supported */
-	public Object nullSafeGet(ResultSet rs, String name, SessionImplementor session, Object owner)
+	public Object nullSafeGet(ResultSet rs, String name,
+			SessionImplementor session, Object owner)
 			throws HibernateException, SQLException {
 		throw new UnsupportedOperationException("not supported for econtainer");
 	}
@@ -122,11 +138,13 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.type.Type#nullSafeSet(java.sql.PreparedStatement, java.lang.Object, int, boolean[],
+	 * @see org.hibernate.type.Type#nullSafeSet(java.sql.PreparedStatement,
+	 *      java.lang.Object, int, boolean[],
 	 *      org.hibernate.engine.SessionImplementor)
 	 */
-	public void nullSafeSet(PreparedStatement st, Object value, int index, boolean[] settable,
-			SessionImplementor session) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			boolean[] settable, SessionImplementor session)
+			throws HibernateException, SQLException {
 		// TODO Auto-generated method stub
 		if (settable == null || settable[0]) {
 			nullSafeSet(st, value, index, session);
@@ -136,16 +154,20 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.type.Type#replace(java.lang.Object, java.lang.Object, org.hibernate.engine.SessionImplementor,
-	 *      java.lang.Object, java.util.Map)
+	 * @see org.hibernate.type.Type#replace(java.lang.Object, java.lang.Object,
+	 *      org.hibernate.engine.SessionImplementor, java.lang.Object,
+	 *      java.util.Map)
 	 */
-	public Object replace(Object original, Object target, SessionImplementor session, Object owner, Map copyCache)
+	@SuppressWarnings("unchecked")
+	public Object replace(Object original, Object target,
+			SessionImplementor session, Object owner, Map copyCache)
 			throws HibernateException {
 		return replace(original, target, session, owner);
 	}
 
 	/** Not supported */
-	public void setToXMLNode(Node node, Object value, SessionFactoryImplementor factory) throws HibernateException {
+	public void setToXMLNode(Node node, Object value,
+			SessionFactoryImplementor factory) throws HibernateException {
 		throw new UnsupportedOperationException("not supported for econtainer");
 	}
 
@@ -154,7 +176,10 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 		return sqlTypes;
 	}
 
-	/** Returns array of boolean denoting which columns are null when the value is null */
+	/**
+	 * Returns array of boolean denoting which columns are null when the value
+	 * is null
+	 */
 	public boolean[] toColumnNullness(Object value, Mapping mapping) {
 		boolean[] result = new boolean[getColumnSpan(mapping)];
 		if (value != null) {
@@ -166,8 +191,9 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	}
 
 	/**
-	 * True as this is very similar to anytype, needed to return true because otherwise Hibernate would not recognize
-	 * that the container object should be saved before this object and saving transient instance was called.
+	 * True as this is very similar to anytype, needed to return true because
+	 * otherwise Hibernate would not recognize that the container object should
+	 * be saved before this object and saving transient instance was called.
 	 */
 	public boolean isAnyType() {
 		return true;
@@ -188,13 +214,17 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	}
 
 	/** Not supported */
-	public String getAssociatedEntityName(SessionFactoryImplementor factory) throws MappingException {
-		throw new UnsupportedOperationException("Econtainer type is a generic type, no specific associated entity");
+	public String getAssociatedEntityName(SessionFactoryImplementor factory)
+			throws MappingException {
+		throw new UnsupportedOperationException(
+				"Econtainer type is a generic type, no specific associated entity");
 	}
 
 	/** Not supported */
-	public Joinable getAssociatedJoinable(SessionFactoryImplementor factory) throws MappingException {
-		throw new UnsupportedOperationException("Econtainer type is a generic type, no specific associated entity");
+	public Joinable getAssociatedJoinable(SessionFactoryImplementor factory)
+			throws MappingException {
+		throw new UnsupportedOperationException(
+				"Econtainer type is a generic type, no specific associated entity");
 	}
 
 	/** From parent */
@@ -208,7 +238,9 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	}
 
 	/** Not supported */
-	public String getOnCondition(String alias, SessionFactoryImplementor factory, Map enabledFilters)
+	@SuppressWarnings("unchecked")
+	public String getOnCondition(String alias,
+			SessionFactoryImplementor factory, Map enabledFilters)
 			throws MappingException {
 		throw new UnsupportedOperationException("not supported for econtainer");
 	}
@@ -254,18 +286,20 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	}
 
 	/** Can be any object */
-	public Class returnedClass() {
+	public Class<?> returnedClass() {
 		return Object.class;
 	}
 
 	/**
 	 * Translates the serialized cached object to a real object
 	 */
-	public Object assemble(Serializable cached, SessionImplementor session, Object owner) throws HibernateException {
+	public Object assemble(Serializable cached, SessionImplementor session,
+			Object owner) throws HibernateException {
 		// already correct
 		if (!(cached instanceof ContainerPointer)) {
 			final String entityName = session.bestGuessEntityName(cached);
-			final Serializable idObject = (Serializable)getID(entityName, cached, session);
+			final Serializable idObject = (Serializable) getID(entityName,
+					cached, session);
 			return session.internalLoad(entityName, idObject, false, false);
 		} else {
 			final ContainerPointer cp = (ContainerPointer) cached;
@@ -276,13 +310,15 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	}
 
 	/** Create a containerpointer */
-	public Serializable disassemble(Object value, SessionImplementor session) throws HibernateException {
+	public Serializable disassemble(Object value, SessionImplementor session)
+			throws HibernateException {
 		if (value == null)
 			return null;
 		try {
 			final String entityName = session.bestGuessEntityName(value);
 			final Object idObject = getID(entityName, value, session);
-			return new ContainerPointer(getIdentifierType(entityName, session), entityName, idObject.toString());
+			return new ContainerPointer(getIdentifierType(entityName, session),
+					entityName, idObject.toString());
 		} catch (TransientObjectException toe) {
 			return null;
 		}
@@ -299,7 +335,8 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	}
 
 	/** Not supported */
-	public Object getPropertyValue(Object component, int property) throws HibernateException {
+	public Object getPropertyValue(Object component, int property)
+			throws HibernateException {
 		final Object container = ((InternalEObject) component).eContainer();
 		if (container == null)
 			return null;
@@ -311,11 +348,13 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 			return IdentifierCacheHandler.getID(container);
 		}
 
-		throw new HbMapperException("Property: " + property + " not supported in " + component.getClass().getName());
+		throw new HbMapperException("Property: " + property
+				+ " not supported in " + component.getClass().getName());
 	}
 
 	/** Load the object on the basis of the data in the resultset */
-	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner)
+	public Object nullSafeGet(ResultSet rs, String[] names,
+			SessionImplementor session, Object owner)
 			throws HibernateException, SQLException {
 		final String cc = rs.getString(names[0]); // container class
 		if (cc == null)
@@ -324,21 +363,23 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 		if (idStr == null)
 			return null;
 
-		final Object obj = session.internalLoad(cc, extractID(getIdentifierType(cc, session), idStr), false, false);
+		final Object obj = session.internalLoad(cc, extractID(
+				getIdentifierType(cc, session), idStr), false, false);
 		return obj;
 	}
 
 	/** Set the data in the resultset */
-	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session)
-			throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			SessionImplementor session) throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 			st.setNull(index + 1, Types.VARCHAR);
 		} else {
-			//EObject eobj = (EObject) value;
+			// EObject eobj = (EObject) value;
 			final String ename = session.bestGuessEntityName(value);
 			st.setString(index, ename);
-			st.setString(index + 1, createIDString(getIdentifierType(ename, session), getID(ename, value, session)));
+			st.setString(index + 1, createIDString(getIdentifierType(ename,
+					session), getID(ename, value, session)));
 		}
 	}
 
@@ -348,8 +389,8 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 		if (type != null)
 			return type;
 
-		final Type identifierType = ((SessionImpl) session).getFactory().getClassMetadata(entityName)
-				.getIdentifierType();
+		final Type identifierType = ((SessionImpl) session).getFactory()
+				.getClassMetadata(entityName).getIdentifierType();
 		identifierTypeCache.put(entityName, identifierType);
 		return identifierType;
 	}
@@ -357,11 +398,12 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.CompositeUserType#replace(java.lang.Object, java.lang.Object,
-	 *      org.hibernate.engine.SessionImplementor, java.lang.Object)
+	 * @see org.hibernate.usertype.CompositeUserType#replace(java.lang.Object,
+	 *      java.lang.Object, org.hibernate.engine.SessionImplementor,
+	 *      java.lang.Object)
 	 */
-	public Object replace(Object original, Object target, SessionImplementor session, Object owner)
-			throws HibernateException {
+	public Object replace(Object original, Object target,
+			SessionImplementor session, Object owner) throws HibernateException {
 		if (original == null)
 			return null;
 		final String ename = session.bestGuessEntityName(original);
@@ -370,19 +412,24 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	}
 
 	/** Returns the id of the passed object */
-	private Serializable getID(String entityName, Object value, SessionImplementor session) {
-		Serializable result = (Serializable) IdentifierCacheHandler.getID(value);
+	private Serializable getID(String entityName, Object value,
+			SessionImplementor session) {
+		Serializable result = (Serializable) IdentifierCacheHandler
+				.getID(value);
 		if (result != null)
 			return result;
-		return ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, value, session);
+		return ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, value,
+				session);
 	}
 
 	/**
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.CompositeUserType#setPropertyValue(java.lang.Object, int, java.lang.Object)
+	 * @see org.hibernate.usertype.CompositeUserType#setPropertyValue(java.lang.Object,
+	 *      int, java.lang.Object)
 	 */
-	public void setPropertyValue(Object component, int property, Object value) throws HibernateException {
+	public void setPropertyValue(Object component, int property, Object value)
+			throws HibernateException {
 		// do nothing and hope for the best
 	}
 
@@ -395,33 +442,45 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 		}
 
 		// for all other cases the classname is encoded into the field
-		final String className = idString.substring(0, idString.indexOf(ENCODING_SEPARATOR));
-		final String strValue = idString.substring(1 + idString.indexOf(ENCODING_SEPARATOR));
+		final String className = idString.substring(0, idString
+				.indexOf(ENCODING_SEPARATOR));
+		final String strValue = idString.substring(1 + idString
+				.indexOf(ENCODING_SEPARATOR));
 
-		Constructor constructor = (Constructor) constructorCache.get(className);
+		Constructor<?> constructor = (Constructor<?>) constructorCache
+				.get(className);
 		if (constructor == null) {
 			try {
-				final Class clazz = ClassLoaderResolver.classForName(className);
-				constructor = clazz.getConstructor(new Class[] { String.class });
+				final Class<?> clazz = ClassLoaderResolver
+						.classForName(className);
+				constructor = clazz
+						.getConstructor(new Class[] { String.class });
 			} catch (StoreClassLoadException e) {
 				throw new HbMapperException("Class " + className + " not found");
 			} catch (NoSuchMethodException e) {
-				throw new HbMapperException("Class " + className
-						+ " does not have a constructor with a String parameter!");
+				throw new HbMapperException(
+						"Class "
+								+ className
+								+ " does not have a constructor with a String parameter!");
 			}
 		}
 		if (constructor == null) {
-			throw new HbMapperException("Class " + className + " does not have a constructor with a String parameter!");
+			throw new HbMapperException("Class " + className
+					+ " does not have a constructor with a String parameter!");
 		}
 
 		try {
-			return (Serializable) constructor.newInstance(new Object[] { strValue });
+			return (Serializable) constructor
+					.newInstance(new Object[] { strValue });
 		} catch (InvocationTargetException e) {
-			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className
+					+ " using value " + strValue);
 		} catch (InstantiationException e) {
-			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className
+					+ " using value " + strValue);
 		} catch (IllegalAccessException e) {
-			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
+			throw new HbMapperException("Can not instantiate: " + className
+					+ " using value " + strValue);
 		}
 	}
 
@@ -435,8 +494,16 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 		return id.getClass().getName() + ENCODING_SEPARATOR + id.toString();
 	}
 
-	/** Creates a type of proxy object which keeps the container class and container id */
+	/**
+	 * Creates a type of proxy object which keeps the container class and
+	 * container id
+	 */
 	private class ContainerPointer implements Serializable {
+		/**
+		 * Serial version id
+		 */
+		private static final long serialVersionUID = -2777938032663239346L;
+
 		/** The container class */
 		private final String container;
 

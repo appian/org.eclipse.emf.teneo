@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableFeatureMap.java,v 1.7 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: HibernatePersistableFeatureMap.java,v 1.8 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -44,20 +44,29 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
+	/**
+	 * Serial Version ID
+	 */
+	private static final long serialVersionUID = -1916994464446630140L;
+
 	/** The logger */
-	private static Log log = LogFactory.getLog(HibernatePersistableFeatureMap.class);
+	private static Log log = LogFactory
+			.getLog(HibernatePersistableFeatureMap.class);
 
 	/** Constructor */
-	public HibernatePersistableFeatureMap(InternalEObject owner, EStructuralFeature feature, List list) {
+	public HibernatePersistableFeatureMap(InternalEObject owner,
+			EStructuralFeature feature, List<FeatureMap.Entry> list) {
 		super(owner, feature, list);
 
 		if (isLoaded()) {
-			for (Iterator it = getDelegate().iterator(); it.hasNext();) {
-				final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) it.next();
+			for (Iterator<FeatureMap.Entry> it = getDelegate().iterator(); it
+					.hasNext();) {
+				final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) it
+						.next();
 				if (!fme.belongsToFeatureMap(this))
 					fme.setFeatureMap(this);
 			}
@@ -65,12 +74,13 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 	}
 
 	/** Returns the element type to be used */
-	protected Class determineElementType() {
+	protected Class<? extends FeatureMap.Entry> determineElementType() {
 		return HibernateFeatureMapEntry.class;
 	}
 
 	/** OVerridden to create the correct featuremap entry */
-	protected FeatureMap.Entry createEntry(EStructuralFeature eStructuralFeature, Object value) {
+	protected FeatureMap.Entry createEntry(
+			EStructuralFeature eStructuralFeature, Object value) {
 		final HibernateFeatureMapEntry entry = new HibernateFeatureMapEntry();
 		entry.setFeatureValue(eStructuralFeature, value, this);
 		return entry;
@@ -78,19 +88,21 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 
 	/** Shortcut to replace entries */
 	protected FeatureMap.Entry replaceEntry(Object entry) {
-		if (entry instanceof HibernateFeatureMapEntry && ((HibernateFeatureMapEntry) entry).belongsToFeatureMap(this)) {
+		if (entry instanceof HibernateFeatureMapEntry
+				&& ((HibernateFeatureMapEntry) entry).belongsToFeatureMap(this)) {
 			return (HibernateFeatureMapEntry) entry;
 		}
 
 		final FeatureMap.Entry emfEntry = (FeatureMap.Entry) entry;
 		final HibernateFeatureMapEntry fme = new HibernateFeatureMapEntry();
-		fme.setFeatureValue(emfEntry.getEStructuralFeature(), emfEntry.getValue(), this);
+		fme.setFeatureValue(emfEntry.getEStructuralFeature(), emfEntry
+				.getValue(), this);
 		return fme;
 	}
 
 	/**
-	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind the scenes, this
-	 * happens with eagerly loaded lists.
+	 * Override isLoaded to check if the delegate lists was not already loaded
+	 * by hibernate behind the scenes, this happens with eagerly loaded lists.
 	 */
 	public boolean isLoaded() {
 		if (delegate instanceof AbstractPersistentCollection) {
@@ -100,7 +112,9 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 					// probably are we doing this already return
 					return false;
 				}
-				log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+				log
+						.debug("Persistentlist already initialized, probably eagerly loaded: "
+								+ getLogString());
 				try {
 					setIsLoading(true);
 					// do load to load the resource
@@ -129,14 +143,17 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 				session = ((HibernateResource) res).getSession();
 				if (res.isLoaded()) { // resource is loaded reopen transaction
 					if (!((SessionImpl) session).isTransactionInProgress()) {
-						log.debug("Reconnecting session to read a lazy collection, Featuremap: " + logString);
+						log
+								.debug("Reconnecting session to read a lazy collection, Featuremap: "
+										+ logString);
 						controlsSession = true;
 						tx = session.beginTransaction();
 					} else {
 						log.debug("Resource session is still active, using it");
 					}
 				} else {
-					log.debug("Featuremap uses session from resource, " + logString);
+					log.debug("Featuremap uses session from resource, "
+							+ logString);
 				}
 			} else {
 				log.debug("EList is not loaded in session context");
@@ -151,27 +168,37 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 				fme.setFeatureMap(this);
 
 				if (fme.getEStructuralFeature() instanceof EReference
-						&& ((EReference) fme.getEStructuralFeature()).isContainment()) {
-					final InternalEObject eobj = (InternalEObject) fme.getValue();
+						&& ((EReference) fme.getEStructuralFeature())
+								.isContainment()) {
+					final InternalEObject eobj = (InternalEObject) fme
+							.getValue();
 					if (eobj != null) {
-						EContainerRepairControl.setContainer(owner, eobj, fme.getEStructuralFeature());
-						if (res != null && res instanceof StoreResource && fme.getEStructuralFeature() instanceof EReference) {
-							((StoreResource) res).addToContentOrAttach((InternalEObject) fme.getValue(),
-									((EReference) fme.getEStructuralFeature()).isContainment());
+						EContainerRepairControl.setContainer(owner, eobj, fme
+								.getEStructuralFeature());
+						if (res != null
+								&& res instanceof StoreResource
+								&& fme.getEStructuralFeature() instanceof EReference) {
+							((StoreResource) res).addToContentOrAttach(
+									(InternalEObject) fme.getValue(),
+									((EReference) fme.getEStructuralFeature())
+											.isContainment());
 						}
 					}
 				}
 			}
 
 			err = false;
-			log.debug("Loaded " + objs.length + " from backend store for " + logString);
+			log.debug("Loaded " + objs.length + " from backend store for "
+					+ logString);
 		} finally {
 			if (controlsSession) {
 				if (err) {
 					tx.rollback();
 				} else {
-					// a bit rough but delete from the persitence context otherwise
-					// hibernate will think that this collection is not attached to anything and
+					// a bit rough but delete from the persitence context
+					// otherwise
+					// hibernate will think that this collection is not attached
+					// to anything and
 					// will delete me
 					// getSession().getPersistenceContext().getCollectionEntries().remove(this);
 					tx.commit();
@@ -181,17 +208,20 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 	}
 
 	/** Overridden because general list type is not supported as a replacement */
-	public void replaceDelegate(List newDelegate) {
+	public void replaceDelegate(List<FeatureMap.Entry> newDelegate) {
 		if (newDelegate instanceof PersistentList) {
-			AssertUtil.assertTrue("This elist " + logString + " contains a different list than the " + " passed list",
+			AssertUtil.assertTrue("This elist " + logString
+					+ " contains a different list than the " + " passed list",
 					((PersistentList) newDelegate).isWrapper(delegate));
 			super.replaceDelegate(newDelegate);
 		} else if (newDelegate instanceof PersistentBag) {
-			AssertUtil.assertTrue("This elist " + logString + " contains a different list than the " + " passed list",
+			AssertUtil.assertTrue("This elist " + logString
+					+ " contains a different list than the " + " passed list",
 					((PersistentBag) newDelegate).isWrapper(delegate));
 			super.replaceDelegate(newDelegate);
 		} else {
-			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be "
+			throw new HbMapperException("Type "
+					+ newDelegate.getClass().getName() + " can not be "
 					+ " used as a replacement for elist " + logString);
 		}
 	}

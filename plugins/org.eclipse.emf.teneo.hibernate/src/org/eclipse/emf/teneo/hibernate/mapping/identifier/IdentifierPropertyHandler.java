@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdentifierPropertyHandler.java,v 1.2 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: IdentifierPropertyHandler.java,v 1.3 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
@@ -28,29 +28,39 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * Handles getting and setting of id's in the identifiercache handler, is
- * only used for synthetic id's.
+ * Handles getting and setting of id's in the identifiercache handler, is only
+ * used for synthetic id's.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
+@SuppressWarnings("unchecked")
+public class IdentifierPropertyHandler implements Getter, Setter,
+		PropertyAccessor {
+	/**
+	 * Serial Version ID
+	 */
+	private static final long serialVersionUID = 4707601844087591747L;
 
-public class IdentifierPropertyHandler implements Getter, Setter, PropertyAccessor {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
+	 *      java.lang.String)
 	 */
-	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
+	 *      java.lang.String)
 	 */
-	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -62,10 +72,11 @@ public class IdentifierPropertyHandler implements Getter, Setter, PropertyAccess
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
-	 *      org.hibernate.engine.SessionImplementor)
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
+	 *      java.util.Map, org.hibernate.engine.SessionImplementor)
 	 */
-	public Object getForInsert(Object arg0, Map arg1, SessionImplementor arg2) throws HibernateException {
+	public Object getForInsert(Object arg0, Map arg1, SessionImplementor arg2)
+			throws HibernateException {
 		return null;
 	}
 
@@ -99,10 +110,11 @@ public class IdentifierPropertyHandler implements Getter, Setter, PropertyAccess
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
-	 *      org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.property.Setter#set(java.lang.Object,
+	 *      java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value,
+			SessionFactoryImplementor factory) throws HibernateException {
 		IdentifierCacheHandler.setID(target, value);
 	}
 }

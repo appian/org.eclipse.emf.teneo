@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.6 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.7 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -38,12 +38,13 @@ import org.hibernate.tuple.entity.AbstractEntityTuplizer;
 import org.hibernate.tuple.entity.EntityMetamodel;
 
 /**
- * Overrides the get and setidentifier methods to get the identifier from an internal cache instead of from the EMF
- * object itself. The same behavior for the getVersion methods. Also a specific object instantiator is used to make use
- * of the emf efactories.
+ * Overrides the get and setidentifier methods to get the identifier from an
+ * internal cache instead of from the EMF object itself. The same behavior for
+ * the getVersion methods. Also a specific object instantiator is used to make
+ * use of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -53,7 +54,8 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/** The entitymetamodel for which this is all done */
 	// private final EntityMetamodel theEntityMetamodel;
 	/** Constructor */
-	public EMFTuplizer(EntityMetamodel entityMetamodel, PersistentClass mappedEntity) {
+	public EMFTuplizer(EntityMetamodel entityMetamodel,
+			PersistentClass mappedEntity) {
 		super(entityMetamodel, mappedEntity);
 		// theEntityMetamodel = entityMetamodel;
 	}
@@ -82,7 +84,8 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/**
 	 * Sets the identifier in the cache.
 	 */
-	public void setIdentifier(Object object, Serializable id) throws HibernateException {
+	public void setIdentifier(Object object, Serializable id)
+			throws HibernateException {
 		IdentifierCacheHandler.setID(object, id);
 		super.setIdentifier(object, id);
 	}
@@ -90,10 +93,12 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/** Creates an EMF Instantiator */
 	protected Instantiator buildInstantiator(PersistentClass persistentClass) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
-		final EClass eclass = ds.getPersistenceOptions().getEClassNameStrategy().toEClass(
-				persistentClass.getEntityName(), ds.getEPackages());
+		final EClass eclass = ds.getPersistenceOptions()
+				.getEClassNameStrategy().toEClass(
+						persistentClass.getEntityName(), ds.getEPackages());
 		if (eclass == null) {
-			throw new HbMapperException("No eclass found for entityname: " + persistentClass.getEntityName());
+			throw new HbMapperException("No eclass found for entityname: "
+					+ persistentClass.getEntityName());
 		}
 		return new EMFInstantiator(eclass, persistentClass);
 	}
@@ -104,8 +109,10 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertyGetter(org.hibernate.mapping.Property,
 	 *      org.hibernate.mapping.PersistentClass)
 	 */
-	protected Getter buildPropertyGetter(Property mappedProperty, PersistentClass mappedEntity) {
-		return getPropertyAccessor(mappedProperty, mappedEntity).getGetter(null, mappedProperty.getName());
+	protected Getter buildPropertyGetter(Property mappedProperty,
+			PersistentClass mappedEntity) {
+		return getPropertyAccessor(mappedProperty, mappedEntity).getGetter(
+				null, mappedProperty.getName());
 	}
 
 	/*
@@ -114,8 +121,10 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertySetter(org.hibernate.mapping.Property,
 	 *      org.hibernate.mapping.PersistentClass)
 	 */
-	protected Setter buildPropertySetter(Property mappedProperty, PersistentClass mappedEntity) {
-		return getPropertyAccessor(mappedProperty, mappedEntity).getSetter(null, mappedProperty.getName());
+	protected Setter buildPropertySetter(Property mappedProperty,
+			PersistentClass mappedEntity) {
+		return getPropertyAccessor(mappedProperty, mappedEntity).getSetter(
+				null, mappedProperty.getName());
 	}
 
 	/*
@@ -124,13 +133,16 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildProxyFactory(org.hibernate.mapping.PersistentClass,
 	 *      org.hibernate.property.Getter, org.hibernate.property.Setter)
 	 */
-	protected ProxyFactory buildProxyFactory(PersistentClass mappingInfo, Getter idGetter, Setter idSetter) {
+	protected ProxyFactory buildProxyFactory(PersistentClass mappingInfo,
+			Getter idGetter, Setter idSetter) {
 
 		return null;
 		/*
-		 * ProxyFactory pf = new MapProxyFactory(); try { // TODO: design new lifecycle for ProxyFactory
-		 * pf.postInstantiate(getEntityName(), null, null, null, null, null); } catch (HibernateException he) {
-		 * log.warn("could not create proxy factory for:" + getEntityName(), he); pf = null; } return pf;
+		 * ProxyFactory pf = new MapProxyFactory(); try { // TODO: design new
+		 * lifecycle for ProxyFactory pf.postInstantiate(getEntityName(), null,
+		 * null, null, null, null); } catch (HibernateException he) {
+		 * log.warn("could not create proxy factory for:" + getEntityName(),
+		 * he); pf = null; } return pf;
 		 */
 	}
 
@@ -148,7 +160,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 * 
 	 * @see org.hibernate.tuple.EntityTuplizer#getConcreteProxyClass()
 	 */
-	public Class getConcreteProxyClass() {
+	public Class<?> getConcreteProxyClass() {
 		return EObject.class;
 	}
 
@@ -166,13 +178,15 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 * 
 	 * @see org.hibernate.tuple.Tuplizer#getMappedClass()
 	 */
-	public Class getMappedClass() {
+	public Class<?> getMappedClass() {
 		return EObject.class;
 	}
 
 	/** Returns the correct accessor on the basis of the type of property */
-	protected PropertyAccessor getPropertyAccessor(Property mappedProperty, PersistentClass pc) {
+	protected PropertyAccessor getPropertyAccessor(Property mappedProperty,
+			PersistentClass pc) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(pc);
-		return HbUtil.getPropertyAccessor(mappedProperty, ds, pc.getEntityName());
+		return HbUtil.getPropertyAccessor(mappedProperty, ds, pc
+				.getEntityName());
 	}
 }

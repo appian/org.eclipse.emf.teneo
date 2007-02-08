@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ENumUserType.java,v 1.5 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: ENumUserType.java,v 1.6 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -25,7 +25,6 @@ import java.sql.Types;
 import java.util.HashMap;
 import java.util.Properties;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
@@ -39,7 +38,7 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ $Date: 2007/02/01 12:34:14 $
+ * @version $Revision: 1.6 $ $Date: 2007/02/08 23:11:37 $
  */
 
 public class ENumUserType implements UserType, ParameterizedType {
@@ -48,13 +47,13 @@ public class ENumUserType implements UserType, ParameterizedType {
 	private static final int[] SQL_TYPES = new int[] { Types.VARCHAR };
 
 	/** The enum type we are handling here */
-	protected Class enumType;
+	protected Class<?> enumType;
 
 	/** The method which translates a string to an instance of the emf enum */
 	protected Method getMethod;
 
 	/** Hashmap with string to enum mappings */
-	private final HashMap localCache = new HashMap();
+	private final HashMap<String, Enumerator> localCache = new HashMap<String, Enumerator>();
 
 	/*
 	 * (non-Javadoc)
@@ -94,8 +93,8 @@ public class ENumUserType implements UserType, ParameterizedType {
 
 		if (x.getClass() != y.getClass())
 			return false;
-		assert (x instanceof AbstractEnumerator);
-		return ((AbstractEnumerator) x).getValue() == ((AbstractEnumerator) y).getValue();
+		assert (x instanceof Enumerator);
+		return ((Enumerator) x).getValue() == ((Enumerator) y).getValue();
 	}
 
 	/*
@@ -146,7 +145,7 @@ public class ENumUserType implements UserType, ParameterizedType {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
-			st.setString(index, ((AbstractEnumerator) value).getLiteral());
+			st.setString(index, ((Enumerator) value).getLiteral());
 		}
 	}
 
@@ -160,7 +159,7 @@ public class ENumUserType implements UserType, ParameterizedType {
 	}
 
 	/** Returns the parameterizezd enumType */
-	public Class returnedClass() {
+	public Class<?> returnedClass() {
 		return enumType;
 	}
 

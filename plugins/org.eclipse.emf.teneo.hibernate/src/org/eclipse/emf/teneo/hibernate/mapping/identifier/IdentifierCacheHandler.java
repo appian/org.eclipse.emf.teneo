@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdentifierCacheHandler.java,v 1.4 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: IdentifierCacheHandler.java,v 1.5 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
@@ -30,11 +30,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
 /**
- * Implements two maps for caching identifier and version information. Internally uses weakreferences and periodic purge
- * actions to clean the maps.
+ * Implements two maps for caching identifier and version information.
+ * Internally uses weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class IdentifierCacheHandler {
@@ -45,13 +45,15 @@ public class IdentifierCacheHandler {
 	private static final int PURGE_COUNT = 10000;
 
 	/** HashMap */
-	private static Map idMap = Collections.synchronizedMap(new HashMap());
+	private static Map<Key, Object> idMap = Collections
+			.synchronizedMap(new HashMap<Key, Object>());
 
 	/** Keeps track of the modifications to the versionMap */
 	private static int idModCount = 0;
 
 	/** HashMap */
-	private static Map versionMap = Collections.synchronizedMap(new HashMap());
+	private static Map<Key, Object> versionMap = Collections
+			.synchronizedMap(new HashMap<Key, Object>());
 
 	/** Keeps track of the modifications to the versionMap */
 	private static int versionModCount = 0;
@@ -60,14 +62,16 @@ public class IdentifierCacheHandler {
 	public static Object getID(Object obj) {
 		final Object id = idMap.get(new Key(obj));
 		if (id == null) {
-			log.debug("ID for object " + obj.getClass().getName() + " not found in id cache");
+			log.debug("ID for object " + obj.getClass().getName()
+					+ " not found in id cache");
 		}
 		return id;
 	}
 
 	/** Set an identifier in the cache */
 	public static void setID(Object obj, Object id) {
-		log.debug("Setting id: " + id + " for object " + obj.getClass().getName() + " in idcache ");
+		log.debug("Setting id: " + id + " for object "
+				+ obj.getClass().getName() + " in idcache ");
 		idMap.put(new Key(obj), id);
 
 		// also set the id in the resource
@@ -76,7 +80,8 @@ public class IdentifierCacheHandler {
 			final EObject eobj = (EObject) obj;
 			final Resource res = eobj.eResource();
 			if (res != null && res instanceof XMLResource) {
-				log.debug("Setting id " + id.toString() + " in resource " + res.getClass().getName());
+				log.debug("Setting id " + id.toString() + " in resource "
+						+ res.getClass().getName());
 				((XMLResource) res).setID(eobj, id.toString());
 			}
 		}
@@ -94,7 +99,8 @@ public class IdentifierCacheHandler {
 
 	/** Sets a version in the cache */
 	public static void setVersion(Object obj, Object version) {
-		log.debug("Setting version: " + version + " for object " + obj.getClass().getName() + " in idcache ");
+		log.debug("Setting version: " + version + " for object "
+				+ obj.getClass().getName() + " in idcache ");
 		versionMap.put(new Key(obj), version);
 		versionModCount++;
 		if (versionModCount > PURGE_COUNT) {
@@ -119,10 +125,10 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Purges the passed map for stale entries */
-	private static synchronized void purgeMap(Map map) {
+	private static synchronized void purgeMap(Map<Key, Object> map) {
 		synchronized (map) {
-			final ArrayList toRemove = new ArrayList();
-			final Iterator it = map.keySet().iterator();
+			final ArrayList<Object> toRemove = new ArrayList<Object>();
+			final Iterator<Key> it = map.keySet().iterator();
 			while (it.hasNext()) {
 				final Key key = (Key) it.next();
 				if (!key.isValid())
@@ -140,9 +146,9 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Dumps the content of the passed map */
-	private static void dumpContents(Map map) {
+	private static void dumpContents(Map<Key, Object> map) {
 		synchronized (map) {
-			Iterator it = idMap.keySet().iterator();
+			Iterator<Key> it = idMap.keySet().iterator();
 			while (it.hasNext()) {
 				Key key = (Key) it.next();
 				Object object = key.weakRef.get();
@@ -154,21 +160,21 @@ public class IdentifierCacheHandler {
 	}
 
 	/**
-	 * Own implementation of the key in the hashmap to override the equals method. Equality for this cache is real
-	 * memory location equality
+	 * Own implementation of the key in the hashmap to override the equals
+	 * method. Equality for this cache is real memory location equality
 	 */
 
 	private static class Key {
 		/** The real object as a weakreference */
-		private final WeakReference weakRef;
+		private final WeakReference<Object> weakRef;
 
 		/** The hashcode of the stored object */
 		private final int hashcode;
 
 		/** Constructor */
 		Key(Object keyObject) {
-			weakRef = new WeakReference(keyObject);
-			hashcode = keyObject.hashCode();
+			weakRef = new WeakReference<Object>(keyObject);
+			hashcode = keyObject.getClass().hashCode();
 		}
 
 		/*
@@ -190,13 +196,18 @@ public class IdentifierCacheHandler {
 			}
 
 			// still present compare on values
-			// equals call should maybe also be done but goes wrong for featuremap entries
+			// equals call should maybe also be done but goes wrong for
+			// featuremap entries
 			// which are equal if their values and featuremap are equal
-			// identifier and version caching are only usefull in case of object equality
-			// because it uses weak references and the first level cache of hb should
+			// identifier and version caching are only usefull in case of object
+			// equality
+			// because it uses weak references and the first level cache of hb
+			// should
 			// ensure that only one instance of a certain object is present.
-			// There should always be one instance anyway in one session otherwise 
-			// references between objects can be set wrong (or at least there is a great
+			// There should always be one instance anyway in one session
+			// otherwise
+			// references between objects can be set wrong (or at least there is
+			// a great
 			// change that they go wrong).
 			return obj0 == obj1;
 		}

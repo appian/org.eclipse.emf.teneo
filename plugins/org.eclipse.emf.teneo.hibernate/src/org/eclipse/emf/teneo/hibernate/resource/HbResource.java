@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbResource.java,v 1.2 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: HbResource.java,v 1.3 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -22,19 +22,19 @@ import org.hibernate.Session;
  * Defines the common interface for HbResource Impls.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public interface HbResource {
-	
+
 	/**
 	 * Returns the session of the resource.
 	 */
 	Session getSession();
-	
+
 	/** Returns the session to the resource so that it can do clean up (or not) */
 	void returnSession(Session session);
-	
+
 	/** Set isloading on the resource */
 	void setIsLoading(boolean isLoading);
 }

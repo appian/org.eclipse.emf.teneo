@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicENumUserType.java,v 1.3 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: DynamicENumUserType.java,v 1.4 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -37,7 +37,7 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2007/02/01 12:34:14 $
+ * @version $Revision: 1.4 $ $Date: 2007/02/08 23:11:37 $
  */
 
 public class DynamicENumUserType implements UserType, ParameterizedType {
@@ -48,7 +48,7 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	protected EEnum enumInstance;
 
 	/** Hashmap with string to enum mappings */
-	private final HashMap localCache = new HashMap();
+	private final HashMap<String, Enumerator> localCache = new HashMap<String, Enumerator>();
 
 	/*
 	 * (non-Javadoc)
@@ -148,7 +148,7 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	}
 
 	/** Returns the parameterizezd enumType */
-	public Class returnedClass() {
+	public Class<?> returnedClass() {
 		return enumInstance.getClass();
 	}
 

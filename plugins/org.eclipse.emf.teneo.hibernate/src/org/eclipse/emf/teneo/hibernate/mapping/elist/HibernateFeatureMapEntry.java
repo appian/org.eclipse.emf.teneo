@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateFeatureMapEntry.java,v 1.5 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: HibernateFeatureMapEntry.java,v 1.6 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -41,10 +41,15 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * member.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Serializable {
+
+	/**
+	 * Generated serial ID
+	 */
+	private static final long serialVersionUID = 3946138277481892125L;
 
 	/**
 	 * Gets an 'normal' FeatureMap.Entry and if it is not a FeatureMapEntry replaces it with a specific implementation.
@@ -67,9 +72,9 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	/**
 	 * Replaces standard FeatureMap.Entry with a FeatureMapEntry for a collection
 	 */
-	public static Collection replaceEntryAll(Collection c, Class replaceByType, FeatureMap.Internal owningMap) {
-		final ArrayList newEntries = new ArrayList();
-		final Iterator it = c.iterator();
+	public static Collection<HibernateFeatureMapEntry> replaceEntryAll(Collection<FeatureMap.Entry> c, Class<?> replaceByType, FeatureMap.Internal owningMap) {
+		final ArrayList<HibernateFeatureMapEntry> newEntries = new ArrayList<HibernateFeatureMapEntry>();
+		final Iterator<FeatureMap.Entry> it = c.iterator();
 		while (it.hasNext()) {
 			newEntries.add(replaceEntry(it.next(), owningMap));
 		}
@@ -84,9 +89,9 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	}
 
 	/** Method which creates a list of entries based on one feature and multiple values */
-	public static Collection createEntryAll(EStructuralFeature feature, Collection values, FeatureMap.Internal owningMap) {
-		final ArrayList entries = new ArrayList();
-		final Iterator it = values.iterator();
+	public static Collection<FeatureMap.Entry> createEntryAll(EStructuralFeature feature, Collection<?> values, FeatureMap.Internal owningMap) {
+		final ArrayList<FeatureMap.Entry> entries = new ArrayList<FeatureMap.Entry>();
+		final Iterator<?> it = values.iterator();
 		while (it.hasNext()) {
 			entries.add(createEntry(feature, it.next(), owningMap));
 		}
@@ -106,7 +111,7 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	private FeatureMap.Internal owningMap;
 
 	/** The feature value map */
-	private ArrayList featureValues = new ArrayList();
+	private ArrayList<FeatureValue> featureValues = new ArrayList<FeatureValue>();
 
 	/** The entity name of this entry, is filled when the object is read from the db */
 	private String entityName = null;
@@ -201,8 +206,7 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 
 	/** Returns the value for a specific feature */
 	public Object getValue(EStructuralFeature feature) {
-		for (Iterator it = featureValues.iterator(); it.hasNext();) {
-			final FeatureValue fv = (FeatureValue) it.next();
+		for (FeatureValue fv : featureValues) {
 			if (fv.matchesFeature(feature))
 				return fv.getValue();
 		}
@@ -215,8 +219,7 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 
 		AssertUtil.assertTrue("Feature is not set", feature != null);
 
-		for (Iterator it = featureValues.iterator(); it.hasNext();) {
-			final FeatureValue fv = (FeatureValue) it.next();
+		for (FeatureValue fv : featureValues) {
 			if (fv.matchesFeature(feature))
 				return fv;
 		}
@@ -338,6 +341,11 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	/** Class to store feature value pairs together with their validator */
 	private class FeatureValue implements Serializable {
 
+		/**
+		 * Generated Serial Version ID
+		 */
+		private static final long serialVersionUID = 3665363921316852811L;
+
 		/** The feature */
 		protected EStructuralFeature feature;
 		
@@ -425,6 +433,11 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	/** Containment feature value */
 	private class ContainmentFeatureValue extends FeatureValue {
 
+		/**
+		 * Generated serial id
+		 */
+		private static final long serialVersionUID = -5915172909939056481L;
+
 		/** Constructor */
 		private ContainmentFeatureValue(EStructuralFeature feature, Object value) {
 			super(feature, value);
@@ -469,6 +482,11 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 
 	/** Bidirectional feature value */
 	private class InverseFeatureValue extends FeatureValue {
+
+		/**
+		 * Generated Serial Version ID
+		 */
+		private static final long serialVersionUID = 7207038502480577523L;
 
 		/** Constructor */
 		private InverseFeatureValue(EStructuralFeature feature, Object value) {

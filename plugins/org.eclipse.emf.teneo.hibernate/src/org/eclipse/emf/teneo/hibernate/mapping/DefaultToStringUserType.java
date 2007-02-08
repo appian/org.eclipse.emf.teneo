@@ -11,7 +11,7 @@
  *   Michael Kanaley, TIBCO Software Inc.
  * </copyright>
  *
- * $Id: DefaultToStringUserType.java,v 1.2 2007/02/01 12:34:14 mtaal Exp $
+ * $Id: DefaultToStringUserType.java,v 1.3 2007/02/08 23:11:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -54,7 +54,7 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
      * Return the Java class of the object that is serialized for the column.
      * @return the Java instance class associated with the EMF DataType. 
      */
-	public Class returnedClass() { return this.eDataType.getInstanceClass(); }
+	public Class<?> returnedClass() { return this.eDataType.getInstanceClass(); }
 
     /**
      * Is this datatype mutable?

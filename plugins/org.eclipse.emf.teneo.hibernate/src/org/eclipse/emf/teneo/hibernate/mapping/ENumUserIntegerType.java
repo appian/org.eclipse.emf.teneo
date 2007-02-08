@@ -7,7 +7,6 @@ import java.sql.Types;
 import java.util.HashMap;
 import java.util.Properties;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
@@ -19,7 +18,7 @@ import org.hibernate.HibernateException;
  * Stores a 
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2006/11/12 00:08:32 $
+ * @version $Revision: 1.5 $ $Date: 2007/02/08 23:11:37 $
  */
 
 public class ENumUserIntegerType extends ENumUserType {
@@ -28,7 +27,7 @@ public class ENumUserIntegerType extends ENumUserType {
 	private static final int[] SQL_TYPES = new int[] { Types.INTEGER };
 
 	/** Hashmap with string to enum mappings */
-	private final HashMap localCache = new HashMap();
+	private final HashMap<Integer, Enumerator> localCache = new HashMap<Integer, Enumerator>();
 
 	/*
 	 * (non-Javadoc)
@@ -66,7 +65,7 @@ public class ENumUserIntegerType extends ENumUserType {
 		if (value == null) {
 			st.setNull(index, Types.INTEGER);
 		} else {
-			st.setInt(index, ((AbstractEnumerator) value).getValue());
+			st.setInt(index, ((Enumerator) value).getValue());
 		}
 	}
 
