@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.11 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.12 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -53,6 +53,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PamodelPackage.Literals.PANNOTATED_ESTRUCTURAL_FEATURE;
 	}
@@ -132,6 +133,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:
@@ -147,6 +149,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:
@@ -160,6 +163,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:
@@ -173,6 +177,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:
@@ -189,6 +194,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:
@@ -206,6 +212,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:
@@ -223,6 +230,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:

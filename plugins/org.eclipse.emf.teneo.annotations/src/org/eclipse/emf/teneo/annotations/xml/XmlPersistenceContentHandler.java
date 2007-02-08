@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.8 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.9 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -120,13 +120,13 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	private PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature;
 
 	// Stack of PAnnotations.
-	private Stack pAnnotations = new Stack();
+	private Stack<PAnnotation> pAnnotations = new Stack<PAnnotation>();
 
 	// The current EAttribute of the current pAnnotation. Used only for EDataTypes.
 	private EAttribute pAnnotationEAttribute;
 
 	// Stack of parse states.
-	private Stack parseStates = new Stack();
+	private Stack<Integer> parseStates = new Stack<Integer>();
 
 	// prefix for extra efeature parsing
 	private final String prefix;
@@ -136,7 +136,7 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	
 	XmlPersistenceContentHandler(PAnnotatedModel pAnnotatedModel, String prefix, InputStream schema) {
 		this.pAnnotatedModel = pAnnotatedModel;
-		parseStates.push(new Integer(ROOT));
+		parseStates.push(ROOT);
 		this.prefix = prefix;
 		xmlElementToEStructuralFeatureMapper = new XmlElementToEStructuralFeatureMapper(schema);
 	}
@@ -157,6 +157,7 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	 * Applies an annotation on an EObject based on the given XML element name.
 	 * 
 	 */
+	@SuppressWarnings("unchecked")
 	private void applyAnnotation(EObject pAnnotatedEModelElement, String elementName, Attributes attributes)
 			throws SAXException {
 		final EStructuralFeature annotationEStructuralFeature = getEStructuralFeature(pAnnotatedEModelElement,
@@ -352,6 +353,7 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		final String value = new String(ch, start, length).trim();
 		if (value.length() == 0) {

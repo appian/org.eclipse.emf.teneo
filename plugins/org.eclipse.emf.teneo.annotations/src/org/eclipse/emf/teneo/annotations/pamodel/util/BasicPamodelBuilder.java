@@ -12,15 +12,14 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicPamodelBuilder.java,v 1.8 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: BasicPamodelBuilder.java,v 1.9 2007/02/08 23:12:34 mtaal Exp $
  */
 
 
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
-import java.util.Iterator;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
@@ -285,8 +284,7 @@ public class BasicPamodelBuilder {
 	 */
 	public void addRecurse(EPackage ePackage) {
 		PAnnotatedEPackage paPackage = pElement(ePackage);
-		for (Iterator i = ePackage.getEClassifiers().iterator(); i.hasNext(); ) {
-			Object eClassifier = i.next();
+		for (EClassifier eClassifier : ePackage.getEClassifiers()) {
 			if (eClassifier instanceof EClass) {
 				addRecurse(paPackage, (EClass) eClassifier);
 			} else if (eClassifier instanceof EDataType) {
@@ -303,8 +301,7 @@ public class BasicPamodelBuilder {
 		PAnnotatedEClass paClass = (PAnnotatedEClass) create(eClass);
 		if (paClass.eContainer() == null)
 			paPackage.getPaEClasses().add(paClass);
-		for (Iterator i = eClass.getEStructuralFeatures().iterator(); i.hasNext(); ) {
-			EStructuralFeature eStructuralFeature = (EStructuralFeature) i.next();
+		for (EStructuralFeature eStructuralFeature : eClass.getEStructuralFeatures()) {
 			add(paClass, eStructuralFeature);
 		}
 	}

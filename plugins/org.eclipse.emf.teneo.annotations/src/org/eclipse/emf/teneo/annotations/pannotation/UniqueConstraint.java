@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueConstraint.java,v 1.3 2007/02/01 12:35:01 mtaal Exp $
+ * $Id: UniqueConstraint.java,v 1.4 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -44,6 +44,6 @@ public interface UniqueConstraint extends PAnnotation{
 	 * @model type="java.lang.String" required="true"
 	 * @generated
 	 */
-	EList getColumnNames();
+	EList<String> getColumnNames();
 
 } // UniqueConstraint

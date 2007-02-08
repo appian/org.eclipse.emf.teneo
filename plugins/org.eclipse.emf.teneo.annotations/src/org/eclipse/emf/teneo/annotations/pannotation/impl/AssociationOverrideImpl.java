@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AssociationOverrideImpl.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: AssociationOverrideImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -83,7 +83,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	 * @generated
 	 * @ordered
 	 */
-	protected EList joinColumns = null;
+	protected EList<JoinColumn> joinColumns = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -99,6 +99,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.ASSOCIATION_OVERRIDE;
 	}
@@ -167,9 +168,9 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getJoinColumns() {
+	public EList<JoinColumn> getJoinColumns() {
 		if (joinColumns == null) {
-			joinColumns = new EObjectContainmentEList(JoinColumn.class, this, PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_COLUMNS);
+			joinColumns = new EObjectContainmentEList<JoinColumn>(JoinColumn.class, this, PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_COLUMNS);
 		}
 		return joinColumns;
 	}
@@ -179,10 +180,11 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_COLUMNS:
-				return ((InternalEList)getJoinColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getJoinColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -192,6 +194,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.ASSOCIATION_OVERRIDE__EMODEL_ELEMENT:
@@ -210,6 +213,8 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.ASSOCIATION_OVERRIDE__EMODEL_ELEMENT:
@@ -220,7 +225,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 				return;
 			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_COLUMNS:
 				getJoinColumns().clear();
-				getJoinColumns().addAll((Collection)newValue);
+				getJoinColumns().addAll((Collection<? extends JoinColumn>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -231,6 +236,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.ASSOCIATION_OVERRIDE__EMODEL_ELEMENT:
@@ -251,6 +257,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.ASSOCIATION_OVERRIDE__EMODEL_ELEMENT:
@@ -268,6 +275,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

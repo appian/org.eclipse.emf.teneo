@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationSwitch.java,v 1.19 2007/02/01 12:35:03 mtaal Exp $
+ * $Id: PannotationSwitch.java,v 1.20 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -60,7 +60,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage
  * @generated
  */
-public class PannotationSwitch {
+public class PannotationSwitch<T> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -95,7 +95,7 @@ public class PannotationSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -106,16 +106,16 @@ public class PannotationSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -126,248 +126,248 @@ public class PannotationSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case PannotationPackage.PANNOTATION: {
 				PAnnotation pAnnotation = (PAnnotation)theEObject;
-				Object result = casePAnnotation(pAnnotation);
+				T result = casePAnnotation(pAnnotation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.ATTRIBUTE_OVERRIDE: {
 				AttributeOverride attributeOverride = (AttributeOverride)theEObject;
-				Object result = caseAttributeOverride(attributeOverride);
+				T result = caseAttributeOverride(attributeOverride);
 				if (result == null) result = casePAnnotation(attributeOverride);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.ASSOCIATION_OVERRIDE: {
 				AssociationOverride associationOverride = (AssociationOverride)theEObject;
-				Object result = caseAssociationOverride(associationOverride);
+				T result = caseAssociationOverride(associationOverride);
 				if (result == null) result = casePAnnotation(associationOverride);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.BASIC: {
 				Basic basic = (Basic)theEObject;
-				Object result = caseBasic(basic);
+				T result = caseBasic(basic);
 				if (result == null) result = casePAnnotation(basic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.COLUMN: {
 				Column column = (Column)theEObject;
-				Object result = caseColumn(column);
+				T result = caseColumn(column);
 				if (result == null) result = casePAnnotation(column);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.DISCRIMINATOR_COLUMN: {
 				DiscriminatorColumn discriminatorColumn = (DiscriminatorColumn)theEObject;
-				Object result = caseDiscriminatorColumn(discriminatorColumn);
+				T result = caseDiscriminatorColumn(discriminatorColumn);
 				if (result == null) result = casePAnnotation(discriminatorColumn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.DISCRIMINATOR_VALUE: {
 				DiscriminatorValue discriminatorValue = (DiscriminatorValue)theEObject;
-				Object result = caseDiscriminatorValue(discriminatorValue);
+				T result = caseDiscriminatorValue(discriminatorValue);
 				if (result == null) result = casePAnnotation(discriminatorValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.EMBEDDABLE: {
 				Embeddable embeddable = (Embeddable)theEObject;
-				Object result = caseEmbeddable(embeddable);
+				T result = caseEmbeddable(embeddable);
 				if (result == null) result = casePAnnotation(embeddable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.EMBEDDED: {
 				Embedded embedded = (Embedded)theEObject;
-				Object result = caseEmbedded(embedded);
+				T result = caseEmbedded(embedded);
 				if (result == null) result = casePAnnotation(embedded);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.EMBEDDED_ID: {
 				EmbeddedId embeddedId = (EmbeddedId)theEObject;
-				Object result = caseEmbeddedId(embeddedId);
+				T result = caseEmbeddedId(embeddedId);
 				if (result == null) result = casePAnnotation(embeddedId);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.ENTITY: {
 				Entity entity = (Entity)theEObject;
-				Object result = caseEntity(entity);
+				T result = caseEntity(entity);
 				if (result == null) result = casePAnnotation(entity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.ENUMERATED: {
 				Enumerated enumerated = (Enumerated)theEObject;
-				Object result = caseEnumerated(enumerated);
+				T result = caseEnumerated(enumerated);
 				if (result == null) result = casePAnnotation(enumerated);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.GENERATED_VALUE: {
 				GeneratedValue generatedValue = (GeneratedValue)theEObject;
-				Object result = caseGeneratedValue(generatedValue);
+				T result = caseGeneratedValue(generatedValue);
 				if (result == null) result = casePAnnotation(generatedValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.ID: {
 				Id id = (Id)theEObject;
-				Object result = caseId(id);
+				T result = caseId(id);
 				if (result == null) result = casePAnnotation(id);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.ID_CLASS: {
 				IdClass idClass = (IdClass)theEObject;
-				Object result = caseIdClass(idClass);
+				T result = caseIdClass(idClass);
 				if (result == null) result = casePAnnotation(idClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.INHERITANCE: {
 				Inheritance inheritance = (Inheritance)theEObject;
-				Object result = caseInheritance(inheritance);
+				T result = caseInheritance(inheritance);
 				if (result == null) result = casePAnnotation(inheritance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.JOIN_COLUMN: {
 				JoinColumn joinColumn = (JoinColumn)theEObject;
-				Object result = caseJoinColumn(joinColumn);
+				T result = caseJoinColumn(joinColumn);
 				if (result == null) result = casePAnnotation(joinColumn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.JOIN_TABLE: {
 				JoinTable joinTable = (JoinTable)theEObject;
-				Object result = caseJoinTable(joinTable);
+				T result = caseJoinTable(joinTable);
 				if (result == null) result = casePAnnotation(joinTable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.LOB: {
 				Lob lob = (Lob)theEObject;
-				Object result = caseLob(lob);
+				T result = caseLob(lob);
 				if (result == null) result = casePAnnotation(lob);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.MANY_TO_MANY: {
 				ManyToMany manyToMany = (ManyToMany)theEObject;
-				Object result = caseManyToMany(manyToMany);
+				T result = caseManyToMany(manyToMany);
 				if (result == null) result = casePAnnotation(manyToMany);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.MANY_TO_ONE: {
 				ManyToOne manyToOne = (ManyToOne)theEObject;
-				Object result = caseManyToOne(manyToOne);
+				T result = caseManyToOne(manyToOne);
 				if (result == null) result = casePAnnotation(manyToOne);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.MAP_KEY: {
 				MapKey mapKey = (MapKey)theEObject;
-				Object result = caseMapKey(mapKey);
+				T result = caseMapKey(mapKey);
 				if (result == null) result = casePAnnotation(mapKey);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.MAPPED_SUPERCLASS: {
 				MappedSuperclass mappedSuperclass = (MappedSuperclass)theEObject;
-				Object result = caseMappedSuperclass(mappedSuperclass);
+				T result = caseMappedSuperclass(mappedSuperclass);
 				if (result == null) result = casePAnnotation(mappedSuperclass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.ONE_TO_MANY: {
 				OneToMany oneToMany = (OneToMany)theEObject;
-				Object result = caseOneToMany(oneToMany);
+				T result = caseOneToMany(oneToMany);
 				if (result == null) result = casePAnnotation(oneToMany);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.ONE_TO_ONE: {
 				OneToOne oneToOne = (OneToOne)theEObject;
-				Object result = caseOneToOne(oneToOne);
+				T result = caseOneToOne(oneToOne);
 				if (result == null) result = casePAnnotation(oneToOne);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.ORDER_BY: {
 				OrderBy orderBy = (OrderBy)theEObject;
-				Object result = caseOrderBy(orderBy);
+				T result = caseOrderBy(orderBy);
 				if (result == null) result = casePAnnotation(orderBy);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN: {
 				PrimaryKeyJoinColumn primaryKeyJoinColumn = (PrimaryKeyJoinColumn)theEObject;
-				Object result = casePrimaryKeyJoinColumn(primaryKeyJoinColumn);
+				T result = casePrimaryKeyJoinColumn(primaryKeyJoinColumn);
 				if (result == null) result = casePAnnotation(primaryKeyJoinColumn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.SECONDARY_TABLE: {
 				SecondaryTable secondaryTable = (SecondaryTable)theEObject;
-				Object result = caseSecondaryTable(secondaryTable);
+				T result = caseSecondaryTable(secondaryTable);
 				if (result == null) result = casePAnnotation(secondaryTable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.SEQUENCE_GENERATOR: {
 				SequenceGenerator sequenceGenerator = (SequenceGenerator)theEObject;
-				Object result = caseSequenceGenerator(sequenceGenerator);
+				T result = caseSequenceGenerator(sequenceGenerator);
 				if (result == null) result = casePAnnotation(sequenceGenerator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.TABLE: {
 				Table table = (Table)theEObject;
-				Object result = caseTable(table);
+				T result = caseTable(table);
 				if (result == null) result = casePAnnotation(table);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.TABLE_GENERATOR: {
 				TableGenerator tableGenerator = (TableGenerator)theEObject;
-				Object result = caseTableGenerator(tableGenerator);
+				T result = caseTableGenerator(tableGenerator);
 				if (result == null) result = casePAnnotation(tableGenerator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.TEMPORAL: {
 				Temporal temporal = (Temporal)theEObject;
-				Object result = caseTemporal(temporal);
+				T result = caseTemporal(temporal);
 				if (result == null) result = casePAnnotation(temporal);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.TRANSIENT: {
 				Transient transient_ = (Transient)theEObject;
-				Object result = caseTransient(transient_);
+				T result = caseTransient(transient_);
 				if (result == null) result = casePAnnotation(transient_);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.UNIQUE_CONSTRAINT: {
 				UniqueConstraint uniqueConstraint = (UniqueConstraint)theEObject;
-				Object result = caseUniqueConstraint(uniqueConstraint);
+				T result = caseUniqueConstraint(uniqueConstraint);
 				if (result == null) result = casePAnnotation(uniqueConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PannotationPackage.VERSION: {
 				Version version = (Version)theEObject;
-				Object result = caseVersion(version);
+				T result = caseVersion(version);
 				if (result == null) result = casePAnnotation(version);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -387,7 +387,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePAnnotation(PAnnotation object) {
+	public T casePAnnotation(PAnnotation object) {
 		return null;
 	}
 
@@ -402,7 +402,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAttributeOverride(AttributeOverride object) {
+	public T caseAttributeOverride(AttributeOverride object) {
 		return null;
 	}
 
@@ -417,7 +417,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBasic(Basic object) {
+	public T caseBasic(Basic object) {
 		return null;
 	}
 
@@ -432,7 +432,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseColumn(Column object) {
+	public T caseColumn(Column object) {
 		return null;
 	}
 
@@ -447,7 +447,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDiscriminatorColumn(DiscriminatorColumn object) {
+	public T caseDiscriminatorColumn(DiscriminatorColumn object) {
 		return null;
 	}
 
@@ -462,7 +462,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDiscriminatorValue(DiscriminatorValue object) {
+	public T caseDiscriminatorValue(DiscriminatorValue object) {
 		return null;
 	}
 
@@ -477,7 +477,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEmbeddable(Embeddable object) {
+	public T caseEmbeddable(Embeddable object) {
 		return null;
 	}
 
@@ -492,7 +492,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMappedSuperclass(MappedSuperclass object) {
+	public T caseMappedSuperclass(MappedSuperclass object) {
 		return null;
 	}
 
@@ -507,7 +507,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEmbedded(Embedded object) {
+	public T caseEmbedded(Embedded object) {
 		return null;
 	}
 
@@ -522,7 +522,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEmbeddedId(EmbeddedId object) {
+	public T caseEmbeddedId(EmbeddedId object) {
 		return null;
 	}
 
@@ -537,7 +537,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEnumerated(Enumerated object) {
+	public T caseEnumerated(Enumerated object) {
 		return null;
 	}
 
@@ -552,7 +552,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEntity(Entity object) {
+	public T caseEntity(Entity object) {
 		return null;
 	}
 
@@ -567,7 +567,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGeneratedValue(GeneratedValue object) {
+	public T caseGeneratedValue(GeneratedValue object) {
 		return null;
 	}
 
@@ -582,7 +582,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseId(Id object) {
+	public T caseId(Id object) {
 		return null;
 	}
 
@@ -597,7 +597,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseIdClass(IdClass object) {
+	public T caseIdClass(IdClass object) {
 		return null;
 	}
 
@@ -612,7 +612,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInheritance(Inheritance object) {
+	public T caseInheritance(Inheritance object) {
 		return null;
 	}
 
@@ -627,7 +627,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseJoinColumn(JoinColumn object) {
+	public T caseJoinColumn(JoinColumn object) {
 		return null;
 	}
 
@@ -642,7 +642,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseJoinTable(JoinTable object) {
+	public T caseJoinTable(JoinTable object) {
 		return null;
 	}
 
@@ -657,7 +657,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLob(Lob object) {
+	public T caseLob(Lob object) {
 		return null;
 	}
 
@@ -672,7 +672,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseManyToMany(ManyToMany object) {
+	public T caseManyToMany(ManyToMany object) {
 		return null;
 	}
 
@@ -687,7 +687,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseManyToOne(ManyToOne object) {
+	public T caseManyToOne(ManyToOne object) {
 		return null;
 	}
 
@@ -702,7 +702,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMapKey(MapKey object) {
+	public T caseMapKey(MapKey object) {
 		return null;
 	}
 
@@ -717,7 +717,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOneToMany(OneToMany object) {
+	public T caseOneToMany(OneToMany object) {
 		return null;
 	}
 
@@ -732,7 +732,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOneToOne(OneToOne object) {
+	public T caseOneToOne(OneToOne object) {
 		return null;
 	}
 
@@ -747,7 +747,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOrderBy(OrderBy object) {
+	public T caseOrderBy(OrderBy object) {
 		return null;
 	}
 
@@ -762,7 +762,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePrimaryKeyJoinColumn(PrimaryKeyJoinColumn object) {
+	public T casePrimaryKeyJoinColumn(PrimaryKeyJoinColumn object) {
 		return null;
 	}
 
@@ -777,7 +777,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSecondaryTable(SecondaryTable object) {
+	public T caseSecondaryTable(SecondaryTable object) {
 		return null;
 	}
 
@@ -792,7 +792,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSequenceGenerator(SequenceGenerator object) {
+	public T caseSequenceGenerator(SequenceGenerator object) {
 		return null;
 	}
 
@@ -807,7 +807,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTable(Table object) {
+	public T caseTable(Table object) {
 		return null;
 	}
 
@@ -822,7 +822,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTableGenerator(TableGenerator object) {
+	public T caseTableGenerator(TableGenerator object) {
 		return null;
 	}
 
@@ -837,7 +837,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTemporal(Temporal object) {
+	public T caseTemporal(Temporal object) {
 		return null;
 	}
 
@@ -852,7 +852,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTransient(Transient object) {
+	public T caseTransient(Transient object) {
 		return null;
 	}
 
@@ -867,7 +867,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUniqueConstraint(UniqueConstraint object) {
+	public T caseUniqueConstraint(UniqueConstraint object) {
 		return null;
 	}
 
@@ -882,7 +882,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseVersion(Version object) {
+	public T caseVersion(Version object) {
 		return null;
 	}
 
@@ -897,7 +897,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAssociationOverride(AssociationOverride object) {
+	public T caseAssociationOverride(AssociationOverride object) {
 		return null;
 	}
 
@@ -912,7 +912,7 @@ public class PannotationSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

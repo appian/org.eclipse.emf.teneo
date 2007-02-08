@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondaryTable.java,v 1.5 2007/02/01 12:35:01 mtaal Exp $
+ * $Id: SecondaryTable.java,v 1.6 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -123,7 +123,7 @@ public interface SecondaryTable extends PAnnotation {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn" containment="true"
 	 * @generated
 	 */
-	EList getPkJoinColumns();
+	EList<PrimaryKeyJoinColumn> getPkJoinColumns();
 
 	/**
 	 * Returns the value of the '<em><b>Unique Constraints</b></em>' containment reference list.
@@ -139,6 +139,6 @@ public interface SecondaryTable extends PAnnotation {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint" containment="true"
 	 * @generated
 	 */
-	EList getUniqueConstraints();
+	EList<UniqueConstraint> getUniqueConstraints();
 
 } // SecondaryTable

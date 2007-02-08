@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAnnotationParserImporter.java,v 1.8 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: EAnnotationParserImporter.java,v 1.9 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -39,93 +39,100 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * Walks over the pamodel and the paepackages and translates eannotations to 
+ * Walks over the pamodel and the paepackages and translates eannotations to
  * pannotation types and sets the corresponding values in the pamodel.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 public class EAnnotationParserImporter implements EClassResolver {
 	/** Log it */
-	private final static Log log = LogFactory.getLog(EAnnotationParserImporter.class);
+	private final static Log log = LogFactory
+			.getLog(EAnnotationParserImporter.class);
 
 	/** annotation parser */
 	private AnnotationParser annotationParser = new AnnotationParser();
-	
+
 	/** The prefix to distinguish jpa annotations from hb or jpox annotations */
-    private static final String JPA_PREFIX = "jpa:";
+	private static final String JPA_PREFIX = "jpa:";
 
 	/** Parse an pamodel */
 	public void process(PAnnotatedModel paModel) {
-		for (Iterator it = paModel.getPaEPackages().iterator(); it.hasNext();) {
-			final PAnnotatedEPackage pap = (PAnnotatedEPackage)it.next();
-			log.debug("Processing package " + pap.getAnnotatedEPackage().getName());
+		for (PAnnotatedEPackage pap : paModel.getPaEPackages()) {
+			log.debug("Processing package "
+					+ pap.getAnnotatedEPackage().getName());
 			processAnnotatedModelElement(pap, pap.eClass().getEPackage());
 
-			// and now the eclasses 
+			// and now the eclasses
 			process(pap);
 		}
 	}
-	
+
 	/** Process package */
 	protected void process(PAnnotatedEPackage pap) {
-		for (Iterator it = pap.getPaEClasses().iterator(); it.hasNext();) {
-			final PAnnotatedEClass pac = (PAnnotatedEClass)it.next();
-			processAnnotatedModelElement(pac, pac.getAnnotatedEClass().getEPackage());
+		for (PAnnotatedEClass pac : pap.getPaEClasses()) {
+			processAnnotatedModelElement(pac, pac.getAnnotatedEClass()
+					.getEPackage());
 			process(pac);
 		}
-		for (Iterator it = pap.getPaEDataTypes().iterator(); it.hasNext();) {
-			final PAnnotatedEDataType pac = (PAnnotatedEDataType)it.next();
-			processAnnotatedModelElement(pac, pac.getAnnotatedEDataType().getEPackage());
+		for (PAnnotatedEDataType pac : pap.getPaEDataTypes()) {
+			processAnnotatedModelElement(pac, pac.getAnnotatedEDataType()
+					.getEPackage());
 		}
 	}
-	
+
 	/** Process the efeatures */
 	protected void process(PAnnotatedEClass pac) {
 		log.debug("Processing eclass " + pac.getAnnotatedEClass().getName());
-		for (Iterator it = pac.getPaEStructuralFeatures().iterator(); it.hasNext();) {
-			final PAnnotatedEStructuralFeature paf = (PAnnotatedEStructuralFeature)it.next();
-			processAnnotatedModelElement(paf, paf.getAnnotatedEStructuralFeature().eClass().getEPackage());
+		for (PAnnotatedEStructuralFeature paf : pac.getPaEStructuralFeatures()) {
+			processAnnotatedModelElement(paf, paf
+					.getAnnotatedEStructuralFeature().eClass().getEPackage());
 		}
 	}
-	
+
 	/** Process a type with its eannotations */
-	protected void processAnnotatedModelElement(PAnnotatedEModelElement pee, EPackage epack) {
+	@SuppressWarnings("unchecked")
+	protected void processAnnotatedModelElement(PAnnotatedEModelElement pee,
+			EPackage epack) {
 		log.debug("Processing " + pee.getAnnotatedElement().getName());
-		final ArrayList parsedNodes = new ArrayList();
-		for (Iterator it = pee.getAnnotatedElement().getEAnnotations().iterator(); it.hasNext();) {
-			parsedNodes.addAll(process((EAnnotation)it.next(), pee.getAnnotatedElement()));
+		final ArrayList<NamedParserNode> parsedNodes = new ArrayList<NamedParserNode>();
+		for (Iterator<EAnnotation> it = pee.getAnnotatedElement()
+				.getEAnnotations().iterator(); it.hasNext();) {
+			parsedNodes.addAll(process(it.next(), pee.getAnnotatedElement()));
 		}
-		
+
 		// now also do the annotations on the edatatype (if any)
 		/*
-		if (pee.getAnnotatedElement() instanceof EAttribute) {
-			final EAttribute eattr = (EAttribute)pee.getAnnotatedElement();
-			final EDataType edt = (EDataType)eattr.getEType();
-			for (Iterator it = edt.getEAnnotations().iterator(); it.hasNext();) {
-				parsedNodes.addAll(process((EAnnotation)it.next(), pee.getAnnotatedElement()));
-			}
-		}
-		*/
-		
-		// now the parsed nodes should be translated into features of the enamedelement
+		 * if (pee.getAnnotatedElement() instanceof EAttribute) { final
+		 * EAttribute eattr = (EAttribute)pee.getAnnotatedElement(); final
+		 * EDataType edt = (EDataType)eattr.getEType(); for (Iterator it =
+		 * edt.getEAnnotations().iterator(); it.hasNext();) {
+		 * parsedNodes.addAll(process((EAnnotation)it.next(),
+		 * pee.getAnnotatedElement())); } }
+		 */
+
+		// now the parsed nodes should be translated into features of the
+		// enamedelement
 		// this is done multiplelevel
-		log.debug("Number of parsed typename annotations " + parsedNodes.size());
-		final ArrayList objects = new ArrayList();
-		for (Iterator it = parsedNodes.iterator(); it.hasNext();) {
-			final ComplexNode cn = (ComplexNode)it.next();
+		log
+				.debug("Number of parsed typename annotations "
+						+ parsedNodes.size());
+		for (Iterator<NamedParserNode> it = parsedNodes.iterator(); it
+				.hasNext();) {
+			final ComplexNode cn = (ComplexNode) it.next();
 			if (cn.isList()) {
 				// find the efeature
-				final EStructuralFeature ef = getEStructuralFeature(pee.eClass(), cn.getName());
+				final EStructuralFeature ef = getEStructuralFeature(pee
+						.eClass(), cn.getName());
 				pee.eSet(ef, cn.convert(this));
 			} else {
-				EObject eobj = (EObject)cn.convert(this);
+				EObject eobj = (EObject) cn.convert(this);
 				boolean found = false;
-				for (Iterator eit = pee.eClass().getEAllReferences().iterator(); eit.hasNext();) {
-					final EReference eref = (EReference)eit.next();
+				for (EReference eref : pee.eClass().getEAllReferences()) {
 					if (eref.getEReferenceType().isInstance(eobj)) {
-						log.debug("Found EReference " + eref.getName() + " for " + eobj.eClass().getName());
+						log.debug("Found EReference " + eref.getName()
+								+ " for " + eobj.eClass().getName());
 						if (eref.isMany()) {
-							((List)pee.eGet(eref)).add(eobj);
+							((List) pee.eGet(eref)).add(eobj);
 						} else {
 							pee.eSet(eref, eobj);
 						}
@@ -134,60 +141,68 @@ public class EAnnotationParserImporter implements EClassResolver {
 					}
 				}
 				if (!found) {
-					throw new AnnotationParserException("The eclass: " + pee.eClass().getName() + 
-							" does not have an efeature for " + eobj.eClass().getName());
+					throw new AnnotationParserException("The eclass: "
+							+ pee.eClass().getName()
+							+ " does not have an efeature for "
+							+ eobj.eClass().getName());
 				}
 			}
 		}
-		
+
 		// now for each eobject find which eref stores it!
-		log.debug("Find efeature for each created eobject");
-		for (Iterator it = objects.iterator(); it.hasNext();) {
-			EObject eobj = (EObject)it.next();
-			log.debug("EClass " + eobj.eClass().getName());
-			
-		}
+		// log.debug("Find efeature for each created eobject");
+		// final ArrayList objects = new ArrayList();
+		// for (Iterator it = objects.iterator(); it.hasNext();) {
+		// EObject eobj = (EObject)it.next();
+		// log.debug("EClass " + eobj.eClass().getName());
+		// }
 	}
 
 	/** Processes EAnnotations */
-	private ArrayList process(EAnnotation ea, ENamedElement ene) {
-		final ArrayList result = new ArrayList();
+	private ArrayList<NamedParserNode> process(EAnnotation ea, ENamedElement ene) {
+		final ArrayList<NamedParserNode> result = new ArrayList<NamedParserNode>();
 
 		if (!isValidSource(ea.getSource())) {
 			return result;
 		}
-		
+
 		log.debug("Processing annotations ");
-		for (Iterator i = ea.getDetails().entrySet().iterator(); i.hasNext();) {
-			final Map.Entry pAnnotationDetails = (Map.Entry) i.next();
-			String fName = (String) pAnnotationDetails.getKey();
+		for (Map.Entry<String, String> pAnnotationDetails : ea.getDetails()
+				.entrySet()) {
+			final String fName = pAnnotationDetails.getKey();
 			// todo externalize
-			if (fName.compareToIgnoreCase("appinfo") == 0 || fName.compareToIgnoreCase("value") == 0) {
-				log.debug("Annotation content: \n " + (String)pAnnotationDetails.getValue());
-				result.addAll(annotationParser.parse(ene, (String)pAnnotationDetails.getValue()));
+			if (fName.compareToIgnoreCase("appinfo") == 0
+					|| fName.compareToIgnoreCase("value") == 0) {
+				log.debug("Annotation content: \n "
+						+ (String) pAnnotationDetails.getValue());
+				result.addAll(annotationParser.parse(ene,
+						(String) pAnnotationDetails.getValue()));
 			}
 		}
 		return result;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.annotations.parser.EClassResolver#getEClass(java.lang.String)
 	 */
 	public EClass getEClass(String name) {
-        if (name.startsWith(JPA_PREFIX)) {
-        	return getEClass(name.substring(JPA_PREFIX.length()));
-        }
-		return (EClass)PannotationPackage.eINSTANCE.getEClassifier(name);
+		if (name.startsWith(JPA_PREFIX)) {
+			return getEClass(name.substring(JPA_PREFIX.length()));
+		}
+		return (EClass) PannotationPackage.eINSTANCE.getEClassifier(name);
 	}
 
 	/** Is a valid source */
 	protected boolean isValidSource(String source) {
-		if (source == null) return false;
+		if (source == null)
+			return false;
 		// todo externalize
-		return source.startsWith("teneo.jpa") ||
-			source.startsWith("teneo.mapping");
+		return source.startsWith("teneo.jpa")
+				|| source.startsWith("teneo.mapping");
 	}
-	
+
 	/** Find the efeature */
 	public EStructuralFeature getEStructuralFeature(EClass eClass, String name) {
 		return ParserUtil.getEStructuralFeature(eClass, name);

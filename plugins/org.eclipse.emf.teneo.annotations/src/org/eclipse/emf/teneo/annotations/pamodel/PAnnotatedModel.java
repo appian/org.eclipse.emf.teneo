@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModel.java,v 1.7 2007/02/05 14:37:57 mtaal Exp $
+ * $Id: PAnnotatedModel.java,v 1.8 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -57,7 +57,7 @@ public interface PAnnotatedModel extends EObject {
 	 * @model type="org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage" opposite="paModel" containment="true"
 	 * @generated
 	 */
-	EList getPaEPackages();
+	EList<PAnnotatedEPackage> getPaEPackages();
 
 	/**
 	 * @return Returns the unique <code>PAnnotatedEDataType</code> associated (via the <code>annotatedElement</code>

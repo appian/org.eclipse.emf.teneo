@@ -2,15 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritanceType.java,v 1.5 2007/02/01 12:35:00 mtaal Exp $
+ * $Id: InheritanceType.java,v 1.6 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
+
+import static org.eclipse.emf.teneo.annotations.pannotation.InheritanceType.JOINED;
+import static org.eclipse.emf.teneo.annotations.pannotation.InheritanceType.SINGLE_TABLE;
+import static org.eclipse.emf.teneo.annotations.pannotation.InheritanceType.TABLE_PER_CLASS;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Inheritance Type</b></em>',
@@ -19,7 +23,32 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class InheritanceType extends AbstractEnumerator {
+public enum InheritanceType implements Enumerator
+{
+	/**
+	 * The '<em><b>SINGLE TABLE</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #SINGLE_TABLE
+	 * @generated
+	 * @ordered
+	 */
+	SINGLE_TABLE_LITERAL(0, "SINGLE_TABLE", "SINGLE_TABLE"),
+	/**
+	 * The '<em><b>TABLE PER CLASS</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #TABLE_PER_CLASS
+	 * @generated
+	 * @ordered
+	 */
+	TABLE_PER_CLASS_LITERAL(1, "TABLE_PER_CLASS", "TABLE_PER_CLASS"),
+	/**
+	 * The '<em><b>JOINED</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #JOINED
+	 * @generated
+	 * @ordered
+	 */
+	JOINED_LITERAL(2, "JOINED", "JOINED");
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -72,33 +101,6 @@ public final class InheritanceType extends AbstractEnumerator {
 	public static final int JOINED = 2;
 
 	/**
-	 * The '<em><b>SINGLE TABLE</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #SINGLE_TABLE
-	 * @generated
-	 * @ordered
-	 */
-	public static final InheritanceType SINGLE_TABLE_LITERAL = new InheritanceType(SINGLE_TABLE, "SINGLE_TABLE", "SINGLE_TABLE");
-
-	/**
-	 * The '<em><b>TABLE PER CLASS</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #TABLE_PER_CLASS
-	 * @generated
-	 * @ordered
-	 */
-	public static final InheritanceType TABLE_PER_CLASS_LITERAL = new InheritanceType(TABLE_PER_CLASS, "TABLE_PER_CLASS", "TABLE_PER_CLASS");
-
-	/**
-	 * The '<em><b>JOINED</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #JOINED
-	 * @generated
-	 * @ordered
-	 */
-	public static final InheritanceType JOINED_LITERAL = new InheritanceType(JOINED, "JOINED", "JOINED");
-
-	/**
 	 * An array of all the '<em><b>Inheritance Type</b></em>' enumerators.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -117,7 +119,7 @@ public final class InheritanceType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<InheritanceType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Inheritance Type</b></em>' literal with the specified literal value.
@@ -163,8 +165,29 @@ public final class InheritanceType extends AbstractEnumerator {
 			case TABLE_PER_CLASS: return TABLE_PER_CLASS_LITERAL;
 			case JOINED: return JOINED_LITERAL;
 		}
-		return null;	
+		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -173,7 +196,46 @@ public final class InheritanceType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private InheritanceType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} // InheritanceType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

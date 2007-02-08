@@ -2,13 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.11 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.12 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
@@ -69,325 +68,282 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
 import org.eclipse.emf.teneo.annotations.pannotation.util.PannotationValidator;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Package</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
+ * end-user-doc -->
  * @generated
  */
-public class PannotationPackageImpl extends EPackageImpl implements PannotationPackage {
+public class PannotationPackageImpl extends EPackageImpl implements
+		PannotationPackage {
 	public static final String TARGET_ANNOTATION_SOURCE = "teneo/internal/Target";
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass pAnnotationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass attributeOverrideEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass basicEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass columnEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass discriminatorColumnEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass discriminatorValueEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass embeddableEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass mappedSuperclassEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass embeddedEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass embeddedIdEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass enumeratedEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass entityEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass generatedValueEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass idEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass idClassEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass inheritanceEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass joinColumnEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass joinTableEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass lobEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass manyToManyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass manyToOneEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass mapKeyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass oneToManyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass oneToOneEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass orderByEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass primaryKeyJoinColumnEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass secondaryTableEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass sequenceGeneratorEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass tableEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass tableGeneratorEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass temporalEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass transientEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass uniqueConstraintEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass versionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass associationOverrideEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum fetchTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum discriminatorTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum enumTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum inheritanceTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum cascadeTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum temporalTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum generationTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
+	 * package package URI value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory
+	 * method {@link #init init()}, which also performs initialization of the
+	 * package, or returns the registered package, if one already exists. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#eNS_URI
 	 * @see #init()
@@ -398,8 +354,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -419,8 +374,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	 * those of another.
 	 * <p>Invocation of this method will not affect any packages that have
 	 * already been initialized.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -461,8 +415,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getPAnnotation() {
@@ -470,8 +423,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPAnnotation_EModelElement() {
@@ -479,8 +431,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getAttributeOverride() {
@@ -488,8 +439,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAttributeOverride_Name() {
@@ -497,8 +447,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getAttributeOverride_Column() {
@@ -506,8 +455,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getBasic() {
@@ -515,8 +463,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getBasic_Fetch() {
@@ -524,8 +471,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getBasic_Optional() {
@@ -533,8 +479,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getColumn() {
@@ -542,8 +487,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getColumn_Name() {
@@ -551,8 +495,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getColumn_Length() {
@@ -560,8 +503,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getColumn_Scale() {
@@ -569,8 +511,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getColumn_Unique() {
@@ -578,8 +519,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getColumn_Precision() {
@@ -587,8 +527,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getColumn_Nullable() {
@@ -596,8 +535,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getColumn_Insertable() {
@@ -605,8 +543,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getColumn_Updatable() {
@@ -614,8 +551,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getColumn_ColumnDefinition() {
@@ -623,8 +559,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getColumn_Table() {
@@ -632,8 +567,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getDiscriminatorColumn() {
@@ -641,8 +575,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getDiscriminatorColumn_Name() {
@@ -650,8 +583,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getDiscriminatorColumn_DiscriminatorType() {
@@ -659,8 +591,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getDiscriminatorColumn_Length() {
@@ -668,8 +599,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getDiscriminatorValue() {
@@ -677,8 +607,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getDiscriminatorValue_Value() {
@@ -686,8 +615,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getDiscriminatorColumn_ColumnDefinition() {
@@ -695,8 +623,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getEmbeddable() {
@@ -704,8 +631,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getMappedSuperclass() {
@@ -713,8 +639,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getEmbedded() {
@@ -722,8 +647,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getEmbeddedId() {
@@ -731,8 +655,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getEnumerated() {
@@ -740,8 +663,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getEnumerated_Value() {
@@ -749,8 +671,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getEntity() {
@@ -758,8 +679,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getEntity_Name() {
@@ -767,8 +687,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getGeneratedValue() {
@@ -776,8 +695,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getGeneratedValue_Strategy() {
@@ -785,8 +703,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getGeneratedValue_Generator() {
@@ -794,8 +711,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getId() {
@@ -803,8 +719,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getIdClass() {
@@ -812,8 +727,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getIdClass_Value() {
@@ -821,8 +735,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getInheritance() {
@@ -830,8 +743,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getInheritance_Strategy() {
@@ -839,8 +751,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getJoinColumn() {
@@ -848,8 +759,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinColumn_Name() {
@@ -857,8 +767,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinColumn_Unique() {
@@ -866,8 +775,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinColumn_Nullable() {
@@ -875,8 +783,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinColumn_Insertable() {
@@ -884,8 +791,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinColumn_Updatable() {
@@ -893,8 +799,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinColumn_ColumnDefinition() {
@@ -902,8 +807,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinColumn_Table() {
@@ -911,8 +815,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinColumn_ReferencedColumnName() {
@@ -920,8 +823,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getJoinTable() {
@@ -929,8 +831,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinTable_Name() {
@@ -938,8 +839,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinTable_Catalog() {
@@ -947,8 +847,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getJoinTable_Schema() {
@@ -956,8 +855,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getJoinTable_JoinColumns() {
@@ -965,8 +863,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getJoinTable_InverseJoinColumns() {
@@ -974,8 +871,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getJoinTable_UniqueConstraints() {
@@ -983,8 +879,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getLob() {
@@ -992,8 +887,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getManyToMany() {
@@ -1001,8 +895,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getManyToMany_Fetch() {
@@ -1010,8 +903,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getManyToMany_TargetEntity() {
@@ -1019,8 +911,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getManyToMany_Cascade() {
@@ -1028,8 +919,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getManyToMany_MappedBy() {
@@ -1037,8 +927,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getManyToMany_Indexed() {
@@ -1046,8 +935,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getManyToOne() {
@@ -1055,8 +943,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getManyToOne_TargetEntity() {
@@ -1064,8 +951,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getManyToOne_Fetch() {
@@ -1073,8 +959,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getManyToOne_Optional() {
@@ -1082,8 +967,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getManyToOne_Cascade() {
@@ -1091,8 +975,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getMapKey() {
@@ -1100,8 +983,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getMapKey_Name() {
@@ -1109,8 +991,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getOneToMany() {
@@ -1118,8 +999,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToMany_Fetch() {
@@ -1127,8 +1007,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToMany_TargetEntity() {
@@ -1136,8 +1015,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToMany_Cascade() {
@@ -1145,8 +1023,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToMany_MappedBy() {
@@ -1154,8 +1031,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToMany_Indexed() {
@@ -1163,8 +1039,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToMany_Unique() {
@@ -1172,8 +1047,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getOneToOne() {
@@ -1181,8 +1055,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToOne_Fetch() {
@@ -1190,8 +1063,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToOne_Optional() {
@@ -1199,8 +1071,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToOne_TargetEntity() {
@@ -1208,8 +1079,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToOne_Cascade() {
@@ -1217,8 +1087,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOneToOne_MappedBy() {
@@ -1226,8 +1095,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getOrderBy() {
@@ -1235,8 +1103,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOrderBy_Value() {
@@ -1244,8 +1111,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getPrimaryKeyJoinColumn() {
@@ -1253,8 +1119,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPrimaryKeyJoinColumn_Name() {
@@ -1262,8 +1127,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPrimaryKeyJoinColumn_ColumnDefinition() {
@@ -1271,8 +1135,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPrimaryKeyJoinColumn_ReferencedColumnName() {
@@ -1280,8 +1143,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSecondaryTable() {
@@ -1289,8 +1151,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSecondaryTable_Name() {
@@ -1298,8 +1159,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSecondaryTable_Catalog() {
@@ -1307,8 +1167,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSecondaryTable_Schema() {
@@ -1316,8 +1175,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSecondaryTable_PkJoinColumns() {
@@ -1325,8 +1183,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSecondaryTable_UniqueConstraints() {
@@ -1334,8 +1191,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSequenceGenerator() {
@@ -1343,8 +1199,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSequenceGenerator_Name() {
@@ -1352,8 +1207,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSequenceGenerator_InitialValue() {
@@ -1361,8 +1215,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSequenceGenerator_SequenceName() {
@@ -1370,8 +1223,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSequenceGenerator_AllocationSize() {
@@ -1379,8 +1231,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getTable() {
@@ -1388,8 +1239,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTable_Name() {
@@ -1397,8 +1247,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTable_Catalog() {
@@ -1406,8 +1255,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTable_Schema() {
@@ -1415,8 +1263,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTable_UniqueConstraints() {
@@ -1424,8 +1271,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getTableGenerator() {
@@ -1433,8 +1279,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTableGenerator_Name() {
@@ -1442,8 +1287,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTableGenerator_AllocationSize() {
@@ -1451,8 +1295,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTableGenerator_Table() {
@@ -1460,8 +1303,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTableGenerator_Catalog() {
@@ -1469,8 +1311,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTableGenerator_Schema() {
@@ -1478,8 +1319,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTableGenerator_PkColumnName() {
@@ -1487,8 +1327,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTableGenerator_ValueColumnName() {
@@ -1496,8 +1335,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTableGenerator_InitialValue() {
@@ -1505,8 +1343,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTableGenerator_PkColumnValue() {
@@ -1514,8 +1351,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTableGenerator_UniqueConstraints() {
@@ -1523,8 +1359,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getTemporal() {
@@ -1532,8 +1367,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTemporal_Value() {
@@ -1541,8 +1375,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getTransient() {
@@ -1550,8 +1383,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getUniqueConstraint() {
@@ -1559,8 +1391,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getUniqueConstraint_ColumnNames() {
@@ -1568,8 +1399,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getVersion() {
@@ -1577,8 +1407,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getAssociationOverride() {
@@ -1586,8 +1415,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAssociationOverride_Name() {
@@ -1595,8 +1423,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getAssociationOverride_JoinColumns() {
@@ -1604,8 +1431,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getFetchType() {
@@ -1613,8 +1439,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getDiscriminatorType() {
@@ -1622,8 +1447,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getEnumType() {
@@ -1631,8 +1455,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getInheritanceType() {
@@ -1640,8 +1463,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getCascadeType() {
@@ -1649,8 +1471,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getTemporalType() {
@@ -1658,8 +1479,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getGenerationType() {
@@ -1667,8 +1487,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public PannotationFactory getPannotationFactory() {
@@ -1676,8 +1495,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -1867,17 +1685,16 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This
+	 * method is guarded to have no affect on any invocation but its first. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
@@ -1888,6 +1705,10 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 		setName(eNAME);
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		attributeOverrideEClass.getESuperTypes().add(this.getPAnnotation());
@@ -2146,9 +1967,10 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2004/EmfaticAnnotationMap</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Initializes the annotations for
+	 * <b>http://www.eclipse.org/emf/2004/EmfaticAnnotationMap</b>. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createEmfaticAnnotationMapAnnotations() {
@@ -2163,9 +1985,9 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Initializes the annotations for <b>teneo.mapping.source</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Initializes the annotations for <b>teneo.mapping.source</b>. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
@@ -2181,8 +2003,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 
 	/**
 	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
@@ -2304,9 +2125,9 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Initializes the annotations for <b>teneo/internal/Target</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Initializes the annotations for <b>teneo/internal/Target</b>. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createTargetAnnotations() {
@@ -2520,8 +2341,7 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 
 	/**
 	 * Initializes the annotations for <b>teneo/internal/PersistenceMapping</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createPersistenceMappingAnnotations() {
@@ -2541,9 +2361,9 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Initializes the annotations for <b>teneo/internal/Unsupported</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Initializes the annotations for <b>teneo/internal/Unsupported</b>. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createUnsupportedAnnotations() {
@@ -2556,9 +2376,9 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Initializes the annotations for <b>teneo/PeristenceMapping</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Initializes the annotations for <b>teneo/PeristenceMapping</b>. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void createPeristenceMappingAnnotations() {
@@ -2572,37 +2392,45 @@ public class PannotationPackageImpl extends EPackageImpl implements PannotationP
 	}
 
 	/**
-	 * Compute the list of targets starting from the <code>java.lang.annotation.Target</code>
-	 * annotation.
+	 * Compute the list of targets starting from the
+	 * <code>java.lang.annotation.Target</code> annotation.
 	 */
 	public EClass[] getTargets(EClass pAnnotationEClass) {
 		// TODO cache result
 		EClass[] result = null;
 		if (getPAnnotation().isSuperTypeOf(pAnnotationEClass)) {
-			EAnnotation targetAnnotation = pAnnotationEClass.getEAnnotation(TARGET_ANNOTATION_SOURCE);
-			Collection targets = targetAnnotation != null ? targetAnnotation.getDetails().values() : Collections.EMPTY_LIST;
+			EAnnotation targetAnnotation = pAnnotationEClass
+					.getEAnnotation(TARGET_ANNOTATION_SOURCE);
+			Collection<String> targets = Collections.emptyList();
+			if (targetAnnotation != null) {
+				targets = targetAnnotation.getDetails().values();
+			}
 			result = new EClass[targets.size()];
 			int j = 0;
-			for (Iterator i=targets.iterator(); i.hasNext(); j++) {
-				EClassifier eClassifier = EcorePackage.eINSTANCE.getEClassifier((String) i.next());
-				result[j] = eClassifier instanceof EClass ? (EClass) eClassifier : null;
+			for (String target : targets) {
+				EClassifier eClassifier = EcorePackage.eINSTANCE
+						.getEClassifier(target);
+				result[j] = eClassifier instanceof EClass ? (EClass) eClassifier
+						: null;
 			}
 		}
 		return result;
 	}
 
 	/**
-	 * Compute if the given targetElementEClass is a target for the pAnnotation EClass
-	 * basing on the <code>java.lang.annotation.Target</code> annotation.
+	 * Compute if the given targetElementEClass is a target for the pAnnotation
+	 * EClass basing on the <code>java.lang.annotation.Target</code>
+	 * annotation.
 	 */
 	public boolean isTarget(EClass pAnnotationEClass, EClass targetElementEClass) {
 		boolean hasTarget = false;
 		if (getPAnnotation().isSuperTypeOf(pAnnotationEClass)) {
 			EClass[] admissibleTargets = getTargets(pAnnotationEClass);
-			for (int i=0; !hasTarget && i < admissibleTargets.length; i++)
-				hasTarget |= admissibleTargets[i].isSuperTypeOf(targetElementEClass);
+			for (int i = 0; !hasTarget && i < admissibleTargets.length; i++)
+				hasTarget |= admissibleTargets[i]
+						.isSuperTypeOf(targetElementEClass);
 		}
 		return hasTarget;
 	}
 
-} //PannotationPackageImpl
+} // PannotationPackageImpl

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.10 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.11 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -98,7 +98,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList paEStructuralFeatures = null;
+	protected EList<PAnnotatedEStructuralFeature> paEStructuralFeatures = null;
 
 	/**
 	 * The cached value of the '{@link #getAttributeOverrides() <em>Attribute Overrides</em>}' containment reference list.
@@ -108,7 +108,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList attributeOverrides = null;
+	protected EList<AttributeOverride> attributeOverrides = null;
 
 	/**
 	 * The cached value of the '{@link #getDiscriminatorColumn() <em>Discriminator Column</em>}' containment reference.
@@ -188,7 +188,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList primaryKeyJoinColumns = null;
+	protected EList<PrimaryKeyJoinColumn> primaryKeyJoinColumns = null;
 
 	/**
 	 * The cached value of the '{@link #getSecondaryTables() <em>Secondary Tables</em>}' containment reference list.
@@ -198,7 +198,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList secondaryTables = null;
+	protected EList<SecondaryTable> secondaryTables = null;
 
 	/**
 	 * The cached value of the '{@link #getTable() <em>Table</em>}' containment reference.
@@ -228,7 +228,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList associationOverrides = null;
+	protected EList<AssociationOverride> associationOverrides = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -244,6 +244,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PamodelPackage.Literals.PANNOTATED_ECLASS;
 	}
@@ -342,9 +343,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPaEStructuralFeatures() {
+	public EList<PAnnotatedEStructuralFeature> getPaEStructuralFeatures() {
 		if (paEStructuralFeatures == null) {
-			paEStructuralFeatures = new EObjectContainmentWithInverseEList(PAnnotatedEStructuralFeature.class, this, PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS);
+			paEStructuralFeatures = new EObjectContainmentWithInverseEList<PAnnotatedEStructuralFeature>(PAnnotatedEStructuralFeature.class, this, PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS);
 		}
 		return paEStructuralFeatures;
 	}
@@ -354,9 +355,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAttributeOverrides() {
+	public EList<AttributeOverride> getAttributeOverrides() {
 		if (attributeOverrides == null) {
-			attributeOverrides = new EObjectContainmentEList(AttributeOverride.class, this, PamodelPackage.PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES);
+			attributeOverrides = new EObjectContainmentEList<AttributeOverride>(AttributeOverride.class, this, PamodelPackage.PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES);
 		}
 		return attributeOverrides;
 	}
@@ -667,9 +668,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPrimaryKeyJoinColumns() {
+	public EList<PrimaryKeyJoinColumn> getPrimaryKeyJoinColumns() {
 		if (primaryKeyJoinColumns == null) {
-			primaryKeyJoinColumns = new EObjectContainmentEList(PrimaryKeyJoinColumn.class, this, PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS);
+			primaryKeyJoinColumns = new EObjectContainmentEList<PrimaryKeyJoinColumn>(PrimaryKeyJoinColumn.class, this, PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS);
 		}
 		return primaryKeyJoinColumns;
 	}
@@ -679,9 +680,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSecondaryTables() {
+	public EList<SecondaryTable> getSecondaryTables() {
 		if (secondaryTables == null) {
-			secondaryTables = new EObjectContainmentEList(SecondaryTable.class, this, PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES);
+			secondaryTables = new EObjectContainmentEList<SecondaryTable>(SecondaryTable.class, this, PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES);
 		}
 		return secondaryTables;
 	}
@@ -777,9 +778,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAssociationOverrides() {
+	public EList<AssociationOverride> getAssociationOverrides() {
 		if (associationOverrides == null) {
-			associationOverrides = new EObjectContainmentEList(AssociationOverride.class, this, PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES);
+			associationOverrides = new EObjectContainmentEList<AssociationOverride>(AssociationOverride.class, this, PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES);
 		}
 		return associationOverrides;
 	}
@@ -789,6 +790,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
@@ -796,7 +799,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetPaEPackage((PAnnotatedEPackage)otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
-				return ((InternalEList)getPaEStructuralFeatures()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPaEStructuralFeatures()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -806,14 +809,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
 				return basicSetPaEPackage(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
-				return ((InternalEList)getPaEStructuralFeatures()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getPaEStructuralFeatures()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES:
-				return ((InternalEList)getAttributeOverrides()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getAttributeOverrides()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN:
 				return basicSetDiscriminatorColumn(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE:
@@ -829,15 +833,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__INHERITANCE:
 				return basicSetInheritance(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
-				return ((InternalEList)getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
-				return ((InternalEList)getSecondaryTables()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getSecondaryTables()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
 				return basicSetTable(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR:
 				return basicSetTableGenerator(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
-				return ((InternalEList)getAssociationOverrides()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getAssociationOverrides()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -847,6 +851,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
@@ -860,6 +865,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
@@ -904,6 +910,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
@@ -914,11 +922,11 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
 				getPaEStructuralFeatures().clear();
-				getPaEStructuralFeatures().addAll((Collection)newValue);
+				getPaEStructuralFeatures().addAll((Collection<? extends PAnnotatedEStructuralFeature>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES:
 				getAttributeOverrides().clear();
-				getAttributeOverrides().addAll((Collection)newValue);
+				getAttributeOverrides().addAll((Collection<? extends AttributeOverride>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN:
 				setDiscriminatorColumn((DiscriminatorColumn)newValue);
@@ -943,11 +951,11 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
 				getPrimaryKeyJoinColumns().clear();
-				getPrimaryKeyJoinColumns().addAll((Collection)newValue);
+				getPrimaryKeyJoinColumns().addAll((Collection<? extends PrimaryKeyJoinColumn>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
 				getSecondaryTables().clear();
-				getSecondaryTables().addAll((Collection)newValue);
+				getSecondaryTables().addAll((Collection<? extends SecondaryTable>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
 				setTable((Table)newValue);
@@ -957,7 +965,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
 				getAssociationOverrides().clear();
-				getAssociationOverrides().addAll((Collection)newValue);
+				getAssociationOverrides().addAll((Collection<? extends AssociationOverride>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -968,6 +976,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
@@ -1027,6 +1036,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
@@ -1069,11 +1079,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @return true if the eclass or its ancestor has an PAnnotatedEStructuralFeature with an id annotation.
 	 */
 	public boolean hasIdAnnotatedFeature() {
-		if (!getPaIdAttributes().isEmpty()) return true;
+		if (!getPaIdFeatures().isEmpty()) return true;
 
-		List eSupers = getAnnotatedEClass().getEAllSuperTypes();
-		for (Iterator it = eSupers.iterator(); it.hasNext();) {
-			EClass eSuper = (EClass)it.next();
+		for (EClass eSuper : getAnnotatedEClass().getEAllSuperTypes()) {
 			PAnnotatedEClass aClass = getPaModel().getPAnnotated(eSuper);
 			if (aClass != null && aClass.hasIdAnnotatedFeature()) {
 				return true;
@@ -1084,9 +1092,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 
 	/** Returns true if the eclass has an PAnnotatedEStructuralFeature with an version annotation */
 	public boolean hasVersionAnnotatedFeature() {
-		Iterator it = getPaEStructuralFeatures().iterator();
-		while (it.hasNext()) {
-			PAnnotatedEStructuralFeature aFeature = (PAnnotatedEStructuralFeature)it.next();
+		for (PAnnotatedEStructuralFeature aFeature : getPaEStructuralFeatures()) {
 			if (aFeature instanceof PAnnotatedEAttribute)
 				if (((PAnnotatedEAttribute) aFeature).getVersion() != null) return true;
 		}
@@ -1104,12 +1110,10 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	/**
 	 * {@inheritDoc}
 	 */
-	public List getPaIdAttributes() {
+	public List<PAnnotatedEStructuralFeature> getPaIdFeatures() {
 		// TODO cache this list
-		List attrs = new ArrayList();
-		Iterator it = getPaEStructuralFeatures().iterator();
-		while (it.hasNext()) {
-			PAnnotatedEStructuralFeature aFeature = (PAnnotatedEStructuralFeature) it.next();
+		final List<PAnnotatedEStructuralFeature> attrs = new ArrayList<PAnnotatedEStructuralFeature>();
+		for (PAnnotatedEStructuralFeature aFeature : getPaEStructuralFeatures()) {
 			if (aFeature instanceof PAnnotatedEAttribute) {
 				if (((PAnnotatedEAttribute) aFeature).getId() != null && 
 						((PAnnotatedEAttribute) aFeature).getTransient() == null) {
@@ -1133,9 +1137,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		PAnnotatedModel model = getPaModel();
 		PAnnotatedEClass mappedSuper = null;
 		if (model != null && getAnnotatedEClass() != null) {
-			Iterator i = getAnnotatedEClass().getESuperTypes().iterator();
+			Iterator<EClass> i = getAnnotatedEClass().getESuperTypes().iterator();
 			while (mappedSuper == null && i.hasNext()) {
-				PAnnotatedEClass x = model.getPAnnotated((EClass) i.next());
+				PAnnotatedEClass x = model.getPAnnotated(i.next());
 				if (x.getMappedSuperclass() != null)
 					mappedSuper = x;
 			}
@@ -1151,9 +1155,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		PAnnotatedModel model = getPaModel();
 		PAnnotatedEClass superEntity = null;
 		if (model != null && getAnnotatedEClass() != null) {
-			Iterator i = getAnnotatedEClass().getESuperTypes().iterator();
+			Iterator<EClass> i = getAnnotatedEClass().getESuperTypes().iterator();
 			while (superEntity == null && i.hasNext()) {
-				PAnnotatedEClass x = model.getPAnnotated((EClass) i.next());
+				PAnnotatedEClass x = model.getPAnnotated(i.next());
 				if (x.getEntity() != null)
 					superEntity = x;
 			}

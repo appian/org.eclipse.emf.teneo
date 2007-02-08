@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableGeneratorImpl.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: TableGeneratorImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -260,7 +260,7 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList uniqueConstraints = null;
+	protected EList<UniqueConstraint> uniqueConstraints = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -276,6 +276,7 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.TABLE_GENERATOR;
 	}
@@ -537,9 +538,9 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getUniqueConstraints() {
+	public EList<UniqueConstraint> getUniqueConstraints() {
 		if (uniqueConstraints == null) {
-			uniqueConstraints = new EObjectContainmentEList(UniqueConstraint.class, this, PannotationPackage.TABLE_GENERATOR__UNIQUE_CONSTRAINTS);
+			uniqueConstraints = new EObjectContainmentEList<UniqueConstraint>(UniqueConstraint.class, this, PannotationPackage.TABLE_GENERATOR__UNIQUE_CONSTRAINTS);
 		}
 		return uniqueConstraints;
 	}
@@ -549,10 +550,11 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PannotationPackage.TABLE_GENERATOR__UNIQUE_CONSTRAINTS:
-				return ((InternalEList)getUniqueConstraints()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getUniqueConstraints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -562,6 +564,7 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.TABLE_GENERATOR__EMODEL_ELEMENT:
@@ -596,6 +599,8 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.TABLE_GENERATOR__EMODEL_ELEMENT:
@@ -630,7 +635,7 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 				return;
 			case PannotationPackage.TABLE_GENERATOR__UNIQUE_CONSTRAINTS:
 				getUniqueConstraints().clear();
-				getUniqueConstraints().addAll((Collection)newValue);
+				getUniqueConstraints().addAll((Collection<? extends UniqueConstraint>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -641,6 +646,7 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.TABLE_GENERATOR__EMODEL_ELEMENT:
@@ -685,6 +691,7 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.TABLE_GENERATOR__EMODEL_ELEMENT:
@@ -718,6 +725,7 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

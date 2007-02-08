@@ -11,14 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ReferenceValueNode.java,v 1.7 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: ReferenceValueNode.java,v 1.8 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 
 /**
  * Node which has a complex type as its value.
@@ -40,20 +39,22 @@ class ReferenceValueNode extends NamedParserNode {
 	}
 
 	/**
-	 * @param value the value to set
+	 * @param value
+	 *            the value to set
 	 */
 	public void setValue(NamedParserNode value) {
 		this.value = value;
 	}
-	
+
 	/** Translate into a list of eobjects */
 	Object convert(EClassResolver ecr) {
 		log.debug("Converting reference node " + getName());
 		if (!(value instanceof ComplexNode)) {
-			throw new AnnotationParserException("A reference annotation value may only " +
-					"contain a typename");
+			throw new AnnotationParserException(
+					"A reference annotation value may only "
+							+ "contain a typename");
 		}
-		final ComplexNode cn = (ComplexNode)value;
+		final ComplexNode cn = (ComplexNode) value;
 		return cn.convert(ecr);
 	}
 }

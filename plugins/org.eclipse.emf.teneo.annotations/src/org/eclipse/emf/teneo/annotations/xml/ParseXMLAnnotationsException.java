@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ParseXMLAnnotationsException.java,v 1.2 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: ParseXMLAnnotationsException.java,v 1.3 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -22,10 +22,15 @@ import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
  * Is thrown in the org.eclipse.emf.teneo.annotations.xml package. Takes care of logging the cause.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class ParseXMLAnnotationsException extends StoreAnnotationsException {
+
+	/**
+	 * Serial Version ID
+	 */
+	private static final long serialVersionUID = -8670363508437586401L;
 
 	/**
 	 * The constructor, logs the exception also

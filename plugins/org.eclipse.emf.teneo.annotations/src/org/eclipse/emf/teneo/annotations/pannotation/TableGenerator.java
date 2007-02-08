@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableGenerator.java,v 1.4 2007/02/01 12:35:01 mtaal Exp $
+ * $Id: TableGenerator.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -305,6 +305,6 @@ public interface TableGenerator extends PAnnotation {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint" containment="true"
 	 * @generated
 	 */
-	EList getUniqueConstraints();
+	EList<UniqueConstraint> getUniqueConstraints();
 
 } // TableGenerator

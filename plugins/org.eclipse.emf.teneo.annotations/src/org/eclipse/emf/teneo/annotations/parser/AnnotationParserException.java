@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationParserException.java,v 1.3 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: AnnotationParserException.java,v 1.4 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -20,10 +20,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Is thrown in the org.eclipse.emf.teneo.annotations.parser package. Takes care of logging the cause.
+ * Is thrown in the org.eclipse.emf.teneo.annotations.parser package. Takes care
+ * of logging the cause.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class AnnotationParserException extends RuntimeException {

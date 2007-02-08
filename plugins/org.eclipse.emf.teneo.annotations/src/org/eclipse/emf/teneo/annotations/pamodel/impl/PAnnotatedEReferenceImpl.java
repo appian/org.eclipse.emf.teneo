@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceImpl.java,v 1.7 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PAnnotatedEReferenceImpl.java,v 1.8 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -147,7 +147,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected EList primaryKeyJoinColumns = null;
+	protected EList<PrimaryKeyJoinColumn> primaryKeyJoinColumns = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,6 +163,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PamodelPackage.Literals.PANNOTATED_EREFERENCE;
 	}
@@ -522,9 +523,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPrimaryKeyJoinColumns() {
+	public EList<PrimaryKeyJoinColumn> getPrimaryKeyJoinColumns() {
 		if (primaryKeyJoinColumns == null) {
-			primaryKeyJoinColumns = new EObjectContainmentEList(PrimaryKeyJoinColumn.class, this, PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS);
+			primaryKeyJoinColumns = new EObjectContainmentEList<PrimaryKeyJoinColumn>(PrimaryKeyJoinColumn.class, this, PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS);
 		}
 		return primaryKeyJoinColumns;
 	}
@@ -534,6 +535,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED:
@@ -551,7 +553,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY:
 				return basicSetOrderBy(null, msgs);
 			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
-				return ((InternalEList)getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -561,6 +563,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE:
@@ -591,6 +594,8 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE:
@@ -619,7 +624,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
 				getPrimaryKeyJoinColumns().clear();
-				getPrimaryKeyJoinColumns().addAll((Collection)newValue);
+				getPrimaryKeyJoinColumns().addAll((Collection<? extends PrimaryKeyJoinColumn>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -630,6 +635,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE:
@@ -668,6 +674,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE:

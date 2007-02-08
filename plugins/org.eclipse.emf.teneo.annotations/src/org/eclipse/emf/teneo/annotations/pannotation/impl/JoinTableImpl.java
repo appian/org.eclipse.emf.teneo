@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoinTableImpl.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: JoinTableImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -129,7 +129,7 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList joinColumns = null;
+	protected EList<JoinColumn> joinColumns = null;
 
 	/**
 	 * The cached value of the '{@link #getInverseJoinColumns() <em>Inverse Join Columns</em>}' containment reference list.
@@ -139,7 +139,7 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList inverseJoinColumns = null;
+	protected EList<JoinColumn> inverseJoinColumns = null;
 
 	/**
 	 * The cached value of the '{@link #getUniqueConstraints() <em>Unique Constraints</em>}' containment reference list.
@@ -149,7 +149,7 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList uniqueConstraints = null;
+	protected EList<UniqueConstraint> uniqueConstraints = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,6 +165,7 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.JOIN_TABLE;
 	}
@@ -275,9 +276,9 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getJoinColumns() {
+	public EList<JoinColumn> getJoinColumns() {
 		if (joinColumns == null) {
-			joinColumns = new EObjectContainmentEList(JoinColumn.class, this, PannotationPackage.JOIN_TABLE__JOIN_COLUMNS);
+			joinColumns = new EObjectContainmentEList<JoinColumn>(JoinColumn.class, this, PannotationPackage.JOIN_TABLE__JOIN_COLUMNS);
 		}
 		return joinColumns;
 	}
@@ -287,9 +288,9 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInverseJoinColumns() {
+	public EList<JoinColumn> getInverseJoinColumns() {
 		if (inverseJoinColumns == null) {
-			inverseJoinColumns = new EObjectContainmentEList(JoinColumn.class, this, PannotationPackage.JOIN_TABLE__INVERSE_JOIN_COLUMNS);
+			inverseJoinColumns = new EObjectContainmentEList<JoinColumn>(JoinColumn.class, this, PannotationPackage.JOIN_TABLE__INVERSE_JOIN_COLUMNS);
 		}
 		return inverseJoinColumns;
 	}
@@ -299,9 +300,9 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getUniqueConstraints() {
+	public EList<UniqueConstraint> getUniqueConstraints() {
 		if (uniqueConstraints == null) {
-			uniqueConstraints = new EObjectContainmentEList(UniqueConstraint.class, this, PannotationPackage.JOIN_TABLE__UNIQUE_CONSTRAINTS);
+			uniqueConstraints = new EObjectContainmentEList<UniqueConstraint>(UniqueConstraint.class, this, PannotationPackage.JOIN_TABLE__UNIQUE_CONSTRAINTS);
 		}
 		return uniqueConstraints;
 	}
@@ -311,14 +312,15 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PannotationPackage.JOIN_TABLE__JOIN_COLUMNS:
-				return ((InternalEList)getJoinColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getJoinColumns()).basicRemove(otherEnd, msgs);
 			case PannotationPackage.JOIN_TABLE__INVERSE_JOIN_COLUMNS:
-				return ((InternalEList)getInverseJoinColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getInverseJoinColumns()).basicRemove(otherEnd, msgs);
 			case PannotationPackage.JOIN_TABLE__UNIQUE_CONSTRAINTS:
-				return ((InternalEList)getUniqueConstraints()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getUniqueConstraints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -328,6 +330,7 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.JOIN_TABLE__EMODEL_ELEMENT:
@@ -354,6 +357,8 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.JOIN_TABLE__EMODEL_ELEMENT:
@@ -370,15 +375,15 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 				return;
 			case PannotationPackage.JOIN_TABLE__JOIN_COLUMNS:
 				getJoinColumns().clear();
-				getJoinColumns().addAll((Collection)newValue);
+				getJoinColumns().addAll((Collection<? extends JoinColumn>)newValue);
 				return;
 			case PannotationPackage.JOIN_TABLE__INVERSE_JOIN_COLUMNS:
 				getInverseJoinColumns().clear();
-				getInverseJoinColumns().addAll((Collection)newValue);
+				getInverseJoinColumns().addAll((Collection<? extends JoinColumn>)newValue);
 				return;
 			case PannotationPackage.JOIN_TABLE__UNIQUE_CONSTRAINTS:
 				getUniqueConstraints().clear();
-				getUniqueConstraints().addAll((Collection)newValue);
+				getUniqueConstraints().addAll((Collection<? extends UniqueConstraint>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -389,6 +394,7 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.JOIN_TABLE__EMODEL_ELEMENT:
@@ -421,6 +427,7 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.JOIN_TABLE__EMODEL_ELEMENT:
@@ -446,6 +453,7 @@ public class JoinTableImpl extends EObjectImpl implements JoinTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

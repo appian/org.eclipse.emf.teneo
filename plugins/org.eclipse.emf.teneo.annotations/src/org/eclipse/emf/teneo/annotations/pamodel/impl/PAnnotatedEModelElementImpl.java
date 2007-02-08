@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEModelElementImpl.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PAnnotatedEModelElementImpl.java,v 1.5 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -68,6 +67,7 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PamodelPackage.Literals.PANNOTATED_EMODEL_ELEMENT;
 	}
@@ -144,6 +144,7 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT:
@@ -157,6 +158,7 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
@@ -173,6 +175,7 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
@@ -190,6 +193,7 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
@@ -207,6 +211,7 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
@@ -220,14 +225,12 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	/**
 	 * {@inheritDoc }
 	 */
-	public List getAnnotations() {
+	public List<PAnnotation> getAnnotations() {
 		// TODO implement as wrapper on eContents?
-		List annotations = new ArrayList();
-		Iterator i = eContents().iterator();
-		while (i.hasNext()) {
-			Object x = i.next();
+		List<PAnnotation> annotations = new ArrayList<PAnnotation>();
+		for (Object x : eContents()) {
 			if (x instanceof PAnnotation)
-				annotations.add(x);
+				annotations.add((PAnnotation)x);
 		}
 		return annotations;
 	}

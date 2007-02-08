@@ -11,12 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ParserUtil.java,v 1.5 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: ParserUtil.java,v 1.6 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
-
-import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -27,33 +25,38 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * Util class
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class ParserUtil {
 
 	/**
-	 * @return Returns the result of converting the String value to the given data type.
+	 * @return Returns the result of converting the String value to the given
+	 *         data type.
 	 * @throws EAnnotationImportException
 	 */
-	public static Object convertValue(EDataType eType, String value)  {
+	public static Object convertValue(EDataType eType, String value) {
 		try {
 			return EcoreUtil.createFromString(eType, value);
 		} catch (IllegalArgumentException e) {
-			throw new AnnotationParserException("Cannot convert '" + value + "' to '" + eType.getName() + "' type", e);
+			throw new AnnotationParserException("Cannot convert '" + value
+					+ "' to '" + eType.getName() + "' type", e);
 		}
 	}
-	
+
 	/** Get a structuralfeature */
-	public static EStructuralFeature getEStructuralFeature(EClass eClass, String name)  {
+	public static EStructuralFeature getEStructuralFeature(EClass eClass,
+			String name) {
 		try {
-			for (Iterator it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
-				final EStructuralFeature ef = (EStructuralFeature)it.next();
-				if (ef.getName().compareToIgnoreCase(name) == 0) return ef;
+			for (EStructuralFeature ef : eClass.getEAllStructuralFeatures()) {
+				if (ef.getName().compareToIgnoreCase(name) == 0)
+					return ef;
 			}
-			throw new AnnotationParserException("No efeature " + name + " for eclass " + eClass.getName());
+			throw new AnnotationParserException("No efeature " + name
+					+ " for eclass " + eClass.getName());
 		} catch (IllegalArgumentException e) {
-			throw new AnnotationParserException("Cannot convert '" + name + "' to an efeature for eclass " + eClass.getName());
+			throw new AnnotationParserException("Cannot convert '" + name
+					+ "' to an efeature for eclass " + eClass.getName());
 		}
 	}
 }

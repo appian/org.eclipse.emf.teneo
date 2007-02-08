@@ -2,24 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelValidator.java,v 1.13 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PamodelValidator.java,v 1.14 2007/02/08 23:12:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.emf.teneo.annotations.pamodel.*;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -30,11 +25,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
-import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
-import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
-import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 
 /**
  * <!-- begin-user-doc -->
@@ -101,6 +91,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EPackage getEPackage() {
 	  return PamodelPackage.eINSTANCE;
 	}
@@ -111,7 +102,8 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map context) {
+	@Override
+	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT:
 				return validatePAnnotatedEModelElement((PAnnotatedEModelElement)value, diagnostics, context);
@@ -141,11 +133,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEModelElement(PAnnotatedEModelElement pAnnotatedEModelElement, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEModelElement(PAnnotatedEModelElement pAnnotatedEModelElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEModelElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEModelElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEModelElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEModelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEModelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEModelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pAnnotatedEModelElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedEModelElement, diagnostics, context);
 		return result;
 	}
@@ -155,20 +150,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- begin-user-doc -->
 	 * Check that each contained PAnnotation references the same eModelElement
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEModelElement_PAnnotationElementCommutes(PAnnotatedEModelElement pAnnotatedEModelElement, DiagnosticChain diagnostics, Map context) {
-		ENamedElement target = pAnnotatedEModelElement.getAnnotatedElement();
-		if (target == null)
-			return true;
-		PAnnotation pAnnotation = null;
-		Iterator i = pAnnotatedEModelElement.getAnnotations().iterator();
-		while (pAnnotation == null && i.hasNext()) {
-			PAnnotation next = (PAnnotation) i.next();
-			if (next.getEModelElement() != target) 
-				pAnnotation = (PAnnotation) next;
-		}
-		if (pAnnotation != null) {
+	public boolean validatePAnnotatedEModelElement_PAnnotationElementCommutes(PAnnotatedEModelElement pAnnotatedEModelElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -188,11 +177,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedModel(PAnnotatedModel pAnnotatedModel, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedModel(PAnnotatedModel pAnnotatedModel, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedModel, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedModel, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedModel, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedModel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedModel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedModel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pAnnotatedModel, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedModel_AtMostOnePackage(pAnnotatedModel, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedModel_DistinctGenerators(pAnnotatedModel, diagnostics, context);
 		return result;
@@ -202,17 +194,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * Validates the AtMostOnePackage constraint of '<em>PAnnotated Model</em>'.
 	 * Verifies that the model does not contain distinct PAnnotatedEPackage refering
 	 * to the same EPackage.
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedModel_AtMostOnePackage(PAnnotatedModel pAnnotatedModel, DiagnosticChain diagnostics, Map context) {
-		EPackage dupPackage = null;
-		Set containedEPackages = new HashSet();
-		for (Iterator i = pAnnotatedModel.getPaEPackages().iterator(); i.hasNext() && dupPackage == null; ) {
-			EPackage ep = ((PAnnotatedEPackage) i.next()).getAnnotatedEPackage();
-			if (ep != null && !containedEPackages.add(ep))
-				dupPackage = ep;
-		}
-		if (dupPackage != null) {
+	public boolean validatePAnnotatedModel_AtMostOnePackage(PAnnotatedModel pAnnotatedModel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -233,9 +222,9 @@ public class PamodelValidator extends EObjectValidator {
 	 * Check that each in each scope no distinct TableGenerator or SequenceGenerator use
 	 * the same name.
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedModel_DistinctGenerators(PAnnotatedModel pAnnotatedModel, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedModel_DistinctGenerators(PAnnotatedModel pAnnotatedModel, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -260,11 +249,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEPackage(PAnnotatedEPackage pAnnotatedEPackage, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEPackage(PAnnotatedEPackage pAnnotatedEPackage, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEPackage, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEPackage, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEPackage, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEPackage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEPackage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEPackage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pAnnotatedEPackage, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedEPackage, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEPackage_AtMostOneEClass(pAnnotatedEPackage, diagnostics, context);
 		return result;
@@ -274,17 +266,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * Validates the AtMostOneEClass constraint of '<em>PAnnotated EPackage</em>'.
 	 * Verifies that the package does not contain distinct PAnnotatedEClass refering
 	 * to the same EClass.
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEPackage_AtMostOneEClass(PAnnotatedEPackage pAnnotatedEPackage, DiagnosticChain diagnostics, Map context) {
-		EClass dupClass = null;
-		Set containedEClasses = new HashSet();
-		for (Iterator i = pAnnotatedEPackage.getPaEClasses().iterator(); i.hasNext() && dupClass == null; ) {
-			EClass x = ((PAnnotatedEClass) i.next()).getAnnotatedEClass();
-			if (x != null && !containedEClasses.add(x))
-				dupClass = x;
-		}
-		if (dupClass != null) {
+	public boolean validatePAnnotatedEPackage_AtMostOneEClass(PAnnotatedEPackage pAnnotatedEPackage, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -304,11 +293,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEClass(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEClass(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEClass_SameEFeatures(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEClass_EPackageCommutes(pAnnotatedEClass, diagnostics, context);
@@ -327,21 +319,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- begin-user-doc -->
 	 * Check that each of the annotated EClass features are annotated exactly once.
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEClass_SameEFeatures(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
-		EClass annotatedEClass = pAnnotatedEClass.getAnnotatedEClass();
-		if (annotatedEClass == null)
-			return true;
-		EStructuralFeature dupFeature = null;
-		Set containedEFeatures = new HashSet();
-		for (Iterator i = pAnnotatedEClass.getPaEStructuralFeatures().iterator(); i.hasNext() && dupFeature == null; ) {
-			EStructuralFeature x = ((PAnnotatedEStructuralFeature) i.next()).getAnnotatedEStructuralFeature();
-			if (x != null && !containedEFeatures.add(x))
-				dupFeature = x;
-		}
-		if (pAnnotatedEClass.getPaEStructuralFeatures().size() !=
-					annotatedEClass.getEStructuralFeatures().size() || dupFeature != null) {
+	public boolean validatePAnnotatedEClass_SameEFeatures(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -360,14 +345,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * Validates the EPackageCommutes constraint of '<em>PAnnotated EClass</em>'.
 	 * Verifies that the containing (if specified) PAnnotatedEPackage corresponds
 	 * to the containing EPackage of the referenced EClass (if specified).
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEClass_EPackageCommutes(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
-		PAnnotatedEPackage ru = pAnnotatedEClass.getPaEPackage();
-		EPackage rd = ru != null ? ru.getAnnotatedEPackage() : null;
-		EClass dl = pAnnotatedEClass.eClass();
-		EPackage dr = dl != null ? dl.getEPackage() : null;
-		if (rd != dr) {
+	public boolean validatePAnnotatedEClass_EPackageCommutes(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -387,44 +372,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- begin-user-doc -->
 	 * EJB3-SPEC 2.1.4
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEClass_ProperPrimaryKey(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
-		if (pAnnotatedEClass.getIdClass() != null) {
-			; // TODO check 9.1.13
-		}
-		if (pAnnotatedEClass.getMappedSuperclass() != null)
-			return true;
-		if (!pAnnotatedEClass.hasIdAnnotatedFeature())
-			return true; // TODO forcing specification here, we allow not specifying primary key
-		if (pAnnotatedEClass.getEmbeddable() != null) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperPrimaryKey", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
-			}
-			return false;
-		}
-		// it is an entity with id, check it does not have a mapped superclass that has id
-		PAnnotatedEClass paMappedSuper = pAnnotatedEClass.getPaMappedSuper();
-		if (paMappedSuper != null && paMappedSuper.hasIdAnnotatedFeature()) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperPrimaryKey", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
-			}
-			return false;
-		}
-		// check that it is a root entity
-		if (paMappedSuper.getPaSuperEntity() != null) {
+	public boolean validatePAnnotatedEClass_ProperPrimaryKey(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -443,13 +398,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * Validates the EntityOrEmbeddableOrMappedSuper constraint of '<em>PAnnotated EClass</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEClass_EntityOrEmbeddableOrMappedSuper(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
-		int roles = (pAnnotatedEClass.getEntity() == null ? 0 : 1)
-				+ (pAnnotatedEClass.getMappedSuperclass() == null ? 0 : 1)
-					+ (pAnnotatedEClass.getEmbeddable() == null ? 0 : 1);
-		if (roles > 1) {
+	public boolean validatePAnnotatedEClass_EntityOrEmbeddableOrMappedSuper(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -472,7 +428,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEClass_OverriddenAreDefined(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEClass_OverriddenAreDefined(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -497,10 +453,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- begin-user-doc -->
 	 * EJB3-SPEC 9.1.27
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEClass_ProperInheritance(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
-		if (pAnnotatedEClass.getInheritance() != null && pAnnotatedEClass.getEntity() == null) {
+	public boolean validatePAnnotatedEClass_ProperInheritance(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -512,7 +472,6 @@ public class PamodelValidator extends EObjectValidator {
 			}
 			return false;
 		}
-		// TODO issue a warning if strategy is redefined with same value
 		return true;
 	}
 
@@ -522,14 +481,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * EJB3-SPEC 9.1.28
 	 * EJB3-SPEC 9.1.29
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEClass_ProperDiscriminator(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
-		DiscriminatorColumn dCol = pAnnotatedEClass.getDiscriminatorColumn();
-		DiscriminatorValue dValue = pAnnotatedEClass.getDiscriminatorValue();
-		if (dCol == null && dValue == null)
-			return true;
-		if (pAnnotatedEClass.getEntity() == null) {
+	public boolean validatePAnnotatedEClass_ProperDiscriminator(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -541,45 +500,6 @@ public class PamodelValidator extends EObjectValidator {
 			}
 			return false;
 		}
-		if (dValue != null && pAnnotatedEClass.getAnnotatedEClass() != null && pAnnotatedEClass.getAnnotatedEClass().isAbstract()) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperDiscriminator", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
-			}
-			return false;
-		}
-		InheritanceType inheritanceStrategy = pAnnotatedEClass.getInheritanceStrategy();
-		if (InheritanceType.TABLE_PER_CLASS_LITERAL.equals(inheritanceStrategy)) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperDiscriminator", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
-			}
-			return false;
-		}
-		PAnnotatedEClass paSuper = pAnnotatedEClass.getPaSuperEntity();
-		if (dCol != null && paSuper != null && inheritanceStrategy.equals(paSuper.getInheritanceStrategy())) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperDiscriminator", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
-			}
-			return false;
-		}
-		// TODO check discriminator value agree with discriminator coulmn type
 		return true;
 	}
 
@@ -587,25 +507,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * Validates the SingleTableForSingleStrategy constraint of '<em>PAnnotated EClass</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEClass_SingleTableForSingleStrategy(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
-		if (pAnnotatedEClass.getTable() == null)
-			return true;
-		if (pAnnotatedEClass.getEntity() == null) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "SingleTableForSingleStrategy", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
-			}
-			return false;
-		}
-		if (InheritanceType.SINGLE_TABLE_LITERAL.equals(pAnnotatedEClass.getInheritanceStrategy())
-				&& pAnnotatedEClass.getPaSuperEntity() != null) {
+	public boolean validatePAnnotatedEClass_SingleTableForSingleStrategy(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -625,25 +534,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- begin-user-doc -->
 	 * EJB3-SPEC 9.1.30
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEClass_ProperPKJoin(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map context) {
-		if (pAnnotatedEClass.getPrimaryKeyJoinColumns() == null || pAnnotatedEClass.getPrimaryKeyJoinColumns().size() == 0)
-			return true;
-		if (pAnnotatedEClass.getEntity() == null) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperPKJoin", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
-			}
-			return false;
-		}
-		// TODO check usage with secondary table
-		if (!InheritanceType.JOINED_LITERAL.equals(pAnnotatedEClass.getInheritanceStrategy())) {
+	public boolean validatePAnnotatedEClass_ProperPKJoin(PAnnotatedEClass pAnnotatedEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -663,11 +561,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEStructuralFeature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEStructuralFeature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEStructuralFeature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEStructuralFeature_EClassCommutes(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEStructuralFeature_TransientNotAnnotated(pAnnotatedEStructuralFeature, diagnostics, context);
@@ -678,14 +579,15 @@ public class PamodelValidator extends EObjectValidator {
 	 * Validates the EClassCommutes constraint of '<em>PAnnotated EStructural Feature</em>'.
 	 * Verifies that the containing (if specified) PAnnotatedEClass corresponds
 	 * to the containing EClass of the referenced EStructuralFeature (if specified).
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEStructuralFeature_EClassCommutes(PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature, DiagnosticChain diagnostics, Map context) {
-		PAnnotatedEClass ru = pAnnotatedEStructuralFeature.getPaEClass();
-		EClass rd = ru != null ? ru.getAnnotatedEClass() : null;
-		EStructuralFeature dl = pAnnotatedEStructuralFeature.getAnnotatedEStructuralFeature();
-		EClass dr = dl != null ? dl.getEContainingClass() : null;
-		if (dr != rd) {
+	public boolean validatePAnnotatedEStructuralFeature_EClassCommutes(PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO override the constraint, if desired
+		// -> uncomment the scaffolding
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -697,7 +599,7 @@ public class PamodelValidator extends EObjectValidator {
 			}
 			return false;
 		}
-		return true;
+		return validatePAnnotatedETypedElement_EClassCommutes(pAnnotatedEStructuralFeature, diagnostics, context);
 	}
 
 	/**
@@ -705,28 +607,15 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- begin-user-doc -->
 	 * EJB3-SPEC 2.1.1
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEStructuralFeature_TransientNotAnnotated(PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature, DiagnosticChain diagnostics, Map context) {
-		// issue a warning for eCore Transient non @Transient?
-		Transient transientAnnotation = pAnnotatedEStructuralFeature.getTransient();
-		if (pAnnotatedEStructuralFeature.getAnnotatedEStructuralFeature() != null
-				&& pAnnotatedEStructuralFeature.getAnnotatedEStructuralFeature().isTransient() 
-					&& transientAnnotation == null) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.WARNING,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "TransientNotAnnotated", getObjectLabel(pAnnotatedEStructuralFeature, context) }),
-						 new Object[] { pAnnotatedEStructuralFeature }));
-			}
-			return false;
-		}
-		if (transientAnnotation == null)
-			return true;
-		if (pAnnotatedEStructuralFeature.getAnnotations().size() > 1 ) {
+	public boolean validatePAnnotatedEStructuralFeature_TransientNotAnnotated(PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO override the constraint, if desired
+		// -> uncomment the scaffolding
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -738,7 +627,7 @@ public class PamodelValidator extends EObjectValidator {
 			}
 			return false;
 		}
-		return true;
+		return validatePAnnotatedETypedElement_TransientNotAnnotated(pAnnotatedEStructuralFeature, diagnostics, context);
 	}
 
 	/**
@@ -746,11 +635,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEAttribute(PAnnotatedEAttribute pAnnotatedEAttribute, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEAttribute(PAnnotatedEAttribute pAnnotatedEAttribute, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEAttribute, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEAttribute, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEAttribute, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEStructuralFeature_EClassCommutes(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEStructuralFeature_TransientNotAnnotated(pAnnotatedEAttribute, diagnostics, context);
@@ -767,7 +659,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEAttribute_NotAnnotatedAsBasic(PAnnotatedEAttribute pAnnotatedEAttribute, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEAttribute_NotAnnotatedAsBasic(PAnnotatedEAttribute pAnnotatedEAttribute, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -792,10 +684,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- begin-user-doc -->
 	 * EJB3-SPEC 9.1.9
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validatePAnnotatedEAttribute_GeneratedOnId(PAnnotatedEAttribute pAnnotatedEAttribute, DiagnosticChain diagnostics, Map context) {
-		if (pAnnotatedEAttribute.getGeneratedValue() != null && pAnnotatedEAttribute.getId() == null) {
+	public boolean validatePAnnotatedEAttribute_GeneratedOnId(PAnnotatedEAttribute pAnnotatedEAttribute, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
@@ -816,7 +712,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEAttribute_DefinedGenerator(PAnnotatedEAttribute pAnnotatedEAttribute, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEAttribute_DefinedGenerator(PAnnotatedEAttribute pAnnotatedEAttribute, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -842,7 +738,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEAttribute_IdOnEntityOrMappedSuper(PAnnotatedEAttribute pAnnotatedEAttribute, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEAttribute_IdOnEntityOrMappedSuper(PAnnotatedEAttribute pAnnotatedEAttribute, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -867,11 +763,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEDataType(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEDataType(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedETypedElement_EClassCommutes(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedETypedElement_TransientNotAnnotated(pAnnotatedEDataType, diagnostics, context);
@@ -888,7 +787,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEDataType_NotAnnotatedAsBasic(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEDataType_NotAnnotatedAsBasic(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -914,7 +813,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEDataType_GeneratedOnId(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEDataType_GeneratedOnId(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -940,7 +839,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEDataType_DefinedGenerator(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEDataType_DefinedGenerator(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -966,7 +865,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEDataType_IdOnEntityOrMappedSuper(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEDataType_IdOnEntityOrMappedSuper(PAnnotatedEDataType pAnnotatedEDataType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -991,11 +890,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEReference(PAnnotatedEReference pAnnotatedEReference, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEReference(PAnnotatedEReference pAnnotatedEReference, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEStructuralFeature_EClassCommutes(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEStructuralFeature_TransientNotAnnotated(pAnnotatedEReference, diagnostics, context);
@@ -1011,7 +913,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEReference_NotAnnotatedAsEmbed(PAnnotatedEReference pAnnotatedEReference, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEReference_NotAnnotatedAsEmbed(PAnnotatedEReference pAnnotatedEReference, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -1037,7 +939,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEReference_AssociationAgreeWithReference(PAnnotatedEReference pAnnotatedEReference, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEReference_AssociationAgreeWithReference(PAnnotatedEReference pAnnotatedEReference, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -1063,7 +965,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedEReference_AssociationWellFormed(PAnnotatedEReference pAnnotatedEReference, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedEReference_AssociationWellFormed(PAnnotatedEReference pAnnotatedEReference, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -1088,11 +990,14 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedETypedElement(PAnnotatedETypedElement pAnnotatedETypedElement, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedETypedElement(PAnnotatedETypedElement pAnnotatedETypedElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedETypedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedETypedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedETypedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedETypedElement_EClassCommutes(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedETypedElement_TransientNotAnnotated(pAnnotatedETypedElement, diagnostics, context);
@@ -1105,7 +1010,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedETypedElement_EClassCommutes(PAnnotatedETypedElement pAnnotatedETypedElement, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedETypedElement_EClassCommutes(PAnnotatedETypedElement pAnnotatedETypedElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -1131,7 +1036,7 @@ public class PamodelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePAnnotatedETypedElement_TransientNotAnnotated(PAnnotatedETypedElement pAnnotatedETypedElement, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePAnnotatedETypedElement_TransientNotAnnotated(PAnnotatedETypedElement pAnnotatedETypedElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingSchemaGenerator.java,v 1.5 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PersistenceMappingSchemaGenerator.java,v 1.6 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +45,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Parses the pamodel and pannotation model to generate a xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class PersistenceMappingSchemaGenerator {
@@ -83,7 +82,7 @@ public class PersistenceMappingSchemaGenerator {
 	private EPackage[] annotationEPackages;
 
 	/** Mapping from ecore simple types to schema simple types */
-	private final Map schemaTypeNamesByAnnotationType = new HashMap();
+	private final Map<String, String> schemaTypeNamesByAnnotationType = new HashMap<String, String>();
 
 	/** Target name space */
 	private String nameSpace = "http://www.eclipse.org/emft/teneo";
@@ -119,9 +118,8 @@ public class PersistenceMappingSchemaGenerator {
 		// first determine which types have only one string field, these are handled
 		// slightly different because this makes the xml easier
 		for (int i = 0; i < annotationEPackages.length; i++) {
-			final List eclassifiers = new ArrayList(annotationEPackages[i].getEClassifiers());
-			for (Iterator it = eclassifiers.iterator(); it.hasNext();) {
-				final EClassifier eClassifier = (EClassifier) it.next();
+			final List<EClassifier> eclassifiers = new ArrayList<EClassifier>(annotationEPackages[i].getEClassifiers());
+			for (EClassifier eClassifier : eclassifiers) {
 				String schemaTypeName = eClassifier.getName();
 				if (eClassifier instanceof EClass) {
 					EClass eClass = (EClass)eClassifier;
@@ -143,7 +141,7 @@ public class PersistenceMappingSchemaGenerator {
 		}
 		
 		// process the annotations first to get the correct typing
-		final List annotationList = new ArrayList();
+		final List<Element> annotationList = new ArrayList<Element>();
 		for (int i = 0; i < annotationEPackages.length; i++) {
 			annotationList.addAll(processAnnotationEPackage(annotationEPackages[i]));
 		}
@@ -161,13 +159,12 @@ public class PersistenceMappingSchemaGenerator {
 	}
 
 	/** process annotation packages */
-	private List processAnnotationEPackage(EPackage epackage) {
-		final ArrayList elemList = new ArrayList();
-		final List eclassifiers = new ArrayList(epackage.getEClassifiers());
+	private List<Element> processAnnotationEPackage(EPackage epackage) {
+		final ArrayList<Element> elemList = new ArrayList<Element>();
+		final List<EClassifier> eclassifiers = new ArrayList<EClassifier>(epackage.getEClassifiers());
 		Collections.sort(eclassifiers, new ENamedElementComparator());
 
-		for (Iterator it = eclassifiers.iterator(); it.hasNext();) {
-			final EClassifier eClassifier = (EClassifier) it.next();
+		for (EClassifier eClassifier : eclassifiers) {
 			if (isIgnorable(eClassifier) || isUnsupported(eClassifier)) {
 				continue;
 			}
@@ -179,7 +176,7 @@ public class PersistenceMappingSchemaGenerator {
 					continue;
 				}
 
-				final List eStructuralFeatures = eClass.getEAllStructuralFeatures();
+				final List<EStructuralFeature> eStructuralFeatures = eClass.getEAllStructuralFeatures();
 				if (eStructuralFeatures.isEmpty()) {
 					continue;
 				}
@@ -221,9 +218,7 @@ public class PersistenceMappingSchemaGenerator {
 	/** If more than one mappable structuralfeature */
 	private boolean oneMappableFeature(EClass eclass) {
 		int cnt = 0;
-		for (Iterator it = eclass.getEStructuralFeatures().iterator(); it.hasNext();) {
-			final EStructuralFeature ef = (EStructuralFeature)it.next();
-
+		for (EStructuralFeature ef : eclass.getEStructuralFeatures()) {
 			if (!isIgnorable(ef) && !isUnsupported(ef)) cnt++;
 		}
 		return cnt == 1;
@@ -235,9 +230,8 @@ public class PersistenceMappingSchemaGenerator {
 		final Element restrictionElement = new Element("xsd:restriction");
 		restrictionElement.addAttribute(new Attribute("base", "xsd:token"));
 		simpleTypeElement.addElement(restrictionElement);
-		final List literals = eEnum.getELiterals();
-		for (Iterator it2 = literals.iterator(); it2.hasNext();) {
-			final EEnumLiteral literal = (EEnumLiteral) it2.next();
+		final List<EEnumLiteral> literals = eEnum.getELiterals();
+		for (EEnumLiteral literal : literals) {
 			final Element enumerationElement = new Element("xsd:enumeration");
 			restrictionElement.addElement(enumerationElement);
 			enumerationElement.addAttribute(new Attribute("value", literal.getLiteral()));
@@ -318,7 +312,7 @@ public class PersistenceMappingSchemaGenerator {
 		final Element propertyElement = new Element("xsd:complexType").addAttribute("name", "Property");
 		final Element choiceElement = propertyElement.addElement("xsd:choice");
 		addZeroUnbounded(choiceElement);
-		final List features = new ArrayList(getPAnnotatedEAttribute().getEAllStructuralFeatures());
+		final List<EStructuralFeature> features = new ArrayList<EStructuralFeature>(getPAnnotatedEAttribute().getEAllStructuralFeatures());
 		features.removeAll(getPAnnotatedEReference().getEAllStructuralFeatures());
 		features.addAll(getPAnnotatedEReference().getEAllStructuralFeatures());
 
@@ -329,11 +323,10 @@ public class PersistenceMappingSchemaGenerator {
 	}
 
 	/** Walk through a pamodel type and add references to each type to the passed element */
-	private void processStructuralFeatures(Element mainElement, List eStructuralFeatures) {
-		final List eFeatures = new ArrayList(eStructuralFeatures);
+	private void processStructuralFeatures(Element mainElement, List<EStructuralFeature> eStructuralFeatures) {
+		final List<EStructuralFeature> eFeatures = new ArrayList<EStructuralFeature>(eStructuralFeatures);
 		Collections.sort(eFeatures, new ENamedElementComparator());
-		for (Iterator it = eFeatures.iterator(); it.hasNext();) {
-			final EStructuralFeature ef = (EStructuralFeature) it.next();
+		for (EStructuralFeature ef : eFeatures) {
 			processStructuralFeature(mainElement, ef);
 		}
 	}
@@ -532,11 +525,9 @@ public class PersistenceMappingSchemaGenerator {
 	}
 
 	/** EFeature comparator */
-	private class ENamedElementComparator implements Comparator {
+	private class ENamedElementComparator implements Comparator<ENamedElement> {
 		/** Compare features */
-		public int compare(Object o1, Object o2) {
-			final ENamedElement e1 = (ENamedElement) o1;
-			final ENamedElement e2 = (ENamedElement) o2;
+		public int compare(ENamedElement e1, ENamedElement e2) {
 			return e1.getName().compareTo(e2.getName());
 		}
 	}

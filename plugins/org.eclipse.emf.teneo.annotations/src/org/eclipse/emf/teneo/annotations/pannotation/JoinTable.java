@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoinTable.java,v 1.4 2007/02/01 12:35:01 mtaal Exp $
+ * $Id: JoinTable.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -123,7 +123,7 @@ public interface JoinTable extends PAnnotation {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.JoinColumn" containment="true"
 	 * @generated
 	 */
-	EList getJoinColumns();
+	EList<JoinColumn> getJoinColumns();
 
 	/**
 	 * Returns the value of the '<em><b>Inverse Join Columns</b></em>' containment reference list.
@@ -139,7 +139,7 @@ public interface JoinTable extends PAnnotation {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.JoinColumn" containment="true"
 	 * @generated
 	 */
-	EList getInverseJoinColumns();
+	EList<JoinColumn> getInverseJoinColumns();
 
 	/**
 	 * Returns the value of the '<em><b>Unique Constraints</b></em>' containment reference list.
@@ -155,6 +155,6 @@ public interface JoinTable extends PAnnotation {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint" containment="true"
 	 * @generated
 	 */
-	EList getUniqueConstraints();
+	EList<UniqueConstraint> getUniqueConstraints();
 
 } // JoinTable

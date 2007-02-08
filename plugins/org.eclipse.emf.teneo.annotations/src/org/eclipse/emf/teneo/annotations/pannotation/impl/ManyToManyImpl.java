@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToManyImpl.java,v 1.5 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: ManyToManyImpl.java,v 1.6 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -85,7 +85,7 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList cascade = null;
+	protected EList<CascadeType> cascade = null;
 
 	/**
 	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
@@ -161,6 +161,7 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.MANY_TO_MANY;
 	}
@@ -250,9 +251,9 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getCascade() {
+	public EList<CascadeType> getCascade() {
 		if (cascade == null) {
-			cascade = new EDataTypeUniqueEList(CascadeType.class, this, PannotationPackage.MANY_TO_MANY__CASCADE);
+			cascade = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this, PannotationPackage.MANY_TO_MANY__CASCADE);
 		}
 		return cascade;
 	}
@@ -304,6 +305,7 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.MANY_TO_MANY__EMODEL_ELEMENT:
@@ -328,6 +330,8 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.MANY_TO_MANY__EMODEL_ELEMENT:
@@ -338,7 +342,7 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 				return;
 			case PannotationPackage.MANY_TO_MANY__CASCADE:
 				getCascade().clear();
-				getCascade().addAll((Collection)newValue);
+				getCascade().addAll((Collection<? extends CascadeType>)newValue);
 				return;
 			case PannotationPackage.MANY_TO_MANY__FETCH:
 				setFetch((FetchType)newValue);
@@ -358,6 +362,7 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.MANY_TO_MANY__EMODEL_ELEMENT:
@@ -387,6 +392,7 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.MANY_TO_MANY__EMODEL_ELEMENT:
@@ -410,6 +416,7 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

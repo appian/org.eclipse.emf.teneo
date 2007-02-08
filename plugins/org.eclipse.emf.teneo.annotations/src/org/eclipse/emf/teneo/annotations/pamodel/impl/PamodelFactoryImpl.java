@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelFactoryImpl.java,v 1.17 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PamodelFactoryImpl.java,v 1.18 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.annotations.pamodel.*;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -68,6 +69,7 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case PamodelPackage.PANNOTATED_MODEL: return createPAnnotatedModel();
@@ -156,6 +158,7 @@ public class PamodelFactoryImpl extends EFactoryImpl implements PamodelFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static PamodelPackage getPackage() {
 		return PamodelPackage.eINSTANCE;
 	}

@@ -11,56 +11,54 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ArrayValueNode.java,v 1.6 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: ArrayValueNode.java,v 1.7 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 
 /**
  * An array node contains a list of child values.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class ArrayValueNode extends NamedParserNode{
+class ArrayValueNode extends NamedParserNode {
 	/** Log it */
 	private final static Log log = LogFactory.getLog(ArrayValueNode.class);
 
 	/** The value */
-	private List children = new ArrayList();
+	private List<Object> children = new ArrayList<Object>();
 
 	/** Returns the list */
-	List getChildren() {
+	List<Object> getChildren() {
 		return children;
 	}
-	
+
 	/** Translate into a list of eobjects */
-	Object convert(EClassResolver ecr) {
+	List<Object> convert(EClassResolver ecr) {
 		log.debug("Converting array value node");
 
-		final ArrayList result = new ArrayList();
-		for (Iterator it = children.iterator(); it.hasNext();) {
-			final Object ob = it.next();
+		final ArrayList<Object> result = new ArrayList<Object>();
+		for (Object ob : children) {
 			if (ob instanceof String) {
 				result.add(ob);
 			} else if (ob instanceof ComplexNode) {
-				final ComplexNode cn = (ComplexNode)ob;
+				final ComplexNode cn = (ComplexNode) ob;
 				result.add(cn.convert(ecr));
 			} else if (ob instanceof ReferenceValueNode) {
-				final ReferenceValueNode rvn = (ReferenceValueNode)ob;
+				final ReferenceValueNode rvn = (ReferenceValueNode) ob;
 				result.add(rvn.convert(ecr));
 			} else if (ob instanceof ArrayValueNode) {
-				final ArrayValueNode avn = (ArrayValueNode)ob;
-				result.addAll((List)avn.convert(ecr));
+				final ArrayValueNode avn = (ArrayValueNode) ob;
+				result.addAll((List<Object>) avn.convert(ecr));
 			} else {
-				throw new AnnotationParserException("Type " + ob.getClass().getName() + " not supported here");
+				throw new AnnotationParserException("Type "
+						+ ob.getClass().getName() + " not supported here");
 			}
 		}
 		return result;

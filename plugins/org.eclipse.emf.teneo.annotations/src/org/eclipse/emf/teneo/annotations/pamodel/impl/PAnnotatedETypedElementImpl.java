@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedETypedElementImpl.java,v 1.3 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PAnnotatedETypedElementImpl.java,v 1.4 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -61,7 +61,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList attributeOverrides = null;
+	protected EList<AttributeOverride> attributeOverrides = null;
 
 	/**
 	 * The cached value of the '{@link #getJoinTable() <em>Join Table</em>}' containment reference.
@@ -101,7 +101,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList tableGenerators = null;
+	protected EList<TableGenerator> tableGenerators = null;
 
 	/**
 	 * The cached value of the '{@link #getJoinColumns() <em>Join Columns</em>}' containment reference list.
@@ -111,7 +111,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList joinColumns = null;
+	protected EList<JoinColumn> joinColumns = null;
 
 	/**
 	 * The cached value of the '{@link #getColumn() <em>Column</em>}' containment reference.
@@ -137,6 +137,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PamodelPackage.Literals.PANNOTATED_ETYPED_ELEMENT;
 	}
@@ -146,9 +147,9 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAttributeOverrides() {
+	public EList<AttributeOverride> getAttributeOverrides() {
 		if (attributeOverrides == null) {
-			attributeOverrides = new EObjectContainmentEList(AttributeOverride.class, this, PamodelPackage.PANNOTATED_ETYPED_ELEMENT__ATTRIBUTE_OVERRIDES);
+			attributeOverrides = new EObjectContainmentEList<AttributeOverride>(AttributeOverride.class, this, PamodelPackage.PANNOTATED_ETYPED_ELEMENT__ATTRIBUTE_OVERRIDES);
 		}
 		return attributeOverrides;
 	}
@@ -287,9 +288,9 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTableGenerators() {
+	public EList<TableGenerator> getTableGenerators() {
 		if (tableGenerators == null) {
-			tableGenerators = new EObjectContainmentEList(TableGenerator.class, this, PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS);
+			tableGenerators = new EObjectContainmentEList<TableGenerator>(TableGenerator.class, this, PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS);
 		}
 		return tableGenerators;
 	}
@@ -299,9 +300,9 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getJoinColumns() {
+	public EList<JoinColumn> getJoinColumns() {
 		if (joinColumns == null) {
-			joinColumns = new EObjectContainmentEList(JoinColumn.class, this, PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS);
+			joinColumns = new EObjectContainmentEList<JoinColumn>(JoinColumn.class, this, PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS);
 		}
 		return joinColumns;
 	}
@@ -354,10 +355,11 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__ATTRIBUTE_OVERRIDES:
-				return ((InternalEList)getAttributeOverrides()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getAttributeOverrides()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_TABLE:
 				return basicSetJoinTable(null, msgs);
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__ONE_TO_MANY:
@@ -365,9 +367,9 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR:
 				return basicSetSequenceGenerator(null, msgs);
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS:
-				return ((InternalEList)getTableGenerators()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getTableGenerators()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS:
-				return ((InternalEList)getJoinColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getJoinColumns()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__COLUMN:
 				return basicSetColumn(null, msgs);
 		}
@@ -379,6 +381,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__ATTRIBUTE_OVERRIDES:
@@ -404,11 +407,13 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__ATTRIBUTE_OVERRIDES:
 				getAttributeOverrides().clear();
-				getAttributeOverrides().addAll((Collection)newValue);
+				getAttributeOverrides().addAll((Collection<? extends AttributeOverride>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_TABLE:
 				setJoinTable((JoinTable)newValue);
@@ -421,11 +426,11 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 				return;
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS:
 				getTableGenerators().clear();
-				getTableGenerators().addAll((Collection)newValue);
+				getTableGenerators().addAll((Collection<? extends TableGenerator>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS:
 				getJoinColumns().clear();
-				getJoinColumns().addAll((Collection)newValue);
+				getJoinColumns().addAll((Collection<? extends JoinColumn>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__COLUMN:
 				setColumn((Column)newValue);
@@ -439,6 +444,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__ATTRIBUTE_OVERRIDES:
@@ -471,6 +477,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT__ATTRIBUTE_OVERRIDES:

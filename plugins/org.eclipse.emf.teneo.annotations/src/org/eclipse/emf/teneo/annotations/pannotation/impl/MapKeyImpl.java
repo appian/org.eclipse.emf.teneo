@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MapKeyImpl.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: MapKeyImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -81,6 +81,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.MAP_KEY;
 	}
@@ -149,6 +150,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.MAP_KEY__EMODEL_ELEMENT:
@@ -165,6 +167,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.MAP_KEY__EMODEL_ELEMENT:
@@ -182,6 +185,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.MAP_KEY__EMODEL_ELEMENT:
@@ -199,6 +203,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.MAP_KEY__EMODEL_ELEMENT:
@@ -214,6 +219,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

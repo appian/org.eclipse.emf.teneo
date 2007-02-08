@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeOverrideImpl.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: AttributeOverrideImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -94,6 +94,7 @@ public class AttributeOverrideImpl extends EObjectImpl implements AttributeOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.ATTRIBUTE_OVERRIDE;
 	}
@@ -205,6 +206,7 @@ public class AttributeOverrideImpl extends EObjectImpl implements AttributeOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PannotationPackage.ATTRIBUTE_OVERRIDE__COLUMN:
@@ -218,6 +220,7 @@ public class AttributeOverrideImpl extends EObjectImpl implements AttributeOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.ATTRIBUTE_OVERRIDE__EMODEL_ELEMENT:
@@ -236,6 +239,7 @@ public class AttributeOverrideImpl extends EObjectImpl implements AttributeOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.ATTRIBUTE_OVERRIDE__EMODEL_ELEMENT:
@@ -256,6 +260,7 @@ public class AttributeOverrideImpl extends EObjectImpl implements AttributeOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.ATTRIBUTE_OVERRIDE__EMODEL_ELEMENT:
@@ -276,6 +281,7 @@ public class AttributeOverrideImpl extends EObjectImpl implements AttributeOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.ATTRIBUTE_OVERRIDE__EMODEL_ELEMENT:
@@ -293,6 +299,7 @@ public class AttributeOverrideImpl extends EObjectImpl implements AttributeOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

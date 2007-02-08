@@ -11,12 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: NamedParserNode.java,v 1.3 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: NamedParserNode.java,v 1.4 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
-
-
 
 /**
  * Main class of the nodes which are the result of the annotation parser.
@@ -24,7 +22,7 @@ package org.eclipse.emf.teneo.annotations.parser;
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 abstract class NamedParserNode {
-	
+
 	/** The name parsed */
 	private String name = "value";
 
@@ -36,12 +34,13 @@ abstract class NamedParserNode {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	/** Translate to pamodel/pannotation */
 	abstract Object convert(EClassResolver ecr);
 }

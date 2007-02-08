@@ -2,15 +2,18 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedETypedElement.java,v 1.4 2007/02/01 12:35:00 mtaal Exp $
+ * $Id: PAnnotatedETypedElement.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,7 +60,7 @@ public interface PAnnotatedETypedElement extends PAnnotatedEModelElement {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride" containment="true"
 	 * @generated
 	 */
-	EList getAttributeOverrides();
+	EList<AttributeOverride> getAttributeOverrides();
 
 	/**
 	 * Returns the value of the '<em><b>Join Table</b></em>' containment reference.
@@ -151,7 +154,7 @@ public interface PAnnotatedETypedElement extends PAnnotatedEModelElement {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.TableGenerator" containment="true"
 	 * @generated
 	 */
-	EList getTableGenerators();
+	EList<TableGenerator> getTableGenerators();
 
 	/**
 	 * Returns the value of the '<em><b>Join Columns</b></em>' containment reference list.
@@ -167,7 +170,7 @@ public interface PAnnotatedETypedElement extends PAnnotatedEModelElement {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.JoinColumn" containment="true"
 	 * @generated
 	 */
-	EList getJoinColumns();
+	EList<JoinColumn> getJoinColumns();
 
 	/**
 	 * Returns the value of the '<em><b>Column</b></em>' containment reference.

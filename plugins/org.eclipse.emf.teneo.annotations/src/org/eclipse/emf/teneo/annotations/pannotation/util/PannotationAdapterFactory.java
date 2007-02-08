@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationAdapterFactory.java,v 1.19 2007/02/01 12:35:03 mtaal Exp $
+ * $Id: PannotationAdapterFactory.java,v 1.20 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -91,6 +91,7 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -107,114 +108,150 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PannotationSwitch modelSwitch =
-		new PannotationSwitch() {
-			public Object casePAnnotation(PAnnotation object) {
+	protected PannotationSwitch<Adapter> modelSwitch =
+		new PannotationSwitch<Adapter>() {
+			@Override
+			public Adapter casePAnnotation(PAnnotation object) {
 				return createPAnnotationAdapter();
 			}
-			public Object caseAttributeOverride(AttributeOverride object) {
+			@Override
+			public Adapter caseAttributeOverride(AttributeOverride object) {
 				return createAttributeOverrideAdapter();
 			}
-			public Object caseAssociationOverride(AssociationOverride object) {
+			@Override
+			public Adapter caseAssociationOverride(AssociationOverride object) {
 				return createAssociationOverrideAdapter();
 			}
-			public Object caseBasic(Basic object) {
+			@Override
+			public Adapter caseBasic(Basic object) {
 				return createBasicAdapter();
 			}
-			public Object caseColumn(Column object) {
+			@Override
+			public Adapter caseColumn(Column object) {
 				return createColumnAdapter();
 			}
-			public Object caseDiscriminatorColumn(DiscriminatorColumn object) {
+			@Override
+			public Adapter caseDiscriminatorColumn(DiscriminatorColumn object) {
 				return createDiscriminatorColumnAdapter();
 			}
-			public Object caseDiscriminatorValue(DiscriminatorValue object) {
+			@Override
+			public Adapter caseDiscriminatorValue(DiscriminatorValue object) {
 				return createDiscriminatorValueAdapter();
 			}
-			public Object caseEmbeddable(Embeddable object) {
+			@Override
+			public Adapter caseEmbeddable(Embeddable object) {
 				return createEmbeddableAdapter();
 			}
-			public Object caseEmbedded(Embedded object) {
+			@Override
+			public Adapter caseEmbedded(Embedded object) {
 				return createEmbeddedAdapter();
 			}
-			public Object caseEmbeddedId(EmbeddedId object) {
+			@Override
+			public Adapter caseEmbeddedId(EmbeddedId object) {
 				return createEmbeddedIdAdapter();
 			}
-			public Object caseEntity(Entity object) {
+			@Override
+			public Adapter caseEntity(Entity object) {
 				return createEntityAdapter();
 			}
-			public Object caseEnumerated(Enumerated object) {
+			@Override
+			public Adapter caseEnumerated(Enumerated object) {
 				return createEnumeratedAdapter();
 			}
-			public Object caseGeneratedValue(GeneratedValue object) {
+			@Override
+			public Adapter caseGeneratedValue(GeneratedValue object) {
 				return createGeneratedValueAdapter();
 			}
-			public Object caseId(Id object) {
+			@Override
+			public Adapter caseId(Id object) {
 				return createIdAdapter();
 			}
-			public Object caseIdClass(IdClass object) {
+			@Override
+			public Adapter caseIdClass(IdClass object) {
 				return createIdClassAdapter();
 			}
-			public Object caseInheritance(Inheritance object) {
+			@Override
+			public Adapter caseInheritance(Inheritance object) {
 				return createInheritanceAdapter();
 			}
-			public Object caseJoinColumn(JoinColumn object) {
+			@Override
+			public Adapter caseJoinColumn(JoinColumn object) {
 				return createJoinColumnAdapter();
 			}
-			public Object caseJoinTable(JoinTable object) {
+			@Override
+			public Adapter caseJoinTable(JoinTable object) {
 				return createJoinTableAdapter();
 			}
-			public Object caseLob(Lob object) {
+			@Override
+			public Adapter caseLob(Lob object) {
 				return createLobAdapter();
 			}
-			public Object caseManyToMany(ManyToMany object) {
+			@Override
+			public Adapter caseManyToMany(ManyToMany object) {
 				return createManyToManyAdapter();
 			}
-			public Object caseManyToOne(ManyToOne object) {
+			@Override
+			public Adapter caseManyToOne(ManyToOne object) {
 				return createManyToOneAdapter();
 			}
-			public Object caseMapKey(MapKey object) {
+			@Override
+			public Adapter caseMapKey(MapKey object) {
 				return createMapKeyAdapter();
 			}
-			public Object caseMappedSuperclass(MappedSuperclass object) {
+			@Override
+			public Adapter caseMappedSuperclass(MappedSuperclass object) {
 				return createMappedSuperclassAdapter();
 			}
-			public Object caseOneToMany(OneToMany object) {
+			@Override
+			public Adapter caseOneToMany(OneToMany object) {
 				return createOneToManyAdapter();
 			}
-			public Object caseOneToOne(OneToOne object) {
+			@Override
+			public Adapter caseOneToOne(OneToOne object) {
 				return createOneToOneAdapter();
 			}
-			public Object caseOrderBy(OrderBy object) {
+			@Override
+			public Adapter caseOrderBy(OrderBy object) {
 				return createOrderByAdapter();
 			}
-			public Object casePrimaryKeyJoinColumn(PrimaryKeyJoinColumn object) {
+			@Override
+			public Adapter casePrimaryKeyJoinColumn(PrimaryKeyJoinColumn object) {
 				return createPrimaryKeyJoinColumnAdapter();
 			}
-			public Object caseSecondaryTable(SecondaryTable object) {
+			@Override
+			public Adapter caseSecondaryTable(SecondaryTable object) {
 				return createSecondaryTableAdapter();
 			}
-			public Object caseSequenceGenerator(SequenceGenerator object) {
+			@Override
+			public Adapter caseSequenceGenerator(SequenceGenerator object) {
 				return createSequenceGeneratorAdapter();
 			}
-			public Object caseTable(Table object) {
+			@Override
+			public Adapter caseTable(Table object) {
 				return createTableAdapter();
 			}
-			public Object caseTableGenerator(TableGenerator object) {
+			@Override
+			public Adapter caseTableGenerator(TableGenerator object) {
 				return createTableGeneratorAdapter();
 			}
-			public Object caseTemporal(Temporal object) {
+			@Override
+			public Adapter caseTemporal(Temporal object) {
 				return createTemporalAdapter();
 			}
-			public Object caseTransient(Transient object) {
+			@Override
+			public Adapter caseTransient(Transient object) {
 				return createTransientAdapter();
 			}
-			public Object caseUniqueConstraint(UniqueConstraint object) {
+			@Override
+			public Adapter caseUniqueConstraint(UniqueConstraint object) {
 				return createUniqueConstraintAdapter();
 			}
-			public Object caseVersion(Version object) {
+			@Override
+			public Adapter caseVersion(Version object) {
 				return createVersionAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -227,8 +264,9 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

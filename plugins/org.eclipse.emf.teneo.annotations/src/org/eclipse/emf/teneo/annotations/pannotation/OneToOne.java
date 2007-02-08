@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToOne.java,v 1.4 2007/02/01 12:35:01 mtaal Exp $
+ * $Id: OneToOne.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -130,7 +130,7 @@ public interface OneToOne extends PAnnotation {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.CascadeType"
 	 * @generated
 	 */
-	EList getCascade();
+	EList<CascadeType> getCascade();
 
 	/**
 	 * Returns the value of the '<em><b>Mapped By</b></em>' attribute.

@@ -2,11 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackageImpl.java,v 1.12 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PamodelPackageImpl.java,v 1.13 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
-
-import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -941,6 +939,10 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		// Obtain other dependent packages
 		PannotationPackage thePannotationPackage = (PannotationPackage)EPackage.Registry.INSTANCE.getEPackage(PannotationPackage.eNS_URI);
 
+		// Create type parameters
+
+		// Set bounds for type parameters
+
 		// Add supertypes to classes
 		pAnnotatedEPackageEClass.getESuperTypes().add(this.getPAnnotatedEModelElement());
 		pAnnotatedEClassEClass.getESuperTypes().add(this.getPAnnotatedEModelElement());
@@ -1203,8 +1205,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 	public EReference pAnnotationReference(EClass paElementEClass, EClass pAnnotationEClass) {
 		if (PamodelPackage.eINSTANCE.getPAnnotatedEModelElement().isSuperTypeOf(paElementEClass) &&
 			PannotationPackage.eINSTANCE.getPAnnotation().isSuperTypeOf(pAnnotationEClass))
-			for (Iterator i = paElementEClass.getEAllReferences().iterator(); i.hasNext(); ) {
-				EReference r = (EReference) i.next();
+			for (EReference r : paElementEClass.getEAllReferences()) {
 				if (r.getEReferenceType() == pAnnotationEClass)
 					return r;
 			}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GeneratedValueImpl.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: GeneratedValueImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -103,6 +103,7 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.GENERATED_VALUE;
 	}
@@ -192,6 +193,7 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.GENERATED_VALUE__EMODEL_ELEMENT:
@@ -210,6 +212,7 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.GENERATED_VALUE__EMODEL_ELEMENT:
@@ -230,6 +233,7 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.GENERATED_VALUE__EMODEL_ELEMENT:
@@ -250,6 +254,7 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.GENERATED_VALUE__EMODEL_ELEMENT:
@@ -267,6 +272,7 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

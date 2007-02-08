@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToMany.java,v 1.4 2007/02/01 12:35:00 mtaal Exp $
+ * $Id: ManyToMany.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -104,7 +104,7 @@ public interface ManyToMany extends PAnnotation {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.CascadeType"
 	 * @generated
 	 */
-	EList getCascade();
+	EList<CascadeType> getCascade();
 
 	/**
 	 * Returns the value of the '<em><b>Mapped By</b></em>' attribute.

@@ -11,11 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PrimitiveValueNode.java,v 1.5 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PrimitiveValueNode.java,v 1.6 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
-
 
 /**
  * Simple value node.
@@ -35,19 +34,20 @@ class PrimitiveValueNode extends NamedParserNode {
 	}
 
 	/**
-	 * @param value the value to set
+	 * @param value
+	 *            the value to set
 	 */
 	public void setValue(String value) {
 		// correct a small mistake in the tokenizer
-		if (value != null && value.length() > 1 && value.charAt(0) == '"' && 
-				value.charAt(value.length() - 1) == '"') {
+		if (value != null && value.length() > 1 && value.charAt(0) == '"'
+				&& value.charAt(value.length() - 1) == '"') {
 			this.value = value.substring(1, value.length() - 1);
 		} else {
 			this.value = value;
 		}
 	}
-		
-	/** Translate into an etype*/
+
+	/** Translate into an etype */
 	Object convert(EClassResolver ecr) {
 		return value;
 	}

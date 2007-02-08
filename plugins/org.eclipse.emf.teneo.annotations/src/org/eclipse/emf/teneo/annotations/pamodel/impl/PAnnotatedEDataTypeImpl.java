@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEDataTypeImpl.java,v 1.2 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PAnnotatedEDataTypeImpl.java,v 1.3 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -149,6 +149,7 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PamodelPackage.Literals.PANNOTATED_EDATA_TYPE;
 	}
@@ -538,6 +539,7 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__PA_EPACKAGE:
@@ -553,6 +555,7 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__BASIC:
@@ -580,6 +583,7 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID) {
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__PA_EPACKAGE:
@@ -593,6 +597,7 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__ANNOTATED_EDATA_TYPE:
@@ -623,6 +628,7 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__ANNOTATED_EDATA_TYPE:
@@ -661,6 +667,7 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__ANNOTATED_EDATA_TYPE:
@@ -699,6 +706,7 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__ANNOTATED_EDATA_TYPE:

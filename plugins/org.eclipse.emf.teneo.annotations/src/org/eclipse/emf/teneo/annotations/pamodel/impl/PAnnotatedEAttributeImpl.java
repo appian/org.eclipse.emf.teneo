@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEAttributeImpl.java,v 1.5 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PAnnotatedEAttributeImpl.java,v 1.6 2007/02/08 23:12:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -145,6 +145,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PamodelPackage.Literals.PANNOTATED_EATTRIBUTE;
 	}
@@ -496,6 +497,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__BASIC:
@@ -521,6 +523,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__ANNOTATED_EATTRIBUTE:
@@ -549,6 +552,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__ANNOTATED_EATTRIBUTE:
@@ -584,6 +588,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__ANNOTATED_EATTRIBUTE:
@@ -619,6 +624,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__ANNOTATED_EATTRIBUTE:

@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlElementToEStructuralFeatureMapper.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: XmlElementToEStructuralFeatureMapper.java,v 1.5 2007/02/08 23:12:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -36,7 +36,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * 
  */
 class XmlElementToEStructuralFeatureMapper {
-	private Map eStructuralFeatureNamesByXmlElementName = new HashMap();
+	private Map<String, String> eStructuralFeatureNamesByXmlElementName = new HashMap<String, String>();
 
 	private String xmlElementName;
 

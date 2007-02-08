@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReference.java,v 1.6 2007/02/01 12:35:00 mtaal Exp $
+ * $Id: PAnnotatedEReference.java,v 1.7 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
+import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotated EReference</b></em>'. <!--
@@ -261,6 +262,6 @@ public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn" containment="true"
 	 * @generated
 	 */
-	EList getPrimaryKeyJoinColumns();
+	EList<PrimaryKeyJoinColumn> getPrimaryKeyJoinColumns();
 
 } // PAnnotatedEReference

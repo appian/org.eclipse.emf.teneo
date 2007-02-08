@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PrimaryKeyJoinColumnImpl.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PrimaryKeyJoinColumnImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -123,6 +123,7 @@ public class PrimaryKeyJoinColumnImpl extends EObjectImpl implements PrimaryKeyJ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.PRIMARY_KEY_JOIN_COLUMN;
 	}
@@ -212,6 +213,7 @@ public class PrimaryKeyJoinColumnImpl extends EObjectImpl implements PrimaryKeyJ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__EMODEL_ELEMENT:
@@ -232,6 +234,7 @@ public class PrimaryKeyJoinColumnImpl extends EObjectImpl implements PrimaryKeyJ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__EMODEL_ELEMENT:
@@ -255,6 +258,7 @@ public class PrimaryKeyJoinColumnImpl extends EObjectImpl implements PrimaryKeyJ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__EMODEL_ELEMENT:
@@ -278,6 +282,7 @@ public class PrimaryKeyJoinColumnImpl extends EObjectImpl implements PrimaryKeyJ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN__EMODEL_ELEMENT:
@@ -318,6 +323,7 @@ public class PrimaryKeyJoinColumnImpl extends EObjectImpl implements PrimaryKeyJ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

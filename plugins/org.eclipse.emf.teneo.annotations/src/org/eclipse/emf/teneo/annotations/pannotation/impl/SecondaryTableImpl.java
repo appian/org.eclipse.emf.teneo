@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondaryTableImpl.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: SecondaryTableImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -127,7 +127,7 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList pkJoinColumns = null;
+	protected EList<PrimaryKeyJoinColumn> pkJoinColumns = null;
 
 	/**
 	 * The cached value of the '{@link #getUniqueConstraints() <em>Unique Constraints</em>}' containment reference list.
@@ -137,7 +137,7 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList uniqueConstraints = null;
+	protected EList<UniqueConstraint> uniqueConstraints = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,6 +153,7 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.SECONDARY_TABLE;
 	}
@@ -263,9 +264,9 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPkJoinColumns() {
+	public EList<PrimaryKeyJoinColumn> getPkJoinColumns() {
 		if (pkJoinColumns == null) {
-			pkJoinColumns = new EObjectContainmentEList(PrimaryKeyJoinColumn.class, this, PannotationPackage.SECONDARY_TABLE__PK_JOIN_COLUMNS);
+			pkJoinColumns = new EObjectContainmentEList<PrimaryKeyJoinColumn>(PrimaryKeyJoinColumn.class, this, PannotationPackage.SECONDARY_TABLE__PK_JOIN_COLUMNS);
 		}
 		return pkJoinColumns;
 	}
@@ -275,9 +276,9 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getUniqueConstraints() {
+	public EList<UniqueConstraint> getUniqueConstraints() {
 		if (uniqueConstraints == null) {
-			uniqueConstraints = new EObjectContainmentEList(UniqueConstraint.class, this, PannotationPackage.SECONDARY_TABLE__UNIQUE_CONSTRAINTS);
+			uniqueConstraints = new EObjectContainmentEList<UniqueConstraint>(UniqueConstraint.class, this, PannotationPackage.SECONDARY_TABLE__UNIQUE_CONSTRAINTS);
 		}
 		return uniqueConstraints;
 	}
@@ -287,12 +288,13 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PannotationPackage.SECONDARY_TABLE__PK_JOIN_COLUMNS:
-				return ((InternalEList)getPkJoinColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getPkJoinColumns()).basicRemove(otherEnd, msgs);
 			case PannotationPackage.SECONDARY_TABLE__UNIQUE_CONSTRAINTS:
-				return ((InternalEList)getUniqueConstraints()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getUniqueConstraints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -302,6 +304,7 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.SECONDARY_TABLE__EMODEL_ELEMENT:
@@ -326,6 +329,8 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.SECONDARY_TABLE__EMODEL_ELEMENT:
@@ -342,11 +347,11 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 				return;
 			case PannotationPackage.SECONDARY_TABLE__PK_JOIN_COLUMNS:
 				getPkJoinColumns().clear();
-				getPkJoinColumns().addAll((Collection)newValue);
+				getPkJoinColumns().addAll((Collection<? extends PrimaryKeyJoinColumn>)newValue);
 				return;
 			case PannotationPackage.SECONDARY_TABLE__UNIQUE_CONSTRAINTS:
 				getUniqueConstraints().clear();
-				getUniqueConstraints().addAll((Collection)newValue);
+				getUniqueConstraints().addAll((Collection<? extends UniqueConstraint>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -357,6 +362,7 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.SECONDARY_TABLE__EMODEL_ELEMENT:
@@ -386,6 +392,7 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.SECONDARY_TABLE__EMODEL_ELEMENT:
@@ -409,6 +416,7 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

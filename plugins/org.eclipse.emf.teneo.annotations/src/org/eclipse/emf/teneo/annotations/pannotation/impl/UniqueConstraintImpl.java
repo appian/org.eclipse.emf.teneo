@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueConstraintImpl.java,v 1.4 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: UniqueConstraintImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -59,7 +59,7 @@ public class UniqueConstraintImpl extends EObjectImpl implements UniqueConstrain
 	 * @generated
 	 * @ordered
 	 */
-	protected EList columnNames = null;
+	protected EList<String> columnNames = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -75,6 +75,7 @@ public class UniqueConstraintImpl extends EObjectImpl implements UniqueConstrain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.UNIQUE_CONSTRAINT;
 	}
@@ -122,9 +123,9 @@ public class UniqueConstraintImpl extends EObjectImpl implements UniqueConstrain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getColumnNames() {
+	public EList<String> getColumnNames() {
 		if (columnNames == null) {
-			columnNames = new EDataTypeUniqueEList(String.class, this, PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES);
+			columnNames = new EDataTypeUniqueEList<String>(String.class, this, PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES);
 		}
 		return columnNames;
 	}
@@ -134,6 +135,7 @@ public class UniqueConstraintImpl extends EObjectImpl implements UniqueConstrain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.UNIQUE_CONSTRAINT__EMODEL_ELEMENT:
@@ -150,6 +152,8 @@ public class UniqueConstraintImpl extends EObjectImpl implements UniqueConstrain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.UNIQUE_CONSTRAINT__EMODEL_ELEMENT:
@@ -157,7 +161,7 @@ public class UniqueConstraintImpl extends EObjectImpl implements UniqueConstrain
 				return;
 			case PannotationPackage.UNIQUE_CONSTRAINT__COLUMN_NAMES:
 				getColumnNames().clear();
-				getColumnNames().addAll((Collection)newValue);
+				getColumnNames().addAll((Collection<? extends String>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -168,6 +172,7 @@ public class UniqueConstraintImpl extends EObjectImpl implements UniqueConstrain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.UNIQUE_CONSTRAINT__EMODEL_ELEMENT:
@@ -185,6 +190,7 @@ public class UniqueConstraintImpl extends EObjectImpl implements UniqueConstrain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.UNIQUE_CONSTRAINT__EMODEL_ELEMENT:
@@ -200,6 +206,7 @@ public class UniqueConstraintImpl extends EObjectImpl implements UniqueConstrain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

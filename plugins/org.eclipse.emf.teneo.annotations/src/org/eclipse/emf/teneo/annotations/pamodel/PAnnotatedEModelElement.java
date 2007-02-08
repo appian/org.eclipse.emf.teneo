@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEModelElement.java,v 1.4 2007/02/01 12:35:00 mtaal Exp $
+ * $Id: PAnnotatedEModelElement.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 
 /**
@@ -95,6 +96,6 @@ public interface PAnnotatedEModelElement extends EObject {
 	/**
 	 * @return Returns the list of annotations defined on this annotated element
 	 */
-	List getAnnotations();
+	List<PAnnotation> getAnnotations();
 
 } // PAnnotatedEModelElement

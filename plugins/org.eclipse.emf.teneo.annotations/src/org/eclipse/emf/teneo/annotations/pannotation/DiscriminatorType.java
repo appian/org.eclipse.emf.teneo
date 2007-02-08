@@ -2,15 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorType.java,v 1.5 2007/02/01 12:35:00 mtaal Exp $
+ * $Id: DiscriminatorType.java,v 1.6 2007/02/08 23:12:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
+
+import static org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType.CHAR;
+import static org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType.INTEGER;
+import static org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType.STRING;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Discriminator Type</b></em>',
@@ -19,7 +23,32 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class DiscriminatorType extends AbstractEnumerator {
+public enum DiscriminatorType implements Enumerator
+{
+	/**
+	 * The '<em><b>STRING</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #STRING
+	 * @generated
+	 * @ordered
+	 */
+	STRING_LITERAL(0, "STRING", "STRING"),
+	/**
+	 * The '<em><b>CHAR</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #CHAR
+	 * @generated
+	 * @ordered
+	 */
+	CHAR_LITERAL(1, "CHAR", "CHAR"),
+	/**
+	 * The '<em><b>INTEGER</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #INTEGER
+	 * @generated
+	 * @ordered
+	 */
+	INTEGER_LITERAL(2, "INTEGER", "INTEGER");
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -72,33 +101,6 @@ public final class DiscriminatorType extends AbstractEnumerator {
 	public static final int INTEGER = 2;
 
 	/**
-	 * The '<em><b>STRING</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #STRING
-	 * @generated
-	 * @ordered
-	 */
-	public static final DiscriminatorType STRING_LITERAL = new DiscriminatorType(STRING, "STRING", "STRING");
-
-	/**
-	 * The '<em><b>CHAR</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #CHAR
-	 * @generated
-	 * @ordered
-	 */
-	public static final DiscriminatorType CHAR_LITERAL = new DiscriminatorType(CHAR, "CHAR", "CHAR");
-
-	/**
-	 * The '<em><b>INTEGER</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #INTEGER
-	 * @generated
-	 * @ordered
-	 */
-	public static final DiscriminatorType INTEGER_LITERAL = new DiscriminatorType(INTEGER, "INTEGER", "INTEGER");
-
-	/**
 	 * An array of all the '<em><b>Discriminator Type</b></em>' enumerators.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -117,7 +119,7 @@ public final class DiscriminatorType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<DiscriminatorType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Discriminator Type</b></em>' literal with the specified literal value.
@@ -163,8 +165,29 @@ public final class DiscriminatorType extends AbstractEnumerator {
 			case CHAR: return CHAR_LITERAL;
 			case INTEGER: return INTEGER_LITERAL;
 		}
-		return null;	
+		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -173,7 +196,46 @@ public final class DiscriminatorType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private DiscriminatorType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} // DiscriminatorType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

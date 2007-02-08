@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelAdapterFactory.java,v 1.14 2007/02/01 12:35:02 mtaal Exp $
+ * $Id: PamodelAdapterFactory.java,v 1.15 2007/02/08 23:12:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.annotations.pamodel.*;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -65,6 +66,7 @@ public class PamodelAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -81,36 +83,46 @@ public class PamodelAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PamodelSwitch modelSwitch =
-		new PamodelSwitch() {
-			public Object casePAnnotatedEModelElement(PAnnotatedEModelElement object) {
+	protected PamodelSwitch<Adapter> modelSwitch =
+		new PamodelSwitch<Adapter>() {
+			@Override
+			public Adapter casePAnnotatedEModelElement(PAnnotatedEModelElement object) {
 				return createPAnnotatedEModelElementAdapter();
 			}
-			public Object casePAnnotatedModel(PAnnotatedModel object) {
+			@Override
+			public Adapter casePAnnotatedModel(PAnnotatedModel object) {
 				return createPAnnotatedModelAdapter();
 			}
-			public Object casePAnnotatedEPackage(PAnnotatedEPackage object) {
+			@Override
+			public Adapter casePAnnotatedEPackage(PAnnotatedEPackage object) {
 				return createPAnnotatedEPackageAdapter();
 			}
-			public Object casePAnnotatedEClass(PAnnotatedEClass object) {
+			@Override
+			public Adapter casePAnnotatedEClass(PAnnotatedEClass object) {
 				return createPAnnotatedEClassAdapter();
 			}
-			public Object casePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature object) {
+			@Override
+			public Adapter casePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature object) {
 				return createPAnnotatedEStructuralFeatureAdapter();
 			}
-			public Object casePAnnotatedEAttribute(PAnnotatedEAttribute object) {
+			@Override
+			public Adapter casePAnnotatedEAttribute(PAnnotatedEAttribute object) {
 				return createPAnnotatedEAttributeAdapter();
 			}
-			public Object casePAnnotatedEReference(PAnnotatedEReference object) {
+			@Override
+			public Adapter casePAnnotatedEReference(PAnnotatedEReference object) {
 				return createPAnnotatedEReferenceAdapter();
 			}
-			public Object casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
+			@Override
+			public Adapter casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
 				return createPAnnotatedETypedElementAdapter();
 			}
-			public Object casePAnnotatedEDataType(PAnnotatedEDataType object) {
+			@Override
+			public Adapter casePAnnotatedEDataType(PAnnotatedEDataType object) {
 				return createPAnnotatedEDataTypeAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -123,8 +135,9 @@ public class PamodelAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 
