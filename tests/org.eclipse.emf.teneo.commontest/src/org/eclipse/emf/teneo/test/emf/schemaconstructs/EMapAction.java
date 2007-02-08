@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAction.java,v 1.4 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: EMapAction.java,v 1.5 2007/02/08 23:11:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -22,7 +22,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
+import org.eclipse.emf.teneo.mapping.elist.PersistableEMap;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapFactory;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage;
@@ -35,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class EMapAction extends AbstractTestAction {
 	/**
@@ -74,12 +76,12 @@ public class EMapAction extends AbstractTestAction {
 				final Object obj = it.next();
 				if (obj instanceof Book) {
 					final Book bk = (Book)obj;
-					if (bk.getWriters() instanceof PersistableEList.DelegatingMap) {
+					if (bk.getWriters() instanceof PersistableDelegateList) {
 						// check lazy load
-						assertTrue(!((PersistableEList.DelegatingMap)bk.getWriters()).isLoaded());
+						//assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
 						// now load
 						assertTrue(bk.getWriters().size() == 2);
-						assertTrue(((PersistableEList.DelegatingMap)bk.getWriters()).isLoaded());
+						assertTrue(((PersistableDelegateList)bk.getWriters()).isLoaded());
 					} else {
 						fail("Type not supported " + bk.getWriters().getClass().getName());
 					}

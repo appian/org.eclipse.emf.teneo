@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: RelationntomAction.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: RelationntomAction.java,v 1.3 2007/02/08 23:11:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.relation;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests many different kinds of 1:n relations
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class RelationntomAction extends AbstractTestAction 
 {
@@ -93,7 +93,7 @@ public class RelationntomAction extends AbstractTestAction
 	    		main.getMultirn().addAll(multirns);
 	    		for (int i = 0; i < multinns.size(); i++)
 	    		{
-	    			main.getMultinn().add(multinns.get(i));
+	    			main.getMultinn().add((MultiNN)multinns.get(i));
 	    		}
 	    		
 	    		main.getMultinr().addAll(multinrs);

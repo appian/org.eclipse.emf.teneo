@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SetResourceAction.java,v 1.3 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: SetResourceAction.java,v 1.4 2007/02/08 23:11:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * references using resources. Most other aspects of resources are handled in the Catalog example.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
+ * @version $Revision: 1.4 $ 
 */
 public class SetResourceAction extends AbstractTestAction 
 {
@@ -140,7 +140,9 @@ public class SetResourceAction extends AbstractTestAction
 	    				names.remove(((Item)list.getItem().get(i)).getName());
 	    			}
 	    		}
-	    		list.getItem().removeAll(tobeDeleted);
+	    		for (Object o : tobeDeleted) {
+	    			list.getItem().remove(o);
+	    		}
 	    		assertEquals(names.size(), list.getItem().size());
 	    		
 	    		// test move (should not really change anything)

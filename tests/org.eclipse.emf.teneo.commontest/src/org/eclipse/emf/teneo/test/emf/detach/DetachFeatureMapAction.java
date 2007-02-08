@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DetachFeatureMapAction.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: DetachFeatureMapAction.java,v 1.4 2007/02/08 23:11:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.detach;
@@ -26,6 +26,7 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.command.CopyCommand;
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -50,7 +51,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * on the featuremap (move, set, etc).
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
+ * @version $Revision: 1.4 $ 
 */
 public class DetachFeatureMapAction extends AbstractTestAction 
 {
@@ -111,8 +112,12 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				
 				Object m1 = mobiles.get(0);
 				Object m2 = mobiles.get(1);
-			     
-				mobiles.clear();
+			    
+				for (Object o : new ArrayList<Object>(mobiles)) {
+					mobiles.remove(o);
+				}
+				//mobiles.clear();
+				
 				mobiles.add(m1);
 				mobiles.add(m2);
 			     
@@ -140,8 +145,8 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				Object p0 = person.getPhones().get(0);
 				Object p1 = person.getPhones().get(1);
 				person.getPhones().clear();
-				person.getPhones().add(p1);
-				person.getPhones().add(p0);
+				person.getPhones().add((FeatureMap.Entry)p1);
+				person.getPhones().add((FeatureMap.Entry)p0);
 				
 				assertEquals (2, person.getMobile().size());
 				resource.save(Collections.EMPTY_MAP);

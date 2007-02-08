@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CatalogResourceAction.java,v 1.4 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: CatalogResourceAction.java,v 1.5 2007/02/08 23:11:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * All using a resource, tests add, delete and update of objects in a resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class CatalogResourceAction extends AbstractTestAction {
 	/**
@@ -200,7 +200,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 				it = resource.getContents().iterator();
 				while (it.hasNext()) {
 					Object obj = it.next();
-					if (obj instanceof ProductType) mainCatalog.getProduct().add(obj);
+					if (obj instanceof ProductType) mainCatalog.getProduct().add((ProductType)obj);
 				}
 				final CatalogType subCatalog = factory.createCatalogType();
 				subCatalog.setName("SubCatalog");
