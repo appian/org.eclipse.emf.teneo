@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.4 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.5 2007/02/10 00:14:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -44,7 +44,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 @SuppressWarnings("unchecked")
 public class EAttributePropertyHandler implements Getter, Setter,
@@ -152,15 +152,15 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	 */
 	public void set(Object target, Object value,
 			SessionFactoryImplementor factory) throws HibernateException {
-		if (value == null)
-			return; // do not set
+
 		final Object curValue = get(target);
 		if (curValue != null && curValue.equals(value))
 			return; // do not set if not changed
 		EObject eobj = (EObject) target;
 
 		final Object setValue;
-		if (value.getClass() != instanceClass) {
+		if (value != null && instanceClass != null
+				&& value.getClass() != instanceClass) {
 			final Class valClass = value.getClass();
 			if (valClass == Integer[].class) {
 				setValue = convert((Integer[]) value);
@@ -290,8 +290,15 @@ public class EAttributePropertyHandler implements Getter, Setter,
 
 	/** Capature all, do not convert */
 	private Object convert(Object arr) {
-		log.warn("Expecting " + instanceClass.getName()
-				+ " as instance class but it is: " + arr.getClass().getName());
+
+		if (arr != null
+				&& instanceClass != null
+				&& (!instanceClass.isPrimitive() || !arr.getClass()
+						.isPrimitive())) {
+			log.info("Expecting " + instanceClass.getName()
+					+ " as instance class but it is: "
+					+ arr.getClass().getName());
+		}
 		return arr;
 	}
 }
