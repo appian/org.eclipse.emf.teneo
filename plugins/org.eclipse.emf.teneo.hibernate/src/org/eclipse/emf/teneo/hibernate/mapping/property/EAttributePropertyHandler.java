@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.5 2007/02/10 00:14:09 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.6 2007/02/10 08:23:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -44,7 +44,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 @SuppressWarnings("unchecked")
 public class EAttributePropertyHandler implements Getter, Setter,
@@ -153,6 +153,12 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	public void set(Object target, Object value,
 			SessionFactoryImplementor factory) throws HibernateException {
 
+		if (value == null) {
+			// do not overwrite the defaults in the eobject
+			// TODO is this really a correct approach?
+			return;
+		}
+		
 		final Object curValue = get(target);
 		if (curValue != null && curValue.equals(value))
 			return; // do not set if not changed
