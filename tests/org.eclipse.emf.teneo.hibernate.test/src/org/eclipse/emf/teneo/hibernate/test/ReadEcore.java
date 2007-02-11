@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ReadEcore.java,v 1.3 2007/02/01 12:36:24 mtaal Exp $
+ * $Id: ReadEcore.java,v 1.4 2007/02/11 21:53:40 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.test;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.hibernate.HbHelper;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class ReadEcore {
 
@@ -44,7 +44,7 @@ public class ReadEcore {
 			final ResourceSet resourceSet = new ResourceSetImpl();
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new EcoreResourceFactoryImpl());
 			final ArrayList epackages = new ArrayList();
-			final Resource res = resourceSet.getResource(URI.createFileURI("/home/mtaal/mytmp/srd.ecore"), true);
+			final Resource res = resourceSet.getResource(URI.createFileURI("/home/mtaal/mytmp/npe_test2.ecore"), true);
 			res.load(new HashMap());
 	
 			Iterator it = res.getAllContents();
