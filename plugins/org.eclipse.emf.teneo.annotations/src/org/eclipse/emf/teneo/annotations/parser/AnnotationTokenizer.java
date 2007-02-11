@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.10 2007/02/08 23:12:34 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.11 2007/02/11 21:54:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -203,9 +203,11 @@ class AnnotationTokenizer {
 						|| ('A' <= lChar && lChar <= 'Z'));
 
 				if (lChar != '\"') {
-					throw new AnnotationParserException(
+					final AnnotationParserException e = new AnnotationParserException(
 							"Value not closed with double quote, see the _ for the location "
 									+ getErrorText());
+					tokEnd = lCur + 1; // prevent infinite looping
+					throw e;
 				}
 				tokEnd = lCur + 1;
 				return T_VALUE;

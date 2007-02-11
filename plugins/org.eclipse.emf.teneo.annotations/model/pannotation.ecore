@@ -401,6 +401,7 @@
     <eLiterals name="MERGE" value="2"/>
     <eLiterals name="REMOVE" value="3"/>
     <eLiterals name="REFRESH" value="4"/>
+    <eLiterals name="NONE" value="5" literal="NONE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DiscriminatorType">
     <eLiterals name="STRING"/>

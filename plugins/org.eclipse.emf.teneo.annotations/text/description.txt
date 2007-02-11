@@ -259,6 +259,7 @@ Package pannotation <http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation>
     Literal MERGE = 2
     Literal REMOVE = 3
     Literal REFRESH = 4
+    Literal NONE = 5
 
   Enum DiscriminatorType
     Literal STRING = 0

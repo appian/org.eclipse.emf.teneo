@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadeType.java,v 1.6 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: CascadeType.java,v 1.7 2007/02/11 21:54:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -66,7 +66,15 @@ public enum CascadeType implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	REFRESH_LITERAL(4, "REFRESH", "REFRESH");
+	REFRESH_LITERAL(4, "REFRESH", "REFRESH"), /**
+	 * The '<em><b>NONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NONE
+	 * @generated
+	 * @ordered
+	 */
+	NONE_LITERAL(5, "NONE", "NONE");
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -149,6 +157,21 @@ public enum CascadeType implements Enumerator
 	public static final int REFRESH = 4;
 
 	/**
+	 * The '<em><b>NONE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NONE_LITERAL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NONE = 5;
+
+	/**
 	 * An array of all the '<em><b>Cascade Type</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
@@ -161,6 +184,7 @@ public enum CascadeType implements Enumerator
 			MERGE_LITERAL,
 			REMOVE_LITERAL,
 			REFRESH_LITERAL,
+			NONE_LITERAL,
 		};
 
 	/**
@@ -216,6 +240,7 @@ public enum CascadeType implements Enumerator
 			case MERGE: return MERGE_LITERAL;
 			case REMOVE: return REMOVE_LITERAL;
 			case REFRESH: return REFRESH_LITERAL;
+			case NONE: return NONE_LITERAL;
 		}
 		return null;
 	}

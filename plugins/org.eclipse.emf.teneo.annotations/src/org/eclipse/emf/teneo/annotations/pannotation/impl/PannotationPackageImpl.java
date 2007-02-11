@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.12 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.13 2007/02/11 21:54:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -1916,6 +1916,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(cascadeTypeEEnum, CascadeType.MERGE_LITERAL);
 		addEEnumLiteral(cascadeTypeEEnum, CascadeType.REMOVE_LITERAL);
 		addEEnumLiteral(cascadeTypeEEnum, CascadeType.REFRESH_LITERAL);
+		addEEnumLiteral(cascadeTypeEEnum, CascadeType.NONE_LITERAL);
 
 		initEEnum(discriminatorTypeEEnum, DiscriminatorType.class, "DiscriminatorType");
 		addEEnumLiteral(discriminatorTypeEEnum, DiscriminatorType.STRING_LITERAL);

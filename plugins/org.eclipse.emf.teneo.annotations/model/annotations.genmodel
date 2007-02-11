@@ -95,6 +95,7 @@
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//CascadeType/MERGE"/>
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//CascadeType/REMOVE"/>
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//CascadeType/REFRESH"/>
+      <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//CascadeType/NONE"/>
     </genEnums>
     <genEnums ecoreEnum="pannotation.ecore#//DiscriminatorType">
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//DiscriminatorType/STRING"/>

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.26 2007/02/08 23:12:35 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.27 2007/02/11 21:54:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -81,7 +81,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 public class DefaultAnnotator {
 
@@ -132,6 +132,9 @@ public class DefaultAnnotator {
 
 	/** The eclass qualify approach */
 	private EClassNameStrategy optionEClassNameStrategy = null;
+
+	/** Option ID feature as primary key */
+	private boolean optionIDFeatureAsPrimaryKey = true;
 
 	/** Convenience link to pamodel factory */
 	private PannotationFactory aFactory = PannotationFactory.eINSTANCE;
@@ -223,6 +226,9 @@ public class DefaultAnnotator {
 		optionEClassNameStrategy = po.getEClassNameStrategy();
 		log.debug("Qualify EClass name option: "
 				+ optionEClassNameStrategy.getClass().getName());
+
+		optionIDFeatureAsPrimaryKey = po.isIDFeatureAsPrimaryKey();
+		log.debug("ID Feature as primary key " + optionIDFeatureAsPrimaryKey);
 
 		optionMaximumSqlLength = po.getMaximumSqlNameLength();
 		log.debug("Maximum column length: " + optionMaximumSqlLength);
@@ -345,7 +351,7 @@ public class DefaultAnnotator {
 			aClass.setEntity(entity);
 		} else if (aClass.getEntity() != null
 				&& aClass.getEntity().getName() == null) {
-			aClass.getEntity().setName(eclass.getName());
+			aClass.getEntity().setName(getEntityName(eclass));
 		}
 
 		// get the inheritance from the supertype or use the global inheritance
@@ -418,7 +424,7 @@ public class DefaultAnnotator {
 			aClass.setTable(table);
 		} else if (aClass.getTable() != null
 				&& aClass.getTable().getName() == null) {
-			aClass.getTable().setName(trunc(eclass.getName(), false));
+			aClass.getTable().setName(trunc(getEntityName(eclass), false));
 		}
 
 		// if the strategy is all classes of one hierarchy in one table and this
@@ -679,7 +685,8 @@ public class DefaultAnnotator {
 			aAttribute.setEnumerated(enumerated);
 		}
 
-		if (eAttribute.isID() && aAttribute.getId() == null) {
+		if (optionIDFeatureAsPrimaryKey && eAttribute.isID()
+				&& aAttribute.getId() == null) {
 			final Id id = aFactory.createId();
 			id.setEModelElement(eAttribute);
 			aAttribute.setId(id);
@@ -784,7 +791,7 @@ public class DefaultAnnotator {
 			addJoinColumns(aAttribute.getPaEClass(), aAttribute
 					.getAnnotatedEAttribute(), aAttribute, FeatureMapUtil
 					.isFeatureMap(eAttribute), true); // with featuremap
-														// optional is true
+			// optional is true
 		}
 
 		// set unique and indexed
@@ -955,7 +962,7 @@ public class DefaultAnnotator {
 		final boolean isEObject = EClassNameStrategy.EOBJECT_ECLASS_URI
 				.compareTo(otm.getTargetEntity()) == 0;
 		if (isEObject || // in case of eobject always a join table is
-							// required
+				// required
 				(optionJoinTableForNonContainedAssociations && !eReference
 						.isContainment()) || !otm.isUnique()) {
 			JoinTable joinTable = aReference.getJoinTable();
@@ -1301,10 +1308,10 @@ public class DefaultAnnotator {
 
 		// determine where to put the mapped-by
 		if (oto.getMappedBy() == null && setMappedBy(eReference)) { // only
-																	// works
-																	// with
-																	// different
-																	// names
+			// works
+			// with
+			// different
+			// names
 			oto.setMappedBy(eReference.getEOpposite().getName());
 		}
 		setCascade(oto.getCascade(), eReference.isContainment());
@@ -1385,7 +1392,7 @@ public class DefaultAnnotator {
 				aClass = aReference.getPaEClass();
 			}
 			if (aClass != null) { // aClass == null when the reference it to a
-									// high level type such as EObject
+				// high level type such as EObject
 				// note that the joincolumns are set to not insertable/updatable
 				// if
 				// this is a bidirectional relation without a join table, in
@@ -1607,7 +1614,8 @@ public class DefaultAnnotator {
 		}
 
 		final PAnnotatedEClass aclass = annotatedModel.getPAnnotated(eclass);
-		if (aclass != null && aclass.getEntity() != null) {
+		if (aclass != null && aclass.getEntity() != null
+				&& aclass.getEntity().getName() != null) {
 			return aclass.getEntity().getName();
 		}
 		return optionEClassNameStrategy.toUniqueName(eclass);
