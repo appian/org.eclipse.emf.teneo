@@ -282,6 +282,12 @@
 <li>
 <a href="#lob_notes">Lob annotation</a>
 </li>
+<li>
+<a href="#EMF+ID+Attribute">EMF ID Attribute</a>
+</li>
+<li>
+<a href="#Extra+CASCADE+type%3A+NONE">Extra CASCADE type: NONE</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -529,6 +535,22 @@
 	&lt;/xsd:annotation&gt;
 &lt;/xsd:element&gt;
 				</pre>
+</div>
+						
+<a name="N1013F"></a><a name="EMF+ID+Attribute"></a>
+<div class="h4">
+<h4>EMF ID Attribute</h4>
+<p>When an eattribute has its ID property set to true and there is no @Id annotated eattribute in the 
+			eclass then the ID eattribute is used. This default behavior can be changed using the option:
+			<a href="options.html">ID_FEATURE_AS_PRIMARY_KEY</a>.</p>
+</div>
+			
+<a name="N1014C"></a><a name="Extra+CASCADE+type%3A+NONE"></a>
+<div class="h4">
+<h4>Extra CASCADE type: NONE</h4>
+<p>Teneo will automatically set the cascade annotation when no cascade annotation has been set on an 
+			assocation. To also support no-cascading behavior the additional CascadeType NONE is supported by
+			Teneo.</p>
 </div>
 			
 		
