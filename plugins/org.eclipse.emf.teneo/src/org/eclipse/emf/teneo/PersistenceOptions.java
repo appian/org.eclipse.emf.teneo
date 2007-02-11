@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.19 2007/02/08 23:14:41 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.20 2007/02/11 21:54:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public class PersistenceOptions {
 
@@ -119,6 +119,9 @@ public class PersistenceOptions {
 	/** Name of id column, default value is e_id */
 	public static final String ID_COLUMN_NAME = NAMING_PREFIX
 			+ "default_id_column";
+
+	/** Automatically add @id annotation to ID xsd type */
+	public static final String ID_FEATURE_AS_PRIMARY_KEY = NAMING_PREFIX + "id_feature_as_primary_key";
 
 	/**
 	 * The name of the id feature if no feature has a
@@ -216,6 +219,7 @@ public class PersistenceOptions {
 		props.setProperty(JOIN_TABLE_NAMING_STRATEGY, "ejb3");
 		props.setProperty(DEFAULT_TEMPORAL_VALUE, "TIMESTAMP");
 		props.setProperty(DEFAULT_ID_FEATURE_NAME, "e_id");
+        props.setProperty(ID_FEATURE_AS_PRIMARY_KEY, "true");
 
 		return props;
 	}
@@ -302,6 +306,11 @@ public class PersistenceOptions {
 	public boolean isUseMappingFile() {
 		return Boolean.valueOf(properties.getProperty(USE_MAPPING_FILE))
 				.booleanValue();
+	}
+
+	/** Returns the value of the id feature as primary key */
+	public boolean isIDFeatureAsPrimaryKey() {
+		return Boolean.valueOf(properties.getProperty(ID_FEATURE_AS_PRIMARY_KEY)).booleanValue();
 	}
 
 	/** Returns the value of the orphan delete on containment, default is true */
