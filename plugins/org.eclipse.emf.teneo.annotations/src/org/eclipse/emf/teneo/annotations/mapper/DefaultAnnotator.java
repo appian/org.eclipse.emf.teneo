@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.25.2.1 2007/02/11 19:05:37 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.25.2.2 2007/02/11 21:51:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -80,7 +80,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25.2.1 $
+ * @version $Revision: 1.25.2.2 $
  */
 public class DefaultAnnotator {
 
@@ -128,7 +128,7 @@ public class DefaultAnnotator {
 
 	/** Option ID feature as primary key */
 	private boolean optionIDFeatureAsPrimaryKey = true;
-	
+
 	/** The sql naming strategy */
 	private SQLCaseStrategy optionSQLCaseStrategy = null;
 
@@ -204,10 +204,10 @@ public class DefaultAnnotator {
 
 		optionSetCascadeAllOnContainment = po.isSetCascadeAllOnContainment();
 		log.debug("Option set cascade all on containment: " + optionSetCascadeAllOnContainment);
-		
+
 		optionDefaultIDFeatureName = po.getDefaultIDFeatureName();
 		log.debug("Option default id feature name: " + optionDefaultIDFeatureName);
-		
+
 		optionEClassNameStrategy = po.getEClassNameStrategy();
 		log.debug("Qualify EClass name option: " + optionEClassNameStrategy.getClass().getName());
 
@@ -216,7 +216,7 @@ public class DefaultAnnotator {
 
 		optionIDFeatureAsPrimaryKey = po.isIDFeatureAsPrimaryKey();
 		log.debug("ID Feature as primary key " + optionIDFeatureAsPrimaryKey);
-		
+
 		optionJoinTableForNonContainedAssociations = po.isJoinTableForNonContainedAssociations();
 		log.debug("JoinTableForNonContainedAssociations " + po.isJoinTableForNonContainedAssociations());
 
@@ -317,7 +317,7 @@ public class DefaultAnnotator {
 			entity.setName(getEntityName(eclass));
 			aClass.setEntity(entity);
 		} else if (aClass.getEntity() != null && aClass.getEntity().getName() == null) {
-			aClass.getEntity().setName(eclass.getName());
+			aClass.getEntity().setName(getEntityName(eclass));
 		}
 
 		// get the inheritance from the supertype or use the global inheritance setting
@@ -342,8 +342,7 @@ public class DefaultAnnotator {
 		}
 
 		// add PrimaryKeyJoinColumn
-		if (!isInheritanceRoot
-				&& inheritanceType.equals(InheritanceType.JOINED_LITERAL)) {
+		if (!isInheritanceRoot && inheritanceType.equals(InheritanceType.JOINED_LITERAL)) {
 			ArrayList idFeatures = new ArrayList();
 			boolean firstDone = false;
 			EClass superClass = null;
@@ -377,11 +376,11 @@ public class DefaultAnnotator {
 						.equals(InheritanceType.TABLE_PER_CLASS_LITERAL))) {
 			final Table table = aFactory.createTable();
 			table.setEModelElement(eclass);
-			
+
 			table.setName(trunc(getEntityName(eclass).replace('.', '_'), false));
 			aClass.setTable(table);
 		} else if (aClass.getTable() != null && aClass.getTable().getName() == null) {
-			aClass.getTable().setName(trunc(eclass.getName(), false));
+			aClass.getTable().setName(trunc(getEntityName(eclass), false));
 		}
 
 		// if the strategy is all classes of one hierarchy in one table and this is not the superclass
@@ -1301,14 +1300,15 @@ public class DefaultAnnotator {
 	/** Returns the entity name of the eclass */
 	private String getEntityName(EClass eclass) {
 		if (eclass == null) {
-			throw new IllegalArgumentException("Passed eclass is null." +
-					"This can occur if epackages which refer to eachother are placed in different ecore/xsd files " +
-					"and they are not read using one resource set. The reference from one epackage to another must be " +
-					"resolvable by EMF.");
+			throw new IllegalArgumentException(
+					"Passed eclass is null."
+							+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
+							+ "and they are not read using one resource set. The reference from one epackage to another must be "
+							+ "resolvable by EMF.");
 		}
 
 		final PAnnotatedEClass aclass = annotatedModel.getPAnnotated(eclass);
-		if (aclass != null && aclass.getEntity() != null) {
+		if (aclass != null && aclass.getEntity() != null && aclass.getEntity().getName() != null) {
 			return aclass.getEntity().getName();
 		}
 		return optionEClassNameStrategy.toUniqueName(eclass);
@@ -1322,8 +1322,10 @@ public class DefaultAnnotator {
 		return (String) eAnnotation.getDetails().get(key);
 	}
 
-	/** Returns the list of names of id props of the eclass, walks the inheritance tree to find the 
-	 * id feature, if none is found then the  */
+	/**
+	 * Returns the list of names of id props of the eclass, walks the inheritance tree to find the id feature, if none
+	 * is found then the
+	 */
 	private List getIDFeaturesNames(PAnnotatedEClass aClass) {
 		final List list = getIDFeaturesNamesRecurse(aClass);
 		// See, 172756
@@ -1332,7 +1334,7 @@ public class DefaultAnnotator {
 		}
 		return list;
 	}
-	
+
 	/** Internal will walk the inheritance tree to find the id feature */
 	private List getIDFeaturesNamesRecurse(PAnnotatedEClass aClass) {
 		final ArrayList list = new ArrayList();
@@ -1384,7 +1386,8 @@ public class DefaultAnnotator {
 			final String usStr = correctedName.substring(underscore);
 			if ((optionMaximumSqlLength - usStr.length()) < 0)
 				return optionSQLCaseStrategy.convert(correctedName);
-			return optionSQLCaseStrategy.convert(correctedName.substring(0, optionMaximumSqlLength - usStr.length()) + usStr);
+			return optionSQLCaseStrategy.convert(correctedName.substring(0, optionMaximumSqlLength - usStr.length())
+					+ usStr);
 		}
 
 		return optionSQLCaseStrategy.convert(correctedName.substring(0, optionMaximumSqlLength));
