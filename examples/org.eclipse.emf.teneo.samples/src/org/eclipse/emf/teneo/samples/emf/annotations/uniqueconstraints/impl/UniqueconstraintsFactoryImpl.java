@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueconstraintsFactoryImpl.java,v 1.2 2007/02/08 23:09:28 mtaal Exp $
+ * $Id: UniqueconstraintsFactoryImpl.java,v 1.1.4.1 2007/02/11 20:43:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.impl;
 
@@ -57,10 +57,10 @@ public class UniqueconstraintsFactoryImpl extends EFactoryImpl implements Unique
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case UniqueconstraintsPackage.ITEM: return createItem();
+			case UniqueconstraintsPackage.PROJECT: return createProject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,6 +81,16 @@ public class UniqueconstraintsFactoryImpl extends EFactoryImpl implements Unique
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Project createProject() {
+		ProjectImpl project = new ProjectImpl();
+		return project;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public UniqueconstraintsPackage getUniqueconstraintsPackage() {
 		return (UniqueconstraintsPackage)getEPackage();
 	}
@@ -91,7 +101,6 @@ public class UniqueconstraintsFactoryImpl extends EFactoryImpl implements Unique
 	 * @deprecated
 	 * @generated
 	 */
-	@Deprecated
 	public static UniqueconstraintsPackage getPackage() {
 		return UniqueconstraintsPackage.eINSTANCE;
 	}

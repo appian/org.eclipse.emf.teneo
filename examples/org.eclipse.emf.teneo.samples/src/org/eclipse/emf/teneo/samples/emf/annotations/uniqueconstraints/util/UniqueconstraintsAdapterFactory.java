@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueconstraintsAdapterFactory.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: UniqueconstraintsAdapterFactory.java,v 1.1.4.1 2007/02/11 20:43:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.util;
 
@@ -52,7 +52,6 @@ public class UniqueconstraintsAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -69,14 +68,15 @@ public class UniqueconstraintsAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UniqueconstraintsSwitch<Adapter> modelSwitch =
-		new UniqueconstraintsSwitch<Adapter>() {
-			@Override
-			public Adapter caseItem(Item object) {
+	protected UniqueconstraintsSwitch modelSwitch =
+		new UniqueconstraintsSwitch() {
+			public Object caseItem(Item object) {
 				return createItemAdapter();
 			}
-			@Override
-			public Adapter defaultCase(EObject object) {
+			public Object caseProject(Project object) {
+				return createProjectAdapter();
+			}
+			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -89,9 +89,8 @@ public class UniqueconstraintsAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
+		return (Adapter)modelSwitch.doSwitch((EObject)target);
 	}
 
 
@@ -106,6 +105,20 @@ public class UniqueconstraintsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createItemAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Project <em>Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Project
+	 * @generated
+	 */
+	public Adapter createProjectAdapter() {
 		return null;
 	}
 
