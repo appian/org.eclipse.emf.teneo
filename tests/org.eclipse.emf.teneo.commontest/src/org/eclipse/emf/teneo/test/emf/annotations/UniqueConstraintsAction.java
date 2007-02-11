@@ -11,12 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: UniqueConstraintsAction.java,v 1.2 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: UniqueConstraintsAction.java,v 1.3 2007/02/11 21:52:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Item;
+import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Project;
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.UniqueconstraintsFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.UniqueconstraintsPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
@@ -26,7 +27,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
 */
 public class UniqueConstraintsAction extends AbstractTestAction 
 {
@@ -45,18 +46,23 @@ public class UniqueConstraintsAction extends AbstractTestAction
 		// create a book, writer and library
 	    	{
 	    		store.beginTransaction();
+	    		final Project project = factory.createProject();
+	    		project.setName("project_name");
 	    		final Item item = factory.createItem();
 	    		item.setAge(5);
 	    		item.setName("name");
+	    		item.setProject(project);
 	    		store.store(item);
 	    		store.commitTransaction();
 	    	}
 
 	    	try {
 	    		store.beginTransaction();
+	    		final Project p = (Project)store.getObject(Project.class);
 	    		final Item item = factory.createItem();
 	    		item.setAge(5);
 	    		item.setName("name");
+	    		item.setProject(p);
 	    		store.store(item);
 	    		store.commitTransaction();
 	    		fail("The uniqueconstraint has not been applied");
