@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.3 2007/02/11 21:54:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Address;
+import org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Head;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Person;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.ToonePackage;
@@ -31,6 +32,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.toone.ToonePackage;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.PersonImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.PersonImpl#getHead <em>Head</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.PersonImpl#getLeftArm <em>Left Arm</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,6 +58,16 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @ordered
 	 */
 	protected Head head = null;
+
+	/**
+	 * The cached value of the '{@link #getLeftArm() <em>Left Arm</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLeftArm()
+	 * @generated
+	 * @ordered
+	 */
+	protected Arm leftArm = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,6 +157,27 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Arm getLeftArm() {
+		return leftArm;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLeftArm(Arm newLeftArm) {
+		Arm oldLeftArm = leftArm;
+		leftArm = newLeftArm;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToonePackage.PERSON__LEFT_ARM, oldLeftArm, leftArm));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -182,6 +215,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return getAddress();
 			case ToonePackage.PERSON__HEAD:
 				return getHead();
+			case ToonePackage.PERSON__LEFT_ARM:
+				return getLeftArm();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -199,6 +234,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return;
 			case ToonePackage.PERSON__HEAD:
 				setHead((Head)newValue);
+				return;
+			case ToonePackage.PERSON__LEFT_ARM:
+				setLeftArm((Arm)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -218,6 +256,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case ToonePackage.PERSON__HEAD:
 				setHead((Head)null);
 				return;
+			case ToonePackage.PERSON__LEFT_ARM:
+				setLeftArm((Arm)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -234,6 +275,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return address != null;
 			case ToonePackage.PERSON__HEAD:
 				return head != null;
+			case ToonePackage.PERSON__LEFT_ARM:
+				return leftArm != null;
 		}
 		return super.eIsSet(featureID);
 	}

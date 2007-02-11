@@ -10,6 +10,9 @@
     <genClasses ecoreClass="toone.ecore#//Address">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toone.ecore#//Address/city"/>
     </genClasses>
+    <genClasses ecoreClass="toone.ecore#//Arm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toone.ecore#//Arm/length"/>
+    </genClasses>
     <genClasses ecoreClass="toone.ecore#//Head">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toone.ecore#//Head/hairColor"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference toone.ecore#//Head/person"/>
@@ -17,6 +20,7 @@
     <genClasses ecoreClass="toone.ecore#//Person">
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference toone.ecore#//Person/address"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference toone.ecore#//Person/head"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference toone.ecore#//Person/leftArm"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

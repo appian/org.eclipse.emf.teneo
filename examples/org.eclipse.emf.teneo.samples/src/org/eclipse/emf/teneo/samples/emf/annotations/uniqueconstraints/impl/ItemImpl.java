@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemImpl.java,v 1.2 2007/02/08 23:09:28 mtaal Exp $
+ * $Id: ItemImpl.java,v 1.3 2007/02/11 21:54:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.impl;
 
@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Item;
+import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Project;
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.UniqueconstraintsPackage;
 
 /**
@@ -24,6 +25,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Uniquecon
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.impl.ItemImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.impl.ItemImpl#getProject <em>Project</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.impl.ItemImpl#getAge <em>Age</em>}</li>
  * </ul>
  * </p>
@@ -50,6 +52,16 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getProject() <em>Project</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProject()
+	 * @generated
+	 * @ordered
+	 */
+	protected Project project = null;
 
 	/**
 	 * The default value of the '{@link #getAge() <em>Age</em>}' attribute.
@@ -125,6 +137,27 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Project getProject() {
+		return project;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProject(Project newProject) {
+		Project oldProject = project;
+		project = newProject;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UniqueconstraintsPackage.ITEM__PROJECT, oldProject, project));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getAge() {
 		return age;
 	}
@@ -176,6 +209,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 		switch (featureID) {
 			case UniqueconstraintsPackage.ITEM__NAME:
 				return getName();
+			case UniqueconstraintsPackage.ITEM__PROJECT:
+				return getProject();
 			case UniqueconstraintsPackage.ITEM__AGE:
 				return new Integer(getAge());
 		}
@@ -192,6 +227,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 		switch (featureID) {
 			case UniqueconstraintsPackage.ITEM__NAME:
 				setName((String)newValue);
+				return;
+			case UniqueconstraintsPackage.ITEM__PROJECT:
+				setProject((Project)newValue);
 				return;
 			case UniqueconstraintsPackage.ITEM__AGE:
 				setAge(((Integer)newValue).intValue());
@@ -211,6 +249,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 			case UniqueconstraintsPackage.ITEM__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case UniqueconstraintsPackage.ITEM__PROJECT:
+				setProject((Project)null);
+				return;
 			case UniqueconstraintsPackage.ITEM__AGE:
 				unsetAge();
 				return;
@@ -228,6 +269,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 		switch (featureID) {
 			case UniqueconstraintsPackage.ITEM__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case UniqueconstraintsPackage.ITEM__PROJECT:
+				return project != null;
 			case UniqueconstraintsPackage.ITEM__AGE:
 				return isSetAge();
 		}

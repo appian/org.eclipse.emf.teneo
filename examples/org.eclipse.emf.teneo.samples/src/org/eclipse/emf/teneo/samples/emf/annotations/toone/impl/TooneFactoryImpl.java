@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TooneFactoryImpl.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
+ * $Id: TooneFactoryImpl.java,v 1.3 2007/02/11 21:54:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.impl;
 
@@ -61,6 +61,7 @@ public class TooneFactoryImpl extends EFactoryImpl implements TooneFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ToonePackage.ADDRESS: return createAddress();
+			case ToonePackage.ARM: return createArm();
 			case ToonePackage.HEAD: return createHead();
 			case ToonePackage.PERSON: return createPerson();
 			default:
@@ -76,6 +77,16 @@ public class TooneFactoryImpl extends EFactoryImpl implements TooneFactory {
 	public Address createAddress() {
 		AddressImpl address = new AddressImpl();
 		return address;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Arm createArm() {
+		ArmImpl arm = new ArmImpl();
+		return arm;
 	}
 
 	/**

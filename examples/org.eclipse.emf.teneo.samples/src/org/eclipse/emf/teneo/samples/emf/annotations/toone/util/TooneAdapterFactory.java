@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TooneAdapterFactory.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: TooneAdapterFactory.java,v 1.3 2007/02/11 21:54:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.util;
 
@@ -76,6 +76,10 @@ public class TooneAdapterFactory extends AdapterFactoryImpl {
 				return createAddressAdapter();
 			}
 			@Override
+			public Adapter caseArm(Arm object) {
+				return createArmAdapter();
+			}
+			@Override
 			public Adapter caseHead(Head object) {
 				return createHeadAdapter();
 			}
@@ -114,6 +118,20 @@ public class TooneAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAddressAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm <em>Arm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm
+	 * @generated
+	 */
+	public Adapter createArmAdapter() {
 		return null;
 	}
 

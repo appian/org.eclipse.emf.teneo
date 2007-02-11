@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TooneSwitch.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: TooneSwitch.java,v 1.3 2007/02/11 21:54:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.util;
 
@@ -93,6 +93,12 @@ public class TooneSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ToonePackage.ARM: {
+				Arm arm = (Arm)theEObject;
+				T result = caseArm(arm);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ToonePackage.HEAD: {
 				Head head = (Head)theEObject;
 				T result = caseHead(head);
@@ -121,6 +127,21 @@ public class TooneSwitch<T> {
 	 * @generated
 	 */
 	public T caseAddress(Address object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Arm</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Arm</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseArm(Arm object) {
 		return null;
 	}
 

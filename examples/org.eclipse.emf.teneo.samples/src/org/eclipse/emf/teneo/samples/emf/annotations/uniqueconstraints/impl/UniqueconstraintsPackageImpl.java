@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueconstraintsPackageImpl.java,v 1.3 2007/02/08 23:09:28 mtaal Exp $
+ * $Id: UniqueconstraintsPackageImpl.java,v 1.4 2007/02/11 21:54:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.impl;
 
@@ -10,11 +10,13 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Item;
+import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.Project;
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.UniqueconstraintsFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.UniqueconstraintsPackage;
 
@@ -31,6 +33,13 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 	 * @generated
 	 */
 	private EClass itemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass projectEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -126,8 +135,35 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getItem_Project() {
+		return (EReference)itemEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getItem_Age() {
-		return (EAttribute)itemEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)itemEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProject() {
+		return projectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProject_Name() {
+		return (EAttribute)projectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -160,7 +196,11 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 		// Create classes and their features
 		itemEClass = createEClass(ITEM);
 		createEAttribute(itemEClass, ITEM__NAME);
+		createEReference(itemEClass, ITEM__PROJECT);
 		createEAttribute(itemEClass, ITEM__AGE);
+
+		projectEClass = createEClass(PROJECT);
+		createEAttribute(projectEClass, PROJECT__NAME);
 	}
 
 	/**
@@ -198,7 +238,11 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 		// Initialize classes and features; add operations and parameters
 		initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getItem_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getItem_Project(), this.getProject(), null, "project", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItem_Age(), theXMLTypePackage.getInt(), "age", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(projectEClass, Project.class, "Project", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProject_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -222,7 +266,7 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 		  (itemEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t@Table(name=\"MYITEMTABLE\" uniqueConstraints={@UniqueConstraint(columnNames={\"MYSTR\",\"MYINT\"})})"
+			 "appinfo", "\n\t\t\t@Table(name=\"MYITEMTABLE\" uniqueConstraints={@UniqueConstraint(columnNames={\"MYSTR\",\"MYINT\",\"MYPROJECT\"})})"
 		   });			
 		addAnnotation
 		  (getItem_Name(), 
@@ -231,11 +275,17 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 			 "appinfo", "@Column(name=\"MYSTR\")"
 		   });			
 		addAnnotation
+		  (getItem_Project(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@JoinColumn(name=\"MYPROJECT\")"
+		   });			
+		addAnnotation
 		  (getItem_Age(), 
 		   source, 
 		   new String[] {
 			 "appinfo", "@Column(name=\"MYINT\")"
-		   });	
+		   });			
 	}
 
 	/**
@@ -261,11 +311,32 @@ public class UniqueconstraintsPackageImpl extends EPackageImpl implements Unique
 			 "name", "name"
 		   });			
 		addAnnotation
+		  (getItem_Project(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "project"
+		   });			
+		addAnnotation
 		  (getItem_Age(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
 			 "name", "age"
+		   });		
+		addAnnotation
+		  (projectEClass, 
+		   source, 
+		   new String[] {
+			 "name", "Project",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getProject_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
 		   });
 	}
 

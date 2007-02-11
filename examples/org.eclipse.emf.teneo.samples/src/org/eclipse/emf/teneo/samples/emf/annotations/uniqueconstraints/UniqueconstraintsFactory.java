@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueconstraintsFactory.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: UniqueconstraintsFactory.java,v 1.2 2007/02/11 21:54:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints;
 
@@ -33,6 +33,15 @@ public interface UniqueconstraintsFactory extends EFactory {
 	 * @generated
 	 */
 	Item createItem();
+
+	/**
+	 * Returns a new object of class '<em>Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Project</em>'.
+	 * @generated
+	 */
+	Project createProject();
 
 	/**
 	 * Returns the package supported by this factory.

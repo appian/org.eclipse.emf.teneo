@@ -10,7 +10,7 @@
   <xsd:complexType name="Item">
     <xsd:annotation>
 		<xsd:appinfo source="teneo.jpa">
-			@Table(name="MYITEMTABLE" uniqueConstraints={@UniqueConstraint(columnNames={"MYSTR","MYINT"})})</xsd:appinfo>
+			@Table(name="MYITEMTABLE" uniqueConstraints={@UniqueConstraint(columnNames={"MYSTR","MYINT","MYPROJECT"})})</xsd:appinfo>
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element name="name" type="xsd:string">
@@ -18,6 +18,11 @@
 			<xsd:appinfo source="teneo.jpa">@Column(name="MYSTR")</xsd:appinfo>
 	    </xsd:annotation>
 	 </xsd:element>
+	  		<xsd:element name="project" type="xsd:IDREF" ecore:reference="this:Project" minOccurs="0">
+			 	<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@JoinColumn(name="MYPROJECT")</xsd:appinfo>
+			    </xsd:annotation>
+			</xsd:element>
       <xsd:element name="age" type="xsd:int">
         <xsd:annotation>
 			<xsd:appinfo source="teneo.jpa">@Column(name="MYINT")</xsd:appinfo>
@@ -25,4 +30,11 @@
       </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
+  
+  	<xsd:complexType name="Project">
+	    	<xsd:sequence>
+	  		<xsd:element name="name" type="xsd:string"/>
+    		</xsd:sequence>
+  	</xsd:complexType>
+  
  </xsd:schema>

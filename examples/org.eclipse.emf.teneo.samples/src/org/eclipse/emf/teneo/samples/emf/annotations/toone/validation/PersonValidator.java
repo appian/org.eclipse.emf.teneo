@@ -2,11 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonValidator.java,v 1.1 2007/02/08 23:09:26 mtaal Exp $
+ * $Id: PersonValidator.java,v 1.2 2007/02/11 21:54:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.validation;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Address;
+import org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Head;
 
 /**
@@ -20,4 +21,6 @@ public interface PersonValidator {
 
 	boolean validateAddress(Address value);
 	boolean validateHead(Head value);
+
+	boolean validateLeftArm(Arm value);
 }

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ToonePackageImpl.java,v 1.4 2007/02/08 23:09:20 mtaal Exp $
+ * $Id: ToonePackageImpl.java,v 1.5 2007/02/11 21:54:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.impl;
 
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Address;
+import org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Head;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Person;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.TooneFactory;
@@ -34,6 +35,13 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 	 * @generated
 	 */
 	private EClass addressEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass armEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,6 +151,24 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getArm() {
+		return armEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getArm_Length() {
+		return (EAttribute)armEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHead() {
 		return headEClass;
 	}
@@ -197,6 +223,15 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPerson_LeftArm() {
+		return (EReference)personEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TooneFactory getTooneFactory() {
 		return (TooneFactory)getEFactoryInstance();
 	}
@@ -223,6 +258,9 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 		addressEClass = createEClass(ADDRESS);
 		createEAttribute(addressEClass, ADDRESS__CITY);
 
+		armEClass = createEClass(ARM);
+		createEAttribute(armEClass, ARM__LENGTH);
+
 		headEClass = createEClass(HEAD);
 		createEAttribute(headEClass, HEAD__HAIR_COLOR);
 		createEReference(headEClass, HEAD__PERSON);
@@ -230,6 +268,7 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 		personEClass = createEClass(PERSON);
 		createEReference(personEClass, PERSON__ADDRESS);
 		createEReference(personEClass, PERSON__HEAD);
+		createEReference(personEClass, PERSON__LEFT_ARM);
 	}
 
 	/**
@@ -268,6 +307,9 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 		initEClass(addressEClass, Address.class, "Address", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAddress_City(), theXMLTypePackage.getString(), "city", null, 1, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(armEClass, Arm.class, "Arm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getArm_Length(), theXMLTypePackage.getInt(), "length", null, 1, 1, Arm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(headEClass, Head.class, "Head", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHead_HairColor(), theXMLTypePackage.getString(), "hairColor", null, 1, 1, Head.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHead_Person(), this.getPerson(), this.getPerson_Head(), "person", null, 1, 1, Head.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -275,6 +317,7 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPerson_Address(), this.getAddress(), null, "address", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Head(), this.getHead(), this.getHead_Person(), "head", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPerson_LeftArm(), this.getArm(), null, "leftArm", null, 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -307,6 +350,20 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "city"
+		   });		
+		addAnnotation
+		  (armEClass, 
+		   source, 
+		   new String[] {
+			 "name", "Arm",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getArm_Length(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "length"
 		   });		
 		addAnnotation
 		  (headEClass, 
@@ -349,6 +406,13 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "head"
+		   });			
+		addAnnotation
+		  (getPerson_LeftArm(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "leftArm"
 		   });
 	}
 
@@ -359,7 +423,7 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";						
+		String source = "teneo.jpa";								
 		addAnnotation
 		  (getHead_Person(), 
 		   source, 
@@ -377,6 +441,12 @@ public class ToonePackageImpl extends EPackageImpl implements ToonePackage {
 		   source, 
 		   new String[] {
 			 "appinfo", "@OneToOne(fetch=EAGER cascade=ALL targetEntity=\"Head\" optional=true)"
+		   });			
+		addAnnotation
+		  (getPerson_LeftArm(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@OneToOne(fetch=EAGER cascade=NONE targetEntity=\"Arm\" optional=true)"
 		   });	
 	}
 

@@ -9,7 +9,11 @@
       resource="XML" disposableProviderFactory="true" ecorePackage="uniqueconstraints.ecore#/">
     <genClasses ecoreClass="uniqueconstraints.ecore#//Item">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uniqueconstraints.ecore#//Item/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uniqueconstraints.ecore#//Item/project"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uniqueconstraints.ecore#//Item/age"/>
+    </genClasses>
+    <genClasses ecoreClass="uniqueconstraints.ecore#//Project">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uniqueconstraints.ecore#//Project/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
