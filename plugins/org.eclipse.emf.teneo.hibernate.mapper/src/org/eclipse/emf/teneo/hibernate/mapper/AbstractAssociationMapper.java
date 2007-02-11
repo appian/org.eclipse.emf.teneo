@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.9 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.10 2007/02/11 21:52:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -93,8 +93,13 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			Element columnElement = associationElement.addElement("column").addAttribute("not-null",
 					joinColumn.isNullable() || forceNullable ? "false" : "true").addAttribute("unique",
 					joinColumn.isUnique() ? "true" : "false");
-			if (joinColumn.getName() != null)
+			if (joinColumn.getName() != null) {
 				columnElement.addAttribute("name", getHbmContext().trunc(joinColumn.getName()));
+				final String uc = getHbmContext().getUniqueConstraintKey(joinColumn.getName());
+				if (uc != null) {
+					columnElement.addAttribute("unique-key", uc);
+				}
+			}
 
 			// keep track if all joinColumns are insertable/updatable for in that case the
 			// associationElement is also insertable/updatable or not
@@ -173,6 +178,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 				case CascadeType.REFRESH:
 					sb.append("refresh,");
 					break;
+				case CascadeType.NONE:
+					return;
 				case CascadeType.REMOVE:
 					sb.append("delete,");
 					break;
