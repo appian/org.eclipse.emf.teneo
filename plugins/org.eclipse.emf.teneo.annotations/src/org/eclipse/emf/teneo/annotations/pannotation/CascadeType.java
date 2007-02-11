@@ -2,21 +2,15 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadeType.java,v 1.6 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: CascadeType.java,v 1.5.2.1 2007/02/11 20:44:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
-
-import static org.eclipse.emf.teneo.annotations.pannotation.CascadeType.ALL;
-import static org.eclipse.emf.teneo.annotations.pannotation.CascadeType.MERGE;
-import static org.eclipse.emf.teneo.annotations.pannotation.CascadeType.PERSIST;
-import static org.eclipse.emf.teneo.annotations.pannotation.CascadeType.REFRESH;
-import static org.eclipse.emf.teneo.annotations.pannotation.CascadeType.REMOVE;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.common.util.AbstractEnumerator;
 
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Cascade Type</b></em>', and
@@ -25,48 +19,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum CascadeType implements Enumerator
-{
-	/**
-	 * The '<em><b>ALL</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #ALL
-	 * @generated
-	 * @ordered
-	 */
-	ALL_LITERAL(0, "ALL", "ALL"),
-	/**
-	 * The '<em><b>PERSIST</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #PERSIST
-	 * @generated
-	 * @ordered
-	 */
-	PERSIST_LITERAL(1, "PERSIST", "PERSIST"),
-	/**
-	 * The '<em><b>MERGE</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #MERGE
-	 * @generated
-	 * @ordered
-	 */
-	MERGE_LITERAL(2, "MERGE", "MERGE"),
-	/**
-	 * The '<em><b>REMOVE</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #REMOVE
-	 * @generated
-	 * @ordered
-	 */
-	REMOVE_LITERAL(3, "REMOVE", "REMOVE"),
-	/**
-	 * The '<em><b>REFRESH</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #REFRESH
-	 * @generated
-	 * @ordered
-	 */
-	REFRESH_LITERAL(4, "REFRESH", "REFRESH");
+public final class CascadeType extends AbstractEnumerator {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -149,6 +102,76 @@ public enum CascadeType implements Enumerator
 	public static final int REFRESH = 4;
 
 	/**
+	 * The '<em><b>NONE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NONE_LITERAL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NONE = 5;
+
+	/**
+	 * The '<em><b>ALL</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #ALL
+	 * @generated
+	 * @ordered
+	 */
+	public static final CascadeType ALL_LITERAL = new CascadeType(ALL, "ALL", "ALL");
+
+	/**
+	 * The '<em><b>PERSIST</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #PERSIST
+	 * @generated
+	 * @ordered
+	 */
+	public static final CascadeType PERSIST_LITERAL = new CascadeType(PERSIST, "PERSIST", "PERSIST");
+
+	/**
+	 * The '<em><b>MERGE</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #MERGE
+	 * @generated
+	 * @ordered
+	 */
+	public static final CascadeType MERGE_LITERAL = new CascadeType(MERGE, "MERGE", "MERGE");
+
+	/**
+	 * The '<em><b>REMOVE</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #REMOVE
+	 * @generated
+	 * @ordered
+	 */
+	public static final CascadeType REMOVE_LITERAL = new CascadeType(REMOVE, "REMOVE", "REMOVE");
+
+	/**
+	 * The '<em><b>REFRESH</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #REFRESH
+	 * @generated
+	 * @ordered
+	 */
+	public static final CascadeType REFRESH_LITERAL = new CascadeType(REFRESH, "REFRESH", "REFRESH");
+
+	/**
+	 * The '<em><b>NONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NONE
+	 * @generated
+	 * @ordered
+	 */
+	public static final CascadeType NONE_LITERAL = new CascadeType(NONE, "NONE", "NONE");
+
+	/**
 	 * An array of all the '<em><b>Cascade Type</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
@@ -161,6 +184,7 @@ public enum CascadeType implements Enumerator
 			MERGE_LITERAL,
 			REMOVE_LITERAL,
 			REFRESH_LITERAL,
+			NONE_LITERAL,
 		};
 
 	/**
@@ -169,7 +193,7 @@ public enum CascadeType implements Enumerator
 	 * end-user-doc -->
 	 * @generated
 	 */
-	public static final List<CascadeType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Cascade Type</b></em>' literal with the specified literal value.
@@ -216,30 +240,10 @@ public enum CascadeType implements Enumerator
 			case MERGE: return MERGE_LITERAL;
 			case REMOVE: return REMOVE_LITERAL;
 			case REFRESH: return REFRESH_LITERAL;
+			case NONE: return NONE_LITERAL;
 		}
-		return null;
+		return null;	
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private final int value;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private final String name;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -248,46 +252,7 @@ public enum CascadeType implements Enumerator
 	 * @generated
 	 */
 	private CascadeType(int value, String name, String literal) {
-		this.value = value;
-		this.name = name;
-		this.literal = literal;
+		super(value, name, literal);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getValue() {
-	  return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-	  return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getLiteral() {
-	  return literal;
-	}
-
-	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		return literal;
-	}
-}
+} // CascadeType

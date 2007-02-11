@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactoryImpl.java,v 1.20 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: PannotationFactoryImpl.java,v 1.19.2.1 2007/02/11 20:44:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.annotations.pannotation.*;
+
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
@@ -104,7 +106,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case PannotationPackage.ATTRIBUTE_OVERRIDE: return createAttributeOverride();
@@ -151,7 +152,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case PannotationPackage.CASCADE_TYPE:
@@ -178,7 +178,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case PannotationPackage.CASCADE_TYPE:
@@ -695,7 +694,6 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * @deprecated
 	 * @generated
 	 */
-	@Deprecated
 	public static PannotationPackage getPackage() {
 		return PannotationPackage.eINSTANCE;
 	}

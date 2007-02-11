@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelSwitch.java,v 1.15 2007/02/08 23:12:34 mtaal Exp $
+ * $Id: PamodelSwitch.java,v 1.14.2.1 2007/02/11 20:44:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -11,6 +11,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.annotations.pamodel.*;
+
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -35,7 +36,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
  * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage
  * @generated
  */
-public class PamodelSwitch<T> {
+public class PamodelSwitch {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -70,7 +71,7 @@ public class PamodelSwitch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public T doSwitch(EObject theEObject) {
+	public Object doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -81,16 +82,16 @@ public class PamodelSwitch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected T doSwitch(EClass theEClass, EObject theEObject) {
+	protected Object doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
+			List eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch(eSuperTypes.get(0), theEObject);
+					doSwitch((EClass)eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -101,37 +102,37 @@ public class PamodelSwitch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected T doSwitch(int classifierID, EObject theEObject) {
+	protected Object doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT: {
 				PAnnotatedEModelElement pAnnotatedEModelElement = (PAnnotatedEModelElement)theEObject;
-				T result = casePAnnotatedEModelElement(pAnnotatedEModelElement);
+				Object result = casePAnnotatedEModelElement(pAnnotatedEModelElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PamodelPackage.PANNOTATED_MODEL: {
 				PAnnotatedModel pAnnotatedModel = (PAnnotatedModel)theEObject;
-				T result = casePAnnotatedModel(pAnnotatedModel);
+				Object result = casePAnnotatedModel(pAnnotatedModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PamodelPackage.PANNOTATED_EPACKAGE: {
 				PAnnotatedEPackage pAnnotatedEPackage = (PAnnotatedEPackage)theEObject;
-				T result = casePAnnotatedEPackage(pAnnotatedEPackage);
+				Object result = casePAnnotatedEPackage(pAnnotatedEPackage);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEPackage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PamodelPackage.PANNOTATED_ECLASS: {
 				PAnnotatedEClass pAnnotatedEClass = (PAnnotatedEClass)theEObject;
-				T result = casePAnnotatedEClass(pAnnotatedEClass);
+				Object result = casePAnnotatedEClass(pAnnotatedEClass);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE: {
 				PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature = (PAnnotatedEStructuralFeature)theEObject;
-				T result = casePAnnotatedEStructuralFeature(pAnnotatedEStructuralFeature);
+				Object result = casePAnnotatedEStructuralFeature(pAnnotatedEStructuralFeature);
 				if (result == null) result = casePAnnotatedETypedElement(pAnnotatedEStructuralFeature);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEStructuralFeature);
 				if (result == null) result = defaultCase(theEObject);
@@ -139,7 +140,7 @@ public class PamodelSwitch<T> {
 			}
 			case PamodelPackage.PANNOTATED_EATTRIBUTE: {
 				PAnnotatedEAttribute pAnnotatedEAttribute = (PAnnotatedEAttribute)theEObject;
-				T result = casePAnnotatedEAttribute(pAnnotatedEAttribute);
+				Object result = casePAnnotatedEAttribute(pAnnotatedEAttribute);
 				if (result == null) result = casePAnnotatedEStructuralFeature(pAnnotatedEAttribute);
 				if (result == null) result = casePAnnotatedETypedElement(pAnnotatedEAttribute);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEAttribute);
@@ -148,7 +149,7 @@ public class PamodelSwitch<T> {
 			}
 			case PamodelPackage.PANNOTATED_EREFERENCE: {
 				PAnnotatedEReference pAnnotatedEReference = (PAnnotatedEReference)theEObject;
-				T result = casePAnnotatedEReference(pAnnotatedEReference);
+				Object result = casePAnnotatedEReference(pAnnotatedEReference);
 				if (result == null) result = casePAnnotatedEStructuralFeature(pAnnotatedEReference);
 				if (result == null) result = casePAnnotatedETypedElement(pAnnotatedEReference);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEReference);
@@ -157,14 +158,14 @@ public class PamodelSwitch<T> {
 			}
 			case PamodelPackage.PANNOTATED_ETYPED_ELEMENT: {
 				PAnnotatedETypedElement pAnnotatedETypedElement = (PAnnotatedETypedElement)theEObject;
-				T result = casePAnnotatedETypedElement(pAnnotatedETypedElement);
+				Object result = casePAnnotatedETypedElement(pAnnotatedETypedElement);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedETypedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PamodelPackage.PANNOTATED_EDATA_TYPE: {
 				PAnnotatedEDataType pAnnotatedEDataType = (PAnnotatedEDataType)theEObject;
-				T result = casePAnnotatedEDataType(pAnnotatedEDataType);
+				Object result = casePAnnotatedEDataType(pAnnotatedEDataType);
 				if (result == null) result = casePAnnotatedETypedElement(pAnnotatedEDataType);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEDataType);
 				if (result == null) result = defaultCase(theEObject);
@@ -185,7 +186,7 @@ public class PamodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePAnnotatedEModelElement(PAnnotatedEModelElement object) {
+	public Object casePAnnotatedEModelElement(PAnnotatedEModelElement object) {
 		return null;
 	}
 
@@ -200,7 +201,7 @@ public class PamodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePAnnotatedModel(PAnnotatedModel object) {
+	public Object casePAnnotatedModel(PAnnotatedModel object) {
 		return null;
 	}
 
@@ -215,7 +216,7 @@ public class PamodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePAnnotatedEPackage(PAnnotatedEPackage object) {
+	public Object casePAnnotatedEPackage(PAnnotatedEPackage object) {
 		return null;
 	}
 
@@ -230,7 +231,7 @@ public class PamodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePAnnotatedEClass(PAnnotatedEClass object) {
+	public Object casePAnnotatedEClass(PAnnotatedEClass object) {
 		return null;
 	}
 
@@ -245,7 +246,7 @@ public class PamodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature object) {
+	public Object casePAnnotatedEStructuralFeature(PAnnotatedEStructuralFeature object) {
 		return null;
 	}
 
@@ -260,7 +261,7 @@ public class PamodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePAnnotatedEAttribute(PAnnotatedEAttribute object) {
+	public Object casePAnnotatedEAttribute(PAnnotatedEAttribute object) {
 		return null;
 	}
 
@@ -275,7 +276,7 @@ public class PamodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePAnnotatedEDataType(PAnnotatedEDataType object) {
+	public Object casePAnnotatedEDataType(PAnnotatedEDataType object) {
 		return null;
 	}
 
@@ -290,7 +291,7 @@ public class PamodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePAnnotatedEReference(PAnnotatedEReference object) {
+	public Object casePAnnotatedEReference(PAnnotatedEReference object) {
 		return null;
 	}
 
@@ -305,7 +306,7 @@ public class PamodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
+	public Object casePAnnotatedETypedElement(PAnnotatedETypedElement object) {
 		return null;
 	}
 
@@ -320,7 +321,7 @@ public class PamodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public T defaultCase(EObject object) {
+	public Object defaultCase(EObject object) {
 		return null;
 	}
 
