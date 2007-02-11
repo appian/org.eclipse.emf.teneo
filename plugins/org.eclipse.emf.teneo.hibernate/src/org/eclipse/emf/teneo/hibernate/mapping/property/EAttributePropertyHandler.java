@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.5 2007/02/10 00:14:09 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.3.2.1 2007/02/11 19:05:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -34,26 +34,18 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * Is a getter and setter for EMF eattribute which uses eGet and eSet.Handles
- * many==false properties.
+ * Is a getter and setter for EMF eattribute which uses eGet and eSet.Handles many==false properties.
  * 
- * This class implements both the getter, setter and propertyaccessor
- * interfaces. When the getGetter and getSetter methods are called it returns
- * itself.
+ * This class implements both the getter, setter and propertyaccessor interfaces. When the getGetter and getSetter
+ * methods are called it returns itself.
  * 
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.3.2.1 $
  */
-@SuppressWarnings("unchecked")
-public class EAttributePropertyHandler implements Getter, Setter,
-		PropertyAccessor {
-	/**
-	 * Generated Serial Version ID
-	 */
-	private static final long serialVersionUID = 8953817672640618007L;
 
+public class EAttributePropertyHandler implements Getter, Setter, PropertyAccessor {
 	/** The logger */
 	private static Log log = LogFactory.getLog(EAttributePropertyHandler.class);
 
@@ -62,38 +54,31 @@ public class EAttributePropertyHandler implements Getter, Setter,
 
 	/** The instanceclass */
 	protected final Class instanceClass;
-
+	
 	/** Constructor */
 	public EAttributePropertyHandler(EAttribute eAttribute) {
 		this.eAttribute = eAttribute;
 		instanceClass = eAttribute.getEType().getInstanceClass();
-		AssertUtil.assertTrue(eAttribute.getName()
-				+ " is a many feature which is not handled by this accessor ",
+		AssertUtil.assertTrue(eAttribute.getName() + " is a many feature which is not handled by this accessor ",
 				!eAttribute.isMany());
-		log
-				.debug("Created getter/setter for "
-						+ StoreUtil.toString(eAttribute));
+		log.debug("Created getter/setter for " + StoreUtil.toString(eAttribute));
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
-	 *      java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
-	public Getter getGetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
-	 *      java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
-	public Setter getSetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -109,11 +94,10 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
-	 *      java.util.Map, org.hibernate.engine.SessionImplementor)
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
+	 *      org.hibernate.engine.SessionImplementor)
 	 */
-	public Object getForInsert(Object arg0, Map arg1, SessionImplementor arg2)
-			throws HibernateException {
+	public Object getForInsert(Object arg0, Map arg1, SessionImplementor arg2) throws HibernateException {
 		return get(arg0);
 	}
 
@@ -147,35 +131,34 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Setter#set(java.lang.Object,
-	 *      java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
+	 *      org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value,
-			SessionFactoryImplementor factory) throws HibernateException {
-
+	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
+		if (value == null)
+			return; // do not set
 		final Object curValue = get(target);
 		if (curValue != null && curValue.equals(value))
 			return; // do not set if not changed
 		EObject eobj = (EObject) target;
 
 		final Object setValue;
-		if (value != null && instanceClass != null
-				&& value.getClass() != instanceClass) {
+		if (instanceClass != null && value.getClass() != instanceClass) {
 			final Class valClass = value.getClass();
 			if (valClass == Integer[].class) {
-				setValue = convert((Integer[]) value);
+				setValue = convert((Integer[])value);
 			} else if (valClass == Byte[].class) {
-				setValue = convert((Byte[]) value);
+				setValue = convert((Byte[])value);
 			} else if (valClass == Boolean[].class) {
-				setValue = convert((Boolean[]) value);
+				setValue = convert((Boolean[])value);
 			} else if (valClass == Double[].class) {
-				setValue = convert((Double[]) value);
+				setValue = convert((Double[])value);
 			} else if (valClass == Float[].class) {
-				setValue = convert((Float[]) value);
+				setValue = convert((Float[])value);
 			} else if (valClass == Long[].class) {
-				setValue = convert((Long[]) value);
+				setValue = convert((Long[])value);
 			} else if (valClass == Short[].class) {
-				setValue = convert((Short[]) value);
+				setValue = convert((Short[])value);
 			} else {
 				setValue = convert(value);
 			}
@@ -184,13 +167,11 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		}
 		eobj.eSet(eAttribute, setValue);
 	}
-
+	
 	/** Convert to a primitive type */
 	private Object convert(Integer[] arr) {
 		if (instanceClass != int[].class) {
-			log.warn("Expecting " + instanceClass.getName()
-					+ " as instance class but it is: "
-					+ arr.getClass().getName());
+			log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
 			return arr;
 		}
 		final int[] res = new int[arr.length];
@@ -199,13 +180,12 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		}
 		return res;
 	}
-
+	
+	
 	/** Convert to a primitive type */
 	private Object convert(Boolean[] arr) {
 		if (instanceClass != boolean[].class) {
-			log.warn("Expecting " + instanceClass.getName()
-					+ " as instance class but it is: "
-					+ arr.getClass().getName());
+			log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
 			return arr;
 		}
 		final boolean[] res = new boolean[arr.length];
@@ -214,13 +194,11 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		}
 		return res;
 	}
-
+	
 	/** Convert to a primitive type */
 	private Object convert(Byte[] arr) {
 		if (instanceClass != byte[].class) {
-			log.warn("Expecting " + instanceClass.getName()
-					+ " as instance class but it is: "
-					+ arr.getClass().getName());
+			log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
 			return arr;
 		}
 		final byte[] res = new byte[arr.length];
@@ -229,13 +207,11 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		}
 		return res;
 	}
-
+	
 	/** Convert to a primitive type */
 	private Object convert(Double[] arr) {
 		if (instanceClass != double[].class) {
-			log.warn("Expecting " + instanceClass.getName()
-					+ " as instance class but it is: "
-					+ arr.getClass().getName());
+			log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
 			return arr;
 		}
 		final double[] res = new double[arr.length];
@@ -244,13 +220,11 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		}
 		return res;
 	}
-
+	
 	/** Convert to a primitive type */
 	private Object convert(Float[] arr) {
 		if (instanceClass != float[].class) {
-			log.warn("Expecting " + instanceClass.getName()
-					+ " as instance class but it is: "
-					+ arr.getClass().getName());
+			log.warn("Expecting " + instanceClass.getName() + " as instance class but it is: " + arr.getClass().getName());
 			return arr;
 		}
 		final float[] res = new float[arr.length];
@@ -259,12 +233,11 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		}
 		return res;
 	}
-
+	
 	/** Convert to a primitive type */
 	private Object convert(Long[] arr) {
 		if (instanceClass != long[].class) {
-			log.debug("Expecting [] as instance class but it is: "
-					+ instanceClass.getName());
+			log.debug("Expecting [] as instance class but it is: " + instanceClass.getName());
 			return arr;
 		}
 		final long[] res = new long[arr.length];
@@ -273,12 +246,11 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		}
 		return res;
 	}
-
+	
 	/** Convert to a primitive type */
 	private Object convert(Short[] arr) {
 		if (instanceClass != short[].class) {
-			log.debug("Expecting short[] as instance class but it is: "
-					+ instanceClass.getName());
+			log.debug("Expecting short[] as instance class but it is: " + instanceClass.getName());
 			return arr;
 		}
 		final short[] res = new short[arr.length];
@@ -287,10 +259,9 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		}
 		return res;
 	}
-
+	
 	/** Capature all, do not convert */
 	private Object convert(Object arr) {
-
 		if (arr != null
 				&& instanceClass != null
 				&& (!instanceClass.isPrimitive() || !arr.getClass()
