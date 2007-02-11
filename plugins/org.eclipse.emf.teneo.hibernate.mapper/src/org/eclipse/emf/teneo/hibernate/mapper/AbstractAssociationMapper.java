@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.8.2.1 2007/02/11 19:05:33 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.8.2.2 2007/02/11 20:43:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -98,7 +98,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 					joinColumn.isUnique() ? "true" : "false");
 			if (joinColumn.getName() != null) {
 				columnElement.addAttribute("name", getHbmContext().trunc(joinColumn.getName()));
-				//[173429
+				//[173429, 0.8.0
 				final String uc = getHbmContext().getUniqueConstraintKey(joinColumn.getName());
 				if (uc != null) {
 					columnElement.addAttribute("unique-key", uc);
@@ -186,6 +186,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 				case CascadeType.REMOVE:
 					sb.append("delete,");
 					break;
+				case CascadeType.NONE:
+					return;
 				}
 			}
 			associationElement.addAttribute("cascade", sb.substring(0, sb.length() - 1));
