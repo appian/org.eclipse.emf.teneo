@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ToonePackage.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: ToonePackage.java,v 1.1.4.1 2007/02/11 21:50:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone;
 
@@ -88,6 +88,34 @@ public interface ToonePackage extends EPackage {
 	int ADDRESS_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.ArmImpl <em>Arm</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.ArmImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.ToonePackageImpl#getArm()
+	 * @generated
+	 */
+	int ARM = 1;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARM__LENGTH = 0;
+
+	/**
+	 * The number of structural features of the '<em>Arm</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARM_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.HeadImpl <em>Head</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -95,7 +123,7 @@ public interface ToonePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.ToonePackageImpl#getHead()
 	 * @generated
 	 */
-	int HEAD = 1;
+	int HEAD = 2;
 
 	/**
 	 * The feature id for the '<em><b>Hair Color</b></em>' attribute.
@@ -132,7 +160,7 @@ public interface ToonePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.ToonePackageImpl#getPerson()
 	 * @generated
 	 */
-	int PERSON = 2;
+	int PERSON = 3;
 
 	/**
 	 * The feature id for the '<em><b>Address</b></em>' reference.
@@ -153,13 +181,22 @@ public interface ToonePackage extends EPackage {
 	int PERSON__HEAD = 1;
 
 	/**
+	 * The feature id for the '<em><b>Left Arm</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__LEFT_ARM = 2;
+
+	/**
 	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 2;
+	int PERSON_FEATURE_COUNT = 3;
 
 
 	/**
@@ -182,6 +219,27 @@ public interface ToonePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAddress_City();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm <em>Arm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Arm</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm
+	 * @generated
+	 */
+	EClass getArm();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm#getLength <em>Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Length</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm#getLength()
+	 * @see #getArm()
+	 * @generated
+	 */
+	EAttribute getArm_Length();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.Head <em>Head</em>}'.
@@ -248,6 +306,17 @@ public interface ToonePackage extends EPackage {
 	EReference getPerson_Head();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.Person#getLeftArm <em>Left Arm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Left Arm</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.Person#getLeftArm()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EReference getPerson_LeftArm();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -268,7 +337,7 @@ public interface ToonePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.AddressImpl <em>Address</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -286,6 +355,24 @@ public interface ToonePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ADDRESS__CITY = eINSTANCE.getAddress_City();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.ArmImpl <em>Arm</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.ArmImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.ToonePackageImpl#getArm()
+		 * @generated
+		 */
+		EClass ARM = eINSTANCE.getArm();
+
+		/**
+		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ARM__LENGTH = eINSTANCE.getArm_Length();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.HeadImpl <em>Head</em>}' class.
@@ -338,6 +425,14 @@ public interface ToonePackage extends EPackage {
 		 * @generated
 		 */
 		EReference PERSON__HEAD = eINSTANCE.getPerson_Head();
+
+			/**
+		 * The meta object literal for the '<em><b>Left Arm</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSON__LEFT_ARM = eINSTANCE.getPerson_LeftArm();
 
 	}
 

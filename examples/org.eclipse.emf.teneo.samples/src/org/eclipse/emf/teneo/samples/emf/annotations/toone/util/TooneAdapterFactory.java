@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TooneAdapterFactory.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: TooneAdapterFactory.java,v 1.1.4.1 2007/02/11 21:50:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.util;
 
@@ -52,7 +52,6 @@ public class TooneAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -69,22 +68,21 @@ public class TooneAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TooneSwitch<Adapter> modelSwitch =
-		new TooneSwitch<Adapter>() {
-			@Override
-			public Adapter caseAddress(Address object) {
+	protected TooneSwitch modelSwitch =
+		new TooneSwitch() {
+			public Object caseAddress(Address object) {
 				return createAddressAdapter();
 			}
-			@Override
-			public Adapter caseHead(Head object) {
+			public Object caseArm(Arm object) {
+				return createArmAdapter();
+			}
+			public Object caseHead(Head object) {
 				return createHeadAdapter();
 			}
-			@Override
-			public Adapter casePerson(Person object) {
+			public Object casePerson(Person object) {
 				return createPersonAdapter();
 			}
-			@Override
-			public Adapter defaultCase(EObject object) {
+			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -97,9 +95,8 @@ public class TooneAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
+		return (Adapter)modelSwitch.doSwitch((EObject)target);
 	}
 
 
@@ -114,6 +111,20 @@ public class TooneAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAddressAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm <em>Arm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm
+	 * @generated
+	 */
+	public Adapter createArmAdapter() {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: Person.java,v 1.2.4.1 2007/02/11 21:50:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.Person#getAddress <em>Address</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.Person#getHead <em>Head</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.Person#getLeftArm <em>Left Arm</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,5 +84,33 @@ public interface Person extends EObject {
 	 * @generated
 	 */
 	void setHead(Head value);
+
+	/**
+	 * Returns the value of the '<em><b>Left Arm</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Left Arm</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Left Arm</em>' reference.
+	 * @see #setLeftArm(Arm)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.ToonePackage#getPerson_LeftArm()
+	 * @model resolveProxies="false" required="true"
+	 *        annotation="teneo.jpa appinfo='@OneToOne(fetch=EAGER cascade=NONE targetEntity=\"Arm\" optional=true)'"
+	 *        extendedMetaData="kind='element' name='leftArm'"
+	 * @generated
+	 */
+	Arm getLeftArm();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.toone.Person#getLeftArm <em>Left Arm</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Left Arm</em>' reference.
+	 * @see #getLeftArm()
+	 * @generated
+	 */
+	void setLeftArm(Arm value);
 
 } // Person

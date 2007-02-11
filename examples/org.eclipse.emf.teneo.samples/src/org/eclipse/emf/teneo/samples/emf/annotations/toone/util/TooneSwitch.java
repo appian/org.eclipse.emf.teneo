@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TooneSwitch.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: TooneSwitch.java,v 1.1.4.1 2007/02/11 21:50:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.toone.*;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.toone.ToonePackage
  * @generated
  */
-public class TooneSwitch<T> {
+public class TooneSwitch {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class TooneSwitch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public T doSwitch(EObject theEObject) {
+	public Object doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class TooneSwitch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected T doSwitch(EClass theEClass, EObject theEObject) {
+	protected Object doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
+			List eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch(eSuperTypes.get(0), theEObject);
+					doSwitch((EClass)eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,29 @@ public class TooneSwitch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected T doSwitch(int classifierID, EObject theEObject) {
+	protected Object doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case ToonePackage.ADDRESS: {
 				Address address = (Address)theEObject;
-				T result = caseAddress(address);
+				Object result = caseAddress(address);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ToonePackage.ARM: {
+				Arm arm = (Arm)theEObject;
+				Object result = caseArm(arm);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ToonePackage.HEAD: {
 				Head head = (Head)theEObject;
-				T result = caseHead(head);
+				Object result = caseHead(head);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ToonePackage.PERSON: {
 				Person person = (Person)theEObject;
-				T result = casePerson(person);
+				Object result = casePerson(person);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,7 +126,22 @@ public class TooneSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAddress(Address object) {
+	public Object caseAddress(Address object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Arm</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Arm</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseArm(Arm object) {
 		return null;
 	}
 
@@ -135,7 +156,7 @@ public class TooneSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseHead(Head object) {
+	public Object caseHead(Head object) {
 		return null;
 	}
 
@@ -150,7 +171,7 @@ public class TooneSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePerson(Person object) {
+	public Object casePerson(Person object) {
 		return null;
 	}
 
@@ -165,7 +186,7 @@ public class TooneSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public T defaultCase(EObject object) {
+	public Object defaultCase(EObject object) {
 		return null;
 	}
 

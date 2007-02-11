@@ -16,6 +16,11 @@
 					<xsd:appinfo source="teneo.jpa">@OneToOne(fetch=EAGER cascade=ALL targetEntity="Head" optional=true)</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
+	  		<xsd:element name="leftArm" type="xsd:IDREF" ecore:reference="this:Arm">
+			 	<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@OneToOne(fetch=EAGER cascade=NONE targetEntity="Arm" optional=true)</xsd:appinfo>
+			    </xsd:annotation>
+			</xsd:element>
     		</xsd:sequence>
   	</xsd:complexType>
 
@@ -35,6 +40,12 @@
 					</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
+    		</xsd:sequence>
+  	</xsd:complexType>
+
+  	<xsd:complexType name="Arm">
+	    	<xsd:sequence>
+	  		<xsd:element name="length" type="xsd:int"/>
     		</xsd:sequence>
   	</xsd:complexType>
  </xsd:schema>

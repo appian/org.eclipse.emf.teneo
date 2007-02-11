@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TooneFactory.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: TooneFactory.java,v 1.1.4.1 2007/02/11 21:50:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.toone;
 
@@ -33,6 +33,15 @@ public interface TooneFactory extends EFactory {
 	 * @generated
 	 */
 	Address createAddress();
+
+	/**
+	 * Returns a new object of class '<em>Arm</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Arm</em>'.
+	 * @generated
+	 */
+	Arm createArm();
 
 	/**
 	 * Returns a new object of class '<em>Head</em>'.
