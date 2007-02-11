@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ToOneAction.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: ToOneAction.java,v 1.2.2.1 2007/02/11 21:51:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
 
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Address;
+import org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Head;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Person;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.TooneFactory;
@@ -29,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.2.2.1 $
 */
 public class ToOneAction extends AbstractTestAction 
 {
@@ -49,6 +50,8 @@ public class ToOneAction extends AbstractTestAction
 		
     	{
     		store.beginTransaction();
+    		Arm arm = factory.createArm();
+    		arm.setLength(50);
     		Address a = factory.createAddress();
     		a.setCity("Amersfoort");
     		Person p = factory.createPerson();
@@ -57,6 +60,8 @@ public class ToOneAction extends AbstractTestAction
     		
     		p.setAddress(a);
     		p.setHead(h);
+    		p.setLeftArm(arm);
+    		store.store(arm);
     		store.store(p);
     		store.commitTransaction();
     	}
@@ -72,5 +77,6 @@ public class ToOneAction extends AbstractTestAction
     	store.checkNumber(Person.class, 0);
     	store.checkNumber(Head.class, 0);
     	store.checkNumber(Address.class, 1);
+    	store.checkNumber(Arm.class, 1);
 	}	
 }
