@@ -6,5 +6,4 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.emf.ecore,
- org.eclipse.emf.teneo.jpox.libraries,
  org.eclipse.emf.teneo
