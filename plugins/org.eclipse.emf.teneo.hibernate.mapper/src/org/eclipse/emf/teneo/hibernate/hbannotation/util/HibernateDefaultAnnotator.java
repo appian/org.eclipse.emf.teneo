@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.5 2007/02/28 11:55:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -76,7 +76,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		final TypeDef typeDef = HbAnnotationFactory.eINSTANCE.createTypeDef();
 		typeDef.setName(hed.getAnnotatedEDataType().getEPackage().getName() + "."
 				+ ped.getAnnotatedEDataType().getName());
-		typeDef.setTypeClass("org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType");
+		typeDef.setTypeClass(getDefaultUserType());
 		// add default parameters
 		final Parameter paramPackage = HbAnnotationFactory.eINSTANCE.createParameter();
 		paramPackage.setName(HbMapperConstants.EPACKAGE_PARAM);
@@ -87,6 +87,11 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		edParam.setValue(hed.getAnnotatedEDataType().getName());
 		typeDef.getParameters().add(edParam);
 		hed.setHbTypeDef(typeDef);
+	}
+
+	/** Return the default user type */
+	public String getDefaultUserType() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
 	}
 
 	/**
@@ -216,7 +221,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 			return null;
 		}
 		if (typeClassName != null) {
-			final Class instanceClass = eDataType.getInstanceClass();
+			final Class<?> instanceClass = eDataType.getInstanceClass();
 			if (instanceClass.isArray()) {
 				// get rid of the [] at the end
 				final String primType = typeClassName.substring(0, typeClassName.length() - 2);

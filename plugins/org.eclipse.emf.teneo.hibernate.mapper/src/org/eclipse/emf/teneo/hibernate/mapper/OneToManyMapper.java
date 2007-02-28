@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.7 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.8 2007/02/28 11:55:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -116,7 +116,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 			otm.setIndexed(false);
 		}
 
-		if (otm.isIndexed()) {
+		if (otm.isIndexed() || !otm.isUnique()) {
 			addListIndex(collElement, paReference);
 		}
 
