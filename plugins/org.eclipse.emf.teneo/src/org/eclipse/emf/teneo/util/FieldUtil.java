@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: FieldUtil.java,v 1.9 2007/02/08 23:14:41 mtaal Exp $
+ * $Id: FieldUtil.java,v 1.10 2007/02/28 11:53:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class FieldUtil {
@@ -135,9 +135,8 @@ public class FieldUtil {
 			throw new StoreException("Field " + fieldName
 					+ " not accessible for class: " + clazz.getName(), e);
 		}
-		if (field == null) {
-			throw new StoreException("Field " + fieldName
-					+ " not found in class: " + clazz.getName());
+		if (field == null) { 
+			return null;
 		}
 
 		fieldMethodCache.put(clazz.getName() + "." + fieldName, field);
