@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToMany.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: OneToMany.java,v 1.6 2007/02/28 11:55:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -185,4 +185,6 @@ public interface OneToMany extends PAnnotation {
 	 */
 	void setUnique(boolean value);
 
+	/** Returns true if this one to many should be modeled as a list */
+	boolean isList();
 } // OneToMany

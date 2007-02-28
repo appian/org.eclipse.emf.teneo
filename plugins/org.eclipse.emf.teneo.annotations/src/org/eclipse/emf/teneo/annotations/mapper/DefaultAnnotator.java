@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.27 2007/02/11 21:54:01 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.28 2007/02/28 11:55:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -81,7 +81,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 public class DefaultAnnotator {
 
@@ -943,7 +943,7 @@ public class DefaultAnnotator {
 		if (!otmWasSet) {
 			log
 					.debug("Setting indexed and unique from ereference because otm was not set manually!");
-			otm.setIndexed(eReference.isOrdered());
+			otm.setIndexed(eReference.isOrdered() && aReference.getOrderBy() == null);
 			otm.setUnique(eReference.isUnique());
 
 			if (aReference.getAnnotatedEReference().getEOpposite() != null) {

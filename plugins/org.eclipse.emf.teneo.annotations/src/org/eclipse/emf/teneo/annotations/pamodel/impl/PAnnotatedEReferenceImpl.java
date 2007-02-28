@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceImpl.java,v 1.8 2007/02/08 23:12:35 mtaal Exp $
+ * $Id: PAnnotatedEReferenceImpl.java,v 1.9 2007/02/28 11:55:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -501,8 +501,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Added behavior that indexed is set to false in case order by is set
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setOrderBy(OrderBy newOrderBy) {
 		if (newOrderBy != orderBy) {

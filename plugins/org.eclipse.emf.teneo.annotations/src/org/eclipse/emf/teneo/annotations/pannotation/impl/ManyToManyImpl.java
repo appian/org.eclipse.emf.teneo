@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToManyImpl.java,v 1.6 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: ManyToManyImpl.java,v 1.7 2007/02/28 11:55:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -435,4 +435,8 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 		return result.toString();
 	}
 
+	/** Returns true if this one to many should be modeled as a list */
+	public boolean isList() {
+		return isIndexed();
+	}
 } //ManyToManyImpl
