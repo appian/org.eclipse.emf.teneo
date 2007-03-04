@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeFactory.java,v 1.3 2006/09/07 08:10:02 mtaal Exp $
+ * $Id: UsertypeFactory.java,v 1.4 2007/03/04 21:18:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -33,6 +33,15 @@ public interface UsertypeFactory extends EFactory {
 	 * @generated
 	 */
 	Person createPerson();
+
+	/**
+	 * Returns a new object of class '<em>Address</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Address</em>'.
+	 * @generated
+	 */
+	Address createAddress();
 
 	/**
 	 * Returns the package supported by this factory.

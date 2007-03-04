@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeSwitch.java,v 1.3 2006/09/07 08:20:45 mtaal Exp $
+ * $Id: UsertypeSwitch.java,v 1.4 2007/03/04 21:18:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.util;
 
@@ -93,6 +93,12 @@ public class UsertypeSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case UsertypePackage.ADDRESS: {
+				Address address = (Address)theEObject;
+				Object result = caseAddress(address);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -109,6 +115,21 @@ public class UsertypeSwitch {
 	 * @generated
 	 */
 	public Object casePerson(Person object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Address</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Address</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseAddress(Address object) {
 		return null;
 	}
 

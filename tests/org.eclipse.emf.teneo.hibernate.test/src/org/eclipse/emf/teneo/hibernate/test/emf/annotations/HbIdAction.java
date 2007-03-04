@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbIdAction.java,v 1.2 2007/02/01 12:36:23 mtaal Exp $
+ * $Id: HbIdAction.java,v 1.3 2007/03/04 21:18:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdentityID;
@@ -32,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests GenericGenerator of hibernate
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HbIdAction extends AbstractTestAction {
 	/** How many test objects are created */
@@ -48,6 +49,7 @@ public class HbIdAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
 	public void doAction(TestStore store) {
 		//store.disableDrop();
 		final IdFactory factory = IdFactory.eINSTANCE;
@@ -65,25 +67,25 @@ public class HbIdAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			// test if we saved them all
-			List list = (List) store.getObjects(IdentityID.class);
-			HashMap testMap = new HashMap();
-			for (Iterator it = list.iterator(); it.hasNext();) {
+			List<?> list = store.getObjects(IdentityID.class);
+			HashMap<Long, EObject> testMap = new HashMap<Long, EObject>();
+			for (Iterator<?> it = list.iterator(); it.hasNext();) {
 				IdentityID iid = (IdentityID) it.next();
 				testMap.put(new Long(iid.getMyid()), iid);
 			}
 			assertEquals(NO_TEST_OBJECTS, testMap.size());
 
-			list = (List) store.getObjects(TableID.class);
-			testMap = new HashMap();
-			for (Iterator it = list.iterator(); it.hasNext();) {
+			list = store.getObjects(TableID.class);
+			testMap = new HashMap<Long, EObject>();
+			for (Iterator<?> it = list.iterator(); it.hasNext();) {
 				TableID sid = (TableID) it.next();
 				testMap.put(new Long(sid.getMyid()), sid);
 			}
 			assertEquals(NO_TEST_OBJECTS, testMap.size());
 
-			list = (List) store.getObjects(SimpleID.class);
-			testMap = new HashMap();
-			for (Iterator it = list.iterator(); it.hasNext();) {
+			list = store.getObjects(SimpleID.class);
+			testMap = new HashMap<Long, EObject>();
+			for (Iterator<?> it = list.iterator(); it.hasNext();) {
 				SimpleID sid = (SimpleID) it.next();
 				testMap.put(new Long(sid.getAutoID()), sid);
 			}

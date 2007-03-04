@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeAdapterFactory.java,v 1.3 2006/09/07 08:20:45 mtaal Exp $
+ * $Id: UsertypeAdapterFactory.java,v 1.4 2007/03/04 21:18:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.util;
 
@@ -73,6 +73,9 @@ public class UsertypeAdapterFactory extends AdapterFactoryImpl {
 			public Object casePerson(Person object) {
 				return createPersonAdapter();
 			}
+			public Object caseAddress(Address object) {
+				return createAddressAdapter();
+			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -102,6 +105,20 @@ public class UsertypeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPersonAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address <em>Address</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address
+	 * @generated
+	 */
+	public Adapter createAddressAdapter() {
 		return null;
 	}
 

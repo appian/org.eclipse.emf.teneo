@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackageImpl.java,v 1.7 2006/11/13 14:52:45 mtaal Exp $
+ * $Id: UsertypePackageImpl.java,v 1.8 2007/03/04 21:18:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -11,8 +11,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber;
@@ -32,6 +34,13 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * @generated
 	 */
 	private EClass personEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass addressEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,6 +181,42 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPerson_Addresses() {
+		return (EReference)personEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAddress() {
+		return addressEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAddress_AddressInfo() {
+		return (EAttribute)addressEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAddress_Person() {
+		return (EReference)addressEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getName_() {
 		return nameEDataType;
 	}
@@ -227,6 +272,11 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		createEAttribute(personEClass, PERSON__NUMBERS);
 		createEAttribute(personEClass, PERSON__PHONE_NUMBERS);
 		createEAttribute(personEClass, PERSON__EMERGENCY_CONTACT);
+		createEReference(personEClass, PERSON__ADDRESSES);
+
+		addressEClass = createEClass(ADDRESS);
+		createEAttribute(addressEClass, ADDRESS__ADDRESS_INFO);
+		createEReference(addressEClass, ADDRESS__PERSON);
 
 		// Create data types
 		nameEDataType = createEDataType(NAME);
@@ -265,6 +315,11 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		initEAttribute(getPerson_Numbers(), this.getIntArray(), "numbers", null, 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPerson_PhoneNumbers(), this.getPhoneNumber(), "phoneNumbers", null, 0, 100, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPerson_EmergencyContact(), this.getPhoneNumber(), "emergencyContact", "", 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPerson_Addresses(), this.getAddress(), this.getAddress_Person(), "addresses", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(addressEClass, Address.class, "Address", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAddress_AddressInfo(), ecorePackage.getEString(), "addressInfo", null, 1, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAddress_Person(), this.getPerson(), this.getPerson_Addresses(), "person", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(nameEDataType, Name.class, "Name", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -294,13 +349,19 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t\t@TypeDef(name=\"nameType\" typeClass=\"org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType\")\n\t\t\t\t\t\t@Columns({@Column(name=\"first_name\"), @Column(name=\"last_name\")})\n\t\t\t\t\t"
-		   });							
+		   });						
+		addAnnotation
+		  (getPerson_Addresses(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@OnDelete(action=OnDeleteAction.CASCADE)\n@OneToMany(indexed=false, unique=true)"
+		   });			
 		addAnnotation
 		  (intArrayEDataType, 
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t\t@TypeDef(name=\"intArrayType\" typeClass=\"org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType\", parameters={@Parameter(name=\"epackage\" value=\"http://www.elver.org/samples/emf/hibernate/usertype\"), @Parameter(name=\"edatatype\", value=\"IntArray\")})\n\t\t\t\t\t"
-		   });
+		   });		
 	}
 
 	/**
@@ -337,13 +398,27 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   new String[] {
 			 "kind", "element",
 			 "name", "intArray"
-		   });		
+		   });			
 		addAnnotation
 		  (intArrayEDataType, 
 		   source, 
 		   new String[] {
 			 "name", "IntArray"
-		   });	
+		   });			
+		addAnnotation
+		  (addressEClass, 
+		   source, 
+		   new String[] {
+			 "name", "Person",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getAddress_AddressInfo(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
+		   });
 	}
 
 } //UsertypePackageImpl

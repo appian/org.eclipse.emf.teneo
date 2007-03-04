@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.7 2006/11/13 14:52:45 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.8 2007/03/04 21:18:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -10,15 +10,21 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber;
@@ -36,6 +42,7 @@ import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getNumbers <em>Numbers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getPhoneNumbers <em>Phone Numbers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getEmergencyContact <em>Emergency Contact</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getAddresses <em>Addresses</em>}</li>
  * </ul>
  * </p>
  *
@@ -111,6 +118,16 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @ordered
 	 */
 	protected UsaPhoneNumber emergencyContact = EMERGENCY_CONTACT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getAddresses() <em>Addresses</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAddresses()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList addresses = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -210,6 +227,44 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getAddresses() {
+		if (addresses == null) {
+			addresses = new EObjectWithInverseResolvingEList(Address.class, this, UsertypePackage.PERSON__ADDRESSES, UsertypePackage.ADDRESS__PERSON);
+		}
+		return addresses;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UsertypePackage.PERSON__ADDRESSES:
+				return ((InternalEList)getAddresses()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UsertypePackage.PERSON__ADDRESSES:
+				return ((InternalEList)getAddresses()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UsertypePackage.PERSON__NAME:
@@ -220,6 +275,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return getPhoneNumbers();
 			case UsertypePackage.PERSON__EMERGENCY_CONTACT:
 				return getEmergencyContact();
+			case UsertypePackage.PERSON__ADDRESSES:
+				return getAddresses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -244,6 +301,10 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case UsertypePackage.PERSON__EMERGENCY_CONTACT:
 				setEmergencyContact((UsaPhoneNumber)newValue);
 				return;
+			case UsertypePackage.PERSON__ADDRESSES:
+				getAddresses().clear();
+				getAddresses().addAll((Collection)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -267,6 +328,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case UsertypePackage.PERSON__EMERGENCY_CONTACT:
 				setEmergencyContact(EMERGENCY_CONTACT_EDEFAULT);
 				return;
+			case UsertypePackage.PERSON__ADDRESSES:
+				getAddresses().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -286,6 +350,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return phoneNumbers != null && !phoneNumbers.isEmpty();
 			case UsertypePackage.PERSON__EMERGENCY_CONTACT:
 				return EMERGENCY_CONTACT_EDEFAULT == null ? emergencyContact != null : !EMERGENCY_CONTACT_EDEFAULT.equals(emergencyContact);
+			case UsertypePackage.PERSON__ADDRESSES:
+				return addresses != null && !addresses.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

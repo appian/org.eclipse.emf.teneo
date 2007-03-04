@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackage.java,v 1.7 2006/11/13 14:52:45 mtaal Exp $
+ * $Id: UsertypePackage.java,v 1.8 2007/03/04 21:18:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,13 +107,59 @@ public interface UsertypePackage extends EPackage {
 	int PERSON__EMERGENCY_CONTACT = 3;
 
 	/**
+	 * The feature id for the '<em><b>Addresses</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__ADDRESSES = 4;
+
+	/**
 	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 4;
+	int PERSON_FEATURE_COUNT = 5;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl <em>Address</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getAddress()
+	 * @generated
+	 */
+	int ADDRESS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Address Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS__ADDRESS_INFO = 0;
+
+	/**
+	 * The feature id for the '<em><b>Person</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS__PERSON = 1;
+
+	/**
+	 * The number of structural features of the '<em>Address</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '<em>Name</em>' data type.
@@ -122,7 +169,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getName_()
 	 * @generated
 	 */
-	int NAME = 1;
+	int NAME = 2;
 
 
 	/**
@@ -133,7 +180,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getPhoneNumber()
 	 * @generated
 	 */
-	int PHONE_NUMBER = 2;
+	int PHONE_NUMBER = 3;
 
 
 	/**
@@ -143,7 +190,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getIntArray()
 	 * @generated
 	 */
-	int INT_ARRAY = 3;
+	int INT_ARRAY = 4;
 
 
 	/**
@@ -199,6 +246,49 @@ public interface UsertypePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPerson_EmergencyContact();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getAddresses <em>Addresses</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Addresses</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getAddresses()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EReference getPerson_Addresses();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address <em>Address</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Address</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address
+	 * @generated
+	 */
+	EClass getAddress();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address#getAddressInfo <em>Address Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Address Info</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address#getAddressInfo()
+	 * @see #getAddress()
+	 * @generated
+	 */
+	EAttribute getAddress_AddressInfo();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address#getPerson <em>Person</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Person</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address#getPerson()
+	 * @see #getAddress()
+	 * @generated
+	 */
+	EReference getAddress_Person();
 
 	/**
 	 * Returns the meta object for data type '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name <em>Name</em>}'.
@@ -299,6 +389,40 @@ public interface UsertypePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PERSON__EMERGENCY_CONTACT = eINSTANCE.getPerson_EmergencyContact();
+
+		/**
+		 * The meta object literal for the '<em><b>Addresses</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSON__ADDRESSES = eINSTANCE.getPerson_Addresses();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl <em>Address</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getAddress()
+		 * @generated
+		 */
+		EClass ADDRESS = eINSTANCE.getAddress();
+
+		/**
+		 * The meta object literal for the '<em><b>Address Info</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS__ADDRESS_INFO = eINSTANCE.getAddress_AddressInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Person</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADDRESS__PERSON = eINSTANCE.getAddress_Person();
 
 		/**
 		 * The meta object literal for the '<em>Name</em>' data type.

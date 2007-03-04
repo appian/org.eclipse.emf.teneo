@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeFactoryImpl.java,v 1.5 2006/11/13 14:52:45 mtaal Exp $
+ * $Id: UsertypeFactoryImpl.java,v 1.6 2007/03/04 21:18:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -61,6 +61,7 @@ public class UsertypeFactoryImpl extends EFactoryImpl implements UsertypeFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case UsertypePackage.PERSON: return createPerson();
+			case UsertypePackage.ADDRESS: return createAddress();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -110,6 +111,16 @@ public class UsertypeFactoryImpl extends EFactoryImpl implements UsertypeFactory
 	public Person createPerson() {
 		PersonImpl person = new PersonImpl();
 		return person;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Address createAddress() {
+		AddressImpl address = new AddressImpl();
+		return address;
 	}
 
 	/**

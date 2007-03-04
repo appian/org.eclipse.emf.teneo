@@ -11,7 +11,7 @@
  *   L.M. Fridael
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.5 2007/02/01 12:36:23 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.6 2007/03/04 21:18:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber;
@@ -34,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test
  * 
  * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class UserTypeAction extends AbstractTestAction {
 
@@ -50,6 +51,7 @@ public class UserTypeAction extends AbstractTestAction {
 		storePerson(store);
 		testPerson(store);
 		testDatabase(store);
+		removePerson(store);
 	}
 
 	private void storePerson(TestStore store) {
@@ -63,6 +65,14 @@ public class UserTypeAction extends AbstractTestAction {
 		person.getPhoneNumbers().add(up2);
 		person.getPhoneNumbers().add(up3);
 		person.setNumbers(new int[] {4, 5});
+		Address addr1 = UsertypeFactory.eINSTANCE.createAddress();
+		addr1.setAddressInfo("addr1");
+		Address addr2 = UsertypeFactory.eINSTANCE.createAddress();
+		addr2.setAddressInfo("addr2");
+		person.getAddresses().add(addr1);
+		person.getAddresses().add(addr2);
+		store.store(addr1);
+		store.store(addr2);
 		store.store(person);
 		store.commitTransaction();
 	}
@@ -80,6 +90,9 @@ public class UserTypeAction extends AbstractTestAction {
 		assertEquals(2, nums.length);
 		assertEquals(4, nums[0]);
 		assertEquals(5, nums[1]);
+		
+		assertEquals(2, person.getAddresses().size());
+		
 		store.commitTransaction();
 	}
 
@@ -109,5 +122,16 @@ public class UserTypeAction extends AbstractTestAction {
 			} catch (SQLException e) {
 			}
 		}
+	}
+	
+	private void removePerson(TestStore store) {
+		store.beginTransaction();
+		List results = store.query("FROM Person");
+		assertEquals(1, results.size());
+		Person person = (Person) results.get(0);
+		store.deleteObject(person);
+		store.commitTransaction();
+		store.checkNumber(Person.class, 0);
+		//store.checkNumber(Address.class, 0);
 	}
 }

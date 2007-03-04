@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.4 2006/11/13 14:52:45 mtaal Exp $
+ * $Id: Person.java,v 1.5 2007/03/04 21:18:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getNumbers <em>Numbers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getPhoneNumbers <em>Phone Numbers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getEmergencyContact <em>Emergency Contact</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getAddresses <em>Addresses</em>}</li>
  * </ul>
  * </p>
  *
@@ -126,5 +127,24 @@ public interface Person extends EObject {
 	 * @generated
 	 */
 	void setEmergencyContact(UsaPhoneNumber value);
+
+	/**
+	 * Returns the value of the '<em><b>Addresses</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address#getPerson <em>Person</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Addresses</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Addresses</em>' reference list.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage#getPerson_Addresses()
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address#getPerson
+	 * @model type="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address" opposite="person"
+	 *        annotation="teneo.jpa appinfo='@OnDelete(action=OnDeleteAction.CASCADE)\n@OneToMany(indexed=false, unique=true)'"
+	 * @generated
+	 */
+	EList getAddresses();
 
 } // Person
