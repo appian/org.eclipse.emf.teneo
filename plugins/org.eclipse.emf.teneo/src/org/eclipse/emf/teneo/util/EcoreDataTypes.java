@@ -10,9 +10,10 @@
  * Contributors:
  *   Martin Taal
  *   Davide Marchignoli
+ *   Brian Vetter
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.3 2007/02/08 23:14:41 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.4 2007/03/04 21:18:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 /**
  * Utility class to classify Ecore datatypes.
@@ -33,6 +35,11 @@ import org.eclipse.emf.ecore.EcorePackage;
  */
 public class EcoreDataTypes {
 
+	// The xml types 
+	private static XMLTypePackage xmlTypePackage = XMLTypePackage.eINSTANCE;
+	private static EDataType xmlDateEDataType = xmlTypePackage.getDate();
+	private static EDataType xmlDateTimeEDataType = xmlTypePackage.getDateTime();
+	
 	private static final List<EDataType> PRIMITIVES_ETYPES_LIST = Collections
 			.unmodifiableList(Arrays.asList(new EDataType[] {
 					EcorePackage.eINSTANCE.getEBoolean(),
@@ -105,14 +112,43 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * @return true if and only if the given dataType is a string datatype.
-	 */
-	public boolean isEDate(EDataType eDataType) {
-		Class<?> ic = eDataType.getInstanceClass();
-		return java.util.Date.class == ic || java.util.Calendar.class == ic
-				|| java.sql.Date.class == ic;
+ 
+ 	/**
+-	 * @return true if and only if the given dataType is a string datatype.
++	 * @return true if and only if the given dataType is a date datatype.
+ 	 */
+ 	public boolean isEDate(EDataType eDataType) {
+		/*
+		 *	the InstanceClass for date type can be "Object" for XSD types. I'm not sure about
+		 *  ecore itself so I have kept the original check against the java classes.
+		 *  
+		 *  There is some ambiguity around the Java Date class since it can also hold time - 
+		 *  a conflict with the DateTime class
+		 */
+ 		Class<?> ic = eDataType.getInstanceClass();
+		if (ic == Object.class) {
+			// could be an XML date type
+			return eDataType.equals(xmlDateEDataType);
+		}
+ 		return java.util.Date.class == ic || java.util.Calendar.class == ic || java.sql.Date.class == ic;
 	}
 
+	/**
+	 * @return true if and only if the given dataType is a datetime/timestamp datatype.
+	 */
+	public boolean isEDateTime(EDataType eDataType) {
+		/*
+		 *	the InstanceClass for date type can be "Object" for XSD types. I'm not sure about
+		 *  ecore itself so I have kept the original check against the java classes.	
+		 */
+		Class<?> ic = eDataType.getInstanceClass();
+		if (ic == Object.class) {
+			// could be an XML date type
+			return eDataType.equals(xmlDateTimeEDataType);
+		}
+		return java.sql.Timestamp.class == ic;
+	}
+ 
 	/**
 	 * @return Returns true if and only if the given type is either a primitive
 	 *         or a wrapper or string or a date.
