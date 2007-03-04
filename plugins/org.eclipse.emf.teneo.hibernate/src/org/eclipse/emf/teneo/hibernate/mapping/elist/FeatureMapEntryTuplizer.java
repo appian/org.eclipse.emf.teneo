@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryTuplizer.java,v 1.8 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: FeatureMapEntryTuplizer.java,v 1.7.2.1 2007/03/04 21:20:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -36,11 +36,10 @@ import org.hibernate.tuple.entity.EntityMetamodel;
 import org.hibernate.tuple.Instantiator;
 
 /**
- * Tuplizer for feature map entries. These types are mapped using the dynamic
- * capabilities of Hibernate.
+ * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.7.2.1 $
  */
 
 public class FeatureMapEntryTuplizer extends EMFTuplizer {
@@ -49,8 +48,7 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 	private static Log log = LogFactory.getLog(FeatureMapEntryTuplizer.class);
 
 	/** Constructor */
-	public FeatureMapEntryTuplizer(EntityMetamodel entityMetamodel,
-			PersistentClass mappedEntity) {
+	public FeatureMapEntryTuplizer(EntityMetamodel entityMetamodel, PersistentClass mappedEntity) {
 		super(entityMetamodel, mappedEntity);
 	}
 
@@ -64,7 +62,7 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 	 * 
 	 * @see org.hibernate.tuple.EntityTuplizer#getConcreteProxyClass()
 	 */
-	public Class<?> getConcreteProxyClass() {
+	public Class getConcreteProxyClass() {
 		return EObject.class;
 	}
 
@@ -73,52 +71,40 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 	 * 
 	 * @see org.hibernate.tuple.Tuplizer#getMappedClass()
 	 */
-	public Class<?> getMappedClass() {
+	public Class getMappedClass() {
 		return EObject.class;
 	}
 
 	/** Returns the correct accessor on the basis of the type of property */
-	protected PropertyAccessor getPropertyAccessor(Property mappedProperty,
-			PersistentClass pc) {
+	protected PropertyAccessor getPropertyAccessor(Property mappedProperty, PersistentClass pc) {
 		final HbDataStore hds = HbHelper.INSTANCE.getDataStore(pc);
-		final String versionPropertyName = hds.getPersistenceOptions()
-				.getVersionColumnName();
-		if (mappedProperty.getName().compareToIgnoreCase(versionPropertyName) == 0) {
+		final String versionPropertyName = hds.getPersistenceOptions().getVersionColumnName();
+		if (mappedProperty
+				.getMetaAttribute(HbMapperConstants.VERSION_META) != null ||
+				mappedProperty.getName().compareToIgnoreCase(versionPropertyName) == 0) {
 			return hds.getHbContext().createVersionAccessor();
-		} else if (mappedProperty.getName().compareToIgnoreCase(
-				HbMapperConstants.PROPERTY_FEATURE) == 0) {
+		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_FEATURE) == 0) {
 			return hds.getHbContext().createFeatureMapEntryFeatureURIAccessor();
-		} else if (mappedProperty.getName().compareToIgnoreCase(
-				HbMapperConstants.PROPERTY_MIXED_CDATA) == 0) {
-			return hds.getHbContext().createFeatureMapEntryAccessor(
-					Constants.CDATA);
-		} else if (mappedProperty.getName().compareToIgnoreCase(
-				HbMapperConstants.PROPERTY_MIXED_COMMENT) == 0) {
-			return hds.getHbContext().createFeatureMapEntryAccessor(
-					Constants.COMMENT);
-		} else if (mappedProperty.getName().compareToIgnoreCase(
-				HbMapperConstants.PROPERTY_MIXED_TEXT) == 0) {
-			return hds.getHbContext().createFeatureMapEntryAccessor(
-					Constants.TEXT);
+		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_MIXED_CDATA) == 0) {
+			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.CDATA);
+		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_MIXED_COMMENT) == 0) {
+			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.COMMENT);
+		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_MIXED_TEXT) == 0) {
+			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.TEXT);
 		}
 
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(pc);
 		final String eclassUri = HbUtil.getEClassNameFromFeatureMapMeta(pc);
-		final EClass eClass = ds.getPersistenceOptions()
-				.getEClassNameStrategy().toEClass(eclassUri, ds.getEPackages());
-		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(
-				eClass, mappedProperty.getName());
+		final EClass eClass = ds.getPersistenceOptions().getEClassNameStrategy().toEClass(eclassUri, ds.getEPackages());
+		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass, mappedProperty.getName());
 
 		if (efeature == null) {
-			throw new HbMapperException(
-					"Feature not found for entity/property "
-							+ pc.getEntityName() + "/"
-							+ mappedProperty.getName());
+			throw new HbMapperException("Feature not found for entity/property " + pc.getEntityName() + "/"
+					+ mappedProperty.getName());
 		}
 
-		log.debug("Creating property accessor for " + mappedProperty.getName()
-				+ "/" + pc.getEntityName() + "/" + eclassUri + "/"
-				+ efeature.getName());
+		log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + pc.getEntityName() + "/"
+				+ eclassUri + "/" + efeature.getName());
 
 		return hds.getHbContext().createFeatureMapEntryAccessor(efeature);
 	}
