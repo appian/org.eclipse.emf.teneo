@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ParserUtil.java,v 1.6 2007/02/08 23:12:34 mtaal Exp $
+ * $Id: ParserUtil.java,v 1.7 2007/03/04 21:18:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * Util class
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class ParserUtil {
@@ -39,6 +39,15 @@ public class ParserUtil {
 		try {
 			return EcoreUtil.createFromString(eType, value);
 		} catch (IllegalArgumentException e) {
+			// now try without the first dot
+			if (value != null && value.indexOf('.') != -1) {
+				try {
+					return EcoreUtil.createFromString(eType, value.substring(1 + value.indexOf('.')));
+				} catch (IllegalArgumentException x) {
+					throw new AnnotationParserException("Cannot convert '" + value
+							+ "' to '" + eType.getName() + "' type", e);
+				}
+			}
 			throw new AnnotationParserException("Cannot convert '" + value
 					+ "' to '" + eType.getName() + "' type", e);
 		}
