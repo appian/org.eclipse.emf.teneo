@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryTuplizer.java,v 1.8 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: FeatureMapEntryTuplizer.java,v 1.9 2007/03/04 21:18:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -40,7 +40,7 @@ import org.hibernate.tuple.Instantiator;
  * capabilities of Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class FeatureMapEntryTuplizer extends EMFTuplizer {
@@ -81,9 +81,8 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 	protected PropertyAccessor getPropertyAccessor(Property mappedProperty,
 			PersistentClass pc) {
 		final HbDataStore hds = HbHelper.INSTANCE.getDataStore(pc);
-		final String versionPropertyName = hds.getPersistenceOptions()
-				.getVersionColumnName();
-		if (mappedProperty.getName().compareToIgnoreCase(versionPropertyName) == 0) {
+		if (mappedProperty
+				.getMetaAttribute(HbMapperConstants.VERSION_META) != null) {
 			return hds.getHbContext().createVersionAccessor();
 		} else if (mappedProperty.getName().compareToIgnoreCase(
 				HbMapperConstants.PROPERTY_FEATURE) == 0) {

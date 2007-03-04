@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.12 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.13 2007/03/04 21:18:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> {
@@ -128,27 +128,30 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 				log.debug("EList is not loaded in session context");
 			}
 
-			if (controlsTransaction)
+			if (controlsTransaction) {
 				assert (res instanceof HbResource);
-
-			Object[] objs = delegate.toArray(); // this forces the load
-
-			// disabled for now as containers are persisted by hibernate anyway
-			if (false && isContainment()) {
-				final int featureID = getEStructuralFeature().getFeatureID();
-				for (int i = 0; i < objs.length; i++) {
-					if (objs[i] instanceof InternalEObject) {
-						EContainerRepairControl.setContainer(owner,
-								(InternalEObject) objs[i],
-								getEStructuralFeature());
-					}
-				}
+				((StoreResource) res).setIsLoading(true);
 			}
 
-			// add the new objects to the resource so they are tracked
-			if (res != null && res instanceof StoreResource) {
-				((StoreResource) res).setIsLoading(true);
-				try {
+			try {
+				Object[] objs = delegate.toArray(); // this forces the load
+
+				// disabled for now as containers are persisted by hibernate
+				// anyway
+				if (false && isContainment()) {
+					final int featureID = getEStructuralFeature()
+							.getFeatureID();
+					for (int i = 0; i < objs.length; i++) {
+						if (objs[i] instanceof InternalEObject) {
+							EContainerRepairControl.setContainer(owner,
+									(InternalEObject) objs[i],
+									getEStructuralFeature());
+						}
+					}
+				}
+
+				// add the new objects to the resource so they are tracked
+				if (res != null && res instanceof StoreResource) {
 					// attach the new contained objects so that they are adapted
 					// when required
 					for (int i = 0; i < objs.length; i++) {
@@ -157,13 +160,16 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 									(InternalEObject) objs[i], isContainment());
 						}
 					}
-				} finally {
-					((HbResource) res).setIsLoading(false);
+				}
+
+				log.debug("Loaded " + objs.length + " from backend store for "
+						+ logString);
+			} finally {
+				if (controlsTransaction) {
+					((StoreResource) res).setIsLoading(false);
 				}
 			}
 			err = false;
-			log.debug("Loaded " + objs.length + " from backend store for "
-					+ logString);
 		} finally {
 			if (controlsTransaction) {
 				if (err) {
@@ -207,7 +213,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 			// Added to support <idbag>
 			super.replaceDelegate(newDelegate);
 		} else if (newDelegate == delegate) // this can occur and is okay, do
-											// nothing in this case
+		// nothing in this case
 		{
 
 		} else {

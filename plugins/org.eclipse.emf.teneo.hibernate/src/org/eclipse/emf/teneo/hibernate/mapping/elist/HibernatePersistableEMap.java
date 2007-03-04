@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEMap.java,v 1.1 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: HibernatePersistableEMap.java,v 1.2 2007/03/04 21:18:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -40,7 +40,7 @@ import org.hibernate.impl.SessionImpl;
  * Implements the hibernate persistable emap. Note an emap is not loaded lazily!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
@@ -102,15 +102,16 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 				log.debug("EMap is not loaded in session context");
 			}
 
-			if (controlsTransaction)
+			if (controlsTransaction) {
 				assert (res instanceof HbResource);
-
-			Object[] objs = delegate.toArray(); // this forces the load
+				((StoreResource) res).setIsLoading(true);
+			}
+			
+			try { 
+				Object[] objs = delegate.toArray(); // this forces the load
 
 			// add the new objects to the resource so they are tracked
-			if (res != null && res instanceof StoreResource) {
-				((StoreResource) res).setIsLoading(true);
-				try {
+				if (res != null && res instanceof StoreResource) {
 					// attach the new contained objects so that they are adapted
 					// when required
 					for (int i = 0; i < objs.length; i++) {
@@ -119,13 +120,15 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 									(InternalEObject) objs[i], ((EReference)getEStructuralFeature()).isContainment());
 						}
 					}
-				} finally {
-					((HbResource) res).setIsLoading(false);
+				}
+				log.debug("Loaded " + objs.length + " from backend store for "
+						+ logString);
+			} finally {
+				if (controlsTransaction) {
+					((StoreResource) res).setIsLoading(false);
 				}
 			}
 			err = false;
-			log.debug("Loaded " + objs.length + " from backend store for "
-					+ logString);
 		} finally {
 			if (controlsTransaction) {
 				if (err) {

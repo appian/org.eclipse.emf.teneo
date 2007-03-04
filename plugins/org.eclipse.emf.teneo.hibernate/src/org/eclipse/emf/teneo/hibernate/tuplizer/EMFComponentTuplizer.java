@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFComponentTuplizer.java,v 1.7 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: EMFComponentTuplizer.java,v 1.8 2007/03/04 21:18:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -33,9 +33,11 @@ import org.hibernate.property.Setter;
 import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.component.AbstractComponentTuplizer;
 
+import com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException;
+
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class EMFComponentTuplizer extends AbstractComponentTuplizer {

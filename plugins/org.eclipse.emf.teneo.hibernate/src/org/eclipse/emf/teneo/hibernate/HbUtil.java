@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.10 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: HbUtil.java,v 1.11 2007/03/04 21:18:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -44,7 +44,7 @@ import org.hibernate.property.PropertyAccessor;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class HbUtil {
 
@@ -59,17 +59,9 @@ public class HbUtil {
 	/** Returns the correct accessor on the basis of the type of property */
 	public static PropertyAccessor getPropertyAccessor(Property mappedProperty,
 			HbDataStore ds, String entityName) {
-		final String versionPropName = ds.getPersistenceOptions()
-				.getVersionColumnName();
-		final String idPropName = ds.getPersistenceOptions().getIdColumnName();
-
-		if (mappedProperty.getName().compareToIgnoreCase(idPropName) == 0
-				|| mappedProperty.getMetaAttribute(HbMapperConstants.ID_META) != null) { // synthetic
-																							// ID
+		if (mappedProperty.getMetaAttribute(HbMapperConstants.ID_META) != null) { // synthetic ID
 			return new IdentifierPropertyHandler();
-		} else if (mappedProperty.getName()
-				.compareToIgnoreCase(versionPropName) == 0
-				|| mappedProperty
+		} else if (mappedProperty
 						.getMetaAttribute(HbMapperConstants.VERSION_META) != null) {
 			return ds.getHbContext().createVersionAccessor();
 		} else if (mappedProperty.getName().compareToIgnoreCase(
