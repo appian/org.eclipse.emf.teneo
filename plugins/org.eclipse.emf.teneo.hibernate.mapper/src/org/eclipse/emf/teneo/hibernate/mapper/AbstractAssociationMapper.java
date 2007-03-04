@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.11 2007/02/28 11:55:11 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.12 2007/03/04 21:18:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -435,7 +435,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		}
 		// TODO jc.getReferencedColumnName();
 	}
-
+	
 	/**
 	 * Adds a jointable and possible joincolumns to the passed key element.
 	 * 

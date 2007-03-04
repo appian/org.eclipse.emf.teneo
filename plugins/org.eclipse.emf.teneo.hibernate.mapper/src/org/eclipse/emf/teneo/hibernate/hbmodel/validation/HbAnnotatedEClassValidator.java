@@ -2,11 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClassValidator.java,v 1.1 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotatedEClassValidator.java,v 1.2 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.validation;
 
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 
 /**
  * A sample validator interface for {@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass}.
@@ -18,4 +19,6 @@ public interface HbAnnotatedEClassValidator {
 	boolean validate();
 
 	boolean validateHbCache(Cache value);
+
+	boolean validateHbOnDelete(OnDelete value);
 }

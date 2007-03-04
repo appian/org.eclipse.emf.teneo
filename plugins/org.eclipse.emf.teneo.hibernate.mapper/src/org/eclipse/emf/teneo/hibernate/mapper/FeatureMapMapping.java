@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapMapping.java,v 1.6 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: FeatureMapMapping.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -83,8 +83,11 @@ class FeatureMapMapping {
 		mainElement.addElement("id").addAttribute("type", "long").addElement("generator").addAttribute("class",
 				"native");
 
-		mainElement.addElement("version").addAttribute("name", hbmContext.getVersionColumnName()).addAttribute(
+		final Element versionElement = mainElement.addElement("version").addAttribute("name", hbmContext.getVersionColumnName()).addAttribute(
 				"access", "org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
+		final Element meta = new Element("meta");
+		meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
+		versionElement.add(0, meta);
 
 		mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_FEATURE).addAttribute(
 				"type", "java.lang.String");

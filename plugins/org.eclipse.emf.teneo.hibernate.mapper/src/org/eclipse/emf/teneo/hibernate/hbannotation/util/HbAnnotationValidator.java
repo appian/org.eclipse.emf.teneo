@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.teneo.annotations.pannotation.util.PannotationValidator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
@@ -143,10 +144,14 @@ public class HbAnnotationValidator extends EObjectValidator {
 				return validateTypeDef((TypeDef)value, diagnostics, context);
 			case HbAnnotationPackage.FETCH:
 				return validateFetch((Fetch)value, diagnostics, context);
+			case HbAnnotationPackage.ON_DELETE:
+				return validateOnDelete((OnDelete)value, diagnostics, context);
 			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			case HbAnnotationPackage.HB_FETCH_TYPE:
 				return validateHbFetchType((HbFetchType)value, diagnostics, context);
+			case HbAnnotationPackage.ON_DELETE_ACTION:
+				return validateOnDeleteAction((OnDeleteAction)value, diagnostics, context);
 			default: 
 				return true;
 		}
@@ -427,6 +432,24 @@ public class HbAnnotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateOnDelete(OnDelete onDelete, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(onDelete, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(onDelete, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(onDelete, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(onDelete, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(onDelete, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(onDelete, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(onDelete, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(onDelete, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(onDelete, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateCacheConcurrencyStrategy(CacheConcurrencyStrategy cacheConcurrencyStrategy, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
@@ -437,6 +460,15 @@ public class HbAnnotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateHbFetchType(HbFetchType hbFetchType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOnDeleteAction(OnDeleteAction onDeleteAction, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

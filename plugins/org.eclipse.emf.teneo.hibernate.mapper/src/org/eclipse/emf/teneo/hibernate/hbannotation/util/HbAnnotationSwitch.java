@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationSwitch.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotationSwitch.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -11,6 +11,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
@@ -201,6 +202,14 @@ public class HbAnnotationSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case HbAnnotationPackage.ON_DELETE: {
+				OnDelete onDelete = (OnDelete)theEObject;
+				T result = caseOnDelete(onDelete);
+				if (result == null) result = caseHbAnnotation(onDelete);
+				if (result == null) result = casePAnnotation(onDelete);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -382,6 +391,21 @@ public class HbAnnotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseFetch(Fetch object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>On Delete</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>On Delete</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOnDelete(OnDelete object) {
 		return null;
 	}
 

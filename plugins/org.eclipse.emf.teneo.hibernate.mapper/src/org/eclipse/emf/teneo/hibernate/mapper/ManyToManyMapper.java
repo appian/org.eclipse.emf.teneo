@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.7 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.8 2007/03/04 21:18:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -69,7 +69,8 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		}
 
 		final Element keyElement = collElement.addElement("key");
-
+		handleOndelete(keyElement, hbReference.getHbOnDelete());
+		
 		if (mtm.isIndexed()) {
 			assert (hbReference.getHbIdBag() == null);
 			addListIndex(collElement, hbReference);

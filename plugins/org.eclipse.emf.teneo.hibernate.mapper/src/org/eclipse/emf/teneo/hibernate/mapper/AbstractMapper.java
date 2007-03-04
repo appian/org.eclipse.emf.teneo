@@ -10,14 +10,17 @@
  * Contributors:
  *   Martin Taal
  *   Davide Marchignoli
+ *   Brian Vetter
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.11 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.12 2007/03/04 21:18:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -29,6 +32,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
@@ -140,7 +145,9 @@ abstract class AbstractMapper {
 		} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
 			return eDataType.getInstanceClassName();
 		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType)) {
-			return "java.util.Date";
+			return getEDateClass(eDataType);
+		} else if (EcoreDataTypes.INSTANCE.isEDateTime(eDataType)) {
+			return getEDateTimeClass(eDataType);
 		} else if (eDataType.getInstanceClass() != null && eDataType.getInstanceClass() == Object.class) {
 			// null forces caller to use usertype
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
@@ -150,6 +157,41 @@ abstract class AbstractMapper {
 			// all edatatypes are translatable to a string, done by caller
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
 		}
+	}
+	
+	/*
+	 * @return The name of the java class needed to map the date type
+	 */
+	public String getEDateClass(EDataType eDataType) {
+		assert(EcoreDataTypes.INSTANCE.isEDate(eDataType));
+		// only override if the user did not specify a more specific class
+		if (eDataType.getInstanceClass() == Object.class) {
+			// EMF returns an XSD Date type as an Object instance. go figure.
+			// note that I would prefer to use the class instance to get the name
+			// but for other reasons I do not want to have references to the 
+			// org.eclipse.emf.teneo.hibernate plugin.
+			return "org.eclipse.emf.teneo.hibernate.mapping.XSDDate";
+		}
+		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
+		// really wants a different mapping he/she should use maybe a usertype??
+		return Date.class.getName();		
+	}
+
+	/*
+	 * @return The name of the java class needed to map the datetime/timestamp type
+	 */
+	public String getEDateTimeClass(EDataType eDataType) {
+		assert(EcoreDataTypes.INSTANCE.isEDateTime(eDataType));
+		if (eDataType.getInstanceClass() == Object.class) {
+			// EMF returns an XSD Date type as an Object instance. go figure.
+			// note that I would prefer to use the class instance to get the name
+			// but for other reasons I do not want to have references to the 
+			// org.eclipse.emf.teneo.hibernate plugin.
+			return "org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime";
+		}
+		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
+		// really wants a different mapping he/she should use maybe a usertype??
+		return Timestamp.class.getName();		
 	}
 
 	/**
@@ -301,6 +343,19 @@ abstract class AbstractMapper {
 		}
 	}
 
+	/** Add the ondelete mapping to the key */
+	protected void handleOndelete(Element keyElement, OnDelete onDelete) {
+		if (true || onDelete == null) {
+			return;
+		}
+		
+		if (onDelete.getAction().equals(OnDeleteAction.CASCADE)) {
+			keyElement.addAttribute("on-delete", "cascade");
+		} else {
+			keyElement.addAttribute("on-delete", "noaction");
+		}			
+	}
+	
 	/** Returns true if the target is the general EObject type */
 	protected boolean isEObject(String typeName) {
 		if (typeName == null) {

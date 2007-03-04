@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClass.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotatedEClass.java,v 1.5 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Hb Annotated EClass</b></em>'. <!--
@@ -17,6 +18,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbCache <em>Hb Cache</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbOnDelete <em>Hb On Delete</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,5 +57,31 @@ public interface HbAnnotatedEClass extends PAnnotatedEClass {
 	 * @generated
 	 */
 	void setHbCache(Cache value);
+
+	/**
+	 * Returns the value of the '<em><b>Hb On Delete</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hb On Delete</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hb On Delete</em>' reference.
+	 * @see #setHbOnDelete(OnDelete)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEClass_HbOnDelete()
+	 * @model
+	 * @generated
+	 */
+	OnDelete getHbOnDelete();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbOnDelete <em>Hb On Delete</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hb On Delete</em>' reference.
+	 * @see #getHbOnDelete()
+	 * @generated
+	 */
+	void setHbOnDelete(OnDelete value);
 
 } // HbAnnotatedEClass

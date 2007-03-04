@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationFactoryImpl.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotationFactoryImpl.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
@@ -90,6 +91,7 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 			case HbAnnotationPackage.CACHE: return createCache();
 			case HbAnnotationPackage.TYPE_DEF: return createTypeDef();
 			case HbAnnotationPackage.FETCH: return createFetch();
+			case HbAnnotationPackage.ON_DELETE: return createOnDelete();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -107,6 +109,8 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 				return createCacheConcurrencyStrategyFromString(eDataType, initialValue);
 			case HbAnnotationPackage.HB_FETCH_TYPE:
 				return createHbFetchTypeFromString(eDataType, initialValue);
+			case HbAnnotationPackage.ON_DELETE_ACTION:
+				return createOnDeleteActionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -124,6 +128,8 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 				return convertCacheConcurrencyStrategyToString(eDataType, instanceValue);
 			case HbAnnotationPackage.HB_FETCH_TYPE:
 				return convertHbFetchTypeToString(eDataType, instanceValue);
+			case HbAnnotationPackage.ON_DELETE_ACTION:
+				return convertOnDeleteActionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -244,6 +250,16 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OnDelete createOnDelete() {
+		OnDeleteImpl onDelete = new OnDeleteImpl();
+		return onDelete;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CacheConcurrencyStrategy createCacheConcurrencyStrategyFromString(EDataType eDataType, String initialValue) {
 		CacheConcurrencyStrategy result = CacheConcurrencyStrategy.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -276,6 +292,26 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * @generated
 	 */
 	public String convertHbFetchTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OnDeleteAction createOnDeleteActionFromString(EDataType eDataType, String initialValue) {
+		OnDeleteAction result = OnDeleteAction.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOnDeleteActionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

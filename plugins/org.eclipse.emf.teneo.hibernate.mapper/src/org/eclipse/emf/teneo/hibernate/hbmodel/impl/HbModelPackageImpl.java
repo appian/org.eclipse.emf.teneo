@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackageImpl.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbModelPackageImpl.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -242,6 +242,15 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHbAnnotatedEClass_HbOnDelete() {
+		return (EReference)hbAnnotatedEClassEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -299,6 +308,15 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHbAnnotatedEReference_HbOnDelete() {
+		return (EReference)hbAnnotatedEReferenceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -352,6 +370,7 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 
 		hbAnnotatedEClassEClass = createEClass(HB_ANNOTATED_ECLASS);
 		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__HB_CACHE);
+		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__HB_ON_DELETE);
 
 		hbAnnotatedEModelElementEClass = createEClass(HB_ANNOTATED_EMODEL_ELEMENT);
 
@@ -362,6 +381,7 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 		hbAnnotatedEReferenceEClass = createEClass(HB_ANNOTATED_EREFERENCE);
 		createEReference(hbAnnotatedEReferenceEClass, HB_ANNOTATED_EREFERENCE__HB_CACHE);
 		createEReference(hbAnnotatedEReferenceEClass, HB_ANNOTATED_EREFERENCE__HB_FETCH);
+		createEReference(hbAnnotatedEReferenceEClass, HB_ANNOTATED_EREFERENCE__HB_ON_DELETE);
 
 		hbAnnotatedEDataTypeEClass = createEClass(HB_ANNOTATED_EDATA_TYPE);
 		createEReference(hbAnnotatedEDataTypeEClass, HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF);
@@ -424,6 +444,7 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 
 		initEClass(hbAnnotatedEClassEClass, HbAnnotatedEClass.class, "HbAnnotatedEClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHbAnnotatedEClass_HbCache(), theHbAnnotationPackage.getCache(), null, "hbCache", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedEClass_HbOnDelete(), theHbAnnotationPackage.getOnDelete(), null, "hbOnDelete", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hbAnnotatedEModelElementEClass, HbAnnotatedEModelElement.class, "HbAnnotatedEModelElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -434,6 +455,7 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 		initEClass(hbAnnotatedEReferenceEClass, HbAnnotatedEReference.class, "HbAnnotatedEReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHbAnnotatedEReference_HbCache(), theHbAnnotationPackage.getCache(), null, "hbCache", null, 0, 1, HbAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEReference_HbFetch(), theHbAnnotationPackage.getFetch(), null, "hbFetch", null, 0, 1, HbAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedEReference_HbOnDelete(), theHbAnnotationPackage.getOnDelete(), null, "hbOnDelete", null, 0, 1, HbAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hbAnnotatedEDataTypeEClass, HbAnnotatedEDataType.class, "HbAnnotatedEDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHbAnnotatedEDataType_HbTypeDef(), theHbAnnotationPackage.getTypeDef(), null, "hbTypeDef", null, 0, 1, HbAnnotatedEDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

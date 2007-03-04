@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackage.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbModelPackage.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -663,13 +663,22 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__HB_CACHE = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Hb On Delete</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__HB_ON_DELETE = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 1;
+	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
@@ -1077,13 +1086,22 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__HB_FETCH = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Hb On Delete</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 8;
+	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.
@@ -1454,6 +1472,17 @@ public interface HbModelPackage extends EPackage {
 	EReference getHbAnnotatedEClass_HbCache();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbOnDelete <em>Hb On Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Hb On Delete</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbOnDelete()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_HbOnDelete();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Hb Annotated EModel Element</em>'.
@@ -1520,6 +1549,17 @@ public interface HbModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHbAnnotatedEReference_HbFetch();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Hb On Delete</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete()
+	 * @see #getHbAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEReference_HbOnDelete();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType <em>Hb Annotated EData Type</em>}'.
@@ -1651,6 +1691,14 @@ public interface HbModelPackage extends EPackage {
 		EReference HB_ANNOTATED_ECLASS__HB_CACHE = eINSTANCE.getHbAnnotatedEClass_HbCache();
 
 		/**
+		 * The meta object literal for the '<em><b>Hb On Delete</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__HB_ON_DELETE = eINSTANCE.getHbAnnotatedEClass_HbOnDelete();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement
@@ -1707,6 +1755,14 @@ public interface HbModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EREFERENCE__HB_FETCH = eINSTANCE.getHbAnnotatedEReference_HbFetch();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb On Delete</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = eINSTANCE.getHbAnnotatedEReference_HbOnDelete();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.

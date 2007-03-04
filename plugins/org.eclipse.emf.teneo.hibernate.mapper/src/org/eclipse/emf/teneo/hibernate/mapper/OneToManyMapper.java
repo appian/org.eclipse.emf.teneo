@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.8 2007/02/28 11:55:11 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.9 2007/03/04 21:18:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -100,6 +100,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		// .getAnnotatedElement().getName(),
 		// paReference.getIndexed() != null && paReference.getIndexed().isValue());
 		final Element keyElement = collElement.addElement("key");
+		handleOndelete(keyElement, hbReference.getHbOnDelete());
 
 		// TODO: throw error if both jointable and joincolumns have been set
 		final List<JoinColumn> jcs = paReference.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paReference.getJoinColumns();
@@ -177,8 +178,14 @@ class OneToManyMapper extends AbstractAssociationMapper {
 
 		// MT: note inverse does not work correctly with hibernate for indexed collections, see 7.3.3 of the hibernate
 		// manual 3.1.1
-		// collElement.addAttribute("inverse", "true");
+		final OneToMany otm = paReference.getOneToMany();
+		if (!otm.isIndexed()) {
+			//collElement.addAttribute("inverse", "true");
+		} else {
+			log.warn("Inverse is not set on purpose for indexed collections");
+		}
 		final Element keyElement = collElement.addElement("key");
+		handleOndelete(keyElement, ((HbAnnotatedEReference) paReference).getHbOnDelete());
 
 		// MT: added handling of join info
 		final List<JoinColumn> jcs = paReference.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paReference.getJoinColumns();
@@ -189,7 +196,6 @@ class OneToManyMapper extends AbstractAssociationMapper {
 			addKeyColumns(keyElement, jcs);
 		}
 
-		final OneToMany otm = paReference.getOneToMany();
 		addFetchType(collElement, otm.getFetch(), false);
 		addCascadesForMany(collElement, otm.getCascade());
 

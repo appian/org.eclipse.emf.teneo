@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReference.java,v 1.5 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotatedEReference.java,v 1.6 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Hb Annotated EReference</b></em>'. <!--
@@ -19,6 +20,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbFetch <em>Hb Fetch</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On Delete</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,5 +85,31 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	 * @generated
 	 */
 	void setHbFetch(Fetch value);
+
+	/**
+	 * Returns the value of the '<em><b>Hb On Delete</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hb On Delete</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hb On Delete</em>' reference.
+	 * @see #setHbOnDelete(OnDelete)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEReference_HbOnDelete()
+	 * @model
+	 * @generated
+	 */
+	OnDelete getHbOnDelete();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On Delete</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hb On Delete</em>' reference.
+	 * @see #getHbOnDelete()
+	 * @generated
+	 */
+	void setHbOnDelete(OnDelete value);
 
 } // HbAnnotatedEReference

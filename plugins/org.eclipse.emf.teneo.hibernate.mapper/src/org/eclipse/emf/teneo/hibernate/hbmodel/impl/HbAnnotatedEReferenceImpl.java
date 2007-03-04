@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReferenceImpl.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotatedEReferenceImpl.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
@@ -44,6 +45,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbIdBag <em>Hb Id Bag</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbFetch <em>Hb Fetch</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
  * </ul>
  * </p>
  *
@@ -134,6 +136,16 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @ordered
 	 */
 	protected Fetch hbFetch = null;
+
+	/**
+	 * The cached value of the '{@link #getHbOnDelete() <em>Hb On Delete</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbOnDelete()
+	 * @generated
+	 * @ordered
+	 */
+	protected OnDelete hbOnDelete = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -442,6 +454,44 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OnDelete getHbOnDelete() {
+		if (hbOnDelete != null && hbOnDelete.eIsProxy()) {
+			InternalEObject oldHbOnDelete = (InternalEObject)hbOnDelete;
+			hbOnDelete = (OnDelete)eResolveProxy(oldHbOnDelete);
+			if (hbOnDelete != oldHbOnDelete) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
+			}
+		}
+		return hbOnDelete;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OnDelete basicGetHbOnDelete() {
+		return hbOnDelete;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHbOnDelete(OnDelete newHbOnDelete) {
+		OnDelete oldHbOnDelete = hbOnDelete;
+		hbOnDelete = newHbOnDelete;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -490,6 +540,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				if (resolve) return getHbFetch();
 				return basicGetHbFetch();
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
+				if (resolve) return getHbOnDelete();
+				return basicGetHbOnDelete();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -527,6 +580,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				setHbFetch((Fetch)newValue);
 				return;
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
+				setHbOnDelete((OnDelete)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -562,6 +618,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				setHbFetch((Fetch)null);
 				return;
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
+				setHbOnDelete((OnDelete)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -589,6 +648,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return hbCache != null;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
 				return hbFetch != null;
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
+				return hbOnDelete != null;
 		}
 		return super.eIsSet(featureID);
 	}

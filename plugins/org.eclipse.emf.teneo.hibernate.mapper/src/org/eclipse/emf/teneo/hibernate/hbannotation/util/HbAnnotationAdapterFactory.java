@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationAdapterFactory.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotationAdapterFactory.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
@@ -135,6 +136,10 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseFetch(Fetch object) {
 				return createFetchAdapter();
+			}
+			@Override
+			public Adapter caseOnDelete(OnDelete object) {
+				return createOnDeleteAdapter();
 			}
 			@Override
 			public Adapter casePAnnotation(PAnnotation object) {
@@ -325,6 +330,20 @@ public class HbAnnotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFetchAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete <em>On Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete
+	 * @generated
+	 */
+	public Adapter createOnDeleteAdapter() {
 		return null;
 	}
 

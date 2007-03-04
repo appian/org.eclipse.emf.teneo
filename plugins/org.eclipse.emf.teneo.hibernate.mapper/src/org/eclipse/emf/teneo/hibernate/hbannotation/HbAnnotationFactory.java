@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationFactory.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotationFactory.java,v 1.5 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -117,6 +117,15 @@ public interface HbAnnotationFactory extends EFactory {
 	 * @generated
 	 */
 	Fetch createFetch();
+
+	/**
+	 * Returns a new object of class '<em>On Delete</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>On Delete</em>'.
+	 * @generated
+	 */
+	OnDelete createOnDelete();
 
 	/**
 	 * Returns the package supported by this factory.

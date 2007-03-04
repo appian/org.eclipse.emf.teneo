@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackageImpl.java,v 1.5 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotationPackageImpl.java,v 1.6 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
@@ -138,6 +140,13 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass onDeleteEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum cacheConcurrencyStrategyEEnum = null;
 
 	/**
@@ -146,6 +155,13 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * @generated
 	 */
 	private EEnum hbFetchTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum onDeleteActionEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -535,6 +551,24 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOnDelete() {
+		return onDeleteEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOnDelete_Action() {
+		return (EAttribute)onDeleteEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getCacheConcurrencyStrategy() {
 		return cacheConcurrencyStrategyEEnum;
 	}
@@ -546,6 +580,15 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 */
 	public EEnum getHbFetchType() {
 		return hbFetchTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getOnDeleteAction() {
+		return onDeleteActionEEnum;
 	}
 
 	/**
@@ -621,9 +664,13 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		fetchEClass = createEClass(FETCH);
 		createEAttribute(fetchEClass, FETCH__VALUE);
 
+		onDeleteEClass = createEClass(ON_DELETE);
+		createEAttribute(onDeleteEClass, ON_DELETE__ACTION);
+
 		// Create enums
 		cacheConcurrencyStrategyEEnum = createEEnum(CACHE_CONCURRENCY_STRATEGY);
 		hbFetchTypeEEnum = createEEnum(HB_FETCH_TYPE);
+		onDeleteActionEEnum = createEEnum(ON_DELETE_ACTION);
 	}
 
 	/**
@@ -669,6 +716,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		cacheEClass.getESuperTypes().add(this.getHbAnnotation());
 		typeDefEClass.getESuperTypes().add(this.getHbAnnotation());
 		fetchEClass.getESuperTypes().add(this.getHbAnnotation());
+		onDeleteEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -716,6 +764,9 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		initEClass(fetchEClass, Fetch.class, "Fetch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFetch_Value(), this.getHbFetchType(), "value", null, 0, 1, Fetch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(onDeleteEClass, OnDelete.class, "OnDelete", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOnDelete_Action(), this.getOnDeleteAction(), "action", null, 0, 1, OnDelete.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.class, "CacheConcurrencyStrategy");
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.NONE_LITERAL);
@@ -728,6 +779,10 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		addEEnumLiteral(hbFetchTypeEEnum, HbFetchType.JOIN_LITERAL);
 		addEEnumLiteral(hbFetchTypeEEnum, HbFetchType.SELECT_LITERAL);
 		addEEnumLiteral(hbFetchTypeEEnum, HbFetchType.SUBSELECT_LITERAL);
+
+		initEEnum(onDeleteActionEEnum, OnDeleteAction.class, "OnDeleteAction");
+		addEEnumLiteral(onDeleteActionEEnum, OnDeleteAction.NO_ACTION);
+		addEEnumLiteral(onDeleteActionEEnum, OnDeleteAction.CASCADE);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -756,7 +811,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "1", "http://hibernate.elver.org/"
-		   });														
+		   });															
 	}
 
 	/**
@@ -772,7 +827,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });													
+		   });														
 	}
 
 	/**
@@ -855,6 +910,12 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
+		   });		
+		addAnnotation
+		  (onDeleteEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature"
 		   });
 	}
 
@@ -879,7 +940,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   new String[] {
 			 "name", "GenericGenerators",
 			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
-		   });			
+		   });				
 	}
 
 } //HbAnnotationPackageImpl

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.9 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.10 2007/03/04 21:18:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -234,7 +234,7 @@ class EntityMapper extends AbstractMapper {
 		// element has been placed
 
 		if (entity.getPrimaryKeyJoinColumns() != null && entity.getPrimaryKeyJoinColumns().size() > 0) {
-			addPrimaryKeyJoinColumn(entity.getPrimaryKeyJoinColumns());
+			addPrimaryKeyJoinColumn(entity.getPrimaryKeyJoinColumns(), entity);
 		} else if (entity.getPaSuperEntity() != null
 				&& InheritanceType.JOINED_LITERAL.equals(entity.getInheritanceStrategy())) {
 			final ArrayList<PrimaryKeyJoinColumn> list = new ArrayList<PrimaryKeyJoinColumn>();
@@ -242,7 +242,7 @@ class EntityMapper extends AbstractMapper {
 			final String entityName = getHbmContext().getEntityName(entity.getAnnotatedEClass());
 			getHbmContext().trunc(entityName + "id"); // TODO improve name creation here
 			list.add(pkjc);
-			addPrimaryKeyJoinColumn(list);
+			addPrimaryKeyJoinColumn(list, entity);
 		}
 
 		try {
@@ -438,6 +438,7 @@ class EntityMapper extends AbstractMapper {
 			for (PrimaryKeyJoinColumn pkJoinColumn : pkJoinColumns) {
 				final Element keyElement = joinElement.addElement("key");
 				keyElement.addAttribute("column", getHbmContext().trunc(pkJoinColumn.getName()));
+				handleOndelete(keyElement, ((HbAnnotatedEClass)entity).getHbOnDelete());
 			}
 
 			// Process features in this secondary table.
@@ -473,10 +474,11 @@ class EntityMapper extends AbstractMapper {
 	/**
 	 * Adds a key element to the current entity mapping, is for example used to join to the super class table.
 	 */
-	private void addPrimaryKeyJoinColumn(List<PrimaryKeyJoinColumn> pkJCs) {
+	private void addPrimaryKeyJoinColumn(List<PrimaryKeyJoinColumn> pkJCs, PAnnotatedEClass entity) {
 		log.debug("Adding primary key join column");
 
 		final Element jcElement = getHbmContext().getCurrent().addElement("key");
+		handleOndelete(jcElement, ((HbAnnotatedEClass)entity).getHbOnDelete());
 
 		for (PrimaryKeyJoinColumn pkJC : pkJCs) {
 			final Element columnElement = jcElement.addElement("column");

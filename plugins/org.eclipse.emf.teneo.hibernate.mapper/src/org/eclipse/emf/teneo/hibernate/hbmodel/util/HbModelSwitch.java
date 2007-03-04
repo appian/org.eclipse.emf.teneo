@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelSwitch.java,v 1.6 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbModelSwitch.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.util;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
+import org.eclipse.emf.teneo.hibernate.hbmodel.*;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;

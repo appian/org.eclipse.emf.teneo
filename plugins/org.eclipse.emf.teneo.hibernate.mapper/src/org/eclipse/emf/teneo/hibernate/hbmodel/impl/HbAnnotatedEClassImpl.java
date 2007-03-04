@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClassImpl.java,v 1.5 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotatedEClassImpl.java,v 1.6 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbCache <em>Hb Cache</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,6 +46,16 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * @ordered
 	 */
 	protected Cache hbCache = null;
+
+	/**
+	 * The cached value of the '{@link #getHbOnDelete() <em>Hb On Delete</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbOnDelete()
+	 * @generated
+	 * @ordered
+	 */
+	protected OnDelete hbOnDelete = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -103,6 +115,44 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OnDelete getHbOnDelete() {
+		if (hbOnDelete != null && hbOnDelete.eIsProxy()) {
+			InternalEObject oldHbOnDelete = (InternalEObject)hbOnDelete;
+			hbOnDelete = (OnDelete)eResolveProxy(oldHbOnDelete);
+			if (hbOnDelete != oldHbOnDelete) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
+			}
+		}
+		return hbOnDelete;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OnDelete basicGetHbOnDelete() {
+		return hbOnDelete;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHbOnDelete(OnDelete newHbOnDelete) {
+		OnDelete oldHbOnDelete = hbOnDelete;
+		hbOnDelete = newHbOnDelete;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -124,6 +174,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
 				return getHbCache();
+			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+				if (resolve) return getHbOnDelete();
+				return basicGetHbOnDelete();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -137,6 +190,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
 				setHbCache((Cache)newValue);
+				return;
+			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+				setHbOnDelete((OnDelete)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -152,6 +208,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
 				setHbCache((Cache)null);
 				return;
+			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+				setHbOnDelete((OnDelete)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -165,6 +224,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		switch (featureID) {
 			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
 				return hbCache != null;
+			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+				return hbOnDelete != null;
 		}
 		return super.eIsSet(featureID);
 	}

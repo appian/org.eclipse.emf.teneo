@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackage.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotationPackage.java,v 1.5 2007/03/04 21:18:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -561,13 +561,50 @@ public interface HbAnnotationPackage extends EPackage {
 	int FETCH_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.OnDeleteImpl <em>On Delete</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.OnDeleteImpl
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getOnDelete()
+	 * @generated
+	 */
+	int ON_DELETE = 12;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ON_DELETE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Action</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ON_DELETE__ACTION = HB_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>On Delete</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ON_DELETE_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getCacheConcurrencyStrategy()
 	 * @generated
 	 */
-	int CACHE_CONCURRENCY_STRATEGY = 12;
+	int CACHE_CONCURRENCY_STRATEGY = 13;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType <em>Hb Fetch Type</em>}' enum.
@@ -577,7 +614,18 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getHbFetchType()
 	 * @generated
 	 */
-	int HB_FETCH_TYPE = 13;
+	int HB_FETCH_TYPE = 14;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction <em>On Delete Action</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getOnDeleteAction()
+	 * @generated
+	 */
+	int ON_DELETE_ACTION = 15;
 
 
 	/**
@@ -901,6 +949,27 @@ public interface HbAnnotationPackage extends EPackage {
 	EAttribute getFetch_Value();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete <em>On Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>On Delete</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete
+	 * @generated
+	 */
+	EClass getOnDelete();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete#getAction <em>Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Action</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete#getAction()
+	 * @see #getOnDelete()
+	 * @generated
+	 */
+	EAttribute getOnDelete_Action();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Cache Concurrency Strategy</em>'.
@@ -918,6 +987,16 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getHbFetchType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction <em>On Delete Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>On Delete Action</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction
+	 * @generated
+	 */
+	EEnum getOnDeleteAction();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1217,6 +1296,24 @@ public interface HbAnnotationPackage extends EPackage {
 		EAttribute FETCH__VALUE = eINSTANCE.getFetch_Value();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.OnDeleteImpl <em>On Delete</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.OnDeleteImpl
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getOnDelete()
+		 * @generated
+		 */
+		EClass ON_DELETE = eINSTANCE.getOnDelete();
+
+		/**
+		 * The meta object literal for the '<em><b>Action</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ON_DELETE__ACTION = eINSTANCE.getOnDelete_Action();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
@@ -1234,6 +1331,16 @@ public interface HbAnnotationPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum HB_FETCH_TYPE = eINSTANCE.getHbFetchType();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction <em>On Delete Action</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getOnDeleteAction()
+		 * @generated
+		 */
+		EEnum ON_DELETE_ACTION = eINSTANCE.getOnDeleteAction();
 
 	}
 
