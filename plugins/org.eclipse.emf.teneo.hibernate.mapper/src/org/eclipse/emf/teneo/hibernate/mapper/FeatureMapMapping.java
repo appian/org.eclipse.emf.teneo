@@ -12,10 +12,12 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapMapping.java,v 1.6 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: FeatureMapMapping.java,v 1.5.2.1 2007/03/04 21:20:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
+
+import java.util.Iterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -83,8 +85,11 @@ class FeatureMapMapping {
 		mainElement.addElement("id").addAttribute("type", "long").addElement("generator").addAttribute("class",
 				"native");
 
-		mainElement.addElement("version").addAttribute("name", hbmContext.getVersionColumnName()).addAttribute(
+		final Element versionElement = mainElement.addElement("version").addAttribute("name", hbmContext.getVersionColumnName()).addAttribute(
 				"access", "org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
+		final Element meta = new Element("meta");
+		meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
+		versionElement.add(0, meta);
 
 		mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_FEATURE).addAttribute(
 				"type", "java.lang.String");
@@ -92,7 +97,8 @@ class FeatureMapMapping {
 		// and now process the features of this group
 		final PAnnotatedEClass paClass = paAttribute.getPaEClass();
 		final boolean isMixed = StoreUtil.isMixed(paAttribute.getAnnotatedEAttribute());
-		for (PAnnotatedEStructuralFeature paFeature : paClass.getPaEStructuralFeatures()) {
+		for (Iterator it = paClass.getPaEStructuralFeatures().iterator(); it.hasNext();) {
+			PAnnotatedEStructuralFeature paFeature = (PAnnotatedEStructuralFeature) it.next();
 			EStructuralFeature eFeature = paFeature.getAnnotatedEStructuralFeature();
 			if ((isMixed && eFeature.getFeatureID() != paAttribute.getAnnotatedEAttribute().getFeatureID())
 					|| StoreUtil.isElementOfGroup(eFeature, paAttribute.getAnnotatedEAttribute())) {
