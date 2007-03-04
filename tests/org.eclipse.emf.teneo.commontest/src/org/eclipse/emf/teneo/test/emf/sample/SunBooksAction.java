@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SunBooksAction.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: SunBooksAction.java,v 1.3 2007/03/04 21:18:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -22,6 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 import org.eclipse.emf.teneo.samples.emf.sample.sunBooks.AuthorsType;
 import org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookCategoryType1;
 import org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookType;
@@ -38,7 +39,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the sun books example, is mainly used to test EList methods (move, set, contains, move, etc)
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.3 $ 
 */
 public class SunBooksAction extends AbstractTestAction 
 {
@@ -69,7 +70,7 @@ public class SunBooksAction extends AbstractTestAction
 	    		promotion.setDiscount("10%");
 	    		book.setPromotion(promotion);
 	    		
-	    		book.setPublicationDate(new Date("10/10/2003"));
+	    		book.setPublicationDate(new XMLCalendar(new Date("10/10/2003"), XMLCalendar.DATETIME));
 	    		
 	    		AuthorsType author = factory.createAuthorsType();
 	    		author.getAuthorName().add("George R.R. Martin");
@@ -90,7 +91,7 @@ public class SunBooksAction extends AbstractTestAction
 	    		promotion.setNone("none");
 	    		book1.setPromotion(promotion);
 	    		
-	    		book1.setPublicationDate(new Date("10/10/2003"));
+	    		book1.setPublicationDate(new XMLCalendar(new Date("10/10/2003"), XMLCalendar.DATETIME));
 	    		
 	    		AuthorsType author = factory.createAuthorsType();
 	    		author.getAuthorName().add("Raymond Feist");
@@ -110,7 +111,7 @@ public class SunBooksAction extends AbstractTestAction
 	    		promotion.setNone("none");
 	    		book2.setPromotion(promotion);
 	    		
-	    		book2.setPublicationDate(new Date("10/10/2003"));
+	    		book2.setPublicationDate(new XMLCalendar(new Date("10/10/2003"), XMLCalendar.DATETIME));
 	    		
 	    		AuthorsType author = factory.createAuthorsType();
 	    		author.getAuthorName().add("Isaac Asimov");
@@ -216,7 +217,7 @@ public class SunBooksAction extends AbstractTestAction
     		promotion.setNone("none");
     		book4.setPromotion(promotion);
     		
-    		book4.setPublicationDate(new Date("10/10/2003"));
+    		book4.setPublicationDate(new XMLCalendar(new Date("10/10/2003"), XMLCalendar.DATETIME));
     		
     		AuthorsType author = factory.createAuthorsType();
     		author.getAuthorName().add("Isaac Asimov");
@@ -243,7 +244,7 @@ public class SunBooksAction extends AbstractTestAction
     		promotion.setDiscount("10%");
     		book0.setPromotion(promotion);
     		
-    		book0.setPublicationDate(new Date("10/10/2003"));
+    		book0.setPublicationDate(new XMLCalendar(new Date("10/10/2003"), XMLCalendar.DATETIME));
     		
     		AuthorsType author = factory.createAuthorsType();
     		author.getAuthorName().add("George R.R. Martin");

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyLibraryAction.java,v 1.7 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: LazyLibraryAction.java,v 1.8 2007/03/04 21:18:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * does not result in loaded containment elists.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $ 
+ * @version $Revision: 1.8 $ 
 */
 public class LazyLibraryAction extends AbstractTestAction 
 {
@@ -161,8 +161,6 @@ public class LazyLibraryAction extends AbstractTestAction
 		
 		Library lib = (Library)res.getContents().get(0);
 		PersistableEList books = (PersistableEList)lib.getBooks();
-		Book book = (Book)books.get(0);
-		assertTrue(book.getAuthor().getName() != null);
 		PersistableEList writers = (PersistableEList)lib.getWriters();
 		assertTrue("Elist is not loaded while the fetch is eager", writers.isLoaded());
 		assertTrue("Elist is not loaded while the fetch is eager", books.isLoaded());
@@ -174,6 +172,8 @@ public class LazyLibraryAction extends AbstractTestAction
 				writers.basicIterator().hasNext());
 		assertTrue("BasicListIterator should have next true", 
 				writers.basicListIterator().hasNext());
+		Book book = (Book)books.get(0);
+		assertTrue(book.getAuthor().getName() != null);
 		
 		Writer writer = (Writer)writers.get(0);
 		PersistableEList writerBooks = (PersistableEList)writer.getBooks();

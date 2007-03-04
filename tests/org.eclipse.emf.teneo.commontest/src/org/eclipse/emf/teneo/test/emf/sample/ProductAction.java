@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ProductAction.java,v 1.4 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: ProductAction.java,v 1.5 2007/03/04 21:18:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.util.Date;
 
+import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ClassificationType;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
@@ -32,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * (double and date).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class ProductAction extends AbstractTestAction {
 	public ProductAction() {
@@ -53,7 +54,7 @@ public class ProductAction extends AbstractTestAction {
 
 			final ProductType product = factory.createProductType();
 			product.setCode("product1");
-			product.setCreatedOn(new Date());
+			product.setCreatedOn(new XMLCalendar(new Date(), XMLCalendar.DATETIME));
 			product.setId("productid1");
 			product.setPrice(199.95);
 			product.setSupplier(supplier);

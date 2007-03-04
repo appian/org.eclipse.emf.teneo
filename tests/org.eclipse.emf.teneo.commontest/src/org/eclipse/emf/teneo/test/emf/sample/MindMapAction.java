@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MindMapAction.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: MindMapAction.java,v 1.4 2007/03/04 21:18:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -36,7 +36,7 @@ import org.example.mindmap.Topic;
  * Tests the gmf mindmap example
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class MindMapAction extends AbstractTestAction {
 	
@@ -108,7 +108,7 @@ public class MindMapAction extends AbstractTestAction {
 	private Topic createTopic(List resources, MindmapFactory factory, String name, int level) {
 		final Topic topic = factory.createTopic();
 		topic.setEndDate(new XMLCalendar(new Date(), XMLCalendar.DATETIME));
-		topic.setStartDate(new Date());
+		topic.setStartDate(new XMLCalendar(new Date(), XMLCalendar.DATETIME));
 		topic.setName(name + level);
 		topic.setPriority(Priority.get(level));
 		topic.setPercentComplete((float)(level * 10.0 / 100.0));
