@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes" 
-	xmlns="http://www.w3.org/2001/XMLSchema" 
-	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
-	xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes" 
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes">
 	
 	<complexType name="SimpleType">
 		<sequence>
@@ -18,45 +14,47 @@
 			<element name="enu" type="this:SimpleEnum"/>
 			<element name="dat" type="this:Date"/>
 			<element name="limitedstring" type="this:LimitedString"/>
+			<element name="limitedDecimal" nillable="true" type="this:LimitedDecimal"/>
+			<element name="extraLimitedString" type="this:ExtraLimitedString"/>
 		</sequence>
 	</complexType>
 	
 	<complexType name="SimpleTypeObject">
 		<sequence>
 			<element default="c1" name="Code" type="string"/>
-			<element name="boo" type="boolean" nillable="true"/>
-			<element name="byt" type="byte" nillable="true"/>
-			<element name="doubl" type="double" nillable="true"/>
-			<element name="float" type="float" nillable="true"/>
-			<element name="inte" type="int" nillable="true"/>
-			<element name="lon" type="long" nillable="true"/>
-			<element name="shor" type="short" nillable="true"/>
-			<element name="enu" type="this:SimpleEnum" nillable="true">
+			<element name="boo" nillable="true" type="boolean"/>
+			<element name="byt" nillable="true" type="byte"/>
+			<element name="doubl" nillable="true" type="double"/>
+			<element name="float" nillable="true" type="float"/>
+			<element name="inte" nillable="true" type="int"/>
+			<element name="lon" nillable="true" type="long"/>
+			<element name="shor" nillable="true" type="short"/>
+			<element name="enu" nillable="true" type="this:SimpleEnum">
 			 	<annotation>
 					<appinfo source="teneo.jpa">@Enumerated(STRING)</appinfo>
 			    </annotation>
 			</element>
-			<element name="dat" type="this:Date" nillable="true"/>
+			<element name="dat" nillable="true" type="this:Date"/>
 		</sequence>
 	</complexType>
 
 	<complexType name="SimpleList">
 		<sequence>
 			<element default="c1" name="Code" type="string"/>
-			<element name="boo" type="boolean" maxOccurs="unbounded"/>
-			<element name="byt" type="this:Byte" maxOccurs="unbounded"/>
-			<element name="doubl" type="this:Double" maxOccurs="unbounded"/>
-			<element name="floa" type="this:Float" maxOccurs="unbounded"/>
-			<element name="inte" type="this:Int" maxOccurs="unbounded"/>
-			<element name="long" type="this:Long" maxOccurs="unbounded">
+			<element maxOccurs="unbounded" name="boo" type="boolean"/>
+			<element maxOccurs="unbounded" name="byt" type="this:Byte"/>
+			<element maxOccurs="unbounded" name="doubl" type="this:Double"/>
+			<element maxOccurs="unbounded" name="floa" type="this:Float"/>
+			<element maxOccurs="unbounded" name="inte" type="this:Int"/>
+			<element maxOccurs="unbounded" name="long" type="this:Long">
 			 	<annotation>
 					<appinfo source="teneo.jpa">@JoinTable(name="longNum")</appinfo>
 			    </annotation>
 			</element>
-			<element name="shor" type="short" maxOccurs="unbounded"/>
+			<element maxOccurs="unbounded" name="shor" type="short"/>
 		<!--	<element name="enu" type="this:SimpleEnum" maxOccurs="unbounded"/>-->
-			<element name="dat" type="this:Date" maxOccurs="unbounded"/>
-			<element name="limitedstring" type="this:LimitedString" maxOccurs="unbounded"/>
+			<element maxOccurs="unbounded" name="dat" type="this:Date"/>
+			<element maxOccurs="unbounded" name="limitedstring" type="this:LimitedString"/>
 			<element name="intArray" type="this:IntArray"/>
 			<element name="doubleArray" type="this:DoubleArray"/>
 			<element name="stringArray" type="this:StringArray"/>
@@ -69,6 +67,19 @@
 	    <length value="10"/>
 	  </restriction>
 	</simpleType>
+
+	<simpleType name="ExtraLimitedString">
+	  <restriction base="string">
+	    <maxLength value="5"/>
+	  </restriction>
+	</simpleType>
+
+  	<simpleType ecore:instanceClass="java.math.BigDecimal" name="LimitedDecimal">
+   		<restriction base="decimal">
+			<totalDigits value='4'/>
+		    <fractionDigits value='1'/>
+   		</restriction>
+ 	</simpleType>
 	
 	<simpleType name="SimpleEnum">
     	<restriction base="xsd:NCName">
@@ -106,19 +117,19 @@
  	</simpleType>
 
   	<simpleType ecore:instanceClass="int[]" name="IntArray">
-   		<restriction/>
+   		<restriction base="anyType"/>
  	</simpleType>
 
   	<simpleType ecore:instanceClass="String[]" name="StringArray">
-   		<restriction/>
+   		<restriction base="anyType"/>
  	</simpleType>
 
   	<simpleType ecore:instanceClass="double[]" name="DoubleArray">
-   		<restriction/>
+   		<restriction base="anyType"/>
  	</simpleType>
 
   	<simpleType ecore:instanceClass="byte[]" name="ByteArray">
-   		<restriction/>
+   		<restriction base="anyType"/>
  	</simpleType>
  	
  	<!-- duration is not (yet) supported

@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleTypeValidator.java,v 1.1 2007/02/08 23:09:27 mtaal Exp $
+ * $Id: SimpleTypeValidator.java,v 1.2 2007/03/05 20:51:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.validation;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum;
@@ -30,4 +31,8 @@ public interface SimpleTypeValidator {
 	boolean validateEnu(SimpleEnum value);
 	boolean validateDat(Date value);
 	boolean validateLimitedstring(String value);
+
+	boolean validateLimitedDecimal(BigDecimal value);
+
+	boolean validateExtraLimitedString(String value);
 }

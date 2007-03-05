@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesFactoryImpl.java,v 1.6 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: SimpletypesFactoryImpl.java,v 1.7 2007/03/05 20:51:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.eclipse.emf.ecore.EClass;
@@ -98,12 +99,16 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 				return createDoubleFromString(eDataType, initialValue);
 			case SimpletypesPackage.DOUBLE_ARRAY:
 				return createDoubleArrayFromString(eDataType, initialValue);
+			case SimpletypesPackage.EXTRA_LIMITED_STRING:
+				return createExtraLimitedStringFromString(eDataType, initialValue);
 			case SimpletypesPackage.FLOAT:
 				return createFloatFromString(eDataType, initialValue);
 			case SimpletypesPackage.INT:
 				return createIntFromString(eDataType, initialValue);
 			case SimpletypesPackage.INT_ARRAY:
 				return createIntArrayFromString(eDataType, initialValue);
+			case SimpletypesPackage.LIMITED_DECIMAL:
+				return createLimitedDecimalFromString(eDataType, initialValue);
 			case SimpletypesPackage.LIMITED_STRING:
 				return createLimitedStringFromString(eDataType, initialValue);
 			case SimpletypesPackage.LONG:
@@ -139,12 +144,16 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 				return convertDoubleToString(eDataType, instanceValue);
 			case SimpletypesPackage.DOUBLE_ARRAY:
 				return convertDoubleArrayToString(eDataType, instanceValue);
+			case SimpletypesPackage.EXTRA_LIMITED_STRING:
+				return convertExtraLimitedStringToString(eDataType, instanceValue);
 			case SimpletypesPackage.FLOAT:
 				return convertFloatToString(eDataType, instanceValue);
 			case SimpletypesPackage.INT:
 				return convertIntToString(eDataType, instanceValue);
 			case SimpletypesPackage.INT_ARRAY:
 				return convertIntArrayToString(eDataType, instanceValue);
+			case SimpletypesPackage.LIMITED_DECIMAL:
+				return convertLimitedDecimalToString(eDataType, instanceValue);
 			case SimpletypesPackage.LIMITED_STRING:
 				return convertLimitedStringToString(eDataType, instanceValue);
 			case SimpletypesPackage.LONG:
@@ -321,6 +330,24 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String createExtraLimitedStringFromString(EDataType eDataType, String initialValue) {
+		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExtraLimitedStringToString(EDataType eDataType, Object instanceValue) {
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Float createFloatFromString(EDataType eDataType, String initialValue) {
 		return (Float)super.createFromString(initialValue);
 	}
@@ -367,6 +394,24 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertIntArrayToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BigDecimal createLimitedDecimalFromString(EDataType eDataType, String initialValue) {
+		return (BigDecimal)super.createFromString(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLimitedDecimalToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(instanceValue);
 	}
 

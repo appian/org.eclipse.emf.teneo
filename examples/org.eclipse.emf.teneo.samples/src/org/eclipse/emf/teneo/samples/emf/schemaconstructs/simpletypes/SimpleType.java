@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleType.java,v 1.1 2006/07/11 16:57:08 mtaal Exp $
+ * $Id: SimpleType.java,v 1.2 2007/03/05 20:51:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,6 +30,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getEnu <em>Enu</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getDat <em>Dat</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getLimitedstring <em>Limitedstring</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getLimitedDecimal <em>Limited Decimal</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getExtraLimitedString <em>Extra Limited String</em>}</li>
  * </ul>
  * </p>
  *
@@ -581,5 +584,86 @@ public interface SimpleType extends EObject {
 	 * @generated
 	 */
 	void setLimitedstring(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Limited Decimal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Limited Decimal</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Limited Decimal</em>' attribute.
+	 * @see #isSetLimitedDecimal()
+	 * @see #unsetLimitedDecimal()
+	 * @see #setLimitedDecimal(BigDecimal)
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_LimitedDecimal()
+	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.LimitedDecimal" required="true"
+	 *        extendedMetaData="kind='element' name='limitedDecimal'"
+	 * @generated
+	 */
+	BigDecimal getLimitedDecimal();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getLimitedDecimal <em>Limited Decimal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Limited Decimal</em>' attribute.
+	 * @see #isSetLimitedDecimal()
+	 * @see #unsetLimitedDecimal()
+	 * @see #getLimitedDecimal()
+	 * @generated
+	 */
+	void setLimitedDecimal(BigDecimal value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getLimitedDecimal <em>Limited Decimal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetLimitedDecimal()
+	 * @see #getLimitedDecimal()
+	 * @see #setLimitedDecimal(BigDecimal)
+	 * @generated
+	 */
+	void unsetLimitedDecimal();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getLimitedDecimal <em>Limited Decimal</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Limited Decimal</em>' attribute is set.
+	 * @see #unsetLimitedDecimal()
+	 * @see #getLimitedDecimal()
+	 * @see #setLimitedDecimal(BigDecimal)
+	 * @generated
+	 */
+	boolean isSetLimitedDecimal();
+
+	/**
+	 * Returns the value of the '<em><b>Extra Limited String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Extra Limited String</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Extra Limited String</em>' attribute.
+	 * @see #setExtraLimitedString(String)
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_ExtraLimitedString()
+	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.ExtraLimitedString" required="true"
+	 *        extendedMetaData="kind='element' name='extraLimitedString'"
+	 * @generated
+	 */
+	String getExtraLimitedString();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getExtraLimitedString <em>Extra Limited String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Extra Limited String</em>' attribute.
+	 * @see #getExtraLimitedString()
+	 * @generated
+	 */
+	void setExtraLimitedString(String value);
 
 } // SimpleType

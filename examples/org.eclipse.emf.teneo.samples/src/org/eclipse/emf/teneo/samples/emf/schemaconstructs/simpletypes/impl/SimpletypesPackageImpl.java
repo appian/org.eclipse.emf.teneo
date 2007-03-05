@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesPackageImpl.java,v 1.5 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: SimpletypesPackageImpl.java,v 1.6 2007/03/05 20:51:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -107,6 +108,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType extraLimitedStringEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType floatEDataType = null;
 
 	/**
@@ -122,6 +130,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * @generated
 	 */
 	private EDataType intArrayEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType limitedDecimalEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -479,6 +494,24 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSimpleType_LimitedDecimal() {
+		return (EAttribute)simpleTypeEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimpleType_ExtraLimitedString() {
+		return (EAttribute)simpleTypeEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSimpleTypeObject() {
 		return simpleTypeObjectEClass;
 	}
@@ -641,6 +674,15 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getExtraLimitedString() {
+		return extraLimitedStringEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getFloat() {
 		return floatEDataType;
 	}
@@ -661,6 +703,15 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 */
 	public EDataType getIntArray() {
 		return intArrayEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getLimitedDecimal() {
+		return limitedDecimalEDataType;
 	}
 
 	/**
@@ -755,6 +806,8 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		createEAttribute(simpleTypeEClass, SIMPLE_TYPE__ENU);
 		createEAttribute(simpleTypeEClass, SIMPLE_TYPE__DAT);
 		createEAttribute(simpleTypeEClass, SIMPLE_TYPE__LIMITEDSTRING);
+		createEAttribute(simpleTypeEClass, SIMPLE_TYPE__LIMITED_DECIMAL);
+		createEAttribute(simpleTypeEClass, SIMPLE_TYPE__EXTRA_LIMITED_STRING);
 
 		simpleTypeObjectEClass = createEClass(SIMPLE_TYPE_OBJECT);
 		createEAttribute(simpleTypeObjectEClass, SIMPLE_TYPE_OBJECT__CODE);
@@ -778,9 +831,11 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		dateEDataType = createEDataType(DATE);
 		doubleEDataType = createEDataType(DOUBLE);
 		doubleArrayEDataType = createEDataType(DOUBLE_ARRAY);
+		extraLimitedStringEDataType = createEDataType(EXTRA_LIMITED_STRING);
 		floatEDataType = createEDataType(FLOAT);
 		intEDataType = createEDataType(INT);
 		intArrayEDataType = createEDataType(INT_ARRAY);
+		limitedDecimalEDataType = createEDataType(LIMITED_DECIMAL);
 		limitedStringEDataType = createEDataType(LIMITED_STRING);
 		longEDataType = createEDataType(LONG);
 		simpleEnumObjectEDataType = createEDataType(SIMPLE_ENUM_OBJECT);
@@ -848,6 +903,8 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		initEAttribute(getSimpleType_Enu(), this.getSimpleEnum(), "enu", "Enum1", 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleType_Dat(), this.getDate(), "dat", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleType_Limitedstring(), this.getLimitedString(), "limitedstring", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_LimitedDecimal(), this.getLimitedDecimal(), "limitedDecimal", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_ExtraLimitedString(), this.getExtraLimitedString(), "extraLimitedString", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(simpleTypeObjectEClass, SimpleTypeObject.class, "SimpleTypeObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSimpleTypeObject_Code(), theXMLTypePackage.getString(), "code", "c1", 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -873,9 +930,11 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		initEDataType(dateEDataType, Date.class, "Date", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(doubleEDataType, Double.class, "Double", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(doubleArrayEDataType, double[].class, "DoubleArray", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(extraLimitedStringEDataType, String.class, "ExtraLimitedString", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(floatEDataType, Float.class, "Float", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(intEDataType, Integer.class, "Int", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(intArrayEDataType, int[].class, "IntArray", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(limitedDecimalEDataType, BigDecimal.class, "LimitedDecimal", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(limitedStringEDataType, String.class, "LimitedString", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(longEDataType, Long.class, "Long", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(simpleEnumObjectEDataType, SimpleEnum.class, "SimpleEnumObject", IS_SERIALIZABLE, IS_GENERATED_INSTANCE_CLASS);
@@ -936,6 +995,14 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 			 "name", "DoubleArray"
 		   });		
 		addAnnotation
+		  (extraLimitedStringEDataType, 
+		   source, 
+		   new String[] {
+			 "name", "ExtraLimitedString",
+			 "baseType", "http://www.eclipse.org/emf/2003/XMLType#string",
+			 "maxLength", "5"
+		   });		
+		addAnnotation
 		  (floatEDataType, 
 		   source, 
 		   new String[] {
@@ -952,6 +1019,14 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		   source, 
 		   new String[] {
 			 "name", "IntArray"
+		   });		
+		addAnnotation
+		  (limitedDecimalEDataType, 
+		   source, 
+		   new String[] {
+			 "name", "LimitedDecimal",
+			 "totalDigits", "4",
+			 "fractionDigits", "1"
 		   });		
 		addAnnotation
 		  (limitedStringEDataType, 
@@ -1170,6 +1245,20 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 			 "name", "limitedstring"
 		   });		
 		addAnnotation
+		  (getSimpleType_LimitedDecimal(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "limitedDecimal"
+		   });		
+		addAnnotation
+		  (getSimpleType_ExtraLimitedString(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "extraLimitedString"
+		   });		
+		addAnnotation
 		  (simpleTypeObjectEClass, 
 		   source, 
 		   new String[] {
@@ -1261,13 +1350,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";																						
+		String source = "teneo.jpa";																								
 		addAnnotation
 		  (getSimpleList_Long(), 
 		   source, 
 		   new String[] {
 			 "appinfo", "@JoinTable(name=\"longNum\")"
-		   });																															
+		   });																																	
 		addAnnotation
 		  (getSimpleTypeObject_Enu(), 
 		   source, 
