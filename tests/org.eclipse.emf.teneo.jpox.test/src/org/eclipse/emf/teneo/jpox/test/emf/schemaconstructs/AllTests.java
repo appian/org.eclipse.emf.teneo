@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.8.2.1 2007/03/05 18:07:30 mtaal Exp $
+ * $Id: AllTests.java,v 1.8.2.2 2007/03/05 20:15:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8.2.1 $
+ * @version $Revision: 1.8.2.2 $
  */
 public class AllTests {
 
@@ -51,11 +51,11 @@ public class AllTests {
 		// not supported for jpox yet
 		//suite.addTestSuite(DateTimeAction.class);
 
+		suite.addTestSuite(SimpleTypeAction.class);
+
 		suite.addTestSuite(AnyTypeAction.class);
 		
 		suite.addTestSuite(EMapAction.class);
-
-		suite.addTestSuite(SimpleTypeAction.class);
 
 		if (!JPOXTestbed.isRunningOnEMFTServer()) {
 			// on the emft server these fail with
