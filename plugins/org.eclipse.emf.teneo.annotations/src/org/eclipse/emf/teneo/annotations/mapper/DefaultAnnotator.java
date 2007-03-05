@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.28 2007/02/28 11:55:15 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.29 2007/03/05 20:51:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -48,6 +49,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
@@ -81,7 +83,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 public class DefaultAnnotator {
 
@@ -746,6 +748,35 @@ public class DefaultAnnotator {
 					&& aAttribute.getColumn().isNullable()) {
 				log
 						.warn("The column of a primary key property is null, this will often result in database errors!");
+			}
+		}
+		
+		// decide if a column annotation should be added, this is done 
+		// when the maxLength or length, totalDigits or fractionDigits are set
+		// and when no other column has been set
+		if (aAttribute.getColumn() == null) {
+			String maxLength = getExtendedMetaData(eAttribute, "maxLength");
+			if (maxLength == null) {
+				maxLength = getExtendedMetaData(eAttribute, "length");
+			}
+			final String totalDigits = getExtendedMetaData(eAttribute, "totalDigits");
+			final String fractionDigits = getExtendedMetaData(eAttribute, "fractionDigits");
+			if (maxLength != null || totalDigits != null || fractionDigits != null) {
+				final Column column = aFactory.createColumn();
+				// only support this for the string class, the length/maxlength is also 
+				// used in case of the xsd list/union types but this can not be enforced using a constraint on the
+				// columnlength
+				if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null &&
+						eAttribute.getEAttributeType().getInstanceClass() == String.class) { 
+					column.setLength(Integer.parseInt(maxLength)); // you'll find parse errors!
+				}
+				if (totalDigits != null) {
+					column.setPrecision(Integer.parseInt(totalDigits));
+				}
+				if (fractionDigits != null) {
+					column.setScale(Integer.parseInt(fractionDigits));
+				}
+				aAttribute.setColumn(column);
 			}
 		}
 	}
@@ -1621,10 +1652,19 @@ public class DefaultAnnotator {
 		return optionEClassNameStrategy.toUniqueName(eclass);
 	}
 
+	/** Get a specific extended metadate */
+	private String getExtendedMetaData(EAttribute eAttribute, String key) {
+		String value = getEAnnotationValue(eAttribute, "http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+		if (value == null) {
+			value = getEAnnotationValue(eAttribute.getEAttributeType(), "http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+		}
+		return value;
+	}
+
 	/** Returns the value of an annotation with a certain key */
-	private String getEAnnotationValue(EClassifier eClassifier, String source,
+	private String getEAnnotationValue(EModelElement eModelElement, String source,
 			String key) {
-		final EAnnotation eAnnotation = eClassifier.getEAnnotation(source);
+		final EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
 		if (eAnnotation == null)
 			return "";
 		return (String) eAnnotation.getDetails().get(key);
