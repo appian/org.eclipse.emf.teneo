@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.5 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.5.2.1 2007/03/05 18:07:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -19,19 +19,22 @@ package org.eclipse.emf.teneo.jpox.mapper.property;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.simpledom.Element;
+import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.5.2.1 $
  */
 
 public class BasicMapper extends AbstractMapper {
@@ -47,11 +50,12 @@ public class BasicMapper extends AbstractMapper {
 	public void map(PAnnotatedEAttribute aAttribute, Element eclassElement) {
 		log.debug("Processing basic field: " + aAttribute.getAnnotatedElement().getName());
 		Element field = eclassElement.addElement("field");
-		field.addAttribute("name", namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement())).addAttribute(
-				"persistence-modifier", "persistent");
-		
+		field.addAttribute("name",
+				namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement()))
+				.addAttribute("persistence-modifier", "persistent");
+
 		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
-		
+
 		// special case
 		if (eAttribute.getEType().getInstanceClass() != null && eAttribute.getEType().getInstanceClass().isArray()) {
 			// handle arrays differently
@@ -59,31 +63,34 @@ public class BasicMapper extends AbstractMapper {
 			field.addElement("array").addAttribute("embedded-element", "true");
 			return; // and return from here
 		}
-		
+
 		// handle the column
 		Column overridden = mappingContext.getOverride(aAttribute);
 		if (overridden != null) {
 			mappingContext.getColumnMapper().map(overridden, field);
 		} else if (aAttribute.getColumn() != null) {
 			mappingContext.getColumnMapper().map(aAttribute.getColumn(), field);
-		} else if (mappingContext.getEmbeddingFeature() != null) { //embedded at least override
+		} else if (mappingContext.getEmbeddingFeature() != null) { // embedded at least override
 			final PAnnotatedEReference pae = mappingContext.getEmbeddingFeature();
-			final String name = pae.getAnnotatedEReference().getName() + "_" + aAttribute.getAnnotatedEAttribute().getName() + "_ID";
+			final String name = pae.getAnnotatedEReference().getName() + "_"
+					+ aAttribute.getAnnotatedEAttribute().getName() + "_ID";
 			field.addAttribute("column", name);
 		}
- 
+
 		// note defaults are handled by emf, so therefore no null-value=default
 		field.addAttribute("null-value", (aAttribute.getBasic().isOptional() ? "none" : "exception"));
-		Class instanceClass = eAttribute.getEAttributeType().getInstanceClass();
+		final Class instanceClass = eAttribute.getEAttributeType().getInstanceClass();
+		final EDataType edatatype = eAttribute.getEAttributeType();
 
-		if (Object.class.equals(instanceClass)) {
-			// add embedded if not part of the java.lang package or if it's the java.lang.Object
-			// is done to prevent jpox from incorrectly thinking that custom types are reference types
-			// TODO: what to do about interfaces?
-			// field.addAttribute("embedded", "true");
+		// disabled for now
+		if (false && EcoreDataTypes.INSTANCE.isEDate(edatatype) || EcoreDataTypes.INSTANCE.isEDateTime(edatatype)) {
+			field.addAttribute("field-type", XMLCalendar.class.getName());
+			field.addElement("column").addAttribute("jdbc-type", "TIMESTAMP").addAttribute("name", eAttribute.getName());
+//			field.addAttribute("embedded", "true");
+		} else if (Object.class.equals(instanceClass)) {
 			field.addAttribute("serialized", "true");
-		} else if (instanceClass.getName().indexOf(".") != -1 && 
-				!Object.class.getPackage().equals(instanceClass.getPackage())) {
+		} else if (instanceClass.getName().indexOf(".") != -1
+				&& !Object.class.getPackage().equals(instanceClass.getPackage())) {
 			// add embedded if not part of the java.lang package or if it's the java.lang.Object
 			// is done to prevent jpox from incorrectly thinking that custom types are reference types
 			// TODO: what to do about interfaces?
@@ -95,9 +102,9 @@ public class BasicMapper extends AbstractMapper {
 			eclassElement.addElement("field").addAttribute("name", eAttribute.getName() + "ESet").addAttribute(
 					"persistence-modifier", "persistent");
 		}
-		
-		//if (false && aAttribute.getAnnotatedEAttribute().isUnique()) {
-		//	field.addElement("unique");
-		//}
+
+		// if (false && aAttribute.getAnnotatedEAttribute().isUnique()) {
+		// field.addElement("unique");
+		// }
 	}
 }

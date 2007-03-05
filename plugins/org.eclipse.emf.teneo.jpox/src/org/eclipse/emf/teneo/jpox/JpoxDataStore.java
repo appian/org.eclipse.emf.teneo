@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.9 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.9.2.1 2007/03/05 18:07:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -52,6 +52,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
@@ -71,6 +72,7 @@ import org.eclipse.emf.teneo.jpox.elist.RemoveLifeCycleListener;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 import org.eclipse.emf.teneo.jpox.mapping.ENumMapping;
 import org.eclipse.emf.teneo.jpox.mapping.EObjectMapping;
+import org.eclipse.emf.teneo.jpox.mapping.XMLCalendarMapping;
 import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
 import org.eclipse.emf.teneo.type.FeatureMapEntry;
 import org.eclipse.emf.teneo.util.AssertUtil;
@@ -99,7 +101,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $ $Date: 2007/02/01 12:36:36 $
+ * @version $Revision: 1.9.2.1 $ $Date: 2007/03/05 18:07:38 $
  */
 
 public class JpoxDataStore {
@@ -304,6 +306,9 @@ public class JpoxDataStore {
 				FeatureMapWrapper.class.getName(), false, "1.4", true, false, false, clr);
 		tm.addType(initPmf.getPMFContext().getPluginManager(),
 				"org.jpox.store_mapping", EObject.class.getName(), EObjectMapping.class.getName(), null, true,
+				"1.4", true, false, true, clr);
+		tm.addType(initPmf.getPMFContext().getPluginManager(),
+				"org.jpox.store_mapping", XMLCalendar.class.getName(), XMLCalendarMapping.class.getName(), null, true,
 				"1.4", true, false, true, clr);
 
         addCustomTypes(initPmf, clr);
