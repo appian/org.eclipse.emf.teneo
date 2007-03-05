@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtendedPO2Action.java,v 1.4 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: ExtendedPO2Action.java,v 1.4.2.1 2007/03/05 18:07:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -22,6 +22,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.Customer;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.EPO2Factory;
 import org.eclipse.emf.teneo.samples.emf.sample.epo2.EPO2Package;
@@ -38,7 +39,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the extended po 2 example
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2007/02/01 12:35:37 $
+ * @version $Revision: 1.4.2.1 $ $Date: 2007/03/05 18:07:40 $
 */
 public abstract class ExtendedPO2Action extends AbstractTestAction 
 {

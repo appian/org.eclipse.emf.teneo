@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PrimerPOAction.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: PrimerPOAction.java,v 1.2.2.1 2007/03/05 18:07:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ 
+ * @version $Revision: 1.2.2.1 $ 
 */
 public class PrimerPOAction extends AbstractTestAction 
 {
@@ -57,7 +57,7 @@ public class PrimerPOAction extends AbstractTestAction
 	        item.setProductName("productname");
 	        item.setQuantity(new BigInteger("500"));
 	        item.setUSPrice(new BigDecimal(50.123));
-	        item.setShipDate(new Date());
+	        item.setShipDate(store.getDate(new Date()));
 
 	        final Item item2 = factory.createItem();
 	        item2.setComment("This is my second test item");
@@ -65,7 +65,7 @@ public class PrimerPOAction extends AbstractTestAction
 	        item2.setProductName("productname");
 	        item2.setQuantity(new BigInteger("500"));
 	        item2.setUSPrice(new BigDecimal(50.123));
-	        item2.setShipDate(new Date());
+	        item2.setShipDate(store.getDate(new Date()));
 	        
 	        final USAddress addr = factory.createUSAddress();
 	        addr.setCity("c");
@@ -80,7 +80,7 @@ public class PrimerPOAction extends AbstractTestAction
 	        po.setBillTo(addr);
 	        po.getItems().add(item);
 	        po.getItems().add(item2);
-	        po.setOrderDate(new Date());
+	        po.setOrderDate(store.getDate(new Date()));
 
 	        store.store(po);
 	        store.commitTransaction();

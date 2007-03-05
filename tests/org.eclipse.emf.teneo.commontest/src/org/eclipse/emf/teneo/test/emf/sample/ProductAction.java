@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ProductAction.java,v 1.4 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: ProductAction.java,v 1.4.2.1 2007/03/05 18:07:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * (double and date).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.4.2.1 $
  */
 public class ProductAction extends AbstractTestAction {
 	public ProductAction() {
@@ -53,7 +53,7 @@ public class ProductAction extends AbstractTestAction {
 
 			final ProductType product = factory.createProductType();
 			product.setCode("product1");
-			product.setCreatedOn(new Date());
+			product.setCreatedOn(store.getDate(new Date()));
 			product.setId("productid1");
 			product.setPrice(199.95);
 			product.setSupplier(supplier);
