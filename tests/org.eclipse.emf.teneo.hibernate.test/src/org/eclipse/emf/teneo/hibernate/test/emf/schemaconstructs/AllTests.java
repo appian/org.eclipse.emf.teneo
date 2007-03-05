@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.7 2007/02/08 23:14:30 mtaal Exp $
+ * $Id: AllTests.java,v 1.6.2.1 2007/03/05 18:07:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;
@@ -21,6 +21,7 @@ import junit.framework.TestSuite;
 
 import org.eclipse.emf.teneo.hibernate.test.HibernateTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
+import org.eclipse.emf.teneo.test.emf.schemaconstructs.DateTimeAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EcoreAttrsAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.ExtensionAction;
@@ -38,16 +39,18 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.6.2.1 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", HibernateTestbed
 				.instance().getConfigurations());
-		suite.addTestSuite(EMapAction.class);
+		suite.addTestSuite(DateTimeAction.class);
 
 		suite.addTestSuite(AttributesTest.class);
+
+		suite.addTestSuite(EMapAction.class);
 		suite.addTestSuite(SimpleTypeAction.class);
 		suite.addTestSuite(ListAction.class);
 		suite.addTestSuite(EcoreAttrsAction.class);
@@ -59,7 +62,6 @@ public class AllTests {
 		suite.addTestSuite(NestedGroupAction.class);
 		suite.addTestSuite(SubstitutionzvonAction.class);
 		suite.addTestSuite(SubstitutionAction.class);
-
 		/*
 		 * // The anytype test is not yet supported by Hibernate // suite.addTestSuite(AnyTypeAction.class); // Listunion types are not
 		 * yet supported by hibernate // 
