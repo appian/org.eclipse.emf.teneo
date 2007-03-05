@@ -10,14 +10,18 @@
  * Contributors:
  *   Martin Taal
  *   Davide Marchignoli
+ *   Brian Vetter (bugzilla 175909)
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.11 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.10.2.1 2007/03/05 18:07:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -25,7 +29,6 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
@@ -78,7 +81,7 @@ abstract class AbstractMapper {
 		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) hea.getPaModel().getPAnnotated(ed);
 
 		final String name;
-		final List<Parameter> params;
+		final List params;
 		if (hea.getHbType() != null) {
 			name = hea.getHbType().getType();
 			params = hea.getHbType().getParameters();
@@ -95,7 +98,8 @@ abstract class AbstractMapper {
 				propElement.addAttribute("type", name);
 			} else {
 				final Element typeElement = propElement.addElement("type").addAttribute("name", name);
-				for (Parameter param : params) {
+				for (Iterator it = params.iterator(); it.hasNext();) {
+					final Parameter param = (Parameter) it.next();
 					typeElement.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
 				}
 			}
@@ -127,7 +131,7 @@ abstract class AbstractMapper {
 		if (hed != null && hed.getHbTypeDef() != null) {
 			return hed.getHbTypeDef().getName();
 		} else if (paAttribute.getLob() != null) {
-			if (EcoreDataTypes.isByteArray(eDataType)) {
+			if (EcoreDataTypes.INSTANCE.isByteArray(eDataType)) {
 				return "binary";
 			} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
 				return "text";
@@ -140,7 +144,9 @@ abstract class AbstractMapper {
 		} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
 			return eDataType.getInstanceClassName();
 		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType)) {
-			return "java.util.Date";
+			return getEDateClass(eDataType);
+		} else if (EcoreDataTypes.INSTANCE.isEDateTime(eDataType)) {
+			return getEDateTimeClass(eDataType);
 		} else if (eDataType.getInstanceClass() != null && eDataType.getInstanceClass() == Object.class) {
 			// null forces caller to use usertype
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
@@ -151,13 +157,48 @@ abstract class AbstractMapper {
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
 		}
 	}
+	
+	/*
+	 * @return The name of the java class needed to map the date type
+	 */
+	public String getEDateClass(EDataType eDataType) {
+		assert(EcoreDataTypes.INSTANCE.isEDate(eDataType));
+		// only override if the user did not specify a more specific class
+		if (eDataType.getInstanceClass() == Object.class) {
+			// EMF returns an XSD Date type as an Object instance. go figure.
+			// note that I would prefer to use the class instance to get the name
+			// but for other reasons I do not want to have references to the 
+			// org.eclipse.emf.teneo.hibernate plugin.
+			return "org.eclipse.emf.teneo.hibernate.mapping.XSDDate";
+		}
+		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
+		// really wants a different mapping he/she should use maybe a usertype??
+		return Date.class.getName();		
+	}
+
+	/*
+	 * @return The name of the java class needed to map the datetime/timestamp type
+	 */
+	public String getEDateTimeClass(EDataType eDataType) {
+		assert(EcoreDataTypes.INSTANCE.isEDateTime(eDataType));
+		if (eDataType.getInstanceClass() == Object.class) {
+			// EMF returns an XSD Date type as an Object instance. go figure.
+			// note that I would prefer to use the class instance to get the name
+			// but for other reasons I do not want to have references to the 
+			// org.eclipse.emf.teneo.hibernate plugin.
+			return "org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime";
+		}
+		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
+		// really wants a different mapping he/she should use maybe a usertype??
+		return Timestamp.class.getName();		
+	}
 
 	/**
 	 * Returns the (possibly overridden) JoinColumns annotations for the given reference or an empty list if no
 	 * JoinColumns were defined.
 	 */
-	protected List<JoinColumn> getJoinColumns(PAnnotatedEReference paReference) {
-		List<JoinColumn> joinColumns = getHbmContext().getOverride(paReference);
+	protected List getJoinColumns(PAnnotatedEReference paReference) {
+		List joinColumns = getHbmContext().getOverride(paReference);
 		if (joinColumns == null) {
 			return paReference.getJoinColumns();
 		}
@@ -182,7 +223,7 @@ abstract class AbstractMapper {
 	}
 
 	/** Same as above only handles multiple columns */
-	protected void addColumns(Element propertyElement, String defaultName, List<Column> columns, boolean isNullable,
+	protected void addColumns(Element propertyElement, String defaultName, List columns, boolean isNullable,
 			boolean setColumnAttributesInProperty) {
 		// if no columns set then use some default
 		if (columns.isEmpty()) {
@@ -199,14 +240,15 @@ abstract class AbstractMapper {
 			col.setNullable(isNullable);
 			columns.add(col);
 		}
-		for (Column column : columns) {
+		for (Iterator it = columns.iterator(); it.hasNext();) {
+			final Column column = (Column) it.next();
 			addColumn(propertyElement, defaultName, column, isNullable, setColumnAttributesInProperty);
 		}
 	}
 
 	/** Adds anytype columns */
-	protected List<Column> getAnyTypeColumns(String featureName, boolean isNullable) {
-		final ArrayList<Column> result = new ArrayList<Column>();
+	protected List getAnyTypeColumns(String featureName, boolean isNullable) {
+		final ArrayList result = new ArrayList();
 		final Column typeColumn = PannotationFactory.eINSTANCE.createColumn();
 		typeColumn.setName(hbmContext.trunc(featureName + "_type"));
 		typeColumn.setNullable(isNullable);
@@ -221,12 +263,12 @@ abstract class AbstractMapper {
 	/**
 	 * Returns the (possibly overridden) columns annotation for the given attribute.
 	 */
-	protected List<Column> getColumns(PAnnotatedEAttribute paAttribute) {
+	protected List getColumns(PAnnotatedEAttribute paAttribute) {
 		final Column defaultColumn = paAttribute.getColumn();
 		final Column oc = getHbmContext().getOverride(paAttribute);
 
 		if (oc != null) {
-			final ArrayList<Column> result = new ArrayList<Column>();
+			final ArrayList result = new ArrayList();
 			result.add(oc);
 			return result;
 		}
@@ -235,7 +277,7 @@ abstract class AbstractMapper {
 		if (hae.getHbColumns().size() > 0) {
 			return hae.getHbColumns();
 		}
-		final ArrayList<Column> result = new ArrayList<Column>();
+		final ArrayList result = new ArrayList();
 		if (defaultColumn != null) {
 			result.add(defaultColumn);
 		}
