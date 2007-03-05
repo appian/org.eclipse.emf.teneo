@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.25.2.3 2007/03/05 20:15:57 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.25.2.4 2007/03/05 20:17:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -82,7 +82,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25.2.3 $
+ * @version $Revision: 1.25.2.4 $
  */
 public class DefaultAnnotator {
 
@@ -644,9 +644,6 @@ public class DefaultAnnotator {
 		// decide if a column annotation should be added, this is done 
 		// when the maxLength or length, totalDigits or fractionDigits are set
 		// and when no other column has been set
-		if (eAttribute.getName().indexOf("Decimal") != -1) {
-			System.err.println("test");
-		}
 		if (aAttribute.getColumn() == null) {
 			String maxLength = getExtendedMetaData(eAttribute, "maxLength");
 			if (maxLength == null) {
