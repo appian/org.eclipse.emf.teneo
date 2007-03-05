@@ -9,10 +9,11 @@
  *
  * Contributors:
  *   Martin Taal - Initial API and implementation
+ *   Benjamin Cabé - See bugzilla 176356
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.17 2007/02/08 23:14:41 mtaal Exp $
+ * $Id: StoreResource.java,v 1.18 2007/03/05 20:51:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -53,7 +54,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -372,7 +373,7 @@ public abstract class StoreResource extends ResourceImpl {
 				removedEObjects.clear();
 				loadedEObjects.addAll(newEObjects);
 				newEObjects.clear();
-			}
+				setModified(false);			}
 		}
 	}
 

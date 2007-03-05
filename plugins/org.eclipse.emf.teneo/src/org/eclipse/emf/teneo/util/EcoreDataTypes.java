@@ -10,10 +10,10 @@
  * Contributors:
  *   Martin Taal
  *   Davide Marchignoli
- *   Brian Vetter
+ *   Brian Vetter (bugzilla 175909)
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.4 2007/03/04 21:18:33 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.5 2007/03/05 20:51:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -110,12 +110,9 @@ public class EcoreDataTypes {
 		// implementations
 		return String.class == eDataType.getInstanceClass();
 	}
-
-	/**
  
  	/**
--	 * @return true if and only if the given dataType is a string datatype.
-+	 * @return true if and only if the given dataType is a date datatype.
+-	 * @return true if and only if the given dataType is a date datatype.
  	 */
  	public boolean isEDate(EDataType eDataType) {
 		/*
@@ -183,7 +180,7 @@ public class EcoreDataTypes {
 	/**
 	 * @return true if the eType is a byte array.
 	 */
-	public static boolean isByteArray(EDataType eType) {
+	public boolean isByteArray(EDataType eType) {
 		final Class<?> clazz = eType.getInstanceClass();
 		if (clazz != null) {
 			return (clazz.isArray() && clazz.getComponentType().equals(
