@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.4 2007/02/01 12:34:05 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.4.2.1 2007/03/05 18:07:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -41,13 +41,16 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.4.2.1 $
  */
 public class AllGenerateTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 				JPOXTestbed.instance().getConfigurations());
+
+		// does not work for jpox because xmlcalendar is not recognized yet
+		//suite.addTest(new JPOXGenerateTest(DateTimeAction.class));
 
 		suite.addTest(new JPOXGenerateTest(EMapAction.class));
 
@@ -65,6 +68,7 @@ public class AllGenerateTests {
 		suite.addTest(new JPOXGenerateTest(SubstitutionAction.class));
 		suite.addTest(new JPOXGenerateTest(SubstitutionzvonAction.class));
 		suite.addTest(new JPOXGenerateTest(AnyTypeAction.class));
+		
 		return suite;
 	}
 
