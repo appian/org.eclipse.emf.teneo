@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.12 2007/02/01 12:34:05 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.13 2007/03/05 20:51:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -61,7 +62,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -454,5 +455,10 @@ public class JPOXTestStore extends AbstractTestStore {
 	/** Is this a jpox test store */ 
 	public boolean isJPOXTestStore() {
 		return true;
+	}
+	
+	/** Set the xmlcalendar date */
+	public Object getDate(Date date) {
+		return date;
 	}
 }
