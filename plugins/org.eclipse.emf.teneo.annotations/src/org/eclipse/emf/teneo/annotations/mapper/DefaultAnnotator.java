@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.25.2.4 2007/03/05 20:17:11 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.25.2.5 2007/03/05 20:49:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -82,7 +82,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25.2.4 $
+ * @version $Revision: 1.25.2.5 $
  */
 public class DefaultAnnotator {
 
@@ -653,7 +653,11 @@ public class DefaultAnnotator {
 			final String fractionDigits = getExtendedMetaData(eAttribute, "fractionDigits");
 			if (maxLength != null || totalDigits != null || fractionDigits != null) {
 				final Column column = aFactory.createColumn();
-				if (maxLength != null) { 
+				// only support this for the string class, the length/maxlength is also 
+				// used in case of the xsd list/union types but this can not be enforced using a constraint on the
+				// columnlength
+				if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null &&
+						eAttribute.getEAttributeType().getInstanceClass() == String.class) { 
 					column.setLength(Integer.parseInt(maxLength)); // you'll find parse errors!
 				}
 				if (totalDigits != null) {
