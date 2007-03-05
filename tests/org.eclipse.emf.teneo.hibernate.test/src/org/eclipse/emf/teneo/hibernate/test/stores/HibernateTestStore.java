@@ -11,12 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestStore.java,v 1.12 2007/02/05 15:36:01 mtaal Exp $
+ * $Id: HibernateTestStore.java,v 1.13 2007/03/05 20:58:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
@@ -55,7 +57,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -418,5 +420,10 @@ public class HibernateTestStore extends AbstractTestStore {
 	/** Is this a hibernate test store */ 
 	public boolean isHibernateTestStore() {
 		return true;
+	}
+	
+	/** Set the xmlcalendar date */
+	public Object getDate(Date date) {
+		return new XMLCalendar(date, XMLCalendar.DATETIME);
 	}
 }
