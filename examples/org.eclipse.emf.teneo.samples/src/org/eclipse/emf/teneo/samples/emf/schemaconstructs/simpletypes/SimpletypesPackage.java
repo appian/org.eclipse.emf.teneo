@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesPackage.java,v 1.2 2006/09/22 13:58:33 mtaal Exp $
+ * $Id: SimpletypesPackage.java,v 1.2.4.1 2007/03/05 20:15:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -315,13 +315,31 @@ public interface SimpletypesPackage extends EPackage {
 	int SIMPLE_TYPE__LIMITEDSTRING = 10;
 
 	/**
+	 * The feature id for the '<em><b>Limited Decimal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_TYPE__LIMITED_DECIMAL = 11;
+
+	/**
+	 * The feature id for the '<em><b>Extra Limited String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_TYPE__EXTRA_LIMITED_STRING = 12;
+
+	/**
 	 * The number of structural features of the '<em>Simple Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_TYPE_FEATURE_COUNT = 11;
+	int SIMPLE_TYPE_FEATURE_COUNT = 13;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeObjectImpl <em>Simple Type Object</em>}' class.
@@ -501,6 +519,16 @@ public interface SimpletypesPackage extends EPackage {
 	int DOUBLE_ARRAY = 9;
 
 	/**
+	 * The meta object id for the '<em>Extra Limited String</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.String
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getExtraLimitedString()
+	 * @generated
+	 */
+	int EXTRA_LIMITED_STRING = 10;
+
+	/**
 	 * The meta object id for the '<em>Float</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -508,7 +536,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getFloat()
 	 * @generated
 	 */
-	int FLOAT = 10;
+	int FLOAT = 11;
 
 	/**
 	 * The meta object id for the '<em>Int</em>' data type.
@@ -518,7 +546,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getInt()
 	 * @generated
 	 */
-	int INT = 11;
+	int INT = 12;
 
 	/**
 	 * The meta object id for the '<em>Int Array</em>' data type.
@@ -527,7 +555,17 @@ public interface SimpletypesPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getIntArray()
 	 * @generated
 	 */
-	int INT_ARRAY = 12;
+	int INT_ARRAY = 13;
+
+	/**
+	 * The meta object id for the '<em>Limited Decimal</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.math.BigDecimal
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getLimitedDecimal()
+	 * @generated
+	 */
+	int LIMITED_DECIMAL = 14;
 
 	/**
 	 * The meta object id for the '<em>Limited String</em>' data type.
@@ -537,7 +575,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getLimitedString()
 	 * @generated
 	 */
-	int LIMITED_STRING = 13;
+	int LIMITED_STRING = 15;
 
 	/**
 	 * The meta object id for the '<em>Long</em>' data type.
@@ -547,7 +585,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getLong()
 	 * @generated
 	 */
-	int LONG = 14;
+	int LONG = 16;
 
 	/**
 	 * The meta object id for the '<em>Simple Enum Object</em>' data type.
@@ -557,7 +595,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getSimpleEnumObject()
 	 * @generated
 	 */
-	int SIMPLE_ENUM_OBJECT = 15;
+	int SIMPLE_ENUM_OBJECT = 17;
 
 
 	/**
@@ -567,7 +605,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getStringArray()
 	 * @generated
 	 */
-	int STRING_ARRAY = 16;
+	int STRING_ARRAY = 18;
 
 
 	/**
@@ -866,6 +904,28 @@ public interface SimpletypesPackage extends EPackage {
 	EAttribute getSimpleType_Limitedstring();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getLimitedDecimal <em>Limited Decimal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Limited Decimal</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getLimitedDecimal()
+	 * @see #getSimpleType()
+	 * @generated
+	 */
+	EAttribute getSimpleType_LimitedDecimal();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getExtraLimitedString <em>Extra Limited String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Extra Limited String</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType#getExtraLimitedString()
+	 * @see #getSimpleType()
+	 * @generated
+	 */
+	EAttribute getSimpleType_ExtraLimitedString();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleTypeObject <em>Simple Type Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1066,6 +1126,18 @@ public interface SimpletypesPackage extends EPackage {
 	EDataType getDoubleArray();
 
 	/**
+	 * Returns the meta object for data type '{@link java.lang.String <em>Extra Limited String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Extra Limited String</em>'.
+	 * @see java.lang.String
+	 * @model instanceClass="java.lang.String"
+	 *        extendedMetaData="name='ExtraLimitedString' baseType='http://www.eclipse.org/emf/2003/XMLType#string' maxLength='5'" 
+	 * @generated
+	 */
+	EDataType getExtraLimitedString();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Float <em>Float</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1099,6 +1171,18 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getIntArray();
+
+	/**
+	 * Returns the meta object for data type '{@link java.math.BigDecimal <em>Limited Decimal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Limited Decimal</em>'.
+	 * @see java.math.BigDecimal
+	 * @model instanceClass="java.math.BigDecimal"
+	 *        extendedMetaData="name='LimitedDecimal' totalDigits='4' fractionDigits='1'" 
+	 * @generated
+	 */
+	EDataType getLimitedDecimal();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>Limited String</em>}'.
@@ -1390,6 +1474,22 @@ public interface SimpletypesPackage extends EPackage {
 		EAttribute SIMPLE_TYPE__LIMITEDSTRING = eINSTANCE.getSimpleType_Limitedstring();
 
 		/**
+		 * The meta object literal for the '<em><b>Limited Decimal</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_TYPE__LIMITED_DECIMAL = eINSTANCE.getSimpleType_LimitedDecimal();
+
+		/**
+		 * The meta object literal for the '<em><b>Extra Limited String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_TYPE__EXTRA_LIMITED_STRING = eINSTANCE.getSimpleType_ExtraLimitedString();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeObjectImpl <em>Simple Type Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1548,6 +1648,16 @@ public interface SimpletypesPackage extends EPackage {
 		EDataType DOUBLE_ARRAY = eINSTANCE.getDoubleArray();
 
 		/**
+		 * The meta object literal for the '<em>Extra Limited String</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getExtraLimitedString()
+		 * @generated
+		 */
+		EDataType EXTRA_LIMITED_STRING = eINSTANCE.getExtraLimitedString();
+
+		/**
 		 * The meta object literal for the '<em>Float</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1575,6 +1685,16 @@ public interface SimpletypesPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType INT_ARRAY = eINSTANCE.getIntArray();
+
+		/**
+		 * The meta object literal for the '<em>Limited Decimal</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.math.BigDecimal
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpletypesPackageImpl#getLimitedDecimal()
+		 * @generated
+		 */
+		EDataType LIMITED_DECIMAL = eINSTANCE.getLimitedDecimal();
 
 		/**
 		 * The meta object literal for the '<em>Limited String</em>' data type.

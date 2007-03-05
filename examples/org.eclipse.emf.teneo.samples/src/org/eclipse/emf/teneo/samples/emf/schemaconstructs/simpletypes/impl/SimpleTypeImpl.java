@@ -2,9 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleTypeImpl.java,v 1.3 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: SimpleTypeImpl.java,v 1.2.4.1 2007/03/05 20:15:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
+
+import java.math.BigDecimal;
 
 import java.util.Date;
 
@@ -34,6 +36,8 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Simpletype
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl#getEnu <em>Enu</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl#getDat <em>Dat</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl#getLimitedstring <em>Limitedstring</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl#getLimitedDecimal <em>Limited Decimal</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl#getExtraLimitedString <em>Extra Limited String</em>}</li>
  * </ul>
  * </p>
  *
@@ -342,6 +346,55 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	protected String limitedstring = LIMITEDSTRING_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getLimitedDecimal() <em>Limited Decimal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLimitedDecimal()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final BigDecimal LIMITED_DECIMAL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLimitedDecimal() <em>Limited Decimal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLimitedDecimal()
+	 * @generated
+	 * @ordered
+	 */
+	protected BigDecimal limitedDecimal = LIMITED_DECIMAL_EDEFAULT;
+
+	/**
+	 * This is true if the Limited Decimal attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean limitedDecimalESet = false;
+
+	/**
+	 * The default value of the '{@link #getExtraLimitedString() <em>Extra Limited String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtraLimitedString()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EXTRA_LIMITED_STRING_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getExtraLimitedString() <em>Extra Limited String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtraLimitedString()
+	 * @generated
+	 * @ordered
+	 */
+	protected String extraLimitedString = EXTRA_LIMITED_STRING_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -355,7 +408,6 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected EClass eStaticClass() {
 		return SimpletypesPackage.Literals.SIMPLE_TYPE;
 	}
@@ -821,7 +873,73 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
+	public BigDecimal getLimitedDecimal() {
+		return limitedDecimal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLimitedDecimal(BigDecimal newLimitedDecimal) {
+		BigDecimal oldLimitedDecimal = limitedDecimal;
+		limitedDecimal = newLimitedDecimal;
+		boolean oldLimitedDecimalESet = limitedDecimalESet;
+		limitedDecimalESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimpletypesPackage.SIMPLE_TYPE__LIMITED_DECIMAL, oldLimitedDecimal, limitedDecimal, !oldLimitedDecimalESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetLimitedDecimal() {
+		BigDecimal oldLimitedDecimal = limitedDecimal;
+		boolean oldLimitedDecimalESet = limitedDecimalESet;
+		limitedDecimal = LIMITED_DECIMAL_EDEFAULT;
+		limitedDecimalESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, SimpletypesPackage.SIMPLE_TYPE__LIMITED_DECIMAL, oldLimitedDecimal, LIMITED_DECIMAL_EDEFAULT, oldLimitedDecimalESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetLimitedDecimal() {
+		return limitedDecimalESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getExtraLimitedString() {
+		return extraLimitedString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExtraLimitedString(String newExtraLimitedString) {
+		String oldExtraLimitedString = extraLimitedString;
+		extraLimitedString = newExtraLimitedString;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimpletypesPackage.SIMPLE_TYPE__EXTRA_LIMITED_STRING, oldExtraLimitedString, extraLimitedString));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_TYPE__CODE:
@@ -846,6 +964,10 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 				return getDat();
 			case SimpletypesPackage.SIMPLE_TYPE__LIMITEDSTRING:
 				return getLimitedstring();
+			case SimpletypesPackage.SIMPLE_TYPE__LIMITED_DECIMAL:
+				return getLimitedDecimal();
+			case SimpletypesPackage.SIMPLE_TYPE__EXTRA_LIMITED_STRING:
+				return getExtraLimitedString();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -855,7 +977,6 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_TYPE__CODE:
@@ -891,6 +1012,12 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 			case SimpletypesPackage.SIMPLE_TYPE__LIMITEDSTRING:
 				setLimitedstring((String)newValue);
 				return;
+			case SimpletypesPackage.SIMPLE_TYPE__LIMITED_DECIMAL:
+				setLimitedDecimal((BigDecimal)newValue);
+				return;
+			case SimpletypesPackage.SIMPLE_TYPE__EXTRA_LIMITED_STRING:
+				setExtraLimitedString((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -900,7 +1027,6 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_TYPE__CODE:
@@ -936,6 +1062,12 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 			case SimpletypesPackage.SIMPLE_TYPE__LIMITEDSTRING:
 				setLimitedstring(LIMITEDSTRING_EDEFAULT);
 				return;
+			case SimpletypesPackage.SIMPLE_TYPE__LIMITED_DECIMAL:
+				unsetLimitedDecimal();
+				return;
+			case SimpletypesPackage.SIMPLE_TYPE__EXTRA_LIMITED_STRING:
+				setExtraLimitedString(EXTRA_LIMITED_STRING_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -945,7 +1077,6 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SimpletypesPackage.SIMPLE_TYPE__CODE:
@@ -970,6 +1101,10 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 				return DAT_EDEFAULT == null ? dat != null : !DAT_EDEFAULT.equals(dat);
 			case SimpletypesPackage.SIMPLE_TYPE__LIMITEDSTRING:
 				return LIMITEDSTRING_EDEFAULT == null ? limitedstring != null : !LIMITEDSTRING_EDEFAULT.equals(limitedstring);
+			case SimpletypesPackage.SIMPLE_TYPE__LIMITED_DECIMAL:
+				return isSetLimitedDecimal();
+			case SimpletypesPackage.SIMPLE_TYPE__EXTRA_LIMITED_STRING:
+				return EXTRA_LIMITED_STRING_EDEFAULT == null ? extraLimitedString != null : !EXTRA_LIMITED_STRING_EDEFAULT.equals(extraLimitedString);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -979,7 +1114,6 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
@@ -1006,6 +1140,10 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 		result.append(dat);
 		result.append(", limitedstring: ");
 		result.append(limitedstring);
+		result.append(", limitedDecimal: ");
+		if (limitedDecimalESet) result.append(limitedDecimal); else result.append("<unset>");
+		result.append(", extraLimitedString: ");
+		result.append(extraLimitedString);
 		result.append(')');
 		return result.toString();
 	}

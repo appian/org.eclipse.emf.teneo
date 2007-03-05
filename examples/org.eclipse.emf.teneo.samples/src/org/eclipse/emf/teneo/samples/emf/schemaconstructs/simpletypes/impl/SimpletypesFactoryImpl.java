@@ -2,9 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesFactoryImpl.java,v 1.6 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: SimpletypesFactoryImpl.java,v 1.5.4.1 2007/03/05 20:15:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
+
+import java.math.BigDecimal;
 
 import java.util.Date;
 
@@ -17,6 +19,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.*;
+
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType;
@@ -65,7 +68,6 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SimpletypesPackage.SIMPLE_LIST: return createSimpleList();
@@ -81,7 +83,6 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case SimpletypesPackage.SIMPLE_ENUM:
@@ -98,12 +99,16 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 				return createDoubleFromString(eDataType, initialValue);
 			case SimpletypesPackage.DOUBLE_ARRAY:
 				return createDoubleArrayFromString(eDataType, initialValue);
+			case SimpletypesPackage.EXTRA_LIMITED_STRING:
+				return createExtraLimitedStringFromString(eDataType, initialValue);
 			case SimpletypesPackage.FLOAT:
 				return createFloatFromString(eDataType, initialValue);
 			case SimpletypesPackage.INT:
 				return createIntFromString(eDataType, initialValue);
 			case SimpletypesPackage.INT_ARRAY:
 				return createIntArrayFromString(eDataType, initialValue);
+			case SimpletypesPackage.LIMITED_DECIMAL:
+				return createLimitedDecimalFromString(eDataType, initialValue);
 			case SimpletypesPackage.LIMITED_STRING:
 				return createLimitedStringFromString(eDataType, initialValue);
 			case SimpletypesPackage.LONG:
@@ -122,7 +127,6 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case SimpletypesPackage.SIMPLE_ENUM:
@@ -139,12 +143,16 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 				return convertDoubleToString(eDataType, instanceValue);
 			case SimpletypesPackage.DOUBLE_ARRAY:
 				return convertDoubleArrayToString(eDataType, instanceValue);
+			case SimpletypesPackage.EXTRA_LIMITED_STRING:
+				return convertExtraLimitedStringToString(eDataType, instanceValue);
 			case SimpletypesPackage.FLOAT:
 				return convertFloatToString(eDataType, instanceValue);
 			case SimpletypesPackage.INT:
 				return convertIntToString(eDataType, instanceValue);
 			case SimpletypesPackage.INT_ARRAY:
 				return convertIntArrayToString(eDataType, instanceValue);
+			case SimpletypesPackage.LIMITED_DECIMAL:
+				return convertLimitedDecimalToString(eDataType, instanceValue);
 			case SimpletypesPackage.LIMITED_STRING:
 				return convertLimitedStringToString(eDataType, instanceValue);
 			case SimpletypesPackage.LONG:
@@ -214,7 +222,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Boolean createBoolFromString(EDataType eDataType, String initialValue) {
-		return (Boolean)super.createFromString(initialValue);
+		return (Boolean)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -223,7 +231,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertBoolToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -232,7 +240,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Byte createByteFromString(EDataType eDataType, String initialValue) {
-		return (Byte)super.createFromString(initialValue);
+		return (Byte)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -241,7 +249,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertByteToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -250,7 +258,9 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public byte[] createByteArrayFromString(EDataType eDataType, String initialValue) {
-		return (byte[])super.createFromString(initialValue);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -259,7 +269,9 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertByteArrayToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -268,7 +280,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Date createDateFromString(EDataType eDataType, String initialValue) {
-		return (Date)super.createFromString(initialValue);
+		return (Date)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -277,7 +289,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertDateToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -286,7 +298,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Double createDoubleFromString(EDataType eDataType, String initialValue) {
-		return (Double)super.createFromString(initialValue);
+		return (Double)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -295,7 +307,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertDoubleToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -304,7 +316,9 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public double[] createDoubleArrayFromString(EDataType eDataType, String initialValue) {
-		return (double[])super.createFromString(initialValue);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -313,7 +327,27 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertDoubleArrayToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String createExtraLimitedStringFromString(EDataType eDataType, String initialValue) {
+		return (String)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.STRING, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExtraLimitedStringToString(EDataType eDataType, Object instanceValue) {
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.STRING, instanceValue);
 	}
 
 	/**
@@ -322,7 +356,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Float createFloatFromString(EDataType eDataType, String initialValue) {
-		return (Float)super.createFromString(initialValue);
+		return (Float)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -331,7 +365,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertFloatToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -340,7 +374,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Integer createIntFromString(EDataType eDataType, String initialValue) {
-		return (Integer)super.createFromString(initialValue);
+		return (Integer)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -349,7 +383,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertIntToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -358,7 +392,9 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public int[] createIntArrayFromString(EDataType eDataType, String initialValue) {
-		return (int[])super.createFromString(initialValue);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -367,7 +403,27 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertIntArrayToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BigDecimal createLimitedDecimalFromString(EDataType eDataType, String initialValue) {
+		return (BigDecimal)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLimitedDecimalToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -394,7 +450,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Long createLongFromString(EDataType eDataType, String initialValue) {
-		return (Long)super.createFromString(initialValue);
+		return (Long)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -403,7 +459,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertLongToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -412,7 +468,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public SimpleEnum createSimpleEnumObjectFromString(EDataType eDataType, String initialValue) {
-		return createSimpleEnumFromString(SimpletypesPackage.Literals.SIMPLE_ENUM, initialValue);
+		return (SimpleEnum)createSimpleEnumFromString(SimpletypesPackage.Literals.SIMPLE_ENUM, initialValue);
 	}
 
 	/**
@@ -430,7 +486,9 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String[] createStringArrayFromString(EDataType eDataType, String initialValue) {
-		return (String[])super.createFromString(initialValue);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -439,7 +497,9 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertStringArrayToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -457,7 +517,6 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @deprecated
 	 * @generated
 	 */
-	@Deprecated
 	public static SimpletypesPackage getPackage() {
 		return SimpletypesPackage.eINSTANCE;
 	}
