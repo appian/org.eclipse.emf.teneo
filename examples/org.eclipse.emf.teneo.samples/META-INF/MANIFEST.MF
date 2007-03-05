@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.samples
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.7.5.qualifier
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.emf.ecore.xmi,
  org.eclipse.core.runtime,
@@ -224,6 +224,9 @@ Export-Package: extlibrary,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.util,
+ org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime,
+ org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.impl,
+ org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.util,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl,
  org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.util,
