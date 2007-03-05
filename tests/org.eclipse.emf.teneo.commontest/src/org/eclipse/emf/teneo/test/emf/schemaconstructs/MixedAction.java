@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MixedAction.java,v 1.4 2007/03/04 21:18:31 mtaal Exp $
+ * $Id: MixedAction.java,v 1.5 2007/03/05 20:59:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests for the mixed construction.  
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
+ * @version $Revision: 1.5 $ 
 */
 public class MixedAction extends AbstractTestAction 
 {
@@ -86,7 +86,7 @@ public class MixedAction extends AbstractTestAction
 		        letter.setQuantity(new BigInteger(i + "")); //6
 		        letter.getMixed().add(Constants.TEXT, i + "Unit: pieces"); //7
 		        cal.set(Calendar.DAY_OF_MONTH, i + 1);
-		        letter.setShipDate(new XMLCalendar(cal.getTime(), XMLCalendar.DATETIME)); //8
+		        letter.setShipDate(store.getDate(cal.getTime())); //8
 		        letter.getMixed().add(Constants.COMMENT, i + "Comment: please ensure that the product is delivered on time."); //9
 		        letter.getMixed().add(Constants.CDATA, i + "CDATA test"); //10
 	        

@@ -11,12 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TestStore.java,v 1.4 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: TestStore.java,v 1.5 2007/03/05 20:59:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,7 +30,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * be reused.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public interface TestStore {
 
@@ -134,4 +135,7 @@ public interface TestStore {
 	
 	/** Is this a jpox test store */ 
 	public boolean isJPOXTestStore();
+	
+	/** Get the xmlcalendar date (hibernate) or normal date (jpox) */
+	public Object getDate(Date date);
 }

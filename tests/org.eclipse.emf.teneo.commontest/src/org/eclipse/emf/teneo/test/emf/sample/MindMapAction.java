@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MindMapAction.java,v 1.4 2007/03/04 21:18:31 mtaal Exp $
+ * $Id: MindMapAction.java,v 1.5 2007/03/05 20:59:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 import org.example.mindmap.Map;
@@ -36,7 +35,7 @@ import org.example.mindmap.Topic;
  * Tests the gmf mindmap example
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class MindMapAction extends AbstractTestAction {
 	
@@ -67,8 +66,8 @@ public class MindMapAction extends AbstractTestAction {
 			map.getResources().add(res1);
 			map.getResources().add(res2);
 			
-			map.getRootTopics().add(createTopic(map.getResources(), factory, "Teneo JPOX", 5));
-			map.getRootTopics().add(createTopic(new ArrayList(), factory, "Teneo Hibernate", 3));
+			map.getRootTopics().add(createTopic(store, map.getResources(), factory, "Teneo JPOX", 5));
+			map.getRootTopics().add(createTopic(store, new ArrayList(), factory, "Teneo Hibernate", 3));
 			
 			final Relationship rel = factory.createRelationship();
 			rel.setSource((Topic)map.getRootTopics().get(0));
@@ -105,16 +104,16 @@ public class MindMapAction extends AbstractTestAction {
 	}
 
 	/** Create a default topic */
-	private Topic createTopic(List resources, MindmapFactory factory, String name, int level) {
+	private Topic createTopic(TestStore store, List resources, MindmapFactory factory, String name, int level) {
 		final Topic topic = factory.createTopic();
-		topic.setEndDate(new XMLCalendar(new Date(), XMLCalendar.DATETIME));
-		topic.setStartDate(new XMLCalendar(new Date(), XMLCalendar.DATETIME));
+		topic.setEndDate(store.getDate(new Date()));
+		topic.setStartDate(store.getDate(new Date()));
 		topic.setName(name + level);
 		topic.setPriority(Priority.get(level));
 		topic.setPercentComplete((float)(level * 10.0 / 100.0));
 		topic.getResources().addAll(resources);
 		for (int i = 0; i < level; i++) {
-			topic.getSubtopics().add(createTopic(resources, factory, name + "_", level - 1));
+			topic.getSubtopics().add(createTopic(store, resources, factory, name + "_", level - 1));
 		}
 		return topic;
 	}

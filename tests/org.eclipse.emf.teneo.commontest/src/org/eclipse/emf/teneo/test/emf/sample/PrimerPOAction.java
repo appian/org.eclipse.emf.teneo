@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PrimerPOAction.java,v 1.3 2007/03/04 21:18:31 mtaal Exp $
+ * $Id: PrimerPOAction.java,v 1.4 2007/03/05 20:59:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -20,7 +20,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 
-import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage;
@@ -33,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
+ * @version $Revision: 1.4 $ 
 */
 public class PrimerPOAction extends AbstractTestAction 
 {
@@ -58,7 +57,7 @@ public class PrimerPOAction extends AbstractTestAction
 	        item.setProductName("productname");
 	        item.setQuantity(new BigInteger("500"));
 	        item.setUSPrice(new BigDecimal(50.123));
-	        item.setShipDate(new XMLCalendar(new Date(), XMLCalendar.DATETIME));
+	        item.setShipDate(store.getDate(new Date()));
 
 	        final Item item2 = factory.createItem();
 	        item2.setComment("This is my second test item");
@@ -66,7 +65,7 @@ public class PrimerPOAction extends AbstractTestAction
 	        item2.setProductName("productname");
 	        item2.setQuantity(new BigInteger("500"));
 	        item2.setUSPrice(new BigDecimal(50.123));
-	        item2.setShipDate(new XMLCalendar(new Date(), XMLCalendar.DATETIME));
+	        item2.setShipDate(store.getDate(new Date()));
 	        
 	        final USAddress addr = factory.createUSAddress();
 	        addr.setCity("c");
@@ -81,7 +80,7 @@ public class PrimerPOAction extends AbstractTestAction
 	        po.setBillTo(addr);
 	        po.getItems().add(item);
 	        po.getItems().add(item2);
-	        po.setOrderDate(new XMLCalendar(new Date(), XMLCalendar.DATETIME));
+	        po.setOrderDate(store.getDate(new Date()));
 
 	        store.store(po);
 	        store.commitTransaction();
