@@ -13,7 +13,7 @@
  *   Brian Vetter
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.12 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.13 2007/03/05 20:51:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -132,7 +132,7 @@ abstract class AbstractMapper {
 		if (hed != null && hed.getHbTypeDef() != null) {
 			return hed.getHbTypeDef().getName();
 		} else if (paAttribute.getLob() != null) {
-			if (EcoreDataTypes.isByteArray(eDataType)) {
+			if (EcoreDataTypes.INSTANCE.isByteArray(eDataType)) {
 				return "binary";
 			} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
 				return "text";
