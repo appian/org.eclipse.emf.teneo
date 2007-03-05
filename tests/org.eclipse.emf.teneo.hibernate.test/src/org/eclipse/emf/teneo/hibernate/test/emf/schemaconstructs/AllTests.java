@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.6.2.1 2007/03/05 18:07:16 mtaal Exp $
+ * $Id: AllTests.java,v 1.6.2.2 2007/03/05 20:15:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;
@@ -39,19 +39,20 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6.2.1 $
+ * @version $Revision: 1.6.2.2 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", HibernateTestbed
 				.instance().getConfigurations());
+		suite.addTestSuite(SimpleTypeAction.class);
+/*
 		suite.addTestSuite(DateTimeAction.class);
 
 		suite.addTestSuite(AttributesTest.class);
 
 		suite.addTestSuite(EMapAction.class);
-		suite.addTestSuite(SimpleTypeAction.class);
 		suite.addTestSuite(ListAction.class);
 		suite.addTestSuite(EcoreAttrsAction.class);
 		suite.addTestSuite(MixedAction.class);
@@ -62,6 +63,7 @@ public class AllTests {
 		suite.addTestSuite(NestedGroupAction.class);
 		suite.addTestSuite(SubstitutionzvonAction.class);
 		suite.addTestSuite(SubstitutionAction.class);
+*/
 		/*
 		 * // The anytype test is not yet supported by Hibernate // suite.addTestSuite(AnyTypeAction.class); // Listunion types are not
 		 * yet supported by hibernate // 
