@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.25.2.5 2007/03/05 20:49:19 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.25.2.6 2007/03/06 17:14:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -82,7 +82,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25.2.5 $
+ * @version $Revision: 1.25.2.6 $
  */
 public class DefaultAnnotator {
 
@@ -587,8 +587,10 @@ public class DefaultAnnotator {
 			final Id id = aFactory.createId();
 			id.setEModelElement(eAttribute);
 			aAttribute.setId(id);
+			addColumnConstraints(aAttribute);
 			return; // after id do not add basic
 		} else if (aAttribute.getId() != null) {
+			addColumnConstraints(aAttribute);
 			return; // after id do not do basic
 		}
 
@@ -640,6 +642,13 @@ public class DefaultAnnotator {
 				log.warn("The column of a primary key property is null, this will often result in database errors!");
 			}
 		}
+		addColumnConstraints(aAttribute);
+	}
+
+	/** Add column constraints on the basis of the xsd extended meta data */
+	private void addColumnConstraints(PAnnotatedEAttribute aAttribute) {
+		
+		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
 		
 		// decide if a column annotation should be added, this is done 
 		// when the maxLength or length, totalDigits or fractionDigits are set
@@ -669,8 +678,9 @@ public class DefaultAnnotator {
 				aAttribute.setColumn(column);
 			}
 		}
-	}
 
+	}
+	
 	/** Handles a many EAttribute which is a list of simple types */
 	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute, boolean forceNullable) {
 		final String logStr = aAttribute.getAnnotatedEAttribute().getName() + "/"
