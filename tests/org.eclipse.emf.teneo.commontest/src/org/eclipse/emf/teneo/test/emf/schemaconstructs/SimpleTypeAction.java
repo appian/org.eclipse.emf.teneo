@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SimpleTypeAction.java,v 1.6 2007/03/06 18:00:45 mtaal Exp $
+ * $Id: SimpleTypeAction.java,v 1.7 2007/03/06 19:02:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests if simple types are stored/retrieved correctly.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class SimpleTypeAction extends AbstractTestAction {
 	/** Simple Type Values we test against */
@@ -113,7 +113,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 			assertEquals(LONG, result.getLon());
 			assertEquals(SHORT, result.getShor());
 			assertEquals(STRING.substring(0, 5), result.getExtraLimitedString());
-			assertEquals(bigDecimalTwo.floatValue(), result.getLimitedDecimal().floatValue(), 0.1);
+			assertEquals(bigDecimalTwo.floatValue(), result.getLimitedDecimal().floatValue(), 0.11);
 			store.deleteObject(result);
 			store.commitTransaction();
 		}
