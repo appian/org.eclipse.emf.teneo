@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.25.2.6 2007/03/06 17:14:31 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.25.2.7 2007/03/06 21:27:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -82,7 +82,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25.2.6 $
+ * @version $Revision: 1.25.2.7 $
  */
 public class DefaultAnnotator {
 
@@ -647,40 +647,38 @@ public class DefaultAnnotator {
 
 	/** Add column constraints on the basis of the xsd extended meta data */
 	private void addColumnConstraints(PAnnotatedEAttribute aAttribute) {
-		
-		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
-		
-		// decide if a column annotation should be added, this is done 
-		// when the maxLength or length, totalDigits or fractionDigits are set
-		// and when no other column has been set
-		if (aAttribute.getColumn() == null) {
-			String maxLength = getExtendedMetaData(eAttribute, "maxLength");
-			if (maxLength == null) {
-				maxLength = getExtendedMetaData(eAttribute, "length");
-			}
-			final String totalDigits = getExtendedMetaData(eAttribute, "totalDigits");
-			final String fractionDigits = getExtendedMetaData(eAttribute, "fractionDigits");
-			if (maxLength != null || totalDigits != null || fractionDigits != null) {
-				final Column column = aFactory.createColumn();
-				// only support this for the string class, the length/maxlength is also 
-				// used in case of the xsd list/union types but this can not be enforced using a constraint on the
-				// columnlength
-				if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null &&
-						eAttribute.getEAttributeType().getInstanceClass() == String.class) { 
-					column.setLength(Integer.parseInt(maxLength)); // you'll find parse errors!
-				}
-				if (totalDigits != null) {
-					column.setPrecision(Integer.parseInt(totalDigits));
-				}
-				if (fractionDigits != null) {
-					column.setScale(Integer.parseInt(fractionDigits));
-				}
-				aAttribute.setColumn(column);
-			}
-		}
 
+		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
+
+		String maxLength = getExtendedMetaData(eAttribute, "maxLength");
+		if (maxLength == null) {
+			maxLength = getExtendedMetaData(eAttribute, "length");
+		}
+		final String totalDigits = getExtendedMetaData(eAttribute, "totalDigits");
+		final String fractionDigits = getExtendedMetaData(eAttribute, "fractionDigits");
+
+		// Will create a new column annotation or if there is already one there 
+		// it will check if length, scale, precision have been set, if not then it will
+		// take them from the model.
+		if (maxLength != null || totalDigits != null || fractionDigits != null) {
+			final Column column = (aAttribute.getColumn() == null ? aFactory.createColumn() : aAttribute.getColumn());
+			// only support this for the string class, the length/maxlength is also
+			// used in case of the xsd list/union types but this can not be enforced using a constraint on the
+			// columnlength
+			if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null
+					&& eAttribute.getEAttributeType().getInstanceClass() == String.class && !column.isSetLength()) {
+				column.setLength(Integer.parseInt(maxLength)); // you'll find parse errors!
+			}
+			if (totalDigits != null && !column.isSetPrecision()) {
+				column.setPrecision(Integer.parseInt(totalDigits));
+			}
+			if (fractionDigits != null && !column.isSetScale()) {
+				column.setScale(Integer.parseInt(fractionDigits));
+			}
+			aAttribute.setColumn(column);
+		}
 	}
-	
+
 	/** Handles a many EAttribute which is a list of simple types */
 	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute, boolean forceNullable) {
 		final String logStr = aAttribute.getAnnotatedEAttribute().getName() + "/"
@@ -1359,11 +1357,12 @@ public class DefaultAnnotator {
 	private String getExtendedMetaData(EAttribute eAttribute, String key) {
 		String value = getEAnnotationValue(eAttribute, "http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		if (value == null) {
-			value = getEAnnotationValue(eAttribute.getEAttributeType(), "http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+			value = getEAnnotationValue(eAttribute.getEAttributeType(),
+					"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		}
 		return value;
 	}
-	
+
 	/** Returns the value of an annotation with a certain key */
 	private String getEAnnotationValue(EModelElement eModelElement, String source, String key) {
 		final EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
