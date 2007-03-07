@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.8 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.9 2007/03/07 23:33:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class ManyToOneMapper extends AssociationMapper {
@@ -94,7 +94,7 @@ public class ManyToOneMapper extends AssociationMapper {
 
 		String targetEntity = aReference.getManyToOne().getTargetEntity();
 		String implName = null;
-		if (targetEntity.compareTo(EClassNameStrategy.EOBJECT_ECLASS_URI) == 0) {
+		if (targetEntity.compareTo(EClassNameStrategy.EOBJECT_ECLASS_NAME) == 0) {
 			implName = AnyTypeEObject.class.getName();
 		} else {
 			implName = MappingUtil.getImplNameOfEClass(aReference.getManyToOne().getTargetEntity(), mappingContext);
