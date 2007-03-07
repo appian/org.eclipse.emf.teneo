@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.30 2007/03/06 17:12:14 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.31 2007/03/07 23:33:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -83,7 +83,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 public class DefaultAnnotator {
 
@@ -999,7 +999,7 @@ public class DefaultAnnotator {
 		}
 
 		// only use a jointable if the relation is non unique
-		final boolean isEObject = EClassNameStrategy.EOBJECT_ECLASS_URI
+		final boolean isEObject = EClassNameStrategy.EOBJECT_ECLASS_NAME
 				.compareTo(otm.getTargetEntity()) == 0;
 		if (isEObject || // in case of eobject always a join table is
 				// required
