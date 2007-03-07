@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.5 2007/02/01 12:36:23 mtaal Exp $
+ * $Id: AllTests.java,v 1.6 2007/03/07 23:33:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.issues;
@@ -22,6 +22,7 @@ import junit.framework.TestSuite;
 import org.eclipse.emf.teneo.hibernate.test.HibernateTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.issues.AbstractReferenceAction;
+import org.eclipse.emf.teneo.test.issues.ArcSolutionsAction;
 import org.eclipse.emf.teneo.test.issues.BagDuplicateAction;
 import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.InheritanceAction;
@@ -35,13 +36,15 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed.instance()
 				.getConfigurations());
+		suite.addTestSuite(ArcSolutionsAction.class);
+		
 		suite.addTestSuite(ResourceAction.class);
 
 		suite.addTestSuite(MTMSameAction.class);
