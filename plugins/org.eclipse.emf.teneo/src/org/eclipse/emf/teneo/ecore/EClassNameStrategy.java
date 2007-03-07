@@ -19,8 +19,8 @@ public interface EClassNameStrategy {
 	public static EClass EOBJECT_ECLASS = (EClass) EcorePackage.eINSTANCE
 			.getEClassifier("EObject");
 
-	public static String EOBJECT_ECLASS_URI = EcorePackage.eINSTANCE.getNsURI()
-			+ "/" + EOBJECT_ECLASS.getName();
+	public static String EOBJECT_ECLASS_NAME = EcorePackage.eINSTANCE.getName()
+			+ "_" + EOBJECT_ECLASS.getName();
 
 	/**
 	 * Determines the name for a given EClass. This name can be used in jsf

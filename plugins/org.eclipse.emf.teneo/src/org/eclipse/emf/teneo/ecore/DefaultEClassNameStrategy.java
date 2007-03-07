@@ -26,7 +26,7 @@ public class DefaultEClassNameStrategy implements EClassNameStrategy {
 	 */
 	public String toUniqueName(EClass eClass) {
 		if (eClass == EOBJECT_ECLASS) {
-			return EOBJECT_ECLASS_URI;
+			return EOBJECT_ECLASS_NAME;
 		}
 
 		if (eClass == null) {
@@ -59,7 +59,7 @@ public class DefaultEClassNameStrategy implements EClassNameStrategy {
 			throw new IllegalArgumentException("eClassName may not be null");
 		}
 
-		if (eClassName.compareTo(EOBJECT_ECLASS_URI) == 0) {
+		if (eClassName.compareTo(EOBJECT_ECLASS_NAME) == 0) {
 			return EcorePackage.eINSTANCE.getEObject();
 		}
 

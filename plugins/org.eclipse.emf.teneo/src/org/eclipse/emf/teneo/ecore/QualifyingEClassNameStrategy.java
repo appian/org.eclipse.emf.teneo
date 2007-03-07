@@ -30,7 +30,7 @@ public class QualifyingEClassNameStrategy implements EClassNameStrategy {
 			throw new IllegalArgumentException("EClass cannot be null.");
 		}
 		if (eClass == EOBJECT_ECLASS) {
-			return EOBJECT_ECLASS_URI;
+			return EOBJECT_ECLASS_NAME;
 		}
 		String nsPrefix = eClass.getEPackage().getNsPrefix();
 		if (nsPrefix == null) {
@@ -49,7 +49,7 @@ public class QualifyingEClassNameStrategy implements EClassNameStrategy {
 			throw new IllegalArgumentException("eClassStr may not be null");
 		}
 
-		if (eClassStr.compareTo(EOBJECT_ECLASS_URI) == 0) {
+		if (eClassStr.compareTo(EOBJECT_ECLASS_NAME) == 0) {
 			return EcorePackage.eINSTANCE.getEObject();
 		}
 
