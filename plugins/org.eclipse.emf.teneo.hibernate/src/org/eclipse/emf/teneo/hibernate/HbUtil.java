@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.12 2007/03/07 15:58:17 mtaal Exp $
+ * $Id: HbUtil.java,v 1.13 2007/03/07 23:33:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -44,7 +44,7 @@ import org.hibernate.property.PropertyAccessor;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class HbUtil {
 
@@ -146,9 +146,10 @@ public class HbUtil {
 		final String name = props.getProperty(Constants.PROP_NAME);
 		HbDataStore eds = HbHelper.INSTANCE.getDataStore(name);
 		if (eds != null)
-			return eds; 
+			return eds;  
 
-		final Properties hbProps = new Properties(props);
+		final Properties hbProps = new Properties();
+		hbProps.putAll(props);
 		hbProps.put(Environment.USER, doTrim(props
 				.getProperty(Constants.PROP_DB_USER)));
 		hbProps.put(Environment.PASS, doTrim(props
