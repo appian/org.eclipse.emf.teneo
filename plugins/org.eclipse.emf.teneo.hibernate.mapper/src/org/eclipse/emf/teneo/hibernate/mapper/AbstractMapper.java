@@ -13,7 +13,7 @@
  *   Brian Vetter
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.13 2007/03/05 20:51:12 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.14 2007/03/07 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -361,6 +361,6 @@ abstract class AbstractMapper {
 		if (typeName == null) {
 			return false;
 		}
-		return typeName.compareTo(EClassNameStrategy.EOBJECT_ECLASS_URI) == 0;
+		return typeName.compareTo(EClassNameStrategy.EOBJECT_ECLASS_NAME) == 0;
 	}
 }
