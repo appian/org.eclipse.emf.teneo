@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.eclipse.org/emf/teneo/rental" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+	xmlns:this="http://www.eclipse.org/emf/teneo/rental" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<complexType abstract="true" name="RentalUnit">
+		<sequence>
+			<element name="description" type="string"/>
+		</sequence>
+	</complexType>
+	
+	<xsd:complexType name="RentalCar">
+    	<xsd:complexContent>
+      		<xsd:extension base="this:RentalUnit">
+	        	<xsd:sequence>
+					<element name="size" type="this:RentalCarSize"/>
+	        	</xsd:sequence>
+      		</xsd:extension>
+    	</xsd:complexContent>
+  	</xsd:complexType>
+	
+	<xsd:complexType name="RentalBicycle">
+    	<xsd:complexContent>
+      		<xsd:extension base="this:RentalUnit">
+	        	<xsd:sequence>
+					<element name="type" type="this:RentalBicycleType"/>
+	        	</xsd:sequence>
+      		</xsd:extension>
+    	</xsd:complexContent>
+  	</xsd:complexType>
+		
+	<xsd:simpleType name="RentalCarSize">
+    	<xsd:restriction base="xsd:NCName">
+	      <xsd:enumeration value="Small"/>
+    	  <xsd:enumeration value="Medium"/>
+	      <xsd:enumeration value="Family"/>
+    	</xsd:restriction>
+  	</xsd:simpleType>
+		
+	<xsd:simpleType name="RentalBicycleType">
+    	<xsd:restriction base="xsd:NCName">
+	      <xsd:enumeration value="Standard"/>
+    	  <xsd:enumeration value="MountainBike"/>
+    	</xsd:restriction>
+  	</xsd:simpleType>
+	
+	<simpleType ecore:instanceClass="java.util.Date" name="Date">
+		<restriction base="dateTime"/>
+	</simpleType>
+	
+	<complexType name="RentalContract">
+		<sequence>
+			<element name="rentToBusinessPartner" type="string"/>
+			<element name="startDate" type="this:Date"/>
+			<element name="endDate" type="this:Date" nillable="true"/>
+			<element name="cost" type="float"/>
+			<element ecore:reference="this:RentalUnit" name="rentalUnits" type="IDREF" minOccurs="1" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="RentalBusiness">
+		<sequence>
+			<element name="name" type="string"/>
+			<element maxOccurs="unbounded" minOccurs="0" maxOccurs="unbounded" name="rentalUnits" type="this:RentalUnit"/>
+			<element maxOccurs="unbounded" minOccurs="0" maxOccurs="unbounded" name="rentalContracts" type="this:RentalContract"/>
+		</sequence>
+	</complexType>
+</schema>
