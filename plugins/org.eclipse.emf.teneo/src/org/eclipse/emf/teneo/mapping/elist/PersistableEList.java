@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.12 2007/03/08 04:23:26 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.13 2007/03/08 04:25:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implements PersistableDelegateList<E> {
@@ -196,11 +196,14 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 			// in this case the eSetDeliver was not overridden from the baseclass
 			// ignore
 		}
-		doLoad();
-		isLoaded = true;
-		isLoading = false;
-		if (setDeliver) {
-			owner.eSetDeliver(eDeliver);
+		try {
+			doLoad();
+		} finally {
+			isLoaded = true;
+			isLoading = false;
+			if (setDeliver) {
+				owner.eSetDeliver(eDeliver);
+			}
 		}
 		// StoreUtil.dispatchEListLoadNotification(owner, this, getEStructuralFeature());
 	}
@@ -353,7 +356,6 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
     @Override
 	protected int delegateIndexOf(Object object) {
 		load();
-		//if (isLoading()) return 0;
 		return super.delegateIndexOf(object);
 	}
 
