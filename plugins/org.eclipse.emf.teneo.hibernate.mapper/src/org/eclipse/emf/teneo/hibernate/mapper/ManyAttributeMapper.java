@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyAttributeMapper.java,v 1.7 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: ManyAttributeMapper.java,v 1.8 2007/03/18 19:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
-import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
@@ -110,23 +109,5 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 		} else {
 			addElementElement(collElement, eattr.getName(), paAttribute, getColumns(paAttribute), otm.getTargetEntity());
 		}
-	}
-
-	/**
-	 * Add Element element in given collection element.
-	 */
-	private Element addElementElement(Element collElement, String defaultName, PAnnotatedEAttribute paAttribute,
-			List<Column> columns, String targetEntity) {
-		final Element elElement;
-		if (targetEntity == null) {
-			elElement = collElement.addElement("element");
-			setType(paAttribute, elElement);
-		} else {
-			elElement = collElement.addElement("element").addAttribute("type", targetEntity);
-		}
-		if (columns != null && columns.size() > 0) {
-			addColumns(elElement, defaultName, columns, getHbmContext().isCurrentElementFeatureMap(), true);
-		}
-		return elElement;
 	}
 }

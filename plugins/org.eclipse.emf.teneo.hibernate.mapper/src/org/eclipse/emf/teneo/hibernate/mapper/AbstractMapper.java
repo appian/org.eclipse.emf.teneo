@@ -13,7 +13,7 @@
  *   Brian Vetter
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.14 2007/03/07 23:33:48 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.15 2007/03/18 19:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -124,7 +124,7 @@ abstract class AbstractMapper {
 	 * @throws MappingException
 	 *             if no corresponding hb type is defined.
 	 */
-	private String hbType(PAnnotatedEAttribute paAttribute) {
+	protected String hbType(PAnnotatedEAttribute paAttribute) {
 		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
 		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) paAttribute.getPaModel().getPAnnotated(
 				eAttribute.getEAttributeType());

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackage.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: HbModelPackage.java,v 1.8 2007/03/18 19:19:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -672,13 +672,22 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__HB_ON_DELETE = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Hb Where</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__HB_WHERE = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 2;
+	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
@@ -1483,6 +1492,17 @@ public interface HbModelPackage extends EPackage {
 	EReference getHbAnnotatedEClass_HbOnDelete();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbWhere <em>Hb Where</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Hb Where</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbWhere()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_HbWhere();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Hb Annotated EModel Element</em>'.
@@ -1697,6 +1717,14 @@ public interface HbModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_ECLASS__HB_ON_DELETE = eINSTANCE.getHbAnnotatedEClass_HbOnDelete();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Where</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__HB_WHERE = eINSTANCE.getHbAnnotatedEClass_HbWhere();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.

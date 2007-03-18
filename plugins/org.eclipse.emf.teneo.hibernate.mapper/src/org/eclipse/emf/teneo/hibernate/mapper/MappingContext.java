@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.9 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: MappingContext.java,v 1.10 2007/03/18 19:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -103,8 +103,10 @@ public class MappingContext extends AbstractProcessingContext {
 	/** The sql case strategy */
 	private SQLCaseStrategy sqlCaseStrategy;
 
+	// Options
 	private boolean alwaysVersion;
-
+	private boolean isMapEMapAsTrueMap;
+	
 	/** The constructor */
 	public MappingContext() {
 		featureMapper = createFeatureMapper();
@@ -124,6 +126,7 @@ public class MappingContext extends AbstractProcessingContext {
 		maximumSqlNameLength = po.getMaximumSqlNameLength();
 		sqlCaseStrategy = po.getSQLCaseStrategy();
 		alwaysVersion = po.getAlwaysVersion();
+		isMapEMapAsTrueMap = po.isMapEMapAsTrueMap();
 	}
 
 	/** Return the concrete impl. class */
@@ -466,5 +469,12 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	public EClassNameStrategy getEClassNameStrategy() {
 		return eclassNameStrategy;
+	}
+
+	/**
+	 * @return the isMapEMapAsTrueMap
+	 */
+	public boolean isMapEMapAsTrueMap() {
+		return isMapEMapAsTrueMap;
 	}
 }

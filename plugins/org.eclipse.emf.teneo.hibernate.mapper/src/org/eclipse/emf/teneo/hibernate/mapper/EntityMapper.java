@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.10 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.11 2007/03/18 19:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -47,7 +47,8 @@ import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
- * Maps the entity and its features, also takes care of embedded superclass mapping.
+ * Maps the entity and its features, also takes care of embedded superclass
+ * mapping.
  * 
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
@@ -57,7 +58,10 @@ class EntityMapper extends AbstractMapper {
 	/** Log it all */
 	private static final Log log = LogFactory.getLog(EntityMapper.class);
 
-	/** the mapper used for features, is copied from the hbm context for convenience reasons */
+	/**
+	 * the mapper used for features, is copied from the hbm context for
+	 * convenience reasons
+	 */
 	private final FeatureMapper featureMapper;
 
 	/** Convenience maps to inheritance strategy names and discriminator types */
@@ -82,11 +86,13 @@ class EntityMapper extends AbstractMapper {
 	private final String PRIMARY_TABLE_KEY = null;
 
 	/**
-	 * @return Return the name used by hibernate to denote the given inheritance type. If the argument is null, the
-	 *         default inheritance type (SINGLE_TABLE) is used instead.
+	 * @return Return the name used by hibernate to denote the given inheritance
+	 *         type. If the argument is null, the default inheritance type
+	 *         (SINGLE_TABLE) is used instead.
 	 */
 	private static String hbInheritanceName(InheritanceType inheritanceType) {
-		return EntityMapper.INHERITANCE_STRATEGY_NAMES[inheritanceType != null ? inheritanceType.getValue()
+		return EntityMapper.INHERITANCE_STRATEGY_NAMES[inheritanceType != null ? inheritanceType
+				.getValue()
 				: InheritanceType.SINGLE_TABLE];
 	}
 
@@ -94,7 +100,8 @@ class EntityMapper extends AbstractMapper {
 	 * @return Return the name used by hibernate for the given dicriminator type
 	 */
 	private static String hbDiscriminatorType(DiscriminatorType dType) {
-		return EntityMapper.DISCRIMINATOR_TYPE_NAMES[dType != null ? DiscriminatorType.STRING : dType.getValue()];
+		return EntityMapper.DISCRIMINATOR_TYPE_NAMES[dType != null ? DiscriminatorType.STRING
+				: dType.getValue()];
 	}
 
 	/**
@@ -108,7 +115,8 @@ class EntityMapper extends AbstractMapper {
 	/**
 	 * @return Returns a new hibernate element for the given entity.
 	 */
-	private Element createEntity(PAnnotatedEClass entity, InheritanceType inhStrategy, PAnnotatedEClass superEntity,
+	private Element createEntity(PAnnotatedEClass entity,
+			InheritanceType inhStrategy, PAnnotatedEClass superEntity,
 			DiscriminatorValue dValue, Table table) {
 		// determine what type of hibernate tag should be used
 		final InheritanceType inheritanceStrategy = inhStrategy != null ? inhStrategy
@@ -130,32 +138,40 @@ class EntityMapper extends AbstractMapper {
 		if (getHbmContext().isEasyEMFGenerated(eclass)) { // entity
 			// get the interfacec
 			final String proxyName;
-			final Class<?> interfaceClass = EModelResolver.instance().getJavaInterfaceClass(eclass);
-			final String className = EModelResolver.instance().getJavaClass(eclass).getName();
+			final Class<?> interfaceClass = EModelResolver.instance()
+					.getJavaInterfaceClass(eclass);
+			final String className = EModelResolver.instance().getJavaClass(
+					eclass).getName();
 			if (interfaceClass != null) {
 				proxyName = interfaceClass.getName();
 			} else {
 				proxyName = className;
 			}
 
-			target = getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name", className)
-					.addAttribute("entity-name", entityName)
-					.addAttribute("proxy", proxyName).addAttribute("abstract", isAbstractStr).addAttribute("lazy",
-							"true");
+			target = getHbmContext().getCurrent().addElement(hbClassName)
+					.addAttribute("name", className).addAttribute(
+							"entity-name", entityName).addAttribute("proxy",
+							proxyName).addAttribute("abstract", isAbstractStr)
+					.addAttribute("lazy", "true");
 		} else {
-			target = getHbmContext().getCurrent().addElement(hbClassName).addAttribute("entity-name", entityName)
-					.addAttribute("abstract", isAbstractStr).addAttribute("lazy", "false");
+			target = getHbmContext().getCurrent().addElement(hbClassName)
+					.addAttribute("entity-name", entityName).addAttribute(
+							"abstract", isAbstractStr).addAttribute("lazy",
+							"false");
 
 			// note for composite ids the name must be set always!
 			// entity.getAnnotatedEClass().getInstanceClass() != null) { // ||
 			// entity.getAnnotatedEClass().getInstanceClass() != null ||
-			if (hasCompositeID(entity)) { // only for this specific case it is required to have the impl.name
-				target.addAttribute("name", hbmContext.getInstanceClassName(entity));
+			if (hasCompositeID(entity)) { // only for this specific case it is
+				// required to have the impl.name
+				target.addAttribute("name", hbmContext
+						.getInstanceClassName(entity));
 			}
 		}
 
 		if (superEntity != null) {
-			final String extendsEntity = getHbmContext().getEntityName(superEntity.getAnnotatedEClass());
+			final String extendsEntity = getHbmContext().getEntityName(
+					superEntity.getAnnotatedEClass());
 			target.addAttribute("extends", extendsEntity);
 			log.debug("Extends " + extendsEntity);
 		}
@@ -164,22 +180,35 @@ class EntityMapper extends AbstractMapper {
 			target.addAttribute("discriminator-value", dValue.getValue());
 			log.debug("DValue " + dValue.getValue());
 		}
-		
-		if (table != null && hbClassName.compareTo(INHERITANCE_STRATEGY_NAMES[InheritanceType.SINGLE_TABLE]) == 0) {
-			log.warn("EClass/Entity (" + entityName + ") is mapped as subclass in a single table with its superclass but it also has a table annotation. This table annotation is ignored.");
+
+		if (table != null
+				&& hbClassName
+						.compareTo(INHERITANCE_STRATEGY_NAMES[InheritanceType.SINGLE_TABLE]) == 0) {
+			log
+					.warn("EClass/Entity ("
+							+ entityName
+							+ ") is mapped as subclass in a single table with its superclass but it also has a table annotation. This table annotation is ignored.");
 		} else if (table != null) {
 			if (table.getName() != null) {
-				target.addAttribute("table", getHbmContext().trunc(table.getName(), false));
+				target.addAttribute("table", getHbmContext().trunc(
+						table.getName(), false));
 				log.debug("Table " + "`" + table.getName() + "`");
 			}
 			if (table.getSchema() != null) {
-				target.addAttribute("schema", getHbmContext().trunc(table.getSchema(), false));
+				target.addAttribute("schema", getHbmContext().trunc(
+						table.getSchema(), false));
 				log.debug("Schema " + table.getSchema());
 			}
 			if (table.getCatalog() != null) {
-				target.addAttribute("catalog", getHbmContext().trunc(table.getCatalog(), false));
+				target.addAttribute("catalog", getHbmContext().trunc(
+						table.getCatalog(), false));
 				log.debug("Catalog " + table.getCatalog());
 			}
+		}
+
+		if (((HbAnnotatedEClass) entity).getHbWhere() != null) {
+			target.addAttribute("where", ((HbAnnotatedEClass) entity)
+					.getHbWhere().getClause());
 		}
 
 		return target;
@@ -196,9 +225,11 @@ class EntityMapper extends AbstractMapper {
 			return hasCompositeID(aClass.getPaMappedSuper());
 		}
 		{
-			List<PAnnotatedEStructuralFeature> features = aClass.getPaEStructuralFeatures();
+			List<PAnnotatedEStructuralFeature> features = aClass
+					.getPaEStructuralFeatures();
 			for (PAnnotatedEStructuralFeature feature : features) {
-				if (feature instanceof PAnnotatedEReference && ((PAnnotatedEReference) feature).getEmbeddedId() != null) {
+				if (feature instanceof PAnnotatedEReference
+						&& ((PAnnotatedEReference) feature).getEmbeddedId() != null) {
 					return true;
 				}
 			}
@@ -213,70 +244,100 @@ class EntityMapper extends AbstractMapper {
 		if (log.isDebugEnabled())
 			log.debug("Mapping Entity " + entity);
 
-		List<PAnnotatedEClass> mappedSuperClasses = getHbmContext().getMappedSuperClasses(entity);
+		List<PAnnotatedEClass> mappedSuperClasses = getHbmContext()
+				.getMappedSuperClasses(entity);
 		log.debug("No of mappedSuperclasses " + mappedSuperClasses.size());
 
-		if (mappedSuperClasses.isEmpty() && entity.getAttributeOverrides().size() > 0) {
-			log.error("Specified AttributeOverrides without mapped superclass in " + entity);
-			throw new MappingException("Specified AttributeOverrides without mapped superclass", entity);
+		if (mappedSuperClasses.isEmpty()
+				&& entity.getAttributeOverrides().size() > 0) {
+			log
+					.error("Specified AttributeOverrides without mapped superclass in "
+							+ entity);
+			throw new MappingException(
+					"Specified AttributeOverrides without mapped superclass",
+					entity);
 		}
-		if (mappedSuperClasses.isEmpty() && entity.getAssociationOverrides().size() > 0) {
-			log.error("Specified AssociationOverrides without mapped superclass in " + entity);
-			throw new MappingException("Specified AssociationOverrides without mapped superclass", entity);
+		if (mappedSuperClasses.isEmpty()
+				&& entity.getAssociationOverrides().size() > 0) {
+			log
+					.error("Specified AssociationOverrides without mapped superclass in "
+							+ entity);
+			throw new MappingException(
+					"Specified AssociationOverrides without mapped superclass",
+					entity);
 		}
 
-		Element entityElement = createEntity(entity, entity.getInheritanceStrategy(), entity.getPaSuperEntity(), entity
+		Element entityElement = createEntity(entity, entity
+				.getInheritanceStrategy(), entity.getPaSuperEntity(), entity
 				.getDiscriminatorValue(), entity.getTable());
 
 		getHbmContext().setCurrent(entityElement);
 		getHbmContext().setCurrentTable(entity.getTable());
-		// MT: moved to processFeatures method because this should be done after the id
+		// MT: moved to processFeatures method because this should be done after
+		// the id
 		// element has been placed
 
-		if (entity.getPrimaryKeyJoinColumns() != null && entity.getPrimaryKeyJoinColumns().size() > 0) {
+		if (entity.getPrimaryKeyJoinColumns() != null
+				&& entity.getPrimaryKeyJoinColumns().size() > 0) {
 			addPrimaryKeyJoinColumn(entity.getPrimaryKeyJoinColumns(), entity);
 		} else if (entity.getPaSuperEntity() != null
-				&& InheritanceType.JOINED_LITERAL.equals(entity.getInheritanceStrategy())) {
+				&& InheritanceType.JOINED_LITERAL.equals(entity
+						.getInheritanceStrategy())) {
 			final ArrayList<PrimaryKeyJoinColumn> list = new ArrayList<PrimaryKeyJoinColumn>();
-			final PrimaryKeyJoinColumn pkjc = PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
-			final String entityName = getHbmContext().getEntityName(entity.getAnnotatedEClass());
-			getHbmContext().trunc(entityName + "id"); // TODO improve name creation here
+			final PrimaryKeyJoinColumn pkjc = PannotationFactory.eINSTANCE
+					.createPrimaryKeyJoinColumn();
+			final String entityName = getHbmContext().getEntityName(
+					entity.getAnnotatedEClass());
+			getHbmContext().trunc(entityName + "id"); // TODO improve name
+			// creation here
 			list.add(pkjc);
 			addPrimaryKeyJoinColumn(list, entity);
 		}
 
 		try {
-			log.debug("Processing mapped superclasses, no of mappedsuperclasses: " + mappedSuperClasses.size());
-			for (Iterator<PAnnotatedEClass> i = mappedSuperClasses.iterator(); i.hasNext();) {
+			log
+					.debug("Processing mapped superclasses, no of mappedsuperclasses: "
+							+ mappedSuperClasses.size());
+			for (Iterator<PAnnotatedEClass> i = mappedSuperClasses.iterator(); i
+					.hasNext();) {
 				getHbmContext().pushOverrideOnStack();
 				if (!entity.getAttributeOverrides().isEmpty()) {
-					getHbmContext().addAttributeOverrides(entity.getAttributeOverrides());
+					getHbmContext().addAttributeOverrides(
+							entity.getAttributeOverrides());
 				}
 				if (!entity.getAssociationOverrides().isEmpty()) {
-					getHbmContext().addAssociationOverrides(entity.getAssociationOverrides());
+					getHbmContext().addAssociationOverrides(
+							entity.getAssociationOverrides());
 				}
 				try {
 					final PAnnotatedEClass mappedSuperClass = i.next();
-					log.debug("Mapped superclass " + mappedSuperClass.getAnnotatedEClass().getName());
+					log.debug("Mapped superclass "
+							+ mappedSuperClass.getAnnotatedEClass().getName());
 					processMappedSuper(mappedSuperClass);
 				} finally {
 					getHbmContext().popOverrideStack();
 				}
 			}
 
-			final List<PAnnotatedEStructuralFeature> multipleInheritanceFeatures = getHbmContext().getMultipleInheritedFeatures(entity);
-			if (entity.getAnnotatedEClass().getESuperTypes().size() <= 1 && multipleInheritanceFeatures.size() > 0) {
-				log.error("Entity has one or less super type but a multiple "
-						+ "inheritance structure was detected, this is an application error.");
-				throw new MappingException("Entity has one or less super type but a multiple "
-						+ "inheritance structure was detected, this is an application error.");
+			final List<PAnnotatedEStructuralFeature> multipleInheritanceFeatures = getHbmContext()
+					.getMultipleInheritedFeatures(entity);
+			if (entity.getAnnotatedEClass().getESuperTypes().size() <= 1
+					&& multipleInheritanceFeatures.size() > 0) {
+				log
+						.error("Entity has one or less super type but a multiple "
+								+ "inheritance structure was detected, this is an application error.");
+				throw new MappingException(
+						"Entity has one or less super type but a multiple "
+								+ "inheritance structure was detected, this is an application error.");
 			}
 			getHbmContext().pushOverrideOnStack();
 			if (entity.getAttributeOverrides() != null) {
-				getHbmContext().addAttributeOverrides(entity.getAttributeOverrides());
+				getHbmContext().addAttributeOverrides(
+						entity.getAttributeOverrides());
 			}
 			if (entity.getAssociationOverrides() != null) {
-				getHbmContext().addAssociationOverrides(entity.getAssociationOverrides());
+				getHbmContext().addAssociationOverrides(
+						entity.getAssociationOverrides());
 			}
 			try {
 				processFeatures(multipleInheritanceFeatures);
@@ -284,7 +345,8 @@ class EntityMapper extends AbstractMapper {
 				getHbmContext().popOverrideStack();
 			}
 
-			final EList<SecondaryTable> secondaryTables = entity.getSecondaryTables();
+			final EList<SecondaryTable> secondaryTables = entity
+					.getSecondaryTables();
 			if (secondaryTables == null || secondaryTables.isEmpty()) {
 				// Process features normally.
 				processFeatures(entity.getPaEStructuralFeatures());
@@ -300,7 +362,8 @@ class EntityMapper extends AbstractMapper {
 			}
 
 			// create a synthetic id for roots
-			if (idElement == null && entity.getPaSuperEntity() == null && entity.getPaMappedSuper() == null) {
+			if (idElement == null && entity.getPaSuperEntity() == null
+					&& entity.getPaMappedSuper() == null) {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
 			} else if (getHbmContext().mustAddSyntheticID(entity)) {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
@@ -311,10 +374,13 @@ class EntityMapper extends AbstractMapper {
 
 				if (entity.getDiscriminatorColumn() != null) {
 					// add discriminator element immediately after id element
-					entityElement.add(index++, createDiscriminatorElement(entity.getDiscriminatorColumn()));
+					entityElement.add(index++,
+							createDiscriminatorElement(entity
+									.getDiscriminatorColumn()));
 				}
 
-				// create and/or move version element (if present) immediately after discriminator
+				// create and/or move version element (if present) immediately
+				// after discriminator
 				Element versionElement = entityElement.element("version");
 				if (versionElement == null) {
 					versionElement = addVersionProperty();
@@ -334,16 +400,18 @@ class EntityMapper extends AbstractMapper {
 
 		getHbmContext().addTuplizerElement(entityElement, entity);
 
-		if (entity.getPaSuperEntity() == null && ((HbAnnotatedEClass) entity).getHbCache() != null) {
-			addCacheElement(entityElement, ((HbAnnotatedEClass) entity).getHbCache());
+		if (entity.getPaSuperEntity() == null
+				&& ((HbAnnotatedEClass) entity).getHbCache() != null) {
+			addCacheElement(entityElement, ((HbAnnotatedEClass) entity)
+					.getHbCache());
 		}
 
 		final Element meta1 = new Element("meta");
-		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META).addText(
-				entity.getAnnotatedEClass().getName());
+		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META)
+				.addText(entity.getAnnotatedEClass().getName());
 		final Element meta2 = new Element("meta");
-		meta2.addAttribute("attribute", HbMapperConstants.EPACKAGE_META).addText(
-				entity.getAnnotatedEClass().getEPackage().getNsURI());
+		meta2.addAttribute("attribute", HbMapperConstants.EPACKAGE_META)
+				.addText(entity.getAnnotatedEClass().getEPackage().getNsURI());
 
 		entityElement.add(0, meta1);
 		entityElement.add(1, meta2);
@@ -351,10 +419,14 @@ class EntityMapper extends AbstractMapper {
 
 	/** Process the featuremap entries */
 	private void processFeatureMapFeatures() {
-		// this is a while and for loop, in the for loop the features of a feature map
-		// are processed, these features can again be a featuremap which are added
-		// to the featuremapmappers in the context, therefore this process walks on
-		List<FeatureMapMapping> featureMapMappers = getHbmContext().getClearFeatureMapMappers();
+		// this is a while and for loop, in the for loop the features of a
+		// feature map
+		// are processed, these features can again be a featuremap which are
+		// added
+		// to the featuremapmappers in the context, therefore this process walks
+		// on
+		List<FeatureMapMapping> featureMapMappers = getHbmContext()
+				.getClearFeatureMapMappers();
 		while (featureMapMappers.size() > 0) {
 
 			for (FeatureMapMapping fmm : featureMapMappers) {
@@ -367,37 +439,47 @@ class EntityMapper extends AbstractMapper {
 		}
 	}
 
-	/** Process the features of the mapped superclass so that they are added to the current mapping */
+	/**
+	 * Process the features of the mapped superclass so that they are added to
+	 * the current mapping
+	 */
 	protected void processMappedSuper(PAnnotatedEClass paMappedSuper) {
 		processFeatures(paMappedSuper.getPaEStructuralFeatures());
 	}
 
 	/** process the features of the annotated eclass */
 	protected void processFeatures(List<PAnnotatedEStructuralFeature> features) {
-		for (Iterator<PAnnotatedEStructuralFeature> i = features.iterator(); i.hasNext();) {
+		for (Iterator<PAnnotatedEStructuralFeature> i = features.iterator(); i
+				.hasNext();) {
 			processFeature((PAnnotatedEStructuralFeature) i.next());
 		}
 	}
 
 	/** Process secondary tables. */
-	protected void processSecondaryTables(List<SecondaryTable> secondaryTables, PAnnotatedEClass entity) {
+	protected void processSecondaryTables(List<SecondaryTable> secondaryTables,
+			PAnnotatedEClass entity) {
 		// Group features by primary and secondary tables.
-		// For the primary table we use null as the surrogate key. (HashMap allows null keys.)
+		// For the primary table we use null as the surrogate key. (HashMap
+		// allows null keys.)
 		final Set<String> tableNames = new HashSet<String>();
 		tableNames.add(PRIMARY_TABLE_KEY);
 		for (SecondaryTable secondaryTable : secondaryTables) {
 			tableNames.add(secondaryTable.getName());
 		}
 		final Map<String, List<PAnnotatedEStructuralFeature>> featuresByTable = new HashMap<String, List<PAnnotatedEStructuralFeature>>();
-		for (PAnnotatedEStructuralFeature feature : entity.getPaEStructuralFeatures()) {
+		for (PAnnotatedEStructuralFeature feature : entity
+				.getPaEStructuralFeatures()) {
 			final String tableName = getSecondaryTableName(feature);
 			if (!tableNames.contains(tableName)) {
-				final String message = "Feature \"" + feature.getAnnotatedElement().getName()
-						+ "\" was mapped to undeclared secondary table \"" + tableName + "\".";
+				final String message = "Feature \""
+						+ feature.getAnnotatedElement().getName()
+						+ "\" was mapped to undeclared secondary table \""
+						+ tableName + "\".";
 				log.error(message);
 				throw new MappingException(message);
 			}
-			List<PAnnotatedEStructuralFeature> featuresInTable = featuresByTable.get(tableName);
+			List<PAnnotatedEStructuralFeature> featuresInTable = featuresByTable
+					.get(tableName);
 			if (featuresInTable == null) {
 				featuresInTable = new ArrayList<PAnnotatedEStructuralFeature>();
 				featuresByTable.put(tableName, featuresInTable);
@@ -407,7 +489,8 @@ class EntityMapper extends AbstractMapper {
 
 		// Process features in primary table.
 		{
-			final List<PAnnotatedEStructuralFeature> featuresInTable = featuresByTable.get(PRIMARY_TABLE_KEY);
+			final List<PAnnotatedEStructuralFeature> featuresInTable = featuresByTable
+					.get(PRIMARY_TABLE_KEY);
 			for (PAnnotatedEStructuralFeature feature : featuresInTable) {
 				processFeature(feature);
 			}
@@ -415,30 +498,41 @@ class EntityMapper extends AbstractMapper {
 		// Process features in secondary tables.
 		for (SecondaryTable secondaryTable : secondaryTables) {
 			if (!featuresByTable.containsKey(secondaryTable.getName())) {
-				// The table was listed in the SecondaryTable annotation, but no features were actually mapped to this
+				// The table was listed in the SecondaryTable annotation, but no
+				// features were actually mapped to this
 				// table.
-				log.warn("No features mapped to secondary table " + secondaryTable.getName());
+				log.warn("No features mapped to secondary table "
+						+ secondaryTable.getName());
 				continue;
 			}
-			final List<PAnnotatedEStructuralFeature> featuresInTable = featuresByTable.get(secondaryTable.getName());
+			final List<PAnnotatedEStructuralFeature> featuresInTable = featuresByTable
+					.get(secondaryTable.getName());
 
 			// Create <join> element
-			// See http://www.hibernate.org/hib_docs/v3/reference/en/html/mapping.html#mapping-declaration-join
-			final Element joinElement = getHbmContext().getCurrent().addElement("join");
-			joinElement.addAttribute("table", getHbmContext().trunc(secondaryTable.getName().toUpperCase(), false));
-			log.debug("Mapping features to secondary table \"" + secondaryTable.getName() + "\"");
+			// See
+			// http://www.hibernate.org/hib_docs/v3/reference/en/html/mapping.html#mapping-declaration-join
+			final Element joinElement = getHbmContext().getCurrent()
+					.addElement("join");
+			joinElement.addAttribute("table", getHbmContext().trunc(
+					secondaryTable.getName().toUpperCase(), false));
+			log.debug("Mapping features to secondary table \""
+					+ secondaryTable.getName() + "\"");
 			if (secondaryTable.getCatalog() != null) {
-				joinElement.addAttribute("catalog", secondaryTable.getCatalog());
+				joinElement
+						.addAttribute("catalog", secondaryTable.getCatalog());
 			}
 			if (secondaryTable.getSchema() != null) {
 				joinElement.addAttribute("schema", secondaryTable.getSchema());
 			}
 			entity.getAnnotatedEClass().getEIDAttribute();
-			final List<PrimaryKeyJoinColumn> pkJoinColumns = secondaryTable.getPkJoinColumns();
+			final List<PrimaryKeyJoinColumn> pkJoinColumns = secondaryTable
+					.getPkJoinColumns();
 			for (PrimaryKeyJoinColumn pkJoinColumn : pkJoinColumns) {
 				final Element keyElement = joinElement.addElement("key");
-				keyElement.addAttribute("column", getHbmContext().trunc(pkJoinColumn.getName()));
-				handleOndelete(keyElement, ((HbAnnotatedEClass)entity).getHbOnDelete());
+				keyElement.addAttribute("column", getHbmContext().trunc(
+						pkJoinColumn.getName()));
+				handleOndelete(keyElement, ((HbAnnotatedEClass) entity)
+						.getHbOnDelete());
 			}
 
 			// Process features in this secondary table.
@@ -455,12 +549,16 @@ class EntityMapper extends AbstractMapper {
 		}
 	}
 
-	/** Returns the table name from the column annotation or the joincolumn annotation */
+	/**
+	 * Returns the table name from the column annotation or the joincolumn
+	 * annotation
+	 */
 	public String getSecondaryTableName(PAnnotatedEStructuralFeature pef) {
 		String tableName = null;
 		if (pef.getColumn() != null) {
 			tableName = pef.getColumn().getTable();
-		} else if (pef.getJoinColumns() != null && !pef.getJoinColumns().isEmpty()) {
+		} else if (pef.getJoinColumns() != null
+				&& !pef.getJoinColumns().isEmpty()) {
 			tableName = ((JoinColumn) pef.getJoinColumns().get(0)).getTable();
 		}
 		return tableName;
@@ -472,47 +570,62 @@ class EntityMapper extends AbstractMapper {
 	}
 
 	/**
-	 * Adds a key element to the current entity mapping, is for example used to join to the super class table.
+	 * Adds a key element to the current entity mapping, is for example used to
+	 * join to the super class table.
 	 */
-	private void addPrimaryKeyJoinColumn(List<PrimaryKeyJoinColumn> pkJCs, PAnnotatedEClass entity) {
+	private void addPrimaryKeyJoinColumn(List<PrimaryKeyJoinColumn> pkJCs,
+			PAnnotatedEClass entity) {
 		log.debug("Adding primary key join column");
 
-		final Element jcElement = getHbmContext().getCurrent().addElement("key");
-		handleOndelete(jcElement, ((HbAnnotatedEClass)entity).getHbOnDelete());
+		final Element jcElement = getHbmContext().getCurrent()
+				.addElement("key");
+		handleOndelete(jcElement, ((HbAnnotatedEClass) entity).getHbOnDelete());
 
 		for (PrimaryKeyJoinColumn pkJC : pkJCs) {
 			final Element columnElement = jcElement.addElement("column");
 
 			if (pkJC.getColumnDefinition() != null) {
-				log.error("Unsupported column definition in primary key join column " + pkJC);
-				throw new MappingException("Unsupported column definition in primary key join column", pkJC);
+				log
+						.error("Unsupported column definition in primary key join column "
+								+ pkJC);
+				throw new MappingException(
+						"Unsupported column definition in primary key join column",
+						pkJC);
 			}
 
 			if (pkJC.getName() != null) {
-				columnElement.addAttribute("name", getHbmContext().trunc(pkJC.getName()));
+				columnElement.addAttribute("name", getHbmContext().trunc(
+						pkJC.getName()));
 			}
 			if (pkJC.getReferencedColumnName() != null) {
-				columnElement.addAttribute("property-ref", pkJC.getReferencedColumnName());
+				columnElement.addAttribute("property-ref", pkJC
+						.getReferencedColumnName());
 			}
 		}
 	}
 
 	/**
-	 * Creates a discriminator element and returns it, so the caller should add it to the parent element
+	 * Creates a discriminator element and returns it, so the caller should add
+	 * it to the parent element
 	 */
 	private Element createDiscriminatorElement(DiscriminatorColumn dColumn) {
 		Element dcElement = DocumentHelper.createElement("discriminator");
 		if (dColumn.getName() != null)
-			dcElement.addAttribute("column", getHbmContext().trunc(dColumn.getName()));
-		dcElement.addAttribute("type", hbDiscriminatorType(dColumn.getDiscriminatorType()));
+			dcElement.addAttribute("column", getHbmContext().trunc(
+					dColumn.getName()));
+		dcElement.addAttribute("type", hbDiscriminatorType(dColumn
+				.getDiscriminatorType()));
 
 		if (dColumn.isSetLength() && log.isDebugEnabled()) {
 			log.debug("Ignoring length for discriminator column " + dColumn);
 		}
 
 		if (dColumn.getColumnDefinition() != null) {
-			log.error("Unsupported column definition in discriminator column " + dColumn);
-			throw new MappingException("Unsupported column definition in discriminator column", dColumn);
+			log.error("Unsupported column definition in discriminator column "
+					+ dColumn);
+			throw new MappingException(
+					"Unsupported column definition in discriminator column",
+					dColumn);
 		}
 		return dcElement;
 	}
@@ -527,15 +640,20 @@ class EntityMapper extends AbstractMapper {
 			return null;
 		}
 
-		// note specific accessor is required because version accessor is not retrieved through
+		// note specific accessor is required because version accessor is not
+		// retrieved through
 		// emf tuplizer
-		final Element versionElement = getHbmContext().getCurrent().addElement("version").addAttribute("name",
-				getHbmContext().getVersionColumnName()).addAttribute("column", getHbmContext().getVersionColumnName());
+		final Element versionElement = getHbmContext().getCurrent().addElement(
+				"version").addAttribute("name",
+				getHbmContext().getVersionColumnName()).addAttribute("column",
+				getHbmContext().getVersionColumnName());
 		final Element meta = new Element("meta");
-		meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
+		meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText(
+				"true");
 		versionElement.add(0, meta);
 
-		versionElement.addAttribute("access", getHbmContext().getVersionPropertyHandlerName());
+		versionElement.addAttribute("access", getHbmContext()
+				.getVersionPropertyHandlerName());
 
 		return versionElement;
 	}

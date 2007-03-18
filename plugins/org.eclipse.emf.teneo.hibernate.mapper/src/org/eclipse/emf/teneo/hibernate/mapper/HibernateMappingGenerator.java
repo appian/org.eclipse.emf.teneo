@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.10 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.11 2007/03/18 19:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -41,6 +41,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * The main starting point for generating a hibernate mapping from a PAnnotated model.
@@ -159,7 +160,10 @@ public class HibernateMappingGenerator {
 			processedPAClasses = new HashSet<PAnnotatedEClass>();
 			for (PAnnotatedEPackage paPackage : paModel.getPaEPackages()) {
 				for (PAnnotatedEClass paEClass : paPackage.getPaEClasses()) {
-					processPAClass(paEClass);
+					// here, we eliminate map.enties
+					if(!hbmContext.isMapEMapAsTrueMap() || !StoreUtil.isMapEntry(paEClass.getAnnotatedEClass())) {
+						processPAClass(paEClass);
+					}
 				}
 			}
 		} finally {

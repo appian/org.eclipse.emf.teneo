@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.9 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.10 2007/03/18 19:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -22,8 +22,10 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -36,6 +38,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.simpledom.Element;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Maps a OneToMany element to its mapping Context.
@@ -117,10 +120,22 @@ class OneToManyMapper extends AbstractAssociationMapper {
 			otm.setIndexed(false);
 		}
 
+		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();
+		boolean isMapValueIsEntity = false;
 		if (otm.isIndexed() || !otm.isUnique()) {
-			addListIndex(collElement, paReference);
+			// now we check if it is a list or a map
+			final EClass eclass = eref.getEReferenceType();
+			if(hbReference.getMapKey() != null) {
+				isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);
+				addMapKey(collElement, paReference, hbReference.getMapKey());
+			} else if (isMap) {
+				isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);
+				addMapKey(collElement, hbReference);
+			} else {
+				addListIndex(collElement, paReference);
+			}
 		}
-
+		
 		final CollectionOfElements coe = hbReference.getHbCollectionOfElements();
 		final Cascade hbCascade = hbReference.getHbCascade();
 		final List<CascadeType> hbCascadeList = (null == hbCascade) ? new ArrayList<CascadeType>() : hbCascade.getValue();
@@ -145,6 +160,11 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		// hibernate supports uni otm without join table.
 		if (hbReference.getEmbedded() != null) {
 			addCompositeElement(collElement, targetName, hbReference);
+		} else if (isMap && !isMapValueIsEntity) {
+			final EClass eclass = eref.getEReferenceType();
+			final EAttribute valueEAttribute = (EAttribute)eclass.getEStructuralFeature("value");
+			final PAnnotatedEAttribute valuePAttribute = paReference.getPaModel().getPAnnotated(valueEAttribute);
+			addElementElement(collElement, valueEAttribute.getName(), valuePAttribute, getColumns(valuePAttribute), otm.getTargetEntity());
 		} else if (!isEObject(targetName) && jt != null) {
 			// A m2m forces a join table, note that isunique does not completely follow the semantics of emf, unique on
 			// an otm means that an element can only occur once in the table, if unique is false then you in effect have
@@ -171,9 +191,10 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		final Element collElement = addCollectionElement(paReference);
 		final EReference eref = paReference.getAnnotatedEReference();
 		final EClass refType = eref.getEReferenceType();
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 
-		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
-			addCacheElement(collElement, ((HbAnnotatedEReference) paReference).getHbCache());
+		if (hbReference.getHbCache() != null) {
+			addCacheElement(collElement, hbReference.getHbCache());
 		}
 
 		// MT: note inverse does not work correctly with hibernate for indexed collections, see 7.3.3 of the hibernate
@@ -199,8 +220,19 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		addFetchType(collElement, otm.getFetch(), false);
 		addCascadesForMany(collElement, otm.getCascade());
 
-		if (otm.isIndexed()) {
-			addListIndex(collElement, paReference);
+		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();
+		boolean isMapValueIsEntity = false;
+		if (otm.isIndexed() || !otm.isUnique()) {
+			// now we check if it is a list or a map
+			if(hbReference.getMapKey() != null) {
+				addMapKey(collElement, paReference, hbReference.getMapKey());
+			} else if (isMap) {
+				final EClass eclass = eref.getEReferenceType();
+				isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);
+				addMapKey(collElement, hbReference);
+			} else {
+				addListIndex(collElement, paReference);
+			}
 		}
 
 		String targetName = otm.getTargetEntity();
@@ -211,6 +243,11 @@ class OneToManyMapper extends AbstractAssociationMapper {
 
 		if (paReference.getEmbedded() != null) {
 			addCompositeElement(collElement, targetName, paReference);
+		} else if (isMap && !isMapValueIsEntity) {
+			final EClass eclass = eref.getEReferenceType();
+			final EAttribute valueEAttribute = (EAttribute)eclass.getEStructuralFeature("value");
+			final PAnnotatedEAttribute valuePAttribute = paReference.getPaModel().getPAnnotated(valueEAttribute);
+			addElementElement(collElement, valueEAttribute.getName(), valuePAttribute, getColumns(valuePAttribute), otm.getTargetEntity());
 		} else if (jt != null) {
 			final List<JoinColumn> inverseJoinColumns = jt != null && jt.getInverseJoinColumns() != null ? jt
 					.getInverseJoinColumns() : new ArrayList<JoinColumn>();

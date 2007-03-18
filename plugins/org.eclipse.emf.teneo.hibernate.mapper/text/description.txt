@@ -91,6 +91,7 @@ Package hbmodel <http://www.eclipse.org/emf/teneo/2006/HbModel>
   Class HbAnnotatedEClass -> PAnnotatedEClass
     Reference hbCache : Cache
     Reference hbOnDelete : OnDelete
+    Reference hbWhere : Where
 
   Class HbAnnotatedEModelElement -> PAnnotatedEModelElement
 

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.8 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.9 2007/03/18 19:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -20,6 +20,7 @@ package org.eclipse.emf.teneo.hibernate.mapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
@@ -52,8 +53,8 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 	public void process(PAnnotatedEReference paReference) {
 		log.debug("Creating many-to-many for " + paReference);
 
-		HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
-
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
+		final EReference eref = paReference.getAnnotatedEReference();
 		final JoinTable jt = hbReference.getJoinTable();
 		final ManyToMany mtm = hbReference.getManyToMany();
 
@@ -65,22 +66,35 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		final Element collElement = addCollectionElement(hbReference);
 
 		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
-			addCacheElement(collElement, ((HbAnnotatedEReference) paReference).getHbCache());
+			addCacheElement(collElement, ((HbAnnotatedEReference) paReference)
+					.getHbCache());
 		}
 
 		final Element keyElement = collElement.addElement("key");
 		handleOndelete(keyElement, hbReference.getHbOnDelete());
-		
+
+		boolean isMap = StoreUtil.isMap(eref)
+				&& getHbmContext().isMapEMapAsTrueMap();
 		if (mtm.isIndexed()) {
-			assert (hbReference.getHbIdBag() == null);
-			addListIndex(collElement, hbReference);
+			// now we check if it is a list or a map
+			if (hbReference.getMapKey() != null) {
+				addMapKey(collElement, paReference, hbReference.getMapKey());
+			} else if (isMap) {
+				addMapKey(collElement, hbReference);
+			} else {
+				assert (hbReference.getHbIdBag() == null);
+				addListIndex(collElement, hbReference);
+			}
 		}
+
 		addFetchType(collElement, mtm.getFetch(), false);
 		addCascades(collElement, mtm.getCascade(), false);
 
-		final EClass referedTo = hbReference.getAnnotatedEReference().getEReferenceType();
+		final EClass referedTo = hbReference.getAnnotatedEReference()
+				.getEReferenceType();
 
-		boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(referedTo);
+		boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(
+				referedTo);
 		String targetName = mtm.getTargetEntity();
 		if (targetName == null || isEasyEMFGenerated) {
 			targetName = getHbmContext().getEntityName(referedTo);
@@ -89,11 +103,11 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 
 		final Element mtmElement;
 		if (isEasyEMFGenerated) {
-			mtmElement = collElement.addElement("many-to-many").addAttribute("class", targetName).addAttribute(
-					"unique", "false");
+			mtmElement = collElement.addElement("many-to-many").addAttribute(
+					"class", targetName).addAttribute("unique", "false");
 		} else {
-			mtmElement = collElement.addElement("many-to-many").addAttribute("entity-name", targetName).addAttribute(
-					"unique", "false");
+			mtmElement = collElement.addElement("many-to-many").addAttribute(
+					"entity-name", targetName).addAttribute("unique", "false");
 		}
 
 		// inverse is not supported by indexed lists
@@ -107,8 +121,11 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		addJoinTable(collElement, keyElement, jt);
 		if (jt.getInverseJoinColumns() != null) {
 			for (JoinColumn joinColumn : jt.getInverseJoinColumns()) {
-				mtmElement.addElement("column").addAttribute("name", getHbmContext().trunc(joinColumn.getName()))
-						.addAttribute("not-null", joinColumn.isNullable() ? "false" : "true").addAttribute("unique",
+				mtmElement.addElement("column").addAttribute("name",
+						getHbmContext().trunc(joinColumn.getName()))
+						.addAttribute("not-null",
+								joinColumn.isNullable() ? "false" : "true")
+						.addAttribute("unique",
 								joinColumn.isUnique() ? "true" : "false");
 			}
 		}

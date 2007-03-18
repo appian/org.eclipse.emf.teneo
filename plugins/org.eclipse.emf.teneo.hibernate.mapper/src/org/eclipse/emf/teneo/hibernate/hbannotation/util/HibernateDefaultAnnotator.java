@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.5 2007/02/28 11:55:11 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.6 2007/03/18 19:19:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -222,7 +222,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		}
 		if (typeClassName != null) {
 			final Class<?> instanceClass = eDataType.getInstanceClass();
-			if (instanceClass.isArray()) {
+			if (instanceClass != null && instanceClass.isArray()) {
 				// get rid of the [] at the end
 				final String primType = typeClassName.substring(0, typeClassName.length() - 2);
 				// check if hb supports it

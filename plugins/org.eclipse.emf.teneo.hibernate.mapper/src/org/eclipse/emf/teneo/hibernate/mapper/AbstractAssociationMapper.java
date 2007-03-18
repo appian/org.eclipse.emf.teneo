@@ -11,29 +11,33 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.12 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.13 2007/03/18 19:19:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Class contains different convenience methods which are of use for association
@@ -252,6 +256,42 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	}
 
 	/**
+	 * Adds a map-key element with the column name set to the give selected
+	 * column element.
+	 */
+	protected void addMapKey(Element collElement,
+			PAnnotatedEStructuralFeature aFeature, MapKey mapKey) {
+
+		log.debug("Add map key " + mapKey.getName() + " to "
+				+ aFeature.getAnnotatedEStructuralFeature().getName());
+
+		// now, we add the column type. this is a required field
+		final EStructuralFeature feature = ((EReference) aFeature
+				.getAnnotatedElement()).getEReferenceType()
+				.getEStructuralFeature("value");
+		final EAttribute attr = (EAttribute) ((EClass) feature.getEType())
+				.getEStructuralFeature(mapKey.getName());
+
+		collElement.addElement("map-key").addAttribute("column",
+				getHbmContext().trunc(mapKey.getName())).addAttribute("type",
+				attr.getEType().getInstanceClassName());
+	}
+
+	/** Add a mapkey taking into account if the key is an entity or a simple type */
+	protected void addMapKey(Element collElement, PAnnotatedEReference aref) {
+		final EReference eref = aref.getAnnotatedEReference();
+		final EStructuralFeature feature = eref.getEReferenceType()
+				.getEStructuralFeature("key");
+		if (feature instanceof EReference) { 
+			final String entityName = hbmContext.getEntityName(((EReference)feature).getEReferenceType());
+			collElement.addElement("map-key-many-to-many").addAttribute("entity-name", entityName);
+		} else {
+			final String type = hbType(aref.getPaModel().getPAnnotated((EAttribute)feature));
+			collElement.addElement("map-key").addAttribute("type", type);
+		}
+	}
+
+	/**
 	 * @return a newly added hibernate for given collection
 	 * @deprecated use addCollectionElement(PAnnotatedEStructuralFeature)
 	 *             instead. protected Element addCollectionElement(String name,
@@ -280,20 +320,13 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		HbAnnotatedETypeElement hbFeature = (HbAnnotatedETypeElement) paFeature;
 		final IdBag idBag = hbFeature.getHbIdBag();
 
-		boolean isMap = false;
-		if (hbFeature instanceof PAnnotatedEReference) {
-			EClass refType = ((PAnnotatedEReference) hbFeature)
-					.getAnnotatedEReference().getEReferenceType();
-			final Class<?> instanceClass = refType.getInstanceClass();
-			isMap = (null != instanceClass && Map.Entry.class
-					.isAssignableFrom(instanceClass));
-		}
-
 		final EStructuralFeature estruct = paFeature
 				.getAnnotatedEStructuralFeature();
 		final boolean isArray = estruct instanceof EAttribute
 				&& estruct.getEType().getInstanceClass() != null
 				&& estruct.getEType().getInstanceClass().isArray();
+		final boolean isMap = StoreUtil.isMap(estruct)
+				&& getHbmContext().isMapEMapAsTrueMap();
 
 		// disabled following check because it also failed for many eattribute
 		// which even with a onetomany
@@ -310,10 +343,13 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 				|| getHbmContext().isEasyEMFDynamic(eclass);
 		final boolean hasOrderBy = paFeature instanceof PAnnotatedEReference
 				&& ((PAnnotatedEReference) paFeature).getOrderBy() != null;
+		final boolean hasWhereClause = paFeature instanceof PAnnotatedEReference
+				&& ((HbAnnotatedEReference) paFeature).getHbWhere() != null;
+
 		if (isArray) { // array type
 			collectionElement = getHbmContext().getCurrent()
 					.addElement("array");
-		} else if (isMap && false) {
+		} else if (isMap) {
 			collectionElement = getHbmContext().getCurrent().addElement("map");
 		} else if (idBag != null) {
 			collectionElement = getHbmContext().getCurrent()
@@ -321,7 +357,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		} else if (!isEasyGenerated && hbFeature.getOneToMany() != null
 				&& hbFeature.getOneToMany().isList()) {
 			if (hasOrderBy && hbFeature.getOneToMany().isIndexed()) {
-				log.warn("One to many ereference has indexed=true and has orderby set. Ignoring indexed and using orderby, assuming set "
+				log
+						.warn("One to many ereference has indexed=true and has orderby set. Ignoring indexed and using orderby, assuming set "
 								+ hbFeature);
 			}
 
@@ -334,7 +371,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			}
 		} else if (isEasyGenerated && hbFeature.getOneToMany() != null) {
 			if (hasOrderBy && hbFeature.getOneToMany().isIndexed()) {
-				log.warn("One to many ereference has indexed=true and has orderby set. "
+				log
+						.warn("One to many ereference has indexed=true and has orderby set. "
 								+ "Ignoring indexed and using orderby, assuming set "
 								+ hbFeature);
 			}
@@ -381,7 +419,34 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 					((PAnnotatedEReference) paFeature).getOrderBy().getValue());
 		}
 
+		if (hasWhereClause) {
+			collectionElement.addAttribute("where",
+					((HbAnnotatedEReference) paFeature).getHbWhere()
+							.getClause());
+		}
+
 		return collectionElement;
+	}
+
+	/**
+	 * Add Element element in given collection element.
+	 */
+	protected Element addElementElement(Element collElement,
+			String defaultName, PAnnotatedEAttribute paAttribute,
+			List<Column> columns, String targetEntity) {
+		final Element elElement;
+		if (targetEntity == null) {
+			elElement = collElement.addElement("element");
+			setType(paAttribute, elElement);
+		} else {
+			elElement = collElement.addElement("element").addAttribute("type",
+					targetEntity);
+		}
+		if (columns != null && columns.size() > 0) {
+			addColumns(elElement, defaultName, columns, getHbmContext()
+					.isCurrentElementFeatureMap(), true);
+		}
+		return elElement;
 	}
 
 	/**
@@ -435,7 +500,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		}
 		// TODO jc.getReferencedColumnName();
 	}
-	
+
 	/**
 	 * Adds a jointable and possible joincolumns to the passed key element.
 	 * 
