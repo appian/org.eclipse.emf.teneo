@@ -1,6 +1,7 @@
-#Mon Mar 05 20:19:11 CET 2007
+#Wed Mar 07 18:39:36 CET 2007
 eclipse.preferences.version=1
 encoding//src/org/eclipse/emf/teneo/samples/emf/annotations/associationoverride/model/associationoverride.ecore_diagram=UTF-8
 encoding//src/org/eclipse/emf/teneo/samples/emf/annotations/hb/generator/id/model/id.ecore_diagram=UTF-8
 encoding//src/org/eclipse/emf/teneo/samples/emf/sample/catalog/model/catalog.ecore_diagram=UTF-8
 encoding//src/org/eclipse/emf/teneo/samples/emf/schemaconstructs/model/simpletypes.xsd=UTF8
+encoding//test/rental.ecore_diagram=UTF-8

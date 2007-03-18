@@ -326,6 +326,9 @@ Export-Package: extlibrary,
  org.eclipse.gmf.runtime.notation.util,
  org.example.mindmap,
  org.example.mindmap.impl,
- org.example.mindmap.util
+ org.example.mindmap.util,
+ testinheritance,
+ testinheritance.impl,
+ testinheritance.util
 Bundle-ClassPath: jdo2-api-2.0.jar,
  .
