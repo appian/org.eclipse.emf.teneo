@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.13 2007/03/07 23:33:50 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.14 2007/03/18 19:19:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -262,7 +262,6 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 */
 	public PAnnotatedEClass getPAnnotated(EClass e) {
 		// in this case do not throw an error
-		// this needs to be cleaned up
 		if (e.getEPackage() instanceof EcorePackage) {
 			return (PAnnotatedEClass) eElement_to_pElement.get(e);
 		}

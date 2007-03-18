@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.31 2007/03/07 23:33:50 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.32 2007/03/18 19:19:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
@@ -83,7 +84,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  */
 public class DefaultAnnotator {
 
@@ -137,6 +138,9 @@ public class DefaultAnnotator {
 
 	/** Option ID feature as primary key */
 	private boolean optionIDFeatureAsPrimaryKey = true;
+
+	/** Option emap as real map */
+	private boolean optionEMapAsTrueMap = true;
 
 	/** Convenience link to pamodel factory */
 	private PannotationFactory aFactory = PannotationFactory.eINSTANCE;
@@ -232,6 +236,9 @@ public class DefaultAnnotator {
 		optionIDFeatureAsPrimaryKey = po.isIDFeatureAsPrimaryKey();
 		log.debug("ID Feature as primary key " + optionIDFeatureAsPrimaryKey);
 
+		optionEMapAsTrueMap = po.isMapEMapAsTrueMap();
+		log.debug("optionEMapAsTrueMap " + optionEMapAsTrueMap);
+		
 		optionMaximumSqlLength = po.getMaximumSqlNameLength();
 		log.debug("Maximum column length: " + optionMaximumSqlLength);
 
@@ -1653,7 +1660,19 @@ public class DefaultAnnotator {
 							+ "resolvable by EMF.");
 		}
 
+		
+		// ok, here we figure out if it is an EMap. if so, we return the destination child name, not the keyToValueEntry wrapper
 		final PAnnotatedEClass aclass = annotatedModel.getPAnnotated(eclass);
+		if(optionEMapAsTrueMap && StoreUtil.isMapEntry(eclass)){
+				// ok, it is an EMAp, get the annotaetd class of the child
+			EStructuralFeature feature = eclass.getEStructuralFeature("value");
+			if(feature instanceof EReference) {
+				return optionEClassNameStrategy.toUniqueName(((EReference)feature).getEReferenceType());
+			} else {
+				return ((EAttribute)feature).getEType().getInstanceClassName();
+			}
+		}
+		
 		if (aclass != null && aclass.getEntity() != null
 				&& aclass.getEntity().getName() != null) {
 			return aclass.getEntity().getName();
