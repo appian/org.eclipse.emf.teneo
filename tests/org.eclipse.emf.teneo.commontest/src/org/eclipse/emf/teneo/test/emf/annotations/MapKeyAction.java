@@ -11,10 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAction.java,v 1.6 2007/03/18 19:18:27 mtaal Exp $
+ * $Id: MapKeyAction.java,v 1.1 2007/03/18 19:18:27 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.test.emf.schemaconstructs;
+package org.eclipse.emf.teneo.test.emf.annotations;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,10 +25,10 @@ import java.util.Properties;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
-import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book;
-import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapFactory;
-import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage;
-import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
+import org.eclipse.emf.teneo.samples.emf.annotations.mapkey.Book;
+import org.eclipse.emf.teneo.samples.emf.annotations.mapkey.MapkeyFactory;
+import org.eclipse.emf.teneo.samples.emf.annotations.mapkey.MapkeyPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.mapkey.Writer;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -37,16 +37,16 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.1 $
  */
-public class EMapAction extends AbstractTestAction {
+public class MapKeyAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * 
 	 * @param arg0
 	 */
-	public EMapAction() {
-		super(EmapPackage.eINSTANCE);
+	public MapKeyAction() {
+		super(MapkeyPackage.eINSTANCE);
 	}
 
 	/* (non-Javadoc)
@@ -64,7 +64,7 @@ public class EMapAction extends AbstractTestAction {
 //		store.disableDrop();
 		{
 			store.beginTransaction();
-			store.store(createTestSet("prefix1"));
+			store.store(createTestSet(""));
 			store.store(createTestSet("prefix2"));
 			store.commitTransaction();
 		}
@@ -90,10 +90,14 @@ public class EMapAction extends AbstractTestAction {
 						// check lazy load
 						//assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
 						// now load
-						assertTrue(bk.getWriters().size() == 2);
+						if (bk.getTitle().length() == 0) {
+							assertEquals(1, bk.getWriters().size());
+						} else {
+							assertEquals(0, bk.getWriters().size());
+						}
 						
 						// disabled as hibernate and jpox differ here
-						//assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
+						assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
 					} else {
 						fail("Type not supported " + bk.getWriters().getClass().getName());
 					}
@@ -104,16 +108,6 @@ public class EMapAction extends AbstractTestAction {
 			}
 			assertTrue(bks.size() == 2);
 			assertTrue(ws.size() == 4);
-			for (Iterator it = bks.iterator(); it.hasNext();) {
-				final Book bk = (Book)it.next();
-				int cntMatch = 0;
-				for (int i = 0; i < ws.size(); i++) {
-					if (bk.getCityByWriter().get(ws.get(i)) != null) {
-						cntMatch++;
-					}
-				}
-				assertEquals(2, cntMatch);
-			}
 			res.save(Collections.EMPTY_MAP);
 			res.save(Collections.EMPTY_MAP);
 			res.unload();
@@ -124,23 +118,22 @@ public class EMapAction extends AbstractTestAction {
 	
 	/** Create test set */
 	private Book createTestSet(String prefix) {
-		final EmapFactory factory = EmapFactory.eINSTANCE;
+		final MapkeyFactory factory = MapkeyFactory.eINSTANCE;
 		final Writer w1 = factory.createWriter();
-		w1.setName(prefix + "name1");
+		w1.setName(prefix + "martin");
 		final Writer w2 = factory.createWriter();
-		w2.setName(prefix + "name2");
+		w2.setName(prefix + "martin2");
 		final Book bk = factory.createBook();
 		bk.setTitle(prefix);
 		bk.getWriters().put(w1.getName(), w1);
 		bk.getWriters().put(w2.getName(), w2);
-		bk.getKeyWords().put(prefix + "_1", prefix + "_1_value");
-		bk.getKeyWords().put(prefix + "_2", prefix + "_2_value");
-		bk.getCityByWriter().put(w1, w2.getName());
-		bk.getCityByWriter().put(w2, w1.getName());
 		return bk;
 	}
 	
-	/** Check test set */
+	/** 
+	 * Check test set, note a where clause has been set on the relation
+	 * Only writers with name martin are returned 
+	 */
 	private void checkTestSet(Book bk) {
 		final String prefix = bk.getTitle();
 		final ArrayList writers = new ArrayList();
@@ -151,19 +144,12 @@ public class EMapAction extends AbstractTestAction {
 			assertTrue(key.startsWith(bk.getTitle()));
 			writers.add(w);
 		}
-		assertEquals(2, writers.size());
-		for (Iterator itWords = bk.getKeyWords().keySet().iterator(); itWords.hasNext();) {
-			final String key = (String)itWords.next();
-			final String value = (String)bk.getKeyWords().get(key);
-			assertTrue(key.startsWith(prefix));
-			assertTrue(value.startsWith(key));
-			assertTrue(value.endsWith("_value"));
+		if (bk.getTitle().length() == 0) {
+			assertEquals(1, writers.size());
+			final Writer writerOne = (Writer)writers.get(0);
+			assertEquals(writerOne.getName(), "martin");
+		} else {
+			assertEquals(0, writers.size());
 		}
-		final Writer writerOne = (Writer)writers.get(0);
-		final Writer writerTwo = (Writer)writers.get(1);
-		final String c1 = (String)bk.getCityByWriter().get(writerOne);
-		final String c2 = (String)bk.getCityByWriter().get(writerTwo);
-		assertEquals(c1, writerTwo.getName());
-		assertEquals(c2, writerOne.getName());
 	}
 }
