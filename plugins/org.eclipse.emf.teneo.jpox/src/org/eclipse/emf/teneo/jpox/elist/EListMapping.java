@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListMapping.java,v 1.5 2007/02/08 23:14:52 mtaal Exp $
+ * $Id: EListMapping.java,v 1.6 2007/03/18 19:18:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -25,7 +25,6 @@ import java.util.Map;
 import javax.jdo.JDOFatalInternalException;
 import javax.jdo.spi.PersistenceCapable;
 
-import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -42,7 +41,7 @@ import org.jpox.store.mapping.CollectionMapping;
  * Mapping class around the EListWrapper. The newWrapper method returns a new EListWrapper instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ $Date: 2007/02/08 23:14:52 $
+ * @version $Revision: 1.6 $ $Date: 2007/03/18 19:18:22 $
  */
 
 public class EListMapping extends CollectionMapping {

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.9 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.10 2007/03/18 19:18:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -99,7 +99,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $ $Date: 2007/02/01 12:36:36 $
+ * @version $Revision: 1.10 $ $Date: 2007/03/18 19:18:22 $
  */
 
 public class JpoxDataStore {
@@ -167,6 +167,7 @@ public class JpoxDataStore {
 				"org.eclipse.emf.teneo.jpox.cache.EMFWeakRefCache");
 		properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY, JpoxHelper.INSTANCE
 				.getJdoFileExtension());
+		properties.setProperty(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
 	}
 
 	/** Initialize the datastore, creates the database and */
