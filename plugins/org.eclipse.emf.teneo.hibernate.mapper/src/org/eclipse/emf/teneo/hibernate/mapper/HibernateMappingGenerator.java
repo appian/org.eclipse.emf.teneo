@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.10 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.9.2.1 2007/03/18 22:34:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -28,7 +28,6 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
@@ -54,7 +53,7 @@ public class HibernateMappingGenerator {
 	private static final Log log = LogFactory.getLog(HibernateMappingGenerator.class);
 
 	/** The list of processed annotated classes */
-	private Set<PAnnotatedEClass> processedPAClasses = null;
+	private Set processedPAClasses = null;
 
 	/** the mapping context */
 	private final MappingContext hbmContext;
@@ -86,8 +85,10 @@ public class HibernateMappingGenerator {
 	 * Register the entity names in context.
 	 */
 	private void initEntityNames(MappingContext hbmContext, PAnnotatedModel paModel) {
-		for (PAnnotatedEPackage pae : paModel.getPaEPackages()) {
-			for (PAnnotatedEClass paClass : pae.getPaEClasses()) {
+		for (Iterator ip = paModel.getPaEPackages().iterator(); ip.hasNext();) {
+			for (Iterator ic = ((PAnnotatedEPackage) ip.next()).getPaEClasses().iterator(); ic.hasNext();) {
+				PAnnotatedEClass paClass = (PAnnotatedEClass) ic.next();
+
 				if (paClass.getEntity() != null) {
 					hbmContext.setEntityName(paClass.getAnnotatedEClass(), getEntityName(paClass));
 				}
@@ -156,9 +157,11 @@ public class HibernateMappingGenerator {
 	/** Process all annotated classes of the pamodel */
 	protected void processPersistentClasses(PAnnotatedModel paModel) {
 		try {
-			processedPAClasses = new HashSet<PAnnotatedEClass>();
-			for (PAnnotatedEPackage paPackage : paModel.getPaEPackages()) {
-				for (PAnnotatedEClass paEClass : paPackage.getPaEClasses()) {
+			processedPAClasses = new HashSet();
+			for (Iterator pi = paModel.getPaEPackages().iterator(); pi.hasNext();) {
+				PAnnotatedEPackage paPackage = (PAnnotatedEPackage) pi.next();
+				for (Iterator ci = paPackage.getPaEClasses().iterator(); ci.hasNext();) {
+					PAnnotatedEClass paEClass = (PAnnotatedEClass) ci.next();
 					processPAClass(paEClass);
 				}
 			}
@@ -188,6 +191,7 @@ public class HibernateMappingGenerator {
 					return;
 				}
 
+				hbmContext.setCurrentEClass(paEClass.getAnnotatedEClass());
 				hbmContext.getEntityMapper().processEntity(paEClass);
 
 			} else if (log.isDebugEnabled())
@@ -200,16 +204,17 @@ public class HibernateMappingGenerator {
 	 */
 	protected void processTypedefs(PAnnotatedModel paModel) {
 		// Walk thru all the packages looking for custom EDataTypes.
-		for (Iterator<PAnnotatedEPackage> pi = paModel.getPaEPackages().iterator(); pi.hasNext();) {
+		for (Iterator pi = paModel.getPaEPackages().iterator(); pi.hasNext();) {
 			HbAnnotatedEPackage paPackage = (HbAnnotatedEPackage) pi.next();
 
 			// handle the typedefs
-			for (TypeDef td : paPackage.getHbTypeDef()) {
+			for (Iterator it = paPackage.getHbTypeDef().iterator(); it.hasNext();) {
+				final TypeDef td = (TypeDef) it.next();
 				emitTypeDef(td);
 			}
 
 			// Walk thru all the classifiers of the given package.
-			for (Iterator<PAnnotatedEDataType> adatatypes = paPackage.getPaEDataTypes().iterator(); adatatypes.hasNext();) {
+			for (Iterator adatatypes = paPackage.getPaEDataTypes().iterator(); adatatypes.hasNext();) {
 				final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) adatatypes.next();
 				if (hed.getHbTypeDef() != null) {
 					emitTypeDef(hed.getHbTypeDef());
@@ -223,7 +228,8 @@ public class HibernateMappingGenerator {
 		final Element target = this.hbmContext.getCurrent().addElement("typedef");
 		target.addAttribute("name", td.getName());
 		target.addAttribute("class", td.getTypeClass());
-		for (Parameter param : td.getParameters()) {
+		for (Iterator it = td.getParameters().iterator(); it.hasNext();) {
+			final Parameter param = (Parameter) it.next();
 			target.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
 		}
 	}

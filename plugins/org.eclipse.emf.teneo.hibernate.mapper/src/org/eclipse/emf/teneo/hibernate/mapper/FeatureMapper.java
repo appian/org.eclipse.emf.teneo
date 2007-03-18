@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapper.java,v 1.3 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: FeatureMapper.java,v 1.3.2.1 2007/03/18 22:34:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -67,17 +67,21 @@ public class FeatureMapper {
 
 	private OneToOneMapper oneToOneMapper = null;
 
+	private MappingContext hbmContext = null;
+	
 	/**
 	 * Used to process the given feature.
 	 * 
 	 * @see org.eclipse.emf.teneo.annotations.builder.DelegatingBuilder#process(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
 	 */
 	public void process(PAnnotatedEStructuralFeature paFeature) {
+		hbmContext.setCurrentEFeature(paFeature.getAnnotatedEStructuralFeature());
 		if (paFeature instanceof PAnnotatedEAttribute) {
 			processPAnnotatedEAttribute((PAnnotatedEAttribute) paFeature);
 		} else {
 			processPAnnotatedEReference((PAnnotatedEReference) paFeature);
 		}
+		hbmContext.setCurrentEFeature(null);
 	}
 
 	/**
@@ -219,5 +223,12 @@ public class FeatureMapper {
 
 	public void setOneToOneMapper(OneToOneMapper oneToOneMapper) {
 		this.oneToOneMapper = oneToOneMapper;
+	}
+
+	/**
+	 * @param hbmContext the hbmContext to set
+	 */
+	public void setHbmContext(MappingContext hbmContext) {
+		this.hbmContext = hbmContext;
 	}
 }
