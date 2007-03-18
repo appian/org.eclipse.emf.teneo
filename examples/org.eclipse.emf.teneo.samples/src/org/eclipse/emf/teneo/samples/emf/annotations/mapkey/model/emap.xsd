@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/annotations/mapkey"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns="http://www.eclipse.org/emf/teneo/samples/emf/annotations/mapkey">
+
+	<xsd:complexType name="Book">
+    	<xsd:sequence>
+      		<xsd:element name="title" type="xsd:string"/>
+	 		<xsd:element maxOccurs="unbounded" minOccurs="0" name="writers" type="StringToWriterMapEntry">
+	 			<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">
+						@MapKey(name="name")
+						@Where(clause="name='martin'")
+					</xsd:appinfo>
+					
+			    </xsd:annotation>
+	 		</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+  	<xsd:complexType name="Writer">
+    	<xsd:sequence>
+      		<xsd:element name="name" type="xsd:string"/>
+   		</xsd:sequence>
+  	</xsd:complexType>
+
+ 	<xsd:complexType ecore:instanceClass="java.util.Map$Entry" name="StringToWriterMapEntry">
+    	<xsd:attribute name="key" type="xsd:string"/>
+    	<xsd:attribute name="value" type="xsd:IDREF" ecore:reference="Writer"/>
+  	</xsd:complexType>
+ </xsd:schema>
