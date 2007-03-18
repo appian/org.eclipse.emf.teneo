@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.35 2007/03/05 20:51:26 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.36 2007/03/18 19:19:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -181,6 +181,7 @@ public class JPOXTestbed extends Testbed {
 			}
 
 			options.put(PersistenceOptions.INHERITANCE_MAPPING, inheritanceType.getName());
+			options.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
 			fileWriter.write(JpoxHelper.INSTANCE.generateMapping(test.getEPackages(), options));
 			fileWriter.close();
 
