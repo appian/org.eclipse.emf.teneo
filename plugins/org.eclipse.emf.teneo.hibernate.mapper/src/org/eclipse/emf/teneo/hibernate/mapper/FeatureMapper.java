@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapper.java,v 1.3 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: FeatureMapper.java,v 1.4 2007/03/18 22:28:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -67,19 +67,8 @@ public class FeatureMapper {
 
 	private OneToOneMapper oneToOneMapper = null;
 
-	/**
-	 * Used to process the given feature.
-	 * 
-	 * @see org.eclipse.emf.teneo.annotations.builder.DelegatingBuilder#process(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
-	 */
-	public void process(PAnnotatedEStructuralFeature paFeature) {
-		if (paFeature instanceof PAnnotatedEAttribute) {
-			processPAnnotatedEAttribute((PAnnotatedEAttribute) paFeature);
-		} else {
-			processPAnnotatedEReference((PAnnotatedEReference) paFeature);
-		}
-	}
-
+	private MappingContext hbmContext = null;
+	
 	/**
 	 * Used to signal the end of a class or mapped superclass. public void end() { if (nestedBegin <= 0) throw new
 	 * IllegalStateException("Unexpected end"); nestedBegin--; if (idStrategy != null) idStrategy.end(); // can happen
@@ -93,6 +82,21 @@ public class FeatureMapper {
 				return features[i];
 		}
 		return null;
+	}
+
+	/**
+	 * Used to process the given feature.
+	 * 
+	 * @see org.eclipse.emf.teneo.annotations.builder.DelegatingBuilder#process(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
+	 */
+	public void process(PAnnotatedEStructuralFeature paFeature) {
+		hbmContext.setCurrentEFeature(paFeature.getAnnotatedEStructuralFeature());
+		if (paFeature instanceof PAnnotatedEAttribute) {
+			processPAnnotatedEAttribute((PAnnotatedEAttribute) paFeature);
+		} else {
+			processPAnnotatedEReference((PAnnotatedEReference) paFeature);
+		}
+		hbmContext.setCurrentEFeature(null);
 	}
 
 	/** Process the eattribute */
@@ -219,5 +223,12 @@ public class FeatureMapper {
 
 	public void setOneToOneMapper(OneToOneMapper oneToOneMapper) {
 		this.oneToOneMapper = oneToOneMapper;
+	}
+
+	/**
+	 * @param hbmContext the hbmContext to set
+	 */
+	public void setHbmContext(MappingContext hbmContext) {
+		this.hbmContext = hbmContext;
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.13 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.14 2007/03/18 22:28:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -520,7 +520,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			collElement.addAttribute("schema", joinTable.getSchema());
 		}
 		if (joinTable.getName() != null) {
-			collElement.addAttribute("table", joinTable.getName());
+			collElement.addAttribute("table", getHbmContext().trunc(joinTable.getName()));
 		}
 		if (joinTable.getUniqueConstraints().size() > 0) {
 			log.error("Unsupported unique constraints in " + joinTable);

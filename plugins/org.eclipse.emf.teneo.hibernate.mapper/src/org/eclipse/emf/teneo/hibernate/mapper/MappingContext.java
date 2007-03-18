@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.10 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: MappingContext.java,v 1.11 2007/03/18 22:28:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -61,7 +61,10 @@ public class MappingContext extends AbstractProcessingContext {
 	/** Mapping from eclass to entity name */
 	private Map<EClass, String> entityNames = null;
 
-	/** Keeps track of the list of featuremapmappers created for the current entity */
+	/**
+	 * Keeps track of the list of featuremapmappers created for the current
+	 * entity
+	 */
 	private final List<FeatureMapMapping> featureMapMappers = new ArrayList<FeatureMapMapping>();
 
 	/** The list of eattributes for which a featuremap mapping was created */
@@ -71,8 +74,9 @@ public class MappingContext extends AbstractProcessingContext {
 	private final FeatureMapper featureMapper;
 
 	/**
-	 * Is the current element a mixed or a feature map, in this case all features should be not required. TODO: check,
-	 * does this work with embedded components in a feature map?
+	 * Is the current element a mixed or a feature map, in this case all
+	 * features should be not required. TODO: check, does this work with
+	 * embedded components in a feature map?
 	 */
 	private boolean currentElementFeatureMap = false;
 
@@ -81,6 +85,12 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** The current secondary table being processed. May be null. */
 	private SecondaryTable currentSecondaryTable = null;
+
+	/** The current eclass */
+	private EClass currentEClass = null;
+
+	/** The current efeature being processed */
+	private EStructuralFeature currentEFeature = null;
 
 	/** The entity mapper */
 	private final EntityMapper entityMapper;
@@ -106,7 +116,7 @@ public class MappingContext extends AbstractProcessingContext {
 	// Options
 	private boolean alwaysVersion;
 	private boolean isMapEMapAsTrueMap;
-	
+
 	/** The constructor */
 	public MappingContext() {
 		featureMapper = createFeatureMapper();
@@ -131,13 +141,15 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** Return the concrete impl. class */
 	protected String getInstanceClassName(PAnnotatedEClass aClass) {
-		return getInstanceClassName(aClass.getPaModel(), aClass.getAnnotatedEClass());
+		return getInstanceClassName(aClass.getPaModel(), aClass
+				.getAnnotatedEClass());
 	}
 
 	/** Return the concrete impl. class */
 	protected String getInstanceClassName(PAnnotatedModel paModel, EClass eClass) {
 		if (!eRuntimeInitialized) {
-			final EPackage[] epackages = new EPackage[paModel.getPaEPackages().size()];
+			final EPackage[] epackages = new EPackage[paModel.getPaEPackages()
+					.size()];
 			int cnt = 0;
 			for (PAnnotatedEPackage pap : paModel.getPaEPackages()) {
 				epackages[cnt++] = pap.getAnnotatedEPackage();
@@ -147,8 +159,9 @@ public class MappingContext extends AbstractProcessingContext {
 		}
 		final Class<?> clazz = ERuntime.INSTANCE.getInstanceClass(eClass);
 		/*
-		 * Handle this in the caller if (clazz == null) { throw new MappingException("No instanceclass can be found for
-		 * this eclass: " + aClass.getAnnotatedEClass().getName()); }
+		 * Handle this in the caller if (clazz == null) { throw new
+		 * MappingException("No instanceclass can be found for this eclass: " +
+		 * aClass.getAnnotatedEClass().getName()); }
 		 */
 		return clazz.getName();
 	}
@@ -157,6 +170,13 @@ public class MappingContext extends AbstractProcessingContext {
 	 * @return Returns the entity name for the given entity EClass.
 	 */
 	public String getEntityName(EClass entityEClass) {
+		return getEntityName(entityEClass, true);
+	}
+
+	/**
+	 * @return Returns the entity name for the given entity EClass.
+	 */
+	public String getEntityName(EClass entityEClass, boolean throwCheckException) {
 		String name = (String) entityNames.get(entityEClass);
 		if (name == null) {
 			final Class<?> implClass = getImpl(entityEClass);
@@ -164,8 +184,10 @@ public class MappingContext extends AbstractProcessingContext {
 				name = implClass.getName();
 			}
 		}
-		if (name == null)
-			throw new IllegalStateException("An entity name has not been registered for " + entityEClass);
+		if (throwCheckException && name == null)
+			throw new IllegalStateException(
+					"An entity name has not been registered for "
+							+ entityEClass);
 		return name;
 	}
 
@@ -206,7 +228,8 @@ public class MappingContext extends AbstractProcessingContext {
 	 * @return the featureMapMappers gathered during the entity processing
 	 */
 	public List<FeatureMapMapping> getClearFeatureMapMappers() {
-		final ArrayList<FeatureMapMapping> result = new ArrayList<FeatureMapMapping>(featureMapMappers); // clone the list!
+		final ArrayList<FeatureMapMapping> result = new ArrayList<FeatureMapMapping>(
+				featureMapMappers); // clone the list!
 		featureMapMappers.clear();
 		return result;
 	}
@@ -216,7 +239,8 @@ public class MappingContext extends AbstractProcessingContext {
 	 *            a featureMapMapper to the featuremapp mapper list
 	 */
 	public void addFeatureMapMapper(FeatureMapMapping featureMapMapper) {
-		if (!handledFeatureMapEAttributes.contains(featureMapMapper.getEAttribute())) {
+		if (!handledFeatureMapEAttributes.contains(featureMapMapper
+				.getEAttribute())) {
 			featureMapMappers.add(featureMapMapper);
 			handledFeatureMapEAttributes.add(featureMapMapper.getEAttribute());
 		}
@@ -227,6 +251,7 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	private FeatureMapper createFeatureMapper() {
 		final FeatureMapper featureMapper = new FeatureMapper();
+		featureMapper.setHbmContext(this);
 
 		featureMapper.setBasicMapper(new BasicMapper(this));
 		featureMapper.setManyAttributeMapper(new ManyAttributeMapper(this));
@@ -241,7 +266,8 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** process the features of the annotated eclass */
 	protected void processFeatures(List<PAnnotatedEStructuralFeature> features) {
-		for (Iterator<PAnnotatedEStructuralFeature> i = features.iterator(); i.hasNext();) {
+		for (Iterator<PAnnotatedEStructuralFeature> i = features.iterator(); i
+				.hasNext();) {
 			entityMapper.processFeature(i.next());
 		}
 	}
@@ -303,9 +329,11 @@ public class MappingContext extends AbstractProcessingContext {
 			return null;
 		}
 
-		// NOTE: Hibernate does not support one column being part of multiple unique constraints.
+		// NOTE: Hibernate does not support one column being part of multiple
+		// unique constraints.
 		for (int i = 0, n = uniqueConstraints.size(); i < n; i++) {
-			UniqueConstraint uniqueConstraint = (UniqueConstraint) uniqueConstraints.get(i);
+			UniqueConstraint uniqueConstraint = (UniqueConstraint) uniqueConstraints
+					.get(i);
 			if (uniqueConstraint.getColumnNames().contains(colName)) {
 				return "c" + i;
 			}
@@ -336,29 +364,59 @@ public class MappingContext extends AbstractProcessingContext {
 		return maximumSqlNameLength;
 	}
 
-	/** Default is tru */
+	/** Default is trunc */
 	String trunc(String name) {
 		return trunc(name, true);
 	}
 
-	/** Utilit method to truncate a column name */
-	String trunc(String name, boolean truncSuffix) {
-		if (maximumSqlNameLength == -1)
-			return escape(escape(name));
-		if (name.length() < maximumSqlNameLength)
-			return escape(escape(name));
-
-		// truncate the part before the last _ because this is often the suffix
-		final int underscore = name.lastIndexOf('_');
-		if (truncSuffix && underscore != -1 && underscore > 0) {
-			final String usStr = name.substring(underscore);
-			if ((maximumSqlNameLength - usStr.length()) < 0) {
-				return escape(name);
-			}
-			return escape(name.substring(0, maximumSqlNameLength - usStr.length()) + usStr);
+	/**
+	 * Utilit method to truncate a column/table name. This method also repairs
+	 * the name if an efeature was inherited and really belongs to another
+	 * eclass. In this case jointables and join keys must be renamed to the new
+	 * eclass. 
+	 * TODO: handle the case that the jointable/columns were set
+	 * manually. This procedure will override them (only applies in case of
+	 * multiple inheritance/mappedsuperclass).
+	 */
+	String trunc(String truncName, boolean truncSuffix) {
+		final String useName;
+		// currentEFeature is null in the beginning
+		if (currentEFeature != null
+				&& currentEFeature.getEContainingClass() != currentEClass
+				&& getEntityName(currentEFeature.getEContainingClass(), false) != null
+				&& truncName.toUpperCase().startsWith(
+						getEntityName(currentEFeature.getEContainingClass())
+								.toUpperCase())) {
+			log.debug("Replacing name of table/joincolumn " + truncName);
+			// get rid of the first part
+			useName = getEntityName(currentEClass)
+					+ truncName.substring(getEntityName(
+							currentEFeature.getEContainingClass()).length());
+			log.debug("with " + useName + " because efeature is inherited");
+			log
+					.debug("This renaming does not work in case of manually specified joincolumn/table names and mappedsuperclass or multiple inheritance!");
+		} else {
+			useName = truncName;
 		}
 
-		return escape(name.substring(0, maximumSqlNameLength));
+		if (maximumSqlNameLength == -1)
+			return escape(escape(useName));
+		if (useName.length() < maximumSqlNameLength)
+			return escape(escape(useName));
+
+		// truncate the part before the last _ because this is often the suffix
+		final int underscore = useName.lastIndexOf('_');
+		if (truncSuffix && underscore != -1 && underscore > 0) {
+			final String usStr = useName.substring(underscore);
+			if ((maximumSqlNameLength - usStr.length()) < 0) {
+				return escape(useName);
+			}
+			return escape(useName.substring(0, maximumSqlNameLength
+					- usStr.length())
+					+ usStr);
+		}
+
+		return escape(useName.substring(0, maximumSqlNameLength));
 	}
 
 	/** Escape the column name */
@@ -402,13 +460,18 @@ public class MappingContext extends AbstractProcessingContext {
 		return "org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler";
 	}
 
-	/** There are four cases: EMF generated, EMF Dynamic, Easy EMF Generated, Easy EMF Dynamic */
+	/**
+	 * There are four cases: EMF generated, EMF Dynamic, Easy EMF Generated,
+	 * Easy EMF Dynamic
+	 */
 	public boolean isEasyEMFGenerated(EClassifier eclassifier) {
 		return EModelResolver.instance().hasImplementationClass(eclassifier);
 	}
 
 	public boolean isEasyEMFDynamic(EClassifier eclassifier) {
-		return !isEasyEMFGenerated(eclassifier) && EModelResolver.instance().isRegistered(eclassifier.getEPackage());
+		return !isEasyEMFGenerated(eclassifier)
+				&& EModelResolver.instance().isRegistered(
+						eclassifier.getEPackage());
 	}
 
 	public boolean isEMFGenerated(EClassifier eclassifier) {
@@ -431,7 +494,8 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/** Add a tuplizer element or not */
-	public void addTuplizerElement(Element entityElement, PAnnotatedEClass aclass) {
+	public void addTuplizerElement(Element entityElement,
+			PAnnotatedEClass aclass) {
 	}
 
 	/** Returns the enumusertype class name */
@@ -476,5 +540,35 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	public boolean isMapEMapAsTrueMap() {
 		return isMapEMapAsTrueMap;
+	}
+
+	/**
+	 * @return the currentEClass
+	 */
+	public EClass getCurrentEClass() {
+		return currentEClass;
+	}
+
+	/**
+	 * @param currentEClass
+	 *            the currentEClass to set
+	 */
+	public void setCurrentEClass(EClass currentEClass) {
+		this.currentEClass = currentEClass;
+	}
+
+	/**
+	 * @return the currentEFeature
+	 */
+	public EStructuralFeature getCurrentEFeature() {
+		return currentEFeature;
+	}
+
+	/**
+	 * @param currentEFeature
+	 *            the currentEFeature to set
+	 */
+	public void setCurrentEFeature(EStructuralFeature currentEFeature) {
+		this.currentEFeature = currentEFeature;
 	}
 }
