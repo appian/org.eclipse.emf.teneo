@@ -12,23 +12,22 @@
  *
  * </copyright>
  *
- * $Id: PersistableDelegateList.java,v 1.3 2007/02/08 23:14:41 mtaal Exp $
+ * $Id: PersistableDelegateList.java,v 1.4 2007/03/18 19:18:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
 
-import java.util.List;
 
 /**
- * A tag which signals that a list is either a persistable featuremap or elist.
+ * A tag which signals that a list is either a persistable map, featuremap or elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public interface PersistableDelegateList<E> {
-	/** Return the delegate list without doing a load */
-	public List<? extends E> getDelegate();
+	/** Return the delegate list/map without doing a load */
+	public Object getDelegate();
 
 	/** Returns true if the elist is loaded */
 	public boolean isLoaded();

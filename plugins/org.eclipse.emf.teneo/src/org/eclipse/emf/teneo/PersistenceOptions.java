@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.20 2007/02/11 21:54:05 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.21 2007/03/18 19:18:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public class PersistenceOptions {
 
@@ -120,8 +120,13 @@ public class PersistenceOptions {
 	public static final String ID_COLUMN_NAME = NAMING_PREFIX
 			+ "default_id_column";
 
-	/** Automatically add @id annotation to ID xsd type */
-	public static final String ID_FEATURE_AS_PRIMARY_KEY = NAMING_PREFIX + "id_feature_as_primary_key";
+	/**
+	 * Automatically add
+	 * 
+	 * @id annotation to ID xsd type
+	 */
+	public static final String ID_FEATURE_AS_PRIMARY_KEY = NAMING_PREFIX
+			+ "id_feature_as_primary_key";
 
 	/**
 	 * The name of the id feature if no feature has a
@@ -143,6 +148,15 @@ public class PersistenceOptions {
 	 */
 	public static final String IGNORE_EANNOTATIONS = MAPPING_PREFIX
 			+ "ignore_eannotations";
+
+	/**
+	 * Map als emaps as true hibernate maps, default is false. In EMF an EMap is
+	 * in fact an EList with Map entries. Originally Teneo maps this as a
+	 * hibernate list. In the new behavior hibernate can map the emap as a real
+	 * map. The default is false (to support previous behavior).
+	 */
+	public static final String EMAP_AS_TRUE_MAP = MAPPING_PREFIX
+			+ "emap_as_true_map";
 
 	/**
 	 * Truncate the column name if the length is larger than this property. In
@@ -219,7 +233,8 @@ public class PersistenceOptions {
 		props.setProperty(JOIN_TABLE_NAMING_STRATEGY, "ejb3");
 		props.setProperty(DEFAULT_TEMPORAL_VALUE, "TIMESTAMP");
 		props.setProperty(DEFAULT_ID_FEATURE_NAME, "e_id");
-        props.setProperty(ID_FEATURE_AS_PRIMARY_KEY, "true");
+		props.setProperty(ID_FEATURE_AS_PRIMARY_KEY, "true");
+		props.setProperty(EMAP_AS_TRUE_MAP, "true");
 
 		return props;
 	}
@@ -291,6 +306,14 @@ public class PersistenceOptions {
 	}
 
 	/**
+	 * Returns the value of the EMAP_AS_TRUE_MAP option, default is false
+	 */
+	public boolean isMapEMapAsTrueMap() {
+		return Boolean.valueOf(properties.getProperty(EMAP_AS_TRUE_MAP))
+				.booleanValue();
+	}
+
+	/**
 	 * Returns the value of the UseJoinTableForNonContainedAssociations option,
 	 * default is false
 	 */
@@ -310,7 +333,9 @@ public class PersistenceOptions {
 
 	/** Returns the value of the id feature as primary key */
 	public boolean isIDFeatureAsPrimaryKey() {
-		return Boolean.valueOf(properties.getProperty(ID_FEATURE_AS_PRIMARY_KEY)).booleanValue();
+		return Boolean.valueOf(
+				properties.getProperty(ID_FEATURE_AS_PRIMARY_KEY))
+				.booleanValue();
 	}
 
 	/** Returns the value of the orphan delete on containment, default is true */

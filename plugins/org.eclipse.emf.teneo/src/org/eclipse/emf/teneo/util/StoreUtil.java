@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.12 2007/02/08 23:14:41 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.13 2007/03/18 19:18:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -26,6 +26,7 @@ import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -50,7 +51,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class StoreUtil {
@@ -72,6 +73,28 @@ public class StoreUtil {
 
 	/** The Annotation source name */
 	public static final String ANNOTATION_SOURCE = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+
+	/**
+	 * Returns true if the passed EStructuralFeature represents a map. Note that
+	 * the method also handles EAttribute (returns false) for convenience
+	 * reasons.
+	 */
+	public static boolean isMap(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature instanceof EAttribute) {
+			return false;
+		}
+		final EReference eref = (EReference) eStructuralFeature;
+		return isMapEntry(eref.getEReferenceType());
+	}
+
+	/** Same method only for an eclass */
+	public static boolean isMapEntry(EClass eclass) {
+		return eclass != null && eclass.getInstanceClass() != null
+				&& Map.Entry.class.isAssignableFrom(eclass.getInstanceClass())
+				&& eclass.getEStructuralFeatures().size() == 2
+				&& eclass.getEStructuralFeature("key") != null
+				&& eclass.getEStructuralFeature("value") != null;
+	}
 
 	/** The nsprefix, eclass separator */
 	// private static final String NSPREFIX_ECLASS_SEPARATOR = ".";
@@ -105,14 +128,13 @@ public class StoreUtil {
 	 * getEStructuralFeature(String eclassURI, String featureName, EPackage[]
 	 * epackages) { EClass eclass = getEClassFromURI(eclassURI, epackages); if
 	 * (eclass == null) return null; return
-	 * eclass.getEStructuralFeature(featureName); }
-	 *  /* /** Translates an eclass uri back to an eclass / public static EClass
-	 * getEClassFromURI(String theEClassURI) { final Registry packageRegistry =
-	 * Registry.INSTANCE; final EPackage[] epacks = new
-	 * EPackage[packageRegistry.size()]; int cnt = 0; for (Iterator it =
-	 * packageRegistry.values().iterator(); it.hasNext();) { final EPackage
-	 * epack = (EPackage) it.next(); epacks[cnt++] = epack; } return
-	 * getEClassFromURI(theEClassURI, epacks); }
+	 * eclass.getEStructuralFeature(featureName); } /* /** Translates an eclass
+	 * uri back to an eclass / public static EClass getEClassFromURI(String
+	 * theEClassURI) { final Registry packageRegistry = Registry.INSTANCE; final
+	 * EPackage[] epacks = new EPackage[packageRegistry.size()]; int cnt = 0;
+	 * for (Iterator it = packageRegistry.values().iterator(); it.hasNext();) {
+	 * final EPackage epack = (EPackage) it.next(); epacks[cnt++] = epack; }
+	 * return getEClassFromURI(theEClassURI, epacks); }
 	 * 
 	 * /** Translates an eclass uri back to an eclass / public static EClass
 	 * getEClassFromURI(String theEClassURI, EPackage[] epackages,
@@ -140,8 +162,8 @@ public class StoreUtil {
 	 * eclasses.iterator(); it.hasNext();) { EClass eclass = (EClass) it.next();
 	 * eclassList.append(eclass.getEPackage().getNsURI() + "/" +
 	 * eclass.getName()); } throw new StoreException("The uri " + eClassName + "
-	 * maps to multiple eclasses: " + eclassList.toString()); }
-	 *  /* int lastIndex = eclassURI.lastIndexOf(PATH_SEPARATOR);
+	 * maps to multiple eclasses: " + eclassList.toString()); } /* int lastIndex =
+	 * eclassURI.lastIndexOf(PATH_SEPARATOR);
 	 * 
 	 * if (lastIndex == -1) { throw new StoreAnnotationsException("The uri: " +
 	 * eclassURI + " has an illegal format, it can not parsed to an eclass."); }
@@ -351,7 +373,7 @@ public class StoreUtil {
 			if (name.compareToIgnoreCase(fieldName) == 0) {
 				reserve = estruct; // use this if all else fails
 			} else if ((name + "_").compareToIgnoreCase(fieldName) == 0) { // reserved
-																			// word
+				// word
 				reserve = estruct; // use this if all else fails
 			}
 		}
