@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryPropertyHandler.java,v 1.3 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: FeatureMapEntryPropertyHandler.java,v 1.4 2007/03/18 19:19:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -22,6 +22,7 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.impl.EStructuralFeatureImpl.SimpleFeatureMapEntry;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
@@ -40,7 +41,7 @@ import org.hibernate.property.Setter;
  * itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 @SuppressWarnings("unchecked")
 public class FeatureMapEntryPropertyHandler implements Getter, Setter,
@@ -92,6 +93,9 @@ public class FeatureMapEntryPropertyHandler implements Getter, Setter,
 	 * @see org.hibernate.property.Getter#get(java.lang.Object)
 	 */
 	public Object get(Object owner) throws HibernateException {
+		if (owner instanceof SimpleFeatureMapEntry) {
+			return ((SimpleFeatureMapEntry)owner).getValue();
+		}
 		final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) owner;
 		final Object value = fme.getValue(eFeature);
 		return value;

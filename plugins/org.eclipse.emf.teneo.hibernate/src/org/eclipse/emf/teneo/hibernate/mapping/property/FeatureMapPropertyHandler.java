@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapPropertyHandler.java,v 1.4 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: FeatureMapPropertyHandler.java,v 1.5 2007/03/18 19:19:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * of a normal list.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 @SuppressWarnings("unchecked")
 public class FeatureMapPropertyHandler extends EListPropertyHandler {
@@ -43,13 +43,14 @@ public class FeatureMapPropertyHandler extends EListPropertyHandler {
 
 	/** Constructor */
 	public FeatureMapPropertyHandler(EStructuralFeature eFeature) {
-		super(eFeature, false);
+		super(eFeature, false, false);
 		AssertUtil.assertTrue("Is not a featuremap feature "
 				+ StoreUtil.toString(eFeature), FeatureMapUtil
 				.isFeatureMap(eFeature));
 	}
 
 	/** Create method can be overridden */
+	@Override
 	protected EList createPersistableList(InternalEObject target,
 			EStructuralFeature estruct, List list) {
 		return new HibernatePersistableFeatureMap(target, estruct, list);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.13 2007/03/07 23:33:55 mtaal Exp $
+ * $Id: HbUtil.java,v 1.14 2007/03/18 19:19:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -44,7 +44,7 @@ import org.hibernate.property.PropertyAccessor;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class HbUtil {
 
@@ -103,7 +103,7 @@ public class HbUtil {
 			final EReference eref = (EReference) efeature;
 			if (eref.isMany()) {
 				return ds.getHbContext().createEListAccessor(efeature,
-						extraLazy);
+						extraLazy, ds.getPersistenceOptions().isMapEMapAsTrueMap());
 			} else {
 				return ds.getHbContext().createEReferenceAccessor(eref);
 			}
@@ -111,7 +111,7 @@ public class HbUtil {
 			final EAttribute eattr = (EAttribute) efeature;
 			if (eattr.isMany()) {
 				return ds.getHbContext().createEListAccessor(efeature,
-						extraLazy);
+						extraLazy, ds.getPersistenceOptions().isMapEMapAsTrueMap());
 			} else {
 				// note also array types are going here!
 				return ds.getHbContext().createEAttributeAccessor(eattr);
