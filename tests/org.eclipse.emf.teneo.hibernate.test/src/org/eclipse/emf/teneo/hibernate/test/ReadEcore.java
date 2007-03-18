@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ReadEcore.java,v 1.5 2007/03/07 23:33:42 mtaal Exp $
+ * $Id: ReadEcore.java,v 1.6 2007/03/18 19:18:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.test;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.hibernate.HbHelper;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class ReadEcore {
 
@@ -44,18 +44,22 @@ public class ReadEcore {
 			final ResourceSet resourceSet = new ResourceSetImpl();
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new EcoreResourceFactoryImpl());
 			final ArrayList epackages = new ArrayList();
-			final Resource res = resourceSet.getResource(URI.createFileURI("/home/mtaal/mytmp/arcsolutions.ecore"), true);
-			res.load(new HashMap());
-	
-			Iterator it = res.getAllContents();
-			while (it.hasNext()) {
-				final Object obj = it.next();
-				if (obj instanceof EPackage) {
-					EPackage epack = (EPackage) obj;
-					if (EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI()) == null) {
-						EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
+			final String[] ecores = new String[]{"base.ecore", "categoryscheme.ecore", "codelist.ecore", 
+					"conceptscheme.ecore", "keyfamily.ecore", "reference.ecore", "registry.ecore"};
+			for (String ecore: ecores) {
+				final Resource res = resourceSet.getResource(URI.createFileURI("/home/mtaal/mytmp/ecorezips/" + ecore), true);
+				res.load(new HashMap());
+		
+				Iterator it = res.getAllContents();
+				while (it.hasNext()) {
+					final Object obj = it.next();
+					if (obj instanceof EPackage) {
+						EPackage epack = (EPackage) obj;
+						if (EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI()) == null) {
+							EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
+						}
+						epackages.add(epack);
 					}
-					epackages.add(epack);
 				}
 			}
 	

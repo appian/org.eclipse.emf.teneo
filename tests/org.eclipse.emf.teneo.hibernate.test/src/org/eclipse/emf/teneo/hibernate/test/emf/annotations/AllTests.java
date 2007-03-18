@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.29 2007/03/04 21:18:27 mtaal Exp $
+ * $Id: AllTests.java,v 1.30 2007/03/18 19:18:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -38,6 +38,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationTablePerC
 import org.eclipse.emf.teneo.test.emf.annotations.LazyLibraryAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LobAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ManyToManyAction;
+import org.eclipse.emf.teneo.test.emf.annotations.MapKeyAction;
 import org.eclipse.emf.teneo.test.emf.annotations.MappedSuperClassAction;
 import org.eclipse.emf.teneo.test.emf.annotations.PKeyJoinAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SecondarytableHibernateAction;
@@ -52,13 +53,15 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				HibernateTestbed.instance().getConfigurations());
+
+		suite.addTestSuite(MapKeyAction.class);
 
 		suite.addTestSuite(LazyLibraryAction.class);
 
