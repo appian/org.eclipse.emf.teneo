@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EnumTestAction.java,v 1.4 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: EnumTestAction.java,v 1.5 2007/03/18 22:28:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests nullable enum and enum as id
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class EnumTestAction extends AbstractTestAction {
 	/**
@@ -73,9 +73,9 @@ public class EnumTestAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			List list = store.getObjects(Item.class);
+			List<?> list = store.getObjects(Item.class);
 			assertEquals(2, list.size());
-			for (Iterator it = list.iterator(); it.hasNext();) {
+			for (Iterator<?> it = list.iterator(); it.hasNext();) {
 				Item item = (Item) it.next();
 				if (item.getItemType().getValue() == ItemType.PRODUCT_FAMILY) {
 					assertTrue(item.getNullableItemType() == null);
