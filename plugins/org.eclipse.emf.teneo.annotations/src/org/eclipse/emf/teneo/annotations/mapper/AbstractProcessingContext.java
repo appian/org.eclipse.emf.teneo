@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.4 2007/02/08 23:12:35 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.5 2007/03/18 22:28:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class AbstractProcessingContext {
@@ -162,10 +162,13 @@ public class AbstractProcessingContext {
 				.getAnnotatedEClass(), new ArrayList<EStructuralFeature>()));
 
 		// then remove all id features, these can not be used
+		// todo handle multiple inheritance of mappedsuperclass features
 		final ArrayList<PAnnotatedEStructuralFeature> toReturn = new ArrayList<PAnnotatedEStructuralFeature>();
 		for (EStructuralFeature esf : mappedFeatures) {
 			final PAnnotatedEStructuralFeature pef = aClass.getPaModel()
 					.getPAnnotated(esf);
+			
+			
 			if (!(pef instanceof PAnnotatedEAttribute)
 					|| ((PAnnotatedEAttribute) pef).getId() == null) {
 				toReturn.add(pef);
