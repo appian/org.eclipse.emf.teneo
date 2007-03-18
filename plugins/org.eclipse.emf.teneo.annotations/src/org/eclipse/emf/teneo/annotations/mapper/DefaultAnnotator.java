@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.32 2007/03/18 19:19:35 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.33 2007/03/18 23:11:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -84,7 +84,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  */
 public class DefaultAnnotator {
 
@@ -371,18 +371,17 @@ public class DefaultAnnotator {
 		final InheritanceType inheritanceType;
 		if (aClass.getInheritance() != null) {
 			inheritanceType = aClass.getInheritance().getStrategy();
-		} else if (isInheritanceRoot) { // use default
-			Inheritance inheritance = aFactory.createInheritance();
-			inheritance.setStrategy(optionDefaultInheritanceMapping);
-			inheritance.setEModelElement(eclass);
-			aClass.setInheritance(inheritance);
-			inheritanceType = optionDefaultInheritanceMapping;
-		} else { // try to get from the root from the inheritance tree
-			Inheritance inheritance = getInheritanceFromSupers(aClass);
-			if (inheritance == null) { // not found use default
-				inheritanceType = optionDefaultInheritanceMapping;
-			} else {
-				inheritanceType = inheritance.getStrategy();
+		} else {
+			// get the inheritance from the supers, if defined there
+			final Inheritance inheritanceFromSupers = getInheritanceFromSupers(aClass);
+			inheritanceType = inheritanceFromSupers != null ? inheritanceFromSupers.getStrategy() : 
+				optionDefaultInheritanceMapping;
+			// if this is the root then add a specific inheritance annotation
+			if (isInheritanceRoot) {
+				final Inheritance inheritance = aFactory.createInheritance();
+				inheritance.setStrategy(inheritanceType);
+				inheritance.setEModelElement(eclass);
+				aClass.setInheritance(inheritance);
 			}
 		}
 
