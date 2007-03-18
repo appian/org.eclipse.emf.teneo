@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.5 2007/02/01 12:36:23 mtaal Exp $
+ * $Id: AllTests.java,v 1.5.2.1 2007/03/18 22:34:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.issues;
@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.InheritanceAction;
 import org.eclipse.emf.teneo.test.issues.InterfaceTrueAction;
 import org.eclipse.emf.teneo.test.issues.MTMSameAction;
+import org.eclipse.emf.teneo.test.issues.MultipleInheritanceAction;
 import org.eclipse.emf.teneo.test.issues.ResourceAction;
 import org.eclipse.emf.teneo.test.issues.SimplenmAction;
 import org.eclipse.emf.teneo.test.issues.TopClassesAction;
@@ -35,13 +36,15 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.5.2.1 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed.instance()
 				.getConfigurations());
+		suite.addTestSuite(MultipleInheritanceAction.class);
+
 		suite.addTestSuite(ResourceAction.class);
 
 		suite.addTestSuite(MTMSameAction.class);
