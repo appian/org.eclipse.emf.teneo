@@ -11,7 +11,7 @@
  *   L.M. Fridael
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.6 2007/03/04 21:18:27 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.7 2007/03/20 23:34:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test
  * 
  * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class UserTypeAction extends AbstractTestAction {
 
@@ -79,7 +79,7 @@ public class UserTypeAction extends AbstractTestAction {
 
 	private void testPerson(TestStore store) {
 		store.beginTransaction();
-		List results = store.query("FROM Person");
+		List results = store.query("select p from Person p");
 		assertEquals(1, results.size());
 		Person person = (Person) results.get(0);
 		assertEquals(NAME, person.getName());
@@ -126,7 +126,7 @@ public class UserTypeAction extends AbstractTestAction {
 	
 	private void removePerson(TestStore store) {
 		store.beginTransaction();
-		List results = store.query("FROM Person");
+		List results = store.query("select p from Person p");
 		assertEquals(1, results.size());
 		Person person = (Person) results.get(0);
 		store.deleteObject(person);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.30 2007/03/18 19:18:50 mtaal Exp $
+ * $Id: AllTests.java,v 1.31 2007/03/20 23:34:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -53,7 +53,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 public class AllTests {
 
@@ -61,17 +61,25 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				HibernateTestbed.instance().getConfigurations());
 
-		suite.addTestSuite(MapKeyAction.class);
+		suite.addTestSuite(EmbeddedAction.class);
+
+		suite.addTestSuite(IdBagAction.class);
 
 		suite.addTestSuite(LazyLibraryAction.class);
 
-		suite.addTestSuite(UserTypeAction.class);
+		suite.addTestSuite(CascadeNotallAction.class);
 
 		suite.addTestSuite(SetAction.class);
-		
-		suite.addTestSuite(SetNMAction.class);
+
+		suite.addTestSuite(AttributeOverridesAction.class);
 
 		suite.addTestSuite(InheritanceAnnotationAction.class);
+
+		suite.addTestSuite(MapKeyAction.class);
+
+		suite.addTestSuite(UserTypeAction.class);
+		
+		suite.addTestSuite(SetNMAction.class);
 
 		suite.addTestSuite(InheritanceAnnotationTablePerClassAction.class);
 		
@@ -79,13 +87,9 @@ public class AllTests {
 
 		suite.addTestSuite(MappedSuperClassAction.class);
 
-		suite.addTestSuite(CascadeNotallAction.class);
-
 		suite.addTestSuite(ManyToManyAction.class);
 
 		suite.addTestSuite(ToOneAction.class);
-
-		suite.addTestSuite(IdBagAction.class);
 
 		suite.addTestSuite(HbIdAction.class);
 
@@ -108,13 +112,10 @@ public class AllTests {
 		suite.addTestSuite(CompositeIdAction.class);
 		suite.addTestSuite(PKeyJoinAction.class);
 
-		suite.addTestSuite(EmbeddedAction.class);
-
 		suite.addTestSuite(SetResourceAction.class);
-		suite.addTestSuite(AttributeOverridesAction.class);
 		suite.addTestSuite(LobAction.class);
 		suite.addTestSuite(EmbeddedIdAction.class);
-		
+
 		return suite;
 	}
 

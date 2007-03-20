@@ -11,7 +11,7 @@
  *   L.M. Fridael
  * </copyright>
  *
- * $Id: DetachFromSessionAction.java,v 1.2 2007/02/01 12:36:24 mtaal Exp $
+ * $Id: DetachFromSessionAction.java,v 1.3 2007/03/20 23:34:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests detach and attachment to session
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class DetachFromSessionAction extends AbstractTestAction {
 
@@ -56,7 +56,7 @@ public class DetachFromSessionAction extends AbstractTestAction {
 		
 		hts.beginTransaction();
 		w.setName("m2");
-		hts.getSession().update(w);
+		hts.getSessionWrapper().saveOrUpdate(w);
 		hts.commitTransaction();
 		
 		hts.refresh();

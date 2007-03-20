@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.34 2007/03/18 19:18:50 mtaal Exp $
+ * $Id: AllTests.java,v 1.35 2007/03/20 23:34:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -30,6 +30,7 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryColLengthAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryJoinTableNamingAction;
+import org.eclipse.emf.teneo.test.emf.sample.LibraryListAsBagAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryQualifyActionHB;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
@@ -46,7 +47,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
 public class AllTests {
 
@@ -55,6 +56,12 @@ public class AllTests {
 				.getConfigurations());
 //		suite.addTestSuite(GMFNotationAction.class);
 //		suite.addTestSuite(LobjAction.class);
+
+		suite.addTestSuite(LibraryListAsBagAction.class);
+
+		suite.addTestSuite(CapaTest.class);
+
+		suite.addTestSuite(LibraryNonResolvingAction.class);
 
 		suite.addTestSuite(LibraryAction.class);
 
@@ -77,7 +84,6 @@ public class AllTests {
 		suite.addTestSuite(MindMapAction.class);
 		
 		suite.addTestSuite(LibraryResourceAction.class);
-		suite.addTestSuite(LibraryNonResolvingAction.class);
 
 		suite.addTestSuite(ExtendedPO2Test.class);
 		suite.addTestSuite(LibrarySerializationAction.class);
@@ -87,8 +93,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryJoinTableNamingAction.class);
 
 		//	suite.addTestSuite(ExtLibraryAction.class);
-		suite.addTestSuite(CapaTest.class);
-
 		suite.addTestSuite(DetachFromSessionAction.class);
 
 		suite.addTestSuite(SunBooksAction.class);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySessionControllerAction.java,v 1.4 2007/02/01 12:36:24 mtaal Exp $
+ * $Id: LibrarySessionControllerAction.java,v 1.5 2007/03/20 23:34:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class LibrarySessionControllerAction extends AbstractTestAction {
 	/**
@@ -71,10 +71,10 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 			{
 				HibernateResource res1 = (HibernateResource)getResource(resourceSet, null);
 				HibernateResource res2 = (HibernateResource)getResource(resourceSet, null);
-				sc.getSession().beginTransaction();
+				sc.getSessionWrapper().beginTransaction();
 				res1.load(null);
 				res2.load(null);
-				sc.getSession().getTransaction().commit();
+				sc.getSessionWrapper().commitTransaction();
 
 				final Writer writer = factory.createWriter();
 				writer.setName("JRR Tolkien");
@@ -102,14 +102,14 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 				res1.getContents().add(book);
 				res1.getContents().add(book2);
 
-				sc.getSession().beginTransaction();
+				sc.getSessionWrapper().beginTransaction();
 				res1.save(null);
 				res2.save(null);
 				res1.save(null);
 				res1.unload();
 				res2.unload();
-				sc.getSession().getTransaction().commit();
-				sc.getSession().clear();
+				sc.getSessionWrapper().commitTransaction();
+				sc.getSessionWrapper().clear();
 			}
 			SessionController.deRegisterSessionController("testsc");
 
@@ -119,12 +119,12 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 
 			// walk through the structure starting from the library
 			{
-				HibernateResource res1 = (HibernateResource)getResource(resourceSet, "query1=from Book");
-				HibernateResource res2 = (HibernateResource)getResource(resourceSet, "query1=from Writer");
-				sc.getSession().beginTransaction();
+				HibernateResource res1 = (HibernateResource)getResource(resourceSet, "query1=select b from Book b");
+				HibernateResource res2 = (HibernateResource)getResource(resourceSet, "query1=select w from Writer w");
+				sc.getSessionWrapper().beginTransaction();
 				res1.load(Collections.EMPTY_MAP);
 				res2.load(Collections.EMPTY_MAP);
-				sc.getSession().getTransaction().commit();
+				sc.getSessionWrapper().commitTransaction();
 
 				int cnt = 0;
 				final ArrayList tempList = new ArrayList(res1.getContents());
@@ -139,10 +139,10 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 				}
 				assertEquals(2, cnt);
 				//assertEquals(1, res2.getContents().size());
-				sc.getSession().beginTransaction();
+				sc.getSessionWrapper().beginTransaction();
 				res1.save(Collections.EMPTY_MAP);
 				res2.save(Collections.EMPTY_MAP);
-				sc.getSession().getTransaction().commit();				
+				sc.getSessionWrapper().commitTransaction();				
 				res1.unload();
 				res2.unload();
 			}
