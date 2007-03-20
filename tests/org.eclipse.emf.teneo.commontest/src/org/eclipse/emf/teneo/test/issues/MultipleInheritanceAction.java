@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MultipleInheritanceAction.java,v 1.1 2007/03/18 22:28:04 mtaal Exp $
+ * $Id: MultipleInheritanceAction.java,v 1.2 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -33,7 +33,7 @@ import testinheritance.TestinheritancePackage;
  * Tests nullable enum and enum as id
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class MultipleInheritanceAction extends AbstractTestAction {
 	/**
@@ -47,7 +47,6 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		try {
 			Resource res = null;
 			try {

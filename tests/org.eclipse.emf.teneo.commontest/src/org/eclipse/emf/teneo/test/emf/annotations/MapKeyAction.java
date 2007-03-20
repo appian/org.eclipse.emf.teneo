@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapKeyAction.java,v 1.1 2007/03/18 19:18:27 mtaal Exp $
+ * $Id: MapKeyAction.java,v 1.2 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class MapKeyAction extends AbstractTestAction {
 	/**
@@ -61,7 +61,6 @@ public class MapKeyAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	public void doAction(TestStore store) {
-//		store.disableDrop();
 		{
 			store.beginTransaction();
 			store.store(createTestSet(""));

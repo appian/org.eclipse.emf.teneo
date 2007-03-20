@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GMFNotationAction.java,v 1.4 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: GMFNotationAction.java,v 1.5 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -39,7 +39,7 @@ import org.example.mindmap.MindmapPackage;
  * Tests persisting of gmf diagram.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
+ * @version $Revision: 1.5 $ 
 */
 public class GMFNotationAction extends AbstractTestAction {
 	
@@ -59,8 +59,6 @@ public class GMFNotationAction extends AbstractTestAction {
 
 	/** Reads the library model and persists it. */
 	public void doAction(TestStore store) {
-		store.disableDrop();
-		
 		final URL mindmapURL = getClass().getResource("default.mindmap");
 		final URI mindmapURI = URI.createURI(mindmapURL.toString());
 		final URL diagramURL = getClass().getResource("default.mmd");

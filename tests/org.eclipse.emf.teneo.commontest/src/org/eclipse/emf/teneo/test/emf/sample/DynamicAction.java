@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicAction.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: DynamicAction.java,v 1.4 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -183,12 +183,13 @@ public class DynamicAction extends AbstractTestAction {
 			employee3.setName("employee3");
 			employee3.eSet(employeeManager, new Boolean(false));
 			store.store(employee3);
+			store.commitTransaction();
 		}
 		
 		// read them all (incl. the person), create a department and add the managers 
 		{
 			store.beginTransaction();
-			List employees = store.query("from Employee");
+			List employees = store.query("select e from Employee e");
 			assertEquals(3, employees.size());
 			for (Iterator it = employees.iterator(); it.hasNext();) {
 				EObject eobject = (EObject)it.next();
@@ -214,7 +215,7 @@ public class DynamicAction extends AbstractTestAction {
 		// do a polymorphic query 
 		{
 			store.beginTransaction();
-			List employees = store.query("from Person");
+			List employees = store.query("select p from Person p");
 			assertEquals(4, employees.size());
 			int cntEmployee = 0;
 			for (Iterator it = employees.iterator(); it.hasNext();) {
@@ -231,7 +232,7 @@ public class DynamicAction extends AbstractTestAction {
 		// now delete the department, there should now be only one employee left
 		{
 			store.beginTransaction();
-			List list = store.query("from Department");
+			List list = store.query("select d from Department d");
 			assertEquals(1, list.size());
 			EObject department = (EObject)list.get(0);
 			List managers = (List)department.eGet(departmentManager);
@@ -246,7 +247,7 @@ public class DynamicAction extends AbstractTestAction {
 		store.checkNumber(Person.class, 2);
 		{
 			store.beginTransaction();
-			List list = store.query("From Employee");
+			List list = store.query("select e from Employee e");
 			assertEquals(1, list.size());
 			Person person = (Person)list.get(0);
 			assertTrue(person.eClass() == employeeClass);

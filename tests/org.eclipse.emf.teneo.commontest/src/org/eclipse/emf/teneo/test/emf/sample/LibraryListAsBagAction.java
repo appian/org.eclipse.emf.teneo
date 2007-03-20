@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryQualifyActionHB.java,v 1.4 2007/03/20 23:33:38 mtaal Exp $
+ * $Id: LibraryListAsBagAction.java,v 1.1 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -29,53 +29,48 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests setting of qualified enames
- *  
+ * Tests the library example of emf/xsd.
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
-*/
-public class LibraryQualifyActionHB extends AbstractTestAction 
-{
+ * @version $Revision: 1.1 $
+ */
+public class LibraryListAsBagAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
-	public LibraryQualifyActionHB()  
-	{
+	public LibraryListAsBagAction() {
 		super(LibraryPackage.eINSTANCE);
-		
 	}
-	
-	/** 
-	 * Can be overridden by subclass returns properties which control the or layer.
-	 * Such as setting of eager loading. 
-	 */
+
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.put(PersistenceOptions.QUALIFY_ENTITY_NAME, PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
+		props.setProperty(PersistenceOptions.ALWAYS_MAP_LIST_AS_BAG, "true");
 		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */
-	public void doAction(TestStore store)
-	{
+	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
+		store.disableDrop();
 		// create a book, writer and library
 		{
 			store.beginTransaction();
 
 			final Writer writer = factory.createWriter();
-			writer.setName("JRR Tolkien");
+			writer.setName("writer");
 
 			final Book book = factory.createBook();
+
 			book.setAuthor(writer);
-			book.setPages(5);
+			book.setPages(1);
 			book.setTitle("The Hobbit");
 			book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 
 			final Book book2 = factory.createBook();
 			book2.setAuthor(writer);
-			book2.setPages(5);
+			book2.setPages(2);
 			book2.setTitle("The fellowship of the ring");
 			book2.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 
@@ -87,19 +82,25 @@ public class LibraryQualifyActionHB extends AbstractTestAction
 			store.store(library);
 
 			store.commitTransaction();
-			assertEquals(2, writer.getBooks().size());
 		}
-
-		// now test some qualified queries
+		
+		// move the books arround
 		{
 			store.beginTransaction();
-			Library lib = (Library)store.query("select l from " + LibraryPackage.eNS_PREFIX + ".Library l").get(0);
-			assertTrue(lib != null);
-			Writer writ = (Writer)store.query("select w from " + LibraryPackage.eNS_PREFIX + ".Writer w").get(0);
-			assertTrue(writ != null);
-			Book bk = (Book)store.query("select b from " + LibraryPackage.eNS_PREFIX + ".Book b").get(0);
-			assertTrue(bk != null);
+			final Library lib = (Library) store.getObject(Library.class);
+			assertEquals(1, ((Book)lib.getBooks().get(0)).getPages());
+			assertEquals(2, ((Book)lib.getBooks().get(1)).getPages());
+			lib.getBooks().move(0, 1); // moved second book to first location
 			store.commitTransaction();
 		}
-	}	
+		
+		// check if it succeeded, should not
+		{
+			store.beginTransaction();
+			final Library lib = (Library) store.getObject(Library.class);
+			assertEquals(1, ((Book)lib.getBooks().get(0)).getPages());
+			assertEquals(2, ((Book)lib.getBooks().get(1)).getPages());
+			store.commitTransaction();
+		}
+	}
 }

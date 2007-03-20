@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ResourceAction.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: ResourceAction.java,v 1.4 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests setting resource when a single ref. relation is loaded.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class ResourceAction extends AbstractTestAction {
 
@@ -74,7 +74,7 @@ public class ResourceAction extends AbstractTestAction {
 
 		// now use a resource to read!
 		try {
-			final Resource res = store.getResource("query1=FROM Person");
+			final Resource res = store.getResource("query1=select p from Person p");
 			res.load(Collections.EMPTY_MAP);
 			Iterator it = res.getContents().iterator();
 			while (it.hasNext()) {

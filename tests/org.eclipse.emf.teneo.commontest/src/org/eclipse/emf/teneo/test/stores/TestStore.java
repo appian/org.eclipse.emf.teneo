@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TestStore.java,v 1.5 2007/03/05 20:59:07 mtaal Exp $
+ * $Id: TestStore.java,v 1.6 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * be reused.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public interface TestStore {
 
@@ -120,7 +120,7 @@ public interface TestStore {
 	public void refresh(Object obj);
 
 	/** Check inheritance strategy */
-	public boolean isInheritanceStrategy(String name, InheritanceType strategy);
+	public boolean isInheritanceStrategy(Class<?> cls, InheritanceType strategy);
 
 	/** Gets a database connection using the adapters connection info */
 	public abstract Connection getConnection();

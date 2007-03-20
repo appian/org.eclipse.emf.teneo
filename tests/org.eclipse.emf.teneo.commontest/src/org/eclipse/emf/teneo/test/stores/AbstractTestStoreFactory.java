@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestStoreFactory.java,v 1.5 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: AbstractTestStoreFactory.java,v 1.6 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.conf.TestConfiguration;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public abstract class AbstractTestStoreFactory {
 
@@ -75,7 +75,7 @@ public abstract class AbstractTestStoreFactory {
 		// TODO: mappingfile is null for hibernate but set for jpox make this nicer than
 		// passing null value around
 		return createStoreInstance((TestDatabaseAdapter) cfg.getDbAdapter(), usedEPackages, 
-				mappingFile, props, cfg.getMappingStrategy());
+				mappingFile, props, cfg.getMappingStrategy(), cfg.isEjb3());
 	}
 
 	/** Ensures that the run directory exists, this directory contains the mapping files */
@@ -87,5 +87,5 @@ public abstract class AbstractTestStoreFactory {
 
 	/** Creates the actual specific test store */
 	protected abstract TestStore createStoreInstance(TestDatabaseAdapter adapter, EPackage[] epackages, String mappingFileLocation,
-			Properties props, InheritanceType inheritanceType);
+			Properties props, InheritanceType inheritanceType, boolean ejb3);
 }

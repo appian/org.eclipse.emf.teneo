@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: TestConfigurations.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: TestConfigurations.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestDatabaseAdapter;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class TestConfigurations {
 
@@ -79,7 +79,8 @@ public class TestConfigurations {
 			TestDatabaseAdapter dbAdapter = (TestDatabaseAdapter) dbAdapters.get(((String) cfgValues.get("dbadapter")).trim());
 			InheritanceType mapStrategy = parseStrategy((String) cfgValues.get("mapstrategy"));
 			boolean optimistic = Boolean.valueOf((String) cfgValues.get("optimistic")).booleanValue();
-			addConfiguration(new TestConfiguration(cfgName, dbAdapter, mapStrategy, optimistic));
+			boolean ejb3 = cfgValues.get("ejb3") != null ? Boolean.valueOf((String) cfgValues.get("ejb3")).booleanValue() : false;
+			addConfiguration(new TestConfiguration(cfgName, dbAdapter, mapStrategy, optimistic, ejb3));
 		}
 	}
 

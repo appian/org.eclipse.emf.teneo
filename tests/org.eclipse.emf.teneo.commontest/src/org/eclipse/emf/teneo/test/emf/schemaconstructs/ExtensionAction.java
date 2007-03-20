@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtensionAction.java,v 1.3 2007/02/05 16:13:39 mtaal Exp $
+ * $Id: ExtensionAction.java,v 1.4 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  *	- nillable of string (district) and integer (zip)
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
+ * @version $Revision: 1.4 $ 
 */
 public class ExtensionAction extends AbstractTestAction 
 {
@@ -64,8 +64,6 @@ public class ExtensionAction extends AbstractTestAction
 	/** Creates simple types and tests against */
 	public void doAction(TestStore store)
 	{
-		store.disableDrop();
-		
 		// test a simple type
         final ExtensionFactory factory = ExtensionFactory.eINSTANCE;
     	{

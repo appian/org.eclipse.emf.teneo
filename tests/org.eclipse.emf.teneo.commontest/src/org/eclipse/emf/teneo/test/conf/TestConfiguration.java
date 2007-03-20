@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: TestConfiguration.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: TestConfiguration.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.test.stores.TestDatabaseAdapter;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class TestConfiguration {
 
@@ -37,12 +37,15 @@ public class TestConfiguration {
 
 	private final boolean optimistic;
 
+	private final boolean ejb3;
+	
 	/** Constructor */
-	public TestConfiguration(String name, TestDatabaseAdapter dbAdapter, InheritanceType mappingStrategy, boolean optimistic) {
+	public TestConfiguration(String name, TestDatabaseAdapter dbAdapter, InheritanceType mappingStrategy, boolean optimistic, boolean ejb3) {
 		this.name = name;
 		this.dbAdapter = dbAdapter;
 		this.mappingStrategy = mappingStrategy;
 		this.optimistic = optimistic;
+		this.ejb3 = ejb3;
 	}
 
 	/** ToString for logging */
@@ -64,7 +67,7 @@ public class TestConfiguration {
 		if (other instanceof TestConfiguration) {
 			TestConfiguration otherCfg = (TestConfiguration) other;
 			return otherCfg.getDbAdapter() == getDbAdapter() && otherCfg.getMappingStrategy() == getMappingStrategy()
-					&& otherCfg.isOptimistic() == isOptimistic();
+					&& otherCfg.isOptimistic() == isOptimistic() && otherCfg.isEjb3() == isEjb3();
 		}
 		;
 		return false;
@@ -88,6 +91,13 @@ public class TestConfiguration {
 	/** Test optimistic locking */
 	public boolean isOptimistic() {
 		return optimistic;
+	}
+
+	/**
+	 * @return the ejb3
+	 */
+	public boolean isEjb3() {
+		return ejb3;
 	}
 
 }

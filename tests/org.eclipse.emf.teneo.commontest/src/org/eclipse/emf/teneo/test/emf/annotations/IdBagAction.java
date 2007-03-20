@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdBagAction.java,v 1.4 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: IdBagAction.java,v 1.5 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -56,7 +56,7 @@ public class IdBagAction extends AbstractTestAction {
 	}
 
 	private void testUser(TestStore store) {
-		List results = store.query("FROM User");
+		List results = store.query("select u from User u");
 		assertEquals(1, results.size());
 		User user = (User) results.get(0);
 		assertEquals(NAME, user.getName());
@@ -68,18 +68,44 @@ public class IdBagAction extends AbstractTestAction {
 	private void testPrimaryKey(TestStore store) {
 		// Verify that we have a primary key "ID" in the "roles" table.
 		ResultSet resultSet = null;
+		ResultSet resultSet2 = null;
 		try {
 			final DatabaseMetaData metaData = store.getConnection().getMetaData();
-			resultSet = metaData.getPrimaryKeys(null, null, "roles");
-			assertTrue("No primary key found for \"roles\" table.", resultSet.next());
-			assertTrue("Primary key column should be named \"ID\"", "ID".equalsIgnoreCase(resultSet.getString("COLUMN_NAME")));
-			assertFalse("Found more than one primary key.", resultSet.next());
+			
+			// apparently hibernate core creates different tables than running with 
+			// hibernate entitymanager, need to check!
+			boolean rsTrue = false;
+			try {
+				resultSet = metaData.getPrimaryKeys(null, null, "user_roles");
+				rsTrue = resultSet.next();
+			} catch (SQLException e) {
+				// ignore, hope for the next one
+			}
+			boolean rs2True = false;
+			try {
+				resultSet2 = metaData.getPrimaryKeys(null, null, "roles");
+				rs2True = resultSet2.next();
+			} catch (SQLException e) {
+				assertTrue(rsTrue);
+				// ignore hope for the first one
+			}
+			assertTrue("No primary key found for \"roles\" table.", rsTrue || rs2True);
+			if (rsTrue) {
+				assertTrue("Primary key column should be named \"ID\"", "ID".equalsIgnoreCase(resultSet.getString("COLUMN_NAME")));
+				assertFalse("Found more than one primary key.", resultSet.next());
+			} else {
+				assertTrue("Primary key column should be named \"ID\"", "ID".equalsIgnoreCase(resultSet2.getString("COLUMN_NAME")));
+				assertFalse("Found more than one primary key.", resultSet2.next());
+			}
 		} catch (SQLException e) {
 			assertFalse(e.getMessage(), true);
 		} finally {
 			try {
 				if (resultSet != null) {
 					resultSet.close();
+					if (resultSet2 != null) {
+						resultSet2.close();
+					}
 				}
 			} catch (SQLException e) {
 			}

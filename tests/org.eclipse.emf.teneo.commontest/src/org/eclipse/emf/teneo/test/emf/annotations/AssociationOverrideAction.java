@@ -12,7 +12,7 @@
  *   Laurens Fridael
  * </copyright>
  *
- * $Id: AssociationOverrideAction.java,v 1.5 2007/02/05 13:04:48 mtaal Exp $
+ * $Id: AssociationOverrideAction.java,v 1.6 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -105,7 +105,7 @@ public class AssociationOverrideAction extends AbstractTestAction {
 
 	private void testStudent(TestStore store) {
 		store.beginTransaction();
-		List results = store.query("FROM Student");
+		List results = store.query("select s from Student s");
 		assertEquals(1, results.size());
 		Student student = (Student) results.get(0);
 		assertEquals(STUDENT_NAME, student.getName());
@@ -116,7 +116,7 @@ public class AssociationOverrideAction extends AbstractTestAction {
 
 	private void testEmployee(TestStore store) {
 		store.beginTransaction();
-		List results = store.query("FROM Employee");
+		List results = store.query("select e from Employee e");
 		assertEquals(1, results.size());
 		Employee employee = (Employee) results.get(0);
 		assertEquals(EMPLOYEE_NAME, employee.getName());

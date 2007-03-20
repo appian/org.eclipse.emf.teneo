@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TestDatabaseAdapter.java,v 1.2 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: TestDatabaseAdapter.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -23,7 +23,7 @@ import java.sql.Connection;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public interface TestDatabaseAdapter {
 
@@ -33,7 +33,7 @@ public interface TestDatabaseAdapter {
 
 	/** Returns true if optimistic transactions should be enabled */
 	public abstract boolean isOptimistic();
-
+	
 	/**
 	 * @return Returns the dbDriver.
 	 */

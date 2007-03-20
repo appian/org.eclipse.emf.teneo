@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SchoolLibraryAction.java,v 1.9 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: SchoolLibraryAction.java,v 1.10 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the schoollibrary example which has some more inheritance structures.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class SchoolLibraryAction extends AbstractTestAction {
 
@@ -194,7 +194,7 @@ public class SchoolLibraryAction extends AbstractTestAction {
 			Resource res = store.getResource();
 			res.load(Collections.EMPTY_MAP);
 			// 1 in case multiple inheritance is not supported
-			assertTrue(1 == res.getContents().size());
+			assertEquals(1, res.getContents().size());
 			final Library lib = (Library) res.getContents().get(0);
 			assertEquals(2, lib.getBooks().size());
 			res.unload();

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InheritanceAnnotationAction.java,v 1.5 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: InheritanceAnnotationAction.java,v 1.6 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations to direct the inheritance mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ 
+ * @version $Revision: 1.6 $ 
 */
 public class InheritanceAnnotationAction extends AbstractTestAction 
 {
@@ -148,10 +148,10 @@ public class InheritanceAnnotationAction extends AbstractTestAction
 	    	
 	    	// eventhough at global level one inheritance strategy is used this should differ for individual 
 	    	// class hierarchies as enforced by the annotations
-	    	assertTrue(store.isInheritanceStrategy(InternationalPriceImpl.class.getName(), InheritanceType.SINGLE_TABLE_LITERAL));
-	    	assertTrue(store.isInheritanceStrategy(UKAddressImpl.class.getName(), InheritanceType.JOINED_LITERAL));
-	    	assertTrue(store.isInheritanceStrategy(USAddressImpl.class.getName(), InheritanceType.JOINED_LITERAL));
-	    	assertTrue(store.isInheritanceStrategy(DistrictUKAddressImpl.class.getName(), InheritanceType.JOINED_LITERAL));
+	    	assertTrue(store.isInheritanceStrategy(InternationalPriceImpl.class, InheritanceType.SINGLE_TABLE_LITERAL));
+	    	assertTrue(store.isInheritanceStrategy(UKAddressImpl.class, InheritanceType.JOINED_LITERAL));
+	    	assertTrue(store.isInheritanceStrategy(USAddressImpl.class, InheritanceType.JOINED_LITERAL));
+	    	assertTrue(store.isInheritanceStrategy(DistrictUKAddressImpl.class, InheritanceType.JOINED_LITERAL));
 	    	
 	    	// do some sql queries to check if the discriminator has landed 
     		Connection conn = null;

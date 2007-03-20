@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CascadeNotallAction.java,v 1.6 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: CascadeNotallAction.java,v 1.7 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example without orphan delete or dependent element
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class CascadeNotallAction extends AbstractTestAction {
 	/**
@@ -171,6 +171,12 @@ public class CascadeNotallAction extends AbstractTestAction {
 			Library newLib = factory.createLibrary();
 			newLib.setName("tstlib");
 			res.getContents().add(newLib);
+			
+			// this save was required to get the entitymanager working
+			// because if not there then newLib would not have been saved and 
+			// the persistent writer would through its econtainer relation point
+			// to a non-saved newLib resulting in transient errors.
+			res.save(null);
 			lib.getWriters().remove(writer);
 			assertTrue(lib.getBooks().size() > 0); // force load of books to prevent dangling error in jpox
 			newLib.getWriters().add(writer);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InheritanceAnnotationTablePerClassAction.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: InheritanceAnnotationTablePerClassAction.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations to direct the inheritance mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction {
 
@@ -66,10 +66,10 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 
 	/** Creates simple types and tests against */
 	public void doAction(TestStore store) {
-		if (store.isInheritanceStrategy(InternationalPriceImpl.class.getName(),
+		if (store.isInheritanceStrategy(InternationalPriceImpl.class,
 				InheritanceType.SINGLE_TABLE_LITERAL)) {
 			ignored_tests++;
-			assertTrue(ignored_tests < 3);
+			assertTrue(ignored_tests < 4);
 			return; // not the correct test, should only run xml tests, need to change the whole test framework to do this
 		}
 		
@@ -163,11 +163,11 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 
 		// eventhough at global level one inheritance strategy is used this should differ for individual
 		// class hierarchies as enforced by the annotations
-		assertTrue(store.isInheritanceStrategy(InternationalPriceImpl.class.getName(),
+		assertTrue(store.isInheritanceStrategy(InternationalPriceImpl.class,
 				InheritanceType.TABLE_PER_CLASS_LITERAL));
-		assertTrue(store.isInheritanceStrategy(UKAddressImpl.class.getName(), InheritanceType.JOINED_LITERAL));
-		assertTrue(store.isInheritanceStrategy(USAddressImpl.class.getName(), InheritanceType.JOINED_LITERAL));
-		assertTrue(store.isInheritanceStrategy(DistrictUKAddressImpl.class.getName(), InheritanceType.JOINED_LITERAL));
+		assertTrue(store.isInheritanceStrategy(UKAddressImpl.class, InheritanceType.JOINED_LITERAL));
+		assertTrue(store.isInheritanceStrategy(USAddressImpl.class, InheritanceType.JOINED_LITERAL));
+		assertTrue(store.isInheritanceStrategy(DistrictUKAddressImpl.class, InheritanceType.JOINED_LITERAL));
     	
     	// do some sql queries to check if the name column is present in the subclass 
 		Connection conn = null;

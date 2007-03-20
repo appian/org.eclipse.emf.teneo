@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdAction.java,v 1.3 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: IdAction.java,v 1.4 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
 */
 public class IdAction extends AbstractTestAction 
 {
@@ -54,7 +54,6 @@ public class IdAction extends AbstractTestAction
 	public void doAction(TestStore store)
 	{
 		final IdFactory factory = IdFactory.eINSTANCE;
-		store.disableDrop();
 	    	{
 	    		store.beginTransaction();
 	    		for (int i = 0; i < NO_TEST_OBJECTS; i++) {

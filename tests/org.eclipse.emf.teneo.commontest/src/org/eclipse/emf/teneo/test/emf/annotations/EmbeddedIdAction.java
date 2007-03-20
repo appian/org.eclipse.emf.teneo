@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedIdAction.java,v 1.2 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: EmbeddedIdAction.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -56,7 +56,7 @@ public class EmbeddedIdAction extends AbstractTestAction {
 	
 	private void testPerson(TestStore store) {
 		store.beginTransaction();
-		List persons = store.query("FROM Person");
+		List persons = store.query("select p from Person p");
 		assertEquals(1, persons.size());
 		Person person = (Person) persons.get(0);
 		assertEquals(FIRST_NAME, person.getName().getFirstName());
