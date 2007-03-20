@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SessionController.java,v 1.4 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: SessionController.java,v 1.5 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -22,6 +22,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.hibernate.Session;
 
 /**
@@ -34,7 +35,7 @@ import org.hibernate.Session;
  * implementation of the session controller.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class SessionController {
@@ -73,8 +74,8 @@ public class SessionController {
 		return (SessionController) sessionControllers.get(name);
 	}
 
-	/** The local session */
-	protected Session session;
+	/** The local session wrapper */
+	protected SessionWrapper sessionWrapper;
 
 	/** The hb datastore from which the sessions are retrieved */
 	protected HbDataStore hbDataStore;
@@ -95,12 +96,19 @@ public class SessionController {
 	}
 
 	/**
+	 * Note fails when using ejb data store.
 	 * @return the session
 	 */
+	@Deprecated
 	public Session getSession() {
-		if (session == null) {
-			session = hbDataStore.getSessionFactory().openSession();
+		return (Session)getSessionWrapper().getSession();
+	}
+	
+	/** Return the session wrapper */
+	public SessionWrapper getSessionWrapper() {
+		if (sessionWrapper == null) {
+			sessionWrapper = hbDataStore.createSessionWrapper();
 		}
-		return session;
+		return sessionWrapper;
 	}
 }

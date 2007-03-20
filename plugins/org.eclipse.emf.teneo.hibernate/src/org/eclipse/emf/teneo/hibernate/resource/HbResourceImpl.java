@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbResourceImpl.java,v 1.4 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: HbResourceImpl.java,v 1.5 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -35,6 +35,7 @@ import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
+import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.hibernate.FlushMode;
@@ -58,7 +59,7 @@ import org.hibernate.Transaction;
  * the uri can also be used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HbResourceImpl extends StoreResource implements HbResource {
@@ -153,6 +154,16 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 		}
 
 		return session;
+	}
+
+	/** Return the sessionwrapper */
+	public SessionWrapper getSessionWrapper() {
+		return null;
+	}
+
+	/** Returns the sessionwrapper to the resource so that it can do clean up (or not) */
+	public void returnSessionWrapper(SessionWrapper sessionWrapper) {
+		
 	}
 
 	/** Returns the session, closes it */

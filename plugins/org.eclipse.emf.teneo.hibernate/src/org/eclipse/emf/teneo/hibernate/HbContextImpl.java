@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbContextImpl.java,v 1.5 2007/03/18 19:19:47 mtaal Exp $
+ * $Id: HbContextImpl.java,v 1.6 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -42,7 +42,7 @@ import org.hibernate.property.PropertyAccessor;
  * be overridden to instantiate your own tuplizers, accessors etc.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class HbContextImpl implements HbContext {
 
@@ -165,14 +165,5 @@ public class HbContextImpl implements HbContext {
 	 */
 	public PropertyAccessor createEAttributeAccessor(EAttribute eAttribute) {
 		return new EAttributePropertyHandler(eAttribute);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createConfiguration()
-	 */
-	public Configuration createConfiguration() {
-		return new Configuration();
 	}
 }

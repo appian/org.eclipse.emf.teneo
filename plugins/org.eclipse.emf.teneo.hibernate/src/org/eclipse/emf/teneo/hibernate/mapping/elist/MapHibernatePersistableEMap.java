@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapHibernatePersistableEMap.java,v 1.1 2007/03/18 19:19:47 mtaal Exp $
+ * $Id: MapHibernatePersistableEMap.java,v 1.2 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -27,14 +27,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.MapPersistableEMap;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentMap;
-import org.hibernate.impl.SessionImpl;
 
 /**
  * Implements the hibernate persistable emap using a real map mapping (instead of the previous list
@@ -42,7 +41,7 @@ import org.hibernate.impl.SessionImpl;
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> {
@@ -164,8 +163,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	@Override
 	@SuppressWarnings("unchecked")
 	protected void doLoad() {
-		Transaction tx = null;
-		Session session = null;
+		SessionWrapper sessionWrapper = null;
 		boolean controlsTransaction = false;
 		boolean err = true;
 		Resource res = null;
@@ -174,7 +172,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 		try {
 			res = getEObject().eResource();
 			if (res != null && res instanceof HbResource) {
-				session = ((HbResource) res).getSession();
+				sessionWrapper = ((HbResource) res).getSessionWrapper();
 				if (res.isLoaded()) // resource is loaded reopen transaction
 				{
 					// if the delegate is already loaded then no transaction is
@@ -183,13 +181,12 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 							&& ((AbstractPersistentCollection) delegate)
 									.wasInitialized();
 					if (!isDelegateLoaded
-							&& !((SessionImpl) session)
-									.isTransactionInProgress()) {
+							&& !sessionWrapper.isTransactionActive()) {
 						log
 								.debug("Reconnecting session to read a lazy collection, elist: "
 										+ logString);
 						controlsTransaction = true;
-						tx = session.beginTransaction();
+						sessionWrapper.beginTransaction();
 					} else {
 						log
 								.debug("Delegate loaded or resource session is still active, using it");
@@ -238,7 +235,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 		} finally {
 			if (controlsTransaction) {
 				if (err) {
-					tx.rollback();
+					sessionWrapper.rollbackTransaction();
 				} else {
 					// a bit rough but delete from the persitence context
 					// otherwise
@@ -246,9 +243,9 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 					// to anything and
 					// will delete me
 					// getSession().getPersistenceContext().getCollectionEntries().remove(this);
-					tx.commit();
+					sessionWrapper.commitTransaction();
 				}
-				((HbResource) res).returnSession(session);
+				((HbResource) res).returnSessionWrapper(sessionWrapper);
 			}
 		}
 		log.debug("Finished loading elist " + logString);

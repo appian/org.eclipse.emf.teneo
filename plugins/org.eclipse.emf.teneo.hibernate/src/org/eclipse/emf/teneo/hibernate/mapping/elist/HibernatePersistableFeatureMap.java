@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableFeatureMap.java,v 1.8 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: HibernatePersistableFeatureMap.java,v 1.9 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -28,23 +28,21 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableFeatureMap;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.AssertUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentBag;
 import org.hibernate.collection.PersistentCollection;
 import org.hibernate.collection.PersistentList;
-import org.hibernate.impl.SessionImpl;
 
 /**
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
@@ -132,22 +130,21 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 	protected synchronized void doLoad() {
 		AssertUtil.assertTrue("EList " + logString, !isLoaded());
 
-		Transaction tx = null;
-		Session session = null;
+		SessionWrapper sessionWrapper = null;
 		boolean controlsSession = false;
 		boolean err = true;
 		try {
 			final Resource res = owner.eResource();
 
 			if (res != null && res instanceof HibernateResource) {
-				session = ((HibernateResource) res).getSession();
+				sessionWrapper = ((HibernateResource) res).getSessionWrapper();
 				if (res.isLoaded()) { // resource is loaded reopen transaction
-					if (!((SessionImpl) session).isTransactionInProgress()) {
+					if (!sessionWrapper.isTransactionActive()) {
 						log
 								.debug("Reconnecting session to read a lazy collection, Featuremap: "
 										+ logString);
 						controlsSession = true;
-						tx = session.beginTransaction();
+						sessionWrapper.beginTransaction();
 					} else {
 						log.debug("Resource session is still active, using it");
 					}
@@ -193,7 +190,7 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 		} finally {
 			if (controlsSession) {
 				if (err) {
-					tx.rollback();
+					sessionWrapper.rollbackTransaction();
 				} else {
 					// a bit rough but delete from the persitence context
 					// otherwise
@@ -201,7 +198,7 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 					// to anything and
 					// will delete me
 					// getSession().getPersistenceContext().getCollectionEntries().remove(this);
-					tx.commit();
+					sessionWrapper.commitTransaction();
 				}
 			}
 		}

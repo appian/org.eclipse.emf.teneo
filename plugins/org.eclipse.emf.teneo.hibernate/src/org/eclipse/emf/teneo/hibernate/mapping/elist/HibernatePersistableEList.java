@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.13 2007/03/04 21:18:34 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.14 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -26,24 +26,22 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.AssertUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentBag;
 import org.hibernate.collection.PersistentCollection;
 import org.hibernate.collection.PersistentIdentifierBag;
 import org.hibernate.collection.PersistentList;
-import org.hibernate.impl.SessionImpl;
 
 /**
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> {
@@ -93,15 +91,14 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 
 		log.debug("Started loading elist " + logString);
 
-		Transaction tx = null;
-		Session session = null;
+		SessionWrapper sessionWrapper = null;
 		boolean controlsTransaction = false;
 		boolean err = true;
 		Resource res = null;
 		try {
 			res = owner.eResource();
 			if (res != null && res instanceof HbResource) {
-				session = ((HbResource) res).getSession();
+				sessionWrapper = ((HbResource) res).getSessionWrapper();
 				if (res.isLoaded()) // resource is loaded reopen transaction
 				{
 					// if the delegate is already loaded then no transaction is
@@ -110,13 +107,12 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 							&& ((AbstractPersistentCollection) delegate)
 									.wasInitialized();
 					if (!isDelegateLoaded
-							&& !((SessionImpl) session)
-									.isTransactionInProgress()) {
+							&& !sessionWrapper.isTransactionActive()) {
 						log
 								.debug("Reconnecting session to read a lazy collection, elist: "
 										+ logString);
 						controlsTransaction = true;
-						tx = session.beginTransaction();
+						sessionWrapper.beginTransaction();
 					} else {
 						log
 								.debug("Delegate loaded or resource session is still active, using it");
@@ -173,7 +169,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 		} finally {
 			if (controlsTransaction) {
 				if (err) {
-					tx.rollback();
+					sessionWrapper.rollbackTransaction();
 				} else {
 					// a bit rough but delete from the persitence context
 					// otherwise
@@ -181,9 +177,9 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 					// to anything and
 					// will delete me
 					// getSession().getPersistenceContext().getCollectionEntries().remove(this);
-					tx.commit();
+					sessionWrapper.commitTransaction();
 				}
-				((HbResource) res).returnSession(session);
+				((HbResource) res).returnSessionWrapper(sessionWrapper);
 			}
 		}
 		log.debug("Finished loading elist " + logString);

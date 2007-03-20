@@ -1,19 +1,3 @@
-/**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: HbDataStore.java,v 1.15 2007/02/08 23:11:37 mtaal Exp $
- */
-
 package org.eclipse.emf.teneo.hibernate;
 
 import java.io.IOException;
@@ -39,7 +23,6 @@ import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
@@ -55,10 +38,9 @@ import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResourceFactory;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.EntityMode;
-import org.hibernate.Query;
+import org.hibernate.Interceptor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.CascadeStyle;
 import org.hibernate.mapping.Bag;
@@ -76,19 +58,7 @@ import org.hibernate.mapping.Table;
 import org.hibernate.mapping.Value;
 import org.hibernate.tool.hbm2ddl.SchemaUpdate;
 
-/**
- * Holds the SessionFactory and performs different initialization related
- * actions. Initializes the database and offers xml import and export methods.
- * In addition can be used to retrieve all referers to a certain eobject.
- * <p>
- * The behavior can be overridden by overriding the protected methods and
- * implementing/registering your own HbDataStoreFactory in the HibernateHelper.
- * 
- * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
- */
-
-public class HbDataStore {
+public abstract class HbDataStore {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbDataStore.class);
@@ -111,61 +81,91 @@ public class HbDataStore {
 				"ehb", new HibernateResourceFactory());
 	}
 
+	/** HashMap with referers */
+	private HashMap<String, java.util.List<ReferenceTo>> referers;
+
+	/** The array with entities (eclasses) which are not contained */
+	private String[] topEntities;
+
 	/** The name under which it is registered */
 	private String name;
 
 	/** The list of epackages stored in the datastore */
 	private EPackage[] ePackages;
 
-	/** The persistency manager factory */
-	private SessionFactory sessionFactory;
+	/** Update the schema option */
+	// private boolean updateSchema = true;
+	/** The hb context */
+	private HbContext hbContext = new HbContextImpl();
 
-	/** The used Hibernate configuration */
-	private Configuration hbConfiguration;
+	/** The properties used to create the hibernate configuration object */
+	private PersistenceOptions persistenceOptions;
 
-	/** HashMap with referers */
-	private HashMap<String, java.util.List<ReferenceTo>> referers;
+	/** The hibernate properties */
+	private Properties hibernateProperties;
 
+	/** The interceptor */
+	private Interceptor interceptor;
+	
 	/**
 	 * The used mapping if not passed through a hbm file, can be retrieved for
 	 * debugging purposes
 	 */
 	private String mappingXML = null;
 
-	/** The properties used to create the hibernate configuration object */
-	private PersistenceOptions persistenceOptions;
+	/**
+	 * @return the dsName
+	 */
+	public String getName() {
+		return name;
+	}
 
-	private Properties hibernateProperties;
+	/**
+	 * @return the epackages
+	 */
+	public EPackage[] getEPackages() {
+		return ePackages;
+	}
 
-	/** Is the store initialized */
-	private boolean initialized = false;
+	/**
+	 * @param epackages
+	 *            the epackages to set
+	 */
+	public void setEPackages(EPackage[] epackages) {
+		this.ePackages = epackages;
+	}
 
-	/** The array with entities (eclasses) which are not contained */
-	private String[] topEntities;
+	/**
+	 * @param name
+	 *            the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	/** Update the schema option */
-	// private boolean updateSchema = true;
-	/** The hb context */
-	private HbContext hbContext = new HbContextImpl();
+	/**
+	 * The entities (eclasses) which are not contained in another eclass.
+	 * 
+	 * @return the topEntities
+	 */
+	public String[] getTopEntities() {
+		return topEntities;
+	}
 
+	/** Initialize the subclass */
+	public abstract void initialize();
+	
 	/** Initializes this Data Store */
-	public final void initialize() {
-		// check a few things
-		if (getEPackages() == null)
-			throw new HbMapperException("EPackages are not set");
-		// if (getName() == null)
-		// throw new HbStoreException("Name is not set");
-
-		log.debug(">>>>> Creating HB Configuration");
-		hbConfiguration = getHbContext().createConfiguration();
-
-		mapModel();
-
-		setPropertiesInConfiguration();
+	protected void initializeDataStore() {
+		// buildmappings has to be done before setting the tuplizers because
+		// buildMappings will ensure that the element
+		// is set in the List properties.
+		buildMappings();
 
 		setInterceptor();
 
 		log.debug("Determine referers for each class");
+
 		referers = computeReferers();
 
 		topEntities = computeTopEntities();
@@ -173,11 +173,7 @@ public class HbDataStore {
 		// now add the econtainer mappings to the contained types, only for
 		// unidirectional container relations
 		addContainerMappings();
-
-		// buildmappings has to be done before setting the tuplizers because
-		// buildMappings will ensure that the element
-		// is set in the List properties.
-		hbConfiguration.buildMappings();
+		
 		setTuplizer();
 
 		// set the event listeners
@@ -187,106 +183,197 @@ public class HbDataStore {
 
 		log.debug("Registering datastore with persistent classes");
 		HbHelper.INSTANCE.registerDataStoreByPC(this);
+	}
 
-		// wait for the session factory until the database is (re)created
-		if (sessionFactory != null && !sessionFactory.isClosed())
-			sessionFactory.close();
-		sessionFactory = buildSessionFactory();
+	/** Build the mappings in the configuration */
+	protected abstract void buildMappings();
 
-		initialized = true;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.jpox.emf.IEMFDataStore#close()
+	 */
+	public abstract void close();
+
+	/** Return the hibernate configuration */
+	protected abstract Configuration getHibernateConfiguration();
+	
+
+	/**
+	 * Gets the persistence options. The persistence options is a type
+	 * representation of the persistence options. If not set through the
+	 * setPersistenceProperties method then a properties file is searched If
+	 * found it is used to set the persistence options.
+	 * 
+	 * <p>
+	 * If no properties have been set explicitly, the method will attempt to
+	 * load them from the file "/elver-persistence.properties" at the root of
+	 * the classpath. (A mechanism similar to "hibernate.properties".)
+	 * 
+	 * @throws HbMapperException
+	 *             if an error occured reading the properties file.
+	 * @return the persistence options as a Properties instance.
+	 * 
+	 */
+	public PersistenceOptions getPersistenceOptions() {
+		if (persistenceOptions == null) {
+			final Properties props = new Properties();
+			final InputStream in = this.getClass().getResourceAsStream(
+					PersistenceOptions.DEFAULT_CLASSPATH_FILENAME);
+			if (in != null) {
+				try {
+					props.load(in);
+				} catch (IOException e) {
+					throw new HbMapperException(e);
+				} finally {
+					try {
+						in.close();
+					} catch (IOException e) {
+						throw new HbMapperException(e);
+					}
+				}
+			}
+			persistenceOptions = new PersistenceOptions(props);
+		}
+		return persistenceOptions;
 	}
 
 	/**
-	 * Gets the initialized state.
+	 * Sets the persistence options.
 	 */
-	public boolean isInitialized() {
-		return initialized;
+	public void setPersistenceProperties(Properties persistenceOptions) {
+		this.persistenceOptions = new PersistenceOptions(persistenceOptions);
 	}
 
-	/** Sets the tuplizer */
-	protected void setTuplizer() {
-		final Configuration cfg = getConfiguration();
-		for (Iterator<?> pcs = cfg.getClassMappings(); pcs.hasNext();) {
-			final PersistentClass pc = (PersistentClass) pcs.next();
-			if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null) { // featuremap
-				// entry
-				pc.addTuplizer(EntityMode.MAP, getHbContext()
-						.getFeatureMapEntryTuplizer(cfg).getName());
-			} else {
-				// final EClass eclass =
-				// StoreUtil.getEClassFromURI(pc.getEntityName(),
-				// getEPackages());
-				// pc.setClassName(eclass.getInstanceClassName());
-				pc.addTuplizer(EntityMode.MAP, getHbContext()
-						.getEMFTuplizerClass(cfg).getName());
-				pc.addTuplizer(EntityMode.POJO, getHbContext()
-						.getEMFTuplizerClass(cfg).getName());
-			}
-
-			// also set the tuplizer for the components, and register for the
-			// component
-
-			// Build a list of all properties.
-			java.util.List<Property> properties = new ArrayList<Property>();
-			final Property identifierProperty = pc.getIdentifierProperty();
-			if (identifierProperty != null) {
-				properties.add(identifierProperty);
-			}
-			for (Iterator<?> it = pc.getPropertyIterator(); it.hasNext();) {
-				properties.add((Property) it.next());
-			}
-
-			// Now set component tuplizers where necessary.
-			for (Iterator<?> it = properties.iterator(); it.hasNext();) {
-				Property prop = (Property) it.next();
-				if (prop.getName().compareTo("_identifierMapper") == 0) {
-					continue; // ignore this one
-				}
-				final Value value = prop.getValue();
-				if (value instanceof Component) {
-					setComponentTuplizer((Component) value, cfg);
-				} else if (value instanceof Collection
-						&& ((Collection) value).getElement() instanceof Component) {
-					setComponentTuplizer((Component) ((Collection) value)
-							.getElement(), cfg);
-				}
-			}
-		}
+	public Properties getHibernateProperties() {
+		return hibernateProperties;
 	}
 
-	/** Set the event listener, can be overridden, in this impl. it does nothing */
-	protected void setEventListeners() {
+	public void setHibernateProperties(Properties hibernateProperties) {
+		this.hibernateProperties = hibernateProperties;
+	}
 
+	/** Get the session factory */
+	public abstract SessionFactory getSessionFactory();
+
+	/** Return a new session wrapper */
+	public abstract SessionWrapper createSessionWrapper();
+
+	/** Is the store initialized */
+	private boolean initialized = false;
+
+	/**
+	 * @return the hbContext
+	 */
+	public HbContext getHbContext() {
+		return hbContext;
 	}
 
 	/**
-	 * Sets the emf component tuplizer (if it is an eclass) or the hibernate
-	 * component tuplizer
+	 * @param hbContext
+	 *            the hbContext to set
 	 */
-	private void setComponentTuplizer(Component component, Configuration cfg) {
-		// check if the eclass exists
-		try {
-			EClass eClass = getPersistenceOptions()
-					.getEClassNameStrategy()
-					.toEClass(component.getComponentClassName(), getEPackages());
-			if (eClass != null) {
-				log.debug("Found " + eClass.getName() + " as a component");
-			}
-		} catch (IllegalArgumentException e) {
-			return; // not a valud eclass;
+	public void setHbContext(HbContext hbContext) {
+		this.hbContext = hbContext;
+	}
+
+	/** Return the Classmappings as an iterator */
+	protected abstract Iterator<?> getClassMappings();
+	
+
+	/**
+	 * Returns an array of EObjects and FeatureMapEntries which refer to a
+	 * certain EObject, note if the array is of length zero then no refering
+	 * EObjects where found. The passed Session is used to create a query. The
+	 * transaction handling should be done by the caller.
+	 */
+	public Object[] getCrossReferencers(Session session, Object referedTo) {
+		final ArrayList<Object> result = getCrossReferencers(new HbSessionWrapper(this, session),
+				referedTo, false);
+		return (Object[]) result.toArray(new Object[result.size()]);
+	}
+
+	/**
+	 * Returns an array of EObjects and FeatureMapEntries which refer to a
+	 * certain EObject, note if the array is of length zero then no refering
+	 * EObjects where found. The passed Session is used to create a query. The
+	 * transaction handling should be done by the caller.
+	 */
+	public Object[] getCrossReferencers(SessionWrapper sessionWrapper, Object referedTo) {
+		final ArrayList<Object> result = getCrossReferencers(sessionWrapper,
+				referedTo, false);
+		return (Object[]) result.toArray(new Object[result.size()]);
+	}
+
+	/**
+	 * Returns an array of EObjects which refer to a certain EObject, note if
+	 * the array is of length zero then no refering EObjects where found. The
+	 * passed Session is used to create a query. The transaction handling should
+	 * be done by the caller. onlyContainers means to only check containment
+	 * relations.
+	 */
+	private ArrayList<Object> getCrossReferencers(SessionWrapper sessionWrapper,
+			Object referedTo, boolean onlyContainers) {
+		assert (referedTo != null);
+
+		String targetEntityName = null;
+		if (referedTo instanceof EObject) {
+			final EObject eReferedTo = (EObject) referedTo;
+			targetEntityName = getPersistenceOptions().getEClassNameStrategy()
+					.toUniqueName(eReferedTo.eClass());
+		} else if (referedTo instanceof HibernateFeatureMapEntry) {
+			final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) referedTo;
+			targetEntityName = fme.getEntityName();
+		} else {
+			throw new IllegalArgumentException("Non eobject not yet supported "
+					+ referedTo.getClass().getName());
 		}
-		// is a
-		// valid
-		// eclass
-		component.addTuplizer(EntityMode.MAP, getHbContext()
-				.getEMFComponentTuplizerClass(cfg).getName());
-		HbHelper.INSTANCE.registerDataStoreByComponent(this, component);
+
+		final java.util.List<ReferenceTo> refersList = referers
+				.get(targetEntityName);
+		if (refersList == null || refersList.size() == 0)
+			return new ArrayList<Object>();
+		final ArrayList<Object> result = new ArrayList<Object>();
+		for (int i = 0; i < refersList.size(); i++) {
+			final ReferenceTo refersTo = (ReferenceTo) refersList.get(i);
+			
+			// if we only check containment relations then skip this
+			if (onlyContainers && !refersTo.isContainer())
+				continue;
+
+			final java.util.List<?> list = sessionWrapper.executeQuery(refersTo.getQueryStr(), "to", referedTo);
+			for (Object obj : list) {
+				if (obj instanceof HibernateFeatureMapEntry) {
+					// search then again with the
+					final ArrayList<Object> fms = getCrossReferencers(sessionWrapper,
+							obj, false);
+					if (fms.size() == 0) {
+						new AssertionError(
+								"The featuremap for featuremap entry "
+										+ obj.getClass().getName()
+										+ " can not be found");
+					}
+					obj = fms.get(0);
+				}
+
+				// AssertUtil.assertTrue("Getting refersto of " +
+				// referedTo.getClass().getName() +
+				// ", however one of the refersto is not an eobject but a " +
+				// obj.getClass().getName(),
+				// obj instanceof EObject);
+
+				if (!result.contains(obj))
+					result.add(obj);
+			}
+		}
+
+		return result;
 	}
 
 	/** Compute the top eclasses */
 	protected String[] computeTopEntities() {
 		final ArrayList<String> result = new ArrayList<String>();
-		for (Iterator<?> pcs = getConfiguration().getClassMappings(); pcs
+		for (Iterator<?> pcs = getClassMappings(); pcs
 				.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 
@@ -313,7 +400,7 @@ public class HbDataStore {
 			log.debug("EContainer mapping disabled.");
 			return;
 		}
-		for (Iterator<?> pcs = getConfiguration().getClassMappings(); pcs
+		for (Iterator<?> pcs = getClassMappings(); pcs
 				.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 
@@ -325,6 +412,85 @@ public class HbDataStore {
 			// addContainerMapping call
 			addContainerMapping(pc);
 		}
+	}
+
+	/** Sets the tuplizer */
+	protected void setTuplizer() {
+		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
+			final PersistentClass pc = (PersistentClass) pcs.next();
+			if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null) { // featuremap
+				// entry
+				pc.addTuplizer(EntityMode.MAP, getHbContext()
+						.getFeatureMapEntryTuplizer(getHibernateConfiguration()).getName());
+			} else {
+				// final EClass eclass =
+				// StoreUtil.getEClassFromURI(pc.getEntityName(),
+				// getEPackages());
+				// pc.setClassName(eclass.getInstanceClassName());
+				pc.addTuplizer(EntityMode.MAP, getHbContext()
+						.getEMFTuplizerClass(getHibernateConfiguration()).getName());
+				pc.addTuplizer(EntityMode.POJO, getHbContext()
+						.getEMFTuplizerClass(getHibernateConfiguration()).getName());
+			}
+
+			// also set the tuplizer for the components, and register for the
+			// component
+
+			// Build a list of all properties.
+			java.util.List<Property> properties = new ArrayList<Property>();
+			final Property identifierProperty = pc.getIdentifierProperty();
+			if (identifierProperty != null) {
+				properties.add(identifierProperty);
+			}
+			for (Iterator<?> it = pc.getPropertyIterator(); it.hasNext();) {
+				properties.add((Property) it.next());
+			}
+
+			// Now set component tuplizers where necessary.
+			for (Iterator<?> it = properties.iterator(); it.hasNext();) {
+				Property prop = (Property) it.next();
+				if (prop.getName().compareTo("_identifierMapper") == 0) {
+					continue; // ignore this one
+				}
+				final Value value = prop.getValue();
+				if (value instanceof Component) {
+					setComponentTuplizer((Component) value, getHibernateConfiguration());
+				} else if (value instanceof Collection
+						&& ((Collection) value).getElement() instanceof Component) {
+					setComponentTuplizer((Component) ((Collection) value)
+							.getElement(), getHibernateConfiguration());
+				}
+			}
+		}
+	}
+
+	/** Set the event listener, can be overridden, in this impl. it does nothing */
+	protected void setEventListeners() {
+
+	}
+
+	/**
+	 * Sets the emf component tuplizer (if it is an eclass) or the hibernate
+	 * component tuplizer
+	 */
+	protected void setComponentTuplizer(Component component, Configuration cfg) {
+		// check if the eclass exists
+		try {
+			EClass eClass = getPersistenceOptions()
+					.getEClassNameStrategy()
+					.toEClass(component.getComponentClassName(), getEPackages());
+			if (eClass != null) {
+				log.debug("Found " + eClass.getName() + " as a component");
+			}
+		} catch (IllegalArgumentException e) {
+			return; // not a valud eclass;
+		}
+		// is a
+		// valid
+		// eclass
+		component.addTuplizer(EntityMode.MAP, getHbContext()
+				.getEMFComponentTuplizerClass(cfg).getName());
+		HbHelper.INSTANCE.registerDataStoreByComponent(this, component);
 	}
 
 	/** Returns true if the pc is contained */
@@ -339,55 +505,21 @@ public class HbDataStore {
 		}
 		return false;
 	}
-
-	/** Sets the properties in the Hibernate Configuration. */
-	protected void setPropertiesInConfiguration() {
-		Properties properties = getHibernateProperties();
-		if (properties != null) {
-			if (properties.getProperty("hibernate.cache.provider_class") == null) {
-				log.warn("No hibernate cache provider set, using "
-						+ HashtableCacheProvider.class.getName());
-				log
-						.warn("For production use please set the ehcache (or other) provider explicitly and configure it");
-				properties.setProperty("hibernate.cache.provider_class",
-						HashtableCacheProvider.class.getName());
-			}
-			log.debug("Setting properties in Hibernate Configuration:");
-			logProperties(properties);
-			getConfiguration().setProperties(properties);
-		}
+	
+	/** Sets initialized */
+	protected void setInitialized(boolean initialized) {
+		this.initialized = initialized;
+	}
+	
+	/**
+	 * Gets the initialized state.
+	 */
+	public boolean isInitialized() {
+		return initialized;
 	}
 
 	/** Sets the interceptor */
-	protected void setInterceptor() {
-		hbConfiguration.setInterceptor(getHbContext().createInterceptor(
-				getConfiguration(), getPersistenceOptions()));
-	}
-
-	/**
-	 * Maps an ecore model of one ore more epackages into a hibernate xml String
-	 * which is added to the passed configuration
-	 */
-	protected void mapModel() {
-		if (getPersistenceOptions().isUseMappingFile()) {
-
-			// register otherwise the getFileList will not work
-			ERuntime.INSTANCE.register(getEPackages());
-
-			log.debug("Searching hbm files in class paths of epackages");
-			final String[] fileList = StoreUtil.getFileList(
-					HbConstants.HBM_FILE_NAME, null);
-			for (int i = 0; i < fileList.length; i++) {
-				log.debug("Adding file " + fileList[i]
-						+ " to Hibernate Configuration");
-				getConfiguration().addInputStream(
-						this.getClass().getResourceAsStream(fileList[i]));
-			}
-		} else {
-			mappingXML = mapEPackages();
-			getConfiguration().addXML(mappingXML);
-		}
-	}
+	protected abstract void setInterceptor();
 
 	/** Generate a hibernate mapping xml string from a set of epackages */
 	protected String mapEPackages() {
@@ -400,6 +532,33 @@ public class HbDataStore {
 				getEPackages(), po);
 		HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
 		return hmg.generateToString(paModel);
+	}
+
+	/** Recursively check the container prop in the super hierarchy */
+	private boolean hasEContainerProp(PersistentClass pc) {
+		final Iterator<?> it = pc.getPropertyIterator();
+		while (it.hasNext()) {
+			final Property prop = (Property) it.next();
+			if (prop.getName().equals(HbConstants.PROPERTY_ECONTAINER)) {
+				return true;
+			}
+		}
+		if (pc.getSuperclass() == null)
+			return false;
+		return hasEContainerProp(pc.getSuperclass());
+	}
+
+	/** Updates the database schema */
+	protected void updateDatabaseSchema() {
+		if (!getPersistenceOptions().isUpdateSchema()) {
+			log.debug("Database schema not updated, option "
+					+ PersistenceOptions.UPDATE_SCHEMA
+					+ " has been set to false");
+			return;
+		}
+		log.debug("Starting update of schema");
+		new SchemaUpdate(getHibernateConfiguration()).execute(false, true);
+		log.debug(">>> Update of schema finished");
 	}
 
 	/**
@@ -484,38 +643,6 @@ public class HbDataStore {
 		pc.addProperty(ecFID);
 	}
 
-	/** Recursively check the container prop in the super hierarchy */
-	private boolean hasEContainerProp(PersistentClass pc) {
-		final Iterator<?> it = pc.getPropertyIterator();
-		while (it.hasNext()) {
-			final Property prop = (Property) it.next();
-			if (prop.getName().equals(HbConstants.PROPERTY_ECONTAINER)) {
-				return true;
-			}
-		}
-		if (pc.getSuperclass() == null)
-			return false;
-		return hasEContainerProp(pc.getSuperclass());
-	}
-
-	/** Updates the database schema */
-	protected void updateDatabaseSchema() {
-		if (!getPersistenceOptions().isUpdateSchema()) {
-			log.debug("Database schema not updated, option "
-					+ PersistenceOptions.UPDATE_SCHEMA
-					+ " has been set to false");
-			return;
-		}
-		log.debug("Starting update of schema");
-		new SchemaUpdate(getConfiguration()).execute(false, true);
-		log.debug(">>> Update of schema finished");
-	}
-
-	/** Build the session factory */
-	protected SessionFactory buildSessionFactory() {
-		return getConfiguration().buildSessionFactory();
-	}
-
 	/** Checks if a certain column already exists in a class */
 	private Column checkColumnExists(Table table, Column searchCol) {
 		final Column foundCol = table.getColumn(searchCol);
@@ -524,26 +651,6 @@ public class HbDataStore {
 		}
 		table.addColumn(searchCol);
 		return searchCol;
-	}
-
-	/** Dump properties in the log */
-	private void logProperties(Properties props) {
-		final Iterator<?> it = props.keySet().iterator();
-		while (it.hasNext()) {
-			final String key = (String) it.next();
-			log.info(key + ": " + props.get(key));
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.teneo.jpox.emf.IEMFDataStore#close()
-	 */
-	public void close() {
-		if (!getSessionFactory().isClosed()) {
-			getSessionFactory().close();
-		}
 	}
 
 	/**
@@ -626,91 +733,11 @@ public class HbDataStore {
 	}
 
 	/**
-	 * Returns an array of EObjects and FeatureMapEntries which refer to a
-	 * certain EObject, note if the array is of length zero then no refering
-	 * EObjects where found. The passed Session is used to create a query. The
-	 * transaction handling should be done by the caller.
-	 */
-	public Object[] getCrossReferencers(Session session, Object referedTo) {
-		final ArrayList<Object> result = getCrossReferencers(session,
-				referedTo, false);
-		return (Object[]) result.toArray(new Object[result.size()]);
-	}
-
-	/**
-	 * Returns an array of EObjects which refer to a certain EObject, note if
-	 * the array is of length zero then no refering EObjects where found. The
-	 * passed Session is used to create a query. The transaction handling should
-	 * be done by the caller. onlyContainers means to only check containment
-	 * relations.
-	 */
-	private ArrayList<Object> getCrossReferencers(Session session,
-			Object referedTo, boolean onlyContainers) {
-		assert (referedTo != null);
-
-		String targetEntityName = null;
-		if (referedTo instanceof EObject) {
-			final EObject eReferedTo = (EObject) referedTo;
-			targetEntityName = getPersistenceOptions().getEClassNameStrategy()
-					.toUniqueName(eReferedTo.eClass());
-		} else if (referedTo instanceof HibernateFeatureMapEntry) {
-			final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) referedTo;
-			targetEntityName = fme.getEntityName();
-		} else {
-			throw new IllegalArgumentException("Non eobject not yet supported "
-					+ referedTo.getClass().getName());
-		}
-
-		final java.util.List<ReferenceTo> refersList = referers
-				.get(targetEntityName);
-		if (refersList == null || refersList.size() == 0)
-			return new ArrayList<Object>();
-		final ArrayList<Object> result = new ArrayList<Object>();
-		for (int i = 0; i < refersList.size(); i++) {
-			final ReferenceTo refersTo = (ReferenceTo) refersList.get(i);
-
-			// if we only check containment relations then skip this
-			if (onlyContainers && !refersTo.isContainer())
-				continue;
-
-			final Query qry = session.createQuery(refersTo.getQueryStr());
-			qry.setEntity("to", referedTo);
-			final java.util.List<?> list = qry.list();
-			for (int j = 0; j < list.size(); j++) {
-				Object obj = list.get(j);
-				if (obj instanceof HibernateFeatureMapEntry) {
-					// search then again with the
-					final ArrayList<Object> fms = getCrossReferencers(session,
-							obj, false);
-					if (fms.size() == 0) {
-						new AssertionError(
-								"The featuremap for featuremap entry "
-										+ obj.getClass().getName()
-										+ " can not be found");
-					}
-					obj = fms.get(0);
-				}
-
-				// AssertUtil.assertTrue("Getting refersto of " +
-				// referedTo.getClass().getName() +
-				// ", however one of the refersto is not an eobject but a " +
-				// obj.getClass().getName(),
-				// obj instanceof EObject);
-
-				if (!result.contains(obj))
-					result.add(obj);
-			}
-		}
-
-		return result;
-	}
-
-	/**
 	 * Computes the referers, handles the lazy for containment
 	 */
-	private HashMap<String, java.util.List<ReferenceTo>> computeReferers() {
+	protected HashMap<String, java.util.List<ReferenceTo>> computeReferers() {
 		final HashMap<String, java.util.List<ReferenceTo>> result = new HashMap<String, java.util.List<ReferenceTo>>();
-		Iterator<?> it = hbConfiguration.getClassMappings();
+		Iterator<?> it = getClassMappings();
 		ArrayList<String> fmes = new ArrayList<String>();
 		while (it.hasNext()) {
 			final PersistentClass pc = (PersistentClass) it.next();
@@ -856,7 +883,7 @@ public class HbDataStore {
 					}
 
 					list.add(new ReferenceTo(pc.getEntityName(), prop,
-							isContainer, isMany));
+							isContainer, isMany, toEntity));
 				} catch (StoreClassLoadException e) {
 					throw new HbMapperException(
 							"Class not found using property: " + prop.getName()
@@ -924,120 +951,13 @@ public class HbDataStore {
 		}
 	}
 
-	/**
-	 * @return the mappingXML
-	 */
-	public String getMappingXML() {
-		return mappingXML;
-	}
-
-	/**
-	 * @return the dsName
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @return the epackages
-	 */
-	public EPackage[] getEPackages() {
-		return ePackages;
-	}
-
-	/**
-	 * @param epackages
-	 *            the epackages to set
-	 */
-	public void setEPackages(EPackage[] epackages) {
-		this.ePackages = epackages;
-	}
-
-	/**
-	 * Gets the persistence options. The persistence options is a type
-	 * representation of the persistence options. If not set through the
-	 * setPersistenceProperties method then a properties file is searched If
-	 * found it is used to set the persistence options.
-	 * 
-	 * <p>
-	 * If no properties have been set explicitly, the method will attempt to
-	 * load them from the file "/elver-persistence.properties" at the root of
-	 * the classpath. (A mechanism similar to "hibernate.properties".)
-	 * 
-	 * @throws HbMapperException
-	 *             if an error occured reading the properties file.
-	 * @return the persistence options as a Properties instance.
-	 * 
-	 */
-	public PersistenceOptions getPersistenceOptions() {
-		if (persistenceOptions == null) {
-			final Properties props = new Properties();
-			final InputStream in = this.getClass().getResourceAsStream(
-					PersistenceOptions.DEFAULT_CLASSPATH_FILENAME);
-			if (in != null) {
-				try {
-					props.load(in);
-				} catch (IOException e) {
-					throw new HbMapperException(e);
-				} finally {
-					try {
-						in.close();
-					} catch (IOException e) {
-						throw new HbMapperException(e);
-					}
-				}
-			}
-			persistenceOptions = new PersistenceOptions(props);
+	/** Dump properties in the log */
+	protected void logProperties(Properties props) {
+		final Iterator<?> it = props.keySet().iterator();
+		while (it.hasNext()) {
+			final String key = (String) it.next();
+			log.info(key + ": " + props.get(key));
 		}
-		return persistenceOptions;
-	}
-
-	/**
-	 * Sets the persistence options.
-	 */
-	public void setPersistenceProperties(Properties persistenceOptions) {
-		this.persistenceOptions = new PersistenceOptions(persistenceOptions);
-	}
-
-	public Properties getHibernateProperties() {
-		return hibernateProperties;
-	}
-
-	public void setHibernateProperties(Properties hibernateProperties) {
-		this.hibernateProperties = hibernateProperties;
-	}
-
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/** Get the session factory */
-	public SessionFactory getSessionFactory() {
-		if (!isInitialized()) {
-			initialize();
-		}
-		assert (sessionFactory != null);
-		return sessionFactory;
-	}
-
-	/**
-	 * @return the hbConfiguration
-	 */
-	public Configuration getConfiguration() {
-		return hbConfiguration;
-	}
-
-	/**
-	 * The entities (eclasses) which are not contained in another eclass.
-	 * 
-	 * @return the topEntities
-	 */
-	public String[] getTopEntities() {
-		return topEntities;
 	}
 
 	/** Contains the reference to a class which refers to another reference */
@@ -1048,14 +968,14 @@ public class HbDataStore {
 
 		/** The query used to find the occurence */
 		private final String qryStr;
-
+		
 		/** Constructor */
 		public ReferenceTo(String fromEntity, Property prop,
-				boolean isContainer, boolean isMany) {
+				boolean isContainer, boolean isMany, String toEntity) {
 			this.isContainer = isContainer;
 			if (isMany) {
 				qryStr = "SELECT ref FROM " + fromEntity
-						+ " as ref WHERE :to in elements(ref." + prop.getName()
+						+ " as ref, " + toEntity + " as refTo WHERE refTo = :to and refTo in elements(ref." + prop.getName()
 						+ ")";
 			} else {
 				qryStr = "SELECT ref FROM " + fromEntity
@@ -1077,17 +997,30 @@ public class HbDataStore {
 	}
 
 	/**
-	 * @return the hbContext
+	 * @return the mappingXML
 	 */
-	public HbContext getHbContext() {
-		return hbContext;
+	public String getMappingXML() {
+		return mappingXML;
 	}
 
 	/**
-	 * @param hbContext
-	 *            the hbContext to set
+	 * @param mappingXML the mappingXML to set
 	 */
-	public void setHbContext(HbContext hbContext) {
-		this.hbContext = hbContext;
+	public void setMappingXML(String mappingXML) {
+		this.mappingXML = mappingXML;
+	}
+
+	/**
+	 * @return the interceptor
+	 */
+	public Interceptor getInterceptor() {
+		return interceptor;
+	}
+
+	/**
+	 * @param interceptor the interceptor to set
+	 */
+	public void setInterceptor(Interceptor interceptor) {
+		this.interceptor = interceptor;
 	}
 }

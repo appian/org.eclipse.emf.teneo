@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbContext.java,v 1.5 2007/03/18 19:19:47 mtaal Exp $
+ * $Id: HbContext.java,v 1.6 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -30,7 +30,7 @@ import org.hibernate.property.PropertyAccessor;
  * be overridden to instantiate your own tuplizers, accessors etc.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public interface HbContext {
 
@@ -83,11 +83,4 @@ public interface HbContext {
 	/** Return the general EFeatureAccessor */
 	public abstract PropertyAccessor createEAttributeAccessor(
 			EAttribute eAttribute);
-
-	/**
-	 * The method which gets called to create a hibernateConfiguration. The
-	 * default factory only does new Configuration().
-	 */
-	public abstract Configuration createConfiguration();
-
 }

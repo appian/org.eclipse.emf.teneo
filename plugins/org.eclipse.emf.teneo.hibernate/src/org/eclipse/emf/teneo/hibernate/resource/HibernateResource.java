@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.8 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.9 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -33,14 +33,13 @@ import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.HbSessionWrapper;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
+import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.AssertUtil;
-import org.hibernate.FlushMode;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.impl.SessionImpl;
 
 /**
@@ -57,7 +56,7 @@ import org.hibernate.impl.SessionImpl;
  * the uri can also be used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -70,8 +69,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 	/** The uri parameter under which to store a session controller */
 	public static String SESSION_CONTROLLER_PARAM = "sessionController";
 
-	/** The session used for long transactions */
-	private Session session = null; // is opened at first load
+	/** The session wrapper used for long transactions */
+	private SessionWrapper sessionWrapper = null; // is opened at first load
 
 	/** The session controller */
 	private SessionController sessionController = null;
@@ -149,23 +148,45 @@ public class HibernateResource extends StoreResource implements HbResource {
 	 * Returns the session of this resource, if no session is set yet then
 	 * creates it using the datastore. As a default the FlushMode is set to
 	 * Never.
+	 * 
+	 * Deprecated, use getSessionWrapper (to support ejb3)
 	 */
+	@Deprecated
 	public Session getSession() {
-		if (session == null) {
-			if (hasSessionController) {
-				session = sessionController.getSession();
-			} else {
-				// session can be null when this is an xml import! ;
-				session = emfDataStore.getSessionFactory().openSession();
-				session.setFlushMode(FlushMode.MANUAL);
-			}
-		}
-		return session;
+		return (Session)getSessionWrapper().getSession();
 	}
 
-	/** Sets the session, overwrites current session */
+	/** Return the sessionwrapper */
+	public SessionWrapper getSessionWrapper() {
+		if (sessionWrapper == null) {
+			if (hasSessionController) {
+				sessionWrapper = sessionController.getSessionWrapper();
+			} else {
+				// session can be null when this is an xml import! ;
+				sessionWrapper = emfDataStore.createSessionWrapper();
+				sessionWrapper.setFlushModeManual();
+			}
+		}
+		return sessionWrapper;
+	}
+	
+	/** Sets the session, overwrites current session. 
+	 * Deprecated use setSessionWrapper.
+	 */
+	@Deprecated
 	public void setSession(Session session) {
-		this.session = session;
+		if (session != null) {
+			this.sessionWrapper = new HbSessionWrapper((HbDataStore)emfDataStore, session);
+		} else {
+			this.sessionWrapper = null;
+		}
+	}
+	
+	/** 
+	 * Sets the sessionwrapper, overwrites current session. 
+	 */
+	public void setSessionWrapper(SessionWrapper sessionWrapper) {
+		this.sessionWrapper = sessionWrapper;
 	}
 
 	/** Returns the session, does nothing in this impl */
@@ -173,18 +194,23 @@ public class HibernateResource extends StoreResource implements HbResource {
 		// do nothing
 	}
 
+	/** Returns the sessionwrapper to the resource so that it can do clean up (or not) */
+	public void returnSessionWrapper(SessionWrapper sessionWrapper) {
+		
+	}
+
 	/**
 	 * Returns an array of EObjects which refer to a certain EObject, note if
 	 * the array is of length zero then no refering EObjects where found.
 	 */
 	public Object[] getCrossReferencers(EObject referedTo) {
-		Transaction tx = null;
 		boolean err = true;
-		final Session mySession = getSession();
+		final SessionWrapper mySessionWrapper = getSessionWrapper();
 		try {
-			if (!hasSessionController)
-				tx = mySession.beginTransaction();
-			final Object[] result = emfDataStore.getCrossReferencers(mySession,
+			if (!hasSessionController) {
+				mySessionWrapper.beginTransaction();
+			}
+			final Object[] result = emfDataStore.getCrossReferencers(mySessionWrapper,
 					referedTo);
 			err = false;
 
@@ -197,11 +223,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 		} finally {
 			if (!hasSessionController) {
 				if (err) {
-					if (tx != null)
-						tx.rollback();
-					mySession.close();
+					mySessionWrapper.rollbackTransaction();
+					mySessionWrapper.close();
 				} else {
-					tx.commit();
+					mySessionWrapper.commitTransaction();
 				}
 			}
 		}
@@ -215,15 +240,14 @@ public class HibernateResource extends StoreResource implements HbResource {
 		log.debug("Saving resource with uri: " + getURI());
 
 		boolean err = true;
-		Transaction tx = null;
-		final Session mySession = getSession();
+		final SessionWrapper mySessionWrapper = getSessionWrapper();
 		try {
 			if (!hasSessionController) {
-				tx = mySession.beginTransaction();
+				mySessionWrapper.beginTransaction();
 			}
 
 			for (EObject eobject : super.getSuperContents()) {
-				mySession.saveOrUpdate(eobject);
+				mySessionWrapper.saveOrUpdate(eobject);
 			}
 
 			// delete all deleted objects
@@ -234,14 +258,15 @@ public class HibernateResource extends StoreResource implements HbResource {
 				{
 					if (((InternalEObject) obj).eDirectResource() == null
 							|| ((InternalEObject) obj).eDirectResource() == this) {
-						mySession.delete(obj);
+						mySessionWrapper.delete(obj);
 					}
 				}
 			}
 
 			// now flush everything
-			if (!hasSessionController)
-				mySession.flush();
+			if (!hasSessionController) {
+				mySessionWrapper.flush();
+			}
 			err = false;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
@@ -250,11 +275,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 		} finally {
 			if (!hasSessionController) {
 				if (err) {
-					if (tx != null)
-						tx.rollback();
-					mySession.close();
+					mySessionWrapper.rollbackTransaction();
+					mySessionWrapper.close();
 				} else {
-					tx.commit();
+					mySessionWrapper.commitTransaction();
 				}
 			}
 		}
@@ -267,17 +291,16 @@ public class HibernateResource extends StoreResource implements HbResource {
 		log.debug("Loading resource: " + getURI().toString());
 
 		// first clear the old list
-		Transaction tx = null;
 		boolean err = true;
-		final Session mySession = getSession();
+		final SessionWrapper mySessionWrapper = getSessionWrapper();
 		try {
 			if (!hasSessionController) {
-				tx = mySession.beginTransaction();
+				mySessionWrapper.beginTransaction();
 			}
 
 			// note we have to a call to the super class otherwise an infinite
 			// loop is created
-			final List<EObject> storeList = loadFromStore(mySession);
+			final List<EObject> storeList = loadFromStore(mySessionWrapper);
 			log.debug("Loaded " + storeList.size() + " objects");
 			err = false;
 			return storeList;
@@ -288,11 +311,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 		} finally {
 			if (!hasSessionController) {
 				if (err) {
-					if (tx != null)
-						tx.rollback();
-					mySession.close();
+					mySessionWrapper.rollbackTransaction();
+					mySessionWrapper.close();
 				} else {
-					tx.commit();
+					mySessionWrapper.commitTransaction();
 				}
 			}
 		}
@@ -308,11 +330,13 @@ public class HibernateResource extends StoreResource implements HbResource {
 		super.doUnload();
 
 		if (!hasSessionController) {
-			AssertUtil.assertTrue("Session must be disconnected in unload",
-					!((SessionImpl) getSession()).isTransactionInProgress());
+			if (!getSessionWrapper().isEJB3EntityManager()) {
+				AssertUtil.assertTrue("Session must be disconnected in unload",
+						!((SessionImpl) getSessionWrapper().getSession()).isTransactionInProgress());
+			}
 			log.debug("Doing unload, closing and nullifying session");
-			getSession().close();
-			setSession(null);
+			getSessionWrapper().close();
+			setSessionWrapper(null);
 		} else {
 			log
 					.debug("Doing unload, has session controller, sessioncontroller is therefor responsible for session close");
@@ -327,7 +351,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 	 * that after this call the retrieved objects are put in the resource
 	 * content.
 	 */
-	protected List<EObject> loadFromStore(Session sess) {
+	protected List<EObject> loadFromStore(SessionWrapper sess) {
 		if (definedQueriesPresent()) {
 			return loadUsingDefinedQueries(sess);
 		} else {
@@ -336,7 +360,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/** Reads data based on the topclasses list */
-	private ArrayList<EObject> loadUsingTopClasses(Session sess) {
+	private ArrayList<EObject> loadUsingTopClasses(SessionWrapper sess) {
 		log.debug("Loading resource " + getURI() + " using top classes");
 		final ArrayList<EObject> readObjects = new ArrayList<EObject>();
 		for (int i = 0; i < topClassNames.length; i++) {
@@ -344,8 +368,13 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 			log.debug("Loading objects using hql: FROM " + topClassName);
 
-			final Query qry = sess.createQuery("FROM " + topClassName);
-			final Iterator<?> it = qry.list().iterator();
+			final List<?> qryResult;
+			if (sess.isEJB3EntityManager()) {
+				qryResult = sess.executeQuery("select o from " + topClassName + " o");				
+			} else {
+				qryResult = sess.executeQuery("from " + topClassName);
+			}
+			final Iterator<?> it = qryResult.iterator();
 			while (it.hasNext()) {
 				final EObject eobj = (EObject) it.next();
 				// extra check on container because sometimes contained items
@@ -360,14 +389,14 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/** Reads data based using defined queries */
-	private ArrayList<EObject> loadUsingDefinedQueries(Session sess) {
+	private ArrayList<EObject> loadUsingDefinedQueries(SessionWrapper sess) {
 		log.debug("Loading resource " + getURI() + " using defined queries");
 		final ArrayList<EObject> readObjects = new ArrayList<EObject>();
 		final String[] qrys = getDefinedQueries();
 		for (int i = 0; i < qrys.length; i++) {
-			final Query qry = sess.createQuery(qrys[i]);
+			final List<?> qryResult = sess.executeQuery(qrys[i]);
 			log.debug("Loading objects using hql: " + qrys[i]);
-			final Iterator<?> it = qry.list().iterator();
+			final Iterator<?> it = qryResult.iterator();
 			while (it.hasNext()) {
 				final Object obj = it.next();
 				readObjects.add((EObject) obj);
@@ -380,21 +409,16 @@ public class HibernateResource extends StoreResource implements HbResource {
 	public Object[] getObjectsByQuery(String query, boolean cache) {
 		log.debug("Started listing objects by query " + query + " in resource "
 				+ getURI());
-		Transaction tx = null;
-		Session mySession = null;
+		SessionWrapper mySessionWrapper = null;
 		boolean err = true;
 		setIsLoading(true);
 		try {
-			mySession = getSession();
+			mySessionWrapper = getSessionWrapper();
 			if (!hasSessionController) {
-				tx = mySession.beginTransaction();
+				mySessionWrapper.beginTransaction();
 			}
-			final Query qry = mySession.createQuery(query);
-			qry.setCacheable(cache);
-			final Object[] result = qry.list().toArray();
-
-			for (int i = 0; i < result.length; i++) {
-				Object object = result[i];
+			final List<?> qryResult = mySessionWrapper.executeQuery(query, cache);
+			for (Object object : qryResult) {
 				if (object instanceof InternalEObject) {
 					final InternalEObject eObject = (InternalEObject) object;
 					// only add if the object is not already part of this
@@ -410,18 +434,16 @@ public class HibernateResource extends StoreResource implements HbResource {
 			}
 
 			err = false;
-			log.debug("Listed " + result.length + " objects using query "
+			log.debug("Listed " + qryResult.size() + " objects using query "
 					+ query + " in resource " + getURI());
-			return result;
+			return qryResult.toArray();
 		} finally {
 			if (!hasSessionController) {
 				if (err) {
-					if (tx != null) {
-						tx.rollback();
-					}
-					mySession.close();
+					mySessionWrapper.rollbackTransaction();
+					mySessionWrapper.close();
 				} else {
-					tx.commit();
+					mySessionWrapper.commitTransaction();
 				}
 			}
 			setIsLoading(false);
@@ -445,40 +467,33 @@ public class HibernateResource extends StoreResource implements HbResource {
 	public Object[] listByQuery(String query, boolean cache) {
 		log.debug("Started listing objects by query " + query + " in resource "
 				+ getURI());
-		Transaction tx = null;
-		Session mySession = null;
+		SessionWrapper mySessionWrapper = null;
 		boolean err = true;
 		setIsLoading(true);
 		try {
-			mySession = getSession();
+			mySessionWrapper = getSessionWrapper();
 			if (!hasSessionController) {
-				tx = mySession.beginTransaction();
+				mySessionWrapper.beginTransaction();
 			}
-			Query qry = mySession.createQuery(query);
-			qry.setCacheable(cache);
-			Object[] result = qry.list().toArray();
-
-			for (int i = 0; i < result.length; i++) {
-				Object object = result[i];
+			final List<?> qryResult = mySessionWrapper.executeQuery(query, cache);
+			for (Object object : qryResult) {
 				if (object instanceof InternalEObject) {
 					addToContent((InternalEObject) object);
 				}
 			}
 
 			err = false;
-			log.debug("Listed " + result.length + " objects using query "
+			log.debug("Listed " + qryResult.size() + " objects using query "
 					+ query + " in resource " + getURI());
-			return result;
+			return qryResult.toArray();
 		} finally {
 			setIsLoading(false);
 			if (!hasSessionController) {
 				if (err) {
-					if (tx != null) {
-						tx.rollback();
-					}
-					mySession.close();
+					mySessionWrapper.rollbackTransaction();
+					mySessionWrapper.close();
 				} else {
-					tx.commit();
+					mySessionWrapper.commitTransaction();
 				}
 			}
 			log.debug("Finished listing objects by query " + query

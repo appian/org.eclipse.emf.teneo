@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.5 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: HbHelper.java,v 1.6 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -36,7 +36,7 @@ import org.hibernate.mapping.PersistentClass;
  * EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class HbHelper {
 	/** The logger */
@@ -54,7 +54,7 @@ public class HbHelper {
 	/** The registered emf data store factory */
 	private static HbDataStoreFactory emfDataStoreFactory = new HbDataStoreFactory() {
 		public HbDataStore createHbDataStore() {
-			return new HbDataStore();
+			return new HbSessionDataStore();
 		}
 	};
 
@@ -69,7 +69,7 @@ public class HbHelper {
 
 	/** Put a datastore in the dataStoreByPersistentClass */
 	void registerDataStoreByPC(HbDataStore ds) {
-		for (Iterator<?> it = ds.getConfiguration().getClassMappings(); it
+		for (Iterator<?> it = ds.getClassMappings(); it
 				.hasNext();) {
 			final PersistentClass pc = (PersistentClass) it.next();
 			if (dataStoreByPersistentClass.get(pc) != null) {
@@ -135,7 +135,7 @@ public class HbHelper {
 			return;
 		}
 
-		for (Iterator<?> it = emfds.getConfiguration().getClassMappings(); it
+		for (Iterator<?> it = emfds.getClassMappings(); it
 				.hasNext();) {
 			final PersistentClass pc = (PersistentClass) it.next();
 			HbDataStore removedDS = (HbDataStore) dataStoreByPersistentClass
@@ -175,6 +175,11 @@ public class HbHelper {
 		return emfds;
 	}
 
+	/** Register a datastore */
+	public void register(HbDataStore hbDataStore) {
+		emfDataStores.put(hbDataStore.getName(), hbDataStore);
+	}
+	
 	/** Return a emf data store */
 	public HbDataStore getDataStore(String name) {
 		final HbDataStore hds = (HbDataStore) emfDataStores.get(name);

@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListPropertyHandler.java,v 1.11 2007/03/18 19:19:47 mtaal Exp $
+ * $Id: EListPropertyHandler.java,v 1.12 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -64,7 +65,7 @@ import org.hibernate.property.Setter;
  * itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -190,6 +191,14 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 			return ((EcoreEMap<?, ?>)obj).map();
 		}
 		
+		// if this is a elist then give a normal arraylist to 
+		// hibernate otherwise hb will wrap the elist, the hb wrapper
+		// is again wrapped by teneo resulting in notifications being send
+		// out by both the teneo wrapper as the wrapped elist
+		if (obj instanceof EList<?>) {
+			return new ArrayList((List)obj); 
+		}
+		
 		// todo maybe throw error in all other cases?
 		return obj;
 	}
@@ -275,14 +284,8 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 				}
 				
 				// already handled
-				if (currentValue instanceof HibernatePersistableEList<?>) {
-					return;
-				}
-
-				// already handled
-				if (currentValue instanceof HibernatePersistableEMap
-						|| currentValue instanceof MapHibernatePersistableEMap) {
-					// already handled, TODO: also do for persistable elist?
+				if (currentValue instanceof PersistableDelegateList<?> &&
+						value == ((PersistableDelegateList<?>)currentValue).getDelegate()) {
 					return;
 				}
 
