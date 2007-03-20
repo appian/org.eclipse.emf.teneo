@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.11 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.12 2007/03/20 23:35:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -318,7 +318,7 @@ class EntityMapper extends AbstractMapper {
 					getHbmContext().popOverrideStack();
 				}
 			}
-
+			
 			final List<PAnnotatedEStructuralFeature> multipleInheritanceFeatures = getHbmContext()
 					.getMultipleInheritedFeatures(entity);
 			if (entity.getAnnotatedEClass().getESuperTypes().size() <= 1
