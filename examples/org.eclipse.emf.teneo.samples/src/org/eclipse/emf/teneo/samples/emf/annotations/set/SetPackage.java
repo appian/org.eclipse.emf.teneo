@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetPackage.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: SetPackage.java,v 1.3 2007/03/20 23:34:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -56,7 +56,7 @@ public interface SetPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "set";
+	String eNS_PREFIX = "testSet";
 
 	/**
 	 * The singleton instance of the package.
