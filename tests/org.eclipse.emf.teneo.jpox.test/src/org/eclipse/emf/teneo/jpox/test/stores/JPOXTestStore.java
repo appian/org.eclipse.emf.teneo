@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.13 2007/03/05 20:51:25 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.14 2007/03/20 23:35:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -62,7 +62,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -420,8 +420,7 @@ public class JPOXTestStore extends AbstractTestStore {
 	}
 
 	/** Check inheritance strategy */
-	public boolean isInheritanceStrategy(String name, InheritanceType strategy) {
-		final Class clazz = clr.classForName(name);
+	public boolean isInheritanceStrategy(Class<?> clazz, InheritanceType strategy) {
 		final AbstractClassMetaData cmd = ((PersistenceManagerFactoryImpl) pmf).getPMFContext().getMetaDataManager()
 				.getMetaDataForClass(clazz, clr);
 		if (strategy.equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
