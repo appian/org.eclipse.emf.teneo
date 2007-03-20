@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.21 2007/03/18 19:18:25 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.22 2007/03/20 23:34:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public class PersistenceOptions {
 
@@ -100,6 +100,10 @@ public class PersistenceOptions {
 	 * occur
 	 */
 	public static final String QUALIFY_ENTITY_NAME_NSPREFIX = "nsprefix";
+
+	/** Map all lists as a bag to the db (does not map the list index to the db), default is false */
+	public static final String ALWAYS_MAP_LIST_AS_BAG = MAPPING_PREFIX
+			+ "always_map_list_as_bag";
 
 	/** The proxy strategy, can be none (no proxies, default), emf, hibernate */
 	public static final String PROXY_STRATEGY = MAPPING_PREFIX
@@ -235,6 +239,7 @@ public class PersistenceOptions {
 		props.setProperty(DEFAULT_ID_FEATURE_NAME, "e_id");
 		props.setProperty(ID_FEATURE_AS_PRIMARY_KEY, "true");
 		props.setProperty(EMAP_AS_TRUE_MAP, "true");
+		props.setProperty(ALWAYS_MAP_LIST_AS_BAG, "false");
 
 		return props;
 	}
@@ -313,6 +318,14 @@ public class PersistenceOptions {
 				.booleanValue();
 	}
 
+	/**
+	 * Returns the value of the ALWAYS_MAP_LIST_AS_BAG option, default is false
+	 */
+	public boolean alwaysMapListAsBag() {
+		return Boolean.valueOf(properties.getProperty(ALWAYS_MAP_LIST_AS_BAG))
+				.booleanValue();
+	}
+	
 	/**
 	 * Returns the value of the UseJoinTableForNonContainedAssociations option,
 	 * default is false
