@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.5 2007/03/18 22:28:30 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.6 2007/03/20 15:53:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class AbstractProcessingContext {
@@ -149,17 +149,22 @@ public class AbstractProcessingContext {
 	public List<PAnnotatedEStructuralFeature> getMultipleInheritedFeatures(
 			PAnnotatedEClass aClass) {
 		// if one or less supertype then no multiple inheritance
-		if (aClass.getAnnotatedEClass().getESuperTypes().size() <= 1) {
+		final EClass eclass = aClass.getAnnotatedEClass(); 
+		if (eclass.getESuperTypes().size() <= 1) {
 			return new ArrayList<PAnnotatedEStructuralFeature>();
 		}
 
 		log.debug("Determining synthetic mapped features for "
 				+ aClass.getAnnotatedEClass().getName());
 		final List<EStructuralFeature> mappedFeatures = new ArrayList<EStructuralFeature>(
-				aClass.getAnnotatedEClass().getEAllStructuralFeatures());
-		// remove all first inherited features
-		mappedFeatures.removeAll(getFirstInheritedFeatures(aClass
-				.getAnnotatedEClass(), new ArrayList<EStructuralFeature>()));
+				eclass.getEAllStructuralFeatures());
+
+		// remove all the features of the eclass itself
+		mappedFeatures.removeAll(eclass.getEStructuralFeatures());
+		
+		// remove all features inherited from the first supertype 
+		// as this part is modeled in the hbm anyway
+		mappedFeatures.removeAll(eclass.getESuperTypes().get(0).getEAllStructuralFeatures());
 
 		// then remove all id features, these can not be used
 		// todo handle multiple inheritance of mappedsuperclass features
@@ -175,20 +180,6 @@ public class AbstractProcessingContext {
 			}
 		}
 		return toReturn;
-	}
-
-	/**
-	 * Returns the list of all features which are in the first inheritance
-	 * structure
-	 */
-	private List<EStructuralFeature> getFirstInheritedFeatures(EClass eClass,
-			List<EStructuralFeature> features) {
-		features.addAll(eClass.getEStructuralFeatures());
-		if (eClass.getESuperTypes().size() > 0) {
-			return getFirstInheritedFeatures((EClass) eClass.getESuperTypes()
-					.get(0), features);
-		}
-		return features;
 	}
 
 	/** Returns all mapped super classes */

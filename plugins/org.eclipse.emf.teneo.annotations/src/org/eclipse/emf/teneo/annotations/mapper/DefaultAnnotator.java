@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.33 2007/03/18 23:11:20 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.34 2007/03/20 15:53:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -22,7 +22,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
@@ -84,7 +83,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  */
 public class DefaultAnnotator {
 
