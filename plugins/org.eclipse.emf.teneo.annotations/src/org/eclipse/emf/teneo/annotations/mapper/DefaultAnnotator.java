@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.34 2007/03/20 15:53:17 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.35 2007/03/20 23:34:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -83,7 +83,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
 public class DefaultAnnotator {
 
@@ -107,6 +107,9 @@ public class DefaultAnnotator {
 
 	/** Add entity if not present or only handle entied eclasses */
 	private boolean optionAddEntityAnnotation = true;
+
+	/** Map all lists as a map */
+	private boolean optionMapListAsBag = false;
 
 	/** Determines if always a join table is used for non-contained relations */
 	private boolean optionJoinTableForNonContainedAssociations = false;
@@ -253,6 +256,9 @@ public class DefaultAnnotator {
 		optionJoinTableNamingStrategy = po.getJoinTableNamingStrategy();
 		log.debug("JoinTableNamingStrategy " + optionJoinTableNamingStrategy);
 
+		optionMapListAsBag = po.alwaysMapListAsBag();
+		log.debug("optionMapListAsBag " + optionMapListAsBag);
+		
 		optionDefaultTemporal = TemporalType.get(po.getDefaultTemporalValue());
 		if (optionDefaultTemporal == null) {
 			throw new IllegalArgumentException("Temporal value not found: "
@@ -988,7 +994,7 @@ public class DefaultAnnotator {
 		if (!otmWasSet) {
 			log
 					.debug("Setting indexed and unique from ereference because otm was not set manually!");
-			otm.setIndexed(eReference.isOrdered() && aReference.getOrderBy() == null);
+			otm.setIndexed(!optionMapListAsBag && eReference.isOrdered() && aReference.getOrderBy() == null);
 			otm.setUnique(eReference.isUnique());
 
 			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
