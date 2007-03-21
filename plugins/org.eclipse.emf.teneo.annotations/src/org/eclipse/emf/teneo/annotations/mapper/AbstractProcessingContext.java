@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.3.2.1 2007/03/20 15:39:16 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.3.2.2 2007/03/21 16:10:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -32,6 +32,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
@@ -40,7 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3.2.1 $
+ * @version $Revision: 1.3.2.2 $
  */
 
 public class AbstractProcessingContext {
@@ -128,57 +129,105 @@ public class AbstractProcessingContext {
     }
 
 	/**
-	 * Returns the flattened list of all features of the supertypes for which the features should be added to the
-	 * mapping of the passed eclass. This is required to (more-or-less) support multiple inheritance scenarios. In the
-	 * case of multiple inheritance the first supertype is the 'real' mapped supertype, the other types are treated as
-	 * mappedsuperclasses.
+	 * This method returns all inherited features which need to be added to the
+	 * mapping of the aclass itself. The method makes a distinction makes a
+	 * distinction between the first supertype (the first one in the list) and
+	 * later ones. The features of the first type are only added to the mapping
+	 * if the first type is a mappedsuperclass, in all other cases the features
+	 * of the first type are not mapped in the aclass itself because they are
+	 * inherited (the mapping describes the inheritance relation). For the other
+	 * supertypes (located at index 1 and up in getESuperTypes) the features are
+	 * mapped as properties in the class itself.
 	 */
-	public List getMultipleInheritedFeatures(PAnnotatedEClass aClass) {
+	public List getInheritedFeatures(
+			PAnnotatedEClass aClass) {
+		// if no supertypes then there are no inherited features
 		final EClass eclass = aClass.getAnnotatedEClass();
-		// if one or less supertype then no multiple inheritance
-		if (eclass.getESuperTypes().size() <=1) { 
+		if (eclass.getESuperTypes().size() == 0) {
 			return new ArrayList();
 		}
-		
-		log.debug("Determining synthetic mapped features for " + aClass.getAnnotatedEClass().getName());
-		final List mappedFeatures = new ArrayList(eclass.getEAllStructuralFeatures());
+		log
+				.debug("Determining inherited features which are mapped locally for "
+						+ aClass.getAnnotatedEClass().getName());
+		final List inheritedFeatures = new ArrayList(
+				eclass.getEAllStructuralFeatures());
 
-		// remove all of our own features
-		mappedFeatures.removeAll(eclass.getEStructuralFeatures());
-		
-		// remove all features inherited from the first supertype 
-		// as this part is modeled in the hbm anyway
-		mappedFeatures.removeAll(((EClass)eclass.getESuperTypes().get(0)).getEAllStructuralFeatures());
+		// remove all the features of the eclass itself
+		inheritedFeatures.removeAll(eclass.getEStructuralFeatures());
 
-		// then remove all id features, these can not be used
-		final ArrayList toReturn = new ArrayList();
-		for (Iterator it = mappedFeatures.iterator(); it.hasNext();) {
-			final EStructuralFeature esf = (EStructuralFeature) it.next();
-			final PAnnotatedEStructuralFeature pef = aClass.getPaModel().getPAnnotated(esf);
-			if (!(pef instanceof PAnnotatedEAttribute) || ((PAnnotatedEAttribute) pef).getId() == null) {
-				toReturn.add(pef);
-			}
+		// check if the type has a supertype (a non-transient, non-mappedsuperclass, if so then
+		// remove all features inherited from the first supertype
+		// as this inheritance is done in the mapping file
+		if (aClass.getPaSuperEntity() != null) {
+			inheritedFeatures.removeAll(aClass.getPaSuperEntity().getAnnotatedEClass()
+					.getEAllStructuralFeatures());
 		}
-		return toReturn;
+
+		// get all efeatures from direct mappedsuperclasses
+		// the id feature inherited from a direct mappedsuperclass should be
+		// maintained in other cases the id features are not mapped locally.
+		// The system can also ignore this and let the user be more carefull not
+		// to
+		// add id features here and there in the inheritance structure but this
+		// is
+		// more robust
+		removeIdFeatures(aClass, inheritedFeatures);
+
+		// convert the result
+		final PAnnotatedModel paModel = aClass.getPaModel();
+		final ArrayList result = new ArrayList();
+		for (Iterator it = inheritedFeatures.iterator(); it.hasNext();) {
+			EStructuralFeature esf = (EStructuralFeature)it.next();
+			result.add(paModel.getPAnnotated(esf));
+		}
+		
+		return result;
 	}
 
-	/** Returns all mapped super classes */
-	public List getMappedSuperClasses(PAnnotatedEClass entity) {
-		final List result = new ArrayList();
-		for (Iterator it = entity.getAnnotatedEClass().getESuperTypes().iterator(); it.hasNext();) {
-			final EClass superEClass = (EClass) it.next();
-			PAnnotatedEClass superPAClass = entity.getPaModel().getPAnnotated(superEClass);
-			if (superPAClass != null && superPAClass.getMappedSuperclass() != null) {
-				result.add(superPAClass);
-				// and add the mapped super classes of the mapped superclass
-				// note that only the unbroken chain of mappedsuperclasses is added to the result, if there
-				// is a non-mappedsuperclass in the inheritance then it stops there
-				// issue also identified by Douglas Bitting
-				result.addAll(getMappedSuperClasses(superPAClass));
+	/** Remove all id-features not inherited from a direct mapped superclass */
+	private void removeIdFeatures(PAnnotatedEClass aClass,
+			List inheritedFeatures) {
+		// first get all the mapped superclasses
+		final ArrayList mappedSuperEClasses = new ArrayList();
+		for (Iterator it = aClass.getAnnotatedEClass().getESuperTypes().iterator(); it.hasNext();) {
+			EClass superEClass = (EClass)it.next();
+			final PAnnotatedEClass superPAClass = aClass.getPaModel()
+					.getPAnnotated(superEClass);
+			if (superPAClass != null
+					&& superPAClass.getMappedSuperclass() != null) {
+				mappedSuperEClasses.add(superPAClass.getAnnotatedEClass());
 			}
 		}
 
-		return result;
+		// now get all the efeatures of the mappedsuperclasses to prevent any id
+		// features from them being removed, only do that when the aclass does not 
+		// have a real super type, in that case the id can be inherited from the
+		// mappedsuperclass
+		final ArrayList mappedSuperFeatures = new ArrayList();
+		if (aClass.getPaSuperEntity() == null) {
+			for (Iterator it = mappedSuperEClasses.iterator(); it.hasNext();) {
+				final EClass mappedSuperEClass = (EClass)it.next();
+				mappedSuperFeatures.removeAll(mappedSuperEClass
+						.getEAllStructuralFeatures());
+				mappedSuperFeatures.addAll(mappedSuperEClass
+						.getEAllStructuralFeatures());
+			}
+		}
+
+		// now remove all id features not coming from a direct mapped superclass
+		final ArrayList toRemove = new ArrayList();
+		for (Iterator it = inheritedFeatures.iterator(); it.hasNext();) {
+			EStructuralFeature esf = (EStructuralFeature)it.next();
+			final PAnnotatedEStructuralFeature pef = aClass.getPaModel()
+					.getPAnnotated(esf);
+
+			if (pef instanceof PAnnotatedEAttribute
+					&& ((PAnnotatedEAttribute) pef).getId() != null
+					&& !mappedSuperFeatures.contains(esf)) {
+				toRemove.add(esf);
+			}
+		}
+		inheritedFeatures.removeAll(toRemove);
 	}
 
 	/** Returns true if the eclass only has mappedsuperclasses without id annotated property */

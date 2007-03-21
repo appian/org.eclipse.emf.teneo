@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.9 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.8.2.1 2007/03/21 16:10:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -10,8 +10,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
@@ -20,8 +18,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
-import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
@@ -133,7 +129,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
-	EList<PAnnotatedEStructuralFeature> getPaEStructuralFeatures();
+	EList getPaEStructuralFeatures();
 
 	/**
 	 * Returns the value of the '<em><b>Attribute Overrides</b></em>' containment reference list.
@@ -150,7 +146,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride" containment="true"
 	 * @generated
 	 */
-	EList<AttributeOverride> getAttributeOverrides();
+	EList getAttributeOverrides();
 
 	/**
 	 * Returns the value of the '<em><b>Discriminator Column</b></em>' containment reference.
@@ -344,7 +340,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<PrimaryKeyJoinColumn> getPrimaryKeyJoinColumns();
+	EList getPrimaryKeyJoinColumns();
 
 	/**
 	 * Returns the value of the '<em><b>Secondary Tables</b></em>' containment reference list.
@@ -360,7 +356,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable" containment="true"
 	 * @generated
 	 */
-	EList<SecondaryTable> getSecondaryTables();
+	EList getSecondaryTables();
 
 	/**
 	 * Returns the value of the '<em><b>Table</b></em>' containment reference.
@@ -427,13 +423,13 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride" containment="true"
 	 * @generated
 	 */
-	EList<AssociationOverride> getAssociationOverrides();
+	EList getAssociationOverrides();
 
 	/**
 	 * @return Returns the List of PAnnotatedEAttributes belonging to this PAnnotatedEClass for which an Id PAnnotation
 	 *         is present.
 	 */
-	List<PAnnotatedEStructuralFeature> getPaIdFeatures();
+	List getPaIdAttributes();
 
 	/** Returns true if the eclass has an PAnnotatedEStructuralFeature with an id annotation */
 	boolean hasIdAnnotatedFeature();
@@ -445,7 +441,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @return Returns the PAnnotatedEntity that is MappedSuperclass of this PAnnotatedEClass, <code>null</code> if it
 	 *         has none. TODO support multiple mapped superclasses.
 	 */
-	PAnnotatedEClass getPaMappedSuper();
+	List getPaMappedSupers();
 
 	/**
 	 * @return Returns the PAnnotatedEntity that is a super entity of this PAnnotatedEClass, <code>null</code> if this

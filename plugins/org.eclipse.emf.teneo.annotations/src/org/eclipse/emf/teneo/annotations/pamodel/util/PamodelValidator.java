@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelValidator.java,v 1.13.2.1 2007/02/11 20:44:01 mtaal Exp $
+ * $Id: PamodelValidator.java,v 1.13.2.2 2007/03/21 16:10:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -412,32 +412,32 @@ public class PamodelValidator extends EObjectValidator {
 			return false;
 		}
 		// it is an entity with id, check it does not have a mapped superclass that has id
-		PAnnotatedEClass paMappedSuper = pAnnotatedEClass.getPaMappedSuper();
-		if (paMappedSuper != null && paMappedSuper.hasIdAnnotatedFeature()) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperPrimaryKey", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
-			}
-			return false;
-		}
-		// check that it is a root entity
-		if (paMappedSuper.getPaSuperEntity() != null) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperPrimaryKey", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
-			}
-			return false;
-		}
+//		PAnnotatedEClass paMappedSuper = pAnnotatedEClass.getPaMappedSuper();
+//		if (paMappedSuper != null && paMappedSuper.hasIdAnnotatedFeature()) {
+//			if (diagnostics != null) {
+//				diagnostics.add
+//					(new BasicDiagnostic
+//						(Diagnostic.ERROR,
+//						 DIAGNOSTIC_SOURCE,
+//						 0,
+//						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperPrimaryKey", getObjectLabel(pAnnotatedEClass, context) }),
+//						 new Object[] { pAnnotatedEClass }));
+//			}
+//			return false;
+//		}
+//		// check that it is a root entity
+//		if (paMappedSuper.getPaSuperEntity() != null) {
+//			if (diagnostics != null) {
+//				diagnostics.add
+//					(new BasicDiagnostic
+//						(Diagnostic.ERROR,
+//						 DIAGNOSTIC_SOURCE,
+//						 0,
+//						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperPrimaryKey", getObjectLabel(pAnnotatedEClass, context) }),
+//						 new Object[] { pAnnotatedEClass }));
+//			}
+//			return false;
+//		}
 		return true;
 	}
 
