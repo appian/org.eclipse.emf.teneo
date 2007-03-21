@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.36 2007/03/20 23:36:14 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.37 2007/03/21 15:46:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -83,7 +83,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  */
 public class DefaultAnnotator {
 
@@ -108,8 +108,11 @@ public class DefaultAnnotator {
 	/** Add entity if not present or only handle entied eclasses */
 	private boolean optionAddEntityAnnotation = true;
 
-	/** Map all lists as a map */
+	/** Map all lists as a bag */
 	private boolean optionMapListAsBag = false;
+
+	/** Map all lists as a idbag */
+	private boolean optionMapListAsIdBag = false;
 
 	/** Determines if always a join table is used for non-contained relations */
 	private boolean optionJoinTableForNonContainedAssociations = false;
@@ -258,6 +261,9 @@ public class DefaultAnnotator {
 
 		optionMapListAsBag = po.alwaysMapListAsBag();
 		log.debug("optionMapListAsBag " + optionMapListAsBag);
+		
+		optionMapListAsIdBag = po.alwaysMapListAsIdBag();
+		log.debug("optionMapListAsIdBag " + optionMapListAsIdBag);
 		
 		optionDefaultTemporal = TemporalType.get(po.getDefaultTemporalValue());
 		if (optionDefaultTemporal == null) {
@@ -994,8 +1000,9 @@ public class DefaultAnnotator {
 		if (!otmWasSet) {
 			log 
 					.debug("Setting indexed and unique from ereference because otm was not set manually!");
-			otm.setIndexed(!optionMapListAsBag && eReference.isOrdered() && aReference.getOrderBy() == null);
-			otm.setUnique(eReference.isUnique());
+			// note force a join table in case of idbag!
+			otm.setIndexed(!optionMapListAsBag && !optionMapListAsIdBag && eReference.isOrdered() && aReference.getOrderBy() == null);
+			otm.setUnique(!optionMapListAsIdBag && eReference.isUnique());
 
 			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
 				log
@@ -1776,5 +1783,12 @@ public class DefaultAnnotator {
 
 		return optionSQLCaseStrategy.convert(correctedName.substring(0,
 				optionMaximumSqlLength));
+	}
+
+	/**
+	 * @return the optionMapListAsIdBag
+	 */
+	public boolean isOptionMapListAsIdBag() {
+		return optionMapListAsIdBag;
 	}
 }

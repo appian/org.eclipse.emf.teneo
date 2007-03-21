@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.11 2007/02/08 23:12:35 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.12 2007/03/21 15:46:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -1132,19 +1132,19 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	/**
 	 * {@inheritDoc }
 	 */
-	public PAnnotatedEClass getPaMappedSuper() {
+	public List<PAnnotatedEClass> getPaMappedSupers() {
 		// TODO cache its MappedSuperClass
 		PAnnotatedModel model = getPaModel();
-		PAnnotatedEClass mappedSuper = null;
+		List<PAnnotatedEClass> mappedSupers = new ArrayList<PAnnotatedEClass>();
 		if (model != null && getAnnotatedEClass() != null) {
 			Iterator<EClass> i = getAnnotatedEClass().getESuperTypes().iterator();
-			while (mappedSuper == null && i.hasNext()) {
+			while (i.hasNext()) {
 				PAnnotatedEClass x = model.getPAnnotated(i.next());
 				if (x.getMappedSuperclass() != null)
-					mappedSuper = x;
+					mappedSupers.add(x);
 			}
 		}
-		return mappedSuper;
+		return mappedSupers;
 	}
 
 	/**

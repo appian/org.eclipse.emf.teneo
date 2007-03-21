@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.9 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.10 2007/03/21 15:46:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -445,7 +445,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @return Returns the PAnnotatedEntity that is MappedSuperclass of this PAnnotatedEClass, <code>null</code> if it
 	 *         has none. TODO support multiple mapped superclasses.
 	 */
-	PAnnotatedEClass getPaMappedSuper();
+	List<PAnnotatedEClass> getPaMappedSupers();
 
 	/**
 	 * @return Returns the PAnnotatedEntity that is a super entity of this PAnnotatedEClass, <code>null</code> if this
