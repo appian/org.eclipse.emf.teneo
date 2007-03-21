@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritancePackageImpl.java,v 1.1 2007/03/18 22:28:33 mtaal Exp $
+ * $Id: TestinheritancePackageImpl.java,v 1.2 2007/03/21 15:45:36 mtaal Exp $
  */
 package testinheritance.impl;
 
@@ -13,7 +13,12 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import testinheritance.Child;
+import testinheritance.Child2;
 import testinheritance.NameValuePair;
+import testinheritance.ParentOne;
+import testinheritance.ParentTwo;
+import testinheritance.ParentZero;
 import testinheritance.SomeBaseClass;
 import testinheritance.SomeOtherBaseClass;
 import testinheritance.SomeResource;
@@ -54,6 +59,41 @@ public class TestinheritancePackageImpl extends EPackageImpl implements Testinhe
 	 * @generated
 	 */
 	private EClass nameValuePairEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parentOneEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parentTwoEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parentZeroEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass childEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass child2EClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -209,6 +249,96 @@ public class TestinheritancePackageImpl extends EPackageImpl implements Testinhe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getParentOne() {
+		return parentOneEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParentOne_AnotherProperty() {
+		return (EAttribute)parentOneEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getParentTwo() {
+		return parentTwoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParentTwo_TestId() {
+		return (EAttribute)parentTwoEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getParentZero() {
+		return parentZeroEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParentZero_Name() {
+		return (EAttribute)parentZeroEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getChild() {
+		return childEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChild_Age() {
+		return (EAttribute)childEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getChild2() {
+		return child2EClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChild2_Age() {
+		return (EAttribute)child2EClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TestinheritanceFactory getTestinheritanceFactory() {
 		return (TestinheritanceFactory)getEFactoryInstance();
 	}
@@ -244,6 +374,21 @@ public class TestinheritancePackageImpl extends EPackageImpl implements Testinhe
 		nameValuePairEClass = createEClass(NAME_VALUE_PAIR);
 		createEAttribute(nameValuePairEClass, NAME_VALUE_PAIR__NAME);
 		createEAttribute(nameValuePairEClass, NAME_VALUE_PAIR__VALUE);
+
+		parentOneEClass = createEClass(PARENT_ONE);
+		createEAttribute(parentOneEClass, PARENT_ONE__ANOTHER_PROPERTY);
+
+		parentTwoEClass = createEClass(PARENT_TWO);
+		createEAttribute(parentTwoEClass, PARENT_TWO__TEST_ID);
+
+		parentZeroEClass = createEClass(PARENT_ZERO);
+		createEAttribute(parentZeroEClass, PARENT_ZERO__NAME);
+
+		childEClass = createEClass(CHILD);
+		createEAttribute(childEClass, CHILD__AGE);
+
+		child2EClass = createEClass(CHILD2);
+		createEAttribute(child2EClass, CHILD2__AGE);
 	}
 
 	/**
@@ -276,6 +421,11 @@ public class TestinheritancePackageImpl extends EPackageImpl implements Testinhe
 		// Add supertypes to classes
 		someResourceEClass.getESuperTypes().add(this.getSomeBaseClass());
 		someResourceEClass.getESuperTypes().add(this.getSomeOtherBaseClass());
+		childEClass.getESuperTypes().add(this.getParentZero());
+		childEClass.getESuperTypes().add(this.getParentTwo());
+		child2EClass.getESuperTypes().add(this.getParentZero());
+		child2EClass.getESuperTypes().add(this.getParentOne());
+		child2EClass.getESuperTypes().add(this.getParentTwo());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(someResourceEClass, SomeResource.class, "SomeResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -290,6 +440,21 @@ public class TestinheritancePackageImpl extends EPackageImpl implements Testinhe
 		initEClass(nameValuePairEClass, NameValuePair.class, "NameValuePair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNameValuePair_Name(), ecorePackage.getEString(), "name", null, 0, 1, NameValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNameValuePair_Value(), ecorePackage.getEString(), "value", null, 0, 1, NameValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parentOneEClass, ParentOne.class, "ParentOne", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParentOne_AnotherProperty(), ecorePackage.getELong(), "anotherProperty", null, 0, 1, ParentOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parentTwoEClass, ParentTwo.class, "ParentTwo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParentTwo_TestId(), ecorePackage.getELong(), "testId", null, 0, 1, ParentTwo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parentZeroEClass, ParentZero.class, "ParentZero", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParentZero_Name(), ecorePackage.getEString(), "name", null, 0, 1, ParentZero.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(childEClass, Child.class, "Child", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getChild_Age(), ecorePackage.getELong(), "age", null, 0, 1, Child.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(child2EClass, Child2.class, "Child2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getChild2_Age(), ecorePackage.getELong(), "age", null, 0, 1, Child2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -312,6 +477,24 @@ public class TestinheritancePackageImpl extends EPackageImpl implements Testinhe
 		   source, 
 		   new String[] {
 			 "appinfo", "@Transient"
+		   });		
+		addAnnotation
+		  (parentTwoEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@MappedSuperclass"
+		   });		
+		addAnnotation
+		  (getParentTwo_TestId(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });		
+		addAnnotation
+		  (parentZeroEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@MappedSuperclass"
 		   });
 	}
 

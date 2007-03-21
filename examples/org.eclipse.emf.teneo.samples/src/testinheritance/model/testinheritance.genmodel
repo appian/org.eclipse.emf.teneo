@@ -18,5 +18,20 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//NameValuePair/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//NameValuePair/value"/>
     </genClasses>
+    <genClasses ecoreClass="testinheritance.ecore#//ParentOne">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//ParentOne/anotherProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="testinheritance.ecore#//ParentTwo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//ParentTwo/testId"/>
+    </genClasses>
+    <genClasses ecoreClass="testinheritance.ecore#//ParentZero">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//ParentZero/name"/>
+    </genClasses>
+    <genClasses ecoreClass="testinheritance.ecore#//Child">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//Child/age"/>
+    </genClasses>
+    <genClasses ecoreClass="testinheritance.ecore#//Child2">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//Child2/age"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

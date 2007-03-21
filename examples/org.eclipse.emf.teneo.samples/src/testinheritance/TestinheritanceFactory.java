@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritanceFactory.java,v 1.1 2007/03/18 22:28:33 mtaal Exp $
+ * $Id: TestinheritanceFactory.java,v 1.2 2007/03/21 15:45:36 mtaal Exp $
  */
 package testinheritance;
 
@@ -60,6 +60,51 @@ public interface TestinheritanceFactory extends EFactory {
 	 * @generated
 	 */
 	NameValuePair createNameValuePair();
+
+	/**
+	 * Returns a new object of class '<em>Parent One</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parent One</em>'.
+	 * @generated
+	 */
+	ParentOne createParentOne();
+
+	/**
+	 * Returns a new object of class '<em>Parent Two</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parent Two</em>'.
+	 * @generated
+	 */
+	ParentTwo createParentTwo();
+
+	/**
+	 * Returns a new object of class '<em>Parent Zero</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parent Zero</em>'.
+	 * @generated
+	 */
+	ParentZero createParentZero();
+
+	/**
+	 * Returns a new object of class '<em>Child</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Child</em>'.
+	 * @generated
+	 */
+	Child createChild();
+
+	/**
+	 * Returns a new object of class '<em>Child2</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Child2</em>'.
+	 * @generated
+	 */
+	Child2 createChild2();
 
 	/**
 	 * Returns the package supported by this factory.
