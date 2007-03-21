@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MultipleInheritanceAction.java,v 1.1.2.2 2007/03/18 22:34:31 mtaal Exp $
+ * $Id: MultipleInheritanceAction.java,v 1.1.2.3 2007/03/21 16:09:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -24,6 +24,8 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
+import testinheritance.Child;
+import testinheritance.Child2;
 import testinheritance.NameValuePair;
 import testinheritance.SomeResource;
 import testinheritance.TestinheritanceFactory;
@@ -33,7 +35,7 @@ import testinheritance.TestinheritancePackage;
  * Tests nullable enum and enum as id
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1.2.2 $
+ * @version $Revision: 1.1.2.3 $
  */
 public class MultipleInheritanceAction extends AbstractTestAction {
 	/**
@@ -91,6 +93,50 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 			}
 		} catch (IOException e) {
 			throw new StoreTestException("IOException", e);
+		}
+		
+		// now test mappedsuperclasses
+		{
+			store.beginTransaction();
+			final Child child = TestinheritanceFactory.eINSTANCE.createChild();
+			child.setAge(10);
+			child.setName("myName");
+			child.setTestId(4); // this is the key!
+			store.store(child);
+		}
+		try {
+			store.beginTransaction();
+			final Child child = TestinheritanceFactory.eINSTANCE.createChild();
+			child.setAge(11);
+			child.setName("myName2");
+			child.setTestId(4); // this is the key!
+			store.store(child);
+			fail("PK is not enforced!");
+		} catch (Exception e) {
+			// should fail
+			store.rollbackTransaction();
+		}
+		
+		// this child gets the id from the parent, which has a synthetic id
+		{
+			store.beginTransaction();
+			final Child2 child = TestinheritanceFactory.eINSTANCE.createChild2();
+			child.setAge(10);
+			child.setAnotherProperty(40);
+			child.setName("myName");
+			child.setTestId(4); // this is not the key!
+			store.store(child);
+		}
+		try {
+			store.beginTransaction();
+			final Child2 child = TestinheritanceFactory.eINSTANCE.createChild2();
+			child.setAge(11);
+			child.setAnotherProperty(41);
+			child.setName("myName2");
+			child.setTestId(4); // this is not the key!
+			store.store(child);
+		} catch (Exception e) {
+			// should fail
 		}
 	}
 }
