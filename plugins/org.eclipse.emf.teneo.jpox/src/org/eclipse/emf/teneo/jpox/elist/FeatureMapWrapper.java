@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapWrapper.java,v 1.5 2007/02/08 23:14:52 mtaal Exp $
+ * $Id: FeatureMapWrapper.java,v 1.6 2007/03/21 20:40:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -63,7 +63,7 @@ import org.jpox.util.ClassUtils;
  * to use the backingstore as the delegate because the list can be detached.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ $Date: 2007/02/08 23:14:52 $
+ * @version $Revision: 1.6 $ $Date: 2007/03/21 20:40:20 $
  */
 
 public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Queryable, SCOList {
@@ -409,15 +409,22 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 */
 	@SuppressWarnings("unchecked")
 	public void runReachability(java.util.Set reachables) {
-		if (jdoDelegate != null) {
-			jdoDelegate.runReachability(reachables);
-		} else {
-			Object[] values = toArray();
-			for (int i = 0; i < values.length; i++) {
-				if (values[i] != null && values[i] instanceof PersistenceCapable) {
-					stateManager.getPersistenceManager().findStateManager((PersistenceCapable) values[i])
-							.runReachability(reachables);
-				}
+		
+		for (Iterator it = iterator(); it.hasNext();) {
+			final FeatureMapEntry gfm = (FeatureMapEntry)it.next();
+			
+			// first add the gfm to the reachables
+			final StateManager sm = stateManager.getPersistenceManager().findStateManager((PersistenceCapable) gfm);
+			if (!reachables.contains(sm.getInternalObjectId())) {
+				sm.flush();
+				reachables.add(sm.getInternalObjectId());
+			}
+			
+			// now check if the gfm contains a pc
+			final Object value = gfm.getValue();
+			if (value instanceof PersistenceCapable) {
+				final StateManager valueSM = stateManager.getPersistenceManager().findStateManager((PersistenceCapable) value);
+				valueSM.runReachability(reachables);
 			}
 		}
 	}
