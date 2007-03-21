@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.13 2007/03/21 15:46:33 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.14 2007/03/21 20:39:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -222,7 +222,9 @@ class EntityMapper extends AbstractMapper {
 			return hasCompositeID(aClass.getPaSuperEntity());
 		}
 		for (PAnnotatedEClass superAClass : aClass.getPaMappedSupers()) {
-			return hasCompositeID(superAClass);
+			if (hasCompositeID(superAClass)) {
+				return true;
+			}
 		}
 		{
 			List<PAnnotatedEStructuralFeature> features = aClass

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.12 2007/03/21 15:46:33 mtaal Exp $
+ * $Id: MappingContext.java,v 1.13 2007/03/21 20:39:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -484,7 +484,7 @@ public class MappingContext extends AbstractProcessingContext {
 		return !isEasyEMFDynamic(eclassifier) && !isEMFGenerated(eclassifier);
 	}
 
-	/** Check if this is an entity (so without an impl class) */
+	/** Return the impl class */
 	public Class<?> getImpl(EClassifier eclassifier) {
 		return EModelResolver.instance().getJavaClass(eclassifier);
 	}
