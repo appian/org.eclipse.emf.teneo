@@ -1,3 +1,19 @@
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Martin Taal
+ * </copyright>
+ *
+ * $Id: HbDataStore.java,v 1.17 2007/03/21 20:40:41 mtaal Exp $
+ */
+
 package org.eclipse.emf.teneo.hibernate;
 
 import java.io.IOException;
@@ -58,6 +74,12 @@ import org.hibernate.mapping.Table;
 import org.hibernate.mapping.Value;
 import org.hibernate.tool.hbm2ddl.SchemaUpdate;
 
+/**
+ * Common base class for the standard hb datastore and the entity manager oriented datastore.
+ * 
+ * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
+ * @version $Revision: 1.17 $
+ */
 public abstract class HbDataStore {
 
 	/** The logger */

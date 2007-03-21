@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.1 2007/03/20 23:33:48 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.2 2007/03/21 20:40:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -32,12 +32,11 @@ import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.ejb.Ejb3Configuration;
 
-
 /**
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class HbEntityDataStore extends HbDataStore {
 
