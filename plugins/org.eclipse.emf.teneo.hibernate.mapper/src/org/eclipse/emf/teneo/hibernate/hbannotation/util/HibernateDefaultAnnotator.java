@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.6 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.7 2007/03/21 15:46:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -26,10 +26,13 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
+import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationFactory;
+import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
@@ -100,7 +103,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute, boolean forceNullable) {
 		boolean isCollectionOfElements = (aAttribute instanceof HbAnnotatedEAttribute && null != ((HbAnnotatedEAttribute) aAttribute)
 				.getHbCollectionOfElements());
-
+		
 		final HbAnnotatedEAttribute hea = (HbAnnotatedEAttribute) aAttribute;
 		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) aAttribute.getPaModel().getPAnnotated(
 				aAttribute.getAnnotatedEAttribute().getEAttributeType());
@@ -177,10 +180,18 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	protected void processOneToManyReference(PAnnotatedEReference aReference, boolean forceOptional) {
 		boolean isCollectionOfElements = (aReference instanceof HbAnnotatedEReference && null != ((HbAnnotatedEReference) aReference)
 				.getHbCollectionOfElements());
+
+		// add an idbag annotation
+		if (isOptionMapListAsIdBag() && aReference.getAnnotatedEReference().isMany() && aReference.getOneToMany() == null) {
+			((HbAnnotatedEReference)aReference).setHbIdBag(HbAnnotationFactory.eINSTANCE.createIdBag());
+			// add a join table
+			
+		}
+		
 		if (!isCollectionOfElements) {
 			super.processOneToManyReference(aReference, forceOptional);
 		}
-
+		
 		// now handle the case of defaultCacheStrategy which is different than none
 		boolean hasCache = ((HbAnnotatedEReference) aReference).getHbCache() != null;
 		if (!hasCache && defaultCacheStrategy.compareToIgnoreCase(CacheConcurrencyStrategy.NONE_LITERAL.getName()) != 0) {

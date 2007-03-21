@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.14 2007/03/18 22:28:38 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.15 2007/03/21 15:46:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -398,10 +398,14 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 					: idBag.getGenerator());
 			final String type = (idBag.getType() == null ? "long" : idBag
 					.getType());
+			if (false && idBag.getTable() != null) {
+				collectionElement.addAttribute("table", idBag.getTable());
+			}
 			final Element collectionIdElement = collectionElement
 					.addElement("collection-id");
-			collectionIdElement.addAttribute("column", "ID");
+			collectionIdElement.addAttribute("column", hbmContext.getIdbagIDColumnName());
 			collectionIdElement.addAttribute("type", type);
+			
 			collectionIdElement.addElement("generator").addAttribute("class",
 					generator);
 		}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEAnnotationParserImporter.java,v 1.2 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbEAnnotationParserImporter.java,v 1.3 2007/03/21 15:46:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -57,14 +57,14 @@ public class HbEAnnotationParserImporter extends EAnnotationParserImporter {
 
 	/** Find the efeature */
 	public EStructuralFeature getEStructuralFeature(EClass eClass, String name) {
-		for (Iterator it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
+		for (Iterator<?> it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
 			final EStructuralFeature ef = (EStructuralFeature) it.next();
 			if (ef.getName().compareToIgnoreCase(name) == 0)
 				return ef;
 		}
 		// not found try with the hb prefix
 		final String hbName = "hb" + name;
-		for (Iterator it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
+		for (Iterator<?> it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
 			final EStructuralFeature ef = (EStructuralFeature) it.next();
 			if (ef.getName().compareToIgnoreCase(hbName) == 0)
 				return ef;

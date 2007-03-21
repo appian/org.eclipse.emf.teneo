@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.11 2007/03/18 22:28:38 mtaal Exp $
+ * $Id: MappingContext.java,v 1.12 2007/03/21 15:46:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -116,6 +116,7 @@ public class MappingContext extends AbstractProcessingContext {
 	// Options
 	private boolean alwaysVersion;
 	private boolean isMapEMapAsTrueMap;
+	private String idbagIDColumnName = "ID";
 
 	/** The constructor */
 	public MappingContext() {
@@ -137,6 +138,7 @@ public class MappingContext extends AbstractProcessingContext {
 		sqlCaseStrategy = po.getSQLCaseStrategy();
 		alwaysVersion = po.getAlwaysVersion();
 		isMapEMapAsTrueMap = po.isMapEMapAsTrueMap();
+		idbagIDColumnName = po.getIDBagIDColumnName();
 	}
 
 	/** Return the concrete impl. class */
@@ -570,5 +572,12 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	public void setCurrentEFeature(EStructuralFeature currentEFeature) {
 		this.currentEFeature = currentEFeature;
+	}
+
+	/**
+	 * @return the idbagIDColumnName
+	 */
+	public String getIdbagIDColumnName() {
+		return idbagIDColumnName;
 	}
 }

@@ -37,6 +37,7 @@ Package hbannotation <http://www.eclipse.org/emf/teneo/2006/HbAnnotation>
   Class IdBag -> HbAnnotation
     Attribute generator : EString
     Attribute type : EString
+    Attribute table : EString
 
   Class GenericGenerator -> HbAnnotation
     Attribute name : EString<<1..1>>

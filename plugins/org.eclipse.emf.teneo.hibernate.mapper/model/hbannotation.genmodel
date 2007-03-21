@@ -53,6 +53,7 @@
     <genClasses ecoreClass="hbannotation.ecore#//IdBag">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//IdBag/generator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//IdBag/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//IdBag/table"/>
     </genClasses>
     <genClasses ecoreClass="hbannotation.ecore#//GenericGenerator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//GenericGenerator/name"/>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdBagImpl.java,v 1.3 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: IdBagImpl.java,v 1.4 2007/03/21 15:46:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getGenerator <em>Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getTable <em>Table</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,6 +88,26 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 * @ordered
 	 */
 	protected String type = TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTable() <em>Table</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TABLE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTable() <em>Table</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTable()
+	 * @generated
+	 * @ordered
+	 */
+	protected String table = TABLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,6 +213,27 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTable() {
+		return table;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTable(String newTable) {
+		String oldTable = table;
+		table = newTable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.ID_BAG__TABLE, oldTable, table));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -202,6 +244,8 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 				return getGenerator();
 			case HbAnnotationPackage.ID_BAG__TYPE:
 				return getType();
+			case HbAnnotationPackage.ID_BAG__TABLE:
+				return getTable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -222,6 +266,9 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 				return;
 			case HbAnnotationPackage.ID_BAG__TYPE:
 				setType((String)newValue);
+				return;
+			case HbAnnotationPackage.ID_BAG__TABLE:
+				setTable((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -244,6 +291,9 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 			case HbAnnotationPackage.ID_BAG__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
+			case HbAnnotationPackage.ID_BAG__TABLE:
+				setTable(TABLE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -262,6 +312,8 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 				return GENERATOR_EDEFAULT == null ? generator != null : !GENERATOR_EDEFAULT.equals(generator);
 			case HbAnnotationPackage.ID_BAG__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+			case HbAnnotationPackage.ID_BAG__TABLE:
+				return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -280,6 +332,8 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 		result.append(generator);
 		result.append(", type: ");
 		result.append(type);
+		result.append(", table: ");
+		result.append(table);
 		result.append(')');
 		return result.toString();
 	}

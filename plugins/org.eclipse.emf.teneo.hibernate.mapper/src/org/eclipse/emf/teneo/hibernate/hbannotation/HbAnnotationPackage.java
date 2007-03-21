@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackage.java,v 1.5 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: HbAnnotationPackage.java,v 1.6 2007/03/21 15:46:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -360,13 +360,22 @@ public interface HbAnnotationPackage extends EPackage {
 	int ID_BAG__TYPE = HB_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Table</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ID_BAG__TABLE = HB_ANNOTATION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Id Bag</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int ID_BAG_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 2;
+	int ID_BAG_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.GenericGeneratorImpl <em>Generic Generator</em>}' class.
@@ -811,6 +820,17 @@ public interface HbAnnotationPackage extends EPackage {
 	EAttribute getIdBag_Type();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.IdBag#getTable <em>Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Table</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.IdBag#getTable()
+	 * @see #getIdBag()
+	 * @generated
+	 */
+	EAttribute getIdBag_Table();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator <em>Generic Generator</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Generic Generator</em>'.
@@ -1177,6 +1197,14 @@ public interface HbAnnotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ID_BAG__TYPE = eINSTANCE.getIdBag_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Table</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ID_BAG__TABLE = eINSTANCE.getIdBag_Table();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.GenericGeneratorImpl <em>Generic Generator</em>}' class.

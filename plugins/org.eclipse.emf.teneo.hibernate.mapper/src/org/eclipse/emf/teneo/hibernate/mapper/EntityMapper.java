@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.12 2007/03/20 23:35:18 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.13 2007/03/21 15:46:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -221,8 +221,8 @@ class EntityMapper extends AbstractMapper {
 		if (aClass.getPaSuperEntity() != null) {
 			return hasCompositeID(aClass.getPaSuperEntity());
 		}
-		if (aClass.getPaMappedSuper() != null) {
-			return hasCompositeID(aClass.getPaMappedSuper());
+		for (PAnnotatedEClass superAClass : aClass.getPaMappedSupers()) {
+			return hasCompositeID(superAClass);
 		}
 		{
 			List<PAnnotatedEStructuralFeature> features = aClass
@@ -243,29 +243,6 @@ class EntityMapper extends AbstractMapper {
 	public void processEntity(PAnnotatedEClass entity) {
 		if (log.isDebugEnabled())
 			log.debug("Mapping Entity " + entity);
-
-		List<PAnnotatedEClass> mappedSuperClasses = getHbmContext()
-				.getMappedSuperClasses(entity);
-		log.debug("No of mappedSuperclasses " + mappedSuperClasses.size());
-
-		if (mappedSuperClasses.isEmpty()
-				&& entity.getAttributeOverrides().size() > 0) {
-			log
-					.error("Specified AttributeOverrides without mapped superclass in "
-							+ entity);
-			throw new MappingException(
-					"Specified AttributeOverrides without mapped superclass",
-					entity);
-		}
-		if (mappedSuperClasses.isEmpty()
-				&& entity.getAssociationOverrides().size() > 0) {
-			log
-					.error("Specified AssociationOverrides without mapped superclass in "
-							+ entity);
-			throw new MappingException(
-					"Specified AssociationOverrides without mapped superclass",
-					entity);
-		}
 
 		Element entityElement = createEntity(entity, entity
 				.getInheritanceStrategy(), entity.getPaSuperEntity(), entity
@@ -295,41 +272,8 @@ class EntityMapper extends AbstractMapper {
 		}
 
 		try {
-			log
-					.debug("Processing mapped superclasses, no of mappedsuperclasses: "
-							+ mappedSuperClasses.size());
-			for (Iterator<PAnnotatedEClass> i = mappedSuperClasses.iterator(); i
-					.hasNext();) {
-				getHbmContext().pushOverrideOnStack();
-				if (!entity.getAttributeOverrides().isEmpty()) {
-					getHbmContext().addAttributeOverrides(
-							entity.getAttributeOverrides());
-				}
-				if (!entity.getAssociationOverrides().isEmpty()) {
-					getHbmContext().addAssociationOverrides(
-							entity.getAssociationOverrides());
-				}
-				try {
-					final PAnnotatedEClass mappedSuperClass = i.next();
-					log.debug("Mapped superclass "
-							+ mappedSuperClass.getAnnotatedEClass().getName());
-					processMappedSuper(mappedSuperClass);
-				} finally {
-					getHbmContext().popOverrideStack();
-				}
-			}
-			
-			final List<PAnnotatedEStructuralFeature> multipleInheritanceFeatures = getHbmContext()
-					.getMultipleInheritedFeatures(entity);
-			if (entity.getAnnotatedEClass().getESuperTypes().size() <= 1
-					&& multipleInheritanceFeatures.size() > 0) {
-				log
-						.error("Entity has one or less super type but a multiple "
-								+ "inheritance structure was detected, this is an application error.");
-				throw new MappingException(
-						"Entity has one or less super type but a multiple "
-								+ "inheritance structure was detected, this is an application error.");
-			}
+			final List<PAnnotatedEStructuralFeature> inheritedFeatures = getHbmContext()
+					.getInheritedFeatures(entity);
 			getHbmContext().pushOverrideOnStack();
 			if (entity.getAttributeOverrides() != null) {
 				getHbmContext().addAttributeOverrides(
@@ -339,8 +283,13 @@ class EntityMapper extends AbstractMapper {
 				getHbmContext().addAssociationOverrides(
 						entity.getAssociationOverrides());
 			}
+			
+			if (inheritedFeatures.size() > 0) {
+				log.debug("There are " + inheritedFeatures.size() + " inherited features ");
+			}
+			
 			try {
-				processFeatures(multipleInheritanceFeatures);
+				processFeatures(inheritedFeatures);
 			} finally {
 				getHbmContext().popOverrideStack();
 			}
@@ -363,7 +312,7 @@ class EntityMapper extends AbstractMapper {
 
 			// create a synthetic id for roots
 			if (idElement == null && entity.getPaSuperEntity() == null
-					&& entity.getPaMappedSuper() == null) {
+					&& entity.getPaMappedSupers().size() == 0) {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
 			} else if (getHbmContext().mustAddSyntheticID(entity)) {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);

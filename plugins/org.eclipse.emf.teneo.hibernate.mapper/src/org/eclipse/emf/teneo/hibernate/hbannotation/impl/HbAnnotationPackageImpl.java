@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackageImpl.java,v 1.6 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: HbAnnotationPackageImpl.java,v 1.7 2007/03/21 15:46:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -425,6 +425,15 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getIdBag_Table() {
+		return (EAttribute)idBagEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGenericGenerator() {
 		return genericGeneratorEClass;
 	}
@@ -645,6 +654,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		idBagEClass = createEClass(ID_BAG);
 		createEAttribute(idBagEClass, ID_BAG__GENERATOR);
 		createEAttribute(idBagEClass, ID_BAG__TYPE);
+		createEAttribute(idBagEClass, ID_BAG__TABLE);
 
 		genericGeneratorEClass = createEClass(GENERIC_GENERATOR);
 		createEAttribute(genericGeneratorEClass, GENERIC_GENERATOR__NAME);
@@ -745,6 +755,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		initEClass(idBagEClass, IdBag.class, "IdBag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdBag_Generator(), ecorePackage.getEString(), "generator", "increment", 0, 1, IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIdBag_Type(), ecorePackage.getEString(), "type", "long", 0, 1, IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdBag_Table(), ecorePackage.getEString(), "table", null, 0, 1, IdBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(genericGeneratorEClass, GenericGenerator.class, "GenericGenerator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGenericGenerator_Name(), ecorePackage.getEString(), "name", null, 1, 1, GenericGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

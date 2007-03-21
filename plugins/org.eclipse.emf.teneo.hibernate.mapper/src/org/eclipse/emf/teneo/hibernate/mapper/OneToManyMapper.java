@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.10 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.11 2007/03/21 15:46:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -122,7 +122,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 
 		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();
 		boolean isMapValueIsEntity = false;
-		if (otm.isIndexed() || !otm.isUnique()) {
+		if (hbReference.getHbIdBag() == null && (otm.isIndexed() || !otm.isUnique())) {
 			// now we check if it is a list or a map
 			final EClass eclass = eref.getEReferenceType();
 			if(hbReference.getMapKey() != null) {

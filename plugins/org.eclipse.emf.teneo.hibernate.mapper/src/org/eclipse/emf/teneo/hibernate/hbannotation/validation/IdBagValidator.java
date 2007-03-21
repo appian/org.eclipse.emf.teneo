@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdBagValidator.java,v 1.1 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: IdBagValidator.java,v 1.2 2007/03/21 15:46:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.validation;
 
@@ -18,4 +18,6 @@ public interface IdBagValidator {
 
 	boolean validateGenerator(String value);
 	boolean validateType(String value);
+
+	boolean validateTable(String value);
 }

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: GenerateHBM.java,v 1.3 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: GenerateHBM.java,v 1.4 2007/03/21 15:46:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
  * Class is responsible for generating the hbm file. Is run through a launcher therefore the main methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class GenerateHBM {
@@ -107,7 +107,7 @@ public class GenerateHBM {
 			writer.write(hmg.generateToString(paModel));
 			writer.flush();
 		} catch (IOException e) {
-			e.printStackTrace(System.err);
+			//e.printStackTrace(System.err);
 			log.error(e);
 			throw new StoreException("IOException when creating or mapping file", e);
 		}
