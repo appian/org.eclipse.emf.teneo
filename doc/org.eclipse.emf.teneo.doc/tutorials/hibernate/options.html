@@ -189,6 +189,9 @@
 <div class="menuitem">
 <a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
+<div class="menuitem">
+<a href="../hibernate/entitymanager.html">Hibernate EntityManager</a>
+</div>
 </div>
 <div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">XML Schema</div>
 <div id="menu_1.7" class="menuitemgroup">
@@ -257,6 +260,13 @@
 <p>Boolean options can have the lower case String values: "false" or "true".</p>
 		
 <ul>
+
+		
+<li>
+<strong>PersistenceOptions.ALWAYS_MAP_LIST_AS_BAG</strong>: often modeling the index of a list in a relational database is not usefull. This option
+		controls if al lists are mapped as a Hibernate bag. This is more efficient as Hibernate does not need to maintain an ordering in the database.
+		Note that if you specified a manual OneToMany annotation on an EReference then for that EReference the settings on the onetomany are followed.</li>
+
 		
 <li>
 <strong>PersistenceOptions.ALWAYS_VERSION</strong>: this option (boolean, default: true) determines if the system should automatically 
@@ -280,6 +290,16 @@
 <li>
 <strong>PersistenceOptions.DISABLE_ECONTAINER_MAPPING</strong>: this option (boolean) controls if the container relations
 		are mapped explicitly in the database, see also <a href="hibernate_relations.html#Storing+container+relation">here</a>.</li>
+
+		
+<li>
+<strong>PersistenceOptions.EMAP_AS_TRUE_MAP</strong>: this option controls how an EMF EMap is mapped to the db. An EMF EMap is 
+		not a real map but a list of map entries (subtle but important difference). It can be mapped to the database as a list or as a map.
+		In previous releases of Teneo the EMap was mapped as a list. However, this is less efficient and does not work in cases that the 
+		data needs to be serialized (because the list content was stored with a synthetic id which is not supported in case of serialization). 
+		Therefor now the default approach is to map an EMap as a true Hibernate map. To support backward compatibility this option is introduced.
+		Its default is true (use the new approach), by setting it to "false" the old approach is followed.</li>
+		
 		
 <li>
 <strong>PersistenceOptions.FETCH_CONTAINMENT_EAGERLY</strong>: if set to "true" will set the fetch strategy of all
@@ -309,6 +329,14 @@
 		The unique value will create a join table with the name of the refering entity name and estructural feature name,
 		e.g. Writer_books in the Library example.
 		</li>
+
+		
+<li>
+<strong>PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG</strong>: the Hibernate idbag maps a list as a very efficient bag in which each list entry
+		gets an id. This makes it possible to update the list very efficiently. This option allows you to force Teneo to use the idbag for all
+		lists. Note that if you specified a manual OneToMany annotation on an EReference then for that EReference no IdBag annotation is added. Also
+		it makes sense to combine this option with setting the option JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS to true also.</li>
+
 		
 <li>
 <strong>PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH</strong>: can be used to control the column and table name length. This is especially

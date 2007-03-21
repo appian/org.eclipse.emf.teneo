@@ -16,7 +16,7 @@
 <link href="../skin/forrest.css" type="text/css" rel="stylesheet">
 <link rel="shortcut icon" href="../">
 <script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
-<title>Supported (EMF) Features</title>
+<title>Hibernate Entitymanager Support</title>
 <meta content="text/css" http-equiv="Content-style-type">
 </head>
 <body class="composite" onload="focus()">
@@ -73,16 +73,16 @@
 </table>
 </td><td class="dialog">
 <div class="menu">
-<div onclick="SwitchMenu('menu_selected_1.1')" id="menu_selected_1.1Title" class="menutitle">Home</div>
-<div id="menu_selected_1.1" class="selectedmenuitemgroup">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/index.html">Introduction</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/status.html">Status</a>
 </div>
-<div class="menupage">
-<div class="menupagetitle">Features</div>
+<div class="menuitem">
+<a href="../hibernate/features.html">Features</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/overview.html">Overview</a>
@@ -178,8 +178,8 @@
 <a href="../hibernate/troubleshooting.html">Troubleshooting</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">Annotations (JPA/EJB3)</div>
-<div id="menu_1.6" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_selected_1.6')" id="menu_selected_1.6Title" class="menutitle">Annotations (JPA/EJB3)</div>
+<div id="menu_selected_1.6" class="selectedmenuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/ejb3_format.html">Format</a>
 </div>
@@ -189,8 +189,8 @@
 <div class="menuitem">
 <a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
-<div class="menuitem">
-<a href="../hibernate/entitymanager.html">Hibernate EntityManager</a>
+<div class="menupage">
+<div class="menupagetitle">Hibernate EntityManager</div>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">XML Schema</div>
@@ -247,157 +247,42 @@
 <div id="bodycol">
 <div id="apphead">
 <h2>
-<em>Supported (EMF) Features</em>
+<em>Hibernate Entitymanager Support</em>
 </h2>
 </div>
 <div class="app" id="projecthome">
-<ul class="minitoc">
-<li>
-<a href="#supported">Supported EMF Features</a>
-</li>
-<li>
-<a href="#xmlschema">Supported XML Schema structures</a>
-</li>
-<li>
-<a href="#ejb3">EJB3/JPA Annotations</a>
-</li>
-<li>
-<a href="#hibfeatures">Hibernate Features</a>
-</li>
-<li>
-<a href="#notsupported">Not (yet) Supported EMF Features</a>
-</li>
-</ul>
+		
+<p>Teneo (release 0.8.0) can be used in combination with Hibernate Entitymanager/Annotations 3.3. All the documentation,
+		examples and tutorials on this website also apply in case of using Teneo together with the Hibernate 
+		Entitymanager.</p>
+		
+<p>To use Teneo and the EJB3/JPA EntityManagerFactory (instead of the SessionFactory) you need to use a
+		different datastore: HbEntityDataStore. Instead of using the HbHelper to create a datastore you need to 
+		directly create a HbEntityDataStore (so do: new HbEntityDataStore()). After creation you need to set its name
+		by calling setName. After that the use of the HbEntityDataStore is the same as for the HbDataStore (which is really the concrete subclass HbSessionDataStore).</p>
+		
+<p>The HbEntityDataStore is a subclass of HbDataStore and adds a getEntityManagerFactory method. This means that everywhere on this site
+		where you read HbDataStore you can also use the HbEntityDataStore.</p>
 		
 <p>
-		The EMF - Hibernate Integration supports a number of important EMF features and features offered by Hibernate. 
-		</p>
+<em>Note</em>: one thing we noticed is that in combination with the Hibernate Entitymanager queries did not always 
+		work correctly. For example the following query:</p> 
 		
-<a name="N10011"></a><a name="supported"></a>
-<div class="h3">
-<h3>Supported EMF Features</h3>
-			
-			
-<ul>
-				
-<li>Many relevant primitive types (including Date)</li>
-				
-<li>Lists of primitive types (EDataTypeEList)</li>
-				
-<li>Single Reference: contained, non-contained, one-way, two-way</li>
-				
-<li>One-To-Many relations (EList): contained, non-contained, one-way, two-way</li>
-				
-<li>Feature maps</li>
-				
-<li>EMap (only eager loading)</li>
-				
-<li>Notifications and adapters (limited testing done)</li>
-				
-<li>Enumerations</li>
-				
-<li>Resource implementation</li>
-				
-<li>Lazy loading (similar to EMF proxy feature)</li>
-				
-<li>Inheritance between types (limited testing done)</li>
-				
-<li>No dependencies on EObjectImpl as root object or specific root object for persistency: EMF Objects are only required to implement org.eclipse.emf.ecore.InternalEObject</li>
-			
-</ul>
+<pre class="code">
+select ref from Library as ref where :to in elements(ref.writers)
+		</pre>
 		
-</div>
+<p>This query did not work because Hibernate was not able to determine the type of the :to parameter. The
+		query had to be changed to:</p>
 		
-<a name="N1003F"></a><a name="xmlschema"></a>
-<div class="h3">
-<h3>Supported XML Schema structures</h3>
-			
-			
-<p>EMF allows models to be expressed in XML Schema. Through EMF the current solution supports 
-				many XML Schema structures, an overview:</p>
-			
-<ul>
-				
-<li>Element definition with all combinations of minOccurs and maxOccurs</li>
-				
-<li>Repeating model group such as xsd:choice with maxOccurs="unbounded"</li>
-				
-<li>all relevant simple types including xsd:IDREF, xsd:IDREFS and xsd:anyURI</li>
-				
-<li>etc.</li>				
-				
-</ul>
-			
-<p>For a detailed listing of XML Schema support see 
-			<a href="features_details.html">here</a>.</p>
+<pre class="code">
+select ref from Library as ref, Writer as refto where refto = :to and refto in elements(ref.writers)		
+		</pre>
 		
-</div>
-		
-<a name="N1005F"></a><a name="ejb3"></a>
-<div class="h3">
-<h3>EJB3/JPA Annotations</h3>
-			
-			
-<p>The integration supports the following EJB3-like annotations:</p>
-			
-<ul>
-				
-<li>UniqueConstraints</li>
-				
-<li>MappedSuperclass</li>
-				
-<li>IdClass</li>
-				
-<li>OneToMany, ManyToMany, ManyToOne</li>
-				
-<li>etc.</li>
-			
-</ul>
-			
-<p>For a detailed listing of EJB3 annotation support see 
-			<a href="ejb3_features.html">here</a>.</p>
-		
-</div>
-		
-<a name="N10082"></a><a name="hibfeatures"></a>
-<div class="h3">
-<h3>Hibernate Features</h3>
-			
-			
-<p>The integration supports Hibernate features such as:</p>
-			
-<ul>
-				
-<li>OR Mapping of class hierarchies, 1:n, m:n relations (one- and twoway)</li>
-				
-<li>Support for many relational databases</li>
-				
-<li>HQL query language</li>
-				
-<li>2 level caching</li>
-				
-<li>etc.</li>
-			
-</ul>
-		
-</div>
-		
-<a name="N1009E"></a><a name="notsupported"></a>
-<div class="h3">
-<h3>Not (yet) Supported EMF Features</h3>
-			
-			
-<p>The following EMF features are (currently) not supported or have not been tested to ensure that they are supported:</p>
-			
-<ul>
-				
-<li>XML Schema constructions such as xsd:any, xsd:anytype etc.</li>
-				
-<li>xsd:list, xsd:union</li>
-			
-</ul>
-		
-</div>
+<p>
+<em>Although all testcases are run also for the Hibernate Entitymanager support for this has just been added. Please report
+		any issues on the EMFT newsgroup.</em>
+</p> 
 	
 </div>
 </div>

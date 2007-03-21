@@ -189,6 +189,9 @@
 <div class="menuitem">
 <a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
+<div class="menuitem">
+<a href="../hibernate/entitymanager.html">Hibernate EntityManager</a>
+</div>
 </div>
 <div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">XML Schema</div>
 <div id="menu_1.7" class="menuitemgroup">
@@ -352,10 +355,12 @@
 <div class="h3">
 <h3>Multiple Inheritance Support</h3>
 		
-<p>In EMF it is possible to define multiple inheritance structures. However, Hibernate can not handle multiple inheritance.</p>
+<p>In EMF it is possible to define multiple inheritance structures. Although Hibernate itself does not support multiple inheritance Teneo
+		does its best to map a multiple inheritance structure.</p>
 		
-<p>Therefore 
-		during the mapping the first supertype is considered to be the real parent (for Hibernate). The properties of the 
+<p>The following approach is followed. During the mapping the first (non-MappedSuperclass, non-interface) supertype is considered to be the real parent (for Hibernate). If the type
+		only has interface supertypes then the first one (which is not a mappedsuperclass) is chosen.  
+		The properties of the 
 		other super types are mapped together with the subclass. The other super types will have their own tables in the 
 		database but there will be no relations between the subclass table and its other superclass tables.
 		</p>

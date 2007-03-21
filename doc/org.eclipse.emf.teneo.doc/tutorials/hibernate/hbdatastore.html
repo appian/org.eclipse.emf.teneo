@@ -189,6 +189,9 @@
 <div class="menuitem">
 <a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
 </div>
+<div class="menuitem">
+<a href="../hibernate/entitymanager.html">Hibernate EntityManager</a>
+</div>
 </div>
 <div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">XML Schema</div>
 <div id="menu_1.7" class="menuitemgroup">
@@ -256,7 +259,10 @@
 <a href="#hbcontext">HbContext</a>
 </li>
 <li>
-<a href="#overriding">Overriding the HbDataStore</a>
+<a href="#overriding">Overriding the HbDataStore, HbSessionDataStore, HbEntityDataStore</a>
+</li>
+<li>
+<a href="#entitydatastore">HbEntityDataStore, support for Hibernate EntityManager</a>
 </li>
 <li>
 <a href="#options">Runtime Options</a>
@@ -306,7 +312,7 @@
 <h3>HbContext</h3>
 			
 			
-<p>The The HbContext returns default implementations for Accessors, class names of Tuplizers and contains a method
+<p>The HbContext returns default implementations for Accessors, class names of Tuplizers and contains a method
 			to create the Hibernate Configuration. HbContext is set in the HbDataStore using the setHbContext method, as a default the HbContextImpl is used.
 			 You can extend HbContextImpl to override only specific methods.</p> 
 		
@@ -314,17 +320,27 @@
 		
 <a name="N10044"></a><a name="overriding"></a>
 <div class="h3">
-<h3>Overriding the HbDataStore</h3>
+<h3>Overriding the HbDataStore, HbSessionDataStore, HbEntityDataStore</h3>
 			
 			
-<p>In this release it is possible to override the HbDataStore with your own implementation. Next to the 
+<p>It is possible to override on of the concrete subclasses of HbDataStore, i.e. HbSessionDataStore or HbEntityDataStore, with your own implementation. Next to the 
 			specific implementation of the HbDataStore you also need to register a HbDataStoreFactory which creates this
 			specific HbDataStore, the HbDataStoreFactory is registered through the HbHelper.setHbDataStoreFactory method.
 			</p>
 		
 </div>
 		
-<a name="N1004E"></a><a name="options"></a>
+<a name="N1004E"></a><a name="entitydatastore"></a>
+<div class="h3">
+<h3>HbEntityDataStore, support for Hibernate EntityManager</h3>
+			
+			
+<p>Teneo can also operate together with the Hibernate EntityManager. In this case you need to create a HbEntityDataStore instead of the
+			HbDataStore through the HbHelper interface. See also <a href="entitymanager.html">here</a>.</p> 
+		
+</div>			
+		
+<a name="N1005C"></a><a name="options"></a>
 <div class="h3">
 <h3>Runtime Options</h3>
 			
@@ -336,7 +352,7 @@
 		
 </div>
 		
-<a name="N10062"></a><a name="Getting+the+Hibernate+Mapping+XML"></a>
+<a name="N10070"></a><a name="Getting+the+Hibernate+Mapping+XML"></a>
 <div class="h3">
 <h3>Getting the Hibernate Mapping XML</h3>
 			
