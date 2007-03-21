@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.30 2007/02/10 00:14:11 mtaal Exp $
+ * $Id: AllTests.java,v 1.28.2.1 2007/03/21 16:09:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.28.2.1 $
  */
 public class AllTests {
 
@@ -54,11 +54,7 @@ public class AllTests {
 				.getConfigurations());
 //		suite.addTestSuite(GMFNotationAction.class);
 //		suite.addTestSuite(LobjAction.class);
-
-		suite.addTestSuite(DynamicAction.class);
-		
-/*		
-		suite.addTestSuite(AccountingTest.class);
+		suite.addTestSuite(ExtendedPO2Test.class);
 
 		suite.addTestSuite(LibrarySessionControllerAddContentAction.class);
 
@@ -75,7 +71,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibraryNonResolvingAction.class);
 
-		suite.addTestSuite(ExtendedPO2Test.class);
 		suite.addTestSuite(LibrarySerializationAction.class);
 
 		//		suite.addTestSuite(GMFNotationAction.class);
@@ -85,11 +80,14 @@ public class AllTests {
 
 		suite.addTestSuite(LibraryAction.class);
 
+		suite.addTestSuite(DynamicAction.class);
+
 		//	suite.addTestSuite(ExtLibraryAction.class);
 		suite.addTestSuite(CapaTest.class);
 
 		suite.addTestSuite(DetachFromSessionAction.class);
 
+		suite.addTestSuite(AccountingTest.class);
 		suite.addTestSuite(SunBooksAction.class);
 		suite.addTestSuite(LibraryTest.class);
 		//suite.addTestSuite(WoWAction.class);
@@ -106,7 +104,7 @@ public class AllTests {
 		suite.addTestSuite(PrimerPOAction.class);
 		suite.addTestSuite(WorkFlowAction.class);
 		suite.addTestSuite(ForumAction.class);
-*/
+
 		return suite;
 	}
 }

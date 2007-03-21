@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestStore.java,v 1.12.2.1 2007/03/05 18:07:15 mtaal Exp $
+ * $Id: HibernateTestStore.java,v 1.12.2.2 2007/03/21 16:09:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
@@ -57,7 +57,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12.2.1 $
+ * @version $Revision: 1.12.2.2 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -254,7 +254,6 @@ public class HibernateTestStore extends AbstractTestStore {
 			TestCase.assertTrue("The objects of class: " + clazz.getName() + " was deleted while this should not be possible",
 					shouldSucceed);
 		} catch (Exception e) {
-			e.printStackTrace(System.err);
 			TestCase.assertTrue("The objects of class: " + clazz.getName() + " was not deleted while this should be possible",
 					!shouldSucceed);
 			if (tx.isActive()) rollbackTransaction();
