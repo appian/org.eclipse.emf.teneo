@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.16 2007/02/01 12:34:05 mtaal Exp $
+ * $Id: AllTests.java,v 1.17 2007/03/21 20:40:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -42,7 +42,7 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class AllTests {
 
@@ -70,13 +70,12 @@ public class AllTests {
 		//suite.addTestSuite(WorkFlowAction.class);
   		suite.addTestSuite(SunBooksAction.class);
 
-		suite.addTestSuite(ExtLibraryAction.class);
-
 		suite.addTestSuite(InventoryAction.class);
 		suite.addTestSuite(CatalogResourceAction.class);
 
 		suite.addTestSuite(AccountingTest.class);
 		if (!JPOXTestbed.isRunningOnEMFTServer()) {
+			suite.addTestSuite(ExtLibraryAction.class);
 			suite.addTestSuite(PlayImExportTest.class);
 		}
 		suite.addTestSuite(PlayAction.class);
