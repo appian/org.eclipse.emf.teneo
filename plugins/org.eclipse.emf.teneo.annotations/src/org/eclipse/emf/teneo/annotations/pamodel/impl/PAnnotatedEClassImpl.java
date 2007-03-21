@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.12 2007/03/21 15:46:39 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.13 2007/03/21 20:40:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -230,6 +230,10 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	protected EList<AssociationOverride> associationOverrides = null;
 
+	/** The computed super pa entity */
+	private PAnnotatedEClass paSuperEntity = null;
+	private boolean paSuperEntityIsComputed = false;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1151,14 +1155,29 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * {@inheritDoc }
 	 */
 	public PAnnotatedEClass getPaSuperEntity() {
-		// TODO cache its SuperEntity
+		if (paSuperEntityIsComputed) { // use boolean to also return null;
+			return paSuperEntity;
+		}
+		paSuperEntity = getPaSuperEntityInternal(false);
+		if (paSuperEntity == null) {
+			paSuperEntity = getPaSuperEntityInternal(true);
+		}
+		paSuperEntityIsComputed = true;
+		return paSuperEntity;
+	}
+
+	/**
+	 * {@inheritDoc }
+	 */
+	public PAnnotatedEClass getPaSuperEntityInternal(boolean allowInterfaces) {
 		PAnnotatedModel model = getPaModel();
 		PAnnotatedEClass superEntity = null;
 		if (model != null && getAnnotatedEClass() != null) {
 			Iterator<EClass> i = getAnnotatedEClass().getESuperTypes().iterator();
 			while (superEntity == null && i.hasNext()) {
 				PAnnotatedEClass x = model.getPAnnotated(i.next());
-				if (x.getEntity() != null)
+				if (x.getEntity() != null &&
+						(allowInterfaces || !x.getAnnotatedEClass().isInterface()))
 					superEntity = x;
 			}
 		}
