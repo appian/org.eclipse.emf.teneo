@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritancePackage.java,v 1.1.2.2 2007/03/18 22:34:03 mtaal Exp $
+ * $Id: TestinheritancePackage.java,v 1.1.2.3 2007/03/21 16:09:28 mtaal Exp $
  */
 package testinheritance;
 
@@ -209,6 +209,192 @@ public interface TestinheritancePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link testinheritance.impl.ParentOneImpl <em>Parent One</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see testinheritance.impl.ParentOneImpl
+	 * @see testinheritance.impl.TestinheritancePackageImpl#getParentOne()
+	 * @generated
+	 */
+	int PARENT_ONE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Another Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_ONE__ANOTHER_PROPERTY = 0;
+
+	/**
+	 * The number of structural features of the '<em>Parent One</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_ONE_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link testinheritance.impl.ParentTwoImpl <em>Parent Two</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see testinheritance.impl.ParentTwoImpl
+	 * @see testinheritance.impl.TestinheritancePackageImpl#getParentTwo()
+	 * @generated
+	 */
+	int PARENT_TWO = 5;
+
+	/**
+	 * The feature id for the '<em><b>Test Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_TWO__TEST_ID = 0;
+
+	/**
+	 * The number of structural features of the '<em>Parent Two</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_TWO_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link testinheritance.impl.ParentZeroImpl <em>Parent Zero</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see testinheritance.impl.ParentZeroImpl
+	 * @see testinheritance.impl.TestinheritancePackageImpl#getParentZero()
+	 * @generated
+	 */
+	int PARENT_ZERO = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_ZERO__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Parent Zero</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_ZERO_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link testinheritance.impl.ChildImpl <em>Child</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see testinheritance.impl.ChildImpl
+	 * @see testinheritance.impl.TestinheritancePackageImpl#getChild()
+	 * @generated
+	 */
+	int CHILD = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD__NAME = PARENT_ZERO__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Test Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD__TEST_ID = PARENT_ZERO_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Age</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD__AGE = PARENT_ZERO_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Child</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD_FEATURE_COUNT = PARENT_ZERO_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link testinheritance.impl.Child2Impl <em>Child2</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see testinheritance.impl.Child2Impl
+	 * @see testinheritance.impl.TestinheritancePackageImpl#getChild2()
+	 * @generated
+	 */
+	int CHILD2 = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD2__NAME = PARENT_ZERO__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Another Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD2__ANOTHER_PROPERTY = PARENT_ZERO_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Test Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD2__TEST_ID = PARENT_ZERO_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Age</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD2__AGE = PARENT_ZERO_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Child2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD2_FEATURE_COUNT = PARENT_ZERO_FEATURE_COUNT + 3;
+
+
+	/**
 	 * Returns the meta object for class '{@link testinheritance.SomeResource <em>Some Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -304,6 +490,111 @@ public interface TestinheritancePackage extends EPackage {
 	EAttribute getNameValuePair_Value();
 
 	/**
+	 * Returns the meta object for class '{@link testinheritance.ParentOne <em>Parent One</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parent One</em>'.
+	 * @see testinheritance.ParentOne
+	 * @generated
+	 */
+	EClass getParentOne();
+
+	/**
+	 * Returns the meta object for the attribute '{@link testinheritance.ParentOne#getAnotherProperty <em>Another Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Another Property</em>'.
+	 * @see testinheritance.ParentOne#getAnotherProperty()
+	 * @see #getParentOne()
+	 * @generated
+	 */
+	EAttribute getParentOne_AnotherProperty();
+
+	/**
+	 * Returns the meta object for class '{@link testinheritance.ParentTwo <em>Parent Two</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parent Two</em>'.
+	 * @see testinheritance.ParentTwo
+	 * @generated
+	 */
+	EClass getParentTwo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link testinheritance.ParentTwo#getTestId <em>Test Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Test Id</em>'.
+	 * @see testinheritance.ParentTwo#getTestId()
+	 * @see #getParentTwo()
+	 * @generated
+	 */
+	EAttribute getParentTwo_TestId();
+
+	/**
+	 * Returns the meta object for class '{@link testinheritance.ParentZero <em>Parent Zero</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parent Zero</em>'.
+	 * @see testinheritance.ParentZero
+	 * @generated
+	 */
+	EClass getParentZero();
+
+	/**
+	 * Returns the meta object for the attribute '{@link testinheritance.ParentZero#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see testinheritance.ParentZero#getName()
+	 * @see #getParentZero()
+	 * @generated
+	 */
+	EAttribute getParentZero_Name();
+
+	/**
+	 * Returns the meta object for class '{@link testinheritance.Child <em>Child</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Child</em>'.
+	 * @see testinheritance.Child
+	 * @generated
+	 */
+	EClass getChild();
+
+	/**
+	 * Returns the meta object for the attribute '{@link testinheritance.Child#getAge <em>Age</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Age</em>'.
+	 * @see testinheritance.Child#getAge()
+	 * @see #getChild()
+	 * @generated
+	 */
+	EAttribute getChild_Age();
+
+	/**
+	 * Returns the meta object for class '{@link testinheritance.Child2 <em>Child2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Child2</em>'.
+	 * @see testinheritance.Child2
+	 * @generated
+	 */
+	EClass getChild2();
+
+	/**
+	 * Returns the meta object for the attribute '{@link testinheritance.Child2#getAge <em>Age</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Age</em>'.
+	 * @see testinheritance.Child2#getAge()
+	 * @see #getChild2()
+	 * @generated
+	 */
+	EAttribute getChild2_Age();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -324,7 +615,7 @@ public interface TestinheritancePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link testinheritance.impl.SomeResourceImpl <em>Some Resource</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -404,6 +695,96 @@ public interface TestinheritancePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NAME_VALUE_PAIR__VALUE = eINSTANCE.getNameValuePair_Value();
+
+			/**
+		 * The meta object literal for the '{@link testinheritance.impl.ParentOneImpl <em>Parent One</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see testinheritance.impl.ParentOneImpl
+		 * @see testinheritance.impl.TestinheritancePackageImpl#getParentOne()
+		 * @generated
+		 */
+		EClass PARENT_ONE = eINSTANCE.getParentOne();
+
+		/**
+		 * The meta object literal for the '<em><b>Another Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARENT_ONE__ANOTHER_PROPERTY = eINSTANCE.getParentOne_AnotherProperty();
+
+		/**
+		 * The meta object literal for the '{@link testinheritance.impl.ParentTwoImpl <em>Parent Two</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see testinheritance.impl.ParentTwoImpl
+		 * @see testinheritance.impl.TestinheritancePackageImpl#getParentTwo()
+		 * @generated
+		 */
+		EClass PARENT_TWO = eINSTANCE.getParentTwo();
+
+		/**
+		 * The meta object literal for the '<em><b>Test Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARENT_TWO__TEST_ID = eINSTANCE.getParentTwo_TestId();
+
+		/**
+		 * The meta object literal for the '{@link testinheritance.impl.ParentZeroImpl <em>Parent Zero</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see testinheritance.impl.ParentZeroImpl
+		 * @see testinheritance.impl.TestinheritancePackageImpl#getParentZero()
+		 * @generated
+		 */
+		EClass PARENT_ZERO = eINSTANCE.getParentZero();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARENT_ZERO__NAME = eINSTANCE.getParentZero_Name();
+
+		/**
+		 * The meta object literal for the '{@link testinheritance.impl.ChildImpl <em>Child</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see testinheritance.impl.ChildImpl
+		 * @see testinheritance.impl.TestinheritancePackageImpl#getChild()
+		 * @generated
+		 */
+		EClass CHILD = eINSTANCE.getChild();
+
+		/**
+		 * The meta object literal for the '<em><b>Age</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHILD__AGE = eINSTANCE.getChild_Age();
+
+		/**
+		 * The meta object literal for the '{@link testinheritance.impl.Child2Impl <em>Child2</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see testinheritance.impl.Child2Impl
+		 * @see testinheritance.impl.TestinheritancePackageImpl#getChild2()
+		 * @generated
+		 */
+		EClass CHILD2 = eINSTANCE.getChild2();
+
+		/**
+		 * The meta object literal for the '<em><b>Age</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHILD2__AGE = eINSTANCE.getChild2_Age();
 
 	}
 

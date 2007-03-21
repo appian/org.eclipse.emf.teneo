@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritanceFactoryImpl.java,v 1.1.2.2 2007/03/18 22:34:03 mtaal Exp $
+ * $Id: TestinheritanceFactoryImpl.java,v 1.1.2.3 2007/03/21 16:09:27 mtaal Exp $
  */
 package testinheritance.impl;
 
@@ -63,6 +63,11 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 			case TestinheritancePackage.SOME_BASE_CLASS: return createSomeBaseClass();
 			case TestinheritancePackage.SOME_OTHER_BASE_CLASS: return createSomeOtherBaseClass();
 			case TestinheritancePackage.NAME_VALUE_PAIR: return createNameValuePair();
+			case TestinheritancePackage.PARENT_ONE: return createParentOne();
+			case TestinheritancePackage.PARENT_TWO: return createParentTwo();
+			case TestinheritancePackage.PARENT_ZERO: return createParentZero();
+			case TestinheritancePackage.CHILD: return createChild();
+			case TestinheritancePackage.CHILD2: return createChild2();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -106,6 +111,56 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	public NameValuePair createNameValuePair() {
 		NameValuePairImpl nameValuePair = new NameValuePairImpl();
 		return nameValuePair;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParentOne createParentOne() {
+		ParentOneImpl parentOne = new ParentOneImpl();
+		return parentOne;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParentTwo createParentTwo() {
+		ParentTwoImpl parentTwo = new ParentTwoImpl();
+		return parentTwo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParentZero createParentZero() {
+		ParentZeroImpl parentZero = new ParentZeroImpl();
+		return parentZero;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Child createChild() {
+		ChildImpl child = new ChildImpl();
+		return child;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Child2 createChild2() {
+		Child2Impl child2 = new Child2Impl();
+		return child2;
 	}
 
 	/**

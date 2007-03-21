@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritanceAdapterFactory.java,v 1.1.2.2 2007/03/18 22:34:03 mtaal Exp $
+ * $Id: TestinheritanceAdapterFactory.java,v 1.1.2.3 2007/03/21 16:09:28 mtaal Exp $
  */
 package testinheritance.util;
 
@@ -82,6 +82,21 @@ public class TestinheritanceAdapterFactory extends AdapterFactoryImpl {
 			public Object caseNameValuePair(NameValuePair object) {
 				return createNameValuePairAdapter();
 			}
+			public Object caseParentOne(ParentOne object) {
+				return createParentOneAdapter();
+			}
+			public Object caseParentTwo(ParentTwo object) {
+				return createParentTwoAdapter();
+			}
+			public Object caseParentZero(ParentZero object) {
+				return createParentZeroAdapter();
+			}
+			public Object caseChild(Child object) {
+				return createChildAdapter();
+			}
+			public Object caseChild2(Child2 object) {
+				return createChild2Adapter();
+			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -153,6 +168,76 @@ public class TestinheritanceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNameValuePairAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link testinheritance.ParentOne <em>Parent One</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see testinheritance.ParentOne
+	 * @generated
+	 */
+	public Adapter createParentOneAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link testinheritance.ParentTwo <em>Parent Two</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see testinheritance.ParentTwo
+	 * @generated
+	 */
+	public Adapter createParentTwoAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link testinheritance.ParentZero <em>Parent Zero</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see testinheritance.ParentZero
+	 * @generated
+	 */
+	public Adapter createParentZeroAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link testinheritance.Child <em>Child</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see testinheritance.Child
+	 * @generated
+	 */
+	public Adapter createChildAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link testinheritance.Child2 <em>Child2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see testinheritance.Child2
+	 * @generated
+	 */
+	public Adapter createChild2Adapter() {
 		return null;
 	}
 

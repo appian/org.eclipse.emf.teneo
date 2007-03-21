@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritanceSwitch.java,v 1.1.2.2 2007/03/18 22:34:03 mtaal Exp $
+ * $Id: TestinheritanceSwitch.java,v 1.1.2.3 2007/03/21 16:09:28 mtaal Exp $
  */
 package testinheritance.util;
 
@@ -113,6 +113,41 @@ public class TestinheritanceSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TestinheritancePackage.PARENT_ONE: {
+				ParentOne parentOne = (ParentOne)theEObject;
+				Object result = caseParentOne(parentOne);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestinheritancePackage.PARENT_TWO: {
+				ParentTwo parentTwo = (ParentTwo)theEObject;
+				Object result = caseParentTwo(parentTwo);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestinheritancePackage.PARENT_ZERO: {
+				ParentZero parentZero = (ParentZero)theEObject;
+				Object result = caseParentZero(parentZero);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestinheritancePackage.CHILD: {
+				Child child = (Child)theEObject;
+				Object result = caseChild(child);
+				if (result == null) result = caseParentZero(child);
+				if (result == null) result = caseParentTwo(child);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestinheritancePackage.CHILD2: {
+				Child2 child2 = (Child2)theEObject;
+				Object result = caseChild2(child2);
+				if (result == null) result = caseParentZero(child2);
+				if (result == null) result = caseParentOne(child2);
+				if (result == null) result = caseParentTwo(child2);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -174,6 +209,81 @@ public class TestinheritanceSwitch {
 	 * @generated
 	 */
 	public Object caseNameValuePair(NameValuePair object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Parent One</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Parent One</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseParentOne(ParentOne object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Parent Two</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Parent Two</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseParentTwo(ParentTwo object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Parent Zero</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Parent Zero</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseParentZero(ParentZero object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Child</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Child</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseChild(Child object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Child2</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Child2</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseChild2(Child2 object) {
 		return null;
 	}
 
