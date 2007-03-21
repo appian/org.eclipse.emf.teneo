@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.14 2007/03/20 23:35:08 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.15 2007/03/21 15:46:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -62,7 +62,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -283,7 +283,6 @@ public class JPOXTestStore extends AbstractTestStore {
 			TestCase.assertTrue("The objects of class: " + clazz.getName()
 					+ " was deleted while this should not be possible", shouldSucceed);
 		} catch (Exception e) {
-			// e.printStackTrace(System.err);
 			TestCase.assertTrue("The objects of class: " + clazz.getName()
 					+ " was not deleted while this should be possible", !shouldSucceed);
 			if (tx.isActive())

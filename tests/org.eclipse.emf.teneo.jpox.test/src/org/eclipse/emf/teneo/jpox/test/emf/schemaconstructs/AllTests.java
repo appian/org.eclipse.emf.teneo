@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.10 2007/02/12 11:19:35 mtaal Exp $
+ * $Id: AllTests.java,v 1.11 2007/03/21 15:46:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class AllTests {
 
@@ -72,6 +72,7 @@ public class AllTests {
 
 		suite.addTestSuite(AttributesTest.class);
 		suite.addTestSuite(GroupAction.class);
+		
 		return suite;
 	}
 
