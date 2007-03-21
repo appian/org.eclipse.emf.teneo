@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.22 2007/03/20 23:34:42 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.23 2007/03/21 15:45:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 public class PersistenceOptions {
 
@@ -68,6 +68,10 @@ public class PersistenceOptions {
 	/** Force all containment relations to be eagerly loaded or not */
 	public static final String FETCH_CONTAINMENT_EAGERLY = MAPPING_PREFIX
 			+ "fetch_containment_eagerly";
+
+	/** The column name of the id column in the idbag, default is id */
+	public static final String IDBAG_ID_COLUMN_NAME = MAPPING_PREFIX
+			+ "idbag_id_column_name";
 
 	/** Set cascade all (incl. orphan delete) on containment relation */
 	public static final String SET_CASCADE_ALL_ON_CONTAINMENT = MAPPING_PREFIX
@@ -104,6 +108,10 @@ public class PersistenceOptions {
 	/** Map all lists as a bag to the db (does not map the list index to the db), default is false */
 	public static final String ALWAYS_MAP_LIST_AS_BAG = MAPPING_PREFIX
 			+ "always_map_list_as_bag";
+
+	/** Map all lists as a hibernate idbag to the db (does not map the list index to the db), default is false */
+	public static final String MAP_ALL_LISTS_AS_IDBAG = MAPPING_PREFIX
+			+ "map_all_lists_as_idbag";
 
 	/** The proxy strategy, can be none (no proxies, default), emf, hibernate */
 	public static final String PROXY_STRATEGY = MAPPING_PREFIX
@@ -240,7 +248,8 @@ public class PersistenceOptions {
 		props.setProperty(ID_FEATURE_AS_PRIMARY_KEY, "true");
 		props.setProperty(EMAP_AS_TRUE_MAP, "true");
 		props.setProperty(ALWAYS_MAP_LIST_AS_BAG, "false");
-
+		props.setProperty(MAP_ALL_LISTS_AS_IDBAG, "false");
+		props.setProperty(IDBAG_ID_COLUMN_NAME, "ID");
 		return props;
 	}
 
@@ -310,6 +319,11 @@ public class PersistenceOptions {
 		return properties.getProperty(DEFAULT_TEMPORAL_VALUE);
 	}
 
+	/** Return the IDBAG_ID_COLUMN_NAME */
+	public String getIDBagIDColumnName() {
+		return properties.getProperty(IDBAG_ID_COLUMN_NAME);
+	}
+
 	/**
 	 * Returns the value of the EMAP_AS_TRUE_MAP option, default is false
 	 */
@@ -323,6 +337,14 @@ public class PersistenceOptions {
 	 */
 	public boolean alwaysMapListAsBag() {
 		return Boolean.valueOf(properties.getProperty(ALWAYS_MAP_LIST_AS_BAG))
+				.booleanValue();
+	}
+
+	/**
+	 * Returns the value of the MAP_ALL_LISTS_AS_IDBAG option, default is false
+	 */
+	public boolean alwaysMapListAsIdBag() {
+		return Boolean.valueOf(properties.getProperty(MAP_ALL_LISTS_AS_IDBAG))
 				.booleanValue();
 	}
 	
