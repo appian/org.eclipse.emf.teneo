@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MultipleInheritanceAction.java,v 1.1.2.3 2007/03/21 16:09:24 mtaal Exp $
+ * $Id: MultipleInheritanceAction.java,v 1.1.2.4 2007/03/22 03:34:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -32,10 +32,10 @@ import testinheritance.TestinheritanceFactory;
 import testinheritance.TestinheritancePackage;
 
 /**
- * Tests nullable enum and enum as id
+ * Tests multiple inheritance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1.2.3 $
+ * @version $Revision: 1.1.2.4 $
  */
 public class MultipleInheritanceAction extends AbstractTestAction {
 	/**
@@ -47,7 +47,7 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 		super(TestinheritancePackage.eINSTANCE);
 	}
 
-	/** Creates an item, an address and links them to a po. */
+	/** Test */
 	public void doAction(TestStore store) {
 		store.disableDrop();
 		try {
@@ -127,7 +127,7 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 			child.setTestId(4); // this is not the key!
 			store.store(child);
 		}
-		try {
+		{
 			store.beginTransaction();
 			final Child2 child = TestinheritanceFactory.eINSTANCE.createChild2();
 			child.setAge(11);
@@ -135,8 +135,6 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 			child.setName("myName2");
 			child.setTestId(4); // this is not the key!
 			store.store(child);
-		} catch (Exception e) {
-			// should fail
 		}
 	}
 }
