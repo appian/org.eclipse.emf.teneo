@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MultipleInheritanceAction.java,v 1.4 2007/03/22 03:55:50 mtaal Exp $
+ * $Id: MultipleInheritanceAction.java,v 1.5 2007/03/24 11:48:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -35,7 +35,7 @@ import testinheritance.TestinheritancePackage;
  * Tests multiple inheritance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class MultipleInheritanceAction extends AbstractTestAction {
 	/**
@@ -126,6 +126,7 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 			child.setName("myName");
 			child.setTestId(4); // this is not the key!
 			store.store(child);
+			store.commitTransaction();
 		}
 		{
 			store.beginTransaction();
