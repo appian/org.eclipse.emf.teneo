@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model"
+    nsURI="http://pvs.informatik.uni-augsburg.de/AgilPro/1.0.0" nsPrefix="">
+  <eSubpackages name="core" nsURI="http://pvs.informatik.uni-augsburg.de/AgilPro/1.0.0/core"
+      nsPrefix="core">
+    <eClassifiers xsi:type="ecore:EClass" name="ModelElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedComment" upperBound="-1"
+          eType="#//core/Comment" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Comment" eSuperTypes="#//view/GraphicalElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NamedElement" eSuperTypes="#//core/ModelElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="icon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//core/NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="subpackages" upperBound="-1"
+          eType="#//core/Package" containment="true" eOpposite="#//core/Package/superpackage"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="superpackage" eType="#//core/Package"
+          eOpposite="#//core/Package/subpackages"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+          eType="#//core/PackageableElement" containment="true" eOpposite="#//core/PackageableElement/package"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PackageableElement" eSuperTypes="#//core/NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="package" eType="#//core/Package"
+          eOpposite="#//core/Package/elements"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ReferenceableElement" eSuperTypes="#//core/PackageableElement"/>
+  </eSubpackages>
+  <eSubpackages name="processes" nsURI="http://pvs.informatik.uni-augsburg.de/AgilPro/1.0.0/processes"
+      nsPrefix="processes">
+    <eClassifiers xsi:type="ecore:EClass" name="Scope" eSuperTypes="#//core/ModelElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+          eType="#//processes/ActivityNode" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="edges" upperBound="-1"
+          eType="#//processes/ActivityEdge" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
+          eType="#//processes/Reference" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="referenceEdges" upperBound="-1"
+          eType="#//processes/ReferenceEdge" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//core/PackageableElement #//processes/Scope">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eventHandler" eType="#//events/EventHandler"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalexecutiontime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StructuredActivityNode" eSuperTypes="#//processes/Scope #//processes/ExecutableNode"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ActivityNode" eSuperTypes="#//core/NamedElement #//view/GraphicalElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="in" upperBound="-1" eType="#//processes/ActivityEdge"
+          eOpposite="#//processes/ActivityEdge/target"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="out" upperBound="-1"
+          eType="#//processes/ActivityEdge" eOpposite="#//processes/ActivityEdge/source"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ActivityEdge" eSuperTypes="#//core/ModelElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+          eType="#//processes/ActivityNode" eOpposite="#//processes/ActivityNode/out"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//processes/ActivityNode" eOpposite="#//processes/ActivityNode/in"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//processes/Guard"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="GuardSpecification">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1"
+          eType="#//data/Data"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="attribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" lowerBound="1"
+          eType="#//processes/OperationType"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="subSpecification" upperBound="-1"
+          eType="#//processes/GuardSpecification" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="subSpecificationConnector"
+          eType="#//processes/BooleanOperators"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="OperationType">
+      <eLiterals name="Equals" literal="=="/>
+      <eLiterals name="Lower" value="1" literal="&lt;"/>
+      <eLiterals name="LowerEquals" value="2" literal="&lt;="/>
+      <eLiterals name="Greater" value="3" literal=">"/>
+      <eLiterals name="GreateEquals" value="4" literal=">="/>
+      <eLiterals name="UnEquals" value="5" literal="!="/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ExecutableNode" eSuperTypes="#//processes/ActivityNode"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//processes/ExecutableNode">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="performedBy" eType="#//organisations/Role"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="executedBy" eType="#//application/Application"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="realizes" eType="#//functions/Function"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+          eType="#//data/Data"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+          eType="#//data/Data"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mappings" upperBound="-1"
+          eType="#//data/DataMapping" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="referenceEdges" upperBound="-1"
+          eType="#//processes/ReferenceEdge" eOpposite="#//processes/ReferenceEdge/action"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetexecutiontime"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ControlNode" eSuperTypes="#//processes/ActivityNode"/>
+    <eClassifiers xsi:type="ecore:EClass" name="InitialNode" eSuperTypes="#//processes/ControlNode"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ForkNode" eSuperTypes="#//processes/ControlNode"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JoinNode" eSuperTypes="#//processes/ControlNode"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MergeNode" eSuperTypes="#//processes/ControlNode"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DecisionNode" eSuperTypes="#//processes/ControlNode"/>
+    <eClassifiers xsi:type="ecore:EClass" name="FinalNode" eSuperTypes="#//processes/ControlNode"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Reference" eSuperTypes="#//core/ModelElement #//view/GraphicalElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//core/ReferenceableElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="referenceEdges" upperBound="-1"
+          eType="#//processes/ReferenceEdge" eOpposite="#//processes/ReferenceEdge/reference"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ReferenceEdge" eSuperTypes="#//core/ModelElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
+          eType="#//processes/Reference" eOpposite="#//processes/Reference/referenceEdges"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="action" lowerBound="1"
+          eType="#//processes/Action" eOpposite="#//processes/Action/referenceEdges"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//view/EdgeDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Guard" eSuperTypes="#//core/NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="textualdescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortdescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="detailedSpecification"
+          eType="#//processes/GuardSpecification" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="BooleanOperators">
+      <eLiterals name="AND" literal="&amp;&amp;"/>
+      <eLiterals name="XOR" value="1" literal="||"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="events" nsURI="http://pvs.informatik.uni-augsburg.de/AgilPro/1.0.0/events"
+      nsPrefix="events">
+    <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//processes/ExecutableNode"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EventHandler" eSuperTypes="#//core/NamedElement"/>
+  </eSubpackages>
+  <eSubpackages name="primitiveTypes" nsURI="http://pvs.informatik.uni-augsburg.de/AgilPro/1.0.0/primitiveTypes"
+      nsPrefix="primitiveTypes">
+    <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType" eSuperTypes="#//core/PackageableElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StringType" eSuperTypes="#//primitiveTypes/PrimitiveType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerType" eSuperTypes="#//primitiveTypes/PrimitiveType"/>
+  </eSubpackages>
+  <eSubpackages name="functions" nsURI="http://pvs.informatik.uni-augsburg.de/AgilPro/1.0.0/functions"
+      nsPrefix="functions">
+    <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//core/PackageableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="subfunctions" upperBound="-1"
+          eType="#//functions/Function" containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="organisations" nsURI="http://pvs.informatik.uni-augsburg.de/AgilPro/1.0.0/organisations"
+      nsPrefix="organisations">
+    <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="#//core/ReferenceableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="performedBy" upperBound="-1"
+          eType="#//organisations/OrganisationUnit"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OrganisationUnit" eSuperTypes="#//core/PackageableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="subUnit" upperBound="-1"
+          eType="#//organisations/OrganisationUnit" eOpposite="#//organisations/OrganisationUnit/belongsTo"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="belongsTo" upperBound="-1"
+          eType="#//organisations/OrganisationUnit" eOpposite="#//organisations/OrganisationUnit/subUnit"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="application" nsURI="http://pvs.informatik.uni-augsburg.de/AgilPro/1.0.0/application"
+      nsPrefix="application">
+    <eClassifiers xsi:type="ecore:EClass" name="Application" eSuperTypes="#//core/ReferenceableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//application/ApplicationType"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jarArchive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="method" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="input" upperBound="-1"
+          eType="#//data/InputParameter" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="output" upperBound="-1"
+          eType="#//data/OutputParameter" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ApplicationType" eSuperTypes="#//core/PackageableElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="WebServiceApplication" eSuperTypes="#//application/Application">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Interface" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Operation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="data" nsURI="http://pvs.informatik.uni-augsburg.de/AgilPro/1.0.0/data"
+      nsPrefix="data">
+    <eClassifiers xsi:type="ecore:EClass" name="Data" eSuperTypes="#//core/ReferenceableElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" lowerBound="1"
+          eType="#//data/DataType"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="informationType" lowerBound="1"
+          eType="#//data/InformationType"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+          eType="#//data/Parameter" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataType" eSuperTypes="#//core/PackageableElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//core/PackageableElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataMapping" eSuperTypes="#//core/PackageableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="boundParameter" lowerBound="1"
+          eType="#//data/Parameter"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
+          eType="#//data/Parameter"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="InformationType" eSuperTypes="#//core/PackageableElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="InputParameter" eSuperTypes="#//data/Parameter"/>
+    <eClassifiers xsi:type="ecore:EClass" name="OutputParameter" eSuperTypes="#//data/Parameter"/>
+  </eSubpackages>
+  <eSubpackages name="view" nsURI="http://pvs.informatik.uni-augsburg.de/AgilPro/1.0.0/view"
+      nsPrefix="view">
+    <eClassifiers xsi:type="ecore:EClass" name="GraphicalElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Location" eType="#//view/Point"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Size" eType="#//view/Dimension"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Point">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Dimension">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="10"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="10"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EdgeDirection">
+      <eLiterals name="default"/>
+      <eLiterals name="none" value="1"/>
+      <eLiterals name="in" value="2"/>
+      <eLiterals name="out" value="3"/>
+      <eLiterals name="inout" value="4"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

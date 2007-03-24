@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritancePackageImpl.java,v 1.2 2007/03/21 15:45:36 mtaal Exp $
+ * $Id: TestinheritancePackageImpl.java,v 1.3 2007/03/24 11:49:20 mtaal Exp $
  */
 package testinheritance.impl;
 
@@ -472,12 +472,6 @@ public class TestinheritancePackageImpl extends EPackageImpl implements Testinhe
 	 */
 	protected void createTeneoAnnotations() {
 		String source = "teneo.jpa";		
-		addAnnotation
-		  (someOtherBaseClassEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Transient"
-		   });		
 		addAnnotation
 		  (parentTwoEClass, 
 		   source, 

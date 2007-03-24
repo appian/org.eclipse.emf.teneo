@@ -8,9 +8,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="anotherProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SomeOtherBaseClass">
-    <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="@Transient"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nameValuePairs" upperBound="-1"
         eType="#//NameValuePair"/>
