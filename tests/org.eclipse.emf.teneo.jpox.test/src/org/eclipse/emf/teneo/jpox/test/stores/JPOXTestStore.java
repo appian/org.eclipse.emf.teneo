@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestStore.java,v 1.12.2.1 2007/03/05 18:07:31 mtaal Exp $
+ * $Id: JPOXTestStore.java,v 1.12.2.2 2007/03/24 11:56:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.stores;
@@ -62,7 +62,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12.2.1 $
+ * @version $Revision: 1.12.2.2 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -135,6 +135,7 @@ public class JPOXTestStore extends AbstractTestStore {
 
 		try {
 			log.debug("Copying " + jdoLocation + " to classpath");
+			// copy to each of the epackage locations
 			EPackage epack = epackages[0];
 			final File sourceFile = new File(jdoLocation);
 			final File pluginsDir = sourceFile.getParentFile().getParentFile().getParentFile().getParentFile()

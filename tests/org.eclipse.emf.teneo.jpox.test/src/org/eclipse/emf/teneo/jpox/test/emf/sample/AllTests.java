@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.16 2007/02/01 12:34:05 mtaal Exp $
+ * $Id: AllTests.java,v 1.16.2.1 2007/03/24 11:56:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -42,16 +42,17 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.16.2.1 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 				.getConfigurations());
+		suite.addTestSuite(SchoolLibraryTest.class);
+
 		suite.addTestSuite(ProductAction.class);
 		suite.addTestSuite(LibraryPMControllerAction.class);
-		suite.addTestSuite(SchoolLibraryTest.class);
 
 		suite.addTestSuite(LibrarySerializationAction.class);
 
@@ -70,13 +71,12 @@ public class AllTests {
 		//suite.addTestSuite(WorkFlowAction.class);
   		suite.addTestSuite(SunBooksAction.class);
 
-		suite.addTestSuite(ExtLibraryAction.class);
-
 		suite.addTestSuite(InventoryAction.class);
 		suite.addTestSuite(CatalogResourceAction.class);
 
 		suite.addTestSuite(AccountingTest.class);
 		if (!JPOXTestbed.isRunningOnEMFTServer()) {
+			suite.addTestSuite(ExtLibraryAction.class);
 			suite.addTestSuite(PlayImExportTest.class);
 		}
 		suite.addTestSuite(PlayAction.class);
