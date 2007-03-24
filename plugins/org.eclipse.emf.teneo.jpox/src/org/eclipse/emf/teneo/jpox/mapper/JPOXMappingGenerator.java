@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.10 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.11 2007/03/24 11:48:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -42,13 +42,14 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class JPOXMappingGenerator {
-	
+
 	/** The logger for all these exceptions */
-	protected static final Log log = LogFactory.getLog(JPOXMappingGenerator.class);
+	protected static final Log log = LogFactory
+			.getLog(JPOXMappingGenerator.class);
 
 	/** The suffix used for an order column in a list */
 	protected static final String ORDER_COLUMN_SUFFIX = "_IDX";
@@ -61,10 +62,10 @@ public class JPOXMappingGenerator {
 
 	/** The version column name */
 	private final String versionColumnName;
-	
+
 	/** The eclass naming strategy */
 	private EClassNameStrategy eclassNameStrategy;
-	
+
 	/** The constructor, creates all mappers etc. */
 	public JPOXMappingGenerator(PersistenceOptions po) {
 		versionColumnName = po.getVersionColumnName();
@@ -77,7 +78,8 @@ public class JPOXMappingGenerator {
 		// create the result xml
 		Document mappingDoc = new Document();
 
-		mappingDoc.setDocType("<!DOCTYPE jdo SYSTEM \"file:/javax/jdo/jdo.dtd\">");
+		mappingDoc
+				.setDocType("<!DOCTYPE jdo SYSTEM \"file:/javax/jdo/jdo.dtd\">");
 		// mappingDoc.setDocType(documentFactory.createDocType("jdo",
 		// "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 2.0//EN",
 		// "http://java.sun.com/dtd/jdo_2_0.dtd") );
@@ -88,28 +90,38 @@ public class JPOXMappingGenerator {
 
 		// create an array of epackages to register to the runtime
 		ArrayList epackages = new ArrayList();
-		for (Iterator it = annotatedModel.getPaEPackages().iterator(); it.hasNext();) {
+		for (Iterator it = annotatedModel.getPaEPackages().iterator(); it
+				.hasNext();) {
 			PAnnotatedEPackage aPackage = (PAnnotatedEPackage) it.next();
 			epackages.add(aPackage.getAnnotatedElement());
 		}
-		final EPackage[] epackagesArray = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
+		final EPackage[] epackagesArray = (EPackage[]) epackages
+				.toArray(new EPackage[epackages.size()]);
 		ERuntime.INSTANCE.register(epackagesArray);
 		mappingContext.setEpackages(epackagesArray);
 
-		// group the eclasses by their impl. java package, this is required because
+		// group the eclasses by their impl. java package, this is required
+		// because
 		// class tags should be all grouped in one package
 		HashMap aClassesByPackage = new HashMap();
-		for (Iterator it = annotatedModel.getPaEPackages().iterator(); it.hasNext();) {
+		for (Iterator it = annotatedModel.getPaEPackages().iterator(); it
+				.hasNext();) {
 			PAnnotatedEPackage aPackage = (PAnnotatedEPackage) it.next();
-			log.info("Generating jdo for epackage " + aPackage.getAnnotatedElement().getName());
-			for (Iterator aClassIterator = aPackage.getPaEClasses().iterator(); aClassIterator.hasNext();) {
-				PAnnotatedEClass aClass = (PAnnotatedEClass) aClassIterator.next();
-				Class implClass = ERuntime.INSTANCE.getInstanceClass((EClass) aClass.getAnnotatedElement());
-				
-				if (implClass == null || aClass.getAnnotatedEClass().isInterface()) continue; // ignore abstract classes
+			log.info("Generating jdo for epackage "
+					+ aPackage.getAnnotatedElement().getName());
+			for (Iterator aClassIterator = aPackage.getPaEClasses().iterator(); aClassIterator
+					.hasNext();) {
+				PAnnotatedEClass aClass = (PAnnotatedEClass) aClassIterator
+						.next();
+				Class implClass = ERuntime.INSTANCE
+						.getInstanceClass((EClass) aClass.getAnnotatedElement());
+
+				if (aClass.getEntity() == null || implClass == null)
+					continue;
 
 				Package implPackage = implClass.getPackage();
-				ArrayList aclasses = (ArrayList) aClassesByPackage.get(implPackage);
+				ArrayList aclasses = (ArrayList) aClassesByPackage
+						.get(implPackage);
 				if (aclasses == null) {
 					aclasses = new ArrayList();
 					aClassesByPackage.put(implPackage, aclasses);
@@ -129,8 +141,10 @@ public class JPOXMappingGenerator {
 			rootElement.add(packElement);
 
 			if (aclasses.size() > 0) {
-				for (Iterator aClassIt = aclasses.iterator(); aClassIt.hasNext();) {
-					processClassAnnotation(packElement, (PAnnotatedEClass) aClassIt.next());
+				for (Iterator aClassIt = aclasses.iterator(); aClassIt
+						.hasNext();) {
+					processClassAnnotation(packElement,
+							(PAnnotatedEClass) aClassIt.next());
 				}
 			}
 		}
@@ -140,18 +154,21 @@ public class JPOXMappingGenerator {
 	}
 
 	/** Handles the mapping of one aClass */
-	private void processClassAnnotation(Element container, PAnnotatedEClass aClass) {
+	private void processClassAnnotation(Element container,
+			PAnnotatedEClass aClass) {
 
 		// ignore non-annotated eclasses
-		if (aClass.getEntity() == null && 
-				aClass.getMappedSuperclass() == null && aClass.getEmbeddable() == null) {
+		if (aClass.getEntity() == null && aClass.getMappedSuperclass() == null
+				&& aClass.getEmbeddable() == null) {
 			return;
 		}
-		
+
 		if (aClass.getAnnotatedEClass().isInterface()) {
-			//final Element classElement = container.addElement("interface");
-			//classElement.addAttribute("name", aClass.getAnnotatedEClass().getInstanceClassName());	
-			log.debug(aClass.getAnnotatedEClass().getName() + " is interface, no explicit mapping");
+			// final Element classElement = container.addElement("interface");
+			// classElement.addAttribute("name",
+			// aClass.getAnnotatedEClass().getInstanceClassName());
+			log.debug(aClass.getAnnotatedEClass().getName()
+					+ " is interface, no explicit mapping");
 			return;
 		}
 
@@ -159,11 +176,13 @@ public class JPOXMappingGenerator {
 		log.debug("Generating for eclass: " + eclass.getName());
 
 		// NOTE: very rough test!
-		if (eclass.getName().compareTo("DocumentRoot") == 0) return;
+		if (eclass.getName().compareTo("DocumentRoot") == 0)
+			return;
 
 		Class implClass = ERuntime.INSTANCE.getInstanceClass(eclass);
 		if (implClass == null) {
-			log.warn("EClass " + eclass.getName() + " does not have a concrete representation. "
+			log.warn("EClass " + eclass.getName()
+					+ " does not have a concrete representation. "
 					+ "This is not a problem for abstract eclasses");
 			return;
 		}
@@ -172,15 +191,17 @@ public class JPOXMappingGenerator {
 
 		// now the eclass itself
 		Element classElement = container.addElement("class");
-		classElement.addAttribute("name", implClass.getName()).addAttribute("requires-extent", "true").addAttribute(
-				"persistence-modifier", "persistence-capable").addAttribute("detachable", "true");
+		classElement.addAttribute("name", implClass.getName()).addAttribute(
+				"requires-extent", "true").addAttribute("persistence-modifier",
+				"persistence-capable").addAttribute("detachable", "true");
 
 		if (aClass.getEmbeddable() != null) {
 			classElement.addAttribute("embedded-only", "true");
 		}
 
 		if (aClass.getIdClass() != null) {
-			classElement.addAttribute("objectid-class", aClass.getIdClass().getValue());
+			classElement.addAttribute("objectid-class", aClass.getIdClass()
+					.getValue());
 		}
 
 		// now do the implements subnode
@@ -198,8 +219,10 @@ public class JPOXMappingGenerator {
 
 		if (aClass.hasVersionAnnotatedFeature()) {
 			PAnnotatedEAttribute versionAttribute = null;
-			for (Iterator it = aClass.getPaEStructuralFeatures().iterator(); it.hasNext();) {
-				PAnnotatedEStructuralFeature aStructuralFeature = (PAnnotatedEStructuralFeature) it.next();
+			for (Iterator it = aClass.getPaEStructuralFeatures().iterator(); it
+					.hasNext();) {
+				PAnnotatedEStructuralFeature aStructuralFeature = (PAnnotatedEStructuralFeature) it
+						.next();
 				if (aStructuralFeature instanceof PAnnotatedEAttribute) {
 					PAnnotatedEAttribute pae = (PAnnotatedEAttribute) aStructuralFeature;
 					if (pae.getVersion() != null) {
@@ -210,19 +233,21 @@ public class JPOXMappingGenerator {
 			Element version = classElement.addElement("version");
 			version.addAttribute("strategy", "version-number");
 			version.addAttribute("column", versionColumnName);
-			// TOOD can the version attribute also be overridden??? Seems not logical
+			// TOOD can the version attribute also be overridden??? Seems not
+			// logical
 			if (versionAttribute.getColumn() != null) {
-				mappingContext.getColumnMapper().map(versionAttribute.getColumn(), version);
+				mappingContext.getColumnMapper().map(
+						versionAttribute.getColumn(), version);
 			}
 		} else {
 			// map the version default we now just it!
-			classElement.addElement("version") 
-				.addAttribute("strategy", "version-number") 
-				.addAttribute("column", versionColumnName);
+			classElement.addElement("version").addAttribute("strategy",
+					"version-number").addAttribute("column", versionColumnName);
 		}
-			
+
 		if (aClass.getTable() != null) {
-			mappingContext.getTableMapper().map(aClass.getTable(), classElement);
+			mappingContext.getTableMapper()
+					.map(aClass.getTable(), classElement);
 		}
 
 		if (aClass.hasIdAnnotatedFeature()) {
@@ -233,15 +258,19 @@ public class JPOXMappingGenerator {
 			classElement.addAttribute("identity-type", "datastore");
 		}
 
-		if (aClass.getSecondaryTables() != null && aClass.getSecondaryTables().size() > 0) {
-			for (Iterator it = aClass.getSecondaryTables().iterator(); it.hasNext();) {
-				final SecondaryTable st = (SecondaryTable)it.next();
+		if (aClass.getSecondaryTables() != null
+				&& aClass.getSecondaryTables().size() > 0) {
+			for (Iterator it = aClass.getSecondaryTables().iterator(); it
+					.hasNext();) {
+				final SecondaryTable st = (SecondaryTable) it.next();
 				final Element joinElement = classElement.addElement("join");
 				joinElement.addAttribute("table", st.getName());
-				for (Iterator kit = st.getPkJoinColumns().iterator(); kit.hasNext();) {
-					final PrimaryKeyJoinColumn pkjc = (PrimaryKeyJoinColumn)kit.next();
-					joinElement.addElement("column"). 
-						addAttribute("name", pkjc.getName());
+				for (Iterator kit = st.getPkJoinColumns().iterator(); kit
+						.hasNext();) {
+					final PrimaryKeyJoinColumn pkjc = (PrimaryKeyJoinColumn) kit
+							.next();
+					joinElement.addElement("column").addAttribute("name",
+							pkjc.getName());
 				}
 			}
 		}
@@ -252,13 +281,16 @@ public class JPOXMappingGenerator {
 		mappingContext.assertEmpty();
 	}
 
-	/** Collect the implemented interfaces minus the interfaces implemented by mapped 
-	 * superclasses.
+	/**
+	 * Collect the implemented interfaces minus the interfaces implemented by
+	 * mapped superclasses.
 	 */
 	private void collectImplements(PAnnotatedEClass aClass, ArrayList result) {
-		collectImplements(aClass.getAnnotatedEClass().getInstanceClass(), result);
+		collectImplements(aClass.getAnnotatedEClass().getInstanceClass(),
+				result);
 		for (int i = 0; i < aClass.getAnnotatedEClass().getESuperTypes().size(); i++) {
-			final EClass ec = (EClass)aClass.getAnnotatedEClass().getESuperTypes().get(i);
+			final EClass ec = (EClass) aClass.getAnnotatedEClass()
+					.getESuperTypes().get(i);
 			final PAnnotatedEClass ac = aClass.getPaModel().getPAnnotated(ec);
 			if (ac != null && ac.getTransient() == null && !ec.isInterface()) {
 				final ArrayList inheritedInterfaces = new ArrayList();
@@ -267,10 +299,11 @@ public class JPOXMappingGenerator {
 			}
 		}
 	}
-	
+
 	/** Collects all implemented interfaces */
 	private void collectImplements(Class iclass, ArrayList result) {
-		if (result.contains(iclass)) return;
+		if (result.contains(iclass))
+			return;
 		result.add(iclass);
 		Class[] interfaces = iclass.getInterfaces();
 		for (int i = 0; i < interfaces.length; i++) {
