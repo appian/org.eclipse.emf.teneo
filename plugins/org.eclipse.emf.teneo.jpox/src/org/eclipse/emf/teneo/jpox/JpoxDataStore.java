@@ -11,11 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.9.2.1 2007/03/05 18:07:38 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.9.2.2 2007/03/24 11:55:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
- 
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -85,6 +85,7 @@ import org.jpox.TypeManager;
 import org.jpox.metadata.AbstractClassMetaData;
 import org.jpox.metadata.AbstractPropertyMetaData;
 import org.jpox.metadata.ExtensionMetaData;
+import org.jpox.metadata.InheritanceStrategy;
 import org.jpox.metadata.JDOEntityResolver;
 import org.jpox.metadata.MetaDataManager;
 import org.jpox.plugin.ConfigurationElement;
@@ -101,7 +102,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9.2.1 $ $Date: 2007/03/05 18:07:38 $
+ * @version $Revision: 1.9.2.2 $ $Date: 2007/03/24 11:55:51 $
  */
 
 public class JpoxDataStore {
@@ -160,11 +161,11 @@ public class JpoxDataStore {
 		properties.setProperty(PMFConfiguration.VALIDATE_CONSTRAINTS_PROPERTY, "false");
 		properties.setProperty(PMFConfiguration.VALIDATE_TABLES_PROPERTY, "false");
 
-//		properties.setProperty(PMFConfiguration.JDO_DETACHALLONCOMMIT_PROPERTY, "true");
+		// properties.setProperty(PMFConfiguration.JDO_DETACHALLONCOMMIT_PROPERTY, "true");
 		properties.setProperty(PMFConfiguration.PERSISTENCE_BY_REACHABILITY_AT_COMMIT, "true");
-		
+
 		properties.setProperty(PMFConfiguration.DELETION_POLICY_PROPERTY, "JPOX");
-		
+
 		properties.setProperty(PMFConfiguration.CACHE_LEVEL_1_TYPE_PROPERTY,
 				"org.eclipse.emf.teneo.jpox.cache.EMFWeakRefCache");
 		properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY, JpoxHelper.INSTANCE
@@ -187,40 +188,14 @@ public class JpoxDataStore {
 		String suffix = properties.getProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY);
 		if (suffix == null)
 			suffix = "jdo";
-		final String jdoFileName = JpoxConstants.PREFIX_PACKAGE	+ JpoxConstants.EXTENSION_SEPARATOR + suffix;
+		final String jdoFileName = JpoxConstants.PREFIX_PACKAGE + JpoxConstants.EXTENSION_SEPARATOR + suffix;
 		final String[] jdoFileList = StoreUtil.getFileList(jdoFileName, null);
-		
+
 		// then create the list of all classnames
 		final String[] pcClassNames = getAllClassNames(jdoFileList);
 
 		// create the schema
 		createSchema(pcClassNames, properties);
-
-		// a check if the topclasses are empty then as a default add all the classes from the pcClassNames
-		// this happens in case we have a testcase which is not based on epackages
-		Class[] topClasses = ERuntime.INSTANCE.getTopClasses();
-		if (topClasses.length == 0 && ePackages.length == 0) {
-			topClasses = new Class[pcClassNames.length];
-			for (int i = 0; i < pcClassNames.length; i++) {
-				try {
-					// should probably be replaced with direct classloader!
-					topClasses[i] = ClassLoaderResolver.classForName(pcClassNames[i]);
-				} catch (Exception e) {
-					throw new JpoxStoreException("Exception when trying to instantiate class: " + pcClassNames[i], e);
-				}
-			}
-			storeTopClasses = topClasses;
-		} else {
-			// check if the topclasses are persistencecapable!
-			final ArrayList newTopClasses = new ArrayList();
-			for (int i = 0; i < topClasses.length; i++) {
-				final Class concrete = ERuntime.INSTANCE.getInstanceClass(topClasses[i]);
-				if (concrete != null && PersistenceCapable.class.isAssignableFrom(concrete)) {
-					newTopClasses.add(concrete);
-				}
-			}
-			storeTopClasses = (Class[]) newTopClasses.toArray(new Class[newTopClasses.size()]);
-		}
 
 		// build the list of classnames which are passed to jpox at start
 		final StringBuffer classNameList = new StringBuffer();
@@ -240,19 +215,70 @@ public class JpoxDataStore {
 
 		// and then create a pmf which does all the work but does not check the schema all the time
 		pmf = JpoxHelper.INSTANCE.getPMFCreator().getPersistenceManagerFactory(properties);
-		initializeTypeManager((AbstractPersistenceManagerFactory)pmf);
+		initializeTypeManager((AbstractPersistenceManagerFactory) pmf);
 		pmf.addInstanceLifecycleListener(new RemoveLifeCycleListener(), null);
 		
 		loadContainmentEagerly = properties.getProperty(PersistenceOptions.FETCH_CONTAINMENT_EAGERLY) != null
 				&& "true".compareTo(properties.getProperty(PersistenceOptions.FETCH_CONTAINMENT_EAGERLY)) == 0;
 
-		refersToMap = createRefersToMap(((PersistenceManagerFactoryImpl) pmf).getPMFContext().getMetaDataManager(),
-				pcClassNames);
+		final MetaDataManager mdm = ((PersistenceManagerFactoryImpl) pmf).getPMFContext().getMetaDataManager();
+
+		refersToMap = createRefersToMap(mdm, pcClassNames);
+
+		// It is unclear why (my guess related to classloading issues) that the computation of
+		// the topclasses needs to be done here. If the below piece of code is set higher then
+		// the metadatamanager is empty (does not contain classes.
+		final JDOClassLoaderResolver clr = new JDOClassLoaderResolver();
+		
+		final Class[] topClasses = ERuntime.INSTANCE.getTopClasses();
+		// check if the topclasses are persistencecapable!
+		final ArrayList newTopClasses = new ArrayList();
+		for (int i = 0; i < topClasses.length; i++) {
+			final Class concrete = ERuntime.INSTANCE.getInstanceClass(topClasses[i]);
+			if (concrete != null && PersistenceCapable.class.isAssignableFrom(concrete)) {
+				// now check if the class is mapped as a sub-class, in which case it is not a topclass
+				// in this add all the subclasses to the
+				if (isMappedSuperClass(concrete, mdm, clr)) {
+					final List result = getSubClasses(concrete, mdm, clr);
+					newTopClasses.removeAll(result);
+					newTopClasses.addAll(result);
+				} else if (!newTopClasses.contains(concrete)) {
+					newTopClasses.add(concrete);
+				}
+			}
+		}
+		storeTopClasses = (Class[]) newTopClasses.toArray(new Class[newTopClasses.size()]);
 
 		if (log.isInfoEnabled()) {
 			log.info("Persistence manager factory created using properties: ");
 			logProperties(properties);
 		}
+	}
+
+	/** Returns true if the passed class is a mapped superclass */
+	private boolean isMappedSuperClass(Class clazz, MetaDataManager mdm, JDOClassLoaderResolver clr) {
+		final AbstractClassMetaData amd = mdm.getMetaDataForClass(clazz, clr);
+		return amd.getInheritanceMetaData().getStrategyValue().equals(InheritanceStrategy.SUBCLASS_TABLE);
+	}
+
+	/** Get the list of all sub subclasses and subclasses which are not a mappedsuperclass */
+	private List getSubClasses(Class clz, MetaDataManager mdm, JDOClassLoaderResolver clr) {
+		final ArrayList subClasses = new ArrayList();
+		final String[] subs = mdm.getSubclassesForClass(clz.getName(), false);
+
+		if (subs == null) {
+			return subClasses;
+		}
+		for (int i = 0; i < subs.length; i++) {
+			final String sub = subs[i];
+			final Class subClass = ClassLoaderResolver.classForName(sub);
+			if (isMappedSuperClass(subClass, mdm, clr)) {
+				subClasses.addAll(getSubClasses(subClass, mdm, clr));
+			} else {
+				subClasses.add(subClass);
+			}
+		}
+		return subClasses;
 	}
 
 	/** Initializes emf types with jpox */
@@ -265,53 +291,48 @@ public class JpoxDataStore {
 
 		final TypeManager tm = initPmf.getPMFContext().getTypeManager();
 		final ClassLoader contextLoader = ClassLoaderResolver.getClassLoader();
-        final org.jpox.ClassLoaderResolver clr = initPmf.getPMFContext().getClassLoaderResolver(contextLoader);
-        
-        log.debug("Registering level 1 Cache Implementations");
-        final ExtensionPoint ep = initPmf.getPMFContext().getPluginManager().getExtensionPoint("org.jpox.cache_level1");
-        final Extension extension = new Extension(ep, ep.getPlugin());
-        ep.addExtension(extension);
-        final ConfigurationElement ce1 = new ConfigurationElement(extension, "cache", null);
-        ce1.putAttribute("name", EMFWeakRefCache.class.getName());
-        ce1.putAttribute("class-name", EMFWeakRefCache.class.getName());
-        extension.addConfigurationElement(ce1);
-        log.debug("Registered " + EMFWeakRefCache.class.getName());
-        final ConfigurationElement ce2 = new ConfigurationElement(extension, "cache", null);
-        ce2.putAttribute("name", EMFHardRefCache.class.getName());
-        ce2.putAttribute("class-name", EMFHardRefCache.class.getName());
-        extension.addConfigurationElement(ce2);
-        log.debug("Registered " + EMFHardRefCache.class.getName());
-        final ConfigurationElement ce3 = new ConfigurationElement(extension, "cache", null);
-        ce3.putAttribute("name", EMFNullCache.class.getName());
-        ce3.putAttribute("class-name", EMFNullCache.class.getName());
-        extension.addConfigurationElement(ce3);
-        log.debug("Registered " + EMFNullCache.class.getName());
-        final ConfigurationElement ce4 = new ConfigurationElement(extension, "cache", null);
-        ce4.putAttribute("name", EMFSoftRefCache.class.getName());
-        ce4.putAttribute("class-name", EMFSoftRefCache.class.getName());
-        extension.addConfigurationElement(ce4);
-        log.debug("Registered " + EMFSoftRefCache.class.getName());
-        
-		tm.addType(initPmf.getPMFContext().getPluginManager(),
-				"org.jpox.store_mapping", List.class.getName(), EListMapping.class.getName(),
-				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
-		tm.addType(initPmf.getPMFContext().getPluginManager(),
-				"org.jpox.store_mapping", EList.class.getName(), EListMapping.class.getName(),
-				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
-		tm.addType(initPmf.getPMFContext().getPluginManager(),
-				"org.jpox.store_mapping", EMap.class.getName(), EListMapping.class.getName(),
-				EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
-		tm.addType(initPmf.getPMFContext().getPluginManager(),
-				"org.jpox.store_mapping", FeatureMap.class.getName(), FeatureMapMapping.class.getName(),
-				FeatureMapWrapper.class.getName(), false, "1.4", true, false, false, clr);
-		tm.addType(initPmf.getPMFContext().getPluginManager(),
-				"org.jpox.store_mapping", EObject.class.getName(), EObjectMapping.class.getName(), null, true,
-				"1.4", true, false, true, clr);
-		tm.addType(initPmf.getPMFContext().getPluginManager(),
-				"org.jpox.store_mapping", XMLCalendar.class.getName(), XMLCalendarMapping.class.getName(), null, true,
-				"1.4", true, false, true, clr);
+		final org.jpox.ClassLoaderResolver clr = initPmf.getPMFContext().getClassLoaderResolver(contextLoader);
 
-        addCustomTypes(initPmf, clr);
+		log.debug("Registering level 1 Cache Implementations");
+		final ExtensionPoint ep = initPmf.getPMFContext().getPluginManager().getExtensionPoint("org.jpox.cache_level1");
+		final Extension extension = new Extension(ep, ep.getPlugin());
+		ep.addExtension(extension);
+		final ConfigurationElement ce1 = new ConfigurationElement(extension, "cache", null);
+		ce1.putAttribute("name", EMFWeakRefCache.class.getName());
+		ce1.putAttribute("class-name", EMFWeakRefCache.class.getName());
+		extension.addConfigurationElement(ce1);
+		log.debug("Registered " + EMFWeakRefCache.class.getName());
+		final ConfigurationElement ce2 = new ConfigurationElement(extension, "cache", null);
+		ce2.putAttribute("name", EMFHardRefCache.class.getName());
+		ce2.putAttribute("class-name", EMFHardRefCache.class.getName());
+		extension.addConfigurationElement(ce2);
+		log.debug("Registered " + EMFHardRefCache.class.getName());
+		final ConfigurationElement ce3 = new ConfigurationElement(extension, "cache", null);
+		ce3.putAttribute("name", EMFNullCache.class.getName());
+		ce3.putAttribute("class-name", EMFNullCache.class.getName());
+		extension.addConfigurationElement(ce3);
+		log.debug("Registered " + EMFNullCache.class.getName());
+		final ConfigurationElement ce4 = new ConfigurationElement(extension, "cache", null);
+		ce4.putAttribute("name", EMFSoftRefCache.class.getName());
+		ce4.putAttribute("class-name", EMFSoftRefCache.class.getName());
+		extension.addConfigurationElement(ce4);
+		log.debug("Registered " + EMFSoftRefCache.class.getName());
+
+		tm.addType(initPmf.getPMFContext().getPluginManager(), "org.jpox.store_mapping", List.class.getName(),
+				EListMapping.class.getName(), EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
+		tm.addType(initPmf.getPMFContext().getPluginManager(), "org.jpox.store_mapping", EList.class.getName(),
+				EListMapping.class.getName(), EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
+		tm.addType(initPmf.getPMFContext().getPluginManager(), "org.jpox.store_mapping", EMap.class.getName(),
+				EListMapping.class.getName(), EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
+		tm.addType(initPmf.getPMFContext().getPluginManager(), "org.jpox.store_mapping", FeatureMap.class.getName(),
+				FeatureMapMapping.class.getName(), FeatureMapWrapper.class.getName(), false, "1.4", true, false, false,
+				clr);
+		tm.addType(initPmf.getPMFContext().getPluginManager(), "org.jpox.store_mapping", EObject.class.getName(),
+				EObjectMapping.class.getName(), null, true, "1.4", true, false, true, clr);
+		tm.addType(initPmf.getPMFContext().getPluginManager(), "org.jpox.store_mapping", XMLCalendar.class.getName(),
+				XMLCalendarMapping.class.getName(), null, true, "1.4", true, false, true, clr);
+
+		addCustomTypes(initPmf, clr);
 
 		for (int i = 0; i < getEPackages().length; i++) {
 			final EPackage epack = getEPackages()[i];
@@ -320,25 +341,20 @@ public class JpoxDataStore {
 				final EClassifier eclassifier = (EClassifier) it.next();
 				final Class instanceClass = eclassifier.getInstanceClass();
 
-				
 				if (emfEnumClass.isAssignableFrom(instanceClass)) {
 					log.debug("Registering enum type mapper/wrapper for eclass: " + instanceClass.getName());
-					tm.addType(initPmf.getPMFContext().getPluginManager(),
-							"org.jpox.store_mapping", 
-							instanceClass.getName(), ENumMapping.class.getName(), null,
-							true, "1.4", true, false, true, clr);
+					tm.addType(initPmf.getPMFContext().getPluginManager(), "org.jpox.store_mapping", instanceClass
+							.getName(), ENumMapping.class.getName(), null, true, "1.4", true, false, true, clr);
 				}
 			}
 		}
 	}
 
 	/** Add specific custom types */
-	protected void addCustomTypes(AbstractPersistenceManagerFactory initPmf, 
-			org.jpox.ClassLoaderResolver clr) {
-	
+	protected void addCustomTypes(AbstractPersistenceManagerFactory initPmf, org.jpox.ClassLoaderResolver clr) {
+
 	}
-	
-	
+
 	/** Checks if the passed object is by any change a contained object and if so returns true */
 	public boolean isContainedObject(Object obj) {
 		// TODO also check containment for superclasses
@@ -465,7 +481,7 @@ public class JpoxDataStore {
 
 		// Create a PersistenceManager for this store and create the tables
 		final PersistenceManagerFactory localPmf = JDOHelper.getPersistenceManagerFactory(newProps);
-		initializeTypeManager((AbstractPersistenceManagerFactory)localPmf);
+		initializeTypeManager((AbstractPersistenceManagerFactory) localPmf);
 		final org.jpox.PersistenceManager pm = (org.jpox.PersistenceManager) localPmf.getPersistenceManager();
 		StoreManager store_mgr = pm.getStoreManager();
 		try {
@@ -522,8 +538,7 @@ public class JpoxDataStore {
 			if (is == null) { // absolute location somewhere?
 				is = new FileInputStream(packageJDOFiles[i]);
 			}
-			final Element docElement = documentBuilder.parse(is)
-					.getDocumentElement();
+			final Element docElement = documentBuilder.parse(is).getDocumentElement();
 
 			// find all the nodes with tagname class
 			final NodeList nodes = docElement.getElementsByTagName("class");
@@ -719,8 +734,8 @@ public class JpoxDataStore {
 	}
 
 	/** Creates a refers to from a fld metadata, handles collections, feature maps etc. */
-	private void createRefersToFromField(AbstractPropertyMetaData fld, Class fromClass, HashMap result, boolean isFeatureMapField,
-			String propName) {
+	private void createRefersToFromField(AbstractPropertyMetaData fld, Class fromClass, HashMap result,
+			boolean isFeatureMapField, String propName) {
 		boolean isMany = false;
 		boolean isContained = false;
 		Class[] toClasses = null;
@@ -732,7 +747,8 @@ public class JpoxDataStore {
 			isContained = fld.getCollection().isDependentElement();
 			Class toClass = ClassLoaderResolver.classForName(fld.getCollection().getElementType());
 			if (GenericFeatureMapEntry.class.isAssignableFrom(toClass)) { // a feature map find the real toclasses
-				final AbstractPropertyMetaData[] fmds = fld.getElementMetaData().getEmbeddedMetaData().getFieldMetaData();
+				final AbstractPropertyMetaData[] fmds = fld.getElementMetaData().getEmbeddedMetaData()
+						.getFieldMetaData();
 				for (int k = 0; k < fmds.length; k++) {
 					final AbstractPropertyMetaData fmd = fmds[k];
 					createRefersToFromField(fmd, fromClass, result, true, propName);
@@ -913,7 +929,7 @@ public class JpoxDataStore {
 		public ReferenceTo(Class theFromClass, Class theToClass, String propName, String featureName,
 				boolean myIsContainer, boolean myIsMany, boolean isFeatureMapEntryField) {
 			fromClass = theFromClass;
-//			toClass = theToClass;
+			// toClass = theToClass;
 			name = propName;
 			isContainer = myIsContainer;
 			isMany = myIsMany;

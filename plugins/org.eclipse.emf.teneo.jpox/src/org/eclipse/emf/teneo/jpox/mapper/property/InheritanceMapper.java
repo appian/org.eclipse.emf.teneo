@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InheritanceMapper.java,v 1.5 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: InheritanceMapper.java,v 1.5.2.1 2007/03/24 11:55:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.5.2.1 $
  */
 
 public class InheritanceMapper extends AbstractMapper {
@@ -62,25 +62,7 @@ public class InheritanceMapper extends AbstractMapper {
 		} else if (inheritance.getStrategy().equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
 			log.debug("Inheritance mapping " + inheritance.getStrategy().getName());
 
-			// check if one of the supertypes is valid
-			boolean hasValidSuperType = false;
-			for (int i = 0; i < eClass.getEAllSuperTypes().size(); i++) {
-				EClass superEClass = (EClass) eClass.getEAllSuperTypes().get(i);
-
-				// also a mapped superclass is not a valid superclass
-				PAnnotatedEClass aSuperClass = aClass.getPaModel().getPAnnotated(superEClass);
-				if (aSuperClass.getMappedSuperclass() != null) {
-					continue;
-				}
-
-				if (!superEClass.isInterface() && 
-						ERuntime.INSTANCE.getInstanceClass(superEClass) != null) {
-					hasValidSuperType = true;
-					break;
-				}
-			}
-
-			if (hasValidSuperType) { // superclass for a subclass
+			if (aClass.getPaSuperEntity() != null && aClass.getPaSuperEntity().getMappedSuperclass() == null) { // superclass for a subclass
 
 				log.debug("Has superclasses therefore: superclass-table");
 
@@ -122,17 +104,8 @@ public class InheritanceMapper extends AbstractMapper {
 	/** Returns the inheritance of an annotated superclass of a passed aclass, returns null if not found */
 	private Inheritance getInheritance(PAnnotatedEClass childPA) {
 		if (childPA.getInheritance() != null) return childPA.getInheritance();
-		EClass eChild = childPA.getAnnotatedEClass();
-		List supers = eChild.getESuperTypes();
-		for (Iterator it = supers.iterator(); it.hasNext();) {
-			EClass eSuper = (EClass) it.next();
-			PAnnotatedEClass pae = childPA.getPaModel().getPAnnotated(eSuper);
-			if (pae != null) {
-				Inheritance inheritance = getInheritance(pae);
-				if (inheritance != null) {
-					return inheritance;
-				}
-			}
+		if (childPA.getPaSuperEntity() != null) {
+			return getInheritance(childPA.getPaSuperEntity());
 		}
 		return null;
 	}

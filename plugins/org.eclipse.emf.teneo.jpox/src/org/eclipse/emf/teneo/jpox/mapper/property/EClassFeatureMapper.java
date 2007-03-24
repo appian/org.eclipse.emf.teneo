@@ -11,14 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassFeatureMapper.java,v 1.5 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: EClassFeatureMapper.java,v 1.5.2.1 2007/03/24 11:55:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -39,7 +41,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Mapps the features of a passed annotated class, the class itself is not mapped here.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.5.2.1 $
  */
 
 public class EClassFeatureMapper extends AbstractMapper {
@@ -57,8 +59,14 @@ public class EClassFeatureMapper extends AbstractMapper {
 		
 		Class implClass = ERuntime.INSTANCE.getInstanceClass(aClass.getAnnotatedEClass());
 
+		// collect all the features to map
+		final List features =
+			new ArrayList(aClass.getPaEStructuralFeatures());
+		final List inheritedFeatures = mappingContext.getInheritedFeatures(aClass);
+		features.addAll(inheritedFeatures);
+
 		// now handle the structural features
-		for (Iterator it = aClass.getPaEStructuralFeatures().iterator(); it.hasNext();) {
+		for (Iterator it = features.iterator(); it.hasNext();) {
 			PAnnotatedEStructuralFeature aStructuralFeature = (PAnnotatedEStructuralFeature) it.next();
 
 			// columns which are not updatable and not insertable must be transient
@@ -100,9 +108,9 @@ public class EClassFeatureMapper extends AbstractMapper {
 			if (field.getName().endsWith("ESet")) continue; // special case, these are handled earlier
 
 			boolean esfField = false;
-			for (Iterator esfIterator = aClass.getAnnotatedEClass().getEStructuralFeatures().iterator(); esfIterator.hasNext();) {
-				EStructuralFeature esf = (EStructuralFeature) esfIterator.next();
-				if (esf.getName().compareToIgnoreCase(field.getName()) == 0) {
+			for (Iterator esfIterator = features.iterator(); esfIterator.hasNext();) {
+				final PAnnotatedEStructuralFeature asf = (PAnnotatedEStructuralFeature) esfIterator.next();
+				if (asf.getAnnotatedEStructuralFeature().getName().compareToIgnoreCase(field.getName()) == 0) {
 					esfField = true;
 					break;
 				}
@@ -111,16 +119,16 @@ public class EClassFeatureMapper extends AbstractMapper {
 				classElement.addElement("field").addAttribute("name", field.getName()).addAttribute("persistence-modifier", "none");
 			}
 		}
-		
-		// now also handle the case that the supertype of the eclass is an interface only
-		// class, in this case the efeatures of the supertype are to be mapped here!
-		for (int i = 0; i < aClass.getAnnotatedEClass().getESuperTypes().size(); i++) {
-			final EClass ec = (EClass)aClass.getAnnotatedEClass().getESuperTypes().get(i);
-			if (ec.isInterface()) {
-				log.debug("SuperType is interface, also mapping it " + ec.getName());
-				map(aClass.getPaModel().getPAnnotated(ec), classElement);
-			}
-		}
+//		
+//		// now also handle the case that the supertype of the eclass is an interface only
+//		// class, in this case the efeatures of the supertype are to be mapped here!
+//		for (int i = 0; i < aClass.getAnnotatedEClass().getESuperTypes().size(); i++) {
+//			final EClass ec = (EClass)aClass.getAnnotatedEClass().getESuperTypes().get(i);
+//			if (ec.isInterface()) {
+//				log.debug("SuperType is interface, also mapping it " + ec.getName());
+//				map(aClass.getPaModel().getPAnnotated(ec), classElement);
+//			}
+//		}
 	}
 
 	/** Handles the annotated fields of a PAnnotatedEClass */

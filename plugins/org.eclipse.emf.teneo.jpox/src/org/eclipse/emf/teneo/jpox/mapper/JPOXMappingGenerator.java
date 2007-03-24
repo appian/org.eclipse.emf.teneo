@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.10 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.10.2.1 2007/03/24 11:55:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.10.2.1 $
  */
 
 public class JPOXMappingGenerator {
@@ -106,7 +106,7 @@ public class JPOXMappingGenerator {
 				PAnnotatedEClass aClass = (PAnnotatedEClass) aClassIterator.next();
 				Class implClass = ERuntime.INSTANCE.getInstanceClass((EClass) aClass.getAnnotatedElement());
 				
-				if (implClass == null || aClass.getAnnotatedEClass().isInterface()) continue; // ignore abstract classes
+				if (implClass == null || aClass.getEntity() == null) continue; // ignore abstract classes
 
 				Package implPackage = implClass.getPackage();
 				ArrayList aclasses = (ArrayList) aClassesByPackage.get(implPackage);
