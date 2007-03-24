@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.9 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.10 2007/03/24 11:48:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -84,6 +84,7 @@ class BasicMapper extends AbstractPropertyMapper {
 		addColumns(propElement, eAttribute.getName(), getColumns(paAttribute), getHbmContext()
 				.isCurrentElementFeatureMap()
 				|| isNullable(basic, eAttribute), true);
+		// todo check: not-null is also set in the call to addcolumns, decide were to do what!
 		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
 		setType(paAttribute, propElement);
 	}
@@ -113,6 +114,7 @@ class BasicMapper extends AbstractPropertyMapper {
 		addColumns(propElement, eAttribute.getName(), getColumns(paAttribute), getHbmContext()
 				.isCurrentElementFeatureMap()
 				|| isNullable(basic, eAttribute), true);
+		// todo check: not-null is also set in the call to addcolumns, decide were to do what!
 		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
 
 		if ((hed != null && hed.getHbTypeDef() != null) || hea.getHbType() != null) {
