@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.13 2007/03/21 20:40:32 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.14 2007/03/24 11:48:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -232,7 +232,6 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 
 	/** The computed super pa entity */
 	private PAnnotatedEClass paSuperEntity = null;
-	private boolean paSuperEntityIsComputed = false;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -1084,12 +1083,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	public boolean hasIdAnnotatedFeature() {
 		if (!getPaIdFeatures().isEmpty()) return true;
-
-		for (EClass eSuper : getAnnotatedEClass().getEAllSuperTypes()) {
-			PAnnotatedEClass aClass = getPaModel().getPAnnotated(eSuper);
-			if (aClass != null && aClass.hasIdAnnotatedFeature()) {
-				return true;
-			}
+		if (getPaSuperEntity() != null) {
+			return getPaSuperEntity().hasIdAnnotatedFeature();
 		}
 		return false;
 	}
@@ -1099,6 +1094,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		for (PAnnotatedEStructuralFeature aFeature : getPaEStructuralFeatures()) {
 			if (aFeature instanceof PAnnotatedEAttribute)
 				if (((PAnnotatedEAttribute) aFeature).getVersion() != null) return true;
+		}
+		if (getPaSuperEntity() != null) {
+			return getPaSuperEntity().hasVersionAnnotatedFeature();
 		}
 		return false;
 	}
@@ -1155,33 +1153,14 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * {@inheritDoc }
 	 */
 	public PAnnotatedEClass getPaSuperEntity() {
-		if (paSuperEntityIsComputed) { // use boolean to also return null;
-			return paSuperEntity;
-		}
-		paSuperEntity = getPaSuperEntityInternal(false);
-		if (paSuperEntity == null) {
-			paSuperEntity = getPaSuperEntityInternal(true);
-		}
-		paSuperEntityIsComputed = true;
 		return paSuperEntity;
 	}
 
 	/**
-	 * {@inheritDoc }
+	 * @param paSuperEntity the paSuperEntity to set
 	 */
-	public PAnnotatedEClass getPaSuperEntityInternal(boolean allowInterfaces) {
-		PAnnotatedModel model = getPaModel();
-		PAnnotatedEClass superEntity = null;
-		if (model != null && getAnnotatedEClass() != null) {
-			Iterator<EClass> i = getAnnotatedEClass().getESuperTypes().iterator();
-			while (superEntity == null && i.hasNext()) {
-				PAnnotatedEClass x = model.getPAnnotated(i.next());
-				if (x.getEntity() != null &&
-						(allowInterfaces || !x.getAnnotatedEClass().isInterface()))
-					superEntity = x;
-			}
-		}
-		return superEntity;
+	public void setPaSuperEntity(PAnnotatedEClass paSuperEntity) {
+		this.paSuperEntity = paSuperEntity;
 	}
 
 	/**

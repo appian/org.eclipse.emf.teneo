@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.37 2007/03/21 15:46:39 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.38 2007/03/24 11:48:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -83,7 +83,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  */
 public class DefaultAnnotator {
 
@@ -243,7 +243,7 @@ public class DefaultAnnotator {
 
 		optionEMapAsTrueMap = po.isMapEMapAsTrueMap();
 		log.debug("optionEMapAsTrueMap " + optionEMapAsTrueMap);
-		
+
 		optionMaximumSqlLength = po.getMaximumSqlNameLength();
 		log.debug("Maximum column length: " + optionMaximumSqlLength);
 
@@ -261,10 +261,10 @@ public class DefaultAnnotator {
 
 		optionMapListAsBag = po.alwaysMapListAsBag();
 		log.debug("optionMapListAsBag " + optionMapListAsBag);
-		
+
 		optionMapListAsIdBag = po.alwaysMapListAsIdBag();
 		log.debug("optionMapListAsIdBag " + optionMapListAsIdBag);
-		
+
 		optionDefaultTemporal = TemporalType.get(po.getDefaultTemporalValue());
 		if (optionDefaultTemporal == null) {
 			throw new IllegalArgumentException("Temporal value not found: "
@@ -305,66 +305,61 @@ public class DefaultAnnotator {
 
 	/** Returns the annotated version of an EClass */
 	protected void processClass(PAnnotatedEClass aClass) {
+
+		final EClass eclass = (EClass) aClass.getAnnotatedElement();
+
+		// check if already processed
+		if (processedAClasses.contains(aClass)) {
+			return;
+		}
+
+		// do not process the document root
+		if (eclass.getName().compareTo("DocumentRoot") == 0) {
+			return;
+		}
+
+		log.debug("Creating mapping for eclass " + eclass.getName());
+
 		if (aClass == null) {
 			throw new StoreAnnotationsException(
 					"Mapping Exception, no Annotated Class for EClass, "
 							+ "a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
 							+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
 		}
-		log.debug(" Adding default annotations for EClass: "
-				+ aClass.getAnnotatedElement().getName());
-
-		// do not process the document root
-		if (aClass.getAnnotatedEClass().getName().compareTo("DocumentRoot") == 0) {
-			return;
-		}
-
-		// check if already processed
-		if (processedAClasses.contains(aClass))
-			return;
 
 		// first do the superclasses
-		for (EClass eclass : aClass.getAnnotatedEClass().getESuperTypes()) {
+		for (EClass superEclass : aClass.getAnnotatedEClass().getESuperTypes()) {
 			final PAnnotatedEClass superAClass = aClass.getPaModel()
-					.getPAnnotated(eclass);
+					.getPAnnotated(superEclass);
 			if (superAClass == null) {
 				throw new StoreAnnotationsException(
 						"Mapping Exception, no Annotated Class for EClass: "
-								+ eclass.getName()
+								+ superEclass.getName()
 								+ " a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
 								+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
 			}
-			processClass(superAClass);
+			if (!processedAClasses.contains(superAClass)) {
+				processClass(superAClass);
+			}
 		}
 
-		final EClass eclass = (EClass) aClass.getAnnotatedElement();
-
-		final String transientSource = "http://ejb.elver.org/Transient";
-		if (aClass.getAnnotatedEClass().getEAnnotation(transientSource) != null) {
-			log.debug("EClass " + aClass.getAnnotatedEClass().getName()
-					+ " has transient annotation ");
-			return;
-		}
-
-		if (!optionAddEntityAnnotation && aClass.getEntity() == null
-				&& aClass.getEmbeddable() == null
-				&& aClass.getMappedSuperclass() == null) {
-			log
-					.debug("Entities are not added automatically and this eclass: "
-							+ aClass.getAnnotatedEClass().getName()
-							+ " does not have an entity/embeddable/mappedsuperclass annotation.");
-			// NOTE: should the aClass be removed from its pamodel?
-			return;
-		}
+		log.debug(" Adding default annotations for EClass: "
+				+ aClass.getAnnotatedElement().getName());
 
 		processedAClasses.add(aClass);
 
-		// TODO: should eclasses with interface=true be mapped, i.e. have entity
-		// specified?
+		log.debug("Setting the superentity of the eclass");
+		setSuperEntity(aClass);
+		final boolean isInheritanceRoot = aClass.getPaSuperEntity() == null ||
+			aClass.getPaSuperEntity().getMappedSuperclass() != null; // last thing only happens with jpox
+
+		// A not mappable type will not get an entity annotation.
+		// Even the features of non-mappable types are mapped because
+		// the efeatures can be inherited through multiple inheritance
+		final boolean mappable = isMappableAnnotatedClass(aClass);
 
 		// add entity or set entity name
-		if (aClass.getEntity() == null && aClass.getEmbeddable() == null
-				&& aClass.getMappedSuperclass() == null) {
+		if (mappable && aClass.getEntity() == null && aClass.getEmbeddable() == null) {
 			Entity entity = aFactory.createEntity();
 			entity.setEModelElement(eclass);
 			entity.setName(getEntityName(eclass));
@@ -378,15 +373,15 @@ public class DefaultAnnotator {
 		// setting
 		// Note only an 'entitied' root gets an inheritance annotation. This is
 		// according to the spec.
-		final boolean isInheritanceRoot = isInheritanceRoot(aClass);
 		final InheritanceType inheritanceType;
 		if (aClass.getInheritance() != null) {
 			inheritanceType = aClass.getInheritance().getStrategy();
 		} else {
 			// get the inheritance from the supers, if defined there
 			final Inheritance inheritanceFromSupers = getInheritanceFromSupers(aClass);
-			inheritanceType = inheritanceFromSupers != null ? inheritanceFromSupers.getStrategy() : 
-				optionDefaultInheritanceMapping;
+			inheritanceType = inheritanceFromSupers != null ? inheritanceFromSupers
+					.getStrategy()
+					: optionDefaultInheritanceMapping;
 			// if this is the root then add a specific inheritance annotation
 			if (isInheritanceRoot) {
 				final Inheritance inheritance = aFactory.createInheritance();
@@ -772,12 +767,15 @@ public class DefaultAnnotator {
 		addColumnConstraints(aAttribute);
 	}
 
-	/** Adds the column level constraints on the basis of the xsd extended meta data */
+	/**
+	 * Adds the column level constraints on the basis of the xsd extended meta
+	 * data
+	 */
 	private void addColumnConstraints(PAnnotatedEAttribute aAttribute) {
-		
+
 		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
-		
-		// decide if a column annotation should be added, this is done 
+
+		// decide if a column annotation should be added, this is done
 		// when the maxLength or length, totalDigits or fractionDigits are set
 		// and when no other column has been set
 		if (aAttribute.getColumn() == null) {
@@ -785,16 +783,25 @@ public class DefaultAnnotator {
 			if (maxLength == null) {
 				maxLength = getExtendedMetaData(eAttribute, "length");
 			}
-			final String totalDigits = getExtendedMetaData(eAttribute, "totalDigits");
-			final String fractionDigits = getExtendedMetaData(eAttribute, "fractionDigits");
-			if (maxLength != null || totalDigits != null || fractionDigits != null) {
+			final String totalDigits = getExtendedMetaData(eAttribute,
+					"totalDigits");
+			final String fractionDigits = getExtendedMetaData(eAttribute,
+					"fractionDigits");
+			if (maxLength != null || totalDigits != null
+					|| fractionDigits != null) {
 				final Column column = aFactory.createColumn();
-				// only support this for the string class, the length/maxlength is also 
-				// used in case of the xsd list/union types but this can not be enforced using a constraint on the
+				// only support this for the string class, the length/maxlength
+				// is also
+				// used in case of the xsd list/union types but this can not be
+				// enforced using a constraint on the
 				// columnlength
-				if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null &&
-						eAttribute.getEAttributeType().getInstanceClass() == String.class) { 
-					column.setLength(Integer.parseInt(maxLength)); // you'll find parse errors!
+				if (maxLength != null
+						&& eAttribute.getEAttributeType().getInstanceClass() != null
+						&& eAttribute.getEAttributeType().getInstanceClass() == String.class) {
+					column.setLength(Integer.parseInt(maxLength)); // you'll
+																	// find
+																	// parse
+																	// errors!
 				}
 				if (totalDigits != null) {
 					column.setPrecision(Integer.parseInt(totalDigits));
@@ -806,7 +813,7 @@ public class DefaultAnnotator {
 			}
 		}
 	}
-	
+
 	/** Handles a many EAttribute which is a list of simple types */
 	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute,
 			boolean forceNullable) {
@@ -998,10 +1005,12 @@ public class DefaultAnnotator {
 
 		// set unique and indexed
 		if (!otmWasSet) {
-			log 
+			log
 					.debug("Setting indexed and unique from ereference because otm was not set manually!");
 			// note force a join table in case of idbag!
-			otm.setIndexed(!optionMapListAsBag && !optionMapListAsIdBag && eReference.isOrdered() && aReference.getOrderBy() == null);
+			otm.setIndexed(!optionMapListAsBag && !optionMapListAsIdBag
+					&& eReference.isOrdered()
+					&& aReference.getOrderBy() == null);
 			otm.setUnique(!optionMapListAsIdBag && eReference.isUnique());
 
 			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
@@ -1504,33 +1513,77 @@ public class DefaultAnnotator {
 		return result;
 	}
 
-	/**
-	 * Returns true if this is the root of the inheritancetree which is
-	 * persisted
-	 */
-	private boolean isInheritanceRoot(PAnnotatedEClass aClass) {
-		if (aClass.getMappedSuperclass() != null) {
-			return false;
+	/** Set the super entity */
+	protected void setSuperEntity(PAnnotatedEClass aClass) {
+		assert (aClass.getPaSuperEntity() == null);
+		final EClass eclass = aClass.getAnnotatedEClass();
+		if (eclass.getESuperTypes().size() == 0) {
+			return;
 		}
-		if (aClass.getTransient() != null) {
-			return false;
+		final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(
+				eclass.getESuperTypes().get(0));
+		if (superAClass.getEntity() != null) {
+			aClass.setPaSuperEntity(superAClass);
 		}
-		for (Iterator<EClass> it = aClass.getAnnotatedEClass().getESuperTypes()
-				.iterator(); it.hasNext();) {
-			PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(
-					it.next());
-			if (superAClass != null
-					&& superAClass.getMappedSuperclass() == null
-					&& processedAClasses.contains(superAClass)) {
-				return false;
-			}
+	}
 
-			// and go up one level, can be used to skip non-entities in the
-			// structure
-			if (isInheritanceRoot(superAClass)) {
-				return false;
-			}
+	/** Returns fals for jpox and true for hibernate */
+	protected boolean isMappableAnnotatedClass(PAnnotatedEClass aClass) {
+
+		final EClass eclass = aClass.getAnnotatedEClass();
+
+		if (!mapInterfaceEClass() && eclass.isInterface()) {
+			log
+					.debug("Not mapping interfaces and this is an interface eclass, ignore it");
+			return false;
 		}
+
+		final String transientSource = "http://ejb.elver.org/Transient";
+		if (aClass.getAnnotatedEClass().getEAnnotation(transientSource) != null) {
+			log.debug("EClass " + aClass.getAnnotatedEClass().getName()
+					+ " has deprecated transient annotation ");
+			return false;
+		}
+
+		if (!optionAddEntityAnnotation && aClass.getEntity() == null
+				&& aClass.getEmbeddable() == null) {
+			log
+					.debug("Entities are not added automatically and this eclass: "
+							+ aClass.getAnnotatedEClass().getName()
+							+ " does not have an entity/embeddable annotation.");
+			return false;
+		}
+
+		if (aClass.getTransient() != null) {
+			log.debug("EClass " + aClass.getAnnotatedEClass().getName()
+					+ " is transient, is not mapped");
+			return false;
+		}
+
+		// ignore these
+		if (!mapMappedSuperEClass() && aClass.getMappedSuperclass() != null) {
+			if (aClass.getEntity() != null) {
+				log
+						.warn("EClass "
+								+ eclass.getName()
+								+ " has entity as well as mappedsuperclass annotation, following mappedsuperclass annotation, therefore ignoring it for the mapping");
+			}
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Map Interface EClasses, default false, overridden by hibernate to return
+	 * true
+	 */
+	protected boolean mapInterfaceEClass() {
+		return false;
+	}
+	
+	/** Map a mapped superclass, this differs for jpox and hibernate */
+	protected boolean mapMappedSuperEClass() {
 		return true;
 	}
 
@@ -1539,20 +1592,12 @@ public class DefaultAnnotator {
 	 * super annotated class
 	 */
 	private Inheritance getInheritanceFromSupers(PAnnotatedEClass childPA) {
-		if (childPA.getInheritance() != null
-				&& processedAClasses.contains(childPA))
-			return childPA.getInheritance();
-		final EClass eChild = childPA.getAnnotatedEClass();
-		for (EClass eSuper : eChild.getESuperTypes()) {
-			final PAnnotatedEClass pae = annotatedModel.getPAnnotated(eSuper);
-			if (pae != null) {
-				final Inheritance inheritance = getInheritanceFromSupers(pae);
-				if (inheritance != null) {
-					return inheritance;
-				}
-			}
+		if (childPA == null) {
+			return null;
 		}
-		return null;
+		if (childPA.getInheritance() != null)
+			return childPA.getInheritance();
+		return getInheritanceFromSupers(childPA.getPaSuperEntity());
 	}
 
 	/** Walks up a edatatype inheritance structure to find the itemType */
@@ -1671,19 +1716,21 @@ public class DefaultAnnotator {
 							+ "resolvable by EMF.");
 		}
 
-		
-		// ok, here we figure out if it is an EMap. if so, we return the destination child name, not the keyToValueEntry wrapper
+		// ok, here we figure out if it is an EMap. if so, we return the
+		// destination child name, not the keyToValueEntry wrapper
 		final PAnnotatedEClass aclass = annotatedModel.getPAnnotated(eclass);
-		if(optionEMapAsTrueMap && StoreUtil.isMapEntry(eclass)){
-				// ok, it is an EMAp, get the annotaetd class of the child
+		if (optionEMapAsTrueMap && StoreUtil.isMapEntry(eclass)) {
+			// ok, it is an EMAp, get the annotaetd class of the child
 			EStructuralFeature feature = eclass.getEStructuralFeature("value");
-			if(feature instanceof EReference) {
-				return optionEClassNameStrategy.toUniqueName(((EReference)feature).getEReferenceType());
+			if (feature instanceof EReference) {
+				return optionEClassNameStrategy
+						.toUniqueName(((EReference) feature)
+								.getEReferenceType());
 			} else {
-				return ((EAttribute)feature).getEType().getInstanceClassName();
+				return ((EAttribute) feature).getEType().getInstanceClassName();
 			}
 		}
-		
+
 		if (aclass != null && aclass.getEntity() != null
 				&& aclass.getEntity().getName() != null) {
 			return aclass.getEntity().getName();
@@ -1693,16 +1740,18 @@ public class DefaultAnnotator {
 
 	/** Get a specific extended metadate */
 	private String getExtendedMetaData(EAttribute eAttribute, String key) {
-		String value = getEAnnotationValue(eAttribute, "http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+		String value = getEAnnotationValue(eAttribute,
+				"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		if (value == null) {
-			value = getEAnnotationValue(eAttribute.getEAttributeType(), "http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+			value = getEAnnotationValue(eAttribute.getEAttributeType(),
+					"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		}
 		return value;
 	}
 
 	/** Returns the value of an annotation with a certain key */
-	private String getEAnnotationValue(EModelElement eModelElement, String source,
-			String key) {
+	private String getEAnnotationValue(EModelElement eModelElement,
+			String source, String key) {
 		final EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
 		if (eAnnotation == null)
 			return null;

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.10 2007/03/21 15:46:39 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.11 2007/03/24 11:48:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -452,6 +452,11 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 *         is a root entity.
 	 */
 	PAnnotatedEClass getPaSuperEntity();
+
+	/**
+	 * @param paSuperEntity the paSuperEntity to set
+	 */
+	void setPaSuperEntity(PAnnotatedEClass paSuperEntity);
 
 	/**
 	 * @return Returns the inheritance strategy for this entity. If this element has an inheritance annotation, return

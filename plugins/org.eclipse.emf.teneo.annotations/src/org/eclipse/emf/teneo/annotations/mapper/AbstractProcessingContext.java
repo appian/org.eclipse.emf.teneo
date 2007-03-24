@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.7 2007/03/21 15:46:39 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.8 2007/03/24 11:48:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class AbstractProcessingContext {
@@ -150,6 +150,8 @@ public class AbstractProcessingContext {
 	 * inherited (the mapping describes the inheritance relation). For the other
 	 * supertypes (located at index 1 and up in getESuperTypes) the features are
 	 * mapped as properties in the class itself.
+	 * The superEntity is the super aclass denoted as the real supertype extended by
+	 * teneo.
 	 */
 	public List<PAnnotatedEStructuralFeature> getInheritedFeatures(
 			PAnnotatedEClass aClass) {
