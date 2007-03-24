@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.5 2007/02/01 12:34:05 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.6 2007/03/24 11:49:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.issues;
@@ -28,18 +28,21 @@ import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.InheritanceAction;
 import org.eclipse.emf.teneo.test.issues.InterfaceTrueAction;
 import org.eclipse.emf.teneo.test.issues.MainAction;
+import org.eclipse.emf.teneo.test.issues.MultipleInheritanceAction;
 import org.eclipse.emf.teneo.test.issues.SimplenmAction;
 
 /**
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class AllGenerateTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for issues", JPOXTestbed.instance().getConfigurations());
+
+		suite.addTest(new JPOXGenerateTest(MultipleInheritanceAction.class));
 
 		suite.addTest(new JPOXGenerateTest(MainAction.class));
 		suite.addTest(new JPOXGenerateTest(InheritanceAction.class));
@@ -50,6 +53,7 @@ public class AllGenerateTests {
 		suite.addTest(new JPOXGenerateTest(InterfaceTrueAction.class));
 		suite.addTest(new JPOXGenerateTest(AbstractReferenceAction.class));
 		suite.addTest(new JPOXGenerateTest(SimplenmAction.class));
+		
 		// seems not to work for jpox, is unimportant
 		// suite.addTest(new JPOXGenerateTest(TopClassesAction.class));
 
