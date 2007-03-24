@@ -12,12 +12,15 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.4.2.1 2007/03/09 17:56:41 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.4.2.2 2007/03/24 11:55:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
+import java.util.Iterator;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.DefaultAnnotator;
@@ -26,6 +29,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
@@ -229,5 +233,51 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		}
 
 		return typeClassName;
+	}
+	
+
+	/** Set the super entity */
+	protected void setSuperEntity(PAnnotatedEClass aClass) {
+		assert (aClass.getPaSuperEntity() == null);
+		final EClass eclass = aClass.getAnnotatedEClass();
+		if (eclass.getESuperTypes().size() == 0) {
+			aClass.setPaSuperEntity(null);
+			return;
+		}
+
+		PAnnotatedEClass superAClass = getPaSuperEntity(aClass, false);
+		if (superAClass == null) {
+			superAClass = getPaSuperEntity(aClass, true);
+		}
+		aClass.setPaSuperEntity(superAClass);
+	}
+
+	/** Compute the annotated superclass, ignore interfaces if parameterized */
+	private PAnnotatedEClass getPaSuperEntity(PAnnotatedEClass aClass,
+			boolean allowInterfaces) {
+		final PAnnotatedModel model = aClass.getPaModel();
+		for (Iterator it = aClass.getAnnotatedEClass().getESuperTypes().iterator(); it.hasNext();) {
+			EClass superEClass = (EClass)it.next();
+			final PAnnotatedEClass x = model.getPAnnotated(superEClass);
+			if (x.getEntity() != null && x.getMappedSuperclass() == null
+					&& (allowInterfaces || !x.getAnnotatedEClass()
+							.isInterface())) {
+				return x;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Map Interface EClasses, default false, overridden by hibernate to return
+	 * true
+	 */
+	protected boolean mapInterfaceEClass() {
+		return true;
+	}
+	
+	/** Map a mapped superclass, this differs for jpox and hibernate */
+	protected boolean mapMappedSuperEClass() {
+		return true;
 	}
 }

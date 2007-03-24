@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.9.2.1 2007/03/18 22:34:33 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.9.2.2 2007/03/24 11:55:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -176,7 +176,7 @@ public class HibernateMappingGenerator {
 	 */
 	protected void processPAClass(PAnnotatedEClass paEClass) {
 		if (processedPAClasses.add(paEClass)) {
-			if (paEClass.getEntity() != null) {
+			if (paEClass.getEntity() != null && paEClass.getMappedSuperclass() == null) {
 				// this is a persistent entity
 				PAnnotatedEClass paSuperEntity = paEClass.getPaSuperEntity();
 				if (paSuperEntity != null) {
