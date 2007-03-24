@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.25.2.7 2007/03/06 21:27:51 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.25.2.8 2007/03/24 11:55:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -82,7 +82,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25.2.7 $
+ * @version $Revision: 1.25.2.8 $
  */
 public class DefaultAnnotator {
 
@@ -261,6 +261,9 @@ public class DefaultAnnotator {
 
 	/** Returns the annotated version of an EClass */
 	protected void processClass(PAnnotatedEClass aClass) {
+
+		final EClass eclass = (EClass) aClass.getAnnotatedElement();
+
 		if (aClass == null) {
 			throw new StoreAnnotationsException(
 					"Mapping Exception, no Annotated Class for EClass, "
@@ -269,51 +272,46 @@ public class DefaultAnnotator {
 		}
 		log.debug(" Adding default annotations for EClass: " + aClass.getAnnotatedElement().getName());
 
-		// do not process the document root
-		if (aClass.getAnnotatedEClass().getName().compareTo("DocumentRoot") == 0) {
+		// check if already processed
+		if (processedAClasses.contains(aClass)) {
 			return;
 		}
 
-		// check if already processed
-		if (processedAClasses.contains(aClass))
+		// do not process the document root
+		if (eclass.getName().compareTo("DocumentRoot") == 0) {
 			return;
+		}
 
 		// first do the superclasses
 		for (Iterator it = aClass.getAnnotatedEClass().getESuperTypes().iterator(); it.hasNext();) {
-			final EClass eclass = (EClass) it.next();
-			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(eclass);
+			final EClass superEclass = (EClass) it.next();
+			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(superEclass);
 			if (superAClass == null) {
 				throw new StoreAnnotationsException(
 						"Mapping Exception, no Annotated Class for EClass: "
-								+ eclass.getName()
+								+ superEclass.getName()
 								+ " a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
 								+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
 			}
-			processClass(superAClass);
-		}
-
-		final EClass eclass = (EClass) aClass.getAnnotatedElement();
-
-		final String transientSource = "http://ejb.elver.org/Transient";
-		if (aClass.getAnnotatedEClass().getEAnnotation(transientSource) != null) {
-			log.debug("EClass " + aClass.getAnnotatedEClass().getName() + " has transient annotation ");
-			return;
-		}
-
-		if (!optionAddEntityAnnotation && aClass.getEntity() == null && aClass.getEmbeddable() == null
-				&& aClass.getMappedSuperclass() == null) {
-			log.debug("Entities are not added automatically and this eclass: " + aClass.getAnnotatedEClass().getName()
-					+ " does not have an entity/embeddable/mappedsuperclass annotation.");
-			// NOTE: should the aClass be removed from its pamodel?
-			return;
+			if (!processedAClasses.contains(superAClass)) {
+				processClass(superAClass);
+			}
 		}
 
 		processedAClasses.add(aClass);
 
-		// TODO: should eclasses with interface=true be mapped, i.e. have entity specified?
+		// set the superclass
+		setSuperEntity(aClass);
+		final boolean isInheritanceRoot = aClass.getPaSuperEntity() == null || 
+			aClass.getPaSuperEntity().getMappedSuperclass() != null;
+
+		// not mappable types will not get an entity annotation. Note
+		// that there features are still mapped because these can be inherited!!
+		// therefore just do not add the entity but do the rest.
+		final boolean mappable = isMappableAnnotatedClass(aClass);
 
 		// add entity or set entity name
-		if (aClass.getEntity() == null && aClass.getEmbeddable() == null && aClass.getMappedSuperclass() == null) {
+		if (mappable && aClass.getEntity() == null && aClass.getEmbeddable() == null) {
 			Entity entity = aFactory.createEntity();
 			entity.setEModelElement(eclass);
 			entity.setName(getEntityName(eclass));
@@ -324,7 +322,6 @@ public class DefaultAnnotator {
 
 		// get the inheritance from the supertype or use the global inheritance setting
 		// Note only an 'entitied' root gets an inheritance annotation. This is according to the spec.
-		final boolean isInheritanceRoot = isInheritanceRoot(aClass);
 		final InheritanceType inheritanceType;
 		if (aClass.getInheritance() != null) {
 			inheritanceType = aClass.getInheritance().getStrategy();
@@ -463,7 +460,7 @@ public class DefaultAnnotator {
 			// process transients further because they can be part of a featuremap, the specific mapper should
 			// handle transient
 			// Note that this means that transient features will still have additional annotations such as basic etc.
-			// if (aStructuralFeature.getTransient() != null) return;
+			//if (aStructuralFeature.getTransient() != null) return;
 
 			if (aStructuralFeature instanceof PAnnotatedEAttribute) {
 				final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aStructuralFeature;
@@ -1201,26 +1198,77 @@ public class DefaultAnnotator {
 		return result;
 	}
 
-	/** Returns true if this is the root of the inheritancetree which is persisted */
-	private boolean isInheritanceRoot(PAnnotatedEClass aClass) {
-		if (aClass.getMappedSuperclass() != null) {
-			return false;
+	/** Set the super entity */
+	protected void setSuperEntity(PAnnotatedEClass aClass) {
+		assert (aClass.getPaSuperEntity() == null);
+		final EClass eclass = aClass.getAnnotatedEClass();
+		if (eclass.getESuperTypes().size() == 0) {
+			return;
 		}
-		if (aClass.getTransient() != null) {
-			return false;
+		final PAnnotatedEClass superAClass = (PAnnotatedEClass)aClass.getPaModel().getPAnnotated(
+				(EClass)eclass.getESuperTypes().get(0));
+		if (superAClass.getEntity() != null) {
+			aClass.setPaSuperEntity(superAClass);
 		}
-		for (Iterator it = aClass.getAnnotatedEClass().getESuperTypes().iterator(); it.hasNext();) {
-			PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated((EClass) it.next());
-			if (superAClass != null && superAClass.getMappedSuperclass() == null
-					&& processedAClasses.contains(superAClass)) {
-				return false;
-			}
+	}
 
-			// and go up one level, can be used to skip non-entities in the structure
-			if (isInheritanceRoot(superAClass)) {
-				return false;
-			}
+	/** Checks interface/mappedsuperclass etc. */
+	protected boolean isMappableAnnotatedClass(PAnnotatedEClass aClass) {
+
+		final EClass eclass = aClass.getAnnotatedEClass();
+
+		if (!mapInterfaceEClass() && eclass.isInterface()) {
+			log
+					.debug("Not mapping interfaces and this is an interface eclass, ignore it");
+			return false;
 		}
+
+		final String transientSource = "http://ejb.elver.org/Transient";
+		if (aClass.getAnnotatedEClass().getEAnnotation(transientSource) != null) {
+			log.debug("EClass " + aClass.getAnnotatedEClass().getName()
+					+ " has deprecated transient annotation ");
+			return false;
+		}
+
+		if (!optionAddEntityAnnotation && aClass.getEntity() == null
+				&& aClass.getEmbeddable() == null) {
+			log
+					.debug("Entities are not added automatically and this eclass: "
+							+ aClass.getAnnotatedEClass().getName()
+							+ " does not have an entity/embeddable annotation.");
+			return false;
+		}
+
+		if (aClass.getTransient() != null) {
+			log.debug("EClass " + aClass.getAnnotatedEClass().getName()
+					+ " is transient, is not mapped");
+			return false;
+		}
+
+		// ignore these
+		if (!mapMappedSuperEClass() && aClass.getMappedSuperclass() != null) {
+			if (aClass.getEntity() != null) {
+				log
+						.warn("EClass "
+								+ eclass.getName()
+								+ " has entity as well as mappedsuperclass annotation, following mappedsuperclass annotation, therefore ignoring it for the mapping");
+			}
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Map Interface EClasses, default false, overridden by hibernate to return
+	 * true
+	 */
+	protected boolean mapInterfaceEClass() {
+		return false;
+	}
+	
+	/** Map a mapped superclass, this differs for jpox and hibernate */
+	protected boolean mapMappedSuperEClass() {
 		return true;
 	}
 

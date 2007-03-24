@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.10.2.1 2007/03/21 16:10:12 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.10.2.2 2007/03/24 11:55:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -230,6 +230,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	protected EList associationOverrides = null;
 
+	/** The computed super entity */
+	private PAnnotatedEClass paSuperEntity = null; 
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1070,14 +1073,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	public boolean hasIdAnnotatedFeature() {
 		if (!getPaIdAttributes().isEmpty()) return true;
-
-		List eSupers = getAnnotatedEClass().getEAllSuperTypes();
-		for (Iterator it = eSupers.iterator(); it.hasNext();) {
-			EClass eSuper = (EClass)it.next();
-			PAnnotatedEClass aClass = getPaModel().getPAnnotated(eSuper);
-			if (aClass != null && aClass.hasIdAnnotatedFeature()) {
-				return true;
-			}
+		if (getPaSuperEntity() != null) {
+			return getPaSuperEntity().hasIdAnnotatedFeature();
 		}
 		return false;
 	}
@@ -1089,6 +1086,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			PAnnotatedEStructuralFeature aFeature = (PAnnotatedEStructuralFeature)it.next();
 			if (aFeature instanceof PAnnotatedEAttribute)
 				if (((PAnnotatedEAttribute) aFeature).getVersion() != null) return true;
+		}
+		if (getPaSuperEntity() != null) {
+			return getPaSuperEntity().hasVersionAnnotatedFeature();
 		}
 		return false;
 	}
@@ -1143,22 +1143,19 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		return mappedSupers;
 	}
 
+
 	/**
 	 * {@inheritDoc }
 	 */
 	public PAnnotatedEClass getPaSuperEntity() {
-		// TODO cache its SuperEntity
-		PAnnotatedModel model = getPaModel();
-		PAnnotatedEClass superEntity = null;
-		if (model != null && getAnnotatedEClass() != null) {
-			Iterator i = getAnnotatedEClass().getESuperTypes().iterator();
-			while (superEntity == null && i.hasNext()) {
-				PAnnotatedEClass x = model.getPAnnotated((EClass) i.next());
-				if (x.getEntity() != null)
-					superEntity = x;
-			}
-		}
-		return superEntity;
+		return paSuperEntity;
+	}
+
+	/**
+	 * @param paSuperEntity the paSuperEntity to set
+	 */
+	public void setPaSuperEntity(PAnnotatedEClass paSuperEntity) {
+		this.paSuperEntity = paSuperEntity;
 	}
 
 	/**
