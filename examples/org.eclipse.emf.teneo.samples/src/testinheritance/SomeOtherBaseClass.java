@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SomeOtherBaseClass.java,v 1.1.2.2 2007/03/18 22:34:03 mtaal Exp $
+ * $Id: SomeOtherBaseClass.java,v 1.1.2.3 2007/03/24 11:55:45 mtaal Exp $
  */
 package testinheritance;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see testinheritance.TestinheritancePackage#getSomeOtherBaseClass()
- * @model annotation="teneo.jpa appinfo='@Transient'"
+ * @model
  * @generated
  */
 public interface SomeOtherBaseClass extends EObject {

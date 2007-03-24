@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritancePackage.java,v 1.1.2.3 2007/03/21 16:09:28 mtaal Exp $
+ * $Id: TestinheritancePackage.java,v 1.1.2.4 2007/03/24 11:55:45 mtaal Exp $
  */
 package testinheritance;
 
@@ -696,7 +696,7 @@ public interface TestinheritancePackage extends EPackage {
 		 */
 		EAttribute NAME_VALUE_PAIR__VALUE = eINSTANCE.getNameValuePair_Value();
 
-			/**
+		/**
 		 * The meta object literal for the '{@link testinheritance.impl.ParentOneImpl <em>Parent One</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
