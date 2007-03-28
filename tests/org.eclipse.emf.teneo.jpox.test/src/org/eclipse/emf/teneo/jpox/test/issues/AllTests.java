@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.11 2007/03/24 11:49:38 mtaal Exp $
+ * $Id: AllTests.java,v 1.12 2007/03/28 13:58:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.issues;
@@ -21,6 +21,7 @@ import junit.framework.TestSuite;
 
 import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
+import org.eclipse.emf.teneo.test.issues.AgilAction;
 import org.eclipse.emf.teneo.test.issues.BagDuplicateAction;
 import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.InheritanceAction;
@@ -32,7 +33,7 @@ import org.eclipse.emf.teneo.test.issues.SimplenmAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class AllTests {
 
@@ -40,6 +41,8 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", JPOXTestbed
 				.instance().getConfigurations());
 		
+		suite.addTestSuite(AgilAction.class);
+
 		suite.addTestSuite(MultipleInheritanceAction.class);
 
 		suite.addTestSuite(InterfaceTrueAction.class);

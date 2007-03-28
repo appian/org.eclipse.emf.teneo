@@ -11,14 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.36 2007/03/18 19:19:11 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.37 2007/03/28 13:58:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -67,7 +67,7 @@ public class JPOXTestbed extends Testbed {
 	/**
 	 * The directory in which the mapping files are generated TODO make insesitive to user.dir
 	 */
-	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "run";
+	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "jdo";
 
 	/** Test the rundir */
 	static {
@@ -111,9 +111,13 @@ public class JPOXTestbed extends Testbed {
 
 	/** Generate the mapping file for the test case */
 	public void doMapping(AbstractTest testCase) {
-		File mappingFile = getMappingFile(testCase, getActiveConfiguration());
-		generateMappingFile(testCase, mappingFile, getActiveConfiguration().isOptimistic(), getActiveConfiguration()
-				.getMappingStrategy());
+		try {
+			final File mappingFile = getMappingFile(testCase, getActiveConfiguration());
+			generateMappingFile(testCase, mappingFile, getActiveConfiguration().isOptimistic(), getActiveConfiguration()
+					.getMappingStrategy());
+		} catch (Exception e) {
+			throw new StoreTestException("Exception while doing mapping", e);
+		}
 	}
 
 	/**
@@ -138,21 +142,21 @@ public class JPOXTestbed extends Testbed {
 			store.setUp();
 
 			return store;
-		} catch (FileNotFoundException e) {
-			throw new StoreTestException("Exception while getting hbm file", e);
+		} catch (Exception e) {
+			throw new StoreTestException("Exception while getting jdo file", e);
 		}
 	}
 
 	/**
 	 * Creates a file with the extension based on the type of inheritance mapping strategy
 	 */
-	protected File getMappingFile(AbstractTest testCase, TestConfiguration cfg) {
-		return new File(getRunTestDir(testCase, cfg), "package.jdo");
+	protected File getMappingFile(AbstractTest testCase, TestConfiguration cfg) throws IOException {
+		return new File(getRunTestDir(testCase), cfg.getName() + "_package.jdo");
 	}
 
 	/** Returns the directory in which to put the generated mapping files */
-	protected File getRunTestDir(AbstractTest testCase, TestConfiguration cfg) {
-		File dir = new File(new File(RUN_BASE_DIR, testCase.getName()), cfg.getName());
+	protected File getRunTestDir(AbstractTest testCase) throws IOException {
+		File dir = new File(RUN_BASE_DIR, testCase.getName());
 		dir.mkdirs();
 		return dir;
 	}
@@ -189,7 +193,9 @@ public class JPOXTestbed extends Testbed {
 			final File projectDir = mappingFile.getParentFile().getParentFile().getParentFile().getParentFile().getParentFile();
 			final File samplesProject = new File (projectDir, "org.eclipse.emf.teneo.samples");
 			final File jdoFiles = new File(samplesProject, "jdofiles");
-
+			if (!jdoFiles.exists()) {
+				jdoFiles.mkdirs();
+			}
 			// just choose a name based on one of the classes in the package
 			final String fileName = ((EClassifier)test.getEPackages()[0].getEClassifiers().get(0)).getInstanceClassName() + ".jdo";
 			final File jdoFile = new File(jdoFiles, fileName);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.18 2007/03/24 11:49:38 mtaal Exp $
+ * $Id: AllTests.java,v 1.19 2007/03/28 13:58:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -20,6 +20,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
+import org.eclipse.emf.teneo.jpox.test.generate.JPOXGenerateTest;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
@@ -28,6 +29,7 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
+import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceReferenceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryValidateResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.MindMapAction;
@@ -42,13 +44,16 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 				.getConfigurations());
+		suite.addTestSuite(LibraryResourceReferenceAction.class);
+/*
+		
 		suite.addTestSuite(SchoolLibraryTest.class);
 
 		suite.addTestSuite(ProductAction.class);
@@ -84,6 +89,6 @@ public class AllTests {
 		suite.addTestSuite(PrimerPOAction.class);
 		suite.addTestSuite(ForumAction.class);
 		suite.addTestSuite(CatalogTest.class);
-		return suite;
+*/		return suite;
 	}
 }
