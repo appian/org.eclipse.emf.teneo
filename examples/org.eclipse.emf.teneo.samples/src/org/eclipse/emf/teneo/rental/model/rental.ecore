@@ -108,7 +108,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rentalUnits" lowerBound="1"
-        upperBound="-1" eType="#//RentalUnit" resolveProxies="false">
+        upperBound="-1" eType="#//RentalUnit">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="rentalUnits"/>
@@ -125,6 +125,9 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="description"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

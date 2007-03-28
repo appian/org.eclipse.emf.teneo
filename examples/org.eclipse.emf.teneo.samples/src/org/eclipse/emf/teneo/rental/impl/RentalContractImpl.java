@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalContractImpl.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalContractImpl.java,v 1.2 2007/03/28 13:57:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectEList;
 
 import org.eclipse.emf.teneo.rental.RentalContract;
@@ -310,7 +311,7 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	 */
 	public EList<RentalUnit> getRentalUnits() {
 		if (rentalUnits == null) {
-			rentalUnits = new EObjectEList<RentalUnit>(RentalUnit.class, this, RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS);
+			rentalUnits = new EObjectResolvingEList<RentalUnit>(RentalUnit.class, this, RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS);
 		}
 		return rentalUnits;
 	}

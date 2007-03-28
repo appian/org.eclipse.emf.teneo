@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalContract.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalContract.java,v 1.2 2007/03/28 13:57:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -206,7 +206,7 @@ public interface RentalContract extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rental Units</em>' reference list.
 	 * @see org.eclipse.emf.teneo.rental.RentalPackage#getRentalContract_RentalUnits()
-	 * @model type="org.eclipse.emf.teneo.rental.RentalUnit" resolveProxies="false" required="true"
+	 * @model type="org.eclipse.emf.teneo.rental.RentalUnit" required="true"
 	 *        extendedMetaData="kind='element' name='rentalUnits'"
 	 * @generated
 	 */

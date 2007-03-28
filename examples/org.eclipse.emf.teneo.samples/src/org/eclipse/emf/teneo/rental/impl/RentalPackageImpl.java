@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalPackageImpl.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalPackageImpl.java,v 1.2 2007/03/28 13:57:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -453,7 +453,7 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		initEAttribute(getRentalContract_StartDate(), this.getDate(), "startDate", null, 1, 1, RentalContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRentalContract_EndDate(), this.getDate(), "endDate", null, 1, 1, RentalContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRentalContract_Cost(), theXMLTypePackage.getFloat(), "cost", null, 1, 1, RentalContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRentalContract_RentalUnits(), this.getRentalUnit(), null, "rentalUnits", null, 1, -1, RentalContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRentalContract_RentalUnits(), this.getRentalUnit(), null, "rentalUnits", null, 1, -1, RentalContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rentalUnitEClass, RentalUnit.class, "RentalUnit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRentalUnit_Description(), theXMLTypePackage.getString(), "description", null, 1, 1, RentalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -479,6 +479,8 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// teneo.jpa
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -618,6 +620,22 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "description"
+		   });	
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";																					
+		addAnnotation
+		  (getRentalUnit_Description(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
 		   });
 	}
 

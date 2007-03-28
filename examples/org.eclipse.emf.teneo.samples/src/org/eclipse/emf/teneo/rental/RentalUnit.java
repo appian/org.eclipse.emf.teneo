@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalUnit.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalUnit.java,v 1.2 2007/03/28 13:57:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -39,6 +39,7 @@ public interface RentalUnit extends EObject {
 	 * @see org.eclipse.emf.teneo.rental.RentalPackage#getRentalUnit_Description()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='description'"
+	 *        annotation="teneo.jpa appinfo='@Id'"
 	 * @generated
 	 */
 	String getDescription();
