@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.11 2007/03/24 11:48:12 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.12 2007/03/28 13:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -101,7 +101,7 @@ import org.w3c.dom.NodeList;
  * not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $ $Date: 2007/03/24 11:48:12 $
+ * @version $Revision: 1.12 $ $Date: 2007/03/28 13:58:19 $
  */
 
 public class JpoxDataStore {
@@ -201,7 +201,7 @@ public class JpoxDataStore {
 					"Specific properties have not been set");
 
 		ERuntime.INSTANCE.register(getEPackages()); // ,
-													// PersistenceCapable.class);
+		// PersistenceCapable.class);
 
 		// the jdo file list
 		String suffix = properties
@@ -247,12 +247,13 @@ public class JpoxDataStore {
 				&& "true"
 						.compareTo(properties
 								.getProperty(PersistenceOptions.FETCH_CONTAINMENT_EAGERLY)) == 0;
-
+		
 		final MetaDataManager mdm = ((PersistenceManagerFactoryImpl) pmf)
 				.getPMFContext().getMetaDataManager();
-		final JDOClassLoaderResolver clr = new JDOClassLoaderResolver();
 
-		refersToMap = createRefersToMap(mdm, pcClassNames, clr);
+		refersToMap = createRefersToMap(mdm, pcClassNames);
+
+		final JDOClassLoaderResolver clr = new JDOClassLoaderResolver();
 
 		// This part of the code has to be done as last in the initialization
 		// otherwise
@@ -639,7 +640,9 @@ public class JpoxDataStore {
 						.getAttribute("name");
 				className = ClassUtils.createFullClassName(packageName,
 						className);
-				result.add(className);
+				if (!result.contains(className)) {
+					result.add(className);
+				}
 			}
 		}
 		return result;
@@ -810,7 +813,8 @@ public class JpoxDataStore {
 	 * it
 	 */
 	private HashMap createRefersToMap(MetaDataManager mdm,
-			String[] allClassNames, JDOClassLoaderResolver clr) {
+			String[] allClassNames) {
+		final JDOClassLoaderResolver clr = new JDOClassLoaderResolver();
 		try {
 			final Class[] allClasses = new Class[allClassNames.length];
 
@@ -872,12 +876,12 @@ public class JpoxDataStore {
 			Class toClass = ClassLoaderResolver.classForName(fld
 					.getCollection().getElementType());
 			if (GenericFeatureMapEntry.class.isAssignableFrom(toClass)) { // a
-																			// feature
-																			// map
-																			// find
-																			// the
-																			// real
-																			// toclasses
+				// feature
+				// map
+				// find
+				// the
+				// real
+				// toclasses
 				final AbstractPropertyMetaData[] fmds = fld
 						.getElementMetaData().getEmbeddedMetaData()
 						.getFieldMetaData();
@@ -938,7 +942,7 @@ public class JpoxDataStore {
 			final ArrayList list = (ArrayList) result.get(tclass);
 			if (list == null)
 				continue; // happens when an element of a list is a simpletype
-							// or so
+			// or so
 
 			list.add(new ReferenceTo(fromClass, tclass, propName,
 					featureNames[c], isContained, isMany, isFeatureMapField));

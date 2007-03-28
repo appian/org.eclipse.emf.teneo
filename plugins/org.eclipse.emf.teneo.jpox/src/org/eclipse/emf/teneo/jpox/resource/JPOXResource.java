@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXResource.java,v 1.4 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: JPOXResource.java,v 1.5 2007/03/28 13:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.resource;
@@ -28,6 +28,8 @@ import javax.jdo.FetchPlan;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
+import javax.jdo.identity.SingleFieldIdentity;
+import javax.jdo.spi.JDOImplHelper;
 import javax.jdo.spi.PersistenceCapable;
 
 import org.apache.commons.logging.Log;
@@ -43,28 +45,35 @@ import org.eclipse.emf.teneo.jpox.JpoxHelper;
 import org.eclipse.emf.teneo.jpox.JpoxStoreException;
 import org.eclipse.emf.teneo.jpox.JpoxUtil;
 import org.eclipse.emf.teneo.resource.StoreResource;
+import org.jpox.AbstractPersistenceManager;
+import org.jpox.store.OID;
+import org.jpox.store.OIDFactory;
 
 /**
- * JPOX Resource. The JPOX resource is connected to a persistence manager during its lifetime. A transaction is started
- * before the load and it is stopped just after the save.
+ * JPOX Resource. The JPOX resource is connected to a persistence manager during
+ * its lifetime. A transaction is started before the load and it is stopped just
+ * after the save.
  * 
- * A JPOX resource is created using an uri. The uri should have specific parameters to allow the jpox resource to know
- * to which database to connect.
+ * A JPOX resource is created using an uri. The uri should have specific
+ * parameters to allow the jpox resource to know to which database to connect.
  * 
- * When you create a persistence manager through the appropriate method in the JPOXHelper class. The name you passed
- * there can be used as a parameter in the uri used to create this resource (using the parameter pmfname). The uri is
+ * When you create a persistence manager through the appropriate method in the
+ * JPOXHelper class. The name you passed there can be used as a parameter in the
+ * uri used to create this resource (using the parameter pmfname). The uri is
  * then: jpox://?pmfname=mypmf.
  * 
- * The types read by the resource can be filtered in two ways: - pass a parameter with the list of types (interfaces or
- * concrete In the second approach all the connection parameters which are required to create a persistence manager
- * factory are used. Here the following parameters have to be passed: dbdriver dburl (note the url should also contain
- * the databasename) dbname dbuser dbpwd
+ * The types read by the resource can be filtered in two ways: - pass a
+ * parameter with the list of types (interfaces or concrete In the second
+ * approach all the connection parameters which are required to create a
+ * persistence manager factory are used. Here the following parameters have to
+ * be passed: dbdriver dburl (note the url should also contain the databasename)
+ * dbname dbuser dbpwd
  * 
- * Another simple trick which is used to fool emf a bit is that the extension of the uri can also be used to init a jpox
- * resource!
+ * Another simple trick which is used to fool emf a bit is that the extension of
+ * the uri can also be used to init a jpox resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2007/02/01 12:36:36 $
+ * @version $Revision: 1.5 $ $Date: 2007/03/28 13:58:19 $
  */
 
 public class JPOXResource extends StoreResource {
@@ -94,7 +103,7 @@ public class JPOXResource extends StoreResource {
 	/** The pm controller is set if the pm is controlled outside of this resource */
 	private PMController pmController = null;
 	private boolean hasPMController = false;
-	
+
 	/**
 	 * The constructor, gets an uri and retrieves the backing store
 	 */
@@ -116,7 +125,9 @@ public class JPOXResource extends StoreResource {
 		final Map params = decodeQueryString(uri.query());
 
 		String emfdsName = null;
-		if (uri.query() == null && uri.fileExtension() != null) // this is probably a platform uri!
+		if (uri.query() == null && uri.fileExtension() != null) // this is
+		// probably a
+		// platform uri!
 		{
 			if (JpoxConstants.EJDO_EXTENSION.compareTo(uri.fileExtension()) == 0) {
 				log.debug("Assuming this is a property file " + uri.toString());
@@ -126,12 +137,15 @@ public class JPOXResource extends StoreResource {
 					final Properties props = new Properties();
 					props.load(is);
 					is.close();
-					emfdsName = props.getProperty("name"); // externalise this string!
+					emfdsName = props.getProperty("name"); // externalise this
+					// string!
 
 					JpoxUtil.getCreateDataStore(props);
 					setDefinedQueries(getQueries(props));
 				} catch (IOException e) {
-					throw new JpoxStoreException("Exception when reading properties from: " + uri.toString(), e);
+					throw new JpoxStoreException(
+							"Exception when reading properties from: "
+									+ uri.toString(), e);
 				}
 			} else {
 				log.debug("Trying fileextension: " + uri.fileExtension());
@@ -151,27 +165,32 @@ public class JPOXResource extends StoreResource {
 
 			setDefinedQueries(getQueries(params));
 
-			final String scName = getParam(params, PM_CONTROLLER_PARAM, uri.query());
+			final String scName = getParam(params, PM_CONTROLLER_PARAM, uri
+					.query());
 			pmController = PMController.getPMController(scName);
 			log.debug("Using p, controller " + scName);
 			emfDataStore = pmController.getJpoxDataStore();
 			hasPMController = true;
 
-			// this should be done now, otherwise the classes are not loaded (to retrieve the topclasses)
+			// this should be done now, otherwise the classes are not loaded (to
+			// retrieve the topclasses)
 			super.init(emfDataStore.getTopClasses());
 		} else {
-			throw new JpoxStoreException("The following uri can not be used to create a" +
-					" jpoxresource, it misses parameters for either the jpoxdatastore or a pmController " + uri.toString());
+			throw new JpoxStoreException(
+					"The following uri can not be used to create a"
+							+ " jpoxresource, it misses parameters for either the jpoxdatastore or a pmController "
+							+ uri.toString());
 		}
 
 		log.debug("Looking for emf data store using  " + emfdsName);
 
 		final String fetch_param = (String) params.get(FETCH_MINIMAL);
-		fetchMinimal = fetch_param != null && fetch_param.compareToIgnoreCase("true") == 0;
+		fetchMinimal = fetch_param != null
+				&& fetch_param.compareToIgnoreCase("true") == 0;
 		fetchAll = useAllFetchGroup;
-		
+
 		// load the persistencemanager
-		//getPersistenceManager();
+		// getPersistenceManager();
 	}
 
 	/** Returns the persistence manager */
@@ -180,25 +199,29 @@ public class JPOXResource extends StoreResource {
 			if (pmController != null) {
 				persistenceManager = pmController.getPM();
 			} else {
-				persistenceManager = emfDataStore.getPMF().getPersistenceManager();
+				persistenceManager = emfDataStore.getPMF()
+						.getPersistenceManager();
 			}
 			// set the fetch groups
 			if (fetchAll) {
-				log.debug("Fetchgroup contains all fields for this resource; " + uri);
+				log.debug("Fetchgroup contains all fields for this resource; "
+						+ uri);
 				persistenceManager.getFetchPlan().addGroup(FetchPlan.ALL);
 			} else if (fetchMinimal) {
 				log.debug("Minimal fetch group used for resource; " + uri);
 				persistenceManager.getFetchPlan().addGroup(FetchPlan.DEFAULT);
 			} else {
-				log.debug("Standard emf/jpox fetch group used for resource; " + uri);
+				log.debug("Standard emf/jpox fetch group used for resource; "
+						+ uri);
 			}
 		}
 		return persistenceManager;
 	}
 
 	/**
-	 * Overridden because if an eobject is removed from its containing parent then jpox will move it to the deleted
-	 * state and then the content of the deleted object can not be used anymore.
+	 * Overridden because if an eobject is removed from its containing parent
+	 * then jpox will move it to the deleted state and then the content of the
+	 * deleted object can not be used anymore.
 	 */
 	public void detached(EObject eObject) {
 		if (((PersistenceCapable) eObject).jdoIsDeleted()) {
@@ -209,8 +232,8 @@ public class JPOXResource extends StoreResource {
 	}
 
 	/**
-	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length zero then no
-	 * refering EObjects where found.
+	 * Returns an array of EObjects which refer to a certain EObject, note if
+	 * the array is of length zero then no refering EObjects where found.
 	 */
 	public Object[] getCrossReferencers(EObject referedTo) {
 		Transaction tx = null;
@@ -220,13 +243,16 @@ public class JPOXResource extends StoreResource {
 				tx = getPersistenceManager().currentTransaction();
 				tx.begin();
 			}
-			final Object[] result = emfDataStore.getCrossReferencers(getPersistenceManager(), referedTo);
+			final Object[] result = emfDataStore.getCrossReferencers(
+					getPersistenceManager(), referedTo);
 			err = false;
 
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
-			throw new JpoxStoreException("Exception when doing cross reference search " + emfDataStore.getName(), e);
+			throw new JpoxStoreException(
+					"Exception when doing cross reference search "
+							+ emfDataStore.getName(), e);
 		} finally {
 			if (!hasPMController) {
 				if (err) {
@@ -241,20 +267,104 @@ public class JPOXResource extends StoreResource {
 	}
 
 	/**
-	 * Saves the changed objects or removes the detached objects from this resource.
+	 * Unpacks the id string and reads an object from the db, note for each read
+	 * a transaction is opened, unless the session is controlled by the caller.
+	 * 
+	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getEObjectByID(java.lang.String)
+	 */
+	@Override
+	protected EObject getEObjectByID(String id) {
+		// try to find the object in the cache
+		if (id == null) {
+			return super.getEObjectByID(id);
+		}
+		if (getIntrinsicIDToEObjectMap() != null) {
+			final EObject firstCheck = getIntrinsicIDToEObjectMap().get(id);
+			if (firstCheck != null) {
+				return firstCheck;
+			}
+		}
+
+		Transaction tx = null;
+		boolean err = true;
+		try {
+			if (!hasPMController) {
+				tx = getPersistenceManager().currentTransaction();
+				if (!tx.isActive()) { // can also be asserted but okay try to
+					// be helpful
+					log
+							.warn("Resource getobjectbyid: the transaction of the resource should always be active, but it isn't when save starts, beginning transaction");
+					tx.begin();
+				}
+			}
+
+			log.debug("Reading eobject using urifragment " + id);
+
+			final InternalEObject obj = (InternalEObject) getPersistenceManager()
+					.getObjectById(new OID(id));
+			addToContent(obj);
+			err = false;
+			return obj;
+		} finally {
+			if (!hasPMController) {
+				if (err) {
+					log
+							.warn("Exception during getobjectbyid, rolling back transaction");
+					tx.rollback();
+				} else {
+					log.warn("Committing transaction");
+					tx.commit();
+				}
+				tx = getPersistenceManager().currentTransaction();
+				tx.begin();
+				tx = null;
+			}
+		}
+	}
+
+	/**
+	 * Creates a unique id string from the eobject. The id string will contain a
+	 * link to the type (eclass) and the string version of the id itself. This
+	 * method assumes that the id can be converted from and to a string!
+	 * 
+	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getURIFragment(org.eclipse.emf.ecore.EObject)
+	 */
+	@Override
+	public String getURIFragment(EObject object) {
+		
+		if (object == null) {
+			return null;
+		}
+		
+		if (object instanceof PersistenceCapable && getPersistenceManager().getObjectId(object) != null) {
+			final OID oid = OIDFactory.getInstance(object.getClass().getName(), ((SingleFieldIdentity)getPersistenceManager().getObjectId(object)).getKeyAsObject());
+			if (oid == null) {
+				return super.getURIFragment(object);
+			}
+			return oid.toString();
+		}
+		return super.getURIFragment(object);
+	}
+
+	/**
+	 * Saves the changed objects or removes the detached objects from this
+	 * resource.
 	 */
 	protected void saveResource(Map options) {
 		log.debug("SAVING DAO jpoxresource using uri: " + uri.toString());
 
-		// now we have all the classnames, now retrieve all the objects using queries!!!!
+		// now we have all the classnames, now retrieve all the objects using
+		// queries!!!!
 		if (!hasPMController) {
 			tx = getPersistenceManager().currentTransaction();
-			if (!tx.isActive()) { // can also be asserted but okay try to be helpful
-				log.warn("Resource save: the transaction of the resource should always be active, but it isn't when save starts, beginning transaction");
+			if (!tx.isActive()) { // can also be asserted but okay try to be
+				// helpful
+				log
+						.warn("Resource save: the transaction of the resource should always be active, but it isn't when save starts, beginning transaction");
 				tx.begin();
 			}
 		}
-		
+
 		boolean err = true;
 		try {
 			// persist the new objects
@@ -271,21 +381,26 @@ public class JPOXResource extends StoreResource {
 			}
 
 			// now delete the deleted objects
-			// check needs to be done if the objects have not been removed in determine unreachables
+			// check needs to be done if the objects have not been removed in
+			// determine unreachables
 			final ArrayList reallyRemove = new ArrayList();
 			for (int i = 0; i < removedEObjects.size(); i++) {
-				final PersistenceCapable pc = (PersistenceCapable) removedEObjects.get(i);
-				final EObject eobj = (EObject)pc;
-				if (pc.jdoIsPersistent() && !pc.jdoIsDeleted() && 
-						(eobj.eResource() == null || eobj.eResource() == this)) {
+				final PersistenceCapable pc = (PersistenceCapable) removedEObjects
+						.get(i);
+				final EObject eobj = (EObject) pc;
+				if (pc.jdoIsPersistent()
+						&& !pc.jdoIsDeleted()
+						&& (eobj.eResource() == null || eobj.eResource() == this)) {
 					reallyRemove.add(pc);
 				}
 			}
 
 			// now attach the remaing and delete them all
 			/*
-			 * ArrayList toRemove = new ArrayList(); for (Iterator removeIt = reallyRemove.iterator();
-			 * removeIt.hasNext();) { toRemove.add(((PersistenceManagerImpl) pm).makePersistent(removeIt.next())); }
+			 * ArrayList toRemove = new ArrayList(); for (Iterator removeIt =
+			 * reallyRemove.iterator(); removeIt.hasNext();) {
+			 * toRemove.add(((PersistenceManagerImpl)
+			 * pm).makePersistent(removeIt.next())); }
 			 */
 			getPersistenceManager().deletePersistentAll(reallyRemove);
 
@@ -322,8 +437,10 @@ public class JPOXResource extends StoreResource {
 		}
 
 		List readObjects = null;
-		// note we have to a call to the super class otherwise an infinite loop is created
-		// final ArrayList<InternalEObject> eobjs = new ArrayList<InternalEObject>();
+		// note we have to a call to the super class otherwise an infinite loop
+		// is created
+		// final ArrayList<InternalEObject> eobjs = new
+		// ArrayList<InternalEObject>();
 		final ContentsEList elist = (ContentsEList) super.getSuperContents();
 		readObjects = loadFromStore(getPersistenceManager());
 		final Iterator it = readObjects.iterator();
@@ -351,12 +468,13 @@ public class JPOXResource extends StoreResource {
 	 * Clears the list of eobjects by id and commits an open transaction
 	 */
 	protected void doUnload() {
-		if (!hasPMController) { 
+		if (!hasPMController) {
 			if (getPersistenceManager().currentTransaction().isActive()) {
-				log.debug("At unload, transaction is still active committing it");
+				log
+						.debug("At unload, transaction is still active committing it");
 				getPersistenceManager().currentTransaction().commit();
 			}
-	
+
 			log.debug("At unload: closing and nullifying persistencemanager");
 			getPersistenceManager().close();
 		}
@@ -365,10 +483,12 @@ public class JPOXResource extends StoreResource {
 	}
 
 	/**
-	 * This method can be overridden to implement specific load behavior. Note that a transaction has already been
-	 * started. The persistence manager is passed as a parameter, this is the same persistence manager which can be
-	 * retrieved using the getPersistenceManager method. The read objects should be returned in the list. Note that
-	 * after this call the retrieved objects are put in the resource content.
+	 * This method can be overridden to implement specific load behavior. Note
+	 * that a transaction has already been started. The persistence manager is
+	 * passed as a parameter, this is the same persistence manager which can be
+	 * retrieved using the getPersistenceManager method. The read objects should
+	 * be returned in the list. Note that after this call the retrieved objects
+	 * are put in the resource content.
 	 */
 	protected List loadFromStore(PersistenceManager pm) {
 		if (definedQueriesPresent()) {
