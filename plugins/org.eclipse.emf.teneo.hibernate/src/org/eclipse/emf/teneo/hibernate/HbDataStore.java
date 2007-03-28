@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.17 2007/03/21 20:40:41 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.18 2007/03/28 13:57:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -75,10 +75,11 @@ import org.hibernate.mapping.Value;
 import org.hibernate.tool.hbm2ddl.SchemaUpdate;
 
 /**
- * Common base class for the standard hb datastore and the entity manager oriented datastore.
+ * Common base class for the standard hb datastore and the entity manager
+ * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public abstract class HbDataStore {
 
@@ -120,6 +121,9 @@ public abstract class HbDataStore {
 	/** The hb context */
 	private HbContext hbContext = new HbContextImpl();
 
+	/** The pannotated model, is set in the mapEPackages method */
+	private PAnnotatedModel paModel = null;
+
 	/** The properties used to create the hibernate configuration object */
 	private PersistenceOptions persistenceOptions;
 
@@ -128,7 +132,7 @@ public abstract class HbDataStore {
 
 	/** The interceptor */
 	private Interceptor interceptor;
-	
+
 	/**
 	 * The used mapping if not passed through a hbm file, can be retrieved for
 	 * debugging purposes
@@ -176,7 +180,7 @@ public abstract class HbDataStore {
 
 	/** Initialize the subclass */
 	public abstract void initialize();
-	
+
 	/** Initializes this Data Store */
 	protected void initializeDataStore() {
 		// buildmappings has to be done before setting the tuplizers because
@@ -195,7 +199,7 @@ public abstract class HbDataStore {
 		// now add the econtainer mappings to the contained types, only for
 		// unidirectional container relations
 		addContainerMappings();
-		
+
 		setTuplizer();
 
 		// set the event listeners
@@ -219,7 +223,6 @@ public abstract class HbDataStore {
 
 	/** Return the hibernate configuration */
 	protected abstract Configuration getHibernateConfiguration();
-	
 
 	/**
 	 * Gets the persistence options. The persistence options is a type
@@ -301,7 +304,6 @@ public abstract class HbDataStore {
 
 	/** Return the Classmappings as an iterator */
 	protected abstract Iterator<?> getClassMappings();
-	
 
 	/**
 	 * Returns an array of EObjects and FeatureMapEntries which refer to a
@@ -310,8 +312,8 @@ public abstract class HbDataStore {
 	 * transaction handling should be done by the caller.
 	 */
 	public Object[] getCrossReferencers(Session session, Object referedTo) {
-		final ArrayList<Object> result = getCrossReferencers(new HbSessionWrapper(this, session),
-				referedTo, false);
+		final ArrayList<Object> result = getCrossReferencers(
+				new HbSessionWrapper(this, session), referedTo, false);
 		return (Object[]) result.toArray(new Object[result.size()]);
 	}
 
@@ -321,7 +323,8 @@ public abstract class HbDataStore {
 	 * EObjects where found. The passed Session is used to create a query. The
 	 * transaction handling should be done by the caller.
 	 */
-	public Object[] getCrossReferencers(SessionWrapper sessionWrapper, Object referedTo) {
+	public Object[] getCrossReferencers(SessionWrapper sessionWrapper,
+			Object referedTo) {
 		final ArrayList<Object> result = getCrossReferencers(sessionWrapper,
 				referedTo, false);
 		return (Object[]) result.toArray(new Object[result.size()]);
@@ -334,8 +337,9 @@ public abstract class HbDataStore {
 	 * be done by the caller. onlyContainers means to only check containment
 	 * relations.
 	 */
-	private ArrayList<Object> getCrossReferencers(SessionWrapper sessionWrapper,
-			Object referedTo, boolean onlyContainers) {
+	private ArrayList<Object> getCrossReferencers(
+			SessionWrapper sessionWrapper, Object referedTo,
+			boolean onlyContainers) {
 		assert (referedTo != null);
 
 		String targetEntityName = null;
@@ -358,17 +362,18 @@ public abstract class HbDataStore {
 		final ArrayList<Object> result = new ArrayList<Object>();
 		for (int i = 0; i < refersList.size(); i++) {
 			final ReferenceTo refersTo = (ReferenceTo) refersList.get(i);
-			
+
 			// if we only check containment relations then skip this
 			if (onlyContainers && !refersTo.isContainer())
 				continue;
 
-			final java.util.List<?> list = sessionWrapper.executeQuery(refersTo.getQueryStr(), "to", referedTo);
+			final java.util.List<?> list = sessionWrapper.executeQuery(refersTo
+					.getQueryStr(), "to", referedTo);
 			for (Object obj : list) {
 				if (obj instanceof HibernateFeatureMapEntry) {
 					// search then again with the
-					final ArrayList<Object> fms = getCrossReferencers(sessionWrapper,
-							obj, false);
+					final ArrayList<Object> fms = getCrossReferencers(
+							sessionWrapper, obj, false);
 					if (fms.size() == 0) {
 						new AssertionError(
 								"The featuremap for featuremap entry "
@@ -395,8 +400,7 @@ public abstract class HbDataStore {
 	/** Compute the top eclasses */
 	protected String[] computeTopEntities() {
 		final ArrayList<String> result = new ArrayList<String>();
-		for (Iterator<?> pcs = getClassMappings(); pcs
-				.hasNext();) {
+		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 
 			java.util.List<ReferenceTo> refs = referers.get(pc.getEntityName());
@@ -422,8 +426,7 @@ public abstract class HbDataStore {
 			log.debug("EContainer mapping disabled.");
 			return;
 		}
-		for (Iterator<?> pcs = getClassMappings(); pcs
-				.hasNext();) {
+		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 
 			// if a featuremap then just return
@@ -442,17 +445,20 @@ public abstract class HbDataStore {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 			if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null) { // featuremap
 				// entry
-				pc.addTuplizer(EntityMode.MAP, getHbContext()
-						.getFeatureMapEntryTuplizer(getHibernateConfiguration()).getName());
+				pc.addTuplizer(EntityMode.MAP,
+						getHbContext().getFeatureMapEntryTuplizer(
+								getHibernateConfiguration()).getName());
 			} else {
 				// final EClass eclass =
 				// StoreUtil.getEClassFromURI(pc.getEntityName(),
 				// getEPackages());
 				// pc.setClassName(eclass.getInstanceClassName());
 				pc.addTuplizer(EntityMode.MAP, getHbContext()
-						.getEMFTuplizerClass(getHibernateConfiguration()).getName());
+						.getEMFTuplizerClass(getHibernateConfiguration())
+						.getName());
 				pc.addTuplizer(EntityMode.POJO, getHbContext()
-						.getEMFTuplizerClass(getHibernateConfiguration()).getName());
+						.getEMFTuplizerClass(getHibernateConfiguration())
+						.getName());
 			}
 
 			// also set the tuplizer for the components, and register for the
@@ -476,7 +482,8 @@ public abstract class HbDataStore {
 				}
 				final Value value = prop.getValue();
 				if (value instanceof Component) {
-					setComponentTuplizer((Component) value, getHibernateConfiguration());
+					setComponentTuplizer((Component) value,
+							getHibernateConfiguration());
 				} else if (value instanceof Collection
 						&& ((Collection) value).getElement() instanceof Component) {
 					setComponentTuplizer((Component) ((Collection) value)
@@ -527,12 +534,12 @@ public abstract class HbDataStore {
 		}
 		return false;
 	}
-	
+
 	/** Sets initialized */
 	protected void setInitialized(boolean initialized) {
 		this.initialized = initialized;
 	}
-	
+
 	/**
 	 * Gets the initialized state.
 	 */
@@ -550,8 +557,7 @@ public abstract class HbDataStore {
 		// allows use of
 		// Hibernate-specific annotations.
 		final PersistenceOptions po = getPersistenceOptions();
-		PAnnotatedModel paModel = MappingBuilder.INSTANCE.buildMapping(
-				getEPackages(), po);
+		paModel = MappingBuilder.INSTANCE.buildMapping(getEPackages(), po);
 		HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
 		return hmg.generateToString(paModel);
 	}
@@ -990,15 +996,18 @@ public abstract class HbDataStore {
 
 		/** The query used to find the occurence */
 		private final String qryStr;
-		
+
 		/** Constructor */
 		public ReferenceTo(String fromEntity, Property prop,
 				boolean isContainer, boolean isMany, String toEntity) {
 			this.isContainer = isContainer;
 			if (isMany) {
-				qryStr = "SELECT ref FROM " + fromEntity
-						+ " as ref, " + toEntity + " as refTo WHERE refTo = :to and refTo in elements(ref." + prop.getName()
-						+ ")";
+				qryStr = "SELECT ref FROM "
+						+ fromEntity
+						+ " as ref, "
+						+ toEntity
+						+ " as refTo WHERE refTo = :to and refTo in elements(ref."
+						+ prop.getName() + ")";
 			} else {
 				qryStr = "SELECT ref FROM " + fromEntity
 						+ " as ref WHERE :to = ref." + prop.getName();
@@ -1026,7 +1035,8 @@ public abstract class HbDataStore {
 	}
 
 	/**
-	 * @param mappingXML the mappingXML to set
+	 * @param mappingXML
+	 *            the mappingXML to set
 	 */
 	public void setMappingXML(String mappingXML) {
 		this.mappingXML = mappingXML;
@@ -1040,9 +1050,17 @@ public abstract class HbDataStore {
 	}
 
 	/**
-	 * @param interceptor the interceptor to set
+	 * @param interceptor
+	 *            the interceptor to set
 	 */
 	public void setInterceptor(Interceptor interceptor) {
 		this.interceptor = interceptor;
+	}
+
+	/**
+	 * @return the paModel
+	 */
+	public PAnnotatedModel getPaModel() {
+		return paModel;
 	}
 }

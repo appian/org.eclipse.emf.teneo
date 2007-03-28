@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SessionWrapper.java,v 1.1 2007/03/20 23:33:48 mtaal Exp $
+ * $Id: SessionWrapper.java,v 1.2 2007/03/28 13:57:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
@@ -29,7 +30,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * commit transactions and perform queries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public interface SessionWrapper {
 
@@ -55,7 +56,10 @@ public interface SessionWrapper {
 	
 	/** Query */
 	List<?> executeQuery(String qry, boolean cacheable);
-	
+
+	/** Query */
+	List<?> executeQuery(String qry, ArrayList<Object> parameters);
+
 	/** Does this impl. wrap an entitymanager */
 	boolean isEJB3EntityManager();
 	

@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionWrapper.java,v 1.1 2007/03/20 23:33:48 mtaal Exp $
+ * $Id: HbSessionWrapper.java,v 1.2 2007/03/28 13:57:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
@@ -33,7 +34,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * Wraps a standard hibernate session.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class HbSessionWrapper implements SessionWrapper {
 
@@ -96,6 +97,16 @@ public class HbSessionWrapper implements SessionWrapper {
 			Object entity) {
 		final Query query = session.createQuery(qry);
 		query.setEntity(entityParameter, entity);
+		return query.list();
+	}
+
+	/** Query */
+	public List<?> executeQuery(String qry, ArrayList<Object> parameters) {
+		final Query query = session.createQuery(qry);
+		int pos = 0;
+		for (Object obj : parameters) {
+			query.setParameter(pos++, obj);
+		}
 		return query.list();
 	}
 
