@@ -13,12 +13,13 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.18 2007/03/05 20:51:10 mtaal Exp $
+ * $Id: StoreResource.java,v 1.19 2007/03/28 13:57:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -54,7 +55,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -169,6 +170,9 @@ public abstract class StoreResource extends ResourceImpl {
 		if (getSuperContents().size() == 0) {
 			log.debug("Initialized contents member");
 		}
+
+		// set the intrinsicmap
+		setIntrinsicIDToEObjectMap(new HashMap<String, EObject>());
 	}
 
 	/** Sets topclasses */
@@ -621,6 +625,11 @@ public abstract class StoreResource extends ResourceImpl {
 			String id = EcoreUtil.getID(eObject);
 			if (id != null) {
 				map.put(id, eObject);
+			} else {
+				id = getURIFragment(eObject);
+				if (id != null) {
+					map.put(id, eObject);
+				}
 			}
 		}
 
@@ -719,6 +728,11 @@ public abstract class StoreResource extends ResourceImpl {
 			String id = EcoreUtil.getID(eObject);
 			if (id != null) {
 				map.remove(id);
+			} else {
+				id = getURIFragment(eObject);
+				if (id != null) {
+					map.remove(id);
+				}
 			}
 		}
 
