@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTest.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: AbstractTest.java,v 1.3 2007/03/28 13:58:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * The standard test suite will run such tests once for each configured test setting (see test.properties).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public abstract class AbstractTest extends TestCase {
 	// very strange but there was a compile (or runtime) error in one of the ecore packages, had to set this
@@ -100,4 +100,13 @@ public abstract class AbstractTest extends TestCase {
 	public String getName() {
 		return this.getClass().getName();
 	}
+
+	/** Returns a simple name based on the class name of the testAction class. */
+	public String getSimpleName() {
+		return this.getClass().getSimpleName();
+	}
+	
+	/** Return the test package name */
+	public abstract Package getTestPackage();
+
 }

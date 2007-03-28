@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SchoolLibraryAction.java,v 1.10 2007/03/20 23:33:38 mtaal Exp $
+ * $Id: SchoolLibraryAction.java,v 1.11 2007/03/28 13:58:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -19,6 +19,7 @@ package org.eclipse.emf.teneo.test.emf.sample;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -37,13 +38,14 @@ import org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.Scho
 import org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.SchoollibraryPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
+import org.eclipse.emf.teneo.test.stores.AbstractTestStore;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests the schoollibrary example which has some more inheritance structures.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class SchoolLibraryAction extends AbstractTestAction {
 
@@ -54,6 +56,16 @@ public class SchoolLibraryAction extends AbstractTestAction {
 	 */
 	public SchoolLibraryAction() {
 		super(new EPackage[] { LibraryPackage.eINSTANCE, SchoollibraryPackage.eINSTANCE });
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(AbstractTestStore.STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER, "true");
+		return props;
 	}
 
 	/** Creates simple types and tests against */

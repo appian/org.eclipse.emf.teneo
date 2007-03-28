@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestStore.java,v 1.3 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: AbstractTestStore.java,v 1.4 2007/03/28 13:58:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -26,14 +26,22 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
 /**
- * Base abstractteststore 
+ * Base abstractteststore
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public abstract class AbstractTestStore implements TestStore {
 	/** The logger */
 	private static Log log = LogFactory.getLog(AbstractTestStore.class);
+
+	/**
+	 * Property defining that the mapping file should be saved one directory
+	 * higher. This is sometimes required if an epackage has subpackages.
+	 */
+	public static String STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER = AbstractTestStore.class
+			.getName()
+			+ ".StoreMappingFileOneDirectoryHigher";
 
 	/** Used to disable drop */
 	protected boolean donotDrop = false;
@@ -55,19 +63,27 @@ public abstract class AbstractTestStore implements TestStore {
 		return query(query, -1);
 	}
 
-	/** Return an object of a certain class, there should only be one in the databases */
+	/**
+	 * Return an object of a certain class, there should only be one in the
+	 * databases
+	 */
 	public Object getObject(Class clazz) {
 		List l = getObjects(clazz); // replace class is called in getObjects
-		TestCase.assertTrue("There are " + l.size() + " object(s) of this class in the datastore, 1 was expected, class: "
-				+ clazz.getName(), l.size() == 1);
+		TestCase
+				.assertTrue(
+						"There are "
+								+ l.size()
+								+ " object(s) of this class in the datastore, 1 was expected, class: "
+								+ clazz.getName(), l.size() == 1);
 		return l.get(0);
 	}
 
 	/** Test the amount of objects of a certain class in the db */
 	public void checkNumber(Class clazz, int count) {
 		final List list = getObjects(clazz);
-		TestCase.assertTrue("Expected " + count + " object(s) but there are " + list.size()
-				+ " object(s) of this class in the datastore: " + clazz.getName(), list.size() == count);
+		TestCase.assertTrue("Expected " + count + " object(s) but there are "
+				+ list.size() + " object(s) of this class in the datastore: "
+				+ clazz.getName(), list.size() == count);
 	}
 
 	/** Is called just before the test */
@@ -79,11 +95,14 @@ public abstract class AbstractTestStore implements TestStore {
 	}
 
 	/**
-	 * Is called just after the test, the dropStore parameter can be used to prevent dropping the database when an error
+	 * Is called just after the test, the dropStore parameter can be used to
+	 * prevent dropping the database when an error
 	 */
 	public void tearDown(boolean successfullyCompleted) {
 		if (transactionActive()) {
-			if (successfullyCompleted) log.error("Transaction active while tearing down store " + toString());
+			if (successfullyCompleted)
+				log.error("Transaction active while tearing down store "
+						+ toString());
 			rollbackTransaction();
 		}
 
@@ -116,13 +135,13 @@ public abstract class AbstractTestStore implements TestStore {
 	public boolean setContainer(EObject obj) {
 		return true;
 	}
-	
-	/** Is this a hibernate test store */ 
+
+	/** Is this a hibernate test store */
 	public boolean isHibernateTestStore() {
 		return false;
 	}
-	
-	/** Is this a jpox test store */ 
+
+	/** Is this a jpox test store */
 	public boolean isJPOXTestStore() {
 		return false;
 	}
