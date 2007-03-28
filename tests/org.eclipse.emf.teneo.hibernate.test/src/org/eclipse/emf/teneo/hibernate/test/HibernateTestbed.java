@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.11 2007/02/01 12:36:24 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.12 2007/03/28 13:58:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -50,7 +50,7 @@ public class HibernateTestbed extends Testbed {
 	/**
 	 * The directory in which the mapping files are generated TODO make insesitive to user.dir
 	 */
-	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "run";
+	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "hbm";
 
 	/** Test the rundir */
 	static {
@@ -130,12 +130,12 @@ public class HibernateTestbed extends Testbed {
 
 	/** Returns the file to which the mapping file is written */
 	protected File getHBMFile(AbstractTest testCase, TestConfiguration cfg) {
-		return new File(getRunTestDir(testCase, cfg), HbConstants.HBM_FILE_NAME);
+		return new File(getRunTestDir(testCase), testCase.getSimpleName() + "_" + cfg.getName() + "_" + HbConstants.HBM_FILE_NAME);
 	}
 
 	/** Return the directory in which the mapping file is stored */
-	protected File getRunTestDir(AbstractTest testCase, TestConfiguration cfg) {
-		File dir = new File(new File(RUN_BASE_DIR, testCase.getName()), cfg.getName());
+	protected File getRunTestDir(AbstractTest testCase) {
+		File dir = new File(new File(RUN_BASE_DIR), testCase.getTestPackage().getName());
 		dir.mkdirs();
 		return dir;
 	}

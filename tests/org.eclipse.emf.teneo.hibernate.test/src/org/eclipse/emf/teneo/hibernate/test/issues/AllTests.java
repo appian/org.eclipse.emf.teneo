@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.8 2007/03/18 22:28:26 mtaal Exp $
+ * $Id: AllTests.java,v 1.9 2007/03/28 13:58:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.issues;
@@ -36,14 +36,13 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed.instance()
 				.getConfigurations());
-		
 		suite.addTestSuite(MultipleInheritanceAction.class);
 
 		suite.addTestSuite(ResourceAction.class);
