@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.14 2007/03/24 11:48:18 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.15 2007/03/28 13:57:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -1113,6 +1113,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * {@inheritDoc}
 	 */
 	public List<PAnnotatedEStructuralFeature> getPaIdFeatures() {
+		if (getPaSuperEntity() != null) {
+			return getPaSuperEntity().getPaIdFeatures();
+		}
 		// TODO cache this list
 		final List<PAnnotatedEStructuralFeature> attrs = new ArrayList<PAnnotatedEStructuralFeature>();
 		for (PAnnotatedEStructuralFeature aFeature : getPaEStructuralFeatures()) {
