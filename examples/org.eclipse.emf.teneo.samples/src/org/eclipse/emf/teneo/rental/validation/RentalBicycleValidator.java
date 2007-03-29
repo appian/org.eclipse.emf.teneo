@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalBicycleValidator.java,v 1.1 2007/03/07 23:34:08 mtaal Exp $
+ * $Id: RentalBicycleValidator.java,v 1.2 2007/03/29 22:13:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.validation;
 
+import org.eclipse.emf.teneo.rental.Manufacturer;
 import org.eclipse.emf.teneo.rental.RentalBicycleType;
 
 /**
@@ -18,4 +19,6 @@ public interface RentalBicycleValidator {
 	boolean validate();
 
 	boolean validateType(RentalBicycleType value);
+
+	boolean validateManufacturer(Manufacturer value);
 }

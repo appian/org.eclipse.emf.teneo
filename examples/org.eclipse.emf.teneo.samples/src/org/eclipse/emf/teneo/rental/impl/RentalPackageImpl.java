@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalPackageImpl.java,v 1.3 2007/03/29 14:59:35 mtaal Exp $
+ * $Id: RentalPackageImpl.java,v 1.4 2007/03/29 22:13:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.rental.Currency;
+import org.eclipse.emf.teneo.rental.Manufacturer;
 import org.eclipse.emf.teneo.rental.RentalBicycle;
 import org.eclipse.emf.teneo.rental.RentalBicycleType;
 import org.eclipse.emf.teneo.rental.RentalCar;
@@ -67,6 +68,13 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 	 * @generated
 	 */
 	private EClass rentalUnitEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass manufacturerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -197,6 +205,15 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getRentalBicycle_Manufacturer() {
+		return (EReference)rentalBicycleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCurrency() {
 		return currencyEClass;
 	}
@@ -314,6 +331,24 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getManufacturer() {
+		return manufacturerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getManufacturer_Code() {
+		return (EAttribute)manufacturerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getRentalBicycleType() {
 		return rentalBicycleTypeEEnum;
 	}
@@ -384,6 +419,7 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		// Create classes and their features
 		rentalBicycleEClass = createEClass(RENTAL_BICYCLE);
 		createEAttribute(rentalBicycleEClass, RENTAL_BICYCLE__TYPE);
+		createEReference(rentalBicycleEClass, RENTAL_BICYCLE__MANUFACTURER);
 
 		currencyEClass = createEClass(CURRENCY);
 		createEAttribute(currencyEClass, CURRENCY__CODE);
@@ -401,6 +437,9 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 
 		rentalUnitEClass = createEClass(RENTAL_UNIT);
 		createEAttribute(rentalUnitEClass, RENTAL_UNIT__DESCRIPTION);
+
+		manufacturerEClass = createEClass(MANUFACTURER);
+		createEAttribute(manufacturerEClass, MANUFACTURER__CODE);
 
 		// Create enums
 		rentalBicycleTypeEEnum = createEEnum(RENTAL_BICYCLE_TYPE);
@@ -449,6 +488,7 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		// Initialize classes and features; add operations and parameters
 		initEClass(rentalBicycleEClass, RentalBicycle.class, "RentalBicycle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRentalBicycle_Type(), this.getRentalBicycleType(), "type", "Standard", 1, 1, RentalBicycle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRentalBicycle_Manufacturer(), this.getManufacturer(), null, "manufacturer", null, 1, 1, RentalBicycle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(currencyEClass, Currency.class, "Currency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCurrency_Code(), theXMLTypePackage.getString(), "code", null, 1, 1, Currency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -466,6 +506,9 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 
 		initEClass(rentalUnitEClass, RentalUnit.class, "RentalUnit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRentalUnit_Description(), theXMLTypePackage.getString(), "description", null, 1, 1, RentalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(manufacturerEClass, Manufacturer.class, "Manufacturer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getManufacturer_Code(), theXMLTypePackage.getString(), "code", null, 1, 1, Manufacturer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(rentalBicycleTypeEEnum, RentalBicycleType.class, "RentalBicycleType");
@@ -622,7 +665,14 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "description"
-		   });	
+		   });			
+		addAnnotation
+		  (getManufacturer_Code(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
+		   });
 	}
 
 	/**
@@ -638,7 +688,7 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		   source, 
 		   new String[] {
 			 "appinfo", "@Id"
-		   });
+		   });	
 	}
 
 } //RentalPackageImpl

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalSwitch.java,v 1.2 2007/03/29 14:59:35 mtaal Exp $
+ * $Id: RentalSwitch.java,v 1.3 2007/03/29 22:13:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.util;
 
@@ -119,6 +119,12 @@ public class RentalSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case RentalPackage.MANUFACTURER: {
+				Manufacturer manufacturer = (Manufacturer)theEObject;
+				T result = caseManufacturer(manufacturer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -195,6 +201,21 @@ public class RentalSwitch<T> {
 	 * @generated
 	 */
 	public T caseRentalUnit(RentalUnit object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Manufacturer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Manufacturer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseManufacturer(Manufacturer object) {
 		return null;
 	}
 

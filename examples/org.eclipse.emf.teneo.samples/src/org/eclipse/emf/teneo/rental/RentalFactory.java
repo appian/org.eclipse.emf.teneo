@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalFactory.java,v 1.2 2007/03/29 14:59:35 mtaal Exp $
+ * $Id: RentalFactory.java,v 1.3 2007/03/29 22:13:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -60,6 +60,15 @@ public interface RentalFactory extends EFactory {
 	 * @generated
 	 */
 	RentalContract createRentalContract();
+
+	/**
+	 * Returns a new object of class '<em>Manufacturer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Manufacturer</em>'.
+	 * @generated
+	 */
+	Manufacturer createManufacturer();
 
 	/**
 	 * Returns the package supported by this factory.

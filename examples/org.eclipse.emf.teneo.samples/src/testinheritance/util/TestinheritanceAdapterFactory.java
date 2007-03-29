@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritanceAdapterFactory.java,v 1.2 2007/03/21 15:45:37 mtaal Exp $
+ * $Id: TestinheritanceAdapterFactory.java,v 1.3 2007/03/29 22:13:50 mtaal Exp $
  */
 package testinheritance.util;
 
@@ -106,6 +106,10 @@ public class TestinheritanceAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseChild2(Child2 object) {
 				return createChild2Adapter();
+			}
+			@Override
+			public Adapter caseSomeReference(SomeReference object) {
+				return createSomeReferenceAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -250,6 +254,20 @@ public class TestinheritanceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createChild2Adapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link testinheritance.SomeReference <em>Some Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see testinheritance.SomeReference
+	 * @generated
+	 */
+	public Adapter createSomeReferenceAdapter() {
 		return null;
 	}
 

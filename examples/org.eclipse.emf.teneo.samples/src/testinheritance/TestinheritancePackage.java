@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritancePackage.java,v 1.2 2007/03/21 15:45:36 mtaal Exp $
+ * $Id: TestinheritancePackage.java,v 1.3 2007/03/29 22:13:50 mtaal Exp $
  */
 package testinheritance;
 
@@ -256,13 +256,22 @@ public interface TestinheritancePackage extends EPackage {
 	int PARENT_TWO__TEST_ID = 0;
 
 	/**
+	 * The feature id for the '<em><b>Some Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_TWO__SOME_REFERENCE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Parent Two</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARENT_TWO_FEATURE_COUNT = 1;
+	int PARENT_TWO_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link testinheritance.impl.ParentZeroImpl <em>Parent Zero</em>}' class.
@@ -321,13 +330,22 @@ public interface TestinheritancePackage extends EPackage {
 	int CHILD__TEST_ID = PARENT_ZERO_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Some Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD__SOME_REFERENCE = PARENT_ZERO_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Age</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHILD__AGE = PARENT_ZERO_FEATURE_COUNT + 1;
+	int CHILD__AGE = PARENT_ZERO_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Child</em>' class.
@@ -336,7 +354,7 @@ public interface TestinheritancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHILD_FEATURE_COUNT = PARENT_ZERO_FEATURE_COUNT + 2;
+	int CHILD_FEATURE_COUNT = PARENT_ZERO_FEATURE_COUNT + 3;
 
 
 	/**
@@ -377,13 +395,22 @@ public interface TestinheritancePackage extends EPackage {
 	int CHILD2__TEST_ID = PARENT_ZERO_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Some Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD2__SOME_REFERENCE = PARENT_ZERO_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Age</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHILD2__AGE = PARENT_ZERO_FEATURE_COUNT + 2;
+	int CHILD2__AGE = PARENT_ZERO_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Child2</em>' class.
@@ -392,7 +419,36 @@ public interface TestinheritancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHILD2_FEATURE_COUNT = PARENT_ZERO_FEATURE_COUNT + 3;
+	int CHILD2_FEATURE_COUNT = PARENT_ZERO_FEATURE_COUNT + 4;
+
+
+	/**
+	 * The meta object id for the '{@link testinheritance.impl.SomeReferenceImpl <em>Some Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see testinheritance.impl.SomeReferenceImpl
+	 * @see testinheritance.impl.TestinheritancePackageImpl#getSomeReference()
+	 * @generated
+	 */
+	int SOME_REFERENCE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOME_REFERENCE__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Some Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOME_REFERENCE_FEATURE_COUNT = 1;
 
 
 	/**
@@ -533,6 +589,17 @@ public interface TestinheritancePackage extends EPackage {
 	EAttribute getParentTwo_TestId();
 
 	/**
+	 * Returns the meta object for the reference '{@link testinheritance.ParentTwo#getSomeReference <em>Some Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Some Reference</em>'.
+	 * @see testinheritance.ParentTwo#getSomeReference()
+	 * @see #getParentTwo()
+	 * @generated
+	 */
+	EReference getParentTwo_SomeReference();
+
+	/**
 	 * Returns the meta object for class '{@link testinheritance.ParentZero <em>Parent Zero</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -594,6 +661,27 @@ public interface TestinheritancePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getChild2_Age();
+
+	/**
+	 * Returns the meta object for class '{@link testinheritance.SomeReference <em>Some Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Some Reference</em>'.
+	 * @see testinheritance.SomeReference
+	 * @generated
+	 */
+	EClass getSomeReference();
+
+	/**
+	 * Returns the meta object for the attribute '{@link testinheritance.SomeReference#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see testinheritance.SomeReference#getName()
+	 * @see #getSomeReference()
+	 * @generated
+	 */
+	EAttribute getSomeReference_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -734,6 +822,14 @@ public interface TestinheritancePackage extends EPackage {
 		EAttribute PARENT_TWO__TEST_ID = eINSTANCE.getParentTwo_TestId();
 
 		/**
+		 * The meta object literal for the '<em><b>Some Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARENT_TWO__SOME_REFERENCE = eINSTANCE.getParentTwo_SomeReference();
+
+		/**
 		 * The meta object literal for the '{@link testinheritance.impl.ParentZeroImpl <em>Parent Zero</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -786,6 +882,24 @@ public interface TestinheritancePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CHILD2__AGE = eINSTANCE.getChild2_Age();
+
+		/**
+		 * The meta object literal for the '{@link testinheritance.impl.SomeReferenceImpl <em>Some Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see testinheritance.impl.SomeReferenceImpl
+		 * @see testinheritance.impl.TestinheritancePackageImpl#getSomeReference()
+		 * @generated
+		 */
+		EClass SOME_REFERENCE = eINSTANCE.getSomeReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SOME_REFERENCE__NAME = eINSTANCE.getSomeReference_Name();
 
 	}
 

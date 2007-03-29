@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritanceFactoryImpl.java,v 1.2 2007/03/21 15:45:36 mtaal Exp $
+ * $Id: TestinheritanceFactoryImpl.java,v 1.3 2007/03/29 22:13:50 mtaal Exp $
  */
 package testinheritance.impl;
 
@@ -69,6 +69,7 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 			case TestinheritancePackage.PARENT_ZERO: return createParentZero();
 			case TestinheritancePackage.CHILD: return createChild();
 			case TestinheritancePackage.CHILD2: return createChild2();
+			case TestinheritancePackage.SOME_REFERENCE: return createSomeReference();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -162,6 +163,16 @@ public class TestinheritanceFactoryImpl extends EFactoryImpl implements Testinhe
 	public Child2 createChild2() {
 		Child2Impl child2 = new Child2Impl();
 		return child2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SomeReference createSomeReference() {
+		SomeReferenceImpl someReference = new SomeReferenceImpl();
+		return someReference;
 	}
 
 	/**

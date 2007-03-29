@@ -23,6 +23,7 @@
     </genClasses>
     <genClasses ecoreClass="testinheritance.ecore#//ParentTwo">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//ParentTwo/testId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference testinheritance.ecore#//ParentTwo/someReference"/>
     </genClasses>
     <genClasses ecoreClass="testinheritance.ecore#//ParentZero">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//ParentZero/name"/>
@@ -32,6 +33,9 @@
     </genClasses>
     <genClasses ecoreClass="testinheritance.ecore#//Child2">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//Child2/age"/>
+    </genClasses>
+    <genClasses ecoreClass="testinheritance.ecore#//SomeReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testinheritance.ecore#//SomeReference/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Child2Impl.java,v 1.1 2007/03/21 15:45:36 mtaal Exp $
+ * $Id: Child2Impl.java,v 1.2 2007/03/29 22:13:50 mtaal Exp $
  */
 package testinheritance.impl;
 
@@ -10,11 +10,13 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import testinheritance.Child2;
 import testinheritance.ParentOne;
 import testinheritance.ParentTwo;
+import testinheritance.SomeReference;
 import testinheritance.TestinheritancePackage;
 
 /**
@@ -26,6 +28,7 @@ import testinheritance.TestinheritancePackage;
  * <ul>
  *   <li>{@link testinheritance.impl.Child2Impl#getAnotherProperty <em>Another Property</em>}</li>
  *   <li>{@link testinheritance.impl.Child2Impl#getTestId <em>Test Id</em>}</li>
+ *   <li>{@link testinheritance.impl.Child2Impl#getSomeReference <em>Some Reference</em>}</li>
  *   <li>{@link testinheritance.impl.Child2Impl#getAge <em>Age</em>}</li>
  * </ul>
  * </p>
@@ -72,6 +75,16 @@ public class Child2Impl extends ParentZeroImpl implements Child2 {
 	 * @ordered
 	 */
 	protected long testId = TEST_ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSomeReference() <em>Some Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSomeReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected SomeReference someReference = null;
 
 	/**
 	 * The default value of the '{@link #getAge() <em>Age</em>}' attribute.
@@ -159,6 +172,44 @@ public class Child2Impl extends ParentZeroImpl implements Child2 {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SomeReference getSomeReference() {
+		if (someReference != null && someReference.eIsProxy()) {
+			InternalEObject oldSomeReference = (InternalEObject)someReference;
+			someReference = (SomeReference)eResolveProxy(oldSomeReference);
+			if (someReference != oldSomeReference) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TestinheritancePackage.CHILD2__SOME_REFERENCE, oldSomeReference, someReference));
+			}
+		}
+		return someReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SomeReference basicGetSomeReference() {
+		return someReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSomeReference(SomeReference newSomeReference) {
+		SomeReference oldSomeReference = someReference;
+		someReference = newSomeReference;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestinheritancePackage.CHILD2__SOME_REFERENCE, oldSomeReference, someReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public long getAge() {
 		return age;
 	}
@@ -187,6 +238,9 @@ public class Child2Impl extends ParentZeroImpl implements Child2 {
 				return new Long(getAnotherProperty());
 			case TestinheritancePackage.CHILD2__TEST_ID:
 				return new Long(getTestId());
+			case TestinheritancePackage.CHILD2__SOME_REFERENCE:
+				if (resolve) return getSomeReference();
+				return basicGetSomeReference();
 			case TestinheritancePackage.CHILD2__AGE:
 				return new Long(getAge());
 		}
@@ -206,6 +260,9 @@ public class Child2Impl extends ParentZeroImpl implements Child2 {
 				return;
 			case TestinheritancePackage.CHILD2__TEST_ID:
 				setTestId(((Long)newValue).longValue());
+				return;
+			case TestinheritancePackage.CHILD2__SOME_REFERENCE:
+				setSomeReference((SomeReference)newValue);
 				return;
 			case TestinheritancePackage.CHILD2__AGE:
 				setAge(((Long)newValue).longValue());
@@ -228,6 +285,9 @@ public class Child2Impl extends ParentZeroImpl implements Child2 {
 			case TestinheritancePackage.CHILD2__TEST_ID:
 				setTestId(TEST_ID_EDEFAULT);
 				return;
+			case TestinheritancePackage.CHILD2__SOME_REFERENCE:
+				setSomeReference((SomeReference)null);
+				return;
 			case TestinheritancePackage.CHILD2__AGE:
 				setAge(AGE_EDEFAULT);
 				return;
@@ -247,6 +307,8 @@ public class Child2Impl extends ParentZeroImpl implements Child2 {
 				return anotherProperty != ANOTHER_PROPERTY_EDEFAULT;
 			case TestinheritancePackage.CHILD2__TEST_ID:
 				return testId != TEST_ID_EDEFAULT;
+			case TestinheritancePackage.CHILD2__SOME_REFERENCE:
+				return someReference != null;
 			case TestinheritancePackage.CHILD2__AGE:
 				return age != AGE_EDEFAULT;
 		}
@@ -269,6 +331,7 @@ public class Child2Impl extends ParentZeroImpl implements Child2 {
 		if (baseClass == ParentTwo.class) {
 			switch (derivedFeatureID) {
 				case TestinheritancePackage.CHILD2__TEST_ID: return TestinheritancePackage.PARENT_TWO__TEST_ID;
+				case TestinheritancePackage.CHILD2__SOME_REFERENCE: return TestinheritancePackage.PARENT_TWO__SOME_REFERENCE;
 				default: return -1;
 			}
 		}
@@ -291,6 +354,7 @@ public class Child2Impl extends ParentZeroImpl implements Child2 {
 		if (baseClass == ParentTwo.class) {
 			switch (baseFeatureID) {
 				case TestinheritancePackage.PARENT_TWO__TEST_ID: return TestinheritancePackage.CHILD2__TEST_ID;
+				case TestinheritancePackage.PARENT_TWO__SOME_REFERENCE: return TestinheritancePackage.CHILD2__SOME_REFERENCE;
 				default: return -1;
 			}
 		}

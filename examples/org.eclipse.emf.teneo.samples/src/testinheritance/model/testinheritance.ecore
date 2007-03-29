@@ -28,6 +28,8 @@
         <details key="appinfo" value="@Id"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="someReference" lowerBound="1"
+        eType="#//SomeReference"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParentZero">
     <eAnnotations source="teneo.jpa">
@@ -40,5 +42,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Child2" eSuperTypes="#//ParentZero #//ParentOne #//ParentTwo">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="age" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SomeReference">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

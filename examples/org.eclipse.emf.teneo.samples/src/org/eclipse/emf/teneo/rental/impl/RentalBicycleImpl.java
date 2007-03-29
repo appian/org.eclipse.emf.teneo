@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalBicycleImpl.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalBicycleImpl.java,v 1.2 2007/03/29 22:13:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -10,8 +10,10 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.teneo.rental.Manufacturer;
 import org.eclipse.emf.teneo.rental.RentalBicycle;
 import org.eclipse.emf.teneo.rental.RentalBicycleType;
 import org.eclipse.emf.teneo.rental.RentalPackage;
@@ -24,6 +26,7 @@ import org.eclipse.emf.teneo.rental.RentalPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalBicycleImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalBicycleImpl#getManufacturer <em>Manufacturer</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,6 +61,16 @@ public class RentalBicycleImpl extends RentalUnitImpl implements RentalBicycle {
 	 * @ordered
 	 */
 	protected boolean typeESet = false;
+
+	/**
+	 * The cached value of the '{@link #getManufacturer() <em>Manufacturer</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getManufacturer()
+	 * @generated
+	 * @ordered
+	 */
+	protected Manufacturer manufacturer = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,11 +142,52 @@ public class RentalBicycleImpl extends RentalUnitImpl implements RentalBicycle {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Manufacturer getManufacturer() {
+		if (manufacturer != null && manufacturer.eIsProxy()) {
+			InternalEObject oldManufacturer = (InternalEObject)manufacturer;
+			manufacturer = (Manufacturer)eResolveProxy(oldManufacturer);
+			if (manufacturer != oldManufacturer) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RentalPackage.RENTAL_BICYCLE__MANUFACTURER, oldManufacturer, manufacturer));
+			}
+		}
+		return manufacturer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Manufacturer basicGetManufacturer() {
+		return manufacturer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setManufacturer(Manufacturer newManufacturer) {
+		Manufacturer oldManufacturer = manufacturer;
+		manufacturer = newManufacturer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_BICYCLE__MANUFACTURER, oldManufacturer, manufacturer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case RentalPackage.RENTAL_BICYCLE__TYPE:
 				return getType();
+			case RentalPackage.RENTAL_BICYCLE__MANUFACTURER:
+				if (resolve) return getManufacturer();
+				return basicGetManufacturer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,6 +202,9 @@ public class RentalBicycleImpl extends RentalUnitImpl implements RentalBicycle {
 		switch (featureID) {
 			case RentalPackage.RENTAL_BICYCLE__TYPE:
 				setType((RentalBicycleType)newValue);
+				return;
+			case RentalPackage.RENTAL_BICYCLE__MANUFACTURER:
+				setManufacturer((Manufacturer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -164,6 +221,9 @@ public class RentalBicycleImpl extends RentalUnitImpl implements RentalBicycle {
 			case RentalPackage.RENTAL_BICYCLE__TYPE:
 				unsetType();
 				return;
+			case RentalPackage.RENTAL_BICYCLE__MANUFACTURER:
+				setManufacturer((Manufacturer)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -178,6 +238,8 @@ public class RentalBicycleImpl extends RentalUnitImpl implements RentalBicycle {
 		switch (featureID) {
 			case RentalPackage.RENTAL_BICYCLE__TYPE:
 				return isSetType();
+			case RentalPackage.RENTAL_BICYCLE__MANUFACTURER:
+				return manufacturer != null;
 		}
 		return super.eIsSet(featureID);
 	}

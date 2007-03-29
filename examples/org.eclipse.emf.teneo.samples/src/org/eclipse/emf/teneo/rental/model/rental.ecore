@@ -20,6 +20,8 @@
         <details key="name" value="type"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="manufacturer" lowerBound="1"
+        eType="#//Manufacturer"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RentalBicycleType">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -125,6 +127,15 @@
       </eAnnotations>
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Manufacturer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

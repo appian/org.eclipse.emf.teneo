@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalBicycle.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalBicycle.java,v 1.2 2007/03/29 22:13:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -16,6 +16,7 @@ package org.eclipse.emf.teneo.rental;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.rental.RentalBicycle#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.rental.RentalBicycle#getManufacturer <em>Manufacturer</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,5 +82,31 @@ public interface RentalBicycle extends RentalUnit {
 	 * @generated
 	 */
 	boolean isSetType();
+
+	/**
+	 * Returns the value of the '<em><b>Manufacturer</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Manufacturer</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Manufacturer</em>' reference.
+	 * @see #setManufacturer(Manufacturer)
+	 * @see org.eclipse.emf.teneo.rental.RentalPackage#getRentalBicycle_Manufacturer()
+	 * @model required="true"
+	 * @generated
+	 */
+	Manufacturer getManufacturer();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.rental.RentalBicycle#getManufacturer <em>Manufacturer</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Manufacturer</em>' reference.
+	 * @see #getManufacturer()
+	 * @generated
+	 */
+	void setManufacturer(Manufacturer value);
 
 } // RentalBicycle

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalFactoryImpl.java,v 1.2 2007/03/29 14:59:35 mtaal Exp $
+ * $Id: RentalFactoryImpl.java,v 1.3 2007/03/29 22:13:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -66,6 +66,7 @@ public class RentalFactoryImpl extends EFactoryImpl implements RentalFactory {
 			case RentalPackage.CURRENCY: return createCurrency();
 			case RentalPackage.RENTAL_CAR: return createRentalCar();
 			case RentalPackage.RENTAL_CONTRACT: return createRentalContract();
+			case RentalPackage.MANUFACTURER: return createManufacturer();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -155,6 +156,16 @@ public class RentalFactoryImpl extends EFactoryImpl implements RentalFactory {
 	public RentalContract createRentalContract() {
 		RentalContractImpl rentalContract = new RentalContractImpl();
 		return rentalContract;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Manufacturer createManufacturer() {
+		ManufacturerImpl manufacturer = new ManufacturerImpl();
+		return manufacturer;
 	}
 
 	/**

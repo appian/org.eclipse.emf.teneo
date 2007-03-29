@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalAdapterFactory.java,v 1.2 2007/03/29 14:59:35 mtaal Exp $
+ * $Id: RentalAdapterFactory.java,v 1.3 2007/03/29 22:13:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.util;
 
@@ -92,6 +92,10 @@ public class RentalAdapterFactory extends AdapterFactoryImpl {
 				return createRentalUnitAdapter();
 			}
 			@Override
+			public Adapter caseManufacturer(Manufacturer object) {
+				return createManufacturerAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -178,6 +182,20 @@ public class RentalAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRentalUnitAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.rental.Manufacturer <em>Manufacturer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.rental.Manufacturer
+	 * @generated
+	 */
+	public Adapter createManufacturerAdapter() {
 		return null;
 	}
 
