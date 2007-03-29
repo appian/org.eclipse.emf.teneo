@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationSwitch.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: HbAnnotationSwitch.java,v 1.8 2007/03/29 15:00:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -210,6 +210,14 @@ public class HbAnnotationSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case HbAnnotationPackage.PROXY: {
+				Proxy proxy = (Proxy)theEObject;
+				T result = caseProxy(proxy);
+				if (result == null) result = caseHbAnnotation(proxy);
+				if (result == null) result = casePAnnotation(proxy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -406,6 +414,21 @@ public class HbAnnotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseOnDelete(OnDelete object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Proxy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProxy(Proxy object) {
 		return null;
 	}
 

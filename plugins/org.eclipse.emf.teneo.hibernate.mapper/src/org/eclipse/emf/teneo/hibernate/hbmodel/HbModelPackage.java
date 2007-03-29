@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackage.java,v 1.8 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: HbModelPackage.java,v 1.9 2007/03/29 15:00:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -681,13 +681,22 @@ public interface HbModelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__HB_WHERE = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Hb Proxy</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__HB_PROXY = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 3;
+	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
@@ -1503,6 +1512,17 @@ public interface HbModelPackage extends EPackage {
 	EReference getHbAnnotatedEClass_HbWhere();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbProxy <em>Hb Proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Hb Proxy</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbProxy()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_HbProxy();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Hb Annotated EModel Element</em>'.
@@ -1725,6 +1745,14 @@ public interface HbModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_ECLASS__HB_WHERE = eINSTANCE.getHbAnnotatedEClass_HbWhere();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Proxy</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__HB_PROXY = eINSTANCE.getHbAnnotatedEClass_HbProxy();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.

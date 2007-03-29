@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.8 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.9 2007/03/29 15:00:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -28,6 +28,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -88,8 +89,11 @@ class OneToOneMapper extends AbstractAssociationMapper {
 		if (isEObject(specifiedName)) {
 			addColumns(associationElement, eref.getName(), getAnyTypeColumns(eref.getName(), true), true, false);
 		} else {
+			final HbAnnotatedEClass haClass = (HbAnnotatedEClass)paReference.getPaModel().getPAnnotated(referedTo);
 			if (getHbmContext().isEasyEMFGenerated(eref.getEContainingClass())) {
 				addFetchType(associationElement, oto.getFetch(), true);
+			} else if (haClass.getHbProxy() != null) {
+				associationElement.addAttribute("lazy", "proxy");
 			} else {
 				associationElement.addAttribute("lazy", "false");
 			}
@@ -126,7 +130,13 @@ class OneToOneMapper extends AbstractAssociationMapper {
 			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
 		}
 
-		addFetchType(associationElement, oto.getFetch(), true);
+		final HbAnnotatedEClass haClass = (HbAnnotatedEClass)paReference.getPaModel().getPAnnotated(referedTo);
+		if (haClass.getHbProxy() != null) {
+			associationElement.addAttribute("lazy", "proxy");
+		} else {
+			associationElement.addAttribute("lazy", "false");
+		}
+		
 		if (paReference.getPrimaryKeyJoinColumns().size() > 0) {
 			associationElement.addAttribute("constrained", "true");
 		}

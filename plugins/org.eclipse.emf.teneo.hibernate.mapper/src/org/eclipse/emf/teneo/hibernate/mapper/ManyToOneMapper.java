@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.7 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.8 2007/03/29 15:00:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -26,12 +26,14 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * Maps a {@link ManyToOne} element to its {@link MappingContext}.
  * <p>
- * Assumes that the given {@link PAnnotatedEStructuralFeature} is a normal ManyToOne, i.e.
+ * Assumes that the given {@link PAnnotatedEStructuralFeature} is a normal
+ * ManyToOne, i.e.
  * <ul>
  * <li>it is a {@link PAnnotatedEReference};
  * <li>it has a {@link ManyToOne} annotation;
@@ -59,43 +61,57 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 		final List<JoinColumn> jcs = getJoinColumns(paReference);
 		if (jcs.size() > 1) { // TODO support multiple join columns
 			log.error("Unsupported multiple join columns in " + paReference);
-			throw new MappingException("Unsupported multiple join columns", paReference);
+			throw new MappingException("Unsupported multiple join columns",
+					paReference);
 		}
 
-		final EClass referedTo = paReference.getAnnotatedEReference().getEReferenceType();
+		final EClass referedTo = paReference.getAnnotatedEReference()
+				.getEReferenceType();
 		final ManyToOne mto = paReference.getManyToOne();
 		String targetName = mto.getTargetEntity();
-		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(referedTo);
+		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(
+				referedTo);
 		if (targetName == null || isEasyEMFGenerated) {
 			targetName = getHbmContext().getEntityName(referedTo);
 		}
 
 		log.debug("Target " + targetName);
 
-		final Element associationElement = addManyToOne(paReference, targetName, !isEasyEMFGenerated);
+		final Element associationElement = addManyToOne(paReference,
+				targetName, !isEasyEMFGenerated);
 
 		addCascadesForSingle(associationElement, mto.getCascade());
 
 		if (isEObject(targetName)) {
-			final String erefName = paReference.getAnnotatedEReference().getName();
-			addColumns(associationElement, erefName, getAnyTypeColumns(erefName, true), true, false);
+			final String erefName = paReference.getAnnotatedEReference()
+					.getName();
+			addColumns(associationElement, erefName, getAnyTypeColumns(
+					erefName, true), true, false);
 		} else {
 			// todo default false until proxies are supported
-			if (getHbmContext().isEasyEMFGenerated(paReference.getAnnotatedEReference().getEContainingClass())) {
+			final HbAnnotatedEClass haClass = (HbAnnotatedEClass)paReference.getPaModel().getPAnnotated(referedTo);
+			if (getHbmContext().isEasyEMFGenerated(
+					paReference.getAnnotatedEReference().getEContainingClass())) {
 				addFetchType(associationElement, mto.getFetch(), true);
+			} else if (haClass.getHbProxy() != null) {
+				associationElement.addAttribute("lazy", "proxy");
 			} else {
 				associationElement.addAttribute("lazy", "false");
 			}
 
-			addJoinColumns(associationElement, jcs, mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
+			addJoinColumns(associationElement, jcs, mto.isOptional()
+					|| getHbmContext().isCurrentElementFeatureMap());
 
 			associationElement.addAttribute("not-null", mto.isOptional()
-					|| getHbmContext().isCurrentElementFeatureMap() ? "false" : "true");
+					|| getHbmContext().isCurrentElementFeatureMap() ? "false"
+					: "true");
 		}
 
-		// MT: TODO; the characteristic of the other side should be checked (if present), if the otherside is a onetoone
+		// MT: TODO; the characteristic of the other side should be checked (if
+		// present), if the otherside is a onetoone
 		// then this
-		// should be set to true. But then this is then handled by a bidirectional onetoone (I think).
+		// should be set to true. But then this is then handled by a
+		// bidirectional onetoone (I think).
 		// if (joinColumns.isEmpty())
 		// associationElement.addAttribute("unique", "true");
 	}

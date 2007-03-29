@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.8 2007/03/24 11:48:00 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.9 2007/03/29 15:00:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -20,6 +20,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.DefaultAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.StoreMappingException;
@@ -33,6 +34,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
@@ -58,9 +60,17 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	private String defaultCacheStrategy = CacheConcurrencyStrategy.NONE_LITERAL
 			.getName();
 
+	/** Add the proxy annotation to each class */
+	private boolean optionSetProxy = false;
+	
 	/** Pick up default cache strategy and continue with the rest */
 	protected void setLocalOptions(PersistenceOptions po) {
 		defaultCacheStrategy = po.getDefaultCacheStrategy();
+		optionSetProxy = po.isSetProxy();
+		if (!po.isAlsoMapAsClass() && optionSetProxy) {
+			log.warn("Option set proxy is used but the option fully classify entity names is not set to true, ignoring proxy setting");
+			optionSetProxy = false;
+		}
 		super.setLocalOptions(po);
 	}
 
@@ -161,10 +171,29 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	}
 
 	/** Handles addition of Cache if defaultCacheStrategy is set */
-
 	protected void processClass(PAnnotatedEClass aClass) {
 		super.processClass(aClass);
 
+		// automatically add the proxy annotation
+		if (optionSetProxy && ((HbAnnotatedEClass) aClass).getHbProxy() == null) {
+			final Class<?> interfaceClass = ERuntime.INSTANCE.getInterfaceClass(aClass.getAnnotatedEClass());
+			final Class<?> concreteClass = ERuntime.INSTANCE.getInstanceClass(aClass.getAnnotatedEClass());
+			if (concreteClass != null) {
+				final Proxy proxy = HbAnnotationFactory.eINSTANCE.createProxy();
+				proxy.setLazy(new Boolean(true));
+				if (interfaceClass != null) {
+					proxy.setProxyClass(interfaceClass.getName());
+				}
+				((HbAnnotatedEClass) aClass).setHbProxy(proxy);
+				log.debug("Set proxy to true (" + proxy.getProxyClass() + ") for eclass " + aClass.getAnnotatedEClass().getName());
+			}
+		}
+		
+		if (((HbAnnotatedEClass) aClass).getHbProxy() != null) {
+			// todo add check that there is an impl class
+			aClass.setOnlyMapAsEntity(false);
+		}
+		
 		// now handle the case of defaultCacheStrategy which is different than
 		// none
 		boolean hasCache = ((HbAnnotatedEClass) aClass).getHbCache() != null;

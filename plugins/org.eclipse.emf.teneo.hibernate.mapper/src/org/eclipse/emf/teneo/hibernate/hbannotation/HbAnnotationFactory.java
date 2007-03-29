@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationFactory.java,v 1.5 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: HbAnnotationFactory.java,v 1.6 2007/03/29 15:00:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -126,6 +126,15 @@ public interface HbAnnotationFactory extends EFactory {
 	 * @generated
 	 */
 	OnDelete createOnDelete();
+
+	/**
+	 * Returns a new object of class '<em>Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Proxy</em>'.
+	 * @generated
+	 */
+	Proxy createProxy();
 
 	/**
 	 * Returns the package supported by this factory.

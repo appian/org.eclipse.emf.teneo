@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.6 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.7 2007/03/29 15:00:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -93,7 +93,12 @@ class EmbeddedMapper extends AbstractMapper {
 		}
 
 		final Element componentElement = getHbmContext().getCurrent().addElement("component").addAttribute("name",
-				paReference.getAnnotatedEReference().getName()).addAttribute("class", targetName);
+				paReference.getAnnotatedEReference().getName());
+
+		// todo: change recognizing a component to using metadata!
+		// then the class tag can point to a real impl. class@
+//		final Class<?> implClass = ERuntime.INSTANCE.getInstanceClass(refType);
+		componentElement.addAttribute("class", targetName); //implClass.getName());
 		getHbmContext().setCurrent(componentElement);
 		try {
 			// process the features of the target

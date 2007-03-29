@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackageImpl.java,v 1.7 2007/03/21 15:46:34 mtaal Exp $
+ * $Id: HbAnnotationPackageImpl.java,v 1.8 2007/03/29 15:00:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
@@ -141,6 +142,13 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * @generated
 	 */
 	private EClass onDeleteEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass proxyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -578,6 +586,33 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getProxy() {
+		return proxyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProxy_ProxyClass() {
+		return (EAttribute)proxyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProxy_Lazy() {
+		return (EAttribute)proxyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getCacheConcurrencyStrategy() {
 		return cacheConcurrencyStrategyEEnum;
 	}
@@ -677,6 +712,10 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		onDeleteEClass = createEClass(ON_DELETE);
 		createEAttribute(onDeleteEClass, ON_DELETE__ACTION);
 
+		proxyEClass = createEClass(PROXY);
+		createEAttribute(proxyEClass, PROXY__PROXY_CLASS);
+		createEAttribute(proxyEClass, PROXY__LAZY);
+
 		// Create enums
 		cacheConcurrencyStrategyEEnum = createEEnum(CACHE_CONCURRENCY_STRATEGY);
 		hbFetchTypeEEnum = createEEnum(HB_FETCH_TYPE);
@@ -727,6 +766,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		typeDefEClass.getESuperTypes().add(this.getHbAnnotation());
 		fetchEClass.getESuperTypes().add(this.getHbAnnotation());
 		onDeleteEClass.getESuperTypes().add(this.getHbAnnotation());
+		proxyEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -778,6 +818,10 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		initEClass(onDeleteEClass, OnDelete.class, "OnDelete", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOnDelete_Action(), this.getOnDeleteAction(), "action", null, 0, 1, OnDelete.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(proxyEClass, Proxy.class, "Proxy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProxy_ProxyClass(), ecorePackage.getEString(), "proxyClass", null, 0, 1, Proxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProxy_Lazy(), ecorePackage.getEBooleanObject(), "lazy", "true", 0, 1, Proxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.class, "CacheConcurrencyStrategy");
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.NONE_LITERAL);
@@ -822,7 +866,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "1", "http://hibernate.elver.org/"
-		   });															
+		   });																
 	}
 
 	/**
@@ -838,7 +882,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });														
+		   });															
 	}
 
 	/**
@@ -927,6 +971,12 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
+		   });		
+		addAnnotation
+		  (proxyEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EClass"
 		   });
 	}
 
@@ -951,7 +1001,7 @@ public class HbAnnotationPackageImpl extends EPackageImpl implements HbAnnotatio
 		   new String[] {
 			 "name", "GenericGenerators",
 			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
-		   });				
+		   });					
 	}
 
 } //HbAnnotationPackageImpl

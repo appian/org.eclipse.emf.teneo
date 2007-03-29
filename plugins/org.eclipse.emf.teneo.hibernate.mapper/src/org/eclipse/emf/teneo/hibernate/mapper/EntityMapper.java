@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.14 2007/03/21 20:39:14 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.15 2007/03/29 15:00:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -29,6 +29,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -41,7 +42,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
-import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -138,10 +138,10 @@ class EntityMapper extends AbstractMapper {
 		if (getHbmContext().isEasyEMFGenerated(eclass)) { // entity
 			// get the interfacec
 			final String proxyName;
-			final Class<?> interfaceClass = EModelResolver.instance()
-					.getJavaInterfaceClass(eclass);
-			final String className = EModelResolver.instance().getJavaClass(
-					eclass).getName();
+			final Class<?> interfaceClass = ERuntime.INSTANCE
+					.getInterfaceClass(eclass);
+			final String className = ERuntime.INSTANCE.getInstanceClass(eclass)
+					.getName();
 			if (interfaceClass != null) {
 				proxyName = interfaceClass.getName();
 			} else {
@@ -154,18 +154,36 @@ class EntityMapper extends AbstractMapper {
 							proxyName).addAttribute("abstract", isAbstractStr)
 					.addAttribute("lazy", "true");
 		} else {
-			target = getHbmContext().getCurrent().addElement(hbClassName)
-					.addAttribute("entity-name", entityName).addAttribute(
-							"abstract", isAbstractStr).addAttribute("lazy",
-							"false");
+			if (entity.isOnlyMapAsEntity()) {
+				target = getHbmContext().getCurrent().addElement(hbClassName)
+						.addAttribute("entity-name", entityName).addAttribute(
+								"abstract", isAbstractStr).addAttribute("lazy",
+								"false");
 
-			// note for composite ids the name must be set always!
-			// entity.getAnnotatedEClass().getInstanceClass() != null) { // ||
-			// entity.getAnnotatedEClass().getInstanceClass() != null ||
-			if (hasCompositeID(entity)) { // only for this specific case it is
-				// required to have the impl.name
-				target.addAttribute("name", hbmContext
-						.getInstanceClassName(entity));
+				// note for composite ids the name must be set always!
+				// entity.getAnnotatedEClass().getInstanceClass() != null) { //
+				// ||
+				// entity.getAnnotatedEClass().getInstanceClass() != null ||
+				if (hasCompositeID(entity)) { // only for this specific case
+					// it is
+					// required to have the impl.name
+					target.addAttribute("name", hbmContext
+							.getInstanceClassName(entity));
+				}
+			} else {
+				target = getHbmContext()
+						.getCurrent()
+						.addElement(hbClassName)
+						.addAttribute("name", ERuntime.INSTANCE.getInstanceClass(eclass).getName())
+						.addAttribute(
+								"entity-name",
+								getHbmContext().getEClassNameStrategy()
+										.toUniqueName(eclass))
+						.addAttribute("abstract", isAbstractStr)
+						.addAttribute(
+								"lazy",
+								((HbAnnotatedEClass) entity).getHbProxy() == null ? "false"
+										: "true");
 			}
 		}
 
@@ -209,6 +227,13 @@ class EntityMapper extends AbstractMapper {
 		if (((HbAnnotatedEClass) entity).getHbWhere() != null) {
 			target.addAttribute("where", ((HbAnnotatedEClass) entity)
 					.getHbWhere().getClause());
+		}
+
+		if (((HbAnnotatedEClass) entity).getHbProxy() != null
+				&& ((HbAnnotatedEClass) entity).getHbProxy().getProxyClass() != null) {
+			final String proxyInterfaceName = ((HbAnnotatedEClass) entity)
+					.getHbProxy().getProxyClass();
+			target.addAttribute("proxy", proxyInterfaceName);
 		}
 
 		return target;
@@ -285,11 +310,12 @@ class EntityMapper extends AbstractMapper {
 				getHbmContext().addAssociationOverrides(
 						entity.getAssociationOverrides());
 			}
-			
+
 			if (inheritedFeatures.size() > 0) {
-				log.debug("There are " + inheritedFeatures.size() + " inherited features ");
+				log.debug("There are " + inheritedFeatures.size()
+						+ " inherited features ");
 			}
-			
+
 			try {
 				processFeatures(inheritedFeatures);
 			} finally {

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackage.java,v 1.6 2007/03/21 15:46:34 mtaal Exp $
+ * $Id: HbAnnotationPackage.java,v 1.7 2007/03/29 15:00:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -607,13 +607,59 @@ public interface HbAnnotationPackage extends EPackage {
 	int ON_DELETE_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl <em>Proxy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getProxy()
+	 * @generated
+	 */
+	int PROXY = 13;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROXY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Proxy Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROXY__PROXY_CLASS = HB_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROXY__LAZY = HB_ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Proxy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROXY_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getCacheConcurrencyStrategy()
 	 * @generated
 	 */
-	int CACHE_CONCURRENCY_STRATEGY = 13;
+	int CACHE_CONCURRENCY_STRATEGY = 14;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType <em>Hb Fetch Type</em>}' enum.
@@ -623,7 +669,7 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getHbFetchType()
 	 * @generated
 	 */
-	int HB_FETCH_TYPE = 14;
+	int HB_FETCH_TYPE = 15;
 
 
 	/**
@@ -634,7 +680,7 @@ public interface HbAnnotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getOnDeleteAction()
 	 * @generated
 	 */
-	int ON_DELETE_ACTION = 15;
+	int ON_DELETE_ACTION = 16;
 
 
 	/**
@@ -990,6 +1036,38 @@ public interface HbAnnotationPackage extends EPackage {
 	EAttribute getOnDelete_Action();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy <em>Proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Proxy</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Proxy
+	 * @generated
+	 */
+	EClass getProxy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#getProxyClass <em>Proxy Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Proxy Class</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#getProxyClass()
+	 * @see #getProxy()
+	 * @generated
+	 */
+	EAttribute getProxy_ProxyClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#getLazy <em>Lazy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lazy</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#getLazy()
+	 * @see #getProxy()
+	 * @generated
+	 */
+	EAttribute getProxy_Lazy();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Cache Concurrency Strategy</em>'.
@@ -1340,6 +1418,32 @@ public interface HbAnnotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ON_DELETE__ACTION = eINSTANCE.getOnDelete_Action();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl <em>Proxy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationPackageImpl#getProxy()
+		 * @generated
+		 */
+		EClass PROXY = eINSTANCE.getProxy();
+
+		/**
+		 * The meta object literal for the '<em><b>Proxy Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROXY__PROXY_CLASS = eINSTANCE.getProxy_ProxyClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Lazy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROXY__LAZY = eINSTANCE.getProxy_Lazy();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbModelPackageImpl.java,v 1.8 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: HbModelPackageImpl.java,v 1.9 2007/03/29 15:00:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -260,6 +260,15 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHbAnnotatedEClass_HbProxy() {
+		return (EReference)hbAnnotatedEClassEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -381,6 +390,7 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__HB_CACHE);
 		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__HB_ON_DELETE);
 		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__HB_WHERE);
+		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__HB_PROXY);
 
 		hbAnnotatedEModelElementEClass = createEClass(HB_ANNOTATED_EMODEL_ELEMENT);
 
@@ -456,6 +466,7 @@ public class HbModelPackageImpl extends EPackageImpl implements HbModelPackage {
 		initEReference(getHbAnnotatedEClass_HbCache(), theHbAnnotationPackage.getCache(), null, "hbCache", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEClass_HbOnDelete(), theHbAnnotationPackage.getOnDelete(), null, "hbOnDelete", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEClass_HbWhere(), theHbAnnotationPackage.getWhere(), null, "hbWhere", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedEClass_HbProxy(), theHbAnnotationPackage.getProxy(), null, "hbProxy", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hbAnnotatedEModelElementEClass, HbAnnotatedEModelElement.class, "HbAnnotatedEModelElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

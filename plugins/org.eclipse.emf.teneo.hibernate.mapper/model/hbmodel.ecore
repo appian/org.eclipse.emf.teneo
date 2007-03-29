@@ -29,6 +29,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbOnDelete" eType="ecore:EClass hbannotation.ecore#//OnDelete"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbWhere" eType="ecore:EClass hbannotation.ecore#//Where"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbProxy" eType="ecore:EClass hbannotation.ecore#//Proxy"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEModelElement" abstract="true"
       interface="true" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEModelElement"/>

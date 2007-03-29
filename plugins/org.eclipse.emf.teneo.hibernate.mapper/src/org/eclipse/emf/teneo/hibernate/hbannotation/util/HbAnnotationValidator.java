@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.8 2007/03/29 15:00:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -146,6 +146,8 @@ public class HbAnnotationValidator extends EObjectValidator {
 				return validateFetch((Fetch)value, diagnostics, context);
 			case HbAnnotationPackage.ON_DELETE:
 				return validateOnDelete((OnDelete)value, diagnostics, context);
+			case HbAnnotationPackage.PROXY:
+				return validateProxy((Proxy)value, diagnostics, context);
 			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			case HbAnnotationPackage.HB_FETCH_TYPE:
@@ -442,6 +444,24 @@ public class HbAnnotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(onDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(onDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(onDelete, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateProxy(Proxy proxy, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(proxy, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(proxy, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(proxy, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(proxy, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(proxy, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(proxy, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(proxy, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(proxy, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(proxy, diagnostics, context);
 		return result;
 	}
 

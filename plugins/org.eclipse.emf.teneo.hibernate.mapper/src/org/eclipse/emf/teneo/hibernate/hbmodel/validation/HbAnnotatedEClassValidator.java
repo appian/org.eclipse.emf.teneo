@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClassValidator.java,v 1.3 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: HbAnnotatedEClassValidator.java,v 1.4 2007/03/29 15:00:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.validation;
 
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 
 /**
@@ -24,4 +25,6 @@ public interface HbAnnotatedEClassValidator {
 	boolean validateHbOnDelete(OnDelete value);
 
 	boolean validateHbWhere(Where value);
+
+	boolean validateHbProxy(Proxy value);
 }

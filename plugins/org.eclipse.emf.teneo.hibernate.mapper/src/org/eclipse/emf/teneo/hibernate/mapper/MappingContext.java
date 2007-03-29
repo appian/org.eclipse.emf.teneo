@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.13 2007/03/21 20:39:14 mtaal Exp $
+ * $Id: MappingContext.java,v 1.14 2007/03/29 15:00:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -543,7 +543,7 @@ public class MappingContext extends AbstractProcessingContext {
 	public boolean isMapEMapAsTrueMap() {
 		return isMapEMapAsTrueMap;
 	}
-
+	
 	/**
 	 * @return the currentEClass
 	 */

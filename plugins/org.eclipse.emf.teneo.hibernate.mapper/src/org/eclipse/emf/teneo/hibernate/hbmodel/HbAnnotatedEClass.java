@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClass.java,v 1.6 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: HbAnnotatedEClass.java,v 1.7 2007/03/29 15:00:45 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 
 /**
@@ -21,6 +22,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbOnDelete <em>Hb On Delete</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbWhere <em>Hb Where</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbProxy <em>Hb Proxy</em>}</li>
  * </ul>
  * </p>
  *
@@ -111,5 +113,31 @@ public interface HbAnnotatedEClass extends PAnnotatedEClass {
 	 * @generated
 	 */
 	void setHbWhere(Where value);
+
+	/**
+	 * Returns the value of the '<em><b>Hb Proxy</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hb Proxy</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hb Proxy</em>' reference.
+	 * @see #setHbProxy(Proxy)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEClass_HbProxy()
+	 * @model
+	 * @generated
+	 */
+	Proxy getHbProxy();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbProxy <em>Hb Proxy</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hb Proxy</em>' reference.
+	 * @see #getHbProxy()
+	 * @generated
+	 */
+	void setHbProxy(Proxy value);
 
 } // HbAnnotatedEClass

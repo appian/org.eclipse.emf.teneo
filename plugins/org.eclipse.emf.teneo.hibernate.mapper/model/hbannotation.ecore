@@ -137,4 +137,12 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="action" eType="#//OnDeleteAction"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Proxy" eSuperTypes="#//HbAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="proxyClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lazy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
 </ecore:EPackage>
