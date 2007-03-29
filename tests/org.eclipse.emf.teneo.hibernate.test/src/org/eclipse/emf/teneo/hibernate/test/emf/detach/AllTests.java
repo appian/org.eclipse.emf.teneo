@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.4 2007/03/04 21:18:28 mtaal Exp $
+ * $Id: AllTests.java,v 1.5 2007/03/29 15:00:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.detach;
@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.test.emf.detach.DetachEListAction;
  * Test
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AllTests {
 
@@ -38,6 +38,7 @@ public class AllTests {
 
 		suite.addTestSuite(DetachEListAction.class);
 		suite.addTestSuite(DetachTest.class);
+
 		return suite;
 	}
 }

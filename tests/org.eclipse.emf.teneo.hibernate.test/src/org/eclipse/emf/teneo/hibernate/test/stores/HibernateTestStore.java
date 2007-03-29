@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestStore.java,v 1.15 2007/03/21 15:46:13 mtaal Exp $
+ * $Id: HibernateTestStore.java,v 1.16 2007/03/29 15:00:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
 
 import java.sql.Connection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -52,7 +53,7 @@ import org.hibernate.cfg.Environment;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */

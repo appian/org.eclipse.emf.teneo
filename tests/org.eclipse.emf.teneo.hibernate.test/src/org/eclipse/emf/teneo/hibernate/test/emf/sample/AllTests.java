@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.37 2007/03/28 13:58:30 mtaal Exp $
+ * $Id: AllTests.java,v 1.38 2007/03/29 15:00:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -35,21 +35,21 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryQualifyActionHB;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
-import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceReferenceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
 import org.eclipse.emf.teneo.test.emf.sample.MindMapAction;
 import org.eclipse.emf.teneo.test.emf.sample.PlayAction;
 import org.eclipse.emf.teneo.test.emf.sample.PrimerPOAction;
 import org.eclipse.emf.teneo.test.emf.sample.ProductAction;
+import org.eclipse.emf.teneo.test.emf.sample.RentalMapAsClassAction;
+import org.eclipse.emf.teneo.test.emf.sample.RentalResourceReferenceAction;
 import org.eclipse.emf.teneo.test.emf.sample.SunBooksAction;
 import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
-import org.eclipse.emf.teneo.test.issues.AgilAction;
 
 /**
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  */
 public class AllTests {
 
@@ -59,9 +59,13 @@ public class AllTests {
 //		suite.addTestSuite(GMFNotationAction.class);
 //		suite.addTestSuite(LobjAction.class);
 		
-		suite.addTestSuite(AgilAction.class);
-/*
-		suite.addTestSuite(LibraryResourceReferenceAction.class);
+//		suite.addTestSuite(AgilAction.class);
+
+		suite.addTestSuite(RentalMapAsClassAction.class);
+
+		suite.addTestSuite(RentalResourceReferenceAction.class);
+
+		suite.addTestSuite(ProductAction.class);
 
 		suite.addTestSuite(LibraryAction.class);
 
@@ -72,8 +76,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryNonResolvingAction.class);
 
 		suite.addTestSuite(EcoreAction.class);
-		
-		suite.addTestSuite(ProductAction.class);
 
 		suite.addTestSuite(DynamicAction.class);
 		
@@ -117,7 +119,7 @@ public class AllTests {
 		suite.addTestSuite(PrimerPOAction.class);
 		suite.addTestSuite(WorkFlowAction.class);
 		suite.addTestSuite(ForumAction.class);
-*/
+
 		return suite;
 	}
 }
