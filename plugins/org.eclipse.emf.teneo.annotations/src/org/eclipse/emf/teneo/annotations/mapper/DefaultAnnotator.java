@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.40 2007/03/29 21:32:10 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.41 2007/03/29 22:14:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -84,7 +84,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.40 $
+ * @version $Revision: 1.41 $
  */
 public class DefaultAnnotator {
 
@@ -274,8 +274,7 @@ public class DefaultAnnotator {
 		log.debug("optionEMapAsTrueMap " + optionEMapAsTrueMap);
 
 		optionAlsoMapAsClass = po.isAlsoMapAsClass();
-		log.debug("optionAlsoMapAsClass "
-				+ optionAlsoMapAsClass);
+		log.debug("optionAlsoMapAsClass " + optionAlsoMapAsClass);
 
 		optionMaximumSqlLength = po.getMaximumSqlNameLength();
 		log.debug("Maximum column length: " + optionMaximumSqlLength);
@@ -403,11 +402,11 @@ public class DefaultAnnotator {
 			entity.setEModelElement(eclass);
 			entity.setName(getEntityName(eclass));
 			aClass.setEntity(entity);
-			
+
 			if (entity.getName().equals("Child2")) {
 				System.err.println("TEST");
 			}
-			
+
 		} else if (aClass.getEntity() != null
 				&& aClass.getEntity().getName() == null) {
 			aClass.getEntity().setName(getEntityName(eclass));
@@ -486,12 +485,7 @@ public class DefaultAnnotator {
 
 		// if the strategy is all classes of one hierarchy in one table and this
 		// is not the superclass
-		// then all properties should be nullable
-		// TODO when not all eclasses are entities then this computation is
-		// incorrect, the isInheritanceRoot
-		// should be the top most class in the hierarchy which is an entity
-		final boolean forceOptional = !isInheritanceRoot
-				&& inheritanceType.equals(InheritanceType.SINGLE_TABLE_LITERAL);
+		// this is solved in the individual mappers
 
 		// For hibernate as well as jpox the discriminator column is only
 		// required for
@@ -517,7 +511,7 @@ public class DefaultAnnotator {
 
 		for (PAnnotatedEStructuralFeature aStructuralFeature : aClass
 				.getPaEStructuralFeatures()) {
-			processEFeature(aStructuralFeature, forceOptional);
+			processEFeature(aStructuralFeature);
 		}
 
 		// Add default PkJoinColumns for SecondaryTables.
@@ -543,8 +537,7 @@ public class DefaultAnnotator {
 
 	/** Process the features of the eclass */
 	protected void processEFeature(
-			PAnnotatedEStructuralFeature aStructuralFeature,
-			boolean forceOptional) {
+			PAnnotatedEStructuralFeature aStructuralFeature) {
 		EStructuralFeature eStructuralFeature = aStructuralFeature
 				.getAnnotatedEStructuralFeature();
 
@@ -609,9 +602,9 @@ public class DefaultAnnotator {
 				}
 
 				if (isMany) {
-					processOneToManyAttribute(aAttribute, forceOptional);
+					processOneToManyAttribute(aAttribute);
 				} else {
-					processSingleAttribute(aAttribute, forceOptional);
+					processSingleAttribute(aAttribute);
 				}
 
 				if (aAttribute.getColumn() != null
@@ -673,21 +666,19 @@ public class DefaultAnnotator {
 						&& eOpposite == null && !otoUnidirectionalRelation;
 
 				if (mtmBidirectionalRelation) {
-					processBidirectionalManyToManyReference(aReference,
-							forceOptional);
+					processBidirectionalManyToManyReference(aReference);
 				} else if (mtmUnidirectionalRelation) {
-					processUnidirectionalManyToManyReference(aReference,
-							forceOptional);
+					processUnidirectionalManyToManyReference(aReference);
 				} else if (otmBidirectionalRelation
 						|| otmUnidirectionalRelation) {
-					processOneToManyReference(aReference, forceOptional);
+					processOneToManyReference(aReference);
 				} else if (otoBidirectionalRelation
 						|| otoUnidirectionalRelation) {
-					processOneToOneReference(aReference, forceOptional);
+					processOneToOneReference(aReference);
 				} else if (mtoBidirectionalRelation) {
-					processManyToOneReference(aReference, forceOptional);
+					processManyToOneReference(aReference);
 				} else if (mtoUnidirectionalRelation) {
-					processManyToOneReference(aReference, forceOptional);
+					processManyToOneReference(aReference);
 				}
 
 				// handle column naming at this level
@@ -723,8 +714,7 @@ public class DefaultAnnotator {
 	}
 
 	/** Add default annotation to aAttribute: these are id, basic and enum */
-	protected void processSingleAttribute(PAnnotatedEAttribute aAttribute,
-			boolean forceNullable) {
+	protected void processSingleAttribute(PAnnotatedEAttribute aAttribute) {
 
 		log.debug(" Adding default annotations for EAttribute "
 				+ aAttribute.getAnnotatedElement().getName());
@@ -791,12 +781,9 @@ public class DefaultAnnotator {
 			// confusing why having this then? If this applies then for each
 			// basic and nullable
 			// field a column annotation has to be added to force nullability
-			basic.setOptional(forceNullable || !eAttribute.isRequired()
+			basic.setOptional(!eAttribute.isRequired()
 					|| eAttribute.isUnsettable());
 			aAttribute.setBasic(basic);
-		}
-		if (forceNullable) {
-			aAttribute.getBasic().setOptional(true);
 		}
 
 		if (aAttribute.getId() != null) {
@@ -858,8 +845,7 @@ public class DefaultAnnotator {
 	}
 
 	/** Handles a many EAttribute which is a list of simple types */
-	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute,
-			boolean forceNullable) {
+	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute) {
 		final String logStr = aAttribute.getAnnotatedEAttribute().getName()
 				+ "/"
 				+ aAttribute.getAnnotatedEAttribute().getEContainingClass()
@@ -997,8 +983,7 @@ public class DefaultAnnotator {
 	 * Adds default annotations to a onetomany ereference, this method handles
 	 * both the uni- and the bidirectional case
 	 */
-	protected void processOneToManyReference(PAnnotatedEReference aReference,
-			boolean forceOptional) {
+	protected void processOneToManyReference(PAnnotatedEReference aReference) {
 		final String logStr = aReference.getAnnotatedEReference().getName()
 				+ "/"
 				+ aReference.getAnnotatedEReference().getEContainingClass()
@@ -1131,7 +1116,7 @@ public class DefaultAnnotator {
 
 	/** Adds default annotations to a bidirectional many to many ereference */
 	protected void processBidirectionalManyToManyReference(
-			PAnnotatedEReference aReference, boolean forceOptional) {
+			PAnnotatedEReference aReference) {
 		final String featureLogStr = aReference.getAnnotatedEReference()
 				.getName()
 				+ "/"
@@ -1310,7 +1295,7 @@ public class DefaultAnnotator {
 
 	/** Adds default annotations to a unidirectional many to many ereference */
 	protected void processUnidirectionalManyToManyReference(
-			PAnnotatedEReference aReference, boolean forceOptional) {
+			PAnnotatedEReference aReference) {
 		final String featureLogStr = aReference.getAnnotatedEReference()
 				.getName()
 				+ "/"
@@ -1373,13 +1358,12 @@ public class DefaultAnnotator {
 		if (joinTable.getJoinColumns() == null) {
 			joinTable.getJoinColumns().addAll(
 					getJoinColumns(aReference.getPaEClass(), eReference,
-							forceOptional, false, true));
+							false, false, true));
 		}
 	}
 
 	/** Adds default annotations for a one to one reference */
-	protected void processOneToOneReference(PAnnotatedEReference aReference,
-			boolean forceOptional) {
+	protected void processOneToOneReference(PAnnotatedEReference aReference) {
 		final String logStr = aReference.getAnnotatedEReference().getName()
 				+ "/"
 				+ aReference.getAnnotatedEReference().getEContainingClass()
@@ -1404,7 +1388,7 @@ public class DefaultAnnotator {
 					+ " does not have a onetoone annotation, adding one");
 			oto = aFactory.createOneToOne();
 			aReference.setOneToOne(oto);
-			oto.setOptional(forceOptional || !eReference.isRequired()
+			oto.setOptional(!eReference.isRequired()
 					|| eReference.isUnsettable());
 			oto.setEModelElement(eReference);
 		} else {
@@ -1413,8 +1397,6 @@ public class DefaultAnnotator {
 							+ logStr
 							+ " has an onetoone annotation setting defaults if required");
 		}
-		if (forceOptional)
-			oto.setOptional(true);
 
 		// determine where to put the mapped-by
 		if (oto.getMappedBy() == null && setMappedBy(eReference)) { // only
@@ -1436,8 +1418,7 @@ public class DefaultAnnotator {
 	}
 
 	/** Handles many to one for bidirectional and unidirectional cases */
-	protected void processManyToOneReference(PAnnotatedEReference aReference,
-			boolean forceOptional) {
+	protected void processManyToOneReference(PAnnotatedEReference aReference) {
 		final String logStr = aReference.getAnnotatedEReference().getName()
 				+ "/"
 				+ aReference.getAnnotatedEReference().getEContainingClass()
@@ -1462,17 +1443,13 @@ public class DefaultAnnotator {
 					+ " does not have a manytoone annotation, adding one");
 			mto = aFactory.createManyToOne();
 			aReference.setManyToOne(mto);
-			mto.setOptional(forceOptional || !eReference.isRequired()
+			mto.setOptional(!eReference.isRequired()
 					|| eReference.isUnsettable()
 					|| eReference.getEOpposite() != null);
 			mto.setEModelElement(eReference);
 		} else {
 			log.debug("EReference + " + logStr
 					+ " does have a manytoone annotation, using it");
-			log
-					.debug("Setting optional because of inheritance mapping, this is a subclass");
-			if (forceOptional)
-				mto.setOptional(forceOptional);
 		}
 
 		setCascade(mto.getCascade(), eReference.isContainment());
@@ -1771,8 +1748,7 @@ public class DefaultAnnotator {
 			// ok, it is an EMAp, get the annotaetd class of the child
 			EStructuralFeature feature = eclass.getEStructuralFeature("value");
 			if (feature instanceof EReference) {
-				return getEntityName(((EReference) feature)
-						.getEReferenceType());
+				return getEntityName(((EReference) feature).getEReferenceType());
 			} else {
 				return ((EAttribute) feature).getEType().getInstanceClassName();
 			}
