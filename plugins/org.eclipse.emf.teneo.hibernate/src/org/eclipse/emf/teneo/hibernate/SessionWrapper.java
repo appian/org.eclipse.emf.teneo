@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SessionWrapper.java,v 1.2 2007/03/28 13:57:38 mtaal Exp $
+ * $Id: SessionWrapper.java,v 1.3 2007/03/29 14:59:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * commit transactions and perform queries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public interface SessionWrapper {
 
@@ -47,6 +48,9 @@ public interface SessionWrapper {
 	
 	/** Rollback transaction */
 	void rollbackTransaction();
+	
+	/** Return an object using the entityname and a serializable id */
+	Object get(String entityName, Serializable id);
 	
 	/** Query */
 	List<?> executeQuery(String qry);

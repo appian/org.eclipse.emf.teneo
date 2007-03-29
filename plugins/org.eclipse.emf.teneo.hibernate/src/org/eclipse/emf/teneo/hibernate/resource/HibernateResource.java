@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.11 2007/03/28 13:57:39 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.12 2007/03/29 14:59:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,18 +28,10 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.teneo.StoreException;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
@@ -65,7 +58,7 @@ import org.hibernate.impl.SessionImpl;
  * the uri can also be used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -74,9 +67,6 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 	/** The fragment separator */
 	private static String SEPARATOR = "|";
-
-	/** The uri parameter for the synthetic id */
-	private static String PARAM_SYNTHETIC_ID = "_id_";
 	
 	/** The store used to determine where to query for the data */
 	protected HbDataStore emfDataStore;
@@ -223,47 +213,25 @@ public class HibernateResource extends StoreResource implements HbResource {
 			log.debug("Reading eobject using urifragment " + id);
 			final String[] parts = id.split(SEPARATOR);
 	
-			if (parts.length < 2) {
-				log.debug("Not a valid urifragment for this resource");
+			if (parts.length != 2) {
+				log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
 				return super.getEObjectByID(id);
 			}
 			
 			// build a query
-			final StringBuffer qryStr = new StringBuffer("select o from " + parts[0] + " o where ");
-			boolean addAnd = false;
-			final ArrayList<Object> params = new ArrayList<Object>();
 			final EClass eclass = emfDataStore.getPersistenceOptions().getEClassNameStrategy().toEClass(parts[0], emfDataStore.getEPackages());
-			final String syntheticIdName = emfDataStore.getPersistenceOptions().getDefaultIDFeatureName();
-			for (int i = 1; i < parts.length; i++) {
-				final int splitIndex = parts[i].indexOf("=");
-				final String param = parts[i].substring(0, splitIndex);
-				final String value = parts[i].substring(1 + splitIndex);
-				final EAttribute eattr = (EAttribute)eclass.getEStructuralFeature(param);
-				if (addAnd) {
-					qryStr.append(" and ");
-				}
-				if (eattr == null && param.compareTo(PARAM_SYNTHETIC_ID) == 0) {
-					params.add(new Long(value));
-					qryStr.append(syntheticIdName + "=:p" + params.size());
-				} else if (eattr == null) {
-					throw new StoreException("EAttribute name " + param + " does not map to an eattribute of " + eclass.getName());
-				} else {
-					final EDataType edt = eattr.getEAttributeType();
-					params.add(edt.getEPackage().getEFactoryInstance().createFromString(edt, value));
-					qryStr.append(eattr.getName() + "=:p" + params.size());
-				}
-				addAnd = true;
+			final int splitIndex = parts[1].indexOf("=");
+			if (splitIndex == -1 ) {
+				log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
+				return super.getEObjectByID(id);
 			}
-	
-			final List<?> result = getSessionWrapper().executeQuery(qryStr.toString(), params);
-			if (result.size() == 0) {
+			final String idStr = parts[1].substring(1 + splitIndex);
+			final Object result = getSessionWrapper().get(parts[0], (Serializable)HbUtil.stringToId(eclass, emfDataStore, idStr));
+			if (result == null) {
 				log.debug("Object not found in the db, trying the parent");
 				return super.getEObjectByID(id);
 			}
-			if (result.size() > 1) {
-				throw new StoreException("Using id: " + id + " more than one eobject (" + result.size() + ") was retrieved from the db");
-			}
-			final InternalEObject eobject = (InternalEObject)result.get(0); 
+			final InternalEObject eobject = (InternalEObject)result;
 			addToContent(eobject);
 			return eobject;
 		} finally {
@@ -281,36 +249,17 @@ public class HibernateResource extends StoreResource implements HbResource {
 	 */
 	@Override
 	public String getURIFragment(EObject object) {
-		
 		if (object == null) {
 			return null;
 		}
-		// get the id features
-		final PAnnotatedModel paModel = emfDataStore.getPaModel();
-		final PAnnotatedEClass aClass = paModel.getPAnnotated(object.eClass());
-		final List<PAnnotatedEStructuralFeature> idFeatures = aClass.getPaIdFeatures();
-
+		final String theId = HbUtil.idToString(object, emfDataStore);
+		if (theId == null) {
+			return super.getURIFragment(object);
+		}
 		final StringBuffer idStr = new StringBuffer();
-		// first prepend the eclass using the epackage nsprefix and eclass name
 		idStr.append(emfDataStore.getPersistenceOptions().getEClassNameStrategy().toUniqueName(object.eClass()));
 		idStr.append(SEPARATOR);
-		
-		for (PAnnotatedEStructuralFeature af : idFeatures) {
-			final EStructuralFeature ef = af.getAnnotatedEStructuralFeature();
-			if (ef instanceof EAttribute) {
-				idStr.append(SEPARATOR);
-				final EDataType edt = ((EAttribute)ef).getEAttributeType();
-				idStr.append(ef.getName() + "=" + edt.getEPackage().getEFactoryInstance().convertToString(edt, object.eGet(ef)));
-			} else {
-				log.debug("The feature " + object.eClass().getName() + "/" + ef.getName() + " is an ereference, " +
-						"this is not supported by the getURIFragment method, using the superclass");
-				return super.getURIFragment(object);
-			}
-		}
-		if (idFeatures.size() == 0) { // synthetic id!, always a long
-			idStr.append( PARAM_SYNTHETIC_ID + "=" + IdentifierCacheHandler.getID(object));
-		}
-
+		idStr.append("id=" + theId);
 		return idStr.toString();
 	}
 

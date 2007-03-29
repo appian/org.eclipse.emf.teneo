@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.2 2007/03/21 20:40:41 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.3 2007/03/29 14:59:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -24,7 +24,9 @@ import javax.persistence.EntityManagerFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.ERuntime;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
@@ -36,7 +38,7 @@ import org.hibernate.ejb.Ejb3Configuration;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HbEntityDataStore extends HbDataStore {
 

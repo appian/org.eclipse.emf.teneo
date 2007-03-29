@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionWrapper.java,v 1.2 2007/03/28 13:57:38 mtaal Exp $
+ * $Id: HbSessionWrapper.java,v 1.3 2007/03/29 14:59:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +35,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * Wraps a standard hibernate session.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HbSessionWrapper implements SessionWrapper {
 
@@ -84,6 +85,11 @@ public class HbSessionWrapper implements SessionWrapper {
 	/** Rollback transaction */
 	public void rollbackTransaction() {
 		getSessionInternal().getTransaction().rollback();
+	}
+	
+	/** Return an object using the entityname and a serializable id */
+	public Object get(String entityName, Serializable id) {
+		return getSessionInternal().get(entityName, id);
 	}
 
 	/** Query */

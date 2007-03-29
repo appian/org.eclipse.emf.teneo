@@ -6,7 +6,8 @@
   <eAnnotations source="teneo.mapping.source">
     <details key="1" value="http://hibernate.elver.org/"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotation" interface="true" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//PAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotation" abstract="true" interface="true"
+      eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//PAnnotation">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="CompatibleEModelElementType AnnotationIsSupported"/>
     </eAnnotations>
@@ -101,5 +102,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="usage" eType="#//CacheConcurrencyStrategy"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="region" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="include" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Proxy" eSuperTypes="#//HbAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="proxyClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

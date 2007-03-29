@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.14 2007/03/18 19:19:47 mtaal Exp $
+ * $Id: HbUtil.java,v 1.15 2007/03/29 14:59:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.lang.reflect.Method;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -29,9 +30,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler;
 import org.eclipse.emf.teneo.util.StoreUtil;
-import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
 import org.hibernate.mapping.Collection;
 import org.hibernate.mapping.MetaAttribute;
@@ -39,12 +40,17 @@ import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
 import org.hibernate.property.EmbeddedPropertyAccessor;
 import org.hibernate.property.PropertyAccessor;
+import org.hibernate.proxy.HibernateProxy;
+import org.hibernate.type.IdentifierType;
+import org.hibernate.type.PrimitiveType;
+import org.hibernate.type.StringType;
+import org.hibernate.type.Type;
 
 /**
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class HbUtil {
 
@@ -52,22 +58,66 @@ public class HbUtil {
 	private static Log log = LogFactory.getLog(HbUtil.class);
 
 	/** Encode the id of an eobject */
-	public static String encodeId(EObject eobj, Session session) {
-		return "";
+	public static String idToString(EObject eobj, HbDataStore hd) {
+		final PersistentClass pc = hd.getPersistentClass(hd
+				.getPersistenceOptions().getEClassNameStrategy().toUniqueName(
+						eobj.eClass()));
+		if (pc == null) { // can happen with map entries
+			return null;
+		}
+		Object id;
+		if (eobj instanceof HibernateProxy) {
+			id = ((HibernateProxy)eobj).getHibernateLazyInitializer().getIdentifier();
+		} else {
+			id = pc.getIdentifierProperty().getGetter(eobj.getClass())
+				.get(eobj);
+		}
+		if (id == null) {
+			id = IdentifierCacheHandler.getID(eobj);
+			if (id == null) {
+				return null;
+			}
+		}
+		final Type t = pc.getIdentifierProperty().getType();
+		if (t instanceof PrimitiveType) {
+			return ((PrimitiveType) t).toString(id);
+		} else if (t instanceof StringType) {
+			return (String)id;
+		}
+		return null;
 	}
 
+	/** Encode the id of an eobject */
+	public static Object stringToId(EClass eclass, HbDataStore hd, String id) {
+		try {
+			final PersistentClass pc = hd.getPersistentClass(hd
+					.getPersistenceOptions().getEClassNameStrategy().toUniqueName(
+							eclass));
+			final Type t = pc.getIdentifierProperty().getType();
+			if (t instanceof IdentifierType) {
+				return ((IdentifierType) t).stringToObject(id);
+			} else if (t instanceof StringType) {
+				return id;
+			}
+			return null;
+		} catch (Exception e) {
+			throw new HbStoreException("Exception while converting id: " + id + " of eclass " + eclass.getName());
+		}
+	}
+	
 	/** Returns the correct accessor on the basis of the type of property */
 	public static PropertyAccessor getPropertyAccessor(Property mappedProperty,
 			HbDataStore ds, String entityName) {
-		if (mappedProperty.getMetaAttribute(HbMapperConstants.ID_META) != null) { // synthetic ID
+		if (mappedProperty.getMetaAttribute(HbMapperConstants.ID_META) != null) { // synthetic
+																					// ID
 			return new IdentifierPropertyHandler();
 		} else if (mappedProperty
-						.getMetaAttribute(HbMapperConstants.VERSION_META) != null) {
+				.getMetaAttribute(HbMapperConstants.VERSION_META) != null) {
 			return ds.getHbContext().createVersionAccessor();
 		} else if (mappedProperty.getName().compareToIgnoreCase(
 				"_identifierMapper") == 0) { // name is used by hb
 			return new EmbeddedPropertyAccessor(); // new
-													// DummyPropertyHandler();
+			// DummyPropertyHandler();
 		} else if (mappedProperty.getName().compareToIgnoreCase(
 				HbConstants.PROPERTY_ECONTAINER) == 0) {
 			return ds.getHbContext().createEContainerAccessor();
@@ -103,7 +153,8 @@ public class HbUtil {
 			final EReference eref = (EReference) efeature;
 			if (eref.isMany()) {
 				return ds.getHbContext().createEListAccessor(efeature,
-						extraLazy, ds.getPersistenceOptions().isMapEMapAsTrueMap());
+						extraLazy,
+						ds.getPersistenceOptions().isMapEMapAsTrueMap());
 			} else {
 				return ds.getHbContext().createEReferenceAccessor(eref);
 			}
@@ -111,7 +162,8 @@ public class HbUtil {
 			final EAttribute eattr = (EAttribute) efeature;
 			if (eattr.isMany()) {
 				return ds.getHbContext().createEListAccessor(efeature,
-						extraLazy, ds.getPersistenceOptions().isMapEMapAsTrueMap());
+						extraLazy,
+						ds.getPersistenceOptions().isMapEMapAsTrueMap());
 			} else {
 				// note also array types are going here!
 				return ds.getHbContext().createEAttributeAccessor(eattr);
@@ -146,7 +198,7 @@ public class HbUtil {
 		final String name = props.getProperty(Constants.PROP_NAME);
 		HbDataStore eds = HbHelper.INSTANCE.getDataStore(name);
 		if (eds != null)
-			return eds;  
+			return eds;
 
 		final Properties hbProps = new Properties();
 		hbProps.putAll(props);

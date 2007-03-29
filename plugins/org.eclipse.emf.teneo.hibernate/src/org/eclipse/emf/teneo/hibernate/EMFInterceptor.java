@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInterceptor.java,v 1.5 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: EMFInterceptor.java,v 1.6 2007/03/29 14:59:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -26,7 +26,7 @@ import org.hibernate.EmptyInterceptor;
  * name.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class EMFInterceptor extends EmptyInterceptor {
@@ -38,7 +38,7 @@ public class EMFInterceptor extends EmptyInterceptor {
 
 	/** The qualify property used to compute the eclassname */
 	private final EClassNameStrategy qualifyStrategy;
-
+	
 	/** Constructor */
 	public EMFInterceptor(PersistenceOptions po) {
 		qualifyStrategy = po.getEClassNameStrategy();

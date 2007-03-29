@@ -11,31 +11,43 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.7 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.8 2007/03/29 14:59:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Iterator;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.hibernate.EntityMode;
 import org.hibernate.HibernateException;
+import org.hibernate.cfg.Environment;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
+import org.hibernate.mapping.Subclass;
 import org.hibernate.property.Getter;
 import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
+import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.ProxyFactory;
 import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.entity.AbstractEntityTuplizer;
 import org.hibernate.tuple.entity.EntityMetamodel;
+import org.hibernate.type.AbstractComponentType;
+import org.hibernate.util.ReflectHelper;
 
 /**
  * Overrides the get and setidentifier methods to get the identifier from an
@@ -44,13 +56,17 @@ import org.hibernate.tuple.entity.EntityMetamodel;
  * use of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
 
 	/** The logger */
-	// private static Log log = LogFactory.getLog(EMFTuplizer.class);
+	private static Log log = LogFactory.getLog(EMFTuplizer.class);
+
+	/** The mapped class, defaults to EObject for entities and to the real impl class for mapped classes */
+	private Class<?> mappedClass;
+	
 	/** The entitymetamodel for which this is all done */
 	// private final EntityMetamodel theEntityMetamodel;
 	/** Constructor */
@@ -58,6 +74,11 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 			PersistentClass mappedEntity) {
 		super(entityMetamodel, mappedEntity);
 		// theEntityMetamodel = entityMetamodel;
+		if (mappedEntity.getMappedClass() != null) {
+			mappedClass = mappedEntity.getMappedClass();
+		} else {
+			mappedClass = EObject.class;
+		}
 	}
 
 	/**
@@ -133,17 +154,82 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildProxyFactory(org.hibernate.mapping.PersistentClass,
 	 *      org.hibernate.property.Getter, org.hibernate.property.Setter)
 	 */
-	protected ProxyFactory buildProxyFactory(PersistentClass mappingInfo,
+	protected ProxyFactory buildProxyFactory(PersistentClass persistentClass,
 			Getter idGetter, Setter idSetter) {
+		if (persistentClass.getClassName() == null) { // an entity, no proxy
+			return null;
+		}
 
-		return null;
-		/*
-		 * ProxyFactory pf = new MapProxyFactory(); try { // TODO: design new
-		 * lifecycle for ProxyFactory pf.postInstantiate(getEntityName(), null,
-		 * null, null, null, null); } catch (HibernateException he) {
-		 * log.warn("could not create proxy factory for:" + getEntityName(),
-		 * he); pf = null; } return pf;
-		 */
+		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
+		final EClass eclass = ds.getPersistenceOptions()
+				.getEClassNameStrategy().toEClass(
+						persistentClass.getEntityName(), ds.getEPackages());
+		if (eclass == null) {
+			throw new HbMapperException("No eclass found for entityname: "
+					+ persistentClass.getEntityName());
+		}
+
+		// get all the interfaces from the main class, add the hibernateproxy
+		// first
+		final HashSet<Class<?>> proxyInterfaces = new HashSet<Class<?>>();
+		proxyInterfaces.add(HibernateProxy.class);
+		proxyInterfaces.add(InternalEObject.class);
+
+		final Class<?> pInterface = persistentClass.getProxyInterface();
+		if (pInterface != null) {
+			proxyInterfaces.add(pInterface);
+		}
+		final Class<?> mappedClass = persistentClass.getMappedClass();
+		if (mappedClass.isInterface()) {
+			proxyInterfaces.add(mappedClass);
+		}
+		for (Class<?> interfaces : mappedClass.getInterfaces()) {
+			proxyInterfaces.add(interfaces);
+		}
+
+		// iterate over all subclasses and add them also
+		final Iterator<?> iter = persistentClass.getSubclassIterator();
+		while (iter.hasNext()) {
+			final Subclass subclass = (Subclass) iter.next();
+			final Class<?> subclassProxy = subclass.getProxyInterface();
+			final Class<?> subclassClass = subclass.getMappedClass();
+			if (subclassProxy != null && !subclassClass.equals(subclassProxy)) {
+				proxyInterfaces.add(subclassProxy);
+			}
+		}
+
+		// get the idgettters/setters
+		final Method theIdGetterMethod = idGetter == null ? null : idGetter
+				.getMethod();
+		final Method theIdSetterMethod = idSetter == null ? null : idSetter
+				.getMethod();
+
+		final Method proxyGetIdentifierMethod = theIdGetterMethod == null
+				|| pInterface == null ? null : ReflectHelper.getMethod(
+				pInterface, theIdGetterMethod);
+		final Method proxySetIdentifierMethod = theIdSetterMethod == null
+				|| pInterface == null ? null : ReflectHelper.getMethod(
+				pInterface, theIdSetterMethod);
+
+		ProxyFactory pf = Environment.getBytecodeProvider()
+				.getProxyFactoryFactory().buildProxyFactory();
+		try {
+			pf
+					.postInstantiate(
+							getEntityName(),
+							mappedClass,
+							proxyInterfaces,
+							proxyGetIdentifierMethod,
+							proxySetIdentifierMethod,
+							persistentClass.hasEmbeddedIdentifier() ? (AbstractComponentType) persistentClass
+									.getIdentifier().getType()
+									: null);
+		} catch (HbStoreException e) {
+			log.warn("could not create proxy factory for:" + getEntityName(),
+					e);
+			pf = null;
+		}
+		return pf;
 	}
 
 	/*
@@ -179,7 +265,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 * @see org.hibernate.tuple.Tuplizer#getMappedClass()
 	 */
 	public Class<?> getMappedClass() {
-		return EObject.class;
+		return mappedClass;
 	}
 
 	/** Returns the correct accessor on the basis of the type of property */

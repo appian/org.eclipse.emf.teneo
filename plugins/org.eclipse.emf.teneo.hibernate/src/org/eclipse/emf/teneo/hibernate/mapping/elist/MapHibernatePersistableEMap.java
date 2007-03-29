@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapHibernatePersistableEMap.java,v 1.2 2007/03/20 23:33:48 mtaal Exp $
+ * $Id: MapHibernatePersistableEMap.java,v 1.3 2007/03/29 14:59:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -41,7 +41,7 @@ import org.hibernate.collection.PersistentMap;
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> {
@@ -248,7 +248,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 				((HbResource) res).returnSessionWrapper(sessionWrapper);
 			}
 		}
-		log.debug("Finished loading elist " + logString);
+		log.debug("Finished loading emap " + logString);
 	}
 
 	/** Return the hibernate map */

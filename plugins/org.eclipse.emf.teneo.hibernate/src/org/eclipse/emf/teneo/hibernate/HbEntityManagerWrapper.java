@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.2 2007/03/28 13:57:37 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.3 2007/03/29 14:59:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -103,6 +104,11 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 					"EntityTransaction is null, call begin before commit!");
 		}
 		entityTransaction.rollback();
+	}
+	
+	/** Return an object using the entityname and a serializable id */
+	public Object get(String entityName, Serializable id) {
+		return ((EntityManagerImpl)getEntityManager()).getSession().get(entityName, id);
 	}
 
 	/** Query */

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.18 2007/03/28 13:57:38 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.19 2007/03/29 14:59:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
@@ -79,7 +80,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public abstract class HbDataStore {
 
@@ -403,7 +404,7 @@ public abstract class HbDataStore {
 		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 
-			java.util.List<ReferenceTo> refs = referers.get(pc.getEntityName());
+			java.util.List<ReferenceTo> refs = referers.get(getMappedName(pc));
 			boolean topEntity = true;
 			if (refs != null) {
 				for (Iterator<ReferenceTo> it = refs.iterator(); it.hasNext();) {
@@ -414,8 +415,9 @@ public abstract class HbDataStore {
 					}
 				}
 			}
-			if (topEntity)
-				result.add(pc.getEntityName());
+			if (topEntity) {
+				result.add(getMappedName(pc));
+			}
 		}
 		return (String[]) result.toArray(new String[result.size()]);
 	}
@@ -450,7 +452,7 @@ public abstract class HbDataStore {
 								getHibernateConfiguration()).getName());
 			} else {
 				// final EClass eclass =
-				// StoreUtil.getEClassFromURI(pc.getEntityName(),
+				// StoreUtil.getEClassFromURI(getMappedName(pc),
 				// getEPackages());
 				// pc.setClassName(eclass.getInstanceClassName());
 				pc.addTuplizer(EntityMode.MAP, getHbContext()
@@ -505,6 +507,7 @@ public abstract class HbDataStore {
 	protected void setComponentTuplizer(Component component, Configuration cfg) {
 		// check if the eclass exists
 		try {
+			// todo: change recognizing a component to using metadata!
 			EClass eClass = getPersistenceOptions()
 					.getEClassNameStrategy()
 					.toEClass(component.getComponentClassName(), getEPackages());
@@ -519,12 +522,14 @@ public abstract class HbDataStore {
 		// eclass
 		component.addTuplizer(EntityMode.MAP, getHbContext()
 				.getEMFComponentTuplizerClass(cfg).getName());
+		component.addTuplizer(EntityMode.POJO, getHbContext()
+				.getEMFComponentTuplizerClass(cfg).getName());
 		HbHelper.INSTANCE.registerDataStoreByComponent(this, component);
 	}
 
 	/** Returns true if the pc is contained */
 	private boolean isContained(PersistentClass pc) {
-		java.util.List<ReferenceTo> refs = referers.get(pc.getEntityName());
+		java.util.List<ReferenceTo> refs = referers.get(getMappedName(pc));
 		if (refs == null)
 			return false;
 		for (ReferenceTo rt : refs) {
@@ -606,11 +611,16 @@ public abstract class HbDataStore {
 		if (hasEContainerProp(pc))
 			return;
 
-		log.debug("Adding container mapping for " + pc.getEntityName());
+		log.debug("Adding container mapping for " + getMappedName(pc));
 		// check if there are not alreadyecontai ner features for the eclass
 
-		final EClass eclass = getPersistenceOptions().getEClassNameStrategy()
-				.toEClass(pc.getEntityName(), getEPackages());
+		final EClass eclass;
+		if (pc.getEntityName() != null) {
+			eclass = getPersistenceOptions().getEClassNameStrategy().toEClass(
+					pc.getEntityName(), getEPackages());
+		} else {
+			eclass = ERuntime.INSTANCE.getEClass(pc.getMappedClass());
+		}
 
 		// DCB: Provide a way to avoid container mappings for a particular
 		// class. You'd do this if, for example,
@@ -772,14 +782,14 @@ public abstract class HbDataStore {
 
 			// keep track which are the feature map entries
 			if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null) {
-				fmes.add(pc.getEntityName());
+				fmes.add(getMappedName(pc));
 			}
 
 			// everyone should have a list otherwise the copying of referers to
 			// super types to
 			// this type does not work
-			if (result.get(pc.getEntityName()) == null) {
-				result.put(pc.getEntityName(), new ArrayList<ReferenceTo>());
+			if (result.get(getMappedName(pc)) == null) {
+				result.put(getMappedName(pc), new ArrayList<ReferenceTo>());
 			}
 
 			final Iterator<?> propIt = pc.getPropertyIterator();
@@ -795,8 +805,12 @@ public abstract class HbDataStore {
 				final Property prop = (Property) propIt.next();
 				EClass eClass;
 				try {
-					eClass = getPersistenceOptions().getEClassNameStrategy()
-							.toEClass(pc.getEntityName(), getEPackages());
+					if (pc.getEntityName() != null) {
+						eClass = getPersistenceOptions().getEClassNameStrategy()
+								.toEClass(pc.getEntityName(), getEPackages());
+					} else {
+						eClass = ERuntime.INSTANCE.getEClass(pc.getMappedClass());
+					}
 				} catch (IllegalArgumentException e) {
 					// ignoring exception on purpose
 					eClass = null;
@@ -910,7 +924,7 @@ public abstract class HbDataStore {
 						result.put(toEntity, list);
 					}
 
-					list.add(new ReferenceTo(pc.getEntityName(), prop,
+					list.add(new ReferenceTo(getMappedName(pc), prop,
 							isContainer, isMany, toEntity));
 				} catch (StoreClassLoadException e) {
 					throw new HbMapperException(
@@ -931,6 +945,14 @@ public abstract class HbDataStore {
 		}
 
 		return result;
+	}
+
+	/** Returns either the entityname or the classname, which ever is filled */
+	private String getMappedName(PersistentClass pc) {
+		if (pc.getEntityName() != null) {
+			return pc.getEntityName();
+		}
+		return pc.getClassName();
 	}
 
 	/**
@@ -1049,6 +1071,19 @@ public abstract class HbDataStore {
 		return interceptor;
 	}
 
+	/** Returns the persistent class for a certain EObject */
+	@SuppressWarnings("unchecked")
+	public PersistentClass getPersistentClass(String entityName) {
+		final Iterator<?> it = getClassMappings();
+		while (it.hasNext()) {
+			final PersistentClass pc = (PersistentClass) it.next();
+			if (pc.getEntityName() != null && pc.getEntityName().equals(entityName)) {
+				return pc;
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * @param interceptor
 	 *            the interceptor to set
