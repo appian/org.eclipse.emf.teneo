@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalFactoryImpl.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalFactoryImpl.java,v 1.2 2007/03/29 14:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -63,7 +63,7 @@ public class RentalFactoryImpl extends EFactoryImpl implements RentalFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case RentalPackage.RENTAL_BICYCLE: return createRentalBicycle();
-			case RentalPackage.RENTAL_BUSINESS: return createRentalBusiness();
+			case RentalPackage.CURRENCY: return createCurrency();
 			case RentalPackage.RENTAL_CAR: return createRentalCar();
 			case RentalPackage.RENTAL_CONTRACT: return createRentalContract();
 			default:
@@ -132,9 +132,9 @@ public class RentalFactoryImpl extends EFactoryImpl implements RentalFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RentalBusiness createRentalBusiness() {
-		RentalBusinessImpl rentalBusiness = new RentalBusinessImpl();
-		return rentalBusiness;
+	public Currency createCurrency() {
+		CurrencyImpl currency = new CurrencyImpl();
+		return currency;
 	}
 
 	/**

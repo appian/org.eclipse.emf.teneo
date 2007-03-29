@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalFactory.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalFactory.java,v 1.2 2007/03/29 14:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -35,13 +35,13 @@ public interface RentalFactory extends EFactory {
 	RentalBicycle createRentalBicycle();
 
 	/**
-	 * Returns a new object of class '<em>Business</em>'.
+	 * Returns a new object of class '<em>Currency</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Business</em>'.
+	 * @return a new object of class '<em>Currency</em>'.
 	 * @generated
 	 */
-	RentalBusiness createRentalBusiness();
+	Currency createCurrency();
 
 	/**
 	 * Returns a new object of class '<em>Car</em>'.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalContractImpl.java,v 1.2 2007/03/28 13:57:12 mtaal Exp $
+ * $Id: RentalContractImpl.java,v 1.3 2007/03/29 14:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -15,10 +15,12 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.teneo.rental.Currency;
 import org.eclipse.emf.ecore.util.EObjectEList;
 
 import org.eclipse.emf.teneo.rental.RentalContract;
@@ -37,6 +39,7 @@ import org.eclipse.emf.teneo.rental.RentalUnit;
  *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getEndDate <em>End Date</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getCost <em>Cost</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getRentalUnits <em>Rental Units</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalContractImpl#getCurrency <em>Currency</em>}</li>
  * </ul>
  * </p>
  *
@@ -150,6 +153,16 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	 * @ordered
 	 */
 	protected EList<RentalUnit> rentalUnits = null;
+
+	/**
+	 * The cached value of the '{@link #getCurrency() <em>Currency</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrency()
+	 * @generated
+	 * @ordered
+	 */
+	protected Currency currency = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -321,6 +334,44 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Currency getCurrency() {
+		if (currency != null && currency.eIsProxy()) {
+			InternalEObject oldCurrency = (InternalEObject)currency;
+			currency = (Currency)eResolveProxy(oldCurrency);
+			if (currency != oldCurrency) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RentalPackage.RENTAL_CONTRACT__CURRENCY, oldCurrency, currency));
+			}
+		}
+		return currency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Currency basicGetCurrency() {
+		return currency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCurrency(Currency newCurrency) {
+		Currency oldCurrency = currency;
+		currency = newCurrency;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_CONTRACT__CURRENCY, oldCurrency, currency));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -334,6 +385,9 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 				return new Float(getCost());
 			case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
 				return getRentalUnits();
+			case RentalPackage.RENTAL_CONTRACT__CURRENCY:
+				if (resolve) return getCurrency();
+				return basicGetCurrency();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -363,6 +417,9 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 				getRentalUnits().clear();
 				getRentalUnits().addAll((Collection<? extends RentalUnit>)newValue);
 				return;
+			case RentalPackage.RENTAL_CONTRACT__CURRENCY:
+				setCurrency((Currency)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -390,6 +447,9 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 			case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
 				getRentalUnits().clear();
 				return;
+			case RentalPackage.RENTAL_CONTRACT__CURRENCY:
+				setCurrency((Currency)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -412,6 +472,8 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 				return isSetCost();
 			case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
 				return rentalUnits != null && !rentalUnits.isEmpty();
+			case RentalPackage.RENTAL_CONTRACT__CURRENCY:
+				return currency != null;
 		}
 		return super.eIsSet(featureID);
 	}

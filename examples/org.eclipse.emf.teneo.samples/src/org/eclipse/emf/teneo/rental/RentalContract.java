@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalContract.java,v 1.2 2007/03/28 13:57:12 mtaal Exp $
+ * $Id: RentalContract.java,v 1.3 2007/03/29 14:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.rental.RentalContract#getEndDate <em>End Date</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.rental.RentalContract#getCost <em>Cost</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.rental.RentalContract#getRentalUnits <em>Rental Units</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.rental.RentalContract#getCurrency <em>Currency</em>}</li>
  * </ul>
  * </p>
  *
@@ -211,5 +212,31 @@ public interface RentalContract extends EObject {
 	 * @generated
 	 */
 	EList<RentalUnit> getRentalUnits();
+
+	/**
+	 * Returns the value of the '<em><b>Currency</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Currency</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Currency</em>' reference.
+	 * @see #setCurrency(Currency)
+	 * @see org.eclipse.emf.teneo.rental.RentalPackage#getRentalContract_Currency()
+	 * @model
+	 * @generated
+	 */
+	Currency getCurrency();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.rental.RentalContract#getCurrency <em>Currency</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Currency</em>' reference.
+	 * @see #getCurrency()
+	 * @generated
+	 */
+	void setCurrency(Currency value);
 
 } // RentalContract

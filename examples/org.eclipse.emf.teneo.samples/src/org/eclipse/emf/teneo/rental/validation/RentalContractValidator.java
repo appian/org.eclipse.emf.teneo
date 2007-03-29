@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalContractValidator.java,v 1.1 2007/03/07 23:34:08 mtaal Exp $
+ * $Id: RentalContractValidator.java,v 1.2 2007/03/29 14:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.validation;
 
@@ -10,6 +10,7 @@ import java.util.Date;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.teneo.rental.Currency;
 import org.eclipse.emf.teneo.rental.RentalUnit;
 
 /**
@@ -26,4 +27,6 @@ public interface RentalContractValidator {
 	boolean validateEndDate(Date value);
 	boolean validateCost(float value);
 	boolean validateRentalUnits(EList<RentalUnit> value);
+
+	boolean validateCurrency(Currency value);
 }

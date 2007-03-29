@@ -2,25 +2,23 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalPackageImpl.java,v 1.2 2007/03/28 13:57:12 mtaal Exp $
+ * $Id: RentalPackageImpl.java,v 1.3 2007/03/29 14:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
 import java.util.Date;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-
+import org.eclipse.emf.teneo.rental.Currency;
 import org.eclipse.emf.teneo.rental.RentalBicycle;
 import org.eclipse.emf.teneo.rental.RentalBicycleType;
-import org.eclipse.emf.teneo.rental.RentalBusiness;
 import org.eclipse.emf.teneo.rental.RentalCar;
 import org.eclipse.emf.teneo.rental.RentalCarSize;
 import org.eclipse.emf.teneo.rental.RentalContract;
@@ -47,7 +45,7 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass rentalBusinessEClass = null;
+	private EClass currencyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,8 +197,8 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRentalBusiness() {
-		return rentalBusinessEClass;
+	public EClass getCurrency() {
+		return currencyEClass;
 	}
 
 	/**
@@ -208,8 +206,8 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRentalBusiness_Name() {
-		return (EAttribute)rentalBusinessEClass.getEStructuralFeatures().get(0);
+	public EAttribute getCurrency_Code() {
+		return (EAttribute)currencyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -282,6 +280,15 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 	 */
 	public EReference getRentalContract_RentalUnits() {
 		return (EReference)rentalContractEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRentalContract_Currency() {
+		return (EReference)rentalContractEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -378,8 +385,8 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		rentalBicycleEClass = createEClass(RENTAL_BICYCLE);
 		createEAttribute(rentalBicycleEClass, RENTAL_BICYCLE__TYPE);
 
-		rentalBusinessEClass = createEClass(RENTAL_BUSINESS);
-		createEAttribute(rentalBusinessEClass, RENTAL_BUSINESS__NAME);
+		currencyEClass = createEClass(CURRENCY);
+		createEAttribute(currencyEClass, CURRENCY__CODE);
 
 		rentalCarEClass = createEClass(RENTAL_CAR);
 		createEAttribute(rentalCarEClass, RENTAL_CAR__SIZE);
@@ -390,6 +397,7 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		createEAttribute(rentalContractEClass, RENTAL_CONTRACT__END_DATE);
 		createEAttribute(rentalContractEClass, RENTAL_CONTRACT__COST);
 		createEReference(rentalContractEClass, RENTAL_CONTRACT__RENTAL_UNITS);
+		createEReference(rentalContractEClass, RENTAL_CONTRACT__CURRENCY);
 
 		rentalUnitEClass = createEClass(RENTAL_UNIT);
 		createEAttribute(rentalUnitEClass, RENTAL_UNIT__DESCRIPTION);
@@ -442,8 +450,8 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		initEClass(rentalBicycleEClass, RentalBicycle.class, "RentalBicycle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRentalBicycle_Type(), this.getRentalBicycleType(), "type", "Standard", 1, 1, RentalBicycle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(rentalBusinessEClass, RentalBusiness.class, "RentalBusiness", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRentalBusiness_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, RentalBusiness.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(currencyEClass, Currency.class, "Currency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCurrency_Code(), theXMLTypePackage.getString(), "code", null, 1, 1, Currency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rentalCarEClass, RentalCar.class, "RentalCar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRentalCar_Size(), this.getRentalCarSize(), "size", "Small", 1, 1, RentalCar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -454,6 +462,7 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		initEAttribute(getRentalContract_EndDate(), this.getDate(), "endDate", null, 1, 1, RentalContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRentalContract_Cost(), theXMLTypePackage.getFloat(), "cost", null, 1, 1, RentalContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRentalContract_RentalUnits(), this.getRentalUnit(), null, "rentalUnits", null, 1, -1, RentalContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRentalContract_Currency(), this.getCurrency(), null, "currency", null, 0, 1, RentalContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rentalUnitEClass, RentalUnit.class, "RentalUnit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRentalUnit_Description(), theXMLTypePackage.getString(), "description", null, 1, 1, RentalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -525,14 +534,7 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 			 "baseType", "RentalBicycleType"
 		   });		
 		addAnnotation
-		  (rentalBusinessEClass, 
-		   source, 
-		   new String[] {
-			 "name", "RentalBusiness",
-			 "kind", "elementOnly"
-		   });		
-		addAnnotation
-		  (getRentalBusiness_Name(), 
+		  (getCurrency_Code(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
@@ -630,7 +632,7 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";																					
+		String source = "teneo.jpa";																				
 		addAnnotation
 		  (getRentalUnit_Description(), 
 		   source, 

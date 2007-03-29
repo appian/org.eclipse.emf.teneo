@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalBusinessImpl.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: CurrencyImpl.java,v 1.1 2007/03/29 14:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -13,49 +13,49 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.eclipse.emf.teneo.rental.RentalBusiness;
+import org.eclipse.emf.teneo.rental.Currency;
 import org.eclipse.emf.teneo.rental.RentalPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Business</b></em>'.
+ * An implementation of the model object '<em><b>Currency</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.rental.impl.RentalBusinessImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.rental.impl.CurrencyImpl#getCode <em>Code</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RentalBusinessImpl extends EObjectImpl implements RentalBusiness {
+public class CurrencyImpl extends EObjectImpl implements Currency {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String CODE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getCode() <em>Code</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected String code = CODE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RentalBusinessImpl() {
+	protected CurrencyImpl() {
 		super();
 	}
 
@@ -66,7 +66,7 @@ public class RentalBusinessImpl extends EObjectImpl implements RentalBusiness {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return RentalPackage.Literals.RENTAL_BUSINESS;
+		return RentalPackage.Literals.CURRENCY;
 	}
 
 	/**
@@ -74,8 +74,8 @@ public class RentalBusinessImpl extends EObjectImpl implements RentalBusiness {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
 	/**
@@ -83,11 +83,11 @@ public class RentalBusinessImpl extends EObjectImpl implements RentalBusiness {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
+	public void setCode(String newCode) {
+		String oldCode = code;
+		code = newCode;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.RENTAL_BUSINESS__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, RentalPackage.CURRENCY__CODE, oldCode, code));
 	}
 
 	/**
@@ -98,8 +98,8 @@ public class RentalBusinessImpl extends EObjectImpl implements RentalBusiness {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_BUSINESS__NAME:
-				return getName();
+			case RentalPackage.CURRENCY__CODE:
+				return getCode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,8 +112,8 @@ public class RentalBusinessImpl extends EObjectImpl implements RentalBusiness {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_BUSINESS__NAME:
-				setName((String)newValue);
+			case RentalPackage.CURRENCY__CODE:
+				setCode((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -127,8 +127,8 @@ public class RentalBusinessImpl extends EObjectImpl implements RentalBusiness {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_BUSINESS__NAME:
-				setName(NAME_EDEFAULT);
+			case RentalPackage.CURRENCY__CODE:
+				setCode(CODE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -142,8 +142,8 @@ public class RentalBusinessImpl extends EObjectImpl implements RentalBusiness {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RentalPackage.RENTAL_BUSINESS__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case RentalPackage.CURRENCY__CODE:
+				return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -158,10 +158,10 @@ public class RentalBusinessImpl extends EObjectImpl implements RentalBusiness {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (code: ");
+		result.append(code);
 		result.append(')');
 		return result.toString();
 	}
 
-} //RentalBusinessImpl
+} //CurrencyImpl

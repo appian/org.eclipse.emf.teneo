@@ -10,8 +10,8 @@ Package rental <http://www.eclipse.org/emf/teneo/rental>
   Class RentalBicycle -> RentalUnit
     Attribute type : RentalBicycleType<<1..1>>
 
-  Class RentalBusiness
-    Attribute name : String<<1..1>>
+  Class Currency
+    Attribute code : String<<1..1>>
 
   Class RentalCar -> RentalUnit
     Attribute size : RentalCarSize<<1..1>>
@@ -22,6 +22,7 @@ Package rental <http://www.eclipse.org/emf/teneo/rental>
     Attribute endDate : Date<<1..1>>
     Attribute cost : Float<<1..1>>
     Reference rentalUnits : RentalUnit<<1..*>>
+    Reference currency : Currency
 
   Class RentalUnit
     Attribute description : String<<1..1>>

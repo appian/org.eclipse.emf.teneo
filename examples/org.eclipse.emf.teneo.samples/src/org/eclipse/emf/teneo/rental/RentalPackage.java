@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalPackage.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalPackage.java,v 1.2 2007/03/29 14:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -127,32 +127,32 @@ public interface RentalPackage extends EPackage {
 	int RENTAL_BICYCLE_FEATURE_COUNT = RENTAL_UNIT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.RentalBusinessImpl <em>Business</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.CurrencyImpl <em>Currency</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.rental.impl.RentalBusinessImpl
-	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalBusiness()
+	 * @see org.eclipse.emf.teneo.rental.impl.CurrencyImpl
+	 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getCurrency()
 	 * @generated
 	 */
-	int RENTAL_BUSINESS = 1;
+	int CURRENCY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Code</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RENTAL_BUSINESS__NAME = 0;
+	int CURRENCY__CODE = 0;
 
 	/**
-	 * The number of structural features of the '<em>Business</em>' class.
+	 * The number of structural features of the '<em>Currency</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RENTAL_BUSINESS_FEATURE_COUNT = 1;
+	int CURRENCY_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.impl.RentalCarImpl <em>Car</em>}' class.
@@ -247,13 +247,22 @@ public interface RentalPackage extends EPackage {
 	int RENTAL_CONTRACT__RENTAL_UNITS = 4;
 
 	/**
+	 * The feature id for the '<em><b>Currency</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RENTAL_CONTRACT__CURRENCY = 5;
+
+	/**
 	 * The number of structural features of the '<em>Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RENTAL_CONTRACT_FEATURE_COUNT = 5;
+	int RENTAL_CONTRACT_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.RentalBicycleType <em>Bicycle Type</em>}' enum.
@@ -328,25 +337,25 @@ public interface RentalPackage extends EPackage {
 	EAttribute getRentalBicycle_Type();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalBusiness <em>Business</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.Currency <em>Currency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Business</em>'.
-	 * @see org.eclipse.emf.teneo.rental.RentalBusiness
+	 * @return the meta object for class '<em>Currency</em>'.
+	 * @see org.eclipse.emf.teneo.rental.Currency
 	 * @generated
 	 */
-	EClass getRentalBusiness();
+	EClass getCurrency();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.rental.RentalBusiness#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.rental.Currency#getCode <em>Code</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.emf.teneo.rental.RentalBusiness#getName()
-	 * @see #getRentalBusiness()
+	 * @return the meta object for the attribute '<em>Code</em>'.
+	 * @see org.eclipse.emf.teneo.rental.Currency#getCode()
+	 * @see #getCurrency()
 	 * @generated
 	 */
-	EAttribute getRentalBusiness_Name();
+	EAttribute getCurrency_Code();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalCar <em>Car</em>}'.
@@ -433,6 +442,17 @@ public interface RentalPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRentalContract_RentalUnits();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.rental.RentalContract#getCurrency <em>Currency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Currency</em>'.
+	 * @see org.eclipse.emf.teneo.rental.RentalContract#getCurrency()
+	 * @see #getRentalContract()
+	 * @generated
+	 */
+	EReference getRentalContract_Currency();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.rental.RentalUnit <em>Unit</em>}'.
@@ -552,22 +572,22 @@ public interface RentalPackage extends EPackage {
 		EAttribute RENTAL_BICYCLE__TYPE = eINSTANCE.getRentalBicycle_Type();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalBusinessImpl <em>Business</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.CurrencyImpl <em>Currency</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.rental.impl.RentalBusinessImpl
-		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getRentalBusiness()
+		 * @see org.eclipse.emf.teneo.rental.impl.CurrencyImpl
+		 * @see org.eclipse.emf.teneo.rental.impl.RentalPackageImpl#getCurrency()
 		 * @generated
 		 */
-		EClass RENTAL_BUSINESS = eINSTANCE.getRentalBusiness();
+		EClass CURRENCY = eINSTANCE.getCurrency();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RENTAL_BUSINESS__NAME = eINSTANCE.getRentalBusiness_Name();
+		EAttribute CURRENCY__CODE = eINSTANCE.getCurrency_Code();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalCarImpl <em>Car</em>}' class.
@@ -636,6 +656,14 @@ public interface RentalPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RENTAL_CONTRACT__RENTAL_UNITS = eINSTANCE.getRentalContract_RentalUnits();
+
+		/**
+		 * The meta object literal for the '<em><b>Currency</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RENTAL_CONTRACT__CURRENCY = eINSTANCE.getRentalContract_Currency();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.impl.RentalUnitImpl <em>Unit</em>}' class.

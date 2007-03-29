@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalSwitch.java,v 1.1 2007/03/07 23:34:08 mtaal Exp $
+ * $Id: RentalSwitch.java,v 1.2 2007/03/29 14:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.util;
 
@@ -94,9 +94,9 @@ public class RentalSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case RentalPackage.RENTAL_BUSINESS: {
-				RentalBusiness rentalBusiness = (RentalBusiness)theEObject;
-				T result = caseRentalBusiness(rentalBusiness);
+			case RentalPackage.CURRENCY: {
+				Currency currency = (Currency)theEObject;
+				T result = caseCurrency(currency);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -139,17 +139,17 @@ public class RentalSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Business</em>'.
+	 * Returns the result of interpretting the object as an instance of '<em>Currency</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Business</em>'.
+	 * @return the result of interpretting the object as an instance of '<em>Currency</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRentalBusiness(RentalBusiness object) {
+	public T caseCurrency(Currency object) {
 		return null;
 	}
 

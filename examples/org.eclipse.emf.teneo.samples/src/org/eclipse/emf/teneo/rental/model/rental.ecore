@@ -34,12 +34,8 @@
       <details key="baseType" value="RentalBicycleType"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RentalBusiness">
-    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="RentalBusiness"/>
-      <details key="kind" value="elementOnly"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="1"
+  <eClassifiers xsi:type="ecore:EClass" name="Currency">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -114,6 +110,7 @@
         <details key="name" value="rentalUnits"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currency" eType="#//Currency"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RentalUnit" abstract="true">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

@@ -22,8 +22,8 @@
     <genClasses ecoreClass="rental.ecore#//RentalBicycle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rental.ecore#//RentalBicycle/type"/>
     </genClasses>
-    <genClasses ecoreClass="rental.ecore#//RentalBusiness">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rental.ecore#//RentalBusiness/name"/>
+    <genClasses ecoreClass="rental.ecore#//Currency">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rental.ecore#//Currency/code"/>
     </genClasses>
     <genClasses ecoreClass="rental.ecore#//RentalCar">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rental.ecore#//RentalCar/size"/>
@@ -34,6 +34,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rental.ecore#//RentalContract/endDate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rental.ecore#//RentalContract/cost"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rental.ecore#//RentalContract/rentalUnits"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rental.ecore#//RentalContract/currency"/>
     </genClasses>
     <genClasses image="false" ecoreClass="rental.ecore#//RentalUnit">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rental.ecore#//RentalUnit/description"/>

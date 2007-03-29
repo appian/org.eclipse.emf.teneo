@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalAdapterFactory.java,v 1.1 2007/03/07 23:34:08 mtaal Exp $
+ * $Id: RentalAdapterFactory.java,v 1.2 2007/03/29 14:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.util;
 
@@ -76,8 +76,8 @@ public class RentalAdapterFactory extends AdapterFactoryImpl {
 				return createRentalBicycleAdapter();
 			}
 			@Override
-			public Adapter caseRentalBusiness(RentalBusiness object) {
-				return createRentalBusinessAdapter();
+			public Adapter caseCurrency(Currency object) {
+				return createCurrencyAdapter();
 			}
 			@Override
 			public Adapter caseRentalCar(RentalCar object) {
@@ -126,16 +126,16 @@ public class RentalAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.rental.RentalBusiness <em>Business</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.rental.Currency <em>Currency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.rental.RentalBusiness
+	 * @see org.eclipse.emf.teneo.rental.Currency
 	 * @generated
 	 */
-	public Adapter createRentalBusinessAdapter() {
+	public Adapter createCurrencyAdapter() {
 		return null;
 	}
 
