@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProxyValidator.java,v 1.1 2007/03/29 15:00:46 mtaal Exp $
+ * $Id: ProxyValidator.java,v 1.2 2007/03/29 15:06:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.validation;
 
@@ -18,6 +18,8 @@ public interface ProxyValidator {
 	boolean validate();
 
 	boolean validateProxyClass(String value);
+
+	boolean validateLazy(boolean value);
 
 	boolean validateProxyClass(CacheConcurrencyStrategy value);
 	boolean validateLazy(Boolean value);

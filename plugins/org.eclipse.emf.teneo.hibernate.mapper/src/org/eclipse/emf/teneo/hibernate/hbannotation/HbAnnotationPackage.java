@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationPackage.java,v 1.7 2007/03/29 15:00:46 mtaal Exp $
+ * $Id: HbAnnotationPackage.java,v 1.8 2007/03/29 15:06:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -1057,11 +1057,11 @@ public interface HbAnnotationPackage extends EPackage {
 	EAttribute getProxy_ProxyClass();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#getLazy <em>Lazy</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#isLazy <em>Lazy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Lazy</em>'.
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#getLazy()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#isLazy()
 	 * @see #getProxy()
 	 * @generated
 	 */

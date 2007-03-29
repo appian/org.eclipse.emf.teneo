@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.9 2007/03/29 15:00:46 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.10 2007/03/29 15:06:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -180,7 +180,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 			final Class<?> concreteClass = ERuntime.INSTANCE.getInstanceClass(aClass.getAnnotatedEClass());
 			if (concreteClass != null) {
 				final Proxy proxy = HbAnnotationFactory.eINSTANCE.createProxy();
-				proxy.setLazy(new Boolean(true));
+				proxy.setLazy(true);
 				if (interfaceClass != null) {
 					proxy.setProxyClass(interfaceClass.getName());
 				}

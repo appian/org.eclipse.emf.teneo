@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProxyImpl.java,v 1.1 2007/03/29 15:00:45 mtaal Exp $
+ * $Id: ProxyImpl.java,v 1.2 2007/03/29 15:06:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl#getProxyClass <em>Proxy Class</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl#getLazy <em>Lazy</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl#isLazy <em>Lazy</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,24 +73,24 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	protected String proxyClass = PROXY_CLASS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLazy() <em>Lazy</em>}' attribute.
+	 * The default value of the '{@link #isLazy() <em>Lazy</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLazy()
+	 * @see #isLazy()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Boolean LAZY_EDEFAULT = Boolean.TRUE; // TODO The default value literal "" is not valid.
+	protected static final boolean LAZY_EDEFAULT = true; // TODO The default value literal "" is not valid.
 
 	/**
-	 * The cached value of the '{@link #getLazy() <em>Lazy</em>}' attribute.
+	 * The cached value of the '{@link #isLazy() <em>Lazy</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLazy()
+	 * @see #isLazy()
 	 * @generated
 	 * @ordered
 	 */
-	protected Boolean lazy = LAZY_EDEFAULT;
+	protected boolean lazy = LAZY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -175,7 +175,7 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Boolean getLazy() {
+	public boolean isLazy() {
 		return lazy;
 	}
 
@@ -184,8 +184,8 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLazy(Boolean newLazy) {
-		Boolean oldLazy = lazy;
+	public void setLazy(boolean newLazy) {
+		boolean oldLazy = lazy;
 		lazy = newLazy;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.PROXY__LAZY, oldLazy, lazy));
@@ -205,7 +205,7 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 			case HbAnnotationPackage.PROXY__PROXY_CLASS:
 				return getProxyClass();
 			case HbAnnotationPackage.PROXY__LAZY:
-				return getLazy();
+				return isLazy() ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,7 +225,7 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 				setProxyClass((String)newValue);
 				return;
 			case HbAnnotationPackage.PROXY__LAZY:
-				setLazy((Boolean)newValue);
+				setLazy(((Boolean)newValue).booleanValue());
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -265,7 +265,7 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 			case HbAnnotationPackage.PROXY__PROXY_CLASS:
 				return PROXY_CLASS_EDEFAULT == null ? proxyClass != null : !PROXY_CLASS_EDEFAULT.equals(proxyClass);
 			case HbAnnotationPackage.PROXY__LAZY:
-				return LAZY_EDEFAULT == null ? lazy != null : !LAZY_EDEFAULT.equals(lazy);
+				return lazy != LAZY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

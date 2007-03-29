@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Proxy.java,v 1.1 2007/03/29 15:00:46 mtaal Exp $
+ * $Id: Proxy.java,v 1.2 2007/03/29 15:06:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -16,7 +16,7 @@ package org.eclipse.emf.teneo.hibernate.hbannotation;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#getProxyClass <em>Proxy Class</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#getLazy <em>Lazy</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#isLazy <em>Lazy</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,21 +68,21 @@ public interface Proxy extends HbAnnotation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Lazy</em>' attribute.
-	 * @see #setLazy(Boolean)
+	 * @see #setLazy(boolean)
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getProxy_Lazy()
 	 * @model default="true"
 	 * @generated
 	 */
-	Boolean getLazy();
+	boolean isLazy();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#getLazy <em>Lazy</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Proxy#isLazy <em>Lazy</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Lazy</em>' attribute.
-	 * @see #getLazy()
+	 * @see #isLazy()
 	 * @generated
 	 */
-	void setLazy(Boolean value);
+	void setLazy(boolean value);
 
 } // Proxy
