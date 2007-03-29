@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.14 2007/03/18 19:18:25 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.15 2007/03/29 14:53:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implements PersistableDelegateList<E> {
@@ -135,8 +135,9 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 	 * @see org.eclipse.emf.ecore.util.DelegatingEcoreEList#getFeatureID()
 	 */
     @Override
+    // todo: get rid of the override when the issue with the delegatingecorelist.getFeatureId is solved.
 	public int getFeatureID() {
-		return estructuralFeature.getFeatureID();
+   	    return owner.eClass().getFeatureID(estructuralFeature);
 	}
 
 	/** Return the delegate list without doing a load */
