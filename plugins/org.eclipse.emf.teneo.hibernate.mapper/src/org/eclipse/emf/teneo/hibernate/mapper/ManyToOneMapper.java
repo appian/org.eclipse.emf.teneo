@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.8 2007/03/29 15:00:45 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.9 2007/03/29 22:13:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -89,7 +89,8 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 					erefName, true), true, false);
 		} else {
 			// todo default false until proxies are supported
-			final HbAnnotatedEClass haClass = (HbAnnotatedEClass)paReference.getPaModel().getPAnnotated(referedTo);
+			final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference
+					.getPaModel().getPAnnotated(referedTo);
 			if (getHbmContext().isEasyEMFGenerated(
 					paReference.getAnnotatedEReference().getEContainingClass())) {
 				addFetchType(associationElement, mto.getFetch(), true);
@@ -99,10 +100,14 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 				associationElement.addAttribute("lazy", "false");
 			}
 
-			addJoinColumns(associationElement, jcs, mto.isOptional()
+			addJoinColumns(associationElement, jcs, getHbmContext()
+					.isForceOptional()
+					|| mto.isOptional()
 					|| getHbmContext().isCurrentElementFeatureMap());
 
-			associationElement.addAttribute("not-null", mto.isOptional()
+			associationElement.addAttribute("not-null", getHbmContext()
+					.isForceOptional()
+					|| mto.isOptional()
 					|| getHbmContext().isCurrentElementFeatureMap() ? "false"
 					: "true");
 		}

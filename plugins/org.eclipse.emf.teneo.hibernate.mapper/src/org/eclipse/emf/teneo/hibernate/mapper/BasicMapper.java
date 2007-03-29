@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.10 2007/03/24 11:48:00 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.11 2007/03/29 22:13:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -238,6 +238,6 @@ class BasicMapper extends AbstractPropertyMapper {
 	 * featuremapentries will have all the features of the featuremap with only one of them filled.
 	 */
 	private boolean isNullable(Basic basic, EAttribute eattr) {
-		return basic.isOptional() || getHbmContext().isCurrentElementFeatureMap();
+		return getHbmContext().isForceOptional() || basic.isOptional() || getHbmContext().isCurrentElementFeatureMap();
 	}
 }

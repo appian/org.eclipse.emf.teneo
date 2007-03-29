@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.10 2007/03/29 15:06:59 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.11 2007/03/29 22:13:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -75,6 +75,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	}
 
 	/** Adds a typedef annotation to this edatatype, if not already present */
+	@Override
 	protected void processEDataType(PAnnotatedEDataType ped) {
 		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) ped;
 		if (hed.getHbTypeDef() != null) {
@@ -119,8 +120,8 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	 * Process one to many attribute. In case collection of elements was present
 	 * use it to set target entity
 	 */
-	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute,
-			boolean forceNullable) {
+	@Override
+	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute) {
 		boolean isCollectionOfElements = (aAttribute instanceof HbAnnotatedEAttribute && null != ((HbAnnotatedEAttribute) aAttribute)
 				.getHbCollectionOfElements());
 
@@ -141,7 +142,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 			// the instance is an array or list in that case the user type is
 			// assumed
 			// to be able to handle the complete list/collection
-			super.processSingleAttribute(aAttribute, forceNullable);
+			super.processSingleAttribute(aAttribute);
 		} else if (hed != null && hed.getHbTypeDef() != null
 				&& hea.getOneToMany() == null
 				&& !aAttribute.getAnnotatedEAttribute().isMany()) {
@@ -149,9 +150,9 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 			// the instance is an array or list in that case the user type is
 			// assumed
 			// to be able to handle the complete list/collection
-			super.processSingleAttribute(aAttribute, forceNullable);
+			super.processSingleAttribute(aAttribute);
 		} else {
-			super.processOneToManyAttribute(aAttribute, forceNullable);
+			super.processOneToManyAttribute(aAttribute);
 		}
 	}
 
@@ -171,6 +172,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	}
 
 	/** Handles addition of Cache if defaultCacheStrategy is set */
+	@Override
 	protected void processClass(PAnnotatedEClass aClass) {
 		super.processClass(aClass);
 
@@ -232,8 +234,8 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	 * Ignored collection of elements on many reference, collection of elements
 	 * should be handled by method above. Adds default caching if set.
 	 */
-	protected void processOneToManyReference(PAnnotatedEReference aReference,
-			boolean forceOptional) {
+	@Override
+	protected void processOneToManyReference(PAnnotatedEReference aReference) {
 		boolean isCollectionOfElements = (aReference instanceof HbAnnotatedEReference && null != ((HbAnnotatedEReference) aReference)
 				.getHbCollectionOfElements());
 
@@ -248,7 +250,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		}
 
 		if (!isCollectionOfElements) {
-			super.processOneToManyReference(aReference, forceOptional);
+			super.processOneToManyReference(aReference);
 		}
 
 		// now handle the case of defaultCacheStrategy which is different than

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.14 2007/03/29 15:00:45 mtaal Exp $
+ * $Id: MappingContext.java,v 1.15 2007/03/29 22:13:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -113,6 +113,13 @@ public class MappingContext extends AbstractProcessingContext {
 	/** The sql case strategy */
 	private SQLCaseStrategy sqlCaseStrategy;
 
+	/** 
+	 * Set force optional, force optional is used in case a subclass is stored 
+	 * in the same table as its superclass, in this case all properties of the 
+	 * subclass are denoted as optional.
+	 */
+	private boolean forceOptional = false;
+	
 	// Options
 	private boolean alwaysVersion;
 	private boolean isMapEMapAsTrueMap;
@@ -579,5 +586,19 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	public String getIdbagIDColumnName() {
 		return idbagIDColumnName;
+	}
+
+	/**
+	 * @return the forceOptional
+	 */
+	public boolean isForceOptional() {
+		return forceOptional;
+	}
+
+	/**
+	 * @param forceOptional the forceOptional to set
+	 */
+	public void setForceOptional(boolean forceOptional) {
+		this.forceOptional = forceOptional;
 	}
 }

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.15 2007/03/29 15:00:45 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.16 2007/03/29 22:13:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -174,7 +174,10 @@ class EntityMapper extends AbstractMapper {
 				target = getHbmContext()
 						.getCurrent()
 						.addElement(hbClassName)
-						.addAttribute("name", ERuntime.INSTANCE.getInstanceClass(eclass).getName())
+						.addAttribute(
+								"name",
+								ERuntime.INSTANCE.getInstanceClass(eclass)
+										.getName())
 						.addAttribute(
 								"entity-name",
 								getHbmContext().getEClassNameStrategy()
@@ -301,6 +304,14 @@ class EntityMapper extends AbstractMapper {
 		try {
 			final List<PAnnotatedEStructuralFeature> inheritedFeatures = getHbmContext()
 					.getInheritedFeatures(entity);
+
+			getHbmContext()
+					.setForceOptional(
+							entity.getPaSuperEntity() != null
+									&& (entity.getInheritanceStrategy() == null || InheritanceType.SINGLE_TABLE_LITERAL
+											.equals(entity
+													.getInheritanceStrategy())));
+
 			getHbmContext().pushOverrideOnStack();
 			if (entity.getAttributeOverrides() != null) {
 				getHbmContext().addAttributeOverrides(
@@ -332,6 +343,7 @@ class EntityMapper extends AbstractMapper {
 				processSecondaryTables(secondaryTables, entity);
 			}
 		} finally {
+			getHbmContext().setForceOptional(false);
 			getHbmContext().setCurrentTable(null);
 			Element idElement = entityElement.element("id");
 			if (idElement == null) {
