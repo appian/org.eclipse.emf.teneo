@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.39 2007/03/29 15:00:28 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.40 2007/03/29 21:32:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -84,7 +84,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.39 $
+ * @version $Revision: 1.40 $
  */
 public class DefaultAnnotator {
 
@@ -403,6 +403,11 @@ public class DefaultAnnotator {
 			entity.setEModelElement(eclass);
 			entity.setName(getEntityName(eclass));
 			aClass.setEntity(entity);
+			
+			if (entity.getName().equals("Child2")) {
+				System.err.println("TEST");
+			}
+			
 		} else if (aClass.getEntity() != null
 				&& aClass.getEntity().getName() == null) {
 			aClass.getEntity().setName(getEntityName(eclass));
