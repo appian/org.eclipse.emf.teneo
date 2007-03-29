@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceReferenceAction.java,v 1.1 2007/03/28 13:58:33 mtaal Exp $
+ * $Id: RentalResourceReferenceAction.java,v 1.1 2007/03/29 15:00:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -47,13 +47,13 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.1 $
  */
-public class LibraryResourceReferenceAction extends AbstractTestAction {
+public class RentalResourceReferenceAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * 
 	 * @param arg0
 	 */
-	public LibraryResourceReferenceAction() {
+	public RentalResourceReferenceAction() {
 		super(RentalPackage.eINSTANCE);
 	}
 
@@ -90,8 +90,8 @@ public class LibraryResourceReferenceAction extends AbstractTestAction {
 				resource.save(bos, Collections.EMPTY_MAP);
 				
 				// now also save to a file
-				final FileOutputStream fos = new FileOutputStream("/home/mtaal/mytmp/rental.xml");
-				resource.save(fos, Collections.EMPTY_MAP);
+//				final FileOutputStream fos = new FileOutputStream("/home/mtaal/mytmp/rental.xml");
+//				resource.save(fos, Collections.EMPTY_MAP);
 				bytes = bos.toByteArray();
 		} catch (IOException e) {
 			throw new StoreTestException("IOException during save", e);

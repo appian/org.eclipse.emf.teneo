@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyLibraryAction.java,v 1.8 2007/03/04 21:18:31 mtaal Exp $
+ * $Id: LazyLibraryAction.java,v 1.9 2007/03/29 15:00:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * does not result in loaded containment elists.
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $ 
+ * @version $Revision: 1.9 $ 
 */
 public class LazyLibraryAction extends AbstractTestAction 
 {
@@ -57,7 +57,6 @@ public class LazyLibraryAction extends AbstractTestAction
 	/** Sets USE_EMF_PROXIES to true */
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.PROXY_STRATEGY, PersistenceOptions.PROXY_STRATEGY_EMF);
 		props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
 		return props;
 	}

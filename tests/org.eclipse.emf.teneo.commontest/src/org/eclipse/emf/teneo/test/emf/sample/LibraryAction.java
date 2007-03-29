@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.7 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.8 2007/03/29 15:00:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class LibraryAction extends AbstractTestAction {
 	/**
@@ -49,6 +49,7 @@ public class LibraryAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY, "READ_WRITE");
+		props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
 		return props;
 	}
 
