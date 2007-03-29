@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.14 2007/03/28 13:58:06 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.15 2007/03/29 15:00:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
-import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceReferenceAction;
+import org.eclipse.emf.teneo.test.emf.sample.RentalResourceReferenceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryValidateResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.MindMapAction;
@@ -44,14 +44,14 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class AllGenerateTests {
 	public static Test suite() {
 		MultiCfgTestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed
 				.instance().getConfigurations());
 
-		suite.addTest(new JPOXGenerateTest(LibraryResourceReferenceAction.class));
+		suite.addTest(new JPOXGenerateTest(RentalResourceReferenceAction.class));
 
 		suite.addTest(new JPOXGenerateTest(SchoolLibraryTest.testAction));
 		
