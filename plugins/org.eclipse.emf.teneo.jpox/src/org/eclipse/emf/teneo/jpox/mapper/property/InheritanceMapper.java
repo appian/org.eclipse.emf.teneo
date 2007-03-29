@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InheritanceMapper.java,v 1.6 2007/03/24 11:48:12 mtaal Exp $
+ * $Id: InheritanceMapper.java,v 1.7 2007/03/29 22:13:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class InheritanceMapper extends AbstractMapper {
@@ -46,6 +46,9 @@ public class InheritanceMapper extends AbstractMapper {
 
 	/** Sets the inheritance strategy of the aclass and handles discriminator columns etc. */
 	public void map(PAnnotatedEClass aClass, Element classElement) {
+
+		mappingContext.setForceOptional(false); // the default
+
 		Inheritance inheritance = getInheritance(aClass);
 		if (aClass.getMappedSuperclass() != null) {
 			Element inheritanceElement = classElement.addElement("inheritance");
@@ -65,6 +68,8 @@ public class InheritanceMapper extends AbstractMapper {
 				Element inheritanceElement = classElement.addElement("inheritance");
 				inheritanceElement.addAttribute("strategy", "superclass-table");
 
+				mappingContext.setForceOptional(true);
+				
 				if (aClass.getDiscriminatorValue() != null) {
 					Element discriminator = inheritanceElement.addElement("discriminator");
 					discriminator.addAttribute("value", aClass.getDiscriminatorValue().getValue());

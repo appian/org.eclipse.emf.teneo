@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.5 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.6 2007/03/29 22:13:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class BasicMapper extends AbstractMapper {
@@ -73,7 +73,7 @@ public class BasicMapper extends AbstractMapper {
 		}
  
 		// note defaults are handled by emf, so therefore no null-value=default
-		field.addAttribute("null-value", (aAttribute.getBasic().isOptional() ? "none" : "exception"));
+		field.addAttribute("null-value", (mappingContext.isForceOptional() || aAttribute.getBasic().isOptional() ? "none" : "exception"));
 		Class instanceClass = eAttribute.getEAttributeType().getInstanceClass();
 
 		if (Object.class.equals(instanceClass)) {

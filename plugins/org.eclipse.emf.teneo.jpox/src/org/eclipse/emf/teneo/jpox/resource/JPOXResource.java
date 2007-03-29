@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXResource.java,v 1.5 2007/03/28 13:58:19 mtaal Exp $
+ * $Id: JPOXResource.java,v 1.6 2007/03/29 22:13:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.resource;
@@ -29,7 +29,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 import javax.jdo.identity.SingleFieldIdentity;
-import javax.jdo.spi.JDOImplHelper;
 import javax.jdo.spi.PersistenceCapable;
 
 import org.apache.commons.logging.Log;
@@ -45,7 +44,6 @@ import org.eclipse.emf.teneo.jpox.JpoxHelper;
 import org.eclipse.emf.teneo.jpox.JpoxStoreException;
 import org.eclipse.emf.teneo.jpox.JpoxUtil;
 import org.eclipse.emf.teneo.resource.StoreResource;
-import org.jpox.AbstractPersistenceManager;
 import org.jpox.store.OID;
 import org.jpox.store.OIDFactory;
 
@@ -73,7 +71,7 @@ import org.jpox.store.OIDFactory;
  * the uri can also be used to init a jpox resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ $Date: 2007/03/28 13:58:19 $
+ * @version $Revision: 1.6 $ $Date: 2007/03/29 22:13:44 $
  */
 
 public class JPOXResource extends StoreResource {
@@ -335,9 +333,14 @@ public class JPOXResource extends StoreResource {
 		if (object == null) {
 			return null;
 		}
-		
+
 		if (object instanceof PersistenceCapable && getPersistenceManager().getObjectId(object) != null) {
-			final OID oid = OIDFactory.getInstance(object.getClass().getName(), ((SingleFieldIdentity)getPersistenceManager().getObjectId(object)).getKeyAsObject());
+			final OID oid;
+			if (getPersistenceManager().getObjectId(object) instanceof OID) {
+				oid = (OID)getPersistenceManager().getObjectId(object);
+			} else { 
+				oid = OIDFactory.getInstance(object.getClass().getName(), ((SingleFieldIdentity)getPersistenceManager().getObjectId(object)).getKeyAsObject());
+			}
 			if (oid == null) {
 				return super.getURIFragment(object);
 			}
