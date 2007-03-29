@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.38 2007/03/24 11:48:18 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.39 2007/03/29 15:00:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
@@ -83,7 +84,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  */
 public class DefaultAnnotator {
 
@@ -147,6 +148,9 @@ public class DefaultAnnotator {
 	/** Option emap as real map */
 	private boolean optionEMapAsTrueMap = true;
 
+	/** Option to fully classify class names */
+	private boolean optionAlsoMapAsClass = false;
+
 	/** Convenience link to pamodel factory */
 	private PannotationFactory aFactory = PannotationFactory.eINSTANCE;
 
@@ -170,9 +174,34 @@ public class DefaultAnnotator {
 	public synchronized void map(PAnnotatedModel annotatedModel,
 			PersistenceOptions po) {
 		setLocalOptions(po);
+
+		// if force fully classify typename then use the EModelResolver/ERuntime
+		if (optionAlsoMapAsClass) {
+			log
+					.debug("Class names are to be fully classified, registering all the "
+							+ "epackages");
+			final List<PAnnotatedEPackage> apacks = annotatedModel
+					.getPaEPackages();
+			final EPackage[] epacks = new EPackage[apacks.size()];
+			int cnt = 0;
+			for (PAnnotatedEPackage apack : apacks) {
+				epacks[cnt++] = apack.getAnnotatedEPackage();
+			}
+			ERuntime.INSTANCE.register(epacks);
+
+			// and now set the map as entity for each eclass
+			for (PAnnotatedEPackage apack : annotatedModel.getPaEPackages()) {
+				for (PAnnotatedEClass aclass : apack.getPaEClasses()) {
+					final boolean hasImplClass = null != ERuntime.INSTANCE
+							.getInstanceClass(aclass.getAnnotatedEClass());
+					aclass.setOnlyMapAsEntity(!hasImplClass);
+				}
+			}
+		}
+		// note: aclass.mapAsEntity is default true!
+
 		annotatedModel.setInitialized(true);
 		this.annotatedModel = annotatedModel;
-		// computeEntityNames();
 		for (PAnnotatedEPackage pae : annotatedModel.getPaEPackages()) {
 			processPackage(pae);
 		}
@@ -243,6 +272,10 @@ public class DefaultAnnotator {
 
 		optionEMapAsTrueMap = po.isMapEMapAsTrueMap();
 		log.debug("optionEMapAsTrueMap " + optionEMapAsTrueMap);
+
+		optionAlsoMapAsClass = po.isAlsoMapAsClass();
+		log.debug("optionAlsoMapAsClass "
+				+ optionAlsoMapAsClass);
 
 		optionMaximumSqlLength = po.getMaximumSqlNameLength();
 		log.debug("Maximum column length: " + optionMaximumSqlLength);
@@ -350,8 +383,13 @@ public class DefaultAnnotator {
 
 		log.debug("Setting the superentity of the eclass");
 		setSuperEntity(aClass);
-		final boolean isInheritanceRoot = aClass.getPaSuperEntity() == null ||
-			aClass.getPaSuperEntity().getMappedSuperclass() != null; // last thing only happens with jpox
+		final boolean isInheritanceRoot = aClass.getPaSuperEntity() == null
+				|| aClass.getPaSuperEntity().getMappedSuperclass() != null; // last
+		// thing
+		// only
+		// happens
+		// with
+		// jpox
 
 		// A not mappable type will not get an entity annotation.
 		// Even the features of non-mappable types are mapped because
@@ -359,7 +397,8 @@ public class DefaultAnnotator {
 		final boolean mappable = isMappableAnnotatedClass(aClass);
 
 		// add entity or set entity name
-		if (mappable && aClass.getEntity() == null && aClass.getEmbeddable() == null) {
+		if (mappable && aClass.getEntity() == null
+				&& aClass.getEmbeddable() == null) {
 			Entity entity = aFactory.createEntity();
 			entity.setEModelElement(eclass);
 			entity.setName(getEntityName(eclass));
@@ -432,9 +471,8 @@ public class DefaultAnnotator {
 			final Table table = aFactory.createTable();
 			table.setEModelElement(eclass);
 
-			table
-					.setName(trunc(getEntityName(eclass).replace('.', '_'),
-							false));
+			table.setName(trunc(optionEClassNameStrategy.toUniqueName(eclass)
+					.replace('.', '_'), false));
 			aClass.setTable(table);
 		} else if (aClass.getTable() != null
 				&& aClass.getTable().getName() == null) {
@@ -799,9 +837,9 @@ public class DefaultAnnotator {
 						&& eAttribute.getEAttributeType().getInstanceClass() != null
 						&& eAttribute.getEAttributeType().getInstanceClass() == String.class) {
 					column.setLength(Integer.parseInt(maxLength)); // you'll
-																	// find
-																	// parse
-																	// errors!
+					// find
+					// parse
+					// errors!
 				}
 				if (totalDigits != null) {
 					column.setPrecision(Integer.parseInt(totalDigits));
@@ -1547,10 +1585,9 @@ public class DefaultAnnotator {
 
 		if (!optionAddEntityAnnotation && aClass.getEntity() == null
 				&& aClass.getEmbeddable() == null) {
-			log
-					.debug("Entities are not added automatically and this eclass: "
-							+ aClass.getAnnotatedEClass().getName()
-							+ " does not have an entity/embeddable annotation.");
+			log.debug("Entities are not added automatically and this eclass: "
+					+ aClass.getAnnotatedEClass().getName()
+					+ " does not have an entity/embeddable annotation.");
 			return false;
 		}
 
@@ -1581,7 +1618,7 @@ public class DefaultAnnotator {
 	protected boolean mapInterfaceEClass() {
 		return false;
 	}
-	
+
 	/** Map a mapped superclass, this differs for jpox and hibernate */
 	protected boolean mapMappedSuperEClass() {
 		return true;
@@ -1706,7 +1743,10 @@ public class DefaultAnnotator {
 		return nameHere.compareTo(nameThere) > 0;
 	}
 
-	/** Returns the entity name of the eclass */
+	/**
+	 * Returns the entity name of the eclass, or the instance classname in case
+	 * the fully classified classnames should be used
+	 */
 	private String getEntityName(EClass eclass) {
 		if (eclass == null) {
 			throw new IllegalArgumentException(
@@ -1719,13 +1759,15 @@ public class DefaultAnnotator {
 		// ok, here we figure out if it is an EMap. if so, we return the
 		// destination child name, not the keyToValueEntry wrapper
 		final PAnnotatedEClass aclass = annotatedModel.getPAnnotated(eclass);
+		if (aclass == null) { // happens when the eclass is EObject itself
+			return optionEClassNameStrategy.toUniqueName(eclass);
+		}
 		if (optionEMapAsTrueMap && StoreUtil.isMapEntry(eclass)) {
 			// ok, it is an EMAp, get the annotaetd class of the child
 			EStructuralFeature feature = eclass.getEStructuralFeature("value");
 			if (feature instanceof EReference) {
-				return optionEClassNameStrategy
-						.toUniqueName(((EReference) feature)
-								.getEReferenceType());
+				return getEntityName(((EReference) feature)
+						.getEReferenceType());
 			} else {
 				return ((EAttribute) feature).getEType().getInstanceClassName();
 			}

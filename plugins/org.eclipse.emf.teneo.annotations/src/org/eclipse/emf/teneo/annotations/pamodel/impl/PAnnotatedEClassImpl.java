@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.15 2007/03/28 13:57:42 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.16 2007/03/29 15:00:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -232,6 +232,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 
 	/** The computed super pa entity */
 	private PAnnotatedEClass paSuperEntity = null;
+	
+	/** Map this type as an entity or as a concrete class */
+	private boolean mapAsEntity = true;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -1179,4 +1182,13 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		}
 	}
 
+	/** returns true if this EClass should be mapped as an entity or as a concrete class */
+	public boolean isOnlyMapAsEntity() {
+		return mapAsEntity;
+	}
+	
+	/** sets if this eclass should be mapped as an entity */
+	public void setOnlyMapAsEntity(boolean mapAsEntity) {
+		this.mapAsEntity = mapAsEntity;
+	}
 } //PAnnotatedEClassImpl

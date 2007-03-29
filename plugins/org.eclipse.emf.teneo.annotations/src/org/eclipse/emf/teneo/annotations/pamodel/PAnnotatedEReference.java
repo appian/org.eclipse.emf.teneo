@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReference.java,v 1.7 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: PAnnotatedEReference.java,v 1.8 2007/03/29 15:00:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -263,5 +263,8 @@ public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
 	 * @generated
 	 */
 	EList<PrimaryKeyJoinColumn> getPrimaryKeyJoinColumns();
+
+	/** Refers to an entity or to a concrete class */
+	boolean isRefersToAnEntity();
 
 } // PAnnotatedEReference

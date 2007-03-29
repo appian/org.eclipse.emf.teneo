@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.11 2007/03/24 11:48:18 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.12 2007/03/29 15:00:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -464,4 +464,10 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 *         type. In any other case returns SINGLE_TABLE.
 	 */
 	InheritanceType getInheritanceStrategy();
+	
+	/** returns true if this EClass should be mapped as an entity or as a concrete class */
+	boolean isOnlyMapAsEntity();
+	
+	/** sets if this eclass should be mapped as an entity */
+	void setOnlyMapAsEntity(boolean mapAsEntity);
 } // PAnnotatedEClass

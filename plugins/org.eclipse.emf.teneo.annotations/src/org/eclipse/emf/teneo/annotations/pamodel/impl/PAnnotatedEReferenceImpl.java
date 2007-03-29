@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceImpl.java,v 1.9 2007/02/28 11:55:15 mtaal Exp $
+ * $Id: PAnnotatedEReferenceImpl.java,v 1.10 2007/03/29 15:00:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
@@ -700,4 +701,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 		return super.eIsSet(featureID);
 	}
 
+	/** Refers to an entity or to a concrete class */
+	public boolean isRefersToAnEntity() {
+		final PAnnotatedEClass aClass = getPaModel().getPAnnotated(getAnnotatedEReference().getEReferenceType());
+		return aClass == null || aClass.isOnlyMapAsEntity(); // aClass can be null when the reference is to the EObject eclass itself
+	}
 } //PAnnotatedEReferenceImpl
