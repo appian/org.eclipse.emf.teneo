@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: RentalMapAsClassAction.java,v 1.1 2007/03/29 15:00:32 mtaal Exp $
+ * $Id: RentalMapAsClassAction.java,v 1.2 2007/03/29 22:13:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -24,6 +24,7 @@ import java.util.Properties;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.rental.Currency;
+import org.eclipse.emf.teneo.rental.Manufacturer;
 import org.eclipse.emf.teneo.rental.RentalBicycle;
 import org.eclipse.emf.teneo.rental.RentalBicycleType;
 import org.eclipse.emf.teneo.rental.RentalCar;
@@ -40,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests mapping an eclass as a class.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class RentalMapAsClassAction extends AbstractTestAction {
 	/**
@@ -75,6 +76,9 @@ public class RentalMapAsClassAction extends AbstractTestAction {
 			rcar.setSize(RentalCarSize.FAMILY);
 			rb.setDescription("bicycle");
 			rb.setType(RentalBicycleType.MOUNTAIN_BIKE);
+			Manufacturer m = rf.createManufacturer();
+			m.setCode("gazelle");
+			rb.setManufacturer(m);
 			rcontract.getRentalUnits().add(rcar);
 			rcontract.getRentalUnits().add(rb);
 			rcontract.setCost(4.5f);
@@ -140,7 +144,7 @@ public class RentalMapAsClassAction extends AbstractTestAction {
 		try {
 			Resource res = store.getResource();
 			res.load(Collections.EMPTY_MAP);
-			assertEquals(4, res.getContents().size());
+			assertEquals(5, res.getContents().size());
 		} catch (Exception e) {
 			throw new StoreTestException(e.getMessage(), e);
 		}

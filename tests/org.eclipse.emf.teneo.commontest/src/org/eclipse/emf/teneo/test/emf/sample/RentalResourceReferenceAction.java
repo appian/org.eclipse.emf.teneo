@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: RentalResourceReferenceAction.java,v 1.1 2007/03/29 15:00:32 mtaal Exp $
+ * $Id: RentalResourceReferenceAction.java,v 1.2 2007/03/29 22:13:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.emf.teneo.rental.Manufacturer;
 import org.eclipse.emf.teneo.rental.RentalBicycle;
 import org.eclipse.emf.teneo.rental.RentalBicycleType;
 import org.eclipse.emf.teneo.rental.RentalCar;
@@ -45,7 +46,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests references from an xml to a db resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class RentalResourceReferenceAction extends AbstractTestAction {
 	/**
@@ -70,6 +71,9 @@ public class RentalResourceReferenceAction extends AbstractTestAction {
 				rcar.setSize(RentalCarSize.FAMILY);
 				rb.setDescription("bicycle");
 				rb.setType(RentalBicycleType.MOUNTAIN_BIKE);
+				Manufacturer m = rf.createManufacturer();
+				m.setCode("gazelle");
+				rb.setManufacturer(m);
 				rcontract.getRentalUnits().add(rcar);
 				rcontract.getRentalUnits().add(rb);
 				rcontract.setCost(4.5f);

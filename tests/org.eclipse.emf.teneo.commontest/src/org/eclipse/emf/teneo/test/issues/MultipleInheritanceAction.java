@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MultipleInheritanceAction.java,v 1.5 2007/03/24 11:48:07 mtaal Exp $
+ * $Id: MultipleInheritanceAction.java,v 1.6 2007/03/29 22:13:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -27,6 +27,8 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 import testinheritance.Child;
 import testinheritance.Child2;
 import testinheritance.NameValuePair;
+import testinheritance.ParentOne;
+import testinheritance.SomeReference;
 import testinheritance.SomeResource;
 import testinheritance.TestinheritanceFactory;
 import testinheritance.TestinheritancePackage;
@@ -35,7 +37,7 @@ import testinheritance.TestinheritancePackage;
  * Tests multiple inheritance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class MultipleInheritanceAction extends AbstractTestAction {
 	/**
@@ -95,18 +97,33 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 			throw new StoreTestException("IOException", e);
 		}
 		
+		{
+			store.beginTransaction();
+			ParentOne po = TestinheritanceFactory.eINSTANCE.createParentOne();
+			po.setAnotherProperty(5);
+			store.store(po);
+			store.commitTransaction();
+		}
+		
 		// now test mappedsuperclasses
 		{
 			store.beginTransaction();
 			final Child child = TestinheritanceFactory.eINSTANCE.createChild();
+			final SomeReference sr = TestinheritanceFactory.eINSTANCE.createSomeReference();
+			sr.setName("sr");
+			child.setSomeReference(sr);
 			child.setAge(10);
 			child.setName("myName");
 			child.setTestId(4); // this is the key!
 			store.store(child);
 		}
+		
 		try {
 			store.beginTransaction();
 			final Child child = TestinheritanceFactory.eINSTANCE.createChild();
+			final SomeReference sr = TestinheritanceFactory.eINSTANCE.createSomeReference();
+			sr.setName("sr1");
+			child.setSomeReference(sr);
 			child.setAge(11);
 			child.setName("myName2");
 			child.setTestId(4); // this is the key!
@@ -121,6 +138,10 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			final Child2 child = TestinheritanceFactory.eINSTANCE.createChild2();
+			final SomeReference sr = TestinheritanceFactory.eINSTANCE.createSomeReference();
+			sr.setName("sr3");
+			store.store(sr);
+			child.setSomeReference(sr);
 			child.setAge(10);
 			child.setAnotherProperty(40);
 			child.setName("myName");
@@ -131,6 +152,10 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			final Child2 child = TestinheritanceFactory.eINSTANCE.createChild2();
+			final SomeReference sr = TestinheritanceFactory.eINSTANCE.createSomeReference();
+			sr.setName("sr2");
+			store.store(sr);
+			child.setSomeReference(sr);
 			child.setAge(11);
 			child.setAnotherProperty(41);
 			child.setName("myName2");
