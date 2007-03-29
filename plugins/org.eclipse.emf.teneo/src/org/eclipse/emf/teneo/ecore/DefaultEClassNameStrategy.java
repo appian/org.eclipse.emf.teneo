@@ -4,6 +4,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.teneo.ERuntime;
 
 /**
  * This implementation assumes that EClass names are unique. It will (de)Resolve
@@ -83,6 +84,12 @@ public class DefaultEClassNameStrategy implements EClassNameStrategy {
 				eClass = (EClass) eClassifier;
 			}
 		}
+		
+		// we didn'y find it, perhaps it is fully qualified, lets try by full class name
+		if (eClass == null) {
+			eClass = ERuntime.INSTANCE.getEClass(eClassName);
+		}
+		
 		if (eClass == null) {
 			throw new IllegalArgumentException("No EClass found using "
 					+ eClassName);

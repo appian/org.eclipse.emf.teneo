@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ERuntime.java,v 1.6 2007/02/08 23:14:41 mtaal Exp $
+ * $Id: ERuntime.java,v 1.7 2007/03/29 15:00:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * contained computations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class ERuntime {
@@ -313,6 +313,11 @@ public class ERuntime {
 		return (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
 	}
 
+	/** Returns true if the epackage is registered here */
+	public boolean isRegistered(EPackage epackage) {
+		return epackages.contains(epackage);
+	}
+	
 	/** Convenience method to easily determine which packages should be ignored */
 	private static boolean ignorePackage(EPackage epack) {
 		if (epack instanceof XMLTypePackageImpl)
@@ -338,6 +343,11 @@ public class ERuntime {
 		}
 		return (Class<?>) eclassToConcrete.get(eclass);
 	}
+	
+	/** Returns the interface class for a passed eclass */
+	public Class<?> getInterfaceClass(EClass eclass) {
+		return eclass.getInstanceClass();
+	}
 
 	/** Get the eclass for a certain class */
 	public EClass getEClass(Class<?> clazz) {
@@ -345,6 +355,17 @@ public class ERuntime {
 			return (EClass) interfaceToEClass.get(clazz);
 		}
 		return (EClass) concreteToEClass.get(clazz);
+	}
+	
+	/** Get the eclass for a certain class name */
+	public EClass getEClass(String classname) {
+		try {
+			return getEClass(Class.forName(classname));
+		} catch (ClassNotFoundException e) {
+			log.debug("Failed to retreive ECLass for name: " + classname);
+			
+			return null;
+		}
 	}
 
 	/**

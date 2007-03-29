@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.13 2007/03/18 19:18:25 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.14 2007/03/29 15:00:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -51,7 +51,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class StoreUtil {
@@ -584,6 +584,8 @@ public class StoreUtil {
 		// walk through all the classnames
 		final ArrayList<String> newPackagePathList = new ArrayList<String>();
 		newPackagePathList.add(File.pathSeparator); // add the root package
+		
+		// TODO: move this to the EModelResolver!
 		final ArrayList<Class<?>> allClasses = new ArrayList<Class<?>>(
 				ERuntime.INSTANCE.getAllInterfaces());
 		allClasses.addAll(ERuntime.INSTANCE.getAllConcreteClasses());

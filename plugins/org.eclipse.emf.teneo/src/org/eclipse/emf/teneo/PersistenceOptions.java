@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.23 2007/03/21 15:45:26 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.24 2007/03/29 15:00:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategyImpl;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 public class PersistenceOptions {
 
@@ -113,13 +113,6 @@ public class PersistenceOptions {
 	public static final String MAP_ALL_LISTS_AS_IDBAG = MAPPING_PREFIX
 			+ "map_all_lists_as_idbag";
 
-	/** The proxy strategy, can be none (no proxies, default), emf, hibernate */
-	public static final String PROXY_STRATEGY = MAPPING_PREFIX
-			+ "proxy_strategy";
-	public static final String PROXY_STRATEGY_NONE = "none";
-	public static final String PROXY_STRATEGY_EMF = "emf";
-	public static final String PROXY_STRATEGY_HIBERNATE = "hibernate";
-
 	/** Use static hibernate mapping file */
 	public static final String USE_MAPPING_FILE = MAPPING_PREFIX
 			+ "hibernate_mapping_file";
@@ -162,7 +155,7 @@ public class PersistenceOptions {
 			+ "ignore_eannotations";
 
 	/**
-	 * Map als emaps as true hibernate maps, default is false. In EMF an EMap is
+	 * Map all emaps as true hibernate maps, default is false. In EMF an EMap is
 	 * in fact an EList with Map entries. Originally Teneo maps this as a
 	 * hibernate list. In the new behavior hibernate can map the emap as a real
 	 * map. The default is false (to support previous behavior).
@@ -170,6 +163,27 @@ public class PersistenceOptions {
 	public static final String EMAP_AS_TRUE_MAP = MAPPING_PREFIX
 			+ "emap_as_true_map";
 
+	/**
+	 * This option controls if in case of hibernate also a name attribute should be added
+	 * to the class/subclass tag. By adding this a class is mapped as an entity as well as a normal class.
+	 * Also mapping as a normal class has the advantage that proxies can be used and that queries can use
+	 * actual class names and interface names.
+	 * This option is really there for backward compatibility. There are no apparent dis-advantages of 
+	 * adding a name attribute so the default of this option is true.
+	 * Note that an eclass must have an implementation class otherwise this option has no effect. 
+	 * Interfaces are for example always mapped as an entity.
+	 */
+	public static final String ALSO_MAP_AS_CLASS = MAPPING_PREFIX
+			+ "also_map_as_class";
+	
+	/** 
+	 * This option controls if as a default all classes should be proxied (for hibernate). This means that you
+	 * don't need to add a @Proxy annotation to each eclass. As a default Teneo will use the 
+	 * eclass interface as the proxy class.
+	 * When this is set to true then the option ALSO_MAP_AS_CLASS should also be true.
+	 */
+	public static final String SET_PROXY = MAPPING_PREFIX + "set_proxy";
+	
 	/**
 	 * Truncate the column name if the length is larger than this property. In
 	 * case of concatenating property names for foreign keys
@@ -232,7 +246,6 @@ public class PersistenceOptions {
 		props.setProperty(UPDATE_SCHEMA, "true");
 		props.setProperty(FETCH_CONTAINMENT_EAGERLY, "false");
 		props.setProperty(USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME, "false");
-		props.setProperty(PROXY_STRATEGY, PROXY_STRATEGY_NONE);
 		props.setProperty(SET_ENTITY_AUTOMATICALLY, "true");
 		props.setProperty(VERSION_COLUMN_NAME, "e_version");
 		props.setProperty(SQL_CASE_STRATEGY, "lowercase");
@@ -248,6 +261,8 @@ public class PersistenceOptions {
 		props.setProperty(ID_FEATURE_AS_PRIMARY_KEY, "true");
 		props.setProperty(EMAP_AS_TRUE_MAP, "true");
 		props.setProperty(ALWAYS_MAP_LIST_AS_BAG, "false");
+		props.setProperty(ALSO_MAP_AS_CLASS, "true");
+		props.setProperty(SET_PROXY, "false");
 		props.setProperty(MAP_ALL_LISTS_AS_IDBAG, "false");
 		props.setProperty(IDBAG_ID_COLUMN_NAME, "ID");
 		return props;
@@ -333,6 +348,22 @@ public class PersistenceOptions {
 	}
 
 	/**
+	 * Returns the value of the ALSO_MAP_AS_CLASS option, default is false
+	 */
+	public boolean isAlsoMapAsClass() {
+		return Boolean.valueOf(properties.getProperty(ALSO_MAP_AS_CLASS))
+				.booleanValue();
+	}
+
+	/**
+	 * Returns true if the proxy annotation should be added automatically
+	 */
+	public boolean isSetProxy() {
+		return Boolean.valueOf(properties.getProperty(SET_PROXY))
+				.booleanValue();
+	}
+
+	/**
 	 * Returns the value of the ALWAYS_MAP_LIST_AS_BAG option, default is false
 	 */
 	public boolean alwaysMapListAsBag() {
@@ -384,11 +415,6 @@ public class PersistenceOptions {
 	public boolean isUseOptimisticLocking() {
 		return Boolean.valueOf(properties.getProperty(OPTIMISTIC))
 				.booleanValue();
-	}
-
-	/** Returns the value of the UpdateSchema option, default is true */
-	public String getProxyStrategy() {
-		return properties.getProperty(PROXY_STRATEGY);
 	}
 
 	/** Returns the value of the UpdateSchema option, default is true */
