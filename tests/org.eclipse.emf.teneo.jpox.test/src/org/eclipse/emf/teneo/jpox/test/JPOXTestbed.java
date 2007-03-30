@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.38 2007/03/30 18:31:00 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.39 2007/03/30 19:50:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -190,7 +190,7 @@ public class JPOXTestbed extends Testbed {
 			fileWriter.close();
 
 			// now copy the file to the samples plugin
-			final File projectDir = mappingFile.getParentFile().getParentFile().getParentFile().getParentFile().getParentFile();
+			final File projectDir = mappingFile.getParentFile().getParentFile().getParentFile().getParentFile();
 			final File samplesProject = new File (projectDir, "org.eclipse.emf.teneo.samples");
 			final File jdoFiles = new File(samplesProject, "jdofiles");
 			if (!jdoFiles.exists()) {
