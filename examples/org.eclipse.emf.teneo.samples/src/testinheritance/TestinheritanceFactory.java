@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritanceFactory.java,v 1.1.2.3 2007/03/21 16:09:28 mtaal Exp $
+ * $Id: TestinheritanceFactory.java,v 1.1.2.4 2007/03/30 15:38:59 mtaal Exp $
  */
 package testinheritance;
 
@@ -105,6 +105,15 @@ public interface TestinheritanceFactory extends EFactory {
 	 * @generated
 	 */
 	Child2 createChild2();
+
+	/**
+	 * Returns a new object of class '<em>Some Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Some Reference</em>'.
+	 * @generated
+	 */
+	SomeReference createSomeReference();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestinheritanceSwitch.java,v 1.1.2.3 2007/03/21 16:09:28 mtaal Exp $
+ * $Id: TestinheritanceSwitch.java,v 1.1.2.4 2007/03/30 15:38:59 mtaal Exp $
  */
 package testinheritance.util;
 
@@ -148,6 +148,12 @@ public class TestinheritanceSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TestinheritancePackage.SOME_REFERENCE: {
+				SomeReference someReference = (SomeReference)theEObject;
+				Object result = caseSomeReference(someReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -284,6 +290,21 @@ public class TestinheritanceSwitch {
 	 * @generated
 	 */
 	public Object caseChild2(Child2 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Some Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Some Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseSomeReference(SomeReference object) {
 		return null;
 	}
 

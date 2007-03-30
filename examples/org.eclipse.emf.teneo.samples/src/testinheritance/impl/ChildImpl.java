@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ChildImpl.java,v 1.1.2.2 2007/03/21 16:09:27 mtaal Exp $
+ * $Id: ChildImpl.java,v 1.1.2.3 2007/03/30 15:38:59 mtaal Exp $
  */
 package testinheritance.impl;
 
@@ -10,10 +10,13 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import testinheritance.Child;
 import testinheritance.ParentTwo;
+import testinheritance.SomeReference;
 import testinheritance.TestinheritancePackage;
 
 /**
@@ -24,6 +27,7 @@ import testinheritance.TestinheritancePackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link testinheritance.impl.ChildImpl#getTestId <em>Test Id</em>}</li>
+ *   <li>{@link testinheritance.impl.ChildImpl#getSomeReference <em>Some Reference</em>}</li>
  *   <li>{@link testinheritance.impl.ChildImpl#getAge <em>Age</em>}</li>
  * </ul>
  * </p>
@@ -50,6 +54,16 @@ public class ChildImpl extends ParentZeroImpl implements Child {
 	 * @ordered
 	 */
 	protected long testId = TEST_ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSomeReference() <em>Some Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSomeReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected SomeReference someReference = null;
 
 	/**
 	 * The default value of the '{@link #getAge() <em>Age</em>}' attribute.
@@ -115,6 +129,44 @@ public class ChildImpl extends ParentZeroImpl implements Child {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SomeReference getSomeReference() {
+		if (someReference != null && someReference.eIsProxy()) {
+			InternalEObject oldSomeReference = (InternalEObject)someReference;
+			someReference = (SomeReference)eResolveProxy(oldSomeReference);
+			if (someReference != oldSomeReference) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TestinheritancePackage.CHILD__SOME_REFERENCE, oldSomeReference, someReference));
+			}
+		}
+		return someReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SomeReference basicGetSomeReference() {
+		return someReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSomeReference(SomeReference newSomeReference) {
+		SomeReference oldSomeReference = someReference;
+		someReference = newSomeReference;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestinheritancePackage.CHILD__SOME_REFERENCE, oldSomeReference, someReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public long getAge() {
 		return age;
 	}
@@ -140,6 +192,9 @@ public class ChildImpl extends ParentZeroImpl implements Child {
 		switch (featureID) {
 			case TestinheritancePackage.CHILD__TEST_ID:
 				return new Long(getTestId());
+			case TestinheritancePackage.CHILD__SOME_REFERENCE:
+				if (resolve) return getSomeReference();
+				return basicGetSomeReference();
 			case TestinheritancePackage.CHILD__AGE:
 				return new Long(getAge());
 		}
@@ -155,6 +210,9 @@ public class ChildImpl extends ParentZeroImpl implements Child {
 		switch (featureID) {
 			case TestinheritancePackage.CHILD__TEST_ID:
 				setTestId(((Long)newValue).longValue());
+				return;
+			case TestinheritancePackage.CHILD__SOME_REFERENCE:
+				setSomeReference((SomeReference)newValue);
 				return;
 			case TestinheritancePackage.CHILD__AGE:
 				setAge(((Long)newValue).longValue());
@@ -173,6 +231,9 @@ public class ChildImpl extends ParentZeroImpl implements Child {
 			case TestinheritancePackage.CHILD__TEST_ID:
 				setTestId(TEST_ID_EDEFAULT);
 				return;
+			case TestinheritancePackage.CHILD__SOME_REFERENCE:
+				setSomeReference((SomeReference)null);
+				return;
 			case TestinheritancePackage.CHILD__AGE:
 				setAge(AGE_EDEFAULT);
 				return;
@@ -189,6 +250,8 @@ public class ChildImpl extends ParentZeroImpl implements Child {
 		switch (featureID) {
 			case TestinheritancePackage.CHILD__TEST_ID:
 				return testId != TEST_ID_EDEFAULT;
+			case TestinheritancePackage.CHILD__SOME_REFERENCE:
+				return someReference != null;
 			case TestinheritancePackage.CHILD__AGE:
 				return age != AGE_EDEFAULT;
 		}
@@ -204,6 +267,7 @@ public class ChildImpl extends ParentZeroImpl implements Child {
 		if (baseClass == ParentTwo.class) {
 			switch (derivedFeatureID) {
 				case TestinheritancePackage.CHILD__TEST_ID: return TestinheritancePackage.PARENT_TWO__TEST_ID;
+				case TestinheritancePackage.CHILD__SOME_REFERENCE: return TestinheritancePackage.PARENT_TWO__SOME_REFERENCE;
 				default: return -1;
 			}
 		}
@@ -219,6 +283,7 @@ public class ChildImpl extends ParentZeroImpl implements Child {
 		if (baseClass == ParentTwo.class) {
 			switch (baseFeatureID) {
 				case TestinheritancePackage.PARENT_TWO__TEST_ID: return TestinheritancePackage.CHILD__TEST_ID;
+				case TestinheritancePackage.PARENT_TWO__SOME_REFERENCE: return TestinheritancePackage.CHILD__SOME_REFERENCE;
 				default: return -1;
 			}
 		}
