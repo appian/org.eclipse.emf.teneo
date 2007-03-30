@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.7 2007/03/28 13:58:06 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.8 2007/03/30 19:05:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.issues;
@@ -23,7 +23,6 @@ import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.jpox.test.generate.JPOXGenerateTest;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.issues.AbstractReferenceAction;
-import org.eclipse.emf.teneo.test.issues.AgilAction;
 import org.eclipse.emf.teneo.test.issues.BagDuplicateAction;
 import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.InheritanceAction;
@@ -36,14 +35,12 @@ import org.eclipse.emf.teneo.test.issues.SimplenmAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class AllGenerateTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for issues", JPOXTestbed.instance().getConfigurations());
-
-		suite.addTest(new JPOXGenerateTest(AgilAction.class));
 
 		suite.addTest(new JPOXGenerateTest(MultipleInheritanceAction.class));
 
