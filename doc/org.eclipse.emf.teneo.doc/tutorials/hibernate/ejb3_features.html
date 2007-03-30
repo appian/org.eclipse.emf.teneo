@@ -31,12 +31,30 @@
 <div>
 <a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
 </div>
-</td><td valign="top" align="right">
+</td><td width="10%" valign="top" align="right">
 <div class="right" align="right" id="login">
-<form target="_blank" action="http://www.google.com/search" method="get">
-<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
-		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+<table>
+<tr>
+<td>
+<form target="_top" action="http://www.google.com/custom" method="get">
+<table bgcolor="#ffffff" border="0">
+<tr>
+<td height="32" align="right" valign="top" nowrap="nowrap"><a href="http://www.google.com/"><img align="middle" alt="Google" border="0" src="http://www.google.com/logos/Logo_25wht.gif"></a></td><td nowrap="nowrap"><input value="www.elver.org" name="domains" type="hidden"><label style="display: none" for="sbi">Enter your search terms</label><input id="sbi" value="" maxlength="255" size="25" name="q" type="text"><label style="display: none" for="sbb">Submit search form</label><input id="sbb" value="Search" name="sa" type="submit"></td>
+</tr>
+<tr>
+<td></td><td>
+<table>
+<tr>
+<td><input id="ss0" value="" checked name="sitesearch" type="radio"><label title="Search the Web" for="ss0"><font color="#000000" size="-3">Web</font></label></td><td><input id="ss1" value="www.elver.org" name="sitesearch" type="radio"><label title="Search www.elver.org" for="ss1"><font color="#000000" size="-3">www.elver.org</font></label></td>
+</tr>
+</table>
+<input value="pub-8611581199716573" name="client" type="hidden"><input value="1" name="forid" type="hidden"><input value="ISO-8859-1" name="ie" type="hidden"><input value="ISO-8859-1" name="oe" type="hidden"><input value="active" name="safe" type="hidden"><input value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1" name="cof" type="hidden"><input value="en" name="hl" type="hidden"></td>
+</tr>
+</table>
 </form>
+</td>
+</tr>
+</table>
 </div>
 </td>
 </tr>
@@ -422,6 +440,8 @@
 				
 <li>IdBag</li>
 				
+<li>Proxy (limited testing done)</li>
+				
 <li>Type (on EAttribute)</li>
 				
 <li>TypeDef (on EDataType)</li>
@@ -434,12 +454,12 @@
 		
 </div>
 		
-<a name="N100D3"></a><a name="Annotation+notes"></a>
+<a name="N100D6"></a><a name="Annotation+notes"></a>
 <div class="h3">
 <h3>Annotation notes</h3>
 			
 			
-<a name="N100D9"></a><a name="edatatype"></a>
+<a name="N100DC"></a><a name="edatatype"></a>
 <div class="h4">
 <h4>Annotations on EDataType</h4>
 <p>Every JPA annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
@@ -449,7 +469,7 @@
 			and the EDataType have the same annotation then the annotation on the EAttribute is used.</p>
 </div>
 			
-<a name="N100E2"></a><a name="transient"></a>
+<a name="N100E5"></a><a name="transient"></a>
 <div class="h4">
 <h4>Transient on EClass</h4>
 <p>The Transient annotation can also be used on an EClass. This prevents an EClass from being mapped and be persisted.</p>
@@ -458,7 +478,7 @@
 </div>
 		
 		
-<a name="N100EF"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
+<a name="N100F2"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
 <div class="h4">
 <h4>Unique annotation added to OneToMany to force a join table for 1:n relations</h4>
 <p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
@@ -480,7 +500,7 @@
 </div>
 		
 		
-<a name="N10103"></a><a name="indexed"></a>
+<a name="N10106"></a><a name="indexed"></a>
 <div class="h4">
 <h4>Indexed Annotation</h4>
 <p>The http://annotation.elver.org/Indexed annotation can be used to signal to Elver that a certain association does
@@ -490,7 +510,7 @@
 </div>
 			
 			
-<a name="N10110"></a><a name="EmbeddedID+annotation"></a>
+<a name="N10113"></a><a name="EmbeddedID+annotation"></a>
 <div class="h4">
 <h4>EmbeddedID annotation</h4>
 <p>EmbeddedID lets you use an embedded class as an entity's composite primary key.</p>
@@ -502,7 +522,7 @@
 </div>
 			
 			
-<a name="N10121"></a><a name="lob_notes"></a>
+<a name="N10124"></a><a name="lob_notes"></a>
 <div class="h4">
 <h4>Lob annotation</h4>
 <p>
@@ -526,7 +546,7 @@
 				</pre>
 </div>
 						
-<a name="N10135"></a><a name="EMF+ID+Attribute"></a>
+<a name="N10138"></a><a name="EMF+ID+Attribute"></a>
 <div class="h4">
 <h4>EMF ID Attribute</h4>
 <p>When an eattribute has its ID property set to true and there is no @Id annotated eattribute in the 
@@ -534,7 +554,7 @@
 			<a href="options.html">ID_FEATURE_AS_PRIMARY_KEY</a>.</p>
 </div>
 			
-<a name="N10142"></a><a name="Extra+CASCADE+type%3A+NONE"></a>
+<a name="N10145"></a><a name="Extra+CASCADE+type%3A+NONE"></a>
 <div class="h4">
 <h4>Extra CASCADE type: NONE</h4>
 <p>Teneo will automatically set the cascade annotation when no cascade annotation has been set on an 

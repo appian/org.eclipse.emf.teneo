@@ -31,12 +31,30 @@
 <div>
 <a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
 </div>
-</td><td valign="top" align="right">
+</td><td width="10%" valign="top" align="right">
 <div class="right" align="right" id="login">
-<form target="_blank" action="http://www.google.com/search" method="get">
-<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
-		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+<table>
+<tr>
+<td>
+<form target="_top" action="http://www.google.com/custom" method="get">
+<table bgcolor="#ffffff" border="0">
+<tr>
+<td height="32" align="right" valign="top" nowrap="nowrap"><a href="http://www.google.com/"><img align="middle" alt="Google" border="0" src="http://www.google.com/logos/Logo_25wht.gif"></a></td><td nowrap="nowrap"><input value="www.elver.org" name="domains" type="hidden"><label style="display: none" for="sbi">Enter your search terms</label><input id="sbi" value="" maxlength="255" size="25" name="q" type="text"><label style="display: none" for="sbb">Submit search form</label><input id="sbb" value="Search" name="sa" type="submit"></td>
+</tr>
+<tr>
+<td></td><td>
+<table>
+<tr>
+<td><input id="ss0" value="" checked name="sitesearch" type="radio"><label title="Search the Web" for="ss0"><font color="#000000" size="-3">Web</font></label></td><td><input id="ss1" value="www.elver.org" name="sitesearch" type="radio"><label title="Search www.elver.org" for="ss1"><font color="#000000" size="-3">www.elver.org</font></label></td>
+</tr>
+</table>
+<input value="pub-8611581199716573" name="client" type="hidden"><input value="1" name="forid" type="hidden"><input value="ISO-8859-1" name="ie" type="hidden"><input value="ISO-8859-1" name="oe" type="hidden"><input value="active" name="safe" type="hidden"><input value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1" name="cof" type="hidden"><input value="en" name="hl" type="hidden"></td>
+</tr>
+</table>
 </form>
+</td>
+</tr>
+</table>
 </div>
 </td>
 </tr>
@@ -261,6 +279,17 @@
 </li>
 <li>
 <a href="#Multiple+Inheritance+Support">Multiple Inheritance Support</a>
+<ul class="minitoc">
+<li>
+<a href="#Choosing+the+real+supertype">Choosing the real supertype</a>
+</li>
+<li>
+<a href="#Limitation">Limitation</a>
+</li>
+<li>
+<a href="#Other+inheritance+mappings%3A+single-table%2C+table-per-concrete-class%2C+implicit+polymorphism%2C+any-reference">Other inheritance mappings: single-table, table-per-concrete-class, implicit polymorphism, any-reference</a>
+</li>
+</ul>
 </li>
 <li>
 <a href="#Links+to+Inheritance-Mapping+Articles">Links to Inheritance-Mapping Articles</a>
@@ -358,16 +387,45 @@
 <p>In EMF it is possible to define multiple inheritance structures. Although Hibernate itself does not support multiple inheritance Teneo
 		does its best to map a multiple inheritance structure.</p>
 		
-<p>The following approach is followed. During the mapping the first (non-MappedSuperclass, non-interface) supertype is considered to be the real parent (for Hibernate). If the type
-		only has interface supertypes then the first one (which is not a mappedsuperclass) is chosen.  
-		The properties of the 
-		other super types are mapped together with the subclass. The other super types will have their own tables in the 
-		database but there will be no relations between the subclass table and its other superclass tables.
-		</p>
+<a name="N1005E"></a><a name="Choosing+the+real+supertype"></a>
+<div class="h4">
+<h4>Choosing the real supertype</h4>
+<p>The following approach has been implemented in Teneo. During the mapping the first (non-MappedSuperclass, non-interface) supertype is considered to be the real parent (for Hibernate). If the type
+		only has interface supertypes then the first one of these (which is not a mappedsuperclass) is chosen.  
+		The properties of the other super types are mapped together with the subclass. These other supertypes are treated as a MappedSuperclass (see the jpa/ejb3 spec). The other super types will have their own tables in the 
+		database but there will be no relations between the subclass table and its other superclass tables.</p>
+<p>See as an example the figure below, the figure illustrates how a model is translated to a relational database schema using a joined-subclass inheritance mapping strategy. 
+		The SchoolBook inherits from both Book and Asset. This is translated into a relational model
+		with SchoolBook refering to the chosen real supertype (Book) and also inheriting the value-efeature from Asset. This means that when the SchoolBook is read from the database then it will also 
+		implement the Asset interface/type and its value efeature is set correctly. On the other hand there is
+		no relation to the Asset table (see limitation below). </p>
+<p>
+<br>
+</p>
+<div align="center">
+<img class="figure" alt="Multiple Inheritance Example" src="../images/Multiple Inheritance2.gif"></div>
+</div>
+		
+<a name="N10071"></a><a name="Limitation"></a>
+<div class="h4">
+<h4>Limitation</h4>
+<p>The main limitation is that references to supertypes do not (always) work correctly. Using the example above. According to the model and the generated code the AssetList can also contain SchoolBooks (as the type inherits from Asset). However, the database schema shows that a SchoolBook does not have a foreign key reference to 
+		the AssetList table. So when an AssetList with SchoolBooks is persisted the save action will fail.</p>
+</div>
+		
+<a name="N1007A"></a><a name="Other+inheritance+mappings%3A+single-table%2C+table-per-concrete-class%2C+implicit+polymorphism%2C+any-reference"></a>
+<div class="h4">
+<h4>Other inheritance mappings: single-table, table-per-concrete-class, implicit polymorphism, any-reference</h4>
+<p>The example above uses a joined-subclass strategy. With single-table basically the same limitation applies. With table-per-concrete-class other limitations apply as described 
+		in the hibernate manual (chapter 9, section 9.2).</p>
+<p>Implicit polymorphism should also work in case of multiple inheritance (querying for the Asset interface should return also SchoolBooks). This has however not been tested with Teneo.</p>
+<p>The reference in the example can also be mapped using the hibernate any-reference. By using the any-mapping an AssetList with SchoolBooks can be persisted. However, the any-mapping has as
+		main disadvantage that no referential integrity is enforced.</p>
+</div>
 		
 </div>
 		
-<a name="N10062"></a><a name="Links+to+Inheritance-Mapping+Articles"></a>
+<a name="N1008A"></a><a name="Links+to+Inheritance-Mapping+Articles"></a>
 <div class="h3">
 <h3>Links to Inheritance-Mapping Articles</h3>
 		

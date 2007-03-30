@@ -31,12 +31,30 @@
 <div>
 <a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
 </div>
-</td><td valign="top" align="right">
+</td><td width="10%" valign="top" align="right">
 <div class="right" align="right" id="login">
-<form target="_blank" action="http://www.google.com/search" method="get">
-<select name="as_sitesearch"><option value="">Search...</option><option value="www.elver.org">The elver site</option><option value="">The web</option></select> for
-		      <input size="15" name="as_q" id="query" type="text"><input name="Search" value="Go" type="submit">
+<table>
+<tr>
+<td>
+<form target="_top" action="http://www.google.com/custom" method="get">
+<table bgcolor="#ffffff" border="0">
+<tr>
+<td height="32" align="right" valign="top" nowrap="nowrap"><a href="http://www.google.com/"><img align="middle" alt="Google" border="0" src="http://www.google.com/logos/Logo_25wht.gif"></a></td><td nowrap="nowrap"><input value="www.elver.org" name="domains" type="hidden"><label style="display: none" for="sbi">Enter your search terms</label><input id="sbi" value="" maxlength="255" size="25" name="q" type="text"><label style="display: none" for="sbb">Submit search form</label><input id="sbb" value="Search" name="sa" type="submit"></td>
+</tr>
+<tr>
+<td></td><td>
+<table>
+<tr>
+<td><input id="ss0" value="" checked name="sitesearch" type="radio"><label title="Search the Web" for="ss0"><font color="#000000" size="-3">Web</font></label></td><td><input id="ss1" value="www.elver.org" name="sitesearch" type="radio"><label title="Search www.elver.org" for="ss1"><font color="#000000" size="-3">www.elver.org</font></label></td>
+</tr>
+</table>
+<input value="pub-8611581199716573" name="client" type="hidden"><input value="1" name="forid" type="hidden"><input value="ISO-8859-1" name="ie" type="hidden"><input value="ISO-8859-1" name="oe" type="hidden"><input value="active" name="safe" type="hidden"><input value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1" name="cof" type="hidden"><input value="en" name="hl" type="hidden"></td>
+</tr>
+</table>
 </form>
+</td>
+</tr>
+</table>
 </div>
 </td>
 </tr>
@@ -272,6 +290,9 @@
 <a href="#escaping">Escaping of table and column names</a>
 </li>
 <li>
+<a href="#Querying+using+eclass+names%2C+class+names+or+interface+names">Querying using eclass names, class names or interface names</a>
+</li>
+<li>
 <a href="#Lazy+loading%2Ffetching%2C+Proxy">Lazy loading/fetching, Proxy</a>
 </li>
 <li>
@@ -391,18 +412,29 @@
 		
 </div>
 		
-<a name="N10072"></a><a name="Lazy+loading%2Ffetching%2C+Proxy"></a>
+<a name="N10072"></a><a name="Querying+using+eclass+names%2C+class+names+or+interface+names"></a>
 <div class="h3">
-<h3>Lazy loading/fetching, Proxy</h3>
+<h3>Querying using eclass names, class names or interface names</h3>
 			
-<p>The Hibernate integration does not make use of the Hibernate Proxy.</p>
-			
-<p>Primitive features and single refererences are eagerly loaded. ELists are 
-		lazily loaded. In the future probably also single-references will be lazily loaded.</p>
+<p>Teneo supports hql queries which use eclass (entity) names and class and interface names. The last two are supported 
+			when the option ALSO_MAP_AS_CLASS is set to true (which is the default).</p>
 		
 </div>
 		
-<a name="N1007E"></a><a name="Automatic+creation+of+TypeDef+for+EDataType"></a>
+<a name="N1007B"></a><a name="Lazy+loading%2Ffetching%2C+Proxy"></a>
+<div class="h3">
+<h3>Lazy loading/fetching, Proxy</h3>
+			
+<p>Teneo supports Hibernate cglib proxying. To enable this the option SET_PROXY has to be set to true or the @Proxy annotation has to be set on the eclass.</p>
+			
+<p>If an entity is proxyable then the many-to-one/one-to-one relations to this entity will be set to lazy=proxy.</p>
+			
+<p>ELists are 
+		lazily loaded. </p>
+		
+</div>
+		
+<a name="N1008A"></a><a name="Automatic+creation+of+TypeDef+for+EDataType"></a>
 <div class="h3">
 <h3>Automatic creation of TypeDef for EDataType</h3>
 			
@@ -418,7 +450,7 @@
 		
 </div>
 		
-<a name="N1008A"></a><a name="Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties"></a>
+<a name="N10096"></a><a name="Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties"></a>
 <div class="h3">
 <h3>Client-Server scenario: requires explicitly modelled id and version properties</h3>
 			
@@ -430,7 +462,7 @@
 		
 </div>
 		
-<a name="N10093"></a><a name="Default+ID+Feature+Name"></a>
+<a name="N1009F"></a><a name="Default+ID+Feature+Name"></a>
 <div class="h3">
 <h3>Default ID Feature Name</h3>
 		
@@ -442,7 +474,7 @@
 		
 </div>
 		
-<a name="N100A0"></a><a name="Synthetic+ID+and+Version+properties"></a>
+<a name="N100AC"></a><a name="Synthetic+ID+and+Version+properties"></a>
 <div class="h3">
 <h3>Synthetic ID and Version properties</h3>
 			
@@ -458,7 +490,7 @@
 		
 </div>
 		
-<a name="N100B0"></a><a name="cutpaste"></a>
+<a name="N100BC"></a><a name="cutpaste"></a>
 <div class="h3">
 <h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
 			
@@ -492,7 +524,7 @@
 		
 </div>
 		
-<a name="N100D1"></a><a name="Validation"></a>
+<a name="N100DD"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
 			
@@ -528,7 +560,7 @@ public class MyValidator extends EObjectValidator
 		
 </div>
 		
-<a name="N100E5"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
+<a name="N100F1"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
 <div class="h3">
 <h3>Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</h3>
 			
