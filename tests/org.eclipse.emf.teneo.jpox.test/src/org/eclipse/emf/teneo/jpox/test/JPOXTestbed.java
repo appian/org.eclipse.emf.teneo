@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXTestbed.java,v 1.37 2007/03/28 13:58:16 mtaal Exp $
+ * $Id: JPOXTestbed.java,v 1.38 2007/03/30 18:31:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -40,7 +40,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  */
 public class JPOXTestbed extends Testbed {
 	
@@ -79,7 +79,7 @@ public class JPOXTestbed extends Testbed {
 				final File pluginsDir = new File(System.getProperty("user.dir"), "plugins");
 				final File pluginDir = Utils.getPluginDir(pluginsDir, "org.eclipse.emf.teneo.jpox.test");
 				if (pluginDir != null) {
-					RUN_BASE_DIR = pluginDir.getAbsolutePath() + File.separator + "run";
+					RUN_BASE_DIR = pluginDir.getAbsolutePath() + File.separator + "jdo";
 				} else {
 					// error will be thrown later because class initialization errors are sometimes
 					// difficult to find
