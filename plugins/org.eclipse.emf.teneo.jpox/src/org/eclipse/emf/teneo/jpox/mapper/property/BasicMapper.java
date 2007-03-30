@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.5.2.1 2007/03/05 18:07:38 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.5.2.2 2007/03/30 15:39:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5.2.1 $
+ * @version $Revision: 1.5.2.2 $
  */
 
 public class BasicMapper extends AbstractMapper {
@@ -78,7 +78,7 @@ public class BasicMapper extends AbstractMapper {
 		}
 
 		// note defaults are handled by emf, so therefore no null-value=default
-		field.addAttribute("null-value", (aAttribute.getBasic().isOptional() ? "none" : "exception"));
+		field.addAttribute("null-value", (mappingContext.isForceOptional() || aAttribute.getBasic().isOptional() ? "none" : "exception"));
 		final Class instanceClass = eAttribute.getEAttributeType().getInstanceClass();
 		final EDataType edatatype = eAttribute.getEAttributeType();
 

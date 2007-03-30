@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.7 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.7.2.1 2007/03/30 15:39:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.7.2.1 $
  */
 
 public class OneToOneMapper extends AssociationMapper {
@@ -66,7 +66,7 @@ public class OneToOneMapper extends AssociationMapper {
 		// - its depedent child is deleted, the reference from o to the child is nullified
 		// - exception is thrown before o can be deleted that reference to child is null
 		// maybe required dependent is an uncommon model.
-		boolean setNullable = aReference.getOneToOne().isOptional() || eReference.getEOpposite() != null
+		boolean setNullable = mappingContext.isForceOptional() || aReference.getOneToOne().isOptional() || eReference.getEOpposite() != null
 				|| cascadeRemove;
 		field.addAttribute("null-value", setNullable ? "none" : "exception");
 

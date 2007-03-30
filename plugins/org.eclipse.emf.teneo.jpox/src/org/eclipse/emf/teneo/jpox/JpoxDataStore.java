@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.9.2.2 2007/03/24 11:55:51 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.9.2.3 2007/03/30 15:39:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -102,7 +102,7 @@ import org.w3c.dom.NodeList;
  * contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9.2.2 $ $Date: 2007/03/24 11:55:51 $
+ * @version $Revision: 1.9.2.3 $ $Date: 2007/03/30 15:39:04 $
  */
 
 public class JpoxDataStore {
@@ -210,8 +210,8 @@ public class JpoxDataStore {
 		classNameList.append(",");
 		classNameList.append(AnyFeatureMapEntry.class.getName());
 
-		properties.setProperty("org.jpox.autoStartMechanism", "Classes");
-		properties.setProperty("org.jpox.autoStartClassNames", classNameList.toString());
+		properties.setProperty(PMFConfiguration.AUTO_START_MECHANISM_PROPERTY, "Classes");
+		properties.setProperty(PMFConfiguration.AUTO_START_CLASS_NAMES_PROPERTY, classNameList.toString());
 
 		// and then create a pmf which does all the work but does not check the schema all the time
 		pmf = JpoxHelper.INSTANCE.getPMFCreator().getPersistenceManagerFactory(properties);
@@ -550,7 +550,9 @@ public class JpoxDataStore {
 				// find the package name by going one level up.
 				String packageName = ((Element) classElement.getParentNode()).getAttribute("name");
 				className = ClassUtils.createFullClassName(packageName, className);
-				result.add(className);
+				if (!result.contains(className)) {
+					result.add(className);
+				}
 			}
 		}
 		return result;

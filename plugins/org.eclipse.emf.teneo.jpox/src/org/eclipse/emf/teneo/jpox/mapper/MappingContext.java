@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.5 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: MappingContext.java,v 1.5.2.1 2007/03/30 15:39:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.jpox.mapper.property.TableMapper;
  * Contains instances of the mappers used.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.5.2.1 $
  */
 
 public class MappingContext extends AbstractProcessingContext {
@@ -117,6 +117,9 @@ public class MappingContext extends AbstractProcessingContext {
 	/** The epackages for which this is all done */
 	private EPackage[] epackages;
 	
+	/** Force optional, in case of singletable */
+	private boolean forceOptional = false;
+
 	/** The constructor, creates all mappers etc. */
 	public MappingContext(EClassNameStrategy eclassNameStrategy) {
 		this.eclassNameStrategy = eclassNameStrategy;
@@ -287,5 +290,19 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	public void setEpackages(EPackage[] epackages) {
 		this.epackages = epackages;
+	}
+
+	/**
+	 * @return the forceOptional
+	 */
+	public boolean isForceOptional() {
+		return forceOptional;
+	}
+
+	/**
+	 * @param forceOptional the forceOptional to set
+	 */
+	public void setForceOptional(boolean forceOptional) {
+		this.forceOptional = forceOptional;
 	}
 }

@@ -11,18 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InheritanceMapper.java,v 1.5.2.1 2007/03/24 11:55:50 mtaal Exp $
+ * $Id: InheritanceMapper.java,v 1.5.2.2 2007/03/30 15:39:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
 
-import java.util.Iterator;
-import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.annotations.mapper.StoreMappingException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
@@ -35,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5.2.1 $
+ * @version $Revision: 1.5.2.2 $
  */
 
 public class InheritanceMapper extends AbstractMapper {
@@ -49,6 +45,9 @@ public class InheritanceMapper extends AbstractMapper {
 
 	/** Sets the inheritance strategy of the aclass and handles discriminator columns etc. */
 	public void map(PAnnotatedEClass aClass, Element classElement) {
+
+		mappingContext.setForceOptional(false); // the default
+
 		EClass eClass = aClass.getAnnotatedEClass();
 		Inheritance inheritance = getInheritance(aClass);
 		if (aClass.getMappedSuperclass() != null) {
@@ -65,6 +64,8 @@ public class InheritanceMapper extends AbstractMapper {
 			if (aClass.getPaSuperEntity() != null && aClass.getPaSuperEntity().getMappedSuperclass() == null) { // superclass for a subclass
 
 				log.debug("Has superclasses therefore: superclass-table");
+
+				mappingContext.setForceOptional(true);
 
 				Element inheritanceElement = classElement.addElement("inheritance");
 				inheritanceElement.addAttribute("strategy", "superclass-table");
