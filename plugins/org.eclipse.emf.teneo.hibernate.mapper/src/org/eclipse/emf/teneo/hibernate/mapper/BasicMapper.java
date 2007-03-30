@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.11 2007/03/29 22:13:57 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.12 2007/03/30 19:52:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -83,9 +83,9 @@ class BasicMapper extends AbstractPropertyMapper {
 		propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
 		addColumns(propElement, eAttribute.getName(), getColumns(paAttribute), getHbmContext()
 				.isCurrentElementFeatureMap()
-				|| isNullable(basic, eAttribute), true);
+				|| isNullable(basic, paAttribute), true);
 		// todo check: not-null is also set in the call to addcolumns, decide were to do what!
-		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
+		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
 		setType(paAttribute, propElement);
 	}
 
@@ -113,9 +113,9 @@ class BasicMapper extends AbstractPropertyMapper {
 		propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
 		addColumns(propElement, eAttribute.getName(), getColumns(paAttribute), getHbmContext()
 				.isCurrentElementFeatureMap()
-				|| isNullable(basic, eAttribute), true);
+				|| isNullable(basic, paAttribute), true);
 		// todo check: not-null is also set in the call to addcolumns, decide were to do what!
-		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
+		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
 
 		if ((hed != null && hed.getHbTypeDef() != null) || hea.getHbType() != null) {
 			setType(paAttribute, propElement);
@@ -141,8 +141,8 @@ class BasicMapper extends AbstractPropertyMapper {
 
 		propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
 		addColumns(propElement, paAttribute.getAnnotatedEAttribute().getName(), getColumns(paAttribute),
-				getHbmContext().isCurrentElementFeatureMap() || isNullable(basic, eAttribute), true);
-		propElement.addAttribute("not-null", isNullable(basic, eAttribute) ? "false" : "true");
+				getHbmContext().isCurrentElementFeatureMap() || isNullable(basic, paAttribute), true);
+		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
 		setType(paAttribute, propElement);
 	}
 
@@ -165,8 +165,8 @@ class BasicMapper extends AbstractPropertyMapper {
 		Enumerated enumerated = paAttribute.getEnumerated();
 
 		propElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(basic.getFetch()) ? "true" : "false");
-		propElement.addAttribute("not-null", isNullable(basic, eattr) ? "false" : "true");
-		addColumns(propElement, eattr.getName(), columns, isNullable(basic, eattr)
+		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
+		addColumns(propElement, eattr.getName(), columns, isNullable(basic, paAttribute)
 				|| getHbmContext().isCurrentElementFeatureMap(), true);
 
 		// if an entity then add the special things
@@ -237,7 +237,8 @@ class BasicMapper extends AbstractPropertyMapper {
 	 * A prop is nullable if the basic is optional or the feature is part of a featuremap. The last reason is because
 	 * featuremapentries will have all the features of the featuremap with only one of them filled.
 	 */
-	private boolean isNullable(Basic basic, EAttribute eattr) {
-		return getHbmContext().isForceOptional() || basic.isOptional() || getHbmContext().isCurrentElementFeatureMap();
+	private boolean isNullable(Basic basic, PAnnotatedEAttribute aattr) {
+		return getHbmContext().isForceOptional() || basic.isOptional() || getHbmContext().isCurrentElementFeatureMap()
+			&& (aattr.getColumn() == null || aattr.getColumn().isNullable());
 	}
 }
