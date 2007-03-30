@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.8.2.1 2007/03/18 22:34:33 mtaal Exp $
+ * $Id: MappingContext.java,v 1.8.2.2 2007/03/30 15:38:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8.2.1 $
+ * @version $Revision: 1.8.2.2 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -109,6 +109,9 @@ public class MappingContext extends AbstractProcessingContext {
 	private SQLCaseStrategy sqlCaseStrategy;
 
 	private boolean alwaysVersion;
+	
+	/** Force to null, is used in case of single-table to nullable subclass fields */
+	private boolean forceNullable = false;
 
 	/** The constructor */
 	public MappingContext() {
@@ -528,5 +531,19 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	public void setCurrentEFeature(EStructuralFeature currentEFeature) {
 		this.currentEFeature = currentEFeature;
+	}
+
+	/**
+	 * @return the forceNullable
+	 */
+	public boolean isForceNullable() {
+		return forceNullable;
+	}
+
+	/**
+	 * @param forceNullable the forceNullable to set
+	 */
+	public void setForceNullable(boolean forceNullable) {
+		this.forceNullable = forceNullable;
 	}
 }

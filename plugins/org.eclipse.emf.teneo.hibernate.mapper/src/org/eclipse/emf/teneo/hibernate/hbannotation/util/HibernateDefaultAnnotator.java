@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.4.2.2 2007/03/24 11:55:52 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.4.2.3 2007/03/30 15:38:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -96,7 +96,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	/**
 	 * Process one to many attribute. In case collection of elements was present use it to set target entity
 	 */
-	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute, boolean forceNullable) {
+	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute) {
 		boolean isCollectionOfElements = (aAttribute instanceof HbAnnotatedEAttribute && null != ((HbAnnotatedEAttribute) aAttribute)
 				.getHbCollectionOfElements());
 
@@ -113,15 +113,15 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 			// assume this to be a single attribute, we can get here when
 			// the instance is an array or list in that case the user type is assumed
 			// to be able to handle the complete list/collection
-			super.processSingleAttribute(aAttribute, forceNullable);
+			super.processSingleAttribute(aAttribute);
 		} else if (hed != null && hed.getHbTypeDef() != null && hea.getOneToMany() == null
 				&& !aAttribute.getAnnotatedEAttribute().isMany()) {
 			// assume this to be a single attribute, we can get here when
 			// the instance is an array or list in that case the user type is assumed
 			// to be able to handle the complete list/collection
-			super.processSingleAttribute(aAttribute, forceNullable);
+			super.processSingleAttribute(aAttribute);
 		} else {
-			super.processOneToManyAttribute(aAttribute, forceNullable);
+			super.processOneToManyAttribute(aAttribute);
 		}
 	}
 
@@ -173,11 +173,11 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	 * Ignored collection of elements on many reference, collection of elements should be handled by method above. Adds
 	 * default caching if set.
 	 */
-	protected void processOneToManyReference(PAnnotatedEReference aReference, boolean forceOptional) {
+	protected void processOneToManyReference(PAnnotatedEReference aReference) {
 		boolean isCollectionOfElements = (aReference instanceof HbAnnotatedEReference && null != ((HbAnnotatedEReference) aReference)
 				.getHbCollectionOfElements());
 		if (!isCollectionOfElements) {
-			super.processOneToManyReference(aReference, forceOptional);
+			super.processOneToManyReference(aReference);
 		}
 
 		// now handle the case of defaultCacheStrategy which is different than none

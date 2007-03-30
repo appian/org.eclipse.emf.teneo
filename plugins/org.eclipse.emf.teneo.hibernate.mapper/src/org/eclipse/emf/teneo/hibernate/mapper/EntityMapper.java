@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.8.2.1 2007/03/21 16:09:30 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.8.2.2 2007/03/30 15:38:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -238,6 +238,14 @@ class EntityMapper extends AbstractMapper {
 		}
 
 		try {
+
+			getHbmContext()
+					.setForceNullable(
+							entity.getPaSuperEntity() != null
+									&& (entity.getInheritanceStrategy() == null || InheritanceType.SINGLE_TABLE_LITERAL
+											.equals(entity
+													.getInheritanceStrategy())));
+
 			final List multipleInheritanceFeatures = getHbmContext().getInheritedFeatures(entity);
 			getHbmContext().pushOverrideOnStack();
 			if (entity.getAttributeOverrides() != null) {
@@ -262,6 +270,7 @@ class EntityMapper extends AbstractMapper {
 				processSecondaryTables(secondaryTables, entity);
 			}
 		} finally {
+			getHbmContext().setForceNullable(false);
 			getHbmContext().setCurrentTable(null);
 			Element idElement = entityElement.element("id");
 			if (idElement == null) {
