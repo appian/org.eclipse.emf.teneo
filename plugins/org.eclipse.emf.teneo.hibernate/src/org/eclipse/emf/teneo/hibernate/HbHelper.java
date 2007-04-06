@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.6 2007/03/20 23:33:48 mtaal Exp $
+ * $Id: HbHelper.java,v 1.7 2007/04/06 21:44:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -36,7 +36,7 @@ import org.hibernate.mapping.PersistentClass;
  * EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class HbHelper {
 	/** The logger */
@@ -121,6 +121,7 @@ public class HbHelper {
 			emfds.close();
 		}
 		emfDataStores.clear();
+		dataStoreByPersistentClass.clear();
 	}
 
 	/** Deregisters a session factory from the registry */
