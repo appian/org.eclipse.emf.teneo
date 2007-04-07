@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.12 2007/03/28 13:58:19 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.13 2007/04/07 12:42:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -101,7 +101,7 @@ import org.w3c.dom.NodeList;
  * not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $ $Date: 2007/03/28 13:58:19 $
+ * @version $Revision: 1.13 $ $Date: 2007/04/07 12:42:47 $
  */
 
 public class JpoxDataStore {
@@ -200,8 +200,8 @@ public class JpoxDataStore {
 			throw new JpoxStoreException(
 					"Specific properties have not been set");
 
-		ERuntime.INSTANCE.register(getEPackages()); // ,
-		// PersistenceCapable.class);
+		// set the eruntime as the emodel resolver!
+		ERuntime.setAsEModelResolver();
 
 		// the jdo file list
 		String suffix = properties

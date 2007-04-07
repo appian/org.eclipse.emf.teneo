@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: NamingHandler.java,v 1.3 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: NamingHandler.java,v 1.4 2007/04/07 12:42:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.ERuntime;
  * databases.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class NamingHandler {
@@ -94,7 +94,7 @@ public class NamingHandler {
 	 * used by emf to handle casing of feature names to java members
 	 */
 	public String correctName(MappingContext mc, EStructuralFeature efeature) {
-		Class implClass = ERuntime.INSTANCE.getInstanceClass(mc.getCurrentAClass().getAnnotatedEClass());
+		Class implClass = ERuntime.INSTANCE.getJavaClass(mc.getCurrentAClass().getAnnotatedEClass());
 		return correctName(implClass, efeature);
 	}
 }

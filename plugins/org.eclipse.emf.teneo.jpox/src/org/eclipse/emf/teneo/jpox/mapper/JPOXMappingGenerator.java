@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.11 2007/03/24 11:48:12 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.12 2007/04/07 12:42:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class JPOXMappingGenerator {
@@ -114,7 +114,7 @@ public class JPOXMappingGenerator {
 				PAnnotatedEClass aClass = (PAnnotatedEClass) aClassIterator
 						.next();
 				Class implClass = ERuntime.INSTANCE
-						.getInstanceClass((EClass) aClass.getAnnotatedElement());
+						.getJavaClass((EClass) aClass.getAnnotatedElement());
 
 				if (aClass.getEntity() == null || implClass == null)
 					continue;
@@ -179,7 +179,7 @@ public class JPOXMappingGenerator {
 		if (eclass.getName().compareTo("DocumentRoot") == 0)
 			return;
 
-		Class implClass = ERuntime.INSTANCE.getInstanceClass(eclass);
+		Class implClass = ERuntime.INSTANCE.getJavaClass(eclass);
 		if (implClass == null) {
 			log.warn("EClass " + eclass.getName()
 					+ " does not have a concrete representation. "

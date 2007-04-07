@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassFeatureMapper.java,v 1.6 2007/03/24 11:48:12 mtaal Exp $
+ * $Id: EClassFeatureMapper.java,v 1.7 2007/04/07 12:42:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Mapps the features of a passed annotated class, the class itself is not mapped here.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class EClassFeatureMapper extends AbstractMapper {
@@ -57,7 +57,7 @@ public class EClassFeatureMapper extends AbstractMapper {
 	public void map(PAnnotatedEClass aClass, Element classElement) {
 		log.debug("Processing aclass: " + aClass.getAnnotatedEClass().getName() + "/" + aClass.getAnnotatedElement().getName());
 		
-		final Class<?> implClass = ERuntime.INSTANCE.getInstanceClass(aClass.getAnnotatedEClass());
+		final Class<?> implClass = ERuntime.INSTANCE.getJavaClass(aClass.getAnnotatedEClass());
 
 		// collect all the features to map
 		final List<PAnnotatedEStructuralFeature> features =

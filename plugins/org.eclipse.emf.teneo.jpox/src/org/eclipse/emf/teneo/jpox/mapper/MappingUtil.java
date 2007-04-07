@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.7 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.8 2007/04/07 12:42:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class MappingUtil {
@@ -68,7 +68,7 @@ public class MappingUtil {
 		if (eClass.isInterface()) {
 			return eClass.getInstanceClass();
 		}
-		return ERuntime.INSTANCE.getInstanceClass(eClass);
+		return ERuntime.INSTANCE.getJavaClass(eClass);
 	}
 
 	/** Adds an anytype embedded element definition to the passed element */
@@ -181,7 +181,7 @@ public class MappingUtil {
 						featureResult.add(efeature);
 					}
 				} else if (onlyEObject && efeature instanceof EReference) {
-					Class implClass = ERuntime.INSTANCE.getInstanceClass(((EReference) efeature).getEReferenceType());
+					Class implClass = ERuntime.INSTANCE.getJavaClass(((EReference) efeature).getEReferenceType());
 					if (implClass != null && !result.contains(implClass.getName())) {
 						result.add(implClass.getName());
 						featureResult.add(efeature);

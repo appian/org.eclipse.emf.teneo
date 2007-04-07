@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxHelper.java,v 1.4 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: JpoxHelper.java,v 1.5 2007/04/07 12:42:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.jpox.resource.JPOXResourceFactory;
  * Is the main entry point for 'outside' users to create persistence manager factories and register EMF Data Stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class JpoxHelper {
 	/** The logger */
@@ -162,6 +162,10 @@ public class JpoxHelper {
 	/** Generate a jpox mapping for a set of epackages and options */
 	public String generateMapping(EPackage[] epackages, Properties props) {
 		log.debug("Generating mapping file passed epackages");
+
+		// set the eruntime as the emodel resolver!
+		ERuntime.setAsEModelResolver();
+
 		final PersistenceOptions po = new PersistenceOptions(props);
 		PAnnotatedModel paModel = PersistenceMappingBuilder.INSTANCE.buildMapping(epackages, po);
 		JPOXMappingGenerator jmg = new JPOXMappingGenerator(new PersistenceOptions());
