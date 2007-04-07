@@ -13,7 +13,7 @@
  *   Brian Vetter
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.15 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.16 2007/04/07 12:44:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -54,7 +54,7 @@ abstract class AbstractMapper {
 	protected PAnnotatedEReference getOtherSide(PAnnotatedEReference paReference) {
 		// TODO assuming that mappedBy coincide with opposite, check in validation
 		if (paReference.getAnnotatedEReference().getEOpposite() == null) {
-			return null;
+			return null; 
 		}
 		return paReference.getPaModel().getPAnnotated(paReference.getAnnotatedEReference().getEOpposite());
 	}
@@ -226,6 +226,12 @@ abstract class AbstractMapper {
 	/** Same as above only handles multiple columns */
 	protected void addColumns(Element propertyElement, String defaultName, List<Column> columns, boolean isNullable,
 			boolean setColumnAttributesInProperty) {
+		addColumns(propertyElement, defaultName, columns, isNullable, setColumnAttributesInProperty, false);
+	} 
+	
+	/** Same as above only handles multiple columns */
+	protected void addColumns(Element propertyElement, String defaultName, List<Column> columns, boolean isNullable,
+			boolean setColumnAttributesInProperty, boolean isUnique) {
 		// if no columns set then use some default
 		if (columns.isEmpty()) {
 			final String name;
@@ -239,6 +245,7 @@ abstract class AbstractMapper {
 			final Column col = PannotationFactory.eINSTANCE.createColumn();
 			col.setName(hbmContext.trunc(name));
 			col.setNullable(isNullable);
+			col.setUnique(isUnique);
 			columns.add(col);
 		}
 		for (Column column : columns) {

@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.13 2007/03/24 11:48:00 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.14 2007/04/07 12:44:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -33,7 +33,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.ecore.DefaultEClassNameStrategy;
-import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
@@ -101,9 +100,6 @@ public class HibernateMappingGenerator {
 	 */
 	private String getEntityName(PAnnotatedEClass paClass) {
 		final EClass eclass = paClass.getAnnotatedEClass();
-		if (false && hbmContext.isEasyEMFGenerated(eclass)) {
-			return EModelResolver.instance().getJavaClass(eclass).getName();
-		}
 
 		String name = paClass.getEntity().getName();
 		if (name == null) {
@@ -121,6 +117,7 @@ public class HibernateMappingGenerator {
 		if (log.isDebugEnabled())
 			log.debug("Geneting Hibernate mapping for " + paModel);
 		try {
+			hbmContext.setPaModel(paModel);
 			hbmContext.beginDocument(createDocument());
 			initEntityNames(hbmContext, paModel);
 			processTypedefs(paModel);

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.12 2007/03/30 19:52:15 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.13 2007/04/07 12:44:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -170,34 +170,27 @@ class BasicMapper extends AbstractPropertyMapper {
 				|| getHbmContext().isCurrentElementFeatureMap(), true);
 
 		// if an entity then add the special things
-		final EClassifier eclassifier = paAttribute.getAnnotatedEAttribute().getEType();
+		final EClassifier eclassifier = eattr.getEType();
 		final HbAnnotatedEAttribute hea = (HbAnnotatedEAttribute) paAttribute;
 		final EDataType ed = (EDataType) hea.getAnnotatedEAttribute().getEType();
 		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) hea.getPaModel().getPAnnotated(ed);
 		if (hed.getHbTypeDef() != null || hea.getHbType() != null) {
 			setType(paAttribute, propElement);
-		} else if (getHbmContext().isEasyEMFGenerated(eclassifier)) {
-			final Class<?> instanceClass = getHbmContext().getImpl(eclassifier);
+		} else if (!getHbmContext().isGeneratedByEMF()) {
+			final Class<?> instanceClass = getHbmContext().getInstanceClass(eclassifier);
 			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated)).addElement("param")
-					.addAttribute("name", "enumClassName").addText(instanceClass.getName());
-		} else if (getHbmContext().isEasyEMFDynamic(eclassifier)) {
-			final Element typeElement = propElement.addElement("type").addAttribute("name",
-					hbDynamicEnumType(enumerated));
-			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
-					paAttribute.getAnnotatedEAttribute().getEType().getName());
-			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
-					paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
-		} else if (getHbmContext().isEMFGenerated(eclassifier)) {
+					.addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(instanceClass.getName());
+		} else if (getHbmContext().isGeneratedByEMF() && eclassifier.getInstanceClass() != null) {
 			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated)).addElement("param")
 					.addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
-							eattr.getEType().getInstanceClass().getName());
+							eclassifier.getInstanceClass().getName());
 		} else { // must be emf dynamic
 			final Element typeElement = propElement.addElement("type").addAttribute("name",
 					hbDynamicEnumType(enumerated));
 			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
-					paAttribute.getAnnotatedEAttribute().getEType().getName());
+					eclassifier.getName());
 			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
-					paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
+					eclassifier.getEPackage().getNsURI());
 		}
 	}
 

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.9 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: IdMapper.java,v 1.10 2007/04/07 12:44:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -23,6 +23,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
@@ -31,7 +32,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
@@ -147,7 +147,7 @@ class IdMapper extends AbstractPropertyMapper {
 				.addElement("composite-id");
 		compositeIdElement.addAttribute("name", eReference.getName());
 		final String className = getHbmContext().getInstanceClassName(
-				aClass.getPaModel(), aClass.getAnnotatedEClass());
+				aClass.getAnnotatedEClass());
 		compositeIdElement.addAttribute("class", className);
 		getHbmContext().setCurrent(compositeIdElement);
 		for (PAnnotatedEStructuralFeature aFeature : aClass
@@ -219,33 +219,30 @@ class IdMapper extends AbstractPropertyMapper {
 			usedIdElement = idElement;
 		}
 
-		addColumns(usedIdElement, eAttribute.getName(), columns, false, false);
+		// if idclass != null then this is a composite id which can not have a unique constraint
+		// on an id column
+		addColumns(usedIdElement, eAttribute.getName(), columns, false, false,
+				aClass.getIdClass() == null);  
 
 		usedIdElement.addAttribute("name", eAttribute.getName());
 		if (id.getEnumerated() == null) {
 			setType(id, usedIdElement);
 		} else { // enumerated id
-			if (getHbmContext().isEasyEMFGenerated(
-					id.getAnnotatedEAttribute().getEType())) {
-				// if the instanceclass is registered in the context then this
-				// java class is
-				// created differently
-				final String typeName;
-				if (EnumType.STRING == id.getEnumerated().getValue().getValue()) {
-					typeName = "org.elver.persistence.hibernate.type.EnumUserType";
-				} else {
-					typeName = "org.elver.persistence.hibernate.type.EnumIntegerUserType";
-				}
-
-				final Class<?> instanceClass = getHbmContext().getImpl(
-						id.getAnnotatedEAttribute().getEType());
+			final EClassifier eclassifier = id.getAnnotatedEAttribute()
+					.getEType();
+			if (!getHbmContext().isGeneratedByEMF()
+					&& !getHbmContext().isDynamic(eclassifier)) {
+				final String typeName = getEnumUserType(id.getEnumerated());
+				final Class<?> instanceClass = getHbmContext()
+						.getInstanceClass(eclassifier);
 				usedIdElement.addElement("type").addAttribute("name", typeName)
 						.addElement("param").addAttribute("name",
 								"enumClassName").addText(
 								instanceClass.getName());
-			} else if (getHbmContext().isEasyEMFDynamic(
-					id.getAnnotatedEAttribute().getEType())) {
-				throw new UnsupportedOperationException("NOT YET SUPPORTED");
+			} else if (!getHbmContext().isGeneratedByEMF()
+					&& getHbmContext().isDynamic(eclassifier)) {
+				throw new UnsupportedOperationException(
+						"DYNAMIC WITH ENUM ID NOT YET SUPPORTED");
 			} else if (id.getAnnotatedEAttribute().getEType()
 					.getInstanceClass() != null) {
 				usedIdElement.addElement("type").addAttribute("name",
@@ -306,7 +303,7 @@ class IdMapper extends AbstractPropertyMapper {
 				generatorElement.addAttribute("class", IdMapper
 						.hbGeneratorClass(generatedValue.getStrategy()));
 				if (generatedValue.getGenerator() != null) { // table
-																// generator
+					// generator
 					final TableGenerator tg = id.getPaModel()
 							.getTableGenerator(id.getAnnotatedEAttribute(),
 									generatedValue.getGenerator());

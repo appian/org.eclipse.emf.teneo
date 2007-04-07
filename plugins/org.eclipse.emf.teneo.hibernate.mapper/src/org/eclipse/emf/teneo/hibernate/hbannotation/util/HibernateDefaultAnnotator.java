@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.11 2007/03/29 22:13:57 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.12 2007/04/07 12:44:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -20,7 +20,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.DefaultAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.StoreMappingException;
@@ -29,6 +28,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
@@ -62,13 +62,14 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 
 	/** Add the proxy annotation to each class */
 	private boolean optionSetProxy = false;
-	
+
 	/** Pick up default cache strategy and continue with the rest */
 	protected void setLocalOptions(PersistenceOptions po) {
 		defaultCacheStrategy = po.getDefaultCacheStrategy();
 		optionSetProxy = po.isSetProxy();
 		if (!po.isAlsoMapAsClass() && optionSetProxy) {
-			log.warn("Option set proxy is used but the option fully classify entity names is not set to true, ignoring proxy setting");
+			log
+					.warn("Option set proxy is used but the option fully classify entity names is not set to true, ignoring proxy setting");
 			optionSetProxy = false;
 		}
 		super.setLocalOptions(po);
@@ -176,26 +177,36 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	protected void processClass(PAnnotatedEClass aClass) {
 		super.processClass(aClass);
 
+		final HbAnnotatedEClass hbClass = (HbAnnotatedEClass) aClass;
+
 		// automatically add the proxy annotation
-		if (optionSetProxy && ((HbAnnotatedEClass) aClass).getHbProxy() == null) {
-			final Class<?> interfaceClass = ERuntime.INSTANCE.getInterfaceClass(aClass.getAnnotatedEClass());
-			final Class<?> concreteClass = ERuntime.INSTANCE.getInstanceClass(aClass.getAnnotatedEClass());
+		if (optionSetProxy && hbClass.getHbProxy() == null) {
+			final Class<?> concreteClass = EModelResolver.instance()
+					.getJavaClass(aClass.getAnnotatedEClass());
 			if (concreteClass != null) {
 				final Proxy proxy = HbAnnotationFactory.eINSTANCE.createProxy();
 				proxy.setLazy(true);
-				if (interfaceClass != null) {
-					proxy.setProxyClass(interfaceClass.getName());
-				}
+				// interface class is set below.
 				((HbAnnotatedEClass) aClass).setHbProxy(proxy);
-				log.debug("Set proxy to true (" + proxy.getProxyClass() + ") for eclass " + aClass.getAnnotatedEClass().getName());
+				log.debug("Set proxy to true (" + proxy.getProxyClass()
+						+ ") for eclass "
+						+ aClass.getAnnotatedEClass().getName());
 			}
 		}
-		
-		if (((HbAnnotatedEClass) aClass).getHbProxy() != null) {
+
+		if (hbClass.getHbProxy() != null) {
 			// todo add check that there is an impl class
 			aClass.setOnlyMapAsEntity(false);
+
+			// set interfacename if not set
+			final Proxy proxy = hbClass.getHbProxy();
+			final Class<?> interfaceClass = EModelResolver.instance()
+					.getJavaInterfaceClass(aClass.getAnnotatedEClass());
+			if (interfaceClass != null) {
+				proxy.setProxyClass(interfaceClass.getName());
+			}
 		}
-		
+
 		// now handle the case of defaultCacheStrategy which is different than
 		// none
 		boolean hasCache = ((HbAnnotatedEClass) aClass).getHbCache() != null;
@@ -342,7 +353,8 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		final PAnnotatedModel model = aClass.getPaModel();
 		for (EClass superEClass : aClass.getAnnotatedEClass().getESuperTypes()) {
 			final PAnnotatedEClass x = model.getPAnnotated(superEClass);
-			if (x.getEntity() != null && x.getMappedSuperclass() == null
+			if (x.getEntity() != null
+					&& x.getMappedSuperclass() == null
 					&& (allowInterfaces || !x.getAnnotatedEClass()
 							.isInterface())) {
 				return x;
@@ -358,7 +370,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	protected boolean mapInterfaceEClass() {
 		return true;
 	}
-	
+
 	/** Map a mapped superclass, this differs for jpox and hibernate */
 	protected boolean mapMappedSuperEClass() {
 		return true;

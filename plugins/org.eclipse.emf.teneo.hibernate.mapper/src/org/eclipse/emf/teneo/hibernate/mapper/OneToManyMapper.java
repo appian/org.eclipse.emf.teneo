@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.11 2007/03/21 15:46:33 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.12 2007/04/07 12:44:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -149,8 +149,8 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		String targetName = null;
 
 		targetName = otm.getTargetEntity();
-		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(refType);
-		if (isEasyEMFGenerated || targetName == null) {
+//		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(refType);
+		if (targetName == null) {
 			targetName = getHbmContext().getEntityName(refType);
 		}
 
@@ -172,9 +172,9 @@ class OneToManyMapper extends AbstractAssociationMapper {
 			// mtm relation
 			// because an item can occur twice or more in the list.
 			// To force a jointable on a real otm a jointable annotation should be specified.
-			addManyToMany(collElement, targetName, !isEasyEMFGenerated, inverseJoinColumns, otm.isUnique());
+			addManyToMany(collElement, targetName, inverseJoinColumns, otm.isUnique());
 		} else {
-			addOneToMany(collElement, eref.getName(), targetName, !isEasyEMFGenerated);
+			addOneToMany(collElement, eref.getName(), targetName);
 		}
 	}
 
@@ -190,7 +190,6 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		// paReference.isIndexed());
 		final Element collElement = addCollectionElement(paReference);
 		final EReference eref = paReference.getAnnotatedEReference();
-		final EClass refType = eref.getEReferenceType();
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 
 		if (hbReference.getHbCache() != null) {
@@ -236,8 +235,7 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		}
 
 		String targetName = otm.getTargetEntity();
-		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(refType);
-		if (targetName == null || isEasyEMFGenerated) {
+		if (targetName == null) {
 			targetName = getHbmContext().getEntityName(eref.getEReferenceType());
 		}
 
@@ -251,9 +249,9 @@ class OneToManyMapper extends AbstractAssociationMapper {
 		} else if (jt != null) {
 			final List<JoinColumn> inverseJoinColumns = jt != null && jt.getInverseJoinColumns() != null ? jt
 					.getInverseJoinColumns() : new ArrayList<JoinColumn>();
-			addManyToMany(collElement, targetName, !isEasyEMFGenerated, inverseJoinColumns, otm.isUnique());
+			addManyToMany(collElement, targetName, inverseJoinColumns, otm.isUnique());
 		} else {
-			addOneToMany(collElement, eref.getName(), targetName, !isEasyEMFGenerated);
+			addOneToMany(collElement, eref.getName(), targetName);
 		}
 	}
 
@@ -263,14 +261,12 @@ class OneToManyMapper extends AbstractAssociationMapper {
 	 * @param collElement
 	 * @param targetEntity
 	 */
-	private void addOneToMany(Element collElement, String featureName, String targetEntity, boolean isEntity) {
+	private void addOneToMany(Element collElement, String featureName, String targetEntity) {
 		if (isEObject(targetEntity)) { // anytype
 			final Element any = collElement.addElement("many-to-any").addAttribute("id-type", "long");
 			addColumns(any, null, getAnyTypeColumns(featureName, false), false, false);
-		} else if (isEntity) {
-			collElement.addElement("one-to-many").addAttribute("entity-name", targetEntity);
 		} else {
-			collElement.addElement("one-to-many").addAttribute("class", targetEntity);
+			collElement.addElement("one-to-many").addAttribute("entity-name", targetEntity);
 		}
 	}
 
@@ -278,16 +274,10 @@ class OneToManyMapper extends AbstractAssociationMapper {
 	 * Creates a many-to-many to handle the unidirectional manytomany. A unidirectional manytomany is now specified
 	 * using the one to many annotation while its implementation has a join table.
 	 */
-	private Element addManyToMany(Element collElement, String targetEntity, boolean isEntity, List<JoinColumn> invJoinColumns,
+	private Element addManyToMany(Element collElement, String targetEntity, List<JoinColumn> invJoinColumns,
 			boolean unique) {
-		Element manyToMany;
-		if (isEntity) {
-			manyToMany = collElement.addElement("many-to-many").addAttribute("entity-name", targetEntity).addAttribute(
+		final Element manyToMany = collElement.addElement("many-to-many").addAttribute("entity-name", targetEntity).addAttribute(
 					"unique", unique ? "true" : "false");
-		} else {
-			manyToMany = collElement.addElement("many-to-many").addAttribute("class", targetEntity).addAttribute(
-					"unique", unique ? "true" : "false");
-		}
 		addKeyColumns(manyToMany, invJoinColumns);
 		return manyToMany;
 	}

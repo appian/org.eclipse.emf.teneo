@@ -2,11 +2,10 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OnDelete.java,v 1.1 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: OnDelete.java,v 1.2 2007/04/07 12:44:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->

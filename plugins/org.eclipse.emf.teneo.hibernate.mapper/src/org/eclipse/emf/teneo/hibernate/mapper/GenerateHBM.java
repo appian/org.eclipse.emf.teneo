@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: GenerateHBM.java,v 1.4 2007/03/21 15:46:33 mtaal Exp $
+ * $Id: GenerateHBM.java,v 1.5 2007/04/07 12:44:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -30,6 +30,7 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.StoreException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
@@ -39,7 +40,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
  * Class is responsible for generating the hbm file. Is run through a launcher therefore the main methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class GenerateHBM {
@@ -99,6 +100,9 @@ public class GenerateHBM {
 				file.delete();
 			}
 			file.createNewFile();
+
+			// set the eruntime as the emodel resolver!
+			ERuntime.setAsEModelResolver();
 
 			final PersistenceOptions po = new PersistenceOptions(options);
 			PAnnotatedModel paModel = MappingBuilder.INSTANCE.buildMapping(ecores, po);

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.7 2007/03/29 15:00:45 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.8 2007/04/07 12:44:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -85,10 +85,8 @@ class EmbeddedMapper extends AbstractMapper {
 	/** Process a many-to-one component */
 	private void processSingleEmbedded(PAnnotatedEReference paReference, String targetName, EClass target) {
 		log.debug("Processing single embedded: " + paReference.toString());
-		
-		final EClass refType = (EClass) paReference.getAnnotatedEReference().getEType();
 
-		if (targetName == null || getHbmContext().isEasyEMFGenerated(refType)) {
+		if (targetName == null) {
 			targetName = getHbmContext().getEntityName(target);
 		}
 
@@ -97,7 +95,6 @@ class EmbeddedMapper extends AbstractMapper {
 
 		// todo: change recognizing a component to using metadata!
 		// then the class tag can point to a real impl. class@
-//		final Class<?> implClass = ERuntime.INSTANCE.getInstanceClass(refType);
 		componentElement.addAttribute("class", targetName); //implClass.getName());
 		getHbmContext().setCurrent(componentElement);
 		try {

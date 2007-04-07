@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.15 2007/03/21 15:46:33 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.16 2007/04/07 12:44:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -64,7 +64,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 
 	/** Adds a manytoone tag to the current element of the hbmcontext */
 	protected Element addManyToOne(PAnnotatedEReference aReference,
-			String referedTo, boolean isReferedEntity) {
+			String referedTo) {
 		final String assocName = getHbmContext().getPropertyName(
 				aReference.getAnnotatedEReference());
 		log.debug("addManyToOne " + assocName + "/" + referedTo);
@@ -73,15 +73,9 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			return getHbmContext().getCurrent().addElement("any").addAttribute(
 					"name", assocName).addAttribute("id-type", "long");
 		}
-		if (isReferedEntity) {
-			return getHbmContext().getCurrent().addElement("many-to-one")
-					.addAttribute("name", assocName).addAttribute(
-							"entity-name", referedTo);
-		} else {
-			return getHbmContext().getCurrent().addElement("many-to-one")
-					.addAttribute("name", assocName).addAttribute("class",
-							referedTo);
-		}
+		return getHbmContext().getCurrent().addElement("many-to-one")
+				.addAttribute("name", assocName).addAttribute("entity-name",
+						referedTo);
 	}
 
 	/**
@@ -282,11 +276,14 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		final EReference eref = aref.getAnnotatedEReference();
 		final EStructuralFeature feature = eref.getEReferenceType()
 				.getEStructuralFeature("key");
-		if (feature instanceof EReference) { 
-			final String entityName = hbmContext.getEntityName(((EReference)feature).getEReferenceType());
-			collElement.addElement("map-key-many-to-many").addAttribute("entity-name", entityName);
+		if (feature instanceof EReference) {
+			final String entityName = hbmContext
+					.getEntityName(((EReference) feature).getEReferenceType());
+			collElement.addElement("map-key-many-to-many").addAttribute(
+					"entity-name", entityName);
 		} else {
-			final String type = hbType(aref.getPaModel().getPAnnotated((EAttribute)feature));
+			final String type = hbType(aref.getPaModel().getPAnnotated(
+					(EAttribute) feature));
 			collElement.addElement("map-key").addAttribute("type", type);
 		}
 	}
@@ -337,10 +334,6 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		// without jointable in combination with
 		// IdBag.");
 		// }
-		final EClass eclass = paFeature.getPaEClass().getAnnotatedEClass();
-		final boolean isEasyGenerated = getHbmContext().isEasyEMFGenerated(
-				eclass)
-				|| getHbmContext().isEasyEMFDynamic(eclass);
 		final boolean hasOrderBy = paFeature instanceof PAnnotatedEReference
 				&& ((PAnnotatedEReference) paFeature).getOrderBy() != null;
 		final boolean hasWhereClause = paFeature instanceof PAnnotatedEReference
@@ -354,7 +347,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		} else if (idBag != null) {
 			collectionElement = getHbmContext().getCurrent()
 					.addElement("idbag");
-		} else if (!isEasyGenerated && hbFeature.getOneToMany() != null
+		} else if (getHbmContext().isGeneratedByEMF() && hbFeature.getOneToMany() != null
 				&& hbFeature.getOneToMany().isList()) {
 			if (hasOrderBy && hbFeature.getOneToMany().isIndexed()) {
 				log
@@ -369,7 +362,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 				collectionElement = getHbmContext().getCurrent().addElement(
 						"list");
 			}
-		} else if (isEasyGenerated && hbFeature.getOneToMany() != null) {
+		} else if (!getHbmContext().isGeneratedByEMF() && hbFeature.getOneToMany() != null) {
 			if (hasOrderBy && hbFeature.getOneToMany().isIndexed()) {
 				log
 						.warn("One to many ereference has indexed=true and has orderby set. "
@@ -380,6 +373,10 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			if (!hbFeature.getOneToMany().isList() || hasOrderBy) {
 				collectionElement = getHbmContext().getCurrent().addElement(
 						"set");
+			} else if (hbFeature.getOneToMany().isList()
+					&& !hbFeature.getOneToMany().isIndexed()) {
+				collectionElement = getHbmContext().getCurrent().addElement(
+						"bag");
 			} else {
 				collectionElement = getHbmContext().getCurrent().addElement(
 						"list");
@@ -403,9 +400,10 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			}
 			final Element collectionIdElement = collectionElement
 					.addElement("collection-id");
-			collectionIdElement.addAttribute("column", hbmContext.getIdbagIDColumnName());
+			collectionIdElement.addAttribute("column", hbmContext
+					.getIdbagIDColumnName());
 			collectionIdElement.addAttribute("type", type);
-			
+
 			collectionIdElement.addElement("generator").addAttribute("class",
 					generator);
 		}
@@ -524,7 +522,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			collElement.addAttribute("schema", joinTable.getSchema());
 		}
 		if (joinTable.getName() != null) {
-			collElement.addAttribute("table", getHbmContext().trunc(joinTable.getName()));
+			collElement.addAttribute("table", getHbmContext().trunc(
+					joinTable.getName()));
 		}
 		if (joinTable.getUniqueConstraints().size() > 0) {
 			log.error("Unsupported unique constraints in " + joinTable);

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.16 2007/03/29 22:13:57 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.17 2007/04/07 12:44:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -29,7 +29,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -135,59 +134,38 @@ class EntityMapper extends AbstractMapper {
 
 		final String entityName = getHbmContext().getEntityName(eclass);
 		final String isAbstractStr = eclass.isAbstract() ? "true" : "false";
-		if (getHbmContext().isEasyEMFGenerated(eclass)) { // entity
-			// get the interfacec
-			final String proxyName;
-			final Class<?> interfaceClass = ERuntime.INSTANCE
-					.getInterfaceClass(eclass);
-			final String className = ERuntime.INSTANCE.getInstanceClass(eclass)
-					.getName();
-			if (interfaceClass != null) {
-				proxyName = interfaceClass.getName();
-			} else {
-				proxyName = className;
-			}
-
+		if (entity.isOnlyMapAsEntity()) {
 			target = getHbmContext().getCurrent().addElement(hbClassName)
-					.addAttribute("name", className).addAttribute(
-							"entity-name", entityName).addAttribute("proxy",
-							proxyName).addAttribute("abstract", isAbstractStr)
-					.addAttribute("lazy", "true");
-		} else {
-			if (entity.isOnlyMapAsEntity()) {
-				target = getHbmContext().getCurrent().addElement(hbClassName)
-						.addAttribute("entity-name", entityName).addAttribute(
-								"abstract", isAbstractStr).addAttribute("lazy",
-								"false");
+					.addAttribute("entity-name", entityName).addAttribute(
+							"abstract", isAbstractStr).addAttribute("lazy",
+							"false");
 
-				// note for composite ids the name must be set always!
-				// entity.getAnnotatedEClass().getInstanceClass() != null) { //
-				// ||
-				// entity.getAnnotatedEClass().getInstanceClass() != null ||
-				if (hasCompositeID(entity)) { // only for this specific case
-					// it is
-					// required to have the impl.name
-					target.addAttribute("name", hbmContext
-							.getInstanceClassName(entity));
-				}
-			} else {
-				target = getHbmContext()
-						.getCurrent()
-						.addElement(hbClassName)
-						.addAttribute(
-								"name",
-								ERuntime.INSTANCE.getInstanceClass(eclass)
-										.getName())
-						.addAttribute(
-								"entity-name",
-								getHbmContext().getEClassNameStrategy()
-										.toUniqueName(eclass))
-						.addAttribute("abstract", isAbstractStr)
-						.addAttribute(
-								"lazy",
-								((HbAnnotatedEClass) entity).getHbProxy() == null ? "false"
-										: "true");
+			// note for composite ids the name must be set always!
+			// entity.getAnnotatedEClass().getInstanceClass() != null) { //
+			// ||
+			// entity.getAnnotatedEClass().getInstanceClass() != null ||
+			if (hasCompositeID(entity)) { // only for this specific case
+				// it is
+				// required to have the impl.name
+				target.addAttribute("name", hbmContext
+						.getInstanceClassName(entity.getAnnotatedEClass()));
 			}
+		} else {
+			target = getHbmContext()
+					.getCurrent()
+					.addElement(hbClassName)
+					.addAttribute(
+							"name",hbmContext
+							.getInstanceClassName(entity.getAnnotatedEClass()))
+					.addAttribute(
+							"entity-name",
+							getHbmContext().getEClassNameStrategy()
+									.toUniqueName(eclass))
+					.addAttribute("abstract", isAbstractStr)
+					.addAttribute(
+							"lazy",
+							((HbAnnotatedEClass) entity).getHbProxy() == null ? "false"
+									: "true");
 		}
 
 		if (superEntity != null) {

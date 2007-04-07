@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.9 2007/03/18 19:19:44 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.10 2007/04/07 12:44:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -93,22 +93,14 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		final EClass referedTo = hbReference.getAnnotatedEReference()
 				.getEReferenceType();
 
-		boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(
-				referedTo);
 		String targetName = mtm.getTargetEntity();
-		if (targetName == null || isEasyEMFGenerated) {
+		if (targetName == null) {
 			targetName = getHbmContext().getEntityName(referedTo);
 		}
 		log.debug("Target entity-name " + targetName);
 
-		final Element mtmElement;
-		if (isEasyEMFGenerated) {
-			mtmElement = collElement.addElement("many-to-many").addAttribute(
-					"class", targetName).addAttribute("unique", "false");
-		} else {
-			mtmElement = collElement.addElement("many-to-many").addAttribute(
+		final Element mtmElement = collElement.addElement("many-to-many").addAttribute(
 					"entity-name", targetName).addAttribute("unique", "false");
-		}
 
 		// inverse is not supported by indexed lists
 		if (mtm.getMappedBy() != null && !mtm.isIndexed()) {

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.9 2007/03/29 22:13:57 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.10 2007/04/07 12:44:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -69,16 +69,14 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 				.getEReferenceType();
 		final ManyToOne mto = paReference.getManyToOne();
 		String targetName = mto.getTargetEntity();
-		final boolean isEasyEMFGenerated = getHbmContext().isEasyEMFGenerated(
-				referedTo);
-		if (targetName == null || isEasyEMFGenerated) {
+		if (targetName == null) {
 			targetName = getHbmContext().getEntityName(referedTo);
 		}
 
 		log.debug("Target " + targetName);
 
 		final Element associationElement = addManyToOne(paReference,
-				targetName, !isEasyEMFGenerated);
+				targetName);
 
 		addCascadesForSingle(associationElement, mto.getCascade());
 
@@ -91,10 +89,7 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 			// todo default false until proxies are supported
 			final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference
 					.getPaModel().getPAnnotated(referedTo);
-			if (getHbmContext().isEasyEMFGenerated(
-					paReference.getAnnotatedEReference().getEContainingClass())) {
-				addFetchType(associationElement, mto.getFetch(), true);
-			} else if (haClass.getHbProxy() != null) {
+			if (haClass.getHbProxy() != null) {
 				associationElement.addAttribute("lazy", "proxy");
 			} else {
 				associationElement.addAttribute("lazy", "false");

@@ -2,9 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OnDeleteAction.java,v 1.1 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: OnDeleteAction.java,v 1.2 2007/04/07 12:44:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
+
+import static org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction.CASCADE_VALUE;
+import static org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction.NO_ACTION_VALUE;
 
 import java.util.Arrays;
 import java.util.Collections;
