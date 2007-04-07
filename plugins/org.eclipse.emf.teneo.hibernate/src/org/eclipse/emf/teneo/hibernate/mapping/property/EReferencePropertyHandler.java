@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EReferencePropertyHandler.java,v 1.3 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: EReferencePropertyHandler.java,v 1.4 2007/04/07 12:43:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
+import org.eclipse.emf.teneo.hibernate.resource.HbResource;
+import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.PropertyNotFoundException;
@@ -46,7 +48,7 @@ import org.hibernate.property.Setter;
  * itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 @SuppressWarnings("unchecked")
 public class EReferencePropertyHandler implements Getter, Setter,
@@ -155,10 +157,18 @@ public class EReferencePropertyHandler implements Getter, Setter,
 				return; // do nothing in this case
 			final EObject eobj = (EObject) target;
 			eobj.eSet(eReference, value);
+			Resource res = eobj.eResource();
+			if (res instanceof HibernateResource && ((EObject) value).eResource() == null) {
+				final boolean loading = ((HibernateResource) res).isLoading();
+				try {
+					((HibernateResource) res).setIsLoading(true);
+					((HibernateResource) res).addToContentOrAttach((InternalEObject)value, false);							
+				} finally {
+					((HibernateResource) res).setIsLoading(loading);
+				}
+			}
 			if (!eReference.isContainment()) {
-				Resource res = eobj.eResource();
 				if (res != null && ((EObject) value).eResource() == null) {
-					((ResourceImpl) res).attached(eobj);
 				}
 			}
 		}

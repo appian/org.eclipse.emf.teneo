@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.3 2007/03/29 14:59:40 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.4 2007/04/07 12:43:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -24,9 +24,7 @@ import javax.persistence.EntityManagerFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.ERuntime;
-import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
@@ -38,7 +36,7 @@ import org.hibernate.ejb.Ejb3Configuration;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class HbEntityDataStore extends HbDataStore {
 
@@ -59,6 +57,9 @@ public class HbEntityDataStore extends HbDataStore {
 			throw new HbMapperException("EPackages are not set");
 		// if (getName() == null)
 		// throw new HbStoreException("Name is not set");
+
+		// set the eruntime as the emodel resolver!
+		ERuntime.setAsEModelResolver();
 
 		log.debug(">>>>> Creating EJB3 Configuration");
 		ejb3Configuration = createConfiguration();
@@ -122,9 +123,6 @@ public class HbEntityDataStore extends HbDataStore {
 	 */
 	protected void mapModel() {
 		if (getPersistenceOptions().isUseMappingFile()) {
-
-			// register otherwise the getFileList will not work
-			ERuntime.INSTANCE.register(getEPackages());
 
 			log.debug("Searching hbm files in class paths of epackages");
 			final String[] fileList = StoreUtil.getFileList(

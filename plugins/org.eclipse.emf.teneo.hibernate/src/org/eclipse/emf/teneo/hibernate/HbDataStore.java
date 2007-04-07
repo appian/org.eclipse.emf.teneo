@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.19 2007/03/29 14:59:40 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.20 2007/04/07 12:43:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -44,6 +44,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
@@ -80,7 +81,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public abstract class HbDataStore {
 
@@ -619,7 +620,7 @@ public abstract class HbDataStore {
 			eclass = getPersistenceOptions().getEClassNameStrategy().toEClass(
 					pc.getEntityName(), getEPackages());
 		} else {
-			eclass = ERuntime.INSTANCE.getEClass(pc.getMappedClass());
+			eclass = EModelResolver.instance().getEClass(pc.getMappedClass());
 		}
 
 		// DCB: Provide a way to avoid container mappings for a particular
@@ -809,7 +810,7 @@ public abstract class HbDataStore {
 						eClass = getPersistenceOptions().getEClassNameStrategy()
 								.toEClass(pc.getEntityName(), getEPackages());
 					} else {
-						eClass = ERuntime.INSTANCE.getEClass(pc.getMappedClass());
+						eClass = EModelResolver.instance().getEClass(pc.getMappedClass());
 					}
 				} catch (IllegalArgumentException e) {
 					// ignoring exception on purpose

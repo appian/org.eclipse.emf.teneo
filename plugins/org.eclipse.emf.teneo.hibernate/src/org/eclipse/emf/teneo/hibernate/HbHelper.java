@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.7 2007/04/06 21:44:07 mtaal Exp $
+ * $Id: HbHelper.java,v 1.8 2007/04/07 12:43:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
 import org.hibernate.mapping.Component;
@@ -36,7 +37,7 @@ import org.hibernate.mapping.PersistentClass;
  * EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class HbHelper {
 	/** The logger */
@@ -116,7 +117,7 @@ public class HbHelper {
 
 	/** Clears the list of session factories */
 	public synchronized void closeAll() {
-		ERuntime.INSTANCE.clear();
+		EModelResolver.instance().clear();
 		for (HbDataStore emfds : emfDataStores.values()) {
 			emfds.close();
 		}
@@ -196,6 +197,10 @@ public class HbHelper {
 	 * mapping is not registered or used in any other way by Elver.
 	 */
 	public String generateMapping(EPackage[] epackages, Properties props) {
+
+		// set the eruntime as the emodel resolver!
+		ERuntime.setAsEModelResolver();
+		
 		log.debug("Generating mapping file passed epackages");
 		// DCB: Use Hibernate-specific annotation processing mechanism. This
 		// allows use of

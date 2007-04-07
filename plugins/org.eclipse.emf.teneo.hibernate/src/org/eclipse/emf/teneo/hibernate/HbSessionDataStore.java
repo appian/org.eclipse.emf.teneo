@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.1 2007/03/20 23:33:48 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.2 2007/04/07 12:43:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -37,7 +37,7 @@ import org.hibernate.cfg.Configuration;
  * implementing/registering your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HbSessionDataStore extends HbDataStore {
@@ -52,7 +52,7 @@ public class HbSessionDataStore extends HbDataStore {
 	private Configuration hbConfiguration;
 
 	/** Initializes this Data Store */
-	public final void initialize() {
+	public void initialize() {
 		log.debug("Initializing Hb Session DataStore");
 
 		// check a few things
@@ -63,6 +63,9 @@ public class HbSessionDataStore extends HbDataStore {
 
 		log.debug(">>>>> Creating HB Configuration");
 		hbConfiguration = createConfiguration();
+
+		// set the eruntime as the emodel resolver!
+		ERuntime.setAsEModelResolver();
 
 		mapModel();
 
@@ -131,7 +134,7 @@ public class HbSessionDataStore extends HbDataStore {
 		if (getPersistenceOptions().isUseMappingFile()) {
 
 			// register otherwise the getFileList will not work
-			ERuntime.INSTANCE.register(getEPackages());
+//			ERuntime.INSTANCE.register(getEPackages());
 
 			log.debug("Searching hbm files in class paths of epackages");
 			final String[] fileList = StoreUtil.getFileList(
