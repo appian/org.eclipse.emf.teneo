@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ERuntime.java,v 1.7 2007/03/29 15:00:51 mtaal Exp $
+ * $Id: ERuntime.java,v 1.8 2007/04/07 12:42:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -33,6 +33,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xml.type.impl.XMLTypePackageImpl;
+import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
+import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
@@ -44,10 +47,10 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * contained computations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
-public class ERuntime {
+public class ERuntime extends EModelResolver {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(ERuntime.class);
@@ -61,6 +64,12 @@ public class ERuntime {
 	/** The singleton instance */
 	public static final ERuntime INSTANCE = new ERuntime();
 
+	/** Set this instance as the emodelresolver */
+	public static void setAsEModelResolver() {
+		log.debug("Setting ERunTime as EModelResolver");
+		EModelResolver.setInstance(INSTANCE);
+	}
+	
 	/** The list of epackages processed here */
 	private final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
 
@@ -69,7 +78,7 @@ public class ERuntime {
 
 	private final HashMap<Class<?>, EClass> interfaceToEClass = new HashMap<Class<?>, EClass>();
 
-	private final HashMap<EClass, Class<?>> eclassToConcrete = new HashMap<EClass, Class<?>>();
+	private final HashMap<EClassifier, Class<?>> eclassifierToConcrete = new HashMap<EClassifier, Class<?>>();
 
 	/** The list of topclasses/interfaces */
 	private final ArrayList<Class<?>> topClasses = new ArrayList<Class<?>>();
@@ -96,7 +105,7 @@ public class ERuntime {
 		containedClasses.clear();
 		concreteToEClass.clear();
 		interfaceToEClass.clear();
-		eclassToConcrete.clear();
+		eclassifierToConcrete.clear();
 		topClasses.clear();
 	}
 
@@ -211,7 +220,7 @@ public class ERuntime {
 	/** Determines concrete impl classes for each eclass */
 	private void computeConcreteInstanceMapping() {
 		concreteToEClass.clear();
-		eclassToConcrete.clear();
+		eclassifierToConcrete.clear();
 		interfaceToEClass.clear();
 
 		// walk through all the epackages
@@ -231,9 +240,9 @@ public class ERuntime {
 				if (!(eclassifier instanceof EClass))
 					continue;
 
-				final Object instance = getPersistableInstance(eclassifier);
+				final Object instance = create((EClass)eclassifier);
 				if (instance != null) {
-					eclassToConcrete.put((EClass) eclassifier, instance
+					eclassifierToConcrete.put((EClass) eclassifier, instance
 							.getClass());
 					concreteToEClass.put(instance.getClass(),
 							(EClass) eclassifier);
@@ -273,35 +282,9 @@ public class ERuntime {
 			if (EObject.class.isAssignableFrom(interf[i])) {
 				final EClass eclass = (EClass) interfaceToEClass.get(interf[i]);
 				concreteToEClass.put(clazz, eclass);
-				eclassToConcrete.put(eclass, clazz);
+				eclassifierToConcrete.put(eclass, clazz);
 			}
 		}
-	}
-
-	/**
-	 * Returns a persistable instance of an eclassifier, if the eclassifier is
-	 * not persistable/instantiable then null is returned.
-	 */
-	private Object getPersistableInstance(EClassifier eclassifier) {
-		final EClass eclazz = (EClass) eclassifier;
-
-		// abstract instance classes are added later
-		if (eclazz.isAbstract() || eclazz.isInterface())
-			return null;
-
-		// Check if the class is persistable
-		try {
-			return EcoreUtil.create(eclazz);
-		} catch (Exception e) {
-			// log but do nothing because this happens when we try to create an
-			// object
-			// with an invalid classifier, which is a eclass!
-			log.debug("The classifier: " + eclassifier.getName()
-					+ " is not a valid eclass");
-
-			return null;
-		}
-
 	}
 
 	/*
@@ -333,22 +316,50 @@ public class ERuntime {
 		if (eclass == null) {
 			throw new StoreException("No eclass for interf " + interf.getName());
 		}
-		return getInstanceClass(eclass);
+		return getJavaClass(eclass);
 	}
 
 	/** Returns the instanceclass for a passed eclass */
-	public Class<?> getInstanceClass(EClass eclass) {
-		if (eclass.isInterface()) {
-			return eclass.getInstanceClass();
+	public Class<?> getJavaClass(EClassifier eclassifier) {
+		if (eclassifier instanceof EClass) {
+			final EClass eclass = (EClass)eclassifier;
+			if (eclass.isInterface()) {
+				return eclass.getInstanceClass();
+			}
 		}
-		return (Class<?>) eclassToConcrete.get(eclass);
+		return (Class<?>) eclassifierToConcrete.get(eclassifier);
 	}
 	
 	/** Returns the interface class for a passed eclass */
-	public Class<?> getInterfaceClass(EClass eclass) {
+	public Class<?> getJavaInterfaceClass(EClass eclass) {
 		return eclass.getInstanceClass();
 	}
 
+	/** Returns true if the passed EClass has a javaClass representation. */
+	public boolean hasImplementationClass(EClassifier eclassifier) {
+		return null != getJavaClass(eclassifier);
+	}
+
+	/** Returns null */
+	public Object create(EClass eclass) {
+		// abstract instance classes are added later
+		if (eclass.isAbstract() || eclass.isInterface())
+			return null;
+
+		// Check if the class is persistable
+		try {
+			return EcoreUtil.create(eclass);
+		} catch (Exception e) {
+			// log but do nothing because this happens when we try to create an
+			// object
+			// with an invalid classifier, which is a eclass!
+			log.debug("The classifier: " + eclass.getName()
+					+ " is not a valid eclass");
+
+			return null;
+		}
+	}
+	
 	/** Get the eclass for a certain class */
 	public EClass getEClass(Class<?> clazz) {
 		if (clazz.isInterface()) {
@@ -360,10 +371,9 @@ public class ERuntime {
 	/** Get the eclass for a certain class name */
 	public EClass getEClass(String classname) {
 		try {
-			return getEClass(Class.forName(classname));
-		} catch (ClassNotFoundException e) {
+			return getEClass(ClassLoaderResolver.classForName(classname));
+		} catch (StoreClassLoadException e) {
 			log.debug("Failed to retreive ECLass for name: " + classname);
-			
 			return null;
 		}
 	}

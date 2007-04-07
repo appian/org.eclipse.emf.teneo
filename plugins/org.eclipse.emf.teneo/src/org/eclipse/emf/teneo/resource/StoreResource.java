@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.19 2007/03/28 13:57:40 mtaal Exp $
+ * $Id: StoreResource.java,v 1.20 2007/04/07 12:42:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -55,7 +55,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -338,21 +338,13 @@ public abstract class StoreResource extends ResourceImpl {
 	 */
 	public void addToContentOrAttach(InternalEObject eObject,
 			boolean isContainmentLoad) {
-		if (loadStrategy.compareTo(ADD_TO_CONTENTS) == 0) {
+		if (loadStrategy.compareTo(ADD_TO_CONTENTS) == 0) { // always add
 			if (eObject.eResource() == null) { // with lazy load the resource
 												// can already be set
 				setEResource(eObject, true);
 			}
-			// note direct access to super member
-			if (!contents.contains(eObject)) {
-				final NotificationChain notifications = contents.basicAdd(
-						eObject, null);
-				if (notifications != null && sendNotificationsOnLoad) {
-					notifications.dispatch();
-				}
-				attached(eObject);
-			}
-		} else if (isContainmentLoad) {
+			attached(eObject);
+		} else if (isContainmentLoad) { // only add if contained
 			attached(eObject);
 		}
 	}

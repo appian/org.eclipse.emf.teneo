@@ -1,21 +1,25 @@
 package org.eclipse.emf.teneo.ecore;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.teneo.ERuntime;
+import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
+import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 
 /**
  * This implementation assumes that EClass names are unique. It will (de)Resolve
  * using the EClass name.
- * <p>
- * TODO: Should be moved to Teneo project.
  * 
  * @author <a href="lmfridael@elver.org">Laurens Fridael</a>
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
 public class DefaultEClassNameStrategy implements EClassNameStrategy {
+
+	/** The logger */
+	private static Log log = LogFactory.getLog(DefaultEClassNameStrategy.class);
 
 	/** The singleton instance as it is thread safe */
 	public static final DefaultEClassNameStrategy INSTANCE = new DefaultEClassNameStrategy();
@@ -87,7 +91,12 @@ public class DefaultEClassNameStrategy implements EClassNameStrategy {
 		
 		// we didn'y find it, perhaps it is fully qualified, lets try by full class name
 		if (eClass == null) {
-			eClass = ERuntime.INSTANCE.getEClass(eClassName);
+			try {
+				final Class<?> cls = ClassLoaderResolver.classForName(eClassName);
+				eClass = EModelResolver.instance().getEClass(cls);
+			} catch (StoreClassLoadException e) {
+				log.debug("Failed to retreive ECLass for name: " + eClassName);
+			}
 		}
 		
 		if (eClass == null) {

@@ -12,13 +12,16 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
-public class EModelResolver {
+public abstract class EModelResolver {
 
 	/** The default instance of an EcoreResolver */
-	private static EModelResolver instance = new EModelResolver();
+	private static EModelResolver instance = null;
 
 	/** Return the current ecore resolver */
 	public static EModelResolver instance() {
+		if (instance == null) {
+			throw new IllegalStateException("ModelResolver instance has not been set!");
+		}
 		return instance;
 	}
 
@@ -27,22 +30,20 @@ public class EModelResolver {
 		instance = modelResolver;
 	}
 
+	/** Clear all internal datastructures */
+	public abstract void clear();
+	
 	/**
 	 * @return the EClass for a java class, if not found then the superclass of
 	 *         the javaclass is tried
 	 */
-	public EClass getEClass(Class<?> javaClass) {
-		return null;
-	}
+	public abstract EClass getEClass(Class<?> javaClass);
 
 	/** Is the epackage registered */
-	public boolean isRegistered(EPackage epackage) {
-		return false;
-	}
+	public abstract boolean isRegistered(EPackage epackage);
 
-	/** Register the epackage */
-	public void register(EPackage epackage) {
-	}
+	/** Register the epackages */
+	public abstract void register(EPackage[] epacks);
 
 	/** Return the java member name for the efeature */
 	public String getJavaMember(EStructuralFeature efeature) {
@@ -50,32 +51,37 @@ public class EModelResolver {
 	}
 
 	/** @return the java implementation class for an EClass */
-	public Class<?> getJavaClass(EClassifier eclassifier) {
-		return null;
-	}
+	public abstract Class<?> getJavaClass(EClassifier eclassifier);
 
 	/** @return the java interface class for an EClass */
-	public Class<?> getJavaInterfaceClass(EClass eclass) {
-		return null;
-	}
+	public abstract Class<?> getJavaInterfaceClass(EClass eclass);
 
 	/** Returns true if the passed EClass has a javaClass representation. */
-	public boolean hasImplementationClass(EClassifier eclassifier) {
-		return false;
-	}
+	public abstract boolean hasImplementationClass(EClassifier eclassifier);
+	
+	/** Returns the currently registered epackages */
+	public abstract EPackage[] getEPackages();
 
 	/** Returns null */
-	public Object create(EClass eclass) {
-		return null;
-	}
-
-	/** Returns null */
+	public abstract Object create(EClass eclass);
+	
+	/** Returns a java instance of an EClass defined by name */
 	public Object create(EPackage epackage, String eclassName) {
-		return null;
+		final EClass eclass = (EClass)epackage.getEClassifier(eclassName);
+		if (eclass == null) {
+			throw new IllegalArgumentException("No EClass " + eclassName + " found in epackage " + epackage.getName());
+		}
+		return create(eclass);
 	}
 
-	/** Returns null */
+	/** Returns a java instance of an EClass defined by name, all epackages are searched for this eclass. */
 	public Object create(String eclassName) {
-		return null;
+		for (EPackage epackage : getEPackages()) {
+			final EClass eclass = (EClass)epackage.getEClassifier(eclassName);
+			if (eclass != null) {
+				return create(eclass);
+			}
+		}
+		throw new IllegalArgumentException("No EClass " + eclassName + " found.");
 	}
 }
