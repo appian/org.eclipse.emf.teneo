@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.41 2007/03/29 22:14:00 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.42 2007/04/07 12:42:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -74,6 +74,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.SQLCaseStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -84,7 +85,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.41 $
+ * @version $Revision: 1.42 $
  */
 public class DefaultAnnotator {
 
@@ -173,28 +174,47 @@ public class DefaultAnnotator {
 	 */
 	public synchronized void map(PAnnotatedModel annotatedModel,
 			PersistenceOptions po) {
+
+		// check if the emodelresolver has been set, if not then
+		// use the ERuntime as the default
+		try {
+			if (EModelResolver.instance() == null) { // fails anyway but this
+														// will not be optimised
+														// away
+				// set the eruntime as the default emodel resolver!
+				ERuntime.setAsEModelResolver();
+			}
+		} catch (IllegalStateException e) {
+			// not set, set the eruntime as the emodel resolver!
+			ERuntime.setAsEModelResolver();
+		}
+
 		setLocalOptions(po);
+
+		final List<PAnnotatedEPackage> apacks = annotatedModel.getPaEPackages();
+
+		final EPackage[] epacks = new EPackage[apacks.size()];
+		int cnt = 0;
+		for (PAnnotatedEPackage apack : apacks) {
+			epacks[cnt++] = apack.getAnnotatedEPackage();
+		}
+
+		log
+				.debug("Registering epackages in model resolver, modelresolver instance is: "
+						+ EModelResolver.instance().getClass().getName());
+		EModelResolver.instance().register(epacks);
 
 		// if force fully classify typename then use the EModelResolver/ERuntime
 		if (optionAlsoMapAsClass) {
 			log
 					.debug("Class names are to be fully classified, registering all the "
 							+ "epackages");
-			final List<PAnnotatedEPackage> apacks = annotatedModel
-					.getPaEPackages();
-			final EPackage[] epacks = new EPackage[apacks.size()];
-			int cnt = 0;
-			for (PAnnotatedEPackage apack : apacks) {
-				epacks[cnt++] = apack.getAnnotatedEPackage();
-			}
-			ERuntime.INSTANCE.register(epacks);
-
 			// and now set the map as entity for each eclass
 			for (PAnnotatedEPackage apack : annotatedModel.getPaEPackages()) {
 				for (PAnnotatedEClass aclass : apack.getPaEClasses()) {
-					final boolean hasImplClass = null != ERuntime.INSTANCE
-							.getInstanceClass(aclass.getAnnotatedEClass());
-					aclass.setOnlyMapAsEntity(!hasImplClass);
+					aclass.setOnlyMapAsEntity(!EModelResolver
+							.instance().hasImplementationClass(
+									aclass.getAnnotatedEClass()));
 				}
 			}
 		}
@@ -1357,8 +1377,8 @@ public class DefaultAnnotator {
 		}
 		if (joinTable.getJoinColumns() == null) {
 			joinTable.getJoinColumns().addAll(
-					getJoinColumns(aReference.getPaEClass(), eReference,
-							false, false, true));
+					getJoinColumns(aReference.getPaEClass(), eReference, false,
+							false, true));
 		}
 	}
 
