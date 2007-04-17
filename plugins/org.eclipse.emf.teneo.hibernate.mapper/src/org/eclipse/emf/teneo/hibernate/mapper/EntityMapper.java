@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EntityMapper.java,v 1.17 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: EntityMapper.java,v 1.18 2007/04/17 15:49:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -150,6 +150,18 @@ class EntityMapper extends AbstractMapper {
 				target.addAttribute("name", hbmContext
 						.getInstanceClassName(entity.getAnnotatedEClass()));
 			}
+		} else if (getHbmContext().forceUseOfInstance(entity)) {
+			target = getHbmContext()
+			.getCurrent()
+			.addElement(hbClassName)
+			.addAttribute(
+					"name",hbmContext
+					.getInstanceClassName(entity.getAnnotatedEClass()))
+			.addAttribute("abstract", isAbstractStr)
+			.addAttribute(
+					"lazy",
+					((HbAnnotatedEClass) entity).getHbProxy() == null ? "false"
+							: "true");
 		} else {
 			target = getHbmContext()
 					.getCurrent()
@@ -169,8 +181,13 @@ class EntityMapper extends AbstractMapper {
 		}
 
 		if (superEntity != null) {
-			final String extendsEntity = getHbmContext().getEntityName(
+			final String extendsEntity;
+			if (superEntity.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(superEntity)) {
+				extendsEntity = getHbmContext().getEntityName(
 					superEntity.getAnnotatedEClass());
+			} else {
+				extendsEntity = getHbmContext().getInstanceClassName(superEntity.getAnnotatedEClass());
+			}
 			target.addAttribute("extends", extendsEntity);
 			log.debug("Extends " + extendsEntity);
 		}

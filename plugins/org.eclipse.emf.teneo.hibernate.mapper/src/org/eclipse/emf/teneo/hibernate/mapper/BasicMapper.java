@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.13 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.14 2007/04/17 15:49:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -176,7 +176,7 @@ class BasicMapper extends AbstractPropertyMapper {
 		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) hea.getPaModel().getPAnnotated(ed);
 		if (hed.getHbTypeDef() != null || hea.getHbType() != null) {
 			setType(paAttribute, propElement);
-		} else if (!getHbmContext().isGeneratedByEMF()) {
+		} else if (!getHbmContext().isGeneratedByEMF() && getHbmContext().getInstanceClass(eclassifier) != null) {
 			final Class<?> instanceClass = getHbmContext().getInstanceClass(eclassifier);
 			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated)).addElement("param")
 					.addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(instanceClass.getName());

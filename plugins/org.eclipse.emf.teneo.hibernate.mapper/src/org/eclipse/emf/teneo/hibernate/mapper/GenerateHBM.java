@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: GenerateHBM.java,v 1.5 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: GenerateHBM.java,v 1.6 2007/04/17 15:49:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -40,14 +40,14 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
  * Class is responsible for generating the hbm file. Is run through a launcher therefore the main methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class GenerateHBM {
 	/** The logger for this class */
 	private static Log log = LogFactory.getLog(GenerateHBM.class);
 
-	/** Parses the args and generates a jdo file */
+	/** Parses the args and generates a hbm file */
 	public static void main(String[] args) {
 		// decode the args
 		Properties options = new Properties();
@@ -70,7 +70,7 @@ public class GenerateHBM {
 
 						Class<?> epack = Class.forName(epacks[p]);
 						if (!EPackage.class.isAssignableFrom(epack)) {
-							log.warn("JDO generator found " + epack.getName()
+							log.warn("HBM Generator found " + epack.getName()
 									+ " but this is not an EPackage, ignoring it");
 						}
 					} catch (Throwable t) { // ignore everything but log it

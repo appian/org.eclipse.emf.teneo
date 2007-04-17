@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.10 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: IdMapper.java,v 1.11 2007/04/17 15:49:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -344,7 +344,7 @@ class IdMapper extends AbstractPropertyMapper {
 
 	/**
 	 * Returns a sequence generator on the basis of its name, if not found then
-	 * an exception is thrown. efeature is passed for debugging purposes.
+	 * null is returned.
 	 */
 	public GenericGenerator getGenericGenerator(PAnnotatedModel paModel,
 			String name) {

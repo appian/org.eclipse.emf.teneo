@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.8 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.9 2007/04/17 15:49:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -22,8 +22,6 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
-import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
-import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -58,12 +56,10 @@ class EmbeddedMapper extends AbstractMapper {
 		try {
 			// make a difference between a many-to-one component and multi-component
 			if (paReference.getManyToOne() != null) {
-				final ManyToOne mto = paReference.getManyToOne();
-				processSingleEmbedded(paReference, mto.getTargetEntity(), paReference.getAnnotatedEReference()
+				processSingleEmbedded(paReference, paReference.getAnnotatedEReference()
 						.getEReferenceType());
 			} else if (paReference.getOneToOne() != null) {
-				final OneToOne oto = paReference.getOneToOne();
-				processSingleEmbedded(paReference, oto.getTargetEntity(), paReference.getAnnotatedEReference()
+				processSingleEmbedded(paReference, paReference.getAnnotatedEReference()
 						.getEReferenceType());
 			} else {
 				if (paReference.getManyToMany() != null) {
@@ -83,19 +79,15 @@ class EmbeddedMapper extends AbstractMapper {
 	}
 
 	/** Process a many-to-one component */
-	private void processSingleEmbedded(PAnnotatedEReference paReference, String targetName, EClass target) {
+	private void processSingleEmbedded(PAnnotatedEReference paReference, EClass target) {
 		log.debug("Processing single embedded: " + paReference.toString());
-
-		if (targetName == null) {
-			targetName = getHbmContext().getEntityName(target);
-		}
 
 		final Element componentElement = getHbmContext().getCurrent().addElement("component").addAttribute("name",
 				paReference.getAnnotatedEReference().getName());
 
 		// todo: change recognizing a component to using metadata!
 		// then the class tag can point to a real impl. class@
-		componentElement.addAttribute("class", targetName); //implClass.getName());
+		componentElement.addAttribute("class", getHbmContext().getInstanceClassName(target)); //implClass.getName());
 		getHbmContext().setCurrent(componentElement);
 		try {
 			// process the features of the target

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAssociationMapper.java,v 1.16 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: AbstractAssociationMapper.java,v 1.17 2007/04/17 15:49:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
@@ -73,9 +74,18 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			return getHbmContext().getCurrent().addElement("any").addAttribute(
 					"name", assocName).addAttribute("id-type", "long");
 		}
-		return getHbmContext().getCurrent().addElement("many-to-one")
-				.addAttribute("name", assocName).addAttribute("entity-name",
-						referedTo);
+		
+		final EClass referedToEClass = aReference.getAnnotatedEReference().getEReferenceType();
+		final PAnnotatedEClass referedToAClass = aReference.getPaModel().getPAnnotated(referedToEClass);
+		if (referedToAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedToAClass)) {
+			return getHbmContext().getCurrent().addElement("many-to-one")
+					.addAttribute("name", assocName).addAttribute("entity-name",
+							referedTo);
+		} else {
+			return getHbmContext().getCurrent().addElement("many-to-one")
+			.addAttribute("name", assocName).addAttribute("class",
+					getHbmContext().getInstanceClassName(referedToEClass));
+		}
 	}
 
 	/**
@@ -277,10 +287,17 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		final EStructuralFeature feature = eref.getEReferenceType()
 				.getEStructuralFeature("key");
 		if (feature instanceof EReference) {
-			final String entityName = hbmContext
-					.getEntityName(((EReference) feature).getEReferenceType());
-			collElement.addElement("map-key-many-to-many").addAttribute(
-					"entity-name", entityName);
+			final PAnnotatedEClass referedAClass = aref.getPaModel()
+					.getPAnnotated(((EReference) feature).getEReferenceType());
+			if (referedAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedAClass)) {
+				final String entityName = hbmContext
+						.getEntityName(((EReference) feature).getEReferenceType());
+				collElement.addElement("map-key-many-to-many").addAttribute(
+						"entity-name", entityName);
+			} else {
+				collElement.addElement("map-key-many-to-many").addAttribute(
+						"class", getHbmContext().getInstanceClassName(referedAClass.getAnnotatedEClass()));
+			}
 		} else {
 			final String type = hbType(aref.getPaModel().getPAnnotated(
 					(EAttribute) feature));
@@ -347,7 +364,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		} else if (idBag != null) {
 			collectionElement = getHbmContext().getCurrent()
 					.addElement("idbag");
-		} else if (getHbmContext().isGeneratedByEMF() && hbFeature.getOneToMany() != null
+		} else if (getHbmContext().isGeneratedByEMF()
+				&& hbFeature.getOneToMany() != null
 				&& hbFeature.getOneToMany().isList()) {
 			if (hasOrderBy && hbFeature.getOneToMany().isIndexed()) {
 				log
@@ -355,14 +373,15 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 								+ hbFeature);
 			}
 
-			if (hasOrderBy) {
+			if (hasOrderBy || !hbFeature.getOneToMany().isIndexed()) {
 				collectionElement = getHbmContext().getCurrent().addElement(
 						"bag");
 			} else {
 				collectionElement = getHbmContext().getCurrent().addElement(
 						"list");
 			}
-		} else if (!getHbmContext().isGeneratedByEMF() && hbFeature.getOneToMany() != null) {
+		} else if (!getHbmContext().isGeneratedByEMF()
+				&& hbFeature.getOneToMany() != null) {
 			if (hasOrderBy && hbFeature.getOneToMany().isIndexed()) {
 				log
 						.warn("One to many ereference has indexed=true and has orderby set. "
@@ -388,6 +407,7 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		} else {
 			collectionElement = getHbmContext().getCurrent().addElement("bag");
 		}
+
 		collectionElement.addAttribute("name", getHbmContext().getPropertyName(
 				hbFeature.getAnnotatedEStructuralFeature()));
 		if (idBag != null) {

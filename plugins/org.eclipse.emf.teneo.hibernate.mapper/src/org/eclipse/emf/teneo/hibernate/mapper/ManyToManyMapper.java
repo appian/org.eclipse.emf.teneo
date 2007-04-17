@@ -12,15 +12,15 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.10 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.11 2007/04/17 15:49:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
@@ -60,7 +60,7 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 
 		if (jt == null) {
 			throw new MappingException("Jointable is mandatory "
-					+ StoreUtil.toString(hbReference.getAnnotatedEReference()));
+					+ StoreUtil.toString(eref));
 		}
 
 		final Element collElement = addCollectionElement(hbReference);
@@ -90,17 +90,27 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		addFetchType(collElement, mtm.getFetch(), false);
 		addCascades(collElement, mtm.getCascade(), false);
 
-		final EClass referedTo = hbReference.getAnnotatedEReference()
-				.getEReferenceType();
-
+		final PAnnotatedEClass referedToAClass = hbReference
+				.getAReferenceType();
 		String targetName = mtm.getTargetEntity();
 		if (targetName == null) {
-			targetName = getHbmContext().getEntityName(referedTo);
+			targetName = getHbmContext().getEntityName(
+					hbReference.getEReferenceType());
 		}
 		log.debug("Target entity-name " + targetName);
 
-		final Element mtmElement = collElement.addElement("many-to-many").addAttribute(
+		final Element mtmElement;
+		if (referedToAClass.isOnlyMapAsEntity()
+				|| !getHbmContext().forceUseOfInstance(referedToAClass)) {
+			mtmElement = collElement.addElement("many-to-many").addAttribute(
 					"entity-name", targetName).addAttribute("unique", "false");
+		} else {
+			mtmElement = collElement.addElement("many-to-many").addAttribute(
+					"class",
+					getHbmContext().getInstanceClassName(
+							hbReference.getEReferenceType())).addAttribute(
+					"unique", "false");
+		}
 
 		// inverse is not supported by indexed lists
 		if (mtm.getMappedBy() != null && !mtm.isIndexed()) {

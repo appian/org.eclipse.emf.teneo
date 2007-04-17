@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateDefaultAnnotator.java,v 1.12 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: HibernateDefaultAnnotator.java,v 1.13 2007/04/17 15:49:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -178,11 +178,11 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		super.processClass(aClass);
 
 		final HbAnnotatedEClass hbClass = (HbAnnotatedEClass) aClass;
+		final EClass eclass = aClass.getAnnotatedEClass();
+		final Class<?> concreteClass = EModelResolver.instance().getJavaClass(eclass);
 
 		// automatically add the proxy annotation
 		if (optionSetProxy && hbClass.getHbProxy() == null) {
-			final Class<?> concreteClass = EModelResolver.instance()
-					.getJavaClass(aClass.getAnnotatedEClass());
 			if (concreteClass != null) {
 				final Proxy proxy = HbAnnotationFactory.eINSTANCE.createProxy();
 				proxy.setLazy(true);
@@ -194,16 +194,18 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 			}
 		}
 
-		if (hbClass.getHbProxy() != null) {
+		if (hbClass.getHbProxy() != null && concreteClass != null) {
 			// todo add check that there is an impl class
 			aClass.setOnlyMapAsEntity(false);
 
 			// set interfacename if not set
 			final Proxy proxy = hbClass.getHbProxy();
 			final Class<?> interfaceClass = EModelResolver.instance()
-					.getJavaInterfaceClass(aClass.getAnnotatedEClass());
-			if (interfaceClass != null) {
+					.getJavaInterfaceClass(eclass);
+ 			if (interfaceClass != null) {
 				proxy.setProxyClass(interfaceClass.getName());
+			} else { // set the class itself
+				proxy.setProxyClass(concreteClass.getName());
 			}
 		}
 

@@ -13,7 +13,7 @@
  *   Brian Vetter
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.16 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.17 2007/04/17 15:49:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -170,7 +170,7 @@ abstract class AbstractMapper {
 			// note that I would prefer to use the class instance to get the name
 			// but for other reasons I do not want to have references to the 
 			// org.eclipse.emf.teneo.hibernate plugin.
-			return "org.eclipse.emf.teneo.hibernate.mapping.XSDDate";
+			return getHbmContext().getXSDDateUserType();
 		}
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
 		// really wants a different mapping he/she should use maybe a usertype??
@@ -187,7 +187,7 @@ abstract class AbstractMapper {
 			// note that I would prefer to use the class instance to get the name
 			// but for other reasons I do not want to have references to the 
 			// org.eclipse.emf.teneo.hibernate plugin.
-			return "org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime";
+			return getHbmContext().getXSDDateTimeUserType();
 		}
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
 		// really wants a different mapping he/she should use maybe a usertype??
