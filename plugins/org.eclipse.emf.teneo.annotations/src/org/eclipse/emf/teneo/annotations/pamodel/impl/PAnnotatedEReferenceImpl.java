@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceImpl.java,v 1.10 2007/03/29 15:00:28 mtaal Exp $
+ * $Id: PAnnotatedEReferenceImpl.java,v 1.11 2007/04/17 15:49:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -150,6 +150,10 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 */
 	protected EList<PrimaryKeyJoinColumn> primaryKeyJoinColumns = null;
 
+	/** The pannotated eclass to which the reference is pointing */
+	private PAnnotatedEClass areferenceType = null;
+	
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -158,6 +162,19 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	protected PAnnotatedEReferenceImpl() {
 		super();
 	}
+	
+	/** Returns the eclass to which the reference is pointing */
+	public EClass getEReferenceType() {
+		return getAnnotatedEReference().getEReferenceType();
+	}
+	
+	/** Returns the annotated class to which the reference is pointing */
+	public PAnnotatedEClass getAReferenceType() {
+		if (areferenceType == null) {
+			areferenceType = getPaModel().getPAnnotated(getEReferenceType());
+		}
+		return areferenceType;
+ 	}
 
 	/**
 	 * <!-- begin-user-doc -->
