@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreUtil.java,v 1.14 2007/03/29 15:00:51 mtaal Exp $
+ * $Id: StoreUtil.java,v 1.15 2007/04/17 15:49:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -25,6 +25,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -33,6 +34,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -41,8 +43,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.StoreException;
@@ -51,7 +57,7 @@ import org.eclipse.emf.teneo.StoreException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class StoreUtil {
@@ -73,6 +79,35 @@ public class StoreUtil {
 
 	/** The Annotation source name */
 	public static final String ANNOTATION_SOURCE = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+
+	/** Reads the epackages present in the passed ecore files. */
+	public static EPackage[] readEPackages(String[] ecoreFiles) {
+		final ResourceSet resourceSet = new ResourceSetImpl();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+				.put("*", new EcoreResourceFactoryImpl());
+		final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
+		for (int i = 0; i < ecoreFiles.length; i++) {
+
+			log.debug("Reading ecore file: " + ecoreFiles[i]);
+
+			Resource res = resourceSet.getResource(URI
+					.createFileURI(ecoreFiles[i]), true);
+
+			Iterator<EObject> it = res.getAllContents();
+			while (it.hasNext()) {
+				final EObject obj = it.next();
+				if (obj instanceof EPackage) {
+					EPackage epack = (EPackage) obj;
+					EPackage epackImpl = EPackage.Registry.INSTANCE
+							.getEPackage(epack.getNsURI());
+					if (epackImpl != null) {
+						epackages.add(epackImpl);
+					}
+				}
+			}
+		}
+		return (EPackage[])epackages.toArray(new EPackage[epackages.size()]);
+	}
 
 	/**
 	 * Returns true if the passed EStructuralFeature represents a map. Note that
@@ -584,7 +619,7 @@ public class StoreUtil {
 		// walk through all the classnames
 		final ArrayList<String> newPackagePathList = new ArrayList<String>();
 		newPackagePathList.add(File.pathSeparator); // add the root package
-		
+
 		// TODO: move this to the EModelResolver!
 		final ArrayList<Class<?>> allClasses = new ArrayList<Class<?>>(
 				ERuntime.INSTANCE.getAllInterfaces());

@@ -9,7 +9,8 @@ Eclipse-BuddyPolicy: dependent
 Require-Bundle: org.eclipse.emf.common,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.teneo.libraries;visibility:=reexport
+ org.eclipse.emf.teneo.libraries;visibility:=reexport,
+ org.eclipse.core.runtime
 Eclipse-LazyStart: true
 Export-Package: org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.classloader,
