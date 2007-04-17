@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: StoreImportXML.java,v 1.2 2007/02/01 12:35:18 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * StoreImportXML.java,v 1.2 2007/02/01 12:35:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.eclipse.resourcehandler;
@@ -20,7 +12,7 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.core.internal.resources.File;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseUtil;
 import org.eclipse.jface.action.IAction;
@@ -32,15 +24,14 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ResourceSelectionDialog;
 
-/** 
- * Performs the import xml action 
+/**
+ * Performs the import xml action
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
-public abstract class StoreImportXML implements IObjectActionDelegate 
-{
+public abstract class StoreImportXML implements IObjectActionDelegate {
 	/** The logger for this class */
 	private static Log log = LogFactory.getLog(StoreImportXML.class);
 
@@ -68,50 +59,45 @@ public abstract class StoreImportXML implements IObjectActionDelegate
 	/**
 	 * @see IActionDelegate#run(IAction)
 	 */
-	public void run(IAction action) 
-	{		
-		try
-		{
+	public void run(IAction action) {
+		try {
 			final String title;
 			if (isXMLImport()) {
 				title = "Select one or more XML resources to import from.";
 			} else {
 				title = "Select one or more XMI resources to import from.";
 			}
-			
-			final ResourceSelectionDialog dialog = 
-				new ResourceSelectionDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), 
-						ResourcesPlugin.getWorkspace().getRoot(), title);
+
+			final ResourceSelectionDialog dialog = new ResourceSelectionDialog(PlatformUI
+					.getWorkbench().getActiveWorkbenchWindow().getShell(), ResourcesPlugin
+					.getWorkspace().getRoot(), title);
 			dialog.open();
 			final Object[] fileObjs = dialog.getResult();
 
 			if (fileObjs == null) return; // nothing selected
 
-			File[] files = new File[fileObjs.length];
+			IFile[] files = new IFile[fileObjs.length];
 			for (int i = 0; i < fileObjs.length; i++) {
-				files[i] = (File)fileObjs[i];
+				files[i] = (IFile) fileObjs[i];
 			}
-			
+
 			final Properties props = StoreEclipseUtil.readPropFile(selection);
 			doImport(files, props);
-		}
-		catch (Exception c)
-		{
+		} catch (Exception c) {
 			StoreEclipseUtil.handleError(c, log);
 		}
 	}
 
 	/** Imports the files into the store */
-	protected abstract void doImport(File[] files, Properties props);
-	
+	protected abstract void doImport(IFile[] files, Properties props);
+
 	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
-	public void selectionChanged(IAction action, ISelection selected) 
-	{
+	public void selectionChanged(IAction action, ISelection selected) {
 		if (!(selected instanceof IStructuredSelection)) return;
-		
-		final IStructuredSelection structSelection = (IStructuredSelection)selected;
+
+		final IStructuredSelection structSelection = (IStructuredSelection) selected;
 		selection = structSelection;
 	}
 }

@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: GenerateMappingAction.java,v 1.3 2007/02/01 12:35:18 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * GenerateMappingAction.java,v 1.3 2007/02/01 12:35:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.eclipse.genxml;
@@ -27,6 +19,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseUtil;
+import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -41,7 +34,7 @@ import org.eclipse.ui.IWorkbenchPart;
  * Is superclass for different generate descriptor file subclasses.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public abstract class GenerateMappingAction implements IObjectActionDelegate {
@@ -49,7 +42,7 @@ public abstract class GenerateMappingAction implements IObjectActionDelegate {
 	private static Log log = LogFactory.getLog(GenerateMappingAction.class);
 
 	/** The list of selected ecore files */
-	private ArrayList ecoreFiles = new ArrayList();
+	private ArrayList<IFile> ecoreFiles = new ArrayList<IFile>();
 
 	/**
 	 * Constructor for Action1.
@@ -70,30 +63,32 @@ public abstract class GenerateMappingAction implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#run(IAction)
 	 */
-	public void run(IAction action, final String targetFileName, String resultTitle1, final HashMap options, final String mainClass) {
+	public void run(IAction action, final String targetFileName, String resultTitle1,
+			final HashMap<String, String> options, final String mainClass) {
 		final StringBuffer result = new StringBuffer();
 
 		for (int i = 0; i < ecoreFiles.size(); i++) {
-			result.append(((IFile) ecoreFiles.get(i)).getLocation().toOSString());
+			result.append((ecoreFiles.get(i)).getLocation().toOSString());
 		}
 
 		if (ecoreFiles.size() == 0) {
 			Shell shell = new Shell();
-			MessageDialog.openInformation(shell, "Create EMF OR Mapping File", "Please select a ecore file.");
+			MessageDialog.openInformation(shell, "Create EMF OR Mapping File",
+					"Please select a ecore file.");
 			return;
 		}
 
 		log.debug("Generating or descriptor file based on ecores in: " + result.toString());
 
 		try {
-			final IContainer container = ((IFile) ecoreFiles.get(0)).getParent();
-			
+			final IContainer container = (ecoreFiles.get(0)).getParent();
+
 			// get the location of the ecores
 			final String[] ecoreLocations = new String[ecoreFiles.size()];
-			ArrayList jprojects = new ArrayList();
-			ArrayList projects = new ArrayList();
+			ArrayList<IJavaProject> jprojects = new ArrayList<IJavaProject>();
+			ArrayList<IProject> projects = new ArrayList<IProject>();
 			for (int i = 0; i < ecoreFiles.size(); i++) {
-				IFile ecoreFile = (IFile) ecoreFiles.get(i);
+				final IFile ecoreFile = ecoreFiles.get(i);
 				ecoreLocations[i] = ecoreFile.getLocation().toOSString();
 
 				IProject project = ecoreFile.getProject();
@@ -103,13 +98,14 @@ public abstract class GenerateMappingAction implements IObjectActionDelegate {
 				}
 			}
 
-			RunGenerateJob rgj = new RunGenerateJob(jprojects, ecoreLocations, targetFileName, mainClass, options);
+			RunGenerateJob rgj = new RunGenerateJob(jprojects, ecoreLocations, targetFileName,
+					mainClass, options);
 
-			rgj.run(null);
+			rgj.schedule();
 
 			Shell shell = new Shell();
-			MessageDialog.openInformation(shell, resultTitle1, "The " + targetFileName + " file has been created here: "
-					+ container.getName());
+			MessageDialog.openInformation(shell, resultTitle1, "The " + targetFileName
+					+ " file has been created here: " + container.getName());
 
 			// is refresh a dangerous action, eclipse crashes?
 			container.refreshLocal(IResource.DEPTH_INFINITE, null);
@@ -125,12 +121,12 @@ public abstract class GenerateMappingAction implements IObjectActionDelegate {
 		if (!(selection instanceof IStructuredSelection)) return;
 
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-		final Iterator it = structuredSelection.iterator();
-		ecoreFiles = new ArrayList();
+		final Iterator<?> it = structuredSelection.iterator();
+		ecoreFiles = new ArrayList<IFile>();
 		while (it.hasNext()) {
 			final Object obj = it.next();
 			if (obj instanceof IFile) {
-				ecoreFiles.add(obj);
+				ecoreFiles.add((IFile) obj);
 			}
 		}
 	}
