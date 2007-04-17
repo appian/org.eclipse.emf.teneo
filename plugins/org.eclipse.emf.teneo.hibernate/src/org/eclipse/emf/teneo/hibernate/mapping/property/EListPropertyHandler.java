@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: EListPropertyHandler.java,v 1.12 2007/03/20 23:33:48 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * EListPropertyHandler.java,v 1.12 2007/03/20 23:33:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -47,9 +39,6 @@ import org.eclipse.emf.teneo.util.FieldUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.PropertyNotFoundException;
-import org.hibernate.collection.PersistentBag;
-import org.hibernate.collection.PersistentList;
-import org.hibernate.collection.PersistentMap;
 import org.hibernate.engine.SessionFactoryImplementor;
 import org.hibernate.engine.SessionImplementor;
 import org.hibernate.property.Getter;
@@ -57,15 +46,12 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * Implements the accessor for EMF EList members for Hibernate. This can be an
- * EReference or an Eattribute with many=true.
- * 
- * This class implements both the getter, setter and propertyaccessor
- * interfaces. When the getGetter and getSetter methods are called it returns
- * itself.
+ * Implements the accessor for EMF EList members for Hibernate. This can be an EReference or an
+ * Eattribute with many=true. This class implements both the getter, setter and propertyaccessor
+ * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -104,22 +90,18 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
-	 *      java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
-	public Getter getGetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
-	 *      java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
-	public Setter getSetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -135,18 +117,17 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 			return ((PersistableDelegateList) obj).getDelegate();
 		}
 		if (obj instanceof EcoreEMap && newEMapMapping) {
-			return ((EcoreEMap<?, ?>)obj).map();
+			return ((EcoreEMap<?, ?>) obj).map();
 		}
-		if (obj instanceof BasicFeatureMap){ // this one is replaced here because the entries need to be changed to hibernate entries
+		if (obj instanceof BasicFeatureMap) { // this one is replaced here because the entries
+			// need to be changed to hibernate entries
 			final PersistableDelegateList pelist = (PersistableDelegateList) createPersistableList(
 					(InternalEObject) owner, eFeature, (List) obj);
 			final EObject eobj = (EObject) owner;
 			if (eobj.eClass().getClassifierID() < 0
-					&& !EcoreAccess.isStaticFeature(eFeature,
-							(BasicEObjectImpl) eobj)) {
+					&& !EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) eobj)) {
 				log.debug("Dynamic elist, set using the esettings");
-				EcoreAccess.setManyEFeatureValue(eFeature, pelist,
-						(BasicEObjectImpl) owner);
+				EcoreAccess.setManyEFeatureValue(eFeature, pelist, (BasicEObjectImpl) owner);
 			} else {
 				// TODO: currently it is required to use the field setter
 				// instead of the eSet method
@@ -159,16 +140,13 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 				// interface while there
 				// are multiple implementors. FieldUtil does caching of
 				// fieldnames and fields.
-				final Field javaField = FieldUtil.getField(owner.getClass(),
-						eFeature.getName());
+				final Field javaField = FieldUtil.getField(owner.getClass(), eFeature.getName());
 				try {
 					javaField.set(owner, pelist);
 				} catch (Exception e) {
-					throw new HbMapperException("The field "
-							+ javaField.getName()
-							+ " can not be set using object "
-							+ pelist.getClass().getName() + " on target "
-							+ owner.getClass().getName(), e);
+					throw new HbMapperException("The field " + javaField.getName()
+							+ " can not be set using object " + pelist.getClass().getName()
+							+ " on target " + owner.getClass().getName(), e);
 				}
 			}
 		}
@@ -178,27 +156,27 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
-	 *      java.util.Map, org.hibernate.engine.SessionImplementor)
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
+	 *      org.hibernate.engine.SessionImplementor)
 	 */
-	public Object getForInsert(Object owner, Map mergeMap,
-			SessionImplementor session) throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session)
+			throws HibernateException {
 		final Object obj = ((EObject) owner).eGet(eFeature);
 		if (obj instanceof PersistableDelegateList) {
 			return ((PersistableDelegateList) obj).getDelegate();
 		}
 		if (obj instanceof EcoreEMap && newEMapMapping) {
-			return ((EcoreEMap<?, ?>)obj).map();
+			return ((EcoreEMap<?, ?>) obj).map();
 		}
-		
-		// if this is a elist then give a normal arraylist to 
+
+		// if this is a elist then give a normal arraylist to
 		// hibernate otherwise hb will wrap the elist, the hb wrapper
 		// is again wrapped by teneo resulting in notifications being send
 		// out by both the teneo wrapper as the wrapped elist
 		if (obj instanceof EList<?>) {
-			return new ArrayList((List)obj); 
+			return new ArrayList((List) obj);
 		}
-		
+
 		// todo maybe throw error in all other cases?
 		return obj;
 	}
@@ -233,31 +211,27 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Setter#set(java.lang.Object,
-	 *      java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
+	 *      org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value,
-			SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value, SessionFactoryImplementor factory)
+			throws HibernateException {
 		if (((EObject) target).eClass().getClassifierID() < 0
-				&& !EcoreAccess.isStaticFeature(eFeature,
-						(BasicEObjectImpl) target)) {
+				&& !EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) target)) {
 			log.debug("Dynamic elist, set using the esettings");
-			final Object currentValue = EcoreAccess.getManyEFeatureValue(
-					eFeature, (BasicEObjectImpl) target);
+			final Object currentValue = EcoreAccess.getManyEFeatureValue(eFeature,
+					(BasicEObjectImpl) target);
 
 			// if currentvalue is not null then use the passed value
-			if (currentValue != null
-					&& currentValue instanceof PersistableEList) {
+			if (currentValue != null && currentValue instanceof PersistableEList) {
 				((PersistableEList) currentValue).replaceDelegate((List) value);
 			} else {
-				EcoreAccess.setManyEFeatureValue(eFeature,
-						createPersistableList((InternalEObject) target,
-								eFeature, (List) value),
+				EcoreAccess.setManyEFeatureValue(eFeature, createPersistableList(
+						(InternalEObject) target, eFeature, (List) value),
 						(BasicEObjectImpl) target);
 			}
-			log.debug("Set value " + value.getClass().getName()
-					+ " for target " + target.getClass().getName() + " field "
-					+ eFeature.getName());
+			log.debug("Set value " + value.getClass().getName() + " for target "
+					+ target.getClass().getName() + " field " + eFeature.getName());
 
 		} else {
 			// the reason that the javafield is determined here and not at
@@ -266,8 +240,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 			// while there
 			// are multiple implementors. FieldUtil does caching of fieldnames
 			// and fields.
-			final Field javaField = FieldUtil.getField(target.getClass(),
-					eFeature.getName());
+			final Field javaField = FieldUtil.getField(target.getClass(), eFeature.getName());
 
 			try {
 				final Object currentValue = javaField.get(target);
@@ -278,56 +251,43 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 				}
 
 				// the delegating map was passed to hibernate, now getting it back
-				if (value instanceof EMap.InternalMapView<?, ?> &&
-						(currentValue == ((EMap.InternalMapView<?, ?>)value).eMap())) {
-					return;
-				}
-				
-				// already handled
-				if (currentValue instanceof PersistableDelegateList<?> &&
-						value == ((PersistableDelegateList<?>)currentValue).getDelegate()) {
+				if (value instanceof EMap.InternalMapView<?, ?>
+						&& (currentValue == ((EMap.InternalMapView<?, ?>) value).eMap())) {
 					return;
 				}
 
-				// the follow 3 if statements handle the refresh action, the underlying orm 
+				// already handled
+				if (currentValue instanceof PersistableDelegateList<?>
+						&& value == ((PersistableDelegateList<?>) currentValue).getDelegate()) {
+					return;
+				}
+
+				// the follow 3 if statements handle the refresh action, the underlying orm
 				// collection is replaced
-				if (currentValue != null
-						&& currentValue instanceof PersistableEList
-						&& value != ((PersistableEList) currentValue)
-								.getDelegate()) {
-					((PersistableEList) currentValue)
-							.replaceDelegate((List) value);
-				} else if (currentValue != null
-						&& currentValue instanceof PersistableEMap
-						&& value != ((PersistableEMap) currentValue)
-								.getDelegate()) {
+				if (currentValue != null && currentValue instanceof PersistableEList
+						&& value != ((PersistableEList) currentValue).getDelegate()) {
+					((PersistableEList) currentValue).replaceDelegate((List) value);
+				} else if (currentValue != null && currentValue instanceof PersistableEMap
+						&& value != ((PersistableEMap) currentValue).getDelegate()) {
 					((PersistableEMap) currentValue).replaceDelegate(value);
-				} else if (currentValue != null
-						&& currentValue instanceof MapPersistableEMap
-						&& value != ((MapPersistableEMap) currentValue)
-								.getORMMapDelegate()) {
+				} else if (currentValue != null && currentValue instanceof MapPersistableEMap
+						&& value != ((MapPersistableEMap) currentValue).getORMMapDelegate()) {
 					((PersistableEMap) currentValue).replaceDelegate(value);
 				} else { // then wrap the hibernate collection
-					assert(value instanceof PersistentList || value instanceof PersistentMap ||
-							value instanceof PersistentBag);
 					if (value instanceof Map) {
-						javaField.set(target,
-								createPersistableMap((InternalEObject) target,
-										eFeature, (Map) value));
+						javaField.set(target, createPersistableMap((InternalEObject) target,
+								eFeature, (Map) value));
 					} else {
-						javaField.set(target, createPersistableList(
-								(InternalEObject) target, eFeature,
-								(List) value));
+						javaField.set(target, createPersistableList((InternalEObject) target,
+								eFeature, (List) value));
 					}
 				}
-				log.debug("Set value " + value.getClass().getName()
-						+ " for target " + target.getClass().getName()
-						+ " field " + eFeature.getName());
+				log.debug("Set value " + value.getClass().getName() + " for target "
+						+ target.getClass().getName() + " field " + eFeature.getName());
 			} catch (Exception e) {
-				throw new HbMapperException("The field + "
-						+ javaField.getName() + " can not be set using object "
-						+ value.getClass().getName() + " on target "
-						+ target.getClass().getName(), e);
+				throw new HbMapperException("The field + " + javaField.getName()
+						+ " can not be set using object " + value.getClass().getName()
+						+ " on target " + target.getClass().getName(), e);
 			}
 		}
 	}
@@ -335,19 +295,17 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	/**
 	 * Create a EMap. Create method can be overridden
 	 */
-	protected EList createPersistableMap(InternalEObject target,
-			EStructuralFeature estruct, Map map) {
+	protected EList createPersistableMap(InternalEObject target, EStructuralFeature estruct, Map map) {
 		final EReference eref = (EReference) estruct;
 		log.debug("Detected EMAP for " + estruct.getName());
 		assert (isAMap);
 		assert (newEMapMapping);
-		return new MapHibernatePersistableEMap<Object, Object>(target, eref,
-				map);
+		return new MapHibernatePersistableEMap<Object, Object>(target, eref, map);
 	}
 
 	/** Creates a persistablemap or list */
-	protected EList createPersistableList(InternalEObject target,
-			EStructuralFeature estruct, List list) {
+	protected EList createPersistableList(InternalEObject target, EStructuralFeature estruct,
+			List list) {
 		if (estruct instanceof EReference) {
 			final EReference eref = (EReference) estruct;
 			// the test for emap checks: the entry class must have a
@@ -356,8 +314,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 			// value
 			if (StoreUtil.isMap(estruct)) {
 				log.debug("Detected EMAP for " + estruct.getName());
-				return new HibernatePersistableEMap<Object, Object>(target,
-						eref, list);
+				return new HibernatePersistableEMap<Object, Object>(target, eref, list);
 			}
 		}
 		if (extraLazy) {

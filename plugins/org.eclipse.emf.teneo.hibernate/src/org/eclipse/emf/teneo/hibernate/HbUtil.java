@@ -11,12 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.15 2007/03/29 14:59:40 mtaal Exp $
+ * $Id: HbUtil.java,v 1.16 2007/04/17 15:49:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
-import java.lang.reflect.Method;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -50,7 +49,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class HbUtil {
 

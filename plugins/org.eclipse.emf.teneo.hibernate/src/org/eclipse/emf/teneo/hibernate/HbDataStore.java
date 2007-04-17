@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.20 2007/04/07 12:43:51 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.21 2007/04/17 15:49:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -39,7 +39,6 @@ import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
@@ -81,7 +80,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public abstract class HbDataStore {
 

@@ -15,10 +15,10 @@ import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.hibernate.HibernateException;
 
 /**
- * Stores a 
+ * Stores a java enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ $Date: 2007/02/08 23:11:37 $
+ * @version $Revision: 1.6 $ $Date: 2007/04/17 15:49:44 $
  */
 
 public class ENumUserIntegerType extends ENumUserType {
