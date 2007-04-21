@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.8.2.1 2007/04/21 09:19:09 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.8.2.2 2007/04/21 09:24:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -64,7 +64,7 @@ import org.jpox.store.query.ResultObjectFactory;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8.2.1 $ $Date: 2007/04/21 09:19:09 $
+ * @version $Revision: 1.8.2.2 $ $Date: 2007/04/21 09:24:28 $
  */
 
 public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList {
@@ -418,7 +418,7 @@ public class EListWrapper extends PersistableEList implements SCO, Queryable, SC
 		// if not loaded then nothing changed so nothing to attach
 		if (value instanceof PersistableEList && !((PersistableEList) value).isLoaded()) {
 			return;
-		}
+		} 
 
 		java.util.Collection c = (java.util.Collection) value;
 
