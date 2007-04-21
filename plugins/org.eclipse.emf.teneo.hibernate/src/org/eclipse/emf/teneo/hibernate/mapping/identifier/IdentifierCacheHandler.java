@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdentifierCacheHandler.java,v 1.4.2.1 2007/02/11 19:05:39 mtaal Exp $
+ * $Id: IdentifierCacheHandler.java,v 1.4.2.2 2007/04/21 09:00:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
@@ -26,7 +26,6 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
@@ -35,7 +34,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4.2.1 $
+ * @version $Revision: 1.4.2.2 $
  */
 
 public class IdentifierCacheHandler {

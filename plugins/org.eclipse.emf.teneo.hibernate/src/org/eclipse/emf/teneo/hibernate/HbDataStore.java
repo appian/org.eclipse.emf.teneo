@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.14.2.1 2007/04/17 16:00:48 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.14.2.2 2007/04/21 09:00:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -84,7 +84,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14.2.1 $
+ * @version $Revision: 1.14.2.2 $
  */
 
 public class HbDataStore {
@@ -143,7 +143,7 @@ public class HbDataStore {
 	private HbContext hbContext = new HbContextImpl();
 
 	/** Initializes this Data Store */
-	public final void initialize() {
+	public void initialize() {
 		// check a few things
 		if (getEPackages() == null)
 			throw new HbMapperException("EPackages are not set");
@@ -181,8 +181,6 @@ public class HbDataStore {
 
 		log.debug("Registering datastore with persistent classes");
 		HbHelper.INSTANCE.registerDataStoreByPC(this);
-
-		System.err.println(mappingXML);
 		
 		// wait for the session factory until the database is (re)created
 		if (sessionFactory != null && !sessionFactory.isClosed())
