@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapMapping.java,v 1.5.2.1 2007/03/04 21:20:47 mtaal Exp $
+ * $Id: FeatureMapMapping.java,v 1.5.2.2 2007/04/21 09:19:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -104,10 +105,25 @@ class FeatureMapMapping {
 					|| StoreUtil.isElementOfGroup(eFeature, paAttribute.getAnnotatedEAttribute())) {
 				log.debug("Feature " + StoreUtil.toString(eFeature) + " belongs to this featuremap");
 				// temporarily remove the transient otherwise the feature is not processed
+
+				Id id = null;
+				if (paFeature instanceof PAnnotatedEAttribute
+						&& ((PAnnotatedEAttribute) paFeature).getId() != null) {
+					//Feature is an id, ignoring it for the featuremap
+					id = ((PAnnotatedEAttribute) paFeature).getId();
+				}
+
 				Transient tt = paFeature.getTransient();
 				paFeature.setTransient(null);
-				fp.process(paFeature);
-				paFeature.setTransient(tt);
+				try {
+					fp.process(paFeature);
+				} finally {
+					// and set the temp values back
+					paFeature.setTransient(tt);
+					if (id != null) {
+						((PAnnotatedEAttribute) paFeature).setId(id);
+					}
+				}
 			}
 		}
 
