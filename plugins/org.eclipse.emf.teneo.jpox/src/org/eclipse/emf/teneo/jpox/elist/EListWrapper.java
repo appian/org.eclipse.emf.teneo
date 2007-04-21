@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListWrapper.java,v 1.9 2007/02/08 23:14:52 mtaal Exp $
+ * $Id: EListWrapper.java,v 1.8.2.1 2007/04/21 09:19:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -64,16 +64,10 @@ import org.jpox.store.query.ResultObjectFactory;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $ $Date: 2007/02/08 23:14:52 $
+ * @version $Revision: 1.8.2.1 $ $Date: 2007/04/21 09:19:09 $
  */
 
-public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryable, SCOList {
-
-	/**
-	 * Generated Serial Version ID
-	 */
-	private static final long serialVersionUID = -6719775217240311479L;
-
+public class EListWrapper extends PersistableEList implements SCO, Queryable, SCOList {
 	/** The logger */
 	private static Log log = LogFactory.getLog(EListWrapper.class);
 
@@ -104,7 +98,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 *            The name of the field of the SCO.
 	 */
 	public EListWrapper(StateManager ownerSM, String fieldName) {
-		this(ownerSM, fieldName, new ArrayList<E>());
+		this(ownerSM, fieldName, new ArrayList());
 	}
 
 	/**
@@ -115,9 +109,9 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * @param fieldName
 	 *            The name of the field of the SCO.
 	 */
-	public EListWrapper(StateManager ownerSM, String fieldName, List<E> list) {
+	public EListWrapper(StateManager ownerSM, String fieldName, List list) {
 		super((InternalEObject) ownerSM.getObject(), StoreUtil.getEStructuralFeature((InternalEObject) ownerSM
-				.getObject(), fieldName), new ArrayList<E>(list));
+				.getObject(), fieldName), new ArrayList(list));
 
 		AssertUtil.assertTrue("The delegate may not be an elistwrapper", !(getDelegate() instanceof EListWrapper));
 
@@ -128,7 +122,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 		jdoDelegate = new JPOXArrayList(ownerSM, fieldName);
 		elistFieldName = fieldName;
 
-		final Class<?> elementType = getEStructuralFeature().getEType().getInstanceClass();
+		final Class elementType = getEStructuralFeature().getEType().getInstanceClass();
 		isEObjectList = elementType == EObject.class; // AnyTypeEObject.class;
 		isObjectList = elementType == Object.class; // AnyTypeEObject.class;
 
@@ -145,8 +139,8 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * @param fieldName
 	 *            The name of the field of the SCO.
 	 */
-	private EListWrapper(EListWrapper<E> copyFrom) {
-		super((InternalEObject) copyFrom.getEObject(), copyFrom.getEStructuralFeature(), new ArrayList<E>());
+	private EListWrapper(EListWrapper copyFrom) {
+		super((InternalEObject) copyFrom.getEObject(), copyFrom.getEStructuralFeature(), new ArrayList());
 		containmentList = copyFrom.containmentList;
 		jdoDelegate = new JPOXArrayList(copyFrom.stateManager, copyFrom.elistFieldName);
 		isEObjectList = copyFrom.isEObjectList;
@@ -236,9 +230,8 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	/**
 	 * Method to return a detached copy of the list.
 	 */
-	@SuppressWarnings({"unchecked", "serial"})
 	public Object detachCopy(FetchPlanState state) {
-		final ArrayList<E> detached = new ArrayList<E>();
+		final ArrayList detached = new ArrayList();
 		final Object[] values = toArray();
 		for (int i = 0; i < values.length; i++) {
 			if (values[i] == null) {
@@ -246,9 +239,9 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 			} else {
 				Object object = values[i];
 				if (object instanceof PersistenceCapable) {
-					detached.add((E)stateManager.getPersistenceManager().detachCopyInternal(object, state));
+					detached.add(stateManager.getPersistenceManager().detachCopyInternal(object, state));
 				} else {
-					detached.add((E)object);
+					detached.add(object);
 				}
 			}
 		}
@@ -257,8 +250,8 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 		// are supported
 		final EStructuralFeature feature = getEStructuralFeature();
 		final InternalEObject myOwner = (InternalEObject) getOwner();
-		final EList<E> elist = new DelegatingEcoreEList<E>(myOwner) {
-			protected List<E> delegateList() {
+		final EList elist = new DelegatingEcoreEList(myOwner) {
+			protected List delegateList() {
 				return detached;
 			}
 
@@ -283,7 +276,6 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * @param reachables
 	 *            List of StateManagers reachable so far
 	 */
-	@SuppressWarnings("unchecked")
 	public void runReachability(java.util.Set reachables) {
 		Object[] values = toArray();
 		for (int i = 0; i < values.length; i++) {
@@ -319,7 +311,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 
 	/** Clones this object */
 	public Object clone() {
-		return new EListWrapper<E>(this);
+		return new EListWrapper(this);
 	}
 
 	/**
@@ -328,9 +320,8 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * @param o
 	 *            The object to set from
 	 */
-	@SuppressWarnings("unchecked")
 	public void setValueFrom(Object o) {
-		Collection<E> c = (Collection<E>) o;
+		Collection c = (Collection) o;
 		clear();
 		delegate.addAll(c);
 	}
@@ -394,7 +385,6 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * 
 	 * @see org.jpox.sco.SCO#setValueFrom(java.lang.Object, boolean)
 	 */
-	@SuppressWarnings("unchecked")
 	public void setValueFrom(Object arg0, boolean arg1) throws ClassCastException {
 		final Collection c = (Collection) arg0;
 		if (arg1) {
@@ -411,7 +401,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * 
 	 * @see org.jpox.sco.SCOCollection#getElementType()
 	 */
-	public Class<?> getElementType() {
+	public Class getElementType() {
 		return getEStructuralFeature().getEType().getInstanceClass();
 	}
 
@@ -424,12 +414,11 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * @param makeTransactional
 	 *            Whether to make this transactional
 	 */
-	@SuppressWarnings("unchecked")
 	public void attachCopy(Object value) {
 		// if not loaded then nothing changed so nothing to attach
-		assert (value instanceof PersistableEList);
-		if (!((PersistableEList) value).isLoaded())
+		if (value instanceof PersistableEList && !((PersistableEList) value).isLoaded()) {
 			return;
+		}
 
 		java.util.Collection c = (java.util.Collection) value;
 
@@ -471,7 +460,6 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 *            whether to use the fetch plan to retrieve fields in the same query
 	 * @return The ResultObjectFactory
 	 */
-	@SuppressWarnings("unchecked")
     public synchronized ResultObjectFactory newResultObjectFactory(
             QueryExpression stmt, boolean ignoreCache, Class resultClass, boolean useFetchPlan) {
 		if (jdoDelegate == null) {
@@ -517,7 +505,6 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 *            The candidate class
 	 * @return The QueryStatement
 	 */
-	@SuppressWarnings("unchecked")
 	public synchronized QueryExpression newQueryStatement(Class candidate_class) {
 		if (jdoDelegate == null) {
 			throw new QueryUnownedSCOException();
@@ -529,7 +516,6 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	// the store ------------------------
 
 	/** Does the actual loading from the store in a synchronized manner */
-	@SuppressWarnings("unchecked")
 	protected synchronized void doLoad() {
 		AssertUtil.assertTrue("EList " + getLogString() + " is already loaded", !isLoaded());
 
@@ -541,8 +527,8 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 
 		// note add directly to the delegate to prevent infinite looping and
 		// notifications
-		final List<E> list = getDelegate();
-		final Iterator<?> iter = jdoDelegate.iterator();
+		final List list = getDelegate();
+		final Iterator iter = jdoDelegate.iterator();
 		while (iter.hasNext()) {
 			Object child = iter.next();
 
@@ -553,7 +539,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 			} else if (child instanceof AnyTypeObject) {
 				child = ((AnyTypeObject) child).getObject();
 			}
-			list.add((E)child);
+			list.add(child);
 		}
 
 		final Iterator it = getDelegate().iterator();
@@ -589,7 +575,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#didAdd(int, java.lang.Object)
 	 */
-	protected void didAdd(int index, E newObject) {
+	protected void didAdd(int index, Object newObject) {
 		if (jdoDelegate != null)
 			jdoDelegate.add(index, replaceForAnyType(newObject));
 		super.didAdd(index, newObject);
@@ -627,7 +613,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 			if (!isOwnerDetached()) {
 				// check which part of the list is persistencecapable!
 				// only that part should be deleted
-				final ArrayList<Object> pcList = new ArrayList<Object>();
+				final ArrayList pcList = new ArrayList();
 				for (int i = 0; i < oldObjects.length; i++) {
 					if (oldObjects[i] instanceof PersistenceCapable) {
 						pcList.add(oldObjects[i]);
@@ -644,7 +630,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#didMove(int, java.lang.Object, int)
 	 */
-	protected void didMove(int index, E movedObject, int oldIndex) {
+	protected void didMove(int index, Object movedObject, int oldIndex) {
 		if (jdoDelegate != null) {
 			// note that the object moved/removed from the jdo delegate can be
 			// different from the
@@ -665,7 +651,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#didRemove(int, java.lang.Object)
 	 */
-	protected void didRemove(int index, E oldObject) {
+	protected void didRemove(int index, Object oldObject) {
 		// note that the object removed from the jdo delegate can be different
 		// from the
 		// one stored in this list (because of handling anytype), therefore
@@ -690,7 +676,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * 
 	 * @see org.eclipse.emf.common.util.DelegatingEList#didSet(int, java.lang.Object, java.lang.Object)
 	 */
-	protected void didSet(int index, E newObject, E oldObject) {
+	protected void didSet(int index, Object newObject, Object oldObject) {
 		// not that the object removed from the jdo delegate can be different
 		// from the
 		// one stored in this list (because of handling anytype)
