@@ -10,8 +10,8 @@ import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 
 /**
- * This implementation assumes that EClass names are unique. It will (de)Resolve
- * using the EClass name.
+ * This implementation assumes that EClass names are unique. It will (de)Resolve using the EClass
+ * name.
  * 
  * @author <a href="lmfridael@elver.org">Laurens Fridael</a>
  * @author <a href="mtaal@elver.org">Martin Taal</a>
@@ -70,38 +70,34 @@ public class DefaultEClassNameStrategy implements EClassNameStrategy {
 
 		// now try all epackages
 		EClass eClass = null;
-		for (int i = 0; i < epackages.length; i++) {
-			final EPackage ePackage = epackages[i];
+		for (final EPackage ePackage : epackages) {
 			final EClassifier eClassifier = ePackage.getEClassifier(eClassName);
 			if (eClassifier instanceof EClass) {
 				if (eClass != null) {
 					// doubly entry! Actually require different resolver
 					throw new IllegalArgumentException(
-							"There is more than one EClass with the same name ("
-									+ eClassName
-									+ " in EPackage "
-									+ eClass.getEPackage().getName()
-									+ " and "
+							"There is more than one EClass with the same name (" + eClassName
+									+ " in EPackage " + eClass.getEPackage().getName() + " and "
 									+ ePackage.getName()
 									+ ". A different EClassResolver should be used.");
 				}
 				eClass = (EClass) eClassifier;
 			}
 		}
-		
+
 		// we didn'y find it, perhaps it is fully qualified, lets try by full class name
 		if (eClass == null) {
 			try {
 				final Class<?> cls = ClassLoaderResolver.classForName(eClassName);
 				eClass = EModelResolver.instance().getEClass(cls);
 			} catch (StoreClassLoadException e) {
-				log.debug("Failed to retreive ECLass for name: " + eClassName);
+				log.debug("Failed to retreive ECLass for name: " + eClassName
+						+ ". This is no problem if this is a featuremap.");
 			}
 		}
-		
+
 		if (eClass == null) {
-			throw new IllegalArgumentException("No EClass found using "
-					+ eClassName);
+			throw new IllegalArgumentException("No EClass found using " + eClassName);
 		}
 		return eClass;
 	}
