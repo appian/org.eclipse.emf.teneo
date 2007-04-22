@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: DefaultAnnotator.java,v 1.25.2.9 2007/03/30 15:39:09 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.25.2.10 2007/04/22 20:57:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -82,7 +82,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25.2.9 $
+ * @version $Revision: 1.25.2.10 $
  */
 public class DefaultAnnotator {
 
@@ -680,6 +680,15 @@ public class DefaultAnnotator {
 		log.debug("EAttribute " + logStr + " needs a onetomany");
 
 		final EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();
+
+		// there can be many enums
+		if (eAttribute.getEType() instanceof EEnum && aAttribute.getEnumerated() == null) {
+			final Enumerated enumerated = aFactory.createEnumerated();
+			enumerated.setValue(EnumType.STRING_LITERAL);
+			enumerated.setEModelElement(eAttribute);
+			aAttribute.setEnumerated(enumerated);
+		}
+
 		OneToMany otm = aAttribute.getOneToMany();
 		final boolean otmWasSet = otm != null; // otm was set manually
 		if (otm == null) {
