@@ -13,7 +13,7 @@
  *   Brian Vetter (bugzilla 175909)
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.10.2.1 2007/03/05 18:07:36 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.10.2.2 2007/04/22 20:56:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -25,10 +25,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
+import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
@@ -103,6 +106,8 @@ abstract class AbstractMapper {
 					typeElement.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
 				}
 			}
+		} else if (paAttribute.getEnumerated() != null) {
+			typeEnum(paAttribute, propElement);
 		} else {
 			final String hType = hbType(paAttribute);
 			if (hType != null) {
@@ -150,47 +155,100 @@ abstract class AbstractMapper {
 		} else if (eDataType.getInstanceClass() != null && eDataType.getInstanceClass() == Object.class) {
 			// null forces caller to use usertype
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
-		} else if (eDataType.getInstanceClass() != null) {
+		} else if (eDataType.getInstanceClass() != null) { // handle arrays
+			if (eDataType.getInstanceClass().isArray()) {
+				// get rid of the [] at the end
+				return eAttribute.getEType().getInstanceClassName().substring(0,
+						eAttribute.getEType().getInstanceClassName().length() - 2);
+			}
 			return eDataType.getInstanceClassName();
 		} else {
 			// all edatatypes are translatable to a string, done by caller
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
 		}
 	}
-	
+
+	/** Handle an enum type */
+	private void typeEnum(PAnnotatedEAttribute paAttribute, Element propElement) {
+		final Enumerated enumerated = paAttribute.getEnumerated();
+		final EClassifier eclassifier = paAttribute.getAnnotatedEAttribute().getEType();
+		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
+		if (getHbmContext().isEasyEMFGenerated(eclassifier)) {
+			final Class instanceClass = getHbmContext().getImpl(eclassifier);
+			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated)).addElement("param")
+					.addAttribute("name", "enumClassName").addText(instanceClass.getName());
+		} else if (getHbmContext().isEasyEMFDynamic(eclassifier)) {
+			final Element typeElement = propElement.addElement("type").addAttribute("name",
+					hbDynamicEnumType(enumerated));
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
+					paAttribute.getAnnotatedEAttribute().getEType().getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
+					paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
+		} else if (getHbmContext().isEMFGenerated(eclassifier)) {
+			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated)).addElement("param")
+					.addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
+							eattr.getEType().getInstanceClass().getName());
+		} else { // must be emf dynamic
+			final Element typeElement = propElement.addElement("type").addAttribute("name",
+					hbDynamicEnumType(enumerated));
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
+					paAttribute.getAnnotatedEAttribute().getEType().getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
+					paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
+		}
+	}
+
+	/** Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type. */
+	protected String hbDynamicEnumType(Enumerated enumerated) {
+		if (EnumType.STRING == enumerated.getValue().getValue()) {
+			return getHbmContext().getDynamicEnumUserType();
+		} else {
+			return getHbmContext().getDynamicEnumIntegerUserType();
+		}
+	}
+
+	/** Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type. */
+	public String getEnumUserType(Enumerated enumerated) {
+		if (EnumType.STRING == enumerated.getValue().getValue()) {
+			return getHbmContext().getEnumUserType();
+		} else {
+			return getHbmContext().getEnumIntegerUserType();
+		}
+	}
+
 	/*
 	 * @return The name of the java class needed to map the date type
 	 */
 	public String getEDateClass(EDataType eDataType) {
-		assert(EcoreDataTypes.INSTANCE.isEDate(eDataType));
+		assert (EcoreDataTypes.INSTANCE.isEDate(eDataType));
 		// only override if the user did not specify a more specific class
 		if (eDataType.getInstanceClass() == Object.class) {
 			// EMF returns an XSD Date type as an Object instance. go figure.
 			// note that I would prefer to use the class instance to get the name
-			// but for other reasons I do not want to have references to the 
+			// but for other reasons I do not want to have references to the
 			// org.eclipse.emf.teneo.hibernate plugin.
 			return "org.eclipse.emf.teneo.hibernate.mapping.XSDDate";
 		}
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
 		// really wants a different mapping he/she should use maybe a usertype??
-		return Date.class.getName();		
+		return Date.class.getName();
 	}
 
 	/*
 	 * @return The name of the java class needed to map the datetime/timestamp type
 	 */
 	public String getEDateTimeClass(EDataType eDataType) {
-		assert(EcoreDataTypes.INSTANCE.isEDateTime(eDataType));
+		assert (EcoreDataTypes.INSTANCE.isEDateTime(eDataType));
 		if (eDataType.getInstanceClass() == Object.class) {
 			// EMF returns an XSD Date type as an Object instance. go figure.
 			// note that I would prefer to use the class instance to get the name
-			// but for other reasons I do not want to have references to the 
+			// but for other reasons I do not want to have references to the
 			// org.eclipse.emf.teneo.hibernate plugin.
 			return "org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime";
 		}
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
 		// really wants a different mapping he/she should use maybe a usertype??
-		return Timestamp.class.getName();		
+		return Timestamp.class.getName();
 	}
 
 	/**

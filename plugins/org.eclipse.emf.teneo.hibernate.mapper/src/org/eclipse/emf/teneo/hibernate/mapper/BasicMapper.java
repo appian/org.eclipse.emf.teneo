@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.8.2.1 2007/03/30 15:38:48 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.8.2.2 2007/04/22 20:56:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class BasicMapper extends AbstractPropertyMapper {
+class BasicMapper extends AbstractMapper {
 
 	/** Log it all */
 	private static final Log log = LogFactory.getLog(BasicMapper.class);
