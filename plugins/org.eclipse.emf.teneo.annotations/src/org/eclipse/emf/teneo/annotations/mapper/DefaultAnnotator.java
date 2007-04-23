@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- * 
- * $Id: DefaultAnnotator.java,v 1.42 2007/04/07 12:42:39 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * DefaultAnnotator.java,v 1.42 2007/04/07 12:42:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -20,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -80,17 +71,17 @@ import org.eclipse.emf.teneo.util.SQLCaseStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * Adds default annotations to an existing pamodel. Default annotations are
- * added on the basis of the emf type information. It sets the default
- * annotations according to the ejb3 spec.
+ * Adds default annotations to an existing pamodel. Default annotations are added on the basis of
+ * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.42 $
+ * @version $Revision: 1.43 $
  */
 public class DefaultAnnotator {
 
 	/** The source of the annotations of extended metadata used by emf */
-	private static final String ANNOTATION_SOURCE_METADATA = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+	private static final String ANNOTATION_SOURCE_METADATA =
+			"http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 
 	/** The annotation source used to read additional facets */
 	private static final String FACET_SOURCE_LIST = "http://facet.elver.org/List";
@@ -153,34 +144,31 @@ public class DefaultAnnotator {
 	private boolean optionAlsoMapAsClass = false;
 
 	/** Convenience link to pamodel factory */
-	private PannotationFactory aFactory = PannotationFactory.eINSTANCE;
+	private final PannotationFactory aFactory = PannotationFactory.eINSTANCE;
 
 	/** The annotated model which is being processed */
 	private PAnnotatedModel annotatedModel;
 
 	/**
-	 * The list of processed eclasses, is used to ensure that a superclass is
-	 * done before a subclass
+	 * The list of processed eclasses, is used to ensure that a superclass is done before a subclass
 	 */
-	private ArrayList<PAnnotatedEClass> processedAClasses = new ArrayList<PAnnotatedEClass>();
+	private final ArrayList<PAnnotatedEClass> processedAClasses = new ArrayList<PAnnotatedEClass>();
 
 	// todo: enable this again
 	// private HashMap entityNames;
 
 	/**
-	 * Adds default annotations to a pamodel, the method is synchronized because
-	 * globals are set. Not necessary because this class should always be used
-	 * single threaded but okay.
+	 * Adds default annotations to a pamodel, the method is synchronized because globals are set.
+	 * Not necessary because this class should always be used single threaded but okay.
 	 */
-	public synchronized void map(PAnnotatedModel annotatedModel,
-			PersistenceOptions po) {
+	public synchronized void map(PAnnotatedModel annotatedModel, PersistenceOptions po) {
 
 		// check if the emodelresolver has been set, if not then
 		// use the ERuntime as the default
 		try {
 			if (EModelResolver.instance() == null) { // fails anyway but this
-														// will not be optimised
-														// away
+				// will not be optimised
+				// away
 				// set the eruntime as the default emodel resolver!
 				ERuntime.setAsEModelResolver();
 			}
@@ -199,22 +187,18 @@ public class DefaultAnnotator {
 			epacks[cnt++] = apack.getAnnotatedEPackage();
 		}
 
-		log
-				.debug("Registering epackages in model resolver, modelresolver instance is: "
-						+ EModelResolver.instance().getClass().getName());
+		log.debug("Registering epackages in model resolver, modelresolver instance is: "
+				+ EModelResolver.instance().getClass().getName());
 		EModelResolver.instance().register(epacks);
 
 		// if force fully classify typename then use the EModelResolver/ERuntime
 		if (optionAlsoMapAsClass) {
-			log
-					.debug("Class names are to be fully classified, registering all the "
-							+ "epackages");
+			log.debug("Class names are to be fully classified, registering all the " + "epackages");
 			// and now set the map as entity for each eclass
 			for (PAnnotatedEPackage apack : annotatedModel.getPaEPackages()) {
 				for (PAnnotatedEClass aclass : apack.getPaEClasses()) {
-					aclass.setOnlyMapAsEntity(!EModelResolver
-							.instance().hasImplementationClass(
-									aclass.getAnnotatedEClass()));
+					aclass.setOnlyMapAsEntity(!EModelResolver.instance().hasImplementationClass(
+						aclass.getAnnotatedEClass()));
 				}
 			}
 		}
@@ -228,64 +212,55 @@ public class DefaultAnnotator {
 	}
 
 	/**
-	 * compute name of each entity TODO: enable this again private void
-	 * computeEntityNames() { entityNames = new HashMap(); for (Iterator pi =
-	 * annotatedModel.getPaEPackages().iterator(); pi.hasNext(); ) { for
-	 * (Iterator ci = ((PAnnotatedEPackage)
-	 * pi.next()).getPaEClasses().iterator(); ci.hasNext();) { PAnnotatedEClass
-	 * paClass = (PAnnotatedEClass) ci.next(); EClass aClass =
-	 * paClass.getAnnotatedEClass(); if (paClass.getEntity() != null &&
-	 * paClass.getEntity().getName() != null) { entityNames.put(aClass,
-	 * paClass.getEntity().getName()); } else if (paClass.getEmbeddable() ==
-	 * null && paClass.getMappedSuperclass() == null) { entityNames.put(aClass,
-	 * aClass.getName()); } } } }
+	 * compute name of each entity TODO: enable this again private void computeEntityNames() {
+	 * entityNames = new HashMap(); for (Iterator pi = annotatedModel.getPaEPackages().iterator();
+	 * pi.hasNext(); ) { for (Iterator ci = ((PAnnotatedEPackage)
+	 * pi.next()).getPaEClasses().iterator(); ci.hasNext();) { PAnnotatedEClass paClass =
+	 * (PAnnotatedEClass) ci.next(); EClass aClass = paClass.getAnnotatedEClass(); if
+	 * (paClass.getEntity() != null && paClass.getEntity().getName() != null) {
+	 * entityNames.put(aClass, paClass.getEntity().getName()); } else if (paClass.getEmbeddable() ==
+	 * null && paClass.getMappedSuperclass() == null) { entityNames.put(aClass, aClass.getName()); } } } }
 	 */
 
 	/** Sets the options in a number of members */
 	protected void setLocalOptions(PersistenceOptions po) {
 		if (po.getInheritanceMapping() != null) {
 			switch (InheritanceType.get(po.getInheritanceMapping()).getValue()) {
-			case InheritanceType.JOINED:
-				optionDefaultInheritanceMapping = InheritanceType.JOINED_LITERAL;
-				log.debug("Option inheritance: joined");
-				break;
-			case InheritanceType.SINGLE_TABLE:
-				optionDefaultInheritanceMapping = InheritanceType.SINGLE_TABLE_LITERAL;
-				log.debug("Option inheritance: single");
-				break;
-			case InheritanceType.TABLE_PER_CLASS:
-				optionDefaultInheritanceMapping = InheritanceType.TABLE_PER_CLASS_LITERAL;
-				log.debug("Option inheritance: table per class");
-				break;
-			default:
-				throw new IllegalArgumentException(
-						"Inheritance mapping option: "
-								+ po.getInheritanceMapping()
-								+ " is not supported");
+				case InheritanceType.JOINED:
+					optionDefaultInheritanceMapping = InheritanceType.JOINED_LITERAL;
+					log.debug("Option inheritance: joined");
+					break;
+				case InheritanceType.SINGLE_TABLE:
+					optionDefaultInheritanceMapping = InheritanceType.SINGLE_TABLE_LITERAL;
+					log.debug("Option inheritance: single");
+					break;
+				case InheritanceType.TABLE_PER_CLASS:
+					optionDefaultInheritanceMapping = InheritanceType.TABLE_PER_CLASS_LITERAL;
+					log.debug("Option inheritance: table per class");
+					break;
+				default:
+					throw new IllegalArgumentException("Inheritance mapping option: "
+							+ po.getInheritanceMapping() + " is not supported");
 			}
 		}
 		log.debug("Option: Default inheritance setting: "
 				+ optionDefaultInheritanceMapping.getName());
 
 		optionAddEntityAnnotation = po.isSetEntityAutomatically();
-		log.debug("Option: Automatically adding entity annotation: "
-				+ optionAddEntityAnnotation);
+		log.debug("Option: Automatically adding entity annotation: " + optionAddEntityAnnotation);
 
 		optionFetchContainmentEagerly = po.isFetchContainmentEagerly();
 		log.debug("Option: Eagerly load all containment relations: "
 				+ optionFetchContainmentEagerly);
 
 		optionSetCascadeAllOnContainment = po.isSetCascadeAllOnContainment();
-		log.debug("Option set cascade all on containment: "
-				+ optionSetCascadeAllOnContainment);
+		log.debug("Option set cascade all on containment: " + optionSetCascadeAllOnContainment);
 
 		optionDefaultIDFeatureName = po.getDefaultIDFeatureName();
-		log.debug("Option default id feature name: "
-				+ optionDefaultIDFeatureName);
+		log.debug("Option default id feature name: " + optionDefaultIDFeatureName);
 
 		optionEClassNameStrategy = po.getEClassNameStrategy();
-		log.debug("Qualify EClass name option: "
-				+ optionEClassNameStrategy.getClass().getName());
+		log.debug("Qualify EClass name option: " + optionEClassNameStrategy.getClass().getName());
 
 		optionIDFeatureAsPrimaryKey = po.isIDFeatureAsPrimaryKey();
 		log.debug("ID Feature as primary key " + optionIDFeatureAsPrimaryKey);
@@ -299,14 +274,12 @@ public class DefaultAnnotator {
 		optionMaximumSqlLength = po.getMaximumSqlNameLength();
 		log.debug("Maximum column length: " + optionMaximumSqlLength);
 
-		optionJoinTableForNonContainedAssociations = po
-				.isJoinTableForNonContainedAssociations();
+		optionJoinTableForNonContainedAssociations = po.isJoinTableForNonContainedAssociations();
 		log.debug("JoinTableForNonContainedAssociations "
 				+ po.isJoinTableForNonContainedAssociations());
 
 		optionSQLCaseStrategy = po.getSQLCaseStrategy();
-		log.debug("SQLCaseStrategy "
-				+ optionSQLCaseStrategy.getClass().getName());
+		log.debug("SQLCaseStrategy " + optionSQLCaseStrategy.getClass().getName());
 
 		optionJoinTableNamingStrategy = po.getJoinTableNamingStrategy();
 		log.debug("JoinTableNamingStrategy " + optionJoinTableNamingStrategy);
@@ -326,10 +299,8 @@ public class DefaultAnnotator {
 		if (optionJoinTableNamingStrategy == null
 				|| optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") != 0
 				&& optionJoinTableNamingStrategy.compareToIgnoreCase("unique") != 0) {
-			throw new IllegalArgumentException(
-					"JoinTable naming strategy option: "
-							+ optionJoinTableNamingStrategy
-							+ " is not supported");
+			throw new IllegalArgumentException("JoinTable naming strategy option: "
+					+ optionJoinTableNamingStrategy + " is not supported");
 		}
 	}
 
@@ -339,15 +310,13 @@ public class DefaultAnnotator {
 				+ aPackage.getAnnotatedElement().getName());
 
 		log.debug("Processing EDataTypes");
-		for (Iterator<PAnnotatedEDataType> it = aPackage.getPaEDataTypes()
-				.iterator(); it.hasNext();) {
-			processEDataType(it.next());
+		for (PAnnotatedEDataType annotatedEDataType : aPackage.getPaEDataTypes()) {
+			processEDataType(annotatedEDataType);
 		}
 
 		log.debug("Processing EClasses");
-		for (Iterator<PAnnotatedEClass> it = aPackage.getPaEClasses()
-				.iterator(); it.hasNext();) {
-			processClass(it.next());
+		for (PAnnotatedEClass annotatedEClass : aPackage.getPaEClasses()) {
+			processClass(annotatedEClass);
 		}
 	}
 
@@ -374,21 +343,20 @@ public class DefaultAnnotator {
 
 		if (aClass == null) {
 			throw new StoreAnnotationsException(
-					"Mapping Exception, no Annotated Class for EClass, "
-							+ "a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
-							+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
+				"Mapping Exception, no Annotated Class for EClass, "
+						+ "a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
+						+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
 		}
 
 		// first do the superclasses
 		for (EClass superEclass : aClass.getAnnotatedEClass().getESuperTypes()) {
-			final PAnnotatedEClass superAClass = aClass.getPaModel()
-					.getPAnnotated(superEclass);
+			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(superEclass);
 			if (superAClass == null) {
 				throw new StoreAnnotationsException(
-						"Mapping Exception, no Annotated Class for EClass: "
-								+ superEclass.getName()
-								+ " a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
-								+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
+					"Mapping Exception, no Annotated Class for EClass: "
+							+ superEclass.getName()
+							+ " a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
+							+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
 			}
 			if (!processedAClasses.contains(superAClass)) {
 				processClass(superAClass);
@@ -402,8 +370,9 @@ public class DefaultAnnotator {
 
 		log.debug("Setting the superentity of the eclass");
 		setSuperEntity(aClass);
-		final boolean isInheritanceRoot = aClass.getPaSuperEntity() == null
-				|| aClass.getPaSuperEntity().getMappedSuperclass() != null; // last
+		final boolean isInheritanceRoot =
+				aClass.getPaSuperEntity() == null
+						|| aClass.getPaSuperEntity().getMappedSuperclass() != null; // last
 		// thing
 		// only
 		// happens
@@ -416,8 +385,7 @@ public class DefaultAnnotator {
 		final boolean mappable = isMappableAnnotatedClass(aClass);
 
 		// add entity or set entity name
-		if (mappable && aClass.getEntity() == null
-				&& aClass.getEmbeddable() == null) {
+		if (mappable && aClass.getEntity() == null && aClass.getEmbeddable() == null) {
 			Entity entity = aFactory.createEntity();
 			entity.setEModelElement(eclass);
 			entity.setName(getEntityName(eclass));
@@ -427,8 +395,7 @@ public class DefaultAnnotator {
 				System.err.println("TEST");
 			}
 
-		} else if (aClass.getEntity() != null
-				&& aClass.getEntity().getName() == null) {
+		} else if (aClass.getEntity() != null && aClass.getEntity().getName() == null) {
 			aClass.getEntity().setName(getEntityName(eclass));
 		}
 
@@ -442,9 +409,9 @@ public class DefaultAnnotator {
 		} else {
 			// get the inheritance from the supers, if defined there
 			final Inheritance inheritanceFromSupers = getInheritanceFromSupers(aClass);
-			inheritanceType = inheritanceFromSupers != null ? inheritanceFromSupers
-					.getStrategy()
-					: optionDefaultInheritanceMapping;
+			inheritanceType =
+					inheritanceFromSupers != null ? inheritanceFromSupers.getStrategy()
+							: optionDefaultInheritanceMapping;
 			// if this is the root then add a specific inheritance annotation
 			if (isInheritanceRoot) {
 				final Inheritance inheritance = aFactory.createInheritance();
@@ -455,28 +422,23 @@ public class DefaultAnnotator {
 		}
 
 		// add PrimaryKeyJoinColumn
-		if (!isInheritanceRoot
-				&& inheritanceType.equals(InheritanceType.JOINED_LITERAL)) {
+		if (!isInheritanceRoot && inheritanceType.equals(InheritanceType.JOINED_LITERAL)) {
 			ArrayList<String> idFeatures = new ArrayList<String>();
 			boolean firstDone = false;
 			EClass superClass = null;
-			for (EClass eSuperClass : aClass.getAnnotatedEClass()
-					.getESuperTypes()) {
-				final PAnnotatedEClass aSuperClass = annotatedModel
-						.getPAnnotated(eSuperClass);
+			for (EClass eSuperClass : aClass.getAnnotatedEClass().getESuperTypes()) {
+				final PAnnotatedEClass aSuperClass = annotatedModel.getPAnnotated(eSuperClass);
 				if (!firstDone) {
 					superClass = eSuperClass;
 				}
 				final List<String> superList = getIDFeaturesNames(aSuperClass);
 				idFeatures.removeAll(superList);
 				idFeatures.addAll(superList);
-				if (!idFeatures.isEmpty())
-					break;
+				if (!idFeatures.isEmpty()) break;
 			}
 
 			for (String idFeature : idFeatures) {
-				final PrimaryKeyJoinColumn pkjc = aFactory
-						.createPrimaryKeyJoinColumn();
+				final PrimaryKeyJoinColumn pkjc = aFactory.createPrimaryKeyJoinColumn();
 				final String colName = superClass.getName() + "_" + idFeature;
 				pkjc.setName(trunc(colName, true));
 				aClass.getPrimaryKeyJoinColumns().add(pkjc);
@@ -488,18 +450,16 @@ public class DefaultAnnotator {
 		// is the joined table strategy
 		if (aClass.getTable() == null
 				&& ((isInheritanceRoot && inheritanceType
-						.equals(InheritanceType.SINGLE_TABLE_LITERAL))
-						|| inheritanceType
-								.equals(InheritanceType.JOINED_LITERAL) || inheritanceType
-						.equals(InheritanceType.TABLE_PER_CLASS_LITERAL))) {
+					.equals(InheritanceType.SINGLE_TABLE_LITERAL))
+						|| inheritanceType.equals(InheritanceType.JOINED_LITERAL) || inheritanceType
+					.equals(InheritanceType.TABLE_PER_CLASS_LITERAL))) {
 			final Table table = aFactory.createTable();
 			table.setEModelElement(eclass);
 
-			table.setName(trunc(optionEClassNameStrategy.toUniqueName(eclass)
-					.replace('.', '_'), false));
+			table.setName(trunc(optionEClassNameStrategy.toUniqueName(eclass).replace('.', '_'),
+				false));
 			aClass.setTable(table);
-		} else if (aClass.getTable() != null
-				&& aClass.getTable().getName() == null) {
+		} else if (aClass.getTable() != null && aClass.getTable().getName() == null) {
 			aClass.getTable().setName(trunc(getEntityName(eclass), false));
 		}
 
@@ -529,26 +489,23 @@ public class DefaultAnnotator {
 			aClass.setDiscriminatorValue(dv);
 		}
 
-		for (PAnnotatedEStructuralFeature aStructuralFeature : aClass
-				.getPaEStructuralFeatures()) {
+		for (PAnnotatedEStructuralFeature aStructuralFeature : aClass.getPaEStructuralFeatures()) {
 			processEFeature(aStructuralFeature);
 		}
 
 		// Add default PkJoinColumns for SecondaryTables.
 		for (SecondaryTable secondaryTable : aClass.getSecondaryTables()) {
-			final EList<PrimaryKeyJoinColumn> pkJoinColumns = secondaryTable
-					.getPkJoinColumns();
+			final EList<PrimaryKeyJoinColumn> pkJoinColumns = secondaryTable.getPkJoinColumns();
 			if (pkJoinColumns.size() == 0) {
 				// No PkJoinColumns configured for this secondary table, so
 				// populate with defaults based on the ID
 				// attributes of the primary table.
-				final List<PAnnotatedEStructuralFeature> aIdFeatures = aClass
-						.getPaIdFeatures();
+				final List<PAnnotatedEStructuralFeature> aIdFeatures = aClass.getPaIdFeatures();
 				for (PAnnotatedEStructuralFeature idef : aIdFeatures) {
-					final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE
-							.createPrimaryKeyJoinColumn();
-					pkJoinColumn.setName(trunc(idef
-							.getAnnotatedEStructuralFeature().getName(), true));
+					final PrimaryKeyJoinColumn pkJoinColumn =
+							PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
+					pkJoinColumn.setName(trunc(idef.getAnnotatedEStructuralFeature().getName(),
+						true));
 					pkJoinColumns.add(pkJoinColumn);
 				}
 			}
@@ -556,10 +513,8 @@ public class DefaultAnnotator {
 	}
 
 	/** Process the features of the eclass */
-	protected void processEFeature(
-			PAnnotatedEStructuralFeature aStructuralFeature) {
-		EStructuralFeature eStructuralFeature = aStructuralFeature
-				.getAnnotatedEStructuralFeature();
+	protected void processEFeature(PAnnotatedEStructuralFeature aStructuralFeature) {
+		EStructuralFeature eStructuralFeature = aStructuralFeature.getAnnotatedEStructuralFeature();
 
 		boolean errorOccured = true;
 		try {
@@ -568,19 +523,18 @@ public class DefaultAnnotator {
 			// - transient is true and it does not have an opposite
 			// - transietn is true and it's opposite is not a containment
 			// relation
-			final boolean isTransient = eStructuralFeature.isTransient()
-					&& (eStructuralFeature instanceof EAttribute
-							|| ((EReference) eStructuralFeature).getEOpposite() == null
-							|| !((EReference) eStructuralFeature)
-									.getEOpposite().isContainment() || ((EReference) eStructuralFeature)
-							.getEOpposite().isTransient());
+			final boolean isTransient =
+					eStructuralFeature.isTransient()
+							&& (eStructuralFeature instanceof EAttribute
+									|| ((EReference) eStructuralFeature).getEOpposite() == null
+									|| !((EReference) eStructuralFeature).getEOpposite()
+										.isContainment() || ((EReference) eStructuralFeature)
+								.getEOpposite().isTransient());
 
 			if (aStructuralFeature.getTransient() == null
 					&& (eStructuralFeature.isVolatile() || isTransient)) {
-				log
-						.debug("Structural feature "
-								+ eStructuralFeature.getName()
-								+ " is transient, therefore adding transient annotation");
+				log.debug("Structural feature " + eStructuralFeature.getName()
+						+ " is transient, therefore adding transient annotation");
 				final Transient trans = aFactory.createTransient();
 				trans.setEModelElement(eStructuralFeature);
 				aStructuralFeature.setTransient(trans);
@@ -597,11 +551,13 @@ public class DefaultAnnotator {
 
 			if (aStructuralFeature instanceof PAnnotatedEAttribute) {
 				final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aStructuralFeature;
-				if (((PAnnotatedEAttribute) aStructuralFeature).getVersion() != null)
-					return; // do not add more info
+				if (((PAnnotatedEAttribute) aStructuralFeature).getVersion() != null) return; // do
+				// not
+				// add
+				// more
+				// info
 
-				final Class<?> instanceClass = eStructuralFeature.getEType()
-						.getInstanceClass();
+				final Class<?> instanceClass = eStructuralFeature.getEType().getInstanceClass();
 				boolean isMany = false;
 				// instanceClass will be null for enums
 				// Lob-annotated attributes must not be treated as one-to-many.
@@ -610,15 +566,14 @@ public class DefaultAnnotator {
 				final String typeSource = "http://annotations.hibernate.org/Type";
 				if (instanceClass != null
 						&& aAttribute.getLob() == null
-						&& aAttribute.getAnnotatedEAttribute()
-								.getEAttributeType().getEAnnotation(typeSource) == null) {
-					isMany = eStructuralFeature.isMany()
-							|| instanceClass.isArray()
-							|| Collection.class.isAssignableFrom(instanceClass)
-							|| Set.class.isAssignableFrom(instanceClass)
-							|| List.class.isAssignableFrom(instanceClass);
-					isMany = isMany
-							&& !StoreUtil.isElementOfAGroup(eStructuralFeature);
+						&& aAttribute.getAnnotatedEAttribute().getEAttributeType().getEAnnotation(
+							typeSource) == null) {
+					isMany =
+							eStructuralFeature.isMany() || instanceClass.isArray()
+									|| Collection.class.isAssignableFrom(instanceClass)
+									|| Set.class.isAssignableFrom(instanceClass)
+									|| List.class.isAssignableFrom(instanceClass);
+					isMany = isMany && !StoreUtil.isElementOfAGroup(eStructuralFeature);
 				}
 
 				if (isMany) {
@@ -627,12 +582,9 @@ public class DefaultAnnotator {
 					processSingleAttribute(aAttribute);
 				}
 
-				if (aAttribute.getColumn() != null
-						&& aAttribute.getColumn().getName() == null) {
+				if (aAttribute.getColumn() != null && aAttribute.getColumn().getName() == null) {
 					aAttribute.getColumn().setName(
-							trunc(
-									aAttribute.getAnnotatedEAttribute()
-											.getName(), true));
+						trunc(aAttribute.getAnnotatedEAttribute().getName(), true));
 				}
 
 			} else if (aStructuralFeature instanceof PAnnotatedEReference) {
@@ -648,52 +600,48 @@ public class DefaultAnnotator {
 				// specified manually, the system as a default will choose
 				// uni-manytoone
 
-				final EReference eReference = (EReference) aStructuralFeature
-						.getAnnotatedElement();
+				final EReference eReference = (EReference) aStructuralFeature.getAnnotatedElement();
 				final EReference eOpposite = eReference.getEOpposite();
 
 				// elements of a group are never multi-occurence because the
 				// multi-occurence is
 				// handled by the containing featuremap
-				final boolean isMany = eReference.isMany()
-						&& !StoreUtil.isElementOfAGroup(eReference);
-				final boolean isOppositeMany = eOpposite != null
-						&& eOpposite.isMany()
-						&& !StoreUtil.isElementOfAGroup(eOpposite);
+				final boolean isMany =
+						eReference.isMany() && !StoreUtil.isElementOfAGroup(eReference);
+				final boolean isOppositeMany =
+						eOpposite != null && eOpposite.isMany()
+								&& !StoreUtil.isElementOfAGroup(eOpposite);
 
-				final boolean mtmBidirectionalRelation = isMany
-						&& eOpposite != null && isOppositeMany;
-				final boolean mtmUnidirectionalRelation = isMany
-						&& eOpposite == null
-						&& aReference.getManyToMany() != null;
-				final boolean otmBidirectionalRelation = isMany
-						&& eOpposite != null && !isOppositeMany;
-				final boolean otmUnidirectionalRelation = isMany
-						&& eOpposite == null;
+				final boolean mtmBidirectionalRelation =
+						isMany && eOpposite != null && isOppositeMany;
+				final boolean mtmUnidirectionalRelation =
+						isMany && eOpposite == null && aReference.getManyToMany() != null;
+				final boolean otmBidirectionalRelation =
+						isMany && eOpposite != null && !isOppositeMany;
+				final boolean otmUnidirectionalRelation = isMany && eOpposite == null;
 
 				// note as a default if the system has to choose between oto uni
 				// or mto uni then it will
 				// place a mto
-				final boolean otoBidirectionalRelation = !isMany
-						&& eOpposite != null && !isOppositeMany;
-				final boolean otoUnidirectionalRelation = !isMany
-						&& eOpposite == null
-						&& (aReference.getOneToOne() != null || !aReference
-								.getPrimaryKeyJoinColumns().isEmpty());
-				final boolean mtoBidirectionalRelation = !isMany
-						&& eOpposite != null && isOppositeMany;
-				final boolean mtoUnidirectionalRelation = !isMany
-						&& eOpposite == null && !otoUnidirectionalRelation;
+				final boolean otoBidirectionalRelation =
+						!isMany && eOpposite != null && !isOppositeMany;
+				final boolean otoUnidirectionalRelation =
+						!isMany
+								&& eOpposite == null
+								&& (aReference.getOneToOne() != null || !aReference
+									.getPrimaryKeyJoinColumns().isEmpty());
+				final boolean mtoBidirectionalRelation =
+						!isMany && eOpposite != null && isOppositeMany;
+				final boolean mtoUnidirectionalRelation =
+						!isMany && eOpposite == null && !otoUnidirectionalRelation;
 
 				if (mtmBidirectionalRelation) {
 					processBidirectionalManyToManyReference(aReference);
 				} else if (mtmUnidirectionalRelation) {
 					processUnidirectionalManyToManyReference(aReference);
-				} else if (otmBidirectionalRelation
-						|| otmUnidirectionalRelation) {
+				} else if (otmBidirectionalRelation || otmUnidirectionalRelation) {
 					processOneToManyReference(aReference);
-				} else if (otoBidirectionalRelation
-						|| otoUnidirectionalRelation) {
+				} else if (otoBidirectionalRelation || otoUnidirectionalRelation) {
 					processOneToOneReference(aReference);
 				} else if (mtoBidirectionalRelation) {
 					processManyToOneReference(aReference);
@@ -702,16 +650,14 @@ public class DefaultAnnotator {
 				}
 
 				// handle column naming at this level
-				if (aReference.getColumn() != null
-						&& aReference.getColumn().getName() == null) {
-					aReference.getColumn().setName(
-							trunc(eReference.getName(), true));
+				if (aReference.getColumn() != null && aReference.getColumn().getName() == null) {
+					aReference.getColumn().setName(trunc(eReference.getName(), true));
 				}
 
 			} else {
 				throw new IllegalArgumentException(
-						"This type of StructuralFeature is not supported: "
-								+ aStructuralFeature.getClass().getName());
+					"This type of StructuralFeature is not supported: "
+							+ aStructuralFeature.getClass().getName());
 			}
 			errorOccured = false;
 		} finally {
@@ -719,15 +665,13 @@ public class DefaultAnnotator {
 			// check that at least one ann was set
 			if (aStructuralFeature instanceof PAnnotatedEAttribute) {
 				PAnnotatedEAttribute pae = (PAnnotatedEAttribute) aStructuralFeature;
-				assert (errorOccured || pae.getBasic() != null
-						|| pae.getVersion() != null || pae.getId() != null
-						|| pae.getTransient() != null || pae.getOneToMany() != null);
+				assert (errorOccured || pae.getBasic() != null || pae.getVersion() != null
+						|| pae.getId() != null || pae.getTransient() != null || pae.getOneToMany() != null);
 			} else {
 				PAnnotatedEReference par = (PAnnotatedEReference) aStructuralFeature;
-				assert (errorOccured || par.getTransient() != null
-						|| par.getOneToMany() != null
-						|| par.getManyToMany() != null
-						|| par.getManyToOne() != null || par.getOneToOne() != null);
+				assert (errorOccured || par.getTransient() != null || par.getOneToMany() != null
+						|| par.getManyToMany() != null || par.getManyToOne() != null || par
+					.getOneToOne() != null);
 			}
 
 		}
@@ -739,21 +683,18 @@ public class DefaultAnnotator {
 		log.debug(" Adding default annotations for EAttribute "
 				+ aAttribute.getAnnotatedElement().getName());
 
-		final EAttribute eAttribute = (EAttribute) aAttribute
-				.getAnnotatedElement();
+		final EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();
 
 		// this is done before adding the id because an enumerated can also be
 		// an id
-		if (eAttribute.getEType() instanceof EEnum
-				&& aAttribute.getEnumerated() == null) {
+		if (eAttribute.getEType() instanceof EEnum && aAttribute.getEnumerated() == null) {
 			final Enumerated enumerated = aFactory.createEnumerated();
 			enumerated.setValue(EnumType.STRING_LITERAL);
 			enumerated.setEModelElement(eAttribute);
 			aAttribute.setEnumerated(enumerated);
 		}
 
-		if (optionIDFeatureAsPrimaryKey && eAttribute.isID()
-				&& aAttribute.getId() == null) {
+		if (optionIDFeatureAsPrimaryKey && eAttribute.isID() && aAttribute.getId() == null) {
 			final Id id = aFactory.createId();
 			id.setEModelElement(eAttribute);
 			aAttribute.setId(id);
@@ -768,8 +709,8 @@ public class DefaultAnnotator {
 			Class<?> clazz = eAttribute.getEAttributeType().getInstanceClass();
 			// clazz is hidden somewhere
 			if (clazz == null || Object.class.equals(clazz)) {
-				ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute
-						.getEType());
+				ArrayList<EClassifier> eclassifiers =
+						getItemTypes((EDataType) eAttribute.getEType());
 				for (EClassifier eclassifier : eclassifiers) {
 					if (eclassifier.getInstanceClass() != null) {
 						clazz = eclassifier.getInstanceClass();
@@ -801,25 +742,22 @@ public class DefaultAnnotator {
 			// confusing why having this then? If this applies then for each
 			// basic and nullable
 			// field a column annotation has to be added to force nullability
-			basic.setOptional(!eAttribute.isRequired()
-					|| eAttribute.isUnsettable());
+			basic.setOptional(!eAttribute.isRequired() || eAttribute.isUnsettable());
 			aAttribute.setBasic(basic);
 		}
 
 		if (aAttribute.getId() != null) {
 			aAttribute.getBasic().setOptional(false);
-			if (aAttribute.getColumn() != null
-					&& aAttribute.getColumn().isNullable()) {
+			if (aAttribute.getColumn() != null && aAttribute.getColumn().isNullable()) {
 				log
-						.warn("The column of a primary key property is null, this will often result in database errors!");
+					.warn("The column of a primary key property is null, this will often result in database errors!");
 			}
 		}
 		addColumnConstraints(aAttribute);
 	}
 
 	/**
-	 * Adds the column level constraints on the basis of the xsd extended meta
-	 * data
+	 * Adds the column level constraints on the basis of the xsd extended meta data
 	 */
 	private void addColumnConstraints(PAnnotatedEAttribute aAttribute) {
 
@@ -833,20 +771,16 @@ public class DefaultAnnotator {
 			if (maxLength == null) {
 				maxLength = getExtendedMetaData(eAttribute, "length");
 			}
-			final String totalDigits = getExtendedMetaData(eAttribute,
-					"totalDigits");
-			final String fractionDigits = getExtendedMetaData(eAttribute,
-					"fractionDigits");
-			if (maxLength != null || totalDigits != null
-					|| fractionDigits != null) {
+			final String totalDigits = getExtendedMetaData(eAttribute, "totalDigits");
+			final String fractionDigits = getExtendedMetaData(eAttribute, "fractionDigits");
+			if (maxLength != null || totalDigits != null || fractionDigits != null) {
 				final Column column = aFactory.createColumn();
 				// only support this for the string class, the length/maxlength
 				// is also
 				// used in case of the xsd list/union types but this can not be
 				// enforced using a constraint on the
 				// columnlength
-				if (maxLength != null
-						&& eAttribute.getEAttributeType().getInstanceClass() != null
+				if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null
 						&& eAttribute.getEAttributeType().getInstanceClass() == String.class) {
 					column.setLength(Integer.parseInt(maxLength)); // you'll
 					// find
@@ -866,15 +800,13 @@ public class DefaultAnnotator {
 
 	/** Handles a many EAttribute which is a list of simple types */
 	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute) {
-		final String logStr = aAttribute.getAnnotatedEAttribute().getName()
-				+ "/"
-				+ aAttribute.getAnnotatedEAttribute().getEContainingClass()
-						.getName();
+		final String logStr =
+				aAttribute.getAnnotatedEAttribute().getName() + "/"
+						+ aAttribute.getAnnotatedEAttribute().getEContainingClass().getName();
 
 		log.debug("EAttribute " + logStr + " needs a onetomany");
 
-		final EAttribute eAttribute = (EAttribute) aAttribute
-				.getAnnotatedElement();
+		final EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();
 		OneToMany otm = aAttribute.getOneToMany();
 		final boolean otmWasSet = otm != null; // otm was set manually
 		if (otm == null) {
@@ -887,13 +819,19 @@ public class DefaultAnnotator {
 				otm.setFetch(FetchType.EAGER_LITERAL);
 			}
 		} else {
-			log
-					.debug("One to many present adding default information if required");
+			log.debug("One to many present adding default information if required");
+		}
+
+		// handle list of enums
+		if (eAttribute.getEType() instanceof EEnum && aAttribute.getEnumerated() == null) {
+			final Enumerated enumerated = aFactory.createEnumerated();
+			enumerated.setValue(EnumType.STRING_LITERAL);
+			enumerated.setEModelElement(eAttribute);
+			aAttribute.setEnumerated(enumerated);
 		}
 
 		// set cascade if not set
-		if (otm.getCascade().isEmpty())
-			otm.getCascade().add(CascadeType.ALL_LITERAL);
+		if (otm.getCascade().isEmpty()) otm.getCascade().add(CascadeType.ALL_LITERAL);
 
 		if (otm.getTargetEntity() == null || otm.getTargetEntity() == null) {
 			otm.setTargetEntity(getTargetTypeName(aAttribute));
@@ -901,53 +839,50 @@ public class DefaultAnnotator {
 
 		if (aAttribute.getJoinTable() == null) {
 			// note not optional because lists of simple types are embedded
-			addJoinColumns(aAttribute.getPaEClass(), aAttribute
-					.getAnnotatedEAttribute(), aAttribute, FeatureMapUtil
-					.isFeatureMap(eAttribute), true); // with featuremap
+			addJoinColumns(aAttribute.getPaEClass(), aAttribute.getAnnotatedEAttribute(),
+				aAttribute, FeatureMapUtil.isFeatureMap(eAttribute), true); // with featuremap
 			// optional is true
 		}
 
 		// set unique and indexed
 		if (!otmWasSet) {
-			log
-					.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique because otm was not set manually");
+			log.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique "
+					+ "because otm was not set manually");
 			otm.setIndexed(eAttribute.isOrdered());
 			otm.setUnique(eAttribute.isUnique());
-			EAnnotation ean = aAttribute.getAnnotatedElement().getEAnnotation(
-					FACET_SOURCE_LIST);
+			EAnnotation ean = aAttribute.getAnnotatedElement().getEAnnotation(FACET_SOURCE_LIST);
 			if (ean != null && ean.getDetails() != null) {
 				if (ean.getDetails().get(FACET_INDEX) != null) {
-					log.warn("Setting indexed from deprecated annotation: "
-							+ FACET_INDEX);
-					otm.setIndexed(((String) ean.getDetails().get(FACET_INDEX))
-							.compareToIgnoreCase("true") == 0);
+					log.warn("Setting indexed from deprecated annotation: " + FACET_INDEX);
+					otm
+						.setIndexed((ean.getDetails().get(FACET_INDEX)).compareToIgnoreCase("true") == 0);
 				}
 				if (ean.getDetails().get(FACET_UNIQUE) != null) {
-					log.warn("Setting unique from deprecated annotation: "
-							+ FACET_UNIQUE);
-					otm.setUnique(((String) ean.getDetails().get(FACET_UNIQUE))
-							.compareToIgnoreCase("true") == 0);
+					log.warn("Setting unique from deprecated annotation: " + FACET_UNIQUE);
+					otm
+						.setUnique((ean.getDetails().get(FACET_UNIQUE)).compareToIgnoreCase("true") == 0);
 				}
 			}
 
-			ean = aAttribute.getAnnotatedElement().getEAnnotation(
-					"http://annotation.elver.org/Indexed");
+			ean =
+					aAttribute.getAnnotatedElement().getEAnnotation(
+						"http://annotation.elver.org/Indexed");
 			if (ean != null && ean.getDetails() != null) {
 				if (ean.getDetails().get("value") != null) {
 					log
-							.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Indexed");
-					otm.setIndexed(((String) ean.getDetails().get("value"))
-							.compareToIgnoreCase("true") == 0);
+						.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Indexed");
+					otm
+						.setIndexed((ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
 				}
 			}
-			ean = aAttribute.getAnnotatedElement().getEAnnotation(
-					"http://annotation.elver.org/Unique");
+			ean =
+					aAttribute.getAnnotatedElement().getEAnnotation(
+						"http://annotation.elver.org/Unique");
 			if (ean != null && ean.getDetails() != null) {
 				if (ean.getDetails().get("value") != null) {
 					log
-							.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Unique");
-					otm.setUnique(((String) ean.getDetails().get("value"))
-							.compareToIgnoreCase("true") == 0);
+						.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Unique");
+					otm.setUnique((ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
 				}
 			}
 
@@ -958,17 +893,13 @@ public class DefaultAnnotator {
 	protected String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
 		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
 		// check on equality on object.class is used for listunion simpleunions
-		final Class<?> instanceClass = eAttribute.getEAttributeType()
-				.getInstanceClass();
+		final Class<?> instanceClass = eAttribute.getEAttributeType().getInstanceClass();
 		if (instanceClass != null && !Object.class.equals(instanceClass)
 				&& !List.class.equals(instanceClass)) {
 			if (instanceClass.isArray()) {
 				// get rid of the [] at the end
-				return eAttribute.getEType().getInstanceClassName()
-						.substring(
-								0,
-								eAttribute.getEType().getInstanceClassName()
-										.length() - 2);
+				return eAttribute.getEType().getInstanceClassName().substring(0,
+					eAttribute.getEType().getInstanceClassName().length() - 2);
 			}
 			return instanceClass.getName();
 		} else {
@@ -981,15 +912,12 @@ public class DefaultAnnotator {
 			// of target
 			// entities this is required for listunion types but is not
 			// according to the ejb3 spec!
-			ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute
-					.getEType());
+			ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute.getEType());
 			if (eclassifiers.size() > 0) {
 				StringBuffer result = new StringBuffer();
 				for (int i = 0; i < eclassifiers.size(); i++) {
-					final EClassifier eclassifier = (EClassifier) eclassifiers
-							.get(i);
-					if (i > 0)
-						result.append(",");
+					final EClassifier eclassifier = eclassifiers.get(i);
+					if (i > 0) result.append(",");
 					result.append(eclassifier.getInstanceClassName());
 				}
 				return result.toString();
@@ -1000,27 +928,22 @@ public class DefaultAnnotator {
 	}
 
 	/**
-	 * Adds default annotations to a onetomany ereference, this method handles
-	 * both the uni- and the bidirectional case
+	 * Adds default annotations to a onetomany ereference, this method handles both the uni- and the
+	 * bidirectional case
 	 */
 	protected void processOneToManyReference(PAnnotatedEReference aReference) {
-		final String logStr = aReference.getAnnotatedEReference().getName()
-				+ "/"
-				+ aReference.getAnnotatedEReference().getEContainingClass()
-						.getName();
+		final String logStr =
+				aReference.getAnnotatedEReference().getName() + "/"
+						+ aReference.getAnnotatedEReference().getEContainingClass().getName();
 
-		if (aReference.getManyToMany() != null
-				|| aReference.getOneToOne() != null
+		if (aReference.getManyToMany() != null || aReference.getOneToOne() != null
 				|| aReference.getManyToOne() != null) {
-			throw new StoreMappingException(
-					"The feature/eclass "
-							+ logStr
-							+ " should be a OneToMany but "
-							+ "it already has a ManyToMany, OneToOne or ManyToOne annotation");
+			throw new StoreMappingException("The feature/eclass " + logStr
+					+ " should be a OneToMany but "
+					+ "it already has a ManyToMany, OneToOne or ManyToOne annotation");
 		}
 
-		final EReference eReference = (EReference) aReference
-				.getAnnotatedElement();
+		final EReference eReference = (EReference) aReference.getAnnotatedElement();
 		OneToMany otm = aReference.getOneToMany();
 		final boolean otmWasSet = otm != null; // otm was set manually
 		if (otm == null) {
@@ -1034,8 +957,7 @@ public class DefaultAnnotator {
 				otm.setFetch(FetchType.EAGER_LITERAL);
 			}
 		} else {
-			log.debug("EReference + " + logStr
-					+ " has onetomany, check if defaults should be set");
+			log.debug("EReference + " + logStr + " has onetomany, check if defaults should be set");
 		}
 
 		if (otm.getMappedBy() == null && eReference.getEOpposite() != null) {
@@ -1054,32 +976,31 @@ public class DefaultAnnotator {
 		// set unique and indexed
 		if (!otmWasSet) {
 			log
-					.debug("Setting indexed and unique from ereference because otm was not set manually!");
+				.debug("Setting indexed and unique from ereference because otm was not set manually!");
 			// note force a join table in case of idbag!
-			otm.setIndexed(!optionMapListAsBag && !optionMapListAsIdBag
-					&& eReference.isOrdered()
+			otm.setIndexed(!optionMapListAsBag && !optionMapListAsIdBag && eReference.isOrdered()
 					&& aReference.getOrderBy() == null);
 			otm.setUnique(!optionMapListAsIdBag && eReference.isUnique());
 
 			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
-				log
-						.debug("Setting unique because is bidirectional (has eopposite) otm");
+				log.debug("Setting unique because is bidirectional (has eopposite) otm");
 				otm.setUnique(true);
 			}
 		} else if (aReference.getAnnotatedEReference().getEOpposite() != null) {
 			log
-					.warn("The EReference "
-							+ logStr
-							+ " is not unique (allows duplicates) but it is bi-directional, this is not logical");
+				.warn("The EReference "
+						+ logStr
+						+ " is not unique (allows duplicates) but it is bi-directional, this is not logical");
 		}
 
 		// only use a jointable if the relation is non unique
-		final boolean isEObject = EClassNameStrategy.EOBJECT_ECLASS_NAME
-				.compareTo(otm.getTargetEntity()) == 0;
-		if (isEObject || // in case of eobject always a join table is
+		final boolean isEObject =
+				EClassNameStrategy.EOBJECT_ECLASS_NAME.compareTo(otm.getTargetEntity()) == 0;
+		if (isEObject
+				|| // in case of eobject always a join table is
 				// required
-				(optionJoinTableForNonContainedAssociations && !eReference
-						.isContainment()) || !otm.isUnique()) {
+				(optionJoinTableForNonContainedAssociations && !eReference.isContainment())
+				|| !otm.isUnique()) {
 			JoinTable joinTable = aReference.getJoinTable();
 			if (joinTable == null) {
 				joinTable = aFactory.createJoinTable();
@@ -1089,86 +1010,68 @@ public class DefaultAnnotator {
 
 			// see remark in manytomany about naming of jointables
 			if (joinTable.getName() == null) {
-				if (!isEObject
-						&& optionJoinTableNamingStrategy
-								.compareToIgnoreCase("ejb3") == 0) {
-					final String jTableName = getEntityName(eReference
-							.getEContainingClass())
-							+ "_"
-							+ getEntityName(eReference.getEReferenceType());
+				if (!isEObject && optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
+					final String jTableName =
+							getEntityName(eReference.getEContainingClass()) + "_"
+									+ getEntityName(eReference.getEReferenceType());
 					joinTable.setName(trunc(jTableName, false));
 				} else {
-					AssertUtil
-							.assertTrue("option optionJoinTableNamingStrategy "
-									+ optionJoinTableNamingStrategy
-									+ " not supported", isEObject
-									|| optionJoinTableNamingStrategy
-											.compareToIgnoreCase("unique") == 0);
-					final String jTableName = getEntityName(eReference
-							.getEContainingClass())
-							+ "_" + eReference.getName();
+					AssertUtil.assertTrue("option optionJoinTableNamingStrategy "
+							+ optionJoinTableNamingStrategy + " not supported", isEObject
+							|| optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
+					final String jTableName =
+							getEntityName(eReference.getEContainingClass()) + "_"
+									+ eReference.getName();
 					joinTable.setName(trunc(jTableName, false));
 				}
 			}
 
 			// note joincolumns in jointable can be generated automatically by
 			// hib/jpox.
-		} else if (aReference.getJoinColumns() == null
-				|| aReference.getJoinColumns().isEmpty()) { // add
+		} else if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) { // add
 			// joincolum(s)
 			// the name of this eclass, the name of the property on the other
 			// side
 			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
 				// get opposite
-				EReference opposite = aReference.getAnnotatedEReference()
-						.getEOpposite();
+				EReference opposite = aReference.getAnnotatedEReference().getEOpposite();
 
-				addJoinColumns(aReference.getPaModel().getPAnnotated(
-						opposite.getEContainingClass()), opposite, aReference,
-						aReference.getEmbedded() == null, true);
+				addJoinColumns(aReference.getPaModel()
+					.getPAnnotated(opposite.getEContainingClass()), opposite, aReference,
+					aReference.getEmbedded() == null, true);
 			} else { // no prop on the other side just use this one
-				addJoinColumns(aReference.getPaEClass(), aReference
-						.getAnnotatedEReference(), aReference, aReference
-						.getEmbedded() == null, true);
+				addJoinColumns(aReference.getPaEClass(), aReference.getAnnotatedEReference(),
+					aReference, aReference.getEmbedded() == null, true);
 			}
 		}
 	}
 
 	/** Adds default annotations to a bidirectional many to many ereference */
-	protected void processBidirectionalManyToManyReference(
-			PAnnotatedEReference aReference) {
-		final String featureLogStr = aReference.getAnnotatedEReference()
-				.getName()
-				+ "/"
-				+ aReference.getAnnotatedEReference().getEContainingClass()
-						.getName();
+	protected void processBidirectionalManyToManyReference(PAnnotatedEReference aReference) {
+		final String featureLogStr =
+				aReference.getAnnotatedEReference().getName() + "/"
+						+ aReference.getAnnotatedEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null
-				|| aReference.getOneToOne() != null
+		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null
 				|| aReference.getManyToOne() != null) {
-			throw new StoreMappingException(
-					"The feature/eclass "
-							+ featureLogStr
-							+ " should be a ManyToMany but "
-							+ "it already has a OneToMany, OneToOne or ManyToOne annotation");
+			throw new StoreMappingException("The feature/eclass " + featureLogStr
+					+ " should be a ManyToMany but "
+					+ "it already has a OneToMany, OneToOne or ManyToOne annotation");
 		}
 
-		final EReference eReference = (EReference) aReference
-				.getAnnotatedElement();
+		final EReference eReference = (EReference) aReference.getAnnotatedElement();
 		final EReference eOpposite = eReference.getEOpposite();
 		assert (eOpposite != null && eOpposite.isMany());
 
 		ManyToMany mtm = aReference.getManyToMany();
 		final boolean mtmWasSet = mtm != null; // mtm was set manually
 		if (mtm == null) {
-			log.debug("Adding manytomany annotations to ereference: "
-					+ featureLogStr);
+			log.debug("Adding manytomany annotations to ereference: " + featureLogStr);
 			mtm = aFactory.createManyToMany();
 			aReference.setManyToMany(mtm);
 			mtm.setEModelElement(eReference);
 		} else {
-			log
-					.debug("ManyToMany present check if default information should be added");
+			log.debug("ManyToMany present check if default information should be added");
 		}
 
 		setCascade(mtm.getCascade(), eReference.isContainment());
@@ -1188,12 +1091,10 @@ public class DefaultAnnotator {
 		// also check if the other side has a (manual) manytomany with mappedby
 		// set
 		// bugzilla: 164808
-		final PAnnotatedEReference otherPA = aReference.getPaModel()
-				.getPAnnotated(eOpposite);
+		final PAnnotatedEReference otherPA = aReference.getPaModel().getPAnnotated(eOpposite);
 		if (mtm.getMappedBy() == null
 				&& setMappedBy(eReference)
-				&& (otherPA.getManyToMany() == null || otherPA.getManyToMany()
-						.getMappedBy() == null)) {
+				&& (otherPA.getManyToMany() == null || otherPA.getManyToMany().getMappedBy() == null)) {
 			mtm.setMappedBy(eOpposite.getName());
 		}
 
@@ -1207,29 +1108,26 @@ public class DefaultAnnotator {
 		// set unique and indexed
 		if (!mtmWasSet) {
 			log
-					.debug("Setting indexed and unique from ereference.isOrdered/isUnique because mtm was not set manually!");
+				.debug("Setting indexed and unique from ereference.isOrdered/isUnique because mtm was not set manually!");
 			mtm.setIndexed(eReference.isOrdered());
 		}
 
-		EAnnotation ean = aReference.getAnnotatedElement().getEAnnotation(
-				FACET_SOURCE_LIST);
+		EAnnotation ean = aReference.getAnnotatedElement().getEAnnotation(FACET_SOURCE_LIST);
 		if (ean != null && ean.getDetails() != null) {
 			if (ean.getDetails().get(FACET_INDEX) != null) {
-				log.warn("Setting indexed from deprecated annotation: "
-						+ FACET_INDEX);
-				mtm.setIndexed(((String) ean.getDetails().get(FACET_INDEX))
-						.compareTo("true") == 0);
+				log.warn("Setting indexed from deprecated annotation: " + FACET_INDEX);
+				mtm.setIndexed((ean.getDetails().get(FACET_INDEX)).compareTo("true") == 0);
 			}
 		}
 
-		ean = aReference.getAnnotatedElement().getEAnnotation(
-				"http://annotation.elver.org/Indexed");
+		ean =
+				aReference.getAnnotatedElement().getEAnnotation(
+					"http://annotation.elver.org/Indexed");
 		if (ean != null && ean.getDetails() != null) {
 			if (ean.getDetails().get("value") != null) {
 				log
-						.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Indexed");
-				mtm.setIndexed(((String) ean.getDetails().get("value"))
-						.compareToIgnoreCase("true") == 0);
+					.warn("Setting indexed from deprecated annotation: http://annotation.elver.org/Indexed");
+				mtm.setIndexed((ean.getDetails().get("value")).compareToIgnoreCase("true") == 0);
 			}
 		}
 
@@ -1248,58 +1146,54 @@ public class DefaultAnnotator {
 			final String jTableName;
 			if (optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
 				if (mtm.isIndexed()) {
-					jTableName = getEntityName(eReference.getEContainingClass())
-							+ "_"
-							+ getEntityName(eOpposite.getEContainingClass());
+					jTableName =
+							getEntityName(eReference.getEContainingClass()) + "_"
+									+ getEntityName(eOpposite.getEContainingClass());
 				} else {
 					if (compareNames(eReference, eOpposite)) {
-						jTableName = getEntityName(eOpposite
-								.getEContainingClass())
-								+ "_"
-								+ getEntityName(eReference
-										.getEContainingClass());
+						jTableName =
+								getEntityName(eOpposite.getEContainingClass()) + "_"
+										+ getEntityName(eReference.getEContainingClass());
 					} else {
-						jTableName = getEntityName(eReference
-								.getEContainingClass())
-								+ "_"
-								+ getEntityName(eOpposite.getEContainingClass());
+						jTableName =
+								getEntityName(eReference.getEContainingClass()) + "_"
+										+ getEntityName(eOpposite.getEContainingClass());
 					}
 				}
 			} else {
 				AssertUtil.assertTrue("option optionJoinTableNamingStrategy "
 						+ optionJoinTableNamingStrategy + " not supported",
-						optionJoinTableNamingStrategy
-								.compareToIgnoreCase("unique") == 0);
+					optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
 				if (mtm.isIndexed()) {
-					jTableName = getEntityName(eReference.getEContainingClass())
-							+ "_" + eReference.getName();
+					jTableName =
+							getEntityName(eReference.getEContainingClass()) + "_"
+									+ eReference.getName();
 				} else {
 					if (compareNames(eReference, eOpposite)) {
-						jTableName = getEntityName(eOpposite
-								.getEContainingClass())
-								+ "_" + eOpposite.getName();
+						jTableName =
+								getEntityName(eOpposite.getEContainingClass()) + "_"
+										+ eOpposite.getName();
 					} else {
-						jTableName = getEntityName(eReference
-								.getEContainingClass())
-								+ "_" + eReference.getName();
+						jTableName =
+								getEntityName(eReference.getEContainingClass()) + "_"
+										+ eReference.getName();
 					}
 				}
 			}
 
 			joinTable.setName(trunc(jTableName, false));
 		}
-		if (/* joinTable.getJoinColumns() == null || */joinTable
-				.getJoinColumns().size() == 0) { // no joincolumns,
+		if (/* joinTable.getJoinColumns() == null || */joinTable.getJoinColumns().size() == 0) { // no
+			// joincolumns,
 			// so
 			// add them
 			// if (joinTable.getJoinColumns() == null)
 			// joinTable.getJoinColumns().addAll(aFactory.createJoinColumns());
 			joinTable.getJoinColumns().addAll(
-					getJoinColumns(aReference.getPaEClass(), eReference, false,
-							false, true));
+				getJoinColumns(aReference.getPaEClass(), eReference, false, false, true));
 		}
-		if (/* joinTable.getInverseJoinColumns() == null || */joinTable
-				.getInverseJoinColumns().size() == 0) { // no
+		if (/* joinTable.getInverseJoinColumns() == null || */joinTable.getInverseJoinColumns()
+			.size() == 0) { // no
 			// inversejoincolumns,
 			// so
 			// add
@@ -1307,37 +1201,28 @@ public class DefaultAnnotator {
 			// if (joinTable.getInverseJoinColumns() == null)
 			// joinTable.setInverseJoinColumns(aFactory.createJoinColumns());
 			joinTable.getInverseJoinColumns().addAll(
-					getJoinColumns(annotatedModel.getPAnnotated(eOpposite
-							.getEContainingClass()), eOpposite, false, false,
-							true));
+				getJoinColumns(annotatedModel.getPAnnotated(eOpposite.getEContainingClass()),
+					eOpposite, false, false, true));
 		}
 	}
 
 	/** Adds default annotations to a unidirectional many to many ereference */
-	protected void processUnidirectionalManyToManyReference(
-			PAnnotatedEReference aReference) {
-		final String featureLogStr = aReference.getAnnotatedEReference()
-				.getName()
-				+ "/"
-				+ aReference.getAnnotatedEReference().getEContainingClass()
-						.getName();
+	protected void processUnidirectionalManyToManyReference(PAnnotatedEReference aReference) {
+		final String featureLogStr =
+				aReference.getAnnotatedEReference().getName() + "/"
+						+ aReference.getAnnotatedEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null
-				|| aReference.getOneToOne() != null
+		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null
 				|| aReference.getManyToOne() != null) {
-			throw new StoreMappingException(
-					"The feature/eclass "
-							+ featureLogStr
-							+ " should be a ManyToMany but "
-							+ "it already has a OneToMany, OneToOne or ManyToOne annotation");
+			throw new StoreMappingException("The feature/eclass " + featureLogStr
+					+ " should be a ManyToMany but "
+					+ "it already has a OneToMany, OneToOne or ManyToOne annotation");
 		}
 
-		final EReference eReference = (EReference) aReference
-				.getAnnotatedElement();
+		final EReference eReference = (EReference) aReference.getAnnotatedElement();
 
 		final ManyToMany mtm = aReference.getManyToMany();
-		log
-				.debug("ManyToMany present check if default information should be added");
+		log.debug("ManyToMany present check if default information should be added");
 		mtm.setEModelElement(eReference);
 
 		setCascade(mtm.getCascade(), eReference.isContainment());
@@ -1360,62 +1245,52 @@ public class DefaultAnnotator {
 		if (joinTable.getName() == null) {
 			if (optionJoinTableNamingStrategy.compareToIgnoreCase("ejb3") == 0) {
 				final String oppName = mtm.getTargetEntity();
-				final String jTableName = getEntityName(eReference
-						.getEContainingClass())
-						+ "_" + oppName;
+				final String jTableName =
+						getEntityName(eReference.getEContainingClass()) + "_" + oppName;
 				joinTable.setName(trunc(jTableName, false));
 			} else {
 				AssertUtil.assertTrue("option optionJoinTableNamingStrategy "
 						+ optionJoinTableNamingStrategy + " not supported",
-						optionJoinTableNamingStrategy
-								.compareToIgnoreCase("unique") == 0);
-				final String jTableName = getEntityName(eReference
-						.getEContainingClass())
-						+ "_" + eReference.getName();
+					optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
+				final String jTableName =
+						getEntityName(eReference.getEContainingClass()) + "_"
+								+ eReference.getName();
 				joinTable.setName(trunc(jTableName, false));
 			}
 		}
 		if (joinTable.getJoinColumns() == null) {
 			joinTable.getJoinColumns().addAll(
-					getJoinColumns(aReference.getPaEClass(), eReference, false,
-							false, true));
+				getJoinColumns(aReference.getPaEClass(), eReference, false, false, true));
 		}
 	}
 
 	/** Adds default annotations for a one to one reference */
 	protected void processOneToOneReference(PAnnotatedEReference aReference) {
-		final String logStr = aReference.getAnnotatedEReference().getName()
-				+ "/"
-				+ aReference.getAnnotatedEReference().getEContainingClass()
-						.getName();
+		final String logStr =
+				aReference.getAnnotatedEReference().getName() + "/"
+						+ aReference.getAnnotatedEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null
-				|| aReference.getManyToMany() != null
+		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null
 				|| aReference.getManyToOne() != null) {
-			throw new StoreMappingException(
-					"The feature/eclass "
-							+ logStr
-							+ " should be a OneToOne but "
-							+ "it already has a OneToMany, ManyToMany or ManyToOne annotation");
+			throw new StoreMappingException("The feature/eclass " + logStr
+					+ " should be a OneToOne but "
+					+ "it already has a OneToMany, ManyToMany or ManyToOne annotation");
 		}
 
-		final EReference eReference = (EReference) aReference
-				.getAnnotatedElement();
+		final EReference eReference = (EReference) aReference.getAnnotatedElement();
 
 		OneToOne oto = aReference.getOneToOne();
 		if (oto == null) {
-			log.debug("EReference + " + logStr
-					+ " does not have a onetoone annotation, adding one");
+			log
+				.debug("EReference + " + logStr
+						+ " does not have a onetoone annotation, adding one");
 			oto = aFactory.createOneToOne();
 			aReference.setOneToOne(oto);
-			oto.setOptional(!eReference.isRequired()
-					|| eReference.isUnsettable());
+			oto.setOptional(!eReference.isRequired() || eReference.isUnsettable());
 			oto.setEModelElement(eReference);
 		} else {
-			log
-					.debug("EReference + "
-							+ logStr
-							+ " has an onetoone annotation setting defaults if required");
+			log.debug("EReference + " + logStr
+					+ " has an onetoone annotation setting defaults if required");
 		}
 
 		// determine where to put the mapped-by
@@ -1439,23 +1314,18 @@ public class DefaultAnnotator {
 
 	/** Handles many to one for bidirectional and unidirectional cases */
 	protected void processManyToOneReference(PAnnotatedEReference aReference) {
-		final String logStr = aReference.getAnnotatedEReference().getName()
-				+ "/"
-				+ aReference.getAnnotatedEReference().getEContainingClass()
-						.getName();
+		final String logStr =
+				aReference.getAnnotatedEReference().getName() + "/"
+						+ aReference.getAnnotatedEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null
-				|| aReference.getManyToMany() != null
+		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null
 				|| aReference.getOneToOne() != null) {
-			throw new StoreMappingException(
-					"The feature/eclass "
-							+ logStr
-							+ " should be a ManyToOne but "
-							+ "it already has a OneToMany, ManyToMany or OneToOne annotation");
+			throw new StoreMappingException("The feature/eclass " + logStr
+					+ " should be a ManyToOne but "
+					+ "it already has a OneToMany, ManyToMany or OneToOne annotation");
 		}
 
-		final EReference eReference = (EReference) aReference
-				.getAnnotatedElement();
+		final EReference eReference = (EReference) aReference.getAnnotatedElement();
 
 		ManyToOne mto = aReference.getManyToOne();
 		if (mto == null) {
@@ -1463,13 +1333,11 @@ public class DefaultAnnotator {
 					+ " does not have a manytoone annotation, adding one");
 			mto = aFactory.createManyToOne();
 			aReference.setManyToOne(mto);
-			mto.setOptional(!eReference.isRequired()
-					|| eReference.isUnsettable()
+			mto.setOptional(!eReference.isRequired() || eReference.isUnsettable()
 					|| eReference.getEOpposite() != null);
 			mto.setEModelElement(eReference);
 		} else {
-			log.debug("EReference + " + logStr
-					+ " does have a manytoone annotation, using it");
+			log.debug("EReference + " + logStr + " does have a manytoone annotation, using it");
 		}
 
 		setCascade(mto.getCascade(), eReference.isContainment());
@@ -1487,14 +1355,12 @@ public class DefaultAnnotator {
 		// the other side will use the name of the ereference as second
 		// parameter,
 		// matching the joincolumns on the other side
-		if (aReference.getJoinColumns() == null
-				|| aReference.getJoinColumns().isEmpty()) {
+		if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) {
 			// the name of the joincolumns is defined by the name of the other
 			// entity and its primary key fields
 			final PAnnotatedEClass aClass;
 			if (eReference.getEOpposite() == null) {
-				aClass = aReference.getPaModel().getPAnnotated(
-						eReference.getEReferenceType());
+				aClass = aReference.getPaModel().getPAnnotated(eReference.getEReferenceType());
 			} else {
 				aClass = aReference.getPaEClass();
 			}
@@ -1505,28 +1371,23 @@ public class DefaultAnnotator {
 				// this is a bidirectional relation without a join table, in
 				// that case the other side
 				// controls the columns
-				addJoinColumns(aClass, aReference.getAnnotatedEReference(),
-						aReference, mto.isOptional(),
-						eReference.getEOpposite() == null
-								&& aReference.getJoinTable() == null);
+				addJoinColumns(aClass, aReference.getAnnotatedEReference(), aReference, mto
+					.isOptional(), eReference.getEOpposite() == null
+						&& aReference.getJoinTable() == null);
 			}
 		}
 	}
 
 	/** Creates a set of joincolumns for a reference to the annotated eclass */
-	private void addJoinColumns(PAnnotatedEClass aClass,
-			EStructuralFeature esf, PAnnotatedEStructuralFeature aFeature,
-			boolean optional, boolean isUpdateInsertable) {
-		aFeature.getJoinColumns()
-				.addAll(
-						getJoinColumns(aClass, esf, optional, true,
-								isUpdateInsertable));
+	private void addJoinColumns(PAnnotatedEClass aClass, EStructuralFeature esf,
+			PAnnotatedEStructuralFeature aFeature, boolean optional, boolean isUpdateInsertable) {
+		aFeature.getJoinColumns().addAll(
+			getJoinColumns(aClass, esf, optional, true, isUpdateInsertable));
 	}
 
 	/** Return a list of join columns */
-	private List<JoinColumn> getJoinColumns(PAnnotatedEClass aClass,
-			EStructuralFeature esf, boolean optional, boolean doUseFeatureName,
-			boolean isUpdateInsertable) {
+	private List<JoinColumn> getJoinColumns(PAnnotatedEClass aClass, EStructuralFeature esf,
+			boolean optional, boolean doUseFeatureName, boolean isUpdateInsertable) {
 		final List<JoinColumn> result = new ArrayList<JoinColumn>();
 		final List<String> names = getIDFeaturesNames(aClass);
 
@@ -1539,8 +1400,7 @@ public class DefaultAnnotator {
 			JoinColumn jc = aFactory.createJoinColumn();
 			final String jcName;
 			if (useFeatureName) {
-				jcName = aClass.getAnnotatedEClass().getName() + "_"
-						+ esf.getName() + "_" + name;
+				jcName = aClass.getAnnotatedEClass().getName() + "_" + esf.getName() + "_" + name;
 			} else {
 				jcName = aClass.getAnnotatedEClass().getName() + "_" + name;
 			}
@@ -1560,8 +1420,8 @@ public class DefaultAnnotator {
 		if (eclass.getESuperTypes().size() == 0) {
 			return;
 		}
-		final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(
-				eclass.getESuperTypes().get(0));
+		final PAnnotatedEClass superAClass =
+				aClass.getPaModel().getPAnnotated(eclass.getESuperTypes().get(0));
 		if (superAClass.getEntity() != null) {
 			aClass.setPaSuperEntity(superAClass);
 		}
@@ -1573,8 +1433,7 @@ public class DefaultAnnotator {
 		final EClass eclass = aClass.getAnnotatedEClass();
 
 		if (!mapInterfaceEClass() && eclass.isInterface()) {
-			log
-					.debug("Not mapping interfaces and this is an interface eclass, ignore it");
+			log.debug("Not mapping interfaces and this is an interface eclass, ignore it");
 			return false;
 		}
 
@@ -1603,9 +1462,9 @@ public class DefaultAnnotator {
 		if (!mapMappedSuperEClass() && aClass.getMappedSuperclass() != null) {
 			if (aClass.getEntity() != null) {
 				log
-						.warn("EClass "
-								+ eclass.getName()
-								+ " has entity as well as mappedsuperclass annotation, following mappedsuperclass annotation, therefore ignoring it for the mapping");
+					.warn("EClass "
+							+ eclass.getName()
+							+ " has entity as well as mappedsuperclass annotation, following mappedsuperclass annotation, therefore ignoring it for the mapping");
 			}
 			return false;
 		}
@@ -1614,8 +1473,7 @@ public class DefaultAnnotator {
 	}
 
 	/**
-	 * Map Interface EClasses, default false, overridden by hibernate to return
-	 * true
+	 * Map Interface EClasses, default false, overridden by hibernate to return true
 	 */
 	protected boolean mapInterfaceEClass() {
 		return false;
@@ -1627,47 +1485,44 @@ public class DefaultAnnotator {
 	}
 
 	/**
-	 * Returns the inheritance of the passed annotated class or from one of its
-	 * super annotated class
+	 * Returns the inheritance of the passed annotated class or from one of its super annotated
+	 * class
 	 */
 	private Inheritance getInheritanceFromSupers(PAnnotatedEClass childPA) {
 		if (childPA == null) {
 			return null;
 		}
-		if (childPA.getInheritance() != null)
-			return childPA.getInheritance();
+		if (childPA.getInheritance() != null) return childPA.getInheritance();
 		return getInheritanceFromSupers(childPA.getPaSuperEntity());
 	}
 
 	/** Walks up a edatatype inheritance structure to find the itemType */
 	private ArrayList<EClassifier> getItemTypes(EDataType eDataType) {
 		final ArrayList<EClassifier> result = new ArrayList<EClassifier>();
-		if (eDataType == null)
-			return result;
-		final String itemType = getEAnnotationValue(eDataType,
-				ANNOTATION_SOURCE_METADATA, "itemType");
+		if (eDataType == null) return result;
+		final String itemType =
+				getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "itemType");
 		if (itemType != null) {
 			result.add(getEClassifier(eDataType.getEPackage(), itemType));
 			return result;
 		}
 
-		final String memberTypes = getEAnnotationValue(eDataType,
-				ANNOTATION_SOURCE_METADATA, "memberTypes");
+		final String memberTypes =
+				getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "memberTypes");
 		if (memberTypes != null) {
 			String[] mtypes = memberTypes.split(" ");
-			for (int i = 0; i < mtypes.length; i++) {
-				EClassifier eclassifier = getEClassifier(eDataType
-						.getEPackage(), mtypes[i]);
+			for (String element : mtypes) {
+				EClassifier eclassifier = getEClassifier(eDataType.getEPackage(), element);
 				result.addAll(getItemTypes((EDataType) eclassifier));
 			}
 			return result;
 		}
 
-		final String baseType = getEAnnotationValue(eDataType,
-				ANNOTATION_SOURCE_METADATA, "baseType");
+		final String baseType =
+				getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "baseType");
 		if (baseType != null) {
-			final ArrayList<EClassifier> tmpResult = getItemTypes((EDataType) getEClassifier(
-					eDataType.getEPackage(), baseType));
+			final ArrayList<EClassifier> tmpResult =
+					getItemTypes((EDataType) getEClassifier(eDataType.getEPackage(), baseType));
 			if (tmpResult.size() > 0) {
 				result.addAll(tmpResult);
 				return result;
@@ -1680,17 +1535,14 @@ public class DefaultAnnotator {
 	}
 
 	/**
-	 * Returns the eclassifier using either the name of the eclassifier or the
-	 * name element
+	 * Returns the eclassifier using either the name of the eclassifier or the name element
 	 */
 	private EClassifier getEClassifier(EPackage epackage, String searchName) {
 		for (EClassifier eclassifier : epackage.getEClassifiers()) {
-			if (eclassifier.getName().compareTo(searchName) == 0)
-				return eclassifier;
-			String nameAnnotation = getEAnnotationValue(eclassifier,
-					ANNOTATION_SOURCE_METADATA, "name");
-			if (nameAnnotation != null
-					&& searchName.compareTo(nameAnnotation) == 0) {
+			if (eclassifier.getName().compareTo(searchName) == 0) return eclassifier;
+			String nameAnnotation =
+					getEAnnotationValue(eclassifier, ANNOTATION_SOURCE_METADATA, "name");
+			if (nameAnnotation != null && searchName.compareTo(nameAnnotation) == 0) {
 				return eclassifier;
 			}
 		}
@@ -1698,12 +1550,10 @@ public class DefaultAnnotator {
 	}
 
 	/**
-	 * Checks if the cascade should be set in the cascade list, is only done if
-	 * the list is empty
+	 * Checks if the cascade should be set in the cascade list, is only done if the list is empty
 	 */
 	private void setCascade(List<CascadeType> cascadeList, boolean isContainment) {
-		if (!cascadeList.isEmpty())
-			return;
+		if (!cascadeList.isEmpty()) return;
 
 		if (isContainment && !optionSetCascadeAllOnContainment) {
 			cascadeList.add(CascadeType.REMOVE_LITERAL);
@@ -1727,16 +1577,15 @@ public class DefaultAnnotator {
 		// differently
 		// the other side may neither be containment
 		final EReference eOpposite = eReference.getEOpposite();
-		if (eOpposite == null)
-			return false;
+		if (eOpposite == null) return false;
 		return compareNames(eReference, eOpposite);
 		// &&
 		// !eReference.isContainment() && !eOpposite.isContainment();
 	}
 
 	/**
-	 * Determines where to place a certain annotation/characteristic, this is
-	 * done by comparing names..
+	 * Determines where to place a certain annotation/characteristic, this is done by comparing
+	 * names..
 	 */
 	private boolean compareNames(EReference here, EReference there) {
 		final String nameHere = here.eClass().getName() + here.getName();
@@ -1746,16 +1595,16 @@ public class DefaultAnnotator {
 	}
 
 	/**
-	 * Returns the entity name of the eclass, or the instance classname in case
-	 * the fully classified classnames should be used
+	 * Returns the entity name of the eclass, or the instance classname in case the fully classified
+	 * classnames should be used
 	 */
 	private String getEntityName(EClass eclass) {
 		if (eclass == null) {
 			throw new IllegalArgumentException(
-					"Passed eclass is null."
-							+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
-							+ "and they are not read using one resource set. The reference from one epackage to another must be "
-							+ "resolvable by EMF.");
+				"Passed eclass is null."
+						+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
+						+ "and they are not read using one resource set. The reference from one epackage to another must be "
+						+ "resolvable by EMF.");
 		}
 
 		// ok, here we figure out if it is an EMap. if so, we return the
@@ -1774,8 +1623,7 @@ public class DefaultAnnotator {
 			}
 		}
 
-		if (aclass != null && aclass.getEntity() != null
-				&& aclass.getEntity().getName() != null) {
+		if (aclass != null && aclass.getEntity() != null && aclass.getEntity().getName() != null) {
 			return aclass.getEntity().getName();
 		}
 		return optionEClassNameStrategy.toUniqueName(eclass);
@@ -1783,27 +1631,27 @@ public class DefaultAnnotator {
 
 	/** Get a specific extended metadate */
 	private String getExtendedMetaData(EAttribute eAttribute, String key) {
-		String value = getEAnnotationValue(eAttribute,
-				"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
-		if (value == null) {
-			value = getEAnnotationValue(eAttribute.getEAttributeType(),
+		String value =
+				getEAnnotationValue(eAttribute,
 					"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+		if (value == null) {
+			value =
+					getEAnnotationValue(eAttribute.getEAttributeType(),
+						"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		}
 		return value;
 	}
 
 	/** Returns the value of an annotation with a certain key */
-	private String getEAnnotationValue(EModelElement eModelElement,
-			String source, String key) {
+	private String getEAnnotationValue(EModelElement eModelElement, String source, String key) {
 		final EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
-		if (eAnnotation == null)
-			return null;
-		return (String) eAnnotation.getDetails().get(key);
+		if (eAnnotation == null) return null;
+		return eAnnotation.getDetails().get(key);
 	}
 
 	/**
-	 * Returns the list of names of id props of the eclass, walks the
-	 * inheritance tree to find the id feature, if none is found then the
+	 * Returns the list of names of id props of the eclass, walks the inheritance tree to find the
+	 * id feature, if none is found then the
 	 */
 	private List<String> getIDFeaturesNames(PAnnotatedEClass aClass) {
 		final List<String> list = getIDFeaturesNamesRecurse(aClass);
@@ -1817,25 +1665,21 @@ public class DefaultAnnotator {
 	/** Internal will walk the inheritance tree to find the id feature */
 	private List<String> getIDFeaturesNamesRecurse(PAnnotatedEClass aClass) {
 		final ArrayList<String> list = new ArrayList<String>();
-		for (EStructuralFeature feature : aClass.getAnnotatedEClass()
-				.getEStructuralFeatures()) {
-			final PAnnotatedEStructuralFeature aStructuralFeature = aClass
-					.getPaModel().getPAnnotated(feature);
+		for (EStructuralFeature feature : aClass.getAnnotatedEClass().getEStructuralFeatures()) {
+			final PAnnotatedEStructuralFeature aStructuralFeature =
+					aClass.getPaModel().getPAnnotated(feature);
 			if (aStructuralFeature instanceof PAnnotatedEAttribute) {
 				final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aStructuralFeature;
-				final String attrName = aAttribute.getAnnotatedEAttribute()
-						.getName();
+				final String attrName = aAttribute.getAnnotatedEAttribute().getName();
 				if (aAttribute.getId() != null && !list.contains(attrName)) {
 					list.add(attrName);
 				}
 			}
 		}
 
-		if (list.isEmpty()
-				&& aClass.getAnnotatedEClass().getESuperTypes().size() > 0) {
+		if (list.isEmpty() && aClass.getAnnotatedEClass().getESuperTypes().size() > 0) {
 			for (EClass eClass : aClass.getAnnotatedEClass().getESuperTypes()) {
-				final PAnnotatedEClass aSuperClass = annotatedModel
-						.getPAnnotated(eClass);
+				final PAnnotatedEClass aSuperClass = annotatedModel.getPAnnotated(eClass);
 				if (aSuperClass != null) {
 					final List<String> superList = getIDFeaturesNamesRecurse(aSuperClass);
 					list.removeAll(superList);
@@ -1857,8 +1701,7 @@ public class DefaultAnnotator {
 	private String trunc(String truncName, boolean truncSuffix) {
 		final String correctedName = truncName.replace('.', '_');
 
-		if (optionMaximumSqlLength == -1)
-			return optionSQLCaseStrategy.convert(correctedName);
+		if (optionMaximumSqlLength == -1) return optionSQLCaseStrategy.convert(correctedName);
 		if (correctedName.length() < optionMaximumSqlLength)
 			return optionSQLCaseStrategy.convert(correctedName);
 
@@ -1868,13 +1711,12 @@ public class DefaultAnnotator {
 			final String usStr = correctedName.substring(underscore);
 			if ((optionMaximumSqlLength - usStr.length()) < 0)
 				return optionSQLCaseStrategy.convert(correctedName);
-			return optionSQLCaseStrategy.convert(correctedName.substring(0,
-					optionMaximumSqlLength - usStr.length())
+			return optionSQLCaseStrategy.convert(correctedName.substring(0, optionMaximumSqlLength
+					- usStr.length())
 					+ usStr);
 		}
 
-		return optionSQLCaseStrategy.convert(correctedName.substring(0,
-				optionMaximumSqlLength));
+		return optionSQLCaseStrategy.convert(correctedName.substring(0, optionMaximumSqlLength));
 	}
 
 	/**
