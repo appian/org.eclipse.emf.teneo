@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class IdentifierCacheHandler {
@@ -43,8 +43,8 @@ public class IdentifierCacheHandler {
 	private static int idModCount = 0;
 
 	/** HashMap */
-	private static Map<Key, Object> versionMap = Collections
-			.synchronizedMap(new HashMap<Key, Object>());
+	private static Map<Key, Object> versionMap =
+			Collections.synchronizedMap(new HashMap<Key, Object>());
 
 	/** Keeps track of the modifications to the versionMap */
 	private static int versionModCount = 0;
@@ -143,9 +143,6 @@ public class IdentifierCacheHandler {
 			while (it.hasNext()) {
 				Key key = it.next();
 				Object object = key.weakRef.get();
-				if (object != null) {
-					System.err.println(object.getClass().getName());
-				}
 			}
 		}
 	}
