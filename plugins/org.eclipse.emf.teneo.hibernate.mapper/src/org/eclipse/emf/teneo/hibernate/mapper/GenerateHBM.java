@@ -1,18 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- *   Davide Marchignoli
- * </copyright>
- *
- * $Id: GenerateHBM.java,v 1.6 2007/04/17 15:49:50 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
+ * </copyright> $Id: GenerateHBM.java,v 1.7 2007/04/23 03:03:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -37,10 +28,11 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
 
 /**
- * Class is responsible for generating the hbm file. Is run through a launcher therefore the main methods.
+ * Class is responsible for generating the hbm file. Is run through a launcher therefore the main
+ * methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class GenerateHBM {
@@ -64,17 +56,18 @@ public class GenerateHBM {
 
 				// the epackages load them all, hope for the best
 				// when loading the epackage should be loaded
-				for (int p = 0; p < epacks.length; p++) {
+				for (String element : epacks) {
 					try {
-						log.debug("Loading class " + epacks[p] + " should be an epackage");
+						log.debug("Loading class " + element + " should be an epackage");
 
-						Class<?> epack = Class.forName(epacks[p]);
+						Class<?> epack = Class.forName(element);
 						if (!EPackage.class.isAssignableFrom(epack)) {
 							log.warn("HBM Generator found " + epack.getName()
 									+ " but this is not an EPackage, ignoring it");
 						}
 					} catch (Throwable t) { // ignore everything but log it
-						log.error("Exception while instantiating " + epacks[p] + ", message: " + t.getMessage());
+						log.error("Exception while instantiating " + element + ", message: "
+								+ t.getMessage());
 					}
 				}
 			} else {
@@ -82,11 +75,12 @@ public class GenerateHBM {
 			}
 		}
 
-		createORMapperFile(targetFileName, (String[]) ecores.toArray(new String[ecores.size()]), options);
+		createORMapperFile(targetFileName, ecores.toArray(new String[ecores.size()]), options);
 	}
 
 	/** Creates the mapping file */
-	private static void createORMapperFile(String targetFileName, String[] ecores, Properties options) {
+	private static void createORMapperFile(String targetFileName, String[] ecores,
+			Properties options) {
 		try {
 			// get the first ecore file
 			File firstEcore = new File(ecores[0]);
@@ -94,8 +88,7 @@ public class GenerateHBM {
 			final File archiveFile = new File(firstEcore.getParentFile(), targetFileName + "_old");
 
 			if (file.exists()) {
-				if (archiveFile.exists())
-					archiveFile.delete();
+				if (archiveFile.exists()) archiveFile.delete();
 				copyFile(file, archiveFile);
 				file.delete();
 			}
@@ -111,7 +104,6 @@ public class GenerateHBM {
 			writer.write(hmg.generateToString(paModel));
 			writer.flush();
 		} catch (IOException e) {
-			//e.printStackTrace(System.err);
 			log.error(e);
 			throw new StoreException("IOException when creating or mapping file", e);
 		}
@@ -119,8 +111,7 @@ public class GenerateHBM {
 
 	/** Copies a file */
 	public static void copyFile(File src, File dst) throws IOException {
-		if (!dst.exists())
-			dst.createNewFile();
+		if (!dst.exists()) dst.createNewFile();
 
 		InputStream in = new FileInputStream(src);
 		OutputStream out = new FileOutputStream(dst);
