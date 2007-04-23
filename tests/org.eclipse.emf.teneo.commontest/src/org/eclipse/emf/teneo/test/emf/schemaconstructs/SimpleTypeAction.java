@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: SimpleTypeAction.java,v 1.7 2007/03/06 19:02:42 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * SimpleTypeAction.java,v 1.7 2007/03/06 19:02:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -34,11 +26,11 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests if simple types are stored/retrieved correctly.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class SimpleTypeAction extends AbstractTestAction {
 	/** Simple Type Values we test against */
-	private static double DOUBLE = (double) 10.95;
+	private static double DOUBLE = 10.95;
 
 	private static float FLOAT = (float) 3458.95;
 
@@ -46,11 +38,11 @@ public class SimpleTypeAction extends AbstractTestAction {
 
 	private static byte BYTE = (byte) 233;
 
-	private static int INT = (int) 5460;
+	private static int INT = 5460;
 
 	private static short SHORT = (short) 456;
 
-	private static long LONG = (long) 2789123;
+	private static long LONG = 2789123;
 
 	private static Date DATE = new Date();
 
@@ -70,6 +62,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 	}
 
 	/** Creates simple types and tests against */
+	@Override
 	public void doAction(TestStore store) {
 		// test a simple type
 		final SimpletypesFactory factory = SimpletypesFactory.eINSTANCE;
@@ -91,7 +84,8 @@ public class SimpleTypeAction extends AbstractTestAction {
 			stype.setShor(SHORT);
 			if (store.isHibernateTestStore()) {
 				stype.setExtraLimitedString(STRING);
-			} else { // for jpox the test with limited string is disabled because it always fails, need to test differently
+			} else { // for jpox the test with limited string is disabled because it always
+				// fails, need to test differently
 				stype.setExtraLimitedString(STRING.substring(0, 5));
 			}
 			stype.setLimitedDecimal(bigDecimalOne);
@@ -206,7 +200,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 			copy(stype.getLong(), longs);
 			copy(stype.getDoubl(), doubles);
 			copy(stype.getFloa(), floats);
-			// copy(stype.getEnu(), enums);
+			copy(stype.getEnu(), enums);
 			copy(stype.getDat(), dates);
 			copy(stype.getLimitedstring(), strings);
 			stype.setIntArray(simpleInts);
@@ -231,7 +225,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 			assertValues(result.getStringArray(), strings);
 			assertValues(result.getByteArray(), simpleBytes);
 
-			// assertTrue(compare(result.getEnu(), enums));
+			assertTrue(compare(result.getEnu(), enums));
 			assertValues(store, result.getDat(), dates);
 			assertValues(result.getLimitedstring(), strings);
 			store.deleteObject(result);
@@ -239,10 +233,20 @@ public class SimpleTypeAction extends AbstractTestAction {
 		}
 	}
 
+	private boolean compare(List<SimpleEnum> list, SimpleEnum[] arr) {
+		int i = 0;
+		for (SimpleEnum se : list) {
+			if (se.compareTo(arr[i++]) != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	/** Copies the values from an array to the elist */
 	private void copy(List list, Object[] objs) {
-		for (int i = 0; i < objs.length; i++) {
-			list.add(objs[i]);
+		for (Object element : objs) {
+			list.add(element);
 		}
 	}
 
