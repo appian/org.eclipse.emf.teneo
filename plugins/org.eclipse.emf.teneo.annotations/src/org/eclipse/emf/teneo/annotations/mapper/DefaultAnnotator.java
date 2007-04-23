@@ -75,7 +75,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  */
 public class DefaultAnnotator {
 
@@ -390,11 +390,6 @@ public class DefaultAnnotator {
 			entity.setEModelElement(eclass);
 			entity.setName(getEntityName(eclass));
 			aClass.setEntity(entity);
-
-			if (entity.getName().equals("Child2")) {
-				System.err.println("TEST");
-			}
-
 		} else if (aClass.getEntity() != null && aClass.getEntity().getName() == null) {
 			aClass.getEntity().setName(getEntityName(eclass));
 		}
