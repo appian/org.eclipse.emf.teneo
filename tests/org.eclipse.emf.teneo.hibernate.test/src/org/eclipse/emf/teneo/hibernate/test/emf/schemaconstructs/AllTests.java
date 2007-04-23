@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: AllTests.java,v 1.11 2007/03/29 22:14:46 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * AllTests.java,v 1.11 2007/03/29 22:14:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;
@@ -39,18 +31,19 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", HibernateTestbed
-				.instance().getConfigurations());
+		TestSuite suite =
+				new MultiCfgTestSuite(
+					"Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
+					HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(SimpleTypeAction.class);
 		suite.addTestSuite(EMapAction.class);
-
 		suite.addTestSuite(DateTimeAction.class);
 		suite.addTestSuite(AttributesTest.class);
-		suite.addTestSuite(SimpleTypeAction.class);
 		suite.addTestSuite(ListAction.class);
 		suite.addTestSuite(EcoreAttrsAction.class);
 		suite.addTestSuite(MixedAction.class);
@@ -61,10 +54,11 @@ public class AllTests {
 		suite.addTestSuite(NestedGroupAction.class);
 		suite.addTestSuite(SubstitutionzvonAction.class);
 		suite.addTestSuite(SubstitutionAction.class);
+
 		/*
-		 * // The anytype test is not yet supported by Hibernate // suite.addTestSuite(AnyTypeAction.class); // Listunion types are not
-		 * yet supported by hibernate // 
-		suite.addTestSuite(ListUnionAction.class);
+		 * // The anytype test is not yet supported by Hibernate //
+		 * suite.addTestSuite(AnyTypeAction.class); // Listunion types are not yet supported by
+		 * hibernate // suite.addTestSuite(ListUnionAction.class);
 		 */
 		// $JUnit-END$
 		return suite;
