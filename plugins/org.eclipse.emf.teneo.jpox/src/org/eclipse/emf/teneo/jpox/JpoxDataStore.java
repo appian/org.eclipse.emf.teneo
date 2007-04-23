@@ -92,7 +92,7 @@ import org.w3c.dom.NodeList;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $ $Date: 2007/04/23 02:36:31 $
+ * @version $Revision: 1.15 $ $Date: 2007/04/23 03:03:59 $
  */
 
 public class JpoxDataStore {
@@ -176,6 +176,7 @@ public class JpoxDataStore {
 
 		// set the eruntime as the emodel resolver!
 		ERuntime.setAsEModelResolver();
+		ERuntime.INSTANCE.register(getEPackages());
 
 		// the jdo file list
 		String suffix =
