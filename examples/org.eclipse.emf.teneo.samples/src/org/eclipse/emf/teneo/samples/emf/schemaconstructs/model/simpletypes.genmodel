@@ -35,6 +35,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/inte"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/long"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/shor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/enu"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/dat"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/limitedstring"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/intArray"/>

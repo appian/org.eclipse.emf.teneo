@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleTypeImpl.java,v 1.4 2007/03/05 20:51:06 mtaal Exp $
+ * $Id: SimpleTypeImpl.java,v 1.5 2007/04/23 02:36:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -70,7 +70,7 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean codeESet = false;
+	protected boolean codeESet;
 
 	/**
 	 * The default value of the '{@link #isBoo() <em>Boo</em>}' attribute.
@@ -99,7 +99,7 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean booESet = false;
+	protected boolean booESet;
 
 	/**
 	 * The default value of the '{@link #getByt() <em>Byt</em>}' attribute.
@@ -128,7 +128,7 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean bytESet = false;
+	protected boolean bytESet;
 
 	/**
 	 * The default value of the '{@link #getDoubl() <em>Doubl</em>}' attribute.
@@ -157,7 +157,7 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean doublESet = false;
+	protected boolean doublESet;
 
 	/**
 	 * The default value of the '{@link #getFloat() <em>Float</em>}' attribute.
@@ -186,7 +186,7 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean floatESet = false;
+	protected boolean floatESet;
 
 	/**
 	 * The default value of the '{@link #getInte() <em>Inte</em>}' attribute.
@@ -215,7 +215,7 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean inteESet = false;
+	protected boolean inteESet;
 
 	/**
 	 * The default value of the '{@link #getLon() <em>Lon</em>}' attribute.
@@ -244,7 +244,7 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean lonESet = false;
+	protected boolean lonESet;
 
 	/**
 	 * The default value of the '{@link #getShor() <em>Shor</em>}' attribute.
@@ -273,7 +273,7 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean shorESet = false;
+	protected boolean shorESet;
 
 	/**
 	 * The default value of the '{@link #getEnu() <em>Enu</em>}' attribute.
@@ -302,7 +302,7 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean enuESet = false;
+	protected boolean enuESet;
 
 	/**
 	 * The default value of the '{@link #getDat() <em>Dat</em>}' attribute.
@@ -371,7 +371,7 @@ public class SimpleTypeImpl extends EObjectImpl implements SimpleType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean limitedDecimalESet = false;
+	protected boolean limitedDecimalESet;
 
 	/**
 	 * The default value of the '{@link #getExtraLimitedString() <em>Extra Limited String</em>}' attribute.

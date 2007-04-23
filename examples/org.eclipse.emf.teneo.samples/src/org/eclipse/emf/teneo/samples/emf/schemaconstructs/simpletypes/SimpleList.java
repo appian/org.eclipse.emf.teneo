@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleList.java,v 1.5 2007/02/08 23:09:23 mtaal Exp $
+ * $Id: SimpleList.java,v 1.6 2007/04/23 02:36:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getInte <em>Inte</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getLong <em>Long</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getShor <em>Shor</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getEnu <em>Enu</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getDat <em>Dat</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getLimitedstring <em>Limitedstring</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getIntArray <em>Int Array</em>}</li>
@@ -214,6 +215,25 @@ public interface SimpleList extends EObject {
 	 * @generated
 	 */
 	EList<Short> getShor();
+
+	/**
+	 * Returns the value of the '<em><b>Enu</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum}.
+	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Enu</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Enu</em>' attribute list.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleList_Enu()
+	 * @model type="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum" default="Enum1" unique="false" required="true"
+	 *        extendedMetaData="kind='element' name='enu'"
+	 * @generated
+	 */
+	EList<SimpleEnum> getEnu();
 
 	/**
 	 * Returns the value of the '<em><b>Dat</b></em>' attribute list.

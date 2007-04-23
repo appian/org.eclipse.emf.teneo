@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesPackage.java,v 1.3 2007/03/05 20:51:06 mtaal Exp $
+ * $Id: SimpletypesPackage.java,v 1.4 2007/04/23 02:36:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -143,13 +143,22 @@ public interface SimpletypesPackage extends EPackage {
 	int SIMPLE_LIST__SHOR = 7;
 
 	/**
+	 * The feature id for the '<em><b>Enu</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_LIST__ENU = 8;
+
+	/**
 	 * The feature id for the '<em><b>Dat</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST__DAT = 8;
+	int SIMPLE_LIST__DAT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Limitedstring</b></em>' attribute list.
@@ -158,7 +167,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST__LIMITEDSTRING = 9;
+	int SIMPLE_LIST__LIMITEDSTRING = 10;
 
 	/**
 	 * The feature id for the '<em><b>Int Array</b></em>' attribute.
@@ -167,7 +176,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST__INT_ARRAY = 10;
+	int SIMPLE_LIST__INT_ARRAY = 11;
 
 	/**
 	 * The feature id for the '<em><b>Double Array</b></em>' attribute.
@@ -176,7 +185,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST__DOUBLE_ARRAY = 11;
+	int SIMPLE_LIST__DOUBLE_ARRAY = 12;
 
 	/**
 	 * The feature id for the '<em><b>String Array</b></em>' attribute.
@@ -185,7 +194,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST__STRING_ARRAY = 12;
+	int SIMPLE_LIST__STRING_ARRAY = 13;
 
 	/**
 	 * The feature id for the '<em><b>Byte Array</b></em>' attribute.
@@ -194,7 +203,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST__BYTE_ARRAY = 13;
+	int SIMPLE_LIST__BYTE_ARRAY = 14;
 
 	/**
 	 * The number of structural features of the '<em>Simple List</em>' class.
@@ -203,7 +212,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST_FEATURE_COUNT = 14;
+	int SIMPLE_LIST_FEATURE_COUNT = 15;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl <em>Simple Type</em>}' class.
@@ -705,6 +714,17 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimpleList_Shor();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getEnu <em>Enu</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Enu</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getEnu()
+	 * @see #getSimpleList()
+	 * @generated
+	 */
+	EAttribute getSimpleList_Enu();
 
 	/**
 	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getDat <em>Dat</em>}'.
@@ -1326,6 +1346,14 @@ public interface SimpletypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMPLE_LIST__SHOR = eINSTANCE.getSimpleList_Shor();
+
+		/**
+		 * The meta object literal for the '<em><b>Enu</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_LIST__ENU = eINSTANCE.getSimpleList_Enu();
 
 		/**
 		 * The meta object literal for the '<em><b>Dat</b></em>' attribute list feature.

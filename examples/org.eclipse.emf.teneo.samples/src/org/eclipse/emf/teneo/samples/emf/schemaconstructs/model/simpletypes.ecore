@@ -153,6 +153,13 @@
         <details key="name" value="shor"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enu" unique="false" lowerBound="1"
+        upperBound="-1" eType="#//SimpleEnum" defaultValueLiteral="Enum1">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="enu"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dat" unique="false" lowerBound="1"
         upperBound="-1" eType="#//Date">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

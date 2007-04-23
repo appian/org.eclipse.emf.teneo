@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesFactoryImpl.java,v 1.7 2007/03/05 20:51:06 mtaal Exp $
+ * $Id: SimpletypesFactoryImpl.java,v 1.8 2007/04/23 02:36:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -223,7 +223,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Boolean createBoolFromString(EDataType eDataType, String initialValue) {
-		return (Boolean)super.createFromString(initialValue);
+		return (Boolean)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -232,7 +232,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertBoolToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -241,7 +241,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Byte createByteFromString(EDataType eDataType, String initialValue) {
-		return (Byte)super.createFromString(initialValue);
+		return (Byte)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -250,7 +250,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertByteToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -277,7 +277,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Date createDateFromString(EDataType eDataType, String initialValue) {
-		return (Date)super.createFromString(initialValue);
+		return (Date)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertDateToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -295,7 +295,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Double createDoubleFromString(EDataType eDataType, String initialValue) {
-		return (Double)super.createFromString(initialValue);
+		return (Double)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -304,7 +304,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertDoubleToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -349,7 +349,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Float createFloatFromString(EDataType eDataType, String initialValue) {
-		return (Float)super.createFromString(initialValue);
+		return (Float)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -358,7 +358,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertFloatToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -367,7 +367,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Integer createIntFromString(EDataType eDataType, String initialValue) {
-		return (Integer)super.createFromString(initialValue);
+		return (Integer)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -376,7 +376,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertIntToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -403,7 +403,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public BigDecimal createLimitedDecimalFromString(EDataType eDataType, String initialValue) {
-		return (BigDecimal)super.createFromString(initialValue);
+		return (BigDecimal)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -412,7 +412,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertLimitedDecimalToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -439,7 +439,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public Long createLongFromString(EDataType eDataType, String initialValue) {
-		return (Long)super.createFromString(initialValue);
+		return (Long)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -448,7 +448,7 @@ public class SimpletypesFactoryImpl extends EFactoryImpl implements SimpletypesF
 	 * @generated
 	 */
 	public String convertLongToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

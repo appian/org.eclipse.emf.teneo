@@ -52,7 +52,7 @@
 			    </annotation>
 			</element>
 			<element maxOccurs="unbounded" name="shor" type="short"/>
-		<!--	<element name="enu" type="this:SimpleEnum" maxOccurs="unbounded"/>-->
+			<element name="enu" type="this:SimpleEnum" maxOccurs="unbounded"/>
 			<element maxOccurs="unbounded" name="dat" type="this:Date"/>
 			<element maxOccurs="unbounded" name="limitedstring" type="this:LimitedString"/>
 			<element name="intArray" type="this:IntArray"/>

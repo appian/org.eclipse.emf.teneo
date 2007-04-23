@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesPackageImpl.java,v 1.6 2007/03/05 20:51:06 mtaal Exp $
+ * $Id: SimpletypesPackageImpl.java,v 1.7 2007/04/23 02:36:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -332,7 +332,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleList_Dat() {
+	public EAttribute getSimpleList_Enu() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -341,7 +341,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleList_Limitedstring() {
+	public EAttribute getSimpleList_Dat() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -350,7 +350,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleList_IntArray() {
+	public EAttribute getSimpleList_Limitedstring() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -359,7 +359,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleList_DoubleArray() {
+	public EAttribute getSimpleList_IntArray() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -368,7 +368,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleList_StringArray() {
+	public EAttribute getSimpleList_DoubleArray() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -377,8 +377,17 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleList_ByteArray() {
+	public EAttribute getSimpleList_StringArray() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimpleList_ByteArray() {
+		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -787,6 +796,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		createEAttribute(simpleListEClass, SIMPLE_LIST__INTE);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__LONG);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__SHOR);
+		createEAttribute(simpleListEClass, SIMPLE_LIST__ENU);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__DAT);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__LIMITEDSTRING);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__INT_ARRAY);
@@ -884,6 +894,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		initEAttribute(getSimpleList_Inte(), this.getInt(), "inte", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Long(), this.getLong(), "long", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Shor(), theXMLTypePackage.getShort(), "shor", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_Enu(), this.getSimpleEnum(), "enu", "Enum1", 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Dat(), this.getDate(), "dat", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Limitedstring(), this.getLimitedString(), "limitedstring", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_IntArray(), this.getIntArray(), "intArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1117,6 +1128,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		   new String[] {
 			 "kind", "element",
 			 "name", "shor"
+		   });		
+		addAnnotation
+		  (getSimpleList_Enu(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "enu"
 		   });		
 		addAnnotation
 		  (getSimpleList_Dat(), 
@@ -1356,7 +1374,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		   source, 
 		   new String[] {
 			 "appinfo", "@JoinTable(name=\"longNum\")"
-		   });																																	
+		   });																																		
 		addAnnotation
 		  (getSimpleTypeObject_Enu(), 
 		   source, 

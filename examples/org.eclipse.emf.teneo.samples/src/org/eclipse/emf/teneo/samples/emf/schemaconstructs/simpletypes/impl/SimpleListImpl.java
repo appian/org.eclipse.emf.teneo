@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleListImpl.java,v 1.4 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: SimpleListImpl.java,v 1.5 2007/04/23 02:36:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage;
 
@@ -33,6 +34,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Simpletype
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getInte <em>Inte</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getLong <em>Long</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getShor <em>Shor</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getEnu <em>Enu</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getDat <em>Dat</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getLimitedstring <em>Limitedstring</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getIntArray <em>Int Array</em>}</li>
@@ -72,7 +74,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean codeESet = false;
+	protected boolean codeESet;
 
 	/**
 	 * The cached value of the '{@link #getBoo() <em>Boo</em>}' attribute list.
@@ -82,7 +84,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Boolean> boo = null;
+	protected EList<Boolean> boo;
 
 	/**
 	 * The cached value of the '{@link #getByt() <em>Byt</em>}' attribute list.
@@ -92,7 +94,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Byte> byt = null;
+	protected EList<Byte> byt;
 
 	/**
 	 * The cached value of the '{@link #getDoubl() <em>Doubl</em>}' attribute list.
@@ -102,7 +104,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Double> doubl = null;
+	protected EList<Double> doubl;
 
 	/**
 	 * The cached value of the '{@link #getFloa() <em>Floa</em>}' attribute list.
@@ -112,7 +114,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Float> floa = null;
+	protected EList<Float> floa;
 
 	/**
 	 * The cached value of the '{@link #getInte() <em>Inte</em>}' attribute list.
@@ -122,7 +124,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Integer> inte = null;
+	protected EList<Integer> inte;
 
 	/**
 	 * The cached value of the '{@link #getLong() <em>Long</em>}' attribute list.
@@ -132,7 +134,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Long> long_ = null;
+	protected EList<Long> long_;
 
 	/**
 	 * The cached value of the '{@link #getShor() <em>Shor</em>}' attribute list.
@@ -142,7 +144,17 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Short> shor = null;
+	protected EList<Short> shor;
+
+	/**
+	 * The cached value of the '{@link #getEnu() <em>Enu</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnu()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SimpleEnum> enu;
 
 	/**
 	 * The cached value of the '{@link #getDat() <em>Dat</em>}' attribute list.
@@ -152,7 +164,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Date> dat = null;
+	protected EList<Date> dat;
 
 	/**
 	 * The cached value of the '{@link #getLimitedstring() <em>Limitedstring</em>}' attribute list.
@@ -162,7 +174,7 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> limitedstring = null;
+	protected EList<String> limitedstring;
 
 	/**
 	 * The default value of the '{@link #getIntArray() <em>Int Array</em>}' attribute.
@@ -398,6 +410,18 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<SimpleEnum> getEnu() {
+		if (enu == null) {
+			enu = new EDataTypeEList<SimpleEnum>(SimpleEnum.class, this, SimpletypesPackage.SIMPLE_LIST__ENU);
+		}
+		return enu;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Date> getDat() {
 		if (dat == null) {
 			dat = new EDataTypeEList<Date>(Date.class, this, SimpletypesPackage.SIMPLE_LIST__DAT);
@@ -525,6 +549,8 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 				return getLong();
 			case SimpletypesPackage.SIMPLE_LIST__SHOR:
 				return getShor();
+			case SimpletypesPackage.SIMPLE_LIST__ENU:
+				return getEnu();
 			case SimpletypesPackage.SIMPLE_LIST__DAT:
 				return getDat();
 			case SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING:
@@ -580,6 +606,10 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 			case SimpletypesPackage.SIMPLE_LIST__SHOR:
 				getShor().clear();
 				getShor().addAll((Collection<? extends Short>)newValue);
+				return;
+			case SimpletypesPackage.SIMPLE_LIST__ENU:
+				getEnu().clear();
+				getEnu().addAll((Collection<? extends SimpleEnum>)newValue);
 				return;
 			case SimpletypesPackage.SIMPLE_LIST__DAT:
 				getDat().clear();
@@ -637,6 +667,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 			case SimpletypesPackage.SIMPLE_LIST__SHOR:
 				getShor().clear();
 				return;
+			case SimpletypesPackage.SIMPLE_LIST__ENU:
+				getEnu().clear();
+				return;
 			case SimpletypesPackage.SIMPLE_LIST__DAT:
 				getDat().clear();
 				return;
@@ -683,6 +716,8 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 				return long_ != null && !long_.isEmpty();
 			case SimpletypesPackage.SIMPLE_LIST__SHOR:
 				return shor != null && !shor.isEmpty();
+			case SimpletypesPackage.SIMPLE_LIST__ENU:
+				return enu != null && !enu.isEmpty();
 			case SimpletypesPackage.SIMPLE_LIST__DAT:
 				return dat != null && !dat.isEmpty();
 			case SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING:
@@ -725,6 +760,8 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 		result.append(long_);
 		result.append(", shor: ");
 		result.append(shor);
+		result.append(", enu: ");
+		result.append(enu);
 		result.append(", dat: ");
 		result.append(dat);
 		result.append(", limitedstring: ");
