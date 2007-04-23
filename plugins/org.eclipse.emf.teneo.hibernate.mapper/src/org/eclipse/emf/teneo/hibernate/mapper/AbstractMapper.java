@@ -1,19 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- *   Davide Marchignoli
- *   Brian Vetter
- * </copyright>
- *
- * $Id: AbstractMapper.java,v 1.17 2007/04/17 15:49:50 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.18 2007/04/23 02:36:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,10 +14,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
+import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
@@ -54,9 +47,10 @@ abstract class AbstractMapper {
 	protected PAnnotatedEReference getOtherSide(PAnnotatedEReference paReference) {
 		// TODO assuming that mappedBy coincide with opposite, check in validation
 		if (paReference.getAnnotatedEReference().getEOpposite() == null) {
-			return null; 
+			return null;
 		}
-		return paReference.getPaModel().getPAnnotated(paReference.getAnnotatedEReference().getEOpposite());
+		return paReference.getPaModel().getPAnnotated(
+			paReference.getAnnotatedEReference().getEOpposite());
 	}
 
 	/** The mapping context of this mapping action */
@@ -99,24 +93,59 @@ abstract class AbstractMapper {
 				// simple
 				propElement.addAttribute("type", name);
 			} else {
-				final Element typeElement = propElement.addElement("type").addAttribute("name", name);
+				final Element typeElement =
+						propElement.addElement("type").addAttribute("name", name);
 				for (Parameter param : params) {
-					typeElement.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
+					typeElement.addElement("param").addAttribute("name", param.getName()).addText(
+						param.getValue());
 				}
 			}
+		} else if (paAttribute.getEnumerated() != null) {
+			handleEnumType(paAttribute, propElement);
 		} else {
 			final String hType = hbType(paAttribute);
 			if (hType != null) {
 				propElement.addAttribute("type", hType);
 			} else {
-				final Element typeElement = propElement.addElement("type").addAttribute("name",
-						hbmContext.getDefaultUserType());
-				typeElement.addElement("param").addAttribute("name", HbMapperConstants.EDATATYPE_PARAM).addText(
-						paAttribute.getAnnotatedEAttribute().getEAttributeType().getName());
-				typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
-						paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
+				final Element typeElement =
+						propElement.addElement("type").addAttribute("name",
+							hbmContext.getDefaultUserType());
+				typeElement.addElement("param").addAttribute("name",
+					HbMapperConstants.EDATATYPE_PARAM).addText(
+					paAttribute.getAnnotatedEAttribute().getEAttributeType().getName());
+				typeElement.addElement("param").addAttribute("name",
+					HbMapperConstants.EPACKAGE_PARAM).addText(
+					paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
 			}
 		}
+	}
+
+	/** Handle the enum type */
+	private void handleEnumType(PAnnotatedEAttribute paAttribute, Element propElement) {
+		final Enumerated enumerated = paAttribute.getEnumerated();
+		assert (enumerated != null);
+		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
+		final EClassifier eclassifier = eattr.getEType();
+		if (!getHbmContext().isGeneratedByEMF()
+				&& getHbmContext().getInstanceClass(eclassifier) != null) {
+			final Class<?> instanceClass = getHbmContext().getInstanceClass(eclassifier);
+			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated))
+				.addElement("param").addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM)
+				.addText(instanceClass.getName());
+		} else if (getHbmContext().isGeneratedByEMF() && eclassifier.getInstanceClass() != null) {
+			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated))
+				.addElement("param").addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM)
+				.addText(eclassifier.getInstanceClass().getName());
+		} else { // must be emf dynamic
+			final Element typeElement =
+					propElement.addElement("type").addAttribute("name",
+						hbDynamicEnumType(enumerated));
+			typeElement.addElement("param").addAttribute("name",
+				HbMapperConstants.ECLASSIFIER_PARAM).addText(eclassifier.getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM)
+				.addText(eclassifier.getEPackage().getNsURI());
+		}
+
 	}
 
 	/**
@@ -126,8 +155,9 @@ abstract class AbstractMapper {
 	 */
 	protected String hbType(PAnnotatedEAttribute paAttribute) {
 		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
-		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) paAttribute.getPaModel().getPAnnotated(
-				eAttribute.getEAttributeType());
+		final HbAnnotatedEDataType hed =
+				(HbAnnotatedEDataType) paAttribute.getPaModel().getPAnnotated(
+					eAttribute.getEAttributeType());
 		final EDataType eDataType = paAttribute.getAnnotatedEAttribute().getEAttributeType();
 		if (hed != null && hed.getHbTypeDef() != null) {
 			return hed.getHbTypeDef().getName();
@@ -137,10 +167,12 @@ abstract class AbstractMapper {
 			} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
 				return "text";
 			} else {
-				throw new MappingException("Lob annotations can only be used with Strings or byte arrays. "
-						+ "Attribute is of type: " + eDataType);
+				throw new MappingException(
+					"Lob annotations can only be used with Strings or byte arrays. "
+							+ "Attribute is of type: " + eDataType);
 			}
-		} else if (EcoreDataTypes.INSTANCE.isEWrapper(eDataType) || EcoreDataTypes.INSTANCE.isEPrimitive(eDataType)) {
+		} else if (EcoreDataTypes.INSTANCE.isEWrapper(eDataType)
+				|| EcoreDataTypes.INSTANCE.isEPrimitive(eDataType)) {
 			return eDataType.getInstanceClassName();
 		} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
 			return eDataType.getInstanceClassName();
@@ -148,7 +180,8 @@ abstract class AbstractMapper {
 			return getEDateClass(eDataType);
 		} else if (EcoreDataTypes.INSTANCE.isEDateTime(eDataType)) {
 			return getEDateTimeClass(eDataType);
-		} else if (eDataType.getInstanceClass() != null && eDataType.getInstanceClass() == Object.class) {
+		} else if (eDataType.getInstanceClass() != null
+				&& eDataType.getInstanceClass() == Object.class) {
 			// null forces caller to use usertype
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
 		} else if (eDataType.getInstanceClass() != null) {
@@ -158,45 +191,63 @@ abstract class AbstractMapper {
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
 		}
 	}
-	
+
+	/** Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type. */
+	public String getEnumUserType(Enumerated enumerated) {
+		if (EnumType.STRING == enumerated.getValue().getValue()) {
+			return getHbmContext().getEnumUserType();
+		} else {
+			return getHbmContext().getEnumIntegerUserType();
+		}
+	}
+
+	/** Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type. */
+	protected String hbDynamicEnumType(Enumerated enumerated) {
+		if (EnumType.STRING == enumerated.getValue().getValue()) {
+			return getHbmContext().getDynamicEnumUserType();
+		} else {
+			return getHbmContext().getDynamicEnumIntegerUserType();
+		}
+	}
+
 	/*
 	 * @return The name of the java class needed to map the date type
 	 */
 	public String getEDateClass(EDataType eDataType) {
-		assert(EcoreDataTypes.INSTANCE.isEDate(eDataType));
+		assert (EcoreDataTypes.INSTANCE.isEDate(eDataType));
 		// only override if the user did not specify a more specific class
 		if (eDataType.getInstanceClass() == Object.class) {
 			// EMF returns an XSD Date type as an Object instance. go figure.
 			// note that I would prefer to use the class instance to get the name
-			// but for other reasons I do not want to have references to the 
+			// but for other reasons I do not want to have references to the
 			// org.eclipse.emf.teneo.hibernate plugin.
 			return getHbmContext().getXSDDateUserType();
 		}
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
 		// really wants a different mapping he/she should use maybe a usertype??
-		return Date.class.getName();		
+		return Date.class.getName();
 	}
 
 	/*
 	 * @return The name of the java class needed to map the datetime/timestamp type
 	 */
 	public String getEDateTimeClass(EDataType eDataType) {
-		assert(EcoreDataTypes.INSTANCE.isEDateTime(eDataType));
+		assert (EcoreDataTypes.INSTANCE.isEDateTime(eDataType));
 		if (eDataType.getInstanceClass() == Object.class) {
 			// EMF returns an XSD Date type as an Object instance. go figure.
 			// note that I would prefer to use the class instance to get the name
-			// but for other reasons I do not want to have references to the 
+			// but for other reasons I do not want to have references to the
 			// org.eclipse.emf.teneo.hibernate plugin.
 			return getHbmContext().getXSDDateTimeUserType();
 		}
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
 		// really wants a different mapping he/she should use maybe a usertype??
-		return Timestamp.class.getName();		
+		return Timestamp.class.getName();
 	}
 
 	/**
-	 * Returns the (possibly overridden) JoinColumns annotations for the given reference or an empty list if no
-	 * JoinColumns were defined.
+	 * Returns the (possibly overridden) JoinColumns annotations for the given reference or an empty
+	 * list if no JoinColumns were defined.
 	 */
 	protected List<JoinColumn> getJoinColumns(PAnnotatedEReference paReference) {
 		List<JoinColumn> joinColumns = getHbmContext().getOverride(paReference);
@@ -224,21 +275,24 @@ abstract class AbstractMapper {
 	}
 
 	/** Same as above only handles multiple columns */
-	protected void addColumns(Element propertyElement, String defaultName, List<Column> columns, boolean isNullable,
-			boolean setColumnAttributesInProperty) {
-		addColumns(propertyElement, defaultName, columns, isNullable, setColumnAttributesInProperty, false);
-	} 
-	
+	protected void addColumns(Element propertyElement, String defaultName, List<Column> columns,
+			boolean isNullable, boolean setColumnAttributesInProperty) {
+		addColumns(propertyElement, defaultName, columns, isNullable,
+			setColumnAttributesInProperty, false);
+	}
+
 	/** Same as above only handles multiple columns */
-	protected void addColumns(Element propertyElement, String defaultName, List<Column> columns, boolean isNullable,
-			boolean setColumnAttributesInProperty, boolean isUnique) {
+	protected void addColumns(Element propertyElement, String defaultName, List<Column> columns,
+			boolean isNullable, boolean setColumnAttributesInProperty, boolean isUnique) {
 		// if no columns set then use some default
 		if (columns.isEmpty()) {
 			final String name;
 			if (getHbmContext().getEmbeddingFeature() != null) { // embedded
 				// TODO: check illegal, embedded component can not really have an id
 				final PAnnotatedEReference pae = getHbmContext().getEmbeddingFeature();
-				name = getHbmContext().trunc(pae.getAnnotatedEReference().getName() + "_" + defaultName);
+				name =
+						getHbmContext().trunc(
+							pae.getAnnotatedEReference().getName() + "_" + defaultName);
 			} else {
 				name = getHbmContext().trunc(defaultName);
 			}
@@ -249,7 +303,8 @@ abstract class AbstractMapper {
 			columns.add(col);
 		}
 		for (Column column : columns) {
-			addColumn(propertyElement, defaultName, column, isNullable, setColumnAttributesInProperty);
+			addColumn(propertyElement, defaultName, column, isNullable,
+				setColumnAttributesInProperty);
 		}
 	}
 
@@ -292,26 +347,29 @@ abstract class AbstractMapper {
 	}
 
 	/** Sets property attributes on the basis of the column */
-	private void addColumn(Element propertyElement, String defaultName, Column column, boolean isNullable,
-			boolean setColumnAttributesInProperty) {
+	private void addColumn(Element propertyElement, String defaultName, Column column,
+			boolean isNullable, boolean setColumnAttributesInProperty) {
 		if (column != null) {
 			if (setColumnAttributesInProperty) {
 				// this is not the nicest place to do this
 				if (propertyElement.getName().compareTo("property") == 0
 						|| propertyElement.getName().compareTo("many-to-one") == 0) {
-					propertyElement.addAttribute("insert", column.isInsertable() ? "true" : "false");
+					propertyElement
+						.addAttribute("insert", column.isInsertable() ? "true" : "false");
 					propertyElement.addAttribute("update", column.isUpdatable() ? "true" : "false");
 				}
 				// MT: I think that the column nullability should not be used for setting not-null
 				// on the property, this is already specified by the optional attribute on the
 				// basic annotation. Maybe a check can be used instead to detect inconsistenties
 				// in the column attributes and the basic ann.
-				// Note that the ejb3 spec says that optional should be disregarded for primitive types which I
+				// Note that the ejb3 spec says that optional should be disregarded for primitive
+				// types which I
 				// do not understand.
 				// I disabled it for now to ignore for the test cases.
 				// MT05032006: After some more thought the column nullability can be used in case of
 				// single table inheritance mapping
-				propertyElement.addAttribute("not-null", isNullable || column.isNullable() ? "false" : "true");
+				propertyElement.addAttribute("not-null", isNullable || column.isNullable()
+						? "false" : "true");
 				propertyElement.addAttribute("unique", column.isUnique() ? "true" : "false");
 			}
 			addColumnElement(propertyElement, defaultName, column, isNullable);
@@ -319,14 +377,16 @@ abstract class AbstractMapper {
 	}
 
 	/**
-	 * Add a columnelement to the property, takes into account length, precision etc. forceNullable is set when the
-	 * feature belongs to a featuremap
+	 * Add a columnelement to the property, takes into account length, precision etc. forceNullable
+	 * is set when the feature belongs to a featuremap
 	 */
-	private void addColumnElement(Element propertyElement, String defaultName, Column column, boolean forceNullable) {
+	private void addColumnElement(Element propertyElement, String defaultName, Column column,
+			boolean forceNullable) {
 		if (column != null) {
-			Element columnElement = propertyElement.addElement("column").addAttribute("not-null",
-					column.isNullable() || forceNullable ? "false" : "true").addAttribute("unique",
-					column.isUnique() ? "true" : "false");
+			Element columnElement =
+					propertyElement.addElement("column").addAttribute("not-null",
+						column.isNullable() || forceNullable ? "false" : "true").addAttribute(
+						"unique", column.isUnique() ? "true" : "false");
 			final String name;
 			if (column.getName() != null) {
 				name = column.getName();
@@ -355,14 +415,14 @@ abstract class AbstractMapper {
 		if (true || onDelete == null) {
 			return;
 		}
-		
+
 		if (onDelete.getAction().equals(OnDeleteAction.CASCADE)) {
 			keyElement.addAttribute("on-delete", "cascade");
 		} else {
 			keyElement.addAttribute("on-delete", "noaction");
-		}			
+		}
 	}
-	
+
 	/** Returns true if the target is the general EObject type */
 	protected boolean isEObject(String typeName) {
 		if (typeName == null) {
