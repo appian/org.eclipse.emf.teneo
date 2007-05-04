@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbDataStore.java,v 1.14.2.2 2007/04/21 09:00:34 mtaal Exp $
+ * $Id: HbDataStore.java,v 1.14.2.3 2007/05/04 04:59:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -84,7 +84,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14.2.2 $
+ * @version $Revision: 1.14.2.3 $
  */
 
 public class HbDataStore {
@@ -142,6 +142,9 @@ public class HbDataStore {
 	/** The hb context */
 	private HbContext hbContext = new HbContextImpl();
 
+	/** The pamodel, is set after initialization */
+	private PAnnotatedModel paModel;
+	
 	/** Initializes this Data Store */
 	public void initialize() {
 		// check a few things
@@ -374,7 +377,7 @@ public class HbDataStore {
 		// DCB: Use Hibernate-specific annotation processing mechanism. This allows use of
 		// Hibernate-specific annotations.
 		final PersistenceOptions po = getPersistenceOptions();
-		PAnnotatedModel paModel = MappingBuilder.INSTANCE.buildMapping(getEPackages(), po);
+		paModel = MappingBuilder.INSTANCE.buildMapping(getEPackages(), po);
 		HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
 		return hmg.generateToString(paModel);
 	}
@@ -1010,5 +1013,12 @@ public class HbDataStore {
 	 */
 	public HashMap getReferers() {
 		return referers;
+	}
+
+	/**
+	 * @return the paModel
+	 */
+	public PAnnotatedModel getPaModel() {
+		return paModel;
 	}
 }
