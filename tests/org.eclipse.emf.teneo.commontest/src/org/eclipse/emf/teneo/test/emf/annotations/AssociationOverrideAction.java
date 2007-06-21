@@ -1,18 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- *   Laurens Fridael
- * </copyright>
- *
- * $Id: AssociationOverrideAction.java,v 1.6 2007/03/20 23:33:38 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Laurens Fridael </copyright>
+ * $Id: AssociationOverrideAction.java,v 1.7 2007/06/21 14:08:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -37,7 +28,6 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Simple test for AssociationOverride.
  * 
  * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
- * 
  */
 public class AssociationOverrideAction extends AbstractTestAction {
 	private static final AssociationoverrideFactory FACTORY = AssociationoverrideFactory.eINSTANCE;
@@ -50,31 +40,35 @@ public class AssociationOverrideAction extends AbstractTestAction {
 
 	private static final String EMPLOYEE_DEPARTMENT = "R&D";
 
-	private static final Address DEFAULT_ADDRESS = FACTORY.createAddress();	
+	private static final Address DEFAULT_ADDRESS = FACTORY.createAddress();
 	static {
 		DEFAULT_ADDRESS.setStreet("Amsterdamseweg 123");
 		DEFAULT_ADDRESS.setPostalCode("1234 AZ");
 	}
 
-	private static final String STUDENT_VERIFICATION_QUERY = 
-		"SELECT COUNT(*) FROM STUDENT A INNER JOIN ADDRESS B ON A.ADDRESS_ADDRESS_E_ID = B.MYID".toLowerCase();
+	private static final String STUDENT_VERIFICATION_QUERY =
+			"SELECT COUNT(*) FROM STUDENT A INNER JOIN ADDRESS B ON A.ADDRESS_ADDRESS_E_ID = B.MYID".toLowerCase();
 
-	private static final String EMPLOYEE_VERIFICATION_QUERY = 
-		"SELECT COUNT(*) FROM EMPLOYEE A INNER JOIN ADDRESS B ON A.EMPLOYEE_ADDRESS_ID = B.MYID".toLowerCase();
+	private static final String EMPLOYEE_VERIFICATION_QUERY =
+			"SELECT COUNT(*) FROM EMPLOYEE A INNER JOIN ADDRESS B ON A.EMPLOYEE_ADDRESS_ID = B.MYID".toLowerCase();
 
 	public AssociationOverrideAction() {
 		super(AssociationoverridePackage.eINSTANCE);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
 	 */
+	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.put(PersistenceOptions.ID_COLUMN_NAME, "myid");
 		return props;
 	}
 
+	@Override
 	public void doAction(TestStore store) {
 		storeStudent(store);
 		storeEmployee(store);
@@ -105,7 +99,7 @@ public class AssociationOverrideAction extends AbstractTestAction {
 
 	private void testStudent(TestStore store) {
 		store.beginTransaction();
-		List results = store.query("select s from Student s");
+		List<?> results = store.query("select s from Student s");
 		assertEquals(1, results.size());
 		Student student = (Student) results.get(0);
 		assertEquals(STUDENT_NAME, student.getName());
@@ -116,7 +110,7 @@ public class AssociationOverrideAction extends AbstractTestAction {
 
 	private void testEmployee(TestStore store) {
 		store.beginTransaction();
-		List results = store.query("select e from Employee e");
+		List<?> results = store.query("select e from Employee e");
 		assertEquals(1, results.size());
 		Employee employee = (Employee) results.get(0);
 		assertEquals(EMPLOYEE_NAME, employee.getName());
@@ -136,7 +130,7 @@ public class AssociationOverrideAction extends AbstractTestAction {
 		address.setPostalCode(DEFAULT_ADDRESS.getPostalCode());
 		return address;
 	}
-	
+
 	private void testTables(TestStore store) {
 		final Connection conn = store.getConnection();
 		Statement stmt = null;

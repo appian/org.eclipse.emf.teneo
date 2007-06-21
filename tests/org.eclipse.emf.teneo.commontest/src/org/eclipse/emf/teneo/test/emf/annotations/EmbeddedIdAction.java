@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: EmbeddedIdAction.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * EmbeddedIdAction.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -25,18 +17,17 @@ import org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.Person;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
-
-
 public class EmbeddedIdAction extends AbstractTestAction {
 
 	private static final String ADDRESS = "Amsterdamseweg 123, 4567AZ Amsterdam";
 	private static final String LAST_NAME = "Janssen";
 	private static final String FIRST_NAME = "Jan";
-	
+
 	public EmbeddedIdAction() {
 		super(EmbeddedidPackage.eINSTANCE);
 	}
 
+	@Override
 	public void doAction(TestStore store) {
 		storePerson(store);
 		testPerson(store);
@@ -53,10 +44,10 @@ public class EmbeddedIdAction extends AbstractTestAction {
 		store.store(person);
 		store.commitTransaction();
 	}
-	
+
 	private void testPerson(TestStore store) {
 		store.beginTransaction();
-		List persons = store.query("select p from Person p");
+		List<?> persons = store.query("select p from Person p");
 		assertEquals(1, persons.size());
 		Person person = (Person) persons.get(0);
 		assertEquals(FIRST_NAME, person.getName().getFirstName());

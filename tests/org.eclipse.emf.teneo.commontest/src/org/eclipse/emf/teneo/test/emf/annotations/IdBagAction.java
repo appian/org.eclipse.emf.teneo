@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: IdBagAction.java,v 1.5 2007/03/20 23:33:38 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * IdBagAction.java,v 1.5 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -39,6 +31,7 @@ public class IdBagAction extends AbstractTestAction {
 		super(IdbagPackage.eINSTANCE);
 	}
 
+	@Override
 	public void doAction(TestStore store) {
 		storeUser(store);
 		testUser(store);
@@ -56,7 +49,7 @@ public class IdBagAction extends AbstractTestAction {
 	}
 
 	private void testUser(TestStore store) {
-		List results = store.query("select u from User u");
+		List<?> results = store.query("select u from User u");
 		assertEquals(1, results.size());
 		User user = (User) results.get(0);
 		assertEquals(NAME, user.getName());
@@ -71,8 +64,8 @@ public class IdBagAction extends AbstractTestAction {
 		ResultSet resultSet2 = null;
 		try {
 			final DatabaseMetaData metaData = store.getConnection().getMetaData();
-			
-			// apparently hibernate core creates different tables than running with 
+
+			// apparently hibernate core creates different tables than running with
 			// hibernate entitymanager, need to check!
 			boolean rsTrue = false;
 			try {
@@ -91,10 +84,12 @@ public class IdBagAction extends AbstractTestAction {
 			}
 			assertTrue("No primary key found for \"roles\" table.", rsTrue || rs2True);
 			if (rsTrue) {
-				assertTrue("Primary key column should be named \"ID\"", "ID".equalsIgnoreCase(resultSet.getString("COLUMN_NAME")));
+				assertTrue("Primary key column should be named \"ID\"", "ID".equalsIgnoreCase(resultSet
+					.getString("COLUMN_NAME")));
 				assertFalse("Found more than one primary key.", resultSet.next());
 			} else {
-				assertTrue("Primary key column should be named \"ID\"", "ID".equalsIgnoreCase(resultSet2.getString("COLUMN_NAME")));
+				assertTrue("Primary key column should be named \"ID\"", "ID".equalsIgnoreCase(resultSet2
+					.getString("COLUMN_NAME")));
 				assertFalse("Found more than one primary key.", resultSet2.next());
 			}
 		} catch (SQLException e) {

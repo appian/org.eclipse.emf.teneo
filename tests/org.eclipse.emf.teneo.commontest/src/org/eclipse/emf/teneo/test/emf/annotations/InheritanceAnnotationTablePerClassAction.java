@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: InheritanceAnnotationTablePerClassAction.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * InheritanceAnnotationTablePerClassAction.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -48,13 +40,13 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations to direct the inheritance mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction {
 
 	/** UGLY, at least ensure that at least one of the three tests is run */
 	private static int ignored_tests = 0;
-	
+
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * 
@@ -65,14 +57,15 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 	}
 
 	/** Creates simple types and tests against */
+	@Override
 	public void doAction(TestStore store) {
-		if (store.isInheritanceStrategy(InternationalPriceImpl.class,
-				InheritanceType.SINGLE_TABLE_LITERAL)) {
+		if (store.isInheritanceStrategy(InternationalPriceImpl.class, InheritanceType.SINGLE_TABLE_LITERAL)) {
 			ignored_tests++;
 			assertTrue(ignored_tests < 4);
-			return; // not the correct test, should only run xml tests, need to change the whole test framework to do this
+			return; // not the correct test, should only run xml tests, need to change the whole
+			// test framework to do this
 		}
-		
+
 		// test a simple type
 		final InheritancemappingFactory factory = InheritancemappingFactory.eINSTANCE;
 		{
@@ -127,14 +120,13 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 			intprice.setName("euro");
 			intprice.setCurrency("EUR");
 			intprice.setValue(new BigDecimal("100.50"));
-			
 
 			Price price = factory.createPrice();
 			price.setName("mycurrency");
 			price.setValue(new BigDecimal("99.30"));
 			store.store(price);
 			store.store(intprice);
-			
+
 			store.store(contentlist);
 			store.commitTransaction();
 		}
@@ -144,16 +136,16 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 			ContentList contentList = (ContentList) store.getObject(ContentList.class);
 			checkAddressList(contentList.getAddress().iterator());
 
-			List prices = store.getObjects(Price.class);
+			List<?> prices = store.getObjects(Price.class);
 			assertEquals(2, prices.size());
 			InternationalPrice ip;
 			Price p;
 			if (prices.get(0) instanceof InternationalPrice) {
-				ip = (InternationalPrice)prices.get(0);
-				p = (Price)prices.get(1);
+				ip = (InternationalPrice) prices.get(0);
+				p = (Price) prices.get(1);
 			} else {
-				ip = (InternationalPrice)prices.get(1);
-				p = (Price)prices.get(0);
+				ip = (InternationalPrice) prices.get(1);
+				p = (Price) prices.get(0);
 			}
 			assertTrue(ip.getName().compareTo("euro") == 0);
 			assertTrue(p.getName().compareTo("mycurrency") == 0);
@@ -161,47 +153,51 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 			store.commitTransaction();
 		}
 
-		// eventhough at global level one inheritance strategy is used this should differ for individual
+		// eventhough at global level one inheritance strategy is used this should differ for
+		// individual
 		// class hierarchies as enforced by the annotations
-		assertTrue(store.isInheritanceStrategy(InternationalPriceImpl.class,
-				InheritanceType.TABLE_PER_CLASS_LITERAL));
+		assertTrue(store.isInheritanceStrategy(InternationalPriceImpl.class, InheritanceType.TABLE_PER_CLASS_LITERAL));
 		assertTrue(store.isInheritanceStrategy(UKAddressImpl.class, InheritanceType.JOINED_LITERAL));
 		assertTrue(store.isInheritanceStrategy(USAddressImpl.class, InheritanceType.JOINED_LITERAL));
 		assertTrue(store.isInheritanceStrategy(DistrictUKAddressImpl.class, InheritanceType.JOINED_LITERAL));
-    	
-    	// do some sql queries to check if the name column is present in the subclass 
+
+		// do some sql queries to check if the name column is present in the subclass
 		Connection conn = null;
 		Statement stmt = null;
-    	try {
 		try {
-    			conn = store.getConnection();
-    			stmt = conn.createStatement();
-	    		ResultSet rs = stmt.executeQuery("select * from internationalprice where name='euro'");
-	    		int cnt = 0;
-	    		while (rs.next()) {
-	    			cnt++;
-	    		}
-	    		rs.close();
+			try {
+				conn = store.getConnection();
+				stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery("select * from internationalprice where name='euro'");
+				int cnt = 0;
+				while (rs.next()) {
+					cnt++;
+				}
+				rs.close();
 
-	    		assertEquals(1, cnt);
-	    		rs = stmt.executeQuery("select * from myprice where name='mycurrency'");
-	    		cnt = 0;
-	    		while (rs.next()) {
-	    			cnt++;
-	    		}
-	    		rs.close();
-	    		assertEquals(1, cnt);
-    		} finally {
-    			if (stmt != null) stmt.close();
-    			if (conn != null) conn.close();
-    		}
-    	} catch (SQLException e) {
-    		throw new StoreTestException("Sql exception when retrieving objects based on discriminator values", e);
-    	}
+				assertEquals(1, cnt);
+				rs = stmt.executeQuery("select * from myprice where name='mycurrency'");
+				cnt = 0;
+				while (rs.next()) {
+					cnt++;
+				}
+				rs.close();
+				assertEquals(1, cnt);
+			} finally {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			}
+		} catch (SQLException e) {
+			throw new StoreTestException("Sql exception when retrieving objects based on discriminator values", e);
+		}
 	}
 
 	/** Checks that the address types occur in the passed list */
-	private void checkAddressList(Iterator it) {
+	private void checkAddressList(Iterator<?> it) {
 		int cntus = 0;
 		int cntuk = 0;
 		int cntdistrict = 0;

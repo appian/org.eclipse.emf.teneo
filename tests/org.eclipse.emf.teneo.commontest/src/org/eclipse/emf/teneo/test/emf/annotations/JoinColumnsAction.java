@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: JoinColumnsAction.java,v 1.4 2007/02/01 12:35:36 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * JoinColumnsAction.java,v 1.4 2007/02/01 12:35:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -36,7 +28,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class JoinColumnsAction extends AbstractTestAction {
 	/**
@@ -51,6 +43,7 @@ public class JoinColumnsAction extends AbstractTestAction {
 	 * 
 	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
 	 */
+	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.VERSION_COLUMN_NAME, "myversion");
@@ -58,6 +51,7 @@ public class JoinColumnsAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
 	public void doAction(TestStore store) {
 		final JoincolumnsFactory factory = JoincolumnsFactory.eINSTANCE;
 		{
@@ -73,6 +67,7 @@ public class JoinColumnsAction extends AbstractTestAction {
 			child2.setFirstName("Jane");
 			child2.setLastName("Smith");
 			parent.getChildren().add(child2);
+			store.store(parent.getChildren());
 			store.store(parent);
 			store.commitTransaction();
 		}
@@ -82,8 +77,8 @@ public class JoinColumnsAction extends AbstractTestAction {
 			store.beginTransaction();
 			Parent parent = (Parent) store.getObject(Parent.class);
 			assertEquals(2, parent.getChildren().size());
-			assertEquals("Johnny", ((Child) parent.getChildren().get(0)).getFirstName());
-			assertEquals("Jane", ((Child) parent.getChildren().get(1)).getFirstName());
+			assertEquals("Johnny", (parent.getChildren().get(0)).getFirstName());
+			assertEquals("Jane", (parent.getChildren().get(1)).getFirstName());
 			store.commitTransaction();
 		}
 
@@ -97,7 +92,8 @@ public class JoinColumnsAction extends AbstractTestAction {
 
 				checkVersion(store);
 
-				// depending on the inheritance strategy the foreign key is stored in different table
+				// depending on the inheritance strategy the foreign key is stored in different
+				// table
 				if (store.getInheritanceType().getValue() == InheritanceType.SINGLE_TABLE) {
 					ResultSet rs = stmt.executeQuery("select myParentFirstName from person");
 					assertTrue(rs.next());
@@ -106,10 +102,12 @@ public class JoinColumnsAction extends AbstractTestAction {
 					assertTrue(rs.next());
 				}
 			} finally {
-				if (stmt != null)
+				if (stmt != null) {
 					stmt.close();
-				if (conn != null)
+				}
+				if (conn != null) {
 					conn.close();
+				}
 			}
 		} catch (SQLException e) {
 			throw new StoreTestException("Sql exception when checking db schema", e);
