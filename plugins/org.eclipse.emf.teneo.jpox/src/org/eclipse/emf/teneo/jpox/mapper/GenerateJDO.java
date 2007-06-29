@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenerateJDO.java,v 1.6 2007/04/07 12:42:47 mtaal Exp $
+ * $Id: GenerateJDO.java,v 1.7 2007/06/29 07:32:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -31,7 +31,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.StoreException;
+import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
  * Class is responsible for generating the jdo file. Is run through a launcher therefore the main methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class GenerateJDO {
@@ -110,7 +110,7 @@ public class GenerateJDO {
 		} catch (IOException e) {
 			e.printStackTrace(System.err);
 			log.error(e);
-			throw new StoreException("IOException when creating or mapping file", e);
+			throw new TeneoException("IOException when creating or mapping file", e);
 		}
 	}
 

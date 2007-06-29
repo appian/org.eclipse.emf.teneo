@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class MappingUtil {
@@ -39,16 +39,13 @@ public class MappingUtil {
 
 	/** Returns the impl class name of an eclass */
 	public static String getImplNameOfEClass(String eClassURI, MappingContext mappingContext) {
-		final EClass eclass =
-				mappingContext.getEClassNameStrategy().toEClass(eClassURI,
-					mappingContext.getEpackages());
+		final EClass eclass = mappingContext.getEntityNameStrategy().toEClass(eClassURI, mappingContext.getEpackages());
 		if (eclass == null) {
 			throw new JPOXMappingException("Uri: " + eClassURI + " does not translate to an eclass");
 		}
 		final Class clazz = getImplClassOfEClass(eclass);
 		if (clazz == null) {
-			throw new JPOXMappingException("Uri: " + eClassURI
-					+ " does not translate to an instance class");
+			throw new JPOXMappingException("Uri: " + eClassURI + " does not translate to an instance class");
 		}
 		return clazz.getName();
 	}
@@ -88,40 +85,35 @@ public class MappingUtil {
 	}
 
 	/** Adds a generic feature map entry to the passed element */
-	public static void addGenericFeatureMapEntryMapping(Element field,
-			PAnnotatedEAttribute aAttribute, FetchType ft) {
+	public static void addGenericFeatureMapEntryMapping(Element field, PAnnotatedEAttribute aAttribute, FetchType ft) {
 		EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
 
 		log.debug("Any feature entry, adding embedded tags");
 
 		Element collection =
-				field.addElement("collection").addAttribute("element-type",
-					GenericFeatureMapEntry.class.getName());
+				field.addElement("collection").addAttribute("element-type", GenericFeatureMapEntry.class.getName());
 
 		field.addElement("join");
 
 		Element embeddedElement = field.addElement("element").addElement("embedded");
-		Element fieldElement =
-				embeddedElement.addElement("field").addAttribute("name", "featurePath");
+		Element fieldElement = embeddedElement.addElement("field").addAttribute("name", "featurePath");
 
 		fieldElement =
-				embeddedElement.addElement("field").addAttribute("name", "localAnyValue")
-					.addAttribute("embedded", "true");
+				embeddedElement.addElement("field").addAttribute("name", "localAnyValue").addAttribute("embedded",
+					"true");
 		addExtensionImplementationClasses(fieldElement, false, false, eAttribute);
 
-		fieldElement =
-				embeddedElement.addElement("field").addAttribute("name", "localReferenceValue");
+		fieldElement = embeddedElement.addElement("field").addAttribute("name", "localReferenceValue");
 		if (!addExtensionImplementationClasses(fieldElement, true, false, eAttribute)) {
 			fieldElement.addAttribute("embedded", "true");
 		}
-		fieldElement.addElement("foreign-key").addAttribute("delete-action", "restrict")
-			.addAttribute("update-action", "cascade");
+		fieldElement.addElement("foreign-key").addAttribute("delete-action", "restrict").addAttribute("update-action",
+			"cascade");
 
 		fieldElement = embeddedElement.addElement("field");
-		fieldElement.addAttribute("name", "localContainmentReferenceValue").addAttribute(
-			"dependent", "true");
-		fieldElement.addElement("foreign-key").addAttribute("delete-action", "cascade")
-			.addAttribute("update-action", "cascade");
+		fieldElement.addAttribute("name", "localContainmentReferenceValue").addAttribute("dependent", "true");
+		fieldElement.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute("update-action",
+			"cascade");
 
 		if (!addExtensionImplementationClasses(fieldElement, true, true, eAttribute)) {
 			fieldElement.addAttribute("embedded", "true");
@@ -133,11 +125,11 @@ public class MappingUtil {
 	/** Adds the correct jpox extension based on the fetch type */
 	public static void addEagerLazyLoading(Element field, FetchType ft) {
 		if (ft.equals(FetchType.EAGER_LITERAL)) {
-			field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key",
-				"cache-lazy-loading").addAttribute("value", "false");
+			field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key", "cache-lazy-loading")
+				.addAttribute("value", "false");
 		} else {
-			field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key",
-				"cache-lazy-loading").addAttribute("value", "true");
+			field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key", "cache-lazy-loading")
+				.addAttribute("value", "true");
 		}
 	}
 
@@ -155,15 +147,14 @@ public class MappingUtil {
 	 * Returns all the implementation classes which can be stored in a certain featuremap entry.
 	 * Returns false if no impl. classes could be found
 	 */
-	private static boolean addExtensionImplementationClasses(Element element, boolean onlyEObject,
-			boolean containment, EAttribute eattr) {
+	private static boolean addExtensionImplementationClasses(Element element, boolean onlyEObject, boolean containment,
+			EAttribute eattr) {
 		ArrayList result = new ArrayList();
 		ArrayList featureResult = new ArrayList();
 		for (Object element2 : eattr.getEContainingClass().getEStructuralFeatures()) {
 			EStructuralFeature efeature = (EStructuralFeature) element2;
 
-			if (containment && efeature instanceof EReference
-					&& !((EReference) efeature).isContainment()) {
+			if (containment && efeature instanceof EReference && !((EReference) efeature).isContainment()) {
 				continue;
 			}
 
@@ -175,23 +166,18 @@ public class MappingUtil {
 			if (StoreUtil.isElementOfGroup(efeature, eattr)) {
 				Class instanceClass = efeature.getEType().getInstanceClass();
 				if (!onlyEObject && !EObject.class.isAssignableFrom(instanceClass)
-						&& !String.class.isAssignableFrom(instanceClass)
-						&& efeature instanceof EAttribute) {
+						&& !String.class.isAssignableFrom(instanceClass) && efeature instanceof EAttribute) {
 					if (!result.contains(instanceClass.getName())) {
 						String name = instanceClass.getName();
 						if (name.indexOf('.') == -1) { // assume
 							log.warn("Primitive type " + name + " prepending java.lang.");
-							name =
-									"java.lang." + name.substring(0, 1).toUpperCase()
-											+ name.substring(1);
+							name = "java.lang." + name.substring(0, 1).toUpperCase() + name.substring(1);
 						}
 						result.add(name);
 						featureResult.add(efeature);
 					}
 				} else if (onlyEObject && efeature instanceof EReference) {
-					Class implClass =
-							ERuntime.INSTANCE.getJavaClass(((EReference) efeature)
-								.getEReferenceType());
+					Class implClass = ERuntime.INSTANCE.getJavaClass(((EReference) efeature).getEReferenceType());
 					if (implClass != null && !result.contains(implClass.getName())) {
 						result.add(implClass.getName());
 						featureResult.add(efeature);
@@ -203,8 +189,7 @@ public class MappingUtil {
 		// add extension to fieldelement
 		String[] implClasses = (String[]) result.toArray(new String[result.size()]);
 		EStructuralFeature[] features =
-				(EStructuralFeature[]) featureResult.toArray(new EStructuralFeature[featureResult
-					.size()]);
+				(EStructuralFeature[]) featureResult.toArray(new EStructuralFeature[featureResult.size()]);
 		StringBuffer resultStr = new StringBuffer();
 		StringBuffer fResultStr = new StringBuffer();
 		boolean foundImpl = implClasses.length > 0;
@@ -228,8 +213,8 @@ public class MappingUtil {
 		element.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key",
 			"implementation-classes").addAttribute("value", resultStr.toString());
 
-		element.addElement("extension").addAttribute("vendor-name", "teneo").addAttribute("key",
-			"estructuralfeatures").addAttribute("value", fResultStr.toString());
+		element.addElement("extension").addAttribute("vendor-name", "teneo").addAttribute("key", "estructuralfeatures")
+			.addAttribute("value", fResultStr.toString());
 		return foundImpl;
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.10 2007/03/29 22:13:44 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.11 2007/06/29 07:32:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -23,17 +23,17 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
-import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.jpox.mapper.MappingUtil;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class ManyToOneMapper extends AssociationMapper {
@@ -50,26 +50,30 @@ public class ManyToOneMapper extends AssociationMapper {
 		log.debug("Processing many to one ereference: " + aReference.getAnnotatedElement().getName());
 		EReference eReference = (EReference) aReference.getAnnotatedElement();
 
-		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all cases?
+		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all
+		// cases?
 		List cascade = aReference.getManyToOne().getCascade();
-		boolean cascadeRemove = cascade.contains(CascadeType.ALL_LITERAL)
-				|| cascade.contains(CascadeType.REMOVE_LITERAL);
+		boolean cascadeRemove =
+				cascade.contains(CascadeType.ALL_LITERAL) || cascade.contains(CascadeType.REMOVE_LITERAL);
 		log.debug("Cascaderemove " + cascadeRemove);
 
 		Element field = eclassElement.addElement("field");
 		field.addAttribute("name", namingHandler.correctName(mappingContext, eReference)).addAttribute(
-				"persistence-modifier", "persistent");
+			"persistence-modifier", "persistent");
 		setCommonReferenceAttributes(field, aReference, cascadeRemove);
 
-		// special case if a modelField is a referencemodelfield and part of a two way relation then it
-		// it is always set to nullable otherwise it is impossible to de-couple an object from another object
+		// special case if a modelField is a referencemodelfield and part of a two way relation then
+		// it
+		// it is always set to nullable otherwise it is impossible to de-couple an object from
+		// another object
 		// other behavior I noticed is that for a required dependent field the following happens:
 		// - o is deleted
 		// - its depedent child is deleted, the reference from o to the child is nullified
 		// - exception is thrown before o can be deleted that reference to child is null
 		// maybe required dependent is an uncommon model.
-		boolean setNullable = mappingContext.isForceOptional() || aReference.getManyToOne().isOptional() || eReference.getEOpposite() != null
-				|| cascadeRemove;
+		boolean setNullable =
+				mappingContext.isForceOptional() || aReference.getManyToOne().isOptional()
+						|| eReference.getEOpposite() != null || cascadeRemove;
 		field.addAttribute("null-value", setNullable ? "none" : "exception");
 
 		if (aReference.getEmbedded() != null) {
@@ -80,8 +84,9 @@ public class ManyToOneMapper extends AssociationMapper {
 			// for embedded no foreign key constraint
 			Element fk = null;
 			if (cascadeRemove && aReference.getEmbedded() == null) {
-				fk = field.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute(
-						"update-action", "cascade");
+				fk =
+						field.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute(
+							"update-action", "cascade");
 			} else {
 				fk = field.addElement("foreign-key");
 			}
@@ -94,13 +99,13 @@ public class ManyToOneMapper extends AssociationMapper {
 
 		String targetEntity = aReference.getManyToOne().getTargetEntity();
 		String implName = null;
-		if (targetEntity.compareTo(EClassNameStrategy.EOBJECT_ECLASS_NAME) == 0) {
+		if (targetEntity.compareTo(EntityNameStrategy.EOBJECT_ECLASS_NAME) == 0) {
 			implName = AnyTypeEObject.class.getName();
 		} else {
 			implName = MappingUtil.getImplNameOfEClass(aReference.getManyToOne().getTargetEntity(), mappingContext);
 		}
 
 		field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key", "implementation-classes")
-				.addAttribute("value", implName);
+			.addAttribute("value", implName);
 	}
 }

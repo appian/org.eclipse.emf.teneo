@@ -1,35 +1,27 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: JPOXEmfDiagnosticException.java,v 1.2 2007/02/01 12:36:36 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * JPOXEmfDiagnosticException.java,v 1.2 2007/02/01 12:36:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.validation;
 
-import java.util.Iterator;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.teneo.TeneoException;
 
 /**
- * Is thrown when an EObject is invalid according to its model. The emf diagnostic can be retrieved by getDiagnostic.
+ * Is thrown when an EObject is invalid according to its model. The emf diagnostic can be retrieved
+ * by getDiagnostic.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2007/02/01 12:36:36 $
+ * @version $Revision: 1.3 $ $Date: 2007/06/29 07:32:02 $
  */
 
-public class JPOXEmfDiagnosticException extends RuntimeException {
+public class JPOXEmfDiagnosticException extends TeneoException {
 	/**
 	 * Serializable id
 	 */
@@ -54,22 +46,22 @@ public class JPOXEmfDiagnosticException extends RuntimeException {
 	private static void logDiags(String prefix, Diagnostic diag) {
 		log.debug(prefix + "SOURCE: " + diag.getSource());
 		switch (diag.getSeverity()) {
-		case Diagnostic.CANCEL:
-			log.debug(prefix + "SEVERITY: CANCEL");
-			break;
-		case Diagnostic.ERROR:
-			log.debug(prefix + "SEVERITY: ERROR");
-			break;
-		case Diagnostic.INFO:
-			log.debug(prefix + "SEVERITY: INFO");
-			break;
-		case Diagnostic.WARNING:
-			log.debug(prefix + "SEVERITY: WARNING");
-			break;
+			case Diagnostic.CANCEL:
+				log.debug(prefix + "SEVERITY: CANCEL");
+				break;
+			case Diagnostic.ERROR:
+				log.debug(prefix + "SEVERITY: ERROR");
+				break;
+			case Diagnostic.INFO:
+				log.debug(prefix + "SEVERITY: INFO");
+				break;
+			case Diagnostic.WARNING:
+				log.debug(prefix + "SEVERITY: WARNING");
+				break;
 		}
 		log.debug(prefix + "MSG: " + diag.getMessage());
-		for (Iterator i = diag.getChildren().iterator(); i.hasNext();) {
-			logDiags(prefix + ">", (Diagnostic) i.next());
+		for (Object element : diag.getChildren()) {
+			logDiags(prefix + ">", (Diagnostic) element);
 		}
 	}
 

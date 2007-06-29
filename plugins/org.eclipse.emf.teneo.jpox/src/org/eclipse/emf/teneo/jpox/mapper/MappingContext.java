@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.6 2007/03/29 22:13:44 mtaal Exp $
+ * $Id: MappingContext.java,v 1.7 2007/06/29 07:32:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.annotations.mapper.AbstractProcessingContext;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.jpox.mapper.association.EmbeddedMapper;
 import org.eclipse.emf.teneo.jpox.mapper.association.ManyToManyMapper;
 import org.eclipse.emf.teneo.jpox.mapper.association.ManyToOneMapper;
@@ -39,12 +38,13 @@ import org.eclipse.emf.teneo.jpox.mapper.property.InheritanceMapper;
 import org.eclipse.emf.teneo.jpox.mapper.property.JoinColumnMapper;
 import org.eclipse.emf.teneo.jpox.mapper.property.ManyBasicMapper;
 import org.eclipse.emf.teneo.jpox.mapper.property.TableMapper;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 
 /**
  * Contains instances of the mappers used.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class MappingContext extends AbstractProcessingContext {
@@ -95,7 +95,7 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** The current aclass being mapped */
 	private PAnnotatedEClass currentAClass = null;
-	
+
 	/** The map from efeature to attributeoverrides */
 	private HashMap attributeOverridesByFeature = new HashMap();
 
@@ -110,19 +110,19 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** The tableMapper */
 	private TableMapper tableMapper;
-	
+
 	/** The eclass naming strategy */
-	private EClassNameStrategy eclassNameStrategy;
+	private EntityNameStrategy entityNameStrategy;
 
 	/** The epackages for which this is all done */
 	private EPackage[] epackages;
-	
+
 	/** Force optional, in case of singletable */
 	private boolean forceOptional = false;
-	
+
 	/** The constructor, creates all mappers etc. */
-	public MappingContext(EClassNameStrategy eclassNameStrategy) {
-		this.eclassNameStrategy = eclassNameStrategy;
+	public MappingContext(EntityNameStrategy entityNameStrategy) {
+		this.entityNameStrategy = entityNameStrategy;
 		namingHandler = new NamingHandler();
 		otmMapper = new OneToManyMapper(this);
 		mtmMapper = new ManyToManyMapper(this);
@@ -274,8 +274,8 @@ public class MappingContext extends AbstractProcessingContext {
 	/**
 	 * @return the eclassNameStrategy
 	 */
-	public EClassNameStrategy getEClassNameStrategy() {
-		return eclassNameStrategy;
+	public EntityNameStrategy getEntityNameStrategy() {
+		return entityNameStrategy;
 	}
 
 	/**
