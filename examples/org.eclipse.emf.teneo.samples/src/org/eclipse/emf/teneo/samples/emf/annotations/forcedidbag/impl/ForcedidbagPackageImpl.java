@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForcedidbagPackageImpl.java,v 1.1 2007/03/21 15:45:37 mtaal Exp $
+ * $Id: ForcedidbagPackageImpl.java,v 1.2 2007/06/29 07:30:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.impl;
 
@@ -134,6 +134,15 @@ public class ForcedidbagPackageImpl extends EPackageImpl implements ForcedidbagP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getRole_Users() {
+		return (EReference)roleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUser() {
 		return userEClass;
 	}
@@ -186,6 +195,7 @@ public class ForcedidbagPackageImpl extends EPackageImpl implements ForcedidbagP
 		// Create classes and their features
 		roleEClass = createEClass(ROLE);
 		createEAttribute(roleEClass, ROLE__NAME);
+		createEReference(roleEClass, ROLE__USERS);
 
 		userEClass = createEClass(USER);
 		createEAttribute(userEClass, USER__NAME);
@@ -227,10 +237,11 @@ public class ForcedidbagPackageImpl extends EPackageImpl implements ForcedidbagP
 		// Initialize classes and features; add operations and parameters
 		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRole_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRole_Users(), this.getUser(), this.getUser_Roles(), "users", null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUser_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUser_Roles(), this.getRole(), null, "roles", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUser_Roles(), this.getRole(), this.getRole_Users(), "roles", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -238,6 +249,8 @@ public class ForcedidbagPackageImpl extends EPackageImpl implements ForcedidbagP
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// teneo.hibernate
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -261,6 +274,13 @@ public class ForcedidbagPackageImpl extends EPackageImpl implements ForcedidbagP
 		   new String[] {
 			 "kind", "element",
 			 "name", "name"
+		   });			
+		addAnnotation
+		  (getRole_Users(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "users"
 		   });		
 		addAnnotation
 		  (userEClass, 
@@ -275,7 +295,7 @@ public class ForcedidbagPackageImpl extends EPackageImpl implements ForcedidbagP
 		   new String[] {
 			 "kind", "element",
 			 "name", "name"
-		   });		
+		   });			
 		addAnnotation
 		  (getUser_Roles(), 
 		   source, 
@@ -283,6 +303,28 @@ public class ForcedidbagPackageImpl extends EPackageImpl implements ForcedidbagP
 			 "kind", "element",
 			 "name", "role"
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.hibernate</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.hibernate";				
+		addAnnotation
+		  (getRole_Users(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@IdBag"
+		   });					
+		addAnnotation
+		  (getUser_Roles(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@IdBag"
+		   });	
 	}
 
 } //ForcedidbagPackageImpl

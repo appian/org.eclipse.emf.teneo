@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: User.java,v 1.1 2007/03/21 15:45:37 mtaal Exp $
+ * $Id: User.java,v 1.2 2007/06/29 07:30:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag;
 
@@ -56,17 +56,20 @@ public interface User extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Roles</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Roles</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.Role}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.Role#getUsers <em>Users</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Roles</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Roles</em>' containment reference list.
+	 * @return the value of the '<em>Roles</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.ForcedidbagPackage#getUser_Roles()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.Role" containment="true"
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.Role#getUsers
+	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.Role" opposite="users"
+	 *        annotation="teneo.hibernate appinfo='@IdBag'"
 	 *        extendedMetaData="kind='element' name='role'"
 	 * @generated
 	 */

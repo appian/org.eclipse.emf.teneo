@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UserImpl.java,v 1.1 2007/03/21 15:45:37 mtaal Exp $
+ * $Id: UserImpl.java,v 1.2 2007/06/29 07:30:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.impl;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
@@ -63,14 +64,14 @@ public class UserImpl extends EObjectImpl implements User {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRoles() <em>Roles</em>}' containment reference list.
+	 * The cached value of the '{@link #getRoles() <em>Roles</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRoles()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Role> roles = null;
+	protected EList<Role> roles;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,9 +120,24 @@ public class UserImpl extends EObjectImpl implements User {
 	 */
 	public EList<Role> getRoles() {
 		if (roles == null) {
-			roles = new EObjectContainmentEList<Role>(Role.class, this, ForcedidbagPackage.USER__ROLES);
+			roles = new EObjectWithInverseResolvingEList.ManyInverse<Role>(Role.class, this, ForcedidbagPackage.USER__ROLES, ForcedidbagPackage.ROLE__USERS);
 		}
 		return roles;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ForcedidbagPackage.USER__ROLES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRoles()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

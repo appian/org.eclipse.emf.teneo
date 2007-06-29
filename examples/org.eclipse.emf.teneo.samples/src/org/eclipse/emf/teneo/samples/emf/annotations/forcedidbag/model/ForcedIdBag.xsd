@@ -5,7 +5,10 @@
 	<xsd:complexType name="User">
 		<xsd:sequence>
 			<xsd:element name="name" type="xsd:string"/>
-			<xsd:element name="role" type="this:Role" minOccurs="0" maxOccurs="unbounded" ecore:name="roles">
+			<xsd:element name="role" type="xsd:anyURI" ecore:reference="this:Role" minOccurs="0" maxOccurs="unbounded" ecore:opposite="users" ecore:name="roles">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.hibernate">@IdBag</xsd:appinfo>
+				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
@@ -13,6 +16,10 @@
 	<xsd:complexType name="Role">
 		<xsd:sequence>
 			<xsd:element name="name" type="xsd:string"/>
+			<xsd:element name="users" type="xsd:anyURI" ecore:reference="this:User" ecore:opposite="role" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.hibernate">@IdBag</xsd:appinfo>
+				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>

@@ -9,6 +9,7 @@
       resource="XML" disposableProviderFactory="true" ecorePackage="forcedidbag.ecore#/">
     <genClasses ecoreClass="forcedidbag.ecore#//Role">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute forcedidbag.ecore#//Role/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference forcedidbag.ecore#//Role/users"/>
     </genClasses>
     <genClasses ecoreClass="forcedidbag.ecore#//User">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute forcedidbag.ecore#//User/name"/>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForcedidbagPackage.java,v 1.1 2007/03/21 15:45:37 mtaal Exp $
+ * $Id: ForcedidbagPackage.java,v 1.2 2007/06/29 07:30:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag;
 
@@ -79,13 +79,22 @@ public interface ForcedidbagPackage extends EPackage {
 	int ROLE__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Users</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE__USERS = 1;
+
+	/**
 	 * The number of structural features of the '<em>Role</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE_FEATURE_COUNT = 1;
+	int ROLE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.impl.UserImpl <em>User</em>}' class.
@@ -107,7 +116,7 @@ public interface ForcedidbagPackage extends EPackage {
 	int USER__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Roles</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -147,6 +156,17 @@ public interface ForcedidbagPackage extends EPackage {
 	EAttribute getRole_Name();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.Role#getUsers <em>Users</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Users</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.Role#getUsers()
+	 * @see #getRole()
+	 * @generated
+	 */
+	EReference getRole_Users();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.User <em>User</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,10 +188,10 @@ public interface ForcedidbagPackage extends EPackage {
 	EAttribute getUser_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.User#getRoles <em>Roles</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.User#getRoles <em>Roles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Roles</em>'.
+	 * @return the meta object for the reference list '<em>Roles</em>'.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.User#getRoles()
 	 * @see #getUser()
 	 * @generated
@@ -219,6 +239,14 @@ public interface ForcedidbagPackage extends EPackage {
 		EAttribute ROLE__NAME = eINSTANCE.getRole_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Users</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROLE__USERS = eINSTANCE.getRole_Users();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.impl.UserImpl <em>User</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -237,7 +265,7 @@ public interface ForcedidbagPackage extends EPackage {
 		EAttribute USER__NAME = eINSTANCE.getUser_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Roles</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Roles</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
