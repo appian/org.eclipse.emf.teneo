@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StoreUtil.java,v 1.16 2007/04/21 09:22:09 mtaal Exp $
+ * implementation </copyright> $Id: StoreUtil.java,v 1.17 2007/06/29 07:31:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -42,13 +42,13 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.ERuntime;
-import org.eclipse.emf.teneo.StoreException;
+import org.eclipse.emf.teneo.TeneoException;
 
 /**
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public class StoreUtil {
@@ -73,8 +73,7 @@ public class StoreUtil {
 	/** Reads the epackages present in the passed ecore files. */
 	public static EPackage[] readEPackages(String[] ecoreFiles) {
 		final ResourceSet resourceSet = new ResourceSetImpl();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*",
-				new EcoreResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new EcoreResourceFactoryImpl());
 		final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
 		for (String element : ecoreFiles) {
 
@@ -87,8 +86,7 @@ public class StoreUtil {
 				final EObject obj = it.next();
 				if (obj instanceof EPackage) {
 					final EPackage epack = (EPackage) obj;
-					final EPackage currentEPackage = EPackage.Registry.INSTANCE.getEPackage(epack
-							.getNsURI());
+					final EPackage currentEPackage = EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI());
 					if (currentEPackage != null) { // use the existing epackage
 						if (!epackages.contains(currentEPackage)) {
 							epackages.add(currentEPackage);
@@ -119,8 +117,7 @@ public class StoreUtil {
 	public static boolean isMapEntry(EClass eclass) {
 		return eclass != null && eclass.getInstanceClass() != null
 				&& Map.Entry.class.isAssignableFrom(eclass.getInstanceClass())
-				&& eclass.getEStructuralFeatures().size() == 2
-				&& eclass.getEStructuralFeature("key") != null
+				&& eclass.getEStructuralFeatures().size() == 2 && eclass.getEStructuralFeature("key") != null
 				&& eclass.getEStructuralFeature("value") != null;
 	}
 
@@ -134,7 +131,9 @@ public class StoreUtil {
 
 	/** Returns a loggable string for a efeature */
 	public static String toString(EStructuralFeature efeature) {
-		if (efeature == null) return "NULL"; // possibly throw error
+		if (efeature == null) {
+			return "NULL"; // possibly throw error
+		}
 		return efeature.getEContainingClass().getName() + "/" + efeature.getName();
 	}
 
@@ -184,8 +183,8 @@ public class StoreUtil {
 	 * does not resolve to an EClass"); } return eclass; / }
 	 */
 	/** Sends out a notification of an elist load */
-	public static void dispatchEListLoadNotification(final EObject notifier,
-			final EList<? extends EObject> elist, final EStructuralFeature feature) {
+	public static void dispatchEListLoadNotification(final EObject notifier, final EList<? extends EObject> elist,
+			final EStructuralFeature feature) {
 		notifier.eNotify(new NotificationImpl(Constants.ELIST_LOAD_NOTIFICATION, null, elist) {
 			@Override
 			public Object getNotifier() {
@@ -220,9 +219,10 @@ public class StoreUtil {
 
 	/** Returns true if the passed feature is a wildcard feature */
 	public static boolean isWildCard(EStructuralFeature feature) {
-		EAnnotation eAnnotation = feature
-				.getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData");
-		if (eAnnotation == null) return false;
+		EAnnotation eAnnotation = feature.getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData");
+		if (eAnnotation == null) {
+			return false;
+		}
 		return eAnnotation.getDetails().get("kind") != null
 				&& (eAnnotation.getDetails().get("kind")).compareTo("elementWildcard") == 0;
 		/*
@@ -241,8 +241,7 @@ public class StoreUtil {
 	 */
 	public static boolean isMixed(EStructuralFeature feature) {
 		// todo optimise this with a cache
-		final EAnnotation eannotation = feature
-				.getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData");
+		final EAnnotation eannotation = feature.getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData");
 		if (eannotation != null) {
 			final String kind = eannotation.getDetails().get("kind");
 			if (kind != null && "elementWildcard".compareTo(kind) == 0) {
@@ -259,9 +258,8 @@ public class StoreUtil {
 		int beforeLastIndex = strid.lastIndexOf(PATH_SEPARATOR, lastIndex - 1);
 
 		if (lastIndex == -1 || beforeLastIndex == -1) {
-			throw new StoreException(
-					"The database id stored for a structuralfeature used in a featuremap entry is invalid, dbid: "
-							+ strid);
+			throw new TeneoException(
+				"The database id stored for a structuralfeature used in a featuremap entry is invalid, dbid: " + strid);
 		}
 
 		final String nsuri = strid.substring(0, beforeLastIndex);
@@ -270,19 +268,18 @@ public class StoreUtil {
 
 		final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(nsuri);
 		if (epack == null) {
-			throw new StoreException("The dbid " + strid + " and nsuri: " + nsuri
-					+ " does not resolve to an epackage");
+			throw new TeneoException("The dbid " + strid + " and nsuri: " + nsuri + " does not resolve to an epackage");
 		}
 
 		final EClass eclass = (EClass) epack.getEClassifier(eclassName);
 		if (eclass == null) {
-			throw new StoreException("The dbid " + strid + " and eclassname: " + eclassName
+			throw new TeneoException("The dbid " + strid + " and eclassname: " + eclassName
 					+ " does not resolve to an eclass");
 		}
 
 		final EStructuralFeature structFeature = eclass.getEStructuralFeature(featureName);
 		if (structFeature == null) {
-			throw new StoreException("The dbid " + strid + " and featurename: " + featureName
+			throw new TeneoException("The dbid " + strid + " and featurename: " + featureName
 					+ " does not resolve to a structural feature");
 		}
 
@@ -305,8 +302,7 @@ public class StoreUtil {
 		int lastIndex = strid.lastIndexOf(PATH_SEPARATOR);
 
 		if (lastIndex == -1) {
-			throw new StoreException("The database id stored for a datatype is invalid, dbid: "
-					+ strid);
+			throw new TeneoException("The database id stored for a datatype is invalid, dbid: " + strid);
 		}
 
 		final String nsuri = strid.substring(0, lastIndex);
@@ -314,13 +310,12 @@ public class StoreUtil {
 
 		final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(nsuri);
 		if (epack == null) {
-			throw new StoreException("The dbid " + strid + " and nsuri: " + nsuri
-					+ " does not resolve to an epackage");
+			throw new TeneoException("The dbid " + strid + " and nsuri: " + nsuri + " does not resolve to an epackage");
 		}
 
 		final EDataType edatatype = (EDataType) epack.getEClassifier(name);
 		if (edatatype == null) {
-			throw new StoreException("The dbid " + strid + " and eclassname: " + name
+			throw new TeneoException("The dbid " + strid + " and eclassname: " + name
 					+ " does not resolve to an EDataType");
 		}
 		return edatatype;
@@ -368,7 +363,9 @@ public class StoreUtil {
 			}
 		}
 
-		if (reserve != null) return reserve;
+		if (reserve != null) {
+			return reserve;
+		}
 
 		return null;
 
@@ -395,7 +392,9 @@ public class StoreUtil {
 	public static boolean isGroupFeature(EStructuralFeature estruct) {
 		final EAnnotation annotation = estruct.getEAnnotation(ANNOTATION_SOURCE);
 
-		if (annotation == null) return false;
+		if (annotation == null) {
+			return false;
+		}
 
 		final EMap<String, String> map = annotation.getDetails();
 		for (String key : map.keySet()) {
@@ -414,7 +413,9 @@ public class StoreUtil {
 	public static String getGroupName(EStructuralFeature estruct) {
 		final EAnnotation annotation = estruct.getEAnnotation(ANNOTATION_SOURCE);
 
-		if (annotation == null) return null;
+		if (annotation == null) {
+			return null;
+		}
 
 		boolean isGroup = false;
 		String name = null;
@@ -440,8 +441,7 @@ public class StoreUtil {
 	}
 
 	/** Checks if a feature is an element of the passed group */
-	public static boolean isElementOfGroup(EStructuralFeature estruct,
-			EStructuralFeature groupFeature) {
+	public static boolean isElementOfGroup(EStructuralFeature estruct, EStructuralFeature groupFeature) {
 		final EStructuralFeature ef = ExtendedMetaData.INSTANCE.getGroup(estruct);
 		return ef == groupFeature;
 		/*
@@ -491,8 +491,7 @@ public class StoreUtil {
 		for (int i = 0; i < epacknsuris.length; i++) {
 			final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(epacknsuris[i]);
 			if (epack == null) {
-				throw new StoreException("EPackage with nsuri: " + epacknsuris[i]
-						+ " can not be found,");
+				throw new TeneoException("EPackage with nsuri: " + epacknsuris[i] + " can not be found,");
 			}
 			epacks[i] = epack;
 		}
@@ -504,8 +503,8 @@ public class StoreUtil {
 		try {
 			field.set(obj, value);
 		} catch (IllegalAccessException e) {
-			throw new StoreException("IllegalAccessException " + obj.getClass().getName()
-					+ " field; " + field.getName());
+			throw new TeneoException("IllegalAccessException " + obj.getClass().getName() + " field; "
+					+ field.getName());
 		}
 	}
 
@@ -545,15 +544,13 @@ public class StoreUtil {
 		newPackagePathList.add(File.pathSeparator); // add the root package
 
 		// TODO: move this to the EModelResolver!
-		final ArrayList<Class<?>> allClasses = new ArrayList<Class<?>>(ERuntime.INSTANCE
-				.getAllInterfaces());
+		final ArrayList<Class<?>> allClasses = new ArrayList<Class<?>>(ERuntime.INSTANCE.getAllInterfaces());
 		allClasses.addAll(ERuntime.INSTANCE.getAllConcreteClasses());
 		for (Class<?> clazz : allClasses) {
 			final String className = clazz.getName();
 			final int classNameIndex = className.lastIndexOf(PACKAGE_SEPARATOR);
 			final String trunkClassName = className.substring(0, classNameIndex);
-			final String startPath = PATH_SEPARATOR
-					+ trunkClassName.replace(PACKAGE_SEPARATOR, PATH_SEPARATOR);
+			final String startPath = PATH_SEPARATOR + trunkClassName.replace(PACKAGE_SEPARATOR, PATH_SEPARATOR);
 
 			buildPackagePathFromClassName(startPath, newPackagePathList);
 		}
@@ -561,13 +558,16 @@ public class StoreUtil {
 	}
 
 	/** Take care of one class */
-	private static void buildPackagePathFromClassName(String path,
-			ArrayList<String> newPackagePathList) {
-		if (newPackagePathList.contains(path + PATH_SEPARATOR)) return;
+	private static void buildPackagePathFromClassName(String path, ArrayList<String> newPackagePathList) {
+		if (newPackagePathList.contains(path + PATH_SEPARATOR)) {
+			return;
+		}
 		newPackagePathList.add(path + PATH_SEPARATOR);
 
 		final int sepIndex = path.lastIndexOf(PATH_SEPARATOR);
-		if (sepIndex == -1) return;
+		if (sepIndex == -1) {
+			return;
+		}
 		buildPackagePathFromClassName(path.substring(0, sepIndex), newPackagePathList);
 	}
 
@@ -587,8 +587,8 @@ public class StoreUtil {
 			in.close();
 			out.close();
 		} catch (Exception e) {
-			throw new StoreException("Exception while copying from/to " + src.getAbsolutePath()
-					+ "/" + dst.getAbsolutePath(), e);
+			throw new TeneoException("Exception while copying from/to " + src.getAbsolutePath() + "/"
+					+ dst.getAbsolutePath(), e);
 		}
 	}
 }

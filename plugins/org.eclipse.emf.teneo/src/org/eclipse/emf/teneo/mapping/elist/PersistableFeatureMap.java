@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableFeatureMap.java,v 1.7 2007/02/08 23:14:41 mtaal Exp $
+ * $Id: PersistableFeatureMap.java,v 1.8 2007/06/29 07:31:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.DelegatingFeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.teneo.StoreException;
+import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.type.FeatureMapEntry;
 import org.eclipse.emf.teneo.util.AssertUtil;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the persistent store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public abstract class PersistableFeatureMap extends DelegatingFeatureMap implements PersistableDelegateList<FeatureMap.Entry> {
@@ -119,13 +119,13 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	}
 
 	/** Creates an exception with the logID added, without a cause */
-	protected StoreException createException(String msg) {
-		return new StoreException(msg + "\n" + getLogString());
+	protected TeneoException createException(String msg) {
+		return new TeneoException(msg + "\n" + getLogString());
 	}
 
 	/** Creates an exception with the logID added, without a cause */
-	protected StoreException createException(String msg, Throwable t) {
-		return new StoreException(msg + "\n" + getLogString(), t);
+	protected TeneoException createException(String msg, Throwable t) {
+		return new TeneoException(msg + "\n" + getLogString(), t);
 	}
 
 	/** Return the delegate list without doing a load */

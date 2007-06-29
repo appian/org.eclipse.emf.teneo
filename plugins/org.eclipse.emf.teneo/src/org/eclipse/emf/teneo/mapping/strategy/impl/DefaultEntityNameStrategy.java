@@ -1,4 +1,21 @@
-package org.eclipse.emf.teneo.ecore;
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Martin Taal - Initial API and implementation
+ *
+ * </copyright>
+ *
+ * $Id: DefaultEntityNameStrategy.java,v 1.1 2007/06/29 07:31:47 mtaal Exp $
+ */
+
+package org.eclipse.emf.teneo.mapping.strategy.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -8,49 +25,52 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 
 /**
  * This implementation assumes that EClass names are unique. It will (de)Resolve using the EClass
  * name.
  * 
- * @author <a href="lmfridael@elver.org">Laurens Fridael</a>
  * @author <a href="mtaal@elver.org">Martin Taal</a>
+ * @version $Revision: 1.1 $
  */
-public class DefaultEClassNameStrategy implements EClassNameStrategy {
+public class DefaultEntityNameStrategy implements EntityNameStrategy {
 
 	/** The logger */
-	private static Log log = LogFactory.getLog(DefaultEClassNameStrategy.class);
+	private static Log log = LogFactory.getLog(DefaultEntityNameStrategy.class);
 
 	/** The singleton instance as it is thread safe */
-	public static final DefaultEClassNameStrategy INSTANCE = new DefaultEClassNameStrategy();
+	public static final DefaultEntityNameStrategy INSTANCE = new DefaultEntityNameStrategy();
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.elver.ecore.spring.EClassResolver#deResolve(org.eclipse.emf.ecore.EClass)
 	 */
-	public String toUniqueName(EClass eClass) {
+	public String toEntityName(EClass eClass) {
 		if (eClass == EOBJECT_ECLASS) {
 			return EOBJECT_ECLASS_NAME;
 		}
 
 		if (eClass == null) {
 			throw new IllegalArgumentException(
-					"Passed eclass is null."
-							+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
-							+ "and they are not read using one resource set. The reference from one epackage to another must be "
-							+ "resolvable by EMF.");
+				"Passed eclass is null."
+						+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
+						+ "and they are not read using one resource set. The reference from one epackage to another must be "
+						+ "resolvable by EMF.");
 		}
 
 		if (eClass.getName() == null) {
 			throw new IllegalArgumentException(
-					"EClass "
-							+ eClass.toString()
-							+ " has a null name."
-							+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
-							+ "and they are not read using one resource set. The reference from one epackage to another must be "
-							+ "resolvable by EMF.");
+				"EClass "
+						+ eClass.toString()
+						+ " has a null name."
+						+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
+						+ "and they are not read using one resource set. The reference from one epackage to another must be "
+						+ "resolvable by EMF.");
 		}
+
 		return eClass.getName();
 	}
 
@@ -75,11 +95,9 @@ public class DefaultEClassNameStrategy implements EClassNameStrategy {
 			if (eClassifier instanceof EClass) {
 				if (eClass != null) {
 					// doubly entry! Actually require different resolver
-					throw new IllegalArgumentException(
-							"There is more than one EClass with the same name (" + eClassName
-									+ " in EPackage " + eClass.getEPackage().getName() + " and "
-									+ ePackage.getName()
-									+ ". A different EClassResolver should be used.");
+					throw new IllegalArgumentException("There is more than one EClass with the same name ("
+							+ eClassName + " in EPackage " + eClass.getEPackage().getName() + " and "
+							+ ePackage.getName() + ". A different EClassResolver should be used.");
 				}
 				eClass = (EClass) eClassifier;
 			}

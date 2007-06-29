@@ -12,20 +12,20 @@
  *
  * </copyright>
  *
- * $Id: ClassLoaderResolver.java,v 1.3 2007/02/08 23:14:41 mtaal Exp $
+ * $Id: ClassLoaderResolver.java,v 1.4 2007/06/29 07:31:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.classloader;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.teneo.StoreException;
+import org.eclipse.emf.teneo.TeneoException;
 
 /**
  * Is responsible for determining which class loader to use.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class ClassLoaderResolver {
@@ -40,7 +40,7 @@ public class ClassLoaderResolver {
 		try {
 			setClassLoaderStrategy(new ContextClassLoaderStrategy());
 		} catch (Exception e) {
-			throw new StoreException(
+			throw new TeneoException(
 					"Exception when setting default class loader strategy", e);
 		}
 	}

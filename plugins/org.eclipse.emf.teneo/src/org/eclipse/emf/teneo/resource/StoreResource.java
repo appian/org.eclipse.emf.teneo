@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.20 2007/04/07 12:42:42 mtaal Exp $
+ * $Id: StoreResource.java,v 1.21 2007/06/29 07:31:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -55,7 +55,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -142,28 +142,23 @@ public abstract class StoreResource extends ResourceImpl {
 
 		final Map<String, String> params = decodeQueryString(uri.query());
 		if (params.get(LOAD_STRATEGY_PARAM) != null) {
-			loadStrategy = (String) params.get(LOAD_STRATEGY_PARAM);
+			loadStrategy = params.get(LOAD_STRATEGY_PARAM);
 		}
 
 		if (log.isDebugEnabled()) {
-			log.debug("Created " + this.getClass().getName() + " using uri: "
-					+ uri.toString());
+			log.debug("Created " + this.getClass().getName() + " using uri: " + uri.toString());
 		}
 
 		if (params.get(XMLResource.OPTION_DISABLE_NOTIFY) != null) {
 			sendNotificationSetByParam = true;
-			sendNotificationsOnLoad = "false"
-					.compareToIgnoreCase((String) params
-							.get(XMLResource.OPTION_DISABLE_NOTIFY)) == 0;
+			sendNotificationsOnLoad = "false".compareToIgnoreCase(params.get(XMLResource.OPTION_DISABLE_NOTIFY)) == 0;
 		} else if (params.get(XMIResource.OPTION_DISABLE_NOTIFY) != null) {
 			sendNotificationSetByParam = true;
-			sendNotificationsOnLoad = "false"
-					.compareToIgnoreCase((String) params
-							.get(XMIResource.OPTION_DISABLE_NOTIFY)) == 0;
+			sendNotificationsOnLoad = "false".compareToIgnoreCase(params.get(XMIResource.OPTION_DISABLE_NOTIFY)) == 0;
 		}
 
 		setLoaded(false);
-		
+
 		// note this ugly statement is required because in this class
 		// it is required to have direct access to the contents member
 		// the call to getSuperContents will initialize it
@@ -185,10 +180,9 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** Sets the defined queries */
 	public void setDefinedQueries(String[] qrys) {
-		log.debug("Setting defined queries of resource " + getURI().toString()
-				+ "/" + this.getClass().getName());
-		for (int i = 0; i < qrys.length; i++) {
-			log.debug("Adding query: " + qrys[i]);
+		log.debug("Setting defined queries of resource " + getURI().toString() + "/" + this.getClass().getName());
+		for (String element : qrys) {
+			log.debug("Adding query: " + element);
 		}
 
 		definedQueries = qrys;
@@ -211,20 +205,18 @@ public abstract class StoreResource extends ResourceImpl {
 	protected String[] getQueries(Map<?, ?> params) {
 		final ArrayList<String> queries = new ArrayList<String>();
 		for (Object key : params.keySet()) {
-			if (((String)key).startsWith(QUERY_PREFIX)) {
-				queries.add((String)params.get(key));
+			if (((String) key).startsWith(QUERY_PREFIX)) {
+				queries.add((String) params.get(key));
 			}
 		}
-		return (String[]) queries.toArray(new String[queries.size()]);
+		return queries.toArray(new String[queries.size()]);
 	}
 
 	/** Get the parameter from the hashmap, if not found then throw an exception */
-	protected String getParam(Map<String, String> params, String paramName,
-			String report) {
+	protected String getParam(Map<String, String> params, String paramName, String report) {
 		final String param = params.get(paramName);
 		if (param == null) {
-			throw new StoreResourceException("Parameter " + paramName
-					+ " missing in querystring: " + report);
+			throw new StoreResourceException("Parameter " + paramName + " missing in querystring: " + report);
 		}
 		return param;
 	}
@@ -233,15 +225,14 @@ public abstract class StoreResource extends ResourceImpl {
 	protected Map<String, String> decodeQueryString(String qryStr) {
 		final TreeMap<String, String> result = new TreeMap<String, String>();
 
-		if (qryStr == null)
+		if (qryStr == null) {
 			return result;
+		}
 
 		final String[] qryParts = qryStr.split("&");
-		for (int i = 0; i < qryParts.length; i++) {
-			final String qryPart = qryParts[i];
+		for (final String qryPart : qryParts) {
 			final String fieldName = qryPart.substring(0, qryPart.indexOf('='));
-			final String fieldValue = URI.decode(qryPart.substring(qryPart
-					.indexOf('=') + 1));
+			final String fieldValue = URI.decode(qryPart.substring(qryPart.indexOf('=') + 1));
 			result.put(fieldName, fieldValue);
 		}
 		return result;
@@ -266,6 +257,7 @@ public abstract class StoreResource extends ResourceImpl {
 	// ------------------------------------------
 
 	/** Returns true if the resource is loading */
+	@Override
 	public boolean isLoading() {
 		return isLoading;
 	}
@@ -281,20 +273,22 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/** Loads the resource */
+	@Override
 	public void load(Map<?, ?> options) {
-		if (isUnLoading)
+		if (isUnLoading) {
 			return;
-		if (isLoaded())
+		}
+		if (isLoaded()) {
 			return;
+		}
+		if (isLoading()) {
+			return;
+		}
 
 		String option;
-		if (options != null
-				&& (option = (String) options
-						.get(XMLResource.OPTION_DISABLE_NOTIFY)) != null) {
+		if (options != null && (option = (String) options.get(XMLResource.OPTION_DISABLE_NOTIFY)) != null) {
 			sendNotificationsOnLoad = "false".compareToIgnoreCase(option) == 0;
-		} else if (options != null
-				&& (option = (String) options
-						.get(XMIResource.OPTION_DISABLE_NOTIFY)) != null) {
+		} else if (options != null && (option = (String) options.get(XMIResource.OPTION_DISABLE_NOTIFY)) != null) {
 			sendNotificationsOnLoad = "false".compareToIgnoreCase(option) == 0;
 		} else if (!sendNotificationSetByParam) {
 			sendNotificationsOnLoad = true;
@@ -322,8 +316,7 @@ public abstract class StoreResource extends ResourceImpl {
 		setEResource(eObject, true);
 		// note direct access to super member
 		if (!contents.contains(eObject)) {
-			final NotificationChain notifications = contents.basicAdd(eObject,
-					null);
+			final NotificationChain notifications = contents.basicAdd(eObject, null);
 			if (notifications != null && sendNotificationsOnLoad) {
 				notifications.dispatch();
 			}
@@ -336,11 +329,10 @@ public abstract class StoreResource extends ResourceImpl {
 	 * attach if is containment, otherwise do nothing. Mainly used when lazy
 	 * loading a list.
 	 */
-	public void addToContentOrAttach(InternalEObject eObject,
-			boolean isContainmentLoad) {
+	public void addToContentOrAttach(InternalEObject eObject, boolean isContainmentLoad) {
 		if (loadStrategy.compareTo(ADD_TO_CONTENTS) == 0) { // always add
 			if (eObject.eResource() == null) { // with lazy load the resource
-												// can already be set
+				// can already be set
 				setEResource(eObject, true);
 			}
 			attached(eObject);
@@ -354,6 +346,7 @@ public abstract class StoreResource extends ResourceImpl {
 	 * 
 	 * /** Saves the resource
 	 */
+	@Override
 	public void save(Map<?, ?> options) {
 		boolean err = true;
 		try {
@@ -369,22 +362,19 @@ public abstract class StoreResource extends ResourceImpl {
 				removedEObjects.clear();
 				loadedEObjects.addAll(newEObjects);
 				newEObjects.clear();
-				setModified(false);			}
+				setModified(false);
+			}
 		}
 	}
 
 	/**
-	 * Clears different lists to start with an empty resource again. Note that
-	 * the super.dounload is not called because that clears the list resulting
-	 * in all kinds of undesirable inverseremoves and database actions.
+	 * Clears different lists to start with an empty resource again. 
 	 */
+	@Override
 	protected void doUnload() {
 		isUnLoading = true;
-
-		getErrors().clear();
-		getWarnings().clear();
-
 		clearChangeTrackerArrays();
+		super.doUnload();
 		isUnLoading = false;
 	}
 
@@ -394,46 +384,41 @@ public abstract class StoreResource extends ResourceImpl {
 	 */
 	protected void validateContents() throws StoreValidationException {
 		// get the changed or new eobjects
-		final ArrayList<EObject> newOrChangedObjects = new ArrayList<EObject>(
-				newEObjects);
+		final ArrayList<EObject> newOrChangedObjects = new ArrayList<EObject>(newEObjects);
 		newOrChangedObjects.addAll(modifiedEObjects);
 
-		log.debug("Validating contents of resource " + uri + " approx. "
-				+ newOrChangedObjects.size() + " will be checked");
+		log.debug("Validating contents of resource " + uri + " approx. " + newOrChangedObjects.size()
+				+ " will be checked");
 
-		final ArrayList<org.eclipse.emf.common.util.Diagnostic> diags = new ArrayList<org.eclipse.emf.common.util.Diagnostic>();
+		final ArrayList<org.eclipse.emf.common.util.Diagnostic> diags =
+				new ArrayList<org.eclipse.emf.common.util.Diagnostic>();
 		for (int i = 0; i < newOrChangedObjects.size(); i++) {
-			final InternalEObject obj = (InternalEObject) newOrChangedObjects
-					.get(i);
+			final InternalEObject obj = (InternalEObject) newOrChangedObjects.get(i);
 
 			// ensure that the resource is set correctly before validating
 			if (obj.eResource() != this) {
 				assert (obj.eResource() == this);
 			}
-			EContainerRepairControl.setEResourceToAlLContent(
-					(InternalEObject) obj, this);
+			EContainerRepairControl.setEResourceToAlLContent(obj, this);
 
-			if (newOrChangedObjects.contains(obj.eContainer()))
+			if (newOrChangedObjects.contains(obj.eContainer())) {
 				continue; // they will be checked as part of their container
+			}
 
-			final org.eclipse.emf.common.util.Diagnostic diag = validateObject((EObject) newOrChangedObjects
-					.get(i));
-			if (diag != null)
+			final org.eclipse.emf.common.util.Diagnostic diag = validateObject(newOrChangedObjects.get(i));
+			if (diag != null) {
 				diags.add(diag);
+			}
 		}
 		log.debug("Found " + diags.size() + " errors ");
 		if (diags.size() > 0) {
-			throw new StoreValidationException(
-					(org.eclipse.emf.common.util.Diagnostic[]) diags
-							.toArray(new org.eclipse.emf.common.util.Diagnostic[diags
-									.size()]));
+			throw new StoreValidationException(diags.toArray(new org.eclipse.emf.common.util.Diagnostic[diags.size()]));
 		}
 	}
 
 	/** Copied from IBM tutorial, validates one eobject */
 	public org.eclipse.emf.common.util.Diagnostic validateObject(EObject eObject) {
-		org.eclipse.emf.common.util.Diagnostic diagnostic = NonLoadingDiagnostician.INSTANCE
-				.validate(eObject);
+		org.eclipse.emf.common.util.Diagnostic diagnostic = NonLoadingDiagnostician.INSTANCE.validate(eObject);
 		if (diagnostic.getSeverity() == org.eclipse.emf.common.util.Diagnostic.ERROR) {
 			return diagnostic;
 		}
@@ -447,6 +432,7 @@ public abstract class StoreResource extends ResourceImpl {
 	 * Override load to force a load when getContents is called without a
 	 * previous load call.
 	 */
+	@Override
 	public EList<EObject> getContents() {
 		if (!isLoaded() && !isLoading) {
 			load(null);
@@ -488,8 +474,7 @@ public abstract class StoreResource extends ResourceImpl {
 		// childs are added to the modified list
 		// then childs also
 
-		if (loadedEObjects.contains(eObject)
-				&& !modifiedEObjects.contains(eObject)) {
+		if (loadedEObjects.contains(eObject) && !modifiedEObjects.contains(eObject)) {
 			assert (!newEObjects.contains(eObject));
 			modifiedEObjects.add(eObject);
 		}
@@ -536,21 +521,21 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/** Object is attached, is overridden to use non-resolving iterator */
+	@Override
 	public void attached(EObject eObject) {
 		attachedHelper(eObject);
-		for (Iterator<EObject> tree = getNonResolvingContent(eObject)
-				.basicIterator(); tree.hasNext();) {
+		for (Iterator<EObject> tree = getNonResolvingContent(eObject).basicIterator(); tree.hasNext();) {
 			final Object obj = tree.next();
 			attachedHelper((EObject) obj);
 		}
 	}
 
 	/** Detached means deleted from resource */
+	@Override
 	public void detached(EObject eObject) {
 		detachedHelper(eObject);
-		for (Iterator<EObject> tree = getNonResolvingContent(eObject)
-				.basicIterator(); tree.hasNext();) {
-			detachedHelper(tree.next());
+		for (EObject object : getNonResolvingContent(eObject)) {
+			detachedHelper(object);
 		}
 	}
 
@@ -563,10 +548,10 @@ public abstract class StoreResource extends ResourceImpl {
 	 * resource.getContents(). It just adds the object to the internal lists of
 	 * this resource.
 	 */
+	@Override
 	protected void attachedHelper(EObject eObject) {
 		// also attach the container
-		if (eObject.eContainer() != null
-				&& eObject.eContainer().eResource() == null
+		if (eObject.eContainer() != null && eObject.eContainer().eResource() == null
 				&& !eObject.eContainmentFeature().isResolveProxies()) {
 			attached(eObject.eContainer());
 		}
@@ -576,8 +561,9 @@ public abstract class StoreResource extends ResourceImpl {
 		// adds an object to a resource directly and then later add this same
 		// object as a child
 		// to a container
-		if (newEObjects.contains(eObject) || loadedEObjects.contains(eObject))
+		if (newEObjects.contains(eObject) || loadedEObjects.contains(eObject)) {
 			return;
+		}
 
 		// Already belongs to another resource
 		if (eObject.eResource() != null && eObject.eResource() != this) {
@@ -595,14 +581,11 @@ public abstract class StoreResource extends ResourceImpl {
 		// relation allows resolve proxies (container and contained can be in
 		// different resources)
 		// and the load strategy is correct
-		if ((eObject.eContainer() == null
-				|| eObject.eContainmentFeature() == null || eObject
-				.eContainmentFeature().isResolveProxies())
-				&& !getSuperContents().contains(eObject)
-				&& loadStrategy.compareTo(ADD_TO_CONTENTS) == 0) {
+		if ((eObject.eContainer() == null || eObject.eContainmentFeature() == null || eObject.eContainmentFeature()
+			.isResolveProxies())
+				&& !getSuperContents().contains(eObject) && loadStrategy.compareTo(ADD_TO_CONTENTS) == 0) {
 			// note direct access to super contents
-			final NotificationChain notifications = contents.basicAdd(eObject,
-					null);
+			final NotificationChain notifications = contents.basicAdd(eObject, null);
 			if (notifications != null && sendNotificationsOnLoad) {
 				notifications.dispatch();
 			}
@@ -629,13 +612,12 @@ public abstract class StoreResource extends ResourceImpl {
 		// contained
 		for (EReference eref : eObject.eClass().getEAllReferences()) {
 			if (!eref.isMany() && eObject.eGet(eref) != null) { // the ismanies
-																// are handled
-																// differently
+				// are handled
+				// differently
 				final Resource res = ((EObject) eObject.eGet(eref)).eResource();
 				if (res == null) { // attach it to this resource because it has
-									// no other
-					final InternalEObject referedTo = (InternalEObject) eObject
-							.eGet(eref);
+					// no other
+					final InternalEObject referedTo = (InternalEObject) eObject.eGet(eref);
 					attached(referedTo);
 				}
 			}
@@ -685,12 +667,12 @@ public abstract class StoreResource extends ResourceImpl {
 	 * set nothing is done.
 	 */
 	public void setEResource(InternalEObject eobj, boolean force) {
-		if (eobj.eResource() != null && eobj.eResource() != this && !force)
+		if (eobj.eResource() != null && eobj.eResource() != this && !force) {
 			return;
+		}
 
 		InternalEObject currentEObject = eobj;
-		while (currentEObject.eContainer() != null
-				&& !currentEObject.eContainmentFeature().isResolveProxies()) {
+		while (currentEObject.eContainer() != null && !currentEObject.eContainmentFeature().isResolveProxies()) {
 			currentEObject = (InternalEObject) currentEObject.eContainer();
 		}
 		if (currentEObject.eResource() != this) {
@@ -702,6 +684,7 @@ public abstract class StoreResource extends ResourceImpl {
 	 * Overridden to also support persistence specific id instead of single emf
 	 * id
 	 */
+	@Override
 	protected void detachedHelper(EObject eObject) {
 
 		// support move to other resource
@@ -735,25 +718,24 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** Returns the added objects */
 	public EObject[] getNewEObjects() {
-		return (EObject[]) newEObjects.toArray(new EObject[newEObjects.size()]);
+		return newEObjects.toArray(new EObject[newEObjects.size()]);
 	}
 
 	/** Return the new eobjects */
 	public EObject[] getModifiedEObjects() {
-		return (EObject[]) modifiedEObjects
-				.toArray(new EObject[modifiedEObjects.size()]);
+		return modifiedEObjects.toArray(new EObject[modifiedEObjects.size()]);
 	}
 
 	/** Return the new eobjects */
 	public EObject[] getRemovedEObjects() {
-		return (EObject[]) removedEObjects.toArray(new EObject[removedEObjects
-				.size()]);
+		return removedEObjects.toArray(new EObject[removedEObjects.size()]);
 	}
 
 	/**
 	 * Overridden to make it non resolving for not loaded elists and proxy
 	 * eobjects
 	 */
+	@Override
 	public void setTrackingModification(boolean isTrackingModification) {
 		boolean oldIsTrackingModification = modificationTrackingAdapter != null;
 
@@ -770,8 +752,7 @@ public abstract class StoreResource extends ResourceImpl {
 				// check within
 				// for loop
 				final Adapter adapter = createModificationTrackingAdapter();
-				for (Iterator<EObject> i = getNonResolvingAllContents(); i
-						.hasNext();) {
+				for (Iterator<EObject> i = getNonResolvingAllContents(); i.hasNext();) {
 					EObject eObject = i.next();
 					assert (!eObject.eAdapters().contains(adapter));
 					eObject.eAdapters().add(adapter);
@@ -780,11 +761,9 @@ public abstract class StoreResource extends ResourceImpl {
 			} else {
 				Adapter oldModificationTrackingAdapter = modificationTrackingAdapter;
 
-				for (Iterator<EObject> i = getNonResolvingAllContents(); i
-						.hasNext();) {
-					EObject eObject = (EObject) i.next();
-					assert (eObject.eAdapters()
-							.contains(modificationTrackingAdapter));
+				for (Iterator<EObject> i = getNonResolvingAllContents(); i.hasNext();) {
+					EObject eObject = i.next();
+					assert (eObject.eAdapters().contains(modificationTrackingAdapter));
 					eObject.eAdapters().remove(oldModificationTrackingAdapter);
 				}
 				modificationTrackingAdapter = null;
@@ -792,16 +771,18 @@ public abstract class StoreResource extends ResourceImpl {
 		}
 
 		if (eNotificationRequired()) {
-			Notification notification = new NotificationImpl(Notification.SET,
-					oldIsTrackingModification, isTrackingModification) {
-				public Object getNotifier() {
-					return StoreResource.this;
-				}
+			Notification notification =
+					new NotificationImpl(Notification.SET, oldIsTrackingModification, isTrackingModification) {
+						@Override
+						public Object getNotifier() {
+							return StoreResource.this;
+						}
 
-				public int getFeatureID(Class<?> expectedClass) {
-					return RESOURCE__IS_TRACKING_MODIFICATION;
-				}
-			};
+						@Override
+						public int getFeatureID(Class<?> expectedClass) {
+							return RESOURCE__IS_TRACKING_MODIFICATION;
+						}
+					};
 			eNotify(notification);
 		}
 	}
@@ -813,12 +794,18 @@ public abstract class StoreResource extends ResourceImpl {
 	@SuppressWarnings("serial")
 	private TreeIterator<EObject> getNonResolvingAllContents() {
 		return new AbstractTreeIterator<EObject>(this, false) {
+			@Override
 			public Iterator<EObject> getChildren(Object object) {
-				return object == StoreResource.this ? contents.basicIterator()
-						: getNonResolvingContent((EObject) object)
-								.basicIterator();
+				return object == StoreResource.this ? contents.basicIterator() : getNonResolvingContent(
+					(EObject) object).basicIterator();
 			}
 		};
+	}
+
+	@Override
+	// Method is called at unload, only loaded content should be iterated
+	protected TreeIterator<EObject> getAllProperContents(List<EObject> contents) {
+		return getNonResolvingAllContents();
 	}
 
 	/** Returns a non-resolving contents elist for an eobject */
@@ -831,6 +818,7 @@ public abstract class StoreResource extends ResourceImpl {
 	 * 
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#createModificationTrackingAdapter()
 	 */
+	@Override
 	protected Adapter createModificationTrackingAdapter() {
 		return new StoreModificationTrackingAdapter();
 	}
@@ -840,24 +828,25 @@ public abstract class StoreResource extends ResourceImpl {
 	 * changed objects
 	 */
 	protected class StoreModificationTrackingAdapter extends AdapterImpl {
+		@Override
 		public void notifyChanged(Notification notification) {
 			switch (notification.getEventType()) {
-			case Notification.SET:
-			case Notification.UNSET:
-			case Notification.MOVE: {
-				if (!notification.isTouch()) {
-					setModified(true);
-					modifiedEObject((EObject) notification.getNotifier());
+				case Notification.SET:
+				case Notification.UNSET:
+				case Notification.MOVE: {
+					if (!notification.isTouch()) {
+						setModified(true);
+						modifiedEObject((EObject) notification.getNotifier());
+					}
+					break;
 				}
-				break;
-			}
-			case Notification.ADD:
-			case Notification.REMOVE:
-			case Notification.ADD_MANY:
-			case Notification.REMOVE_MANY: {
-				setModified(true);
-				break;
-			}
+				case Notification.ADD:
+				case Notification.REMOVE:
+				case Notification.ADD_MANY:
+				case Notification.REMOVE_MANY: {
+					setModified(true);
+					break;
+				}
 			}
 		}
 	}
