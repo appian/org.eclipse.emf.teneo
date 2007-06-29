@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CapaTest.java,v 1.5 2007/03/20 23:34:23 mtaal Exp $
+ * $Id: CapaTest.java,v 1.6 2007/06/29 07:35:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -22,27 +22,28 @@ import org.eclipse.emf.teneo.samples.emf.sample.capa.MachineList;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.emf.sample.CapaAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.hibernate.Session;
 
 /**
  * Tests the capa sample to reattach an object
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class CapaTest extends AbstractActionTest {
 
 	private static CapaAction testAction = new CapaAction() {
-		
+
 		/** Reattach machinelist and check */
+		@Override
+		@SuppressWarnings("unchecked")
 		protected void checkReAttach(CapaFactory factory, TestStore store, MachineList ml) {
-			final HibernateTestStore hts = (HibernateTestStore)store;
+			final HibernateTestStore hts = (HibernateTestStore) store;
 			hts.refresh();
 			hts.beginTransaction();
 			hts.getSessionWrapper().saveOrUpdate(ml);
-	        ml.getMachines().add(getNewMachine(factory, "test"));
-			
-			//ml.getMachines().add(getNewMachine(factory, "id4"));
+			ml.getMachines().add(getNewMachine(factory, "test"));
+
+			// ml.getMachines().add(getNewMachine(factory, "id4"));
 			hts.commitTransaction();
 		}
 

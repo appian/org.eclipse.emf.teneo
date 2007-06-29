@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.hibernate.SessionFactory;
@@ -27,24 +28,28 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class ReadEcore {
 
 	/**
 	 * @param args
 	 */
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		try {
 			final ResourceSet resourceSet = new ResourceSetImpl();
-			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*",
-				new EcoreResourceFactoryImpl());
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+				.put("*", new EcoreResourceFactoryImpl());
 			final ArrayList epackages = new ArrayList();
-			final String[] ecores = new String[] { "mapping.ecore" };
+			final String[] ecores = new String[] { "test.ecore" };
 			for (String ecore : ecores) {
 				final Resource res =
-						resourceSet.getResource(URI.createFileURI("/home/mtaal/mytmp/" + ecore),
-							true);
+						resourceSet
+							.getResource(
+								URI
+									.createFileURI("/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/test/"
+											+ ecore), true);
 				res.load(new HashMap());
 
 				Iterator it = res.getAllContents();
@@ -60,10 +65,13 @@ public class ReadEcore {
 				}
 			}
 
-			final EPackage[] epacks =
-					(EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
+			final EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
 
-			System.err.println(HbHelper.INSTANCE.generateMapping(epacks, new Properties()));
+			final Properties props = new Properties();
+			// props.setProperty(PersistenceOptions.PERSISTENCE_XML, "test.persistence.xml");
+			// props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
+
+			System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
 			initDataStore(epacks);
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage(), e);
@@ -78,9 +86,12 @@ public class ReadEcore {
 		props.setProperty(Environment.USER, "root");
 		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/test");
 		props.setProperty(Environment.PASS, "root");
-		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class
-			.getName());
+		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "100");
+		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
+
 		hbds.setHibernateProperties(props);
+		hbds.setPersistenceProperties(props);
 
 		// sets its epackages stored in this datastore
 		hbds.setEPackages(epacks);

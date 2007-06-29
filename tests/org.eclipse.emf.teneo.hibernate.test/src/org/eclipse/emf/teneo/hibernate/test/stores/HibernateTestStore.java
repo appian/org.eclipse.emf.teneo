@@ -39,12 +39,13 @@ import org.eclipse.emf.teneo.test.stores.AbstractTestStore;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
+import org.hibernate.ejb.EntityManagerImpl;
 
 /**
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -74,8 +75,8 @@ public class HibernateTestStore extends AbstractTestStore {
 	/**
 	 * Constructor for emf test cases
 	 */
-	public HibernateTestStore(HibernateTestDBAdapter adapter, EPackage[] epackages,
-			Properties props, InheritanceType inheritanceType, boolean ejb3) {
+	public HibernateTestStore(HibernateTestDBAdapter adapter, EPackage[] epackages, Properties props,
+			InheritanceType inheritanceType, boolean ejb3) {
 		super(adapter);
 		this.props = props;
 		this.epackages = epackages;
@@ -117,14 +118,12 @@ public class HibernateTestStore extends AbstractTestStore {
 		if (ejb3) {
 			emfDataStore = new HbEntityDataStore(); // (HbDataStore)HbHelper.INSTANCE.createRegisterDataStore(getDatabaseAdapter().getDbName());
 		} else {
-			emfDataStore = HbHelper.INSTANCE.createRegisterDataStore(getDatabaseAdapter()
-					.getDbName());
+			emfDataStore = HbHelper.INSTANCE.createRegisterDataStore(getDatabaseAdapter().getDbName());
 		}
 		emfDataStore.setName(getDatabaseAdapter().getDbName());
 		emfDataStore.setEPackages(epackages);
 		// set both hibernate and persistence props as we do not know the difference right now
-		emfDataStore
-				.setHibernateProperties(getHibernateProperties((HibernateTestDBAdapter) getDatabaseAdapter()));
+		emfDataStore.setHibernateProperties(getHibernateProperties((HibernateTestDBAdapter) getDatabaseAdapter()));
 		emfDataStore.setPersistenceProperties(props);
 		emfDataStore.initialize();
 		if (sessionWrapper != null) {
@@ -154,7 +153,6 @@ public class HibernateTestStore extends AbstractTestStore {
 		emfDataStore.setEPackages(epackages);
 		emfDataStore.initialize();
 		refresh();
-		System.err.println(emfDataStore.getMappingXML());
 	}
 
 	/** Creates a new persistence manager, actually to clear the cache */
@@ -169,7 +167,12 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	/** Returns session */
 	public Session getSession() {
-		return (Session) sessionWrapper.getSession();
+		final Object obj = sessionWrapper.getSession();
+		if (obj instanceof Session) {
+			return (Session) obj;
+		} else {
+			return ((EntityManagerImpl) obj).getSession();
+		}
 	}
 
 	/** Return the sessionwrapper */
@@ -200,7 +203,9 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	/** Rollback transaction */
 	public void rollbackTransaction() {
-		if (sessionWrapper.isTransactionActive()) sessionWrapper.rollbackTransaction();
+		if (sessionWrapper.isTransactionActive()) {
+			sessionWrapper.rollbackTransaction();
+		}
 		refresh();
 	}
 
@@ -215,24 +220,23 @@ public class HibernateTestStore extends AbstractTestStore {
 	}
 
 	/** Test if a delete fails */
-	public void checkDeleteFails(Class clazz) {
+	public void checkDeleteFails(Class<?> clazz) {
 		checkDelete(clazz, false); // replace class is called in checkDelete/getObjects
 	}
 
 	/** Test if a delete fails */
-	public void checkDeleteSucceeds(Class clazz) {
+	public void checkDeleteSucceeds(Class<?> clazz) {
 		checkDelete(clazz, true); // replace class is called in CheckDelete/getObjects
 	}
 
 	/** Query for a class using a field and value pair */
-	public List<?> query(Class clazz, String field, String value, int checkCount) {
+	public List<?> query(Class<?> clazz, String field, String value, int checkCount) {
 		// final Class interf = replaceClass(clazz);
 		if (sessionWrapper.isEJB3EntityManager()) {
-			return query("select o from " + getEntityName(clazz) + " o where o." + field + "=\'"
-					+ value + "\'", checkCount);
+			return query("select o from " + getEntityName(clazz) + " o where o." + field + "=\'" + value + "\'",
+				checkCount);
 		} else {
-			return query("from " + getEntityName(clazz) + " where " + field + "=\'" + value + "\'",
-					checkCount);
+			return query("from " + getEntityName(clazz) + " where " + field + "=\'" + value + "\'", checkCount);
 		}
 	}
 
@@ -248,8 +252,7 @@ public class HibernateTestStore extends AbstractTestStore {
 		final List<?> result = sessionWrapper.executeQuery(qryStr);
 
 		if (checkCount > 0) {
-			TestCase.assertTrue("Expected " + checkCount
-					+ " object(s) for this query but there are " + result.size()
+			TestCase.assertTrue("Expected " + checkCount + " object(s) for this query but there are " + result.size()
 					+ " object(s) for the query " + qryStr, result.size() == checkCount);
 		}
 		return result;
@@ -278,16 +281,16 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	/** Return an object of a certain class, there should only be one in the databases */
 	@Override
-	public Object getObject(Class clazz) {
+	public Object getObject(Class<?> clazz) {
 		List<?> l = getObjects(clazz); // replace class is called in getObjects
-		TestCase.assertTrue("There are " + l.size()
-				+ " object(s) of this class in the datastore, 1 was expected, class: "
-				+ clazz.getName(), l.size() == 1);
+		TestCase
+			.assertTrue("There are " + l.size() + " object(s) of this class in the datastore, 1 was expected, class: "
+					+ clazz.getName(), l.size() == 1);
 		return l.get(0);
 	}
 
 	/** Returns a list of object of a certain class */
-	public List<?> getObjects(Class clazz) {
+	public List<?> getObjects(Class<?> clazz) {
 		// final Class concrete = replaceClass(clazz);
 		if (sessionWrapper.isEJB3EntityManager()) {
 			return sessionWrapper.executeQuery("select o from " + getEntityName(clazz) + " o");
@@ -298,11 +301,10 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	/** Test the amount of objects of a certain class in the db */
 	@Override
-	public void checkNumber(Class clazz, int count) {
+	public void checkNumber(Class<?> clazz, int count) {
 		final List<?> list = getObjects(clazz);
 		TestCase.assertTrue("Expected " + count + " object(s) but there are " + list.size()
-				+ " object(s) of this class in the datastore: " + clazz.getName(),
-				list.size() == count);
+				+ " object(s) of this class in the datastore: " + clazz.getName(), list.size() == count);
 	}
 
 	/** Flushes all updates to the underlying datastore */
@@ -322,8 +324,7 @@ public class HibernateTestStore extends AbstractTestStore {
 	 */
 	@Override
 	public void doTearDown() {
-		AssertUtil.assertTrue("Transaction is still active at end of test", !sessionWrapper
-				.isTransactionActive());
+		AssertUtil.assertTrue("Transaction is still active at end of test", !sessionWrapper.isTransactionActive());
 
 		if (sessionWrapper.isTransactionActive()) {
 			rollbackTransaction();
@@ -351,8 +352,7 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	/** Base method to get a resource belonging to the session of this test case */
 	public Resource getResource(String extraParam) {
-		String uriStr = "hibernate://?" + HibernateResource.DS_NAME_PARAM + "="
-				+ emfDataStore.getName();
+		String uriStr = "hibernate://?" + HibernateResource.DS_NAME_PARAM + "=" + emfDataStore.getName();
 
 		if (extraParam != null) {
 			uriStr += "&" + extraParam;
@@ -408,11 +408,11 @@ public class HibernateTestStore extends AbstractTestStore {
 	}
 
 	/** Returns the query name to use for the instance */
-	private String getEntityName(Class clazz) {
+	private String getEntityName(Class<?> clazz) {
 		final String entityName = clazz.getName().substring(clazz.getName().lastIndexOf('.') + 1);
 		if (props.get(PersistenceOptions.QUALIFY_ENTITY_NAME) != null
 				&& props.get(PersistenceOptions.QUALIFY_ENTITY_NAME).equals(
-						PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX)) {
+					PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX)) {
 			return epackages[0].getNsPrefix() + "." + entityName;
 		} else {
 			return entityName;

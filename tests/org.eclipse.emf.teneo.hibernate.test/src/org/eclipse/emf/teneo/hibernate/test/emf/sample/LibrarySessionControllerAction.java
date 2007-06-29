@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySessionControllerAction.java,v 1.5 2007/03/20 23:34:23 mtaal Exp $
+ * $Id: LibrarySessionControllerAction.java,v 1.6 2007/06/29 07:35:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class LibrarySessionControllerAction extends AbstractTestAction {
 	/**
@@ -58,19 +58,21 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		final ResourceSet resourceSet = new ResourceSetImpl();
 
 		SessionController sc = new SessionController();
-		sc.setHbDataStore(((HibernateTestStore)store).getEmfDataStore());
+		sc.setHbDataStore(((HibernateTestStore) store).getEmfDataStore());
 		SessionController.registerSessionController("testsc", sc);
-		
+
 		// create a book, writer and library
 		try {
 			{
-				HibernateResource res1 = (HibernateResource)getResource(resourceSet, null);
-				HibernateResource res2 = (HibernateResource)getResource(resourceSet, null);
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet, null);
+				HibernateResource res2 = (HibernateResource) getResource(resourceSet, null);
 				sc.getSessionWrapper().beginTransaction();
 				res1.load(null);
 				res2.load(null);
@@ -79,7 +81,7 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 				final Writer writer = factory.createWriter();
 				writer.setName("JRR Tolkien");
 				res2.getContents().add(writer);
-				
+
 				final Book book = factory.createBook();
 				book.setAuthor(writer);
 				book.setPages(510);
@@ -90,7 +92,7 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 				book2.setPages(500);
 				book2.setTitle("The Hobbit");
 				book2.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
-				
+
 				final Library library = factory.createLibrary();
 				library.setName("Science Fiction");
 				library.getBooks().add(book);
@@ -114,13 +116,13 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 			SessionController.deRegisterSessionController("testsc");
 
 			sc = new SessionController();
-			sc.setHbDataStore(((HibernateTestStore)store).getEmfDataStore());
+			sc.setHbDataStore(((HibernateTestStore) store).getEmfDataStore());
 			SessionController.registerSessionController("testsc", sc);
 
 			// walk through the structure starting from the library
 			{
-				HibernateResource res1 = (HibernateResource)getResource(resourceSet, "query1=select b from Book b");
-				HibernateResource res2 = (HibernateResource)getResource(resourceSet, "query1=select w from Writer w");
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet, "query1=select b from Book b");
+				HibernateResource res2 = (HibernateResource) getResource(resourceSet, "query1=select w from Writer w");
 				sc.getSessionWrapper().beginTransaction();
 				res1.load(Collections.EMPTY_MAP);
 				res2.load(Collections.EMPTY_MAP);
@@ -130,7 +132,7 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 				final ArrayList tempList = new ArrayList(res1.getContents());
 				for (Iterator it = tempList.iterator(); it.hasNext();) {
 					final Object obj = it.next();
-					final Book book = (Book)obj;
+					final Book book = (Book) obj;
 					assertTrue(book.eResource() == res1);
 					assertTrue(book.getAuthor().eResource() == res2);
 					assertTrue(book.getAuthor().getBooks().size() == 2);
@@ -138,11 +140,11 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 					cnt++;
 				}
 				assertEquals(2, cnt);
-				//assertEquals(1, res2.getContents().size());
+				// assertEquals(1, res2.getContents().size());
 				sc.getSessionWrapper().beginTransaction();
 				res1.save(Collections.EMPTY_MAP);
 				res2.save(Collections.EMPTY_MAP);
-				sc.getSessionWrapper().commitTransaction();				
+				sc.getSessionWrapper().commitTransaction();
 				res1.unload();
 				res2.unload();
 			}

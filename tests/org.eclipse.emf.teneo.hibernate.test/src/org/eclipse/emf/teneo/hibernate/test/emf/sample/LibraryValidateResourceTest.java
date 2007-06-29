@@ -11,38 +11,38 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryValidateResourceTest.java,v 1.3 2007/02/01 12:36:24 mtaal Exp $
+ * $Id: LibraryValidateResourceTest.java,v 1.4 2007/06/29 07:35:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryValidateResourceAction;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 /**
  * Test
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryValidateResourceTest extends AbstractActionTest {
 
 	private static LibraryValidateResourceAction testAction = new LibraryValidateResourceAction() {
 
 		/** Specific Hibernate flush test */
+		@Override
 		protected void testFlush(Resource res) {
 			if (res instanceof HibernateResource) {
 				HibernateResource hres = (HibernateResource) res;
-				Session session = hres.getSession();
-				Transaction tx = session.beginTransaction();
+				SessionWrapper sessionWrapper = hres.getSessionWrapper();
+				sessionWrapper.beginTransaction();
 
 				// this should not fail!
 				try {
-					tx.commit();
+					sessionWrapper.commitTransaction();
 				}
 				// there should be a finally block but this is only a test
 				catch (Exception e) {

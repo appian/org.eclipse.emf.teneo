@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySessionControllerAddContentAction.java,v 1.4 2007/03/20 23:34:23 mtaal Exp $
+ * $Id: LibrarySessionControllerAddContentAction.java,v 1.5 2007/06/29 07:35:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class LibrarySessionControllerAddContentAction extends AbstractTestAction {
 	/**
@@ -56,6 +56,8 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		final ResourceSet resourceSet = new ResourceSetImpl();
@@ -109,6 +111,8 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				res1.save(null);
 				res1.unload();
 				res2.unload();
+				res1.getResourceSet().getResources().remove(res1);
+				res2.getResourceSet().getResources().remove(res2);
 				sc.getSessionWrapper().commitTransaction();
 				sc.getSessionWrapper().clear();
 			}
@@ -148,6 +152,8 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				sc.getSessionWrapper().commitTransaction();
 				res1.unload();
 				res2.unload();
+				res1.getResourceSet().getResources().remove(res1);
+				res2.getResourceSet().getResources().remove(res2);
 			}
 
 			{
@@ -165,6 +171,7 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				res1.save(Collections.EMPTY_MAP);
 				sc.getSessionWrapper().commitTransaction();
 				res1.unload();
+				res1.getResourceSet().getResources().remove(res1);
 				sc.getSessionWrapper().clear();
 			}
 			SessionController.deRegisterSessionController("testsc");
@@ -186,6 +193,7 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				assertTrue(res1.getContents().contains(writ.getBooks().get(1)));
 				sc.getSessionWrapper().commitTransaction();
 				res1.unload();
+				res1.getResourceSet().getResources().remove(res1);
 			}
 
 		} catch (Exception e) {

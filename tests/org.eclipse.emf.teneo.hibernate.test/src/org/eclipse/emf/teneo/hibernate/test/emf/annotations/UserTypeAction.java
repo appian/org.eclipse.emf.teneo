@@ -11,7 +11,7 @@
  *   L.M. Fridael
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.7 2007/03/20 23:34:24 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.8 2007/06/29 07:35:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -35,8 +35,9 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test
  * 
  * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
+@SuppressWarnings("unchecked")
 public class UserTypeAction extends AbstractTestAction {
 
 	private static final Name NAME = new Name("Pietje", "Puk");
@@ -47,6 +48,7 @@ public class UserTypeAction extends AbstractTestAction {
 		super(UsertypePackage.eINSTANCE);
 	}
 
+	@Override
 	public void doAction(TestStore store) {
 		storePerson(store);
 		testPerson(store);
@@ -64,7 +66,7 @@ public class UserTypeAction extends AbstractTestAction {
 		person.setEmergencyContact(up1);
 		person.getPhoneNumbers().add(up2);
 		person.getPhoneNumbers().add(up3);
-		person.setNumbers(new int[] {4, 5});
+		person.setNumbers(new int[] { 4, 5 });
 		Address addr1 = UsertypeFactory.eINSTANCE.createAddress();
 		addr1.setAddressInfo("addr1");
 		Address addr2 = UsertypeFactory.eINSTANCE.createAddress();
@@ -90,9 +92,9 @@ public class UserTypeAction extends AbstractTestAction {
 		assertEquals(2, nums.length);
 		assertEquals(4, nums[0]);
 		assertEquals(5, nums[1]);
-		
+
 		assertEquals(2, person.getAddresses().size());
-		
+
 		store.commitTransaction();
 	}
 
@@ -123,7 +125,7 @@ public class UserTypeAction extends AbstractTestAction {
 			}
 		}
 	}
-	
+
 	private void removePerson(TestStore store) {
 		store.beginTransaction();
 		List results = store.query("select p from Person p");
@@ -132,6 +134,6 @@ public class UserTypeAction extends AbstractTestAction {
 		store.deleteObject(person);
 		store.commitTransaction();
 		store.checkNumber(Person.class, 0);
-		//store.checkNumber(Address.class, 0);
+		// store.checkNumber(Address.class, 0);
 	}
 }

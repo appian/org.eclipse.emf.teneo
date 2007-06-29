@@ -11,7 +11,7 @@
  *   L.M. Fridael
  * </copyright>
  *
- * $Id: DetachFromSessionAction.java,v 1.3 2007/03/20 23:34:23 mtaal Exp $
+ * $Id: DetachFromSessionAction.java,v 1.4 2007/06/29 07:35:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests detach and attachment to session
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class DetachFromSessionAction extends AbstractTestAction {
 
@@ -37,8 +37,9 @@ public class DetachFromSessionAction extends AbstractTestAction {
 		super(LibraryPackage.eINSTANCE);
 	}
 
+	@Override
 	public void doAction(TestStore store) {
-		final HibernateTestStore hts = (HibernateTestStore)store;
+		final HibernateTestStore hts = (HibernateTestStore) store;
 		final LibraryFactory f = LibraryFactory.eINSTANCE;
 		final Writer w = f.createWriter();
 		w.setName("m");
@@ -48,20 +49,21 @@ public class DetachFromSessionAction extends AbstractTestAction {
 		b.setCategory(BookCategory.BIOGRAPHY_LITERAL);
 		b.setPages(5);
 		hts.beginTransaction();
+		hts.store(b);
 		hts.store(w);
 		hts.commitTransaction();
 
 		// refresh the session
-		hts.refresh(); 
-		
+		hts.refresh();
+
 		hts.beginTransaction();
 		w.setName("m2");
 		hts.getSessionWrapper().saveOrUpdate(w);
 		hts.commitTransaction();
-		
+
 		hts.refresh();
 		hts.beginTransaction();
-		Writer w2 = (Writer)store.getObject(Writer.class);
+		Writer w2 = (Writer) store.getObject(Writer.class);
 		assertEquals("m2", w2.getName());
 		store.checkNumber(Writer.class, 1);
 		store.checkNumber(Book.class, 1);

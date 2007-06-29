@@ -41,25 +41,30 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.40 $
+ * @version $Revision: 1.41 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite(
-				"Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
-						.instance().getConfigurations());
-		// suite.addTestSuite(GMFNotationAction.class);
-		// suite.addTestSuite(LobjAction.class);
+		TestSuite suite =
+				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
+					.instance().getConfigurations());
+		suite.addTestSuite(LibrarySessionControllerAddContentAction.class);
 
-		// suite.addTestSuite(AgilAction.class);
+		suite.addTestSuite(LibrarySessionControllerAction.class);
+
+		suite.addTestSuite(LibraryJoinTableNamingAction.class);
+
+		suite.addTestSuite(ExtendedPO2Test.class);
+
+		suite.addTestSuite(LibraryColLengthAction.class);
+
+		suite.addTestSuite(RentalMapAsClassAction.class);
+		suite.addTestSuite(LibraryAction.class);
 
 		suite.addTestSuite(DynamicAction.class);
 
 		suite.addTestSuite(ProductAction.class);
-
-		suite.addTestSuite(LibraryAction.class);
-		suite.addTestSuite(RentalMapAsClassAction.class);
 
 		suite.addTestSuite(RentalResourceReferenceAction.class);
 
@@ -73,23 +78,16 @@ public class AllTests {
 
 		suite.addTestSuite(AccountingTest.class);
 
-		suite.addTestSuite(LibrarySessionControllerAddContentAction.class);
-
-		suite.addTestSuite(LibrarySessionControllerAction.class);
-
 		suite.addTestSuite(SchoolLibraryTest.class);
 
 		// suite.addTestSuite(YahooAction.class);
 		suite.addTestSuite(MindMapAction.class);
 
 		suite.addTestSuite(LibraryResourceAction.class);
-
-		suite.addTestSuite(ExtendedPO2Test.class);
 		suite.addTestSuite(LibrarySerializationAction.class);
 
 		// suite.addTestSuite(GMFNotationAction.class);
 		// this test works with ms sql server but not with mysql
-		suite.addTestSuite(LibraryJoinTableNamingAction.class);
 
 		// suite.addTestSuite(ExtLibraryAction.class);
 		suite.addTestSuite(DetachFromSessionAction.class);
@@ -99,7 +97,6 @@ public class AllTests {
 		// suite.addTestSuite(WoWAction.class);
 		suite.addTestSuite(CatalogTest.class);
 		suite.addTestSuite(InventoryAction.class);
-		suite.addTestSuite(LibraryColLengthAction.class);
 		suite.addTestSuite(LibraryResourceCutPasteAction.class);
 		suite.addTestSuite(LibraryValidateResourceTest.class);
 		suite.addTestSuite(CatalogResourceAction.class);
