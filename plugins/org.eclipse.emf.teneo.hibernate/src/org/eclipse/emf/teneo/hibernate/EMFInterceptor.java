@@ -11,14 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInterceptor.java,v 1.6 2007/03/29 14:59:40 mtaal Exp $
+ * $Id: EMFInterceptor.java,v 1.7 2007/06/29 07:31:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.hibernate.EmptyInterceptor;
 
 /**
@@ -26,7 +26,7 @@ import org.hibernate.EmptyInterceptor;
  * name.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class EMFInterceptor extends EmptyInterceptor {
@@ -37,11 +37,11 @@ public class EMFInterceptor extends EmptyInterceptor {
 	private static final long serialVersionUID = 1680117509182298808L;
 
 	/** The qualify property used to compute the eclassname */
-	private final EClassNameStrategy qualifyStrategy;
-	
+	private final EntityNameStrategy qualifyStrategy;
+
 	/** Constructor */
 	public EMFInterceptor(PersistenceOptions po) {
-		qualifyStrategy = po.getEClassNameStrategy();
+		qualifyStrategy = po.getEntityNameStrategy();
 	}
 
 	/**
@@ -49,11 +49,12 @@ public class EMFInterceptor extends EmptyInterceptor {
 	 * 
 	 * @see org.hibernate.EmptyInterceptor#getEntityName(java.lang.Object)
 	 */
+	@Override
 	public String getEntityName(Object object) {
 		if (object instanceof EObject) {
 			// TODO handle featuremap
 			EObject eobj = (EObject) object;
-			return qualifyStrategy.toUniqueName(eobj.eClass());
+			return qualifyStrategy.toEntityName(eobj.eClass());
 		}
 
 		return super.getEntityName(object);

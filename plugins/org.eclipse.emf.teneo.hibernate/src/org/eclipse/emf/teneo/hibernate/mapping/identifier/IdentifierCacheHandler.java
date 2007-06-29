@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class IdentifierCacheHandler {
@@ -43,8 +43,7 @@ public class IdentifierCacheHandler {
 	private static int idModCount = 0;
 
 	/** HashMap */
-	private static Map<Key, Object> versionMap =
-			Collections.synchronizedMap(new HashMap<Key, Object>());
+	private static Map<Key, Object> versionMap = Collections.synchronizedMap(new HashMap<Key, Object>());
 
 	/** Keeps track of the modifications to the versionMap */
 	private static int versionModCount = 0;
@@ -74,8 +73,7 @@ public class IdentifierCacheHandler {
 			final EObject eobj = (EObject) obj;
 			final Resource res = eobj.eResource();
 			if (res != null && res instanceof XMLResource) {
-				log.debug("Setting id " + id.toString() + " in resource "
-						+ res.getClass().getName());
+				log.debug("Setting id " + id.toString() + " in resource " + res.getClass().getName());
 				((XMLResource) res).setID(eobj, id.toString());
 			}
 		}
@@ -93,8 +91,7 @@ public class IdentifierCacheHandler {
 
 	/** Sets a version in the cache */
 	public static void setVersion(Object obj, Object version) {
-		log.debug("Setting version: " + version + " for object " + obj.getClass().getName()
-				+ " in idcache ");
+		log.debug("Setting version: " + version + " for object " + obj.getClass().getName() + " in idcache ");
 		versionMap.put(new Key(obj), version);
 		versionModCount++;
 		if (versionModCount > PURGE_COUNT) {
@@ -104,14 +101,18 @@ public class IdentifierCacheHandler {
 
 	/** Purge the versionmap for stale entries */
 	private static synchronized void purgeIDMap() {
-		if (idModCount < PURGE_COUNT) return;
+		if (idModCount < PURGE_COUNT) {
+			return;
+		}
 		purgeMap(idMap);
 		idModCount = 0;
 	}
 
 	/** Purge the versionmap for stale entries */
 	private static synchronized void purgeVersionMap() {
-		if (versionModCount < PURGE_COUNT) return;
+		if (versionModCount < PURGE_COUNT) {
+			return;
+		}
 		purgeMap(versionMap);
 		versionModCount = 0;
 	}
@@ -123,7 +124,9 @@ public class IdentifierCacheHandler {
 			final Iterator<Key> it = map.keySet().iterator();
 			while (it.hasNext()) {
 				final Key key = it.next();
-				if (!key.isValid()) toRemove.add(key);
+				if (!key.isValid()) {
+					toRemove.add(key);
+				}
 			}
 			for (int i = 0; i < toRemove.size(); i++) {
 				map.remove(toRemove.get(i));
@@ -142,7 +145,7 @@ public class IdentifierCacheHandler {
 			Iterator<Key> it = idMap.keySet().iterator();
 			while (it.hasNext()) {
 				Key key = it.next();
-				Object object = key.weakRef.get();
+				key.weakRef.get();
 			}
 		}
 	}

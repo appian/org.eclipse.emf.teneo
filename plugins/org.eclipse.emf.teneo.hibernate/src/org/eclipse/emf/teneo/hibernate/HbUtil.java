@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.16 2007/04/17 15:49:44 mtaal Exp $
+ * $Id: HbUtil.java,v 1.17 2007/06/29 07:31:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -49,7 +49,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class HbUtil {
 
@@ -58,18 +58,16 @@ public class HbUtil {
 
 	/** Encode the id of an eobject */
 	public static String idToString(EObject eobj, HbDataStore hd) {
-		final PersistentClass pc = hd.getPersistentClass(hd
-				.getPersistenceOptions().getEClassNameStrategy().toUniqueName(
-						eobj.eClass()));
+		final PersistentClass pc =
+				hd.getPersistentClass(hd.getPersistenceOptions().getEntityNameStrategy().toEntityName(eobj.eClass()));
 		if (pc == null) { // can happen with map entries
 			return null;
 		}
 		Object id;
 		if (eobj instanceof HibernateProxy) {
-			id = ((HibernateProxy)eobj).getHibernateLazyInitializer().getIdentifier();
+			id = ((HibernateProxy) eobj).getHibernateLazyInitializer().getIdentifier();
 		} else {
-			id = pc.getIdentifierProperty().getGetter(eobj.getClass())
-				.get(eobj);
+			id = pc.getIdentifierProperty().getGetter(eobj.getClass()).get(eobj);
 		}
 		if (id == null) {
 			id = IdentifierCacheHandler.getID(eobj);
@@ -81,7 +79,7 @@ public class HbUtil {
 		if (t instanceof PrimitiveType) {
 			return ((PrimitiveType) t).toString(id);
 		} else if (t instanceof StringType) {
-			return (String)id;
+			return (String) id;
 		}
 		return null;
 	}
@@ -89,9 +87,8 @@ public class HbUtil {
 	/** Encode the id of an eobject */
 	public static Object stringToId(EClass eclass, HbDataStore hd, String id) {
 		try {
-			final PersistentClass pc = hd.getPersistentClass(hd
-					.getPersistenceOptions().getEClassNameStrategy().toUniqueName(
-							eclass));
+			final PersistentClass pc =
+					hd.getPersistentClass(hd.getPersistenceOptions().getEntityNameStrategy().toEntityName(eclass));
 			final Type t = pc.getIdentifierProperty().getType();
 			if (t instanceof IdentifierType) {
 				return ((IdentifierType) t).stringToObject(id);
@@ -103,66 +100,60 @@ public class HbUtil {
 			throw new HbStoreException("Exception while converting id: " + id + " of eclass " + eclass.getName());
 		}
 	}
-	
+
 	/** Returns the correct accessor on the basis of the type of property */
-	public static PropertyAccessor getPropertyAccessor(Property mappedProperty,
-			HbDataStore ds, String entityName) {
+	public static PropertyAccessor getPropertyAccessor(Property mappedProperty, HbDataStore ds, String entityName) {
 		if (mappedProperty.getMetaAttribute(HbMapperConstants.ID_META) != null) { // synthetic
-																					// ID
+			// ID
 			return new IdentifierPropertyHandler();
-		} else if (mappedProperty
-				.getMetaAttribute(HbMapperConstants.VERSION_META) != null) {
+		} else if (mappedProperty.getMetaAttribute(HbMapperConstants.VERSION_META) != null) {
 			return ds.getHbContext().createVersionAccessor();
-		} else if (mappedProperty.getName().compareToIgnoreCase(
-				"_identifierMapper") == 0) { // name is used by hb
+		} else if (mappedProperty.getName().compareToIgnoreCase("_identifierMapper") == 0) { // name
+			// is
+			// used
+			// by
+			// hb
 			return new EmbeddedPropertyAccessor(); // new
 			// DummyPropertyHandler();
-		} else if (mappedProperty.getName().compareToIgnoreCase(
-				HbConstants.PROPERTY_ECONTAINER) == 0) {
+		} else if (mappedProperty.getName().compareToIgnoreCase(HbConstants.PROPERTY_ECONTAINER) == 0) {
 			return ds.getHbContext().createEContainerAccessor();
-		} else if (mappedProperty.getName().compareToIgnoreCase(
-				HbConstants.PROPERTY_ECONTAINER_FEATURE_ID) == 0) {
+		} else if (mappedProperty.getName().compareToIgnoreCase(HbConstants.PROPERTY_ECONTAINER_FEATURE_ID) == 0) {
 			return ds.getHbContext().createEContainerFeatureIDAccessor();
 		}
 
-		final EClass eClass = ds.getPersistenceOptions()
-				.getEClassNameStrategy()
-				.toEClass(entityName, ds.getEPackages());
-		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(
-				eClass, mappedProperty.getName());
+		final EClass eClass =
+				ds.getPersistenceOptions().getEntityNameStrategy().toEClass(entityName, ds.getEPackages());
+		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass, mappedProperty.getName());
 		;
 
 		if (efeature == null) {
-			throw new HbMapperException(
-					"Feature not found for eclass/entity/property "
-							+ eClass.getName() + "/" + entityName + "/"
-							+ mappedProperty.getName());
+			throw new HbMapperException("Feature not found for eclass/entity/property " + eClass.getName() + "/"
+					+ entityName + "/" + mappedProperty.getName());
 		}
 
-		log.debug("Creating property accessor for " + mappedProperty.getName()
-				+ "/" + entityName + "/" + efeature.getName());
+		log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + entityName + "/"
+				+ efeature.getName());
 
 		// check extra lazy
-		final boolean extraLazy = mappedProperty.getValue() instanceof Collection
-				&& ((Collection) mappedProperty.getValue()).isExtraLazy();
+		final boolean extraLazy =
+				mappedProperty.getValue() instanceof Collection
+						&& ((Collection) mappedProperty.getValue()).isExtraLazy();
 
 		if (FeatureMapUtil.isFeatureMap(efeature)) {
 			return ds.getHbContext().createFeatureMapPropertyAccessor(efeature);
 		} else if (efeature instanceof EReference) {
 			final EReference eref = (EReference) efeature;
 			if (eref.isMany()) {
-				return ds.getHbContext().createEListAccessor(efeature,
-						extraLazy,
-						ds.getPersistenceOptions().isMapEMapAsTrueMap());
+				return ds.getHbContext().createEListAccessor(efeature, extraLazy,
+					ds.getPersistenceOptions().isMapEMapAsTrueMap());
 			} else {
 				return ds.getHbContext().createEReferenceAccessor(eref);
 			}
 		} else {
 			final EAttribute eattr = (EAttribute) efeature;
 			if (eattr.isMany()) {
-				return ds.getHbContext().createEListAccessor(efeature,
-						extraLazy,
-						ds.getPersistenceOptions().isMapEMapAsTrueMap());
+				return ds.getHbContext().createEListAccessor(efeature, extraLazy,
+					ds.getPersistenceOptions().isMapEMapAsTrueMap());
 			} else {
 				// note also array types are going here!
 				return ds.getHbContext().createEAttributeAccessor(eattr);
@@ -172,10 +163,10 @@ public class HbUtil {
 
 	/** Returns the meta class uri, if not found then null is returned */
 	public static String getEClassNameFromFeatureMapMeta(PersistentClass pc) {
-		MetaAttribute ma = pc
-				.getMetaAttribute(HbMapperConstants.FEATUREMAP_META);
-		if (ma == null)
+		MetaAttribute ma = pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META);
+		if (ma == null) {
 			return null;
+		}
 		return ma.getValue();
 	}
 
@@ -196,24 +187,19 @@ public class HbUtil {
 	public static HbDataStore getCreateDataStore(Properties props) {
 		final String name = props.getProperty(Constants.PROP_NAME);
 		HbDataStore eds = HbHelper.INSTANCE.getDataStore(name);
-		if (eds != null)
+		if (eds != null) {
 			return eds;
+		}
 
 		final Properties hbProps = new Properties();
 		hbProps.putAll(props);
-		hbProps.put(Environment.USER, doTrim(props
-				.getProperty(Constants.PROP_DB_USER)));
-		hbProps.put(Environment.PASS, doTrim(props
-				.getProperty(Constants.PROP_DB_PWD)));
-		hbProps.put(Environment.DRIVER, doTrim(props
-				.getProperty(Constants.PROP_DB_DRIVER)));
-		hbProps.put(Environment.URL, doTrim(props
-				.getProperty(Constants.PROP_DB_URL)));
-		hbProps.put(Environment.DIALECT, doTrim(props
-				.getProperty(Constants.PROP_DB_DIALECT)));
+		hbProps.put(Environment.USER, doTrim(props.getProperty(Constants.PROP_DB_USER)));
+		hbProps.put(Environment.PASS, doTrim(props.getProperty(Constants.PROP_DB_PWD)));
+		hbProps.put(Environment.DRIVER, doTrim(props.getProperty(Constants.PROP_DB_DRIVER)));
+		hbProps.put(Environment.URL, doTrim(props.getProperty(Constants.PROP_DB_URL)));
+		hbProps.put(Environment.DIALECT, doTrim(props.getProperty(Constants.PROP_DB_DIALECT)));
 
-		EPackage[] epacks = StoreUtil.getEPackages(doTrim(props
-				.getProperty(Constants.PROP_EPACKAGE_NSURI)));
+		EPackage[] epacks = StoreUtil.getEPackages(doTrim(props.getProperty(Constants.PROP_EPACKAGE_NSURI)));
 
 		// create a EMF Data Store, this is retrieved later again
 		eds = HbHelper.INSTANCE.createRegisterDataStore(name);
@@ -226,8 +212,9 @@ public class HbUtil {
 
 	/** Convenience method */
 	private static String doTrim(String totrim) {
-		if (totrim == null)
+		if (totrim == null) {
 			return null;
+		}
 		return totrim.trim();
 	}
 }
