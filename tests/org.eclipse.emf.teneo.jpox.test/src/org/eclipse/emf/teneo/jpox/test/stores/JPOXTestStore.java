@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.teneo.ERuntime;
-import org.eclipse.emf.teneo.StoreException;
+import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.jpox.JpoxConstants;
 import org.eclipse.emf.teneo.jpox.JpoxDataStore;
@@ -54,7 +54,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -194,7 +194,7 @@ public class JPOXTestStore extends AbstractTestStore {
 	 * @see org.eclipse.emf.teneo.test.stores.TestStore#addEPackage(org.eclipse.emf.ecore.EPackage)
 	 */
 	public void addEPackage(EPackage epackage) {
-		throw new StoreException("Not supported");
+		throw new TeneoException("Not supported");
 	}
 
 	/*
@@ -203,7 +203,7 @@ public class JPOXTestStore extends AbstractTestStore {
 	 * @see org.eclipse.emf.teneo.test.stores.TestStore#updateSchema()
 	 */
 	public void updateSchema() {
-		throw new StoreException("Not supported");
+		throw new TeneoException("Not supported");
 	}
 
 	/** Creates a new persistence manager, actually to clear the cache */

@@ -1,17 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: JPOXTestbed.java,v 1.39 2007/03/30 19:50:15 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * JPOXTestbed.java,v 1.39 2007/03/30 19:50:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test;
@@ -23,7 +15,6 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.jpox.JpoxHelper;
@@ -40,16 +31,15 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.39 $
+ * @version $Revision: 1.40 $
  */
 public class JPOXTestbed extends Testbed {
-	
+
 	/** The logger */
 	private static final Log log = LogFactory.getLog(JPOXTestbed.class);
 
 	/** The logger for this class */
-	//private static Log log = LogFactory.getLog(JPOXTestbed.class);
-
+	// private static Log log = LogFactory.getLog(JPOXTestbed.class);
 	/** The property file to use */
 	private static final String propFileName;
 
@@ -59,11 +49,10 @@ public class JPOXTestbed extends Testbed {
 	}
 
 	/** The logger */
-//	private static Log log = LogFactory.getLog(JPOXTestbed.class);
-
+	// private static Log log = LogFactory.getLog(JPOXTestbed.class);
 	/** Is set to true if running on the emft server */
 	private static boolean runningOnEMFTServer = false;
-	
+
 	/**
 	 * The directory in which the mapping files are generated TODO make insesitive to user.dir
 	 */
@@ -83,23 +72,23 @@ public class JPOXTestbed extends Testbed {
 				} else {
 					// error will be thrown later because class initialization errors are sometimes
 					// difficult to find
-					log.error("Directory for jdo files does not exist! " + pluginsDir.getAbsolutePath() + 
-							File.separator + "org.eclipse.emf.teneo.jpox.test....");					
+					log.error("Directory for jdo files does not exist! " + pluginsDir.getAbsolutePath()
+							+ File.separator + "org.eclipse.emf.teneo.jpox.test....");
 				}
 			} else {
 				propFileName = "/local_test.properties";
 			}
-			Testbed.setTestBed(new JPOXTestbed());			
+			Testbed.setTestBed(new JPOXTestbed());
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while checking directory " + RUN_BASE_DIR, e);
 		}
 	}
-	
+
 	/** True if running on emft server */
 	public static boolean isRunningOnEMFTServer() {
 		return runningOnEMFTServer;
 	}
-	
+
 	/** The factory responsible for creating a store */
 	private JPOXTestStoreFactory storeFactory;
 
@@ -113,8 +102,8 @@ public class JPOXTestbed extends Testbed {
 	public void doMapping(AbstractTest testCase) {
 		try {
 			final File mappingFile = getMappingFile(testCase, getActiveConfiguration());
-			generateMappingFile(testCase, mappingFile, getActiveConfiguration().isOptimistic(), getActiveConfiguration()
-					.getMappingStrategy());
+			generateMappingFile(testCase, mappingFile, getActiveConfiguration().isOptimistic(),
+				getActiveConfiguration().getMappingStrategy());
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while doing mapping", e);
 		}
@@ -123,6 +112,7 @@ public class JPOXTestbed extends Testbed {
 	/**
 	 * Request a store for the given configuration.
 	 */
+	@Override
 	public TestStore createStore(AbstractTest testCase) {
 		System.err.println("RUNNING TEST " + testCase.getName() + " - " + getActiveConfiguration().getName());
 		try {
@@ -132,10 +122,12 @@ public class JPOXTestbed extends Testbed {
 			}
 
 			File mappingFile = getMappingFile(testCase, getActiveConfiguration());
-			//copyMappingToClassesDir(testCase, mappingFile, getActiveConfiguration().isOptimistic());
+			// copyMappingToClassesDir(testCase, mappingFile,
+			// getActiveConfiguration().isOptimistic());
 
-			final TestStore store = storeFactory.get(getDbName(testCase, getActiveConfiguration()), testCase
-					.getEPackages(), mappingFile, getActiveConfiguration(), testCase.getExtraConfigurationProperties());
+			final TestStore store =
+					storeFactory.get(getDbName(testCase, getActiveConfiguration()), testCase.getEPackages(),
+						mappingFile, getActiveConfiguration(), testCase.getExtraConfigurationProperties());
 
 			// setup store
 			getActiveConfiguration().getDbAdapter().setDbName(getDbName(testCase, getActiveConfiguration()));
@@ -166,8 +158,9 @@ public class JPOXTestbed extends Testbed {
 	 */
 	protected void generateMappingFile(AbstractTest test, File mappingFile, boolean optimistic,
 			InheritanceType inheritanceType) {
-		if (test.getEPackages() == null)
+		if (test.getEPackages() == null) {
 			return; // only support tests with epackages
+		}
 
 		try {
 			if (mappingFile.exists()) {
@@ -186,20 +179,25 @@ public class JPOXTestbed extends Testbed {
 
 			options.put(PersistenceOptions.INHERITANCE_MAPPING, inheritanceType.getName());
 			options.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
+			// options.put(PersistenceOptions.QUALIFY_ENTITY_NAME,
+			// PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
+
 			fileWriter.write(JpoxHelper.INSTANCE.generateMapping(test.getEPackages(), options));
 			fileWriter.close();
 
 			// now copy the file to the samples plugin
 			final File projectDir = mappingFile.getParentFile().getParentFile().getParentFile().getParentFile();
-			final File samplesProject = new File (projectDir, "org.eclipse.emf.teneo.samples");
+			final File samplesProject = new File(projectDir, "org.eclipse.emf.teneo.samples");
 			final File jdoFiles = new File(samplesProject, "jdofiles");
 			if (!jdoFiles.exists()) {
 				jdoFiles.mkdirs();
 			}
 			// just choose a name based on one of the classes in the package
-			final String fileName = ((EClassifier)test.getEPackages()[0].getEClassifiers().get(0)).getInstanceClassName() + ".jdo";
+			final String fileName = (test.getEPackages()[0].getEClassifiers().get(0)).getInstanceClassName() + ".jdo";
 			final File jdoFile = new File(jdoFiles, fileName);
-			if (jdoFile.exists()) jdoFile.delete();
+			if (jdoFile.exists()) {
+				jdoFile.delete();
+			}
 			jdoFile.createNewFile();
 			StoreUtil.copyFile(mappingFile, jdoFile);
 
@@ -215,8 +213,8 @@ public class JPOXTestbed extends Testbed {
 		// will not the package.JPOX
 		// for superclass A because it will always search for package.jdo
 		try {
-			//File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
-			JPOXEnhancer.main(new String[] { mappingFile.getAbsolutePath()});
+			// File destination = copyMappingToClassesDir(test, mappingFile, optimistic);
+			JPOXEnhancer.main(new String[] { mappingFile.getAbsolutePath() });
 		} catch (Exception e) {
 			System.err.println("JDO FILE: " + mappingFile.getAbsolutePath());
 			throw new StoreTestException("Exception while enhancing", e);
