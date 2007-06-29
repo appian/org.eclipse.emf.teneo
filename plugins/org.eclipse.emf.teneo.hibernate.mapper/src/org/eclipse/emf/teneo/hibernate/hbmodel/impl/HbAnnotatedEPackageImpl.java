@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEPackageImpl.java,v 1.5 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotatedEPackageImpl.java,v 1.6 2007/06/29 07:31:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -47,7 +47,7 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GenericGenerator> hbGenericGenerators = null;
+	protected EList<GenericGenerator> hbGenericGenerators;
 
 	/**
 	 * The cached value of the '{@link #getHbTypeDef() <em>Hb Type Def</em>}' containment reference list. <!--
@@ -57,7 +57,7 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TypeDef> hbTypeDef = null;
+	protected EList<TypeDef> hbTypeDef;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

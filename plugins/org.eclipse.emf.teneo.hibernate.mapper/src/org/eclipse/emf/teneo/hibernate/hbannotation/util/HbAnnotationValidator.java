@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationValidator.java,v 1.8 2007/03/29 15:00:46 mtaal Exp $
+ * $Id: HbAnnotationValidator.java,v 1.9 2007/06/29 07:31:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -148,6 +148,8 @@ public class HbAnnotationValidator extends EObjectValidator {
 				return validateOnDelete((OnDelete)value, diagnostics, context);
 			case HbAnnotationPackage.PROXY:
 				return validateProxy((Proxy)value, diagnostics, context);
+			case HbAnnotationPackage.INDEX:
+				return validateIndex((Index)value, diagnostics, context);
 			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			case HbAnnotationPackage.HB_FETCH_TYPE:
@@ -462,6 +464,24 @@ public class HbAnnotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(proxy, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(proxy, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(proxy, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIndex(Index index, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(index, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(index, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(index, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(index, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(index, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(index, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(index, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(index, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(index, diagnostics, context);
 		return result;
 	}
 

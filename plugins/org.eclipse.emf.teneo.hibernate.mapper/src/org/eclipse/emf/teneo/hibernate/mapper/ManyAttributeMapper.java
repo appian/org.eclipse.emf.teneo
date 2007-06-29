@@ -1,18 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- *   Davide Marchignoli
- * </copyright>
- *
- * $Id: ManyAttributeMapper.java,v 1.8 2007/03/18 19:19:44 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
+ * </copyright> $Id: ManyAttributeMapper.java,v 1.9 2007/06/29 07:31:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -34,7 +25,6 @@ import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * Maps many valued attributes.
- * 
  * <p>
  * Assumes that the given {@link PAnnotatedEAttribute} is normal, i.e.
  * <ul>
@@ -66,27 +56,29 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 	 * Process a many=true EAttribute
 	 */
 	public void processManyAttribute(PAnnotatedEAttribute paAttribute) {
-		if (log.isDebugEnabled())
+		if (log.isDebugEnabled()) {
 			log.debug("Generating many valued attribute mapping for " + paAttribute);
+		}
 
 		final HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
 		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
 
-		final boolean isArray = eattr.getEType().getInstanceClass() != null
-				&& eattr.getEType().getInstanceClass().isArray();
+		final boolean isArray =
+				eattr.getEType().getInstanceClass() != null && eattr.getEType().getInstanceClass().isArray();
 
 		final Element collElement = addCollectionElement(paAttribute);
 		final Element keyElement = collElement.addElement("key");
 
 		final JoinTable jt = paAttribute.getJoinTable();
-		final List<JoinColumn> jcs = paAttribute.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paAttribute.getJoinColumns();
+		final List<JoinColumn> jcs =
+				paAttribute.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paAttribute.getJoinColumns();
 		final OneToMany otm = paAttribute.getOneToMany();
 
 		if (jt != null) {
 			addJoinTable(collElement, keyElement, jt);
 		} else {
 			// TODO should we also add joinColumns annotation?
-			addKeyColumns(keyElement, jcs);
+			addKeyColumns(null, keyElement, jcs);
 		}
 
 		if (!otm.isIndexed() && isArray) {
@@ -107,7 +99,8 @@ class ManyAttributeMapper extends AbstractAssociationMapper {
 			getHbmContext().addFeatureMapMapper(fmm);
 			collElement.addElement("one-to-many").addAttribute("entity-name", fmm.getEntityName());
 		} else {
-			addElementElement(collElement, eattr.getName(), paAttribute, getColumns(paAttribute), otm.getTargetEntity());
+			addElementElement(paAttribute, collElement, eattr.getName(), paAttribute, getColumns(paAttribute), otm
+				.getTargetEntity());
 		}
 	}
 }

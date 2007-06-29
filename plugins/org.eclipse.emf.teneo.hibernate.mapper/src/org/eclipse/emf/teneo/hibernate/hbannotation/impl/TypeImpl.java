@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeImpl.java,v 1.3 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: TypeImpl.java,v 1.4 2007/06/29 07:31:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -51,7 +51,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * @generated
 	 * @ordered
 	 */
-	protected EModelElement eModelElement = null;
+	protected EModelElement eModelElement;
 
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -81,7 +81,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Parameter> parameters = null;
+	protected EList<Parameter> parameters;
 
 	/**
 	 * <!-- begin-user-doc -->

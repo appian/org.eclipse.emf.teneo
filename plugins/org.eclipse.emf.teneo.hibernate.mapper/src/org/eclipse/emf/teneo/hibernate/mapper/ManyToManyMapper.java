@@ -1,18 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- *   Davide Marchignoli
- * </copyright>
- *
- * $Id: ManyToManyMapper.java,v 1.11 2007/04/17 15:49:50 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
+ * </copyright> $Id: ManyToManyMapper.java,v 1.12 2007/06/29 07:31:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -59,30 +50,26 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		final ManyToMany mtm = hbReference.getManyToMany();
 
 		if (jt == null) {
-			throw new MappingException("Jointable is mandatory "
-					+ StoreUtil.toString(eref));
+			throw new MappingException("Jointable is mandatory " + StoreUtil.toString(eref));
 		}
 
 		final Element collElement = addCollectionElement(hbReference);
 
 		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
-			addCacheElement(collElement, ((HbAnnotatedEReference) paReference)
-					.getHbCache());
+			addCacheElement(collElement, ((HbAnnotatedEReference) paReference).getHbCache());
 		}
 
 		final Element keyElement = collElement.addElement("key");
 		handleOndelete(keyElement, hbReference.getHbOnDelete());
 
-		boolean isMap = StoreUtil.isMap(eref)
-				&& getHbmContext().isMapEMapAsTrueMap();
-		if (mtm.isIndexed()) {
+		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();
+		if (mtm.isIndexed() && hbReference.getHbIdBag() == null) {
 			// now we check if it is a list or a map
 			if (hbReference.getMapKey() != null) {
 				addMapKey(collElement, paReference, hbReference.getMapKey());
 			} else if (isMap) {
 				addMapKey(collElement, hbReference);
 			} else {
-				assert (hbReference.getHbIdBag() == null);
 				addListIndex(collElement, hbReference);
 			}
 		}
@@ -90,26 +77,23 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 		addFetchType(collElement, mtm.getFetch(), false);
 		addCascades(collElement, mtm.getCascade(), false);
 
-		final PAnnotatedEClass referedToAClass = hbReference
-				.getAReferenceType();
+		final PAnnotatedEClass referedToAClass = hbReference.getAReferenceType();
 		String targetName = mtm.getTargetEntity();
 		if (targetName == null) {
-			targetName = getHbmContext().getEntityName(
-					hbReference.getEReferenceType());
+			targetName = getHbmContext().getEntityName(hbReference.getEReferenceType());
 		}
 		log.debug("Target entity-name " + targetName);
 
 		final Element mtmElement;
-		if (referedToAClass.isOnlyMapAsEntity()
-				|| !getHbmContext().forceUseOfInstance(referedToAClass)) {
-			mtmElement = collElement.addElement("many-to-many").addAttribute(
-					"entity-name", targetName).addAttribute("unique", "false");
+		if (referedToAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedToAClass)) {
+			mtmElement =
+					collElement.addElement("many-to-many").addAttribute("entity-name", targetName).addAttribute(
+						"unique", "false");
 		} else {
-			mtmElement = collElement.addElement("many-to-many").addAttribute(
-					"class",
-					getHbmContext().getInstanceClassName(
-							hbReference.getEReferenceType())).addAttribute(
-					"unique", "false");
+			mtmElement =
+					collElement.addElement("many-to-many").addAttribute("class",
+						getHbmContext().getInstanceClassName(hbReference.getEReferenceType())).addAttribute("unique",
+						"false");
 		}
 
 		// inverse is not supported by indexed lists
@@ -117,18 +101,15 @@ class ManyToManyMapper extends AbstractAssociationMapper {
 			collElement.addAttribute("inverse", "true");
 		} else if (mtm.getMappedBy() != null && !mtm.isIndexed()) {
 			log
-					.warn("Indexed is true but indexed is not supported for inverse=true and many-to-many, not setting inverse=true");
+				.warn("Indexed is true but indexed is not supported for inverse=true and many-to-many, not setting inverse=true");
 		}
 
 		addJoinTable(collElement, keyElement, jt);
 		if (jt.getInverseJoinColumns() != null) {
 			for (JoinColumn joinColumn : jt.getInverseJoinColumns()) {
-				mtmElement.addElement("column").addAttribute("name",
-						getHbmContext().trunc(joinColumn.getName()))
-						.addAttribute("not-null",
-								joinColumn.isNullable() ? "false" : "true")
-						.addAttribute("unique",
-								joinColumn.isUnique() ? "true" : "false");
+				mtmElement.addElement("column").addAttribute("name", getHbmContext().trunc(joinColumn.getName()))
+					.addAttribute("not-null", joinColumn.isNullable() ? "false" : "true").addAttribute("unique",
+						joinColumn.isUnique() ? "true" : "false");
 			}
 		}
 	}

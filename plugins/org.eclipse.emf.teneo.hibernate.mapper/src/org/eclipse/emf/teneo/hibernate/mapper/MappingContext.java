@@ -1,25 +1,15 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- *   Davide Marchignoli
- * </copyright>
- *
- * $Id: MappingContext.java,v 1.17 2007/04/17 15:49:50 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
+ * </copyright> $Id: MappingContext.java,v 1.18 2007/06/29 07:31:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -35,17 +25,17 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
-import org.eclipse.emf.teneo.ecore.EClassNameStrategy;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
+import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.Element;
-import org.eclipse.emf.teneo.util.SQLCaseStrategy;
 
 /**
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class MappingContext extends AbstractProcessingContext {
 
@@ -59,8 +49,7 @@ public class MappingContext extends AbstractProcessingContext {
 	private Map<EClass, String> entityNames = null;
 
 	/**
-	 * Keeps track of the list of featuremapmappers created for the current
-	 * entity
+	 * Keeps track of the list of featuremapmappers created for the current entity
 	 */
 	private final List<FeatureMapMapping> featureMapMappers = new ArrayList<FeatureMapMapping>();
 
@@ -71,9 +60,8 @@ public class MappingContext extends AbstractProcessingContext {
 	private final FeatureMapper featureMapper;
 
 	/**
-	 * Is the current element a mixed or a feature map, in this case all
-	 * features should be not required. TODO: check, does this work with
-	 * embedded components in a feature map?
+	 * Is the current element a mixed or a feature map, in this case all features should be not
+	 * required. TODO: check, does this work with embedded components in a feature map?
 	 */
 	private boolean currentElementFeatureMap = false;
 
@@ -93,7 +81,7 @@ public class MappingContext extends AbstractProcessingContext {
 	private final EntityMapper entityMapper;
 
 	/** The option to qualify entity names */
-	private EClassNameStrategy eclassNameStrategy = null;
+	private EntityNameStrategy entityNameStrategy = null;
 
 	/** Version column name */
 	private String versionColumnName = null;
@@ -105,15 +93,14 @@ public class MappingContext extends AbstractProcessingContext {
 	private int maximumSqlNameLength = -1;
 
 	/** The sql case strategy */
-	private SQLCaseStrategy sqlCaseStrategy;
+	private SQLNameStrategy sqlNameStrategy;
 
-	/** 
-	 * Set force optional, force optional is used in case a subclass is stored 
-	 * in the same table as its superclass, in this case all properties of the 
-	 * subclass are denoted as optional.
+	/**
+	 * Set force optional, force optional is used in case a subclass is stored in the same table as
+	 * its superclass, in this case all properties of the subclass are denoted as optional.
 	 */
 	private boolean forceOptional = false;
-	
+
 	// Options
 	private boolean alwaysVersion;
 	private boolean isMapEMapAsTrueMap;
@@ -121,7 +108,7 @@ public class MappingContext extends AbstractProcessingContext {
 
 	// The pa model for which this is all done, is set when generation starts
 	private PAnnotatedModel paModel = null;
-	
+
 	/** The constructor */
 	public MappingContext() {
 		featureMapper = createFeatureMapper();
@@ -135,11 +122,11 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** Set relevant properties */
 	void setMappingProperties(PersistenceOptions po) {
-		eclassNameStrategy = po.getEClassNameStrategy();
+		entityNameStrategy = po.getEntityNameStrategy();
 		versionColumnName = po.getVersionColumnName();
 		idColumnName = po.getIdColumnName();
 		maximumSqlNameLength = po.getMaximumSqlNameLength();
-		sqlCaseStrategy = po.getSQLCaseStrategy();
+		sqlNameStrategy = po.getSQLNameStrategy();
 		alwaysVersion = po.getAlwaysVersion();
 		isMapEMapAsTrueMap = po.isMapEMapAsTrueMap();
 		idbagIDColumnName = po.getIDBagIDColumnName();
@@ -171,17 +158,16 @@ public class MappingContext extends AbstractProcessingContext {
 	 * @return Returns the entity name for the given entity EClass.
 	 */
 	public String getEntityName(EClass entityEClass, boolean throwCheckException) {
-		String name = (String) entityNames.get(entityEClass);
+		String name = entityNames.get(entityEClass);
 		if (name == null) {
 			final Class<?> implClass = getInstanceClass(entityEClass);
 			if (implClass != null) {
 				name = implClass.getName();
 			}
 		}
-		if (throwCheckException && name == null)
-			throw new IllegalStateException(
-					"An entity name has not been registered for "
-							+ entityEClass);
+		if (throwCheckException && name == null) {
+			throw new IllegalStateException("An entity name has not been registered for " + entityEClass);
+		}
 		return name;
 	}
 
@@ -222,8 +208,9 @@ public class MappingContext extends AbstractProcessingContext {
 	 * @return the featureMapMappers gathered during the entity processing
 	 */
 	public List<FeatureMapMapping> getClearFeatureMapMappers() {
-		final ArrayList<FeatureMapMapping> result = new ArrayList<FeatureMapMapping>(
-				featureMapMappers); // clone the list!
+		final ArrayList<FeatureMapMapping> result = new ArrayList<FeatureMapMapping>(featureMapMappers); // clone
+		// the
+		// list!
 		featureMapMappers.clear();
 		return result;
 	}
@@ -233,8 +220,7 @@ public class MappingContext extends AbstractProcessingContext {
 	 *            a featureMapMapper to the featuremapp mapper list
 	 */
 	public void addFeatureMapMapper(FeatureMapMapping featureMapMapper) {
-		if (!handledFeatureMapEAttributes.contains(featureMapMapper
-				.getEAttribute())) {
+		if (!handledFeatureMapEAttributes.contains(featureMapMapper.getEAttribute())) {
 			featureMapMappers.add(featureMapMapper);
 			handledFeatureMapEAttributes.add(featureMapMapper.getEAttribute());
 		}
@@ -260,9 +246,8 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** process the features of the annotated eclass */
 	protected void processFeatures(List<PAnnotatedEStructuralFeature> features) {
-		for (Iterator<PAnnotatedEStructuralFeature> i = features.iterator(); i
-				.hasNext();) {
-			entityMapper.processFeature(i.next());
+		for (PAnnotatedEStructuralFeature annotatedEStructuralFeature : features) {
+			entityMapper.processFeature(annotatedEStructuralFeature);
 		}
 	}
 
@@ -326,8 +311,7 @@ public class MappingContext extends AbstractProcessingContext {
 		// NOTE: Hibernate does not support one column being part of multiple
 		// unique constraints.
 		for (int i = 0, n = uniqueConstraints.size(); i < n; i++) {
-			UniqueConstraint uniqueConstraint = (UniqueConstraint) uniqueConstraints
-					.get(i);
+			UniqueConstraint uniqueConstraint = uniqueConstraints.get(i);
 			if (uniqueConstraint.getColumnNames().contains(colName)) {
 				return "c" + i;
 			}
@@ -364,13 +348,11 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/**
-	 * Utilit method to truncate a column/table name. This method also repairs
-	 * the name if an efeature was inherited and really belongs to another
-	 * eclass. In this case jointables and join keys must be renamed to the new
-	 * eclass. 
-	 * TODO: handle the case that the jointable/columns were set
-	 * manually. This procedure will override them (only applies in case of
-	 * multiple inheritance/mappedsuperclass).
+	 * Utilit method to truncate a column/table name. This method also repairs the name if an
+	 * efeature was inherited and really belongs to another eclass. In this case jointables and join
+	 * keys must be renamed to the new eclass. TODO: handle the case that the jointable/columns were
+	 * set manually. This procedure will override them (only applies in case of multiple
+	 * inheritance/mappedsuperclass).
 	 */
 	String trunc(String truncName, boolean truncSuffix) {
 		final String useName;
@@ -379,24 +361,25 @@ public class MappingContext extends AbstractProcessingContext {
 				&& currentEFeature.getEContainingClass() != currentEClass
 				&& getEntityName(currentEFeature.getEContainingClass(), false) != null
 				&& truncName.toUpperCase().startsWith(
-						getEntityName(currentEFeature.getEContainingClass())
-								.toUpperCase())) {
+					getEntityName(currentEFeature.getEContainingClass()).toUpperCase())) {
 			log.debug("Replacing name of table/joincolumn " + truncName);
 			// get rid of the first part
-			useName = getEntityName(currentEClass)
-					+ truncName.substring(getEntityName(
-							currentEFeature.getEContainingClass()).length());
+			useName =
+					getEntityName(currentEClass)
+							+ truncName.substring(getEntityName(currentEFeature.getEContainingClass()).length());
 			log.debug("with " + useName + " because efeature is inherited");
 			log
-					.debug("This renaming does not work in case of manually specified joincolumn/table names and mappedsuperclass or multiple inheritance!");
+				.debug("This renaming does not work in case of manually specified joincolumn/table names and mappedsuperclass or multiple inheritance!");
 		} else {
 			useName = truncName;
 		}
 
-		if (maximumSqlNameLength == -1)
-			return escape(escape(useName));
-		if (useName.length() < maximumSqlNameLength)
-			return escape(escape(useName));
+		if (maximumSqlNameLength == -1) {
+			return escape(useName);
+		}
+		if (useName.length() < maximumSqlNameLength) {
+			return escape(useName);
+		}
 
 		// truncate the part before the last _ because this is often the suffix
 		final int underscore = useName.lastIndexOf('_');
@@ -405,9 +388,7 @@ public class MappingContext extends AbstractProcessingContext {
 			if ((maximumSqlNameLength - usStr.length()) < 0) {
 				return escape(useName);
 			}
-			return escape(useName.substring(0, maximumSqlNameLength
-					- usStr.length())
-					+ usStr);
+			return escape(useName.substring(0, maximumSqlNameLength - usStr.length()) + usStr);
 		}
 
 		return escape(useName.substring(0, maximumSqlNameLength));
@@ -416,10 +397,10 @@ public class MappingContext extends AbstractProcessingContext {
 	/** Escape the column name */
 	String escape(String name) {
 		if (name.indexOf('`') == 0) {
-			return sqlCaseStrategy.convert(name);
+			return sqlNameStrategy.convert(name);
 		}
 
-		return "`" + sqlCaseStrategy.convert(name) + "`";
+		return "`" + sqlNameStrategy.convert(name) + "`";
 	}
 
 	/**
@@ -458,58 +439,48 @@ public class MappingContext extends AbstractProcessingContext {
 	public boolean isDynamic(EClassifier eclassifier) {
 		return !EModelResolver.instance().hasImplementationClass(eclassifier);
 	}
-	
-	/** 
-	 * Use the implementation name as the mapping and never use entity-mapping, always false
-	 * in this implementation 
+
+	/**
+	 * Use the implementation name as the mapping and never use entity-mapping, always false in this
+	 * implementation
 	 */
 	public boolean forceUseOfInstance(PAnnotatedEClass aclass) {
 		return false;
 	}
-	
-	/** Returns true if the instance classes have been generated by emf. For Teneo 
-	 * this is always the case. Overriders can support a different generation strategy.
+
+	/**
+	 * Returns true if the instance classes have been generated by emf. For Teneo this is always the
+	 * case. Overriders can support a different generation strategy.
 	 */
 	public boolean isGeneratedByEMF() {
 		return true;
 	}
-	
+
 	/**
-	 * There are four cases: EMF generated, EMF Dynamic, Easy EMF Generated,
-	 * Easy EMF Dynamic
-	public boolean isEasyEMFGenerated(EClassifier eclassifier) {
-		return EModelResolver.instance().hasImplementationClass(eclassifier);
-	}
-
-	public boolean isEasyEMFDynamic(EClassifier eclassifier) {
-		return !isEasyEMFGenerated(eclassifier)
-				&& EModelResolver.instance().isRegistered(
-						eclassifier.getEPackage());
-	}
-
-	public boolean isEMFGenerated(EClassifier eclassifier) {
-		return eclassifier.getInstanceClass() != null;
-	}
+	 * There are four cases: EMF generated, EMF Dynamic, Easy EMF Generated, Easy EMF Dynamic public
+	 * boolean isEasyEMFGenerated(EClassifier eclassifier) { return
+	 * EModelResolver.instance().hasImplementationClass(eclassifier); } public boolean
+	 * isEasyEMFDynamic(EClassifier eclassifier) { return !isEasyEMFGenerated(eclassifier) &&
+	 * EModelResolver.instance().isRegistered( eclassifier.getEPackage()); } public boolean
+	 * isEMFGenerated(EClassifier eclassifier) { return eclassifier.getInstanceClass() != null; }
 	 */
-//
-//	public boolean isEMFDynamic(EClassifier eclassifier) {
-//		return !isEasyEMFDynamic(eclassifier) && !isEMFGenerated(eclassifier);
-//	}
-//
-//	/** Return the impl class */
-//	public Class<?> getImpl(EClassifier eclassifier) {
-//		return EModelResolver.instance().getJavaClass(eclassifier);
-//	}
-//
-//	/** Check if this is an entity (so without an impl class) */
-//	public boolean hasImpl(PAnnotatedEStructuralFeature af) {
-//		return EModelResolver.instance().hasImplementationClass(
-//				af.getAnnotatedEStructuralFeature().getEContainingClass());
-//	}
-
+	//
+	// public boolean isEMFDynamic(EClassifier eclassifier) {
+	// return !isEasyEMFDynamic(eclassifier) && !isEMFGenerated(eclassifier);
+	// }
+	//
+	// /** Return the impl class */
+	// public Class<?> getImpl(EClassifier eclassifier) {
+	// return EModelResolver.instance().getJavaClass(eclassifier);
+	// }
+	//
+	// /** Check if this is an entity (so without an impl class) */
+	// public boolean hasImpl(PAnnotatedEStructuralFeature af) {
+	// return EModelResolver.instance().hasImplementationClass(
+	// af.getAnnotatedEStructuralFeature().getEContainingClass());
+	// }
 	/** Add a tuplizer element or not */
-	public void addTuplizerElement(Element entityElement,
-			PAnnotatedEClass aclass) {
+	public void addTuplizerElement(Element entityElement, PAnnotatedEClass aclass) {
 	}
 
 	/** Returns the enumusertype class name */
@@ -551,12 +522,12 @@ public class MappingContext extends AbstractProcessingContext {
 	public String getXSDDateTimeUserType() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime";
 	}
-	
+
 	/**
 	 * @return the eclassNameStrategy
 	 */
-	public EClassNameStrategy getEClassNameStrategy() {
-		return eclassNameStrategy;
+	public EntityNameStrategy getEntityNameStrategy() {
+		return entityNameStrategy;
 	}
 
 	/**
@@ -565,7 +536,7 @@ public class MappingContext extends AbstractProcessingContext {
 	public boolean isMapEMapAsTrueMap() {
 		return isMapEMapAsTrueMap;
 	}
-	
+
 	/**
 	 * @return the currentEClass
 	 */
@@ -611,7 +582,8 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/**
-	 * @param forceOptional the forceOptional to set
+	 * @param forceOptional
+	 *            the forceOptional to set
 	 */
 	public void setForceOptional(boolean forceOptional) {
 		this.forceOptional = forceOptional;
@@ -625,7 +597,8 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/**
-	 * @param paModel the paModel to set
+	 * @param paModel
+	 *            the paModel to set
 	 */
 	public void setPaModel(PAnnotatedModel paModel) {
 		this.paModel = paModel;

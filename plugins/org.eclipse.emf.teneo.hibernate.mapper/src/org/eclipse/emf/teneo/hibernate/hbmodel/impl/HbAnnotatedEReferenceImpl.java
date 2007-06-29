@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReferenceImpl.java,v 1.7 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: HbAnnotatedEReferenceImpl.java,v 1.8 2007/06/29 07:31:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
@@ -43,6 +44,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbColumns <em>Hb Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCascade <em>Hb Cascade</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbIdBag <em>Hb Id Bag</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbIndex <em>Hb Index</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbFetch <em>Hb Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
@@ -66,7 +68,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected Where hbWhere = null;
+	protected Where hbWhere;
 
 	/**
 	 * The cached value of the '{@link #getHbCollectionOfElements() <em>Hb Collection Of Elements</em>}' containment reference.
@@ -75,7 +77,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected CollectionOfElements hbCollectionOfElements = null;
+	protected CollectionOfElements hbCollectionOfElements;
 
 	/**
 	 * The cached value of the '{@link #getHbMapKey() <em>Hb Map Key</em>}' containment reference.
@@ -85,7 +87,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected MapKey hbMapKey = null;
+	protected MapKey hbMapKey;
 
 	/**
 	 * The cached value of the '{@link #getHbColumns() <em>Hb Columns</em>}' containment reference list. <!--
@@ -95,7 +97,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Column> hbColumns = null;
+	protected EList<Column> hbColumns;
 
 	/**
 	 * The cached value of the '{@link #getHbCascade() <em>Hb Cascade</em>}' containment reference. <!--
@@ -105,7 +107,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected Cascade hbCascade = null;
+	protected Cascade hbCascade;
 
 	/**
 	 * The cached value of the '{@link #getHbIdBag() <em>Hb Id Bag</em>}' containment reference.
@@ -115,7 +117,17 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected IdBag hbIdBag = null;
+	protected IdBag hbIdBag;
+
+	/**
+	 * The cached value of the '{@link #getHbIndex() <em>Hb Index</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbIndex()
+	 * @generated
+	 * @ordered
+	 */
+	protected Index hbIndex;
 
 	/**
 	 * The cached value of the '{@link #getHbCache() <em>Hb Cache</em>}' containment reference.
@@ -125,7 +137,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected Cache hbCache = null;
+	protected Cache hbCache;
 
 	/**
 	 * The cached value of the '{@link #getHbFetch() <em>Hb Fetch</em>}' reference.
@@ -135,7 +147,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected Fetch hbFetch = null;
+	protected Fetch hbFetch;
 
 	/**
 	 * The cached value of the '{@link #getHbOnDelete() <em>Hb On Delete</em>}' reference.
@@ -145,7 +157,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected OnDelete hbOnDelete = null;
+	protected OnDelete hbOnDelete;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -376,6 +388,44 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Index getHbIndex() {
+		if (hbIndex != null && hbIndex.eIsProxy()) {
+			InternalEObject oldHbIndex = (InternalEObject)hbIndex;
+			hbIndex = (Index)eResolveProxy(oldHbIndex);
+			if (hbIndex != oldHbIndex) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX, oldHbIndex, hbIndex));
+			}
+		}
+		return hbIndex;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Index basicGetHbIndex() {
+		return hbIndex;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHbIndex(Index newHbIndex) {
+		Index oldHbIndex = hbIndex;
+		hbIndex = newHbIndex;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX, oldHbIndex, hbIndex));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -535,6 +585,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return getHbCascade();
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
 				return getHbIdBag();
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX:
+				if (resolve) return getHbIndex();
+				return basicGetHbIndex();
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return getHbCache();
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
@@ -574,6 +627,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
 				setHbIdBag((IdBag)newValue);
 				return;
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX:
+				setHbIndex((Index)newValue);
+				return;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				setHbCache((Cache)newValue);
 				return;
@@ -612,6 +668,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
 				setHbIdBag((IdBag)null);
 				return;
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX:
+				setHbIndex((Index)null);
+				return;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				setHbCache((Cache)null);
 				return;
@@ -644,6 +703,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return hbCascade != null;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
 				return hbIdBag != null;
+			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX:
+				return hbIndex != null;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return hbCache != null;
 			case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
@@ -673,6 +734,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS: return HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_COLUMNS;
 				case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CASCADE: return HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_CASCADE;
 				case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG: return HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG;
+				case HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX: return HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX;
 				default: return -1;
 			}
 		}
@@ -698,6 +760,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_COLUMNS: return HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS;
 				case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_CASCADE: return HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_CASCADE;
 				case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG: return HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG;
+				case HbModelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX: return HbModelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX;
 				default: return -1;
 			}
 		}

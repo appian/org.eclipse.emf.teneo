@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CacheImpl.java,v 1.4 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: CacheImpl.java,v 1.5 2007/06/29 07:31:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -48,7 +48,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	 * @generated
 	 * @ordered
 	 */
-	protected EModelElement eModelElement = null;
+	protected EModelElement eModelElement;
 
 	/**
 	 * The default value of the '{@link #getUsage() <em>Usage</em>}' attribute.

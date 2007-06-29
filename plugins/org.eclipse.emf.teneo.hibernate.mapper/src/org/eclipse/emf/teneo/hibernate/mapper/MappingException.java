@@ -1,41 +1,34 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- *   Davide Marchignoli
- * </copyright>
- *
- * $Id: MappingException.java,v 1.3 2007/02/08 23:13:12 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
+ * </copyright> $Id: MappingException.java,v 1.4 2007/06/29 07:31:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 
 /**
- * Exception used to signal errors in mapping TODO is there an elver hierarchy of exceptions? MT: no there is no real
- * hierarchy, I tend to use have one general exception which always logs the exception
+ * Exception used to signal errors in mapping TODO is there an elver hierarchy of exceptions? MT: no
+ * there is no real hierarchy, I tend to use have one general exception which always logs the
+ * exception
  * 
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class MappingException extends RuntimeException {
+public class MappingException extends TeneoException {
 
 	/**
 	 * Generated Serial ID
 	 */
 	private static final long serialVersionUID = 7816794038091161326L;
-	
+
 	/** Logger */
 	private static final Log log = LogFactory.getLog(MappingException.class);
 

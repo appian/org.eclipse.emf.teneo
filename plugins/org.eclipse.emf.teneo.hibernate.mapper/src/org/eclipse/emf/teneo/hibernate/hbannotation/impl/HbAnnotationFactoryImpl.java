@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationFactoryImpl.java,v 1.8 2007/03/29 15:00:45 mtaal Exp $
+ * $Id: HbAnnotationFactoryImpl.java,v 1.9 2007/06/29 07:31:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -93,6 +93,7 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 			case HbAnnotationPackage.FETCH: return createFetch();
 			case HbAnnotationPackage.ON_DELETE: return createOnDelete();
 			case HbAnnotationPackage.PROXY: return createProxy();
+			case HbAnnotationPackage.INDEX: return createIndex();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -264,6 +265,16 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	public Proxy createProxy() {
 		ProxyImpl proxy = new ProxyImpl();
 		return proxy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Index createIndex() {
+		IndexImpl index = new IndexImpl();
+		return index;
 	}
 
 	/**

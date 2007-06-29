@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MapKeyImpl.java,v 1.3 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: MapKeyImpl.java,v 1.4 2007/06/29 07:31:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -52,7 +52,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * @generated
 	 * @ordered
 	 */
-	protected EModelElement eModelElement = null;
+	protected EModelElement eModelElement;
 
 	/**
 	 * The cached value of the '{@link #getColumns() <em>Columns</em>}' containment reference list.
@@ -62,7 +62,7 @@ public class MapKeyImpl extends EObjectImpl implements MapKey {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Column> columns = null;
+	protected EList<Column> columns;
 
 	/**
 	 * <!-- begin-user-doc -->

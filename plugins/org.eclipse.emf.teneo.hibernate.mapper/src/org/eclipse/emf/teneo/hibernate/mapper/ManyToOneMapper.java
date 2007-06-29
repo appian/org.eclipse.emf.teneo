@@ -1,18 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- *   Davide Marchignoli
- * </copyright>
- *
- * $Id: ManyToOneMapper.java,v 1.10 2007/04/07 12:44:06 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
+ * </copyright> $Id: ManyToOneMapper.java,v 1.11 2007/06/29 07:31:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -32,8 +23,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
 /**
  * Maps a {@link ManyToOne} element to its {@link MappingContext}.
  * <p>
- * Assumes that the given {@link PAnnotatedEStructuralFeature} is a normal
- * ManyToOne, i.e.
+ * Assumes that the given {@link PAnnotatedEStructuralFeature} is a normal ManyToOne, i.e.
  * <ul>
  * <li>it is a {@link PAnnotatedEReference};
  * <li>it has a {@link ManyToOne} annotation;
@@ -61,12 +51,10 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 		final List<JoinColumn> jcs = getJoinColumns(paReference);
 		if (jcs.size() > 1) { // TODO support multiple join columns
 			log.error("Unsupported multiple join columns in " + paReference);
-			throw new MappingException("Unsupported multiple join columns",
-					paReference);
+			throw new MappingException("Unsupported multiple join columns", paReference);
 		}
 
-		final EClass referedTo = paReference.getAnnotatedEReference()
-				.getEReferenceType();
+		final EClass referedTo = paReference.getAnnotatedEReference().getEReferenceType();
 		final ManyToOne mto = paReference.getManyToOne();
 		String targetName = mto.getTargetEntity();
 		if (targetName == null) {
@@ -75,36 +63,27 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 
 		log.debug("Target " + targetName);
 
-		final Element associationElement = addManyToOne(paReference,
-				targetName);
+		final Element associationElement = addManyToOne(paReference, targetName);
 
 		addCascadesForSingle(associationElement, mto.getCascade());
 
 		if (isEObject(targetName)) {
-			final String erefName = paReference.getAnnotatedEReference()
-					.getName();
-			addColumns(associationElement, erefName, getAnyTypeColumns(
-					erefName, true), true, false);
+			final String erefName = paReference.getAnnotatedEReference().getName();
+			addColumns(paReference, associationElement, erefName, getAnyTypeColumns(erefName, true), true, false);
 		} else {
 			// todo default false until proxies are supported
-			final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference
-					.getPaModel().getPAnnotated(referedTo);
+			final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getPaModel().getPAnnotated(referedTo);
 			if (haClass.getHbProxy() != null) {
 				associationElement.addAttribute("lazy", "proxy");
 			} else {
 				associationElement.addAttribute("lazy", "false");
 			}
 
-			addJoinColumns(associationElement, jcs, getHbmContext()
-					.isForceOptional()
-					|| mto.isOptional()
+			addJoinColumns(paReference, associationElement, jcs, getHbmContext().isForceOptional() || mto.isOptional()
 					|| getHbmContext().isCurrentElementFeatureMap());
 
-			associationElement.addAttribute("not-null", getHbmContext()
-					.isForceOptional()
-					|| mto.isOptional()
-					|| getHbmContext().isCurrentElementFeatureMap() ? "false"
-					: "true");
+			associationElement.addAttribute("not-null", getHbmContext().isForceOptional() || mto.isOptional()
+					|| getHbmContext().isCurrentElementFeatureMap() ? "false" : "true");
 		}
 
 		// MT: TODO; the characteristic of the other side should be checked (if

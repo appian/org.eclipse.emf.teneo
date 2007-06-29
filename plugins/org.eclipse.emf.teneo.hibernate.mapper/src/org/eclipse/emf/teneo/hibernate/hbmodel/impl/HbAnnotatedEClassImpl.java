@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClassImpl.java,v 1.8 2007/03/29 15:00:46 mtaal Exp $
+ * $Id: HbAnnotatedEClassImpl.java,v 1.9 2007/06/29 07:31:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -49,7 +49,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * @generated
 	 * @ordered
 	 */
-	protected Cache hbCache = null;
+	protected Cache hbCache;
 
 	/**
 	 * The cached value of the '{@link #getHbOnDelete() <em>Hb On Delete</em>}' reference.
@@ -59,7 +59,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * @generated
 	 * @ordered
 	 */
-	protected OnDelete hbOnDelete = null;
+	protected OnDelete hbOnDelete;
 
 	/**
 	 * The cached value of the '{@link #getHbWhere() <em>Hb Where</em>}' containment reference.
@@ -69,7 +69,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * @generated
 	 * @ordered
 	 */
-	protected Where hbWhere = null;
+	protected Where hbWhere;
 
 	/**
 	 * The cached value of the '{@link #getHbProxy() <em>Hb Proxy</em>}' reference.
@@ -79,7 +79,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * @generated
 	 * @ordered
 	 */
-	protected Proxy hbProxy = null;
+	protected Proxy hbProxy;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

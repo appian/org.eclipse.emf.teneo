@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: FeatureMapMapping.java,v 1.8 2007/04/21 09:22:10 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.9 2007/06/29 07:31:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -62,13 +62,12 @@ class FeatureMapMapping {
 		final String entityName = StoreUtil.getEntityName(paAttribute.getAnnotatedEAttribute());
 		log.debug("Processing feature map feature: " + entityName);
 		Element mainElement =
-				hbmContext.getCurrent().addElement("class").addAttribute("entity-name", entityName)
-					.addAttribute("lazy", "false").addAttribute("table",
-						hbmContext.trunc(entityName.toUpperCase(), false));
+				hbmContext.getCurrent().addElement("class").addAttribute("entity-name", entityName).addAttribute(
+					"lazy", "false").addAttribute("table", hbmContext.trunc(entityName.toUpperCase(), false));
 
 		mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META)
 			.addText(
-				hbmContext.getEClassNameStrategy().toUniqueName(
+				hbmContext.getEntityNameStrategy().toEntityName(
 					paAttribute.getAnnotatedEAttribute().getEContainingClass()));
 
 		final FeatureMapper fp = hbmContext.getFeatureMapper();
@@ -76,36 +75,31 @@ class FeatureMapMapping {
 		hbmContext.setCurrentElementFeatureMap(true);
 
 		// TODO: check if id of parent can be used instead
-		mainElement.addElement("id").addAttribute("type", "long").addElement("generator")
-			.addAttribute("class", "native");
+		mainElement.addElement("id").addAttribute("type", "long").addElement("generator").addAttribute("class",
+			"native");
 
 		final Element versionElement =
-				mainElement.addElement("version").addAttribute("name",
-					hbmContext.getVersionColumnName()).addAttribute("access",
-					"org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
+				mainElement.addElement("version").addAttribute("name", hbmContext.getVersionColumnName()).addAttribute(
+					"access", "org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
 		final Element meta = new Element("meta");
 		meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
 		versionElement.add(0, meta);
 
-		mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_FEATURE)
-			.addAttribute("type", "java.lang.String");
+		mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_FEATURE).addAttribute(
+			"type", "java.lang.String");
 
 		// and now process the features of this group
 		final PAnnotatedEClass paClass = paAttribute.getPaEClass();
 		final boolean isMixed = StoreUtil.isMixed(paAttribute.getAnnotatedEAttribute());
 		for (PAnnotatedEStructuralFeature paFeature : paClass.getPaEStructuralFeatures()) {
 			EStructuralFeature eFeature = paFeature.getAnnotatedEStructuralFeature();
-			if ((isMixed && eFeature.getFeatureID() != paAttribute.getAnnotatedEAttribute()
-				.getFeatureID())
+			if ((isMixed && eFeature.getFeatureID() != paAttribute.getAnnotatedEAttribute().getFeatureID())
 					|| StoreUtil.isElementOfGroup(eFeature, paAttribute.getAnnotatedEAttribute())) {
-				log
-					.debug("Feature " + StoreUtil.toString(eFeature)
-							+ " belongs to this featuremap");
+				log.debug("Feature " + StoreUtil.toString(eFeature) + " belongs to this featuremap");
 
 				// continue if it is a id
 				Id id = null;
-				if (paFeature instanceof PAnnotatedEAttribute
-						&& ((PAnnotatedEAttribute) paFeature).getId() != null) {
+				if (paFeature instanceof PAnnotatedEAttribute && ((PAnnotatedEAttribute) paFeature).getId() != null) {
 					// Feature is an id, temporarily removing the id, otherwise the fm gets confused
 					id = ((PAnnotatedEAttribute) paFeature).getId();
 				}
@@ -126,12 +120,12 @@ class FeatureMapMapping {
 		}
 
 		if (isMixed) {
-			mainElement.addElement("property").addAttribute("name",
-				HbMapperConstants.PROPERTY_MIXED_TEXT).addAttribute("type", "java.lang.String");
-			mainElement.addElement("property").addAttribute("name",
-				HbMapperConstants.PROPERTY_MIXED_CDATA).addAttribute("type", "java.lang.String");
-			mainElement.addElement("property").addAttribute("name",
-				HbMapperConstants.PROPERTY_MIXED_COMMENT).addAttribute("type", "java.lang.String");
+			mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_MIXED_TEXT)
+				.addAttribute("type", "java.lang.String");
+			mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_MIXED_CDATA)
+				.addAttribute("type", "java.lang.String");
+			mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_MIXED_COMMENT)
+				.addAttribute("type", "java.lang.String");
 		}
 		hbmContext.setCurrent(mainElement.getParent());
 		hbmContext.setCurrentElementFeatureMap(false);

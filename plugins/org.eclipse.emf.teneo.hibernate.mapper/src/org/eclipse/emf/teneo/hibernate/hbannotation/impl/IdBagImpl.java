@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdBagImpl.java,v 1.4 2007/03/21 15:46:34 mtaal Exp $
+ * $Id: IdBagImpl.java,v 1.5 2007/06/29 07:31:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -47,7 +47,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 * @generated
 	 * @ordered
 	 */
-	protected EModelElement eModelElement = null;
+	protected EModelElement eModelElement;
 
 	/**
 	 * The default value of the '{@link #getGenerator() <em>Generator</em>}' attribute.

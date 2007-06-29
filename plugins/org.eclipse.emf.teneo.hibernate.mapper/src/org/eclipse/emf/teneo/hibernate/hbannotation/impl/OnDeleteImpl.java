@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OnDeleteImpl.java,v 1.1 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: OnDeleteImpl.java,v 1.2 2007/06/29 07:31:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -55,7 +55,7 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	 * @generated
 	 * @ordered
 	 */
-	protected EModelElement eModelElement = null;
+	protected EModelElement eModelElement;
 
 	/**
 	 * The default value of the '{@link #getAction() <em>Action</em>}' attribute.

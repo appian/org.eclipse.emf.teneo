@@ -13,13 +13,12 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.14 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.15 2007/06/29 07:31:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,11 +31,11 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
-import org.eclipse.emf.teneo.ecore.DefaultEClassNameStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
+import org.eclipse.emf.teneo.mapping.strategy.impl.DefaultEntityNameStrategy;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -105,17 +104,19 @@ public class HibernateMappingGenerator {
 		if (name == null) {
 			// TODO sure we do not need package here?
 			// MT: I think for 99.9% of the cases there are no name clashes but it is possible to
-			// that a package name is required to make things unique. This can be done in a next release as an
+			// that a package name is required to make things unique. This can be done in a next
+			// release as an
 			// optional feature.
-			name = hbmContext.getEClassNameStrategy().toUniqueName(eclass);
+			name = hbmContext.getEntityNameStrategy().toEntityName(eclass);
 		}
 		return name;
 	}
 
 	/** Generate a hibernate mapping xml document from the pamodel */
 	public Document generate(PAnnotatedModel paModel) throws MappingException {
-		if (log.isDebugEnabled())
+		if (log.isDebugEnabled()) {
 			log.debug("Geneting Hibernate mapping for " + paModel);
+		}
 		try {
 			hbmContext.setPaModel(paModel);
 			hbmContext.beginDocument(createDocument());
@@ -144,7 +145,7 @@ public class HibernateMappingGenerator {
 				+ "\"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd\">");
 		mappingDoc.setRoot(DocumentHelper.createElement("hibernate-mapping"));
 		// set auto-import is false if the default eclass naming strategy is not used
-		if (!(hbmContext.getEClassNameStrategy() instanceof DefaultEClassNameStrategy)) {
+		if (!(hbmContext.getEntityNameStrategy() instanceof DefaultEntityNameStrategy)) {
 			log.debug("Setting auto-import=false because eclassnamingstrategy is not the defaulteclassnamestrategy");
 			mappingDoc.getRoot().addAttribute("auto-import", "false");
 		}
@@ -158,7 +159,7 @@ public class HibernateMappingGenerator {
 			for (PAnnotatedEPackage paPackage : paModel.getPaEPackages()) {
 				for (PAnnotatedEClass paEClass : paPackage.getPaEClasses()) {
 					// here, we eliminate map.enties
-					if(!hbmContext.isMapEMapAsTrueMap() || !StoreUtil.isMapEntry(paEClass.getAnnotatedEClass())) {
+					if (!hbmContext.isMapEMapAsTrueMap() || !StoreUtil.isMapEntry(paEClass.getAnnotatedEClass())) {
 						processPAClass(paEClass);
 					}
 				}
@@ -174,7 +175,7 @@ public class HibernateMappingGenerator {
 	 */
 	protected void processPAClass(PAnnotatedEClass paEClass) {
 		if (processedPAClasses.add(paEClass)) {
-			// also mapped superclasses can have an entity but ignore them here 
+			// also mapped superclasses can have an entity but ignore them here
 			if (paEClass.getEntity() != null && paEClass.getMappedSuperclass() == null) {
 				// this is a persistent entity
 				PAnnotatedEClass paSuperEntity = paEClass.getPaSuperEntity();
@@ -193,8 +194,9 @@ public class HibernateMappingGenerator {
 				hbmContext.setCurrentEClass(paEClass.getAnnotatedEClass());
 				hbmContext.getEntityMapper().processEntity(paEClass);
 
-			} else if (log.isDebugEnabled())
+			} else if (log.isDebugEnabled()) {
 				log.debug("Skipping non-persistent class " + paEClass);
+			}
 		}
 	}
 
@@ -203,8 +205,8 @@ public class HibernateMappingGenerator {
 	 */
 	protected void processTypedefs(PAnnotatedModel paModel) {
 		// Walk thru all the packages looking for custom EDataTypes.
-		for (Iterator<PAnnotatedEPackage> pi = paModel.getPaEPackages().iterator(); pi.hasNext();) {
-			HbAnnotatedEPackage paPackage = (HbAnnotatedEPackage) pi.next();
+		for (PAnnotatedEPackage annotatedEPackage : paModel.getPaEPackages()) {
+			HbAnnotatedEPackage paPackage = (HbAnnotatedEPackage) annotatedEPackage;
 
 			// handle the typedefs
 			for (TypeDef td : paPackage.getHbTypeDef()) {
@@ -212,8 +214,8 @@ public class HibernateMappingGenerator {
 			}
 
 			// Walk thru all the classifiers of the given package.
-			for (Iterator<PAnnotatedEDataType> adatatypes = paPackage.getPaEDataTypes().iterator(); adatatypes.hasNext();) {
-				final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) adatatypes.next();
+			for (PAnnotatedEDataType annotatedEDataType : paPackage.getPaEDataTypes()) {
+				final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) annotatedEDataType;
 				if (hed.getHbTypeDef() != null) {
 					emitTypeDef(hed.getHbTypeDef());
 				}

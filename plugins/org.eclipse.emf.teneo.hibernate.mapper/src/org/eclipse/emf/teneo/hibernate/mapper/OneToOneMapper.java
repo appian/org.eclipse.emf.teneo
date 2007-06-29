@@ -1,18 +1,9 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- *   Davide Marchignoli
- * </copyright>
- *
- * $Id: OneToOneMapper.java,v 1.12 2007/04/17 15:49:50 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
+ * </copyright> $Id: OneToOneMapper.java,v 1.13 2007/06/29 07:31:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -22,7 +13,6 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
@@ -34,13 +24,12 @@ import org.eclipse.emf.teneo.simpledom.Element;
 /**
  * Maps a {@link OneToOne} element to its {@link MappingContext}.
  * <p>
- * Assumes that the given {@link PAnnotatedEStructuralFeature} is a normal
- * OneToOne, i.e.
+ * Assumes that the given {@link PAnnotatedEStructuralFeature} is a normal OneToOne, i.e.
  * <ul>
  * <li>it is a {@link PAnnotatedEReference};
  * <li>it has a {@link OneToOne} annotation;
- * <li>each attribute on the {@link OneToOne} annotation is set possibly except
- * for {@link OneToOne#getMappedBy()};
+ * <li>each attribute on the {@link OneToOne} annotation is set possibly except for
+ * {@link OneToOne#getMappedBy()};
  * <li>TODO requirements on JoinColumns/PrimaryKeyJoinColumn
  * </ul>
  * 
@@ -58,8 +47,7 @@ class OneToOneMapper extends AbstractAssociationMapper {
 	/** Process the one-to-one */
 	public void process(PAnnotatedEReference paReference) {
 		if (getOtherSide(paReference) == null
-				|| paReference.getOneToOne().eIsSet(
-						PannotationPackage.eINSTANCE.getOneToOne_MappedBy())) {
+				|| paReference.getOneToOne().eIsSet(PannotationPackage.eINSTANCE.getOneToOne_MappedBy())) {
 			if (!paReference.getPrimaryKeyJoinColumns().isEmpty()) {
 				createOneToOne(paReference);
 			} else {
@@ -79,32 +67,30 @@ class OneToOneMapper extends AbstractAssociationMapper {
 		String specifiedName = oto.getTargetEntity();
 
 		if (specifiedName == null) {
-			specifiedName = getHbmContext().getEntityName(
-					eref.getEReferenceType());
+			specifiedName = getHbmContext().getEntityName(eref.getEReferenceType());
 		}
 
-		final Element associationElement = addManyToOne(paReference,
-				(specifiedName != null ? specifiedName : getHbmContext()
-						.getEntityName(eref.getEReferenceType())));
+		final Element associationElement =
+				addManyToOne(paReference, (specifiedName != null ? specifiedName : getHbmContext().getEntityName(
+					eref.getEReferenceType())));
 
 		addCascadesForSingle(associationElement, oto.getCascade());
 
 		if (isEObject(specifiedName)) {
-			addColumns(associationElement, eref.getName(), getAnyTypeColumns(
-					eref.getName(), true), true, false);
+			addColumns(paReference, associationElement, eref.getName(), getAnyTypeColumns(eref.getName(), true), true,
+				false);
 		} else {
-			final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference
-					.getAReferenceType();
+			final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getAReferenceType();
 			if (haClass.getHbProxy() != null) {
-				associationElement.addAttribute("lazy", "proxy");
+				associationElement.addAttribute("lazy", "TSproxy");
 			} else {
 				associationElement.addAttribute("lazy", "false");
 			}
 			final List<JoinColumn> joinColumns = getJoinColumns(paReference);
-			final boolean forceNullable = (oto.isOptional()
-					|| getHbmContext().isForceOptional() || getHbmContext()
-					.isCurrentElementFeatureMap());
-			addJoinColumns(associationElement, joinColumns, forceNullable);
+			final boolean forceNullable =
+					(oto.isOptional() || getHbmContext().isForceOptional() || getHbmContext()
+						.isCurrentElementFeatureMap());
+			addJoinColumns(paReference, associationElement, joinColumns, forceNullable);
 
 			associationElement.addAttribute("unique", "true");
 		}
@@ -112,34 +98,28 @@ class OneToOneMapper extends AbstractAssociationMapper {
 
 	/** Create hibernate one-to-one mapping */
 	private void createOneToOne(PAnnotatedEReference paReference) {
-		if (log.isDebugEnabled())
-			log
-					.debug("Generating one to one bidirectional inverse mapping for "
-							+ paReference);
+		if (log.isDebugEnabled()) {
+			log.debug("Generating one to one bidirectional inverse mapping for " + paReference);
+		}
 
 		final OneToOne oto = paReference.getOneToOne();
 		String targetName = oto.getTargetEntity();
 		if (targetName == null) {
-			targetName = getHbmContext().getEntityName(
-					paReference.getEReferenceType());
+			targetName = getHbmContext().getEntityName(paReference.getEReferenceType());
 		}
 
 		final EReference eref = paReference.getAnnotatedEReference();
 		final EReference otherSide = eref.getEOpposite();
-		final Element associationElement = addOneToOne(paReference
-				.getAReferenceType(), getHbmContext().getPropertyName(eref),
-				targetName);
+		final Element associationElement = addOneToOne(paReference, getHbmContext().getPropertyName(eref), targetName);
 
 		addCascadesForSingle(associationElement, oto.getCascade());
 
 		// add the other-side
 		if (otherSide != null) {
-			associationElement.addAttribute("property-ref", getHbmContext()
-					.getPropertyName(otherSide));
+			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
 		}
 
-		final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference
-				.getAReferenceType();
+		final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getAReferenceType();
 		if (haClass.getHbProxy() != null) {
 			associationElement.addAttribute("lazy", "proxy");
 		} else {
@@ -148,25 +128,6 @@ class OneToOneMapper extends AbstractAssociationMapper {
 
 		if (paReference.getPrimaryKeyJoinColumns().size() > 0) {
 			associationElement.addAttribute("constrained", "true");
-		}
-	}
-
-	/**
-	 * @return
-	 */
-	private Element addOneToOne(PAnnotatedEClass referedToAClass,
-			String assocName, String targetEntity) {
-		if (referedToAClass.isOnlyMapAsEntity()
-				|| !getHbmContext().forceUseOfInstance(referedToAClass)) {
-			return getHbmContext().getCurrent().addElement("one-to-one")
-					.addAttribute("name", assocName).addAttribute(
-							"entity-name", targetEntity);
-		} else {
-			return getHbmContext().getCurrent().addElement("one-to-one")
-					.addAttribute("name", assocName).addAttribute(
-							"class",
-							getHbmContext().getInstanceClassName(
-									referedToAClass.getAnnotatedEClass()));
 		}
 	}
 }
