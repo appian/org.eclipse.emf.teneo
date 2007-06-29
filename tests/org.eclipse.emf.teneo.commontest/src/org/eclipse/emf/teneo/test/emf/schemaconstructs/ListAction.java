@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ListAction.java,v 1.3 2007/03/05 20:59:07 mtaal Exp $
+ * $Id: ListAction.java,v 1.4 2007/06/29 07:35:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -30,78 +30,70 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Simple test for: xsd:list  
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
-*/
-public class ListAction extends AbstractTestAction 
-{
+ * @version $Revision: 1.4 $ 
+ */
+public class ListAction extends AbstractTestAction {
 	/** The number of test objects created */
 	private static final int NO_TEST_OBJECTS = 5;
-	
+
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * @param arg0
 	 */
-	public ListAction() 
-	{
+	public ListAction() {
 		super(ListPackage.eINSTANCE);
 	}
-	
+
 	/** Creates simple types and tests against */
-	public void doAction(TestStore store)
-	{
+	@Override
+	public void doAction(TestStore store) {
 		// test a simple type
-        final ListFactory factory = ListFactory.eINSTANCE;
-        
-        // store an all type
-    	{
-	        store.beginTransaction();
-	        
-	        for (int i = 0; i < NO_TEST_OBJECTS; i++)
-	        {
-		        statesByCountry sbc = factory.createstatesByCountry();
-		        sbc.setCountry(i + "NL");
-		        sbc.setIndex(i);
-		        final ArrayList allStates = new ArrayList();
-		        for (int j = 0; j < i; j++)
-		        {
-			        allStates.add(j + "AL");
-		        }
-		        sbc.setAllStates(allStates);
-		        final ArrayList sixStates = new ArrayList();
-		        for (int j = 0; j < i; j++)
-		        {
-			        sixStates.add(j + "AR");
-		        }
-		        sbc.setSixImportantStates(sixStates);
-		        
-		        store.store(sbc);
-	        }
-	        store.commitTransaction();
-    	}
-    	
-    	{
-    		store.beginTransaction();
-    		final Collection coll = store.getObjects(statesByCountry.class);
-    		assertEquals(NO_TEST_OBJECTS, coll.size());
-    		final Iterator it = coll.iterator();
-    		while (it.hasNext())
-    		{
-    			final statesByCountry sbc = (statesByCountry)it.next();
-    			int cnt = sbc.getIndex();
-    			assertEquals(cnt + "NL", sbc.getCountry());
-    			for (int i = 0; i < cnt; i++)
-    			{
-    				assertEquals(i + "AL", sbc.getAllStates().get(i));
-    				if (!(i + "AR").equals(sbc.getSixImportantStates().get(i))) {
-        				Object obj = sbc.getSixImportantStates().get(i);
-        				System.err.println(obj);
-        				System.err.println(obj);
-    				}
-    				assertEquals(i + "AR", sbc.getSixImportantStates().get(i));
-    			}
-    		}
-    		store.commitTransaction();
-    	}
- 	}
-	
+		final ListFactory factory = ListFactory.eINSTANCE;
+
+		// store an all type
+		{
+			store.beginTransaction();
+
+			for (int i = 0; i < NO_TEST_OBJECTS; i++) {
+				statesByCountry sbc = factory.createstatesByCountry();
+				sbc.setCountry(i + "NL");
+				sbc.setIndex(i);
+				final ArrayList<String> allStates = new ArrayList<String>();
+				for (int j = 0; j < i; j++) {
+					allStates.add(j + "AL");
+				}
+				sbc.setAllStates(allStates);
+				final ArrayList<String> sixStates = new ArrayList<String>();
+				for (int j = 0; j < i; j++) {
+					sixStates.add(j + "AR");
+				}
+				sbc.setSixImportantStates(sixStates);
+
+				store.store(sbc);
+			}
+			store.commitTransaction();
+		}
+
+		{
+			store.beginTransaction();
+			final Collection<?> coll = store.getObjects(statesByCountry.class);
+			assertEquals(NO_TEST_OBJECTS, coll.size());
+			final Iterator<?> it = coll.iterator();
+			while (it.hasNext()) {
+				final statesByCountry sbc = (statesByCountry) it.next();
+				int cnt = sbc.getIndex();
+				assertEquals(cnt + "NL", sbc.getCountry());
+				for (int i = 0; i < cnt; i++) {
+					assertEquals(i + "AL", sbc.getAllStates().get(i));
+					if (!(i + "AR").equals(sbc.getSixImportantStates().get(i))) {
+						Object obj = sbc.getSixImportantStates().get(i);
+						assertNotNull(obj);
+					}
+					assertEquals(i + "AR", sbc.getSixImportantStates().get(i));
+				}
+			}
+			store.commitTransaction();
+		}
+	}
+
 }

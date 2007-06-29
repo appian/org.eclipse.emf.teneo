@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractActionTest.java,v 1.4 2007/03/28 13:58:33 mtaal Exp $
+ * $Id: AbstractActionTest.java,v 1.5 2007/06/29 07:35:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -19,17 +19,18 @@ package org.eclipse.emf.teneo.test;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.PersistenceOptions;
 
 /**
  * Hibernate test based on abstract action.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AbstractActionTest extends AbstractTest {
 	/** The action contains the real test */
 	protected AbstractTestAction itsTestAction;
-	
+
 	private Properties properties;
 
 	/** Constructor */
@@ -53,7 +54,7 @@ public class AbstractActionTest extends AbstractTest {
 	 * @param properties
 	 */
 	public AbstractActionTest(AbstractTestAction itsTestAction, Properties properties) {
-		super("testAction");	
+		super("testAction");
 		this.itsTestAction = itsTestAction;
 		this.properties = properties;
 	}
@@ -69,23 +70,37 @@ public class AbstractActionTest extends AbstractTest {
 	}
 
 	/** Return the epackages for which this test is done */
+	@Override
 	public EPackage[] getEPackages() {
 		return getTestAction().getEPackages();
 	}
 
 	/** Return the test package name */
+	@Override
 	public String getTestPackageName() {
 		return getTestAction().getTestPackageName();
 	}
 
 	/** Return the test package name */
+	@Override
 	public Package getTestPackage() {
 		return getTestAction().getClass().getPackage();
 	}
 
 	/** Returns extra properties which are passed to the or layer for additional configuration */
+	@Override
 	public Properties getExtraConfigurationProperties() {
 		Properties allProperties = getTestAction().getExtraConfigurationProperties();
+
+		// override some defaults
+		if (allProperties.get(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT) == null) {
+			allProperties.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		}
+
+		if (allProperties.get(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY) == null) {
+			allProperties.setProperty(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
+		}
+
 		if (this.properties != null) {
 			allProperties.putAll(this.properties);
 		}
@@ -93,11 +108,13 @@ public class AbstractActionTest extends AbstractTest {
 	}
 
 	/** Returns a unique name based on the class name of the testAction class */
+	@Override
 	public String getName() {
 		return itsTestAction.getClass().getName();
 	}
 
 	/** Returns a simple name based on the class name of the testAction class. */
+	@Override
 	public String getSimpleName() {
 		final String name = getName();
 		return name.substring(name.lastIndexOf(".") + 1);

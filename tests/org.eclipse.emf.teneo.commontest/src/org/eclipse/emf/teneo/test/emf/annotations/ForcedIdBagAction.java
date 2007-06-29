@@ -34,16 +34,6 @@ public class ForcedIdBagAction extends AbstractTestAction {
 		super(ForcedidbagPackage.eINSTANCE);
 	}
 
-	/** Add an option to force to use an idbag */
-	@Override
-	public Properties getExtraConfigurationProperties() {
-		Properties props = new Properties();
-		props.setProperty(PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG, "true");
-		props.setProperty(PersistenceOptions.IDBAG_ID_COLUMN_NAME, "idbag_id");
-		props.setProperty(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
-		return props;
-	}
-
 	@Override
 	public void doAction(TestStore store) {
 		storeUser(store);
@@ -51,29 +41,29 @@ public class ForcedIdBagAction extends AbstractTestAction {
 		testPrimaryKey(store);
 	}
 
+	/** Add an option to force to use an idbag */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG, "true");
+		props.setProperty(PersistenceOptions.IDBAG_ID_COLUMN_NAME, "idbag_id");
+		props.setProperty(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
+		return props;
+	}
+
 	private void storeUser(TestStore store) {
 		store.beginTransaction();
-		User user = ForcedidbagFactory.eINSTANCE.createUser();
+		final User user = ForcedidbagFactory.eINSTANCE.createUser();
 		user.setName(NAME);
-		Role role1 = ForcedidbagFactory.eINSTANCE.createRole();
+		final Role role1 = ForcedidbagFactory.eINSTANCE.createRole();
 		role1.setName(ROLE1);
-		Role role2 = ForcedidbagFactory.eINSTANCE.createRole();
+		final Role role2 = ForcedidbagFactory.eINSTANCE.createRole();
 		role2.setName(ROLE2);
 		user.getRoles().add(role1);
 		user.getRoles().add(role2);
 		store.store(user.getRoles());
 		store.store(user);
 		store.commitTransaction();
-	}
-
-	private void testUser(TestStore store) {
-		List<?> results = store.query("select u from User u");
-		assertEquals(1, results.size());
-		User user = (User) results.get(0);
-		assertEquals(NAME, user.getName());
-		assertEquals(2, user.getRoles().size());
-		assertTrue(user.getRoles().get(0).getName().equals(ROLE1));
-		assertTrue(user.getRoles().get(1).getName().equals(ROLE2));
 	}
 
 	private void testPrimaryKey(TestStore store) {
@@ -89,14 +79,14 @@ public class ForcedIdBagAction extends AbstractTestAction {
 			try {
 				resultSet = metaData.getPrimaryKeys(null, null, "user_role");
 				rsTrue = resultSet.next();
-			} catch (SQLException e) {
+			} catch (final SQLException e) {
 				// ignore, hope for the next one
 			}
 			boolean rs2True = false;
 			try {
 				resultSet2 = metaData.getPrimaryKeys(null, null, "role");
 				rs2True = resultSet2.next();
-			} catch (SQLException e) {
+			} catch (final SQLException e) {
 				assertTrue(rsTrue);
 				// ignore hope for the first one
 			}
@@ -110,7 +100,7 @@ public class ForcedIdBagAction extends AbstractTestAction {
 					.getString("COLUMN_NAME")));
 				assertFalse("Found more than one primary key.", resultSet2.next());
 			}
-		} catch (SQLException e) {
+		} catch (final SQLException e) {
 			assertFalse(e.getMessage(), true);
 		} finally {
 			try {
@@ -120,9 +110,19 @@ public class ForcedIdBagAction extends AbstractTestAction {
 						resultSet2.close();
 					}
 				}
-			} catch (SQLException e) {
+			} catch (final SQLException e) {
 			}
 		}
+	}
+
+	private void testUser(TestStore store) {
+		final List<?> results = store.query("select u from User u");
+		assertEquals(1, results.size());
+		final User user = (User) results.get(0);
+		assertEquals(NAME, user.getName());
+		assertEquals(2, user.getRoles().size());
+		assertTrue(user.getRoles().get(0).getName().equals(ROLE1));
+		assertTrue(user.getRoles().get(1).getName().equals(ROLE2));
 	}
 
 }

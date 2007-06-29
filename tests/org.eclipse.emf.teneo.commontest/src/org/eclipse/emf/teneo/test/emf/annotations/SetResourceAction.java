@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * using resources. Most other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class SetResourceAction extends AbstractTestAction {
 	/** The number of testitems created */
@@ -45,13 +45,6 @@ public class SetResourceAction extends AbstractTestAction {
 		super(SetPackage.eINSTANCE);
 	}
 
-	@Override
-	public Properties getExtraConfigurationProperties() {
-		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
-		return props;
-	}
-
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
@@ -59,10 +52,10 @@ public class SetResourceAction extends AbstractTestAction {
 
 		// create a book, writer and library
 		try {
-			ArrayList<String> names = new ArrayList<String>();
-			ArrayList<String> cnames = new ArrayList<String>();
+			final ArrayList<String> names = new ArrayList<String>();
+			final ArrayList<String> cnames = new ArrayList<String>();
 			{
-				Resource res = store.getResource();
+				final Resource res = store.getResource();
 				res.load(null);
 
 				final ItemList list = factory.createItemList();
@@ -91,7 +84,7 @@ public class SetResourceAction extends AbstractTestAction {
 
 			// remove(i), removeAll, move
 			{
-				Resource res = store.getResource();
+				final Resource res = store.getResource();
 				res.load(null);
 				ItemList list = null;
 				for (int i = 0; i < res.getContents().size(); i++) {
@@ -108,29 +101,29 @@ public class SetResourceAction extends AbstractTestAction {
 				// remove from a certain position
 				for (int i = 0; i < list.getContainedItem().size(); i++) {
 					assertEquals(list, ((InternalEObject) list.getContainedItem().get(i)).eContainer());
-					if ((i % 2) == 0) {
-						ContainedItem citem = list.getContainedItem().get(i);
+					if (i % 2 == 0) {
+						final ContainedItem citem = list.getContainedItem().get(i);
 						cnames.remove(citem.getName()); // remove from here to check later
 						list.getContainedItem().remove(i);
 					}
 				}
 
 				// test removeall
-				ArrayList<Item> tobeDeleted = new ArrayList<Item>();
+				final ArrayList<Item> tobeDeleted = new ArrayList<Item>();
 				for (int i = 0; i < NO_ITEMS; i++) {
-					assertTrue(list == (list.getItem().get(i)).getItemList());
-					if ((i % 2) == 0) {
+					assertTrue(list == list.getItem().get(i).getItemList());
+					if (i % 2 == 0) {
 						tobeDeleted.add(list.getItem().get(i));
-						names.remove((list.getItem().get(i)).getName());
+						names.remove(list.getItem().get(i).getName());
 					}
 				}
-				for (Object o : tobeDeleted) {
+				for (final Object o : tobeDeleted) {
 					list.getItem().remove(o);
 				}
 				assertEquals(names.size(), list.getItem().size());
 
 				// test move (should not really change anything)
-				Object obj = list.getItem().get(3);
+				final Object obj = list.getItem().get(3);
 				list.getItem().move(1, 3);
 				assertEquals(1, list.getItem().indexOf(obj));
 
@@ -140,7 +133,7 @@ public class SetResourceAction extends AbstractTestAction {
 
 			int newCount = 0;
 			{
-				Resource res = store.getResource();
+				final Resource res = store.getResource();
 				res.load(null);
 				ItemList list = null;
 				for (int i = 0; i < res.getContents().size(); i++) {
@@ -149,15 +142,15 @@ public class SetResourceAction extends AbstractTestAction {
 					}
 				}
 
-				ArrayList<String> checkNames = new ArrayList<String>(names);
+				final ArrayList<String> checkNames = new ArrayList<String>(names);
 				for (int i = 0; i < list.getItem().size(); i++) {
-					assertTrue(checkNames.remove((list.getItem().get(i)).getName()));
+					assertTrue(checkNames.remove(list.getItem().get(i).getName()));
 				}
 				assertEquals(0, checkNames.size());
 
-				ArrayList<String> checkCNames = new ArrayList<String>(cnames);
+				final ArrayList<String> checkCNames = new ArrayList<String>(cnames);
 				for (int i = 0; i < list.getContainedItem().size(); i++) {
-					assertTrue(checkCNames.remove((list.getContainedItem().get(i)).getName()));
+					assertTrue(checkCNames.remove(list.getContainedItem().get(i).getName()));
 				}
 				assertEquals(0, checkCNames.size());
 
@@ -176,7 +169,7 @@ public class SetResourceAction extends AbstractTestAction {
 			}
 
 			{
-				Resource res = store.getResource();
+				final Resource res = store.getResource();
 				res.load(null);
 				ItemList list = null;
 				for (int i = 0; i < res.getContents().size(); i++) {
@@ -188,8 +181,15 @@ public class SetResourceAction extends AbstractTestAction {
 				res.save(null);
 				res.unload();
 			}
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			throw new StoreTestException("IOException during save", e);
 		}
+	}
+
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		return props;
 	}
 }

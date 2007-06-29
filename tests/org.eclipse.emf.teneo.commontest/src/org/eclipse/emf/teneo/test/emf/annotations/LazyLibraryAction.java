@@ -33,9 +33,40 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * does not result in loaded containment elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class LazyLibraryAction extends AbstractTestAction {
+	/** Small adapter test */
+	private class LibraryAdapter extends AdapterImpl {
+		/** Counts the number of changes */
+		private int countNotifications = 0;
+
+		/** Returns the number of notifications */
+		public int getCountNotifications() {
+			return countNotifications;
+		}
+
+		/**
+		 * Returns <code>false</code>
+		 * 
+		 * @param type
+		 *            the type.
+		 * @return <code>false</code>
+		 */
+		@Override
+		public boolean isAdapterForType(Object type) {
+			return type instanceof Writer;
+		}
+
+		/**
+		 * Does nothing; clients may override so that it does something.
+		 */
+		@Override
+		public void notifyChanged(Notification msg) {
+			countNotifications++;
+		}
+	}
+
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * 
@@ -43,14 +74,6 @@ public class LazyLibraryAction extends AbstractTestAction {
 	 */
 	public LazyLibraryAction() {
 		super(LazyPackage.eINSTANCE);
-	}
-
-	/** Sets USE_EMF_PROXIES to true */
-	@Override
-	public Properties getExtraConfigurationProperties() {
-		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
-		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */
@@ -61,7 +84,7 @@ public class LazyLibraryAction extends AbstractTestAction {
 		// create a book, writer and library
 		try {
 			{
-				Resource res = store.getResource();
+				final Resource res = store.getResource();
 				res.load(null);
 
 				final Writer writer = factory.createWriter();
@@ -100,7 +123,7 @@ public class LazyLibraryAction extends AbstractTestAction {
 
 			// test settrackingmodification before load
 			{
-				Resource res = store.getResource();
+				final Resource res = store.getResource();
 				// default is false
 				// ((StoreResource)res).setAutoResolve(false);
 				res.setTrackingModification(true);
@@ -110,7 +133,7 @@ public class LazyLibraryAction extends AbstractTestAction {
 
 			// test settrackingmodification after load
 			{
-				Resource res = store.getResource();
+				final Resource res = store.getResource();
 				// default is false
 				// ((StoreResource)res).setAutoResolve(false);
 				res.load(null);
@@ -120,7 +143,7 @@ public class LazyLibraryAction extends AbstractTestAction {
 
 			// test with resolving
 			{
-				Resource res = store.getResource();
+				final Resource res = store.getResource();
 				// default is false
 				res.load(null);
 				res.setTrackingModification(true);
@@ -129,16 +152,24 @@ public class LazyLibraryAction extends AbstractTestAction {
 
 			// simple test without setTrackingModification
 			{
-				Resource res = store.getResource();
+				final Resource res = store.getResource();
 				res.load(null);
 
-				Library lib = (Library) res.getContents().get(0);
-				PersistableEList<?> writers = (PersistableEList<?>) lib.getWriters();
+				final Library lib = (Library) res.getContents().get(0);
+				final PersistableEList<?> writers = (PersistableEList<?>) lib.getWriters();
 				assertTrue("Elist should be loaded", writers.isLoaded());
 			}
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			throw new StoreTestException("IOException during save", e);
 		}
+	}
+
+	/** Sets USE_EMF_PROXIES to true */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
+		return props;
 	}
 
 	/** Check adapters and lazy loading of nonresolving */
@@ -146,20 +177,20 @@ public class LazyLibraryAction extends AbstractTestAction {
 		final LibraryAdapter libraryAdapter = new LibraryAdapter();
 		res.eAdapters().add(libraryAdapter);
 
-		Library lib = (Library) res.getContents().get(0);
-		PersistableEList<?> books = (PersistableEList<?>) lib.getBooks();
-		PersistableEList<?> writers = (PersistableEList<?>) lib.getWriters();
+		final Library lib = (Library) res.getContents().get(0);
+		final PersistableEList<?> books = (PersistableEList<?>) lib.getBooks();
+		final PersistableEList<?> writers = (PersistableEList<?>) lib.getWriters();
 		assertTrue("Elist is not loaded while the fetch is eager", writers.isLoaded());
 		assertTrue("Elist is not loaded while the fetch is eager", books.isLoaded());
 		assertTrue("BasicIterator should have next true", books.basicIterator().hasNext());
 		assertTrue("BasicListIterator should have next true", books.basicListIterator().hasNext());
 		assertTrue("BasicIterator should have next true", writers.basicIterator().hasNext());
 		assertTrue("BasicListIterator should have next true", writers.basicListIterator().hasNext());
-		Book book = (Book) books.get(0);
+		final Book book = (Book) books.get(0);
 		assertTrue(book.getAuthor().getName() != null);
 
-		Writer writer = (Writer) writers.get(0);
-		PersistableEList<?> writerBooks = (PersistableEList<?>) writer.getBooks();
+		final Writer writer = (Writer) writers.get(0);
+		final PersistableEList<?> writerBooks = (PersistableEList<?>) writer.getBooks();
 		assertTrue("Books of writers should not be loaded is lazy, but it seems to be eager", !writerBooks.isLoaded());
 
 		lib.setName("test" + lib.getName());
@@ -169,10 +200,10 @@ public class LazyLibraryAction extends AbstractTestAction {
 
 		assertEquals(2, libraryAdapter.getCountNotifications());
 
-		EObject[] modifieds = ((StoreResource) res).getModifiedEObjects();
+		final EObject[] modifieds = ((StoreResource) res).getModifiedEObjects();
 		boolean fndLibrary = false;
 		boolean fndBook = false;
-		for (EObject element : modifieds) {
+		for (final EObject element : modifieds) {
 			fndLibrary = fndLibrary || element == lib;
 			fndBook = fndBook || element == book;
 		}
@@ -180,36 +211,5 @@ public class LazyLibraryAction extends AbstractTestAction {
 		assertTrue("Book should be a modified object", fndBook);
 		assertEquals(2, modifieds.length);
 		res.unload();
-	}
-
-	/** Small adapter test */
-	private class LibraryAdapter extends AdapterImpl {
-		/** Counts the number of changes */
-		private int countNotifications = 0;
-
-		/**
-		 * Returns <code>false</code>
-		 * 
-		 * @param type
-		 *            the type.
-		 * @return <code>false</code>
-		 */
-		@Override
-		public boolean isAdapterForType(Object type) {
-			return type instanceof Writer;
-		}
-
-		/**
-		 * Does nothing; clients may override so that it does something.
-		 */
-		@Override
-		public void notifyChanged(Notification msg) {
-			countNotifications++;
-		}
-
-		/** Returns the number of notifications */
-		public int getCountNotifications() {
-			return countNotifications;
-		}
 	}
 }

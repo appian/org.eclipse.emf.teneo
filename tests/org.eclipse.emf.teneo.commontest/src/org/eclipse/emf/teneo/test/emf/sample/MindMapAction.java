@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MindMapAction.java,v 1.5 2007/03/05 20:59:07 mtaal Exp $
+ * $Id: MindMapAction.java,v 1.6 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -19,7 +19,9 @@ package org.eclipse.emf.teneo.test.emf.sample;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 import org.example.mindmap.Map;
@@ -35,10 +37,10 @@ import org.example.mindmap.Topic;
  * Tests the gmf mindmap example
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class MindMapAction extends AbstractTestAction {
-	
+
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * 
@@ -48,46 +50,54 @@ public class MindMapAction extends AbstractTestAction {
 		super(MindmapPackage.eINSTANCE);
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		return props;
+	}
+
 	/** Creates an item, an address and links them to a po. */
+	@Override
 	public void doAction(TestStore store) {
 		final MindmapFactory factory = MindmapFactory.eINSTANCE;
 		{
 			final Map map = factory.createMap();
 			map.setTitle("Persistency Discussions");
-			
+
 			final Resource res1 = factory.createResource();
 			res1.setEmail("mtaal@elver.org");
 			res1.setName("Martin Taal");
-			
+
 			final Resource res2 = factory.createResource();
 			res2.setEmail("test@elver.org");
 			res2.setName("Test Me");
-			
+
 			map.getResources().add(res1);
 			map.getResources().add(res2);
-			
+
 			map.getRootTopics().add(createTopic(store, map.getResources(), factory, "Teneo JPOX", 5));
 			map.getRootTopics().add(createTopic(store, new ArrayList(), factory, "Teneo Hibernate", 3));
-			
+
 			final Relationship rel = factory.createRelationship();
-			rel.setSource((Topic)map.getRootTopics().get(0));
-			rel.setTarget((Topic)map.getRootTopics().get(1));
+			rel.setSource((Topic) map.getRootTopics().get(0));
+			rel.setTarget((Topic) map.getRootTopics().get(1));
 			rel.setType(RelationshipType.EXTENDS_LITERAL);
-			
+
 			map.getRelations().add(rel);
-			
+
 			store.beginTransaction();
 			store.store(map);
 			store.commitTransaction();
 		}
-		
-		{ 
+
+		{
 			store.beginTransaction();
-			Map map = (Map)store.getObject(Map.class);
+			Map map = (Map) store.getObject(Map.class);
 			assertEquals(2, map.getRootTopics().size());
-			checkTopic(map, (Topic)map.getRootTopics().get(0), "Teneo JPOX", 5);
-			checkTopic(map, (Topic)map.getRootTopics().get(1), "Teneo Hibernate", 3);
-			Relationship rs = (Relationship)map.getRelations().get(0);
+			checkTopic(map, (Topic) map.getRootTopics().get(0), "Teneo JPOX", 5);
+			checkTopic(map, (Topic) map.getRootTopics().get(1), "Teneo Hibernate", 3);
+			Relationship rs = (Relationship) map.getRelations().get(0);
 			assertEquals(rs.getSource(), map.getRootTopics().get(0));
 			assertEquals(rs.getTarget(), map.getRootTopics().get(1));
 			map.getRelations().remove(0);
@@ -96,9 +106,9 @@ public class MindMapAction extends AbstractTestAction {
 		}
 		{
 			store.beginTransaction();
-			Map map = (Map)store.getObject(Map.class);
+			Map map = (Map) store.getObject(Map.class);
 			assertEquals(1, map.getRootTopics().size());
-			checkTopic(map, (Topic)map.getRootTopics().get(0), "Teneo JPOX", 5);
+			checkTopic(map, (Topic) map.getRootTopics().get(0), "Teneo JPOX", 5);
 			store.commitTransaction();
 		}
 	}
@@ -110,7 +120,7 @@ public class MindMapAction extends AbstractTestAction {
 		topic.setStartDate(store.getDate(new Date()));
 		topic.setName(name + level);
 		topic.setPriority(Priority.get(level));
-		topic.setPercentComplete((float)(level * 10.0 / 100.0));
+		topic.setPercentComplete((float) (level * 10.0 / 100.0));
 		topic.getResources().addAll(resources);
 		for (int i = 0; i < level; i++) {
 			topic.getSubtopics().add(createTopic(store, resources, factory, name + "_", level - 1));
@@ -122,12 +132,12 @@ public class MindMapAction extends AbstractTestAction {
 		assertEquals(name + level, topic.getName());
 		assertEquals(level, topic.getSubtopics().size());
 		assertEquals(Priority.get(level), topic.getPriority());
-		assertEquals((float)(level * 10.0 / 100.0), topic.getPercentComplete(), 0.1f);
+		assertEquals((float) (level * 10.0 / 100.0), topic.getPercentComplete(), 0.1f);
 		for (int i = 0; i < topic.getResources().size(); i++) {
 			assertEquals(topic.getResources().get(i), map.getResources().get(i));
 		}
 		for (int i = 0; i < level; i++) {
-			checkTopic(map, (Topic)topic.getSubtopics().get(i), name + "_", level - 1);
+			checkTopic(map, (Topic) topic.getSubtopics().get(i), name + "_", level - 1);
 		}
 	}
 }

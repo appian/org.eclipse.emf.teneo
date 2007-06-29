@@ -1,23 +1,17 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: SimplenmAction.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * SimplenmAction.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
 
 import java.util.Iterator;
+import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.issues.simplenm.Me;
 import org.eclipse.emf.teneo.samples.issues.simplenm.SimplenmFactory;
 import org.eclipse.emf.teneo.samples.issues.simplenm.SimplenmPackage;
@@ -29,7 +23,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests ordering in a nm relation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class SimplenmAction extends AbstractTestAction {
 	/**
@@ -41,7 +35,16 @@ public class SimplenmAction extends AbstractTestAction {
 		super(SimplenmPackage.eINSTANCE);
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		return props;
+	}
+
 	/** Creates an item, an address and links them to a po. */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final SimplenmFactory factory = SimplenmFactory.eINSTANCE;
 

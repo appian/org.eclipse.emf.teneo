@@ -19,7 +19,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class UniqueConstraintsAction extends AbstractTestAction {
 	/**
@@ -57,7 +57,7 @@ public class UniqueConstraintsAction extends AbstractTestAction {
 			store.store(item);
 			store.commitTransaction();
 			fail("The uniqueconstraint has not been applied");
-		} catch (Exception s) {
+		} catch (final Exception s) {
 			// this is correct behavior
 			store.rollbackTransaction();
 		}

@@ -19,7 +19,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class CompositeIdAction extends AbstractTestAction {
 	/**
@@ -35,14 +35,14 @@ public class CompositeIdAction extends AbstractTestAction {
 		final CompositeidFactory factory = CompositeidFactory.eINSTANCE;
 		{
 			store.beginTransaction();
-			Parent parent = factory.createParent();
+			final Parent parent = factory.createParent();
 			parent.setFirstName("John");
 			parent.setLastName("Smith");
-			Child child1 = factory.createChild();
+			final Child child1 = factory.createChild();
 			child1.setFirstName("Johnny");
 			child1.setLastName("Smith");
 			parent.getChildren().add(child1);
-			Child child2 = factory.createChild();
+			final Child child2 = factory.createChild();
 			child2.setFirstName("Jane");
 			child2.setLastName("Smith");
 			parent.getChildren().add(child2);
@@ -54,10 +54,10 @@ public class CompositeIdAction extends AbstractTestAction {
 		// read again
 		{
 			store.beginTransaction();
-			Parent parent = (Parent) store.getObject(Parent.class);
+			final Parent parent = (Parent) store.getObject(Parent.class);
 			assertEquals(2, parent.getChildren().size());
-			assertEquals("Johnny", (parent.getChildren().get(0)).getFirstName());
-			assertEquals("Jane", (parent.getChildren().get(1)).getFirstName());
+			assertEquals("Johnny", parent.getChildren().get(0).getFirstName());
+			assertEquals("Jane", parent.getChildren().get(1).getFirstName());
 			store.commitTransaction();
 		}
 	}

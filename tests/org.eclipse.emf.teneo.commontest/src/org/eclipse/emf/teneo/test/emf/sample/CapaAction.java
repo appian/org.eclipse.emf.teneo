@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CapaAction.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: CapaAction.java,v 1.4 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,10 +32,10 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the capa, detach and update
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class CapaAction extends AbstractTestAction {
-	
+
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * 
@@ -46,6 +46,8 @@ public class CapaAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final CapaFactory factory = CapaFactory.eINSTANCE;
 		MachineList ml = factory.createMachineList();
@@ -53,55 +55,56 @@ public class CapaAction extends AbstractTestAction {
 			store.beginTransaction();
 			Machine m = getNewMachine(factory, "id0");
 			WorkWeek ww = factory.createWorkWeek();
-	        ww.getDays().add(factory.createWorkDay());
-	        ww.getDays().add(factory.createWorkDay());
-	        ww.getDays().add(factory.createWorkDay());
-	        ww.getDays().add(factory.createWorkDay());
-	        ww.getDays().add(factory.createWorkDay());
-	        ww.getDays().add(factory.createWorkDay());
-	        ww.getDays().add(factory.createWorkDay());
-	        m.setWorkWeek(ww);
+			ww.getDays().add(factory.createWorkDay());
+			ww.getDays().add(factory.createWorkDay());
+			ww.getDays().add(factory.createWorkDay());
+			ww.getDays().add(factory.createWorkDay());
+			ww.getDays().add(factory.createWorkDay());
+			ww.getDays().add(factory.createWorkDay());
+			ww.getDays().add(factory.createWorkDay());
+			m.setWorkWeek(ww);
 			ml.getMachines().add(m);
 			store.store(ml);
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
-			ml = (MachineList)store.getObject(MachineList.class);
+			ml = (MachineList) store.getObject(MachineList.class);
 			store.commitTransaction();
 		}
-		
+
 		checkReAttach(factory, store, ml);
 	}
 
 	/** Creates a machine */
+	@SuppressWarnings("unchecked")
 	protected Machine getNewMachine(CapaFactory factory, String id) {
 		final Machine m = factory.createMachine();
 		final WorkWeek wk = factory.createWorkWeek();
 		wk.getDays().addAll(getWorkDays(factory));
 		m.setWorkWeek(wk);
 		m.setMachineId(id);
-		//m.setMachineSearchString("search");
-		//m.setTaskSearchString("tss");
+		// m.setMachineSearchString("search");
+		// m.setTaskSearchString("tss");
 		return m;
 	}
-	
+
 	/** Returns a list of workdays */
-	private List getWorkDays(CapaFactory factory) {
-		final ArrayList list = new ArrayList();
+	private List<WorkDay> getWorkDays(CapaFactory factory) {
+		final ArrayList<WorkDay> list = new ArrayList<WorkDay>();
 		for (int i = 1; i < 8; i++) {
 			final WorkDay wd = factory.createWorkDay();
-			//wd.setDayOfWeek(i);
-			//wd.setDuration(8);
-			//wd.setStartTime(8);
+			// wd.setDayOfWeek(i);
+			// wd.setDuration(8);
+			// wd.setStartTime(8);
 			list.add(wd);
 		}
 		return list;
 	}
-	
+
 	/** Reattach machinelist and check */
 	protected void checkReAttach(CapaFactory factory, TestStore store, MachineList ml) {
-		
+
 	}
 }

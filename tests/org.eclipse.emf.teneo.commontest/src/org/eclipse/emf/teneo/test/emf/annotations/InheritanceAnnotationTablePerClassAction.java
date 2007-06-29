@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations to direct the inheritance mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction {
 
@@ -54,6 +54,37 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 	 */
 	public InheritanceAnnotationTablePerClassAction() {
 		super(InheritancemappingPackage.eINSTANCE);
+	}
+
+	/** Checks that the address types occur in the passed list */
+	private void checkAddressList(Iterator<?> it) {
+		int cntus = 0;
+		int cntuk = 0;
+		int cntdistrict = 0;
+		while (it.hasNext()) {
+			final Address address = (Address) it.next();
+			if (address instanceof DistrictUKAddress) {
+				cntdistrict++;
+			} else if (address instanceof UKAddress) {
+				cntuk++;
+				if (address.getName().compareTo("Primeminister") == 0) {
+					assertTrue(address instanceof UKAddress);
+				}
+			} else if (address instanceof USAddress) {
+				cntus++;
+
+				if (address.getName().compareTo("empty") == 0) {
+					assertFalse(((USAddress) address).isSetState());
+					assertFalse(((USAddress) address).isSetZip());
+				} else {
+					assertTrue(((USAddress) address).isSetState());
+					assertTrue(((USAddress) address).isSetZip());
+				}
+			}
+		}
+		assertTrue(cntus == 2);
+		assertTrue(cntuk == 1);
+		assertTrue(cntdistrict == 1);
 	}
 
 	/** Creates simple types and tests against */
@@ -70,7 +101,7 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 		final InheritancemappingFactory factory = InheritancemappingFactory.eINSTANCE;
 		{
 			store.beginTransaction();
-			USAddress usaddress = factory.createUSAddress();
+			final USAddress usaddress = factory.createUSAddress();
 			usaddress.setName("Montgomery");
 			usaddress.setCity("Montgomery");
 			usaddress.setState(USState.AL_LITERAL);
@@ -79,7 +110,7 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 			store.store(usaddress);
 
 			// test nullable fields
-			USAddress emptyaddress = factory.createUSAddress();
+			final USAddress emptyaddress = factory.createUSAddress();
 			emptyaddress.setName("empty");
 			emptyaddress.setCity("empty");
 			emptyaddress.setStreet("empty");
@@ -94,21 +125,21 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 			store.store(emptyaddress);
 
 			// create a uk address and a uk district address
-			UKAddress ukaddress = factory.createUKAddress();
+			final UKAddress ukaddress = factory.createUKAddress();
 			ukaddress.setCity("London");
 			ukaddress.setStreet("Downingstreet 10");
 			ukaddress.setName("Primeminister");
 			ukaddress.setPostcode("0000");
 			store.store(ukaddress);
 
-			DistrictUKAddress districtaddress = factory.createDistrictUKAddress();
+			final DistrictUKAddress districtaddress = factory.createDistrictUKAddress();
 			districtaddress.setCity("district");
 			districtaddress.setDistrict("district1");
 			districtaddress.setName("My districtaddress");
 			districtaddress.setPostcode("postcode1");
 			districtaddress.setStreet("street1");
 			store.store(districtaddress);
-			ContentList contentlist = factory.createContentList();
+			final ContentList contentlist = factory.createContentList();
 			contentlist.setName("testme");
 			contentlist.getAddress().add(usaddress);
 			contentlist.getAddress().add(emptyaddress);
@@ -116,12 +147,12 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 			contentlist.getAddress().add(districtaddress);
 			store.store(contentlist);
 
-			InternationalPrice intprice = factory.createInternationalPrice();
+			final InternationalPrice intprice = factory.createInternationalPrice();
 			intprice.setName("euro");
 			intprice.setCurrency("EUR");
 			intprice.setValue(new BigDecimal("100.50"));
 
-			Price price = factory.createPrice();
+			final Price price = factory.createPrice();
 			price.setName("mycurrency");
 			price.setValue(new BigDecimal("99.30"));
 			store.store(price);
@@ -133,10 +164,10 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 
 		{
 			store.beginTransaction();
-			ContentList contentList = (ContentList) store.getObject(ContentList.class);
+			final ContentList contentList = (ContentList) store.getObject(ContentList.class);
 			checkAddressList(contentList.getAddress().iterator());
 
-			List<?> prices = store.getObjects(Price.class);
+			final List<?> prices = store.getObjects(Price.class);
 			assertEquals(2, prices.size());
 			InternationalPrice ip;
 			Price p;
@@ -191,39 +222,8 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 					conn.close();
 				}
 			}
-		} catch (SQLException e) {
+		} catch (final SQLException e) {
 			throw new StoreTestException("Sql exception when retrieving objects based on discriminator values", e);
 		}
-	}
-
-	/** Checks that the address types occur in the passed list */
-	private void checkAddressList(Iterator<?> it) {
-		int cntus = 0;
-		int cntuk = 0;
-		int cntdistrict = 0;
-		while (it.hasNext()) {
-			Address address = (Address) it.next();
-			if (address instanceof DistrictUKAddress) {
-				cntdistrict++;
-			} else if (address instanceof UKAddress) {
-				cntuk++;
-				if (address.getName().compareTo("Primeminister") == 0) {
-					assertTrue(address instanceof UKAddress);
-				}
-			} else if (address instanceof USAddress) {
-				cntus++;
-
-				if (address.getName().compareTo("empty") == 0) {
-					assertFalse(((USAddress) address).isSetState());
-					assertFalse(((USAddress) address).isSetZip());
-				} else {
-					assertTrue(((USAddress) address).isSetState());
-					assertTrue(((USAddress) address).isSetZip());
-				}
-			}
-		}
-		assertTrue(cntus == 2);
-		assertTrue(cntuk == 1);
-		assertTrue(cntdistrict == 1);
 	}
 }

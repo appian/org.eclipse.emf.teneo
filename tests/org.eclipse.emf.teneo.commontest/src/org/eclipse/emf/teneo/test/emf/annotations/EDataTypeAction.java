@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EDataTypeAction.java,v 1.3 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: EDataTypeAction.java,v 1.4 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class EDataTypeAction extends AbstractTestAction {
 	/**
@@ -47,19 +47,20 @@ public class EDataTypeAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
 	public void doAction(TestStore store) {
-		BigDecimal testDbl = new BigDecimal("12456677.90123");
+		final BigDecimal testDbl = new BigDecimal("12456677.90123");
 		final EdatatypeColumnFactory factory = EdatatypeColumnFactory.eINSTANCE;
 		try {
 			store.beginTransaction();
-			Book book = factory.createBook();
+			final Book book = factory.createBook();
 			book.setAuthor("martin");
 			book.setTitle("012345678901234567890123456789");
 			book.setPages(1000);
 			book.setWeight(new BigDecimal("12456677.90123"));
 			store.store(book);
 			store.commitTransaction();
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			// in this case the constraint checking fails directly stop with this
 			return;
 		}
@@ -68,7 +69,7 @@ public class EDataTypeAction extends AbstractTestAction {
 		{
 			try {
 				store.beginTransaction();
-				Book book = factory.createBook();
+				final Book book = factory.createBook();
 				book.setAuthor("martin");
 				book.setTitle("012345678901234567890123456789");
 				book.setPages(1000);
@@ -76,7 +77,7 @@ public class EDataTypeAction extends AbstractTestAction {
 				store.store(book);
 				store.commitTransaction();
 				fail("The unique constraint on title is violated");
-			} catch (Exception e) {
+			} catch (final Exception e) {
 				// no fail, this good
 				store.rollbackTransaction();
 			}
@@ -85,11 +86,11 @@ public class EDataTypeAction extends AbstractTestAction {
 		// read back and check it
 		{
 			store.beginTransaction();
-			Book book = (Book) store.getObject(Book.class);
+			final Book book = (Book) store.getObject(Book.class);
 			assertTrue("The length of the booktitle should not be more than 25: " + book.getTitle().length(), book
-					.getTitle().length() <= 25);
+				.getTitle().length() <= 25);
 			assertTrue("Only a precision of 5 is defined, so weight is not correctly stored as it has more digits",
-					Math.abs(testDbl.subtract(book.getWeight()).doubleValue()) > 1.0);
+				Math.abs(testDbl.subtract(book.getWeight()).doubleValue()) > 1.0);
 			book.setWeight(new BigDecimal("25.5"));
 			store.store(book);
 			store.commitTransaction();
@@ -102,17 +103,19 @@ public class EDataTypeAction extends AbstractTestAction {
 			try {
 				conn = store.getConnection();
 				stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM mybooktable WHERE titel='' AND gewicht IS NULL");
+				final ResultSet rs = stmt.executeQuery("SELECT * FROM mybooktable WHERE titel='' AND gewicht IS NULL");
 				assertTrue(rs != null); // dummy to get rid of warning
-			} catch (SQLException s) {
+			} catch (final SQLException s) {
 				throw new StoreTestException("SQL Exception", s);
 			} finally {
 				try {
-					if (stmt != null)
+					if (stmt != null) {
 						stmt.close();
-					if (conn != null)
+					}
+					if (conn != null) {
 						conn.close();
-				} catch (SQLException s) {
+					}
+				} catch (final SQLException s) {
 					throw new StoreTestException("SQL Exception", s);
 				}
 			}
@@ -121,7 +124,7 @@ public class EDataTypeAction extends AbstractTestAction {
 		// read back and check it
 		{
 			store.beginTransaction();
-			Book book = (Book) store.getObject(Book.class);
+			final Book book = (Book) store.getObject(Book.class);
 			assertTrue(255 == (int) (book.getWeight().doubleValue() * 10));
 			store.store(book);
 			store.commitTransaction();

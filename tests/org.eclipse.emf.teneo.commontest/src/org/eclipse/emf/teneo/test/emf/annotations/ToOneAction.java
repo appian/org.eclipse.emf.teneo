@@ -11,11 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ToOneAction.java,v 1.3 2007/02/11 21:52:19 mtaal Exp $
+ * $Id: ToOneAction.java,v 1.4 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
-
 
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Address;
 import org.eclipse.emf.teneo.samples.emf.annotations.toone.Arm;
@@ -30,53 +29,51 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
-*/
-public class ToOneAction extends AbstractTestAction 
-{
+ * @version $Revision: 1.4 $
+ */
+public class ToOneAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * @param arg0
 	 */
-	public ToOneAction()  
-	{
+	public ToOneAction() {
 		super(ToonePackage.eINSTANCE);
 	}
 
 	/** Creates an item, an address and links them to a po. */
-	public void doAction(TestStore store)
-	{
+	@Override
+	public void doAction(TestStore store) {
 		final TooneFactory factory = TooneFactory.eINSTANCE;
-		
-    	{
-    		store.beginTransaction();
-    		Arm arm = factory.createArm();
-    		arm.setLength(50);
-    		Address a = factory.createAddress();
-    		a.setCity("Amersfoort");
-    		Person p = factory.createPerson();
-    		Head h = factory.createHead();
-    		h.setHairColor("braun");
-    		
-    		p.setAddress(a);
-    		p.setHead(h);
-    		p.setLeftArm(arm);
-    		store.store(arm);
-    		store.store(p);
-    		store.commitTransaction();
-    	}
-    	
-    	// read back and check it
-    	{
-    		store.beginTransaction();
-    		Person p = (Person)store.getObject(Person.class);
-    		store.deleteObject(p);
-    		store.commitTransaction();
-    	}
-    	
-    	store.checkNumber(Person.class, 0);
-    	store.checkNumber(Head.class, 0);
-    	store.checkNumber(Address.class, 1);
-    	store.checkNumber(Arm.class, 1);
-	}	
+
+		{
+			store.beginTransaction();
+			final Arm arm = factory.createArm();
+			arm.setLength(50);
+			final Address a = factory.createAddress();
+			a.setCity("Amersfoort");
+			final Person p = factory.createPerson();
+			final Head h = factory.createHead();
+			h.setHairColor("braun");
+
+			p.setAddress(a);
+			p.setHead(h);
+			p.setLeftArm(arm);
+			store.store(arm);
+			store.store(p);
+			store.commitTransaction();
+		}
+
+		// read back and check it
+		{
+			store.beginTransaction();
+			final Person p = (Person) store.getObject(Person.class);
+			store.deleteObject(p);
+			store.commitTransaction();
+		}
+
+		store.checkNumber(Person.class, 0);
+		store.checkNumber(Head.class, 0);
+		store.checkNumber(Address.class, 1);
+		store.checkNumber(Arm.class, 1);
+	}
 }

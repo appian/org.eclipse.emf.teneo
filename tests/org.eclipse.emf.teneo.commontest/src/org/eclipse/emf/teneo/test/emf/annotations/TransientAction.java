@@ -21,7 +21,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test transient eclass
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class TransientAction extends AbstractTestAction {
 	/**
@@ -39,9 +39,9 @@ public class TransientAction extends AbstractTestAction {
 		final TransentFactory factory = TransentFactory.eINSTANCE;
 		{
 			store.beginTransaction();
-			Body bd = factory.createBody();
+			final Body bd = factory.createBody();
 			bd.setTheID(5);
-			Head hd = factory.createHead();
+			final Head hd = factory.createHead();
 			hd.setMyID(5);
 			bd.setHead(hd);
 			store.store(bd);
@@ -49,18 +49,18 @@ public class TransientAction extends AbstractTestAction {
 		}
 		{
 			store.beginTransaction();
-			Body bd = (Body) store.getObject(Body.class);
+			final Body bd = (Body) store.getObject(Body.class);
 			assertEquals(null, bd.getHead());
 			store.commitTransaction();
 		}
 		{
 			store.beginTransaction();
 			try {
-				List<?> list = store.getObjects(Head.class);
+				final List<?> list = store.getObjects(Head.class);
 				assertTrue(list != null);// dummy to get rid of warning
 				store.commitTransaction();
 				fail("head is not mapped!");
-			} catch (Throwable t) {
+			} catch (final Throwable t) {
 				// success
 			}
 		}

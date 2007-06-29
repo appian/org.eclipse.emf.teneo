@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DetachFeatureMapAction.java,v 1.4 2007/02/08 23:11:22 mtaal Exp $
+ * $Id: DetachFeatureMapAction.java,v 1.5 2007/06/29 07:35:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.detach;
@@ -51,20 +51,19 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * on the featuremap (move, set, etc).
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
-*/
-public class DetachFeatureMapAction extends AbstractTestAction 
-{
+ * @version $Revision: 1.5 $ 
+ */
+public class DetachFeatureMapAction extends AbstractTestAction {
 
 	/** Constructor */
-	public DetachFeatureMapAction()
-	{
+	public DetachFeatureMapAction() {
 		super(DetachfeaturemapPackage.eINSTANCE);
 	}
 
 	/**
 	 * Says to use the mapping file, actually only relevant for hibernate
 	 */
+	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.put(PersistenceOptions.USE_MAPPING_FILE, "true");
@@ -72,116 +71,116 @@ public class DetachFeatureMapAction extends AbstractTestAction
 	}
 
 	/** Stores a TopModel Object */
-	public void doAction(TestStore store)
-	{
-		try
-		{
+	@Override
+	@SuppressWarnings("unchecked")
+	public void doAction(TestStore store) {
+		try {
 			DetachfeaturemapFactory factory = DetachfeaturemapFactory.eINSTANCE;
 
 			{
-	    		final Resource resource = store.getResource();
-	    		
-			    resource.load (Collections.EMPTY_MAP);
-			    assertTrue(resource.getContents().size() == 0);
-	
-			    // add test data
-			    Contacts contacts = factory.createContacts();
-			    Person person = factory.createPerson();
+				final Resource resource = store.getResource();
+
+				resource.load(Collections.EMPTY_MAP);
+				assertTrue(resource.getContents().size() == 0);
+
+				// add test data
+				Contacts contacts = factory.createContacts();
+				Person person = factory.createPerson();
 				person.setName("");
 				person.getMobile().add("001");
 				person.getMobile().add("002");
-				
+
 				contacts.getPersons().add(person);
-				
-			    SpecialPerson specialPerson = factory.createSpecialPerson();
-			    specialPerson.setName("");
-			    specialPerson.getMobile().add("001");
-			    specialPerson.getMobile().add("002");
+
+				SpecialPerson specialPerson = factory.createSpecialPerson();
+				specialPerson.setName("");
+				specialPerson.getMobile().add("001");
+				specialPerson.getMobile().add("002");
 				contacts.getPersons().add(specialPerson);
-				
+
 				resource.getContents().add(contacts);
-				
+
 				resource.save(Collections.EMPTY_MAP);
 
-				contacts = (Contacts)resource.getContents().get(0);
+				contacts = (Contacts) resource.getContents().get(0);
 				person = (Person) contacts.getPersons().get(0);
-				
-				assertEquals (2, person.getMobile().size());
-				
-				EList mobiles = (EList) person.getMobile();
-				
+
+				assertEquals(2, person.getMobile().size());
+
+				EList<Object> mobiles = person.getMobile();
+
 				Object m1 = mobiles.get(0);
 				Object m2 = mobiles.get(1);
-			    
+
 				for (Object o : new ArrayList<Object>(mobiles)) {
 					mobiles.remove(o);
 				}
-				//mobiles.clear();
-				
+				// mobiles.clear();
+
 				mobiles.add(m1);
 				mobiles.add(m2);
-			     
-				resource.save(Collections.EMPTY_MAP);       
-				resource.unload();
-			}
-			
-			{
-	    		Resource resource = store.getResource();
-			    resource.load (Collections.EMPTY_MAP);
-				Contacts contacts = (Contacts)resource.getContents().get(0);
-				Person person = (Person) contacts.getPersons().get(0);
-				
-				assertEquals (2, person.getMobile().size());
-				resource.unload();
-			}
-			
-			// now move everything around
-			{
-	    		Resource resource = store.getResource();
-			    resource.load (Collections.EMPTY_MAP);
-				Contacts contacts = (Contacts)resource.getContents().get(0);
-				Person person = (Person) contacts.getPersons().get(0);
-				
-				Object p0 = person.getPhones().get(0);
-				Object p1 = person.getPhones().get(1);
-				person.getPhones().clear();
-				person.getPhones().add((FeatureMap.Entry)p1);
-				person.getPhones().add((FeatureMap.Entry)p0);
-				
-				assertEquals (2, person.getMobile().size());
+
 				resource.save(Collections.EMPTY_MAP);
 				resource.unload();
 			}
 
 			{
-	    		Resource resource = store.getResource();
-			    resource.load (Collections.EMPTY_MAP);
-				Contacts contacts = (Contacts)resource.getContents().get(0);
+				Resource resource = store.getResource();
+				resource.load(Collections.EMPTY_MAP);
+				Contacts contacts = (Contacts) resource.getContents().get(0);
+				Person person = (Person) contacts.getPersons().get(0);
+
+				assertEquals(2, person.getMobile().size());
+				resource.unload();
+			}
+
+			// now move everything around
+			{
+				Resource resource = store.getResource();
+				resource.load(Collections.EMPTY_MAP);
+				Contacts contacts = (Contacts) resource.getContents().get(0);
+				Person person = (Person) contacts.getPersons().get(0);
+
+				Object p0 = person.getPhones().get(0);
+				Object p1 = person.getPhones().get(1);
+				person.getPhones().clear();
+				person.getPhones().add((FeatureMap.Entry) p1);
+				person.getPhones().add((FeatureMap.Entry) p0);
+
+				assertEquals(2, person.getMobile().size());
+				resource.save(Collections.EMPTY_MAP);
+				resource.unload();
+			}
+
+			{
+				Resource resource = store.getResource();
+				resource.load(Collections.EMPTY_MAP);
+				Contacts contacts = (Contacts) resource.getContents().get(0);
 				Person person = (Person) contacts.getPersons().get(0);
 				assertTrue(person.getMobile().get(0).toString().compareTo("002") == 0);
 				assertTrue(person.getMobile().get(1).toString().compareTo("001") == 0);
 				resource.save(Collections.EMPTY_MAP);
 				resource.unload();
 			}
-			
+
 			// add two and delete 1
 			{
-	    		Resource resource = store.getResource();
-			    resource.load (Collections.EMPTY_MAP);
-				Contacts contacts = (Contacts)resource.getContents().get(0);
+				Resource resource = store.getResource();
+				resource.load(Collections.EMPTY_MAP);
+				Contacts contacts = (Contacts) resource.getContents().get(0);
 				Person person = (Person) contacts.getPersons().get(0);
 				person.getMobile().add("003");
 				person.getMobile().add("004");
-				person.getMobile().remove(1); //removes 001
+				person.getMobile().remove(1); // removes 001
 				resource.save(Collections.EMPTY_MAP);
 				resource.unload();
 			}
 
 			// check if this actually worked
 			{
-	    		Resource resource = store.getResource();
-			    resource.load (Collections.EMPTY_MAP);
-				Contacts contacts = (Contacts)resource.getContents().get(0);
+				Resource resource = store.getResource();
+				resource.load(Collections.EMPTY_MAP);
+				Contacts contacts = (Contacts) resource.getContents().get(0);
 				Person person = (Person) contacts.getPersons().get(0);
 				assertTrue(person.getMobile().get(0).toString().compareTo("002") == 0);
 				assertTrue(person.getMobile().get(1).toString().compareTo("003") == 0);
@@ -189,12 +188,12 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				resource.save(Collections.EMPTY_MAP);
 				resource.unload();
 			}
-			
-			// do a set and move 
+
+			// do a set and move
 			{
-	    		Resource resource = store.getResource();
-			    resource.load (Collections.EMPTY_MAP);
-				Contacts contacts = (Contacts)resource.getContents().get(0);
+				Resource resource = store.getResource();
+				resource.load(Collections.EMPTY_MAP);
+				Contacts contacts = (Contacts) resource.getContents().get(0);
 				Person person = (Person) contacts.getPersons().get(0);
 				person.getPhones().move(0, 2); // order is now 004, 002, 003
 				person.getMobile().set(2, "005"); // order is now 004, 002, 005
@@ -204,9 +203,9 @@ public class DetachFeatureMapAction extends AbstractTestAction
 
 			// the order should be 004, 002, 005
 			{
-	    		Resource resource = store.getResource();
-			    resource.load (Collections.EMPTY_MAP);
-				Contacts contacts = (Contacts)resource.getContents().get(0);
+				Resource resource = store.getResource();
+				resource.load(Collections.EMPTY_MAP);
+				Contacts contacts = (Contacts) resource.getContents().get(0);
 				Person person = (Person) contacts.getPersons().get(0);
 				assertTrue(person.getMobile().get(0).toString().compareTo("004") == 0);
 				assertTrue(person.getMobile().get(1).toString().compareTo("002") == 0);
@@ -214,7 +213,7 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				resource.save(Collections.EMPTY_MAP);
 				resource.unload();
 			}
-			
+
 			// test a specific feature related to copy action and then changing the changed object
 			{
 				List factories = new ArrayList();
@@ -225,61 +224,61 @@ public class DetachFeatureMapAction extends AbstractTestAction
 				// create an editing domain
 				ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(factories);
 				BasicCommandStack commandStack = new BasicCommandStack();
-				EditingDomain editDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap());;
+				EditingDomain editDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap());
+				;
 
 				// get and load the resource
 				final String uriStr = getResourceUri(store);
 				final URI uri = URI.createURI(uriStr);
 				Resource resource = editDomain.getResourceSet().createResource(uri);
-			    resource.load (Collections.EMPTY_MAP);
-			    
-			    // get contacts and person
-				Contacts contacts = (Contacts)resource.getContents().get(0);
+				resource.load(Collections.EMPTY_MAP);
+
+				// get contacts and person
+				Contacts contacts = (Contacts) resource.getContents().get(0);
 				Person person = (Person) contacts.getPersons().get(0);
-				
+
 				// copy
-				CopyCommand cpcmd = new CopyCommand(editDomain, person, new Helper()); //(CopyCommand)CopyCommand.create(editDomain, person);
+				CopyCommand cpcmd = new CopyCommand(editDomain, person, new Helper()); // (CopyCommand)CopyCommand.create(editDomain,
+				// person);
 				cpcmd.execute();
-				
+
 				// get the copied person, change it and add it to the resource
-				Person cpPerson = (Person)cpcmd.getResult().iterator().next();
+				Person cpPerson = (Person) cpcmd.getResult().iterator().next();
 				cpPerson.setName("copy");
 				contacts.getPersons().add(cpPerson);
-				
+
 				// save it
 				resource.save(Collections.EMPTY_MAP);
-				
+
 				// change the copy
 				cpPerson.setName("copy2");
-				
+
 				// before the next save gave an error but now it works fine.
-				resource.save(Collections.EMPTY_MAP);				
+				resource.save(Collections.EMPTY_MAP);
 				resource.unload();
 			}
 
 			// the order should be 004, 002, 005
 			{
-	    		Resource resource = store.getResource();
-			    resource.load (Collections.EMPTY_MAP);
-				Contacts contacts = (Contacts)resource.getContents().get(0);
+				Resource resource = store.getResource();
+				resource.load(Collections.EMPTY_MAP);
+				Contacts contacts = (Contacts) resource.getContents().get(0);
 				Person person = (Person) contacts.getPersons().get(0);
 				assertTrue(person.getName().compareTo("copy2") != 0);
 				assertTrue(person.getPhones().size() > 0);
-				
+
 				person.getMobile().clear();
-				
+
 				resource.save(Collections.EMPTY_MAP);
 				resource.unload();
 			}
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			throw new StoreTestException("Need to catch the resource ioexception", e);
 		}
-    }
-	
+	}
+
 	/** Returns the resource uri, jdo is default (for now) */
 	public String getResourceUri(TestStore store) {
-		return "jpoxdao://?" + StoreResource.DS_NAME_PARAM + "=" + store.getDatabaseAdapter().getDbName();		
+		return "jpoxdao://?" + StoreResource.DS_NAME_PARAM + "=" + store.getDatabaseAdapter().getDbName();
 	}
 }

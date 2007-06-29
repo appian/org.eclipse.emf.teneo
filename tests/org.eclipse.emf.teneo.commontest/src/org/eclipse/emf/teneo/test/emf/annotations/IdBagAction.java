@@ -40,22 +40,12 @@ public class IdBagAction extends AbstractTestAction {
 
 	private void storeUser(TestStore store) {
 		store.beginTransaction();
-		User user = IdbagFactory.eINSTANCE.createUser();
+		final User user = IdbagFactory.eINSTANCE.createUser();
 		user.setName(NAME);
 		user.getRoles().add(ROLE1);
 		user.getRoles().add(ROLE2);
 		store.store(user);
 		store.commitTransaction();
-	}
-
-	private void testUser(TestStore store) {
-		List<?> results = store.query("select u from User u");
-		assertEquals(1, results.size());
-		User user = (User) results.get(0);
-		assertEquals(NAME, user.getName());
-		assertEquals(2, user.getRoles().size());
-		assertTrue(user.getRoles().contains(ROLE1));
-		assertTrue(user.getRoles().contains(ROLE2));
 	}
 
 	private void testPrimaryKey(TestStore store) {
@@ -71,14 +61,14 @@ public class IdBagAction extends AbstractTestAction {
 			try {
 				resultSet = metaData.getPrimaryKeys(null, null, "user_roles");
 				rsTrue = resultSet.next();
-			} catch (SQLException e) {
+			} catch (final SQLException e) {
 				// ignore, hope for the next one
 			}
 			boolean rs2True = false;
 			try {
 				resultSet2 = metaData.getPrimaryKeys(null, null, "roles");
 				rs2True = resultSet2.next();
-			} catch (SQLException e) {
+			} catch (final SQLException e) {
 				assertTrue(rsTrue);
 				// ignore hope for the first one
 			}
@@ -92,7 +82,7 @@ public class IdBagAction extends AbstractTestAction {
 					.getString("COLUMN_NAME")));
 				assertFalse("Found more than one primary key.", resultSet2.next());
 			}
-		} catch (SQLException e) {
+		} catch (final SQLException e) {
 			assertFalse(e.getMessage(), true);
 		} finally {
 			try {
@@ -102,9 +92,19 @@ public class IdBagAction extends AbstractTestAction {
 						resultSet2.close();
 					}
 				}
-			} catch (SQLException e) {
+			} catch (final SQLException e) {
 			}
 		}
+	}
+
+	private void testUser(TestStore store) {
+		final List<?> results = store.query("select u from User u");
+		assertEquals(1, results.size());
+		final User user = (User) results.get(0);
+		assertEquals(NAME, user.getName());
+		assertEquals(2, user.getRoles().size());
+		assertTrue(user.getRoles().contains(ROLE1));
+		assertTrue(user.getRoles().contains(ROLE2));
 	}
 
 }

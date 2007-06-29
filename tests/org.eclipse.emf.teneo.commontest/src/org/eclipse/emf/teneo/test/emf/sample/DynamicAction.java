@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -81,10 +81,10 @@ public class DynamicAction extends AbstractTestAction {
 			store.commitTransaction();
 			store.beginTransaction();
 			// and read martin and set his haircolor also
-			final List list = store.getObjects(Person.class);
+			final List<?> list = store.getObjects(Person.class);
 			assertEquals(2, list.size());
-			for (Iterator it = list.iterator(); it.hasNext();) {
-				Person person = (Person) it.next();
+			for (Object name : list) {
+				Person person = (Person) name;
 				if (person.getName().compareTo("martin") == 0) {
 					person.eSet(hairColor, "blond");
 					store.store(person);
@@ -181,9 +181,9 @@ public class DynamicAction extends AbstractTestAction {
 		// read them all (incl. the person), create a department and add the managers
 		{
 			store.beginTransaction();
-			List employees = store.query("select e from Employee e");
+			List<?> employees = store.query("select e from Employee e");
 			assertEquals(3, employees.size());
-			for (Iterator it = employees.iterator(); it.hasNext();) {
+			for (Iterator<?> it = employees.iterator(); it.hasNext();) {
 				EObject eobject = (EObject) it.next();
 				assertTrue(eobject.eClass() == employeeClass);
 			}
@@ -191,7 +191,7 @@ public class DynamicAction extends AbstractTestAction {
 			EObject department = EcoreUtil.create(departmentClass);
 			department.eSet(departmentName, "Software Development");
 			department.eSet(departmentType, el1);
-			final ArrayList departmentManagers = new ArrayList();
+			final ArrayList<Person> departmentManagers = new ArrayList<Person>();
 			for (int i = 0; i < employees.size(); i++) {
 				Person employ = (Person) employees.get(i);
 				if (((Boolean) employ.eGet(employeeManager)).booleanValue()) {
@@ -207,10 +207,10 @@ public class DynamicAction extends AbstractTestAction {
 		// do a polymorphic query
 		{
 			store.beginTransaction();
-			List employees = store.query("select p from Person p");
+			List<?> employees = store.query("select p from Person p");
 			assertEquals(4, employees.size());
 			int cntEmployee = 0;
-			for (Iterator it = employees.iterator(); it.hasNext();) {
+			for (Iterator<?> it = employees.iterator(); it.hasNext();) {
 				EObject eobject = (EObject) it.next();
 
 				if (eobject.eClass() == employeeClass) {
@@ -224,10 +224,10 @@ public class DynamicAction extends AbstractTestAction {
 		// now delete the department, there should now be only one employee left
 		{
 			store.beginTransaction();
-			List list = store.query("select d from Department d");
+			List<?> list = store.query("select d from Department d");
 			assertEquals(1, list.size());
 			EObject department = (EObject) list.get(0);
-			List managers = (List) department.eGet(departmentManager);
+			List<?> managers = (List<?>) department.eGet(departmentManager);
 			assertEquals(2, managers.size());
 			assertTrue(((Person) managers.get(0)).eClass() == employeeClass);
 			assertTrue(((Person) managers.get(1)).eClass() == employeeClass);
@@ -239,7 +239,7 @@ public class DynamicAction extends AbstractTestAction {
 		store.checkNumber(Person.class, 2);
 		{
 			store.beginTransaction();
-			List list = store.query("select e from Employee e");
+			List<?> list = store.query("select e from Employee e");
 			assertEquals(1, list.size());
 			Person person = (Person) list.get(0);
 			assertTrue(person.eClass() == employeeClass);

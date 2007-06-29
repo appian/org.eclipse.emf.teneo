@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: RentalMapAsClassAction.java,v 1.2 2007/03/29 22:13:54 mtaal Exp $
+ * $Id: RentalMapAsClassAction.java,v 1.3 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests mapping an eclass as a class.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class RentalMapAsClassAction extends AbstractTestAction {
 	/**
@@ -61,10 +61,12 @@ public class RentalMapAsClassAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.SET_PROXY, "true");
+		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
 		return props;
 	}
 
 	/** Test */
+	@Override
 	public void doAction(TestStore store) {
 		final RentalFactory rf = RentalFactory.eINSTANCE;
 
@@ -90,6 +92,7 @@ public class RentalMapAsClassAction extends AbstractTestAction {
 			c.setCode("EUR");
 			rcontract.setCurrency(c);
 			store.beginTransaction();
+			store.store(rcontract.getRentalUnits());
 			store.store(rcontract);
 			store.commitTransaction();
 		}
@@ -102,7 +105,10 @@ public class RentalMapAsClassAction extends AbstractTestAction {
 			final RentalBicycle rb = (RentalBicycle) rc.getRentalUnits().get(1);
 			Currency c = rc.getCurrency();
 			assertEquals("EUR", c.getCode());
-			assertTrue(c.getClass().getSimpleName().indexOf("$$") != -1); // rough test, no dependencies on hibernate from this package
+			assertTrue(c.getClass().getSimpleName().indexOf("$$") != -1); // rough test, no
+			// dependencies on
+			// hibernate from this
+			// package
 			assertEquals("car", rcar.getDescription());
 			assertEquals(RentalBicycleType.MOUNTAIN_BIKE, rb.getType());
 			assertEquals("bicycle", rb.getDescription());
@@ -112,13 +118,16 @@ public class RentalMapAsClassAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			List<?> list = store.query("select rc from " + RentalContractImpl.class.getName() + " as rc");
-			RentalContract rc = (RentalContract)list.get(0);
+			RentalContract rc = (RentalContract) list.get(0);
 			assertEquals(2, rc.getRentalUnits().size());
 			final RentalCar rcar = (RentalCar) rc.getRentalUnits().get(0);
 			final RentalBicycle rb = (RentalBicycle) rc.getRentalUnits().get(1);
 			Currency c = rc.getCurrency();
 			assertEquals("EUR", c.getCode());
-			assertTrue(c.getClass().getSimpleName().indexOf("$$") != -1); // rough test, no dependencies on hibernate from this package
+			assertTrue(c.getClass().getSimpleName().indexOf("$$") != -1); // rough test, no
+			// dependencies on
+			// hibernate from this
+			// package
 			assertEquals("car", rcar.getDescription());
 			assertEquals(RentalBicycleType.MOUNTAIN_BIKE, rb.getType());
 			assertEquals("bicycle", rb.getDescription());
@@ -128,19 +137,22 @@ public class RentalMapAsClassAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			List<?> list = store.query("select rc from " + RentalContract.class.getName() + " as rc");
-			RentalContract rc = (RentalContract)list.get(0);
+			RentalContract rc = (RentalContract) list.get(0);
 			assertEquals(2, rc.getRentalUnits().size());
 			final RentalCar rcar = (RentalCar) rc.getRentalUnits().get(0);
 			final RentalBicycle rb = (RentalBicycle) rc.getRentalUnits().get(1);
 			Currency c = rc.getCurrency();
 			assertEquals("EUR", c.getCode());
-			assertTrue(c.getClass().getSimpleName().indexOf("$$") != -1); // rough test, no dependencies on hibernate from this package
+			assertTrue(c.getClass().getSimpleName().indexOf("$$") != -1); // rough test, no
+			// dependencies on
+			// hibernate from this
+			// package
 			assertEquals("car", rcar.getDescription());
 			assertEquals(RentalBicycleType.MOUNTAIN_BIKE, rb.getType());
 			assertEquals("bicycle", rb.getDescription());
 			store.commitTransaction();
 		}
-		
+
 		try {
 			Resource res = store.getResource();
 			res.load(Collections.EMPTY_MAP);

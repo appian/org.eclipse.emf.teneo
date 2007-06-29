@@ -1,22 +1,17 @@
 /**
- * <copyright>
- *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   Martin Taal
- * </copyright>
- *
- * $Id: Relation1tonAction.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
+ * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
+ * Relation1tonAction.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.relation;
 
+import java.util.Properties;
+
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.Main;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCN;
 import org.eclipse.emf.teneo.samples.emf.relation.relation1ton.OneCR;
@@ -36,7 +31,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests many different kinds of 1:n relations
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class Relation1tonAction extends AbstractTestAction {
 	/** value used to create multiple entries in a list */
@@ -51,9 +46,18 @@ public class Relation1tonAction extends AbstractTestAction {
 		super(Relation1tonPackage.eINSTANCE);
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		return props;
+	}
+
 	/** Tests cascading deletes, required relations, etc. for 1:1 relations */
+	@Override
 	public void doAction(TestStore store) {
-		// are not able to generate correct foreign key constraints in the generated sql, therefor this does
+		// are not able to generate correct foreign key constraints in the generated sql, therefor
+		// this does
 		// not work.
 		final Relation1tonFactory factory = Relation1tonFactory.eINSTANCE;
 
@@ -177,7 +181,8 @@ public class Relation1tonAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 
-		// <element name="notcontainedonewayrequired" type="xsd:IDREF" ecore:reference="this:NotContainedChildR"/>
+		// <element name="notcontainedonewayrequired" type="xsd:IDREF"
+		// ecore:reference="this:NotContainedChildR"/>
 		// 6b) Element has to be set when parent is saved
 		{
 			// check 6
@@ -185,7 +190,8 @@ public class Relation1tonAction extends AbstractTestAction {
 			// store.checkDeleteFails(OneNR.class);
 		}
 
-		// <element name="notcontainedtwowaynotrequired" type="xsd:IDREF" ecore:reference="this:NotContainedChildNRT" minOccurs="0"
+		// <element name="notcontainedtwowaynotrequired" type="xsd:IDREF"
+		// ecore:reference="this:NotContainedChildNRT" minOccurs="0"
 		// ecore:opposite="main"/>
 		// NotContainedChildNRT notContainedChildNRT = factory.createNotContainedChildNRT();
 		// 11) The main object can not be deleted without removing the ref to the child
@@ -194,17 +200,18 @@ public class Relation1tonAction extends AbstractTestAction {
 			store.beginTransaction();
 			// check 11 and 12
 			MainImpl main = (MainImpl) store.getObject(Main.class);
-			OneCN delChild = (OneCN) main.getOnecn().get(0);
+			OneCN delChild = main.getOnecn().get(0);
 			main.getOnecn().remove(0);
 
 			assertTrue(((EObject) main.getTwocr().get(0)).eContainer() == main);
-			assertTrue(((TwoCR) main.getTwocr().get(0)).getMain() == main);
+			assertTrue((main.getTwocr().get(0)).getMain() == main);
 
 			store.deleteObject(delChild);
 			store.commitTransaction();
 		}
 
-		// <element name="notcontainedtwowaynotrequirednr" type="xsd:IDREF" ecore:reference="this:NotContainedChildNRTNR" minOccurs="0"
+		// <element name="notcontainedtwowaynotrequirednr" type="xsd:IDREF"
+		// ecore:reference="this:NotContainedChildNRTNR" minOccurs="0"
 		// ecore:opposite="main"/>
 		// NotContainedChildNRTNR notContainedChildNRTNR = factory.createNotContainedChildNRTNR();
 		// 15) the child object can be deleted because all references are null
@@ -213,7 +220,7 @@ public class Relation1tonAction extends AbstractTestAction {
 			// check 14
 			store.beginTransaction();
 			MainImpl main = (MainImpl) store.getObject(Main.class);
-			OneNN child = (OneNN) main.getOnenn().get(0);
+			OneNN child = main.getOnenn().get(0);
 			main.getOnenn().remove(0);
 			store.deleteObject(child);
 			store.commitTransaction();

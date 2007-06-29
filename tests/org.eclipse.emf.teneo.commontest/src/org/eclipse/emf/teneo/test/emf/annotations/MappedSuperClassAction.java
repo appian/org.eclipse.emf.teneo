@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappedSuperClassAction.java,v 1.3 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: MappedSuperClassAction.java,v 1.4 2007/06/29 07:35:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -32,95 +32,99 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
-*/
-public class MappedSuperClassAction extends AbstractTestAction 
-{
+ * @version $Revision: 1.4 $
+ */
+public class MappedSuperClassAction extends AbstractTestAction {
 	/**
 	 * Constructor
 	 */
-	public MappedSuperClassAction()  
-	{
+	public MappedSuperClassAction() {
 		super(MappedsuperclassPackage.eINSTANCE);
 	}
 
 	/** Creates an item, an address and links them to a po. */
-	public void doAction(TestStore store)
-	{
+	@Override
+	public void doAction(TestStore store) {
 		final MappedsuperclassFactory factory = MappedsuperclassFactory.eINSTANCE;
-	    	{
-	    		store.beginTransaction();
-	    		SpecificDocument sd = factory.createSpecificDocument();
-	    		sd.setMyName("TEST IT");
-	    		sd.setMyGenericInfo("GENERIC INFO");
-	    		sd.setMySpecificInfo("SPECIFIC INFO");
-	    		store.store(sd);
-	    		store.commitTransaction();
-	    	}
-	    	
-	    	// query for the specific table
-	    	{
-	    		Connection conn = null;
-	    		try {
-	    			conn = store.getConnection();
-	    			Statement stmt = conn.createStatement();
-	    			// the following should not fail for all inheritance strategies
-	    			ResultSet rs = stmt.executeQuery("SELECT * FROM specificdocument");
-	    			assertTrue(rs.next());
-	    		} catch (SQLException s) {
-	    			throw new StoreTestException("SQLException while checking existence of table", s);
-	    		} finally {
-	    			try {
-	    				if (conn != null) conn.close();
-	    			} catch (SQLException s) {
-		    			throw new StoreTestException("SQLException while checking existence of table", s);
-	    			}
-	    		}
-	    	}
+		{
+			store.beginTransaction();
+			final SpecificDocument sd = factory.createSpecificDocument();
+			sd.setMyName("TEST IT");
+			sd.setMyGenericInfo("GENERIC INFO");
+			sd.setMySpecificInfo("SPECIFIC INFO");
+			store.store(sd);
+			store.commitTransaction();
+		}
 
-	    	// query for the mapped superclass table, should always fail!
-	    	{
-	    		Connection conn = null;
-	    		try {
-	    			conn = store.getConnection();
-	    			Statement stmt = conn.createStatement();
-	    			// the following should not fail for all inheritance strategies
-	    			ResultSet rs = stmt.executeQuery("SELECT * FROM document");
-	    			assertTrue(rs != null); // dummy test to get rid of warning
-	    			fail("The DOCUMENT table should not exist as it is a mapped superclass");
-	    		} catch (SQLException s) {
-	    			// this is correct
-	    		} catch (Exception e) {
-	    			throw new StoreTestException("Exception while checking existence of table", e);
-	    		} finally {
-	    			try {
-	    				if (conn != null) conn.close();
-	    			} catch (SQLException s) {
-		    			throw new StoreTestException("SQLException while checking existence of table", s);
-	    			}
-	    		}
-	    	}
+		// query for the specific table
+		{
+			Connection conn = null;
+			try {
+				conn = store.getConnection();
+				final Statement stmt = conn.createStatement();
+				// the following should not fail for all inheritance strategies
+				final ResultSet rs = stmt.executeQuery("SELECT * FROM specificdocument");
+				assertTrue(rs.next());
+			} catch (final SQLException s) {
+				throw new StoreTestException("SQLException while checking existence of table", s);
+			} finally {
+				try {
+					if (conn != null) {
+						conn.close();
+					}
+				} catch (final SQLException s) {
+					throw new StoreTestException("SQLException while checking existence of table", s);
+				}
+			}
+		}
 
-	    	{
-	    		Connection conn = null;
-	    		try {
-	    			conn = store.getConnection();
-	    			Statement stmt = conn.createStatement();
-	    			// the following should not fail for all inheritance strategies
-	    			ResultSet rs = stmt.executeQuery("SELECT * FROM parentdocument");
-	    			assertTrue(rs != null); // dummy to get rid of warning
-	    			fail("The PARENTDOCUMENT table should not exist as it is a mapped superclass");
-	    		} catch (SQLException s) {
-	    			// this is correct
-	    		} catch (Exception e) {
-	    			throw new StoreTestException("Exception while checking existence of table", e);
-	    		} finally {
-	    			try {
-	    				if (conn != null) conn.close();
-	    			} catch (SQLException s) {
-		    			throw new StoreTestException("SQLException while checking existence of table", s);
-	    			}
-	    		}
-	    	}
-	}	
+		// query for the mapped superclass table, should always fail!
+		{
+			Connection conn = null;
+			try {
+				conn = store.getConnection();
+				final Statement stmt = conn.createStatement();
+				// the following should not fail for all inheritance strategies
+				final ResultSet rs = stmt.executeQuery("SELECT * FROM document");
+				assertTrue(rs != null); // dummy test to get rid of warning
+				fail("The DOCUMENT table should not exist as it is a mapped superclass");
+			} catch (final SQLException s) {
+				// this is correct
+			} catch (final Exception e) {
+				throw new StoreTestException("Exception while checking existence of table", e);
+			} finally {
+				try {
+					if (conn != null) {
+						conn.close();
+					}
+				} catch (final SQLException s) {
+					throw new StoreTestException("SQLException while checking existence of table", s);
+				}
+			}
+		}
+
+		{
+			Connection conn = null;
+			try {
+				conn = store.getConnection();
+				final Statement stmt = conn.createStatement();
+				// the following should not fail for all inheritance strategies
+				final ResultSet rs = stmt.executeQuery("SELECT * FROM parentdocument");
+				assertTrue(rs != null); // dummy to get rid of warning
+				fail("The PARENTDOCUMENT table should not exist as it is a mapped superclass");
+			} catch (final SQLException s) {
+				// this is correct
+			} catch (final Exception e) {
+				throw new StoreTestException("Exception while checking existence of table", e);
+			} finally {
+				try {
+					if (conn != null) {
+						conn.close();
+					}
+				} catch (final SQLException s) {
+					throw new StoreTestException("SQLException while checking existence of table", s);
+				}
+			}
+		}
+	}
 }

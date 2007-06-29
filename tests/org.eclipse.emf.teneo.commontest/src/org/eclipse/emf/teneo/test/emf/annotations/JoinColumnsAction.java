@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class JoinColumnsAction extends AbstractTestAction {
 	/**
@@ -38,16 +38,8 @@ public class JoinColumnsAction extends AbstractTestAction {
 		super(JoincolumnsPackage.eINSTANCE);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
-	 */
-	@Override
-	public Properties getExtraConfigurationProperties() {
-		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.VERSION_COLUMN_NAME, "myversion");
-		return props;
+	/** Checks the version column */
+	protected void checkVersion(TestStore store) {
 	}
 
 	/** Creates an item, an address and links them to a po. */
@@ -56,14 +48,14 @@ public class JoinColumnsAction extends AbstractTestAction {
 		final JoincolumnsFactory factory = JoincolumnsFactory.eINSTANCE;
 		{
 			store.beginTransaction();
-			Parent parent = factory.createParent();
+			final Parent parent = factory.createParent();
 			parent.setFirstName("John");
 			parent.setLastName("Smith");
-			Child child1 = factory.createChild();
+			final Child child1 = factory.createChild();
 			child1.setFirstName("Johnny");
 			child1.setLastName("Smith");
 			parent.getChildren().add(child1);
-			Child child2 = factory.createChild();
+			final Child child2 = factory.createChild();
 			child2.setFirstName("Jane");
 			child2.setLastName("Smith");
 			parent.getChildren().add(child2);
@@ -75,10 +67,10 @@ public class JoinColumnsAction extends AbstractTestAction {
 		// read again
 		{
 			store.beginTransaction();
-			Parent parent = (Parent) store.getObject(Parent.class);
+			final Parent parent = (Parent) store.getObject(Parent.class);
 			assertEquals(2, parent.getChildren().size());
-			assertEquals("Johnny", (parent.getChildren().get(0)).getFirstName());
-			assertEquals("Jane", (parent.getChildren().get(1)).getFirstName());
+			assertEquals("Johnny", parent.getChildren().get(0).getFirstName());
+			assertEquals("Jane", parent.getChildren().get(1).getFirstName());
 			store.commitTransaction();
 		}
 
@@ -95,10 +87,10 @@ public class JoinColumnsAction extends AbstractTestAction {
 				// depending on the inheritance strategy the foreign key is stored in different
 				// table
 				if (store.getInheritanceType().getValue() == InheritanceType.SINGLE_TABLE) {
-					ResultSet rs = stmt.executeQuery("select myParentFirstName from person");
+					final ResultSet rs = stmt.executeQuery("select myParentFirstName from person");
 					assertTrue(rs.next());
 				} else {
-					ResultSet rs = stmt.executeQuery("select myParentFirstName from child");
+					final ResultSet rs = stmt.executeQuery("select myParentFirstName from child");
 					assertTrue(rs.next());
 				}
 			} finally {
@@ -109,12 +101,20 @@ public class JoinColumnsAction extends AbstractTestAction {
 					conn.close();
 				}
 			}
-		} catch (SQLException e) {
+		} catch (final SQLException e) {
 			throw new StoreTestException("Sql exception when checking db schema", e);
 		}
 	}
 
-	/** Checks the version column */
-	protected void checkVersion(TestStore store) {
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.VERSION_COLUMN_NAME, "myversion");
+		return props;
 	}
 }

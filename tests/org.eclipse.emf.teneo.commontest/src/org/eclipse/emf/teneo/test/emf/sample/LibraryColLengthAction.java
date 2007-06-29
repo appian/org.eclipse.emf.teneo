@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryColLengthAction.java,v 1.5 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: LibraryColLengthAction.java,v 1.6 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class LibraryColLengthAction extends AbstractTestAction {
 	/**
@@ -54,6 +54,7 @@ public class LibraryColLengthAction extends AbstractTestAction {
 	 * 
 	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
 	 */
+	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.put(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "5");
@@ -62,6 +63,8 @@ public class LibraryColLengthAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		// create a book, writer and library
@@ -100,8 +103,8 @@ public class LibraryColLengthAction extends AbstractTestAction {
 			try {
 				conn = store.getConnection();
 				stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM BOOK WHERE BO_ID<>0 AND L_IDX>0 AND W_IDX>0"
-						.toLowerCase());
+				ResultSet rs =
+						stmt.executeQuery("SELECT * FROM BOOK WHERE BO_ID<>0 AND L_IDX>0 AND W_IDX>0".toLowerCase());
 				assertTrue(rs.next());
 			} catch (SQLException s) {
 				throw new StoreTestException("SQL Exception", s);
@@ -111,7 +114,7 @@ public class LibraryColLengthAction extends AbstractTestAction {
 						stmt.close();
 						stmt = null;
 					}
-						
+
 					if (conn != null) {
 						conn.close();
 						conn = null;

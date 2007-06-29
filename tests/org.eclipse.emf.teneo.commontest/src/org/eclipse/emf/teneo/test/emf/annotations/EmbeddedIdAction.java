@@ -20,8 +20,8 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 public class EmbeddedIdAction extends AbstractTestAction {
 
 	private static final String ADDRESS = "Amsterdamseweg 123, 4567AZ Amsterdam";
-	private static final String LAST_NAME = "Janssen";
 	private static final String FIRST_NAME = "Jan";
+	private static final String LAST_NAME = "Janssen";
 
 	public EmbeddedIdAction() {
 		super(EmbeddedidPackage.eINSTANCE);
@@ -47,9 +47,9 @@ public class EmbeddedIdAction extends AbstractTestAction {
 
 	private void testPerson(TestStore store) {
 		store.beginTransaction();
-		List<?> persons = store.query("select p from Person p");
+		final List<?> persons = store.query("select p from Person p");
 		assertEquals(1, persons.size());
-		Person person = (Person) persons.get(0);
+		final Person person = (Person) persons.get(0);
 		assertEquals(FIRST_NAME, person.getName().getFirstName());
 		assertEquals(LAST_NAME, person.getName().getLastName());
 		assertEquals(ADDRESS, person.getAddress());

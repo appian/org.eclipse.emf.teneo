@@ -24,7 +24,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class IdAction extends AbstractTestAction {
 	/** How many test objects are created */
@@ -60,31 +60,31 @@ public class IdAction extends AbstractTestAction {
 			// test if we saved them all
 			List<?> list = store.getObjects(IdentityID.class);
 			HashMap<Long, Object> testMap = new HashMap<Long, Object>();
-			for (Object element : list) {
-				IdentityID iid = (IdentityID) element;
+			for (final Object element : list) {
+				final IdentityID iid = (IdentityID) element;
 				testMap.put(new Long(iid.getMyid()), iid);
 			}
 			assertEquals(NO_TEST_OBJECTS, testMap.size());
 
 			list = store.getObjects(TableID.class);
 			testMap = new HashMap<Long, Object>();
-			for (Object element : list) {
-				TableID sid = (TableID) element;
+			for (final Object element : list) {
+				final TableID sid = (TableID) element;
 				testMap.put(new Long(sid.getMyid()), sid);
 			}
 			assertEquals(NO_TEST_OBJECTS, testMap.size());
 
 			list = store.getObjects(SimpleID.class);
 			testMap = new HashMap<Long, Object>();
-			for (Object element : list) {
-				SimpleID sid = (SimpleID) element;
+			for (final Object element : list) {
+				final SimpleID sid = (SimpleID) element;
 				testMap.put(new Long(sid.getAutoID()), sid);
 			}
 			assertEquals(NO_TEST_OBJECTS, testMap.size());
 
 			list = store.getObjects(TableGeneratorID.class);
 			testMap = new HashMap<Long, Object>();
-			for (Object element : list) {
+			for (final Object element : list) {
 				final TableGeneratorID sid = (TableGeneratorID) element;
 				testMap.put(new Long(sid.getMyid()), sid);
 			}

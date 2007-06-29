@@ -11,13 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ProductAction.java,v 1.6 2007/03/05 20:59:07 mtaal Exp $
+ * $Id: ProductAction.java,v 1.7 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.util.Date;
+import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ClassificationType;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
@@ -32,14 +34,22 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * (double and date).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class ProductAction extends AbstractTestAction {
 	public ProductAction() {
 		super(ProductPackage.eINSTANCE);
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		return props;
+	}
+
 	/** Creates a supplier, a product, relates then, saves and retrieves them again. */
+	@Override
 	public void doAction(TestStore store) {
 		{
 			store.beginTransaction();
@@ -107,22 +117,13 @@ public class ProductAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 
-		
 		// test update of pk, is not supported by hb
 		/*
-		{
-			store.beginTransaction();
-			ProductTypeImpl result = (ProductTypeImpl) store.getObject(ProductType.class);
-			result.setId("newid");
-			store.store(result);
-			store.commitTransaction();
-		}
-		{
-			store.beginTransaction();			
-			ProductTypeImpl result = (ProductTypeImpl) store.getObject(ProductType.class);
-			assertEquals("newid", result.getId());
-			store.commitTransaction();
-		}
-		*/
+		 * { store.beginTransaction(); ProductTypeImpl result = (ProductTypeImpl)
+		 * store.getObject(ProductType.class); result.setId("newid"); store.store(result);
+		 * store.commitTransaction(); } { store.beginTransaction(); ProductTypeImpl result =
+		 * (ProductTypeImpl) store.getObject(ProductType.class); assertEquals("newid",
+		 * result.getId()); store.commitTransaction(); }
+		 */
 	}
 }

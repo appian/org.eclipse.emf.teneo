@@ -12,11 +12,10 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AttributeOverridesAction.java,v 1.2 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: AttributeOverridesAction.java,v 1.3 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
-
 
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.attributeoverrides.AttributeoverridesPackage;
@@ -29,36 +28,34 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
-*/
-public class AttributeOverridesAction extends AbstractTestAction 
-{
+ * @version $Revision: 1.3 $
+ */
+public class AttributeOverridesAction extends AbstractTestAction {
 	/**
 	 * Constructor
 	 */
-	public AttributeOverridesAction()  
-	{
+	public AttributeOverridesAction() {
 		super(AttributeoverridesPackage.eINSTANCE);
 	}
 
 	/** Creates an item, an address and links them to a po. */
-	public void doAction(TestStore store)
-	{
+	@Override
+	public void doAction(TestStore store) {
 		final AttributeoverridesFactory factory = AttributeoverridesFactory.eINSTANCE;
-	    	{
-	    		store.beginTransaction();
-	    		City bornIn = factory.createCity();
-	    		bornIn.setCountry("Singapore");
-	    		bornIn.setName("Singapore");
-	    		City livesIn = factory.createCity();
-	    		livesIn.setCountry("Netherlands");
-	    		livesIn.setName("Doorn");
-	    		Person person = factory.createPerson();
-	    		person.setName("Martin");
-	    		person.setBornIn(bornIn);
-	    		person.setLivesIn(livesIn);
-	    		store.store(person);
-	    		store.commitTransaction();
-	    	}
-	}	
+		{
+			store.beginTransaction();
+			final City bornIn = factory.createCity();
+			bornIn.setCountry("Singapore");
+			bornIn.setName("Singapore");
+			final City livesIn = factory.createCity();
+			livesIn.setCountry("Netherlands");
+			livesIn.setName("Doorn");
+			final Person person = factory.createPerson();
+			person.setName("Martin");
+			person.setBornIn(bornIn);
+			person.setLivesIn(livesIn);
+			store.store(person);
+			store.commitTransaction();
+		}
+	}
 }

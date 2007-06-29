@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test 1n relation (contained and non-contained) using sets.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class SetAction extends AbstractTestAction {
 	/** The number of testitems created */
@@ -40,25 +40,13 @@ public class SetAction extends AbstractTestAction {
 		super(SetPackage.eINSTANCE);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
-	 */
-	@Override
-	public Properties getExtraConfigurationProperties() {
-		final Properties props = new Properties();
-		props.put(PersistenceOptions.QUALIFY_ENTITY_NAME, PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
-		return props;
-	}
-
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
 		final SetFactory factory = SetFactory.eINSTANCE;
 		// create a book, writer and library
-		ArrayList<String> names = new ArrayList<String>();
-		ArrayList<String> cnames = new ArrayList<String>();
+		final ArrayList<String> names = new ArrayList<String>();
+		final ArrayList<String> cnames = new ArrayList<String>();
 		{
 			store.beginTransaction();
 
@@ -88,7 +76,7 @@ public class SetAction extends AbstractTestAction {
 		int removedContainedItems = 0;
 		{
 			store.beginTransaction();
-			ItemList list = (ItemList) store.getObject(ItemList.class);
+			final ItemList list = (ItemList) store.getObject(ItemList.class);
 
 			assertEquals(NO_ITEMS, list.getItem().size());
 			assertEquals(NO_ITEMS, list.getContainedItem().size());
@@ -98,8 +86,8 @@ public class SetAction extends AbstractTestAction {
 			for (int i = 0; i < list.getContainedItem().size(); i++) {
 				assertEquals(list, ((InternalEObject) list.getContainedItem().get(i)).eContainer());
 
-				if ((i % 2) == 0) {
-					String name = (list.getContainedItem().get(i)).getName();
+				if (i % 2 == 0) {
+					final String name = list.getContainedItem().get(i).getName();
 					list.getContainedItem().remove(i);
 					removedContainedItems++;
 					cnames.remove(name); // remove from here to check later
@@ -107,21 +95,21 @@ public class SetAction extends AbstractTestAction {
 			}
 
 			// test removeall
-			ArrayList<Item> tobeDeleted = new ArrayList<Item>();
+			final ArrayList<Item> tobeDeleted = new ArrayList<Item>();
 			for (int i = 0; i < NO_ITEMS; i++) {
-				assertTrue(list == (list.getItem().get(i)).getItemList());
-				if ((i % 2) == 0) {
+				assertTrue(list == list.getItem().get(i).getItemList());
+				if (i % 2 == 0) {
 					tobeDeleted.add(list.getItem().get(i));
-					names.remove((list.getItem().get(i)).getName());
+					names.remove(list.getItem().get(i).getName());
 				}
 			}
-			for (Object o : tobeDeleted) {
+			for (final Object o : tobeDeleted) {
 				list.getItem().remove(o);
 			}
 			assertEquals(names.size(), list.getItem().size());
 
 			// test move (should not really change anything)
-			Object obj = list.getItem().get(3);
+			final Object obj = list.getItem().get(3);
 			list.getItem().move(1, 3);
 			assertEquals(1, list.getItem().indexOf(obj));
 
@@ -132,19 +120,19 @@ public class SetAction extends AbstractTestAction {
 		int newCount = 0;
 		{
 			store.beginTransaction();
-			ItemList list = (ItemList) store.getObject(ItemList.class);
+			final ItemList list = (ItemList) store.getObject(ItemList.class);
 
-			ArrayList<String> checkNames = new ArrayList<String>(names);
-			String lastName = "name_zzzz";
+			final ArrayList<String> checkNames = new ArrayList<String>(names);
+			final String lastName = "name_zzzz";
 			for (int i = 0; i < list.getItem().size(); i++) {
-				assertTrue((list.getItem().get(i)).getName().compareTo(lastName) < 0);
-				assertTrue(checkNames.remove((list.getItem().get(i)).getName()));
+				assertTrue(list.getItem().get(i).getName().compareTo(lastName) < 0);
+				assertTrue(checkNames.remove(list.getItem().get(i).getName()));
 			}
 			assertEquals(0, checkNames.size());
 
-			ArrayList<String> checkCNames = new ArrayList<String>(cnames);
+			final ArrayList<String> checkCNames = new ArrayList<String>(cnames);
 			for (int i = 0; i < list.getContainedItem().size(); i++) {
-				assertTrue(checkCNames.remove((list.getContainedItem().get(i)).getName()));
+				assertTrue(checkCNames.remove(list.getContainedItem().get(i).getName()));
 			}
 			assertEquals(0, checkCNames.size());
 
@@ -165,7 +153,7 @@ public class SetAction extends AbstractTestAction {
 		}
 		{
 			store.beginTransaction();
-			ItemList list = (ItemList) store.getObject(ItemList.class);
+			final ItemList list = (ItemList) store.getObject(ItemList.class);
 			assertEquals(newCount, list.getItem().size());
 
 			// all contained items should have been deleted
@@ -175,5 +163,17 @@ public class SetAction extends AbstractTestAction {
 			store.store(list);
 			store.commitTransaction();
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.put(PersistenceOptions.QUALIFY_ENTITY_NAME, PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
+		return props;
 	}
 }

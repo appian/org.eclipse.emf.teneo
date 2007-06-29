@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LobAction.java,v 1.4 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: LobAction.java,v 1.5 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -31,11 +31,11 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * 
  */
 public class LobAction extends AbstractTestAction {
+	private static final String ADDRESS = "Amsterdamseweg 123, 4567AZ Amsterdam";
+
 	private static final long ID = 1;
 
 	private static final String NAME = "Jan Janssen";
-
-	private static final String ADDRESS = "Amsterdamseweg 123, 4567AZ Amsterdam";
 
 	private static final byte[] PHOTO = new byte[64 * 1024];
 
@@ -48,6 +48,7 @@ public class LobAction extends AbstractTestAction {
 		super(LobPackage.eINSTANCE);
 	}
 
+	@Override
 	public void doAction(TestStore store) {
 		storePerson(store);
 		testPerson(store);
@@ -69,16 +70,16 @@ public class LobAction extends AbstractTestAction {
 	private void testPerson(TestStore store) {
 		store.beginTransaction();
 
-		final Person person = (Person)store.getObject(Person.class);
+		final Person person = (Person) store.getObject(Person.class);
 		assertEquals(ID, person.getId());
 		assertEquals(NAME, person.getName());
-		assertEquals(ADDRESS, person.getAddress());		
+		assertEquals(ADDRESS, person.getAddress());
 		final byte[] photo = person.getPhoto();
 		assertEquals(PHOTO.length, photo.length);
 		for (int i = 0; i < photo.length; i++) {
 			assertEquals(PHOTO[i], photo[i]);
 		}
-		
+
 		store.commitTransaction();
 	}
 }

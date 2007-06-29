@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryJoinTableNamingAction.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: LibraryJoinTableNamingAction.java,v 1.3 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibraryJoinTableNamingAction extends AbstractTestAction {
 	/**
@@ -49,6 +49,7 @@ public class LibraryJoinTableNamingAction extends AbstractTestAction {
 		super(LibraryPackage.eINSTANCE);
 	}
 
+	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY, "READ_WRITE");
@@ -59,6 +60,8 @@ public class LibraryJoinTableNamingAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		// create a book, writer and library
@@ -92,25 +95,28 @@ public class LibraryJoinTableNamingAction extends AbstractTestAction {
 			assertEquals(2, writer.getBooks().size());
 		}
 
-		
 		if (true) {
-    		Connection conn = null;
-    		Statement stmt = null;
-    		try {
-    			conn = store.getConnection();
-    			stmt = conn.createStatement();
-	    		ResultSet rs = stmt.executeQuery("SELECT * FROM WRITER_BOOKS");
-	    		assertTrue(rs.next());
-    		} catch (SQLException s) {
-    			throw new StoreTestException("SQL Exception", s);
-    		} finally {
-    			try {
-	    			if (stmt != null) stmt.close();
-	    			if (conn != null) conn.close();
-    			} catch (SQLException s) {
-	    			throw new StoreTestException("SQL Exception", s);
-    			}
-    		}
-    	}
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				conn = store.getConnection();
+				stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM WRITER_BOOKS");
+				assertTrue(rs.next());
+			} catch (SQLException s) {
+				throw new StoreTestException("SQL Exception", s);
+			} finally {
+				try {
+					if (stmt != null) {
+						stmt.close();
+					}
+					if (conn != null) {
+						conn.close();
+					}
+				} catch (SQLException s) {
+					throw new StoreTestException("SQL Exception", s);
+				}
+			}
+		}
 	}
 }

@@ -11,14 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapKeyAction.java,v 1.2 2007/03/20 23:33:38 mtaal Exp $
+ * $Id: MapKeyAction.java,v 1.3 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -37,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class MapKeyAction extends AbstractTestAction {
 	/**
@@ -49,72 +48,29 @@ public class MapKeyAction extends AbstractTestAction {
 		super(MapkeyPackage.eINSTANCE);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	/** 
+	 * Check test set, note a where clause has been set on the relation
+	 * Only writers with name martin are returned 
 	 */
-	@Override
-	public Properties getExtraConfigurationProperties() {
-		final Properties props = new Properties();
-		props.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "true");
-		return props;
+	private void checkTestSet(Book bk) {
+		// final String prefix = bk.getTitle();
+		final ArrayList<Writer> writers = new ArrayList<Writer>();
+		for (final Object element : bk.getWriters().keySet()) {
+			final String key = (String) element;
+			final Writer w = bk.getWriters().get(key);
+			assertEquals(key, w.getName());
+			assertTrue(key.startsWith(bk.getTitle()));
+			writers.add(w);
+		}
+		if (bk.getTitle().length() == 0) {
+			assertEquals(1, writers.size());
+			final Writer writerOne = writers.get(0);
+			assertEquals(writerOne.getName(), "martin");
+		} else {
+			assertEquals(0, writers.size());
+		}
 	}
 
-	/** Creates an item, an address and links them to a po. */
-	public void doAction(TestStore store) {
-		{
-			store.beginTransaction();
-			store.store(createTestSet(""));
-			store.store(createTestSet("prefix2"));
-			store.commitTransaction();
-		}
-		
-		{
-			store.beginTransaction();
-			List lst = store.getObjects(Book.class);
-			for (Iterator it = lst.iterator(); it.hasNext();) {
-				checkTestSet((Book)it.next());
-			}
-			store.commitTransaction();
-		}
-		
-		try {
-			final Resource res = store.getResource();
-			final ArrayList bks = new ArrayList();
-			final ArrayList ws = new ArrayList();
-			for (Iterator it = res.getContents().iterator(); it.hasNext();) {
-				final Object obj = it.next();
-				if (obj instanceof Book) {
-					final Book bk = (Book)obj;
-					if (bk.getWriters() instanceof PersistableDelegateList) {
-						// check lazy load
-						//assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
-						// now load
-						if (bk.getTitle().length() == 0) {
-							assertEquals(1, bk.getWriters().size());
-						} else {
-							assertEquals(0, bk.getWriters().size());
-						}
-						
-						// disabled as hibernate and jpox differ here
-						assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
-					} else {
-						fail("Type not supported " + bk.getWriters().getClass().getName());
-					}
-					bks.add(bk);
-				} else {
-					ws.add(obj);
-				}
-			}
-			assertTrue(bks.size() == 2);
-			assertTrue(ws.size() == 4);
-			res.save(Collections.EMPTY_MAP);
-			res.save(Collections.EMPTY_MAP);
-			res.unload();
-		} catch (Exception e) {
-			throw new StoreTestException("Exception when testing with resource", e);
-		}
-	}
-	
 	/** Create test set */
 	private Book createTestSet(String prefix) {
 		final MapkeyFactory factory = MapkeyFactory.eINSTANCE;
@@ -128,27 +84,72 @@ public class MapKeyAction extends AbstractTestAction {
 		bk.getWriters().put(w2.getName(), w2);
 		return bk;
 	}
-	
-	/** 
-	 * Check test set, note a where clause has been set on the relation
-	 * Only writers with name martin are returned 
+
+	/** Creates an item, an address and links them to a po. */
+	@Override
+	public void doAction(TestStore store) {
+		{
+			store.beginTransaction();
+			store.store(createTestSet(""));
+			store.store(createTestSet("prefix2"));
+			store.commitTransaction();
+		}
+
+		{
+			store.beginTransaction();
+			final List<?> lst = store.getObjects(Book.class);
+			for (Object name : lst) {
+				checkTestSet((Book) name);
+			}
+			store.commitTransaction();
+		}
+
+		try {
+			final Resource res = store.getResource();
+			final ArrayList<Book> bks = new ArrayList<Book>();
+			final ArrayList<Object> ws = new ArrayList<Object>();
+			for (final Object obj : res.getContents()) {
+				if (obj instanceof Book) {
+					final Book bk = (Book) obj;
+					if (bk.getWriters() instanceof PersistableDelegateList) {
+						// check lazy load
+						// assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
+						// now load
+						if (bk.getTitle().length() == 0) {
+							assertEquals(1, bk.getWriters().size());
+						} else {
+							assertEquals(0, bk.getWriters().size());
+						}
+
+						// disabled as hibernate and jpox differ here
+						assertTrue(!((PersistableDelegateList<?>) bk.getWriters()).isLoaded());
+					} else {
+						fail("Type not supported " + bk.getWriters().getClass().getName());
+					}
+					bks.add(bk);
+				} else {
+					ws.add(obj);
+				}
+			}
+			assertTrue(bks.size() == 2);
+			assertTrue(ws.size() == 4);
+			res.save(Collections.EMPTY_MAP);
+			res.save(Collections.EMPTY_MAP);
+			res.unload();
+		} catch (final Exception e) {
+			throw new StoreTestException("Exception when testing with resource", e);
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
 	 */
-	private void checkTestSet(Book bk) {
-		final String prefix = bk.getTitle();
-		final ArrayList writers = new ArrayList();
-		for (Iterator it = bk.getWriters().keySet().iterator(); it.hasNext();) {
-			final String key = (String)it.next();
-			final Writer w = (Writer)bk.getWriters().get(key);
-			assertEquals(key, w.getName());
-			assertTrue(key.startsWith(bk.getTitle()));
-			writers.add(w);
-		}
-		if (bk.getTitle().length() == 0) {
-			assertEquals(1, writers.size());
-			final Writer writerOne = (Writer)writers.get(0);
-			assertEquals(writerOne.getName(), "martin");
-		} else {
-			assertEquals(0, writers.size());
-		}
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "true");
+		return props;
 	}
 }

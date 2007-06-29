@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtLibraryAction.java,v 1.6 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: ExtLibraryAction.java,v 1.7 2007/06/29 07:35:44 mtaal Exp $
  */
 
 package extlibrary;
@@ -25,10 +25,10 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the extlibrary
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class ExtLibraryAction extends AbstractTestAction {
-	
+
 	/**
 	 * Constructor
 	 */
@@ -37,9 +37,9 @@ public class ExtLibraryAction extends AbstractTestAction {
 	}
 
 	/** Test */
+	@Override
 	public void doAction(TestStore store) {
-//		store.disableDrop();
-		
+
 		final ExtlibraryFactory factory = ExtlibraryFactory.eINSTANCE;
 		store.beginTransaction();
 		final Writer wr = factory.createWriter();
@@ -55,7 +55,7 @@ public class ExtLibraryAction extends AbstractTestAction {
 		bk.setPublicationDate(new Date());
 		bk.setTitle("title");
 		store.store(bk);
-		
+
 		final Library lb2 = factory.createLibrary();
 		lb2.setAddress("main street");
 		lb2.setName("parent");
@@ -66,7 +66,7 @@ public class ExtLibraryAction extends AbstractTestAction {
 		lb.getBooks().add(bk);
 		lb.getWriters().add(wr);
 		lb.setParentBranch(lb2);
-		
+
 		final Employee em = factory.createEmployee();
 		em.setAddress("employee street 4");
 		em.setFirstName("martin");
@@ -76,12 +76,12 @@ public class ExtLibraryAction extends AbstractTestAction {
 		manager.setAddress("manager street 2");
 		manager.setFirstName("John");
 		manager.setLastName("the Boss");
-		
+
 		em.setManager(manager);
-		
+
 		lb.getEmployees().add(em);
 		lb.getEmployees().add(manager);
-		
+
 		final Borrower bw = factory.createBorrower();
 		bw.setAddress("borrowstreet");
 		bw.setFirstName("Jane");
@@ -90,13 +90,11 @@ public class ExtLibraryAction extends AbstractTestAction {
 		lb.getBorrowers().add(bw);
 		store.store(lb);
 		store.commitTransaction();
-		
+
 		/*
-		//Polymorphic queries are not supported
-		store.beginTransaction();
-		Lendable lendable = (Lendable)store.query("select from extlibrary.Lendable").get(0);
-		assertTrue(lendable != null);
-		store.commitTransaction();
-		*/
+		 * //Polymorphic queries are not supported store.beginTransaction(); Lendable lendable =
+		 * (Lendable)store.query("select from extlibrary.Lendable").get(0); assertTrue(lendable !=
+		 * null); store.commitTransaction();
+		 */
 	}
 }

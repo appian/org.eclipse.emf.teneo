@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SecondarytableHibernateAction.java,v 1.5 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: SecondarytableHibernateAction.java,v 1.6 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -39,35 +39,39 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  */
 public class SecondarytableHibernateAction extends AbstractTestAction {
 
+	private static final String ADDRESS = "Amsterdamseweg 123, 4567AZ Amsterdam";
+
 	private static final long ID = 1;
 
 	private static final String NAME = "Jan Janssen";
 
-	private static final String ADDRESS = "Amsterdamseweg 123, 4567AZ Amsterdam";
-
 	private static final byte[] PHOTO = new byte[64 * 1024];
 
-	private static final String VERIFICATION_QUERY = 
+	private static final String VERIFICATION_QUERY =
 			"SELECT * FROM PERSON as A INNER JOIN PERSON_ADDRESS as B ON A.ID = B.ID "
-			+ "INNER JOIN PERSON_PHOTO as C ON A.ID = C.ID";
+					+ "INNER JOIN PERSON_PHOTO as C ON A.ID = C.ID";
 
 	public SecondarytableHibernateAction() {
 		super(SecondarytablehibernatePackage.eINSTANCE);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
-	 */
-	public Properties getExtraConfigurationProperties() {
-		Properties props = new Properties();
-		props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
-		return props;
-	}
-
+	@Override
 	public void doAction(TestStore store) {
 		storePerson(store);
 		testPerson(store);
 		testSecondaryTables(store);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
+		return props;
 	}
 
 	/**
@@ -92,7 +96,7 @@ public class SecondarytableHibernateAction extends AbstractTestAction {
 	private void testPerson(TestStore store) {
 		store.beginTransaction();
 
-		final List results = store.query(Person.class, "id", String.valueOf(ID), 1);
+		final List<?> results = store.query(Person.class, "id", String.valueOf(ID), 1);
 		assertEquals(1, results.size());
 		final Person person = (Person) results.get(0);
 		assertEquals(ID, person.getId());
@@ -117,20 +121,20 @@ public class SecondarytableHibernateAction extends AbstractTestAction {
 		try {
 			statement = conn.createStatement();
 			resultSet = statement.executeQuery(VERIFICATION_QUERY);
-		} catch (SQLException e) {
+		} catch (final SQLException e) {
 			throw new StoreTestException(e.getMessage(), e);
 		} finally {
 			try {
 				if (resultSet != null) {
 					resultSet.close();
 				}
-			} catch (SQLException e) {
+			} catch (final SQLException e) {
 			}
 			try {
 				if (statement != null) {
 					statement.close();
 				}
-			} catch (SQLException e) {
+			} catch (final SQLException e) {
 			}
 		}
 

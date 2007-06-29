@@ -9,16 +9,18 @@
  *
  * Contributors:
  *   Martin Taal
- * </copyright>
+ * </copyright> 
  *
- * $Id: AbstractReferenceAction.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: AbstractReferenceAction.java,v 1.4 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.issues.abstractreference.AbstractreferenceFactory;
 import org.eclipse.emf.teneo.samples.issues.abstractreference.AbstractreferencePackage;
 import org.eclipse.emf.teneo.samples.issues.abstractreference.Person;
@@ -28,11 +30,11 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
-/**
+/** 
  * Tests reference relations between abstract relations. This failed during compute references, the test is therefore very light.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class AbstractReferenceAction extends AbstractTestAction {
 	/**
@@ -53,7 +55,15 @@ public class AbstractReferenceAction extends AbstractTestAction {
 		return true;
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		return props;
+	}
+
 	/** Creates an item, an address and links them to a po. */
+	@Override
 	public void doAction(TestStore store) {
 		final AbstractreferenceFactory factory = AbstractreferenceFactory.eINSTANCE;
 
@@ -75,7 +85,7 @@ public class AbstractReferenceAction extends AbstractTestAction {
 
 				res.getContents().add(uoa);
 				res.save(null);
-				
+
 				Person person = factory.createPerson();
 				person.setName("myname");
 				person.getAddress().add(uoa);

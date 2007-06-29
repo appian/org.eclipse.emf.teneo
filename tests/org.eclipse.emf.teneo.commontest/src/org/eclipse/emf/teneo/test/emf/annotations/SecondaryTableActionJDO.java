@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SecondaryTableActionJDO.java,v 1.3 2007/02/01 12:35:36 mtaal Exp $
+ * $Id: SecondaryTableActionJDO.java,v 1.4 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -32,65 +32,67 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations for SecondaryTable
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
-*/
-public class SecondaryTableActionJDO extends AbstractTestAction 
-{
+ * @version $Revision: 1.4 $ 
+ */
+public class SecondaryTableActionJDO extends AbstractTestAction {
 
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * @param arg0
 	 */
-	public SecondaryTableActionJDO() 
-	{
+	public SecondaryTableActionJDO() {
 		super(SecondarytablePackage.eINSTANCE);
 	}
-		
-	/** Creates simple types and tests against */
-	public void doAction(TestStore store)
-	{
-		// test a simple type
-        final SecondarytableFactory factory = SecondarytableFactory.eINSTANCE;
-        {
-	        store.beginTransaction();
-	        Printer p = factory.createPrinter();
-	        p.setMake("HP");
-	        p.setModel("officejet 2500");
-	        p.setTonerMake("hp");
-	        p.setTonerModel("56");
-	        store.store(p);
-	        store.commitTransaction();
-        }
 
-        {
-	        store.beginTransaction();
-	        Printer p = (Printer)store.getObject(Printer.class);
-	        assertTrue(p.getMake().compareTo("HP") == 0);
-	        assertTrue(p.getModel().compareTo("officejet 2500") == 0);
-	        assertTrue(p.getTonerMake().compareTo("hp") == 0);
-	        store.commitTransaction();
-        }
-	    	
-	    	// do a sql query to detect that the second table was created 
-    		Connection conn = null;
-    		Statement stmt = null;
-	    	try {
+	/** Creates simple types and tests against */
+	@Override
+	public void doAction(TestStore store) {
+		// test a simple type
+		final SecondarytableFactory factory = SecondarytableFactory.eINSTANCE;
+		{
+			store.beginTransaction();
+			final Printer p = factory.createPrinter();
+			p.setMake("HP");
+			p.setModel("officejet 2500");
+			p.setTonerMake("hp");
+			p.setTonerModel("56");
+			store.store(p);
+			store.commitTransaction();
+		}
+
+		{
+			store.beginTransaction();
+			final Printer p = (Printer) store.getObject(Printer.class);
+			assertTrue(p.getMake().compareTo("HP") == 0);
+			assertTrue(p.getModel().compareTo("officejet 2500") == 0);
+			assertTrue(p.getTonerMake().compareTo("hp") == 0);
+			store.commitTransaction();
+		}
+
+		// do a sql query to detect that the second table was created
+		Connection conn = null;
+		Statement stmt = null;
+		try {
 			try {
-	    			conn = store.getConnection();
-	    			stmt = conn.createStatement();
-		    		ResultSet rs = stmt.executeQuery("select * from thetoner");
-		    		int cnt = 0;
-		    		while (rs.next()) {
-		    			cnt++;
-		    		}
-		    		rs.close();
-		    		assertEquals(1, cnt);
-	    		} finally {
-	    			if (stmt != null) stmt.close();
-	    			if (conn != null) conn.close();
-	    		}
-	    	} catch (SQLException e) {
-	    		throw new StoreTestException("Sql exception when retrieving objects", e);
-	    	}
+				conn = store.getConnection();
+				stmt = conn.createStatement();
+				final ResultSet rs = stmt.executeQuery("select * from thetoner");
+				int cnt = 0;
+				while (rs.next()) {
+					cnt++;
+				}
+				rs.close();
+				assertEquals(1, cnt);
+			} finally {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			}
+		} catch (final SQLException e) {
+			throw new StoreTestException("Sql exception when retrieving objects", e);
+		}
 	}
 }

@@ -11,11 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BagDuplicateAction.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: BagDuplicateAction.java,v 1.3 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
 
+import java.util.Properties;
+
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.issues.bagduplicate.BagduplicateFactory;
 import org.eclipse.emf.teneo.samples.issues.bagduplicate.BagduplicatePackage;
 import org.eclipse.emf.teneo.samples.issues.bagduplicate.Person;
@@ -26,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests issue with bag
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class BagDuplicateAction extends AbstractTestAction {
 	/**
@@ -38,7 +41,16 @@ public class BagDuplicateAction extends AbstractTestAction {
 		super(BagduplicatePackage.eINSTANCE);
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		return props;
+	}
+
 	/** Creates an item, an address and links them to a po. */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		{
 			store.beginTransaction();
@@ -61,8 +73,8 @@ public class BagDuplicateAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			Person father = (Person)store.query(Person.class, "name", "father", 1).get(0);
-			Person mother = (Person)store.query(Person.class, "name", "mother", 1).get(0);
+			Person father = (Person) store.query(Person.class, "name", "father", 1).get(0);
+			Person mother = (Person) store.query(Person.class, "name", "mother", 1).get(0);
 			assertEquals(2, father.getChildren().size());
 			assertEquals(2, mother.getChildren().size());
 			assertEquals(father.getChildren().get(0), mother.getChildren().get(0));

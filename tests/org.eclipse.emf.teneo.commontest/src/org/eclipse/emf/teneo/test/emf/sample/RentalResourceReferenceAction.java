@@ -11,17 +11,17 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: RentalResourceReferenceAction.java,v 1.2 2007/03/29 22:13:54 mtaal Exp $
+ * $Id: RentalResourceReferenceAction.java,v 1.3 2007/06/29 07:35:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Properties;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.rental.Manufacturer;
 import org.eclipse.emf.teneo.rental.RentalBicycle;
 import org.eclipse.emf.teneo.rental.RentalBicycleType;
@@ -46,7 +47,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests references from an xml to a db resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class RentalResourceReferenceAction extends AbstractTestAction {
 	/**
@@ -58,58 +59,66 @@ public class RentalResourceReferenceAction extends AbstractTestAction {
 		super(RentalPackage.eINSTANCE);
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		return props;
+	}
+
 	/** Test */
+	@Override
 	public void doAction(TestStore store) {
 		final RentalFactory rf = RentalFactory.eINSTANCE;
 		byte[] bytes = null;
-		
+
 		try {
-				RentalContract rcontract = rf.createRentalContract();
-				RentalCar rcar = rf.createRentalCar();
-				RentalBicycle rb = rf.createRentalBicycle();
-				rcar.setDescription("car");
-				rcar.setSize(RentalCarSize.FAMILY);
-				rb.setDescription("bicycle");
-				rb.setType(RentalBicycleType.MOUNTAIN_BIKE);
-				Manufacturer m = rf.createManufacturer();
-				m.setCode("gazelle");
-				rb.setManufacturer(m);
-				rcontract.getRentalUnits().add(rcar);
-				rcontract.getRentalUnits().add(rb);
-				rcontract.setCost(4.5f);
-				rcontract.setEndDate(new Date());
-				rcontract.setRentToBusinessPartner("business partner");
-				
-				// save the car and bicycle in a database resource
-				Resource res = store.getResource();
-				res.load(null);
-				res.getContents().add(rcar);
-				res.getContents().add(rb);
-				res.save(Collections.EMPTY_MAP);
-				
-				// save the contract in an xml file
-				final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				final Resource resource = new XMLResourceImpl();
-				resource.getContents().add(rcontract);
-				resource.save(bos, Collections.EMPTY_MAP);
-				
-				// now also save to a file
-//				final FileOutputStream fos = new FileOutputStream("/home/mtaal/mytmp/rental.xml");
-//				resource.save(fos, Collections.EMPTY_MAP);
-				bytes = bos.toByteArray();
+			RentalContract rcontract = rf.createRentalContract();
+			RentalCar rcar = rf.createRentalCar();
+			RentalBicycle rb = rf.createRentalBicycle();
+			rcar.setDescription("car");
+			rcar.setSize(RentalCarSize.FAMILY);
+			rb.setDescription("bicycle");
+			rb.setType(RentalBicycleType.MOUNTAIN_BIKE);
+			Manufacturer m = rf.createManufacturer();
+			m.setCode("gazelle");
+			rb.setManufacturer(m);
+			rcontract.getRentalUnits().add(rcar);
+			rcontract.getRentalUnits().add(rb);
+			rcontract.setCost(4.5f);
+			rcontract.setEndDate(new Date());
+			rcontract.setRentToBusinessPartner("business partner");
+
+			// save the car and bicycle in a database resource
+			Resource res = store.getResource();
+			res.load(null);
+			res.getContents().add(rcar);
+			res.getContents().add(rb);
+			res.save(Collections.EMPTY_MAP);
+
+			// save the contract in an xml file
+			final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			final Resource resource = new XMLResourceImpl();
+			resource.getContents().add(rcontract);
+			resource.save(bos, Collections.EMPTY_MAP);
+
+			// now also save to a file
+			// final FileOutputStream fos = new FileOutputStream("/home/mtaal/mytmp/rental.xml");
+			// resource.save(fos, Collections.EMPTY_MAP);
+			bytes = bos.toByteArray();
 		} catch (IOException e) {
 			throw new StoreTestException("IOException during save", e);
 		}
-		
+
 		try {
 			final ResourceSet rs = new ResourceSetImpl();
 			rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml", new XMLResourceFactoryImpl());
 			final Resource new_resource = rs.createResource(URI.createFileURI("rental.xml"));
 			new_resource.load(new ByteArrayInputStream(bytes), Collections.EMPTY_MAP);
-			final RentalContract rc = (RentalContract)new_resource.getContents().get(0);
+			final RentalContract rc = (RentalContract) new_resource.getContents().get(0);
 			assertEquals(2, rc.getRentalUnits().size());
-			final RentalCar rcar = (RentalCar)rc.getRentalUnits().get(0);
-			final RentalBicycle rb = (RentalBicycle)rc.getRentalUnits().get(1);
+			final RentalCar rcar = (RentalCar) rc.getRentalUnits().get(0);
+			final RentalBicycle rb = (RentalBicycle) rc.getRentalUnits().get(1);
 			assertEquals("car", rcar.getDescription());
 			assertEquals(rb.eResource(), rcar.eResource());
 			assertTrue(rb.eResource() instanceof StoreResource);
