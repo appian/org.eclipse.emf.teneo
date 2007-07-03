@@ -11,13 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionWrapper.java,v 1.3 2007/03/29 14:59:40 mtaal Exp $
+ * $Id: HbSessionWrapper.java,v 1.4 2007/07/03 10:00:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
@@ -35,7 +34,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * Wraps a standard hibernate session.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class HbSessionWrapper implements SessionWrapper {
 
@@ -86,7 +85,7 @@ public class HbSessionWrapper implements SessionWrapper {
 	public void rollbackTransaction() {
 		getSessionInternal().getTransaction().rollback();
 	}
-	
+
 	/** Return an object using the entityname and a serializable id */
 	public Object get(String entityName, Serializable id) {
 		return getSessionInternal().get(entityName, id);
@@ -99,15 +98,14 @@ public class HbSessionWrapper implements SessionWrapper {
 	}
 
 	/** Query */
-	public List<?> executeQuery(String qry, String entityParameter,
-			Object entity) {
+	public List<?> executeQuery(String qry, String entityParameter, Object entity) {
 		final Query query = session.createQuery(qry);
 		query.setEntity(entityParameter, entity);
 		return query.list();
 	}
 
 	/** Query */
-	public List<?> executeQuery(String qry, ArrayList<Object> parameters) {
+	public List<?> executeQuery(String qry, List<Object> parameters) {
 		final Query query = session.createQuery(qry);
 		int pos = 0;
 		for (Object obj : parameters) {
@@ -166,10 +164,8 @@ public class HbSessionWrapper implements SessionWrapper {
 	/** Check if a certain class is mapped using a certain inheritance strategy */
 	public boolean isInheritanceStrategy(Class<?> cls, InheritanceType strategy) {
 		final String clsName = cls.getName();
-		final String realName = clsName.substring(clsName.lastIndexOf('.') + 1,
-				clsName.length() - 4);
-		final ClassMetadata cmd = hbDataStore.getSessionFactory()
-				.getClassMetadata(realName);
+		final String realName = clsName.substring(clsName.lastIndexOf('.') + 1, clsName.length() - 4);
+		final ClassMetadata cmd = hbDataStore.getSessionFactory().getClassMetadata(realName);
 		if (strategy.equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
 			return cmd instanceof SingleTableEntityPersister;
 		}
@@ -179,10 +175,9 @@ public class HbSessionWrapper implements SessionWrapper {
 		if (strategy.equals(InheritanceType.TABLE_PER_CLASS_LITERAL)) {
 			return cmd instanceof UnionSubclassEntityPersister;
 		}
-		throw new HbStoreException("Strategy: " + strategy.toString()
-				+ " not supported ");
+		throw new HbStoreException("Strategy: " + strategy.toString() + " not supported ");
 	}
-	
+
 	/** Clear the session */
 	public void clear() {
 		getSessionInternal().clear();

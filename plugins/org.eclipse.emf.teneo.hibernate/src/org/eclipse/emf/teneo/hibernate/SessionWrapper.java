@@ -11,17 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SessionWrapper.java,v 1.3 2007/03/29 14:59:40 mtaal Exp $
+ * $Id: SessionWrapper.java,v 1.4 2007/07/03 10:00:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
-
 
 /**
  * Wraps a session or an entity manager. Is used to support both standard
@@ -31,7 +29,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * commit transactions and perform queries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public interface SessionWrapper {
 
@@ -39,58 +37,58 @@ public interface SessionWrapper {
 	 * session as well as entitymanager.
 	 */
 	Object getSession();
-	
+
 	/** Begin a transaction */
 	void beginTransaction();
-	
+
 	/** Commit a transaction */
 	void commitTransaction();
-	
+
 	/** Rollback transaction */
 	void rollbackTransaction();
-	
+
 	/** Return an object using the entityname and a serializable id */
 	Object get(String entityName, Serializable id);
-	
+
 	/** Query */
 	List<?> executeQuery(String qry);
-	
+
 	/** Query */
 	List<?> executeQuery(String qry, String entityParameter, Object entity);
-	
+
 	/** Query */
 	List<?> executeQuery(String qry, boolean cacheable);
 
 	/** Query */
-	List<?> executeQuery(String qry, ArrayList<Object> parameters);
+	List<?> executeQuery(String qry, List<Object> parameters);
 
 	/** Does this impl. wrap an entitymanager */
 	boolean isEJB3EntityManager();
-	
+
 	/** Set the flushmode in the session */
 	void setFlushModeManual();
-	
+
 	/** Close the session/entitymanager */
 	void close();
-	
+
 	/** Save or update the pass object */
 	void saveOrUpdate(Object obj);
-	
+
 	/** Delete the object */
 	void delete(Object obj);
 
 	/** Flush the session */
 	void flush();
-	
+
 	/** Clear the session */
 	void clear();
-	
+
 	/** Is transaction active */
 	boolean isTransactionActive();
-	
+
 	/** Refresh the object */
 	void refresh(Object obj);
-	
+
 	/** Check if a certain class is mapped using a certain inheritance strategy */
 	public boolean isInheritanceStrategy(Class<?> cls, InheritanceType strategy);
 
