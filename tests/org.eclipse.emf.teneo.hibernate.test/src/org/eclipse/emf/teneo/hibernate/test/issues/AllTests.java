@@ -16,6 +16,7 @@ import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.issues.AbstractReferenceAction;
 import org.eclipse.emf.teneo.test.issues.BagDuplicateAction;
 import org.eclipse.emf.teneo.test.issues.EnumTestAction;
+import org.eclipse.emf.teneo.test.issues.GeneralTestAction;
 import org.eclipse.emf.teneo.test.issues.InheritanceAction;
 import org.eclipse.emf.teneo.test.issues.InterfaceTrueAction;
 import org.eclipse.emf.teneo.test.issues.MTMSameAction;
@@ -28,7 +29,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class AllTests {
 
@@ -36,37 +37,19 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed
 					.instance().getConfigurations());
+
+		suite.addTestSuite(GeneralTestAction.class);
 		suite.addTestSuite(UpdateAction.class);
-
 		suite.addTestSuite(MTMSameAction.class);
-
 		suite.addTestSuite(MultipleInheritanceAction.class);
-
 		suite.addTestSuite(ResourceAction.class);
-
 		suite.addTestSuite(InheritanceAction.class);
-
 		suite.addTestSuite(BagDuplicateAction.class);
 		suite.addTestSuite(EnumTestAction.class);
-
 		suite.addTestSuite(AbstractReferenceAction.class);
 		suite.addTestSuite(InterfaceTrueAction.class);
 		suite.addTestSuite(SimplenmAction.class);
 		suite.addTestSuite(TopClassesAction.class);
-
-		// non emf tests: can not be run anymore
-		// suite.addTestSuite(DuplicateFieldAction.class);
-		// suite.addTestSuite(HierarchyQueryAction.class);
-		// suite.addTestSuite(ReferenceCycleAction.class);
-		// suite.addTestSuite(Relation1nAction.class);
-		// suite.addTestSuite(Relation3Action.class);
-		// suite.addTestSuite(Relation4Action.class);
-
-		// following test does not yet work for hibernate
-		// suite.addTestSuite(TestClassHierarchyAction.class);
-		// suite.addTestSuite(Relation2Action.class);
-		// suite.addTestSuite(Relation5Action.class);
-
 		return suite;
 	}
 }

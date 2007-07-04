@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
@@ -37,6 +36,7 @@ import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.test.stores.adapters.HibernateTestDBAdapter;
 import org.eclipse.emf.teneo.test.stores.AbstractTestStore;
 import org.eclipse.emf.teneo.util.AssertUtil;
+import org.eclipse.emf.teneo.util.EcoreDataTypes;
 import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
 import org.hibernate.ejb.EntityManagerImpl;
@@ -45,7 +45,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -92,8 +92,8 @@ public class HibernateTestStore extends AbstractTestStore {
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, inheritanceType.getName());
 
 		for (EPackage element : epackages) {
-			log.debug("Creating HibernateTeststore for " + element.getName() + " adapter "
-					+ adapter.getClass().getName());
+			log.debug("Creating HibernateTeststore for " + element.getName() + " adapter " +
+					adapter.getClass().getName());
 		}
 
 		setDataStore();
@@ -252,8 +252,8 @@ public class HibernateTestStore extends AbstractTestStore {
 		final List<?> result = sessionWrapper.executeQuery(qryStr);
 
 		if (checkCount > 0) {
-			TestCase.assertTrue("Expected " + checkCount + " object(s) for this query but there are " + result.size()
-					+ " object(s) for the query " + qryStr, result.size() == checkCount);
+			TestCase.assertTrue("Expected " + checkCount + " object(s) for this query but there are " + result.size() +
+					" object(s) for the query " + qryStr, result.size() == checkCount);
 		}
 		return result;
 	}
@@ -267,11 +267,11 @@ public class HibernateTestStore extends AbstractTestStore {
 				sessionWrapper.delete(l.get(i));
 			}
 			commitTransaction();
-			TestCase.assertTrue("The objects of class: " + clazz.getName()
-					+ " was deleted while this should not be possible", shouldSucceed);
+			TestCase.assertTrue("The objects of class: " + clazz.getName() +
+					" was deleted while this should not be possible", shouldSucceed);
 		} catch (Exception e) {
-			TestCase.assertTrue("The objects of class: " + clazz.getName()
-					+ " was not deleted while this should be possible", !shouldSucceed);
+			TestCase.assertTrue("The objects of class: " + clazz.getName() +
+					" was not deleted while this should be possible", !shouldSucceed);
 			if (sessionWrapper.isTransactionActive()) {
 				rollbackTransaction();
 			}
@@ -281,12 +281,12 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	/** Return an object of a certain class, there should only be one in the databases */
 	@Override
-	public Object getObject(Class<?> clazz) {
+	@SuppressWarnings("unchecked")
+	public <T> T getObject(Class<T> clazz) {
 		List<?> l = getObjects(clazz); // replace class is called in getObjects
-		TestCase
-			.assertTrue("There are " + l.size() + " object(s) of this class in the datastore, 1 was expected, class: "
-					+ clazz.getName(), l.size() == 1);
-		return l.get(0);
+		TestCase.assertTrue("There are " + l.size() +
+				" object(s) of this class in the datastore, 1 was expected, class: " + clazz.getName(), l.size() == 1);
+		return (T) l.get(0);
 	}
 
 	/** Returns a list of object of a certain class */
@@ -303,8 +303,8 @@ public class HibernateTestStore extends AbstractTestStore {
 	@Override
 	public void checkNumber(Class<?> clazz, int count) {
 		final List<?> list = getObjects(clazz);
-		TestCase.assertTrue("Expected " + count + " object(s) but there are " + list.size()
-				+ " object(s) of this class in the datastore: " + clazz.getName(), list.size() == count);
+		TestCase.assertTrue("Expected " + count + " object(s) but there are " + list.size() +
+				" object(s) of this class in the datastore: " + clazz.getName(), list.size() == count);
 	}
 
 	/** Flushes all updates to the underlying datastore */
@@ -410,8 +410,8 @@ public class HibernateTestStore extends AbstractTestStore {
 	/** Returns the query name to use for the instance */
 	private String getEntityName(Class<?> clazz) {
 		final String entityName = clazz.getName().substring(clazz.getName().lastIndexOf('.') + 1);
-		if (props.get(PersistenceOptions.QUALIFY_ENTITY_NAME) != null
-				&& props.get(PersistenceOptions.QUALIFY_ENTITY_NAME).equals(
+		if (props.get(PersistenceOptions.QUALIFY_ENTITY_NAME) != null &&
+				props.get(PersistenceOptions.QUALIFY_ENTITY_NAME).equals(
 					PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX)) {
 			return epackages[0].getNsPrefix() + "." + entityName;
 		} else {
@@ -439,8 +439,8 @@ public class HibernateTestStore extends AbstractTestStore {
 		return true;
 	}
 
-	/** Set the xmlcalendar date */
+	/** Set the xmlgregoriancalendar date */
 	public Object getDate(Date date) {
-		return new XMLCalendar(date, XMLCalendar.DATETIME);
+		return EcoreDataTypes.INSTANCE.getXMLGregorianCalendar(date);
 	}
 }
