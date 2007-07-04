@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.5 2007/07/03 10:00:32 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.6 2007/07/04 19:27:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -38,7 +38,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -192,13 +192,13 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 		final String name = cls.getName();
 		final String realName = name.substring(name.lastIndexOf('.') + 1, name.length() - 4);
 		final PersistentClass cmd = hbEntityDataStore.getConfiguration().getClassMapping(realName);
-		if (strategy.equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
+		if (strategy.equals(InheritanceType.SINGLE_TABLE)) {
 			return cmd instanceof SingleTableSubclass;
 		}
-		if (strategy.equals(InheritanceType.JOINED_LITERAL)) {
+		if (strategy.equals(InheritanceType.JOINED)) {
 			return cmd instanceof JoinedSubclass;
 		}
-		if (strategy.equals(InheritanceType.TABLE_PER_CLASS_LITERAL)) {
+		if (strategy.equals(InheritanceType.TABLE_PER_CLASS)) {
 			return cmd instanceof UnionSubclass;
 		}
 		throw new HbStoreException("Strategy: " + strategy.toString() + " not supported ");

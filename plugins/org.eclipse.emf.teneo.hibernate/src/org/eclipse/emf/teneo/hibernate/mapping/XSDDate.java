@@ -10,7 +10,7 @@
  *   Brian Vetter
  * </copyright>
  *
- * $Id: XSDDate.java,v 1.1 2007/03/04 21:18:34 mtaal Exp $
+ * $Id: XSDDate.java,v 1.2 2007/07/04 19:27:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -20,64 +20,85 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Date;
 
-import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
+import org.eclipse.emf.teneo.hibernate.HbStoreException;
+import org.eclipse.emf.teneo.util.EcoreDataTypes;
 import org.hibernate.HibernateException;
 
 /**
- * Implements the hibernate UserType for EMF's XMLCalendar ("date" type in XSD).
+ * Implements the hibernate UserType for EMF's XMLGregorianCalendar ("date" type in XSD).
  * 
  * @author <a href="mailto:bvetter@alterpoint.com">Brian Vetter</a>
  * @version $Id
  */
 public class XSDDate extends XSDDateTime {
 
-	static final long serialVersionUID=1;
-	
+	static final long serialVersionUID = 1;
+
+	// local copy of the datatype facatory
+	private final DatatypeFactory dataTypeFactory;
+
+	public XSDDate() {
+		try {
+			dataTypeFactory = DatatypeFactory.newInstance();
+		} catch (DatatypeConfigurationException e) {
+			throw new HbStoreException("Exception ", e);
+		}
+	}
+
 	/*
-	 * Returns the DATETIME type that maps to the sql TIMESTAMP type 
+	 * Returns the DATETIME type that maps to the sql TIMESTAMP type
+	 * 
 	 * @see org.hibernate.type.NullableType#sqlType()
 	 */
+	@Override
 	public int sqlType() {
 		return Types.DATE;
 	}
 
 	/*
 	 * returns a name for the user type
+	 * 
 	 * @see org.hibernate.type.Type#getName()
 	 */
+	@Override
 	public String getName() {
 		return "xmldate";
 	}
 
 	/*
-	 * Transform the date in the resultSet into a XMLCalendar instance.
+	 * Transform the date in the resultSet into a XMLGregorianCalendar instance.
+	 * 
 	 * @see org.hibernate.type.NullableType#get(java.sql.ResultSet, java.lang.String)
 	 */
-	public Object get(ResultSet resultSet, String name)
-			throws SQLException {
-		Date data = resultSet.getDate(name);
-		if (data == null) {
+	@Override
+	public Object get(ResultSet resultSet, String name) throws SQLException {
+		Date date = resultSet.getDate(name);
+		if (date == null) {
 			return null;
 		}
-		// convert to XMLCalendar type
-		return new XMLCalendar(data, XMLCalendar.DATE);
+		return EcoreDataTypes.INSTANCE.getXMLGregorianCalendar(date);
 	}
 
 	/*
 	 * Transform the XMLCalendar into a date type to store in the database
+	 * 
 	 * @see org.hibernate.type.NullableType#set(java.sql.PreparedStatement, java.lang.Object, int)
 	 */
-	public void set(PreparedStatement statement, Object value, int index)
-			throws SQLException {
-		java.sql.Date d = new java.sql.Date(((XMLCalendar)value).getDate().getTime()); 
+	@Override
+	public void set(PreparedStatement statement, Object value, int index) throws SQLException {
+		java.sql.Date d = new java.sql.Date(((XMLGregorianCalendar) value).toGregorianCalendar().getTime().getTime());
 		statement.setDate(index, d);
 	}
 
 	/*
 	 * @see org.hibernate.type.NullableType#fromStringValue(java.lang.String)
 	 */
+	@Override
 	public Object fromStringValue(String s) throws HibernateException {
-		return new XMLCalendar(s, XMLCalendar.DATE);
+		return dataTypeFactory.newXMLGregorianCalendar(s);
 	}
 }
-

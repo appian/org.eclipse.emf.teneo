@@ -35,7 +35,7 @@ import org.hibernate.property.Setter;
  * and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 @SuppressWarnings("unchecked")
 public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -57,7 +57,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	/** Constructor */
 	public EReferencePropertyHandler(EReference eReference) {
 		this.eReference = eReference;
-		isBidirectional = eReference.getEOpposite() != null;
+		isBidirectional = eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient();
 		log.debug("Created getter/setter for " + StoreUtil.toString(eReference));
 	}
 
@@ -94,8 +94,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
 	 *      org.hibernate.engine.SessionImplementor)
 	 */
-	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session)
-			throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		return get(owner);
 	}
 
@@ -105,8 +104,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
 	 *      org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value, SessionFactoryImplementor factory)
-			throws HibernateException {
+	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 		final Object curValue = get(target);
 		if (isBidirectional) {// these are handled a bit differently because
 			// the opposite should not be set, this is
@@ -116,19 +114,25 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 				// the same
 				// pm.
 				if (value == null) { // remove
-					final NotificationChain nots = ((InternalEObject) target).eInverseRemove(
-							(InternalEObject) curValue, eReference.getFeatureID(), eReference
-									.getEType().getInstanceClass(), null);
-					if (nots != null) nots.dispatch();
+					final NotificationChain nots =
+							((InternalEObject) target).eInverseRemove((InternalEObject) curValue, eReference
+								.getFeatureID(), eReference.getEType().getInstanceClass(), null);
+					if (nots != null) {
+						nots.dispatch();
+					}
 				} else {
-					final NotificationChain nots = ((InternalEObject) target).eInverseAdd(
-							(InternalEObject) value, eReference.getFeatureID(), eReference
-									.getEType().getInstanceClass(), null);
-					if (nots != null) nots.dispatch();
+					final NotificationChain nots =
+							((InternalEObject) target).eInverseAdd((InternalEObject) value, eReference.getFeatureID(),
+								eReference.getEType().getInstanceClass(), null);
+					if (nots != null) {
+						nots.dispatch();
+					}
 				}
 			}
 		} else {
-			if (curValue == null && value == null) return; // do nothing in this case
+			if (curValue == null && value == null) {
+				return; // do nothing in this case
+			}
 			final EObject eobj = (EObject) target;
 			eobj.eSet(eReference, value);
 			Resource res = eobj.eResource();

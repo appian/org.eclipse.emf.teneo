@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionWrapper.java,v 1.4 2007/07/03 10:00:32 mtaal Exp $
+ * $Id: HbSessionWrapper.java,v 1.5 2007/07/04 19:27:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -34,7 +34,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * Wraps a standard hibernate session.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class HbSessionWrapper implements SessionWrapper {
 
@@ -166,13 +166,13 @@ public class HbSessionWrapper implements SessionWrapper {
 		final String clsName = cls.getName();
 		final String realName = clsName.substring(clsName.lastIndexOf('.') + 1, clsName.length() - 4);
 		final ClassMetadata cmd = hbDataStore.getSessionFactory().getClassMetadata(realName);
-		if (strategy.equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
+		if (strategy.equals(InheritanceType.SINGLE_TABLE)) {
 			return cmd instanceof SingleTableEntityPersister;
 		}
-		if (strategy.equals(InheritanceType.JOINED_LITERAL)) {
+		if (strategy.equals(InheritanceType.JOINED)) {
 			return cmd instanceof JoinedSubclassEntityPersister;
 		}
-		if (strategy.equals(InheritanceType.TABLE_PER_CLASS_LITERAL)) {
+		if (strategy.equals(InheritanceType.TABLE_PER_CLASS)) {
 			return cmd instanceof UnionSubclassEntityPersister;
 		}
 		throw new HbStoreException("Strategy: " + strategy.toString() + " not supported ");
