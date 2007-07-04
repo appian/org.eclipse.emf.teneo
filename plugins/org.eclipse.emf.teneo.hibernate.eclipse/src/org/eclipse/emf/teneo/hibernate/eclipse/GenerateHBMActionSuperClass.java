@@ -22,7 +22,7 @@ import org.eclipse.emf.teneo.hibernate.mapper.GenerateHBM;
  * Eclipse popup action to generate a hbm file based on the ecore files.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class GenerateHBMActionSuperClass extends GenerateMappingAction {
@@ -32,9 +32,8 @@ public class GenerateHBMActionSuperClass extends GenerateMappingAction {
 	@Override
 	public void run(IAction action) {
 		final HashMap<String, String> options = new HashMap<String, String>();
-		options.put(PersistenceOptions.INHERITANCE_MAPPING, InheritanceType.SINGLE_TABLE_LITERAL
-				.getName());
-		super.run(action, HbConstants.HBM_FILE_NAME, "Generate JDO 2.0 Metadata File", options,
-				GenerateHBM.class.getName());
+		options.put(PersistenceOptions.INHERITANCE_MAPPING, InheritanceType.SINGLE_TABLE.getName());
+		super.run(action, HbConstants.HBM_FILE_NAME, "Generate JDO 2.0 Metadata File", options, GenerateHBM.class
+			.getName());
 	}
 }

@@ -22,7 +22,7 @@ import org.eclipse.emf.teneo.hibernate.mapper.GenerateHBM;
  * Eclipse popup action to generate a hibernate file based on ecore files.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class GenerateHBMAction extends GenerateMappingAction {
@@ -32,9 +32,8 @@ public class GenerateHBMAction extends GenerateMappingAction {
 	@Override
 	public void run(IAction action) {
 		final HashMap<String, String> options = new HashMap<String, String>();
-		options.put(PersistenceOptions.INHERITANCE_MAPPING, InheritanceType.JOINED_LITERAL
-				.getName());
-		super.run(action, HbConstants.HBM_FILE_NAME, "Generate Hibernate mapping file", options,
-				GenerateHBM.class.getName());
+		options.put(PersistenceOptions.INHERITANCE_MAPPING, InheritanceType.JOINED.getName());
+		super.run(action, HbConstants.HBM_FILE_NAME, "Generate Hibernate mapping file", options, GenerateHBM.class
+			.getName());
 	}
 }
