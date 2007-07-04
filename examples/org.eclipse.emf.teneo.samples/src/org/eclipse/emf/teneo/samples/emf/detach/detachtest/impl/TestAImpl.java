@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestAImpl.java,v 1.3 2007/07/04 19:29:56 mtaal Exp $
+ * $Id: TestAImpl.java,v 1.4 2007/07/04 19:45:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl;
 
@@ -57,14 +57,14 @@ public class TestAImpl extends EObjectImpl implements TestA {
 	protected String code = CODE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTestB() <em>Test B</em>}' reference.
+	 * The cached value of the '{@link #getTestB() <em>Test B</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTestB()
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject testB;
+	protected TestB testB;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -111,7 +111,7 @@ public class TestAImpl extends EObjectImpl implements TestA {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject getTestB() {
+	public TestB getTestB() {
 		return testB;
 	}
 
@@ -120,11 +120,47 @@ public class TestAImpl extends EObjectImpl implements TestA {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTestB(EObject newTestB) {
-		EObject oldTestB = testB;
+	public NotificationChain basicSetTestB(TestB newTestB, NotificationChain msgs) {
+		TestB oldTestB = testB;
 		testB = newTestB;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DetachtestPackage.TEST_A__TEST_B, oldTestB, testB));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DetachtestPackage.TEST_A__TEST_B, oldTestB, newTestB);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTestB(TestB newTestB) {
+		if (newTestB != testB) {
+			NotificationChain msgs = null;
+			if (testB != null)
+				msgs = ((InternalEObject)testB).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DetachtestPackage.TEST_A__TEST_B, null, msgs);
+			if (newTestB != null)
+				msgs = ((InternalEObject)newTestB).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DetachtestPackage.TEST_A__TEST_B, null, msgs);
+			msgs = basicSetTestB(newTestB, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DetachtestPackage.TEST_A__TEST_B, newTestB, newTestB));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case DetachtestPackage.TEST_A__TEST_B:
+				return basicSetTestB(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -155,7 +191,7 @@ public class TestAImpl extends EObjectImpl implements TestA {
 				setCode((String)newValue);
 				return;
 			case DetachtestPackage.TEST_A__TEST_B:
-				setTestB((EObject)newValue);
+				setTestB((TestB)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -173,7 +209,7 @@ public class TestAImpl extends EObjectImpl implements TestA {
 				setCode(CODE_EDEFAULT);
 				return;
 			case DetachtestPackage.TEST_A__TEST_B:
-				setTestB((EObject)null);
+				setTestB((TestB)null);
 				return;
 		}
 		super.eUnset(featureID);

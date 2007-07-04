@@ -9,7 +9,7 @@
 	<complexType name="TestA">
 		<sequence>
 			<element name="code" type="string"/>
-			<element name="testB" type="this:TestB" ecore:reference="TestB"/>
+			<element name="testB" type="this:TestB"/>
 		</sequence>
 	</complexType>
 	

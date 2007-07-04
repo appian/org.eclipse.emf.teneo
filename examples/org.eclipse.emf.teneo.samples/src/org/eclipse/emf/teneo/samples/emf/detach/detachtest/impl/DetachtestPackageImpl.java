@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DetachtestPackageImpl.java,v 1.3 2007/07/04 19:29:56 mtaal Exp $
+ * $Id: DetachtestPackageImpl.java,v 1.4 2007/07/04 19:45:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl;
 
@@ -279,7 +279,7 @@ public class DetachtestPackageImpl extends EPackageImpl implements DetachtestPac
 		// Initialize classes and features; add operations and parameters
 		initEClass(testAEClass, TestA.class, "TestA", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTestA_Code(), theXMLTypePackage.getString(), "code", null, 1, 1, TestA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestA_TestB(), ecorePackage.getEObject(), null, "testB", null, 1, 1, TestA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestA_TestB(), this.getTestB(), null, "testB", null, 1, 1, TestA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testBEClass, TestB.class, "TestB", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTestB_Code(), theXMLTypePackage.getString(), "code", null, 1, 1, TestB.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -9,7 +9,7 @@ Package detachtest <http://www.eclipse.org/emf/teneo/samples/emf/detach/detachte
 
   Class TestA
     Attribute code : String<<1..1>>
-    Reference testB : EObject<<1..1>>
+    Reference testB : TestB<<1..1>>
 
   Class TestB
     Attribute code : String<<1..1>>

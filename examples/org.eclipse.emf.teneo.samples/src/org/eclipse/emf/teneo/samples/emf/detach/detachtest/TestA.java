@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestA.java,v 1.3 2007/07/04 19:29:56 mtaal Exp $
+ * $Id: TestA.java,v 1.4 2007/07/04 19:45:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest;
 
@@ -54,30 +54,30 @@ public interface TestA extends EObject {
 	void setCode(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Test B</b></em>' reference.
+	 * Returns the value of the '<em><b>Test B</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Test B</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Test B</em>' reference.
-	 * @see #setTestB(EObject)
+	 * @return the value of the '<em>Test B</em>' containment reference.
+	 * @see #setTestB(TestB)
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.DetachtestPackage#getTestA_TestB()
-	 * @model resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='testB'"
 	 * @generated
 	 */
-	EObject getTestB();
+	TestB getTestB();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestA#getTestB <em>Test B</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestA#getTestB <em>Test B</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Test B</em>' reference.
+	 * @param value the new value of the '<em>Test B</em>' containment reference.
 	 * @see #getTestB()
 	 * @generated
 	 */
-	void setTestB(EObject value);
+	void setTestB(TestB value);
 
 } // TestA

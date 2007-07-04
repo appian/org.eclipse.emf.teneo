@@ -9,7 +9,7 @@
       resource="XML" disposableProviderFactory="true" ecorePackage="detachtest.ecore#/">
     <genClasses ecoreClass="detachtest.ecore#//TestA">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute detachtest.ecore#//TestA/code"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference detachtest.ecore#//TestA/testB"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference detachtest.ecore#//TestA/testB"/>
     </genClasses>
     <genClasses ecoreClass="detachtest.ecore#//TestB">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute detachtest.ecore#//TestB/code"/>

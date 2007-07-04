@@ -14,8 +14,8 @@
         <details key="name" value="code"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="testB" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
-        resolveProxies="false">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="testB" lowerBound="1" eType="#//TestB"
+        containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="testB"/>
