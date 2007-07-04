@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CacheImpl.java,v 1.5 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: CacheImpl.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,13 +34,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
  */
 public class CacheImpl extends EObjectImpl implements Cache {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
-	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,7 +51,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final CacheConcurrencyStrategy USAGE_EDEFAULT = CacheConcurrencyStrategy.NONE_LITERAL;
+	protected static final CacheConcurrencyStrategy USAGE_EDEFAULT = CacheConcurrencyStrategy.NONE;
 
 	/**
 	 * The cached value of the '{@link #getUsage() <em>Usage</em>}' attribute.
@@ -126,7 +119,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.CACHE;
+		return HbannotationPackage.Literals.CACHE;
 	}
 
 	/**
@@ -140,7 +133,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.CACHE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.CACHE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -164,7 +157,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.CACHE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CACHE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -185,7 +178,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 		CacheConcurrencyStrategy oldUsage = usage;
 		usage = newUsage == null ? USAGE_EDEFAULT : newUsage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.CACHE__USAGE, oldUsage, usage));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CACHE__USAGE, oldUsage, usage));
 	}
 
 	/**
@@ -206,7 +199,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 		String oldRegion = region;
 		region = newRegion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.CACHE__REGION, oldRegion, region));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CACHE__REGION, oldRegion, region));
 	}
 
 	/**
@@ -227,7 +220,7 @@ public class CacheImpl extends EObjectImpl implements Cache {
 		String oldInclude = include;
 		include = newInclude;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.CACHE__INCLUDE, oldInclude, include));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CACHE__INCLUDE, oldInclude, include));
 	}
 
 	/**
@@ -238,14 +231,14 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.CACHE__EMODEL_ELEMENT:
+			case HbannotationPackage.CACHE__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.CACHE__USAGE:
+			case HbannotationPackage.CACHE__USAGE:
 				return getUsage();
-			case HbAnnotationPackage.CACHE__REGION:
+			case HbannotationPackage.CACHE__REGION:
 				return getRegion();
-			case HbAnnotationPackage.CACHE__INCLUDE:
+			case HbannotationPackage.CACHE__INCLUDE:
 				return getInclude();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -259,16 +252,16 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.CACHE__EMODEL_ELEMENT:
+			case HbannotationPackage.CACHE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.CACHE__USAGE:
+			case HbannotationPackage.CACHE__USAGE:
 				setUsage((CacheConcurrencyStrategy)newValue);
 				return;
-			case HbAnnotationPackage.CACHE__REGION:
+			case HbannotationPackage.CACHE__REGION:
 				setRegion((String)newValue);
 				return;
-			case HbAnnotationPackage.CACHE__INCLUDE:
+			case HbannotationPackage.CACHE__INCLUDE:
 				setInclude((String)newValue);
 				return;
 		}
@@ -283,16 +276,16 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.CACHE__EMODEL_ELEMENT:
+			case HbannotationPackage.CACHE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.CACHE__USAGE:
+			case HbannotationPackage.CACHE__USAGE:
 				setUsage(USAGE_EDEFAULT);
 				return;
-			case HbAnnotationPackage.CACHE__REGION:
+			case HbannotationPackage.CACHE__REGION:
 				setRegion(REGION_EDEFAULT);
 				return;
-			case HbAnnotationPackage.CACHE__INCLUDE:
+			case HbannotationPackage.CACHE__INCLUDE:
 				setInclude(INCLUDE_EDEFAULT);
 				return;
 		}
@@ -307,13 +300,13 @@ public class CacheImpl extends EObjectImpl implements Cache {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.CACHE__EMODEL_ELEMENT:
+			case HbannotationPackage.CACHE__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.CACHE__USAGE:
+			case HbannotationPackage.CACHE__USAGE:
 				return usage != USAGE_EDEFAULT;
-			case HbAnnotationPackage.CACHE__REGION:
+			case HbannotationPackage.CACHE__REGION:
 				return REGION_EDEFAULT == null ? region != null : !REGION_EDEFAULT.equals(region);
-			case HbAnnotationPackage.CACHE__INCLUDE:
+			case HbannotationPackage.CACHE__INCLUDE:
 				return INCLUDE_EDEFAULT == null ? include != null : !INCLUDE_EDEFAULT.equals(include);
 		}
 		return super.eIsSet(featureID);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OnDelete.java,v 1.2 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: OnDelete.java,v 1.3 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -19,18 +19,11 @@ package org.eclipse.emf.teneo.hibernate.hbannotation;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getOnDelete()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getOnDelete()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated
  */
 public interface OnDelete extends HbAnnotation {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Action</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction}.
@@ -43,7 +36,7 @@ public interface OnDelete extends HbAnnotation {
 	 * @return the value of the '<em>Action</em>' attribute.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction
 	 * @see #setAction(OnDeleteAction)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getOnDelete_Action()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getOnDelete_Action()
 	 * @model
 	 * @generated
 	 */

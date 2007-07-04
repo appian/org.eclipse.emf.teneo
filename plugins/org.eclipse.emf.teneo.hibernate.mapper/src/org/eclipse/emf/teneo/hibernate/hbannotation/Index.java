@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Index.java,v 1.1 2007/06/29 07:31:28 mtaal Exp $
+ * $Id: Index.java,v 1.2 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -19,18 +19,11 @@ package org.eclipse.emf.teneo.hibernate.hbannotation;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getIndex()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getIndex()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated
  */
 public interface Index extends HbAnnotation {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -41,7 +34,7 @@ public interface Index extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getIndex_Name()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getIndex_Name()
 	 * @model
 	 * @generated
 	 */

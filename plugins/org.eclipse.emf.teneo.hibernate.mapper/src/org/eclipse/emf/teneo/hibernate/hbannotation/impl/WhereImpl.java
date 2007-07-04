@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WhereImpl.java,v 1.4 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: WhereImpl.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 
 /**
@@ -30,13 +30,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  * @generated
  */
 public class WhereImpl extends EObjectImpl implements Where {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -83,7 +76,7 @@ public class WhereImpl extends EObjectImpl implements Where {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.WHERE;
+		return HbannotationPackage.Literals.WHERE;
 	}
 
 	/**
@@ -97,7 +90,7 @@ public class WhereImpl extends EObjectImpl implements Where {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.WHERE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.WHERE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -121,7 +114,7 @@ public class WhereImpl extends EObjectImpl implements Where {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.WHERE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.WHERE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -142,7 +135,7 @@ public class WhereImpl extends EObjectImpl implements Where {
 		String oldClause = clause;
 		clause = newClause;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.WHERE__CLAUSE, oldClause, clause));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.WHERE__CLAUSE, oldClause, clause));
 	}
 
 	/**
@@ -153,10 +146,10 @@ public class WhereImpl extends EObjectImpl implements Where {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.WHERE__EMODEL_ELEMENT:
+			case HbannotationPackage.WHERE__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.WHERE__CLAUSE:
+			case HbannotationPackage.WHERE__CLAUSE:
 				return getClause();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -170,10 +163,10 @@ public class WhereImpl extends EObjectImpl implements Where {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.WHERE__EMODEL_ELEMENT:
+			case HbannotationPackage.WHERE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.WHERE__CLAUSE:
+			case HbannotationPackage.WHERE__CLAUSE:
 				setClause((String)newValue);
 				return;
 		}
@@ -188,10 +181,10 @@ public class WhereImpl extends EObjectImpl implements Where {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.WHERE__EMODEL_ELEMENT:
+			case HbannotationPackage.WHERE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.WHERE__CLAUSE:
+			case HbannotationPackage.WHERE__CLAUSE:
 				setClause(CLAUSE_EDEFAULT);
 				return;
 		}
@@ -206,9 +199,9 @@ public class WhereImpl extends EObjectImpl implements Where {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.WHERE__EMODEL_ELEMENT:
+			case HbannotationPackage.WHERE__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.WHERE__CLAUSE:
+			case HbannotationPackage.WHERE__CLAUSE:
 				return CLAUSE_EDEFAULT == null ? clause != null : !CLAUSE_EDEFAULT.equals(clause);
 		}
 		return super.eIsSet(featureID);

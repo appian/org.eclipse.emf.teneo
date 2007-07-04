@@ -2,20 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IndexImpl.java,v 1.1 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: IndexImpl.java,v 1.2 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 
 /**
@@ -33,13 +30,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
  * @generated
  */
 public class IndexImpl extends EObjectImpl implements Index {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -86,7 +76,7 @@ public class IndexImpl extends EObjectImpl implements Index {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.INDEX;
+		return HbannotationPackage.Literals.INDEX;
 	}
 
 	/**
@@ -100,7 +90,7 @@ public class IndexImpl extends EObjectImpl implements Index {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.INDEX__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.INDEX__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -124,7 +114,7 @@ public class IndexImpl extends EObjectImpl implements Index {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.INDEX__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.INDEX__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -145,7 +135,7 @@ public class IndexImpl extends EObjectImpl implements Index {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.INDEX__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.INDEX__NAME, oldName, name));
 	}
 
 	/**
@@ -156,10 +146,10 @@ public class IndexImpl extends EObjectImpl implements Index {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.INDEX__EMODEL_ELEMENT:
+			case HbannotationPackage.INDEX__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.INDEX__NAME:
+			case HbannotationPackage.INDEX__NAME:
 				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -173,10 +163,10 @@ public class IndexImpl extends EObjectImpl implements Index {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.INDEX__EMODEL_ELEMENT:
+			case HbannotationPackage.INDEX__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.INDEX__NAME:
+			case HbannotationPackage.INDEX__NAME:
 				setName((String)newValue);
 				return;
 		}
@@ -191,10 +181,10 @@ public class IndexImpl extends EObjectImpl implements Index {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.INDEX__EMODEL_ELEMENT:
+			case HbannotationPackage.INDEX__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.INDEX__NAME:
+			case HbannotationPackage.INDEX__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
@@ -209,9 +199,9 @@ public class IndexImpl extends EObjectImpl implements Index {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.INDEX__EMODEL_ELEMENT:
+			case HbannotationPackage.INDEX__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.INDEX__NAME:
+			case HbannotationPackage.INDEX__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);

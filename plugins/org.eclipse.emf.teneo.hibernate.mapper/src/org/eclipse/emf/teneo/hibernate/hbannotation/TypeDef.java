@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeDef.java,v 1.4 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: TypeDef.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -20,17 +20,11 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getTypeDef()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getTypeDef()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature' 1='EClass' 2='EPackage'"
  * @generated
  */
 public interface TypeDef extends HbAnnotation {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -41,7 +35,7 @@ public interface TypeDef extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getTypeDef_Name()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getTypeDef_Name()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -66,8 +60,8 @@ public interface TypeDef extends HbAnnotation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameters</em>' reference list.
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getTypeDef_Parameters()
-	 * @model type="org.eclipse.emf.teneo.hibernate.hbannotation.Parameter"
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getTypeDef_Parameters()
+	 * @model
 	 * @generated
 	 */
 	EList<Parameter> getParameters();
@@ -82,7 +76,7 @@ public interface TypeDef extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type Class</em>' attribute.
 	 * @see #setTypeClass(String)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getTypeDef_TypeClass()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getTypeDef_TypeClass()
 	 * @model required="true"
 	 * @generated
 	 */

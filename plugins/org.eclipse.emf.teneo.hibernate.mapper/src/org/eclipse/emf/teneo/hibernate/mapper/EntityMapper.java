@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: EntityMapper.java,v 1.19 2007/06/29 07:31:28 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.20 2007/07/04 19:31:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -58,14 +58,14 @@ class EntityMapper extends AbstractMapper {
 	/** Initialize the global arrays */
 	static {
 		INHERITANCE_STRATEGY_NAMES = new String[InheritanceType.VALUES.size()];
-		INHERITANCE_STRATEGY_NAMES[InheritanceType.JOINED] = "joined-subclass";
-		INHERITANCE_STRATEGY_NAMES[InheritanceType.SINGLE_TABLE] = "subclass";
-		INHERITANCE_STRATEGY_NAMES[InheritanceType.TABLE_PER_CLASS] = "union-subclass";
+		INHERITANCE_STRATEGY_NAMES[InheritanceType.JOINED.getValue()] = "joined-subclass";
+		INHERITANCE_STRATEGY_NAMES[InheritanceType.SINGLE_TABLE.getValue()] = "subclass";
+		INHERITANCE_STRATEGY_NAMES[InheritanceType.TABLE_PER_CLASS.getValue()] = "union-subclass";
 
 		DISCRIMINATOR_TYPE_NAMES = new String[DiscriminatorType.VALUES.size()];
-		DISCRIMINATOR_TYPE_NAMES[DiscriminatorType.CHAR] = "character";
-		DISCRIMINATOR_TYPE_NAMES[DiscriminatorType.INTEGER] = "integer";
-		DISCRIMINATOR_TYPE_NAMES[DiscriminatorType.STRING] = "string";
+		DISCRIMINATOR_TYPE_NAMES[DiscriminatorType.CHAR.getValue()] = "character";
+		DISCRIMINATOR_TYPE_NAMES[DiscriminatorType.INTEGER.getValue()] = "integer";
+		DISCRIMINATOR_TYPE_NAMES[DiscriminatorType.STRING.getValue()] = "string";
 	}
 
 	// Key used for grouping properties to the primary and secondary tables.
@@ -77,14 +77,15 @@ class EntityMapper extends AbstractMapper {
 	 */
 	private static String hbInheritanceName(InheritanceType inheritanceType) {
 		return EntityMapper.INHERITANCE_STRATEGY_NAMES[inheritanceType != null ? inheritanceType.getValue()
-				: InheritanceType.SINGLE_TABLE];
+				: InheritanceType.SINGLE_TABLE.getValue()];
 	}
 
 	/**
 	 * @return Return the name used by hibernate for the given dicriminator type
 	 */
 	private static String hbDiscriminatorType(DiscriminatorType dType) {
-		return EntityMapper.DISCRIMINATOR_TYPE_NAMES[dType != null ? DiscriminatorType.STRING : dType.getValue()];
+		return EntityMapper.DISCRIMINATOR_TYPE_NAMES[dType != null ? DiscriminatorType.STRING.getValue() : dType
+			.getValue()];
 	}
 
 	/**
@@ -101,8 +102,7 @@ class EntityMapper extends AbstractMapper {
 	private Element createEntity(PAnnotatedEClass entity, InheritanceType inhStrategy, PAnnotatedEClass superEntity,
 			DiscriminatorValue dValue, Table table) {
 		// determine what type of hibernate tag should be used
-		final InheritanceType inheritanceStrategy =
-				inhStrategy != null ? inhStrategy : InheritanceType.SINGLE_TABLE_LITERAL;
+		final InheritanceType inheritanceStrategy = inhStrategy != null ? inhStrategy : InheritanceType.SINGLE_TABLE;
 		final EClass eclass = entity.getAnnotatedEClass();
 		final String hbClassName;
 		if (superEntity == null) {
@@ -162,11 +162,12 @@ class EntityMapper extends AbstractMapper {
 			log.debug("DValue " + dValue.getValue());
 		}
 
-		if (table != null && hbClassName.compareTo(INHERITANCE_STRATEGY_NAMES[InheritanceType.SINGLE_TABLE]) == 0) {
+		if (table != null &&
+				hbClassName.compareTo(INHERITANCE_STRATEGY_NAMES[InheritanceType.SINGLE_TABLE.getValue()]) == 0) {
 			log
-				.warn("EClass/Entity ("
-						+ entityName
-						+ ") is mapped as subclass in a single table with its superclass but it also has a table annotation. This table annotation is ignored.");
+				.warn("EClass/Entity (" +
+						entityName +
+						") is mapped as subclass in a single table with its superclass but it also has a table annotation. This table annotation is ignored.");
 		} else if (table != null) {
 			if (table.getName() != null) {
 				target.addAttribute("table", getHbmContext().trunc(table.getName(), false));
@@ -186,8 +187,8 @@ class EntityMapper extends AbstractMapper {
 			target.addAttribute("where", ((HbAnnotatedEClass) entity).getHbWhere().getClause());
 		}
 
-		if (((HbAnnotatedEClass) entity).getHbProxy() != null
-				&& ((HbAnnotatedEClass) entity).getHbProxy().getProxyClass() != null) {
+		if (((HbAnnotatedEClass) entity).getHbProxy() != null &&
+				((HbAnnotatedEClass) entity).getHbProxy().getProxyClass() != null) {
 			final String proxyInterfaceName = ((HbAnnotatedEClass) entity).getHbProxy().getProxyClass();
 			target.addAttribute("proxy", proxyInterfaceName);
 		}
@@ -239,8 +240,7 @@ class EntityMapper extends AbstractMapper {
 
 		if (entity.getPrimaryKeyJoinColumns() != null && entity.getPrimaryKeyJoinColumns().size() > 0) {
 			addPrimaryKeyJoinColumn(entity.getPrimaryKeyJoinColumns(), entity);
-		} else if (entity.getPaSuperEntity() != null
-				&& InheritanceType.JOINED_LITERAL.equals(entity.getInheritanceStrategy())) {
+		} else if (entity.getPaSuperEntity() != null && InheritanceType.JOINED.equals(entity.getInheritanceStrategy())) {
 			final ArrayList<PrimaryKeyJoinColumn> list = new ArrayList<PrimaryKeyJoinColumn>();
 			final PrimaryKeyJoinColumn pkjc = PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
 			final String entityName = getHbmContext().getEntityName(entity.getAnnotatedEClass());
@@ -254,9 +254,9 @@ class EntityMapper extends AbstractMapper {
 			final List<PAnnotatedEStructuralFeature> inheritedFeatures = getHbmContext().getInheritedFeatures(entity);
 
 			getHbmContext().setForceOptional(
-				entity.getPaSuperEntity() != null
-						&& (entity.getInheritanceStrategy() == null || InheritanceType.SINGLE_TABLE_LITERAL
-							.equals(entity.getInheritanceStrategy())));
+				entity.getPaSuperEntity() != null &&
+						(entity.getInheritanceStrategy() == null || InheritanceType.SINGLE_TABLE.equals(entity
+							.getInheritanceStrategy())));
 
 			getHbmContext().pushOverrideOnStack();
 			if (entity.getAttributeOverrides() != null) {
@@ -328,8 +328,8 @@ class EntityMapper extends AbstractMapper {
 
 		getHbmContext().addTuplizerElement(entityElement, entity);
 
-		if ((entity.getPaSuperEntity() == null || entity.getPaSuperEntity().getMappedSuperclass() != null)
-				&& ((HbAnnotatedEClass) entity).getHbCache() != null) {
+		if ((entity.getPaSuperEntity() == null || entity.getPaSuperEntity().getMappedSuperclass() != null) &&
+				((HbAnnotatedEClass) entity).getHbCache() != null) {
 			addCacheElement(entityElement, ((HbAnnotatedEClass) entity).getHbCache());
 		}
 
@@ -395,8 +395,8 @@ class EntityMapper extends AbstractMapper {
 			final String tableName = getSecondaryTableName(feature);
 			if (!tableNames.contains(tableName)) {
 				final String message =
-						"Feature \"" + feature.getAnnotatedElement().getName()
-								+ "\" was mapped to undeclared secondary table \"" + tableName + "\".";
+						"Feature \"" + feature.getAnnotatedElement().getName() +
+								"\" was mapped to undeclared secondary table \"" + tableName + "\".";
 				log.error(message);
 				throw new MappingException(message);
 			}

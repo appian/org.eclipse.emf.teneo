@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeImpl.java,v 1.4 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: TypeImpl.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 
@@ -36,13 +36,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
  * @generated
  */
 public class TypeImpl extends EObjectImpl implements Type {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -99,7 +92,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.TYPE;
+		return HbannotationPackage.Literals.TYPE;
 	}
 
 	/**
@@ -113,7 +106,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.TYPE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.TYPE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -137,7 +130,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.TYPE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.TYPE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -158,7 +151,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 		String oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.TYPE__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.TYPE__TYPE, oldType, type));
 	}
 
 	/**
@@ -168,7 +161,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 */
 	public EList<Parameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectResolvingEList<Parameter>(Parameter.class, this, HbAnnotationPackage.TYPE__PARAMETERS);
+			parameters = new EObjectResolvingEList<Parameter>(Parameter.class, this, HbannotationPackage.TYPE__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -181,12 +174,12 @@ public class TypeImpl extends EObjectImpl implements Type {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.TYPE__EMODEL_ELEMENT:
+			case HbannotationPackage.TYPE__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.TYPE__TYPE:
+			case HbannotationPackage.TYPE__TYPE:
 				return getType();
-			case HbAnnotationPackage.TYPE__PARAMETERS:
+			case HbannotationPackage.TYPE__PARAMETERS:
 				return getParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -201,13 +194,13 @@ public class TypeImpl extends EObjectImpl implements Type {
 		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.TYPE__EMODEL_ELEMENT:
+			case HbannotationPackage.TYPE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.TYPE__TYPE:
+			case HbannotationPackage.TYPE__TYPE:
 				setType((String)newValue);
 				return;
-			case HbAnnotationPackage.TYPE__PARAMETERS:
+			case HbannotationPackage.TYPE__PARAMETERS:
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends Parameter>)newValue);
 				return;
@@ -223,13 +216,13 @@ public class TypeImpl extends EObjectImpl implements Type {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.TYPE__EMODEL_ELEMENT:
+			case HbannotationPackage.TYPE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.TYPE__TYPE:
+			case HbannotationPackage.TYPE__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
-			case HbAnnotationPackage.TYPE__PARAMETERS:
+			case HbannotationPackage.TYPE__PARAMETERS:
 				getParameters().clear();
 				return;
 		}
@@ -244,11 +237,11 @@ public class TypeImpl extends EObjectImpl implements Type {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.TYPE__EMODEL_ELEMENT:
+			case HbannotationPackage.TYPE__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.TYPE__TYPE:
+			case HbannotationPackage.TYPE__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-			case HbAnnotationPackage.TYPE__PARAMETERS:
+			case HbannotationPackage.TYPE__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 		}
 		return super.eIsSet(featureID);

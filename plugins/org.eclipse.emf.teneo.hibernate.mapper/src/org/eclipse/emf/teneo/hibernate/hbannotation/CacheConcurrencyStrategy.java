@@ -2,179 +2,161 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CacheConcurrencyStrategy.java,v 1.5 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: CacheConcurrencyStrategy.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
-
-import static org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy.NONE;
-import static org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy.NONSTRICT_READ_WRITE;
-import static org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy.READ_ONLY;
-import static org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy.READ_WRITE;
-import static org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy.TRANSACTIONAL;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Cache Concurrency Strategy</b></em>',
  * and utility methods for working with them. <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getCacheConcurrencyStrategy()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getCacheConcurrencyStrategy()
  * @model
  * @generated
  */
-public enum CacheConcurrencyStrategy implements Enumerator
-{
+public enum CacheConcurrencyStrategy implements Enumerator {
 	/**
 	 * The '<em><b>NONE</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #NONE
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NONE_LITERAL(0, "NONE", "NONE"),
-	/**
+	NONE(0, "NONE", "NONE"), /**
 	 * The '<em><b>READ ONLY</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #READ_ONLY
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #READ_ONLY_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	READ_ONLY_LITERAL(1, "READ_ONLY", "READ_ONLY"),
-	/**
+	READ_ONLY(1, "READ_ONLY", "READ_ONLY"), /**
 	 * The '<em><b>NONSTRICT READ WRITE</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #NONSTRICT_READ_WRITE
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NONSTRICT_READ_WRITE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NONSTRICT_READ_WRITE_LITERAL(2, "NONSTRICT_READ_WRITE", "NONSTRICT_READ_WRITE"),
-	/**
+	NONSTRICT_READ_WRITE(2, "NONSTRICT_READ_WRITE", "NONSTRICT_READ_WRITE"), /**
 	 * The '<em><b>READ WRITE</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #READ_WRITE
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #READ_WRITE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	READ_WRITE_LITERAL(3, "READ_WRITE", "READ_WRITE"),
-	/**
+	READ_WRITE(3, "READ_WRITE", "READ_WRITE"), /**
 	 * The '<em><b>TRANSACTIONAL</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #TRANSACTIONAL
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TRANSACTIONAL_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	TRANSACTIONAL_LITERAL(4, "TRANSACTIONAL", "TRANSACTIONAL");
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
+	TRANSACTIONAL(4, "TRANSACTIONAL", "TRANSACTIONAL");
 
-	/**
+/**
 	 * The '<em><b>NONE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NONE_LITERAL
+	 * @see #NONE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NONE = 0;
-
-	/**
+	public static final int NONE_VALUE = 0;
+/**
 	 * The '<em><b>READ ONLY</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>READ ONLY</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>READ ONLY</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #READ_ONLY_LITERAL
+	 * @see #READ_ONLY
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int READ_ONLY = 1;
-
-	/**
+	public static final int READ_ONLY_VALUE = 1;
+/**
 	 * The '<em><b>NONSTRICT READ WRITE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>NONSTRICT READ WRITE</b></em>' literal object isn't clear, there really should be
-	 * more of a description here...
+	 * If the meaning of '<em><b>NONSTRICT READ WRITE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NONSTRICT_READ_WRITE_LITERAL
+	 * @see #NONSTRICT_READ_WRITE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NONSTRICT_READ_WRITE = 2;
-
-	/**
+	public static final int NONSTRICT_READ_WRITE_VALUE = 2;
+/**
 	 * The '<em><b>READ WRITE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>READ WRITE</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>READ WRITE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #READ_WRITE_LITERAL
+	 * @see #READ_WRITE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int READ_WRITE = 3;
-
-	/**
+	public static final int READ_WRITE_VALUE = 3;
+/**
 	 * The '<em><b>TRANSACTIONAL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>TRANSACTIONAL</b></em>' literal object isn't clear, there really should be more of
-	 * a description here...
+	 * If the meaning of '<em><b>TRANSACTIONAL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TRANSACTIONAL_LITERAL
+	 * @see #TRANSACTIONAL
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TRANSACTIONAL = 4;
-
-	/**
+	public static final int TRANSACTIONAL_VALUE = 4;
+/**
 	 * An array of all the '<em><b>Cache Concurrency Strategy</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final CacheConcurrencyStrategy[] VALUES_ARRAY =
 		new CacheConcurrencyStrategy[] {
-			NONE_LITERAL,
-			READ_ONLY_LITERAL,
-			NONSTRICT_READ_WRITE_LITERAL,
-			READ_WRITE_LITERAL,
-			TRANSACTIONAL_LITERAL,
+			NONE,
+			READ_ONLY,
+			NONSTRICT_READ_WRITE,
+			READ_WRITE,
+			TRANSACTIONAL,
 		};
-
-	/**
-	 * A public read-only list of all the '<em><b>Cache Concurrency Strategy</b></em>' enumerators. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+/**
+	 * A public read-only list of all the '<em><b>Cache Concurrency Strategy</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<CacheConcurrencyStrategy> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
-	/**
-	 * Returns the '<em><b>Cache Concurrency Strategy</b></em>' literal with the specified literal value. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+/**
+	 * Returns the '<em><b>Cache Concurrency Strategy</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static CacheConcurrencyStrategy get(String literal) {
@@ -187,10 +169,10 @@ public enum CacheConcurrencyStrategy implements Enumerator
 		return null;
 	}
 
-	/**
-	 * Returns the '<em><b>Cache Concurrency Strategy</b></em>' literal with the specified name. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+/**
+	 * Returns the '<em><b>Cache Concurrency Strategy</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static CacheConcurrencyStrategy getByName(String name) {
@@ -203,47 +185,46 @@ public enum CacheConcurrencyStrategy implements Enumerator
 		return null;
 	}
 
-	/**
-	 * Returns the '<em><b>Cache Concurrency Strategy</b></em>' literal with the specified integer value. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+/**
+	 * Returns the '<em><b>Cache Concurrency Strategy</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static CacheConcurrencyStrategy get(int value) {
 		switch (value) {
-			case NONE: return NONE_LITERAL;
-			case READ_ONLY: return READ_ONLY_LITERAL;
-			case NONSTRICT_READ_WRITE: return NONSTRICT_READ_WRITE_LITERAL;
-			case READ_WRITE: return READ_WRITE_LITERAL;
-			case TRANSACTIONAL: return TRANSACTIONAL_LITERAL;
+			case NONE_VALUE: return NONE;
+			case READ_ONLY_VALUE: return READ_ONLY;
+			case NONSTRICT_READ_WRITE_VALUE: return NONSTRICT_READ_WRITE;
+			case READ_WRITE_VALUE: return READ_WRITE;
+			case TRANSACTIONAL_VALUE: return TRANSACTIONAL;
 		}
 		return null;
 	}
 
-	/**
+/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private final int value;
-
-	/**
+/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private final String name;
-
-	/**
+/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private final String literal;
 
-	/**
+/**
 	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private CacheConcurrencyStrategy(int value, String name, String literal) {
@@ -252,7 +233,7 @@ public enum CacheConcurrencyStrategy implements Enumerator
 		this.literal = literal;
 	}
 
-	/**
+/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -261,7 +242,7 @@ public enum CacheConcurrencyStrategy implements Enumerator
 	  return value;
 	}
 
-	/**
+/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -270,7 +251,7 @@ public enum CacheConcurrencyStrategy implements Enumerator
 	  return name;
 	}
 
-	/**
+/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -279,7 +260,7 @@ public enum CacheConcurrencyStrategy implements Enumerator
 	  return literal;
 	}
 
-	/**
+/**
 	 * Returns the literal value of the enumerator, which is its string representation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

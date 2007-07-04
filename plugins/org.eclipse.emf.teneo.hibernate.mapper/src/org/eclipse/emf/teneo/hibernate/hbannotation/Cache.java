@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Cache.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: Cache.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -18,17 +18,11 @@ package org.eclipse.emf.teneo.hibernate.hbannotation;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getCache()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getCache()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EReference' 1='EClass'"
  * @generated
  */
 public interface Cache extends HbAnnotation {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Usage</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy}.
@@ -41,7 +35,7 @@ public interface Cache extends HbAnnotation {
 	 * @return the value of the '<em>Usage</em>' attribute.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
 	 * @see #setUsage(CacheConcurrencyStrategy)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getCache_Usage()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getCache_Usage()
 	 * @model
 	 * @generated
 	 */
@@ -67,7 +61,7 @@ public interface Cache extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getCache_Region()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getCache_Region()
 	 * @model
 	 * @generated
 	 */
@@ -92,7 +86,7 @@ public interface Cache extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Include</em>' attribute.
 	 * @see #setInclude(String)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getCache_Include()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getCache_Include()
 	 * @model
 	 * @generated
 	 */

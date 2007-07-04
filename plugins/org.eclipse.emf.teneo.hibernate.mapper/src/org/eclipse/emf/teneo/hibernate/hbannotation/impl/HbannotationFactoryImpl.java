@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotationFactoryImpl.java,v 1.9 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.1 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -12,19 +12,22 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.hibernate.hbannotation.*;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationFactory;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationFactory;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
@@ -35,31 +38,25 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  * <!-- end-user-doc -->
  * @generated
  */
-public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotationFactory {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
+public class HbannotationFactoryImpl extends EFactoryImpl implements HbannotationFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static HbAnnotationFactory init() {
+	public static HbannotationFactory init() {
 		try {
-			HbAnnotationFactory theHbAnnotationFactory = (HbAnnotationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/2006/HbAnnotation"); 
-			if (theHbAnnotationFactory != null) {
-				return theHbAnnotationFactory;
+			HbannotationFactory theHbannotationFactory =
+					(HbannotationFactory) EPackage.Registry.INSTANCE
+						.getEFactory("http://www.eclipse.org/emf/teneo/2006/HbAnnotation");
+			if (theHbannotationFactory != null) {
+				return theHbannotationFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new HbAnnotationFactoryImpl();
+		return new HbannotationFactoryImpl();
 	}
 
 	/**
@@ -68,7 +65,7 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HbAnnotationFactoryImpl() {
+	public HbannotationFactoryImpl() {
 		super();
 	}
 
@@ -80,20 +77,34 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case HbAnnotationPackage.CASCADE: return createCascade();
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS: return createCollectionOfElements();
-			case HbAnnotationPackage.MAP_KEY: return createMapKey();
-			case HbAnnotationPackage.PARAMETER: return createParameter();
-			case HbAnnotationPackage.TYPE: return createType();
-			case HbAnnotationPackage.WHERE: return createWhere();
-			case HbAnnotationPackage.ID_BAG: return createIdBag();
-			case HbAnnotationPackage.GENERIC_GENERATOR: return createGenericGenerator();
-			case HbAnnotationPackage.CACHE: return createCache();
-			case HbAnnotationPackage.TYPE_DEF: return createTypeDef();
-			case HbAnnotationPackage.FETCH: return createFetch();
-			case HbAnnotationPackage.ON_DELETE: return createOnDelete();
-			case HbAnnotationPackage.PROXY: return createProxy();
-			case HbAnnotationPackage.INDEX: return createIndex();
+			case HbannotationPackage.CASCADE:
+				return createCascade();
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS:
+				return createCollectionOfElements();
+			case HbannotationPackage.MAP_KEY:
+				return createMapKey();
+			case HbannotationPackage.PARAMETER:
+				return createParameter();
+			case HbannotationPackage.TYPE:
+				return createType();
+			case HbannotationPackage.WHERE:
+				return createWhere();
+			case HbannotationPackage.ID_BAG:
+				return createIdBag();
+			case HbannotationPackage.GENERIC_GENERATOR:
+				return createGenericGenerator();
+			case HbannotationPackage.CACHE:
+				return createCache();
+			case HbannotationPackage.TYPE_DEF:
+				return createTypeDef();
+			case HbannotationPackage.FETCH:
+				return createFetch();
+			case HbannotationPackage.ON_DELETE:
+				return createOnDelete();
+			case HbannotationPackage.PROXY:
+				return createProxy();
+			case HbannotationPackage.INDEX:
+				return createIndex();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -107,14 +118,15 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
+			case HbannotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return createCacheConcurrencyStrategyFromString(eDataType, initialValue);
-			case HbAnnotationPackage.HB_FETCH_TYPE:
+			case HbannotationPackage.HB_FETCH_TYPE:
 				return createHbFetchTypeFromString(eDataType, initialValue);
-			case HbAnnotationPackage.ON_DELETE_ACTION:
+			case HbannotationPackage.ON_DELETE_ACTION:
 				return createOnDeleteActionFromString(eDataType, initialValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() +
+						"' is not a valid classifier");
 		}
 	}
 
@@ -126,35 +138,16 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case HbAnnotationPackage.CACHE_CONCURRENCY_STRATEGY:
+			case HbannotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return convertCacheConcurrencyStrategyToString(eDataType, instanceValue);
-			case HbAnnotationPackage.HB_FETCH_TYPE:
+			case HbannotationPackage.HB_FETCH_TYPE:
 				return convertHbFetchTypeToString(eDataType, instanceValue);
-			case HbAnnotationPackage.ON_DELETE_ACTION:
+			case HbannotationPackage.ON_DELETE_ACTION:
 				return convertOnDeleteActionToString(eDataType, instanceValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() +
+						"' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CollectionOfElements createCollectionOfElements() {
-		CollectionOfElementsImpl collectionOfElements = new CollectionOfElementsImpl();
-		return collectionOfElements;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Where createWhere() {
-		WhereImpl where = new WhereImpl();
-		return where;
 	}
 
 	/**
@@ -165,6 +158,16 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	public Cascade createCascade() {
 		CascadeImpl cascade = new CascadeImpl();
 		return cascade;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CollectionOfElements createCollectionOfElements() {
+		CollectionOfElementsImpl collectionOfElements = new CollectionOfElementsImpl();
+		return collectionOfElements;
 	}
 
 	/**
@@ -195,6 +198,16 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	public Type createType() {
 		TypeImpl type = new TypeImpl();
 		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Where createWhere() {
+		WhereImpl where = new WhereImpl();
+		return where;
 	}
 
 	/**
@@ -284,7 +297,10 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 */
 	public CacheConcurrencyStrategy createCacheConcurrencyStrategyFromString(EDataType eDataType, String initialValue) {
 		CacheConcurrencyStrategy result = CacheConcurrencyStrategy.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null) {
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" +
+					eDataType.getName() + "'");
+		}
 		return result;
 	}
 
@@ -304,7 +320,10 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 */
 	public HbFetchType createHbFetchTypeFromString(EDataType eDataType, String initialValue) {
 		HbFetchType result = HbFetchType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null) {
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" +
+					eDataType.getName() + "'");
+		}
 		return result;
 	}
 
@@ -324,7 +343,10 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 */
 	public OnDeleteAction createOnDeleteActionFromString(EDataType eDataType, String initialValue) {
 		OnDeleteAction result = OnDeleteAction.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null) {
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" +
+					eDataType.getName() + "'");
+		}
 		return result;
 	}
 
@@ -342,8 +364,8 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HbAnnotationPackage getHbAnnotationPackage() {
-		return (HbAnnotationPackage)getEPackage();
+	public HbannotationPackage getHbannotationPackage() {
+		return (HbannotationPackage) getEPackage();
 	}
 
 	/**
@@ -353,8 +375,8 @@ public class HbAnnotationFactoryImpl extends EFactoryImpl implements HbAnnotatio
 	 * @generated
 	 */
 	@Deprecated
-	public static HbAnnotationPackage getPackage() {
-		return HbAnnotationPackage.eINSTANCE;
+	public static HbannotationPackage getPackage() {
+		return HbannotationPackage.eINSTANCE;
 	}
 
-} //HbAnnotationFactoryImpl
+} // HbannotationFactoryImpl

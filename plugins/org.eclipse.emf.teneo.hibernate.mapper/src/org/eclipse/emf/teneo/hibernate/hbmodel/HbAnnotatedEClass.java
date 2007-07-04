@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClass.java,v 1.7 2007/03/29 15:00:45 mtaal Exp $
+ * $Id: HbAnnotatedEClass.java,v 1.8 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -26,17 +26,11 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEClass()
+ * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEClass()
  * @model
  * @generated
  */
 public interface HbAnnotatedEClass extends PAnnotatedEClass {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Hb Cache</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -47,7 +41,7 @@ public interface HbAnnotatedEClass extends PAnnotatedEClass {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Cache</em>' containment reference.
 	 * @see #setHbCache(Cache)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEClass_HbCache()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEClass_HbCache()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -72,7 +66,7 @@ public interface HbAnnotatedEClass extends PAnnotatedEClass {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb On Delete</em>' reference.
 	 * @see #setHbOnDelete(OnDelete)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEClass_HbOnDelete()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEClass_HbOnDelete()
 	 * @model
 	 * @generated
 	 */
@@ -98,7 +92,7 @@ public interface HbAnnotatedEClass extends PAnnotatedEClass {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Where</em>' containment reference.
 	 * @see #setHbWhere(Where)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEClass_HbWhere()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEClass_HbWhere()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -124,7 +118,7 @@ public interface HbAnnotatedEClass extends PAnnotatedEClass {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Proxy</em>' reference.
 	 * @see #setHbProxy(Proxy)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEClass_HbProxy()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEClass_HbProxy()
 	 * @model
 	 * @generated
 	 */

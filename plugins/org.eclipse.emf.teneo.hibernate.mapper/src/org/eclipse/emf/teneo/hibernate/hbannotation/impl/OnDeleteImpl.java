@@ -2,26 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OnDeleteImpl.java,v 1.2 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: OnDeleteImpl.java,v 1.3 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
 
@@ -40,13 +31,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
  * @generated
  */
 public class OnDeleteImpl extends EObjectImpl implements OnDelete {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -93,7 +77,7 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.ON_DELETE;
+		return HbannotationPackage.Literals.ON_DELETE;
 	}
 
 	/**
@@ -107,7 +91,7 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.ON_DELETE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.ON_DELETE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -131,7 +115,7 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.ON_DELETE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ON_DELETE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -152,7 +136,7 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 		OnDeleteAction oldAction = action;
 		action = newAction == null ? ACTION_EDEFAULT : newAction;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.ON_DELETE__ACTION, oldAction, action));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ON_DELETE__ACTION, oldAction, action));
 	}
 
 	/**
@@ -163,10 +147,10 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.ON_DELETE__EMODEL_ELEMENT:
+			case HbannotationPackage.ON_DELETE__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.ON_DELETE__ACTION:
+			case HbannotationPackage.ON_DELETE__ACTION:
 				return getAction();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -181,10 +165,10 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.ON_DELETE__EMODEL_ELEMENT:
+			case HbannotationPackage.ON_DELETE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.ON_DELETE__ACTION:
+			case HbannotationPackage.ON_DELETE__ACTION:
 				setAction((OnDeleteAction)newValue);
 				return;
 		}
@@ -199,10 +183,10 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.ON_DELETE__EMODEL_ELEMENT:
+			case HbannotationPackage.ON_DELETE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.ON_DELETE__ACTION:
+			case HbannotationPackage.ON_DELETE__ACTION:
 				setAction(ACTION_EDEFAULT);
 				return;
 		}
@@ -217,9 +201,9 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.ON_DELETE__EMODEL_ELEMENT:
+			case HbannotationPackage.ON_DELETE__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.ON_DELETE__ACTION:
+			case HbannotationPackage.ON_DELETE__ACTION:
 				return action != ACTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

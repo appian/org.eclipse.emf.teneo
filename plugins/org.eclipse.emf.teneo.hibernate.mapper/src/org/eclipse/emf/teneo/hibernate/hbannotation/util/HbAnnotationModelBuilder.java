@@ -11,7 +11,7 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HbAnnotationModelBuilder.java,v 1.3 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotationModelBuilder.java,v 1.4 2007/07/04 19:31:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
 import org.eclipse.emf.teneo.annotations.pamodel.util.BasicPamodelBuilder;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelFactory;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelFactory;
 
 /**
  * This class create the Hibernate-model versions of the various PaAnnotatedE* objects. 
@@ -29,28 +29,29 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelFactory;
 public class HbAnnotationModelBuilder extends BasicPamodelBuilder {
 
 	/** Use hb annotation types */
+	@Override
 	protected PAnnotatedEModelElement doCreate(EModelElement eModelElement) throws AssertionError {
 		final EClass eModelElementEClass = eModelElement.eClass();
 		PAnnotatedEModelElement paElement;
 		switch (eModelElementEClass.getClassifierID()) {
-		case EcorePackage.EATTRIBUTE:
-			paElement = HbModelFactory.eINSTANCE.createHbAnnotatedEAttribute();
-			break;
-		case EcorePackage.EREFERENCE:
-			paElement = HbModelFactory.eINSTANCE.createHbAnnotatedEReference();
-			break;
-		case EcorePackage.ECLASS:
-			paElement = HbModelFactory.eINSTANCE.createHbAnnotatedEClass();
-			break;
-		case EcorePackage.EPACKAGE:
-			paElement = HbModelFactory.eINSTANCE.createHbAnnotatedEPackage();
-			break;
-		case EcorePackage.EENUM:
-		case EcorePackage.EDATA_TYPE:
-			paElement = HbModelFactory.eINSTANCE.createHbAnnotatedEDataType();
-			break;
-		default:
-			throw new AssertionError("Trying to build HbAnnotatedEModelElement for a " + eModelElementEClass);
+			case EcorePackage.EATTRIBUTE:
+				paElement = HbmodelFactory.eINSTANCE.createHbAnnotatedEAttribute();
+				break;
+			case EcorePackage.EREFERENCE:
+				paElement = HbmodelFactory.eINSTANCE.createHbAnnotatedEReference();
+				break;
+			case EcorePackage.ECLASS:
+				paElement = HbmodelFactory.eINSTANCE.createHbAnnotatedEClass();
+				break;
+			case EcorePackage.EPACKAGE:
+				paElement = HbmodelFactory.eINSTANCE.createHbAnnotatedEPackage();
+				break;
+			case EcorePackage.EENUM:
+			case EcorePackage.EDATA_TYPE:
+				paElement = HbmodelFactory.eINSTANCE.createHbAnnotatedEDataType();
+				break;
+			default:
+				throw new AssertionError("Trying to build HbAnnotatedEModelElement for a " + eModelElementEClass);
 		}
 		paElement.setAnnotatedElement((ENamedElement) eModelElement);
 		return paElement;

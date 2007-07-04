@@ -13,7 +13,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbColumns" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//Column"
-        defaultValueLiteral="" containment="true"/>
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbCascade" eType="ecore:EClass hbannotation.ecore#//Cascade"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbIdBag" eType="ecore:EClass hbannotation.ecore#//IdBag"

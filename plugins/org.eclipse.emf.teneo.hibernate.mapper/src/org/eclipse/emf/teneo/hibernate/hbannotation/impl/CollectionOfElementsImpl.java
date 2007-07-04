@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CollectionOfElementsImpl.java,v 1.4 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: CollectionOfElementsImpl.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,13 +32,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
  * @generated
  */
 public class CollectionOfElementsImpl extends EObjectImpl implements CollectionOfElements {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -77,7 +70,7 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	 * @generated
 	 * @ordered
 	 */
-	protected static final FetchType FETCH_EDEFAULT = FetchType.LAZY_LITERAL;
+	protected static final FetchType FETCH_EDEFAULT = FetchType.LAZY;
 
 	/**
 	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
@@ -105,7 +98,7 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.COLLECTION_OF_ELEMENTS;
+		return HbannotationPackage.Literals.COLLECTION_OF_ELEMENTS;
 	}
 
 	/**
@@ -115,11 +108,13 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	 */
 	public EModelElement getEModelElement() {
 		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
+			InternalEObject oldEModelElement = (InternalEObject) eModelElement;
+			eModelElement = (EModelElement) eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+				}
 			}
 		}
 		return eModelElement;
@@ -142,8 +137,10 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	public void setEModelElement(EModelElement newEModelElement) {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+		}
 	}
 
 	/**
@@ -163,8 +160,10 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	public void setTargetElement(String newTargetElement) {
 		String oldTargetElement = targetElement;
 		targetElement = newTargetElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT, oldTargetElement, targetElement));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT, oldTargetElement, targetElement));
+		}
 	}
 
 	/**
@@ -184,8 +183,10 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	public void setFetch(FetchType newFetch) {
 		FetchType oldFetch = fetch;
 		fetch = newFetch == null ? FETCH_EDEFAULT : newFetch;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.COLLECTION_OF_ELEMENTS__FETCH, oldFetch, fetch));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH,
+				oldFetch, fetch));
+		}
 	}
 
 	/**
@@ -196,12 +197,14 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
+				if (resolve) {
+					return getEModelElement();
+				}
 				return basicGetEModelElement();
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
 				return getTargetElement();
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
 				return getFetch();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -215,14 +218,14 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
+				setEModelElement((EModelElement) newValue);
 				return;
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
-				setTargetElement((String)newValue);
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
+				setTargetElement((String) newValue);
 				return;
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
-				setFetch((FetchType)newValue);
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
+				setFetch((FetchType) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -236,13 +239,13 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
+				setEModelElement((EModelElement) null);
 				return;
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
 				setTargetElement(TARGET_ELEMENT_EDEFAULT);
 				return;
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
 				setFetch(FETCH_EDEFAULT);
 				return;
 		}
@@ -257,11 +260,12 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
-				return TARGET_ELEMENT_EDEFAULT == null ? targetElement != null : !TARGET_ELEMENT_EDEFAULT.equals(targetElement);
-			case HbAnnotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
+				return TARGET_ELEMENT_EDEFAULT == null ? targetElement != null : !TARGET_ELEMENT_EDEFAULT
+					.equals(targetElement);
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
 				return fetch != FETCH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -274,7 +278,9 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (targetElement: ");
@@ -285,4 +291,4 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 		return result.toString();
 	}
 
-} //CollectionOfElementsImpl
+} // CollectionOfElementsImpl

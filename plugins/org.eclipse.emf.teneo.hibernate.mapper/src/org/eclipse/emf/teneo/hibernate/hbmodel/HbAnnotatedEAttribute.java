@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttribute.java,v 1.4 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: HbAnnotatedEAttribute.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -20,17 +20,11 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEAttribute()
+ * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEAttribute()
  * @model
  * @generated
  */
 public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotatedETypeElement {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Hb Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -41,7 +35,7 @@ public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotated
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Type</em>' containment reference.
 	 * @see #setHbType(Type)
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEAttribute_HbType()
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEAttribute_HbType()
 	 * @model containment="true"
 	 * @generated
 	 */

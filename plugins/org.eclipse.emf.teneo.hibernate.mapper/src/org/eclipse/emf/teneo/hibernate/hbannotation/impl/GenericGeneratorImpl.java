@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GenericGeneratorImpl.java,v 1.4 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: GenericGeneratorImpl.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 
 /**
@@ -37,13 +37,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
  * @generated
  */
 public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerator {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -120,7 +113,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.GENERIC_GENERATOR;
+		return HbannotationPackage.Literals.GENERIC_GENERATOR;
 	}
 
 	/**
@@ -134,7 +127,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -158,7 +151,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -179,7 +172,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.GENERIC_GENERATOR__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.GENERIC_GENERATOR__NAME, oldName, name));
 	}
 
 	/**
@@ -200,7 +193,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 		String oldStrategy = strategy;
 		strategy = newStrategy;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.GENERIC_GENERATOR__STRATEGY, oldStrategy, strategy));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.GENERIC_GENERATOR__STRATEGY, oldStrategy, strategy));
 	}
 
 	/**
@@ -210,7 +203,7 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	 */
 	public EList<Parameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectResolvingEList<Parameter>(Parameter.class, this, HbAnnotationPackage.GENERIC_GENERATOR__PARAMETERS);
+			parameters = new EObjectResolvingEList<Parameter>(Parameter.class, this, HbannotationPackage.GENERIC_GENERATOR__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -223,14 +216,14 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
+			case HbannotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.GENERIC_GENERATOR__NAME:
+			case HbannotationPackage.GENERIC_GENERATOR__NAME:
 				return getName();
-			case HbAnnotationPackage.GENERIC_GENERATOR__STRATEGY:
+			case HbannotationPackage.GENERIC_GENERATOR__STRATEGY:
 				return getStrategy();
-			case HbAnnotationPackage.GENERIC_GENERATOR__PARAMETERS:
+			case HbannotationPackage.GENERIC_GENERATOR__PARAMETERS:
 				return getParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -245,16 +238,16 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
+			case HbannotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.GENERIC_GENERATOR__NAME:
+			case HbannotationPackage.GENERIC_GENERATOR__NAME:
 				setName((String)newValue);
 				return;
-			case HbAnnotationPackage.GENERIC_GENERATOR__STRATEGY:
+			case HbannotationPackage.GENERIC_GENERATOR__STRATEGY:
 				setStrategy((String)newValue);
 				return;
-			case HbAnnotationPackage.GENERIC_GENERATOR__PARAMETERS:
+			case HbannotationPackage.GENERIC_GENERATOR__PARAMETERS:
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends Parameter>)newValue);
 				return;
@@ -270,16 +263,16 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
+			case HbannotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.GENERIC_GENERATOR__NAME:
+			case HbannotationPackage.GENERIC_GENERATOR__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case HbAnnotationPackage.GENERIC_GENERATOR__STRATEGY:
+			case HbannotationPackage.GENERIC_GENERATOR__STRATEGY:
 				setStrategy(STRATEGY_EDEFAULT);
 				return;
-			case HbAnnotationPackage.GENERIC_GENERATOR__PARAMETERS:
+			case HbannotationPackage.GENERIC_GENERATOR__PARAMETERS:
 				getParameters().clear();
 				return;
 		}
@@ -294,13 +287,13 @@ public class GenericGeneratorImpl extends EObjectImpl implements GenericGenerato
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
+			case HbannotationPackage.GENERIC_GENERATOR__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.GENERIC_GENERATOR__NAME:
+			case HbannotationPackage.GENERIC_GENERATOR__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case HbAnnotationPackage.GENERIC_GENERATOR__STRATEGY:
+			case HbannotationPackage.GENERIC_GENERATOR__STRATEGY:
 				return STRATEGY_EDEFAULT == null ? strategy != null : !STRATEGY_EDEFAULT.equals(strategy);
-			case HbAnnotationPackage.GENERIC_GENERATOR__PARAMETERS:
+			case HbannotationPackage.GENERIC_GENERATOR__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 		}
 		return super.eIsSet(featureID);

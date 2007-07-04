@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Type.java,v 1.5 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: Type.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -19,17 +19,11 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getType()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getType()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated
  */
 public interface Type extends HbAnnotation {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -40,7 +34,7 @@ public interface Type extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(String)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getType_Type()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getType_Type()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -65,8 +59,8 @@ public interface Type extends HbAnnotation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameters</em>' reference list.
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getType_Parameters()
-	 * @model type="org.eclipse.emf.teneo.hibernate.hbannotation.Parameter"
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getType_Parameters()
+	 * @model
 	 * @generated
 	 */
 	EList<Parameter> getParameters();

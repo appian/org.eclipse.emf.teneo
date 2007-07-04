@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.19 2007/06/29 07:31:27 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.20 2007/07/04 19:31:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
@@ -160,17 +161,17 @@ abstract class AbstractMapper {
 			} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
 				return "text";
 			} else {
-				throw new MappingException("Lob annotations can only be used with Strings or byte arrays. "
-						+ "Attribute is of type: " + eDataType);
+				throw new MappingException("Lob annotations can only be used with Strings or byte arrays. " +
+						"Attribute is of type: " + eDataType);
 			}
 		} else if (EcoreDataTypes.INSTANCE.isEWrapper(eDataType) || EcoreDataTypes.INSTANCE.isEPrimitive(eDataType)) {
 			return eDataType.getInstanceClassName();
 		} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
 			return eDataType.getInstanceClassName();
-		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType)) {
-			return getEDateClass(eDataType);
 		} else if (EcoreDataTypes.INSTANCE.isEDateTime(eDataType)) {
 			return getEDateTimeClass(eDataType);
+		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType)) {
+			return getEDateClass(eDataType);
 		} else if (eDataType.getInstanceClass() != null && eDataType.getInstanceClass() == Object.class) {
 			// null forces caller to use usertype
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
@@ -184,7 +185,7 @@ abstract class AbstractMapper {
 
 	/** Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type. */
 	public String getEnumUserType(Enumerated enumerated) {
-		if (EnumType.STRING == enumerated.getValue().getValue()) {
+		if (EnumType.STRING == enumerated.getValue()) {
 			return getHbmContext().getEnumUserType();
 		} else {
 			return getHbmContext().getEnumIntegerUserType();
@@ -193,7 +194,7 @@ abstract class AbstractMapper {
 
 	/** Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type. */
 	protected String hbDynamicEnumType(Enumerated enumerated) {
-		if (EnumType.STRING == enumerated.getValue().getValue()) {
+		if (EnumType.STRING == enumerated.getValue()) {
 			return getHbmContext().getDynamicEnumUserType();
 		} else {
 			return getHbmContext().getDynamicEnumIntegerUserType();
@@ -205,8 +206,15 @@ abstract class AbstractMapper {
 	 */
 	public String getEDateClass(EDataType eDataType) {
 		assert (EcoreDataTypes.INSTANCE.isEDate(eDataType));
+
+		if (XMLTypePackage.eINSTANCE.getDate().equals(eDataType)) {
+			return getHbmContext().getXSDDateUserType();
+		}
+
 		// only override if the user did not specify a more specific class
-		if (eDataType.getInstanceClass() == Object.class) {
+		if (eDataType.getInstanceClass() == Object.class ||
+				(eDataType.getInstanceClassName() != null && eDataType.getInstanceClassName().compareTo(
+					"javax.xml.datatype.XMLGregorianCalendar") == 0)) {
 			// EMF returns an XSD Date type as an Object instance. go figure.
 			// note that I would prefer to use the class instance to get the name
 			// but for other reasons I do not want to have references to the
@@ -223,6 +231,11 @@ abstract class AbstractMapper {
 	 */
 	public String getEDateTimeClass(EDataType eDataType) {
 		assert (EcoreDataTypes.INSTANCE.isEDateTime(eDataType));
+
+		if (XMLTypePackage.eINSTANCE.getDateTime().equals(eDataType)) {
+			return getHbmContext().getXSDDateTimeUserType();
+		}
+
 		if (eDataType.getInstanceClass() == Object.class) {
 			// EMF returns an XSD Date type as an Object instance. go figure.
 			// note that I would prefer to use the class instance to get the name
@@ -337,8 +350,8 @@ abstract class AbstractMapper {
 		if (column != null) {
 			if (setColumnAttributesInProperty) {
 				// this is not the nicest place to do this
-				if (propertyElement.getName().compareTo("property") == 0
-						|| propertyElement.getName().compareTo("many-to-one") == 0) {
+				if (propertyElement.getName().compareTo("property") == 0 ||
+						propertyElement.getName().compareTo("many-to-one") == 0) {
 					propertyElement.addAttribute("insert", column.isInsertable() ? "true" : "false");
 					propertyElement.addAttribute("update", column.isUpdatable() ? "true" : "false");
 				}

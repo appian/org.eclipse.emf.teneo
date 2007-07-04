@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdBag.java,v 1.5 2007/03/21 15:46:34 mtaal Exp $
+ * $Id: IdBag.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -18,17 +18,11 @@ package org.eclipse.emf.teneo.hibernate.hbannotation;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getIdBag()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getIdBag()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated
  */
 public interface IdBag extends HbAnnotation {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Generator</b></em>' attribute.
 	 * The default value is <code>"increment"</code>.
@@ -40,7 +34,7 @@ public interface IdBag extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Generator</em>' attribute.
 	 * @see #setGenerator(String)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getIdBag_Generator()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getIdBag_Generator()
 	 * @model default="increment"
 	 * @generated
 	 */
@@ -91,7 +85,7 @@ public interface IdBag extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Table</em>' attribute.
 	 * @see #setTable(String)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getIdBag_Table()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getIdBag_Table()
 	 * @model
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClassImpl.java,v 1.9 2007/06/29 07:31:28 mtaal Exp $
+ * $Id: HbAnnotatedEClassImpl.java,v 1.10 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -17,7 +17,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Hb Annotated EClass</b></em>'. <!--
@@ -35,12 +35,6 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
  * @generated
  */
 public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnnotatedEClass {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getHbCache() <em>Hb Cache</em>}' containment reference.
 	 * <!-- begin-user-doc
@@ -95,7 +89,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbModelPackage.Literals.HB_ANNOTATED_ECLASS;
+		return HbmodelPackage.Literals.HB_ANNOTATED_ECLASS;
 	}
 
 	/**
@@ -114,7 +108,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		Cache oldHbCache = hbCache;
 		hbCache = newHbCache;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, oldHbCache, newHbCache);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, oldHbCache, newHbCache);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -128,14 +122,14 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		if (newHbCache != hbCache) {
 			NotificationChain msgs = null;
 			if (hbCache != null)
-				msgs = ((InternalEObject)hbCache).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, null, msgs);
+				msgs = ((InternalEObject)hbCache).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, null, msgs);
 			if (newHbCache != null)
-				msgs = ((InternalEObject)newHbCache).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, null, msgs);
+				msgs = ((InternalEObject)newHbCache).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, null, msgs);
 			msgs = basicSetHbCache(newHbCache, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, newHbCache, newHbCache));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE, newHbCache, newHbCache));
 	}
 
 	/**
@@ -149,7 +143,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			hbOnDelete = (OnDelete)eResolveProxy(oldHbOnDelete);
 			if (hbOnDelete != oldHbOnDelete) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
 			}
 		}
 		return hbOnDelete;
@@ -173,7 +167,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		OnDelete oldHbOnDelete = hbOnDelete;
 		hbOnDelete = newHbOnDelete;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE, oldHbOnDelete, hbOnDelete));
 	}
 
 	/**
@@ -194,7 +188,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		Where oldHbWhere = hbWhere;
 		hbWhere = newHbWhere;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, oldHbWhere, newHbWhere);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, oldHbWhere, newHbWhere);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -209,14 +203,14 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		if (newHbWhere != hbWhere) {
 			NotificationChain msgs = null;
 			if (hbWhere != null)
-				msgs = ((InternalEObject)hbWhere).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbModelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, null, msgs);
+				msgs = ((InternalEObject)hbWhere).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, null, msgs);
 			if (newHbWhere != null)
-				msgs = ((InternalEObject)newHbWhere).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbModelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, null, msgs);
+				msgs = ((InternalEObject)newHbWhere).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, null, msgs);
 			msgs = basicSetHbWhere(newHbWhere, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, newHbWhere, newHbWhere));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE, newHbWhere, newHbWhere));
 	}
 
 	/**
@@ -230,7 +224,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			hbProxy = (Proxy)eResolveProxy(oldHbProxy);
 			if (hbProxy != oldHbProxy) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbModelPackage.HB_ANNOTATED_ECLASS__HB_PROXY, oldHbProxy, hbProxy));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY, oldHbProxy, hbProxy));
 			}
 		}
 		return hbProxy;
@@ -254,7 +248,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 		Proxy oldHbProxy = hbProxy;
 		hbProxy = newHbProxy;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbModelPackage.HB_ANNOTATED_ECLASS__HB_PROXY, oldHbProxy, hbProxy));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY, oldHbProxy, hbProxy));
 	}
 
 	/**
@@ -264,9 +258,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
 				return basicSetHbCache(null, msgs);
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
 				return basicSetHbWhere(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -279,14 +273,14 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
 				return getHbCache();
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
 				if (resolve) return getHbOnDelete();
 				return basicGetHbOnDelete();
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
 				return getHbWhere();
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
 				if (resolve) return getHbProxy();
 				return basicGetHbProxy();
 		}
@@ -300,16 +294,16 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
 				setHbCache((Cache)newValue);
 				return;
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
 				setHbOnDelete((OnDelete)newValue);
 				return;
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
 				setHbWhere((Where)newValue);
 				return;
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
 				setHbProxy((Proxy)newValue);
 				return;
 		}
@@ -323,16 +317,16 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
 				setHbCache((Cache)null);
 				return;
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
 				setHbOnDelete((OnDelete)null);
 				return;
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
 				setHbWhere((Where)null);
 				return;
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
 				setHbProxy((Proxy)null);
 				return;
 		}
@@ -346,13 +340,13 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_CACHE:
 				return hbCache != null;
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ON_DELETE:
 				return hbOnDelete != null;
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
 				return hbWhere != null;
-			case HbModelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
 				return hbProxy != null;
 		}
 		return super.eIsSet(featureID);

@@ -11,17 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEAnnotationParserImporter.java,v 1.3 2007/03/21 15:46:34 mtaal Exp $
+ * $Id: HbEAnnotationParserImporter.java,v 1.4 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
-
-import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 
 /**
  * Overrides the default EAnnotationParserImporter to add a hibernate source
@@ -32,9 +30,11 @@ public class HbEAnnotationParserImporter extends EAnnotationParserImporter {
 	private static final String HB_PREFIX = "hb:";
 
 	/** Returns true if the source is a hibernate source or a generic source */
+	@Override
 	protected boolean isValidSource(String source) {
-		if (source == null)
+		if (source == null) {
 			return false;
+		}
 		return source.startsWith("teneo.hibernate") || super.isValidSource(source);
 	}
 
@@ -43,31 +43,35 @@ public class HbEAnnotationParserImporter extends EAnnotationParserImporter {
 	 * 
 	 * @see org.eclipse.emf.teneo.annotations.parser.EClassResolver#getEClass(java.lang.String)
 	 */
+	@Override
 	public EClass getEClass(String name) {
 		if (name.startsWith(HB_PREFIX)) {
-			return (EClass) HbAnnotationPackage.eINSTANCE.getEClassifier(name.substring(HB_PREFIX.length()));
+			return (EClass) HbannotationPackage.eINSTANCE.getEClassifier(name.substring(HB_PREFIX.length()));
 		} else {
 			final EClass eClass = super.getEClass(name);
 			if (eClass == null) {
-				return (EClass) HbAnnotationPackage.eINSTANCE.getEClassifier(name);
+				return (EClass) HbannotationPackage.eINSTANCE.getEClassifier(name);
 			}
 			return eClass;
 		}
 	}
 
 	/** Find the efeature */
+	@Override
 	public EStructuralFeature getEStructuralFeature(EClass eClass, String name) {
-		for (Iterator<?> it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
-			final EStructuralFeature ef = (EStructuralFeature) it.next();
-			if (ef.getName().compareToIgnoreCase(name) == 0)
+		for (Object name2 : eClass.getEAllStructuralFeatures()) {
+			final EStructuralFeature ef = (EStructuralFeature) name2;
+			if (ef.getName().compareToIgnoreCase(name) == 0) {
 				return ef;
+			}
 		}
 		// not found try with the hb prefix
 		final String hbName = "hb" + name;
-		for (Iterator<?> it = eClass.getEAllStructuralFeatures().iterator(); it.hasNext();) {
-			final EStructuralFeature ef = (EStructuralFeature) it.next();
-			if (ef.getName().compareToIgnoreCase(hbName) == 0)
+		for (Object name2 : eClass.getEAllStructuralFeatures()) {
+			final EStructuralFeature ef = (EStructuralFeature) name2;
+			if (ef.getName().compareToIgnoreCase(hbName) == 0) {
 				return ef;
+			}
 		}
 		throw new HbMapperException("No efeature " + name + " for eclass " + eClass.getName());
 	}

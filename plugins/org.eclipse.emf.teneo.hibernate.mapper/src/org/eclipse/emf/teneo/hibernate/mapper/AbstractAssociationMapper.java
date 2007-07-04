@@ -217,28 +217,24 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		if (!cascades.isEmpty()) {
 			StringBuffer sb = new StringBuffer();
 			for (CascadeType cascade : cascades) {
-				switch (cascade.getValue()) {
-					case CascadeType.ALL:
-						sb.append("all,"); // assuming all appears alone
+				if (cascade == CascadeType.ALL) {
+					sb.append("all,"); // assuming all appears alone
 
-						if (addDeleteOrphan) {
-							sb.append("delete-orphan,");
-						}
-						break;
-					case CascadeType.PERSIST:
-						sb.append("persist,save-update,lock,");
-						break;
-					case CascadeType.MERGE:
-						sb.append("merge,");
-						break;
-					case CascadeType.REFRESH:
-						sb.append("refresh,");
-						break;
-					case CascadeType.NONE:
-						return;
-					case CascadeType.REMOVE:
-						sb.append("delete,");
-						break;
+					if (addDeleteOrphan) {
+						sb.append("delete-orphan,");
+					}
+				} else if (cascade == CascadeType.PERSIST) {
+					sb.append("persist,save-update,lock,");
+				} else if (cascade == CascadeType.MERGE) {
+					sb.append("merge,");
+				} else if (cascade == CascadeType.REFRESH) {
+					sb.append("refresh,");
+				} else if (cascade == CascadeType.NONE) {
+					return;
+				} else if (cascade == CascadeType.REMOVE) {
+					sb.append("delete,");
+				} else {
+					throw new MappingException("Cascade " + cascade.getName() + " not supported");
 				}
 			}
 			associationElement.addAttribute("cascade", sb.substring(0, sb.length() - 1));
@@ -251,9 +247,9 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	protected void addFetchType(Element associationElement, FetchType fetch, boolean useProxy) {
 		// TODO: when proxies are supported the below should be changed!
 		if (useProxy) {
-			associationElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(fetch) ? "true" : "false");
+			associationElement.addAttribute("lazy", FetchType.LAZY.equals(fetch) ? "true" : "false");
 		} else {
-			associationElement.addAttribute("lazy", FetchType.LAZY_LITERAL.equals(fetch) ? "true" : "false");
+			associationElement.addAttribute("lazy", FetchType.LAZY.equals(fetch) ? "true" : "false");
 		}
 	}
 
@@ -263,8 +259,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	protected void addListIndex(Element collElement, PAnnotatedEStructuralFeature aFeature) {
 		// TODO use column name generator
 		String name =
-				(aFeature.getPaEClass().getAnnotatedEClass().getName() + "_"
-						+ aFeature.getAnnotatedEStructuralFeature().getName() + "_IDX").toUpperCase();
+				(aFeature.getPaEClass().getAnnotatedEClass().getName() + "_" +
+						aFeature.getAnnotatedEStructuralFeature().getName() + "_IDX").toUpperCase();
 
 		log.debug("Add list index " + name + " to " + aFeature.getAnnotatedEStructuralFeature().getName());
 
@@ -335,8 +331,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 
 		final EStructuralFeature estruct = paFeature.getAnnotatedEStructuralFeature();
 		final boolean isArray =
-				estruct instanceof EAttribute && estruct.getEType().getInstanceClass() != null
-						&& estruct.getEType().getInstanceClass().isArray();
+				estruct instanceof EAttribute && estruct.getEType().getInstanceClass() != null &&
+						estruct.getEType().getInstanceClass().isArray();
 		final boolean isMap = StoreUtil.isMap(estruct) && getHbmContext().isMapEMapAsTrueMap();
 
 		// disabled following check because it also failed for many eattribute
@@ -359,12 +355,12 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			collectionElement = getHbmContext().getCurrent().addElement("map");
 		} else if (idBag != null) {
 			collectionElement = getHbmContext().getCurrent().addElement("idbag");
-		} else if (getHbmContext().isGeneratedByEMF() && hbFeature.getOneToMany() != null
-				&& hbFeature.getOneToMany().isList()) {
+		} else if (getHbmContext().isGeneratedByEMF() && hbFeature.getOneToMany() != null &&
+				hbFeature.getOneToMany().isList()) {
 			if (hasOrderBy && hbFeature.getOneToMany().isIndexed()) {
 				log
-					.warn("One to many ereference has indexed=true and has orderby set. Ignoring indexed and using orderby, assuming set "
-							+ hbFeature);
+					.warn("One to many ereference has indexed=true and has orderby set. Ignoring indexed and using orderby, assuming set " +
+							hbFeature);
 			}
 
 			if (hasOrderBy || !hbFeature.getOneToMany().isIndexed()) {
@@ -374,8 +370,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			}
 		} else if (!getHbmContext().isGeneratedByEMF() && hbFeature.getOneToMany() != null) {
 			if (hasOrderBy && hbFeature.getOneToMany().isIndexed()) {
-				log.warn("One to many ereference has indexed=true and has orderby set. "
-						+ "Ignoring indexed and using orderby, assuming set " + hbFeature);
+				log.warn("One to many ereference has indexed=true and has orderby set. " +
+						"Ignoring indexed and using orderby, assuming set " + hbFeature);
 			}
 
 			if (!hbFeature.getOneToMany().isList() || hasOrderBy) {
@@ -385,9 +381,9 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			} else {
 				collectionElement = getHbmContext().getCurrent().addElement("list");
 			}
-		} else if (hbFeature instanceof PAnnotatedEReference
-				&& ((PAnnotatedEReference) hbFeature).getManyToMany() != null
-				&& ((PAnnotatedEReference) hbFeature).getManyToMany().isList()) {
+		} else if (hbFeature instanceof PAnnotatedEReference &&
+				((PAnnotatedEReference) hbFeature).getManyToMany() != null &&
+				((PAnnotatedEReference) hbFeature).getManyToMany().isList()) {
 			collectionElement = getHbmContext().getCurrent().addElement("list");
 		} else {
 			collectionElement = getHbmContext().getCurrent().addElement("bag");

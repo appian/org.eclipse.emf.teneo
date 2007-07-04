@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadeImpl.java,v 1.4 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: CascadeImpl.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,13 +35,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
  * @generated
  */
 public class CascadeImpl extends EObjectImpl implements Cascade {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -78,7 +71,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.CASCADE;
+		return HbannotationPackage.Literals.CASCADE;
 	}
 
 	/**
@@ -92,7 +85,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.CASCADE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.CASCADE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -116,7 +109,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.CASCADE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CASCADE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -126,7 +119,7 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 */
 	public EList<CascadeType> getValue() {
 		if (value == null) {
-			value = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this, HbAnnotationPackage.CASCADE__VALUE);
+			value = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this, HbannotationPackage.CASCADE__VALUE);
 		}
 		return value;
 	}
@@ -139,10 +132,10 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
+			case HbannotationPackage.CASCADE__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.CASCADE__VALUE:
+			case HbannotationPackage.CASCADE__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -157,10 +150,10 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
+			case HbannotationPackage.CASCADE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.CASCADE__VALUE:
+			case HbannotationPackage.CASCADE__VALUE:
 				getValue().clear();
 				getValue().addAll((Collection<? extends CascadeType>)newValue);
 				return;
@@ -176,10 +169,10 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
+			case HbannotationPackage.CASCADE__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.CASCADE__VALUE:
+			case HbannotationPackage.CASCADE__VALUE:
 				getValue().clear();
 				return;
 		}
@@ -194,9 +187,9 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.CASCADE__EMODEL_ELEMENT:
+			case HbannotationPackage.CASCADE__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.CASCADE__VALUE:
+			case HbannotationPackage.CASCADE__VALUE:
 				return value != null && !value.isEmpty();
 		}
 		return super.eIsSet(featureID);

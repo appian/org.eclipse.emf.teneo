@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Cascade.java,v 1.5 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: Cascade.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -19,17 +19,11 @@ import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getCascade()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getCascade()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated
  */
 public interface Cascade extends HbAnnotation {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute list.
 	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType}.
@@ -42,8 +36,8 @@ public interface Cascade extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.CascadeType
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getCascade_Value()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.CascadeType"
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getCascade_Value()
+	 * @model
 	 * @generated
 	 */
 	EList<CascadeType> getValue();

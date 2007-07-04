@@ -24,7 +24,7 @@ import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationFactory;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
@@ -48,7 +48,7 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	protected static final Log log = LogFactory.getLog(HibernateDefaultAnnotator.class);
 
 	/** The default cache strategy */
-	private String defaultCacheStrategy = CacheConcurrencyStrategy.NONE_LITERAL.getName();
+	private String defaultCacheStrategy = CacheConcurrencyStrategy.NONE.getName();
 
 	/** Add the proxy annotation to each class */
 	private boolean optionSetProxy = false;
@@ -80,23 +80,23 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		}
 		final String typeClass = getCustomDataType(ped.getAnnotatedEDataType());
 		if (typeClass == null) {
-			log.debug("Not creating typedef for edatatype: " + ped.getAnnotatedEDataType().getName()
-					+ " because it is natively handled by hibernate");
+			log.debug("Not creating typedef for edatatype: " + ped.getAnnotatedEDataType().getName() +
+					" because it is natively handled by hibernate");
 			return;
 		}
 
 		// create default typedef
 		log.debug("Creating default typedef for edatatype " + hed.getAnnotatedEDataType().getName());
-		final TypeDef typeDef = HbAnnotationFactory.eINSTANCE.createTypeDef();
-		typeDef.setName(hed.getAnnotatedEDataType().getEPackage().getName() + "."
-				+ ped.getAnnotatedEDataType().getName());
+		final TypeDef typeDef = HbannotationFactory.eINSTANCE.createTypeDef();
+		typeDef.setName(hed.getAnnotatedEDataType().getEPackage().getName() + "." +
+				ped.getAnnotatedEDataType().getName());
 		typeDef.setTypeClass(getDefaultUserType());
 		// add default parameters
-		final Parameter paramPackage = HbAnnotationFactory.eINSTANCE.createParameter();
+		final Parameter paramPackage = HbannotationFactory.eINSTANCE.createParameter();
 		paramPackage.setName(HbMapperConstants.EPACKAGE_PARAM);
 		paramPackage.setValue(hed.getAnnotatedEDataType().getEPackage().getNsURI());
 		typeDef.getParameters().add(paramPackage);
-		final Parameter edParam = HbAnnotationFactory.eINSTANCE.createParameter();
+		final Parameter edParam = HbannotationFactory.eINSTANCE.createParameter();
 		edParam.setName(HbMapperConstants.EDATATYPE_PARAM);
 		edParam.setValue(hed.getAnnotatedEDataType().getName());
 		typeDef.getParameters().add(edParam);
@@ -127,15 +127,15 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 			if (coe.getTargetElement() == null) {
 				coe.setTargetElement(getTargetTypeName(aAttribute));
 			}
-		} else if (hea.getHbType() != null && hea.getOneToMany() == null
-				&& !aAttribute.getAnnotatedEAttribute().isMany()) {
+		} else if (hea.getHbType() != null && hea.getOneToMany() == null &&
+				!aAttribute.getAnnotatedEAttribute().isMany()) {
 			// assume this to be a single attribute, we can get here when
 			// the instance is an array or list in that case the user type is
 			// assumed
 			// to be able to handle the complete list/collection
 			super.processSingleAttribute(aAttribute);
-		} else if (hed != null && hed.getHbTypeDef() != null && hea.getOneToMany() == null
-				&& !aAttribute.getAnnotatedEAttribute().isMany()) {
+		} else if (hed != null && hed.getHbTypeDef() != null && hea.getOneToMany() == null &&
+				!aAttribute.getAnnotatedEAttribute().isMany()) {
 			// assume this to be a single attribute, we can get here when
 			// the instance is an array or list in that case the user type is
 			// assumed
@@ -173,12 +173,12 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		// automatically add the proxy annotation
 		if (optionSetProxy && hbClass.getHbProxy() == null) {
 			if (concreteClass != null) {
-				final Proxy proxy = HbAnnotationFactory.eINSTANCE.createProxy();
+				final Proxy proxy = HbannotationFactory.eINSTANCE.createProxy();
 				proxy.setLazy(true);
 				// interface class is set below.
 				((HbAnnotatedEClass) aClass).setHbProxy(proxy);
-				log.debug("Set proxy to true (" + proxy.getProxyClass() + ") for eclass "
-						+ aClass.getAnnotatedEClass().getName());
+				log.debug("Set proxy to true (" + proxy.getProxyClass() + ") for eclass " +
+						aClass.getAnnotatedEClass().getName());
 			}
 		}
 
@@ -201,23 +201,23 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		boolean hasCache = ((HbAnnotatedEClass) aClass).getHbCache() != null;
 
 		if (aClass.getPaSuperEntity() != null && hasCache) {
-			log.warn("EClass: " + aClass.getAnnotatedEClass().getName()
-					+ " has a cache strategy defined while it has a superclass, this strategy is ignored.");
+			log.warn("EClass: " + aClass.getAnnotatedEClass().getName() +
+					" has a cache strategy defined while it has a superclass, this strategy is ignored.");
 			return;
 		}
 
-		if (!hasCache && defaultCacheStrategy.compareToIgnoreCase(CacheConcurrencyStrategy.NONE_LITERAL.getName()) != 0) {
+		if (!hasCache && defaultCacheStrategy.compareToIgnoreCase(CacheConcurrencyStrategy.NONE.getName()) != 0) {
 			final CacheConcurrencyStrategy ccs = CacheConcurrencyStrategy.getByName(defaultCacheStrategy);
 			if (ccs == null) {
-				throw new StoreMappingException("The default cache strategy: " + defaultCacheStrategy
-						+ " is not one of the allowed values (uppercase) "
-						+ "as defined in the JPA Hibernate Annotation Extensions.");
+				throw new StoreMappingException("The default cache strategy: " + defaultCacheStrategy +
+						" is not one of the allowed values (uppercase) " +
+						"as defined in the JPA Hibernate Annotation Extensions.");
 			}
 
 			log
-				.debug("Setting cache strategy " + defaultCacheStrategy + " on "
-						+ aClass.getAnnotatedEClass().getName());
-			final Cache cache = HbAnnotationFactory.eINSTANCE.createCache();
+				.debug("Setting cache strategy " + defaultCacheStrategy + " on " +
+						aClass.getAnnotatedEClass().getName());
+			final Cache cache = HbannotationFactory.eINSTANCE.createCache();
 			cache.setUsage(ccs);
 			((HbAnnotatedEClass) aClass).setHbCache(cache);
 		}
@@ -234,9 +234,9 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 					.getHbCollectionOfElements());
 
 		// add an idbag annotation
-		if (persistenceOptions.alwaysMapListAsIdBag() && aReference.getAnnotatedEReference().isMany()
-				&& aReference.getOneToMany() == null && !aReference.getAnnotatedEReference().isContainment()) {
-			((HbAnnotatedEReference) aReference).setHbIdBag(HbAnnotationFactory.eINSTANCE.createIdBag());
+		if (persistenceOptions.alwaysMapListAsIdBag() && aReference.getAnnotatedEReference().isMany() &&
+				aReference.getOneToMany() == null && !aReference.getAnnotatedEReference().isContainment()) {
+			((HbAnnotatedEReference) aReference).setHbIdBag(HbannotationFactory.eINSTANCE.createIdBag());
 			// add a join table
 		}
 
@@ -251,17 +251,17 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		// now handle the case of defaultCacheStrategy which is different than
 		// none
 		boolean hasCache = ((HbAnnotatedEReference) aReference).getHbCache() != null;
-		if (!hasCache && defaultCacheStrategy.compareToIgnoreCase(CacheConcurrencyStrategy.NONE_LITERAL.getName()) != 0) {
+		if (!hasCache && defaultCacheStrategy.compareToIgnoreCase(CacheConcurrencyStrategy.NONE.getName()) != 0) {
 			final CacheConcurrencyStrategy ccs = CacheConcurrencyStrategy.getByName(defaultCacheStrategy);
 			if (ccs == null) {
-				throw new StoreMappingException("The default cache strategy: " + defaultCacheStrategy
-						+ " is not one of the allowed values (uppercase) "
-						+ "as defined in the JPA Hibernate Annotation Extensions.");
+				throw new StoreMappingException("The default cache strategy: " + defaultCacheStrategy +
+						" is not one of the allowed values (uppercase) " +
+						"as defined in the JPA Hibernate Annotation Extensions.");
 			}
 
-			log.debug("Setting cache strategy " + defaultCacheStrategy + " on "
-					+ aReference.getAnnotatedEReference().getName());
-			final Cache cache = HbAnnotationFactory.eINSTANCE.createCache();
+			log.debug("Setting cache strategy " + defaultCacheStrategy + " on " +
+					aReference.getAnnotatedEReference().getName());
+			final Cache cache = HbannotationFactory.eINSTANCE.createCache();
 			cache.setUsage(ccs);
 			((HbAnnotatedEReference) aReference).setHbCache(cache);
 		}
@@ -270,11 +270,11 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	/** Adds an index */
 	private void setIndex(PAnnotatedEReference aReference) {
 		final String indexName =
-				getEntityName(aReference.getAnnotatedEReference().getEContainingClass()) + "_"
-						+ aReference.getAnnotatedEReference().getName();
+				getEntityName(aReference.getAnnotatedEReference().getEContainingClass()) + "_" +
+						aReference.getAnnotatedEReference().getName();
 		final HbAnnotatedEReference haReference = (HbAnnotatedEReference) aReference;
 		if (haReference.getHbIndex() == null) {
-			final Index index = HbAnnotationFactory.eINSTANCE.createIndex();
+			final Index index = HbannotationFactory.eINSTANCE.createIndex();
 			index.setName(indexName);
 			haReference.setHbIndex(index);
 		} else {
@@ -346,8 +346,8 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 		final PAnnotatedModel model = aClass.getPaModel();
 		for (EClass superEClass : aClass.getAnnotatedEClass().getESuperTypes()) {
 			final PAnnotatedEClass x = model.getPAnnotated(superEClass);
-			if (x.getEntity() != null && x.getMappedSuperclass() == null
-					&& (allowInterfaces || !x.getAnnotatedEClass().isInterface())) {
+			if (x.getEntity() != null && x.getMappedSuperclass() == null &&
+					(allowInterfaces || !x.getAnnotatedEClass().isInterface())) {
 				return x;
 			}
 		}

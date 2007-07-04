@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParameterImpl.java,v 1.4 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: ParameterImpl.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 
 /**
@@ -31,13 +31,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
  * @generated
  */
 public class ParameterImpl extends EObjectImpl implements Parameter {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -104,7 +97,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.PARAMETER;
+		return HbannotationPackage.Literals.PARAMETER;
 	}
 
 	/**
@@ -118,7 +111,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.PARAMETER__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.PARAMETER__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -142,7 +135,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.PARAMETER__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.PARAMETER__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -163,7 +156,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.PARAMETER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.PARAMETER__NAME, oldName, name));
 	}
 
 	/**
@@ -184,7 +177,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.PARAMETER__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.PARAMETER__VALUE, oldValue, value));
 	}
 
 	/**
@@ -195,12 +188,12 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.PARAMETER__EMODEL_ELEMENT:
+			case HbannotationPackage.PARAMETER__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.PARAMETER__NAME:
+			case HbannotationPackage.PARAMETER__NAME:
 				return getName();
-			case HbAnnotationPackage.PARAMETER__VALUE:
+			case HbannotationPackage.PARAMETER__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -214,13 +207,13 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.PARAMETER__EMODEL_ELEMENT:
+			case HbannotationPackage.PARAMETER__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.PARAMETER__NAME:
+			case HbannotationPackage.PARAMETER__NAME:
 				setName((String)newValue);
 				return;
-			case HbAnnotationPackage.PARAMETER__VALUE:
+			case HbannotationPackage.PARAMETER__VALUE:
 				setValue((String)newValue);
 				return;
 		}
@@ -235,13 +228,13 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.PARAMETER__EMODEL_ELEMENT:
+			case HbannotationPackage.PARAMETER__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.PARAMETER__NAME:
+			case HbannotationPackage.PARAMETER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case HbAnnotationPackage.PARAMETER__VALUE:
+			case HbannotationPackage.PARAMETER__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -256,11 +249,11 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.PARAMETER__EMODEL_ELEMENT:
+			case HbannotationPackage.PARAMETER__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.PARAMETER__NAME:
+			case HbannotationPackage.PARAMETER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case HbAnnotationPackage.PARAMETER__VALUE:
+			case HbannotationPackage.PARAMETER__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);

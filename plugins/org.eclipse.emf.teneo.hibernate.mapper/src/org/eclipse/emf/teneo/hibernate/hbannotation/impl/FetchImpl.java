@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FetchImpl.java,v 1.5 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: FetchImpl.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,13 +31,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType;
  * @generated
  */
 public class FetchImpl extends EObjectImpl implements Fetch {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -56,7 +49,7 @@ public class FetchImpl extends EObjectImpl implements Fetch {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final HbFetchType VALUE_EDEFAULT = HbFetchType.JOIN_LITERAL;
+	protected static final HbFetchType VALUE_EDEFAULT = HbFetchType.JOIN;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -84,7 +77,7 @@ public class FetchImpl extends EObjectImpl implements Fetch {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.FETCH;
+		return HbannotationPackage.Literals.FETCH;
 	}
 
 	/**
@@ -98,7 +91,7 @@ public class FetchImpl extends EObjectImpl implements Fetch {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.FETCH__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.FETCH__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -122,7 +115,7 @@ public class FetchImpl extends EObjectImpl implements Fetch {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.FETCH__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.FETCH__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -143,7 +136,7 @@ public class FetchImpl extends EObjectImpl implements Fetch {
 		HbFetchType oldValue = value;
 		value = newValue == null ? VALUE_EDEFAULT : newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.FETCH__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.FETCH__VALUE, oldValue, value));
 	}
 
 	/**
@@ -154,10 +147,10 @@ public class FetchImpl extends EObjectImpl implements Fetch {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.FETCH__EMODEL_ELEMENT:
+			case HbannotationPackage.FETCH__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.FETCH__VALUE:
+			case HbannotationPackage.FETCH__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -171,10 +164,10 @@ public class FetchImpl extends EObjectImpl implements Fetch {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.FETCH__EMODEL_ELEMENT:
+			case HbannotationPackage.FETCH__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.FETCH__VALUE:
+			case HbannotationPackage.FETCH__VALUE:
 				setValue((HbFetchType)newValue);
 				return;
 		}
@@ -189,10 +182,10 @@ public class FetchImpl extends EObjectImpl implements Fetch {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.FETCH__EMODEL_ELEMENT:
+			case HbannotationPackage.FETCH__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.FETCH__VALUE:
+			case HbannotationPackage.FETCH__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -207,9 +200,9 @@ public class FetchImpl extends EObjectImpl implements Fetch {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.FETCH__EMODEL_ELEMENT:
+			case HbannotationPackage.FETCH__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.FETCH__VALUE:
+			case HbannotationPackage.FETCH__VALUE:
 				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

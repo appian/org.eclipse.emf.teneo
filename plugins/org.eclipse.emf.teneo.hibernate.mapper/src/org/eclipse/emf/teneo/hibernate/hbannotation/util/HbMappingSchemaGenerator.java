@@ -11,7 +11,7 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HbMappingSchemaGenerator.java,v 1.3 2007/03/04 21:18:07 mtaal Exp $
+ * $Id: HbMappingSchemaGenerator.java,v 1.4 2007/07/04 19:31:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.xml.PersistenceMappingSchemaGenerator;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
 
 /**
  * Generates the xsd for the hibernate mapping.
@@ -34,8 +34,8 @@ public class HbMappingSchemaGenerator extends PersistenceMappingSchemaGenerator 
 	/** The main method */
 	public static void main(String[] args) {
 		final HbMappingSchemaGenerator pmsg = new HbMappingSchemaGenerator();
-		pmsg.setAnnotationEPackages(new EPackage[] { HbAnnotationPackage.eINSTANCE, PannotationPackage.eINSTANCE });
-		pmsg.setModelEPackage(HbModelPackage.eINSTANCE);
+		pmsg.setAnnotationEPackages(new EPackage[] { HbannotationPackage.eINSTANCE, PannotationPackage.eINSTANCE });
+		pmsg.setModelEPackage(HbmodelPackage.eINSTANCE);
 		pmsg.setNameSpace("http://www.eclipse.org/emft/teneo");
 		try {
 			final FileWriter fw = new FileWriter("/home/mtaal/mytmp/persistence-mapping-hibernate.xsd");
@@ -45,34 +45,39 @@ public class HbMappingSchemaGenerator extends PersistenceMappingSchemaGenerator 
 			throw new StoreAnnotationsException("Exception while generating mapping.xsd", e);
 		}
 	}
-	
 
 	/** Return the PAnnotatedEClass */
+	@Override
 	protected EClass getPAnnotatedEPackage() {
 		return (EClass) getModelEPackage().getEClassifier("HbAnnotatedEPackage");
 	}
 
 	/** Return the PAnnotatedEClass */
+	@Override
 	protected EClass getPAnnotatedEClass() {
 		return (EClass) getModelEPackage().getEClassifier("HbAnnotatedEClass");
 	}
 
 	/** Return the PAnnotatedEReference */
+	@Override
 	protected EClass getPAnnotatedEReference() {
 		return (EClass) getModelEPackage().getEClassifier("HbAnnotatedEReference");
 	}
 
 	/** Return the PAnnotatedEAttribute */
+	@Override
 	protected EClass getPAnnotatedEAttribute() {
 		return (EClass) getModelEPackage().getEClassifier("HbAnnotatedEAttribute");
 	}
 
 	/** Return the PAnnotatedEDataType */
+	@Override
 	protected EClass getPAnnotatedEDataType() {
 		return (EClass) getModelEPackage().getEClassifier("HbAnnotatedEDataType");
 	}
 
 	/** get rid of the hb- prefix */
+	@Override
 	protected String convertToXmlName(String name) {
 		String result = super.convertToXmlName(name);
 		if (result.compareTo("hb-column") == 0) {

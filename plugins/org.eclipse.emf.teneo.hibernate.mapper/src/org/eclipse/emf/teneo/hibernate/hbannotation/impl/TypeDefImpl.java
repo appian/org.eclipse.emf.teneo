@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeDefImpl.java,v 1.5 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: TypeDefImpl.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 
@@ -37,13 +37,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
  * @generated
  */
 public class TypeDefImpl extends EObjectImpl implements TypeDef {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -120,7 +113,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.TYPE_DEF;
+		return HbannotationPackage.Literals.TYPE_DEF;
 	}
 
 	/**
@@ -134,7 +127,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.TYPE_DEF__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -158,7 +151,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.TYPE_DEF__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -179,7 +172,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.TYPE_DEF__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.TYPE_DEF__NAME, oldName, name));
 	}
 
 	/**
@@ -189,7 +182,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 */
 	public EList<Parameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectResolvingEList<Parameter>(Parameter.class, this, HbAnnotationPackage.TYPE_DEF__PARAMETERS);
+			parameters = new EObjectResolvingEList<Parameter>(Parameter.class, this, HbannotationPackage.TYPE_DEF__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -212,7 +205,7 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 		String oldTypeClass = typeClass;
 		typeClass = newTypeClass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.TYPE_DEF__TYPE_CLASS, oldTypeClass, typeClass));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.TYPE_DEF__TYPE_CLASS, oldTypeClass, typeClass));
 	}
 
 	/**
@@ -223,14 +216,14 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.TYPE_DEF__EMODEL_ELEMENT:
+			case HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.TYPE_DEF__NAME:
+			case HbannotationPackage.TYPE_DEF__NAME:
 				return getName();
-			case HbAnnotationPackage.TYPE_DEF__PARAMETERS:
+			case HbannotationPackage.TYPE_DEF__PARAMETERS:
 				return getParameters();
-			case HbAnnotationPackage.TYPE_DEF__TYPE_CLASS:
+			case HbannotationPackage.TYPE_DEF__TYPE_CLASS:
 				return getTypeClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -245,17 +238,17 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.TYPE_DEF__EMODEL_ELEMENT:
+			case HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.TYPE_DEF__NAME:
+			case HbannotationPackage.TYPE_DEF__NAME:
 				setName((String)newValue);
 				return;
-			case HbAnnotationPackage.TYPE_DEF__PARAMETERS:
+			case HbannotationPackage.TYPE_DEF__PARAMETERS:
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends Parameter>)newValue);
 				return;
-			case HbAnnotationPackage.TYPE_DEF__TYPE_CLASS:
+			case HbannotationPackage.TYPE_DEF__TYPE_CLASS:
 				setTypeClass((String)newValue);
 				return;
 		}
@@ -270,16 +263,16 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.TYPE_DEF__EMODEL_ELEMENT:
+			case HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.TYPE_DEF__NAME:
+			case HbannotationPackage.TYPE_DEF__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case HbAnnotationPackage.TYPE_DEF__PARAMETERS:
+			case HbannotationPackage.TYPE_DEF__PARAMETERS:
 				getParameters().clear();
 				return;
-			case HbAnnotationPackage.TYPE_DEF__TYPE_CLASS:
+			case HbannotationPackage.TYPE_DEF__TYPE_CLASS:
 				setTypeClass(TYPE_CLASS_EDEFAULT);
 				return;
 		}
@@ -294,13 +287,13 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.TYPE_DEF__EMODEL_ELEMENT:
+			case HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.TYPE_DEF__NAME:
+			case HbannotationPackage.TYPE_DEF__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case HbAnnotationPackage.TYPE_DEF__PARAMETERS:
+			case HbannotationPackage.TYPE_DEF__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
-			case HbAnnotationPackage.TYPE_DEF__TYPE_CLASS:
+			case HbannotationPackage.TYPE_DEF__TYPE_CLASS:
 				return TYPE_CLASS_EDEFAULT == null ? typeClass != null : !TYPE_CLASS_EDEFAULT.equals(typeClass);
 		}
 		return super.eIsSet(featureID);

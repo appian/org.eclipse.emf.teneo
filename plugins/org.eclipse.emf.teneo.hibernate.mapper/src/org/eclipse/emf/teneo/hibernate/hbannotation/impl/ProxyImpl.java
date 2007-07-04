@@ -2,21 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProxyImpl.java,v 1.3 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: ProxyImpl.java,v 1.4 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
 
 /**
@@ -35,13 +31,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
  * @generated
  */
 public class ProxyImpl extends EObjectImpl implements Proxy {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -108,7 +97,7 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.PROXY;
+		return HbannotationPackage.Literals.PROXY;
 	}
 
 	/**
@@ -122,7 +111,7 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.PROXY__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.PROXY__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -146,7 +135,7 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.PROXY__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.PROXY__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -167,7 +156,7 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 		String oldProxyClass = proxyClass;
 		proxyClass = newProxyClass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.PROXY__PROXY_CLASS, oldProxyClass, proxyClass));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.PROXY__PROXY_CLASS, oldProxyClass, proxyClass));
 	}
 
 	/**
@@ -188,7 +177,7 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 		boolean oldLazy = lazy;
 		lazy = newLazy;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.PROXY__LAZY, oldLazy, lazy));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.PROXY__LAZY, oldLazy, lazy));
 	}
 
 	/**
@@ -199,12 +188,12 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.PROXY__EMODEL_ELEMENT:
+			case HbannotationPackage.PROXY__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.PROXY__PROXY_CLASS:
+			case HbannotationPackage.PROXY__PROXY_CLASS:
 				return getProxyClass();
-			case HbAnnotationPackage.PROXY__LAZY:
+			case HbannotationPackage.PROXY__LAZY:
 				return isLazy() ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -218,13 +207,13 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.PROXY__EMODEL_ELEMENT:
+			case HbannotationPackage.PROXY__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.PROXY__PROXY_CLASS:
+			case HbannotationPackage.PROXY__PROXY_CLASS:
 				setProxyClass((String)newValue);
 				return;
-			case HbAnnotationPackage.PROXY__LAZY:
+			case HbannotationPackage.PROXY__LAZY:
 				setLazy(((Boolean)newValue).booleanValue());
 				return;
 		}
@@ -239,13 +228,13 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.PROXY__EMODEL_ELEMENT:
+			case HbannotationPackage.PROXY__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.PROXY__PROXY_CLASS:
+			case HbannotationPackage.PROXY__PROXY_CLASS:
 				setProxyClass(PROXY_CLASS_EDEFAULT);
 				return;
-			case HbAnnotationPackage.PROXY__LAZY:
+			case HbannotationPackage.PROXY__LAZY:
 				setLazy(LAZY_EDEFAULT);
 				return;
 		}
@@ -260,11 +249,11 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.PROXY__EMODEL_ELEMENT:
+			case HbannotationPackage.PROXY__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.PROXY__PROXY_CLASS:
+			case HbannotationPackage.PROXY__PROXY_CLASS:
 				return PROXY_CLASS_EDEFAULT == null ? proxyClass != null : !PROXY_CLASS_EDEFAULT.equals(proxyClass);
-			case HbAnnotationPackage.PROXY__LAZY:
+			case HbannotationPackage.PROXY__LAZY:
 				return lazy != LAZY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

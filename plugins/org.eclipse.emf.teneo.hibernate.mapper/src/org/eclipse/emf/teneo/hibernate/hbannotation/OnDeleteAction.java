@@ -2,12 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OnDeleteAction.java,v 1.2 2007/04/07 12:44:07 mtaal Exp $
+ * $Id: OnDeleteAction.java,v 1.3 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
-
-import static org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction.CASCADE_VALUE;
-import static org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction.NO_ACTION_VALUE;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>On Delete Action</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getOnDeleteAction()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getOnDeleteAction()
  * @model
  * @generated
  */
@@ -44,13 +41,6 @@ public enum OnDeleteAction implements Enumerator {
 	 * @ordered
 	 */
 	CASCADE(1, "CASCADE", "CASCADE");
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
 
 	/**
 	 * The '<em><b>NO ACTION</b></em>' literal value.
@@ -88,8 +78,7 @@ public enum OnDeleteAction implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final OnDeleteAction[] VALUES_ARRAY =
-		new OnDeleteAction[] {
+	private static final OnDeleteAction[] VALUES_ARRAY = new OnDeleteAction[] {
 			NO_ACTION,
 			CASCADE,
 		};
@@ -218,5 +207,5 @@ public enum OnDeleteAction implements Enumerator {
 	public String toString() {
 		return literal;
 	}
-	
-} //OnDeleteAction
+
+} // OnDeleteAction

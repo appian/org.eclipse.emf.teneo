@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdBagImpl.java,v 1.5 2007/06/29 07:31:27 mtaal Exp $
+ * $Id: IdBagImpl.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 
 /**
@@ -32,13 +32,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
  * @generated
  */
 public class IdBagImpl extends EObjectImpl implements IdBag {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -125,7 +118,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbAnnotationPackage.Literals.ID_BAG;
+		return HbannotationPackage.Literals.ID_BAG;
 	}
 
 	/**
@@ -139,7 +132,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -163,7 +156,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -184,7 +177,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 		String oldGenerator = generator;
 		generator = newGenerator;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.ID_BAG__GENERATOR, oldGenerator, generator));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__GENERATOR, oldGenerator, generator));
 	}
 
 	/**
@@ -205,7 +198,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 		String oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.ID_BAG__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__TYPE, oldType, type));
 	}
 
 	/**
@@ -226,7 +219,7 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 		String oldTable = table;
 		table = newTable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbAnnotationPackage.ID_BAG__TABLE, oldTable, table));
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__TABLE, oldTable, table));
 	}
 
 	/**
@@ -237,14 +230,14 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT:
+			case HbannotationPackage.ID_BAG__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
-			case HbAnnotationPackage.ID_BAG__GENERATOR:
+			case HbannotationPackage.ID_BAG__GENERATOR:
 				return getGenerator();
-			case HbAnnotationPackage.ID_BAG__TYPE:
+			case HbannotationPackage.ID_BAG__TYPE:
 				return getType();
-			case HbAnnotationPackage.ID_BAG__TABLE:
+			case HbannotationPackage.ID_BAG__TABLE:
 				return getTable();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -258,16 +251,16 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT:
+			case HbannotationPackage.ID_BAG__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
 				return;
-			case HbAnnotationPackage.ID_BAG__GENERATOR:
+			case HbannotationPackage.ID_BAG__GENERATOR:
 				setGenerator((String)newValue);
 				return;
-			case HbAnnotationPackage.ID_BAG__TYPE:
+			case HbannotationPackage.ID_BAG__TYPE:
 				setType((String)newValue);
 				return;
-			case HbAnnotationPackage.ID_BAG__TABLE:
+			case HbannotationPackage.ID_BAG__TABLE:
 				setTable((String)newValue);
 				return;
 		}
@@ -282,16 +275,16 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT:
+			case HbannotationPackage.ID_BAG__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
-			case HbAnnotationPackage.ID_BAG__GENERATOR:
+			case HbannotationPackage.ID_BAG__GENERATOR:
 				setGenerator(GENERATOR_EDEFAULT);
 				return;
-			case HbAnnotationPackage.ID_BAG__TYPE:
+			case HbannotationPackage.ID_BAG__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
-			case HbAnnotationPackage.ID_BAG__TABLE:
+			case HbannotationPackage.ID_BAG__TABLE:
 				setTable(TABLE_EDEFAULT);
 				return;
 		}
@@ -306,13 +299,13 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbAnnotationPackage.ID_BAG__EMODEL_ELEMENT:
+			case HbannotationPackage.ID_BAG__EMODEL_ELEMENT:
 				return eModelElement != null;
-			case HbAnnotationPackage.ID_BAG__GENERATOR:
+			case HbannotationPackage.ID_BAG__GENERATOR:
 				return GENERATOR_EDEFAULT == null ? generator != null : !GENERATOR_EDEFAULT.equals(generator);
-			case HbAnnotationPackage.ID_BAG__TYPE:
+			case HbannotationPackage.ID_BAG__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-			case HbAnnotationPackage.ID_BAG__TABLE:
+			case HbannotationPackage.ID_BAG__TABLE:
 				return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
 		}
 		return super.eIsSet(featureID);

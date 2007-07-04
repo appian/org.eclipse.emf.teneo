@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Fetch.java,v 1.3 2007/02/01 12:35:55 mtaal Exp $
+ * $Id: Fetch.java,v 1.4 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -19,18 +19,11 @@ package org.eclipse.emf.teneo.hibernate.hbannotation;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getFetch()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getFetch()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated
  */
 public interface Fetch extends HbAnnotation {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType}.
@@ -43,7 +36,7 @@ public interface Fetch extends HbAnnotation {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType
 	 * @see #setValue(HbFetchType)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getFetch_Value()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getFetch_Value()
 	 * @model
 	 * @generated
 	 */

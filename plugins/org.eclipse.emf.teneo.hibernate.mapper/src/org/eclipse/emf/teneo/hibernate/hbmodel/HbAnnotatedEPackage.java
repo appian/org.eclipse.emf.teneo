@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEPackage.java,v 1.5 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotatedEPackage.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -23,17 +23,11 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEPackage()
+ * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage()
  * @model
  * @generated
  */
 public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Hb Generic Generators</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator}.
@@ -45,8 +39,8 @@ public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Generic Generators</em>' containment reference list.
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEPackage_HbGenericGenerators()
-	 * @model type="org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator" containment="true"
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage_HbGenericGenerators()
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<GenericGenerator> getHbGenericGenerators();
@@ -61,8 +55,8 @@ public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Type Def</em>' containment reference list.
-	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbModelPackage#getHbAnnotatedEPackage_HbTypeDef()
-	 * @model type="org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef" containment="true"
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage_HbTypeDef()
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<TypeDef> getHbTypeDef();

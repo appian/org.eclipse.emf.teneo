@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GenericGenerator.java,v 1.5 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: GenericGenerator.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -21,18 +21,12 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getGenericGenerator()
+ * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getGenericGenerator()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature' 1='EClass' 2='EPackage'"
  *        annotation="http://annotation.elver.org/internal/Collection name='GenericGenerators' packageNS='http://www.eclipse.org/emf/teneo/2006/HbAnnotation'"
  * @generated
  */
 public interface GenericGenerator extends HbAnnotation {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Douglas Bitting\n";
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -43,7 +37,7 @@ public interface GenericGenerator extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getGenericGenerator_Name()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getGenericGenerator_Name()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -68,7 +62,7 @@ public interface GenericGenerator extends HbAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Strategy</em>' attribute.
 	 * @see #setStrategy(String)
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getGenericGenerator_Strategy()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getGenericGenerator_Strategy()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -93,8 +87,8 @@ public interface GenericGenerator extends HbAnnotation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameters</em>' reference list.
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotationPackage#getGenericGenerator_Parameters()
-	 * @model type="org.eclipse.emf.teneo.hibernate.hbannotation.Parameter"
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getGenericGenerator_Parameters()
+	 * @model
 	 * @generated
 	 */
 	EList<Parameter> getParameters();

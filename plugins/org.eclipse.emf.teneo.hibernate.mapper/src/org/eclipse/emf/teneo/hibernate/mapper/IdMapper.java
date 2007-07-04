@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.12 2007/06/29 07:31:28 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.13 2007/07/04 19:31:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -50,10 +50,10 @@ class IdMapper extends AbstractPropertyMapper {
 	/** initializes the hibernate class names array */
 	static {
 		GENERATOR_CLASS_NAMES = new String[GenerationType.VALUES.size()];
-		GENERATOR_CLASS_NAMES[GenerationType.AUTO] = "native";
-		GENERATOR_CLASS_NAMES[GenerationType.IDENTITY] = "identity";
-		GENERATOR_CLASS_NAMES[GenerationType.SEQUENCE] = "sequence";
-		GENERATOR_CLASS_NAMES[GenerationType.TABLE] = "hilo";
+		GENERATOR_CLASS_NAMES[GenerationType.AUTO.getValue()] = "native";
+		GENERATOR_CLASS_NAMES[GenerationType.IDENTITY.getValue()] = "identity";
+		GENERATOR_CLASS_NAMES[GenerationType.SEQUENCE.getValue()] = "sequence";
+		GENERATOR_CLASS_NAMES[GenerationType.TABLE.getValue()] = "hilo";
 	}
 
 	/** Util method to create an id or composite-id element */
@@ -114,7 +114,7 @@ class IdMapper extends AbstractPropertyMapper {
 	 * @return Returns the hibernate generator class for the given strategy.
 	 */
 	private static String hbGeneratorClass(GenerationType strategy) {
-		return IdMapper.GENERATOR_CLASS_NAMES[strategy != null ? strategy.getValue() : GenerationType.AUTO];
+		return IdMapper.GENERATOR_CLASS_NAMES[strategy != null ? strategy.getValue() : GenerationType.AUTO.getValue()];
 	}
 
 	/**
@@ -151,19 +151,11 @@ class IdMapper extends AbstractPropertyMapper {
 		// check precondition
 		if (aClass.getPaSuperEntity() != null && aClass.getPaSuperEntity().hasIdAnnotatedFeature()) {
 			log
-				.error("The annotated eclass: "
-						+ aClass
-						+ " has an id-annotated feature: "
-						+ id
-						+ " while it has a "
-						+ "superclass/type, id properties should always be specified in the top of the inheritance structure");
-			throw new MappingException(
-				"The annotated eclass: "
-						+ aClass
-						+ " has an id-annotated feature: "
-						+ id
-						+ " while it has a "
-						+ "superclass/type, id properties should always be specified in the top of the inheritance structure");
+				.error("The annotated eclass: " + aClass + " has an id-annotated feature: " + id + " while it has a " +
+						"superclass/type, id properties should always be specified in the top of the inheritance structure");
+			throw new MappingException("The annotated eclass: " + aClass + " has an id-annotated feature: " + id +
+					" while it has a " +
+					"superclass/type, id properties should always be specified in the top of the inheritance structure");
 		}
 
 		final EAttribute eAttribute = id.getAnnotatedEAttribute();
@@ -227,16 +219,16 @@ class IdMapper extends AbstractPropertyMapper {
 		if (generatedValue != null) {
 
 			if (isCompositeId) {
-				throw new MappingException("Composite id can not have a generated value "
-						+ id.getAnnotatedEAttribute().getEContainingClass().getName() + "/"
-						+ id.getAnnotatedEAttribute().getName());
+				throw new MappingException("Composite id can not have a generated value " +
+						id.getAnnotatedEAttribute().getEContainingClass().getName() + "/" +
+						id.getAnnotatedEAttribute().getName());
 			}
 
 			final Element generatorElement = usedIdElement.addElement("generator");
 
 			GenericGenerator gg;
-			if (generatedValue.getGenerator() != null
-					&& (gg = getGenericGenerator(id.getPaModel(), generatedValue.getGenerator())) != null) {
+			if (generatedValue.getGenerator() != null &&
+					(gg = getGenericGenerator(id.getPaModel(), generatedValue.getGenerator())) != null) {
 				log.debug("GenericGenerator the strategy in the GeneratedValue is ignored (if even set)");
 				generatorElement.addAttribute("class", gg.getStrategy());
 				if (gg.getParameters() != null) {
@@ -245,9 +237,9 @@ class IdMapper extends AbstractPropertyMapper {
 							param.getValue());
 					}
 				}
-			} else if (GenerationType.IDENTITY_LITERAL.equals(generatedValue.getStrategy())) {
+			} else if (GenerationType.IDENTITY.equals(generatedValue.getStrategy())) {
 				generatorElement.addAttribute("class", "identity");
-			} else if (GenerationType.TABLE_LITERAL.equals(generatedValue.getStrategy())) {
+			} else if (GenerationType.TABLE.equals(generatedValue.getStrategy())) {
 				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
 				if (generatedValue.getGenerator() != null) { // table
 					// generator
@@ -264,7 +256,7 @@ class IdMapper extends AbstractPropertyMapper {
 					generatorElement.addElement("param").addAttribute("name", "table").setText("uid_table"); // externalize
 					generatorElement.addElement("param").addAttribute("name", "column").setText("next_hi_value_column"); // externalize
 				}
-			} else if (GenerationType.SEQUENCE_LITERAL.equals(generatedValue.getStrategy())) {
+			} else if (GenerationType.SEQUENCE.equals(generatedValue.getStrategy())) {
 				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
 				if (generatedValue.getGenerator() != null) {
 					final SequenceGenerator sg =
