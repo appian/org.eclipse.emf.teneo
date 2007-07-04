@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.5 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: IdMapper.java,v 1.6 2007/07/04 19:29:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class IdMapper extends AbstractMapper {
@@ -50,8 +50,9 @@ public class IdMapper extends AbstractMapper {
 	public void map(PAnnotatedEAttribute aAttribute, Element classElement) {
 		log.debug("Processing id annotation:" + aAttribute.getAnnotatedElement().getName());
 		Element fieldElement = classElement.addElement("field");
-		fieldElement.addAttribute("name", namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement()))
-				.addAttribute("persistence-modifier", "persistent");
+		fieldElement.addAttribute("name",
+			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement()))
+			.addAttribute("persistence-modifier", "persistent");
 		fieldElement.addAttribute("primary-key", "true");
 
 		// handle the column
@@ -60,41 +61,39 @@ public class IdMapper extends AbstractMapper {
 			mappingContext.getColumnMapper().map(overridden, fieldElement);
 		} else if (aAttribute.getColumn() != null) {
 			mappingContext.getColumnMapper().map(aAttribute.getColumn(), fieldElement);
-		} else if (mappingContext.getEmbeddingFeature() != null) { //embedded at least override
+		} else if (mappingContext.getEmbeddingFeature() != null) { // embedded at least override
 			// TODO: check illegal, embedded component can not really have an id
 			final PAnnotatedEReference pae = mappingContext.getEmbeddingFeature();
-			final String name = pae.getAnnotatedEReference().getName() + "_" + aAttribute.getAnnotatedEAttribute().getName() + "_ID";
+			final String name =
+					pae.getAnnotatedEReference().getName() + "_" + aAttribute.getAnnotatedEAttribute().getName() +
+							"_ID";
 			fieldElement.addAttribute("column", name);
 		}
 
 		GeneratedValue gv = aAttribute.getGeneratedValue();
 		if (gv != null) { // normal primary key
-			switch (gv.getStrategy().getValue()) {
-			case GenerationType.AUTO:
+			if (gv.getStrategy() == GenerationType.AUTO) {
 				fieldElement.addAttribute("value-strategy", "auto");
-				break;
-			case GenerationType.SEQUENCE:
+			} else if (gv.getStrategy() == GenerationType.SEQUENCE) {
 				log.warn("The identity value-strategy of sequence is only supported for a limited set of databases");
 				fieldElement.addAttribute("value-strategy", "sequence");
-				break;
-			case GenerationType.IDENTITY:
+			} else if (gv.getStrategy() == GenerationType.IDENTITY) {
 				fieldElement.addAttribute("value-strategy", "identity");
-				break;
-			case GenerationType.TABLE:
+			} else if (gv.getStrategy() == GenerationType.TABLE) {
 				fieldElement.addAttribute("value-strategy", "increment");
-				break;
-			default:
-				log.error("VALUE-STRATEGY: " + gv.getStrategy().getName() + " not supported for field "
-						+ aAttribute.getAnnotatedElement().getName());
+			} else {
+				log.error("VALUE-STRATEGY: " + gv.getStrategy().getName() + " not supported for field " +
+						aAttribute.getAnnotatedElement().getName());
 			}
 			fieldElement.addAttribute("indexed", "true");
 
 			// get the sequence from the global generator
 			if (gv.getGenerator() != null) {
-				 if (GenerationType.TABLE_LITERAL.equals(gv.getStrategy())) {
+				if (GenerationType.TABLE.equals(gv.getStrategy())) {
 					fieldElement.addAttribute("strategy", "increment");
-					final TableGenerator tg = aAttribute.getPaModel().getTableGenerator(aAttribute.getAnnotatedEAttribute(),
-							gv.getGenerator());
+					final TableGenerator tg =
+							aAttribute.getPaModel().getTableGenerator(aAttribute.getAnnotatedEAttribute(),
+								gv.getGenerator());
 					if (tg.getTable() != null) {
 						fieldElement.addAttribute("sequence-table-name", tg.getTable());
 					}
@@ -104,11 +103,12 @@ public class IdMapper extends AbstractMapper {
 					if (tg.getValueColumnName() != null) {
 						fieldElement.addAttribute("sequence-nextval-column-name", tg.getValueColumnName());
 					}
-				 } else {	
-					final SequenceGenerator sg = aAttribute.getPaModel().getSequenceGenerator(aAttribute.getAnnotatedEAttribute(),
-							gv.getGenerator());
+				} else {
+					final SequenceGenerator sg =
+							aAttribute.getPaModel().getSequenceGenerator(aAttribute.getAnnotatedEAttribute(),
+								gv.getGenerator());
 					fieldElement.addAttribute("sequence", sg.getSequenceName());
-				 }
+				}
 			}
 		}
 	}

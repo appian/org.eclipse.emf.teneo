@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.11 2007/06/29 07:32:02 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.12 2007/07/04 19:29:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class ManyToOneMapper extends AssociationMapper {
@@ -53,8 +53,7 @@ public class ManyToOneMapper extends AssociationMapper {
 		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all
 		// cases?
 		List cascade = aReference.getManyToOne().getCascade();
-		boolean cascadeRemove =
-				cascade.contains(CascadeType.ALL_LITERAL) || cascade.contains(CascadeType.REMOVE_LITERAL);
+		boolean cascadeRemove = cascade.contains(CascadeType.ALL) || cascade.contains(CascadeType.REMOVE);
 		log.debug("Cascaderemove " + cascadeRemove);
 
 		Element field = eclassElement.addElement("field");
@@ -72,8 +71,8 @@ public class ManyToOneMapper extends AssociationMapper {
 		// - exception is thrown before o can be deleted that reference to child is null
 		// maybe required dependent is an uncommon model.
 		boolean setNullable =
-				mappingContext.isForceOptional() || aReference.getManyToOne().isOptional()
-						|| eReference.getEOpposite() != null || cascadeRemove;
+				mappingContext.isForceOptional() || aReference.getManyToOne().isOptional() ||
+						eReference.getEOpposite() != null || cascadeRemove;
 		field.addAttribute("null-value", setNullable ? "none" : "exception");
 
 		if (aReference.getEmbedded() != null) {

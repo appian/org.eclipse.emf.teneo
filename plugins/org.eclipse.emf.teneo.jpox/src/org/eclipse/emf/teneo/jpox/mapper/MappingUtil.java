@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class MappingUtil {
@@ -43,7 +43,7 @@ public class MappingUtil {
 		if (eclass == null) {
 			throw new JPOXMappingException("Uri: " + eClassURI + " does not translate to an eclass");
 		}
-		final Class clazz = getImplClassOfEClass(eclass);
+		final Class<?> clazz = getImplClassOfEClass(eclass);
 		if (clazz == null) {
 			throw new JPOXMappingException("Uri: " + eClassURI + " does not translate to an instance class");
 		}
@@ -54,7 +54,7 @@ public class MappingUtil {
 	 * Returns the impl class name of an eclass, if the eclass is an interface then the interface
 	 * class is returned
 	 */
-	public static Class getImplClassOfEClass(EClass eClass) {
+	public static Class<?> getImplClassOfEClass(EClass eClass) {
 		if (eClass.isInterface()) {
 			return eClass.getInstanceClass();
 		}
@@ -124,7 +124,7 @@ public class MappingUtil {
 
 	/** Adds the correct jpox extension based on the fetch type */
 	public static void addEagerLazyLoading(Element field, FetchType ft) {
-		if (ft.equals(FetchType.EAGER_LITERAL)) {
+		if (ft.equals(FetchType.EAGER)) {
 			field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key", "cache-lazy-loading")
 				.addAttribute("value", "false");
 		} else {
@@ -158,15 +158,15 @@ public class MappingUtil {
 				continue;
 			}
 
-			if (!containment && onlyEObject && efeature instanceof EReference
-					&& ((EReference) efeature).isContainment()) {
+			if (!containment && onlyEObject && efeature instanceof EReference &&
+					((EReference) efeature).isContainment()) {
 				continue;
 			}
 
 			if (StoreUtil.isElementOfGroup(efeature, eattr)) {
 				Class instanceClass = efeature.getEType().getInstanceClass();
-				if (!onlyEObject && !EObject.class.isAssignableFrom(instanceClass)
-						&& !String.class.isAssignableFrom(instanceClass) && efeature instanceof EAttribute) {
+				if (!onlyEObject && !EObject.class.isAssignableFrom(instanceClass) &&
+						!String.class.isAssignableFrom(instanceClass) && efeature instanceof EAttribute) {
 					if (!result.contains(instanceClass.getName())) {
 						String name = instanceClass.getName();
 						if (name.indexOf('.') == -1) { // assume

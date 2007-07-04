@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.7 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.8 2007/07/04 19:29:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class ManyToManyMapper extends AssociationMapper {
@@ -49,18 +49,19 @@ public class ManyToManyMapper extends AssociationMapper {
 		log.debug("Processing many to many ereference: " + aReference.getAnnotatedElement().getName());
 		EReference eReference = (EReference) aReference.getAnnotatedElement();
 
-		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all cases?
+		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all
+		// cases?
 		List cascade = aReference.getManyToMany().getCascade();
-		boolean cascadeRemove = cascade.contains(CascadeType.ALL_LITERAL)
-				|| cascade.contains(CascadeType.REMOVE_LITERAL);
+		boolean cascadeRemove = cascade.contains(CascadeType.ALL) || cascade.contains(CascadeType.REMOVE);
 		log.debug("Cascaderemove " + cascadeRemove);
 
-		if (cascadeRemove)
+		if (cascadeRemove) {
 			log.warn("Cascade (all) remove on a many to many relation is an unlikely case");
+		}
 
 		Element field = eclassElement.addElement("field");
 		field.addAttribute("name", namingHandler.correctName(mappingContext, eReference)).addAttribute(
-				"persistence-modifier", "persistent");
+			"persistence-modifier", "persistent");
 
 		// two way were the otherside is the container then the reference should be delete
 		// confusing but foreign-key constraints are defined the other way around in jpox
@@ -70,10 +71,13 @@ public class ManyToManyMapper extends AssociationMapper {
 			field.addAttribute("delete-action", "restrict");
 		}
 
-		// CHECK THIS ISSUE CAN OCCUR: because both jpox and emf were setting the inverse, the following then happens:
+		// CHECK THIS ISSUE CAN OCCUR: because both jpox and emf were setting the inverse, the
+		// following then happens:
 		// 1) item is added to list, item has oppposite pointing to the list owner.
-		// 2) In the add call the item is added to the backing store and jpox sets the inverse in the item
-		// 3) During the add emf sets the inverse, it detects that the inverse is already set and deletes the
+		// 2) In the add call the item is added to the backing store and jpox sets the inverse in
+		// the item
+		// 3) During the add emf sets the inverse, it detects that the inverse is already set and
+		// deletes the
 		// item from the list.
 		// -> result item points back to the list but is not present anymore in the list
 		// DISABLED this therefor
@@ -98,7 +102,7 @@ public class ManyToManyMapper extends AssociationMapper {
 		}
 
 		collection.addAttribute("element-type", MappingUtil.getImplNameOfEClass(aReference.getManyToMany()
-				.getTargetEntity(), mappingContext));
+			.getTargetEntity(), mappingContext));
 
 		if (cascadeRemove) {
 			collection.addAttribute("dependent-element", "true");
