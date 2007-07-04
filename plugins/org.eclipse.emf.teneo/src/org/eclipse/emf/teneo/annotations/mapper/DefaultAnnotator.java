@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.1 2007/06/29 07:31:47 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.2 2007/07/04 19:27:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -85,7 +85,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class DefaultAnnotator {
 
@@ -96,7 +96,7 @@ public class DefaultAnnotator {
 	protected static final Log log = LogFactory.getLog(DefaultAnnotator.class);
 
 	// Several options, coming from persistenceOptions
-	private InheritanceType optionDefaultInheritanceMapping = InheritanceType.SINGLE_TABLE_LITERAL;
+	private InheritanceType optionDefaultInheritanceMapping = InheritanceType.SINGLE_TABLE;
 	private SQLNameStrategy optionSQLNameStrategy = null;
 	private TemporalType optionDefaultTemporal = null;
 	private EntityNameStrategy optionEntityNameStrategy = null;
@@ -142,8 +142,8 @@ public class DefaultAnnotator {
 			epacks[cnt++] = apack.getAnnotatedEPackage();
 		}
 
-		log.debug("Registering epackages in model resolver, modelresolver instance is: "
-				+ EModelResolver.instance().getClass().getName());
+		log.debug("Registering epackages in model resolver, modelresolver instance is: " +
+				EModelResolver.instance().getClass().getName());
 		EModelResolver.instance().register(epacks);
 
 		// if force fully classify typename then use the EModelResolver/ERuntime
@@ -170,22 +170,19 @@ public class DefaultAnnotator {
 	protected void setLocalOptions(PersistenceOptions po) {
 		persistenceOptions = po;
 		if (po.getInheritanceMapping() != null) {
-			switch (InheritanceType.get(po.getInheritanceMapping()).getValue()) {
-				case InheritanceType.JOINED:
-					optionDefaultInheritanceMapping = InheritanceType.JOINED_LITERAL;
-					log.debug("Option inheritance: joined");
-					break;
-				case InheritanceType.SINGLE_TABLE:
-					optionDefaultInheritanceMapping = InheritanceType.SINGLE_TABLE_LITERAL;
-					log.debug("Option inheritance: single");
-					break;
-				case InheritanceType.TABLE_PER_CLASS:
-					optionDefaultInheritanceMapping = InheritanceType.TABLE_PER_CLASS_LITERAL;
-					log.debug("Option inheritance: table per class");
-					break;
-				default:
-					throw new IllegalArgumentException("Inheritance mapping option: " + po.getInheritanceMapping()
-							+ " is not supported");
+			InheritanceType it = InheritanceType.get(po.getInheritanceMapping());
+			if (it == InheritanceType.JOINED) {
+				optionDefaultInheritanceMapping = InheritanceType.JOINED;
+				log.debug("Option inheritance: joined");
+			} else if (it == InheritanceType.SINGLE_TABLE) {
+				optionDefaultInheritanceMapping = InheritanceType.SINGLE_TABLE;
+				log.debug("Option inheritance: single");
+			} else if (it == InheritanceType.TABLE_PER_CLASS) {
+				optionDefaultInheritanceMapping = InheritanceType.TABLE_PER_CLASS;
+				log.debug("Option inheritance: table per class");
+			} else {
+				throw new IllegalArgumentException("Inheritance mapping option: " + po.getInheritanceMapping() +
+						" is not supported");
 			}
 		}
 		optionEntityNameStrategy = po.getEntityNameStrategy();
@@ -244,10 +241,10 @@ public class DefaultAnnotator {
 			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(superEclass);
 			if (superAClass == null) {
 				throw new StoreAnnotationsException(
-					"Mapping Exception, no Annotated Class for EClass: "
-							+ superEclass.getName()
-							+ " a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
-							+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
+					"Mapping Exception, no Annotated Class for EClass: " +
+							superEclass.getName() +
+							" a common cause is that you did not register all EPackages in the DataStore/Helper Class. " +
+							"When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
 			}
 			if (!processedAClasses.contains(superAClass)) {
 				processClass(superAClass);
@@ -301,7 +298,7 @@ public class DefaultAnnotator {
 		}
 
 		// add PrimaryKeyJoinColumn in case of a joined
-		if (!isInheritanceRoot && inheritanceType.equals(InheritanceType.JOINED_LITERAL)) {
+		if (!isInheritanceRoot && inheritanceType.equals(InheritanceType.JOINED)) {
 			ArrayList<String> idFeatures = new ArrayList<String>();
 			PAnnotatedEClass aSuperClass = null;
 			for (EClass eSuperClass : aClass.getAnnotatedEClass().getESuperTypes()) {
@@ -323,10 +320,10 @@ public class DefaultAnnotator {
 		// add the table annotation or the name annotation of the table
 		// only do this if this is the root in case of singletable or when this
 		// is the joined table strategy
-		if (aClass.getTable() == null
-				&& ((isInheritanceRoot && inheritanceType.equals(InheritanceType.SINGLE_TABLE_LITERAL))
-						|| inheritanceType.equals(InheritanceType.JOINED_LITERAL) || inheritanceType
-					.equals(InheritanceType.TABLE_PER_CLASS_LITERAL))) {
+		if (aClass.getTable() == null &&
+				((isInheritanceRoot && inheritanceType.equals(InheritanceType.SINGLE_TABLE)) ||
+						inheritanceType.equals(InheritanceType.JOINED) || inheritanceType
+					.equals(InheritanceType.TABLE_PER_CLASS))) {
 			final Table table = aFactory.createTable();
 			table.setEModelElement(eclass);
 			// name is set in next step
@@ -339,8 +336,8 @@ public class DefaultAnnotator {
 		// For hibernate as well as jpox the discriminator column is only
 		// required for single table, the ejb3 spec does not make a clear
 		// statement about the requirement to also have a discriminator column for joined
-		if (isInheritanceRoot && aClass.getDiscriminatorColumn() == null
-				&& inheritanceType.equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
+		if (isInheritanceRoot && aClass.getDiscriminatorColumn() == null &&
+				inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
 			// note defaults of primitive types are all defined in the model
 			final DiscriminatorColumn dc = aFactory.createDiscriminatorColumn();
 			dc.setEModelElement(eclass);
@@ -349,7 +346,7 @@ public class DefaultAnnotator {
 		}
 
 		// add a discriminator value
-		if (aClass.getDiscriminatorValue() == null && inheritanceType.equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
+		if (aClass.getDiscriminatorValue() == null && inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
 			final DiscriminatorValue dv = aFactory.createDiscriminatorValue();
 			dv.setValue(getEntityName(eclass));
 			dv.setEModelElement(eclass);
@@ -390,10 +387,10 @@ public class DefaultAnnotator {
 			// relation
 			// - it refers to an eclass which is transient
 			boolean isTransient =
-					eStructuralFeature.isTransient()
-							&& (eStructuralFeature instanceof EAttribute
-									|| ((EReference) eStructuralFeature).getEOpposite() == null
-									|| !((EReference) eStructuralFeature).getEOpposite().isContainment() || ((EReference) eStructuralFeature)
+					eStructuralFeature.isTransient() &&
+							(eStructuralFeature instanceof EAttribute ||
+									((EReference) eStructuralFeature).getEOpposite() == null ||
+									!((EReference) eStructuralFeature).getEOpposite().isContainment() || ((EReference) eStructuralFeature)
 								.getEOpposite().isTransient());
 
 			// check if the refered to eclass is transient if so then this efeature is
@@ -406,8 +403,8 @@ public class DefaultAnnotator {
 			}
 
 			if (aStructuralFeature.getTransient() == null && (eStructuralFeature.isVolatile() || isTransient)) {
-				log.debug("Structural feature " + eStructuralFeature.getName()
-						+ " is transient, therefore adding transient annotation");
+				log.debug("Structural feature " + eStructuralFeature.getName() +
+						" is transient, therefore adding transient annotation");
 				final Transient trans = aFactory.createTransient();
 				trans.setEModelElement(eStructuralFeature);
 				aStructuralFeature.setTransient(trans);
@@ -434,10 +431,10 @@ public class DefaultAnnotator {
 				// treated as a list
 				if (instanceClass != null && aAttribute.getLob() == null) {
 					isMany =
-							eStructuralFeature.isMany() || instanceClass.isArray()
-									|| Collection.class.isAssignableFrom(instanceClass)
-									|| Set.class.isAssignableFrom(instanceClass)
-									|| List.class.isAssignableFrom(instanceClass);
+							eStructuralFeature.isMany() || instanceClass.isArray() ||
+									Collection.class.isAssignableFrom(instanceClass) ||
+									Set.class.isAssignableFrom(instanceClass) ||
+									List.class.isAssignableFrom(instanceClass);
 					isMany = isMany && !StoreUtil.isElementOfAGroup(eStructuralFeature);
 				}
 
@@ -485,10 +482,8 @@ public class DefaultAnnotator {
 				// place a mto
 				final boolean otoBidirectionalRelation = !isMany && eOpposite != null && !isOppositeMany;
 				final boolean otoUnidirectionalRelation =
-						!isMany
-								&& eOpposite == null
-								&& (aReference.getOneToOne() != null || !aReference.getPrimaryKeyJoinColumns()
-									.isEmpty());
+						!isMany && eOpposite == null &&
+								(aReference.getOneToOne() != null || !aReference.getPrimaryKeyJoinColumns().isEmpty());
 				final boolean mtoBidirectionalRelation = !isMany && eOpposite != null && isOppositeMany;
 				final boolean mtoUnidirectionalRelation = !isMany && eOpposite == null && !otoUnidirectionalRelation;
 
@@ -512,8 +507,8 @@ public class DefaultAnnotator {
 				}
 
 			} else {
-				throw new IllegalArgumentException("This type of StructuralFeature is not supported: "
-						+ aStructuralFeature.getClass().getName());
+				throw new IllegalArgumentException("This type of StructuralFeature is not supported: " +
+						aStructuralFeature.getClass().getName());
 			}
 			errorOccured = false;
 		} finally {
@@ -521,12 +516,12 @@ public class DefaultAnnotator {
 			// check that at least one ann was set
 			if (aStructuralFeature instanceof PAnnotatedEAttribute) {
 				PAnnotatedEAttribute pae = (PAnnotatedEAttribute) aStructuralFeature;
-				assert (errorOccured || pae.getBasic() != null || pae.getVersion() != null || pae.getId() != null
-						|| pae.getTransient() != null || pae.getOneToMany() != null);
+				assert (errorOccured || pae.getBasic() != null || pae.getVersion() != null || pae.getId() != null ||
+						pae.getTransient() != null || pae.getOneToMany() != null);
 			} else {
 				PAnnotatedEReference par = (PAnnotatedEReference) aStructuralFeature;
-				assert (errorOccured || par.getTransient() != null || par.getOneToMany() != null
-						|| par.getManyToMany() != null || par.getManyToOne() != null || par.getOneToOne() != null);
+				assert (errorOccured || par.getTransient() != null || par.getOneToMany() != null ||
+						par.getManyToMany() != null || par.getManyToOne() != null || par.getOneToOne() != null);
 			}
 
 		}
@@ -543,7 +538,7 @@ public class DefaultAnnotator {
 		// an id
 		if (eAttribute.getEType() instanceof EEnum && aAttribute.getEnumerated() == null) {
 			final Enumerated enumerated = aFactory.createEnumerated();
-			enumerated.setValue(EnumType.STRING_LITERAL);
+			enumerated.setValue(EnumType.STRING);
 			enumerated.setEModelElement(eAttribute);
 			aAttribute.setEnumerated(enumerated);
 		}
@@ -632,8 +627,8 @@ public class DefaultAnnotator {
 				// used in case of the xsd list/union types but this can not be
 				// enforced using a constraint on the
 				// columnlength
-				if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null
-						&& eAttribute.getEAttributeType().getInstanceClass() == String.class) {
+				if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null &&
+						eAttribute.getEAttributeType().getInstanceClass() == String.class) {
 					column.setLength(Integer.parseInt(maxLength)); // you'll
 					// find
 					// parse
@@ -653,8 +648,8 @@ public class DefaultAnnotator {
 	/** Handles a many EAttribute which is a list of simple types */
 	protected void processOneToManyAttribute(PAnnotatedEAttribute aAttribute) {
 		final String logStr =
-				aAttribute.getAnnotatedEAttribute().getName() + "/"
-						+ aAttribute.getAnnotatedEAttribute().getEContainingClass().getName();
+				aAttribute.getAnnotatedEAttribute().getName() + "/" +
+						aAttribute.getAnnotatedEAttribute().getEContainingClass().getName();
 
 		log.debug("EAttribute " + logStr + " needs a onetomany");
 
@@ -668,7 +663,7 @@ public class DefaultAnnotator {
 			otm.setEModelElement(eAttribute);
 
 			if (persistenceOptions.isFetchContainmentEagerly()) {
-				otm.setFetch(FetchType.EAGER_LITERAL);
+				otm.setFetch(FetchType.EAGER);
 			}
 		} else {
 			log.debug("One to many present adding default information if required");
@@ -677,14 +672,14 @@ public class DefaultAnnotator {
 		// handle list of enums
 		if (eAttribute.getEType() instanceof EEnum && aAttribute.getEnumerated() == null) {
 			final Enumerated enumerated = aFactory.createEnumerated();
-			enumerated.setValue(EnumType.STRING_LITERAL);
+			enumerated.setValue(EnumType.STRING);
 			enumerated.setEModelElement(eAttribute);
 			aAttribute.setEnumerated(enumerated);
 		}
 
 		// set cascade if not set
 		if (otm.getCascade().isEmpty()) {
-			otm.getCascade().add(CascadeType.ALL_LITERAL);
+			otm.getCascade().add(CascadeType.ALL);
 		}
 
 		if (otm.getTargetEntity() == null || otm.getTargetEntity() == null) {
@@ -752,12 +747,12 @@ public class DefaultAnnotator {
 	 */
 	protected void processOneToManyReference(PAnnotatedEReference aReference) {
 		final String logStr =
-				aReference.getAnnotatedEReference().getName() + "/"
-						+ aReference.getAnnotatedEReference().getEContainingClass().getName();
+				aReference.getAnnotatedEReference().getName() + "/" +
+						aReference.getAnnotatedEReference().getEContainingClass().getName();
 
 		if (aReference.getManyToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + logStr + " should be a OneToMany but "
-					+ "it already has a ManyToMany, OneToOne or ManyToOne annotation");
+			throw new StoreMappingException("The feature/eclass " + logStr + " should be a OneToMany but " +
+					"it already has a ManyToMany, OneToOne or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getAnnotatedElement();
@@ -770,7 +765,7 @@ public class DefaultAnnotator {
 			otm.setEModelElement(eReference);
 
 			if (eReference.isContainment() && persistenceOptions.isFetchContainmentEagerly()) {
-				otm.setFetch(FetchType.EAGER_LITERAL);
+				otm.setFetch(FetchType.EAGER);
 			}
 		} else {
 			log.debug("EReference + " + logStr + " has onetomany, check if defaults should be set");
@@ -796,27 +791,27 @@ public class DefaultAnnotator {
 		if (!otmWasSet) {
 			log.debug("Setting indexed and unique from ereference because otm was not set manually!");
 			// note force a join table in case of idbag!
-			otm.setIndexed(!persistenceOptions.alwaysMapListAsBag() && !persistenceOptions.alwaysMapListAsIdBag()
-					&& eReference.isOrdered() && aReference.getOrderBy() == null);
+			otm.setIndexed(!persistenceOptions.alwaysMapListAsBag() && !persistenceOptions.alwaysMapListAsIdBag() &&
+					eReference.isOrdered() && aReference.getOrderBy() == null);
 			// in case of containment it is always unique
 			// in case optionidbag then ignore the unique attribute on the ereference
-			otm.setUnique(eReference.isContainment()
-					|| (!persistenceOptions.alwaysMapListAsIdBag() && eReference.isUnique()));
+			otm.setUnique(eReference.isContainment() ||
+					(!persistenceOptions.alwaysMapListAsIdBag() && eReference.isUnique()));
 
 			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
 				log.debug("Setting unique because is bidirectional (has eopposite) otm");
 				otm.setUnique(true);
 			}
 		} else if (aReference.getAnnotatedEReference().getEOpposite() != null) {
-			log.warn("The EReference " + logStr
-					+ " is not unique (allows duplicates) but it is bi-directional, this is not logical");
+			log.warn("The EReference " + logStr +
+					" is not unique (allows duplicates) but it is bi-directional, this is not logical");
 		}
 
 		// only use a jointable if the relation is non unique
 		final boolean isEObject = EntityNameStrategy.EOBJECT_ECLASS_NAME.compareTo(otm.getTargetEntity()) == 0;
 		// in case of eobject always a join table is required
-		if (isEObject || (persistenceOptions.isJoinTableForNonContainedAssociations() && !eReference.isContainment())
-				|| !otm.isUnique()) {
+		if (isEObject || (persistenceOptions.isJoinTableForNonContainedAssociations() && !eReference.isContainment()) ||
+				!otm.isUnique()) {
 			JoinTable joinTable = aReference.getJoinTable();
 			if (joinTable == null) {
 				joinTable = aFactory.createJoinTable();
@@ -840,12 +835,12 @@ public class DefaultAnnotator {
 	/** Adds default annotations to a bidirectional many to many ereference */
 	protected void processBidirectionalManyToManyReference(PAnnotatedEReference aReference) {
 		final String featureLogStr =
-				aReference.getAnnotatedEReference().getName() + "/"
-						+ aReference.getAnnotatedEReference().getEContainingClass().getName();
+				aReference.getAnnotatedEReference().getName() + "/" +
+						aReference.getAnnotatedEReference().getEContainingClass().getName();
 
 		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + featureLogStr + " should be a ManyToMany but "
-					+ "it already has a OneToMany, OneToOne or ManyToOne annotation");
+			throw new StoreMappingException("The feature/eclass " + featureLogStr + " should be a ManyToMany but " +
+					"it already has a OneToMany, OneToOne or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getAnnotatedElement();
@@ -884,8 +879,8 @@ public class DefaultAnnotator {
 		// set
 		// bugzilla: 164808
 		final PAnnotatedEReference otherPA = aReference.getPaModel().getPAnnotated(eOpposite);
-		if (mtm.getMappedBy() == null && setMappedBy(eReference)
-				&& (otherPA.getManyToMany() == null || otherPA.getManyToMany().getMappedBy() == null)) {
+		if (mtm.getMappedBy() == null && setMappedBy(eReference) &&
+				(otherPA.getManyToMany() == null || otherPA.getManyToMany().getMappedBy() == null)) {
 			mtm.setMappedBy(eOpposite.getName());
 		}
 
@@ -927,12 +922,12 @@ public class DefaultAnnotator {
 	/** Adds default annotations to a unidirectional many to many ereference */
 	protected void processUnidirectionalManyToManyReference(PAnnotatedEReference aReference) {
 		final String featureLogStr =
-				aReference.getAnnotatedEReference().getName() + "/"
-						+ aReference.getAnnotatedEReference().getEContainingClass().getName();
+				aReference.getAnnotatedEReference().getName() + "/" +
+						aReference.getAnnotatedEReference().getEContainingClass().getName();
 
 		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + featureLogStr + " should be a ManyToMany but "
-					+ "it already has a OneToMany, OneToOne or ManyToOne annotation");
+			throw new StoreMappingException("The feature/eclass " + featureLogStr + " should be a ManyToMany but " +
+					"it already has a OneToMany, OneToOne or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getAnnotatedElement();
@@ -972,13 +967,13 @@ public class DefaultAnnotator {
 	/** Adds default annotations for a one to one reference */
 	protected void processOneToOneReference(PAnnotatedEReference aReference) {
 		final String logStr =
-				aReference.getAnnotatedEReference().getName() + "/"
-						+ aReference.getAnnotatedEReference().getEContainingClass().getName();
+				aReference.getAnnotatedEReference().getName() + "/" +
+						aReference.getAnnotatedEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null
-				|| aReference.getManyToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + logStr + " should be a OneToOne but "
-					+ "it already has a OneToMany, ManyToMany or ManyToOne annotation");
+		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null ||
+				aReference.getManyToOne() != null) {
+			throw new StoreMappingException("The feature/eclass " + logStr + " should be a OneToOne but " +
+					"it already has a OneToMany, ManyToMany or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getAnnotatedElement();
@@ -1012,12 +1007,12 @@ public class DefaultAnnotator {
 	/** Handles many to one for bidirectional and unidirectional cases */
 	protected void processManyToOneReference(PAnnotatedEReference aReference) {
 		final String logStr =
-				aReference.getAnnotatedEReference().getName() + "/"
-						+ aReference.getAnnotatedEReference().getEContainingClass().getName();
+				aReference.getAnnotatedEReference().getName() + "/" +
+						aReference.getAnnotatedEReference().getEContainingClass().getName();
 
 		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null || aReference.getOneToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + logStr + " should be a ManyToOne but "
-					+ "it already has a OneToMany, ManyToMany or OneToOne annotation");
+			throw new StoreMappingException("The feature/eclass " + logStr + " should be a ManyToOne but " +
+					"it already has a OneToMany, ManyToMany or OneToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getAnnotatedElement();
@@ -1060,7 +1055,8 @@ public class DefaultAnnotator {
 				// NOTE: otm/mto with join table is not supported at the moment!
 				final List<String> names = optionSQLNameStrategy.getManyToOneJoinColumnNames(aReference);
 				aReference.getJoinColumns().addAll(
-					getJoinColumns(names, mto.isOptional(), eReference.getEOpposite() == null, mto));
+					getJoinColumns(names, mto.isOptional(), eReference.getEOpposite() == null ||
+							eReference.getEOpposite().isTransient(), mto));
 			}
 		}
 	}
@@ -1107,10 +1103,10 @@ public class DefaultAnnotator {
 			return false; // not mappable
 		}
 
-		if (!persistenceOptions.isSetEntityAutomatically() && aClass.getEntity() == null
-				&& aClass.getEmbeddable() == null) {
-			log.debug("Entities are not added automatically and this eclass: " + aClass.getAnnotatedEClass().getName()
-					+ " does not have an entity/embeddable annotation.");
+		if (!persistenceOptions.isSetEntityAutomatically() && aClass.getEntity() == null &&
+				aClass.getEmbeddable() == null) {
+			log.debug("Entities are not added automatically and this eclass: " + aClass.getAnnotatedEClass().getName() +
+					" does not have an entity/embeddable annotation.");
 			return false;
 		}
 
@@ -1118,9 +1114,9 @@ public class DefaultAnnotator {
 		if (!mapMappedSuperEClass() && aClass.getMappedSuperclass() != null) {
 			if (aClass.getEntity() != null) {
 				log
-					.warn("EClass "
-							+ eclass.getName()
-							+ " has entity as well as mappedsuperclass annotation, following mappedsuperclass annotation, therefore ignoring it for the mapping");
+					.warn("EClass " +
+							eclass.getName() +
+							" has entity as well as mappedsuperclass annotation, following mappedsuperclass annotation, therefore ignoring it for the mapping");
 			}
 			return false;
 		}
@@ -1216,16 +1212,16 @@ public class DefaultAnnotator {
 		}
 
 		if (isContainment && !persistenceOptions.isSetCascadeAllOnContainment()) {
-			cascadeList.add(CascadeType.REMOVE_LITERAL);
-			cascadeList.add(CascadeType.MERGE_LITERAL);
-			cascadeList.add(CascadeType.PERSIST_LITERAL);
-			cascadeList.add(CascadeType.REFRESH_LITERAL);
+			cascadeList.add(CascadeType.REMOVE);
+			cascadeList.add(CascadeType.MERGE);
+			cascadeList.add(CascadeType.PERSIST);
+			cascadeList.add(CascadeType.REFRESH);
 		} else if (isContainment) {
-			cascadeList.add(CascadeType.ALL_LITERAL);
+			cascadeList.add(CascadeType.ALL);
 		} else {
-			cascadeList.add(CascadeType.MERGE_LITERAL);
-			cascadeList.add(CascadeType.PERSIST_LITERAL);
-			cascadeList.add(CascadeType.REFRESH_LITERAL);
+			cascadeList.add(CascadeType.MERGE);
+			cascadeList.add(CascadeType.PERSIST);
+			cascadeList.add(CascadeType.REFRESH);
 		}
 	}
 

@@ -13,20 +13,26 @@
  *   Brian Vetter (bugzilla 175909)
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.5 2007/03/05 20:51:10 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.6 2007/07/04 19:27:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+
+import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 
 /**
  * Utility class to classify Ecore datatypes.
@@ -35,31 +41,23 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
  */
 public class EcoreDataTypes {
 
-	// The xml types 
+	// The xml types
 	private static XMLTypePackage xmlTypePackage = XMLTypePackage.eINSTANCE;
 	private static EDataType xmlDateEDataType = xmlTypePackage.getDate();
 	private static EDataType xmlDateTimeEDataType = xmlTypePackage.getDateTime();
-	
-	private static final List<EDataType> PRIMITIVES_ETYPES_LIST = Collections
-			.unmodifiableList(Arrays.asList(new EDataType[] {
-					EcorePackage.eINSTANCE.getEBoolean(),
-					EcorePackage.eINSTANCE.getEByte(),
-					EcorePackage.eINSTANCE.getEChar(),
-					EcorePackage.eINSTANCE.getEDouble(),
-					EcorePackage.eINSTANCE.getEFloat(),
-					EcorePackage.eINSTANCE.getEInt(),
-					EcorePackage.eINSTANCE.getELong(),
+
+	private static final List<EDataType> PRIMITIVES_ETYPES_LIST =
+			Collections.unmodifiableList(Arrays.asList(new EDataType[] { EcorePackage.eINSTANCE.getEBoolean(),
+					EcorePackage.eINSTANCE.getEByte(), EcorePackage.eINSTANCE.getEChar(),
+					EcorePackage.eINSTANCE.getEDouble(), EcorePackage.eINSTANCE.getEFloat(),
+					EcorePackage.eINSTANCE.getEInt(), EcorePackage.eINSTANCE.getELong(),
 					EcorePackage.eINSTANCE.getEShort(), }));
 
-	private static final List<EDataType> WRAPPERS_ETYPES_LIST = Collections
-			.unmodifiableList(Arrays.asList(new EDataType[] {
-					EcorePackage.eINSTANCE.getEBooleanObject(),
-					EcorePackage.eINSTANCE.getEByteObject(),
-					EcorePackage.eINSTANCE.getECharacterObject(),
-					EcorePackage.eINSTANCE.getEDoubleObject(),
-					EcorePackage.eINSTANCE.getEFloatObject(),
-					EcorePackage.eINSTANCE.getEIntegerObject(),
-					EcorePackage.eINSTANCE.getELongObject(),
+	private static final List<EDataType> WRAPPERS_ETYPES_LIST =
+			Collections.unmodifiableList(Arrays.asList(new EDataType[] { EcorePackage.eINSTANCE.getEBooleanObject(),
+					EcorePackage.eINSTANCE.getEByteObject(), EcorePackage.eINSTANCE.getECharacterObject(),
+					EcorePackage.eINSTANCE.getEDoubleObject(), EcorePackage.eINSTANCE.getEFloatObject(),
+					EcorePackage.eINSTANCE.getEIntegerObject(), EcorePackage.eINSTANCE.getELongObject(),
 					EcorePackage.eINSTANCE.getEShortObject(), }));
 
 	public static EcoreDataTypes INSTANCE = new EcoreDataTypes();
@@ -68,6 +66,32 @@ public class EcoreDataTypes {
 	}
 
 	// TODO: Make all utility methods static.
+
+	/** Return a XMLGregorianCalendar on the basis of the date */
+	public XMLGregorianCalendar getXMLGregorianCalendar(Date date) {
+		final XMLGregorianCalendar gregCalendar = new XMLGregorianCalendarImpl();
+		final Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		gregCalendar.setYear(calendar.get(Calendar.YEAR));
+		gregCalendar.setMonth(calendar.get(Calendar.MONTH) + 1); // note the correction with 1
+		gregCalendar.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+		return gregCalendar;
+	}
+
+	/** Return a XMLGregorianCalendar on datetime level (milliseconds) */
+	public XMLGregorianCalendar getXMLGregorianCalendarDateTime(Date date) {
+		final XMLGregorianCalendar gregCalendar = new XMLGregorianCalendarImpl();
+		final Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		gregCalendar.setYear(calendar.get(Calendar.YEAR));
+		gregCalendar.setMonth(calendar.get(Calendar.MONTH) + 1); // correct with 1 on purpose
+		gregCalendar.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+		gregCalendar.setHour(calendar.get(Calendar.HOUR_OF_DAY));
+		gregCalendar.setMinute(calendar.get(Calendar.MINUTE));
+		gregCalendar.setSecond(calendar.get(Calendar.SECOND));
+		gregCalendar.setMillisecond(calendar.get(Calendar.MILLISECOND));
+		return gregCalendar;
+	}
 
 	/**
 	 * @return Returns an immutable list of the Ecore EDataType for java
@@ -82,8 +106,8 @@ public class EcoreDataTypes {
 	 *         EDataType for a primitive type.
 	 */
 	public boolean isEPrimitive(EDataType eDataType) {
-		return (eDataType != null) && (eDataType.getInstanceClass() != null)
-				&& (eDataType.getInstanceClass().isPrimitive());
+		return (eDataType != null) && (eDataType.getInstanceClass() != null) &&
+				(eDataType.getInstanceClass().isPrimitive());
 	}
 
 	/**
@@ -110,33 +134,37 @@ public class EcoreDataTypes {
 		// implementations
 		return String.class == eDataType.getInstanceClass();
 	}
- 
- 	/**
--	 * @return true if and only if the given dataType is a date datatype.
- 	 */
- 	public boolean isEDate(EDataType eDataType) {
-		/*
-		 *	the InstanceClass for date type can be "Object" for XSD types. I'm not sure about
-		 *  ecore itself so I have kept the original check against the java classes.
-		 *  
-		 *  There is some ambiguity around the Java Date class since it can also hold time - 
-		 *  a conflict with the DateTime class
-		 */
- 		Class<?> ic = eDataType.getInstanceClass();
-		if (ic == Object.class) {
-			// could be an XML date type
-			return eDataType.equals(xmlDateEDataType);
+
+	/**
+	-	 * @return true if and only if the given dataType is a date datatype.
+	 */
+	public boolean isEDate(EDataType eDataType) {
+		if (eDataType.equals(xmlDateEDataType)) {
+			return true;
 		}
- 		return java.util.Date.class == ic || java.util.Calendar.class == ic || java.sql.Date.class == ic;
+		/*
+		 * There is some ambiguity around the Java Date class since it can also hold time - a
+		 * conflict with the DateTime class
+		 */
+		Class<?> ic = eDataType.getInstanceClass();
+		// do a string comparison to prevent another dependency for this teneo library.
+		if (eDataType.getInstanceClassName() != null &&
+				eDataType.getInstanceClassName().compareTo("javax.xml.datatype.XMLGregorianCalendar") == 0) {
+			return true;
+		}
+		return java.util.Date.class == ic || java.util.Calendar.class == ic || java.sql.Date.class == ic;
 	}
 
 	/**
 	 * @return true if and only if the given dataType is a datetime/timestamp datatype.
 	 */
 	public boolean isEDateTime(EDataType eDataType) {
+		if (eDataType.equals(xmlDateTimeEDataType)) {
+			return true;
+		}
 		/*
-		 *	the InstanceClass for date type can be "Object" for XSD types. I'm not sure about
-		 *  ecore itself so I have kept the original check against the java classes.	
+		 * the InstanceClass for date type can be "Object" for XSD types. I'm not sure about ecore
+		 * itself so I have kept the original check against the java classes.
 		 */
 		Class<?> ic = eDataType.getInstanceClass();
 		if (ic == Object.class) {
@@ -145,15 +173,14 @@ public class EcoreDataTypes {
 		}
 		return java.sql.Timestamp.class == ic;
 	}
- 
+
 	/**
 	 * @return Returns true if and only if the given type is either a primitive
 	 *         or a wrapper or string or a date.
 	 */
 	public boolean isSimpleType(EDataType eType) {
 		// TODO move elsewhere
-		return isEPrimitive(eType) || isEWrapper(eType) || isEString(eType)
-				|| isEDate(eType);
+		return isEPrimitive(eType) || isEWrapper(eType) || isEString(eType) || isEDate(eType);
 	}
 
 	/**
@@ -183,8 +210,7 @@ public class EcoreDataTypes {
 	public boolean isByteArray(EDataType eType) {
 		final Class<?> clazz = eType.getInstanceClass();
 		if (clazz != null) {
-			return (clazz.isArray() && clazz.getComponentType().equals(
-					Byte.TYPE));
+			return (clazz.isArray() && clazz.getComponentType().equals(Byte.TYPE));
 		} else {
 			return false;
 		}
