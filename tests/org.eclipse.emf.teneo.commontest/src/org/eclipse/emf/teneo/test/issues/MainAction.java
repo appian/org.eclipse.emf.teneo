@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MainAction.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: MainAction.java,v 1.4 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests issue with inheritance and polymorphic relations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class MainAction extends AbstractTestAction {
 	/**
@@ -51,8 +51,9 @@ public class MainAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
 	public void doAction(TestStore store) {
-		
+
 		BaseGroup mainObjectsGroup = MainFactory.eINSTANCE.createBaseGroup();
 		mainObjectsGroup.setName("mainObjectsGroup");
 
@@ -117,17 +118,16 @@ public class MainAction extends AbstractTestAction {
 		// Reopen the transaction and query for the objects
 		store.beginTransaction();
 
-		List c = store.getObjects(BaseGroupImpl.class);
-		Iterator it = c.iterator();
+		List<?> c = store.getObjects(BaseGroupImpl.class);
+		Iterator<?> it = c.iterator();
 		BaseGroup grp = null;// not recursive to limit redondancy display
-
 
 		// read the TObjectsGroups
 		while (it.hasNext()) {
 			grp = (BaseGroup) it.next();
-			Collection components = grp.getComponents();
+			Collection<?> components = grp.getComponents();
 			if (components != null) {
-				Iterator it2 = components.iterator();
+				Iterator<?> it2 = components.iterator();
 				while (it2.hasNext()) {
 					BaseComponent cpn = (BaseComponent) it2.next();
 					if (cpn instanceof ChildObject1) {

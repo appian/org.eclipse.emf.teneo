@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.7 2007/03/20 23:33:38 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.8 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -35,24 +35,24 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests persisting of ecore models in a relational store. Only stores them and then reads them again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $ 
+ * @version $Revision: 1.8 $ 
 */
 public class EcoreAction extends AbstractTestAction {
-	
+
 	/** Constructor */
 	public EcoreAction() {
-		super(new EPackage[] {EcorePackage.eINSTANCE, 
-				org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE});
+		super(new EPackage[] { EcorePackage.eINSTANCE, org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE });
 	}
 
 	/** Reads the library model and persists it. */
+	@Override
 	public void doAction(TestStore store) {
-		
-		if (store.getInheritanceType().equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
+
+		if (store.getInheritanceType().equals(InheritanceType.SINGLE_TABLE)) {
 			// ignore this as this fails any way
-			return; 
+			return;
 		}
-		
+
 		// read ecore as a resource
 		final Resource resourceOne = new XMIResourceImpl();
 		try {
@@ -62,12 +62,12 @@ public class EcoreAction extends AbstractTestAction {
 				// the play.xml is in the model directory
 				resourceOne.load(this.getClass().getResourceAsStream("library.ecore"), Collections.EMPTY_MAP);
 				resourceOne.load(Collections.EMPTY_MAP);
-				//EPackage epack = (EPackage)resource.getContents().get(0);
+				// EPackage epack = (EPackage)resource.getContents().get(0);
 				// resource.unload();
 				store.beginTransaction();
-				final EPackage epack = (EPackage)resourceOne.getContents().get(0);
+				final EPackage epack = (EPackage) resourceOne.getContents().get(0);
 				store.store(epack);
-				//store.store(EcorePackage.eINSTANCE);
+				// store.store(EcorePackage.eINSTANCE);
 				store.commitTransaction();
 			}
 
@@ -76,31 +76,30 @@ public class EcoreAction extends AbstractTestAction {
 			final Resource resourceTwo = new XMIResourceImpl();
 			{
 				store.beginTransaction();
-				final List result = store.getObjects(EPackage.class);
-				// get the library ecore from the result 
-				EPackage libEPack = null;
+				final List<?> result = store.getObjects(EPackage.class);
+				// get the library ecore from the result
+// EPackage libEPack = null;
 				for (int i = 0; i < result.size(); i++) {
-					final EPackage epack = (EPackage)result.get(i);
+					final EPackage epack = (EPackage) result.get(i);
 					resourceTwo.getContents().add(epack);
 					// very simple test on name, ouch!
-//					if (epack.getName().compareToIgnoreCase("library") == 0) {
-//						libEPack = epack;
-//					}
+// if (epack.getName().compareToIgnoreCase("library") == 0) {
+// libEPack = epack;
+// }
 				}
-//				assertNotNull(libEPack);
+// assertNotNull(libEPack);
 				// just iterate over the contents
 				int cnt = 0;
-				final Iterator it = resourceTwo.getAllContents();
+				final Iterator<?> it = resourceTwo.getAllContents();
 				while (it.hasNext()) {
 					it.next();
 					cnt++;
 				}
 				// now compare the two resources
 				// compares fails for now
-				//compareResult(resourceOne, resourceTwo);
+				// compareResult(resourceOne, resourceTwo);
 				store.commitTransaction();
 			}
-
 
 		} catch (Exception e) {
 			throw new StoreTestException("Exception when testing persistence of ecore", e);
@@ -109,9 +108,9 @@ public class EcoreAction extends AbstractTestAction {
 
 	/** Compare the original and the generated xml file */
 	protected void compareResult(Resource resourceOne, Resource ResourceTwo) throws IOException {
-		final Iterator original_iterator = resourceOne.getAllContents();
+		final Iterator<?> original_iterator = resourceOne.getAllContents();
 
-		final Iterator new_iterator = ResourceTwo.getAllContents();
+		final Iterator<?> new_iterator = ResourceTwo.getAllContents();
 
 		// rough structural test
 		while (new_iterator.hasNext()) {

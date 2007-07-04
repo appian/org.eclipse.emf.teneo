@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DetachAction.java,v 1.6 2007/06/29 07:35:44 mtaal Exp $
+ * $Id: DetachAction.java,v 1.7 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.detach;
@@ -19,6 +19,8 @@ package org.eclipse.emf.teneo.test.emf.detach;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Iterator;
+
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -35,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is a test case to test basic detach functionality in the dao resource; Specifically for JPOX/JDO
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ 
+ * @version $Revision: 1.7 $ 
  */
 public abstract class DetachAction extends AbstractTestAction {
 
@@ -67,7 +69,7 @@ public abstract class DetachAction extends AbstractTestAction {
 
 				TestC testc = factory.createTestC();
 				testc.setCode("testc");
-				testc.setMyDate(store.getDate(new Date()));
+				testc.setMyDate((XMLGregorianCalendar) store.getDate(new Date()));
 				testc.getTestB().add(testb2);
 				testc.getTestB().add(testb3);
 
@@ -170,8 +172,8 @@ public abstract class DetachAction extends AbstractTestAction {
 					throw new StoreTestException("The code of testa was not set!");
 				}
 
-				if ((testc.getTestB().get(0)).getCode().compareTo("testb3") != 0
-						|| (testc.getTestB().get(1)).getCode().compareTo("testb4") != 0) {
+				if ((testc.getTestB().get(0)).getCode().compareTo("testb3") != 0 ||
+						(testc.getTestB().get(1)).getCode().compareTo("testb4") != 0) {
 					throw new StoreTestException("TestB was not set");
 				}
 

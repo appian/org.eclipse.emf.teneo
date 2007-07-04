@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright> 
  *
- * $Id: AbstractReferenceAction.java,v 1.4 2007/06/29 07:35:43 mtaal Exp $
+ * $Id: AbstractReferenceAction.java,v 1.5 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests reference relations between abstract relations. This failed during compute references, the test is therefore very light.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AbstractReferenceAction extends AbstractTestAction {
 	/**
@@ -64,6 +64,7 @@ public class AbstractReferenceAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final AbstractreferenceFactory factory = AbstractreferenceFactory.eINSTANCE;
 
@@ -103,7 +104,7 @@ public class AbstractReferenceAction extends AbstractTestAction {
 			}
 
 			{
-				USOfficeAddress uoa = (USOfficeAddress) store.getObject(USOfficeAddress.class);
+				USOfficeAddress uoa = store.getObject(USOfficeAddress.class);
 				Object[] eobjs = store.getCrossReferencers(uoa, true);
 				assertEquals(1, eobjs.length);
 			}

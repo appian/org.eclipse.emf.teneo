@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.8 2007/06/29 07:35:43 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.9 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	/**
@@ -52,6 +52,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 
@@ -145,7 +146,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 				res.save(null);
 
 				george.setName("G. Orwell"); // there was a bug in which this failed, reported by
-												// Georgi Manev
+				// Georgi Manev
 				res.save(null);
 				res.save(null);
 				res.unload();
@@ -198,7 +199,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 			res.getContents().add(newLib);
 			lib.getWriters().remove(writer);
 			assertTrue(lib.getBooks().size() > 0); // force load of books to prevent dangling error
-													// in jpox
+			// in jpox
 			newLib.getWriters().add(writer);
 			res.save(null);
 			res.unload();

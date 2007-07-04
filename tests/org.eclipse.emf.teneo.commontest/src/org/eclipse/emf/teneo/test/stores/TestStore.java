@@ -23,7 +23,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * this way different test cases can be reused.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public interface TestStore {
 
@@ -75,7 +75,7 @@ public interface TestStore {
 	public void checkDeleteSucceeds(Class<?> clazz);
 
 	/** Return an object of a certain class, there should only be one in the databases */
-	public Object getObject(Class<?> clazz);
+	public <T> T getObject(Class<T> clazz);
 
 	/** Returns a list of object of a certain class */
 	public List<?> getObjects(Class<?> clazz);
@@ -133,6 +133,6 @@ public interface TestStore {
 	/** Is this a jpox test store */
 	public boolean isJPOXTestStore();
 
-	/** Get the xmlcalendar date (hibernate) or normal date (jpox) */
+	/** Get the xmlgregoriancalendar date (hibernate) or normal date (jpox) */
 	public Object getDate(Date date);
 }

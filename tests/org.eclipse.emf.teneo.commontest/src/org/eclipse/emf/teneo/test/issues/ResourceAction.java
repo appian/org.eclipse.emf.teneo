@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ResourceAction.java,v 1.4 2007/03/20 23:33:38 mtaal Exp $
+ * $Id: ResourceAction.java,v 1.5 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests setting resource when a single ref. relation is loaded.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class ResourceAction extends AbstractTestAction {
 
@@ -44,7 +44,7 @@ public class ResourceAction extends AbstractTestAction {
 	 * @param arg0
 	 */
 	public ResourceAction() {
-		super(new EPackage[] { ResourcePackage.eINSTANCE});
+		super(new EPackage[] { ResourcePackage.eINSTANCE });
 	}
 
 	/*
@@ -57,6 +57,7 @@ public class ResourceAction extends AbstractTestAction {
 	}
 
 	/** Creates simple types and tests against */
+	@Override
 	public void doAction(TestStore store) {
 		// test a simple type
 		final ResourceFactory factory = ResourceFactory.eINSTANCE;
@@ -76,13 +77,13 @@ public class ResourceAction extends AbstractTestAction {
 		try {
 			final Resource res = store.getResource("query1=select p from Person p");
 			res.load(Collections.EMPTY_MAP);
-			Iterator it = res.getContents().iterator();
+			Iterator<?> it = res.getContents().iterator();
 			while (it.hasNext()) {
 				Object o = it.next();
 				if (!(o instanceof Person)) {
 					continue;
 				}
-				Person obj = (Person)o;
+				Person obj = (Person) o;
 				assertEquals(obj.eResource(), obj.getHead().eResource());
 				assertTrue(obj.eResource() != null);
 			}

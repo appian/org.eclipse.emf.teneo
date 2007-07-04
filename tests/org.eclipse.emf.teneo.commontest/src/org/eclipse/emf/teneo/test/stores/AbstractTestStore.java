@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.resource.Resource;
  * Base abstractteststore
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public abstract class AbstractTestStore implements TestStore {
 	/** The logger */
@@ -58,19 +58,19 @@ public abstract class AbstractTestStore implements TestStore {
 	/**
 	 * Return an object of a certain class, there should only be one in the databases
 	 */
-	public Object getObject(Class<?> clazz) {
+	@SuppressWarnings("unchecked")
+	public <T> T getObject(Class<T> clazz) {
 		List<?> l = getObjects(clazz); // replace class is called in getObjects
-		TestCase
-			.assertTrue("There are " + l.size() + " object(s) of this class in the datastore, 1 was expected, class: "
-					+ clazz.getName(), l.size() == 1);
-		return l.get(0);
+		TestCase.assertTrue("There are " + l.size() +
+				" object(s) of this class in the datastore, 1 was expected, class: " + clazz.getName(), l.size() == 1);
+		return (T) l.get(0);
 	}
 
 	/** Test the amount of objects of a certain class in the db */
 	public void checkNumber(Class<?> clazz, int count) {
 		final List<?> list = getObjects(clazz);
-		TestCase.assertTrue("Expected " + count + " object(s) but there are " + list.size()
-				+ " object(s) of this class in the datastore: " + clazz.getName(), list.size() == count);
+		TestCase.assertTrue("Expected " + count + " object(s) but there are " + list.size() +
+				" object(s) of this class in the datastore: " + clazz.getName(), list.size() == count);
 	}
 
 	/** Is called just before the test */

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.8 2007/03/29 15:00:32 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.9 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class LibraryAction extends AbstractTestAction {
 	/**
@@ -46,6 +46,7 @@ public class LibraryAction extends AbstractTestAction {
 		super(LibraryPackage.eINSTANCE);
 	}
 
+	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY, "READ_WRITE");
@@ -54,6 +55,8 @@ public class LibraryAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		// create a book, writer and library
@@ -87,16 +90,16 @@ public class LibraryAction extends AbstractTestAction {
 			assertEquals(2, writer.getBooks().size());
 		}
 
-		
 		// walk through the structure starting from the library
 		{
 			store.beginTransaction();
 			Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1).get(0);
 			assertTrue(((Writer) lib.getWriters().get(0)).getName().compareTo("JRR Tolkien") == 0);
 
-//			final Object[] eobjs = store.getCrossReferencers((EObject)lib.getWriters().get(0), false);
-			
-			// these two books should be the same as this book is the first in the writers collection
+// final Object[] eobjs = store.getCrossReferencers((EObject)lib.getWriters().get(0), false);
+
+			// these two books should be the same as this book is the first in the writers
+			// collection
 			// and in the library collection
 			Book wBook = (Book) ((Writer) lib.getWriters().get(0)).getBooks().get(0);
 			Book lBook = (Book) lib.getBooks().get(0);
@@ -123,7 +126,8 @@ public class LibraryAction extends AbstractTestAction {
 			// disabled this test as the elist notifications have been disabled
 			// WriterAdapter writerAdapter = new WriterAdapter();
 			// writ.eAdapters().add(writerAdapter);
-			// assertEquals(2, writ.getBooks().size()); // this should not trigger the adapter to be called
+			// assertEquals(2, writ.getBooks().size()); // this should not trigger the adapter to be
+			// called
 			// assertEquals(1, writerAdapter.getCountNotifications());
 
 			checkContainerAfterWriterRetrieve(store, writ);
@@ -131,18 +135,19 @@ public class LibraryAction extends AbstractTestAction {
 			Library lib = (Library) store.getCrossReferencers(writ, true)[0];
 			checkContainerAfterLibraryRetrieve(store, writ);
 			checkDetachCopy(store, writ);
-			
+
 			// now set the container of the writer
 			assertTrue("The container of the writer should be set!", store.setContainer(writ));
 
-			assertEquals(LibraryPackage.eINSTANCE.getLibrary_Writers().getFeatureID(), writ.eContainingFeature().getFeatureID());
+			assertEquals(LibraryPackage.eINSTANCE.getLibrary_Writers().getFeatureID(), writ.eContainingFeature()
+				.getFeatureID());
 
-			assertTrue("The container of the writer should be equal to the earlier retrieved Library", lib == writ.eContainer());
+			assertTrue("The container of the writer should be equal to the earlier retrieved Library", lib == writ
+				.eContainer());
 
 			final Object[] eobjs = store.getCrossReferencers(writ, false);
 			assertEquals(3, eobjs.length);
-			for (int i = 0; i < eobjs.length; i++) {
-				final Object obj = eobjs[i];
+			for (final Object obj : eobjs) {
 				if (obj instanceof Library) {
 					assertTrue(obj == lib);
 				} else {
@@ -164,13 +169,14 @@ public class LibraryAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 	}
-	
+
 	/** Reads objects in multiple sessions and checks that they are unequal */
+	@SuppressWarnings("unchecked")
 	protected void checkUseCache(TestStore store) {
 		// read the writers in the cache
 		store.refresh();
 		store.beginTransaction();
-		final Writer writer = (Writer)store.getObject(Writer.class);
+		final Writer writer = store.getObject(Writer.class);
 		assertTrue(writer != null);
 		store.commitTransaction();
 		store.refresh();
@@ -183,22 +189,24 @@ public class LibraryAction extends AbstractTestAction {
 		assertTrue(books1.size() == books2.size());
 		store.commitTransaction();
 		for (int i = 0; i < books1.size(); i++) {
-			final Book bk1 = (Book)books1.get(i);
-			final Book bk2 = (Book)books2.get(i);
+			final Book bk1 = (Book) books1.get(i);
+			final Book bk2 = (Book) books2.get(i);
 			assertEquals(bk1.getTitle(), bk2.getTitle());
 			assertTrue(bk1 != bk2);
 			assertTrue(bk1.getAuthor() != bk2.getAuthor());
 		}
 	}
-	
+
 	// check detachcopy for jpox
-	protected void checkDetachCopy(TestStore store, Writer writ) { }
+	protected void checkDetachCopy(TestStore store, Writer writ) {
+	}
 
 	protected void checkContainerAfterLibraryRetrieve(TestStore store, final Writer writ) {
 		// TODO specialize for Hibernate/JPOX, was:
 		// if (store instanceof JPOXTestStore)
 		// {
-		// assertTrue("Container of writer is not yet set now, because of lazy loading of container relations",
+		// assertTrue("Container of writer is not yet set now, because of lazy loading of container
+		// relations",
 		// writ.eContainer() == null);
 		// }
 	}
@@ -217,43 +225,44 @@ public class LibraryAction extends AbstractTestAction {
 	 */
 	protected boolean listValueOfCorrectType(Object value) {
 		// TODO specialize hibernate/jpox, was
-		// return (value instanceof PersistableEList || value instanceof org.eclipse.emf.teneo.jpox.emf.elist.EListWrapper)
+		// return (value instanceof PersistableEList || value instanceof
+		// org.eclipse.emf.teneo.jpox.emf.elist.EListWrapper)
 		return true;
 	}
 
-//	/** Small adapter test
-//	private class WriterAdapter extends AdapterImpl {
-//		/** Counts the number of changes */
-//		private int countNotifications = 0;
+// /** Small adapter test
+// private class WriterAdapter extends AdapterImpl {
+// /** Counts the number of changes */
+// private int countNotifications = 0;
 //
-//		/**
-//		 * Returns <code>false</code>
-//		 * 
-//		 * @param type
-//		 *            the type.
-//		 * @return <code>false</code>
-//		 */
-//		public boolean isAdapterForType(Object type) {
-//			return type instanceof Writer;
-//		}
+// /**
+// * Returns <code>false</code>
+// *
+// * @param type
+// * the type.
+// * @return <code>false</code>
+// */
+// public boolean isAdapterForType(Object type) {
+// return type instanceof Writer;
+// }
 //
-//		/**
-//		 * Does nothing; clients may override so that it does something.
-//		 */
-//		public void notifyChanged(Notification msg) {
-//			assertTrue("The new value is of type: " + msg.getNewValue().getClass().getName(),
-//					listValueOfCorrectType(msg.getNewValue()));
+// /**
+// * Does nothing; clients may override so that it does something.
+// */
+// public void notifyChanged(Notification msg) {
+// assertTrue("The new value is of type: " + msg.getNewValue().getClass().getName(),
+// listValueOfCorrectType(msg.getNewValue()));
 //
-//			// must be a load event
-//			assertTrue("Eventtype is not load notification but: " + msg.getEventType(),
-//					msg.getEventType() == Constants.ELIST_LOAD_NOTIFICATION);
+// // must be a load event
+// assertTrue("Eventtype is not load notification but: " + msg.getEventType(),
+// msg.getEventType() == Constants.ELIST_LOAD_NOTIFICATION);
 //
-//			countNotifications++;
-//		}
+// countNotifications++;
+// }
 //
-//		/** Returns the number of notifications */
-//		public int getCountNotifications() {
-//			return countNotifications;
-//		}
-//	}
+// /** Returns the number of notifications */
+// public int getCountNotifications() {
+// return countNotifications;
+// }
+// }
 }

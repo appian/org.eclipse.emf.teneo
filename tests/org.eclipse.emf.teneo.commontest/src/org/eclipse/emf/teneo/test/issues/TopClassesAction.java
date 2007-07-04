@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TopClassesAction.java,v 1.2 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: TopClassesAction.java,v 1.3 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * detached objects works for jpox.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class TopClassesAction extends AbstractTestAction {
 	/**
@@ -48,6 +48,8 @@ public class TopClassesAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final TopclassesFactory factory = TopclassesFactory.eINSTANCE;
 

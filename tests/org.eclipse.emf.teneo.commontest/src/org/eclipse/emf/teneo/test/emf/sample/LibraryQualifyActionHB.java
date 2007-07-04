@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryQualifyActionHB.java,v 1.4 2007/03/20 23:33:38 mtaal Exp $
+ * $Id: LibraryQualifyActionHB.java,v 1.5 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,24 +32,23 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests setting of qualified enames
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ 
+ * @version $Revision: 1.5 $ 
 */
-public class LibraryQualifyActionHB extends AbstractTestAction 
-{
+public class LibraryQualifyActionHB extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * @param arg0
 	 */
-	public LibraryQualifyActionHB()  
-	{
+	public LibraryQualifyActionHB() {
 		super(LibraryPackage.eINSTANCE);
-		
+
 	}
-	
+
 	/** 
 	 * Can be overridden by subclass returns properties which control the or layer.
 	 * Such as setting of eager loading. 
 	 */
+	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.put(PersistenceOptions.QUALIFY_ENTITY_NAME, PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
@@ -57,8 +56,9 @@ public class LibraryQualifyActionHB extends AbstractTestAction
 	}
 
 	/** Creates an item, an address and links them to a po. */
-	public void doAction(TestStore store)
-	{
+	@Override
+	@SuppressWarnings("unchecked")
+	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		// create a book, writer and library
 		{
@@ -93,13 +93,13 @@ public class LibraryQualifyActionHB extends AbstractTestAction
 		// now test some qualified queries
 		{
 			store.beginTransaction();
-			Library lib = (Library)store.query("select l from " + LibraryPackage.eNS_PREFIX + ".Library l").get(0);
+			Library lib = (Library) store.query("select l from " + LibraryPackage.eNS_PREFIX + ".Library l").get(0);
 			assertTrue(lib != null);
-			Writer writ = (Writer)store.query("select w from " + LibraryPackage.eNS_PREFIX + ".Writer w").get(0);
+			Writer writ = (Writer) store.query("select w from " + LibraryPackage.eNS_PREFIX + ".Writer w").get(0);
 			assertTrue(writ != null);
-			Book bk = (Book)store.query("select b from " + LibraryPackage.eNS_PREFIX + ".Book b").get(0);
+			Book bk = (Book) store.query("select b from " + LibraryPackage.eNS_PREFIX + ".Book b").get(0);
 			assertTrue(bk != null);
 			store.commitTransaction();
 		}
-	}	
+	}
 }

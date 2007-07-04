@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class JoinColumnsAction extends AbstractTestAction {
 	/**
@@ -67,7 +67,7 @@ public class JoinColumnsAction extends AbstractTestAction {
 		// read again
 		{
 			store.beginTransaction();
-			final Parent parent = (Parent) store.getObject(Parent.class);
+			final Parent parent = store.getObject(Parent.class);
 			assertEquals(2, parent.getChildren().size());
 			assertEquals("Johnny", parent.getChildren().get(0).getFirstName());
 			assertEquals("Jane", parent.getChildren().get(1).getFirstName());
@@ -86,7 +86,7 @@ public class JoinColumnsAction extends AbstractTestAction {
 
 				// depending on the inheritance strategy the foreign key is stored in different
 				// table
-				if (store.getInheritanceType().getValue() == InheritanceType.SINGLE_TABLE) {
+				if (store.getInheritanceType() == InheritanceType.SINGLE_TABLE) {
 					final ResultSet rs = stmt.executeQuery("select myParentFirstName from person");
 					assertTrue(rs.next());
 				} else {

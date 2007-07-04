@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CatalogResourceAction.java,v 1.5 2007/02/08 23:11:22 mtaal Exp $
+ * $Id: CatalogResourceAction.java,v 1.6 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * All using a resource, tests add, delete and update of objects in a resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class CatalogResourceAction extends AbstractTestAction {
 	/**
@@ -143,12 +143,12 @@ public class CatalogResourceAction extends AbstractTestAction {
 			// directly checks if the following StringTypes are in the database: remarka, remarkb and remarkc
 			{
 				store.beginTransaction();
-				final List results = store.getObjects(StringType.class);
+				final List<?> results = store.getObjects(StringType.class);
 				assertTrue(results.size() == 3);
 				int remarka = 0;
 				int remarkb = 0;
 				int remarkc = 0;
-				Iterator it = results.iterator();
+				Iterator<?> it = results.iterator();
 				while (it.hasNext()) {
 					StringType str = (StringType) it.next();
 					if (str.getValue().compareTo("remarka") == 0) {
@@ -184,7 +184,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 				resource.load(null);
 
 				// this should force a load of the products
-				Iterator it = resource.getContents().iterator();
+				Iterator<?> it = resource.getContents().iterator();
 				while (it.hasNext()) {
 					Object obj = it.next();
 					if (obj instanceof ProductType) {
@@ -222,7 +222,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 			{
 				resource = store.getResource();
 				resource.load(null);
-				Iterator it = resource.getContents().iterator();
+				Iterator<?> it = resource.getContents().iterator();
 				CatalogType cat = null;
 				while (it.hasNext()) {
 					final Object obj = it.next();
@@ -258,7 +258,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 				resource.load(null);
 
 				// count the products in the resource
-				List list = resource.getContents();
+				List<?> list = resource.getContents();
 				int cnt = 0;
 				ProductType delProduct = null;
 				for (int i = 0; i < list.size(); i++) {
@@ -332,12 +332,12 @@ public class CatalogResourceAction extends AbstractTestAction {
 			// there should now only be a remarka and a remarkc
 			{
 				store.beginTransaction();
-				final List results = store.getObjects(StringType.class);
+				final List<?> results = store.getObjects(StringType.class);
 				assertTrue(results.size() == 2);
 				int remarka = 0;
 				int remarkb = 0;
 				int remarkc = 0;
-				Iterator it = results.iterator();
+				Iterator<?> it = results.iterator();
 				while (it.hasNext()) {
 					StringType str = (StringType) it.next();
 					if (str.getValue().compareTo("remarka") == 0) {

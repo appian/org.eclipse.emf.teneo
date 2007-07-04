@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SchoolLibraryAction.java,v 1.11 2007/03/28 13:58:33 mtaal Exp $
+ * $Id: SchoolLibraryAction.java,v 1.12 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the schoollibrary example which has some more inheritance structures.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class SchoolLibraryAction extends AbstractTestAction {
 
@@ -58,7 +58,9 @@ public class SchoolLibraryAction extends AbstractTestAction {
 		super(new EPackage[] { LibraryPackage.eINSTANCE, SchoollibraryPackage.eINSTANCE });
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
 	 */
 	@Override
@@ -69,6 +71,8 @@ public class SchoolLibraryAction extends AbstractTestAction {
 	}
 
 	/** Creates simple types and tests against */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		// test a simple type
 		final LibraryFactory libFactory = LibraryFactory.eINSTANCE;
@@ -116,8 +120,12 @@ public class SchoolLibraryAction extends AbstractTestAction {
 			int cntBooks = 0;
 			while (it.hasNext()) {
 				Object obj = it.next();
-				if (obj instanceof Writer) cntTeachers++;
-				if (obj instanceof Book) cntBooks++;
+				if (obj instanceof Writer) {
+					cntTeachers++;
+				}
+				if (obj instanceof Book) {
+					cntBooks++;
+				}
 			}
 			assertEquals(1, cntTeachers);
 			assertEquals(2, cntBooks);
@@ -131,9 +139,9 @@ public class SchoolLibraryAction extends AbstractTestAction {
 			res.load(Collections.EMPTY_MAP);
 			assertEquals(1, res.getContents().size());
 			Writer writ = (Writer) res.getContents().get(0);
-			// in case of direct load into a resource the containers are not set correctly, only 
+			// in case of direct load into a resource the containers are not set correctly, only
 			// if the container was loaded earlier then this is done.
-			//assertTrue(hasContainer((InternalEObject) writ));
+			// assertTrue(hasContainer((InternalEObject) writ));
 			writ.getBooks().remove(0);
 			res.save(Collections.EMPTY_MAP);
 			res.unload();
@@ -167,11 +175,11 @@ public class SchoolLibraryAction extends AbstractTestAction {
 					}
 					cntBooks++;
 					if (obj instanceof SchoolBook) {
-						SchoolBook sb = (SchoolBook)obj;
-						if (sb.getValue() < 35f ) {
-							assertEquals(34.59f, sb.getValue(), 0.001); 
+						SchoolBook sb = (SchoolBook) obj;
+						if (sb.getValue() < 35f) {
+							assertEquals(34.59f, sb.getValue(), 0.001);
 						} else {
-							assertEquals(35.70f, sb.getValue(), 0.001); 							
+							assertEquals(35.70f, sb.getValue(), 0.001);
 						}
 					}
 				}
@@ -187,20 +195,20 @@ public class SchoolLibraryAction extends AbstractTestAction {
 		}
 
 		// now use a resource to read!
-//		try {
-//			final Resource res = store.getResource(getQuery4());
-//			res.load(Collections.EMPTY_MAP);
-//			Iterator it = res.getContents().iterator();
-//			while (it.hasNext()) {
-//				Book obj = (Book)it.next();
-//				if (obj.getAuthor() != null) {
-//					assertEquals(obj.eResource(), obj.getAuthor().eResource());
-//				}
-//			}
-//			res.unload();
-//		} catch (IOException e) {
-//			throw new StoreTestException("Exception", e);
-//		}
+// try {
+// final Resource res = store.getResource(getQuery4());
+// res.load(Collections.EMPTY_MAP);
+// Iterator it = res.getContents().iterator();
+// while (it.hasNext()) {
+// Book obj = (Book)it.next();
+// if (obj.getAuthor() != null) {
+// assertEquals(obj.eResource(), obj.getAuthor().eResource());
+// }
+// }
+// res.unload();
+// } catch (IOException e) {
+// throw new StoreTestException("Exception", e);
+// }
 
 		try {
 			Resource res = store.getResource();

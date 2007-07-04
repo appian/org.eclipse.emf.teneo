@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySerializationAction.java,v 1.5 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: LibrarySerializationAction.java,v 1.6 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test case uses Impl classes to facilitate build on emft server (encountered class loading errors).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class LibrarySerializationAction extends AbstractTestAction {
 	/**
@@ -57,13 +57,15 @@ public class LibrarySerializationAction extends AbstractTestAction {
 	}
 
 	/** Does its thing */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 
 		// first serialize a non persisted document set
 		serialize(getTestSet(factory, "one"), "one");
-		
-		// then persist a set and check serialization after persisting 
+
+		// then persist a set and check serialization after persisting
 		{
 			store.beginTransaction();
 			Library lib = getTestSet(factory, "two");
@@ -71,14 +73,14 @@ public class LibrarySerializationAction extends AbstractTestAction {
 			store.commitTransaction();
 			serialize(lib, "two");
 		}
-		
-		// then serialize after reading 
+
+		// then serialize after reading
 		{
 			store.beginTransaction();
-			LibraryImpl lib = (LibraryImpl)store.getObject(Library.class);
+			LibraryImpl lib = (LibraryImpl) store.getObject(Library.class);
 			assertEquals(2, lib.getBooks().size());
 			assertEquals(1, lib.getWriters().size());
-			assertEquals(2, ((Writer)lib.getWriters().get(0)).getBooks().size());
+			assertEquals(2, ((Writer) lib.getWriters().get(0)).getBooks().size());
 			serialize(lib, "two");
 			store.commitTransaction();
 		}
@@ -93,23 +95,23 @@ public class LibrarySerializationAction extends AbstractTestAction {
 			oos.close();
 
 			final byte[] bytes = bos.toByteArray();
-			
-			final ObjectInputStream ois = new ElverObjectInputStream(
-					new ByteArrayInputStream(bytes));
-			checkTestSet((Library)ois.readObject(), prefix);
+
+			final ObjectInputStream ois = new ElverObjectInputStream(new ByteArrayInputStream(bytes));
+			checkTestSet((Library) ois.readObject(), prefix);
 			ois.close();
 		} catch (Exception e) {
 			throw new StoreTestException("IOException during serialization test", e);
 		}
-		
+
 	}
-	
+
 	/** Creates a test set and returns a library */
+	@SuppressWarnings("unchecked")
 	private Library getTestSet(LibraryFactory factory, String preFix) {
-		final WriterImpl writer = (WriterImpl)factory.createWriter();
+		final WriterImpl writer = (WriterImpl) factory.createWriter();
 		writer.setName(preFix + "JRR Tolkien");
 
-		final BookImpl book = (BookImpl)factory.createBook();
+		final BookImpl book = (BookImpl) factory.createBook();
 		book.setAuthor(writer);
 		book.setPages(5);
 		book.setTitle(preFix + "The Hobbit");
@@ -130,45 +132,49 @@ public class LibrarySerializationAction extends AbstractTestAction {
 	}
 
 	/** Checks the test set */
+	@SuppressWarnings("unchecked")
 	private void checkTestSet(Library library, String preFix) {
 		assertEquals(preFix + "Science Fiction Library", library.getName());
 		assertEquals(2, library.getBooks().size());
 		assertEquals(1, library.getWriters().size());
-		
-		Writer writer = (Writer)library.getWriters().get(0);
+
+		Writer writer = (Writer) library.getWriters().get(0);
 		assertEquals(preFix + "JRR Tolkien", writer.getName());
 		assertEquals(2, writer.getBooks().size());
-		
-		Book bk1 = (Book)library.getBooks().get(0);
+
+		Book bk1 = (Book) library.getBooks().get(0);
 		assertEquals(preFix + "The Hobbit", bk1.getTitle());
 		assertEquals(5, bk1.getPages());
 		assertEquals(BookCategory.SCIENCE_FICTION_LITERAL, bk1.getCategory());
-		
-		Book bk2 = (Book)library.getBooks().get(1);
+
+		Book bk2 = (Book) library.getBooks().get(1);
 		assertEquals(preFix + "The fellowship of the ring", bk2.getTitle());
 		assertEquals(7, bk2.getPages());
 		assertEquals(BookCategory.SCIENCE_FICTION_LITERAL, bk2.getCategory());
 	}
-	
+
 	/** Specific Object input stream to get rid of classloading issue */
 	private class ElverObjectInputStream extends ObjectInputStream {
 
-	    /** Constructor */
-	    public ElverObjectInputStream(InputStream in) throws IOException {
-	    	super(in);
-	    }
+		/** Constructor */
+		public ElverObjectInputStream(InputStream in) throws IOException {
+			super(in);
+		}
 
-	    /** Constructor */
-	    public ElverObjectInputStream() throws IOException {
-	    	super();
-	    }
+		/** Constructor */
+		public ElverObjectInputStream() throws IOException {
+			super();
+		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see java.io.ObjectInputStream#resolveClass(java.io.ObjectStreamClass)
 		 */
-		protected Class resolveClass(ObjectStreamClass desc) throws IOException, ClassNotFoundException {
+		@Override
+		protected Class<?> resolveClass(ObjectStreamClass desc) throws IOException, ClassNotFoundException {
 			final String clsName = desc.getName();
-			final Class cls = ClassLoaderResolver.classForName(clsName);
+			final Class<?> cls = ClassLoaderResolver.classForName(clsName);
 			if (cls == null) {
 				return super.resolveClass(desc);
 			}

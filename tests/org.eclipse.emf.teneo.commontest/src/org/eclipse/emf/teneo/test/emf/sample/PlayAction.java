@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PlayAction.java,v 1.7 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: PlayAction.java,v 1.8 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * compare the data in this xml file with the original.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class PlayAction extends AbstractTestAction {
 	public PlayAction() {
@@ -46,6 +46,8 @@ public class PlayAction extends AbstractTestAction {
 	}
 
 	/** Creates a supplier, a product, relates then, saves and retrieves them again. */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		// read play.xml as a resource!
 		PlayType play = null;
@@ -66,15 +68,15 @@ public class PlayAction extends AbstractTestAction {
 				store.beginTransaction();
 				store.store(play);
 				/*
-				 * apparently jpox started to find the element name group a reserved word which was not allowed anymore
-				 * in the where clause. List list = store.query("SELECT FROM
-				 * org.eclipse.emf.teneo.test.emf.sample.play.impl.SceneTypeImpl WHERE " + " group.contains(sceneGroup) &&
-				 * sceneGroup.speech == speech &&" + " speech.group.contains(puckSpeaker) &&
-				 * puckSpeaker.speaker==\"PUCK\"" + " VARIABLES
-				 * org.eclipse.emf.teneo.test.emf.sample.play.impl.SceneTypeImplgroup sceneGroup; " + "
-				 * org.eclipse.emf.teneo.test.emf.sample.play.impl.SpeechTypeImpl speech; " + "
-				 * org.eclipse.emf.teneo.test.emf.sample.play.impl.SpeechTypeImplgroup puckSpeaker"); assertEquals(6,
-				 * list.size());
+				 * apparently jpox started to find the element name group a reserved word which was
+				 * not allowed anymore in the where clause. List list = store.query("SELECT FROM
+				 * org.eclipse.emf.teneo.test.emf.sample.play.impl.SceneTypeImpl WHERE " + "
+				 * group.contains(sceneGroup) && sceneGroup.speech == speech &&" + "
+				 * speech.group.contains(puckSpeaker) && puckSpeaker.speaker==\"PUCK\"" + "
+				 * VARIABLES org.eclipse.emf.teneo.test.emf.sample.play.impl.SceneTypeImplgroup
+				 * sceneGroup; " + " org.eclipse.emf.teneo.test.emf.sample.play.impl.SpeechTypeImpl
+				 * speech; " + " org.eclipse.emf.teneo.test.emf.sample.play.impl.SpeechTypeImplgroup
+				 * puckSpeaker"); assertEquals(6, list.size());
 				 */
 				store.commitTransaction();
 				play = null;
@@ -85,7 +87,7 @@ public class PlayAction extends AbstractTestAction {
 			byte[] bytes;
 			{
 				store.beginTransaction();
-				final PlayType myplay = (PlayType) store.getObject(PlayType.class);
+				final PlayType myplay = store.getObject(PlayType.class);
 				final ByteArrayOutputStream bos = new ByteArrayOutputStream();
 				final Resource resource = new XMLResourceImpl();
 				resource.getContents().add(myplay);
@@ -102,6 +104,7 @@ public class PlayAction extends AbstractTestAction {
 	}
 
 	/** Compare the original and the generated xml file */
+	@SuppressWarnings("unchecked")
 	protected void compareResult(String fileNameOne, byte[] bytes, boolean asXML) throws IOException {
 		final InputStream isOne = PlayType.class.getResourceAsStream("data/" + fileNameOne);
 

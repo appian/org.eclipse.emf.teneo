@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceCutPasteAction.java,v 1.5 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: LibraryResourceCutPasteAction.java,v 1.6 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests cut/paste action
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class LibraryResourceCutPasteAction extends AbstractTestAction {
 	/**
@@ -48,11 +48,12 @@ public class LibraryResourceCutPasteAction extends AbstractTestAction {
 		super(LibraryPackage.eINSTANCE);
 	}
 
-	
-	
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
 	 */
+	@Override
 	public Properties getExtraConfigurationProperties() {
 		Properties props = new Properties();
 		props.setProperty(PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT, "false");
@@ -60,6 +61,8 @@ public class LibraryResourceCutPasteAction extends AbstractTestAction {
 	}
 
 	/** Runs testcase */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 
@@ -123,7 +126,7 @@ public class LibraryResourceCutPasteAction extends AbstractTestAction {
 				res.save(Collections.EMPTY_MAP);
 				res.unload();
 			}
-			
+
 			// check cascade deletes
 			{
 				Resource res = store.getResource();
@@ -133,7 +136,7 @@ public class LibraryResourceCutPasteAction extends AbstractTestAction {
 				res.save(null);
 				res.unload();
 			}
-			
+
 			store.checkNumber(Writer.class, 0);
 			store.checkNumber(Book.class, 0);
 			store.checkNumber(Library.class, 0);

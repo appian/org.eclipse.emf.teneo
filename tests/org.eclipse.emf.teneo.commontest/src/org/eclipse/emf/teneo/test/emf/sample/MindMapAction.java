@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MindMapAction.java,v 1.6 2007/06/29 07:35:43 mtaal Exp $
+ * $Id: MindMapAction.java,v 1.7 2007/07/04 19:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -37,7 +37,7 @@ import org.example.mindmap.Topic;
  * Tests the gmf mindmap example
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class MindMapAction extends AbstractTestAction {
 
@@ -51,6 +51,7 @@ public class MindMapAction extends AbstractTestAction {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
@@ -59,6 +60,7 @@ public class MindMapAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	@Override
+	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final MindmapFactory factory = MindmapFactory.eINSTANCE;
 		{
@@ -93,7 +95,7 @@ public class MindMapAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			Map map = (Map) store.getObject(Map.class);
+			Map map = store.getObject(Map.class);
 			assertEquals(2, map.getRootTopics().size());
 			checkTopic(map, (Topic) map.getRootTopics().get(0), "Teneo JPOX", 5);
 			checkTopic(map, (Topic) map.getRootTopics().get(1), "Teneo Hibernate", 3);
@@ -106,7 +108,7 @@ public class MindMapAction extends AbstractTestAction {
 		}
 		{
 			store.beginTransaction();
-			Map map = (Map) store.getObject(Map.class);
+			Map map = store.getObject(Map.class);
 			assertEquals(1, map.getRootTopics().size());
 			checkTopic(map, (Topic) map.getRootTopics().get(0), "Teneo JPOX", 5);
 			store.commitTransaction();
@@ -114,6 +116,7 @@ public class MindMapAction extends AbstractTestAction {
 	}
 
 	/** Create a default topic */
+	@SuppressWarnings("unchecked")
 	private Topic createTopic(TestStore store, List resources, MindmapFactory factory, String name, int level) {
 		final Topic topic = factory.createTopic();
 		topic.setEndDate(store.getDate(new Date()));
