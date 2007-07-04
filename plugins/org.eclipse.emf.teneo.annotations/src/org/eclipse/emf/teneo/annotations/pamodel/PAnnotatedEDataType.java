@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEDataType.java,v 1.2 2007/02/01 12:35:00 mtaal Exp $
+ * $Id: PAnnotatedEDataType.java,v 1.3 2007/07/04 19:28:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -40,13 +40,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  * @generated
  */
 public interface PAnnotatedEDataType extends PAnnotatedETypedElement {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
 	/**
 	 * Returns the value of the '<em><b>Annotated EData Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -269,7 +262,7 @@ public interface PAnnotatedEDataType extends PAnnotatedETypedElement {
 	 * @see #setPaEPackage(PAnnotatedEPackage)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEDataType_PaEPackage()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEDataTypes
-	 * @model opposite="paEDataTypes"
+	 * @model opposite="paEDataTypes" transient="false"
 	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */

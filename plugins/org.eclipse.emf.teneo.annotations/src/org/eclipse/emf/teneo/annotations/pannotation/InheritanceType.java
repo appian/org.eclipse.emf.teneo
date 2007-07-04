@@ -2,13 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritanceType.java,v 1.6 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: InheritanceType.java,v 1.7 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
-
-import static org.eclipse.emf.teneo.annotations.pannotation.InheritanceType.JOINED;
-import static org.eclipse.emf.teneo.annotations.pannotation.InheritanceType.SINGLE_TABLE;
-import static org.eclipse.emf.teneo.annotations.pannotation.InheritanceType.TABLE_PER_CLASS;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,100 +13,101 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Inheritance Type</b></em>',
- * and utility methods for working with them. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the literals of the enumeration '<em><b>Inheritance Type</b></em>',
+ * and utility methods for working with them.
+ * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getInheritanceType()
  * @model
  * @generated
  */
-public enum InheritanceType implements Enumerator
-{
+public enum InheritanceType implements Enumerator {
 	/**
 	 * The '<em><b>SINGLE TABLE</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #SINGLE_TABLE
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SINGLE_TABLE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	SINGLE_TABLE_LITERAL(0, "SINGLE_TABLE", "SINGLE_TABLE"),
+	SINGLE_TABLE(0, "SINGLE_TABLE", "SINGLE_TABLE"),
+
 	/**
 	 * The '<em><b>TABLE PER CLASS</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #TABLE_PER_CLASS
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TABLE_PER_CLASS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	TABLE_PER_CLASS_LITERAL(1, "TABLE_PER_CLASS", "TABLE_PER_CLASS"),
+	TABLE_PER_CLASS(1, "TABLE_PER_CLASS", "TABLE_PER_CLASS"),
+
 	/**
 	 * The '<em><b>JOINED</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #JOINED
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JOINED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	JOINED_LITERAL(2, "JOINED", "JOINED");
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
+	JOINED(2, "JOINED", "JOINED");
 
 	/**
 	 * The '<em><b>SINGLE TABLE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>SINGLE TABLE</b></em>' literal object isn't clear, there really should be more of
-	 * a description here...
+	 * If the meaning of '<em><b>SINGLE TABLE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #SINGLE_TABLE_LITERAL
+	 * @see #SINGLE_TABLE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SINGLE_TABLE = 0;
+	public static final int SINGLE_TABLE_VALUE = 0;
 
 	/**
 	 * The '<em><b>TABLE PER CLASS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>TABLE PER CLASS</b></em>' literal object isn't clear, there really should be more
-	 * of a description here...
+	 * If the meaning of '<em><b>TABLE PER CLASS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TABLE_PER_CLASS_LITERAL
+	 * @see #TABLE_PER_CLASS
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TABLE_PER_CLASS = 1;
+	public static final int TABLE_PER_CLASS_VALUE = 1;
 
 	/**
 	 * The '<em><b>JOINED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>JOINED</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>JOINED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #JOINED_LITERAL
+	 * @see #JOINED
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int JOINED = 2;
+	public static final int JOINED_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Inheritance Type</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final InheritanceType[] VALUES_ARRAY =
 		new InheritanceType[] {
-			SINGLE_TABLE_LITERAL,
-			TABLE_PER_CLASS_LITERAL,
-			JOINED_LITERAL,
+			SINGLE_TABLE,
+			TABLE_PER_CLASS,
+			JOINED,
 		};
 
 	/**
@@ -123,8 +120,8 @@ public enum InheritanceType implements Enumerator
 
 	/**
 	 * Returns the '<em><b>Inheritance Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static InheritanceType get(String literal) {
@@ -161,9 +158,9 @@ public enum InheritanceType implements Enumerator
 	 */
 	public static InheritanceType get(int value) {
 		switch (value) {
-			case SINGLE_TABLE: return SINGLE_TABLE_LITERAL;
-			case TABLE_PER_CLASS: return TABLE_PER_CLASS_LITERAL;
-			case JOINED: return JOINED_LITERAL;
+			case SINGLE_TABLE_VALUE: return SINGLE_TABLE;
+			case TABLE_PER_CLASS_VALUE: return TABLE_PER_CLASS;
+			case JOINED_VALUE: return JOINED;
 		}
 		return null;
 	}
@@ -238,4 +235,5 @@ public enum InheritanceType implements Enumerator
 	public String toString() {
 		return literal;
 	}
-}
+	
+} //InheritanceType

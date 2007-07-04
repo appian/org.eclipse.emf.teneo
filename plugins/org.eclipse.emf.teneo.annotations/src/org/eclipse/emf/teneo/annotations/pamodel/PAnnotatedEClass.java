@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.12 2007/03/29 15:00:28 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.13 2007/07/04 19:28:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -57,12 +57,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  */
 public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
-	/**
 	 * Returns the value of the '<em><b>Pa EPackage</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEClasses <em>Pa EClasses</em>}'.
 	 * <!-- begin-user-doc -->
@@ -75,7 +69,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @see #setPaEPackage(PAnnotatedEPackage)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_PaEPackage()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEClasses
-	 * @model opposite="paEClasses"
+	 * @model opposite="paEClasses" transient="false"
 	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
@@ -129,7 +123,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @return the value of the '<em>Pa EStructural Features</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_PaEStructuralFeatures()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getPaEClass
-	 * @model type="org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature" opposite="paEClass" containment="true"
+	 * @model opposite="paEClass" containment="true"
 	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
@@ -147,7 +141,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attribute Overrides</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_AttributeOverrides()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AttributeOverride> getAttributeOverrides();
@@ -357,7 +351,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Secondary Tables</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_SecondaryTables()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<SecondaryTable> getSecondaryTables();
@@ -424,7 +418,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Association Overrides</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_AssociationOverrides()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AssociationOverride> getAssociationOverrides();

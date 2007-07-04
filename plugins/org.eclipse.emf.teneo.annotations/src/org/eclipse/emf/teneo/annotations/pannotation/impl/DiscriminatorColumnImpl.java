@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorColumnImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: DiscriminatorColumnImpl.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -35,13 +35,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  */
 public class DiscriminatorColumnImpl extends EObjectImpl implements DiscriminatorColumn {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
-	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,7 +42,7 @@ public class DiscriminatorColumnImpl extends EObjectImpl implements Discriminato
 	 * @generated
 	 * @ordered
 	 */
-	protected EModelElement eModelElement = null;
+	protected EModelElement eModelElement;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -79,7 +72,7 @@ public class DiscriminatorColumnImpl extends EObjectImpl implements Discriminato
 	 * @generated
 	 * @ordered
 	 */
-	protected static final DiscriminatorType DISCRIMINATOR_TYPE_EDEFAULT = DiscriminatorType.STRING_LITERAL;
+	protected static final DiscriminatorType DISCRIMINATOR_TYPE_EDEFAULT = DiscriminatorType.STRING;
 
 	/**
 	 * The cached value of the '{@link #getDiscriminatorType() <em>Discriminator Type</em>}' attribute.
@@ -138,7 +131,7 @@ public class DiscriminatorColumnImpl extends EObjectImpl implements Discriminato
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean lengthESet = false;
+	protected boolean lengthESet;
 
 	/**
 	 * <!-- begin-user-doc -->

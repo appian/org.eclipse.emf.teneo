@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondaryTableImpl.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: SecondaryTableImpl.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -43,13 +43,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
  */
 public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
-	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57,7 +50,7 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * @generated
 	 * @ordered
 	 */
-	protected EModelElement eModelElement = null;
+	protected EModelElement eModelElement;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -127,7 +120,7 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PrimaryKeyJoinColumn> pkJoinColumns = null;
+	protected EList<PrimaryKeyJoinColumn> pkJoinColumns;
 
 	/**
 	 * The cached value of the '{@link #getUniqueConstraints() <em>Unique Constraints</em>}' containment reference list.
@@ -137,7 +130,7 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<UniqueConstraint> uniqueConstraints = null;
+	protected EList<UniqueConstraint> uniqueConstraints;
 
 	/**
 	 * <!-- begin-user-doc -->

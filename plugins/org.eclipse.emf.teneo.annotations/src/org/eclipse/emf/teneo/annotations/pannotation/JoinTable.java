@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoinTable.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: JoinTable.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -28,12 +28,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface JoinTable extends PAnnotation {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -120,7 +114,7 @@ public interface JoinTable extends PAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Join Columns</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getJoinTable_JoinColumns()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.JoinColumn" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<JoinColumn> getJoinColumns();
@@ -136,7 +130,7 @@ public interface JoinTable extends PAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inverse Join Columns</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getJoinTable_InverseJoinColumns()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.JoinColumn" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<JoinColumn> getInverseJoinColumns();
@@ -152,7 +146,7 @@ public interface JoinTable extends PAnnotation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Unique Constraints</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getJoinTable_UniqueConstraints()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<UniqueConstraint> getUniqueConstraints();

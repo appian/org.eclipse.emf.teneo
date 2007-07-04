@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedETypedElementImpl.java,v 1.4 2007/02/08 23:12:35 mtaal Exp $
+ * $Id: PAnnotatedETypedElementImpl.java,v 1.5 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -47,13 +47,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  */
 public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElementImpl implements PAnnotatedETypedElement {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
-	/**
 	 * The cached value of the '{@link #getAttributeOverrides() <em>Attribute Overrides</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,7 +54,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<AttributeOverride> attributeOverrides = null;
+	protected EList<AttributeOverride> attributeOverrides;
 
 	/**
 	 * The cached value of the '{@link #getJoinTable() <em>Join Table</em>}' containment reference.
@@ -71,7 +64,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected JoinTable joinTable = null;
+	protected JoinTable joinTable;
 
 	/**
 	 * The cached value of the '{@link #getOneToMany() <em>One To Many</em>}' containment reference.
@@ -81,7 +74,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected OneToMany oneToMany = null;
+	protected OneToMany oneToMany;
 
 	/**
 	 * The cached value of the '{@link #getSequenceGenerator() <em>Sequence Generator</em>}' containment reference.
@@ -91,7 +84,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected SequenceGenerator sequenceGenerator = null;
+	protected SequenceGenerator sequenceGenerator;
 
 	/**
 	 * The cached value of the '{@link #getTableGenerators() <em>Table Generators</em>}' containment reference list.
@@ -101,7 +94,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TableGenerator> tableGenerators = null;
+	protected EList<TableGenerator> tableGenerators;
 
 	/**
 	 * The cached value of the '{@link #getJoinColumns() <em>Join Columns</em>}' containment reference list.
@@ -111,7 +104,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<JoinColumn> joinColumns = null;
+	protected EList<JoinColumn> joinColumns;
 
 	/**
 	 * The cached value of the '{@link #getColumn() <em>Column</em>}' containment reference.
@@ -121,7 +114,7 @@ public abstract class PAnnotatedETypedElementImpl extends PAnnotatedEModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected Column column = null;
+	protected Column column;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -2,12 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EnumType.java,v 1.6 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: EnumType.java,v 1.7 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
-
-import static org.eclipse.emf.teneo.annotations.pannotation.EnumType.ORDINAL;
-import static org.eclipse.emf.teneo.annotations.pannotation.EnumType.STRING;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,89 +13,89 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Enum Type</b></em>', and
- * utility methods for working with them. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the literals of the enumeration '<em><b>Enum Type</b></em>',
+ * and utility methods for working with them.
+ * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getEnumType()
  * @model
  * @generated
  */
-public enum EnumType implements Enumerator
-{
+public enum EnumType implements Enumerator {
 	/**
 	 * The '<em><b>ORDINAL</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #ORDINAL
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ORDINAL_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ORDINAL_LITERAL(0, "ORDINAL", "ORDINAL"),
+	ORDINAL(0, "ORDINAL", "ORDINAL"),
+
 	/**
 	 * The '<em><b>STRING</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #STRING
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STRING_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	STRING_LITERAL(1, "STRING", "STRING");
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
+	STRING(1, "STRING", "STRING");
 
 	/**
 	 * The '<em><b>ORDINAL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>ORDINAL</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>ORDINAL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ORDINAL_LITERAL
+	 * @see #ORDINAL
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ORDINAL = 0;
+	public static final int ORDINAL_VALUE = 0;
 
 	/**
 	 * The '<em><b>STRING</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>STRING</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>STRING</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #STRING_LITERAL
+	 * @see #STRING
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STRING = 1;
+	public static final int STRING_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Enum Type</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final EnumType[] VALUES_ARRAY =
 		new EnumType[] {
-			ORDINAL_LITERAL,
-			STRING_LITERAL,
+			ORDINAL,
+			STRING,
 		};
 
 	/**
 	 * A public read-only list of all the '<em><b>Enum Type</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<EnumType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Enum Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static EnumType get(String literal) {
@@ -129,14 +126,14 @@ public enum EnumType implements Enumerator
 
 	/**
 	 * Returns the '<em><b>Enum Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static EnumType get(int value) {
 		switch (value) {
-			case ORDINAL: return ORDINAL_LITERAL;
-			case STRING: return STRING_LITERAL;
+			case ORDINAL_VALUE: return ORDINAL;
+			case STRING_VALUE: return STRING;
 		}
 		return null;
 	}
@@ -211,4 +208,5 @@ public enum EnumType implements Enumerator
 	public String toString() {
 		return literal;
 	}
-}
+	
+} //EnumType

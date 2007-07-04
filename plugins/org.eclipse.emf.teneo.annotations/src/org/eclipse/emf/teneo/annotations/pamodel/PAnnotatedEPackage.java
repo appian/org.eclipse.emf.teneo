@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackage.java,v 1.8 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: PAnnotatedEPackage.java,v 1.9 2007/07/04 19:28:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -33,12 +33,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  */
 public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
-	/**
 	 * Returns the value of the '<em><b>Pa Model</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel#getPaEPackages <em>Pa EPackages</em>}'.
 	 * <!-- begin-user-doc -->
@@ -51,7 +45,7 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	 * @see #setPaModel(PAnnotatedModel)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_PaModel()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel#getPaEPackages
-	 * @model opposite="paEPackages"
+	 * @model opposite="paEPackages" transient="false"
 	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
@@ -105,7 +99,7 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	 * @return the value of the '<em>Pa EClasses</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_PaEClasses()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getPaEPackage
-	 * @model type="org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass" opposite="paEPackage" containment="true"
+	 * @model opposite="paEPackage" containment="true"
 	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
@@ -122,7 +116,7 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sequence Generators</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_SequenceGenerators()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<SequenceGenerator> getSequenceGenerators();
@@ -138,7 +132,7 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Table Generators</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_TableGenerators()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.TableGenerator" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<TableGenerator> getTableGenerators();
@@ -156,7 +150,7 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	 * @return the value of the '<em>Pa EData Types</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_PaEDataTypes()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getPaEPackage
-	 * @model type="org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType" opposite="paEPackage" containment="true"
+	 * @model opposite="paEPackage" containment="true"
 	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */

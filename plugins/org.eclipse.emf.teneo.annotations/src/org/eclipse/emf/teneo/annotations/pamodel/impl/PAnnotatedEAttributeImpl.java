@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEAttributeImpl.java,v 1.6 2007/02/08 23:12:35 mtaal Exp $
+ * $Id: PAnnotatedEAttributeImpl.java,v 1.7 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -45,13 +45,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  */
 public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl implements PAnnotatedEAttribute {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
-	/**
 	 * The cached value of the '{@link #getAnnotatedEAttribute() <em>Annotated EAttribute</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -59,7 +52,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected EAttribute annotatedEAttribute = null;
+	protected EAttribute annotatedEAttribute;
 
 	/**
 	 * The cached value of the '{@link #getBasic() <em>Basic</em>}' containment reference.
@@ -69,7 +62,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected Basic basic = null;
+	protected Basic basic;
 
 	/**
 	 * The cached value of the '{@link #getEnumerated() <em>Enumerated</em>}' containment reference.
@@ -79,7 +72,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected Enumerated enumerated = null;
+	protected Enumerated enumerated;
 
 	/**
 	 * The cached value of the '{@link #getGeneratedValue() <em>Generated Value</em>}' containment reference.
@@ -89,7 +82,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected GeneratedValue generatedValue = null;
+	protected GeneratedValue generatedValue;
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' containment reference.
@@ -99,7 +92,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected Id id = null;
+	protected Id id;
 
 	/**
 	 * The cached value of the '{@link #getLob() <em>Lob</em>}' containment reference.
@@ -109,7 +102,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected Lob lob = null;
+	protected Lob lob;
 
 	/**
 	 * The cached value of the '{@link #getTemporal() <em>Temporal</em>}' containment reference.
@@ -119,7 +112,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected Temporal temporal = null;
+	protected Temporal temporal;
 
 	/**
 	 * The cached value of the '{@link #getVersion() <em>Version</em>}' containment reference.
@@ -129,7 +122,7 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected Version version = null;
+	protected Version version;
 
 	/**
 	 * <!-- begin-user-doc -->

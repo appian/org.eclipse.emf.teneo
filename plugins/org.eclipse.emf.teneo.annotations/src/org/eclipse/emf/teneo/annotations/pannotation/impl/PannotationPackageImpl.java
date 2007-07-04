@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.13 2007/02/11 21:54:01 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.14 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -75,12 +75,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.util.PannotationValidator;
 public class PannotationPackageImpl extends EPackageImpl implements
 		PannotationPackage {
 	public static final String TARGET_ANNOTATION_SOURCE = "teneo/internal/Target";
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1911,41 +1905,41 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		// Initialize enums and add enum literals
 		initEEnum(cascadeTypeEEnum, CascadeType.class, "CascadeType");
-		addEEnumLiteral(cascadeTypeEEnum, CascadeType.ALL_LITERAL);
-		addEEnumLiteral(cascadeTypeEEnum, CascadeType.PERSIST_LITERAL);
-		addEEnumLiteral(cascadeTypeEEnum, CascadeType.MERGE_LITERAL);
-		addEEnumLiteral(cascadeTypeEEnum, CascadeType.REMOVE_LITERAL);
-		addEEnumLiteral(cascadeTypeEEnum, CascadeType.REFRESH_LITERAL);
-		addEEnumLiteral(cascadeTypeEEnum, CascadeType.NONE_LITERAL);
+		addEEnumLiteral(cascadeTypeEEnum, CascadeType.ALL);
+		addEEnumLiteral(cascadeTypeEEnum, CascadeType.PERSIST);
+		addEEnumLiteral(cascadeTypeEEnum, CascadeType.MERGE);
+		addEEnumLiteral(cascadeTypeEEnum, CascadeType.REMOVE);
+		addEEnumLiteral(cascadeTypeEEnum, CascadeType.REFRESH);
+		addEEnumLiteral(cascadeTypeEEnum, CascadeType.NONE);
 
 		initEEnum(discriminatorTypeEEnum, DiscriminatorType.class, "DiscriminatorType");
-		addEEnumLiteral(discriminatorTypeEEnum, DiscriminatorType.STRING_LITERAL);
-		addEEnumLiteral(discriminatorTypeEEnum, DiscriminatorType.CHAR_LITERAL);
-		addEEnumLiteral(discriminatorTypeEEnum, DiscriminatorType.INTEGER_LITERAL);
+		addEEnumLiteral(discriminatorTypeEEnum, DiscriminatorType.STRING);
+		addEEnumLiteral(discriminatorTypeEEnum, DiscriminatorType.CHAR);
+		addEEnumLiteral(discriminatorTypeEEnum, DiscriminatorType.INTEGER);
 
 		initEEnum(enumTypeEEnum, EnumType.class, "EnumType");
-		addEEnumLiteral(enumTypeEEnum, EnumType.ORDINAL_LITERAL);
-		addEEnumLiteral(enumTypeEEnum, EnumType.STRING_LITERAL);
+		addEEnumLiteral(enumTypeEEnum, EnumType.ORDINAL);
+		addEEnumLiteral(enumTypeEEnum, EnumType.STRING);
 
 		initEEnum(fetchTypeEEnum, FetchType.class, "FetchType");
-		addEEnumLiteral(fetchTypeEEnum, FetchType.LAZY_LITERAL);
-		addEEnumLiteral(fetchTypeEEnum, FetchType.EAGER_LITERAL);
+		addEEnumLiteral(fetchTypeEEnum, FetchType.LAZY);
+		addEEnumLiteral(fetchTypeEEnum, FetchType.EAGER);
 
 		initEEnum(generationTypeEEnum, GenerationType.class, "GenerationType");
-		addEEnumLiteral(generationTypeEEnum, GenerationType.TABLE_LITERAL);
-		addEEnumLiteral(generationTypeEEnum, GenerationType.SEQUENCE_LITERAL);
-		addEEnumLiteral(generationTypeEEnum, GenerationType.IDENTITY_LITERAL);
-		addEEnumLiteral(generationTypeEEnum, GenerationType.AUTO_LITERAL);
+		addEEnumLiteral(generationTypeEEnum, GenerationType.TABLE);
+		addEEnumLiteral(generationTypeEEnum, GenerationType.SEQUENCE);
+		addEEnumLiteral(generationTypeEEnum, GenerationType.IDENTITY);
+		addEEnumLiteral(generationTypeEEnum, GenerationType.AUTO);
 
 		initEEnum(inheritanceTypeEEnum, InheritanceType.class, "InheritanceType");
-		addEEnumLiteral(inheritanceTypeEEnum, InheritanceType.SINGLE_TABLE_LITERAL);
-		addEEnumLiteral(inheritanceTypeEEnum, InheritanceType.TABLE_PER_CLASS_LITERAL);
-		addEEnumLiteral(inheritanceTypeEEnum, InheritanceType.JOINED_LITERAL);
+		addEEnumLiteral(inheritanceTypeEEnum, InheritanceType.SINGLE_TABLE);
+		addEEnumLiteral(inheritanceTypeEEnum, InheritanceType.TABLE_PER_CLASS);
+		addEEnumLiteral(inheritanceTypeEEnum, InheritanceType.JOINED);
 
 		initEEnum(temporalTypeEEnum, TemporalType.class, "TemporalType");
-		addEEnumLiteral(temporalTypeEEnum, TemporalType.DATE_LITERAL);
-		addEEnumLiteral(temporalTypeEEnum, TemporalType.TIME_LITERAL);
-		addEEnumLiteral(temporalTypeEEnum, TemporalType.TIMESTAMP_LITERAL);
+		addEEnumLiteral(temporalTypeEEnum, TemporalType.DATE);
+		addEEnumLiteral(temporalTypeEEnum, TemporalType.TIME);
+		addEEnumLiteral(temporalTypeEEnum, TemporalType.TIMESTAMP);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1963,8 +1957,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		createTargetAnnotations();
 		// teneo/PeristenceMapping
 		createPeristenceMappingAnnotations();
-		// teneo/internal/Unsupported
-		createUnsupportedAnnotations();
 	}
 
 	/**
@@ -1982,7 +1974,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "Target", "teneo/internal/Target",
 			 "Unsupported", "teneo/internal/Unsupported"
-		   });																																																									
+		   });																																																								
 	}
 
 	/**
@@ -1999,7 +1991,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																								
+		   });																																																							
 	}
 
 	/**
@@ -2086,7 +2078,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "IsNotManyValued"
-		   });					
+		   });				
 		addAnnotation
 		  (mappedSuperclassEClass, 
 		   source, 
@@ -2260,7 +2252,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
-		   });			
+		   });		
 		addAnnotation
 		  (mappedSuperclassEClass, 
 		   source, 
@@ -2358,22 +2350,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																			
-	}
-
-	/**
-	 * Initializes the annotations for <b>teneo/internal/Unsupported</b>. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected void createUnsupportedAnnotations() {
-		String source = "teneo/internal/Unsupported";																																									
-		addAnnotation
-		  (mapKeyEClass, 
-		   source, 
-		   new String[] {
-		   });																		
+		   });																																		
 	}
 
 	/**
@@ -2389,7 +2366,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																										
+		   });																																									
 	}
 
 	/**

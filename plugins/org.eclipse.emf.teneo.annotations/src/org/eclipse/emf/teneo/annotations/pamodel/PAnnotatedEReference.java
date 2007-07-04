@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReference.java,v 1.9 2007/04/17 15:49:42 mtaal Exp $
+ * $Id: PAnnotatedEReference.java,v 1.10 2007/07/04 19:28:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -42,12 +42,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  * @generated
  */
 public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-	
 	/** Returns the eclass to which the reference is pointing */
 	EClass getEReferenceType();
 	
@@ -266,7 +260,7 @@ public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Primary Key Join Columns</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_PrimaryKeyJoinColumns()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<PrimaryKeyJoinColumn> getPrimaryKeyJoinColumns();

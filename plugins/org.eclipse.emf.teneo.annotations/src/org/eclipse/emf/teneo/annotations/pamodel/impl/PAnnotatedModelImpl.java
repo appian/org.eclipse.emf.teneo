@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.15 2007/06/29 07:30:55 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.16 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -61,13 +61,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel {
 
 	private static final Log log = LogFactory.getLog(PAnnotatedModelImpl.class);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright =
-			"Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
 
 	@SuppressWarnings("unchecked")
 	class MapTrackingAdapter extends AdapterImpl {
@@ -130,7 +123,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PAnnotatedEPackage> paEPackages = null;
+	protected EList<PAnnotatedEPackage> paEPackages;
 
 	/**
 	 * Record the association between the EModelElement and the PAnnotatedEModelElement that are contained in this
@@ -350,9 +343,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 */
 	public EList<PAnnotatedEPackage> getPaEPackages() {
 		if (paEPackages == null) {
-			paEPackages =
-					new EObjectContainmentWithInverseEList<PAnnotatedEPackage>(PAnnotatedEPackage.class, this,
-						PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL);
+			paEPackages = new EObjectContainmentWithInverseEList<PAnnotatedEPackage>(PAnnotatedEPackage.class, this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL);
 		}
 		return paEPackages;
 	}
@@ -366,7 +357,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPaEPackages()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPaEPackages()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -379,7 +370,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-				return ((InternalEList<?>) getPaEPackages()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getPaEPackages()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -407,7 +398,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
 				getPaEPackages().clear();
-				getPaEPackages().addAll((Collection<? extends PAnnotatedEPackage>) newValue);
+				getPaEPackages().addAll((Collection<? extends PAnnotatedEPackage>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

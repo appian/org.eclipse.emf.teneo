@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceImpl.java,v 1.11 2007/04/17 15:49:42 mtaal Exp $
+ * $Id: PAnnotatedEReferenceImpl.java,v 1.12 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -54,13 +54,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl implements PAnnotatedEReference {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
-	/**
 	 * The cached value of the '{@link #getAnnotatedEReference() <em>Annotated EReference</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -68,7 +61,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected EReference annotatedEReference = null;
+	protected EReference annotatedEReference;
 
 	/**
 	 * The cached value of the '{@link #getEmbedded() <em>Embedded</em>}' containment reference.
@@ -78,7 +71,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected Embedded embedded = null;
+	protected Embedded embedded;
 
 	/**
 	 * The cached value of the '{@link #getEmbeddedId() <em>Embedded Id</em>}' containment reference.
@@ -88,7 +81,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected EmbeddedId embeddedId = null;
+	protected EmbeddedId embeddedId;
 
 	/**
 	 * The cached value of the '{@link #getManyToMany() <em>Many To Many</em>}' containment reference.
@@ -98,7 +91,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected ManyToMany manyToMany = null;
+	protected ManyToMany manyToMany;
 
 	/**
 	 * The cached value of the '{@link #getManyToOne() <em>Many To One</em>}' containment reference.
@@ -108,7 +101,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected ManyToOne manyToOne = null;
+	protected ManyToOne manyToOne;
 
 	/**
 	 * The cached value of the '{@link #getMapKey() <em>Map Key</em>}' containment reference.
@@ -118,7 +111,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected MapKey mapKey = null;
+	protected MapKey mapKey;
 
 	/**
 	 * The cached value of the '{@link #getOneToOne() <em>One To One</em>}' containment reference.
@@ -128,7 +121,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected OneToOne oneToOne = null;
+	protected OneToOne oneToOne;
 
 	/**
 	 * The cached value of the '{@link #getOrderBy() <em>Order By</em>}' containment reference.
@@ -138,7 +131,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected OrderBy orderBy = null;
+	protected OrderBy orderBy;
 
 	/**
 	 * The cached value of the '{@link #getPrimaryKeyJoinColumns() <em>Primary Key Join Columns</em>}' containment reference list.
@@ -148,7 +141,7 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PrimaryKeyJoinColumn> primaryKeyJoinColumns = null;
+	protected EList<PrimaryKeyJoinColumn> primaryKeyJoinColumns;
 
 	/** The pannotated eclass to which the reference is pointing */
 	private PAnnotatedEClass areferenceType = null;

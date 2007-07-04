@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UniqueConstraint.java,v 1.4 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: UniqueConstraint.java,v 1.5 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -25,12 +25,6 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface UniqueConstraint extends PAnnotation{
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
-	/**
 	 * Returns the value of the '<em><b>Column Names</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
@@ -41,7 +35,7 @@ public interface UniqueConstraint extends PAnnotation{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Column Names</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getUniqueConstraint_ColumnNames()
-	 * @model type="java.lang.String" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<String> getColumnNames();

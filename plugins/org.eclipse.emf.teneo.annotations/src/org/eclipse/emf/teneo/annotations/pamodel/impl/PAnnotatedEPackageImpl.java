@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackageImpl.java,v 1.9 2007/02/08 23:12:35 mtaal Exp $
+ * $Id: PAnnotatedEPackageImpl.java,v 1.10 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -48,13 +48,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  */
 public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implements PAnnotatedEPackage {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
-	/**
 	 * The cached value of the '{@link #getAnnotatedEPackage() <em>Annotated EPackage</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,7 +55,7 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EPackage annotatedEPackage = null;
+	protected EPackage annotatedEPackage;
 
 	/**
 	 * The cached value of the '{@link #getPaEClasses() <em>Pa EClasses</em>}' containment reference list.
@@ -72,7 +65,7 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PAnnotatedEClass> paEClasses = null;
+	protected EList<PAnnotatedEClass> paEClasses;
 
 	/**
 	 * The cached value of the '{@link #getSequenceGenerators() <em>Sequence Generators</em>}' containment reference list.
@@ -82,7 +75,7 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<SequenceGenerator> sequenceGenerators = null;
+	protected EList<SequenceGenerator> sequenceGenerators;
 
 	/**
 	 * The cached value of the '{@link #getTableGenerators() <em>Table Generators</em>}' containment reference list.
@@ -92,7 +85,7 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TableGenerator> tableGenerators = null;
+	protected EList<TableGenerator> tableGenerators;
 
 	/**
 	 * The cached value of the '{@link #getPaEDataTypes() <em>Pa EData Types</em>}' containment reference list.
@@ -102,7 +95,7 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PAnnotatedEDataType> paEDataTypes = null;
+	protected EList<PAnnotatedEDataType> paEDataTypes;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedETypedElement.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: PAnnotatedETypedElement.java,v 1.6 2007/07/04 19:28:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -40,13 +40,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  */
 public interface PAnnotatedETypedElement extends PAnnotatedEModelElement {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
-
-	/**
 	 * Returns the value of the '<em><b>Attribute Overrides</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride}.
 	 * <!-- begin-user-doc -->
@@ -57,7 +50,7 @@ public interface PAnnotatedETypedElement extends PAnnotatedEModelElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attribute Overrides</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedETypedElement_AttributeOverrides()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AttributeOverride> getAttributeOverrides();
@@ -151,7 +144,7 @@ public interface PAnnotatedETypedElement extends PAnnotatedEModelElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Table Generators</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedETypedElement_TableGenerators()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.TableGenerator" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<TableGenerator> getTableGenerators();
@@ -167,7 +160,7 @@ public interface PAnnotatedETypedElement extends PAnnotatedEModelElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Join Columns</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedETypedElement_JoinColumns()
-	 * @model type="org.eclipse.emf.teneo.annotations.pannotation.JoinColumn" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<JoinColumn> getJoinColumns();

@@ -2,15 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadeType.java,v 1.7 2007/02/11 21:54:01 mtaal Exp $
+ * $Id: CascadeType.java,v 1.8 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
-
-import static org.eclipse.emf.teneo.annotations.pannotation.CascadeType.ALL;
-import static org.eclipse.emf.teneo.annotations.pannotation.CascadeType.MERGE;
-import static org.eclipse.emf.teneo.annotations.pannotation.CascadeType.PERSIST;
-import static org.eclipse.emf.teneo.annotations.pannotation.CascadeType.REFRESH;
-import static org.eclipse.emf.teneo.annotations.pannotation.CascadeType.REMOVE;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -19,142 +13,149 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Cascade Type</b></em>', and
- * utility methods for working with them. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the literals of the enumeration '<em><b>Cascade Type</b></em>',
+ * and utility methods for working with them.
+ * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getCascadeType()
  * @model
  * @generated
  */
-public enum CascadeType implements Enumerator
-{
+public enum CascadeType implements Enumerator {
 	/**
 	 * The '<em><b>ALL</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #ALL
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ALL_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ALL_LITERAL(0, "ALL", "ALL"),
+	ALL(0, "ALL", "ALL"),
+
 	/**
 	 * The '<em><b>PERSIST</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #PERSIST
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PERSIST_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PERSIST_LITERAL(1, "PERSIST", "PERSIST"),
+	PERSIST(1, "PERSIST", "PERSIST"),
+
 	/**
 	 * The '<em><b>MERGE</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #MERGE
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MERGE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	MERGE_LITERAL(2, "MERGE", "MERGE"),
+	MERGE(2, "MERGE", "MERGE"),
+
 	/**
 	 * The '<em><b>REMOVE</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #REMOVE
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REMOVE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	REMOVE_LITERAL(3, "REMOVE", "REMOVE"),
+	REMOVE(3, "REMOVE", "REMOVE"),
+
 	/**
 	 * The '<em><b>REFRESH</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #REFRESH
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REFRESH_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	REFRESH_LITERAL(4, "REFRESH", "REFRESH"), /**
+	REFRESH(4, "REFRESH", "REFRESH"),
+
+	/**
 	 * The '<em><b>NONE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NONE
+	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NONE_LITERAL(5, "NONE", "NONE");
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
+	NONE(5, "NONE", "NONE");
 
 	/**
 	 * The '<em><b>ALL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>ALL</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>ALL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ALL_LITERAL
+	 * @see #ALL
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ALL = 0;
+	public static final int ALL_VALUE = 0;
 
 	/**
 	 * The '<em><b>PERSIST</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>PERSIST</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>PERSIST</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PERSIST_LITERAL
+	 * @see #PERSIST
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PERSIST = 1;
+	public static final int PERSIST_VALUE = 1;
 
 	/**
 	 * The '<em><b>MERGE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>MERGE</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>MERGE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #MERGE_LITERAL
+	 * @see #MERGE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MERGE = 2;
+	public static final int MERGE_VALUE = 2;
 
 	/**
 	 * The '<em><b>REMOVE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>REMOVE</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>REMOVE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #REMOVE_LITERAL
+	 * @see #REMOVE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REMOVE = 3;
+	public static final int REMOVE_VALUE = 3;
 
 	/**
 	 * The '<em><b>REFRESH</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>REFRESH</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>REFRESH</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #REFRESH_LITERAL
+	 * @see #REFRESH
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REFRESH = 4;
+	public static final int REFRESH_VALUE = 4;
 
 	/**
 	 * The '<em><b>NONE</b></em>' literal value.
@@ -164,41 +165,41 @@ public enum CascadeType implements Enumerator
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NONE_LITERAL
+	 * @see #NONE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NONE = 5;
+	public static final int NONE_VALUE = 5;
 
 	/**
-	 * An array of all the '<em><b>Cascade Type</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
+	 * An array of all the '<em><b>Cascade Type</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final CascadeType[] VALUES_ARRAY =
 		new CascadeType[] {
-			ALL_LITERAL,
-			PERSIST_LITERAL,
-			MERGE_LITERAL,
-			REMOVE_LITERAL,
-			REFRESH_LITERAL,
-			NONE_LITERAL,
+			ALL,
+			PERSIST,
+			MERGE,
+			REMOVE,
+			REFRESH,
+			NONE,
 		};
 
 	/**
 	 * A public read-only list of all the '<em><b>Cascade Type</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<CascadeType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Cascade Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static CascadeType get(String literal) {
@@ -229,18 +230,18 @@ public enum CascadeType implements Enumerator
 
 	/**
 	 * Returns the '<em><b>Cascade Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static CascadeType get(int value) {
 		switch (value) {
-			case ALL: return ALL_LITERAL;
-			case PERSIST: return PERSIST_LITERAL;
-			case MERGE: return MERGE_LITERAL;
-			case REMOVE: return REMOVE_LITERAL;
-			case REFRESH: return REFRESH_LITERAL;
-			case NONE: return NONE_LITERAL;
+			case ALL_VALUE: return ALL;
+			case PERSIST_VALUE: return PERSIST;
+			case MERGE_VALUE: return MERGE;
+			case REMOVE_VALUE: return REMOVE;
+			case REFRESH_VALUE: return REFRESH;
+			case NONE_VALUE: return NONE;
 		}
 		return null;
 	}
@@ -315,4 +316,5 @@ public enum CascadeType implements Enumerator
 	public String toString() {
 		return literal;
 	}
-}
+	
+} //CascadeType

@@ -2,13 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorType.java,v 1.6 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: DiscriminatorType.java,v 1.7 2007/07/04 19:28:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
-
-import static org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType.CHAR;
-import static org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType.INTEGER;
-import static org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType.STRING;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,100 +13,101 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Discriminator Type</b></em>',
- * and utility methods for working with them. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the literals of the enumeration '<em><b>Discriminator Type</b></em>',
+ * and utility methods for working with them.
+ * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getDiscriminatorType()
  * @model
  * @generated
  */
-public enum DiscriminatorType implements Enumerator
-{
+public enum DiscriminatorType implements Enumerator {
 	/**
 	 * The '<em><b>STRING</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #STRING
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STRING_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	STRING_LITERAL(0, "STRING", "STRING"),
+	STRING(0, "STRING", "STRING"),
+
 	/**
 	 * The '<em><b>CHAR</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #CHAR
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CHAR_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CHAR_LITERAL(1, "CHAR", "CHAR"),
+	CHAR(1, "CHAR", "CHAR"),
+
 	/**
 	 * The '<em><b>INTEGER</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #INTEGER
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #INTEGER_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	INTEGER_LITERAL(2, "INTEGER", "INTEGER");
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
+	INTEGER(2, "INTEGER", "INTEGER");
 
 	/**
 	 * The '<em><b>STRING</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>STRING</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>STRING</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #STRING_LITERAL
+	 * @see #STRING
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STRING = 0;
+	public static final int STRING_VALUE = 0;
 
 	/**
 	 * The '<em><b>CHAR</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>CHAR</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>CHAR</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #CHAR_LITERAL
+	 * @see #CHAR
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CHAR = 1;
+	public static final int CHAR_VALUE = 1;
 
 	/**
 	 * The '<em><b>INTEGER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>INTEGER</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>INTEGER</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #INTEGER_LITERAL
+	 * @see #INTEGER
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int INTEGER = 2;
+	public static final int INTEGER_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Discriminator Type</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final DiscriminatorType[] VALUES_ARRAY =
 		new DiscriminatorType[] {
-			STRING_LITERAL,
-			CHAR_LITERAL,
-			INTEGER_LITERAL,
+			STRING,
+			CHAR,
+			INTEGER,
 		};
 
 	/**
@@ -161,9 +158,9 @@ public enum DiscriminatorType implements Enumerator
 	 */
 	public static DiscriminatorType get(int value) {
 		switch (value) {
-			case STRING: return STRING_LITERAL;
-			case CHAR: return CHAR_LITERAL;
-			case INTEGER: return INTEGER_LITERAL;
+			case STRING_VALUE: return STRING;
+			case CHAR_VALUE: return CHAR;
+			case INTEGER_VALUE: return INTEGER;
 		}
 		return null;
 	}
@@ -238,4 +235,5 @@ public enum DiscriminatorType implements Enumerator
 	public String toString() {
 		return literal;
 	}
-}
+	
+} //DiscriminatorType

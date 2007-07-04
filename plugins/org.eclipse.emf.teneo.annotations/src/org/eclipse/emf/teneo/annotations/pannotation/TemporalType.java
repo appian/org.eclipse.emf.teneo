@@ -2,13 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TemporalType.java,v 1.5 2007/02/08 23:12:33 mtaal Exp $
+ * $Id: TemporalType.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
-
-import static org.eclipse.emf.teneo.annotations.pannotation.TemporalType.DATE;
-import static org.eclipse.emf.teneo.annotations.pannotation.TemporalType.TIME;
-import static org.eclipse.emf.teneo.annotations.pannotation.TemporalType.TIMESTAMP;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,114 +13,115 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Temporal Type</b></em>', and
- * utility methods for working with them. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the literals of the enumeration '<em><b>Temporal Type</b></em>',
+ * and utility methods for working with them.
+ * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getTemporalType()
  * @model
  * @generated
  */
-public enum TemporalType implements Enumerator
-{
+public enum TemporalType implements Enumerator {
 	/**
 	 * The '<em><b>DATE</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #DATE
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DATE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	DATE_LITERAL(0, "DATE", "DATE"),
+	DATE(0, "DATE", "DATE"),
+
 	/**
 	 * The '<em><b>TIME</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #TIME
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TIME_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	TIME_LITERAL(1, "TIME", "TIME"),
+	TIME(1, "TIME", "TIME"),
+
 	/**
 	 * The '<em><b>TIMESTAMP</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #TIMESTAMP
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TIMESTAMP_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	TIMESTAMP_LITERAL(2, "TIMESTAMP", "TIMESTAMP");
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public\nLicense v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Martin Taal\n   Davide Marchignoli\n";
+	TIMESTAMP(2, "TIMESTAMP", "TIMESTAMP");
 
 	/**
 	 * The '<em><b>DATE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>DATE</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>DATE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #DATE_LITERAL
+	 * @see #DATE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DATE = 0;
+	public static final int DATE_VALUE = 0;
 
 	/**
 	 * The '<em><b>TIME</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>TIME</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>TIME</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TIME_LITERAL
+	 * @see #TIME
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TIME = 1;
+	public static final int TIME_VALUE = 1;
 
 	/**
 	 * The '<em><b>TIMESTAMP</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>TIMESTAMP</b></em>' literal object isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of '<em><b>TIMESTAMP</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TIMESTAMP_LITERAL
+	 * @see #TIMESTAMP
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TIMESTAMP = 2;
+	public static final int TIMESTAMP_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Temporal Type</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
+	 * An array of all the '<em><b>Temporal Type</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final TemporalType[] VALUES_ARRAY =
 		new TemporalType[] {
-			DATE_LITERAL,
-			TIME_LITERAL,
-			TIMESTAMP_LITERAL,
+			DATE,
+			TIME,
+			TIMESTAMP,
 		};
 
 	/**
 	 * A public read-only list of all the '<em><b>Temporal Type</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<TemporalType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Temporal Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static TemporalType get(String literal) {
@@ -155,15 +152,15 @@ public enum TemporalType implements Enumerator
 
 	/**
 	 * Returns the '<em><b>Temporal Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static TemporalType get(int value) {
 		switch (value) {
-			case DATE: return DATE_LITERAL;
-			case TIME: return TIME_LITERAL;
-			case TIMESTAMP: return TIMESTAMP_LITERAL;
+			case DATE_VALUE: return DATE;
+			case TIME_VALUE: return TIME;
+			case TIMESTAMP_VALUE: return TIMESTAMP;
 		}
 		return null;
 	}
@@ -238,4 +235,5 @@ public enum TemporalType implements Enumerator
 	public String toString() {
 		return literal;
 	}
-}
+	
+} //TemporalType
