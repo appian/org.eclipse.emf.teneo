@@ -43,6 +43,7 @@ import org.eclipse.emf.teneo.jpox.test.Utils;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.AbstractTestStore;
 import org.eclipse.emf.teneo.test.stores.TestDatabaseAdapter;
+import org.eclipse.emf.teneo.util.EcoreDataTypes;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.jpox.JDOClassLoaderResolver;
 import org.jpox.PMFConfiguration;
@@ -54,7 +55,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -93,8 +94,8 @@ public class JPOXTestStore extends AbstractTestStore {
 	/**
 	 * Constructor for emf test cases
 	 */
-	public JPOXTestStore(TestDatabaseAdapter adapter, EPackage[] epackages, String jdoLocation,
-			Properties props, InheritanceType inheritanceType) {
+	public JPOXTestStore(TestDatabaseAdapter adapter, EPackage[] epackages, String jdoLocation, Properties props,
+			InheritanceType inheritanceType) {
 		super(adapter);
 		this.epackages = epackages;
 		this.props = props;
@@ -111,19 +112,16 @@ public class JPOXTestStore extends AbstractTestStore {
 		Properties properties = new Properties();
 		properties.putAll(props);
 
-		properties.setProperty(PMFConfiguration.JDO_DATASTORE_DRIVERNAME_PROPERTY, adapter
-			.getDbDriver());
+		properties.setProperty(PMFConfiguration.JDO_DATASTORE_DRIVERNAME_PROPERTY, adapter.getDbDriver());
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_URL_PROPERTY, adapter.getDbUrl());
-		properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, adapter
-			.getDbUser());
-		properties
-			.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, adapter.getDbPwd());
+		properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, adapter.getDbUser());
+		properties.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, adapter.getDbPwd());
 		properties.setProperty(PMFConfiguration.IDENTIFIER_CASE_PROPERTY, "LowerCase");
 
 		// properties.setProperty(PMFConfiguration.JDO_MAPPING_CATALOG_PROPERTY,
 		// adapter.getDbName());
 
-		if (inheritanceType.getValue() == InheritanceType.JOINED) {
+		if (inheritanceType == InheritanceType.JOINED) {
 			properties.setProperty(PMFConfiguration.DEFAULT_INHERITANCE_STRATEGY_PROPERTY, "JPOX");
 		} else {
 			properties.setProperty(PMFConfiguration.DEFAULT_INHERITANCE_STRATEGY_PROPERTY, "JDO2");
@@ -133,26 +131,21 @@ public class JPOXTestStore extends AbstractTestStore {
 			log.debug("Copying " + jdoLocation + " to classpath");
 			EPackage epack = epackages[0];
 			final File sourceFile = new File(jdoLocation);
-			final File pluginsDir =
-					sourceFile.getParentFile().getParentFile().getParentFile().getParentFile();
+			final File pluginsDir = sourceFile.getParentFile().getParentFile().getParentFile().getParentFile();
 			final File pluginDir = Utils.getPluginDir(pluginsDir, "org.eclipse.emf.teneo.samples");
 			String packagePath =
-					"bin" + File.separator
-							+ epack.getClass().getName().replace('.', File.separatorChar)
-							+ ".class";
+					"bin" + File.separator + epack.getClass().getName().replace('.', File.separatorChar) + ".class";
 			File packageFile = new File(pluginDir, packagePath);
 			File packageDirectory = packageFile.getParentFile();
 			if (!packageDirectory.exists()) {
-				packagePath =
-						epack.getClass().getName().replace('.', File.separatorChar) + ".class";
+				packagePath = epack.getClass().getName().replace('.', File.separatorChar) + ".class";
 				packageFile = new File(pluginDir, packagePath);
 				packageDirectory = packageFile.getParentFile();
 			}
 
 			final File dest;
-			if (properties.getProperty(AbstractTestStore.STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER) != null
-					&& properties.getProperty(
-						AbstractTestStore.STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER)
+			if (properties.getProperty(AbstractTestStore.STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER) != null &&
+					properties.getProperty(AbstractTestStore.STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER)
 						.compareToIgnoreCase("true") == 0) {
 				dest = new File(packageDirectory.getParentFile().getParentFile(), "package.jdo");
 			} else {
@@ -164,8 +157,7 @@ public class JPOXTestStore extends AbstractTestStore {
 			}
 			final File destination = new File(dest.getAbsolutePath());
 			if (destination.exists()) {
-				log.warn("Overwriting existing package.jdo file in location "
-						+ destination.getAbsolutePath());
+				log.warn("Overwriting existing package.jdo file in location " + destination.getAbsolutePath());
 				destination.delete();
 			}
 			destination.createNewFile();
@@ -235,7 +227,9 @@ public class JPOXTestStore extends AbstractTestStore {
 
 	/** Rollback transaction */
 	public void rollbackTransaction() {
-		if (tx.isActive()) tx.rollback();
+		if (tx.isActive()) {
+			tx.rollback();
+		}
 		refresh();
 	}
 
@@ -262,8 +256,7 @@ public class JPOXTestStore extends AbstractTestStore {
 	/** Query for a class using a field and value pair */
 	public List query(Class clazz, String field, String value, int checkCount) {
 		final Class interf = replaceClass(clazz);
-		return query("SELECT FROM " + interf.getName() + " WHERE " + field + "==\"" + value + "\"",
-			checkCount);
+		return query("SELECT FROM " + interf.getName() + " WHERE " + field + "==\"" + value + "\"", checkCount);
 	}
 
 	/** Queries for an object */
@@ -279,9 +272,8 @@ public class JPOXTestStore extends AbstractTestStore {
 		final List result = (List) qry.execute();
 
 		if (checkCount > 0) {
-			TestCase.assertTrue("Expected " + checkCount
-					+ " object(s) for this query but there are " + result.size()
-					+ " object(s) for the query " + qryStr, result.size() == checkCount);
+			TestCase.assertTrue("Expected " + checkCount + " object(s) for this query but there are " + result.size() +
+					" object(s) for the query " + qryStr, result.size() == checkCount);
 		}
 		return result;
 	}
@@ -295,12 +287,14 @@ public class JPOXTestStore extends AbstractTestStore {
 				pm.deletePersistent(l.get(i));
 			}
 			commitTransaction();
-			TestCase.assertTrue("The objects of class: " + clazz.getName()
-					+ " was deleted while this should not be possible", shouldSucceed);
+			TestCase.assertTrue("The objects of class: " + clazz.getName() +
+					" was deleted while this should not be possible", shouldSucceed);
 		} catch (Exception e) {
-			TestCase.assertTrue("The objects of class: " + clazz.getName()
-					+ " was not deleted while this should be possible", !shouldSucceed);
-			if (tx.isActive()) rollbackTransaction();
+			TestCase.assertTrue("The objects of class: " + clazz.getName() +
+					" was not deleted while this should be possible", !shouldSucceed);
+			if (tx.isActive()) {
+				rollbackTransaction();
+			}
 		}
 	}
 
@@ -308,9 +302,8 @@ public class JPOXTestStore extends AbstractTestStore {
 	@Override
 	public Object getObject(Class clazz) {
 		List l = getObjects(clazz); // replace class is called in getObjects
-		TestCase.assertTrue("There are " + l.size()
-				+ " object(s) of this class in the datastore, 1 was expected, class: "
-				+ clazz.getName(), l.size() == 1);
+		TestCase.assertTrue("There are " + l.size() +
+				" object(s) of this class in the datastore, 1 was expected, class: " + clazz.getName(), l.size() == 1);
 		return l.get(0);
 	}
 
@@ -332,9 +325,8 @@ public class JPOXTestStore extends AbstractTestStore {
 		Query q = pm.newQuery(e);
 
 		Collection c = (Collection) q.execute();
-		TestCase.assertTrue("Expected " + count + " object(s) but there are " + c.size()
-				+ " object(s) of this class in the datastore: " + clazz.getName(),
-			c.size() == count);
+		TestCase.assertTrue("Expected " + count + " object(s) but there are " + c.size() +
+				" object(s) of this class in the datastore: " + clazz.getName(), c.size() == count);
 		q.closeAll();
 	}
 
@@ -399,8 +391,7 @@ public class JPOXTestStore extends AbstractTestStore {
 
 	/** Base method to get a resource belonging to the pmf of this test case */
 	public Resource getResource(String extraParam) {
-		String uriStr =
-				"jpox://?" + JPOXResource.DS_NAME_PARAM + "=" + getDatabaseAdapter().getDbName();
+		String uriStr = "jpox://?" + JPOXResource.DS_NAME_PARAM + "=" + getDatabaseAdapter().getDbName();
 
 		if (extraParam != null) {
 			uriStr += "&" + extraParam;
@@ -414,8 +405,12 @@ public class JPOXTestStore extends AbstractTestStore {
 
 	/** Replaces a passed EMF Interface by its concrete class */
 	private Class replaceClass(Class interfaze) {
-		if (!interfaze.isInterface()) return interfaze;
-		if (!EObject.class.isAssignableFrom(interfaze)) return interfaze;
+		if (!interfaze.isInterface()) {
+			return interfaze;
+		}
+		if (!EObject.class.isAssignableFrom(interfaze)) {
+			return interfaze;
+		}
 
 		return JpoxHelper.INSTANCE.getInstanceClass(interfaze);
 	}
@@ -443,12 +438,12 @@ public class JPOXTestStore extends AbstractTestStore {
 	/** Check inheritance strategy */
 	public boolean isInheritanceStrategy(Class<?> clazz, InheritanceType strategy) {
 		final AbstractClassMetaData cmd =
-				((PersistenceManagerFactoryImpl) pmf).getPMFContext().getMetaDataManager()
-					.getMetaDataForClass(clazz, clr);
-		if (strategy.equals(InheritanceType.SINGLE_TABLE_LITERAL)) {
+				((PersistenceManagerFactoryImpl) pmf).getPMFContext().getMetaDataManager().getMetaDataForClass(clazz,
+					clr);
+		if (strategy.equals(InheritanceType.SINGLE_TABLE)) {
 			return cmd.getInheritanceMetaData().getStrategyValue() == InheritanceStrategy.SUPERCLASS_TABLE;
 		}
-		if (strategy.equals(InheritanceType.JOINED_LITERAL)) {
+		if (strategy.equals(InheritanceType.JOINED)) {
 			return cmd.getInheritanceMetaData().getStrategyValue() == InheritanceStrategy.NEW_TABLE;
 		}
 		throw new StoreTestException("Strategy: " + strategy.toString() + " not supported ");
@@ -481,6 +476,6 @@ public class JPOXTestStore extends AbstractTestStore {
 
 	/** Set the xmlcalendar date */
 	public Object getDate(Date date) {
-		return date;
+		return EcoreDataTypes.INSTANCE.getXMLGregorianCalendar(date);
 	}
 }
