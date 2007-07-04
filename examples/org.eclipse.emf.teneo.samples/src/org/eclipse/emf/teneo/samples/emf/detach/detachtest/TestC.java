@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestC.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: TestC.java,v 1.3 2007/07/04 19:29:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -40,7 +41,7 @@ public interface TestC extends EObject {
 	 * @return the value of the '<em>Code</em>' attribute.
 	 * @see #setCode(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.DetachtestPackage#getTestC_Code()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='code'"
 	 * @generated
 	 */
@@ -65,13 +66,13 @@ public interface TestC extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>My Date</em>' attribute.
-	 * @see #setMyDate(Object)
+	 * @see #setMyDate(XMLGregorianCalendar)
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.DetachtestPackage#getTestC_MyDate()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Date" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Date" required="true"
 	 *        extendedMetaData="kind='element' name='myDate'"
 	 * @generated
 	 */
-	Object getMyDate();
+	XMLGregorianCalendar getMyDate();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestC#getMyDate <em>My Date</em>}' attribute.
@@ -81,7 +82,7 @@ public interface TestC extends EObject {
 	 * @see #getMyDate()
 	 * @generated
 	 */
-	void setMyDate(Object value);
+	void setMyDate(XMLGregorianCalendar value);
 
 	/**
 	 * Returns the value of the '<em><b>Test B</b></em>' containment reference list.
@@ -94,7 +95,7 @@ public interface TestC extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Test B</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.DetachtestPackage#getTestC_TestB()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestB" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='testB'"
 	 * @generated
 	 */

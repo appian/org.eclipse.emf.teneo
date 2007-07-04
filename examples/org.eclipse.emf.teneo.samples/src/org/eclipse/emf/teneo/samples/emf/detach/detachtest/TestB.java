@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestB.java,v 1.1 2006/07/11 16:57:02 mtaal Exp $
+ * $Id: TestB.java,v 1.2 2007/07/04 19:29:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest;
 
@@ -36,7 +36,7 @@ public interface TestB extends EObject {
 	 * @return the value of the '<em>Code</em>' attribute.
 	 * @see #setCode(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.DetachtestPackage#getTestB_Code()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='code'"
 	 * @generated
 	 */

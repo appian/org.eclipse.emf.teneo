@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestAImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
+ * $Id: TestAImpl.java,v 1.3 2007/07/04 19:29:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl;
 
@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -56,14 +57,14 @@ public class TestAImpl extends EObjectImpl implements TestA {
 	protected String code = CODE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTestB() <em>Test B</em>}' containment reference.
+	 * The cached value of the '{@link #getTestB() <em>Test B</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTestB()
 	 * @generated
 	 * @ordered
 	 */
-	protected TestB testB = null;
+	protected EObject testB;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -110,7 +111,7 @@ public class TestAImpl extends EObjectImpl implements TestA {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TestB getTestB() {
+	public EObject getTestB() {
 		return testB;
 	}
 
@@ -119,47 +120,11 @@ public class TestAImpl extends EObjectImpl implements TestA {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTestB(TestB newTestB, NotificationChain msgs) {
-		TestB oldTestB = testB;
+	public void setTestB(EObject newTestB) {
+		EObject oldTestB = testB;
 		testB = newTestB;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DetachtestPackage.TEST_A__TEST_B, oldTestB, newTestB);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTestB(TestB newTestB) {
-		if (newTestB != testB) {
-			NotificationChain msgs = null;
-			if (testB != null)
-				msgs = ((InternalEObject)testB).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DetachtestPackage.TEST_A__TEST_B, null, msgs);
-			if (newTestB != null)
-				msgs = ((InternalEObject)newTestB).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DetachtestPackage.TEST_A__TEST_B, null, msgs);
-			msgs = basicSetTestB(newTestB, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DetachtestPackage.TEST_A__TEST_B, newTestB, newTestB));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case DetachtestPackage.TEST_A__TEST_B:
-				return basicSetTestB(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DetachtestPackage.TEST_A__TEST_B, oldTestB, testB));
 	}
 
 	/**
@@ -190,7 +155,7 @@ public class TestAImpl extends EObjectImpl implements TestA {
 				setCode((String)newValue);
 				return;
 			case DetachtestPackage.TEST_A__TEST_B:
-				setTestB((TestB)newValue);
+				setTestB((EObject)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -208,7 +173,7 @@ public class TestAImpl extends EObjectImpl implements TestA {
 				setCode(CODE_EDEFAULT);
 				return;
 			case DetachtestPackage.TEST_A__TEST_B:
-				setTestB((TestB)null);
+				setTestB((EObject)null);
 				return;
 		}
 		super.eUnset(featureID);

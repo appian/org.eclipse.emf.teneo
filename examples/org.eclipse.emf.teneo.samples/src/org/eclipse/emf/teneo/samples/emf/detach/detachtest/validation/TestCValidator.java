@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestCValidator.java,v 1.1 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: TestCValidator.java,v 1.2 2007/07/04 19:29:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.validation;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestB;
@@ -20,6 +21,8 @@ public interface TestCValidator {
 	boolean validate();
 
 	boolean validateCode(String value);
+	boolean validateMyDate(XMLGregorianCalendar value);
+
 	boolean validateMyDate(Object value);
 	boolean validateTestB(EList<TestB> value);
 }

@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestAValidator.java,v 1.1 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: TestAValidator.java,v 1.2 2007/07/04 19:29:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.validation;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestB;
 
 /**
@@ -18,5 +19,7 @@ public interface TestAValidator {
 	boolean validate();
 
 	boolean validateCode(String value);
+	boolean validateTestB(EObject value);
+
 	boolean validateTestB(TestB value);
 }

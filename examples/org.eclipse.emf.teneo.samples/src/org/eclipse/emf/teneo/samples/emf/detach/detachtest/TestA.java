@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestA.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: TestA.java,v 1.3 2007/07/04 19:29:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest;
 
@@ -37,7 +37,7 @@ public interface TestA extends EObject {
 	 * @return the value of the '<em>Code</em>' attribute.
 	 * @see #setCode(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.DetachtestPackage#getTestA_Code()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='code'"
 	 * @generated
 	 */
@@ -54,30 +54,30 @@ public interface TestA extends EObject {
 	void setCode(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Test B</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Test B</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Test B</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Test B</em>' containment reference.
-	 * @see #setTestB(TestB)
+	 * @return the value of the '<em>Test B</em>' reference.
+	 * @see #setTestB(EObject)
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.DetachtestPackage#getTestA_TestB()
-	 * @model containment="true" required="true"
+	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='element' name='testB'"
 	 * @generated
 	 */
-	TestB getTestB();
+	EObject getTestB();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestA#getTestB <em>Test B</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestA#getTestB <em>Test B</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Test B</em>' containment reference.
+	 * @param value the new value of the '<em>Test B</em>' reference.
 	 * @see #getTestB()
 	 * @generated
 	 */
-	void setTestB(TestB value);
+	void setTestB(EObject value);
 
 } // TestA

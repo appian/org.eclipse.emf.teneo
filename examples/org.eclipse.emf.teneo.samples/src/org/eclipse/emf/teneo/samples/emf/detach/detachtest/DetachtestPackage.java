@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DetachtestPackage.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: DetachtestPackage.java,v 1.3 2007/07/04 19:29:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest;
 
@@ -79,7 +79,7 @@ public interface DetachtestPackage extends EPackage {
 	int TEST_A__CODE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Test B</b></em>' containment reference.
+	 * The feature id for the '<em><b>Test B</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -193,10 +193,10 @@ public interface DetachtestPackage extends EPackage {
 	EAttribute getTestA_Code();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestA#getTestB <em>Test B</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestA#getTestB <em>Test B</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Test B</em>'.
+	 * @return the meta object for the reference '<em>Test B</em>'.
 	 * @see org.eclipse.emf.teneo.samples.emf.detach.detachtest.TestA#getTestB()
 	 * @see #getTestA()
 	 * @generated
@@ -308,7 +308,7 @@ public interface DetachtestPackage extends EPackage {
 		EAttribute TEST_A__CODE = eINSTANCE.getTestA_Code();
 
 		/**
-		 * The meta object literal for the '<em><b>Test B</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Test B</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

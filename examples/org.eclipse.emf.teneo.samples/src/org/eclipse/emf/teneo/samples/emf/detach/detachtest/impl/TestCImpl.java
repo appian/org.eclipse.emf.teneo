@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestCImpl.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
+ * $Id: TestCImpl.java,v 1.3 2007/07/04 19:29:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl;
 
 import java.util.Collection;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -71,7 +72,7 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Object MY_DATE_EDEFAULT = null;
+	protected static final XMLGregorianCalendar MY_DATE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMyDate() <em>My Date</em>}' attribute.
@@ -81,7 +82,7 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * @generated
 	 * @ordered
 	 */
-	protected Object myDate = MY_DATE_EDEFAULT;
+	protected XMLGregorianCalendar myDate = MY_DATE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getTestB() <em>Test B</em>}' containment reference list.
@@ -91,7 +92,7 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TestB> testB = null;
+	protected EList<TestB> testB;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,7 +139,7 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getMyDate() {
+	public XMLGregorianCalendar getMyDate() {
 		return myDate;
 	}
 
@@ -147,8 +148,8 @@ public class TestCImpl extends EObjectImpl implements TestC {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMyDate(Object newMyDate) {
-		Object oldMyDate = myDate;
+	public void setMyDate(XMLGregorianCalendar newMyDate) {
+		XMLGregorianCalendar oldMyDate = myDate;
 		myDate = newMyDate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DetachtestPackage.TEST_C__MY_DATE, oldMyDate, myDate));
@@ -211,7 +212,7 @@ public class TestCImpl extends EObjectImpl implements TestC {
 				setCode((String)newValue);
 				return;
 			case DetachtestPackage.TEST_C__MY_DATE:
-				setMyDate(newValue);
+				setMyDate((XMLGregorianCalendar)newValue);
 				return;
 			case DetachtestPackage.TEST_C__TEST_B:
 				getTestB().clear();
