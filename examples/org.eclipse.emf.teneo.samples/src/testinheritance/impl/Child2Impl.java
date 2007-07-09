@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Child2Impl.java,v 1.2 2007/03/29 22:13:50 mtaal Exp $
+ * $Id: Child2Impl.java,v 1.3 2007/07/09 12:55:19 mtaal Exp $
  */
 package testinheritance.impl;
 
@@ -84,7 +84,7 @@ public class Child2Impl extends ParentZeroImpl implements Child2 {
 	 * @generated
 	 * @ordered
 	 */
-	protected SomeReference someReference = null;
+	protected SomeReference someReference;
 
 	/**
 	 * The default value of the '{@link #getAge() <em>Age</em>}' attribute.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryFactoryImpl.java,v 1.8 2007/01/02 17:53:28 mtaal Exp $
+ * $Id: LibraryFactoryImpl.java,v 1.9 2007/07/09 12:55:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -63,6 +63,7 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case LibraryPackage.BOOK: return (EObject)createBook();
@@ -78,6 +79,7 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case LibraryPackage.BOOK_CATEGORY:
@@ -94,6 +96,7 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case LibraryPackage.BOOK_CATEGORY:
@@ -161,7 +164,7 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 * @generated
 	 */
 	public BookCategory createBookCategoryObjectFromString(EDataType eDataType, String initialValue) {
-		return (BookCategory)createBookCategoryFromString(LibraryPackage.Literals.BOOK_CATEGORY, initialValue);
+		return createBookCategoryFromString(LibraryPackage.Literals.BOOK_CATEGORY, initialValue);
 	}
 
 	/**
@@ -188,6 +191,7 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static LibraryPackage getPackage() {
 		return LibraryPackage.eINSTANCE;
 	}

@@ -2,13 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookValidator.java,v 1.1 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: BookValidator.java,v 1.2 2007/07/09 12:55:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.validation;
 
-import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
+import java.util.Date;
 import java.util.Map;
+
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
 
 /**
  * A sample validator interface for {@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book}.
@@ -20,13 +23,20 @@ public interface BookValidator {
 	boolean validate();
 
 	boolean validateTitle(String value);
+
 	boolean validateWriters(EMap<String, Writer> value);
 
 	boolean validateKeyWords(EMap<String, String> value);
 
 	boolean validateCityByWriter(EMap<Writer, String> value);
 
+	boolean validateCategoryByDate(EMap<Date, Category> value);
+
+	boolean validateNameByDate(EMap<Date, String> value);
+
 	boolean validateWriters(Map value);
+
 	boolean validateKeyWords(Map value);
+
 	boolean validateCityByWriter(Map value);
 }

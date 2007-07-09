@@ -2,26 +2,24 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: BookImpl.java,v 1.3 2007/07/09 12:55:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl;
 
+import java.util.Date;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
 
@@ -36,6 +34,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.BookImpl#getWriters <em>Writers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.BookImpl#getKeyWords <em>Key Words</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.BookImpl#getCityByWriter <em>City By Writer</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.BookImpl#getCategoryByDate <em>Category By Date</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,7 +69,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Writer> writers = null;
+	protected EMap<String, Writer> writers;
 
 	/**
 	 * The cached value of the '{@link #getKeyWords() <em>Key Words</em>}' map.
@@ -80,7 +79,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, String> keyWords = null;
+	protected EMap<String, String> keyWords;
 
 	/**
 	 * The cached value of the '{@link #getCityByWriter() <em>City By Writer</em>}' map.
@@ -90,7 +89,17 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<Writer, String> cityByWriter = null;
+	protected EMap<Writer, String> cityByWriter;
+
+	/**
+	 * The cached value of the '{@link #getCategoryByDate() <em>Category By Date</em>}' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCategoryByDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected EMap<Date, Category> categoryByDate;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,6 +182,18 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EMap<Date, Category> getCategoryByDate() {
+		if (categoryByDate == null) {
+			categoryByDate = new EcoreEMap<Date,Category>(EmapPackage.Literals.DATE_TO_CATEGORY_MAP_ENTRY, DateToCategoryMapEntryImpl.class, this, EmapPackage.BOOK__CATEGORY_BY_DATE);
+		}
+		return categoryByDate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -182,6 +203,8 @@ public class BookImpl extends EObjectImpl implements Book {
 				return ((InternalEList<?>)getKeyWords()).basicRemove(otherEnd, msgs);
 			case EmapPackage.BOOK__CITY_BY_WRITER:
 				return ((InternalEList<?>)getCityByWriter()).basicRemove(otherEnd, msgs);
+			case EmapPackage.BOOK__CATEGORY_BY_DATE:
+				return ((InternalEList<?>)getCategoryByDate()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -205,6 +228,9 @@ public class BookImpl extends EObjectImpl implements Book {
 			case EmapPackage.BOOK__CITY_BY_WRITER:
 				if (coreType) return getCityByWriter();
 				else return getCityByWriter().map();
+			case EmapPackage.BOOK__CATEGORY_BY_DATE:
+				if (coreType) return getCategoryByDate();
+				else return getCategoryByDate().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -228,6 +254,9 @@ public class BookImpl extends EObjectImpl implements Book {
 				return;
 			case EmapPackage.BOOK__CITY_BY_WRITER:
 				((EStructuralFeature.Setting)getCityByWriter()).set(newValue);
+				return;
+			case EmapPackage.BOOK__CATEGORY_BY_DATE:
+				((EStructuralFeature.Setting)getCategoryByDate()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -253,6 +282,9 @@ public class BookImpl extends EObjectImpl implements Book {
 			case EmapPackage.BOOK__CITY_BY_WRITER:
 				getCityByWriter().clear();
 				return;
+			case EmapPackage.BOOK__CATEGORY_BY_DATE:
+				getCategoryByDate().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -273,6 +305,8 @@ public class BookImpl extends EObjectImpl implements Book {
 				return keyWords != null && !keyWords.isEmpty();
 			case EmapPackage.BOOK__CITY_BY_WRITER:
 				return cityByWriter != null && !cityByWriter.isEmpty();
+			case EmapPackage.BOOK__CATEGORY_BY_DATE:
+				return categoryByDate != null && !categoryByDate.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

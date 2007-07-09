@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.3 2006/08/25 23:04:14 mtaal Exp $
+ * $Id: BookImpl.java,v 1.4 2007/07/09 12:55:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -82,7 +82,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean pagesESet = false;
+	protected boolean pagesESet;
 
 	/**
 	 * The default value of the '{@link #getCategory() <em>Category</em>}' attribute.
@@ -111,7 +111,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean categoryESet = false;
+	protected boolean categoryESet;
 
 	/**
 	 * The cached value of the '{@link #getAuthor() <em>Author</em>}' reference.
@@ -121,7 +121,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected Writer author = null;
+	protected Writer author;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,6 +137,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return LibraryPackage.Literals.BOOK;
 	}
@@ -319,6 +320,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LibraryPackage.BOOK__AUTHOR:
@@ -334,6 +336,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LibraryPackage.BOOK__AUTHOR:
@@ -347,6 +350,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LibraryPackage.BOOK__TITLE:
@@ -367,6 +371,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LibraryPackage.BOOK__TITLE:
@@ -390,6 +395,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case LibraryPackage.BOOK__TITLE:
@@ -413,6 +419,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case LibraryPackage.BOOK__TITLE:
@@ -432,6 +439,7 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

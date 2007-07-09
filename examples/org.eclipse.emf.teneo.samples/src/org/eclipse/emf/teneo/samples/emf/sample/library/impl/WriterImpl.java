@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterImpl.java,v 1.4 2006/11/23 06:12:10 mtaal Exp $
+ * $Id: WriterImpl.java,v 1.5 2007/07/09 12:55:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -64,7 +64,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList books = null;
+	protected EList<Book> books;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,6 +80,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return LibraryPackage.Literals.WRITER;
 	}
@@ -110,9 +111,9 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBooks() {
+	public EList<Book> getBooks() {
 		if (books == null) {
-			books = new EObjectWithInverseResolvingEList(Book.class, this, LibraryPackage.WRITER__BOOKS, LibraryPackage.BOOK__AUTHOR);
+			books = new EObjectWithInverseResolvingEList<Book>(Book.class, this, LibraryPackage.WRITER__BOOKS, LibraryPackage.BOOK__AUTHOR);
 		}
 		return books;
 	}
@@ -122,10 +123,12 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LibraryPackage.WRITER__BOOKS:
-				return ((InternalEList)getBooks()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getBooks()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -135,10 +138,11 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LibraryPackage.WRITER__BOOKS:
-				return ((InternalEList)getBooks()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getBooks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -148,6 +152,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LibraryPackage.WRITER__NAME:
@@ -163,6 +168,8 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LibraryPackage.WRITER__NAME:
@@ -170,7 +177,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 				return;
 			case LibraryPackage.WRITER__BOOKS:
 				getBooks().clear();
-				getBooks().addAll((Collection)newValue);
+				getBooks().addAll((Collection<? extends Book>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -181,6 +188,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case LibraryPackage.WRITER__NAME:
@@ -198,6 +206,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case LibraryPackage.WRITER__NAME:
@@ -213,6 +222,7 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

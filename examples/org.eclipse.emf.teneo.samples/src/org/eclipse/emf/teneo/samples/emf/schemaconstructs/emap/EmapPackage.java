@@ -2,12 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmapPackage.java,v 1.1 2006/09/28 20:06:04 mtaal Exp $
+ * $Id: EmapPackage.java,v 1.2 2007/07/09 12:55:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -106,13 +108,59 @@ public interface EmapPackage extends EPackage {
 	int BOOK__CITY_BY_WRITER = 3;
 
 	/**
+	 * The feature id for the '<em><b>Category By Date</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOK__CATEGORY_BY_DATE = 4;
+
+	/**
 	 * The number of structural features of the '<em>Book</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK_FEATURE_COUNT = 4;
+	int BOOK_FEATURE_COUNT = 5;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.DateToCategoryMapEntryImpl <em>Date To Category Map Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.DateToCategoryMapEntryImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getDateToCategoryMapEntry()
+	 * @generated
+	 */
+	int DATE_TO_CATEGORY_MAP_ENTRY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_TO_CATEGORY_MAP_ENTRY__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_TO_CATEGORY_MAP_ENTRY__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Date To Category Map Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_TO_CATEGORY_MAP_ENTRY_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.StringToStringMapEntryImpl <em>String To String Map Entry</em>}' class.
@@ -122,7 +170,7 @@ public interface EmapPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getStringToStringMapEntry()
 	 * @generated
 	 */
-	int STRING_TO_STRING_MAP_ENTRY = 1;
+	int STRING_TO_STRING_MAP_ENTRY = 2;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -159,7 +207,7 @@ public interface EmapPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getStringToWriterMapEntry()
 	 * @generated
 	 */
-	int STRING_TO_WRITER_MAP_ENTRY = 2;
+	int STRING_TO_WRITER_MAP_ENTRY = 3;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -196,7 +244,7 @@ public interface EmapPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getWriter()
 	 * @generated
 	 */
-	int WRITER = 3;
+	int WRITER = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -225,7 +273,7 @@ public interface EmapPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getWriterToStringMapEntry()
 	 * @generated
 	 */
-	int WRITER_TO_STRING_MAP_ENTRY = 4;
+	int WRITER_TO_STRING_MAP_ENTRY = 5;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' reference.
@@ -254,6 +302,36 @@ public interface EmapPackage extends EPackage {
 	 */
 	int WRITER_TO_STRING_MAP_ENTRY_FEATURE_COUNT = 2;
 
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category <em>Category</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getCategory()
+	 * @generated
+	 */
+	int CATEGORY = 6;
+
+	/**
+	 * The meta object id for the '<em>Category Object</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getCategoryObject()
+	 * @generated
+	 */
+	int CATEGORY_OBJECT = 7;
+
+	/**
+	 * The meta object id for the '<em>Date</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.Date
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getDate()
+	 * @generated
+	 */
+	int DATE = 8;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book <em>Book</em>}'.
@@ -310,14 +388,62 @@ public interface EmapPackage extends EPackage {
 	EReference getBook_CityByWriter();
 
 	/**
+	 * Returns the meta object for the map '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book#getCategoryByDate <em>Category By Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Category By Date</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book#getCategoryByDate()
+	 * @see #getBook()
+	 * @generated
+	 */
+	EReference getBook_CategoryByDate();
+
+	/**
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Date To Category Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Date To Category Map Entry</em>'.
+	 * @see java.util.Map.Entry
+	 * @model keyDataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Date"
+	 *        keyExtendedMetaData="kind='attribute' name='key'"
+	 *        valueDefault="Complex" valueUnsettable="true" valueDataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category"
+	 *        valueExtendedMetaData="kind='attribute' name='value'"
+	 *        extendedMetaData="name='dateToCategoryMapEntry' kind='empty'"
+	 * @generated
+	 */
+	EClass getDateToCategoryMapEntry();
+
+	/**
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getDateToCategoryMapEntry()
+	 * @generated
+	 */
+	EAttribute getDateToCategoryMapEntry_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getDateToCategoryMapEntry()
+	 * @generated
+	 */
+	EAttribute getDateToCategoryMapEntry_Value();
+
+	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>String To String Map Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>String To String Map Entry</em>'.
 	 * @see java.util.Map.Entry
-	 * @model keyType="java.lang.String" keyUnique="false" keyDataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model keyDataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        keyExtendedMetaData="kind='attribute' name='key'"
-	 *        valueType="java.lang.String" valueUnique="false" valueDataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        valueDataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        valueExtendedMetaData="kind='attribute' name='value'"
 	 *        extendedMetaData="name='StringToStringMapEntry' kind='empty'"
 	 * @generated
@@ -352,7 +478,7 @@ public interface EmapPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>String To Writer Map Entry</em>'.
 	 * @see java.util.Map.Entry
-	 * @model keyType="java.lang.String" keyUnique="false" keyDataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model keyDataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        keyExtendedMetaData="kind='attribute' name='key'"
 	 *        valueType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer" valueResolveProxies="false"
 	 *        valueExtendedMetaData="kind='attribute' name='value'"
@@ -412,7 +538,7 @@ public interface EmapPackage extends EPackage {
 	 * @see java.util.Map.Entry
 	 * @model keyType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer" keyResolveProxies="false"
 	 *        keyExtendedMetaData="kind='attribute' name='key'"
-	 *        valueType="java.lang.String" valueUnique="false" valueDataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        valueDataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        valueExtendedMetaData="kind='attribute' name='value'"
 	 *        extendedMetaData="name='WriterToStringMapEntry' kind='empty'"
 	 * @generated
@@ -440,6 +566,40 @@ public interface EmapPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getWriterToStringMapEntry_Value();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category <em>Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Category</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category
+	 * @generated
+	 */
+	EEnum getCategory();
+
+	/**
+	 * Returns the meta object for data type '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category <em>Category Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Category Object</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category
+	 * @model instanceClass="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category"
+	 *        extendedMetaData="name='Category:Object' baseType='Category'"
+	 * @generated
+	 */
+	EDataType getCategoryObject();
+
+	/**
+	 * Returns the meta object for data type '{@link java.util.Date <em>Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Date</em>'.
+	 * @see java.util.Date
+	 * @model instanceClass="java.util.Date"
+	 *        extendedMetaData="name='Date'"
+	 * @generated
+	 */
+	EDataType getDate();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -504,6 +664,40 @@ public interface EmapPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BOOK__CITY_BY_WRITER = eINSTANCE.getBook_CityByWriter();
+
+		/**
+		 * The meta object literal for the '<em><b>Category By Date</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOOK__CATEGORY_BY_DATE = eINSTANCE.getBook_CategoryByDate();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.DateToCategoryMapEntryImpl <em>Date To Category Map Entry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.DateToCategoryMapEntryImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getDateToCategoryMapEntry()
+		 * @generated
+		 */
+		EClass DATE_TO_CATEGORY_MAP_ENTRY = eINSTANCE.getDateToCategoryMapEntry();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATE_TO_CATEGORY_MAP_ENTRY__KEY = eINSTANCE.getDateToCategoryMapEntry_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATE_TO_CATEGORY_MAP_ENTRY__VALUE = eINSTANCE.getDateToCategoryMapEntry_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.StringToStringMapEntryImpl <em>String To String Map Entry</em>}' class.
@@ -600,6 +794,36 @@ public interface EmapPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute WRITER_TO_STRING_MAP_ENTRY__VALUE = eINSTANCE.getWriterToStringMapEntry_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category <em>Category</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getCategory()
+		 * @generated
+		 */
+		EEnum CATEGORY = eINSTANCE.getCategory();
+
+		/**
+		 * The meta object literal for the '<em>Category Object</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getCategoryObject()
+		 * @generated
+		 */
+		EDataType CATEGORY_OBJECT = eINSTANCE.getCategoryObject();
+
+		/**
+		 * The meta object literal for the '<em>Date</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.Date
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl.EmapPackageImpl#getDate()
+		 * @generated
+		 */
+		EDataType DATE = eINSTANCE.getDate();
 
 	}
 

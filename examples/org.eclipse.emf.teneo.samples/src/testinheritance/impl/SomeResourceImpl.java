@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SomeResourceImpl.java,v 1.1 2007/03/18 22:28:33 mtaal Exp $
+ * $Id: SomeResourceImpl.java,v 1.2 2007/07/09 12:55:19 mtaal Exp $
  */
 package testinheritance.impl;
 
@@ -67,7 +67,7 @@ public class SomeResourceImpl extends SomeBaseClassImpl implements SomeResource 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<NameValuePair> nameValuePairs = null;
+	protected EList<NameValuePair> nameValuePairs;
 
 	/**
 	 * <!-- begin-user-doc -->

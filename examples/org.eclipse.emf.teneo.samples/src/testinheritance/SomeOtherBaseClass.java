@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SomeOtherBaseClass.java,v 1.2 2007/03/24 11:49:20 mtaal Exp $
+ * $Id: SomeOtherBaseClass.java,v 1.3 2007/07/09 12:55:21 mtaal Exp $
  */
 package testinheritance;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see testinheritance.TestinheritancePackage#getSomeOtherBaseClass()
- * @model
+ * @model annotation="teneo.jpa value='@MappedSuperclass'"
  * @generated
  */
 public interface SomeOtherBaseClass extends EObject {
@@ -65,7 +65,7 @@ public interface SomeOtherBaseClass extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name Value Pairs</em>' reference list.
 	 * @see testinheritance.TestinheritancePackage#getSomeOtherBaseClass_NameValuePairs()
-	 * @model type="testinheritance.NameValuePair"
+	 * @model
 	 * @generated
 	 */
 	EList<NameValuePair> getNameValuePairs();

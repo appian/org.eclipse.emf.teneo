@@ -1,36 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/emap"
+	targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/emap"
 	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/emap">
+	xmlns="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/emap"
+>
 
 	<xsd:complexType name="Book">
-    	<xsd:sequence>
-      		<xsd:element name="title" type="xsd:string"/>
-	 		<xsd:element maxOccurs="unbounded" minOccurs="0" name="writers" type="StringToWriterMapEntry"/>
-		 	<xsd:element maxOccurs="unbounded" minOccurs="0" name="keyWords" type="StringToStringMapEntry"/>
-		 	<xsd:element maxOccurs="unbounded" minOccurs="0" name="cityByWriter" type="WriterToStringMapEntry"/>
+		<xsd:sequence>
+			<xsd:element name="title" type="xsd:string" />
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="writers"
+				type="StringToWriterMapEntry"
+			/>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="keyWords"
+				type="StringToStringMapEntry"
+			/>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="cityByWriter"
+				type="WriterToStringMapEntry"
+			/>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="categoryByDate"
+				type="dateToCategoryMapEntry"
+			/>
 		</xsd:sequence>
 	</xsd:complexType>
 
-  	<xsd:complexType name="Writer">
-    	<xsd:sequence>
-      		<xsd:element name="name" type="xsd:string"/>
-   		</xsd:sequence>
-  	</xsd:complexType>
+	<xsd:complexType name="Writer">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
 
- 	<xsd:complexType ecore:instanceClass="java.util.Map$Entry" name="StringToWriterMapEntry">
-    	<xsd:attribute name="key" type="xsd:string"/>
-    	<xsd:attribute name="value" type="xsd:IDREF" ecore:reference="Writer"/>
-  	</xsd:complexType>
+	<xsd:complexType ecore:instanceClass="java.util.Map$Entry" name="StringToWriterMapEntry">
+		<xsd:attribute name="key" type="xsd:string" />
+		<xsd:attribute name="value" type="xsd:IDREF" ecore:reference="Writer" />
+	</xsd:complexType>
 
- 	<xsd:complexType ecore:instanceClass="java.util.Map$Entry" name="WriterToStringMapEntry">
-    	<xsd:attribute name="key" type="xsd:IDREF" ecore:reference="Writer"/>
-    	<xsd:attribute name="value" type="xsd:string"/>
-  	</xsd:complexType>
+	<xsd:complexType ecore:instanceClass="java.util.Map$Entry" name="WriterToStringMapEntry">
+		<xsd:attribute name="key" type="xsd:IDREF" ecore:reference="Writer" />
+		<xsd:attribute name="value" type="xsd:string" />
+	</xsd:complexType>
 
- 	<xsd:complexType ecore:instanceClass="java.util.Map$Entry" name="StringToStringMapEntry">
-    	<xsd:attribute name="key" type="xsd:string"/>
-    	<xsd:attribute name="value" type="xsd:string"/>
-  	</xsd:complexType>
- </xsd:schema>
+	<xsd:complexType ecore:instanceClass="java.util.Map$Entry" name="StringToStringMapEntry">
+		<xsd:attribute name="key" type="xsd:string" />
+		<xsd:attribute name="value" type="xsd:string" />
+	</xsd:complexType>
+
+	<xsd:simpleType ecore:instanceClass="java.util.Date" name="Date">
+		<xsd:restriction base="xsd:dateTime"/>
+	</xsd:simpleType>
+
+	<xsd:complexType ecore:instanceClass="java.util.Map$Entry" name="dateToCategoryMapEntry">
+		<xsd:attribute name="key" type="Date" />
+		<xsd:attribute name="value" type="Category" />
+	</xsd:complexType>
+	
+	 <xsd:simpleType name="Category">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="Complex"/>
+      <xsd:enumeration value="Simple"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+	
+</xsd:schema>

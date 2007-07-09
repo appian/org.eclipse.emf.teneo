@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibrarySwitch.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: LibrarySwitch.java,v 1.2 2007/07/09 12:55:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.util;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.library.*;
  * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage
  * @generated
  */
-public class LibrarySwitch {
+public class LibrarySwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class LibrarySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -65,16 +65,16 @@ public class LibrarySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -85,23 +85,23 @@ public class LibrarySwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case LibraryPackage.BOOK: {
 				Book book = (Book)theEObject;
-				Object result = caseBook(book);
+				T result = caseBook(book);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.LIBRARY: {
 				Library library = (Library)theEObject;
-				Object result = caseLibrary(library);
+				T result = caseLibrary(library);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.WRITER: {
 				Writer writer = (Writer)theEObject;
-				Object result = caseWriter(writer);
+				T result = caseWriter(writer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -110,62 +110,62 @@ public class LibrarySwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Book</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Book</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Book</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Book</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBook(Book object) {
+	public T caseBook(Book object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Library</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Library</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Library</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Library</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLibrary(Library object) {
+	public T caseLibrary(Library object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Writer</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Writer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Writer</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Writer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseWriter(Writer object) {
+	public T caseWriter(Writer object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

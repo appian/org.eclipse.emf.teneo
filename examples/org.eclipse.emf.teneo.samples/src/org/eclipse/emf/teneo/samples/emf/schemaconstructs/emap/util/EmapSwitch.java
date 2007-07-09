@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmapSwitch.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
+ * $Id: EmapSwitch.java,v 1.3 2007/07/09 12:55:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.util;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -94,6 +95,12 @@ public class EmapSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EmapPackage.DATE_TO_CATEGORY_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<Date, Category> dateToCategoryMapEntry = (Map.Entry<Date, Category>)theEObject;
+				T result = caseDateToCategoryMapEntry(dateToCategoryMapEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EmapPackage.STRING_TO_STRING_MAP_ENTRY: {
 				@SuppressWarnings("unchecked") Map.Entry<String, String> stringToStringMapEntry = (Map.Entry<String, String>)theEObject;
 				T result = caseStringToStringMapEntry(stringToStringMapEntry);
@@ -123,13 +130,13 @@ public class EmapSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Book</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Book</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Book</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Book</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -138,13 +145,28 @@ public class EmapSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>String To String Map Entry</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Date To Category Map Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>String To String Map Entry</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Date To Category Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDateToCategoryMapEntry(Map.Entry<Date, Category> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String To String Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String To String Map Entry</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -153,13 +175,13 @@ public class EmapSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>String To Writer Map Entry</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>String To Writer Map Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>String To Writer Map Entry</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>String To Writer Map Entry</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -168,13 +190,13 @@ public class EmapSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Writer</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Writer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Writer</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Writer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -183,13 +205,13 @@ public class EmapSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Writer To String Map Entry</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Writer To String Map Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Writer To String Map Entry</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Writer To String Map Entry</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -198,13 +220,13 @@ public class EmapSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */

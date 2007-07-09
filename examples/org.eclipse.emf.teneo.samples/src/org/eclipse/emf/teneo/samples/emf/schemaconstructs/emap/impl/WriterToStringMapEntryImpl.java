@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterToStringMapEntryImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: WriterToStringMapEntryImpl.java,v 1.3 2007/07/09 12:55:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl;
 
@@ -43,7 +43,7 @@ public class WriterToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * @generated
 	 * @ordered
 	 */
-	protected Writer key = null;
+	protected Writer key;
 
 	/**
 	 * The default value of the '{@link #getTypedValue() <em>Value</em>}' attribute.

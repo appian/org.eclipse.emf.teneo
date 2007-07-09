@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Book.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
+ * $Id: Book.java,v 1.4 2007/07/09 12:55:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap;
 
+import java.util.Date;
 import org.eclipse.emf.common.util.EMap;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book#getWriters <em>Writers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book#getKeyWords <em>Key Words</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book#getCityByWriter <em>City By Writer</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book#getCategoryByDate <em>Category By Date</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,7 +44,7 @@ public interface Book extends EObject {
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage#getBook_Title()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='title'"
 	 * @generated
 	 */
@@ -70,7 +72,7 @@ public interface Book extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Writers</em>' map.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage#getBook_Writers()
-	 * @model mapType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.StringToWriterMapEntry" keyType="java.lang.String" valueType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer"
+	 * @model mapType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.StringToWriterMapEntry<org.eclipse.emf.ecore.xml.type.String, org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer>"
 	 *        extendedMetaData="kind='element' name='writers'"
 	 * @generated
 	 */
@@ -88,7 +90,7 @@ public interface Book extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Key Words</em>' map.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage#getBook_KeyWords()
-	 * @model mapType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.StringToStringMapEntry" keyType="java.lang.String" valueType="java.lang.String"
+	 * @model mapType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.StringToStringMapEntry<org.eclipse.emf.ecore.xml.type.String, org.eclipse.emf.ecore.xml.type.String>"
 	 *        extendedMetaData="kind='element' name='keyWords'"
 	 * @generated
 	 */
@@ -106,10 +108,28 @@ public interface Book extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>City By Writer</em>' map.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage#getBook_CityByWriter()
-	 * @model mapType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.WriterToStringMapEntry" keyType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer" valueType="java.lang.String"
+	 * @model mapType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.WriterToStringMapEntry<org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer, org.eclipse.emf.ecore.xml.type.String>"
 	 *        extendedMetaData="kind='element' name='cityByWriter'"
 	 * @generated
 	 */
 	EMap<Writer, String> getCityByWriter();
+
+	/**
+	 * Returns the value of the '<em><b>Category By Date</b></em>' map.
+	 * The key is of type {@link java.util.Date},
+	 * and the value is of type {@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category},
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Category By Date</em>' map isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Category By Date</em>' map.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage#getBook_CategoryByDate()
+	 * @model mapType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.DateToCategoryMapEntry<org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Date, org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category>"
+	 *        extendedMetaData="kind='element' name='categoryByDate'"
+	 * @generated
+	 */
+	EMap<Date, Category> getCategoryByDate();
 
 } // Book

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryAdapterFactory.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: LibraryAdapterFactory.java,v 1.2 2007/07/09 12:55:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.util;
 
@@ -52,6 +52,7 @@ public class LibraryAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +69,22 @@ public class LibraryAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LibrarySwitch modelSwitch =
-		new LibrarySwitch() {
-			public Object caseBook(Book object) {
+	protected LibrarySwitch<Adapter> modelSwitch =
+		new LibrarySwitch<Adapter>() {
+			@Override
+			public Adapter caseBook(Book object) {
 				return createBookAdapter();
 			}
-			public Object caseLibrary(Library object) {
+			@Override
+			public Adapter caseLibrary(Library object) {
 				return createLibraryAdapter();
 			}
-			public Object caseWriter(Writer object) {
+			@Override
+			public Adapter caseWriter(Writer object) {
 				return createWriterAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +97,9 @@ public class LibraryAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

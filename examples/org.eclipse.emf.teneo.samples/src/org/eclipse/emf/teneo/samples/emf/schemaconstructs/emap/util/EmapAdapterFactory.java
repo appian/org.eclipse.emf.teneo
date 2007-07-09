@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmapAdapterFactory.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
+ * $Id: EmapAdapterFactory.java,v 1.3 2007/07/09 12:55:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.util;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -78,6 +79,10 @@ public class EmapAdapterFactory extends AdapterFactoryImpl {
 				return createBookAdapter();
 			}
 			@Override
+			public Adapter caseDateToCategoryMapEntry(Map.Entry<Date, Category> object) {
+				return createDateToCategoryMapEntryAdapter();
+			}
+			@Override
 			public Adapter caseStringToStringMapEntry(Map.Entry<String, String> object) {
 				return createStringToStringMapEntryAdapter();
 			}
@@ -124,6 +129,20 @@ public class EmapAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBookAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Date To Category Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createDateToCategoryMapEntryAdapter() {
 		return null;
 	}
 

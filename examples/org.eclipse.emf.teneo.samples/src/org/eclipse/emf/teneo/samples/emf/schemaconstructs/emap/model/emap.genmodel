@@ -7,11 +7,22 @@
   <foreignModel>emap.xsd</foreignModel>
   <genPackages prefix="Emap" basePackage="org.eclipse.emf.teneo.samples.emf.schemaconstructs"
       resource="XML" disposableProviderFactory="true" ecorePackage="emap.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="emap.ecore#//Category">
+      <genEnumLiterals ecoreEnumLiteral="emap.ecore#//Category/Complex"/>
+      <genEnumLiterals ecoreEnumLiteral="emap.ecore#//Category/Simple"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="emap.ecore#//CategoryObject"/>
+    <genDataTypes ecoreDataType="emap.ecore#//Date"/>
     <genClasses ecoreClass="emap.ecore#//Book">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute emap.ecore#//Book/title"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference emap.ecore#//Book/writers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference emap.ecore#//Book/keyWords"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference emap.ecore#//Book/cityByWriter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference emap.ecore#//Book/categoryByDate"/>
+    </genClasses>
+    <genClasses ecoreClass="emap.ecore#//DateToCategoryMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute emap.ecore#//DateToCategoryMapEntry/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute emap.ecore#//DateToCategoryMapEntry/value"/>
     </genClasses>
     <genClasses ecoreClass="emap.ecore#//StringToStringMapEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute emap.ecore#//StringToStringMapEntry/key"/>

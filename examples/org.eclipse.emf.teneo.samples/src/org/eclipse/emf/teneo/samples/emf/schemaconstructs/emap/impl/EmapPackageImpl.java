@@ -2,22 +2,23 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmapPackageImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: EmapPackageImpl.java,v 1.3 2007/07/09 12:55:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.impl;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapFactory;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
@@ -35,6 +36,13 @@ public class EmapPackageImpl extends EPackageImpl implements EmapPackage {
 	 * @generated
 	 */
 	private EClass bookEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dateToCategoryMapEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,6 +71,27 @@ public class EmapPackageImpl extends EPackageImpl implements EmapPackage {
 	 * @generated
 	 */
 	private EClass writerToStringMapEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum categoryEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType categoryObjectEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType dateEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -185,6 +214,42 @@ public class EmapPackageImpl extends EPackageImpl implements EmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getBook_CategoryByDate() {
+		return (EReference)bookEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDateToCategoryMapEntry() {
+		return dateToCategoryMapEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDateToCategoryMapEntry_Key() {
+		return (EAttribute)dateToCategoryMapEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDateToCategoryMapEntry_Value() {
+		return (EAttribute)dateToCategoryMapEntryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStringToStringMapEntry() {
 		return stringToStringMapEntryEClass;
 	}
@@ -284,6 +349,33 @@ public class EmapPackageImpl extends EPackageImpl implements EmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getCategory() {
+		return categoryEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getCategoryObject() {
+		return categoryObjectEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getDate() {
+		return dateEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EmapFactory getEmapFactory() {
 		return (EmapFactory)getEFactoryInstance();
 	}
@@ -312,6 +404,11 @@ public class EmapPackageImpl extends EPackageImpl implements EmapPackage {
 		createEReference(bookEClass, BOOK__WRITERS);
 		createEReference(bookEClass, BOOK__KEY_WORDS);
 		createEReference(bookEClass, BOOK__CITY_BY_WRITER);
+		createEReference(bookEClass, BOOK__CATEGORY_BY_DATE);
+
+		dateToCategoryMapEntryEClass = createEClass(DATE_TO_CATEGORY_MAP_ENTRY);
+		createEAttribute(dateToCategoryMapEntryEClass, DATE_TO_CATEGORY_MAP_ENTRY__KEY);
+		createEAttribute(dateToCategoryMapEntryEClass, DATE_TO_CATEGORY_MAP_ENTRY__VALUE);
 
 		stringToStringMapEntryEClass = createEClass(STRING_TO_STRING_MAP_ENTRY);
 		createEAttribute(stringToStringMapEntryEClass, STRING_TO_STRING_MAP_ENTRY__KEY);
@@ -327,6 +424,13 @@ public class EmapPackageImpl extends EPackageImpl implements EmapPackage {
 		writerToStringMapEntryEClass = createEClass(WRITER_TO_STRING_MAP_ENTRY);
 		createEReference(writerToStringMapEntryEClass, WRITER_TO_STRING_MAP_ENTRY__KEY);
 		createEAttribute(writerToStringMapEntryEClass, WRITER_TO_STRING_MAP_ENTRY__VALUE);
+
+		// Create enums
+		categoryEEnum = createEEnum(CATEGORY);
+
+		// Create data types
+		categoryObjectEDataType = createEDataType(CATEGORY_OBJECT);
+		dateEDataType = createEDataType(DATE);
 	}
 
 	/**
@@ -363,25 +467,39 @@ public class EmapPackageImpl extends EPackageImpl implements EmapPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(bookEClass, Book.class, "Book", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBook_Title(), theXMLTypePackage.getString(), "title", null, 1, 1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBook_Title(), theXMLTypePackage.getString(), "title", null, 1, 1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBook_Writers(), this.getStringToWriterMapEntry(), null, "writers", null, 0, -1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBook_KeyWords(), this.getStringToStringMapEntry(), null, "keyWords", null, 0, -1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBook_CityByWriter(), this.getWriterToStringMapEntry(), null, "cityByWriter", null, 0, -1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBook_CategoryByDate(), this.getDateToCategoryMapEntry(), null, "categoryByDate", null, 0, -1, Book.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dateToCategoryMapEntryEClass, Map.Entry.class, "DateToCategoryMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDateToCategoryMapEntry_Key(), this.getDate(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDateToCategoryMapEntry_Value(), this.getCategory(), "value", "Complex", 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stringToStringMapEntryEClass, Map.Entry.class, "StringToStringMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringToStringMapEntry_Key(), theXMLTypePackage.getString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStringToStringMapEntry_Value(), theXMLTypePackage.getString(), "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringToStringMapEntry_Key(), theXMLTypePackage.getString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringToStringMapEntry_Value(), theXMLTypePackage.getString(), "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stringToWriterMapEntryEClass, Map.Entry.class, "StringToWriterMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringToWriterMapEntry_Key(), theXMLTypePackage.getString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringToWriterMapEntry_Key(), theXMLTypePackage.getString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStringToWriterMapEntry_Value(), this.getWriter(), null, "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(writerEClass, Writer.class, "Writer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWriter_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWriter_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(writerToStringMapEntryEClass, Map.Entry.class, "WriterToStringMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWriterToStringMapEntry_Key(), this.getWriter(), null, "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getWriterToStringMapEntry_Value(), theXMLTypePackage.getString(), "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWriterToStringMapEntry_Value(), theXMLTypePackage.getString(), "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(categoryEEnum, Category.class, "Category");
+		addEEnumLiteral(categoryEEnum, Category.COMPLEX);
+		addEEnumLiteral(categoryEEnum, Category.SIMPLE);
+
+		// Initialize data types
+		initEDataType(categoryObjectEDataType, Category.class, "CategoryObject", IS_SERIALIZABLE, IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(dateEDataType, Date.class, "Date", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -433,6 +551,53 @@ public class EmapPackageImpl extends EPackageImpl implements EmapPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "cityByWriter"
+		   });		
+		addAnnotation
+		  (getBook_CategoryByDate(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "categoryByDate"
+		   });		
+		addAnnotation
+		  (categoryEEnum, 
+		   source, 
+		   new String[] {
+			 "name", "Category"
+		   });		
+		addAnnotation
+		  (categoryObjectEDataType, 
+		   source, 
+		   new String[] {
+			 "name", "Category:Object",
+			 "baseType", "Category"
+		   });		
+		addAnnotation
+		  (dateEDataType, 
+		   source, 
+		   new String[] {
+			 "name", "Date"
+		   });		
+		addAnnotation
+		  (dateToCategoryMapEntryEClass, 
+		   source, 
+		   new String[] {
+			 "name", "dateToCategoryMapEntry",
+			 "kind", "empty"
+		   });		
+		addAnnotation
+		  (getDateToCategoryMapEntry_Key(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "key"
+		   });		
+		addAnnotation
+		  (getDateToCategoryMapEntry_Value(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "value"
 		   });		
 		addAnnotation
 		  (stringToStringMapEntryEClass, 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="tc-tree.xsd" 
+           elementFormDefault="qualified" 
+           attributeFormDefault="unqualified" 
+           version="1.0" 
+           xml:lang="en" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:base="tc-tree.xsd">
+
+	<xs:complexType name="BigTree">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParentTwoImpl.java,v 1.2 2007/03/29 22:13:50 mtaal Exp $
+ * $Id: ParentTwoImpl.java,v 1.3 2007/07/09 12:55:19 mtaal Exp $
  */
 package testinheritance.impl;
 
@@ -61,7 +61,7 @@ public class ParentTwoImpl extends EObjectImpl implements ParentTwo {
 	 * @generated
 	 * @ordered
 	 */
-	protected SomeReference someReference = null;
+	protected SomeReference someReference;
 
 	/**
 	 * <!-- begin-user-doc -->

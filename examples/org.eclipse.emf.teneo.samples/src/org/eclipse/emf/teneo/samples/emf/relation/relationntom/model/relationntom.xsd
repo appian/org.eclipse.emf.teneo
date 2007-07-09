@@ -3,7 +3,7 @@
 	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
 	xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/relation/relationntom" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	
-	<!-- Types to test 1:n relations with variants, required, non-required, one-way and two-way -->
+	<!-- Types to test n:m relations with variants, required, non-required, one-way and two-way -->
 	<complexType name="Main">
 		<sequence>
 			<element default="c1" name="Name" type="string"/>
