@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.22 2007/03/30 20:43:00 mtaal Exp $
+ * $Id: AllTests.java,v 1.23 2007/07/09 12:54:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -20,7 +20,6 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
-import org.eclipse.emf.teneo.jpox.test.generate.JPOXGenerateTest;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
@@ -29,13 +28,12 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
-import org.eclipse.emf.teneo.test.emf.sample.RentalResourceReferenceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryValidateResourceAction;
-import org.eclipse.emf.teneo.test.emf.sample.MindMapAction;
 import org.eclipse.emf.teneo.test.emf.sample.PlayAction;
 import org.eclipse.emf.teneo.test.emf.sample.PrimerPOAction;
 import org.eclipse.emf.teneo.test.emf.sample.ProductAction;
+import org.eclipse.emf.teneo.test.emf.sample.RentalResourceReferenceAction;
 import org.eclipse.emf.teneo.test.emf.sample.SunBooksAction;
 
 import extlibrary.ExtLibraryAction;
@@ -44,13 +42,17 @@ import extlibrary.ExtLibraryAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
-				.getConfigurations());
+		TestSuite suite =
+				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
+					.getConfigurations());
+
+		suite.addTestSuite(LibraryTest.class);
+
 		suite.addTestSuite(RentalResourceReferenceAction.class);
 
 		suite.addTestSuite(ProductAction.class);
@@ -60,24 +62,21 @@ public class AllTests {
 
 		suite.addTestSuite(ExtendedPO2Test.class);
 
-		suite.addTestSuite(LibraryTest.class);
-
-
 		suite.addTestSuite(LibraryResourceCutPasteAction.class);
 		suite.addTestSuite(LibraryNonResolvingAction.class);
 
 		suite.addTestSuite(LibraryValidateResourceAction.class);
 		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibraryGlobalEagerAction.class);
-		
-		//suite.addTestSuite(WorkFlowAction.class);
-  		suite.addTestSuite(SunBooksAction.class);
+
+		// suite.addTestSuite(WorkFlowAction.class);
+		suite.addTestSuite(SunBooksAction.class);
 
 		suite.addTestSuite(InventoryAction.class);
 		suite.addTestSuite(CatalogResourceAction.class);
 
 		suite.addTestSuite(AccountingTest.class);
-		if (!JPOXTestbed.isRunningOnEMFTServer()) {			
+		if (!JPOXTestbed.isRunningOnEMFTServer()) {
 			suite.addTestSuite(SchoolLibraryTest.class);
 			suite.addTestSuite(ExtLibraryAction.class);
 			suite.addTestSuite(PlayImExportTest.class);

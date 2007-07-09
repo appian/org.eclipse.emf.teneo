@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.11 2007/03/21 15:46:24 mtaal Exp $
+ * $Id: AllTests.java,v 1.12 2007/07/09 12:54:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -40,22 +40,26 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
-				JPOXTestbed.instance().getConfigurations());
+		TestSuite suite =
+				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", JPOXTestbed
+					.instance().getConfigurations());
+		suite.addTestSuite(ExtensionAction.class);
+
 		suite.addTestSuite(EMapAction.class);
-		
+
 		suite.addTestSuite(AnyTypeAction.class);
 
 		suite.addTestSuite(SimpleTypeAction.class);
 
 		if (!JPOXTestbed.isRunningOnEMFTServer()) {
 			// on the emft server these fail with
-			// java.lang.UnsatisfiedLinkError: /opt/j2sdk1.4.2_12/jre/lib/i386/libawt.so: libXp.so.6: cannot open shared object file: No such file or directory
+			// java.lang.UnsatisfiedLinkError: /opt/j2sdk1.4.2_12/jre/lib/i386/libawt.so:
+			// libXp.so.6: cannot open shared object file: No such file or directory
 			suite.addTestSuite(EcoreAttrsAction.class);
 			suite.addTestSuite(SimplefeaturemapAction.class);
 			suite.addTestSuite(SubstitutionAction.class);
@@ -67,12 +71,11 @@ public class AllTests {
 
 		suite.addTestSuite(NestedGroupAction.class);
 		suite.addTestSuite(MixedAction.class);
-		suite.addTestSuite(ExtensionAction.class);
 		suite.addTestSuite(RestrictionAction.class);
 
 		suite.addTestSuite(AttributesTest.class);
 		suite.addTestSuite(GroupAction.class);
-		
+
 		return suite;
 	}
 
