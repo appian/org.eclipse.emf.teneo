@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.25 2007/06/29 07:31:47 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.26 2007/07/09 12:54:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 public class PersistenceOptions {
 
@@ -194,10 +194,9 @@ public class PersistenceOptions {
 	public static final String IGNORE_EANNOTATIONS = MAPPING_PREFIX + "ignore_eannotations";
 
 	/**
-	 * Map all emaps as true hibernate maps, default is false. In EMF an EMap is in fact an EList
+	 * Map all emaps as true hibernate maps, default is true. In EMF an EMap is in fact an EList
 	 * with Map entries. Originally Teneo maps this as a hibernate list. In the new behavior
-	 * hibernate can map the emap as a real map. The default is false (to support previous
-	 * behavior).
+	 * hibernate can map the emap as a real map. The default is true.
 	 */
 	public static final String EMAP_AS_TRUE_MAP = MAPPING_PREFIX + "emap_as_true_map";
 
@@ -326,8 +325,8 @@ public class PersistenceOptions {
 				props.load(in);
 			}
 		} catch (IOException e) {
-			throw new RuntimeException("Error loading \"" + DEFAULT_CLASSPATH_FILENAME + "\" from classpath:"
-					+ e.getMessage(), e);
+			throw new RuntimeException("Error loading \"" + DEFAULT_CLASSPATH_FILENAME + "\" from classpath:" +
+					e.getMessage(), e);
 		} finally {
 			try {
 				if (in != null) {
@@ -482,8 +481,8 @@ public class PersistenceOptions {
 	/** Returns the value of the join table naming strategy */
 	public String getJoinTableNamingStrategy() {
 		if (properties.get(JOIN_TABLE_NAMING_STRATEGY_OLD) != null) {
-			log.warn("The option " + JOIN_TABLE_NAMING_STRATEGY_OLD + " is deprecated, please use: "
-					+ JOIN_TABLE_NAMING_STRATEGY);
+			log.warn("The option " + JOIN_TABLE_NAMING_STRATEGY_OLD + " is deprecated, please use: " +
+					JOIN_TABLE_NAMING_STRATEGY);
 			return properties.getProperty(JOIN_TABLE_NAMING_STRATEGY);
 		}
 		return properties.getProperty(JOIN_TABLE_NAMING_STRATEGY);
@@ -521,8 +520,8 @@ public class PersistenceOptions {
 		try {
 			return Integer.parseInt(colLength);
 		} catch (NumberFormatException e) {
-			log.error("Property " + MAXIMUM_SQL_NAME_LENGTH + " as a non-integer value: " + colLength
-					+ " value is ignored");
+			log.error("Property " + MAXIMUM_SQL_NAME_LENGTH + " as a non-integer value: " + colLength +
+					" value is ignored");
 			return -1;
 		}
 	}

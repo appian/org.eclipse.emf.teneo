@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.1 2007/06/29 07:31:47 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.2 2007/07/09 12:54:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * is driven by the options set in the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy {
 
@@ -87,7 +87,9 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy {
 	public List<String> getManyToOneJoinColumnNames(PAnnotatedEReference aReference) {
 		final EReference eref = aReference.getAnnotatedEReference();
 
-		assert (!eref.isMany()); // otherwise this should have been a mtm
+		// isTransient occurs for computed featuremap features, these are ignored
+		// later on
+		assert (eref.isTransient() || !eref.isMany()); // otherwise this should have been a mtm
 
 		// in case of many-to-one to qualify use the name of the class to which is refered
 		// this is just there for backward compatibility, see the case of
@@ -255,8 +257,8 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy {
 				jTableName = thisEntityName + "_" + thatEntityName;
 			}
 		} else {
-			AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy
-					+ " not supported", isEObject || optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
+			AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy +
+					" not supported", isEObject || optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
 			if (eOpposite != null && eOpposite.isMany() && compareNames(eReference, eOpposite)) {
 				final String thatEntityName = getEntityName(aReference.getPaModel(), eOpposite.getEContainingClass());
 				jTableName = thatEntityName + "_" + eOpposite.getName();

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.2 2007/07/04 19:27:26 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.3 2007/07/09 12:54:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -85,7 +85,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class DefaultAnnotator {
 
@@ -777,6 +777,24 @@ public class DefaultAnnotator {
 
 		if (eReference.isContainment() || persistenceOptions.isSetDefaultCascadeOnNonContainment()) {
 			setCascade(otm.getCascade(), eReference.isContainment());
+		}
+
+		// handle a special case, an emap which is mapped as a real map and which has an
+		// enumerate as the key
+		// Disabled for now as the hibernate map-key does not support enumerates as the type
+		// for the key when mapping as a true map
+		if (false && StoreUtil.isMap(eReference) && persistenceOptions.isMapEMapAsTrueMap()) {
+			final EStructuralFeature keyFeature = aReference.getEReferenceType().getEStructuralFeature("key");
+			if (keyFeature instanceof EAttribute) {
+				final EAttribute keyAttribute = (EAttribute) keyFeature;
+				final PAnnotatedEAttribute aKeyAttribute = aReference.getPaModel().getPAnnotated(keyAttribute);
+				if (keyAttribute.getEType() instanceof EEnum && aKeyAttribute.getEnumerated() == null) {
+					final Enumerated enumerated = aFactory.createEnumerated();
+					enumerated.setValue(EnumType.STRING);
+					enumerated.setEModelElement(keyAttribute);
+					aKeyAttribute.setEnumerated(enumerated);
+				}
+			}
 		}
 
 		// NOTE Sometimes EMF generated getters/setters have a
