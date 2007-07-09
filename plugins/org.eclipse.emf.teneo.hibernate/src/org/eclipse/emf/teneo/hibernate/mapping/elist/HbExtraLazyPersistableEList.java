@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.6 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.7 2007/07/09 12:54:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -33,7 +33,7 @@ import org.hibernate.collection.PersistentList;
  * lists. Note that this list can not work in a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> {
@@ -47,8 +47,7 @@ public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> {
 	private static final long serialVersionUID = 5479222310361594394L;
 
 	/** Constructor */
-	public HbExtraLazyPersistableEList(InternalEObject owner,
-			EStructuralFeature feature, List<E> list) {
+	public HbExtraLazyPersistableEList(InternalEObject owner, EStructuralFeature feature, List<E> list) {
 		super(owner, feature, list);
 	}
 
@@ -56,6 +55,7 @@ public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> {
 	 * Override isLoaded to check if the delegate lists was not already loaded
 	 * by hibernate behind the scenes, this happens with eagerly loaded lists.
 	 */
+	@Override
 	public boolean isLoaded() {
 		return true; // always assume loaded
 	}
@@ -64,10 +64,17 @@ public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> {
 	 * Do the actual load can be overridden, the doload does nothing as this is
 	 * the responsibility of the caller
 	 */
+	@Override
 	protected synchronized void doLoad() {
 	}
 
+	/** If the delegate has been initialized */
+	public boolean isInitialized() {
+		return ((PersistentCollection) delegate).wasInitialized();
+	}
+
 	/** Overridden because general list type is not supported as a replacement */
+	@Override
 	public void replaceDelegate(List<E> newDelegate) {
 		if (newDelegate instanceof PersistentList) {
 			// disabled this assertion because in case of a session refresh it
@@ -91,17 +98,17 @@ public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> {
 			// Added to support <idbag>
 			super.replaceDelegate(newDelegate);
 		} else if (newDelegate == delegate) // this can occur and is okay, do
-											// nothing in this case
+		// nothing in this case
 		{
 
 		} else {
-			throw new HbMapperException("Type "
-					+ newDelegate.getClass().getName() + " can not be "
-					+ " used as a replacement for elist " + logString);
+			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be " +
+					" used as a replacement for elist " + logString);
 		}
 	}
 
 	/** Returns true if the wrapped list is a persistency layer specific list */
+	@Override
 	public boolean isPersistencyWrapped() {
 		return delegate instanceof PersistentCollection;
 	}

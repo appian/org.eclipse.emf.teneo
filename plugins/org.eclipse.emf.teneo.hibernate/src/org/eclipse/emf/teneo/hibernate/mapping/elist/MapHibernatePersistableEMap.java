@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapHibernatePersistableEMap.java,v 1.3 2007/03/29 14:59:40 mtaal Exp $
+ * $Id: MapHibernatePersistableEMap.java,v 1.4 2007/07/09 12:54:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -41,7 +41,7 @@ import org.hibernate.collection.PersistentMap;
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> {
@@ -52,15 +52,14 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(MapHibernatePersistableEMap.class);
-	
+
 	/**
 	 * Constructor: this version will take a natural map as input (probided by
 	 * hibernate) and transform the entries into the EMF keyToValue format
 	 * 
 	 * 
 	 */
-	public MapHibernatePersistableEMap(InternalEObject owner, EReference eref,
-			Map<K, V> map) {
+	public MapHibernatePersistableEMap(InternalEObject owner, EReference eref, Map<K, V> map) {
 		super(eref.getEReferenceType(), owner, eref, map);
 	}
 
@@ -70,9 +69,13 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	 * a map input is used instead.
 	 * 
 	 */
-	public MapHibernatePersistableEMap(InternalEObject owner, EReference eref,
-			List<BasicEMap.Entry<K, V>> list) {
+	public MapHibernatePersistableEMap(InternalEObject owner, EReference eref, List<BasicEMap.Entry<K, V>> list) {
 		super(eref.getEReferenceType(), owner, eref, list);
+	}
+
+	/** If the delegate has been initialized */
+	public boolean isInitialized() {
+		return isORMMapDelegateLoaded();
 	}
 
 	/**
@@ -82,17 +85,16 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	@Override
 	public boolean isLoaded() {
 		// if the lazyload delegate is null, then this map is already loaded
-		if (ormMapDelegate == null)
+		if (ormMapDelegate == null) {
 			return true;
+		}
 
 		// if the delegated map was loaded under the hood and this
 		// HibernatePersistableEMap did
 		// not yet notice it then do the local load behavior.
 		// delegate is loaded in case of subselect or eager loading
 		if (!super.isLoaded() && !isLoading() && isORMMapDelegateLoaded()) {
-			log
-					.debug("Persistentlist already initialized, probably eagerly loaded: "
-							+ getLogString());
+			log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
 			try {
 				this.setLoading(true);
 				// do load to load the resource
@@ -111,26 +113,26 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	 */
 	@Override
 	public int size() {
-		if (size != 0)
+		if (size != 0) {
 			return size;
+		}
 
 		// if we are not loaded yet, we return the size of the buffered lazy
 		// load delegate
 		if (!isMapValueIsEAttribute() && this.getORMMapDelegate() != null) {
-			if (!this.isORMMapDelegateLoaded()
-					&& (this.getORMMapDelegate() instanceof AbstractPersistentCollection)) {
+			if (!this.isORMMapDelegateLoaded() && (this.getORMMapDelegate() instanceof AbstractPersistentCollection)) {
 				try {
 					// here is a neat trick. we use reflection to get the
 					// session of the persistanMap.
-					Field field = AbstractPersistentCollection.class
-							.getDeclaredField("session");
+					Field field = AbstractPersistentCollection.class.getDeclaredField("session");
 					field.setAccessible(true);
 					Session s = (Session) field.get(this.getORMMapDelegate());
 
 					// now that we have the session, we can query the size of
 					// the list without loading it
-					size = ((Long) s.createFilter(this.getORMMapDelegate(),
-							"select count(*)").list().get(0)).intValue();
+					size =
+							((Long) s.createFilter(this.getORMMapDelegate(), "select count(*)").list().get(0))
+								.intValue();
 					return size;
 				} catch (Throwable t) {
 					// ignore on purpose, let the call to super handle it
@@ -150,11 +152,11 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	 */
 	@Override
 	protected boolean isORMMapDelegateLoaded() {
-		if (this.getORMMapDelegate() == null)
+		if (this.getORMMapDelegate() == null) {
 			return false;
+		}
 
-		return ((this.ormMapDelegate instanceof PersistentMap) && (((PersistentMap) ormMapDelegate)
-				.wasInitialized()));
+		return ((this.ormMapDelegate instanceof PersistentMap) && (((PersistentMap) ormMapDelegate).wasInitialized()));
 	}
 
 	/**
@@ -177,19 +179,15 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 				{
 					// if the delegate is already loaded then no transaction is
 					// required
-					final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection
-							&& ((AbstractPersistentCollection) delegate)
-									.wasInitialized();
-					if (!isDelegateLoaded
-							&& !sessionWrapper.isTransactionActive()) {
-						log
-								.debug("Reconnecting session to read a lazy collection, elist: "
-										+ logString);
+					final boolean isDelegateLoaded =
+							delegate instanceof AbstractPersistentCollection &&
+									((AbstractPersistentCollection) delegate).wasInitialized();
+					if (!isDelegateLoaded && !sessionWrapper.isTransactionActive()) {
+						log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
 						controlsTransaction = true;
 						sessionWrapper.beginTransaction();
 					} else {
-						log
-								.debug("Delegate loaded or resource session is still active, using it");
+						log.debug("Delegate loaded or resource session is still active, using it");
 					}
 				} else {
 					log.debug("EMap uses session from resource, " + logString);
@@ -207,8 +205,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 				// set all entries in ourselves by wrapping the hibernate map.
 				// this also forces the load
 				for (Object o : this.getORMMapDelegate().entrySet()) {
-					final Map.Entry entry = (Map.Entry)o;
-					put((K)entry.getKey(), (V)entry.getValue());
+					final Map.Entry entry = (Map.Entry) o;
+					put((K) entry.getKey(), (V) entry.getValue());
 				}
 
 				// add the new objects to the resource so they are tracked
@@ -217,15 +215,12 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 					// when required
 					for (Object o : entrySet()) {
 						if (o instanceof EObject) {
-							((StoreResource) res).addToContentOrAttach(
-									(InternalEObject) o,
-									((EReference) getEStructuralFeature())
-											.isContainment());
+							((StoreResource) res).addToContentOrAttach((InternalEObject) o,
+								((EReference) getEStructuralFeature()).isContainment());
 						}
 					}
 				}
-				log.debug("Loaded " + delegate.size() + " from backend store for "
-						+ logString);
+				log.debug("Loaded " + delegate.size() + " from backend store for " + logString);
 			} finally {
 				if (controlsTransaction) {
 					((StoreResource) res).setIsLoading(false);
@@ -252,6 +247,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	}
 
 	/** Return the hibernate map */
+	@Override
 	public Object getDelegate() {
 		return getORMMapDelegate();
 	}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEMap.java,v 1.3 2007/03/18 19:19:47 mtaal Exp $
+ * $Id: HibernatePersistableEMap.java,v 1.4 2007/07/09 12:54:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -28,21 +28,21 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEMap;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.collection.AbstractPersistentCollection;
-import org.hibernate.impl.SessionImpl;
+import org.hibernate.collection.PersistentCollection;
 
 /**
  * Implements the hibernate persistable emap. Note an emap is not loaded lazily!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
@@ -55,43 +55,36 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 	private static Log log = LogFactory.getLog(HibernatePersistableEMap.class);
 
 	/** Constructor */
-	public HibernatePersistableEMap(InternalEObject owner, EReference eref,
-			List<Entry<K, V>> list) {
+	public HibernatePersistableEMap(InternalEObject owner, EReference eref, List<Entry<K, V>> list) {
 		super(eref.getEReferenceType(), owner, eref, list);
 	}
 
 	/** Do the actual load can be overridden */
+	@Override
 	@SuppressWarnings("unchecked")
 	protected void doLoad() {
-		Transaction tx = null;
-		Session session = null;
+		SessionWrapper sessionWrapper = null;
 		boolean controlsTransaction = false;
 		boolean err = true;
 		Resource res = null;
-		final List<?> delegate = ((HibernatePersistableEList) delegateEList)
-				.getDelegate();
+		final List<?> delegate = ((HibernatePersistableEList) delegateEList).getDelegate();
 		try {
 			res = getEObject().eResource();
 			if (res != null && res instanceof HbResource) {
-				session = ((HbResource) res).getSession();
+				sessionWrapper = ((HbResource) res).getSessionWrapper();
 				if (res.isLoaded()) // resource is loaded reopen transaction
 				{
 					// if the delegate is already loaded then no transaction is
 					// required
-					final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection
-							&& ((AbstractPersistentCollection) delegate)
-									.wasInitialized();
-					if (!isDelegateLoaded
-							&& !((SessionImpl) session)
-									.isTransactionInProgress()) {
-						log
-								.debug("Reconnecting session to read a lazy collection, elist: "
-										+ logString);
+					final boolean isDelegateLoaded =
+							delegate instanceof AbstractPersistentCollection &&
+									((AbstractPersistentCollection) delegate).wasInitialized();
+					if (!isDelegateLoaded && !sessionWrapper.isTransactionActive()) {
+						log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
 						controlsTransaction = true;
-						tx = session.beginTransaction();
+						sessionWrapper.beginTransaction();
 					} else {
-						log
-								.debug("Delegate loaded or resource session is still active, using it");
+						log.debug("Delegate loaded or resource session is still active, using it");
 					}
 				} else {
 					log.debug("EMap uses session from resource, " + logString);
@@ -112,17 +105,14 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 				if (res != null && res instanceof StoreResource) {
 					// attach the new contained objects so that they are adapted
 					// when required
-					for (int i = 0; i < objs.length; i++) {
-						if (objs[i] instanceof EObject) {
-							((StoreResource) res).addToContentOrAttach(
-									(InternalEObject) objs[i],
-									((EReference) getEStructuralFeature())
-											.isContainment());
+					for (Object element : objs) {
+						if (element instanceof EObject) {
+							((StoreResource) res).addToContentOrAttach((InternalEObject) element,
+								((EReference) getEStructuralFeature()).isContainment());
 						}
 					}
 				}
-				log.debug("Loaded " + objs.length + " from backend store for "
-						+ logString);
+				log.debug("Loaded " + objs.length + " from backend store for " + logString);
 			} finally {
 				if (controlsTransaction) {
 					((StoreResource) res).setIsLoading(false);
@@ -132,7 +122,7 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 		} finally {
 			if (controlsTransaction) {
 				if (err) {
-					tx.rollback();
+					sessionWrapper.rollbackTransaction();
 				} else {
 					// a bit rough but delete from the persitence context
 					// otherwise
@@ -140,9 +130,9 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 					// to anything and
 					// will delete me
 					// getSession().getPersistenceContext().getCollectionEntries().remove(this);
-					tx.commit();
+					sessionWrapper.commitTransaction();
 				}
-				((HbResource) res).returnSession(session);
+				((HbResource) res).returnSessionWrapper(sessionWrapper);
 			}
 		}
 		log.debug("Finished loading elist " + logString);
@@ -154,30 +144,28 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 	 */
 	@Override
 	public int size() {
-		if (size != 0)
+		if (size != 0) {
 			return size;
+		}
 
 		// if we are not loaded yet, we return the size of the buffered lazy
 		// load delegate
 
-		if (delegateEList instanceof PersistableEList
-				&& ((PersistableEList<?>) delegateEList).getDelegate() instanceof AbstractPersistentCollection) {
+		if (delegateEList instanceof PersistableEList &&
+				((PersistableEList<?>) delegateEList).getDelegate() instanceof AbstractPersistentCollection) {
 			try {
 				// here is a neat trick. we use reflection to get the
 				// session of the persistanMap.
-				Field field = AbstractPersistentCollection.class
-						.getDeclaredField("session");
+				Field field = AbstractPersistentCollection.class.getDeclaredField("session");
 				field.setAccessible(true);
-				Session s = (Session) field
-						.get(((PersistableEList<?>) delegateEList)
-								.getDelegate());
+				Session s = (Session) field.get(((PersistableEList<?>) delegateEList).getDelegate());
 
 				// now that we have the session, we can query the size of
 				// the list without loading it
 				s.flush();
-				size = ((Long) s.createFilter(
-						((PersistableEList<?>) delegateEList).getDelegate(),
-						"select count(*)").list().get(0)).intValue();
+				size =
+						((Long) s.createFilter(((PersistableEList<?>) delegateEList).getDelegate(), "select count(*)")
+							.list().get(0)).intValue();
 				return size;
 			} catch (Throwable t) {
 				// ignore on purpose, let the call to super handle it
@@ -190,11 +178,9 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 
 	/** Needs to be implemented by concrete subclass */
 	@Override
-	protected EList<BasicEMap.Entry<K, V>> createDelegateEList(
-			InternalEObject owner, EStructuralFeature feature,
+	protected EList<BasicEMap.Entry<K, V>> createDelegateEList(InternalEObject owner, EStructuralFeature feature,
 			List<BasicEMap.Entry<K, V>> delegateORMList) {
-		return new HibernatePersistableEList<Entry<K, V>>(owner, feature,
-				delegateORMList) {
+		return new HibernatePersistableEList<Entry<K, V>>(owner, feature, delegateORMList) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -203,8 +189,7 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 			}
 
 			@Override
-			protected void didSet(int index, Entry<K, V> newObject,
-					Entry<K, V> oldObject) {
+			protected void didSet(int index, Entry<K, V> newObject, Entry<K, V> oldObject) {
 				didRemove(index, oldObject);
 				didAdd(index, newObject);
 			}
@@ -220,15 +205,20 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 			}
 
 			@Override
-			protected void didMove(int index, Entry<K, V> movedObject,
-					int oldIndex) {
+			protected void didMove(int index, Entry<K, V> movedObject, int oldIndex) {
 				HibernatePersistableEMap.this.doMove(movedObject);
 			}
 		};
 	}
-	
+
+	/** If the delegate has been initialized */
+	public boolean isInitialized() {
+		return ((PersistentCollection) getDelegate()).wasInitialized();
+	}
+
 	/** Return the orm backing list */
+	@Override
 	public Object getDelegate() {
-		return ((PersistableDelegateList<?>)delegateEList).getDelegate();
+		return ((PersistableDelegateList<?>) delegateEList).getDelegate();
 	}
 }

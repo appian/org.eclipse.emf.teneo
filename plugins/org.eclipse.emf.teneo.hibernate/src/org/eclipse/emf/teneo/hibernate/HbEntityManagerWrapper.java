@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.6 2007/07/04 19:27:28 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.7 2007/07/09 12:54:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -38,7 +38,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -63,7 +63,18 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	}
 
 	/**
-	 * Return the session, return is an object to support both session as well
+	 * Return the session or entityManager, return is an object to support both session as well
+	 * as entitymanager.
+	 */
+	public Object getClassicSession() {
+		if (entityManager == null) {
+			entityManager = hbEntityDataStore.getEntityManagerFactory().createEntityManager();
+		}
+		return entityManager;
+	}
+
+	/**
+	 * Return the session or entityManager, return is an object to support both session as well
 	 * as entitymanager.
 	 */
 	public Object getSession() {

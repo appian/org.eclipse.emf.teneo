@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.14 2007/03/20 23:33:48 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.15 2007/07/09 12:54:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -41,7 +41,7 @@ import org.hibernate.collection.PersistentList;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> {
@@ -53,26 +53,30 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 	private static Log log = LogFactory.getLog(HibernatePersistableEList.class);
 
 	/** Constructor */
-	public HibernatePersistableEList(InternalEObject owner,
-			EStructuralFeature feature, List<E> list) {
+	public HibernatePersistableEList(InternalEObject owner, EStructuralFeature feature, List<E> list) {
 		super(owner, feature, list);
+	}
+
+	/** If the delegate has been initialized */
+	public boolean isInitialized() {
+		return ((PersistentCollection) delegate).wasInitialized();
 	}
 
 	/**
 	 * Override isLoaded to check if the delegate lists was not already loaded
 	 * by hibernate behind the scenes, this happens with eagerly loaded lists.
 	 */
+	@Override
 	public boolean isLoaded() {
 		// if the delegated list was loaded under the hood and this
 		// HibernatePersistableEList did
 		// not yet notice it then do the local load behavior.
 		// delegate is loaded in case of subselect or eager loading
-		final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection
-				&& ((AbstractPersistentCollection) delegate).wasInitialized();
+		final boolean isDelegateLoaded =
+				delegate instanceof AbstractPersistentCollection &&
+						((AbstractPersistentCollection) delegate).wasInitialized();
 		if (!super.isLoaded() && !isLoading() && isDelegateLoaded) {
-			log
-					.debug("Persistentlist already initialized, probably eagerly loaded: "
-							+ getLogString());
+			log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
 			try {
 				setIsLoading(true);
 				// do load to load the resource
@@ -86,6 +90,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 	}
 
 	/** Do the actual load can be overridden */
+	@Override
 	protected synchronized void doLoad() {
 		AssertUtil.assertTrue("EList " + logString, !isLoaded());
 
@@ -103,19 +108,15 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 				{
 					// if the delegate is already loaded then no transaction is
 					// required
-					final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection
-							&& ((AbstractPersistentCollection) delegate)
-									.wasInitialized();
-					if (!isDelegateLoaded
-							&& !sessionWrapper.isTransactionActive()) {
-						log
-								.debug("Reconnecting session to read a lazy collection, elist: "
-										+ logString);
+					final boolean isDelegateLoaded =
+							delegate instanceof AbstractPersistentCollection &&
+									((AbstractPersistentCollection) delegate).wasInitialized();
+					if (!isDelegateLoaded && !sessionWrapper.isTransactionActive()) {
+						log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
 						controlsTransaction = true;
 						sessionWrapper.beginTransaction();
 					} else {
-						log
-								.debug("Delegate loaded or resource session is still active, using it");
+						log.debug("Delegate loaded or resource session is still active, using it");
 					}
 				} else {
 					log.debug("Elist uses session from resource, " + logString);
@@ -135,13 +136,11 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 				// disabled for now as containers are persisted by hibernate
 				// anyway
 				if (false && isContainment()) {
-					final int featureID = getEStructuralFeature()
-							.getFeatureID();
-					for (int i = 0; i < objs.length; i++) {
-						if (objs[i] instanceof InternalEObject) {
-							EContainerRepairControl.setContainer(owner,
-									(InternalEObject) objs[i],
-									getEStructuralFeature());
+					final int featureID = getEStructuralFeature().getFeatureID();
+					for (Object element : objs) {
+						if (element instanceof InternalEObject) {
+							EContainerRepairControl.setContainer(owner, (InternalEObject) element,
+								getEStructuralFeature());
 						}
 					}
 				}
@@ -150,16 +149,14 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 				if (res != null && res instanceof StoreResource) {
 					// attach the new contained objects so that they are adapted
 					// when required
-					for (int i = 0; i < objs.length; i++) {
-						if (objs[i] instanceof EObject) {
-							((StoreResource) res).addToContentOrAttach(
-									(InternalEObject) objs[i], isContainment());
+					for (Object element : objs) {
+						if (element instanceof EObject) {
+							((StoreResource) res).addToContentOrAttach((InternalEObject) element, isContainment());
 						}
 					}
 				}
 
-				log.debug("Loaded " + objs.length + " from backend store for "
-						+ logString);
+				log.debug("Loaded " + objs.length + " from backend store for " + logString);
 			} finally {
 				if (controlsTransaction) {
 					((StoreResource) res).setIsLoading(false);
@@ -186,6 +183,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 	}
 
 	/** Overridden because general list type is not supported as a replacement */
+	@Override
 	public void replaceDelegate(List<E> newDelegate) {
 		if (newDelegate instanceof PersistentList) {
 			// disabled this assertion because in case of a session refresh it
@@ -213,13 +211,13 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> {
 		{
 
 		} else {
-			throw new HbMapperException("Type "
-					+ newDelegate.getClass().getName() + " can not be "
-					+ " used as a replacement for elist " + logString);
+			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be " +
+					" used as a replacement for elist " + logString);
 		}
 	}
 
 	/** Returns true if the wrapped list is a persistency layer specific list */
+	@Override
 	public boolean isPersistencyWrapped() {
 		return delegate instanceof PersistentCollection;
 	}
