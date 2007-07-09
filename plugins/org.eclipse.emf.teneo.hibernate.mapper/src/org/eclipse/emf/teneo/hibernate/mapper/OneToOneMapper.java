@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToOneMapper.java,v 1.13 2007/06/29 07:31:28 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.14 2007/07/09 17:43:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class OneToOneMapper extends AbstractAssociationMapper {
+public class OneToOneMapper extends AbstractAssociationMapper {
 
 	private static final Log log = LogFactory.getLog(OneToOneMapper.class);
 
@@ -46,8 +46,8 @@ class OneToOneMapper extends AbstractAssociationMapper {
 
 	/** Process the one-to-one */
 	public void process(PAnnotatedEReference paReference) {
-		if (getOtherSide(paReference) == null
-				|| paReference.getOneToOne().eIsSet(PannotationPackage.eINSTANCE.getOneToOne_MappedBy())) {
+		if (getOtherSide(paReference) == null ||
+				paReference.getOneToOne().eIsSet(PannotationPackage.eINSTANCE.getOneToOne_MappedBy())) {
 			if (!paReference.getPrimaryKeyJoinColumns().isEmpty()) {
 				createOneToOne(paReference);
 			} else {

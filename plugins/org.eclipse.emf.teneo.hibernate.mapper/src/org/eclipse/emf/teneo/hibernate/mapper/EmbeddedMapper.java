@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.9 2007/04/17 15:49:50 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.10 2007/07/09 17:43:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class EmbeddedMapper extends AbstractMapper {
+public class EmbeddedMapper extends AbstractMapper {
 
 	// the logger
 	private static final Log log = LogFactory.getLog(EmbeddedMapper.class);
@@ -45,7 +45,7 @@ class EmbeddedMapper extends AbstractMapper {
 	 */
 	public void process(PAnnotatedEReference paReference) {
 		log.debug("Processing embedded: " + paReference.toString());
-		
+
 		// push the current overrides
 		getHbmContext().pushOverrideOnStack();
 		// and add our own
@@ -56,11 +56,9 @@ class EmbeddedMapper extends AbstractMapper {
 		try {
 			// make a difference between a many-to-one component and multi-component
 			if (paReference.getManyToOne() != null) {
-				processSingleEmbedded(paReference, paReference.getAnnotatedEReference()
-						.getEReferenceType());
+				processSingleEmbedded(paReference, paReference.getAnnotatedEReference().getEReferenceType());
 			} else if (paReference.getOneToOne() != null) {
-				processSingleEmbedded(paReference, paReference.getAnnotatedEReference()
-						.getEReferenceType());
+				processSingleEmbedded(paReference, paReference.getAnnotatedEReference().getEReferenceType());
 			} else {
 				if (paReference.getManyToMany() != null) {
 					throw new MappingException("ManyToMany can not be combined with Embedded " + paReference);
@@ -82,17 +80,18 @@ class EmbeddedMapper extends AbstractMapper {
 	private void processSingleEmbedded(PAnnotatedEReference paReference, EClass target) {
 		log.debug("Processing single embedded: " + paReference.toString());
 
-		final Element componentElement = getHbmContext().getCurrent().addElement("component").addAttribute("name",
-				paReference.getAnnotatedEReference().getName());
+		final Element componentElement =
+				getHbmContext().getCurrent().addElement("component").addAttribute("name",
+					paReference.getAnnotatedEReference().getName());
 
 		// todo: change recognizing a component to using metadata!
 		// then the class tag can point to a real impl. class@
-		componentElement.addAttribute("class", getHbmContext().getInstanceClassName(target)); //implClass.getName());
+		componentElement.addAttribute("class", getHbmContext().getInstanceClassName(target)); // implClass.getName());
 		getHbmContext().setCurrent(componentElement);
 		try {
 			// process the features of the target
-			final PAnnotatedEClass componentAClass = paReference.getPaModel().getPAnnotated(
-					paReference.getAnnotatedEReference().getEReferenceType());
+			final PAnnotatedEClass componentAClass =
+					paReference.getPaModel().getPAnnotated(paReference.getAnnotatedEReference().getEReferenceType());
 			getHbmContext().processFeatures(componentAClass.getPaEStructuralFeatures());
 		} finally {
 			getHbmContext().setCurrent(componentElement.getParent());
@@ -102,7 +101,7 @@ class EmbeddedMapper extends AbstractMapper {
 	/** Process a list of components */
 	private void processMultiEmbedded(PAnnotatedEReference paReference) {
 		log.debug("Processing multi embedded: " + paReference.toString());
-		
+
 		// let the featureprocessor handle this, the one to many is handled by the OneToManyMapper
 		getHbmContext().getFeatureMapper().getOneToManyMapper().process(paReference);
 	}

@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-abstract class AbstractAssociationMapper extends AbstractMapper {
+public abstract class AbstractAssociationMapper extends AbstractMapper {
 
 	/** Logger */
 	private static final Log log = LogFactory.getLog(AbstractAssociationMapper.class);
@@ -523,8 +523,8 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
 		addKeyColumns(null, keyElement, joinTable.getJoinColumns()/*
-																	 * == null ? new ArrayList() :
-																	 * (List)joinTable.getJoinColumns().getValue()
-																	 */);
+		 * == null ? new ArrayList() :
+		 * (List)joinTable.getJoinColumns().getValue()
+		 */);
 	}
 }

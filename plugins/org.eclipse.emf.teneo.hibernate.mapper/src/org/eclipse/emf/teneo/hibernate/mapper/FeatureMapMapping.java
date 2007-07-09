@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: FeatureMapMapping.java,v 1.9 2007/06/29 07:31:28 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.10 2007/07/09 17:43:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class FeatureMapMapping {
+public class FeatureMapMapping {
 
 	/** Log it here */
 	private static final Log log = LogFactory.getLog(FeatureMapMapping.class);
@@ -93,8 +93,8 @@ class FeatureMapMapping {
 		final boolean isMixed = StoreUtil.isMixed(paAttribute.getAnnotatedEAttribute());
 		for (PAnnotatedEStructuralFeature paFeature : paClass.getPaEStructuralFeatures()) {
 			EStructuralFeature eFeature = paFeature.getAnnotatedEStructuralFeature();
-			if ((isMixed && eFeature.getFeatureID() != paAttribute.getAnnotatedEAttribute().getFeatureID())
-					|| StoreUtil.isElementOfGroup(eFeature, paAttribute.getAnnotatedEAttribute())) {
+			if ((isMixed && eFeature.getFeatureID() != paAttribute.getAnnotatedEAttribute().getFeatureID()) ||
+					StoreUtil.isElementOfGroup(eFeature, paAttribute.getAnnotatedEAttribute())) {
 				log.debug("Feature " + StoreUtil.toString(eFeature) + " belongs to this featuremap");
 
 				// continue if it is a id

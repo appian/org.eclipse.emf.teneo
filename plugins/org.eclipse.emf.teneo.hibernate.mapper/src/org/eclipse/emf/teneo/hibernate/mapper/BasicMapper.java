@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: BasicMapper.java,v 1.17 2007/07/04 19:31:48 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.18 2007/07/09 17:43:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class BasicMapper extends AbstractPropertyMapper {
+public class BasicMapper extends AbstractPropertyMapper {
 
 	/** Log it all */
 	private static final Log log = LogFactory.getLog(BasicMapper.class);

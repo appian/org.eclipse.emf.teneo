@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToOneMapper.java,v 1.11 2007/06/29 07:31:28 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.12 2007/07/09 17:43:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-class ManyToOneMapper extends AbstractAssociationMapper {
+public class ManyToOneMapper extends AbstractAssociationMapper {
 
 	/** Log it */
 	private static final Log log = LogFactory.getLog(ManyToOneMapper.class);
@@ -79,11 +79,11 @@ class ManyToOneMapper extends AbstractAssociationMapper {
 				associationElement.addAttribute("lazy", "false");
 			}
 
-			addJoinColumns(paReference, associationElement, jcs, getHbmContext().isForceOptional() || mto.isOptional()
-					|| getHbmContext().isCurrentElementFeatureMap());
+			addJoinColumns(paReference, associationElement, jcs, getHbmContext().isForceOptional() ||
+					mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
 
-			associationElement.addAttribute("not-null", getHbmContext().isForceOptional() || mto.isOptional()
-					|| getHbmContext().isCurrentElementFeatureMap() ? "false" : "true");
+			associationElement.addAttribute("not-null", getHbmContext().isForceOptional() || mto.isOptional() ||
+					getHbmContext().isCurrentElementFeatureMap() ? "false" : "true");
 		}
 
 		// MT: TODO; the characteristic of the other side should be checked (if
