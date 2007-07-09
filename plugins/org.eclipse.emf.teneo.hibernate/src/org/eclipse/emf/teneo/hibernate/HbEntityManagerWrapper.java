@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.7 2007/07/09 12:54:51 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.8 2007/07/09 14:02:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -38,7 +38,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -141,7 +141,7 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	/** Query */
 	public List<?> executeQuery(String qry, List<Object> parameters) {
 		final Query query = getEntityManager().createQuery(qry);
-		int pos = 0;
+		int pos = 1;
 		for (Object obj : parameters) {
 			query.setParameter(pos++, obj);
 		}
