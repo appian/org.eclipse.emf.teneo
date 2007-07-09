@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GeneralTestAction.java,v 1.1 2007/07/04 19:28:21 mtaal Exp $
+ * $Id: GeneralTestAction.java,v 1.2 2007/07/09 17:39:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -35,9 +35,10 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * - 187984
  * - 193697
  * - 193697
+ * - 188973
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2007/07/04 19:28:21 $
+ * @version $Revision: 1.2 $ $Date: 2007/07/09 17:39:14 $
  */
 public class GeneralTestAction extends AbstractTestAction {
 	/**
@@ -64,6 +65,7 @@ public class GeneralTestAction extends AbstractTestAction {
 		if (store.isHibernateTestStore()) {
 			final Address a = GeneralTestFactory.eINSTANCE.createAddress();
 			a.setName("a");
+			a.setVolatileString("v1");
 			final Contact contact = GeneralTestFactory.eINSTANCE.createContact();
 			contact.setName("c");
 			a.getContacts().add(contact);
@@ -95,6 +97,7 @@ public class GeneralTestAction extends AbstractTestAction {
 		{
 			final Address a = GeneralTestFactory.eINSTANCE.createAddress();
 			a.setName("a");
+			a.setVolatileString("v1");
 			final Contact contact = GeneralTestFactory.eINSTANCE.createContact();
 			contact.setName("c");
 			a.getContacts().add(contact);
@@ -136,6 +139,9 @@ public class GeneralTestAction extends AbstractTestAction {
 			// check default transient
 			final Address a = store.getObject(Address.class);
 			assertNull("A reference to a transient class should be transient also", a.getState());
+			if (store.isHibernateTestStore()) {
+				assertEquals("v1", a.getVolatileString());
+			}
 			store.commitTransaction();
 		}
 	}
