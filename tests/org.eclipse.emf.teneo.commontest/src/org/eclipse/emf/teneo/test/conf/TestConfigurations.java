@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: TestConfigurations.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
+ * $Id: TestConfigurations.java,v 1.4 2007/07/09 12:54:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestDatabaseAdapter;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class TestConfigurations {
 
@@ -60,7 +60,9 @@ public class TestConfigurations {
 	 *             if a configuration with the same name is already present
 	 */
 	public void addConfiguration(TestConfiguration cfg) {
-		if (cfgs.containsKey(cfg.getName())) throw new IllegalArgumentException("Duplicate configuration " + cfg.getName());
+		if (cfgs.containsKey(cfg.getName())) {
+			throw new IllegalArgumentException("Duplicate configuration " + cfg.getName());
+		}
 		cfgs.put(cfg.getName(), cfg);
 	}
 
@@ -76,11 +78,16 @@ public class TestConfigurations {
 			String cfgName = (String) pNames.next();
 			Properties cfgValues = (Properties) hProps.get(cfgName);
 
-			TestDatabaseAdapter dbAdapter = (TestDatabaseAdapter) dbAdapters.get(((String) cfgValues.get("dbadapter")).trim());
+			TestDatabaseAdapter dbAdapter = dbAdapters.get(((String) cfgValues.get("dbadapter")).trim());
 			InheritanceType mapStrategy = parseStrategy((String) cfgValues.get("mapstrategy"));
 			boolean optimistic = Boolean.valueOf((String) cfgValues.get("optimistic")).booleanValue();
-			boolean ejb3 = cfgValues.get("ejb3") != null ? Boolean.valueOf((String) cfgValues.get("ejb3")).booleanValue() : false;
-			addConfiguration(new TestConfiguration(cfgName, dbAdapter, mapStrategy, optimistic, ejb3));
+			boolean ejb3 =
+					cfgValues.get("ejb3") != null ? Boolean.valueOf((String) cfgValues.get("ejb3")).booleanValue()
+							: false;
+			boolean xml =
+					cfgValues.get("xml") != null ? Boolean.valueOf((String) cfgValues.get("xml")).booleanValue()
+							: false;
+			addConfiguration(new TestConfiguration(cfgName, dbAdapter, mapStrategy, optimistic, ejb3, xml));
 		}
 	}
 

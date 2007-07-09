@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAction.java,v 1.7 2007/03/20 23:33:38 mtaal Exp $
+ * $Id: EMapAction.java,v 1.8 2007/07/09 12:54:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapFactory;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapPackage;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
@@ -37,9 +39,13 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class EMapAction extends AbstractTestAction {
+
+	private Date testDate = new Date();
+	private long ONE_DAY = (long) 3600 * (long) 1000 * 24;
+
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * 
@@ -49,7 +55,9 @@ public class EMapAction extends AbstractTestAction {
 		super(EmapPackage.eINSTANCE);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
 	 */
 	@Override
@@ -60,6 +68,7 @@ public class EMapAction extends AbstractTestAction {
 	}
 
 	/** Creates an item, an address and links them to a po. */
+	@Override
 	public void doAction(TestStore store) {
 		{
 			store.beginTransaction();
@@ -67,32 +76,31 @@ public class EMapAction extends AbstractTestAction {
 			store.store(createTestSet("prefix2"));
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			List lst = store.getObjects(Book.class);
 			for (Iterator it = lst.iterator(); it.hasNext();) {
-				checkTestSet((Book)it.next());
+				checkTestSet((Book) it.next());
 			}
 			store.commitTransaction();
 		}
-		
+
 		try {
 			final Resource res = store.getResource();
 			final ArrayList bks = new ArrayList();
 			final ArrayList ws = new ArrayList();
-			for (Iterator it = res.getContents().iterator(); it.hasNext();) {
-				final Object obj = it.next();
+			for (Object obj : res.getContents()) {
 				if (obj instanceof Book) {
-					final Book bk = (Book)obj;
+					final Book bk = (Book) obj;
 					if (bk.getWriters() instanceof PersistableDelegateList) {
 						// check lazy load
-						//assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
+						// assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
 						// now load
 						assertTrue(bk.getWriters().size() == 2);
-						
+
 						// disabled as hibernate and jpox differ here
-						//assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
+						// assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
 					} else {
 						fail("Type not supported " + bk.getWriters().getClass().getName());
 					}
@@ -104,7 +112,7 @@ public class EMapAction extends AbstractTestAction {
 			assertTrue(bks.size() == 2);
 			assertTrue(ws.size() == 4);
 			for (Iterator it = bks.iterator(); it.hasNext();) {
-				final Book bk = (Book)it.next();
+				final Book bk = (Book) it.next();
 				int cntMatch = 0;
 				for (int i = 0; i < ws.size(); i++) {
 					if (bk.getCityByWriter().get(ws.get(i)) != null) {
@@ -119,8 +127,28 @@ public class EMapAction extends AbstractTestAction {
 		} catch (Exception e) {
 			throw new StoreTestException("Exception when testing with resource", e);
 		}
+
+		{
+			store.beginTransaction();
+			List lst = store.getObjects(Book.class);
+			for (Iterator it = lst.iterator(); it.hasNext();) {
+				store.deleteObject(it.next());
+			}
+			store.commitTransaction();
+		}
+
+		try {
+			store.beginTransaction();
+			final Resource res = store.getResource();
+			res.getContents().add(createTestSet("prefix1"));
+			res.getContents().add(createTestSet("prefix1"));
+			res.save(Collections.EMPTY_MAP);
+			store.commitTransaction();
+		} catch (Exception e) {
+			throw new StoreTestException("Exception when testing with resource", e);
+		}
 	}
-	
+
 	/** Create test set */
 	private Book createTestSet(String prefix) {
 		final EmapFactory factory = EmapFactory.eINSTANCE;
@@ -136,33 +164,38 @@ public class EMapAction extends AbstractTestAction {
 		bk.getKeyWords().put(prefix + "_2", prefix + "_2_value");
 		bk.getCityByWriter().put(w1, w2.getName());
 		bk.getCityByWriter().put(w2, w1.getName());
+		bk.getCategoryByDate().put(testDate, Category.COMPLEX);
 		return bk;
 	}
-	
+
 	/** Check test set */
 	private void checkTestSet(Book bk) {
 		final String prefix = bk.getTitle();
 		final ArrayList writers = new ArrayList();
-		for (Iterator it = bk.getWriters().keySet().iterator(); it.hasNext();) {
-			final String key = (String)it.next();
-			final Writer w = (Writer)bk.getWriters().get(key);
+		for (Object element : bk.getWriters().keySet()) {
+			final String key = (String) element;
+			final Writer w = bk.getWriters().get(key);
 			assertEquals(key, w.getName());
 			assertTrue(key.startsWith(bk.getTitle()));
 			writers.add(w);
 		}
 		assertEquals(2, writers.size());
-		for (Iterator itWords = bk.getKeyWords().keySet().iterator(); itWords.hasNext();) {
-			final String key = (String)itWords.next();
-			final String value = (String)bk.getKeyWords().get(key);
+		for (Object element : bk.getKeyWords().keySet()) {
+			final String key = (String) element;
+			final String value = bk.getKeyWords().get(key);
 			assertTrue(key.startsWith(prefix));
 			assertTrue(value.startsWith(key));
 			assertTrue(value.endsWith("_value"));
 		}
-		final Writer writerOne = (Writer)writers.get(0);
-		final Writer writerTwo = (Writer)writers.get(1);
-		final String c1 = (String)bk.getCityByWriter().get(writerOne);
-		final String c2 = (String)bk.getCityByWriter().get(writerTwo);
+		final Writer writerOne = (Writer) writers.get(0);
+		final Writer writerTwo = (Writer) writers.get(1);
+		final String c1 = bk.getCityByWriter().get(writerOne);
+		final String c2 = bk.getCityByWriter().get(writerTwo);
 		assertEquals(c1, writerTwo.getName());
 		assertEquals(c2, writerOne.getName());
+
+		Date dt = bk.getCategoryByDate().get(0).getKey();
+		assertTrue(Math.abs(testDate.getTime() - dt.getTime()) < ONE_DAY);
+		assertEquals(bk.getCategoryByDate().get(0).getValue(), Category.COMPLEX);
 	}
 }

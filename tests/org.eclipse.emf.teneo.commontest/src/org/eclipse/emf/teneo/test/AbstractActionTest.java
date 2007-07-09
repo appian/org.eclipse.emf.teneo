@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractActionTest.java,v 1.5 2007/06/29 07:35:44 mtaal Exp $
+ * $Id: AbstractActionTest.java,v 1.6 2007/07/09 12:54:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
  * Hibernate test based on abstract action.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class AbstractActionTest extends AbstractTest {
 	/** The action contains the real test */
@@ -79,6 +79,14 @@ public class AbstractActionTest extends AbstractTest {
 	@Override
 	public String getTestPackageName() {
 		return getTestAction().getTestPackageName();
+	}
+
+	public Properties getProperties() {
+		return properties;
+	}
+
+	public void setProperties(Properties props) {
+		properties = props;
 	}
 
 	/** Return the test package name */

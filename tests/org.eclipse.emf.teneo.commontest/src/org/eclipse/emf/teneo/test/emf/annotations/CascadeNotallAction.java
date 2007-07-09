@@ -11,12 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CascadeNotallAction.java,v 1.8 2007/06/29 07:35:43 mtaal Exp $
+ * $Id: CascadeNotallAction.java,v 1.9 2007/07/09 12:54:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.samples.emf.annotations.cascadenotall.Book;
@@ -33,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example without orphan delete or dependent element
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class CascadeNotallAction extends AbstractTestAction {
 	/**
@@ -45,9 +46,17 @@ public class CascadeNotallAction extends AbstractTestAction {
 		super(CascadenotallPackage.eINSTANCE);
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty("org.jpox.deletionPolicy", "JDO2");
+		return props;
+	}
+
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
+		store.disableDrop();
 		final CascadenotallFactory factory = CascadenotallFactory.eINSTANCE;
 
 		// create a book, writer and library
@@ -140,7 +149,7 @@ public class CascadeNotallAction extends AbstractTestAction {
 				res.save(null);
 
 				george.setName("G. Orwell"); // there was a bug in which this failed, reported by
-												// Georgi Manev
+				// Georgi Manev
 				res.save(null);
 				res.save(null);
 				res.unload();
@@ -182,7 +191,7 @@ public class CascadeNotallAction extends AbstractTestAction {
 			res.save(null);
 			lib.getWriters().remove(writer);
 			assertTrue(lib.getBooks().size() > 0); // force load of books to prevent dangling error
-													// in jpox
+			// in jpox
 			newLib.getWriters().add(writer);
 			res.save(null);
 			res.unload();

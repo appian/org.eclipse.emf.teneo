@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestAction.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: AbstractTestAction.java,v 1.4 2007/07/09 12:54:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -29,13 +29,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Abstract TestAction used in backend specific test cases.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public abstract class AbstractTestAction extends Assert {
-	// very strange but there was a compile (or runtime) error in one of the ecore packages, had to set this
+	// very strange but there was a compile (or runtime) error in one of the ecore packages, had to
+	// set this
 	static {
 		System.setProperty("org.eclipse.emf.ecore.EPackage.Registry.INSTANCE",
-				"org.eclipse.emf.ecore.impl.EPackageRegistryImpl");
+			"org.eclipse.emf.ecore.impl.EPackageRegistryImpl");
 	}
 
 	/** The epackage */
@@ -105,6 +106,5 @@ public abstract class AbstractTestAction extends Assert {
 		} else {
 			return path;
 		}
-
 	}
 }

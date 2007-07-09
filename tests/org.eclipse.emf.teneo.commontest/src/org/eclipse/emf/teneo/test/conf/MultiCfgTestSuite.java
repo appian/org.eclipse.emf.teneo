@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MultiCfgTestSuite.java,v 1.3 2007/02/01 12:35:37 mtaal Exp $
+ * $Id: MultiCfgTestSuite.java,v 1.4 2007/07/09 12:54:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class MultiCfgTestSuite extends TestSuite {
 
@@ -85,7 +85,7 @@ public class MultiCfgTestSuite extends TestSuite {
 			properties.setProperty(PersistenceOptions.PERSISTENCE_XML, xmlPersistenceMappingPath);
 			// Ignore the existing EAnnotations, since we want to test only the XML mapping.
 			properties.setProperty(PersistenceOptions.IGNORE_EANNOTATIONS, "true");
-			
+
 			TestSuite testSuite = new TestSuite(testActionClass.getName() + " (persistence.xml)");
 			testSuite.addTest(new AbstractActionTest(testAction, properties));
 			((TestSuite) suitesByCfg.get(testConfiguration)).addTest(testSuite);
@@ -98,12 +98,14 @@ public class MultiCfgTestSuite extends TestSuite {
 	}
 
 	/** Add a test class */
+	@Override
 	public void addTestSuite(Class testClass) {
 		if (AbstractTest.class.isAssignableFrom(testClass) || AbstractTestAction.class.isAssignableFrom(testClass)) {
 			for (Iterator i = suitesByCfg.keySet().iterator(); i.hasNext();) {
 				final TestConfiguration testConfiguration = (TestConfiguration) i.next();
-				addTestSuite(testClass, testConfiguration);
-				if (AbstractTestAction.class.isAssignableFrom(testClass)) {
+				if (!testConfiguration.isXml()) {
+					addTestSuite(testClass, testConfiguration);
+				} else if (AbstractTestAction.class.isAssignableFrom(testClass)) {
 					addPersistenceXmlTestSuite(testClass, testConfiguration);
 				}
 			}
@@ -114,8 +116,23 @@ public class MultiCfgTestSuite extends TestSuite {
 
 	/** Add a test action */
 	public void addTest(AbstractActionTest test) {
-		for (Iterator i = suitesByCfg.keySet().iterator(); i.hasNext();)
-			addTest(test, (TestConfiguration) i.next());
+		for (Iterator i = suitesByCfg.keySet().iterator(); i.hasNext();) {
+			final TestConfiguration tc = (TestConfiguration) i.next();
+			if (tc.isXml()) {
+				if (test.getTestAction().getPersistenceXmlPath() != null) {
+					if (test.getProperties() == null) {
+						test.setProperties(new Properties());
+					}
+					final Properties properties = test.getProperties();
+					properties.setProperty(PersistenceOptions.PERSISTENCE_XML, test.getTestAction()
+						.getPersistenceXmlPath());
+					properties.setProperty(PersistenceOptions.IGNORE_EANNOTATIONS, "true");
+					addTest(test, tc);
+				}
+			} else {
+				addTest(test, tc);
+			}
+		}
 	}
 
 	/*
@@ -123,6 +140,7 @@ public class MultiCfgTestSuite extends TestSuite {
 	 * 
 	 * @see junit.framework.TestSuite#addTest(junit.framework.Test)
 	 */
+	@Override
 	public void addTest(Test test) {
 		if (test instanceof AbstractActionTest) {
 			addTest((AbstractActionTest) test);

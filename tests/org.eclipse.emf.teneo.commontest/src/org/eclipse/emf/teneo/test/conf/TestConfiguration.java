@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: TestConfiguration.java,v 1.3 2007/03/20 23:33:38 mtaal Exp $
+ * $Id: TestConfiguration.java,v 1.4 2007/07/09 12:54:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.test.stores.TestDatabaseAdapter;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class TestConfiguration {
 
@@ -38,36 +38,44 @@ public class TestConfiguration {
 	private final boolean optimistic;
 
 	private final boolean ejb3;
-	
+
+	private final boolean xml;
+
 	/** Constructor */
-	public TestConfiguration(String name, TestDatabaseAdapter dbAdapter, InheritanceType mappingStrategy, boolean optimistic, boolean ejb3) {
+	public TestConfiguration(String name, TestDatabaseAdapter dbAdapter, InheritanceType mappingStrategy,
+			boolean optimistic, boolean ejb3, boolean xml) {
 		this.name = name;
 		this.dbAdapter = dbAdapter;
 		this.mappingStrategy = mappingStrategy;
 		this.optimistic = optimistic;
 		this.ejb3 = ejb3;
+		this.xml = xml;
 	}
 
 	/** ToString for logging */
+	@Override
 	public String toString() {
 		StringBuffer s = new StringBuffer();
-		s.append("HibernateTestConfiguration(name=").append(getName()).append(", dbAdapter=").append(getDbAdapter()).append(", ")
-				.append("mappingStrategy= ").append(getMappingStrategy().toString()).append(", ").append("optimistic= ").append(
-						isOptimistic());
+		s.append("HibernateTestConfiguration(name=").append(getName()).append(", dbAdapter=").append(getDbAdapter())
+			.append(", ").append("mappingStrategy= ").append(getMappingStrategy().toString()).append(", ").append(
+				"optimistic= ").append(isOptimistic());
 		return s.toString();
 	}
 
 	/** Hashcode computed on the basis of the contents of the configuration */
+	@Override
 	public int hashCode() {
 		return getDbAdapter().hashCode() + getMappingStrategy().hashCode() + (isOptimistic() ? 1 : 0);
 	}
 
 	/** Equal configuration */
+	@Override
 	public boolean equals(Object other) {
 		if (other instanceof TestConfiguration) {
 			TestConfiguration otherCfg = (TestConfiguration) other;
-			return otherCfg.getDbAdapter() == getDbAdapter() && otherCfg.getMappingStrategy() == getMappingStrategy()
-					&& otherCfg.isOptimistic() == isOptimistic() && otherCfg.isEjb3() == isEjb3();
+			return otherCfg.getDbAdapter() == getDbAdapter() && otherCfg.getMappingStrategy() == getMappingStrategy() &&
+					otherCfg.isOptimistic() == isOptimistic() && otherCfg.isEjb3() == isEjb3() &&
+					otherCfg.isXml() == isXml();
 		}
 		;
 		return false;
@@ -98,6 +106,13 @@ public class TestConfiguration {
 	 */
 	public boolean isEjb3() {
 		return ejb3;
+	}
+
+	/**
+	 * @return the xml
+	 */
+	public boolean isXml() {
+		return xml;
 	}
 
 }
