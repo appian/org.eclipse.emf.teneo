@@ -246,7 +246,9 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 	 */
 	protected void addFetchType(Element associationElement, FetchType fetch, boolean useProxy) {
 		// TODO: when proxies are supported the below should be changed!
-		if (useProxy) {
+		if (FetchType.EXTRA.equals(fetch)) {
+			associationElement.addAttribute("lazy", "extra");
+		} else if (useProxy) {
 			associationElement.addAttribute("lazy", FetchType.LAZY.equals(fetch) ? "true" : "false");
 		} else {
 			associationElement.addAttribute("lazy", FetchType.LAZY.equals(fetch) ? "true" : "false");
@@ -278,9 +280,11 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 		final EStructuralFeature feature =
 				((EReference) aFeature.getAnnotatedElement()).getEReferenceType().getEStructuralFeature("value");
 		final EAttribute attr = (EAttribute) ((EClass) feature.getEType()).getEStructuralFeature(mapKey.getName());
-
-		collElement.addElement("map-key").addAttribute("column", getHbmContext().trunc(mapKey.getName())).addAttribute(
-			"type", attr.getEType().getInstanceClassName());
+		final PAnnotatedEAttribute paAttribute = aFeature.getPaModel().getPAnnotated(attr);
+		final Element mapKeyElement =
+				collElement.addElement("map-key").addAttribute("column", getHbmContext().trunc(mapKey.getName()));
+		setType(paAttribute, mapKeyElement);
+// "type", attr.getEType().getInstanceClassName());
 	}
 
 	/** Add a mapkey taking into account if the key is an entity or a simple type */
@@ -298,8 +302,11 @@ abstract class AbstractAssociationMapper extends AbstractMapper {
 					getHbmContext().getInstanceClassName(referedAClass.getAnnotatedEClass()));
 			}
 		} else {
-			final String type = hbType(aref.getPaModel().getPAnnotated((EAttribute) feature));
-			collElement.addElement("map-key").addAttribute("type", type);
+// final String type = hbType(aref.getPaModel().getPAnnotated((EAttribute) feature));
+			final Element mapKey = collElement.addElement("map-key"); // .addAttribute("type",
+			// type);
+			final PAnnotatedEAttribute paAttribute = aref.getPaModel().getPAnnotated((EAttribute) feature);
+			setType(paAttribute, mapKey);
 		}
 	}
 
