@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.3 2007/07/09 12:54:58 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.4 2007/07/09 17:39:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -85,7 +85,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class DefaultAnnotator {
 
@@ -402,7 +402,8 @@ public class DefaultAnnotator {
 				}
 			}
 
-			if (aStructuralFeature.getTransient() == null && (eStructuralFeature.isVolatile() || isTransient)) {
+			if (aStructuralFeature.getTransient() == null &&
+					((!mapVolitatileFeature() && eStructuralFeature.isVolatile()) || isTransient)) {
 				log.debug("Structural feature " + eStructuralFeature.getName() +
 						" is transient, therefore adding transient annotation");
 				final Transient trans = aFactory.createTransient();
@@ -525,6 +526,11 @@ public class DefaultAnnotator {
 			}
 
 		}
+	}
+
+	/** Map the feature if it is volatile, default is false */
+	protected boolean mapVolitatileFeature() {
+		return false;
 	}
 
 	/** Add default annotation to aAttribute: these are id, basic and enum */
