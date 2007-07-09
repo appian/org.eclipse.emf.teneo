@@ -109,6 +109,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="pannotation.ecore#//FetchType">
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//FetchType/LAZY"/>
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//FetchType/EAGER"/>
+      <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//FetchType/EXTRA"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="pannotation.ecore#//GenerationType">
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//GenerationType/TABLE"/>

@@ -273,6 +273,7 @@ Package pannotation <http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation>
   Enum FetchType
     Literal LAZY = 0
     Literal EAGER = 1
+    Literal EXTRA = 2
 
   Enum GenerationType
     Literal TABLE = 0

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.17 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.18 2007/07/09 12:55:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -254,10 +254,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 */
 	public PAnnotatedEPackage getPaEPackage() {
-		if (eContainerFeatureID != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE) {
-			return null;
-		}
-		return (PAnnotatedEPackage) eContainer();
+		if (eContainerFeatureID != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE) return null;
+		return (PAnnotatedEPackage)eContainer();
 	}
 
 	/**
@@ -266,7 +264,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 */
 	public NotificationChain basicSetPaEPackage(PAnnotatedEPackage newPaEPackage, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newPaEPackage, PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newPaEPackage, PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE, msgs);
 		return msgs;
 	}
 
@@ -276,28 +274,19 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 */
 	public void setPaEPackage(PAnnotatedEPackage newPaEPackage) {
-		if (newPaEPackage != eInternalContainer() ||
-				(eContainerFeatureID != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE && newPaEPackage != null)) {
-			if (EcoreUtil.isAncestor(this, newPaEPackage)) {
+		if (newPaEPackage != eInternalContainer() || (eContainerFeatureID != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE && newPaEPackage != null)) {
+			if (EcoreUtil.isAncestor(this, newPaEPackage))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			}
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null) {
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (newPaEPackage != null) {
-				msgs =
-						((InternalEObject) newPaEPackage).eInverseAdd(this,
-							PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES, PAnnotatedEPackage.class, msgs);
-			}
+			if (newPaEPackage != null)
+				msgs = ((InternalEObject)newPaEPackage).eInverseAdd(this, PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES, PAnnotatedEPackage.class, msgs);
 			msgs = basicSetPaEPackage(newPaEPackage, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE,
-				newPaEPackage, newPaEPackage));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE, newPaEPackage, newPaEPackage));
 	}
 
 	/**
@@ -307,13 +296,11 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	public EClass getAnnotatedEClass() {
 		if (annotatedEClass != null && annotatedEClass.eIsProxy()) {
-			InternalEObject oldAnnotatedEClass = (InternalEObject) annotatedEClass;
-			annotatedEClass = (EClass) eResolveProxy(oldAnnotatedEClass);
+			InternalEObject oldAnnotatedEClass = (InternalEObject)annotatedEClass;
+			annotatedEClass = (EClass)eResolveProxy(oldAnnotatedEClass);
 			if (annotatedEClass != oldAnnotatedEClass) {
-				if (eNotificationRequired()) {
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ECLASS, oldAnnotatedEClass, annotatedEClass));
-				}
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ECLASS, oldAnnotatedEClass, annotatedEClass));
 			}
 		}
 		return annotatedEClass;
@@ -361,11 +348,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	public EList<PAnnotatedEStructuralFeature> getPaEStructuralFeatures() {
 		if (paEStructuralFeatures == null) {
-			paEStructuralFeatures =
-					new EObjectContainmentWithInverseEList<PAnnotatedEStructuralFeature>(
-						PAnnotatedEStructuralFeature.class, this,
-						PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES,
-						PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS);
+			paEStructuralFeatures = new EObjectContainmentWithInverseEList<PAnnotatedEStructuralFeature>(PAnnotatedEStructuralFeature.class, this, PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS);
 		}
 		return paEStructuralFeatures;
 	}
@@ -377,9 +360,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	public EList<AttributeOverride> getAttributeOverrides() {
 		if (attributeOverrides == null) {
-			attributeOverrides =
-					new EObjectContainmentEList<AttributeOverride>(AttributeOverride.class, this,
-						PamodelPackage.PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES);
+			attributeOverrides = new EObjectContainmentEList<AttributeOverride>(AttributeOverride.class, this, PamodelPackage.PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES);
 		}
 		return attributeOverrides;
 	}
@@ -403,15 +384,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		DiscriminatorColumn oldDiscriminatorColumn = discriminatorColumn;
 		discriminatorColumn = newDiscriminatorColumn;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification =
-					new ENotificationImpl(this, Notification.SET,
-						PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN, oldDiscriminatorColumn,
-						newDiscriminatorColumn);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN, oldDiscriminatorColumn, newDiscriminatorColumn);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -424,24 +398,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void setDiscriminatorColumn(DiscriminatorColumn newDiscriminatorColumn) {
 		if (newDiscriminatorColumn != discriminatorColumn) {
 			NotificationChain msgs = null;
-			if (discriminatorColumn != null) {
-				msgs =
-						((InternalEObject) discriminatorColumn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN, null, msgs);
-			}
-			if (newDiscriminatorColumn != null) {
-				msgs =
-						((InternalEObject) newDiscriminatorColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN, null, msgs);
-			}
+			if (discriminatorColumn != null)
+				msgs = ((InternalEObject)discriminatorColumn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN, null, msgs);
+			if (newDiscriminatorColumn != null)
+				msgs = ((InternalEObject)newDiscriminatorColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN, null, msgs);
 			msgs = basicSetDiscriminatorColumn(newDiscriminatorColumn, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN, newDiscriminatorColumn, newDiscriminatorColumn));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN, newDiscriminatorColumn, newDiscriminatorColumn));
 	}
 
 	/**
@@ -462,15 +427,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		DiscriminatorValue oldDiscriminatorValue = discriminatorValue;
 		discriminatorValue = newDiscriminatorValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification =
-					new ENotificationImpl(this, Notification.SET,
-						PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE, oldDiscriminatorValue,
-						newDiscriminatorValue);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE, oldDiscriminatorValue, newDiscriminatorValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -483,24 +441,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void setDiscriminatorValue(DiscriminatorValue newDiscriminatorValue) {
 		if (newDiscriminatorValue != discriminatorValue) {
 			NotificationChain msgs = null;
-			if (discriminatorValue != null) {
-				msgs =
-						((InternalEObject) discriminatorValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE, null, msgs);
-			}
-			if (newDiscriminatorValue != null) {
-				msgs =
-						((InternalEObject) newDiscriminatorValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE, null, msgs);
-			}
+			if (discriminatorValue != null)
+				msgs = ((InternalEObject)discriminatorValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE, null, msgs);
+			if (newDiscriminatorValue != null)
+				msgs = ((InternalEObject)newDiscriminatorValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE, null, msgs);
 			msgs = basicSetDiscriminatorValue(newDiscriminatorValue, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE, newDiscriminatorValue, newDiscriminatorValue));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE, newDiscriminatorValue, newDiscriminatorValue));
 	}
 
 	/**
@@ -521,14 +470,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		Embeddable oldEmbeddable = embeddable;
 		embeddable = newEmbeddable;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification =
-					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE,
-						oldEmbeddable, newEmbeddable);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE, oldEmbeddable, newEmbeddable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -541,24 +484,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void setEmbeddable(Embeddable newEmbeddable) {
 		if (newEmbeddable != embeddable) {
 			NotificationChain msgs = null;
-			if (embeddable != null) {
-				msgs =
-						((InternalEObject) embeddable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE, null, msgs);
-			}
-			if (newEmbeddable != null) {
-				msgs =
-						((InternalEObject) newEmbeddable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE, null, msgs);
-			}
+			if (embeddable != null)
+				msgs = ((InternalEObject)embeddable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE, null, msgs);
+			if (newEmbeddable != null)
+				msgs = ((InternalEObject)newEmbeddable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE, null, msgs);
 			msgs = basicSetEmbeddable(newEmbeddable, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE,
-				newEmbeddable, newEmbeddable));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE, newEmbeddable, newEmbeddable));
 	}
 
 	/**
@@ -579,14 +513,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		MappedSuperclass oldMappedSuperclass = mappedSuperclass;
 		mappedSuperclass = newMappedSuperclass;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification =
-					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS,
-						oldMappedSuperclass, newMappedSuperclass);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS, oldMappedSuperclass, newMappedSuperclass);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -599,24 +527,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void setMappedSuperclass(MappedSuperclass newMappedSuperclass) {
 		if (newMappedSuperclass != mappedSuperclass) {
 			NotificationChain msgs = null;
-			if (mappedSuperclass != null) {
-				msgs =
-						((InternalEObject) mappedSuperclass).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS, null, msgs);
-			}
-			if (newMappedSuperclass != null) {
-				msgs =
-						((InternalEObject) newMappedSuperclass).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS, null, msgs);
-			}
+			if (mappedSuperclass != null)
+				msgs = ((InternalEObject)mappedSuperclass).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS, null, msgs);
+			if (newMappedSuperclass != null)
+				msgs = ((InternalEObject)newMappedSuperclass).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS, null, msgs);
 			msgs = basicSetMappedSuperclass(newMappedSuperclass, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS,
-				newMappedSuperclass, newMappedSuperclass));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS, newMappedSuperclass, newMappedSuperclass));
 	}
 
 	/**
@@ -637,14 +556,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		Entity oldEntity = entity;
 		entity = newEntity;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification =
-					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__ENTITY, oldEntity,
-						newEntity);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__ENTITY, oldEntity, newEntity);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -657,24 +570,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void setEntity(Entity newEntity) {
 		if (newEntity != entity) {
 			NotificationChain msgs = null;
-			if (entity != null) {
-				msgs =
-						((InternalEObject) entity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__ENTITY, null, msgs);
-			}
-			if (newEntity != null) {
-				msgs =
-						((InternalEObject) newEntity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__ENTITY, null, msgs);
-			}
+			if (entity != null)
+				msgs = ((InternalEObject)entity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__ENTITY, null, msgs);
+			if (newEntity != null)
+				msgs = ((InternalEObject)newEntity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__ENTITY, null, msgs);
 			msgs = basicSetEntity(newEntity, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__ENTITY, newEntity,
-				newEntity));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__ENTITY, newEntity, newEntity));
 	}
 
 	/**
@@ -695,14 +599,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		IdClass oldIdClass = idClass;
 		idClass = newIdClass;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification =
-					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__ID_CLASS,
-						oldIdClass, newIdClass);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__ID_CLASS, oldIdClass, newIdClass);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -715,24 +613,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void setIdClass(IdClass newIdClass) {
 		if (newIdClass != idClass) {
 			NotificationChain msgs = null;
-			if (idClass != null) {
-				msgs =
-						((InternalEObject) idClass).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__ID_CLASS, null, msgs);
-			}
-			if (newIdClass != null) {
-				msgs =
-						((InternalEObject) newIdClass).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__ID_CLASS, null, msgs);
-			}
+			if (idClass != null)
+				msgs = ((InternalEObject)idClass).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__ID_CLASS, null, msgs);
+			if (newIdClass != null)
+				msgs = ((InternalEObject)newIdClass).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__ID_CLASS, null, msgs);
 			msgs = basicSetIdClass(newIdClass, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__ID_CLASS,
-				newIdClass, newIdClass));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__ID_CLASS, newIdClass, newIdClass));
 	}
 
 	/**
@@ -753,14 +642,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		Inheritance oldInheritance = inheritance;
 		inheritance = newInheritance;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification =
-					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__INHERITANCE,
-						oldInheritance, newInheritance);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__INHERITANCE, oldInheritance, newInheritance);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -773,24 +656,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void setInheritance(Inheritance newInheritance) {
 		if (newInheritance != inheritance) {
 			NotificationChain msgs = null;
-			if (inheritance != null) {
-				msgs =
-						((InternalEObject) inheritance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__INHERITANCE, null, msgs);
-			}
-			if (newInheritance != null) {
-				msgs =
-						((InternalEObject) newInheritance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__INHERITANCE, null, msgs);
-			}
+			if (inheritance != null)
+				msgs = ((InternalEObject)inheritance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__INHERITANCE, null, msgs);
+			if (newInheritance != null)
+				msgs = ((InternalEObject)newInheritance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__INHERITANCE, null, msgs);
 			msgs = basicSetInheritance(newInheritance, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__INHERITANCE,
-				newInheritance, newInheritance));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__INHERITANCE, newInheritance, newInheritance));
 	}
 
 	/**
@@ -800,9 +674,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	public EList<PrimaryKeyJoinColumn> getPrimaryKeyJoinColumns() {
 		if (primaryKeyJoinColumns == null) {
-			primaryKeyJoinColumns =
-					new EObjectContainmentEList<PrimaryKeyJoinColumn>(PrimaryKeyJoinColumn.class, this,
-						PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS);
+			primaryKeyJoinColumns = new EObjectContainmentEList<PrimaryKeyJoinColumn>(PrimaryKeyJoinColumn.class, this, PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS);
 		}
 		return primaryKeyJoinColumns;
 	}
@@ -814,9 +686,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	public EList<SecondaryTable> getSecondaryTables() {
 		if (secondaryTables == null) {
-			secondaryTables =
-					new EObjectContainmentEList<SecondaryTable>(SecondaryTable.class, this,
-						PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES);
+			secondaryTables = new EObjectContainmentEList<SecondaryTable>(SecondaryTable.class, this, PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES);
 		}
 		return secondaryTables;
 	}
@@ -839,14 +709,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		Table oldTable = table;
 		table = newTable;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification =
-					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__TABLE, oldTable,
-						newTable);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__TABLE, oldTable, newTable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -859,24 +723,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void setTable(Table newTable) {
 		if (newTable != table) {
 			NotificationChain msgs = null;
-			if (table != null) {
-				msgs =
-						((InternalEObject) table).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__TABLE, null, msgs);
-			}
-			if (newTable != null) {
-				msgs =
-						((InternalEObject) newTable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__TABLE, null, msgs);
-			}
+			if (table != null)
+				msgs = ((InternalEObject)table).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__TABLE, null, msgs);
+			if (newTable != null)
+				msgs = ((InternalEObject)newTable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__TABLE, null, msgs);
 			msgs = basicSetTable(newTable, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__TABLE, newTable,
-				newTable));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__TABLE, newTable, newTable));
 	}
 
 	/**
@@ -897,14 +752,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 		TableGenerator oldTableGenerator = tableGenerator;
 		tableGenerator = newTableGenerator;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification =
-					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR,
-						oldTableGenerator, newTableGenerator);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR, oldTableGenerator, newTableGenerator);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -917,24 +766,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void setTableGenerator(TableGenerator newTableGenerator) {
 		if (newTableGenerator != tableGenerator) {
 			NotificationChain msgs = null;
-			if (tableGenerator != null) {
-				msgs =
-						((InternalEObject) tableGenerator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR, null, msgs);
-			}
-			if (newTableGenerator != null) {
-				msgs =
-						((InternalEObject) newTableGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-								PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR, null, msgs);
-			}
+			if (tableGenerator != null)
+				msgs = ((InternalEObject)tableGenerator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR, null, msgs);
+			if (newTableGenerator != null)
+				msgs = ((InternalEObject)newTableGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR, null, msgs);
 			msgs = basicSetTableGenerator(newTableGenerator, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR,
-				newTableGenerator, newTableGenerator));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR, newTableGenerator, newTableGenerator));
 	}
 
 	/**
@@ -944,9 +784,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	public EList<AssociationOverride> getAssociationOverrides() {
 		if (associationOverrides == null) {
-			associationOverrides =
-					new EObjectContainmentEList<AssociationOverride>(AssociationOverride.class, this,
-						PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES);
+			associationOverrides = new EObjectContainmentEList<AssociationOverride>(AssociationOverride.class, this, PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES);
 		}
 		return associationOverrides;
 	}
@@ -961,13 +799,11 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
-				if (eInternalContainer() != null) {
+				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				}
-				return basicSetPaEPackage((PAnnotatedEPackage) otherEnd, msgs);
+				return basicSetPaEPackage((PAnnotatedEPackage)otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPaEStructuralFeatures()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPaEStructuralFeatures()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -983,9 +819,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
 				return basicSetPaEPackage(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
-				return ((InternalEList<?>) getPaEStructuralFeatures()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getPaEStructuralFeatures()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES:
-				return ((InternalEList<?>) getAttributeOverrides()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getAttributeOverrides()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN:
 				return basicSetDiscriminatorColumn(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE:
@@ -1001,15 +837,15 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__INHERITANCE:
 				return basicSetInheritance(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
-				return ((InternalEList<?>) getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
-				return ((InternalEList<?>) getSecondaryTables()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getSecondaryTables()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
 				return basicSetTable(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR:
 				return basicSetTableGenerator(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
-				return ((InternalEList<?>) getAssociationOverrides()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getAssociationOverrides()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1023,8 +859,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
-				return eInternalContainer().eInverseRemove(this, PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES,
-					PAnnotatedEPackage.class, msgs);
+				return eInternalContainer().eInverseRemove(this, PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES, PAnnotatedEPackage.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -1040,9 +875,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
 				return getPaEPackage();
 			case PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ECLASS:
-				if (resolve) {
-					return getAnnotatedEClass();
-				}
+				if (resolve) return getAnnotatedEClass();
 				return basicGetAnnotatedEClass();
 			case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
 				return getPaEStructuralFeatures();
@@ -1086,57 +919,57 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
-				setPaEPackage((PAnnotatedEPackage) newValue);
+				setPaEPackage((PAnnotatedEPackage)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ECLASS:
-				setAnnotatedEClass((EClass) newValue);
+				setAnnotatedEClass((EClass)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
 				getPaEStructuralFeatures().clear();
-				getPaEStructuralFeatures().addAll((Collection<? extends PAnnotatedEStructuralFeature>) newValue);
+				getPaEStructuralFeatures().addAll((Collection<? extends PAnnotatedEStructuralFeature>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ATTRIBUTE_OVERRIDES:
 				getAttributeOverrides().clear();
-				getAttributeOverrides().addAll((Collection<? extends AttributeOverride>) newValue);
+				getAttributeOverrides().addAll((Collection<? extends AttributeOverride>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN:
-				setDiscriminatorColumn((DiscriminatorColumn) newValue);
+				setDiscriminatorColumn((DiscriminatorColumn)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE:
-				setDiscriminatorValue((DiscriminatorValue) newValue);
+				setDiscriminatorValue((DiscriminatorValue)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE:
-				setEmbeddable((Embeddable) newValue);
+				setEmbeddable((Embeddable)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS:
-				setMappedSuperclass((MappedSuperclass) newValue);
+				setMappedSuperclass((MappedSuperclass)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ENTITY:
-				setEntity((Entity) newValue);
+				setEntity((Entity)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ID_CLASS:
-				setIdClass((IdClass) newValue);
+				setIdClass((IdClass)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__INHERITANCE:
-				setInheritance((Inheritance) newValue);
+				setInheritance((Inheritance)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
 				getPrimaryKeyJoinColumns().clear();
-				getPrimaryKeyJoinColumns().addAll((Collection<? extends PrimaryKeyJoinColumn>) newValue);
+				getPrimaryKeyJoinColumns().addAll((Collection<? extends PrimaryKeyJoinColumn>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__SECONDARY_TABLES:
 				getSecondaryTables().clear();
-				getSecondaryTables().addAll((Collection<? extends SecondaryTable>) newValue);
+				getSecondaryTables().addAll((Collection<? extends SecondaryTable>)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
-				setTable((Table) newValue);
+				setTable((Table)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR:
-				setTableGenerator((TableGenerator) newValue);
+				setTableGenerator((TableGenerator)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
 				getAssociationOverrides().clear();
-				getAssociationOverrides().addAll((Collection<? extends AssociationOverride>) newValue);
+				getAssociationOverrides().addAll((Collection<? extends AssociationOverride>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1151,10 +984,10 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
-				setPaEPackage((PAnnotatedEPackage) null);
+				setPaEPackage((PAnnotatedEPackage)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ECLASS:
-				setAnnotatedEClass((EClass) null);
+				setAnnotatedEClass((EClass)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__PA_ESTRUCTURAL_FEATURES:
 				getPaEStructuralFeatures().clear();
@@ -1163,25 +996,25 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				getAttributeOverrides().clear();
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_COLUMN:
-				setDiscriminatorColumn((DiscriminatorColumn) null);
+				setDiscriminatorColumn((DiscriminatorColumn)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__DISCRIMINATOR_VALUE:
-				setDiscriminatorValue((DiscriminatorValue) null);
+				setDiscriminatorValue((DiscriminatorValue)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__EMBEDDABLE:
-				setEmbeddable((Embeddable) null);
+				setEmbeddable((Embeddable)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__MAPPED_SUPERCLASS:
-				setMappedSuperclass((MappedSuperclass) null);
+				setMappedSuperclass((MappedSuperclass)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ENTITY:
-				setEntity((Entity) null);
+				setEntity((Entity)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ID_CLASS:
-				setIdClass((IdClass) null);
+				setIdClass((IdClass)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__INHERITANCE:
-				setInheritance((Inheritance) null);
+				setInheritance((Inheritance)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__PRIMARY_KEY_JOIN_COLUMNS:
 				getPrimaryKeyJoinColumns().clear();
@@ -1190,10 +1023,10 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				getSecondaryTables().clear();
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE:
-				setTable((Table) null);
+				setTable((Table)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__TABLE_GENERATOR:
-				setTableGenerator((TableGenerator) null);
+				setTableGenerator((TableGenerator)null);
 				return;
 			case PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES:
 				getAssociationOverrides().clear();

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.14 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.15 2007/07/09 12:55:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -1924,6 +1924,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEEnum(fetchTypeEEnum, FetchType.class, "FetchType");
 		addEEnumLiteral(fetchTypeEEnum, FetchType.LAZY);
 		addEEnumLiteral(fetchTypeEEnum, FetchType.EAGER);
+		addEEnumLiteral(fetchTypeEEnum, FetchType.EXTRA);
 
 		initEEnum(generationTypeEEnum, GenerationType.class, "GenerationType");
 		addEEnumLiteral(generationTypeEEnum, GenerationType.TABLE);

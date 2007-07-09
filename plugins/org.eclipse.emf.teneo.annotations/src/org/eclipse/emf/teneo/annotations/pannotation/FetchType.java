@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FetchType.java,v 1.7 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: FetchType.java,v 1.8 2007/07/09 12:55:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -40,7 +40,15 @@ public enum FetchType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	EAGER(1, "EAGER", "EAGER");
+	EAGER(1, "EAGER", "EAGER"), /**
+	 * The '<em><b>EXTRA</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EXTRA_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	EXTRA(2, "EXTRA", "EXTRA");
 
 	/**
 	 * The '<em><b>LAZY</b></em>' literal value.
@@ -73,6 +81,21 @@ public enum FetchType implements Enumerator {
 	public static final int EAGER_VALUE = 1;
 
 	/**
+	 * The '<em><b>EXTRA</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>EXTRA</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #EXTRA
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EXTRA_VALUE = 2;
+
+	/**
 	 * An array of all the '<em><b>Fetch Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -82,6 +105,7 @@ public enum FetchType implements Enumerator {
 		new FetchType[] {
 			LAZY,
 			EAGER,
+			EXTRA,
 		};
 
 	/**
@@ -134,6 +158,7 @@ public enum FetchType implements Enumerator {
 		switch (value) {
 			case LAZY_VALUE: return LAZY;
 			case EAGER_VALUE: return EAGER;
+			case EXTRA_VALUE: return EXTRA;
 		}
 		return null;
 	}

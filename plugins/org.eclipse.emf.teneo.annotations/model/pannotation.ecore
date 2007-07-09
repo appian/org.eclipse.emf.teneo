@@ -414,6 +414,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="FetchType">
     <eLiterals name="LAZY"/>
     <eLiterals name="EAGER" value="1"/>
+    <eLiterals name="EXTRA" value="2" literal="EXTRA"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="GenerationType">
     <eLiterals name="TABLE"/>
