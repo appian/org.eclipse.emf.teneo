@@ -14,6 +14,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference generaltest.ecore#//Address/country"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference generaltest.ecore#//Address/city"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference generaltest.ecore#//Address/tc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute generaltest.ecore#//Address/volatileString"/>
     </genClasses>
     <genClasses ecoreClass="generaltest.ecore#//Contact">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute generaltest.ecore#//Contact/name"/>

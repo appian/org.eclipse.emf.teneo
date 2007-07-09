@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Address.java,v 1.1 2007/07/04 19:29:56 mtaal Exp $
+ * $Id: Address.java,v 1.2 2007/07/09 17:39:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.generaltest;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.issues.generaltest.Address#getCountry <em>Country</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.issues.generaltest.Address#getCity <em>City</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.issues.generaltest.Address#getTc <em>Tc</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.issues.generaltest.Address#getVolatileString <em>Volatile String</em>}</li>
  * </ul>
  * </p>
  *
@@ -170,5 +171,31 @@ public interface Address extends EObject {
 	 * @generated
 	 */
 	EList<TC> getTc();
+
+	/**
+	 * Returns the value of the '<em><b>Volatile String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Volatile String</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Volatile String</em>' attribute.
+	 * @see #setVolatileString(String)
+	 * @see org.eclipse.emf.teneo.samples.issues.generaltest.GeneralTestPackage#getAddress_VolatileString()
+	 * @model volatile="true"
+	 * @generated
+	 */
+	String getVolatileString();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.issues.generaltest.Address#getVolatileString <em>Volatile String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Volatile String</em>' attribute.
+	 * @see #getVolatileString()
+	 * @generated
+	 */
+	void setVolatileString(String value);
 
 } // Address

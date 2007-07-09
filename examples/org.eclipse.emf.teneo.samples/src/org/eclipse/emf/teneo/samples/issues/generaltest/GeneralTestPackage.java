@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GeneralTestPackage.java,v 1.1 2007/07/04 19:29:56 mtaal Exp $
+ * $Id: GeneralTestPackage.java,v 1.2 2007/07/09 17:39:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.generaltest;
 
@@ -124,13 +124,22 @@ public interface GeneralTestPackage extends EPackage {
 	int ADDRESS__TC = 5;
 
 	/**
+	 * The feature id for the '<em><b>Volatile String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS__VOLATILE_STRING = 6;
+
+	/**
 	 * The number of structural features of the '<em>Address</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADDRESS_FEATURE_COUNT = 6;
+	int ADDRESS_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.issues.generaltest.impl.ContactImpl <em>Contact</em>}' class.
@@ -371,6 +380,17 @@ public interface GeneralTestPackage extends EPackage {
 	EReference getAddress_Tc();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.issues.generaltest.Address#getVolatileString <em>Volatile String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Volatile String</em>'.
+	 * @see org.eclipse.emf.teneo.samples.issues.generaltest.Address#getVolatileString()
+	 * @see #getAddress()
+	 * @generated
+	 */
+	EAttribute getAddress_VolatileString();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.issues.generaltest.Contact <em>Contact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -576,6 +596,14 @@ public interface GeneralTestPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ADDRESS__TC = eINSTANCE.getAddress_Tc();
+
+		/**
+		 * The meta object literal for the '<em><b>Volatile String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDRESS__VOLATILE_STRING = eINSTANCE.getAddress_VolatileString();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.issues.generaltest.impl.ContactImpl <em>Contact</em>}' class.

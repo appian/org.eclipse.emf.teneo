@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GeneralTestPackageImpl.java,v 1.1 2007/07/04 19:29:56 mtaal Exp $
+ * $Id: GeneralTestPackageImpl.java,v 1.2 2007/07/09 17:39:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.generaltest.impl;
 
@@ -206,6 +206,15 @@ public class GeneralTestPackageImpl extends EPackageImpl implements GeneralTestP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAddress_VolatileString() {
+		return (EAttribute)addressEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContact() {
 		return contactEClass;
 	}
@@ -344,6 +353,7 @@ public class GeneralTestPackageImpl extends EPackageImpl implements GeneralTestP
 		createEReference(addressEClass, ADDRESS__COUNTRY);
 		createEReference(addressEClass, ADDRESS__CITY);
 		createEReference(addressEClass, ADDRESS__TC);
+		createEAttribute(addressEClass, ADDRESS__VOLATILE_STRING);
 
 		contactEClass = createEClass(CONTACT);
 		createEAttribute(contactEClass, CONTACT__NAME);
@@ -400,6 +410,7 @@ public class GeneralTestPackageImpl extends EPackageImpl implements GeneralTestP
 		initEReference(getAddress_Country(), this.getCountry(), null, "country", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAddress_City(), this.getCity(), null, "city", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAddress_Tc(), this.getTC(), this.getTC_Address(), "tc", null, 0, -1, Address.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddress_VolatileString(), ecorePackage.getEString(), "volatileString", null, 0, 1, Address.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(contactEClass, Contact.class, "Contact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContact_Name(), ecorePackage.getEString(), "name", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

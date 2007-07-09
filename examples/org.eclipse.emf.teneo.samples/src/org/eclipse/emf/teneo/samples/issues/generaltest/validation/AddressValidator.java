@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressValidator.java,v 1.1 2007/07/04 19:29:56 mtaal Exp $
+ * $Id: AddressValidator.java,v 1.2 2007/07/09 17:39:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.generaltest.validation;
 
@@ -33,6 +33,8 @@ public interface AddressValidator {
 	boolean validateCity(City value);
 
 	boolean validateTc(EList<TC> value);
+
+	boolean validateVolatileString(String value);
 
 	boolean validateTc(TC value);
 }

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.1 2007/07/04 19:29:56 mtaal Exp $
+ * $Id: AddressImpl.java,v 1.2 2007/07/09 17:39:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.generaltest.impl;
 
@@ -40,6 +40,7 @@ import org.eclipse.emf.teneo.samples.issues.generaltest.TC;
  *   <li>{@link org.eclipse.emf.teneo.samples.issues.generaltest.impl.AddressImpl#getCountry <em>Country</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.issues.generaltest.impl.AddressImpl#getCity <em>City</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.issues.generaltest.impl.AddressImpl#getTc <em>Tc</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.issues.generaltest.impl.AddressImpl#getVolatileString <em>Volatile String</em>}</li>
  * </ul>
  * </p>
  *
@@ -117,6 +118,16 @@ public class AddressImpl extends EObjectImpl implements Address {
 	protected EList<TC> tc;
 
 	/**
+	 * The default value of the '{@link #getVolatileString() <em>Volatile String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVolatileString()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VOLATILE_STRING_EDEFAULT = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -152,8 +163,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, GeneralTestPackage.ADDRESS__NAME, oldName, name));
+		}
 	}
 
 	/**
@@ -163,7 +175,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 */
 	public EList<Contact> getContacts() {
 		if (contacts == null) {
-			contacts = new EObjectContainmentWithInverseEList<Contact>(Contact.class, this, GeneralTestPackage.ADDRESS__CONTACTS, GeneralTestPackage.CONTACT__ADDRESS);
+			contacts =
+					new EObjectContainmentWithInverseEList<Contact>(Contact.class, this,
+						GeneralTestPackage.ADDRESS__CONTACTS, GeneralTestPackage.CONTACT__ADDRESS);
 		}
 		return contacts;
 	}
@@ -175,11 +189,13 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 */
 	public State getState() {
 		if (state != null && state.eIsProxy()) {
-			InternalEObject oldState = (InternalEObject)state;
-			state = (State)eResolveProxy(oldState);
+			InternalEObject oldState = (InternalEObject) state;
+			state = (State) eResolveProxy(oldState);
 			if (state != oldState) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GeneralTestPackage.ADDRESS__STATE, oldState, state));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GeneralTestPackage.ADDRESS__STATE,
+						oldState, state));
+				}
 			}
 		}
 		return state;
@@ -202,8 +218,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 	public void setState(State newState) {
 		State oldState = state;
 		state = newState;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, GeneralTestPackage.ADDRESS__STATE, oldState, state));
+		}
 	}
 
 	/**
@@ -213,11 +230,13 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 */
 	public Country getCountry() {
 		if (country != null && country.eIsProxy()) {
-			InternalEObject oldCountry = (InternalEObject)country;
-			country = (Country)eResolveProxy(oldCountry);
+			InternalEObject oldCountry = (InternalEObject) country;
+			country = (Country) eResolveProxy(oldCountry);
 			if (country != oldCountry) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GeneralTestPackage.ADDRESS__COUNTRY, oldCountry, country));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GeneralTestPackage.ADDRESS__COUNTRY,
+						oldCountry, country));
+				}
 			}
 		}
 		return country;
@@ -240,8 +259,10 @@ public class AddressImpl extends EObjectImpl implements Address {
 	public void setCountry(Country newCountry) {
 		Country oldCountry = country;
 		country = newCountry;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeneralTestPackage.ADDRESS__COUNTRY, oldCountry, country));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, GeneralTestPackage.ADDRESS__COUNTRY, oldCountry,
+				country));
+		}
 	}
 
 	/**
@@ -262,8 +283,13 @@ public class AddressImpl extends EObjectImpl implements Address {
 		City oldCity = city;
 		city = newCity;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeneralTestPackage.ADDRESS__CITY, oldCity, newCity);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification =
+					new ENotificationImpl(this, Notification.SET, GeneralTestPackage.ADDRESS__CITY, oldCity, newCity);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -276,15 +302,23 @@ public class AddressImpl extends EObjectImpl implements Address {
 	public void setCity(City newCity) {
 		if (newCity != city) {
 			NotificationChain msgs = null;
-			if (city != null)
-				msgs = ((InternalEObject)city).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeneralTestPackage.ADDRESS__CITY, null, msgs);
-			if (newCity != null)
-				msgs = ((InternalEObject)newCity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeneralTestPackage.ADDRESS__CITY, null, msgs);
+			if (city != null) {
+				msgs =
+						((InternalEObject) city).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
+								GeneralTestPackage.ADDRESS__CITY, null, msgs);
+			}
+			if (newCity != null) {
+				msgs =
+						((InternalEObject) newCity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
+								GeneralTestPackage.ADDRESS__CITY, null, msgs);
+			}
 			msgs = basicSetCity(newCity, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, GeneralTestPackage.ADDRESS__CITY, newCity, newCity));
+		}
 	}
 
 	/**
@@ -294,9 +328,37 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 */
 	public EList<TC> getTc() {
 		if (tc == null) {
-			tc = new EObjectContainmentWithInverseEList<TC>(TC.class, this, GeneralTestPackage.ADDRESS__TC, GeneralTestPackage.TC__ADDRESS);
+			tc =
+					new EObjectContainmentWithInverseEList<TC>(TC.class, this, GeneralTestPackage.ADDRESS__TC,
+						GeneralTestPackage.TC__ADDRESS);
 		}
 		return tc;
+	}
+
+	private String volatileString = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getVolatileString() {
+		return volatileString;
+// // TODO: implement this method to return the 'Volatile String' attribute
+// // Ensure that you remove @generated or mark it @generated NOT
+// throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVolatileString(String newVolatileString) {
+		volatileString = newVolatileString;
+// // TODO: implement this method to set the 'Volatile String' attribute
+// // Ensure that you remove @generated or mark it @generated NOT
+// throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -309,9 +371,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GeneralTestPackage.ADDRESS__CONTACTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getContacts()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getContacts()).basicAdd(otherEnd, msgs);
 			case GeneralTestPackage.ADDRESS__TC:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTc()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTc()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -325,11 +387,11 @@ public class AddressImpl extends EObjectImpl implements Address {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GeneralTestPackage.ADDRESS__CONTACTS:
-				return ((InternalEList<?>)getContacts()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getContacts()).basicRemove(otherEnd, msgs);
 			case GeneralTestPackage.ADDRESS__CITY:
 				return basicSetCity(null, msgs);
 			case GeneralTestPackage.ADDRESS__TC:
-				return ((InternalEList<?>)getTc()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getTc()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -347,15 +409,21 @@ public class AddressImpl extends EObjectImpl implements Address {
 			case GeneralTestPackage.ADDRESS__CONTACTS:
 				return getContacts();
 			case GeneralTestPackage.ADDRESS__STATE:
-				if (resolve) return getState();
+				if (resolve) {
+					return getState();
+				}
 				return basicGetState();
 			case GeneralTestPackage.ADDRESS__COUNTRY:
-				if (resolve) return getCountry();
+				if (resolve) {
+					return getCountry();
+				}
 				return basicGetCountry();
 			case GeneralTestPackage.ADDRESS__CITY:
 				return getCity();
 			case GeneralTestPackage.ADDRESS__TC:
 				return getTc();
+			case GeneralTestPackage.ADDRESS__VOLATILE_STRING:
+				return getVolatileString();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -370,24 +438,27 @@ public class AddressImpl extends EObjectImpl implements Address {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GeneralTestPackage.ADDRESS__NAME:
-				setName((String)newValue);
+				setName((String) newValue);
 				return;
 			case GeneralTestPackage.ADDRESS__CONTACTS:
 				getContacts().clear();
-				getContacts().addAll((Collection<? extends Contact>)newValue);
+				getContacts().addAll((Collection<? extends Contact>) newValue);
 				return;
 			case GeneralTestPackage.ADDRESS__STATE:
-				setState((State)newValue);
+				setState((State) newValue);
 				return;
 			case GeneralTestPackage.ADDRESS__COUNTRY:
-				setCountry((Country)newValue);
+				setCountry((Country) newValue);
 				return;
 			case GeneralTestPackage.ADDRESS__CITY:
-				setCity((City)newValue);
+				setCity((City) newValue);
 				return;
 			case GeneralTestPackage.ADDRESS__TC:
 				getTc().clear();
-				getTc().addAll((Collection<? extends TC>)newValue);
+				getTc().addAll((Collection<? extends TC>) newValue);
+				return;
+			case GeneralTestPackage.ADDRESS__VOLATILE_STRING:
+				setVolatileString((String) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -408,16 +479,19 @@ public class AddressImpl extends EObjectImpl implements Address {
 				getContacts().clear();
 				return;
 			case GeneralTestPackage.ADDRESS__STATE:
-				setState((State)null);
+				setState((State) null);
 				return;
 			case GeneralTestPackage.ADDRESS__COUNTRY:
-				setCountry((Country)null);
+				setCountry((Country) null);
 				return;
 			case GeneralTestPackage.ADDRESS__CITY:
-				setCity((City)null);
+				setCity((City) null);
 				return;
 			case GeneralTestPackage.ADDRESS__TC:
 				getTc().clear();
+				return;
+			case GeneralTestPackage.ADDRESS__VOLATILE_STRING:
+				setVolatileString(VOLATILE_STRING_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -443,6 +517,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 				return city != null;
 			case GeneralTestPackage.ADDRESS__TC:
 				return tc != null && !tc.isEmpty();
+			case GeneralTestPackage.ADDRESS__VOLATILE_STRING:
+				return VOLATILE_STRING_EDEFAULT == null ? getVolatileString() != null : !VOLATILE_STRING_EDEFAULT
+					.equals(getVolatileString());
 		}
 		return super.eIsSet(featureID);
 	}
@@ -454,7 +531,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
@@ -463,4 +542,4 @@ public class AddressImpl extends EObjectImpl implements Address {
 		return result.toString();
 	}
 
-} //AddressImpl
+} // AddressImpl
