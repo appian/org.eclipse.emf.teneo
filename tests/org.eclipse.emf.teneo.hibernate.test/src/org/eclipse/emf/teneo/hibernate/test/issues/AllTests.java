@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class AllTests {
 
@@ -38,12 +38,12 @@ public class AllTests {
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed
 					.instance().getConfigurations());
 
-		suite.addTestSuite(TransientOtmAction.class);
+		suite.addTestSuite(GeneralTestAction.class);
 		if (true) {
 			return suite;
 		}
 
-		suite.addTestSuite(GeneralTestAction.class);
+		suite.addTestSuite(TransientOtmAction.class);
 		suite.addTestSuite(UpdateAction.class);
 		suite.addTestSuite(MTMSameAction.class);
 		suite.addTestSuite(MultipleInheritanceAction.class);
