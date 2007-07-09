@@ -56,6 +56,12 @@ public class HibernateDefaultAnnotator extends DefaultAnnotator {
 	/** Add index to foreign key */
 	private boolean optionAddIndexToForeignKey = false;
 
+	/** Map the feature if it is volatile, default is false */
+	@Override
+	protected boolean mapVolitatileFeature() {
+		return true;
+	}
+
 	/** Pick up default cache strategy and continue with the rest */
 	@Override
 	protected void setLocalOptions(PersistenceOptions po) {
