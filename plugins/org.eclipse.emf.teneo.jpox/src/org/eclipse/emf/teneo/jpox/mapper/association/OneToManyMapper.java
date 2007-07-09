@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.10 2007/07/04 19:29:14 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.11 2007/07/09 12:53:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class OneToManyMapper extends AssociationMapper {
@@ -76,7 +76,7 @@ public class OneToManyMapper extends AssociationMapper {
 		// item from the list.
 		// -> result item points back to the list but is not present anymore in the list
 		if (otm.getMappedBy() != null && !aReference.getAnnotatedEReference().isContainment()) {
-			// field.addAttribute("mapped-by", otm.getMappedBy());
+			field.addAttribute("mapped-by", otm.getMappedBy());
 		}
 
 		// collection element is present befpre join element
@@ -137,10 +137,17 @@ public class OneToManyMapper extends AssociationMapper {
 		if (embedded) {
 			// do nothing, embedded is dependent anyway
 		} else if (cascade.contains(CascadeType.ALL) || MappingUtil.isGroup(eReference)) { // cascadeRemove
-																							// ||
+			// ||
 			collection.addAttribute("dependent-element", "true");
 		} else {
 			collection.addAttribute("dependent-element", "false");
+		}
+
+		if (eReference.getEOpposite() == null && !useJoin && aReference.getJoinColumns() != null &&
+				aReference.getJoinColumns().size() > 0) {
+			final Element element = field.addElement("element");
+			// Element elemElement = field.addElement("element");
+			mappingContext.getJoinColumnMapper().map(aReference.getJoinColumns(), element);
 		}
 
 		// add order
@@ -159,11 +166,6 @@ public class OneToManyMapper extends AssociationMapper {
 			field.addAttribute("delete-action", "cascade");
 		} else { // restrict foreign-key constraint in all other cases
 			field.addAttribute("delete-action", "restrict");
-		}
-
-		if (!useJoin && aReference.getJoinColumns() != null && aReference.getJoinColumns().size() > 0) {
-			// Element elemElement = field.addElement("element");
-			mappingContext.getJoinColumnMapper().map(aReference.getJoinColumns(), field);
 		}
 
 		// do foreign key

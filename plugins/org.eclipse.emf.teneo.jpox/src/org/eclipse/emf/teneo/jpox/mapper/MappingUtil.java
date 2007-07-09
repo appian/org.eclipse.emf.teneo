@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class MappingUtil {
@@ -130,6 +130,10 @@ public class MappingUtil {
 		} else {
 			field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key", "cache-lazy-loading")
 				.addAttribute("value", "true");
+			if (ft.equals(FetchType.EXTRA)) {
+				field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key", "cache")
+					.addAttribute("value", "false");
+			}
 		}
 	}
 

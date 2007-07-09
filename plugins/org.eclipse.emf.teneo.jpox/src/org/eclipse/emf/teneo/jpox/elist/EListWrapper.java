@@ -9,6 +9,7 @@
 package org.eclipse.emf.teneo.jpox.elist;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -37,6 +38,7 @@ import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.AssertUtil;
+import org.eclipse.emf.teneo.util.FieldUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.jpox.AbstractPersistenceManager;
 import org.jpox.StateManager;
@@ -57,7 +59,7 @@ import org.jpox.store.query.ResultObjectFactory;
  * jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $ $Date: 2007/04/21 09:23:48 $
+ * @version $Revision: 1.12 $ $Date: 2007/07/09 12:53:42 $
  */
 
 public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryable, SCOList {
@@ -88,6 +90,9 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	/** Is true if this list contains unidentified Objects */
 	private final boolean isObjectList;
 
+	/** The EOpposite if any */
+	private EReference eOpposite;
+
 	/**
 	 * Constructor, using the StateManager of the "owner" and the field name.
 	 * 
@@ -98,6 +103,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 */
 	public EListWrapper(StateManager ownerSM, String fieldName) {
 		this(ownerSM, fieldName, new ArrayList<E>());
+		setEOpposite();
 	}
 
 	/**
@@ -109,17 +115,15 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 *            The name of the field of the SCO.
 	 */
 	public EListWrapper(StateManager ownerSM, String fieldName, List<E> list) {
-		super((InternalEObject) ownerSM.getObject(), StoreUtil.getEStructuralFeature(
-			(InternalEObject) ownerSM.getObject(), fieldName), new ArrayList<E>(list));
+		super((InternalEObject) ownerSM.getObject(), StoreUtil.getEStructuralFeature((InternalEObject) ownerSM
+			.getObject(), fieldName), new ArrayList<E>(list));
 
-		AssertUtil.assertTrue("The delegate may not be an elistwrapper",
-			!(getDelegate() instanceof EListWrapper));
+		AssertUtil.assertTrue("The delegate may not be an elistwrapper", !(getDelegate() instanceof EListWrapper));
 
 		stateManager = ownerSM;
 
 		containmentList =
-				getEStructuralFeature() instanceof EAttribute
-						|| ((EReference) getEStructuralFeature()).isContainment();
+				getEStructuralFeature() instanceof EAttribute || ((EReference) getEStructuralFeature()).isContainment();
 		jdoDelegate = new JPOXArrayList(ownerSM, fieldName);
 		elistFieldName = fieldName;
 
@@ -130,6 +134,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 		if (jdoDelegate.isLoaded()) {
 			load();
 		}
+		setEOpposite();
 	}
 
 	/**
@@ -140,28 +145,43 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * @param fieldName
 	 *            The name of the field of the SCO.
 	 */
-	private EListWrapper(EListWrapper<E> copyFrom) {
-		super((InternalEObject) copyFrom.getEObject(), copyFrom.getEStructuralFeature(),
-			new ArrayList<E>());
+	protected EListWrapper(EListWrapper<E> copyFrom) {
+		super((InternalEObject) copyFrom.getEObject(), copyFrom.getEStructuralFeature(), new ArrayList<E>());
 		containmentList = copyFrom.containmentList;
 		jdoDelegate = new JPOXArrayList(copyFrom.stateManager, copyFrom.elistFieldName);
 		isEObjectList = copyFrom.isEObjectList;
 		isObjectList = copyFrom.isObjectList;
 		log.debug("Cloned elist: " + getLogString());
+		setEOpposite();
+	}
+
+	/** Sets the eOpposite */
+	private void setEOpposite() {
+		// there are also many eattributes
+		if (!(getEStructuralFeature() instanceof EReference)) {
+			return;
+		}
+		final EReference eref = (EReference) getEStructuralFeature();
+		eOpposite = eref.getEOpposite();
 	}
 
 	/** Nullify the delegate and stateManager before serializing */
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 		jdoDelegate = null;
 		stateManager = null;
+		eOpposite = null;
 		additionalWriteObject();
 		out.defaultWriteObject();
 	}
 
 	/** Replace normal EObject with AnyTypeImpl */
 	private Object replaceForAnyType(Object obj) {
-		if (isEObjectList) return replaceForAnyTypeEObject(obj);
-		if (isObjectList) return replaceForAnyTypeObject(obj);
+		if (isEObjectList) {
+			return replaceForAnyTypeEObject(obj);
+		}
+		if (isObjectList) {
+			return replaceForAnyTypeObject(obj);
+		}
 
 		return obj; // note that an exception can not be thrown because the
 		// replace is always tried
@@ -176,7 +196,9 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	private Object replaceForAnyTypeObject(Object obj) {
 		assert (isObjectList);
 
-		if (jdoDelegate == null) return obj; // do this at attach
+		if (jdoDelegate == null) {
+			return obj; // do this at attach
+		}
 
 		if (obj instanceof AnyTypeObject) {
 			return obj;
@@ -209,8 +231,12 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * Method to detach the elements of this list.
 	 */
 	public void detach(FetchPlanState state) {
-		if (jdoDelegate == null) return;
-		if (!isLoaded()) return;
+		if (jdoDelegate == null) {
+			return;
+		}
+		if (!isLoaded()) {
+			return;
+		}
 
 		load();
 		jdoDelegate.detach(state);
@@ -237,8 +263,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 				detached.add(null);
 			} else {
 				if (object instanceof PersistenceCapable) {
-					detached.add((E) stateManager.getPersistenceManager().detachCopyInternal(
-						object, state));
+					detached.add((E) stateManager.getPersistenceManager().detachCopyInternal(object, state));
 				} else {
 					detached.add((E) object);
 				}
@@ -282,9 +307,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 		Object[] values = toArray();
 		for (Object element : values) {
 			if (element != null && element instanceof PersistenceCapable) {
-				StateManager sm =
-						stateManager.getPersistenceManager().findStateManager(
-							(PersistenceCapable) element);
+				StateManager sm = stateManager.getPersistenceManager().findStateManager((PersistenceCapable) element);
 				if (sm != null) { // already detached
 					sm.runReachability(reachables);
 				}
@@ -295,6 +318,11 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	/** Set method for SCO.set */
 	public Object set(int arg0, Object arg1, boolean arg2) {
 		return jdoDelegate.set(arg0, arg1, arg2);
+	}
+
+	/** For now returns the same as isLoaded */
+	public boolean isInitialized() {
+		return isLoaded();
 	}
 
 	// ----------------------- Implementation of SCO methods -------------------
@@ -308,7 +336,9 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	/** Returns the persistence manager from the owner */
 	private PersistenceManager getPM() {
 		final PersistenceCapable pc = (PersistenceCapable) getEObject();
-		if (!pc.jdoIsDetached()) return pc.jdoGetPersistenceManager();
+		if (!pc.jdoIsDetached()) {
+			return pc.jdoGetPersistenceManager();
+		}
 		throw new JpoxStoreException("This method may not be called if the elist is detached");
 	}
 
@@ -366,7 +396,9 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * Utility to mark the object as dirty
 	 */
 	public void makeDirty() {
-		if (jdoDelegate != null) jdoDelegate.makeDirty();
+		if (jdoDelegate != null) {
+			jdoDelegate.makeDirty();
+		}
 	}
 
 	/**
@@ -437,8 +469,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 		final Iterator iter = c.iterator();
 		while (iter.hasNext()) {
 			final PersistenceCapable detachedElement = (PersistenceCapable) iter.next();
-			attachedElements.add(((AbstractPersistenceManager) getPM()).attachCopy(detachedElement,
-				false));
+			attachedElements.add(((AbstractPersistenceManager) getPM()).attachCopy(detachedElement, false));
 		}
 
 		log.debug("Attaching " + attachedElements.size() + " objects to elist " + getLogString());
@@ -469,8 +500,8 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * @return The ResultObjectFactory
 	 */
 	@SuppressWarnings("unchecked")
-	public synchronized ResultObjectFactory newResultObjectFactory(QueryExpression stmt,
-			boolean ignoreCache, Class resultClass, boolean useFetchPlan) {
+	public synchronized ResultObjectFactory newResultObjectFactory(QueryExpression stmt, boolean ignoreCache,
+			Class resultClass, boolean useFetchPlan) {
 		if (jdoDelegate == null) {
 			throw new QueryUnownedSCOException();
 		}
@@ -532,8 +563,7 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 		AssertUtil.assertTrue("EList " + getLogString() + " is already loaded", !isLoaded());
 
 		final Resource res = getEObject().eResource();
-		final boolean setLoading =
-				res != null && res instanceof JPOXResource && !((StoreResource) res).isLoading();
+		final boolean setLoading = res != null && res instanceof JPOXResource && !((StoreResource) res).isLoading();
 		if (setLoading) {
 			((StoreResource) res).setIsLoading(true);
 		}
@@ -560,8 +590,8 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 			final Object child = it.next();
 			if (containmentList) {
 				EContainerRepairControl.repair(getEObject(), child, getEStructuralFeature());
-			} else if (res != null && res instanceof ResourceImpl && child instanceof EObject
-					&& ((EObject) child).eResource() == null) {
+			} else if (res != null && res instanceof ResourceImpl && child instanceof EObject &&
+					((EObject) child).eResource() == null) {
 				// attach the new objects so that they are adapted when
 				// required
 				// true is passed although this is not containment, need to do that
@@ -591,7 +621,36 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 */
 	@Override
 	protected void didAdd(int index, E newObject) {
-		if (jdoDelegate != null) jdoDelegate.add(index, replaceForAnyType(newObject));
+		if (jdoDelegate != null) {
+			// check if there is an opposite set, jpox will automatically set the
+			// other side, however this is without notifications and after didAdd
+			// emf will also do inverseAdd. Therefor it seems better to reset the
+			// set eOpposite back to null and then let emf set it again.
+			// note that this method uses direct field access....
+
+			// TODO: the same repair has to be done on the didRemove side
+			// do not do this for mtm because these do not have mapped-by set, mtm are always mapped
+			// using two separate join tables.
+			if (eOpposite != null && !eOpposite.isMany()) {
+				final Object oppValueOld = ((EObject) newObject).eGet(eOpposite);
+				jdoDelegate.add(index, replaceForAnyType(newObject));
+				final Object oppValueNew = ((EObject) newObject).eGet(eOpposite);
+				if (oppValueNew != oppValueOld) {
+					// the new value should be the owner
+					assert (getOwner() == oppValueNew);
+					// now set the owner back to old value because this is handled by EMF
+					try {
+						final Field f = FieldUtil.getField(newObject.getClass(), eOpposite.getName());
+						f.set(newObject, oppValueOld);
+					} catch (Exception e) {
+						throw new JpoxStoreException("Exception while directly setting field " + eOpposite.getName(), e);
+					}
+				}
+			} else {
+				jdoDelegate.add(index, replaceForAnyType(newObject));
+			}
+
+		}
 		super.didAdd(index, newObject);
 	}
 
@@ -602,7 +661,9 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 */
 	@Override
 	protected void didChange() {
-		if (jdoDelegate != null) jdoDelegate.makeDirty();
+		if (jdoDelegate != null) {
+			jdoDelegate.makeDirty();
+		}
 		super.didChange();
 	}
 
@@ -613,9 +674,13 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 */
 	@Override
 	protected void didClear(int size, Object[] oldObjects) {
-		if (oldObjects == null) return;
+		if (oldObjects == null) {
+			return;
+		}
 
-		if (jdoDelegate != null) jdoDelegate.clear();
+		if (jdoDelegate != null) {
+			jdoDelegate.clear();
+		}
 
 		// don't do super do clear because it calls didremveo again
 		// super.didClear(size, oldObjects);
@@ -674,10 +739,27 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 		// remove on the basis
 		// index is chosen
 		if (jdoDelegate != null) {
-			Object obj = jdoDelegate.remove(index);
+			Object obj;
+			if (eOpposite != null && !eOpposite.isMany()) {
+				final Object oppValueOld = ((EObject) oldObject).eGet(eOpposite);
+				obj = jdoDelegate.remove(index);
+				final Object oppValueNew = ((EObject) oldObject).eGet(eOpposite);
+				if (oppValueNew != oppValueOld) {
+					// the new value should be the owner
+					assert (getOwner() == oppValueNew);
+					// now set the owner back to the old value because this is handled by EMF
+					try {
+						final Field f = FieldUtil.getField(oldObject.getClass(), eOpposite.getName());
+						f.set(oldObject, oppValueOld);
+					} catch (Exception e) {
+						throw new JpoxStoreException("Exception while directly setting field " + eOpposite.getName(), e);
+					}
+				}
+			} else {
+				obj = jdoDelegate.remove(index);
+			}
 
-			if (containmentList && !isOwnerDetached() && obj instanceof PersistenceCapable
-					&& owner.eResource() == null) {
+			if (containmentList && !isOwnerDetached() && obj instanceof PersistenceCapable && owner.eResource() == null) {
 				// only remove if not working within a resource because the resource will handle the
 				// remove then
 				PersistenceCapable pc = (PersistenceCapable) oldObject;
@@ -729,9 +811,13 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 	 * @see org.jpox.sco.SCOContainer#loadFieldsInFetchPlan(org.jpox.state.FetchPlanState)
 	 */
 	public void loadFieldsInFetchPlan(FetchPlanState arg0) {
-		if (!isLoaded()) return;
+		if (!isLoaded()) {
+			return;
+		}
 
-		if (stateManager == null) return;
+		if (stateManager == null) {
+			return;
+		}
 		Object[] values = toArray();
 		for (Object element : values) {
 			if (element != null && element instanceof PersistenceCapable) {

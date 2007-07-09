@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapWrapper.java,v 1.6 2007/03/21 20:40:20 mtaal Exp $
+ * $Id: FeatureMapWrapper.java,v 1.7 2007/07/09 12:53:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -63,7 +63,7 @@ import org.jpox.util.ClassUtils;
  * to use the backingstore as the delegate because the list can be detached.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ $Date: 2007/03/21 20:40:20 $
+ * @version $Revision: 1.7 $ $Date: 2007/07/09 12:53:42 $
  */
 
 public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Queryable, SCOList {
@@ -113,7 +113,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 */
 	public FeatureMapWrapper(StateManager ownerSM, String featureFieldName, List<Entry> list) {
 		super((InternalEObject) ownerSM.getObject(), StoreUtil.getEStructuralFeature((InternalEObject) ownerSM
-				.getObject(), featureFieldName), list);
+			.getObject(), featureFieldName), list);
 
 		stateManager = ownerSM;
 		fieldName = featureFieldName;
@@ -128,6 +128,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	}
 
 	/** Returns the element type to be used */
+	@Override
 	protected Class<? extends FeatureMap.Entry> determineElementType() {
 		// determines which class should be used as the element type
 		if (StoreUtil.isWildCard(getEStructuralFeature())) {
@@ -150,6 +151,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.teneo.mapping.elist.PersistableFeatureMap#isPersistencyWrapped()
 	 */
+	@Override
 	public boolean isPersistencyWrapped() {
 		return true;
 	}
@@ -165,6 +167,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.teneo.mapping.elist.PersistableFeatureMap#isPersistencyWrapped()
 	 */
+	@Override
 	public Object clone() {
 		throw new UnsupportedOperationException("Not yet supported for featuremap");
 	}
@@ -176,8 +179,9 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * Checks if a certain feature is containment and if so removes the object from the store
 	 */
 	protected void deleteDependent(EStructuralFeature feature, Object value) {
-		if (isOwnerDetached())
+		if (isOwnerDetached()) {
 			return; // do not do this when detached, this done at attach
+		}
 
 		if (feature instanceof EReference) {
 			final EReference eref = (EReference) feature;
@@ -204,11 +208,13 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * Utility to mark the object as dirty
 	 */
 	public void makeDirty() {
-		if (jdoDelegate != null)
+		if (jdoDelegate != null) {
 			jdoDelegate.makeDirty();
+		}
 	}
 
 	/** Does the actual loading from the store in a synchronized manner */
+	@Override
 	protected synchronized void doLoad() {
 		AssertUtil.assertTrue("EList " + getLogString() + " is already loaded", !isLoaded());
 
@@ -223,7 +229,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 		final List<Entry> list = getDelegate();
 		Iterator<?> iter = jdoDelegate.iterator();
 		while (iter.hasNext()) {
-			final Entry child = (Entry)iter.next();
+			final Entry child = (Entry) iter.next();
 			assert (getElementType().isInstance(child));
 			list.add(child);
 
@@ -233,7 +239,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 			// added to the resource explicitly, is maybe already done
 			// correctly
 			// in the setContainer method
-			((FeatureMapEntry) child).setContainer((InternalEObject) owner);
+			((FeatureMapEntry) child).setContainer(owner);
 		}
 
 		log.debug("Loaded " + list.size() + " objects from the backing store for elist " + getLogString());
@@ -248,8 +254,9 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * @see org.jpox.sco.SCO#attachCopy(java.lang.Object, boolean)
 	 */
 	public void attachCopy(Object value) {
-		if (!((PersistableEList<?>) value).isLoaded())
+		if (!((PersistableEList<?>) value).isLoaded()) {
 			return;
+		}
 
 		load();
 
@@ -261,11 +268,11 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 		while (iter.hasNext()) {
 			Object detachedElement = iter.next();
 			if (ClassUtils.isPersistenceCapable(detachedElement)) {
-				attachedElements.add((Entry)stateManager.getPersistenceManager().attachCopy(detachedElement, true));
+				attachedElements.add((Entry) stateManager.getPersistenceManager().attachCopy(detachedElement, true));
 			} else {
 				// should this ever happen?
-				throw new JpoxStoreException("A FeatureMap may only contain persistable objects, this object "
-						+ detachedElement.getClass().getName() + " is not persistable.");
+				throw new JpoxStoreException("A FeatureMap may only contain persistable objects, this object " +
+						detachedElement.getClass().getName() + " is not persistable.");
 				// attachedElements.add(detachedElement);
 			}
 		}
@@ -292,9 +299,9 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 		jdoDelegate.detach(state);
 
 		final Object[] values = toArray();
-		for (int i = 0; i < values.length; i++) {
-			if (values[i] != null && values[i] instanceof PersistenceCapable) {
-				stateManager.getPersistenceManager().detachInternal(values[i], state);
+		for (Object element : values) {
+			if (element != null && element instanceof PersistenceCapable) {
+				stateManager.getPersistenceManager().detachInternal(element, state);
 			}
 		}
 		stateManager = null;
@@ -306,9 +313,10 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 */
 	public void makeTransient(FetchPlanState state) {
 		final Object[] values = toArray();
-		for (int i = 0; i < values.length; i++) {
-			if (values[i] != null && values[i] instanceof PersistenceCapable) {
-				stateManager.getPersistenceManager().findStateManager((PersistenceCapable)values[i]).makeTransient(state);
+		for (Object element : values) {
+			if (element != null && element instanceof PersistenceCapable) {
+				stateManager.getPersistenceManager().findStateManager((PersistenceCapable) element)
+					.makeTransient(state);
 			}
 		}
 		stateManager = null;
@@ -324,15 +332,14 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 
 		final ArrayList<Entry> detached = new ArrayList<Entry>();
 		final Object[] values = toArray();
-		for (int i = 0; i < values.length; i++) {
-			if (values[i] == null) {
+		for (Object object : values) {
+			if (object == null) {
 				detached.add(null);
 			} else {
-				Object object = values[i];
 				if (object instanceof PersistenceCapable) {
-					detached.add((Entry)stateManager.getPersistenceManager().detachCopyInternal(object, state));
+					detached.add((Entry) stateManager.getPersistenceManager().detachCopyInternal(object, state));
 				} else {
-					detached.add((Entry)object);
+					detached.add((Entry) object);
 				}
 			}
 		}
@@ -409,21 +416,22 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 */
 	@SuppressWarnings("unchecked")
 	public void runReachability(java.util.Set reachables) {
-		
-		for (Iterator it = iterator(); it.hasNext();) {
-			final FeatureMapEntry gfm = (FeatureMapEntry)it.next();
-			
+
+		for (Object element : this) {
+			final FeatureMapEntry gfm = (FeatureMapEntry) element;
+
 			// first add the gfm to the reachables
 			final StateManager sm = stateManager.getPersistenceManager().findStateManager((PersistenceCapable) gfm);
 			if (!reachables.contains(sm.getInternalObjectId())) {
 				sm.flush();
 				reachables.add(sm.getInternalObjectId());
 			}
-			
+
 			// now check if the gfm contains a pc
 			final Object value = gfm.getValue();
 			if (value instanceof PersistenceCapable) {
-				final StateManager valueSM = stateManager.getPersistenceManager().findStateManager((PersistenceCapable) value);
+				final StateManager valueSM =
+						stateManager.getPersistenceManager().findStateManager((PersistenceCapable) value);
 				valueSM.runReachability(reachables);
 			}
 		}
@@ -431,13 +439,14 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 
 	/** Set method for SCO.set */
 	public Object set(int arg0, Object arg1, boolean arg2) {
-		return set(arg0, (Entry)arg1);
+		return set(arg0, (Entry) arg1);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.jpox.sco.SCOCollection#updateEmbeddedElement(java.lang.Object, int, java.lang.Object)
+	 * @see org.jpox.sco.SCOCollection#updateEmbeddedElement(java.lang.Object, int,
+	 *      java.lang.Object)
 	 */
 	public void updateEmbeddedElement(Object element, int fieldNumber, Object value) {
 		if (jdoDelegate == null) {
@@ -481,12 +490,12 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.jpox.store.query.Queryable#newResultObjectFactory(org.jpox.store.expression.QueryExpression, boolean,
-	 *      java.lang.Class, boolean)
+	 * @see org.jpox.store.query.Queryable#newResultObjectFactory(org.jpox.store.expression.QueryExpression,
+	 *      boolean, java.lang.Class, boolean)
 	 */
 	@SuppressWarnings("unchecked")
-    public synchronized ResultObjectFactory newResultObjectFactory(
-            QueryExpression stmt, boolean ignoreCache, Class resultClass, boolean useFetchPlan) {
+	public synchronized ResultObjectFactory newResultObjectFactory(QueryExpression stmt, boolean ignoreCache,
+			Class resultClass, boolean useFetchPlan) {
 		if (jdoDelegate == null) {
 			throw new QueryUnownedSCOException();
 		}
@@ -503,9 +512,11 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#didChange()
 	 */
+	@Override
 	protected void didChange() {
-		if (!isLoaded())
+		if (!isLoaded()) {
 			return; // in load state so no change
+		}
 		makeDirty();
 	}
 
@@ -514,12 +525,14 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#didAdd(int, java.lang.Object)
 	 */
+	@Override
 	protected void didAdd(int index, Entry newObject) {
 		assert (newObject instanceof FeatureMapEntry);
 
-		if (!isLoaded())
+		if (!isLoaded()) {
 			return; // this can only happen when we are loading so do not add to
-		// the store
+			// the store
+		}
 
 		if (jdoDelegate != null) {
 			// now there is an id!
@@ -550,18 +563,21 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#didClear(int, java.lang.Object[])
 	 */
+	@Override
 	protected void didClear(int size, Object[] oldObjects) {
-		if (oldObjects == null)
+		if (oldObjects == null) {
 			return;
+		}
 
 		if (jdoDelegate != null) {
 			jdoDelegate.clear();
 
 			/*
-			 * for (int i = 0; i < oldObjects.length; i++) { if (oldObjects[i] == null) continue; assert(oldObjects[i]
-			 * instanceof FeatureMapEntry); // get the values before the actual remove final FeatureMapEntry entry =
-			 * (FeatureMapEntry)oldObjects[i]; final EStructuralFeature feature = entry.getEStructuralFeature(); final
-			 * Object value = entry.getValue();
+			 * for (int i = 0; i < oldObjects.length; i++) { if (oldObjects[i] == null) continue;
+			 * assert(oldObjects[i] instanceof FeatureMapEntry); // get the values before the actual
+			 * remove final FeatureMapEntry entry = (FeatureMapEntry)oldObjects[i]; final
+			 * EStructuralFeature feature = entry.getEStructuralFeature(); final Object value =
+			 * entry.getValue();
 			 * 
 			 * if (ret && value instanceof PersistenceCapable) { deleteDependent(feature, value); } }
 			 */
@@ -574,11 +590,13 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#didMove(int, java.lang.Object, int)
 	 */
+	@Override
 	protected void didMove(int index, Entry movedObject, int oldIndex) {
 		assert (movedObject instanceof FeatureMapEntry);
 		if (jdoDelegate != null) {
-			final Object newObject = createEntry(((FeatureMapEntry) movedObject).getEStructuralFeature(),
-					((FeatureMapEntry) movedObject).getValue());
+			final Object newObject =
+					createEntry(((FeatureMapEntry) movedObject).getEStructuralFeature(),
+						((FeatureMapEntry) movedObject).getValue());
 
 			jdoDelegate.remove(oldIndex);
 
@@ -595,6 +613,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#didRemove(int, java.lang.Object)
 	 */
+	@Override
 	protected void didRemove(int index, Entry oldObject) {
 		assert (oldObject instanceof FeatureMapEntry);
 		assert (!deletedObjects.contains(oldObject));
@@ -607,8 +626,9 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * Performs the actual remove is called at the end of each remove method below
 	 */
 	private synchronized void doRemove() {
-		if (deletedObjects.size() == 0)
+		if (deletedObjects.size() == 0) {
 			return;
+		}
 
 		if (jdoDelegate == null) {
 			deletedObjects.clear();
@@ -618,7 +638,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 
 		try {
 			for (int i = 0; i < deletedObjects.size(); i++) {
-				final int index = ((Integer) deletedObjectsIndex.get(i)).intValue();
+				final int index = (deletedObjectsIndex.get(i)).intValue();
 				final Object oldObject = deletedObjects.get(i);
 
 				// get the values before the actual remove
@@ -641,6 +661,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#didSet(int, java.lang.Object, java.lang.Object)
 	 */
+	@Override
 	protected void didSet(int index, Entry newObject, Entry oldObject) {
 		assert (newObject instanceof FeatureMapEntry);
 		assert (oldObject instanceof FeatureMapEntry);
@@ -667,6 +688,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	}
 
 	/** Creates an entry with the correct type */
+	@Override
 	public FeatureMap.Entry createEntry(EStructuralFeature feature, Object value) {
 		try {
 			FeatureMapEntry entry = (FeatureMapEntry) getElementType().newInstance();
@@ -682,6 +704,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.ecore.util.BasicFeatureMap#clear(org.eclipse.emf.ecore.EStructuralFeature)
 	 */
+	@Override
 	public void clear(EStructuralFeature feature) {
 		load();
 		try {
@@ -695,8 +718,10 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.ecore.util.BasicFeatureMap#remove(org.eclipse.emf.ecore.EStructuralFeature, int)
+	 * @see org.eclipse.emf.ecore.util.BasicFeatureMap#remove(org.eclipse.emf.ecore.EStructuralFeature,
+	 *      int)
 	 */
+	@Override
 	public synchronized Object remove(EStructuralFeature feature, int index) {
 		load();
 		try {
@@ -713,6 +738,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * @see org.eclipse.emf.ecore.util.BasicFeatureMap#remove(org.eclipse.emf.ecore.EStructuralFeature,
 	 *      java.lang.Object)
 	 */
+	@Override
 	public synchronized boolean remove(EStructuralFeature feature, Object object) {
 		load();
 		try {
@@ -729,6 +755,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * @see org.eclipse.emf.ecore.util.BasicFeatureMap#removeAll(org.eclipse.emf.ecore.EStructuralFeature,
 	 *      java.util.Collection)
 	 */
+	@Override
 	public synchronized boolean removeAll(EStructuralFeature feature, Collection<?> collection) {
 		load();
 		try {
@@ -744,6 +771,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#clear()
 	 */
+	@Override
 	public void clear() {
 		load();
 		// doRemove does not need to be called because the jdoDelegate is cleared in didClear
@@ -755,6 +783,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#remove(int)
 	 */
+	@Override
 	public Entry remove(int index) {
 		load();
 		try {
@@ -770,6 +799,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#removeAll(java.util.Collection)
 	 */
+	@Override
 	public boolean removeAll(Collection<?> collection) {
 		load();
 		try {
@@ -785,6 +815,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#remove(java.lang.Object)
 	 */
+	@Override
 	public synchronized boolean remove(Object object) {
 		load();
 		try {
@@ -800,6 +831,7 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 * 
 	 * @see java.util.AbstractList#removeRange(int, int)
 	 */
+	@Override
 	protected synchronized void removeRange(int arg0, int arg1) {
 		load();
 		try {
@@ -809,10 +841,16 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 			doRemove();
 		}
 	}
-	
+
+	/** For now returns the same as isLoaded */
+	public boolean isInitialized() {
+		return isLoaded();
+	}
+
 	/**
 	 * Overridden to make public
 	 */
+	@Override
 	public void load() {
 		// TODO Auto-generated method stub
 		super.load();
@@ -825,10 +863,10 @@ public class FeatureMapWrapper extends PersistableFeatureMap implements SCO, Que
 	 */
 	public void loadFieldsInFetchPlan(FetchPlanState arg0) {
 		Object[] values = toArray();
-		for (int i = 0; i < values.length; i++) {
-			if (values[i] != null && values[i] instanceof PersistenceCapable) {
-				stateManager.getPersistenceManager().findStateManager((PersistenceCapable) values[i])
-						.loadFieldsInFetchPlan(arg0);
+		for (Object element : values) {
+			if (element != null && element instanceof PersistenceCapable) {
+				stateManager.getPersistenceManager().findStateManager((PersistenceCapable) element)
+					.loadFieldsInFetchPlan(arg0);
 			}
 		}
 	}

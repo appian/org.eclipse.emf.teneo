@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.12 2007/07/04 19:29:14 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.13 2007/07/09 12:53:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class ManyToOneMapper extends AssociationMapper {
@@ -92,7 +92,7 @@ public class ManyToOneMapper extends AssociationMapper {
 
 			if (aReference.getJoinColumns() != null && aReference.getJoinColumns().size() > 0) {
 				// Element elemElement = field.addElement("element");
-				mappingContext.getJoinColumnMapper().map(aReference.getJoinColumns(), fk);
+				mappingContext.getJoinColumnMapper().map(aReference.getJoinColumns(), field);
 			}
 		}
 
