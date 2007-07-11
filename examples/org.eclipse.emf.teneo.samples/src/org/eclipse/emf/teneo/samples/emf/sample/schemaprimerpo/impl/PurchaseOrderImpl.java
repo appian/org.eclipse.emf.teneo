@@ -2,29 +2,24 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PurchaseOrderImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: PurchaseOrderImpl.java,v 1.3 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl;
 
 import java.util.Collection;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item;
-import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PurchaseOrder;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.USAddress;
@@ -55,7 +50,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * @generated
 	 * @ordered
 	 */
-	protected USAddress shipTo = null;
+	protected USAddress shipTo;
 
 	/**
 	 * The cached value of the '{@link #getBillTo() <em>Bill To</em>}' containment reference.
@@ -65,7 +60,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * @generated
 	 * @ordered
 	 */
-	protected USAddress billTo = null;
+	protected USAddress billTo;
 
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
@@ -95,7 +90,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Item> items = null;
+	protected EList<Item> items;
 
 	/**
 	 * The default value of the '{@link #getOrderDate() <em>Order Date</em>}' attribute.
@@ -105,7 +100,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Object ORDER_DATE_EDEFAULT = null;
+	protected static final XMLGregorianCalendar ORDER_DATE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getOrderDate() <em>Order Date</em>}' attribute.
@@ -115,7 +110,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * @generated
 	 * @ordered
 	 */
-	protected Object orderDate = ORDER_DATE_EDEFAULT;
+	protected XMLGregorianCalendar orderDate = ORDER_DATE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,7 +255,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getOrderDate() {
+	public XMLGregorianCalendar getOrderDate() {
 		return orderDate;
 	}
 
@@ -269,8 +264,8 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOrderDate(Object newOrderDate) {
-		Object oldOrderDate = orderDate;
+	public void setOrderDate(XMLGregorianCalendar newOrderDate) {
+		XMLGregorianCalendar oldOrderDate = orderDate;
 		orderDate = newOrderDate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.PURCHASE_ORDER__ORDER_DATE, oldOrderDate, orderDate));
@@ -339,7 +334,7 @@ public class PurchaseOrderImpl extends EObjectImpl implements PurchaseOrder {
 				getItems().addAll((Collection<? extends Item>)newValue);
 				return;
 			case SchemaprimerpoPackage.PURCHASE_ORDER__ORDER_DATE:
-				setOrderDate(newValue);
+				setOrderDate((XMLGregorianCalendar)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

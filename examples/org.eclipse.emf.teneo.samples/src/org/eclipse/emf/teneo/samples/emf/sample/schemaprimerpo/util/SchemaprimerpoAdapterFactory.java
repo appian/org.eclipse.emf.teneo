@@ -2,18 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SchemaprimerpoAdapterFactory.java,v 1.1 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: SchemaprimerpoAdapterFactory.java,v 1.2 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.*;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.DocumentRoot;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PurchaseOrder;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.USAddress;
 
 /**
  * <!-- begin-user-doc -->

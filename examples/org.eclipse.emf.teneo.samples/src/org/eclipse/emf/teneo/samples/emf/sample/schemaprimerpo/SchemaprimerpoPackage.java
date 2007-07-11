@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SchemaprimerpoPackage.java,v 1.1 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: SchemaprimerpoPackage.java,v 1.2 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo;
 
@@ -644,7 +644,7 @@ public interface SchemaprimerpoPackage extends EPackage {
 	 * @return the meta object for data type '<em>Quantity Type</em>'.
 	 * @see java.math.BigInteger
 	 * @model instanceClass="java.math.BigInteger"
-	 *        extendedMetaData="name='quantity_._type' baseType='http://www.eclipse.org/emf/2003/XMLType#positiveInteger' maxExclusive='100'" 
+	 *        extendedMetaData="name='quantity_._type' baseType='http://www.eclipse.org/emf/2003/XMLType#positiveInteger' maxExclusive='100'"
 	 * @generated
 	 */
 	EDataType getQuantityType();
@@ -656,7 +656,7 @@ public interface SchemaprimerpoPackage extends EPackage {
 	 * @return the meta object for data type '<em>SKU</em>'.
 	 * @see java.lang.String
 	 * @model instanceClass="java.lang.String"
-	 *        extendedMetaData="name='SKU' baseType='http://www.eclipse.org/emf/2003/XMLType#string' pattern='\\d{3}-[A-Z]{2}'" 
+	 *        extendedMetaData="name='SKU' baseType='http://www.eclipse.org/emf/2003/XMLType#string' pattern='\\d{3}-[A-Z]{2}'"
 	 * @generated
 	 */
 	EDataType getSKU();

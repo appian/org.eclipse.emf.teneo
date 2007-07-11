@@ -2,31 +2,23 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentRootImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: DocumentRootImpl.java,v 1.3 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
-
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.DocumentRoot;
-import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PurchaseOrder;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage;
 
@@ -56,7 +48,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected FeatureMap mixed = null;
+	protected FeatureMap mixed;
 
 	/**
 	 * The cached value of the '{@link #getXMLNSPrefixMap() <em>XMLNS Prefix Map</em>}' map.
@@ -66,7 +58,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, String> xMLNSPrefixMap = null;
+	protected EMap<String, String> xMLNSPrefixMap;
 
 	/**
 	 * The cached value of the '{@link #getXSISchemaLocation() <em>XSI Schema Location</em>}' map.
@@ -76,7 +68,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, String> xSISchemaLocation = null;
+	protected EMap<String, String> xSISchemaLocation;
 
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

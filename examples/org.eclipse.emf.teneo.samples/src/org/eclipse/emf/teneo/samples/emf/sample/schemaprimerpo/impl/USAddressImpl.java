@@ -2,22 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: USAddressImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: USAddressImpl.java,v 1.3 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl;
 
 import java.math.BigDecimal;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage;
-import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.USAddress;
 
 /**
@@ -166,7 +161,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean countryESet = false;
+	protected boolean countryESet;
 
 	/**
 	 * <!-- begin-user-doc -->

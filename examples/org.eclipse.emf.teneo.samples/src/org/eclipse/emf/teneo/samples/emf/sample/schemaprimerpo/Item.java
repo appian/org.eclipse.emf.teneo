@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Item.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: Item.java,v 1.3 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -150,13 +151,13 @@ public interface Item extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ship Date</em>' attribute.
-	 * @see #setShipDate(Object)
+	 * @see #setShipDate(XMLGregorianCalendar)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getItem_ShipDate()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Date"
 	 *        extendedMetaData="kind='element' name='shipDate'"
 	 * @generated
 	 */
-	Object getShipDate();
+	XMLGregorianCalendar getShipDate();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item#getShipDate <em>Ship Date</em>}' attribute.
@@ -166,7 +167,7 @@ public interface Item extends EObject {
 	 * @see #getShipDate()
 	 * @generated
 	 */
-	void setShipDate(Object value);
+	void setShipDate(XMLGregorianCalendar value);
 
 	/**
 	 * Returns the value of the '<em><b>Part Num</b></em>' attribute.

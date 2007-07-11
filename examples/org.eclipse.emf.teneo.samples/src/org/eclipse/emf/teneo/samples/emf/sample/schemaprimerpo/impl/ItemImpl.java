@@ -2,24 +2,21 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: ItemImpl.java,v 1.3 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item;
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage;
-import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PrimerpoPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -128,7 +125,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Object SHIP_DATE_EDEFAULT = null;
+	protected static final XMLGregorianCalendar SHIP_DATE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getShipDate() <em>Ship Date</em>}' attribute.
@@ -138,7 +135,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * @generated
 	 * @ordered
 	 */
-	protected Object shipDate = SHIP_DATE_EDEFAULT;
+	protected XMLGregorianCalendar shipDate = SHIP_DATE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPartNum() <em>Part Num</em>}' attribute.
@@ -268,7 +265,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getShipDate() {
+	public XMLGregorianCalendar getShipDate() {
 		return shipDate;
 	}
 
@@ -277,8 +274,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setShipDate(Object newShipDate) {
-		Object oldShipDate = shipDate;
+	public void setShipDate(XMLGregorianCalendar newShipDate) {
+		XMLGregorianCalendar oldShipDate = shipDate;
 		shipDate = newShipDate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SchemaprimerpoPackage.ITEM__SHIP_DATE, oldShipDate, shipDate));
@@ -350,7 +347,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 				setComment((String)newValue);
 				return;
 			case SchemaprimerpoPackage.ITEM__SHIP_DATE:
-				setShipDate(newValue);
+				setShipDate((XMLGregorianCalendar)newValue);
 				return;
 			case SchemaprimerpoPackage.ITEM__PART_NUM:
 				setPartNum((String)newValue);

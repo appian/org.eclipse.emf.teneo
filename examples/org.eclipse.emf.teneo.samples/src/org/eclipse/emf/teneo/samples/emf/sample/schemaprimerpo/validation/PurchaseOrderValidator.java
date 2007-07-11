@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PurchaseOrderValidator.java,v 1.1 2007/02/08 23:09:17 mtaal Exp $
+ * $Id: PurchaseOrderValidator.java,v 1.2 2007/07/11 14:40:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.validation;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item;
@@ -24,5 +25,7 @@ public interface PurchaseOrderValidator {
 	boolean validateBillTo(USAddress value);
 	boolean validateComment(String value);
 	boolean validateItems(EList<Item> value);
+	boolean validateOrderDate(XMLGregorianCalendar value);
+
 	boolean validateOrderDate(Object value);
 }

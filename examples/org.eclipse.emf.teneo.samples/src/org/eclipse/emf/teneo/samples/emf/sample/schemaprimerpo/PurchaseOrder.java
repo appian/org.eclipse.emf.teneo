@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PurchaseOrder.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: PurchaseOrder.java,v 1.3 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -123,7 +124,7 @@ public interface PurchaseOrder extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Items</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getPurchaseOrder_Items()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item" containment="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='items'"
 	 * @generated
 	 */
@@ -138,13 +139,13 @@ public interface PurchaseOrder extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Order Date</em>' attribute.
-	 * @see #setOrderDate(Object)
+	 * @see #setOrderDate(XMLGregorianCalendar)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage#getPurchaseOrder_OrderDate()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Date"
 	 *        extendedMetaData="kind='attribute' name='orderDate'"
 	 * @generated
 	 */
-	Object getOrderDate();
+	XMLGregorianCalendar getOrderDate();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PurchaseOrder#getOrderDate <em>Order Date</em>}' attribute.
@@ -154,6 +155,6 @@ public interface PurchaseOrder extends EObject {
 	 * @see #getOrderDate()
 	 * @generated
 	 */
-	void setOrderDate(Object value);
+	void setOrderDate(XMLGregorianCalendar value);
 
 } // PurchaseOrder

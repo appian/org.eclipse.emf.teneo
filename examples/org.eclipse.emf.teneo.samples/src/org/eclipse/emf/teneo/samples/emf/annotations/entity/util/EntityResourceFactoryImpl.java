@@ -2,40 +2,34 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PrimerpoResourceFactoryImpl.java,v 1.2 2006/07/22 13:01:18 mtaal Exp $
+ * $Id: EntityResourceFactoryImpl.java,v 1.1 2007/07/11 14:40:34 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.util;
+package org.eclipse.emf.teneo.samples.emf.annotations.entity.util;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.ExtendedMetaData;
+
+import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
+
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.util.PrimerpoResourceImpl
+ * @see org.eclipse.emf.teneo.samples.emf.annotations.entity.util.EntityResourceImpl
  * @generated
  */
-public class PrimerpoResourceFactoryImpl extends XMLResourceFactoryImpl {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ExtendedMetaData extendedMetaData;
-
+public class EntityResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
 	 * Creates an instance of the resource factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PrimerpoResourceFactoryImpl() {
+	public EntityResourceFactoryImpl() {
 		super();
-		extendedMetaData = ExtendedMetaData.INSTANCE;
 	}
 
 	/**
@@ -44,16 +38,19 @@ public class PrimerpoResourceFactoryImpl extends XMLResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
-		XMLResource result = new PrimerpoResourceImpl(uri);
-		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
-		result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+		XMLResource result = new EntityResourceImpl(uri);
+		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
+
+		result.getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
 
 		result.getDefaultLoadOptions().put(XMLResource.OPTION_USE_LEXICAL_HANDLER, Boolean.TRUE);
 		return result;
 	}
 
-} //PrimerpoResourceFactoryImpl
+} //EntityResourceFactoryImpl

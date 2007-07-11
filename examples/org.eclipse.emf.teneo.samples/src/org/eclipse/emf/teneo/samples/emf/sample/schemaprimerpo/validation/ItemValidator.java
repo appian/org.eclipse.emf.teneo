@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemValidator.java,v 1.1 2007/02/08 23:09:17 mtaal Exp $
+ * $Id: ItemValidator.java,v 1.2 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.validation;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * A sample validator interface for {@link org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item}.
@@ -22,6 +23,8 @@ public interface ItemValidator {
 	boolean validateQuantity(BigInteger value);
 	boolean validateUSPrice(BigDecimal value);
 	boolean validateComment(String value);
+	boolean validateShipDate(XMLGregorianCalendar value);
+
 	boolean validateShipDate(Object value);
 	boolean validatePartNum(String value);
 }

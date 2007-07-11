@@ -2,24 +2,23 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SchemaprimerpoValidator.java,v 1.1 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: SchemaprimerpoValidator.java,v 1.2 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.util;
 
 import java.math.BigInteger;
-
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.EObjectValidator;
-
 import org.eclipse.emf.ecore.xml.type.util.XMLTypeUtil;
 import org.eclipse.emf.ecore.xml.type.util.XMLTypeValidator;
-
-import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.*;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.DocumentRoot;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PurchaseOrder;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.USAddress;
 
 /**
  * <!-- begin-user-doc -->
@@ -94,7 +93,7 @@ public class SchemaprimerpoValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Calls <code>validateXXX</code> for the corresonding classifier of the model.
+	 * Calls <code>validateXXX</code> for the corresponding classifier of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

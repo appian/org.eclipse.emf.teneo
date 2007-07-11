@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SchemaprimerpoSwitch.java,v 1.1 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: SchemaprimerpoSwitch.java,v 1.2 2007/07/11 14:40:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.util;
 
@@ -10,8 +10,11 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.*;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.DocumentRoot;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.Item;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.PurchaseOrder;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.SchemaprimerpoPackage;
+import org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.USAddress;
 
 /**
  * <!-- begin-user-doc -->
@@ -116,13 +119,13 @@ public class SchemaprimerpoSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Document Root</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Document Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Document Root</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Document Root</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -131,13 +134,13 @@ public class SchemaprimerpoSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Item</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Item</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Item</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Item</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -146,13 +149,13 @@ public class SchemaprimerpoSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Purchase Order</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Purchase Order</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Purchase Order</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Purchase Order</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -161,13 +164,13 @@ public class SchemaprimerpoSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>US Address</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>US Address</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>US Address</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>US Address</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -176,13 +179,13 @@ public class SchemaprimerpoSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
