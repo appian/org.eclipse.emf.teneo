@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class AllTests {
 
@@ -39,10 +39,6 @@ public class AllTests {
 					.instance().getConfigurations());
 
 		suite.addTestSuite(GeneralTestAction.class);
-		if (true) {
-			return suite;
-		}
-
 		suite.addTestSuite(TransientOtmAction.class);
 		suite.addTestSuite(UpdateAction.class);
 		suite.addTestSuite(MTMSameAction.class);

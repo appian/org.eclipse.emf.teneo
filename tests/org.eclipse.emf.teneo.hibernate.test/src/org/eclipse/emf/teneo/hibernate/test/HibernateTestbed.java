@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.12 2007/03/28 13:58:30 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.13 2007/07/11 14:42:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -24,8 +24,11 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.hibernate.HbConstants;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStoreFactory;
 import org.eclipse.emf.teneo.test.AbstractTest;
 import org.eclipse.emf.teneo.test.StoreTestException;
@@ -37,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -83,17 +86,22 @@ public class HibernateTestbed extends Testbed {
 	/**
 	 * Request a store for the given configuration.
 	 */
+	@Override
 	public TestStore createStore(AbstractTest testCase) {
 		try {
+
+			IdentifierCacheHandler.clear();
+			final ExtensionManager extensionManager = new DefaultExtensionManager();
+			testCase.setExtensions(extensionManager);
 
 			// get and write the mapping xml for debugging purposes.
 			// this is actually double as the storeFactory.get does the same thing
 			// but okay
-			writeMappingToFile(testCase);
+			writeMappingToFile(testCase, extensionManager);
 
-			TestStore store = storeFactory.get(getDbName(testCase, getActiveConfiguration()), 
-					testCase.getEPackages(), (String)null,
-					getActiveConfiguration(), testCase.getExtraConfigurationProperties());
+			TestStore store =
+					storeFactory.get(getDbName(testCase, getActiveConfiguration()), testCase.getEPackages(), null,
+						getActiveConfiguration(), testCase.getExtraConfigurationProperties(), extensionManager);
 
 			// setup store
 			store.setUp();
@@ -105,12 +113,13 @@ public class HibernateTestbed extends Testbed {
 	}
 
 	/** Creates the mapping xml and writes it to a mapping file */
-	private void writeMappingToFile(AbstractTest testCase) throws IOException {
+	private void writeMappingToFile(AbstractTest testCase, ExtensionManager extensionManager) throws IOException {
 		final Properties props = testCase.getExtraConfigurationProperties();
 		props.put(PersistenceOptions.INHERITANCE_MAPPING, getActiveConfiguration().getMappingStrategy().getName());
 		final Properties properties = new Properties();
 		properties.putAll(props);
-		final String mappingXML = HbHelper.INSTANCE.generateMapping(testCase.getEPackages(), properties); 
+		final String mappingXML =
+				HbHelper.INSTANCE.generateMapping(testCase.getEPackages(), properties, extensionManager);
 		writeMappingToFile(getHBMFile(testCase, getActiveConfiguration()), mappingXML);
 	}
 
@@ -120,17 +129,20 @@ public class HibernateTestbed extends Testbed {
 			log.debug("Disabled writing of hibernate.hbm.xml file for tests on the vserver");
 			return;
 		}
-		if (mappingFile.exists()) mappingFile.delete();
+		if (mappingFile.exists()) {
+			mappingFile.delete();
+		}
 		mappingFile.createNewFile();
 		final FileWriter fileWriter = new FileWriter(mappingFile);
-		
+
 		fileWriter.write(mappingXML);
 		fileWriter.close();
 	}
 
 	/** Returns the file to which the mapping file is written */
 	protected File getHBMFile(AbstractTest testCase, TestConfiguration cfg) {
-		return new File(getRunTestDir(testCase), testCase.getSimpleName() + "_" + cfg.getName() + "_" + HbConstants.HBM_FILE_NAME);
+		return new File(getRunTestDir(testCase), testCase.getSimpleName() + "_" + cfg.getName() + "_" +
+				HbConstants.HBM_FILE_NAME);
 	}
 
 	/** Return the directory in which the mapping file is stored */

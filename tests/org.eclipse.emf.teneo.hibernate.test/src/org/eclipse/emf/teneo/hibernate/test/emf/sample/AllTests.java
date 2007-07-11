@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.41 $
+ * @version $Revision: 1.42 $
  */
 public class AllTests {
 
@@ -49,6 +49,13 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+
+		suite.addTestSuite(EcoreAction.class);
+		suite.addTestSuite(PrimerPOAction.class);
+		suite.addTestSuite(LibraryQualifyActionHB.class);
+
+		suite.addTestSuite(LibraryAction.class);
+
 		suite.addTestSuite(LibrarySessionControllerAddContentAction.class);
 
 		suite.addTestSuite(LibrarySessionControllerAction.class);
@@ -60,7 +67,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryColLengthAction.class);
 
 		suite.addTestSuite(RentalMapAsClassAction.class);
-		suite.addTestSuite(LibraryAction.class);
 
 		suite.addTestSuite(DynamicAction.class);
 
@@ -73,8 +79,6 @@ public class AllTests {
 		suite.addTestSuite(CapaTest.class);
 
 		suite.addTestSuite(LibraryNonResolvingAction.class);
-
-		suite.addTestSuite(EcoreAction.class);
 
 		suite.addTestSuite(AccountingTest.class);
 
@@ -101,10 +105,8 @@ public class AllTests {
 		suite.addTestSuite(LibraryValidateResourceTest.class);
 		suite.addTestSuite(CatalogResourceAction.class);
 
-		suite.addTestSuite(LibraryQualifyActionHB.class);
 		suite.addTestSuite(LibraryGlobalEagerAction.class);
 		suite.addTestSuite(PlayAction.class);
-		suite.addTestSuite(PrimerPOAction.class);
 		suite.addTestSuite(WorkFlowAction.class);
 		suite.addTestSuite(ForumAction.class);
 

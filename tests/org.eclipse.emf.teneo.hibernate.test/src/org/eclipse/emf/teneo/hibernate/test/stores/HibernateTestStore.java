@@ -20,13 +20,17 @@ import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbEntityDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
@@ -34,6 +38,7 @@ import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.test.stores.adapters.HibernateTestDBAdapter;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.test.stores.AbstractTestStore;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
@@ -45,7 +50,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -72,16 +77,20 @@ public class HibernateTestStore extends AbstractTestStore {
 	/** Do ejb3 */
 	private final boolean ejb3;
 
+	/** The extensionManager */
+	private final ExtensionManager extensionManager;
+
 	/**
 	 * Constructor for emf test cases
 	 */
 	public HibernateTestStore(HibernateTestDBAdapter adapter, EPackage[] epackages, Properties props,
-			InheritanceType inheritanceType, boolean ejb3) {
+			InheritanceType inheritanceType, boolean ejb3, ExtensionManager extensionManager) {
 		super(adapter);
 		this.props = props;
 		this.epackages = epackages;
 		this.inheritanceType = inheritanceType;
 		this.ejb3 = ejb3;
+		this.extensionManager = extensionManager;
 		init();
 	}
 
@@ -120,6 +129,7 @@ public class HibernateTestStore extends AbstractTestStore {
 		} else {
 			emfDataStore = HbHelper.INSTANCE.createRegisterDataStore(getDatabaseAdapter().getDbName());
 		}
+		emfDataStore.setExtensionManager(extensionManager);
 		emfDataStore.setName(getDatabaseAdapter().getDbName());
 		emfDataStore.setEPackages(epackages);
 		// set both hibernate and persistence props as we do not know the difference right now
@@ -409,14 +419,9 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	/** Returns the query name to use for the instance */
 	private String getEntityName(Class<?> clazz) {
-		final String entityName = clazz.getName().substring(clazz.getName().lastIndexOf('.') + 1);
-		if (props.get(PersistenceOptions.QUALIFY_ENTITY_NAME) != null &&
-				props.get(PersistenceOptions.QUALIFY_ENTITY_NAME).equals(
-					PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX)) {
-			return epackages[0].getNsPrefix() + "." + entityName;
-		} else {
-			return entityName;
-		}
+		final EModelResolver emodelResolver = EModelResolver.instance();
+		final EClass eclass = emodelResolver.getEClass(clazz);
+		return getDataStore().getExtensionManager().getExtension(EntityNameStrategy.class).toEntityName(eclass);
 	}
 
 	/**
@@ -424,6 +429,11 @@ public class HibernateTestStore extends AbstractTestStore {
 	 */
 	public HbDataStore getEmfDataStore() {
 		return emfDataStore;
+	}
+
+	/** Return the datastore */
+	public DataStore getDataStore() {
+		return getEmfDataStore();
 	}
 
 	/**

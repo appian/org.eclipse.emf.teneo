@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestStoreFactory.java,v 1.4 2007/03/20 23:34:25 mtaal Exp $
+ * $Id: HibernateTestStoreFactory.java,v 1.5 2007/07/11 14:42:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
@@ -20,6 +20,7 @@ import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.hibernate.test.stores.adapters.HibernateTestDBAdapter;
 import org.eclipse.emf.teneo.test.stores.AbstractTestStoreFactory;
 import org.eclipse.emf.teneo.test.stores.TestDatabaseAdapter;
@@ -29,13 +30,15 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Creates a test store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class HibernateTestStoreFactory extends AbstractTestStoreFactory {
 
 	/** Creates the actual specific test store */
-	protected TestStore createStoreInstance(TestDatabaseAdapter adapter, EPackage[] epackages, String mappingFileLocation,
-			Properties props, InheritanceType inheritanceType, boolean ejb3) {
-		return new HibernateTestStore((HibernateTestDBAdapter) adapter, epackages, props, inheritanceType, ejb3);
+	protected TestStore createStoreInstance(TestDatabaseAdapter adapter, EPackage[] epackages,
+			String mappingFileLocation, Properties props, InheritanceType inheritanceType, boolean ejb3,
+			ExtensionManager extensionManager) {
+		return new HibernateTestStore((HibernateTestDBAdapter) adapter, epackages, props, inheritanceType, ejb3,
+			extensionManager);
 	}
 }
