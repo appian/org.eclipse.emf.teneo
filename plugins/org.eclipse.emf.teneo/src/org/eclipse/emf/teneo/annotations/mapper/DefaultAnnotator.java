@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.7 2007/07/11 18:28:26 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.8 2007/07/11 18:59:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -58,6 +58,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
+import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
+import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
@@ -89,7 +91,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 
@@ -568,6 +570,17 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 			id.setEModelElement(eAttribute);
 			aAttribute.setId(id);
 			addColumnConstraints(aAttribute);
+
+			if (persistenceOptions.isSetGeneratedValueOnIDFeature() &&
+					aAttribute.getGeneratedValue() == null &&
+					(Number.class.isAssignableFrom(eAttribute.getEAttributeType().getInstanceClass()) ||
+							eAttribute.getEAttributeType().getInstanceClass() == long.class || eAttribute
+						.getEAttributeType().getInstanceClass() == int.class)) {
+				final GeneratedValue gv = aFactory.createGeneratedValue();
+				gv.setStrategy(GenerationType.AUTO);
+				aAttribute.setGeneratedValue(gv);
+			}
+
 			return; // after id do not add basic
 		} else if (aAttribute.getId() != null) {
 			addColumnConstraints(aAttribute);

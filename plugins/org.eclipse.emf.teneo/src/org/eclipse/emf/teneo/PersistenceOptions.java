@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.29 2007/07/11 18:28:26 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.30 2007/07/11 18:59:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  */
 public class PersistenceOptions {
 
@@ -196,9 +196,19 @@ public class PersistenceOptions {
 	/**
 	 * Automatically add
 	 * 
+	 * @Id to ID feature
+	 * 
 	 * @id annotation to ID xsd type
 	 */
 	public static final String ID_FEATURE_AS_PRIMARY_KEY = NAMING_PREFIX + "id_feature_as_primary_key";
+
+	/**
+	 * Automatically add
+	 * 
+	 * @GeneratedValue to ID feature for which
+	 * @Id is added automatically, default is true.
+	 */
+	public static final String SET_GENERATED_VALUE_ON_ID_FEATURE = NAMING_PREFIX + "set_generated_value_on_id_feature";
 
 	/**
 	 * The name of the id feature if no feature has a
@@ -299,6 +309,7 @@ public class PersistenceOptions {
 		props.setProperty(DEFAULT_TEMPORAL_VALUE, "TIMESTAMP");
 		props.setProperty(DEFAULT_ID_FEATURE_NAME, "e_id");
 		props.setProperty(ID_FEATURE_AS_PRIMARY_KEY, "true");
+		props.setProperty(SET_GENERATED_VALUE_ON_ID_FEATURE, "true");
 		props.setProperty(EMAP_AS_TRUE_MAP, "true");
 		props.setProperty(ALWAYS_MAP_LIST_AS_BAG, "false");
 		props.setProperty(ALSO_MAP_AS_CLASS, "true");
@@ -457,6 +468,11 @@ public class PersistenceOptions {
 	/** Returns the value of the id feature as primary key */
 	public boolean isIDFeatureAsPrimaryKey() {
 		return Boolean.valueOf(properties.getProperty(ID_FEATURE_AS_PRIMARY_KEY)).booleanValue();
+	}
+
+	/** Returns the value of the SET_GENERATED_VALUE_ON_ID_FEATURE option */
+	public boolean isSetGeneratedValueOnIDFeature() {
+		return Boolean.valueOf(properties.getProperty(SET_GENERATED_VALUE_ON_ID_FEATURE)).booleanValue();
 	}
 
 	/** Returns the value of the orphan delete on containment, default is true */
