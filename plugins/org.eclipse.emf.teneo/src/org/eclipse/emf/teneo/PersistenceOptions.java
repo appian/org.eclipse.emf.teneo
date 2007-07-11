@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.27 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.28 2007/07/11 17:13:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 public class PersistenceOptions {
 
@@ -92,6 +92,12 @@ public class PersistenceOptions {
 	 * lowercase letters, uppercase in uppercase, none will just work as it did until now
 	 */
 	public static final String SQL_CASE_STRATEGY = NAMING_PREFIX + "strategy";
+
+	/**
+	 * If set then the system will generate readable foreign key names. The default is true. Set to
+	 * false for backward compatibility.
+	 */
+	public static final String SET_FOREIGN_KEY_NAME = NAMING_PREFIX + "set_foreign_key_name";
 
 	// END: ++++++++++++++++++++++ SQL Naming related Options ++++++++++++++++++++++++++++++++++++
 
@@ -292,6 +298,7 @@ public class PersistenceOptions {
 		props.setProperty(IDBAG_ID_COLUMN_NAME, "ID");
 		props.setProperty(ADD_INDEX_FOR_FOREIGN_KEY, "false");
 		props.setProperty(SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "false");
+		props.setProperty(SET_FOREIGN_KEY_NAME, "false");
 
 		return props;
 	}
@@ -376,6 +383,13 @@ public class PersistenceOptions {
 	 */
 	public boolean isSetDefaultCascadeOnNonContainment() {
 		return Boolean.valueOf(properties.getProperty(SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT)).booleanValue();
+	}
+
+	/**
+	 * Returns the value of the SET_FOREIGN_KEY_NAME option, default is true
+	 */
+	public boolean isSetForeignKeyNames() {
+		return Boolean.valueOf(properties.getProperty(SET_FOREIGN_KEY_NAME)).booleanValue();
 	}
 
 	/**

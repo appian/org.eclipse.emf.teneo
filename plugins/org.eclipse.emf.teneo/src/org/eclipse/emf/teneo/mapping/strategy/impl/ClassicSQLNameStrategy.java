@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.3 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.4 2007/07/11 17:13:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the options set in the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
@@ -80,10 +80,16 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 
 	/**
 	 * Return the name of the foreign key used for this aReference. If null is returned then the
-	 * name of the foreign key is not set Returns null in this case.
+	 * name of the foreign key is not set. Returns the concatenation of the entityname of the aclass
+	 * to which the areference belongs.
+	 * 
+	 * This method is normally called when the PersistenceOption CREATE_READABLE_FOREIGN_KEY_NAMES
+	 * is true.
 	 */
-	public String getForeignKeyName(PAnnotatedEReference aReference) {
-		return null;
+	public String getForeignKeyName(PAnnotatedEStructuralFeature aFeature) {
+		final PAnnotatedEClass aClass = aFeature.getPaEClass();
+		return convert(getEntityName(aClass.getPaModel(), aClass.getAnnotatedEClass()) + "_" +
+				aFeature.getAnnotatedEStructuralFeature().getName(), true);
 	}
 
 	/** Return joincolumn names for many-to-one */

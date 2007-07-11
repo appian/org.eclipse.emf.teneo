@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: SQLNameStrategy.java,v 1.2 2007/07/11 14:41:05 mtaal Exp $
+ * $Id: SQLNameStrategy.java,v 1.3 2007/07/11 17:13:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Note that strategies are normally created once for each instance of persistenceoptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public interface SQLNameStrategy extends ExtensionPoint {
 
@@ -45,7 +45,7 @@ public interface SQLNameStrategy extends ExtensionPoint {
 
 	String getColumnName(PAnnotatedEStructuralFeature aStructuralFeature);
 
-	String getForeignKeyName(PAnnotatedEReference aReference);
+	String getForeignKeyName(PAnnotatedEStructuralFeature aFeature);
 
 	List<String> getManyToOneJoinColumnNames(PAnnotatedEReference aReference);
 

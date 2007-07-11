@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.5 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.6 2007/07/11 17:13:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -57,6 +57,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
+import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
@@ -88,7 +89,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 
@@ -103,6 +104,7 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 	private SQLNameStrategy sqlNameStrategy = null;
 	private TemporalType optionDefaultTemporal = null;
 	private EntityNameStrategy entityNameStrategy = null;
+	private boolean optionSetForeignKeyName = false;
 
 	protected PersistenceOptions persistenceOptions;
 
@@ -196,6 +198,7 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 		if (optionDefaultTemporal == null) {
 			throw new IllegalArgumentException("Temporal value not found: " + po.getDefaultTemporalValue());
 		}
+		optionSetForeignKeyName = po.isSetForeignKeyNames();
 		entityNameStrategy = getExtensionManager().getExtension(EntityNameStrategy.class);
 		entityNameStrategy.setPaModel(annotatedModel); // is maybe already set?
 		sqlNameStrategy = getExtensionManager().getExtension(SQLNameStrategy.class);
@@ -684,6 +687,10 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 			log.debug("One to many present adding default information if required");
 		}
 
+		if (optionSetForeignKeyName) {
+			aAttribute.setForeignKey(createFK(aAttribute));
+		}
+
 		// handle list of enums
 		if (eAttribute.getEType() instanceof EEnum && aAttribute.getEnumerated() == null) {
 			final Enumerated enumerated = aFactory.createEnumerated();
@@ -715,6 +722,13 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 			otm.setIndexed(eAttribute.isOrdered());
 			otm.setUnique(eAttribute.isUnique());
 		}
+	}
+
+	/** Create a foreign key and set its name */
+	protected ForeignKey createFK(PAnnotatedEStructuralFeature aFeature) {
+		final ForeignKey fk = aFactory.createForeignKey();
+		fk.setName(sqlNameStrategy.getForeignKeyName(aFeature));
+		return fk;
 	}
 
 	/** Returns the type name of a many attribute */
@@ -788,6 +802,10 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 
 		if (otm.getMappedBy() == null && eReference.getEOpposite() != null) {
 			otm.setMappedBy(eReference.getEOpposite().getName());
+		}
+
+		if (optionSetForeignKeyName) {
+			aReference.setForeignKey(createFK(aReference));
 		}
 
 		if (eReference.isContainment() || persistenceOptions.isSetDefaultCascadeOnNonContainment()) {
@@ -899,6 +917,10 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 			mtm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
 		}
 
+		if (optionSetForeignKeyName) {
+			aReference.setForeignKey(createFK(aReference));
+		}
+
 		// determine where to place the jointable annotation and where to place
 		// the mappedby
 		// use a certain logic to determine as each is only set on one side
@@ -985,6 +1007,10 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 		}
 		joinTable.setEModelElement(eReference);
 
+		if (optionSetForeignKeyName) {
+			aReference.setForeignKey(createFK(aReference));
+		}
+
 		// note that here not the eclass name is used for the opposite side but
 		// the name of the targetentity
 		// because that's the one which is known here
@@ -1027,6 +1053,10 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 			oto.setMappedBy(eReference.getEOpposite().getName());
 		}
 		setCascade(oto.getCascade(), eReference.isContainment());
+
+		if (optionSetForeignKeyName) {
+			aReference.setForeignKey(createFK(aReference));
+		}
 
 		// Note: Sometimes EMF generated getters/setters have a
 		// very generic type (EObject), if the type can be derived here then
@@ -1071,6 +1101,10 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 		// be added here
 		if (mto.getTargetEntity() == null) {
 			mto.setTargetEntity(getEntityName(eReference.getEReferenceType()));
+		}
+
+		if (optionSetForeignKeyName) {
+			aReference.setForeignKey(createFK(aReference));
 		}
 
 		// create a set of joincolumns, note that if this is a two-way relation
