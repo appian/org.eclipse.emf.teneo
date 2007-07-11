@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ERuntime.java,v 1.11 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: ERuntime.java,v 1.12 2007/07/11 17:46:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xml.type.impl.XMLTypePackageImpl;
@@ -45,7 +46,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * concrete class, references for cross reference computation, contained computations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class ERuntime extends EModelResolver {
@@ -245,7 +246,7 @@ public class ERuntime extends EModelResolver {
 				}
 
 				final Object instance = create((EClass) eclassifier);
-				if (instance != null) {
+				if (instance != null && !(instance instanceof DynamicEObjectImpl)) {
 					eclassifierToConcrete.put(eclassifier, instance.getClass());
 					concreteToEClass.put(instance.getClass(), (EClass) eclassifier);
 				}
