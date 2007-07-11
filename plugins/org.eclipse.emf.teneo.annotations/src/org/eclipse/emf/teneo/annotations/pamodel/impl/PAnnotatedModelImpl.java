@@ -2,14 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.17 2007/07/11 14:43:14 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.18 2007/07/11 15:22:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -37,6 +36,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
@@ -523,7 +523,9 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 			final XMLResourceImpl xmlResource = new XMLResourceImpl();
 			xmlResource.getContents().add(this);
 			final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			xmlResource.save(bos, Collections.EMPTY_MAP);
+			final HashMap<String, String> options = new HashMap<String, String>();
+			options.put(XMLResource.OPTION_PROCESS_DANGLING_HREF, XMLResource.OPTION_PROCESS_DANGLING_HREF_RECORD);
+			xmlResource.save(bos, options);
 			final String res = bos.toString();
 			bos.close();
 			return res;
