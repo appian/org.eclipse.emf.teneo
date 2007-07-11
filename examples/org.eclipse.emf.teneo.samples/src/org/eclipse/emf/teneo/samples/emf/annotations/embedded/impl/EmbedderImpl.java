@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbedderImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: EmbedderImpl.java,v 1.3 2007/07/11 18:28:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder;
@@ -38,6 +39,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbedderImpl#getThirdEmbedded <em>Third Embedded</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbedderImpl#getFourthEmbedded <em>Fourth Embedded</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbedderImpl#getFifthEmbedded <em>Fifth Embedded</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbedderImpl#getAlsoEmbeddable <em>Also Embeddable</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,7 +54,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * @generated
 	 * @ordered
 	 */
-	protected Embeddable firstEmbedded = null;
+	protected Embeddable firstEmbedded;
 
 	/**
 	 * The cached value of the '{@link #getSecondEmbedded() <em>Second Embedded</em>}' containment reference.
@@ -62,7 +64,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * @generated
 	 * @ordered
 	 */
-	protected Embeddable secondEmbedded = null;
+	protected Embeddable secondEmbedded;
 
 	/**
 	 * The cached value of the '{@link #getThirdEmbedded() <em>Third Embedded</em>}' containment reference.
@@ -72,7 +74,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * @generated
 	 * @ordered
 	 */
-	protected Embeddable thirdEmbedded = null;
+	protected Embeddable thirdEmbedded;
 
 	/**
 	 * The cached value of the '{@link #getFourthEmbedded() <em>Fourth Embedded</em>}' containment reference list.
@@ -82,7 +84,7 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Embeddable> fourthEmbedded = null;
+	protected EList<Embeddable> fourthEmbedded;
 
 	/**
 	 * The cached value of the '{@link #getFifthEmbedded() <em>Fifth Embedded</em>}' containment reference.
@@ -92,7 +94,17 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * @generated
 	 * @ordered
 	 */
-	protected Embeddable fifthEmbedded = null;
+	protected Embeddable fifthEmbedded;
+
+	/**
+	 * The cached value of the '{@link #getAlsoEmbeddable() <em>Also Embeddable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAlsoEmbeddable()
+	 * @generated
+	 * @ordered
+	 */
+	protected AlsoEmbeddable alsoEmbeddable;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -302,6 +314,49 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public AlsoEmbeddable getAlsoEmbeddable() {
+		return alsoEmbeddable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAlsoEmbeddable(AlsoEmbeddable newAlsoEmbeddable, NotificationChain msgs) {
+		AlsoEmbeddable oldAlsoEmbeddable = alsoEmbeddable;
+		alsoEmbeddable = newAlsoEmbeddable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EmbeddedPackage.EMBEDDER__ALSO_EMBEDDABLE, oldAlsoEmbeddable, newAlsoEmbeddable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAlsoEmbeddable(AlsoEmbeddable newAlsoEmbeddable) {
+		if (newAlsoEmbeddable != alsoEmbeddable) {
+			NotificationChain msgs = null;
+			if (alsoEmbeddable != null)
+				msgs = ((InternalEObject)alsoEmbeddable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EmbeddedPackage.EMBEDDER__ALSO_EMBEDDABLE, null, msgs);
+			if (newAlsoEmbeddable != null)
+				msgs = ((InternalEObject)newAlsoEmbeddable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EmbeddedPackage.EMBEDDER__ALSO_EMBEDDABLE, null, msgs);
+			msgs = basicSetAlsoEmbeddable(newAlsoEmbeddable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EmbeddedPackage.EMBEDDER__ALSO_EMBEDDABLE, newAlsoEmbeddable, newAlsoEmbeddable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -315,6 +370,8 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 				return ((InternalEList<?>)getFourthEmbedded()).basicRemove(otherEnd, msgs);
 			case EmbeddedPackage.EMBEDDER__FIFTH_EMBEDDED:
 				return basicSetFifthEmbedded(null, msgs);
+			case EmbeddedPackage.EMBEDDER__ALSO_EMBEDDABLE:
+				return basicSetAlsoEmbeddable(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -337,6 +394,8 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 				return getFourthEmbedded();
 			case EmbeddedPackage.EMBEDDER__FIFTH_EMBEDDED:
 				return getFifthEmbedded();
+			case EmbeddedPackage.EMBEDDER__ALSO_EMBEDDABLE:
+				return getAlsoEmbeddable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -366,6 +425,9 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 			case EmbeddedPackage.EMBEDDER__FIFTH_EMBEDDED:
 				setFifthEmbedded((Embeddable)newValue);
 				return;
+			case EmbeddedPackage.EMBEDDER__ALSO_EMBEDDABLE:
+				setAlsoEmbeddable((AlsoEmbeddable)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -393,6 +455,9 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 			case EmbeddedPackage.EMBEDDER__FIFTH_EMBEDDED:
 				setFifthEmbedded((Embeddable)null);
 				return;
+			case EmbeddedPackage.EMBEDDER__ALSO_EMBEDDABLE:
+				setAlsoEmbeddable((AlsoEmbeddable)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -415,6 +480,8 @@ public class EmbedderImpl extends EObjectImpl implements Embedder {
 				return fourthEmbedded != null && !fourthEmbedded.isEmpty();
 			case EmbeddedPackage.EMBEDDER__FIFTH_EMBEDDED:
 				return fifthEmbedded != null;
+			case EmbeddedPackage.EMBEDDER__ALSO_EMBEDDABLE:
+				return alsoEmbeddable != null;
 		}
 		return super.eIsSet(featureID);
 	}

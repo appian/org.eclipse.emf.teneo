@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddableImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: EmbeddableImpl.java,v 1.3 2007/07/11 18:28:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -78,7 +78,7 @@ public class EmbeddableImpl extends EObjectImpl implements Embeddable {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean myIntegerESet = false;
+	protected boolean myIntegerESet;
 
 	/**
 	 * <!-- begin-user-doc -->

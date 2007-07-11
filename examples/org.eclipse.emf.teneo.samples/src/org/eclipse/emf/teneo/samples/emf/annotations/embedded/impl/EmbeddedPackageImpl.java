@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedPackageImpl.java,v 1.5 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: EmbeddedPackageImpl.java,v 1.6 2007/07/11 18:28:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage;
@@ -27,6 +28,13 @@ import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder;
  * @generated
  */
 public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass alsoEmbeddableEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,6 +125,24 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAlsoEmbeddable() {
+		return alsoEmbeddableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAlsoEmbeddable_Name() {
+		return (EAttribute)alsoEmbeddableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEmbeddable() {
 		return embeddableEClass;
 	}
@@ -198,6 +224,15 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEmbedder_AlsoEmbeddable() {
+		return (EReference)embedderEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EmbeddedFactory getEmbeddedFactory() {
 		return (EmbeddedFactory)getEFactoryInstance();
 	}
@@ -221,6 +256,9 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		isCreated = true;
 
 		// Create classes and their features
+		alsoEmbeddableEClass = createEClass(ALSO_EMBEDDABLE);
+		createEAttribute(alsoEmbeddableEClass, ALSO_EMBEDDABLE__NAME);
+
 		embeddableEClass = createEClass(EMBEDDABLE);
 		createEAttribute(embeddableEClass, EMBEDDABLE__MY_STRING);
 		createEAttribute(embeddableEClass, EMBEDDABLE__MY_INTEGER);
@@ -231,6 +269,7 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		createEReference(embedderEClass, EMBEDDER__THIRD_EMBEDDED);
 		createEReference(embedderEClass, EMBEDDER__FOURTH_EMBEDDED);
 		createEReference(embedderEClass, EMBEDDER__FIFTH_EMBEDDED);
+		createEReference(embedderEClass, EMBEDDER__ALSO_EMBEDDABLE);
 	}
 
 	/**
@@ -266,9 +305,12 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(alsoEmbeddableEClass, AlsoEmbeddable.class, "AlsoEmbeddable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAlsoEmbeddable_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, AlsoEmbeddable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(embeddableEClass, Embeddable.class, "Embeddable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEmbeddable_MyString(), theXMLTypePackage.getString(), "myString", null, 1, 1, Embeddable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEmbeddable_MyInteger(), theXMLTypePackage.getInt(), "myInteger", null, 1, 1, Embeddable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEmbeddable_MyString(), theXMLTypePackage.getString(), "myString", null, 1, 1, Embeddable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEmbeddable_MyInteger(), theXMLTypePackage.getInt(), "myInteger", null, 1, 1, Embeddable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(embedderEClass, Embedder.class, "Embedder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEmbedder_FirstEmbedded(), this.getEmbeddable(), null, "firstEmbedded", null, 1, 1, Embedder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -276,6 +318,7 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		initEReference(getEmbedder_ThirdEmbedded(), this.getEmbeddable(), null, "thirdEmbedded", null, 1, 1, Embedder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEmbedder_FourthEmbedded(), this.getEmbeddable(), null, "fourthEmbedded", null, 1, -1, Embedder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEmbedder_FifthEmbedded(), this.getEmbeddable(), null, "fifthEmbedded", null, 1, 1, Embedder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEmbedder_AlsoEmbeddable(), this.getAlsoEmbeddable(), null, "alsoEmbeddable", null, 1, 1, Embedder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -295,6 +338,20 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	 */
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
+		addAnnotation
+		  (alsoEmbeddableEClass, 
+		   source, 
+		   new String[] {
+			 "name", "AlsoEmbeddable",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getAlsoEmbeddable_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
+		   });			
 		addAnnotation
 		  (embeddableEClass, 
 		   source, 
@@ -357,6 +414,13 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		   new String[] {
 			 "kind", "element",
 			 "name", "fifthEmbedded"
+		   });		
+		addAnnotation
+		  (getEmbedder_AlsoEmbeddable(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "alsoEmbeddable"
 		   });
 	}
 
@@ -368,6 +432,12 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	 */
 	protected void createTeneoAnnotations() {
 		String source = "teneo.jpa";		
+		addAnnotation
+		  (alsoEmbeddableEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Embeddable"
+		   });				
 		addAnnotation
 		  (embeddableEClass, 
 		   source, 
@@ -403,7 +473,7 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t@Embedded\n\t\t\t\t\t"
-		   });	
+		   });		
 	}
 
 } //EmbeddedPackageImpl

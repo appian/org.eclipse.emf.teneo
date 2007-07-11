@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedFactoryImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: EmbeddedFactoryImpl.java,v 1.3 2007/07/11 18:28:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -60,11 +60,22 @@ public class EmbeddedFactoryImpl extends EFactoryImpl implements EmbeddedFactory
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case EmbeddedPackage.ALSO_EMBEDDABLE: return createAlsoEmbeddable();
 			case EmbeddedPackage.EMBEDDABLE: return createEmbeddable();
 			case EmbeddedPackage.EMBEDDER: return createEmbedder();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AlsoEmbeddable createAlsoEmbeddable() {
+		AlsoEmbeddableImpl alsoEmbeddable = new AlsoEmbeddableImpl();
+		return alsoEmbeddable;
 	}
 
 	/**

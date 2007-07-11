@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Embedder.java,v 1.4 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: Embedder.java,v 1.5 2007/07/11 18:28:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getThirdEmbedded <em>Third Embedded</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getFourthEmbedded <em>Fourth Embedded</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getFifthEmbedded <em>Fifth Embedded</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getAlsoEmbeddable <em>Also Embeddable</em>}</li>
  * </ul>
  * </p>
  *
@@ -125,7 +126,7 @@ public interface Embedder extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fourth Embedded</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_FourthEmbedded()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@Embedded\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='fourthEmbedded'"
 	 * @generated
@@ -159,5 +160,32 @@ public interface Embedder extends EObject {
 	 * @generated
 	 */
 	void setFifthEmbedded(Embeddable value);
+
+	/**
+	 * Returns the value of the '<em><b>Also Embeddable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Also Embeddable</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Also Embeddable</em>' containment reference.
+	 * @see #setAlsoEmbeddable(AlsoEmbeddable)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_AlsoEmbeddable()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='alsoEmbeddable'"
+	 * @generated
+	 */
+	AlsoEmbeddable getAlsoEmbeddable();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getAlsoEmbeddable <em>Also Embeddable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Also Embeddable</em>' containment reference.
+	 * @see #getAlsoEmbeddable()
+	 * @generated
+	 */
+	void setAlsoEmbeddable(AlsoEmbeddable value);
 
 } // Embedder

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedSwitch.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
+ * $Id: EmbeddedSwitch.java,v 1.3 2007/07/11 18:28:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.util;
 
@@ -87,6 +87,12 @@ public class EmbeddedSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case EmbeddedPackage.ALSO_EMBEDDABLE: {
+				AlsoEmbeddable alsoEmbeddable = (AlsoEmbeddable)theEObject;
+				T result = caseAlsoEmbeddable(alsoEmbeddable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EmbeddedPackage.EMBEDDABLE: {
 				Embeddable embeddable = (Embeddable)theEObject;
 				T result = caseEmbeddable(embeddable);
@@ -104,13 +110,28 @@ public class EmbeddedSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Embeddable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Also Embeddable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Embeddable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Also Embeddable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAlsoEmbeddable(AlsoEmbeddable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Embeddable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Embeddable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -119,13 +140,13 @@ public class EmbeddedSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Embedder</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Embedder</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Embedder</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Embedder</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -134,13 +155,13 @@ public class EmbeddedSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */

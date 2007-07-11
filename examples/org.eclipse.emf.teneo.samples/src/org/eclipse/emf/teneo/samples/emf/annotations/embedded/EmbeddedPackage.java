@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedPackage.java,v 1.2 2006/09/04 15:42:25 mtaal Exp $
+ * $Id: EmbeddedPackage.java,v 1.3 2007/07/11 18:28:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -60,6 +60,34 @@ public interface EmbeddedPackage extends EPackage {
 	EmbeddedPackage eINSTANCE = org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AlsoEmbeddableImpl <em>Also Embeddable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AlsoEmbeddableImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getAlsoEmbeddable()
+	 * @generated
+	 */
+	int ALSO_EMBEDDABLE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALSO_EMBEDDABLE__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Also Embeddable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALSO_EMBEDDABLE_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddableImpl <em>Embeddable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,7 +95,7 @@ public interface EmbeddedPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getEmbeddable()
 	 * @generated
 	 */
-	int EMBEDDABLE = 0;
+	int EMBEDDABLE = 1;
 
 	/**
 	 * The feature id for the '<em><b>My String</b></em>' attribute.
@@ -104,7 +132,7 @@ public interface EmbeddedPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getEmbedder()
 	 * @generated
 	 */
-	int EMBEDDER = 1;
+	int EMBEDDER = 2;
 
 	/**
 	 * The feature id for the '<em><b>First Embedded</b></em>' containment reference.
@@ -152,14 +180,44 @@ public interface EmbeddedPackage extends EPackage {
 	int EMBEDDER__FIFTH_EMBEDDED = 4;
 
 	/**
+	 * The feature id for the '<em><b>Also Embeddable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMBEDDER__ALSO_EMBEDDABLE = 5;
+
+	/**
 	 * The number of structural features of the '<em>Embedder</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMBEDDER_FEATURE_COUNT = 5;
+	int EMBEDDER_FEATURE_COUNT = 6;
 
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable <em>Also Embeddable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Also Embeddable</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable
+	 * @generated
+	 */
+	EClass getAlsoEmbeddable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable#getName()
+	 * @see #getAlsoEmbeddable()
+	 * @generated
+	 */
+	EAttribute getAlsoEmbeddable_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable <em>Embeddable</em>}'.
@@ -259,6 +317,17 @@ public interface EmbeddedPackage extends EPackage {
 	EReference getEmbedder_FifthEmbedded();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getAlsoEmbeddable <em>Also Embeddable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Also Embeddable</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getAlsoEmbeddable()
+	 * @see #getEmbedder()
+	 * @generated
+	 */
+	EReference getEmbedder_AlsoEmbeddable();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -280,6 +349,24 @@ public interface EmbeddedPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals  {
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AlsoEmbeddableImpl <em>Also Embeddable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AlsoEmbeddableImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getAlsoEmbeddable()
+		 * @generated
+		 */
+		EClass ALSO_EMBEDDABLE = eINSTANCE.getAlsoEmbeddable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ALSO_EMBEDDABLE__NAME = eINSTANCE.getAlsoEmbeddable_Name();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddableImpl <em>Embeddable</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -355,6 +442,14 @@ public interface EmbeddedPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EMBEDDER__FIFTH_EMBEDDED = eINSTANCE.getEmbedder_FifthEmbedded();
+
+		/**
+		 * The meta object literal for the '<em><b>Also Embeddable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EMBEDDER__ALSO_EMBEDDABLE = eINSTANCE.getEmbedder_AlsoEmbeddable();
 
 	}
 

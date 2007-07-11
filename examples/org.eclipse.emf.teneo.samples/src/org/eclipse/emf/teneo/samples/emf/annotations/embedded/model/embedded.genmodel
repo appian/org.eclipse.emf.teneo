@@ -7,6 +7,9 @@
   <foreignModel>embedded.xsd</foreignModel>
   <genPackages prefix="Embedded" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
       resource="XML" disposableProviderFactory="true" ecorePackage="embedded.ecore#/">
+    <genClasses ecoreClass="embedded.ecore#//AlsoEmbeddable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//AlsoEmbeddable/name"/>
+    </genClasses>
     <genClasses ecoreClass="embedded.ecore#//Embeddable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//Embeddable/myString"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//Embeddable/myInteger"/>
@@ -17,6 +20,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/thirdEmbedded"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/fourthEmbedded"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/fifthEmbedded"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/alsoEmbeddable"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

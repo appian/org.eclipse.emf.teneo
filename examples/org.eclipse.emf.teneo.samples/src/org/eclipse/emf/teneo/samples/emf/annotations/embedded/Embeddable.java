@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Embeddable.java,v 1.3 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: Embeddable.java,v 1.4 2007/07/11 18:28:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -38,7 +38,7 @@ public interface Embeddable extends EObject {
 	 * @return the value of the '<em>My String</em>' attribute.
 	 * @see #setMyString(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbeddable_MyString()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='myString'"
 	 * @generated
 	 */
@@ -67,7 +67,7 @@ public interface Embeddable extends EObject {
 	 * @see #unsetMyInteger()
 	 * @see #setMyInteger(int)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbeddable_MyInteger()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
 	 *        extendedMetaData="kind='element' name='myInteger'"
 	 * @generated
 	 */

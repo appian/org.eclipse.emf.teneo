@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedFactory.java,v 1.1 2006/07/11 16:57:07 mtaal Exp $
+ * $Id: EmbeddedFactory.java,v 1.2 2007/07/11 18:28:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -24,6 +24,15 @@ public interface EmbeddedFactory extends EFactory {
 	 * @generated
 	 */
 	EmbeddedFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedFactoryImpl.init();
+
+	/**
+	 * Returns a new object of class '<em>Also Embeddable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Also Embeddable</em>'.
+	 * @generated
+	 */
+	AlsoEmbeddable createAlsoEmbeddable();
 
 	/**
 	 * Returns a new object of class '<em>Embeddable</em>'.

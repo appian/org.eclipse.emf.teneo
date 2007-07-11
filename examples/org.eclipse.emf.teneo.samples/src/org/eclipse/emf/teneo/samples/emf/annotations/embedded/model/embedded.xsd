@@ -46,6 +46,7 @@
 					</xsd:appinfo>
 			    </xsd:annotation>
 			</xsd:element>
+	  		<xsd:element name="alsoEmbeddable" type="this:AlsoEmbeddable"/>
     		</xsd:sequence>
   	</xsd:complexType>
 
@@ -56,6 +57,15 @@
     	<xsd:sequence>
       		<xsd:element name="myString" type="xsd:string"/>
       		<xsd:element name="myInteger" type="xsd:int"/>
+    	</xsd:sequence>
+  	</xsd:complexType>
+
+  	<xsd:complexType name="AlsoEmbeddable">
+	 	<xsd:annotation>
+			<xsd:appinfo source="teneo.jpa">@Embeddable</xsd:appinfo>
+	    </xsd:annotation>
+    	<xsd:sequence>
+      		<xsd:element name="name" type="xsd:string"/>
     	</xsd:sequence>
   	</xsd:complexType>
   	
