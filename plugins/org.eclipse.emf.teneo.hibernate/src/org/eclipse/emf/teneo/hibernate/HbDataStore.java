@@ -31,13 +31,17 @@ import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
-import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
+import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
+import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerAccessor;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerFeatureIDAccessor;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerUserType;
@@ -71,9 +75,9 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
-public abstract class HbDataStore {
+public abstract class HbDataStore implements DataStore {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbDataStore.class);
@@ -126,6 +130,12 @@ public abstract class HbDataStore {
 	 */
 	private String mappingXML = null;
 
+	/** The extensionManager */
+	private ExtensionManager extensionManager;
+
+	/** the entitynamestrategy is read from the extensionManager */
+	private EntityNameStrategy entityNameStrategy;
+
 	/**
 	 * @return the dsName
 	 */
@@ -146,6 +156,14 @@ public abstract class HbDataStore {
 	 */
 	public void setEPackages(EPackage[] epackages) {
 		this.ePackages = epackages;
+	}
+
+	/** Returns the combined hibernate and persistence properties */
+	public Properties getProperties() {
+		final Properties props = new Properties();
+		props.putAll(getHibernateProperties());
+		props.putAll(getPersistenceOptions().getProperties());
+		return props;
 	}
 
 	/**
@@ -321,7 +339,7 @@ public abstract class HbDataStore {
 		String targetEntityName = null;
 		if (referedTo instanceof EObject) {
 			final EObject eReferedTo = (EObject) referedTo;
-			targetEntityName = getPersistenceOptions().getEntityNameStrategy().toEntityName(eReferedTo.eClass());
+			targetEntityName = getEntityNameStrategy().toEntityName(eReferedTo.eClass());
 		} else if (referedTo instanceof HibernateFeatureMapEntry) {
 			final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) referedTo;
 			targetEntityName = fme.getEntityName();
@@ -348,8 +366,8 @@ public abstract class HbDataStore {
 					// search then again with the
 					final ArrayList<Object> fms = getCrossReferencers(sessionWrapper, obj, false);
 					if (fms.size() == 0) {
-						new AssertionError("The featuremap for featuremap entry " + obj.getClass().getName()
-								+ " can not be found");
+						new AssertionError("The featuremap for featuremap entry " + obj.getClass().getName() +
+								" can not be found");
 					}
 					obj = fms.get(0);
 				}
@@ -473,9 +491,7 @@ public abstract class HbDataStore {
 		// check if the eclass exists
 		try {
 			// todo: change recognizing a component to using metadata!
-			EClass eClass =
-					getPersistenceOptions().getEntityNameStrategy().toEClass(component.getComponentClassName(),
-						getEPackages());
+			final EClass eClass = getEntityNameStrategy().toEClass(component.getComponentClassName());
 			if (eClass != null) {
 				log.debug("Found " + eClass.getName() + " as a component");
 			}
@@ -526,9 +542,11 @@ public abstract class HbDataStore {
 		// allows use of
 		// Hibernate-specific annotations.
 		final PersistenceOptions po = getPersistenceOptions();
-		paModel = MappingBuilder.INSTANCE.buildMapping(getEPackages(), po);
-		HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
-		return hmg.generateToString(paModel);
+		setPaModel(getExtensionManager().getExtension(PersistenceMappingBuilder.class).buildMapping(getEPackages(), po,
+			getExtensionManager()));
+		final HibernateMappingGenerator hmg = getExtensionManager().getExtension(HibernateMappingGenerator.class);
+		hmg.setPersistenceOptions(po);
+		return hmg.generateToString(getPaModel());
 	}
 
 	/** Recursively check the container prop in the super hierarchy */
@@ -549,8 +567,8 @@ public abstract class HbDataStore {
 	/** Updates the database schema */
 	protected void updateDatabaseSchema() {
 		if (!getPersistenceOptions().isUpdateSchema()) {
-			log.debug("Database schema not updated, option " + PersistenceOptions.UPDATE_SCHEMA
-					+ " has been set to false");
+			log.debug("Database schema not updated, option " + PersistenceOptions.UPDATE_SCHEMA +
+					" has been set to false");
 			return;
 		}
 		log.debug("Starting update of schema");
@@ -581,7 +599,7 @@ public abstract class HbDataStore {
 
 		final EClass eclass;
 		if (pc.getEntityName() != null) {
-			eclass = getPersistenceOptions().getEntityNameStrategy().toEClass(pc.getEntityName(), getEPackages());
+			eclass = getEntityNameStrategy().toEClass(pc.getEntityName());
 		} else {
 			eclass = EModelResolver.instance().getEClass(pc.getMappedClass());
 		}
@@ -762,9 +780,7 @@ public abstract class HbDataStore {
 				try {
 					if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) == null) {
 						if (pc.getEntityName() != null) {
-							eClass =
-									getPersistenceOptions().getEntityNameStrategy().toEClass(pc.getEntityName(),
-										getEPackages());
+							eClass = getEntityNameStrategy().toEClass(pc.getEntityName());
 						} else {
 							eClass = EModelResolver.instance().getEClass(pc.getMappedClass());
 						}
@@ -802,15 +818,15 @@ public abstract class HbDataStore {
 							isContainer = ef instanceof EReference && ((EReference) ef).isContainment();
 						} else {
 							isContainer =
-									prop.getCascadeStyle().hasOrphanDelete()
-											|| prop.getCascadeStyle() == CascadeStyle.ALL;
+									prop.getCascadeStyle().hasOrphanDelete() ||
+											prop.getCascadeStyle() == CascadeStyle.ALL;
 						}
 					} else if (prop.getValue() instanceof List || prop.getValue() instanceof Bag) {
 						isMany = true;
 						if (ef == null) { // TODO can this happen?
 							isContainer =
-									prop.getCascadeStyle().hasOrphanDelete()
-											|| prop.getCascadeStyle() == CascadeStyle.ALL;
+									prop.getCascadeStyle().hasOrphanDelete() ||
+											prop.getCascadeStyle() == CascadeStyle.ALL;
 							if (((Collection) prop.getValue()).getElement() instanceof OneToMany) {
 								final Collection coll = (Collection) prop.getValue();
 								toEntity = ((OneToMany) coll.getElement()).getReferencedEntityName();
@@ -818,16 +834,16 @@ public abstract class HbDataStore {
 								final Collection coll = (Collection) prop.getValue();
 								toEntity = ((ManyToOne) coll.getElement()).getReferencedEntityName();
 							} else {
-								throw new HbMapperException("Type "
-										+ ((Collection) prop.getValue()).getElement().getClass().getName()
-										+ " not supported");
+								throw new HbMapperException("Type " +
+										((Collection) prop.getValue()).getElement().getClass().getName() +
+										" not supported");
 							}
 						} else {
 							// in case of featuremap set containment always on
 							// true because only the featuremap entries
 							// themselves know if they are containment
-							if (ef instanceof EAttribute
-									&& ((EAttribute) ef).getEType().getInstanceClass() == Entry.class) {
+							if (ef instanceof EAttribute &&
+									((EAttribute) ef).getEType().getInstanceClass() == Entry.class) {
 								isContainer = true;
 								final OneToMany otm = (OneToMany) ((Collection) prop.getValue()).getElement();
 								toEntity = otm.getReferencedEntityName();
@@ -838,9 +854,7 @@ public abstract class HbDataStore {
 								// prop.getCascadeStyle()
 								// ==
 								// CascadeStyle.ALL;
-								toEntity =
-										getPersistenceOptions().getEntityNameStrategy().toEntityName(
-											((EReference) ef).getEReferenceType());
+								toEntity = getEntityNameStrategy().toEntityName(((EReference) ef).getEReferenceType());
 							} else if (ef instanceof EAttribute && ef.getEType() instanceof EClass) { // TODO
 								// can
 								// this
@@ -849,9 +863,7 @@ public abstract class HbDataStore {
 								isContainer = true; // prop.getCascadeStyle().hasOrphanDelete()
 								// || prop.getCascadeStyle()
 								// == CascadeStyle.ALL;
-								toEntity =
-										getPersistenceOptions().getEntityNameStrategy().toEntityName(
-											(EClass) ef.getEType());
+								toEntity = getEntityNameStrategy().toEntityName((EClass) ef.getEType());
 							}
 							// filter out non eobjects
 							else {
@@ -901,8 +913,15 @@ public abstract class HbDataStore {
 	 */
 	private java.util.List<ReferenceTo> setRefersToOfSupers(String eClassUri,
 			HashMap<String, java.util.List<ReferenceTo>> refersTo, ArrayList<EClass> classDone) {
-		final EntityNameStrategy ens = getPersistenceOptions().getEntityNameStrategy();
-		EClass eclass = ens.toEClass(eClassUri, getEPackages());
+		final EntityNameStrategy ens = getEntityNameStrategy();
+		EClass eclass;
+		try {
+			eclass = ens.toEClass(eClassUri);
+		} catch (IllegalArgumentException e) {
+			// catch this, this happens when the refered to eclass is not mapped
+			// because it is is embeddable
+			eclass = null;
+		}
 		if (eclass == null) {
 			return new ArrayList<ReferenceTo>();
 		}
@@ -961,8 +980,8 @@ public abstract class HbDataStore {
 			this.isContainer = isContainer;
 			if (isMany) {
 				qryStr =
-						"SELECT ref FROM " + fromEntity + " as ref, " + toEntity
-								+ " as refTo WHERE refTo = :to and refTo in elements(ref." + prop.getName() + ")";
+						"SELECT ref FROM " + fromEntity + " as ref, " + toEntity +
+								" as refTo WHERE refTo = :to and refTo in elements(ref." + prop.getName() + ")";
 			} else {
 				qryStr = "SELECT ref FROM " + fromEntity + " as ref WHERE :to = ref." + prop.getName();
 			}
@@ -1028,6 +1047,13 @@ public abstract class HbDataStore {
 	 * @return the paModel
 	 */
 	public PAnnotatedModel getPaModel() {
+		if (paModel == null) {
+			// happens in case a hbm file is used
+			// just create the pamodel with the default values
+			paModel =
+					getExtensionManager().getExtension(PersistenceMappingBuilder.class).buildMapping(getEPackages(),
+						getPersistenceOptions(), getExtensionManager());
+		}
 		return paModel;
 	}
 
@@ -1036,5 +1062,45 @@ public abstract class HbDataStore {
 	 */
 	public HashMap<String, java.util.List<ReferenceTo>> getReferers() {
 		return referers;
+	}
+
+	/**
+	 * If the extensionManager is not yet set then the DefaultExtensionManager is used.
+	 * 
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		if (extensionManager == null) {
+			setExtensionManager(new DefaultExtensionManager());
+		}
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
+		MappingUtil.registerHbExtensions(extensionManager);
+	}
+
+	/**
+	 * @return the entityNameStrategy
+	 */
+	public EntityNameStrategy getEntityNameStrategy() {
+		if (entityNameStrategy == null) {
+			entityNameStrategy = getExtensionManager().getExtension(EntityNameStrategy.class);
+			entityNameStrategy.setPaModel(getPaModel());
+		}
+		return entityNameStrategy;
+	}
+
+	/**
+	 * @param paModel
+	 *            the paModel to set
+	 */
+	public void setPaModel(PAnnotatedModel paModel) {
+		this.paModel = paModel;
 	}
 }

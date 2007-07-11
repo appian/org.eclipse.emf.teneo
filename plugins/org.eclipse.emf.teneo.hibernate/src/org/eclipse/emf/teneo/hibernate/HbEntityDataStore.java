@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.5 2007/06/29 07:31:56 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.6 2007/07/11 14:40:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -25,6 +25,7 @@ import javax.persistence.EntityManagerFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.ERuntime;
+import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
@@ -36,7 +37,7 @@ import org.hibernate.ejb.Ejb3Configuration;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class HbEntityDataStore extends HbDataStore {
 
@@ -52,6 +53,8 @@ public class HbEntityDataStore extends HbDataStore {
 	/** Initializes this Data Store */
 	@Override
 	public void initialize() {
+		MappingUtil.registerHbExtensions(getExtensionManager());
+
 		log.debug("Initializing EJB3 Hb Entity DataStore");
 		// check a few things
 		if (getEPackages() == null) {
@@ -94,7 +97,7 @@ public class HbEntityDataStore extends HbDataStore {
 	@Override
 	protected void setInterceptor() {
 		final Interceptor interceptor =
-				getHbContext().createInterceptor(getHibernateConfiguration(), getPersistenceOptions());
+				getHbContext().createInterceptor(getHibernateConfiguration(), getEntityNameStrategy());
 		getConfiguration().setInterceptor(interceptor);
 		setInterceptor(interceptor);
 	}
@@ -120,8 +123,8 @@ public class HbEntityDataStore extends HbDataStore {
 	}
 
 	/**
-	 * Maps an ecore model of one ore more epackages into a hibernate xml String
-	 * which is added to the passed configuration
+	 * Maps an ecore model of one ore more epackages into a hibernate xml String which is added to
+	 * the passed configuration
 	 */
 	protected void mapModel() {
 		if (getPersistenceOptions().isUseMappingFile()) {

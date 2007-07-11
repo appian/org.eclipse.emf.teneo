@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.14 2007/07/09 12:54:51 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.15 2007/07/11 14:40:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -45,20 +45,19 @@ import org.hibernate.Session;
 import org.hibernate.impl.SessionImpl;
 
 /**
- * Hibernate Resource. The hibernate resource has a Session during its lifetime.
- * A transaction is started before the load and it is stopped just after the
- * save. The session is disconnected and reconnected when loading and saving.
+ * Hibernate Resource. The hibernate resource has a Session during its lifetime. A transaction is
+ * started before the load and it is stopped just after the save. The session is disconnected and
+ * reconnected when loading and saving.
  * 
- * When you create a HbDataStore through the appropriate method in the
- * HibernateHelper class. The name you passed there can be used as a parameter
- * in the uri used to create this resource (using the parameter pmfname). The
- * uri is then: hibernate://?dsname=myemf.
+ * When you create a HbDataStore through the appropriate method in the HibernateHelper class. The
+ * name you passed there can be used as a parameter in the uri used to create this resource (using
+ * the parameter pmfname). The uri is then: hibernate://?dsname=myemf.
  * 
- * Another simple trick which is used to fool emf a bit is that the extension of
- * the uri can also be used to init a hibernate resource!
+ * Another simple trick which is used to fool emf a bit is that the extension of the uri can also be
+ * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -141,9 +140,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Returns the session of this resource, if no session is set yet then
-	 * creates it using the datastore. As a default the FlushMode is set to
-	 * Never.
+	 * Returns the session of this resource, if no session is set yet then creates it using the
+	 * datastore. As a default the FlushMode is set to Never.
 	 * 
 	 * Deprecated, use getSessionWrapper (to support ejb3)
 	 */
@@ -166,8 +164,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 		return sessionWrapper;
 	}
 
-	/** Sets the session, overwrites current session. 
-	 * Deprecated use setSessionWrapper.
+	/**
+	 * Sets the session, overwrites current session. Deprecated use setSessionWrapper.
 	 */
 	@Deprecated
 	public void setSession(Session session) {
@@ -179,8 +177,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Unpacks the id string and reads an object from the db, note for each read a transaction
-	 * is opened, unless the session is controlled by the caller. 
+	 * Unpacks the id string and reads an object from the db, note for each read a transaction is
+	 * opened, unless the session is controlled by the caller.
 	 * 
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getEObjectByID(java.lang.String)
 	 */
@@ -210,9 +208,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 			}
 
 			// build a query
-			final EClass eclass =
-					emfDataStore.getPersistenceOptions().getEntityNameStrategy().toEClass(parts[0],
-						emfDataStore.getEPackages());
+			final EClass eclass = emfDataStore.getEntityNameStrategy().toEClass(parts[0]);
 			final int splitIndex = parts[1].indexOf("=");
 			if (splitIndex == -1) {
 				log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
@@ -236,9 +232,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Creates a unique id string from the eobject. The id string will contain 
-	 * a link to the type (eclass) and the string version of the id itself. This method
-	 * assumes that the id can be converted from and to a string!
+	 * Creates a unique id string from the eobject. The id string will contain a link to the type
+	 * (eclass) and the string version of the id itself. This method assumes that the id can be
+	 * converted from and to a string!
+	 * 
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getURIFragment(org.eclipse.emf.ecore.EObject)
 	 */
 	@Override
@@ -251,14 +248,14 @@ public class HibernateResource extends StoreResource implements HbResource {
 			return super.getURIFragment(object);
 		}
 		final StringBuffer idStr = new StringBuffer();
-		idStr.append(emfDataStore.getPersistenceOptions().getEntityNameStrategy().toEntityName(object.eClass()));
+		idStr.append(emfDataStore.getEntityNameStrategy().toEntityName(object.eClass()));
 		idStr.append(SEPARATOR);
 		idStr.append("id=" + theId);
 		return idStr.toString();
 	}
 
-	/** 
-	 * Sets the sessionwrapper, overwrites current session. 
+	/**
+	 * Sets the sessionwrapper, overwrites current session.
 	 */
 	public void setSessionWrapper(SessionWrapper sessionWrapper) {
 		this.sessionWrapper = sessionWrapper;
@@ -275,8 +272,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Returns an array of EObjects which refer to a certain EObject, note if
-	 * the array is of length zero then no refering EObjects where found.
+	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length
+	 * zero then no refering EObjects where found.
 	 */
 	@Override
 	public Object[] getCrossReferencers(EObject referedTo) {
@@ -306,8 +303,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Saves the changed objects or removes the detached objects from this
-	 * resource.
+	 * Saves the changed objects or removes the detached objects from this resource.
 	 */
 	@Override
 	protected void saveResource(Map<?, ?> options) {
@@ -393,8 +389,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Rollsback the transaction if any and clears different lists to start with
-	 * an empty resource again. 
+	 * Rollsback the transaction if any and clears different lists to start with an empty resource
+	 * again.
 	 */
 	@Override
 	protected void doUnload() {
@@ -415,12 +411,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * This method can be overridden to implement specific load behavior. Note
-	 * that a transaction has already been started. The session is passed as a
-	 * parameter, this is the same session which can be retrieved using the
-	 * getSession method. The read objects should be returned in the list. Note
-	 * that after this call the retrieved objects are put in the resource
-	 * content.
+	 * This method can be overridden to implement specific load behavior. Note that a transaction
+	 * has already been started. The session is passed as a parameter, this is the same session
+	 * which can be retrieved using the getSession method. The read objects should be returned in
+	 * the list. Note that after this call the retrieved objects are put in the resource content.
 	 */
 	protected List<EObject> loadFromStore(SessionWrapper sess) {
 		if (definedQueriesPresent()) {

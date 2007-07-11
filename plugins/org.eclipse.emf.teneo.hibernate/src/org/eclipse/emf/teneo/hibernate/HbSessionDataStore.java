@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.2 2007/04/07 12:43:51 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.3 2007/07/11 14:40:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -22,6 +22,7 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.ERuntime;
+import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
@@ -29,15 +30,15 @@ import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
 
 /**
- * Holds the SessionFactory and performs different initialization related
- * actions. Initializes the database and offers xml import and export methods.
- * In addition can be used to retrieve all referers to a certain eobject.
+ * Holds the SessionFactory and performs different initialization related actions. Initializes the
+ * database and offers xml import and export methods. In addition can be used to retrieve all
+ * referers to a certain eobject.
  * <p>
- * The behavior can be overridden by overriding the protected methods and
- * implementing/registering your own HbDataStoreFactory in the HibernateHelper.
+ * The behavior can be overridden by overriding the protected methods and implementing/registering
+ * your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class HbSessionDataStore extends HbDataStore {
@@ -52,14 +53,18 @@ public class HbSessionDataStore extends HbDataStore {
 	private Configuration hbConfiguration;
 
 	/** Initializes this Data Store */
+	@Override
 	public void initialize() {
+		MappingUtil.registerHbExtensions(getExtensionManager());
+
 		log.debug("Initializing Hb Session DataStore");
 
 		// check a few things
-		if (getEPackages() == null)
+		if (getEPackages() == null) {
 			throw new HbMapperException("EPackages are not set");
-		// if (getName() == null)
-		// throw new HbStoreException("Name is not set");
+			// if (getName() == null)
+			// throw new HbStoreException("Name is not set");
+		}
 
 		log.debug(">>>>> Creating HB Configuration");
 		hbConfiguration = createConfiguration();
@@ -70,12 +75,13 @@ public class HbSessionDataStore extends HbDataStore {
 		mapModel();
 
 		setPropertiesInConfiguration();
-		
+
 		initializeDataStore();
 
 		// wait for the session factory until the database is (re)created
-		if (sessionFactory != null && !sessionFactory.isClosed())
+		if (sessionFactory != null && !sessionFactory.isClosed()) {
 			sessionFactory.close();
+		}
 		sessionFactory = buildSessionFactory();
 
 		setInitialized(true);
@@ -91,19 +97,22 @@ public class HbSessionDataStore extends HbDataStore {
 	}
 
 	/** Return the Classmappings as an iterator */
+	@Override
 	protected Iterator<?> getClassMappings() {
 		return getConfiguration().getClassMappings();
 	}
 
 	/** Build the mappings in the configuration */
+	@Override
 	protected void buildMappings() {
 		getConfiguration().buildMappings();
 	}
 
 	/** Sets the interceptor */
+	@Override
 	protected void setInterceptor() {
-		final Interceptor interceptor = getHbContext().createInterceptor(
-				getHibernateConfiguration(), getPersistenceOptions());
+		final Interceptor interceptor =
+				getHbContext().createInterceptor(getHibernateConfiguration(), getEntityNameStrategy());
 		getConfiguration().setInterceptor(interceptor);
 		setInterceptor(interceptor);
 	}
@@ -113,12 +122,9 @@ public class HbSessionDataStore extends HbDataStore {
 		Properties properties = getHibernateProperties();
 		if (properties != null) {
 			if (properties.getProperty("hibernate.cache.provider_class") == null) {
-				log.warn("No hibernate cache provider set, using "
-						+ HashtableCacheProvider.class.getName());
-				log
-						.warn("For production use please set the ehcache (or other) provider explicitly and configure it");
-				properties.setProperty("hibernate.cache.provider_class",
-						HashtableCacheProvider.class.getName());
+				log.warn("No hibernate cache provider set, using " + HashtableCacheProvider.class.getName());
+				log.warn("For production use please set the ehcache (or other) provider explicitly and configure it");
+				properties.setProperty("hibernate.cache.provider_class", HashtableCacheProvider.class.getName());
 			}
 			log.debug("Setting properties in Hibernate Configuration:");
 			logProperties(properties);
@@ -127,23 +133,20 @@ public class HbSessionDataStore extends HbDataStore {
 	}
 
 	/**
-	 * Maps an ecore model of one ore more epackages into a hibernate xml String
-	 * which is added to the passed configuration
+	 * Maps an ecore model of one ore more epackages into a hibernate xml String which is added to
+	 * the passed configuration
 	 */
 	protected void mapModel() {
 		if (getPersistenceOptions().isUseMappingFile()) {
 
 			// register otherwise the getFileList will not work
-//			ERuntime.INSTANCE.register(getEPackages());
+// ERuntime.INSTANCE.register(getEPackages());
 
 			log.debug("Searching hbm files in class paths of epackages");
-			final String[] fileList = StoreUtil.getFileList(
-					HbConstants.HBM_FILE_NAME, null);
-			for (int i = 0; i < fileList.length; i++) {
-				log.debug("Adding file " + fileList[i]
-						+ " to Hibernate Configuration");
-				getConfiguration().addInputStream(
-						this.getClass().getResourceAsStream(fileList[i]));
+			final String[] fileList = StoreUtil.getFileList(HbConstants.HBM_FILE_NAME, null);
+			for (String element : fileList) {
+				log.debug("Adding file " + element + " to Hibernate Configuration");
+				getConfiguration().addInputStream(this.getClass().getResourceAsStream(element));
 			}
 		} else {
 			setMappingXML(mapEPackages());
@@ -161,6 +164,7 @@ public class HbSessionDataStore extends HbDataStore {
 	 * 
 	 * @see org.eclipse.emf.teneo.jpox.emf.IEMFDataStore#close()
 	 */
+	@Override
 	public void close() {
 		if (!getSessionFactory().isClosed()) {
 			getSessionFactory().close();
@@ -168,6 +172,7 @@ public class HbSessionDataStore extends HbDataStore {
 	}
 
 	/** Get the session factory */
+	@Override
 	public SessionFactory getSessionFactory() {
 		if (!isInitialized()) {
 			initialize();
@@ -175,8 +180,9 @@ public class HbSessionDataStore extends HbDataStore {
 		assert (sessionFactory != null);
 		return sessionFactory;
 	}
-	
+
 	/** Return a new session wrapper */
+	@Override
 	public SessionWrapper createSessionWrapper() {
 		return new HbSessionWrapper(this);
 	}
@@ -191,6 +197,7 @@ public class HbSessionDataStore extends HbDataStore {
 	/**
 	 * @return the hbConfiguration
 	 */
+	@Override
 	public Configuration getHibernateConfiguration() {
 		return getConfiguration();
 	}

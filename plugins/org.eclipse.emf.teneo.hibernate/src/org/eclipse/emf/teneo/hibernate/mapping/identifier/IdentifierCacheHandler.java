@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class IdentifierCacheHandler {
@@ -47,6 +47,12 @@ public class IdentifierCacheHandler {
 
 	/** Keeps track of the modifications to the versionMap */
 	private static int versionModCount = 0;
+
+	/** Clear the identifier cache */
+	public static void clear() {
+		idMap.clear();
+		versionMap.clear();
+	}
 
 	/** Get an identifier from the cache */
 	public static Object getID(Object obj) {

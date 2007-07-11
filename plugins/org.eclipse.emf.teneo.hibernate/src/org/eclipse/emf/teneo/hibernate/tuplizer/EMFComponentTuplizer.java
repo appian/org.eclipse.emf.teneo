@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFComponentTuplizer.java,v 1.10 2007/06/29 07:31:56 mtaal Exp $
+ * $Id: EMFComponentTuplizer.java,v 1.11 2007/07/11 14:40:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -35,7 +35,7 @@ import org.hibernate.tuple.component.AbstractComponentTuplizer;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class EMFComponentTuplizer extends AbstractComponentTuplizer {
@@ -61,9 +61,7 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	@Override
 	protected Instantiator buildInstantiator(Component component) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(component);
-		final EClass eclass =
-				ds.getPersistenceOptions().getEntityNameStrategy().toEClass(component.getComponentClassName(),
-					ds.getEPackages());
+		final EClass eclass = ds.getEntityNameStrategy().toEClass(component.getComponentClassName());
 		if (eclass == null) {
 			throw new HbMapperException("No eclass found for entityname: " + component.getComponentClassName());
 		}

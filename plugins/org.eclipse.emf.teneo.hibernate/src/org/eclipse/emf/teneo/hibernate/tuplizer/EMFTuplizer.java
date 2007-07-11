@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.9 2007/06/29 07:31:56 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.10 2007/07/11 14:40:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -50,13 +50,12 @@ import org.hibernate.type.AbstractComponentType;
 import org.hibernate.util.ReflectHelper;
 
 /**
- * Overrides the get and setidentifier methods to get the identifier from an
- * internal cache instead of from the EMF object itself. The same behavior for
- * the getVersion methods. Also a specific object instantiator is used to make
- * use of the emf efactories.
+ * Overrides the get and setidentifier methods to get the identifier from an internal cache instead
+ * of from the EMF object itself. The same behavior for the getVersion methods. Also a specific
+ * object instantiator is used to make use of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -64,7 +63,10 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/** The logger */
 	private static Log log = LogFactory.getLog(EMFTuplizer.class);
 
-	/** The mapped class, defaults to EObject for entities and to the real impl class for mapped classes */
+	/**
+	 * The mapped class, defaults to EObject for entities and to the real impl class for mapped
+	 * classes
+	 */
 	private Class<?> mappedClass;
 
 	/** The entitymetamodel for which this is all done */
@@ -118,9 +120,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	@Override
 	protected Instantiator buildInstantiator(PersistentClass persistentClass) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
-		final EClass eclass =
-				ds.getPersistenceOptions().getEntityNameStrategy().toEClass(persistentClass.getEntityName(),
-					ds.getEPackages());
+		final EClass eclass = ds.getEntityNameStrategy().toEClass(persistentClass.getEntityName());
 		if (eclass == null) {
 			throw new HbMapperException("No eclass found for entityname: " + persistentClass.getEntityName());
 		}
@@ -162,9 +162,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 		}
 
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
-		final EClass eclass =
-				ds.getPersistenceOptions().getEntityNameStrategy().toEClass(persistentClass.getEntityName(),
-					ds.getEPackages());
+		final EClass eclass = ds.getEntityNameStrategy().toEClass(persistentClass.getEntityName());
 		if (eclass == null) {
 			throw new HbMapperException("No eclass found for entityname: " + persistentClass.getEntityName());
 		}

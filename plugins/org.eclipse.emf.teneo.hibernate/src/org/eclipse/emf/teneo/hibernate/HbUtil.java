@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.17 2007/06/29 07:31:56 mtaal Exp $
+ * $Id: HbUtil.java,v 1.18 2007/07/11 14:40:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -49,7 +49,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class HbUtil {
 
@@ -58,8 +58,7 @@ public class HbUtil {
 
 	/** Encode the id of an eobject */
 	public static String idToString(EObject eobj, HbDataStore hd) {
-		final PersistentClass pc =
-				hd.getPersistentClass(hd.getPersistenceOptions().getEntityNameStrategy().toEntityName(eobj.eClass()));
+		final PersistentClass pc = hd.getPersistentClass(hd.getEntityNameStrategy().toEntityName(eobj.eClass()));
 		if (pc == null) { // can happen with map entries
 			return null;
 		}
@@ -87,8 +86,7 @@ public class HbUtil {
 	/** Encode the id of an eobject */
 	public static Object stringToId(EClass eclass, HbDataStore hd, String id) {
 		try {
-			final PersistentClass pc =
-					hd.getPersistentClass(hd.getPersistenceOptions().getEntityNameStrategy().toEntityName(eclass));
+			final PersistentClass pc = hd.getPersistentClass(hd.getEntityNameStrategy().toEntityName(eclass));
 			final Type t = pc.getIdentifierProperty().getType();
 			if (t instanceof IdentifierType) {
 				return ((IdentifierType) t).stringToObject(id);
@@ -121,23 +119,22 @@ public class HbUtil {
 			return ds.getHbContext().createEContainerFeatureIDAccessor();
 		}
 
-		final EClass eClass =
-				ds.getPersistenceOptions().getEntityNameStrategy().toEClass(entityName, ds.getEPackages());
+		final EClass eClass = ds.getEntityNameStrategy().toEClass(entityName);
 		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass, mappedProperty.getName());
 		;
 
 		if (efeature == null) {
-			throw new HbMapperException("Feature not found for eclass/entity/property " + eClass.getName() + "/"
-					+ entityName + "/" + mappedProperty.getName());
+			throw new HbMapperException("Feature not found for eclass/entity/property " + eClass.getName() + "/" +
+					entityName + "/" + mappedProperty.getName());
 		}
 
-		log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + entityName + "/"
-				+ efeature.getName());
+		log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + entityName + "/" +
+				efeature.getName());
 
 		// check extra lazy
 		final boolean extraLazy =
-				mappedProperty.getValue() instanceof Collection
-						&& ((Collection) mappedProperty.getValue()).isExtraLazy();
+				mappedProperty.getValue() instanceof Collection &&
+						((Collection) mappedProperty.getValue()).isExtraLazy();
 
 		if (FeatureMapUtil.isFeatureMap(efeature)) {
 			return ds.getHbContext().createFeatureMapPropertyAccessor(efeature);
@@ -171,18 +168,16 @@ public class HbUtil {
 	}
 
 	/**
-	 * Returns the structural feature, handles the case of structural features
-	 * which are part of a feature map entry. public static EStructuralFeature
-	 * getFeature(PersistentClass pc, String propName, EPackage[] epacks) {
-	 * final MetaAttribute ma = pc.getMetaAttribute("eclass"); // TODO:
-	 * externalize final String eclassName; if (ma != null) { eclassName =
-	 * ma.getValue(); } else { eclassName = pc.getEntityName(); } return
-	 * StoreUtil.getEStructuralFeature(eclassName, propName, epacks); }
+	 * Returns the structural feature, handles the case of structural features which are part of a
+	 * feature map entry. public static EStructuralFeature getFeature(PersistentClass pc, String
+	 * propName, EPackage[] epacks) { final MetaAttribute ma = pc.getMetaAttribute("eclass"); //
+	 * TODO: externalize final String eclassName; if (ma != null) { eclassName = ma.getValue(); }
+	 * else { eclassName = pc.getEntityName(); } return StoreUtil.getEStructuralFeature(eclassName,
+	 * propName, epacks); }
 	 */
 
 	/**
-	 * Creates and registers an emf data store using a set of generic store
-	 * properties
+	 * Creates and registers an emf data store using a set of generic store properties
 	 */
 	public static HbDataStore getCreateDataStore(Properties props) {
 		final String name = props.getProperty(Constants.PROP_NAME);

@@ -11,22 +11,20 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInterceptor.java,v 1.7 2007/06/29 07:31:56 mtaal Exp $
+ * $Id: EMFInterceptor.java,v 1.8 2007/07/11 14:40:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.hibernate.EmptyInterceptor;
 
 /**
- * Intercepts the getEntityName call to return the EClass name as the entity
- * name.
+ * Intercepts the getEntityName call to return the EClass name as the entity name.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class EMFInterceptor extends EmptyInterceptor {
@@ -40,8 +38,8 @@ public class EMFInterceptor extends EmptyInterceptor {
 	private final EntityNameStrategy qualifyStrategy;
 
 	/** Constructor */
-	public EMFInterceptor(PersistenceOptions po) {
-		qualifyStrategy = po.getEntityNameStrategy();
+	public EMFInterceptor(EntityNameStrategy ens) {
+		qualifyStrategy = ens;
 	}
 
 	/**
