@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class JoinColumnsAction extends AbstractTestAction {
 	/**
@@ -45,6 +45,7 @@ public class JoinColumnsAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
+		store.disableDrop();
 		final JoincolumnsFactory factory = JoincolumnsFactory.eINSTANCE;
 		{
 			store.beginTransaction();
