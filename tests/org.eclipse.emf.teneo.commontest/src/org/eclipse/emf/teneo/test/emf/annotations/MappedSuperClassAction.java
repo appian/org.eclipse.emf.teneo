@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappedSuperClassAction.java,v 1.4 2007/06/29 07:35:44 mtaal Exp $
+ * $Id: MappedSuperClassAction.java,v 1.5 2007/07/11 15:29:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -20,7 +20,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.SpecificDocument;
@@ -30,9 +32,9 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Testcase
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class MappedSuperClassAction extends AbstractTestAction {
 	/**
@@ -40,6 +42,18 @@ public class MappedSuperClassAction extends AbstractTestAction {
 	 */
 	public MappedSuperClassAction() {
 		super(MappedsuperclassPackage.eINSTANCE);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY, "READ_WRITE");
+		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */
