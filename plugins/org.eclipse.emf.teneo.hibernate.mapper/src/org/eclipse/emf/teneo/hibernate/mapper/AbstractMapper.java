@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.22 2007/07/11 14:40:45 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.23 2007/07/11 17:35:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
@@ -300,6 +301,14 @@ public abstract class AbstractMapper implements ExtensionPoint {
 			col.setName(hbmContext.trunc(name));
 			col.setNullable(isNullable);
 			col.setUnique(isUnique);
+
+			if (pet instanceof HbAnnotatedEAttribute && ((HbAnnotatedEAttribute) pet).getGenerated() != null &&
+					((HbAnnotatedEAttribute) pet).getGenerated().getValue() != null &&
+					((HbAnnotatedEAttribute) pet).getGenerated().getValue() != GenerationTime.NEVER) {
+				col.setInsertable(false);
+				col.setUpdatable(false);
+			}
+
 			columns.add(col);
 		}
 		for (Column column : columns) {

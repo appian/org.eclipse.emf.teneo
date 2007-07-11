@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactoryImpl.java,v 1.2 2007/07/11 17:13:31 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.3 2007/07/11 17:35:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
@@ -85,6 +86,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 			case HbannotationPackage.ON_DELETE: return createOnDelete();
 			case HbannotationPackage.PROXY: return createProxy();
 			case HbannotationPackage.INDEX: return createIndex();
+			case HbannotationPackage.GENERATED: return createGenerated();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +105,8 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 				return createHbFetchTypeFromString(eDataType, initialValue);
 			case HbannotationPackage.ON_DELETE_ACTION:
 				return createOnDeleteActionFromString(eDataType, initialValue);
+			case HbannotationPackage.GENERATION_TIME:
+				return createGenerationTimeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -121,6 +125,8 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 				return convertHbFetchTypeToString(eDataType, instanceValue);
 			case HbannotationPackage.ON_DELETE_ACTION:
 				return convertOnDeleteActionToString(eDataType, instanceValue);
+			case HbannotationPackage.GENERATION_TIME:
+				return convertGenerationTimeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -253,6 +259,16 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Generated createGenerated() {
+		GeneratedImpl generated = new GeneratedImpl();
+		return generated;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -303,6 +319,26 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	 * @generated
 	 */
 	public String convertOnDeleteActionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GenerationTime createGenerationTimeFromString(EDataType eDataType, String initialValue) {
+		GenerationTime result = GenerationTime.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGenerationTimeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

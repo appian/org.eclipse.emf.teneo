@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: BasicMapper.java,v 1.19 2007/07/11 14:40:45 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.20 2007/07/11 17:35:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -71,6 +71,12 @@ public class BasicMapper extends AbstractMapper {
 		// todo check: not-null is also set in the call to addcolumns, decide were to do what!
 		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
 		setType(paAttribute, propElement);
+
+		if (((HbAnnotatedEAttribute) paAttribute).getGenerated() != null &&
+				((HbAnnotatedEAttribute) paAttribute).getGenerated().getValue() != null) {
+			propElement.addAttribute("generated", ((HbAnnotatedEAttribute) paAttribute).getGenerated().getValue()
+				.getName().toLowerCase());
+		}
 
 		if (((HbAnnotatedEAttribute) paAttribute).getHbIndex() != null) {
 			final Index index = ((HbAnnotatedEAttribute) paAttribute).getHbIndex();

@@ -23,6 +23,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEAttribute" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEAttribute #//HbAnnotatedETypeElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbType" eType="ecore:EClass hbannotation.ecore#//Type"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generated" eType="ecore:EClass hbannotation.ecore#//Generated"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEClass" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEClass">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbCache" eType="ecore:EClass hbannotation.ecore#//Cache"

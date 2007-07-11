@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttributeValidator.java,v 1.1 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotatedEAttributeValidator.java,v 1.2 2007/07/11 17:35:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.validation;
 
+import org.eclipse.emf.teneo.hibernate.hbannotation.Generated;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 
 /**
@@ -18,4 +19,6 @@ public interface HbAnnotatedEAttributeValidator {
 	boolean validate();
 
 	boolean validateHbType(Type value);
+
+	boolean validateGenerated(Generated value);
 }

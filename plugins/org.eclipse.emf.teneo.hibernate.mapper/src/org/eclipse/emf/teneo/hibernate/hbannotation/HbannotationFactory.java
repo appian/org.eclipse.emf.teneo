@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactory.java,v 1.2 2007/07/11 17:13:31 mtaal Exp $
+ * $Id: HbannotationFactory.java,v 1.3 2007/07/11 17:35:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -147,6 +147,15 @@ public interface HbannotationFactory extends EFactory {
 	 * @generated
 	 */
 	Index createIndex();
+
+	/**
+	 * Returns a new object of class '<em>Generated</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Generated</em>'.
+	 * @generated
+	 */
+	Generated createGenerated();
 
 	/**
 	 * Returns the package supported by this factory.

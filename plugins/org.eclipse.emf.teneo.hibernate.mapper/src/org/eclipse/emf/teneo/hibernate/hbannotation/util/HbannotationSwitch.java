@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationSwitch.java,v 1.2 2007/07/11 17:13:31 mtaal Exp $
+ * $Id: HbannotationSwitch.java,v 1.3 2007/07/11 17:35:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -11,6 +11,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
@@ -209,6 +210,14 @@ public class HbannotationSwitch<T> {
 				T result = caseIndex(index);
 				if (result == null) result = caseHbAnnotation(index);
 				if (result == null) result = casePAnnotation(index);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.GENERATED: {
+				Generated generated = (Generated)theEObject;
+				T result = caseGenerated(generated);
+				if (result == null) result = caseHbAnnotation(generated);
+				if (result == null) result = casePAnnotation(generated);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -428,6 +437,21 @@ public class HbannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseIndex(Index object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generated</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generated</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGenerated(Generated object) {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackageImpl.java,v 1.2 2007/07/11 17:13:31 mtaal Exp $
+ * $Id: HbannotationPackageImpl.java,v 1.3 2007/07/11 17:35:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -20,6 +20,8 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Generated;
+import org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType;
@@ -135,6 +137,13 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	private EClass indexEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass generatedEClass = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -151,6 +160,13 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	 * @generated
 	 */
 	private EEnum onDeleteActionEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum generationTimeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -564,6 +580,24 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGenerated() {
+		return generatedEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGenerated_Value() {
+		return (EAttribute)generatedEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -585,6 +619,15 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	 */
 	public EEnum getOnDeleteAction() {
 		return onDeleteActionEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getGenerationTime() {
+		return generationTimeEEnum;
 	}
 
 	/**
@@ -668,10 +711,14 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		indexEClass = createEClass(INDEX);
 		createEAttribute(indexEClass, INDEX__NAME);
 
+		generatedEClass = createEClass(GENERATED);
+		createEAttribute(generatedEClass, GENERATED__VALUE);
+
 		// Create enums
 		cacheConcurrencyStrategyEEnum = createEEnum(CACHE_CONCURRENCY_STRATEGY);
 		hbFetchTypeEEnum = createEEnum(HB_FETCH_TYPE);
 		onDeleteActionEEnum = createEEnum(ON_DELETE_ACTION);
+		generationTimeEEnum = createEEnum(GENERATION_TIME);
 	}
 
 	/**
@@ -718,6 +765,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		onDeleteEClass.getESuperTypes().add(this.getHbAnnotation());
 		proxyEClass.getESuperTypes().add(this.getHbAnnotation());
 		indexEClass.getESuperTypes().add(this.getHbAnnotation());
+		generatedEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -776,6 +824,9 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		initEClass(indexEClass, Index.class, "Index", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIndex_Name(), ecorePackage.getEString(), "name", null, 0, 1, Index.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(generatedEClass, Generated.class, "Generated", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGenerated_Value(), this.getGenerationTime(), "value", null, 0, 1, Generated.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.class, "CacheConcurrencyStrategy");
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.NONE);
@@ -792,6 +843,11 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		initEEnum(onDeleteActionEEnum, OnDeleteAction.class, "OnDeleteAction");
 		addEEnumLiteral(onDeleteActionEEnum, OnDeleteAction.NO_ACTION);
 		addEEnumLiteral(onDeleteActionEEnum, OnDeleteAction.CASCADE);
+
+		initEEnum(generationTimeEEnum, GenerationTime.class, "GenerationTime");
+		addEEnumLiteral(generationTimeEEnum, GenerationTime.NEVER);
+		addEEnumLiteral(generationTimeEEnum, GenerationTime.INSERT);
+		addEEnumLiteral(generationTimeEEnum, GenerationTime.ALWAYS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -820,7 +876,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "1", "http://hibernate.elver.org/"
-		   });																	
+		   });																		
 	}
 
 	/**
@@ -836,7 +892,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });																
+		   });																	
 	}
 
 	/**
@@ -937,6 +993,12 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
+		   });		
+		addAnnotation
+		  (generatedEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EAttribute"
 		   });
 	}
 
@@ -961,7 +1023,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   new String[] {
 			 "name", "GenericGenerators",
 			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
-		   });						
+		   });							
 	}
 
 } // HbannotationPackageImpl
