@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTest.java,v 1.3 2007/03/28 13:58:33 mtaal Exp $
+ * $Id: AbstractTest.java,v 1.4 2007/07/11 14:42:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -21,23 +21,27 @@ import java.util.Properties;
 import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.test.conf.Testbed;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Base class for hibernate store based tests. The tests inheriting from this class will get a dedicated store to be used in order to
- * perform the test.
+ * Base class for hibernate store based tests. The tests inheriting from this class will get a
+ * dedicated store to be used in order to perform the test.
  * 
  * <p>
- * The standard test suite will run such tests once for each configured test setting (see test.properties).
+ * The standard test suite will run such tests once for each configured test setting (see
+ * test.properties).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public abstract class AbstractTest extends TestCase {
-	// very strange but there was a compile (or runtime) error in one of the ecore packages, had to set this
+	// very strange but there was a compile (or runtime) error in one of the ecore packages, had to
+	// set this
 	static {
-		System.setProperty("org.eclipse.emf.ecore.EPackage.Registry.INSTANCE", "org.eclipse.emf.ecore.impl.EPackageRegistryImpl");
+		System.setProperty("org.eclipse.emf.ecore.EPackage.Registry.INSTANCE",
+			"org.eclipse.emf.ecore.impl.EPackageRegistryImpl");
 	}
 
 	/** The test store is the connection to the database and specific datalayer actions */
@@ -47,8 +51,8 @@ public abstract class AbstractTest extends TestCase {
 	private boolean lastRunFailed;
 
 	/**
-	 * @return Returrns true if last run failed. Meaningless if invoked before the test method completes, reports correct value if
-	 *         invoked in tearDown.
+	 * @return Returrns true if last run failed. Meaningless if invoked before the test method
+	 *         completes, reports correct value if invoked in tearDown.
 	 */
 	public final boolean lastRunFailed() {
 		return lastRunFailed;
@@ -71,11 +75,13 @@ public abstract class AbstractTest extends TestCase {
 	}
 
 	/** Setup the store */
+	@Override
 	public void setUp() throws Exception {
 		itsStore = Testbed.instance().createStore(this);
 	}
 
 	/** Run the test */
+	@Override
 	protected void runTest() throws Throwable {
 		try {
 			lastRunFailed = false;
@@ -87,6 +93,7 @@ public abstract class AbstractTest extends TestCase {
 	}
 
 	/** Tear down after the test */
+	@Override
 	public void tearDown() {
 		getStore().tearDown(!lastRunFailed);
 	}
@@ -96,7 +103,13 @@ public abstract class AbstractTest extends TestCase {
 		return new Properties();
 	}
 
+	/** Add extensions if you want */
+	public void setExtensions(ExtensionManager extensionManager) {
+
+	}
+
 	/** Returns a name based on the class name of the testAction class. */
+	@Override
 	public String getName() {
 		return this.getClass().getName();
 	}
@@ -105,7 +118,7 @@ public abstract class AbstractTest extends TestCase {
 	public String getSimpleName() {
 		return this.getClass().getSimpleName();
 	}
-	
+
 	/** Return the test package name */
 	public abstract Package getTestPackage();
 

@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 
 /**
@@ -23,7 +24,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * this way different test cases can be reused.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public interface TestStore {
 
@@ -32,6 +33,9 @@ public interface TestStore {
 
 	/** Is called just before the test */
 	public void setUp();
+
+	/** Return the datastore */
+	public DataStore getDataStore();
 
 	/**
 	 * Is called just after the test.

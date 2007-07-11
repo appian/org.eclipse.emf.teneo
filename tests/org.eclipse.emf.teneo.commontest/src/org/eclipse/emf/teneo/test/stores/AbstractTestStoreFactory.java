@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestStoreFactory.java,v 1.6 2007/03/20 23:33:38 mtaal Exp $
+ * $Id: AbstractTestStoreFactory.java,v 1.7 2007/07/11 14:42:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -22,6 +22,7 @@ import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.test.AbstractTest;
 import org.eclipse.emf.teneo.test.conf.TestConfiguration;
 
@@ -30,52 +31,22 @@ import org.eclipse.emf.teneo.test.conf.TestConfiguration;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public abstract class AbstractTestStoreFactory {
 
 	/** The logger */
-//	private static Log log = LogFactory.getLog(AbstractTestStoreFactory.class);
- 
-	// TODO make insesitive to user.dir
 	private static String RUN_BASE_DIR = System.getProperty("user.dir") + File.separatorChar + "run";
-	
-	/**
-	 * Request a store for the given configuration. No other store can be requested until this one is tear down. NOTE: dbName must be a
-	 * key: no equals dbName for difference usedEPackages/cfg
-	 */
-	public TestStore get(String dbName, EPackage[] usedEPackages, TestConfiguration cfg, Properties extraConfigProps)
-			throws FileNotFoundException {
-		return createTestStore(dbName, usedEPackages, null, cfg, extraConfigProps);
-	}
 
 	/**
-	 * Request a store for the given configuration. No other store can be requested until this one is tear down. NOTE: dbName must be a
-	 * key: no equals dbName for difference usedEPackages/cfg
+	 * Request a store for the given configuration. No other store can be requested until this one
+	 * is tear down. NOTE: dbName must be a key: no equals dbName for difference usedEPackages/cfg
 	 */
 	public TestStore get(String dbName, EPackage[] usedEPackages, String mappingFilePath, TestConfiguration cfg,
-			Properties extraConfigProps) throws FileNotFoundException {
-		return createTestStore(dbName, usedEPackages, mappingFilePath, cfg, extraConfigProps);
-	}
-
-	/**
-	 * Request a store for the given configuration. No other store can be requested until this one is tear down. NOTE: dbName must be a
-	 * key: no equals dbName for difference usedEPackages/cfg
-	 */
-	public TestStore get(String dbName, EPackage[] usedEPackages, File mappingFile, TestConfiguration cfg,
-			Properties extraConfigProps) throws FileNotFoundException {
-		return createTestStore(dbName, usedEPackages, 
-				(mappingFile != null ? mappingFile.getAbsolutePath() : null), cfg, extraConfigProps);
-	}
-
-	/** Creates the test store for emf test case */
-	protected TestStore createTestStore(String dbName, EPackage[] usedEPackages, String mappingFile, TestConfiguration cfg,
-			Properties props) throws FileNotFoundException {
+			Properties extraConfigProps, ExtensionManager extensionManager) throws FileNotFoundException {
 		cfg.getDbAdapter().setDbName(dbName);
-		// TODO: mappingfile is null for hibernate but set for jpox make this nicer than
-		// passing null value around
-		return createStoreInstance((TestDatabaseAdapter) cfg.getDbAdapter(), usedEPackages, 
-				mappingFile, props, cfg.getMappingStrategy(), cfg.isEjb3());
+		return createStoreInstance(cfg.getDbAdapter(), usedEPackages, mappingFilePath, extraConfigProps, cfg
+			.getMappingStrategy(), cfg.isEjb3(), extensionManager);
 	}
 
 	/** Ensures that the run directory exists, this directory contains the mapping files */
@@ -86,6 +57,7 @@ public abstract class AbstractTestStoreFactory {
 	}
 
 	/** Creates the actual specific test store */
-	protected abstract TestStore createStoreInstance(TestDatabaseAdapter adapter, EPackage[] epackages, String mappingFileLocation,
-			Properties props, InheritanceType inheritanceType, boolean ejb3);
+	protected abstract TestStore createStoreInstance(TestDatabaseAdapter adapter, EPackage[] epackages,
+			String mappingFileLocation, Properties props, InheritanceType inheritanceType, boolean ejb3,
+			ExtensionManager extensionManager);
 }

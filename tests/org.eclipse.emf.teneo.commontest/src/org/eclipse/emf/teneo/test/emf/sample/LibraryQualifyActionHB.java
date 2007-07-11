@@ -11,14 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryQualifyActionHB.java,v 1.5 2007/07/04 19:28:21 mtaal Exp $
+ * $Id: LibraryQualifyActionHB.java,v 1.6 2007/07/11 14:42:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
-import java.util.Properties;
-
-import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
+import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
@@ -30,13 +30,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests setting of qualified enames
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ 
-*/
+ * @version $Revision: 1.6 $
+ */
 public class LibraryQualifyActionHB extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public LibraryQualifyActionHB() {
@@ -44,15 +45,11 @@ public class LibraryQualifyActionHB extends AbstractTestAction {
 
 	}
 
-	/** 
-	 * Can be overridden by subclass returns properties which control the or layer.
-	 * Such as setting of eager loading. 
-	 */
+	/** Add extensions if you want */
 	@Override
-	public Properties getExtraConfigurationProperties() {
-		final Properties props = new Properties();
-		props.put(PersistenceOptions.QUALIFY_ENTITY_NAME, PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
-		return props;
+	public void setExtensions(ExtensionManager extensionManager) {
+		extensionManager.registerExtension(EntityNameStrategy.class.getName(), QualifyingEntityNameStrategy.class
+			.getName());
 	}
 
 	/** Creates an item, an address and links them to a po. */

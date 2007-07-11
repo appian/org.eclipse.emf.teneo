@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.8 2007/07/04 19:28:21 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.9 2007/07/11 14:42:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -20,28 +20,43 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests persisting of ecore models in a relational store. Only stores them and then reads them again.
+ * Tests persisting of ecore models in a relational store. Only stores them and then reads them
+ * again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $ 
-*/
+ * @version $Revision: 1.9 $
+ */
 public class EcoreAction extends AbstractTestAction {
 
 	/** Constructor */
 	public EcoreAction() {
 		super(new EPackage[] { EcorePackage.eINSTANCE, org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE });
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		return props;
 	}
 
 	/** Reads the library model and persists it. */

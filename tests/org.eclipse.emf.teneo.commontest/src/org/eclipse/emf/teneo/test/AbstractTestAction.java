@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestAction.java,v 1.4 2007/07/09 12:54:54 mtaal Exp $
+ * $Id: AbstractTestAction.java,v 1.5 2007/07/11 14:42:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -22,6 +22,7 @@ import java.util.Properties;
 import junit.framework.Assert;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.test.conf.ConfigurableTestSuite;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -29,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Abstract TestAction used in backend specific test cases.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public abstract class AbstractTestAction extends Assert {
 	// very strange but there was a compile (or runtime) error in one of the ecore packages, had to
@@ -81,20 +82,29 @@ public abstract class AbstractTestAction extends Assert {
 	public abstract void doAction(TestStore store);
 
 	/**
-	 * Can be overridden by subclass returns properties which control the or layer. Such as setting of eager loading.
+	 * Can be overridden by subclass returns properties which control the or layer. Such as setting
+	 * of eager loading.
 	 */
 	public Properties getExtraConfigurationProperties() {
 		return new Properties();
 	}
 
+	/** Add extensions if you want */
+	public void setExtensions(ExtensionManager extensionManager) {
+
+	}
+
 	/**
-	 * Returns the path of the XML persistence mapping file on the classpath or null if none is available.
+	 * Returns the path of the XML persistence mapping file on the classpath or null if none is
+	 * available.
 	 * <p>
-	 * Returning non-null will cause the TestAction to be run twice: first for a PAnnotatedModel populated from
-	 * EAnnotations and then for a PAnnotatedModel populated from the XML persistence mapping.
+	 * Returning non-null will cause the TestAction to be run twice: first for a PAnnotatedModel
+	 * populated from EAnnotations and then for a PAnnotatedModel populated from the XML persistence
+	 * mapping.
 	 * <p>
-	 * This implementation looks for a mapping file on the classpath named &lt;class name&gt;.persistence.xml, returning its
-	 * path if it exists or null if it does not.
+	 * This implementation looks for a mapping file on the classpath named &lt;class
+	 * name&gt;.persistence.xml, returning its path if it exists or null if it does not.
+	 * 
 	 * @see ConfigurableTestSuite
 	 */
 	public String getPersistenceXmlPath() {

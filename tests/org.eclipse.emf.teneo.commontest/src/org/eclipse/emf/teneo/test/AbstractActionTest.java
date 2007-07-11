@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractActionTest.java,v 1.6 2007/07/09 12:54:54 mtaal Exp $
+ * $Id: AbstractActionTest.java,v 1.7 2007/07/11 14:42:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -20,12 +20,13 @@ import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 
 /**
  * Hibernate test based on abstract action.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class AbstractActionTest extends AbstractTest {
 	/** The action contains the real test */
@@ -50,6 +51,7 @@ public class AbstractActionTest extends AbstractTest {
 
 	/**
 	 * Constructs an instance with additional OR-mapping properties.
+	 * 
 	 * @param itsTestAction
 	 * @param properties
 	 */
@@ -113,6 +115,12 @@ public class AbstractActionTest extends AbstractTest {
 			allProperties.putAll(this.properties);
 		}
 		return allProperties;
+	}
+
+	/** Add extensions if you want */
+	@Override
+	public void setExtensions(ExtensionManager extensionManager) {
+		getTestAction().setExtensions(extensionManager);
 	}
 
 	/** Returns a unique name based on the class name of the testAction class */
