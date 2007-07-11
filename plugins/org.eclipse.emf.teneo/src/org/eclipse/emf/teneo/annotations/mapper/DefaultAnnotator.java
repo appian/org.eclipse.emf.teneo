@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.6 2007/07/11 17:13:45 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.7 2007/07/11 18:28:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -89,7 +89,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 
@@ -105,6 +105,7 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 	private TemporalType optionDefaultTemporal = null;
 	private EntityNameStrategy entityNameStrategy = null;
 	private boolean optionSetForeignKeyName = false;
+	private boolean optionMapEmbeddableAsEmbedded = false;
 
 	protected PersistenceOptions persistenceOptions;
 
@@ -199,6 +200,7 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 			throw new IllegalArgumentException("Temporal value not found: " + po.getDefaultTemporalValue());
 		}
 		optionSetForeignKeyName = po.isSetForeignKeyNames();
+		optionMapEmbeddableAsEmbedded = po.isMapEmbeddableAsEmbedded();
 		entityNameStrategy = getExtensionManager().getExtension(EntityNameStrategy.class);
 		entityNameStrategy.setPaModel(annotatedModel); // is maybe already set?
 		sqlNameStrategy = getExtensionManager().getExtension(SQLNameStrategy.class);
@@ -804,6 +806,10 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 			otm.setMappedBy(eReference.getEOpposite().getName());
 		}
 
+		if (optionMapEmbeddableAsEmbedded && aReference.getAReferenceType().getEmbeddable() != null) {
+			aReference.setEmbedded(aFactory.createEmbedded());
+		}
+
 		if (optionSetForeignKeyName) {
 			aReference.setForeignKey(createFK(aReference));
 		}
@@ -1058,6 +1064,10 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 			aReference.setForeignKey(createFK(aReference));
 		}
 
+		if (optionMapEmbeddableAsEmbedded && aReference.getAReferenceType().getEmbeddable() != null) {
+			aReference.setEmbedded(aFactory.createEmbedded());
+		}
+
 		// Note: Sometimes EMF generated getters/setters have a
 		// very generic type (EObject), if the type can be derived here then
 		// this should
@@ -1105,6 +1115,10 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 
 		if (optionSetForeignKeyName) {
 			aReference.setForeignKey(createFK(aReference));
+		}
+
+		if (optionMapEmbeddableAsEmbedded && aReference.getAReferenceType().getEmbeddable() != null) {
+			aReference.setEmbedded(aFactory.createEmbedded());
 		}
 
 		// create a set of joincolumns, note that if this is a two-way relation

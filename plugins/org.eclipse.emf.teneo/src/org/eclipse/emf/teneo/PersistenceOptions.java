@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.28 2007/07/11 17:13:45 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.29 2007/07/11 18:28:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 public class PersistenceOptions {
 
@@ -100,6 +100,15 @@ public class PersistenceOptions {
 	public static final String SET_FOREIGN_KEY_NAME = NAMING_PREFIX + "set_foreign_key_name";
 
 	// END: ++++++++++++++++++++++ SQL Naming related Options ++++++++++++++++++++++++++++++++++++
+
+	/**
+	 * EClass marked with Embeddable is always embedded, default is false. If this is set to true
+	 * then it is not required anymore to set a
+	 * 
+	 * @Embedded annotation on an ereference,
+	 * @Embeddable on the EClass is then sufficient.
+	 */
+	public static final String MAP_EMBEDDABLE_AS_EMBEDDED = MAPPING_PREFIX + "map_embeddable_as_embedded";
 
 	/**
 	 * The sql name strategy, if not set then the ClassicSQLNameStrategy is used.
@@ -299,6 +308,7 @@ public class PersistenceOptions {
 		props.setProperty(ADD_INDEX_FOR_FOREIGN_KEY, "false");
 		props.setProperty(SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "false");
 		props.setProperty(SET_FOREIGN_KEY_NAME, "false");
+		props.setProperty(MAP_EMBEDDABLE_AS_EMBEDDED, "false");
 
 		return props;
 	}
@@ -397,6 +407,13 @@ public class PersistenceOptions {
 	 */
 	public boolean isAlsoMapAsClass() {
 		return Boolean.valueOf(properties.getProperty(ALSO_MAP_AS_CLASS)).booleanValue();
+	}
+
+	/**
+	 * Returns the value of the MAP_EMBEDDABLE_AS_EMBEDDED option, default is false
+	 */
+	public boolean isMapEmbeddableAsEmbedded() {
+		return Boolean.valueOf(properties.getProperty(MAP_EMBEDDABLE_AS_EMBEDDED)).booleanValue();
 	}
 
 	/**
