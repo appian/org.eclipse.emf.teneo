@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackage.java,v 1.3 2007/01/24 23:30:17 mtaal Exp $
+ * $Id: IdPackage.java,v 1.4 2007/07/11 18:59:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id;
 
@@ -175,6 +175,44 @@ public interface IdPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.AutoIDImpl <em>Auto ID</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.AutoIDImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.IdPackageImpl#getAutoID()
+	 * @generated
+	 */
+	int AUTO_ID = 4;
+
+	/**
+	 * The feature id for the '<em><b>Auto ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTO_ID__AUTO_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTO_ID__NAME = 1;
+
+	/**
+	 * The number of structural features of the '<em>Auto ID</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTO_ID_FEATURE_COUNT = 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.IdentityID <em>Identity ID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -257,6 +295,38 @@ public interface IdPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTableGeneratorID_Myid();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID <em>Auto ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Auto ID</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID
+	 * @generated
+	 */
+	EClass getAutoID();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID#getAutoID <em>Auto ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Auto ID</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID#getAutoID()
+	 * @see #getAutoID()
+	 * @generated
+	 */
+	EAttribute getAutoID_AutoID();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID#getName()
+	 * @see #getAutoID()
+	 * @generated
+	 */
+	EAttribute getAutoID_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -351,6 +421,32 @@ public interface IdPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TABLE_GENERATOR_ID__MYID = eINSTANCE.getTableGeneratorID_Myid();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.AutoIDImpl <em>Auto ID</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.AutoIDImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.IdPackageImpl#getAutoID()
+		 * @generated
+		 */
+		EClass AUTO_ID = eINSTANCE.getAutoID();
+
+		/**
+		 * The meta object literal for the '<em><b>Auto ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AUTO_ID__AUTO_ID = eINSTANCE.getAutoID_AutoID();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AUTO_ID__NAME = eINSTANCE.getAutoID_Name();
 
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableGeneratorIDImpl.java,v 1.3 2007/07/11 18:59:48 mtaal Exp $
+ * $Id: AutoIDImpl.java,v 1.1 2007/07/11 18:59:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
@@ -13,58 +13,70 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdPackage;
-import org.eclipse.emf.teneo.samples.emf.annotations.id.TableGeneratorID;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Table Generator ID</b></em>'.
+ * An implementation of the model object '<em><b>Auto ID</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.TableGeneratorIDImpl#getMyid <em>Myid</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.AutoIDImpl#getAutoID <em>Auto ID</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.AutoIDImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorID {
+public class AutoIDImpl extends EObjectImpl implements AutoID {
 	/**
-	 * The default value of the '{@link #getMyid() <em>Myid</em>}' attribute.
+	 * The default value of the '{@link #getAutoID() <em>Auto ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMyid()
+	 * @see #getAutoID()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long MYID_EDEFAULT = 0L;
+	protected static final long AUTO_ID_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getMyid() <em>Myid</em>}' attribute.
+	 * The cached value of the '{@link #getAutoID() <em>Auto ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMyid()
+	 * @see #getAutoID()
 	 * @generated
 	 * @ordered
 	 */
-	protected long myid = MYID_EDEFAULT;
+	protected long autoID = AUTO_ID_EDEFAULT;
 
 	/**
-	 * This is true if the Myid attribute has been set.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean myidESet;
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TableGeneratorIDImpl() {
+	protected AutoIDImpl() {
 		super();
 	}
 
@@ -75,7 +87,7 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IdPackage.Literals.TABLE_GENERATOR_ID;
+		return IdPackage.Literals.AUTO_ID;
 	}
 
 	/**
@@ -83,8 +95,8 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getMyid() {
-		return myid;
+	public long getAutoID() {
+		return autoID;
 	}
 
 	/**
@@ -92,13 +104,11 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMyid(long newMyid) {
-		long oldMyid = myid;
-		myid = newMyid;
-		boolean oldMyidESet = myidESet;
-		myidESet = true;
+	public void setAutoID(long newAutoID) {
+		long oldAutoID = autoID;
+		autoID = newAutoID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IdPackage.TABLE_GENERATOR_ID__MYID, oldMyid, myid, !oldMyidESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, IdPackage.AUTO_ID__AUTO_ID, oldAutoID, autoID));
 	}
 
 	/**
@@ -106,22 +116,20 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void unsetMyid() {
-		long oldMyid = myid;
-		boolean oldMyidESet = myidESet;
-		myid = MYID_EDEFAULT;
-		myidESet = false;
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, IdPackage.TABLE_GENERATOR_ID__MYID, oldMyid, MYID_EDEFAULT, oldMyidESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetMyid() {
-		return myidESet;
+			eNotify(new ENotificationImpl(this, Notification.SET, IdPackage.AUTO_ID__NAME, oldName, name));
 	}
 
 	/**
@@ -132,8 +140,10 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IdPackage.TABLE_GENERATOR_ID__MYID:
-				return new Long(getMyid());
+			case IdPackage.AUTO_ID__AUTO_ID:
+				return new Long(getAutoID());
+			case IdPackage.AUTO_ID__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -146,8 +156,11 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IdPackage.TABLE_GENERATOR_ID__MYID:
-				setMyid(((Long)newValue).longValue());
+			case IdPackage.AUTO_ID__AUTO_ID:
+				setAutoID(((Long)newValue).longValue());
+				return;
+			case IdPackage.AUTO_ID__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -161,8 +174,11 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IdPackage.TABLE_GENERATOR_ID__MYID:
-				unsetMyid();
+			case IdPackage.AUTO_ID__AUTO_ID:
+				setAutoID(AUTO_ID_EDEFAULT);
+				return;
+			case IdPackage.AUTO_ID__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -176,8 +192,10 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IdPackage.TABLE_GENERATOR_ID__MYID:
-				return isSetMyid();
+			case IdPackage.AUTO_ID__AUTO_ID:
+				return autoID != AUTO_ID_EDEFAULT;
+			case IdPackage.AUTO_ID__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -192,10 +210,12 @@ public class TableGeneratorIDImpl extends EObjectImpl implements TableGeneratorI
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (myid: ");
-		if (myidESet) result.append(myid); else result.append("<unset>");
+		result.append(" (autoID: ");
+		result.append(autoID);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
 
-} //TableGeneratorIDImpl
+} //AutoIDImpl

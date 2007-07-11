@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleIDImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: SimpleIDImpl.java,v 1.3 2007/07/11 18:59:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
@@ -57,7 +57,7 @@ public class SimpleIDImpl extends EObjectImpl implements SimpleID {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean autoIDESet = false;
+	protected boolean autoIDESet;
 
 	/**
 	 * <!-- begin-user-doc -->

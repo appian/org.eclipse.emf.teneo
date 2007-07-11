@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackageImpl.java,v 1.4 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: IdPackageImpl.java,v 1.5 2007/07/11 18:59:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdentityID;
@@ -52,6 +53,13 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 	 * @generated
 	 */
 	private EClass tableGeneratorIDEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass autoIDEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -201,6 +209,33 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAutoID() {
+		return autoIDEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAutoID_AutoID() {
+		return (EAttribute)autoIDEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAutoID_Name() {
+		return (EAttribute)autoIDEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public IdFactory getIdFactory() {
 		return (IdFactory)getEFactoryInstance();
 	}
@@ -235,6 +270,10 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 
 		tableGeneratorIDEClass = createEClass(TABLE_GENERATOR_ID);
 		createEAttribute(tableGeneratorIDEClass, TABLE_GENERATOR_ID__MYID);
+
+		autoIDEClass = createEClass(AUTO_ID);
+		createEAttribute(autoIDEClass, AUTO_ID__AUTO_ID);
+		createEAttribute(autoIDEClass, AUTO_ID__NAME);
 	}
 
 	/**
@@ -281,6 +320,10 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 
 		initEClass(tableGeneratorIDEClass, TableGeneratorID.class, "TableGeneratorID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTableGeneratorID_Myid(), theXMLTypePackage.getLong(), "myid", null, 1, 1, TableGeneratorID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(autoIDEClass, AutoID.class, "AutoID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAutoID_AutoID(), theXMLTypePackage.getLong(), "autoID", null, 1, 1, AutoID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAutoID_Name(), theXMLTypePackage.getString(), "name", null, 0, 1, AutoID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdentityIDImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: IdentityIDImpl.java,v 1.3 2007/07/11 18:59:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
@@ -57,7 +57,7 @@ public class IdentityIDImpl extends EObjectImpl implements IdentityID {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean myidESet = false;
+	protected boolean myidESet;
 
 	/**
 	 * <!-- begin-user-doc -->

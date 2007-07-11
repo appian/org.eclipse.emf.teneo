@@ -19,5 +19,9 @@
     <genClasses ecoreClass="id.ecore#//TableGeneratorID">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//TableGeneratorID/myid"/>
     </genClasses>
+    <genClasses ecoreClass="id.ecore#//AutoID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//AutoID/autoID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//AutoID/name"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

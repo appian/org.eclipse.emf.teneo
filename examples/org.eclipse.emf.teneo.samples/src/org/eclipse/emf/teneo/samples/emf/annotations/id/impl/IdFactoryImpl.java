@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdFactoryImpl.java,v 1.3 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: IdFactoryImpl.java,v 1.4 2007/07/11 18:59:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
@@ -64,6 +64,7 @@ public class IdFactoryImpl extends EFactoryImpl implements IdFactory {
 			case IdPackage.SIMPLE_ID: return createSimpleID();
 			case IdPackage.TABLE_ID: return createTableID();
 			case IdPackage.TABLE_GENERATOR_ID: return createTableGeneratorID();
+			case IdPackage.AUTO_ID: return createAutoID();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -107,6 +108,16 @@ public class IdFactoryImpl extends EFactoryImpl implements IdFactory {
 	public TableGeneratorID createTableGeneratorID() {
 		TableGeneratorIDImpl tableGeneratorID = new TableGeneratorIDImpl();
 		return tableGeneratorID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AutoID createAutoID() {
+		AutoIDImpl autoID = new AutoIDImpl();
+		return autoID;
 	}
 
 	/**
