@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.jpox.JpoxConstants;
 import org.eclipse.emf.teneo.jpox.JpoxDataStore;
 import org.eclipse.emf.teneo.jpox.JpoxHelper;
@@ -55,7 +56,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -91,15 +92,19 @@ public class JPOXTestStore extends AbstractTestStore {
 	/** The inheritance type */
 	private final InheritanceType inheritanceType;
 
+	/** The extensionManager */
+	private ExtensionManager extensionManager;
+
 	/**
 	 * Constructor for emf test cases
 	 */
 	public JPOXTestStore(TestDatabaseAdapter adapter, EPackage[] epackages, String jdoLocation, Properties props,
-			InheritanceType inheritanceType) {
+			InheritanceType inheritanceType, ExtensionManager extensionManager) {
 		super(adapter);
 		this.epackages = epackages;
 		this.props = props;
 		this.inheritanceType = inheritanceType;
+		this.extensionManager = extensionManager;
 		ERuntime.INSTANCE.clear();
 		init(adapter, jdoLocation);
 	}
@@ -167,6 +172,7 @@ public class JPOXTestStore extends AbstractTestStore {
 		}
 
 		emfDataStore = JpoxHelper.INSTANCE.createRegisterDataStore(adapter.getDbName());
+		emfDataStore.setExtensionManager(extensionManager);
 		emfDataStore.setProperties(properties);
 		emfDataStore.setEPackages(epackages);
 		emfDataStore.initialize();

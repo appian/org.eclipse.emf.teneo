@@ -17,6 +17,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
+import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.jpox.JpoxHelper;
 import org.eclipse.emf.teneo.jpox.test.stores.JPOXTestStoreFactory;
 import org.eclipse.emf.teneo.test.AbstractTest;
@@ -31,7 +33,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.40 $
+ * @version $Revision: 1.41 $
  */
 public class JPOXTestbed extends Testbed {
 
@@ -72,8 +74,8 @@ public class JPOXTestbed extends Testbed {
 				} else {
 					// error will be thrown later because class initialization errors are sometimes
 					// difficult to find
-					log.error("Directory for jdo files does not exist! " + pluginsDir.getAbsolutePath()
-							+ File.separator + "org.eclipse.emf.teneo.jpox.test....");
+					log.error("Directory for jdo files does not exist! " + pluginsDir.getAbsolutePath() +
+							File.separator + "org.eclipse.emf.teneo.jpox.test....");
 				}
 			} else {
 				propFileName = "/local_test.properties";
@@ -125,9 +127,13 @@ public class JPOXTestbed extends Testbed {
 			// copyMappingToClassesDir(testCase, mappingFile,
 			// getActiveConfiguration().isOptimistic());
 
+			final ExtensionManager extensionManager = new DefaultExtensionManager();
+			testCase.setExtensions(extensionManager);
+
 			final TestStore store =
 					storeFactory.get(getDbName(testCase, getActiveConfiguration()), testCase.getEPackages(),
-						mappingFile, getActiveConfiguration(), testCase.getExtraConfigurationProperties());
+						mappingFile.getAbsolutePath(), getActiveConfiguration(), testCase
+							.getExtraConfigurationProperties(), extensionManager);
 
 			// setup store
 			getActiveConfiguration().getDbAdapter().setDbName(getDbName(testCase, getActiveConfiguration()));
