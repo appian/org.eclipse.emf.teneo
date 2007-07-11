@@ -11,11 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedAction.java,v 1.3 2007/06/29 07:35:43 mtaal Exp $
+ * $Id: EmbeddedAction.java,v 1.4 2007/07/11 18:28:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
 
+import java.util.Properties;
+
+import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage;
@@ -25,17 +29,30 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Testcase
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class EmbeddedAction extends AbstractTestAction {
 	/**
 	 * Constructor
+	 * 
 	 * @param arg0
 	 */
 	public EmbeddedAction() {
 		super(EmbeddedPackage.eINSTANCE);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.MAP_EMBEDDABLE_AS_EMBEDDED, "true");
+		return props;
 	}
 
 	/** Just create and store an embedded and see if it all worked without column name clashes */
@@ -84,18 +101,24 @@ public class EmbeddedAction extends AbstractTestAction {
 				ea.setMyString("fifthstring");
 				embedder.setFifthEmbedded(ea);
 			}
+
+			final AlsoEmbeddable ae = factory.createAlsoEmbeddable();
+			ae.setName("me");
+			embedder.setAlsoEmbeddable(ae);
+
 			store.store(embedder);
 			store.commitTransaction();
 		}
 		{
 			store.beginTransaction();
-			final Embedder embedder = (Embedder) store.getObject(Embedder.class);
+			final Embedder embedder = store.getObject(Embedder.class);
 			assertEquals(1, embedder.getFirstEmbedded().getMyInteger());
 			assertEquals(2, embedder.getSecondEmbedded().getMyInteger());
 			assertEquals(3, embedder.getThirdEmbedded().getMyInteger());
 			assertEquals(4, (embedder.getFourthEmbedded().get(0)).getMyInteger());
 			assertEquals(5, (embedder.getFourthEmbedded().get(1)).getMyInteger());
 			assertEquals(6, embedder.getFifthEmbedded().getMyInteger());
+			assertEquals("me", embedder.getAlsoEmbeddable().getName());
 			store.commitTransaction();
 		}
 	}

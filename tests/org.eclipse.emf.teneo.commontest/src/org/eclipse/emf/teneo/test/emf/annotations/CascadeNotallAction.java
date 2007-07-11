@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CascadeNotallAction.java,v 1.9 2007/07/09 12:54:54 mtaal Exp $
+ * $Id: CascadeNotallAction.java,v 1.10 2007/07/11 18:28:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example without orphan delete or dependent element
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class CascadeNotallAction extends AbstractTestAction {
 	/**
@@ -56,7 +56,6 @@ public class CascadeNotallAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		final CascadenotallFactory factory = CascadenotallFactory.eINSTANCE;
 
 		// create a book, writer and library
