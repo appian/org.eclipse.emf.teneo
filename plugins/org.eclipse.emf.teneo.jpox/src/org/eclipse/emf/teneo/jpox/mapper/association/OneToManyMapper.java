@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.12 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.13 2007/07/11 17:14:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class OneToManyMapper extends AssociationMapper {
@@ -164,11 +164,15 @@ public class OneToManyMapper extends AssociationMapper {
 
 		// do foreign key
 		if (!useJoin && cascadeRemove) { // containment does not need a join table
-			field.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute("update-action",
-				"cascade");
+			final Element fk =
+					field.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute(
+						"update-action", "cascade");
+			setFKName(aReference, fk);
 		} else if (!useJoin) {
-			field.addElement("foreign-key").addAttribute("delete-action", "restrict").addAttribute("update-action",
-				"cascade");
+			final Element fk =
+					field.addElement("foreign-key").addAttribute("delete-action", "restrict").addAttribute(
+						"update-action", "cascade");
+			setFKName(aReference, fk);
 		}
 	}
 }

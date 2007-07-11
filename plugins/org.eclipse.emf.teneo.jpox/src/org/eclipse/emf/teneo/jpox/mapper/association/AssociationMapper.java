@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AssociationMapper.java,v 1.5 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: AssociationMapper.java,v 1.6 2007/07/11 17:14:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -21,6 +21,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.jpox.mapper.MappingUtil;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -29,7 +30,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class AssociationMapper extends AbstractMapper {
@@ -49,8 +50,8 @@ public class AssociationMapper extends AbstractMapper {
 		if (cascadeRemove) {
 			fieldElement.addAttribute("dependent", "true");
 		} else if (FeatureMapUtil.isFeatureMap(eReference) && !isWildcard) { // featuremap
-																				// entries are
-																				// always
+			// entries are
+			// always
 			// dependent
 			fieldElement.addAttribute("dependent", "true");
 		} else if (eReference.isContainment() && !isWildcard) {
@@ -64,6 +65,13 @@ public class AssociationMapper extends AbstractMapper {
 			fieldElement.addAttribute("delete-action", "cascade");
 		} else { // restrict foreign-key constraint in all other cases
 			fieldElement.addAttribute("delete-action", "restrict");
+		}
+	}
+
+	/** Set foreign-key name */
+	protected void setFKName(PAnnotatedEStructuralFeature aFeature, Element fkElement) {
+		if (aFeature.getForeignKey() != null) {
+			fkElement.addAttribute("name", aFeature.getForeignKey().getName());
 		}
 	}
 }

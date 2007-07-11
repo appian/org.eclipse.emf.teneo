@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.10 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.11 2007/07/11 17:14:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class OneToOneMapper extends AssociationMapper {
@@ -89,12 +89,15 @@ public class OneToOneMapper extends AssociationMapper {
 
 			// add extra foreign key constraint
 			// for embedded no foreign key constraint
+			final Element fk;
 			if (cascadeRemove && aReference.getEmbedded() == null) {
-				field.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute("update-action",
-					"cascade");
+				fk =
+						field.addElement("foreign-key").addAttribute("delete-action", "cascade").addAttribute(
+							"update-action", "cascade");
 			} else {
-				field.addElement("foreign-key");
+				fk = field.addElement("foreign-key");
 			}
+			setFKName(aReference, fk);
 
 			if (aReference.getJoinColumns() != null && aReference.getJoinColumns().size() > 0) {
 				// Element elemElement = field.addElement("element");
