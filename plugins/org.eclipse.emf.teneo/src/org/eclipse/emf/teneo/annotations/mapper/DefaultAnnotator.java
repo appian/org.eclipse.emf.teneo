@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.8 2007/07/11 18:59:54 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.9 2007/07/11 22:16:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -91,7 +91,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 
@@ -728,6 +728,9 @@ public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 			final List<String> names = sqlNameStrategy.getOneToManyEAttributeJoinColumns(aAttribute);
 			aAttribute.getJoinColumns().addAll(
 				getJoinColumns(names, FeatureMapUtil.isFeatureMap(eAttribute), true, otm));
+			final JoinTable jt = aFactory.createJoinTable();
+			jt.setName(sqlNameStrategy.getJoinTableName(aAttribute));
+			aAttribute.setJoinTable(jt);
 		}
 
 		// set unique and indexed
