@@ -12,10 +12,12 @@
  *
  * </copyright>
  *
- * $Id: DefaultEntityNameStrategy.java,v 1.2 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: EntityResolvingNameStrategy.java,v 1.1 2007/07/11 14:41:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,24 +30,27 @@ import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * This implementation assumes that EClass names are unique. It will (de)Resolve using the EClass
- * name.
+ * This implementation will first use the name of the entity annotation and then the eclass name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  */
-public class DefaultEntityNameStrategy implements EntityNameStrategy {
+public class EntityResolvingNameStrategy implements EntityNameStrategy {
 
 	/** The logger */
-	private static Log log = LogFactory.getLog(DefaultEntityNameStrategy.class);
+	private static Log log = LogFactory.getLog(EntityResolvingNameStrategy.class);
 
 	/** The singleton instance as it is thread safe */
-	public static final DefaultEntityNameStrategy INSTANCE = new DefaultEntityNameStrategy();
+	public static final EntityResolvingNameStrategy INSTANCE = new EntityResolvingNameStrategy();
 
 	// The pamodel for which this is done
 	private PAnnotatedModel paModel;
+
+	// Internal cache name from name to eclass
+	private ConcurrentHashMap<String, EClass> entityNameToEClass = new ConcurrentHashMap<String, EClass>();
 
 	/*
 	 * (non-Javadoc)
@@ -75,6 +80,12 @@ public class DefaultEntityNameStrategy implements EntityNameStrategy {
 						"resolvable by EMF.");
 		}
 
+		// check if there is an entity annotation on the eclass with a name set
+		final PAnnotatedEClass aClass = getPaModel().getPAnnotated(eClass);
+		if (aClass.getEntity() != null && aClass.getEntity().getName() != null) {
+			return aClass.getEntity().getName();
+		}
+
 		return eClass.getName();
 	}
 
@@ -92,22 +103,47 @@ public class DefaultEntityNameStrategy implements EntityNameStrategy {
 			return EcorePackage.eINSTANCE.getEObject();
 		}
 
-		// now try all epackages
 		EClass eClass = null;
+		if ((eClass = entityNameToEClass.get(eClassName)) != null) {
+			return eClass;
+		}
+
+		// first try the entityname
 		for (final PAnnotatedEPackage aPackage : getPaModel().getPaEPackages()) {
 			for (final PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
-				final EClass checkEClass = aClass.getAnnotatedEClass();
-				if (checkEClass.getName().compareTo(eClassName) == 0) {
+				if (aClass.getEntity() != null && aClass.getEntity().getName() != null &&
+						aClass.getEntity().getName().compareTo(eClassName) == 0 &&
+						!StoreUtil.isMapEntry(aClass.getAnnotatedEClass())) { // map entries are
+																				// ignored
 					if (eClass != null) {
-						// doubly entry! Actually require different resolver
 						// doubly entry! Actually require different resolver
 						throw new IllegalArgumentException("There is more than one EClass with the same name (" +
 								eClassName + " in EPackage " + eClass.getEPackage().getName() + " and " +
 								aPackage.getAnnotatedEPackage().getName() +
 								". A different EClassResolver should be used.");
 					}
+					eClass = aClass.getAnnotatedEClass();
 				}
-				eClass = checkEClass;
+			}
+		}
+		if (eClass != null) {
+			entityNameToEClass.put(eClassName, eClass);
+			return eClass;
+		}
+		// now try the eclassname itself
+		for (final PAnnotatedEPackage aPackage : getPaModel().getPaEPackages()) {
+			for (PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
+				if (aClass.getEntity() != null && aClass.getEntity().getName() != null &&
+						aClass.getEntity().getName().compareTo(eClassName) == 0) {
+					if (eClass != null) {
+						// doubly entry! Actually require different resolver
+						throw new IllegalArgumentException("There is more than one EClass with the same name (" +
+								eClassName + " in EPackage " + eClass.getEPackage().getName() + " and " +
+								aPackage.getAnnotatedEPackage().getName() +
+								". A different EClassResolver should be used.");
+					}
+					eClass = aClass.getAnnotatedEClass();
+				}
 			}
 		}
 
@@ -125,6 +161,7 @@ public class DefaultEntityNameStrategy implements EntityNameStrategy {
 		if (eClass == null) {
 			throw new IllegalArgumentException("No EClass found using " + eClassName);
 		}
+		entityNameToEClass.put(eClassName, eClass);
 		return eClass;
 	}
 

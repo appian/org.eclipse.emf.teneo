@@ -27,9 +27,10 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-import org.eclipse.emf.teneo.annotations.pamodel.util.BasicPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
 import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
@@ -37,9 +38,9 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * mapping model is returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
-public class PersistenceMappingBuilder {
+public class PersistenceMappingBuilder implements ExtensionPoint {
 
 	/** The logger */
 	protected static final Log log = LogFactory.getLog(PersistenceMappingBuilder.class);
@@ -47,19 +48,23 @@ public class PersistenceMappingBuilder {
 	/** The instance to use */
 	public static final PersistenceMappingBuilder INSTANCE = new PersistenceMappingBuilder();
 
-	/** Receives a list of ecore files and returns a Mapping */
-	public PAnnotatedModel buildMapping(String[] ecoreFiles, PersistenceOptions po) {
-		return buildMapping(StoreUtil.readEPackages(ecoreFiles), po);
+	/**
+	 * Receives a list of ecore files and returns a Mapping
+	 */
+	public PAnnotatedModel buildMapping(String[] ecoreFiles, PersistenceOptions po, ExtensionManager extensionManager) {
+		return buildMapping(StoreUtil.readEPackages(ecoreFiles), po, extensionManager);
 	}
 
-	/** Builds a persistence mapping for one or more epackages */
-	public PAnnotatedModel buildMapping(EPackage[] epackages, PersistenceOptions po) {
+	/**
+	 * Builds a persistence mapping for one or more epackages
+	 */
+	public PAnnotatedModel buildMapping(EPackage[] epackages, PersistenceOptions po, ExtensionManager extensionManager) {
 		// create the pamodel
 
 		// DCB: Introduce indirection so that extensions to annotation
 		// processing mechanism
 		// can provide their own model builder.
-		BasicPamodelBuilder pamodelBuilder = getModelBuilder();
+		BasicPamodelBuilder pamodelBuilder = extensionManager.getExtension(BasicPamodelBuilder.class);
 		log.debug("Creating pamodel for the following epackages");
 		for (EPackage element : epackages) {
 			log.debug(element.getName());
@@ -69,8 +74,7 @@ public class PersistenceMappingBuilder {
 		log.debug("Create base pannotated model");
 		PAnnotatedModel pam = pamodelBuilder.getPAnnotatedModel();
 
-		log
-				.debug("Deprecated eannotations with http://annotations.elver.org or http://ejb.elver.org are ignored.");
+		log.debug("Deprecated eannotations with http://annotations.elver.org or http://ejb.elver.org are ignored.");
 		// if (po.isIgnoreEAnnotations()) {
 		// log.debug("Ignoring eannotations");
 		// } else {
@@ -87,19 +91,18 @@ public class PersistenceMappingBuilder {
 			log.debug("Ignoring annotations");
 		} else {
 			log.debug("Parse annotations");
-			getEAnnotationParserImporter().process(pam);
+			extensionManager.getExtension(EAnnotationParserImporter.class).process(pam);
 		}
 
 		if (po.getPersistenceXmlPath() != null) {
 			try {
-				final InputStream in = this.getClass().getClassLoader().getResourceAsStream(
-						po.getPersistenceXmlPath());
+				final InputStream in = this.getClass().getClassLoader().getResourceAsStream(po.getPersistenceXmlPath());
 				if (in == null) {
-					throw new RuntimeException(
-							"Could not find persistence XML resource in classpath: \""
-									+ po.getPersistenceXmlPath() + "\".");
+					throw new RuntimeException("Could not find persistence XML resource in classpath: \"" +
+							po.getPersistenceXmlPath() + "\".");
 				}
-				final XmlPersistenceMapper xmlPersistenceMapper = getXmlPersistenceMapper();
+				final XmlPersistenceMapper xmlPersistenceMapper =
+						extensionManager.getExtension(XmlPersistenceMapper.class);
 				xmlPersistenceMapper.setXmlMapping(in);
 				xmlPersistenceMapper.applyPersistenceMapping(pam);
 				in.close();
@@ -110,8 +113,7 @@ public class PersistenceMappingBuilder {
 					element.close();
 				}
 			} catch (IOException e) {
-				throw new StoreAnnotationsException(
-						"Exception while loading xml persistence mappings", e);
+				throw new StoreAnnotationsException("Exception while loading xml persistence mappings", e);
 			}
 		}
 
@@ -125,7 +127,7 @@ public class PersistenceMappingBuilder {
 		// processing mechanism
 		// can provide their own default annotation.
 		pam.setInitialized(true);
-		getDefaultAnnotator().map(pam, po);
+		extensionManager.getExtension(DefaultAnnotator.class).map(pam, po);
 
 		log.debug("Returning created pamodel");
 		return pam;
@@ -144,14 +146,14 @@ public class PersistenceMappingBuilder {
 						final PAnnotatedEAttribute pea = (PAnnotatedEAttribute) pef;
 						final EDataType et = pea.getAnnotatedEAttribute().getEAttributeType();
 						final PAnnotatedEDataType ped = pam.getPAnnotated(et);
-						if (ped == null) continue; // not an explicit modeled edatatype
+						if (ped == null) {
+							continue; // not an explicit modeled edatatype
+						}
 						for (EStructuralFeature esf : ped.eClass().getEAllStructuralFeatures()) {
-							final EStructuralFeature asf = pea.eClass().getEStructuralFeature(
-									esf.getName());
+							final EStructuralFeature asf = pea.eClass().getEStructuralFeature(esf.getName());
 							if (asf != null && !pea.eIsSet(asf) && ped.eIsSet(esf)) {
-								log.debug("Copying value for feature " + esf.getName()
-										+ " from edatatype " + et.getName() + " to "
-										+ pea.getAnnotatedEAttribute().getName());
+								log.debug("Copying value for feature " + esf.getName() + " from edatatype " +
+										et.getName() + " to " + pea.getAnnotatedEAttribute().getName());
 
 								final Object obj = ped.eGet(esf);
 								if (obj instanceof Collection) {
@@ -159,9 +161,8 @@ public class PersistenceMappingBuilder {
 								} else if (obj instanceof EObject) {
 									pea.eSet(asf, EcoreUtil.copy((EObject) obj));
 								} else {
-									throw new StoreAnnotationsException("Class "
-											+ obj.getClass().getName()
-											+ " not supported should be eobject or collection");
+									throw new StoreAnnotationsException("Class " + obj.getClass().getName() +
+											" not supported should be eobject or collection");
 								}
 							}
 						}
@@ -169,27 +170,6 @@ public class PersistenceMappingBuilder {
 				}
 			}
 		}
-	}
-
-	// DCB: New methods to allow for extension
-	protected DefaultAnnotator getDefaultAnnotator() {
-		return new DefaultAnnotator();
-	}
-
-	protected BasicPamodelBuilder getModelBuilder() {
-		return new BasicPamodelBuilder();
-	}
-
-	/** Return a java annotation parser */
-	protected EAnnotationParserImporter getEAnnotationParserImporter() {
-		return new EAnnotationParserImporter();
-	}
-
-	/**
-	 * Returns an XmlPersistenceMapper.
-	 */
-	protected XmlPersistenceMapper getXmlPersistenceMapper() {
-		return new XmlPersistenceMapper();
 	}
 
 	/** Additional inputstreams for xml mappings */

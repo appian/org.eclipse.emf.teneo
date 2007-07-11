@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.4 2007/07/09 17:39:19 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.5 2007/07/11 14:41:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -75,6 +75,9 @@ import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
@@ -85,9 +88,9 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
-public class DefaultAnnotator {
+public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 
 	// The source of the annotations of extended metadata used by emf
 	private static final String ANNOTATION_SOURCE_METADATA = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
@@ -97,11 +100,14 @@ public class DefaultAnnotator {
 
 	// Several options, coming from persistenceOptions
 	private InheritanceType optionDefaultInheritanceMapping = InheritanceType.SINGLE_TABLE;
-	private SQLNameStrategy optionSQLNameStrategy = null;
+	private SQLNameStrategy sqlNameStrategy = null;
 	private TemporalType optionDefaultTemporal = null;
-	private EntityNameStrategy optionEntityNameStrategy = null;
+	private EntityNameStrategy entityNameStrategy = null;
 
 	protected PersistenceOptions persistenceOptions;
+
+	// the extension manager
+	private ExtensionManager extensionManager;
 
 	// Convenience link to pamodel factory
 	private final PannotationFactory aFactory = PannotationFactory.eINSTANCE;
@@ -118,6 +124,8 @@ public class DefaultAnnotator {
 	 */
 	public synchronized void map(PAnnotatedModel annotatedModel, PersistenceOptions po) {
 
+		persistenceOptions = po;
+
 		// check if the emodelresolver has been set, if not then
 		// use the ERuntime as the default
 		try {
@@ -131,8 +139,6 @@ public class DefaultAnnotator {
 			// not set, set the eruntime as the emodel resolver!
 			ERuntime.setAsEModelResolver();
 		}
-
-		setLocalOptions(po);
 
 		final List<PAnnotatedEPackage> apacks = annotatedModel.getPaEPackages();
 
@@ -161,6 +167,8 @@ public class DefaultAnnotator {
 		annotatedModel.setInitialized(true);
 		this.annotatedModel = annotatedModel;
 
+		setLocalOptions(po);
+
 		for (PAnnotatedEPackage pae : annotatedModel.getPaEPackages()) {
 			processPackage(pae);
 		}
@@ -168,7 +176,6 @@ public class DefaultAnnotator {
 
 	/** Sets the options in a number of members */
 	protected void setLocalOptions(PersistenceOptions po) {
-		persistenceOptions = po;
 		if (po.getInheritanceMapping() != null) {
 			InheritanceType it = InheritanceType.get(po.getInheritanceMapping());
 			if (it == InheritanceType.JOINED) {
@@ -185,12 +192,14 @@ public class DefaultAnnotator {
 						" is not supported");
 			}
 		}
-		optionEntityNameStrategy = po.getEntityNameStrategy();
 		optionDefaultTemporal = TemporalType.get(po.getDefaultTemporalValue());
 		if (optionDefaultTemporal == null) {
 			throw new IllegalArgumentException("Temporal value not found: " + po.getDefaultTemporalValue());
 		}
-		optionSQLNameStrategy = po.getSQLNameStrategy();
+		entityNameStrategy = getExtensionManager().getExtension(EntityNameStrategy.class);
+		entityNameStrategy.setPaModel(annotatedModel); // is maybe already set?
+		sqlNameStrategy = getExtensionManager().getExtension(SQLNameStrategy.class);
+		sqlNameStrategy.setPersistenceOptions(po);
 	}
 
 	/** Maps one epackage */
@@ -272,7 +281,7 @@ public class DefaultAnnotator {
 			aClass.setEntity(entity);
 		}
 		if (aClass.getEntity() != null && aClass.getEntity().getName() == null) {
-			aClass.getEntity().setName(getEntityName(eclass));
+			aClass.getEntity().setName(entityNameStrategy.toEntityName(eclass));
 		}
 
 		// get the inheritance from the supertype or use the global inheritance
@@ -312,7 +321,7 @@ public class DefaultAnnotator {
 
 			for (String idFeature : idFeatures) {
 				final PrimaryKeyJoinColumn pkjc = aFactory.createPrimaryKeyJoinColumn();
-				pkjc.setName(optionSQLNameStrategy.getPrimaryKeyJoinColumnName(aSuperClass, idFeature));
+				pkjc.setName(sqlNameStrategy.getPrimaryKeyJoinColumnName(aSuperClass, idFeature));
 				aClass.getPrimaryKeyJoinColumns().add(pkjc);
 			}
 		}
@@ -330,7 +339,7 @@ public class DefaultAnnotator {
 			aClass.setTable(table);
 		}
 		if (aClass.getTable() != null && aClass.getTable().getName() == null) {
-			aClass.getTable().setName(optionSQLNameStrategy.getTableName(aClass));
+			aClass.getTable().setName(sqlNameStrategy.getTableName(aClass));
 		}
 
 		// For hibernate as well as jpox the discriminator column is only
@@ -341,7 +350,7 @@ public class DefaultAnnotator {
 			// note defaults of primitive types are all defined in the model
 			final DiscriminatorColumn dc = aFactory.createDiscriminatorColumn();
 			dc.setEModelElement(eclass);
-			dc.setName(optionSQLNameStrategy.getDiscriminatorColumnName());
+			dc.setName(sqlNameStrategy.getDiscriminatorColumnName());
 			aClass.setDiscriminatorColumn(dc);
 		}
 
@@ -367,7 +376,7 @@ public class DefaultAnnotator {
 				final List<PAnnotatedEStructuralFeature> aIdFeatures = aClass.getPaIdFeatures();
 				for (PAnnotatedEStructuralFeature idef : aIdFeatures) {
 					final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
-					pkJoinColumn.setName(optionSQLNameStrategy.getSecondaryTablePrimaryKeyJoinColumnName(idef));
+					pkJoinColumn.setName(sqlNameStrategy.getSecondaryTablePrimaryKeyJoinColumnName(idef));
 					pkJoinColumns.add(pkJoinColumn);
 				}
 			}
@@ -446,7 +455,7 @@ public class DefaultAnnotator {
 				}
 
 				if (aAttribute.getColumn() != null && aAttribute.getColumn().getName() == null) {
-					aAttribute.getColumn().setName(optionSQLNameStrategy.getColumnName(aAttribute));
+					aAttribute.getColumn().setName(sqlNameStrategy.getColumnName(aAttribute));
 				}
 
 			} else if (aStructuralFeature instanceof PAnnotatedEReference) {
@@ -504,7 +513,7 @@ public class DefaultAnnotator {
 
 				// handle column naming at this level
 				if (aReference.getColumn() != null && aReference.getColumn().getName() == null) {
-					aReference.getColumn().setName(optionSQLNameStrategy.getColumnName(aReference));
+					aReference.getColumn().setName(sqlNameStrategy.getColumnName(aReference));
 				}
 
 			} else {
@@ -694,7 +703,7 @@ public class DefaultAnnotator {
 
 		if (aAttribute.getJoinTable() == null) {
 			// note not optional because lists of simple types are embedded
-			final List<String> names = optionSQLNameStrategy.getOneToManyEAttributeJoinColumns(aAttribute);
+			final List<String> names = sqlNameStrategy.getOneToManyEAttributeJoinColumns(aAttribute);
 			aAttribute.getJoinColumns().addAll(
 				getJoinColumns(names, FeatureMapUtil.isFeatureMap(eAttribute), true, otm));
 		}
@@ -845,13 +854,13 @@ public class DefaultAnnotator {
 
 			// see remark in manytomany about naming of jointables
 			if (joinTable.getName() == null) {
-				joinTable.setName(optionSQLNameStrategy.getJoinTableName(aReference));
+				joinTable.setName(sqlNameStrategy.getJoinTableName(aReference));
 			}
 
 			// note joincolumns in jointable can be generated automatically by
 			// hib/jpox.
 		} else if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) { // add
-			final List<String> names = optionSQLNameStrategy.getOneToManyEReferenceJoinColumns(aReference);
+			final List<String> names = sqlNameStrategy.getOneToManyEReferenceJoinColumns(aReference);
 			aReference.getJoinColumns().addAll(getJoinColumns(names, aReference.getEmbedded() == null, true, otm));
 		}
 	}
@@ -931,14 +940,14 @@ public class DefaultAnnotator {
 		// if the inheritance strategy is single_table.
 		// now possibility to use a different naming strategy
 		if (joinTable.getName() == null) {
-			joinTable.setName(optionSQLNameStrategy.getJoinTableName(aReference));
+			joinTable.setName(sqlNameStrategy.getJoinTableName(aReference));
 		}
 		if (joinTable.getJoinColumns().size() == 0) {
-			final List<String> names = optionSQLNameStrategy.getJoinTableJoinColumns(aReference, false);
+			final List<String> names = sqlNameStrategy.getJoinTableJoinColumns(aReference, false);
 			joinTable.getJoinColumns().addAll(getJoinColumns(names, false, true, mtm));
 		}
 		if (joinTable.getInverseJoinColumns().size() == 0) {
-			final List<String> names = optionSQLNameStrategy.getJoinTableJoinColumns(aReference, true);
+			final List<String> names = sqlNameStrategy.getJoinTableJoinColumns(aReference, true);
 			joinTable.getInverseJoinColumns().addAll(getJoinColumns(names, false, true, mtm));
 		}
 	}
@@ -980,10 +989,10 @@ public class DefaultAnnotator {
 		// the name of the targetentity
 		// because that's the one which is known here
 		if (joinTable.getName() == null) {
-			joinTable.setName(optionSQLNameStrategy.getJoinTableName(aReference));
+			joinTable.setName(sqlNameStrategy.getJoinTableName(aReference));
 		}
 		if (joinTable.getJoinColumns() == null) {
-			final List<String> names = optionSQLNameStrategy.getJoinTableJoinColumns(aReference, false);
+			final List<String> names = sqlNameStrategy.getJoinTableJoinColumns(aReference, false);
 			joinTable.getJoinColumns().addAll(getJoinColumns(names, false, true, mtm));
 		}
 	}
@@ -1077,7 +1086,7 @@ public class DefaultAnnotator {
 				// that it is managed from the other side. In reality this only needs to
 				// be done if the other side is indexed.
 				// NOTE: otm/mto with join table is not supported at the moment!
-				final List<String> names = optionSQLNameStrategy.getManyToOneJoinColumnNames(aReference);
+				final List<String> names = sqlNameStrategy.getManyToOneJoinColumnNames(aReference);
 				aReference.getJoinColumns().addAll(
 					getJoinColumns(names, mto.isOptional(), eReference.getEOpposite() == null ||
 							eReference.getEOpposite().isTransient(), mto));
@@ -1282,16 +1291,16 @@ public class DefaultAnnotator {
 	 */
 	protected String getEntityName(EClass eClass) {
 
-		if (persistenceOptions.isMapEMapAsTrueMap() && StoreUtil.isMapEntry(eClass)) {
-			// ok, it is an EMAp, get the annotaetd class of the child
-			EStructuralFeature feature = eClass.getEStructuralFeature("value");
-			if (feature instanceof EReference) {
-				return getEntityName(((EReference) feature).getEReferenceType());
-			} else {
-				return ((EAttribute) feature).getEType().getInstanceClassName();
-			}
-		}
-		return StrategyUtil.getEntityName(optionEntityNameStrategy, persistenceOptions, annotatedModel, eClass);
+// if (persistenceOptions.isMapEMapAsTrueMap() && StoreUtil.isMapEntry(eClass)) {
+// // ok, it is an EMAp, get the annotaetd class of the child
+// EStructuralFeature feature = eClass.getEStructuralFeature("value");
+// if (feature instanceof EReference) {
+// return getEntityName(((EReference) feature).getEReferenceType());
+// } else {
+// return ((EAttribute) feature).getEType().getInstanceClassName();
+// }
+// }
+		return StrategyUtil.getEntityName(entityNameStrategy, persistenceOptions, annotatedModel, eClass);
 	}
 
 	/** Get a specific extended metadate */
@@ -1312,5 +1321,20 @@ public class DefaultAnnotator {
 			return null;
 		}
 		return eAnnotation.getDetails().get(key);
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
 	}
 }

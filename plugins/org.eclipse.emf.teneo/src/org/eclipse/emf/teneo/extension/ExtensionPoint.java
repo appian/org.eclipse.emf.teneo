@@ -12,23 +12,19 @@
  *
  * </copyright>
  *
- * $Id: ClassLoaderStrategy.java,v 1.3 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: ExtensionPoint.java,v 1.1 2007/07/11 14:41:05 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.classloader;
-
-import org.eclipse.emf.teneo.extension.ExtensionPoint;
+package org.eclipse.emf.teneo.extension;
 
 /**
- * Interface for classes which determine which classloader to use.
+ * Is a marker interface to mark a class to be replacable by a user extension. The classname or
+ * interface implementing this interface is also the name of the ExtensionPoint (the value of the
+ * point attribute in the extension).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.1 $
  */
 
-public interface ClassLoaderStrategy extends ExtensionPoint {
-	/**
-	 * Return the classloader
-	 */
-	public ClassLoader getClassLoader();
+public interface ExtensionPoint {
 }

@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceMapper.java,v 1.1 2007/06/29 07:31:47 mtaal Exp $
+ * $Id: XmlPersistenceMapper.java,v 1.2 2007/07/11 14:41:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -27,6 +27,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 
@@ -35,11 +36,11 @@ import org.xml.sax.SAXNotRecognizedException;
  * 
  * @author <a href="lmfridael@elver.org">Laurens Fridael</a>
  */
-public class XmlPersistenceMapper {
-	
+public class XmlPersistenceMapper implements ExtensionPoint {
+
 	/** The inputStream containing the xml document */
 	private InputStream xmlMapping;
-	
+
 	/** The logger */
 	protected static final Log log = LogFactory.getLog(XmlPersistenceMapper.class);
 
@@ -75,7 +76,7 @@ public class XmlPersistenceMapper {
 			final SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 			saxParserFactory.setNamespaceAware(true);
 			saxParserFactory.setValidating(true);
-			
+
 			saxParser = saxParserFactory.newSAXParser();
 		} catch (ParserConfigurationException e) {
 			throw new ParseXMLAnnotationsException(e);
@@ -86,20 +87,20 @@ public class XmlPersistenceMapper {
 		try {
 			try {
 				saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaLanguage",
-						"http://www.w3.org/2001/XMLSchema");
+					"http://www.w3.org/2001/XMLSchema");
 				saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaSource", this.getClass()
-						.getResourceAsStream("persistence-mapping.xsd"));
+					.getResourceAsStream("persistence-mapping.xsd"));
 			} catch (SAXNotRecognizedException s) {
-				log.warn("Properties schemaSource and/or schemaLanguage are not supported, setvalidating=false. " +
-						"Probably running 1.4 with an old crimson sax parser. Ignoring this and continuing with " +
-						"a non-validating and name-space-aware sax parser");
+				log.warn("Properties schemaSource and/or schemaLanguage are not supported, setvalidating=false. "
+						+ "Probably running 1.4 with an old crimson sax parser. Ignoring this and continuing with "
+						+ "a non-validating and name-space-aware sax parser");
 				final SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 				saxParserFactory.setNamespaceAware(true);
 				saxParserFactory.setValidating(false);
 				saxParser = saxParserFactory.newSAXParser();
 			}
-			saxParser.parse(xmlMapping, new XmlPersistenceContentHandler(pAnnotatedModel, getPrefix(), 
-					 this.getClass().getResourceAsStream("persistence-mapping.xsd")));
+			saxParser.parse(xmlMapping, new XmlPersistenceContentHandler(pAnnotatedModel, getPrefix(), this.getClass()
+				.getResourceAsStream("persistence-mapping.xsd")));
 		} catch (SAXException e) {
 			throw new ParseXMLAnnotationsException(e);
 		} catch (IOException e) {
@@ -118,5 +119,5 @@ public class XmlPersistenceMapper {
 	/** Return a prefix which are used by a subpackage to make efeatures unique */
 	protected String getPrefix() {
 		return "";
-	}	
+	}
 }

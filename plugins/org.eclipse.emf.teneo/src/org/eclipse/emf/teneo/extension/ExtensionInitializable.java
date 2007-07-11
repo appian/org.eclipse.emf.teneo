@@ -12,23 +12,21 @@
  *
  * </copyright>
  *
- * $Id: ClassLoaderStrategy.java,v 1.3 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: ExtensionInitializable.java,v 1.1 2007/07/11 14:41:05 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.classloader;
+package org.eclipse.emf.teneo.extension;
 
-import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
- * Interface for classes which determine which classloader to use.
+ * Defines an initialize method which is called after creating the object and after setting the
+ * extensionmanager (if the object is ExtensionManagerAware).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.1 $
  */
 
-public interface ClassLoaderStrategy extends ExtensionPoint {
-	/**
-	 * Return the classloader
-	 */
-	public ClassLoader getClassLoader();
+public interface ExtensionInitializable {
+	/** Initialize the object */
+	void initializeExtension();
 }

@@ -12,23 +12,21 @@
  *
  * </copyright>
  *
- * $Id: ClassLoaderStrategy.java,v 1.3 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: ExtensionManagerAware.java,v 1.1 2007/07/11 14:41:06 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.classloader;
+package org.eclipse.emf.teneo.extension;
 
-import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
- * Interface for classes which determine which classloader to use.
+ * An extension implementing this interface will be able to 'receive' an instance of the
+ * ExtensionManager which created it.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.1 $
  */
 
-public interface ClassLoaderStrategy extends ExtensionPoint {
-	/**
-	 * Return the classloader
-	 */
-	public ClassLoader getClassLoader();
+public interface ExtensionManagerAware {
+	/** Set the extensionManager */
+	void setExtensionManager(ExtensionManager extensionManager);
 }

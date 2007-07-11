@@ -12,25 +12,30 @@
  *
  * </copyright>
  *
- * $Id: QualifyingEntityNameStrategy.java,v 1.1 2007/06/29 07:31:47 mtaal Exp $
+ * $Id: QualifyingEntityNameStrategy.java,v 1.2 2007/07/11 14:41:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 
 /**
- * This implementation prefixes the eclass names with the epackage nsprefix. This
- * makes it possible to handle eclass name clashes between different packages.
+ * This implementation prefixes the eclass names with the epackage nsprefix. This makes it possible
+ * to handle eclass name clashes between different packages.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class QualifyingEntityNameStrategy implements EntityNameStrategy {
+
+	// The pamodel for which this is done
+	private PAnnotatedModel paModel;
 
 	public static final QualifyingEntityNameStrategy INSTANCE = new QualifyingEntityNameStrategy();
 
@@ -48,7 +53,7 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 		return nsPrefix + "." + eClass.getName();
 	}
 
-	public EClass toEClass(String eClassStr, EPackage[] epackages) {
+	public EClass toEClass(String eClassStr) {
 		if (eClassStr == null) {
 			throw new IllegalArgumentException("eClassStr may not be null");
 		}
@@ -68,18 +73,22 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 
 		// now try all epackages
 		EClass eClass = null;
-		for (final EPackage ePackage : epackages) {
-			if (ePackage.getNsPrefix().compareTo(nsPrefix) == 0 || ePackage.getName().compareTo(nsPrefix) == 0) {
-				final EClassifier eClassifier = ePackage.getEClassifier(eClassName);
-				if (eClassifier instanceof EClass) {
+		for (final PAnnotatedEPackage aPackage : getPaModel().getPaEPackages()) {
+			final EPackage ePackage = aPackage.getAnnotatedEPackage();
+			if (ePackage.getNsPrefix().compareTo(nsPrefix) != 0 && ePackage.getName().compareTo(nsPrefix) != 0) {
+				continue;
+			}
+			for (final PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
+				final EClass checkEClass = aClass.getAnnotatedEClass();
+				if (checkEClass.getName().compareTo(eClassName) == 0) {
 					if (eClass != null) {
 						// doubly entry! Actually require different resolver
 						throw new IllegalArgumentException(
-							"There is more than one EClass with the same identifying String (" + eClassStr
-									+ " in EPackage " + eClass.getEPackage().getName() + " and " + ePackage.getName()
-									+ ". A different EClassResolver should be used.");
+							"There is more than one EClass with the same identifying String (" + eClassStr +
+									" in EPackage " + eClass.getEPackage().getName() + " and " + ePackage.getName() +
+									". A different EClassResolver should be used.");
 					}
-					eClass = (EClass) eClassifier;
+					eClass = checkEClass;
 				}
 			}
 		}
@@ -87,5 +96,20 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 			throw new IllegalArgumentException("No EClass found using " + eClassStr);
 		}
 		return eClass;
+	}
+
+	/**
+	 * @return the paModel
+	 */
+	public PAnnotatedModel getPaModel() {
+		return paModel;
+	}
+
+	/**
+	 * @param paModel
+	 *            the paModel to set
+	 */
+	public void setPaModel(PAnnotatedModel paModel) {
+		this.paModel = paModel;
 	}
 }

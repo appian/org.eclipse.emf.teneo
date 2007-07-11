@@ -12,23 +12,23 @@
  *
  * </copyright>
  *
- * $Id: EntityNameStrategy.java,v 1.1 2007/06/29 07:31:47 mtaal Exp $
+ * $Id: EntityNameStrategy.java,v 1.2 2007/07/11 14:41:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.extension.PaModelAware;
 
 /**
- * Converter from entityname to and from an eclass. The entityname is used in the
- * hql, etc.
+ * Converter from entityname to and from an eclass. The entityname is used in the hql, etc.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
-public interface EntityNameStrategy {
+public interface EntityNameStrategy extends ExtensionPoint, PaModelAware {
 
 	/** The EObject eclass */
 	public static EClass EOBJECT_ECLASS = (EClass) EcorePackage.eINSTANCE.getEClassifier("EObject");
@@ -37,16 +37,15 @@ public interface EntityNameStrategy {
 	public static String EOBJECT_ECLASS_NAME = EcorePackage.eINSTANCE.getName() + "_" + EOBJECT_ECLASS.getName();
 
 	/**
-	 * Determines the name for a given EClass. This name can be used in jsf
-	 * pages and queries.
+	 * Determines the name for a given EClass. This name can be used in jsf pages and queries.
 	 * 
-	 * Note if the eClass is the EObject eclass then the string
-	 * EOBJECT_ECLASS_NAME must be returned.
+	 * Note if the eClass is the EObject eclass then the string EOBJECT_ECLASS_NAME must be
+	 * returned.
 	 */
 	public String toEntityName(EClass eClass);
 
 	/**
 	 * Return the EClass for a certain name, searches in the array of epackages
 	 */
-	public EClass toEClass(String eClassName, EPackage[] epackages);
+	public EClass toEClass(String eClassName);
 }

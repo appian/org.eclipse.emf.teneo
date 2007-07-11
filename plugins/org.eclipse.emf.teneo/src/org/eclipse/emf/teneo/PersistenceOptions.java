@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.26 2007/07/09 12:54:58 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.27 2007/07/11 14:41:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -28,12 +28,6 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
-import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
-import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
-import org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy;
-import org.eclipse.emf.teneo.mapping.strategy.impl.DefaultEntityNameStrategy;
-import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
 
 /**
  * Defines the property names used in the persistence mapping.
@@ -41,7 +35,7 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 public class PersistenceOptions {
 
@@ -59,11 +53,14 @@ public class PersistenceOptions {
 	// START: ++++++++++++++++++++++ SQL Naming related Options ++++++++++++++++++++++++++++++++++++
 	/**
 	 * Join table naming strategy, two values: ejb3 and unique
+	 * 
+	 * @Deprecated use the extensionManager concept
 	 */
 	public static final String JOIN_TABLE_NAMING_STRATEGY = NAMING_PREFIX + "join_table_naming_strategy";
 
-	/** 
-	 * Deprecated use JOIN_TABLE_NAMING_STRATEGY 
+	/**
+	 * Deprecated use JOIN_TABLE_NAMING_STRATEGY
+	 * 
 	 * @Deprecated
 	 */
 	public static final String JOIN_TABLE_NAMING_STRATEGY_OLD = MAPPING_PREFIX + "join_table_naming_strategy";
@@ -100,6 +97,8 @@ public class PersistenceOptions {
 
 	/**
 	 * The sql name strategy, if not set then the ClassicSQLNameStrategy is used.
+	 * 
+	 * @Deprecated use the extensionManager concept
 	 */
 	public static final String SQL_NAME_STRATEGY = NAMING_PREFIX + "sql_name_strategy";
 
@@ -145,14 +144,25 @@ public class PersistenceOptions {
 	 */
 	public static final String USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME = NAMING_PREFIX + "java_class_entity_names";
 
-	/** Qualify the entity name */
+	/**
+	 * Qualify the entity name
+	 * 
+	 * @Deprecated use the EntityNameStrategy and extensionManager concept
+	 */
 	public static final String QUALIFY_ENTITY_NAME = NAMING_PREFIX + "qualify_entity_name";
 
-	/** With the values */
+	/**
+	 * With the values
+	 * 
+	 * @Deprecated use the EntityNameStrategy and extensionManager concept
+	 * 
+	 */
 	public static final String QUALIFY_ENTITY_NAME_NO = "no";
 
 	/**
 	 * The value of the QUALIFY_ENTITY_NAME when nsprefix qualification should occur
+	 * 
+	 * @Deprecated use the EntityNameStrategy and extensionManager concept
 	 */
 	public static final String QUALIFY_ENTITY_NAME_NSPREFIX = "nsprefix";
 
@@ -290,11 +300,6 @@ public class PersistenceOptions {
 	 * The wrapped Properties instance.
 	 */
 	private final Properties properties;
-
-	/** 
-	 * Local member to store the sql name strategy instance
-	 */
-	private SQLNameStrategy sqlNameStrategy = null;
 
 	/**
 	 * Construct a new instance using Properties.
@@ -495,10 +500,11 @@ public class PersistenceOptions {
 
 	/**
 	 * Returns the qualify entity names option, returns QUALIFY_ENTITY_NAME_NO ("no")
+	 * 
+	 * @Deprecated use the EntityNameStrategy and extensionManager concept
 	 */
-	public EntityNameStrategy getEntityNameStrategy() {
-		// note create uses singletons
-		return createEntityNameStrategy(properties.getProperty(QUALIFY_ENTITY_NAME, QUALIFY_ENTITY_NAME_NO));
+	public String getEntityNameOption() {
+		return properties.getProperty(QUALIFY_ENTITY_NAME, QUALIFY_ENTITY_NAME_NO);
 	}
 
 	/**
@@ -574,53 +580,12 @@ public class PersistenceOptions {
 		return properties;
 	}
 
-	// TODO: Add remaining accessor wrappers.
-
-	/**
-	 * Creates the correct eclass name strategy based on the String setting.
-	 */
-	private EntityNameStrategy createEntityNameStrategy(String option) {
-		try {
-			if (option == null) {
-				log.debug("Creating " + DefaultEntityNameStrategy.class.getName() + " as eclass name strategy");
-				return DefaultEntityNameStrategy.INSTANCE;
-			}
-			if (option.compareToIgnoreCase(PersistenceOptions.QUALIFY_ENTITY_NAME_NO) == 0) {
-				log.debug("Creating " + DefaultEntityNameStrategy.class.getName() + " as eclass name strategy");
-				return DefaultEntityNameStrategy.INSTANCE;
-			}
-			if (option.compareToIgnoreCase(PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX) == 0) {
-				log.debug("Creating " + QualifyingEntityNameStrategy.class.getName() + " as case strategy");
-				return QualifyingEntityNameStrategy.INSTANCE;
-			}
-
-			log.debug("Assuming class name creating instance of " + option);
-			return (EntityNameStrategy) ClassLoaderResolver.classForName(option).newInstance();
-		} catch (Exception e) {
-			throw new TeneoException("Could not instantiate: " + option, e);
-		}
-	}
-
 	/**
 	 * Creates the correct sql name strategy based on the String setting.
+	 * 
+	 * @Deprecated use the SQLNameStrategy and extensionManager concept
 	 */
-	public SQLNameStrategy getSQLNameStrategy() {
-		if (sqlNameStrategy != null) {
-			return sqlNameStrategy;
-		}
-		String option = properties.getProperty(SQL_NAME_STRATEGY);
-		try {
-			if (!properties.contains(SQL_NAME_STRATEGY)) {
-				log.debug("Creating " + ClassicSQLNameStrategy.class.getName());
-				sqlNameStrategy = new ClassicSQLNameStrategy();
-			} else {
-				log.debug("Assuming class name creating instance of " + option);
-				sqlNameStrategy = (SQLNameStrategy) ClassLoaderResolver.classForName(option).newInstance();
-			}
-		} catch (Exception e) {
-			throw new TeneoException("Could not instantiate: " + option, e);
-		}
-		sqlNameStrategy.setPersistenceOptions(this);
-		return sqlNameStrategy;
+	public String getSQLNameStrategy() {
+		return properties.getProperty(SQL_NAME_STRATEGY);
 	}
 }

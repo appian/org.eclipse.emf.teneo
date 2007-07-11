@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.2 2007/07/09 12:54:58 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.3 2007/07/11 14:41:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -30,19 +30,21 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
 import org.eclipse.emf.teneo.util.AssertUtil;
 
 /**
- * Implements the sql naming strategy of older versions of Teneo. This implementation
- * is driven by the options set in the PersistenceOptions.
+ * Implements the sql naming strategy of older versions of Teneo. This implementation is driven by
+ * the options set in the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
-public class ClassicSQLNameStrategy implements SQLNameStrategy {
+public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(ClassicSQLNameStrategy.class);
@@ -51,10 +53,12 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy {
 	private String optionJoinTableNamingStrategy;
 	private String optionJoinColumnNamingStrategy;
 	private int optionMaximumSqlLength;
-	private EntityNameStrategy optionEntityNameStrategy;
+	private EntityNameStrategy entityNameStrategy;
 	private PersistenceOptions persistenceOptions;
 	private boolean optionSQLUpperCase = false;
 	private boolean optionSQLLowerCase = false;
+
+	private ExtensionManager extensionManager;
 
 	public String getPrimaryKeyJoinColumnName(PAnnotatedEClass aSuperClass, String idFeature) {
 		return convert(getEntityName(aSuperClass.getPaModel(), aSuperClass.getAnnotatedEClass()) + "_" + idFeature,
@@ -74,10 +78,9 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy {
 		return convert(aStructuralFeature.getAnnotatedEStructuralFeature().getName());
 	}
 
-	/** 
-	 * Return the name of the foreign key used for this aReference. 
-	 * If null is returned then the name of the foreign key is not set
-	 * Returns null in this case.
+	/**
+	 * Return the name of the foreign key used for this aReference. If null is returned then the
+	 * name of the foreign key is not set Returns null in this case.
 	 */
 	public String getForeignKeyName(PAnnotatedEReference aReference) {
 		return null;
@@ -187,7 +190,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy {
 		return result;
 	}
 
-	/** 
+	/**
 	 * Return a list of join columns for a join table for a many to many
 	 */
 	public List<String> getJoinTableJoinColumns(PAnnotatedEReference aReference, boolean inverse) {
@@ -274,7 +277,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy {
 		return convert("DTYPE"); // replace with constant somewhere
 	}
 
-	/** 
+	/**
 	 * Return the name of the version column used.
 	 */
 	public String getVersionColumnName() {
@@ -282,7 +285,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy {
 	}
 
 	/**
-	 * Return the column name for the id column of the idbag join table. 
+	 * Return the column name for the id column of the idbag join table.
 	 */
 	public String getIdBagIDColumn() {
 		return convert(persistenceOptions.getIDBagIDColumnName());
@@ -293,15 +296,14 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy {
 		return convert(persistenceOptions.getIdColumnName());
 	}
 
-	/** 
-	 * Sets the PersistenceOptions used. This is mainly to support backward compatibility
-	 * with older version in which the naming strategy was controlled by options. 
+	/**
+	 * Sets the PersistenceOptions used. This is mainly to support backward compatibility with older
+	 * version in which the naming strategy was controlled by options.
 	 */
 	public void setPersistenceOptions(PersistenceOptions po) {
 		optionMaximumSqlLength = po.getMaximumSqlNameLength();
 		optionJoinTableNamingStrategy = po.getJoinTableNamingStrategy();
 		optionJoinColumnNamingStrategy = po.getJoinColumnNamingStrategy();
-		optionEntityNameStrategy = po.getEntityNameStrategy();
 
 		final String optionSQLCaseStrategy = po.getSQLCaseStrategy();
 		if (optionSQLCaseStrategy.toLowerCase().compareTo("lowercase") == 0) {
@@ -314,7 +316,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy {
 
 	// Returns the entityname of the refered to entity
 	private String getEntityName(PAnnotatedModel paModel, EClass eClass) {
-		return StrategyUtil.getEntityName(optionEntityNameStrategy, persistenceOptions, paModel, eClass);
+		return StrategyUtil.getEntityName(getEntityNameStrategy(), persistenceOptions, paModel, eClass);
 	}
 
 	public String convert(String name) {
@@ -341,5 +343,30 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy {
 		final String nameThere = there.eClass().getName() + there.getName();
 		assert (nameHere.compareTo(nameThere) != 0);
 		return nameHere.compareTo(nameThere) > 0;
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
+	}
+
+	/**
+	 * @return the entityNameStrategy
+	 */
+	public EntityNameStrategy getEntityNameStrategy() {
+		if (entityNameStrategy == null) {
+			entityNameStrategy = getExtensionManager().getExtension(EntityNameStrategy.class);
+		}
+		return entityNameStrategy;
 	}
 }

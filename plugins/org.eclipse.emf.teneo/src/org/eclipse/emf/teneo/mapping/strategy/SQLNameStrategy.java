@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: SQLNameStrategy.java,v 1.1 2007/06/29 07:31:47 mtaal Exp $
+ * $Id: SQLNameStrategy.java,v 1.2 2007/07/11 14:41:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -24,17 +24,18 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
- * Takes care of creating correct names for sql artifacts such as tables, columns,
- * foreign keys, etc.
+ * Takes care of creating correct names for sql artifacts such as tables, columns, foreign keys,
+ * etc.
  * 
  * Note that strategies are normally created once for each instance of persistenceoptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
-public interface SQLNameStrategy {
+public interface SQLNameStrategy extends ExtensionPoint {
 
 	String getPrimaryKeyJoinColumnName(PAnnotatedEClass aSuperClass, String idFeature);
 
