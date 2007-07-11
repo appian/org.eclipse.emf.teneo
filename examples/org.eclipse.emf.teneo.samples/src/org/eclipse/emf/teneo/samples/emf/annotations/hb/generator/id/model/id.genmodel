@@ -12,6 +12,7 @@
     </genClasses>
     <genClasses ecoreClass="id.ecore#//SimpleID">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//SimpleID/autoID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//SimpleID/generated"/>
     </genClasses>
     <genClasses ecoreClass="id.ecore#//TableID">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//TableID/myid"/>

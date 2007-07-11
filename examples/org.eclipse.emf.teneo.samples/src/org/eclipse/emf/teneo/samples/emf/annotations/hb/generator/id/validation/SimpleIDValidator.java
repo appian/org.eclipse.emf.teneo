@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleIDValidator.java,v 1.1 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: SimpleIDValidator.java,v 1.2 2007/07/11 17:34:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.validation;
 
@@ -17,4 +17,6 @@ public interface SimpleIDValidator {
 	boolean validate();
 
 	boolean validateAutoID(long value);
+
+	boolean validateGenerated(long value);
 }

@@ -12,8 +12,8 @@
       <details key="name" value="IdentityID"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="myid" unique="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="myid" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
+        unsettable="true">
       <eAnnotations source="teneo.hibernate">
         <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Id @GeneratedValue(strategy=&quot;IDENTITY&quot;)&#xA;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
@@ -28,9 +28,8 @@
       <details key="name" value="SimpleID"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoID" unique="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
-        unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoID" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
       <eAnnotations source="teneo.hibernate">
         <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Id @GeneratedValue &#xA;&#x9;&#x9;&#x9;&#x9;@Column(name=&quot;AUTOD&quot; nullable=&quot;false&quot;)&#xA;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
@@ -39,14 +38,24 @@
         <details key="name" value="autoID"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generated" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Generated(ALWAYS)&#xA;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="generated"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TableID">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="TableID"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="myid" unique="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="myid" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
+        unsettable="true">
       <eAnnotations source="teneo.hibernate">
         <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Id @GeneratedValue(generator=&quot;hibseq&quot;)&#xA;&#x9;&#x9;&#x9;"/>
       </eAnnotations>

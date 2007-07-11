@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackage.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
+ * $Id: IdPackage.java,v 1.3 2007/07/11 17:34:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id;
 
@@ -107,13 +107,22 @@ public interface IdPackage extends EPackage {
 	int SIMPLE_ID__AUTO_ID = 0;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_ID__GENERATED = 1;
+
+	/**
 	 * The number of structural features of the '<em>Simple ID</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_ID_FEATURE_COUNT = 1;
+	int SIMPLE_ID_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl.TableIDImpl <em>Table ID</em>}' class.
@@ -185,6 +194,17 @@ public interface IdPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimpleID_AutoID();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.SimpleID#getGenerated <em>Generated</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Generated</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.SimpleID#getGenerated()
+	 * @see #getSimpleID()
+	 * @generated
+	 */
+	EAttribute getSimpleID_Generated();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.TableID <em>Table ID</em>}'.
@@ -264,6 +284,14 @@ public interface IdPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMPLE_ID__AUTO_ID = eINSTANCE.getSimpleID_AutoID();
+
+		/**
+		 * The meta object literal for the '<em><b>Generated</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_ID__GENERATED = eINSTANCE.getSimpleID_Generated();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl.TableIDImpl <em>Table ID</em>}' class.

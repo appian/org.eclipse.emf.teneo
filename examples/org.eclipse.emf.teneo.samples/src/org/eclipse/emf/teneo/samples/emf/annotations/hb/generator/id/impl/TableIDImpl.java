@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableIDImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: TableIDImpl.java,v 1.3 2007/07/11 17:34:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl;
 
@@ -57,7 +57,7 @@ public class TableIDImpl extends EObjectImpl implements TableID {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean myidESet = false;
+	protected boolean myidESet;
 
 	/**
 	 * <!-- begin-user-doc -->
