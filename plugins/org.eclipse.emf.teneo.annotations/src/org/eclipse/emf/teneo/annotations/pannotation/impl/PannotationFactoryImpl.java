@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactoryImpl.java,v 1.23 2007/07/09 12:55:32 mtaal Exp $
+ * $Id: PannotationFactoryImpl.java,v 1.24 2007/07/11 17:15:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -135,6 +135,7 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.TRANSIENT: return createTransient();
 			case PannotationPackage.UNIQUE_CONSTRAINT: return createUniqueConstraint();
 			case PannotationPackage.VERSION: return createVersion();
+			case PannotationPackage.FOREIGN_KEY: return createForeignKey();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -522,6 +523,16 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	public Version createVersion() {
 		VersionImpl version = new VersionImpl();
 		return version;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ForeignKey createForeignKey() {
+		ForeignKeyImpl foreignKey = new ForeignKeyImpl();
+		return foreignKey;
 	}
 
 	/**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.10 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.11 2007/07/11 17:15:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -1766,13 +1766,50 @@ public interface PannotationPackage extends EPackage {
 	int VERSION_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ForeignKeyImpl <em>Foreign Key</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.ForeignKeyImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getForeignKey()
+	 * @generated
+	 */
+	int FOREIGN_KEY = 35;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOREIGN_KEY__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOREIGN_KEY__NAME = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Foreign Key</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOREIGN_KEY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.FetchType <em>Fetch Type</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getFetchType()
 	 * @generated
 	 */
-	int FETCH_TYPE = 38;
+	int FETCH_TYPE = 39;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType <em>Discriminator Type</em>}' enum.
@@ -1781,7 +1818,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorType()
 	 * @generated
 	 */
-	int DISCRIMINATOR_TYPE = 36;
+	int DISCRIMINATOR_TYPE = 37;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.EnumType <em>Enum Type</em>}' enum.
@@ -1790,7 +1827,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEnumType()
 	 * @generated
 	 */
-	int ENUM_TYPE = 37;
+	int ENUM_TYPE = 38;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.InheritanceType <em>Inheritance Type</em>}' enum.
@@ -1799,7 +1836,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getInheritanceType()
 	 * @generated
 	 */
-	int INHERITANCE_TYPE = 40;
+	int INHERITANCE_TYPE = 41;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.
@@ -1808,7 +1845,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCascadeType()
 	 * @generated
 	 */
-	int CASCADE_TYPE = 35;
+	int CASCADE_TYPE = 36;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.TemporalType <em>Temporal Type</em>}' enum.
@@ -1817,7 +1854,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTemporalType()
 	 * @generated
 	 */
-	int TEMPORAL_TYPE = 41;
+	int TEMPORAL_TYPE = 42;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.GenerationType <em>Generation Type</em>}' enum.
@@ -1826,7 +1863,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getGenerationType()
 	 * @generated
 	 */
-	int GENERATION_TYPE = 39;
+	int GENERATION_TYPE = 40;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation <em>PAnnotation</em>}'.
@@ -3039,6 +3076,27 @@ public interface PannotationPackage extends EPackage {
 	EClass getVersion();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.ForeignKey <em>Foreign Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Foreign Key</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.ForeignKey
+	 * @generated
+	 */
+	EClass getForeignKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.ForeignKey#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.ForeignKey#getName()
+	 * @see #getForeignKey()
+	 * @generated
+	 */
+	EAttribute getForeignKey_Name();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride <em>Association Override</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Association Override</em>'.
@@ -4236,6 +4294,24 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass VERSION = eINSTANCE.getVersion();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ForeignKeyImpl <em>Foreign Key</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.ForeignKeyImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getForeignKey()
+		 * @generated
+		 */
+		EClass FOREIGN_KEY = eINSTANCE.getForeignKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FOREIGN_KEY__NAME = eINSTANCE.getForeignKey_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.

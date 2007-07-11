@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationAdapterFactory.java,v 1.23 2007/07/09 12:55:32 mtaal Exp $
+ * $Id: PannotationAdapterFactory.java,v 1.24 2007/07/11 17:15:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -243,6 +243,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseVersion(Version object) {
 				return createVersionAdapter();
+			}
+			@Override
+			public Adapter caseForeignKey(ForeignKey object) {
+				return createForeignKeyAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -737,6 +741,20 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVersionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.ForeignKey <em>Foreign Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.ForeignKey
+	 * @generated
+	 */
+	public Adapter createForeignKeyAdapter() {
 		return null;
 	}
 

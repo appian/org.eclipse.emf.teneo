@@ -432,4 +432,10 @@
     <eLiterals name="TIME" value="1"/>
     <eLiterals name="TIMESTAMP" value="2"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForeignKey" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="teneo/internal/Target">
+      <details key="0" value="EStructuralFeature"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

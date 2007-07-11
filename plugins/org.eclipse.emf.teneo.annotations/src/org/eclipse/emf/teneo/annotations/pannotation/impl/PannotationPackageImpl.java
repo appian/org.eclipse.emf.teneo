@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.15 2007/07/09 12:55:32 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.16 2007/07/11 17:15:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -36,6 +36,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
+import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
@@ -279,6 +280,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass versionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass foreignKeyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1401,6 +1409,24 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getForeignKey() {
+		return foreignKeyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getForeignKey_Name() {
+		return (EAttribute)foreignKeyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1668,6 +1694,9 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		versionEClass = createEClass(VERSION);
 
+		foreignKeyEClass = createEClass(FOREIGN_KEY);
+		createEAttribute(foreignKeyEClass, FOREIGN_KEY__NAME);
+
 		// Create enums
 		cascadeTypeEEnum = createEEnum(CASCADE_TYPE);
 		discriminatorTypeEEnum = createEEnum(DISCRIMINATOR_TYPE);
@@ -1739,6 +1768,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		transientEClass.getESuperTypes().add(this.getPAnnotation());
 		uniqueConstraintEClass.getESuperTypes().add(this.getPAnnotation());
 		versionEClass.getESuperTypes().add(this.getPAnnotation());
+		foreignKeyEClass.getESuperTypes().add(this.getPAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(pAnnotationEClass, PAnnotation.class, "PAnnotation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1903,6 +1933,9 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		initEClass(versionEClass, Version.class, "Version", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(foreignKeyEClass, ForeignKey.class, "ForeignKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getForeignKey_Name(), ecorePackage.getEString(), "name", null, 0, 1, ForeignKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cascadeTypeEEnum, CascadeType.class, "CascadeType");
 		addEEnumLiteral(cascadeTypeEEnum, CascadeType.ALL);
@@ -1975,7 +2008,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "Target", "teneo/internal/Target",
 			 "Unsupported", "teneo/internal/Unsupported"
-		   });																																																								
+		   });																																																									
 	}
 
 	/**
@@ -1992,7 +2025,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																							
+		   });																																																								
 	}
 
 	/**
@@ -2115,7 +2148,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });
+		   });	
 	}
 
 	/**
@@ -2330,7 +2363,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "0", "EAttribute"
-		   });	
+		   });			
+		addAnnotation
+		  (foreignKeyEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature"
+		   });
 	}
 
 	/**
@@ -2351,7 +2390,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																		
+		   });																																			
 	}
 
 	/**
@@ -2367,7 +2406,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																									
+		   });																																										
 	}
 
 	/**

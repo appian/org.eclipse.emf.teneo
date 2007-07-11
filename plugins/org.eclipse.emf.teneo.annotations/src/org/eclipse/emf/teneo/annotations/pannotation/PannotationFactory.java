@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactory.java,v 1.8 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: PannotationFactory.java,v 1.9 2007/07/11 17:15:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -286,6 +286,15 @@ public interface PannotationFactory extends EFactory {
 	 * @generated
 	 */
 	Version createVersion();
+
+	/**
+	 * Returns a new object of class '<em>Foreign Key</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Foreign Key</em>'.
+	 * @generated
+	 */
+	ForeignKey createForeignKey();
 
 	/**
 	 * Returns a new object of class '<em>Association Override</em>'.

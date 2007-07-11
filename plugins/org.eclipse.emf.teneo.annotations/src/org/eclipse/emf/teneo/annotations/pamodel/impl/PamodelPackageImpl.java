@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackageImpl.java,v 1.14 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: PamodelPackageImpl.java,v 1.15 2007/07/11 17:15:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -471,6 +471,15 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPAnnotatedEStructuralFeature_ForeignKey() {
+		return (EReference)pAnnotatedEStructuralFeatureEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPAnnotatedEAttribute() {
 		return pAnnotatedEAttributeEClass;
 	}
@@ -863,6 +872,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		pAnnotatedEStructuralFeatureEClass = createEClass(PANNOTATED_ESTRUCTURAL_FEATURE);
 		createEReference(pAnnotatedEStructuralFeatureEClass, PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS);
 		createEReference(pAnnotatedEStructuralFeatureEClass, PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE);
+		createEReference(pAnnotatedEStructuralFeatureEClass, PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY);
 
 		pAnnotatedEAttributeEClass = createEClass(PANNOTATED_EATTRIBUTE);
 		createEReference(pAnnotatedEAttributeEClass, PANNOTATED_EATTRIBUTE__ANNOTATED_EATTRIBUTE);
@@ -982,6 +992,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		initEClass(pAnnotatedEStructuralFeatureEClass, PAnnotatedEStructuralFeature.class, "PAnnotatedEStructuralFeature", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPAnnotatedEStructuralFeature_PaEClass(), this.getPAnnotatedEClass(), this.getPAnnotatedEClass_PaEStructuralFeatures(), "paEClass", null, 0, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature(), ecorePackage.getEStructuralFeature(), null, "annotatedEStructuralFeature", null, 1, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEStructuralFeature_ForeignKey(), thePannotationPackage.getForeignKey(), null, "foreignKey", null, 0, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pAnnotatedEAttributeEClass, PAnnotatedEAttribute.class, "PAnnotatedEAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPAnnotatedEAttribute_AnnotatedEAttribute(), ecorePackage.getEAttribute(), null, "annotatedEAttribute", null, 1, 1, PAnnotatedEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

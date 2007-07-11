@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.18 2007/07/11 15:22:57 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.19 2007/07/11 17:15:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -56,10 +56,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedModelImpl#getPaEPackages <em>Pa EPackages</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedModelImpl#getPaEPackages <em>Pa EPackages</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel {
@@ -120,9 +120,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	final MapTrackingAdapter itsMapTrackingAdapter;
 
 	/**
-	 * The cached value of the '{@link #getPaEPackages() <em>Pa EPackages</em>}' containment
-	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getPaEPackages() <em>Pa EPackages</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPaEPackages()
 	 * @generated
 	 * @ordered
@@ -346,7 +345,6 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -356,21 +354,17 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<PAnnotatedEPackage> getPaEPackages() {
 		if (paEPackages == null) {
-			paEPackages =
-					new EObjectContainmentWithInverseEList<PAnnotatedEPackage>(PAnnotatedEPackage.class, this,
-						PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL);
+			paEPackages = new EObjectContainmentWithInverseEList<PAnnotatedEPackage>(PAnnotatedEPackage.class, this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL);
 		}
 		return paEPackages;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -378,28 +372,26 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPaEPackages()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPaEPackages()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
-				return ((InternalEList<?>) getPaEPackages()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getPaEPackages()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -413,7 +405,6 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -422,7 +413,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES:
 				getPaEPackages().clear();
-				getPaEPackages().addAll((Collection<? extends PAnnotatedEPackage>) newValue);
+				getPaEPackages().addAll((Collection<? extends PAnnotatedEPackage>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -430,7 +421,6 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -445,7 +435,6 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

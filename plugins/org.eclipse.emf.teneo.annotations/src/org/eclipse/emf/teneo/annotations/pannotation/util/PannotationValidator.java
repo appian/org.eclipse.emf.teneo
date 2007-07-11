@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.24 2007/07/09 12:55:32 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.25 2007/07/11 17:15:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -201,6 +201,8 @@ public class PannotationValidator extends EObjectValidator {
 				return validateUniqueConstraint((UniqueConstraint)value, diagnostics, context);
 			case PannotationPackage.VERSION:
 				return validateVersion((Version)value, diagnostics, context);
+			case PannotationPackage.FOREIGN_KEY:
+				return validateForeignKey((ForeignKey)value, diagnostics, context);
 			case PannotationPackage.CASCADE_TYPE:
 				return validateCascadeType((CascadeType)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_TYPE:
@@ -1467,6 +1469,24 @@ public class PannotationValidator extends EObjectValidator {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateForeignKey(ForeignKey foreignKey, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(foreignKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(foreignKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(foreignKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(foreignKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(foreignKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(foreignKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(foreignKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(foreignKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(foreignKey, diagnostics, context);
+		return result;
 	}
 
 	/**

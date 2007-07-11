@@ -2,11 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeature.java,v 1.12 2007/07/04 19:28:00 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeature.java,v 1.13 2007/07/11 17:15:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 
 /**
@@ -18,6 +19,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getPaEClass <em>Pa EClass</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getAnnotatedEStructuralFeature <em>Annotated EStructural Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getForeignKey <em>Foreign Key</em>}</li>
  * </ul>
  * </p>
  *
@@ -80,6 +82,32 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedETypedElement {
 	 * @generated
 	 */
 	void setAnnotatedEStructuralFeature(EStructuralFeature value);
+
+	/**
+	 * Returns the value of the '<em><b>Foreign Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Foreign Key</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Foreign Key</em>' containment reference.
+	 * @see #setForeignKey(ForeignKey)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_ForeignKey()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ForeignKey getForeignKey();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getForeignKey <em>Foreign Key</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Foreign Key</em>' containment reference.
+	 * @see #getForeignKey()
+	 * @generated
+	 */
+	void setForeignKey(ForeignKey value);
 
 	/**
 	 * Convenience function for obtaining the first available Column annotation.

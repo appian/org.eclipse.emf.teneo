@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.13 2007/07/04 19:28:00 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.14 2007/07/11 17:15:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -594,13 +594,22 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the the '<em>PAnnotated EStructural Feature</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 2;
+	int PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
@@ -728,6 +737,15 @@ public interface PamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PANNOTATED_EATTRIBUTE__ANNOTATED_ESTRUCTURAL_FEATURE = PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EATTRIBUTE__FOREIGN_KEY = PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EAttribute</b></em>' reference.
@@ -908,6 +926,15 @@ public interface PamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PANNOTATED_EREFERENCE__ANNOTATED_ESTRUCTURAL_FEATURE = PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__FOREIGN_KEY = PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EReference</b></em>' reference.
@@ -1488,6 +1515,17 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getForeignKey <em>Foreign Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Foreign Key</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getForeignKey()
+	 * @see #getPAnnotatedEStructuralFeature()
+	 * @generated
+	 */
+	EReference getPAnnotatedEStructuralFeature_ForeignKey();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute <em>PAnnotated EAttribute</em>}'.
@@ -2167,6 +2205,14 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE = eINSTANCE.getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Foreign Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY = eINSTANCE.getPAnnotatedEStructuralFeature_ForeignKey();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
