@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: GenerateHBM.java,v 1.8 2007/06/29 07:31:28 mtaal Exp $
+ * </copyright> $Id: GenerateHBM.java,v 1.9 2007/07/11 14:40:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,15 +24,17 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.TeneoException;
+import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-import org.eclipse.emf.teneo.hibernate.hbannotation.util.MappingBuilder;
+import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 
 /**
  * Class is responsible for generating the hbm file. Is run through a launcher therefore the main
  * methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class GenerateHBM {
@@ -62,12 +64,11 @@ public class GenerateHBM {
 
 						Class<?> epack = Class.forName(element);
 						if (!EPackage.class.isAssignableFrom(epack)) {
-							log.warn("HBM Generator found " + epack.getName()
-									+ " but this is not an EPackage, ignoring it");
+							log.warn("HBM Generator found " + epack.getName() +
+									" but this is not an EPackage, ignoring it");
 						}
 					} catch (Throwable t) { // ignore everything but log it
-						log.error("Exception while instantiating " + element + ", message: "
-								+ t.getMessage());
+						log.error("Exception while instantiating " + element + ", message: " + t.getMessage());
 					}
 				}
 			} else {
@@ -79,8 +80,7 @@ public class GenerateHBM {
 	}
 
 	/** Creates the mapping file */
-	private static void createORMapperFile(String targetFileName, String[] ecores,
-			Properties options) {
+	private static void createORMapperFile(String targetFileName, String[] ecores, Properties options) {
 		try {
 			// get the first ecore file
 			File firstEcore = new File(ecores[0]);
@@ -88,7 +88,9 @@ public class GenerateHBM {
 			final File archiveFile = new File(firstEcore.getParentFile(), targetFileName + "_old");
 
 			if (file.exists()) {
-				if (archiveFile.exists()) archiveFile.delete();
+				if (archiveFile.exists()) {
+					archiveFile.delete();
+				}
 				copyFile(file, archiveFile);
 				file.delete();
 			}
@@ -97,9 +99,14 @@ public class GenerateHBM {
 			// set the eruntime as the emodel resolver!
 			ERuntime.setAsEModelResolver();
 
+			final ExtensionManager extensionManager = new DefaultExtensionManager();
+			MappingUtil.registerHbExtensions(extensionManager);
 			final PersistenceOptions po = new PersistenceOptions(options);
-			PAnnotatedModel paModel = MappingBuilder.INSTANCE.buildMapping(ecores, po);
-			HibernateMappingGenerator hmg = new HibernateMappingGenerator(po);
+			final PAnnotatedModel paModel =
+					extensionManager.getExtension(PersistenceMappingBuilder.class).buildMapping(ecores, po,
+						extensionManager);
+			final HibernateMappingGenerator hmg = extensionManager.getExtension(HibernateMappingGenerator.class);
+			hmg.setPersistenceOptions(po);
 			FileWriter writer = new FileWriter(file);
 			writer.write(hmg.generateToString(paModel));
 			writer.flush();
@@ -111,7 +118,9 @@ public class GenerateHBM {
 
 	/** Copies a file */
 	public static void copyFile(File src, File dst) throws IOException {
-		if (!dst.exists()) dst.createNewFile();
+		if (!dst.exists()) {
+			dst.createNewFile();
+		}
 
 		InputStream in = new FileInputStream(src);
 		OutputStream out = new FileOutputStream(dst);

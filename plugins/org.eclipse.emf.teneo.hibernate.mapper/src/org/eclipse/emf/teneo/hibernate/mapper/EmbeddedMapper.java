@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.10 2007/07/09 17:43:20 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.11 2007/07/11 14:40:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -34,11 +34,6 @@ public class EmbeddedMapper extends AbstractMapper {
 
 	// the logger
 	private static final Log log = LogFactory.getLog(EmbeddedMapper.class);
-
-	/** Constructor */
-	public EmbeddedMapper(MappingContext mappingContext) {
-		super(mappingContext);
-	}
 
 	/**
 	 * Process Embedded object

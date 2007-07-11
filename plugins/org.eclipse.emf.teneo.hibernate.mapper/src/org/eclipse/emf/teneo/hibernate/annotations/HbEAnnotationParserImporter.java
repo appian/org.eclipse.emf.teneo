@@ -11,9 +11,9 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEAnnotationParserImporter.java,v 1.4 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbEAnnotationParserImporter.java,v 1.1 2007/07/11 14:40:45 mtaal Exp $
  */
-package org.eclipse.emf.teneo.hibernate.hbannotation.util;
+package org.eclipse.emf.teneo.hibernate.annotations;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;

@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.15 2007/06/29 07:31:28 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.16 2007/07/11 14:40:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -31,6 +31,9 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
@@ -47,7 +50,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class HibernateMappingGenerator {
+public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManagerAware {
 
 	/** The logger */
 	private static final Log log = LogFactory.getLog(HibernateMappingGenerator.class);
@@ -56,35 +59,18 @@ public class HibernateMappingGenerator {
 	private Set<PAnnotatedEClass> processedPAClasses = null;
 
 	/** the mapping context */
-	private final MappingContext hbmContext;
+	private MappingContext hbmContext;
 
-	/**
-	 * Instantiate an Hibernate mapping generator.
-	 */
-	HibernateMappingGenerator(final MappingContext hbmContext) {
-		this.hbmContext = hbmContext;
-	}
+	/** The extensionManager */
+	private ExtensionManager extensionManager;
 
-	/**
-	 * Instantiate an Hibernate mapping generator.
-	 */
-	public HibernateMappingGenerator(PersistenceOptions po) {
-		this.hbmContext = new MappingContext();
-		this.hbmContext.setMappingProperties(po);
-	}
-
-	/**
-	 * Instantiate an Hibernate mapping generator.
-	 */
-	public HibernateMappingGenerator(MappingContext mc, PersistenceOptions po) {
-		this.hbmContext = mc;
-		this.hbmContext.setMappingProperties(po);
-	}
+	/** The persistenceoptions */
+	private PersistenceOptions persistenceOptions;
 
 	/**
 	 * Register the entity names in context.
 	 */
-	private void initEntityNames(MappingContext hbmContext, PAnnotatedModel paModel) {
+	protected void initEntityNames(MappingContext hbmContext, PAnnotatedModel paModel) {
 		for (PAnnotatedEPackage pae : paModel.getPaEPackages()) {
 			for (PAnnotatedEClass paClass : pae.getPaEClasses()) {
 				if (paClass.getEntity() != null) {
@@ -97,7 +83,7 @@ public class HibernateMappingGenerator {
 	/**
 	 * @return Returns the entity name for the given paClass
 	 */
-	private String getEntityName(PAnnotatedEClass paClass) {
+	protected String getEntityName(PAnnotatedEClass paClass) {
 		final EClass eclass = paClass.getAnnotatedEClass();
 
 		String name = paClass.getEntity().getName();
@@ -118,6 +104,8 @@ public class HibernateMappingGenerator {
 			log.debug("Geneting Hibernate mapping for " + paModel);
 		}
 		try {
+			this.hbmContext = getExtensionManager().getExtension(MappingContext.class);
+			this.hbmContext.setMappingProperties(getPersistenceOptions());
 			hbmContext.setPaModel(paModel);
 			hbmContext.beginDocument(createDocument());
 			initEntityNames(hbmContext, paModel);
@@ -170,8 +158,8 @@ public class HibernateMappingGenerator {
 	}
 
 	/**
-	 * Process the given class, ensures that processing order is consistent with inheritance order. The given paEClass
-	 * is added to the processedPAClasses.
+	 * Process the given class, ensures that processing order is consistent with inheritance order.
+	 * The given paEClass is added to the processedPAClasses.
 	 */
 	protected void processPAClass(PAnnotatedEClass paEClass) {
 		if (processedPAClasses.add(paEClass)) {
@@ -224,12 +212,45 @@ public class HibernateMappingGenerator {
 	}
 
 	/** Emit a typedef */
-	private void emitTypeDef(TypeDef td) {
+	protected void emitTypeDef(TypeDef td) {
 		final Element target = this.hbmContext.getCurrent().addElement("typedef");
 		target.addAttribute("name", td.getName());
 		target.addAttribute("class", td.getTypeClass());
 		for (Parameter param : td.getParameters()) {
 			target.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
 		}
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+
+		// set the default extensions for mapping in the extensionManager
+
+		this.extensionManager = extensionManager;
+	}
+
+	/**
+	 * @return the persistenceOptions
+	 */
+	public PersistenceOptions getPersistenceOptions() {
+		return persistenceOptions;
+	}
+
+	/**
+	 * @param persistenceOptions
+	 *            the persistenceOptions to set
+	 */
+	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
+		this.persistenceOptions = persistenceOptions;
 	}
 }

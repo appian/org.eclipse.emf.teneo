@@ -46,16 +46,6 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	private static final Log log = LogFactory.getLog(AbstractAssociationMapper.class);
 
 	/**
-	 * Constructor
-	 * 
-	 * @param hbmContext
-	 *            the context used by this mapper curing processing
-	 */
-	public AbstractAssociationMapper(MappingContext hbmContext) {
-		super(hbmContext);
-	}
-
-	/**
 	 * @return
 	 */
 	protected Element addOneToOne(PAnnotatedEReference aReference, String assocName, String targetEntity) {
@@ -523,8 +513,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
 		addKeyColumns(null, keyElement, joinTable.getJoinColumns()/*
-		 * == null ? new ArrayList() :
-		 * (List)joinTable.getJoinColumns().getValue()
-		 */);
+																	 * == null ? new ArrayList() :
+																	 * (List)joinTable.getJoinColumns().getValue()
+																	 */);
 	}
 }

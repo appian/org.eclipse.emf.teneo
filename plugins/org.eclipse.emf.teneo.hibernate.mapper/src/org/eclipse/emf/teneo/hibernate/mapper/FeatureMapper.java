@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapper.java,v 1.4 2007/03/18 22:28:38 mtaal Exp $
+ * $Id: FeatureMapper.java,v 1.5 2007/07/11 14:40:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -23,6 +23,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * Dispatch events to the appropriate Mapper.
@@ -30,25 +31,25 @@ import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class FeatureMapper {
+public class FeatureMapper implements ExtensionPoint {
 
 	/** Switch features for the annotated eattribute */
-	private static final EStructuralFeature[] PAEATTRIBUTE_DISCR_FEATURES = new EStructuralFeature[] {
-			PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_Transient(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Id(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Basic(),
-			PamodelPackage.eINSTANCE.getPAnnotatedETypedElement_OneToMany(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Version() };
+	private static final EStructuralFeature[] PAEATTRIBUTE_DISCR_FEATURES =
+			new EStructuralFeature[] { PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_Transient(),
+					PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Id(),
+					PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Basic(),
+					PamodelPackage.eINSTANCE.getPAnnotatedETypedElement_OneToMany(),
+					PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Version() };
 
 	/** Switch features for the annotated ereference */
-	private static final EStructuralFeature[] PAEREFERENCE_DISCR_FEATURES = new EStructuralFeature[] {
-			PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_Transient(),
-			PamodelPackage.eINSTANCE.getPAnnotatedETypedElement_OneToMany(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEReference_Embedded(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEReference_EmbeddedId(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEReference_ManyToMany(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEReference_ManyToOne(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEReference_OneToOne() };
+	private static final EStructuralFeature[] PAEREFERENCE_DISCR_FEATURES =
+			new EStructuralFeature[] { PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_Transient(),
+					PamodelPackage.eINSTANCE.getPAnnotatedETypedElement_OneToMany(),
+					PamodelPackage.eINSTANCE.getPAnnotatedEReference_Embedded(),
+					PamodelPackage.eINSTANCE.getPAnnotatedEReference_EmbeddedId(),
+					PamodelPackage.eINSTANCE.getPAnnotatedEReference_ManyToMany(),
+					PamodelPackage.eINSTANCE.getPAnnotatedEReference_ManyToOne(),
+					PamodelPackage.eINSTANCE.getPAnnotatedEReference_OneToOne() };
 
 	/** Different Mappers used in the switches below, each Mapper handles a specific annotation case */
 	private BasicMapper basicMapper = null;
@@ -68,18 +69,20 @@ public class FeatureMapper {
 	private OneToOneMapper oneToOneMapper = null;
 
 	private MappingContext hbmContext = null;
-	
+
 	/**
-	 * Used to signal the end of a class or mapped superclass. public void end() { if (nestedBegin <= 0) throw new
-	 * IllegalStateException("Unexpected end"); nestedBegin--; if (idStrategy != null) idStrategy.end(); // can happen
-	 * in case of featuremap if (nestedBegin == 0) idStrategy = null; }
+	 * Used to signal the end of a class or mapped superclass. public void end() { if (nestedBegin <=
+	 * 0) throw new IllegalStateException("Unexpected end"); nestedBegin--; if (idStrategy != null)
+	 * idStrategy.end(); // can happen in case of featuremap if (nestedBegin == 0) idStrategy =
+	 * null; }
 	 */
 
 	/** Find the feature to switch on */
 	public static final EStructuralFeature getSwitchFeature(EObject eObject, EStructuralFeature[] features) {
-		for (int i = 0; i < features.length; i++) {
-			if (eObject.eIsSet(features[i]))
-				return features[i];
+		for (EStructuralFeature element : features) {
+			if (eObject.eIsSet(element)) {
+				return element;
+			}
 		}
 		return null;
 	}
@@ -111,24 +114,24 @@ public class FeatureMapper {
 			throw new MappingException("Can not map this paElement", pAnnotatedEAttribute);
 		} else {
 			switch (discrFeature.getFeatureID()) {
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__TRANSIENT:
-				basicMapper.processTransient(pAnnotatedEAttribute);
-				break;
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__BASIC:
-				caseBasic(pAnnotatedEAttribute);
-				// if (result == null) result = caseProperty(pAnnotatedEAttribute);
-				break;
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__ID:
-				idMapper.processIdProperty(pAnnotatedEAttribute);
-				break;
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__ONE_TO_MANY:
-				manyAttributeMapper.processManyAttribute(pAnnotatedEAttribute);
-				break;
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__VERSION:
-				basicMapper.processVersion(pAnnotatedEAttribute);
-				break;
-			default:
-				throw new AssertionError("unexpected case");
+				case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__TRANSIENT:
+					basicMapper.processTransient(pAnnotatedEAttribute);
+					break;
+				case PamodelPackage.PANNOTATED_EATTRIBUTE__BASIC:
+					caseBasic(pAnnotatedEAttribute);
+					// if (result == null) result = caseProperty(pAnnotatedEAttribute);
+					break;
+				case PamodelPackage.PANNOTATED_EATTRIBUTE__ID:
+					idMapper.processIdProperty(pAnnotatedEAttribute);
+					break;
+				case PamodelPackage.PANNOTATED_EATTRIBUTE__ONE_TO_MANY:
+					manyAttributeMapper.processManyAttribute(pAnnotatedEAttribute);
+					break;
+				case PamodelPackage.PANNOTATED_EATTRIBUTE__VERSION:
+					basicMapper.processVersion(pAnnotatedEAttribute);
+					break;
+				default:
+					throw new AssertionError("unexpected case");
 			}
 		}
 	}
@@ -145,43 +148,44 @@ public class FeatureMapper {
 			throw new MappingException("Can not map this paElement", pAnnotatedEReference);
 		} else {
 			switch (discrFeature.getFeatureID()) {
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__TRANSIENT:
-				basicMapper.processTransient(pAnnotatedEReference);
-				break;
-			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED:
-				embeddedMapper.process(pAnnotatedEReference);
-				break;
-			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID:
-				idMapper.processEmbeddedId(pAnnotatedEReference);
-				break;
-			case PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY:
-				manyToManyMapper.process(pAnnotatedEReference);
-				break;
-			case PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE:
-				manyToOneMapper.process(pAnnotatedEReference);
-				break;
-			case PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_MANY:
-				oneToManyMapper.process(pAnnotatedEReference);
-				break;
-			case PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE:
-				oneToOneMapper.process(pAnnotatedEReference);
-				break;
-			default:
-				throw new AssertionError("unexpected case");
+				case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__TRANSIENT:
+					basicMapper.processTransient(pAnnotatedEReference);
+					break;
+				case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED:
+					embeddedMapper.process(pAnnotatedEReference);
+					break;
+				case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID:
+					idMapper.processEmbeddedId(pAnnotatedEReference);
+					break;
+				case PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY:
+					manyToManyMapper.process(pAnnotatedEReference);
+					break;
+				case PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE:
+					manyToOneMapper.process(pAnnotatedEReference);
+					break;
+				case PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_MANY:
+					oneToManyMapper.process(pAnnotatedEReference);
+					break;
+				case PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE:
+					oneToOneMapper.process(pAnnotatedEReference);
+					break;
+				default:
+					throw new AssertionError("unexpected case");
 			}
 		}
 	}
 
 	/** Handle basic annotation, is basic, enumerated, temporal */
 	public Object caseBasic(PAnnotatedEAttribute paAttribute) {
-		if (paAttribute.getEnumerated() != null)
+		if (paAttribute.getEnumerated() != null) {
 			basicMapper.processEnum(paAttribute);
-		else if (paAttribute.getLob() != null)
+		} else if (paAttribute.getLob() != null) {
 			basicMapper.processLob(paAttribute);
-		else if (paAttribute.getTemporal() != null)
+		} else if (paAttribute.getTemporal() != null) {
 			basicMapper.processTemporal(paAttribute);
-		else
+		} else {
 			basicMapper.processBasic(paAttribute);
+		}
 		return Boolean.TRUE;
 	}
 
@@ -226,7 +230,8 @@ public class FeatureMapper {
 	}
 
 	/**
-	 * @param hbmContext the hbmContext to set
+	 * @param hbmContext
+	 *            the hbmContext to set
 	 */
 	public void setHbmContext(MappingContext hbmContext) {
 		this.hbmContext = hbmContext;

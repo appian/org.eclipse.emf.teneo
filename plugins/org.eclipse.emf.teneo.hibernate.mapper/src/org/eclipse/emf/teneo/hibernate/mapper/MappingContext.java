@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: MappingContext.java,v 1.18 2007/06/29 07:31:27 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.19 2007/07/11 14:40:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -26,6 +26,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
+import org.eclipse.emf.teneo.extension.ExtensionInitializable;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
 import org.eclipse.emf.teneo.simpledom.Document;
@@ -35,9 +39,10 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
-public class MappingContext extends AbstractProcessingContext {
+public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
+		ExtensionManagerAware {
 
 	/** The xml document to which all elements are added */
 	private Document mappingDoc;
@@ -57,7 +62,7 @@ public class MappingContext extends AbstractProcessingContext {
 	private final List<EAttribute> handledFeatureMapEAttributes = new ArrayList<EAttribute>();
 
 	/** the mapper used for features */
-	private final FeatureMapper featureMapper;
+	private FeatureMapper featureMapper;
 
 	/**
 	 * Is the current element a mixed or a feature map, in this case all features should be not
@@ -78,7 +83,10 @@ public class MappingContext extends AbstractProcessingContext {
 	private EStructuralFeature currentEFeature = null;
 
 	/** The entity mapper */
-	private final EntityMapper entityMapper;
+	private EntityMapper entityMapper;
+
+	/** The extensionmanager used */
+	private ExtensionManager extensionManager;
 
 	/** The option to qualify entity names */
 	private EntityNameStrategy entityNameStrategy = null;
@@ -109,12 +117,6 @@ public class MappingContext extends AbstractProcessingContext {
 	// The pa model for which this is all done, is set when generation starts
 	private PAnnotatedModel paModel = null;
 
-	/** The constructor */
-	public MappingContext() {
-		featureMapper = createFeatureMapper();
-		entityMapper = new EntityMapper(this);
-	}
-
 	/** Returns the entitymapper */
 	public EntityMapper getEntityMapper() {
 		return entityMapper;
@@ -122,11 +124,9 @@ public class MappingContext extends AbstractProcessingContext {
 
 	/** Set relevant properties */
 	void setMappingProperties(PersistenceOptions po) {
-		entityNameStrategy = po.getEntityNameStrategy();
 		versionColumnName = po.getVersionColumnName();
 		idColumnName = po.getIdColumnName();
 		maximumSqlNameLength = po.getMaximumSqlNameLength();
-		sqlNameStrategy = po.getSQLNameStrategy();
 		alwaysVersion = po.getAlwaysVersion();
 		isMapEMapAsTrueMap = po.isMapEMapAsTrueMap();
 		idbagIDColumnName = po.getIDBagIDColumnName();
@@ -226,22 +226,39 @@ public class MappingContext extends AbstractProcessingContext {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.extension.ExtensionInitializable#initializeExtension()
+	 */
+	public void initializeExtension() {
+		featureMapper = createFeatureMapper();
+		entityMapper = getExtensionManager().getExtension(EntityMapper.class);
+		entityMapper.setHbmContext(this);
+	}
+
 	/**
 	 * @return The builder used by entity mapped that maps features to hbm.
 	 */
 	private FeatureMapper createFeatureMapper() {
-		final FeatureMapper featureMapper = new FeatureMapper();
+		final FeatureMapper featureMapper = getExtensionManager().getExtension(FeatureMapper.class);
 		featureMapper.setHbmContext(this);
 
-		featureMapper.setBasicMapper(new BasicMapper(this));
-		featureMapper.setManyAttributeMapper(new ManyAttributeMapper(this));
-		featureMapper.setEmbeddedMapper(new EmbeddedMapper(this));
-		featureMapper.setIdMapper(new IdMapper(this));
-		featureMapper.setManyToManyMapper(new ManyToManyMapper(this));
-		featureMapper.setManyToOneMapper(new ManyToOneMapper(this));
-		featureMapper.setOneToManyMapper(new OneToManyMapper(this));
-		featureMapper.setOneToOneMapper(new OneToOneMapper(this));
+		featureMapper.setBasicMapper(createMapper(BasicMapper.class));
+		featureMapper.setManyAttributeMapper(createMapper(ManyAttributeMapper.class));
+		featureMapper.setEmbeddedMapper(createMapper(EmbeddedMapper.class));
+		featureMapper.setIdMapper(createMapper(IdMapper.class));
+		featureMapper.setManyToManyMapper(createMapper(ManyToManyMapper.class));
+		featureMapper.setManyToOneMapper(createMapper(ManyToOneMapper.class));
+		featureMapper.setOneToManyMapper(createMapper(OneToManyMapper.class));
+		featureMapper.setOneToOneMapper(createMapper(OneToOneMapper.class));
 		return featureMapper;
+	}
+
+	protected <T> T createMapper(Class<T> clz) {
+		final T t = getExtensionManager().getExtension(clz);
+		((AbstractMapper) t).setHbmContext(this);
+		return t;
 	}
 
 	/** process the features of the annotated eclass */
@@ -357,16 +374,14 @@ public class MappingContext extends AbstractProcessingContext {
 	String trunc(String truncName, boolean truncSuffix) {
 		final String useName;
 		// currentEFeature is null in the beginning
-		if (currentEFeature != null
-				&& currentEFeature.getEContainingClass() != currentEClass
-				&& getEntityName(currentEFeature.getEContainingClass(), false) != null
-				&& truncName.toUpperCase().startsWith(
-					getEntityName(currentEFeature.getEContainingClass()).toUpperCase())) {
+		if (currentEFeature != null && currentEFeature.getEContainingClass() != currentEClass &&
+				getEntityName(currentEFeature.getEContainingClass(), false) != null &&
+				truncName.toUpperCase().startsWith(getEntityName(currentEFeature.getEContainingClass()).toUpperCase())) {
 			log.debug("Replacing name of table/joincolumn " + truncName);
 			// get rid of the first part
 			useName =
-					getEntityName(currentEClass)
-							+ truncName.substring(getEntityName(currentEFeature.getEContainingClass()).length());
+					getEntityName(currentEClass) +
+							truncName.substring(getEntityName(currentEFeature.getEContainingClass()).length());
 			log.debug("with " + useName + " because efeature is inherited");
 			log
 				.debug("This renaming does not work in case of manually specified joincolumn/table names and mappedsuperclass or multiple inheritance!");
@@ -397,10 +412,10 @@ public class MappingContext extends AbstractProcessingContext {
 	/** Escape the column name */
 	String escape(String name) {
 		if (name.indexOf('`') == 0) {
-			return sqlNameStrategy.convert(name);
+			return getSqlNameStrategy().convert(name);
 		}
 
-		return "`" + sqlNameStrategy.convert(name) + "`";
+		return "`" + getSqlNameStrategy().convert(name) + "`";
 	}
 
 	/**
@@ -527,6 +542,11 @@ public class MappingContext extends AbstractProcessingContext {
 	 * @return the eclassNameStrategy
 	 */
 	public EntityNameStrategy getEntityNameStrategy() {
+		if (entityNameStrategy == null) {
+			entityNameStrategy = getExtensionManager().getExtension(EntityNameStrategy.class);
+			entityNameStrategy.setPaModel(getPaModel()); // this call is not really required but
+			// for safety reasons
+		}
 		return entityNameStrategy;
 	}
 
@@ -602,5 +622,30 @@ public class MappingContext extends AbstractProcessingContext {
 	 */
 	public void setPaModel(PAnnotatedModel paModel) {
 		this.paModel = paModel;
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
+	}
+
+	/**
+	 * @return the sqlNameStrategy
+	 */
+	public SQLNameStrategy getSqlNameStrategy() {
+		if (sqlNameStrategy == null) {
+			sqlNameStrategy = getExtensionManager().getExtension(SQLNameStrategy.class);
+		}
+		return sqlNameStrategy;
 	}
 }

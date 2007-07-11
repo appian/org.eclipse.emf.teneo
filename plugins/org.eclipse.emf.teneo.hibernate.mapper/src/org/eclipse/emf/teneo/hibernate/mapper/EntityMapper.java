@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: EntityMapper.java,v 1.21 2007/07/09 17:43:20 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.22 2007/07/11 14:40:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -45,11 +45,6 @@ public class EntityMapper extends AbstractMapper {
 	/** Log it all */
 	private static final Log log = LogFactory.getLog(EntityMapper.class);
 
-	/**
-	 * the mapper used for features, is copied from the hbm context for convenience reasons
-	 */
-	private final FeatureMapper featureMapper;
-
 	/** Convenience maps to inheritance strategy names and discriminator types */
 	private static final String[] INHERITANCE_STRATEGY_NAMES;
 
@@ -86,14 +81,6 @@ public class EntityMapper extends AbstractMapper {
 	private static String hbDiscriminatorType(DiscriminatorType dType) {
 		return EntityMapper.DISCRIMINATOR_TYPE_NAMES[dType != null ? DiscriminatorType.STRING.getValue() : dType
 			.getValue()];
-	}
-
-	/**
-	 * @return Returns a list of the mapped superclasses of the given entity.
-	 */
-	public EntityMapper(MappingContext hbmContext) {
-		super(hbmContext);
-		featureMapper = hbmContext.getFeatureMapper();
 	}
 
 	/**
@@ -475,7 +462,7 @@ public class EntityMapper extends AbstractMapper {
 
 	/** Process one feature */
 	protected void processFeature(PAnnotatedEStructuralFeature paFeature) {
-		featureMapper.process(paFeature);
+		hbmContext.getFeatureMapper().process(paFeature);
 	}
 
 	/**

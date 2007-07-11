@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToOneMapper.java,v 1.12 2007/07/09 17:43:20 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.13 2007/07/11 14:40:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -36,11 +36,6 @@ public class ManyToOneMapper extends AbstractAssociationMapper {
 
 	/** Log it */
 	private static final Log log = LogFactory.getLog(ManyToOneMapper.class);
-
-	/** Constructor */
-	public ManyToOneMapper(MappingContext hbmContext) {
-		super(hbmContext);
-	}
 
 	/**
 	 * Generate the hb mapping for the given reference and annotations.

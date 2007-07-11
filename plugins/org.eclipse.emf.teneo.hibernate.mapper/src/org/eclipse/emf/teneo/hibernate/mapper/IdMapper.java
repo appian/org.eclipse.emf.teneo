@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.14 2007/07/09 17:43:20 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.15 2007/07/11 14:40:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class IdMapper extends AbstractPropertyMapper {
+public class IdMapper extends AbstractMapper {
 
 	/** The logger */
 	private static final Log log = LogFactory.getLog(IdMapper.class);
@@ -101,13 +101,6 @@ public class IdMapper extends AbstractPropertyMapper {
 		idElement.addAttribute("access", mc.getIdPropertyHandlerName());
 
 		return idElement;
-	}
-
-	/**
-	 * @param hbmContext
-	 */
-	public IdMapper(MappingContext hbmContext) {
-		super(hbmContext);
 	}
 
 	/**
