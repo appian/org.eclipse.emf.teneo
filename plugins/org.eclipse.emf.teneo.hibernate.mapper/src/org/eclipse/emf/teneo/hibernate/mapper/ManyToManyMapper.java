@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToManyMapper.java,v 1.14 2007/07/11 14:40:45 mtaal Exp $
+ * </copyright> $Id: ManyToManyMapper.java,v 1.15 2007/07/11 17:13:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -88,6 +88,8 @@ public class ManyToManyMapper extends AbstractAssociationMapper {
 						getHbmContext().getInstanceClassName(hbReference.getEReferenceType())).addAttribute("unique",
 						"false");
 		}
+
+		addForeignKeyAttribute(mtmElement, hbReference);
 
 		// inverse is not supported by indexed lists
 		if (mtm.getMappedBy() != null && !mtm.isIndexed()) {

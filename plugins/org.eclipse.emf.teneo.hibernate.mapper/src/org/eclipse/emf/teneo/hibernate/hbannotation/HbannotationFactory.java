@@ -2,33 +2,30 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactory.java,v 1.1 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbannotationFactory.java,v 1.2 2007/07/11 17:13:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
 import org.eclipse.emf.ecore.EFactory;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Factory</b> for the model.
- * It provides a create method for each non-abstract class of the model.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a create method for each
+ * non-abstract class of the model. <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage
  * @generated
  */
 public interface HbannotationFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	HbannotationFactory eINSTANCE = org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Cascade</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @return a new object of class '<em>Cascade</em>'.
 	 * @generated
 	 */
@@ -45,8 +42,8 @@ public interface HbannotationFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>Map Key</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @return a new object of class '<em>Map Key</em>'.
 	 * @generated
 	 */
@@ -54,26 +51,26 @@ public interface HbannotationFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>Parameter</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @return a new object of class '<em>Parameter</em>'.
 	 * @generated
 	 */
 	Parameter createParameter();
 
 	/**
-	 * Returns a new object of class '<em>Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>Type</em>'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return a new object of class '<em>Type</em>'.
 	 * @generated
 	 */
 	Type createType();
 
 	/**
-	 * Returns a new object of class '<em>Where</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>Where</em>'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return a new object of class '<em>Where</em>'.
 	 * @generated
 	 */
@@ -81,8 +78,8 @@ public interface HbannotationFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>Id Bag</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @return a new object of class '<em>Id Bag</em>'.
 	 * @generated
 	 */
@@ -90,17 +87,17 @@ public interface HbannotationFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>Generic Generator</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @return a new object of class '<em>Generic Generator</em>'.
 	 * @generated
 	 */
 	GenericGenerator createGenericGenerator();
 
 	/**
-	 * Returns a new object of class '<em>Cache</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>Cache</em>'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return a new object of class '<em>Cache</em>'.
 	 * @generated
 	 */
@@ -108,17 +105,17 @@ public interface HbannotationFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>Type Def</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @return a new object of class '<em>Type Def</em>'.
 	 * @generated
 	 */
 	TypeDef createTypeDef();
 
 	/**
-	 * Returns a new object of class '<em>Fetch</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>Fetch</em>'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return a new object of class '<em>Fetch</em>'.
 	 * @generated
 	 */
@@ -126,26 +123,26 @@ public interface HbannotationFactory extends EFactory {
 
 	/**
 	 * Returns a new object of class '<em>On Delete</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @return a new object of class '<em>On Delete</em>'.
 	 * @generated
 	 */
 	OnDelete createOnDelete();
 
 	/**
-	 * Returns a new object of class '<em>Proxy</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>Proxy</em>'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return a new object of class '<em>Proxy</em>'.
 	 * @generated
 	 */
 	Proxy createProxy();
 
 	/**
-	 * Returns a new object of class '<em>Index</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>Index</em>'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return a new object of class '<em>Index</em>'.
 	 * @generated
 	 */
@@ -153,11 +150,10 @@ public interface HbannotationFactory extends EFactory {
 
 	/**
 	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
 	HbannotationPackage getHbannotationPackage();
 
-} //HbannotationFactory
+} // HbannotationFactory

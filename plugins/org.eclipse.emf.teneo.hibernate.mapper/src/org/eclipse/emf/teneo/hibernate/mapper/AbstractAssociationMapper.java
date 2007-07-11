@@ -179,6 +179,13 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		addCascades(associationElement, cascades, false);
 	}
 
+	/** Adds a foreign key attribute to the collection element, if the aFeature has a foreign key */
+	protected void addForeignKeyAttribute(Element manyElement, PAnnotatedEStructuralFeature aFeature) {
+		if (aFeature.getForeignKey() != null) {
+			manyElement.addAttribute("foreign-key", aFeature.getForeignKey().getName());
+		}
+	}
+
 	/**
 	 * Creates cascades for onetomany, it differs from single relations because delete-orphan is
 	 * supported when cascade=all
@@ -513,8 +520,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
 		addKeyColumns(null, keyElement, joinTable.getJoinColumns()/*
-																	 * == null ? new ArrayList() :
-																	 * (List)joinTable.getJoinColumns().getValue()
-																	 */);
+		 * == null ? new ArrayList() :
+		 * (List)joinTable.getJoinColumns().getValue()
+		 */);
 	}
 }

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.1 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.2 2007/07/11 17:13:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -168,6 +168,15 @@ public interface HbmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_ETYPE_ELEMENT__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ETYPE_ELEMENT__FOREIGN_KEY = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY;
 
 	/**
 	 * The feature id for the '<em><b>Hb Where</b></em>' containment reference.
@@ -349,6 +358,15 @@ public interface HbmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_EATTRIBUTE__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_EATTRIBUTE__ANNOTATED_ESTRUCTURAL_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__FOREIGN_KEY = PamodelPackage.PANNOTATED_EATTRIBUTE__FOREIGN_KEY;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EAttribute</b></em>' reference.
@@ -976,6 +994,15 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_ESTRUCTURAL_FEATURE;
 
 	/**
+	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__FOREIGN_KEY = PamodelPackage.PANNOTATED_EREFERENCE__FOREIGN_KEY;
+
+	/**
 	 * The feature id for the '<em><b>Annotated EReference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1346,13 +1373,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EDATA_TYPE__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EDATA_TYPE__FOREIGN_KEY = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Hb Where</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_WHERE = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 2;
+	int HB_ANNOTATED_EDATA_TYPE__HB_WHERE = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Hb Collection Of Elements</b></em>' containment reference.
@@ -1361,7 +1397,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_COLLECTION_OF_ELEMENTS = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 3;
+	int HB_ANNOTATED_EDATA_TYPE__HB_COLLECTION_OF_ELEMENTS = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Hb Map Key</b></em>' containment reference.
@@ -1370,7 +1406,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_MAP_KEY = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 4;
+	int HB_ANNOTATED_EDATA_TYPE__HB_MAP_KEY = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Hb Columns</b></em>' containment reference list.
@@ -1379,7 +1415,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 5;
+	int HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Hb Cascade</b></em>' containment reference.
@@ -1388,7 +1424,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_CASCADE = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 6;
+	int HB_ANNOTATED_EDATA_TYPE__HB_CASCADE = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Hb Id Bag</b></em>' containment reference.
@@ -1397,7 +1433,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 7;
+	int HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Hb Index</b></em>' reference.
@@ -1406,7 +1442,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_INDEX = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 8;
+	int HB_ANNOTATED_EDATA_TYPE__HB_INDEX = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Hb Type Def</b></em>' containment reference.
@@ -1415,7 +1451,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 9;
+	int HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EData Type</em>' class.
@@ -1424,7 +1460,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_EDATA_TYPE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 11;
 
 
 	/**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactoryImpl.java,v 1.1 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.2 2007/07/11 17:13:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -33,27 +33,23 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
  * @generated
  */
 public class HbannotationFactoryImpl extends EFactoryImpl implements HbannotationFactory {
 	/**
 	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static HbannotationFactory init() {
 		try {
-			HbannotationFactory theHbannotationFactory =
-					(HbannotationFactory) EPackage.Registry.INSTANCE
-						.getEFactory("http://www.eclipse.org/emf/teneo/2006/HbAnnotation");
+			HbannotationFactory theHbannotationFactory = (HbannotationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/2006/HbAnnotation"); 
 			if (theHbannotationFactory != null) {
 				return theHbannotationFactory;
 			}
-		} catch (Exception exception) {
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new HbannotationFactoryImpl();
@@ -61,8 +57,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 
 	/**
 	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public HbannotationFactoryImpl() {
@@ -70,49 +65,33 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case HbannotationPackage.CASCADE:
-				return createCascade();
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS:
-				return createCollectionOfElements();
-			case HbannotationPackage.MAP_KEY:
-				return createMapKey();
-			case HbannotationPackage.PARAMETER:
-				return createParameter();
-			case HbannotationPackage.TYPE:
-				return createType();
-			case HbannotationPackage.WHERE:
-				return createWhere();
-			case HbannotationPackage.ID_BAG:
-				return createIdBag();
-			case HbannotationPackage.GENERIC_GENERATOR:
-				return createGenericGenerator();
-			case HbannotationPackage.CACHE:
-				return createCache();
-			case HbannotationPackage.TYPE_DEF:
-				return createTypeDef();
-			case HbannotationPackage.FETCH:
-				return createFetch();
-			case HbannotationPackage.ON_DELETE:
-				return createOnDelete();
-			case HbannotationPackage.PROXY:
-				return createProxy();
-			case HbannotationPackage.INDEX:
-				return createIndex();
+			case HbannotationPackage.CASCADE: return createCascade();
+			case HbannotationPackage.COLLECTION_OF_ELEMENTS: return createCollectionOfElements();
+			case HbannotationPackage.MAP_KEY: return createMapKey();
+			case HbannotationPackage.PARAMETER: return createParameter();
+			case HbannotationPackage.TYPE: return createType();
+			case HbannotationPackage.WHERE: return createWhere();
+			case HbannotationPackage.ID_BAG: return createIdBag();
+			case HbannotationPackage.GENERIC_GENERATOR: return createGenericGenerator();
+			case HbannotationPackage.CACHE: return createCache();
+			case HbannotationPackage.TYPE_DEF: return createTypeDef();
+			case HbannotationPackage.FETCH: return createFetch();
+			case HbannotationPackage.ON_DELETE: return createOnDelete();
+			case HbannotationPackage.PROXY: return createProxy();
+			case HbannotationPackage.INDEX: return createIndex();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -125,14 +104,12 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 			case HbannotationPackage.ON_DELETE_ACTION:
 				return createOnDeleteActionFromString(eDataType, initialValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() +
-						"' is not a valid classifier");
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -145,14 +122,12 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 			case HbannotationPackage.ON_DELETE_ACTION:
 				return convertOnDeleteActionToString(eDataType, instanceValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() +
-						"' is not a valid classifier");
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Cascade createCascade() {
@@ -161,8 +136,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public CollectionOfElements createCollectionOfElements() {
@@ -171,8 +145,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public MapKey createMapKey() {
@@ -181,8 +154,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Parameter createParameter() {
@@ -191,8 +163,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Type createType() {
@@ -201,8 +172,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Where createWhere() {
@@ -211,8 +181,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public IdBag createIdBag() {
@@ -221,8 +190,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public GenericGenerator createGenericGenerator() {
@@ -231,8 +199,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Cache createCache() {
@@ -241,8 +208,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public TypeDef createTypeDef() {
@@ -251,8 +217,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Fetch createFetch() {
@@ -261,8 +226,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public OnDelete createOnDelete() {
@@ -271,8 +235,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Proxy createProxy() {
@@ -281,8 +244,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Index createIndex() {
@@ -291,22 +253,17 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public CacheConcurrencyStrategy createCacheConcurrencyStrategyFromString(EDataType eDataType, String initialValue) {
 		CacheConcurrencyStrategy result = CacheConcurrencyStrategy.get(initialValue);
-		if (result == null) {
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" +
-					eDataType.getName() + "'");
-		}
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertCacheConcurrencyStrategyToString(EDataType eDataType, Object instanceValue) {
@@ -314,22 +271,17 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public HbFetchType createHbFetchTypeFromString(EDataType eDataType, String initialValue) {
 		HbFetchType result = HbFetchType.get(initialValue);
-		if (result == null) {
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" +
-					eDataType.getName() + "'");
-		}
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertHbFetchTypeToString(EDataType eDataType, Object instanceValue) {
@@ -337,22 +289,17 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public OnDeleteAction createOnDeleteActionFromString(EDataType eDataType, String initialValue) {
 		OnDeleteAction result = OnDeleteAction.get(initialValue);
-		if (result == null) {
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" +
-					eDataType.getName() + "'");
-		}
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertOnDeleteActionToString(EDataType eDataType, Object instanceValue) {
@@ -360,17 +307,15 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public HbannotationPackage getHbannotationPackage() {
-		return (HbannotationPackage) getEPackage();
+		return (HbannotationPackage)getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */

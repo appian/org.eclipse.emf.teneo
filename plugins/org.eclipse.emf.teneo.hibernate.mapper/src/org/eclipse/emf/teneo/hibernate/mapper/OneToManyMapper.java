@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToManyMapper.java,v 1.16 2007/07/11 14:40:45 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.17 2007/07/11 17:13:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -174,9 +174,13 @@ public class OneToManyMapper extends AbstractAssociationMapper {
 			// because an item can occur twice or more in the list.
 			// To force a jointable on a real otm a jointable annotation should
 			// be specified.
-			addManyToMany(referedToAClass, collElement, targetName, inverseJoinColumns, otm.isUnique());
+			final Element mtm =
+					addManyToMany(referedToAClass, collElement, targetName, inverseJoinColumns, otm.isUnique());
+			addForeignKeyAttribute(mtm, paReference);
+
 		} else {
 			addOneToMany(paReference, referedToAClass, collElement, eref.getName(), targetName);
+			addForeignKeyAttribute(keyElement, paReference);
 		}
 	}
 
@@ -257,9 +261,13 @@ public class OneToManyMapper extends AbstractAssociationMapper {
 			final List<JoinColumn> inverseJoinColumns =
 					jt != null && jt.getInverseJoinColumns() != null ? jt.getInverseJoinColumns()
 							: new ArrayList<JoinColumn>();
-			addManyToMany(referedToAClass, collElement, targetName, inverseJoinColumns, otm.isUnique());
+
+			final Element mtm =
+					addManyToMany(referedToAClass, collElement, targetName, inverseJoinColumns, otm.isUnique());
+			addForeignKeyAttribute(mtm, paReference);
 		} else {
 			addOneToMany(paReference, referedToAClass, collElement, eref.getName(), targetName);
+			addForeignKeyAttribute(keyElement, paReference);
 		}
 	}
 
@@ -269,17 +277,19 @@ public class OneToManyMapper extends AbstractAssociationMapper {
 	 * @param collElement
 	 * @param targetEntity
 	 */
-	private void addOneToMany(PAnnotatedEReference paReference, PAnnotatedEClass referedToAClass, Element collElement,
-			String featureName, String targetEntity) {
+	protected void addOneToMany(PAnnotatedEReference paReference, PAnnotatedEClass referedToAClass,
+			Element collElement, String featureName, String targetEntity) {
 		if (isEObject(targetEntity)) { // anytype
 			final Element any = collElement.addElement("many-to-any").addAttribute("id-type", "long");
 			addColumns(paReference, any, null, getAnyTypeColumns(featureName, false), false, false);
 		} else {
+			final Element otm;
 			if (referedToAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedToAClass)) {
-				collElement.addElement("one-to-many").addAttribute("entity-name", targetEntity);
+				otm = collElement.addElement("one-to-many").addAttribute("entity-name", targetEntity);
 			} else {
-				collElement.addElement("one-to-many").addAttribute("class",
-					getHbmContext().getInstanceClassName(referedToAClass.getAnnotatedEClass()));
+				otm =
+						collElement.addElement("one-to-many").addAttribute("class",
+							getHbmContext().getInstanceClassName(referedToAClass.getAnnotatedEClass()));
 			}
 		}
 	}
@@ -302,6 +312,7 @@ public class OneToManyMapper extends AbstractAssociationMapper {
 						"unique", unique ? "true" : "false");
 		}
 		addKeyColumns(null, manyToMany, invJoinColumns); // pass null for jointable
+
 		return manyToMany;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationValidator.java,v 1.1 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbannotationValidator.java,v 1.2 2007/07/11 17:13:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -36,25 +36,21 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Validator</b> for the model.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Validator</b> for the model. <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage
  * @generated
  */
 public class HbannotationValidator extends EObjectValidator {
 	/**
 	 * The cached model package
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final HbannotationValidator INSTANCE = new HbannotationValidator();
 
 	/**
 	 * A constant for the {@link org.eclipse.emf.common.util.Diagnostic#getSource() source} of diagnostic {@link org.eclipse.emf.common.util.Diagnostic#getCode() codes} from this package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.common.util.Diagnostic#getSource()
 	 * @see org.eclipse.emf.common.util.Diagnostic#getCode()
 	 * @generated
@@ -63,32 +59,28 @@ public class HbannotationValidator extends EObjectValidator {
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 0;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected static final int DIAGNOSTIC_CODE_COUNT = GENERATED_DIAGNOSTIC_CODE_COUNT;
 
 	/**
 	 * The cached base package validator.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PannotationValidator pannotationValidator;
 
 	/**
 	 * Creates an instance of the switch.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public HbannotationValidator() {
@@ -98,8 +90,7 @@ public class HbannotationValidator extends EObjectValidator {
 
 	/**
 	 * Returns the package of this validator switch.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -108,9 +99,9 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Calls <code>validateXXX</code> for the corresponding classifier of the model.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Calls <code>validateXXX</code> for the corresponding classifier of the model. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -158,11 +149,11 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateHbAnnotation(HbAnnotation hbAnnotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateHbAnnotation(HbAnnotation hbAnnotation, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(hbAnnotation, diagnostics, context);
@@ -176,12 +167,13 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Validates the CompatibleEModelElementType constraint of '<em>Hb Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Validates the CompatibleEModelElementType constraint of '<em>Hb Annotation</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public boolean validateHbAnnotation_CompatibleEModelElementType(HbAnnotation hbAnnotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateHbAnnotation_CompatibleEModelElementType(HbAnnotation hbAnnotation,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
@@ -203,12 +195,13 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Validates the AnnotationIsSupported constraint of '<em>Hb Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Validates the AnnotationIsSupported constraint of '<em>Hb Annotation</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public boolean validateHbAnnotation_AnnotationIsSupported(HbAnnotation hbAnnotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateHbAnnotation_AnnotationIsSupported(HbAnnotation hbAnnotation, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
@@ -230,8 +223,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateCascade(Cascade cascade, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -248,11 +240,11 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCollectionOfElements(CollectionOfElements collectionOfElements, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateCollectionOfElements(CollectionOfElements collectionOfElements, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(collectionOfElements, diagnostics, context);
@@ -266,8 +258,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateMapKey(MapKey mapKey, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -284,8 +275,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateParameter(Parameter parameter, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -302,8 +292,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateType(Type type, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -320,8 +309,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateWhere(Where where, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -338,8 +326,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateIdBag(IdBag idBag, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -356,11 +343,11 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateGenericGenerator(GenericGenerator genericGenerator, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateGenericGenerator(GenericGenerator genericGenerator, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(genericGenerator, diagnostics, context);
@@ -374,8 +361,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateCache(Cache cache, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -392,8 +378,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateTypeDef(TypeDef typeDef, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -410,8 +395,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateFetch(Fetch fetch, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -428,8 +412,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateOnDelete(OnDelete onDelete, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -446,8 +429,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateProxy(Proxy proxy, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -464,8 +446,7 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateIndex(Index index, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -482,17 +463,16 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCacheConcurrencyStrategy(CacheConcurrencyStrategy cacheConcurrencyStrategy, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateCacheConcurrencyStrategy(CacheConcurrencyStrategy cacheConcurrencyStrategy,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateHbFetchType(HbFetchType hbFetchType, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -500,12 +480,12 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOnDeleteAction(OnDeleteAction onDeleteAction, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateOnDeleteAction(OnDeleteAction onDeleteAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 
-} //HbannotationValidator
+} // HbannotationValidator

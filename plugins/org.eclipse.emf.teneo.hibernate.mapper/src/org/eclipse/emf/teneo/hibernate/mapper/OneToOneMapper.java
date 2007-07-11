@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToOneMapper.java,v 1.15 2007/07/11 14:40:45 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.16 2007/07/11 17:13:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -70,6 +70,7 @@ public class OneToOneMapper extends AbstractAssociationMapper {
 				addManyToOne(paReference, (specifiedName != null ? specifiedName : getHbmContext().getEntityName(
 					eref.getEReferenceType())));
 
+		addForeignKeyAttribute(associationElement, paReference);
 		addCascadesForSingle(associationElement, oto.getCascade());
 
 		if (isEObject(specifiedName)) {
@@ -108,6 +109,7 @@ public class OneToOneMapper extends AbstractAssociationMapper {
 		final EReference otherSide = eref.getEOpposite();
 		final Element associationElement = addOneToOne(paReference, getHbmContext().getPropertyName(eref), targetName);
 
+		addForeignKeyAttribute(associationElement, paReference);
 		addCascadesForSingle(associationElement, oto.getCascade());
 
 		// add the other-side

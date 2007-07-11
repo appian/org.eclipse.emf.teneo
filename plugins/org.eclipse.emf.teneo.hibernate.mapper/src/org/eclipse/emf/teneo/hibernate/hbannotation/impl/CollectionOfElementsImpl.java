@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CollectionOfElementsImpl.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: CollectionOfElementsImpl.java,v 1.6 2007/07/11 17:13:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -108,13 +108,11 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	 */
 	public EModelElement getEModelElement() {
 		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject) eModelElement;
-			eModelElement = (EModelElement) eResolveProxy(oldEModelElement);
+			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
+			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired()) {
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-				}
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 			}
 		}
 		return eModelElement;
@@ -137,10 +135,8 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	public void setEModelElement(EModelElement newEModelElement) {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -160,10 +156,8 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	public void setTargetElement(String newTargetElement) {
 		String oldTargetElement = targetElement;
 		targetElement = newTargetElement;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT, oldTargetElement, targetElement));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT, oldTargetElement, targetElement));
 	}
 
 	/**
@@ -183,10 +177,8 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	public void setFetch(FetchType newFetch) {
 		FetchType oldFetch = fetch;
 		fetch = newFetch == null ? FETCH_EDEFAULT : newFetch;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH,
-				oldFetch, fetch));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH, oldFetch, fetch));
 	}
 
 	/**
@@ -198,9 +190,7 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
-				if (resolve) {
-					return getEModelElement();
-				}
+				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
 				return getTargetElement();
@@ -219,13 +209,13 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
-				setEModelElement((EModelElement) newValue);
+				setEModelElement((EModelElement)newValue);
 				return;
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
-				setTargetElement((String) newValue);
+				setTargetElement((String)newValue);
 				return;
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
-				setFetch((FetchType) newValue);
+				setFetch((FetchType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -240,7 +230,7 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
-				setEModelElement((EModelElement) null);
+				setEModelElement((EModelElement)null);
 				return;
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
 				setTargetElement(TARGET_ELEMENT_EDEFAULT);
@@ -263,8 +253,7 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
 				return eModelElement != null;
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
-				return TARGET_ELEMENT_EDEFAULT == null ? targetElement != null : !TARGET_ELEMENT_EDEFAULT
-					.equals(targetElement);
+				return TARGET_ELEMENT_EDEFAULT == null ? targetElement != null : !TARGET_ELEMENT_EDEFAULT.equals(targetElement);
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
 				return fetch != FETCH_EDEFAULT;
 		}
@@ -278,9 +267,7 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
-			return super.toString();
-		}
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (targetElement: ");
