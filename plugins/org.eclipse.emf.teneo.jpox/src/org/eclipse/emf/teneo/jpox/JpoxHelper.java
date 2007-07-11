@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxHelper.java,v 1.5 2007/04/07 12:42:47 mtaal Exp $
+ * $Id: JpoxHelper.java,v 1.6 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -29,14 +29,17 @@ import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.jpox.mapper.JPOXMappingGenerator;
 import org.eclipse.emf.teneo.jpox.resource.JPOXResourceFactory;
 
 /**
- * Is the main entry point for 'outside' users to create persistence manager factories and register EMF Data Stores.
+ * Is the main entry point for 'outside' users to create persistence manager factories and register
+ * EMF Data Stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class JpoxHelper {
 	/** The logger */
@@ -63,7 +66,8 @@ public class JpoxHelper {
 		// support old way
 		Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put("jpoxdao", new JPOXResourceFactory());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("jpoxdao", new JPOXResourceFactory());
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(JpoxConstants.EJDO_EXTENSION, new JPOXResourceFactory());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(JpoxConstants.EJDO_EXTENSION,
+			new JPOXResourceFactory());
 		System.setProperty("org.jpox.cache.level1.type", "org.eclipse.emf.teneo.jpox.cache.EMFWeakRefCache");
 	}
 
@@ -87,8 +91,8 @@ public class JpoxHelper {
 	}
 
 	/**
-	 * Set the persistencemanager factory creator, this allows the client to override the creation of persistence
-	 * manager factories and persistence managers.
+	 * Set the persistencemanager factory creator, this allows the client to override the creation
+	 * of persistence manager factories and persistence managers.
 	 */
 	public void setPMFCreator(PMFCreator pmfc) {
 		log.info("Setting persistence manager factory creator to " + pmfc.getClass().getName());
@@ -153,29 +157,38 @@ public class JpoxHelper {
 	public Class getInstanceClass(Class interfaze) {
 		if (!interfaze.isInterface() || !EObject.class.isAssignableFrom(interfaze)) {
 			throw new JpoxStoreException(
-					"This method may only be called with a class which is an interface (extending from EObject), "
-							+ interfaze.getName() + " is not an interface or does not extend EObject.");
+				"This method may only be called with a class which is an interface (extending from EObject), " +
+						interfaze.getName() + " is not an interface or does not extend EObject.");
 		}
 		return ERuntime.INSTANCE.getInstanceClass(interfaze);
 	}
 
 	/** Generate a jpox mapping for a set of epackages and options */
 	public String generateMapping(EPackage[] epackages, Properties props) {
+		return generateMapping(epackages, props, new DefaultExtensionManager());
+	}
+
+	/** Generate a jpox mapping for a set of epackages and options */
+	public String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
 		log.debug("Generating mapping file passed epackages");
 
 		// set the eruntime as the emodel resolver!
 		ERuntime.setAsEModelResolver();
 
 		final PersistenceOptions po = new PersistenceOptions(props);
-		PAnnotatedModel paModel = PersistenceMappingBuilder.INSTANCE.buildMapping(epackages, po);
-		JPOXMappingGenerator jmg = new JPOXMappingGenerator(new PersistenceOptions());
+		final PAnnotatedModel paModel =
+				extensionManager.getExtension(PersistenceMappingBuilder.class).buildMapping(epackages, po,
+					extensionManager);
+		final JPOXMappingGenerator jmg = extensionManager.getExtension(JPOXMappingGenerator.class);
+		jmg.setPersistenceOptions(po);
 		return jmg.generate(paModel);
 	}
 
 	/**
-	 * Creates a persistence manager factory (pmf) and registers it under the passed name. Before creating the pmf first
-	 * the jpox schema tool is run. Because the schema tool runs upfront the pmf parameters autoCreateSchema and
-	 * validate properties are all set to false. The created pmf can be retrieved using the passed name.
+	 * Creates a persistence manager factory (pmf) and registers it under the passed name. Before
+	 * creating the pmf first the jpox schema tool is run. Because the schema tool runs upfront the
+	 * pmf parameters autoCreateSchema and validate properties are all set to false. The created pmf
+	 * can be retrieved using the passed name.
 	 * 
 	 * @param name
 	 *            the name under which the pmf is retrievable
@@ -184,7 +197,8 @@ public class JpoxHelper {
 	 * @param dbDriver
 	 *            the database driver (e.g. com.mysql.jdbc.Driver)
 	 * @param dbUrl
-	 *            the database url, for mysql this includes the dbname, (e.g. jdbc:mysql://127.0.0.1:3306/JPOX)
+	 *            the database url, for mysql this includes the dbname, (e.g.
+	 *            jdbc:mysql://127.0.0.1:3306/JPOX)
 	 * @param dbName
 	 *            the database name
 	 * @param dbUser
@@ -192,12 +206,13 @@ public class JpoxHelper {
 	 * @param dbPwd
 	 *            the password of this user.
 	 * @param options
-	 *            a hashmap with jdo and jpox options which can be used to override the standard options
+	 *            a hashmap with jdo and jpox options which can be used to override the standard
+	 *            options
 	 * @return the created persistence manager factory
 	 * 
-	 * public synchronized PersistenceManagerFactory createRegisterPersistenceManagerFactory(String name, EPackage[]
-	 * epackages, String dbDriver, String dbUrl, String dbUser, String dbPwd, String dbName, Map specificOptions) {
-	 * Properties properties = new Properties();
+	 * public synchronized PersistenceManagerFactory createRegisterPersistenceManagerFactory(String
+	 * name, EPackage[] epackages, String dbDriver, String dbUrl, String dbUser, String dbPwd,
+	 * String dbName, Map specificOptions) { Properties properties = new Properties();
 	 * properties.setProperty(PMFConfiguration.JDO_DATASTORE_DRIVERNAME_PROPERTY, dbDriver);
 	 * properties.setProperty(PMFConfiguration.JDO_DATASTORE_URL_PROPERTY, dbUrl);
 	 * properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, dbUser);
@@ -206,11 +221,13 @@ public class JpoxHelper {
 	 * //properties.setProperty(PMFConfiguration.JDO_DETACHONCLOSE_PROPERTY,"true");
 	 * //properties.setProperty(PMFConfiguration.JDO_DETACHALLONCOMMIT_PROPERTY,"true");
 	 * //properties.setProperty(PMFConfiguration.JDO_CACHE_COLLECTIONS_LAZY_PROPERTY, "true");
-	 * properties.setProperty("javax.jdo.PersistenceManagerFactoryClass", "org.jpox.PersistenceManagerFactoryImpl");
+	 * properties.setProperty("javax.jdo.PersistenceManagerFactoryClass",
+	 * "org.jpox.PersistenceManagerFactoryImpl");
 	 * properties.setProperty(PMFConfiguration.JDO_IGNORECACHE_PROPERTY,"false");
 	 * properties.setProperty(PMFConfiguration.JDO_RETAINVALUES_PROPERTY, "true");
-	 * properties.setProperty(PMFConfiguration.JDO_NONTRANSACTIONAL_READ_PROPERTY, "true"); // set it all to false
-	 * because of performance properties.setProperty(PMFConfiguration.AUTO_CREATE_SCHEMA_PROPERTY, "false");
+	 * properties.setProperty(PMFConfiguration.JDO_NONTRANSACTIONAL_READ_PROPERTY, "true"); // set
+	 * it all to false because of performance
+	 * properties.setProperty(PMFConfiguration.AUTO_CREATE_SCHEMA_PROPERTY, "false");
 	 * properties.setProperty(PMFConfiguration.AUTO_CREATE_CONSTRAINTS_PROPERTY, "false");
 	 * properties.setProperty(PMFConfiguration.AUTO_CREATE_SCHEMA_PROPERTY, "false");
 	 * properties.setProperty(PMFConfiguration.AUTO_CREATE_TABLES_PROPERTY, "false");
@@ -220,13 +237,15 @@ public class JpoxHelper {
 	 * 
 	 * properties.setProperty(PMFConfiguration.CACHE_LEVEL_1_TYPE_PROPERTY,
 	 * "org.eclipse.emf.teneo.jpox.cache.EMFWeakRefCache");
-	 * properties.setProperty(PMFConfiguration.DEFAULT_INHERITANCE_STRATEGY_PROPERTY, defaultInheritanceStrategy);
-	 * properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY, jdoFileExtension);
+	 * properties.setProperty(PMFConfiguration.DEFAULT_INHERITANCE_STRATEGY_PROPERTY,
+	 * defaultInheritanceStrategy);
+	 * properties.setProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY,
+	 * jdoFileExtension);
 	 * 
-	 * //properties.setProperty("org.jpox.rdbms.dateTimezone", "Europe/Amsterdam"); // override the defaults
-	 * properties.putAll(specificOptions); // added to enable easy testing of optimistic transactions, not very elegant
-	 * but effective if (optimisticTransactions) { properties.setProperty(PMFConfiguration.JDO_OPTIMISTIC_PROPERTY,
-	 * "true"); }
+	 * //properties.setProperty("org.jpox.rdbms.dateTimezone", "Europe/Amsterdam"); // override the
+	 * defaults properties.putAll(specificOptions); // added to enable easy testing of optimistic
+	 * transactions, not very elegant but effective if (optimisticTransactions) {
+	 * properties.setProperty(PMFConfiguration.JDO_OPTIMISTIC_PROPERTY, "true"); }
 	 * 
 	 * //properties.setProperty("org.jpox.delayDatastoreOperationsUntilCommit","true");
 	 * //properties.setProperty("org.jpox.cache.level2.type", "org.jpox.cache.DefaultLevel2Cache");

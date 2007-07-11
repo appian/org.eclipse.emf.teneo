@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.6 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.7 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -22,24 +22,18 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
-import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class EmbeddedMapper extends AbstractMapper {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(EmbeddedMapper.class);
-
-	/** Constructor */
-	public EmbeddedMapper(MappingContext mappingContext) {
-		super(mappingContext);
-	}
 
 	/** Handles a normal basic attribute */
 	public void map(PAnnotatedEReference aReference, Element fieldElement) {
@@ -53,7 +47,7 @@ public class EmbeddedMapper extends AbstractMapper {
 			Element embeddedElement = fieldElement.addElement("embedded");
 			if (eReference.getEOpposite() != null) {
 				embeddedElement.addAttribute("owner-field", namingHandler.correctName(mappingContext, eReference
-						.getEOpposite()));
+					.getEOpposite()));
 			}
 
 			// now map the embedded class

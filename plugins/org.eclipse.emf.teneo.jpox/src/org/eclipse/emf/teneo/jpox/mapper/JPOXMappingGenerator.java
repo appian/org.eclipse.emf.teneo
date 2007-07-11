@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.13 2007/06/29 07:32:02 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.14 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -33,7 +33,9 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
-import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -42,10 +44,10 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
-public class JPOXMappingGenerator {
+public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAware {
 
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(JPOXMappingGenerator.class);
@@ -60,20 +62,21 @@ public class JPOXMappingGenerator {
 	private MappingContext mappingContext;
 
 	/** The version column name */
-	private final String versionColumnName;
+	private String versionColumnName;
 
-	/** The eclass naming strategy */
-	private EntityNameStrategy entityNameStrategy;
+	/** The extensionManager */
+	private ExtensionManager extensionManager;
 
-	/** The constructor, creates all mappers etc. */
-	public JPOXMappingGenerator(PersistenceOptions po) {
+	/** Set some persistence options */
+	public void setPersistenceOptions(PersistenceOptions po) {
 		versionColumnName = po.getVersionColumnName();
-		entityNameStrategy = po.getEntityNameStrategy();
-		mappingContext = new MappingContext(entityNameStrategy);
 	}
 
 	/** Method gets a created annotatedModel and creates a jpox mapping file */
 	public synchronized String generate(PAnnotatedModel annotatedModel) {
+		mappingContext = getExtensionManager().getExtension(MappingContext.class);
+		mappingContext.setPaModel(annotatedModel);
+
 		// create the result xml
 		Document mappingDoc = new Document();
 
@@ -168,8 +171,8 @@ public class JPOXMappingGenerator {
 
 		Class implClass = ERuntime.INSTANCE.getJavaClass(eclass);
 		if (implClass == null) {
-			log.warn("EClass " + eclass.getName() + " does not have a concrete representation. "
-					+ "This is not a problem for abstract eclasses");
+			log.warn("EClass " + eclass.getName() + " does not have a concrete representation. " +
+					"This is not a problem for abstract eclasses");
 			return;
 		}
 
@@ -257,8 +260,7 @@ public class JPOXMappingGenerator {
 	}
 
 	/**
-	 * Collect the implemented interfaces minus the interfaces implemented by
-	 * mapped superclasses.
+	 * Collect the implemented interfaces minus the interfaces implemented by mapped superclasses.
 	 */
 	private void collectImplements(PAnnotatedEClass aClass, ArrayList result) {
 		collectImplements(aClass.getAnnotatedEClass().getInstanceClass(), result);
@@ -286,9 +288,17 @@ public class JPOXMappingGenerator {
 	}
 
 	/**
-	 * @return the eclassNameStrategy
+	 * @return the extensionManager
 	 */
-	public EntityNameStrategy getEntityNameStrategy() {
-		return entityNameStrategy;
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.16 2007/07/04 19:29:14 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.17 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -52,11 +52,13 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.jpox.cache.EMFHardRefCache;
 import org.eclipse.emf.teneo.jpox.cache.EMFNullCache;
 import org.eclipse.emf.teneo.jpox.cache.EMFSoftRefCache;
@@ -100,10 +102,10 @@ import org.w3c.dom.NodeList;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $ $Date: 2007/07/04 19:29:14 $
+ * @version $Revision: 1.17 $ $Date: 2007/07/11 14:43:06 $
  */
 
-public class JpoxDataStore {
+public class JpoxDataStore implements DataStore {
 	/** The logger */
 	private static final Log log = LogFactory.getLog(JpoxDataStore.class);
 
@@ -136,6 +138,9 @@ public class JpoxDataStore {
 
 	/** Keeps track if the schema should be updated */
 	private boolean updateSchema = false;
+
+	/** The extensionManager */
+	private ExtensionManager extensionManager;
 
 	/** The constructor, fills the default properties */
 	JpoxDataStore() {
@@ -1110,5 +1115,20 @@ public class JpoxDataStore {
 		log.debug("Option updateschema: " + updateSchema);
 
 		havePropertiesBeenSet = true;
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
 	}
 }

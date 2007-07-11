@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyBasicMapper.java,v 1.6 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: ManyBasicMapper.java,v 1.7 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
-import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.jpox.mapper.MappingUtil;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeObject;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -36,27 +35,23 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class ManyBasicMapper extends AbstractMapper {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(ManyBasicMapper.class);
 
-	/** Constructor */
-	public ManyBasicMapper(MappingContext mappingContext) {
-		super(mappingContext);
-	}
-
 	/** Handles a many attribute */
 	public void map(PAnnotatedEAttribute aAttribute, Element eclassElement) {
 		log.debug("Processing one to many attribute: " + aAttribute.getAnnotatedElement().getName());
 		Element field = eclassElement.addElement("field");
-		field.addAttribute("name", namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement())).addAttribute(
-				"persistence-modifier", "persistent");
+		field.addAttribute("name",
+			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement()))
+			.addAttribute("persistence-modifier", "persistent");
 
 		EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();
-        final boolean isArray = eAttribute.getEType().getInstanceClass() != null
-			&& eAttribute.getEType().getInstanceClass().isArray();
+		final boolean isArray =
+				eAttribute.getEType().getInstanceClass() != null && eAttribute.getEType().getInstanceClass().isArray();
 
 		if (isArray) {
 			// handle arrays differently
@@ -84,7 +79,7 @@ public class ManyBasicMapper extends AbstractMapper {
 				elemType = getObjectClassName(elemType);
 			}
 			Element collection = field.addElement("collection").addAttribute("element-type", elemType);
-			
+
 			MappingUtil.addEagerLazyLoading(collection, aAttribute.getOneToMany().getFetch());
 
 			// forces the elements to be placed in their own join table
@@ -94,23 +89,38 @@ public class ManyBasicMapper extends AbstractMapper {
 				MappingUtil.addAnytypeMapping(field);
 			}
 		}
-		
+
 		Element order = field.addElement("order");
 		order.addAttribute("column", namingHandler.getUniqueIndexColumnName(eAttribute));
 	}
-	
-	/** Translate a primitive type name to its corresponding java Object name 
-	 * TODO: is there really no jdk function which does this?
-	 * */
+
+	/**
+	 * Translate a primitive type name to its corresponding java Object name TODO: is there really
+	 * no jdk function which does this?
+	 */
 	private String getObjectClassName(String primitive) {
-		if (primitive.compareTo("boolean") == 0) return Boolean.class.getName();
-		if (primitive.compareTo("int") == 0) return Integer.class.getName();
-		if (primitive.compareTo("long") == 0) return Long.class.getName();
-		if (primitive.compareTo("float") == 0) return Float.class.getName();
-		if (primitive.compareTo("double") == 0) return Double.class.getName();
-		if (primitive.compareTo("short") == 0) return Short.class.getName();
-		if (primitive.compareTo("dateTime") == 0) return Date.class.getName();
-		
+		if (primitive.compareTo("boolean") == 0) {
+			return Boolean.class.getName();
+		}
+		if (primitive.compareTo("int") == 0) {
+			return Integer.class.getName();
+		}
+		if (primitive.compareTo("long") == 0) {
+			return Long.class.getName();
+		}
+		if (primitive.compareTo("float") == 0) {
+			return Float.class.getName();
+		}
+		if (primitive.compareTo("double") == 0) {
+			return Double.class.getName();
+		}
+		if (primitive.compareTo("short") == 0) {
+			return Short.class.getName();
+		}
+		if (primitive.compareTo("dateTime") == 0) {
+			return Date.class.getName();
+		}
+
 		log.debug(primitive + " could not be translated to its Object type, returning passed value");
 		return primitive;
 	}

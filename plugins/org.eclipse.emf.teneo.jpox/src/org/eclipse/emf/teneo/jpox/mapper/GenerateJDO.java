@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenerateJDO.java,v 1.7 2007/06/29 07:32:02 mtaal Exp $
+ * $Id: GenerateJDO.java,v 1.8 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -34,12 +34,16 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionUtil;
 
 /**
- * Class is responsible for generating the jdo file. Is run through a launcher therefore the main methods.
+ * Class is responsible for generating the jdo file. Is run through a launcher therefore the main
+ * methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class GenerateJDO {
@@ -60,19 +64,20 @@ public class GenerateJDO {
 				options.put(keyValue[0], keyValue[1]);
 			} else if (args[i].startsWith("-")) { // epackage classnames
 				final String[] epacks = args[i].substring(1).split(",");
-				
+
 				// the epackages load them all, hope for the best
 				// when loading the epackage should be loaded
-				for (int p = 0; p < epacks.length; p++) {
+				for (String element : epacks) {
 					try {
-						log.debug("Loading class " + epacks[p] + " should be an epackage");
-						
-						Class epack = Class.forName(epacks[p]);
+						log.debug("Loading class " + element + " should be an epackage");
+
+						Class epack = Class.forName(element);
 						if (!EPackage.class.isAssignableFrom(epack)) {
-							log.warn("JDO generator found " + epack.getName() + " but this is not an EPackage, ignoring it");
+							log.warn("JDO generator found " + epack.getName() +
+									" but this is not an EPackage, ignoring it");
 						}
 					} catch (Throwable t) { // ignore everything but log it
-						log.error("Exception while instantiating " + epacks[p], t);
+						log.error("Exception while instantiating " + element, t);
 					}
 				}
 			} else {
@@ -80,11 +85,24 @@ public class GenerateJDO {
 			}
 		}
 
-		createORMapperFile(targetFileName, (String[])ecores.toArray(new String[ecores.size()]), options);
+		createORMapperFile(targetFileName, (String[]) ecores.toArray(new String[ecores.size()]), options);
+	}
+
+	/** Creates the mapping file. Uses the default ExtensionManager */
+	private static void createORMapperFile(String targetFileName, String[] ecores, Properties options) {
+		createORMapperFile(targetFileName, ecores, options, new DefaultExtensionManager());
 	}
 
 	/** Creates the mapping file */
-	private static void createORMapperFile(String targetFileName, String[] ecores, Properties options) {
+	private static void createORMapperFile(String targetFileName, String[] ecores, Properties options,
+			ExtensionManager extensionManager) {
+
+		// register the default extensions
+		extensionManager.registerExtension(ExtensionUtil.createExtension(JPOXMappingGenerator.class,
+			JPOXMappingGenerator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(JPOXMappingGenerator.class,
+			JPOXMappingGenerator.class));
+
 		try {
 			// get the first ecore file
 			File firstEcore = new File(ecores[0]);
@@ -92,7 +110,9 @@ public class GenerateJDO {
 			final File archiveFile = new File(firstEcore.getParentFile(), targetFileName + "_old");
 
 			if (file.exists()) {
-				if (archiveFile.exists()) archiveFile.delete();
+				if (archiveFile.exists()) {
+					archiveFile.delete();
+				}
 				copyFile(file, archiveFile);
 				file.delete();
 			}
@@ -102,8 +122,10 @@ public class GenerateJDO {
 			ERuntime.setAsEModelResolver();
 
 			final PersistenceOptions po = new PersistenceOptions(options);
-			final PAnnotatedModel paModel = PersistenceMappingBuilder.INSTANCE.buildMapping(ecores, po);
-			final JPOXMappingGenerator jmg = new JPOXMappingGenerator(new PersistenceOptions());
+			final PersistenceMappingBuilder pmb = extensionManager.getExtension(PersistenceMappingBuilder.class);
+			final PAnnotatedModel paModel = pmb.buildMapping(ecores, po, extensionManager);
+			final JPOXMappingGenerator jmg = extensionManager.getExtension(JPOXMappingGenerator.class);
+			jmg.setPersistenceOptions(new PersistenceOptions());
 			final FileWriter writer = new FileWriter(file);
 			writer.write(jmg.generate(paModel));
 			writer.flush();
@@ -116,7 +138,9 @@ public class GenerateJDO {
 
 	/** Copies a file */
 	public static void copyFile(File src, File dst) throws IOException {
-		if (!dst.exists()) dst.createNewFile();
+		if (!dst.exists()) {
+			dst.createNewFile();
+		}
 
 		InputStream in = new FileInputStream(src);
 		OutputStream out = new FileOutputStream(dst);

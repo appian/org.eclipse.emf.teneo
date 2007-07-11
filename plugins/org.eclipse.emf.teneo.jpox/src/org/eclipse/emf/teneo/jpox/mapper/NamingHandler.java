@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: NamingHandler.java,v 1.4 2007/04/07 12:42:47 mtaal Exp $
+ * $Id: NamingHandler.java,v 1.5 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -23,16 +23,17 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.ERuntime;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
- * Can be used to create names of columns/tables on the basis of the class/feature name. Ensures unique names accross tables and
- * databases.
+ * Can be used to create names of columns/tables on the basis of the class/feature name. Ensures
+ * unique names accross tables and databases.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
-public class NamingHandler {
+public class NamingHandler implements ExtensionPoint {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(NamingHandler.class);
 
@@ -61,37 +62,45 @@ public class NamingHandler {
 	}
 
 	/**
-	 * Check if the name of the structural feature exists as a field, if not find the correct name. TODO: replace this with the logic
-	 * used by emf to handle casing of feature names to java members
+	 * Check if the name of the structural feature exists as a field, if not find the correct name.
+	 * TODO: replace this with the logic used by emf to handle casing of feature names to java
+	 * members
 	 */
 	public String correctName(Class implClass, EStructuralFeature efeature) {
 		String featureName = efeature.getName();
 		Field[] fields = implClass.getDeclaredFields();
-		for (int i = 0; i < fields.length; i++) {
-			log.debug(fields[i].getName() + "-" + efeature.getName());
-			if (fields[i].getName().compareTo(featureName) == 0) return fields[i].getName();
+		for (Field element : fields) {
+			log.debug(element.getName() + "-" + efeature.getName());
+			if (element.getName().compareTo(featureName) == 0) {
+				return element.getName();
+			}
 		}
 
-		for (int i = 0; i < fields.length; i++) {
-			log.debug(fields[i].getName() + "-" + efeature.getName());
-			if (fields[i].getName().compareToIgnoreCase(featureName) == 0) return fields[i].getName();
+		for (Field element : fields) {
+			log.debug(element.getName() + "-" + efeature.getName());
+			if (element.getName().compareToIgnoreCase(featureName) == 0) {
+				return element.getName();
+			}
 		}
 
 		// handle reserved words
 		featureName += "_";
-		for (int i = 0; i < fields.length; i++) {
-			log.debug(fields[i].getName() + "-" + efeature.getName());
-			if (fields[i].getName().compareToIgnoreCase(featureName) == 0) return fields[i].getName();
+		for (Field element : fields) {
+			log.debug(element.getName() + "-" + efeature.getName());
+			if (element.getName().compareToIgnoreCase(featureName) == 0) {
+				return element.getName();
+			}
 		}
-		
-		log.error("The structural feature: " + efeature.getName() + "/" + efeature.getEContainingClass().getName()
-				+ " does not have a corresponding java member in " + implClass.getName());
+
+		log.error("The structural feature: " + efeature.getName() + "/" + efeature.getEContainingClass().getName() +
+				" does not have a corresponding java member in " + implClass.getName());
 		return "";
 	}
 
 	/**
-	 * Check if the name of the structural feature exists as a field, if not find the correct name. TODO: replace this with the logic
-	 * used by emf to handle casing of feature names to java members
+	 * Check if the name of the structural feature exists as a field, if not find the correct name.
+	 * TODO: replace this with the logic used by emf to handle casing of feature names to java
+	 * members
 	 */
 	public String correctName(MappingContext mc, EStructuralFeature efeature) {
 		Class implClass = ERuntime.INSTANCE.getJavaClass(mc.getCurrentAClass().getAnnotatedEClass());

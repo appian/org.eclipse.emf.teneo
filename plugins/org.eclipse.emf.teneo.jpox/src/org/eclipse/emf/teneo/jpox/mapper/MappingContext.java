@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingContext.java,v 1.7 2007/06/29 07:32:02 mtaal Exp $
+ * $Id: MappingContext.java,v 1.8 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -25,6 +25,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.annotations.mapper.AbstractProcessingContext;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.extension.ExtensionInitializable;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.jpox.mapper.association.EmbeddedMapper;
 import org.eclipse.emf.teneo.jpox.mapper.association.ManyToManyMapper;
 import org.eclipse.emf.teneo.jpox.mapper.association.ManyToOneMapper;
@@ -44,10 +49,12 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
  * Contains instances of the mappers used.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
-public class MappingContext extends AbstractProcessingContext {
+public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionManagerAware,
+		ExtensionInitializable {
+
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(MappingContext.class);
 
@@ -81,15 +88,19 @@ public class MappingContext extends AbstractProcessingContext {
 	/** The naming handler */
 	private NamingHandler namingHandler;
 
+	/** The pannotated model for which this is done */
+	private PAnnotatedModel paModel;
+
 	/**
-	 * The stack of current features to map, note an arraylist is used because sometimes it is required to search one or two levels
-	 * down in the stack to search for attribute overrides
+	 * The stack of current features to map, note an arraylist is used because sometimes it is
+	 * required to search one or two levels down in the stack to search for attribute overrides
 	 */
 	private Stack mappedEFeatures = new Stack();
 
 	/**
-	 * The current element being mapped, this element is not on the stack! This is so because to handle attributeoverrides the parent
-	 * of the current feature should be used this one is on the stack.
+	 * The current element being mapped, this element is not on the stack! This is so because to
+	 * handle attributeoverrides the parent of the current feature should be used this one is on the
+	 * stack.
 	 */
 	private PAnnotatedEStructuralFeature currentAFeature = null;
 
@@ -120,23 +131,35 @@ public class MappingContext extends AbstractProcessingContext {
 	/** Force optional, in case of singletable */
 	private boolean forceOptional = false;
 
-	/** The constructor, creates all mappers etc. */
-	public MappingContext(EntityNameStrategy entityNameStrategy) {
-		this.entityNameStrategy = entityNameStrategy;
-		namingHandler = new NamingHandler();
-		otmMapper = new OneToManyMapper(this);
-		mtmMapper = new ManyToManyMapper(this);
-		otoMapper = new OneToOneMapper(this);
-		mtoMapper = new ManyToOneMapper(this);
-		inheritanceMapper = new InheritanceMapper(this);
-		columnMapper = new ColumnMapper(this);
-		idMapper = new IdMapper(this);
-		basicMapper = new BasicMapper(this);
-		manyBasicMapper = new ManyBasicMapper(this);
-		eClassFeatureMapper = new EClassFeatureMapper(this);
-		embeddedMapper = new EmbeddedMapper(this);
-		jcMapper = new JoinColumnMapper(this);
-		tableMapper = new TableMapper(this);
+	/** The extensionManager */
+	private ExtensionManager extensionManager;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.extension.ExtensionInitializable#initializeExtension()
+	 */
+	public void initializeExtension() {
+		namingHandler = getExtensionManager().getExtension(NamingHandler.class);
+		otmMapper = createMapper(OneToManyMapper.class);
+		mtmMapper = createMapper(ManyToManyMapper.class);
+		otoMapper = createMapper(OneToOneMapper.class);
+		mtoMapper = createMapper(ManyToOneMapper.class);
+		inheritanceMapper = createMapper(InheritanceMapper.class);
+		columnMapper = createMapper(ColumnMapper.class);
+		idMapper = createMapper(IdMapper.class);
+		basicMapper = createMapper(BasicMapper.class);
+		manyBasicMapper = createMapper(ManyBasicMapper.class);
+		eClassFeatureMapper = createMapper(EClassFeatureMapper.class);
+		embeddedMapper = createMapper(EmbeddedMapper.class);
+		jcMapper = createMapper(JoinColumnMapper.class);
+		tableMapper = createMapper(TableMapper.class);
+	}
+
+	protected <T> T createMapper(Class<T> clz) {
+		final T t = getExtensionManager().getExtension(clz);
+		((AbstractMapper) t).setMappingContext(this);
+		return t;
 	}
 
 	/**
@@ -217,7 +240,8 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/**
-	 * Notifies that a certain feature is being mapped, the feature is pushed on the stack. This is used to handle attributeoverrides
+	 * Notifies that a certain feature is being mapped, the feature is pushed on the stack. This is
+	 * used to handle attributeoverrides
 	 */
 	public void startMapping(PAnnotatedEStructuralFeature annotatedFeature) {
 		mappedEFeatures.push(currentAFeature);
@@ -265,7 +289,8 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/**
-	 * @param currentAClass the currentAClass to set
+	 * @param currentAClass
+	 *            the currentAClass to set
 	 */
 	public void setCurrentAClass(PAnnotatedEClass currentAClass) {
 		this.currentAClass = currentAClass;
@@ -275,6 +300,11 @@ public class MappingContext extends AbstractProcessingContext {
 	 * @return the eclassNameStrategy
 	 */
 	public EntityNameStrategy getEntityNameStrategy() {
+		if (entityNameStrategy == null) {
+			entityNameStrategy = getExtensionManager().getExtension(EntityNameStrategy.class);
+			entityNameStrategy.setPaModel(getPaModel());
+
+		}
 		return entityNameStrategy;
 	}
 
@@ -286,7 +316,8 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/**
-	 * @param epackages the epackages to set
+	 * @param epackages
+	 *            the epackages to set
 	 */
 	public void setEpackages(EPackage[] epackages) {
 		this.epackages = epackages;
@@ -300,9 +331,40 @@ public class MappingContext extends AbstractProcessingContext {
 	}
 
 	/**
-	 * @param forceOptional the forceOptional to set
+	 * @param forceOptional
+	 *            the forceOptional to set
 	 */
 	public void setForceOptional(boolean forceOptional) {
 		this.forceOptional = forceOptional;
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
+	}
+
+	/**
+	 * @return the paModel
+	 */
+	public PAnnotatedModel getPaModel() {
+		return paModel;
+	}
+
+	/**
+	 * @param paModel
+	 *            the paModel to set
+	 */
+	public void setPaModel(PAnnotatedModel paModel) {
+		this.paModel = paModel;
 	}
 }

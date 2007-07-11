@@ -11,22 +11,23 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractMapper.java,v 1.2 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: AbstractMapper.java,v 1.3 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
-public class AbstractMapper {
+public class AbstractMapper implements ExtensionPoint {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(AbstractMapper.class);
 
@@ -36,8 +37,18 @@ public class AbstractMapper {
 	/** The mappingcontext */
 	protected MappingContext mappingContext;
 
-	/** Constructor */
-	public AbstractMapper(MappingContext mappingContext) {
+	/**
+	 * @return the mappingContext
+	 */
+	public MappingContext getMappingContext() {
+		return mappingContext;
+	}
+
+	/**
+	 * @param mappingContext
+	 *            the mappingContext to set
+	 */
+	public void setMappingContext(MappingContext mappingContext) {
 		this.namingHandler = mappingContext.getNamingHandler();
 		this.mappingContext = mappingContext;
 	}

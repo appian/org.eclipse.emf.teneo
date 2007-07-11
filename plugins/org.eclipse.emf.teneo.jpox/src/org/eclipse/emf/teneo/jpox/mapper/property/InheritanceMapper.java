@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: InheritanceMapper.java,v 1.8 2007/07/04 19:29:14 mtaal Exp $
+ * $Id: InheritanceMapper.java,v 1.9 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -23,24 +23,18 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
-import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class InheritanceMapper extends AbstractMapper {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(InheritanceMapper.class);
-
-	/** Constructor */
-	public InheritanceMapper(MappingContext mappingContext) {
-		super(mappingContext);
-	}
 
 	/** Sets the inheritance strategy of the aclass and handles discriminator columns etc. */
 	public void map(PAnnotatedEClass aClass, Element classElement) {
@@ -60,9 +54,9 @@ public class InheritanceMapper extends AbstractMapper {
 			log.debug("Inheritance mapping " + inheritance.getStrategy().getName());
 
 			if (aClass.getPaSuperEntity() != null && aClass.getPaSuperEntity().getMappedSuperclass() == null) { // superclass
-																												// for
-																												// a
-																												// subclass
+				// for
+				// a
+				// subclass
 
 				log.debug("Has superclasses therefore: superclass-table");
 
@@ -104,7 +98,10 @@ public class InheritanceMapper extends AbstractMapper {
 		}
 	}
 
-	/** Returns the inheritance of an annotated superclass of a passed aclass, returns null if not found */
+	/**
+	 * Returns the inheritance of an annotated superclass of a passed aclass, returns null if not
+	 * found
+	 */
 	private Inheritance getInheritance(PAnnotatedEClass childPA) {
 		if (childPA.getInheritance() != null) {
 			return childPA.getInheritance();

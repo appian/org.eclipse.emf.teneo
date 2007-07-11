@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class MappingUtil {
@@ -39,7 +39,7 @@ public class MappingUtil {
 
 	/** Returns the impl class name of an eclass */
 	public static String getImplNameOfEClass(String eClassURI, MappingContext mappingContext) {
-		final EClass eclass = mappingContext.getEntityNameStrategy().toEClass(eClassURI, mappingContext.getEpackages());
+		final EClass eclass = mappingContext.getEntityNameStrategy().toEClass(eClassURI);
 		if (eclass == null) {
 			throw new JPOXMappingException("Uri: " + eClassURI + " does not translate to an eclass");
 		}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.6 2007/03/29 22:13:44 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.7 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -24,34 +24,29 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
-import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class BasicMapper extends AbstractMapper {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(BasicMapper.class);
 
-	/** Constructor */
-	public BasicMapper(MappingContext mappingContext) {
-		super(mappingContext);
-	}
-
 	/** Handles a normal basic attribute */
 	public void map(PAnnotatedEAttribute aAttribute, Element eclassElement) {
 		log.debug("Processing basic field: " + aAttribute.getAnnotatedElement().getName());
 		Element field = eclassElement.addElement("field");
-		field.addAttribute("name", namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement())).addAttribute(
-				"persistence-modifier", "persistent");
-		
+		field.addAttribute("name",
+			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement()))
+			.addAttribute("persistence-modifier", "persistent");
+
 		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
-		
+
 		// special case
 		if (eAttribute.getEType().getInstanceClass() != null && eAttribute.getEType().getInstanceClass().isArray()) {
 			// handle arrays differently
@@ -59,33 +54,38 @@ public class BasicMapper extends AbstractMapper {
 			field.addElement("array").addAttribute("embedded-element", "true");
 			return; // and return from here
 		}
-		
+
 		// handle the column
 		Column overridden = mappingContext.getOverride(aAttribute);
 		if (overridden != null) {
 			mappingContext.getColumnMapper().map(overridden, field);
 		} else if (aAttribute.getColumn() != null) {
 			mappingContext.getColumnMapper().map(aAttribute.getColumn(), field);
-		} else if (mappingContext.getEmbeddingFeature() != null) { //embedded at least override
+		} else if (mappingContext.getEmbeddingFeature() != null) { // embedded at least override
 			final PAnnotatedEReference pae = mappingContext.getEmbeddingFeature();
-			final String name = pae.getAnnotatedEReference().getName() + "_" + aAttribute.getAnnotatedEAttribute().getName() + "_ID";
+			final String name =
+					pae.getAnnotatedEReference().getName() + "_" + aAttribute.getAnnotatedEAttribute().getName() +
+							"_ID";
 			field.addAttribute("column", name);
 		}
- 
+
 		// note defaults are handled by emf, so therefore no null-value=default
-		field.addAttribute("null-value", (mappingContext.isForceOptional() || aAttribute.getBasic().isOptional() ? "none" : "exception"));
+		field.addAttribute("null-value", (mappingContext.isForceOptional() || aAttribute.getBasic().isOptional()
+				? "none" : "exception"));
 		Class instanceClass = eAttribute.getEAttributeType().getInstanceClass();
 
 		if (Object.class.equals(instanceClass)) {
 			// add embedded if not part of the java.lang package or if it's the java.lang.Object
-			// is done to prevent jpox from incorrectly thinking that custom types are reference types
+			// is done to prevent jpox from incorrectly thinking that custom types are reference
+			// types
 			// TODO: what to do about interfaces?
 			// field.addAttribute("embedded", "true");
 			field.addAttribute("serialized", "true");
-		} else if (instanceClass.getName().indexOf(".") != -1 && 
+		} else if (instanceClass.getName().indexOf(".") != -1 &&
 				!Object.class.getPackage().equals(instanceClass.getPackage())) {
 			// add embedded if not part of the java.lang package or if it's the java.lang.Object
-			// is done to prevent jpox from incorrectly thinking that custom types are reference types
+			// is done to prevent jpox from incorrectly thinking that custom types are reference
+			// types
 			// TODO: what to do about interfaces?
 			field.addAttribute("embedded", "true");
 		}
@@ -93,11 +93,11 @@ public class BasicMapper extends AbstractMapper {
 		// handle the case of the isset members
 		if (aAttribute.requiresIsSetMapping()) {
 			eclassElement.addElement("field").addAttribute("name", eAttribute.getName() + "ESet").addAttribute(
-					"persistence-modifier", "persistent");
+				"persistence-modifier", "persistent");
 		}
-		
-		//if (false && aAttribute.getAnnotatedEAttribute().isUnique()) {
-		//	field.addElement("unique");
-		//}
+
+		// if (false && aAttribute.getAnnotatedEAttribute().isUnique()) {
+		// field.addElement("unique");
+		// }
 	}
 }

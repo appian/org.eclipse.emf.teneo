@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AssociationMapper.java,v 1.4 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: AssociationMapper.java,v 1.5 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
-import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.jpox.mapper.MappingUtil;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -30,17 +29,12 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class AssociationMapper extends AbstractMapper {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(AssociationMapper.class);
-
-	/** Constructor */
-	public AssociationMapper(MappingContext mappingContext) {
-		super(mappingContext);
-	}
 
 	/** Sets common reference field attributes */
 	protected void setCommonReferenceAttributes(Element fieldElement, PAnnotatedEReference aReference,
@@ -49,12 +43,15 @@ public class AssociationMapper extends AbstractMapper {
 
 		boolean isWildcard = MappingUtil.isWildcard(eReference);
 
-		// note wildcard does not require dependent because these are always embedded (which is also dependent)
+		// note wildcard does not require dependent because these are always embedded (which is also
+		// dependent)
 		// our experience showed that if dependent is set on wildcard that errors occur in jpox.
 		if (cascadeRemove) {
 			fieldElement.addAttribute("dependent", "true");
-		} else if (FeatureMapUtil.isFeatureMap(eReference) && !isWildcard) { // featuremap entries are always
-																				// dependent
+		} else if (FeatureMapUtil.isFeatureMap(eReference) && !isWildcard) { // featuremap
+																				// entries are
+																				// always
+			// dependent
 			fieldElement.addAttribute("dependent", "true");
 		} else if (eReference.isContainment() && !isWildcard) {
 			// dependent if containment and it is a single reference field (not multi)

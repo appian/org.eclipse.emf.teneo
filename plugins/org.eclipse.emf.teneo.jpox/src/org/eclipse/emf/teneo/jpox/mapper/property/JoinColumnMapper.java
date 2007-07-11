@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JoinColumnMapper.java,v 1.3 2007/02/01 12:36:36 mtaal Exp $
+ * $Id: JoinColumnMapper.java,v 1.4 2007/07/11 14:43:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -23,7 +23,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
-import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -31,17 +30,12 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps the column annotation to a jpox representation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class JoinColumnMapper extends AbstractMapper {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(JoinColumnMapper.class);
-
-	/** Constructor */
-	public JoinColumnMapper(MappingContext mappingContext) {
-		super(mappingContext);
-	}
 
 	/** Handles a JoinColumns object */
 	public void map(List joinColumns, Element fieldElement) {
