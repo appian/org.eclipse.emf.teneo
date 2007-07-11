@@ -33,7 +33,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.42 $
+ * @version $Revision: 1.43 $
  */
 public class JPOXTestbed extends Testbed {
 
@@ -184,9 +184,10 @@ public class JPOXTestbed extends Testbed {
 			}
 
 			options.put(PersistenceOptions.INHERITANCE_MAPPING, inheritanceType.getName());
-			options.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
 
 			options.putAll(test.getExtraConfigurationProperties());
+
+			options.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
 
 			// options.put(PersistenceOptions.QUALIFY_ENTITY_NAME,
 			// PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);

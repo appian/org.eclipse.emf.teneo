@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.5 2007/03/21 15:46:24 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.6 2007/07/11 22:17:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -41,18 +41,20 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class AllGenerateTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
-				JPOXTestbed.instance().getConfigurations());
-		suite.addTest(new JPOXGenerateTest(SimplefeaturemapAction.class));
+		TestSuite suite =
+				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", JPOXTestbed
+					.instance().getConfigurations());
 
 		suite.addTest(new JPOXGenerateTest(EMapAction.class));
-
 		suite.addTest(new JPOXGenerateTest(SimpleTypeAction.class));
+
+		suite.addTest(new JPOXGenerateTest(SimplefeaturemapAction.class));
+
 		suite.addTest(new JPOXGenerateTest(ListAction.class));
 		suite.addTest(new JPOXGenerateTest(ListUnionAction.class));
 		suite.addTest(new JPOXGenerateTest(EcoreAttrsAction.class));
