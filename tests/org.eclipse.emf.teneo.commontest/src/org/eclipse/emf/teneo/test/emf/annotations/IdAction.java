@@ -11,6 +11,7 @@ package org.eclipse.emf.teneo.test.emf.annotations;
 import java.util.HashMap;
 import java.util.List;
 
+import org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdentityID;
@@ -24,7 +25,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class IdAction extends AbstractTestAction {
 	/** How many test objects are created */
@@ -50,6 +51,11 @@ public class IdAction extends AbstractTestAction {
 				store.store(factory.createTableID());
 				store.store(factory.createSimpleID());
 				store.store(factory.createTableGeneratorID());
+
+				final AutoID aid = factory.createAutoID();
+				aid.setName("autoid" + i);
+				store.store(aid);
+
 			}
 			store.commitTransaction();
 		}
@@ -87,6 +93,16 @@ public class IdAction extends AbstractTestAction {
 			for (final Object element : list) {
 				final TableGeneratorID sid = (TableGeneratorID) element;
 				testMap.put(new Long(sid.getMyid()), sid);
+			}
+			assertEquals(NO_TEST_OBJECTS, testMap.size());
+
+			list = store.getObjects(AutoID.class);
+			testMap = new HashMap<Long, Object>();
+			int i = 0;
+			for (final Object element : list) {
+				final AutoID aid = (AutoID) element;
+				assertEquals("autoid" + (i++), aid.getName());
+				testMap.put(new Long(aid.getAutoID()), aid);
 			}
 			assertEquals(NO_TEST_OBJECTS, testMap.size());
 			store.commitTransaction();
