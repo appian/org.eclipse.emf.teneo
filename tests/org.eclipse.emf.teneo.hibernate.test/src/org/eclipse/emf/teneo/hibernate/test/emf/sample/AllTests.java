@@ -14,7 +14,6 @@ import junit.framework.TestSuite;
 import org.eclipse.emf.teneo.hibernate.test.HibernateTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
-import org.eclipse.emf.teneo.test.emf.sample.DynamicAction;
 import org.eclipse.emf.teneo.test.emf.sample.EcoreAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
@@ -41,7 +40,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.44 $
+ * @version $Revision: 1.45 $
  */
 public class AllTests {
 
@@ -49,6 +48,8 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+
+		suite.addTestSuite(DynamicAction.class);
 
 		suite.addTestSuite(LibraryColLengthAction.class);
 
@@ -69,8 +70,6 @@ public class AllTests {
 		suite.addTestSuite(ExtendedPO2Test.class);
 
 		suite.addTestSuite(RentalMapAsClassAction.class);
-
-		suite.addTestSuite(DynamicAction.class);
 
 		suite.addTestSuite(ProductAction.class);
 
