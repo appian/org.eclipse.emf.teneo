@@ -19,6 +19,7 @@ import org.eclipse.emf.teneo.test.emf.sample.EcoreAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryColLengthAction;
+import org.eclipse.emf.teneo.test.emf.sample.LibraryFKAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryJoinTableNamingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryListAsBagAction;
@@ -40,7 +41,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  */
 public class AllTests {
 
@@ -48,6 +49,10 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+
+		suite.addTestSuite(LibraryColLengthAction.class);
+
+		suite.addTestSuite(LibraryFKAction.class);
 
 		suite.addTestSuite(LibraryTest.class);
 
@@ -62,8 +67,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryJoinTableNamingAction.class);
 
 		suite.addTestSuite(ExtendedPO2Test.class);
-
-		suite.addTestSuite(LibraryColLengthAction.class);
 
 		suite.addTestSuite(RentalMapAsClassAction.class);
 
