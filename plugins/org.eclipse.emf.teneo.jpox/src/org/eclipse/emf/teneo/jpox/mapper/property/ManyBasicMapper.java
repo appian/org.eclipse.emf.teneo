@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyBasicMapper.java,v 1.7 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: ManyBasicMapper.java,v 1.8 2007/07/11 22:17:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class ManyBasicMapper extends AbstractMapper {
 	/** The logger for all these exceptions */
@@ -53,21 +53,26 @@ public class ManyBasicMapper extends AbstractMapper {
 		final boolean isArray =
 				eAttribute.getEType().getInstanceClass() != null && eAttribute.getEType().getInstanceClass().isArray();
 
+		Element join = null;
 		if (isArray) {
 			// handle arrays differently
 			field.addElement("array");
-			field.addElement("join");
+			join = field.addElement("join");
 			field.addElement("element");
+
+			if (aAttribute.getJoinTable() != null && aAttribute.getJoinTable().getName() != null) {
+				join.addAttribute("name", aAttribute.getJoinTable().getName());
+			}
 			return; // and return from here
 		} else if (StoreUtil.isMixed(eAttribute)) {
 			field.addElement("collection").addAttribute("element-type", AnyFeatureMapEntry.class.getName());
-			field.addElement("join");
+			join = field.addElement("join");
 			MappingUtil.addFeatureMapEntryMapping(field);
 		} else if (FeatureMapUtil.isFeatureMap(eAttribute)) {
 			MappingUtil.addGenericFeatureMapEntryMapping(field, aAttribute, aAttribute.getOneToMany().getFetch());
 		} else if (isArray) {
 			field.addElement("array");
-			field.addElement("join");
+			join = field.addElement("join");
 			field.addElement("element");
 		} else {
 			String elemType = aAttribute.getOneToMany().getTargetEntity();
@@ -83,11 +88,15 @@ public class ManyBasicMapper extends AbstractMapper {
 			MappingUtil.addEagerLazyLoading(collection, aAttribute.getOneToMany().getFetch());
 
 			// forces the elements to be placed in their own join table
-			field.addElement("join");
+			join = field.addElement("join");
 
 			if (isAnyType) {
 				MappingUtil.addAnytypeMapping(field);
 			}
+		}
+
+		if (join != null && aAttribute.getJoinTable() != null && aAttribute.getJoinTable().getName() != null) {
+			join.addAttribute("name", aAttribute.getJoinTable().getName());
 		}
 
 		Element order = field.addElement("order");

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.13 2007/07/11 17:14:40 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.14 2007/07/11 22:17:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class OneToManyMapper extends AssociationMapper {
@@ -87,7 +87,7 @@ public class OneToManyMapper extends AssociationMapper {
 						aReference.getEmbedded() != null;
 		if (useJoin) {
 			Element joinElement = field.addElement("join");
-			if (aReference.getJoinTable() != null) {
+			if (aReference.getJoinTable() != null && aReference.getJoinTable().getName() != null) {
 				field.addAttribute("table", aReference.getJoinTable().getName());
 			}
 			if (aReference.getJoinColumns() != null && aReference.getJoinColumns().size() > 0) {
