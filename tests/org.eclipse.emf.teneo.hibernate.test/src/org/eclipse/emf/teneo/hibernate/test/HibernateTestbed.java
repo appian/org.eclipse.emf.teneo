@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.13 2007/07/11 14:42:17 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.14 2007/07/12 18:05:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -24,8 +24,8 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.hibernate.HbConstants;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -91,7 +91,7 @@ public class HibernateTestbed extends Testbed {
 		try {
 
 			IdentifierCacheHandler.clear();
-			final ExtensionManager extensionManager = new DefaultExtensionManager();
+			final ExtensionManager extensionManager = ExtensionManagerFactory.getInstance().create();
 			testCase.setExtensions(extensionManager);
 
 			// get and write the mapping xml for debugging purposes.
