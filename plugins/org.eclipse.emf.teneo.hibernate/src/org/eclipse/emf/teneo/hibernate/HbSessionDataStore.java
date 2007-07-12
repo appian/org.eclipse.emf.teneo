@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.3 2007/07/11 14:40:54 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.4 2007/07/12 12:52:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -23,11 +23,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
+import org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
 import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.event.InitializeCollectionEventListener;
 
 /**
  * Holds the SessionFactory and performs different initialization related actions. Initializes the
@@ -38,7 +40,7 @@ import org.hibernate.cfg.Configuration;
  * your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class HbSessionDataStore extends HbDataStore {
@@ -85,6 +87,15 @@ public class HbSessionDataStore extends HbDataStore {
 		sessionFactory = buildSessionFactory();
 
 		setInitialized(true);
+	}
+
+	/** Set the event listener, can be overridden, in this impl. it does nothing */
+	@Override
+	protected void setEventListeners() {
+		final EMFInitializeCollectionEventListener eventListener =
+				getExtensionManager().getExtension(EMFInitializeCollectionEventListener.class);
+		getConfiguration().getEventListeners().setInitializeCollectionEventListeners(
+			new InitializeCollectionEventListener[] { eventListener });
 	}
 
 	/*

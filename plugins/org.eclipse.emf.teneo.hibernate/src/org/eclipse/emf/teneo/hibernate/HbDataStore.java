@@ -75,7 +75,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -481,7 +481,6 @@ public abstract class HbDataStore implements DataStore {
 
 	/** Set the event listener, can be overridden, in this impl. it does nothing */
 	protected void setEventListeners() {
-
 	}
 
 	/**

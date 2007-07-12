@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.6 2007/07/11 14:40:54 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.7 2007/07/12 12:52:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -26,18 +26,20 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
+import org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
 import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.ejb.Ejb3Configuration;
+import org.hibernate.event.InitializeCollectionEventListener;
 
 /**
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class HbEntityDataStore extends HbDataStore {
 
@@ -91,6 +93,15 @@ public class HbEntityDataStore extends HbDataStore {
 	@Override
 	protected void buildMappings() {
 		getConfiguration().buildMappings();
+	}
+
+	/** Set the event listener, can be overridden, in this impl. it does nothing */
+	@Override
+	protected void setEventListeners() {
+		final EMFInitializeCollectionEventListener eventListener =
+				getExtensionManager().getExtension(EMFInitializeCollectionEventListener.class);
+		getConfiguration().getEventListeners().setInitializeCollectionEventListeners(
+			new InitializeCollectionEventListener[] { eventListener });
 	}
 
 	/** Sets the interceptor */
