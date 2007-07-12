@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.11 2007/07/11 14:40:45 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.12 2007/07/12 18:04:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -22,6 +22,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -30,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class EmbeddedMapper extends AbstractMapper {
+public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 
 	// the logger
 	private static final Log log = LogFactory.getLog(EmbeddedMapper.class);

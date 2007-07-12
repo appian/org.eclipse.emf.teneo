@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToOneMapper.java,v 1.16 2007/07/11 17:13:31 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.17 2007/07/12 18:04:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -18,6 +18,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -36,7 +37,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class OneToOneMapper extends AbstractAssociationMapper {
+public class OneToOneMapper extends AbstractAssociationMapper implements ExtensionPoint {
 
 	private static final Log log = LogFactory.getLog(OneToOneMapper.class);
 

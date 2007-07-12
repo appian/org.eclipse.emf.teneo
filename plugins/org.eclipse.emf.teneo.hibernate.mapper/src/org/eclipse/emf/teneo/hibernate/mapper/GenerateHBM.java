@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: GenerateHBM.java,v 1.9 2007/07/11 14:40:45 mtaal Exp $
+ * </copyright> $Id: GenerateHBM.java,v 1.10 2007/07/12 18:04:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -26,15 +26,15 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 
 /**
  * Class is responsible for generating the hbm file. Is run through a launcher therefore the main
  * methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class GenerateHBM {
@@ -99,7 +99,7 @@ public class GenerateHBM {
 			// set the eruntime as the emodel resolver!
 			ERuntime.setAsEModelResolver();
 
-			final ExtensionManager extensionManager = new DefaultExtensionManager();
+			final ExtensionManager extensionManager = ExtensionManagerFactory.getInstance().create();
 			MappingUtil.registerHbExtensions(extensionManager);
 			final PersistenceOptions po = new PersistenceOptions(options);
 			final PAnnotatedModel paModel =

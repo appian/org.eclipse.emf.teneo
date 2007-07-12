@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.16 2007/07/11 14:40:45 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.17 2007/07/12 18:04:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
-import org.eclipse.emf.teneo.mapping.strategy.impl.DefaultEntityNameStrategy;
+import org.eclipse.emf.teneo.mapping.strategy.impl.ClassicEntityNameStrategy;
 import org.eclipse.emf.teneo.simpledom.Document;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -133,7 +133,7 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 				+ "\"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd\">");
 		mappingDoc.setRoot(DocumentHelper.createElement("hibernate-mapping"));
 		// set auto-import is false if the default eclass naming strategy is not used
-		if (!(hbmContext.getEntityNameStrategy() instanceof DefaultEntityNameStrategy)) {
+		if (!(hbmContext.getEntityNameStrategy() instanceof ClassicEntityNameStrategy)) {
 			log.debug("Setting auto-import=false because eclassnamingstrategy is not the defaulteclassnamestrategy");
 			mappingDoc.getRoot().addAttribute("auto-import", "false");
 		}
