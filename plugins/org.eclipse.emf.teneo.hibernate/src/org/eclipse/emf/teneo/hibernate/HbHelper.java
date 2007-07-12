@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.9 2007/07/11 14:40:55 mtaal Exp $
+ * $Id: HbHelper.java,v 1.10 2007/07/12 18:04:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -28,8 +28,8 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
-import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.hibernate.mapping.Component;
@@ -39,7 +39,7 @@ import org.hibernate.mapping.PersistentClass;
  * Is the main entry point for 'outside' users to create, register and retrieve EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class HbHelper {
 	/** The logger */
@@ -179,7 +179,7 @@ public class HbHelper {
 	 * other way by Elver.
 	 */
 	public String generateMapping(EPackage[] epackages, Properties props) {
-		return generateMapping(epackages, props, new DefaultExtensionManager());
+		return generateMapping(epackages, props, ExtensionManagerFactory.getInstance().create());
 	}
 
 	/**

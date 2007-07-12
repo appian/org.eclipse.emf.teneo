@@ -37,8 +37,8 @@ import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
-import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
@@ -75,7 +75,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -1070,7 +1070,7 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	public ExtensionManager getExtensionManager() {
 		if (extensionManager == null) {
-			setExtensionManager(new DefaultExtensionManager());
+			setExtensionManager(ExtensionManagerFactory.getInstance().create());
 		}
 		return extensionManager;
 	}

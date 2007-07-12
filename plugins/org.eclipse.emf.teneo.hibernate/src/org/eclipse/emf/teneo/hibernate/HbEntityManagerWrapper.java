@@ -9,15 +9,17 @@
  *
  * Contributors:
  *   Martin Taal
+ *   Benjamin Cabe
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.9 2007/07/11 14:40:54 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.10 2007/07/12 18:04:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -38,7 +40,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -144,6 +146,15 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 		int pos = 1;
 		for (Object obj : parameters) {
 			query.setParameter(pos++, obj);
+		}
+		return query.getResultList();
+	}
+
+	/** Query with named parameters */
+	public List<?> executeQuery(String qry, Map<String, Object> namedParameters) {
+		final Query query = getEntityManager().createQuery(qry);
+		for (Map.Entry<String, Object> entry : namedParameters.entrySet()) {
+			query.setParameter(entry.getKey(), entry.getValue());
 		}
 		return query.getResultList();
 	}

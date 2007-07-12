@@ -9,32 +9,33 @@
  *
  * Contributors:
  *   Martin Taal
+ *   Benjamin Cabe
  * </copyright>
  *
- * $Id: SessionWrapper.java,v 1.4 2007/07/03 10:00:32 mtaal Exp $
+ * $Id: SessionWrapper.java,v 1.5 2007/07/12 18:04:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 
 /**
- * Wraps a session or an entity manager. Is used to support both standard
- * hibernate as well as hibernate entitymanager. The differences between these 
- * two are hidden behind this interface (with different implementations for 
- * either case). The Teneo runtime code uses this interface to start and 
- * commit transactions and perform queries.
+ * Wraps a session or an entity manager. Is used to support both standard hibernate as well as
+ * hibernate entitymanager. The differences between these two are hidden behind this interface (with
+ * different implementations for either case). The Teneo runtime code uses this interface to start
+ * and commit transactions and perform queries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public interface SessionWrapper {
 
-	/** Return the session, return is an object to support both 
-	 * session as well as entitymanager.
+	/**
+	 * Return the session, return is an object to support both session as well as entitymanager.
 	 */
 	Object getSession();
 
@@ -61,6 +62,9 @@ public interface SessionWrapper {
 
 	/** Query */
 	List<?> executeQuery(String qry, List<Object> parameters);
+
+	/** Query with named parameters */
+	List<?> executeQuery(String qry, Map<String, Object> namedParameters);
 
 	/** Does this impl. wrap an entitymanager */
 	boolean isEJB3EntityManager();

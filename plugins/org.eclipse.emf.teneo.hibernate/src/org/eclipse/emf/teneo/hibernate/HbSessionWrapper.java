@@ -9,15 +9,17 @@
  *
  * Contributors:
  *   Martin Taal
+ *   Benjamin Cabe
  * </copyright>
  *
- * $Id: HbSessionWrapper.java,v 1.5 2007/07/04 19:27:28 mtaal Exp $
+ * $Id: HbSessionWrapper.java,v 1.6 2007/07/12 18:04:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.hibernate.FlushMode;
@@ -34,7 +36,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * Wraps a standard hibernate session.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class HbSessionWrapper implements SessionWrapper {
 
@@ -56,8 +58,7 @@ public class HbSessionWrapper implements SessionWrapper {
 	}
 
 	/**
-	 * Return the session, return is an object to support both session as well
-	 * as entitymanager.
+	 * Return the session, return is an object to support both session as well as entitymanager.
 	 */
 	public Object getSession() {
 		if (session == null) {
@@ -118,6 +119,15 @@ public class HbSessionWrapper implements SessionWrapper {
 	public List<?> executeQuery(String qry, boolean cacheable) {
 		final Query query = getSessionInternal().createQuery(qry);
 		query.setCacheable(cacheable);
+		return query.list();
+	}
+
+	/** Query with named parameters */
+	public List<?> executeQuery(String qry, Map<String, Object> namedParameters) {
+		final Query query = session.createQuery(qry);
+		for (Map.Entry<String, Object> entry : namedParameters.entrySet()) {
+			query.setParameter(entry.getKey(), entry.getValue());
+		}
 		return query.list();
 	}
 
