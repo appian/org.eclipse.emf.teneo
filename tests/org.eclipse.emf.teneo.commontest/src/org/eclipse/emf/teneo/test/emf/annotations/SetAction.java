@@ -9,10 +9,11 @@
 package org.eclipse.emf.teneo.test.emf.annotations;
 
 import java.util.ArrayList;
-import java.util.Properties;
 
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
+import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
 import org.eclipse.emf.teneo.samples.emf.annotations.set.ContainedItem;
 import org.eclipse.emf.teneo.samples.emf.annotations.set.Item;
 import org.eclipse.emf.teneo.samples.emf.annotations.set.ItemList;
@@ -25,7 +26,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test 1n relation (contained and non-contained) using sets.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class SetAction extends AbstractTestAction {
 	/** The number of testitems created */
@@ -76,7 +77,7 @@ public class SetAction extends AbstractTestAction {
 		int removedContainedItems = 0;
 		{
 			store.beginTransaction();
-			final ItemList list = (ItemList) store.getObject(ItemList.class);
+			final ItemList list = store.getObject(ItemList.class);
 
 			assertEquals(NO_ITEMS, list.getItem().size());
 			assertEquals(NO_ITEMS, list.getContainedItem().size());
@@ -120,7 +121,7 @@ public class SetAction extends AbstractTestAction {
 		int newCount = 0;
 		{
 			store.beginTransaction();
-			final ItemList list = (ItemList) store.getObject(ItemList.class);
+			final ItemList list = store.getObject(ItemList.class);
 
 			final ArrayList<String> checkNames = new ArrayList<String>(names);
 			final String lastName = "name_zzzz";
@@ -153,7 +154,7 @@ public class SetAction extends AbstractTestAction {
 		}
 		{
 			store.beginTransaction();
-			final ItemList list = (ItemList) store.getObject(ItemList.class);
+			final ItemList list = store.getObject(ItemList.class);
 			assertEquals(newCount, list.getItem().size());
 
 			// all contained items should have been deleted
@@ -168,12 +169,12 @@ public class SetAction extends AbstractTestAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#setExtensions(org.eclipse.emf.teneo.extension.ExtensionManager)
 	 */
 	@Override
-	public Properties getExtraConfigurationProperties() {
-		final Properties props = new Properties();
-		props.put(PersistenceOptions.QUALIFY_ENTITY_NAME, PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
-		return props;
+	public void setExtensions(ExtensionManager extensionManager) {
+		extensionManager.registerExtension(EntityNameStrategy.class.getName(), QualifyingEntityNameStrategy.class
+			.getName());
+		super.setExtensions(extensionManager);
 	}
 }
