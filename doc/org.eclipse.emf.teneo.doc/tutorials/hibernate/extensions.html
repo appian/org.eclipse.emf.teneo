@@ -1,0 +1,661 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="Apache Forrest" name="Generator">
+<meta name="Forrest-version" content="0.7">
+<meta name="Forrest-skin-name" content="elver4">
+<style type="text/css">
+          /*  */
+          @import "../skin/tigris.css";
+          @import "../skin/quirks.css";
+          @import "../skin/inst.css";
+         /*   */
+        </style>
+<link media="print" href="../skin/print.css" type="text/css" rel="stylesheet">
+<link href="../skin/forrest.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="../">
+<script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
+<title>Extensions</title>
+<meta content="text/css" http-equiv="Content-style-type">
+</head>
+<body class="composite" onload="focus()">
+<div id="banner">
+<table width="100%" cellpadding="8" cellspacing="0" border="0">
+<tr>
+<td align="left">
+<div>
+<a href="http://www.elver.org"><img class="logoImage" alt="Elver Store" src="../images/ELV2.gif"></a>
+</div>
+<span class="alt">Elver Store</span></td><td align="center">
+<div>
+<a href="http://www.elver.org/"><img class="logoImage" alt="Elver" src="../images/empty.gif"></a>
+</div>
+</td><td width="10%" valign="top" align="right">
+<div class="right" align="right" id="login">
+<table>
+<tr>
+<td>
+<form target="_top" action="http://www.google.com/custom" method="get">
+<table bgcolor="#ffffff" border="0">
+<tr>
+<td height="32" align="right" valign="top" nowrap="nowrap"><a href="http://www.google.com/"><img align="middle" alt="Google" border="0" src="http://www.google.com/logos/Logo_25wht.gif"></a></td><td nowrap="nowrap"><input value="www.elver.org" name="domains" type="hidden"><label style="display: none" for="sbi">Enter your search terms</label><input id="sbi" value="" maxlength="255" size="25" name="q" type="text"><label style="display: none" for="sbb">Submit search form</label><input id="sbb" value="Search" name="sa" type="submit"></td>
+</tr>
+<tr>
+<td></td><td>
+<table>
+<tr>
+<td><input id="ss0" value="" checked name="sitesearch" type="radio"><label title="Search the Web" for="ss0"><font color="#000000" size="-3">Web</font></label></td><td><input id="ss1" value="www.elver.org" name="sitesearch" type="radio"><label title="Search www.elver.org" for="ss1"><font color="#000000" size="-3">www.elver.org</font></label></td>
+</tr>
+</table>
+<input value="pub-8611581199716573" name="client" type="hidden"><input value="1" name="forid" type="hidden"><input value="ISO-8859-1" name="ie" type="hidden"><input value="ISO-8859-1" name="oe" type="hidden"><input value="active" name="safe" type="hidden"><input value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1" name="cof" type="hidden"><input value="en" name="hl" type="hidden"></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toptabs" class="tabs">
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
+</tr>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="breadcrumbs">
+<tr>
+<td></td><td>
+<div class="published" align="right">
+<script type="text/javascript" language="JavaScript"><!--
+                 document.write("Published: " + document.lastModified);
+                 //  --></script>
+</div>
+</td>
+</tr>
+</table>
+<table id="main" width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr valign="top">
+<td style="padding: 0px" width="20%" id="leftcol">
+<table width="100%" class="menuarea" cellspacing="0" cellpadding="0">
+<tr>
+<td width="6px" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" class="leftpagemargin">
+<tr>
+<td class="subborder trail">&nbsp;</td>
+</tr>
+</table>
+</td><td class="dialog">
+<div class="menu">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/index.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/status.html">Status</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/features.html">Features</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/overview.html">Overview</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/changelog.html">Changelog</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/installation.html">Download &amp; Install</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/knownissues.html">Known Issues</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/quick_tutorial.html">Quick Start</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/license.html">License</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.2')" id="menu_1.2Title" class="menutitle">Library Tutorial</div>
+<div id="menu_1.2" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_1.html">Setup Environment</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_2.html">Create and Store EMF Object</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_3.html">Retrieve EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
+<div id="menu_1.3" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_intro.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_1.html">Initialize the Library Editor</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/tutorialtwo/tutorial2_2.html">Run the Library Editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.4')" id="menu_1.4Title" class="menutitle">GMF Editor Tutorial</div>
+<div id="menu_1.4" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial1.html">Introduction</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial2.html">Environment Setup</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial3.html">Running the editor</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Details</div>
+<div id="menu_selected_1.5" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/inheritance.html">Inheritance Mapping</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hbdatastore.html">HbDataStore</a>
+</div>
+<div class="menupage">
+<div class="menupagetitle">Extensions</div>
+</div>
+<div class="menuitem">
+<a href="../hibernate/options.html">Options</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernate_details.html">EMF - Hibernate Details</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/hibernateresources.html">EMF Hibernate Resources</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/resource_utility.html">Resource Utility</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/troubleshooting.html">Troubleshooting</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.6')" id="menu_1.6Title" class="menutitle">Annotations (JPA/EJB3)</div>
+<div id="menu_1.6" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/ejb3_format.html">Format</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_examples.html">Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/ejb3_features.html">JPA/EJB3</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/entitymanager.html">Hibernate EntityManager</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.7')" id="menu_1.7Title" class="menutitle">XML Schema</div>
+<div id="menu_1.7" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/features_details.html">XML Schema Support</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/schema_list.html">XML Schema Examples</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/featuremap.html">Feature Map/Mixed Content</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.8')" id="menu_1.8Title" class="menutitle">Support</div>
+<div id="menu_1.8" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/upgrading.html">Upgrading</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/mailinglist.html">Newsgroup</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/emfhibsupport.html">EMF/Hibernate Support</a>
+</div>
+</div>
+<div onclick="SwitchMenu('menu_1.9')" id="menu_1.9Title" class="menutitle">Developer</div>
+<div id="menu_1.9" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/svn.html">CVS</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="border bottom-left"></td><td class="border bottomborder"></td><td class="border bottom-right"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" height="10"></td>
+</tr>
+</table>
+<table></table>
+<table></table>
+<div class="strut">&nbsp;</div>
+</td><td>
+<div class="content">
+<div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Extensions</em>
+</h2>
+</div>
+<div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#ExtensionPoint+definition">ExtensionPoint definition</a>
+</li>
+<li>
+<a href="#Find+all+ExtensionPoints">Find all ExtensionPoints</a>
+</li>
+<li>
+<a href="#ExtensionManager">ExtensionManager</a>
+</li>
+<li>
+<a href="#ExtensionManagerAware%2C+ExtensionInitializable">ExtensionManagerAware, ExtensionInitializable</a>
+</li>
+<li>
+<a href="#EntityNameStrategy+ExtensionPoint%0A%09%09%09%09%28org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy%29">
+				EntityNameStrategy ExtensionPoint
+				(org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy)
+			</a>
+</li>
+<li>
+<a href="#SqlNameStrategy+ExtensionPoint+%28org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy%29">SqlNameStrategy ExtensionPoint (org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy)</a>
+</li>
+<li>
+<a href="#ClassLoaderStrategy+ExtensionPoint+%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29">ClassLoaderStrategy ExtensionPoint (org.eclipse.emf.teneo.classloader.ClassLoaderStrategy)</a>
+</li>
+<li>
+<a href="#Future+Enhancements">Future Enhancements</a>
+</li>
+</ul>
+		
+<p>
+			The mapping and annotation logic of Teneo is implemented in many different classes.
+			Teneo makes it possible to replace the implementation of these classes with a
+			custom-implemented class. Examples of these extension points are the EntityNameStrategy
+			and SqlNameStrategy classes.
+		</p>
+		
+<p>
+			Currently Teneo has around 50 ExtensionPoints which can be replaced by a custom
+			implementation.
+		</p>
+
+		
+<a name="N10014"></a><a name="ExtensionPoint+definition"></a>
+<div class="h3">
+<h3>ExtensionPoint definition</h3>
+			
+			
+<p>
+				An ExtensionPoint has a name which is always a class or interface name. For each
+				ExtensionPoint Teneo will register a default Extension. An extension defines for an
+				ExtensionPoint which class will implement the ExtensionPoint. An extension can be
+				defined as a singleton (only one instance per ExtensionManager). Teneo will register
+				so-called default extensions. A user can register his/her own custom (non-default)
+				extensions. Teneo will never override a custom Extension.
+			</p>
+		
+</div>
+		
+<a name="N1001E"></a><a name="Find+all+ExtensionPoints"></a>
+<div class="h3">
+<h3>Find all ExtensionPoints</h3>
+			
+			
+<p>
+				It is easy to find all the ExtensionPoints of Teneo, in Eclipse do ctrl/shift-h
+				(open type in hierarchy, see under the Navigate menu) then enter ExtensionPoint and
+				select the org.eclipse.emf.teneo.extension.ExtensionPoint. Eclipse should then show
+				all the classes/interfaces implementing ExtensionPoint. These are all the Teneo
+				ExtensionPoints.
+			</p>
+			
+<p>
+				The name of the ExtensionPoint is the
+				<strong>fully classified</strong>
+				name of the class/interface implementing the ExtensionPoint interface. This same
+				class or interface also defines the interface which must be implemented by the
+				custom class.
+			</p>
+			
+<p>The ExtensionPoints can be divided in different groups:</p>
+			
+<ul>
+				
+<li>
+					org.eclipse.emf.teneo.annotations.mapper.*: ExtensionPoints which take care of
+					adding default jpa annotations to the model. There are different annotators for
+					different cases (one-to-many, many-to-one, etc.).
+				</li>
+				
+<li>
+					org.eclipse.emf.teneo.mapping.strategy.*: ExtensionPoints related to
+					entitynaming and sql naming. See below.
+				</li>
+				
+<li>
+					org.eclipse.emf.teneo.hibernate.mapper.*: these ExensionsPoints take care of
+					creating the hibernate mapping file from the jpa annotated model.
+				</li>
+				
+<li>
+					org.eclipse.emf.teneo.jpox.mapper.*: ExtensionPoints which take care of creating
+					the jpox/jdo mapping file.
+				</li>
+			
+</ul>
+		
+</div>
+		
+<a name="N10040"></a><a name="ExtensionManager"></a>
+<div class="h3">
+<h3>ExtensionManager</h3>
+			
+			
+<p>
+				Extensions are managed by an ExtensionManager. One ExtensionManager is created for
+				each DataStore (or one mapping action in the HbHelper). Extension instances are
+				therefore not shared over different DataStores. An ExtensionManager can be used to
+				register a custom Extension or create an instance of an ExtensionPoint.
+			</p>
+			
+<pre class="code">
+// register an extension before calling initialize on the datastore
+
+// create the datastore
+final HbDataStore hds = HbHelper.INSTANCE.createRegisterDataStore("test");
+
+// get the extensionmanager used by the datastore 
+final ExtensionManager extensionManager = hds.getExtensionManager();
+
+// and set the custom extension using the ExtensionPoint name and the 
+// class name of the custom ExtensionPoint. Note all names are fully qualified!
+extensionManager.registerExtension(EntityNameStrategy.class.getName(), QualifyingEntityNameStrategy.class.getName());
+			</pre>
+			
+<p>
+				Then an ExtensionPoint instance can be retrieved like this (this is not something a
+				user of Teneo needs to do, this is done by Teneo internally):
+			</p>
+			
+<pre class="code">
+final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.class);
+			</pre>
+			
+<p>Requirements for custom Extension:</p>
+			
+<ul>
+				
+<li>
+					The custom extension must implement the interface of the ExtensionPoint or
+					extend the class defined by the ExtensionPoint.
+				</li>
+				
+<li>It must have a zero argument constructor.</li>
+			
+</ul>
+			
+<p>
+<em>Teneo creates an ExtensionManager always through the ExtensionManagerFactory.getInstance(). You
+			can set your own ExtensionManagerFactory by calling ExtensionManagerFactory.setInstance(...).</em>
+			
+</p>
+		
+</div>
+		
+<a name="N10066"></a><a name="ExtensionManagerAware%2C+ExtensionInitializable"></a>
+<div class="h3">
+<h3>ExtensionManagerAware, ExtensionInitializable</h3>
+			
+			
+<p>
+				There are two other relevant interfaces which can be implemented by an
+				ExtensionPoint:
+			</p>
+			
+<ul>
+				
+<li>
+					ExtensionManagerAware: an instance which implements this interface will
+					'receive' the ExtensionManager which created it. This is done directly after it
+					has been instantiated by the ExtensionManager.
+				</li>
+				
+<li>
+					ExtensionInitializable: an instance which implements this interface will be
+					initialized just after the instance has been created and after the
+					ExtensionManager has been set (if the instance is ExtensionManagerAware).
+					Initialization is done through the method defined by this interface.
+				</li>
+			
+</ul>
+		
+</div>
+		
+<a name="N10079"></a><a name="EntityNameStrategy+ExtensionPoint%0A%09%09%09%09%28org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy%29"></a>
+<div class="h3">
+<h3>
+				EntityNameStrategy ExtensionPoint
+				(org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy)
+			</h3>
+			
+			
+<p>
+				During the mapping action Teneo determines the entity name for each EClass. The
+				entity name is reflected in the mapping file. The entity name is important because
+				it needs to be unique and it can be used in hql queries. There are currently three
+				entity naming strategies:
+			</p>
+			
+<ul>
+				
+<li>
+					org.eclipse.emf.teneo.mapping.strategy.impl.EntityResolvingNameStrategy (
+					<strong>default</strong>
+					): uses the name set in the @Entity annotation of the EClass, if this annotation
+					is not present then the EClass name is used. If two eclasses in different
+					epackages have the same name then a name-clash will occur. However this can
+					easily be 'repaired' by setting an @Entity annotation on these EClasses.
+				</li>
+				
+<li>
+					org.eclipse.emf.teneo.mapping.strategy.impl.ClassicEntityNameStrategy: is
+					deprecated, uses the eclass name. If two eclasses in different epackages have
+					the same name then a name-clash will occur.
+				</li>
+				
+<li>
+					org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy:
+					creates an entity name by prefixing the eclass name with the epackage nsprefix
+					or the name of the epackage. This always results in unique entity names.
+				</li>
+			
+</ul>
+		
+</div>
+		
+<a name="N10092"></a><a name="SqlNameStrategy+ExtensionPoint+%28org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy%29"></a>
+<div class="h3">
+<h3>SqlNameStrategy ExtensionPoint (org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy)</h3>
+			
+			
+<p>
+				The sql naming strategy is an important strategy because a trade-off needs to be
+				made between short and understandable names and long and unique names. Currently Teneo
+				only has one naming strategy which is aimed at backward compatibility. This strategy is
+				described in more detail below. In future releases of Teneo new naming strategies
+				will be added to separately support the short-understandable and long-unique naming
+				strategies.
+			</p>
+			
+<p>
+				Using the ExtensionPoint mechanism the current sql naming strategy can be replaced
+				by a custom strategy.
+			</p>
+			
+<p>
+				Teneo currently has one sql name strategy implementation:
+				org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy. This strategy
+				has the following naming behavior:
+			</p>
+			
+<ul>
+				
+<li>
+					PrimaryKeyJoinColumn: the name of the join columns from the joined-subclass
+					table to the parent class table. The join column name is the concatenation of
+					the super entity name and the id feature name of the super entity.
+				</li>
+				
+<li>
+					SecondaryTablePrimaryKeyJoinColumn: the name of the primary key from the
+					secondary table to the main table. Is the name of the id feature of the main
+					type.
+				</li>
+				
+<li>Table name: the entity name.</li>
+				
+<li>Column name: the name for a 'simple' column: the efeature name.</li>
+				
+<li>
+					Foreign Key name: the name of the foreign key created for an EReference, the
+					concatenation of the entity name, '_' and the EReference name.
+				</li>
+				
+<li>
+					ManyToOneJoinColumn: the join column name created for a single EReference,
+					depends on the option JOIN_COLUMN_NAMING_STRATEGY.
+				</li>
+				
+<li>
+					OneToMany join column for EAttribute: the join columns used for a many
+					eattribute (list of primitive types). Depends on the JOIN_COLUMN_NAMING_STRATEGY
+					setting.
+				</li>
+				
+<li>
+					OneToMany join column for EReference: the join columns used for a many
+					ereference. Depends on the JOIN_COLUMN_NAMING_STRATEGY setting.
+				</li>
+				
+<li>
+					Join table join columns: the join columns used in the join table for a
+					many-to-many relation or a one-to-many with a join table. Depends on the
+					JOIN_COLUMN_NAMING_STRATEGY option.
+				</li>
+				
+<li>
+					Join Table Name for many EAttribute: the name of the join table, is the
+					concatenation of the entity name and the EAttribute name.
+				</li>
+				
+<li>
+					Join Table Name for many EReference: the name of the join table, depends on the
+					JOIN_TABLE_NAMING_STRATEGY option.
+				</li>
+				
+<li>
+					Version, Discriminator, IdBagId, Synthetic ID column names: are all option
+					controlled.
+				</li>
+			
+</ul>
+		
+</div>
+		
+<a name="N100C9"></a><a name="ClassLoaderStrategy+ExtensionPoint+%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29"></a>
+<div class="h3">
+<h3>ClassLoaderStrategy ExtensionPoint (org.eclipse.emf.teneo.classloader.ClassLoaderStrategy)</h3>
+			
+			
+<p>The default extension manager will load all the extensions using the classloader strategy registered 
+			for the ClassLoaderStrategy ExtensionPoint. The ClassLoaderStrategy extension itself is loaded
+			through the ClassLoaderStrategy set in the org.eclipse.emf.teneo.classloader.ClassLoaderResolver.</p>
+			
+<p>The default class loading strategy of Teneo is the ContextClassLoaderStrategy (see <a href="hibernate_details.html#Classloader">here</a>).</p>
+		
+</div>
+		
+<a name="N100DA"></a><a name="Future+Enhancements"></a>
+<div class="h3">
+<h3>Future Enhancements</h3>
+			
+			
+<p>
+				The following future enhancements are considered:
+			</p>
+			
+<ul>
+				
+<li>
+					ExtensionFactory: instead of registering the class of the Extension it can also
+					be usefull to be able to register a factory which creates the required extension
+					instance.
+				</li>
+				
+<li>
+					OSGI-integration: it is the intention to make the Teneo extension mechanism osgi
+					compliant.
+				</li>
+				
+<li>
+					More *Aware interfaces: it can be usefull to also support other Aware
+					constructions such as PersistenceOptions aware or DataStore aware.
+				</li>
+			
+</ul>
+		
+</div>
+	
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div width="100%" id="footer">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td class="footer"><a href="license.html">
+          Copyright &copy; 2007 The Elver Project</a>
+      - All rights reserved.
+      </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

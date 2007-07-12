@@ -180,6 +180,9 @@
 <div class="menuitem">
 <a href="../hibernate/hbdatastore.html">HbDataStore</a>
 </div>
+<div class="menuitem">
+<a href="../hibernate/extensions.html">Extensions</a>
+</div>
 <div class="menupage">
 <div class="menupagetitle">Options</div>
 </div>
@@ -269,155 +272,401 @@
 </h2>
 </div>
 <div class="app" id="projecthome">
+<ul class="minitoc">
+<li>
+<a href="#SQL+Naming+Related+Options">SQL Naming Related Options</a>
+</li>
+<li>
+<a href="#General+Options">General Options</a>
+</li>
+</ul>
 		
-<p>The options described here are all present in the <em>org.eclipse.emf.teneo.PersistenceOptions</em> class. The constant names used 
-		in this page all refer to this class.</p>
+<p>
+			The options described here are all present in the
+			<em>org.eclipse.emf.teneo.PersistenceOptions</em>
+			class. The constant names used in this page all refer to this class.
+		</p>
 		
-<p>Options are passed to the HbDataStore using a Properties object which is set using the HbDataStore.setPersistenceProperties method.</p>
+<p>
+			Options are passed to the HbDataStore using a Properties object which is set using the
+			HbDataStore.setPersistenceProperties method.
+		</p>
 		
 <p>Boolean options can have the lower case String values: "false" or "true".</p>
+
 		
+<p>
+			
+<strong>
+				The option QUALIFY_ENTITY_NAME has been removed and is now handled through setting
+				the EntityNameStrategy extension, see
+				<a href="extensions.html">here</a>
+				.
+			</strong>
+		
+</p>
+
+		
+<a name="N10024"></a><a name="SQL+Naming+Related+Options"></a>
+<div class="h3">
+<h3>SQL Naming Related Options</h3>
+			
+			
+<p>
+				A number of options are related to the naming logic for table and columns names. The
+				logic can be controlled by setting the following options or by registering your own
+				extension (see
+				<a href="extensions.html">here</a>
+				).
+			</p>
+
+			
 <ul>
 
-		
+				
 <li>
-<strong>PersistenceOptions.ALWAYS_MAP_LIST_AS_BAG</strong>: often modeling the index of a list in a relational database is not usefull. This option
-		controls if al lists are mapped as a Hibernate bag. This is more efficient as Hibernate does not need to maintain an ordering in the database.
-		Note that if you specified a manual OneToMany annotation on an EReference then for that EReference the settings on the onetomany are followed.</li>
+					
+<strong>PersistenceOptions.IDBAG_ID_COLUMN_NAME</strong>
+					: can be used to set the id column name in the join table containing the idbag
+					elements. The default value is ID.
+				</li>
 
-		
+				
 <li>
-<strong>PersistenceOptions.ALWAYS_VERSION</strong>: this option (boolean, default: true) determines if the system should automatically 
-		add a version attribute to each class mapping. If set to true (the default) then the system will add a version property to the mapping if 
-		no other eattribute has a version annotation. If set to false then the version property is not added automatically.</li>
-		
-<li>
-<strong>PersistenceOptions.ALSO_MAP_AS_CLASS</strong> (boolean, default is true): this option will add a name attribute to each class mapping. This makes it possible to query 
-		using actual class and interface names (next to the entityname).</li>
-		
-<li>
-<strong>PersistenceOptions.DEFAULT_CACHE_STRATEGY</strong>: this option allows you to set second level caching at a global level.
-		If set to a value other than NONE then all EClasses and collection EFeatures will have caching set.
-		The value is one of NONE, READ_ONLY, NONSTRICT_READ_WRITE, READ_WRITE, TRANSACTIONAL.</li>
-		
-<li>
-<strong>PersistenceOptions.DEFAULT_ID_FEATURE_NAME</strong>: with this option it is possible to let Teneo automatically identify the id-property. 
-		All efeatures with this name are used as persistence id. The default value is e_id (same as for the default id column name). To ensure that no efeature is 
-		by accident considered as the id-feature this should be set to an empty string.</li>
-		
-<li>
-<strong>PersistenceOptions.DEFAULT_TEMPORAL_VALUE</strong>: this option controls the default mapping to use for temporal (e.g. java.util.Date) properties.
-		The default is TIMESTAMP, other allowed values are DATE, TIME.</li>
-		
-<li>
-<strong>PersistenceOptions.DISABLE_ECONTAINER_MAPPING</strong>: this option (boolean) controls if the container relations
-		are mapped explicitly in the database, see also <a href="hibernate_relations.html#Storing+container+relation">here</a>.</li>
+					
+<strong>PersistenceOptions.ID_COLUMN_NAME</strong>
+					: can be used to set the id column name which is used to store the id of an
+					object. The id column is only added automatically if the model does not define a
+					primary key for the type. Default the id column name is e_id, however not all
+					databases support _ in the name.
+				</li>
 
-		
+				
 <li>
-<strong>PersistenceOptions.EMAP_AS_TRUE_MAP</strong>: this option controls how an EMF EMap is mapped to the db. An EMF EMap is 
-		not a real map but a list of map entries (subtle but important difference). It can be mapped to the database as a list or as a map.
-		In previous releases of Teneo the EMap was mapped as a list. However, this is less efficient and does not work in cases that the 
-		data needs to be serialized (because the list content was stored with a synthetic id which is not supported in case of serialization). 
-		Therefor now the default approach is to map an EMap as a true Hibernate map. To support backward compatibility this option is introduced.
-		Its default is true (use the new approach), by setting it to "false" the old approach is followed.</li>
-		
-		
-<li>
-<strong>PersistenceOptions.FETCH_CONTAINMENT_EAGERLY</strong>: if set to "true" will set the fetch strategy of all
-		containment references to EAGER. This means that containment relations are completely read in memory. Default is "false".</li>
-		
-<li>
-<strong>PersistenceOptions.ID_COLUMN_NAME</strong>: can be used to set the id column name which is used
-		to store the id of an object. The id column is only added automatically if the model does not define a primary key for the
-		type. Default the id column name is e_id, however not all databases support _ in the name.</li>
-		
-<li>
-<strong>PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY</strong>: as a default eattributes with ID=true will be denoted as the primary key
-		of the eclass. If this feature (default is true) is set to false then this default behavior is disabled.
-		</li>
-		
-<li>
-<strong>PersistenceOptions.INHERITANCE_MAPPING</strong>: the default inheritance mapping strategy to use, this can be
-		JOINED or SINGLE_TABLE, see <a href="inheritance.html">here</a> for more information. Default is SINGLE_TABLE.</li>
-		
-<li>
-<strong>PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS</strong>: boolean, if set to true then always a join table is created
-		for one-to-many non-contained associations.</li>
-		
-<li>
-<strong>PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY</strong>: string option which 
-		can have two values: ejb3 (=default) or unique. In ejb3 a join table name is the concatenation of the two entity names with an underscore (_) separator.
-		The unique value will create a join table with the name of the refering entity name and estructural feature name,
-		e.g. Writer_books in the Library example.
-		</li>
+					
+<strong>PersistenceOptions.JOIN_COLUMN_NAMING_STRATEGY</strong>
+					: Join column naming strategy, two values: unique and simple. unique is the
+					default and results in guaranteed unique naming for the join columns simple will
+					always try to use minimal name lengths and will most of the time just use the
+					efeaturename.
+				</li>
 
-		
+				
 <li>
-<strong>PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG</strong>: the Hibernate idbag maps a list as a very efficient bag in which each list entry
-		gets an id. This makes it possible to update the list very efficiently. This option allows you to force Teneo to use the idbag for all
-		lists. Note that if you specified a manual OneToMany annotation on an EReference then for that EReference no IdBag annotation is added. Also
-		it makes sense to combine this option with setting the option JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS to true also.</li>
+					
+<strong>PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY</strong>
+					: string option which can have two values: ejb3 or unique (=default). In ejb3 a
+					join table name is the concatenation of the two entity names with an underscore
+					(_) separator. The unique value will create a join table with the name of the
+					refering entity name and estructural feature name, e.g. Writer_books in the
+					Library example.
+				</li>
 
-		
+				
 <li>
-<strong>PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH</strong>: can be used to control the column and table name length. This is especially
-		relevant in case the default annotation process creates foreign key columns or your property names are too long. 
-		Foreign key column names are created by concatenating the name of the (e)class and the propertyname. The resulting name can be to long for certain databases. 
-		By setting this option the system will truncate column names to this length. If the column/table name has a suffix (separated by a _) then the 
-		system will truncate the part before the suffix.</li>
-		
+					
+<strong>PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH</strong>
+					: can be used to control the column and table name length. This is especially
+					relevant in case the default annotation process creates foreign key columns or
+					your property names are too long. Foreign key column names are created by
+					concatenating the name of the (e)class and the propertyname. The resulting name
+					can be to long for certain databases. By setting this option the system will
+					truncate column names to this length. If the column/table name has a suffix
+					(separated by a _) then the system will truncate the part before the suffix.
+				</li>
+
+
+				
 <li>
-<strong>PersistenceOptions.OPTIMISTIC</strong>: if this property is "false" then no version properties are added to the 
-		mapping of EClasses. Default is "true".</li>
-		
-<li> 
-<strong>PersistenceOptions.PERSISTENCE_XML</strong>: the location of the xml annotations file. The location should be a resource
-		path.</li>
-		
+					
+<strong>PersistenceOptions.MAP_EMBEDDABLE_AS_EMBEDDED</strong>
+					: if set to true then an EReference to an EClass which is annotated with
+					@Embeddable will automatically be annotated with @Embedded. If false (the
+					default) then an EReference to an embeddable EClass needs to be manually
+					annotated with @Embedded.
+				</li>
+
+				
 <li>
-<strong>PersistenceOptions.QUALIFY_ENTITY_NAME</strong>: if set to PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX then
-		all EClass names (used as entityname) will be qualified with the nsprefix of the EPackage. The nsprefix is prepended to the
-		EClass name with a dot as a separator, for example: library.Writer. Note that all HQL queries should then use the 
-		qualified EClass names.</li>
-		
+					
+<strong>PersistenceOptions.SET_FOREIGN_KEY_NAME</strong>
+					: the default is false, if this option is set to true then Teneo will also
+					generate descriptive names of the foreign key relations. If this option is false
+					(the default) then Hibernate will take care of foreign key naming. However these
+					names can be too long or are less meaningfull.
+				</li>
+
+				
 <li>
-<strong>PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT</strong>: as a default Teneo will set a cascade style ALL on a 
-		containment relation. This also enables dependent or orphan delete behavior. However it makes more difficult to support cut/paste
-		operations using resources (see <a href="hibernate_details.html#cutpaste">here</a>). This option can be used to control the dependent or
-		orphan delete behavior on a containment relation. If set to false then all cascade styles are set with  
-		dependent/orphan-delete disabled. If set to true (the default) then all cascade styles are set including orphan-delete/dependent.
-		</li>
-		
-<li>	
-<strong>PersistenceOptions.SET_ENTITY_AUTOMATICALLY</strong>: if set to "false" then only EClasses which have an
-		Entity annotation will be mapped. Default is "true", this means that all EClasses are mapped to the persistent store.</li>
-		
+					
+<strong>PersistenceOptions.SQL_CASE_STRATEGY</strong>
+					: controls if the table and column names are uppercased, lowercased or no
+					specific casing is done. The value lowercase will force lower case for all
+					table/column name, the value uppercase will force uppercase for all table/column
+					names, none wil do not casing. It is also possible to set this option to the
+					classname of a class implementing the org.eclipse.emf.teneo.util.SQLCaseStrategy
+					interface.
+				</li>
+
+				
 <li>
-<strong>PersistenceOptions.SET_PROXY</strong> (boolean, default is false): this option controls if Hibernate will use a cglib proxy when loading objects for many-to-one relations. If set to
-		true then Teneo will automatically add a @Proxy annotation to each type. If this option is false then for individual types the @Proxy annotation can also be used (see the Hibernate
-		annotation extensions). </li>
-		
-<li>
-<strong>PersistenceOptions.SQL_CASE_STRATEGY</strong>: controls if the table and column names are uppercased, lowercased or 
-		no specific casing is done. The value lowercase will force lower case for all table/column name, the value 
-		uppercase will force uppercase for all table/column names, none wil do not casing. It is also possible to set this
-		option to the classname of a class implementing the org.eclipse.emf.teneo.util.SQLCaseStrategy interface.</li>
-		
-<li>	
-<strong>PersistenceOptions.UPDATE_SCHEMA</strong>: if set to "false" then the database schema is not updated 
-		when initializing a HbDataStore. This improves startup times. Default is "true".</li>
-		
-<li>
-<strong>PersistenceOptions.USE_MAPPING_FILE</strong>: if set to "true" then Teneo will not do an automatic mapping of the
-		ecore model to Hibernate but instead search for a hibernate.hbm.xml in the classpath of the EMF generated java classes.</li>
-		
-<li>
-<strong>PersistenceOptions.VERSION_COLUMN_NAME</strong>: can be used to set the version column name which is used
-		to store the version of an object in case of optimistic locking. Default the version column name is e_version, however not all
-		databases support _ in the name.</li>
-		
+					
+<strong>PersistenceOptions.VERSION_COLUMN_NAME</strong>
+					: can be used to set the version column name which is used to store the version
+					of an object in case of optimistic locking. Default the version column name is
+					e_version, however not all databases support _ in the name.
+				</li>
+			
 </ul>
+		
+</div>
+		
+<a name="N1006B"></a><a name="General+Options"></a>
+<div class="h3">
+<h3>General Options</h3>
+			
+
+			
+<ul>
+
+				
+<li>
+					
+<strong>PersistenceOptions.ADD_INDEX_FOR_FOREIGN_KEY</strong>
+					: there are databases which do not automatically create an index for a foreign
+					key relation. This option (default is false) forces Teneo to explicitly set an
+					index for each foreign key relation.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.ALWAYS_MAP_LIST_AS_BAG</strong>
+					: often modeling the index of a list in a relational database is not usefull.
+					This option controls if al lists are mapped as a Hibernate bag. This is more
+					efficient as Hibernate does not need to maintain an ordering in the database.
+					Note that if you specified a manual OneToMany annotation on an EReference then
+					for that EReference the settings on the onetomany are followed.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.ALWAYS_VERSION</strong>
+					: this option (boolean, default: true) determines if the system should
+					automatically add a version attribute to each class mapping. If set to true (the
+					default) then the system will add a version property to the mapping if no other
+					eattribute has a version annotation. If set to false then the version property
+					is not added automatically.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.ALSO_MAP_AS_CLASS</strong>
+					(boolean, default is true): this option will add a name attribute to each class
+					mapping. This makes it possible to query using actual class and interface names
+					(next to the entityname).
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.DEFAULT_CACHE_STRATEGY</strong>
+					: this option allows you to set second level caching at a global level. If set
+					to a value other than NONE then all EClasses and collection EFeatures will have
+					caching set. The value is one of NONE, READ_ONLY, NONSTRICT_READ_WRITE,
+					READ_WRITE, TRANSACTIONAL.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.DEFAULT_ID_FEATURE_NAME</strong>
+					: with this option it is possible to let Teneo automatically identify the
+					id-property. All efeatures with this name are used as persistence id. The
+					default value is e_id (same as for the default id column name). To ensure that
+					no efeature is by accident considered as the id-feature this should be set to an
+					empty string.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.DEFAULT_TEMPORAL_VALUE</strong>
+					: this option controls the default mapping to use for temporal (e.g.
+					java.util.Date) properties. The default is TIMESTAMP, other allowed values are
+					DATE, TIME.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.DISABLE_ECONTAINER_MAPPING</strong>
+					: this option (boolean) controls if the container relations are mapped
+					explicitly in the database, see also
+					<a href="hibernate_relations.html#Storing+container+relation">here</a>
+					.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.EMAP_AS_TRUE_MAP</strong>
+					: this option controls how an EMF EMap is mapped to the db. An EMF EMap is not a
+					real map but a list of map entries (subtle but important difference). It can be
+					mapped to the database as a list or as a map. In previous releases of Teneo the
+					EMap was mapped as a list. However, this is less efficient and does not work in
+					cases that the data needs to be serialized (because the list content was stored
+					with a synthetic id which is not supported in case of serialization). Therefor
+					now the default approach is to map an EMap as a true Hibernate map. To support
+					backward compatibility this option is introduced. Its default is true (use the
+					new approach), by setting it to "false" the old approach is followed.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.FETCH_CONTAINMENT_EAGERLY</strong>
+					: if set to "true" will set the fetch strategy of all containment references to
+					EAGER. This means that containment relations are completely read in memory.
+					Default is "false".
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY</strong>
+					: as a default eattributes with ID=true will be denoted as the primary key of
+					the eclass. If this feature (default is true) is set to false then this default
+					behavior is disabled.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.INHERITANCE_MAPPING</strong>
+					: the default inheritance mapping strategy to use, this can be JOINED or
+					SINGLE_TABLE, see
+					<a href="inheritance.html">here</a>
+					for more information. Default is SINGLE_TABLE.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS</strong>
+					: boolean, if set to true then always a join table is created for one-to-many
+					non-contained associations.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG</strong>
+					: the Hibernate idbag maps a list as a very efficient bag in which each list
+					entry gets an id. This makes it possible to update the list very efficiently.
+					This option allows you to force Teneo to use the idbag for all lists. Note that
+					if you specified a manual OneToMany annotation on an EReference then for that
+					EReference no IdBag annotation is added. Also it makes sense to combine this
+					option with setting the option JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS to true
+					also.
+				</li>
+
+
+				
+<li>
+					
+<strong>PersistenceOptions.OPTIMISTIC</strong>
+					: if this property is "false" then no version properties are added to the
+					mapping of EClasses. Default is "true".
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.PERSISTENCE_XML</strong>
+					: the location of the xml annotations file. The location should be a resource
+					path.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT</strong>
+					: as a default Teneo will set a cascade style ALL on a containment relation.
+					This also enables dependent or orphan delete behavior. However it makes more
+					difficult to support cut/paste operations using resources (see
+					<a href="hibernate_details.html#cutpaste">here</a>
+					). This option can be used to control the dependent or orphan delete behavior on
+					a containment relation. If set to false then all cascade styles are set with
+					dependent/orphan-delete disabled. If set to true (the default) then all cascade
+					styles are set including orphan-delete/dependent.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT</strong>
+					: this option controls if Teneo will set the cascade attribute on a
+					non-containment relation. The default value is false, as normally non-contained
+					objects are persisted independently. Cascading on an association has a
+					performance penaly and therefore as a generatl statement this should only be
+					done if really required.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.SET_ENTITY_AUTOMATICALLY</strong>
+					: if set to "false" then only EClasses which have an Entity annotation will be
+					mapped. Default is "true", this means that all EClasses are mapped to the
+					persistent store.
+				</li>
+
+
+				
+<li>
+					
+<strong>PersistenceOptions.SET_GENERATED_VALUE_ON_ID_FEATURE</strong>
+					: only applies if ID_FEATURE_AS_PRIMARY_KEY is true (which is the default). This
+					option forces Teneo to also add a generator tag (with class="native") to the id
+					tag. This is only done for EAttributes which have ID="true" and only if
+					ID_FEATURE_AS_PRIMARY_KEY is true and no manual @Id annotation was set on the
+					EAttribute.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.SET_PROXY</strong>
+					(boolean, default is false): this option controls if Hibernate will use a cglib
+					proxy when loading objects for many-to-one relations. If set to true then Teneo
+					will automatically add a @Proxy annotation to each type. If this option is false
+					then for individual types the @Proxy annotation can also be used (see the
+					Hibernate annotation extensions).
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.UPDATE_SCHEMA</strong>
+					: if set to "false" then the database schema is not updated when initializing a
+					HbDataStore. This improves startup times. Default is "true".
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.USE_MAPPING_FILE</strong>
+					: if set to "true" then Teneo will not do an automatic mapping of the ecore
+					model to Hibernate but instead search for a hibernate.hbm.xml in the classpath
+					of the EMF generated java classes.
+				</li>
+			
+</ul>
+		
+</div>
 	
 </div>
 </div>
