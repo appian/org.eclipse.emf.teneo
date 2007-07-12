@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToManyMapper.java,v 1.9 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: ManyToManyMapper.java,v 1.10 2007/07/12 18:04:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.jpox.mapper.MappingUtil;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -31,10 +32,10 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
-public class ManyToManyMapper extends AssociationMapper {
+public class ManyToManyMapper extends AssociationMapper implements ExtensionPoint {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(ManyToManyMapper.class);
 

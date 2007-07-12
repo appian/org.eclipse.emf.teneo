@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.7 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: IdMapper.java,v 1.8 2007/07/12 18:04:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -26,6 +26,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -33,10 +34,10 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
-public class IdMapper extends AbstractMapper {
+public class IdMapper extends AbstractMapper implements ExtensionPoint {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(IdMapper.class);
 

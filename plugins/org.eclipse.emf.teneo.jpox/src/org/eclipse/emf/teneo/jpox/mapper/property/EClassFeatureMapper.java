@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassFeatureMapper.java,v 1.8 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: EClassFeatureMapper.java,v 1.9 2007/07/12 18:04:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -31,6 +31,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -38,10 +39,10 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Mapps the features of a passed annotated class, the class itself is not mapped here.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
-public class EClassFeatureMapper extends AbstractMapper {
+public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoint {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(EClassFeatureMapper.class);
 
@@ -156,8 +157,8 @@ public class EClassFeatureMapper extends AbstractMapper {
 			}
 		} else { // must be ereference
 			PAnnotatedEReference aReference = (PAnnotatedEReference) aStructuralFeature; // cast
-																							// to
-																							// check
+			// to
+			// check
 			if (aReference.getManyToMany() != null) {
 				mappingContext.getManyToManyMapper().map(eclassElement, aReference);
 			} else if (aReference.getOneToMany() != null) {

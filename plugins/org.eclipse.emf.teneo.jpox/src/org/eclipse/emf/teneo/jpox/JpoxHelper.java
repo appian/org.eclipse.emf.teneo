@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxHelper.java,v 1.6 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: JpoxHelper.java,v 1.7 2007/07/12 18:04:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -29,8 +29,8 @@ import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.jpox.mapper.JPOXMappingGenerator;
 import org.eclipse.emf.teneo.jpox.resource.JPOXResourceFactory;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.jpox.resource.JPOXResourceFactory;
  * EMF Data Stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class JpoxHelper {
 	/** The logger */
@@ -165,7 +165,7 @@ public class JpoxHelper {
 
 	/** Generate a jpox mapping for a set of epackages and options */
 	public String generateMapping(EPackage[] epackages, Properties props) {
-		return generateMapping(epackages, props, new DefaultExtensionManager());
+		return generateMapping(epackages, props, ExtensionManagerFactory.getInstance().create());
 	}
 
 	/** Generate a jpox mapping for a set of epackages and options */

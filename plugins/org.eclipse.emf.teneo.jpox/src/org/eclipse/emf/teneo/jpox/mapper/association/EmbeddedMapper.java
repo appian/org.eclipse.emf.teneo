@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.7 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.8 2007/07/12 18:04:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -21,6 +21,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -28,10 +29,10 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
-public class EmbeddedMapper extends AbstractMapper {
+public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(EmbeddedMapper.class);
 

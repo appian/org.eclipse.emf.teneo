@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenerateJDO.java,v 1.8 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: GenerateJDO.java,v 1.9 2007/07/12 18:04:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -34,8 +34,8 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.extension.ExtensionUtil;
 
 /**
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.extension.ExtensionUtil;
  * methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class GenerateJDO {
@@ -90,7 +90,7 @@ public class GenerateJDO {
 
 	/** Creates the mapping file. Uses the default ExtensionManager */
 	private static void createORMapperFile(String targetFileName, String[] ecores, Properties options) {
-		createORMapperFile(targetFileName, ecores, options, new DefaultExtensionManager());
+		createORMapperFile(targetFileName, ecores, options, ExtensionManagerFactory.getInstance().create());
 	}
 
 	/** Creates the mapping file */

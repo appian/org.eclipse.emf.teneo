@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyBasicMapper.java,v 1.8 2007/07/11 22:17:09 mtaal Exp $
+ * $Id: ManyBasicMapper.java,v 1.9 2007/07/12 18:04:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.jpox.mapper.MappingUtil;
@@ -35,9 +36,9 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
-public class ManyBasicMapper extends AbstractMapper {
+public class ManyBasicMapper extends AbstractMapper implements ExtensionPoint {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(ManyBasicMapper.class);
 

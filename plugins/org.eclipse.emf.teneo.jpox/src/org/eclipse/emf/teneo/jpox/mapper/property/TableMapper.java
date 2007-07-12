@@ -11,29 +11,27 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TableMapper.java,v 1.4 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: TableMapper.java,v 1.5 2007/07/12 18:04:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
-
-import java.util.Iterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
-import org.eclipse.emf.teneo.jpox.mapper.MappingContext;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
  * Maps the table annotation (and its subannotations) to a jpox representation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
-public class TableMapper extends AbstractMapper {
+public class TableMapper extends AbstractMapper implements ExtensionPoint {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(TableMapper.class);
 
@@ -44,11 +42,11 @@ public class TableMapper extends AbstractMapper {
 
 		if (table.getUniqueConstraints().size() > 0) {
 			log.debug("Adding unique constraints " + table.getUniqueConstraints().size());
-			for (Iterator it = table.getUniqueConstraints().iterator(); it.hasNext();) {
-				UniqueConstraint uc = (UniqueConstraint) it.next();
+			for (Object element : table.getUniqueConstraints()) {
+				UniqueConstraint uc = (UniqueConstraint) element;
 				Element unique = classElement.addElement("unique");
-				for (Iterator colNames = uc.getColumnNames().iterator(); colNames.hasNext();) {
-					unique.addElement("column").addAttribute("name", (String) colNames.next());
+				for (Object element2 : uc.getColumnNames()) {
+					unique.addElement("column").addAttribute("name", (String) element2);
 				}
 			}
 		}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.11 2007/07/11 17:14:40 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.12 2007/07/12 18:04:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -23,6 +23,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.jpox.mapper.MappingUtil;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -30,10 +31,10 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
-public class OneToOneMapper extends AssociationMapper {
+public class OneToOneMapper extends AssociationMapper implements ExtensionPoint {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(OneToOneMapper.class);
 
