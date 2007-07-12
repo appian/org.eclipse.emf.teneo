@@ -11,7 +11,6 @@ package org.eclipse.emf.teneo.jpox.test;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -19,7 +18,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class TestAnyModelAction extends AbstractTestAction {
 	/**
@@ -34,7 +33,8 @@ public class TestAnyModelAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.QUALIFY_ENTITY_NAME, PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
+// props.setProperty(PersistenceOptions.QUALIFY_ENTITY_NAME,
+// PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
 		// props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
 		return props;
 	}

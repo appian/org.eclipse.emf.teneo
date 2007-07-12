@@ -17,8 +17,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
-import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.jpox.JpoxHelper;
 import org.eclipse.emf.teneo.jpox.test.stores.JPOXTestStoreFactory;
 import org.eclipse.emf.teneo.test.AbstractTest;
@@ -33,7 +33,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  */
 public class JPOXTestbed extends Testbed {
 
@@ -127,7 +127,7 @@ public class JPOXTestbed extends Testbed {
 			// copyMappingToClassesDir(testCase, mappingFile,
 			// getActiveConfiguration().isOptimistic());
 
-			final ExtensionManager extensionManager = new DefaultExtensionManager();
+			final ExtensionManager extensionManager = ExtensionManagerFactory.getInstance().create();
 			testCase.setExtensions(extensionManager);
 
 			final TestStore store =
