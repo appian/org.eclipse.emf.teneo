@@ -11,27 +11,39 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.1 2007/07/11 14:40:45 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.2 2007/07/12 12:52:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import org.eclipse.emf.teneo.annotations.mapper.BasicPamodelBuilder;
-import org.eclipse.emf.teneo.annotations.mapper.DefaultAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.EClassAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.EDataTypeAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.EFeatureAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.ManyToOneReferenceAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.OneToManyAttributeAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.OneToManyReferenceAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.OneToOneReferenceAnnotator;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
 import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionUtil;
 import org.eclipse.emf.teneo.hibernate.annotations.HbAnnotationModelBuilder;
 import org.eclipse.emf.teneo.hibernate.annotations.HbEAnnotationParserImporter;
+import org.eclipse.emf.teneo.hibernate.annotations.HbEClassAnnotator;
+import org.eclipse.emf.teneo.hibernate.annotations.HbEDataTypeAnnotator;
+import org.eclipse.emf.teneo.hibernate.annotations.HbEFeatureAnnotator;
+import org.eclipse.emf.teneo.hibernate.annotations.HbManyToOneReferenceAnnotator;
+import org.eclipse.emf.teneo.hibernate.annotations.HbOneToManyAttributeAnnotator;
+import org.eclipse.emf.teneo.hibernate.annotations.HbOneToManyReferenceAnnotator;
+import org.eclipse.emf.teneo.hibernate.annotations.HbOneToOneReferenceAnnotator;
 import org.eclipse.emf.teneo.hibernate.annotations.HbXmlPersistenceMapper;
-import org.eclipse.emf.teneo.hibernate.annotations.HibernateDefaultAnnotator;
 
 /**
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class MappingUtil {
 
@@ -39,11 +51,24 @@ public class MappingUtil {
 	public static void registerHbExtensions(ExtensionManager extensionManager) {
 		extensionManager.registerExtension(ExtensionUtil.createExtension(BasicPamodelBuilder.class,
 			HbAnnotationModelBuilder.class));
-		extensionManager.registerExtension(ExtensionUtil.createExtension(DefaultAnnotator.class,
-			HibernateDefaultAnnotator.class));
 		extensionManager.registerExtension(ExtensionUtil.createExtension(EAnnotationParserImporter.class,
 			HbEAnnotationParserImporter.class));
 		extensionManager.registerExtension(ExtensionUtil.createExtension(XmlPersistenceMapper.class,
 			HbXmlPersistenceMapper.class));
+		extensionManager.registerExtension(ExtensionUtil
+			.createExtension(EClassAnnotator.class, HbEClassAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(EFeatureAnnotator.class,
+			HbEFeatureAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(OneToManyAttributeAnnotator.class,
+			HbOneToManyAttributeAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(EDataTypeAnnotator.class,
+			HbEDataTypeAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(OneToManyReferenceAnnotator.class,
+			HbOneToManyReferenceAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(OneToOneReferenceAnnotator.class,
+			HbOneToOneReferenceAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(ManyToOneReferenceAnnotator.class,
+			HbManyToOneReferenceAnnotator.class));
+
 	}
 }
