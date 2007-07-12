@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.9 2007/07/11 14:42:21 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.10 2007/07/12 12:52:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class EcoreAction extends AbstractTestAction {
 
@@ -82,14 +82,14 @@ public class EcoreAction extends AbstractTestAction {
 				store.beginTransaction();
 				final EPackage epack = (EPackage) resourceOne.getContents().get(0);
 				store.store(epack);
-				// store.store(EcorePackage.eINSTANCE);
+				store.store(EcorePackage.eINSTANCE);
 				store.commitTransaction();
 			}
 
 			// read from the relational store
 			// and save it in a xml byte array
 			final Resource resourceTwo = new XMIResourceImpl();
-			{
+			if (false) {
 				store.beginTransaction();
 				final List<?> result = store.getObjects(EPackage.class);
 				// get the library ecore from the result
@@ -113,6 +113,17 @@ public class EcoreAction extends AbstractTestAction {
 				// now compare the two resources
 				// compares fails for now
 				// compareResult(resourceOne, resourceTwo);
+				store.commitTransaction();
+			}
+
+			// and now delete the ecorepackage
+			{
+				store.beginTransaction();
+				final List<?> list = store.getObjects(EPackage.class);
+				final EPackage epack = (EPackage) list.get(0);
+				for (Object o : list) {
+					store.deleteObject(o);
+				}
 				store.commitTransaction();
 			}
 
