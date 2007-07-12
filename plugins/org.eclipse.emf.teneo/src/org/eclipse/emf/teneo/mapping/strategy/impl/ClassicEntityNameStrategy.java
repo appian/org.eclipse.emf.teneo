@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultEntityNameStrategy.java,v 1.2 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: ClassicEntityNameStrategy.java,v 1.1 2007/07/12 18:05:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -34,15 +34,15 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
  * name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  */
-public class DefaultEntityNameStrategy implements EntityNameStrategy {
+public class ClassicEntityNameStrategy implements EntityNameStrategy {
 
 	/** The logger */
-	private static Log log = LogFactory.getLog(DefaultEntityNameStrategy.class);
+	private static Log log = LogFactory.getLog(ClassicEntityNameStrategy.class);
 
 	/** The singleton instance as it is thread safe */
-	public static final DefaultEntityNameStrategy INSTANCE = new DefaultEntityNameStrategy();
+	public static final ClassicEntityNameStrategy INSTANCE = new ClassicEntityNameStrategy();
 
 	// The pamodel for which this is done
 	private PAnnotatedModel paModel;

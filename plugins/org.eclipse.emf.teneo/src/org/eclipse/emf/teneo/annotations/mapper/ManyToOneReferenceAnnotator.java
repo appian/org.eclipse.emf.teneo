@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneReferenceAnnotator.java,v 1.1 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: ManyToOneReferenceAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -24,15 +24,16 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator {
+public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(ManyToOneReferenceAnnotator.class);

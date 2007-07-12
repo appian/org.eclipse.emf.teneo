@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.5 2007/07/11 22:16:57 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.6 2007/07/12 18:05:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the options set in the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
@@ -60,31 +60,48 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 
 	private ExtensionManager extensionManager;
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getPrimaryKeyJoinColumnName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass,
+	 *      java.lang.String)
+	 */
 	public String getPrimaryKeyJoinColumnName(PAnnotatedEClass aSuperClass, String idFeature) {
 		return convert(getEntityName(aSuperClass.getPaModel(), aSuperClass.getAnnotatedEClass()) + "_" + idFeature,
 			true);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getSecondaryTablePrimaryKeyJoinColumnName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
+	 */
 	public String getSecondaryTablePrimaryKeyJoinColumnName(PAnnotatedEStructuralFeature iddef) {
 		return convert(iddef.getAnnotatedEStructuralFeature().getName());
 	}
 
-	/** Returns the table name for a passed AnnotatedEClass */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getTableName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass)
+	 */
 	public String getTableName(PAnnotatedEClass aClass) {
 		return convert(getEntityName(aClass.getPaModel(), aClass.getAnnotatedEClass()));
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getColumnName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
+	 */
 	public String getColumnName(PAnnotatedEStructuralFeature aStructuralFeature) {
 		return convert(aStructuralFeature.getAnnotatedEStructuralFeature().getName());
 	}
 
-	/**
-	 * Return the name of the foreign key used for this aReference. If null is returned then the
-	 * name of the foreign key is not set. Returns the concatenation of the entityname of the aclass
-	 * to which the areference belongs.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * This method is normally called when the PersistenceOption CREATE_READABLE_FOREIGN_KEY_NAMES
-	 * is true.
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getForeignKeyName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
 	 */
 	public String getForeignKeyName(PAnnotatedEStructuralFeature aFeature) {
 		final PAnnotatedEClass aClass = aFeature.getPaEClass();
@@ -92,7 +109,11 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 				aFeature.getAnnotatedEStructuralFeature().getName(), true);
 	}
 
-	/** Return joincolumn names for many-to-one */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getManyToOneJoinColumnNames(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
+	 */
 	public List<String> getManyToOneJoinColumnNames(PAnnotatedEReference aReference) {
 		final EReference eref = aReference.getAnnotatedEReference();
 
@@ -138,7 +159,11 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		return result;
 	}
 
-	/** Return a list of join columns for a many is eAttribute */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getOneToManyEAttributeJoinColumns(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute)
+	 */
 	public List<String> getOneToManyEAttributeJoinColumns(PAnnotatedEAttribute aAttribute) {
 		final PAnnotatedEClass aClass = aAttribute.getPaEClass();
 		final String typeName = aClass.getAnnotatedEClass().getName();
@@ -162,7 +187,11 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		return result;
 	}
 
-	/** Return a list of join columns for a many is eReference */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getOneToManyEReferenceJoinColumns(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
+	 */
 	public List<String> getOneToManyEReferenceJoinColumns(PAnnotatedEReference aReference) {
 		final PAnnotatedEClass aClass = aReference.getPaEClass();
 		final String typeName;
@@ -196,8 +225,11 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		return result;
 	}
 
-	/**
-	 * Return a list of join columns for a join table for a many to many
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getJoinTableJoinColumns(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference,
+	 *      boolean)
 	 */
 	public List<String> getJoinTableJoinColumns(PAnnotatedEReference aReference, boolean inverse) {
 		final PAnnotatedEClass aClass = aReference.getPaEClass();
@@ -240,7 +272,11 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		return result;
 	}
 
-	/** Return the name of the join table in case of a list of simpletypes */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getJoinTableName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute)
+	 */
 	public String getJoinTableName(PAnnotatedEAttribute aAttribute) {
 		assert (aAttribute.getAnnotatedEAttribute().isMany());
 		final PAnnotatedEClass aClass = aAttribute.getPaEClass();
@@ -249,10 +285,14 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 
 	}
 
-	/** Return the name of the join table */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getJoinTableName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
+	 */
 	public String getJoinTableName(PAnnotatedEReference aReference) {
 		final EReference eReference = aReference.getAnnotatedEReference();
-		final boolean isEObject = eReference.getEType() == DefaultEntityNameStrategy.EOBJECT_ECLASS;
+		final boolean isEObject = eReference.getEType() == ClassicEntityNameStrategy.EOBJECT_ECLASS;
 		final String jTableName;
 
 		EReference eOpposite = eReference.getEOpposite();
@@ -288,32 +328,46 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		return convert(jTableName);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getDiscriminatorColumnName()
+	 */
 	public String getDiscriminatorColumnName() {
 		return convert("DTYPE"); // replace with constant somewhere
 	}
 
-	/**
-	 * Return the name of the version column used.
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getVersionColumnName()
 	 */
 	public String getVersionColumnName() {
 		return convert(persistenceOptions.getVersionColumnName());
 	}
 
-	/**
-	 * Return the column name for the id column of the idbag join table.
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getIdBagIDColumn()
 	 */
 	public String getIdBagIDColumn() {
 		return convert(persistenceOptions.getIDBagIDColumnName());
 	}
 
-	/** Return the column name for the synthetic ID column */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getSyntheticIDColumnName()
+	 */
 	public String getSyntheticIDColumnName() {
 		return convert(persistenceOptions.getIdColumnName());
 	}
 
-	/**
-	 * Sets the PersistenceOptions used. This is mainly to support backward compatibility with older
-	 * version in which the naming strategy was controlled by options.
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#setPersistenceOptions(org.eclipse.emf.teneo.PersistenceOptions)
 	 */
 	public void setPersistenceOptions(PersistenceOptions po) {
 		optionMaximumSqlLength = po.getMaximumSqlNameLength();
@@ -334,6 +388,11 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		return StrategyUtil.getEntityName(getEntityNameStrategy(), persistenceOptions, paModel, eClass);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#convert(java.lang.String)
+	 */
 	public String convert(String name) {
 		return convert(name, false);
 	}
@@ -360,23 +419,28 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		return nameHere.compareTo(nameThere) > 0;
 	}
 
-	/**
-	 * @return the extensionManager
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getExtensionManager()
 	 */
 	public ExtensionManager getExtensionManager() {
 		return extensionManager;
 	}
 
-	/**
-	 * @param extensionManager
-	 *            the extensionManager to set
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#setExtensionManager(org.eclipse.emf.teneo.extension.ExtensionManager)
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;
 	}
 
-	/**
-	 * @return the entityNameStrategy
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getEntityNameStrategy()
 	 */
 	public EntityNameStrategy getEntityNameStrategy() {
 		if (entityNameStrategy == null) {

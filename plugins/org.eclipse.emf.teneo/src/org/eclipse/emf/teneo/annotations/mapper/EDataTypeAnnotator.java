@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EDataTypeAnnotator.java,v 1.1 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: EDataTypeAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -20,15 +20,16 @@ package org.eclipse.emf.teneo.annotations.mapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * Annotates an EDataType, does nothing in this implementation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public class EDataTypeAnnotator extends AbstractAnnotator {
+public class EDataTypeAnnotator extends AbstractAnnotator implements ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(EDataTypeAnnotator.class);

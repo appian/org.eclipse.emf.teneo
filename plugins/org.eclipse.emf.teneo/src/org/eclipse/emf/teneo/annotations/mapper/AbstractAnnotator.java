@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractAnnotator.java,v 1.1 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: AbstractAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -24,7 +24,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.extension.ExtensionInitializable;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
-import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
@@ -33,10 +32,10 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * The parent class of all annotator classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public abstract class AbstractAnnotator implements ExtensionPoint, ExtensionManagerAware, ExtensionInitializable {
+public abstract class AbstractAnnotator implements ExtensionManagerAware, ExtensionInitializable {
 
 	protected PannotationFactory factory = PannotationFactory.eINSTANCE;
 	private ExtensionManager extensionManager;

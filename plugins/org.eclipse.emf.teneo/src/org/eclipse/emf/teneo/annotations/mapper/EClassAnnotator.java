@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.1 2007/07/12 12:55:57 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -37,16 +37,17 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
 
 /**
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public class EClassAnnotator extends AbstractAnnotator {
+public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(EClassAnnotator.class);

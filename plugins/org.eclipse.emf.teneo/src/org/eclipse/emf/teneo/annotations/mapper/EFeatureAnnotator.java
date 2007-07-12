@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EFeatureAnnotator.java,v 1.1 2007/07/12 12:55:57 mtaal Exp $
+ * $Id: EFeatureAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,6 +30,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
@@ -37,10 +38,10 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * (one-to-many, many-to-many etc.).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public class EFeatureAnnotator extends AbstractAnnotator {
+public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(EFeatureAnnotator.class);

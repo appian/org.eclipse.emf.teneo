@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: SQLNameStrategy.java,v 1.4 2007/07/11 22:16:57 mtaal Exp $
+ * $Id: SQLNameStrategy.java,v 1.5 2007/07/12 18:05:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -33,42 +33,73 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Note that strategies are normally created once for each instance of persistenceoptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public interface SQLNameStrategy extends ExtensionPoint {
 
-	String getPrimaryKeyJoinColumnName(PAnnotatedEClass aSuperClass, String idFeature);
+	/** Converts the name to the required sql setting (length and case). */
+	public abstract String convert(String name);
 
-	String getSecondaryTablePrimaryKeyJoinColumnName(PAnnotatedEStructuralFeature iddef);
+	/** The join column name used to join a joined-subclass table with its parent table */
+	public abstract String getPrimaryKeyJoinColumnName(PAnnotatedEClass aSuperClass, String idFeature);
 
-	String getTableName(PAnnotatedEClass aClass);
+	/** The join colum name for the secondary table */
+	public abstract String getSecondaryTablePrimaryKeyJoinColumnName(PAnnotatedEStructuralFeature iddef);
 
-	String getColumnName(PAnnotatedEStructuralFeature aStructuralFeature);
+	/** Returns the table name for a passed AnnotatedEClass */
+	public abstract String getTableName(PAnnotatedEClass aClass);
 
-	String getForeignKeyName(PAnnotatedEStructuralFeature aFeature);
+	/** Simple column name */
+	public abstract String getColumnName(PAnnotatedEStructuralFeature aStructuralFeature);
 
-	List<String> getManyToOneJoinColumnNames(PAnnotatedEReference aReference);
+	/**
+	 * Return the name of the foreign key used for this aReference. If null is returned then the
+	 * name of the foreign key is not set. Returns the concatenation of the entityname of the aclass
+	 * to which the areference belongs.
+	 * 
+	 * This method is normally called when the PersistenceOption CREATE_READABLE_FOREIGN_KEY_NAMES
+	 * is true.
+	 */
+	public abstract String getForeignKeyName(PAnnotatedEStructuralFeature aFeature);
 
-	List<String> getOneToManyEAttributeJoinColumns(PAnnotatedEAttribute aAttribute);
+	/** Return joincolumn names for many-to-one */
+	public abstract List<String> getManyToOneJoinColumnNames(PAnnotatedEReference aReference);
 
-	List<String> getOneToManyEReferenceJoinColumns(PAnnotatedEReference aReference);
+	/** Return a list of join columns for a many is eAttribute */
+	public abstract List<String> getOneToManyEAttributeJoinColumns(PAnnotatedEAttribute aAttribute);
 
-	List<String> getJoinTableJoinColumns(PAnnotatedEReference aReference, boolean inverse);
+	/** Return a list of join columns for a many is eReference */
+	public abstract List<String> getOneToManyEReferenceJoinColumns(PAnnotatedEReference aReference);
+
+	/**
+	 * Return a list of join columns for a join table for a many to many
+	 */
+	public abstract List<String> getJoinTableJoinColumns(PAnnotatedEReference aReference, boolean inverse);
 
 	/** Return the name of the join table in case of a list of simpletypes */
-	public String getJoinTableName(PAnnotatedEAttribute aAttribute);
+	public abstract String getJoinTableName(PAnnotatedEAttribute aAttribute);
 
-	String getJoinTableName(PAnnotatedEReference aReference);
+	/** Return the name of the join table */
+	public abstract String getJoinTableName(PAnnotatedEReference aReference);
 
-	String getDiscriminatorColumnName();
+	public abstract String getDiscriminatorColumnName();
 
-	String getVersionColumnName();
+	/**
+	 * Return the name of the version column used.
+	 */
+	public abstract String getVersionColumnName();
 
-	String getIdBagIDColumn();
+	/**
+	 * Return the column name for the id column of the idbag join table.
+	 */
+	public abstract String getIdBagIDColumn();
 
-	String getSyntheticIDColumnName();
+	/** Return the column name for the synthetic ID column */
+	public abstract String getSyntheticIDColumnName();
 
-	public String convert(String name);
-
-	void setPersistenceOptions(PersistenceOptions po);
+	/**
+	 * Sets the PersistenceOptions used. This is mainly to support backward compatibility with older
+	 * version in which the naming strategy was controlled by options.
+	 */
+	public abstract void setPersistenceOptions(PersistenceOptions po);
 }

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BidirectionalManyToManyAnnotator.java,v 1.1 2007/07/12 12:55:57 mtaal Exp $
+ * $Id: BidirectionalManyToManyAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -25,15 +25,16 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * Annotates a bidirectional many-to-many ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator {
+public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(BidirectionalManyToManyAnnotator.class);

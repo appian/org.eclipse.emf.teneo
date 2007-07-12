@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyAttributeAnnotator.java,v 1.1 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: OneToManyAttributeAnnotator.java,v 1.2 2007/07/12 18:05:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -31,16 +31,17 @@ import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * Annotates a one-to-many attribute (an eattribute with ismany=true), an example is a list of
  * primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator {
+public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(OneToManyAttributeAnnotator.class);

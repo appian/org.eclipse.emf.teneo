@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: SingleAttributeAnnotator.java,v 1.1 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: SingleAttributeAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -37,15 +37,16 @@ import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * Annotates a single attribute, a primitive type such as a long or int.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public class SingleAttributeAnnotator extends BaseEFeatureAnnotator {
+public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(SingleAttributeAnnotator.class);

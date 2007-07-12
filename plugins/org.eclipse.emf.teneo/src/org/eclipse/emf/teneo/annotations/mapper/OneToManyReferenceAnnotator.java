@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.1 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -32,6 +32,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -39,10 +40,10 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator {
+public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(OneToManyReferenceAnnotator.class);

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: UnidirectionalManyToManyAnnotator.java,v 1.1 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: UnidirectionalManyToManyAnnotator.java,v 1.2 2007/07/12 18:05:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -25,15 +25,16 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * Annotates a many-to-many which is handled from one side.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
-public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator {
+public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(UnidirectionalManyToManyAnnotator.class);

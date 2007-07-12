@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.30 2007/07/11 18:59:54 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.31 2007/07/12 18:05:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 public class PersistenceOptions {
 
@@ -158,28 +158,6 @@ public class PersistenceOptions {
 	 * entities or that eclass names are used.
 	 */
 	public static final String USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME = NAMING_PREFIX + "java_class_entity_names";
-
-	/**
-	 * Qualify the entity name
-	 * 
-	 * @Deprecated use the EntityNameStrategy and extensionManager concept
-	 */
-	public static final String QUALIFY_ENTITY_NAME = NAMING_PREFIX + "qualify_entity_name";
-
-	/**
-	 * With the values
-	 * 
-	 * @Deprecated use the EntityNameStrategy and extensionManager concept
-	 * 
-	 */
-	public static final String QUALIFY_ENTITY_NAME_NO = "no";
-
-	/**
-	 * The value of the QUALIFY_ENTITY_NAME when nsprefix qualification should occur
-	 * 
-	 * @Deprecated use the EntityNameStrategy and extensionManager concept
-	 */
-	public static final String QUALIFY_ENTITY_NAME_NSPREFIX = "nsprefix";
 
 	/** Map all lists as a bag to the db (does not map the list index to the db), default is false */
 	public static final String ALWAYS_MAP_LIST_AS_BAG = MAPPING_PREFIX + "always_map_list_as_bag";
@@ -543,15 +521,6 @@ public class PersistenceOptions {
 	/** Returns the value of the join column naming strategy */
 	public String getJoinColumnNamingStrategy() {
 		return properties.getProperty(JOIN_COLUMN_NAMING_STRATEGY);
-	}
-
-	/**
-	 * Returns the qualify entity names option, returns QUALIFY_ENTITY_NAME_NO ("no")
-	 * 
-	 * @Deprecated use the EntityNameStrategy and extensionManager concept
-	 */
-	public String getEntityNameOption() {
-		return properties.getProperty(QUALIFY_ENTITY_NAME, QUALIFY_ENTITY_NAME_NO);
 	}
 
 	/**
