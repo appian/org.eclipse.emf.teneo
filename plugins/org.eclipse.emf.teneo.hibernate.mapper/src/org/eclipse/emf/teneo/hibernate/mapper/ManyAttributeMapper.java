@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyAttributeMapper.java,v 1.14 2007/07/12 18:04:12 mtaal Exp $
+ * </copyright> $Id: ManyAttributeMapper.java,v 1.15 2007/07/12 19:03:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -91,8 +91,7 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements Ex
 		if (FeatureMapUtil.isFeatureMap(paAttribute.getAnnotatedEAttribute())) {
 			FeatureMapMapping fmm = new FeatureMapMapping(getHbmContext(), paAttribute);
 			getHbmContext().addFeatureMapMapper(fmm);
-			final Element manyElement =
-					collElement.addElement("one-to-many").addAttribute("entity-name", fmm.getEntityName());
+			collElement.addElement("one-to-many").addAttribute("entity-name", fmm.getEntityName());
 		} else {
 			addElementElement(paAttribute, collElement, eattr.getName(), paAttribute, getColumns(paAttribute), otm
 				.getTargetEntity());
