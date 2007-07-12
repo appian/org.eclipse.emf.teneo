@@ -12,15 +12,27 @@
  *
  * </copyright>
  *
- * $Id: ExtensionUtil.java,v 1.1 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: ExtensionUtil.java,v 1.2 2007/07/12 12:55:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
 
+import org.eclipse.emf.teneo.annotations.mapper.AnnotationGenerator;
 import org.eclipse.emf.teneo.annotations.mapper.BasicPamodelBuilder;
-import org.eclipse.emf.teneo.annotations.mapper.DefaultAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.BidirectionalManyToManyAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.EClassAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.EDataTypeAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.EFeatureAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.ManyToOneReferenceAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.OneToManyAttributeAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.OneToManyReferenceAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.OneToOneReferenceAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
+import org.eclipse.emf.teneo.annotations.mapper.SingleAttributeAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.UnidirectionalManyToManyAnnotator;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
+import org.eclipse.emf.teneo.annotations.xml.XmlElementToEStructuralFeatureMapper;
+import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceContentHandler;
 import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
 import org.eclipse.emf.teneo.classloader.ClassLoaderStrategy;
 import org.eclipse.emf.teneo.classloader.ContextClassLoaderStrategy;
@@ -33,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.EntityResolvingNameStrategy;
  * Contains simple utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class ExtensionUtil {
@@ -61,13 +73,30 @@ public class ExtensionUtil {
 
 		// the ones coming from this plugin
 		em.registerExtension(createExtension(BasicPamodelBuilder.class, BasicPamodelBuilder.class));
-		em.registerExtension(createExtension(DefaultAnnotator.class, DefaultAnnotator.class));
+		em.registerExtension(createExtension(AnnotationGenerator.class, AnnotationGenerator.class));
 		em.registerExtension(createExtension(EAnnotationParserImporter.class, EAnnotationParserImporter.class));
 		em.registerExtension(createExtension(PersistenceMappingBuilder.class, PersistenceMappingBuilder.class));
 		em.registerExtension(createExtension(XmlPersistenceMapper.class, XmlPersistenceMapper.class));
 		em.registerExtension(createExtension(ClassLoaderStrategy.class, ContextClassLoaderStrategy.class));
 		em.registerExtension(createExtension(EntityNameStrategy.class, EntityResolvingNameStrategy.class));
 		em.registerExtension(createExtension(SQLNameStrategy.class, ClassicSQLNameStrategy.class));
+		em.registerExtension(createExtension(XmlPersistenceContentHandler.class, XmlPersistenceContentHandler.class));
+		em.registerExtension(createExtension(XmlElementToEStructuralFeatureMapper.class,
+			XmlElementToEStructuralFeatureMapper.class));
+
+		// annotator related
+		em.registerExtension(createExtension(EClassAnnotator.class, EClassAnnotator.class));
+		em.registerExtension(createExtension(EFeatureAnnotator.class, EFeatureAnnotator.class));
+		em.registerExtension(createExtension(OneToManyAttributeAnnotator.class, OneToManyAttributeAnnotator.class));
+		em.registerExtension(createExtension(SingleAttributeAnnotator.class, SingleAttributeAnnotator.class));
+		em.registerExtension(createExtension(BidirectionalManyToManyAnnotator.class,
+			BidirectionalManyToManyAnnotator.class));
+		em.registerExtension(createExtension(UnidirectionalManyToManyAnnotator.class,
+			UnidirectionalManyToManyAnnotator.class));
+		em.registerExtension(createExtension(EDataTypeAnnotator.class, EDataTypeAnnotator.class));
+		em.registerExtension(createExtension(OneToManyReferenceAnnotator.class, OneToManyReferenceAnnotator.class));
+		em.registerExtension(createExtension(OneToOneReferenceAnnotator.class, OneToOneReferenceAnnotator.class));
+		em.registerExtension(createExtension(ManyToOneReferenceAnnotator.class, ManyToOneReferenceAnnotator.class));
 
 		// from the hibernate plugin
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.HbContext", true));
@@ -88,6 +117,8 @@ public class ExtensionUtil {
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.MappingContext", false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.OneToManyMapper", false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.OneToOneMapper", false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener", false));
 
 		// jpox mapping
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.jpox.mapper.association.EmbeddedMapper", false));

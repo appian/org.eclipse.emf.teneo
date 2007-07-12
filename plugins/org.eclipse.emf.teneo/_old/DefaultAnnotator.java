@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultAnnotator.java,v 1.9 2007/07/11 22:16:57 mtaal Exp $
+ * $Id: DefaultAnnotator.java,v 1.1 2007/07/12 12:55:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -91,7 +91,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.1 $
  */
 public class DefaultAnnotator implements ExtensionPoint, ExtensionManagerAware {
 

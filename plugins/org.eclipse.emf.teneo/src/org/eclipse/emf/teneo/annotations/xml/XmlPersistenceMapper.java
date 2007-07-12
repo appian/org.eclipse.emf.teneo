@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceMapper.java,v 1.2 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: XmlPersistenceMapper.java,v 1.3 2007/07/12 12:55:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -27,6 +27,8 @@ import javax.xml.parsers.SAXParserFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
@@ -36,13 +38,15 @@ import org.xml.sax.SAXNotRecognizedException;
  * 
  * @author <a href="lmfridael@elver.org">Laurens Fridael</a>
  */
-public class XmlPersistenceMapper implements ExtensionPoint {
+public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAware {
 
 	/** The inputStream containing the xml document */
 	private InputStream xmlMapping;
 
 	/** The logger */
 	protected static final Log log = LogFactory.getLog(XmlPersistenceMapper.class);
+
+	private ExtensionManager extensionManager;
 
 	/**
 	 * Sets the InputStream containing the XML mapping.
@@ -99,8 +103,13 @@ public class XmlPersistenceMapper implements ExtensionPoint {
 				saxParserFactory.setValidating(false);
 				saxParser = saxParserFactory.newSAXParser();
 			}
-			saxParser.parse(xmlMapping, new XmlPersistenceContentHandler(pAnnotatedModel, getPrefix(), this.getClass()
-				.getResourceAsStream("persistence-mapping.xsd")));
+
+			final XmlPersistenceContentHandler xmlContentHandler =
+					extensionManager.getExtension(XmlPersistenceContentHandler.class);
+			xmlContentHandler.setPAnnotatedModel(pAnnotatedModel);
+			xmlContentHandler.setPrefix(getPrefix());
+			xmlContentHandler.setSchema(this.getClass().getResourceAsStream("persistence-mapping.xsd"));
+			saxParser.parse(xmlMapping, xmlContentHandler);
 		} catch (SAXException e) {
 			throw new ParseXMLAnnotationsException(e);
 		} catch (IOException e) {
@@ -119,5 +128,20 @@ public class XmlPersistenceMapper implements ExtensionPoint {
 	/** Return a prefix which are used by a subpackage to make efeatures unique */
 	protected String getPrefix() {
 		return "";
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
 	}
 }

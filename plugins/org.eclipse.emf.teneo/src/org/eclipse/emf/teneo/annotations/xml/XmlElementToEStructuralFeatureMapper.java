@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlElementToEStructuralFeatureMapper.java,v 1.1 2007/06/29 07:31:47 mtaal Exp $
+ * $Id: XmlElementToEStructuralFeatureMapper.java,v 1.2 2007/07/12 12:55:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -25,6 +25,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -35,14 +36,14 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author <a href="lmfridael@elver.org">Laurens Fridael</a>
  * 
  */
-class XmlElementToEStructuralFeatureMapper {
+public class XmlElementToEStructuralFeatureMapper implements ExtensionPoint {
 	private Map<String, String> eStructuralFeatureNamesByXmlElementName = new HashMap<String, String>();
 
 	private String xmlElementName;
 
 	private boolean appInfoValue;
 
-	XmlElementToEStructuralFeatureMapper(InputStream schema) {
+	public void parseSchema(InputStream schema) {
 		try {
 			final SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 			saxParserFactory.setNamespaceAware(true);
@@ -53,23 +54,25 @@ class XmlElementToEStructuralFeatureMapper {
 		}
 	}
 
-	private class XmlContentHandler extends DefaultHandler {
+	public class XmlContentHandler extends DefaultHandler {
 
+		@Override
 		public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 			if (localName.equals("attribute") || localName.equals("element")) {
 				xmlElementName = attributes.getValue("name");
-			} else if (localName.equals("appinfo")
-					&& PersistenceMappingSchemaGenerator.ESTRUCTURAL_FEATURE_SOURCE_NAME.equals(attributes
-							.getValue("source"))) {
+			} else if (localName.equals("appinfo") &&
+					PersistenceMappingSchemaGenerator.ESTRUCTURAL_FEATURE_SOURCE_NAME.equals(attributes
+						.getValue("source"))) {
 				appInfoValue = true;
 			}
 		}
 
+		@Override
 		public void characters(char[] ch, int start, int length) throws SAXException {
 			if (appInfoValue && xmlElementName != null) {
 				final String eStructuralFeatureName = new String(ch, start, length).trim();
-				if (eStructuralFeatureName.length() > 0
-						&& !eStructuralFeatureNamesByXmlElementName.containsKey(xmlElementName)) {
+				if (eStructuralFeatureName.length() > 0 &&
+						!eStructuralFeatureNamesByXmlElementName.containsKey(xmlElementName)) {
 					eStructuralFeatureNamesByXmlElementName.put(xmlElementName, eStructuralFeatureName);
 					appInfoValue = false;
 					xmlElementName = null;
@@ -79,6 +82,6 @@ class XmlElementToEStructuralFeatureMapper {
 	}
 
 	public String getEStructuralFeatureName(String xmlElementName) {
-		return (String) eStructuralFeatureNamesByXmlElementName.get(xmlElementName);
+		return eStructuralFeatureNamesByXmlElementName.get(xmlElementName);
 	}
 }

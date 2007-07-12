@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * mapping model is returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class PersistenceMappingBuilder implements ExtensionPoint {
 
@@ -127,7 +127,7 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 		// processing mechanism
 		// can provide their own default annotation.
 		pam.setInitialized(true);
-		extensionManager.getExtension(DefaultAnnotator.class).map(pam, po);
+		extensionManager.getExtension(AnnotationGenerator.class).map(pam, po);
 
 		log.debug("Returning created pamodel");
 		return pam;

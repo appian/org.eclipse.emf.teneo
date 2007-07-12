@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.1 2007/06/29 07:31:47 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.2 2007/07/12 12:55:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -37,18 +37,22 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * SAX ContentHandler for processing XML persistence mapping. Used internally by {@link XmlPersistenceMapper}.
+ * SAX ContentHandler for processing XML persistence mapping. Used internally by
+ * {@link XmlPersistenceMapper}.
  * 
  * @author <a href="lmfridael@elver.org">Laurens Fridael</a>
  * 
  */
-class XmlPersistenceContentHandler extends DefaultHandler {
+public class XmlPersistenceContentHandler extends DefaultHandler implements ExtensionPoint, ExtensionManagerAware {
 
 	// Parse states
 
@@ -86,7 +90,7 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	private static final int EDATATYPE = 10;
 
 	// Annotation element for an <eclass>.
-	private static final int EDATATYPE_ANNOTATION =11;
+	private static final int EDATATYPE_ANNOTATION = 11;
 
 	// The pattern to split the XML element names against.
 	private static Pattern XML_NAME_PATTERN = Pattern.compile("-");
@@ -105,7 +109,7 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	}
 
 	// The PAnnotatedModel that will be populated.
-	private final PAnnotatedModel pAnnotatedModel;
+	private PAnnotatedModel pAnnotatedModel;
 
 	// The PAnnotatedEPackage to which the XML annotations will be applied.
 	private PAnnotatedEPackage pAnnotatedEPackage;
@@ -129,28 +133,35 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	private Stack<Integer> parseStates = new Stack<Integer>();
 
 	// prefix for extra efeature parsing
-	private final String prefix;
+	private String prefix;
+
+	// ExtensionManager
+	private ExtensionManager extensionManager;
 
 	/** The xml element to structural feature mapper */
-	private final XmlElementToEStructuralFeatureMapper xmlElementToEStructuralFeatureMapper;
-	
-	XmlPersistenceContentHandler(PAnnotatedModel pAnnotatedModel, String prefix, InputStream schema) {
-		this.pAnnotatedModel = pAnnotatedModel;
+	private XmlElementToEStructuralFeatureMapper xmlElementToEStructuralFeatureMapper;
+
+	public XmlPersistenceContentHandler() {
 		parseStates.push(ROOT);
-		this.prefix = prefix;
-		xmlElementToEStructuralFeatureMapper = new XmlElementToEStructuralFeatureMapper(schema);
+	}
+
+	/** Set the schema */
+	public void setSchema(InputStream schema) {
+		xmlElementToEStructuralFeatureMapper =
+				getExtensionManager().getExtension(XmlElementToEStructuralFeatureMapper.class);
+		xmlElementToEStructuralFeatureMapper.parseSchema(schema);
 	}
 
 	/**
 	 * Returns the current parse state.
 	 */
-	private int getParseState() {
+	protected int getParseState() {
 		assert (parseStates.size() >= 1) : "Parse state stack must contain at least one element.";
-		return ((Integer) parseStates.peek()).intValue();
+		return (parseStates.peek()).intValue();
 	}
 
-	private PAnnotation getPAnnotation() {
-		return (PAnnotation) pAnnotations.peek();
+	protected PAnnotation getPAnnotation() {
+		return pAnnotations.peek();
 	}
 
 	/**
@@ -158,16 +169,16 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	 * 
 	 */
 	@SuppressWarnings("unchecked")
-	private void applyAnnotation(EObject pAnnotatedEModelElement, String elementName, Attributes attributes)
+	protected void applyAnnotation(EObject pAnnotatedEModelElement, String elementName, Attributes attributes)
 			throws SAXException {
-		final EStructuralFeature annotationEStructuralFeature = getEStructuralFeature(pAnnotatedEModelElement,
-				elementName);
+		final EStructuralFeature annotationEStructuralFeature =
+				getEStructuralFeature(pAnnotatedEModelElement, elementName);
 		if (annotationEStructuralFeature == null) {
 			throw new SAXException("Cannot handle element <" + elementName + ">");
 		}
 
-		final PAnnotation pAnnotation = (PAnnotation) EcoreUtil
-				.create((EClass) annotationEStructuralFeature.getEType());
+		final PAnnotation pAnnotation =
+				(PAnnotation) EcoreUtil.create((EClass) annotationEStructuralFeature.getEType());
 		pAnnotations.push(pAnnotation);
 
 		if (annotationEStructuralFeature.isMany()) {
@@ -180,8 +191,8 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 		for (int i = 0, n = attributes.getLength(); i < n; i++) {
 			final EAttribute eAttribute = (EAttribute) getEStructuralFeature(pAnnotation, attributes.getLocalName(i));
 			final EDataType eDataType = eAttribute.getEAttributeType();
-			final Object valueObject = eDataType.getEPackage().getEFactoryInstance().createFromString(eDataType,
-					attributes.getValue(i));
+			final Object valueObject =
+					eDataType.getEPackage().getEFactoryInstance().createFromString(eDataType, attributes.getValue(i));
 			if (eAttribute.isMany()) {
 				((List) pAnnotation.eGet(eAttribute)).add(valueObject);
 			} else {
@@ -190,169 +201,176 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 		}
 
 	}
-	
-	/** 
+
+	/**
 	 * Returns an estructuralfeature on the basis of the name, mainly does conversion of the xmlName
-	 * to the efeaturename, the prefix returned from getPrefix is also used.
-	 * todo: move prefix handling to XmlElementToEStructuralFeatureMapper.
+	 * to the efeaturename, the prefix returned from getPrefix is also used. todo: move prefix
+	 * handling to XmlElementToEStructuralFeatureMapper.
 	 */
-	private EStructuralFeature getEStructuralFeature(EObject pAnnotatedEModelElement, String xmlName) {
+	protected EStructuralFeature getEStructuralFeature(EObject pAnnotatedEModelElement, String xmlName) {
 		String annotationEStructuralFeatureName = convertXmlNameToEStructuralFeatureName(xmlName);
-		EStructuralFeature annotationEStructuralFeature = pAnnotatedEModelElement.eClass().getEStructuralFeature(
-				annotationEStructuralFeatureName);
+		EStructuralFeature annotationEStructuralFeature =
+				pAnnotatedEModelElement.eClass().getEStructuralFeature(annotationEStructuralFeatureName);
 		if (annotationEStructuralFeature == null) {
 			annotationEStructuralFeatureName = xmlElementToEStructuralFeatureMapper.getEStructuralFeatureName(xmlName);
-			annotationEStructuralFeature = pAnnotatedEModelElement.eClass().getEStructuralFeature(
-					annotationEStructuralFeatureName);
+			annotationEStructuralFeature =
+					pAnnotatedEModelElement.eClass().getEStructuralFeature(annotationEStructuralFeatureName);
 		}
 		// if still null then try with the prefix
 		if (annotationEStructuralFeature == null) {
-			// note if a prefix is added then the first character of the first part has to be upper-cased
+			// note if a prefix is added then the first character of the first part has to be
+			// upper-cased
 			String name = convertXmlNameToEStructuralFeatureName(xmlName);
-			annotationEStructuralFeatureName = prefix + name.substring(0, 1).toUpperCase() + name.substring(1);;
-			annotationEStructuralFeature = pAnnotatedEModelElement.eClass().getEStructuralFeature(
-					annotationEStructuralFeatureName);
-		}		
+			annotationEStructuralFeatureName = prefix + name.substring(0, 1).toUpperCase() + name.substring(1);
+			;
+			annotationEStructuralFeature =
+					pAnnotatedEModelElement.eClass().getEStructuralFeature(annotationEStructuralFeatureName);
+		}
 		return annotationEStructuralFeature;
 	}
 
 	// --------------------------------------------------------------------
 	// Implementation of ContentHandler interface.
 	// --------------------------------------------------------------------
-
+	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 		// Change parse state.
 		int newParseState;
 		switch (getParseState()) {
-		case ROOT:
-			newParseState = PERSISTENCE_MAPPING;
-			break;
-		case PERSISTENCE_MAPPING:
-			assert (localName.equals("epackage"));
-			newParseState = EPACKAGE;
-			break;
-		case EPACKAGE:
-			if (localName.equals("eclass")) {
-				newParseState = ECLASS;
-			} else if (localName.equals("edatatype")) {
+			case ROOT:
+				newParseState = PERSISTENCE_MAPPING;
+				break;
+			case PERSISTENCE_MAPPING:
+				assert (localName.equals("epackage"));
+				newParseState = EPACKAGE;
+				break;
+			case EPACKAGE:
+				if (localName.equals("eclass")) {
+					newParseState = ECLASS;
+				} else if (localName.equals("edatatype")) {
 					newParseState = EDATATYPE;
-			} else {
-				newParseState = EPACKAGE_ANNOTATION;
+				} else {
+					newParseState = EPACKAGE_ANNOTATION;
+				}
+				break;
+			case ECLASS:
+				if (localName.equals("eattribute") || localName.equals("ereference") || localName.equals("property")) {
+					newParseState = ESTRUCTURALFEATURE;
+				} else {
+					newParseState = ECLASS_ANNOTATION;
+				}
+				break;
+			case ESTRUCTURALFEATURE:
+				newParseState = ESTRUCTURALFEATURE_ANNOTATION;
+				break;
+			case EDATATYPE:
+				newParseState = EDATATYPE_ANNOTATION;
+				break;
+			case EPACKAGE_ANNOTATION:
+			case ECLASS_ANNOTATION:
+			case ESTRUCTURALFEATURE_ANNOTATION:
+			case NESTED_ANNOTATION: {
+				final EStructuralFeature annotationEStructuralFeature =
+						getEStructuralFeature(getPAnnotation(), localName);
+				if (annotationEStructuralFeature.getEType() instanceof EClass) {
+					newParseState = NESTED_ANNOTATION;
+				} else {
+					newParseState = ANNOTATION_ATTRIBUTE;
+				}
+				break;
 			}
-			break;
-		case ECLASS:
-			if (localName.equals("eattribute") || localName.equals("ereference") || localName.equals("property")) {
-				newParseState = ESTRUCTURALFEATURE;
-			} else {
-				newParseState = ECLASS_ANNOTATION;
-			}
-			break;
-		case ESTRUCTURALFEATURE:
-			newParseState = ESTRUCTURALFEATURE_ANNOTATION;
-			break;
-		case EDATATYPE:
-			newParseState = EDATATYPE_ANNOTATION;
-			break;
-		case EPACKAGE_ANNOTATION:
-		case ECLASS_ANNOTATION:
-		case ESTRUCTURALFEATURE_ANNOTATION:
-		case NESTED_ANNOTATION: {
-			final EStructuralFeature annotationEStructuralFeature = getEStructuralFeature(getPAnnotation(), localName);
-			if (annotationEStructuralFeature.getEType() instanceof EClass) {
-				newParseState = NESTED_ANNOTATION;
-			} else {
-				newParseState = ANNOTATION_ATTRIBUTE;
-			}
-			break;
-		}
-		default:
-			throw new ParseXMLAnnotationsException("Invalid parse state encountered.");
+			default:
+				throw new ParseXMLAnnotationsException("Invalid parse state encountered.");
 		}
 		parseStates.push(new Integer(newParseState));
 
 		// Act upon the new parse state.
 		switch (getParseState()) {
-		case EPACKAGE: {
-			final String namespaceUri = attributes.getValue("namespace-uri");
-			final EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(namespaceUri);
-			if (ePackage == null) {
-				throw new SAXException("Could not find EPackage \"" + namespaceUri + "\".");
+			case EPACKAGE: {
+				final String namespaceUri = attributes.getValue("namespace-uri");
+				final EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(namespaceUri);
+				if (ePackage == null) {
+					throw new SAXException("Could not find EPackage \"" + namespaceUri + "\".");
+				}
+				pAnnotatedEPackage = pAnnotatedModel.getPAnnotated(ePackage);
+				if (pAnnotatedEPackage == null) {
+					throw new SAXException("Could not find PAnnotatedEPackage \"" + namespaceUri + "\".");
+				}
+				break;
 			}
-			pAnnotatedEPackage = pAnnotatedModel.getPAnnotated(ePackage);
-			if (pAnnotatedEPackage == null) {
-				throw new SAXException("Could not find PAnnotatedEPackage \"" + namespaceUri + "\".");
+			case ECLASS: {
+				final String eClassName = attributes.getValue("name");
+				final EClassifier eClassifier = pAnnotatedEPackage.getAnnotatedEPackage().getEClassifier(eClassName);
+				if (eClassifier == null) {
+					throw new SAXException("Could not find EClass \"" + eClassName + "\"");
+				}
+				if (!(eClassifier instanceof EClass)) {
+					throw new SAXException("EClassifier \"" + eClassName + "\" is not an EClass.");
+				}
+				pAnnotatedEClass = pAnnotatedModel.getPAnnotated((EClass) eClassifier);
+				break;
 			}
-			break;
-		}
-		case ECLASS: {
-			final String eClassName = attributes.getValue("name");
-			final EClassifier eClassifier = pAnnotatedEPackage.getAnnotatedEPackage().getEClassifier(eClassName);
-			if (eClassifier == null) {
-				throw new SAXException("Could not find EClass \"" + eClassName + "\"");
+			case EDATATYPE: {
+				final String eDataTypeName = attributes.getValue("name");
+				final EDataType et =
+						(EDataType) pAnnotatedEPackage.getAnnotatedEPackage().getEClassifier(eDataTypeName);
+				if (et == null) {
+					throw new SAXException("Could not find EClass \"" + eDataTypeName + "\"");
+				}
+				if (!(et instanceof EDataType)) {
+					throw new SAXException("EClassifier \"" + eDataTypeName + "\" is not an EDataType.");
+				}
+				pAnnotatedEDataType = pAnnotatedModel.getPAnnotated(et);
+				break;
 			}
-			if (!(eClassifier instanceof EClass)) {
-				throw new SAXException("EClassifier \"" + eClassName + "\" is not an EClass.");
+			case ESTRUCTURALFEATURE: {
+				final String eStructuralFeatureName = attributes.getValue("name");
+				final EClass eClass = pAnnotatedEClass.getAnnotatedEClass();
+				final EStructuralFeature eStructuralFeature = eClass.getEStructuralFeature(eStructuralFeatureName);
+				if (eStructuralFeature == null) {
+					throw new SAXException("Could not find EStructuralFeature \"" + eStructuralFeatureName +
+							"\" in EClass \"" + eClass.getName() + "\".");
+				} else if (localName.equals("eattribute") && !(eStructuralFeature instanceof EAttribute)) {
+					throw new SAXException("EStructuralFeature \"" + eStructuralFeatureName + "\" in EClass \"" +
+							eClass.getName() + "\" is not an EAttribute.");
+				} else if (localName.equals("ereference") && !(eStructuralFeature instanceof EReference)) {
+					throw new SAXException("EStructuralFeature \"" + eStructuralFeatureName + "\" in EClass \"" +
+							eClass.getName() + "\" is not an EReference.");
+				}
+				pAnnotatedEStructuralFeature = pAnnotatedModel.getPAnnotated(eStructuralFeature);
+				break;
 			}
-			pAnnotatedEClass = pAnnotatedModel.getPAnnotated((EClass) eClassifier);
-			break;
-		}
-		case EDATATYPE: {
-			final String eDataTypeName = attributes.getValue("name");
-			final EDataType et = (EDataType)pAnnotatedEPackage.getAnnotatedEPackage().getEClassifier(eDataTypeName);
-			if (et == null) {
-				throw new SAXException("Could not find EClass \"" + eDataTypeName + "\"");
+			case EPACKAGE_ANNOTATION:
+				applyAnnotation(pAnnotatedEPackage, localName, attributes);
+				break;
+			case ECLASS_ANNOTATION:
+				applyAnnotation(pAnnotatedEClass, localName, attributes);
+				break;
+			case ESTRUCTURALFEATURE_ANNOTATION:
+				applyAnnotation(pAnnotatedEStructuralFeature, localName, attributes);
+				break;
+			case EDATATYPE_ANNOTATION:
+				applyAnnotation(pAnnotatedEDataType, localName, attributes);
+				break;
+			case NESTED_ANNOTATION: {
+				// final String eStructuralFeatureName =
+				// convertElementNameToEStructuralFeatureName(localName);
+				// final EReference annotationEStructuralFeature = (EReference)
+				// getPAnnotation().eClass()
+				// .getEStructuralFeature(eStructuralFeatureName);
+				applyAnnotation(getPAnnotation(), localName, attributes);
+				break;
 			}
-			if (!(et instanceof EDataType)) {
-				throw new SAXException("EClassifier \"" + eDataTypeName + "\" is not an EDataType.");
+			case ANNOTATION_ATTRIBUTE: {
+				final String eStructuralFeatureName = convertXmlNameToEStructuralFeatureName(localName);
+				pAnnotationEAttribute =
+						(EAttribute) getPAnnotation().eClass().getEStructuralFeature(eStructuralFeatureName);
+				break;
 			}
-			pAnnotatedEDataType = pAnnotatedModel.getPAnnotated((EDataType) et);
-			break;
-		}
-		case ESTRUCTURALFEATURE: {
-			final String eStructuralFeatureName = attributes.getValue("name");
-			final EClass eClass = pAnnotatedEClass.getAnnotatedEClass();
-			final EStructuralFeature eStructuralFeature = eClass.getEStructuralFeature(eStructuralFeatureName);
-			if (eStructuralFeature == null) {
-				throw new SAXException("Could not find EStructuralFeature \"" + eStructuralFeatureName
-						+ "\" in EClass \"" + eClass.getName() + "\".");
-			} else if (localName.equals("eattribute") && !(eStructuralFeature instanceof EAttribute)) {
-				throw new SAXException("EStructuralFeature \"" + eStructuralFeatureName + "\" in EClass \""
-						+ eClass.getName() + "\" is not an EAttribute.");
-			} else if (localName.equals("ereference") && !(eStructuralFeature instanceof EReference)) {
-				throw new SAXException("EStructuralFeature \"" + eStructuralFeatureName + "\" in EClass \""
-						+ eClass.getName() + "\" is not an EReference.");
-			}
-			pAnnotatedEStructuralFeature = pAnnotatedModel.getPAnnotated(eStructuralFeature);
-			break;
-		}
-		case EPACKAGE_ANNOTATION:
-			applyAnnotation(pAnnotatedEPackage, localName, attributes);
-			break;
-		case ECLASS_ANNOTATION:
-			applyAnnotation(pAnnotatedEClass, localName, attributes);
-			break;
-		case ESTRUCTURALFEATURE_ANNOTATION:
-			applyAnnotation(pAnnotatedEStructuralFeature, localName, attributes);
-			break;
-		case EDATATYPE_ANNOTATION:
-			applyAnnotation(pAnnotatedEDataType, localName, attributes);
-			break;
-		case NESTED_ANNOTATION: {
-			// final String eStructuralFeatureName = convertElementNameToEStructuralFeatureName(localName);
-			// final EReference annotationEStructuralFeature = (EReference) getPAnnotation().eClass()
-			// .getEStructuralFeature(eStructuralFeatureName);
-			applyAnnotation(getPAnnotation(), localName, attributes);
-			break;
-		}
-		case ANNOTATION_ATTRIBUTE: {
-			final String eStructuralFeatureName = convertXmlNameToEStructuralFeatureName(localName);
-			pAnnotationEAttribute = (EAttribute) getPAnnotation().eClass()
-					.getEStructuralFeature(eStructuralFeatureName);
-			break;
-		}
 		}
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		final String value = new String(ch, start, length).trim();
@@ -360,44 +378,47 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 			return;
 		}
 		switch (getParseState()) {
-		case EPACKAGE_ANNOTATION:
-		case ECLASS_ANNOTATION:
-		case ESTRUCTURALFEATURE_ANNOTATION:
-		case NESTED_ANNOTATION: {
-			// If we get here, we are dealing with a PAnnotation that has only one EAttribute. I.e. there are no
-			// child elements. Example: <discriminator-value>MyObject</discriminator-value>
-			final PAnnotation pAnnotation = getPAnnotation();
-			assert (pAnnotation.eClass().getEStructuralFeatures().size() == 1);
-			final EAttribute eAttribute = (EAttribute) pAnnotation.eClass().getEStructuralFeatures().get(0);
-			final EDataType eAttributeType = eAttribute.getEAttributeType();
-			final Object valueObject = eAttributeType.getEPackage().getEFactoryInstance().createFromString(
-					eAttributeType, value);
-			pAnnotation.eSet(eAttribute, valueObject);
-			break;
-		}
-		case ANNOTATION_ATTRIBUTE: {
-			final EDataType eDataType = pAnnotationEAttribute.getEAttributeType();
-			final Object valueObject = eDataType.getEPackage().getEFactoryInstance().createFromString(eDataType, value);
-			if (pAnnotationEAttribute.isMany()) {
-				((List) getPAnnotation().eGet(pAnnotationEAttribute)).add(valueObject);
-			} else {
-				getPAnnotation().eSet(pAnnotationEAttribute, valueObject);
+			case EPACKAGE_ANNOTATION:
+			case ECLASS_ANNOTATION:
+			case ESTRUCTURALFEATURE_ANNOTATION:
+			case NESTED_ANNOTATION: {
+				// If we get here, we are dealing with a PAnnotation that has only one EAttribute.
+				// I.e. there are no
+				// child elements. Example: <discriminator-value>MyObject</discriminator-value>
+				final PAnnotation pAnnotation = getPAnnotation();
+				assert (pAnnotation.eClass().getEStructuralFeatures().size() == 1);
+				final EAttribute eAttribute = (EAttribute) pAnnotation.eClass().getEStructuralFeatures().get(0);
+				final EDataType eAttributeType = eAttribute.getEAttributeType();
+				final Object valueObject =
+						eAttributeType.getEPackage().getEFactoryInstance().createFromString(eAttributeType, value);
+				pAnnotation.eSet(eAttribute, valueObject);
+				break;
 			}
-			break;
-		}
+			case ANNOTATION_ATTRIBUTE: {
+				final EDataType eDataType = pAnnotationEAttribute.getEAttributeType();
+				final Object valueObject =
+						eDataType.getEPackage().getEFactoryInstance().createFromString(eDataType, value);
+				if (pAnnotationEAttribute.isMany()) {
+					((List) getPAnnotation().eGet(pAnnotationEAttribute)).add(valueObject);
+				} else {
+					getPAnnotation().eSet(pAnnotationEAttribute, valueObject);
+				}
+				break;
+			}
 		}
 	}
 
+	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		switch (getParseState()) {
-		case EPACKAGE_ANNOTATION:
-		case ECLASS_ANNOTATION:
-		case ESTRUCTURALFEATURE_ANNOTATION:
-			pAnnotations.pop();
-			break;
-		case ANNOTATION_ATTRIBUTE:
-			pAnnotationEAttribute = null;
-			break;
+			case EPACKAGE_ANNOTATION:
+			case ECLASS_ANNOTATION:
+			case ESTRUCTURALFEATURE_ANNOTATION:
+				pAnnotations.pop();
+				break;
+			case ANNOTATION_ATTRIBUTE:
+				pAnnotationEAttribute = null;
+				break;
 		}
 		parseStates.pop();
 	}
@@ -406,11 +427,58 @@ class XmlPersistenceContentHandler extends DefaultHandler {
 	// Implementation of ErrorHandler interface.
 	// --------------------------------------------------------------------
 
+	@Override
 	public void error(SAXParseException e) throws SAXException {
 		throw e;
 	}
 
+	@Override
 	public void fatalError(SAXParseException e) throws SAXException {
 		throw e;
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
+	}
+
+	/**
+	 * @return the pAnnotatedModel
+	 */
+	public PAnnotatedModel getPAnnotatedModel() {
+		return pAnnotatedModel;
+	}
+
+	/**
+	 * @param annotatedModel
+	 *            the pAnnotatedModel to set
+	 */
+	public void setPAnnotatedModel(PAnnotatedModel annotatedModel) {
+		pAnnotatedModel = annotatedModel;
+	}
+
+	/**
+	 * @return the prefix
+	 */
+	public String getPrefix() {
+		return prefix;
+	}
+
+	/**
+	 * @param prefix
+	 *            the prefix to set
+	 */
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
 	}
 }
