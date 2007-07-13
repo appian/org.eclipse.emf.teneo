@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
@@ -35,10 +36,10 @@ import org.hibernate.property.Setter;
  * and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 @SuppressWarnings("unchecked")
-public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor {
+public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
 
 	/**
 	 * Serial version id
@@ -49,13 +50,12 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	private static Log log = LogFactory.getLog(EReferencePropertyHandler.class);
 
 	/** The feature */
-	protected final EReference eReference;
+	protected EReference eReference;
 
 	/** Two way reference */
-	protected final boolean isBidirectional;
+	protected boolean isBidirectional;
 
-	/** Constructor */
-	public EReferencePropertyHandler(EReference eReference) {
+	public void initialize(EReference eReference) {
 		this.eReference = eReference;
 		isBidirectional = eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient();
 		log.debug("Created getter/setter for " + StoreUtil.toString(eReference));

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbContext.java,v 1.7 2007/07/11 14:40:54 mtaal Exp $
+ * $Id: HbContext.java,v 1.8 2007/07/13 12:21:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -19,6 +19,21 @@ package org.eclipse.emf.teneo.hibernate;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerAccessor;
+import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerFeatureIDAccessor;
+import org.eclipse.emf.teneo.hibernate.mapping.elist.FeatureMapEntryTuplizer;
+import org.eclipse.emf.teneo.hibernate.mapping.property.EAttributePropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.EListPropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapEntryFeatureURIPropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapEntryPropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapPropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler;
+import org.eclipse.emf.teneo.hibernate.tuplizer.EMFComponentTuplizer;
+import org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.hibernate.Interceptor;
 import org.hibernate.cfg.Configuration;
@@ -30,49 +45,144 @@ import org.hibernate.property.PropertyAccessor;
  * tuplizers, accessors etc.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
-public interface HbContext {
+public class HbContext implements ExtensionPoint, ExtensionManagerAware {
 
-	/** Return the Tuplizer class used by the Hibernate EMF layer */
-	public abstract Class<?> getEMFTuplizerClass(Configuration hbConfiguration);
+	private ExtensionManager extensionManager;
 
-	/** Return the Tuplizer class used by the Hibernate EMF layer for Components */
-	public abstract Class<?> getEMFComponentTuplizerClass(Configuration hbConfiguration);
-
-	/** Returns the Tuplizer used for featuremap entries */
-	public abstract Class<?> getFeatureMapEntryTuplizer(Configuration hbConfiguration);
-
-	/** Return the Interceptor class used */
-	public abstract Interceptor createInterceptor(Configuration hbConfiguration, EntityNameStrategy ens);
-
-	/**
-	 * Return the accessor used to acces the string repr. of the feature in the featuremapentry
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getEMFTuplizerClass(org.hibernate.cfg.Configuration)
 	 */
-	public abstract PropertyAccessor createFeatureMapEntryFeatureURIAccessor();
+	public Class<?> getEMFTuplizerClass(Configuration hbConfiguration) {
+		return EMFTuplizer.class;
+	}
 
-	/** Return the accessor used to acces the features of a feature map */
-	public abstract PropertyAccessor createFeatureMapEntryAccessor(EStructuralFeature feature);
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getEMFComponentTuplizerClass(org.hibernate.cfg.Configuration)
+	 */
+	public Class<?> getEMFComponentTuplizerClass(Configuration hbConfiguration) {
+		return EMFComponentTuplizer.class;
+	}
 
-	/** Return the accessor used to acces version props */
-	public abstract PropertyAccessor createVersionAccessor();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#getFeatureMapEntryTuplizer(org.hibernate.cfg.Configuration)
+	 */
+	public Class<?> getFeatureMapEntryTuplizer(Configuration hbConfiguration) {
+		return FeatureMapEntryTuplizer.class;
+	}
 
-	/** Return the accessor for the econtainer fields */
-	public abstract PropertyAccessor createEContainerAccessor();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createInterceptor(org.hibernate.cfg.Configuration)
+	 */
+	public Interceptor createInterceptor(Configuration hbConfiguration, EntityNameStrategy ens) {
+		return extensionManager.getExtension(EMFInterceptor.class);
+	}
 
-	/** Return the econtainer feature id accessor */
-	public abstract PropertyAccessor createEContainerFeatureIDAccessor();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createFeatureMapEntryFeatureURIAccessor()
+	 */
+	public PropertyAccessor createFeatureMapEntryFeatureURIAccessor() {
+		return extensionManager.getExtension(FeatureMapEntryFeatureURIPropertyHandler.class);
+	}
 
-	/** Return the featuremap accessor */
-	public abstract PropertyAccessor createFeatureMapPropertyAccessor(EStructuralFeature eFeature);
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createFeatureMapEntryAccessor(org.eclipse.emf.ecore.EStructuralFeature)
+	 */
+	public PropertyAccessor createFeatureMapEntryAccessor(EStructuralFeature feature) {
+		final FeatureMapEntryPropertyHandler handler =
+				extensionManager.getExtension(FeatureMapEntryPropertyHandler.class);
+		handler.initialize(feature);
+		return handler;
+	}
 
-	/** Return the elist accessor */
-	public abstract PropertyAccessor createEListAccessor(EStructuralFeature eFeature, boolean extraLazy,
-			boolean newEMapMapping);
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createVersionAccessor()
+	 */
+	public PropertyAccessor createVersionAccessor() {
+		return extensionManager.getExtension(VersionPropertyHandler.class);
+	}
 
-	/** Return the EReference accessor */
-	public abstract PropertyAccessor createEReferenceAccessor(EReference eReference);
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEContainerAccessor()
+	 */
+	public PropertyAccessor createEContainerAccessor() {
+		return extensionManager.getExtension(EContainerAccessor.class);
+	}
 
-	/** Return the general EFeatureAccessor */
-	public abstract PropertyAccessor createEAttributeAccessor(EAttribute eAttribute);
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEContainerFeatureIDAccessor()
+	 */
+	public PropertyAccessor createEContainerFeatureIDAccessor() {
+		return extensionManager.getExtension(EContainerFeatureIDAccessor.class);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createFeatureMapPropertyAccessor(org.eclipse.emf.ecore.EStructuralFeature)
+	 */
+	public PropertyAccessor createFeatureMapPropertyAccessor(EStructuralFeature eFeature) {
+		final FeatureMapPropertyHandler fmh = extensionManager.getExtension(FeatureMapPropertyHandler.class);
+		fmh.initialize(eFeature);
+		return fmh;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEListAccessor(org.eclipse.emf.ecore.EStructuralFeature)
+	 */
+	public PropertyAccessor createEListAccessor(EStructuralFeature eFeature, boolean extraLazy, boolean newEMapMapping) {
+		final EListPropertyHandler handler = extensionManager.getExtension(EListPropertyHandler.class);
+		handler.initialize(eFeature, extraLazy, newEMapMapping);
+		return handler;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEReferenceAccessor(org.eclipse.emf.ecore.EReference)
+	 */
+	public PropertyAccessor createEReferenceAccessor(EReference eReference) {
+		final EReferencePropertyHandler handler = extensionManager.getExtension(EReferencePropertyHandler.class);
+		handler.initialize(eReference);
+		return handler;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbContext#createEAttributeAccessor(org.eclipse.emf.ecore.EAttribute)
+	 */
+	public PropertyAccessor createEAttributeAccessor(EAttribute eAttribute) {
+		return new EAttributePropertyHandler(eAttribute);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
+	}
 }

@@ -11,12 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInterceptor.java,v 1.8 2007/07/11 14:40:54 mtaal Exp $
+ * $Id: EMFInterceptor.java,v 1.9 2007/07/13 12:21:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.extension.ExtensionInitializable;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.hibernate.EmptyInterceptor;
 
@@ -24,10 +28,11 @@ import org.hibernate.EmptyInterceptor;
  * Intercepts the getEntityName call to return the EClass name as the entity name.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
-public class EMFInterceptor extends EmptyInterceptor {
+public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, ExtensionManagerAware,
+		ExtensionInitializable {
 
 	/**
 	 * Generated Serial Version ID
@@ -35,11 +40,26 @@ public class EMFInterceptor extends EmptyInterceptor {
 	private static final long serialVersionUID = 1680117509182298808L;
 
 	/** The qualify property used to compute the eclassname */
-	private final EntityNameStrategy qualifyStrategy;
+	private EntityNameStrategy qualifyStrategy;
 
-	/** Constructor */
-	public EMFInterceptor(EntityNameStrategy ens) {
-		qualifyStrategy = ens;
+	private ExtensionManager extensionManager;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.extension.ExtensionInitializable#initializeExtension()
+	 */
+	public void initializeExtension() {
+		qualifyStrategy = extensionManager.getExtension(EntityNameStrategy.class);
 	}
 
 	/**

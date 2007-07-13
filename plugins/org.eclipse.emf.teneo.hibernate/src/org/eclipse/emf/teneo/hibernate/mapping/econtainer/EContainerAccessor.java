@@ -11,11 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerAccessor.java,v 1.3 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: EContainerAccessor.java,v 1.4 2007/07/13 12:21:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
 
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.hibernate.PropertyNotFoundException;
 import org.hibernate.property.Getter;
 import org.hibernate.property.PropertyAccessor;
@@ -25,29 +28,40 @@ import org.hibernate.property.Setter;
  * Creates the getter and setter for eContainer members.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 @SuppressWarnings("unchecked")
-public class EContainerAccessor implements PropertyAccessor {
+public class EContainerAccessor implements PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
+
+	private ExtensionManager extensionManager;
+
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
-	 *      java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
-	public Getter getGetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
-		return new EContainerPropertyHandler(propertyName);
+	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+		final EContainerPropertyHandler handler = extensionManager.getExtension(EContainerPropertyHandler.class);
+		handler.initialize(propertyName);
+		return handler;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
-	 *      java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
-	public Setter getSetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
-		return new EContainerPropertyHandler(propertyName);
+	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+		final EContainerPropertyHandler handler = extensionManager.getExtension(EContainerPropertyHandler.class);
+		handler.initialize(propertyName);
+		return handler;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
 	}
 }

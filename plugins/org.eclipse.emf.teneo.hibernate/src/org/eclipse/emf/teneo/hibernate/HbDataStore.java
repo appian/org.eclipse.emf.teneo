@@ -75,7 +75,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -111,7 +111,7 @@ public abstract class HbDataStore implements DataStore {
 	/** Update the schema option */
 	// private boolean updateSchema = true;
 	/** The hb context */
-	private HbContext hbContext = new HbContextImpl();
+	private HbContext hbContext = null;
 
 	/** The pannotated model, is set in the mapEPackages method */
 	private PAnnotatedModel paModel = null;
@@ -292,6 +292,9 @@ public abstract class HbDataStore implements DataStore {
 	 * @return the hbContext
 	 */
 	public HbContext getHbContext() {
+		if (hbContext == null) {
+			hbContext = getExtensionManager().getExtension(HbContext.class);
+		}
 		return hbContext;
 	}
 

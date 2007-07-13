@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEList;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEList;
@@ -51,10 +52,10 @@ import org.hibernate.property.Setter;
  * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 @SuppressWarnings("unchecked")
-public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
+public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
 	/**
 	 * Generated Serial Version ID
 	 */
@@ -64,25 +65,24 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	private static Log log = LogFactory.getLog(EListPropertyHandler.class);
 
 	/** The EStructuralFeature of this accessor */
-	protected final EStructuralFeature eFeature;
+	protected EStructuralFeature eFeature;
 
 	/** Extra lazy behavior! */
-	private final boolean extraLazy;
+	private boolean extraLazy;
 
 	/** Map emap as a real map */
-	private final boolean newEMapMapping;
+	private boolean newEMapMapping;
 
 	/** It this a map */
-	private final boolean isAMap;
+	private boolean isAMap;
 
-	/** Constructor */
-	public EListPropertyHandler(EStructuralFeature eFeature, boolean extraLazy,
-			boolean newEMapMapping) {
+	/** Initialize this instance */
+	public void initialize(EStructuralFeature eFeature, boolean extraLazy, boolean newEMapMapping) {
 		this.extraLazy = extraLazy;
 		this.eFeature = eFeature;
 		log.debug("Created getter/setter for " + StoreUtil.toString(eFeature));
-		AssertUtil.assertTrue("Many must be true but this isn't the case for "
-				+ StoreUtil.toString(eFeature), eFeature.isMany());
+		AssertUtil.assertTrue("Many must be true but this isn't the case for " + StoreUtil.toString(eFeature), eFeature
+			.isMany());
 		isAMap = StoreUtil.isMap(eFeature);
 		this.newEMapMapping = newEMapMapping;
 	}
@@ -121,11 +121,10 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 		}
 		if (obj instanceof BasicFeatureMap) { // this one is replaced here because the entries
 			// need to be changed to hibernate entries
-			final PersistableDelegateList pelist = (PersistableDelegateList) createPersistableList(
-					(InternalEObject) owner, eFeature, (List) obj);
+			final PersistableDelegateList pelist =
+					(PersistableDelegateList) createPersistableList((InternalEObject) owner, eFeature, (List) obj);
 			final EObject eobj = (EObject) owner;
-			if (eobj.eClass().getClassifierID() < 0
-					&& !EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) eobj)) {
+			if (eobj.eClass().getClassifierID() < 0 && !EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) eobj)) {
 				log.debug("Dynamic elist, set using the esettings");
 				EcoreAccess.setManyEFeatureValue(eFeature, pelist, (BasicEObjectImpl) owner);
 			} else {
@@ -144,9 +143,8 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 				try {
 					javaField.set(owner, pelist);
 				} catch (Exception e) {
-					throw new HbMapperException("The field " + javaField.getName()
-							+ " can not be set using object " + pelist.getClass().getName()
-							+ " on target " + owner.getClass().getName(), e);
+					throw new HbMapperException("The field " + javaField.getName() + " can not be set using object " +
+							pelist.getClass().getName() + " on target " + owner.getClass().getName(), e);
 				}
 			}
 		}
@@ -159,8 +157,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
 	 *      org.hibernate.engine.SessionImplementor)
 	 */
-	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session)
-			throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		final Object obj = ((EObject) owner).eGet(eFeature);
 		if (obj instanceof PersistableDelegateList) {
 			return ((PersistableDelegateList) obj).getDelegate();
@@ -214,24 +211,21 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
 	 *      org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value, SessionFactoryImplementor factory)
-			throws HibernateException {
-		if (((EObject) target).eClass().getClassifierID() < 0
-				&& !EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) target)) {
+	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
+		if (((EObject) target).eClass().getClassifierID() < 0 &&
+				!EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) target)) {
 			log.debug("Dynamic elist, set using the esettings");
-			final Object currentValue = EcoreAccess.getManyEFeatureValue(eFeature,
-					(BasicEObjectImpl) target);
+			final Object currentValue = EcoreAccess.getManyEFeatureValue(eFeature, (BasicEObjectImpl) target);
 
 			// if currentvalue is not null then use the passed value
 			if (currentValue != null && currentValue instanceof PersistableEList) {
 				((PersistableEList) currentValue).replaceDelegate((List) value);
 			} else {
-				EcoreAccess.setManyEFeatureValue(eFeature, createPersistableList(
-						(InternalEObject) target, eFeature, (List) value),
-						(BasicEObjectImpl) target);
+				EcoreAccess.setManyEFeatureValue(eFeature, createPersistableList((InternalEObject) target, eFeature,
+					(List) value), (BasicEObjectImpl) target);
 			}
-			log.debug("Set value " + value.getClass().getName() + " for target "
-					+ target.getClass().getName() + " field " + eFeature.getName());
+			log.debug("Set value " + value.getClass().getName() + " for target " + target.getClass().getName() +
+					" field " + eFeature.getName());
 
 		} else {
 			// the reason that the javafield is determined here and not at
@@ -251,43 +245,40 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 				}
 
 				// the delegating map was passed to hibernate, now getting it back
-				if (value instanceof EMap.InternalMapView<?, ?>
-						&& (currentValue == ((EMap.InternalMapView<?, ?>) value).eMap())) {
+				if (value instanceof EMap.InternalMapView<?, ?> &&
+						(currentValue == ((EMap.InternalMapView<?, ?>) value).eMap())) {
 					return;
 				}
 
 				// already handled
-				if (currentValue instanceof PersistableDelegateList<?>
-						&& value == ((PersistableDelegateList<?>) currentValue).getDelegate()) {
+				if (currentValue instanceof PersistableDelegateList<?> &&
+						value == ((PersistableDelegateList<?>) currentValue).getDelegate()) {
 					return;
 				}
 
 				// the follow 3 if statements handle the refresh action, the underlying orm
 				// collection is replaced
-				if (currentValue != null && currentValue instanceof PersistableEList
-						&& value != ((PersistableEList) currentValue).getDelegate()) {
+				if (currentValue != null && currentValue instanceof PersistableEList &&
+						value != ((PersistableEList) currentValue).getDelegate()) {
 					((PersistableEList) currentValue).replaceDelegate((List) value);
-				} else if (currentValue != null && currentValue instanceof PersistableEMap
-						&& value != ((PersistableEMap) currentValue).getDelegate()) {
+				} else if (currentValue != null && currentValue instanceof PersistableEMap &&
+						value != ((PersistableEMap) currentValue).getDelegate()) {
 					((PersistableEMap) currentValue).replaceDelegate(value);
-				} else if (currentValue != null && currentValue instanceof MapPersistableEMap
-						&& value != ((MapPersistableEMap) currentValue).getORMMapDelegate()) {
+				} else if (currentValue != null && currentValue instanceof MapPersistableEMap &&
+						value != ((MapPersistableEMap) currentValue).getORMMapDelegate()) {
 					((PersistableEMap) currentValue).replaceDelegate(value);
 				} else { // then wrap the hibernate collection
 					if (value instanceof Map) {
-						javaField.set(target, createPersistableMap((InternalEObject) target,
-								eFeature, (Map) value));
+						javaField.set(target, createPersistableMap((InternalEObject) target, eFeature, (Map) value));
 					} else {
-						javaField.set(target, createPersistableList((InternalEObject) target,
-								eFeature, (List) value));
+						javaField.set(target, createPersistableList((InternalEObject) target, eFeature, (List) value));
 					}
 				}
-				log.debug("Set value " + value.getClass().getName() + " for target "
-						+ target.getClass().getName() + " field " + eFeature.getName());
+				log.debug("Set value " + value.getClass().getName() + " for target " + target.getClass().getName() +
+						" field " + eFeature.getName());
 			} catch (Exception e) {
-				throw new HbMapperException("The field + " + javaField.getName()
-						+ " can not be set using object " + value.getClass().getName()
-						+ " on target " + target.getClass().getName(), e);
+				throw new HbMapperException("The field + " + javaField.getName() + " can not be set using object " +
+						value.getClass().getName() + " on target " + target.getClass().getName(), e);
 			}
 		}
 	}
@@ -304,8 +295,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor {
 	}
 
 	/** Creates a persistablemap or list */
-	protected EList createPersistableList(InternalEObject target, EStructuralFeature estruct,
-			List list) {
+	protected EList createPersistableList(InternalEObject target, EStructuralFeature estruct, List list) {
 		if (estruct instanceof EReference) {
 			final EReference eref = (EReference) estruct;
 			// the test for emap checks: the entry class must have a

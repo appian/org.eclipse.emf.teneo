@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryFeatureURIPropertyHandler.java,v 1.3 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: FeatureMapEntryFeatureURIPropertyHandler.java,v 1.4 2007/07/13 12:21:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -19,6 +19,7 @@ package org.eclipse.emf.teneo.hibernate.mapping.property;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry;
 import org.hibernate.HibernateException;
 import org.hibernate.PropertyNotFoundException;
@@ -29,15 +30,13 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * Handles the string representation of the feature of the feature map entry in
- * the database.
+ * Handles the string representation of the feature of the feature map entry in the database.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 @SuppressWarnings("unchecked")
-public class FeatureMapEntryFeatureURIPropertyHandler implements Getter,
-		Setter, PropertyAccessor {
+public class FeatureMapEntryFeatureURIPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
 	/**
 	 * Generated Version ID
 	 */
@@ -46,22 +45,18 @@ public class FeatureMapEntryFeatureURIPropertyHandler implements Getter,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
-	 *      java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
-	public Getter getGetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
-	 *      java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
-	public Setter getSetter(Class theClass, String propertyName)
-			throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -76,8 +71,7 @@ public class FeatureMapEntryFeatureURIPropertyHandler implements Getter,
 	/**
 	 * Reads the version from the versioncache
 	 */
-	public Object getForInsert(Object owner, Map mergeMap,
-			SessionImplementor session) throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		return get(owner);
 	}
 
@@ -105,8 +99,7 @@ public class FeatureMapEntryFeatureURIPropertyHandler implements Getter,
 	}
 
 	/** Sets the version in the internal version cache */
-	public void set(Object target, Object value,
-			SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 		final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) target;
 		fme.setEStructuralFeature((String) value);
 	}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapPropertyHandler.java,v 1.5 2007/03/18 19:19:47 mtaal Exp $
+ * $Id: FeatureMapPropertyHandler.java,v 1.6 2007/07/13 12:21:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -22,37 +22,35 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableFeatureMap;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * Implements the accessor for EMF FeatureMap members for Hibernate. Overrides
- * the createPersistableList to create a HibernatePersistableFeatureMap instead
- * of a normal list.
+ * Implements the accessor for EMF FeatureMap members for Hibernate. Overrides the
+ * createPersistableList to create a HibernatePersistableFeatureMap instead of a normal list.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 @SuppressWarnings("unchecked")
-public class FeatureMapPropertyHandler extends EListPropertyHandler {
+public class FeatureMapPropertyHandler extends EListPropertyHandler implements ExtensionPoint {
 	/**
 	 * Generated Serial Version ID
 	 */
 	private static final long serialVersionUID = -5220024660708935714L;
 
-	/** Constructor */
-	public FeatureMapPropertyHandler(EStructuralFeature eFeature) {
-		super(eFeature, false, false);
-		AssertUtil.assertTrue("Is not a featuremap feature "
-				+ StoreUtil.toString(eFeature), FeatureMapUtil
-				.isFeatureMap(eFeature));
+	/** Initialize this instance */
+	public void initialize(EStructuralFeature eFeature) {
+		super.initialize(eFeature, false, false);
+		AssertUtil.assertTrue("Is not a featuremap feature " + StoreUtil.toString(eFeature), FeatureMapUtil
+			.isFeatureMap(eFeature));
 	}
 
 	/** Create method can be overridden */
 	@Override
-	protected EList createPersistableList(InternalEObject target,
-			EStructuralFeature estruct, List list) {
+	protected EList createPersistableList(InternalEObject target, EStructuralFeature estruct, List list) {
 		return new HibernatePersistableFeatureMap(target, estruct, list);
 	}
 }
