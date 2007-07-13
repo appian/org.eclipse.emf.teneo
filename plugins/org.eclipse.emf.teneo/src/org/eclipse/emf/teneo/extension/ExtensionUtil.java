@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ExtensionUtil.java,v 1.2 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: ExtensionUtil.java,v 1.3 2007/07/13 12:21:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.EntityResolvingNameStrategy;
  * Contains simple utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class ExtensionUtil {
@@ -100,6 +100,28 @@ public class ExtensionUtil {
 
 		// from the hibernate plugin
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.HbContext", true));
+		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerAccessor",
+			false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerFeatureIDAccessor", false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerFeatureIDPropertyHandler", false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerPropertyHandler", false));
+
+		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapping.property.EListPropertyHandler",
+			false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler", false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapEntryFeatureURIPropertyHandler", false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapEntryPropertyHandler", false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapPropertyHandler", false));
+		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler",
+			false));
+		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.EMFInterceptor", false));
 
 		// hibernate mapper
 		em
