@@ -24,7 +24,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * this way different test cases can be reused.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public interface TestStore {
 
@@ -139,4 +139,7 @@ public interface TestStore {
 
 	/** Get the xmlgregoriancalendar date (hibernate) or normal date (jpox) */
 	public Object getDate(Date date);
+
+	/** Return the mapping xml used */
+	public String getMappingXML();
 }

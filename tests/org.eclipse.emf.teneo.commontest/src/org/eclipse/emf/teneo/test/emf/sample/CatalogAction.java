@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CatalogAction.java,v 1.3 2007/06/29 07:35:43 mtaal Exp $
+ * $Id: CatalogAction.java,v 1.4 2007/07/17 13:59:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,11 +32,11 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Performs a number of test actions on the catalog example. Create products, link a supplier, 
- * add to catalog, delete from catalog. 
+ * Performs a number of test actions on the catalog example. Create products, link a supplier, add
+ * to catalog, delete from catalog.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
+ * @version $Revision: 1.4 $
  */
 public abstract class CatalogAction extends AbstractTestAction {
 	public CatalogAction() {
@@ -261,11 +261,23 @@ public abstract class CatalogAction extends AbstractTestAction {
 			assertTrue((prod.getRemark().get(0)).getValue().compareTo("remarka") == 0);
 			store.commitTransaction();
 		}
+
+		// test the comments in the hdm
+		if (store.isHibernateTestStore()) {
+			final String[] test =
+					new String[] { "My product documentation", "My description documentation",
+							"My producttype documentation" };
+			final String xml = store.getMappingXML();
+			for (String t : test) {
+				if (xml.indexOf(t) == -1) {
+					fail("The following documentation does not appear: " + t);
+				}
+			}
+		}
 	}
 
 	/**
-	 * @return Returns the string used to query a product with remarks containing 
-	 * the text 'remarka'
+	 * @return Returns the string used to query a product with remarks containing the text 'remarka'
 	 */
 	protected abstract String getQueryText();
 	// TODO specialize

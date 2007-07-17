@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.resource.Resource;
  * Base abstractteststore
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public abstract class AbstractTestStore implements TestStore {
 	/** The logger */
@@ -139,4 +139,10 @@ public abstract class AbstractTestStore implements TestStore {
 	public boolean isJPOXTestStore() {
 		return false;
 	}
+
+	/** Return the mapping xml used */
+	public String getMappingXML() {
+		throw new UnsupportedOperationException();
+	}
+
 }
