@@ -28,7 +28,7 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class ReadEcore {
 
@@ -42,14 +42,14 @@ public class ReadEcore {
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 				.put("*", new EcoreResourceFactoryImpl());
 			final ArrayList epackages = new ArrayList();
-			final String[] ecores = new String[] { "test.ecore" };
+			final String[] ecores = new String[] { "consumer.ecore" };
 			for (String ecore : ecores) {
 				final Resource res =
 						resourceSet
 							.getResource(
 								URI
-									.createFileURI("/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/test/"
-											+ ecore), true);
+									.createFileURI("/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/test/" +
+											ecore), true);
 				res.load(new HashMap());
 
 				Iterator it = res.getAllContents();

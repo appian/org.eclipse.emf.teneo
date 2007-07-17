@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryQualifyActionHB;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
+import org.eclipse.emf.teneo.test.emf.sample.LibraryUseMappingFileAction;
 import org.eclipse.emf.teneo.test.emf.sample.MindMapAction;
 import org.eclipse.emf.teneo.test.emf.sample.PlayAction;
 import org.eclipse.emf.teneo.test.emf.sample.PrimerPOAction;
@@ -40,7 +41,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.46 $
+ * @version $Revision: 1.47 $
  */
 public class AllTests {
 
@@ -48,6 +49,7 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(LibraryUseMappingFileAction.class);
 		suite.addTestSuite(EcoreAction.class);
 
 		suite.addTestSuite(PrimerPOAction.class);
