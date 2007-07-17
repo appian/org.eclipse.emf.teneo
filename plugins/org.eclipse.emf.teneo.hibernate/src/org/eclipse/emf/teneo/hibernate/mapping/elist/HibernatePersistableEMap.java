@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEMap.java,v 1.4 2007/07/09 12:54:51 mtaal Exp $
+ * $Id: HibernatePersistableEMap.java,v 1.5 2007/07/17 12:21:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
@@ -42,10 +43,10 @@ import org.hibernate.collection.PersistentCollection;
  * Implements the hibernate persistable emap. Note an emap is not loaded lazily!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
-public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
+public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implements ExtensionPoint {
 	/**
 	 * Serial Version ID
 	 */
@@ -139,8 +140,8 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> {
 	}
 
 	/**
-	 * Overridden because of access to size attribute. This version will try to
-	 * read the collection size without lading it if it is lazy loaded
+	 * Overridden because of access to size attribute. This version will try to read the collection
+	 * size without lading it if it is lazy loaded
 	 */
 	@Override
 	public int size() {

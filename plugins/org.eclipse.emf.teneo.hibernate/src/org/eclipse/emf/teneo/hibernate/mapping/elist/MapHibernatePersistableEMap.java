@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapHibernatePersistableEMap.java,v 1.4 2007/07/09 12:54:51 mtaal Exp $
+ * $Id: MapHibernatePersistableEMap.java,v 1.5 2007/07/17 12:21:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.MapPersistableEMap;
@@ -41,10 +42,10 @@ import org.hibernate.collection.PersistentMap;
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
-public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> {
+public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> implements ExtensionPoint {
 	/**
 	 * Serial Version ID
 	 */
@@ -54,8 +55,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	private static Log log = LogFactory.getLog(MapHibernatePersistableEMap.class);
 
 	/**
-	 * Constructor: this version will take a natural map as input (probided by
-	 * hibernate) and transform the entries into the EMF keyToValue format
+	 * Constructor: this version will take a natural map as input (probided by hibernate) and
+	 * transform the entries into the EMF keyToValue format
 	 * 
 	 * 
 	 */
@@ -64,9 +65,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	}
 
 	/**
-	 * This constructor is usually called when the list is created and filled by
-	 * the user first. when called by a hibernate load, the other overload with
-	 * a map input is used instead.
+	 * This constructor is usually called when the list is created and filled by the user first.
+	 * when called by a hibernate load, the other overload with a map input is used instead.
 	 * 
 	 */
 	public MapHibernatePersistableEMap(InternalEObject owner, EReference eref, List<BasicEMap.Entry<K, V>> list) {
@@ -79,8 +79,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	}
 
 	/**
-	 * Override isLoaded to check if the delegate lists was not already loaded
-	 * by hibernate behind the scenes, this happens with eagerly loaded lists.
+	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind
+	 * the scenes, this happens with eagerly loaded lists.
 	 */
 	@Override
 	public boolean isLoaded() {
@@ -108,8 +108,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	}
 
 	/**
-	 * Overridden because of access to size attribute. This version will try to
-	 * read the collection size without lading it if it is lazy loaded
+	 * Overridden because of access to size attribute. This version will try to read the collection
+	 * size without lading it if it is lazy loaded
 	 */
 	@Override
 	public int size() {
@@ -145,8 +145,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	}
 
 	/**
-	 * this method is used to determine if the underlying hibernate map
-	 * collection has been eagerly loaded
+	 * this method is used to determine if the underlying hibernate map collection has been eagerly
+	 * loaded
 	 * 
 	 * @return true if is laoded, false if not
 	 */

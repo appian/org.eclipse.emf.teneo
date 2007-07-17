@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEList;
@@ -52,10 +54,10 @@ import org.hibernate.property.Setter;
  * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 @SuppressWarnings("unchecked")
-public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
+public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
 	/**
 	 * Generated Serial Version ID
 	 */
@@ -75,6 +77,9 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 
 	/** It this a map */
 	private boolean isAMap;
+
+	/** The extension manager */
+	private ExtensionManager extensionManager;
 
 	/** Initialize this instance */
 	public void initialize(EStructuralFeature eFeature, boolean extraLazy, boolean newEMapMapping) {
@@ -291,7 +296,8 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 		log.debug("Detected EMAP for " + estruct.getName());
 		assert (isAMap);
 		assert (newEMapMapping);
-		return new MapHibernatePersistableEMap<Object, Object>(target, eref, map);
+		return getExtensionManager()
+			.getExtension(MapHibernatePersistableEMap.class, new Object[] { target, eref, map });
 	}
 
 	/** Creates a persistablemap or list */
@@ -304,12 +310,31 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			// value
 			if (StoreUtil.isMap(estruct)) {
 				log.debug("Detected EMAP for " + estruct.getName());
-				return new HibernatePersistableEMap<Object, Object>(target, eref, list);
+
+				return getExtensionManager().getExtension(HibernatePersistableEMap.class,
+					new Object[] { target, eref, list });
 			}
 		}
 		if (extraLazy) {
-			return new HbExtraLazyPersistableEList(target, estruct, list);
+			return getExtensionManager().getExtension(HbExtraLazyPersistableEList.class,
+				new Object[] { target, estruct, list });
 		}
-		return new HibernatePersistableEList(target, estruct, list);
+		return getExtensionManager().getExtension(HibernatePersistableEList.class,
+			new Object[] { target, estruct, list });
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableFeatureMap.java,v 1.10 2007/07/09 12:54:51 mtaal Exp $
+ * $Id: HibernatePersistableFeatureMap.java,v 1.11 2007/07/17 12:21:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.teneo.EContainerRepairControl;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
@@ -41,10 +42,10 @@ import org.hibernate.collection.PersistentList;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
-public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
+public class HibernatePersistableFeatureMap extends PersistableFeatureMap implements ExtensionPoint {
 	/**
 	 * Serial Version ID
 	 */
@@ -99,8 +100,8 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap {
 	}
 
 	/**
-	 * Override isLoaded to check if the delegate lists was not already loaded
-	 * by hibernate behind the scenes, this happens with eagerly loaded lists.
+	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind
+	 * the scenes, this happens with eagerly loaded lists.
 	 */
 	@Override
 	public boolean isLoaded() {

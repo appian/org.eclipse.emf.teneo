@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.4 2007/07/12 12:52:17 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.5 2007/07/17 12:21:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -40,7 +41,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HbSessionDataStore extends HbDataStore {
@@ -148,16 +149,22 @@ public class HbSessionDataStore extends HbDataStore {
 	 * the passed configuration
 	 */
 	protected void mapModel() {
-		if (getPersistenceOptions().isUseMappingFile()) {
+
+		if (getPersistenceOptions().isUseMappingFile() || getPersistenceOptions().getMappingFilePath() != null) {
 
 			// register otherwise the getFileList will not work
-// ERuntime.INSTANCE.register(getEPackages());
+			ERuntime.INSTANCE.register(getEPackages());
 
 			log.debug("Searching hbm files in class paths of epackages");
-			final String[] fileList = StoreUtil.getFileList(HbConstants.HBM_FILE_NAME, null);
+			final String[] fileList =
+					StoreUtil.getFileList(HbConstants.HBM_FILE_NAME, getPersistenceOptions().getMappingFilePath());
 			for (String element : fileList) {
 				log.debug("Adding file " + element + " to Hibernate Configuration");
-				getConfiguration().addInputStream(this.getClass().getResourceAsStream(element));
+				final InputStream is = this.getClass().getResourceAsStream(element);
+				if (is == null) {
+					throw new HbStoreException("Path to mapping file: " + element + " does not exist!");
+				}
+				getConfiguration().addInputStream(is);
 			}
 		} else {
 			setMappingXML(mapEPackages());

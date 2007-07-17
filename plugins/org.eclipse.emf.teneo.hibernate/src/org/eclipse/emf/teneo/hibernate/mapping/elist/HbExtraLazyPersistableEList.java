@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.7 2007/07/09 12:54:51 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.8 2007/07/17 12:21:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.hibernate.collection.PersistentBag;
@@ -28,15 +29,15 @@ import org.hibernate.collection.PersistentIdentifierBag;
 import org.hibernate.collection.PersistentList;
 
 /**
- * Implements the hibernate persistable elist with extra lazy behavior, most
- * operations should not load the complete list. This is targeted at very large
- * lists. Note that this list can not work in a detached mode.
+ * Implements the hibernate persistable elist with extra lazy behavior, most operations should not
+ * load the complete list. This is targeted at very large lists. Note that this list can not work in
+ * a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
-public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> {
+public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> implements ExtensionPoint {
 
 	/** The logger */
 	// private static Log log =
@@ -52,8 +53,8 @@ public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> {
 	}
 
 	/**
-	 * Override isLoaded to check if the delegate lists was not already loaded
-	 * by hibernate behind the scenes, this happens with eagerly loaded lists.
+	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind
+	 * the scenes, this happens with eagerly loaded lists.
 	 */
 	@Override
 	public boolean isLoaded() {
@@ -61,8 +62,8 @@ public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> {
 	}
 
 	/**
-	 * Do the actual load can be overridden, the doload does nothing as this is
-	 * the responsibility of the caller
+	 * Do the actual load can be overridden, the doload does nothing as this is the responsibility
+	 * of the caller
 	 */
 	@Override
 	protected synchronized void doLoad() {

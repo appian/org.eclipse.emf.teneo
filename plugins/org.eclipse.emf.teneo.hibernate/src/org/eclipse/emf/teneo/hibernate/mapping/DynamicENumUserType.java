@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicENumUserType.java,v 1.4 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: DynamicENumUserType.java,v 1.5 2007/07/17 12:21:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -26,7 +26,6 @@ import java.util.Properties;
 
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.hibernate.HibernateException;
@@ -37,7 +36,7 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2007/02/08 23:11:37 $
+ * @version $Revision: 1.5 $ $Date: 2007/07/17 12:21:53 $
  */
 
 public class DynamicENumUserType implements UserType, ParameterizedType {
@@ -80,16 +79,18 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	/** Compares the int values of the enumerates */
 	public boolean equals(Object x, Object y) throws HibernateException {
 		// todo: check compare on null values
-		if (x == null && y == null)
+		if (x == null && y == null) {
 			return true;
+		}
 
-		if (x == null || y == null)
+		if (x == null || y == null) {
 			return false;
+		}
 
-		if (x.getClass() != y.getClass())
+		if (x.getClass() != y.getClass()) {
 			return false;
-		assert (x instanceof EEnumLiteral);
-		return ((EEnumLiteral) x).getValue() == ((EEnumLiteral) y).getValue();
+		}
+		return ((Enumerator) x).getValue() == ((Enumerator) y).getValue();
 	}
 
 	/*
@@ -109,16 +110,19 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[], java.lang.Object)
+	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[],
+	 *      java.lang.Object)
 	 */
 	public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException {
 		final String name = rs.getString(names[0]);
-		if (rs.wasNull())
+		if (rs.wasNull()) {
 			return null;
+		}
 
-		Enumerator enumValue = (Enumerator) localCache.get(name);
-		if (enumValue != null)
+		Enumerator enumValue = localCache.get(name);
+		if (enumValue != null) {
 			return enumValue;
+		}
 
 		enumValue = enumInstance.getEEnumLiteralByLiteral(name);
 		localCache.put(name, enumValue);
@@ -128,20 +132,22 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement, java.lang.Object, int)
+	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement,
+	 *      java.lang.Object, int)
 	 */
 	public void nullSafeSet(PreparedStatement st, Object value, int index) throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
-			st.setString(index, ((EEnumLiteral) value).getName());
+			st.setString(index, ((Enumerator) value).getName());
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#replace(java.lang.Object, java.lang.Object, java.lang.Object)
+	 * @see org.hibernate.usertype.UserType#replace(java.lang.Object, java.lang.Object,
+	 *      java.lang.Object)
 	 */
 	public Object replace(Object original, Object target, Object owner) throws HibernateException {
 		return original;
@@ -162,6 +168,6 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 		final String epackUri = parameters.getProperty(HbMapperConstants.EPACKAGE_PARAM);
 		final String eclassifier = parameters.getProperty(HbMapperConstants.ECLASSIFIER_PARAM);
 		final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(epackUri);
-		enumInstance = (EEnum)epack.getEClassifier(eclassifier);
+		enumInstance = (EEnum) epack.getEClassifier(eclassifier);
 	}
 }
