@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToOneMapper.java,v 1.15 2007/07/12 18:04:12 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.16 2007/07/17 17:37:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -45,10 +45,6 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 		log.debug("Process many-to-one " + paReference);
 
 		final List<JoinColumn> jcs = getJoinColumns(paReference);
-		if (jcs.size() > 1) { // TODO support multiple join columns
-			log.error("Unsupported multiple join columns in " + paReference);
-			throw new MappingException("Unsupported multiple join columns", paReference);
-		}
 
 		final EClass referedTo = paReference.getAnnotatedEReference().getEReferenceType();
 		final ManyToOne mto = paReference.getManyToOne();

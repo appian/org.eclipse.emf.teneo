@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToManyMapper.java,v 1.20 2007/07/17 13:59:29 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.21 2007/07/17 17:37:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -280,16 +280,17 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 	 * @param collElement
 	 * @param targetEntity
 	 */
-	protected void addOneToMany(PAnnotatedEReference paReference, PAnnotatedEClass referedToAClass,
+	protected Element addOneToMany(PAnnotatedEReference paReference, PAnnotatedEClass referedToAClass,
 			Element collElement, String featureName, String targetEntity) {
 		if (isEObject(targetEntity)) { // anytype
 			final Element any = collElement.addElement("many-to-any").addAttribute("id-type", "long");
 			addColumns(paReference, any, null, getAnyTypeColumns(featureName, false), false, false);
+			return any;
 		} else {
 			if (referedToAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedToAClass)) {
-				collElement.addElement("one-to-many").addAttribute("entity-name", targetEntity);
+				return collElement.addElement("one-to-many").addAttribute("entity-name", targetEntity);
 			} else {
-				collElement.addElement("one-to-many").addAttribute("class",
+				return collElement.addElement("one-to-many").addAttribute("class",
 					getHbmContext().getInstanceClassName(referedToAClass.getAnnotatedEClass()));
 			}
 		}

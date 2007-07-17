@@ -460,17 +460,19 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		for (JoinColumn joinColumn : joinColumns) {
 			log.debug("Column " + joinColumn.getName());
 
-			if (!setUpdatable) {
+			if (!setUpdatable && keyElement.getName().compareTo("key") == 0) {
 				isUpdatable = joinColumn.isUpdatable();
 				keyElement.addAttribute("update", isUpdatable ? "true" : "false");
 				setUpdatable = true;
 			}
 
+			// these checks are disabled because they do not apply in case the join column
+			// is added to a join table
 			if (!joinColumn.isInsertable()) {
 				log.error("Unsupported non insertable join column in " + joinColumn);
 				throw new MappingException("Unsupported non insertable join column", joinColumn);
 			}
-			if (joinColumn.isUpdatable() != isUpdatable) {
+			if (setUpdatable && joinColumn.isUpdatable() != isUpdatable) {
 				log.error("Unsupported join column updatable in " + joinColumn);
 				throw new MappingException("Unsupported join column updatable", joinColumn);
 			}
