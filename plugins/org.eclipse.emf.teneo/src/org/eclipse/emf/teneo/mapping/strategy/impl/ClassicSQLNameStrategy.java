@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.6 2007/07/12 18:05:47 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.7 2007/07/17 17:37:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the options set in the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
@@ -232,25 +232,26 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 *      boolean)
 	 */
 	public List<String> getJoinTableJoinColumns(PAnnotatedEReference aReference, boolean inverse) {
-		final PAnnotatedEClass aClass = aReference.getPaEClass();
-
+		final PAnnotatedEClass aClass;
 		final String typeName;
 		String featureName;
 		if (inverse) {
+			aClass = aReference.getAReferenceType();
 			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
 				typeName = aReference.getAReferenceType().getAnnotatedEClass().getName();
 				featureName = "_" + aReference.getAnnotatedEReference().getEOpposite().getName();
 			} else {
-				typeName = aClass.getAnnotatedEClass().getName();
+				typeName = aReference.getAReferenceType().getAnnotatedEClass().getName();
 				featureName = "";
 			}
 		} else {
+			aClass = aReference.getPaEClass();
 			typeName = aClass.getAnnotatedEClass().getName();
 			featureName = "_" + aReference.getAnnotatedEReference().getName();
 		}
 		// for backward compatibility, only use featurename if the reference is
 		// to itself
-		if (aReference.getAReferenceType() != aClass) {
+		if (aReference.getAReferenceType() != aReference.getPaEClass()) {
 			featureName = "";
 		}
 
@@ -413,8 +414,8 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 * names..
 	 */
 	private boolean compareNames(EReference here, EReference there) {
-		final String nameHere = here.eClass().getName() + here.getName();
-		final String nameThere = there.eClass().getName() + there.getName();
+		final String nameHere = here.getEContainingClass().getName() + here.getName();
+		final String nameThere = there.getEContainingClass().getName() + there.getName();
 		assert (nameHere.compareTo(nameThere) != 0);
 		return nameHere.compareTo(nameThere) > 0;
 	}

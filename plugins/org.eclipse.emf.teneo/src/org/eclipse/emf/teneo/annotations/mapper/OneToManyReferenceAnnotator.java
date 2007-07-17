@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.3 2007/07/17 17:37:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -158,7 +158,16 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			}
 
 			// note joincolumns in jointable can be generated automatically by
-			// hib/jpox.
+			// hib/jpox. need to explicitly do this in case of
+			// composite id
+			if (joinTable.getJoinColumns().size() == 0) {
+				final List<String> names = getSqlNameStrategy().getJoinTableJoinColumns(aReference, false);
+				joinTable.getJoinColumns().addAll(getJoinColumns(names, false, true, otm));
+			}
+			if (joinTable.getInverseJoinColumns().size() == 0 && aReference.getAReferenceType() != null) {
+				final List<String> names = getSqlNameStrategy().getJoinTableJoinColumns(aReference, true);
+				joinTable.getInverseJoinColumns().addAll(getJoinColumns(names, false, true, otm));
+			}
 		} else if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) { // add
 			final List<String> names = getSqlNameStrategy().getOneToManyEReferenceJoinColumns(aReference);
 			aReference.getJoinColumns().addAll(getJoinColumns(names, aReference.getEmbedded() == null, true, otm));
