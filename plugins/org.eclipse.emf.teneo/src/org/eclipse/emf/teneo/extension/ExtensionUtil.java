@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ExtensionUtil.java,v 1.3 2007/07/13 12:21:17 mtaal Exp $
+ * $Id: ExtensionUtil.java,v 1.4 2007/07/17 12:22:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.EntityResolvingNameStrategy;
  * Contains simple utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class ExtensionUtil {
@@ -123,6 +123,17 @@ public class ExtensionUtil {
 			false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.EMFInterceptor", false));
 
+		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEList",
+			false));
+		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEMap",
+			false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableFeatureMap", false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEList", false));
+		em.registerExtension(createExtension(
+			"org.eclipse.emf.teneo.hibernate.mapping.elist.MapHibernatePersistableEMap", false));
+
 		// hibernate mapper
 		em
 			.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator",
@@ -159,5 +170,6 @@ public class ExtensionUtil {
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.jpox.mapper.JPOXMappingGenerator", false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.jpox.mapper.MappingContext", false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.jpox.mapper.NamingHandler", false));
+
 	}
 }

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ExtensionManager.java,v 1.1 2007/07/11 14:41:05 mtaal Exp $
+ * $Id: ExtensionManager.java,v 1.2 2007/07/17 12:22:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -22,7 +22,7 @@ package org.eclipse.emf.teneo.extension;
  * extension instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public interface ExtensionManager {
 
@@ -32,8 +32,11 @@ public interface ExtensionManager {
 	 */
 	public abstract void registerExtension(Extension extension);
 
-	/** Return an instance of an extension */
-	public abstract ExtensionPoint getExtension(String point);
+	/**
+	 * Return an instance of an extension, pass null if no constructor arguments are required for
+	 * this extension
+	 */
+	public abstract ExtensionPoint getExtension(String point, Object[] initArgs);
 
 	/**
 	 * Convenience method which also performs the casting and uses the classname of the class
@@ -41,6 +44,13 @@ public interface ExtensionManager {
 	 */
 	@SuppressWarnings("unchecked")
 	public abstract <T> T getExtension(Class<T> clz);
+
+	/**
+	 * Convenience method which also performs the casting and uses the classname of the class
+	 * parameter to search for the plugin.
+	 */
+	@SuppressWarnings("unchecked")
+	public abstract <T> T getExtension(Class<T> clz, Object[] initArgs);
 
 	/**
 	 * Convenience method to register a user extension overriding a current extension. It will

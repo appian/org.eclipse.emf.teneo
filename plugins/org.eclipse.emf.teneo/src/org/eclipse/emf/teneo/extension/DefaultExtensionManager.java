@@ -12,11 +12,12 @@
  *
  * </copyright>
  *
- * $Id: DefaultExtensionManager.java,v 1.1 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: DefaultExtensionManager.java,v 1.2 2007/07/17 12:22:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
 
+import java.lang.reflect.Constructor;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.logging.Log;
@@ -29,7 +30,7 @@ import org.eclipse.emf.teneo.classloader.ClassLoaderStrategy;
  * extension instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class DefaultExtensionManager implements ExtensionManager {
@@ -42,6 +43,10 @@ public class DefaultExtensionManager implements ExtensionManager {
 	// The instances of the extensions
 	private ConcurrentHashMap<String, ExtensionPoint> extensionInstances =
 			new ConcurrentHashMap<String, ExtensionPoint>();
+
+	// The constructor cache
+	private ConcurrentHashMap<String, Constructor<?>> constructorCache =
+			new ConcurrentHashMap<String, Constructor<?>>();
 
 	public DefaultExtensionManager() {
 		ExtensionUtil.registerDefaultExtensions(this);
@@ -94,7 +99,7 @@ public class DefaultExtensionManager implements ExtensionManager {
 	 * 
 	 * @see org.eclipse.emf.teneo.extension.ExtensionManager#getExtension(java.lang.String)
 	 */
-	public ExtensionPoint getExtension(String point) {
+	public ExtensionPoint getExtension(String point, Object[] initArgs) {
 		log.debug("Searching extension " + point);
 		final Extension extension = extensionRegistry.get(point);
 		if (extension == null) {
@@ -149,23 +154,98 @@ public class DefaultExtensionManager implements ExtensionManager {
 		}
 
 		try {
-			final ExtensionPoint extensionInstance = (ExtensionPoint) clz.newInstance();
+			final boolean constructorUsed;
+			final ExtensionPoint extensionInstance;
+			if (initArgs == null || initArgs.length == 0) { // use default constructor
+				constructorUsed = false;
+				extensionInstance = (ExtensionPoint) clz.newInstance();
+			} else {
+				log.debug("Initargs passed, using constructor for class " + clz.getName());
+				constructorUsed = true;
+				final Constructor<?> constructor = getConstructor(clz, initArgs);
+				extensionInstance = (ExtensionPoint) constructor.newInstance(initArgs);
+			}
 			log.debug("Created extensionPoint instance: " + extensionInstance.getClass().getName());
+
 			if (extensionInstance instanceof ExtensionManagerAware) {
 				((ExtensionManagerAware) extensionInstance).setExtensionManager(this);
 			}
+
 			if (extensionInstance instanceof ExtensionInitializable) {
 				log.debug("Initializing extension " + extensionInstance.getClass().getName());
 				((ExtensionInitializable) extensionInstance).initializeExtension();
 			}
-			if (extension.isSingleton()) {
+
+			// note if a constructor is used instances are never cached because we assume
+			// that instances always differ
+			if (extension.isSingleton() && !constructorUsed) {
 				log.debug("Caching extension instance as singleton " + extension);
 				extensionInstances.put(point, extensionInstance);
+			}
+			if (extension.isSingleton() && constructorUsed) {
+				log.warn("The extension: " + extension.getPoint() +
+						" is declared as a singleton but this getInstance call " +
+						" passed initialization parameters so it is not cached, " + clz.getName());
 			}
 			return extensionInstance;
 		} catch (Exception e) {
 			throw new TeneoExtensionException("Exception while instantiating: " + extension.getClassName(), e);
 		}
+	}
+
+	/** Return the constructor for a class and initialization arguments */
+	protected Constructor<?> getConstructor(Class<?> clz, Object[] initArgs) throws NoSuchMethodException {
+		Constructor<?> result = null;
+		final Class<?>[] initTypes = new Class<?>[initArgs.length];
+		int i = 0;
+		final StringBuffer keyStr = new StringBuffer();
+		for (Object o : initArgs) {
+			if (keyStr.length() > 0) {
+				keyStr.append(",");
+			}
+			if (o == null) {
+				initTypes[i++] = null;
+				keyStr.append("null");
+			} else {
+				initTypes[i++] = o.getClass();
+				keyStr.append(o.getClass().getName());
+			}
+		}
+
+		final String key = clz.getName() + keyStr;
+
+		if ((result = constructorCache.get(key)) != null) {
+			return result;
+		}
+
+		for (Constructor<?> constructor : clz.getConstructors()) {
+			if (constructor.getParameterTypes().length != initTypes.length) {
+				continue;
+			}
+			int j = 0;
+			boolean found = true;
+			for (Class<?> paramType : constructor.getParameterTypes()) {
+				final Class<?> argumentType = initTypes[j++];
+				if (argumentType == null && !Object.class.isAssignableFrom(paramType)) {
+					found = false;
+					break;
+				}
+				if (!paramType.isAssignableFrom(argumentType)) {
+					found = false;
+					break;
+				}
+			}
+			if (found) {
+				result = constructor;
+				constructorCache.put(key, result);
+				break;
+			}
+		}
+		if (result == null) {
+			throw new TeneoExtensionException("No constructor found for : " + clz.getName() +
+					" and constructor argument types: " + keyStr);
+		}
+		return result;
 	}
 
 	/*
@@ -175,6 +255,16 @@ public class DefaultExtensionManager implements ExtensionManager {
 	 */
 	@SuppressWarnings("unchecked")
 	public <T> T getExtension(Class<T> clz) {
-		return (T) getExtension(clz.getName());
+		return (T) getExtension(clz.getName(), null);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.extension.ExtensionManager#getExtension(java.lang.Class)
+	 */
+	@SuppressWarnings("unchecked")
+	public <T> T getExtension(Class<T> clz, Object[] initArgs) {
+		return (T) getExtension(clz.getName(), initArgs);
 	}
 }

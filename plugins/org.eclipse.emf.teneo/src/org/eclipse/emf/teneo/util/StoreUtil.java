@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StoreUtil.java,v 1.17 2007/06/29 07:31:48 mtaal Exp $
+ * implementation </copyright> $Id: StoreUtil.java,v 1.18 2007/07/17 12:22:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.TeneoException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public class StoreUtil {
@@ -115,10 +115,10 @@ public class StoreUtil {
 
 	/** Same method only for an eclass */
 	public static boolean isMapEntry(EClass eclass) {
-		return eclass != null && eclass.getInstanceClass() != null
-				&& Map.Entry.class.isAssignableFrom(eclass.getInstanceClass())
-				&& eclass.getEStructuralFeatures().size() == 2 && eclass.getEStructuralFeature("key") != null
-				&& eclass.getEStructuralFeature("value") != null;
+		return eclass != null && eclass.getInstanceClass() != null &&
+				Map.Entry.class.isAssignableFrom(eclass.getInstanceClass()) &&
+				eclass.getEStructuralFeatures().size() == 2 && eclass.getEStructuralFeature("key") != null &&
+				eclass.getEStructuralFeature("value") != null;
 	}
 
 	/** The nsprefix, eclass separator */
@@ -223,8 +223,8 @@ public class StoreUtil {
 		if (eAnnotation == null) {
 			return false;
 		}
-		return eAnnotation.getDetails().get("kind") != null
-				&& (eAnnotation.getDetails().get("kind")).compareTo("elementWildcard") == 0;
+		return eAnnotation.getDetails().get("kind") != null &&
+				(eAnnotation.getDetails().get("kind")).compareTo("elementWildcard") == 0;
 		/*
 		 * // todo optimise this with a cache final EAnnotation eannotation =
 		 * feature.getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData"); if
@@ -273,14 +273,14 @@ public class StoreUtil {
 
 		final EClass eclass = (EClass) epack.getEClassifier(eclassName);
 		if (eclass == null) {
-			throw new TeneoException("The dbid " + strid + " and eclassname: " + eclassName
-					+ " does not resolve to an eclass");
+			throw new TeneoException("The dbid " + strid + " and eclassname: " + eclassName +
+					" does not resolve to an eclass");
 		}
 
 		final EStructuralFeature structFeature = eclass.getEStructuralFeature(featureName);
 		if (structFeature == null) {
-			throw new TeneoException("The dbid " + strid + " and featurename: " + featureName
-					+ " does not resolve to a structural feature");
+			throw new TeneoException("The dbid " + strid + " and featurename: " + featureName +
+					" does not resolve to a structural feature");
 		}
 
 		return structFeature;
@@ -315,8 +315,8 @@ public class StoreUtil {
 
 		final EDataType edatatype = (EDataType) epack.getEClassifier(name);
 		if (edatatype == null) {
-			throw new TeneoException("The dbid " + strid + " and eclassname: " + name
-					+ " does not resolve to an EDataType");
+			throw new TeneoException("The dbid " + strid + " and eclassname: " + name +
+					" does not resolve to an EDataType");
 		}
 		return edatatype;
 	}
@@ -380,8 +380,8 @@ public class StoreUtil {
 	public static EReference[] getManyGroupEReferences(EObject emfObj) {
 		final ArrayList<EReference> manyRefs = new ArrayList<EReference>();
 		for (EStructuralFeature estruct : emfObj.eClass().getEAllStructuralFeatures()) {
-			if (estruct instanceof EReference
-					&& (((EReference) estruct).isMany() || isGroupFeature(estruct) || isWildCard(estruct))) {
+			if (estruct instanceof EReference &&
+					(((EReference) estruct).isMany() || isGroupFeature(estruct) || isWildCard(estruct))) {
 				manyRefs.add((EReference) estruct);
 			}
 		}
@@ -503,22 +503,18 @@ public class StoreUtil {
 		try {
 			field.set(obj, value);
 		} catch (IllegalAccessException e) {
-			throw new TeneoException("IllegalAccessException " + obj.getClass().getName() + " field; "
-					+ field.getName());
+			throw new TeneoException("IllegalAccessException " + obj.getClass().getName() + " field; " +
+					field.getName());
 		}
 	}
 
-	/** Determines the list of available jdo files on the basis of the suffix */
+	/** Determines the list of available mapping files on the basis of the suffix */
 	public static String[] getFileList(String fileName, String additionalLocation) {
 		final ArrayList<String> result = new ArrayList<String>();
 		log.debug(">>>> Building or descriptor file List");
 
 		if (additionalLocation != null) {
-			if (additionalLocation.endsWith(fileName)) {
-				result.add(additionalLocation);
-			} else {
-				result.add(additionalLocation + File.separator + fileName);
-			}
+			result.add(additionalLocation);
 		}
 
 		final String[] packagelist = buildPackagelist();
@@ -587,8 +583,8 @@ public class StoreUtil {
 			in.close();
 			out.close();
 		} catch (Exception e) {
-			throw new TeneoException("Exception while copying from/to " + src.getAbsolutePath() + "/"
-					+ dst.getAbsolutePath(), e);
+			throw new TeneoException("Exception while copying from/to " + src.getAbsolutePath() + "/" +
+					dst.getAbsolutePath(), e);
 		}
 	}
 }

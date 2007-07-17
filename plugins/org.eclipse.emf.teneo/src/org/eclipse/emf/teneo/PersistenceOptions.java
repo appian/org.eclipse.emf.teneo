@@ -9,10 +9,10 @@
  *
  * Contributors:
  *   Martin Taal - Initial API and implementation
- *
+ *   Jason Henriksen - Mapping File Path
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.31 2007/07/12 18:05:47 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.32 2007/07/17 12:22:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  */
 public class PersistenceOptions {
 
@@ -172,6 +172,12 @@ public class PersistenceOptions {
 	public static final String USE_MAPPING_FILE = MAPPING_PREFIX + "hibernate_mapping_file";
 
 	/**
+	 * The complete resource path to the mapping file, can be used instead of the USE_MAPPING_FILE
+	 * option
+	 */
+	public static final String MAPPING_FILE_PATH = MAPPING_PREFIX + "mapping_file_name";
+
+	/**
 	 * Automatically add
 	 * 
 	 * @Id to ID feature
@@ -267,6 +273,7 @@ public class PersistenceOptions {
 		final Properties props = new Properties();
 		props.setProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "false");
 		props.setProperty(USE_MAPPING_FILE, "false");
+// props.setProperty(MAPPING_FILE_PATH, null); // null is the default anyway
 		props.setProperty(SET_CASCADE_ALL_ON_CONTAINMENT, "true");
 		props.setProperty(OPTIMISTIC, "true");
 		props.setProperty(UPDATE_SCHEMA, "true");
@@ -441,6 +448,11 @@ public class PersistenceOptions {
 	/** Returns the value of the UseMappingFile option, default is false */
 	public boolean isUseMappingFile() {
 		return Boolean.valueOf(properties.getProperty(USE_MAPPING_FILE)).booleanValue();
+	}
+
+	/** Returns the value of the MAPPING_FILE_PATH option, default is "" */
+	public String getMappingFilePath() {
+		return properties.getProperty(MAPPING_FILE_PATH);
 	}
 
 	/** Returns the value of the id feature as primary key */
