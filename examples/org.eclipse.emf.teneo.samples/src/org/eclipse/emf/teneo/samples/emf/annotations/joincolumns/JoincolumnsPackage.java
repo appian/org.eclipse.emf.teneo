@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsPackage.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
+ * $Id: JoincolumnsPackage.java,v 1.2 2007/07/17 17:37:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns;
 
@@ -88,13 +88,31 @@ public interface JoincolumnsPackage extends EPackage {
 	int PERSON__LAST_NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Friends</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__FRIENDS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Opposite Friends</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__OPPOSITE_FRIENDS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 2;
+	int PERSON_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.ParentImpl <em>Parent</em>}' class.
@@ -125,7 +143,25 @@ public interface JoincolumnsPackage extends EPackage {
 	int PARENT__LAST_NAME = PERSON__LAST_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' reference list.
+	 * The feature id for the '<em><b>Friends</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT__FRIENDS = PERSON__FRIENDS;
+
+	/**
+	 * The feature id for the '<em><b>Opposite Friends</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT__OPPOSITE_FRIENDS = PERSON__OPPOSITE_FRIENDS;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -171,6 +207,24 @@ public interface JoincolumnsPackage extends EPackage {
 	int CHILD__LAST_NAME = PERSON__LAST_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Friends</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD__FRIENDS = PERSON__FRIENDS;
+
+	/**
+	 * The feature id for the '<em><b>Opposite Friends</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD__OPPOSITE_FRIENDS = PERSON__OPPOSITE_FRIENDS;
+
+	/**
 	 * The number of structural features of the '<em>Child</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -178,6 +232,44 @@ public interface JoincolumnsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHILD_FEATURE_COUNT = PERSON_FEATURE_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.HouseImpl <em>House</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.HouseImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.JoincolumnsPackageImpl#getHouse()
+	 * @generated
+	 */
+	int HOUSE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOUSE__OWNER = 0;
+
+	/**
+	 * The feature id for the '<em><b>Visitors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOUSE__VISITORS = 1;
+
+	/**
+	 * The number of structural features of the '<em>House</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOUSE_FEATURE_COUNT = 2;
 
 
 	/**
@@ -191,10 +283,10 @@ public interface JoincolumnsPackage extends EPackage {
 	EClass getParent();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent#getChildren <em>Children</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Children</em>'.
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent#getChildren()
 	 * @see #getParent()
 	 * @generated
@@ -244,6 +336,60 @@ public interface JoincolumnsPackage extends EPackage {
 	EAttribute getPerson_LastName();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFriends <em>Friends</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Friends</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFriends()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EReference getPerson_Friends();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getOppositeFriends <em>Opposite Friends</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Opposite Friends</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getOppositeFriends()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EReference getPerson_OppositeFriends();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.House <em>House</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>House</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.House
+	 * @generated
+	 */
+	EClass getHouse();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.House#getOwner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Owner</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.House#getOwner()
+	 * @see #getHouse()
+	 * @generated
+	 */
+	EReference getHouse_Owner();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.House#getVisitors <em>Visitors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Visitors</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.House#getVisitors()
+	 * @see #getHouse()
+	 * @generated
+	 */
+	EReference getHouse_Visitors();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -276,7 +422,7 @@ public interface JoincolumnsPackage extends EPackage {
 		EClass PARENT = eINSTANCE.getParent();
 
 		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -318,6 +464,48 @@ public interface JoincolumnsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PERSON__LAST_NAME = eINSTANCE.getPerson_LastName();
+
+		/**
+		 * The meta object literal for the '<em><b>Friends</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSON__FRIENDS = eINSTANCE.getPerson_Friends();
+
+		/**
+		 * The meta object literal for the '<em><b>Opposite Friends</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSON__OPPOSITE_FRIENDS = eINSTANCE.getPerson_OppositeFriends();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.HouseImpl <em>House</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.HouseImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.JoincolumnsPackageImpl#getHouse()
+		 * @generated
+		 */
+		EClass HOUSE = eINSTANCE.getHouse();
+
+		/**
+		 * The meta object literal for the '<em><b>Owner</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HOUSE__OWNER = eINSTANCE.getHouse_Owner();
+
+		/**
+		 * The meta object literal for the '<em><b>Visitors</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HOUSE__VISITORS = eINSTANCE.getHouse_Visitors();
 
 	}
 

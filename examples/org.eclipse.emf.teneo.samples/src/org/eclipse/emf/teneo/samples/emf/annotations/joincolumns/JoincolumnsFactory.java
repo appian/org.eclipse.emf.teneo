@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsFactory.java,v 1.1 2006/09/29 12:30:04 mtaal Exp $
+ * $Id: JoincolumnsFactory.java,v 1.2 2007/07/17 17:37:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns;
 
@@ -51,6 +51,15 @@ public interface JoincolumnsFactory extends EFactory {
 	 * @generated
 	 */
 	Person createPerson();
+
+	/**
+	 * Returns a new object of class '<em>House</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>House</em>'.
+	 * @generated
+	 */
+	House createHouse();
 
 	/**
 	 * Returns the package supported by this factory.

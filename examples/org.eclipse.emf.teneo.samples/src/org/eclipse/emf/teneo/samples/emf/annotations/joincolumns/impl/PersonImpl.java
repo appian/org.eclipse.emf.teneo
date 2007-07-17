@@ -2,17 +2,23 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.3 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.4 2007/07/17 17:37:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
 
@@ -25,6 +31,8 @@ import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.PersonImpl#getFirstName <em>First Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.PersonImpl#getLastName <em>Last Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.PersonImpl#getFriends <em>Friends</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl.PersonImpl#getOppositeFriends <em>Opposite Friends</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +78,26 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @ordered
 	 */
 	protected String lastName = LAST_NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getFriends() <em>Friends</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFriends()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Person> friends;
+
+	/**
+	 * The cached value of the '{@link #getOppositeFriends() <em>Opposite Friends</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOppositeFriends()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Person> oppositeFriends;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,6 +165,63 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Person> getFriends() {
+		if (friends == null) {
+			friends = new EObjectWithInverseResolvingEList.ManyInverse<Person>(Person.class, this, JoincolumnsPackage.PERSON__FRIENDS, JoincolumnsPackage.PERSON__OPPOSITE_FRIENDS);
+		}
+		return friends;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Person> getOppositeFriends() {
+		if (oppositeFriends == null) {
+			oppositeFriends = new EObjectWithInverseResolvingEList.ManyInverse<Person>(Person.class, this, JoincolumnsPackage.PERSON__OPPOSITE_FRIENDS, JoincolumnsPackage.PERSON__FRIENDS);
+		}
+		return oppositeFriends;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case JoincolumnsPackage.PERSON__FRIENDS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getFriends()).basicAdd(otherEnd, msgs);
+			case JoincolumnsPackage.PERSON__OPPOSITE_FRIENDS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOppositeFriends()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case JoincolumnsPackage.PERSON__FRIENDS:
+				return ((InternalEList<?>)getFriends()).basicRemove(otherEnd, msgs);
+			case JoincolumnsPackage.PERSON__OPPOSITE_FRIENDS:
+				return ((InternalEList<?>)getOppositeFriends()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -144,6 +229,10 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return getFirstName();
 			case JoincolumnsPackage.PERSON__LAST_NAME:
 				return getLastName();
+			case JoincolumnsPackage.PERSON__FRIENDS:
+				return getFriends();
+			case JoincolumnsPackage.PERSON__OPPOSITE_FRIENDS:
+				return getOppositeFriends();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -153,6 +242,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -161,6 +251,14 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return;
 			case JoincolumnsPackage.PERSON__LAST_NAME:
 				setLastName((String)newValue);
+				return;
+			case JoincolumnsPackage.PERSON__FRIENDS:
+				getFriends().clear();
+				getFriends().addAll((Collection<? extends Person>)newValue);
+				return;
+			case JoincolumnsPackage.PERSON__OPPOSITE_FRIENDS:
+				getOppositeFriends().clear();
+				getOppositeFriends().addAll((Collection<? extends Person>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -180,6 +278,12 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case JoincolumnsPackage.PERSON__LAST_NAME:
 				setLastName(LAST_NAME_EDEFAULT);
 				return;
+			case JoincolumnsPackage.PERSON__FRIENDS:
+				getFriends().clear();
+				return;
+			case JoincolumnsPackage.PERSON__OPPOSITE_FRIENDS:
+				getOppositeFriends().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,6 +300,10 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return FIRST_NAME_EDEFAULT == null ? firstName != null : !FIRST_NAME_EDEFAULT.equals(firstName);
 			case JoincolumnsPackage.PERSON__LAST_NAME:
 				return LAST_NAME_EDEFAULT == null ? lastName != null : !LAST_NAME_EDEFAULT.equals(lastName);
+			case JoincolumnsPackage.PERSON__FRIENDS:
+				return friends != null && !friends.isEmpty();
+			case JoincolumnsPackage.PERSON__OPPOSITE_FRIENDS:
+				return oppositeFriends != null && !oppositeFriends.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

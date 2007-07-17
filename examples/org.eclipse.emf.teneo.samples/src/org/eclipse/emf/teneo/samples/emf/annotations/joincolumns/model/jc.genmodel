@@ -14,6 +14,12 @@
     <genClasses ecoreClass="jc.ecore#//Person">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jc.ecore#//Person/firstName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jc.ecore#//Person/lastName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference jc.ecore#//Person/friends"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference jc.ecore#//Person/oppositeFriends"/>
+    </genClasses>
+    <genClasses ecoreClass="jc.ecore#//House">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference jc.ecore#//House/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference jc.ecore#//House/visitors"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

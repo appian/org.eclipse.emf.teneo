@@ -7,7 +7,7 @@
 			<xsd:element name="name" type="xsd:string"/>
 			<xsd:element name="role" type="xsd:anyURI" ecore:reference="this:Role" minOccurs="0" maxOccurs="unbounded" ecore:opposite="users" ecore:name="roles">
 				<xsd:annotation>
-					<xsd:appinfo source="teneo.hibernate">@IdBag</xsd:appinfo>
+					<xsd:appinfo source="teneo.hibernate">@IdBag @JoinTable(name="myjoin")</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>

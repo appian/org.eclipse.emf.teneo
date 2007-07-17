@@ -2,9 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RoleValidator.java,v 1.1 2007/03/21 15:45:37 mtaal Exp $
+ * $Id: RoleValidator.java,v 1.2 2007/07/17 17:37:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.validation;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.User;
 
 
 /**
@@ -17,4 +20,6 @@ public interface RoleValidator {
 	boolean validate();
 
 	boolean validateName(String value);
+
+	boolean validateUsers(EList<User> value);
 }

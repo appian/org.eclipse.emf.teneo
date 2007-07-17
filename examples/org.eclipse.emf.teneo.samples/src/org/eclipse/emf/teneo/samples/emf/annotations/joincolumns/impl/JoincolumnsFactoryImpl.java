@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsFactoryImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: JoincolumnsFactoryImpl.java,v 1.3 2007/07/17 17:37:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -65,6 +65,7 @@ public class JoincolumnsFactoryImpl extends EFactoryImpl implements JoincolumnsF
 			case JoincolumnsPackage.PARENT: return createParent();
 			case JoincolumnsPackage.CHILD: return createChild();
 			case JoincolumnsPackage.PERSON: return createPerson();
+			case JoincolumnsPackage.HOUSE: return createHouse();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -98,6 +99,16 @@ public class JoincolumnsFactoryImpl extends EFactoryImpl implements JoincolumnsF
 	public Person createPerson() {
 		PersonImpl person = new PersonImpl();
 		return person;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public House createHouse() {
+		HouseImpl house = new HouseImpl();
+		return house;
 	}
 
 	/**

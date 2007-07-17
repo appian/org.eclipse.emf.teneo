@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsPackageImpl.java,v 1.3 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: JoincolumnsPackageImpl.java,v 1.4 2007/07/17 17:37:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.House;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent;
@@ -46,6 +47,13 @@ public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsP
 	 * @generated
 	 */
 	private EClass personEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass houseEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -174,6 +182,51 @@ public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPerson_Friends() {
+		return (EReference)personEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPerson_OppositeFriends() {
+		return (EReference)personEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHouse() {
+		return houseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHouse_Owner() {
+		return (EReference)houseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHouse_Visitors() {
+		return (EReference)houseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public JoincolumnsFactory getJoincolumnsFactory() {
 		return (JoincolumnsFactory)getEFactoryInstance();
 	}
@@ -205,6 +258,12 @@ public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsP
 		personEClass = createEClass(PERSON);
 		createEAttribute(personEClass, PERSON__FIRST_NAME);
 		createEAttribute(personEClass, PERSON__LAST_NAME);
+		createEReference(personEClass, PERSON__FRIENDS);
+		createEReference(personEClass, PERSON__OPPOSITE_FRIENDS);
+
+		houseEClass = createEClass(HOUSE);
+		createEReference(houseEClass, HOUSE__OWNER);
+		createEReference(houseEClass, HOUSE__VISITORS);
 	}
 
 	/**
@@ -240,13 +299,19 @@ public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsP
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(parentEClass, Parent.class, "Parent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getParent_Children(), this.getChild(), null, "children", null, 0, -1, Parent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParent_Children(), this.getChild(), null, "children", null, 0, -1, Parent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(childEClass, Child.class, "Child", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPerson_FirstName(), ecorePackage.getEString(), "firstName", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPerson_LastName(), ecorePackage.getEString(), "lastName", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPerson_Friends(), this.getPerson(), this.getPerson_OppositeFriends(), "friends", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPerson_OppositeFriends(), this.getPerson(), this.getPerson_Friends(), "oppositeFriends", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(houseEClass, House.class, "House", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHouse_Owner(), this.getParent(), null, "owner", null, 0, 1, House.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHouse_Visitors(), this.getPerson(), null, "visitors", null, 0, -1, House.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -287,6 +352,12 @@ public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsP
 		   source, 
 		   new String[] {
 			 "appinfo", "@Id"
+		   });		
+		addAnnotation
+		  (getHouse_Visitors(), 
+		   source, 
+		   new String[] {
+			 "value", "@JoinColumns({@JoinColumn(name=\"wrongcolumn\")})\n@JoinTable(joinColumns={@JoinColumn(name=\"rightcolumn\")})"
 		   });
 	}
 

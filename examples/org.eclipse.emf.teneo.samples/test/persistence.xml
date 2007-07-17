@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<persistence-mapping xmlns="http://www.eclipse.org/emft/teneo"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<epackage namespace-uri="urn:customs.ru:CommonAggregateTypes:3.0.1">
+		<eclass name="GoodsBaseType">
+			<property name="goodsDescription">
+				<join-table name="goodsdescription5"/>
+			</property>
+		</eclass>
+	</epackage>
+	<epackage namespace-uri="urn:customs.ru:ESADDTSCommonAggregateTypes:3.0.1">
+		<eclass name="DTSMethod236Type">
+			<property name="declaratedGoodsQuantity">
+				<join-column name="declaratedGoodsQuantity_id"/>
+			</property>
+		</eclass>
+	</epackage>
+	
+	<epackage namespace-uri="urn:customs.ru:Information:CustomsDocuments:DTSout:3.0.1">
+		<eclass name="DTSoutType">
+			<property name="dTSoutBuyer">
+				<join-column name="dTSoutBuyer_id"/>
+			</property>
+			<property name="dTSoutDeclarant">
+				<join-column name="dTSoutDeclarant_id"/>
+			</property>
+		</eclass>
+	</epackage>
+	
+	<epackage
+		namespace-uri="urn:customs.ru:ESADCommonAggregateTypes:3.0.1">
+		<eclass name="ProcessingGoodsType">
+			<property name="goodsDescription">
+				<join-table name="goodsdescription3"/>
+			</property>
+		</eclass>
+		<eclass name="GoodsItemBaseType">
+			<property name="goodsDescription">
+				<join-table name="goodsdescription2"/>
+			</property>
+		</eclass>
+		<eclass name="GoodsGroupDescriptionType">
+			<property name="goodsDescription">
+				<join-table name="goodsdescription4"/>
+			</property>
+		</eclass>
+	</epackage>
+</persistence-mapping>

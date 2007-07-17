@@ -5,7 +5,7 @@
     nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/joincolumns" nsPrefix="joincolumns">
   <eClassifiers xsi:type="ecore:EClass" name="Parent" eSuperTypes="#//Person">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Child">
+        eType="#//Child" containment="true">
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="@JoinColumns({@JoinColumn(name=&quot;myParentFirstName&quot; referencedColumnName=&quot;firstName&quot;),&#xA;&#x9;@JoinColumn(name=&quot;myParentLastName&quot; referencedColumnName=&quot;lastName&quot;)})"/>
       </eAnnotations>
@@ -24,6 +24,19 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="friends" upperBound="-1"
+        eType="#//Person" eOpposite="#//Person/oppositeFriends"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oppositeFriends" upperBound="-1"
+        eType="#//Person" eOpposite="#//Person/friends"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="House">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="visitors" upperBound="-1"
+        eType="#//Person">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@JoinColumns({@JoinColumn(name=&quot;wrongcolumn&quot;)})&#xA;@JoinTable(joinColumns={@JoinColumn(name=&quot;rightcolumn&quot;)})"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

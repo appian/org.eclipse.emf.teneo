@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Parent.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
+ * $Id: Parent.java,v 1.4 2007/07/17 17:37:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Parent extends Person {
 	/**
-	 * Returns the value of the '<em><b>Children</b></em>' reference list.
+	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -34,9 +34,9 @@ public interface Parent extends Person {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Children</em>' reference list.
+	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage#getParent_Children()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child"
+	 * @model containment="true"
 	 *        annotation="teneo.jpa appinfo='@JoinColumns({@JoinColumn(name=\"myParentFirstName\" referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\" referencedColumnName=\"lastName\")})'"
 	 * @generated
 	 */

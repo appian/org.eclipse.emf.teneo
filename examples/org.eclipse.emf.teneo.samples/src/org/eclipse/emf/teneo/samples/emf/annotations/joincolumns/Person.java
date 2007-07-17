@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.2 2006/09/29 12:30:04 mtaal Exp $
+ * $Id: Person.java,v 1.3 2007/07/17 17:37:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFirstName <em>First Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getLastName <em>Last Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFriends <em>Friends</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getOppositeFriends <em>Opposite Friends</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,5 +80,41 @@ public interface Person extends EObject {
 	 * @generated
 	 */
 	void setLastName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Friends</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getOppositeFriends <em>Opposite Friends</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Friends</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Friends</em>' reference list.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage#getPerson_Friends()
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getOppositeFriends
+	 * @model opposite="oppositeFriends"
+	 * @generated
+	 */
+	EList<Person> getFriends();
+
+	/**
+	 * Returns the value of the '<em><b>Opposite Friends</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFriends <em>Friends</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Opposite Friends</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Opposite Friends</em>' reference list.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage#getPerson_OppositeFriends()
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFriends
+	 * @model opposite="friends"
+	 * @generated
+	 */
+	EList<Person> getOppositeFriends();
 
 } // Person

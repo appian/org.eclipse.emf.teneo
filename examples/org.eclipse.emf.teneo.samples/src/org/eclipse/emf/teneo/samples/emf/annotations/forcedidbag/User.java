@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: User.java,v 1.2 2007/06/29 07:30:49 mtaal Exp $
+ * $Id: User.java,v 1.3 2007/07/17 17:37:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag;
 
@@ -39,7 +39,7 @@ public interface User extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.ForcedidbagPackage#getUser_Name()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */
@@ -68,8 +68,8 @@ public interface User extends EObject {
 	 * @return the value of the '<em>Roles</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.ForcedidbagPackage#getUser_Roles()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.Role#getUsers
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.forcedidbag.Role" opposite="users"
-	 *        annotation="teneo.hibernate appinfo='@IdBag'"
+	 * @model opposite="users"
+	 *        annotation="teneo.hibernate appinfo='@IdBag @JoinTable(name=\"myjoin\")'"
 	 *        extendedMetaData="kind='element' name='role'"
 	 * @generated
 	 */
