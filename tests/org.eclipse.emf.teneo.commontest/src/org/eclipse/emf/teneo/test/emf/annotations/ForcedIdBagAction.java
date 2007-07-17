@@ -75,31 +75,11 @@ public class ForcedIdBagAction extends AbstractTestAction {
 
 			// apparently hibernate core creates different tables than running with
 			// hibernate entitymanager, need to check!
-			boolean rsTrue = false;
-			try {
-				resultSet = metaData.getPrimaryKeys(null, null, "user_role");
-				rsTrue = resultSet.next();
-			} catch (final SQLException e) {
-				// ignore, hope for the next one
-			}
-			boolean rs2True = false;
-			try {
-				resultSet2 = metaData.getPrimaryKeys(null, null, "role");
-				rs2True = resultSet2.next();
-			} catch (final SQLException e) {
-				assertTrue(rsTrue);
-				// ignore hope for the first one
-			}
-			assertTrue("No primary key found for \"roles\" table.", rsTrue || rs2True);
-			if (rsTrue) {
-				assertTrue("Primary key column should be named \"idbag_id\"", "idbag_id".equalsIgnoreCase(resultSet
-					.getString("COLUMN_NAME")));
-				assertFalse("Found more than one primary key.", resultSet.next());
-			} else {
-				assertTrue("Primary key column should be named \"idbag_id\"", "idbag_id".equalsIgnoreCase(resultSet2
-					.getString("COLUMN_NAME")));
-				assertFalse("Found more than one primary key.", resultSet2.next());
-			}
+			resultSet = metaData.getPrimaryKeys(null, null, "myjoin");
+			boolean rsTrue = resultSet.next();
+			assertTrue("Primary key column should be named \"idbag_id\"", "idbag_id".equalsIgnoreCase(resultSet
+				.getString("COLUMN_NAME")));
+			assertFalse("Found more than one primary key.", resultSet.next());
 		} catch (final SQLException e) {
 			assertFalse(e.getMessage(), true);
 		} finally {

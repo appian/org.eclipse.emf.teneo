@@ -17,9 +17,11 @@ import java.util.Properties;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Child;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.House;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Parent;
+import org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -28,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class JoinColumnsAction extends AbstractTestAction {
 	/**
@@ -40,6 +42,18 @@ public class JoinColumnsAction extends AbstractTestAction {
 
 	/** Checks the version column */
 	protected void checkVersion(TestStore store) {
+	}
+
+	/**
+	 * Can be overridden by subclass returns properties which control the or layer. Such as setting
+	 * of eager loading.
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.VERSION_COLUMN_NAME, "myversion");
+		props.setProperty(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
+		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */
@@ -62,6 +76,42 @@ public class JoinColumnsAction extends AbstractTestAction {
 			parent.getChildren().add(child2);
 			store.store(parent.getChildren());
 			store.store(parent);
+
+			House h = factory.createHouse();
+			h.setOwner(parent);
+			h.getVisitors().add(parent);
+			h.getVisitors().add(child2);
+			store.store(h);
+
+			// now create some friends
+			Person f1 = factory.createPerson();
+			f1.setFirstName("friend");
+			f1.setLastName("one");
+			Person f2 = factory.createPerson();
+			f2.setFirstName("friend");
+			f2.setLastName("two");
+			Person f3 = factory.createPerson();
+			f3.setFirstName("friend");
+			f3.setLastName("three");
+			Person f4 = factory.createPerson();
+			f4.setFirstName("friend");
+			f4.setLastName("four");
+
+			f1.getFriends().add(f2);
+			f1.getFriends().add(f3);
+			f1.getFriends().add(f4);
+
+			f2.getFriends().add(f3);
+			f2.getFriends().add(f4);
+
+			f4.getFriends().add(f1);
+			f4.getFriends().add(f2);
+			f4.getFriends().add(f3);
+
+			f3.getFriends().add(f2);
+			f3.getFriends().add(f4);
+
+			store.store(f1);
 			store.commitTransaction();
 		}
 
@@ -72,6 +122,11 @@ public class JoinColumnsAction extends AbstractTestAction {
 			assertEquals(2, parent.getChildren().size());
 			assertEquals("Johnny", parent.getChildren().get(0).getFirstName());
 			assertEquals("Jane", parent.getChildren().get(1).getFirstName());
+			final House h = store.getObject(House.class);
+			assertEquals(parent, h.getOwner());
+			assertTrue(h.getVisitors().contains(parent));
+			assertEquals(2, h.getVisitors().size());
+			assertTrue(h.getVisitors().contains(parent.getChildren().get(1)));
 			store.commitTransaction();
 		}
 
@@ -105,17 +160,5 @@ public class JoinColumnsAction extends AbstractTestAction {
 		} catch (final SQLException e) {
 			throw new StoreTestException("Sql exception when checking db schema", e);
 		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
-	 */
-	@Override
-	public Properties getExtraConfigurationProperties() {
-		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.VERSION_COLUMN_NAME, "myversion");
-		return props;
 	}
 }
