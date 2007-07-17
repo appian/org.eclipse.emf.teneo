@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyAttributeMapper.java,v 1.15 2007/07/12 19:03:19 mtaal Exp $
+ * </copyright> $Id: ManyAttributeMapper.java,v 1.16 2007/07/17 13:59:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -68,11 +68,11 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements Ex
 		final OneToMany otm = paAttribute.getOneToMany();
 
 		if (jt != null) {
-			addJoinTable(collElement, keyElement, jt);
-			addKeyColumns(null, keyElement, jcs);
+			addJoinTable(hbAttribute, collElement, keyElement, jt);
+			addKeyColumns(hbAttribute, keyElement, jcs);
 		} else {
 			// TODO should we also add joinColumns annotation?
-			addKeyColumns(null, keyElement, jcs);
+			addKeyColumns(hbAttribute, keyElement, jcs);
 		}
 
 		if (!otm.isIndexed() && isArray) {

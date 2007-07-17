@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.24 2007/07/12 18:04:12 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.25 2007/07/17 13:59:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -16,6 +16,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
@@ -315,6 +317,17 @@ public abstract class AbstractMapper {
 		}
 	}
 
+	/** Add a comment element, if the eModelElement has documentation, returns the comment element */
+	protected Element addCommentElement(EModelElement eModelElement, Element hbmElement) {
+		final String commentData = EcoreUtil.getDocumentation(eModelElement);
+		if (commentData != null) {
+			final Element comment = hbmElement.addElement("comment");
+			comment.addText(commentData.replace('\'', ' ').replace('"', ' '));
+			return comment;
+		}
+		return null;
+	}
+
 	/** Adds anytype columns */
 	protected List<Column> getAnyTypeColumns(String featureName, boolean isNullable) {
 		final ArrayList<Column> result = new ArrayList<Column>();
@@ -419,6 +432,10 @@ public abstract class AbstractMapper {
 				final Index index = ((HbAnnotatedETypeElement) pet).getHbIndex();
 				columnElement.addAttribute("index", index.getName());
 			}
+
+			// --- JJH, adapted by MT
+			addCommentElement(pet.getAnnotatedElement(), columnElement);
+			// --- JJH
 		}
 	}
 

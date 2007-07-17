@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToManyMapper.java,v 1.16 2007/07/12 18:04:12 mtaal Exp $
+ * </copyright> $Id: ManyToManyMapper.java,v 1.17 2007/07/17 13:59:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -100,7 +100,7 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements Exten
 				.warn("Indexed is true but indexed is not supported for inverse=true and many-to-many, not setting inverse=true");
 		}
 
-		addJoinTable(collElement, keyElement, jt);
+		addJoinTable(hbReference, collElement, keyElement, jt);
 		if (jt.getInverseJoinColumns() != null) {
 			for (JoinColumn joinColumn : jt.getInverseJoinColumns()) {
 				mtmElement.addElement("column").addAttribute("name", getHbmContext().trunc(joinColumn.getName()))

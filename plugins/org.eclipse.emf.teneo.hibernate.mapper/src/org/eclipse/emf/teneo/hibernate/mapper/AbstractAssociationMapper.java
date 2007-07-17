@@ -161,6 +161,11 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			// MT: TODO add check on not insertable/updatable which is strange
 			// for a joincolumn, this check
 			// is present in onetomany mapper
+
+			// --- JJH
+			addCommentElement(per.getAnnotatedEReference(), columnElement);
+			// --- JJH
+
 		}
 		associationElement.addAttribute("insert", Boolean.toString(insertable));
 		associationElement.addAttribute("update", Boolean.toString(updatable));
@@ -448,7 +453,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * Adds columns to a key element. Also sets update on the key element based on the values in the
 	 * columns.
 	 */
-	protected void addKeyColumns(PAnnotatedEReference per, Element keyElement, List<JoinColumn> joinColumns) {
+	protected void addKeyColumns(HbAnnotatedETypeElement per, Element keyElement, List<JoinColumn> joinColumns) {
 		log.debug("Adding key columns");
 		boolean setUpdatable = false;
 		boolean isUpdatable = false;
@@ -475,8 +480,12 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 						.addAttribute("not-null", joinColumn.isNullable() ? "false" : "true").addAttribute("unique",
 							joinColumn.isUnique() ? "true" : "false");
 
+			// --- JJH, adapted by Martin Taal
+			addCommentElement(per.getAnnotatedElement(), ce);
+			// --- JJH
+
 			if (per != null) { // is null in case of jointables
-				final Index index = ((HbAnnotatedETypeElement) per).getHbIndex();
+				final Index index = (per).getHbIndex();
 				if (index != null) {
 					ce.addAttribute("index", index.getName());
 				}
@@ -501,7 +510,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * @param collElement
 	 * @param joinTable
 	 */
-	protected void addJoinTable(Element collElement, Element keyElement, JoinTable joinTable) {
+	protected void addJoinTable(HbAnnotatedETypeElement hbAnnotatedElement, Element collElement, Element keyElement,
+			JoinTable joinTable) {
 		if (joinTable == null) {
 			log.debug("No joinTable");
 			return;
@@ -519,9 +529,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			log.error("Unsupported unique constraints in " + joinTable);
 			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
-		addKeyColumns(null, keyElement, joinTable.getJoinColumns()/*
-		 * == null ? new ArrayList() :
-		 * (List)joinTable.getJoinColumns().getValue()
-		 */);
+		addKeyColumns(hbAnnotatedElement, keyElement, joinTable.getJoinColumns()/*
+																				 * == null ? new
+																				 * ArrayList() :
+																				 * (List)joinTable.getJoinColumns().getValue()
+																				 */);
 	}
 }

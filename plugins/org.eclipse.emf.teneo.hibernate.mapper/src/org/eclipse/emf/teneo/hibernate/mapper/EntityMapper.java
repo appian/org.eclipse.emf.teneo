@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: EntityMapper.java,v 1.23 2007/07/12 18:04:12 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.24 2007/07/17 13:59:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -314,13 +314,23 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			processFeatureMapFeatures();
 		}
 
+		// initially the comment is placed at the back, move it to the front
+		final Element comment = addCommentElement(entity.getAnnotatedEClass(), entityElement);
+		if (comment != null) {
+			entityElement.remove(comment);
+			entityElement.add(0, comment);
+		}
+
+		// place the tuplizer at the front
 		getHbmContext().addTuplizerElement(entityElement, entity);
 
 		if ((entity.getPaSuperEntity() == null || entity.getPaSuperEntity().getMappedSuperclass() != null) &&
 				((HbAnnotatedEClass) entity).getHbCache() != null) {
+			// then add the cache at the front
 			addCacheElement(entityElement, ((HbAnnotatedEClass) entity).getHbCache());
 		}
 
+		// and add the metas at the front
 		final Element meta1 = new Element("meta");
 		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META).addText(
 			entity.getAnnotatedEClass().getName());

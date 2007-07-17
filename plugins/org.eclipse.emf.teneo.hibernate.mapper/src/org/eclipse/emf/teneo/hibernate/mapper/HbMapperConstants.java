@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbMapperConstants.java,v 1.5 2007/02/08 23:13:12 mtaal Exp $
+ * $Id: HbMapperConstants.java,v 1.6 2007/07/17 13:59:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -21,7 +21,7 @@ package org.eclipse.emf.teneo.hibernate.mapper;
  * Constants used by the hibernate mapper
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class HbMapperConstants {
 	/** The expected parameter name which contains the enum class name */
@@ -33,7 +33,8 @@ public class HbMapperConstants {
 	public static final String ECLASSIFIER_PARAM = "eclassifier";
 
 	/**
-	 * Name of the Hibernate type param that holds the name of the EMF attribute for the EMF custom data type.
+	 * Name of the Hibernate type param that holds the name of the EMF attribute for the EMF custom
+	 * data type.
 	 */
 	public static final String EDATATYPE_PARAM = "edatatype";
 
