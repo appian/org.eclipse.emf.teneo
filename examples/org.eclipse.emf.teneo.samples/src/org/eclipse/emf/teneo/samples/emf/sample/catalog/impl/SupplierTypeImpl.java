@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SupplierTypeImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: SupplierTypeImpl.java,v 1.4 2007/07/17 13:58:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog.impl;
 
@@ -75,7 +75,7 @@ public class SupplierTypeImpl extends EObjectImpl implements SupplierType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean noOfEmployeesESet = false;
+	protected boolean noOfEmployeesESet;
 
 	/**
 	 * <!-- begin-user-doc -->

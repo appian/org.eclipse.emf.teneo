@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SupplierType.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: SupplierType.java,v 1.2 2007/07/17 13:58:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog;
 
@@ -37,7 +37,7 @@ public interface SupplierType extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getSupplierType_Name()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='Name'"
 	 * @generated
 	 */
@@ -66,7 +66,7 @@ public interface SupplierType extends EObject {
 	 * @see #unsetNoOfEmployees()
 	 * @see #setNoOfEmployees(int)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getSupplierType_NoOfEmployees()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
 	 *        extendedMetaData="kind='element' name='NoOfEmployees'"
 	 * @generated
 	 */

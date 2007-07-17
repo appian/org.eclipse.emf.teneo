@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CatalogPackageImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: CatalogPackageImpl.java,v 1.4 2007/07/17 13:58:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog.impl;
 
@@ -391,28 +391,28 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(catalogTypeEClass, CatalogType.class, "CatalogType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCatalogType_Name(), theXMLTypePackage.getID(), "name", null, 1, 1, CatalogType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCatalogType_Description(), theXMLTypePackage.getString(), "description", null, 1, 1, CatalogType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCatalogType_Name(), theXMLTypePackage.getID(), "name", null, 1, 1, CatalogType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCatalogType_Description(), theXMLTypePackage.getString(), "description", null, 1, 1, CatalogType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCatalogType_SubCatalog(), this.getCatalogType(), null, "subCatalog", null, 0, -1, CatalogType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCatalogType_Product(), this.getProductType(), null, "product", null, 0, -1, CatalogType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(priceTypeEClass, PriceType.class, "PriceType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPriceType_Price(), theXMLTypePackage.getDouble(), "price", null, 1, 1, PriceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPriceType_QuantityTo(), theXMLTypePackage.getDouble(), "quantityTo", null, 1, 1, PriceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPriceType_Price(), theXMLTypePackage.getDouble(), "price", null, 1, 1, PriceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPriceType_QuantityTo(), theXMLTypePackage.getDouble(), "quantityTo", null, 1, 1, PriceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPriceType_Supplier(), this.getSupplierType(), null, "supplier", null, 1, 1, PriceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productTypeEClass, ProductType.class, "ProductType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProductType_Code(), theXMLTypePackage.getID(), "code", null, 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProductType_Description(), theXMLTypePackage.getString(), "description", null, 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProductType_Code(), theXMLTypePackage.getID(), "code", null, 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProductType_Description(), theXMLTypePackage.getString(), "description", null, 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProductType_Remark(), this.getStringType(), null, "remark", null, 1, -1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProductType_Price(), this.getPriceType(), null, "price", null, 1, 1, ProductType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stringTypeEClass, StringType.class, "StringType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringType_Value(), theXMLTypePackage.getString(), "value", null, 1, 1, StringType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringType_Value(), theXMLTypePackage.getString(), "value", null, 1, 1, StringType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(supplierTypeEClass, SupplierType.class, "SupplierType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSupplierType_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, SupplierType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSupplierType_NoOfEmployees(), theXMLTypePackage.getInt(), "noOfEmployees", null, 1, 1, SupplierType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSupplierType_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, SupplierType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSupplierType_NoOfEmployees(), theXMLTypePackage.getInt(), "noOfEmployees", null, 1, 1, SupplierType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -420,6 +420,8 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// http://www.eclipse.org/emf/2002/GenModel
+		createGenModelAnnotations();
 	}
 
 	/**
@@ -457,7 +459,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "SubCatalog"
-		   });		
+		   });			
 		addAnnotation
 		  (getCatalogType_Product(), 
 		   source, 
@@ -492,7 +494,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "Supplier"
-		   });		
+		   });			
 		addAnnotation
 		  (productTypeEClass, 
 		   source, 
@@ -506,7 +508,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "Code"
-		   });		
+		   });			
 		addAnnotation
 		  (getProductType_Description(), 
 		   source, 
@@ -563,6 +565,34 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 			 "kind", "element",
 			 "name", "NoOfEmployees"
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/GenModel</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGenModelAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/GenModel";						
+		addAnnotation
+		  (getCatalogType_Product(), 
+		   source, 
+		   new String[] {
+			 "documentation", "My product documentation"
+		   });							
+		addAnnotation
+		  (productTypeEClass, 
+		   source, 
+		   new String[] {
+			 "documentation", "My producttype documentation"
+		   });				
+		addAnnotation
+		  (getProductType_Description(), 
+		   source, 
+		   new String[] {
+			 "documentation", "My description documentation"
+		   });								
 	}
 
 } //CatalogPackageImpl

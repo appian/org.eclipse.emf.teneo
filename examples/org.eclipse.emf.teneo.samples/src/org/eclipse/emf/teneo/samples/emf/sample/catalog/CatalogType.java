@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CatalogType.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: CatalogType.java,v 1.3 2007/07/17 13:58:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog;
 
@@ -41,7 +41,7 @@ public interface CatalogType extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getCatalogType_Name()
-	 * @model unique="false" id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
+	 * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
 	 *        extendedMetaData="kind='element' name='Name'"
 	 * @generated
 	 */
@@ -68,7 +68,7 @@ public interface CatalogType extends EObject {
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getCatalogType_Description()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='Description'"
 	 * @generated
 	 */
@@ -95,7 +95,7 @@ public interface CatalogType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sub Catalog</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getCatalogType_SubCatalog()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogType" resolveProxies="false"
+	 * @model resolveProxies="false"
 	 *        extendedMetaData="kind='element' name='SubCatalog'"
 	 * @generated
 	 */
@@ -110,9 +110,12 @@ public interface CatalogType extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * My product documentation
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Product</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getCatalogType_Product()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.catalog.ProductType" resolveProxies="false"
+	 * @model resolveProxies="false"
 	 *        extendedMetaData="kind='element' name='Product'"
 	 * @generated
 	 */

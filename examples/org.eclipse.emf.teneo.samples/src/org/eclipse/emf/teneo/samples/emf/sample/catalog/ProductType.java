@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductType.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: ProductType.java,v 1.3 2007/07/17 13:58:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog;
 
@@ -14,6 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Product Type</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * My producttype documentation
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -41,7 +45,7 @@ public interface ProductType extends EObject {
 	 * @return the value of the '<em>Code</em>' attribute.
 	 * @see #setCode(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getProductType_Code()
-	 * @model unique="false" id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
+	 * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
 	 *        extendedMetaData="kind='element' name='Code'"
 	 * @generated
 	 */
@@ -65,12 +69,15 @@ public interface ProductType extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * My description documentation
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #isSetDescription()
 	 * @see #unsetDescription()
 	 * @see #setDescription(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getProductType_Description()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='Description'"
 	 * @generated
 	 */
@@ -122,7 +129,7 @@ public interface ProductType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Remark</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getProductType_Remark()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.catalog.StringType" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='Remark'"
 	 * @generated
 	 */

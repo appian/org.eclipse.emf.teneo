@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProductTypeImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: ProductTypeImpl.java,v 1.4 2007/07/17 13:58:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog.impl;
 
@@ -86,7 +86,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean descriptionESet = false;
+	protected boolean descriptionESet;
 
 	/**
 	 * The cached value of the '{@link #getRemark() <em>Remark</em>}' containment reference list.
@@ -96,7 +96,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<StringType> remark = null;
+	protected EList<StringType> remark;
 
 	/**
 	 * The cached value of the '{@link #getPrice() <em>Price</em>}' containment reference.
@@ -106,7 +106,7 @@ public class ProductTypeImpl extends EObjectImpl implements ProductType {
 	 * @generated
 	 * @ordered
 	 */
-	protected PriceType price = null;
+	protected PriceType price;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PriceTypeImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: PriceTypeImpl.java,v 1.4 2007/07/17 13:58:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog.impl;
 
@@ -57,7 +57,7 @@ public class PriceTypeImpl extends EObjectImpl implements PriceType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean priceESet = false;
+	protected boolean priceESet;
 
 	/**
 	 * The default value of the '{@link #getQuantityTo() <em>Quantity To</em>}' attribute.
@@ -86,7 +86,7 @@ public class PriceTypeImpl extends EObjectImpl implements PriceType {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean quantityToESet = false;
+	protected boolean quantityToESet;
 
 	/**
 	 * The cached value of the '{@link #getSupplier() <em>Supplier</em>}' reference.
@@ -96,7 +96,7 @@ public class PriceTypeImpl extends EObjectImpl implements PriceType {
 	 * @generated
 	 * @ordered
 	 */
-	protected SupplierType supplier = null;
+	protected SupplierType supplier;
 
 	/**
 	 * <!-- begin-user-doc -->

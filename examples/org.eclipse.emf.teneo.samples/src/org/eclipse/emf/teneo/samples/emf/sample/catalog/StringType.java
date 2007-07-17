@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: StringType.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: StringType.java,v 1.2 2007/07/17 13:58:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog;
 
@@ -36,7 +36,7 @@ public interface StringType extends EObject {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getStringType_Value()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='Value'"
 	 * @generated
 	 */

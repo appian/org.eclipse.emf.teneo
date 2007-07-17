@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PriceType.java,v 1.1 2006/07/11 16:57:05 mtaal Exp $
+ * $Id: PriceType.java,v 1.2 2007/07/17 13:58:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog;
 
@@ -40,7 +40,7 @@ public interface PriceType extends EObject {
 	 * @see #unsetPrice()
 	 * @see #setPrice(double)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getPriceType_Price()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Double" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Double" required="true"
 	 *        extendedMetaData="kind='element' name='Price'"
 	 * @generated
 	 */
@@ -94,7 +94,7 @@ public interface PriceType extends EObject {
 	 * @see #unsetQuantityTo()
 	 * @see #setQuantityTo(double)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.catalog.CatalogPackage#getPriceType_QuantityTo()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Double" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Double" required="true"
 	 *        extendedMetaData="kind='element' name='QuantityTo'"
 	 * @generated
 	 */

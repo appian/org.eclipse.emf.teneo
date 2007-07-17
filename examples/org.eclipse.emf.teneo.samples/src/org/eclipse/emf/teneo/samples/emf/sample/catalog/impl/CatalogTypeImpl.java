@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CatalogTypeImpl.java,v 1.3 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: CatalogTypeImpl.java,v 1.4 2007/07/17 13:58:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.catalog.impl;
 
@@ -83,7 +83,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CatalogType> subCatalog = null;
+	protected EList<CatalogType> subCatalog;
 
 	/**
 	 * The cached value of the '{@link #getProduct() <em>Product</em>}' reference list.
@@ -93,7 +93,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProductType> product = null;
+	protected EList<ProductType> product;
 
 	/**
 	 * <!-- begin-user-doc -->
