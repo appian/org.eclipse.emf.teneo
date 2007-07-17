@@ -50,7 +50,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -144,6 +144,7 @@ public class HibernateTestStore extends AbstractTestStore {
 	}
 
 	/** Returns the mapping xml */
+	@Override
 	public String getMappingXML() {
 		return emfDataStore.getMappingXML();
 	}
