@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.8 2007/07/17 12:21:53 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.9 2007/07/17 12:23:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -40,7 +40,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class HbEntityDataStore extends HbDataStore {
 
@@ -140,6 +140,9 @@ public class HbEntityDataStore extends HbDataStore {
 	 */
 	protected void mapModel() {
 		if (getPersistenceOptions().isUseMappingFile() || getPersistenceOptions().getMappingFilePath() != null) {
+
+			// register otherwise the getFileList will not work
+			ERuntime.INSTANCE.register(getEPackages());
 
 			log.debug("Searching hbm files in class paths of epackages");
 			final String[] fileList =
