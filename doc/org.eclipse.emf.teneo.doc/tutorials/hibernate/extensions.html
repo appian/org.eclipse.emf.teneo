@@ -672,17 +672,20 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 						</p>
 						
 <p>
-							This sql name strategy performs truncation of long names in a different
-							way. It splits up the name in separate parts using the _ (underscore) as
-							the separator. Using the underscore is logical because it is often used
-							to create join table names. Then in a number of iterations it truncates
-							the different parts by first truncating the part with the maximum
-							length. In this way it tries to retain the unique name. In this example
-							the resulting join table name will become c_pa, this is not very readable
-							but at least probably more unique.
+							The truncation implemented in this name strategy performs truncation
+							by first removing vowels (the a, e, i, o, u) from the table and column names.
+							It will do this in the order u, o, a, e, i. It will remove one character at the
+							time which should result in the most readable names. If vowel removal did 
+							not result in names with the correct length it will do further truncation. 
+							Further truncation is done by splitting the name using the _ separator (common 
+							separator in sql naming) and then truncating the longest part one character 
+							at the time.
 						</p>
 						
-<p>Other examples:</p>
+<p>Note that you can easily extend this class and pass your own 'removable' characters. 
+						Using the extensions mechanism you can then replace the TeneoSQLNameStrategy with your own.</p>
+						
+<p>Some examples:</p>
 						
 <ul>
 							
@@ -690,12 +693,16 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 							
 <li>child_father_mother (max length: 1) will be converted to c_f_m</li>
 							
-<li>child_parent (max length: 7) will be converted to chi_par</li>
+<li>child_parent (max length: 7) will be converted to chl_prn</li>
 							
-<li>child (max length: 4) will be converted to chil</li>
+<li>child (max length: 4) will be converted to chld</li>
 							
 <li>
-								child.parent.id (max length: 14) will be converted to child_paren_id
+								child.parent.id (max length: 14) will be converted to child_prent_id
+							</li>
+							
+<li>
+								child.parent.id (max length: 10) will be converted to chl_prn_d
 							</li>
 						
 </ul>
@@ -707,7 +714,7 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 		
 </div>
 		
-<a name="N10111"></a><a name="ClassLoaderStrategy+ExtensionPoint%0A%09%09%09%09%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29"></a>
+<a name="N10117"></a><a name="ClassLoaderStrategy+ExtensionPoint%0A%09%09%09%09%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29"></a>
 <div class="h3">
 <h3>
 				ClassLoaderStrategy ExtensionPoint
@@ -730,7 +737,7 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 		
 </div>
 		
-<a name="N10122"></a><a name="Future+Enhancements"></a>
+<a name="N10128"></a><a name="Future+Enhancements"></a>
 <div class="h3">
 <h3>Future Enhancements</h3>
 			
