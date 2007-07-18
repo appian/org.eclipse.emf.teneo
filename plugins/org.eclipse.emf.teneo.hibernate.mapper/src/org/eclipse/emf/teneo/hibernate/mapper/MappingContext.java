@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: MappingContext.java,v 1.19 2007/07/11 14:40:45 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.20 2007/07/18 16:11:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
 		ExtensionManagerAware {
@@ -77,10 +77,10 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	private SecondaryTable currentSecondaryTable = null;
 
 	/** The current eclass */
-	private EClass currentEClass = null;
+	protected EClass currentEClass = null;
 
 	/** The current efeature being processed */
-	private EStructuralFeature currentEFeature = null;
+	protected EStructuralFeature currentEFeature = null;
 
 	/** The entity mapper */
 	private EntityMapper entityMapper;
@@ -98,10 +98,10 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	private String idColumnName = null;
 
 	/** Maximum column name */
-	private int maximumSqlNameLength = -1;
+	protected int maximumSqlNameLength = -1;
 
 	/** The sql case strategy */
-	private SQLNameStrategy sqlNameStrategy;
+	protected SQLNameStrategy sqlNameStrategy;
 
 	/**
 	 * Set force optional, force optional is used in case a subclass is stored in the same table as
@@ -123,7 +123,7 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	}
 
 	/** Set relevant properties */
-	void setMappingProperties(PersistenceOptions po) {
+	protected void setMappingProperties(PersistenceOptions po) {
 		versionColumnName = po.getVersionColumnName();
 		idColumnName = po.getIdColumnName();
 		maximumSqlNameLength = po.getMaximumSqlNameLength();
@@ -360,18 +360,18 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	}
 
 	/** Default is trunc */
-	String trunc(String name) {
+	protected String trunc(String name) {
 		return trunc(name, true);
 	}
 
 	/**
-	 * Utilit method to truncate a column/table name. This method also repairs the name if an
+	 * Utility method to truncate a column/table name. This method also repairs the name if an
 	 * efeature was inherited and really belongs to another eclass. In this case jointables and join
 	 * keys must be renamed to the new eclass. TODO: handle the case that the jointable/columns were
 	 * set manually. This procedure will override them (only applies in case of multiple
 	 * inheritance/mappedsuperclass).
 	 */
-	String trunc(String truncName, boolean truncSuffix) {
+	protected String trunc(String truncName, boolean truncPrefix) {
 		final String useName;
 		// currentEFeature is null in the beginning
 		if (currentEFeature != null && currentEFeature.getEContainingClass() != currentEClass &&
@@ -389,33 +389,11 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 			useName = truncName;
 		}
 
-		if (maximumSqlNameLength == -1) {
-			return escape(useName);
-		}
-		if (useName.length() < maximumSqlNameLength) {
-			return escape(useName);
+		if (useName.indexOf('`') == 0) {
+			return getSqlNameStrategy().convert(useName, false);
 		}
 
-		// truncate the part before the last _ because this is often the suffix
-		final int underscore = useName.lastIndexOf('_');
-		if (truncSuffix && underscore != -1 && underscore > 0) {
-			final String usStr = useName.substring(underscore);
-			if ((maximumSqlNameLength - usStr.length()) < 0) {
-				return escape(useName);
-			}
-			return escape(useName.substring(0, maximumSqlNameLength - usStr.length()) + usStr);
-		}
-
-		return escape(useName.substring(0, maximumSqlNameLength));
-	}
-
-	/** Escape the column name */
-	String escape(String name) {
-		if (name.indexOf('`') == 0) {
-			return getSqlNameStrategy().convert(name);
-		}
-
-		return "`" + getSqlNameStrategy().convert(name) + "`";
+		return "`" + getSqlNameStrategy().convert(useName, false) + "`";
 	}
 
 	/**
