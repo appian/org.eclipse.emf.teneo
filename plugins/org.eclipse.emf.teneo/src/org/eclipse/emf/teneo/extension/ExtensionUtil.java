@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ExtensionUtil.java,v 1.4 2007/07/17 12:22:41 mtaal Exp $
+ * $Id: ExtensionUtil.java,v 1.5 2007/07/18 16:10:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -38,14 +38,14 @@ import org.eclipse.emf.teneo.classloader.ClassLoaderStrategy;
 import org.eclipse.emf.teneo.classloader.ContextClassLoaderStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
-import org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.impl.EntityResolvingNameStrategy;
+import org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy;
 
 /**
  * Contains simple utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class ExtensionUtil {
@@ -79,7 +79,7 @@ public class ExtensionUtil {
 		em.registerExtension(createExtension(XmlPersistenceMapper.class, XmlPersistenceMapper.class));
 		em.registerExtension(createExtension(ClassLoaderStrategy.class, ContextClassLoaderStrategy.class));
 		em.registerExtension(createExtension(EntityNameStrategy.class, EntityResolvingNameStrategy.class));
-		em.registerExtension(createExtension(SQLNameStrategy.class, ClassicSQLNameStrategy.class));
+		em.registerExtension(createExtension(SQLNameStrategy.class, TeneoSQLNameStrategy.class));
 		em.registerExtension(createExtension(XmlPersistenceContentHandler.class, XmlPersistenceContentHandler.class));
 		em.registerExtension(createExtension(XmlElementToEStructuralFeatureMapper.class,
 			XmlElementToEStructuralFeatureMapper.class));

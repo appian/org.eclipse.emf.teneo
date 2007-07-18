@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BidirectionalManyToManyAnnotator.java,v 1.3 2007/07/17 17:37:16 mtaal Exp $
+ * $Id: BidirectionalManyToManyAnnotator.java,v 1.4 2007/07/18 16:10:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a bidirectional many-to-many ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -105,12 +105,11 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator impl
 		// set unique and indexed
 		// disabled because indexed = false now for mtm,
 		// to overcome this the user has to explicitly set a mtm annotation.
-// if (!mtmWasSet) {
-// log
-// .debug("Setting indexed and unique from ereference.isOrdered/isUnique because mtm was not set
-// manually!");
-// mtm.setIndexed(eReference.isOrdered());
-// }
+		if (!mtmWasSet) {
+			log.debug("Setting indexed and unique from ereference.isOrdered/isUnique "
+					+ "because mtm was not set manually!");
+			mtm.setIndexed(!getPersistenceOptions().alwaysMapListAsBag() && eReference.isOrdered());
+		}
 
 		// NOTE that the ejb3 spec states that the jointable should be the
 		// concatenation of the

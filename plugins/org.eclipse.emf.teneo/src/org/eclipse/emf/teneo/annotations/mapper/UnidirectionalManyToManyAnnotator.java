@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: UnidirectionalManyToManyAnnotator.java,v 1.2 2007/07/12 18:05:47 mtaal Exp $
+ * $Id: UnidirectionalManyToManyAnnotator.java,v 1.3 2007/07/18 16:10:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a many-to-many which is handled from one side.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -52,6 +52,7 @@ public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator imp
 
 		final EReference eReference = (EReference) aReference.getAnnotatedElement();
 
+		// note that mtm is always present because this case can not be discovered by Teneo
 		final ManyToMany mtm = aReference.getManyToMany();
 		log.debug("ManyToMany present check if default information should be added");
 		mtm.setEModelElement(eReference);

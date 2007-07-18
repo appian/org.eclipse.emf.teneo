@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyAttributeAnnotator.java,v 1.2 2007/07/12 18:05:47 mtaal Exp $
+ * $Id: OneToManyAttributeAnnotator.java,v 1.3 2007/07/18 16:10:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -55,6 +55,7 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 		log.debug("EAttribute " + logStr + " needs a onetomany");
 
 		final EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();
+
 		OneToMany otm = aAttribute.getOneToMany();
 		final boolean otmWasSet = otm != null; // otm was set manually
 		if (otm == null) {
@@ -93,12 +94,15 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 
 		if (aAttribute.getJoinTable() == null) {
 			// note not optional because lists of simple types are embedded
-			final List<String> names = getSqlNameStrategy().getOneToManyEAttributeJoinColumns(aAttribute);
-			aAttribute.getJoinColumns().addAll(
-				getJoinColumns(names, FeatureMapUtil.isFeatureMap(eAttribute), true, otm));
 			final JoinTable jt = getFactory().createJoinTable();
 			jt.setName(getSqlNameStrategy().getJoinTableName(aAttribute));
 			aAttribute.setJoinTable(jt);
+		}
+
+		if (aAttribute.getJoinColumns().size() == 0) {
+			final List<String> names = getSqlNameStrategy().getOneToManyEAttributeJoinColumns(aAttribute);
+			aAttribute.getJoinColumns().addAll(
+				getJoinColumns(names, FeatureMapUtil.isFeatureMap(eAttribute), true, otm));
 		}
 
 		// set unique and indexed

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: SQLNameStrategy.java,v 1.5 2007/07/12 18:05:47 mtaal Exp $
+ * $Id: SQLNameStrategy.java,v 1.6 2007/07/18 16:10:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -33,12 +33,23 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Note that strategies are normally created once for each instance of persistenceoptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public interface SQLNameStrategy extends ExtensionPoint {
 
-	/** Converts the name to the required sql setting (length and case). */
+	/**
+	 * Converts the name to the required sql setting (length and case). If the name is too long (see
+	 * option maximum sql name length) then the prefix is trunced away.
+	 */
 	public abstract String convert(String name);
+
+	/**
+	 * Converts the name to the required sql setting (length and case). If the name is too long (see
+	 * the option maximum sql name length) then: if truncPrefix = false then the part after the _ is
+	 * trunced. if truncPrefix = true then the part before the _ is trunced. An underscore often
+	 * occurs in the name of a join table.
+	 */
+	public String convert(String name, boolean truncPrefix);
 
 	/** The join column name used to join a joined-subclass table with its parent table */
 	public abstract String getPrimaryKeyJoinColumnName(PAnnotatedEClass aSuperClass, String idFeature);

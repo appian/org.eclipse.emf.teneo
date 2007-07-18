@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.7 2007/07/17 17:37:16 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.8 2007/07/18 16:10:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the options set in the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
@@ -398,8 +398,8 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		return convert(name, false);
 	}
 
-	private String convert(String name, boolean truncSuffix) {
-		final String result = StrategyUtil.trunc(optionMaximumSqlLength, name, truncSuffix);
+	public String convert(String name, boolean truncPrefix) {
+		final String result = trunc(optionMaximumSqlLength, name, truncPrefix);
 		if (optionSQLLowerCase) {
 			return result.toLowerCase();
 		} else if (optionSQLUpperCase) {
@@ -449,4 +449,37 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		}
 		return entityNameStrategy;
 	}
+
+	/**
+	 * Utility method to truncate a column/table name, the truncPrefix determines if the part before
+	 * the _ (the prefix) or after the _ (the suffix) is truncated. A _ often occurs in a jointable
+	 * name.
+	 */
+	protected String trunc(int optionMaximumSqlLength, String truncName, boolean truncPrefix) {
+		final String correctedName = truncName.replace('.', '_');
+
+		if (optionMaximumSqlLength == -1) {
+			return correctedName;
+		}
+		if (correctedName.length() < optionMaximumSqlLength) {
+			return correctedName;
+		}
+
+		if (!truncPrefix) { // this truncs away the suffix
+			return correctedName.substring(0, optionMaximumSqlLength);
+		}
+
+		// truncate the part before the last _ because this is often the suffix
+		final int underscore = correctedName.lastIndexOf('_');
+		if (underscore != -1 && underscore > 0) {
+			final String usStr = correctedName.substring(underscore);
+			if ((optionMaximumSqlLength - usStr.length()) < 0) {
+				return correctedName;
+			}
+			return correctedName.substring(0, optionMaximumSqlLength - usStr.length()) + usStr;
+		}
+
+		return correctedName.substring(0, optionMaximumSqlLength);
+	}
+
 }

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StrategyUtil.java,v 1.2 2007/07/11 14:41:05 mtaal Exp $
+ * implementation </copyright> $Id: StrategyUtil.java,v 1.3 2007/07/18 16:10:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Contains different util methods related to strategies.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class StrategyUtil {
@@ -62,34 +62,6 @@ public class StrategyUtil {
 // return aclass.getEntity().getName();
 // }
 		return ens.toEntityName(eclass);
-	}
-
-	/** Utility method to truncate a column name */
-	public static String trunc(int optionMaximumSqlLength, String truncName, boolean truncSuffix) {
-		final String correctedName = truncName.replace('.', '_');
-
-		if (optionMaximumSqlLength == -1) {
-			return correctedName;
-		}
-		if (correctedName.length() < optionMaximumSqlLength) {
-			return correctedName;
-		}
-
-		if (!truncSuffix) {
-			return correctedName.substring(0, optionMaximumSqlLength);
-		}
-
-		// truncate the part before the last _ because this is often the suffix
-		final int underscore = correctedName.lastIndexOf('_');
-		if (underscore != -1 && underscore > 0) {
-			final String usStr = correctedName.substring(underscore);
-			if ((optionMaximumSqlLength - usStr.length()) < 0) {
-				return correctedName;
-			}
-			return correctedName.substring(0, optionMaximumSqlLength - usStr.length()) + usStr;
-		}
-
-		return correctedName.substring(0, optionMaximumSqlLength);
 	}
 
 	/**
