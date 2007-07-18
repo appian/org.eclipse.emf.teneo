@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryColLengthAction.java,v 1.6 2007/06/29 07:35:43 mtaal Exp $
+ * $Id: LibraryColLengthAction.java,v 1.7 2007/07/18 16:09:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -23,6 +23,9 @@ import java.sql.Statement;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
+import org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
@@ -37,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class LibraryColLengthAction extends AbstractTestAction {
 	/**
@@ -47,6 +50,19 @@ public class LibraryColLengthAction extends AbstractTestAction {
 	 */
 	public LibraryColLengthAction() {
 		super(LibraryPackage.eINSTANCE);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#setExtensions(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 */
+	@Override
+	public void setExtensions(ExtensionManager extensionManager) {
+		extensionManager.registerExtension(SQLNameStrategy.class.getName(), ClassicSQLNameStrategy.class.getName());
+		extensionManager.registerExtension("org.eclipse.emf.teneo.hibernate.mapper.MappingContext",
+			"org.eclipse.emf.teneo.hibernate.mapper.classic.ClassicMappingContext");
+		super.setExtensions(extensionManager);
 	}
 
 	/*
@@ -103,8 +119,7 @@ public class LibraryColLengthAction extends AbstractTestAction {
 			try {
 				conn = store.getConnection();
 				stmt = conn.createStatement();
-				ResultSet rs =
-						stmt.executeQuery("SELECT * FROM BOOK WHERE BO_ID<>0 AND L_IDX>0 AND W_IDX>0".toLowerCase());
+				ResultSet rs = stmt.executeQuery(getTestQuery());
 				assertTrue(rs.next());
 			} catch (SQLException s) {
 				throw new StoreTestException("SQL Exception", s);
@@ -124,5 +139,9 @@ public class LibraryColLengthAction extends AbstractTestAction {
 				}
 			}
 		}
+	}
+
+	protected String getTestQuery() {
+		return "SELECT * FROM BOOK WHERE BO_ID<>0 AND L_IDX>0 AND W_IDX>0".toLowerCase();
 	}
 }

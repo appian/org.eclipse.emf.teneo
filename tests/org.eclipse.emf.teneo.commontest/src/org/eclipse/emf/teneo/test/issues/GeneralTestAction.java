@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GeneralTestAction.java,v 1.2 2007/07/09 17:39:14 mtaal Exp $
+ * $Id: GeneralTestAction.java,v 1.3 2007/07/18 16:09:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -31,14 +31,10 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * General Test, contains test cases for different issues:
- * - 187984
- * - 193697
- * - 193697
- * - 188973
+ * General Test, contains test cases for different issues: - 187984 - 193697 - 193697 - 188973
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2007/07/09 17:39:14 $
+ * @version $Revision: 1.3 $ $Date: 2007/07/18 16:09:58 $
  */
 public class GeneralTestAction extends AbstractTestAction {
 	/**
@@ -60,7 +56,6 @@ public class GeneralTestAction extends AbstractTestAction {
 	/** Doaction */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		// check
 		if (store.isHibernateTestStore()) {
 			final Address a = GeneralTestFactory.eINSTANCE.createAddress();

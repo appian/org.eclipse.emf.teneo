@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.10 2007/07/11 15:22:54 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.11 2007/07/18 16:09:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class LibraryAction extends AbstractTestAction {
 	/**
@@ -170,6 +170,7 @@ public class LibraryAction extends AbstractTestAction {
 		}
 
 		dumpPAModel(store);
+		checkTeneoSQLNameStrategy();
 	}
 
 	/** Reads objects in multiple sessions and checks that they are unequal */
@@ -234,6 +235,9 @@ public class LibraryAction extends AbstractTestAction {
 
 	/** Dump the annotated model to standard output */
 	protected void dumpPAModel(TestStore testStore) {
+	}
+
+	protected void checkTeneoSQLNameStrategy() {
 	}
 
 // /** Small adapter test

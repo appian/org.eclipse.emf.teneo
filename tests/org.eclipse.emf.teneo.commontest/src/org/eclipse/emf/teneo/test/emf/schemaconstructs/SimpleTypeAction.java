@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests if simple types are stored/retrieved correctly.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class SimpleTypeAction extends AbstractTestAction {
 	/** Simple Type Values we test against */
@@ -95,7 +95,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			SimpleType result = (SimpleType) store.getObject(SimpleType.class);
+			SimpleType result = store.getObject(SimpleType.class);
 			assertEquals(BOOL, result.isBoo());
 			assertEquals(BYTE, result.getByt());
 			assertTrue(equalDates(store, result.getDat(), DATE));
@@ -133,7 +133,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			SimpleTypeObject result = (SimpleTypeObject) store.getObject(SimpleTypeObject.class);
+			SimpleTypeObject result = store.getObject(SimpleTypeObject.class);
 			assertEquals(new Boolean(BOOL), result.getBoo());
 			assertEquals(new Byte(BYTE), result.getByt());
 			assertTrue(equalDates(store, result.getDat(), DATE));
@@ -203,6 +203,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 			copy(stype.getEnu(), enums);
 			copy(stype.getDat(), dates);
 			copy(stype.getLimitedstring(), strings);
+			copy(stype.getStri(), strings);
 			stype.setIntArray(simpleInts);
 			stype.setStringArray(strings);
 			stype.setDoubleArray(simpleDoubles);
@@ -212,7 +213,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 		}
 		{
 			store.beginTransaction();
-			SimpleList result = (SimpleList) store.getObject(SimpleList.class);
+			SimpleList result = store.getObject(SimpleList.class);
 			assertValues(result.getBoo(), bools);
 			assertValues(result.getByt(), bytes);
 			assertValues(result.getShor(), shorts);
@@ -222,8 +223,9 @@ public class SimpleTypeAction extends AbstractTestAction {
 			assertValues(result.getFloa(), floats);
 			assertValues(result.getIntArray(), simpleInts);
 			assertValues(result.getDoubleArray(), simpleDoubles);
-			assertValues(result.getStringArray(), strings);
+			assertValues((String[]) result.getStringArray(), strings);
 			assertValues(result.getByteArray(), simpleBytes);
+			assertValues(result.getStri(), strings);
 
 			assertTrue(compare(result.getEnu(), enums));
 			assertValues(store, result.getDat(), dates);
