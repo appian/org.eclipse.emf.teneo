@@ -8,6 +8,25 @@
 			</property>
 		</eclass>
 	</epackage>
+	<epackage namespace-uri="urn:customs.ru:ESADDTSCommonAggregateTypes:3.0.1">
+		<eclass name="DTSMethod236Type">
+			<property name="declaratedGoodsQuantity">
+				<join-column name="declaratedGoodsQuantity_id"/>
+			</property>
+		</eclass>
+	</epackage>
+	
+	<epackage namespace-uri="urn:customs.ru:Information:CustomsDocuments:DTSout:3.0.1">
+		<eclass name="DTSoutType">
+			<property name="dTSoutBuyer">
+				<join-column name="dTSoutBuyer_id"/>
+			</property>
+			<property name="dTSoutDeclarant">
+				<join-column name="dTSoutDeclarant_id"/>
+			</property>
+		</eclass>
+	</epackage>
+	
 	<epackage
 		namespace-uri="urn:customs.ru:ESADCommonAggregateTypes:3.0.1">
 		<eclass name="ProcessingGoodsType">

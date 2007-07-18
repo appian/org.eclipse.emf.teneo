@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.46 $
+ * @version $Revision: 1.47 $
  */
 public class AllTests {
 
@@ -56,11 +56,11 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", HibernateTestbed
 					.instance().getConfigurations());
+
+		suite.addTestSuite(JoinColumnsTest.class);
 		suite.addTestSuite(ForcedIdBagAction.class);
 
 		suite.addTestSuite(ManyToManyAction.class);
-
-		suite.addTestSuite(JoinColumnsTest.class);
 
 		suite.addTestSuite(UserTypeAction.class);
 

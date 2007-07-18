@@ -17,6 +17,7 @@ import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.EcoreAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
+import org.eclipse.emf.teneo.test.emf.sample.LibraryCheckNameAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryColLengthAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryFKAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
@@ -41,7 +42,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.49 $
+ * @version $Revision: 1.50 $
  */
 public class AllTests {
 
@@ -50,11 +51,12 @@ public class AllTests {
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
 
-		suite.addTestSuite(ProductAction.class);
+		suite.addTestSuite(LibraryColLengthAction.class);
+		suite.addTestSuite(LibraryCheckNameAction.class);
 
-		if (true) {
-			return suite;
-		}
+		suite.addTestSuite(LibraryTest.class);
+
+		suite.addTestSuite(ProductAction.class);
 
 		suite.addTestSuite(CatalogTest.class);
 
@@ -64,11 +66,7 @@ public class AllTests {
 		suite.addTestSuite(PrimerPOAction.class);
 		suite.addTestSuite(DynamicAction.class);
 
-		suite.addTestSuite(LibraryColLengthAction.class);
-
 		suite.addTestSuite(LibraryFKAction.class);
-
-		suite.addTestSuite(LibraryTest.class);
 
 		suite.addTestSuite(LibraryQualifyActionHB.class);
 
