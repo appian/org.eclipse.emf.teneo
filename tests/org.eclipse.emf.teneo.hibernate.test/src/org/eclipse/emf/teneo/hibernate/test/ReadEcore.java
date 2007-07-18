@@ -24,14 +24,11 @@ import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Environment;
 
-import customs.ru.categories._3._0._0._0Package;
-import customs.ru.information.customs.documents.esa.dout._3._0._1._1Package;
-
 /**
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class ReadEcore {
 
@@ -68,16 +65,16 @@ public class ReadEcore {
 
 			EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
 
-			epacks =
-					new EPackage[] { _1Package.eINSTANCE, _0Package.eINSTANCE,
-							customs.ru.common.aggregate.types._3._0._1._1Package.eINSTANCE,
-							customs.ru.common.leaf.types._3._0._1._1Package.eINSTANCE,
-							customs.ru.esad.common.aggregate.types._3._0._1._1Package.eINSTANCE,
-							customs.ru.esad.common.leaf.types._3._0._1._1Package.eINSTANCE,
-							customs.ru.information.customs.documents.dt.sout._3._0._1._1Package.eINSTANCE,
-							customs.ru.esaddts.common.aggregate.types._3._0._1._1Package.eINSTANCE,
-							customs.ru.ekts.common.aggregate.types._3._0._1._1Package.eINSTANCE,
-							customs.ru.information.customs.documents.kt.sout._3._0._1._1Package.eINSTANCE };
+// epacks =
+// new EPackage[] { _1Package.eINSTANCE, _0Package.eINSTANCE,
+// customs.ru.common.aggregate.types._3._0._1._1Package.eINSTANCE,
+// customs.ru.common.leaf.types._3._0._1._1Package.eINSTANCE,
+// customs.ru.esad.common.aggregate.types._3._0._1._1Package.eINSTANCE,
+// customs.ru.esad.common.leaf.types._3._0._1._1Package.eINSTANCE,
+// customs.ru.information.customs.documents.dt.sout._3._0._1._1Package.eINSTANCE,
+// customs.ru.esaddts.common.aggregate.types._3._0._1._1Package.eINSTANCE,
+// customs.ru.ekts.common.aggregate.types._3._0._1._1Package.eINSTANCE,
+// customs.ru.information.customs.documents.kt.sout._3._0._1._1Package.eINSTANCE };
 
 			final Properties props = new Properties();
 			props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");

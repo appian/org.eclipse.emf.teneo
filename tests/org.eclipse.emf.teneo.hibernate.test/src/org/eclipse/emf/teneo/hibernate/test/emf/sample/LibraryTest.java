@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.6 2007/07/18 16:12:34 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.7 2007/07/18 18:57:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class LibraryTest extends AbstractActionTest {
 
@@ -44,13 +44,13 @@ public class LibraryTest extends AbstractActionTest {
 			assertEquals("c_p", nameStrategy.trunc(3, "child_parent", true));
 			assertEquals("c_f_m", nameStrategy.trunc(1, "child_father_mother", true));
 			assertEquals("child_parent", nameStrategy.trunc(12, "child_parent", true));
-			assertEquals("chi_par", nameStrategy.trunc(7, "child_parent", true));
-			assertEquals("chil", nameStrategy.trunc(4, "child", true));
-			assertEquals("chi_par", nameStrategy.trunc(7, "child.parent", true));
+			assertEquals("chl_prn", nameStrategy.trunc(7, "child_parent", true));
+			assertEquals("chld", nameStrategy.trunc(4, "child", true));
+			assertEquals("chl_prn", nameStrategy.trunc(7, "child.parent", true));
 			assertEquals("child_parent", nameStrategy.trunc(-1, "child.parent", true));
 
-			assertEquals("chi_par_id", nameStrategy.trunc(10, "child.parent.id", true));
-			assertEquals("child_paren_id", nameStrategy.trunc(14, "child.parent.id", true));
+			assertEquals("chl_prn_d", nameStrategy.trunc(10, "child.parent.id", true));
+			assertEquals("child_prent_id", nameStrategy.trunc(14, "child.parent.id", true));
 		}
 
 		@Override
