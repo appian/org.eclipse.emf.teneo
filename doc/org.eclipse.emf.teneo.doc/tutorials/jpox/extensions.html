@@ -274,7 +274,18 @@
 			</a>
 </li>
 <li>
-<a href="#SqlNameStrategy+ExtensionPoint+%28org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy%29">SqlNameStrategy ExtensionPoint (org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy)</a>
+<a href="#SqlNameStrategy+ExtensionPoint%0A%09%09%09%09%28org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy%29">
+				SqlNameStrategy ExtensionPoint
+				(org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy)
+			</a>
+<ul class="minitoc">
+<li>
+<a href="#ClassicSQLNameStrategy">ClassicSQLNameStrategy</a>
+</li>
+<li>
+<a href="#TeneoSQLNameStrategy+%28default%29">TeneoSQLNameStrategy (default)</a>
+</li>
+</ul>
 </li>
 <li>
 <a href="#ClassLoaderStrategy+ExtensionPoint+%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29">ClassLoaderStrategy ExtensionPoint (org.eclipse.emf.teneo.classloader.ClassLoaderStrategy)</a>
@@ -490,18 +501,36 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 		
 </div>
 		
-<a name="N10092"></a><a name="SqlNameStrategy+ExtensionPoint+%28org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy%29"></a>
+<a name="N10092"></a><a name="SqlNameStrategy+ExtensionPoint%0A%09%09%09%09%28org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy%29"></a>
 <div class="h3">
-<h3>SqlNameStrategy ExtensionPoint (org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy)</h3>
+<h3>
+				SqlNameStrategy ExtensionPoint
+				(org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy)
+			</h3>
 			
 			
 <p>
 				The sql naming strategy is an important strategy because a trade-off needs to be
-				made between short and understandable names and long and unique names. Currently Teneo
-				only has one naming strategy which is aimed at backward compatibility. This strategy is
-				described in more detail below. In future releases of Teneo new naming strategies
-				will be added to separately support the short-understandable and long-unique naming
-				strategies.
+				made between short and understandable names and long and unique names. Currently
+				Teneo only has two naming strategies:
+			</p>
+			
+<ul>
+				
+<li>ClassicSQLNameStrategy: which is aimed at backward compatibility.</li>
+				
+<li>
+					TeneoSQLNameStrategy (
+					<strong>default</strong>
+					): is very similar to ClassicSQLNameStrategy but has better handling of
+					table/column names which are too long.
+				</li>
+			
+</ul>
+			
+<p>
+				In future releases of Teneo new naming strategies will be added to separately
+				support the short-understandable and long-unique naming strategies.
 			</p>
 			
 <p>
@@ -509,77 +538,140 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 				by a custom strategy.
 			</p>
 			
+<a name="N100AD"></a><a name="ClassicSQLNameStrategy"></a>
+<div class="h4">
+<h4>ClassicSQLNameStrategy</h4>
 <p>
-				Teneo currently has one sql name strategy implementation:
-				org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy. This strategy
-				has the following naming behavior:
-			</p>
-			
+					Is implemented by the Extension:
+					org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy. This
+					strategy has the following naming behavior:
+				</p>
 <ul>
-				
+					
 <li>
-					PrimaryKeyJoinColumn: the name of the join columns from the joined-subclass
-					table to the parent class table. The join column name is the concatenation of
-					the super entity name and the id feature name of the super entity.
-				</li>
-				
+						PrimaryKeyJoinColumn: the name of the join columns from the joined-subclass
+						table to the parent class table. The join column name is the concatenation
+						of the super entity name and the id feature name of the super entity.
+					</li>
+					
 <li>
-					SecondaryTablePrimaryKeyJoinColumn: the name of the primary key from the
-					secondary table to the main table. Is the name of the id feature of the main
-					type.
-				</li>
-				
+						SecondaryTablePrimaryKeyJoinColumn: the name of the primary key from the
+						secondary table to the main table. Is the name of the id feature of the main
+						type.
+					</li>
+					
 <li>Table name: the entity name.</li>
-				
+					
 <li>Column name: the name for a 'simple' column: the efeature name.</li>
-				
+					
 <li>
-					Foreign Key name: the name of the foreign key created for an EReference, the
-					concatenation of the entity name, '_' and the EReference name.
-				</li>
-				
+						Foreign Key name: the name of the foreign key created for an EReference, the
+						concatenation of the entity name, '_' and the EReference name.
+					</li>
+					
 <li>
-					ManyToOneJoinColumn: the join column name created for a single EReference,
-					depends on the option JOIN_COLUMN_NAMING_STRATEGY.
-				</li>
-				
+						ManyToOneJoinColumn: the join column name created for a single EReference,
+						depends on the option JOIN_COLUMN_NAMING_STRATEGY.
+					</li>
+					
 <li>
-					OneToMany join column for EAttribute: the join columns used for a many
-					eattribute (list of primitive types). Depends on the JOIN_COLUMN_NAMING_STRATEGY
-					setting.
-				</li>
-				
+						OneToMany join column for EAttribute: the join columns used for a many
+						eattribute (list of primitive types). Depends on the
+						JOIN_COLUMN_NAMING_STRATEGY setting.
+					</li>
+					
 <li>
-					OneToMany join column for EReference: the join columns used for a many
-					ereference. Depends on the JOIN_COLUMN_NAMING_STRATEGY setting.
-				</li>
-				
+						OneToMany join column for EReference: the join columns used for a many
+						ereference. Depends on the JOIN_COLUMN_NAMING_STRATEGY setting.
+					</li>
+					
 <li>
-					Join table join columns: the join columns used in the join table for a
-					many-to-many relation or a one-to-many with a join table. Depends on the
-					JOIN_COLUMN_NAMING_STRATEGY option.
-				</li>
-				
+						Join table join columns: the join columns used in the join table for a
+						many-to-many relation or a one-to-many with a join table. Depends on the
+						JOIN_COLUMN_NAMING_STRATEGY option.
+					</li>
+					
 <li>
-					Join Table Name for many EAttribute: the name of the join table, is the
-					concatenation of the entity name and the EAttribute name.
-				</li>
-				
+						Join Table Name for many EAttribute: the name of the join table, is the
+						concatenation of the entity name and the EAttribute name.
+					</li>
+					
 <li>
-					Join Table Name for many EReference: the name of the join table, depends on the
-					JOIN_TABLE_NAMING_STRATEGY option.
-				</li>
-				
+						Join Table Name for many EReference: the name of the join table, depends on
+						the JOIN_TABLE_NAMING_STRATEGY option.
+					</li>
+					
 <li>
-					Version, Discriminator, IdBagId, Synthetic ID column names: are all option
-					controlled.
-				</li>
-			
+						Version, Discriminator, IdBagId, Synthetic ID column names: are all option
+						controlled.
+					</li>
+				
 </ul>
+</div>
+			
+<a name="N100DE"></a><a name="TeneoSQLNameStrategy+%28default%29"></a>
+<div class="h4">
+<h4>TeneoSQLNameStrategy (default)</h4>
+<p>
+					Is implemented by the Extension:
+					org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy. This strategy
+					has for the most part the same behavior as the ClassicSQLNameStrategy. Currently
+					for the following function it has a different behavior:
+				</p>
+<ul>
+					
+<li>
+						Truncation of long sql names: it is possible to set the maximum length of
+						sql names using the MAXIMUM_SQL_NAME_LENGTH option. Sql names are derived
+						from model names, for model names it is guaranteed that certain names are
+						unique. However if a unique name has to be truncated because of length
+						constraints then name clashes can occur.
+						<p>
+							For example assume an ECLass Child which has an efeature parent (which
+							can be many=true). The logical name for the join table for this efeature
+							would be 'child_parent' and for the Child EClass the table would be
+							'child'. However assume now that a sql name length constraint applies of
+							4 then the join table name will become 'chil', and the table name of the
+							Child EClass would also become 'chil'. This results in a name clash.
+						</p>
+						
+<p>
+							This sql name strategy performs truncation of long names in a different
+							way. It splits up the name in separate parts using the _ (underscore) as
+							the separator. Using the underscore is logical because it is often used
+							to create join table names. Then in a number of iterations it truncates
+							the different parts by first truncating the part with the maximum
+							length. In this way it tries to retain the unique name. In this example
+							the resulting join table name will become c_pa, this is not very readable
+							but at least probably more unique.
+						</p>
+						
+<p>Other examples:</p>
+						
+<ul>
+							
+<li>child_parent (max length: 3) will be converted to c_p</li>
+							
+<li>child_father_mother (max length: 1) will be converted to c_f_m</li>
+							
+<li>child_parent (max length: 7) will be converted to chi_par</li>
+							
+<li>child (max length: 4) will be converted to chil</li>
+							
+<li>
+								child.parent.id (max length: 14) will be converted to child_paren_id
+							</li>
+						
+</ul>
+					
+</li>
+				
+</ul>
+</div>
 		
 </div>
 		
-<a name="N100C9"></a><a name="ClassLoaderStrategy+ExtensionPoint+%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29"></a>
+<a name="N1010A"></a><a name="ClassLoaderStrategy+ExtensionPoint+%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29"></a>
 <div class="h3">
 <h3>ClassLoaderStrategy ExtensionPoint (org.eclipse.emf.teneo.classloader.ClassLoaderStrategy)</h3>
 			
@@ -592,7 +684,7 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 		
 </div>
 		
-<a name="N100DA"></a><a name="Future+Enhancements"></a>
+<a name="N1011B"></a><a name="Future+Enhancements"></a>
 <div class="h3">
 <h3>Future Enhancements</h3>
 			
