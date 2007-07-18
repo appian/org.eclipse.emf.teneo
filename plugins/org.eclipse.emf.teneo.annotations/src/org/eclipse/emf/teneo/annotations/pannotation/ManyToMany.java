@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToMany.java,v 1.8 2007/07/17 17:37:13 mtaal Exp $
+ * $Id: ManyToMany.java,v 1.9 2007/07/18 16:12:40 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -127,7 +127,7 @@ public interface ManyToMany extends PAnnotation {
 
 	/**
 	 * Returns the value of the '<em><b>Indexed</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Indexed</em>' attribute isn't clear,
@@ -137,7 +137,7 @@ public interface ManyToMany extends PAnnotation {
 	 * @return the value of the '<em>Indexed</em>' attribute.
 	 * @see #setIndexed(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getManyToMany_Indexed()
-	 * @model default="false"
+	 * @model default="true"
 	 * @generated
 	 */
 	boolean isIndexed();

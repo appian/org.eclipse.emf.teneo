@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToManyImpl.java,v 1.9 2007/07/17 17:37:13 mtaal Exp $
+ * $Id: ManyToManyImpl.java,v 1.10 2007/07/18 16:12:40 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -128,7 +128,7 @@ public class ManyToManyImpl extends EObjectImpl implements ManyToMany {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean INDEXED_EDEFAULT = false;
+	protected static final boolean INDEXED_EDEFAULT = true;
 
 	/**
 	 * The cached value of the '{@link #isIndexed() <em>Indexed</em>}' attribute.
