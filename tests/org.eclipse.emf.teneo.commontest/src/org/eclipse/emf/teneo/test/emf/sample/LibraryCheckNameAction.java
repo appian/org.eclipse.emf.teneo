@@ -11,18 +11,21 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryCheckNameAction.java,v 1.1 2007/07/18 16:09:58 mtaal Exp $
+ * $Id: LibraryCheckNameAction.java,v 1.2 2007/07/18 18:56:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
+import java.util.Properties;
+
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 
 /**
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryCheckNameAction extends LibraryColLengthAction {
 
@@ -36,8 +39,21 @@ public class LibraryCheckNameAction extends LibraryColLengthAction {
 		// purposely empty, do not remove
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.put(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "8");
+		props.put(PersistenceOptions.ID_COLUMN_NAME, "myID");
+		return props;
+	}
+
 	@Override
 	protected String getTestQuery() {
-		return "SELECT * FROM BOOK WHERE l_b_e_i<>0 AND L_B_I>0 AND w_b_i>0".toLowerCase();
+		return "SELECT * FROM BOOK WHERE lb_bk_d<>0 AND lb_bk_dx>0 AND wr_bk_dx>0".toLowerCase();
 	}
 }
