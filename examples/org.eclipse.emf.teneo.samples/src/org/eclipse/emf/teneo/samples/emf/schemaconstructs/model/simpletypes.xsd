@@ -55,6 +55,7 @@
 			<element name="enu" type="this:SimpleEnum" maxOccurs="unbounded"/>
 			<element maxOccurs="unbounded" name="dat" type="this:Date"/>
 			<element maxOccurs="unbounded" name="limitedstring" type="this:LimitedString"/>
+			<element maxOccurs="unbounded" name="stri" type="string"/>
 			<element name="intArray" type="this:IntArray"/>
 			<element name="doubleArray" type="this:DoubleArray"/>
 			<element name="stringArray" type="this:StringArray"/>
@@ -120,7 +121,7 @@
    		<restriction base="anyType"/>
  	</simpleType>
 
-  	<simpleType ecore:instanceClass="String[]" name="StringArray">
+  	<simpleType ecore:instanceClass="java.lang.String[]" name="StringArray">
    		<restriction base="anyType"/>
  	</simpleType>
 

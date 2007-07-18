@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesValidator.java,v 1.4 2007/03/05 20:51:07 mtaal Exp $
+ * $Id: SimpletypesValidator.java,v 1.5 2007/07/18 16:11:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.util;
 
@@ -93,7 +93,7 @@ public class SimpletypesValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Calls <code>validateXXX</code> for the corresonding classifier of the model.
+	 * Calls <code>validateXXX</code> for the corresponding classifier of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

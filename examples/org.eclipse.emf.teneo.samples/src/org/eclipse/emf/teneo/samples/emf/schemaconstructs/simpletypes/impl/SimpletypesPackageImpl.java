@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesPackageImpl.java,v 1.7 2007/04/23 02:36:37 mtaal Exp $
+ * $Id: SimpletypesPackageImpl.java,v 1.8 2007/07/18 16:11:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -359,7 +359,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleList_IntArray() {
+	public EAttribute getSimpleList_Stri() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -368,7 +368,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleList_DoubleArray() {
+	public EAttribute getSimpleList_IntArray() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -377,7 +377,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleList_StringArray() {
+	public EAttribute getSimpleList_DoubleArray() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -386,8 +386,17 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleList_ByteArray() {
+	public EAttribute getSimpleList_StringArray() {
 		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimpleList_ByteArray() {
+		return (EAttribute)simpleListEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -799,6 +808,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		createEAttribute(simpleListEClass, SIMPLE_LIST__ENU);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__DAT);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__LIMITEDSTRING);
+		createEAttribute(simpleListEClass, SIMPLE_LIST__STRI);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__INT_ARRAY);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__DOUBLE_ARRAY);
 		createEAttribute(simpleListEClass, SIMPLE_LIST__STRING_ARRAY);
@@ -886,7 +896,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(simpleListEClass, SimpleList.class, "SimpleList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSimpleList_Code(), theXMLTypePackage.getString(), "code", "c1", 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_Code(), theXMLTypePackage.getString(), "code", "c1", 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Boo(), theXMLTypePackage.getBoolean(), "boo", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Byt(), this.getByte(), "byt", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Doubl(), this.getDouble(), "doubl", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -897,37 +907,38 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		initEAttribute(getSimpleList_Enu(), this.getSimpleEnum(), "enu", "Enum1", 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Dat(), this.getDate(), "dat", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleList_Limitedstring(), this.getLimitedString(), "limitedstring", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleList_IntArray(), this.getIntArray(), "intArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleList_DoubleArray(), this.getDoubleArray(), "doubleArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleList_StringArray(), this.getStringArray(), "stringArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleList_ByteArray(), this.getByteArray(), "byteArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_Stri(), theXMLTypePackage.getString(), "stri", null, 1, -1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_IntArray(), this.getIntArray(), "intArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_DoubleArray(), this.getDoubleArray(), "doubleArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_StringArray(), this.getStringArray(), "stringArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleList_ByteArray(), this.getByteArray(), "byteArray", null, 1, 1, SimpleList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(simpleTypeEClass, SimpleType.class, "SimpleType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSimpleType_Code(), theXMLTypePackage.getString(), "code", "c1", 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Boo(), theXMLTypePackage.getBoolean(), "boo", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Byt(), theXMLTypePackage.getByte(), "byt", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Doubl(), theXMLTypePackage.getDouble(), "doubl", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Float(), theXMLTypePackage.getFloat(), "float", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Inte(), theXMLTypePackage.getInt(), "inte", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Lon(), theXMLTypePackage.getLong(), "lon", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Shor(), theXMLTypePackage.getShort(), "shor", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Enu(), this.getSimpleEnum(), "enu", "Enum1", 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Dat(), this.getDate(), "dat", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_Limitedstring(), this.getLimitedString(), "limitedstring", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_LimitedDecimal(), this.getLimitedDecimal(), "limitedDecimal", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleType_ExtraLimitedString(), this.getExtraLimitedString(), "extraLimitedString", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Code(), theXMLTypePackage.getString(), "code", "c1", 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Boo(), theXMLTypePackage.getBoolean(), "boo", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Byt(), theXMLTypePackage.getByte(), "byt", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Doubl(), theXMLTypePackage.getDouble(), "doubl", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Float(), theXMLTypePackage.getFloat(), "float", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Inte(), theXMLTypePackage.getInt(), "inte", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Lon(), theXMLTypePackage.getLong(), "lon", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Shor(), theXMLTypePackage.getShort(), "shor", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Enu(), this.getSimpleEnum(), "enu", "Enum1", 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Dat(), this.getDate(), "dat", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_Limitedstring(), this.getLimitedString(), "limitedstring", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_LimitedDecimal(), this.getLimitedDecimal(), "limitedDecimal", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleType_ExtraLimitedString(), this.getExtraLimitedString(), "extraLimitedString", null, 1, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(simpleTypeObjectEClass, SimpleTypeObject.class, "SimpleTypeObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSimpleTypeObject_Code(), theXMLTypePackage.getString(), "code", "c1", 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleTypeObject_Boo(), theXMLTypePackage.getBooleanObject(), "boo", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleTypeObject_Byt(), theXMLTypePackage.getByteObject(), "byt", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleTypeObject_Doubl(), theXMLTypePackage.getDoubleObject(), "doubl", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleTypeObject_Float(), theXMLTypePackage.getFloatObject(), "float", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleTypeObject_Inte(), theXMLTypePackage.getIntObject(), "inte", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleTypeObject_Lon(), theXMLTypePackage.getLongObject(), "lon", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleTypeObject_Shor(), theXMLTypePackage.getShortObject(), "shor", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleTypeObject_Enu(), this.getSimpleEnumObject(), "enu", "Enum1", 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleTypeObject_Dat(), this.getDate(), "dat", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Code(), theXMLTypePackage.getString(), "code", "c1", 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Boo(), theXMLTypePackage.getBooleanObject(), "boo", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Byt(), theXMLTypePackage.getByteObject(), "byt", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Doubl(), theXMLTypePackage.getDoubleObject(), "doubl", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Float(), theXMLTypePackage.getFloatObject(), "float", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Inte(), theXMLTypePackage.getIntObject(), "inte", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Lon(), theXMLTypePackage.getLongObject(), "lon", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Shor(), theXMLTypePackage.getShortObject(), "shor", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Enu(), this.getSimpleEnumObject(), "enu", "Enum1", 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleTypeObject_Dat(), this.getDate(), "dat", null, 1, 1, SimpleTypeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(simpleEnumEEnum, SimpleEnum.class, "SimpleEnum");
@@ -1149,6 +1160,13 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		   new String[] {
 			 "kind", "element",
 			 "name", "limitedstring"
+		   });		
+		addAnnotation
+		  (getSimpleList_Stri(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "stri"
 		   });		
 		addAnnotation
 		  (getSimpleList_IntArray(), 
@@ -1374,7 +1392,7 @@ public class SimpletypesPackageImpl extends EPackageImpl implements SimpletypesP
 		   source, 
 		   new String[] {
 			 "appinfo", "@JoinTable(name=\"longNum\")"
-		   });																																		
+		   });																																			
 		addAnnotation
 		  (getSimpleTypeObject_Enu(), 
 		   source, 

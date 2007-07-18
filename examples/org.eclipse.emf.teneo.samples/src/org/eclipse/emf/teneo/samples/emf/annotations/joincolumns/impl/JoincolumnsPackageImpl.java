@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsPackageImpl.java,v 1.4 2007/07/17 17:37:32 mtaal Exp $
+ * $Id: JoincolumnsPackageImpl.java,v 1.5 2007/07/18 16:11:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -352,6 +352,18 @@ public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsP
 		   source, 
 		   new String[] {
 			 "appinfo", "@Id"
+		   });		
+		addAnnotation
+		  (getPerson_Friends(), 
+		   source, 
+		   new String[] {
+			 "value", "@ManyToMany(indexed=false)"
+		   });		
+		addAnnotation
+		  (getPerson_OppositeFriends(), 
+		   source, 
+		   new String[] {
+			 "value", "@ManyToMany(indexed=false)"
 		   });		
 		addAnnotation
 		  (getHouse_Visitors(), 

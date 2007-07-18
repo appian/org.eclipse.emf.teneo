@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleType.java,v 1.2 2007/03/05 20:51:06 mtaal Exp $
+ * $Id: SimpleType.java,v 1.3 2007/07/18 16:11:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -54,7 +54,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetCode()
 	 * @see #setCode(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Code()
-	 * @model default="c1" unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model default="c1" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='Code'"
 	 * @generated
 	 */
@@ -108,7 +108,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetBoo()
 	 * @see #setBoo(boolean)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Boo()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean" required="true"
 	 *        extendedMetaData="kind='element' name='boo'"
 	 * @generated
 	 */
@@ -162,7 +162,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetByt()
 	 * @see #setByt(byte)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Byt()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Byte" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Byte" required="true"
 	 *        extendedMetaData="kind='element' name='byt'"
 	 * @generated
 	 */
@@ -216,7 +216,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetDoubl()
 	 * @see #setDoubl(double)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Doubl()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Double" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Double" required="true"
 	 *        extendedMetaData="kind='element' name='doubl'"
 	 * @generated
 	 */
@@ -270,7 +270,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetFloat()
 	 * @see #setFloat(float)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Float()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Float" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Float" required="true"
 	 *        extendedMetaData="kind='element' name='float'"
 	 * @generated
 	 */
@@ -324,7 +324,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetInte()
 	 * @see #setInte(int)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Inte()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
 	 *        extendedMetaData="kind='element' name='inte'"
 	 * @generated
 	 */
@@ -378,7 +378,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetLon()
 	 * @see #setLon(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Lon()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
 	 *        extendedMetaData="kind='element' name='lon'"
 	 * @generated
 	 */
@@ -432,7 +432,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetShor()
 	 * @see #setShor(short)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Shor()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Short" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Short" required="true"
 	 *        extendedMetaData="kind='element' name='shor'"
 	 * @generated
 	 */
@@ -489,7 +489,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetEnu()
 	 * @see #setEnu(SimpleEnum)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Enu()
-	 * @model default="Enum1" unique="false" unsettable="true" required="true"
+	 * @model default="Enum1" unsettable="true" required="true"
 	 *        extendedMetaData="kind='element' name='enu'"
 	 * @generated
 	 */
@@ -542,7 +542,7 @@ public interface SimpleType extends EObject {
 	 * @return the value of the '<em>Dat</em>' attribute.
 	 * @see #setDat(Date)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Dat()
-	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Date" required="true"
+	 * @model dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Date" required="true"
 	 *        extendedMetaData="kind='element' name='dat'"
 	 * @generated
 	 */
@@ -569,7 +569,7 @@ public interface SimpleType extends EObject {
 	 * @return the value of the '<em>Limitedstring</em>' attribute.
 	 * @see #setLimitedstring(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_Limitedstring()
-	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.LimitedString" required="true"
+	 * @model dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.LimitedString" required="true"
 	 *        extendedMetaData="kind='element' name='limitedstring'"
 	 * @generated
 	 */
@@ -598,7 +598,7 @@ public interface SimpleType extends EObject {
 	 * @see #unsetLimitedDecimal()
 	 * @see #setLimitedDecimal(BigDecimal)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_LimitedDecimal()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.LimitedDecimal" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.LimitedDecimal" required="true"
 	 *        extendedMetaData="kind='element' name='limitedDecimal'"
 	 * @generated
 	 */
@@ -650,7 +650,7 @@ public interface SimpleType extends EObject {
 	 * @return the value of the '<em>Extra Limited String</em>' attribute.
 	 * @see #setExtraLimitedString(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleType_ExtraLimitedString()
-	 * @model unique="false" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.ExtraLimitedString" required="true"
+	 * @model dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.ExtraLimitedString" required="true"
 	 *        extendedMetaData="kind='element' name='extraLimitedString'"
 	 * @generated
 	 */

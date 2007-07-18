@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleListImpl.java,v 1.5 2007/04/23 02:36:37 mtaal Exp $
+ * $Id: SimpleListImpl.java,v 1.6 2007/07/18 16:11:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl;
 
@@ -37,6 +37,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Simpletype
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getEnu <em>Enu</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getDat <em>Dat</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getLimitedstring <em>Limitedstring</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getStri <em>Stri</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getIntArray <em>Int Array</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getDoubleArray <em>Double Array</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl#getStringArray <em>String Array</em>}</li>
@@ -175,6 +176,16 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * @ordered
 	 */
 	protected EList<String> limitedstring;
+
+	/**
+	 * The cached value of the '{@link #getStri() <em>Stri</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStri()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> stri;
 
 	/**
 	 * The default value of the '{@link #getIntArray() <em>Int Array</em>}' attribute.
@@ -446,6 +457,18 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<String> getStri() {
+		if (stri == null) {
+			stri = new EDataTypeEList<String>(String.class, this, SimpletypesPackage.SIMPLE_LIST__STRI);
+		}
+		return stri;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int[] getIntArray() {
 		return intArray;
 	}
@@ -555,6 +578,8 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 				return getDat();
 			case SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING:
 				return getLimitedstring();
+			case SimpletypesPackage.SIMPLE_LIST__STRI:
+				return getStri();
 			case SimpletypesPackage.SIMPLE_LIST__INT_ARRAY:
 				return getIntArray();
 			case SimpletypesPackage.SIMPLE_LIST__DOUBLE_ARRAY:
@@ -619,6 +644,10 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 				getLimitedstring().clear();
 				getLimitedstring().addAll((Collection<? extends String>)newValue);
 				return;
+			case SimpletypesPackage.SIMPLE_LIST__STRI:
+				getStri().clear();
+				getStri().addAll((Collection<? extends String>)newValue);
+				return;
 			case SimpletypesPackage.SIMPLE_LIST__INT_ARRAY:
 				setIntArray((int[])newValue);
 				return;
@@ -676,6 +705,9 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 			case SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING:
 				getLimitedstring().clear();
 				return;
+			case SimpletypesPackage.SIMPLE_LIST__STRI:
+				getStri().clear();
+				return;
 			case SimpletypesPackage.SIMPLE_LIST__INT_ARRAY:
 				setIntArray(INT_ARRAY_EDEFAULT);
 				return;
@@ -722,6 +754,8 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 				return dat != null && !dat.isEmpty();
 			case SimpletypesPackage.SIMPLE_LIST__LIMITEDSTRING:
 				return limitedstring != null && !limitedstring.isEmpty();
+			case SimpletypesPackage.SIMPLE_LIST__STRI:
+				return stri != null && !stri.isEmpty();
 			case SimpletypesPackage.SIMPLE_LIST__INT_ARRAY:
 				return INT_ARRAY_EDEFAULT == null ? intArray != null : !INT_ARRAY_EDEFAULT.equals(intArray);
 			case SimpletypesPackage.SIMPLE_LIST__DOUBLE_ARRAY:
@@ -766,6 +800,8 @@ public class SimpleListImpl extends EObjectImpl implements SimpleList {
 		result.append(dat);
 		result.append(", limitedstring: ");
 		result.append(limitedstring);
+		result.append(", stri: ");
+		result.append(stri);
 		result.append(", intArray: ");
 		result.append(intArray);
 		result.append(", doubleArray: ");

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.3 2007/07/17 17:37:31 mtaal Exp $
+ * $Id: Person.java,v 1.4 2007/07/18 16:11:38 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns;
 
@@ -95,6 +95,7 @@ public interface Person extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage#getPerson_Friends()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getOppositeFriends
 	 * @model opposite="oppositeFriends"
+	 *        annotation="teneo.jpa value='@ManyToMany(indexed=false)'"
 	 * @generated
 	 */
 	EList<Person> getFriends();
@@ -113,6 +114,7 @@ public interface Person extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage#getPerson_OppositeFriends()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.Person#getFriends
 	 * @model opposite="friends"
+	 *        annotation="teneo.jpa value='@ManyToMany(indexed=false)'"
 	 * @generated
 	 */
 	EList<Person> getOppositeFriends();

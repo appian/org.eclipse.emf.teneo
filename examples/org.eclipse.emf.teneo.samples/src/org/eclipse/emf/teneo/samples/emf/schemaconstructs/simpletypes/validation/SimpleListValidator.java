@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleListValidator.java,v 1.1 2007/02/08 23:09:27 mtaal Exp $
+ * $Id: SimpleListValidator.java,v 1.2 2007/07/18 16:11:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.validation;
 
 import java.util.Date;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum;
 
 /**
  * A sample validator interface for {@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList}.
@@ -27,10 +28,16 @@ public interface SimpleListValidator {
 	boolean validateInte(EList<Integer> value);
 	boolean validateLong(EList<Long> value);
 	boolean validateShor(EList<Short> value);
+	boolean validateEnu(EList<SimpleEnum> value);
+
 	boolean validateDat(EList<Date> value);
 	boolean validateLimitedstring(EList<String> value);
+	boolean validateStri(EList<String> value);
+
 	boolean validateIntArray(int[] value);
 	boolean validateDoubleArray(double[] value);
+	boolean validateStringArray(Object[] value);
+
 	boolean validateStringArray(String[] value);
 	boolean validateByteArray(byte[] value);
 }

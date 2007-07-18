@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpletypesPackage.java,v 1.4 2007/04/23 02:36:37 mtaal Exp $
+ * $Id: SimpletypesPackage.java,v 1.5 2007/07/18 16:11:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -170,13 +170,22 @@ public interface SimpletypesPackage extends EPackage {
 	int SIMPLE_LIST__LIMITEDSTRING = 10;
 
 	/**
+	 * The feature id for the '<em><b>Stri</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_LIST__STRI = 11;
+
+	/**
 	 * The feature id for the '<em><b>Int Array</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST__INT_ARRAY = 11;
+	int SIMPLE_LIST__INT_ARRAY = 12;
 
 	/**
 	 * The feature id for the '<em><b>Double Array</b></em>' attribute.
@@ -185,7 +194,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST__DOUBLE_ARRAY = 12;
+	int SIMPLE_LIST__DOUBLE_ARRAY = 13;
 
 	/**
 	 * The feature id for the '<em><b>String Array</b></em>' attribute.
@@ -194,7 +203,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST__STRING_ARRAY = 13;
+	int SIMPLE_LIST__STRING_ARRAY = 14;
 
 	/**
 	 * The feature id for the '<em><b>Byte Array</b></em>' attribute.
@@ -203,7 +212,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST__BYTE_ARRAY = 14;
+	int SIMPLE_LIST__BYTE_ARRAY = 15;
 
 	/**
 	 * The number of structural features of the '<em>Simple List</em>' class.
@@ -212,7 +221,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_LIST_FEATURE_COUNT = 15;
+	int SIMPLE_LIST_FEATURE_COUNT = 16;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl <em>Simple Type</em>}' class.
@@ -749,6 +758,17 @@ public interface SimpletypesPackage extends EPackage {
 	EAttribute getSimpleList_Limitedstring();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getStri <em>Stri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Stri</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getStri()
+	 * @see #getSimpleList()
+	 * @generated
+	 */
+	EAttribute getSimpleList_Stri();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleList#getIntArray <em>Int Array</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1082,7 +1102,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Bool</em>'.
 	 * @see java.lang.Boolean
 	 * @model instanceClass="java.lang.Boolean"
-	 *        extendedMetaData="name='Bool'" 
+	 *        extendedMetaData="name='Bool'"
 	 * @generated
 	 */
 	EDataType getBool();
@@ -1094,7 +1114,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Byte</em>'.
 	 * @see java.lang.Byte
 	 * @model instanceClass="java.lang.Byte"
-	 *        extendedMetaData="name='Byte'" 
+	 *        extendedMetaData="name='Byte'"
 	 * @generated
 	 */
 	EDataType getByte();
@@ -1105,7 +1125,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Byte Array</em>'.
 	 * @model instanceClass="byte[]"
-	 *        extendedMetaData="name='ByteArray'" 
+	 *        extendedMetaData="name='ByteArray'"
 	 * @generated
 	 */
 	EDataType getByteArray();
@@ -1117,7 +1137,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Date</em>'.
 	 * @see java.util.Date
 	 * @model instanceClass="java.util.Date"
-	 *        extendedMetaData="name='Date'" 
+	 *        extendedMetaData="name='Date'"
 	 * @generated
 	 */
 	EDataType getDate();
@@ -1129,7 +1149,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Double</em>'.
 	 * @see java.lang.Double
 	 * @model instanceClass="java.lang.Double"
-	 *        extendedMetaData="name='Double'" 
+	 *        extendedMetaData="name='Double'"
 	 * @generated
 	 */
 	EDataType getDouble();
@@ -1140,7 +1160,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Double Array</em>'.
 	 * @model instanceClass="double[]"
-	 *        extendedMetaData="name='DoubleArray'" 
+	 *        extendedMetaData="name='DoubleArray'"
 	 * @generated
 	 */
 	EDataType getDoubleArray();
@@ -1152,7 +1172,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Extra Limited String</em>'.
 	 * @see java.lang.String
 	 * @model instanceClass="java.lang.String"
-	 *        extendedMetaData="name='ExtraLimitedString' baseType='http://www.eclipse.org/emf/2003/XMLType#string' maxLength='5'" 
+	 *        extendedMetaData="name='ExtraLimitedString' baseType='http://www.eclipse.org/emf/2003/XMLType#string' maxLength='5'"
 	 * @generated
 	 */
 	EDataType getExtraLimitedString();
@@ -1164,7 +1184,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Float</em>'.
 	 * @see java.lang.Float
 	 * @model instanceClass="java.lang.Float"
-	 *        extendedMetaData="name='Float'" 
+	 *        extendedMetaData="name='Float'"
 	 * @generated
 	 */
 	EDataType getFloat();
@@ -1176,7 +1196,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Int</em>'.
 	 * @see java.lang.Integer
 	 * @model instanceClass="java.lang.Integer"
-	 *        extendedMetaData="name='Int'" 
+	 *        extendedMetaData="name='Int'"
 	 * @generated
 	 */
 	EDataType getInt();
@@ -1187,7 +1207,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Int Array</em>'.
 	 * @model instanceClass="int[]"
-	 *        extendedMetaData="name='IntArray'" 
+	 *        extendedMetaData="name='IntArray'"
 	 * @generated
 	 */
 	EDataType getIntArray();
@@ -1199,7 +1219,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Limited Decimal</em>'.
 	 * @see java.math.BigDecimal
 	 * @model instanceClass="java.math.BigDecimal"
-	 *        extendedMetaData="name='LimitedDecimal' totalDigits='4' fractionDigits='1'" 
+	 *        extendedMetaData="name='LimitedDecimal' totalDigits='4' fractionDigits='1'"
 	 * @generated
 	 */
 	EDataType getLimitedDecimal();
@@ -1211,7 +1231,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Limited String</em>'.
 	 * @see java.lang.String
 	 * @model instanceClass="java.lang.String"
-	 *        extendedMetaData="name='LimitedString' baseType='http://www.eclipse.org/emf/2003/XMLType#string' length='10'" 
+	 *        extendedMetaData="name='LimitedString' baseType='http://www.eclipse.org/emf/2003/XMLType#string' length='10'"
 	 * @generated
 	 */
 	EDataType getLimitedString();
@@ -1223,7 +1243,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Long</em>'.
 	 * @see java.lang.Long
 	 * @model instanceClass="java.lang.Long"
-	 *        extendedMetaData="name='Long'" 
+	 *        extendedMetaData="name='Long'"
 	 * @generated
 	 */
 	EDataType getLong();
@@ -1235,7 +1255,7 @@ public interface SimpletypesPackage extends EPackage {
 	 * @return the meta object for data type '<em>Simple Enum Object</em>'.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum
 	 * @model instanceClass="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum"
-	 *        extendedMetaData="name='SimpleEnum:Object' baseType='SimpleEnum'" 
+	 *        extendedMetaData="name='SimpleEnum:Object' baseType='SimpleEnum'"
 	 * @generated
 	 */
 	EDataType getSimpleEnumObject();
@@ -1245,8 +1265,8 @@ public interface SimpletypesPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>String Array</em>'.
-	 * @model instanceClass="String[]"
-	 *        extendedMetaData="name='StringArray'" 
+	 * @model instanceClass="java.lang.String[]"
+	 *        extendedMetaData="name='StringArray'"
 	 * @generated
 	 */
 	EDataType getStringArray();
@@ -1370,6 +1390,14 @@ public interface SimpletypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMPLE_LIST__LIMITEDSTRING = eINSTANCE.getSimpleList_Limitedstring();
+
+		/**
+		 * The meta object literal for the '<em><b>Stri</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMPLE_LIST__STRI = eINSTANCE.getSimpleList_Stri();
 
 		/**
 		 * The meta object literal for the '<em><b>Int Array</b></em>' attribute feature.

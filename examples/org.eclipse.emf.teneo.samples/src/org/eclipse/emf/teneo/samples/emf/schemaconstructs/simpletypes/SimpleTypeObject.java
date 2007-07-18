@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleTypeObject.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: SimpleTypeObject.java,v 1.3 2007/07/18 16:11:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -50,7 +50,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #unsetCode()
 	 * @see #setCode(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Code()
-	 * @model default="c1" unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model default="c1" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='Code'"
 	 * @generated
 	 */
@@ -104,7 +104,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #unsetBoo()
 	 * @see #setBoo(Boolean)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Boo()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.BooleanObject" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.BooleanObject" required="true"
 	 *        extendedMetaData="kind='element' name='boo'"
 	 * @generated
 	 */
@@ -158,7 +158,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #unsetByt()
 	 * @see #setByt(Byte)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Byt()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.ByteObject" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.ByteObject" required="true"
 	 *        extendedMetaData="kind='element' name='byt'"
 	 * @generated
 	 */
@@ -212,7 +212,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #unsetDoubl()
 	 * @see #setDoubl(Double)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Doubl()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.DoubleObject" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.DoubleObject" required="true"
 	 *        extendedMetaData="kind='element' name='doubl'"
 	 * @generated
 	 */
@@ -266,7 +266,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #unsetFloat()
 	 * @see #setFloat(Float)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Float()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.FloatObject" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.FloatObject" required="true"
 	 *        extendedMetaData="kind='element' name='float'"
 	 * @generated
 	 */
@@ -320,7 +320,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #unsetInte()
 	 * @see #setInte(Integer)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Inte()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.IntObject" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.IntObject" required="true"
 	 *        extendedMetaData="kind='element' name='inte'"
 	 * @generated
 	 */
@@ -374,7 +374,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #unsetLon()
 	 * @see #setLon(Long)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Lon()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.LongObject" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.LongObject" required="true"
 	 *        extendedMetaData="kind='element' name='lon'"
 	 * @generated
 	 */
@@ -428,7 +428,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #unsetShor()
 	 * @see #setShor(Short)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Shor()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.ShortObject" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.ShortObject" required="true"
 	 *        extendedMetaData="kind='element' name='shor'"
 	 * @generated
 	 */
@@ -483,7 +483,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #unsetEnu()
 	 * @see #setEnu(SimpleEnum)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Enu()
-	 * @model default="Enum1" unique="false" unsettable="true" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnumObject" required="true"
+	 * @model default="Enum1" unsettable="true" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnumObject" required="true"
 	 *        annotation="teneo.jpa appinfo='@Enumerated(STRING)'"
 	 *        extendedMetaData="kind='element' name='enu'"
 	 * @generated
@@ -538,7 +538,7 @@ public interface SimpleTypeObject extends EObject {
 	 * @see #unsetDat()
 	 * @see #setDat(Date)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleTypeObject_Dat()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Date" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.Date" required="true"
 	 *        extendedMetaData="kind='element' name='dat'"
 	 * @generated
 	 */

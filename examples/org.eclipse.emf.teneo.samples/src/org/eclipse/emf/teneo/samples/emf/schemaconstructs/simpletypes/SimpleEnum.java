@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleEnum.java,v 1.2 2007/02/08 23:09:23 mtaal Exp $
+ * $Id: SimpleEnum.java,v 1.3 2007/07/18 16:11:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes;
 
@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage#getSimpleEnum()
- * @model
+ * @model extendedMetaData="name='SimpleEnum'"
  * @generated
  */
 public enum SimpleEnum implements Enumerator
