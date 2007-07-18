@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryUseMappingFileAction.java,v 1.1 2007/07/17 12:22:44 mtaal Exp $
+ * $Id: LibraryUseMappingFileAction.java,v 1.2 2007/07/18 20:14:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryUseMappingFileAction extends AbstractTestAction {
 	/**
@@ -49,7 +49,7 @@ public class LibraryUseMappingFileAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.MAPPING_FILE_PATH, "/org/eclipse/emf/teneo/test.hbm.xml");
+		props.setProperty(PersistenceOptions.MAPPING_FILE_PATH, "/org/eclipse/emf/teneo/test/emf/test.hbm.xml");
 		return props;
 	}
 
