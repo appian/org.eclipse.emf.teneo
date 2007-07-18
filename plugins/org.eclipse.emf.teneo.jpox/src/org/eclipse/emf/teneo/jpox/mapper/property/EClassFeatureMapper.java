@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassFeatureMapper.java,v 1.9 2007/07/12 18:04:18 mtaal Exp $
+ * $Id: EClassFeatureMapper.java,v 1.10 2007/07/18 20:51:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Mapps the features of a passed annotated class, the class itself is not mapped here.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoint {
@@ -99,6 +99,22 @@ public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoin
 		}
 
 		// then for each non structural feature add a persistence modifier none
+		setNotPersistable(classElement, implClass, features);
+//		
+// // now also handle the case that the supertype of the eclass is an interface only
+// // class, in this case the efeatures of the supertype are to be mapped here!
+// for (int i = 0; i < aClass.getAnnotatedEClass().getESuperTypes().size(); i++) {
+// final EClass ec = (EClass)aClass.getAnnotatedEClass().getESuperTypes().get(i);
+// if (ec.isInterface()) {
+// log.debug("SuperType is interface, also mapping it " + ec.getName());
+// map(aClass.getPaModel().getPAnnotated(ec), classElement);
+// }
+// }
+	}
+
+	/** Sets persistence none for each non-model field */
+	protected void setNotPersistable(Element classElement, Class<?> implClass,
+			List<PAnnotatedEStructuralFeature> features) {
 		Field[] fields = implClass.getFields();
 		for (Field field : fields) {
 			if (Modifier.isStatic(field.getModifiers())) {
@@ -122,20 +138,10 @@ public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoin
 					"persistence-modifier", "none");
 			}
 		}
-//		
-// // now also handle the case that the supertype of the eclass is an interface only
-// // class, in this case the efeatures of the supertype are to be mapped here!
-// for (int i = 0; i < aClass.getAnnotatedEClass().getESuperTypes().size(); i++) {
-// final EClass ec = (EClass)aClass.getAnnotatedEClass().getESuperTypes().get(i);
-// if (ec.isInterface()) {
-// log.debug("SuperType is interface, also mapping it " + ec.getName());
-// map(aClass.getPaModel().getPAnnotated(ec), classElement);
-// }
-// }
 	}
 
 	/** Handles the annotated fields of a PAnnotatedEClass */
-	private void processPersistableMember(Element eclassElement, PAnnotatedEStructuralFeature aStructuralFeature) {
+	protected void processPersistableMember(Element eclassElement, PAnnotatedEStructuralFeature aStructuralFeature) {
 
 		if (aStructuralFeature instanceof PAnnotatedEAttribute) { // simple field
 			PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aStructuralFeature;
