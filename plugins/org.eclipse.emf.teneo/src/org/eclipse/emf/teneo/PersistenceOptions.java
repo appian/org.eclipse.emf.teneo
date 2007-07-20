@@ -12,7 +12,7 @@
  *   Jason Henriksen - Mapping File Path
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.32 2007/07/17 12:22:41 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.33 2007/07/20 09:57:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  */
 public class PersistenceOptions {
 
@@ -552,7 +552,17 @@ public class PersistenceOptions {
 	public int getMaximumSqlNameLength() {
 		final String colLength = properties.getProperty(MAXIMUM_SQL_NAME_LENGTH);
 		try {
-			return Integer.parseInt(colLength);
+			final int maxLength = Integer.parseInt(colLength);
+			if (maxLength == 0) {
+				throw new TeneoException("The option MAXIMUM_SQL_NAME_LENGTH has a value of zero. "
+						+ "This will result in empty column and table names in the mapping! "
+						+ "Please change this option to a more usable value.");
+			}
+			if (maxLength < 4 && maxLength > -1) {
+				log.warn("The option MAXIMUM_SQL_NAME_LENGTH has a low value: " + maxLength +
+						". Are you sure this is correct?");
+			}
+			return maxLength;
 		} catch (NumberFormatException e) {
 			log.error("Property " + MAXIMUM_SQL_NAME_LENGTH + " as a non-integer value: " + colLength +
 					" value is ignored");
