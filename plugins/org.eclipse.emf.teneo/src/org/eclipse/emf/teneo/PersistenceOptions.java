@@ -12,7 +12,7 @@
  *   Jason Henriksen - Mapping File Path
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.33 2007/07/20 09:57:25 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.34 2007/07/21 09:27:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  */
 public class PersistenceOptions {
 
@@ -100,6 +100,12 @@ public class PersistenceOptions {
 	public static final String SET_FOREIGN_KEY_NAME = NAMING_PREFIX + "set_foreign_key_name";
 
 	// END: ++++++++++++++++++++++ SQL Naming related Options ++++++++++++++++++++++++++++++++++++
+
+	/**
+	 * The maximum length of the comments which are copied from the model to the mapping file. The
+	 * default is zero which means no comments are copied from the model to the mapping.
+	 */
+	public static final String MAX_COMMENT_LENGTH = MAPPING_PREFIX + "max_comment_length";
 
 	/**
 	 * EClass marked with Embeddable is always embedded, default is false. If this is set to true
@@ -305,7 +311,7 @@ public class PersistenceOptions {
 		props.setProperty(SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "false");
 		props.setProperty(SET_FOREIGN_KEY_NAME, "false");
 		props.setProperty(MAP_EMBEDDABLE_AS_EMBEDDED, "false");
-
+		props.setProperty(MAX_COMMENT_LENGTH, "0");
 		return props;
 	}
 
@@ -546,6 +552,19 @@ public class PersistenceOptions {
 	/** Are econtainer mappings (hibernate) disabled */
 	public boolean isDisableEContainerMapping() {
 		return Boolean.valueOf(properties.getProperty(DISABLE_ECONTAINER_MAPPING)).booleanValue();
+	}
+
+	/** Return the value of the MAX_COMMENT_LENGTH */
+	public int getMaximumCommentLength() {
+		final String colLength = properties.getProperty(MAX_COMMENT_LENGTH);
+		try {
+			final int maxLength = Integer.parseInt(colLength);
+			return maxLength;
+		} catch (NumberFormatException e) {
+			log.error("Property " + MAXIMUM_SQL_NAME_LENGTH + " as a non-integer value: " + colLength +
+					" value is ignored");
+			return 0;
+		}
 	}
 
 	/** Return the max. sql name length, or -1 if not set or illegal */

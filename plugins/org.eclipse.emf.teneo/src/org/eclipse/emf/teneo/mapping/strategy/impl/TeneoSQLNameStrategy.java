@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: TeneoSQLNameStrategy.java,v 1.2 2007/07/18 18:57:16 mtaal Exp $
+ * $Id: TeneoSQLNameStrategy.java,v 1.3 2007/07/21 09:27:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -27,7 +27,7 @@ import org.apache.commons.logging.LogFactory;
  * different parts of a name (separated by _).
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 
@@ -45,10 +45,18 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 	@Override
 	public String trunc(int maxSqlLength, String truncName, boolean truncPrefix) {
 		String correctedName = truncName.replace('.', '_');
-
 		if (maxSqlLength == -1) {
 			return correctedName;
 		}
+		if (correctedName.length() <= maxSqlLength) {
+			return correctedName;
+		}
+
+		correctedName = correctedName.replaceAll("__", "_");
+		if (correctedName.startsWith("_")) {
+			correctedName = correctedName.substring(1);
+		}
+
 		if (correctedName.length() <= maxSqlLength) {
 			return correctedName;
 		}
@@ -60,26 +68,25 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 			return correctedName;
 		}
 
-		// now do vowel truncation
+		// now do vowel truncation preserving the first character
+		char correctedNameFirstChar = correctedName.charAt(0);
+		String correctedNameTail = correctedName.substring(1);
 		for (String vowel : getRemovableCharacters()) {
-			while (correctedName.indexOf(vowel) != -1 || correctedName.indexOf(vowel.toUpperCase()) != -1) {
-				if (correctedName.indexOf(vowel) != -1) {
-					correctedName = correctedName.replaceFirst(vowel, "");
+			while (correctedNameTail.indexOf(vowel) != -1 || correctedNameTail.indexOf(vowel.toUpperCase()) != -1) {
+				if (correctedNameTail.indexOf(vowel) != -1) {
+					correctedNameTail = correctedNameTail.replaceFirst(vowel, "");
 				} else {
-					correctedName = correctedName.replaceFirst(vowel.toUpperCase(), "");
+					correctedNameTail = correctedNameTail.replaceFirst(vowel.toUpperCase(), "");
 				}
-				correctedName = correctedName.replaceAll("__", "_");
-				if (correctedName.startsWith("_")) {
-					correctedName = correctedName.substring(1);
-				}
-				if (correctedName.length() <= maxSqlLength) {
-					return correctedName;
+				correctedNameTail = correctedNameTail.replaceAll("__", "_");
+				if ((correctedNameTail.length() + 1) <= maxSqlLength) {
+					return correctedNameFirstChar + correctedNameTail;
 				}
 			}
 		}
 
 		// still failed do length truncation
-		return doLengthTruncation(maxSqlLength, correctedName);
+		return doLengthTruncation(maxSqlLength, correctedNameFirstChar + correctedNameTail);
 	}
 
 	private String doLengthTruncation(int maxSqlLength, String correctedName) {
