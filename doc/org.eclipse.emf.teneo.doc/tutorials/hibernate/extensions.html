@@ -672,18 +672,21 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 						</p>
 						
 <p>
-							The truncation implemented in this name strategy performs truncation
-							by first removing vowels (the a, e, i, o, u) from the table and column names.
-							It will do this in the order u, o, a, e, i. It will remove one character at the
-							time which should result in the most readable names. If vowel removal did 
-							not result in names with the correct length it will do further truncation. 
-							Further truncation is done by splitting the name using the _ separator (common 
-							separator in sql naming) and then truncating the longest part one character 
-							at the time.
+							The truncation implemented in this name strategy performs truncation by
+							removing vowels (the a, e, i, o, u) from the table and column names. It
+							will do this in the order u, o, a, e, i. The first character of the
+							original name will always be preserved (for example user will be
+							truncated to usr). If vowel removal did not result in names with the
+							correct length it will do further truncation. Further truncation is done
+							by splitting the name using the _ separator (common separator in sql
+							naming) and then truncating the longest part one character at the time.
 						</p>
 						
-<p>Note that you can easily extend this class and pass your own 'removable' characters. 
-						Using the extensions mechanism you can then replace the TeneoSQLNameStrategy with your own.</p>
+<p>
+							Note that you can easily extend this class and pass your own 'removable'
+							characters. Using the extensions mechanism you can then replace the
+							TeneoSQLNameStrategy with your own.
+						</p>
 						
 <p>Some examples:</p>
 						
@@ -701,9 +704,9 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 								child.parent.id (max length: 14) will be converted to child_prent_id
 							</li>
 							
-<li>
-								child.parent.id (max length: 10) will be converted to chl_prn_d
-							</li>
+<li>child.parent.id (max length: 10) will be converted to chl_prn_d</li>
+							
+<li>user.parent (max length: 7) will be converted to usr_prn</li>
 						
 </ul>
 					
@@ -714,7 +717,7 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 		
 </div>
 		
-<a name="N10117"></a><a name="ClassLoaderStrategy+ExtensionPoint%0A%09%09%09%09%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29"></a>
+<a name="N1011A"></a><a name="ClassLoaderStrategy+ExtensionPoint%0A%09%09%09%09%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29"></a>
 <div class="h3">
 <h3>
 				ClassLoaderStrategy ExtensionPoint
@@ -737,7 +740,7 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 		
 </div>
 		
-<a name="N10128"></a><a name="Future+Enhancements"></a>
+<a name="N1012B"></a><a name="Future+Enhancements"></a>
 <div class="h3">
 <h3>Future Enhancements</h3>
 			
