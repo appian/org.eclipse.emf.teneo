@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CatalogAction.java,v 1.4 2007/07/17 13:59:32 mtaal Exp $
+ * $Id: CatalogAction.java,v 1.5 2007/07/21 09:27:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -36,9 +36,12 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * to catalog, delete from catalog.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public abstract class CatalogAction extends AbstractTestAction {
+
+	private static int COMMENT_LENGTH = 10;
+
 	public CatalogAction() {
 		super(CatalogPackage.eINSTANCE);
 	}
@@ -47,6 +50,7 @@ public abstract class CatalogAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		props.setProperty(PersistenceOptions.MAX_COMMENT_LENGTH, COMMENT_LENGTH + "");
 		return props;
 	}
 
@@ -265,8 +269,9 @@ public abstract class CatalogAction extends AbstractTestAction {
 		// test the comments in the hdm
 		if (store.isHibernateTestStore()) {
 			final String[] test =
-					new String[] { "My product documentation", "My description documentation",
-							"My producttype documentation" };
+					new String[] { "My product documentation".substring(0, COMMENT_LENGTH),
+							"My description documentation".substring(0, COMMENT_LENGTH),
+							"My producttype documentation".substring(0, COMMENT_LENGTH) };
 			final String xml = store.getMappingXML();
 			for (String t : test) {
 				if (xml.indexOf(t) == -1) {
