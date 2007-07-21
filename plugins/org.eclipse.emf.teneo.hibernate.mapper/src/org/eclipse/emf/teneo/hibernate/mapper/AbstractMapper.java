@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.25 2007/07/17 13:59:29 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.26 2007/07/21 09:27:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -319,10 +319,17 @@ public abstract class AbstractMapper {
 
 	/** Add a comment element, if the eModelElement has documentation, returns the comment element */
 	protected Element addCommentElement(EModelElement eModelElement, Element hbmElement) {
+		if (hbmContext.getMaximumCommentLength() == 0) {
+			return null;
+		}
 		final String commentData = EcoreUtil.getDocumentation(eModelElement);
 		if (commentData != null) {
 			final Element comment = hbmElement.addElement("comment");
-			comment.addText(commentData.replace('\'', ' ').replace('"', ' '));
+			String commentText = commentData.replace('\'', ' ').replace('"', ' ');
+			if (commentText.length() > hbmContext.getMaximumCommentLength()) {
+				commentText = commentText.substring(0, hbmContext.getMaximumCommentLength());
+			}
+			comment.addText(commentText);
 			return comment;
 		}
 		return null;
