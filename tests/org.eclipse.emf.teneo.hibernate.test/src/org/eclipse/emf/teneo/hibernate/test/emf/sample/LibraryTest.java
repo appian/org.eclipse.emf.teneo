@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.7 2007/07/18 18:57:14 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.8 2007/07/21 09:27:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class LibraryTest extends AbstractActionTest {
 
@@ -47,6 +47,8 @@ public class LibraryTest extends AbstractActionTest {
 			assertEquals("chl_prn", nameStrategy.trunc(7, "child_parent", true));
 			assertEquals("chld", nameStrategy.trunc(4, "child", true));
 			assertEquals("chl_prn", nameStrategy.trunc(7, "child.parent", true));
+			assertEquals("usr_prn", nameStrategy.trunc(7, "user.parent", true));
+			assertEquals("usr_nme", nameStrategy.trunc(7, "user.name", true));
 			assertEquals("child_parent", nameStrategy.trunc(-1, "child.parent", true));
 
 			assertEquals("chl_prn_d", nameStrategy.trunc(10, "child.parent.id", true));
