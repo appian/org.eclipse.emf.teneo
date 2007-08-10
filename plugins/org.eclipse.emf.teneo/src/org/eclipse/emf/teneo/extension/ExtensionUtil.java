@@ -12,11 +12,12 @@
  *
  * </copyright>
  *
- * $Id: ExtensionUtil.java,v 1.5 2007/07/18 16:10:08 mtaal Exp $
+ * $Id: ExtensionUtil.java,v 1.6 2007/08/10 16:40:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.AnnotationGenerator;
 import org.eclipse.emf.teneo.annotations.mapper.BasicPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.mapper.BidirectionalManyToManyAnnotator;
@@ -45,7 +46,7 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy;
  * Contains simple utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class ExtensionUtil {
@@ -68,6 +69,15 @@ public class ExtensionUtil {
 		return extension;
 	}
 
+	public static Extension createExtension(String pointClassName, String className, boolean singleton) {
+		final Extension extension = new Extension();
+		extension.setPoint(pointClassName);
+		extension.setClassName(className);
+		extension.setDefaultExtension(true);
+		extension.setSingleton(singleton);
+		return extension;
+	}
+
 	/** Register a number of default Extensions */
 	public static void registerDefaultExtensions(ExtensionManager em) {
 
@@ -83,6 +93,7 @@ public class ExtensionUtil {
 		em.registerExtension(createExtension(XmlPersistenceContentHandler.class, XmlPersistenceContentHandler.class));
 		em.registerExtension(createExtension(XmlElementToEStructuralFeatureMapper.class,
 			XmlElementToEStructuralFeatureMapper.class));
+		em.registerExtension(createExtension(PersistenceOptions.class, PersistenceOptions.class));
 
 		// annotator related
 		em.registerExtension(createExtension(EClassAnnotator.class, EClassAnnotator.class));

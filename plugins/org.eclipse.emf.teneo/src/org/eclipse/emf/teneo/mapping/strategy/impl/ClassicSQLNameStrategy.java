@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.8 2007/07/18 16:10:08 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.9 2007/08/10 16:40:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the options set in the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
@@ -50,13 +50,13 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	protected static final Log log = LogFactory.getLog(ClassicSQLNameStrategy.class);
 
 	// The local members for several options
-	private String optionJoinTableNamingStrategy;
-	private String optionJoinColumnNamingStrategy;
-	private int optionMaximumSqlLength;
-	private EntityNameStrategy entityNameStrategy;
-	private PersistenceOptions persistenceOptions;
-	private boolean optionSQLUpperCase = false;
-	private boolean optionSQLLowerCase = false;
+	protected String optionJoinTableNamingStrategy;
+	protected String optionJoinColumnNamingStrategy;
+	protected int optionMaximumSqlLength;
+	protected EntityNameStrategy entityNameStrategy;
+	protected PersistenceOptions persistenceOptions;
+	protected boolean optionSQLUpperCase = false;
+	protected boolean optionSQLLowerCase = false;
 
 	private ExtensionManager extensionManager;
 

@@ -12,13 +12,20 @@
  *
  * </copyright>
  *
- * $Id: TeneoSQLNameStrategy.java,v 1.3 2007/07/21 09:27:26 mtaal Exp $
+ * $Id: TeneoSQLNameStrategy.java,v 1.4 2007/08/10 16:40:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
 
 /**
  * Differences between this implementation and the ClassicSQLNameStrategy is the way truncation is
@@ -27,7 +34,7 @@ import org.apache.commons.logging.LogFactory;
  * different parts of a name (separated by _).
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 
@@ -35,6 +42,56 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 	protected static final Log log = LogFactory.getLog(TeneoSQLNameStrategy.class);
 
 	private static String[] removables = new String[] { "u", "o", "a", "e", "i" };
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getManyToOneJoinColumnNames(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
+	 */
+	@Override
+	public List<String> getManyToOneJoinColumnNames(PAnnotatedEReference aReference) {
+		final EReference eref = aReference.getAnnotatedEReference();
+
+		// isTransient occurs for computed featuremap features, these are ignored
+		// later on
+		assert (eref.isTransient() || !eref.isMany()); // otherwise this should have been a mtm
+
+		// in case of many-to-one to qualify use the name of the class to which is refered
+		// this is only used in case of non-simple naming (simple naming is better readable)!
+		final PAnnotatedEClass aClass;
+		if (eref.getEOpposite() == null) {
+			aClass = aReference.getAReferenceType();
+		} else {
+			// the aclass is just the class of the structuralfeature itself.
+			// This is done so that both sides of the relationship use the same columns
+			aClass = aReference.getPaEClass();
+		}
+		final String typeName = aClass.getAnnotatedEClass().getName();
+		final String featureName = eref.getName();
+
+		final List<String> result = new ArrayList<String>();
+		final List<String> names =
+				StrategyUtil.getIDFeaturesNames(aReference.getAReferenceType(), persistenceOptions
+					.getDefaultIDFeatureName());
+		final boolean simpleNaming = optionJoinColumnNamingStrategy.compareTo("simple") == 0;
+		for (String name : names) {
+			final String postFix;
+			if (names.size() == 1 && simpleNaming) {
+				postFix = "";
+			} else {
+				postFix = "_" + name;
+			}
+
+			final String jcName;
+			if (simpleNaming) {
+				jcName = featureName + postFix;
+			} else { // backward compatibility
+				jcName = typeName + "_" + featureName + postFix;
+			}
+			result.add(convert(jcName, true));
+		}
+		return result;
+	}
 
 	/*
 	 * (non-Javadoc)

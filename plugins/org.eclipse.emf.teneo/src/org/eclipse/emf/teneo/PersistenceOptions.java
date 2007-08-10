@@ -12,7 +12,7 @@
  *   Jason Henriksen - Mapping File Path
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.34 2007/07/21 09:27:27 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.35 2007/08/10 16:40:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -28,6 +28,7 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * Defines the property names used in the persistence mapping.
@@ -35,9 +36,9 @@ import org.apache.commons.logging.LogFactory;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
-public class PersistenceOptions {
+public class PersistenceOptions implements ExtensionPoint {
 
 	public static final String DEFAULT_CLASSPATH_FILENAME = "/teneo-persistence.properties";
 
