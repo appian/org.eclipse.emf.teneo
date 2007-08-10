@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParentDocument.java,v 1.3 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: ParentDocument.java,v 1.4 2007/08/10 20:30:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -26,13 +26,6 @@ package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
  */
 public interface ParentDocument extends Document {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "";
-
-	/**
 	 * Returns the value of the '<em><b>My Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -43,7 +36,7 @@ public interface ParentDocument extends Document {
 	 * @return the value of the '<em>My Name</em>' attribute.
 	 * @see #setMyName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getParentDocument_MyName()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='myName'"
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SpecificDocument.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: SpecificDocument.java,v 1.3 2007/08/10 20:30:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -20,17 +20,11 @@ package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getSpecificDocument()
- * @model extendedMetaData="name='SpecificDocument' kind='elementOnly'"
+ * @model annotation="teneo.jpa appinfo='@Entity'"
+ *        extendedMetaData="name='SpecificDocument' kind='elementOnly'"
  * @generated
  */
 public interface SpecificDocument extends ParentDocument {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "";
-
 	/**
 	 * Returns the value of the '<em><b>My Specific Info</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -42,7 +36,7 @@ public interface SpecificDocument extends ParentDocument {
 	 * @return the value of the '<em>My Specific Info</em>' attribute.
 	 * @see #setMySpecificInfo(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getSpecificDocument_MySpecificInfo()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='mySpecificInfo'"
 	 * @generated
 	 */

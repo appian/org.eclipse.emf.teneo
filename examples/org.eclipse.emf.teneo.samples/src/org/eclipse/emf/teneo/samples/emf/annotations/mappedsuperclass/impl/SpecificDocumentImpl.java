@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SpecificDocumentImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: SpecificDocumentImpl.java,v 1.3 2007/08/10 20:30:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl;
 
@@ -29,13 +29,6 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.SpecificDo
  * @generated
  */
 public class SpecificDocumentImpl extends ParentDocumentImpl implements SpecificDocument {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "";
-
 	/**
 	 * The default value of the '{@link #getMySpecificInfo() <em>My Specific Info</em>}' attribute.
 	 * <!-- begin-user-doc -->

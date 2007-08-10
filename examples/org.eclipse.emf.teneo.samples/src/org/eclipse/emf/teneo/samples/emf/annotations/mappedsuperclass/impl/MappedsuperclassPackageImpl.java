@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassPackageImpl.java,v 1.4 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: MappedsuperclassPackageImpl.java,v 1.5 2007/08/10 20:30:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl;
 
@@ -28,13 +28,6 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.SpecificDo
  * @generated
  */
 public class MappedsuperclassPackageImpl extends EPackageImpl implements MappedsuperclassPackage {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "";
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -284,25 +277,25 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(addIDDocumentEClass, AddIDDocument.class, "AddIDDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAddIDDocument_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, AddIDDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddIDDocument_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, AddIDDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDocument_MyGenericInfo(), theXMLTypePackage.getString(), "myGenericInfo", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDocument_MyGenericInfo(), theXMLTypePackage.getString(), "myGenericInfo", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parentDocumentEClass, ParentDocument.class, "ParentDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParentDocument_MyName(), theXMLTypePackage.getString(), "myName", null, 1, 1, ParentDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParentDocument_MyName(), theXMLTypePackage.getString(), "myName", null, 1, 1, ParentDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(specificDocumentEClass, SpecificDocument.class, "SpecificDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSpecificDocument_MySpecificInfo(), theXMLTypePackage.getString(), "mySpecificInfo", null, 1, 1, SpecificDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSpecificDocument_MySpecificInfo(), theXMLTypePackage.getString(), "mySpecificInfo", null, 1, 1, SpecificDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
-		createExtendedMetaDataAnnotations();
 		// teneo.jpa
 		createTeneoAnnotations();
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
 	}
 
 	/**
@@ -312,7 +305,13 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";				
+		String source = "teneo.jpa";		
+		addAnnotation
+		  (addIDDocumentEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Entity"
+		   });				
 		addAnnotation
 		  (documentEClass, 
 		   source, 
@@ -325,6 +324,12 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		   new String[] {
 			 "appinfo", "@MappedSuperclass"
 		   });				
+		addAnnotation
+		  (specificDocumentEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Entity"
+		   });		
 	}
 
 	/**
@@ -334,7 +339,7 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
 		addAnnotation
 		  (addIDDocumentEClass, 
 		   source, 
@@ -376,7 +381,7 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		   new String[] {
 			 "kind", "element",
 			 "name", "myName"
-		   });		
+		   });			
 		addAnnotation
 		  (specificDocumentEClass, 
 		   source, 

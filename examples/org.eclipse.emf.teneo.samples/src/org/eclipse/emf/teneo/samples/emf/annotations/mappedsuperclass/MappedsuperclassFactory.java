@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassFactory.java,v 1.3 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: MappedsuperclassFactory.java,v 1.4 2007/08/10 20:30:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -17,12 +17,6 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface MappedsuperclassFactory extends EFactory {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "";
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->

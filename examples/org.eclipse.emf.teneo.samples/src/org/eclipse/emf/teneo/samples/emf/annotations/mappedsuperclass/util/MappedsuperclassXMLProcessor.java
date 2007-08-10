@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassXMLProcessor.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: MappedsuperclassXMLProcessor.java,v 1.3 2007/08/10 20:30:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.util;
 
@@ -22,13 +22,6 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Mappedsupe
  * @generated
  */
 public class MappedsuperclassXMLProcessor extends XMLProcessor {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "";
-
 	/**
 	 * Public constructor to instantiate the helper.
 	 * <!-- begin-user-doc -->

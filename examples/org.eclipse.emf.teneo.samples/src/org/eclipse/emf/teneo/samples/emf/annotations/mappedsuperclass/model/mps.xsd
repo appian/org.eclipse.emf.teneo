@@ -1,48 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/annotations/mappedsuperclass"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/annotations/mappedsuperclass"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    
-  	<xsd:complexType name="Document">
-	 	<xsd:annotation>
+<xsd:schema
+	targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/annotations/mappedsuperclass"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/annotations/mappedsuperclass"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+
+	<xsd:complexType name="Document">
+		<xsd:annotation>
 			<xsd:appinfo source="teneo.jpa">@MappedSuperclass</xsd:appinfo>
-	    </xsd:annotation>
-	    	<xsd:sequence>
-	  		<xsd:element name="myGenericInfo" type="xsd:string"/>
-    		</xsd:sequence>
-  	</xsd:complexType>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="myGenericInfo" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
 
-  	<xsd:complexType name="AddIDDocument">
-	    	<xsd:complexContent>
-      		<xsd:extension base="this:Document">
-		        	<xsd:sequence>
-			  		<xsd:element name="name" type="xsd:string"/>
-		        	</xsd:sequence>
-			</xsd:extension>
-	    	</xsd:complexContent>
-  	</xsd:complexType>
-
-  	<xsd:complexType name="ParentDocument">
+	<xsd:complexType name="AddIDDocument">
 	 	<xsd:annotation>
-			<xsd:appinfo source="teneo.jpa">@MappedSuperclass</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@Entity</xsd:appinfo>
 	    </xsd:annotation>
-	    	<xsd:complexContent>
-      		<xsd:extension base="this:Document">
-		        	<xsd:sequence>
-				  		<xsd:element name="myName" type="xsd:string"/>
-		        	</xsd:sequence>
+		<xsd:complexContent>
+			<xsd:extension base="this:Document">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" />
+				</xsd:sequence>
 			</xsd:extension>
-	    	</xsd:complexContent>
-  	</xsd:complexType>
+		</xsd:complexContent>
+	</xsd:complexType>
 
-  	<xsd:complexType name="SpecificDocument">
-	    	<xsd:complexContent>
-      		<xsd:extension base="this:ParentDocument">
-		        	<xsd:sequence>
-			  		<xsd:element name="mySpecificInfo" type="xsd:string"/>
-		        	</xsd:sequence>
+	<xsd:complexType name="ParentDocument">
+		<xsd:annotation>
+			<xsd:appinfo source="teneo.jpa">@MappedSuperclass</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="this:Document">
+				<xsd:sequence>
+					<xsd:element name="myName" type="xsd:string" />
+				</xsd:sequence>
 			</xsd:extension>
-	    	</xsd:complexContent>
-  	</xsd:complexType>
- </xsd:schema>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="SpecificDocument">
+	 	<xsd:annotation>
+			<xsd:appinfo source="teneo.jpa">@Entity</xsd:appinfo>
+	    </xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="this:ParentDocument">
+				<xsd:sequence>
+					<xsd:element name="mySpecificInfo" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>
