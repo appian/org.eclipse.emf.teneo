@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.18 2007/07/11 17:14:37 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.19 2007/08/10 20:17:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -21,6 +21,7 @@ import junit.framework.Test;
 import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.jpox.test.generate.JPOXGenerateTest;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
+import org.eclipse.emf.teneo.test.emf.sample.CarAction;
 import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
@@ -42,13 +43,16 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class AllGenerateTests {
 	public static Test suite() {
 		MultiCfgTestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 					.getConfigurations());
+
+		suite.addTest(new JPOXGenerateTest(CarAction.class));
+
 		suite.addTest(new JPOXGenerateTest(LibraryFKAction.class));
 
 		suite.addTest(new JPOXGenerateTest(LibraryTest.testAction));
