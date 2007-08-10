@@ -11,12 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.10 2007/07/12 12:52:49 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.11 2007/08/10 22:35:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -38,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class EcoreAction extends AbstractTestAction {
 
@@ -76,7 +78,6 @@ public class EcoreAction extends AbstractTestAction {
 				// a file handle to the current class
 				// the play.xml is in the model directory
 				resourceOne.load(this.getClass().getResourceAsStream("library.ecore"), Collections.EMPTY_MAP);
-				resourceOne.load(Collections.EMPTY_MAP);
 				// EPackage epack = (EPackage)resource.getContents().get(0);
 				// resource.unload();
 				store.beginTransaction();
@@ -124,6 +125,27 @@ public class EcoreAction extends AbstractTestAction {
 				for (Object o : list) {
 					store.deleteObject(o);
 				}
+				store.commitTransaction();
+			}
+
+			// now try the debfile
+			{
+				final Resource fileRes = new XMIResourceImpl();
+				fileRes.load(this.getClass().getResourceAsStream("debFile.ecore"), Collections.EMPTY_MAP);
+				store.beginTransaction();
+				for (Object o : fileRes.getContents()) {
+					store.store(o);
+				}
+				store.commitTransaction();
+			}
+			{
+				store.beginTransaction();
+				final Resource res = new XMIResourceImpl();
+				for (Object o : store.getObjects(EPackage.class)) {
+					res.getContents().add((EObject) o);
+				}
+				final OutputStream os = new FileOutputStream("/home/mtaal/mytmp/test.ecore");
+				res.save(os, Collections.EMPTY_MAP);
 				store.commitTransaction();
 			}
 
