@@ -2,11 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdFactoryImpl.java,v 1.2 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: IdFactoryImpl.java,v 1.3 2007/08/10 16:41:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl;
 
+import java.util.Date;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 

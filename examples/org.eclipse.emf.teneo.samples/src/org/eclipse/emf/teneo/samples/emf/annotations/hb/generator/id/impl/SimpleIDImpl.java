@@ -2,10 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleIDImpl.java,v 1.3 2007/07/11 17:34:54 mtaal Exp $
+ * $Id: SimpleIDImpl.java,v 1.4 2007/08/10 16:41:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl;
 
+import java.util.Date;
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;

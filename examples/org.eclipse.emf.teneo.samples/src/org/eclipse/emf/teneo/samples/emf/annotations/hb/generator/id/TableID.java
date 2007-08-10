@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableID.java,v 1.2 2007/07/11 17:34:54 mtaal Exp $
+ * $Id: TableID.java,v 1.3 2007/08/10 16:41:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id;
 
@@ -39,7 +39,7 @@ public interface TableID extends EObject {
 	 * @see #setMyid(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdPackage#getTableID_Myid()
 	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="teneo.hibernate appinfo='\n\t\t\t\t@Id @GeneratedValue(generator=\"hibseq\")\n\t\t\t'"
+	 *        annotation="teneo.hibernate appinfo='\n\t\t\t\t\t\t@Id @GeneratedValue(generator=\"hibseq\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='myid'"
 	 * @generated
 	 */

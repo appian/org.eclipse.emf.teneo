@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackage.java,v 1.3 2007/07/11 17:34:54 mtaal Exp $
+ * $Id: IdPackage.java,v 1.4 2007/08/10 16:41:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
@@ -23,7 +24,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdFactory
  * @model kind="package"
- *        annotation="teneo.hibernate appinfo='\n@GenericGenerator(name=\"system-uuid\", strategy = \"uuid\")\n@GenericGenerator(name=\"hibseq\", strategy = \"hilo\",\n    parameters = {\n        @Parameter(name=\"table\", value = \"hilo_table\"),\n        @Parameter(name=\"column\", value=\"the_hilo_column\")\n    }\n)\n\t\t'"
+ *        annotation="teneo.hibernate appinfo='\n\t\t\t@GenericGenerator(name=\"system-uuid\", strategy = \"uuid\")\n\t\t\t@GenericGenerator(name=\"hibseq\", strategy = \"hilo\", parameters = {\n\t\t\t@Parameter(name=\"table\", value = \"hilo_table\"), @Parameter(name=\"column\",\n\t\t\tvalue=\"the_hilo_column\") } )\n\t\t'"
  * @generated
  */
 public interface IdPackage extends EPackage {

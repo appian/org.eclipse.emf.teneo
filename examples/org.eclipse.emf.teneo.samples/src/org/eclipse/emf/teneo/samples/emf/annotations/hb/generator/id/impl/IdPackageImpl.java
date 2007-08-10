@@ -2,12 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackageImpl.java,v 1.4 2007/07/11 17:34:54 mtaal Exp $
+ * $Id: IdPackageImpl.java,v 1.5 2007/08/10 16:41:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl;
 
+import java.util.Date;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -286,31 +288,31 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		  (this, 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n@GenericGenerator(name=\"system-uuid\", strategy = \"uuid\")\n@GenericGenerator(name=\"hibseq\", strategy = \"hilo\",\n    parameters = {\n        @Parameter(name=\"table\", value = \"hilo_table\"),\n        @Parameter(name=\"column\", value=\"the_hilo_column\")\n    }\n)\n\t\t"
+			 "appinfo", "\n\t\t\t@GenericGenerator(name=\"system-uuid\", strategy = \"uuid\")\n\t\t\t@GenericGenerator(name=\"hibseq\", strategy = \"hilo\", parameters = {\n\t\t\t@Parameter(name=\"table\", value = \"hilo_table\"), @Parameter(name=\"column\",\n\t\t\tvalue=\"the_hilo_column\") } )\n\t\t"
 		   });			
 		addAnnotation
 		  (getIdentityID_Myid(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t@Id @GeneratedValue(strategy=\"IDENTITY\")\n\t\t\t"
+			 "appinfo", "\n\t\t\t\t\t\t@Id @GeneratedValue(strategy=\"IDENTITY\")\n\t\t\t\t\t"
 		   });				
 		addAnnotation
 		  (getSimpleID_AutoID(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t@Id @GeneratedValue \n\t\t\t\t@Column(name=\"AUTOD\" nullable=\"false\")\n\t\t\t"
+			 "appinfo", "\n\t\t\t\t\t\t@Id @GeneratedValue @Column(name=\"AUTOD\" nullable=\"false\")\n\t\t\t\t\t"
 		   });			
 		addAnnotation
 		  (getSimpleID_Generated(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t@Generated(ALWAYS)\n\t\t\t"
+			 "appinfo", "@Generated(ALWAYS)"
 		   });				
 		addAnnotation
 		  (getTableID_Myid(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t@Id @GeneratedValue(generator=\"hibseq\")\n\t\t\t"
+			 "appinfo", "\n\t\t\t\t\t\t@Id @GeneratedValue(generator=\"hibseq\")\n\t\t\t\t\t"
 		   });	
 	}
 

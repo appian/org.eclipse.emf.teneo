@@ -2,10 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleID.java,v 1.2 2007/07/11 17:34:54 mtaal Exp $
+ * $Id: SimpleID.java,v 1.3 2007/08/10 16:41:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id;
 
+import java.util.Date;
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -40,7 +42,7 @@ public interface SimpleID extends EObject {
 	 * @see #setAutoID(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdPackage#getSimpleID_AutoID()
 	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="teneo.hibernate appinfo='\n\t\t\t\t@Id @GeneratedValue \n\t\t\t\t@Column(name=\"AUTOD\" nullable=\"false\")\n\t\t\t'"
+	 *        annotation="teneo.hibernate appinfo='\n\t\t\t\t\t\t@Id @GeneratedValue @Column(name=\"AUTOD\" nullable=\"false\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='autoID'"
 	 * @generated
 	 */
@@ -95,7 +97,7 @@ public interface SimpleID extends EObject {
 	 * @see #setGenerated(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdPackage#getSimpleID_Generated()
 	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="teneo.hibernate appinfo='\n\t\t\t\t@Generated(ALWAYS)\n\t\t\t'"
+	 *        annotation="teneo.hibernate appinfo='@Generated(ALWAYS)'"
 	 *        extendedMetaData="kind='element' name='generated'"
 	 * @generated
 	 */

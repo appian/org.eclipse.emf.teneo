@@ -2,9 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleIDValidator.java,v 1.2 2007/07/11 17:34:54 mtaal Exp $
+ * $Id: SimpleIDValidator.java,v 1.3 2007/08/10 16:41:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.validation;
+
+import java.util.Date;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -19,4 +22,8 @@ public interface SimpleIDValidator {
 	boolean validateAutoID(long value);
 
 	boolean validateGenerated(long value);
+
+	boolean validateGeneratedDate(Date value);
+
+	boolean validateGeneratedDate(XMLGregorianCalendar value);
 }
