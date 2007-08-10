@@ -12,7 +12,12 @@ Require-Bundle: org.eclipse.emf.ecore.xmi,
 Eclipse-LazyStart: true
 Eclipse-BuddyPolicy: dependent
 Bundle-Vendor: %Plugin.providerName
-Export-Package: extlibrary,
+Export-Package: com.example.car,
+ com.example.car.impl,
+ com.example.car.model,
+ com.example.car.util,
+ com.example.car.validation,
+ extlibrary,
  extlibrary.impl,
  extlibrary.model,
  extlibrary.util,
