@@ -54,7 +54,7 @@ import org.hibernate.property.Setter;
  * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -130,7 +130,9 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 					(PersistableDelegateList) createPersistableList((InternalEObject) owner, eFeature, (List) obj);
 			final EObject eobj = (EObject) owner;
 			if (eobj.eClass().getClassifierID() < 0 && !EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) eobj)) {
-				log.debug("Dynamic elist, set using the esettings");
+				if (log.isDebugEnabled()) {
+					log.debug("Dynamic elist, set using the esettings");
+				}
 				EcoreAccess.setManyEFeatureValue(eFeature, pelist, (BasicEObjectImpl) owner);
 			} else {
 				// TODO: currently it is required to use the field setter
@@ -219,7 +221,9 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 		if (((EObject) target).eClass().getClassifierID() < 0 &&
 				!EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) target)) {
-			log.debug("Dynamic elist, set using the esettings");
+			if (log.isDebugEnabled()) {
+				log.debug("Dynamic elist, set using the esettings");
+			}
 			final Object currentValue = EcoreAccess.getManyEFeatureValue(eFeature, (BasicEObjectImpl) target);
 
 			// if currentvalue is not null then use the passed value
@@ -229,8 +233,10 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 				EcoreAccess.setManyEFeatureValue(eFeature, createPersistableList((InternalEObject) target, eFeature,
 					(List) value), (BasicEObjectImpl) target);
 			}
-			log.debug("Set value " + value.getClass().getName() + " for target " + target.getClass().getName() +
-					" field " + eFeature.getName());
+			if (log.isDebugEnabled()) {
+				log.debug("Set value " + value.getClass().getName() + " for target " + target.getClass().getName() +
+						" field " + eFeature.getName());
+			}
 
 		} else {
 			// the reason that the javafield is determined here and not at
@@ -279,8 +285,10 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 						javaField.set(target, createPersistableList((InternalEObject) target, eFeature, (List) value));
 					}
 				}
-				log.debug("Set value " + value.getClass().getName() + " for target " + target.getClass().getName() +
-						" field " + eFeature.getName());
+				if (log.isDebugEnabled()) {
+					log.debug("Set value " + value.getClass().getName() + " for target " + target.getClass().getName() +
+							" field " + eFeature.getName());
+				}
 			} catch (Exception e) {
 				throw new HbMapperException("The field + " + javaField.getName() + " can not be set using object " +
 						value.getClass().getName() + " on target " + target.getClass().getName(), e);
@@ -293,7 +301,9 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 */
 	protected EList createPersistableMap(InternalEObject target, EStructuralFeature estruct, Map map) {
 		final EReference eref = (EReference) estruct;
-		log.debug("Detected EMAP for " + estruct.getName());
+		if (log.isDebugEnabled()) {
+			log.debug("Detected EMAP for " + estruct.getName());
+		}
 		assert (isAMap);
 		assert (newEMapMapping);
 		return getExtensionManager()
@@ -309,7 +319,9 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			// and the entry class must have two efeatures with the name key and
 			// value
 			if (StoreUtil.isMap(estruct)) {
-				log.debug("Detected EMAP for " + estruct.getName());
+				if (log.isDebugEnabled()) {
+					log.debug("Detected EMAP for " + estruct.getName());
+				}
 
 				return getExtensionManager().getExtension(HibernatePersistableEMap.class,
 					new Object[] { target, eref, list });

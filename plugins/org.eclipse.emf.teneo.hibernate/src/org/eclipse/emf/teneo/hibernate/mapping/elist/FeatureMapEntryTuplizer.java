@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryTuplizer.java,v 1.12 2007/07/11 14:40:55 mtaal Exp $
+ * $Id: FeatureMapEntryTuplizer.java,v 1.13 2007/08/10 16:40:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -40,7 +40,7 @@ import org.hibernate.tuple.Instantiator;
  * Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class FeatureMapEntryTuplizer extends EMFTuplizer {
@@ -104,8 +104,10 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 					mappedProperty.getName());
 		}
 
-		log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + pc.getEntityName() + "/" +
-				eclassUri + "/" + efeature.getName());
+		if (log.isDebugEnabled()) {
+			log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + pc.getEntityName() + "/" +
+					eclassUri + "/" + efeature.getName());
+		}
 
 		return hds.getHbContext().createFeatureMapEntryAccessor(efeature);
 	}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.16 2007/07/17 12:21:53 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.17 2007/08/10 16:40:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -42,7 +42,7 @@ import org.hibernate.collection.PersistentList;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements ExtensionPoint {
@@ -77,7 +77,9 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 				delegate instanceof AbstractPersistentCollection &&
 						((AbstractPersistentCollection) delegate).wasInitialized();
 		if (!super.isLoaded() && !isLoading() && isDelegateLoaded) {
-			log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+			if (log.isDebugEnabled()) {
+				log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+			}
 			try {
 				setIsLoading(true);
 				// do load to load the resource

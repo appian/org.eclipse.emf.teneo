@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInstantiator.java,v 1.5 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: EMFInstantiator.java,v 1.6 2007/08/10 16:40:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -32,7 +32,7 @@ import org.hibernate.tuple.Instantiator;
  * Instantiates eobjects using the efactory.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class EMFInstantiator implements Instantiator {
@@ -56,9 +56,7 @@ public class EMFInstantiator implements Instantiator {
 
 	/** Constructor */
 	public EMFInstantiator(EClass eclass, PersistentClass pc) {
-
-		log.debug("Creating eobject instantiator for " + pc.getEntityName()
-				+ " and eclass " + eclass.getName());
+		log.debug("Creating eobject instantiator for " + pc.getEntityName() + " and eclass " + eclass.getName());
 		proxyInterface = pc.getProxyInterface();
 		this.eclass = eclass;
 		mappedClass = eclass.getInstanceClass();
@@ -66,9 +64,7 @@ public class EMFInstantiator implements Instantiator {
 
 	/** Constructor */
 	public EMFInstantiator(EClass eclass, Component component) {
-
-		log.debug("Creating eobject instantiator for component eclass "
-				+ eclass.getName());
+		log.debug("Creating eobject instantiator for component eclass " + eclass.getName());
 		this.eclass = eclass;
 		mappedClass = eclass.getInstanceClass();
 		proxyInterface = null;
@@ -78,11 +74,8 @@ public class EMFInstantiator implements Instantiator {
 	public Object instantiate() {
 		final EObject eobject = EcoreUtil.create(eclass);
 		if (eobject == null) {
-			throw new HbMapperException(
-					"The mapped "
-							+ mappedClass.getName()
-							+ " class can not be instantiated."
-							+ " Possibly the class it is not an eclass or it is abstract.");
+			throw new HbMapperException("The mapped " + mappedClass.getName() + " class can not be instantiated." +
+					" Possibly the class it is not an eclass or it is abstract.");
 		}
 		return eobject;
 	}
@@ -91,34 +84,36 @@ public class EMFInstantiator implements Instantiator {
 	public Object instantiate(Serializable id) {
 		final EObject eobject = EcoreUtil.create(eclass);
 		if (eobject == null) {
-			throw new HbMapperException(
-					"The mapped "
-							+ mappedClass.getName()
-							+ " class can not be instantiated."
-							+ " Possibly the class it is not an eclass or it is abstract.");
+			throw new HbMapperException("The mapped " + mappedClass.getName() + " class can not be instantiated." +
+					" Possibly the class it is not an eclass or it is abstract.");
 		}
 		return eobject;
 	}
 
 	/** Checks using the mapped class or the proxy interface */
 	public boolean isInstance(Object object) {
-		if (!(object instanceof EObject))
+		if (!(object instanceof EObject)) {
 			return false;
+		}
 		final EObject eobject = (EObject) object;
-		if (eobject.eClass() == eclass)
+		if (eobject.eClass() == eclass) {
 			return true;
-		if (isSuperTypeOf(eclass, eobject.eClass()))
+		}
+		if (isSuperTypeOf(eclass, eobject.eClass())) {
 			return true;
+		}
 		return (proxyInterface != null && proxyInterface.isInstance(object));
 	}
 
 	/** Is eclass superclass */
 	private boolean isSuperTypeOf(EClass superEClass, EClass eclass) {
 		for (EClass testSuperEClass : eclass.getESuperTypes()) {
-			if (testSuperEClass == superEClass)
+			if (testSuperEClass == superEClass) {
 				return true;
-			if (isSuperTypeOf(superEClass, testSuperEClass))
+			}
+			if (isSuperTypeOf(superEClass, testSuperEClass)) {
 				return true;
+			}
 		}
 		return false;
 	}

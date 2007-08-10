@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.15 2007/07/11 14:40:55 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.16 2007/08/10 16:40:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -57,7 +57,7 @@ import org.hibernate.impl.SessionImpl;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -199,11 +199,15 @@ public class HibernateResource extends StoreResource implements HbResource {
 				}
 			}
 
-			log.debug("Reading eobject using urifragment " + id);
+			if (log.isDebugEnabled()) {
+				log.debug("Reading eobject using urifragment " + id);
+			}
 			final String[] parts = id.split(SEPARATOR);
 
 			if (parts.length != 2) {
-				log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
+				if (log.isDebugEnabled()) {
+					log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
+				}
 				return super.getEObjectByID(id);
 			}
 
@@ -211,14 +215,18 @@ public class HibernateResource extends StoreResource implements HbResource {
 			final EClass eclass = emfDataStore.getEntityNameStrategy().toEClass(parts[0]);
 			final int splitIndex = parts[1].indexOf("=");
 			if (splitIndex == -1) {
-				log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
+				if (log.isDebugEnabled()) {
+					log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
+				}
 				return super.getEObjectByID(id);
 			}
 			final String idStr = parts[1].substring(1 + splitIndex);
 			final Object result =
 					getSessionWrapper().get(parts[0], (Serializable) HbUtil.stringToId(eclass, emfDataStore, idStr));
 			if (result == null) {
-				log.debug("Object not found in the db, trying the parent");
+				if (log.isDebugEnabled()) {
+					log.debug("Object not found in the db, trying the parent");
+				}
 				return super.getEObjectByID(id);
 			}
 			final InternalEObject eobject = (InternalEObject) result;

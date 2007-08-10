@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.10 2007/07/12 18:04:15 mtaal Exp $
+ * $Id: HbHelper.java,v 1.11 2007/08/10 16:40:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -39,7 +39,7 @@ import org.hibernate.mapping.PersistentClass;
  * Is the main entry point for 'outside' users to create, register and retrieve EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class HbHelper {
 	/** The logger */
@@ -197,7 +197,7 @@ public class HbHelper {
 		// DCB: Use Hibernate-specific annotation processing mechanism. This
 		// allows use of
 		// Hibernate-specific annotations.
-		final PersistenceOptions po = new PersistenceOptions(props);
+		final PersistenceOptions po = extensionManager.getExtension(PersistenceOptions.class, new Object[] { props });
 		final PAnnotatedModel paModel =
 				extensionManager.getExtension(PersistenceMappingBuilder.class).buildMapping(epackages, po,
 					extensionManager);

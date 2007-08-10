@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class IdentifierCacheHandler {
@@ -65,7 +65,9 @@ public class IdentifierCacheHandler {
 
 	/** Set an identifier in the cache */
 	public static void setID(Object obj, Object id) {
-		log.debug("Setting id: " + id + " for object " + obj.getClass().getName() + " in idcache ");
+		if (log.isDebugEnabled()) {
+			log.debug("Setting id: " + id + " for object " + obj.getClass().getName() + " in idcache ");
+		}
 
 		if (id == null) { // actually a remove of the id
 			idMap.remove(new Key(obj));
@@ -79,7 +81,9 @@ public class IdentifierCacheHandler {
 			final EObject eobj = (EObject) obj;
 			final Resource res = eobj.eResource();
 			if (res != null && res instanceof XMLResource) {
-				log.debug("Setting id " + id.toString() + " in resource " + res.getClass().getName());
+				if (log.isDebugEnabled()) {
+					log.debug("Setting id " + id.toString() + " in resource " + res.getClass().getName());
+				}
 				((XMLResource) res).setID(eobj, id.toString());
 			}
 		}
@@ -97,7 +101,9 @@ public class IdentifierCacheHandler {
 
 	/** Sets a version in the cache */
 	public static void setVersion(Object obj, Object version) {
-		log.debug("Setting version: " + version + " for object " + obj.getClass().getName() + " in idcache ");
+		if (log.isDebugEnabled()) {
+			log.debug("Setting version: " + version + " for object " + obj.getClass().getName() + " in idcache ");
+		}
 		versionMap.put(new Key(obj), version);
 		versionModCount++;
 		if (versionModCount > PURGE_COUNT) {
