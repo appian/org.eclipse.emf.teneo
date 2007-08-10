@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.16 2007/07/12 18:04:12 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.17 2007/08/10 16:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -179,7 +179,7 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 
 		// if idclass != null then this is a composite id which can not have a unique constraint
 		// on an id column
-		addColumns(id, usedIdElement, eAttribute.getName(), columns, false, false, aClass.getIdClass() == null);
+		addColumns(id, usedIdElement, eAttribute.getName(), columns, false, false, aClass.getIdClass() == null, true);
 
 		usedIdElement.addAttribute("name", eAttribute.getName());
 		if (id.getEnumerated() == null) {

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.26 2007/07/21 09:27:24 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.27 2007/08/10 16:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -282,12 +282,13 @@ public abstract class AbstractMapper {
 	/** Same as above only handles multiple columns */
 	protected void addColumns(PAnnotatedETypedElement pet, Element propertyElement, String defaultName,
 			List<Column> columns, boolean isNullable, boolean setColumnAttributesInProperty) {
-		addColumns(pet, propertyElement, defaultName, columns, isNullable, setColumnAttributesInProperty, false);
+		addColumns(pet, propertyElement, defaultName, columns, isNullable, setColumnAttributesInProperty, false, false);
 	}
 
 	/** Same as above only handles multiple columns */
 	protected void addColumns(PAnnotatedETypedElement pet, Element propertyElement, String defaultName,
-			List<Column> columns, boolean isNullable, boolean setColumnAttributesInProperty, boolean isUnique) {
+			List<Column> columns, boolean isNullable, boolean setColumnAttributesInProperty, boolean isUnique,
+			boolean isIdProperty) {
 		// if no columns set then use some default
 		if (columns.isEmpty()) {
 			final String name;
@@ -301,7 +302,11 @@ public abstract class AbstractMapper {
 			final Column col = PannotationFactory.eINSTANCE.createColumn();
 			col.setName(hbmContext.trunc(name));
 			col.setNullable(isNullable);
-			col.setUnique(isUnique);
+			if (isIdProperty) {
+				col.setUnique(false);
+			} else {
+				col.setUnique(isUnique);
+			}
 
 			if (pet instanceof HbAnnotatedEAttribute && ((HbAnnotatedEAttribute) pet).getGenerated() != null &&
 					((HbAnnotatedEAttribute) pet).getGenerated().getValue() != null &&

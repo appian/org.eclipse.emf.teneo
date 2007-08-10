@@ -7,13 +7,17 @@ Bundle-Localization: plugin
 Eclipse-BuddyPolicy: dependent
 Bundle-Vendor: %Plugin.providerName
 Export-Package: org.eclipse.emf.teneo.hibernate,
+ org.eclipse.emf.teneo.hibernate.annotations,
  org.eclipse.emf.teneo.hibernate.hbannotation,
  org.eclipse.emf.teneo.hibernate.hbannotation.impl,
  org.eclipse.emf.teneo.hibernate.hbannotation.util,
+ org.eclipse.emf.teneo.hibernate.hbannotation.validation,
  org.eclipse.emf.teneo.hibernate.hbmodel,
  org.eclipse.emf.teneo.hibernate.hbmodel.impl,
  org.eclipse.emf.teneo.hibernate.hbmodel.util,
- org.eclipse.emf.teneo.hibernate.mapper
+ org.eclipse.emf.teneo.hibernate.hbmodel.validation,
+ org.eclipse.emf.teneo.hibernate.mapper,
+ org.eclipse.emf.teneo.hibernate.mapper.classic
 Require-Bundle: org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo.libraries,

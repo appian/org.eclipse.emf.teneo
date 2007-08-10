@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: MappingContext.java,v 1.21 2007/07/21 09:27:24 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.22 2007/08/10 16:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
 		ExtensionManagerAware {
@@ -419,7 +419,7 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 
 	/** Returns the correct property name */
 	public String getPropertyName(EStructuralFeature ef) {
-		return EModelResolver.instance().getJavaMember(ef);
+		return ef.getName();
 	}
 
 	/** Return the version property handler */

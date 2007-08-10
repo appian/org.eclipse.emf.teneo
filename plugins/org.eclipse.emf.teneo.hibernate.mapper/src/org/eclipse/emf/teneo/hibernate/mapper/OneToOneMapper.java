@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToOneMapper.java,v 1.17 2007/07/12 18:04:12 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.18 2007/08/10 16:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -80,7 +80,7 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 		} else {
 			final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getAReferenceType();
 			if (haClass.getHbProxy() != null) {
-				associationElement.addAttribute("lazy", "TSproxy");
+				associationElement.addAttribute("lazy", "proxy");
 			} else {
 				associationElement.addAttribute("lazy", "false");
 			}

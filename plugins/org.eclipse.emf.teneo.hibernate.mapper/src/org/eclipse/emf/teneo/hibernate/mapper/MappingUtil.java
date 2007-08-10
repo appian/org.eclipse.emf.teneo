@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.2 2007/07/12 12:52:05 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.3 2007/08/10 16:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,6 +24,7 @@ import org.eclipse.emf.teneo.annotations.mapper.ManyToOneReferenceAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToManyAttributeAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToManyReferenceAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToOneReferenceAnnotator;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
 import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
@@ -38,14 +39,32 @@ import org.eclipse.emf.teneo.hibernate.annotations.HbOneToManyAttributeAnnotator
 import org.eclipse.emf.teneo.hibernate.annotations.HbOneToManyReferenceAnnotator;
 import org.eclipse.emf.teneo.hibernate.annotations.HbOneToOneReferenceAnnotator;
 import org.eclipse.emf.teneo.hibernate.annotations.HbXmlPersistenceMapper;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 
 /**
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class MappingUtil {
+
+	/**
+	 * Determine the collection element set, bag or list. Only used in case Teneo operates for
+	 * non-emf code
+	 */
+	public static String getCollectionElement(HbAnnotatedETypeElement hbFeature) {
+		final boolean hasOrderBy =
+				hbFeature instanceof PAnnotatedEReference && ((PAnnotatedEReference) hbFeature).getOrderBy() != null;
+
+		if (!hbFeature.getOneToMany().isList() || hasOrderBy) {
+			return "set";
+		} else if (hbFeature.getOneToMany().isList() && !hbFeature.getOneToMany().isIndexed()) {
+			return "bag";
+		} else {
+			return "list";
+		}
+	}
 
 	/** Registers default hb extensions */
 	public static void registerHbExtensions(ExtensionManager extensionManager) {
