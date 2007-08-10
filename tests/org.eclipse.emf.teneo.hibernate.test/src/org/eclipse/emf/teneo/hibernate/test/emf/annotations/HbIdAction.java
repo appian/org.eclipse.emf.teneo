@@ -11,15 +11,17 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbIdAction.java,v 1.4 2007/06/29 07:35:13 mtaal Exp $
+ * $Id: HbIdAction.java,v 1.5 2007/08/10 16:42:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdentityID;
@@ -32,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests GenericGenerator of hibernate
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class HbIdAction extends AbstractTestAction {
 	/** How many test objects are created */
@@ -45,6 +47,18 @@ public class HbIdAction extends AbstractTestAction {
 	 */
 	public HbIdAction() {
 		super(IdPackage.eINSTANCE);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE");
+		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */
