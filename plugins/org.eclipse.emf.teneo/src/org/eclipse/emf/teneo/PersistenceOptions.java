@@ -12,7 +12,7 @@
  *   Jason Henriksen - Mapping File Path
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.35 2007/08/10 16:40:55 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.36 2007/08/10 20:16:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -96,7 +96,8 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	/**
 	 * If set then the system will generate readable foreign key names. The default is true. Set to
-	 * false for backward compatibility.
+	 * false for backward compatibility. Note that before the default value of this property was
+	 * false.
 	 */
 	public static final String SET_FOREIGN_KEY_NAME = NAMING_PREFIX + "set_foreign_key_name";
 
@@ -310,7 +311,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(IDBAG_ID_COLUMN_NAME, "ID");
 		props.setProperty(ADD_INDEX_FOR_FOREIGN_KEY, "false");
 		props.setProperty(SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "false");
-		props.setProperty(SET_FOREIGN_KEY_NAME, "false");
+		props.setProperty(SET_FOREIGN_KEY_NAME, "true");
 		props.setProperty(MAP_EMBEDDABLE_AS_EMBEDDED, "false");
 		props.setProperty(MAX_COMMENT_LENGTH, "0");
 		return props;
