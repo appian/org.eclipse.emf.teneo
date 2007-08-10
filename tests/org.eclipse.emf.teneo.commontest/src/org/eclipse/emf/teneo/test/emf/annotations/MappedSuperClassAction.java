@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappedSuperClassAction.java,v 1.5 2007/07/11 15:29:59 mtaal Exp $
+ * $Id: MappedSuperClassAction.java,v 1.6 2007/08/10 20:30:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class MappedSuperClassAction extends AbstractTestAction {
 	/**
@@ -53,6 +53,7 @@ public class MappedSuperClassAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY, "READ_WRITE");
+		props.setProperty(PersistenceOptions.SET_ENTITY_AUTOMATICALLY, "false");
 		return props;
 	}
 
@@ -140,5 +141,14 @@ public class MappedSuperClassAction extends AbstractTestAction {
 				}
 			}
 		}
+		{
+			store.beginTransaction();
+			final SpecificDocument sd = store.getObject(SpecificDocument.class);
+			assertEquals(sd.getMyName(), "TEST IT");
+			assertEquals(sd.getMyGenericInfo(), "GENERIC INFO");
+			assertEquals(sd.getMySpecificInfo(), "SPECIFIC INFO");
+			store.commitTransaction();
+		}
+
 	}
 }
