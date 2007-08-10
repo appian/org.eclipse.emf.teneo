@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToOneMapper.java,v 1.18 2007/08/10 16:41:00 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.19 2007/08/10 20:17:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -67,17 +67,16 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 			specifiedName = getHbmContext().getEntityName(eref.getEReferenceType());
 		}
 
-		final Element associationElement =
-				addManyToOne(paReference, (specifiedName != null ? specifiedName : getHbmContext().getEntityName(
-					eref.getEReferenceType())));
+		final Element associationElement = addManyToOne(paReference, specifiedName);
 
-		addForeignKeyAttribute(associationElement, paReference);
 		addCascadesForSingle(associationElement, oto.getCascade());
 
 		if (isEObject(specifiedName)) {
 			addColumns(paReference, associationElement, eref.getName(), getAnyTypeColumns(eref.getName(), true), true,
 				false);
+			// foreign key is not added when the reference is to a generic EObject
 		} else {
+			addForeignKeyAttribute(associationElement, paReference);
 			final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getAReferenceType();
 			if (haClass.getHbProxy() != null) {
 				associationElement.addAttribute("lazy", "proxy");
