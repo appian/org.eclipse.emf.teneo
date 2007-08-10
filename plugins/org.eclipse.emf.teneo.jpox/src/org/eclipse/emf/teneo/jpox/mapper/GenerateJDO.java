@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenerateJDO.java,v 1.9 2007/07/12 18:04:18 mtaal Exp $
+ * $Id: GenerateJDO.java,v 1.10 2007/08/10 16:40:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.extension.ExtensionUtil;
  * methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class GenerateJDO {
@@ -121,7 +121,8 @@ public class GenerateJDO {
 			// set the eruntime as the emodel resolver!
 			ERuntime.setAsEModelResolver();
 
-			final PersistenceOptions po = new PersistenceOptions(options);
+			final PersistenceOptions po =
+					extensionManager.getExtension(PersistenceOptions.class, new Object[] { options });
 			final PersistenceMappingBuilder pmb = extensionManager.getExtension(PersistenceMappingBuilder.class);
 			final PAnnotatedModel paModel = pmb.buildMapping(ecores, po, extensionManager);
 			final JPOXMappingGenerator jmg = extensionManager.getExtension(JPOXMappingGenerator.class);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxHelper.java,v 1.7 2007/07/12 18:04:19 mtaal Exp $
+ * $Id: JpoxHelper.java,v 1.8 2007/08/10 16:40:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.jpox.resource.JPOXResourceFactory;
  * EMF Data Stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class JpoxHelper {
 	/** The logger */
@@ -175,7 +175,7 @@ public class JpoxHelper {
 		// set the eruntime as the emodel resolver!
 		ERuntime.setAsEModelResolver();
 
-		final PersistenceOptions po = new PersistenceOptions(props);
+		final PersistenceOptions po = extensionManager.getExtension(PersistenceOptions.class, new Object[] { props });
 		final PAnnotatedModel paModel =
 				extensionManager.getExtension(PersistenceMappingBuilder.class).buildMapping(epackages, po,
 					extensionManager);
