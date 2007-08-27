@@ -14,7 +14,7 @@
         <javaElement handleIdentifier="=org.eclipse.emf.teneo.jpox.enhanced/src"/>
         <file path="/org.eclipse.emf.teneo.jpox.enhanced/epl-v10.html"/>
         <file path="/org.eclipse.emf.teneo.jpox.enhanced/copyright.txt"/>
-        <file path="/org.eclipse.emf.teneo.jpox.enhanced/eclipse32.png"/>
+        <file path="/org.eclipse.emf.teneo.jpox.enhanced/modeling32.png"/>
         <file path="/org.eclipse.emf.teneo.jpox.enhanced/license.html"/>
     </selectedElements>
 </jardesc>
