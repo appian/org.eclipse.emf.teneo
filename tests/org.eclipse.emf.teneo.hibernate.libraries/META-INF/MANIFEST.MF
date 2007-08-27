@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Teneo Hibernate Test Libraries Plug-in
+Bundle-Name: Teneo Hibernate Test Libraries Plug-in (Incubation)
 Bundle-SymbolicName: org.eclipse.emf.teneo.hibernate.libraries
 Bundle-Version: 0.8.0.qualifier
 Eclipse-BuddyPolicy: dependent
