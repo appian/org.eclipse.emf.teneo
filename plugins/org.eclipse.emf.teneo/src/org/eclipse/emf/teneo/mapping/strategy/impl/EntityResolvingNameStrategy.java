@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EntityResolvingNameStrategy.java,v 1.1 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: EntityResolvingNameStrategy.java,v 1.2 2007/09/03 12:57:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * This implementation will first use the name of the entity annotation and then the eclass name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EntityResolvingNameStrategy implements EntityNameStrategy {
 
@@ -82,6 +82,10 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 
 		// check if there is an entity annotation on the eclass with a name set
 		final PAnnotatedEClass aClass = getPaModel().getPAnnotated(eClass);
+		if (aClass == null) {
+			System.err.println("TeST");
+			return eClass.getName();
+		}
 		if (aClass.getEntity() != null && aClass.getEntity().getName() != null) {
 			return aClass.getEntity().getName();
 		}
@@ -114,7 +118,7 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 				if (aClass.getEntity() != null && aClass.getEntity().getName() != null &&
 						aClass.getEntity().getName().compareTo(eClassName) == 0 &&
 						!StoreUtil.isMapEntry(aClass.getAnnotatedEClass())) { // map entries are
-																				// ignored
+					// ignored
 					if (eClass != null) {
 						// doubly entry! Actually require different resolver
 						throw new IllegalArgumentException("There is more than one EClass with the same name (" +
