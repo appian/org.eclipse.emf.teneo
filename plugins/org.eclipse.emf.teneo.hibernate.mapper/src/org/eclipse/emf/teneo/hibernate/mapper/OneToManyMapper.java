@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToManyMapper.java,v 1.21 2007/07/17 17:37:36 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.22 2007/09/03 14:07:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -210,10 +210,10 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		// collections, see 7.3.3 of the hibernate
 		// manual 3.1.1
 		final OneToMany otm = paReference.getOneToMany();
-		if (!otm.isIndexed()) {
-			// collElement.addAttribute("inverse", "true");
+		if (!otm.isIndexed() && !hbmContext.isGeneratedByEMF()) {
+			collElement.addAttribute("inverse", "true");
 		} else {
-			log.warn("Inverse is not set on purpose for indexed collections");
+			log.debug("Inverse is not set on purpose for indexed collections");
 		}
 		final Element keyElement = collElement.addElement("key");
 		handleOndelete(keyElement, ((HbAnnotatedEReference) paReference).getHbOnDelete());

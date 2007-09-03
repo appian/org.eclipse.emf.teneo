@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.17 2007/08/10 16:41:00 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.18 2007/09/03 14:07:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -184,6 +184,11 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 		usedIdElement.addAttribute("name", eAttribute.getName());
 		if (id.getEnumerated() == null) {
 			setType(id, usedIdElement);
+
+			if (eAttribute.getEType().getDefaultValue() != null) {
+				usedIdElement.addAttribute("unsaved-value", eAttribute.getEType().getDefaultValue().toString());
+			}
+
 		} else { // enumerated id
 			final EClassifier eclassifier = id.getAnnotatedEAttribute().getEType();
 			if (!getHbmContext().isGeneratedByEMF() && !getHbmContext().isDynamic(eclassifier)) {

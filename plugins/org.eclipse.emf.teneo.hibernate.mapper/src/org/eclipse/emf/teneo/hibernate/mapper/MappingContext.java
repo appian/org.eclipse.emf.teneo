@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: MappingContext.java,v 1.22 2007/08/10 16:41:00 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.23 2007/09/03 14:07:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
 		ExtensionManagerAware {
@@ -72,6 +72,11 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 
 	/** The current table element is set when an entity starts */
 	private Table currentTable = null;
+
+	/**
+	 * The current column prefix, is used in case of multiple mixed types in one eclass.
+	 */
+	private String namePrefix = "";
 
 	/** The current secondary table being processed. May be null. */
 	private SecondaryTable currentSecondaryTable = null;
@@ -376,6 +381,10 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	 * inheritance/mappedsuperclass).
 	 */
 	protected String trunc(String truncName, boolean truncPrefix) {
+		if (truncName.indexOf("mixed_`") != -1) {
+			System.err.println(truncName);
+		}
+
 		final String useName;
 		// currentEFeature is null in the beginning
 		if (currentEFeature != null && currentEFeature.getEContainingClass() != currentEClass &&
@@ -384,13 +393,13 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 			log.debug("Replacing name of table/joincolumn " + truncName);
 			// get rid of the first part
 			useName =
-					getEntityName(currentEClass) +
+					getNamePrefix() + getEntityName(currentEClass) +
 							truncName.substring(getEntityName(currentEFeature.getEContainingClass()).length());
 			log.debug("with " + useName + " because efeature is inherited");
 			log
 				.debug("This renaming does not work in case of manually specified joincolumn/table names and mappedsuperclass or multiple inheritance!");
 		} else {
-			useName = truncName;
+			useName = getNamePrefix() + truncName;
 		}
 
 		if (useName.indexOf('`') == 0) {
@@ -636,5 +645,20 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	 */
 	public int getMaximumCommentLength() {
 		return maximumCommentLength;
+	}
+
+	/**
+	 * @return the namePrefix
+	 */
+	public String getNamePrefix() {
+		return namePrefix;
+	}
+
+	/**
+	 * @param namePrefix
+	 *            the namePrefix to set
+	 */
+	public void setNamePrefix(String namePrefix) {
+		this.namePrefix = namePrefix;
 	}
 }

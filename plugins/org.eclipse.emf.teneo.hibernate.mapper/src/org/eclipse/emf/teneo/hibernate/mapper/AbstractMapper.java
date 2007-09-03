@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.27 2007/08/10 16:41:00 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.28 2007/09/03 14:07:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -295,12 +295,12 @@ public abstract class AbstractMapper {
 			if (getHbmContext().getEmbeddingFeature() != null) { // embedded
 				// TODO: check illegal, embedded component can not really have an id
 				final PAnnotatedEReference pae = getHbmContext().getEmbeddingFeature();
-				name = getHbmContext().trunc(pae.getAnnotatedEReference().getName() + "_" + defaultName);
+				name = pae.getAnnotatedEReference().getName() + "_" + defaultName;
 			} else {
-				name = getHbmContext().trunc(defaultName);
+				name = defaultName;
 			}
 			final Column col = PannotationFactory.eINSTANCE.createColumn();
-			col.setName(hbmContext.trunc(name));
+			col.setName(name);
 			col.setNullable(isNullable);
 			if (isIdProperty) {
 				col.setUnique(false);

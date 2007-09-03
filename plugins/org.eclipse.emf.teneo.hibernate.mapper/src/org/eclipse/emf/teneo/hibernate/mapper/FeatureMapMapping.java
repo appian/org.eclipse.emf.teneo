@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: FeatureMapMapping.java,v 1.10 2007/07/09 17:43:20 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.11 2007/09/03 14:07:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -73,6 +73,7 @@ public class FeatureMapMapping {
 		final FeatureMapper fp = hbmContext.getFeatureMapper();
 		hbmContext.setCurrent(mainElement);
 		hbmContext.setCurrentElementFeatureMap(true);
+		hbmContext.setNamePrefix(paAttribute.getAnnotatedEAttribute().getName() + "_");
 
 		// TODO: check if id of parent can be used instead
 		mainElement.addElement("id").addAttribute("type", "long").addElement("generator").addAttribute("class",
@@ -129,6 +130,7 @@ public class FeatureMapMapping {
 		}
 		hbmContext.setCurrent(mainElement.getParent());
 		hbmContext.setCurrentElementFeatureMap(false);
+		hbmContext.setNamePrefix("");
 		log.debug("Finished processing featuremap");
 	}
 
